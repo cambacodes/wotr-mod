@@ -305,6 +305,8 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "aivu.a_city_with_wings")) AivuOpeningTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.private_absence")) KonomiPrivateAbsenceTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "soana.the_thing_in_the_sack")) SoanaLaterProgressionTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "return" && s.Nodes.Any(n => n.Id == "before_the_abyss")))
+            TirabadeChronologyTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) JerribethCounterofferTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);

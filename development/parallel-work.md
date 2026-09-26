@@ -16,10 +16,13 @@ Keep all 37 roster characters and their existing requirements in scope.
 | --- | --- | --- |
 | `/root/terendelev_api_recover` | Aranka parent-route research and continuation | `storylines/aranka_continuation.py`, `tests/ArankaContinuationTests.cs`, `reference/canon-review/aranka-extension-evidence.md`, `reference/parallel/aranka-continuation-handoff.md` |
 | `/root/gesmerha_recover` | Konomi private-career consequences and farewell | `storylines/konomi_private_consequence.py`, `tests/KonomiPrivateConsequenceTests.cs`, `reference/parallel/konomi-private-consequence-handoff.md` |
-| `/root/kiana_reconcile_recover` | Tirabade chronology repair after completed independent audit | `storylines/tirabade_chronology.py`, `tests/TirabadeChronologyTests.cs`, `reference/parallel/tirabade-chronology-handoff.md` |
+| `/root/kiana_reconcile_recover` | Konomi early reciprocal scene and later callback | `storylines/konomi_early_reciprocity.py`, `tests/KonomiEarlyReciprocityTests.cs`, `reference/parallel/konomi-early-reciprocity-handoff.md` |
 
 
 Worker names reflect their earlier roles, not fixed authoring or review assignments.
+The Tirabade chronology repair is delivered, independently accepted and integrated at main SHA256 `F9D935107A1CD0DD503A60C5C77A6575289204FC4E19001070F8FB2123017E84`.
+Main still has 291 scenes; full rules passed 13,568,429 assertions and managed construction passed 37,384.
+See `reference/story-review/tirabade-chronology-integration-review.md` for scope, exact source hashes and remaining full-route gaps.
 Soana's later-access audit, raw records and probe are delivered and returned to root.
 They support a living Chapter 5 return at her original contact and distinguish combat death, Camellia's hidden actor and Orso's released remains.
 They do not establish a tested recovery or live Chapter 5 scene.

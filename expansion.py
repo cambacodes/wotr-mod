@@ -17,6 +17,7 @@ from storylines import vellexia_opening, konomi_ordinary_expansion
 from storylines import aivu_opening
 from storylines import konomi_private_absence
 from storylines import soana_later_progression
+from storylines import tirabade_chronology
 from storylines import tirabade_later, tirabade_campaign, seelah, seelah_later, seelah_fate, seelah_abyss, seelah_aftermath, konomi, konomi_history, konomi_private, konomi_distance, konomi_future, konomi_private_hearing, jerribeth, jerribeth_consequences, kiana, kiana_consequences, ember, ember_afternoons, soana_opening
 
 ROOT = Path(__file__).parent
@@ -150,6 +151,7 @@ def make_expansion():
     payload["Scenes"].extend(konomi_private_absence.SCENES)
     konomi_private_absence.integrate(payload)
     payload["Scenes"].extend(soana_later_progression.SCENES)
+    tirabade_chronology.integrate(payload)
     return payload
 
 
