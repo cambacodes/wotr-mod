@@ -16,6 +16,7 @@ try {
 
     & $pythonPath expansion.py
     if ($LASTEXITCODE) { throw 'Expansion generation failed' }
+    $validatedStoryHash = (Get-FileHash -LiteralPath 'development/Story.json').Hash
     & $dotnetPath build src/Tirabade.csproj -c Release --nologo -v quiet "-p:GameDir=$GameDir/"
     if ($LASTEXITCODE) { throw 'Expansion assembly build failed' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
@@ -28,6 +29,9 @@ try {
     if ($LASTEXITCODE) { throw 'Managed verification build failed' }
     & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe $GameDir development/Story.json
     if ($LASTEXITCODE) { throw 'Expansion managed construction validation failed' }
+    if ((Get-FileHash -LiteralPath 'development/Story.json').Hash -ne $validatedStoryHash) {
+        throw 'Expansion story changed during validation; rebuild before packaging'
+    }
 
     # A new directory prevents stale assets from surviving a previous package.
     $output = Join-Path $PSScriptRoot ('dist/expansion-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [guid]::NewGuid().ToString('N').Substring(0, 8))
@@ -45,6 +49,9 @@ try {
         $target = Join-Path $modOutput $inputs[$source]
         Copy-Item -LiteralPath $source -Destination $target
         if ((Get-FileHash -LiteralPath $source).Hash -ne (Get-FileHash -LiteralPath $target).Hash) { throw "Package copy mismatch: $source" }
+    }
+    if ((Get-FileHash -LiteralPath (Join-Path $modOutput 'Story.json')).Hash -ne $validatedStoryHash) {
+        throw 'Expansion story changed during staging; package is incomplete'
     }
     $artSource = Join-Path $PSScriptRoot 'art/CustomNpcPortraits'
     foreach ($file in Get-ChildItem -LiteralPath $artSource -File -Recurse) {

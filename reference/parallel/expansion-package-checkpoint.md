@@ -31,3 +31,14 @@ No installed files or saves were changed.
 This establishes local packaging of the expansion, not a completed character release.
 The ordinary Konomi campaign can be selected for a future manual test after deliberate deployment preparation.
 Missing bespoke access, scene artwork and actual Unity/save/ToyBox verification remain separate requirements.
+
+## Revalidation after independent packaging review
+
+Independent static review identified that a concurrently regenerated Story could be staged after a different version had passed validation.
+The build now pins the generated Story hash before checks and rejects changed input after validation or changed staged output before writing a successful manifest.
+This finding was static; no concurrent failure was claimed as reproduced.
+The amended build completed with the same 527-scene Story hash and the same successful assertion totals above.
+Its output is `dist/expansion-20260926-190356-2036160c`.
+Its rebuilt, tested assembly hash is `3FD90EBB20942AC89A67BE78DAD36C14E771AE2896233B48C32FD478D9067197`.
+Root independently verified all twenty-one payload hashes against the new manifest.
+The installed Story still has the original `3176BB0102324BAB5BAF664D6956D5DEB3A4FB638029789D74F0EFCDF73DC6D4` hash.
