@@ -54,3 +54,21 @@ Export stable scene/node identities and text hashes when the script is ready so 
 Generate and independently review Konomi artwork against verified model traits and the current attractive adult humanoid redesign brief.
 Verify actual game delivery and ToyBox compatibility before calling the route ready for player testing.
 All 37 planned characters remain in scope; no route is fully approved at this checkpoint.
+
+## Committed source archive verification
+
+A clean `git archive` of commit `4a457a3` was packaged with the committed release script.
+The resulting source ZIP was extracted into a separate directory and rebuilt without the original worktree's imported modules or untracked files.
+Its generated 305-scene export exactly matches SHA256 `C3C9D2D3FE27F64E883DFEFA8A99E5E26F09612DEA6CCFE1B37C04C11AF86210`.
+The source archive is 71,150,352 bytes and its extracted assembly isolation check passes.
+Evidence directory: `C:/Users/Z/AppData/Local/Temp/konomi305-source-verify-4pn8r780`.
+This verifies source reproducibility only; the binary archive from a tracked checkout lacks ignored compiled DLLs and is not a tested release package.
+
+The independent assembled review now scores writing 91, characterization 92, romance 93, participation 92 and normal campaign depth 91.
+Continuity scores 87 because the catch-up still regresses a completed career agreement.
+The source remains unfrozen pending that actual repair and independent rereview.
+
+The existing `narrator/Program.cs` uses Windows `System.Speech.Synthesis` with one installed female English voice.
+`src/Main.cs` strips markup and sends whole node text; it does not split character speech from embedded narration, select per-character Chatterbox voices, or load generated audio files.
+A Chatterbox evaluation must therefore distinguish offline voice-quality testing from in-game audio integration.
+No Chatterbox synthesis or local speed benchmark has been performed.
