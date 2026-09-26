@@ -46,7 +46,8 @@ No character currently has full release approval, and the installed game content
 The separate `build-expansion.ps1` now builds and verifies a local expansion package with matching binaries and staged artwork.
 Its [packaging checkpoint](reference/parallel/expansion-package-checkpoint.md) records the actual output and missing portrait keys; it does not install the package or certify full routes.
 The [alternative prerequisite implementation](reference/parallel/prerequisite-groups-checkpoint.md) now supports earned access without manufacturing native appointment or dismissal history.
-Konomi's separate missed-contact candidate is being connected to positive native actor observation and truthful continuation when the source area is unloaded.
+Konomi's [native observer integration](reference/parallel/konomi-native-observer-integration-checkpoint.md) now supplies positive initial actor evidence and checks retained saved-area loss evidence during later correspondence.
+Her separate missed-contact manuscript remains in independent review, including conditional endings and played coverage of alternate absence and political scenes.
 It is not part of the 527-scene integrated export yet.
 The [Minagho and Chivarro audit](reference/canon-review/minagho-chivarro-integration.md) establishes which parent events and endings must be extended rather than duplicated.
 Their new continuation is in authoring, with Chivarro's own arrival and choices required before any expanded group relationship.

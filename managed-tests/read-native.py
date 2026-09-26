@@ -6,7 +6,8 @@ import re
 import sys
 from zipfile import ZipFile
 
-pending = set(json.load(sys.stdin))
+# Decode JSON's wire encoding, not the Windows console encoding inherited by Python.
+pending = set(json.load(sys.stdin.buffer))
 found = {}
 asset_id = re.compile(rb'"AssetId"\s*:\s*"([0-9a-fA-F]{32})"')
 with ZipFile(sys.argv[1]) as archive:
