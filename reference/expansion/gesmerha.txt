@@ -1,0 +1,411 @@
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0003.jbp
+GUID: 7878cbe629d41014da1241adc8270991
+"I am a guest of the Lady of the Sun, she invited me to visit Wintersun."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0004.jbp
+GUID: 3523e3ea9f1b83642a418e77a27c6954
+"I am the Knight Commander of the crusaders. I have come from Drezen looking for my missing people."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0005.jbp
+GUID: 7e40aa34f49533a42a362d8177e3269a
+"I don't have time to talk to you. Farewell."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0009.jbp
+GUID: 62ef92c0c800fe747be0cb14f487bc5a
+"Who are you? What happened to your eyes?"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0010.jbp
+GUID: 8f0830dd78251094d80f6add8021ea4f
+"There's something strange going on in Wintersun. Your fellow villagers call me a monster while they themselves converse with demons like it's nothing."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0011.jbp
+GUID: 03f20d2d218ac2e4a8ce50c0c403e2b9
+"I've been looking for missing crusaders and found their bodies at the shrine of the Lady of the Sun."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0013.jbp
+GUID: f874f40b24bf83847a60704ef4c8ba09
+"Tell me about this settlement."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0014.jbp
+GUID: b95ed66ecbf2788458ceb6d533c9a206
+"Tell me about the Lady of the Sun."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0015.jbp
+GUID: d5c7347a0eefc084d8652a72d68057e6
+"Thank you for talking to me. Farewell!"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0025.jbp
+GUID: f91e3af33f9d34443be893137bfca2c6
+"Help me get to the bottom of what's going on in Wintersun. The future of your clan might depend on my actions."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0027.jbp
+GUID: 42560f050de48b74ba16b54bd486d5e8
+"There's something strange going on in Wintersun. Your fellow villagers are conversing with demons like it's nothing."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0036.jbp
+GUID: 6473f5885afdb6640b049bf73444bc3b
+"The rune stones were broken and replaced with fakes."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Answer_0038.jbp
+GUID: fc2c7932ff4e22946b684ce6c1c72fa0
+"Tell me about the rune stones again."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001.jbp
+GUID: 1e9af5965b5da304c825817c89817c22
+{n}A woman with a wealth of long dark hair stands by the statue, carefully touching the wood. Her long fingers slide along the smooth surface searching for cracks and scratches. As you approach, the woman startles, tosses her head back, and you see her eye sockets are empty and scabbed over like old scars.{/n} "Who's there? A stranger? I don't recognize your footsteps..."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0002.jbp
+GUID: 1883293a54e547a1bcd4779692db61b4
+"So that's how it is." {n}Ulbrig lowers his head.{/n} "The Olesks had an old feud with Wintersun... but that doesn't mean you deserve such a fate."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0005.jbp
+GUID: 079c775ce49f49a7ac5997f3d956fdf8
+"I've been wondering whether this self-proclaimed 'lady' is an oglin or a sorceress. Turns out, she's both. She's beguiled the chieftain, took his mind, and put a spell on the whole village too. Oh, just wait till I get my hands on her..."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0006.jbp
+GUID: b0c40f73b47a904409e4560bc82c5e6d
+{n}At the mention of the Lady, the blind woman's expression relaxes. She shrugs her shoulders and dryly responds,{/n} "A guest of the Lady of the Sun is a most desirable guest in Wintersun. What do you want from me?"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0007.jbp
+GUID: ee2d3fe671eda184f95eca59248946ba
+"A visitor from the outside, and a crusader too!" {n}the woman exclaims enthusiastically. But then she seems to falter, quirking her head like she's trying to listen to something. Her fingers tremble nervously.{/n} "What do you want to talk to me about?"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0012.jbp
+GUID: f80f49b63b4ff0c4b938004a87e3eb9e
+"Bodies at the shrine... That is very strange. The children of Wintersun are no enemies of the crusaders. And no one would dare sully the Lady of the Sun's shrine with the blood of allies. Marhevok always keeps the shrine adorned with flowers for the Lady, along with his trophies — slain demons."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0016.jbp
+GUID: f440f6021ce70bc409777f40bb515996
+"My name is Gesmerha, I was the senior woodshaper in Wintersun. A woodcarver or sculptor, as you would call it. My level of skill is not bestowed on everyone — we woodshapers do not consider wood to be just a material; we do not 'make' something out of it, we give the wood a new birth, we reveal its beauty in a new form."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0017.jbp
+GUID: 47d2c4b993ae06d46af7a683a0ac6ee9
+"I come from an ancient line of craftsmen and women and I swear that I have done everything to avoid bringing shame to my ancestors' memory. I strove to preserve beauty even in the midst of chaos, which is what the demons had turned Sarkoris into, aided by the traitor Areelu. But one day, my gift failed me. At the request of Marhevok, our clan chief, I was tasked with carving a statue of the Lady of the Sun. But no matter how hard I tried, instead of a beautiful elf, my chisel again and again revealed a hideous monster in the wood."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0018.jbp
+GUID: 0365c24e7237b3d409fc4bd40cca548b
+"Marhevok flew into a rage when he saw my work," {n}Gesmerha says, her voice quieter now.{/n} "He personally cut out my eyes as punishment, and journeymen were given the task of finishing the statue. The clan did not turn its back on me, of course. The children of Wintersun do not drive out their own, even those who have transgressed before the entire community. They allow me to do simple carvings and to take care of the statues. That is how I have lived since that day."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0019.jbp
+GUID: 51a66a6197110a94e8c0982413b6109f
+"This place was once the capital of the Wintersun clan. Yes, the capital — in the glory days of old Sarkoris, the clan controlled vast swathes of land with several settlements and many farmsteads. But when that accursed Areelu opened the Worldwound, the clan began to wither, like a sapling that's been chopped at the roots. Then the Worldwound opened even wider, and the blight reached these lands. The children of Wintersun either died defending their homes or left in search of a better life elsewhere."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0020.jbp
+GUID: d3fd141427abfe3488d04893d92f60dc
+"Marhevok, the leader of the Wintersun clan, met her on a hunt many years ago when he was a young man. People say it was love at first sight, and the Lady of the Sun left her magical castle in the clouds to live with Marhevok in a humble hut. The Lady of the Sun is a powerful sorceress. She gave Marhevok his hunting dragon and has protected Wintersun against the demons all these years. Ever since she came here, not a single demon has attacked this place."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0021.jbp
+GUID: 0f4e804c89de2e6488c20ad425f252bd
+{n}The woman is silent for a while, gathering her thoughts.{/n} "Listen, stranger. There is something odd happening in Wintersun, it's true. The Lady of the Sun promised us protection and demons truly have never attacked the settlement. But there are visitors that come here from the outside..."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0022.jbp
+GUID: bb81e9469f12bb64d937def919f6b4b1
+"In the end, all that was left was this one settlement. Only the toughest, most stubborn people were left, the ones who were prepared to survive and defend their land to their last breath. But even they would have perished if not for the Lady of the Sun. Since she came here, demons haven't dared to attack Wintersun. Life is hard here, the soil is weak and the animals to hunt few and far between, but it is our home. If we leave our homes and we stop singing our songs, the memory of Sarkoris will die too."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0023.jbp
+GUID: 78e59fa88f06c16438de66cacd05dbee
+"Demons? Within these walls? That's not possible. The Lady of the Sun promised to protect us. Besides, the settlement has old rune stones that start to flicker when demons approach. Even if the monsters had tricked us somehow by disguising themselves, the stones would have warned us about the danger. And my people wouldn't be caught dead chatting to our sworn enemies!" {n}Gesmerha frowns as though puzzling something out.{/n}
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0024.jbp
+GUID: 0448dab10df819c43a2f2aa86524f01b
+{n}The woman sighs heavily, clenching and unclenching her fists.{/n} "I'm taking a huge risk talking to you, stranger. Marhevok's anger is terrifying to behold. But I simply need to know what's happening to my clan... I have to risk it!"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0028.jbp
+GUID: 13f2b37e28864ba4b882d13fad90f7c5
+{n}The woman sighs sadly.{/n} "I wish I could trust you, stranger, but I'm afraid of provoking Marhevok's anger. I already lost my eyes, and I know what he will take next: my hands. So forgive me, but I won't tell you any more than I already have."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0029.jbp
+GUID: c3ef0a9b5057a1140a62c1b0d44f1b7d
+"They come often, and they look like crusaders, merchants from Mendev, scholars from {g|Absalom}Absalom{/g}, or kin of our Lady from her castle in the clouds. Some of them even live here long-term. And every single one of them acts strangely. They talk to us like there's some great joke, and we're not in on it. And sometimes there are rougher types who do something wild."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0030.jbp
+GUID: b539fd79b1336054db5879414df3c730
+"A secret horror gnaws at the soul of Wintersun, but I can't see it or find out what it is... And I don't know how to help you solve it, friend. All I can give you is this piece of advice: check our rune stones. They should warn us about demons in the vicinity, and if they are not doing that, then there is some evil at work here. If you want answers quickly, go straight to Marhevok. He is the only person who has been to the castle in the clouds, and he even had a key to it hidden somewhere. He knows more than anyone else. But watch yourself — Marhevok is a mighty warrior, quick to anger and ruthless. And the limits of the Lady of the Sun's powers are entirely unknown."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0031.jbp
+GUID: 05d66664080144c4bb8fc08b90cc700b
+"What do you want with blind Gesmerha, stranger?"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0034.jbp
+GUID: 39a310ee567e4aa409a161afc3e60426
+"Magic users were feared in Sarkoris in the old days... and for good reason, if you remember that cursed witch who brought all these calamities down on us. But we trusted the Lady of the Sun and accepted her as our protector. Although... it was not an easy decision."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0035.jbp
+GUID: 34ebe50f3fedd95418952d09a5e340c7
+"I've tried broaching the topic with people I trust, but they either don't believe me or they're afraid to speak openly. Marhevok does not permit any doubts about him, or the Lady of the Sun, or her guests. And there's something else..." {n}Grief wells up in the woman's voice.{/n} "Every few years, someone in the village goes mad. It's usually one of our guards or hunters, who go out on forays to kill demons. They either start weeping, begging for forgiveness, or they attack their neighbors... The clan doesn't turn its back on its children, that's why these mad people are only put outside the settlement's walls. But everyone now believes they're beyond helping — they are mad and angry at the entire world."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0037.jbp
+GUID: aedc55c0af60c9d46b1aadaf6234e8f1
+"So, demons truly can roam here, and no one even suspected because we had faith in the stones' warning and in the Lady of the Sun's protection... The only thing we can do is go to Marhevok and demand answers. I want to believe that he has been deceived and will act on behalf of his clan when you show him your proof of the betrayal. And the destruction of the rune stones is a true betrayal of our clan!"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0039.jbp
+GUID: 3d7327a78f3fdb04d9b824c9734e09ad
+"There are three of them in total, and they're all in the village. They were erected by the great shaman Soana the Wise a century ago, the year the Worldwound opened. They start to flicker when demons are near. But, as far as I can remember, the stones have never raised the alarm. Demons have never come near the village thanks to the Lady of the Sun's protection... at least, that's what everyone thinks. If you firmly believe that you saw demons within the walls of Wintersun, find out why the stones are not giving their promised warning."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0041.jbp
+GUID: 71f398eaafeacff4c894da095d8ab55f
+"I see that uncovering the truth of beauty and monstrosity is not welcome in this place. No matter what your creations looked like, they carried a germ of truth within them, whereas in this statue I see only an empty adulteration that is pleasing to the eye. Wherever artists are persecuted, it is a clear sign that authority is trying to hide an unpleasant truth behind a mask of decency."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0042.jbp
+GUID: 706e5d40c1f47394c979aeb77eb35bf8
+"That Marhevok of yours — he's a nasty piece of work, isn't he? Robbing an artist of her sight, that's not just brutal, it's foul. Some murderers are less depraved than that."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0046.jbp
+GUID: 33f9d99dbe859484e9282b0483727188
+"A small settlement surrounded by demons, crumbling but not yet broken. A place where dark deeds are happening... It's all seems so familiar. Something tells me that Wintersun had its own traitorous Wenduag too."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0049.jbp
+GUID: 39ec68ad0f020544eae0e2a7a03412e2
+"Demons? You're saying that he leaves dead demons? What madness is this? But at least we know now who is responsible for the bodies in the shrine." {n}Seelah's eyes are ablaze.{/n}
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0050.jbp
+GUID: b207390363776e7468f302a30e80bfe4
+"It is stomach-turningly savage, what was done to you — but what did you expect? You disrespected a lady who was your social better. Many noblemen in Mendev would raise their sword to you for insulting their lady in such a fashion."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_0051.jbp
+GUID: 1cb3cecece15e934dbf05f1be5bad7a4
+{n}The dwarf casts a wary, suspicious glance at Camellia's weapon.{/n} "That's if you're lucky. If you're not so lucky, the lady in question would be like yourself. With your remarkable aptitude, no defender of your honor would be necessary. Yes, whoever taught you swordsmanship was a masterful teacher... As good as mine."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_2.jbp
+GUID: c0505685e3714d7985a494440015404a
+"These aren't the actions of a {g|Sarkoris}Sarkorian{/g} chieftain. Not even the actions of a backwater despot or bandit lord. Only a madman could do something like this... or a man bewitched."
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_7.jbp
+GUID: 8e948c1c3b8c4f2dafd65a2738803620
+"What did you feud over? Was it a quarrel over some pastures? Or was it something serious?"
+
+World/Dialogs/c3/Wintersun/BlindCarver/Cue_8.jbp
+GUID: 59be13cd65d849bea3111f40ccff6c83
+"Shows what you know! Pastures are a serious matter. But it's not just that. I remember this one time when these scoundrels—" {n}Ulbrig stops himself and waves his hand.{/n} "Ah, like it matters now. It's all in the past, water under the bridge. What sense is there in dredging up old grudges?"
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Answer_0007.jbp
+GUID: 46fc49da4dfe021469fdf61ad0eeaf45
+"Let's take a look at your wares."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Answer_0008.jbp
+GUID: a784e5039914e9544bd4b25081f23ac2
+"Your fighters could help me in the war against the demons."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Answer_0009.jbp
+GUID: cd316e9a851ce5142be306b0d61a2997
+"I have to go."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Answer_0024.jbp
+GUID: 89f66933a3e5f674885f57c17665bf92
+"I see the glimmer of criminality in your soul. I know that lying to your clan is a heavy burden."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0001.jbp
+GUID: 597b7e82dbec7804490f02048e4bf1ef
+{n}The blind carver tosses her head back and gives a slight bow.{/n} "I recognized the sound of your footsteps, Commander. My woodshaping skills are not what they were, but my hands remember what my eyes cannot see. Please, accept this gift as thanks for listening to me and helping the children of Wintersun."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0002.jbp
+GUID: f3e5dc2716aa0fe41b48c34ff8186f14
+{n}The blind carver tosses her head back at your approach.{/n} "Greetings and well met!"
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0003.jbp
+GUID: 2cd09c8a604e80340ba3dc095c11f60d
+"Like a gravely ill patient that is just starting to turn the tide against the disease. It wasn't easy for us to accept the truth, and it was even harder to learn how to survive without the Lady of the Sun's protection. But the spirit of Sarkorian warriors is tougher than any hardship. We will get through it." {n}Gesmerha's voice sounds unusually firm.{/n}
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0004.jbp
+GUID: 4413f873556e4604fa83f0b2082201aa
+"Carefree and happy. The news that the demons had been defeated, that peace had come at last, spread from house to house like wildfire. New visitors have already come to us from distant lands, bringing with them strange stories and goods to trade."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0010.jbp
+GUID: c3f8ebf968e6e25468c3b3c93bac921a
+"We need every bow and spear we can get, not to mention the hands to wield them. But I will talk to my people. I trusted you, Commander, and I think I was right to do so. You are the one who will throw off the demons' yoke once and for all. So, it's better for us to take a risk and put all our efforts behind the fight, rather than sit back and wait for nobody knows what."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0011.jbp
+GUID: d7572526c75d6c64faa2111ec1209bfa
+"I'm sorry, but every warrior is needed here in Wintersun. We are alone in the world, with no kin, no support from other Sarkorian clans. We only have ourselves to rely on."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0012.jbp
+GUID: 75e48e9d5fdd7c846ae6b3329e5b8da9
+"May your days be bright and your nights peaceful."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0013.jbp
+GUID: 7b97983e8fa92744fa711359a8b72c36
+"I wanted to tell you — our clan has started reviving its old crafts. We have goods to sell. Would you like to take a look?"
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0014.jbp
+GUID: 987325f0537f2784083d3dfd6b98d335
+"The clan elected me to take Marhevok's place. A blind cripple... But I suppose I was the only one to see the truth behind the lie. The people trust me and I will do everything I can to deserve their trust."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0015.jbp
+GUID: d2c12299bf82ad241b2de3be7db4901a
+"The clan chose me to take Marhevok's place. They clearly believe that in these calm and peaceful times, even a blind cripple can govern a clan. I hope I live up to their expectations..."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0016.jbp
+GUID: 929f607396aafb540a8deca42a9e6816
+"It's surprising that the clan is still willing to follow Marhevok even while there are those who are outspoken against his leadership. Many people believe that he only followed the Lady of the Sun because she protected the clan. But I know that wasn't so. His heart is her plaything."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0019.jbp
+GUID: f55240e5bb37b3d4ca2a61a1e26794a6
+{n}The succubus blushes.{/n} "I don't think that's a good idea. If the wood never lies to you, the result will be quite repugnant."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0020.jbp
+GUID: ae2693cf4f8369c43a13941a1a22fbce
+{n}Turning her unseeing face toward Arueshalae, the carver stops the demon with a gentle gesture.{/n} "Before you leave — would you mind if I carved your statue, my dear?"
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0021.jbp
+GUID: fc4791022408642438b618c0a9d22faf
+{n}The carver's face breaks into a placid smile.{/n} "I doubt it, my dear. My intuition tells me the complete opposite, in fact. With your permission, I would like to try."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0022.jbp
+GUID: ab25d33a3e6079f42a5f99d9bddfec04
+"While you're at it, I wouldn't mind a statue and all. Even just a little one!"
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0023.jbp
+GUID: e5dfe5edcef650c47bc059534dfa24c7
+{n}The carver seems to listen to her own thoughts for a moment and then chuckles mischievously.{/n} "Oh, I think not. I can tell by your voice that you won't like my work. You'll be too embarrassed to show it in decent company."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0025.jbp
+GUID: 9563ed48f8e337f458b4777bc7e7d10b
+{n}She slowly nods.{/n} "It is indeed. And I shouldered this burden with your full approval."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_3.jbp
+GUID: 452882614caa439cb44ff6be9d3c71f2
+"We're not living, we're surviving. It's hard for us to understand and accept what happened. We need a few days to understand our lives anew."
+
+World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_4.jbp
+GUID: dbc87d75792240c28b9ea0a8a26d21b4
+"The tribe is preparing for a celebration — the demons have finally been defeated, after all. We are awaiting guests from distant lands and are rolling barrels of ale out of the cellars. It will take a few more days before life in the tribe returns to normal."
+
+World/Dialogs/c5/KTC_WintersunHelp/Answer_0006.jbp
+GUID: 58ea5289fb6af9344977b49d0783270d
+"Farewell, Marhevok."
+
+World/Dialogs/c5/KTC_WintersunHelp/Answer_0031.jbp
+GUID: 663e6703c2d8bbf4498bc00fa50095a0
+"Farewell, Gesmerha."
+
+World/Dialogs/c5/KTC_WintersunHelp/Answer_0032.jbp
+GUID: 3c742ce00e1af834eb710c4ea01edc7a
+"What happened in Wintersun while I was away?"
+
+World/Dialogs/c5/KTC_WintersunHelp/Answer_0033.jbp
+GUID: 33237a563a531634b8aac772b5e4e898
+"What will happen to Wintersun now?"
+
+World/Dialogs/c5/KTC_WintersunHelp/Answer_0042.jbp
+GUID: e98a40e8b06b1e242b600222ac2c3c27
+"Thank you for the news. You may go."
+
+World/Dialogs/c5/KTC_WintersunHelp/Answer_0049.jbp
+GUID: ccb04b565a4e3d14a8213705e4c538e1
+[Devour Marhevok] "You're weak, but even this tiny scrap of power will strengthen the swarm."
+
+World/Dialogs/c5/KTC_WintersunHelp/Answer_0051.jbp
+GUID: b90ba5a4561c9ee42a3e3eb59df20116
+[Devour Gesmerha] "You're weak, but even this tiny scrap of power will strengthen the swarm."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0001.jbp
+GUID: 87cb0a3d35478564aa057a9e2b26dfc0
+{n}Marhevok, tired from his journey, wipes sweat from his brow.{/n} "Commander... we meet {d|c3 marhevok chief}again{/d}. They say you've returned from the dead, so I made my way here to see for myself. To make sure it's not just another demonic trick."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0009.jbp
+GUID: 593d5a7f08b208b45b094c9a81380d6f
+"I thought time would heal Wintersun, but it hasn't been easy. People gradually returned to their lives, but the mere sight of their homeland brought back {d|c3 wintersun illusion gone}memories{/d} of the atrocities. This is why, when the demons returned... we didn't fight the way we should have."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0010.jbp
+GUID: e5935aa8a4d8d74408d3324cd7347466
+"You haven't heard? The spirits left us, the forest beasts left our lands, and we deserved all of it. But we did not want to leave our home. We stayed until the demons became aggressive and started attacking us. There was no one we could call for help. Your people were also under siege. We made do as best we could..."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0011.jbp
+GUID: 4fa8815da1605f342aa75d161ac730dc
+"Wintersun finally had {d|c3 wintersun illusions stay}peace{/d} — but I knew it would not last. The spirits were still angry with us. I feared the village was not prepared for an attack, so I revealed the truth to the warriors and taught them to see the truth with their hearts, not their eyes — just as I see it."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0012.jbp
+GUID: 1f22b039084f2e04b8cf0556a6b60d13
+"Farewell, Commander. May the spirits watch over you, but I hope we do not meet again."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0015.jbp
+GUID: 64388ef1f915e8c4991848f511408fa9
+"We will remain here, in the land of our ancestors. Free. Our wounds will gradually heal, and our souls will find comfort. For Sarkoris, this was just another storm in a string of disasters. For now, we will leave Wintersun. We shall hide in the forests and wander the mountain trails known to us since the days of old. We will wait for your victory, and then we will restore Sarkoris as we remember it."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0016.jbp
+GUID: e0934747b3df02b46b837282eccb0941
+"Farewell, Commander. May the spirits watch over you. I hope our paths will cross again someday."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0017.jbp
+GUID: d7fb9ee0fe08d064081dc308ee63c89f
+"I had my doubts, but I've reached a decision. We'll leave. There are too few of us left to defend ourselves. And... the spirits have spoken. We cannot live there either. Our land is desecrated, and nothing will change that. Don't look for us, Commander. You no longer have any neighbors. Wherever we go, it'll be a place where no one knows us."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0018.jbp
+GUID: 867875d77698a1440ac35f95b59a2b83
+"Farewell, Commander. May the spirits watch over you. And remember, I will send warriors to help you in the hour of need, much as you helped us."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0019.jbp
+GUID: 923e188271039d840b40d72513ddada7
+"The barbarians there never showed it, they were too proud, but... if you ask me, their lives were pretty miserable. They didn't want to live, and they didn't want to fight, so they just up and died. I'm no shaman or anything, so I really don't have the foggiest, but even the forest beasts left their lands. I reckon that must mean something."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0020.jbp
+GUID: beb69804df5a7024683422458a98f1b6
+"Nothin'. Everything already happened. It's a graveyard. Our soldiers buried the bodies. But you know... those people had suffered so much. Maybe they're better off this way."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0021.jbp
+GUID: b94b726b705e6d14ea1ecab766e83ee5
+"Nothin'. It'll just stand there, empty. The survivors left with some old man, don't know him. Their new leader, we thought. But ol' grandpa looked to be on his last leg, so if they're lookin' for a better life, I say they need a better chief. Then again, that's their business, not mine."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0022.jbp
+GUID: 1b01b0713769c8b45ad23224e70029ec
+"Farewell, Commander. May the spirits watch over you. And should you need warriors... I will send some of mine. I will decide how many, but you will get them."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0023.jbp
+GUID: ffe72ef67b50c49489ebfded3385cb2f
+"This is our land. It's where we live. If the spirits are still with us and the forests have survived these hardships, we must follow their lead. But don't look for us in the places we once lived. We'll go deeper in the forests — to speak with the spirits, to thank them, to cleanse our souls. We'll return when the spirits tell us."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0024.jbp
+GUID: 565fa51a37619be4495f256105a6c34c
+"And the spirits showed us mercy! Whenever there was a threat, the forest helped — wolves, elks, moose, all the forest animals would attack the demons as soon as they set foot on our land. As if someone had sent them to protect us."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0025.jbp
+GUID: 9e403ac418478bf41841833b47d1eeda
+{n}Gesmerha looks the {d|c3 gesmerha chief}same{/d} as before, but far more weary.{/n} "So it is true — the Commander has returned from the dead. We've heard all manner of rumors, but we did not know what to believe. So I came here myself to be sure it's true and not yet another trick of the demons."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0026.jbp
+GUID: eab42dfba54ded24eb49467579d74de1
+{n}Anevia looks sad and troubled.{/n} "Terrible news, Commander. Wintersun is... gone. Our scouts report that nothing remains but corpses. The clan fought the demons... and it was the death of 'em."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0035.jbp
+GUID: b7981df42b1ac504683b21d11de079e0
+"The surrounding woods seemed to take mercy on us and sent animals to our aid, and they tirelessly fought the demon invaders. We only survived because of them."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0037.jbp
+GUID: 164cf168d833c3f4ba458f72df62bda0
+"We will leave in search of a better life. The place we called home all these centuries no longer accepts us. There are too many ghosts here, too many memories." {n}Gesmerha sighs.{/n} "I do not know where we'll go, but I will pray to the spirits that the new place will accept us."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0040.jbp
+GUID: 863db27d7f8780142b1413bdb4bd98ae
+{n}Anevia looks sad and troubled.{/n} "Terrible news, Commander. Wintersun is... gone. Our scouts found the last of 'em leaving. The clan fought the demons... and most of 'em didn't make it."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0041.jbp
+GUID: 50e268f36f5c7e64183211b88660e5ca
+"Same thing, just living {d|c3 wintersun illusions stay}in ignorance{/d}. They thought the ones comin' to their village were travelers. So when the demons attacked, they sent word to us, askin' us to drive off the bandits." {n}Anevia chuckles mirthlessly.{/n} "We'd have helped, but that was when the Queen left, so we had our hands full. Had our own 'bandits' to deal with."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0043.jbp
+GUID: ee903148362339a4cbc27cda3fc47e5d
+"Well... they were scrapin' by, somehow. I mean, some of them {d|c3 wintersun illusion gone}went mad{/d}, and I kinda get that — how could they live with what they were doing? Don't know if I would've stayed sane myself... anyway, the demons were the last straw."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0044.jbp
+GUID: 5ffac2ea00831b64c8cd363ff6ebc232
+"You can hardly thank me for such news, so there's nothing to thank me for, Commander."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0046.jbp
+GUID: 0d87e34b3c1e0774a853cbd2d90f373e
+"You haven't heard? After everything we did... we had to keep going somehow. They kept me as their chief, but for a long time, they remained suspicious of me, worried I might try something else. Eventually, they got used to it. Every day we asked the spirits to guide our way."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0047.jbp
+GUID: de348517119791d4e9f7de7de0beab25
+"They were steadfast in enduring this trial and kept silent about what they knew. When disaster struck and hordes of demons attacked, these fighters rallied to defend the village, blindfolded, fighting in the dark."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0048.jbp
+GUID: 3c616e0be2622f94f8e6aff5ad537b28
+"The scouts also reported something strange. It seems animals are helping locals fight the demons. It's as if someone is sending them from the forest. I'll just say I don't understand Wintersun at all. Odd little place."
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0050.jbp
+GUID: f0fa1525f2ecab64d8d91df37a1ee537
+"So that's how it is. You really were a demon. Come on then, eat up! Choke on me!"
+
+World/Dialogs/c5/KTC_WintersunHelp/Cue_0052.jbp
+GUID: 7cfb7ac076935cc418ceee93759f2968
+"Then there is no hope for the people of Wintersun..."

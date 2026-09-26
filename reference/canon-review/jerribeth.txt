@@ -1,0 +1,350 @@
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0006.jbp | a36b361e7269d0a44ad99905efd6fb89
+"What did you do to Marhevok?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0007.jbp | df7e1e75015438e4f82cae945b41e53f
+"What are you proposing?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0008.jbp | 807cc780b4bdcbe49a69aa179576857d
+[Attack] "You're boring me, demon."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0012.jbp | fa356c6d851f64d4c99b53e9c485c790
+"You'd betray your own kind? Why?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0013.jbp | e5588fc6da93b75478b31a149b22b9ca
+"What information are you willing to share with me?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0015.jbp | 92b7b8c11545ec04faa7eeb7e2c282f8
+"I accept your offer."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0016.jbp | 0149f56290ac8d540a83ec5e92f10c51
+[Attack] "I'm not about to make a deal with a demon. Die!"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0024.jbp | b18c1a9ed5f1d0b459b0aab3d43dcbce
+"You seem to have a low opinion of Deskari's servants."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0025.jbp | 278e6f01a18162c46966296911de67b3
+"Xanthir used to live in Drezen?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0027.jbp | ef2ae66363ddb5c4188b0d97b6c1db7a
+"Where can I find Xanthir?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0030.jbp | 7a18716bd4b6d10479fe39fe8b4984b1
+"Xanthir used to live near Drezen?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001.jbp | 8a632a5249b3c2541a1381111cae9e37
+{n}A familiar narrow shadow appears before you. The antennae on the creature's head quiver, its hands linked tightly together.{/n} "You have arrived, Commander," {n}comes the high-pitched voice in your head.{/n}
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0002.jbp | 10939d0d12eb7fb4da65a58553e19f04
+"You did me a grave insult at our last meeting. But I still want to speak with you."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0003.jbp | 6358c34ce5c49544d9566feca769872c
+"You have discovered my 'castle in the clouds'... although it is a far cry from what it once was." {n}{g|Jerribeth}Jerribeth's{/g} voice buzzes with irritation.{/n} "I have something you need — information and assistance. You can help me in return. Let's talk."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0009.jbp | 0d31b1c3882d32b4d88ec28dcc71f6fb
+"This place, the Ivory Sanctum, used to be my own personal domain, but in recent times I have been forced to share it with a horde of 'allies.' There is one among them who will likely interest you: Xanthir the Plagued One." {n}Jerribeth's voice chitters with emotion. It drops to a heated whisper.{/n}
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0010.jbp | 561e58817013aa249b5a1e6795bbca95
+"A swarm that walks. A mesmerizing creation. Who could have imagined that a mortal could be turned into something so extraordinary? He is behind many of the calamities that have befallen you. It is from his hands that myself and other demons have received our new abilities. Kill him, and the lords will struggle to find his equal for a long time. I won't simply stand aside, I will help you as well — I'll tell you what I know and ensure that my servants do not attack you here in the Sanctum."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0017.jbp | 3fc161cba43a0ec49b2a86e4d8cfa259
+"Because I am a demon." {n}You detect amusement in Jerribeth's voice.{/n} "Rules, laws, loyalty? Seek them in {g|Hell}Hell{/g} and Heaven, anywhere but the Abyss. I served Lord Baphomet for as long as it benefited me more than it cost me. I was the mistress here, in my 'castle in the clouds.' The entire territory was under my control. But then Minagho, that arrogant fool, botched the attack on Kenabres and the Wardstones. Our laboratory in Drezen was under threat and Xanthir and his minions were quickly pulled out of the city."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0018.jbp | 4f8372200576ead4e86c7c2606c580d0
+"The information that you undoubtedly want more than anything — how the demons have started acquiring their new monstrous powers. It didn't start with Xanthir and it won't end with him. But I will tell you what I know only if you fulfill your part of the deal."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0019.jbp | e47232b2878eff849ac002d2f323cbad
+"But then there are Baphomet's followers as well. I will give you my mark, so that my subjects will take you for one of our own. They have been dying to take on our unwelcome house guests for a long time, so... Just tell them that their mistress says: 'Do it.'" {n}The demon smiles wistfully.{/n} "My mark will also serve another purpose — if you defeat Xanthir, it will bind his swarm and force it to fly directly into my net. I cannot allow such a unique creature to disappear entirely. I will preserve him... in some form." {n}You once again hear an undercurrent of amusement in Jerribeth's voice.{/n}
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0020.jbp | 49b9a71f6aae3ba44a8354c12e7739a4
+{n}The demon tilts her head to the side.{/n} "That's... good. Then listen. There are two factions in the Sanctum currently. The ones who came here with Xanthir do not answer to me: that group includes ordinary demons, mythic demons, and his loyal mortal mages. You will have to fight them, there's no getting around that."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0021.jbp | 5c747ed884802094a88dfe60048a010e
+"They offered up the Sanctum for his use, and made him the ultimate authority here, over me. I was forced out of my private quarters, made to live on the margins within my own home, as a horde of demons from Deskari's armies were herded in. With Xanthir playing commander, and his servants ruining all my endeavors, there is nothing for me to do here. This place can fall for all I care! I will find a new patron in the Abyss. That's why I'm telling you: kill our common enemy. I will help you do it."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0022.jbp | 2bf8b29b8071908469bd2545ba4c7ab5
+"I served Deskari myself once, but I changed masters because life among the Deskarites was just unbearably boring. Unlike followers of Baphomet, Deskari's minions have no appreciation for the finer pleasures, all they know is killing and ravaging. You saw one of them — {g|Darrazand}Darrazand{/g} — in the battle for Drezen. He is a vivid embodiment of everything I despise about my former 'comrades' — primitive and predictable butchers, the lot of them."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0023.jbp | defedc96d739d4247b7467b4025e77c6
+{n}The demon waves a delicate hand in your direction. You are instantly doused in a sweet-smelling wave. Then it passes.{/n} "There. The mark is in place. Go, and find me in my main chamber when it is all over."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0026.jbp | 6748a5a0c4beae546b1da7e53253be1e
+"Yes, close to Minagho. Where did you think she got that pet nabasu of hers?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0028.jbp | 8fd8a664c0dfb6441896a567c349a0f7
+"He's very close, in my former private quarters. There's only a wall separating us. But his lair is well protected and you cannot access it from here. You have to make your way through the entire Sanctum, crossing the bridge and the main guard post, which is headed by the cultist Zanedra. Coming back will be easier — there is a secret passage from Xanthir's lair into my rooms that can only be opened from the other side."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0029.jbp | a59dfd2fd29eeb54dbcf891c71d7b6ea
+"What a pity. It seems I wasted my time on you."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0031.jbp | 7c5e45ae9f8a9034b805707899433e53
+"Because I am a demon." {n}You detect amusement in Jerribeth's voice.{/n} "Rules, laws, loyalty? Seek them in Hell and Heaven, anywhere but the Abyss. I served Lord Baphomet for as long as it benefited me more than it cost me. I was the mistress here, in my 'castle in the clouds.' The entire territory was under my control. But then Minagho, that arrogant fool, botched the attack on Kenabres and the Wardstones. Many of our laboratories around Drezen were under threat and Xanthir and his minions were quickly evacuated."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0034.jbp | 47f676b7dcf080044ad43bac7fb7331b
+"Hang on a minute! Why does this Xanthir have a passageway into your chambers that only he can open...? Actually, don't answer that, I already got the picture. Now I just need to find somebody who can wipe it from my memory so I can sleep tonight!"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0037.jbp | aaababef6d53efe4da7b94d91c0943ec
+"We came into your house ready to fight, and instead of fighting back, you're ready to give up your own side for us to kill? Even Wenduag could learn something from you!"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0038.jbp | a181ee2f3c60e074fbab5572d73b8eee
+"You are beginning to understand. You see, demons hate everyone — our own kind, our enemies... even ourselves. Our entire lives are based on destruction for the sake of self-destruction. If someone is seeking the bleakest and most appalling death for themselves and everyone around them, what chance is there that they will feel compassion or friendship toward others?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0039.jbp | f3b9a9883727f8d45832c4c23159b365
+"Uh-huh. So if demons are all so monstrous by nature and know nothing of honor or fellowship, remind me again: why did we trust you?"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0040.jbp | df345679f15c33a48b3e81ea858bc3e6
+"Having the self-control to not ask questions that don't concern you is almost as valuable as having the self-control not to pick other people's pockets. There's a lesson for you, Woljif."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0041.jbp | 1313545be95a4bd4d97cd9642bf08d96
+"I'll learn it well, Uncle Greybor. But what'd be really crackin' is if you'd share that priceless wisdom with me before I actually need it, and not after."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0042.jbp | ab2b55a5c592d754d8997a6f246a2f1d
+"As a gesture of my goodwill, I will even allow your companions to hear our conversation. See, I am eminently reasonable."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0045.jbp | 93dfa9597191a6848b925d964d309fe4
+"What an interesting example of a demon life form! It's an oolioddroo, a remarkable breed. Did you know that members of this species use their long tongues to lay their eggs inside a sleeping creature? After a certain period, the eggs hatch and have the ability to influence the thought processes of the host!"
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0046.jbp | c731cb8526887dc49a84daca5816da4c
+"Let's see what happens if I put this oolioddroo's tongue in my ear." {n}Nenio takes a determined step forward.{/n}
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0047.jbp | 9563e66d554938542bba8633f262a209
+"Away, get away, creature! I am here to speak to the Commander."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0049.jbp | 49e08d139e95d5149a06e1e6a6e19037
+{n}Sosiel flinches as though chilled by a sudden gust of wind. Horror and revulsion stand stark on his face.{/n} "Love, the most luminous, wondrous feeling in the world, and demons turn it into blasphemous torment. My mind cannot comprehend how you and I can exist in the same world as... that."
+
+World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_2.jbp | 34a1ab56bd884d8db4a2bb3b655bbde3
+"So his antics caught up to him. I feel bad for the fool, but what else could you expect? It's what happens to everyone who plays around with fey and oglins."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0005.jbp | 6a2825d028c01f349b4d9efc38ca463a
+"So you're the Lady of the Sun?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0006.jbp | dd5fb57a6e57940448484930114ab64d
+"What have you done to these people?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0013.jbp | 98c94f3dc92e1e044a0ced19fb0387ba
+"I've heard enough."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0015.jbp | ab30ee1f85fccef4580454c6d8b82937
+"Why did other demons visit here?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0019.jbp | 7946ff24224f9b14ba3a8faca4015ef0
+"Not a chance, you monster. You will free the people from your deception now or you will regret it."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0020.jbp | bc9499a92b7e45040b5ce2abe9537d68
+"I agree. Let this place be at peace, even if the price of peace is a beautiful lie."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0021.jbp | faf62e9e082ec5f4b9eca7f889ff20f8
+[Break Jerribeth's spells] "What you have wrought here is a perversion of the natural order, and I have the power to correct it with a snap of my fingers."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0027.jbp | 0cd4ebcb383562e498e878323106ddfa
+[Force Marhevok to see the truth] "Chief Marhevok, you are guilty of betraying your clan. You are guilty of letting your sworn enemies into your home, trampling the memory and law of Sarkoris. Your sentence is the burden of truth. Look upon the thing that you 'loved.'"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0028.jbp | da30ff100afc36149933758b1c9b5cea
+"Take him if you want."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0029.jbp | fdd1182fa76a9a247b05efcd728a8069
+[Kill Marhevok] "No, he will die here and now."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0038.jbp | 63fa7bbecd39a4444959e552056c6a33
+"You don't seem to be afraid at all, monster. What's stopping me from killing you here and now?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0041.jbp | d702269e1405f88419602a75c9131f19
+"Why not? It won't hurt the clueless barbarians, and a neutral zone may serve my own ends."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0045.jbp | ef35939a4debf7347a5c4797f71d5e14
+"I will not make a deal with a demon and I will not leave the people of Wintersun under your control."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0052.jbp | 2231aeb307082954cad50473141fd1ee
+"They're your slaves. I won't interfere with them."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0054.jbp | 272d8c182f0b26c49aded94b39d87013
+"I want to see the despair in their eyes when they realize they've been fooled!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Answer_0055.jbp | 1746da7d827b7eb43a4288e9926dcdba
+"I don't want to get involved in this."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0001.jbp | 65362d7842f8af04ea9066041691155d
+"My lady... My love... Forgive me... I failed you... I lost... Didn't even keep the key safe after you gave it to me... Come, protect our Wintersun... But if you can't — take me away, take me to your castle in the clouds..."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0002.jbp | e616e71860b8f344fa4406ea22b20fbc
+{n}Marhevok's prayer does not go unanswered — a shadow, unnaturally narrow and trembling, separates from the Lady of the Sun statue and floats above the floor. A delicate hand, or maybe a claw, reaches out and touches the slumped head of the dying warrior with a soft, almost tender gesture.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp | 666c827662e8af14798009a98c5aae52
+{n}And then you hear an airy, otherworldly voice directly in your mind:{/n} "Why are you mortals so fond of breaking other people's toys?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0005.jbp | 8e3b0de3db424ec993ffd4b34c6a4b58
+"If I decide to begin every morning by saying, 'It is going to rain frogs today,' people will laugh at me too. But if that rain actually falls someday... oh, it will be a delight to be able to say, 'I told you so!' to everyone I meet!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0006.jbp | b44244ad071648ea8c6f539b28c434aa
+"What are you on about? When did it ever rain frogs? There's no such thing! But fey spells are the real deal — you see 'em everywhere you go."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0007.jbp | a0b7a89d0ec7fa348bec5ffb9169dccd
+"That is what they call me here," {n}replies the insect-like shadow.{/n} "But you may call me by another name — Jerribeth."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0008.jbp | 063d159af56b4c54292e6e2eaca8ca08
+"I merely planted a few... ideas in their heads." {n}Laughter, high and abrasive, like a buzzing insect, reverberates in your mind.{/n} "It is elegant in its simplicity. I make all the people of Wintersun see demons as humans, elves, dwarves — and they see real mortals as demons."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0009.jbp | db25fdc95581d2145b79332a523e1d62
+"They live in a topsy-turvy world where the lands of the Worldwound are teeming with brave crusaders and where Drezen was recently captured by an army of hideous monsters from the Abyss. If your firebrand Queen Galfrey were to show up here, the people would take her for one of Deskari's spawn and try to slay her on the spot."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0010.jbp | a657282ab833f5c42ac531d87908c9de
+"There is no other place in all the Worldwound like my little Wintersun. I don't allow other demons to kill the people in my domain. Instead, they come here to play. They shrug off their demon guise and pretend to be mortals. Even Lady Nocticula in the Midnight Isles does not offer such exotic amusements."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0011.jbp | b2997124f3662e147a029a6f73e13468
+"And the children of Wintersun already have so much blood on their hands! Every weary traveler who happened to discover this mortal oasis in the midst of the scarred lands of the Worldwound, who rushed with brimming hope toward its walls, died at the hands of the clan. And they all fervently believed that they were fighting demons!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0012.jbp | e3b79793db1036445a404d82f1c28fcf
+"Think about it." {n}A hint of laughter rises up in the creature's disembodied voice.{/n} "Soon Wintersun may be the only place where you will still be seen as an ordinary mortal."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0014.jbp | 52ada8be40232dc4eaccb8b1c3d79f55
+"Oh really? Then listen to the most important thing I want to say to you: don't destroy my toy village. This place and its amusing people have become quite dear to me. Marhevok too — he loves me so passionately, so blindly..." {n}The creature's voice turns pensive.{/n} "There are some things you cannot discover in the Abyss, no matter how long you look."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0016.jbp | 55a59a250ae07e54b8b41016023bc208
+"But I have a better solution: I will change the clan so that from this day forth they will see true mortals and demons alike as human. I will make them believe that the crusaders have won a final, resounding victory, that peace now reigns in the Worldwound, and that all the demons have been driven back to the Abyss. Every last one. Wintersun will remain a peaceful oasis in the midst of chaos, neutral territory where neither crusaders nor demons will cross swords in battle. I will get to keep my wondrous domain, and your crusaders will never perish here again. What do you say to that, Commander?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0017.jbp | 5b2a0a85ce8c538438594c01bc9b9069
+"You probably want to open the poor barbarians' eyes to the truth. But you can't do that without my help. Even if you do, by some miracle, find a way to do it — the children of Wintersun will have to live with the knowledge of what they've done all these years. They will recall every murdered crusader and traveler that they plunged their spears into or burned on a ritual pyre. Many of them will not survive the truth you will inflict on them. The rest will be cut down by demons, for I am the only one protecting them from such a fate even now."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0022.jbp | 29e58baae6c365d4fa972fc65a792d80
+"No... not me... please..." {n}rasps Marhevok, struggling to lift his head off the floor. Gathering his strength, he barks out more clearly,{/n} "I don't need... the truth. I don't want to lose you, my lady!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0023.jbp | 70c8ff08644f6d7469bdf930a7a682a5
+"I... knew." {n}A crazed smile warps the warrior's face.{/n} "I guessed a long time ago that you weren't who you seemed to be. But you brought peace to my people... and me. And I kept your secret as best I could, I stamped out any suspicions... and the people who voiced them, sometimes. I want to live in your light. I don't want to be without you."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0024.jbp | d07d68ff6e0727d48b29fe89e4739e5f
+{n}You cannot read the emotions on the creature's horrifying face, half-hidden by shadows. If it answers Marhevok, it does wordlessly, directly in his mind. After a moment of silence, you hear a voice in your head:{/n} "Give him to me."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0026.jbp | d0df36f2dfd2bb34e828647ab51d369c
+{n}The wounded Marhevok suddenly wheezes, then bites out,{/n} "My lady... take me. Take me to the castle in the clouds."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0030.jbp | 4b4a5265c307e8c43b9be673f289745a
+"Thank you, Commander. You are a curious creature and it is just possible that we may see each other again."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0031.jbp | 09391300eaf00664886c2e05458a8b24
+{n}The creature is silent for a time, gazing at the dead warrior.{/n} "I will remember this, Commander."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0032.jbp | 6e2e5c2ec257da143a95aa66e1bcc2cb
+{n}Jerribeth twitches oddly. You cannot tell if she is speaking to Marhevok. But her words for you are a malevolent wave of chittering:{/n} "I could not stop you, Commander. In this place, at this time, I could not stop you. But we'll see what happens next!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0033.jbp | 1c9ab1c7fc002c14ea8dc10827e7a61d
+"I'm returning to the Ivory Sanctum. The castle in the clouds, as they call it here. You have a key to my home, but will you find out how to use it? I will be expecting your visit!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0034.jbp | 56ea7d62e4c1f7a4e8e00f47baf13d91
+{n}Jerribeth's shadow disappears into the portal, and her departure spells the end of an era in the life of Wintersun.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0035.jbp | 64e4cc4a4aafbb34baa9549fe8942b4a
+{n}Gesmerha the carver is standing cowering against the wall.{/n} "She's... gone? I can feel it, I feel like something's changed! I will tell the people what you did for us, Commander."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0036.jbp | 748b276c6d397c544909f56a9a34ab73
+"You defeated me and opened my eyes, Commander. Curse you for that. I won't dare be at odds with you again. The doors of Wintersun will always be open to you. But don't expect thanks from me!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0037.jbp | 5594784547d6a3f438288c89dff76947
+{n}The wounded Marhevok is shivering as if from a fever. He tries to take the human skull from the plinth in front of the Lady of the Sun statue. But his weakened grip spasms and the skull rolls toward you, stopping at your feet. The warrior watches it with stricken eyes, muttering,{/n} "Key," {n}before turning to the statue.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0039.jbp | 81d7343bfef4c2047acf5eeb6f81a566
+{n}Marhevok's shoulders convulse. He struggles in vain to stand and to shield the insect-like shadow from you.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0040.jbp | 6e96bb1b219ae944baefe9c39f71ec00
+"I will fly off to my sanctum faster than you can blink. Besides... are you ready to doom all of Wintersun to a horrible fate?" {n}asks the sly voice in your head.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0042.jbp | ed83052796b0ce3409bd8cb55f18bd54
+{n}Marhevok's soul, mutilated by his crimes, lies open before you like a book. You can see his pride and his agonizing love for his lady. But you also see islands untouched by corruption — a chief's loyalty to his clan and reverence for the will of his ancestors.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0043.jbp | ea356b9d174205f439e902cf52861fe7
+{n}Your power crashes down on the chief in a single fearsome strike, ripping him out of the grip of the illusion. The false memories, the warped perspective — all of it dissipates like smoke, leaving behind the exultation of unforgiving truth.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0044.jbp | 7b9443fc261d217468e1c6b132fce4c8
+{n}Marhevok withstands the shock of your power with surprising equanimity. He raises his eyes to Jerribeth and beholds the grotesque creature unflinchingly.{/n} "I have been judged, I have been fairly judged and I must make amends to my people. Farewell, my lady. Farewell, but know — you were and always will be my sun."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0048.jbp | a2c53c882dc101e49bb95dd0b7147c79
+"No matter how much I may despise those who serve as sycophants for the demons, there is some twisted beauty in this. The fellow is brave enough to be honest about what he wants. I do not know many people who are capable of that."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0049.jbp | af149351cb019ae4f873e68aea5d49cc
+"What's gotten into you? What about 'I hate all filthy, blasted demons and their minions'?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0050.jbp | d56f21d676f107a4bba3430cbede78b5
+"I truly do hate all filthy, blasted demons and their minions. And yet I can still appreciate a man who knows what he wants. Marhevok falls into both categories. It's an amusing duality. You should be familiar with the concept, Lann."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0053.jbp | 9ad870943c18ec6448fc28ffabf35a75
+{n}Two opposing reactions rise up within you. One — cautious and stern — tells you that you have invaded another demon's territory, which represents a direct challenge. The other reaction — rowdy and full of vicious joy — is dying to destroy this smug demon's pathetic little island of peace and drown it in blood.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0056.jbp | 9df1fbf673c1cb74ab650c290d66caf6
+"My lady... My love... Forgive me... I lost... Didn't even keep the key safe after you gave it to me... Don't leave me to die, take me... Take me away, take me to your castle in the clouds..."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0057.jbp | 3b4288a9837026c419c15a218bd668ec
+{n}Jerribeth hesitates. The demon's flat, insectoid visage is difficult to read, but her quivering mouth betrays her extreme tension. At last, a phrase rings in your mind:{/n} "All right, I'll do as you say."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0058.jbp | a150acf8a3243804d82d622a4c89aaa7
+{n}Outside, a clamor starts to swell. One, two, a dozen voices cry out in astonishment, then horror...{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0061.jbp | 1fa044e9478d6f449b4f7cd83d3bb024
+"You should find all this very familiar..." {n}You intuitively understand that these last words were not addressed to you. The demon has clearly allowed you to hear them as a courtesy.{/n} "For you too are playing at being human, isn't that so, succubus?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0063.jbp | e6fe5b6929cc36047a06ffd329d58b05
+"There are probably plenty like him here — people who guessed the truth but said nothing. Opportunists. These people have lived for too long under the influence of demons — they should all be isolated, subjected to strict reeducation, and those whose loyalty remains suspect should be executed. They have enough blood on their hands to be sentenced to death ten times over."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0067.jbp | 837aadd6275cd75489d62b345324538d
+"No, you have created a tawdry parody of what I am striving to be. You could have made them believe anything, performed any number of miracles for them. You could have made their dreams come true... But all you did was poison their minds against their fellow mortals. You may have the powers of a demon, but you have little when it comes to intellect, as befits an insect."
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0068.jbp | 0e4d4549b1d109f4d82d25a377a98f76
+{n}Arueshalae turns pale and covers her mouth with her hand. Her ruby eyes are filled with undisguised horror.{/n}
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0071.jbp | e736f10272d6a2441ac83c62a2878d5d
+"So you're the rot that's festering in Wintersun! You're a despicable beast, and you don't deserve any other name! My kinsmen, my neighbors have suffered because of you! Death would be too light a punishment for you, scum!"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_2.jbp | 015e0ea3ca0743c79abf209a64785e1b
+"Well, well, well! And here I thought this 'lady' must be a stunning beauty to have befuddled Marhevok like that. And you're just a fly? Just a speck on the wall?"
+
+World/Dialogs/c3/Wintersun/JerribethReveal/Cue_4.jbp | f812e462f32f42419bcddf97afd8b5db
+"I told you it was all a fey spell. I said so from the start, but nobody listened. You just laughed. Now who's laughing?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0004.jbp | 75e2dbdaad84a1d418770c7545e646e9
+"Why am I in danger?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0005.jbp | 425db1cf7ec99be4e803eefc69b00eba
+"I have to go."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0006.jbp | 1c2ac510641fc1847babb2277d581a32
+"What are you doing here?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0007.jbp | 62fbe76a52da40f49951ba2443fdc885
+"Aren't you afraid of Baphomet's revenge?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0008.jbp | 83975746ab51d174c8ae9bd3b3b961a9
+"Tell me more about Vellexia."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0017.jbp | 6d3822ee9bd458f42beda33770c85ae5
+"I'd like to gain Vellexia's patronage."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0001.jbp | 3857231db61891944999387a4154e9fb
+{n}You hear {d|c3 jerribeth lives}Jerribeth's{/d} voice in your mind. She sounds friendly, though slightly wary.{/n} "So we meet in the Rapture of Rupture. I cannot help but wonder, by what whimsy of fate have our paths crossed again? Why are you in Alushinyrra? More importantly, why are you here? What brings you to the manor where I have taken refuge?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0002.jbp | a1f97de9145c3574ebd2d7f75c3d39c9
+{n}The sound of {g|Jerribeth}Jerribeth's{/g} agitated chittering fills your ears.{/n} "I don't know how adept you are at reading the emotions of others, so I must warn you. You are in danger."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0011.jbp | edeeb17ba4f3d124890d22bdd2d8901d
+"I am enjoying the benefits of my newfound friendship with Vellexia. I have become her servant and companion, and she has given me all the protection and privileges afforded to her inner circle. She loves original and innovative forms of entertainment, and you know how good I am at entertaining demons."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0012.jbp | 6105e94628c17a442b1deb618de60d5f
+"Baphomet won't quarrel with one of Nocticula's best friends just to get revenge on an insignificant worm like myself." {n}You hear amusement in Jerribeth's disembodied voice.{/n} "While the lesser servants of all three demon lords are constantly embroiled in conflict, always trying to entrap one another in webs of intrigue, the powerful and influential demons prefer to stay neutral. The time for their conflict has not yet come."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0013.jbp | 46acd1daa2eaf7f4799d8576db56dfa2
+"She is a magnificent creature, but she has always been afflicted by a terrible condition. She is consumed by boredom. Her entire life is an endless agony, and each day, her torment grows worse. Her efforts to elude this terrible condition are always short-lived and unsuccessful. If Vellexia was not beset by such insatiable curiosity, and if her moods and tastes did not change so quickly, she could have been even more powerful than she is now."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0014.jbp | c6a5266b5fb97744baa2248ef057b8c4
+"That is a wise course of action. Vellexia is one of the most powerful patrons you could have in Alushinyrra. However, she is also one of the most dangerous creatures you will meet in this city. Don't let your guard down, not even for a second."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0015.jbp | 10053d3c4fa857041be169e148934926
+"Vellexia's greatest enemy is her own boredom, and it has bested her once again. My lady grows tired of you, and your company no longer gives her as much joy as it did before. You have ceased to surprise her, and she now finds you tedious and dull. If you wish to keep her interest, you need to stop acting so predictably. Try to keep her puzzled and intrigued by your behavior. If you follow my advice, you may stand a chance of leaving the Rapture of Rupture with your mind and body unharmed."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0016.jbp | 67360cb7b0d70c946bf3be630166346b
+"Of course, you don't want to keep Vellexia waiting. She hates feeling neglected."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0018.jbp | 49fb49902a3472e40bba65cd5b2670fc
+"It is possible that Vellexia could have been a worthy rival to Nocticula several millennia ago. She might even have claimed the throne that now belongs to Our Lady in Shadow. Of course, it is also possible that after three days in power, she might have found her new status as a demon lord to be excruciatingly boring and no longer desirable."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0019.jbp | 2735d5e7d93bdcf4b92e7d45aad3acd7
+"Don't let her refined manners and civilized demeanor fool you — that's just a mask, a momentary whim. Vellexia's true nature is well known in the Abyss, and it is far less restrained, and much more violent. Right now, she is tired of fury and conquest, but that could change at any moment. Beware of her boredom, and do not let her lose interest in you."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0020.jbp | fe90384806ef4b24da7ea4b712cf0eb7
+"Why? Nocticula can offer you more than Vellexia ever could, and she is a far more powerful and influential patron. Are you worried that Nocticula is going to lose interest in you? Well, if you are hoping to find safety in Vellexia's mansion, you will most certainly be disappointed. Vellexia is far more fickle than Our Lady in Shadow, and no less dangerous."

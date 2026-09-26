@@ -1,0 +1,72 @@
+[
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Answer_0005.jbp",
+    "guid": "9779430eaf5b8364e989cae8ac4f9e66",
+    "text": "\"I killed the dragon.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Answer_0006.jbp",
+    "guid": "7a092d79759878640a41c6c3546f8d1c",
+    "text": "\"I visited the dragon's lair, but found it empty.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Answer_0039.jbp",
+    "guid": "605e9d19726af364abb616024a9d15e3",
+    "text": "\"And where do I find this dragon?\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Answer_0041.jbp",
+    "guid": "8b028cea70dc07840a5f1c80410596ce",
+    "text": "\"An umbral dragon? I've encountered this beast before.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Answer_0043.jbp",
+    "guid": "681ed9a3636e5b845843cb93f354617a",
+    "text": "\"I've killed that dragon already.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Answer_0072.jbp",
+    "guid": "ee592e0e4a5532d459e811b891ac48b3",
+    "text": "\"If the dragon is always out hunting, how am I supposed to catch her in the cave?\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0024.jbp",
+    "guid": "e0dab46a6a2842c4ba0502e82f2981cf",
+    "text": "{n}The demon grows petulant, her voice whiny like a spoiled princess.{/n} \"I need a knight. I am the Fulsome Queen, so I must have knights who will repay my enemies for wronging me. I've been hurt by everyone! This is my island, and they've made me an outcast. They kicked me out of the big wet cave, and they don't respect me at all! Especially that overgrown lizard, that black dragon! She chased me away, mocked me, and then tried to eat me! Dragons are nasty! Be a good knight and kill the dragon!\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0051.jbp",
+    "guid": "32bceee6c93459d49ae8407b97240f46",
+    "text": "{n}The demon lets out an angry shriek. She stomps her foot petulantly, leaving a filthy, wet footprint on the stone floor.{/n} \"Yes, it is! I am telling you to kill the dragon, so you must obey! I am the Fulsome Queen! If you don't obey, you'll perish in a plague pit!\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0073.jbp",
+    "guid": "7df0b525b90dfa64185c054ec22e7773",
+    "text": "{n}The Fulsome Queen stares at you for a long time in dumbfounded silence. Finally, with the air of someone imparting great wisdom, she says smugly,{/n} \"If the dragon isn't in her lair, you'll have to summon her!\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0075.jbp",
+    "guid": "4acba0d85f0ff404a84daaabf2ff8b37",
+    "text": "\"And kill all her stupid demons, too! They will definitely be waiting for you! You were very loud when you killed the dragon. The whole island shook! There's a gate in the big tunnel, and the stupid demons will be waiting for you there! Rip their stupid heads off and throw them into a whirlpool!\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0078.jbp",
+    "guid": "ee90b60ecefa31f44aeb8a58c1e5ebab",
+    "text": "\"Dragons love their treasure. Everyone knows that! If you touch the treasure, the dragon will hurry back in the blink of an eye to protect her property! But the things scattered around the cave — the bright stick with a bird on top, the sparkly dress, the round coins, and even the pretty little crown...\" {n}The demon's voice grows wistful, and there's a faraway look in her eyes.{/n} \"They're all just silly rocks that have been wrapped in illusions. And the real treasure looks like boring rocks. Look closely, and you'll see that I'm right. I know this, because I snuck in there and wanted to stea— because my gaze pierced through the silly spell.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0079.jbp",
+    "guid": "87aeec42d8aa3544093e3ff144a12e06",
+    "text": "\"Dragons love their treasure. Everyone knows that! If you touch the treasure, the dragon will hurry back in the blink of an eye to protect her property! But the things scattered around the cave — the bright stick with a bird on top, the sparkly dress, the round coins, and even the pretty little crown...\" {n}The demon's voice grows wistful, and there's a faraway look in her eyes.{/n} \"They're all just silly rocks that have been wrapped in illusions. And the real treasure looks like boring rocks. Look closely, and you'll see that I'm right. I know this, because I snuck in there and wanted to stea— because my gaze pierced through the silly spell.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0102.jbp",
+    "guid": "d9cf5c5e87a72e943afa9737b02bfbe7",
+    "text": "{n}The Fulsome Queen sniffs tearfully, and says in a whiny, petulant voice,{/n} \"Yes! No one has ever been that impertinent! No one has ever tried to eat me before, ever! And that nasty dragon! She bragged about eating everything, even dead souls! She giggled and said she'd never had anything like me before! And I esc— chased her away, but she'll be back! I didn't like being chewed! It was so disgusting!\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0116.jbp",
+    "guid": "d8ad3f5f2083e644b9397ce900c60c81",
+    "text": "\"Well, there are nasty dragons in the world, of course, but this stinky thing has no room to talk!\""
+  }
+]

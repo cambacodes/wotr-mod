@@ -1,0 +1,1128 @@
+[
+  {
+    "name": "Anevia",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Aranka",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Areelu Vorlesh",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Arsinoe",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Baphomet",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Ciar",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Hand of the Inheritor",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Hilor",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Horgus Gwerm",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Hulrun",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Iomedae",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Irabeth",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Jerribeth",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Minagho",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Nocticula",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Nurah",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Queen Galfrey",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Socothbenoth",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Staunton Vhane",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Storyteller",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Terendelev",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Wilcer Garms",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Xanthir Vang",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "Zacharius",
+    "status": "NPC runtime override installed",
+    "files": [
+      "Fulllength.png",
+      "Medium.png",
+      "Small.png"
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Aivu",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          433
+        ],
+        "standard_size": false
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          192,
+          248
+        ],
+        "standard_size": false
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Anevia",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Arueshalae",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          192,
+          248
+        ],
+        "standard_size": false
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Arueshalae - Evil",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Camellia",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          192,
+          248
+        ],
+        "standard_size": false
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Ciar - Undead",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Daeran",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Delamere",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Ember",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Finnean the Talking Weapon",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Greybor",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Horgus Gwerm",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Hulrun",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Irabeth",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Lann",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Nenio",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          184,
+          240
+        ],
+        "standard_size": false
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - NenioFox_Portrait",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          696,
+          1024
+        ],
+        "standard_size": false
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Queen Galfrey",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Queen Galfrey - Undead",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Regill",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Seelah",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Sosiel",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Staunton Vhane",
+    "status": "companion-layout source preserved",
+    "files": []
+  },
+  {
+    "name": "CustomNpcPortraits - Staunton Vhane - Undead",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Storyteller",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Terendelev",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Trever",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Ulbrig",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          192,
+          248
+        ],
+        "standard_size": false
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Wenduag",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Woljif",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Woljif - Demon",
+    "status": "companion-layout source preserved",
+    "files": [
+      {
+        "file": "Fulllength.png",
+        "dimensions": [
+          692,
+          1024
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Medium.png",
+        "dimensions": [
+          330,
+          432
+        ],
+        "standard_size": true
+      },
+      {
+        "file": "Small.png",
+        "dimensions": [
+          185,
+          242
+        ],
+        "standard_size": true
+      }
+    ]
+  },
+  {
+    "name": "CustomNpcPortraits - Zio",
+    "status": "companion-layout source preserved",
+    "files": []
+  }
+]

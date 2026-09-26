@@ -1,0 +1,5 @@
+# Preserve byte-exact source and export hashes recorded in review reports.
+* -text
+*.png binary
+*.jpg binary
+*.zip binary

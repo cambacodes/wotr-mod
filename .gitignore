@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+**/__pycache__/
+tools/*.exe
+tools/.store/
+reference/asset-extraction-env/
+backups/
+dist/
+package/*.dll
+package/*.exe
+package/*.config
+.env
+.env.*
+!.env.example
+*.log

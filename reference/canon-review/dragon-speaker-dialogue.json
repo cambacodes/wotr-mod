@@ -1,0 +1,42 @@
+[
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0003.jbp",
+    "guid": "b3399115956f2bf43a4076ad1d280d80",
+    "text": "\"Typical Orgomandias — you can't go a year without criticizing someone! I'm surprised Halaseliax asked you to help — I bet you pointed out all the flaws in his plan too. After all, no warmblood has ever become a dragon before!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0007.jbp",
+    "guid": "cba97ce30d1c49fd8e8e34de7d6ac982",
+    "text": "\"Your words would be called blasphemy if we didn't know that it was just naivety. Trust me, {g|Apsu}Apsu{/g} does not give out such rewards, to neither mortals nor dragons.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0009.jbp",
+    "guid": "6b89e1d45a522434a92ea5fe73f92461",
+    "text": "\"Not at all! You're just learning! Besides, actions speak louder than words! It's not what you say that matters... it's what you do! Good intentions are a matter of the heart. Sometimes, the noblest sentiments cannot truly be expressed in words. The soul of a dragon will always find the right path. Trust me.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0015.jbp",
+    "guid": "115f3b59eade2374196abbc646bb8a54",
+    "text": "\"Your concern seemed sincere, and I'd like to believe that your kindness was genuine. As a silver dragon, I believe kindness and sincerity are of the utmost importance. However, it is not just the soul that needs to be nourished. You must also sustain your body! Here is a slice of Master Reudger's cheese. You should try some the next time you make camp. Just remember to eat it slowly, savor its flavor.... and be grateful!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0016.jbp",
+    "guid": "37d0134dd61992741994b6d93c30d46d",
+    "text": "\"I knew that an absurd request from a pregnant woman would seem foolish. But she could have taught you a valuable lesson.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0027.jbp",
+    "guid": "4c878460f3262604da080685b7ff7e73",
+    "text": "\"A unique guardian for a unique child! The two of you have something in common. No one could predict what you'd become when you received your power, {name}, but you chose to be a gold dragon. Perhaps the child will follow your example?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0058.jbp",
+    "guid": "7e1a31d409836274b93e59796d60c19e",
+    "text": "\"Dragons often take human form. Sometimes they do it because they're bored... And sometimes, they do it because it is necessary to achieve some greater purpose. For example, they may disguise themselves as druids, and ask the crusaders to give them the woundwyrm eggs the Commander took from the Ivory Sanctum. Thank you for those, by the way. Rest assured, we'll take good care of them.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_5.jbp",
+    "guid": "fe4c984644994390a1a344999001079f",
+    "text": "\"How to put this without offending you...\""
+  }
+]

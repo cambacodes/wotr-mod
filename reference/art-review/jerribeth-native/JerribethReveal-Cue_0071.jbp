@@ -1,0 +1,67 @@
+{
+  "AssetId": "e736f10272d6a2441ac83c62a2878d5d",
+  "Data": {
+    "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+    "PrototypeLink": null,
+    "m_Overrides": [],
+    "Components": [],
+    "Comment": "Финнеан",
+    "ParentAsset": "32ad9e1b536717b4982bc0ec57ac61a6",
+    "ShowOnce": false,
+    "ShowOnceCurrentDialog": false,
+    "Conditions": {
+      "Operation": "And",
+      "Conditions": [
+        {
+          "$type": "4976252585b024c499c47cd56966ab2b, ItemsEnough",
+          "name": "$ItemsEnough$aac77a40-b8dd-4a83-a950-84e9fe0a0ae7",
+          "Not": false,
+          "Money": false,
+          "m_ItemToCheck": "!bp_95c126deb99ba054aa5b84710520c035",
+          "Quantity": 1
+        }
+      ]
+    },
+    "Text": {
+      "m_Key": "70eb6083-7d82-4aac-aa3c-13803b84f664",
+      "m_OwnerString": "e736f10272d6a2441ac83c62a2878d5d",
+      "m_OwnerPropertyPath": "Text",
+      "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0071_Text.json",
+      "Shared": null
+    },
+    "Experience": "NoExperience",
+    "Speaker": {
+      "m_Blueprint": null,
+      "MoveCamera": false,
+      "NotRevealInFoW": false,
+      "NoSpeaker": false,
+      "SwitchDual": false,
+      "m_SpeakerPortrait": "!bp_ea8034769ab7d584e97b5227cbc03296"
+    },
+    "TurnSpeaker": false,
+    "Animation": "None",
+    "m_Listener": null,
+    "OnShow": {
+      "Actions": []
+    },
+    "OnStop": {
+      "Actions": []
+    },
+    "AlignmentShift": {
+      "Direction": "TrueNeutral",
+      "Value": 0,
+      "Description": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": null
+      }
+    },
+    "Answers": [],
+    "Continue": {
+      "Cues": [],
+      "Strategy": "First"
+    }
+  }
+}

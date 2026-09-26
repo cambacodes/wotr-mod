@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>RanRomance.Tirabade</AssemblyName>
+    <GameDir Condition="'$(GameDir)' == ''">D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure\</GameDir>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="$(GameDir)Wrath_Data\Managed\*.dll" Exclude="$(GameDir)Wrath_Data\Managed\System*.dll;$(GameDir)Wrath_Data\Managed\mscorlib.dll;$(GameDir)Wrath_Data\Managed\netstandard.dll" Private="false" />
+    <Reference Include="$(GameDir)Wrath_Data\Managed\UnityModManager\UnityModManager.dll" Private="false" />
+    <Reference Include="$(GameDir)Wrath_Data\Managed\UnityModManager\0Harmony.dll" Private="false" />
+  </ItemGroup>
+</Project>
+
+

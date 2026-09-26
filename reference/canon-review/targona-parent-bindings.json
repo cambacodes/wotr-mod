@@ -1,0 +1,108 @@
+{
+  "AssemblyPath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Mods\\RanRomance\\RanRomance.dll",
+  "AssemblySha256": "281239B19FF12675D2E8E48CD86B3759C38F6598A93E13F254A044C5E990DB68",
+  "Bindings": [
+    {
+      "Guid": "4774e38b267c47f2b5f6c0975ec486f0",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargNone\", \"4774e38b267c47f2b5f6c0975ec486f0\")"
+    },
+    {
+      "Guid": "e1837a6b241f4095a4312e0115988721",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargAng\", \"e1837a6b241f4095a4312e0115988721\")"
+    },
+    {
+      "Guid": "2660c0d29eaf4dce9de52b3994462df1",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargAza\", \"2660c0d29eaf4dce9de52b3994462df1\")"
+    },
+    {
+      "Guid": "383cc2c9ea3f47c4a71982cb06535118",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargAeon\", \"383cc2c9ea3f47c4a71982cb06535118\")"
+    },
+    {
+      "Guid": "64e2b82829694b8fac652ea06f4dc8a7",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargTri\", \"64e2b82829694b8fac652ea06f4dc8a7\")"
+    },
+    {
+      "Guid": "480fead956f24022930a83d4457a377c",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargLic\", \"480fead956f24022930a83d4457a377c\")"
+    },
+    {
+      "Guid": "6ba14669a2a74dfbb308f66fecda8f6e",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargDem\", \"6ba14669a2a74dfbb308f66fecda8f6e\")"
+    },
+    {
+      "Guid": "2edcb6e5a1c3439fa9b9e0b3b96a49fb",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargLateChange\", \"2edcb6e5a1c3439fa9b9e0b3b96a49fb\")"
+    },
+    {
+      "Guid": "94bc04d1ed474feaab54af2f77a94574",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargLeg\", \"94bc04d1ed474feaab54af2f77a94574\")"
+    },
+    {
+      "Guid": "ecdddd77ad964561b38ad1848cb4553f",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargDra\", \"ecdddd77ad964561b38ad1848cb4553f\")"
+    },
+    {
+      "Guid": "df70df5cb6824ff5a9776a2478eee6c6",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargDev\", \"df70df5cb6824ff5a9776a2478eee6c6\")"
+    },
+    {
+      "Guid": "80cb9c6f466b4eaaaa9561ca56c5f348",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Targ.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTargRomance\", \"80cb9c6f466b4eaaaa9561ca56c5f348\")"
+    },
+    {
+      "Guid": "6ec03ce2f763460c8ac89f4c2064c5ad",
+      "Type": "BlueprintQuest",
+      "Source": "RanRomance.Targ.TargQuest.Configure",
+      "Evidence": "string text = \"6ec03ce2f763460c8ac89f4c2064c5ad\";\nQuestConfigurator.New(PageName, text).SetTitle(\"RanRomTargQuestName.Text\").SetDescription(\"RanRomTargQuestIntro.Text\")"
+    },
+    {
+      "Guid": "ad655c40be31401386b85287483b3841",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Targ.TargBook04End.Configure",
+      "Evidence": "string text3 = \"ad655c40be31401386b85287483b3841\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions11).SetText(\"RanRomTargBook04EndCue0002.Text\")"
+    },
+    {
+      "Guid": "cfc5f3cb2cf94672a96cab742e62225d",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Targ.TargBook04End.Configure",
+      "Evidence": "string text4 = \"cfc5f3cb2cf94672a96cab742e62225d\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions12).SetText(\"RanRomTargBook04EndCue0003.Text\")"
+    },
+    {
+      "Guid": "62c24328ae744ee98fabd219dbe74c92",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Targ.TargBook04End.Configure",
+      "Evidence": "string text7 = \"62c24328ae744ee98fabd219dbe74c92\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions15).SetText(\"RanRomTargBook04EndCue0006.Text\")"
+    },
+    {
+      "Guid": "ec76729da60441a1b2028f340743c0a8",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Targ.TargBook04End.Configure",
+      "Evidence": "string text8 = \"ec76729da60441a1b2028f340743c0a8\";\nCueConfigurator.New(Cue0007Name, text8).SetConditions(conditions16).SetText(\"RanRomTargBook04EndCue0007.Text\")"
+    }
+  ]
+}

@@ -1,0 +1,2608 @@
+{
+  "schema": 1,
+  "evidence": "Installed blueprints.zip plus installed RanRomance.dll decompilation; structural audit, not runtime click verification.",
+  "routes": {
+    "konomi": {
+      "contacts": [
+        {
+          "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Diplomacy_Officer_dialogue.jbp",
+          "guid": "a81655ed97277974e947c1aaf9e33525",
+          "answer_lists": [
+            {
+              "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
+              "guid": "0dc8b8604bb33c846a63f3eb62443674"
+            }
+          ],
+          "contact_kind": "repeatable_dialogue_structure",
+          "note": "First greeting ShowOnce true, fallback greeting false; both reach same list; FinishActions empty. World-click assignment and current unit presence still need runtime verification."
+        }
+      ],
+      "states": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Diplomacy7_5_Konomi.jbp",
+          "guid": "5641c3e7a8b44248b4f87d6ec74f1da4",
+          "note": "Rank-up choice marker only, not a general presence or romance flag.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": []
+        }
+      ],
+      "alternative": "Use existing officer conversation; add correspondence through a verified hub when officer unavailable. Rank-up lists alone are insufficient."
+    },
+    "jerribeth": {
+      "contacts": [
+        {
+          "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/JerribethGreetings_ISanctum_dialog.jbp",
+          "guid": "80f8dac1bd80ff846ba839fb14ed83b8",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0005.jbp",
+              "guid": "f6a5baf5df275a4418614524a3932e97"
+            }
+          ],
+          "contact_kind": "scripted_encounter",
+          "note": "IvorySanctum/JerribethAppear starts this scripted meeting. Do not assume repeatable actor conversation."
+        },
+        {
+          "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Jerribeth_Velexia_dialogue.jbp",
+          "guid": "992c44e6775d87444b562e855fd64af1",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
+              "guid": "19786fae9c29f9d439e374bb857c2e84"
+            }
+          ],
+          "contact_kind": "externally_limited_contact",
+          "note": "JerribethDialog_Conditions permits unseen dialogue OR third-date warning not yet seen; not an indefinite recurring contact."
+        }
+      ],
+      "states": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/JerribethDead.jbp",
+          "guid": "cd8666952065ce74d94d960a23482133",
+          "note": "Base later refuge and date consumers check Playing; do not substitute Completed.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Cutscenes/AlushinyrraHigherCity/VellexiaStartThirdDate/CommandStartDialog.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0029.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Answer_0017.jbp",
+              "property": ".Data.OnSelect.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0012.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0029.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/IvorySanctum_MainEtude.jbp",
+              "property": ".Data.Components[10].Actions.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraHigherCity/VellexiaThirdDate.jbp",
+              "property": ".Data.Components[0].Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraHigherCity/AlushinyrraHigherCity_DefaultEtude/VellexiaPlace_DefaultEtude.jbp",
+              "property": ".Data.Components[1].Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Quests/c3/MythicDemons/03_SanctumBosses.jbp",
+              "property": ".Data.Components[0].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Quests/c3/MythicDemons/04_ReportToJerri.jbp",
+              "property": ".Data.Components[0].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/JerribethLovesUsVeryMuch.jbp",
+          "guid": "d4dcc717dd2f550459bb45ccd91ac240",
+          "note": "No state consumer found in World scan; name is not evidence of existing romance or affection.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0025.jbp",
+              "property": ".Data.OnShow.Actions[0]",
+              "action": "StartEtude"
+            }
+          ]
+        }
+      ],
+      "alternative": "After actual encounter, establish new recurring correspondence/meeting entry via verified persistent hub. Do not revive by clearing only a death marker."
+    },
+    "vellexia": {
+      "contacts": [
+        {
+          "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Velexia_MainDialogue.jbp",
+          "guid": "44c7281805fff284e8af6bf4808cd602",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
+              "guid": "7f394dd6cd32c44408a59bd08eb1512a"
+            }
+          ],
+          "contact_kind": "repeatable_dialogue_structure",
+          "note": "Shared main answers across first/return greetings. Date scripts and hostility must remain distinct."
+        }
+      ],
+      "states": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaKilled.jbp",
+          "guid": "72e423c719ed9d44fa432a6b9629babd",
+          "note": "Consumers use both Playing and Started depending on branch. Has EvaluatedUnitDeathTrigger for quest completion; preserve original death actions.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Crusade/RankUps/MythicRankUps/Demon/DemonRankUp_6/Cue_0033.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/AlushinyrraHigherCity/VellexiaVictimsDispells/CommandDelay2.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/AlushinyrraHigherCity/VellexiaVictimsDispells/CommandDelay3.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/BattleBliss/FinalFight_FirstWave/CommandAction.jbp",
+              "property": ".Data.Action.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/BattleBliss/FinalFight_FirstWave/CommandBark 1.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/BattleBliss/FinalFight_FirstWave/CommandUnitPlayCutsceneAnimation1.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/GateGuard/Cue_0072.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/GateGuard/Renown4_1.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/GateGuard/Renown4_2.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0005.jbp",
+              "property": ".Data.ShowConditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0005.jbp",
+              "property": ".Data.OnStop.Actions[3]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0093.jbp",
+              "property": ".Data.OnSelect.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/HigherCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[3].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/HigherCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[4].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/LowerCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[3].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/LowerCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[4].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/MediumCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[3].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/MediumCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[4].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraHigherCity/ActionsHolders/JerribethVellexiaThirdDate_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].IfFalse.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraMediumCity/ConditionsHolders/VellexiaConspiracy_m_spawnConditions.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDemon/PlayerIsDemon/DemonCh5/ShamirasPlaceConspiracy.jbp",
+              "property": ".Data.Components[2].Actions.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaPeacefulResolution.jbp",
+          "guid": "36544170c027e1142805f03235df29a4",
+          "note": "Third-date encounter action holder branches on Playing.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0076.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Encounters/AlushinyrraHigherCity/ActionsHolders/JerribethVellexiaThirdDate_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].IfFalse.Actions[0].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraHigherCity/ActionsHolders/JerribethVellexiaThirdDate_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].IfFalse.Actions[0].IfFalse.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaDefeated.jbp",
+          "guid": "c4c703fe086807c45a77d6be521473d6",
+          "note": "Defeat differs from death; do not collapse into killed.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraHigherCity/VellexiaThirdDate.jbp",
+              "property": ".Data.Components[1].Actions.Actions[0]",
+              "action": "StartEtude"
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightBeforeThirdDate.jbp",
+          "guid": "eef93f5400704a0fa3e4820cc62282b3",
+          "note": "Hostile encounter marker.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": []
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightOnThirdDate.jbp",
+          "guid": "b5ed357e0f654a6bbd45ef9f74b10f00",
+          "note": "Hostile third-date marker.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": []
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDemon/DemonStates/Vellexia_WithPlayer.jbp",
+          "guid": "7561719a9eb527440aff2de1e5ae5c5a",
+          "note": "Demon-specific affiliation; not global romance support.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": []
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiasSlavesFreed.jbp",
+          "guid": "89965a2b67b792f438bf935fdb6ab96b",
+          "note": "Preserve freed people and corresponding encounter outcome.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0093.jbp",
+              "property": ".Data.OnSelect.Actions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0093.jbp",
+              "property": ".Data.OnSelect.Actions[2].IfTrue.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraHigherCity/AlushinyrraHigherCity_DefaultEtude/VellexiaPlace_DefaultEtude.jbp",
+              "property": ".Data.Components[3].Actions.Actions[1]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraHigherCity/AlushinyrraHigherCity_DefaultEtude/VellexiaPlace_DefaultEtude.jbp",
+              "property": ".Data.Components[4].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        }
+      ],
+      "alternative": "Main mansion conversation in Act4; authored later contact for other paths, rather than depending on Demon-only Drezen unit."
+    },
+    "kiana": {
+      "contacts": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/KyanaWelcome_SeelahQ2_dialog.jbp",
+          "guid": "029fe2bf51b828b46b8106e833ca6461",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/AnswersList_0005.jbp",
+              "guid": "ad91a2aed6132554782ca2ad10a1ee2a"
+            }
+          ],
+          "contact_kind": "wedding_only",
+          "note": "Wedding script-zone/ActionsHolder contact, not a proven post-wedding repeatable root."
+        },
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/ElanKianaAftermath_SeelahQ3_diaog.jbp",
+          "guid": "27bc5f6c94108a446b8273800f7da48b",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/AnswersList_0003.jbp",
+              "guid": "a237e3aaab7c937468829bba3578770d"
+            }
+          ],
+          "contact_kind": "one_shot_external_gate",
+          "note": "Finish unlocks 97b3254015284346ba32f1749cfae0b0. Alive holder requires this flag locked and ElanDesperate NOT Playing."
+        },
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/KianaAloneAftermath_SeelahQ3_dialog.jbp",
+          "guid": "6a197b1557eb815458304ec649228fb8",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/AnswersList_0005.jbp",
+              "guid": "9ca0a745692ef6f45ab13948b67c7fa9"
+            }
+          ],
+          "contact_kind": "one_shot_external_gate",
+          "note": "Finish unlocks b5dff99d2f8140e8bf23fb30048db101. Widow holder requires this flag locked and ElanDesperate Playing."
+        }
+      ],
+      "states": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/ElanDesperate.jbp",
+          "guid": "ded376ed8b73c3e42b0de967fb1d10a9",
+          "note": "Actual aftermath selector, despite ambiguous name; inspect original actions rather than substitute Elan_Dead.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0032.jbp",
+              "property": ".Data.OnStop.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/FinalResolve.jbp",
+              "property": ".Data.Components[0].Actions.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+              "property": ".Data.Components[0].Actions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0026.jbp",
+              "property": ".Data.OnShow.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0012.jbp",
+              "property": ".Data.OnStop.Actions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0018.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0002.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0040.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0010.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0013.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0031.jbp",
+              "property": ".Data.OnShow.Actions[1]",
+              "action": "CompleteEtude"
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0032.jbp",
+              "property": ".Data.OnShow.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0016.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0018.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0038.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/DrezenCapital/ConditionsHolders/Kyana_Conditions_Elan_Alive.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/DrezenCapital/ConditionsHolders/Kyana_Conditions_Elan_Dead.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/JewelerHideout.jbp",
+              "property": ".Data.Components[0].Actions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+          "guid": "148423f1d35917946a5ebeeb4f19246c",
+          "note": "Separate fate marker used by Seelah dialogue; also observe actual aftermath selector.",
+          "linked_area": "!bp_2570015799edf594daf2f076f2f975d8",
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0032.jbp",
+              "property": ".Data.OnStop.Actions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/FinalResolve.jbp",
+              "property": ".Data.Components[0].Actions.Actions[1].IfTrue.Actions[0]",
+              "action": "StartEtude"
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/KianaIsPosessed.jbp",
+          "guid": "0d773e4f71ac38a4d917ed459f6a0d0b",
+          "note": "Started by WeddingEndingBad. No downstream condition consumer found in scanned World sources, so insufficient alone for restored availability.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ2/WeddingEndingBad.jbp",
+              "property": ".Data.Components[0].Actions.Actions[0]",
+              "action": "StartEtude"
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ2/WeddingEndingBad.jbp",
+          "guid": "d983621f7b887b043acb0c43186bf824",
+          "note": "Starts KianaIsPosessed on play.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/FinalResolve.jbp",
+              "property": ".Data.Components[0].Actions.Actions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0020.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0013.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ2/WeddingEndingGood.jbp",
+          "guid": "be924a4c2bfff36459cebb87b84b8fb5",
+          "note": "Alternative wedding result, not proof of full Act5 rescue.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": []
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+          "guid": "6d3fb96f9b60c0449a01add4be5c4a49",
+          "note": "Area-linked Act5 aftermath state; COMPLETES PARENT on completion. Playing temporarily disables normal Arsinoe dialogue. Do not require Playing forever after aftermath.",
+          "linked_area": "!bp_b8583f39adb1c0141b5d95825e23ce6f",
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0017.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "CompleteEtude"
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0018.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "CompleteEtude"
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0019.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "CompleteEtude"
+            },
+            {
+              "path": "World/Encounters/DrezenCapital/ConditionsHolders/Arsinoe_Bark_Seelah.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/DrezenCapital/ConditionsHolders/Arsinoe_Dialogue_Conditions.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/Seelah_Q3_JewelerHideout/ScriptZones/SeelahQ3_Temple_Curl_Dialog.jbp",
+              "property": ".Data.EnterActions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        }
+      ],
+      "alternative": "Create recurring invitation through Seelah or Arsinoe after valid rescue/relationship stage. Do not reset one-shot aftermath flags to replay scenes."
+    },
+    "arsinoe": {
+      "contacts": [
+        {
+          "path": "World/Dialogs/NPC_Common/VendorArsinoe/VendorArsinoe_dialogue.jbp",
+          "guid": "d5adc0bbbad5f054098b527cf9cc64f1",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0041.jbp",
+              "guid": "210c59bcc51896c4ebcb3d03ad112b31"
+            },
+            {
+              "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+              "guid": "ecaf5cfe8087a4f45a2269974f4885c9"
+            }
+          ],
+          "contact_kind": "repeatable_dialogue_structure",
+          "note": "Normal list ecaf5cfe...; alternate list 210c59... is Chapter06 first greeting. Swarm disapproval uses normal list. Not an inferred Demon-path lock."
+        }
+      ],
+      "states": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital.jbp",
+          "guid": "3f3fbb973a4ffee47956b4c7714c939a",
+          "note": "Area-linked presence mechanic with activation condition; Playing only means active in linked location, not persistent life/death.",
+          "linked_area": "!bp_2570015799edf594daf2f076f2f975d8",
+          "allow_action_start": true,
+          "usage_evidence": []
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe.jbp",
+          "guid": "f49b38d311718de4bbc46137a53b92a2",
+          "note": "Parent identity state; not a death flag.",
+          "linked_area": null,
+          "allow_action_start": false,
+          "usage_evidence": []
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+          "guid": "6d3fb96f9b60c0449a01add4be5c4a49",
+          "note": "Arsinoe_Dialogue_Conditions requires NOT Playing; wedding rescue aftermath temporarily overrides ordinary vendor contact.",
+          "linked_area": "!bp_b8583f39adb1c0141b5d95825e23ce6f",
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0017.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "CompleteEtude"
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0018.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "CompleteEtude"
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0019.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "CompleteEtude"
+            },
+            {
+              "path": "World/Encounters/DrezenCapital/ConditionsHolders/Arsinoe_Bark_Seelah.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/DrezenCapital/ConditionsHolders/Arsinoe_Dialogue_Conditions.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/Seelah_Q3_JewelerHideout/ScriptZones/SeelahQ3_Temple_Curl_Dialog.jbp",
+              "property": ".Data.EnterActions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        }
+      ],
+      "alternative": "Use ordinary vendor dialogue after its temporary quest override ends. Preserve trading and greeting sequences."
+    },
+    "gesmerha": {
+      "contacts": [
+        {
+          "path": "World/Dialogs/c3/Wintersun/BlindCarver/BlindCarver_Wintersun_dialog.jbp",
+          "guid": "c0a7096d70401a84aae40bc13e4f74cf",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0002.jbp",
+              "guid": "59f1321ec585768418d086d7e097081d"
+            },
+            {
+              "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0008.jbp",
+              "guid": "dc306897f75a31c4aaf9483ebdff0585"
+            }
+          ],
+          "contact_kind": "two_stage_dialogue_structure",
+          "note": "First introduction list differs from later main list. Preserve blind-carver quest sequence."
+        },
+        {
+          "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/PeacefulWoodCarver_Wintersun_dialog.jbp",
+          "guid": "736b0be04541f5246b41f332ab651f47",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/AnswersList_0005.jbp",
+              "guid": "2063ee21356b772408f5c9cfb3ed5bd0"
+            }
+          ],
+          "contact_kind": "repeatable_dialogue_structure",
+          "note": "Shared post-revelation list across greetings; prefer for recurring later scenes."
+        }
+      ],
+      "states": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/BlindCarver_Dead.jbp",
+          "guid": "49839ba15f34bee469c4f093dace0811",
+          "note": "Actual death marker, not Gesmerha-named etude. Consumers use Playing; inspect raw usage evidence.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0034.jbp",
+              "property": ".Data.OnStop.Actions[5].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0035.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c3/Wintersun/JerribethReveal/JerribethReveal_Wintersun_dialog.jbp",
+              "property": ".Data.StartActions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c3/Wintersun/MarhevokAmbush/Cue_0008.jbp",
+              "property": ".Data.OnShow.Actions[1]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0025.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0026.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0040.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0001.jbp",
+              "property": ".Data.ShowConditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Epilogues/Cue_46.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Epilogues/Cue_47.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Epilogues/Cue_48.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WinterSunAfterFinalDIalog_Leader.jbp",
+              "property": ".Data.Components[0].Actions.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_WintersunHelp_Anevia.jbp",
+              "property": ".Data.ActivationCondition.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_WintersunHelp_BlindCarver.jbp",
+              "property": ".Data.Components[1].Actions.Actions[0].IfTrue.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_WintersunHelp_BlindCarver.jbp",
+              "property": ".Data.ActivationCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/TimerBefore_KTC_WintersunHelp.jbp",
+              "property": ".Data.ActivationCondition.Conditions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/TimerBefore_KTC_WintersunHelp.jbp",
+              "property": ".Data.ActivationCondition.Conditions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/GesmeraWithUs.jbp",
+              "property": ".Data.ActivationCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_WintersunHelp_BlindCarver.jbp",
+          "guid": "89d57f73e41040f0ab527d6e83478a64",
+          "note": "Act5 capital event contact, not persistent companion recruitment.",
+          "linked_area": "!bp_2570015799edf594daf2f076f2f975d8",
+          "allow_action_start": false,
+          "usage_evidence": []
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/BlindCarver_Gesmerha_DefaultActor.jbp",
+          "guid": "bd304d5930ed4d9bb09a024b1e648bb6",
+          "note": "Playing trigger HIDES capital spawner with Unhide false. Never interpret this as alive-and-present.",
+          "linked_area": null,
+          "allow_action_start": false,
+          "usage_evidence": []
+        }
+      ],
+      "alternative": "Wintersun post-revelation conversation first; new correspondence later that respects departure/migration and survival."
+    },
+    "chivarro_minagho": {
+      "contacts": [
+        {
+          "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Chivarro_dialogue.jbp",
+          "guid": "70068cbd7746aca48add0715ee1278b8",
+          "answer_lists": [
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/AnswersList_0215.jbp",
+              "guid": "bbc09eaa0addcdb41a408017f71d1b20"
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/AnswersList_0003.jbp",
+              "guid": "5ce68965a500a3142a864c7009b56799"
+            }
+          ],
+          "contact_kind": "repeatable_dialogue_structure_with_hostile_override",
+          "note": "Main list 5ce689...; separate bbc09... reaction after previous attack. Player cannot bypass encounter hostility solely through romance insertion."
+        }
+      ],
+      "states": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
+          "guid": "71f85264d9064074f9cf74999ecbffa9",
+          "note": "Playing is established surviving-partner signal used directly by R&R romance and throuple epilogues.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c4/GateGuard/Renown18.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/GateGuard/Renown19.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0100.jbp",
+              "property": ".Data.OnShow.Actions[2]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0045_KillChivarro.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/HigherCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[18].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/HigherCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[19].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/LowerCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[18].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/LowerCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[19].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/MediumCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[18].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/MediumCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[19].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+          "guid": "fd2ab9b67ce3e284184b1894c82c6c5d",
+          "note": "Death marker distinct from loss of office.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Cutscenes/AlushinyrraLowerCity/ChivarroAbusedScene/CommandAction 1.jbp",
+              "property": ".Data.Action.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Answer_0046.jbp",
+              "property": ".Data.ShowConditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0045_KillChivarro.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroWasTeleportedAway.jbp",
+              "property": ".Data.Components[1].Actions.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraMediumCity/AlushinyrraFleshmarket_DefaultEtude/Fleshmarket_Dyunk.jbp",
+              "property": ".Data.Components[0].Actions.Actions[1].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroRemovedFormPower.jbp",
+          "guid": "065b611752b5c0045b6d1e0164b92bcc",
+          "note": "Alive displacement differs from killed.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Cutscenes/AlushinyrraMediumCity/ChivarraHerraxaFleshmarketDisappear/CommandAction2.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/AlushinyrraMediumCity/ChivarraHerraxaFleshmarketDisappear/CommandAction3.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/AlushinyrraMediumCity/ChivarraHerraxaFleshmarketDisappear/CommandUnitCastSpell 1.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Cutscenes/AlushinyrraMediumCity/ChivarraHerraxaFleshmarketDisappear/CommandUnitCastSpell.jbp",
+              "property": ".Data.EntryCondition.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/FleshMarket/MeatSlaver_dialogue/Cue_0002.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/GateGuard/Cue_0078.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/BrothelGuard_dialogue/Answer_0017.jbp",
+              "property": ".Data.ShowConditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0049.jbp",
+              "property": ".Data.OnShow.Actions[3]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0100.jbp",
+              "property": ".Data.OnShow.Actions[1]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Encounters/AlushinyrraMediumCity/ActionsHolders/Herraxa_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/TenThousandDelights_DefaultEtude.jbp",
+              "property": ".Data.Components[8].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraMediumCity/AlushinyrraFleshmarket_DefaultEtude/Fleshmarket_Dyunk.jbp",
+              "property": ".Data.Components[0].Actions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraMediumCity/AlushinyrraFleshmarket_DefaultEtude/Fleshmarket_Dyunk.jbp",
+              "property": ".Data.Components[0].Actions.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraMediumCity/AlushinyrraFleshmarket_DefaultEtude/Fleshmarket_Dyunk.jbp",
+              "property": ".Data.Components[0].Actions.Actions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoDead.jbp",
+          "guid": "3b8c0801d5e9a694b848ee13564d2ad7",
+          "note": "ImportantNPCs fate marker.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0010.jbp",
+              "property": ".Data.OnStop.Actions[1]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c3/Ziggurat/StauntonZombie/Answer_0022.jbp",
+              "property": ".Data.ShowConditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/GateGuard/Renown20.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0011.jbp",
+              "property": ".Data.OnSelect.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0027.jbp",
+              "property": ".Data.OnSelect.Actions[1]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0049.jbp",
+              "property": ".Data.OnSelect.Actions[1]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/Mythic_Angel/Yaniel/Answer_0023.jbp",
+              "property": ".Data.ShowConditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
+              "property": ".Data.Conditions.Conditions[3]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
+              "property": ".Data.OnStop.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0124.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0125.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0126.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/HigherCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[20].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/LowerCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[20].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/MediumCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[20].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/ReturnToDrezen/ScriptZones/StontonAndMinago.jbp",
+              "property": ".Data.EnterActions.Actions[0].ConditionsChecker.Conditions[3]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/ReturnToDrezen/ScriptZones/StontonAndMinago.jbp",
+              "property": ".Data.EnterActions.Actions[1].ConditionsChecker.Conditions[6]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/MinaghoKilledInFourthChapter.jbp",
+              "property": ".Data.Components[0].Actions.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraLowerCity/AlushinyrraLowerCity_DefaultEtude/LowerCity_Minagho.jbp",
+              "property": ".Data.Components[0].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[6].Actions.Actions[5].ConditionsChecker.Conditions[4]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[8].Conditions.Conditions[3]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[9].Actions.Actions[2].ConditionsChecker.Conditions[3]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[10].Actions.Actions[1].ConditionsChecker.Conditions[4]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[10].Actions.Actions[2].ConditionsChecker.Conditions[3]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/TheIvoryLabyrinth_Default.jbp",
+              "property": ".Data.Components[33].Actions.Actions[0]",
+              "action": "StartEtude"
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/MinaghoKilledInFourthChapter.jbp",
+          "guid": "a31e7428d8b5c28408eecebca8fa7746",
+          "note": "Separate chapter-specific death marker.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0011.jbp",
+              "property": ".Data.OnSelect.Actions[1]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0027.jbp",
+              "property": ".Data.OnSelect.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0049.jbp",
+              "property": ".Data.OnSelect.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
+              "property": ".Data.Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/ReturnToDrezen/ScriptZones/StontonAndMinago.jbp",
+              "property": ".Data.EnterActions.Actions[0].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/ReturnToDrezen/ScriptZones/StontonAndMinago.jbp",
+              "property": ".Data.EnterActions.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[6].Actions.Actions[5].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[8].Conditions.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[9].Actions.Actions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[10].Actions.Actions[1].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[10].Actions.Actions[2].ConditionsChecker.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoSetFreeByAzata.jbp",
+          "guid": "1d466fd4271fdc14ea1c077760c63ca5",
+          "note": "R&R broadens this outcome to non-Azata via selected answer; its name is not a current mythic requirement.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c4/Mythic_Angel/Yaniel/Answer_0023.jbp",
+              "property": ".Data.ShowConditions.Conditions[2]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0124.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0126.jbp",
+              "property": ".Data.Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/HigherCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[21].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/LowerCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[21].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/AlushinyrraCity/ActionsHolders/MediumCityCommonerBarks_Actions.jbp",
+              "property": ".Data.Actions.Actions[0].Actions[21].Conditions.Conditions[0]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/ReturnToDrezen/ScriptZones/StontonAndMinago.jbp",
+              "property": ".Data.EnterActions.Actions[0].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Encounters/ReturnToDrezen/ScriptZones/StontonAndMinago.jbp",
+              "property": ".Data.EnterActions.Actions[1].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_AreasDefault/AlushinyrraLowerCity/AlushinyrraLowerCity_DefaultEtude/LowerCity_Minagho.jbp",
+              "property": ".Data.Components[0].Conditions.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": true,
+                "Started": false,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[6].Actions.Actions[5].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[8].Conditions.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[9].Actions.Actions[2].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": true,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[10].Actions.Actions[1].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            },
+            {
+              "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+              "property": ".Data.Components[10].Actions.Actions[2].ConditionsChecker.Conditions[1]",
+              "condition": {
+                "Not": false,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        },
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoSetFreeInC4.jbp",
+          "guid": "978762feac7873d4e925d85202e2c89c",
+          "note": "Separate base release state, not automatically equivalent to addon entry requirement.",
+          "linked_area": null,
+          "allow_action_start": true,
+          "usage_evidence": [
+            {
+              "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0026.jbp",
+              "property": ".Data.OnSelect.Actions[0]",
+              "action": "StartEtude"
+            },
+            {
+              "path": "World/Dialogs/c4/Mythic_Angel/Yaniel/Answer_0023.jbp",
+              "property": ".Data.ShowConditions.Conditions[3]",
+              "condition": {
+                "Not": true,
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            }
+          ]
+        }
+      ],
+      "alternative": "Extend installed Minagho route through established Anevia/Storyteller event access; do not duplicate origin or epilogue."
+    }
+  },
+  "state_semantics": {
+    "source": "reference/canon-review/EtudeStatus.cs",
+    "completed": "Completed check occurs before live fact lookup, and completed etude does not satisfy Playing-only condition.",
+    "playing": "Requires live fact IsPlaying and no earlier completed classification.",
+    "started": "Started=true also accepts active Playing and CompletionInProgress, unless completed classification has already occurred.",
+    "negative_playing": "Not Playing also permits NotStarted and Completed; it does not imply proven life or resurrection.",
+    "mod_builder_source": "reference/canon-review/ConditionsBuilderStoryEx.cs",
+    "signature": "EtudeStatus(completed, completionInProgress, etude, negate, notStarted, playing, started)"
+  },
+  "mod_etudes": {
+    "RanRomMinaTimer1": {
+      "guid": "faad12cd8c8048309acb37896d8fafc3",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaTimer2": {
+      "guid": "d5e4f2aa713647cc8d40438b46e0d1ef",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaBanner": {
+      "guid": "4a29c758798d47a1a32f506d1ca6081b",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaConscience": {
+      "guid": "813cc79c053d4b3e869a0d0ca2f3d85d",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaFreed": {
+      "guid": "f18391398cb5470c94f8932e9d8d2fd7",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaDemon": {
+      "guid": "58557969a797441983022c8ba0400400",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaLegend": {
+      "guid": "a87da83417ff4be28c9ccfaf9b154e96",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaDragon": {
+      "guid": "e303c58d307849cd892fa5810124da92",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaSanctuary": {
+      "guid": "1e6ca1514807446ea2fddd65e4f5bcc8",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaSex1": {
+      "guid": "552e473e6d674d2bbb5b92ac615b838d",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaSex2": {
+      "guid": "73423d82afce42eb8f6e0c44121010dc",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaRomance": {
+      "guid": "b5c19cd01e364df99f6c946c7da14751",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaCult": {
+      "guid": "3d21fa8120d040338ec1d4b8461fa536",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    },
+    "RanRomMinaRedemption": {
+      "guid": "592dcdccbef043f58031fa234faf137a",
+      "source": "reference/canon-review/Main.cs",
+      "state_usage": "Playing except explicitly completed timers"
+    }
+  },
+  "ranromance_throuple": {
+    "sources": [
+      "reference/canon-review/Main.cs",
+      "reference/canon-review/MinaBook03Page003.cs",
+      "reference/canon-review/Slide0001.cs",
+      "reference/canon-review/MinaEpil.cs",
+      "reference/canon-review/AnevChpt05Dial001.cs",
+      "reference/canon-review/StorChpt05Dial001.cs"
+    ],
+    "relationship_core": [
+      {
+        "name": "RanRomMinaRomance",
+        "guid": "b5c19cd01e364df99f6c946c7da14751",
+        "state": "Playing"
+      },
+      {
+        "name": "ChivarroHappyEnd",
+        "guid": "71f85264d9064074f9cf74999ecbffa9",
+        "state": "Playing",
+        "source_path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp"
+      }
+    ],
+    "romance_start": "MinaBook03Page003 acceptance answer Ans0000 starts RanRomMinaRomance; page requires RanRomMinaSex2 Playing. Rejection completes Sex1 and Sex2, rather than starting romance.",
+    "ascension_three_person_cue": {
+      "guid": "9bfbb3f217ca476cadbeffc4d389717d",
+      "name": "RanRomMinaSlide0001Cue0004",
+      "requires_playing": [
+        "RanRomMinaRedemption",
+        "ChivarroHappyEnd",
+        "RanRomMinaRomance"
+      ],
+      "parent_page_requires": "RanRomMinaBanner Playing AND (TE_AscendAll Playing OR TE_AscendCompanions Playing)"
+    },
+    "timers": "RanRomMinaTimer1 and Timer2 finish after four days; followup entry checks COMPLETED, not Playing.",
+    "initial_event_gate": "Anevia/Storyteller Minagho first event requires RanRomC5MythicCompl Playing, quest 95ff7d975689fcf44b085d10907e711d Complete, and (MinaghoSetFreeByAzata Playing OR answer a08540bf69314cffb24d93d277cf6636 selected), plus event answer not already selected. Storyteller has additional shared conditions preserved in source.",
+    "epilogue_dedup": "MinaEpil marks eight alternative pages seen once one displays, and suppresses base paired ending when addon route took precedence."
+  },
+  "condition_holders": {
+    "World/Encounters/AlushinyrraHigherCity/ConditionsHolders/JerribethDialog_Conditions.jbp": {
+      "AssetId": "3f75915712ea4810a3d800d92b4b1eb5",
+      "Data": {
+        "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+        "Conditions": {
+          "Operation": "Or",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$d4fb93e6-d777-4b71-a444-9816df0600f8",
+              "Not": false,
+              "Comment": "третье свидание и не видели 2 куй",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$40278ccf-a6f1-4e72-9bc9-e515756fadb0",
+                    "Not": true,
+                    "m_Cue": "!bp_a1f97de9145c3574ebd2d7f75c3d39c9",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$e90b8549-d390-4391-befb-b3338b4074fc",
+                    "Not": false,
+                    "m_Etude": "!bp_02ffbe686c198854da2d51e72fccb9ca",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+              "name": "$DialogSeen$9b77cc2e-781f-4a6f-95c5-ba09c7c6d060",
+              "Not": true,
+              "m_Dialog": "!bp_992c44e6775d87444b562e855fd64af1"
+            }
+          ]
+        }
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Encounters/DrezenCapital/ConditionsHolders/Arsinoe_Dialogue_Conditions.jbp": {
+      "AssetId": "c4fa13c72fc350d4bae7431242eb095a",
+      "Data": {
+        "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$56aaf32c-22eb-4b4d-a039-4407c786f421",
+              "Not": true,
+              "m_Etude": "!bp_6d3fb96f9b60c0449a01add4be5c4a49",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        }
+      }
+    },
+    "World/Encounters/DrezenCapital/ConditionsHolders/Kyana_Conditions_Elan_Alive.jbp": {
+      "AssetId": "6a45d9e173debd14ba92e8b8cdd02a91",
+      "Data": {
+        "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$d1d08051-87fd-4f91-931f-fdb9078262a0",
+              "Not": true,
+              "m_Etude": "!bp_ded376ed8b73c3e42b0de967fb1d10a9",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+              "name": "$FlagUnlocked$61e5e033-f075-4ddd-875e-68418b2be908",
+              "Not": true,
+              "m_ConditionFlag": "!bp_97b3254015284346ba32f1749cfae0b0",
+              "ExceptSpecifiedValues": false,
+              "SpecifiedValues": []
+            }
+          ]
+        }
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Encounters/DrezenCapital/ConditionsHolders/Kyana_Conditions_Elan_Dead.jbp": {
+      "AssetId": "0603189a2b7d56e4ca2d874d4f398c2b",
+      "Data": {
+        "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$a1d81d01-1354-45cd-807a-03f1c56df9b6",
+              "Not": false,
+              "m_Etude": "!bp_ded376ed8b73c3e42b0de967fb1d10a9",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+              "name": "$FlagUnlocked$220dbd70-086b-483b-be32-fecc9b5048b0",
+              "Not": true,
+              "m_ConditionFlag": "!bp_b5dff99d2f8140e8bf23fb30048db101",
+              "ExceptSpecifiedValues": false,
+              "SpecifiedValues": []
+            }
+          ]
+        }
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Encounters/DrezenCapital/UnlockableFlags/KyanaSouless.jbp": {
+      "AssetId": "8a2da1bae7d69b84b999155ac0481223",
+      "Data": {
+        "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": ""
+      }
+    },
+    "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3KyanaAloneAfterDialogue.jbp": {
+      "AssetId": "b5dff99d2f8140e8bf23fb30048db101",
+      "Data": {
+        "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": ""
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3_ElanKianaAfterDialogue.jbp": {
+      "AssetId": "97b3254015284346ba32f1749cfae0b0",
+      "Data": {
+        "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": ""
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Encounters/WintersunOutdoor/UnlockableFlags/BlindCarver_loveFlag.jbp": {
+      "AssetId": "38a57ef12ef7c6546ad99be7f706b893",
+      "Data": {
+        "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": ""
+      }
+    }
+  },
+  "raw_files": [
+    "dialogue-entry-map.json",
+    "relevant-etudes.json",
+    "state-consumers.json",
+    "contact-consumers.json",
+    "contact-condition-holders.json"
+  ],
+  "limitations": [
+    "Scene unit click assignment is not wholly serialized in extracted blueprint references. Repeatable labels describe dialogue graph structure unless an external gate is stated.",
+    "Additional existence, unit hostility, chapter, and quest-result checks remain necessary.",
+    "Do not ship extracted base-game text as new authored content."
+  ]
+}

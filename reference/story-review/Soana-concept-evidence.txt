@@ -1,0 +1,83 @@
+75cc4699-4bd7-43ba-9ef0-c9e735b3e633
+You decided to spare the shaman Soana's life.
+
+1232b01b-8030-476e-b641-2167a704576b
+You killed the shaman Soana after you learned what she had done to the guardian of the forest.
+
+fecea765-8df3-45d4-866a-61b1eacc8d0c
+You spared the life of the shaman Soana and allowed her to create a new guardian of the forest.
+
+c026ced6-0218-4387-a1b4-56b891069fb3
+Soana
+
+d1a5d57a-4fc5-4749-b2a4-d9455fa4e0f5
+"There are three of them in total, and they're all in the village. They were erected by the great shaman Soana the Wise a century ago, the year the Worldwound opened. They start to flicker when demons are near. But, as far as I can remember, the stones have never raised the alarm. Demons have never come near the village thanks to the Lady of the Sun's protection... at least, that's what everyone thinks. If you firmly believe that you saw demons within the walls of Wintersun, find out why the stones are not giving their promised warning."
+
+7a990439-b4f8-41db-91ad-2e80b9c08c83
+The letter has been carefully kept in an oiled leather bag, but the years have not been kind to it: the paper is so fragile that it is almost crumbling in your hands.
+"To Soana the Seer
+Mother! This is my last letter. I hope the raven delivered it safely.
+The decision has been made — we are leaving for the south, for Gundrun, further away from the Worldwound. I beg you, come with us! You turned down my last requests, and I don't know this person you have become. Where did this pride come from? Before you were wise and fair, can it be that the spirits of the Abyss have reached the good spirits of our forest and twisted your mind as well? I don't care what happens to this place, I only want you to live, Mother. I was told you crafted yourself a special amulet to subdue spirits. Does that mean you want to bind a spirit from the Abyss by imprisoning it in the body of an animal? You know your powers are not what they were, you won't manage it alone. Even if you do — nothing good will come of this abominable ritual.
+Please, come with us. Your children and grandchildren need you. The wild animals in this deranged forest do not. We will wait for you at the pass until the tenth day of the month.
+Your loving daughter
+Roan"
+
+e57ea8f4-379d-4a47-a351-16c03669043e
+Gave Soana to Camellia.
+
+c029b172-31c5-4caa-a321-d069b94e1884
+"What did Soana do to you?"
+
+ef9de640-8eb0-475f-b9a2-5a37ebf02c71
+"Soana?"
+
+37a3df32-ce07-4ece-81cb-7833b9785e73
+"Soana the Seer? I've heard so much about you and your wise ways! I am Ulbrig Olesk. It's a pity I didn't get the chance to seek your advice in the old days — maybe it could have kept me from coming to grief."
+
+a6efe8d6-ed3b-47b0-bbd5-c62b2bb6fdb9
+{n}The old woman shudders, her gaze looking through you into the distance.{/n} "Soana... Yes, yes! In Sarkoris they called her Soana the Wise, Soana the Seer. They brought her gifts, sought her counsel... What would you ask her, if you met her?"
+
+b3e65c8e-8cdb-4350-9189-1a333fd51709
+"Soana the Seer, running to Gundrun with her tail between her legs! No, I could not leave. Let others hide behind the walls of their cities. This forest is my life, my chapel. Even if I could have made it through the Wound and gone south... no, out of the question! How could I look my children in the eye? Their foolish mother who tried to fight the Worldwound alone and lost! No, that will never happen!"
+
+83051507-5d9a-45e5-a39e-45e998f0af84
+"I don't know how, but you made the shaman Soana worship you and me."
+
+48609d6d-a272-491b-bd23-ab7c360e4711
+Gave Soana to Camellia.
+
+86bd1500-94ab-4c2e-b8a0-e4c35bef733c
+"Soana? I thought you were dead."
+
+c83dd931-014f-470e-811b-e3a896a63b36
+"Soana, do you remember Camellia?"
+
+53353820-ac90-4b70-9669-356aee365326
+Attacked Soana.
+
+aae908f8-31a4-43b4-9dc3-210970eb42fb
+Tried to devour Soana.
+
+b890d4e9-4d28-4ab8-b65b-fc0d1bc6adfc
+[Devour Soana] "I'll find a use for you."
+
+1708a6ca-4aa5-4ef8-adf7-8a4880ceb816
+{n}Soana worries her lip for a time, as if trying to remember.{/n} "My forest, I protected you, and you protected me. How are you these days, I wonder? Curse the new chief for separating us!"
+
+ac6d8542-f7ed-4647-8c06-0592434da6ed
+{n}Soana lifts her head and looks at Camellia with her weak eyes.{/n} "She reeks of blood even more than you do, bloody hunter. I do not know her nor do I care to."
+
+1954736b-4e33-40da-bb2d-4892c6695ef7
+"I am Soana, keeper of the Wintersun forests, servant of the trees, and protector of the forest beasts. Beware, bloody hunter. Know that the spirits see the blood on your hands. Leave this place before they compel me to tear you apart."
+
+68ee13a9-a6d6-4301-a77a-5ed173c0896b
+{n}Soana's face twists in disgust.{/n} "The new chief of Wintersun, Marhevok, made me come here, even though I do not belong to his tribe, I only live in the nearby woods. He told me I'm one of them, and so I must stay with them. He said I must join their march and come help you, bloody hunter..."
+
+96bf0442-bc1a-408e-98de-18bd58b1cea4
+"I understand..." {n}With a sigh, Camellia gives Soana a parting glance and turns away.{/n}
+
+2ab3637e-35c3-4fd9-a431-3d1ec10af914
+"O good gods and spirits... If my dear mother Soana is alive — guard her against harm. Rid her of her foolish stubbornness and help reunite our family."
+
+b549a20f-2a12-424e-87f4-fb57a9b4a8bc
+Soana, the deranged shaman, claims that Marhevok urged her to "support and love" the Commander

@@ -1,0 +1,349 @@
+{
+  "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion.jbp": {
+    "AssetId": "1d30b49f8756c2b40bb8271e856675c5",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [
+        {
+          "$type": "b20b3c539fa60ed44abbfc7e367245ea, EtudeCompleteTrigger",
+          "name": "$EtudeCompleteTrigger$130da6dc-ea35-4915-bb5b-c8874eded16a",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Comment": "Fail companion quests",
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "name": "$Conditional$f2d4cb64-d7b6-437e-9240-a68cdd21ea76",
+                "Comment": "Q1",
+                "ConditionsChecker": {
+                  "Operation": "And",
+                  "Conditions": [
+                    {
+                      "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                      "name": "$QuestStatus$8ba0a020-d537-403d-8882-ca1352160a27",
+                      "Not": false,
+                      "m_Quest": "!bp_e6e3a7821c30a7441a1729555a250b23",
+                      "State": "Started"
+                    }
+                  ]
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                      "name": "$SetObjectiveStatus$14ded898-2669-4f48-96b9-86b8c2513674",
+                      "Status": "Fail",
+                      "m_Objective": "!bp_2bef71a3ae3146c9aee0c89f8a6a7ab8",
+                      "StartObjectiveIfNone": true
+                    }
+                  ]
+                },
+                "IfFalse": {
+                  "Actions": []
+                }
+              },
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "name": "$Conditional$dca141ad-67ce-4b3f-befc-352f16b4fadd",
+                "Comment": "Q2",
+                "ConditionsChecker": {
+                  "Operation": "And",
+                  "Conditions": [
+                    {
+                      "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                      "name": "$QuestStatus$fedd364b-fa6c-47ae-9f8c-4bd490c26e02",
+                      "Not": false,
+                      "m_Quest": "!bp_a1024628f074e4d4f9d2b15956975459",
+                      "State": "Started"
+                    }
+                  ]
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                      "name": "$SetObjectiveStatus$396f8df2-c9ba-42b9-accb-ac37d692ac70",
+                      "Status": "Fail",
+                      "m_Objective": "!bp_7a6268ae508c418a970219b5b56f4b23",
+                      "StartObjectiveIfNone": true
+                    }
+                  ]
+                },
+                "IfFalse": {
+                  "Actions": []
+                }
+              },
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "name": "$Conditional$0e7f3c7c-b170-4ae5-a875-2d04c0842c4b",
+                "Comment": "Q3",
+                "ConditionsChecker": {
+                  "Operation": "And",
+                  "Conditions": [
+                    {
+                      "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                      "name": "$QuestStatus$2e136664-a383-4da7-a010-5652897f1cd6",
+                      "Not": false,
+                      "m_Quest": "!bp_5a5a533c9ce630a48b877f9a194840cb",
+                      "State": "Started"
+                    }
+                  ]
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                      "name": "$SetObjectiveStatus$405f12bd-7df3-4f4a-91fb-f036af01456f",
+                      "Status": "Fail",
+                      "m_Objective": "!bp_3af29d5670c54ee48fbfdd86200f1014",
+                      "StartObjectiveIfNone": true
+                    }
+                  ]
+                },
+                "IfFalse": {
+                  "Actions": []
+                }
+              },
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "name": "$Conditional$1de7957e-92e9-4662-a7b4-5b12c6afd6e3",
+                "Comment": "Q0",
+                "ConditionsChecker": {
+                  "Operation": "And",
+                  "Conditions": [
+                    {
+                      "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                      "name": "$QuestStatus$4411dd21-4a5f-4df0-aba1-5a8c35f5c82d",
+                      "Not": false,
+                      "m_Quest": "!bp_f64bbcd67e4d5a1448da06a62af659f8",
+                      "State": "Started"
+                    }
+                  ]
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                      "name": "$SetObjectiveStatus$0a4342fb-9879-4668-bcbb-8cf9501511e0",
+                      "Status": "Fail",
+                      "m_Objective": "!bp_0348aae57c8f4301a9998637e8f7ade2",
+                      "StartObjectiveIfNone": true
+                    }
+                  ]
+                },
+                "IfFalse": {
+                  "Actions": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "Comment": "",
+      "m_Parent": "!bp_e2513faa05d44c0428f15ea8187bc587",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": false,
+      "m_LinkedAreaPart": null,
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [
+        "!bp_84b4471249a48d84c822d38396c698d9",
+        "!bp_3b8ccafc1be912a4187350ac473cdc0e",
+        "!bp_26ae0f50130942b4bb8dfe658e77b1c6",
+        "!bp_256a002e616db6d4695d0d28cca90093"
+      ],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [],
+      "Priority": 0
+    }
+  },
+  "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty.jbp": {
+    "AssetId": "84b4471249a48d84c822d38396c698d9",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "m_Parent": "!bp_1d30b49f8756c2b40bb8271e856675c5",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+            "name": "$CompanionInParty$64553f95-b041-4006-8b95-94ea5243380a",
+            "Not": false,
+            "m_companion": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+            "MatchWhenActive": true,
+            "MatchWhenDetached": true,
+            "MatchWhenRemote": true,
+            "MatchWhenDead": false,
+            "MatchWhenEx": false
+          }
+        ]
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": false,
+      "m_LinkedAreaPart": null,
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [
+        "!bp_9f0d9467f8680a54585b442c189d2528",
+        "!bp_770e5fc2321612445b93a4c48368d6f4",
+        "!bp_84ff7aeecd5c08446b8d595ce95fcb0c"
+      ],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [],
+      "Priority": 0
+    }
+  },
+  "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_Dead.jbp": {
+    "AssetId": "26ae0f50130942b4bb8dfe658e77b1c6",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "m_Parent": "!bp_1d30b49f8756c2b40bb8271e856675c5",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+            "name": "$CompanionInParty$ec0d5609-ac5c-4785-b0f9-8016f9a41599",
+            "Not": false,
+            "m_companion": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+            "MatchWhenActive": false,
+            "MatchWhenDetached": false,
+            "MatchWhenRemote": false,
+            "MatchWhenDead": true,
+            "MatchWhenEx": false
+          }
+        ]
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": false,
+      "m_LinkedAreaPart": null,
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [],
+      "Priority": 0
+    }
+  },
+  "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_KickedOut.jbp": {
+    "AssetId": "c33407f132b192643a438bd33797efa1",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "m_Flags": 0,
+          "name": "$EtudePlayTrigger$ce46aaa1-65f7-463e-aece-953057ad4230",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Comment": "Fail companion quests and stop Seelah's laughter at Warcamp",
+          "m_Once": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "576a514e5164d254f936cd4ce788ae6a, RunActionHolder",
+                "name": "$RunActionHolder$a23cc12a-e833-446b-8b3a-92b54a5be7f2",
+                "Comment": "Fail all companion quests - Seelah",
+                "Holder": "!bp_894a7ba9ecb24f2aad9eefe09a6220d3",
+                "Parameters": {
+                  "Parameters": []
+                }
+              },
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$9b56464c-7c1a-48af-a3b4-c5fdf4ad5824",
+                "Etude": "!bp_8fb7fcd0c935454459092734bc9024ab",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              }
+            ]
+          }
+        }
+      ],
+      "Comment": "",
+      "m_Parent": "!bp_1d30b49f8756c2b40bb8271e856675c5",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+            "name": "$CompanionInParty$f0c2d3d9-cac5-4f3f-887a-2c96a5921566",
+            "Not": false,
+            "m_companion": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+            "MatchWhenActive": false,
+            "MatchWhenDetached": false,
+            "MatchWhenRemote": false,
+            "MatchWhenDead": false,
+            "MatchWhenEx": true
+          }
+        ]
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": true,
+      "m_LinkedAreaPart": null,
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [
+        "!bp_21db4aa6fb24fde4d99f047149c8d3ff",
+        "!bp_b26c0c86a4c8c9e44b528bd63ca9a2d8"
+      ],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [],
+      "Priority": 0
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  }
+}

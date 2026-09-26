@@ -1,0 +1,3254 @@
+[
+  {
+    "type": "AnswersListConfigurator",
+    "name": "RanRomAnevChpt03Dial001list",
+    "guid": "e9a90d89e6524214991ec7912bfc71dc",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt03Dial001Cue0001",
+    "guid": "317b13ef5732425e8069ffa0c8cc512f",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "SequenceExitConfigurator",
+    "name": "RanRomAnevChpt03Dial001Exit",
+    "guid": "871e69dedbec48cba3fa8472a1e217b2",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueSequenceConfigurator",
+    "name": "RanRomAnevChpt03Dial001Seq",
+    "guid": "d19aa0bbc4594acf921e0af50acd7034",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt03Dial001Ans0001",
+    "guid": "f36eb28e514147d3a9e2217ee7d30ddb",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt03Dial001Ans0002",
+    "guid": "559e2aa664364376ad8c2e3147d6fdcf",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt03Dial001Cue0002",
+    "guid": "7d3e267cd11744d591dd89d95de3f71b",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt03Dial001Ans0003",
+    "guid": "30d8a3b6f8f949feaff81aa82d34486e",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt03Dial001Cue0003",
+    "guid": "8e5521e343f14b58acf90463461e78f2",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt03Dial001Ans0004",
+    "guid": "464440f178d6483aaae28e5a350631be",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt03Dial001Cue0004",
+    "guid": "6ecc6879b9c644c1882882ed5d865655",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt03Dial001Ans0005",
+    "guid": "43ff233169e146a78e3218bb47615784",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt03Dial001Cue0005",
+    "guid": "df934651ff8846a99cc06cdd38e241d1",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt03Dial001Ans0006",
+    "guid": "126b48d9dad94a5bbead2aedc0ec4aa6",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt03Dial001Cue0006",
+    "guid": "ea8198c269ce4c93940640a389f6e7c8",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt03Dial001Ans0007",
+    "guid": "8de9e133dfed4ac9837f0004844c4647",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt03Dial001Cue0007",
+    "guid": "7d090c83df52473f92fd5c14b6728e34",
+    "source": "aranka-AnevChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswersListConfigurator",
+    "name": "RanRomAnevChpt05Dial001list",
+    "guid": "31c23fd4f954444fb18673e78bf6718f",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0001",
+    "guid": "101be92ed41749eaa1329392ae741e83",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "SequenceExitConfigurator",
+    "name": "RanRomAnevChpt05Dial001Exit",
+    "guid": "db11c584b3f8495985c34b0fde496e61",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueSequenceConfigurator",
+    "name": "RanRomAnevChpt05Dial001Seq",
+    "guid": "7dc8ecc532d44c629cc01734080fce07",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0001",
+    "guid": "00df08f8d6f84dadbfa07486e676adf8",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0002",
+    "guid": "30aa3d5b098a4ed6a8742e76ac5759a1",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0002",
+    "guid": "9bc5e930108241669fb777ca96371762",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0003",
+    "guid": "df2df55ec3bb49b68978f6a53b4f06ff",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0004",
+    "guid": "78301019d46a49e8b6f7fece0c9d1dda",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0004",
+    "guid": "d0e106dcf48a44eca582b161afc4c263",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0005",
+    "guid": "41a2ab2b568742fb9afe99ff8cd4f7e9",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0005",
+    "guid": "8e43b5f1a7cb40da8f6519e97af196f4",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0006",
+    "guid": "787f9ec94fb74f398893d9421c2292a3",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0007",
+    "guid": "b7697dde817748e29c69c8ad606a6f9c",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0007",
+    "guid": "2be4775ee36344419b4a1e825fd3106c",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0008",
+    "guid": "e38c97f0b5224b3d91352dbb2983342d",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0009",
+    "guid": "865201b1d94d43e89244809005fe8eec",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0009",
+    "guid": "9b69b1772af748368c07718d78b9de29",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0010",
+    "guid": "5b18c55967c9424a8d4a8045bc6ab884",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0013",
+    "guid": "a19476e2956b4d428613a46470e11b7e",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0013",
+    "guid": "6492461a79984903a7f0ad32f20fabbb",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0014",
+    "guid": "627ebab39cea4235a376d5fdf82eeae7",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0014",
+    "guid": "19e2f53977bc469ab114fb406531fc82",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0015",
+    "guid": "1c5b340c7fda462b9497f95466c734fc",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0015",
+    "guid": "cd8f4d6d9f474e0cb1b298574839e0ee",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0016",
+    "guid": "898b6df8401243e6929ad6c06e3d734e",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0016",
+    "guid": "0511d52b55da46b6bcaadefc1e713a90",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0017",
+    "guid": "c142df56dcc24e7685c3b049ef42f688",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0017",
+    "guid": "7987af57f5394351b54cfe96995a88a1",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0018",
+    "guid": "24d6c8716a174f749774b1201e55e892",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0018",
+    "guid": "bdcf066a452c43349c61297580905f3e",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAnevChpt05Dial001Ans0019",
+    "guid": "08dc24e6ec9c46aebb4aaee0a4a90f55",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAnevChpt05Dial001Cue0019",
+    "guid": "1f468789b9534ea68bd73e2635ba95d0",
+    "source": "aranka-AnevChpt05Dial001.cs"
+  },
+  {
+    "type": "CampingEncounterConfigurator",
+    "name": "RanRomAranCamp1",
+    "guid": "b73a3855307e494d8cd45375ac655bfd",
+    "source": "aranka-AranBook01.cs"
+  },
+  {
+    "type": "DialogConfigurator",
+    "name": "RanRomAranBook01",
+    "guid": "2936ff4e6e234702b7f59b469b57feaa",
+    "source": "aranka-AranBook01.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01End",
+    "guid": "d61664af13144728b43d850f4b879403",
+    "source": "aranka-AranBook01End.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01End2",
+    "guid": "cf26695589dd47b0950b9cfc5e4bca0b",
+    "source": "aranka-AranBook01End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01EndCue0001",
+    "guid": "7e8f7d9037864ddbbf2857373c472785",
+    "source": "aranka-AranBook01End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01EndCue0002",
+    "guid": "7bbda77bcd22447f9e3684d2e9a76ad5",
+    "source": "aranka-AranBook01End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01EndCue0003",
+    "guid": "4a886661ae9d47e3a84f71d23299a939",
+    "source": "aranka-AranBook01End.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page001",
+    "guid": "5573fd69c9f04efebb8d6a276da2188e",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page101",
+    "guid": "430140ab7d674b33adb2637b57aef160",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0001",
+    "guid": "ae2410c49fb44f298f9d7b7cf25fa4ff",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0002",
+    "guid": "ad619d38269642209e6daf8a423e57fc",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0003",
+    "guid": "f133fde32f4c458e8684d06ba86d35ad",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0003",
+    "guid": "bb0ed9027cc94a7c8076f85fdf54e038",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0004",
+    "guid": "ac8d32b0f33d4c79b30f8fec3891678d",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0005",
+    "guid": "e33f0d1516a44c28b0f2e03e6c6babaa",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0005",
+    "guid": "3c6b397b55314faca3ddd53bf8d612eb",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0006",
+    "guid": "fa8fa9d277e54a0eaef85db899e48a3d",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0007",
+    "guid": "a3f897431dcf4684ae41e13f862ec318",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0007",
+    "guid": "91a9975c4dfa479ebdff77fa42aa0812",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0008",
+    "guid": "f8a9bc4b98b3440986a5e301ea74a8be",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0008",
+    "guid": "936ec0dc158747049b9c04fa8c665908",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0009",
+    "guid": "0896daf6e31446f4816cfd26d224cd20",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0009",
+    "guid": "b401d374d0a644ccaf4b5bdf99346f72",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0000",
+    "guid": "db06d2d27025412d9a97e706e23a2f1c",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0011",
+    "guid": "0b5fa4a552fb48cb9427b0ea3f1139cb",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0011",
+    "guid": "af2e3cb574bc48868d5d4fa1dbf77036",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0012",
+    "guid": "5a295f8c5e824899bfb7378076ee464b",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page001Cue0012",
+    "guid": "1b29fe58cc274c15ad41a513a870b082",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page001Ans0013",
+    "guid": "55376eb3a369497a8ad9056e47b2b2b8",
+    "source": "aranka-AranBook01Page001.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page002",
+    "guid": "89bb86f6da1f4b64a7903222b48366d9",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0001",
+    "guid": "3444e33551474f5fbf3fe19bf811d374",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0002",
+    "guid": "a6f925977d3a4877ad4ab0f66a1919b6",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0002",
+    "guid": "2ce04c3e7a0245189673cba3bd644d42",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0003",
+    "guid": "8245ef827aca4fbabbc862940a7a076d",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0003",
+    "guid": "88f8c292041b49b99b46499b3fc9cf88",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0004",
+    "guid": "6a3135f3bcb54475b9997cd297143f61",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0004",
+    "guid": "452b63c80e574bfc84d25392347e766b",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0005",
+    "guid": "d534749cad244b6cbdda15a34938012d",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0005",
+    "guid": "6eb23714c4014b50b4a48caf7cc99f53",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0006",
+    "guid": "2683a1d1d82746bca0d1f6ff79ca38c4",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0006",
+    "guid": "0a0ce90058dd4dd4877a5d611acb596d",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0007",
+    "guid": "c02f7349260e403db9a3b2479ef70e22",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0007",
+    "guid": "6a7f9cd39550498bb9b6e3390a1961e3",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0008",
+    "guid": "d65ba4266d2c4cb69f3d9faef09f1bf6",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0008",
+    "guid": "1f9446524f894edea7b8a99bbff632db",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0009",
+    "guid": "392d41cb042448fbba54ebf380d456b1",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0009",
+    "guid": "a8af0dfc7d4943b99f755119ff4a5d1c",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0000",
+    "guid": "b2660000ebe84bfda56672520a12353d",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page002Cue0000",
+    "guid": "75725e23896548fda605a9d61f72efa1",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0011",
+    "guid": "1ecd71b3d5bc445d8988c6bbf0c50c75",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0012",
+    "guid": "6a2975cc8c1a4ec5a3750502796528bb",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0013",
+    "guid": "553f62a71a0d4164b8dc46a8896526b7",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page002Ans0014",
+    "guid": "ad925f915f7042769fe26164bb8fd499",
+    "source": "aranka-AranBook01Page002.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page003",
+    "guid": "92ae6be1fb5941798dcb293ae88f9eff",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page003Cue0001",
+    "guid": "c44b19b158594cd1b748ae6b38591172",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page003Cue0002",
+    "guid": "7d4cb79fe11d4f198105efb47cc86146",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page003Cue0003",
+    "guid": "6d69b0a8cff04fd3b36282be1bb7c257",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page003Cue0004",
+    "guid": "a5d510cfa7bc4f9985db3dc9d6d8d332",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page003Cue0005",
+    "guid": "66440ec2156b4bed9f822584e3fc3d6b",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page003Cue0006",
+    "guid": "0e7fed613c974e8aa201b413105bc895",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page003Ans0008",
+    "guid": "39c6df2c2db240db9aa8e4023ce097f7",
+    "source": "aranka-AranBook01Page003.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page004",
+    "guid": "2394521186f046b9831bddabcb2a9b10",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0001",
+    "guid": "ab5f701050b44a2fac93aa3f642d2ed5",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page004Ans0002",
+    "guid": "ee24d2c57f754d75b061a0056e91a0d7",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0002",
+    "guid": "72ac12f69fe24c619b5dcce12d9ec26d",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page004Ans0003",
+    "guid": "790b0e4756794022b1834d4646aa5139",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0003",
+    "guid": "ae05ac21854d4fda87d47541befbe1cb",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page004Ans0004",
+    "guid": "8e5eaa0a99ee41cdb5c5e29fd9bc6320",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0004",
+    "guid": "60ce5db105c74d14bc2dc1da9555340c",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0005",
+    "guid": "b8942264db57478cba876161028b27f7",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0006",
+    "guid": "b0da2db1817c4c2989c30f41900fcd5a",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page004Ans0007",
+    "guid": "0d97ff5b67e742cdb8ec140e5f6c5f7f",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0007",
+    "guid": "eec014aae31646c2b08869eb43811c27",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0008",
+    "guid": "4b9b4ddc09c6463fadb4fa436eecea0a",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0009",
+    "guid": "05a9a8c1eeb942618dc75f79e85c1ca1",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0000",
+    "guid": "db6c6a0384234d5e98970d8028d84630",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page004Cue0011",
+    "guid": "125d0f62216240dd81792c7d6a52a7e1",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page004Ans0012",
+    "guid": "898a7711f7cb4101a2f95e52f3d85067",
+    "source": "aranka-AranBook01Page004.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page005",
+    "guid": "68c82816255748508b58db82225ae95b",
+    "source": "aranka-AranBook01Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page005Cue0001",
+    "guid": "dedfa46d23f143ee9e87ffb399cbf72e",
+    "source": "aranka-AranBook01Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page005Cue0002",
+    "guid": "ea5cad22bee74ac5b0e107fcdd942452",
+    "source": "aranka-AranBook01Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page005Ans0003",
+    "guid": "e72b2c8c783c4a3087d07714e3c1aba6",
+    "source": "aranka-AranBook01Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page005Cue0003",
+    "guid": "b7192eb176dd4bd183cf79fb7e368ce2",
+    "source": "aranka-AranBook01Page005.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page006",
+    "guid": "48a8e0f34f6941f298ecb11102529795",
+    "source": "aranka-AranBook01Page006.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook01Page106",
+    "guid": "27f4ccaedff2421ebe47e990a2c1a7b3",
+    "source": "aranka-AranBook01Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page006Cue0001",
+    "guid": "14f90a00816e4bd3a49331166d5c85cc",
+    "source": "aranka-AranBook01Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page006Cue0002",
+    "guid": "662587c96d244cc4b7ab214a4a2529b1",
+    "source": "aranka-AranBook01Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook01Page006Ans0003",
+    "guid": "c39d6af6857d4f2ab4564c7dbc9303c1",
+    "source": "aranka-AranBook01Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook01Page006Cue0003",
+    "guid": "4aeb4b7421ec419fb2729e91c216c827",
+    "source": "aranka-AranBook01Page006.cs"
+  },
+  {
+    "type": "CampingEncounterConfigurator",
+    "name": "RanRomAranCamp2",
+    "guid": "19701c537d4e476ea9bee8dcc22dba36",
+    "source": "aranka-AranBook02.cs"
+  },
+  {
+    "type": "DialogConfigurator",
+    "name": "RanRomAranBook02",
+    "guid": "b9068ea8642f4c9da4a338ebd5ba316f",
+    "source": "aranka-AranBook02.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook02End",
+    "guid": "7e24dc93f5d540c091644467e8eb52a0",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02EndCue0001",
+    "guid": "0b03f923a5174742b7bad5ad18149d4a",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02EndCue0002",
+    "guid": "c4582f7bd4854099a6ddc6a4eef1eccc",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02EndCue0003",
+    "guid": "74dada6cf87d4d45b559c126015917fa",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02EndCue0004",
+    "guid": "aea2ef76409c4dbcb9548792024dc8df",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02EndCue0005",
+    "guid": "5a713cb1c3f642adaab8d1641175c1af",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02EndCue0006",
+    "guid": "0a8d5ff9dda64c6db10784bfcdbbeb14",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02EndCue0007",
+    "guid": "bc13df0cdde64ac3a1cc9eeae545bec3",
+    "source": "aranka-AranBook02End.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook02Page001",
+    "guid": "6dd0589c729f4b13bbf334b8af299921",
+    "source": "aranka-AranBook02Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page001Cue0001",
+    "guid": "b8f05f204c874aa69e7bab5ddf78b7ee",
+    "source": "aranka-AranBook02Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page001Ans0002",
+    "guid": "675ffa84b9a546abbfc8bc4e9599c575",
+    "source": "aranka-AranBook02Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page001Ans0003",
+    "guid": "68d8558ec4d94b68bb355fb2946a126b",
+    "source": "aranka-AranBook02Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page001Ans0004",
+    "guid": "9f0880445a204922840af6c37d463416",
+    "source": "aranka-AranBook02Page001.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook02Page002",
+    "guid": "85cbfdcbbf424bd4affb995eba564034",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0001",
+    "guid": "0fbede8aed26490e931f2a029f2fd699",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0002",
+    "guid": "4fe8c3a04b30431da5f6e277b2404b33",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0003",
+    "guid": "8b70f929979d4272bd944483599276be",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0004",
+    "guid": "d09a787568014339a82267b91e9d6b3e",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0004",
+    "guid": "7e525d797f604e96a170d54614aba2cd",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0005",
+    "guid": "1b3948b00f6349d09ac6c647c329d549",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0005",
+    "guid": "1e9a95893f014ee8ad47825e00c86187",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0006",
+    "guid": "61a4bb5bc1fb448aa80f87c11b5825df",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0006",
+    "guid": "379210f94cba40f9a622128f070f91d8",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0007",
+    "guid": "0180ada016f34e5bbce2cc95f1cbecb5",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0007",
+    "guid": "1a0b01f25e9247219907ffa47e97008c",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0008",
+    "guid": "54408cb6773f48bf99d18d2d00ce9217",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0009",
+    "guid": "3e9b3eb1e6844e0fb7b517c71a9fbe41",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0000",
+    "guid": "8d91ebe0c27143f79b195905a6c49b00",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0011",
+    "guid": "46181423cd264a649b98e69b9b9635b8",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0011",
+    "guid": "6b829d21e43942eea17f1f142365b199",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0012",
+    "guid": "534ef6101dce414388f70ac20357886d",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0013",
+    "guid": "29ea09106b9c4cc18f52f2fb975ecd42",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0014",
+    "guid": "d2055e7c11b54857a9ad9ab727ef0262",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0015",
+    "guid": "b84162f6b8b448dda611390b5d8531fb",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0015",
+    "guid": "8cb7273193894bc58038d388c52e5f86",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0016",
+    "guid": "e9eda31749a44e26b257b5731ed0f5ee",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0016",
+    "guid": "2d695fbcda6b42979e0522bb28166519",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0017",
+    "guid": "b2c836188c2044d5a50d924c52b7d8a1",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0017",
+    "guid": "02f02708630247d1ab25ea7dc79b8bef",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0018",
+    "guid": "82ecceed5df3471a80a0c136c7862f38",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page002Cue0019",
+    "guid": "af8b360632854998873e60fb918ee4f1",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page002Ans0010",
+    "guid": "a07e838e304b44979c5f86fa1deda2a0",
+    "source": "aranka-AranBook02Page002.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook02Page003",
+    "guid": "2a4cab14b0bc430bb777ed36b2525953",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0001",
+    "guid": "9198a533a24e48dbb4442a8b96353a67",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0002",
+    "guid": "1d4e685079254f84a64c07132c3ecb1a",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0003",
+    "guid": "1d9705fb064341aa9c579f5b135d9774",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0004",
+    "guid": "37e95c43648c491d9b31cf1db3f31107",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0004",
+    "guid": "0fd9d7cb8fbc48cd9a568de6cb20d36b",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0005",
+    "guid": "82f20f28e5d44c3b95774bf45fa57c50",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0005",
+    "guid": "e3c3f22eae744e86b61dcbba902635cf",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0006",
+    "guid": "3dbeb3381a8a40f1bba6b07325db4236",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0007",
+    "guid": "b9ab9000aafb41dfbb9a559dab10a549",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0008",
+    "guid": "870887533441464aa02bedb8bcd21fb2",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0009",
+    "guid": "6be963a49fa7493cb385f0bae7982c9d",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0000",
+    "guid": "309d4433f40e41719419f696bd6e57d9",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0011",
+    "guid": "778af6f520924b74909e0acf7137d541",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0011",
+    "guid": "ab24717aa6924bc5a222a9647bf860a0",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0012",
+    "guid": "306d4685cbb147df969967729fc26661",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0012",
+    "guid": "f04c5d81c25e465a8181a0be74b80f94",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0013",
+    "guid": "cbf7cd7eaa964a6cb4927bf0eb8b3cdd",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0013",
+    "guid": "3792c1fcf6114fddaa96b92bd8f83106",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0014",
+    "guid": "d828d3c58d8c4be099bdf8d5b858023f",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0014",
+    "guid": "b4f057c619074b0a9988486a2861b0a6",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0015",
+    "guid": "75fa285912dd45d8b518e8afa5187a02",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0015",
+    "guid": "761db4bc10b1404b9540555f1e4bc82b",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0016",
+    "guid": "bc36ef36b61941868b195cd10fc6e710",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0016",
+    "guid": "8271a7728f48483dbf088dead612be34",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0017",
+    "guid": "c0d9a7128d994383b7a9f25007dddd73",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0017",
+    "guid": "a0169d9c807c45f2932c391792b57a4e",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0018",
+    "guid": "c82cd2b1b66a4320a21cc1c5d0b06b63",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page003Cue0018",
+    "guid": "75a4c204c70f46f6ae75c4294c46ea30",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page003Ans0019",
+    "guid": "4fd74e66872b4f0f842aee46746eb6df",
+    "source": "aranka-AranBook02Page003.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook02Page004",
+    "guid": "f9047640858943f7a29d10ef6aabee4e",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page004Cue0001",
+    "guid": "117023328e974b0a8a84de561a78ed4f",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page004Ans0002",
+    "guid": "59db3146170443dc9a26720d99dafba4",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page004Cue0002",
+    "guid": "0f98f305134a4f24bcb8cce088498ebf",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page004Cue0003",
+    "guid": "44578c53b5224d58b39150577004c8ff",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page004Cue0004",
+    "guid": "b62c70fb99e14824ba6b414e62b717e5",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page004Cue0005",
+    "guid": "d7fc3f614e2f4ce7a1972928db004124",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page004Ans0006",
+    "guid": "e6b8f43f8fce432991246c6a1071b57a",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook02Page004Cue0006",
+    "guid": "3e04ae85df2248dfa3f847c6a970edd5",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page004Ans0007",
+    "guid": "6ca96d6a2f9041289b432b350e901496",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page004Ans0008",
+    "guid": "85b74b2d3f784c06a0c31b4f06e486a6",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook02Page004Ans0009",
+    "guid": "d477dcf13536498b9a9ff9f90c7f858e",
+    "source": "aranka-AranBook02Page004.cs"
+  },
+  {
+    "type": "CampingEncounterConfigurator",
+    "name": "RanRomAranCamp3",
+    "guid": "e162f1cea11345b8a0e04eb353ad3a25",
+    "source": "aranka-AranBook03.cs"
+  },
+  {
+    "type": "DialogConfigurator",
+    "name": "RanRomAranBook03",
+    "guid": "fe8542a7a90d459c99d29921694f4d0d",
+    "source": "aranka-AranBook03.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03End",
+    "guid": "5190a877202044c69d98c7f05b8640e6",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0001",
+    "guid": "b18d250fa2fb4fdf9fe4eba04e9d1655",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0002",
+    "guid": "4b5628ce679446cc887a9d4173c9196d",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0003",
+    "guid": "7e5db279e53946f2bacdf91ba8c1ed5a",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0004",
+    "guid": "32311b13853d4d19b38e16b897eb099c",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0005",
+    "guid": "be931fd1a98a44d7be62ddf1df1b6769",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0006",
+    "guid": "d12fa4de60984a1c96eb72cc85d4231d",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0007",
+    "guid": "c4aa8d5ab084449a92b495d81e7a9f6e",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03EndCue0008",
+    "guid": "31b1609c0a8b4788b3e4e82f111aba53",
+    "source": "aranka-AranBook03End.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03Page001",
+    "guid": "63bd07a93543434a98dc5a5f1d34fd35",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page001Cue0001",
+    "guid": "286b92d6cf274639b768b0371bedb618",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page001Ans0002",
+    "guid": "29e5ed0f4b364d53b6a53375b8a6f754",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page001Cue0002",
+    "guid": "26ce5d18b36a4481947e18ce36633c81",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page001Ans0003",
+    "guid": "0849c62f1aa74df998b92e2a0ef46529",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page001Cue0003",
+    "guid": "563ec5cf98c8480794e4d7e1f5d11d9d",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page001Ans0004",
+    "guid": "bce4a745a73b44a89f9558bcd8f9dba9",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page001Cue0004",
+    "guid": "47c1f5f1a19a47fba577e793934e3b63",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page001Ans0005",
+    "guid": "7d797f4ee1bb41dd8c923e959463eec7",
+    "source": "aranka-AranBook03Page001.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03Page002",
+    "guid": "39adc34cb6ed4e8490408bb1f231e4d1",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0001",
+    "guid": "c20caf58c6c34b6ba41a3bd508b49064",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page002Ans0002",
+    "guid": "8ba987691e2a4ba19dd56dbd5f7cc57b",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0002",
+    "guid": "53445840206549baa52e1cb58ae1eb3a",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0003",
+    "guid": "559b391b6774486e91dda98aa5c0c8d5",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page002Ans0004",
+    "guid": "6fa2fbfee97249ab802c5567559e1bc6",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0004",
+    "guid": "e1b4f8d099a240f3aa9d7adc3c0358af",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page002Ans0005",
+    "guid": "42dcd31ede2f440f87e639e6ad1d936d",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0005",
+    "guid": "c458199ac99841e898d4b485c338ffe9",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0006",
+    "guid": "6393fa3463b447f6808a14a729ce4eee",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0007",
+    "guid": "8636263df5ce4e0e8953e2e9e12acd5e",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0008",
+    "guid": "3f081e6e96fb4ffa82d4301dc37a1fdc",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page002Ans0009",
+    "guid": "3428470153ab4ff19ba62060397d1a8c",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page002Cue0009",
+    "guid": "61e2e258b03342fea536adea55e85747",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page002Ans0000",
+    "guid": "fb76ca51ad514aad943379718646746c",
+    "source": "aranka-AranBook03Page002.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03Page003",
+    "guid": "5fedc221cd864f868c7d7dbb7823e2d2",
+    "source": "aranka-AranBook03Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page003Cue0001",
+    "guid": "0f077ad32cf24ba4bb72e7149a352e57",
+    "source": "aranka-AranBook03Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page003Cue0002",
+    "guid": "8758a1fdf5d64679bcc5383947c2911a",
+    "source": "aranka-AranBook03Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page003Ans0003",
+    "guid": "6b817ca0113a4b22b2fbc506be186b41",
+    "source": "aranka-AranBook03Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page003Cue0003",
+    "guid": "b96c9f280af5466d8be9aa4363debdf2",
+    "source": "aranka-AranBook03Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page003Ans0004",
+    "guid": "8c8eaea6fd444542a37939e326fd60cd",
+    "source": "aranka-AranBook03Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page003Ans0005",
+    "guid": "4a7d20e8a9bf40f5a9a4ae09e729d72e",
+    "source": "aranka-AranBook03Page003.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03Page004",
+    "guid": "9317f74874de4fe38bb68dacf9ca6b31",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0001",
+    "guid": "0c54987203ce4fb58a19283310619ee2",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0002",
+    "guid": "5bbdfedd2ffe4df1bf4c2a3f5ee30e77",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page004Ans0003",
+    "guid": "e47e36618f1d4b40a01bdf751a00906d",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0003",
+    "guid": "a76283e6a3174938a88ca4d862567221",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0004",
+    "guid": "b8a9d6f9a90f4fe595607ec0dd271f04",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page004Ans0005",
+    "guid": "5a6b4a5edfdf44efa2de745f57a905a3",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0005",
+    "guid": "847f3e5d66e64581a39f6de4d0d2b5fd",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0006",
+    "guid": "ed6ee13f7e9b4de2a6cd50dbbb1767c6",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page004Ans0007",
+    "guid": "c984415112ea4e4fbeb464c5a7f2a89a",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0007",
+    "guid": "1d5197ae4e11481b9df99cf6a9d777ea",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0008",
+    "guid": "7b13e5166df64a3f884d6ecaa3b8c199",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page004Cue0009",
+    "guid": "0b0509d22365495c838dde306cca17a3",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page004Ans0000",
+    "guid": "c766227c6c964c0895b5666b5cbcadfb",
+    "source": "aranka-AranBook03Page004.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03Page005",
+    "guid": "6a0105c534e9480691d50309bc71f41b",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page005Cue0001",
+    "guid": "d6a7d604f83f4891a924528ed2ea4042",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page005Ans0002",
+    "guid": "4596789166a14dcd920e72a822b28beb",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page005Cue0002",
+    "guid": "2466dcbb70634f428c64ef3393bb5979",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page005Ans0003",
+    "guid": "3c2d25f4d3f1482c92b9d5f2bd0b8617",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page005Cue0003",
+    "guid": "15a3cf0630de459abb0fda98cfc3e002",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page005Cue0004",
+    "guid": "5fdedb61a8364586b8aa66a23a2fc781",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page005Ans0005",
+    "guid": "580e747e61c2487398579134ee0abb8a",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page005Cue0005",
+    "guid": "9d394a6681db433ca15811cd5f9a3c5b",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page005Ans0006",
+    "guid": "53949effa6b0467ca2492ef669674cc9",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page005Ans0007",
+    "guid": "bb7b8143322248a29eaffbb44676e141",
+    "source": "aranka-AranBook03Page005.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03Page006",
+    "guid": "6f87a7fc42b94540a2964c0d6369a5f6",
+    "source": "aranka-AranBook03Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page006Cue0001",
+    "guid": "6124504af0064d5ba2b9fa9fc50d7fd2",
+    "source": "aranka-AranBook03Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page006Ans0002",
+    "guid": "2582f1f7bb4044fea04b5227fafd6016",
+    "source": "aranka-AranBook03Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page006Cue0002",
+    "guid": "dfa888090d9a48a387a939f7352bb2f5",
+    "source": "aranka-AranBook03Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page006Ans0003",
+    "guid": "077ead36cf59412f8b318a576d0f58a3",
+    "source": "aranka-AranBook03Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page006Ans0004",
+    "guid": "4ebfa28f6ed24fbab9e3bcfb8a251e20",
+    "source": "aranka-AranBook03Page006.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook03Page007",
+    "guid": "ead545ebd2624ced9aa623c29e718b68",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0001",
+    "guid": "afb30f6ff44941abaf9a32964b965298",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0002",
+    "guid": "906d3c8e5b1d46559451b4dfc5c93b14",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0003",
+    "guid": "69552ce794c74a6ebf89c275158e9dce",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0004",
+    "guid": "ec5b716d474f4a6e854e87528f9e24ea",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0004",
+    "guid": "671127c2e20c4e3aa9608e4eeb953631",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0005",
+    "guid": "479ade1459834f7286aaaf77ba352a4b",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0005",
+    "guid": "2f014179f7a64086823089c3021efc15",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0006",
+    "guid": "53a1821d374c425f9c439613b114a064",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0006",
+    "guid": "d2f02eefdbb64de89a052ff17eded9bf",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0007",
+    "guid": "cebef2c3fb424da48a7391748f52adfd",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0007",
+    "guid": "446609cc7d4948a3be9631dca1ca3b87",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0008",
+    "guid": "760062c37ae4421494c8fa1561871ccf",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0008",
+    "guid": "fb0cc9f3a49a4d539cb48db8f3154289",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0009",
+    "guid": "b4bdddc31034453d82df13ff9fc5fac6",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook03Page007Cue0009",
+    "guid": "695a1e57f26641e9abd018a609fce72f",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0000",
+    "guid": "8ab68171a8674582bcaa705997840688",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook03Page007Ans0011",
+    "guid": "b2d319a4e87f4ef0a45a489b56906cc8",
+    "source": "aranka-AranBook03Page007.cs"
+  },
+  {
+    "type": "DialogConfigurator",
+    "name": "RanRomAranBook04",
+    "guid": "14ffcdd473704e5dbc8cfe5f98b582b8",
+    "source": "aranka-AranBook04.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Azata",
+    "guid": "be8fec3ffe754246a07095c78fdf7621",
+    "source": "aranka-AranBook04Azata.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04AzataCue0001",
+    "guid": "22bd10fea4714daa8c4ac984041545d6",
+    "source": "aranka-AranBook04Azata.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04AzataCue0002",
+    "guid": "61461d05999b46218e7700e6596243b5",
+    "source": "aranka-AranBook04Azata.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04AzataCue0003",
+    "guid": "363860bffda1404db6ec996384fe2f26",
+    "source": "aranka-AranBook04Azata.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04AzataCue0004",
+    "guid": "43936228f4614272a7c7e25ebaaec2c7",
+    "source": "aranka-AranBook04Azata.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04End",
+    "guid": "98bb51660afc4ab38ac73cd7efcb616c",
+    "source": "aranka-AranBook04End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04EndCue0001",
+    "guid": "0efacda0a75249f1ac48c2e70c53a4d5",
+    "source": "aranka-AranBook04End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04EndCue0002",
+    "guid": "b37d73e9f8d747f392753f83cb472c3a",
+    "source": "aranka-AranBook04End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04EndCue0003",
+    "guid": "a16f4be6de0a4f35a9b13eca4395d6e5",
+    "source": "aranka-AranBook04End.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page001",
+    "guid": "3bd737a0934b4e9b9bd35ef725a7524a",
+    "source": "aranka-AranBook04Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page001Cue0001",
+    "guid": "2787bcb0697747208cd6f5f39a3ddcec",
+    "source": "aranka-AranBook04Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page001Ans0002",
+    "guid": "622dce71370b40109fa95af611f5ba55",
+    "source": "aranka-AranBook04Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page001Cue0002",
+    "guid": "57aa3c9736534b1398ca753ec0442a97",
+    "source": "aranka-AranBook04Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page001Ans0003",
+    "guid": "8217a278ba1948f7b3f7d9260d5d2159",
+    "source": "aranka-AranBook04Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page001Cue0003",
+    "guid": "e0241f2f0c584dda88fe37b9a54fc6a5",
+    "source": "aranka-AranBook04Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page001Ans0004",
+    "guid": "a337d9dffc0f4b27b065afc851aa2c8b",
+    "source": "aranka-AranBook04Page001.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page002",
+    "guid": "e983bfab659648f4aba26a301dab9609",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page002Cue0001",
+    "guid": "46285131901a487b981f8cb39228b7bc",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page002Ans0002",
+    "guid": "126df048c7d3497888b3135fd16c5ba4",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page002Cue0002",
+    "guid": "c97ad388ea974973a24d2d80c2e47884",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page002Ans0003",
+    "guid": "fbd05f252edb4b04a6e36150ad2da9e5",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page002Cue0003",
+    "guid": "ca386aef7ece4cb68e50e718ba706414",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page002Ans0004",
+    "guid": "539ebebd2aa84fa695892192fa73b900",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page002Cue0004",
+    "guid": "1ee1172a3ce24a03b9040c1257fe73f9",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page002Ans0005",
+    "guid": "33382e3971b9407f96110224675f01bc",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page002Cue0005",
+    "guid": "527498d896e34fc1a38d6dfb08158595",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page002Ans0006",
+    "guid": "ae140efb49134de2a5fa0e3804a0b25e",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page002Ans0007",
+    "guid": "02b32177fde24e958afe07d2eb9a12c2",
+    "source": "aranka-AranBook04Page002.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page003",
+    "guid": "d7061b61765b4d75a42a0117b3f4fa63",
+    "source": "aranka-AranBook04Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page003Cue0001",
+    "guid": "2c4027b7944346f5ae11a4b1f2fc1413",
+    "source": "aranka-AranBook04Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page003Ans0002",
+    "guid": "90154829de76427ca95a3cd58634c8d4",
+    "source": "aranka-AranBook04Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page003Cue0002",
+    "guid": "7fcf90d3eee348e0b955e0256b02dbcf",
+    "source": "aranka-AranBook04Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page003Ans0003",
+    "guid": "b17a736cc8884ee18f83b46ee3aafdc7",
+    "source": "aranka-AranBook04Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page003Cue0003",
+    "guid": "93cc5005ff084d3ea7c2ab35e795a503",
+    "source": "aranka-AranBook04Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page003Ans0004",
+    "guid": "ec352b1f8d844ae081420c383598965f",
+    "source": "aranka-AranBook04Page003.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page004",
+    "guid": "62984a44f37743419b03c05d32de27d5",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0001",
+    "guid": "5ba39debf1f44b08bc6a9c773e576a9a",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0002",
+    "guid": "2b96ca2849af49ed9cd2ca65a642dfd7",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page004Ans0003",
+    "guid": "f795d0badffc4e2bb7df291afcfa635b",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0003",
+    "guid": "355ba4462aef44afbb6f6a4159b93be6",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page004Ans0004",
+    "guid": "0acf923610054a4788796f6ee08dda4a",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0004",
+    "guid": "f95ad7d1afbb408185a62ba91fc6c626",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page004Ans0005",
+    "guid": "1ae155789aa34fe1a6a70e7aa4811cf0",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0005",
+    "guid": "0b82312600834f3a9942398af201103d",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0006",
+    "guid": "ec9a4b20e2554ab4a97f57a55ed5531d",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0007",
+    "guid": "516a4bf58a3b48c19c61be6b420b786a",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page004Cue0008",
+    "guid": "74fbdb2b084e47fa9bfdabcdad944150",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page004Ans0009",
+    "guid": "e81482cad5a7414e908c7b66120c88b0",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page004Ans0000",
+    "guid": "5deec1f762da4b6695de2171b82c4ff1",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page004Ans0011",
+    "guid": "30c1f33f0bd14a6eb5a14a8dc3999844",
+    "source": "aranka-AranBook04Page004.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page005",
+    "guid": "179ef1d1fdd74652a363531e20d47b19",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page005Cue0001",
+    "guid": "dbfd1056436c4b0d8abaec9bc1cff4c0",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page005Ans0002",
+    "guid": "627ebe72add745528be5c19d1df02b96",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page005Cue0002",
+    "guid": "0ec855e2d8574eb69778dbbccae5e3aa",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page005Ans0003",
+    "guid": "cb154cfaa63d46f7b5172a3aacd4bb9a",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page005Cue0003",
+    "guid": "a1a79b072ff04bb684b9e7f607dd118c",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page005Ans0004",
+    "guid": "ecb8ae31e64943e9af15099116baeac4",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page005Cue0004",
+    "guid": "b062bce74cda4d4fa765963573530b79",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page005Ans0005",
+    "guid": "c124dba5233b42eb869c9ce539b01fd7",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page005Ans0006",
+    "guid": "1fc901c8b72e4438a718d2e211dc60a3",
+    "source": "aranka-AranBook04Page005.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page006",
+    "guid": "5aeed9b4211a4d29b03137828a1aef4f",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page006Cue0001",
+    "guid": "011c15fef41e4d898a7c230317aae7f4",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page006Cue0002",
+    "guid": "61c9db58870046e4921925f06d45c479",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page006Cue0003",
+    "guid": "e4f679c12c4641d9928331ef175534ae",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page006Ans0004",
+    "guid": "d0016c6a9e024d92b87f15389b9b0a8c",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page006Cue0004",
+    "guid": "db5b1fff0af5491a992efa554b0e8d39",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page006Ans0005",
+    "guid": "eabcc0db9f4f42d9822d078d53d1b2b7",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page006Cue0005",
+    "guid": "6b9cfcc2310e40f5be3598466ef9e91b",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page006Ans0006",
+    "guid": "8589a5841fac4c97a27af8b9100f1555",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page006Cue0006",
+    "guid": "7ed1e4ed44554b59a8b4576f301f2a8d",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page006Cue0007",
+    "guid": "978ecc2a473f4f0eadb3e1fba68cd3a3",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page006Ans0008",
+    "guid": "e60eda2c86ce400099552f16282c4a23",
+    "source": "aranka-AranBook04Page006.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page007",
+    "guid": "30231c52e6654f12b23fdbdecfe98931",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page007Cue0001",
+    "guid": "5c7171b9654448f3a301d2c755ab41d0",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page007Ans0002",
+    "guid": "ffe235e5dd1548199fd7897bc6e95578",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page007Cue0002",
+    "guid": "970194bb71b94298bdc864b31268ad30",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page007Ans0003",
+    "guid": "dab0adee0c5d4743911c88f9f69bd0e2",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page007Cue0003",
+    "guid": "7cb15a0402f14e75876538b3ef85316d",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page007Ans0004",
+    "guid": "a571fe1730a54ff380ceb3d51898516d",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page007Cue0004",
+    "guid": "c97296d85989417f9a5cc57996559a2e",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page007Ans0005",
+    "guid": "bab0b5f03adc4ea7a77d471d14b9cd57",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page007Cue0005",
+    "guid": "cfda5bd67c5d409f9667cf5de74b6b2a",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page007Ans0006",
+    "guid": "0f925d8224ed46eda99134c93d54a77a",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page007Ans0007",
+    "guid": "3dc28de79a974579a708e5e07cfe72cd",
+    "source": "aranka-AranBook04Page007.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook04Page008",
+    "guid": "d056de4985c84d9394d9299051dacb77",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0001",
+    "guid": "e20f815dbd664d418c1ed87eb10793af",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0002",
+    "guid": "b644cb9ccc3544bd84c15736e8853b61",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0003",
+    "guid": "9e10b7df69b048d6af4e5b3ca7fde1d9",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0004",
+    "guid": "8adaad8eed0442d5aae55097eea402c4",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0005",
+    "guid": "321d5d307362431eaf902f644ae72a63",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page008Ans0006",
+    "guid": "dacd0abe65a64b47aa1099cd38d4f6f8",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0006",
+    "guid": "1d9fd0a905954eaa89a09c2822b223c9",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page008Ans0007",
+    "guid": "732d2cec6511436ca5f7ae5a246845fa",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0007",
+    "guid": "1e3862b4ae7846a9810cffcb516a7af4",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page008Ans0008",
+    "guid": "1117a8e48a1542fcad459e8af61a15d7",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0008",
+    "guid": "1f9bee871418462091866b55e70cdd75",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page008Ans0009",
+    "guid": "66c13df7b1db43029960791d3a7bff7b",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook04Page008Cue0009",
+    "guid": "44d2493f278249dcb10f935b8a0a8400",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page008Ans0000",
+    "guid": "e9a4291e237f42369f77d18a5e31a7d5",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook04Page008Ans0011",
+    "guid": "17719f42b636424383107c22477b1062",
+    "source": "aranka-AranBook04Page008.cs"
+  },
+  {
+    "type": "DialogConfigurator",
+    "name": "RanRomAranBook14",
+    "guid": "1650593635d947f0b28fc1900b10d4d6",
+    "source": "aranka-AranBook14.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook14End",
+    "guid": "84f1179480ac4211aab52a7c31853e9e",
+    "source": "aranka-AranBook14End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14EndCue0001",
+    "guid": "599e7c0cc51741cda1bc55b787734c57",
+    "source": "aranka-AranBook14End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14EndCue0002",
+    "guid": "fefc9911dde04a76975e9027118c7935",
+    "source": "aranka-AranBook14End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14EndCue0003",
+    "guid": "f9df40d7d6b346298075b435eee6921c",
+    "source": "aranka-AranBook14End.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14EndCue0004",
+    "guid": "e16e5b0b3aea426a888e8bb61c521815",
+    "source": "aranka-AranBook14End.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook14Page001",
+    "guid": "fc18390e231648bab036124ac5108772",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page001Cue0001",
+    "guid": "5ad8c429020b4baead019d15c819aa55",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page001Ans0002",
+    "guid": "3c746b361ab6426e8e9a4d1fd6dfc81c",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page001Cue0002",
+    "guid": "6e2f415f75e741649410a82eca4e3ade",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page001Ans0003",
+    "guid": "cfb17c7f14dc40b99f53dd400e4066ff",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page001Cue0003",
+    "guid": "52120e7ce1bb4d399964cf80762276dd",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page001Ans0004",
+    "guid": "1c25291fa8524e2bbcaf998cc23678ad",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page001Cue0004",
+    "guid": "3259bb9b44ac473da5dff5e674c70967",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page001Cue0005",
+    "guid": "f3f713abf7fa4578a97ebf89dce24111",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page001Cue0006",
+    "guid": "7962bb86e03748688be9b1101220ad75",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page001Cue0007",
+    "guid": "bddc857e84e347a88b9803515fb5a7b8",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page001Ans0008",
+    "guid": "324c02306a924aa5a2bced2251288c6e",
+    "source": "aranka-AranBook14Page001.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook14Page002",
+    "guid": "693c5375d15747dc8879434b73041d34",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page002Cue0001",
+    "guid": "de36c4af5ea6418dabca067fbc54852d",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page002Ans0002",
+    "guid": "c6a4d4007ee04466939b9081843a005e",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page002Cue0002",
+    "guid": "69f2ef50d15a465b85664c980b8e2d34",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page002Ans0003",
+    "guid": "1b063e8c3af743faa00e21eb689274b1",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page002Cue0003",
+    "guid": "8540651d0c834c0d9fa0f30fe454cdff",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page002Ans0004",
+    "guid": "b72a826273df4cc9814bb9335fa9c21d",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page002Cue0004",
+    "guid": "860a439bdd1447cd9878fa72426adfea",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page002Ans0005",
+    "guid": "d29c1d065bdb43dda550378c6e8edd76",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page002Ans0006",
+    "guid": "9a573464ef1e475ab1f87ad7e3411ca9",
+    "source": "aranka-AranBook14Page002.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook14Page003",
+    "guid": "d31c89c1713b41af9746e4718ce6c9e1",
+    "source": "aranka-AranBook14Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page003Cue0001",
+    "guid": "3afd1311d35b47f188e5e2f8e332e0dc",
+    "source": "aranka-AranBook14Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page003Cue0002",
+    "guid": "83d94c9730b6451f9174b673912dfe1b",
+    "source": "aranka-AranBook14Page003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page003Cue0003",
+    "guid": "d87f52ed2be94de0ae0d2150abdf94bc",
+    "source": "aranka-AranBook14Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page003Ans0004",
+    "guid": "e87a7d4a200d41d7bcff127534e885d6",
+    "source": "aranka-AranBook14Page003.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page003Ans0005",
+    "guid": "9da942e417684d0d8729f63f94733d4d",
+    "source": "aranka-AranBook14Page003.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranBook14Page004",
+    "guid": "2f5e70ed81fc4284b39c283623a8c945",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page004Cue0001",
+    "guid": "5af7e83c7c0645db8af34353f498789d",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page004Ans0002",
+    "guid": "6e26cde0b2bb47ef8d2e46df41c5b956",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page004Cue0002",
+    "guid": "d11250697b204dea9e62466dab740ad7",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page004Ans0003",
+    "guid": "0d5c2debc2094ba498ce416ad35e710c",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page004Cue0003",
+    "guid": "249daaa2f54a4ab497980fb920e5462f",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page004Cue0004",
+    "guid": "ddad0a0d0b8841ea864fe314c4137e24",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page004Cue0005",
+    "guid": "1907daca5dc14b77aa02565a20114134",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page004Ans0006",
+    "guid": "565f2ed5e0b64072b458c2217f2dac8a",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranBook14Page004Cue0006",
+    "guid": "534179c80f414bed96a7232044abf752",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranBook14Page004Ans0007",
+    "guid": "d6ba4d334fce43f18478737fe02d7dc9",
+    "source": "aranka-AranBook14Page004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranChpt01Dial001Cue0001",
+    "guid": "fcd3f51c7ac049898c8b5d5cf07c47e7",
+    "source": "aranka-AranChpt01Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranChpt01Dial001Cue0002",
+    "guid": "72fba9b7d7c4442389c1803cffcedc3a",
+    "source": "aranka-AranChpt01Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranChpt01Dial001Ans0001",
+    "guid": "1a0a7b9d145c4275ba142148199b9f38",
+    "source": "aranka-AranChpt01Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranChpt01Dial001Ans0002",
+    "guid": "ec371a20edb84fa196844763ca6fc6d5",
+    "source": "aranka-AranChpt01Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranChpt03Dial001Cue0001",
+    "guid": "f8310f5f0c3f4900942c411a39517b97",
+    "source": "aranka-AranChpt03Dial001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranChpt03Dial001Cue0002",
+    "guid": "b49da9ecaa1a4b81bca519219909b04a",
+    "source": "aranka-AranChpt03Dial001.cs"
+  },
+  {
+    "type": "AnswerConfigurator",
+    "name": "RanRomAranChpt03Dial001Ans0001",
+    "guid": "695280010266469e98863d561fb82735",
+    "source": "aranka-AranChpt03Dial001.cs"
+  },
+  {
+    "type": "QuestObjectiveConfigurator",
+    "name": "RanRomAranQuestEntry0001",
+    "guid": "de72cd5dc29f4ce882d32e14042bd243",
+    "source": "aranka-AranQuest.cs"
+  },
+  {
+    "type": "QuestObjectiveConfigurator",
+    "name": "RanRomAranQuestEntry0002",
+    "guid": "af711de489484df5b81ef9996902e6a7",
+    "source": "aranka-AranQuest.cs"
+  },
+  {
+    "type": "QuestObjectiveConfigurator",
+    "name": "RanRomAranQuestEntry0003",
+    "guid": "b968d14237b94e60af8f01f84f42dcda",
+    "source": "aranka-AranQuest.cs"
+  },
+  {
+    "type": "QuestObjectiveConfigurator",
+    "name": "RanRomAranQuestEntry0004",
+    "guid": "d1e371f09017417b98b0aed58f3ab6ac",
+    "source": "aranka-AranQuest.cs"
+  },
+  {
+    "type": "QuestObjectiveConfigurator",
+    "name": "RanRomAranQuestEntryFail",
+    "guid": "4ef00caf2a644f42af5af39f7c381910",
+    "source": "aranka-AranQuest.cs"
+  },
+  {
+    "type": "QuestConfigurator",
+    "name": "RanRomAranQuest",
+    "guid": "1dacd3dfe1bf47c8a73074814e40b1c8",
+    "source": "aranka-AranQuest.cs"
+  },
+  {
+    "type": "PortraitConfigurator",
+    "name": "RanRomAranPortNorm",
+    "guid": "74305ccf427e4dbcb84d5cd632dffeff",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "PortraitConfigurator",
+    "name": "RanRomAranPortWing",
+    "guid": "3af0d47f30f34ddbbb8d0406cba9bc52",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "UnlockableFlagConfigurator",
+    "name": "RanRomAranConf",
+    "guid": "3564eeaca9484627bb82958e9bf1b449",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranActive",
+    "guid": "b2dfa8223ee24b84ab2795f86aa66ebb",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranFlirtEnd",
+    "guid": "285425f788fd41d7860df9a899e1f4a7",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranFlirt",
+    "guid": "da5580951e64443c8f9ebdb559efad7a",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranWarden",
+    "guid": "77f1192d6ff8428389351c7ef02c2bfc",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranRomance",
+    "guid": "2e98dbe685f045cdabf88b66e4cde9ff",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranDevil",
+    "guid": "ba279937ec924582805bea281c4b3d1d",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranAzata",
+    "guid": "342ef983802947e3a52b83769a89d315",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranAlurFlirt",
+    "guid": "a5235e681a7b484e8deb572b8193ff27",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranAlurRomance",
+    "guid": "d4dd8a50613e4d528913d0a24d06fca1",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "EtudeConfigurator",
+    "name": "RanRomAranHulrun",
+    "guid": "fa8f47ff79d148349f0f6e88fd610d33",
+    "source": "aranka-Main.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranSlide0001",
+    "guid": "47b061d3a35d435cbcdaccc504561818",
+    "source": "aranka-Slide0001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0001Cue0001",
+    "guid": "32301939b6e24e56891cfc66192b6db9",
+    "source": "aranka-Slide0001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0001Cue0002",
+    "guid": "ea4d27bcc016468c9797417ff5415f68",
+    "source": "aranka-Slide0001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0001Cue0003",
+    "guid": "c920ca38855e4219a668724168e4d95e",
+    "source": "aranka-Slide0001.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0001Cue0004",
+    "guid": "b50d04a6a4164e6992a97a5f32c57851",
+    "source": "aranka-Slide0001.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranSlide0002",
+    "guid": "4f17f3eefe374b5b8c8c98012f7f8322",
+    "source": "aranka-Slide0002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0002Cue0001",
+    "guid": "9d18a95ed6654f2fb7cc0a169f2605f8",
+    "source": "aranka-Slide0002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0002Cue0002",
+    "guid": "f9913d0397384fc29a310c02bd9db74a",
+    "source": "aranka-Slide0002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0002Cue0003",
+    "guid": "905d0a52b7cc448aa9fc0d89321cd7cb",
+    "source": "aranka-Slide0002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0002Cue0004",
+    "guid": "4ab2f0b947e444bfa9e5192f9d3a1db7",
+    "source": "aranka-Slide0002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0002Cue0005",
+    "guid": "9c44b02266bd4e2ea0b2a34cc2a766c2",
+    "source": "aranka-Slide0002.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0002Cue0006",
+    "guid": "7a345c9e6fb44e25a2b24493cb124240",
+    "source": "aranka-Slide0002.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranSlide0003",
+    "guid": "692ac68c328b46ff9935c8c7277683e6",
+    "source": "aranka-Slide0003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0003Cue0001",
+    "guid": "d6e706835a2c438896aa4507f3742d9c",
+    "source": "aranka-Slide0003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0003Cue0002",
+    "guid": "2a3d9fb00d6248fb92ee9cfc6a78a886",
+    "source": "aranka-Slide0003.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0003Cue0003",
+    "guid": "f24595af9b374ac697d6f8a06c47b323",
+    "source": "aranka-Slide0003.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranSlide0004",
+    "guid": "b1c703e139ad454d83de7e9260371807",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0001",
+    "guid": "f9db645af3e048f6b9d647b6f56c10e1",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0002",
+    "guid": "09e000c0ac21485e8d9a981386ecf2c6",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0003",
+    "guid": "8ccaecca7d9141e8bfca64404923c106",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0004",
+    "guid": "74c975812f294ed89ea3d1baa298ee2c",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0005",
+    "guid": "5ebbaaf2804c4a88b09fb597bd35809a",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0006",
+    "guid": "dfabe31062654feaa35c2b060931439b",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0007",
+    "guid": "cfae2a0cf2e34bd48acf4eaecd9d1d7d",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0008",
+    "guid": "dba625629b1649ae9de8e4f857519569",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0009",
+    "guid": "1c194cc46f254d5fbd5439e51ea90c01",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0010",
+    "guid": "d9c4f98e207847bba5a7d10a7fec5248",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0011",
+    "guid": "7986354882b14e55a66516e51e186142",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0012",
+    "guid": "100dbfc430ff48ebbb5c3ce48274af17",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0013",
+    "guid": "3de21613f9074615b3f3b7080b5bdbbc",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0004Cue0014",
+    "guid": "caec5f656004426396ee00bd420c7d1d",
+    "source": "aranka-Slide0004.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranSlide0005",
+    "guid": "60252aa2f40941aca735fca3d4355ba7",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0001",
+    "guid": "b6cf71efea374f08ba1c41fb6ff44cf5",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0002",
+    "guid": "ae0095b47f184868bf448f92478062ef",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0003",
+    "guid": "b4afc6e7fc75491fbcf18923785ba9c3",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0004",
+    "guid": "1df04d757f4a4c0db1c6327202ab839b",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0005",
+    "guid": "ec6fec926a6e4e9fbd952b3c611dee06",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0006",
+    "guid": "0f00abae3ff646a7a7120c960e19354e",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0007",
+    "guid": "be7ee2c6847a4161950780533de5a692",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0008",
+    "guid": "151a22d98c9f4ab2acdeb0e42199d63d",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0009",
+    "guid": "7121d3df58ee47fc8c426ab8440f7727",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0010",
+    "guid": "12b61bb6201d40a8866ab60701dd4669",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0011",
+    "guid": "ff9dfab90fbf43b5bd525a6009813551",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlide0005Cue0012",
+    "guid": "4942d32b09304aeab103fd93a759abd8",
+    "source": "aranka-Slide0005.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranSlideAeon",
+    "guid": "e87bee7465d14293b7a65402dfcb0a1d",
+    "source": "aranka-SlideAeon.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideAeonCue0001",
+    "guid": "22eaa37f58d247289ea6fb4eaa77f412",
+    "source": "aranka-SlideAeon.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideAeonCue0002",
+    "guid": "2b38b7eb8bf5443aa818819f81710781",
+    "source": "aranka-SlideAeon.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideAeonCue0003",
+    "guid": "49e9b1419960481b9359727767133b06",
+    "source": "aranka-SlideAeon.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideArueCue0001",
+    "guid": "959237a34dfe436eb8f088b4be259daa",
+    "source": "aranka-SlideArue.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideChilCue0001",
+    "guid": "0567e8d36a7a4eafb5475aba830b96ab",
+    "source": "aranka-SlideChil.cs"
+  },
+  {
+    "type": "BookPageConfigurator",
+    "name": "RanRomAranSlideHulr",
+    "guid": "35629f2caf6c4e37bbb5cd9852b38ce3",
+    "source": "aranka-SlideHulr.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideHulrCue0001",
+    "guid": "91179adfc07349589ab9786e33e89d99",
+    "source": "aranka-SlideHulr.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideHulrCue0002",
+    "guid": "62fe9294865d43dba2ce0342c745a107",
+    "source": "aranka-SlideHulr.cs"
+  },
+  {
+    "type": "CueConfigurator",
+    "name": "RanRomAranSlideHulrCue0003",
+    "guid": "f81e4e5548fd42828c541f7319b80de5",
+    "source": "aranka-SlideHulr.cs"
+  }
+]

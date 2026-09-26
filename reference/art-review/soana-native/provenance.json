@@ -1,0 +1,13 @@
+{
+  "source_bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "source_sha256": "96675554f6e7865d69530950486cdf42c1f28cc8c37df473f855f123aedc045d",
+  "asset_id": "0af9197af6d343c43b9674aec3576deb",
+  "unit_portrait": "023b749760d646e1aa82f24f6e09489c",
+  "texture_path_id": 9013222139909895625,
+  "texture_name": "231a5c36521276b4397debb620d5e035_BCT_Soana",
+  "width": 184,
+  "height": 244,
+  "image_sha256": "98a538aff8abeb3c59d542c3d9372afca78d137a655a99e337b077a9bab666d4",
+  "extractor": "UnityPy 1.25.3 Texture2D.image.save; no resizing, retouching or compositing",
+  "status": "Unit-linked native likeness research reference only; do not ship as newly generated artwork."
+}

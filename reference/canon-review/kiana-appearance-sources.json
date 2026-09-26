@@ -1,0 +1,657 @@
+[
+  {
+    "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Seelah_Q2/Kyana.jbp",
+    "AssetId": "180b0eaa5dce387458d2ebf0ee943985",
+    "Data": {
+      "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+      "PrototypeLink": "",
+      "m_Overrides": [
+        "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b",
+        "$AddClassLevels$032904c4-4bce-4587-83cf-67e70d81433b"
+      ],
+      "Components": [
+        {
+          "$type": "011e862b513000f4bae31886f3489ace, Experience",
+          "m_Flags": 0,
+          "name": "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Encounter": "Mob",
+          "CR": 4,
+          "Modifier": 1.0,
+          "Count": null,
+          "Dummy": false
+        },
+        {
+          "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+          "m_Flags": 0,
+          "name": "$AddClassLevels$032904c4-4bce-4587-83cf-67e70d81433b",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "m_CharacterClass": "!bp_48ac8db94d5de7645906c7d0ad3bcfbd",
+          "m_Archetypes": [],
+          "Levels": 5,
+          "RaceStat": "Strength",
+          "LevelsStat": "Dexterity",
+          "Skills": [],
+          "m_SelectSpells": [],
+          "m_MemorizeSpells": [],
+          "Selections": [
+            {
+              "IsParametrizedFeature": false,
+              "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+              "m_Features": [
+                "!bp_ac8aaf29054f5b74eb18f2af950e752d",
+                "!bp_d09b20029e9abfe4480b356c92095623",
+                "!bp_175d1577bb6c9a04baf88eec99c66334",
+                "!bp_121811173a614534e8720d7550aae253"
+              ],
+              "m_ParametrizedFeature": null,
+              "m_ParamObject": null,
+              "ParamSpellSchool": "None",
+              "ParamWeaponCategory": "UnarmedStrike",
+              "Stat": "Unknown"
+            },
+            {
+              "IsParametrizedFeature": false,
+              "m_Selection": "!bp_41c8486641f7d6d4283ca9dae4147a9f",
+              "m_Features": [
+                "!bp_ac57069b6bf8c904086171683992a92a",
+                "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "!bp_31470b17e8446ae4ea0dacd6c5817d86"
+              ],
+              "m_ParametrizedFeature": null,
+              "m_ParamObject": null,
+              "ParamSpellSchool": "None",
+              "ParamWeaponCategory": "UnarmedStrike",
+              "Stat": "Unknown"
+            },
+            {
+              "IsParametrizedFeature": false,
+              "m_Selection": "!bp_b8cecf4e5e464ad41b79d5b42b76b399",
+              "m_Features": [
+                "!bp_2a0ce0186af38ed419f47fce16f93c2a"
+              ],
+              "m_ParametrizedFeature": null,
+              "m_ParamObject": null,
+              "ParamSpellSchool": "None",
+              "ParamWeaponCategory": "UnarmedStrike",
+              "Stat": "Unknown"
+            },
+            {
+              "IsParametrizedFeature": true,
+              "m_Selection": "!bp_b8cecf4e5e464ad41b79d5b42b76b399",
+              "m_Features": [
+                "!bp_2a0ce0186af38ed419f47fce16f93c2a"
+              ],
+              "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+              "m_ParamObject": null,
+              "ParamSpellSchool": "None",
+              "ParamWeaponCategory": "Longsword",
+              "Stat": "Unknown"
+            },
+            {
+              "IsParametrizedFeature": true,
+              "m_Selection": "!bp_b8cecf4e5e464ad41b79d5b42b76b399",
+              "m_Features": [
+                "!bp_2a0ce0186af38ed419f47fce16f93c2a"
+              ],
+              "m_ParametrizedFeature": "!bp_31470b17e8446ae4ea0dacd6c5817d86",
+              "m_ParamObject": null,
+              "ParamSpellSchool": "None",
+              "ParamWeaponCategory": "Longsword",
+              "Stat": "Unknown"
+            }
+          ],
+          "DoNotApplyAutomatically": false
+        }
+      ],
+      "Comment": "",
+      "m_AllowNonContextActions": false,
+      "m_DisplayName": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": null
+      },
+      "m_Description": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": null
+      },
+      "m_DescriptionShort": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": null
+      },
+      "m_Icon": null,
+      "m_Type": null,
+      "LocalizedName": {
+        "assetguid": "c44ac914c667509498b3007b568289ac",
+        "stringkey": "e897e8de-08c4-4b1a-ae65-1c9d86e79b08"
+      },
+      "Gender": "Female",
+      "Size": "Medium",
+      "IsLeftHanded": false,
+      "Color": {
+        "r": 0.15,
+        "g": 0.15,
+        "b": 0.15,
+        "a": 1.0
+      },
+      "m_Race": "!bp_4d4555326b9b7144f93be1ea61337cd7",
+      "Alignment": "NeutralGood",
+      "m_Portrait": "!bp_cc92e7a3b8944f7da3bcceec9f7ce0ec",
+      "Prefab": {
+        "AssetId": "ad4aac3138a248646a42424c9e3ca79a"
+      },
+      "m_CustomizationPreset": null,
+      "Visual": {
+        "BloodType": "Common",
+        "FootprintType": "Humanoid",
+        "FootprintScale": 1.0,
+        "ArmorFx": null,
+        "BloodPuddleFx": {
+          "AssetId": "f1400b13c4d834549be5b6dc32bc2ce3"
+        },
+        "DismemberFx": {
+          "AssetId": "876334cab63820a4696ecefb8a88d1fb"
+        },
+        "RipLimbsApartFx": null,
+        "IsNotUseDismember": false,
+        "m_Barks": "!bp_471f91ad1ab8b564ab13f2eb42270979",
+        "ReachFXThresholdBonus": 0.0,
+        "DefaultArmorSoundType": "Flesh",
+        "FootstepSoundSizeType": "BootMedium",
+        "FootSoundType": "Boot",
+        "FootSoundSize": "Medium",
+        "BodySoundType": "Flesh",
+        "BodySoundSize": "Medium",
+        "FoleySoundPrefix": "",
+        "NoFinishingBlow": false,
+        "ImportanceOverride": 0,
+        "SilentCaster": false
+      },
+      "m_Faction": "!bp_d8de50cc80eb4dc409a983991e0b77ad",
+      "FactionOverrides": {
+        "m_AttackFactionsToAdd": [],
+        "m_AttackFactionsToRemove": []
+      },
+      "m_StartingInventory": [],
+      "m_Brain": "!bp_5abc8884c6f15204c8604cb01a2efbab",
+      "AlternativeBrains": [],
+      "Body": {
+        "DisableHands": false,
+        "m_EmptyHandWeapon": "!bp_20375b5a0c9243d45966bd72c690ab74",
+        "m_PrimaryHand": null,
+        "m_SecondaryHand": null,
+        "m_PrimaryHandAlternative1": null,
+        "m_SecondaryHandAlternative1": null,
+        "m_PrimaryHandAlternative2": null,
+        "m_SecondaryHandAlternative2": null,
+        "m_PrimaryHandAlternative3": null,
+        "m_SecondaryHandAlternative3": null,
+        "ActiveHandSet": 0,
+        "m_AdditionalLimbs": [],
+        "m_AdditionalSecondaryLimbs": [],
+        "m_Armor": null,
+        "m_Shirt": null,
+        "m_Belt": null,
+        "m_Head": null,
+        "m_Glasses": null,
+        "m_Feet": null,
+        "m_Gloves": null,
+        "m_Neck": null,
+        "m_Ring1": null,
+        "m_Ring2": null,
+        "m_Wrist": null,
+        "m_Shoulders": null,
+        "m_QuickSlots": [
+          "!bp_d52566ae8cbe8dc4dae977ef51c27d91",
+          "!bp_d52566ae8cbe8dc4dae977ef51c27d91",
+          "!bp_fd56596e273d1ff49a8c29cc9802ae6e",
+          null,
+          null
+        ]
+      },
+      "Strength": 12,
+      "Dexterity": 14,
+      "Constitution": 14,
+      "Intelligence": 10,
+      "Wisdom": 10,
+      "Charisma": 13,
+      "Speed": {
+        "m_Value": 30.0
+      },
+      "BaseAttackBonus": 0,
+      "Skills": {
+        "Acrobatics": 0,
+        "Physique": 0,
+        "Diplomacy": 0,
+        "Thievery": 0,
+        "LoreNature": 0,
+        "Perception": 0,
+        "Stealth": 0,
+        "UseMagicDevice": 0,
+        "LoreReligion": 0,
+        "KnowledgeWorld": 0,
+        "KnowledgeArcana": 0
+      },
+      "MaxHP": 0,
+      "m_AdditionalTemplates": [],
+      "m_AddFacts": [],
+      "IsCheater": false,
+      "IsFake": false,
+      "m_PS4ChunkId": "Chapter3",
+      "m_HasAssignedChunkId": true
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "Units/Portraits/InitiativeBlueprintPortraits/Characters/Common/BCT_Kyana.jbp",
+    "AssetId": "dd6263efb47946d29232dcd7c37ba213",
+    "Data": {
+      "$type": "c596f85ac9e041d7a0e73ec01f67c2f4, BlueprintPortrait",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "Data": {
+        "m_PortraitImage": {
+          "AssetId": "b01a38ed9eb2e3c44bd548a975bb59c0"
+        },
+        "m_HalfLengthImage": {
+          "AssetId": "b01a38ed9eb2e3c44bd548a975bb59c0"
+        },
+        "m_FullLengthImage": {
+          "AssetId": "b01a38ed9eb2e3c44bd548a975bb59c0"
+        },
+        "InterchapterPortraitLink": null,
+        "PortraitCategory": "None",
+        "IsDefault": false,
+        "InitiativePortrait": true
+      },
+      "m_BackupPortrait": null
+    }
+  },
+  {
+    "path": "Units/PortraitsGenerated/ad4aac3138a248646a42424c9e3ca79a_BCT_Kyana.jbp",
+    "AssetId": "cc92e7a3b8944f7da3bcceec9f7ce0ec",
+    "Data": {
+      "$type": "c596f85ac9e041d7a0e73ec01f67c2f4, BlueprintPortrait",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "Data": {
+        "m_PortraitImage": {
+          "AssetId": "d0532fe50faad104daa3d975fa70edc7"
+        },
+        "m_HalfLengthImage": {
+          "AssetId": "d0532fe50faad104daa3d975fa70edc7"
+        },
+        "m_FullLengthImage": {
+          "AssetId": "d0532fe50faad104daa3d975fa70edc7"
+        },
+        "InterchapterPortraitLink": null,
+        "PortraitCategory": "None",
+        "IsDefault": false,
+        "InitiativePortrait": true
+      },
+      "m_BackupPortrait": null
+    }
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0001.jbp",
+    "guid": "58ae90498d271334facb760fd81ef32d",
+    "text": "\"Holy mother of...\" {n}A small woman with messy brown hair winces in pain, uttering a stream of curses through clenched teeth — she is pinned to the ground by a couple of weighty boulders.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c3/CompanionsVSMythics/KTC_SeelahVSLich/Cue_0011.jbp",
+    "guid": "5355c3bca5e57b446b9164bd2025b8a6",
+    "text": "{n}Seelah visibly relaxes.{/n} \"Obviously, you didn't choose this power, it was dropped on all of us out of the blue. And I know that our mission demands total commitment. Anyway, sorry for springing all this on you. I'll go and get some fresh air and raise a prayer to the goddess — that usually clears my head.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0019.jbp",
+    "guid": "ca24b7ef8a4dd4d41ad3a2f78bb16023",
+    "text": "\"But you were asking what brought me into the ranks of Iomedae's warriors. We all choose the paladin's path for our own reasons. Some are guided by nobility of spirit, some by a desire to fight injustice. I became who I am through penance and a debt unpaid. The day Acemi died protecting my city, I wanted to kill myself for the terrible guilt I felt. But then I realized it wouldn't make the world any better. And I decided that instead I'd try to take her place. I'd become who she had been, and protect the innocents that she would no longer be able to protect.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0059.jbp",
+    "guid": "a8b0259c7e7e90a468dcbb0ec9859563",
+    "text": "\"Was that a hint of reproach? If you're only just asking, then no, I don't think so. You have to know when it's time for jokes and when it's time for mourning; the right moment for joys and for sermons. And sometimes a good traveling story can be all those things — if it entertains and purifies the soul. That story about the chupacabras is one of the good ones.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0132.jbp",
+    "guid": "bd4054b0fc23c1140ba0fc00e71382c5",
+    "text": "{n}Seelah smiles sadly.{/n} \"I feel sorrow. And guilt, I guess. We're at war, people die, but I can't stop asking myself: could I have done better? Could I have prevented those deaths? I won't stop trying, I won't give up, but I'll probably never be able to forget our losses.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_CartRescue/Cue_0007.jbp",
+    "guid": "9c9fb46d276dbf94398e5d40716f9986",
+    "text": "{n}The stranger almost jumps out of his skin and the hood falls from his head. Under a mop of red curls, a round halfling face looks up at you.{/n} \"Oh! Phew! I thought you were demons! G-Good day to you, good {mf|sir|lady}!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_CartRescue/Cue_0021.jbp",
+    "guid": "44bffac39c3809d44b68c4c8cfd80dce",
+    "text": "{n}He is interrupted by the sound of wheels rolling on the paving stones. A cart drawn by a sad little horse appears from around the corner. A pretty half-elf is driving it, and a young man in knight's armor is walking alongside. Even from a distance, you can see his tanned face and his blue eyes shining brightly.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/Cue_0037.jbp",
+    "guid": "4ae4cd7b94998d344bb1eb2568a6e7fb",
+    "text": "\"As stories go, it's not very entertaining. I was born far to the south, in {g|Andoran}Andoran{/g}. I lost my parents early, led the life of a simple mercenary, but often questioned the path I had chosen. I'm proud of my sword skills, I enjoy training and drills, and I'm not afraid of battle. But risking my life for coin? It takes a special mindset to choose that lot with no regrets. You have to want to risk your blood. I saw too many of my friends die, and I wondered if it was worth it.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0002.jbp",
+    "guid": "9e0f92f97b12f604bbbe155261af3f26",
+    "text": "{n}A small quasit demon emerges from the chest. It looks at you angrily, screwing up its ugly little face. It is holding a shiny object in its paws — a sparkling silver ring with a large blue-green jewel.{/n} \"It's mine! Mine!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0011.jbp",
+    "guid": "2100f41ae724734418dc74b15719543e",
+    "text": "\"The last time I saw the ring it was with my things in my traveling chest. Now the camp's in total disarray. I don't know how we'll ever find it. The ring is made of a shiny silver metal, with a deep blue-green jewel. You can't miss it. Master Darek is not just a jeweler, he's an artist. There's no mistaking one of his creations.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0033.jbp",
+    "guid": "6e6e89fccdedd274bb5eccb5a7a8ca07",
+    "text": "{n}Elan looks right at you with his clear blue eyes.{/n} \"Bear me no grudge, Commander. I'm not so ungrateful as to forget what you did for Kenabres, and how you agreed to help me.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0057.jbp",
+    "guid": "a82fb87eddd363a4ab392254a4f55957",
+    "text": "\"Of course... Lady Ember. Let's hope my bride doesn't run away from the bungler who managed to lose the ring he bought for her...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Cue_0006.jbp",
+    "guid": "a7b23b6b58baf764784c444dd3e54a39",
+    "text": "\"I'd prefer a church ceremony, and a more formal approach to the celebration. But there is a certain charm in how unpretentious everything is here. We priests who choose to make our home in savage and dangerous lands see a lot of things during our lifetime, including exotic weddings. We don't bat an eye at a celebration where the groom is wearing a fey monarch costume, and the bride is dressed as an evil vampire.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0019.jbp",
+    "guid": "6fbd24749e0fb294da2d3fe9189c16b7",
+    "text": "\"I'm so glad you came to the wedding with me! And that we managed to find out what happened. Because otherwise, Seelah the Dimwit would have come alone, given the bride a ring with a surprise demon inside, and would have failed miserably when she tried to help.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0017.jbp",
+    "guid": "84999f243afbea047a88f7be020c1953",
+    "text": "\"It would be a tremendous honor if you would come to my wedding. We're going to hold it not far from the walls of Drezen, to the east, toward the river. Seelah's already been invited, now I'm asking you. You showed so much kindness to me when you helped me look for that ill-fated ring, I simply must repay you somehow. Besides, Kiana would simply love to meet you, and I can't deny her anything.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0027.jbp",
+    "guid": "7d51d2c45ba890142989ee6e5600e997",
+    "text": "{n}Elan turns around and kneels at his bride's body.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0006.jbp",
+    "guid": "129096ab9053bb94d9af259f0086e91c",
+    "text": "\"I'm begging you, no jokes about the horns, please. I don't want to be remembered as the cuckold bridegroom!\" {n}Elan sighs, but then starts smiling again.{/n} \"I don't know if you've ever fallen in love, Seelah, I don't remember you ever talking about it. But when it happens, you are no longer who you once were. I suppose I didn't expect this of myself either... but Kiana was so desperate to have an unusual wedding. I thought to myself, if 'unusual' is the goal, then I should do something I've never done before!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0020.jbp",
+    "guid": "e15c0716adec447459ef2a8b881e7cee",
+    "text": "\"I think Elan and his bride will be delighted with any gift.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0014.jbp",
+    "guid": "b5720ffb7157c2f468dde082b314aa20",
+    "text": "\"It's simple, master. You might remember that a while ago Sir Elan of the Houndhearts ordered a ring from you? A silvery ring with a blue-green gem? I would like to buy something similar. But I only have... this much money.\" {n}Seelah shows him her coin purse.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0016.jbp",
+    "guid": "2cb847f8e4a7a734483d24a08af8b19c",
+    "text": "\"Oh, I would advise you not to reject the Commander's help out of hand. With {mf|his|her} participation, I can offer you something truly special that fits your description perfectly — a ring with a blue-green gem, just as you've described. This is one of my latest creations, and I'm very proud of it. Alas, your own funds, my dear, are only enough for my plainest ring, and the gem in it is not the right color.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0028_ExpensiveRingPurchase.jbp",
+    "guid": "72dee7ed65f1ae543a76bc96693aec64",
+    "text": "{n}Master Darek lowers his head respectfully and retrieves a box from the bag on his belt, opening it to reveal an exquisite ring with a glittering blue-green jewel. He lets the light play on the gem's facets, then places the box in Seelah's hand.{/n} \"This is a special item, and I'm glad to see it go to someone as worthy as yourself. For how could the Commander's friend be anything but? May it bring good fortune to its owner!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Cue_0007.jbp",
+    "guid": "2f5071a26b7a4fc408d6ddf7a5f8477e",
+    "text": "\"For Elan and his bride. After that story at the camp, when Curl stole the ring from us and summoned the demons, Elan and I both overreacted and said some things we shouldn't have. He apologized to me, but I haven't really apologized to him. I want to buy a ring to replace the one that was stolen. And there's a new jewelry shop in Drezen — it's owned by Sunhammer, the same jeweler who made the first ring.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0006.jbp",
+    "guid": "9c234a9ae99a6824c819127e1f861a25",
+    "text": "\"Oh, vampire princess, I am honored to be your guest!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0007.jbp",
+    "guid": "450b8ab7c65b30e47a0f932697a1e801",
+    "text": "\"A great plan. Where can I get some wine, too? I mean blood...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0008.jbp",
+    "guid": "8ff6e92c332bf78498f7c27581ca4472",
+    "text": "\"I'll look around for now.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0011.jbp",
+    "guid": "772da6e7fa7d0bf4ab971406ba139b9e",
+    "text": "\"So you mean it's an undead holiday? Commendable, commendable. This tradition should be adopted throughout Mendev.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0012.jbp",
+    "guid": "79b1ad542d0e74e4383b0576bec688ba",
+    "text": "\"You haven't the faintest understanding of undeath, but here you are, using it for your own amusement.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0013.jbp",
+    "guid": "538ca7d4c794f68439704740874c241a",
+    "text": "\"Pretending to be undead seems inappropriate.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0016.jbp",
+    "guid": "4c02df5422cc1af4b90777c41df51689",
+    "text": "\"Finally! A party where I fit in!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001.jbp",
+    "guid": "0bb8e464eb1a6aa458e8d5dba62f5413",
+    "text": "{n}A slender young woman in a flowing dress walks toward you. The first thing you notice is her eyes — they are a striking blue-green.{/n} \"Welcome, travelers, to the secret-steeped land of {g|Ustalav}Ustalav{/g}! You have come to the kingdom of grim mysteries and exquisite secrets. I, the vampire princess, am delighted to see you in my castle!\" {n}After a pause, the girl smiles coyly,{/n} \"I'm glad to finally meet you, Commander, Seelah. I am Kiana, soon to be the wife of that unfortunate knight who invited you here.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0002.jbp",
+    "guid": "1a6b39f7e8ab2084db500b100091d802",
+    "text": "{n}Seelah rolls her eyes.{/n} \"Horrible! Imagine walking through the Worldwound, and then — bam! — you're in {g|Ustalav}Ustalav{/g}! I'm not even sure if a paladin is allowed to feast with a vampire princess.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0003.jbp",
+    "guid": "e7626bcfe14a52e47990346b93a112d2",
+    "text": "\"It's lucky you are not a follower of Pharasma, valiant Seelah,\" {n}Arsinoe, the Drezen priestess of Abadar, is a short distance away from the happy bride.{/n} \"Although, I'll admit, I'm not used to feasting with the undead either.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004.jbp",
+    "guid": "466c4a8957da5f14fa958d1718b4a552",
+    "text": "\"Oh, stop it! My friends and I are completely harmless 'vampires.' We won't bite!\" {n}Kiana laughs musically.{/n} \"Truth be told, we chose the theme of {g|Ustalav}Ustalav{/g} because it lets us wear beautiful dresses, light candles, and drink red wine all evening, pretending that it's blood. I personally can't think of a better way to celebrate my wedding!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0009.jbp",
+    "guid": "171387d2a45d5d74d9f26be29a2ebaa4",
+    "text": "\"Feel free to help yourself to anything you see. Except for Old Killy — he's our skeleton. It's a fake, of course, but he's still a valued guest!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0010.jbp",
+    "guid": "dfc3fbbe094b57843a94ce8a41713ad0",
+    "text": "\"Welcome, guest! My castle may be humble, but I hope it will entertain you.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0014.jbp",
+    "guid": "2b07731a9219e87478d488b7947d86b3",
+    "text": "{n}Kiana smiles, with a hint of sadness.{/n} \"The best way to stop being afraid of something is to laugh at it. None of us would really want to become a vampire and drink human blood. But we can pretend for fun, right?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0015.jbp",
+    "guid": "df2bc028aa8c3704d9bdec06bffc76df",
+    "text": "{n}Kiana laughs.{/n} \"What a bold idea, Knight Commander! Welcome, enjoy the festivities!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0017.jbp",
+    "guid": "029dfbe5b0888c8478b716d57e07c228",
+    "text": "{n}Kiana laughs.{/n} \"Right, a real dhampir is exactly what we need here! I mean, what I was trying to say is welcome, child. I hope you enjoy my vampire reception!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0014.jbp",
+    "guid": "55bd522eee417c0468f20ea03cfb3cfd",
+    "text": "\"He IS the monarch! The true ruler of the magical land of the {g|First World}First World{/g}!\" {n}The \"fey\" lowers his voice.{/n} \"The bride is particularly taken with the costume.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Cue_0005.jbp",
+    "guid": "7079fe40c9b134c4f95de09570e431d8",
+    "text": "\"Actually, I'm a lawyer from Nerosyan and a friend of Elan.\" {n}The \"predator\" makes a helpless gesture.{/n} \"But when they were giving out roles for the celebration, guess who was appointed the magical beast? They said I was the hairiest fellow in the party. It's all right, I have my own wedding coming up, I'll even the score then!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Answer_0005.jbp",
+    "guid": "34a3f57354adc274c9c30a95c6c04f25",
+    "text": "\"Congratulations! But where is the bride?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0017.jbp",
+    "guid": "4ed2ef1ac140aa74caa88384a38b590e",
+    "text": "\"It's all very simple, nothing fancy: the bride and groom say their vows in front of the chief and then exchange amulets. As a rule, the amulets are handmade, but it's not required. You can grab one off the corpse of some uplander who ended up down our way. When you don't have many materials to make jewelry, you have to get creative.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0004.jbp",
+    "guid": "f98ed39efa89ddd4cac1d84a195608a9",
+    "text": "\"Yes, we should go...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0005.jbp",
+    "guid": "245ec8482e1f37b4a8702e54430c5aa7",
+    "text": "[Clear your throat] \"I'm glad that the two of you are all right.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
+    "guid": "81109ea8fb20dbc478cf67116740f4a1",
+    "text": "{n}Elan and Kiana fall into each other's arms, heedless of everyone else around them.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0002.jbp",
+    "guid": "3f8b3b4fbd6d18d44b91a34c88e2208a",
+    "text": "{n}Seelah smiles broadly.{/n} \"Come on. Let's give them some space.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp",
+    "guid": "a819e8c85ef23324bb0d8117bb9d7df3",
+    "text": "\"Yes, it feels good to be married.\" {n}Kiana smiles.{/n} \"Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0007.jbp",
+    "guid": "df45181e1968f26459f9e8bc2b995a34",
+    "text": "\"We're glad too,\" {n}Kiana replies.{/n} \"But I'm very displeased with the way my wedding ended. We didn't even get to enjoy our wedding night together... and it was all because of those damned demons!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0008.jbp",
+    "guid": "0e50ec24099196a42b7089ffecdc46b2",
+    "text": "\"Kiana, my love!\" {n}Elan blushes.{/n} \"Let's discuss that later... We don't want to embarrass the Commander.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0009.jbp",
+    "guid": "de9d02036b213594fa780c6025f14004",
+    "text": "\"Well, I just want to say... Thank you, Commander. Thank you for everything you have done for us!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0010.jbp",
+    "guid": "f575d21b1fabec74da1e54484573206b",
+    "text": "\"Wait, Commander! Seelah! Everything you've done... I can't thank you enough!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0011.jbp",
+    "guid": "4cd264ce0432bb94a8e80a551190150d",
+    "text": "\"Neither can I... See? That's why we make such a good couple. We have so much in common!\" {n}Kiana laughs.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0012.jbp",
+    "guid": "f6c3d20a92890d84c9020d37d56cc75b",
+    "text": "\"We'll accept your gratitude in the form of strong drinks. But we'll wait to celebrate until after we've defeated the demons! So long, friends! Enjoy this moment of happiness... but don't get too carried away!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0013.jbp",
+    "guid": "716683517058beb4ead374bd16b22ff0",
+    "text": "\"If it weren't for soldiers like me, a lot of families would lose their loved ones. It won't be long before the demons are defeated... I truly believe our victory is near. But for now, I must keep on fighting.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0009.jbp",
+    "guid": "142cc46328be7804d9854dd5399f96c5",
+    "text": "\"He was my friend,\" {n}Seelah whispers bitterly.{/n} \"I thought I could help him reunite with his bride. I just wanted him to be... happy.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0028.jbp",
+    "guid": "4094602c1d2e6654eb3926910e3c1d2e",
+    "text": "\"It was all the result of a rather absurd series of coincidences. It started when a certain knight, burning with love and passion, came to buy a ring for his bride-to-be. He was willing to pay quite an exorbitant sum! Now, I don't normally waste my time with mundane, ordinary folk. However, his ardor, and the strength of his love — along with the fact that he was one of Iomedae's nauseatingly righteous lackeys — made him irresistible. So I decided to craft him a ring with a demon inside. I took great pleasure in the thought that someday, he would realize he had given a deadly gift to the person he loved most. He would have to live with the knowledge that he had doomed his beloved to a terrible fate.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Answer_0006.jbp",
+    "guid": "10746ab3342ce204db8ee0ab96480093",
+    "text": "\"I am so sorry, Kiana.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Answer_0007.jbp",
+    "guid": "23af35c5304d5ef419178ba0e6f050eb",
+    "text": "[Say nothing]"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
+    "guid": "aebbc1845e827dd4da4e28014e7b4162",
+    "text": "{n}Kiana appears to be in shock. Her hands are clasped to her chest, and there's a dazed look in her eyes.{/n} \"I was a wife for less than a minute... and now I'm a widow.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0002.jbp",
+    "guid": "cdc3d76b9c6dea74e8773f9eb291aa31",
+    "text": "{n}Arsinoe, who had been speaking to Kiana in a low, compassionate voice, turns her attention to you.{/n} \"I told her about Elan.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0003.jbp",
+    "guid": "e2e8bf92034eccd469d335938f7d0500",
+    "text": "\"Kiana, I know that words aren't much comfort in a time like this, but I just wanted to say... it's all right if you blame me for what happened. I understand. You can yell or scream at me, if that will make you feel better. Or if you just want to talk and cry, and get it all off your chest — I'm here for you. If there's anything I can do to help, anything at all — please, just say the word.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0004.jbp",
+    "guid": "5c09123a07ee1e047a292c542cce6b74",
+    "text": "{n}Kiana smiles sadly.{/n} \"I married a crusader. I knew the risks. I understood that this might happen someday... I just didn't expect it to be so soon.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0008.jbp",
+    "guid": "a747f5462e1614a418b06ea0fd2eee47",
+    "text": "\"Thank you. It's so strange... Only a short while ago, I was accepting well-wishes from wedding guests. Now, I must learn to accept condolences instead. Anyway...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0010.jbp",
+    "guid": "e0abe01a6531ec6499f21e44cc81afe6",
+    "text": "\"No, Seelah, don't look at me like that. I don't blame you for anything. I'm glad Elan had a friend like you. I'd like you to be my friend too. You must come find me when you return from your next heroic journey! But for now, I must ask you to excuse me... I need to be alone for a while.\""
+  },
+  {
+    "path": "World/Dialogs/DLC6_ADanceOfMasks/KenabresFestival/Seelah_Event/HelpTippler/Cue_0009.jbp",
+    "guid": "902f8f7c472a4a9a8d74c6562cd3ff29",
+    "text": "\"Huh, what? The coin? Mmph... Hic! I sure did, got it right here. Why are you asking? You want to rob me blind? Well, bugger off if you do! I can get out of here on my own just fine. Mmph... Oof!\""
+  },
+  {
+    "path": "World/Dialogs/DLC6_ADanceOfMasks/KenabresFestival/Seelah_Event/HelpTippler/Cue_0011.jbp",
+    "guid": "806cf55bad924e22abcff58831ec5725",
+    "text": "{n}The gnome seems scrawny, even for a member of his people. His clothes are shabby and threadbare but neatly mended where the fabric has worn thin. The peculiar position makes it almost impossible to see his face, but you do notice white strands among his disheveled, raven-black hair.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Epilogues/Cue_37_EESeelahOnSosWedding.jbp",
+    "guid": "596a86cd3e174b6fb003b92858150711",
+    "text": "Having received an invitation to the wedding, Seelah was torn about whether or not she should attend. She felt her appearance at her friend's wedding would be a bad omen. In the end, she overcame her fears, and it was well worth it — her stories and army songs were the highlight of the festivities."
+  },
+  {
+    "path": "World/Dialogs/Epilogues/Cue_37_EESeelahOnSosWeddingNOT.jbp",
+    "guid": "78f92c3ceb79435eb607a6d4796419e2",
+    "text": "Having received an invitation to the wedding, Seelah was torn about whether or not she should attend. She felt her appearance at her friend's wedding would be a bad omen. In the end, she politely declined."
+  }
+]

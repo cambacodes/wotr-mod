@@ -1,0 +1,41 @@
+a2ab6210-c156-4dda-9b50-93cccd27a91a
+{n}Seelah strides boldly up to you and gives you a grim look.{/n} "Listen, I'm not happy to have to say this to a friend, a friend who crawled through caves with me, a friend who took Drezen with me, but... You know I'm not one for beating about the bush, so I'll just say it: the more I see of this power of yours, the less I like it. It reeks of death and evil. I can sense these things."
+
+3f384efa-ffff-4507-bce7-443c5606903e
+{n}Seelah looks a little confused, but her voice is firm.{/n} "It's not my place to gainsay the will of my goddess. But the thing is... I can sense evil, and I don't sense it in your power at all. I just don't. Whatever those horned monsters had planned for you, you definitely aren't playing by their rules."
+
+09d6f8d0-35a0-44ef-aed7-515eb152e196
+"What? That's no kind of justice!" {n}Seelah breaks the lock off the cage in a single strike.{/n} "Jannah, come on, let's get you out of here. Commander, if you're so eager to punish people for their mistakes — think long and hard about whether you want me by your side!"
+
+10e9d039-28c6-4355-ad2f-5bf0d40cdafd
+{n}Seelah takes a while to process the news.{/n} "She's a deserter, so I guess that's fair. It's hard to accept it... but... if we turn a blind eye to our friends' cowardice, it won't do us any good, will it? I feel sorry for Jannah, but I respect your decision. Prison isn't the same as the gallows, after all. I'll visit Jannah today to find out how she's doing!"
+
+8b555c03-fe28-4d02-85be-b25b99bcd0b0
+{n}Seelah hesitates for a moment, and you can sense her inner turmoil. Then she shakes her head.{/n} "You have plenty of soldiers and companions, {name}. But the trapped souls of Sunhammer's victims... they don't stand a chance without me and Elan. I don't want to leave you, but it seems I have no choice. Farewell! Let's go, Elan. We need to prepare for our departure."
+
+88cff500-857a-450d-b5d1-35f4194431f0
+{n}Seelah's eyes flash dangerously.{/n} "I must warn you — your experience fighting alongside us will not give you an advantage. We've undergone special training. You have become a monster, and the angels of the goddess taught us how to destroy you."
+
+d4e2afa7-559a-4271-b309-3c7e09de61e5
+{n}Seelah lowers her head.{/n} "Well, that's your right as a commander and an aeon. I'll leave. But I'm not going to stop helping people — if not in Drezen, then somewhere else. Farewell."
+
+e231261a-66e7-4a21-84f5-acaf078b2907
+"I will learn the weight of my sword... I will have faith in the Inheritor... I am the first into battle, and the last to leave it..." {n}With her eyes half-closed, Seelah whispers the words of the oath of Iomedae's paladins. Trailing off, she opens her eyes and sighs.{/n} "How did we end up here...? I never would've imagined I'd find myself in the Abyss."
+
+f6b9dfc3-b711-4c55-a7c1-6fd0911dc563
+{n}Seelah looks at the slaves with pain in her eyes.{/n} "Oh, you poor souls, what have they done to you...? It's over now, we'll help you. Where are you from?"
+
+977c0371-b9b5-4e57-b7e4-d2e280948d7a
+{n}Seelah grimaces.{/n} "I know that our mission is important, and I know we can't allow ourselves to get distracted by feelings and emotions, but... smashing skulls and eviscerating bodies, just to entertain these evil creatures? Iomedae, it makes me sick just to think about it!"
+
+ba2425dd-420f-4ff6-abaa-2b5f0ae95741
+"A trap... there are so many... traps here. I saw Sunhammer with the jewelry. He had the souls... I dashed after him, heedless of anything else. I didn't realize the door was trapped. I went to open it, and..." {n}Elan's body spasms, and he groans.{/n} "Seelah, please... don't make the same mistake I did. Save Kiana and the others! I know you can..." {n}His body spasms again, and he goes still.{/n}
+
+43e1b9e6-f75c-4f47-8ff2-b94344004a55
+{n}Seelah stares at Darek's lifeless body. She is breathing heavily, but you can't tell if it's from the intensity of the battle, or if she's simply overwhelmed with emotion.{/n} "Is it... over? Have we 'removed the evil'...?"
+
+1e315cc3-e9c8-44c9-8c0b-8a9a03220a03
+{n}Grim determination burns in Seelah's eyes.{/n} "I can't leave it like this. If anyone has an obligation to find that low-life Sunhammer and return all the stolen souls, it's me. I'll do everything in my power to find him. Something tells me that the demon-collaborating scumbag is somewhere here in the Worldwound. I'll seek help from every quarter, I'll interrogate imprisoned demons and cultists, whatever it takes to get to the truth!"
+
+b48a2e49-3de3-4ceb-af97-911d3d9bbbe5
+Seelah became an exemplary paladin and, naturally, never veered from the path of opposing evil. She was soon spending more time practicing her leadership skills and {d|Seelah Lawful}working on herself{/d} and less time traveling, and before long, she had formed her own knightly order.

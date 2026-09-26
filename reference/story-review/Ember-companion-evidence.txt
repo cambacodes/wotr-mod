@@ -1,0 +1,950 @@
+d9632c7e-233f-48bb-ad93-49bd0851d2f4
+Ember
+
+17f214bc-bff5-4b15-869e-c0de2e716241
+Ember
+
+82277503-5a36-4a9b-b8ef-0fb34886e756
+Ember
+
+09e32d18-8f77-4308-a75f-d73e1ccf60cc
+Don't be fooled by this creature's appearance — Ember is a true monster, capable of one day destroying the world! Until that day comes she pretends to be just an ordinary cute red panda.
+
+24c0af20-a100-4e40-8262-f9bd1f0b1aaf
+You and Ember managed to influence Nocticula.
+
+aee10d9e-9399-4e1a-8e52-b016f167027b
+In Alushinyrra, you helped Ember to sow the seeds of doubt in several demons about the correctness of their way of living.
+
+ea33a5f7-1722-4e91-be36-a1dc01b2c9c5
+Your joint adventures convinced Ember to keep believing in the inherent goodness of people, and not only people.
+
+3d1562dd-7a73-4165-bfd8-e7865eeca7e5
+Your joint adventures convinced Ember that sometimes being nice is not enough to bring goodness and light.
+
+402246d7-e47f-4f32-b475-c6a53797f916
+Your joint adventures broke Ember's heart, convincing her that her ideas about universal goodness were wrong.
+
+93f665f4-8457-4550-9c89-158f333b4f20
+You paid no attention to Ember's doings and did not help her on her path.
+
+e49676d4-dfa1-422d-98fd-4284435f3c14
+Ember suffers a –2 {g|Encyclopedia:Penalty}penalty{/g} to {g|Encyclopedia:Intelligence}Intelligence{/g}.
+
+6b170c30-aa92-4250-8ed6-6ce723f1b248
+Ember gains a +2 morale {g|Encyclopedia:Bonus}bonus{/g} to {g|Encyclopedia:Charisma}Charisma{/g} and a unique 9th level {g|Encyclopedia:Spell}spell{/g} Secret of Serenity.
+Secret of Serenity: as a {g|Encyclopedia:Standard_Actions}standard action{/g}, Ember can use this ability to make all enemies in a 30-foot area become affected by a Secret of Serenity for a number of {g|Encyclopedia:Combat_Round}rounds{/g} equal to her {g|Encyclopedia:Caster_Level}caster level{/g}. Affected creature must pass a {g|Encyclopedia:Saving_Throw}Will saving throw{/g} each round or will be unable to {g|Encyclopedia:Attack}attack{/g} for one round.
+
+5ad96658-f15e-4bee-b352-2dfd3cfc73ec
+As a {g|Encyclopedia:Standard_Actions}standard action{/g}, Ember can use this ability to make all enemies in a 30-foot area become affected by a Secret of Serenity for {g|Encyclopedia:Caster_Level}Caster Level{/g} {g|Encyclopedia:Combat_Round}rounds{/g}. Affected creature must pass a {g|Encyclopedia:Saving_Throw}Will saving throw{/g} each round or will be unable to {g|Encyclopedia:Attack}attack{/g} for one round.
+
+61e7eb8e-758d-4061-84ce-4907d1c6771f
+Ember gains a unique 9th level {g|Encyclopedia:Spell}spell{/g} Storm of Burning Righteousness.
+Storm of Burning Righteousness: when this spell is cast, the whole area is shot through with sheets of roaring holy flame. All enemy creatures within the area take {g|Encyclopedia:Dice}10d6{/g} points of fire and 10d6 of {g|Encyclopedia:Energy_Damage}holy damage{/g}. Creatures that fail their {g|Encyclopedia:Saving_Throw}Reflex save{/g} catch on fire, taking 2d6 points of fire and 2d6 of holy damage each {g|Encyclopedia:Combat_Round}round{/g} after that until the flames are extinguished by making a successful Reflex save.
+
+28a6fcbc-f5a4-4231-8ee3-339fa26b9c5a
+Ember
+
+7172af63-bb85-4bb4-84cd-2ca90876746d
+Ember
+
+fc9dcb0a-cd0c-45ad-96fe-782c938e73ac
+"Ember"
+
+b0b4aca5-fc1a-477b-85ae-7757ac829e2b
+Ember insisted that both the deserters and the defeatists be relieved from their duties and sent home. People become heroes of their own volition, and one should not demand the impossible from soldiers. The officers were dismayed by this decision, expecting morale to suffer disastrous damage, but the exact opposite happened. Once the scaremongers were gone, the crusaders, inspired by Ember's words, rushed into battle with renewed strength and somewhat grim cheerfulness.
+
+8e92489b-bcd4-4fa2-949f-6eafceb84f92
+Ember talked to the soldiers and convinced them that death was inevitable and could often be pointless and sudden. But these warriors were given a chance to die for a reason. The soldiers were inspired by her words and decided not to expedite their deaths. As for those who persisted in their desire to fall with honor, she did not try to stop them.
+
+74bc0075-ebed-47b2-a8f1-607ecf737775
+{g|Event_51_5}[Choice effects]{/g} Let Ember talk to the warriors
+
+9147df02-00f1-4633-95b2-849aa556bc48
+With the Commander's permission, Ember took the weapons from the Asmodeans and gave them to weak soldiers. This armament will improve their chances of surviving in battle.
+
+c34b0c2e-a09a-40f2-8fde-fbed1a1ba3b3
+Ember was convinced that the mages meant no harm. No one had taught them that littering is bad, that is all. She packaged some of the dangerous finds and sent them to Kaer Maga with a politely written note. The next day, the headquarters of the Arcanists' Circle was shaken by a small explosion, and the mages sent a pile of gold to Drezen along with a request not to send them anything else.
+
+923e20be-fba1-41cb-ba7f-e6f300c5c29e
+This option is unavailable because you do not have Ember among your companions or because she has lost interest in the affairs of mortals.
+
+5d25487e-7573-421a-bf15-cbf567fa88eb
+"I used to see you preaching in the square, Ember. Didn't your past teach you to be wary of crowds? Fanatics are dangerous whether they're taking up arms against you or hanging on your every word."
+
+ff9d8dd6-6550-4fa5-b301-e136d32ebd6c
+"Just looking at you pains me, Ember. Why don't I do something about your appearance? What do you say to a bath, some new clothes, and a comb for that hair?"
+
+753e56a7-50dc-4f84-8ffd-0bdff98f5b0c
+"Ember, if you think that life is suffering and there is no hope, then why do you bother to heal all these people? If I were you, I'd take myself off to the nearest tavern and raise a large mug of milk to their soon-to-be-departed souls."
+
+102c7942-23cf-44ef-8528-15846933c05a
+"How is it that I never set eyes on you in any of my strolls around Kenabres, Ember? You are an amusing little thing!"
+
+54c15d99-ad8e-4fc1-8e1c-02892a8af06f
+"Run along, Morah... I mean, Ember, go on. I... I'll be there now."
+
+8709f2f4-44dc-4404-96db-ab68be42b764
+"And I let you keep sleeping on the street... Forgive me, Ember, I did nothing for you when you needed my help!"
+
+9fde2887-d9e8-4baa-826f-4723604affb0
+"No, Ember. We won't let any of our friends die. We studied healing magic for a reason, didn't we?"
+
+c6409a7d-f648-4259-b5bd-fc1fa7e06fb8
+"All right, Ember. I'll try to explain it one more time. Imagine the gods are your best friends. One of them even helped you out in a difficult situation, saved you like that knight who pulled you out of the pyre. Now imagine that somebody is always going around insulting your friends..."
+
+1aba031f-c069-49e8-a8f8-b76e6a1de0d1
+"You need to take better care of yourself, Ember."
+
+513999aa-df50-4fd7-bf7b-98749b23e621
+"Ember, I noticed your hair keeps getting in your eyes... This is just a little thing, something I whittled when we stopped on the journey... I hope they will help you."
+
+89672802-1a67-4d59-ac98-5817eafebf45
+"Listen, Ember... I respect your passion for making the world a better place, but some of your ideas are... too radical. Particularly the way you try to turn people away from worshiping the good deities."
+
+0815e234-e341-4144-b6a8-59411a9c521e
+"Perhaps we do not glow. Instead, we burn — hot. Do not worry your little head about it, Ember. You will not understand, nor should you."
+
+0ef184ec-114c-4b95-9906-2ff7e218d4d0
+"Fire hurt you, Ember. It's hard to love something that brings you only pain. That goes for people as well."
+
+dbd5fe8f-a6d9-4997-9ba8-a9d08f2eff2b
+"Oh, Ember... You have no idea what regular grasshoppers are capable of doing to fields! No, locusts must not be pitied under any circumstance!"
+
+b841ee4f-8dce-4e15-9ed8-9a637fb280af
+"Blah-blah-blah, Ember's making another dig at the gods. Whatever. What matters is we returned the Sword to the people, and for them it really is as if the sun has come out after years of dark skies!"
+
+182bc465-0954-41cf-be1c-a4e5933cb2a0
+"Oh, Ember. You're still too little to understand."
+
+920ccc8b-0244-4381-be35-a886d9d43aba
+"That is debatable, Ember. If the people who hurt you are suffering, it is quite delightful. Serves them right!"
+
+13a7e854-3fcf-492d-b092-904b5082b0de
+{n}Lann looks at Ember with sorrow in his eyes.{/n} "But you're an elf. You should live hundreds of years and never even worry about dying. Little elf girls shouldn't even know such words."
+
+c4a03009-0706-41ea-aa46-47ae3ced1aac
+{n}The dwarf looks at Ember and sadness gleams in his grim eyes. He answers in a surprisingly soft voice:{/n} "What are you doing here, girl? This is no place for people like you. Go, hide somewhere safe."
+
+8d037fee-f71e-4a7c-9660-3e6d14cfaa74
+"It didn't happen because of magic tricks." {n}Ember sadly shakes her head.{/n} "He went to war and saw lots of scary things. So scary that his memory ran away so it would never show him the bad things ever again."
+
+b6519a77-4b82-49e2-a238-08271e19b296
+"You're hurting yourself. Just so she can hurt you even worse later. And all so that you can feel hurt until the day you die." {n}Ember sighs.{/n} "You're awfully silly."
+
+f788e725-5d9d-4e93-be0d-5b98ff1b9775
+{n}Ember claps a burned hand over her mouth.{/n}
+
+113aa524-56d6-404c-9453-54a7e05e218f
+"Ember, stop talking nonsense."
+
+73caaa40-acff-4c0c-b591-f9418b682dbc
+Killed Prelate Hulrun for what he did to Ember.
+
+2395cb08-5b43-47ca-ab9d-6b62765441b3
+"Let's go, Ember."
+
+24f44ae6-8cfa-4f1f-8d4e-5a9b824f29ce
+{n}Ember peers intently at Hulrun.{/n} "I remember you! When father and I arrived in this city, you met us!"
+
+de098786-698c-47f7-9f81-8e668ca96a3c
+"He didn't look the way he does now — all wrinkled and gray — he was young with a big mustache..." {n}Ember smiles broadly and draws a large bushy mustache in the air with her finger.{/n} "He probably forgot all about me, it was a long time ago... But I do want to say one thing: I'm not cross with him. This knight is a true hero. He just really, really wanted to protect his city, only he got all mixed up about who was good and who was evil."
+
+5617148e-0b57-4d5d-8eaf-0e8e94403128
+{n}Ember obediently puts her hand over her mouth.{/n}
+
+d9286e57-f450-428b-82da-6ad7338be977
+Expressed regret that rescuing Ember cost lives.
+
+0bbff66c-af7a-4c0a-a210-27d21384a0b9
+Threatened Ember with death.
+
+4e448a12-e3cc-4139-92fb-d38cd83e080b
+Killed Ember for no reason.
+
+d579e20d-1133-4739-9281-ea721f888f5a
+"Call me Ember. I live here, on the streets. For many years now... But there's nothing to say about me!"
+
+f0dd416f-9a32-45e5-a9eb-9d85be92f938
+"Oh, I've seen your show! You are very funny! Especially your play where the woman slowly climbs onto the chair while singing, and then falls off again." {n}Ember claps her hands in delight.{/n}
+
+2a2b52d2-7663-404a-8eaa-9e3d5bdaf1f1
+"Fly away! Fly free, you beautiful scary butterfly!" {n}Ember laughs joyfully.{/n}
+
+a9ed90f1-9580-4f5c-9481-ca7481c37ced
+{n}Ember stares at you, captivated.{/n} "Wherever you go, things change. Someone who lived dies, and someone who died is saved. Objects that were one thing become another. Why?"
+
+b5ed112c-e316-4dbe-808d-6320eeb8578d
+"I look at you and I see war." {n}Ember sniffles.{/n} "But I want the war to be over..."
+
+ed3e54ed-fa00-4c36-8096-9108e5f3895e
+"Why? Chains can't repair a maimed soul." {n}The crow on Ember's shoulder looks at Nurah sternly. Unlike her owner, she obviously approves of your decision.{/n}
+
+99fd37aa-e016-4144-8755-fa5ccfef419b
+"Let her go. We can't help her by putting her in chains." {n}The crow on Ember's shoulder looks disapprovingly first at Nurah, and then at you. Unlike her owner, she clearly disapproves of your decision.{/n}
+
+5e4cc4e8-9e38-4d2b-91b3-160ce38d0741
+Told Ember that she shouldn't waste her time on simple soldiers.
+
+73db563b-8ccf-4b0c-9dfd-7e0dd543177b
+"Hey, little one! They say you can do magic?" {n}An old silver-haired fighter sizes Ember up skeptically, apparently baffled to find such a young girl in the middle of the war. He's cradling his wounded arm, which has been hastily bandaged.{/n} "Can you heal me?"
+
+bd95cdd9-03cf-45bd-8689-565aec193214
+"Of course!" {n}Ember whispers a spell and touches the bloody bandages.{/n}
+
+26f05e2b-259a-4342-920f-a76cb9c31330
+{n}Ember gives him a lighthearted smile.{/n} "I'm just like you. I came to the thick, so that the thick wouldn't come to the other kids. Like your granddaughter!"
+
+e8a9098f-7bd8-4668-b14b-37c20ac7ffcd
+{n}The soldier leaves, shaking his head pensively. Ember waves happily, then turns around and notices you.{/n} "Hi!"
+
+84e7565c-fe8f-4eb4-a028-0a50ecccad7d
+{n}Ember shrugs.{/n} "Demons keep hurting them. I keep healing them."
+
+b7ed8cb8-eff8-41f1-8cab-30f38b5939c2
+"Yes. Yes, Ember. I promise."
+
+9f21eee1-a373-4690-9d9f-1a896d5d6f52
+{n}Ember looks at the breaking dawn.{/n} "How pretty. The sun is rising. Something is burning in you too, {name} — illuminating everything around you like the sunrise."
+
+22b7bd37-fa35-48a8-a0b6-302d2b163e34
+"Ember, how did you escape?"
+
+11412690-fde8-49e0-a8cd-b2d205ba0b28
+[Accept Ember into your party] "Come with me."
+
+3d7790eb-2238-4881-8a4c-512639e8d760
+[Accept both Ember and Daeran into your party] "Come with me, both of you."
+
+b4ab5fb6-4b03-43e7-b04d-41f9ab523f72
+[Accept only Ember into your party] "Ember, I need you. Daeran, you head back to the camp."
+
+f0e5b6f8-18c9-4acc-af07-e5bc85653712
+[Accept only Daeran into your party] "Ember, you help Anevia. Daeran — with me."
+
+9a3b1081-b3ad-4351-a8fa-324b2417219f
+"No, please! Don't give up! I'll carry you! You can't die! Your granddaughter is waiting for you at home!" {n}The crow on Ember's shoulder croaks sadly, as if confirming her words.{/n}
+
+f39f52bc-32f8-4219-ac1d-a21c158c6232
+{n}She looks around and sees you.{/n} "Look! It's the Commander! {mf|He|She} can definitely help you." {n}Ember swiftly pulls the stake from the soldier's body, and heals the wound with a spell.{/n}
+
+bd4e602a-adef-47aa-a229-0dc6e1426a00
+"I think the old fellow is right. You or I could heal an ordinary wound, but we stand little chance against a ghoul bite. Come along, Ember — the longer we stand around out in the open like this, the more likely we are to end up back in the gargoyles' clutches." {n}Daeran looks disheveled and slightly disoriented, and his shoulders tremble with excess tension.{/n}
+
+fa70236c-be40-44bb-9ca9-d7b454c7e839
+"She's hurting. Probably worse than I was, in the fire. We'll heal you, Irabeth. But..." {n}Ember touches her shoulder.{/n} "You'll have scars. Maybe not on your body, but you'll have some."
+
+051791a0-5e14-4411-84e7-0bc558d252d7
+{n}The color drains from Ember's face and her eyes glaze over. Her lips seem to move of their own accord, whispering,{/n} "Burn... Fire... All I can remember is fire."
+
+c298245a-e55c-4907-82b2-0ef30f6d2803
+"Oh, I'm awful bad, just too weak to do much about it. Do you think it's easy to do bad things in this mangy body? Maybe I could wage a genocide against the lab's rat population... A bloody one!" {n}The demon snarls unconvincingly, showing off his crooked teeth, which makes Ember giggle.{/n}
+
+a0a825fe-2e47-4db8-8d6f-3fa51247e138
+"Don't go making friends with the demons, dear Ember. Even with that charming smile of his, I do believe he would snatch you away and gobble you up, if given half a chance..."
+
+3a2a07a9-d787-4471-8ce3-772eeba0806b
+{n}Ember smiles cheerfully.{/n} "He wouldn't. But he would scare me. I'd ask him to come with us, but he won't come — I can tell."
+
+cc99dc24-1b72-435a-bd2e-88458b0ae678
+"Sure, Ember! I have a doll house too, want to see?"
+
+33f3c0b4-9c70-4d40-9530-e8262b0202db
+{n}The illusion dissipates and Ember opens her eyes, looking dazed.{/n} "Where did they all go? Oh... they weren't real."
+
+30a1f527-1b2d-4c6e-9930-b86b25d0cc63
+{n}Ember looks askance at Greybor's stone-faced expression.{/n} "Why are you staring like that? And not saying anything? Are you all right?"
+
+ec542c77-9c3b-4120-b9c6-3f1fe90f7f62
+"Poor tree." {n}Ember gently pets the wrinkled bark.{/n} "Hold on a little longer — we'll try to heal you. We will, won't we?"
+
+b3fdf180-ffc4-45a2-a885-47a1d69f8d7c
+"Ember is kind, but I'm a little scared of her. And — don't tell anyone this — I almost got in a fight with that crow of hers."
+
+b26c0860-ef21-41c1-ae10-356c113514c4
+{n}Ember stares sadly at Kyado's remains.{/n} "Why did you hurt him? He was good, he was just afraid. But he was not a coward — he came here, didn't he, to take care of your tomb? And you killed him."
+
+340333e2-c222-480c-b8f9-434aab5204e3
+{n}Lann's already intimidating face becomes even more fearsome.{/n} "Don't be afraid, Ember. If anybody's going to get hurt, it'll only be the bad guys."
+
+d46cb92d-ed0a-4d21-bb56-42a3468ff230
+{n}Ember looks at Morveg with a radiant, soothing smile:{/n} "Don't worry, it will all pass soon. You won't be in pain anymore. Is there anything you want me to do for you?"
+
+9e87648d-e9ab-442f-ae26-4ba2ebe9c591
+{n}Ember shakes her head sorrowfully.{/n} "No, I don't know it. I'm sorry. It's a song about war, right? I don't know many songs about war."
+
+2bf407ef-0dda-4969-b5e5-fe1dd5202106
+{n}Peering into the bear's vicious eyes, Ember lets out a sigh.{/n} "What torment have you suffered, to make you attack everyone like this? It's like weevils have burrowed into your soul..."
+
+c5d69576-0a3b-489d-95f2-1c5da3a5fddf
+{n}Ember frowns and gives Camellia a serious look.{/n} "But he was afraid. And he was in so much pain too."
+
+b2c06abe-bd5f-4694-86a5-56f2994d10d7
+{n}The demon grins, and gives Ember an appraising glance.{/n} "I can fix you too. Give you new fingers... Would you like that, sweetie?" {n}The healer's beady little eyes glisten, and you hear the rasping sound of his knife-like fingers as he rubs them together impatiently.{/n}
+
+beace455-ab00-4dea-bd4d-9e45854bf074
+{n}Ember shakes her head with an embarrassed smile.{/n} "You are so kind and caring! But no, thank you. I don't need new fingers. You should stitch them onto someone else. Please, will you give them to someone who really needs them?"
+
+b78a157b-401f-4077-8ef1-4239eab3be1a
+Advised Nocticula to listen to Ember's words.
+
+b45df39d-dfa1-4230-aca5-469f9458a73e
+Told Nocticula that you arranged her meeting with Ember on a lark.
+
+4627340b-5f5a-4d84-8c56-b1dd46411b83
+Told Nocticula that Ember was a fool and that there was no point in listening to her.
+
+190d7ac2-50ca-445f-98c4-e1f062947b83
+{n}Ember smiles sweetly at the slaves, and they respond with trusting, vacant smiles of their own.{/n} "Don't worry, we will take you to a truly good place. It doesn't look like any place you're used to. At first, you'll feel uncomfortable, but you'll grow to love it."
+
+a5a239d3-5488-4d0c-b183-882bbca93872
+{n}With a casual nod toward Ember, the demon grimaces with disgust.{/n} "Incidentally, I am willing to take this crippled waif off your hands. If you expect to sell her yourself, don't bother. No one will want to buy such a puny thing, but I can add her to my lot of Golarian slaves."
+
+d4e3bfe8-1500-40b9-90b0-a1d183d5562c
+"You are mistaken. I'm not for sale." {n}Ember smiles cheerfully.{/n}
+
+597fce15-91d7-4f60-94f9-fdebca48368c
+"There is a wound festering in your soul. It hurts, but you cannot share this pain with anyone or your friends would turn away. Which is why you... set out to make friends yourself. Them." {n}Ember points at the aasimar women.{/n} "But this isn't true friendship. You are still lonely, and still hurting. I feel very sorry for you."
+
+56ea7c0a-f09d-4c77-a008-1d8f49250b9b
+"Sorry? You feel sorry for him? He's even more cracked in the head than you are! Should we stroke his hair, give him a shoulder to cry on, and feed him a nice bowl of chicken soup? You think you're going to be his friend? Who knows, maybe he has a taste for little elf girls, too!" {n}Woljif's voice is quivering with rage, but as he stares at Ember there is... terror in his eyes. Terror and utter incomprehension.{/n}
+
+5b70a645-c17c-4d99-9339-aff0494a3bdf
+{n}Ember's eyes fill with tears.{/n} "It's terrible... What did he do to you..."
+
+4cd8656c-cacb-407a-be3d-466be8bfe150
+{n}Ember edges closer and shyly lays her burned hand on the crying angel's shoulder.{/n} "I know, you are in so much pain now... and it will continue for a very long time. But then it will get better."
+
+95d47b80-5566-45b6-8d2d-583d823ec348
+{n}Ember claps her hands.{/n} "We found her brother! We saved him from the fire... just like that good knight who once saved me!"
+
+0788edce-b779-4724-a375-79b54fa0ee0b
+{n}Ember covers her face with burned hands in horror.{/n} "Little Aivu... She's been kidnapped!"
+
+1042bd06-4a23-4232-9f87-e2eaebc608ad
+"So, pain is... useful?" {n}Ember considers this for a while.{/n} "I guess you're right. Without pain, without sadness and grief, we would have never been able to tell what is good and what is bad. And yet, I would like if there was at least a bit less of it."
+
+8c351ce9-c93b-4ab7-b80c-07901ada22ed
+{n}Ember wrings her hands and exclaims with joy,{/n} "How wonderful! I knew you were alive! You were in my dreams, fighting the elements, descending into caves, driving the darkness away with the fire that lives in your heart!"
+
+c1faf639-7b08-44b3-a2b3-3789da2b12df
+"My companion, Ember, would like to speak with you."
+
+5cf92e95-bfc6-4819-a808-c6c33dcbe127
+Advised Nocticula to listen to Ember's words.
+
+412337da-b941-4e8d-8ad1-68f400f78697
+Told Nocticula that you arranged her meeting with Ember on a lark.
+
+3065e28e-f2f3-4817-82d9-5000d90dc6c9
+Told Nocticula that Ember was a fool and that there was no point in listening to her.
+
+893d9bb3-5636-4e47-8859-5f553eb451b5
+"Ember? So that's her, then? Well... Approach." {n}Cocking an eyebrow, Nocticula looks down on her.{/n} "I have heard you bleating your pathetic prayers at me. You have some nerve, addressing me with such nonsense! Did you think I would simply repent? Renounce my status as a demon lord? Do you have any idea what I had to do to acquire it? Wait, what is this?"
+
+33c47834-789a-44c6-8f5e-cd7a289368a4
+{n}Tears are rolling down Ember's cheeks as she sniffles noisily. She presses her maimed hands against her heart as she stares up at Nocticula. Her fragile form shudders from weeping.{/n}
+
+cd80d1e6-81e4-4656-a95a-d3c9efd5c665
+"I..." {n}Ember wipes her face with her sleeve.{/n} "I know what you had to do. To others, and, and... to yourself. I'm so sorry. So sorry... If only I could ease your pain somehow... Calm your sorrows..."
+
+f629ddc9-9fc4-47e7-8908-f7509ebd2535
+{n}After taking a trembling breath, Ember wipes the tears streaming down her face.{/n} "I'm so sorry... You're the most miserable soul I've ever seen. I've seen people burned alive. People being devoured by monsters. People burying their children. They were in pain, so much pain... but I've never seen anyone in as much pain as you."
+
+45e94ce4-2095-433c-bc4e-c71db91734e0
+"Then get her out of my sight!" {n}Nocticula pointedly turns away from Ember.{/n}
+
+570a085d-b04a-4026-9f33-923325d2dd30
+{n}Nocticula stares Ember straight in the face.{/n} "So what do you suggest I do, preacher? Beg the good gods' forgiveness? Devote myself to serving a sword-swinging upstart, perchance? Or that old crone the moon?"
+
+3babac50-795d-4d83-ad91-ebee211765e4
+"From yourself. From what you've done to yourself. From the city you've imprisoned yourself in... Listen!" {n}Ember's voice rings desperately.{/n} "You are a queen — but you're the queen of pain and filth. Your realm is a realm of your own suffering. You're almost a goddess, you can do anything you want — so why won't you make yourself happy? You could become the Redeemer Queen!"
+
+d9ad9e31-d004-4e44-9d35-59292191ed85
+{n}Upon giving Nocticula one last smile, Ember ducks behind your back. You hear her whispering.{/n} "Do you think she took my words to heart?"
+
+ad6d73c5-ea30-42d0-b6ee-aaa0be5c686d
+{n}Vellexia eyes Ember with mild curiosity, as if observing a mildly amusing animal in a zoo.{/n} "Is she here to entertain you with her oddities? I also enjoy the company of jesters, though I wouldn't like to have one of them as my constant companion."
+
+66aed7d1-3b00-4cee-9b09-278f86c0736e
+"Hey, stop being mean to my friend! But I guess you don't know what it's like to have friends, you stupid demon! If you have a friend, you can laugh and play together! That's what I do with Ember. We have lots of fun together. But you're just mean, and you don't like when people make you laugh. That's why you don't have fun!"
+
+3a304b8c-4925-4295-91a0-b69fed2d9737
+{n}Ember nods seriously.{/n} "That is true. Love always ends. It either ceases to be love, or is lost altogether when the one we love dies. That is why we mortals value love so much — we know that it will be over before we are ready."
+
+c950244b-aac6-4717-a6cf-cb779f9beaab
+{n}Ember answers with a cheerful laugh.{/n} "Of course, you are right. What you say is so nice! And it is so true! Love does help us feel less afraid of death. It can even make us feel immortal."
+
+0e7f2add-4b68-416b-b1d1-9cdeaf6d2f51
+"She envies him. That's why she's so cruel to him. She wants to dive into these depths herself, but she cannot." {n}Ember lowers her eyes sadly, paying no mind to the demon's indignant hiss.{/n}
+
+560beb7f-8495-4b51-a3f9-3f3904675be8
+{n}Ember gives the boy a broad smile.{/n} "It's all right to be different. I'm different too. The Commander has lots of odd friends. Do you want to be friends?"
+
+0755b2bb-c8e4-4e7c-8318-29deaceed23b
+"You mean sending assassins after my lovers for fun? Oh, of course, I do that every other day," {n}Daeran says, rolling his eyes.{/n} "I don't know if my advice will be of any use, Ember, but, generally, it is better to do pleasant things for those you like and do unpleasant things to those who anger you. Mixing the two is a recipe for disaster."
+
+b747429b-5cb5-48d4-9099-d3057e440d14
+{n}Ember gazes at you pensively.{/n} "Wherever you go, everything changes. Eternities end. Some die, and others are born. All becomes new, and nothing stays the same. Who are you? It's a mystery!"
+
+706adc38-6b16-4eee-9f26-e32db12102f5
+"How beautiful!" {n}Laughing merrily, Ember claps her hands.{/n}
+
+2c206218-b163-4f68-9cd0-b3ca06356291
+"Nonsense. Me trying to reform — now that was truly sad, not to mention tedious. But now... Mmm, believe me, Ember, being a strong, healthy demon is pure bliss."
+
+24e6c007-d752-407c-8517-106d260f94d1
+"We just need to wait a little more, Soot. {name} will be back soon, I know it!" {n}Ember strokes the crow's feathers.{/n}
+
+c06b6d2c-7a25-4912-8613-cce2ca15cebb
+"I told you {name} would be back!" {n}Ember smiles happily.{/n}
+
+0f42dc26-f323-40d6-ad6b-100386d0bca6
+{n}Ember claps, hanging on the bard's every word.{/n} "I love campfire stories! Especially ones that aren't real — they're the most interesting!"
+
+f9d30aa0-9cec-40a7-8e35-97d330ff7f6c
+"Ponies! They're so cute and chubby, just like Soot! May I pet your ponies? Please?" {n}The delighted Ember seems not to have noticed she interrupted Jubilost's list of titles.{/n}
+
+ce517f18-2245-4148-ba69-23f663f40414
+{n}Jubilost stops short and glares at Ember with indignation.{/n}
+
+488e627d-2bb0-4c7b-bbe3-924db3a989a6
+{n}Ember looks back at him with innocent devotion, waiting for his permission.{/n}
+
+3b21f948-4dca-4350-a2be-ebfd303411a4
+"Theater! Theater!" {n}Ember laughs melodiously and claps her hands.{/n}
+
+6584319a-ac0f-43f2-ad7a-8d31ccee5d94
+{n}Greybor casts a long, thoughtful look at Ember. The elf's joy is reflected on the dwarf's stern face by a slight smile.{/n}
+
+5add0643-e8dc-4ea7-8c98-5116f770aec4
+"This is it. The Last Fortress." {n}Ember smiles her familiar carefree smile at you.{/n} "It's been a long road from the River City to here. We walked and walked and walked along the road... and suddenly there's no more road."
+
+210d7f83-7bb0-421b-8547-59d6411e09c6
+"The war is going to be... over?" {n}Ember repeats your words slowly as though unable to make sense of them.{/n} "There has always been war. Can it really end?"
+
+d25041a0-66e2-4d78-aff2-27a7d77a03e8
+"I haven't actually thought about it." {n}Ember smiles sheepishly and kicks the pebbles on the ground.{/n}
+
+782c40c0-ea63-4e28-b1a6-6849651042c8
+"People used to call me a fool, a vagrant, and a beggar. Now they call me holy. It's so strange, because I'm just an ordinary little girl! But do you know what's bad? I can see that some people are afraid of me. And some come to me and ask me if I'll punish other people for them. It's all so silly..." {n}Ember sighs.{/n} "It would probably be best if I go away somewhere, to a place where nobody knows me. They won't be afraid, they won't revere me, they won't ask me to work miracles... We've been on a long journey together, but it's at an end now. When we win, a new journey will begin."
+
+e301ad72-487c-4a73-8287-b116c357be44
+Told Ember that you don't care about her and her dead father.
+
+6fb3b85b-9f32-4e3c-8829-536443598617
+"Why do they call you Ember?"
+
+960f9f23-09fa-45b5-8033-43447215c343
+Admired Ember's capacity for mercy.
+
+4f5393dc-288a-4ff9-8d9d-f735ff026912
+Remarked that the paladins who nearly executed Ember were acting out of excessive commitment to the law.
+
+227e2f3d-efa6-4eef-bf78-408a0d8f11b5
+"You have followers now. They live according to your preaching and call you Saint Ember, Ember the Righteous. And they call themselves the Redeemed Brotherhood."
+
+1c0b452e-e014-44ce-988e-8208ca9ec3f8
+"Remember. They called you Ember. You and I fought demons together."
+
+dc684552-b0b3-4de5-be82-da9eb3a38d7b
+{n}Ember is bobbing her head and humming a tune. She greets you with a carefree, cheerful smile. Her wandering eyes linger on you for just a moment before darting off again into the distance.{/n}
+
+a51bfd4b-98a0-43cd-9098-18b490f19224
+"Well, I... They call me Ember. I used to live in the {g|Kenabres}River City{/g}, and now I walk with you. That's my story!"
+
+835ba712-4e60-4ac3-abf3-595406550525
+"I like Ember, it's a good word. Embers are like people. On the outside, they're gray and cold like stones... But they're warm inside. You can blow on them and they'll start a fire to help you survive a cold night. And that's wonderful, isn't it? Ember it is."
+
+bfcfdc93-bfe5-441a-9f47-229c9238c01a
+{n}Ember departs with a glowing smile.{/n}
+
+28157fb0-f439-484c-a2d5-2894b2d14911
+"No one can say how much good or evil they have in them. No one can see into their own soul..." {n}Ember smiles and tilts her head. Her inquisitive look wanders over your face, as if she's trying to look into your soul.{/n} "No one knows until it's time to check!"
+
+114bdd03-d72a-4297-8beb-1cb8756f5a1e
+{n}It appears that Ember doesn't know who exactly gives her these powers, but you can guess from her words that her patron is Andoletta — a powerful archon, one of the empyreal lords, also known as Grandmother Crow.{/n}
+
+b43b5a39-27f1-445d-b343-30238ce5cb03
+{n}It seems that Ember doesn't know who gives her these powers. Her familiar was obviously sent by a powerful creature of good — perhaps an angel or a fey, though you couldn't say exactly who.{/n}
+
+b68ae448-a504-4fc9-9846-b745601f9a76
+"Em... Ember? Embers are warm, they keep the cold away at night..." {n}She looks from side to side, then sniffles again.{/n} "You know, everyone burned. There's no one left..."
+
+651d269b-65c3-4078-9b82-c781ce9d0a66
+"Ember."
+
+e97104e5-3232-4c42-a645-ebfcf9d9be77
+"Thank Ember — at least she believes in us."
+
+50628bcd-a996-43f9-9a12-1d8f78094295
+Ember's tears melted the stone altar like boiling water poured over an icicle.
+
+c6005086-8768-4e0b-9dff-da6746f59ccc
+"Ember? What's wrong with her?"
+
+b21964c0-d095-4471-84df-43e88eaa2982
+"How did you end up at Ember's sermon?"
+
+99d28810-b7bd-4766-9c35-f985d40fea8b
+"Ember said prayers for demon lords? That can't be true."
+
+79280748-1c1b-4be4-855f-a654dbebd459
+"Commander, it's Ember! Ember's been taken!"
+
+19aebaec-2a26-4b21-99d4-470c46d20cf2
+"Thank you, Commander, but... Don't waste time on me, I don't deserve your kindness. You must save Ember!"
+
+1b19d041-a1bb-41c2-b10c-67d4fdb07dea
+"May the good gods help you — I dare not call on them by name..." {n}The woman looks away, hesitates for a moment, and then forces herself to continue, looking you straight in the eye.{/n} "Commander, there's one more thing. Have me arrested for treason. I am a Baphomet cultist. It's my fault Ember was taken."
+
+77451877-48fd-4e97-b41b-0207a00e3de4
+"Thank you, Commander. You have been kinder to me than I deserve... But that is exactly what Ember teaches us to do. I will do anything to keep others from falling into the cult's web. And you — please save our little saint!" {n}She bows and leaves.{/n}
+
+2a689f7f-164e-4dcb-8850-f929ea42008f
+"You're very perceptive, Commander." {n}The woman lowers her head, stops for a moment, and then forces herself to continue, looking you straight in the eye.{/n} "I didn't come here only to tell you about Ember's abduction, but also to surrender to the law. Arrest me for treason. I am a cultist of Baphomet. It's my fault Ember was taken."
+
+9acf0eda-7aa0-4e5d-8471-f03537d4b50a
+Supported Ember's preaching.
+
+2dcfd508-e36f-43f9-accb-f8c799faf09d
+Told Ember she should preach obedience to the law, not loving one's neighbor.
+
+3d8e17bd-5d8a-4a18-bec8-6a7a025470f3
+Told Ember her preaching is useless.
+
+d5ea9f59-6976-4277-a679-57e3b93184cb
+"You think so?" {n}Ember looks at the crowd gathered around her.{/n} "But they are listening to me... Why else would they come here?"
+
+0363f5b6-4691-428f-9ac0-9f1583e2f1e5
+"All right..." {n}Ember looks at you hesitantly, then turns to the crowd and keeps preaching.{/n} "I was talking about being kind to your neighbors..."
+
+b5931bcb-dea0-442d-bf9c-89c429b6e174
+Praised Ember for trying to make the demon lords repent.
+
+4b77c78c-4e94-447c-9d2b-578e1fe44e36
+Told Ember that demon lords have to be destroyed, not persuaded.
+
+6fd06609-e0f2-42df-9e6d-11a1ec730760
+Told Ember that it's impossible to make cosmic evil see the error of its ways.
+
+e162deb3-3ca5-48e1-a481-00999d2bc314
+Laughed at Ember's attempt to make demon lords repent.
+
+f5305523-20e2-4c2b-97b2-07d8b92b955e
+Told Ember that the demon lords are your enemies, and enemies must be destroyed, whether they are good or evil.
+
+f2269145-e2c0-4231-ae89-0d5b96744af2
+Placed the repentant cultists under Ember's care.
+
+310ab9a2-3f7f-4994-bd4c-1d956e6e3c59
+Exiled the repentant cultists and told Ember that her sermons are pointless.
+
+ed2d08e6-31f7-4c46-bad6-1821c6532668
+{n}Breathing hard, a cultist knight wipes her blood-smeared sword on a tabard depicting Baphomet's unholy seal. She looks around — it was a difficult fight, but by some miracle none of the cultists perished. Looking back at Ember, she kneels in front of you.{/n} "Knight Commander. We are guilty of treason and we repent. We beg for your mercy..."
+
+4f67150a-e28f-41a8-bd65-dcf65b36613d
+"Deal!" {n}Ember turns to you with a smile.{/n} "You'll see, they won't do anything bad! Shall we go?"
+
+7f435264-1283-4f3a-bcd0-6cbeba8d4a4e
+"You'll see, they will change!" {n}Ember smiles to the cultists.{/n} "I will visit you every day!"
+
+116a1103-c28c-4733-a0e2-ddd25b0eb991
+"Do you really think so?" {n}Ember looks down sadly.{/n} "But I thought... I wanted to..."
+
+6f974d10-5e71-4f5c-98d5-dc3ad48ad559
+"Hells no! Let us go or this little ragamuffin will die!" {n}Drawing her weapon, the cultist dashes to Ember.{/n}
+
+9a06e2ba-4bef-4499-bfb9-e05b47696fef
+"Oh, Ember..."
+
+d4d56afa-2a2a-41fb-83fe-d0898e480f49
+"Yep, that's about all I have to say, too. Oh, Ember..."
+
+bae964ce-b57d-43b4-8382-a82f2f24f52d
+"You need constant watching, kiddo...", {n}Seelah mutters. But she heaves a sigh of relief, now that she knows Ember is all right.{/n}
+
+227bbbf2-4972-40b0-bd7d-e8fd1a2f7207
+"Of course, you will have to apologize to Baphomet for the broken altar... Damn it, no, not even I can joke about this. Ember, honestly, not everyone deserves an apology — no matter how much you've hurt them."
+
+145488f3-d484-4ad4-8a14-e6f454d0574f
+"It's amazing the way everyone feels the sharp edge of your tongue, but you almost never turn your poison on Ember. Is there a tiny flicker of a conscience in the Count's soul?"
+
+60bc6549-022d-4807-b729-567eb0e8b5c5
+"Ember, are you going to preach to demons?"
+
+e9d4c93f-e86d-497f-897f-f332efa42ad1
+"Ember, don't embarrass yourself. Let's go."
+
+ace5f5e8-869a-4740-8a5f-fda945736882
+Supported Ember preaching to the demons.
+
+69f90ab5-a25a-4b9d-af23-31534de1f0b4
+"Ember, this demon is wounded. Words are all well and good, but let's help him."
+
+1e018649-6288-409f-bfe7-603105b79cd9
+Threatened the demons to whom Ember was preaching.
+
+9f670d90-bc25-473a-a375-543eda16c1b6
+Laughed at Ember preaching to the demons.
+
+4fd6af6a-b850-4d2b-84fc-fa1ad7329999
+Told Ember you believe in the power of her preaching.
+
+1eb2d284-c2ea-4d08-b444-c7c450730b77
+Told Ember that demonic nature can't be changed by preaching.
+
+4d247cbe-29b7-4a41-9729-7d5b38ea65ed
+Told Ember you don't believe in the power of her preaching.
+
+d7480425-ca7f-4b68-adf7-65cfc658c0ec
+Told Ember you were curious where her preaching would lead.
+
+2274c1a3-c48d-4dfb-a6fe-b3755c6d940c
+"Ember, you're only a hundred years old. By demon standards, you were born yesterday. How could you have lived longer than they have?"
+
+fc38edc2-f835-464e-aba3-14e638bd1ea3
+{n}Walking down a street in Alushinyrra, you see Ember. She is sitting on the ground, surrounded by demons, shielding a scrawny babau who looks like he's been beaten.{/n} "Why are you doing this to him? You're hurting him!"
+
+a39716fb-9e4f-4b61-9ee3-e9fc25a1b276
+"What are you doing? You're hurting him!" {n}Ember dashes toward the demon laid out on the ground, shielding him from the blows.{/n} "Stop! Why are you doing this to him?"
+
+772942e9-278a-4dc8-af77-547b626c8565
+{n}Ember looks at him serenely. She reaches out and strokes his horned head with her burned palm.{/n} "Poor thing... You are so hurt and scared all the time. You feel a bit better for a while when you torture others and forget about your suffering... But is that really happiness?"
+
+334702d9-b217-42e0-b450-f2e77ed62035
+{n}The demons stand around Ember. Their faces show caution and rapacious interest. It is clear that they are slightly afraid of the strange girl who shows no fear, but at the same time they see no obvious threat.{/n}
+
+4af8a066-1c8f-4164-aeb0-e34f9c322d82
+"Oh, you're right! How embarrassing... There!" {n}Ember whispers a spell, and the demon's wounds heal.{/n}
+
+c5164620-77c6-425b-b641-21e021727cf9
+{n}The babau jumps up and runs away from Ember and the demons who were beating him.{/n} "Screw you! I owe you nothing!"
+
+08b734bf-3d2b-4a9d-8819-237dc30b9d69
+"Of course you don't." {n}Ember smiles serenely.{/n} "I helped you for no reason, just because I wanted to. I hope you'll be all right!"
+
+0aabd742-c87b-440c-a0b5-ea710bd7e5b4
+"I... I really am very foolish..." {n}Ember's face falls and she lowers her gaze.{/n}
+
+fe46eabe-5119-43f0-a758-43a24d1f6062
+{n}The demons walk away laughing and making obscene jokes. Ember stands for a long while, watching them leave.{/n}
+
+540dcf69-7406-4219-8fe4-78e583883ecd
+{n}Ember keeps preaching. The demons listen, occasionally interrupting with laughter and obscene jokes. Finally, they grow bored and walk away.{/n}
+
+a04a2a37-bc33-49f8-a44c-ac6cf0c5c871
+"Ember the Righteous walked through the Abyss and returned alive. After that, it would be shameful for us to be afraid of demons!"
+
+67f8d8ef-ad37-4126-85c2-ef35b363119a
+"Ember has returned from the Abyss! It looks like we can still win this war."
+
+0a47310d-f63b-4f72-b99f-70a98fcd6c37
+"Ember the Righteous saved our souls, and now she's saved our bodies."
+
+8a44c391-c6e2-42ee-bb6b-8fc76e377650
+"Glory to Ember the Righteous! We'll spread your teachings throughout Golarion!"
+
+e7de1749-eb59-4515-8925-a11f798c8b28
+"Ember, your words have once again saved me. I'll carry your message all across Golarion!"
+
+4ec74014-3363-43da-b1a6-64a45929e796
+"Ember the Righteous! You came to save us... To save everyone — friends and foes alike."
+
+4e1a105b-7892-4053-9132-75abe85b65e2
+"What is this? Ember the Righteous is angry?"
+
+266f794d-3ac7-465e-aff7-7c313d2863cf
+"Why are you calling Ember the 'Holy Martyr'?"
+
+501b4157-a881-4c7c-8257-0cd36318017b
+"What was that, Ember? Are you trying to threaten me?"
+
+07553084-f10a-4f88-ac01-9fc35eb6cd44
+Killed Ember and the Redeemed.
+
+3e73940c-215f-437f-9158-4bdb058c59c3
+"Brothers, sisters! I'm having a vision. I see her, I see the Holy Martyr! There she is, standing before me as if she were alive, just like in her sacred image!" {n}A dirty, exhausted fighter in rusted armor jabs his finger at Ember, staring at her so intently that his eyes seem to almost bulge out of their sockets.{/n} "Hey, Toil, look over there — it's definitely her!"
+
+42098a36-3974-49c5-a384-29e4d0e841ab
+{n}Instead of answering, Toil falls on her knees before Ember, and the others follow her example.{/n}
+
+c89bfd4c-d866-4602-9d09-26545a9adf23
+"We call ourselves the Redeemed Brotherhood. Who we are..." {n}Toil scratches the brand on her cheek with gnarled fingers.{/n} "The short answer is we're all scum — convicts, deserters, looters, even a few former cultists. Those who heard our Saint Ember's preaching and decided it wasn't too late to do something better with our lives than throwing them into the Abyss."
+
+c0471a9e-de08-4ecf-86bd-b168a0cf97f4
+"Not all of us were lucky enough to see her in the flesh, of course. But those who heard her sermons passed on her words to others. We even collected her teachings and turned them into a book. Our thinking was, though Ember herself may be gone — well, we all thought she was gone — her words would live on. They continued to spread and save those who were lost."
+
+8536d7a9-c6e6-4ea6-ac81-61af249184b1
+"Everyone knows Ember perished in the Abyss along with the Commander and her other disciples and thus became a martyr... Well, or so everyone thought until today."
+
+6d75f6eb-513d-4aab-8007-58fcd4fbc0ce
+"And then I ran into these guys. I heard them praying for the demons' salvation. Well, at first, I laughed. Then it hit me — what if I really do have a choice? What if there is something else in life beyond this never-ending nightmare? I spoke with those who'd seen Ember in the flesh, listened to them recite her sermons from memory — and then I broke off my horns. And with that, I broke away from my former life."
+
+a03b47be-8d0f-4c0b-ae1b-4acd2afc8a57
+"We are going to the unholy altar of Baphomet. The one shattered by the tears of our Ember the Righteous. The surviving Templars, led by the demon Thasgarodd, decided that it was time to repair it and start offering up sacrifices again since she was no longer here. They started with our former cultists. They keep them captive and kill them one by one. We don't abandon our own people! We're going to free them — and shatter the altar into dust while we're at it. Along with the demon and his minions!"
+
+e747b9d2-a2ae-44f7-9b6b-3935024c9aa0
+"We'll help!" {n}Ember looks at you.{/n} "We will help, won't we?"
+
+87dbe04c-e04f-4567-a085-b2a544b63b9b
+"I am not a goddess to dole out blessings... But I wish you success!" {n}Ember smiles broadly.{/n}
+
+542b100b-a698-47a2-aa2e-03c6b94f75e1
+{n}The knights look at you, confused. Toil grins.{/n} "You're a joker, all right, just as it is written in 'The Life of Saint Ember'..."
+
+0192cd68-761f-479d-9251-3f4b64bbe27f
+"We all believed Ember the Holy Martyr perished in the Abyss along with the Commander and her other disciples. Half a year has passed. But if you're alive, what happened to the preacher? Is she still alive?"
+
+daf552e8-ddbe-4367-835d-2d531f0789a9
+"Yes, it's them! I swear by the holy tears of the Martyr, it's really them!" {n}Terta, the bricklayer who once stormed into your room to tell you Ember had been abducted, looks at you in awe.{/n}
+
+7018a1e9-e69f-498e-9f28-473bebc9bbe5
+"Yes, it's the Commander! I swear by the holy tears of the Holy Martyr, it's really {mf|him|her}!" {n}Terta, the bricklayer who once stormed into your room to tell you Ember had been abducted, looks at you in awe.{/n}
+
+1c0266e6-21b3-48d4-a788-ac489b454ff0
+"Ember would have trusted us. It's a shame you seem to have turned a deaf ear to her sermons."
+
+bc4d2d70-2dbb-4657-a006-001ce11849d4
+"If you decide to help us, after all, remember to bring Ember with you! The demons will run as soon as they see her!"
+
+1acab843-7292-49a2-82b0-fe7a62fb47ad
+"Thank you, Commander. With both you and Ember the Righteous on our side, we cannot lose!"
+
+dc343305-39b1-4286-80fe-63fd6131e2f4
+"Oh. Hello!" {n}With a carefree smile, Ember waves at the demons.{/n} "I remember you — we met in the Purple City!" {n}She looks at one of the demons, a frail-looking creature whose horns have been broken off.{/n} "How are your wounds? All healed up?"
+
+a3e0cbab-30c9-4397-8a93-761a9e82c65d
+Called Ember a righteous saint.
+
+90604098-3de1-43a4-a6d5-6f4e2050231b
+"They are right to call you Saint Ember and Ember the Righteous."
+
+a8cab5dc-cc0c-43cb-b7b9-481601ddff73
+Called Ember an enigma.
+
+6e9c8e24-8f7b-4302-9a2a-cd4dae3bd9da
+Called Ember a lucky fool.
+
+c79b9851-bc5f-4b09-90d5-30dccf4b795b
+"It all worked out so strangely..." {n}Musing, Ember stares at the battlefield.{/n} "We've killed many people. We've saved many people. These knights came here to kill each other, but instead, they became friends."
+
+8b6a9f20-ed67-45e3-b9f6-0baa31755b48
+"This trick..." {n}Ember looks down sadly.{/n} "Soot told me about it but I didn't want to use it. It's scary, even I'm scared when I do it. I'm sorry I had to... But if I hadn't scared those good people, we would have had to kill them all, wouldn't we? If people weren't so silly, we could have just talked to them... But they are very, very silly. So sometimes we have to do scary things."
+
+26701f8c-5e54-4fb0-a181-78c97c592d80
+"What is there to understand?" {n}Ember shrugs her slender shoulders.{/n} "I'm an ordinary girl."
+
+dfb44706-2653-4b04-9c6e-2bac9d5cd818
+"I was born the year this war began. I knew nothing about it, but my father told me that good people were going on a crusade to save the world from demons. So, we went too. Then my father died, but it wasn't demons who killed him. He was killed by some good knights who thought we were cultists. Stupid, right?" {n}Ember laughs, but tears roll down her cheeks.{/n}
+
+fb6d7f4c-b125-4071-9bcb-2af2ead14827
+"I will devour your bodies and souls. And I'll start with this little piece of fluff!" {n}With a baleful glare at Ember, the demon raises his hands, and a ball of ghostly flame starts to form between them.{/n}
+
+614f3d1a-b9bc-4d68-8bd0-83e7836e8512
+"Forgive me... I'm sorry... It's all my fault..." {n}Shaking with sobs, Ember falls on her knees and watches as the people who followed her teachings perish.{/n}
+
+65536655-d37c-4bc4-86d9-1b081a740da4
+"The Redeemer Queen! Hello! Thank you for protecting me." {n}Ember smiles and waves at Nocticula, who recoils.{/n} "Why are you asking? You already know the answer. You're just afraid to accept it. Don't be afraid!"
+
+d6e59f92-51bd-4c3c-8cb5-bc5bd666eabd
+{n}Ember happily claps her hands.{/n} "Good queen! She pretends not to understand, but she understands everything!"
+
+5c5dfefd-26c4-4d9c-be03-1b92d2dbb0e5
+Persuaded Ember that she could not help the Redeemed.
+
+41d3df25-2a88-4089-b103-094394362c24
+"They're quarreling again. Why do some good people understand things when they're explained, but others don't?" {n}There is a new, unfamiliar undercurrent in Ember's voice. For the first time since you met, she seems genuinely angry.{/n}
+
+b6bd2aaf-5d2f-4669-a7e1-5312094e423c
+{n}Ember's shoulders slump and she stares at the ground.{/n} "I... failed them, didn't I? If they die, it will be my fault. After all, they were brought here by my words."
+
+67efa83d-bd82-4d7c-9772-bdf24f1e2379
+"Ember taught us to win despite fear and despair. And this situation is scary and desperate beyond belief, right? That means it's time to win."
+
+ce5626af-8bb7-49f9-bf32-c6ae6a4433db
+{n}There is a warm glow in Ember's eyes. She radiates goodness, but also such steadfastness that it's clear few people will find the words to contradict her.{/n}
+
+25855f01-1c90-4d47-b22a-e5f2db7daecf
+"Of course... Lady Ember. Let's hope my bride doesn't run away from the bungler who managed to lose the ring he bought for her..."
+
+88b97c9a-c974-4b02-bf43-3ea95e56d537
+{n}Kerismei gives Ember a sideways glance.{/n} "Yeah. Sure. Chickens."
+
+4f0e8530-2876-4ef8-b83f-335c2dba6009
+"He died, and now he's alive again!" {n}Ember claps her hands, overjoyed.{/n}
+
+db057152-6d87-4d78-8b1f-7c2d9e13cb45
+{n}Ember looks at the anomalies with pity.{/n} "Poor things. They're in so much pain. Why did Valmallos not rid this world of pain when he created it? He could have, I'm sure of it."
+
+21f13d6c-766a-4c5e-b863-ce8109d17641
+[Give the morsel to Ember] "Sure is."
+
+9bcf6238-406b-4f7e-a5b2-8e218dec8ab5
+{n}Ember takes a bite and smiles happily.{/n} "So good!"
+
+cfc95975-31c6-4c48-a0f9-8f26e41945d5
+{n}Ember watches as you gobble down the food.{/n} "It looked tasty. I'm glad you liked it!"
+
+5e5dbe89-d27f-4917-a6d0-2fb2b1800ca6
+"Ha ha ha! Yes, just like that!" {n}Ember jumps up and claps her hands.{/n}
+
+e86f2c7b-f50a-4e48-849e-e21b70bb6e20
+{n}Ember does not answer you. She seems to be miles away, lost in her own world.{/n}
+
+d622f410-ae56-44e6-8e83-ccfa41e91b3c
+"Ember's playing with the children at the feast, too. Why don't you all play together?"
+
+b4768be8-6203-497a-9e0e-b06e6b26e303
+"As soon as she got to Kenabres, Ember found friends — old and new. It's so easy for her to make new acquaintances!"
+
+ae496e05-ccfe-4125-88af-ce56e7e0896b
+"You are insufferable." {n}A woman in an Ember costume rolls her eyes.{/n}
+
+0ac1ddf9-0cf1-46c3-9913-7e7c2522092c
+Looking for Ember
+
+a6a03c36-c6ef-4db9-8c4d-d4a74cc3c64a
+"Ember? She was just here! She left after she helped us."
+
+4f58796b-b05c-4dc9-811a-9e7a52edd272
+"Ember saved me. I fell from the belfry... I thought I was going to die! But Ember patched me up in no time!"
+
+5dc3160e-ad6c-49f7-b9a1-143460c83732
+"I know Ember. I'll go find her... She'll handle this."
+
+28d9256b-cd01-4965-91f6-3a5add181544
+"There you are, Ember! I've been looking everywhere for you."
+
+c1310dac-9157-4004-90ed-fcd36fa1d517
+"Oh, my... Ember? The real Ember? How exciting!" {n}The woman smiles sweetly at the boy.{/n} "Why didn't you tell us? Here, have some more cake. Go ahead, eat as much as you want. Can you introduce me to this 'sister' of yours?"
+
+6272ad8e-bb7d-47bf-a0f8-789f52ba200d
+"I can't believe my eyes... It's really you! Ember, darling, you have no idea how happy I am to meet you at last. You're the talk of high society! We all admire the depth of your conviction. Will you come for tea at my salon? Everyone who's anyone in this city will be there."
+
+62acf2d9-91fd-404f-966e-2cf236fd3c93
+"Oh, that would be marvelous! I've been longing to meet her! I'm sure this little brat is lying — Ember would never associate with lowlifes like these."
+
+9d6a9c99-db37-4d4a-a254-60d296c01f88
+"Yes! These kind people invited me over for tea." {n}Ember smiles happily.{/n} "No one has ever done that before. In fact, when I used to live here, they chased me away so I wouldn't get mud on their pretty things. But it wasn't my fault I was dirty — I didn't have any clean clothes, or a place to take a bath. You know, hot tea is a wonderful thing... especially if you're living on the streets and it's raining or snowing outside. I think you should invite these children over for tea instead of me!"
+
+dc8c8045-5f3b-4d70-b1aa-0273e80f05c3
+"What? You mean... invite this rabble into my living room? Ember, darling, be reasonable. You are a celebrity, a heroine of the crusade. Everyone wants to meet you. But these... Well, these..."
+
+d64d7598-1cce-4074-8079-28c40782f03b
+"So that's why they call you a saint... I'm sorry, Ember. I've been so selfish. Thank you for opening my eyes." {n}The sobbing woman wipes away her tears as she pulls out a hefty purse.{/n} "Here you go, kids. This is for you. A holiday gift. I don't know if you can forgive me for the way I have treated you. But if you can, please do come for tea or lunch. My door will always be open to you."
+
+a06f6bea-77a5-4b54-8184-52de8ce10d16
+"I wasn't..." {n}The woman looks at Ember fearfully.{/n} "You misunderstand, I wasn't trying to..."
+
+1366d218-e27a-4fde-b57b-65b7515c92c1
+"You don't need to tell me. I already know. All the insults and cruel words, all the terrible things people say about the poor... I've heard it all before — maybe even from you." {n}Ember's eyes burn as the woman backs away in fright.{/n} "You want me to come over for tea and tell you about the demon city? Why don't you invite the children to tell you about their lives here? The stories will be the same. The demons torment the poor in their city... and you torment them here!"
+
+b2802f4a-4645-43cd-93ad-bfb3b8af739c
+"Do you really think so?" {n}Ember puts a hand to her mouth. She looks at you worriedly.{/n} "I do not want to scare people. But they made me very, very angry. How can they be so... so..."
+
+a68b468a-cf9b-47b1-b036-b5d42a72701c
+"I think I have changed a lot during this campaign." {n}Ember sighs.{/n} "I hope they remember what I said... and not just that I yelled and chased them away. I don't want them to be afraid of me."
+
+265d3adc-25d6-4f51-bbef-671e92400735
+"I will!" {n}Ember laughs happily.{/n}
+
+19a37a14-7083-42c9-9299-ffb90754e3ce
+"Oh, of course! I'm having so much fun! There's music and decorations, and happy people everywhere! See, look!" {n}Ember picks up a pastry and pops it into her mouth with a cheerful grin.{/n}
+
+c47d011b-fe61-4565-a324-1d0f0811e2b5
+"Thank you! We'll go there as soon as we start to feel hungry." {n}Ember gives you a light-hearted smile.{/n} "I've always loved festivals. There was always someone to give me food, and I almost never got chased away."
+
+38d04b96-b412-4d57-8e09-fc7f0bbc622e
+"This is great! We are going to have so much fun together!" {n}Ember starts clapping excitedly.{/n}
+
+db13b246-cbdc-49d9-b51f-2baa02d58737
+"Where did Ember go? Is she off helping someone again?"
+
+5054c4f7-bc07-46e8-945d-924757bd0d26
+Ascension was a true challenge for Ember. For years she had rebuked the good gods for doing so little to help mortals, but now she finally understood the burden of divinity. Realizing that even her new powers were not enough to save all who suffered, she went to Heaven, to her "grandma," the empyreal lord Andoletta, and asked to be her apprentice — but she continued to visit the mortal world to aid the defenseless or to convince a villain to change their ways.
+
+a652fc49-214a-462f-80d0-a27cfeeefd02
+Ember joined the Redeemed Brotherhood. She never recognized herself as their leader or gave any orders, but her very presence {d|Ember Good}inspired{/d} the former miscreants to perform great deeds. Over time, the Brotherhood grew into a major religious movement. Its preachers took a vow of poverty and walked the roads of Golarion, helping the needy, convincing villains to change their ways, and entreating both good and evil deities alike to be more merciful to mortalkind.
+
+e22adc4f-62cf-4aca-b805-0542b5c7c456
+After the victory, Ember simply sat for a long time, staring at the tongues of flame dancing in her hands. Her new powers {d|Ember Law}frightened{/d} her. The awestruck Redeemed were ready to hang on her every word — and that frightened her even more. She left without saying goodbye to anyone and continued her endless wayfaring along the roads of Golarion, helping the distressed and punishing evildoers. Many worshiped her as a saint, but she would always respond with "Please, I'm just an ordinary girl."
+
+10140353-9b55-4652-98e4-a169acea995e
+After seeing everything she believed in {d|Ember Evil}crumble{/d} before her eyes, the girl that once answered to the name Ember descended into total madness. After the war's end she found herself living in an orphanage, sweeping floors and washing dishes. She retained her magical powers, but she never used them again. Through her tears, she would say, "I don't want to do tricks. When I do tricks, everybody dies."
+
+20076373-d68d-47f2-84c5-e490eab31422
+The Fifth Crusade ended — but not the personal crusade of the mad young preacher. {d|Ember Ignored}Without saying goodbye{/d} to anyone, she left to continue her endless wayfaring along the roads of Golarion, helping the distressed and preaching love and kindness to villains.
+
+85d7bd44-52ce-4464-8d37-c72ff71e483f
+Ember, his friend on his long wanderings, was one of the few living souls who did not forget about Daeran. Only her rare visits could awaken a spark of awareness in the Count.
+
+43ea48d3-fb25-442a-9389-861891d35fac
+Ember {d|Ember Ignored}did not follow{/d} the Commander on the path of ascension. "I'm just a silly little girl," she said.
+
+df7f5b05-03e1-4841-b51c-d68d2b23a3a3
+A few years after the end of the war, Greybor found the orphanage where his companion Ember had once lived. He wished to take in the former preacher and give her a home, but all he found were the charred remains of a fire.
+
+5442dcf4-e1dd-47f5-b41a-c127471418f0
+One day, a gang led by Wenduag attacked the orphanage where Ember lived. The mongrel ordered it pillaged and burned to the ground, and the inhabitants were turned out onto the street. Wenduag either failed to recognize her former companion or chose not to acknowledge her.
+
+25f34917-975c-45ad-830e-2e7e3e97f578
+A few years after the war had ended, Greybor found the orphanage where his companion Ember lived. The former assassin took in the former preacher and cared for her as if she were his own daughter.
+
+901cd4f3-6623-4464-b3a5-fd9d817ecce3
+{n}Ember is looking her over thoughtfully.{/n} "Her wounds are so strange... not at all like mine. They burned me from the outside, but you were burned from within, I think. It hurt, didn't it?" {n}Unperturbed by her cold silence, Ember continues,{/n} "Yes, I can see that it hurt. I'm sorry that happened to you."
+
+ee39abc1-4075-4d0e-b34c-beb8d73f4598
+"Thasgarodd has issued a new mission for our squad. Our orders are to disguise ourselves as locals, search the mortal settlements, and find the elven child named Ember.
+Beware, brothers, that girl possesses a dangerous power that can cast out despair. Her so-called preachings, which are nothing but worthless backstreet blabbering, have already foiled a number of our plans and brought a number of soon-to-be cultists back to the crusader army. So much wasted effort!
+Find and sacrifice her to our Lord Baphomet without delay, or else Thasgarodd will slow-cook our blackened souls and devour them one-by-one.
+Hail Baphomet!"
+
+915a1b8a-f2c4-4097-9067-3651ceadd6a2
+Find Ember
+
+868d2063-d982-4646-91d1-caff997df250
+The ruler of Alushinyrra was in a good mood. The sermon from the impudent little urchin gave her a good laugh, but it could have easily provoked her ire. Only a girl like Ember could seriously hope to reform Nocticula. What next? Will she try to talk to Deskari? Or — why waste time on trifles! — to Rovagug himself?
+
+4bdddd99-c988-4d11-95de-d3c7bbd51856
+Of course. After preaching to lowly demons in the street, the next logical step is to preach to a demon lord. Most lunatics never realize their delusional dreams, but the Commander may well arrange a meeting for Ember with Nocticula herself. It will be fascinating to see how that encounter turns out...
+
+289d91d1-87f6-41f9-9e22-5342fbb0207b
+Arrange a meeting with Nocticula for Ember
+
+f847a991-63d2-4666-b9f3-fb46ead39019
+Tell Ember about the Redeemed Brotherhood
+
+c5a49477-3df9-49cd-bf9a-573a5d8db9db
+The Redeemed Brotherhood, which is what Ember's followers call themselves, are fighting for the lives of captured refugees — and they expect their saint to come and help them.
+
+86c0c4a8-08ee-402e-9f9f-585393a595e4
+Go to Baphomet's altar with Ember
+
+1a7cb015-1def-4aaa-accf-340b7487ad98
+Speak with Ember
+
+e4bdb135-adb3-4fd7-8058-adc512d0ec20
+Ember cares for those in need — she will not abandon her friends. It is amazing to see the power of her words in action, and even more amazing to witness the way she uses that power to help others.
+
+c51c888f-9424-44f6-b2e5-0036f04e71f4
+Ember has invited orphans and street urchins to a grand banquet, but not everyone approves of her generosity. The little saint has a gift for resolving conflict, but where is she?
+
+1e1bbdd2-6ea2-402b-8208-3122dcb18cdf
+Ember must be nearby. Surely some of the townsfolk will have seen her.
+
+43976268-7db1-46c9-a170-740e9f4d0944
+Find Ember
+
+ccac1c26-e498-4bf5-b860-ee08fb7e085a
+"Gods can't help anyone. They're just like us mortals — silly, frightened, clueless. No one can save you. No one, except you."
+- Ember
+
+10140353-9b55-4652-98e4-a169acea995e
+After seeing everything she believed in {d|Ember Evil}crumble{/d} before her eyes, the girl that once answered to the name Ember descended into total madness. After the war's end she found herself living in an orphanage, sweeping floors and washing dishes. She retained her magical powers, but she never used them again. Through her tears, she would say, "I don't want to do tricks. When I do tricks, everybody dies."
+
+d8ebb5cb-045a-4677-b58d-da8bb2de7984
+"Now Soot here — she truly is unusual! She's clever and she can talk, but only to me. She teaches me magic tricks, and lots of other stuff... I don't know what I'd do without her!"
+
+8b6a9f20-ed67-45e3-b9f6-0baa31755b48
+"This trick..." {n}Ember looks down sadly.{/n} "Soot told me about it but I didn't want to use it. It's scary, even I'm scared when I do it. I'm sorry I had to... But if I hadn't scared those good people, we would have had to kill them all, wouldn't we? If people weren't so silly, we could have just talked to them... But they are very, very silly. So sometimes we have to do scary things."

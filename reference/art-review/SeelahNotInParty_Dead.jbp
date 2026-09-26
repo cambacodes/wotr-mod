@@ -1,0 +1,42 @@
+{
+  "AssetId": "26ae0f50130942b4bb8dfe658e77b1c6",
+  "Data": {
+    "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+    "PrototypeLink": null,
+    "m_Overrides": [],
+    "Components": [],
+    "Comment": "",
+    "m_Parent": "!bp_1d30b49f8756c2b40bb8271e856675c5",
+    "ActivationCondition": {
+      "Operation": "And",
+      "Conditions": [
+        {
+          "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+          "name": "$CompanionInParty$ec0d5609-ac5c-4785-b0f9-8016f9a41599",
+          "Not": false,
+          "m_companion": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+          "MatchWhenActive": false,
+          "MatchWhenDetached": false,
+          "MatchWhenRemote": false,
+          "MatchWhenDead": true,
+          "MatchWhenEx": false
+        }
+      ]
+    },
+    "CompletionCondition": {
+      "Operation": "And",
+      "Conditions": []
+    },
+    "m_Synchronized": [],
+    "m_AllowActionStart": false,
+    "m_LinkedAreaPart": null,
+    "m_IncludeAreaParts": true,
+    "m_AddedAreaMechanics": [],
+    "m_StartsWith": [],
+    "m_StartsOnComplete": [],
+    "m_StartsParent": false,
+    "m_CompletesParent": false,
+    "m_ConflictingGroups": [],
+    "Priority": 0
+  }
+}

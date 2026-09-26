@@ -1,0 +1,1383 @@
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0004.jbp
+GUID: 26bac1f361cb9f14d9b781e0fa0bdc7d
+"Let's talk about you serving Hosilla."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0005.jbp
+GUID: 51e1d39b5077e6c4587d9fa676d7cf6a
+"I want to know more about you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0006.jbp
+GUID: 3911137bebd52ec4984597ddf36f52cc
+"What do you think of your new powers?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0012.jbp
+GUID: 7d3193e27da88324eb01d5dd009a56b5
+"Please stop groveling."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0015.jbp
+GUID: fcc1c93915fb0f848b4e55b364b49a32
+"I don't want to see you anymore."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0018.jbp
+GUID: e981e9aa542403b42b6c6f103ae2be68
+"I am not going to explain myself to you. Leave."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0019.jbp
+GUID: c69e6cad443800a4aa6587b561e59a98
+"All right, you can stay. You might still be useful to me."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0022.jbp
+GUID: 9414b9f26fa29dd42b6b4c375e760661
+"That's it for now."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0025.jbp
+GUID: 20acfc44cb19bba4980c7e503ea0669d
+"How can I trust you?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0026.jbp
+GUID: fbb6ae812006b7449bb4362efe2743be
+"What did you do for the demons?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0027.jbp
+GUID: 984f3d710adb4f742945301461f83146
+"Why did you decide to switch allegiance?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0028.jbp
+GUID: 48f7a73b07d6c4948b061ed549c29445
+"What happened between you and Lann?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0033.jbp
+GUID: 723be7877bc3c8047b26319fc3cd4dd1
+"I have no more questions."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0035.jbp
+GUID: 0de77ac08147ce34e8d1838fa5dab623
+"What do you think of life on the surface?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0036.jbp
+GUID: 51a2fc30be28c3345b95c9506df06ae8
+"Tell me about your life in the caves."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0037.jbp
+GUID: 5764c0c9e4ef2654da5815f6191ad46d
+"I can tell you're proud of your strength."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0038.jbp
+GUID: 4ef0fdfaff6578f4a936e867f1ab483e
+"Why do you serve me?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0040.jbp
+GUID: 414ad9e519f697644a5bd3324ff892d1
+"Everything is clear to me now."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0052.jbp
+GUID: 6e7c9fc9d4c6b034ca500c3f7a6da663
+"Your hard life has made you cold-hearted and cruel."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0053.jbp
+GUID: d247f07837cb6e24887e0e1a708f3b13
+"You will have to show more restraint on the surface."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0054.jbp
+GUID: 94006bf9efab9e3459e75e2c63359536
+"I can guarantee you fun and entertainment!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0055.jbp
+GUID: daca3b65228a7e2468e2f7080b29a367
+"Kill for me, and you will get everything you've been dreaming of."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0056.jbp
+GUID: c5f7c3c0856f246449b1c1ce63b41c57
+"I see."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0062.jbp
+GUID: f81090f4c2a9d7149807bbdfb546707b
+"Aren't you ashamed of betraying your kin?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0067.jbp
+GUID: ba46f179f1c955a4a90c6187d35b26fa
+"You promised me an army of mongrels."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0069.jbp
+GUID: 6b93e776f246a984680a8246b3e2c2d9
+"That army of mongrels you promised me would be useful right about now."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0073.jbp
+GUID: 542092cd2475ea84abd6b93848c7b18b
+"Remind me, why does gathering a mongrel army require me to visit Neathholm?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0079.jbp
+GUID: 27e202b6d25a51448b45154fdc6761d3
+"I hope your warriors are worth all this effort."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0084.jbp
+GUID: 5cca07c406e7f2a4787d02ef9a867b79
+"You defeated Lann in a fair fight. Are you proud?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0086.jbp
+GUID: 3293dc01b8539bd4db487ba2da609758
+"Are you ashamed that we killed Lann in a dishonorable way?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0087.jbp
+GUID: a7a09aa0dfc4ba9459da47ff910b0dcc
+"You've wanted to be chief for a long time, haven't you?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0088.jbp
+GUID: 15039ee1d94304d4caf538a36123a266
+"I spared Lann's life. I'm sure you have an opinion on that."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0100.jbp
+GUID: 9a73fd94854abeb47a2646d362a200e7
+"Admit it, you didn't want to kill Lann. I could tell."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0105.jbp
+GUID: cddf4e5cada74464997e7254449a66d2
+"Have you started searching for Savamelekh yet? With his blood, your warriors will be invincible."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0107.jbp
+GUID: 6d04f29fd0b8e99449aac0f7298cde14
+"What do you make of Dyra's disappearance?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0108.jbp
+GUID: 0de26d772cb6040499d967c693a72dd0
+[Show her the book you found] "This book got Dyra killed."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0112.jbp
+GUID: e92766b9297700b428b5af1a6a01b54a
+"Do you know what this is?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0114.jbp
+GUID: 5a629eeb5b74cf445a5520f171d1e68d
+"Wenduag, I think you killed Dyra. You must answer for your crime!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0116.jbp
+GUID: 794322736d911344cb9f95e5a78faad7
+"It's a dangerous book. Dangerous, because Dyra was killed for it. Take it and keep it safe. If anyone else's blood is shed because of it, it will be on you. Got it?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0118.jbp
+GUID: d39fcc32195a46d49a21edfa2be0cf90
+"I'll be keeping this book."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0124.jbp
+GUID: db9e56fa36d0fe943a2d189f568e2ee6
+"Dyra has been murdered."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0136.jbp
+GUID: eb8807e8816a29f49a13f0a5adc4cefd
+"However, I have a lot on my plate at the moment, and the book must be guarded well, since people are willing to kill for it. Take it and make sure no one else suffers because of it. Got it?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0137.jbp
+GUID: 888a49128155e444dbdf82f1d5599853
+"That will be all."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0139.jbp
+GUID: 484f538a05bb58c409bfcf59e04f4dd2
+"Have you recovered from the fight with Savamelekh?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0144.jbp
+GUID: d3a93da19f7006348968c4c7fbf486bf
+"Where did you go?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0146.jbp
+GUID: c95b79f8a94702447a39a7f132cc1579
+"Next time I'll take a finger for every day that you're unaccounted for. Got it?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0149.jbp
+GUID: da148ff9b13ba0347a909e0288b16036
+"We all need to have fun sometimes. Let's just forget this and move on."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0151.jbp
+GUID: ee4ef2fff7bcf4946b52443ac65de8ed
+[Look closer at Wenduag]
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0153.jbp
+GUID: c06c20bc3f0f8ed45914b99078f2defc
+"You aren't hiding anything from me, are you?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0154.jbp
+GUID: 44b2a530f65c5524ca840a87763637d5
+"I don't doubt your loyalty. But Alushinyrra is full of temptations — there are plenty of people who would reward you betraying me. But do you know why I don't worry?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0155.jbp
+GUID: 850630a0fe1002743b8ef17553fbeafd
+[Attack] "I know you met with Savamelekh!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0162.jbp
+GUID: d3a5a44ab855b5c46b7ac7219b03ecbb
+"I hope the delights of Alushinyrra haven't tempted you to forsake me and swear allegiance to Nocticula. I would have to punish you for that."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0163.jbp
+GUID: 7f05aeda98771ac4b83eec9b8590138d
+"Nothing. Because if you had decided to defect to, let's say, Savamelekh, I would have already killed you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0164.jbp
+GUID: 405e71fde71971942b80d36183a02fdc
+"Hepzamirah's servants are skilled at luring people into treachery. But you're no traitor... Right, Wenduag?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0165.jbp
+GUID: fbce169db2f0c9d43a9413c306cd2f30
+"All right, I believe you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0182.jbp
+GUID: 0201f8148c4e99741ab3850f3cad103f
+"Because you know that if you betray me, I will make you pay for it in blood."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0183.jbp
+GUID: fcc1420094d9f64429d417694d4e08c9
+"Because I know that, when it comes down to it, people only care about themselves. I'm prepared for any of my companions to betray me."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0184.jbp
+GUID: aed87fd15cf929b4e9ef39f20ed47f03
+"No matter who's been trying to turn you against me, betraying them instead of me will benefit you much more."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0185.jbp
+GUID: 54fb8f541db19ca4ab19884fdb9c2e2c
+"If you don't know, I'm not going to tell you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0190.jbp
+GUID: 4e66e2fc1c6735a4ba6c51e90d3860a4
+[Attack] "Something's not right. How about I kill you... just in case."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0192.jbp
+GUID: 2659c4ef978380942980eb34d9b8e7db
+"You collaborate with demons, violating the laws of Golarion. You shall be punished."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0195.jbp
+GUID: 1042fadc29a26dc469269f064cf393bd
+"I sentence you to exile."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0196.jbp
+GUID: 9ad9b86cbae4b2a42b5349402dab11e4
+"You will atone for your sins by serving the crusade."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0199.jbp
+GUID: d46fefe5818803749ba7566c584915c2
+"What will you do now that Savamelekh is dead and the mongrels are free?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0206.jbp
+GUID: 46904e95d3d239d478b6a083f2477114
+"I like you too."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0207.jbp
+GUID: 854833cfdf48e5b4abc6445bb6e0bc3e
+"Thank you, you've satisfied my curiosity."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0213.jbp
+GUID: d50354262054baa4385ccd32600e2223
+"Want to have some fun? Just you and me."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0216.jbp
+GUID: 663acc6aa59ac8144b2d954c041806b7
+"Everything that happened between us is in the past. From now on, we are comrades-in-arms, nothing more."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0220.jbp
+GUID: 980212f8272522446a072c50dfe1ed75
+"Calm down. It was just a joke."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0228.jbp
+GUID: e5d168ca5409d084188482df3fba8505
+"Go hunting? For what? There's nothing to hunt here!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0229.jbp
+GUID: 3a24055a9d995834f80c7e250427c4eb
+[Look closer at Wenduag]
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0230.jbp
+GUID: fbce4b55d49d0004ba56ba019dbc5326
+"Your proposal sounds... suspicious."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0231.jbp
+GUID: e851135d5c18d3e42aa2bf4fe8e5eb94
+[Go with Wenduag] "All right."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0232.jbp
+GUID: 6faa385d6c4b1a745a0d74fc433c68ec
+"I'm not going anywhere with you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0242.jbp
+GUID: 759d17d55fe39a142bfc818284cfb49a
+"Let's talk. Sull said you needed my support."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0245.jbp
+GUID: e752882d918bc2142b62564163c7498a
+"Even so, I insist."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0246.jbp
+GUID: 65fb242e2d6ae1246ab38ac33e602792
+"You'll feel better if we talk."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0247.jbp
+GUID: ac5dd1491a051a64b9bc4ff283c8b128
+"Fine, as you wish. But if you change your mind, I'm always willing to listen."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0251.jbp
+GUID: 1c9ad560ac0c9114d8a1ca1cfe9d5aef
+"I want to clear the air about what happened at the ziggurat. I still care about you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0253.jbp
+GUID: 89a15150915fe2540ad24bf11e67425f
+"Has something happened?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0257.jbp
+GUID: 056c71a1f6a13a947a945d37da183393
+"We have important matters to discuss. Snap out of it."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0260.jbp
+GUID: b35e6760de11e994081a4502ed8f0d00
+"I'm not used to seeing you so serious and responsible."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0261.jbp
+GUID: 699abb35bd18b9c4ebb875483eca211a
+"You don't believe we'll save your tribe?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0262.jbp
+GUID: 7bc4ac24d88769e479fd66b0ef016283
+"I'm sure that your tribe has a bright future ahead of it. Let's imagine what it will be like together."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0263.jbp
+GUID: 2b5543f841ac65344876ace042b70743
+"Don't worry, everything will be all right."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0264.jbp
+GUID: 43d92cd44fcf8534fb1ea3273dc43371
+"You're right to worry. You have every reason to."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0271.jbp
+GUID: 588a2311ef473014ab8d8bcf75cbfabf
+"You will live peacefully alongside the other inhabitants of the surface."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0272.jbp
+GUID: 03f202309be50514f9a5466e0a2cbd1b
+"It's unlikely the other races will accept you. You will settle in the desolate lands reclaimed from the demons."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0273.jbp
+GUID: 4444e6476fe816141a169dacc51c0f97
+"You will have to return to your caves."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0274.jbp
+GUID: 6c216a7607dac4045ba62d634da1e1c4
+"I don't have an answer to your question."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0279.jbp
+GUID: 5159588e2f4d18948bb5d74dd2a20531
+"We will lift the curse and free you from your grim fate."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0281.jbp
+GUID: b982485434459194d9958a61bf21a957
+"You are a warrior people, and warriors always die before their time."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0282.jbp
+GUID: 47723b57edf39be49833d868cca07f83
+"You have to accept your fate, grim as it is."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0283.jbp
+GUID: ea48cf98e133456418e007c54ef24996
+"I don't know."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0290.jbp
+GUID: 0b0d503c95ce0b6498dc4c5c233889b9
+"You will meet someone you love, have children, start a family."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0291.jbp
+GUID: 2fc44476348c3a741ad7c0cfbe43e57f
+"You will be a great queen and a warrior without equal."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0292.jbp
+GUID: 93a25d52b01570149a1ca2954ae24ea4
+"You will decide for yourself what your future will be. You are free."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0293.jbp
+GUID: 28b978ad829c371429f10e52f7343759
+"I don't know what to say."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0299.jbp
+GUID: efd87266625d0ec409cf761df3dae433
+"You used to behave differently when we were alone."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0301.jbp
+GUID: 5725d2a83f3e84b4486f6831238ff001
+"I like these changes in you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0302.jbp
+GUID: 84412398b4d6be24a8d93bd0193be70a
+"Are you going to start avoiding me now?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0307.jbp
+GUID: c4c8bb090a0b24746bcb87c6daa2e227
+"You used to be more fun."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0310.jbp
+GUID: cb5a42c7c84e04e4ea333ec90ffbedf5
+"Your people are going to be living on the surface. Maybe we should change the name 'neathers' to something more appropriate."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Answer_0312.jbp
+GUID: 6a3875e722a77894e9a5c60707c3af15
+"On the surface, your people are called mongrels, but I take it you don't like that term?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0001.jbp
+GUID: 05ce1b67d29905b4094a17a965686c58
+{n}Wenduag's tense stance reveals her constant vigilance. Her eyes are focused and resolute. Noticing you, she lets you speak first, bowing respectfully.{/n} "{mf|Master|Mistress}, I am at your service."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0002.jbp
+GUID: a75d1c112c133734f96ae1f25fe17c05
+{n}Wenduag greets you with a servile bow.{/n} "{mf|Master|Mistress}! How can I serve you?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0007.jbp
+GUID: 54dfc293525ea7341b5d8813c4daf504
+{n}Uncertainty sparks in Wenduag's eyes, and she curls her spider legs on her back closer to her body.{/n} "Of course, {mf|master|mistress}. But now I only serve you! Has someone said something about me?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0009.jbp
+GUID: 0c9d6f5ce03e40a4fa71a9465dd9ff8f
+{n}The underground warrior looks flattered, raising her chin proudly.{/n} "You can ask me anything, {mf|master|mistress}."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0011.jbp
+GUID: dbb53d2f8f6bef94cb3004bf6ff3ef4d
+"Oh, I made the right choice when I decided to serve you, {mf|master|mistress}! This power you have given me... I always felt I was destined to possess such might!" {n}Her voice is soft and deep like a cat's purr.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0013.jbp
+GUID: b1b2f97f0d50e4d44b79f567263d2259
+{n}Wenduag shakes her head.{/n} "I'm not groveling! I'm showing respect for your power! This is exactly how the weak should behave in the presence of the strong!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0016.jbp
+GUID: f436e2adfafcc6541849a828790416ca
+"Why? Did I do something wrong, {mf|master|mistress}? Don't make me leave, I fight your enemies so well!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0020.jbp
+GUID: fa010a1b9f738964782d313580c1c0d1
+{n}With a feral grin, Wenduag bows her head.{/n} "As you wish... But know that I will not forget this. By exiling me, you spit on my pride."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0021.jbp
+GUID: ea8ee2f50d4d64c45a6ab1d319f7d031
+{n}Wenduag nods tensely.{/n} "I will be very useful, {mf|master|mistress}! Don't think that uplander luxury has made me soft!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0023.jbp
+GUID: 92b58fdd343f27f45b653e15636c45d9
+{n}The huntress gazes at you with devotion.{/n} "Thank you for talking to me, {mf|master|mistress}."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0029.jbp
+GUID: 8a58ed325b7dc4b419bf327635ca36fb
+{n}Wenduag's voice gains a fervent edge:{/n} "Why would I betray you, {mf|master|mistress}? You are the strongest! It would be stupid to defect to your enemies and die along with them! No, I am not that dumb!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0030.jbp
+GUID: 5ea0925aad612e7438cfbf5a80b741c7
+"I brought my kin to their lair, so they could join the demon army and accept the power given to them. I made my tribe stronger! Later, once we no longer needed the demons, my powerful kin would have fought for me." {n}The huntress shoots you a grim and bloodthirsty grin.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0031.jbp
+GUID: 0803edb6b2eb43949bc28956068cc18f
+"I was only serving the demons because they promised me power — and only for as long as they had something to offer me." {n}Wenduag chuckles, revealing her sharp teeth.{/n} "But Hosilla can't offer me anything now she's dead, and I was never going to risk my life for her. You are a true leader, one worth following!" {n}the huntress says in a fawning tone.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0032.jbp
+GUID: 7e527fe27d9ee8344a712564d58fd7b6
+{n}Wenduag shrugs disdainfully.{/n} "He is a good hunter, but not too clever. A bit of an idiot, really... He was the strongest in the tribe after me, that's why I kept him close. His heart is soft... unlike his body." {n}The huntress smiles shamelessly.{/n} "But then I met you and I didn't need Lann anymore! Now I only want to hunt with you!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0034.jbp
+GUID: ce1991b817c352e4386025702f56fe1d
+"It's good that our paths crossed. You could need a good servant, and I need a strong {mf|master|mistress}."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0041.jbp
+GUID: ecbafec921735894a90722b70aba6f54
+{n}Wenduag lowers her head, bowing much lower than is customary.{/n} "Your interest gratifies me, {mf|master|mistress}."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0043.jbp
+GUID: 7d10e4e5dbeaa6844aedb51951061be5
+{n}Wenduag gives you a bland smile.{/n} "Because you are winning, and I want to be with the winner. I don't like sharing food and fire with weaklings — I prefer people like you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0044.jbp
+GUID: 9e0dae25d5d23cc4592fab33a46106e3
+{n}Wenduag throws her shoulders back proudly.{/n} "Of course! Let everyone see who is standing before them! The weak must obey the strong if they don't want to be reminded of their place. Even when I was a snot-nosed little cave rat, I could bring neathers twice my age to heel, because I fear nothing and no one, pain least of all."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0045.jbp
+GUID: 7431e1303281e564797a1fa0dba56ace
+"Life was better than an uplander might think. You're surrounded by rock on all sides — it's sturdy, dependable. When you hide in a crack, you know for sure you're safe... Not like here — all this empty space around you — you always have to be on guard, in case an arrow flies from any direction and hits you. Life underground is calmer somehow..."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0046.jbp
+GUID: c604fd5aca5379643b985305c31e4bad
+{n}Wenduag scoffs arrogantly.{/n} "Life among the uplanders, you mean? Your customs are strange..." {n}The huntress casts a glance at you and corrects herself quickly,{/n} "I mean theirs, not yours, {mf|master|mistress}. You are strong and clever, but I look at other uplanders and wonder."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0047.jbp
+GUID: e7f29cb38680e6b4d8d9f45c0a0f7f4c
+"Everything just seems fairer in the caves — when there isn't enough food for the weak, they die. The lazy die. The sick — in the head and the body — die. Only the strong and the skilled survive, and the blood becomes thicker, tougher."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0048.jbp
+GUID: fd5d2041a388288429e757c4fd31702e
+"I was showered with praise and compliments, the best hunters of the other tribes wanted me — but what did that matter to me? The moment you start listening to flattery is the moment you get soft and you die. No, I always pushed myself further, challenging myself, taking myself to the very edge. Many times, I almost died, but I always came back stronger. I earned all my strength on my own, and if anyone didn't respect that, I just grabbed my knife! That's why I became the best hunter in the tribe."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0049.jbp
+GUID: 26a1b1af3826a584385d28de115dd6b1
+"Have you seen how proud they are of their weakness? 'Look, my hands are so soft, I've never done anything with them in my entire life, because noble blood runs through my veins!' What does it matter who someone's parents are? I'm the daughter of a former chief of the tribe, so what? Is this what they respect and fear me for? Sull became the chief because he was old, experienced, and smart. After him, I might become the chief, because I'm strong and even smarter. But these weaklings wouldn't have lasted a day in our caves..."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0050.jbp
+GUID: 4a707f47d7cf1bc42a8368c78f602092
+{n}Wenduag's eyes narrow wearily.{/n} "Everything is strange here. But it's all right, {mf|master|mistress}, we'll put things right, won't we?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0057.jbp
+GUID: b859b9d4c47c2c34d8e6dca835cf75e1
+"My life has made me strong and dangerous. That is why you brought me with you. Would it be better if I were a spoiled weakling? Ugh, I don't even want to think about it!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0058.jbp
+GUID: 83679020eeb5a2d459da634ca090c3c7
+"Yes, {mf|master|mistress}! I will behave whatever way you order me to!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0059.jbp
+GUID: 4462714b99b1e4e4e90c84fe6ba57e69
+{n}Wenduag shoots you a feral grin.{/n} "It's good we understand each other, {mf|master|mistress}. As we neathers say, we hunt in the same cave."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0061.jbp
+GUID: 5d48830e58216eb4785fd80d79bac3b2
+{n}Wenduag looks at you with suspicion even as she maintains her servile demeanor.{/n} "What do you see? Why did you ask, {mf|master|mistress}? Did I do something to make you suspect or doubt me?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0063.jbp
+GUID: ef121801d66c30946a618557cfd7f6b8
+{n}Wenduag replies respectfully but defiantly,{/n} "I know that Sull would have called me a traitor, but for one reason only — he grew old and cowardly. I accepted the same fate as my fellow tribesmen. I ate the flesh too, and for many gongs I thrashed with fever, growling like an animal, lunging at anyone and everyone, my body burning from the inside..."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0064.jbp
+GUID: cf39030e19c98de4fb189461190b3cf4
+"But I handled it because I was the strongest of them all! Not a single day have I regretted the power I gained, and that's why I am not ashamed of sharing that power with my tribe."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0065.jbp
+GUID: b0312453b5b21754e95f5727b94f3fa2
+"And also because being close to you is a good way to live. I love life, I'm young and strong. It makes sense to eat, drink, screw, and kill enemies while you are young, not when you are thirty thousand gongs old and shriveled up like Sull. As long as I'm your servant, I can have fun as I like and order around anyone I want. Who will dare defy me? No one!" {n}Her eyes drift half-closed in smug satisfaction.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0066.jbp
+GUID: ca91efcd00b7d7c499a23d62e1441460
+"Sure, there is less food in the caves than here. But... the amount of food the uplanders have — it's too much. Don't you see, {mf|master|mistress}, how many fat uplanders there are? Why do they eat so much? Like cattle fattened up to make for tastier meat... We only had one fat person in our tribe, and that was Sull, and he was only fat because he was old. But up here..."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0068.jbp
+GUID: 58f8c676b1c8b6149990c6352d640838
+{n}Wenduag narrows her cat-like eyes.{/n} "And I will give you one, {mf|master|mistress}. But first we have to rebuff the attack on the city. Sull has spent his entire life preparing for the underground crusaders' return to the surface, and he's not going to take any risks. He will order the tribes to hide in the caves like rats and he will decide whether they are strong enough to fight side by side with us. Maybe he will decide that it's better to sit this one out and wait for another chance to come along."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0070.jbp
+GUID: e39e11040aa815945ba379f5f50b996b
+{n}The huntress shrugs.{/n} "Yes, they would be useful in this campaign. If we had more time and weren't in such a hurry, we'd go to Sull and show him the trophies we took from demons. He'd stop shaking in fear and summon the tribes... But, the way I see it, we don't have time to waste right now. We'll have to deal with Sull after we conquer Drezen."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0072.jbp
+GUID: 9da0511045ad4e544974423133623896
+"We have to fend off the demons, win a glorious victory, and show Sull that ours is not a lost cause. Then he will give us his warriors... And then it will be my job to turn them into real soldiers."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0077.jbp
+GUID: e9929e94911a66c43aa606105374bf62
+"{mf|Master|Mistress}, my warriors are eager to fight. Send them into the heat of battle and let them show their worth! They want to wash off the dust of Neathholm with the blood of their enemies!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0083.jbp
+GUID: d9cf1f56f2f848e48871b02b6325735d
+"Rest assured, {mf|master|mistress}. I will personally kill any weakling who disgraces my tribe."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0089.jbp
+GUID: 1bba58577526af14d989e55a26c57efa
+{n}Wenduag's eyes drift half-closed and she arrogantly pronounces,{/n} "He was never my equal. I'm surprised that some people thought he could be chief after Sull. I'm the only one worthy of being chief."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0091.jbp
+GUID: f961d641c094a394cae6cc03027f58e2
+{n}The huntress laughs breezily.{/n} "He's the one who should be ashamed — for being so stupid as to show up to the fight alone. Honor is just a made-up thing, it doesn't exist. There is only victory."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0092.jbp
+GUID: 5385ecc99d848dc4ba7ef50aa3c562db
+{n}Wenduag's posture becomes proud, even haughty.{/n} "Oh yes, {mf|master|mistress}. My father was chief of Neathholm, and his blood in my veins gave me strength and will. In times of hardship, neathers must be led by a powerful, cunning, and merciless chief — do you know anyone better suited to the role?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0093.jbp
+GUID: 77f010b709504484aa0101b2f6b05f17
+"He is alive only thanks to your mercy, {mf|master|mistress}. If you hadn't spared him, I'd have hung him upside down and gutted him like a cave lizard."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0096.jbp
+GUID: 997c96dacb3e90e4da7a220e3a6db979
+"Because Sull would just ignore any other uplander who came to him demanding that he gather the tribes and attack the demons. I think he has always hoped that the fated day when neathers would return to the surface would come after his death. He is worried that he will lead the tribes to their deaths. That's why Sull is going to cling to the rock he's hiding under with all this strength. We have to drag him out from under it."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0101.jbp
+GUID: eeed53159701869479e94a785074536d
+{n}Looking at you with surprise, Wenduag bursts out laughing.{/n} "What? You're saying I felt... sorry for him? Ha! In that moment, all I felt was pleasure!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0103.jbp
+GUID: b7bdbf09ff5b21941b837ea163797615
+{n}Wenduag's laughter sounds sincere... but not entirely. For an instant, her smile looks more like a wince of sadness.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0104.jbp
+GUID: c515dfbf57c22904fb2661837808eb2c
+{n}Wenduag's laughter sounds sincere and utterly carefree, as if she were not speaking about killing her old friend and fellow tribesman.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0106.jbp
+GUID: 463a7b3f13fcf8e488d169142814e498
+"Yes, {mf|master|mistress}. My hunters regularly bring me prisoners to interrogate. And I interrogate them with extreme thoroughness. Unfortunately, so far none of them have known where to look for {g|Savamelekh}Savamelekh{/g}, but sooner or later we'll pick up his trail."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0109.jbp
+GUID: ff3bd47e77f2b6d4bb524b83c5b06f57
+{n}The huntress shrugs indifferently.{/n} "She probably ran off somewhere. She's always been a bit crazy, not like other neathers. She was always drawn to the surface and uplander pleasures — she didn't like hunting or bloodshed. I think she abandoned the tribe and went traveling. And good riddance — my tribe can't afford to carry any dead weight."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0110.jbp
+GUID: 75ad1134b22fd4d40beef9c875275f61
+{n}Wenduag's expression is nonchalant, but her eyes narrow briefly, burning with predatory greed.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0113.jbp
+GUID: 5cbcee3a75d85d84595801b6e74bfc7f
+{n}The huntress shrugs with unconcealed indifference.{/n} "How should I know? But it's probably valuable, if it's worth killing for."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0115.jbp
+GUID: ef786678d051ee14d833be524a5d7d35
+{n}Hearing you, Sull flinches and shuffles quickly over to you. In a stunned voice, he asks,{/n} "Wenduag, my girl, ish thish... Ish thish true?" {n}The old man peers at the huntress's face, grows pale, and mutters,{/n} "It ish..."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0117.jbp
+GUID: 73c0a4baff25e4a40a668c7b3a01fb19
+{n}Wenduag offers you a wary but playful smile. She nods obediently and says, her words laden with meaning,{/n} "Of course, {mf|master|mistress}. I appreciate your... trust."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0119.jbp
+GUID: 70b3a1e2c3aa3844bbfe37ef3f70504d
+"Of course, that's the right thing to do, {mf|master|mistress}. Such dangerous knowledge shouldn't be carelessly passed around."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0125.jbp
+GUID: c1414cefb809e2246a3cd8e865542f9c
+{n}The huntress's lip curls into a snarl.{/n} "Who dared to lay a hand on a member of my tribe? Which vile piece of upland shit was crazy enough to touch one of us? I will find them and kill them, but before that, I'll make them suffer! No one harms my tribe and gets away with it!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0127.jbp
+GUID: 3b76b37644a46ac4f8e8aba59e81fe50
+{n}You hear slight irritation in Wenduag's voice, and the glance she casts at the book is full of poorly concealed desire.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0128.jbp
+GUID: 0ab9a9682bb38494a858e8261f9d58ac
+{n}Wenduag's voice is anxious and concerned. She glares at the book in your hands.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0130.jbp
+GUID: 03510a24acbafcd4b81a2e3e3a67e3c1
+{n}You realize that behind the angry words and the vicious gleam in her eyes, Wenduag is icily calm.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0131.jbp
+GUID: 4c748727a3b4e0541bdfbeb285bfc511
+{n}The raging gleam in her eyes and the rough edge to her voice remind you of the deranged, feral growls of her fellow tribesmen, the ones who tasted demon blood and turned into wild animals.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0132.jbp
+GUID: 0267c6f5fd920ac41b57f5dc31a16201
+"{mf|Master|Mistress}! The louder you laugh, the less your enemies do. I can't wait to see the joke you play on the demon lords — a joke that leaves nothing but destruction in its wake, after which no one will dare go against your will!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0134.jbp
+GUID: 8d729f45abfdc1440a4bde194ab38010
+"Some praise your sense of humor, others curse it. But what do I know about jokes? Before I met you, I had no idea they could be a deadly weapon. But there's another thing I admire about your Drezen — the fact that it is unmistakably your city. Everything in it is a direct embodiment of your will, subduing reality as easily as people. I feel sorry for the fools who laugh at you and don't realize your jokes are proof of your limitless power."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0138.jbp
+GUID: 08e4ff669f78152438012094cfaa2400
+"As you wish, {mf|master|mistress}."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0140.jbp
+GUID: fe76891add4ccee44b349f85e960ca91
+"Yes, {mf|master|mistress}, I'm already better. When we meet again, I will be ready and won't let him cloud my mind. And then I'll spill the blood of that so-called 'creator of mongrels' so my fellow tribesmen can share in the demons' might."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0141.jbp
+GUID: 24b576098ec38674887c3b9eb961d233
+{n}Wenduag's clothes are tattered and torn in places, and there is a fresh scratch on her cheek and bloodstains on her hands that she seems to have tried to wash off. But her face is alight with happiness, and a wild gleam dances in her eyes.{/n} "{mf|Master|Mistress}! I have no excuse! I went off to Alushinyrra on my own and it was... so much fun! I lost track of time, and when I came to my senses, I rushed back here immediately!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0142.jbp
+GUID: ec9c0c7efb04717498e98f3bf038a45d
+{n}The huntress displays nothing but easy confidence — she seems to have no idea that you know where she was and with whom.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0145.jbp
+GUID: a2e28c1dac500e2438074d0360ad0814
+"First, I visited the Ten Thousand Delights — that place is a true kingdom of pleasure! The demons who work there are willing to do anything, literally anything! Wine flows like water, and the incubi, oh... Then I got into a fight with some jumped-up tiefling, and we were thrown out."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0147.jbp
+GUID: 3eb97c939786e344d8528ce5761078d7
+"We went to watch gladiator fights, I bet, I lost and... I think killed someone. At least I still have my money. Then there was something else... Next thing I knew, I was in a scummy little place called the Bad Luck. And that's when I left to rush back to you!" {n}Wenduag stretches gracefully and shamelessly, like a cat that has been caught stealing food.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0148.jbp
+GUID: 5e574beec471f474296d9a6482918e96
+{n}Wenduag drops to her knees.{/n} "I understand, {mf|master|mistress}. It won't happen again."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0150.jbp
+GUID: d0a6ec8ddf599e14cb5319994734a753
+"Thank you, {mf|master|mistress}! You are always so understanding!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0152.jbp
+GUID: 7b12f422b0611c74186f7eb06a80ed96
+{n}You see the tension behind her nonchalant smirk, and you realize her disheveled appearance is but an elaborate masquerade.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0156.jbp
+GUID: eef972e9dcb4eca45b4fbfb3a09b55cb
+{n}With a coy smile, Wenduag says humbly,{/n} "I may have neglected to mention a couple of cocky demons whose throats I cut, but... What are you implying, {mf|master|mistress}?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0157.jbp
+GUID: 9d1d677f55851a542a8c97e1800af5b6
+{n}Wenduag licks her lips, wariness and curiosity warring on her face.{/n} "Why, {mf|master|mistress}?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0158.jbp
+GUID: dde6ef09954dba34ca22cc4d0090d778
+{n}Wenduag grins malevolently, instantly dropping the mask of the loyal servant.{/n} "Plotting behind your back always was challenging! But don't think I didn't prepare for this outcome!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0160.jbp
+GUID: 940536bf2f2dc0a45bed4fba0ec67d03
+{n}The huntress holds your gaze, her eyes revealing traces of guilt, but no fear.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0169.jbp
+GUID: 171b013b0551eb447b2a13312a7e5d0e
+"I apologize again, {mf|master|mistress}. I deeply regret my actions!" {n}The huntress's self-satisfied smile makes it clear that she regrets nothing.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0170.jbp
+GUID: d547ca5c51a85b64aa7d500dc63300e0
+"Join them? After all the defeats we inflicted upon them, {mf|master|mistress}? Why would I switch to the losing side?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0171.jbp
+GUID: fa1fca7198a58ff418d51f5fa4aa1b7c
+"Nocticula? {mf|Master|Mistress}, where are you getting these strange ideas from? I won't deny it — the thought of becoming the servant of the Lady in Shadow herself is enticing, but serving you stirs my blood much more."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0173.jbp
+GUID: ab980c97b52eaea4bbbebd5fa0678bd5
+{n}With a wistful scoff, Wenduag looks at you with unconcealed surprise.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0174.jbp
+GUID: ffc0958c9433ad04b876ca7bd59e0676
+"Serve him? No, {mf|master|mistress}! I swear, his next meeting with me will be his last!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0175.jbp
+GUID: 63ddff9281116774bb99b6c288ff43a0
+{n}Your anger makes Wenduag cringe fearfully, but there is something artificial in her tremulous tone.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0176.jbp
+GUID: e255fbc5dfafb1e4aa129e36e3809b1c
+{n}Wenduag stares deep into your eyes with a look of utter devotion, her expression holding a hint of challenge and an eagerness to fight.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0178.jbp
+GUID: b35beb12ff33ffb4c911b21c286737bc
+{n}Wenduag looks confused, even unpleasantly surprised.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0180.jbp
+GUID: 03126f836b781e74d838242e0d509376
+{n}Wenduag reaches for a heavy gold ring on her finger, a ring which you have never seen her wearing before, twists it, and disappears with a soft pop.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0186.jbp
+GUID: b4338ede1df95b24392bfecde834855d
+"Of course, {mf|master|mistress}! I don't have a death wish! Betraying you has never even crossed my mind!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0187.jbp
+GUID: 9f33d5cbb686c0b41bd848c5eeef0a20
+{n}Laughing obsequiously, Wenduag waves your words away.{/n} "Come on, {mf|master|mistress}, who in their right mind would want to betray someone as great and invincible as you?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0188.jbp
+GUID: 41090fc4bd16ca942bb2571314be9314
+{n}Wenduag's eyes narrow to slits and her face breaks into a satisfied smile.{/n} "This is true, {mf|master|mistress}. We've taken so much from the demons already, and we can take much, much more. All their power, all their might... We can conquer everything they possess. Why serve them when we can rob and slaughter them instead?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0189.jbp
+GUID: 74ed9d9a4e5f3f34c8ae94ca45ed7b25
+{n}Wenduag laughs obsequiously, but her eyes are as cold as ice.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0191.jbp
+GUID: cceea8b4485251347bb67c4b7335efea
+{n}Baring her teeth, Wenduag spits out hatefully,{/n} "Your intuition has brought me nothing but trouble! It was almost impossible to plot behind your back! Which is why I prepared for precisely this outcome!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0193.jbp
+GUID: 322cb4c683659b242b18d52c519f65c1
+"Demons? That's all in the past, I assure you! I serve only you and I live to destroy your enemies! You are my only law! Do you want to punish me? I'll accept any punishment from you!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0197.jbp
+GUID: c80eeb6f31f31ff41a23a4838acbe4d6
+"Exile... So, you're letting me go? I guess you don't need me anymore. As you wish... but I'll never forget today, the day you wounded my pride. I will not forgive you, and I will not forget. And I will not give up. Remember that."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0198.jbp
+GUID: 189d4abc9f0b2a44687fcb380232346b
+"I will serve you and only you with loyalty and devotion! I swear it! I swear!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0200.jbp
+GUID: 9b8453ea0197575499b9db4d5008ca34
+"For a start, I will help you destroy all the demons left in the Worldwound. As long as they're here, neathers will never be safe — we are just tools to them, things created by one of their own. As for what will happen after the victory... Another war, I think. Neathers deserve their own land, their own piece of the surface. But no one is going to give it to us without a fight. So I'll have to use force to get it for my people."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0201.jbp
+GUID: 0b1ec1e09cf55a84f82c2347e74eb80f
+"First, I'll repay you for letting me live by slaughtering all the demons in the Worldwound. And then I will look for a new source of power instead of the one {g|Savamelekh}Savamelekh's{/g} poison promised us. For uplanders, victory will mean peace, but for us it will be just the beginning of our own war. We will have to fight for our right to live, our right to be among you. And I'm going to need all the power I can get to lead my people in that fight."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0202.jbp
+GUID: ad6a177637b5bac478aa2e6322a4ebdc
+{n}Wenduag chuckles bitterly.{/n} "My tribe showed cowardice by running back to Neathholm, but I won't leave it at that. If need be, I'll drag them out of the caves by the collars, one by one, I'll do anything other than let them rot there for another hundred years... We will not fade into obscurity. That is not our fate."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0210.jbp
+GUID: fbb8c7b423948ec47ad43f6e3d3dad9a
+{n}Wenduag smiles mischievously but with a hint of regret.{/n} "Stop it, {mf|master|mistress}, if you had any interest, you would have offered yourself to me a long time ago. And now let's not complicate things by adding sex to our relationship, it will only cause more problems."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0211.jbp
+GUID: 40add050bdeffcc4b838777bb254cc9e
+"I could satisfy more than that, {mf|master|mistress}." {n}With a smile full of promise, Wenduag lashes you lightly on the thigh with her tail.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0214.jbp
+GUID: a650932581b480747adff0e7d68a8cd9
+"It's not that I don't want to... Quite the opposite. But my blood is up lately, I'm afraid I won't be able to restrain myself... and I might take things too far." {n}Wenduag's playful tone can't conceal the tension ringing in her voice.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0215.jbp
+GUID: 79dc81746d09df94ca4057caa2673b07
+{n}Growling softly, Wenduag breaks into a smug smile.{/n} "You didn't have to ask."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0217.jbp
+GUID: ad3c718c843d59b449b6359deb6523cf
+{n}Wenduag raises her brows in amusement.{/n} "Did I do something to anger you? Allow me to redeem myself! Did someone say something about me? Who?" {n}The huntress's face contorts into a mask of vengeful fury.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0221.jbp
+GUID: 68bf131aa271c56499268115da9eff91
+{n}Wenduag's expression seems to freeze, and she turns away.{/n} "Well, I won't beg. But I think you'll regret this soon. You won't find an uplander that can compare to me."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0222.jbp
+GUID: ca75a75bc400f4e4699022f73e46615d
+{n}She sighs with relief, but then immediately bursts out angrily,{/n} "Has anyone ever told you your jokes are stupid?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0223.jbp
+GUID: 69bfb258f42dda74291052e4d66e17c3
+{n}Wenduag doesn't even try to hide the resentment in her eyes.{/n} "I heard you didn't even try to defend me when that mad bitch Irabeth came telling tales about me. How disappointing, {mf|master|mistress}. I thought you valued me much more than that. Well, let that be a lesson for me — I should keep my expectations low when dealing with uplanders. And I definitely shouldn't jump into bed with them whenever they snap their fingers."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0224.jbp
+GUID: 4b7cf6a22b548834f9280e2d0684126a
+"{mf|Master|Mistress}, a word?" {n}Lowering her voice, Wenduag leans toward you.{/n} "I think everyone has noticed that you've lost interest in me. We had some good times, but your interest has definitely... faded."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0225.jbp
+GUID: c865aba3ec2b05f48ace02db0261766a
+"I don't like the idea of being your neglected girlfriend, so how about we pretend nothing happened between us? You'll be my commander, I'll be your warrior, but someone else can warm your bed. I think that would be best for everyone."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0226.jbp
+GUID: addf01acd129cee419b3131345ea05ca
+{n}Wenduag seems to be deep in thought, but as you approach, she looks up and fixes a friendly smile on her face.{/n} "{mf|Master|Mistress}! I was just about to go hunting, to rustle up some kind of supper. Want to keep me company?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0233.jbp
+GUID: 62656f8d673165d4da7d8876ae41194d
+{n}With an irritated sniff, Wenduag says intensely,{/n} "You uplanders just love asking questions. Come with me and see for yourself."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0234.jbp
+GUID: fbbb0649fdf6c904ab9d6fec3fe74fe3
+"Oh, stop it, what's suspicious about it? Let's go, you'll enjoy... hunting with me."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0236.jbp
+GUID: 98f5ef10b45d49c4cada889ab97ec4f9
+{n}You see the apprehension behind her sweet smile. Her bristling fur and tail whipping back and forth are dead giveaways.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0237.jbp
+GUID: 3b024248a588ceb43a2037dfc5da704b
+{n}The huntress's sweet smile adds an unmistakable flirtatious undertone to her words.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0238.jbp
+GUID: 9cc99820b4da7c34088e40f892bbe753
+"Lovely! I'll show you why I was considered the best huntress in the tribe."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0239.jbp
+GUID: 84e23c684853c9a4b8b03bcfa0bc109e
+"You think I'm going to lure you into trouble? You don't trust me? All right... Then it's best if you don't summon me to your bed again either. Who knows, if you lower your defenses around me, I might rip out your throat."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0240.jbp
+GUID: f2aa19a1069e7da498607b220993f779
+{n}Wenduag looks down, choosing her words carefully.{/n} "I asked to talk to you in private, do you remember? But you gave me the brush-off, and I know why. The truth {g|Savamelekh}Savamelekh{/g} revealed changes everything... You even look at me differently now. I... I just wanted to tell you that I understand, and I'm not angry." {n}Frowning, Wenduag turns away.{/n} "And I'm begging you, don't waste your breath trying to comfort me. I didn't think what we had was anything special either."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0241.jbp
+GUID: c5f3fa2dbb768fc44a782f65bb56e198
+{n}Wenduag is silent for a while, and then with a guilty glance at you, replies dully,{/n} "Another time, all right? After everything we've been through, I have a lot to think about. My head's full of bitter and difficult thoughts, but I have to deal with them, and I have no right to seek escape from them in your arms."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0243.jbp
+GUID: b128f0dc00f92bf4198892ba90c23997
+{n}Bristling, the huntress scoffs aggressively and shakes her head.{/n} "What support? What did that old sod tell you? Some tear-filled nonsense about me being a lonely little girl? Stop listening to that old fart, he doesn't know what he's talking about. I am a warrior, I don't need any support!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0248.jbp
+GUID: 74113dd608b35e4409fd0600ca8e0b36
+{n}Snarling, the huntress shrieks,{/n} "And I'm telling you — leave me alone!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0249.jbp
+GUID: c6547d83ce402ad45bf31d054180bcc1
+"I'm great! What do you want from me?" {n}Wenduag folds her arms on her chest, indicating that the conversation is over.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0250.jbp
+GUID: 19ad1cfdfb6a0c94ab07646060280c1e
+"Good to know! Now stop trying to get under my skin," {n}she huffs, relief plain on her face.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0252.jbp
+GUID: 33f26961f9c25244f9f1e38eded21288
+{n}Wenduag laughs distrustfully.{/n} "{mf|Master|Mistress}, you don't think I'm going to believe that, do you? You are the ruler of the undead, your heart is dead, and any attachments it once held are gone. But why you are trying to deceive me, I wonder? Do you need another sacrifice? In that case, may I please settle for the role of the servant who hands you the knife, rather than the victim?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0254.jbp
+GUID: 6bbd3285a31979c4fabec309ce8b1dca
+"You can see what happened. My tribe is on the verge of extinction. I led them to battle — and now I'm alone. Even if this threat does not wipe us out, another threat will come after it, and then another, and another... I'm afraid for my people." {n}Wenduag's voice holds not even a hint of her former giddiness and bravado — just blind, grim anxiety.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0255.jbp
+GUID: 089c20304e36a7e40a6220dbad41cd34
+{n}Wenduag greets you with a dour nod. She stares past you with grim focus.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0258.jbp
+GUID: 173d35121149dda4eb08706373d619e8
+{n}She looks glumly at you, then gives a reluctant nod.{/n} "I'm at your service, {mf|master|mistress}."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0265.jbp
+GUID: 13397c2c03a2fb24db4add0aa7a8ee87
+"I'm the chief. I hear the steps of those who follow my lead."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0266.jbp
+GUID: 56b94d192dc9a544a9a3075092f0ff06
+{n}You hear dull irritation in Wenduag's voice.{/n} "Maybe we will but... I've completely lost control of the situation, you know? We — my tribe and I — are just pawns in a game being played by greater forces. Understanding the designs of the players is beyond our capabilities. The players being demon lords, deities, and... you."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0267.jbp
+GUID: 2e98b1b97e160ac4bbf8a639438e8b10
+"So you're not only the Commander but a prophet now too? You go first, then — tell me where our home will be." {n}The huntress's sarcastic tone cannot fully hide the relief in her voice as she agrees to your game.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0268.jbp
+GUID: 9d194d9307c2e5f41bf4ea2d402fbc4b
+{n}Wenduag shakes her head sullenly.{/n} "You don't understand. I can't afford to be flippant anymore. I need to be serious."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0269.jbp
+GUID: c727ef6a122f5e846880eff3d89bb328
+"I know. You're the only one who understands me. You've got so many people depending on you too..." {n}Wenduag sighs darkly and sinks deeper into her gloomy thoughts.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0275.jbp
+GUID: 255b03ca76262c542a062ea6beecc9c6
+"You think uplanders will welcome us with open arms? Even now they look at us like we're freaks. Once the war is over and they don't need our help anymore, they'll find a reason to declare us either their slaves or their enemies. And that will mean a new fight and new blood."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0276.jbp
+GUID: 7dd9ecf33a86c5140a531a2c436c8f12
+{n}Wenduag stares into the distance, her lids lowered and a faint smile playing on her lips.{/n} "Our land. A vast wilderness with no one but us in it... All ours. A place where we can live our lives as we see fit..." {n}Her expression darkens.{/n} "But our lives might not be all that long. We will be doomed to die young on the surface too, and the pleasure of living a long life filled with great deeds will always be denied us."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0277.jbp
+GUID: 5f4eac87e3c5fe041a55fc6a92d2e1d3
+{n}Grimacing, Wenduag spits on the floor.{/n} "Living cooped up in those pathetic catacombs again? No way, neathers will never again settle for such a meager lot!"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0278.jbp
+GUID: 84191f21d0cd6be41aa808599905543a
+"I don't know what awaits us either. I look into the future, but all I see is darkness, and all I smell is blood."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0284.jbp
+GUID: 5f02108dc6f9ca9429ef8f03cf892bf6
+"All right. There's no point in trying to guess the future — it will always find a way to surprise us, usually by sinking its teeth into our most vulnerable spot at the worst possible moment."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0285.jbp
+GUID: 3f7326ed9f6302440af84d5585ae9beb
+"That's nothing more than a fantasy! How are we going to do it? Don't know? Then why are you feeding me pretty lies? A chief's judgment cannot be based on dreams." {n}She shoots you a resentful glare.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0286.jbp
+GUID: e3b12f3c37b564b478b81bcf6832dc7a
+{n}The huntress nods approvingly.{/n} "Harsh words, but fair. Lives that are brief but bright — that is our path. But... what lies ahead for me? What will my fate be?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0287.jbp
+GUID: 527f0d16afaeb5e47937b9c031844948
+"Accept it? Not a chance! Neathers do not weakly accept, they fight to the end! And that tradition certainly isn't going to end under Chief Wenduag!" {n}Baring her teeth fiercely, she looks at you with defiance.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0288.jbp
+GUID: b6f3c78ef1f2ed742809dbb6b208fcd7
+{n}With a skeptical grimace, Wenduag snaps resentfully,{/n} "What a wonderful future — spreading my legs and pushing out squealing spawn. That's exactly what I've dreamed of my whole life."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0294.jbp
+GUID: 5436f993d8b0bbc40b5ef69603baefe7
+{n}Wenduag's face clears and she slowly repeats your words, as if tasting them.{/n} "Decide for myself... Sounds good." {n}The pain and anxiety that gleamed in her eyes are replaced with warmth. Her shoulders straighten, regaining their former unbending pride.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0295.jbp
+GUID: a33f7758d012de84ebb164817ec89d5e
+"You're right. I want to be free... but I also don't." {n}Wenduag tries to look away, hiding her face, but changes her mind and stares fearlessly into your eyes.{/n} "I think I trust you. I wonder what it will cost me in the end."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0296.jbp
+GUID: 939efe1548b7bc248a1acd598bac3c4b
+"So this entire burden will rest on my shoulders alone? Hmph, this is the first time I've ever seen being chief as a burden, rather than a prize." {n}Smiling cheerlessly, Wenduag stares at her feet.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0297.jbp
+GUID: 67abc04a2fbe8e9498356141e20fce7d
+{n}Wenduag greets you with a dazzling smile.{/n} "It's funny, but I knew you were coming to visit me. I could smell your scent in the air. I wonder if the poison in our veins helps us to sense each other? Or have I just learned to read your mind?" {n}The huntress winks at you and chuckles.{/n}
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0298.jbp
+GUID: 9e82df5baf81fb74eabdb552b269e70c
+"With you, any time, my sweet." {n}The huntress rests her lithe arms on your shoulders.{/n} "The poison in your blood is driving me mad with desire. Your scent turns me on. And when I touch you, I lose all reason..." {n}A smile full of promise plays on Wenduag's lips.{/n} "It's a good thing you didn't die on the rocks, isn't it?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0303.jbp
+GUID: 12f6dfd468b52774e8c16a462f0ebbdd
+"Yes, but with you, I can be defenseless in a different way. Without whips and a hand pulling my hair."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0304.jbp
+GUID: 40ac9b040d068d643b949369286ab2ef
+"Well, they scare me. I haven't felt anything like this before. But... I will try to get used to it, even though these new feelings are unnerving."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0305.jbp
+GUID: d08508b51ff957047ad1c9066b75168f
+{n}Frowning, Wenduag levels you with a serious look.{/n} "I still desire you, if that's what you mean. But everything in my life has changed, and I really need to think about it. Give me time."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0306.jbp
+GUID: 6b60e7f287d73ca45817b65e85524458
+"See what you've done to me? Before, I would have just dragged you off and had my way with you, because working up a sweat in bed is the best way to knock the dark thoughts out of my head. Especially with you as my partner." {n}Wenduag closes her eyes and bites her lip dreamily.{/n} "Our last time together was... unlike anything I've ever experienced. So sensual, so close... so real..."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0308.jbp
+GUID: 74882801ec5e2504fac4e96a6c109fb4
+{n}Wenduag shrugs her shoulders and grins cheerfully.{/n} "It's your fault. You're the one who's done this to me. You have no one to blame but yourself."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0309.jbp
+GUID: 29c3775cc3f22a84e9a51523f1841366
+{n}Wenduag smiles when she sees you.{/n} "{name}, can I help you with anything?"
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0311.jbp
+GUID: c34c0dde363d4bf4dbadbc58a84a09fb
+"No. It is a glorious name, and we will not give it up. It holds our past, our glory, and our strength. Let our descendants know where we came from, let them understand how hard it was to survive in the caves, and let them strive to be no weaker than their own unbending ancestors."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0313.jbp
+GUID: 6b7d7b04d25df914a8a5092312b22981
+{n}The huntress shrugs her shoulders.{/n} "Let the uplanders call us whatever they want, it doesn't matter. I know what they're trying to do — by giving us that stupid nickname, they are asserting their status and superiority over us. But it's normal to try and dominate a stranger you just met. That's expected. When my kin conquer the lands on the surface, people will call us by whatever name we choose."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/WenduRomanceGo.jbp
+GUID: 751d867b5f7db214e84958651e14bbe7
+"Then why am I here and not in your bed already?" {n}Wenduag smirks and snaps her teeth playfully, showing off her sharp fangs.{/n} "If you want me, I'm not opposed to the idea. I've long been wondering if you are as good in bed as you are in battle."
+
+World/Dialogs/Companions/CompanionDialogues/Wenduag/WenduStopRomance.jbp
+GUID: 77a57cf1c1138f149943a2329377c9c5
+"Ending things will be better for both of us."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0003.jbp
+GUID: 4ba2757c47229354ab0acfdee73152be
+"So why am I here?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0004.jbp
+GUID: 79faa1cae6481e8449af72fcad07a36e
+"Does the sight of a dead demon turn you on?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0005.jbp
+GUID: afa1c9d99d4d0ca4283767a13253a506
+"What's so special about this place? Why did you want to talk here?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0011.jbp
+GUID: 91eb9389b03b16d41810b4e4b086d554
+"Why would I want such a 'gift'?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0012.jbp
+GUID: c3921e85488581543a524927fb1e11cd
+"Is it dangerous?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0013.jbp
+GUID: d23ac68e909a89049a0486f33c129e55
+"Will it make me look like a mongrel?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0017.jbp
+GUID: 02962610517d1554e9f2846759c929db
+"Tell me about this poison."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0020.jbp
+GUID: 142b4ed0d00c60a4e89cd351881a53a6
+"Why is this so important to you?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0022.jbp
+GUID: 96392a66aa810194399ad7fcbce65b5d
+"A beast already lives within my soul."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0024.jbp
+GUID: 0c6c5aa55b481a94e98ca8b518a696d9
+"I am ready."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0025.jbp
+GUID: 0e6aa510c309eff498bbf2930de2b036
+"No, I'm not going to poison myself."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0031.jbp
+GUID: ef386dc23b89b1440a85e37f8dab40b7
+"The pain is horrendous... in case you were wondering."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0032.jbp
+GUID: 3ea68760aab6446459e75a35ac89f8fb
+"So what will you do if I die?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0033.jbp
+GUID: 9737fda2584cb2c488ebabb8c1692f23
+[Wink encouragingly] "If I die, you can cut off my head and claim a reward from the demons."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0046.jbp
+GUID: b66c3309b75489b40b35bb0782245e1a
+"How do I look?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0047.jbp
+GUID: d2a0cb73adc8a7a48b595c9f9d5fef6f
+"I was so touched by your support... It was unusual to hear you offer up such gentle words of comfort."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0048.jbp
+GUID: 9987262cc7cbc9441b13765f8f0e7451
+"Why is there blood on my lips?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0049.jbp
+GUID: f8ed38f1f7bd83d4eafa448f85cf6f0b
+"You kissed me? I thought you said kisses were disgusting."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0055.jbp
+GUID: e3f0e242a99622c46a43fd6529d44a41
+"Are you really willing to change for me? Truly... I could ask for nothing more. Thank you, my love."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0060.jbp
+GUID: 3eea79acef1bc484fa88846581ff7251
+"What did you think of the kiss? Did you like it?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0061.jbp
+GUID: 05fe3a0167083484db9675a2a8b2c34c
+"Let's get out of here. We still have a lot to do — the Worldwound won't defeat itself."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0065.jbp
+GUID: 0294af27b9d54254aa6337699a126569
+"I don't think I was ready for this..."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0066.jbp
+GUID: 2fd2bb3e526d73a45a56966c25cfd1b4
+"This is nothing. I expected much worse."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0072.jbp
+GUID: a2f32b8e5a0709047a3b20f4a2f61cd7
+"Did you really call me your 'dear one'? That's so sweet."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0073.jbp
+GUID: 8bf3fd06e8be7a642a4a9f8a60ed30fa
+"I think it's time for me to say goodbye."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0078.jbp
+GUID: ef74023ca4c0d6e4e86a1f0fcf28c810
+"This is bad, isn't it?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0079.jbp
+GUID: 9a38a6d6311ff614680afef976bac66b
+"Don't worry. I'll be fine."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0084.jbp
+GUID: 0bbcafaa8d1f62941a8efe1b280f5397
+"Battles used to excite you, not scare you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0085.jbp
+GUID: 31f60f7987a23854da5de38c3115f1cf
+"It looks like you finally believe in love."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0086.jbp
+GUID: 0fa16dd985dc82242a142b58b8e87242
+"Am I really that important to you?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0089.jbp
+GUID: ff34f47345156a54dabfe115eb567f1e
+"I love you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0093.jbp
+GUID: 190ab8b7274ab6241a6e710052bd8623
+"So, you almost killed me..."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0095.jbp
+GUID: 7274723346991494cad2e68061bab926
+"You said that we share a bond. What does that mean?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0098.jbp
+GUID: 21a18805e57bad341afacc1800b905ab
+"There is no reason to be afraid. We'll survive the war together."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0099.jbp
+GUID: 96cd62fa2f0e33c4ab1afb6c1d6a75bc
+"I don't know what lies ahead, or what the future holds. But I know that we'll be together, no matter what happens. And if we have to face Pharasma — we'll stand before her side by side."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Answer_0102.jbp
+GUID: 0a7710ba8f1219d49b8045647217e1d1
+"What about your duty to your tribe?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0001.jbp
+GUID: aacd2739d30721b42a08bd669d4aefac
+{n}The huntress's voice is a soft purr.{/n} "Alone at last."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0006.jbp
+GUID: 2ac1c21a7efc7a24d9089ad14a1481d0
+"I am excited, but not in the way you think. I want to offer you something even more valuable than the pleasure of my touch." {n}You hear the huntress's low, sultry laugh.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0007.jbp
+GUID: c9222446fa4910c478090d74ac74486c
+"I want to offer you a gift." {n}Wenduag smiles mysteriously, and points to the demon's corpse. There is a fearsome-looking stinger at the end of his tail, and your eyes are drawn to a single bead of poison that glints dangerously at its tip.{/n} "A communion with Savamelekh's poison. It contains immense power, but it is also incredibly dangerous."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0008.jbp
+GUID: aec6c92c5f3a01540ad2f7a3da3fde3a
+{n}The huntress points at the demon's corpse.{/n} "Because of him. This nasty scumbag called me a slave. You took his life, and now he'll have to lie there helplessly while you take his power."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0014.jbp
+GUID: 96c95d3c56d3a474aaffaa70304fe96a
+"To become stronger, of course. Savamelekh gave us all a taste of his poison. That is how he shared his power with us. And right now, you need all the power you can get, right?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0015.jbp
+GUID: 6a01dd27afaace84891ffecd3b5eee31
+"Deadly. All of Savamelekh's servants ate meat laced with his poison, but only a few of his strongest followers were allowed to experience the kiss of his sting. It was a great honor — though only a handful survived." {n}The huntress watches you closely to see your reaction.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0016.jbp
+GUID: 401ea3dcac9e331469793fb8c49b73c8
+"I don't know... You're not an ordinary mortal. Maybe the poison won't change your appearance. Why? Are you afraid you'll become... a freak?" {n}The huntress narrows her eyes.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0018.jbp
+GUID: 8ffa8da05b0eece4fb3b28a8c6af147a
+"The poison contains Savamelekh's power. This is the poison our ancestors tasted, and they became the first of our kind. The demon gave his poison to everyone who swore to serve him. When you try it for the first time, it feels like two mad scorpions have clawed their way into your brain through your ears and have begun a fight to the death inside your head."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0019.jbp
+GUID: d0a7fefe1be95da459bee9f9a9354879
+"Your body will start to shake violently, and you'll feel like your bones are beginning to crack and splinter. But the pain is nothing compared to the rage that will swell within your soul, a deep, dark, abiding hatred unlike anything you've ever imagined. If you survive, the agony will eventually subside, but your heart will bear the dark stain of this anger forever. With each new day, you will wake up with a single thought, a single purpose — a desire to hurt others. That is how this poison works."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0021.jbp
+GUID: 73a1707e4c7a4604dae3e0e4b3e59ddf
+"Because I'm not like you. We can keep on pretending as long as we want, but... I'm not an ordinary mortal. I was created by demons. You can turn a blind eye to the truth, but you'll never fully understand me until you become like me... at least a little. A cruel, hungry beast howls within my soul. If you do not hear its call, we can never truly be together."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0023.jbp
+GUID: 010a236b45f483d45a52b659029ff073
+"Then you have no reason to be afraid. You're a true {mf|son|daughter} of the Abyss. The poison of a demon won't kill you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0026.jbp
+GUID: 088bb4898c4aa4245bf2719eae7dbfe8
+"I'll be gentle." {n}Wenduag tears the poisonous stinger from Savamelekh's tail, and brings it over to you. She caresses your skin with the stinger, delicately placing it against your chest. Then she presses down carefully until its tip pierces your skin.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0027.jbp
+GUID: 3b9326b4fd3353f45ace89642a85e5fe
+{n}A look of disappointment crosses Wenduag's face. Then she shrugs.{/n} "I thought you would say that. Well, I guess this means we weren't meant to be together."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0028.jbp
+GUID: 02d8d8aabe4263243a917f9c2e71e6f0
+{n}A blazing inferno ignites inside you. Your body begins to spasm, and you writhe and twist in agony. You barely manage to choke back your screams of pain.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0029.jbp
+GUID: c542ca33490bda04198e33634e639e9a
+"Don't pass out! Talk to me! What are you feeling? Stay with me, whatever you do!"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0034.jbp
+GUID: ac00113c10d8da94abda084e8457bc07
+{n}Wenduag gently strokes your cheek, and whispers softly,{/n} "I know. Hold on, dear one. You're strong. I know you can do this."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0035.jbp
+GUID: 246d42cea18565947924117d1ba7fbeb
+"I'll go and sabotage the war effort. I'll destroy everything you've worked so hard to build. So if you don't want me to ruin your entire campaign, you'd better not die." {n}Wenduag tries to adopt a playful tone as she teases you about the crusade, but she can't hide the worry in her voice.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0036.jbp
+GUID: 19cfb9736ef327942af5593f554f2ca4
+{n}Wenduag tries to smile.{/n} "Right. What am I waiting for? After all, I'm sitting right next to you. I might as well stab you now." {n}Another spasm causes your body to convulse violently, and Wenduag's smile vanishes. She looks at you with an expression of sheer terror.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0037.jbp
+GUID: 549249557ebbde34c9f96c6beca24c17
+{n}You notice the handle of a dagger sticking out of the huntress's boot — it's the same dagger she took from the One-Eyed Devil back in Drezen. Odd... she's never carried it around with her before. She has better weapons now, weapons that are far more suitable for a serious fight... unless she simply wants to slit someone's veins.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0038.jbp
+GUID: 2f9ba24865ef23049a7dbfd104faeff4
+{n}The huntress's face grows serious, and she looks you straight in the eye. She speaks quickly, as if she's afraid she won't have enough time to finish.{/n} "Remember how you told me that I was free, and that I could decide my own fate? You set me free, and that was the moment I decided I would never betray you. And I didn't! I haven't!"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0039.jbp
+GUID: ac019438d0dd8304b953e5f90916ae0e
+{n}The huntress buries her head in her hands.{/n} "What have I done? I'm such a fool! Why wasn't I content with what we had? Damn it! You were the first person I've ever told about my father. I've never felt this close to anyone, and I... Why?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0040.jbp
+GUID: 241494465674d964ebd6fa27c9705ae7
+{n}The world around you grows dim, as if you are surrounded by thick fog. You hear the sound of invisible drums, their rhythmic call beckons you — it is a call to hunt. You want to spring up and give chase. You want to catch the prey and tear it to pieces... But you are in too much pain.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0041.jbp
+GUID: 3c9efbfe5d3a76f49b056507442241e9
+{n}A new sensation washes over you — hunger. A hunger so powerful and intense, you lose track of everything else. You crave the taste of blood like an addict craves drugs. For a moment, you are so caught up in this sudden, urgent desire that you forget about the pain... and then your body contorts in another spasm of agony.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0042.jbp
+GUID: 4bbcb3eb3288a774c95f777ed40de9bf
+{n}You feel as though your chest is bound by invisible chains that are growing tighter and tighter by the second. You find yourself gasping for air, trying to breathe, but it's no use. The world around you grows dimmer with each heartbeat. This is it...{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0043.jbp
+GUID: 28918ca59e0f39540acbebf7c4c98d39
+{n}Darkness gradually gives way to light. The pain has abated, and you are no longer in agony. Your mind grows clearer, but there's still something within you that is foul and... unnatural. You reach out with your mind, probing this dark, lingering corruption, and find that it is a source of both pleasure and disgust. It attracts and repels you in equal measure.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0044.jbp
+GUID: 56cb0941618de50428e6a0e286a5bdde
+"It worked... You're still alive." {n}Wenduag, who has been staring at you worriedly, laughs in relief. Her lips are bruised and bleeding, and you taste the iron tang of blood on your lips as well.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0050.jbp
+GUID: 1e1da1538914d864eba05b4bc86b6f65
+"Not that different from before... You grew some really small horns, and of course, now you look like a rat, but I think it suits you... I'm joking, relax! Don't look at me like that!" {n}Wenduag bursts into a fit of giggles.{/n} "No, you haven't changed at all. If I had to guess, I'd say that's because Savamelekh's poison isn't strong enough to overcome your mythic power."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0051.jbp
+GUID: 0dbf18c26dc933a4aa73cb09329d1b6a
+"I never tried to comfort you. Comforting words are for weaklings." {n}Wenduag smiles nervously.{/n} "Don't fool yourself. I'm the same wicked, lying, traitorous bitch that I was before. I still don't care about anyone but myself, but I am a little glad that you didn't just drop dead."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0052.jbp
+GUID: 75e2dfcfcf261e742b98b64dba49681a
+"But I guess you do have a point. I... I've been a real bitch, but you never stopped treating me with respect and understanding... even though I didn't deserve it. You covered for me when I made mistakes, you supported me when I felt helpless and confused... Damn, you're the first person I ever decided to be loyal to until the end!"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0053.jbp
+GUID: d435da0408b41554498333b6617ec193
+"I've never... loved anyone before. But if you're stupid enough to die, I'll follow you to Pharasma's judgment." {n}There's a sudden tightness in Wenduag's voice, like a bowstring stretched to its breaking point.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0057.jbp
+GUID: 20a4beeb47932564a81ba03b2291939b
+"I'll try. Just don't expect me to stop being a bitch overnight. This leopard will need some time to change her spots."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0059.jbp
+GUID: 391303a3c7c85c3478d43b07e7706265
+{n}The huntress looks away quickly.{/n} "I... I may have kissed you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0062.jbp
+GUID: 3d182ab6ee2618040a04a5e74d07f17d
+{n}You hear confusion in the huntress's voice.{/n} "I just didn't know what else to do... I remembered uplanders saying something about how a kiss could break a spell..." {n}Wenduag glances over at you in sudden horror.{/n} "That's all a load of rubbish, isn't it? Gods, what a fool I've been..."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0063.jbp
+GUID: d278a1dfdbf7ed04cb99544b7500abb0
+{n}Wenduag laughs in relief.{/n} "It was absolutely horrible! I wish I had never tried it!"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0064.jbp
+GUID: 28f85ba6043930943bdccb09659bce01
+"Of course. Let's go." {n}Wenduag turns to Savamelekh's corpse, and hisses spitefully,{/n} "Take a look, you winged filth. First, my lover killed you, and now {mf|he|she} has taken your power. You should never have messed with {mf|him|her}!"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0067.jbp
+GUID: 0567ce6b7b47c8d418af3ea2c7985666
+{n}Wenduag looks at you sympathetically. She whispers quietly,{/n} "It's too late. There's no going back now. Hold on, dear one."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0068.jbp
+GUID: 2302cf53b18395942afe05879dd132a8
+{n}Wenduag smiles affectionately as she gently strokes your cheek.{/n} "Right, and the only reason your voice is trembling is that these stones are so damn cold. Hold on, dear one."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0070.jbp
+GUID: dc7afe900f0a7084e83199c9ffe4b83e
+"Can you hear me? Answer me, curse you!" {n}Wenduag's voice shakes you from your feverish, pain-filled dreams. She sounds frantic, as if she's been calling you for some time with no response.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0074.jbp
+GUID: 816d4718bc257e64fa4305c50d7a5732
+{n}She laughs nervously.{/n} "If you die now, you'll have no one to tell except Pharasma. But if you stay alive, you can mock me to your heart's content. So just try not to die, all right?"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0075.jbp
+GUID: 546368576fc08334a8b94b43bffcba14
+"Don't you dare! You hear me? Don't you dare leave me here alone! Stay awake, keep talking! You understand me, you damned uplander? Just hold on!" {n}Wenduag shakes you frantically. Her claws pierce your skin as she grasps your shoulders, but you no longer feel any pain.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0076.jbp
+GUID: 2bf3227186abacd41809c0e422021413
+{n}Wenduag's face is a mixture of horror and desperation. She stares at you helplessly, and tears fill her cat-like eyes. The world around you starts to shake. Is it an earthquake? Or has your body begun to convulse again?{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0080.jbp
+GUID: be52ebcddf2de4e4fb20c3e1a577ac59
+"No, no, everything's fine! You're doing great. It will all be over soon." {n}Wenduag's lips tremble as she tries to hold back her sobs.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0081.jbp
+GUID: 45472654d4babfe479f27825c8bba82f
+{n}Wenduag bows her head and whispers bitterly,{/n} "Don't you dare pity me... not now, when you're dying because of me!"
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0082.jbp
+GUID: 994224f720c57ae4696d90077d4e3dae
+{n}Wenduag looks you in the eye. Her voice is soft.{/n} "I don't want to think about all the battles you'll have to fight... all the ways you could be killed. I... worry about you. What a strange, ridiculous feeling."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0087.jbp
+GUID: 9ecaba9234bbb4e42975e41322db4102
+"Don't laugh. I realize how it looks — a nasty, cynical bitch transformed by the power of love. No, I know I don't deserve such a gift, but... I can try to earn it." {n}Wenduag hesitates, then says slowly,{/n} "Do you want me to change? Would you like me to act more like an uplander, and believe all that stuff about kindness, honor, and dedication? I can't promise that I'll succeed, but I can try. For you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0088.jbp
+GUID: 72c5898ce6fc5fe40a0d69b73bb5f0c4
+"I can hardly believe it myself... All my life, survival has been my only priority. But now... I don't want to survive without you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0090.jbp
+GUID: ab6224e04fa75394abff2ef9bf97f50d
+{n}The huntress looks even more terrified than she did when you were dying in her arms. Her lips move soundlessly before she finally manages to force out the words,{/n} "Me too. I love... you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0091.jbp
+GUID: 4d7ca30b14c20b2408bf7a0d5038b3da
+{n}The huntress laughs as she pulls you close.{/n} "You know I don't believe in love... It's just something that uplanders invented. But..." {n}A satisfied smile appears on Wenduag's lips.{/n} "You are the most incredible person I've ever met. You're fearless, you're inspiring... See? I don't need to repeat those three stupid words. I have plenty of other words to tell you how I feel."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0092.jbp
+GUID: 207822d4ddaa3f74fb4d71964a812716
+"I can't believe I just said that..." {n}Wenduag stares at you for a moment in stunned silence. Then she giggles happily.{/n} "But I do love you, {name}. I really do."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0094.jbp
+GUID: b68d4f5f2def4b24cb0709bbd81822ff
+"But I didn't. Though I must admit, it was a close call. But I believed you were powerful enough to survive, and I was right. You passed the trial, and now we... share a bond. I wanted to open up to you before, but until you shared the poison that shaped me into who I am, you would never have been able to fully understand me. This venom in my veins would have always been a barrier between us. But now, it brings us closer together."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0096.jbp
+GUID: 5643859724102994aab48e4ba21f4901
+{n}The huntress becomes very serious.{/n} "It means that I will follow you no matter where you go, and I will fight for you until my last breath. And when the time comes for us to die, I'll cover you with my body, and I'll have no regrets. Do you hear me? I'll never regret my decision to choose you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0097.jbp
+GUID: 434440803b5ea20418dc20a679ddaad2
+"Don't you see? We are special. There is no one else like us in the entire world. We're the only ones left — all the others are dead. Look into my eyes. What do you see?" {n}Wenduag brings her face close to yours, and you see yourself reflected in her huge, cat-like eyes.{/n} "When I look into your eyes, I see myself."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0100.jbp
+GUID: b2ce4e6d9a6275649af78275072751b2
+"It will be a miracle if we survive... but I've seen you perform plenty of miracles. I just have to trust you."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0101.jbp
+GUID: 20fa858a317c96b45ad8620ad29ba505
+{n}Wenduag gives you an affectionate smile.{/n} "Yes. And anyone who tries to separate us will bitterly regret their mistake."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0103.jbp
+GUID: 3e847706f1f9fe54e86e89298f488c7c
+{n}The huntress shakes her head sadly.{/n} "A good chief's heart, thoughts, and life, belong to their tribe. But my heart belongs to you now, and there's nothing I can do to change that. I can no longer be a good chief to my tribe."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0104.jbp
+GUID: 2ee56d0c39137f242aa0cbeb24b79e48
+{n}Wenduag takes your hand. Closing her eyes, she whispers softly,{/n} "I belong to you, {name}. So I'll become whatever your heart desires. I swear."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0105.jbp
+GUID: 134d3924462be9d478e93446247d8285
+{n}Wenduag closes her eyes wearily. She whispers softly,{/n} "Love is so sweet, but so exhausting."
+
+World/Dialogs/Companions/CompanionRomances/Wenduag/ThatIsFinal/Cue_0106.jbp
+GUID: 0e4d8fb2b75334c4d95ba91c2e0ecbb3
+"I wasn't trying to kill you. Please, you have to believe me. I would never betray you. I'm loyal to you, and I'll remain loyal forever. I swear." {n}Wenduag's voice sounds thin and fragile, like a twig frozen by the winter winds.{/n}

@@ -1,0 +1,1173 @@
+[
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/CueSequence_0021.jbp",
+    "text": "",
+    "AssetId": "e5cebb0a4f084e44b8424d5e1ef18b73",
+    "Data": {
+      "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "8311ef29223c4fe469c95cd8eb80e539",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Cues": [
+        "!bp_45258075a3a79bf4c91a90dd22ed6145",
+        "!bp_d731f9cfaad51cf4e8e7f581abcb056e",
+        "!bp_66b0e85084c38f24f9ba9250ad480669",
+        "!bp_e24c96e430037dc4381751f8cecf7727",
+        "!bp_d969a39c518e1eb4ab8f37d9a8661212"
+      ],
+      "m_Exit": "!bp_7b47815a75f2baa46a5d9a07499f2a60"
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0015.jbp",
+    "text": "\"I believe they will be heard. The words of those who have seen so many trials will be sincere. And the higher powers will answer by sending down thunder and ruin upon all who do us wrong.\"",
+    "AssetId": "47ee9a4ff35604d4c901404a2b8a9999",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "e7e0dd275ef38334caf19cff6a971762",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "ac62c682-d58c-4a28-ae15-425480261d91",
+        "m_OwnerString": "47ee9a4ff35604d4c901404a2b8a9999",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0015_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_1cbbbb892f93c3d439f8417ad7cbb6aa",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_8311ef29223c4fe469c95cd8eb80e539"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0016.jbp",
+    "text": "\"I can see it already — devout priests and churchgoers forming a line, bragging about who has paid more!\"",
+    "AssetId": "f790b76dc1d69a8468296e9b4bae8ec3",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "bf9b86ced8e60174ebfcf834a6447905",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "a43ba24a-108b-47c6-8e6b-78861494444e",
+        "m_OwnerString": "f790b76dc1d69a8468296e9b4bae8ec3",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0016_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_096fc4a96d675bb45a0396bcaa7aa993",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_8311ef29223c4fe469c95cd8eb80e539"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0017.jbp",
+    "text": "\"Maybe at least this time we'll get folks who are actually competent and we can finally take it easy and fight some demons. Sorry, I'm daydreaming.\"",
+    "AssetId": "19786c13d9849f549b7a135a9adadf9a",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "f75ed0d6e89acdf49b9159a9217cd536",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "fdabd9e8-69ba-48d5-9877-39d0e1fad5bc",
+        "m_OwnerString": "19786c13d9849f549b7a135a9adadf9a",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0017_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_cb29621d99b902e4da6f5d232352fbda",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_8311ef29223c4fe469c95cd8eb80e539"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0018.jbp",
+    "text": "{n}Woljif's cries once again fill the room.{/n} \"All hail the chief! Our brethren will never forget this, you'll see. There are lots of decent tieflings in Avistan who are being victimized because of their heritage. Once they hear folks stopped treatin' us like dirt here in Mendev, this place will be packed with 'em!\" {n}In a lowered voice, he mutters,{/n} \"And then we'll see who's gonna spit on who.\"",
+    "AssetId": "c5a9569507d98894f8e7ad0a2948db7f",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "87e5eac8e1534cb4c95763da4f48d842",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "c221d8f8-247c-4f0e-95f1-446cc19de80d",
+        "m_OwnerString": "c5a9569507d98894f8e7ad0a2948db7f",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0018_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_766435873b1361c4287c351de194e5f9",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_8311ef29223c4fe469c95cd8eb80e539"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0019.jbp",
+    "text": "\"It will be done. You've been dealing with Mendev's misfortunes long enough. It is time we reminded ourselves that it's the nation that must support you.\"",
+    "AssetId": "accc9a6356e76cf4ca18bb6b19233320",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "adf0b376112a28f498750de820ccca9e",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "609e31e3-8fdd-4889-ab4b-bbd9f3b434fa",
+        "m_OwnerString": "accc9a6356e76cf4ca18bb6b19233320",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0019_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_8311ef29223c4fe469c95cd8eb80e539"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0020.jbp",
+    "text": "{n}Lady Konomi bows respectfully.{/n} \"When first we met, I allowed my eyes to deceive me. I failed to discern within you an outstanding politician. You knew nothing of diplomacy, you were unaware of the power structure in Nerosyan and beyond. But you were driven by your uncanny intuition, and with it, you have saved Mendev and strengthened our ties with foreign allies. You have my respect.\"",
+    "AssetId": "8311ef29223c4fe469c95cd8eb80e539",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "поклон",
+      "ParentAsset": "47ee9a4ff35604d4c901404a2b8a9999",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "33e47e84-7eaf-4d2c-8d0f-92343862b149",
+        "m_OwnerString": "8311ef29223c4fe469c95cd8eb80e539",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0020_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "Bow",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_e5cebb0a4f084e44b8424d5e1ef18b73",
+          "!bp_7f64a30ceb4bfb046990bccbded7ac75"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0024.jbp",
+    "text": "\"Once, I saw a general in you. Now I see a capable politician as well. I am grateful to you for fulfilling your duty and helping my nation.\"",
+    "AssetId": "45258075a3a79bf4c91a90dd22ed6145",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "Голфри",
+      "ParentAsset": "e5cebb0a4f084e44b8424d5e1ef18b73",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "Or",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$2b3ae507-6ab7-4b72-a147-0a0e2df2c16b",
+            "Not": false,
+            "m_Etude": "!bp_e9205b9f9e8ecd04c92852d72d09ca86",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "bb255e71-ccdb-43f8-844c-0d20f4502279",
+        "m_OwnerString": "45258075a3a79bf4c91a90dd22ed6145",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0024_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_8c5dcc93d68d0ed44afd43902201da40",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0025.jbp",
+    "text": "\"I wasn't a diplomat before this war, and I haven't become one now. But I think I'm beginning to understand politicians and their actions better. And I'm convinced that the key is never to forsake your conscience. I don't think we have.\"",
+    "AssetId": "d731f9cfaad51cf4e8e7f581abcb056e",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "e5cebb0a4f084e44b8424d5e1ef18b73",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+            "name": "$CueSeen$ba178d1d-28ba-404c-8457-30dd92712b95",
+            "Not": false,
+            "m_Cue": "!bp_cf75497799a50c644a8e36687704a22d",
+            "CurrentDialog": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "e6ae2ced-9c9a-4997-bc4e-86426a00940f",
+        "m_OwnerString": "d731f9cfaad51cf4e8e7f581abcb056e",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0025_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_1cbbbb892f93c3d439f8417ad7cbb6aa",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0026.jbp",
+    "text": "\"I must admit, these council meetings weren't the worst moments of my life. They were almost entertaining. It seems you have the ability to make everything more interesting, be it waging war or hosting ambassadors. And I, like a true son of Mendev, even took part in deciding its fate. We shall see if posterity will curse us for it or sing our praises!\"",
+    "AssetId": "66b0e85084c38f24f9ba9250ad480669",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "e5cebb0a4f084e44b8424d5e1ef18b73",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+            "name": "$CueSeen$8eb9f47e-556c-4ef6-88af-bca4e8eaafea",
+            "Not": false,
+            "m_Cue": "!bp_7d14f6a99f131f14787c0fbc25b200de",
+            "CurrentDialog": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "d1328d20-ba71-4656-87c7-cd3623603107",
+        "m_OwnerString": "66b0e85084c38f24f9ba9250ad480669",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0026_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_096fc4a96d675bb45a0396bcaa7aa993",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0027.jbp",
+    "text": "\"I can't imagine ever becoming a proper diplomat. All this political skullduggery makes my hand reach for my bow; I was this close to going down in history as Lann the Shooting Ambassador. But I'm impressed with how slick you were at dealing with intrigues and weaving a web of your own.\"",
+    "AssetId": "e24c96e430037dc4381751f8cecf7727",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "e5cebb0a4f084e44b8424d5e1ef18b73",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+            "name": "$CueSeen$93c846ae-dea0-4c92-8a5a-6e6a18b16269",
+            "Not": false,
+            "m_Cue": "!bp_bffcd163de8499046a62b8f22073e15b",
+            "CurrentDialog": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "e3397efe-ae22-4c69-a2be-218e298e1dfc",
+        "m_OwnerString": "e24c96e430037dc4381751f8cecf7727",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0027_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_cb29621d99b902e4da6f5d232352fbda",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0080.jbp",
+    "text": "\"Looks like politics isn't such a big deal after all. It's just like the gangs on the streets, apart from the cussing. Maybe I should be a diplomat after the war?\"",
+    "AssetId": "d969a39c518e1eb4ab8f37d9a8661212",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "e5cebb0a4f084e44b8424d5e1ef18b73",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+            "name": "$CueSeen$fe62ec63-1a5f-43de-b8e5-d42d7d9cc66c",
+            "Not": false,
+            "m_Cue": "!bp_a6c20711ef16e284f800961e44bebf91",
+            "CurrentDialog": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "a86ca345-0f18-43f3-a427-7a5b3bcc6370",
+        "m_OwnerString": "d969a39c518e1eb4ab8f37d9a8661212",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0080_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_766435873b1361c4287c351de194e5f9",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081.jbp",
+    "text": "\"It has been an honor and a pleasure to advise you, Commander. However, I don't think you will need my counsel from here on out. Mendev stands strong, our allies are loyal and reliable. The Diplomatic Council has served its purpose; you don't need it any longer.\"",
+    "AssetId": "7f64a30ceb4bfb046990bccbded7ac75",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "7b47815a75f2baa46a5d9a07499f2a60",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "f0c50402-6d80-4bf5-8fcf-3b9f2779c7a2",
+        "m_OwnerString": "7f64a30ceb4bfb046990bccbded7ac75",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0097.jbp",
+    "text": "\"This war has left too many wounds on the body of my nation. It is high time we healed them. Let any who wish to risk their lives for a just cause come to me, and I shall name them my knight and a noble of Mendev.\"",
+    "AssetId": "f8fb3fa634dcee742b9bb076b19448d1",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "Голфри",
+      "ParentAsset": "1e2d752b2e038e44d8558e4ecac9156a",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "6f34851d-8cf4-4105-96d3-af88ab442b1a",
+        "m_OwnerString": "f8fb3fa634dcee742b9bb076b19448d1",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0097_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_8c5dcc93d68d0ed44afd43902201da40",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_8311ef29223c4fe469c95cd8eb80e539"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/SequenceExit_0022.jbp",
+    "text": "",
+    "AssetId": "7b47815a75f2baa46a5d9a07499f2a60",
+    "Data": {
+      "$type": "6091ddca960a4d1459ac23e917c21d7d, BlueprintSequenceExit",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_7f64a30ceb4bfb046990bccbded7ac75"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0021.jbp",
+    "text": "\"What's the current situation in Mendev?\"",
+    "AssetId": "a24c33ab318c17f4ba5dcb8fc22542f6",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ef7de5bb5097bed49b826aaf4f67b940",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "68dc28fa-05f5-468b-a4b0-9348f7e3fe64",
+        "m_OwnerString": "a24c33ab318c17f4ba5dcb8fc22542f6",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0021_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_9980a1ecf3ca24e42ab3b22f858677b5",
+          "!bp_60585f7319a294147a54f440865b21a2",
+          "!bp_07459f4d09fa81e4b99beea351fb0434",
+          "!bp_d4ad8d519aff2c1489a0a509d1afc453"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029.jbp",
+    "text": "\"However regrettable it may be to admit, only foreign interference was able to save Mendev from ruin. The garrisons in the cities took authority into their own hands. Robberies were weeded out, and tax collection, order enforcement, and public administration is now being handled by an army of foreigners. However, their actions really have improved the situation. I only hope they won't decide to extend their stay in Mendev once the war is over.\"",
+    "AssetId": "9980a1ecf3ca24e42ab3b22f858677b5",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "Выбрал в Дипломатии 7 ансверы 8 или 103",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$98b90d46-808b-4d28-93d0-55aa78ffb521",
+            "Not": false,
+            "m_Dialog": "!bp_6178470b05c75484085753b821a6a614"
+          },
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$05d15e0d-7d86-4027-81b3-f4ac8c697330",
+            "Not": false,
+            "m_Etude": "!bp_c6e9a69f602a48e18424f4b6d71062b4",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "78b872c6-6892-4ad0-bdd8-cb003111ca21",
+        "m_OwnerString": "9980a1ecf3ca24e42ab3b22f858677b5",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032.jbp",
+    "text": "\"Terrible. This crisis is tearing the country apart. The recent turmoil in Nerosyan has split the ruling circles. The cities are teeming with thieves, the provinces are terrorized by highwaymen. Public services are paralyzed, the army is dismayed. And ahead of us is the distinct shadow of an oncoming famine. The nation is feverish, Commander, and only you can save it.\"",
+    "AssetId": "07459f4d09fa81e4b99beea351fb0434",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$b8148a07-5500-493a-aaca-9c70fa12b69c",
+            "Not": false,
+            "m_Dialog": "!bp_30333438aac8d3647bef882fa87e978e"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "61406e3b-e2a0-426a-bd0f-95ffac91b96d",
+        "m_OwnerString": "07459f4d09fa81e4b99beea351fb0434",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
+    "text": "\"Mendev was able to resolve the crisis without outside interference. Crime was suppressed, regional riots were snuffed out, and the authorities in the cities and the capital once again act in unison, following a shared plan. Many brave Mendevians, in their patriotic fervor, are enlisting in the army, and those who cannot hold a weapon are forging our victory on the home front.\"",
+    "AssetId": "60585f7319a294147a54f440865b21a2",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$6a6f3614-a021-40d4-9044-cf439dd4df89",
+            "Not": false,
+            "m_Dialog": "!bp_6178470b05c75484085753b821a6a614"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "54d44567-952f-4129-bd38-d83a0e8c2516",
+        "m_OwnerString": "60585f7319a294147a54f440865b21a2",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  }
+]

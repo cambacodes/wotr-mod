@@ -1,0 +1,2135 @@
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Answer_0003.jbp
+GUID: 32c35b84b281b7b4ea4a1ca5bdf914c2
+[Wait for the beginning of the ceremony] "I don't mind spending the time before the ritual with you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Answer_0004.jbp
+GUID: 596b7761e6a15c942a24fc8f577e1c47
+"What do you think of the celebration?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Answer_0005.jbp
+GUID: c98f499eaf40b194c85cad8d230cfdec
+"I'll walk around some more."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Answer_0012.jbp
+GUID: 21b6f1c16a31d3045b15913a83996dcd
+"I've already seen enough of the entertainments."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Answer_0013.jbp
+GUID: 87c3d4fe4f236784fb81fa405cb70e80
+"All right, I'll wander around a little longer."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Cue_0001.jbp
+GUID: 1dddedb779416154c84609195b9bdfe5
+{n}Arsinoe lowers her head graciously.{/n} "Knight Commander. How can I help?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Cue_0006.jbp
+GUID: a7b23b6b58baf764784c444dd3e54a39
+"I'd prefer a church ceremony, and a more formal approach to the celebration. But there is a certain charm in how unpretentious everything is here. We priests who choose to make our home in savage and dangerous lands see a lot of things during our lifetime, including exotic weddings. We don't bat an eye at a celebration where the groom is wearing a fey monarch costume, and the bride is dressed as an evil vampire."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Cue_0007.jbp
+GUID: 5cd872857e4300549ab76fb72952ab96
+"Your company is most welcome, Knight Commander."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Cue_0009.jbp
+GUID: 776a519649f879e448388b207a19935c
+"Parties involving exotic costumes are endlessly amusing. But putting them on is only half the fun, if you know what I mean."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ArsinoeAtWedding/Cue_0011.jbp
+GUID: 85c6e56599136e24ba0cd029fa0ab4f1
+"Are you sure? I'm a boring companion, and there plenty of entertaining activities around."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0004.jbp
+GUID: f64e4c4189ea2bb40a8d5fe9fd44e25d
+"Yes. Let's go, quickly!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0005.jbp
+GUID: 389fdb0c169f5744d83cec3fc6837c9c
+"Wait, I need to prepare."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0009.jbp
+GUID: 03311132d39fd884fa245f9397547942
+"What will happen to the victims of this attack?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0010.jbp
+GUID: d7d29f8a7657cfd41b2d83df9e7b8d58
+"What did Sunhammer want to achieve by doing this?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0011.jbp
+GUID: 7d41705017065ef459fce6ecfd257edd
+"I see."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0014.jbp
+GUID: 95b7a299ecdd41f48880c5ca9eb5ddf4
+"How did no one notice anything?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0023.jbp
+GUID: 655de48d7fc4df146947ead85b586564
+"Don't blame yourself. The entire Mendevian inquisition failed to see Sunhammer for what he was, it's no surprise you didn't either."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0024.jbp
+GUID: 05b996c9fd8daa14b896fcad4b56fae1
+"Enough whining."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0028.jbp
+GUID: 933b59e02bbb45c42989a25d774d99f2
+"Right. Not very cautious on your part. As usual."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0029.jbp
+GUID: 1e60a063efd6c4e4c928237b15c73e96
+"Hey, stop blaming yourself. We handled it in the end — that's what matters."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0032.jbp
+GUID: 9b9d613b5a2a37846b1d4a2afdb53893
+"So, all his jewelry came with a 'hidden surprise'?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Answer_0034.jbp
+GUID: 9bb2cd701498ede4abffdf41017c1f2c
+"But you were the one to notice something odd was happening. And you saved Kiana."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0001.jbp
+GUID: 21e57a550bdec0b468d7f0894c05bbaf
+{n}Seelah is standing with her weapon drawn, her eyes ablaze.{/n} "Have you seen the bodies in the streets? I'd bet anything this is the doing of our jeweler! Let's go to his shop quickly, if you're ready!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0002.jbp
+GUID: e2cdf5fdaaed80440b0d32bea53f7242
+"Commander, Seelah! Praise Abadar, you're alive!" {n}The usually dignified Arsinoe struggles to catch her breath after running, and she says, nervously clenching her hands,{/n} "I have received news from other temples of Abadar, most disturbing news! What we saw at Elan's and Kiana's wedding has been happening across Mendev. People who bought Darek Sunhammer's jewelry have been dropping to the ground, lifeless, with demons emerging from their bodies."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0006.jbp
+GUID: 3e582d7b7ca44294c8aaf415e14ce4b7
+"The damage done is hard to measure. Demons appeared in a hundred locations and many of them immediately used the turmoil to commit atrocities: killing, stealing, wreaking wanton destruction. Some were quickly dealt with, the cursed jewelry taken from them, and the imprisoned souls freed. But most of the demons fled, taking the jewelry containing the souls of their poor victims with them."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0007.jbp
+GUID: eb8c6217fd5f8b043b9ab4b4f4ff75a1
+"Darek Sunhammer himself escaped too. The inquisition of the church of Iomedae is searching for him, but they have no leads as yet. The church of Abadar is doing whatever it can — we also suffered losses among both our congregation and our clergy." {n}Arsinoe shakes her head sadly.{/n} "Such a devious plot, and how skillfully it was executed!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0012.jbp
+GUID: a62fe5b103419744e996333274b3d197
+"Several large churches in Mendev have taken the victims into their care. The priests will keep their bodies alive and well. But unless the jewelry is found and their souls returned, all these efforts will be for naught."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0013.jbp
+GUID: 67845527867de4b429786e1999858c14
+"It's not clear. But he's been the most famous jeweler in Mendev for several years now. He counted many influential personages or their relatives among his clients: nobility, generals, priests, merchants... They, their children, or their loved ones are now only lifeless bodies, their souls stolen away and hidden who knows where. The possibilities for blackmail and sowing blind panic are limitless. I suppose the inquisition and the Mendevian authorities will try to keep the situation under control, but it is still extremely dangerous."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0015.jbp
+GUID: 70fcaf20333911e4bbadadbd339f8803
+"Magic, Knight Commander, and highly sophisticated magic at that. The jewelry items were well protected, and no one detected the demons hiding in them. If we assume that Darek Sunhammer not only made the jewelry, but also charmed the items, we must conclude that he is an incredibly powerful and skilled spellcaster."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0016.jbp
+GUID: e67b2aadca42d4646b10811544bc6ea7
+"That is all I can tell you. I hope I've been helpful. If it's within your power, help track down Sunhammer and the stolen souls, Commander. This chaos must be stopped!" {n}Arsinoe bows to you and leaves.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0017.jbp
+GUID: 5fd6df5b4d913954fab7c5a84c2d3704
+{n}As Arsinoe speaks, Seelah's face grows more and more grim, and her hands clench anxiously around her weapon.{/n} "I saw that scumbag right here, I even talked to him! I didn't suspect a thing... I often get a sickening feeling from traders — some of them are nasty pieces of work, the way they rip people off. I got that same feeling from him, but I didn't even think of looking closer..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0018.jbp
+GUID: 2f0abb5b804c6c94db0c660b48e47da9
+{n}Seelah sheathes her weapon angrily and sucks in a breath through her teeth. But then she seems to steady herself and looks at you, her eyes bright.{/n} "Well, what do you know! Looks like we got ourselves tangled up in some demonic conspiracy."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0019.jbp
+GUID: 6fbd24749e0fb294da2d3fe9189c16b7
+"I'm so glad you came to the wedding with me! And that we managed to find out what happened. Because otherwise, Seelah the Dimwit would have come alone, given the bride a ring with a surprise demon inside, and would have failed miserably when she tried to help."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0020.jbp
+GUID: 6b56ebba291742c4787a09a0d120ad11
+"And I'm the one who gave a demon-ridden ring as a wedding present! If it weren't for me, poor Kiana wouldn't have been left without a soul. Seelah, you are such an idiot..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0025.jbp
+GUID: 19fc690b49aa256469d1c2b997e1e06a
+"Yeah, you're right... Sorry."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0026.jbp
+GUID: a8cb64a485292044bbfb4a8826a02e6a
+"Well, I'm the companion of a living legend, aren't I? I'm supposed to be better, I'm supposed to sense evil and protect those who need protecting..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0027.jbp
+GUID: e98367190bfd3fe40b7fdfc0cb77e0bb
+{n}Grim determination burns in Seelah's eyes.{/n} "I can't leave it like this. If anyone has an obligation to find that low-life Sunhammer and return all the stolen souls, it's me. I'll do everything in my power to find him. Something tells me that the demon-collaborating scumbag is somewhere here in the Worldwound. I'll seek help from every quarter, I'll interrogate imprisoned demons and cultists, whatever it takes to get to the truth!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0030.jbp
+GUID: 5b769e02fa1e05e4d94cf17cdb338568
+"How can I not blame myself? It's my favorite thing to do... Fine! It's good we saved someone at least."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0031.jbp
+GUID: ad9bd92af07bac04596bfb89b5b79e41
+"Harsh much? But you're right, of course."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0033.jbp
+GUID: 34e6ae954cb882a44a27ff60d94779fd
+"Not all of it. The inquisition combed through everything. Most of what was sold in Sunhammer's shops was perfectly ordinary. The demon jewelry was sold to a select few and always by Sunhammer directly, not through his golems. It is clear that he targeted his victims deliberately."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/DisasterNewsDrezen/Cue_0035.jbp
+GUID: c24f14c531e618044aab479bf7a7f867
+"At least I saved her, right? Good to know I'm not entirely useless, ha."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Answer_0005.jbp
+GUID: f4405080b36cce94b9aace4cf1fcd301
+"Do you still distrust me and the power I've been granted, Elan?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Answer_0006.jbp
+GUID: a0120dab99838be4891fc79b0df3b0cf
+"Did you know we found Jannah? After she ran off, she was taken prisoner by demons."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Answer_0013.jbp
+GUID: 3118b84454fb59e45989f57b5e5fbdd9
+"By the way, when is the long-awaited wedding?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Answer_0014.jbp
+GUID: 866a7955a6e795a4998d404097434dfe
+"I have to go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Answer_0019.jbp
+GUID: 33a18d3e6d23f3b49a237241f98727ef
+"Aren't you worried about holding the wedding outside the city walls?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Answer_0020.jbp
+GUID: 01d36661117e0fd4aa69cd6a31455793
+"I'll be there."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Answer_0021.jbp
+GUID: 6a23b0699cefa2e4db291480892d1638
+"I can't promise anything."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0001.jbp
+GUID: eaafabc897212b147b8b094046c8efb9
+"Seelah! Knight Commander!" {n}Elan seems a little discomfited.{/n} "Good to see you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0002.jbp
+GUID: 408c0e09a74b393409caa0a318a25572
+"Not this again. Well, to avoid a drawn-out conversation, I'll just get to the point: I got you a gift. It's... well... a ring. To replace the one Curl stole."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0003.jbp
+GUID: e5cd0800a4fb7f344af65a58092e8352
+"We chose a place that is still within range of the holy power of the Sword of Valor. My fellow Houndhearts will be there, and Kiana and her friends know how to handle themselves. Of course, the location is not entirely risk-free. Nowhere in the Worldwound is. But it's as protected as it can be. And the territory has been much calmer since your victory."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0007.jbp
+GUID: 276ef4cab67d6e841912524e0a49633d
+{n}The knight endures your look and answers smoothly,{/n} "Yes, Commander, I still have my doubts. I'm just a warrior. I have faith in the gods' will, but I'm used to relying on things I can understand, things I know — an honest sword, a prayer passed down through the generations. Don't take it as a sign of disrespect — it would be more disrespectful to lie to your face."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0010.jbp
+GUID: de0ae815caabba04ea32b2212d2951b8
+"Oh, Seelah. Thank you so much. But you shouldn't have. I've already apologized to you for how I behaved back at the camp. And I'll say it again — I don't blame you for anything. We fought shoulder to shoulder here in Drezen. Can't we just let bygones be bygones?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0011.jbp
+GUID: 59bc3f730c33667489b5005d1d652d92
+"Sure we can. But take the present! Your wedding is right around the corner." {n}Seelah puts the ring in the knight's hand.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0012.jbp
+GUID: 5b6485089a8f3d54f982232ae1e0cc2e
+"So I heard, and I'm not surprised. She didn't just let us down, she let herself down, too."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0015.jbp
+GUID: a10337aad8a1f9b41a07fd94f69f3ab6
+"Very soon. That's what I wanted to talk to you about!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0016.jbp
+GUID: 86c41de1d1a2599419c82843e1a12a1d
+"Wait a minute, Commander. I wanted to tell you something..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0017.jbp
+GUID: 84999f243afbea047a88f7be020c1953
+"It would be a tremendous honor if you would come to my wedding. We're going to hold it not far from the walls of Drezen, to the east, toward the river. Seelah's already been invited, now I'm asking you. You showed so much kindness to me when you helped me look for that ill-fated ring, I simply must repay you somehow. Besides, Kiana would simply love to meet you, and I can't deny her anything."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0022.jbp
+GUID: 72fb2f87db1e6954294bee81ad84343a
+"Thank you, Commander. And you, Seelah, for the gift!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0023.jbp
+GUID: 0fa7c32720d5ab24bb078f6734e997ba
+"So long, my friend." {n}Seelah turns to you.{/n} "Ugh. Thank you for coming for a walk with me. It's nice to take a breather between fights sometimes! I hope we have a good time at the wedding. All these battles and divine powers, we need to make sure we don't lose touch with ordinary life!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanGreetsSeelah/Cue_0024.jbp
+GUID: c009415d6fd07e24f98948bce05b9d85
+"This is great! Say you'll go, {name}, we'll have so much fun!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0003.jbp
+GUID: b04a40337fe7b5a4e970dfb94c9d2e19
+"How did demons get here? The Sword of Valor was supposed to keep them away."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0009.jbp
+GUID: 44f8b5bbf97fc5f418b29c58af31f80b
+"All the jewelry was made by the same person — Darek Sunhammer. Right?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0017.jbp
+GUID: 98d8e7f428c98ea4b95737ea1bfd2d6f
+"Elan, please, believe us, all is not lost! We will find the souls of Kiana and others and save them."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0018.jbp
+GUID: eaf7c1620914e054f9bcca555ce04737
+"Knight! Remember who you are, remember your duty. If the bravest of our crusaders falls to pieces, then all hope is lost."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0025.jbp
+GUID: 2436e91da13d59c459b7b10bef2c1ada
+[Say nothing]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0030.jbp
+GUID: ee6d63de2485a2c41ace2e09a9813f88
+"Elan, are you with us?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0031.jbp
+GUID: b7b9407188cc1774da6a0f6099f3d982
+"Let's hurry."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0036.jbp
+GUID: 97983e2ae3ba2f04380c5c9bcf027122
+"Arsinoe? What will you do?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0037.jbp
+GUID: 31901df5a8333214f9fe7baae7136b0e
+"Fine, let's go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0042.jbp
+GUID: b01d5de16ce19514db27e2fad0b19bd6
+"Well, if we'd killed or captured Curl back at the camp, we would have realized that he was possessed and that the ring was the cause. And if we'd known all that — this tragedy would never have happened."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0043.jbp
+GUID: 7db0b408bb65728488be6b78edb75c87
+"We need to focus on solving the problem."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Answer_0045.jbp
+GUID: 3f388454c565e0c458bb1e950bf820b2
+"Don't blame yourself. Demons are famous for their guile for a reason — they use our better sentiments against us."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0001.jbp
+GUID: a310f42dd6339d842b4cd5b474302850
+{n}Arsinoe leans over Curl's body, whispering the words of some prayer or spell. Then she looks up. Her eyes are full of terror.{/n} "Commander... I must inform you... We've fallen victim to a demonic plot. But I don't understand... How? Why?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0004.jbp
+GUID: a218387b1c6362145acc55dd5b8a3b01
+"Priestess, you need to focus! Do you know what happened here or not?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0005.jbp
+GUID: d2e280a4a45c9f24da57a838eaa7d83c
+"Yes... yes, I think so. You all know what possession is, yes? Where a demon can take over the body of a mortal? Well, there is a more cunning version of this process — when the demon possesses the body, the poor victim's soul is transferred into a special vessel. A vessel for souls... The item most commonly used for this purpose is a gemstone."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0006.jbp
+GUID: d852d08d1cf855444b26d428252ec5c7
+"This young boy's body is alive, but his soul is gone." {n}Arsinoe moves her hand from pointing at Curl to gesture to the other people lying motionless around her.{/n} "As are the souls of the other guests, even the poor dog's. Their bodies have been possessed by demons for some time already, and their souls have been transferred into the jewelry. The demon behind this plot stole the cup, taking all the souls with him. Until the jewelry is found and destroyed, we have no hope of saving these poor people!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0007.jbp
+GUID: 3625b7b683cf87541910c7d2cb0dddda
+{n}Elan and Kiana are clutching each other's hands. The young woman speaks first,{/n} "We can't leave it like this. Our friends need our help!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0008.jbp
+GUID: 77a1253ff7aa8b24e865dc784db866b3
+{n}The knight, who has been silent up to now, grows pale.{/n} "But it means that Kiana... she... my love!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0010.jbp
+GUID: 5fbfcfb8492e5764ebe469ef9d70ba6b
+"They didn't get here — they've been here all along, inside the jewelry. And now I realize — these vessels are enchanted to ensure no one sees them for what they truly are. That is why we didn't notice the demons' presence until the very last moment... No one did."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0011.jbp
+GUID: 38a68b301e483ba42a25e21b903fe62c
+{n}Seelah swears.{/n} "So all this happened because of some sparkly rocks? But wait, that means... that means..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0012.jbp
+GUID: e120142a1f39953479c4a6b69ef12691
+"That I do not know."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0013.jbp
+GUID: cd6f70823768c6e488c3d4f8af22b71e
+"Well, I do! I can smell it! All this shit came right from the same sewer! Did you say possession? So Curl was possessed by a demon that day back at the Houndhearts' camp!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0014.jbp
+GUID: dbf20bbad88826143abc1912b1ed377f
+"Elan, I'm sorry. But we will..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0015.jbp
+GUID: 3b6f25aca1bc484478942be033a5d44a
+"Oh, be quiet, Seelah! You're always so sorry, aren't you? If only you had helped instead of just apologizing after the fact. Where is your gods-given power now, I ask you?" {n}Madness grows in the knight's eyes.{/n} "Kiana, my love... Why did I bring you here? Everything is lost, everything has perished, everything is pointless..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0021.jbp
+GUID: bff3bb848335ee7479bb1f7e1db264fb
+{n}Elan lowers his head but relaxes a little. The rage on his face dissolves into grief.{/n} "Thank you for the words of support. And now, if you would... I need some time to come to terms with what has happened."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0022.jbp
+GUID: 7684f30d9f2868140ba9c6d2c5561871
+"What can we do, Commander? If demons have kidnapped the souls trapped in the jewelry, we must stop them!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0023.jbp
+GUID: 81e60157aac7ec34fbc1a59dd4818a62
+{n}It takes Elan a few seconds to get a hold of himself.{/n} "Apologies, Commander. I forgot myself for a moment. But now I need some time to come to terms with what has happened."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0024.jbp
+GUID: a4787d495b4f99b439c426642b39f9bb
+{n}Seelah looks at her friend sadly.{/n} "Things always go so well when I'm involved, don't they? {name}! We need to get back to Drezen right away."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0026.jbp
+GUID: 649ec9b1a8e1601438d4a7a98e8f477c
+{n}For a moment Elan looks like he is about to destroy everything around him. Then his face freezes, he turns around, and silently kneels at Kiana's body.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0027.jbp
+GUID: 7d51d2c45ba890142989ee6e5600e997
+{n}Elan turns around and kneels at his bride's body.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0028.jbp
+GUID: 14f742fc7af19a34cb2941ca72697fb4
+"I know what we have to do — we need to get back to Drezen now! The first ring that possessed Curl and the second ring I was stupid enough to give you, they both come from the same place — the shops owned by Darek Sunhammer! We have to get back to Drezen and pay a visit to the master jeweler."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0032.jbp
+GUID: b175f6428a1557046aac3b678cae8b03
+"No, we'll stay here and make sure the bodies whose souls were stolen are returned safely to Drezen. We can't leave them unprotected. If we find the lost souls, we'll be able to bring all the demons' victims back to life." {n}He turns to Kiana.{/n} "This will be a strange and sorrowful start to our married life, but we must..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0033.jbp
+GUID: 65ed0893641acce439a4e0c22f0fd8c1
+"I married a crusader, not a city baker. We were never going to have a peaceful life. But we'll get through this. Together."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0034.jbp
+GUID: 4bb6b5bca394691479cc04e4c7852f89
+"Look, the first ring that bewitched Curl and the second ring that hurt Kiana — they were both made by Darek Sunhammer. And the same thing has probably happened to the other guests — they all had his jewelry! We need to get to Drezen and search his shop. We might find some clues there."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0038.jbp
+GUID: 9b494e4054da4074089d78ad6dcd01f6
+"I need to check again to make sure that the bodies of the victims weren't injured. If we find their stolen souls, we can bring all these poor people back to life. And it would be good if they had healthy bodies to return to! As soon as I finish up here, I will hurry to Drezen. I have magical means to get there quickly."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0039.jbp
+GUID: 3dd299260103bf342a09ad40d81aec27
+"Yes, it's all 'because of the sparkly rocks.' I think the more expensive pieces housed more powerful demons. Their maker likely had to use more costly materials for the enchantments on those pieces — to mask the demons' presence — and he didn't want his atrocities to leave him out of pocket."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0040.jbp
+GUID: 2658bf33d2d100a4493f91828e3cbae8
+"I wish I knew if this tragedy could have been prevented."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0044.jbp
+GUID: 08776dd0e381cc546aec41909cff7824
+"Ugh, you might as well just say it: 'but Seelah got in the middle of it and ruined everything.'" {n}Seelah's face twists into a weary grimace, then she looks away, thinking.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0047.jbp
+GUID: 08fa1e6302c12ab4691f93ba71b67392
+"How can I not blame myself when all this crap is happening around us? And even with her new divine power, Seelah the Dimwit can't do anything about it."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0048.jbp
+GUID: 0b769630b71c60f41ae180d792e232c8
+"So let me get this straight: we {d|Seelah expensive ring}paid{/d} this scumbag a small fortune just so he could go and set a disgusting demon on us? What a crock!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0049.jbp
+GUID: 12f2a64287e311547b2198192795c623
+"The pricier trinkets contained more powerful demons, you say? It's good we didn't buy that expensive ring back then, or we would have had to fight a real nasty beast, not some small fry."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Answer_0005.jbp
+GUID: f9c0231349cfa0941886896ceebe22a0
+"The wedding's great. I'm having fun."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Answer_0007.jbp
+GUID: a14e18a0dd93e7a48b7645a97a1d1f61
+"Your future wife has you wrapped around her little finger already."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Answer_0009.jbp
+GUID: 06376a7020b39114b9a1f1998863b9da
+"Sometimes it's worth trying something new."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Answer_0014.jbp
+GUID: a66eb55f054a25d4499ccb20e256c6d5
+"I thought you had a better sense of duty and decorum than this, Elan."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0001.jbp
+GUID: 7311e80e95b1eb2449783987f3a63080
+{n}Elan is trying very hard to maintain his aloof demeanor, but he can't help breaking into a smile every few moments.{/n} "Mortals! You have returned my artifact, and I shall reward you forthwith! We fey monarchs are noble beings and not evil at all..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0004.jbp
+GUID: fd718f25cc4db1645a40b1573cda759d
+"Color me surprised, friend! I never thought I'd see our strait-laced Sir Elan come to his own wedding dressed up as a fey princeling."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0006.jbp
+GUID: 129096ab9053bb94d9af259f0086e91c
+"I'm begging you, no jokes about the horns, please. I don't want to be remembered as the cuckold bridegroom!" {n}Elan sighs, but then starts smiling again.{/n} "I don't know if you've ever fallen in love, Seelah, I don't remember you ever talking about it. But when it happens, you are no longer who you once were. I suppose I didn't expect this of myself either... but Kiana was so desperate to have an unusual wedding. I thought to myself, if 'unusual' is the goal, then I should do something I've never done before!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0008.jbp
+GUID: b18c4a2d9683beb43b86a82fa2e63e27
+{n}Elan smiles awkwardly, then remembers something and musters up a serious expression.{/n} "Mortals, did you not venture off in search of my artifact, the one that was stolen by the fearsome predator? Well, I shan't judge you for your timidity..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0010.jbp
+GUID: cafe9067c10f7b9409657a629c08192b
+"All the guests keep telling me that. That means all the effort was worth it!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0011.jbp
+GUID: 091d9e85785a39748965f5051938b4fd
+"Of course things are worth trying once. Especially on a day like today!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0012.jbp
+GUID: 5182cccc5c5797f438e985ae309bb109
+"Thanks for your concern, Commander. I hope you won't be offended if I ignore it."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0013.jbp
+GUID: 7eb68b2618ec88e458153321f8a14114
+"And now, if you please, I'd like to return to my role. Please, continue enjoying the festivities!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0015.jbp
+GUID: 728fcd768c2ea04428722832953b8f83
+"I don't think a little silliness will make me lose my sense of duty or decorum."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Answer_0003.jbp
+GUID: 40eb43dee5e34ed47841956e4899e08c
+"Show me your wares, golem."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Answer_0004.jbp
+GUID: ed0f06edef144c94db080b6e697d5973
+"I have to go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Answer_0007.jbp
+GUID: 3887e4adb90388a4eb4b56d859935602
+"All right, what's the offer?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Cue_0001.jbp
+GUID: 670698c40c07620468f688fe7a029a50
+"Welcome to the shop of Darek Sunhammer. The finest jewelry in all of Mendev. True artistry. Crafted by the master himself and his apprentices. Take a look!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Cue_0005.jbp
+GUID: 42294867e052a384784b9b1480e3f080
+"Listen to our special offer."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Cue_0008.jbp
+GUID: 20f586f7d557fa042ba0509c70208fd8
+"We have a very good special offer."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Cue_0009.jbp
+GUID: bd81ffe2207c3bd4db19e2ac1bbcdbae
+"Don't leave without making a purchase, or even two! Pieces bought at the shop of master jeweler Darek Sunhammer will please even the most discerning eye. The colors of the dawn, the delicate curve of a rosebud — they are fleeting, our jewelry is eternal. Make beauty your constant companion!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Cue_0010.jbp
+GUID: 94d8b6242eaea6b43ba973b55dd08067
+"You are denying yourself the immeasurable joy of possessing a true work of art."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/Golem/Cue_0011.jbp
+GUID: 17721f3903b2a0848a7a4ce4509f30a6
+"Do you feel no remorse for offending a wonderful golem such as myself?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0004.jbp
+GUID: 0701b90bc3cc9e34482ead7672389185
+"Seelah wants to talk to you about something."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0005.jbp
+GUID: 12d98894a97872f4c94b8d078c70ca95
+"Why did you decide to open a shop on the frontline of the war?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0007.jbp
+GUID: 65fac7a01dd746a488e6638140fb9838
+"If what Seelah is offering is not enough, I will help."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0008.jbp
+GUID: 33ce9ed87cc20b045894bf8af63bae89
+[Do not interfere]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0020.jbp
+GUID: e15c0716adec447459ef2a8b881e7cee
+"I think Elan and his bride will be delighted with any gift."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0021.jbp
+GUID: 5ab3ac9bb553c9d44929fb321266b4fa
+"Are you happy with what you bought?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0024.jbp
+GUID: 1aa2d6d8f3f259944a961e2c0d4b2a83
+[Add a thousand gold coins] "We need the very best!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0025.jbp
+GUID: e207c1d641abafb49b5e786465d33b58
+"Let's go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Answer_0033.jbp
+GUID: 5c5cd049610fda544810859cbf778eb5
+"I want to look at the golem's wares again."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0001.jbp
+GUID: 8226bfea60e983840826de8d1169099d
+"Do my eyes deceive me? The victorious Knight Commander {mf|him|her}self has paid a visit to my shop? Such an honor, such an honor!" {n}A dignified dwarf in a luxurious, beautifully adorned garment bows to you, before turning to Seelah.{/n} "You are most welcome as well, Iomedae's faithful. It is a pleasure to see so many brave crusaders within these walls. I am Darek Sunhammer, the jeweler. This shop is one of many that I own."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0002.jbp
+GUID: 534c7fd12cf32c8409ee58cc0703e218
+"Ah, Master Darek himself? I heard the only place one is likely to bump into you is at a royal reception."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0009.jbp
+GUID: 4daa51628e24fc14cadd8d70edc7f22f
+"There are two sides to me, if I can put it that way: I am both a merchant and an artist. For the artist in me, the crusade is a limitless source of inspiration. In recent years I have crafted very few delicate items, plant and flower patterns, you know. My current preference is for heavier, larger jewelry, dark metal, expressive gems in cool colors — everything that reminds me of steel armor, the calming weight of a shield in your hand, the clash of weapons."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0010.jbp
+GUID: f3cf0ce99a9bdcc4ea52667b721f14f5
+"But the merchant in me sees something else in Drezen — a risky but potentially fruitful new market. If you succeed in your noble cause and defeat or at least push back the demons, the city will thrive. And whoever is first to make a splash here will reap the rewards. Those are my motives: inspiration and greed in equal measure." {n}Master Darek makes a helpless gesture.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0011.jbp
+GUID: b982b6e2fb184b242b6fbd9b4d464f95
+"Not at all. My wares are expensive, not least because I have to buy costly metals and gems and also pay for the security of shops and workshops throughout Mendev and beyond its borders. My prices limit the circle of my clientele, but that doesn't mean I myself shun all those not in possession of a noble title." {n}Master Darek gives you a warm smile.{/n} "I must say again, I am very glad to see you here."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0013.jbp
+GUID: ae4058af20b2c564a839e30319f6a939
+"You have my full attention." {n}The dwarf strokes his beard.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0014.jbp
+GUID: b5720ffb7157c2f468dde082b314aa20
+"It's simple, master. You might remember that a while ago Sir Elan of the Houndhearts ordered a ring from you? A silvery ring with a blue-green gem? I would like to buy something similar. But I only have... this much money." {n}Seelah shows him her coin purse.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0016.jbp
+GUID: 2cb847f8e4a7a734483d24a08af8b19c
+"Oh, I would advise you not to reject the Commander's help out of hand. With {mf|his|her} participation, I can offer you something truly special that fits your description perfectly — a ring with a blue-green gem, just as you've described. This is one of my latest creations, and I'm very proud of it. Alas, your own funds, my dear, are only enough for my plainest ring, and the gem in it is not the right color."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0017.jbp
+GUID: e6b8772680b76004aa286735415699c9
+"Unfortunately, what you are offering, valiant Seelah, is enough only for my most inexpensive ring. And the gem in it is not the color you need."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0018.jbp
+GUID: 05d16a6fa518b8d45b6f5fa6d89e060e
+"Then I suppose that will have to do. So what if the gem is a different color? I'll take it."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0022.jbp
+GUID: 444d9a5a233390f4393ea0d0d794a460
+"Now if you'll excuse me. I don't usually make sales in my own shops. I have golems for that. Besides, I prefer spending my time at my workbench, not behind the counter. But I was glad to serve you, Commander, and your valiant companion. All the best!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0023.jbp
+GUID: d480a89a20dafaa4cbede19a61e04594
+"Come on, {name}..." {n}Seelah is embarrassed.{/n} "I only invited you along for advice. I can handle the expenses myself!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0026.jbp
+GUID: 9caaa1172582cd2448799bb578b6058d
+{n}Seelah sends you a grateful look.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0027.jbp
+GUID: ef1a76721073bf448b2b920eabae3626
+"If the Commander says so, that means it's all right. Give me that ring with the whatever-colored gem."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0028_ExpensiveRingPurchase.jbp
+GUID: 72dee7ed65f1ae543a76bc96693aec64
+{n}Master Darek lowers his head respectfully and retrieves a box from the bag on his belt, opening it to reveal an exquisite ring with a glittering blue-green jewel. He lets the light play on the gem's facets, then places the box in Seelah's hand.{/n} "This is a special item, and I'm glad to see it go to someone as worthy as yourself. For how could the Commander's friend be anything but? May it bring good fortune to its owner!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0029.jbp
+GUID: 22784ba84c7b49a4185fd187609fc49c
+{n}Master Darek retrieves a box from the bag on his belt, opening it to reveal a humble ring with a small gem, but beautiful nonetheless. Letting the light play on the gem's facets, he presses the box into Seelah's hand.{/n} "As you wish."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0030.jbp
+GUID: ed54484a1505454429577ca6fe6f2d20
+"Well! That's that done!" {n}Seelah stows the ring box.{/n} "Come with me to the barracks to give the ring to Elan, will you? After that we can go to the tavern and have a few drinks!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0032.jbp
+GUID: 8079f9aecccd114419f1706cfe0762a3
+"Well... yes. The truth is, I just needed a reason to talk to him and show that I want us to patch things up. I'm not great at this friendship stuff, but I'm trying."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/JewelerWarmWelcome/Cue_0034.jbp
+GUID: 600a1876fea2b6f4ea72602a77b1df8f
+"All right. I'll just stand here wondering why people pay so much for sparkly gewgaws."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Answer_0004.jbp
+GUID: e33bc2abcf4b7a646b2b03c8b8cc708d
+"Who are you buying the present for?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Answer_0005.jbp
+GUID: 8f67fff2518680247a54cce6c06a8970
+"Great idea. I'd love to stretch my legs for a bit."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Answer_0008.jbp
+GUID: 9b5b5cfaf2cde4342b3c040ea635029f
+"I don't have time for petty concerns."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Cue_0001.jbp
+GUID: f4a3ce4174db98d4eb80933bb396a42e
+{n}Seelah seems to be in a good mood. She smiles at you and then scratches the back of her head, as if suddenly realizing something.{/n} "I probably shouldn't have come to you officially, like to an audience, but this is the only way to catch you these days! I wanted to ask: would you like to go shopping with me?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Cue_0002.jbp
+GUID: dbbf32ce1a199d944ad56bf578e9ddfd
+"It's probably not right to distract the Knight Commander with such trifles, but I thought I should drag you out for a walk. We haven't enjoyed a moment's peace since we met — we've either been saving Kenabres or marching on Drezen. Besides, I desperately need advice — I'm going to buy a present, and I know nothing about fancy jewelry."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Cue_0006.jbp
+GUID: 1069380eed1511e459d2f3534bf58dce
+"Great! Well, then I'll meet you at the jewelry shop, it's in the east of the city."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Cue_0007.jbp
+GUID: 2f5071a26b7a4fc408d6ddf7a5f8477e
+"For Elan and his bride. After that story at the camp, when Curl stole the ring from us and summoned the demons, Elan and I both overreacted and said some things we shouldn't have. He apologized to me, but I haven't really apologized to him. I want to buy a ring to replace the one that was stolen. And there's a new jewelry shop in Drezen — it's owned by Sunhammer, the same jeweler who made the first ring."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ktc-SeelahGoShopping/Cue_0009.jbp
+GUID: 292045515a8cd2b4384ead43e61898bb
+{n}Seelah sighs.{/n} "All right. I'll manage on my own..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0006.jbp
+GUID: 9c234a9ae99a6824c819127e1f861a25
+"Oh, vampire princess, I am honored to be your guest!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0007.jbp
+GUID: 450b8ab7c65b30e47a0f932697a1e801
+"A great plan. Where can I get some wine, too? I mean blood..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0008.jbp
+GUID: 8ff6e92c332bf78498f7c27581ca4472
+"I'll look around for now."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0011.jbp
+GUID: 772da6e7fa7d0bf4ab971406ba139b9e
+"So you mean it's an undead holiday? Commendable, commendable. This tradition should be adopted throughout Mendev."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0012.jbp
+GUID: 79b1ad542d0e74e4383b0576bec688ba
+"You haven't the faintest understanding of undeath, but here you are, using it for your own amusement."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0013.jbp
+GUID: 538ca7d4c794f68439704740874c241a
+"Pretending to be undead seems inappropriate."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Answer_0016.jbp
+GUID: 4c02df5422cc1af4b90777c41df51689
+"Finally! A party where I fit in!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001.jbp
+GUID: 0bb8e464eb1a6aa458e8d5dba62f5413
+{n}A slender young woman in a flowing dress walks toward you. The first thing you notice is her eyes — they are a striking blue-green.{/n} "Welcome, travelers, to the secret-steeped land of {g|Ustalav}Ustalav{/g}! You have come to the kingdom of grim mysteries and exquisite secrets. I, the vampire princess, am delighted to see you in my castle!" {n}After a pause, the girl smiles coyly,{/n} "I'm glad to finally meet you, Commander, Seelah. I am Kiana, soon to be the wife of that unfortunate knight who invited you here."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0002.jbp
+GUID: 1a6b39f7e8ab2084db500b100091d802
+{n}Seelah rolls her eyes.{/n} "Horrible! Imagine walking through the Worldwound, and then — bam! — you're in {g|Ustalav}Ustalav{/g}! I'm not even sure if a paladin is allowed to feast with a vampire princess."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0003.jbp
+GUID: e7626bcfe14a52e47990346b93a112d2
+"It's lucky you are not a follower of Pharasma, valiant Seelah," {n}Arsinoe, the Drezen priestess of Abadar, is a short distance away from the happy bride.{/n} "Although, I'll admit, I'm not used to feasting with the undead either."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004.jbp
+GUID: 466c4a8957da5f14fa958d1718b4a552
+"Oh, stop it! My friends and I are completely harmless 'vampires.' We won't bite!" {n}Kiana laughs musically.{/n} "Truth be told, we chose the theme of {g|Ustalav}Ustalav{/g} because it lets us wear beautiful dresses, light candles, and drink red wine all evening, pretending that it's blood. I personally can't think of a better way to celebrate my wedding!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0009.jbp
+GUID: 171387d2a45d5d74d9f26be29a2ebaa4
+"Feel free to help yourself to anything you see. Except for Old Killy — he's our skeleton. It's a fake, of course, but he's still a valued guest!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0010.jbp
+GUID: dfc3fbbe094b57843a94ce8a41713ad0
+"Welcome, guest! My castle may be humble, but I hope it will entertain you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0014.jbp
+GUID: 2b07731a9219e87478d488b7947d86b3
+{n}Kiana smiles, with a hint of sadness.{/n} "The best way to stop being afraid of something is to laugh at it. None of us would really want to become a vampire and drink human blood. But we can pretend for fun, right?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0015.jbp
+GUID: df2bc028aa8c3704d9bdec06bffc76df
+{n}Kiana laughs.{/n} "What a bold idea, Knight Commander! Welcome, enjoy the festivities!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0017.jbp
+GUID: 029dfbe5b0888c8478b716d57e07c228
+{n}Kiana laughs.{/n} "Right, a real dhampir is exactly what we need here! I mean, what I was trying to say is welcome, child. I hope you enjoy my vampire reception!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Answer_0006.jbp
+GUID: 8aabb8478b5ed5640a7c16775d85442a
+[Give Aivu a cookie] "There you go!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Answer_0007.jbp
+GUID: 61918018da21deb44bd6ce3b568a9fad
+[Take a fortune cookie]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Answer_0008.jbp
+GUID: 040343876d3714e45ae12dc349bb136e
+"You can't be the real Shyka, right?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Answer_0018.jbp
+GUID: 58999f22f13da9945a66d397a1fc9d73
+"Thanks, I'll be going now!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0001.jbp
+GUID: 1e568597d357c684597c6e88f7973e73
+{n}You see a broad-shouldered dwarf woman wearing a hood. The outline of her form is constantly trembling and shifting, probably because of a spell of some sort.{/n} "Greetings, traveler! We are {g|Shyka}Shyka the Many{/g}, the rulers of time, piercing through all epochs! We know all the secrets of the past and the present. We can reveal your destiny to you through this fortune cookie!" {n}The woman points at the box beside her.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0005.jbp
+GUID: f87085a5c84e71a4b980d6ea4d7319b7
+"Me! Me! Me, me, me! I want a cookie! {name}, can I have a cookie? Please!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0009.jbp
+GUID: 2e26272b459dd174a858b5098eae813f
+{n}Aivu crunches the cookie between her teeth, her eyes closing in sheer delight. Then her eyes pop open again.{/n} "I... lost control! And swallowed the fortune! What are we going to do? Now I won't ever know my future!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0010.jbp
+GUID: 74a0856092fbdc3498a54b52ac28cf10
+"Oh, don't be sad, dragon child, we will tell you your future just like that. You will... grow up to be a big dragon!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0011.jbp
+GUID: 19aeced8edb006d4d908e4fd42243683
+"Some prediction! I can do that too. In the future I... will eat a lot more cookies!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0012.jbp
+GUID: 44036f35cc01124469e3d5928f3f6de9
+{n}The note in the cookie says, "You will have an amazing journey, new friends, and many unexpected discoveries!"{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0013.jbp
+GUID: 239f8303fd5c7c24a9538fa20fd30924
+{n}The note in the cookie says, "If one door closes, another is sure to open!"{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0014.jbp
+GUID: 47bcff94015ec4b4db99c6e95c27bc4a
+{n}The note in the cookie says, "If you can't do it, you can always start again from the beginning."{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0015.jbp
+GUID: 9b941ebcf8dcd8d49bebbe20fc27ce9f
+{n}The note in the cookie says, "Don't ignore the whispers of fate."{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0016.jbp
+GUID: 17bdc6b989f042749a48ba7116bd970a
+{n}The note in the cookie says, "Don't believe in the solitary life — there is always someone who can't take their eyes off you!"{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ProbablyFakeShyka/Cue_0017.jbp
+GUID: 36673f8f89f971e488744e0f1506573f
+{n}The woman winks but says nothing.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Answer_0004.jbp
+GUID: 8987dad931c7d4d4fbc00930a3d41058
+"Talk seriously about important matters. You are giving a speech to mark a new stage in Elan and Kiana's life."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Answer_0005.jbp
+GUID: ca64c5092e939624bbd87ac9c9834585
+"Just speak from the heart!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Answer_0006.jbp
+GUID: 4adc2f81c43edbd458967e8857f905d1
+"Tell jokes, or just say whatever nonsense comes into your head. Laughter is the best gift you can give."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Answer_0007.jbp
+GUID: de65fec5abd1c5a4c806a57e5d973650
+"They should have asked me to give a speech. I'm the only one in this rabble who's made something of themselves."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Answer_0008.jbp
+GUID: da81f854cf2cd9c409c0b444f09cc040
+"Yes, you're exactly right."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Answer_0018.jbp
+GUID: 51fb8325a23a2c243aa43f21a0254848
+"For you, perhaps. But I have other concerns."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0001.jbp
+GUID: b6e2b9c77aae20a44a17b477d21ad14f
+"Uh, hello everyone!" {n}Seelah glances at you and adds in a whisper,{/n} "Hey, I need some advice! What should I say? Giving speeches really isn't my thing..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0002.jbp
+GUID: e2c210a001700154e862236f24729c26
+"Like I have any serious advice to give... Fine, I'll try."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0009.jbp
+GUID: f2712b8a828c660409b1ddb2a337d70a
+"Right. I always complicate things, but I just need to say what I feel!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0010.jbp
+GUID: 0852e80cfb4b2ae49924b8a39ae3626d
+"Oh, talk nonsense. I can do that! I'll do it the best way I know how!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0011.jbp
+GUID: 7b2a3b9629a114a4f8f7c5bc601e8b32
+{n}Seelah looks at you reproachfully.{/n} "Elan welcomed you personally. Now, I think they want to hear a friend speak... Fine, I'll come up with something on my own!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0012.jbp
+GUID: 331aef55475b51d41810971c8729ee58
+{n}Seelah clears her throat.{/n} "Elan and Kiana! This is a whole new chapter in your life! I congratulate you from the bottom of my heart, but I also want to say, it's good that you found each other, and that we've all gathered together here in such dark times. Sorry for raising a grim subject on this happy occasion, but the forces of the Abyss don't just want to kill and destroy. They want to wipe out all the joy in the world. But as long as we love one another, make friends, and have fun, they will not win!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0013.jbp
+GUID: a67972dd4341cdf4e8af701745929824
+"Friends, I'm not good at making beautiful speeches, so here's an ugly speech, but it comes from the heart... I'm so happy for you! May everything be good for you, may all your troubles pass you by, and may neither demons nor misfortunes ever separate you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0014.jbp
+GUID: 53108347fa902134288b0f8f2543072c
+{n}Seelah open her arms wide.{/n} "In the first hour of our acquaintance, I uttered words that made a great impression on Elan. I think it was because of these words that he realized I was the friend he had been looking for all his life. These were those very important words, and they shed light on what being a warrior of Iomedae is all about. So, here goes..." {n}Seelah pauses, a sly gleam in her eyes.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0015.jbp
+GUID: 4954b074969de4643937aebec3b23b2b
+"I'm not one for making big speeches, so here's a few simple words from your sister Seelah: be happy, and let no demons or other evil spirits keep you from your happiness!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0016.jbp
+GUID: 6791cd642cf7bce499b37d0ac3ac1849
+{n}Seelah turns to you and adds quietly,{/n} "That's what we're fighting for, isn't it? For weddings, fun, and laughter? Even in the cursed lands of the Worldwound, even after a hundred of years of war."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0019.jbp
+GUID: d5938dd2fbbe99544b806b0844a72c32
+{n}Seelah smiles.{/n} "You know, I wanted you to come here with me so I could show you that our efforts aren't in vain. Not long ago, demons ruled over all of this area we're in, and they did all sorts of abominable things here. But now Drezen stands as an indestructible fortress, and weddings are taking place here! It's all because of you. So... let's watch the ceremony, and enjoy ourselves!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0020.jbp
+GUID: 3035e4a34765d4544989e5c2ce96db1d
+{n}Seelah frowns.{/n} "Sorry, I... wanted you to look at this wedding and see how your efforts are changing the world. How things are getting better! The demons and their filth leave, and in the place where they so recently ruled, cities have reappeared and people are getting married. Doesn't that make you happy? But, fine. Let's watch the ceremony. I think everyone's waiting."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0021.jbp
+GUID: 44c4702d33470bf4980c32afbb577908
+"A simple warrior approaches a cave where a monster is hiding, and he sees a paladin running out of it. 'I didn't expect a perfect paladin to be a coward!' says the warrior. The paladin turns to him and replies, 'I am a holy paladin, best of the best, bravest of the brave. I hold divine power in my hands, and with my sword I wield the power to smite. I am immune to disease and fear. So, if you see me running away from something, don't ask any questions — just start running!'"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/SeelahSpeech/Cue_0022.jbp
+GUID: a0125070a9f366940910c4f6fee27506
+{n}Seelah turns to you and winks.{/n} "Pah, that wasn't so hard! It turned out great, didn't it? This is what we're fighting for — weddings, fun, and laughter!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0005.jbp
+GUID: e190e94d39a75f143a03c2b5f0755809
+"Love!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0006.jbp
+GUID: aab9c874b599c5c4babc55ec38a722be
+"Hmm... Money?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0007.jbp
+GUID: 38bffe4c689347f4291318892d2bf712
+"Valor!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0008.jbp
+GUID: f9a6408c305417446a5f98f17d23671f
+"Tentacles."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0016.jbp
+GUID: 424ec297fc227a7488b4d00d5ed12140
+"Is Elan pretending to be the Wild Hunt Monarch?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0017.jbp
+GUID: adfac3a9bd3386142874758aedae106c
+"What is the fey ruler's treasure?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0018.jbp
+GUID: f2e3856847e1f4d4e8d52c675ac8bff4
+"We want to take part in the treasure hunt!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0023.jbp
+GUID: 98cfbd8a029ddf74a8cd5430d09a374c
+"We'll just walk around."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Answer_0029.jbp
+GUID: 27f18f4b0f4fccc41a43141a51c2c8d2
+"Fey, what is this tiara you are wearing? It is so beautiful and exquisitely crafted."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0001.jbp
+GUID: d3bacc34dbf8bf346a7d4890940398fa
+{n}A fey steps into your path. You suppose he must be a Houndheart, but his knight's armor is mixed with gaudy items, and there are fake wings fastened to his back.{/n} "Halt, travelers! You are stepping into the wonderful land, the charmed land, the most perfect land ever created by the gods — the {g|First World}First World{/g}! And I am its guard, the beautiful fey gate-mistress!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0002.jbp
+GUID: 37db578f3b63e7c48815c53e979a92cc
+"By the way, we don't let gnomes in here. Yes, that's right. Exile means exile. Why don't you go visit the skeletons instead?" {n}After a while, the knight grins.{/n} "I'm kidding! Everyone is welcome!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0003.jbp
+GUID: 42c7d12dd19fbf747b71952495042273
+"But before you enter, answer my question: what is the key that opens every gate?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0009.jbp
+GUID: 5429295aea693eb439e16186d9d2805f
+"Oh, you are right indeed, travelers! The love of two wonderful creatures, Elan and Kiana, made this place and brought all of us here today."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0010.jbp
+GUID: a07af5a1c785f184ca5975c50e4fbf50
+"Oh damn, why'd you have to say that? I, the beautiful fey gate-mistress, made a promise that my gift to Elan and Kiana would be whatever the first guest gave as the answer to my question!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0011.jbp
+GUID: e1d0953f5137f28469d3dbb691057a2d
+"Indeed! For it was the valor of my comrade Elan that won the heart of the beautiful Kiana!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0012.jbp
+GUID: 7a5d8db48d6621c4082c2744f617dfb6
+"Will someone explain to me why every tenth crusader in Mendev gives 'tentacles' as their answer? Fine, we'll let this mystery remain a mystery!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0013.jbp
+GUID: 46bfb6ee89200f8429a1d03aa76e25d6
+"Now you may enter! And learn the mysteries of the past, and fight for the treasure of our fey ruler!" {n}The "fey" points to the middle of the tent, where seated on a throne is... none other than Elan. His head is crowned with fake horns, a green cape sweeps over his shoulders, and his torso is proudly bare.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0014.jbp
+GUID: 55bd522eee417c0468f20ea03cfb3cfd
+"He IS the monarch! The true ruler of the magical land of the {g|First World}First World{/g}!" {n}The "fey" lowers his voice.{/n} "The bride is particularly taken with the costume."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0019.jbp
+GUID: d90d20d437c25884098f4a0e7ef15409
+"It is a priceless artifact which our monarch has owned since the dawn of time. It looks exactly like an ordinary broom. But don't be fooled into thinking we fey simply failed to find any good props... So, the artifact! The monarch used to own it, but then a treacherous predator, the most fearsome of any who live in the forests of the First World, sneaked into the treasury and stole it! This predator lives in a secret lair... which is conveniently located in this area! Everyone who makes it through the enchanted wilds of the {g|First World}First World{/g} and reaches the beast's lair will get a reward!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0020.jbp
+GUID: 1130f2e3adea2404aae93dbafa991b15
+"Ugh, damn, old-timer Seelah hasn't played games like this since her thieving days... But we've got to accept the challenge, {name}!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0021.jbp
+GUID: 41a318f16bdd2ad4e8b8d0aa5a7be390
+"What else do you want, travelers?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0022.jbp
+GUID: cf8ba77dd71fc8642844988b267d2eb5
+"All right. Then I'll repeat the rules — you need to search our corner of the First World and find our amazing broom-shaped artifact. But first you need to answer a few riddles — you'll see. And come face to face with the dangerous predator. And then you'll get the reward!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0024.jbp
+GUID: 180c24eb48412eb4c8a7ec84a49004e9
+"Of course! The First World hides many wonders!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0027.jbp
+GUID: aa5fefb09fd13da4ab135eaf3b8b6501
+"Treasure? Well, well, well. What'll they give us? Where do I sign up? I'm ready!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0028.jbp
+GUID: 5ea4515a64699c843a282df111148bf3
+"Th-this is the Tiara of Beautiful Fey! To tell you the truth, I borrowed it from my sister as a prop. It was a gift from some admirer of hers, she's gone off him now and doesn't wear it anymore. But I believe it's the work of Sunhammer himself!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0030.jbp
+GUID: d0290d0a738bdcb4e87b1967752692d3
+"It's a good thing it's not a real fey tiara. Real fey tiaras can make strange things happen — you put one on and donkey ears might grow out of your head!" {n}Seelah grumbles.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentFirstWorld/Cue_0031.jbp
+GUID: 4c621629d6321d14280abb260ed37d6d
+{n}Seelah bites her lip thoughtfully.{/n} "Some thought has been niggling at me... This isn't the first piece of jewelry by Sunhammer we've seen here, right? Strange..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0003.jbp
+GUID: a00c2e8a085ad554ba3a6d9a97408d22
+"What do I need to do to lure out the monster?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0004.jbp
+GUID: ca7c942cd1064ea46bb81ed7c224766a
+"I'll take a walk around your vampire castle."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0006.jbp
+GUID: a6426bc6c2f6b7947825512cb8c6dfcc
+[Give the bone] "Here is a bone."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0010.jbp
+GUID: 5f4cf98419f485e4392d0d6fa0380027
+"A prize!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0012.jbp
+GUID: 94a11b74c3094574f8ffb5e01c41dd0e
+"A kiss..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0018.jbp
+GUID: 0b0a861784ee7b241a4bd1744bf21057
+"What's that he's wearing? A jeweled collar?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0019.jbp
+GUID: 354b7c8c074d37548b2b336eb3f06a8a
+"Good boy."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Answer_0020.jbp
+GUID: 11cafa3803d39c84eab0ef67477242fa
+"I'll be going."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0001.jbp
+GUID: 2cf3dfd660eb5e34281cdd6e8850f0ac
+{n}A young woman in a flowing dress smiles at you, showing off fake fangs.{/n} "Welcome, travelers! I am the keeper of the Macabre Menagerie. Truth be told, we only have a few animals in our possession, none of which are all that macabre, and the main attraction is currently sulking under the table. But this doesn't diminish my grand title among the servants of the vampire princess! By the way, could you help me lure the fearsome beast out of hiding? I will reward you for your help!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0005.jbp
+GUID: ab362bb2092798c4c8928006a8f9e3ad
+"It's easy: find a bone. Rascal... I mean, the fearsome beast, loves them. He'll come running. Bring me any bone and the reward is yours!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0007.jbp
+GUID: ff2b1cf24a9863c4cb20ca46fdf3cae4
+"Oh, you dismembered Old Killy! Our poor skeleton. All right, since I was the one who set the task, I'll have to give you a reward!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0008.jbp
+GUID: 22574737f11f8d44590bd805accfa9f6
+"Great! We'll call Rascal now. But first — a reward for the winner."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0011.jbp
+GUID: 6141fe3782d29d94bacfd96da86cd643
+"You can choose: a kiss or a prize?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0013.jbp
+GUID: 8dd5d0dc2c837eb408823127d8a2dce8
+"As you wish, guest..." {n}She kisses you on the lips. The fake fangs get in the way and scratch you.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0014.jbp
+GUID: 38ae0a84fcfc82a408929d6b093c771b
+"Why, are you afraid of my vampire charms? Fine, here's your prize!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0015.jbp
+GUID: 44bd7e5892b17164aaec8f12d00090e5
+"Have you found a bone for me?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0016.jbp
+GUID: b10a2507e23a7d548b69f3bc2b21a196
+"Ah, Rascal, there you are! Look at the bone our guest found for you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0021.jbp
+GUID: 71a1aa86b57922f4f99e1ad77304621c
+"Yes. Like it? It's by Darek Sunhammer himself! Nothing's too good for my darling Rascal."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0022.jbp
+GUID: 3e183bde9b7b61946a3ff38c1325e83a
+{n}The dog wags his tail.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0023.jbp
+GUID: 2265c39f2bdbec04cad866f4d64ba963
+"Of course! Be sure to have some wine, I mean, blood..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0024.jbp
+GUID: 2bea4393042c4744bb47912e5639333e
+"I can't believe it — the dog has a collar by our master jeweler! Too much coin makes people do strange things sometimes. I once heard about some aristocrat who bathed his horses in a special gold bathtub."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0027.jbp
+GUID: 4c43defbf6efb5c4b902cdb94adb9c4a
+"Guilty as charged."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0028.jbp
+GUID: b9cc0655673affd47ab21653d1b92cce
+"I knew it would be you as soon as I heard the words 'strange' and 'aristocrat.'"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TentGeb/Cue_0029.jbp
+GUID: 5f70f976b04f04449a2655b69041f5b2
+{n}Seelah rubs her nose, suddenly pensive.{/n} "It's funny that Darek Sunhammer's jewelry is everywhere at this party..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Answer_0003.jbp
+GUID: e87e0dde1da70c241b8fb79695c2b69c
+"Are you the 'predator,' the most formidable beast in the forests of the First World?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Answer_0004.jbp
+GUID: f91aef5094b9cc34a8a0cf4b4bb0914d
+"What will happen if I choose one of the fake artifacts?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Answer_0007.jbp
+GUID: 8785cc9c180db4b42b4820a56e7dd05f
+"So I can just take the broom and go?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Cue_0001.jbp
+GUID: d9ca015cf51accb45a5c5de1b33fa989
+"Oh, hello, adventurer. You must be looking for the artifact that was stolen from the Wild Hunt Monarch? I am the beast who crept in and snatched the artifact. I've taken steps to prevent the stolen property from being returned to its rightful owner. Namely, I placed the true artifact among several fakes. You will never guess which is the real one!" {n}The "beast" points at a few identical brooms.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Cue_0005.jbp
+GUID: 7079fe40c9b134c4f95de09570e431d8
+"Actually, I'm a lawyer from Nerosyan and a friend of Elan." {n}The "predator" makes a helpless gesture.{/n} "But when they were giving out roles for the celebration, guess who was appointed the magical beast? They said I was the hairiest fellow in the party. It's all right, I have my own wedding coming up, I'll even the score then!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Cue_0006.jbp
+GUID: 02037674f126cc645904034f11aa2189
+"According to the rules, you are supposed to turn to stone if you take the wrong broom, I mean, 'artifact.' But to be honest... I'm willing to help you out. I actually forgot which one I marked as the right one."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/TheBeast/Cue_0008.jbp
+GUID: bb46a9837fae8cd45be168432c9a9122
+"There was supposed to be a 'battle with the predator,' but I'm not drunk enough for that yet. So just take any broom and go. Don't forget to give it to Elan! The monarch will give you a reward for returning the artifact."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Answer_0005.jbp
+GUID: 34a3f57354adc274c9c30a95c6c04f25
+"Congratulations! But where is the bride?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Answer_0006.jbp
+GUID: ebffef2b6e1906147947c3a27e18ab87
+"Congratulations! But where is the food?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Answer_0013.jbp
+GUID: 0a91bb400d62ac34c877eabdd82c10db
+"Do you already have someone in mind?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Answer_0014.jbp
+GUID: d6ba70cad1144594f98f189f226eca42
+"What are the wedding traditions like underground?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Answer_0015.jbp
+GUID: ef4e087f5f4d1fd43b43ab6f087bcd7c
+"With your looks I wouldn't count on a wedding any time soon."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Answer_0019.jbp
+GUID: 5969aa0cafc9139478c81d734b960e2a
+"Let's go and take a look."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0001.jbp
+GUID: 46e3f36de7066694bb52cf458cc9ceda
+"Commander, Seelah, you're here!" {n}Elan is trying so desperately to hide his excitement it's almost comical.{/n} "Welcome!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0002.jbp
+GUID: 42373f811372a414e916968dbaa5c887
+"I'm a little confused — where are the musicians, the crowd of drunken guests? The last wedding I went to, we got the priest drunk off his face!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0003.jbp
+GUID: 7cefd105c8885e444a74152a59c3119d
+"Oh, please, don't try to do that here. We've already had enough trouble — Kiana worships Desna, I — Iomedae, in the end we invited a priestess of Abadar to conduct the ceremony, so that no one would be offended."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0007.jbp
+GUID: b8d847c6ced21514489b9e3713e6dd68
+"Let me tell you everything! Before the official ceremony, all the guests are enjoying themselves at two venues. The one on the right has been organized by my Houndhearts, the one on the left — by Kiana's friends. Each venue has its own theme, but I won't tell you which is which, it will be more fun to see for yourselves! Both venues have food and drinks, and a little contest where you can win prizes. Kiana is greeting guests at her venue, and I'm leaving for mine now — I have a special role to play there!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0008.jbp
+GUID: 0452d4909a425a041a5b86828ef04e12
+"Enjoy, Commander. There is still time before the beginning of the ceremony. Seelah, thank you for coming too!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0009.jbp
+GUID: d11dc0a479a43af459b77262721fb998
+"Hmm, I think I should take a look around. Study the wedding traditions of uplanders, just in case I need to know them someday."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0016.jbp
+GUID: 64e9407eb6cc9184ab71b15af268c64d
+"All I dream of is me and the most beautiful girl in the world, sitting side by side in a cave, feeding each other roasted rats. Mmm, I'm getting hungry!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0017.jbp
+GUID: 4ed2ef1ac140aa74caa88384a38b590e
+"It's all very simple, nothing fancy: the bride and groom say their vows in front of the chief and then exchange amulets. As a rule, the amulets are handmade, but it's not required. You can grab one off the corpse of some uplander who ended up down our way. When you don't have many materials to make jewelry, you have to get creative."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0018.jbp
+GUID: 96aae28f4c6777347a260cbe6669eb97
+{n}Lann smiles awkwardly.{/n} "I know. But thank you for reminding me."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0020.jbp
+GUID: d34114a2ee5590148880b1a70900e0a7
+"We'll look, memorize everything, and think it all over later."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Answer_0001.jbp
+GUID: 0ff64248c78342bea8919a3cdb0a52a0
+[Throw a thousand gold into the cup] "May your family never know poverty."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Answer_0007.jbp
+GUID: 0fcc3a5bcac464549827ef648a758470
+[Throw a coin in the cup after Seelah]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Answer_0008.jbp
+GUID: 3d1b7e8eeaae6b743bc6f6246017fd66
+[Watch in silence]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Answer_0013.jbp
+GUID: 151596a307a18944ba2b1152e015d02c
+[Look more closely at the cup of gifts]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Answer_0015.jbp
+GUID: 14b7cd30183ce1e4db187135c3d6300c
+"Seelah, the jewelry! There is something wrong with it."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Answer_0017.jbp
+GUID: e5893641a25db394ca32826d95ba1569
+[Watch in silence]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Answer_0023.jbp
+GUID: 2a53001de53ea93498258a321d677b79
+[Throw the marzipan bone] "For a sweet life!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0001.jbp
+GUID: 7b2d088e3a4ebc94787276799bb4d2d8
+{n}Arsinoe casts a solemn look over the gathered crowd. Her eyes are glistening, either from emotions or the "vampire" wine.{/n} "Welcome, honored guests, to the wedding of Elan and Kiana! Today, I am delighted to play my part in the beginning of something so special — the beginning of a new happy family. When something as strong as your love for one another is born from the chaos of life, all the gods of order triumph."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0002.jbp
+GUID: 2a2d450239d6a794fa5092cfe16c0193
+{n}Seelah is listening to the priestess with a broad smile on her face.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0003.jbp
+GUID: 153d339e5286e1b49a3c2183541abf8b
+{n}Seelah is smiling, but her expression is tense as she observes the proceedings.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0004.jbp
+GUID: 1ed932ab84b98b44c816177d4a49346f
+"Before we begin the most important part of the ceremony, I ask all the guests to put something in this cup that they think will serve the newlyweds well in their new chapter."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0005.jbp
+GUID: 25148964623d8fb4ba019ae981fbcea5
+"Ah! I've heard about this custom. It's called 'The Cup of Wishes.' People put nice little things symbolizing wishes. For example, a coin for wealth, a toy for the birth of a child, and so on. I'll put in a coin."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0009.jbp
+GUID: 85f0cffdb54a3cf48924e59ca8a35392
+{n}The guests put their gifts into the cup one by one. A luxurious shimmering tiara, a flashy ring... Kiana's friend even takes the bejeweled collar from around her dog's neck and puts it into the cup.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0010.jbp
+GUID: ae9312dad05f25f48ad4123a7ef0e4ac
+"Ah! Friends... but these gifts are too expensive!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0011.jbp
+GUID: 36be9fb27e24be549a9bcc1e21e1203e
+{n}The keeper of the Macabre Menagerie smiles to Kiana, showing her fake fangs.{/n} "Don't even think about refusing. They come with the best of wishes..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0014.jbp
+GUID: f5d64a2bc6ca8c741bee1270ff9da702
+{n}Each piece of jewelry was innocuous enough on its own, but now that they have all been gathered together, your suspicions have been raised: their magical auras are too strong and varied to belong to mundane trinkets possessing only enough magic to adjust their size to the wearer.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0018.jbp
+GUID: 1caba9a7d5551f24ebfdba31d3342275
+"I had this feeling that something was wrong... It's the jewelry, right? They were all made by Master Sunhammer, weren't they? And he also made the ring that..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0019.jbp
+GUID: de9d7ce4b2b51ac449fb0d506c1d92bd
+"Is something wrong?" {n}Seelah looks surprised.{/n} "Huh, well, how about we figure it out once the ceremony's over?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0020.jbp
+GUID: 4e7816f547519de44b5ddb8a9ba2bdd8
+"The gifts have been given. Let us praise the gods! In the name of Abadar, I pronounce you husband and wife. You may exchange rings and join your lips in a kiss!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0022.jbp
+GUID: 287d2e5d2e9c32746942ac0a9257c18e
+{n}You sense magical auras emanating from the pieces of jewelry that have been tossed into the cup, but that is to be expected from items that have been charmed to adjust their size to fit the wearer. You can discern nothing else.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0024.jbp
+GUID: 5c22b2aba23d1a0479450a5479d153b8
+{n}Seelah looks around anxiously.{/n} "Something is definitely wrong here. This jewelry..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0025.jbp
+GUID: 98cc5d28ecd5e1f458375e64e87ccd8f
+{n}An aura of a malevolent corruption emanates from the jewelry, and from some of the guests as well. There is wrongness at work here. The order of things is under threat!{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Answer_0003.jbp
+GUID: 09e49a028fa2e884c8367353df0ad420
+"I want to hear your side of the story, but you need to tell me the truth."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Answer_0004.jbp
+GUID: efcf934af35ee1c4d848f34d357880bc
+"If I let you go... what will you do?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Answer_0005.jbp
+GUID: 199abb642edc9ad439ff5c9989c5173f
+"You have confessed to committing an act of treason. You will appear before a court-martial."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Answer_0012.jbp
+GUID: 5bfa180ce8b400a4694b34a95c3eecf4
+"I think you've been punished enough. I am granting you a full pardon. You are free to go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Answer_0022.jbp
+GUID: a7b18c5f09eb8734e8b00c1d17ba31be
+"I can see your soul. Its glow reveals your guilt — you have committed criminal deeds."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0001.jbp
+GUID: 7ce6bd5427ebbc54ab047f6ddd92c0f1
+{n}You see Curl standing among those who've been rescued. He is looking around awkwardly, shifting from one foot to the other, as if he's not sure what to do with himself. When he notices you and Seelah, he pales slightly, but takes a step forward.{/n} "I, uh... Thank you so much for saving me from the demons."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0006.jbp
+GUID: d12f357f6e5847d49a4c6792da01cab1
+{n}Curl bows his head.{/n} "All right, I'll tell you. I met this guy... before the attack on Kenabres. He said he felt sorry for me. We talked about the {g|condemned}Condemned{/g}, and about how awful the crusaders were to me. He told me that I should take matters into my own hands... that I should be my own master, and decide my own fate. When the demons attacked Kenabres, and the city fell into chaos... he found me again. He introduced me to a few of his pals, and called himself a Templar of the Ivory Labyrinth. He told me to spy on the crusaders who were trying to take back the city."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0007.jbp
+GUID: 88bd62f85f964f544916ef5edcac757f
+"I didn't want to help them! But they threatened me! They even cast a spell on me! I don't know what it was, but it felt like torture. I curled up and sobbed like a baby. They told me that the city belonged to them now... and that they'd kill me if I didn't cooperate. So I agreed... but I didn't want to! I swear, I really didn't! I wanted to run away. I thought if I could just get some money, I could escape the city. I could go far, far away... somewhere they'd never find me. The crusaders could deal with those cultists. I just wanted to be free."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0008.jbp
+GUID: c887cf63a37115c4283e765bc4a53eb6
+"And that's when I had the idea to steal Elan's ring. It was worth a small fortune... and I needed the money. I didn't want to hurt Elan. I didn't want to hurt any of you... but I didn't know what else to do. So I took the ring, and, well... the demon took control. I guess you know the rest. I was stuck in the ring, and that scumbag stole my body."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0009.jbp
+GUID: bc40a23eda9bfa4488649006102476e5
+"You've really made a mess of things, Curl. You started off as a thief. Then you became an informant for the cultists... and ended up as a demon's plaything. That's what happens. One bad choice leads to another — and you end up in more and more trouble. It's a slippery slope."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0010.jbp
+GUID: 855c6f1ce54ec4447bb90bdc769d3027
+"Damn it, Curl! You could have told us you were being threatened by cultists! We would have helped!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0011.jbp
+GUID: f903cce6b18584246867a68d5db6b753
+"But I wanted freedom, Seelah." {n}Curl sighs sadly.{/n} "I'll be honest with you, I'm not much of a crusader. Don't get me wrong, I'm glad I met you, Elan, and Jannah. I couldn't ask for better friends. But... I'm not cut out for war. I don't like fighting demons, and I don't want to die. That's too heavy a sentence for a simple thief."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0013.jbp
+GUID: d99318ad68c90b74ab716d06aea0a853
+{n}You see a flicker of hope in Curl's eyes.{/n} "Well, you can bet I'm not going to steal, or hobnob with cultists! I swear! I'll swear it on anything you like! I've been thinking about Kenabres... it'll take a long time to rebuild the city, and I'm sure they could use an extra pair of hands. I could be a laborer until I learn an honest trade."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0014.jbp
+GUID: 50a55150f83f21c4eadfe6a9e0795552
+{n}Seelah frowns slightly, but nods.{/n} "Don't do anything stupid, Curl. It's going to be a fair trial. I feel for you, and I'll come by to support you, but what you've done is really serious."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0015.jbp
+GUID: b4e509565203b954d85f1cd23fb8f826
+{n}Curl looks at you suspiciously.{/n} "Really? I mean, is that the honest truth?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0016.jbp
+GUID: faf170b886909634788bf14dbe0423bf
+{n}Seelah frowns.{/n} "Hasn't he suffered enough already? All right, fine! But I'm coming to this court-martial. I'm going to defend you, Curl!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0017.jbp
+GUID: 1277a24b021a9c948a7a06a4f4fb0d6b
+"Thank you, friend..." {n}Curl says quietly.{/n} "But don't get your hopes up. I'm already a {g|condemned}Condemned{/g}. I'll end up behind bars, or hanging from a noose. Well, at least they let me get some fresh air first! I wish you all the best. So long..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0018.jbp
+GUID: 2fbbc5a31b3fc854eb8e954ff5a13434
+"What? Have you been brainwashed too, friend? You sound just like those paladins who refused to sit at the same table as me... Ah, well. I know what will happen in this court-martial. But the life of a thief is often short and tragic. I guess I just have to accept my fate. All the best, Commander!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0019.jbp
+GUID: bdc4c115190129a439b70a53f5aa2c54
+"Yup, the most honest of truths! Cheer up, lad. It'll all work out for you. I say this as one former thief to — hopefully — another."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0020.jbp
+GUID: 24444c292821539459d32b2d4bca4bd0
+"Wait!" {n}Curl looks slightly pale, but he takes a deep breath and continues,{/n} "I, uh... Thank you so much for saving me from the demons."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0021.jbp
+GUID: 14eb8b9b91e227e4696fb3d3cdca8c2f
+{n}Seelah glances at you, and says quietly,{/n} "He has a point. The punishment should fit the crime. A harsh sentence won't change what's happened, and it won't turn him into a better person. And after everything he's been through..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/CurlAftermath/Cue_0023.jbp
+GUID: dbf0ff7551eebf94ab6d6e12710c3d7c
+"Yeah, I'm sure you're right. My soul probably does glow. I could spin you some tale about how this was all a mistake — how I didn't actually belong in the {g|condemned}Condemned{/g}... but I won't. I'm a thief, and I got caught thieving. I was sent to the crusades as punishment. And, well — you know the rest."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0004.jbp
+GUID: f98ed39efa89ddd4cac1d84a195608a9
+"Yes, we should go..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0005.jbp
+GUID: 245ec8482e1f37b4a8702e54430c5aa7
+[Clear your throat] "I'm glad that the two of you are all right."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp
+GUID: 81109ea8fb20dbc478cf67116740f4a1
+{n}Elan and Kiana fall into each other's arms, heedless of everyone else around them.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0002.jbp
+GUID: 3f8b3b4fbd6d18d44b91a34c88e2208a
+{n}Seelah smiles broadly.{/n} "Come on. Let's give them some space."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp
+GUID: a819e8c85ef23324bb0d8117bb9d7df3
+"Yes, it feels good to be married." {n}Kiana smiles.{/n} "Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0007.jbp
+GUID: df45181e1968f26459f9e8bc2b995a34
+"We're glad too," {n}Kiana replies.{/n} "But I'm very displeased with the way my wedding ended. We didn't even get to enjoy our wedding night together... and it was all because of those damned demons!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0008.jbp
+GUID: 0e50ec24099196a42b7089ffecdc46b2
+"Kiana, my love!" {n}Elan blushes.{/n} "Let's discuss that later... We don't want to embarrass the Commander."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0009.jbp
+GUID: de9d02036b213594fa780c6025f14004
+"Well, I just want to say... Thank you, Commander. Thank you for everything you have done for us!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0010.jbp
+GUID: f575d21b1fabec74da1e54484573206b
+"Wait, Commander! Seelah! Everything you've done... I can't thank you enough!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0011.jbp
+GUID: 4cd264ce0432bb94a8e80a551190150d
+"Neither can I... See? That's why we make such a good couple. We have so much in common!" {n}Kiana laughs.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0012.jbp
+GUID: f6c3d20a92890d84c9020d37d56cc75b
+"We'll accept your gratitude in the form of strong drinks. But we'll wait to celebrate until after we've defeated the demons! So long, friends! Enjoy this moment of happiness... but don't get too carried away!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0013.jbp
+GUID: 716683517058beb4ead374bd16b22ff0
+"If it weren't for soldiers like me, a lot of families would lose their loved ones. It won't be long before the demons are defeated... I truly believe our victory is near. But for now, I must keep on fighting."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Answer_0006.jbp
+GUID: 3533855ca16264040973114bc04873da
+"I am so sorry. He was a good man, and a true knight."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Answer_0007.jbp
+GUID: c56ea2992b8f3d34580ece286025966e
+"A sad situation. But there's a lesson to be learned here."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Answer_0008.jbp
+GUID: c0db5a85736dae247835254af7a2bd37
+"It's his own fault. The fool shouldn't have charged ahead on his own."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0001.jbp
+GUID: 71cacaa3cef6428428babbcc90c84aaa
+{n}Elan struggles to lift his head. His face is pale, and a groan escapes his lips.{/n} "Seelah... you came... I should've waited, but..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0002.jbp
+GUID: b0369d1b8d8ba2d40a5eec0401ea7407
+"Elan! What in the— what happened?" {n}Seelah rushes over to help her friend.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0003.jbp
+GUID: 5736cff83ea67644bb11346947b1eb2f
+"A trap... there are so many... traps here. I saw Sunhammer with the jewelry. He had the souls... I dashed after him, heedless of anything else. I didn't realize the door was trapped. I went to open it, and..." {n}Elan's body spasms, and he groans.{/n} "Seelah, please... don't make the same mistake I did. Save Kiana and the others! I know you can..." {n}His body spasms again, and he goes still.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0004.jbp
+GUID: 10eb3a708933ebc4c865ed9ae6e72805
+{n}Seelah stares at Elan's lifeless body in shock. Her face is contorted with grief. She touches her friend's shoulder, either in a vain attempt to wake him or in a final farewell. Then she clenches her fists.{/n} "Why... why like this..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0009.jbp
+GUID: 142cc46328be7804d9854dd5399f96c5
+"He was my friend," {n}Seelah whispers bitterly.{/n} "I thought I could help him reunite with his bride. I just wanted him to be... happy."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0010.jbp
+GUID: dc7fc94a1fcf06d469498794dfb63c29
+"Yes, of course. You're right." {n}Seelah voices her agreement, but you see the doubt in her eyes. Despite her outward confidence, you can sense her inner turmoil.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0011.jbp
+GUID: dd9956385abff89418d83075e1b7774c
+"Don't say that! It can be hard not to make stupid decisions when you're worried about someone you love. If Kiana's soul wasn't being held hostage by these scumbags, Elan would have never made a mistake like this..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0014.jbp
+GUID: 3246cb05fd4a3ba42baaf9baa2341f4b
+{n}Jannah shivers, and looks away.{/n} "Why do good people have to die? It's not fair. But it wasn't death that took him from us... it was the demons and the cultists. They pushed him over the edge. That's how they do it... they use our deepest, truest feelings — love, care, pride — against us."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElanDying/Cue_0015.jbp
+GUID: 3ee9e83c44122854695c81669afcc819
+"Let's keep going. Please... we need to finish what he started."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Answer_0008.jbp
+GUID: a6ab76d4f90603b4fbc6fbe3f1bbec02
+"What is this place? What are we up against?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Answer_0009.jbp
+GUID: 901c1edd8887dfa4b9f108e106f38423
+"We'll find Elan and the stolen souls!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Answer_0011.jbp
+GUID: 01a184d01ff707748b6377c38d2912e5
+"We'll find the stolen souls!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0001.jbp
+GUID: dc3a376f09759574f997995e8f07689a
+"We're finally here! This whole time, I've been so worried. I just can't stop thinking about the stolen souls."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0002.jbp
+GUID: ef5a2485bffeb7745af5d7fa7ca82b0e
+{n}Seelah frowns.{/n} "But... something's wrong. Elan should've been here by now. He was supposed to wait for us here... but he's nowhere in sight."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0003.jbp
+GUID: cb2e13e1ded36e5419d746ed92162a91
+"Greetings, Commander." {n}Elan greets you with the discipline of a soldier. He is {d|Seelah Elan hope}calm{/d} and composed, and his voice is steady.{/n} "I kept watch, just like you instructed. They're definitely keeping the trapped souls here. I've seen the jewelry myself. But the place is well guarded. We'll have to fight our way inside."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0006.jbp
+GUID: e65e4b85197e6aa42a40d34abcea889c
+{n}It takes {g|Jannah}Jannah{/g} a moment to catch her breath.{/n} "Thank goodness you're here! I followed your instructions. I met Elan here, and we were keeping watch, when... he saw that jeweler, Derek Sunhammer. He was carrying the stolen souls! Well, Elan went crazy. I tried to reason with him, I asked him to wait for you, but all he could think about was {d|Seelah Elan desperate}Kiana's soul{/d}. He rushed off on his own! He told me to stay here, and wait for your arrival. I've been so worried. He should never have gone in alone..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0010.jbp
+GUID: 23d5dbede655b9c44819e3eea3079e0d
+"Yeah, and it won't just be a small skirmish... It seems like all the surviving cultists fled here from the Wound after they lost in Kenabres and Drezen." {n}{g|Jannah}Jannah{/g} stands next to Elan, and tries to look confident. You can tell that she wants to prove herself. She's doing her best to regain everyone's trust.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0012.jbp
+GUID: 258d1dd41728c4e4b874106425286d06
+"And we'll give those cultists a good thrashing! We'll make those assholes pay for what they've done!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0013.jbp
+GUID: 6c8ca604b555b554982ff57702fa9e3b
+"It looks like this place belongs to those Baphomite creeps." {n}Seelah points to a few familiar symbols.{/n} "I knew it! I knew this was one of their schemes! It was too elaborate to be the Deskarites. Well, it looks like we're up against cultists, demons... the usual."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0016.jbp
+GUID: be05eef615c2eac44ac30ec0a2e49603
+"There's one more thing I should mention... Darek Sunhammer is here. I saw him at the entrance to the cave. He had the trapped souls with him — or rather, the jewelry that contains the trapped souls. He was looking at the different pieces... holding their gemstones up to the light. I think he was admiring his handiwork. It's safe to assume that he's a significant figure within the cult, and that means he'll probably be a formidable opponent."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0018.jbp
+GUID: dd38b1c524d53e6458a666cb5bd67164
+{n}Seelah beams at her two friends.{/n} "For the League of the Inspiring Cart! I'm so happy that you're both here. We'll save the day... together!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0021.jbp
+GUID: e9ce1888b74f55345a983d22ad48e4e8
+"I guess we'll stay here and guard the entrance, so that you don't get stabbed in the back. But if you need help, we'll be there straight away."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0022.jbp
+GUID: c61260bfb3aff0b48bb81b0d5486c175
+"I guess I'll stay here and guard the entrance, so that you don't get stabbed in the back. But if you need help, I'll be there straight away."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0023.jbp
+GUID: ad27fc29b7a3fe54898aabc89f02dfc1
+"I'll stay here and keep watch. I don't want any demons or cultists to sneak up and stab you in the back! But if you need help, I'll be there straight away. I'll never desert my friends again!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/HideoutIntro/Cue_0024.jbp
+GUID: 02af5bdd482698544bfa00464c7757f5
+"You bet we will! I'll never desert my friends again!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0006.jbp
+GUID: 38798f444291fd04db47f737f2de9a12
+"Well, I am the person who killed Baphomet."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0007.jbp
+GUID: bef2d948f3ed9554bbd041aa27c61255
+"Well, I saw Nocticula kill Baphomet. Your lord died at her hands."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0008.jbp
+GUID: 0767faeda54271942b96d0cc99fb2c31
+"I have some questions for you, 'Grand Master.'"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0009.jbp
+GUID: 9c04ac1a144e1484e9f2cc67976246e6
+[Attack] "I don't care who you are. It's time for you to die!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0016.jbp
+GUID: ef8f1b55ea689b343ac29a6fede5ecbf
+"So you were the one who led the Templars of the Ivory Labyrinth into battle?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0017.jbp
+GUID: 8c14f5600f592a1408775b3ef8f4a951
+"Why were you stealing souls?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0018.jbp
+GUID: e23c961bc85695545b6a113d62a5f9cd
+"How did Seelah, Curl, and the others get involved in all of this?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0022.jbp
+GUID: 22ced28b5ecb08348b35daa51ab112b1
+"Give us back the souls, and I'll let you go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0024.jbp
+GUID: 2298ad75fbbcfc142851b95b38bf56bd
+[Attack] "It's time we put an end to this whole affair."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0045.jbp
+GUID: ee5cd3f6744dd6540821770e6fc13db8
+"Don't pay any attention to him. He's a cultist. Why would you believe a word he says?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0046.jbp
+GUID: 20eb64feac18c13489e67bdf2b12aaaa
+"We need to leave. Let's go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0047.jbp
+GUID: 71478a9dff1ec51438de4bd354359227
+"There was some truth to what Sunhammer was saying..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Answer_0057.jbp
+GUID: 56ecfcf18475c974b9bcaedc3fe89982
+"Who is that demon standing next to you?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0001.jbp
+GUID: cdb9cd03445dfd549b1b4117d97c580e
+{n}Master Darek looks just as friendly and polite as he did on the day he welcomed you into his jewelry shop in Drezen. His attire is still rich and exquisite, but it now features a gem-encrusted symbol of Baphomet. A grotesque shadow hovers beside him — a demon, perhaps the same one that stole the jewelry at Elan's wedding.{/n} "Ah, the victorious Commander and {mf|his|her} valiant companion. I was so certain that you had been swallowed up by the Abyss. Oh well! Life is full of disappointments."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0002.jbp
+GUID: a65c126552139ce498822fb2f5cb7932
+"You can skip the small talk, demon worshiper. My friend just died, and I'm not in the mood for your games."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0003.jbp
+GUID: 31ae808dd79d8524aab36b0c9648c917
+"Cultists are so talkative these days... Why don't we skip the heart-to-heart and get down to business?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0004.jbp
+GUID: a6baf915284c7294b8e23cc52276f26a
+{n}The demon at Master Darek's side laughs nastily.{/n} "Why, valiant paladin, don't you want to know who you've really been dealing with this whole time? He's not just a 'cultist' or a 'demon worshiper.' You're talking to the Grand Master of the Templars of the Ivory Labyrinth."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0010.jbp
+GUID: 952bb8063c2614846ad8fc71d301f3ab
+"You did not kill him... not permanently. No, you defeated him. Once. It's a remarkable achievement, of course, but if you were expecting me to be impressed or intimidated — I'm afraid I shall have to disappoint you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0011.jbp
+GUID: 761e25c9887611240b62864c725da08a
+"I am fully aware of the Lady in Shadow's capabilities. Forgive me for being blunt, but you have not told me anything I don't already know."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0012.jbp
+GUID: 353011b4b4bd4824db8c552c16554061
+"You can ask whatever you'd like... and I might even answer. But you don't need to address me by my title. Though it sounds formidable, it is purely honorary, and places no obligations upon me — which suits me perfectly."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0013.jbp
+GUID: ea09df09b00844143bb93ac9dd0636ba
+"Are you in a hurry to die? Well, you'll hear no objection from me. Let's begin!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0014.jbp
+GUID: 553d95c18b7c2b041b21a77b034bf9e1
+"I do not mourn my master's temporary demise. His defeat is nothing more than a setback. We may be forced to retreat, but like the tide, we will always return. However, even the permanent death of Lord Baphomet would not sway me from my beliefs. Do you know why the Abyss is so beautiful? It spawns new beasts to replace the old. It sustains itself in an endless cycle, the unchanging sum of chaos and evil — it will never cease to exist..." {n}His voice is a mixture of zeal and admiration.{/n} "If Lord Baphomet meets his end, I will simply find myself a new master."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0019.jbp
+GUID: 000e4580e97a3db4e80a4caf276a6eae
+"You might find this surprising, but... No. That was not my role." {n}The dwarf speaks with surprising candor.{/n} "Demon generals like {g|Jerribeth}Jerribeth{/g} and Minagho have rendered my services unnecessary. They are the ones who lead the troops in the Worldwound. I realized that I could not compete with them, so I moved away from military operations, and began to focus on my own intrigues. And it is thanks to those schemes that our paths have collided..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0020.jbp
+GUID: dca9b720471aec04cb6765dbda5d90cc
+"Isn't the answer obvious? I wanted to spread terror throughout the city... and I could use the souls as leverage to coerce people into doing my bidding. I spent years developing a reputation amongst Mendevian high society. Everyone knew who I was, and my work was in high demand. Then, slowly — with almost surgical precision — I distributed the demonic jewelry. I knew when to sell someone a useless bauble, and when to give someone something... special."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0021.jbp
+GUID: 27c8f5cbd443d0b4b9233b513f564a0e
+"Then I ordered the demons to act. All of the jewelry had gemstones that were designed to ensnare souls. I told the demons to capture the souls of the jewelry's owners and bring them to me. All across Mendev, dozens of mortals were suddenly trapped. All of their friends and loved ones were left alone with their grief. They held the lifeless bodies of their children, or their beloved... and clung to the hope that maybe, someday, there would be a way to bring them back. And that's when I struck."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0023.jbp
+GUID: 1748505b610131747ae2f80f2286a19a
+"No, I don't think I will. I won't let all my hard work go to waste. I'll take my chances against you, Commander. The odds may be less than ideal, but... it's a risk worth taking. Look at your friends, brave paladin! Look at the Commander, the crusade's greatest hope! You have led them all to their deaths!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0025.jbp
+GUID: 980d126d38380634299198206b24d2a2
+"I threatened, I coerced, I offered hope... I did everything I could to tear down your crusade from the inside. If you had stayed in the Abyss a little longer — even a couple of months would have sufficed — you would have had an altogether different welcome waiting for you. You would have returned to find Mendev engulfed in civil war."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0026.jbp
+GUID: e674320394247144b82ec9fb49aeff7f
+"I've met all kinds of monsters, but none of them have been this full of themselves!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0027.jbp
+GUID: 811e2fbb5ed0756409c7239a61d2fcac
+"Oh, brave, brave paladin..." {n}Master Darek's voice is kind, almost sympathetic.{/n} "You know so little of this world, and understand even less."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0028.jbp
+GUID: 4094602c1d2e6654eb3926910e3c1d2e
+"It was all the result of a rather absurd series of coincidences. It started when a certain knight, burning with love and passion, came to buy a ring for his bride-to-be. He was willing to pay quite an exorbitant sum! Now, I don't normally waste my time with mundane, ordinary folk. However, his ardor, and the strength of his love — along with the fact that he was one of Iomedae's nauseatingly righteous lackeys — made him irresistible. So I decided to craft him a ring with a demon inside. I took great pleasure in the thought that someday, he would realize he had given a deadly gift to the person he loved most. He would have to live with the knowledge that he had doomed his beloved to a terrible fate."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0031.jbp
+GUID: f2b8e6b910363394d85a2afb1d39a15c
+"The more you talk, the more I want to kill you. Every word you say brings you closer to your inevitable demise."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0032.jbp
+GUID: 9afc46e677c2bc94da48b10b85c0fd6e
+"Well, thank you for the valuable life lesson. I can assure you that this 'nauseatingly righteous' knight has taken it to heart."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0033.jbp
+GUID: 35a6eac8f6097034faadcb6af36f7f8a
+"I thought you were a master of intrigue, cold-blooded and cunning. But you're not clever or cunning — you're just cruel. There's nothing special about your schemes... they're just an excuse to hurt people."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0034.jbp
+GUID: 453621982459ce04bad1b822abf75a93
+"But I haven't even told you the best part, brave paladin. The most ridiculous coincidence of all was... the halfling Curl. Did you know my Templars recruited him? He's been our informant for a long time."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0035.jbp
+GUID: 1f5e1b3d2c13e534998ee3ce297d2578
+"You're lying."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0036.jbp
+GUID: 5be14c4bfa2e6b845a9934c5b1bcd28d
+"Not at all. The {g|condemned}Condemned{/g} provide an endless supply of recruits... They're easy targets. What they lack in quality, they make up for in quantity. We recruited Curl when we were preparing for the attack on Kenabres. If it's any consolation, the fool quickly grew disenchanted with Baphomet's cause. He refused to spy for us, but... we gave him a good scare, and he gave up. We barely had to torture him at all."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0037.jbp
+GUID: 86158de8ef4aa5945b9981ce6159c70a
+"He continued to spy for us, but he dreamed of escape. He clung to the hope that someday, he could run away... not just from us, but from the crusades as well. He wanted to go far, far away, where no one would ever find him. And then one day, by complete chance, he found out about the ring that Master Darek gave to the foolish knight Elan. The ring I was hidden in..." {n}The demon chuckles maliciously.{/n} "The idiot thought it was some priceless artifact. He thought that if he stole it, he could sell it, and use the money to start a new life elsewhere. He went to the deserted camp, grabbed the ring... and gave me his lovely agile body, as well as the chance to have a good laugh — it was so amusing to pit the valiant paladin against her brave knight friend!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0038.jbp
+GUID: 3e5b5f8ed44eb1841a0126aa8b4c6075
+"Look at your friends, brave paladin! Look at the Commander, the crusade's greatest hope! You have led them all to their deaths!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0039.jbp
+GUID: 54717f7c2778d2b4086de1ba5ffa788c
+{n}Master Darek Sunhammer is gravely wounded, but he does not lose his composure. He remains calm and dignified in the face of death.{/n} "It seems that I have made a mistake. I should not have fought you. Still, I do not regret taking the risk." {n}He turns to Seelah, and there's a malevolent gleam in his eyes.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0040.jbp
+GUID: 0c2ffc66f70e00e498e21f98ef539318
+"You may have the Commander by your side, but look at yourself, paladin. Look at those you've taken under your wing." {n}Darek's mouth twists into an unpleasant smile.{/n} "Your friends are a thief, a coward... and a corpse. A foolish knight who fell victim to his own stubbornness."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0041.jbp
+GUID: ec3faa2018bfee744992532c52a17b17
+"You may have the Commander by your side, but look at yourself, paladin. Look at those you've taken under your wing." {n}Darek's mouth twists into an unpleasant smile.{/n} "Your friends are a thief, a coward, and a stubborn oaf."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0042.jbp
+GUID: beef9b7110dfebc429bf7109cd3be849
+"You couldn't unite them, or inspire them to great deeds. On the contrary, you made everything worse. Yet here you are now, blaming me for everything that's happened as if it is all my fault. Somehow, I am responsible for all your woes. My evil plans and schemes have ruined your lives. You believe that if you can just rid the world of evil people like me it will become a paradise. Life will be fair and just, and everyone will be joined together in the bonds of friendship..." {n}He bursts into wheezing laughter, and then falls silent forever.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0043.jbp
+GUID: f40593793216253498d2e30bdd8dee03
+{n}Seelah stares at Darek's lifeless body. She is breathing heavily, but you can't tell if it's from the intensity of the battle, or if she's simply overwhelmed with emotion.{/n} "Is it... over? Have we 'removed the evil'...?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0048.jbp
+GUID: 800706e8e47847f4e88e2c3c586706de
+"Maybe there was, and maybe there wasn't. We'll discuss it later."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0049.jbp
+GUID: fa5589359feaf8b46a1528ee2257e798
+"Right. I... just... ah, never mind!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0050.jbp
+GUID: 532171260ae3b3546971f72a488e41f3
+{n}Seelah smiles grimly.{/n} "Yes, you're right. We'll discuss this later."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0051.jbp
+GUID: 4255f49c18c69aa4ab4d5582d0b6f39e
+{n}Seelah picks up the bowl of jewelry and pours the contents into a pouch. Inside the bag, the gemstones gleam ominously.{/n} "We have the souls... I'll keep them with me until we reach Drezen. Let's go, {name}! I... don't want to stay here any longer."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0054.jbp
+GUID: d6843527e97a58b4390828fee8bdf1fb
+"It doesn't matter. He tried to poison our souls, but his words mean nothing. He has lost. Commander, Seelah... I spoke harshly to you before. I said things that I regret. But I should never have doubted you. This victory would not have been possible without your help."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0055.jbp
+GUID: 6034f972c463f4c4999238147697ca4c
+"Why, that cultist scum! Even on death's door, he was still spewing venom." {n}Jannah pauses, as if she's had a sudden revelation.{/n} "Wait, we won... right? We've completed our mission?" {n}Her eyes light up with excitement, and an incredulous smile spreads across her lips.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0056.jbp
+GUID: 0d342e15561d2c246b23ee4880e538e8
+{n}Seelah listens to all of this in silence. Then she turns to you, and there's a question in her eyes.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0058.jbp
+GUID: 72fa3336c16221948b9306e9c14450b8
+{n}The demon cackles gleefully.{/n} "You don't know me, but I know you! We've met several times. Except I was controlling the body of your friend — the nimble but empty-headed Curl."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Answer_0006.jbp
+GUID: 10746ab3342ce204db8ee0ab96480093
+"I am so sorry, Kiana."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Answer_0007.jbp
+GUID: 23af35c5304d5ef419178ba0e6f050eb
+[Say nothing]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp
+GUID: aebbc1845e827dd4da4e28014e7b4162
+{n}Kiana appears to be in shock. Her hands are clasped to her chest, and there's a dazed look in her eyes.{/n} "I was a wife for less than a minute... and now I'm a widow."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0002.jbp
+GUID: cdc3d76b9c6dea74e8773f9eb291aa31
+{n}Arsinoe, who had been speaking to Kiana in a low, compassionate voice, turns her attention to you.{/n} "I told her about Elan."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0003.jbp
+GUID: e2e8bf92034eccd469d335938f7d0500
+"Kiana, I know that words aren't much comfort in a time like this, but I just wanted to say... it's all right if you blame me for what happened. I understand. You can yell or scream at me, if that will make you feel better. Or if you just want to talk and cry, and get it all off your chest — I'm here for you. If there's anything I can do to help, anything at all — please, just say the word."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0004.jbp
+GUID: 5c09123a07ee1e047a292c542cce6b74
+{n}Kiana smiles sadly.{/n} "I married a crusader. I knew the risks. I understood that this might happen someday... I just didn't expect it to be so soon."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0008.jbp
+GUID: a747f5462e1614a418b06ea0fd2eee47
+"Thank you. It's so strange... Only a short while ago, I was accepting well-wishes from wedding guests. Now, I must learn to accept condolences instead. Anyway..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0010.jbp
+GUID: e0abe01a6531ec6499f21e44cc81afe6
+"No, Seelah, don't look at me like that. I don't blame you for anything. I'm glad Elan had a friend like you. I'd like you to be my friend too. You must come find me when you return from your next heroic journey! But for now, I must ask you to excuse me... I need to be alone for a while."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Answer_0011.jbp
+GUID: 9a0dea22899229a49847e0704688a35d
+"We'll discuss that in a moment. First, I want to know how you ended up in Drezen."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Answer_0012.jbp
+GUID: eda52570ddcf0f549a2564434f715db0
+"Why do you want to join us?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Answer_0016.jbp
+GUID: f62a9426170b79841a56c403d268f56d
+"Very well. I'll give you a chance to redeem yourself. Go with Elan and help him. We'll meet you there."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Answer_0017.jbp
+GUID: e66c11e60b29b0d41afe36b7351d49c0
+"I can't trust you. You need to leave Drezen."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Answer_0025.jbp
+GUID: c393a1c5c641fd84e8506b7536998964
+"How can I trust you? How do I know that you've changed? The last time we fought demons together, you ran away. You abandoned us, and you deserted your unit."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Answer_0028.jbp
+GUID: 63437aab65638f24da2a7d7df130852e
+"Your soul still has the aura of a criminal. But I'm willing to trust you. I'll give you a chance to redeem yourself. Go with Elan, and help him. We'll meet you there."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0001.jbp
+GUID: 7f36934ad41f4a14a9cbb7484844d5f7
+{n}A figure approaches you, but it takes you a moment to recognize who it is — {g|Jannah}Jannah{/g}, the ill-fated deserter from the Eagle Watch. She looks very different from the last time you saw her. She is calm and collected, though her face is a little pale, and you notice a scar on her right temple, jagged and fresh.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0004.jbp
+GUID: e9b4eb9ad61500b49a66bc0834708c46
+"Jannah!" {n}Seelah beams at her friend.{/n} "You're here!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0005.jbp
+GUID: e8b6e28dbd288c44898407a47d71a39a
+"There's not much to tell. As I'm sure you remember, you chose not to punish me — you allowed me to go free. So I went to Kenabres... I figured I'd forget all about the crusades, have a fresh start... but it didn't work out. I heard the news about you and Seelah — that you had descended into the Abyss. And, well... I couldn't stop thinking about everything I had left behind."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0006.jbp
+GUID: 2cd7cc44b19cd1d43aa69300102b0072
+"Yeah, I'm here..." {n}Jannah falters, then blurts out,{/n} "Seelah, how can you be smiling at someone who failed you? I thought you'd never want to see me again..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0007.jbp
+GUID: 31b137edd4902264e8935635aa9c7e8d
+"I mean, I'll definitely give you a piece of my mind once we're in private." {n}Seelah pretends to look stern.{/n} "But I really am glad that you're okay."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0008.jbp
+GUID: c207f647111ab6e46adeef6cad2ae929
+{n}Seelah's words bring a small smile to Jannah's lips. Then the former deserter turns to you.{/n} "Well, let me tell you why I'm here. I have business with you, or rather, a request..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0009.jbp
+GUID: ff03c12b165989e479d7c80e9ce7a8f9
+"Commander..." {n}Jannah hesitates, then continues resolutely.{/n} "I know about the stolen souls. I want to help you search for them. I've come to ask if you will let me join you and Seelah on this mission. Please, give me another chance!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0013.jbp
+GUID: a58d78465f1e56e449e38a0289827282
+"Well, it's a long story, but I'll try to keep it short. As I'm sure you remember, Commander, you sentenced me to prison. And that's where I was, sitting behind bars... just pondering my existence. Eventually, I filed an appeal, requesting that I be allowed to serve out my sentence in the {g|condemned}Condemned{/g} instead. Following in Curl's footsteps, I suppose." {n}Jannah smiles bitterly.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0014.jbp
+GUID: 202e5a7a6c875f14cb8a0d5db76b2297
+"By the time they escalated my appeal, you were already in the Abyss. No one knew what had happened to you, so my case was handled by the Queen. Her Majesty approved my request, and Commander Irabeth voiced her support as well. So, they let me out of prison, and assigned me to a small {g|condemned}Condemned{/g} unit that was protecting the evacuation of civilians from Drezen to Kenabres and Nerosyan."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0015.jbp
+GUID: 1c742c23bbed1bd49b4d3f54432550ca
+"And that's where I've been. Once I heard that you'd returned, I asked if I could go meet with you. I'd made a good impression in my unit. I'd killed quite a few demons, and had begun to earn their trust. So they let me leave. I'm on parole, of course. I had to promise to come back if you turned me away."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0018.jbp
+GUID: 49569fd861ec4cf4e8bca5ad12db9724
+"Well, that's it then. I'll never get a chance to redeem myself."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0019.jbp
+GUID: 651ecf0cde0e1a54dbc93761d1751b43
+"Really? I... I won't let you down!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0020.jbp
+GUID: ee26b7c0a128cf3409811445c6e9e2e7
+"We're not just saving a cart full of booze this time. This is much more important. But that just means we have to succeed. Failure is not an option!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0021.jbp
+GUID: e8a644767de9c984b8d0bb16d1c6a40c
+"Of course you will. You'll get your chance to prove yourself — I'm sure of it!" {n}Seelah's tone is soft and encouraging, but she shoots you a look of disapproval.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0022.jbp
+GUID: cfcafcf2712bc674a8f13f9a1b8a4546
+"Because I can't stand by and do nothing!" {n}Jannah exclaims vehemently.{/n} "This entire story began with us — with our League of the Inspiring Cart... then I got cold feet, and abandoned you... and then you saved me in the Molten Scar. If I don't help you now, I'll feel like I've been written out of my own life story..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0023.jbp
+GUID: 0658317252a015e4ba886a1f6be9c1ae
+"As soon as I caught wind of your return, I hightailed it to Drezen as fast as I could. But when I got here, I just couldn't find the courage to approach you... so I waited outside the citadel until I saw Elan and Seelah. I knew you must be planning something together. And that's when I realized — this was my chance to make amends. I might never get another opportunity to prove myself. So I came to see you. That's why I'm here."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0024.jbp
+GUID: bb15e3620acdcb24abb1efbdb52148fb
+"Yeah... yeah, I guess you're right. After all, life is full of second chances..." {n}Jannah smiles sadly. Her eyes are bleak.{/n} "Bye, Seelah. Farewell, Commander..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0026.jbp
+GUID: f14dc2ba4f239bc4c8256360c08a22f9
+"People can change," {n}Seelah says quietly.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0027.jbp
+GUID: aaa9f637319779047ad9a373352ba918
+"All I have is my word." {n}Jannah meets your gaze resolutely.{/n} "My word, and my desire to redeem myself. But it's your decision."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0029.jbp
+GUID: 8492f565449e6174693110f8c644f2e0
+"I made my way to Drezen, but I just couldn't bring myself to face you... until I saw Elan and Seelah heading here. I figured that you were up to something, and that this was it — this was my chance to make amends. It was now or never."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0030.jbp
+GUID: 7fc6b68e0d10ec947aaa21af84f587d2
+"No, it's nothing more than I deserve. Well, I guess I'll return to the Condemned. I have to find meaning in life somehow... I'll try to prove my loyalty through service." {n}Jannah smiles sadly. Her eyes are bleak.{/n} "Bye, Seelah. Farewell, Commander..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0005.jbp
+GUID: 280c6a65d4e97fe448faa40c953f06fc
+"So you don't have any idea what's inside the cave?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0006.jbp
+GUID: 5d02b3f1d1f6774419ea9fd3795596e8
+"What happened to the bodies of these trapped souls?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0007.jbp
+GUID: cd580fd11d9081f45816e3a8eda2ebf9
+"All right. I'll help you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0012.jbp
+GUID: 8768fb1e6ba190f479377c6f29979af2
+"I'm not getting involved."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0018.jbp
+GUID: d6e5897cc65cb334d8da8c46ef400d1c
+"My decision is final. I will not get involved. If you choose to go through with this, you will not be allowed to rejoin my party."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0021_refusedQ3Seelah.jbp
+GUID: 8bfedc78a23286640bd5684782592946
+"I can't afford to spend time helping a few people in need when the fate of the entire Worldwound is at stake. That is my priority. And I need your help, Seelah. We have to remember what's important."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0028.jbp
+GUID: 6dd3b61878d387b4dbef10292253f1e2
+"Elan, you need to pull yourself together. We've had this discussion before — we spoke together after the tragedy happened. If you want to help Kiana, you can't let your emotions get the best of you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Answer_0029.jbp
+GUID: d6e68640b972e8e4e9ea460235fcc914
+"Elan, are you sure you're all right? You're clearly distraught. A soldier whose heart is troubled is of no use to anyone."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0001.jbp
+GUID: def14993a63a830478c3d6d6b031338c
+{n}Elan's eyes burn with a {d|Seelah Elan desperate}feverish light{/d}. His face is deathly pale.{/n} "Commander, you have my respect. You survived the Abyss — and that is no small feat."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0002.jbp
+GUID: e9976f5d65ebc0641a13d93b6aa190de
+{n}Elan looks {d|Seelah Elan hope}calm{/d}, but determined.{/n} "Commander! I'm glad to see you've returned from the Abyss."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0003.jbp
+GUID: 82213327a06db644fb2b5bb1410d4654
+"All right, here's the deal." {n}Seelah gets straight to the point.{/n} "While we were in the Abyss, these folks discovered where the souls are being kept — the ones that were stolen by the demons."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0008.jbp
+GUID: 56f96d3f22dac0942890ebc8dafdfc56
+"No, we don't... But we can guess. Do you remember what, or rather, who started all of this? The esteemed jeweler Darek Sunhammer and his damned trinkets! Well, we did some digging on him, and we believe he's one of Baphomet's cultists. Think about their methods, their magic, and their ability to infiltrate society and strike when least expected — it all sounds exactly like our jeweler 'friend.' If we're right, we think this location might be a cultist hideout. It makes sense that he would take the stolen souls to a safe location in the Wound."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0009.jbp
+GUID: d30553a00d511b8439e9cfdca0564d86
+"We were going to move them to Kenabres when the Queen evacuated the city. But we couldn't — it was too dangerous to transport them. The clerics needed to focus all their efforts on sustaining the lives and health of the victims, and there were armies of demons roaming the roads. So we stayed in Drezen. Elan's brave friends protected the bodies. They defended the infirmary in your absence. Many of them were grievously wounded, but they succeeded in their task."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0010.jbp
+GUID: 3f29d60b9a30bbb49bc9d56eaae1f643
+{n}A shadow falls across Elan's face.{/n} "Kiana's lifeless body is there now... with the bodies of all the other victims. I've barely left her side since it happened. This is the longest I've been away... I know it's just her body... a shell, and that her soul is somewhere else, but..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0011.jbp
+GUID: fbbdcb4cfc822034997dea227819b768
+{n}Seelah watches her friend worriedly, but remains silent. Her hands are clenched into fists.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0013.jbp
+GUID: 5fa8ed029a93b4348b82ec659e6839a0
+"I'll leave at once. I'll keep watch on the cave and its surroundings. We can meet up there." {n}Elan sighs in frustration.{/n} "I can't bear to wait any longer. I can't leave Kiana's soul in the clutches of those monsters!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0014.jbp
+GUID: 90cbeb3cc2a0b37499652e295f149db1
+{n}Elan nods.{/n} "I'll leave at once. I'll scout out the area, and keep watch on the cave and its surroundings. I'll share my findings when you arrive. My heartfelt thanks for your help, Commander."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0015.jbp
+GUID: f750317f25d754b41b465a9533216338
+"Oh, I'm just itching to give my blade a taste of those soul-stealing cultists! But the most important thing is that we save the victims... and that's exactly what we're going to do."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0016.jbp
+GUID: 81f0222e6856efd4bbdbd5dea796716a
+"Suit yourself. But I can't abandon those poor souls."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0019.jbp
+GUID: a473e5412ffd0f54fbf395770a80a008
+"Well, I wouldn't say we 'discovered' it, exactly. I may be a cleric, but there are limits to my power... especially here in the Worldwound. However, we do know the general location. When I was looking for the souls, I had a vision. I saw a rock that looked like a gravestone, and beneath it was an entrance to a cave. I know that the rock is on the outskirts of the Winged Wood. It was not difficult to recognize the ancient forest — it's been burning for decades in an unquenchable fire started by the demons. I'm certain that this is where the souls are being held. But I don't know what awaits us beneath that rock."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0020.jbp
+GUID: 124ca3b348b3dff429ef708e5b24788a
+"Anyway, Elan and I have decided to go there, find the souls, and rough up any demon or cultist that gets in our way! But we'd love to have your help."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0022.jbp
+GUID: 8494c7f294b1af147bccc33a3cac58b1
+{n}Seelah looks at you in bewilderment and dismay. You can sense her anguish as she struggles to accept your decision. Finally, she nods, but her eyes are filled with sorrow and regret.{/n} "We shouldn't turn our backs on someone who needs our help. But if that's your decision..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0023.jbp
+GUID: 613485017b96c3840a2f9eea886deff1
+{n}Seelah hesitates for a moment, and you can sense her inner turmoil. Then she shakes her head.{/n} "You have plenty of soldiers and companions, {name}. But the trapped souls of Sunhammer's victims... they don't stand a chance without me and Elan. I don't want to leave you, but it seems I have no choice. Farewell! Let's go, Elan. We need to prepare for our departure."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0024.jbp
+GUID: 539eead9a3559ac4984d699c6277a8d8
+"You are the Commander's companion, Seelah. You need to follow orders, and do what {mf|he|she} says. I'll go to the cave by myself. I'll see what I can do on my own. Farewell, and farewell to you, Commander!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0025.jbp
+GUID: be25aa4b776039042b4de208aa557e78
+"And I should return to my duties as a cleric. I have much to do in Drezen."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0026.jbp
+GUID: e6db3ebdb4328724aad3327ec335b5ac
+"Thank you, {name}. I just want you to know — I really appreciate your help. I know these cultists are our enemies anyway, but I'm glad that you're not ignoring the plight of ordinary people, like the ones who were robbed of their souls."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0027.jbp
+GUID: 086a160e51ef79c4d98750203cb4b641
+"What if something has happened to Kiana's soul? Who knows what that monster's done to her! It makes me sick just thinking about it!" {n}Elan takes a deep breath, and tries to regain his composure.{/n} "I... apologize for my sudden outburst. I'm just... tired."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0031.jbp
+GUID: ce65ddc4da5417e4caa0bac6c556861d
+{n}Elan takes a deep breath.{/n} "I... apologize, Commander. That's the second time you've brought me to my senses. You're absolutely right. I will try to control myself."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0032.jbp
+GUID: 6cac7bac2baea854d9c52b1d89046cd8
+{n}Elan shakes his head.{/n} "My apologies, Commander. Perhaps I am too emotional — but how can I control myself at a time like this? All I can think about is my wife."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0033.jbp
+GUID: d759f7956ba304442b74a842ff6b14d5
+{n}There's an insane light in Elan's eyes.{/n} "However, a soldier will fight better if they have a purpose... a reason to go into battle. They will do anything, go anywhere, if they truly believe in their cause. And I will stop at nothing to save Kiana."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0001.jbp
+GUID: 77cb79234a094331832e0d2c6b91b518
+"I will not rush to judgment. I want to talk to him. I'll listen to my heart, and let it guide me in making a decision."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0003.jbp
+GUID: f967c3e0543a53846852152359ad90ee
+"What's bothering you?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0004.jbp
+GUID: 04c5a2a333bf6e34eaf1982ed7a58fa0
+"How long will we have to wait?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0008.jbp
+GUID: d742f9963162edb4699825b71551a32c
+"Traitors do not deserve mercy. We paid too high a price for his weakness."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0009.jbp
+GUID: d74844ad4e175bb4188c821a9bda21f5
+"Curl is a victim. He might have made some bad decisions, but I doubt he'd willingly surrender his body to a demon."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0010.jbp
+GUID: 4c08fb8114163a2458b13d63a2d01431
+"He bears some of the blame for what happened. But if others were pressuring him, if he acted out of fear for his life — then he deserves to be shown leniency."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0021.jbp
+GUID: 64adde35c9d4b8c45979bdcf6488588a
+"You follow your heart. You always try to help others and do the right thing. There is no reason for you to feel ashamed. You have done nothing wrong."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0022.jbp
+GUID: c0c69ac0e2e862c4ea13831265fadf73
+"The world isn't black and white, Seelah. You don't always make the right decisions, but we all make mistakes. That's part of life."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0023.jbp
+GUID: 79d636d7c2819b346849cbde98fdb832
+"Your heart is in the right place, but you lack discipline. You allow your emotions to cloud your judgment. If you don't change course, you'll stray from the path of the paladin."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0033.jbp
+GUID: 439342f6bc9eaff40807c8215701545e
+"I'd like to hear his side of the story before I make a decision."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Answer_0035.jbp
+GUID: e991570cd2bc173409fd23bf110030d1
+"Figure it out yourself. I honestly don't care. I'm tired of you always coming to me for answers."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0001.jbp
+GUID: 75220bf8ab5be034ea55b84d24c58de2
+{n}Seelah sits quietly with her hands clasped together. She sighs softly, and there's a faraway look in her eyes. You can see from her troubled expression that something is bothering her.{/n} "There you are, {name}! I'm just here, you know... waiting. Arsinoe is going to unite the souls and the bodies. Just a little longer, and we can put all of this behind us..." {n}She falls silent, and looks down at her hands despondently.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0005.jbp
+GUID: 096dd0fc12adbaf438bca7c7c9ebb4ba
+"Ugh, where do I even start? There's a lot on my mind. But hey, {name}... there's something I have to ask. All of these souls will be returned to their bodies soon... and that means Curl will be free. But what if it's confirmed that he really did work with the cultists? What will you do to him?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0006.jbp
+GUID: 3bdbd8728bc75bf4eadae1152a34f26b
+"Not long. Arsinoe is just taking a few precautions. She wants to make sure everything goes smoothly when the souls return to their bodies. She'll call us when everything is ready."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0011.jbp
+GUID: f9abfcd9d014f5944b25dd1b3acc841d
+{n}Seelah nods. Her face is unreadable.{/n} "Then let me ask you something else. How do you feel about me... and the part I played in all of this? I talked everyone into going to the Houndhearts camp to get the ring. I protected Curl from Elan's blade and saved his life. I'm the reason he — or rather, the demon that took his body — got away. It's my fault that we didn't find out about the jewelry being dangerous. We could have prevented the theft of so many other souls... if it hadn't been for me."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0014.jbp
+GUID: e925066c7454c6341bc8ddfd3e49be8b
+"So many things have happened, {name}... And I just don't know what to think. In moments of doubt, paladins are supposed to find certainty in the words of their oath. So here I am, repeating the words of the code over and over. 'I will be temperate in my actions,' and 'I will guard the honor of my fellows.' 'I will learn the weight of my sword.'" {n}Seelah's words become a chant. She recites each line with conviction.{/n} "'Without my heart to guide it, it is worthless — my strength is not in my sword, but in my heart. If I lose my sword, I have lost a tool. If I betray my heart, I have died.'"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0015.jbp
+GUID: 7cb7b082ff8aca4438c7800a8fdce647
+"When we were in the Molten Scar, Jannah told me that I was the reason she deserted. She said that I had pushed her to play the hero, to take on challenges she wasn't prepared to face... and that's why she fled in panic."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0016.jbp
+GUID: a2903816f2b71254b91277557273ab37
+"I am responsible for Elan's death... I didn't uncover the demons' plan at the wedding, I didn't protect Kiana, and I didn't notice how desperate Elan was... I wasn't there for him in his darkest moments."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0017.jbp
+GUID: fb301b49ff3c2f04884ef748bcda3913
+"Jannah found the strength to change. She didn't break... she became a better person. To be honest, I've never seen her more proud and confident than when we defeated Sunhammer."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0018.jbp
+GUID: eb580380962165c4f882b360b5e74f4f
+"I'm just glad I managed to remain friends with Elan. We were able to help him and Kiana, even though they were tangled up in the schemes of those demon-worshiping cultists."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0019.jbp
+GUID: b0a2d2d2f5c091445a3c21a4ba6ed36f
+{n}Seelah falls silent. Then she turns to you.{/n} "So... what is the weight of my sword? Only idiots think they are infallible. I may not be the smartest person in the room, but I hope I have at least some measure of self-awareness. I need to reflect on everything I've done — on what kind of person I've become."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0024.jbp
+GUID: af455979c98c7484c9e74360b4645c62
+"You've made this point before — both through your words and your actions." {n}Seelah sighs.{/n} "Fine, this dimwitted paladin can take a hint. You're right, {name}. I need to improve... and I will!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0025.jbp
+GUID: 5f8060efbd1909c4c92fb77036909d2c
+"I guess I have a lot to think about. You make it sound so simple... but it doesn't feel simple. And when I look at you, I see someone who is kind to others. You show emotion... you're not always strict. Or maybe that's just how I see you, I don't know..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0026.jbp
+GUID: b34bbc351cd28354fb832e451ac0f8e8
+{n}Seelah's eyes brighten.{/n} "Thank you. I needed to hear that from you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0027.jbp
+GUID: f462d972dad84fa43b98c2399eb4ff17
+"Great, now I'm even more conflicted! But maybe that's for the best. I suppose a paladin should have doubts. When you question your actions and decisions, it's like checking a map to make sure you haven't lost your way."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0028.jbp
+GUID: 73815b731281fdc47bbc59aba42b2126
+"Greetings, Commander! I'm glad you are here. We are ready to return the stolen souls to their bodies, and bring these poor people back to life. We will need to help them get over their initial shock, and your presence will undoubtedly help ease their transition. First, however, I need your companion. Seelah, everyone is waiting for you."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0029.jbp
+GUID: e9a5a4c03ea016f47b29d91b2ff3a00c
+{n}Seelah gets to her feet.{/n} "Me? Why?"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0030.jbp
+GUID: 2b133bf7ac66d6241a69a53dce2bf05f
+"Because we want you to set the souls free. We all agreed that you should be the one to do it — after all, you saved these people. You should be the one to bring them back to life."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0031.jbp
+GUID: b3e6076282402a1489b6f226567cf8fa
+"You're confusing me with someone else. I'm Seelah the blockheaded paladin. I'm no hero."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0032.jbp
+GUID: aeccec94d6e3246488d7f13577a8380d
+"Like I said, it was a collective decision. We all agreed that it should be you — the loved ones of the victims, the Houndhearts, myself... and I'm not going to go back and ask them to find someone else! So stop arguing, and let's go."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0034.jbp
+GUID: ec73ba068e20e1b44a6e1a50897d43c2
+"But suppose he does admit to working with the cultists?" {n}Seelah is not willing to let the matter go.{/n} "What if he claims that he was forced to help them... that they threatened his life? What then? I know it's all hypothetical... but I'd like to know what you would do. This is... really important to me."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0036.jbp
+GUID: 6a8058648f4937d42ad846c811dc6c69
+{n}Seelah stares at you in shocked silence.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0037.jbp
+GUID: fcec90eb8b08eec4896db0be72a6a444
+"Yet in the end, she found the strength to change. She didn't break... she became a better person. To be honest, I've never seen her more proud and confident than when we defeated Sunhammer."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahInDoubt/Cue_0038.jbp
+GUID: 01a1c98b38a78fd4abeaa0c09f3a5be9
+"I guess everything's turned out all right. We'll get the souls back, everyone will come back to life, and we'll put all of this behind us. When I took my oath as a paladin, I swore to 'guard the honor of my fellows,' 'have faith in them,' and 'learn the weight of my sword'... and I've done those things. So maybe I should stop worrying about what Sunhammer told me before his death... He was just being spiteful, right? His words were full of poison... not truth."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Answer_0003.jbp
+GUID: 3d58b54f21724074599929613e0a5670
+"We saved lives. That's what matters."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Answer_0004.jbp
+GUID: d4240553e500283469840f38ce993b04
+"We defeated the enemy. That's what matters."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Answer_0005.jbp
+GUID: 73bf5b7be9e6b6c47a2107422909ea1f
+"It's time for us to move on."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0001.jbp
+GUID: 5a34229471c33d14482c99b71b52848a
+{n}Seelah touches your shoulder and says somberly,{/n} "It's done. It's finally over."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0006.jbp
+GUID: 1b87380471e63324e9a7ebdc82b1c723
+"We saved lives, defeated the enemy, and gained some experience in the process. At least, I feel more confident and experienced. I feel like I've grown... although it's a little late for that! Haha, I'm too old for growth spurts!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0007.jbp
+GUID: e6663a1feef3db9408fc54ef71bcb814
+"We did, but I wish we had saved more. I... never mind. I need to go pray for the souls of those who were lost — and those who have fallen. I'll be all right... I just need some time."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0008.jbp
+GUID: 81292b57e968aa444b34bee24baaf521
+"Anyway... thank you. Thank you for being there for me. We usually reserve the world 'trial' for bad things, like disease, poverty, and war. But a good thing, like friendship, can also be a trial. I wasn't ready for this, and I may not have been able to handle it all without you. So thank you. I want you to know that I'll always be there for you, just like you've always been there for me."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0010.jbp
+GUID: 752e714c34f25eb4da6073779f2ebf71
+"Yes, you are right. Life moves on... and so should we. We must not dwell on the successes and failures of the past. We must focus on the future."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0011.jbp
+GUID: e9847749e496c044c99aeea59abd1ca1
+"Thank you for helping me... for offering your wisdom and guidance during these difficult times. Things didn't turn out the way I wanted, but... it's always darkest before dawn. I've always believed this in my heart... I've always had hope. I won't give up now, even if my heart is filled with grief."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0012.jbp
+GUID: 3574f25b2b6ca0d47aaafbd6acc3556b
+"You're right. We didn't just save lives. We made sure that villain got what he deserved. It all seems so simple, but I feel like I've changed... grown. It's like a veil has fallen from my eyes."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0013.jbp
+GUID: cddfd6385c0711d45bcc5d7671526990
+"You're right. That Baphomite creep won't be able to hurt anyone else. I wish we'd discovered his plans earlier... much earlier. Perhaps we could have done more. Still, I'm glad we managed to save as many as we did."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0014.jbp
+GUID: 1dcc76bbc36f4164a9109262674469b1
+"Yes. A thousand times yes. that's why I traveled halfway across the world to join the crusaders — to save and protect. You know, I feel so different now. Even my sword feels different in my hand. I feel... confident."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0015.jbp
+GUID: e89a8703893000f43b5e50512ad87db4
+"I'm glad that Baphomite creep won't be able to hurt anyone else. But our victory came at a cost. If only we had discovered his plans sooner... but what's done is done. The war isn't over yet, and regrets poison a soldier's soul."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0016.jbp
+GUID: 5f2f85ecbdd1b5e41962233dc9f1aaa5
+"Yes, that's what matters most. To look into the eyes of those you have saved... there's no greater reward."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/SeelahThanks/Cue_0017.jbp
+GUID: 29022ba6fa1280b43b64c7a6d3655d93
+"Yes, we rid the world of that scumbag, and we saved everyone we could. It'd be nice if villains like him didn't exist. We wouldn't have to deal with all these evil schemes and dastardly plots. But since they do exist, we're here to give them what they deserve. Defeating evil, saving lives, and restoring victims to their loved ones... There's nothing I love more!"

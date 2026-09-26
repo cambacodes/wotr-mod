@@ -1,0 +1,85 @@
+{
+  "AssetId": "c33407f132b192643a438bd33797efa1",
+  "Data": {
+    "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+    "PrototypeLink": "",
+    "m_Overrides": [],
+    "Components": [
+      {
+        "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+        "m_Flags": 0,
+        "name": "$EtudePlayTrigger$ce46aaa1-65f7-463e-aece-953057ad4230",
+        "PrototypeLink": {
+          "guid": "",
+          "name": ""
+        },
+        "m_Overrides": [],
+        "Comment": "Fail companion quests and stop Seelah's laughter at Warcamp",
+        "m_Once": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Actions": {
+          "Actions": [
+            {
+              "$type": "576a514e5164d254f936cd4ce788ae6a, RunActionHolder",
+              "name": "$RunActionHolder$a23cc12a-e833-446b-8b3a-92b54a5be7f2",
+              "Comment": "Fail all companion quests - Seelah",
+              "Holder": "!bp_894a7ba9ecb24f2aad9eefe09a6220d3",
+              "Parameters": {
+                "Parameters": []
+              }
+            },
+            {
+              "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+              "name": "$CompleteEtude$9b56464c-7c1a-48af-a3b4-c5fdf4ad5824",
+              "Etude": "!bp_8fb7fcd0c935454459092734bc9024ab",
+              "EtudeEvaluator": null,
+              "Evaluate": false
+            }
+          ]
+        }
+      }
+    ],
+    "Comment": "",
+    "m_Parent": "!bp_1d30b49f8756c2b40bb8271e856675c5",
+    "ActivationCondition": {
+      "Operation": "And",
+      "Conditions": [
+        {
+          "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+          "name": "$CompanionInParty$f0c2d3d9-cac5-4f3f-887a-2c96a5921566",
+          "Not": false,
+          "m_companion": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+          "MatchWhenActive": false,
+          "MatchWhenDetached": false,
+          "MatchWhenRemote": false,
+          "MatchWhenDead": false,
+          "MatchWhenEx": true
+        }
+      ]
+    },
+    "CompletionCondition": {
+      "Operation": "And",
+      "Conditions": []
+    },
+    "m_Synchronized": [],
+    "m_AllowActionStart": true,
+    "m_LinkedAreaPart": null,
+    "m_IncludeAreaParts": true,
+    "m_AddedAreaMechanics": [],
+    "m_StartsWith": [
+      "!bp_21db4aa6fb24fde4d99f047149c8d3ff",
+      "!bp_b26c0c86a4c8c9e44b528bd63ca9a2d8"
+    ],
+    "m_StartsOnComplete": [],
+    "m_StartsParent": false,
+    "m_CompletesParent": false,
+    "m_ConflictingGroups": [],
+    "Priority": 0
+  },
+  "Meta": {
+    "ShadowDeleted": false
+  }
+}

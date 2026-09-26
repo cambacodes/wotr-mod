@@ -1,0 +1,11 @@
+{
+  "Id": "RanRomanceTirabade",
+  "DisplayName": "Relations and Romances - Three at the Table",
+  "Author": "Zio",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.27.11",
+  "Requirements": ["RanRomance", "CustomNpcPortraits"],
+  "LoadAfter": ["RanRomance", "0ToyBox0", "CustomNpcPortraits", "WOTR_AIVO"],
+  "AssemblyName": "RanRomance.Tirabade.dll",
+  "EntryMethod": "Tirabade.Main.Load"
+}

@@ -1,0 +1,776 @@
+9c9d5f3b-f252-4948-8e04-c1bfe3cca386
+Minagho
+
+17f214bc-bff5-4b15-869e-c0de2e716259
+Minagho
+
+e251c91f-128b-4b17-a725-a6f96593a96d
+Minagho's Hideout
+
+c276344f-b62e-4bda-9056-0f8afd67d300
+You killed Minagho, the lilitu who was your long-time enemy.
+
+783d04d9-0a70-4e0e-b0c2-c421a4502317
+You persuaded Minagho to fight against Baphomet, not against you.
+
+7330eaed-e9f7-44f5-b46f-4db0dcbebc5c
+You wounded Minagho while she was attempting to escape.
+
+f7902aa3-ddbe-4e2a-bc54-f22ffa4711c2
+You saved the paladin Yaniel from Minagho's captivity.
+
+1947ed96-c7bd-45d5-83b7-aa7a3a7a5c91
+You gave Minagho and Chivarro another chance.
+
+147687b5-818c-485c-a52b-e4ab4505a1de
+Minagho
+
+097f952b-a4fe-4368-a805-54a7bcfe81f5
+Nulkineth is a powerful nabasu demon and a minion of the demoness Minagho.
+
+4922921d-09f7-4086-8138-2bdca2d4214f
+Staunton Vhane is a dwarf crusader whose fatal mistake led to the fall of Drezen. In the thrall of the demoness Minagho, who appeared to him as a beautiful elf woman, Staunton and his friends took away a powerful artifact that guarded the fortress — the Sword of Valor. Without the artifact's protection, a tide of demons washed over the city, which fell in a great massacre. Staunton survived these events and would have been sentenced to death, but Queen Galfrey, believing him a sincerely mistaken idealist, not a traitor, stepped in and spared his life.
+
+47a13325-47c3-4b23-9c1f-f384cab41be7
+The powerful lilitu Minagho is one of the demons whose names in Mendev are always spoken with a curse. She's the author of two of the most horrific atrocities in the history of the crusades — the fall of Drezen, and the Red Morning Massacre of Kenabres.
+
+391c5e8a-6e0a-45af-a7d7-fd7168b60d60
+Kenabres is a city of glory, but not one of spotless virtue. Until the First Mendevian Crusade, it was a small town perched atop a bluff overlooking the West Sellen River. During the final dark days of Sarkoris, hysterical refugees splashed across the river and sought safety behind the walls of Kenabres. At first these refugees were allowed in unquestioningly. However, a lilitu demon named Minagho entered Kenabres magically disguised as a refugee. Once inside the town's walls, she revealed her true form and slaughtered dozens of citizens before vanishing in a cloud of greasy black smoke. After the Red Morning Massacre, as it was called, Kenabres refused entrance to any except those who could demonstrate direst need. Individuals who fell under suspicion were turned away or executed on the spot. Kenabres became known as a safe but suspicious city. By the time of the Second Crusade, the leaders of Kenabres agreed to house one of the Wardstones to guard against the demonic hordes pouring from the Worldwound. This act assured Kenabres's role as a strategically vital city, key to the defense of Mendev.
+
+8eebc19f-b5d1-4f05-9c33-fef570f32aaa
+Minagho's Bodyguard
+
+82352858-9ff6-4cfe-928a-4f2d25c9d224
+Minagho
+
+7c9c0d40-446d-4fc1-a61d-89ac16d16650
+To Minagho's hideout
+
+40314cfa-0020-4e4c-a0c9-7aac4351287d
+The glaive known as Soulshear became the disgraceful symbol of Staunton Vhane's fall. The dark spells cast upon it by the demoness Minagho imbued it with power. Now this sinister weapon will be turned against the demons of the Worldwound.
+
+0146209e-f563-4e78-8743-81e656773c54
+When Staunton Vhane turned to evil, his battle hammer was reforged into a glaive named Soulshear and charmed by a demoness named Minagho. Now this weapon is in the crusaders' hands, and only they can decide whether to use its power.
+
+1d55d11f-682a-41d2-a52f-5ab034454584
+"The most trusted servant of the demon lord Deskari. Among the historians of the Mendevian Crusades, he's known as the Strategist of the Worldwound. He's not as renowned as Minagho, the conqueror of Drezen, or Hepzamirah, Daughter of Baphomet — but he has claimed the most major victories over the forces of Mendev. He's a general and quite possibly one of the best tacticians in the entire Abyss."
+
+5bc75de7-00aa-45a4-974b-351776d763f4
+"But there is also a more pragmatic reason. Back in the day, Khorramzadeh planned to capture Drezen himself, but Minagho beat him to it. If he takes it back now, he will finally have his glory, as well as further humiliating Minagho."
+
+5c2ac86a-fc1d-4348-9670-4809a1395037
+Soulbasher, Staunton Vhane's warhammer, was once a weapon of honor and repute among the crusaders. When the keeper of the Sword of Valor rejected his duty as a paladin and became a double agent, he single-handedly reforged the warhammer into the glaive Soulshear — a weapon admired by the worshipers of Baphomet. Mistress Minagho herself tempered the new blade with the grimmest and most sinister enchantments, and no crusader would ever dare to reclaim the disgraced weapon.
+
+3f18fe59-921d-40b6-b2b2-558a79ce9876
+Minagho
+
+22bc6c70-e74f-4633-bc6c-1d49298a69d4
+"Even the fearsome Minagho, as we now know, hired professionals for challenging targets. And rightly so — killing is best left to the professionals."
+
+a9cfccc4-43d1-421e-bb11-306ce96bf0c7
+"Every demon is a born killer. What happened with Minagho was unique. The mark on her forehead not only weakened her, it was also painful. She was desperate and she latched onto any opportunity to destroy us."
+
+d751963e-37c5-4bee-b333-e2a18131a97e
+"I hope Minagho comes, so I can crush that eyeless skull with my bare hands."
+
+c1ca5d8e-2469-45e2-aeed-1d6f476b4061
+"As you can guess, that officer was called Staunton Vhane. And the woman turned out to be a demon. Not just any demon — it was {g|Minagho}Minagho{/g}, that foul wretch. She's given us a lot of grief here in {g|Kenabres}Kenabres{/g} too... Just don't ask me what I was doing while my brother was off having trysts with that beast, and why I didn't save him from his own stupidity." {n}The blacksmith gestures as if to ward off the inevitable reprobation.{/n} "Who could've guessed it would end like this? I've failed my brother, that's the truth. I blame myself every day, looking at his plight... So that's the story."
+
+1dcbc9c9-ca62-4292-af84-d57674f6752e
+{n}The tiefling gives you a hateful glare.{/n} "Lady {g|Minagho}Minagho{/g} was displeased with me. She branded me with this rune to make me suffer. Minagho wanted me to subjugate the demons of our 'ally,' Deskari. To wrest control away from that idiot Kilas! But I failed..."
+
+ea1e1623-15d4-4bb5-ba1c-bb28e4ff956f
+"But it seems my luck is turning. You don't look like rank-and-file crusaders. When I bring {g|Minagho}Minagho{/g} your heads, all will be forgiven and she'll remove this brand!"
+
+1d49e58c-ea06-4173-bc9a-d3660cf6411d
+"Savamelekh, this is my last warning. You need to act discreetly, without attracting any more attention than you already have. People are already talking about the strange disappearances of Kenabres's most righteous men. Keep below ground, nurture your mongrel pets, and wait patiently. The call to battle will soon come, and it will sound loud and clear even down there in the catacombs. Gather your warriors immediately after that, bring them to the surface, and lead them to the Tower of Estrod. This tower will be my final dagger, and I shall plunge it into the guts of Kenabres. Our vicious servant Faxon made the tower his base of operations several months ago, taking command over the templar forces in Kenabres while the Grand Master was distracted by other matters. Faxon has already gathered a stash of weapons, potions, and other useful supplies, which he will gladly share with you if needed. If he behaves himself, you two should combine your forces; if not, just take his stupid little head off his shoulders and take command yourself.
+Mistress Minagho"
+
+10d64fd5-0f40-4607-8bca-0c98e0550e93
+Promised Minagho that good will triumph over evil.
+
+3efe2c78-6b1b-4e1c-a7b3-39e4b4fae23d
+Promised Minagho brutal punishment.
+
+7a12f3f7-fd48-4925-b54d-a6b87fc9bcc3
+Promised Minagho retribution for her crimes.
+
+0692d3fd-7d7e-4050-a2e3-d75d5f388026
+Promised Minagho fun.
+
+3d38e2f0-8ba3-4ab6-9402-21715268c5d4
+"What... What are you doing here? How?" {n}How did {g|Minagho}Minagho{/g} get here? She doesn't rush into the chamber — she has been here the whole time, but some unknown spell has stopped you and your enemies from seeing each other.{/n} "Ah, I see... Tricks from your pathetic goddess. Ha ha ha! So even {g|Iomedae}Iomedae{/g} will resort to dirty tricks when you have her cornered! Don't celebrate yet, mortal. There's no one to hide you from me now!"
+
+d06f9d49-ef8a-42a6-858d-046e9cace673
+"Look, you're already wounded! Pathetic mortal, I'll have no trouble finishing you off now!" {n}Looking down, you notice that the wound on your chest has opened up again and is bleeding as if you were hit by a sword. But... there is no pain! All you feel is power filling you. Right before your eyes, the edges of the wound start to join and heal until it closes fully. Minagho's face twists in frustration.{/n} "You'll die anyway!"
+
+9d99935f-c268-4294-b8e4-fd0131ae84b3
+"Minagho! Let him go!"
+
+047a6eb3-c05f-4e35-97f9-0bfca779c0bb
+{n}All traces of Minagho's bravado have disappeared, and now her voice trembles with panic.{/n} "How are you doing that? Where is your power coming from?"
+
+99ac5e7d-05ab-4a16-818a-d4576af07573
+"Minagho! To me!"
+
+8817a204-eb22-4cf3-b47a-5f223acd864c
+"Enough talking. Minagho, cast your spells and get out of here. I'll hold {mf|him|her} off. Quickly, before I change my mind!"
+
+3b6e1b9a-f4f5-4472-9a77-bb4d2d00076d
+"Go. Let me finally..." {n}Staunton clenches his teeth, swallowing the rest of his words. Panting, he looks between Minagho and you, and back again. At last, the dwarf nods.{/n} "Damn it all! Let's go!"
+
+ae8079f7-f601-47bf-ba37-f22855d014fd
+Threatened Staunton and Minagho with righteous retribution.
+
+6c5b6809-d397-475b-b1fe-116d2f6b8673
+Mocked Staunton and Minagho
+
+f5a2f307-ea46-4acd-9358-056733334a6e
+{n}{g|Stonton}Staunton{/g} lies on the floor, wounded and glaring at {g|Minagho}Minagho{/g} with loathing as she leans over him. Struggling to speak through his cut lips, the dwarf rasps:{/n} "Why did you drag me here, you wench? To mock me one last time? Go on, finish me. Drink my blood, devour my soul — just get on with it, let me die at last."
+
+f94655cf-1a4a-4a39-95d5-3e5f452d8ddd
+"Get back!" {n}Grasping his weapon, Staunton slashes at Minagho's eyeless face and, with surprising agility for one of his stature, flees up the stairs.{/n}
+
+99cf4475-e905-4552-8b22-53479ad32118
+Upon entering the chamber where the vanquished {g|wardstone}Wardstone{/g} resides, the crusaders could have expected many things: an ambush, deadly spells, or a horde of enemies. But not an empty hall, still and silent, with no {g|Minagho}Minagho{/g} or her henchmen, only the obelisk and glimmers of light dancing on the dirty floor.
+
+c2808294-8dea-4f3b-9c29-a272e664dd8f
+Made a quip about Minagho having no eyes.
+
+006dfad9-e14b-4a6c-9d4b-7325c92446fd
+{n}The aged dwarf from Irabeth's troop, silent up to now, spits on the floor. His hardened, craggy face, like storm-weathered stone, twists as if in pain.{/n} "Minagho. You again, you wench."
+
+571a019d-2ef7-4a9a-b12b-48f9d87a5f6a
+"Oh my, like butter wouldn't melt!" {n}Minagho threatens Staunton with a dainty clawed finger.{/n} "What I remember is how eagerly you would run to our trysts. How you begged to see me again. How you promised you'd do anything I asked — by your own free will you said this! And now you claim that {g|Drezen}Drezen{/g} fell because of me? No, no, my dear, that was entirely your own doing!"
+
+68795518-5185-470b-848d-5b269f9a737e
+"{g|Minagho}Minagho{/g}? The one who..." {n}The half-orc is too well-bred to spit on the floor, but the name sounds like a slur on her tongue.{/n} "Be careful, she's one of the deadliest creatures in the whole demon horde. She was once responsible for a massacre in {g|Kenabres}Kenabres{/g}... She must be back to finish what she started!"
+
+0cdfe8c1-db1f-46ea-b0d8-00aa5f41a0b6
+Told Minagho that evil was powerless in the face of good.
+
+23079745-b983-4116-9023-1fab6e51bb81
+Promised Minagho ruthless retaliation.
+
+198e4ecc-9657-4353-86db-e6678f5b644f
+"That's it, I'm tired of playing around now." {n}Irritation seeps into Minagho's voice.{/n} "You want to know what will happen when I'm done with the {g|wardstone}Wardstone{/g}? Here's a little demonstration!"
+
+2136f150-e180-44d1-8d4c-a39dd916b113
+Rebuked Minagho.
+
+7131c820-93af-4ac4-823c-b4cdd7b1309f
+The player's party battles Minagho and her cultists
+
+d72ff8e4-80bc-41ef-b878-62872f639a7e
+"You've already forgotten me? You mortals have awfully short memories, even shorter than your little lives... Staunton, sweetums, don't you want to introduce me to your friends properly? No? Well, I'd better do it myself. I am {g|Minagho}Minagho{/g}, {g|lilithu}lilitu{/g} and faithful servant of {g|Baphomet}Baphomet{/g}, and leader of his armies. This city is mine now. I'm just starting to settle in, get things just how I like them... But once I'm finished, I promise you the results will be simply to die for."
+
+f0984895-0a22-45cc-b0ad-6a86e09b9b23
+{n}The cultists glance at each other, hesitating. At last, the man who was first to speak up against Minagho rips {g|Baphomet}Baphomet's{/g} unholy symbol from his chest and casts it to the floor.{/n} "I'm done with this shit! I only followed this hoofed menace because I thought the crusaders had had it, and there was no other way to protect my family. But now I see that there is hope. I won't bow before these heinous idols ever again! If they kill me — at least I'll die a decent death."
+
+b8867e3a-ae22-49cc-b36d-bbd0cf811356
+{n}You send the troublesome dwarf sprawling to the floor with an elbow to the face. The time for chatter has passed! The demon... That wench. She must die! The rage bursts free. You want only one thing — to rip Minagho's horns from her skull and shove them down her throat!{/n}
+
+3587fe09-3157-40f7-8d8b-e8094797506c
+{n}You send the troublesome dwarf sprawling to the floor with an elbow to the face. The time for chatter has passed! The demon... That wench. She must die! The rage bursts free. You want only one thing — to rip Minagho's horns from her skull and shove them down her throat!{/n}
+
+12e49abf-d6e9-4042-84c1-35b0e302984b
+"There isn't a soul that can resist the temptations of the {g|Abyss}Abyss{/g}. Even a stone can be turned. I'm not joking — your precious {g|wardstone}Wardstone{/g}, weakened from the injury inflicted by {g|Deskari}Deskari{/g}, has almost succumbed to my charms. Soon the whole barrier around the Worldwound, the gift of your useless {g|Iomedae}goddess{/g}, will be a weapon of the Abyss. Just a little more, and... boom!" {n}Minagho's laugh rings through the chamber.{/n} "Every city with one of these eyesores stuck in the middle of it, from Kenabres to Nerosyan, will turn into smoking craters, and all the mortals into red sludge beneath our hooves!"
+
+bdb25b0e-789f-4635-b606-bcdbc1902868
+"Just as soon as those innocent lambs entered the city, they transformed into demons and rushed toward the {g|wardstone}Wardstone{/g}, slaughtering everyone who tried to stop them. Sixty-two people died in less than a minute. The demons used their mutilated corpses to desecrate the obelisk. None of them dared to go near it, the light of the goddess burned them all — so they threw the blood from afar, spattering the Wardstone from every direction! And the lead demon — an eyeless beast, {g|Minagho}Minagho{/g} is her name — jeered and gloated, saying we mortals had been sitting ducks. And the creature was right, too! We let our guard down, and we got what we deserved."
+
+8aef8f73-56b0-46d4-ad6f-fbfb70b66cf4
+"Aren't you getting tired of fleeing from me, Minagho?"
+
+444ee4ce-8314-4bd5-b5d5-7df63f9c816f
+"Minagho, what's that on your face?"
+
+8219a6aa-023f-42d2-936d-4969759e8658
+[Attack] "Finally, I will make you pay — for everything. Let Calistria witness my vengeance! Staunton, Minagho — I stab thee with my heart!"
+
+64725a11-9e94-4f88-94ee-2920ca6f74b0
+"If {mf|he|she} kills us, then so be it. But this is my city, and I will fight for it to the end. And you, my love..." {n}Staunton grasps the chin of the {g|Minagho}demoness{/g}, sinking his nails into her tender skin, and pulls her face toward his, kissing her lips quickly before pushing her away.{/n} "You will be with me. To the end."
+
+da5184a7-d266-4b6c-b067-4e46ef5928ac
+"You have no idea how tired {g|Minagho}I{/g} am of you, mortal! But never mind. Today we will finally be done with you. Right, {g|Stonton}Staunton{/g}? Right, sweetie?" {n}The demon's laughter is shrill and unnatural.{/n}
+
+842f595b-e349-47d5-ace6-c96645e6218f
+"You'll know soon enough, Lady Minagho."
+
+70519d9f-5935-4d22-99de-8609721814bc
+"Hello, Minagho! Greetings, Mr. Misery Guts. It's us again!"
+
+ec4ab4ac-699d-42f6-b8f1-cd12cfad202c
+"Hey, Minagho! Where are you going? I still haven't enjoyed... what was it you said? Yes — the sweetest spoils of victory. You won't deny me the opportunity to gloat once we crush you, will you?"
+
+745e27b4-528c-4f33-9684-db5466502a12
+"Minagho. My jailor. My torturer. You think I mean to do them harm? That {name} will suffer, if I stand at {mf|his|her} side? If that were true, why then would you try so hard to persuade {mf|him|her} to cast me out?"
+
+c35bfc35-b147-4cc9-be0e-26fd3c651c64
+Reproached Minagho for disloyalty.
+
+a0442709-7b1a-4e81-942f-dafde7af9ee3
+Threatened Minagho with a reckoning.
+
+a75f83c6-0dd5-4c5f-a4a9-89c40b2d794f
+Invited Minagho to enjoy the battle.
+
+f1025ca4-0075-4dbe-88fc-c9dad6ed79a9
+{n}There is panic on Minagho's blood-splashed face. Her lips are trembling.{/n} "You stubborn ass! You want to die for a heap of rocks — go ahead! I'm not staying here!"
+
+c9ee4945-2b31-4e0a-9876-827065eb6189
+"Give me back what's mine!" {n}Minagho stretches out her hand. A crimson spark flies out of Staunton's eyes and plants itself in her palm. Staunton freezes, stunned; he's silently moving his lips, which have turned gray in a flash, like a fish out of water. The demon turns to you.{/n} "Take him, he's yours! And Drezen too! I don't care about this fortress — or this half-wit!"
+
+4579c9f9-dc56-47d4-8cdc-c9085b761617
+{n}Staunton watches Minagho leave.{/n} "So this is to be my fate... I've been betrayed by people and demons alike. Now my life really is worth nothing..." {n}He looks at you, and the sorrow in his eyes gives way to hatred.{/n} "But that doesn't mean you won't pay for it dearly! Come on, you scumbag, kill me if you can! I don't care anymore!"
+
+e9335edf-ff94-4092-88c8-7a0e3c30cc1e
+This heavy armor adorned with the seal of Deskari was forged for one of the high priests of the Locust Lord's cult. The mere sight of it struck terror into his enemies — but not his allies. Soon after Baphomet's followers captured Drezen, cultists of Deskari arrived there and demanded that the city be given over to them. The templars happily agreed, handing over control of the city to their allies with all the proper formalities, including a feast at which every last Deskarite was poisoned. After that, the armor was displayed in Drezen's citadel as a warning to Deskari's worshipers — until Minagho finally found a knight worthy of wearing it.
+
+20d6208a-ac7b-4004-8567-3bf99fcf9301
+"Well you know... my {g|Stonton}brother{/g} is here. You know him — Staunton. Yes, yes, I know there's a noose waiting for him in Kenabres for treason. I told him not to get involved with that {g|Minagho}crazy woman{/g} — but when did he ever listen to me?"
+
+98dec074-1b39-45bd-b021-bece46b7735a
+"That {g|Minagho}crazy eyeless hag{/g} with horns — she got into his head. Demons are like that, you know, they can tempt. Among the crusaders, my brother was the lowest of the low, but here he commands power and respect. And he doesn't think of the cost. Hah!" {n}Joran waves his hand, clearly vexed.{/n}
+
+e1676dcd-0be4-4c93-9da3-2474a0b246fa
+"{g|Minagho}Minagho{/g}! What is this? How could this be?" {n}The dying monster at your feet raises its snout to the ugly sky of the Worldwound.{/n} "You deceived me, you wretch! You promised I'd become... become..."
+
+a51eca7f-b6f3-4747-840d-8b2c5ccb65e4
+"Right... Right! Let's fly away, quickly!" {n}Holding Staunton close to herself, Minagho disappears.{/n}
+
+30778f1c-9fed-4324-a826-01f599414bb6
+"Minagho! Call off your puppet and come down here, now!"
+
+d73ceb69-60be-4995-a92f-c4406c099ed8
+"Darling, look who's here!" {n}You see two familiar figures in the bell tower. The fallen crusader {g|Stonton}Staunton{/g} watches marching ghouls with grim disgust. {g|Minagho}Minagho{/g} takes him by the chin — her sharp claw leaving a scratch on his cheek — and turns his face to you.{/n} "It's the Commander! Come to return what {mf|he|she} stole from you. It should have been you in command of this army! And these powers — they should have been yours!"
+
+156055cf-57ae-4750-a422-16bff898d978
+{n}A tongue resembling a fat crimson slug crawls out of Minagho's mouth and reaches out to Staunton's face. The dwarf turns away, and the demon's tongue leaves a moist trace of slime on his cheek.{/n}
+
+a58aa73a-40cb-4edc-8e1d-763b9558737c
+"Such touching concern. What would you buy with it? Your life? You think I will defend you? Ask Minagho to spare you? And then you'll fall to your knees? What a pathetic sight!"
+
+41939826-561b-4583-ada1-64b0543f9e7f
+"That's a good question. Its walls were built by dwarf craftsmen, and the power of the Sword of Valor protected the city. Alas, where raging hordes failed, a single lying tongue was all they needed to succeed. The demoness {g|Minagho}Minagho{/g} convinced a young and ambitious crusader named {g|Stonton}Staunton Vhane{/g} that the banner belonged on the battlefield. He went on a daring and unapproved raid, and the banner ended up in the enemy's hands. The city fell soon after. Ever since then, for seven decades, it has served as a citadel for the forces of the {g|Abyss}Abyss{/g}."
+
+b3e6eeb7-2051-43b9-829f-83a39e487266
+"So, this is where Minagho fled to and where all the demons in the city have been coming from! They can pass through the barrier freely, but we can't. And it doesn't just stop us, it injures us too..."
+
+f60777eb-2f48-497a-8fa2-5f4767753350
+"The main demon forces are moving out from the city of Iz and the Threshold fortress. Scouts are reporting that for now we don't stand a chance of tearing through the defense and launching a counterattack. We can only gather our forces, rebuff their attacks, and wait for the right moment. Unfortunately, other hostile groups keep appearing out of nowhere. And on top of all that, Minagho is still prowling around somewhere out there... Anevia is trying to find out where that Abyss scum has run off to — maybe she's already got some leads."
+
+c6df74d8-63dc-466e-a280-c06a894037e4
+"Regarding the plot — I got inside Drezen via the catacombs, where the traitor Nurah Dendiwhar had laid an ambush for me. I survived, found the Sword of Valor, and defeated Staunton Vhane and Minagho in open battle."
+
+ecbd5d2c-55cd-44c8-8410-60fef67b61fe
+"Regarding the plot — I and the Hellknights wiped out the giants manning the catapults. Then I found the Sword of Valor and defeated Staunton Vhane and Minagho in open battle."
+
+51388a45-6318-4b55-abf5-c308a065d849
+"Regarding the plot — I charged into Drezen through the main gates, where I encountered the balor. Said balor was stabbed in the back by an unknown dwarf and forced to flee. Then I found the Sword of Valor and defeated Staunton Vhane and Minagho in open battle."
+
+c4630d76-0a95-44e3-913c-caa8e03f6e5f
+"Because I am a demon." {n}You detect amusement in Jerribeth's voice.{/n} "Rules, laws, loyalty? Seek them in {g|Hell}Hell{/g} and Heaven, anywhere but the Abyss. I served Lord Baphomet for as long as it benefited me more than it cost me. I was the mistress here, in my 'castle in the clouds.' The entire territory was under my control. But then Minagho, that arrogant fool, botched the attack on Kenabres and the Wardstones. Our laboratory in Drezen was under threat and Xanthir and his minions were quickly pulled out of the city."
+
+8ee37def-5ce2-4b2b-8aaf-a7e208e3516e
+"Yes, close to Minagho. Where did you think she got that pet nabasu of hers?"
+
+ab61b2ee-bbaa-418d-9084-e5f241658eba
+"Because I am a demon." {n}You detect amusement in Jerribeth's voice.{/n} "Rules, laws, loyalty? Seek them in Hell and Heaven, anywhere but the Abyss. I served Lord Baphomet for as long as it benefited me more than it cost me. I was the mistress here, in my 'castle in the clouds.' The entire territory was under my control. But then Minagho, that arrogant fool, botched the attack on Kenabres and the Wardstones. Many of our laboratories around Drezen were under threat and Xanthir and his minions were quickly evacuated."
+
+31fb6ae9-7c46-4a41-950f-14bc1ef38206
+"Each of the Archpriests has a host of powerful beings at their command, such as myself, Minagho, {g|Darrazand}Darrazand{/g}, and the captivating Xanthir, we mustn't forget him. And then there is..." {n}All is silent in your head for a moment.{/n}
+
+c0e8a266-138a-496b-bca6-a986b35f8269
+"The Midnight Fane, of course. It was built in the bowels of the earth below Drezen, so deep underground that even the power of the mighty {g|banner}Sword of Valor{/g} cannot reach it. It is a chapel of three demon lords — Deskari, Baphomet, and Nocticula. All of the Worldwound is connected, fused with the Abyss, but this place especially so. It contains a rift known as the Gates of Midnight. The chapel is protected against any invasion. All visitors from the Midnight Isles go there. Minagho and Darrazand have built their nests there. I enjoyed spending time there myself... until it became too unruly."
+
+4ab4bbbc-e088-4913-91a9-7b643537f6de
+"And the demons I am forced to work with? They are unable to fulfill even the simplest of instructions! All their tiny minds can think about is how to chew one another to pieces! Darrazand, Minagho, Jerribeth — they all started plotting against me as soon as I took up my post! How am I to work under these conditions? I am surrounded by utter morons! My only ambition has been to study the sciences, to discover secret truths, but instead I have been obliged to manage a herd of brainless animals."
+
+ca23a9dc-74b0-4091-ba61-71de047676af
+The bodies of the husks — Minagho's victims who have served as her living 'clothes' for a long time.
+
+8dae8685-580b-46da-8d63-62d1c178dc06
+The barrier created by Minagho is literally radiating power — she clearly put great effort into making it.
+
+bcc0a17c-f2b2-41e5-8c3e-f3049e98c76f
+"It's over, Minagho. You're dead."
+
+b7741bba-4d7d-4cb0-b8c5-5314254d5132
+[Attack everyone] "Death to demons! At last I can make you pay for everything you've done, Minagho."
+
+476fba5d-d9f5-469e-bbc7-5c56c80998b3
+"Do you know where Minagho ran off to?"
+
+1c1b5e79-8bcb-4fab-b5ba-bc0ef9561d38
+{n}The body of an ash giant is convulsing in its death throes while its killers are readying their next victim — a growling minotaur that is fighting to break free. Issuing orders from the corner of the room is none other than the lilitu Minagho. Large drops of blood ooze from the mark on her face and she dashes the blood away with an agitated swipe of her hand.{/n}
+
+8f09eb41-598f-4dbf-8fbe-f1d70b5a6e16
+{n}You hear trembling, wicked laughter from the other side of the barricade. You recognize the voice — it is the demoness Minagho.{/n} "I knew you'd come. I knew you'd find us even here! Look, we have raised a barrow in your honor! Darrazand ordered us to disembowel all the prisoners and any of his soldiers who dared to show any fear, or not enough zeal."
+
+b5c16b4f-c554-4553-881e-070fc229b081
+"How about doing me a favor and just dropping dead?" {n}Minagho hisses, but despite her venomous words, her voice wavers.{/n}
+
+670a752a-8679-4bcd-8960-a35936acac0b
+"{d|c3 fane azata}Move it{/d}, you beasts! Darrazand will gut you if you don't deal with these traitors! I said, move it! I don't want to be here when they..." {n}Minagho notices you and scrambles back, first in one direction, then another, as if she's looking for something to put between you and her.{/n} "You! You came! Here!"
+
+58cb3379-177f-416d-b3f4-ef6a4d699631
+"Just culling the useless and weak." {n}Minagho shifts her weight from foot to foot.{/n} "I'm sorry, I don't have the time to talk to you, I've got... things to do. Stall {mf|him|her}, you beasts! At any cost!"
+
+7f853843-3d4e-4b8b-8b68-0c856f1096d3
+"Where are the crusaders coming from? Minagho said it'd take them a year to break the barrier!"
+
+5e299b91-e8a7-42af-a388-051dfd5e880d
+{n}The hall bears the traces of the huge balor's anger — some demons are lying on the floor, literally ground into a bloody mess, while the rest are cowering against the walls. The blood is not confined to the ground, either, but is splashed across the face of the kneeling Minagho. It's not clear if it came from the pentagram on the lilitu's forehead or from a slash of the balor's claws.{/n}
+
+826cef2d-f7d5-4aa7-becf-448bb0b8f19b
+{n}The hall bears the traces of the huge balor's anger — some demons are lying on the floor, literally ground into a bloody mess, while the rest are cowering against the walls. Minagho, shivering, covers the wound you dealt her with one hand while trying with the other to wipe away the blood oozing from the symbol carved into her forehead.{/n}
+
+9683ab95-b418-4dff-9871-f954836b76ad
+"I watched you {d|c3 minagho azated}spare the life{/d} of a demon, and not any demon, but Minagho, our old and dangerous enemy, who is responsible for the deaths of hundreds of crusaders."
+
+82876848-b363-4d19-b969-f194429d43c1
+"You're lying, Minagho. There are ways to destroy your connection to the husks without harming them."
+
+55262362-76da-4ef3-b647-a6e5ae7f54db
+Said you didn't care about the lives of Minagho's hostages.
+
+823b26b6-872b-4773-b795-8d838cf1d6e8
+Agreed to let Minagho go to save the lives of the hostages.
+
+e5b0bf42-c720-4ac8-8ce2-1bc1d72ac98c
+"Don't you dare threaten me with ultimatums, Minagho."
+
+4c954c26-1553-4138-ad1a-8304bf76d191
+Defended Minagho's hostages.
+
+23cad571-4443-4333-bb67-d10f90429db8
+Chose to help Minagho's victims instead of chasing after her.
+
+b2647fde-0b82-41f7-a14f-b65536876f27
+...stop Minagho escaping.
+
+150d87f8-5be0-42be-b908-9b1419fc1be0
+"Another step — and they all die!" shouts the demon Minagho from behind the structure. "These are my husks! One snap of my fingers and they'll all be dead! And any strike you direct at me will instead be turned on them!"
+
+496e3e42-2eb4-4b61-9aff-cb9a821ce66e
+"To hell with you!" Minagho screams, preparing to run.
+
+518bbd16-3663-4801-bf76-f40125afe28c
+"How about an illustration?" Minagho smiles nervously, backing away from the Commander. In the same instant, screams erupt from the throats of the mortal husks and they begin thrashing in convulsions. Some of them cannot scream, instead they only rasp. At some point, the hair of the blue-eyed young woman in the center turns gray, and wrinkles begin to appear on her face. She seems vaguely familiar now...
+
+187d0014-c609-43d5-8ad3-b10695dae598
+"Well?" Minagho screams. "Are you willing to kill the victims of the horrible demoness or what?"
+
+85374af6-be9a-40f7-bb1d-3e6d138e3b02
+However, Minagho has no intention of fighting. The first attack to reach her finds the demon preparing to flee. Someone screams, but it is not Minagho — the attack doesn't hurt the demon at all, but one of the husks explodes into shreds of flesh, like a jar shattering from the inside.
+
+9e11c734-38fa-485c-99b0-1440b3de9517
+"Some of those who fight us evil, wicked demons look like they could be our own brothers and sisters," Minagho laughs, but her laughter is tinged with hysteria.
+
+87f5cdc3-403c-4ed9-aa4d-92acc0126ed3
+The Commander's attack reaches its target. Minagho screams with pain but manages to finish her spell and disappears, nursing her fresh wound and hoarsely exhaling the words of a curse.
+
+9134047f-d5dd-4a17-a71a-ef789f30af29
+Minagho disappears, her malevolent, slightly hysterical laughter echoing after her. But the Commander is no longer concerned with her — {mf|he|she} is busy helping the victims.
+
+e46a5db3-47e3-4e13-9189-27d8fcde2165
+Showed mercy to the demon Minagho.
+
+a6f447ea-718b-4c3b-b519-864f26059eb1
+Spared the life of the demon Minagho.
+
+1db07e5a-a47c-4798-93a2-4c8fef7132c6
+[Let Minagho go] "I trust you will never dare to stand in my way again. Go."
+
+83bc8493-56c2-469e-9769-911a8db614ff
+Mocked the demon Minagho in the depths of her despair.
+
+a5e0ccb7-b334-4744-b691-a228143c9e6f
+Spared the life of the demon Minagho after persuading her to fight against Baphomet's power.
+
+9c00da08-21e8-45ba-af45-22057065f2d5
+[Let Minagho go] "I'm letting you go, Minagho, but I can't remove your chains. You have to understand, I'm not responsible for what happened to you. The demons you chose to serve are to blame. Stop obeying them and fight back!"
+
+9fb4396d-02a9-4216-b8b9-cd6755d4b59f
+{n}Minagho is kneeling, her hands clasped in front of her. Blood from the mark carved on her forehead drips down her eyeless face, but the demon doesn't seem to care.{/n} "I'm so tired of you, {name}. I can't do it anymore. I can't run or fight, nothing. I've hunted the paladins of the good gods for centuries. You could make a burial mound out of the tin heads of all the idiots I've killed or tricked! But you — you're nothing like them. You never do what others expect, and you always appear where you're not supposed to be."
+
+71a0b01c-0776-4e7b-b69f-485e054f79ec
+{n}Minagho licks her lips nervously, her fleshy tongue resembling a crimson slug.{/n} "I can be useful to you! I'll tell you what I know... about anything you want... I..."
+
+1c34257a-8ba7-4610-9aa0-f0ce9923b676
+{n}Minagho tilts her head to the side.{/n} "You're letting me go? Telling me to fight? Aren't you afraid I might return and stab you in the back again? Wait, what am I saying? You never seem to be 'afraid' at all!"
+
+61b816ee-5f53-47cb-b0bd-b1db0d024615
+"To the Nexus — a hub of portals in the Midnight Isles. It's the most convenient place for transferring cargo and troops." {n}Despair seeps into Minagho's voice.{/n} "What a tactful reminder that freedom is just a step away! But what kind of freedom would it be? It won't rid me of Baphomet's brand!" {n}The lilitu quickly dashes away the blood from the mark on her forehead, leaving broad scarlet streaks on her smooth skin.{/n}
+
+fe0c87ea-8800-48fc-ba3b-f119dc98a5c5
+{n}Minagho's face twists in a grimace of horror and hatred.{/n} "A b-brand... Baphomet's brand. And yours, too! He branded me, my master, he branded me for my failure in Kenabres. He took my powers, he maimed my face. The damn thing hurts all the time. He said the mark would stay with me and I would keep bleeding until I spilled the blood of the one who caused me to fail in Kenabres."
+
+5b25901c-95fe-43e8-9c27-105c32541cc6
+{n}Minagho licks her lips and gives you a slanted grin.{/n} "If only you would take pity on a poor demon and let me bring your head to Lord Baphomet, the pain would finally stop!"
+
+169ccd67-0c71-4287-aacc-adf331f5b206
+Killed Minagho's hostage who claimed to be Yaniel.
+
+2c1d8dde-9f5c-461b-9e93-a0762f43f1fe
+"This was one of Minagho's lairs, and lilitus are famous for collecting trophies. They need husks for practical purposes, too — to take on their appearance or redirect any attacks aimed at themselves. But we were more than that for Minagho, we were her collector's items."
+
+c2ea8890-b825-44e2-af88-a891a8bebfb6
+"But you probably want to know about the rest of my imprisonment. The fane was created a few years after the siege of Drezen when I was taken captive. Areelu came here personally to open a rift. That was also when she gave me to Minagho to be turned into a husk — she said she was tired of my obstinacy. She spoke the truth — not a day went by that I didn't try to escape or kill one of my guards."
+
+21f58b66-aca3-4600-bc08-2f94fddacb84
+"I know," {n}Yaniel says in a colorless voice.{/n} "Minagho liked to wake me up and tell me, sometimes even show me, all kinds of despicable things. Oh, Staunton, how could you believe someone so repulsive as her, and drag your brother to the grave along with you!"
+
+b582e072-d455-4da6-89ce-193e48306bab
+{n}Yaniel's face clears.{/n} "I knew Minagho was lying to me. She liked to wake me up sometimes and tell me, or sometimes show me, all kinds of despicable things, but she never once showed me Drezen, although she did recount in vivid detail how the city fell, how Staunton betrayed us. I swore to myself that I wouldn't believe her, not unless I saw demons feasting on mortal flesh in the streets with my own eyes. Staunton would never have been swayed by someone as repulsive as Minagho. Never."
+
+f9aaeeb7-8ee6-4aa7-824a-fec47a4797de
+"A statue, can you imagine..." {n}The woman utters a dry chuckle that sounds more like a cough.{/n} "Minagho was always coming up with new lies, trying to convince me to renounce my faith. First, she told me that everyone had forgotten me, then she came up with a story about everyone cursing me as a heretic. She told me that Iomedae had abandoned me — but I knew it was all a lie. I kept praying to my goddess — and now, she has sent you to help me."
+
+e46be66d-9dcc-4527-abc9-c105e77ed5a6
+[Express regret that you were unable to fight Minagho in the past]
+
+31ef02e8-c54f-4c80-9b1f-dcb51a6256b2
+{n}Meeting Areelu, meeting Minagho... surely it would have been better to fight them in the past, and thus save Golarion from so many troubles! But you know that taming the flow of time is as difficult as taming a tumultuous mountain river after heavy rain. Only with strength, patience, and wisdom can the aeon direct the course of time, going against its flow to change the past.{/n}
+
+621eb66a-6ed2-4eb3-92c3-36c1c1a4b992
+"Yes, I spoke with her. She came to see me before leaving the city." {n}Joran looks down and adds softly,{/n} "You know, {name}, I was head over heels in love with her when I was young. For so many years I thought she was dead, and it turned out that scum Minagho had been torturing her the whole time..."
+
+d7f7d928-c05e-4eed-bb0d-8e8b84680364
+"Minagho! Get out of here, you lying seductress, or I will drive you out by force!"
+
+cd319b2e-4642-47bf-b1d1-cd811c193640
+"Where is this simpleton? How long do I have to wait for him... And who the hell is this?" {n}Behind the guise of a beautiful woman, you can clearly see Minagho's eyeless face. She raises her hand to cast a spell, but a unit of knights come through the gate.{/n}
+
+c1d36953-bdeb-4dd2-af28-d1327087449b
+"To battle, my friends! The gods are with us! Today we will gain a long-awaited victory for the crusade!" {n}You barely recognize Staunton. There is a cheerful smile on his young face, and there is hope in his eyes instead of dark despair. He doesn't notice you — his eyes are locked on Minagho.{/n}
+
+efd5a9f5-4c34-4f86-9928-0894f3576aa9
+"Minagho? That's the name of a demon!" {n}Stunned, Staunton looks at the woman, who assumes an air of injured innocence.{/n} "You... I can't believe you..."
+
+9bf0590c-03d1-4bb8-a507-f659d6df2e63
+"What's this about Minagho? What the hell are you talking about?"
+
+48f693e9-e81d-4bac-bfa4-f7f5c10fea21
+"Really? I was told it's not about the banner... Aren't the demons repelled by the fighting spirit of the city's righteous defenders?" {n}Staunton looks at Minagho with hesitation.{/n}
+
+a561240c-62ed-46b0-b694-02259b198017
+"I don't know who to believe..." {n}Staunton lays his hand on the hilt of his weapon. He looks sternly at Minagho, then at you, then back at her.{/n} "I sense deceit. Which one of you is lying to me? Who is my true friend, and who is my enemy?"
+
+d6b35765-75c5-4ce1-8d06-df652deef8f9
+{n}The dwarf's eyes are filled with a radiant light — just for a moment, but it's enough. He looks at Minagho and her entourage, and an exclamation bursts from his lips that is completely inappropriate for a paladin. Another moment passes — and his weapon is in his hand.{/n}
+
+c895d130-2156-4312-a346-cb45eb866b42
+"What happened between you and Minagho?"
+
+a4bc6270-1c0c-4b7b-b1e0-0cb71f19ba07
+"I set Yaniel free. She had been Minagho's prisoner the whole time."
+
+d2e1343c-27fd-4137-9714-ed3234b563d0
+"We returned the banner to its rightful place. I confessed what I did — I thought I was sure to be stripped of my rank and sent to the {g|condemned}Condemned{/g}, but at least my conscience would be clean. But that's not what happened. I became a hero, can you imagine? Everyone was praising me for how I'd 'defeated' Minagho in battle! They rewarded me, promoted me... In the end I became the Warden of the fortress. But then everything went downhill."
+
+140e3d6e-03d0-431a-86ee-5f5d13acfb7f
+{n}Minagho walks toward you. She is clearly agitated about something and is so consumed by her own thoughts that she does not even notice your presence until you are nearly face to face.{/n}
+
+57c1decb-c54d-4bad-a1e3-29011d660994
+{n}A figure walks rapidly through the brothel in your direction. She isn't watching where she's going, and as she stumbles into you, you realize it's none other than Minagho herself.{/n}
+
+586a4939-fa5c-4bd6-9b9b-3c6d79268e18
+"You're always getting in my way. Since you're mortal, why don't you drop dead already?" {n}Minagho scoffs angrily, and hurries off, clearly eager to have the last word.{/n}
+
+8f73a023-89d3-4746-b2bc-86462284c533
+"What would you do if you encountered Minagho again?"
+
+57610228-3f34-4e56-9a4d-2c90e7b6e869
+"Minagho, who was your undoing, is dead."
+
+5303a8dc-9309-4f71-aa5d-02cf847bf07d
+Minagho's Hideout
+
+0edabf5a-e24a-45c9-82dd-e08aa030c706
+"Word on the street is that Chivarro seized control over the succubi from Minagho. But they're both alive, which means they struck some kind of deal."
+
+d473a84e-a258-4632-8402-ab63c2290f28
+"People say that Minagho had a bone to pick with this stranger! They clashed, and where's Minagho now? She shouldn't have made a move against someone stronger."
+
+f862fe17-94d3-4e70-b008-bf7983f6354d
+"Rumor has it that you {d|c3 minagho azated}convinced{/d} Minagho to betray Baphomet, and now she is plotting against her former allies! You're a cunning one, aren't you?"
+
+0eb17882-708f-40b3-a80f-c72bf3056a16
+"No, my army will not go to Drezen. Our mutual acquaintance showed me a far more interesting target. The {g|EchoD}Echo of Deskari{/g} told me about a sanctuary of the empyreal lord Pulura that is hidden in the depths of the Worldwound. It seems that a handful of Sarkorian stargazers and their angelic patron have been fooling the armies of the Abyss for years! The temple has been hidden under the noses of all the mighty demon leaders — Minagho, Darrazand, and of course, Hepzamirah. No one has ever found it! If I conquer it and bring it to ruin, the victory will be mine alone. And I have something very special planned for those stargazers..." {n}The demon licks his lips.{/n}
+
+d24e45a8-bd00-4ba5-a85f-3c5924cf9936
+"Among the succubi, Chivarro is in charge. She's an angry bitch but she acts sweeter than the blood of a righteous man... Minagho used to run the Ten Thousand Delights until Chivarro found her way in. Must be quite a weasel, that one."
+
+dc15b9ec-b9d5-4649-9080-c66ab5a49bf8
+"They say Minagho had a score to settle with you. And where's Minagho {d|c4 minagho dead}now{/d}? Ha! Looks like she shouldn't have messed with you!"
+
+3ff854a3-2843-4d3e-be94-13e1c86d3c6d
+"Precisely. Shall we play another round? Run, Minagho, run. Let's see how far you can get!"
+
+7512375b-72cc-4e0a-b74b-3c2582aa715e
+Attempted to get through to Minagho.
+
+c9b08ae7-3a02-4f4e-aaa2-e8663f764f59
+[Let Minagho go] "Get out of my sight!"
+
+e0281265-bf2e-4e78-b27e-5f3c96292ddb
+[Attack Minagho] "You won't run from me anymore."
+
+cfab16b0-f137-44d9-a622-7489f936b7c2
+Attempted to get through to Minagho.
+
+af6e775c-4e69-423b-994d-5f929d47d31b
+"You... You..." {n}Minagho starts backing away from you on unsteady feet but suddenly bursts into hysterical laughter mingled with sobs. Her eyeless face is streaked with crimson tears streaming from Baphomet's mark.{/n} "You're toying with me, aren't you? Like a cat playing with a mouse. Like... Like I used to play with mortals!"
+
+2fea4dd0-b03a-4c1e-87d4-14d67a944020
+"Ha... Hahaha..." {n}Laughing hysterically, barely able to stay on her feet, Minagho backs toward the exit.{/n}
+
+6e82e5ff-8b2c-4436-92ad-afe913f12ea2
+"You... You will regret this... I will find... Vengeance... Deliver you to great Baphomet..." {n}Minagho backs toward the exit, mumbling incoherent threats and curses at you.{/n}
+
+e61084c6-cc01-425b-b9bc-f4140a6def6d
+"I can't bear it anymore... Enough... What have I done to you? Stop chasing me!" {n}Minagho's hand reflexively reaches for the wound you gave her in the Midnight Fane. Wailing and mumbling, the demoness disappears behind the door.{/n}
+
+5ee8c7ff-4f59-4eed-80de-606152a5fe21
+"I will never forgive you! Die! Die already!" {n}Minagho spits out one last curse and disappears behind the door.{/n}
+
+fd97a50e-2f3e-479f-8122-bfdd8f9afd17
+"I... How did you know..." {n}Minagho hisses as if in pain.{/n} "This is none of your business, Golarian scum!"
+
+94a803d8-e055-42ee-8692-4cf0c10065b2
+"Why are you pouting, my sweet? Are you not enjoying the sweetest spoils of victory? Oh, wait, you're not. Because I am!" {n}Wenduag laughs mockingly as Minagho hisses and helplessly balls her fists.{/n}
+
+4f2c83e8-d58d-4ede-a53e-85421b673986
+"Lilitu demons have a special place in my heart. I enjoy watching them die. And the memories of this creature's demise will keep me warm even on my deathbed. Farewell, Minagho!"
+
+bb4342f6-09aa-4285-871f-ff4263e8d5d9
+"After everything you've done to me, I should be happy to see you fall. But somehow I am not. I do not enjoy seeing you brought so low, Minagho."
+
+3e61b844-b7f4-400a-87c7-2d73f2963bcc
+"Next you will tell me you pity me. Or that you forgive me! Ha! Do you think I am bothered by the opinion of a mortal's bed warmer?" {n}Minagho's eyeless face turns to you.{/n} "They say this little trollop got her hooks into you like I hooked Staunton. I refused to believe you would be foolish enough to fall for her."
+
+26189dd0-c6b2-4347-9945-54c052357f52
+"{name}, look here! While I was Minagho's husk, I learned some of her habits."
+
+0b7b029c-05b3-4e84-9a3a-3f9927de3bdc
+"One shouldn't underestimate mortals. I twice defeated Minagho."
+
+bf2bcc3b-72b2-4ca7-9268-c558c78fa155
+"Baphomet punished Minagho. She lost her powers."
+
+a28a0f3c-5447-40ed-acd0-182271336688
+"How much did Minagho pay you? I'll give you more."
+
+5ad5a523-9aca-4a84-b6e7-dfeeca42e42f
+"Minagho sent you to your death. I have laid waste to armies of demons. You cannot hope to overpower me!"
+
+48d39d69-791e-4348-98af-cc5a56435b29
+"Where is Minagho hiding? Tell me right now!"
+
+0ac41fb5-b391-407f-8673-fe6929756082
+"Minagho paid you for a deadly battle. I am paying you for inaction. Twenty thousand should be enough."
+
+5f3f7055-1bc7-4b39-af2f-71f1ccd32f63
+"I am Nezirrius. I kill." {n}The monster's whispered hiss sounds more like an icy blast of wind than human speech. It is impossible to say whether it is boasting, threatening, or simply stating a fact.{/n} "Minagho the lilitu. Purchased your death. Incomprehensible. You are a mortal. Killing you is easy. Why did she not kill you herself? Why me? A trap? An opportunity? An enigma."
+
+3cdf8a1e-edd0-406c-b5e7-a09ffae216a2
+"Now I understand. Minagho is weak. Weaker than the mortal. She bought your death. I will kill you. Then I will kill her. Free of charge. I want to kill the lilitu."
+
+2abbfee9-d378-4b4d-ae4e-65513fb36417
+"Minagho is afraid of you. Why? Something is wrong." {n}The monster lapses into puzzled silence.{/n} "Minagho is not a lord. Just a client. The deal can be terminated. But there is a condition."
+
+0b3a6efd-cb78-4c7b-b6a0-c0d9506fe612
+"Why do you want to know? You are about to die. Your death has been paid for. Something is wrong." {n}The monster seems lost in thought for a moment.{/n} "Minagho said you were weak. If she lied, let her die as well."
+
+1ab88586-589e-4755-a14a-3c16a672a10f
+"If you fend off death at my hand. If you give me my death. Then Minagho's death is yours by right." {n}A house in the Lower City appears in your mind. It disappears after a moment, and a dry chuckle breaks the silence.{/n} "Now you know. But this knowledge is useless. My gift to you was useless. You will die. Now."
+
+7c43998c-d6c3-4e6b-9ef0-712ff872f209
+"Reputation. A cheated customer means a ruined reputation. Kill Minagho. No client — no contract — no problem."
+
+81d4b0c9-c91a-43ec-95e5-4f0a01261b56
+"Fifty thousand. This is how much your life is worth. How much Minagho paid. How much it costs to outbid her."
+
+968eb63b-fa52-4377-9e7d-d72b7c2960c4
+"I'm observant. A mysterious individual thwarted Minagho's plans in Drezen and told Staunton some very interesting things in an attempt to change his mind. More importantly, the week before I was captured, someone paid a visit to my laboratory. They appeared out of nowhere, said a few words, and then vanished without a trace. It was a most curious encounter... and it became even more curious once I discovered the truth of your origins. Once I put two and two together, I knew that my plans to open the Worldwound would succeed — after all, someone from the future was traveling back in time to stop my research! Now, I would love to stay and discuss time travel with you, but I cannot allow you to interfere with my work. You will have to be killed."
+
+d9bd4800-ebee-46aa-8bef-c745fa12a643
+"Yaniel, I know where Minagho is hiding. Do you want to go with me to your tormenter's lair?"
+
+4e46c97d-d397-4aaa-b99a-77b765185d1b
+{n}A shadow crosses Yaniel's face. After a pause, she continues in a more somber tone,{/n} "My deepest regret is that this monster Minagho escaped from the Midnight Fane alive. She ruined Staunton. He made the same stupid mistake I did — he left to be a hero when he should have been thoughtful and cautious. There are many demons in the Abyss, but I still hope to find that eyeless beast, and give her the justice she deserves."
+
+8851d196-4b38-4a1a-90fe-12e3e99c59cc
+{n}The old warrior's eyes flash angrily.{/n} "Minagho! Her name sends chills down my spine. She must pay for what she's done — not just to me, but to Staunton as well. Yes, I want to go with you! I want her to answer for her crimes. Let's go!"
+
+62f22e74-0a12-492b-be6a-aec8fa7a90dc
+"I was captured on the day that Drezen fell, but I've changed captors twice. First, the traitor Areelu Vorlesh kept me in her laboratory, where she healed me... after a fashion. Then she gave me to Minagho. It was a subtle mockery, for Minagho was to blame for the death of my city, and for the fall of my friend Staunton."
+
+1d0ea388-c570-41e8-bee7-d9321ff113d1
+"Minagho set up her lair in the Midnight Fane, and that is where she kept me. She told me that she'd make me her 'shell.' That's how lilitus torture mortals, and take their appearances as their own. Minagho had an entire collection. I even saw the elf woman she used to seduce Staunton. Poor girl. Minagho killed her in front of me. 'I'm bored of this look' — that's what she said."
+
+8df72ce7-ba11-41a8-bd06-67a00b2907ad
+"Minagho warned me about the danger that the closed portals pose. Before we move on, we need to take care of that."
+
+b8b571b6-e358-446a-b04e-09e5afe166d2
+"In the Gray Garrison, it was I who distracted Minagho to allow you to approach the Wardstone. And in Drezen, I appeared under the guise of Yaniel to guide you toward the Sword of Valor."
+
+d6b900cd-20ce-413c-b64e-b0d93d4e43f6
+"In the Gray Garrison, it was I who distracted Minagho to allow you to approach the Wardstone."
+
+5f1bcc44-7f70-4b6c-bf31-86b2bef34859
+"Greetings, {name}. Do you remember snatching old Yaniel from the clutches of that damned Minagho? Well, a day in Drezen was enough for me to realize that I couldn't just leave. I'm not meant to live out the rest of my life in peace and safety. We all may fall, but once a paladin, always a paladin. I was lucky enough to meet Targona, and begged her to take me with her into the Abyss. I want to repay the debt I owe you."
+
+73e9897d-80cd-45d4-a739-9b0b9d17851a
+"As I was legging it away from Kenabres, I just couldn't shake the image of the gallows they'd hang me from, for treason and all that. You wouldn't believe all the stunts I pulled off! I smuggled Lady Minagho's letters into the city, hid cultists under the guise of merchant's guards in my own home, brought Faxon into the Tower of Estrod, did some research on the Blackwing Library for Lord Xanthir..."
+
+6a2f5c21-58e4-4f96-82a7-b62ddce16645
+"Minagho was a powerless fool. And you can't do anything to me, either."
+
+a5b93096-2d0e-4fae-a21e-2c21b5817da2
+"So, you and Minagho are... lovers?"
+
+8a2e416b-7556-4ce0-b40a-e4e7038ace6f
+"I let Minagho go. I don't know where she is now, but she needs your help."
+
+102e35fb-c6d5-4b90-a20a-14d73e5d1871
+"Minagho is a powerless fool. And you can't do anything to me, either."
+
+af267536-3081-4a92-a356-7a2b644620db
+"Tell me the story of you and Minagho."
+
+05c26abf-12ab-48ae-9d42-da125cd9043f
+"I recently met Minagho here in Alushinyrra. Yet again, she tried to attack me, and yet again, she failed."
+
+bdb83226-303b-4f39-ba7e-73681a27af50
+"I recently met Minagho here in Alushinyrra. She tried to attack me again, so I killed her."
+
+670ac97f-70ee-49c3-ac0a-75ec12ad1015
+{n}The lilitu's rage is like a stream of liquid fire burning through your mind. She tries to hurt you, but you manage to restrain her.{/n} "You are Minagho's enemy! My sweet Minagho! Vile Golarian! You'll pay for standing in our way!"
+
+4052399f-13a8-4aa5-9d62-34d4b1db6b80
+{n}The lilitu's voice sounds odd, as if she is about to burst into tears.{/n} "I... appreciate it. Minagho needs my help, and I will find her no matter what! Thank you for giving me a chance to see her again and ask for her forgi— I'm just so sorry for everything that happened between us." {n}She chokes on the words of gratitude, words she is likely uttering for the first time in her long life, then turns on her heel and quickly leaves.{/n}
+
+dca9d4d5-62fd-4720-b75f-9844aa066f2e
+"Demons do not know love!" {n}the demoness snaps at you.{/n} "Certainly not the kind you have on your stupid Golarion! But Minagho and I... were closer than most demons ever get. We were bound by passion. At times we irritated each other so much that we separated, but we were always drawn back to one another. We each became a drug to the other, and then... And then you showed up and started hassling Minagho!"
+
+f4c91061-0b71-46ed-a9c9-db28476f6a91
+{n}Chivarro's voice sounds baffled and distrustful but holds a slight hint of hope.{/n} "You let her go? But I thought Minagho was dead... Why hasn't she come to me? Perhaps she didn't want me to see her at her most vulnerable? Or was she afraid she might draw Baphomet's wrath onto me after she failed at his task again? Oh, damn it!"
+
+3cf9393f-da41-4616-af65-2a03f37c0391
+"You piece of shit! Why couldn't you just quietly go there and die? You've caused nothing but trouble! Damn you for all the suffering you've caused Minagho and me!"
+
+82626e9d-9d7d-4896-84f6-5840fa43f4ae
+{n}The demon's rage fades. She speaks bitterly and sincerely, as if in confession.{/n} "I always loved to sow chaos, whereas Minagho wanted to rule over it. She once usurped me in my own scheme — snatched it right from under my nose — and reaped its fruits for herself. The gauntlet had been thrown. We spent long months trying to kill each other. We were both impressed by the other's passion... And we became addicted to it. No one has ever wanted to destroy me with such fervor."
+
+eb303eaa-9c88-4aea-9a33-0e7913e40ad5
+"Once, I tried to kill her in her bed as she slept. The fight somehow turned into sex, yet it was so much more than sex! In the morning, we both realized we were bound by our craving for each other. Of course, we do still try to kill each other. Minagho can be insufferable, and I'm not much better. But if one of us ever succeeded, it would be a terrible blow to whoever survived. I know demons should not have such feelings. But there's nothing I can do about it."
+
+6a4da815-9ca0-4d61-ba6e-f1a84f602185
+"I can, but not for free. First, you must do a favor for me. Though I have no idea how you could be of use to me... Ah, I've thought of something. Last night, Lady Minagho organized a feast for her allies and lackeys in the Ten Thousand Delights. Pleasure reigned, but what a monstrous mess was left in its wake. So roll up your sleeves and get to work. Scrub everything thoroughly. When you finish, I will be willing to answer your questions."
+
+67112dd2-fa33-4b5c-8cd1-511c7989396b
+"What can you tell me about Chivarro and Minagho?"
+
+837d4b61-23b3-45f3-ad04-18aa5081d2c5
+"At first, we thought those two would tear each other apart. Chivarro was in charge here for a long time, and no one bothered her because everyone knew who she was. Then Baphomet's minion, Minagho, showed up. They fought, oh, how they fought! They then started to conspire and plot against one another. They sent assassins, then they drew their enemies into a proxy war against each other... By the end, they were obsessed. They went from sworn enemies to partners and took over the Ten Thousand Delights. They started walking around, hand in hand, cooing at each other... After that, they rarely tried to kill one another."
+
+c32aaa28-475c-42bf-b010-c4a805b3181f
+{n}The succubus sounds playful and relaxed.{/n} "Welcome to the Ten Thousand Delights! My name is Herrax, and I am the new madam here... Thanks to you. You rid us of that insolent upstart Chivarro, sending her after her haughty lover Minagho, so you can consider me in your debt. Know that you will always be welcome here, and my gift will be proof of that." {n}With a graceful movement, the demoness hands you a gold coin.{/n}
+
+7521e0f7-a5a6-41f9-b59a-d7bb6924afc6
+"I already killed Minagho."
+
+008ace6b-ef56-40f5-b8f1-8d35e5eec18a
+"How did you find Minagho?"
+
+77479182-723c-42a8-bce0-6c771b656eaf
+"I won't stand between you and your revenge on Minagho. Leave and search for her wherever you want."
+
+6a2322e7-8a16-4615-814a-cdb87e2b29d6
+{n}The dead man answers fervently, with a spark of insanity in his voice.{/n} "On her! The temptress and deceptress who is the reason for all my suffering! Minagho is her name! And I have vowed to shed her blood!"
+
+0c5e0bdc-ec86-4b85-a9c6-c5297d9d38f2
+"Death hasn't changed you one bit! You're still blaming someone else for all your troubles — Minagho, Queen Galfrey, Iomedae, fate, the weather, the position of the celestial bodies — literally anyone or anything but yourself."
+
+c22645ad-8d25-40a8-b344-70fbb5d3a06e
+{n}The marilith adds with a smug grin,{/n} "You'll only get Drezen, Orengofta. The skin is mine and mine only. {mf|He|She} will look splendid in my chambers in the Ineluctable Prison. I'll do what that idiot, Minagho, failed to accomplish — I'll destroy the Wardstone as you watch, little commander, and then I'll admire the despair frozen on your face forever!"
+
+abdc3e07-9405-4060-a3eb-fc2573b8b9c6
+"I took Orengofta and went to do what... what Minagho failed to achieve — to destroy the Wardstone. I was hoping to be rewarded, but you destroyed me back there... time... time mends... itself..." {n}In an instant, she disappears without a trace.{/n}
+
+bddb3dde-f3be-4307-a63f-12adf22039b2
+"Aponavicius! Still playing with your toys?" {n}Arueshalae gives her a mocking smile.{/n} "I hope they brought you some comfort when Baphomet assigned Minagho to Drezen instead of you. I bet it was awfully boring to be couped up in this jail, thinking about all the fun she was having there."
+
+774b20bf-2a2d-496d-bc53-af94caa1d606
+"Are you going to brand all your servants? Or was Minagho just lucky?"
+
+b05809cc-49f6-4c5b-a38b-5ed1a57b6b14
+"I place various seals upon my slaves — there are those that grant power, those that bring delight, those that inflict pain, and those that simply mark their bodies as mine. Minagho failed me, and I... encouraged her to correct her mistake."
+
+26d1a78e-759f-4ec2-8904-6d97af329a37
+"The seals torment her every breath, draining her strength, and only by destroying you can she be free of them. I don't know where Minagho {d|c3 minagho azated}went{/d}, but rest assured — every moment of her existence is torture that makes her want to scream without end."
+
+646a3938-d1e2-41cf-8092-d46962ba4b2f
+{n}Here it is — the place where it all began. The place where you felt the surge of mythic power for the first time, and showed it to the world, defining your future and the future of the crusades. The memory of all that happened here is still fresh in your mind as if it were yesterday. If you listen very closely, you can almost hear the voices of the crusaders fighting nearby, see the light of the corrupted Wardstone, look into the eyeless face of Minagho...{/n}
+
+eba042e1-cb76-4868-9ae4-f53f385604bd
+"And yet, I have no regrets. If I had remained a common succubus, I'd have ended up serving someone like Minagho. You'd have swatted me like an insect without a second glance. But old lady Moon sent me a bit of luck, and here I am — on the winning side!"
+
+63f02de8-d69b-479a-8d27-eec37b304ec7
+{n}Liotr shakes his head and slowly exhales, rubbing his temples.{/n} "The first appearance of the disease and the lilitu, one of the many sisters of the accursed Minagho. So far everything I've seen matches the official version of events."
+
+c6f8808e-f214-482d-98b6-2b761a347048
+"You might find this surprising, but... No. That was not my role." {n}The dwarf speaks with surprising candor.{/n} "Demon generals like {g|Jerribeth}Jerribeth{/g} and Minagho have rendered my services unnecessary. They are the ones who lead the troops in the Worldwound. I realized that I could not compete with them, so I moved away from military operations, and began to focus on my own intrigues. And it is thanks to those schemes that our paths have collided..."
+
+5b3fc37a-9423-4b85-9c81-bb30baff66be
+{n}You feel as if you are being transported back to the Gray Garrison, to the Wardstone. {g|Minagho}Minagho{/g} screaming in terror, covering her face with her hands, and {g|Stonton}Staunton Vhane{/g} rushing to her aid. But they do not matter. The Wardstone does not matter. All that matters is the mythic power radiating out in waves from the future commander.{/n}
+
+73051186-744a-41c6-b09a-a0e44d019b40
+{n}He laughs maniacally.{/n} "There is much I could tell you. The story of Commander Joran Vhane, who killed his traitorous brother and was granted by Queen Galfrey the right to lead the crusade on Drezen. The legend of the terrifying Minagho the Conqueror, who destroyed Kenabres and Nerosyan and drowned all of Avistan in blood. Or the tale of King Daeran, dubbed the Lord of Vice, who ascended the throne after Queen Galfrey's death and led the blood-soaked resistance in the demon-infested lands."
+
+212c2dff-ca79-479a-a8d5-34635c2a643f
+"Minagho, that cursed fiend... Why has she come back? To the Abyss with all of it!"
+
+056942f6-32d0-4480-8ff7-29356b43db19
+Several hundred years after the conclusion of the Fifth Crusade, somewhere on another plane, far from both the Abyss and Golarion, two runaway lilitus {d|lilithu love}met{/d} — Minagho and Chivarro. They met, never to part again.
+
+8843a190-9c31-4b34-9689-10aaffb146da
+"Did you find out anything about where Minagho is now?"
+
+fb39b9ee-79c0-4bb6-bcbd-d3fdbc361886
+"Minagho also gave me orders, but I don't think I can tell you anything new about her. You've met a few times already."
+
+90a5a537-d235-4906-a842-a1768994b34c
+"Demons do not 'attack' — they seethe around you, fall from the sky, strike from all sides at once. They can't be stopped, but they can be distracted. I run to the upper floor of the gate tower. Radiance glows with a golden light in my hands. I permit myself to close my eyes for just one heartbeat. I imagine that the soft glimmering of the sword I see through my closed eyelids is the light of the summer sun. I smile. I open my eyes and call out, 'Hey, Deskari's spawn! Who wants the best trophy of the night? You know my name — Yaniel. You know how many of you I have killed with this very hand! You want to curry favor with Darrazand, Minagho or the Echo of your lord? Bring them my head... if you can!'"
+
+4d5ccabe-bc6e-45da-b1ec-7e240d5fc6c6
+"Have you heard of the Red Morning Massacre? A dreadful morning remembered with fear even by those not yet born at the time. A demoness called Minagho invaded the city with a crowd of her followers, and started to do what demons do best — kill and desecrate. They say they covered the Wardstone with pieces of dead bodies, splashed it with blood from top to bottom... Could such an abomination darken the radiance of the gift of Iomedae herself? The locals think this is impossible. But who knows..."
+
+9c3d21a8-8e3b-4d74-94f4-a9905b9c1c78
+"Lady Minagho,
+The Tower of Estrod is fully equipped for the operation. Our troops are at full force, and our weapons and essential materials are at the ready. I took special care to ensure that our preparations did not arouse the suspicions of the city's defenders. I had to dispose of a pair of annoying mortals who'd been sticking their noses in places they shouldn't. My agents have infiltrated all the crusader orders in Kenabres apart from the Eagle Watch.
+We are ready to attack Kenabres. The fools will have no idea who stuck the knife in until it's too late.
+As a reward for my diligent performance, I ask that Irabeth Tirabade, head of the Eagle Watch, be given over to me after we win. She's been a thorn in my side for too long. I have some scores to settle with her.
+Hail Baphomet!
+Faxon"
+
+d463987c-8ca2-4dac-9e10-e9dda7a566e7
+"Lady Galfrey, Drezen has fallen.
+The city is lost, and may you be damned.
+May you be damned for sending us here. For not telling us that the worst fate isn't death. For promising the protection of your 'holy banner,' which did not save us from the monsters. For not being with us.
+Where were you when the squad of Smiling Knights was dying, but did not cry for mercy, but held the pathetic little street leading to the temple? Where were you when our blood filled the gutters, and mixed with the sewage? Where were you when our will and our spirit was broken, beaten, and left sobbing like a wharf wench?
+Your throne is built upon the corpses of naive fools and adventurers hungry for glory. I realized this when the demons brought Commander Verstol into the square and threw him into Sarenrae's healing fount — and then lit a fire beneath it. The Commander was boiled alive for three days, while Sarenrae's once merciful but now cruel blessing prevented him from dying. His skin was covered with blisters and slid off his flesh. We stood in the square and watched, the cold wind torturing our own naked bodies. Our blood flows from our wounds, as if it's trying to flee this horrible place. Deprived of water, our throats crack and bleed. Deprived of food, our stomachs dry out and wither. For three days, the Commander could not die. His meat grew gray and smelled so sweet; I hated myself for wanting to taste it. Commander Verstol stopped screaming by the first midnight. By dawn he could only grunt. On the third morning, this stern man, who had no mercy for himself or his enemies, was crying like a baby. His tears were endless. He was literally cooking in them! Then the fount finally cracked, and he died. The new ruler of Drezen, the demoness Minagho, dined on his flesh. But she was not greedy. Each of us prisoners, tortured with hunger, received a piece of the Commander.
+Do you know what a person cooked alive for three days smells like, Galfrey?
+Writing this pains me greatly. Some terrible insect stung my hand during the battle. Now it has swelled to twice its normal size, and it's the color of raw beef. The skin is about to burst. The heat is melting me, body and soul. But I will finish this letter so you will know all. Because there will be at least a drop of justice in this, if you are brought to understand what has happened to us because of you. When I finish writing, the demon will send the letter to you with the last of the charmed doves you gave to Commander Verstol. They ate the others. This letter will earn me a chance. I will crawl at their feet, and beg for mercy. I will give any oath. Because I can't take it any more. Enough is enough.
+And may you be damned.
+Not your loyal servant any more,
+Knight Jermon"
+
+a26d6773-0a4e-4cdf-93f4-d9643f5171e6
+Visit Minagho at her hideout.
+
+9c9659c9-1c6d-400d-83d9-6de2dd6df6b0
+Minagho's Desperation

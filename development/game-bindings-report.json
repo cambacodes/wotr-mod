@@ -1,0 +1,424 @@
+{
+  "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\kiana-targona-final-review.json",
+  "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
+  "binding_uses": 444,
+  "unique_targets": 95,
+  "failures": [],
+  "targets": {
+    "54be53f0b35bf3c4592a97ae335fe765": {
+      "path": "Units/Companions/Seelah/Seelah_Companion.jbp",
+      "type": "BlueprintUnit"
+    },
+    "a609ed9b2205d034bb3bb04d2a255681": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+      "type": "BlueprintUnit"
+    },
+    "417ce3dcf3a9707488f2b9b2a790814b": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Jerribeth.jbp",
+      "type": "BlueprintUnit"
+    },
+    "64805abb52739e44280a758f850b300c": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Soana_Wintersun.jbp",
+      "type": "BlueprintUnit"
+    },
+    "2570015799edf594daf2f076f2f975d8": {
+      "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp",
+      "type": "BlueprintArea"
+    },
+    "8217b05e37078414981d994151f0ffb1": {
+      "path": "World/Areas/Act_4_MidnightIsles/AlushinyrraHigherCity/AlushinyrraHigherCity.jbp",
+      "type": "BlueprintArea"
+    },
+    "7847c3e3537104f4694167af0b9fcd0e": {
+      "path": "World/Areas/Act_4_MidnightIsles/Nexus/Nexus.jbp",
+      "type": "BlueprintArea"
+    },
+    "73c5728c4c6658344bedcc1b666e598c": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0070.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "30333438aac8d3647bef882fa87e978e": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_6/Diplomacy_6_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "8311ef29223c4fe469c95cd8eb80e539": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "7f64a30ceb4bfb046990bccbded7ac75": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081.jbp",
+      "type": "BlueprintCue"
+    },
+    "6178470b05c75484085753b821a6a614": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Diplomacy_8_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "0dc8b8604bb33c846a63f3eb62443674": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "8a632a5249b3c2541a1381111cae9e37": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "bf1542830cfa01d4c9db04546681084d": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "666c827662e8af14798009a98c5aae52": {
+      "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "b2997124f3662e147a029a6f73e13468": {
+      "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "2b1776f3e398685479ff6b16290b4cc2": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "19786fae9c29f9d439e374bb857c2e84": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3857231db61891944999387a4154e9fb": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "a1f97de9145c3574ebd2d7f75c3d39c9": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "edeeb17ba4f3d124890d22bdd2d8901d": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "417fa384f3250634bb71859fbc913453": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "81109ea8fb20dbc478cf67116740f4a1": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "aebbc1845e827dd4da4e28014e7b4162": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "33960c7f7af40cd43b7f801a76c87a0b": {
+      "path": "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "871af36f2ab2b1f40b5de77976c54276": {
+      "path": "World/Dialogs/NPC_Common/Irabeth/AnswersList_0009.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "ecaf5cfe8087a4f45a2269974f4885c9": {
+      "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "ba365d0ae03c414a8f6f906837a4fe91": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "09f46662bcd14a03a0874267e16d6e6f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c6e9a69f602a48e18424f4b6d71062b4": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/ApprovedHelpFromAnotherCountryDiplomacy7(A8A0103).jbp",
+      "type": "BlueprintEtude"
+    },
+    "b5f301fbc4c44535a6309d610d5bd28a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/DiplomacyOfficer_InDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "cd8666952065ce74d94d960a23482133": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/JerribethDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "995f0ac2951bbb041b062806c163fbf1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/BearDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fccdd316924af204da00c99f01c0e222": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/SoanaAfterQuest.jbp",
+      "type": "BlueprintEtude"
+    },
+    "ff0d7227c56b2b0488b006893b96040e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/Wintersun_ForestDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c97882cbc65c4c546aed1810627a5b81": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/Wintersun_OldDefender.jbp",
+      "type": "BlueprintEtude"
+    },
+    "72e423c719ed9d44fa432a6b9629babd": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "381a296094804761af0893d2e70dc2df": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_PlayerSacrifice.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3a708ad53771a2d44ac506361fb7aafc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "79519b75e04ffc744b9bb72a2b369786": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fcbd1ad00e1c7044b8485d7feda8b9b7": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "787273d702a87884e9f14cfb7ef91180": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "26ae0f50130942b4bb8dfe658e77b1c6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c33407f132b192643a438bd33797efa1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "e438007efc4f1474eb447031d4b5a60e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_BadEnding.jbp",
+      "type": "BlueprintEtude"
+    },
+    "2bb1f6f30ca9bb1408f720d6f10c5c05": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_ModerateEnding.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6d3fb96f9b60c0449a01add4be5c4a49": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6125c10886d6465091f4e092618ca55a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/AneviaNotInDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3f3fbb973a4ffee47956b4c7714c939a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital.jbp",
+      "type": "BlueprintEtude"
+    },
+    "260454e5186fbd34694a0393097f77b5": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/IrabethNotInDrezenCh5_WithGalfrey.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d4b624463e52e21438da6f4870320fee": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/SoanaDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f102a4d0677148f4cab007f901a5ed3c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/SoanaKilledByCamellia.jbp",
+      "type": "BlueprintEtude"
+    },
+    "7a038ff7b70e91844954407b18e8feb6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethBroken_Chapter03.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b14e13f9359585e498fcd81ab95d4d7e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "8b0924efc23df3540b4d8b5fbffd522f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethEncouraged_Chapter03.jbp",
+      "type": "BlueprintEtude"
+    },
+    "395aad049186445f9f474d0a769ec8ff": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "148423f1d35917946a5ebeeb4f19246c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "1aaee57d670b0494e9d8662bffbf4f6a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaCondemnedAreeluLab.jbp",
+      "type": "BlueprintEtude"
+    },
+    "bc65b234df544a718afc4856eb7f33fc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaDiedInMutasafenLair.jbp",
+      "type": "BlueprintEtude"
+    },
+    "720af1f72f413354db3f4d41f76d5af6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaIsFreeInAreeluLab.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3b8bd37108050a94b9be14e22501e090": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaIsWasKilledInAreeluLab.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3a040afde22f4b742a2f607354ab17e7": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAeon/PlayerIsAeon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3a82aba4de71b89458ac82949ed957c4": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAngel/PlayerIsAngel.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d3b47e973d65c6c46af1cce815d1f6ce": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/PlayerIsAzata.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9a3739370f84b0b4196d0e4d326ea3a8": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDemon/PlayerIsDemon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "a1db9daf676b36f4d99c6a788a0fe1af": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDevil/PlayerIsDevil.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9b193d30c89a20b409fd3dda9bd109bf": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDragon/PlayerIsDragon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c6165efcd5571c442ae38d7c0601f2df": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/PlayerIsLegend.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b6b0399039dbdbf43bf8946f7e686469": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLich/MythicLich_TrueLich.jbp",
+      "type": "BlueprintEtude"
+    },
+    "11fc5662e0ce8074ea145a022282b879": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLich/PlayerIsLich.jbp",
+      "type": "BlueprintEtude"
+    },
+    "439e63fed37f52048887d98f99255e40": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLocust/PlayerIsLocust.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9f486a9c0c9abfc4a952bb22e88a7e96": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/PlayerIsTrickster.jbp",
+      "type": "BlueprintEtude"
+    },
+    "07ad18ffb08145b69522f8eee0230857": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAll.jbp",
+      "type": "BlueprintEtude"
+    },
+    "08e47548e25945e286fe77b896884b32": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAlone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "63279a971792474ba0439b9f75795a7a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAreelu.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9fc5161813f1497f8eaad1563ac54211": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendCompanions.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5a5a533c9ce630a48b877f9a194840cb": {
+      "path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "4774e38b267c47f2b5f6c0975ec486f0": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e1837a6b241f4095a4312e0115988721": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2660c0d29eaf4dce9de52b3994462df1": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "383cc2c9ea3f47c4a71982cb06535118": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "64e2b82829694b8fac652ea06f4dc8a7": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "480fead956f24022930a83d4457a377c": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6ba14669a2a74dfbb308f66fecda8f6e": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2edcb6e5a1c3439fa9b9e0b3b96a49fb": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "94bc04d1ed474feaab54af2f77a94574": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ecdddd77ad964561b38ad1848cb4553f": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "df70df5cb6824ff5a9776a2478eee6c6": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "80cb9c6f466b4eaaaa9561ca56c5f348": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6ec03ce2f763460c8ac89f4c2064c5ad": {
+      "type": "BlueprintQuest",
+      "path": "RanRomance.Targ.TargQuest.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ad655c40be31401386b85287483b3841": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "cfc5f3cb2cf94672a96cab742e62225d": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "62c24328ae744ee98fabd219dbe74c92": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ec76729da60441a1b2028f340743c0a8": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    }
+  }
+}

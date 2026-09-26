@@ -1,0 +1,182 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
+using Kingmaker.Blueprints.Root;
+using Kingmaker.Controllers.Dialog;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.DialogSystem.Blueprints;
+using Kingmaker.Localization;
+using Kingmaker.PubSubSystem;
+using Kingmaker.ResourceLinks;
+using Kingmaker.Settings;
+using Kingmaker.UI.MVVM._VM.Dialog.Dialog;
+using Kingmaker.UI.MVVM._VM.Tooltip.Utils;
+using Kingmaker.Utility;
+using Owlcat.Runtime.UI.MVVM;
+using UniRx;
+using UnityEngine;
+
+namespace Kingmaker.UI.MVVM._VM.Dialog.BookEvent;
+
+public class BookEventVM : BaseDisposable, IViewModel, IBaseDisposable, IDisposable, IBookPageHandler, IGlobalSubscriber, ISubscriber, IBookEventUIHandler, ChangeBookEventImage.IHandler
+{
+	public ReactiveProperty<Sprite> Mirror = new ReactiveProperty<Sprite>(null);
+
+	public DialogNotificationsVM DialogNotifications;
+
+	public BookEventChooseCharacterVM BookEventChooseCharacter;
+
+	[CanBeNull]
+	private VoiceOverStatus m_PlayingVoiceOver;
+
+	[NotNull]
+	private readonly Queue<BlueprintCue> m_VoiceOverQueue = new Queue<BlueprintCue>();
+
+	public readonly float FontSize = (float)(Game.Instance.IsControllerMouse ? 22 : 30) * (float)SettingsRoot.Game.Main.FontSize;
+
+	public IReactiveProperty<bool> ChooseCharacterActive { get; } = new BoolReactiveProperty();
+
+	public IReactiveProperty<BlueprintBookPage> BlueprintBookPage { get; } = new ReactiveProperty<BlueprintBookPage>();
+
+	public IReactiveProperty<Sprite> EventPicture { get; } = new ReactiveProperty<Sprite>();
+
+	public IReactiveProperty<List<AnswerVM>> Answers { get; } = new ReactiveProperty<List<AnswerVM>>();
+
+	public IReactiveCollection<CueVM> Cues { get; } = new ReactiveCollection<CueVM>();
+
+	private Sprite DefaultSprite => BlueprintRoot.Instance.Dialog.DefaultBookEventPicture;
+
+	public BookEventVM()
+	{
+		AddDisposable(EventBus.Subscribe(this));
+		AddDisposable(DialogNotifications = new DialogNotificationsVM());
+		AddDisposable(MainThreadDispatcher.UpdateAsObservable().Subscribe(delegate
+		{
+			OnUpdate();
+		}));
+		TooltipHelper.HideTooltip();
+		TooltipHelper.HideInfo();
+	}
+
+	private void OnUpdate()
+	{
+		if (m_PlayingVoiceOver == null || m_PlayingVoiceOver.IsEnded)
+		{
+			m_PlayingVoiceOver = null;
+			while (m_PlayingVoiceOver == null && m_VoiceOverQueue.Count > 0)
+			{
+				BlueprintCue blueprintCue = m_VoiceOverQueue.Dequeue();
+				m_PlayingVoiceOver = blueprintCue.Text.PlayVoiceOver();
+			}
+		}
+	}
+
+	protected virtual void SetPage(BlueprintBookPage page, List<CueShowData> cues, List<BlueprintAnswer> answers)
+	{
+		BlueprintBookPage.Value = page;
+		ClearCues();
+		SetCues(cues);
+		SetVoiceCues(cues);
+		ClearAnswers();
+		SetAnswers(answers);
+		SetPicture(page);
+		SetMirror(page);
+	}
+
+	private void ClearCues()
+	{
+		Cues.ForEach(delegate(CueVM d)
+		{
+			d.Dispose();
+		});
+		Cues.Clear();
+		m_PlayingVoiceOver?.Stop();
+		m_PlayingVoiceOver = null;
+		m_VoiceOverQueue.Clear();
+	}
+
+	private void SetVoiceCues(List<CueShowData> cues)
+	{
+		foreach (CueShowData cue in cues)
+		{
+			m_VoiceOverQueue.Enqueue(cue.Cue);
+		}
+	}
+
+	protected virtual void SetCues(List<CueShowData> cues)
+	{
+		foreach (CueShowData cue in cues)
+		{
+			Cues.Add(new CueVM(cue.Cue.DisplayText, cue.SkillChecks, cue.AlignmentShifts));
+		}
+	}
+
+	private void ClearAnswers()
+	{
+		Answers.Value?.ForEach(delegate(AnswerVM d)
+		{
+			d.Dispose();
+		});
+		Answers.Value = null;
+	}
+
+	private void SetAnswers(List<BlueprintAnswer> answers)
+	{
+		int index = 1;
+		Answers.Value = answers.Select((BlueprintAnswer answer) => new AnswerVM(answer, Game.Instance.DialogController, index++)).ToList();
+	}
+
+	private void SetPicture(BlueprintBookPage page)
+	{
+		EventPicture.Value = DefaultSprite;
+		SpriteLink imageLink = page.ImageLink;
+		if ((object)imageLink != null && imageLink.Exists())
+		{
+			Sprite sprite = page.ImageLink.Load();
+			if (sprite != null && (bool)sprite)
+			{
+				EventPicture.Value = sprite;
+			}
+		}
+	}
+
+	protected virtual void SetMirror(BlueprintBookPage page)
+	{
+		Mirror.Value = Game.Instance.Player.MainCharacter.Value.Portrait.FullLengthPortrait;
+	}
+
+	protected override void DisposeImplementation()
+	{
+		ClearAnswers();
+		ClearCues();
+	}
+
+	public void HandleOnBookPageShow(BlueprintBookPage page, List<CueShowData> cues, List<BlueprintAnswer> answers)
+	{
+		SetPage(page, cues, answers);
+	}
+
+	public void HandleChooseCharacter(BlueprintAnswer answer)
+	{
+		AddDisposable(BookEventChooseCharacter = new BookEventChooseCharacterVM(answer));
+		ChooseCharacterActive.Value = true;
+	}
+
+	public void HandleChooseCharacterEnd()
+	{
+		BookEventChooseCharacter?.Dispose();
+		ChooseCharacterActive.Value = false;
+	}
+
+	void ChangeBookEventImage.IHandler.OnImageChanged(SpriteLink image)
+	{
+		Sprite sprite = image?.Load();
+		if (sprite != null)
+		{
+			EventPicture.Value = sprite;
+		}
+	}
+}
+You are not using the latest version of the tool, please update.
+Latest version is '11.1.0.9782' (yours is '9.1.0.7988')

@@ -1,0 +1,93 @@
+using BlueprintCore.Actions.Builder;
+using BlueprintCore.Actions.Builder.StoryEx;
+using BlueprintCore.Blueprints.Configurators;
+using BlueprintCore.Blueprints.Configurators.AreaLogic.Etudes;
+using BlueprintCore.Blueprints.Configurators.DialogSystem;
+using BlueprintCore.Conditions.Builder;
+using BlueprintCore.Conditions.Builder.StoryEx;
+using BlueprintCore.Utils;
+using Kingmaker.AreaLogic.QuestSystem;
+using Kingmaker.Designers.EventConditionActionSystem.Evaluators;
+using Kingmaker.DialogSystem.Blueprints;
+using Kingmaker.ElementsSystem;
+
+namespace RanRomance.Mina;
+
+public class Main
+{
+	public static void Configure()
+	{
+		//IL_0001: Unknown result type (might be due to invalid IL or missing references)
+		//IL_0007: Expected O, but got Unknown
+		//IL_0019: Unknown result type (might be due to invalid IL or missing references)
+		//IL_001f: Expected O, but got Unknown
+		//IL_0031: Unknown result type (might be due to invalid IL or missing references)
+		//IL_0037: Expected O, but got Unknown
+		//IL_0049: Unknown result type (might be due to invalid IL or missing references)
+		//IL_004f: Expected O, but got Unknown
+		//IL_0061: Unknown result type (might be due to invalid IL or missing references)
+		//IL_0068: Expected O, but got Unknown
+		//IL_007c: Unknown result type (might be due to invalid IL or missing references)
+		//IL_0083: Expected O, but got Unknown
+		IntConstant val = new IntConstant();
+		val.Value = 6;
+		((Element)val).name = "constant6Mina";
+		IntConstant val2 = new IntConstant();
+		val2.Value = 7;
+		((Element)val2).name = "constant7Mina";
+		IntConstant val3 = new IntConstant();
+		val3.Value = 1;
+		((Element)val3).name = "constant1Mina";
+		IntConstant val4 = new IntConstant();
+		val4.Value = 8;
+		((Element)val4).name = "constant8Mina";
+		IntConstant val5 = new IntConstant();
+		val5.Value = -1;
+		((Element)val5).name = "negative1Mina";
+		PlayerCharacter val6 = new PlayerCharacter();
+		((Element)val6).name = "pcMina";
+		MinaQuest.Configure();
+		ActionsBuilder actionList = ActionsBuilder.New().CompleteEtude("faad12cd8c8048309acb37896d8fafc3").GiveObjective("4561de3302804378819532ee51572041");
+		EtudeConfigurator.New("RanRomMinaTimer1", "faad12cd8c8048309acb37896d8fafc3").SetAllowActionStart().AddEtudeInvokeActionsDelayed(actionList, 4)
+			.AddEtudePlayTrigger(ActionsBuilder.New().GiveObjective("e46d556e8fda48ca815e1a5a3da2f939"))
+			.SetCompletionCondition(ConditionsBuilder.New().QuestStatus(negate: true, "49b7496143daed149ab4557a9684dd53", (QuestState)1))
+			.Configure();
+		ActionsBuilder actionList2 = ActionsBuilder.New().CompleteEtude("d5e4f2aa713647cc8d40438b46e0d1ef").GiveObjective("f7f9ceff5eff4cb3aa5822726585f2a1");
+		EtudeConfigurator.New("RanRomMinaTimer2", "d5e4f2aa713647cc8d40438b46e0d1ef").SetAllowActionStart().AddEtudeInvokeActionsDelayed(actionList2, 4)
+			.Configure();
+		EtudeConfigurator.New("RanRomMinaBanner", "4a29c758798d47a1a32f506d1ca6081b").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaConscience", "813cc79c053d4b3e869a0d0ca2f3d85d").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaFreed", "f18391398cb5470c94f8932e9d8d2fd7").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaDemon", "58557969a797441983022c8ba0400400").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaLegend", "a87da83417ff4be28c9ccfaf9b154e96").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaDragon", "e303c58d307849cd892fa5810124da92").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaSanctuary", "1e6ca1514807446ea2fddd65e4f5bcc8").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaSex1", "552e473e6d674d2bbb5b92ac615b838d").AddEtudePlayTrigger(ActionsBuilder.New().IncrementFlagValue("RanRomCount", true, (IntEvaluator?)(object)val3)).AddEtudeCompleteTrigger(ActionsBuilder.New().IncrementFlagValue("RanRomCount", true, (IntEvaluator?)(object)val5))
+			.SetAllowActionStart()
+			.Configure();
+		EtudeConfigurator.New("RanRomMinaSex2", "73423d82afce42eb8f6e0c44121010dc").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaRomance", "b5c19cd01e364df99f6c946c7da14751").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaCult", "3d21fa8120d040338ec1d4b8461fa536").SetAllowActionStart().Configure();
+		EtudeConfigurator.New("RanRomMinaRedemption", "592dcdccbef043f58031fa234faf137a").SetAllowActionStart().Configure();
+		UnlockableFlagConfigurator.New("RanRomMinaConvCount", "af1a8b7e02354944a9fbd0d05f52854c").Configure();
+		ActionsBuilder ifTrue = ActionsBuilder.New().IncrementFlagValue("fbb189bb913c4899ad075ef94e91e595", true, (IntEvaluator?)(object)val3);
+		ConditionsBuilder conditions = ConditionsBuilder.New().EtudeStatus(null, null, "RanRomMinaRomance", negate: false, null, true);
+		ActionsBuilder actions = ActionsBuilder.New().Conditional(conditions, ifTrue);
+		EtudeConfigurator.For("4beab5b47b0a40d3a2fa59b2b285b3de").AddEtudePlayTrigger(actions).Configure();
+		ConditionsBuilder showConditions = ConditionsBuilder.New().Add(BlueprintTool.Get<BlueprintAnswer>("d12f5b2ef1b7e4c4db92a58a23fa4178").ShowConditions.Conditions[0]).AnswerSelected("a08540bf69314cffb24d93d277cf6636")
+			.UseOr();
+		ConditionsBuilder conditions2 = ConditionsBuilder.New().AnswerSelected("a08540bf69314cffb24d93d277cf6636").EtudeStatus(null, null, "1d466fd4271fdc14ea1c077760c63ca5", negate: true, null, true);
+		ActionsBuilder onSelect = ActionsBuilder.New().Add(BlueprintTool.Get<BlueprintAnswer>("d12f5b2ef1b7e4c4db92a58a23fa4178").OnSelect.Actions[0]).Conditional(conditions2, ActionsBuilder.New().StartEtude("1d466fd4271fdc14ea1c077760c63ca5"));
+		AnswerConfigurator.For("d12f5b2ef1b7e4c4db92a58a23fa4178").SetShowConditions(showConditions).SetMythicRequirement((Mythic)0)
+			.SetOnSelect(onSelect)
+			.Configure();
+		MinaBook03Dial001.Configure();
+		MinaChpt04Dial001.Configure();
+		MinaBook01.Configure();
+		MinaBook02.Configure();
+		MinaBook03.Configure();
+		MinaEpil.Configure();
+	}
+}
+You are not using the latest version of the tool, please update.
+Latest version is '11.1.0.9782' (yours is '9.1.0.7988')

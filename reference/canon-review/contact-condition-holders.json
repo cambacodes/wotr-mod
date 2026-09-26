@@ -1,0 +1,185 @@
+{
+  "World/Encounters/AlushinyrraHigherCity/ConditionsHolders/JerribethDialog_Conditions.jbp": {
+    "AssetId": "3f75915712ea4810a3d800d92b4b1eb5",
+    "Data": {
+      "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+      "Conditions": {
+        "Operation": "Or",
+        "Conditions": [
+          {
+            "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+            "name": "$OrAndLogic$d4fb93e6-d777-4b71-a444-9816df0600f8",
+            "Not": false,
+            "Comment": "\u0442\u0440\u0435\u0442\u044c\u0435 \u0441\u0432\u0438\u0434\u0430\u043d\u0438\u0435 \u0438 \u043d\u0435 \u0432\u0438\u0434\u0435\u043b\u0438 2 \u043a\u0443\u0439",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                  "name": "$CueSeen$40278ccf-a6f1-4e72-9bc9-e515756fadb0",
+                  "Not": true,
+                  "m_Cue": "!bp_a1f97de9145c3574ebd2d7f75c3d39c9",
+                  "CurrentDialog": false
+                },
+                {
+                  "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                  "name": "$EtudeStatus$e90b8549-d390-4391-befb-b3338b4074fc",
+                  "Not": false,
+                  "m_Etude": "!bp_02ffbe686c198854da2d51e72fccb9ca",
+                  "NotStarted": false,
+                  "Started": false,
+                  "Playing": true,
+                  "CompletionInProgress": false,
+                  "Completed": false
+                }
+              ]
+            }
+          },
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$9b77cc2e-781f-4a6f-95c5-ba09c7c6d060",
+            "Not": true,
+            "m_Dialog": "!bp_992c44e6775d87444b562e855fd64af1"
+          }
+        ]
+      }
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Encounters/DrezenCapital/ConditionsHolders/Arsinoe_Dialogue_Conditions.jbp": {
+    "AssetId": "c4fa13c72fc350d4bae7431242eb095a",
+    "Data": {
+      "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$56aaf32c-22eb-4b4d-a039-4407c786f421",
+            "Not": true,
+            "m_Etude": "!bp_6d3fb96f9b60c0449a01add4be5c4a49",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      }
+    }
+  },
+  "World/Encounters/DrezenCapital/ConditionsHolders/Kyana_Conditions_Elan_Alive.jbp": {
+    "AssetId": "6a45d9e173debd14ba92e8b8cdd02a91",
+    "Data": {
+      "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$d1d08051-87fd-4f91-931f-fdb9078262a0",
+            "Not": true,
+            "m_Etude": "!bp_ded376ed8b73c3e42b0de967fb1d10a9",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          },
+          {
+            "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+            "name": "$FlagUnlocked$61e5e033-f075-4ddd-875e-68418b2be908",
+            "Not": true,
+            "m_ConditionFlag": "!bp_97b3254015284346ba32f1749cfae0b0",
+            "ExceptSpecifiedValues": false,
+            "SpecifiedValues": []
+          }
+        ]
+      }
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Encounters/DrezenCapital/ConditionsHolders/Kyana_Conditions_Elan_Dead.jbp": {
+    "AssetId": "0603189a2b7d56e4ca2d874d4f398c2b",
+    "Data": {
+      "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$a1d81d01-1354-45cd-807a-03f1c56df9b6",
+            "Not": false,
+            "m_Etude": "!bp_ded376ed8b73c3e42b0de967fb1d10a9",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          },
+          {
+            "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+            "name": "$FlagUnlocked$220dbd70-086b-483b-be32-fecc9b5048b0",
+            "Not": true,
+            "m_ConditionFlag": "!bp_b5dff99d2f8140e8bf23fb30048db101",
+            "ExceptSpecifiedValues": false,
+            "SpecifiedValues": []
+          }
+        ]
+      }
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Encounters/DrezenCapital/UnlockableFlags/KyanaSouless.jbp": {
+    "AssetId": "8a2da1bae7d69b84b999155ac0481223",
+    "Data": {
+      "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": ""
+    }
+  },
+  "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3KyanaAloneAfterDialogue.jbp": {
+    "AssetId": "b5dff99d2f8140e8bf23fb30048db101",
+    "Data": {
+      "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": ""
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3_ElanKianaAfterDialogue.jbp": {
+    "AssetId": "97b3254015284346ba32f1749cfae0b0",
+    "Data": {
+      "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": ""
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Encounters/WintersunOutdoor/UnlockableFlags/BlindCarver_loveFlag.jbp": {
+    "AssetId": "38a57ef12ef7c6546ad99be7f706b893",
+    "Data": {
+      "$type": "06e9a18b1f15bcf41b3a0ce1a2a0dfdd, BlueprintUnlockableFlag",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": ""
+    }
+  }
+}

@@ -1,0 +1,599 @@
+a0e41f17-b2ae-4dde-bb3d-35ff6bd86d76
+Aivu, Penta
+
+1d4c07e5-6cc4-4a9d-8608-56a91bdc29f8
+Azata shares a bond with her dragon. 50% {g|Encyclopedia:Damage}damage{/g} is redirected to Aivu. In addition, Aivu gets additional {g|Encyclopedia:Damage_Reduction}DR{/g} N/— where N is equal to Azata's mythic rank.
+
+4d4bf014-1df2-42e4-a296-7a4806380690
+Following Aivu's advice, you decided not to inform Queen Galfrey and attack the Midnight Fane with the forces you had.
+
+a1dfc055-bedf-478d-aa43-4f4d3c879698
+Aranka and Aivu want to meet with the Commander... on some very important business!
+
+64f77374-9eb8-4a8a-9644-44e6945c3444
+Aivu Wants To Talk
+
+4d4ffc0d-1312-4513-84fd-635a37231b17
+"Wild feasts and revels may draw Aivu's cousins, the havoc dragons. Noise and din always attract them. They also come from Elysium, and they enjoy boisterous fun and good cheer. They sometimes get so carried away they forget not to cause accidental harm, but such is the nature of some inhabitants of Elysium!"
+
+de4be337-fc44-4212-9192-e40df0ee4ae2
+"What do you mean, why? I can't fight demons very much yet, but you need help! And besides, it's fun. Advisor Aivu! If I tell someone, they won't believe me and think I'm making things up!"
+
+a4acd52c-faa7-4c17-a6a9-60859c2e87ec
+"That's good! Tell them Aivu is not afraid and says hi to everyone. It is good that I told you about them and gave you advice — because now everyone will feel better!"
+
+73e3f5b8-1a28-4ecf-8d3f-910f3d26d79b
+{n}Aivu holds her head high and sedately waves her tail.{/n} "I am no longer a plucky adventurer assistant dragon. But being an important dragon adviser is also pretty good! I think."
+
+b7d0f242-33e5-4f76-b2a0-b586ee2baa59
+"Uh-huh, but of course we can't go without helping you first! We'll get you out and be on our way!" {n}Aivu bites through the appendages before anyone can stop her.{/n} "Oh..."
+
+6a32ee3a-50fb-4bec-8eb3-8d8c75accc21
+{n}Arueshalae musters a weak smile.{/n} "Thank you, Aivu, you're so sweet. Your presence makes everything... a little brighter."
+
+f6e170f8-521e-4999-97bc-af75f108b8a0
+"No offense, Aivu, but I'm not in the mood to play." {n}Lann desperately tries to change the topic.{/n} "But if you behave yourself... and I mean only if you're really good, I'll get you a pirate hat."
+
+78a0959a-983d-451f-9293-dcb94f380f7d
+"Pfft, peacocks. Do you know how loud their cries are? Well, I do! I once chased a whole flock of them back home in Elysium! I only wanted a feather or two, but they ran as soon as I got close..." {n}Aivu looks abashed and falls silent.{/n}
+
+fac7326a-aae9-48e8-9c9b-6c2a6a9f4786
+"The right way to say it is 'mouse in a mousetrap.' Yep. But I can see how you got confused — all those boring words, I get them mixed up all the time too! What if everybody said... um... 'catch a bee in a beartrap!' Or maybe... a moose in a foxtrap? A manticore in a unicorntrap? A hedgehog... no, I don't want to catch a hedgehog, they're too prickly... Then how about a rabbit in a goat-trap?" {n}Aivu is distracted thinking up new combinations, no longer paying any attention to those around her.{/n}
+
+31e8735c-2cac-4493-8901-011b60f5c22e
+"Aivu is right. I'm sick of the suspense. Isn't it time we did something the demons aren't expecting? Let's not wait for the Queen — we'll attack the Fane as soon as the free crusaders are ready!"
+
+319cd6b1-3f39-4453-8c71-32e9389e9881
+{n}Aivu desperately tries to draw your attention.{/n} "We need to go now! Call the whole court and all the free crusaders and just go as soon as they assemble! You can't just sit here waiting for the Queen, good weather, and all the rest of it — by the time you move, the demons will have learned of our plans and will be waiting for us and will devour half of the world or more!"
+
+2887d5ea-e7ee-4b80-97e0-9c4784900739
+"No, don't! They're still so tiny... So what if their mama was mean..." {n}Aivu bursts into tears.{/n}
+
+4d397f5f-b01d-4242-ac62-415d4238ac3c
+{n}Aivu lets out a panicked screech.{/n} "Hey! Stop that right now! There are dragonlings in there! They're almost ready to hatch!"
+
+cfe0e464-f2ae-467b-9f87-99ad139a88d3
+"Nah-nah-nah-nah-nah!" {n}Aivu calls, making faces at the golems.{/n}
+
+1b4dcdd9-56ed-4de6-94aa-2933f92198db
+{n}Aivu looks at the {d|c3 azata devil}scene{/d} before her in dismay.{/n} "No... no... What a horrible horror! Poor Wallflower... Poor everyone..."
+
+785347c2-5dbd-4176-9732-05d1784a66be
+{n}The {d|azata chaotic}scene{/d} before you makes Aivu recoil in horror, dragging a sound from her throat that sounds like a human wail.{/n} "No! This can't be! How could this happen? Everyone... dead... Even Wallflower..."
+
+db270d20-ebb7-4460-95e9-90b6fcb789f6
+"Hey, stop bothering my friend! Or I'll bite you and whip you with my tail!" {n}Aivu "roars" in fury.{/n}
+
+3a0ef303-e0d9-4d12-8b0a-93049afb0620
+[Rub powdered sugar over Aivu's little muzzle] "Sure, I am very nice, and very rebellious! And someone is about to learn that firsthand..."
+
+d04b3b62-7e2b-461e-9587-7324a470b5f9
+"Of course I want to be like the azatas. Forgive me, Aivu. You can throw another snowball at me!"
+
+1cde1137-7077-4570-8fd0-655105bd6ed4
+{n}Aivu looks confused{/n} "But... we're still friends, aren't we? And you still want to be nice and fun like the azatas from Elysium? Aren't you going to be friends with everyone, and ignore all the boring serious stuff? Then why are you being so mean? Why aren't you laughing at my jokes?"
+
+26b07e6b-bcc6-4c14-a8f5-5b88f0679e1a
+"Help!" {n}Aivu tries to hide behind Aranka, but then changes her mind and sticks out her nose toward you.{/n}
+
+bf2e6933-7b3b-49a3-b3a1-efef5a6d0b9a
+"Boring," {n}yawns Aivu.{/n}
+
+44121ee5-9dfc-4d96-9b83-404b4c5aa81b
+"If you really are a good mentor, then you should teach the fun stuff. You know, things like how to make pretty pictures on berry jelly with whipped cream..." {n}Aivu licks her lips.{/n} "Not this boring stuff."
+
+5b841481-fcb0-4c57-a8d1-63109e4b5d58
+"Aivu. Because I'm little. In my family, our names get longer as we get bigger and older. Just imagine how funny it would be otherwise! Imagine being a five-year-old dragon, barely hatched, but they already call you Rezlarabren or Ilthuliak or something like that!" {n}The little dragon snorts and you conclude that this is her way of laughing.{/n}
+
+ef279cd3-fcb3-455b-ba49-a0adaab98bb4
+"Aivu the lovely dragon was here. If you're reading this gimme a cookie!"
+
+839b859e-8475-4666-a810-3b9ebd395f7d
+"I know what you need to do! Knight them!" {n}Aivu whispers loudly. She continues, a little embarrassed, as Aranka and the others look at her in surprise,{/n} "I mean, I've been told many stories about Golarion, and that's what always happens in them! {name} is the Knight Commander, right? That means {mf|he|she} can knight you all! Ordinary knights are a bit boring, but I know {name} will make your oath really exciting!"
+
+81bf46b4-7bf3-4ff5-96c9-4a63a3ca26e9
+{n}Aivu whispers loudly in your ear,{/n} "You should've added something at the end, like: 'Cookies for everyone!' Except we probably don't have any cookies... Well, I can fly off quick and bring some back!"
+
+1746c835-17b2-430f-b886-0320e24886aa
+"Hello? There's a dragon here too, you know. I'm way more interesting than a butterfly! And it was me who asked {name} to come here, anyway! Who's a good little dragon? Aivu's a good little dragon!"
+
+d1340f80-4e0b-494b-af50-cd6bc0520ef9
+"I'd love to see what Aivu will be like when she grows up. Adult dragons of her kind possess unique abilities. That said, that story about being able to breathe candy is probably made up."
+
+0e1b4af0-41cc-463e-bec3-6c1e9f874d27
+"Aivu, you've grown up a bit!"
+
+24c2b20c-5b5c-4016-85b7-d5dd653ec03f
+"Aivu, I followed your advice — I've tried to be nicer and more rebellious."
+
+fa138714-c9aa-43b4-8564-45ea56d543c1
+{n}Aivu looks at you, utter despair etched on her little face.{/n} "I just thought of something awful! Absolutely awful! What if my tongue's... ugly? Wouldn't it be so much more splendid if it was forked?"
+
+5dd24bda-6905-4f9b-a7a7-d8099e314942
+{n}Aivu snorts a few times.{/n} "Guess what? You're not just my best friend, you're my best accomplice now, too!"
+
+8a01a519-d581-488f-9842-b560129e848a
+{n}Aivu gives you a long hard look.{/n} "I'm going to let you in on a really important secret. Just don't tell anyone! When those demons caught and kidnapped me, I got really scared. I mean, I'm a brave dragon... really brave! But I still felt scared and lonely."
+
+74101757-5d5c-40c0-b391-068fc500564e
+{n}Aivu's eyes go wide with surprise.{/n} "You get scared? Really? Do you get the shivers when you're scared? Do you get an itch right on your nose, too? I always do!"
+
+24662dbb-d5f2-4924-af7e-c87d124bbb11
+"Yes, it's exactly as Aivu said. Ever since you turned this patch of corrupted land into a garden, certain items buried in its soil have randomly transformed into something else."
+
+fb2b4ca2-b418-4f73-90bc-2109f498d191
+Aivu
+
+cde27b92-d296-4a60-97d6-d0704c22ea23
+"Ooh, well, that's it, now a big grown-up dragon is here! I can already tell that I'll be scolded and instructed, instructed and scolded." {n}Aivu's face is full of mischief.{/n}
+
+e32de469-9657-4eb4-8258-750909c292e8
+"I never took you for a cannibal, Aivu. Those boots are dragon leather."
+
+821fb5f5-a6f5-4798-87df-1ad419c6c3ca
+{n}Aivu cowers slightly.{/n} "He's hurting her because she's curious! Bad, scary man. Going to places of secrets and learning those secrets — that's a normal thing to do!"
+
+3da0adbb-9123-4e6a-a925-c4f06c5aabf9
+{n}Aivu puffs up, offended.{/n} "We don't reek of anything. For your information, old granny, I always clean my claws and maw after a fight. All clever and well-mannered dragons do that!"
+
+708da552-4611-4c32-b525-40d3ccb684f7
+"Don't try to suck up to me. I know a suck-up when I see one!" {n}Aivu proudly turns up her nose.{/n}
+
+4ef5001e-a3f2-4f03-966d-ca228f061f8e
+{n}Aivu listens carefully, and just as carefully she examines the tiefling's sewn eyes, his loathsome master, and the surroundings of the slave market. Then, in a tone that brooks no objection, she declares,{/n} "Everything in this place is horrible. Absolutely everything."
+
+e99abc56-3100-4adc-a529-62340840c662
+{n}Aivu crouches and growls softly. There are not many things that can anger the guileless dragon, but it looks like the slaver managed to do just that.{/n}
+
+c0c2ca8a-bd34-4ae1-90ed-2e2c1c9689a8
+"Shed-Skin said someone drew her attention to us and that she had been encouraged to abduct Aivu."
+
+d4051c1f-75fd-44c8-812e-dc3f751820df
+[Attack] "Aivu is right. Someone deserves to be hit in the head."
+
+f84c87b5-ede4-4001-aa95-7f4d5995640e
+"It was the most reasonable way to secure Aivu's safe return. Doesn't the desire to save an innocent, a friend, justify the harshness of the methods?"
+
+85055ebd-a983-4fa2-ad1c-0bb0c8745578
+"Oh, no doubt. Now I'm definitely going to the Nexus to take a break from... work. I am glad I was able to play my part in Aivu's return. Until our next meeting."
+
+0c034295-d289-4161-906b-023bffbbc514
+"Where did you even get the idea of stealing Aivu?"
+
+72468625-6049-498d-90b9-ddb7936b122d
+"Aivu was abducted by demons."
+
+d14c368c-2918-4648-a827-433618a13229
+"We need to do something as soon as possible! Sweet Aivu shouldn't be left on her own... especially not here in the Abyss."
+
+0788edce-b779-4724-a375-79b54fa0ee0b
+{n}Ember covers her face with burned hands in horror.{/n} "Little Aivu... She's been kidnapped!"
+
+a8ddf7a8-bf8b-4aae-93b8-1e4d144a2cbb
+"We captured a slave who was trying to escape from you. We are willing to trade her for Aivu."
+
+5fc07886-7138-4fb8-bf6b-d8e6838e9aea
+[Pay the money] "I will pay. Free Aivu."
+
+9fb34798-9889-4da7-b574-b0a6fff1321e
+"I will take Aivu and leave."
+
+bbc8c501-ce49-4d66-8964-18a4c22a7f8f
+[Attack] "Now that Aivu is back with me, her kidnappers must pay for what they did. Not only you, but your accomplices as well!"
+
+5dd859dd-80c0-412b-9c1a-e6f578b3cc0f
+{n}The familiar projection of Ramisa Shed-Skin appears next to Aivu's cell.{/n} "How is it that my handsome buyer turned out to be fake? He brought the owner of this dragon larva to my lair. Should I be surprised?" {n}The demon lets out a mocking laugh.{/n}
+
+b2533f2f-4828-47cf-882a-99d3d91057f8
+"Are you really going to let this go? We rescued Aivu, and she's safe. Shouldn't we... make the slavers pay for what they did?"
+
+9fab2407-9114-4396-bd3e-a8de454e6852
+"Let's go to that nasty market and free ALL the slaves! Ha ha! Wait, that's what a little kid would say... Let me say it another way!" {n}Aivu takes a deep breath, wrestling with her emotions.{/n} "We can't defeat the entire Abyss and change everything here forever. But if we retreat, the demons will keep doing whatever they want. We need to show everyone, including those poor slaves, that there is a way out and that these filthy demons can be defeated!"
+
+8eb09686-57b7-4042-acde-470448a85955
+{n}Aivu gives a very human sniff.{/n} "But..."
+
+42f529c7-5e50-4d8f-a409-e132d4101211
+"I see. Well then, let's go get Aivu."
+
+b95221da-ac99-4929-bfc7-6446a8b7e4e3
+{n}The voice of Early Sunset suddenly rings in your head.{/n} "{name}, I have learned everything I need to know. The riddle was far too easy. Aivu was kidnapped by Ramisa's hunters to be sold. A typical story in Alushinyrra, and many who come here as guests end up slaves at the Fleshmarkets. Anyway, I know where she's being kept. The lair is here, in the Middle City, and it isn't far. We need to go there."
+
+196eb1a4-7828-4ba6-81d4-08078e208b34
+"What can we do to save Aivu?"
+
+745ec1ba-2015-4494-81de-027657ca2f17
+"I'm ready to start looking for Aivu!"
+
+5692d67d-321b-4d75-865f-f521ea3fc0e8
+"In the most simple and elegant manner. I will go to the Fleshmarkets disguised as a powerful demon and declare that I want to buy a dragon. Many threads of influence and information converge at the Fleshmarkets. Even if the denizens of that place know nothing about Aivu's disappearance, they will stop at nothing to find out where she is, steal her away from her kidnappers, and deliver her to a waiting buyer. We may not even have to lift a finger."
+
+b7653bb4-9a00-497d-a6ea-95d01fcebf1d
+"Thank you, Master Early Sunset." {n}Arueshalae smiles at him.{/n} "My heart hurts because of Aivu, and I just wanted to... express my concern in some way. Songs are good for this." {n}Arueshalae waits another moment, glances at you, then falls silent.{/n}
+
+338839bc-4815-427f-b4f6-094e2b4575d2
+Declared you would not ransom Aivu, but kill the slavers instead.
+
+4ee315b5-0f2d-425e-a5ef-29ee49dca802
+"I'm not going to do business with slavers at all. Let's release this fugitive and free Aivu. By force, if necessary."
+
+197043e5-1573-4792-a341-1b99df8fb05f
+"I agree. Let's trade this fugitive for Aivu."
+
+00feaffe-415f-4031-8c8b-59094dc27f88
+"What luck." {n}Early Sunset nods contentedly.{/n} "We will return the escaped property to Shed-Skin and either get Aivu in return or demand a significant reduction in the price to buy her back."
+
+739f1ca0-7389-4bcc-aa44-2af5d575d739
+"My heart bleeds for poor Aivu, but partaking in such evil, even to save the unfortunate child...?"
+
+a73518b3-0302-41e0-83e1-ca6c3dd9ed29
+{n}Aivu looks around in fear and then attempts to curl up into a ball.{/n}
+
+28265ec1-e7ad-4eec-abe5-36551d87af6e
+{n}An image of Aivu caught by demons fills your thoughts. How can you leave and doom the dragon to captivity in Alushinyrra?{/n}
+
+d59796c1-cb47-4982-ada3-4d4adb0f5b29
+{n}An image of Aivu caught by demons fills your thoughts. How can you leave Alushinyrra before you face those behind the dragon's kidnapping?{/n}
+
+1536cf27-c3ef-40ac-90d6-f68d95086b4c
+"I can fight, all right... but I don't like to watch such horrible fights. Watching them is scary and it makes me unhappy... Oh, here's an idea! I'll just keep my eyes closed!" {n}Aivu squeezes her eyes shut resolutely.{/n}
+
+7bd71915-3d0b-41fa-956b-03630f159ace
+"What do you mean, 'return to her previous state of nonexistence'? No, no, no, I don't like that, I don't like that at all!" {n}Aivu is in a state of panic. She turns frantically to Nenio.{/n} "Nenio, wake up, please! This evil demon lion-snake-lady has put a curse on you somehow!"
+
+50c942f5-85a5-463a-a66f-5ff7b93452f3
+"The greatest treasure of dragonkind?" {n}Aivu looks indignant.{/n} "I think you're, um, what is the word again? Exaggerating! Yes, that's it!"
+
+cd7de103-6bf2-47ff-aaf9-4cd1f6227dfa
+{n}Aivu's eyes dart back and forth between the two dragons as they argue.{/n} "This reminds me of my dragon aunts and uncles when they fight in Elysium! Who should watch the eggs, who should fly to Emerald Song... They argue about all sorts of things. I mean, they don't actually fight — they just squabble a lot. But when you think about it, dragon wars are family squabbles too... they're just a lot scarier!"
+
+f80719ab-8b12-4519-8b8d-02b1747400bf
+"He's not even a hundred years old yet, and you've already given him a name that will take a hundred years to say!" {n}Aivu looks at the little dragon.{/n} "I'm so sorry, little guy."
+
+a03c87a4-4869-4153-99e4-f663f6139559
+"On the one claw, I'm not the smallest dragon anymore! On the other claw... Wait, does that make me a big sister now? Oooh!" {n}There's a mischievous light in Aivu's eyes.{/n} "So much... what was that word again? Potential! Yes! We'll get along nicely, little guy!"
+
+f07115dd-2143-4fa7-9827-62fe6ef4c662
+{n}The little dragon cranes his neck toward Aivu, and snorts happily.{/n}
+
+43dadd35-aced-4384-95e2-086ace9f8b0d
+"The shell cracked. He came out." {n}Aivu looks at the dragon skeptically.{/n} "Are you a dummy or something?"
+
+db4570ff-f1cd-434d-9f05-d13375732f66
+"Hooray! Hooray!" {n}Aivu is almost bouncing with excitement.{/n} "We will go, we will run, we will fly!"
+
+a86218db-d83d-4de1-9224-252a0f8e9e03
+"Yes! Just like real heroes! Because we ARE real heroes!" {n}Aivu does a little happy dance.{/n}
+
+159b1cc4-8a9d-4320-8235-8e0dc330925c
+{n}Aivu turns her head and takes a decisive sniff.{/n}
+
+a97aa571-63c5-4afe-bb52-b919b029ed2b
+"But they've got plenty of courage and tenacity. And ingenuity. And imagination. And Aivu, quit sniffin' around my pack — that is my lawfully obtained candy, I'm keeping it for a special occasion!"
+
+d8c8b2f3-5a25-4e9a-a55f-a7b4ee834f7c
+"If everyone's waiting for us there, could you please tell them to prepare a victory banquet for us? And tell them Aivu wants a cake!"
+
+548d221a-72f1-4845-b127-c3604420e5de
+{n}Aivu gives little Jharsygax Aghamornalyandre an indulgent look.{/n} "Jharsie will have half a cake!"
+
+db616fbe-7119-4eaf-8ff7-8bbbbd76d584
+"Ewyuckgross!" {n}Aivu lets out a series of splutter-like snorts.{/n} "Let's get this demon already! How can anyone listen to this?"
+
+e344fa6b-8f9e-492e-9676-bf4713346435
+{n}Aivu notices Jharsygax Aghamornalyandre.{/n} "And you, Jharsie, cover your ears. This is grown-up talk!"
+
+39d9a77a-9275-4118-8be2-e65cf3826867
+{n}Aivu opens her eyes wide and sniffles.{/n} "Oh no! Poor mister angel!"
+
+f28f928e-48d2-4318-a28e-256952a043cb
+"What happens to Aivu if I accept?"
+
+a6805bfc-2d6a-44bb-b8fc-9d40e1e1ca69
+{n}Aivu looks around warily.{/n} "Do you know who I smell? Early Sunset! He's here somewhere!"
+
+50ac76f6-1687-40c5-8d0c-c5983625bba4
+"Come on!" {n}Aivu tries to look warlike and formidable.{/n}
+
+cef5080e-ac32-4e60-8100-60ac09207229
+{n}Aivu cautiously tries to look into your eyes.{/n} "{name}, he's talking to you, isn't he? In your head, right? Don't listen to him! He's mean!"
+
+946cf099-ab38-4f81-a526-27aebdf92147
+"Be quiet." {n}With a snap of the devil's fingers, Aivu disappears into the portal with a startled cry.{/n} "Everything that comes from Elysium must remain within Elysium. At least until we can find a... radical solution to the problem that plane presents."
+
+02b4d57b-fdfe-4112-b895-cd7b1f03d107
+"Bad, nasty devil! Never, ever, ever listen to someone like him again, {name}! Just look at what awful things happened... All of our friends are gone, and everything is so sad, and it will never get better!" {n}Aivu sobs.{/n}
+
+16f023a2-9c2c-4e74-8e82-20ec8176cc55
+"Not like a doggy, but like me." {n}Aivu frowns.{/n} "By the way, having your own dragon is better than having your own flying island!"
+
+1f2745f3-9a34-4ba8-884d-adff1d4eb4e3
+"It's not our way to show up in a pillar of light and pressure someone to accept us as their mentor. The plane of freedom knows how to respect freedom, especially the freedom of mortals to follow their own paths. But we've always been near. We sent little Aivu to you, and we... watched out for you and encouraged you as best as we could."
+
+69377db6-074d-4b1f-87ad-1d2408c1ae6a
+"Fly away, Aivu. You don't belong here."
+
+b7d5f308-9de7-44e8-81f8-456c4b12c048
+Devoured Aivu the dragon.
+
+799c11da-8102-4f1c-97f1-f202fdfce627
+[Devour Aivu] "You are food for the swarm, little dragon, same as everyone else."
+
+ac79b667-2f99-4670-95e4-d875634607b3
+"Of course, Aivu. We'll remain friends forever, and we'll definitely meet again!"
+
+d1e784f8-ddd9-4b53-95f6-c2f18005bae9
+"Of course, Aivu! We'll always remain friends!"
+
+7019ad21-5af1-4894-b853-96a16a7d14ac
+{n}Aivu nervously shuffles her paws, the tip of her tail trembles, and her eyes are filled with tears.{/n} "You're not my friend anymore! You've changed too much! Aranka and your other friends don't like you anymore, either. I'm going to fly home to Elysium! And don't even try to ask me to stay — I am so sad because of you, I'll cry for a whole month, maybe even a year!"
+
+1be2a6df-01df-4ee0-a706-10721c6ccd5f
+{n}Aivu's little face is a picture of sadness, and her tail trembles slightly, probably due to anxiety.{/n} "Look what happened! I'm small again! There's almost no magic left in me... That's because it was all coming from you!"
+
+d1b5d375-cf30-4df9-bfc7-25d7ce2097df
+{n}Aivu can't help but turn misty-eyed and sniffle.{/n} "I'll miss you so much! I would stay, but without your power, I'm a regular little dragon again. The first demon we meet would gobble me up in one bite. But we'll meet again, you'll see! Bye! See you! I'll definitely, absolutely see you someday!"
+
+4cfb0cc8-c5aa-4872-bc3a-dc8deefac54b
+"I didn't just decide to leave! I have to leave because your power doesn't help me anymore, and now I'm a regular little dragon again. It's so sad! I had so much fun with you! But now I have to leave..." {n}Aivu sobs.{/n} "I hope you'll miss me too! Or I'll have to miss you twice as hard! Goodbye!"
+
+85efed60-ce43-43d8-a5cd-0e124401d0c6
+{n}Aivu shifts anxiously from paw to paw, a sad expression on her little face.{/n} "There's something I have to tell you! After you talked with that very stern goddess and the other one, that very mean demoness, something changed... I'm losing my power. I think I'll become a regular little dragon again soon!"
+
+d7e4420d-ffb1-4819-abc4-17687f7dcd8f
+{n}Aivu sobs, unable to stop herself.{/n} "I think you are very clever, and you made the right decision! But I still need some time to be sad in silence. When I'm sad, I don't talk. This is how sadness works for me!"
+
+5c5d067f-6576-4b7b-b6a1-67376f06d462
+{n}Aivu expression holds a terrible sadness.{/n} "You shouldn't hurt my feelings! I don't want to listen to this! If this is what you're like, I won't speak to you anymore! Well... I'll stay upset for a while and won't talk to you, maybe even for an entire year!"
+
+0cdbc1b0-3ea7-49d2-8f62-b8d46c82cd47
+{n}An {d|c3 azata devil}unusual silence{/d} engulfs the island. The thinned forces of the free crusaders are occupied by their own affairs and pay no particular attention to each other or to Aranka, who quietly hums a wistful melody. Noticing you, the latter beckons to you.{/n} "Commander, Aivu! Here you are!"
+
+b75a428f-08ba-4cd9-a5db-f406ee05437d
+{n}The island is {d|azata chaotic}abuzz{/d} — the free crusaders are busy with military exercises. Judging by the din, friendly skirmishes flare up between different groups and occasionally grow into something rather less friendly. Standing alone in the midst of the chaos, Aranka tries to sing. Noticing you, she gives up her futile efforts and waves at you cheerfully.{/n} "Commander! Aivu! Finally!"
+
+19aa6b3d-f31c-42d6-835e-ea77c27e0688
+{n}Joyful {d|azata good}excitement{/d} reigns over the island — the free crusaders are busy with hundreds of things at once. You hear songs, merry scuffling, bursts of laughter, and toasts. Aranka dances in place, humming a cheerful song. She seems to be composing it as it goes along, weaving in fragments she hears around her, and her song includes lines like 'glory to the halflings!' and 'this venison stew is overcooked!' Noticing you, she stops singing and cheerfully exclaims,{/n} "Commander! Aivu! You're finally back!"
+
+ace82b75-2dbb-4d19-b324-8bb3915ed104
+{n}Aivu sniffs the air.{/n} "Oooh... Look, who's here! Dragonlings! The ones you helped {d|c3 eggs azata}hatch{/d}!"
+
+a17a4f97-ad9d-455c-8e54-a0b31aacf6d4
+"The island experienced a few minor quakes, but nothing serious. We all felt a surge of power and thought it must have something to do with you. Ilkes and I conferred and decided it must have a special connection to you, much like Aivu. She grows with your power, and the island also changes because of it."
+
+4e2f89a7-c4a4-4612-af6f-084b27f83cf1
+{n}A joyful clamor answers Aivu's speech. Aranka claps her hands:{/n} "What an interesting story, Aivu! I'm so glad you're back!"
+
+d8eb8ddb-c9ce-475c-b678-f097f8fae116
+"Just look at Aivu! She's grown so big! Commander, what are you feeding her? Can we have some, too?"
+
+1cc36757-2a76-480f-954b-a64006f9b5e9
+"Not like a doggy, but like me." {n}Aivu pouts.{/n} "By the way, having your own little dragon is way better than having your own flying island!"
+
+5be59c77-2045-4905-89d4-4f88abd785ad
+"Guess who's back!" {n}Aivu does a little dance, raising each of her four clawed feet one after another.{/n} "I know I said goodbye and flew away... but then I heard that absolutely everybody was coming to stand with you, so I thought I should come too! I'm little again, of course, so I can't help you in the fight, but I'll support you as much as I can!"
+
+c526447e-0e2d-4448-b979-fc8dbe243484
+{n}A little dragon with iridescent wings is busy looking around, her eyes burning with untamed curiosity.{/n} "You must be a great {mf|hero|heroine} {name}? My name is Aivu. I'm a dragon. An incredibly cute and adorable dragon, but I guess you can already see that for yourself! I've come from Elysium to help you — what's the word? I memorized it specially — to help you with morale! And I'm really, really good at it if someone feeds me cookies in advance! Or maybe pies. Or even... a small cake?"
+
+2536175c-fd24-45db-8b0c-4e6e924e9409
+"And don't you worry about the demons hurting me — Hala-what's-his-scales will keep an eye on me. He doesn't know about that yet, but I know he'll agree!" {n}Aivu triumphantly sticks her nose in the air.{/n}
+
+87a930b5-93b6-4f71-baf4-d75bb366bbd9
+"I really, really need that glue!" {n}Aivu whispers.{/n} "There are so many things I need to glue together!"
+
+c74793bb-0880-49d5-aa2b-b3b8b3771f0c
+"What are you going to do after we win, Aivu?"
+
+6f9f6f21-8f12-4c06-94ff-0925354c6a21
+[Hug Aivu] "You're my treasure."
+
+d57edc9b-bbeb-4412-b25f-5eff621256ed
+"Um... the same thing that you're going to do?" {n}Aivu looks very surprised by the question.{/n} "Except for all the grown-up and boring things. I won't be doing those. And I'll be doing other interesting things that you don't want to do but I do! Like... eating a whole lake of plum jam. Or surprising someone by pouring a bucket of jam on their head!"
+
+a883bca5-18ce-41e0-a745-19b775b069ec
+{n}Aivu purrs contentedly.{/n} "Of course I'm a treasure! It's easy for me, I'm a dragon! I'm prettier than all the sparkly things in the world. And I'm your friend, too! And sparkly things can't be your friends, even the really pretty ones."
+
+ba04d427-30f0-45ce-86ce-b3a8b817925e
+"So you're telling me that he's somehow involved in Aivu's kidnapping?"
+
+273f4216-b01d-4552-8b43-f085322df7dd
+{n}Arueshalae closes her eyes for a moment.{/n} "The last thing I wanted was to lie to you again... yet neither could I allay my growing suspicions. Look, {name}, I'm afraid Early Sunset is not the person he wants us to think he is. I have had my doubts about him for quite a long time, but it wasn't until Aivu's kidnapping that I took my chance and challenged him. Not only did the song of Elysium mean nothing to him, but he... he didn't even react to it like all our allies did before."
+
+41d9687e-bb7e-482b-90ba-4fa695f34624
+"Who knows? The Abyss is a place where evil deeds are as natural and common as sunrises and sunsets on Golarion. The demons might have kidnapped Aivu on Early Sunset's orders — or they might have done it just because they naturally tend to capture, divide, and torment their victims."
+
+d44206ac-94dc-42cf-a86d-50cfdcf0a2a4
+"Please don't make any hasty decisions! If he's somehow involved with the ones who kidnapped Aivu and we put him on his guard, we might lose her forever. We must be careful and keep watching him closely, I say."
+
+27d15e1b-1379-4a8e-8c9e-2dd5eee8e201
+"How horrible! What happened to you?" {n}Aivu hastily covers her eyes with her trembling wings.{/n}
+
+c8f85390-f40a-4ae6-9b2d-8c8f589c7f65
+"Why were you scared? You have a dragon friend! You should have just told them that Aivu will come and show them what's what! They'd let you go at once. They would, they would."
+
+c5dbf6bc-dfff-48c3-8f8d-a50bdaa9c86f
+"Her teeth are really huge! I want big teeth too. But when I grow up and become a big scary dragon, I will help all the poor old people instead of eating them." {n}Aivu makes a noticeable effort to lower her voice. She seems to enjoy this game of hide-and-seek.{/n}
+
+c85f5468-085a-4ac1-99dd-a0b5d239c8d2
+{n}Aivu looks around timidly.{/n} "It's so scary here! Can we grab these tasty treats and find a place that isn't as scary?"
+
+ac9d1424-95b9-4188-8e2b-3e8082a93399
+[Give Aivu a cookie] "There you go!"
+
+fa54f176-9928-4a3d-8ff0-2a24c88fe9f2
+{n}Aivu crunches the cookie between her teeth, her eyes closing in sheer delight. Then her eyes pop open again.{/n} "I... lost control! And swallowed the fortune! What are we going to do? Now I won't ever know my future!"
+
+8325e6c2-dac6-4bb1-ba63-9eaa2fa700b1
+"I liked fighting this big evil thing! Maybe we can find another one? Maybe we can look for it? Do you want me to look for it? But don't start dinner without me! You won't, will you? And why is Sosiel so sad? I don't like it when people are sad near me and I'm not, it makes me feel strange..." {n}Aivu lowers her nose and snorts sadly.{/n}
+
+709bb69e-6a1b-440f-b1c8-72605dbbf137
+"Aivu will tell you why we attacked our 'brothers'!"
+
+67a66216-cb17-4af8-9e3d-bdc638f3945e
+{n}Aivu looks between you and Woljif in puzzlement.{/n} "We're playing some kind of game, yes? How come nobody told me the rules?"
+
+f8045d61-acbc-4d72-b214-05fd6bb26a59
+{n}Aivu whispers none too quietly,{/n} "And don't forget about the slugs."
+
+2b1a7efc-6830-442c-80b9-0dde9109f779
+"I accept your proposal, young lady. Allow me to offer you this treat to mark our spontaneous friendship." {n}A gingerbread balor on a stick appears in Aivu's claws, and she begins gnawing on it with gusto.{/n}
+
+b48ced45-6f6b-460b-97fa-57191788a981
+{n}Aivu continues to whisper loudly,{/n} "I'm sure it was frogs."
+
+e4223d86-2c73-4d48-a393-50b2fab46dbc
+"Shh! Wicked mirages are gonna get us! They're all around us, and they've got wicked big teeth!" {n}Aivu looks around excitedly, wagging her tail and failing to look the least bit frightened.{/n}
+
+ffb13d49-89aa-4808-b684-b3150f7adf06
+"Ohhh... So you're not real. Too bad." {n}Aivu looks at you dejectedly.{/n} "It was such a fun game."
+
+4131e902-1fba-4dc0-b788-4bff9cd79d05
+"Speaking of Aivu, where is she? Is she off painting the mounts again while the soldiers are taking a break?"
+
+20d30e97-7841-48b8-be69-b52f2327c3ec
+"I'll tell of how you took a ragtag band of volunteers under your wing and turned us into an army of free crusaders. Of how you nurtured a spirit of freedom and friendship in us, and how you met your loyal companion, the little dragon Aivu."
+
+d79cc058-ff55-4dba-bd1f-4f350672ac16
+{n}The lich looks at Aivu and adds sweetly,{/n} "Would you like some candy, little one?"
+
+845f8fe3-2554-4d31-ae25-9e0b861d3712
+"No! I bet your candy will make all my teeth fall out!" {n}You can clearly see that Aivu had a hard time refusing the offer.{/n}
+
+a39b0413-e56e-49d3-8363-90b66883360f
+[Pick a cake crumb off Aivu's little muzzle and taste it] "There's still some left."
+
+d3f02ce3-2677-4ab5-8655-0b6ca795a168
+"Aivu, our companions are missing. I'm worried about them."
+
+71ea6b2f-6b9b-480c-99c8-86af83be2204
+"You found cake! It's so big and beautiful..." {n}Aivu licks her lips noisily.{/n} "What flavor do you think it is?"
+
+6f7f5fee-7607-4c21-b13c-0be2ce0f89ce
+{n}Aivu sniffs.{/n} "I smell it too! Ripe, sweet strawberries!"
+
+c7f82d3f-32ac-4b0b-8b13-e6520eb7dca6
+{n}Aivu was amazingly accurate in her description of the cake's ingredients — she did not get a single thing wrong.{/n}
+
+5793a8fb-2d70-42ca-9f5c-7d1964063f8e
+"It's the truth — you don't have to be afraid of Aivu."
+
+1c6a1615-d1a7-4994-967e-2b04ad2b9160
+"Aivu is my dragon and my friend. I promise she won't hurt you."
+
+fc571108-baa6-4194-8136-8cf6f0177ba6
+"Aivu, I'm sure you can come up with a fun game everyone can play."
+
+e792b9a5-f44a-4a2f-9493-f3b2da11f6e2
+{n}The children around Aivu burst into happy laughter.{/n} "Did you see how fast we went? As fast as the wind! As fast as lightning!"
+
+aec85ab0-e68b-48ec-b7ea-45e0e5ed9229
+{n}Aivu's stomach rumbles loudly.{/n} "And where there's lightning, there's thunder. I need to eat."
+
+ba858cc8-2208-46ec-8112-b3610783d894
+"You're a big meanie today..." {n}With a sad snort, Aivu turns away.{/n}
+
+29dc2e74-1ab2-44e6-b4d5-e0c4deedd471
+"Get back! Dragon!" {n}One boy is shielding the other children from Aivu.{/n}
+
+736225f9-8b5f-4e41-9fb3-77b19497fbff
+"Those are stories about bad dragons, but I'm the sweetest, kindest, most cuddliest dragon of them all! And I only eat candy. My name is Aivu, by the way."
+
+2aea18ba-7f6d-4d0f-aa2c-a4dccdedc605
+{n}The boy listens intently to the whispers of the kids behind him.{/n} "We've all agreed: we like you, Aivu. Can I touch your nose?"
+
+2bcee2dc-bbbf-4d90-93a1-bf97bfd79afe
+"If you promise not to stick anything up it." {n}Aivu bows her head.{/n}
+
+ea97eacf-4bc9-41ec-8510-6da8510e04c3
+"It's so smooth — and a little bit wet! Thank you, Aivu... Do you want to play with us?"
+
+48fe1500-5fe7-46c0-b99c-b4493a84f2d0
+{n}Aivu looks around, her eyes lighting with a sparkle.{/n} "How about going for a ride on a real dragon?"
+
+c1ac795b-a9f0-4f4e-b3bf-24f32e034f8b
+"Chocolates, and lollipops, and jelly beans..." {n}Aivu closes her eyes and licks her lips dreamily.{/n} "No! I can eat candy any day, I mean something else..."
+
+c0e0b58d-f782-47b9-9c21-06dfa6d0ce1b
+{n}Aivu's eyes light up with stars of delight.{/n} "And this big dragon really wants to take you all for a ride! Hop on my back."
+
+c6abfed1-a740-4ba5-9097-4b88c002d026
+"And why shouldn't I? How could anyone resist a beautiful dragon like me? It's impossible!" {n}Aivu turns to the crowd.{/n} "Except... I'm bored of them now."
+
+e0289f1b-ec40-428d-b1d3-528692522956
+"Really? We can race across Kenabres — we'll see who can run the fastest! And then we'll go into the most important building in the city, scatter all the papers, and play hide and seek. And then we'll find some musicians and sing and dance with them!" {n}Aivu tilts her head and stares intently into your eyes.{/n}
+
+4d2d27fa-64b3-4822-a208-3d264de8ca93
+"I even saw you with Aivu, and I saw how glad she was to finally find company she could relate to. I wish I could get to know others so effortlessly."
+
+059eba20-8d68-48b0-b3a3-6a790b1c13d9
+"Aivu is just around the corner, playing with some local kids. Why don't you join them?"
+
+d3665413-2372-4510-9cac-bffe405f06b3
+"I saw Aivu demolish a huge cake in seconds and then run off to play like nothing happened! She's in a whole other league."
+
+b928803f-f799-4b07-bc32-f8c2e4e79f06
+Call Aivu
+
+8e0da872-e0e2-4ba6-8e72-a31e2ba037cf
+"Very, very real! As real as they get!" {n}Aivu perks up and spreads her wings.{/n}
+
+39b8d6a6-3073-484f-af9b-b0015314bdf6
+"Oh, that's..! That's a dragon? A real dragon?!" {n}Lucy covers her mouth and gazes at Aivu, completely mesmerized.{/n}
+
+4bc57795-63ef-4543-b68a-4b9b8abff43d
+Aivu would visit her large family in Elysium, but nothing could make her part with her best friend for long. "I go where you go" was her motto.
+
+592f4ebd-6ccd-4142-a174-6abfde6ea1ac
+Aivu, inconsolable after losing her best friend, was taken from the ruins of Threshold by the free crusaders. Before long, a group of azatas arrived to return the dragon to Elysium.
+
+d7c23050-87cb-4182-8e25-93fbcaf11901
+Much later, all grown up, Aivu went off on her own adventures. She traveled the planes, bravely helping good souls in distress — and, of course, seeking out places where they baked the best cookies.
+
+81bbf75f-bcc2-4dac-a9c0-ad05d259d8ee
+One day, Arueshalae had an unexpected guest: Aivu, the havoc dragon. By the end of the visit, all the pretzels had disappeared from the house, and all the apples were gone from the nearby trees.
+
+a70dcdaf-ac54-4a2e-8db4-bc22c4d33511
+Looks like Aivu.
+
+6cadec12-cb1b-48cd-b29d-302e07ad5879
+Well-fed and happy, Aivu has returned to playing games with her new friends.
+
+56873e50-6e7b-4d09-b215-7105aab7da06
+Fun for Aivu
+
+25f2b0a2-173a-40ec-a041-bdc217c6adb8
+There must be someone at the festivities who enjoys games as much as Aivu.
+
+6702f184-aaa1-4226-bbb7-bcf29fe64a3c
+After working up an appetite while playing, Aivu is now dreaming of one thing only — a huge, delicious cake.
+
+6702a080-515a-4cd2-8a6b-9f74ee09583a
+Find some playmates for Aivu
+
+57bbf09c-79f1-4f6e-8824-79ddd173d966
+Speak with Aivu
+
+d7173851-8d45-4201-bfb8-c1916c80db64
+Change alignment, then talk to Aivu
+
+fe22c84a-87cb-48b7-ae43-8ff038a065c1
+It was not so difficult to follow Aivu's advice, and fully embrace the Path of Elysium.
+
+cf848433-6088-4b1d-b52c-ed4b96ee28d1
+The Commander's longtime associate has arrived in the Abyss and has a suggestion for how to find Aivu. He is waiting in the Nexus, at the former rift known as the Gates of Midnight.
+
+2b60a431-9ad3-4a0e-8151-ef2aed8a77e9
+Early Sunset is preparing to question slavers while disguised as a powerful demon and potential buyer. If Aivu is still in Alushinyrra, the slavers will rush to procure a dragon for an influential client. The Commander has been tasked with secretly providing protection, and needs to escort {mf|his|her} comrade to the Fleshmarkets.
+
+e0823ca4-d331-4c2e-b202-544f8eac91c6
+The location where the dragon is being held has been discovered. It is in the Middle City, not far from the Fleshmarkets. It will be necessary to go to Shed-Skin's hideout and either rescue Aivu by force, or make a deal with the marilith.
+
+0467e488-2b17-40d5-8f83-00fc5ae1688b
+Free Aivu
+
+1ef4ed8e-3e54-4bb5-a2a8-a8860924b86d
+The Fleshmarkets and its operations have severely tested the Commander's patience. Now that Aivu has been returned, it's time to go there and show these evildoers how wrong they are.
+
+f284a987-2fd5-4960-8d37-f657ae986e5a
+There is one thing the Abyss can do very, very well — steal that which is most precious. This is what has happened to the Commander. Aivu, the Commander's beloved pet and focus of {mf|his|her} power, has been abducted. Finding and rescuing her in this strange, cruel plane seems impossible. But perhaps there is a way to make the impossible possible.

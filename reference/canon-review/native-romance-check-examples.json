@@ -1,0 +1,178 @@
+[
+  {
+    "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C4/Brothel_Inside/Check_0024.jbp",
+    "AssetId": "1d9ac37f7a8aef942bb3b133f59431a9",
+    "Data": {
+      "$type": "ab803aaa7a173f84e9172870c15e7493, BlueprintCheck",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u041e\u0447\u0435\u043d\u044c \u0441\u043b\u043e\u0436\u043d\u044b\u0439 \u0447\u0435\u043a",
+      "ParentAsset": "fe70acf79e1be5f48a363385fa5d68fe",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Type": "CheckIntimidate",
+      "DC": 40,
+      "Hidden": false,
+      "DCModifiers": [],
+      "m_Success": "!bp_6b27eaf9f10e1654eb99924d3f1ba8de",
+      "m_Fail": "!bp_02ad924e4f120d949aed2c9271371b88",
+      "m_UnitEvaluator": null,
+      "Experience": "NormalExperience"
+    }
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionRomances/Camellia/BalconyAwaits/Check_0022.jbp",
+    "AssetId": "ee2f1b0251f7c0b4f91021bdbea5723a",
+    "Data": {
+      "$type": "ab803aaa7a173f84e9172870c15e7493, BlueprintCheck",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u043b\u0435\u0433\u043a\u043e",
+      "ParentAsset": "d9a8905442d4b054c94e556087485b99",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Type": "SkillKnowledgeArcana",
+      "DC": 22,
+      "Hidden": false,
+      "DCModifiers": [],
+      "m_Success": "!bp_1f904f889cd99a341bef3af08cd1c95b",
+      "m_Fail": "!bp_4dec1176dc380d647a169b2fe60a1a1b",
+      "m_UnitEvaluator": null,
+      "Experience": "NormalExperience"
+    }
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionRomances/Camellia/GiveMeAnIdea/Check_0002.jbp",
+    "AssetId": "19972884601e0284b992233e41d778a8",
+    "Data": {
+      "$type": "ab803aaa7a173f84e9172870c15e7493, BlueprintCheck",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0441\u0440\u0435\u0434\u043d\u0435",
+      "ParentAsset": "6040d2641e828d04594b32baf1b60cd7",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Type": "SkillPerception",
+      "DC": 25,
+      "Hidden": false,
+      "DCModifiers": [],
+      "m_Success": "!bp_0b624a83f70df304281aba0b4aab3093",
+      "m_Fail": "!bp_525d13914f5bfca479a6f399584e3239",
+      "m_UnitEvaluator": null,
+      "Experience": "NormalExperience"
+    }
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionRomances/Camellia/GiveMeAnIdea/Check_0017.jbp",
+    "AssetId": "2fcebb3992d8ceb40bd20f5a97afab11",
+    "Data": {
+      "$type": "ab803aaa7a173f84e9172870c15e7493, BlueprintCheck",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u043b\u0435\u0433\u043a\u043e",
+      "ParentAsset": "a21b9f807656f9840b99880c44e2fcc3",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "f40da3fe595e435780ba1f1b01dee3a6, CheckFailed",
+            "name": "$CheckFailed$8c0285df-7f2c-4312-8fc9-c0332c284948",
+            "Not": false,
+            "m_Check": "!bp_19972884601e0284b992233e41d778a8"
+          }
+        ]
+      },
+      "Type": "SkillPerception",
+      "DC": 18,
+      "Hidden": false,
+      "DCModifiers": [],
+      "m_Success": "!bp_aa9a31d11345a8e45bf0b4f28236a30c",
+      "m_Fail": "!bp_e95da2c3b23935c4b837535353b7597e",
+      "m_UnitEvaluator": null,
+      "Experience": "NormalExperience"
+    }
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionRomances/Sosiel/Additional_C3/KTC_SosielCards_Again/Check_0025.jbp",
+    "AssetId": "5b6f4064acbcc594cb6f1a95edb4a0d4",
+    "Data": {
+      "$type": "ab803aaa7a173f84e9172870c15e7493, BlueprintCheck",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u041f\u0440\u043e\u0441\u0442\u043e\u0439 \u0447\u0435\u043a\n\n\u041d\u0415 \u0414\u0410\u0412\u0410\u0422\u042c \u042d\u041a\u0421\u041f\u042b",
+      "ParentAsset": "e1626a4535013534f8c96e028043a7ab",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Type": "SkillThievery",
+      "DC": 21,
+      "Hidden": false,
+      "DCModifiers": [],
+      "BanPartyCheckInCamp": false,
+      "m_Success": "!bp_9f77119fac3c4014bacf05ec23083e79",
+      "m_Fail": "!bp_3b206954545c41641a91a368054615d6",
+      "m_UnitEvaluator": {
+        "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+        "name": "$PlayerCharacter$e044812d-a07c-42a8-82ee-482d894f67ed"
+      },
+      "Experience": "NoExperience"
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionRomances/Sosiel/Additional_C3/KTC_SosielCards_Again/Check_0026.jbp",
+    "AssetId": "8c813512a39f8b94ba3b4585638233e5",
+    "Data": {
+      "$type": "ab803aaa7a173f84e9172870c15e7493, BlueprintCheck",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0421\u0440\u0435\u0434\u043d\u0438\u0439 \u0447\u0435\u043a\n\n\u041d\u0415 \u0414\u0410\u0412\u0410\u0422\u042c \u042d\u041a\u0421\u041f\u042b",
+      "ParentAsset": "1adc746ee254a8545b985b63bb32652e",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Type": "SkillKnowledgeWorld",
+      "DC": 24,
+      "Hidden": false,
+      "DCModifiers": [],
+      "m_Success": "!bp_7be8e6bd58d01b14b86c26eef185f7a5",
+      "m_Fail": "!bp_2f8277e88b5934844b1c7446427dcd67",
+      "m_UnitEvaluator": {
+        "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+        "name": "$PlayerCharacter$84cafe78-8c19-49f5-bf89-73f1fa6507c4"
+      },
+      "Experience": "NormalExperience"
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  }
+]

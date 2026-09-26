@@ -1,0 +1,156 @@
+{
+  "scope": "Offline native evidence and proposed authoring aliases; no route score or runtime guarantee.",
+  "aliases": [
+    {
+      "alias": "kiana.met_wedding",
+      "guid": "0bb8e464eb1a6aa458e8d5dba62f5413",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001.jbp",
+      "predicate": "CueSeen"
+    },
+    {
+      "alias": "kiana.met_married",
+      "guid": "81109ea8fb20dbc478cf67116740f4a1",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
+      "predicate": "CueSeen"
+    },
+    {
+      "alias": "kiana.met_widow",
+      "guid": "aebbc1845e827dd4da4e28014e7b4162",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
+      "predicate": "CueSeen"
+    },
+    {
+      "alias": "kiana.souls_returned",
+      "guid": "5a5a533c9ce630a48b877f9a194840cb",
+      "type": "BlueprintQuest",
+      "source_path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp",
+      "predicate": "Quest Completed"
+    },
+    {
+      "alias": "kiana.elan_dead",
+      "guid": "148423f1d35917946a5ebeeb4f19246c",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+      "predicate": "Etude Playing"
+    },
+    {
+      "alias": "kiana.elan_desperate",
+      "guid": "ded376ed8b73c3e42b0de967fb1d10a9",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/ElanDesperate.jbp",
+      "predicate": "Etude Playing; native aftermath selector, not early death proof"
+    },
+    {
+      "alias": "kiana.married_aftermath_finished",
+      "guid": "97b3254015284346ba32f1749cfae0b0",
+      "type": "BlueprintUnlockableFlag",
+      "source_path": "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3_ElanKianaAfterDialogue.jbp",
+      "predicate": "Flag unlocked"
+    },
+    {
+      "alias": "kiana.widow_aftermath_finished",
+      "guid": "b5dff99d2f8140e8bf23fb30048db101",
+      "type": "BlueprintUnlockableFlag",
+      "source_path": "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3KyanaAloneAfterDialogue.jbp",
+      "predicate": "Flag unlocked"
+    },
+    {
+      "alias": "kiana.soul_stolen_history",
+      "guid": "8a2da1bae7d69b84b999155ac0481223",
+      "type": "BlueprintUnlockableFlag",
+      "source_path": "World/Encounters/DrezenCapital/UnlockableFlags/KyanaSouless.jbp",
+      "predicate": "Flag unlocked; historical only after rescue"
+    },
+    {
+      "alias": "kiana.wedding_bad",
+      "guid": "d983621f7b887b043acb0c43186bf824",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ2/WeddingEndingBad.jbp",
+      "predicate": "Etude Playing"
+    },
+    {
+      "alias": "kiana.wedding_good",
+      "guid": "be924a4c2bfff36459cebb87b84b8fb5",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ2/WeddingEndingGood.jbp",
+      "predicate": "Etude Playing"
+    },
+    {
+      "alias": "kiana.desna_known",
+      "guid": "7cefd105c8885e444a74152a59c3119d",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingIntro/Cue_0003.jbp",
+      "predicate": "CueSeen"
+    },
+    {
+      "alias": "kiana.costume_known",
+      "guid": "466c4a8957da5f14fa958d1718b4a552",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004.jbp",
+      "predicate": "CueSeen"
+    },
+    {
+      "alias": "kiana.undeath_objection_known",
+      "guid": "2b07731a9219e87478d488b7947d86b3",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0014.jbp",
+      "predicate": "CueSeen"
+    },
+    {
+      "alias": "kiana.friendship_invitation",
+      "guid": "e0abe01a6531ec6499f21e44cc81afe6",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0010.jbp",
+      "predicate": "CueSeen; widow asks Seelah for future friendship, not player romance"
+    }
+  ],
+  "contacts": [
+    {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/KyanaWelcome_SeelahQ2_dialog.jbp",
+      "guid": "029fe2bf51b828b46b8106e833ca6461",
+      "answer_lists": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/AnswersList_0005.jbp",
+          "guid": "ad91a2aed6132554782ca2ad10a1ee2a"
+        }
+      ],
+      "contact_kind": "wedding_only",
+      "note": "Wedding script-zone/ActionsHolder contact, not a proven post-wedding repeatable root."
+    },
+    {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/ElanKianaAftermath_SeelahQ3_diaog.jbp",
+      "guid": "27bc5f6c94108a446b8273800f7da48b",
+      "answer_lists": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/AnswersList_0003.jbp",
+          "guid": "a237e3aaab7c937468829bba3578770d"
+        }
+      ],
+      "contact_kind": "one_shot_external_gate",
+      "note": "Finish unlocks 97b3254015284346ba32f1749cfae0b0. Alive holder requires this flag locked and ElanDesperate NOT Playing."
+    },
+    {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/KianaAloneAftermath_SeelahQ3_dialog.jbp",
+      "guid": "6a197b1557eb815458304ec649228fb8",
+      "answer_lists": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/AnswersList_0005.jbp",
+          "guid": "9ca0a745692ef6f45ab13948b67c7fa9"
+        }
+      ],
+      "contact_kind": "one_shot_external_gate",
+      "note": "Finish unlocks b5dff99d2f8140e8bf23fb30048db101. Widow holder requires this flag locked and ElanDesperate Playing."
+    }
+  ],
+  "safe_authoring": {
+    "initial": "Q3 Completed AND any met_wedding/met_married/met_widow seen AND authored invitation/staging. Prior scene contact is not proof the actor still exists.",
+    "married": "After completed Q3, NOT ElanDead Playing AND NOT ElanDesperate Playing is conservative normal-native married branch. Any authored death/resurrection after this requires reconciliation.",
+    "widow": "After completed Q3, ElanDead Playing; native physical aftermath also selects by ElanDesperate Playing. Conflicting modified states need dedicated resolution rather than automatic interpretation.",
+    "soul_history": "Use wedding_bad or actual soul-stolen knowledge marker for personal rescue references. Successful wedding does not establish Kiana lost her soul.",
+    "no_life_flag": "No universal Kiana death/alive/ordinary-contact etude established. Both aftermath roots are one-shot. Stage new contact honestly, do not clear aftermath flags to replay grief or reunion.",
+    "romance": "Married affection for Elan is explicit and current. No existing dissatisfaction beyond time apart, no established nonmonogamy or intended divorce. Widow grief asks for solitude first. Authored choices must establish later intentions."
+  }
+}

@@ -1,0 +1,59 @@
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0004.jbp | f98ed39efa89ddd4cac1d84a195608a9
+"Yes, we should go..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0005.jbp | 245ec8482e1f37b4a8702e54430c5aa7
+[Clear your throat] "I'm glad that the two of you are all right."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp | 81109ea8fb20dbc478cf67116740f4a1
+{n}Elan and Kiana fall into each other's arms, heedless of everyone else around them.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0002.jbp | 3f8b3b4fbd6d18d44b91a34c88e2208a
+{n}Seelah smiles broadly.{/n} "Come on. Let's give them some space."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp | a819e8c85ef23324bb0d8117bb9d7df3
+"Yes, it feels good to be married." {n}Kiana smiles.{/n} "Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0007.jbp | df45181e1968f26459f9e8bc2b995a34
+"We're glad too," {n}Kiana replies.{/n} "But I'm very displeased with the way my wedding ended. We didn't even get to enjoy our wedding night together... and it was all because of those damned demons!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0008.jbp | 0e50ec24099196a42b7089ffecdc46b2
+"Kiana, my love!" {n}Elan blushes.{/n} "Let's discuss that later... We don't want to embarrass the Commander."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0009.jbp | de9d02036b213594fa780c6025f14004
+"Well, I just want to say... Thank you, Commander. Thank you for everything you have done for us!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0010.jbp | f575d21b1fabec74da1e54484573206b
+"Wait, Commander! Seelah! Everything you've done... I can't thank you enough!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0011.jbp | 4cd264ce0432bb94a8e80a551190150d
+"Neither can I... See? That's why we make such a good couple. We have so much in common!" {n}Kiana laughs.{/n}
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0012.jbp | f6c3d20a92890d84c9020d37d56cc75b
+"We'll accept your gratitude in the form of strong drinks. But we'll wait to celebrate until after we've defeated the demons! So long, friends! Enjoy this moment of happiness... but don't get too carried away!"
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0013.jbp | 716683517058beb4ead374bd16b22ff0
+"If it weren't for soldiers like me, a lot of families would lose their loved ones. It won't be long before the demons are defeated... I truly believe our victory is near. But for now, I must keep on fighting."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Answer_0006.jbp | 10746ab3342ce204db8ee0ab96480093
+"I am so sorry, Kiana."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Answer_0007.jbp | 23af35c5304d5ef419178ba0e6f050eb
+[Say nothing]
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp | aebbc1845e827dd4da4e28014e7b4162
+{n}Kiana appears to be in shock. Her hands are clasped to her chest, and there's a dazed look in her eyes.{/n} "I was a wife for less than a minute... and now I'm a widow."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0002.jbp | cdc3d76b9c6dea74e8773f9eb291aa31
+{n}Arsinoe, who had been speaking to Kiana in a low, compassionate voice, turns her attention to you.{/n} "I told her about Elan."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0003.jbp | e2e8bf92034eccd469d335938f7d0500
+"Kiana, I know that words aren't much comfort in a time like this, but I just wanted to say... it's all right if you blame me for what happened. I understand. You can yell or scream at me, if that will make you feel better. Or if you just want to talk and cry, and get it all off your chest — I'm here for you. If there's anything I can do to help, anything at all — please, just say the word."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0004.jbp | 5c09123a07ee1e047a292c542cce6b74
+{n}Kiana smiles sadly.{/n} "I married a crusader. I knew the risks. I understood that this might happen someday... I just didn't expect it to be so soon."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0008.jbp | a747f5462e1614a418b06ea0fd2eee47
+"Thank you. It's so strange... Only a short while ago, I was accepting well-wishes from wedding guests. Now, I must learn to accept condolences instead. Anyway..."
+
+World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0010.jbp | e0abe01a6531ec6499f21e44cc81afe6
+"No, Seelah, don't look at me like that. I don't blame you for anything. I'm glad Elan had a friend like you. I'd like you to be my friend too. You must come find me when you return from your next heroic journey! But for now, I must ask you to excuse me... I need to be alone for a while."

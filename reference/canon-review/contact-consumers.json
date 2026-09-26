@@ -1,0 +1,507 @@
+{
+  "World/Encounters/AlushinyrraHigherCity/ActionsHolders/JerribethVellexiaThirdDate_Actions.jbp": {
+    "AssetId": "9fd25031f3573ef4392fd730803aa6b2",
+    "Data": {
+      "$type": "63bb90208198450095c55997ebc6ae0a, ActionsHolder",
+      "Actions": {
+        "Actions": [
+          {
+            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+            "name": "$Conditional$98e22473-3135-4826-a983-0c6395b92dd5",
+            "Comment": "",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                  "name": "$CueSeen$1a566d86-53d4-4b72-9143-49ea59c12638",
+                  "Not": true,
+                  "m_Cue": "!bp_a1f97de9145c3574ebd2d7f75c3d39c9",
+                  "CurrentDialog": false
+                }
+              ]
+            },
+            "IfTrue": {
+              "Actions": [
+                {
+                  "$type": "0e0c1fe99d7862d4492bcd1535939a9a, StartDialog",
+                  "name": "$StartDialog$f017f143-100e-4cb2-85cb-fea75c905b5c",
+                  "DialogueOwner": {
+                    "$type": "c222ad3910b74d2295f0f94ce21d65a3, InteractingUnit",
+                    "name": "$InteractingUnit$d3824f57-428b-4231-b74c-97c4f103e56b"
+                  },
+                  "m_Dialogue": "!bp_992c44e6775d87444b562e855fd64af1",
+                  "DialogEvaluator": null,
+                  "SpeakerName": {
+                    "m_Key": "",
+                    "m_OwnerString": "",
+                    "m_OwnerPropertyPath": "",
+                    "m_JsonPath": "",
+                    "Shared": null
+                  }
+                }
+              ]
+            },
+            "IfFalse": {
+              "Actions": [
+                {
+                  "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                  "name": "$Conditional$ef304111-a3ae-40bd-9cfb-77d0122dbe56",
+                  "Comment": "Vellexia not killed or resolved peacefully",
+                  "ConditionsChecker": {
+                    "Operation": "And",
+                    "Conditions": [
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$39cdf793-2347-4711-895c-8aff7223ea94",
+                        "Not": true,
+                        "m_Etude": "!bp_72e423c719ed9d44fa432a6b9629babd",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      },
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$62d019ca-f21e-4b29-baa6-75dbb55beb49",
+                        "Not": true,
+                        "m_Etude": "!bp_36544170c027e1142805f03235df29a4",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      }
+                    ]
+                  },
+                  "IfTrue": {
+                    "Actions": [
+                      {
+                        "$type": "e164ef6758f918a4abcc3889472a2a3c, ShowBark",
+                        "name": "$ShowBark$92ea2503-f649-4ec1-a0b3-d452ba3b7559",
+                        "WhatToBark": {
+                          "m_Key": "",
+                          "m_OwnerString": "",
+                          "m_OwnerPropertyPath": "",
+                          "m_JsonPath": "",
+                          "Shared": {
+                            "assetguid": "d739d32f4d269bb44a2a7d66245aa9e6",
+                            "stringkey": "2df3efd1-bba9-4e1e-85a1-afb9fe773515"
+                          }
+                        },
+                        "WhatToBarkShared": null,
+                        "BarkDurationByText": true,
+                        "TargetUnit": {
+                          "$type": "19b540e6a8755b142b2d2cb2c945a261, ClickedUnit",
+                          "name": "$ClickedUnit$f382028b-d94e-402d-b3eb-79843e3a8920"
+                        },
+                        "TargetMapObject": null
+                      }
+                    ]
+                  },
+                  "IfFalse": {
+                    "Actions": [
+                      {
+                        "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                        "name": "$Conditional$c6581712-be60-4b09-a251-0c91e52f23ad",
+                        "Comment": "Vellexia resolved peacefully",
+                        "ConditionsChecker": {
+                          "Operation": "And",
+                          "Conditions": [
+                            {
+                              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                              "name": "$EtudeStatus$02df3792-468c-40dc-afd2-506204066f06",
+                              "Not": false,
+                              "m_Etude": "!bp_36544170c027e1142805f03235df29a4",
+                              "NotStarted": false,
+                              "Started": false,
+                              "Playing": true,
+                              "CompletionInProgress": false,
+                              "Completed": false
+                            }
+                          ]
+                        },
+                        "IfTrue": {
+                          "Actions": [
+                            {
+                              "$type": "e164ef6758f918a4abcc3889472a2a3c, ShowBark",
+                              "name": "$ShowBark$526af546-afda-45b1-80a8-e4ca829e8b05",
+                              "WhatToBark": {
+                                "m_Key": "",
+                                "m_OwnerString": "",
+                                "m_OwnerPropertyPath": "",
+                                "m_JsonPath": "",
+                                "Shared": {
+                                  "assetguid": "c9155ce09b38da44f9038676ff41442e",
+                                  "stringkey": "d819de7d-e14c-4746-bbf4-e9b3229d868a"
+                                }
+                              },
+                              "WhatToBarkShared": null,
+                              "BarkDurationByText": true,
+                              "TargetUnit": {
+                                "$type": "19b540e6a8755b142b2d2cb2c945a261, ClickedUnit",
+                                "name": "$ClickedUnit$73f4ac8c-0b7d-4527-8f66-b2be37f90e90"
+                              },
+                              "TargetMapObject": null
+                            }
+                          ]
+                        },
+                        "IfFalse": {
+                          "Actions": [
+                            {
+                              "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                              "name": "$PlayCutscene$a8c63e78-7f1b-49d1-aa35-c7b35b899f65",
+                              "m_Cutscene": "!bp_35cdf5be10d187e4da757ead0a9aaebe",
+                              "PutInQueue": false,
+                              "CheckExistence": true,
+                              "Parameters": {
+                                "Parameters": []
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "World/Encounters/AlushinyrraHigherCity/ConditionsHolders/JerribethDialog_Conditions.jbp": {
+    "AssetId": "3f75915712ea4810a3d800d92b4b1eb5",
+    "Data": {
+      "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+      "Conditions": {
+        "Operation": "Or",
+        "Conditions": [
+          {
+            "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+            "name": "$OrAndLogic$d4fb93e6-d777-4b71-a444-9816df0600f8",
+            "Not": false,
+            "Comment": "\u0442\u0440\u0435\u0442\u044c\u0435 \u0441\u0432\u0438\u0434\u0430\u043d\u0438\u0435 \u0438 \u043d\u0435 \u0432\u0438\u0434\u0435\u043b\u0438 2 \u043a\u0443\u0439",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                  "name": "$CueSeen$40278ccf-a6f1-4e72-9bc9-e515756fadb0",
+                  "Not": true,
+                  "m_Cue": "!bp_a1f97de9145c3574ebd2d7f75c3d39c9",
+                  "CurrentDialog": false
+                },
+                {
+                  "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                  "name": "$EtudeStatus$e90b8549-d390-4391-befb-b3338b4074fc",
+                  "Not": false,
+                  "m_Etude": "!bp_02ffbe686c198854da2d51e72fccb9ca",
+                  "NotStarted": false,
+                  "Started": false,
+                  "Playing": true,
+                  "CompletionInProgress": false,
+                  "Completed": false
+                }
+              ]
+            }
+          },
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$9b77cc2e-781f-4a6f-95c5-ba09c7c6d060",
+            "Not": true,
+            "m_Dialog": "!bp_992c44e6775d87444b562e855fd64af1"
+          }
+        ]
+      }
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Encounters/IvorySanctum/ScriptZones/JerribethAppear.jbp": {
+    "AssetId": "900a3c85fdc6d5b4eb8f5ac49e976246",
+    "Data": {
+      "$type": "2e95eea1aa90d2b428dfe389189dc287, BlueprintScriptZone",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "Prefab": {
+        "guid": "9f7c3cfc41adde44e86767e2bc775af0",
+        "fileid": 1080780655377176
+      },
+      "TriggerConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "EnterActions": {
+        "Actions": [
+          {
+            "$type": "0652c1b85291c994f8411a22deb2b6ec, Spawn",
+            "name": "$Spawn$8298c737-3ca9-4f2d-aab6-0d67a194d631",
+            "Spawners": [
+              {
+                "EntityNameInEditor": "JerribethAtEntrance",
+                "_entity_id": "9fa07641-a8db-4f01-b43e-28658574e4ce",
+                "SceneAssetGuid": "1b3609da30e000d4da2f192527f56b0d"
+              }
+            ],
+            "ActionsOnSpawn": {
+              "Actions": [
+                {
+                  "$type": "0e0c1fe99d7862d4492bcd1535939a9a, StartDialog",
+                  "name": "$StartDialog$84699eea-5cb0-4f62-942e-705a0c452552",
+                  "DialogueOwner": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "name": "$UnitFromSpawner$30100375-ae34-4eed-be3b-3f77973f2abc",
+                    "Spawner": {
+                      "EntityNameInEditor": "JerribethAtEntrance",
+                      "_entity_id": "9fa07641-a8db-4f01-b43e-28658574e4ce",
+                      "SceneAssetGuid": "1b3609da30e000d4da2f192527f56b0d"
+                    }
+                  },
+                  "m_Dialogue": "!bp_80f8dac1bd80ff846ba839fb14ed83b8",
+                  "DialogEvaluator": null,
+                  "SpeakerName": {
+                    "m_Key": "",
+                    "m_OwnerString": "",
+                    "m_OwnerPropertyPath": "",
+                    "m_JsonPath": "",
+                    "Shared": null
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "ExitActions": {
+        "Actions": []
+      }
+    }
+  },
+  "World/Encounters/Seelah_Q2_Wedding/ActionsHolders/Kyana_Actions.jbp": {
+    "AssetId": "f1760357d7f29df4fb4175823ed38952",
+    "Data": {
+      "$type": "63bb90208198450095c55997ebc6ae0a, ActionsHolder",
+      "Actions": {
+        "Actions": [
+          {
+            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+            "name": "$Conditional$c9f977b4-5387-48b7-905c-168782948ceb",
+            "Comment": "",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+                  "name": "$DialogSeen$144bfd25-9455-42d8-acc4-3edca41a1fee",
+                  "Not": true,
+                  "m_Dialog": "!bp_029fe2bf51b828b46b8106e833ca6461"
+                }
+              ]
+            },
+            "IfTrue": {
+              "Actions": [
+                {
+                  "$type": "0e0c1fe99d7862d4492bcd1535939a9a, StartDialog",
+                  "name": "$StartDialog$8981adea-0b6f-43be-9126-b914a0841c83",
+                  "DialogueOwner": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "name": "$UnitFromSpawner$eb8404a3-5d14-4779-b768-08e4009ca506",
+                    "Spawner": {
+                      "EntityNameInEditor": "Kyana",
+                      "_entity_id": "9344d35d-f043-4d6b-878b-068264c466a9",
+                      "SceneAssetGuid": "1ad0e289f495522429eba93a5ffd0c34"
+                    }
+                  },
+                  "m_Dialogue": "!bp_029fe2bf51b828b46b8106e833ca6461",
+                  "DialogEvaluator": null,
+                  "SpeakerName": {
+                    "m_Key": "",
+                    "m_OwnerString": "",
+                    "m_OwnerPropertyPath": "",
+                    "m_JsonPath": "",
+                    "Shared": null
+                  }
+                }
+              ]
+            },
+            "IfFalse": {
+              "Actions": [
+                {
+                  "$type": "e164ef6758f918a4abcc3889472a2a3c, ShowBark",
+                  "name": "$ShowBark$65e47d25-4dd0-4417-8fd7-cc1f3270116f",
+                  "WhatToBark": {
+                    "m_Key": "",
+                    "m_OwnerString": "",
+                    "m_OwnerPropertyPath": "",
+                    "m_JsonPath": "",
+                    "Shared": {
+                      "assetguid": "6d88d5209e6381848baa4284fe7d18eb",
+                      "stringkey": "b0b0ad00-45c2-4214-9d85-3b46ef0a287d"
+                    }
+                  },
+                  "WhatToBarkShared": null,
+                  "BarkDurationByText": false,
+                  "TargetUnit": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "name": "$UnitFromSpawner$693c8104-bd83-42b3-b145-437e82813ef2",
+                    "Spawner": {
+                      "EntityNameInEditor": "Kyana",
+                      "_entity_id": "9344d35d-f043-4d6b-878b-068264c466a9",
+                      "SceneAssetGuid": "1ad0e289f495522429eba93a5ffd0c34"
+                    }
+                  },
+                  "TargetMapObject": null
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "World/Encounters/Seelah_Q2_Wedding/ScriptZones/BrideScriptzone.jbp": {
+    "AssetId": "1e563cf74c1beec4aa3194fd653607c3",
+    "Data": {
+      "$type": "2e95eea1aa90d2b428dfe389189dc287, BlueprintScriptZone",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "Prefab": null,
+      "TriggerConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "EnterActions": {
+        "Actions": [
+          {
+            "$type": "0e0c1fe99d7862d4492bcd1535939a9a, StartDialog",
+            "name": "$StartDialog$8fc73722-b0fb-4180-a0e4-a85bf00c2fca",
+            "DialogueOwner": null,
+            "m_Dialogue": "!bp_029fe2bf51b828b46b8106e833ca6461",
+            "DialogEvaluator": null,
+            "SpeakerName": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          }
+        ]
+      },
+      "ExitActions": {
+        "Actions": []
+      }
+    }
+  },
+  "World/Encounters/WintersunOutdoor/ScriptZones/BlindCarver__dialog_zone.jbp": {
+    "AssetId": "d73cffd4b6f0e7845a48b75f98cabb3f",
+    "Data": {
+      "$type": "2e95eea1aa90d2b428dfe389189dc287, BlueprintScriptZone",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "Prefab": null,
+      "TriggerConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "EnterActions": {
+        "Actions": [
+          {
+            "$type": "0e0c1fe99d7862d4492bcd1535939a9a, StartDialog",
+            "name": "$StartDialog$2aa5453b-890c-41cf-8017-c9df4c1a7de6",
+            "DialogueOwner": null,
+            "m_Dialogue": "!bp_c0a7096d70401a84aae40bc13e4f74cf",
+            "DialogEvaluator": null,
+            "SpeakerName": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          {
+            "$type": "086f25bb4bbcf634289124979aefb433, StopCutscene",
+            "name": "$StopCutscene$5cb5ac0b-60f5-41f8-aa4a-dc2c9eea0bbe",
+            "m_Cutscene": "!bp_1eda400a948c6584289fe06d5e6d41d6",
+            "WithUnit": null
+          },
+          {
+            "$type": "086f25bb4bbcf634289124979aefb433, StopCutscene",
+            "name": "$StopCutscene$3c5fdf77-ae21-4121-babb-e8b061586ec8",
+            "m_Cutscene": "!bp_67fc744334edd6c4586a25143a29cf68",
+            "WithUnit": null
+          },
+          {
+            "$type": "5e4603a125002e449ba3cfc391334f5c, SummonPoolUnits",
+            "name": "$SummonPoolUnits$512a1044-5643-488e-bf7d-eae8b49b669c",
+            "m_SummonPool": "!bp_628f1a76dcf8bab45ad3c0ae99862d87",
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": []
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                  "name": "$HideUnit$fe43afce-a577-4b29-80ab-44c9db3a8987",
+                  "Target": {
+                    "$type": "d67e5007013a92946a7f740132296ab4, SummonPoolUnit",
+                    "name": "$SummonPoolUnit$0673c1ed-d148-4d84-b9e3-9a553de249a8"
+                  },
+                  "Unhide": false,
+                  "Fade": false
+                }
+              ]
+            }
+          },
+          {
+            "$type": "3abef1c138b2b3344bebcf6fbbe5cf47, HideMapObject",
+            "name": "$HideMapObject$d28c612d-7fb5-411b-a299-8859e69cf74a",
+            "MapObject": {
+              "$type": "2f7f1ee24f13dca42977f3b2b5a847f8, MapObjectFromScene",
+              "name": "$MapObjectFromScene$7b51a33d-ce03-48e2-bcc0-e6675f969133",
+              "MapObject": {
+                "EntityNameInEditor": "GameObjectsCorpce",
+                "_entity_id": "42529f60-9482-4a5b-afd0-d414e181af35",
+                "SceneAssetGuid": "5f4ad31583f5c284ab3889c7c5d9cd26"
+              }
+            },
+            "Unhide": false
+          },
+          {
+            "$type": "5a0f8a1614a840f8b0629a71b6de51f7, SpawnBySummonPool",
+            "name": "$SpawnBySummonPool$680e317d-c29d-4e7a-bec4-5e701df5719c",
+            "m_Pool": "!bp_6545833bc09c2d44495916185d6c4306",
+            "ActionsOnSpawn": {
+              "Actions": []
+            }
+          },
+          {
+            "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+            "name": "$PlayCutscene$0f9999e2-f0a8-4e49-a3de-763187cd6651",
+            "m_Cutscene": "!bp_364313dabb5f66e439375d0cc224c61d",
+            "PutInQueue": false,
+            "CheckExistence": true,
+            "Parameters": {
+              "Parameters": []
+            }
+          }
+        ]
+      },
+      "ExitActions": {
+        "Actions": []
+      }
+    }
+  }
+}

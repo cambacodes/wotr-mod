@@ -1,0 +1,20 @@
+{
+  "source_bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "source_sha256": "96675554f6e7865d69530950486cdf42c1f28cc8c37df473f855f123aedc045d",
+  "extractor": "UnityPy 1.25.3 Texture2D.image.save; no retouching, resizing or compositing",
+  "images": [
+    {
+      "file": "BCT_Kyana.png",
+      "asset_id": "b01a38ed9eb2e3c44bd548a975bb59c0",
+      "texture_path_id": 3791641641387289047,
+      "sha256": "8003aafeb12aafa3ed1ca91315d583307fc919cda3dcb96a0384b7ffdd5e1677"
+    },
+    {
+      "file": "ad4aac3138a248646a42424c9e3ca79a_BCT_Kyana.png",
+      "asset_id": "d0532fe50faad104daa3d975fa70edc7",
+      "texture_path_id": 4209145433077945634,
+      "sha256": "c12be02e556d7ae49b4f149a1f3975c61f1c1b1033850da74c563f8e0f11d62b"
+    }
+  ],
+  "status": "Conflicting native appearances; canonical selection pending investigation. Research references only, not release assets."
+}

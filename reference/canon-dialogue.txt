@@ -1,0 +1,1049 @@
+World/Dialogs/c1/DefendersHeart/Irabeth_DefHeart/Cue_0001.jbp
+{n}At the mention of Staunton, Irabeth gives you an uneasy look. It seems that your attack on him did not go unnoticed — and yet it was blamed on the demonic magic of your opponents.{/n}
+
+World/Dialogs/c1/DefendersHeart/Irabeth_DefHeart/Cue_0024.jbp
+"Wait. What you did in the Gray Garrison convinced me: you're one of the best warriors left in the city. We need someone with your wits and fighting strength. I know I can't command you, but I'm asking you: help us fight for Kenabres!"
+
+World/Dialogs/c1/DefendersHeart/Irabeth_DefHeart/Cue_0026.jbp
+"We're safe. Nothing can touch us here in the Defender's Heart — at least for now."
+
+World/Dialogs/c1/DefendersHeart/Irabeth_DefHeart/Cue_0027.jbp
+"Yes, one more thing. If you're in the area, check out this address. It's our house, mine and {g|Anevia}Anevia's{/g}... Well, it was our house. If the building is still standing, open the hidden compartment in the kitchen. It's filled with supplies for a rainy day. You can take whatever you find. You have more need of it."
+
+World/Dialogs/c1/DefendersHeart/Irabeth_DefHeart/Cue_0028.jbp
+"And one last thing. The Eagle Watch has lost a lot of soldiers recently — some were killed, but others simply haven't been seen since the attack. In the chaos that is now {g|Kenabres}Kenabres{/g}, it's next to impossible to confirm anything for sure." {n}Irabeth clears her throat.{/n} "One of the missing fighters is Jannah Aldori, a new recruit in the Watch. She got along well with Seelah and she often went drinking with her. I honestly thought Seelah and Jannah had died together. But now Seelah's returned with you and there's no sign of Jannah. If you learn anything of her whereabouts when you're out in the city, please report back."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Answer_0005.jbp
+"So much time has passed since we first met. Do you remember our first meeting?"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Answer_0006.jbp
+"How would you rate our chances of winning?"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Answer_0007.jbp
+"What are you going to do after we win?"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Answer_0008.jbp
+"All right, it's time to finish this!"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0001.jbp
+"Commander!" {n}Irabeth's gaze, burning with intensity, surveys the walls of the demon citadel.{/n} "You promised us victory when it seemed impossible, and you did not let us down. Doing the impossible is your specialty. You have led us here, to the very gates of the enemy's lair. Now we will end this century-long nightmare once and for all!"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0002.jbp
+{n}Irabeth's stony gaze sweeps over the walls of the demon citadel with grim determination.{/n} "I can't believe I survived to see this day. So many warriors died who were braver than me, more worthy than me... It is time to exact revenge for all of them. This century-long nightmare seemed endless — but today we will end it. Forever."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0003.jbp
+"You're so good at toppling fortresses by now, you could almost keep time by it!" {n}Anevia chuckles.{/n} "The Gray Garrison, Drezen... and now Threshold. So are we coming up on noon or midnight on the 'Commander clock'? Doesn't matter, the bards can settle that one. It's the hour of your triumph."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0009.jbp
+"Of course. It was a long time ago now, but it's not the kinda thing you forget. I was almost buried alive. If it wasn't for you and Seelah, my skull would be lyin' in some cave right now with only rats for company."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0010.jbp
+"It was unforgettable. That attack on the Gray Garrison was the last desperate push, the last hope of holding the city when it seemed only a miracle could save us. We would've died there — but you and Anevia leaped out of the ground and then miracles began to happen!"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0011.jbp
+"I will be grateful to you for that day as long as I live. I thought I'd lost everything — my city, my wife, my hope. I launched a desperate attack that I didn't expect to survive. All I could expect at that point was an honorable death. Then all of a sudden, I saw you leaping out of the ground, restoring to me all that I had lost in an instant."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0012.jbp
+"We have a chance — and that's a far sight better than how things stood not so long ago. Of course, it's too early to celebrate — we've still got a battle to fight, the likes of which we've never seen before. But, I think you can pull it off."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0013.jbp
+"With you leading us?" {n}Irabeth bares her sharp teeth in a wide, fierce grin.{/n} "Those monsters should be worrying about their chances of escaping with their lives!"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0014.jbp
+"I don't know." {n}Irabeth casts a glowering look at the walls of Threshold.{/n} "Victory is near, but it's not yet in our grasp. Not everyone will live to see it... But hope is alive. We can win this. Nothing else matters."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0015.jbp
+"Personally, I'm going to be doing a big pile of nothin'. For a month, or maybe two. Irabeth, too. Wheedling, blackmail, violence — I'll stop at nothin' to drag her away on her first ever vacation."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0016.jbp
+{n}Irabeth holds up her hands, laughing.{/n} "Whatever you say! I can see surrender is my only option!"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0017.jbp
+{n}Irabeth lowers her gaze and quietly answers,{/n} "If we can get through this battle... If we can both survive — I'll do anything you want. Not just for a month, but forever. It will be better for everyone if I hang up my sword."
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0018.jbp
+"We've waited so long for this. Onward to victory!"
+
+World/Dialogs/c6/ThresholdExterior/IrabethAnevia_Threshold/Cue_0019.jbp
+"Lead on, Commander!"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0001.jbp
+[Show her the coin] "Do you know what this is?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0004.jbp
+"Tell me about yourself."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0007.jbp
+"Where are you from?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0008.jbp
+"How did you meet Irabeth?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0009.jbp
+"What is it like, living with Irabeth?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0021.jbp
+"Thank you for your answers."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0023.jbp
+"What are your responsibilities in the Eagle Watch?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0026.jbp
+"I have to go."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0028.jbp
+"How did you and Irabeth end up in Kenabres?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0031.jbp
+"Quite a ragtag group you've got here — from nobles to street thieves!"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0036.jbp
+"Stronger?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0037.jbp
+"More charismatic?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0038.jbp
+"More stately?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0039.jbp
+"Smarter?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0040.jbp
+"More dangerous?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0043.jbp
+"About that scar on Irabeth's face..."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0050.jbp
+"What do you think of my new powers?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0052.jbp
+"Did you find out anything about where Minagho is now?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0059.jbp
+"Where do you think the vescavors have their nest?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0068.jbp
+"Irabeth pawned her sword to pay for your treatment. Treatment for what?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0072.jbp
+"Tell me about the battle of Drezen."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0078.jbp
+"Are there any suspicious places in the city that I should pay attention to?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0082.jbp
+"Do you remember when I asked you about your dream? You said you wanted to learn how to bake bread. Could you tell me more about that?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0091.jbp
+"How is Irabeth doing?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0099.jbp
+"I can see the criminal aura surrounding you."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0103.jbp
+"Even so, I need to know: what medicine did Irabeth get for you?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0109.jbp
+"Why do you keep it a secret?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0110.jbp
+"So, you used to be a man?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0111.jbp
+"What was your name before?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0115.jbp
+"That's unnatural!"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0116.jbp
+"I'm glad everything worked out for you."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0119.jbp
+"I see. Thank you for your answer."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0121.jbp
+"Did Captain Seilkind and his people depart with the Queen?"
+
+World/Dialogs/NPC_Common/Anevia/Answer_0133.jbp
+"Your mother should have hidden you in a temple of Shelyn. Zon-Kuthon forbids his flock from harming her followers."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0134.jbp
+"You shouldn't be afraid of Zon-Kuthon. The Midnight Lord brings his faithful the gift of freedom and joy."
+
+World/Dialogs/NPC_Common/Anevia/Answer_0137.jbp
+"Can you tell me now what medicine Irabeth got for you by pawning her sword?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0001.jbp
+{n}Anevia, in her muted colors, blends almost perfectly into the background. She appears relaxed, but her seemingly unfocused eyes are taking in everything around her, tracking and filtering potential threats. The only tell is the way she drums her fingers on her hip near her weapon sheath. She shows no sign of her injuries and confidently leans on her previously broken leg. She pretends to have just noticed you, even though she watched you approach from afar.{/n} "Oh! Hey! See how they patched me up! Now I can run, jump, or dance a jig if I feel like it."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0002.jbp
+"Look who it is! Hi!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0005.jbp
+{n}She shrugs with a lazy smile.{/n} "I'd be happy to, but there's kinda nothin' to tell. What's so interesting about me?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0010.jbp
+"Nowhere — I was blown in by the wind and found in a cabbage patch..." {n}She stops short.{/n} "Sorry, that's an old habit of mine. I don't like blabbing about my past. But you saved my skin, so I guess I kinda owe it to you not to clown around, right?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0011.jbp
+"I'm from {g|Nidal}Nidal{/g}. And I wouldn't wish my homeland on my worst enemy. You've heard of the place, I'm sure. Ruled by monsters that aren't alive nor dead, and the official religion is the cult of {g|Zon-Kuthon}Zon-Kuthon{/g}. I grew up in a slum, like a weed between the cobblestones. I didn't have a dad, but I had lots of aunts and uncles... my mom's cronies. No prize for guessing the kind of business she was involved in. They gave me a set of lockpicks as soon as I could hold a spoon, and while other kids were picking their noses, I was picking pockets."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0012.jbp
+"When I was twelve, the monks of the Silent Shroud came for us. Creepy guys with their mouths sewn shut, they're the guards in Nisroch. Mom gave me to her friends, and we hid in a secret temple of {g|Desna}Desna{/g}. I never saw my mom again."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0013.jbp
+"I lay low in the temple for the next few years, kept my head down. I washed floors, fetched water, listened to sermons. Funny thing, after a while I started liking {g|Desna}Desna's{/g} teachings. But as soon as I was old enough, I was outta there — I left {g|Nidal}Nidal{/g} and got as far away as I could."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0014.jbp
+"I was bumming around Tymon a while back, doing this and that. {g|Desna}Desnan{/g} temples sometimes gave me odd jobs. Y'know, sometimes they needed people with skills like mine. On the surface, it was fine, I guess. After Nidal, the freedom of {g|River Kingdoms}River Kingdoms{/g} should have seemed like heaven, my chance to sit back and enjoy life. But I wasn't happy. There just wasn't any joy in my new life. I was all alone. No one cared about me, and I didn't care about anybody either. I struggled to find a reason to drag myself out of bed every morning... tying a stone around my neck and jumping into the nearest river started to look pretty appealing."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0015.jbp
+"One day, I was hired to follow some fellas who the local authorities suspected were {g|Razmiran}Razmiran{/g} spies. I was stupid, I made a rookie mistake, and they caught me. It's like my body had already decided to do what my mind had been fighting: to finally put me out of my misery. Get someone else to kill me, since I didn't have the guts to do it myself. They grabbed me. I thought they'd gut me on the spot, but instead they hogtied me and dragged me off... And just like an animal going to the slaughter, my only thought was 'let's get this over with.'"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0016.jbp
+"Picture it. I'm lying on an altar with all these knife-wielding maniacs around me, and suddenly {g|Irabeth}Irabeth{/g} storms in! I thought it was {g|Iomedae}Iomedae{/g} herself! Fierce in her shining armor with her gleaming sword raised. She made quick work of those scumbags, chopped 'em up just like that — I didn't even have time to blink. She untied me. And then..." {n}Anevia's face lights up as she chuckles.{/n} "She looked through the papers they had on the table, and she started swearing like a sailor! So much for Iomedae, ha ha!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0017.jbp
+"After almost becoming a human sacrifice, I knew I never wanted to leave Irabeth's side. Desna knows, I fell for her instantly, and I fell hard. My misery was gone. And when Irabeth showed me what was in those papers — proof that the cultists had a nest in her home city — well, I offered to help without a second thought."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0018.jbp
+"It's like... living. Without her, I wouldn't be. Seriously, if I were alone, I'd definitely be gone by now."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0019.jbp
+"Sure, sometimes we argue, can't deny that. Sometimes we bang our fists on the table and yell so loud that the walls shake, but that's all about Order business. But at home... Well, I'll give you an example. I've kinda always wanted to move out of that broom closet we call a house and into somewhere cozier. It ain't like they take a vow of poverty at the Eagle Watch. But every month, somehow most of our spare money is spent on crusader business. Sure I get mad about it, but..." {n}Anevia makes a helpless gesture.{/n} "It's part of why I love her so much."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0020.jbp
+"You know, Irabeth has that thing that matters most for a person — a purpose in life. She's always got a reason for whatever she's doing. Her whole life is a crusade. And I... I just drifted around, like a leaf in the wind, until {g|Desna}Desna{/g} brought us together. Now she's the meaning of my life. So it really makes no difference if we live in a mansion or under a bush."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0022.jbp
+"Thanks for asking. Telling you all this kinda made me feel better."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0024.jbp
+{n}Anevia smiles evasively.{/n} "Nothin' official. I'm not even a knight, you know — I just hang around. You sure you want to know the details?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0025.jbp
+"Catching traitors and spies and cultists is no walk in the park — it's a delicate job. You can't always do it all within the letter of the law. What if we surprise some suspicious blighter with an official search? Everyone will know about it before long, starting with their cronies. Then again, sneaking into people's houses at night ain't exactly legal. Crusaders can't be doing stuff like that, can they? Well, I'm not exactly a knight..." {n}She trails off.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_0027.jbp
+"All right! You watch yourself now."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0029.jbp
+"They brought me to their stinking cave, threw me on their altar — and I realized who it was. {g|Zon-Kuthon}Kuthites{/g}. From {g|Nidal}Nidal{/g}. They'd tracked me down, after all those years! But I didn't care any more. Wouldn't even have cared if they'd eaten me or whatever. We all gotta go sometime, right? So I was lying there, staring at those knives pointed at me, when fate rolled the dice and I hit the jackpot. {g|Irabeth}Irabeth{/g}. There she was, storming into the cave."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0030.jbp
+{n}Anevia smiles warmly.{/n} "She must have figured I couldn't wait to get my revenge on the cultists. But I didn't give a damn about them. It was her. I'd go anywhere with her. Even on a {g|Crusades}crusade{/g}, or into the jaws of a dragon."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0032.jbp
+"You got that right, ha ha, only the best for you! What do you do if the knights and nobles fail to save the world? The lowlifes are our only hope!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0033.jbp
+{n}Anevia sweeps an inquisitive glance over you.{/n} "So tell me straight, how'd that brawl at the Gray Garrison end? I heard the rumors, of course. That's kinda my job, you know — to listen. You've no idea what cobblers the crusaders say about you. Some say that {g|Iomedae}Iomedae{/g} came to you and appointed you her herald. Others say that you died, and an honest-to-gods angel is now leading the army disguised as you. Still others say it was just an explosion at an alchemist's lab, and I'm the one spreading rumors about your powers. I wish!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0034.jbp
+"But you know... You really have changed since the Gray Garrison. It's hard to describe, but you've become kinda..." {n}Anevia waves her hand, trying to find the word.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_0041.jbp
+"More dangerous. I have a gut instinct about these things. If I didn't, I'd already be dead. You're dangerous, Commander, and by Desna I hope you'll be dangerous to our enemies, and not to us... Or to yourself!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0042.jbp
+"Yeah, exactly!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0044.jbp
+{n}Anevia's eyes flash with wicked fire for a moment, and she looks away.{/n} "Beth says you did the right thing by cutting her. She says she deserved it, and it did her good. So you know, maybe I should just keep my opinions to myself for once — about what you did, and how it makes me look at you." {n}Anevia purses her lips.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_0045.jbp
+"Sometimes Beth is as stubborn as a mule. We could've paid a healer to get rid of her scar, but she refused. She says it reminds her of her 'disgrace,' and keeps her from doing anything like that in the future... She's daft like that."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0047.jbp
+{n}Anevia answers with scarcely concealed irritation.{/n} "No dice. Our scouts crawled all over the area, down every hole. Nothing. The Gray Road was completely empty, and then — bam! A whole army popped up like a jack-in-the-box."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0048.jbp
+"My only lead is a few scouts who didn't come back from the gorges to the southwest. But we've found no sign of secret paths or underground passageways, and definitely no route we can use to quietly move a large force through. But I feel it in my gut, there's some evil scum out there. We just have to look harder. Of course, I could send out more scouts, but they might just disappear like the first ones. Why don't you go there yourself and find out what's what?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0049.jbp
+{n}Anevia punches her fist into her palm.{/n} "You know, I'd like to give that rat Nurah a good shake! How long was she serving the demons, I wonder? I'd bet good silver if I turned her upside-down and shook her as hard as I could, something interesting would fall out, not just lice!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0051.jbp
+{n}Anevia looks at you sadly.{/n} "There's nothing good about this. The things you've had to do, and the fact we're fighting alongside the dead because we'll never pull this off without them. But at least we're moving forward, not falling back like before. I guess it was the only way. Bad times call for bad measures."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0053.jbp
+{n}Anevia shakes her head sharply.{/n} "Nope. Zero. Zilch. A whole lotta nothin'. The scum melted into thin air. Soldiers saw her jump out the window, run through the square in front of the citadel, and suddenly disappear. We haven't heard anything from her since. And I don't like it. I'm telling you, this is bad."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0054.jbp
+"First of all, her kind don't just give up. If we can't see her, it means she's setting a trap for us somewhere we won't expect. I mean, it would be great if the demon lords just gobbled her up for all her failures. But I think that's too much to hope for."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0055.jbp
+"But that's not the worst part. We have a more interesting question, y'know. I wonder how she teleported from the city, if by that time you'd already hung the banner. The soldiers are sayin' it probably wasn't in full force by then, but you and I both know that's dross. She wasn't supposed to be able to teleport. But she did. The question is: how?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0057.jbp
+"I got no idea, and no reports either. Although, when you think about it — where would you expect one of {g|Baphomet}Baphomet's{/g} cultists to hide? I bet anything she's hiding somewhere right under our noses. Besides, those demon-worshiping creeps just love desecrating holy sites. I'd search for her at a nearby shrine if I were you."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0058.jbp
+{n}Anevia looks over the {d|c1 tavern lost}devastated tavern{/d}, biting her lip with a grim expression.{/n} "You know... This ain't over. But our chances are getting slimmer by the day."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0060.jbp
+{n}Anevia shakes her head in annoyance.{/n} "Not a clue. I've been trying to work it out for days. The vermin have gotta be coming from some kinda basement, you'd think. Or an abandoned building. Or, Desna forbid, some secret passage that we haven't found yet. We need to nip this in the bud — when those critters start breeding, it won't be pretty!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0061.jbp
+"But I took to life in Kenabres like a duck to water. I used to be an outcast wherever I went — but half of the crusaders are the same. After all, who'd volunteer to tangle with demons on the edge of the Abyss? You gotta be either a goody-two-shoes with too much honor and free time, or a misfit with no life out in the normal world with normal people. People come here to run away from their debts, their past, from themselves... So I fit right in."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0064.jbp
+{n}Anevia frowns and looks you dead in the eye.{/n} "I'm not gonna beat about the bush, I'll tell it to you straight. I don't have a clue what to make of all this. My paranoia's tellin' me to keep you far away from any position of power, in case you do something crazy... But my experience tells me that life is a lot more complicated than fanatics like Hulrun want to believe. So far, nothing you've done has made me doubt your loyalty. Does a tail and a pair of horns outweigh your other deeds? Nuh-uh, I don't think so."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0065.jbp
+"At the end of the day, you didn't choose this... The Worldwound spat a whole load of gunk out into Golarion, maybe some of it latched onto you like what happened with the mongrels. If that's how it went down, then that just gives you one more reason to hate the demons, and gives us one more reason to trust you and follow you."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0066.jbp
+{n}Anevia frowns at you.{/n} "I usually hate wise guys who think they can read people like a book and always know the right thing to do... but your ability hasn't failed you so far. I trust you. You know, you kinda remind me of Irabeth that way: she can't rest if she knows there's any injustice going on around her. It's obvious why she's got your back."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0067.jbp
+"Sure, I've done a lot things in my life, things I'm not too proud of. But if you start carrying on all hoity-toity with me because you've gone and got yourself some awesome new powers and now you know everything about everyone... I'm gonna lose all respect for you. Just a heads-up."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0069.jbp
+"Eh, it was no big deal. I just sat out in the cold too long and caught a chill... I appreciate the concern and all, but don't worry: I'm healthy as a horse now."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0070.jbp
+{n}Anevia sighs.{/n} "It all worked out in the end. But Staunton, woah, that man is made of iron: imagine defending Drezen for 70 years! Anybody else would've snapped and rushed out with the banner in the vanguard, just to get it over with, but he sat and waited... Irabeth's been going on about him so much, I'm starting to feel a little jealous. I'm kidding, I'm kidding! He's old enough to be her father."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0071.jbp
+{n}Anevia gives you a long look, her lips quirking up at the corners.{/n} "I don't know what to think of all this. You're a total mystery to me. And I usually don't like mysteries, but you're different. Your crazy stunts somehow make me think that, just maybe, this whole nightmare might suddenly end, by pure fluke, on a positive note. I'm no expert in these things, but I think that's what hope feels like?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0073.jbp
+"Like you weren't there too! But whatever, I'll refresh your memory. So, everybody's running around, duking it out with the demons, spells are flyin' down from the city's walls, boiling tar too, a hulking big balor's running amok and crushing everyone in its wake... and Irabeth was somewhere right in the thick of things, and my heart was beating out of my chest the whole time, because how anybody could survive in that massacre, I have no idea."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0074.jbp
+{n}Anevia scoffs.{/n} "I dunno if this counts as blasphemy or whatever, but you look like Desna just had her wicked way with you! You've got a bit of that divine sass about you now. And the dragon! I'm a little put out that I didn't get to see how you flew on the thing in battle, sending the demons running scared, grabbing whatever they could and hightailin' it outta there."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0076.jbp
+"What else could I desire, when I have my Beth? Hmm..." {n}Anevia thinks for a moment, smiling, then looks over your shoulder and gives a cheeky wink.{/n} "Arueshalae, quit hiding. You put the Commander up to this, didn't you? Feeling shy, are we? Fine, I'll act like I never saw you. So, Commander..."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0077.jbp
+"War's no place to be thinkin' about wants. Needs, yes, not desires. But when the war's over, you mean? Then we'll have a chance to think about something other than just surviving. To learn something other than fighting... You know, when I was really little, I would always hang around the kitchen whenever the cook was getting the fresh bread outta the oven. Big steaming loaves that smelled so good... Maybe it's stupid, but I keep thinking: when the war's over, I'm going to build a big stone oven in my house and learn how to bake bread just like that."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0079.jbp
+"There were a couple spots I wanted to check out, but I didn't have time. If there really is a den of cultists there, it would be good if you could swoop in there and bust some heads. You don't even need a search warrant." {n}Anevia shoots you a crooked smile.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_0080.jbp
+"First one is The Silken Thread. It's a funny little tailor shop that doesn't take any orders and never buys any fabric, but they always seem oh so busy. They're busy with something in there all right, but sewing it ain't!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0081.jbp
+"Second one is the alchemy shop, Topaz Solutions. And they trade in everything — not just healing potions. Judging by the ingredients they've been buying on the black market, there's something fishy about the alchemical rituals going down in that place."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0083.jbp
+"Is this for Arueshalae? Uh-huh, I can see you, you can come on out!" {n}Anevia smiles at the half-hidden succubus bashfully emerging from her hiding place.{/n} "Now, isn't that better? Anyway, back to bread..." {n}Anevia sighs pensively, her eyes gazing into the distance.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_0084.jbp
+"When I was just a lil' snotnose kid, my mom hid me from our enemies in a temple of Desna. {g|Nidal}Nidal{/g}, my birthplace, is a horror show — if it crumbled into the sea tomorrow I'd throw a party. But the temple was a tiny oasis of peace and calm, hidden away inside all that. Folks in the temple knew how to laugh. They'd sing songs as they did their needlework. And in the mornings they'd bake the most fragrant bread in the whole world. I could barely see over the table, but I'd stand and watch as the cook mixed the dough, formed it into rounds, and put them in the oven. It's the happiest memory of my life... Well, of the crappy part of my life, up until I met Beth, of course."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0085.jbp
+"Then, when I bailed on that, I did all kinds of scummy jobs. I crawled through marshlands, I scrambled over rooftops, I waded through sewers, I spied, I tracked, I killed... And that memory was the thing that kept me going, when I was sittin' up to my eyeballs in gore, or draggin' myself through the slums with an arrow in my side. I remembered the smell of that bread, the crunch of the crust, how it burned my little fingers. I remembered how happy I was back then."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0086.jbp
+"Commander, have you thought about what you'll do after we win? I mean, once we've smashed the demons, closed the Worldwound, hung up our weapons... What then? I know my war will be well and truly over the morning I get up, mix up a dough, and put it in the oven. I'm gonna sit there and watch it rise."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0087.jbp
+{n}Arueshalae listens to Anevia with rapt attention. When Anevia finishes, the succubus is silent for a long time, and then briskly wipes her eyes.{/n} "Thank you, Anevia. Desna bless you! I think I understand now. I think I truly understand." {n}Arueshalae turns to you. You see a sparkle of hope in her eyes again, something that's been missing ever since your last visit to the world of dreams.{/n} "{name}, I... We need to go there again. To the dream world. Now I know how to solve the riddle. Please come speak to me in private as soon as you can." {n}Not waiting for your answer, Arueshalae walks away.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_0088.jbp
+{n}Anevia watches the demon go.{/n} "Desna teaches that everything we do in our waking hours begins in our dreams. I wonder what my dream helped her understand... But, whatever it was, may the goddess watch over her."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0089.jbp
+"Thanks for looking out for Beth. I was near tearin' my hair out... I owe you one. Another one, I guess, ha ha!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0093.jbp
+"She's as stubborn as a... as a paladin!" {n}Anevia stomps her foot in mock fury, but her face is lit by a smile.{/n} "She just got back — and she's already raring to get back into the fight. But I'm not letting her outta my sight for now. I'm gonna be her shadow till she's old and gray!"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0097.jbp
+{n}Anevia sighs.{/n} "Y'know... this war's left its mark on everybody, but her especially. All I want now is to live to see our victory and then whisk her away somewhere, as far away as I can manage. Someplace where it's quiet and bright, and where she'll never have to pick up a sword ever again."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0098.jbp
+{n}Anevia looks at you with a tinge of embarrassment.{/n} "Don't take this the wrong way, I'm not brown-nosin' here, but you were the commander the crusade needed. Righteous, good, and with justice in their heart. Sometimes you look at these high-and-mighty true believers and their perfectness makes you wanna throw up. But I don't get that from you. I'd jump into the jaws of a demon for you."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0100.jbp
+"That's your new powers, right? Well, I'm not gonna lie, I've led a varied life, I told you about it before. There's already a noose waitin' for me back in Nidal."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0101.jbp
+"That's your new powers, right? Well, I'm not gonna lie, I've led a varied life. Ask me about it if you want, I'll tell it to you straight — who I am, where I came from, all of it. But the short version is this — there's already a noose waitin' for me back in Nidal."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0102.jbp
+{n}Anevia smirks.{/n} "And it'll keep waitin'. The Nidal executioners are at the back of the line of all the people who want my head, behind the demons and the cultists. I won't abandon the crusade, you know that. Not because I'm tryin' to atone for my sins, but because it's my mission now. Mine and Irabeth's."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0105.jbp
+"Still gnawin' on that bone, huh? Well, fine — I'll tell ya." {n}Anevia sighs.{/n} "Here's the thing: my mother didn't have a daughter. She had a son, who she hid from her enemies in the temple of Desna. They gave me a new name and dressed me as a girl so no one would find out... And it turned out that after years of living in that temple, I realized something: those clothes and that new name suited me down to the ground. I never thought of myself as a man in all that time."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0106.jbp
+"No, Commander. Take it from me, you don't need to know." {n}Anevia shakes her head, making it clear that questioning her further would be pointless.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_0107.jbp
+"When I left the temple, I lived as a woman. Not exactly hard, seeing how I was traveling alone. Then I met Irabeth. You can't imagine how terrified I was of telling her the truth... But she understood and she accepted me. And she even pawned her family heirloom to help me. The medicine she got for me, the thing she pawned her sword for, was an elixir to change my physical gender. That's it. That's the story."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0112.jbp
+"Because it's nobody else's business. You know the truth now — has it changed anything?"
+
+World/Dialogs/NPC_Common/Anevia/Cue_0113.jbp
+"No. I've always been me. I just needed time to understand that. And the help of my beloved to transform my body to the way it was always meant to be."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0114.jbp
+"Don't even ask. That name has meant nothing to me for years — it's just sounds. There's probably nobody left alive who knew that person. I'm Anevia Tirabade, that's all there is to it."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0117.jbp
+{n}Anevia shrugs.{/n} "Are you expectin' me to apologize for who I am? Never gonna happen."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0118.jbp
+"Thanks." {n}Anevia smiles.{/n} "It's all down to Irabeth. I don't know how I would've survived without her. Truth is, I wouldn't have."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0120.jbp
+{n}Anevia shrugs.{/n} "No problem. Like I said: I'm all good now. This little detail about my personal life's got nothin' to do with the crusade."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0122.jbp
+"I can't believe you haven't heard! He ain't no captain no more. He had some huge bust-up with his commanders, told 'em all to go to hell, packed up his things, and took off outta Drezen."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0135.jbp
+"My mom couldn't tell her Iomedae from her elbow. But she knew the city's underbelly like the back of her hand — what to get and where to get it, where to lay low... I don't know if there were any Shelynites in Nidal, but if there were, I doubt they were rubbin' elbows with guttersnipes like us."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0136.jbp
+{n}Anevia casts you a sidelong look.{/n} "Aw shucks, thanks. But I think I can get by just fine without any of your little gifts."
+
+World/Dialogs/NPC_Common/Anevia/Cue_0138.jbp
+"You don't seem to be getting the message — I don't want to talk about it. Not now anyway. Ask me again in a year... or ten."
+
+World/Dialogs/NPC_Common/Anevia/Cue_2.jbp
+"And then the smell of fresh bread will wake Irabeth, and she'll come into the kitchen, and I'll break her off a steaming, fragrant piece. That's when I'll truly know in my gut that the crusade's over. That our peaceful life has begun."
+
+World/Dialogs/NPC_Common/Anevia/Cue_3.jbp
+"It's sad that Irabeth won't come into the kitchen, and I won't break her off a steaming, fragrant piece of my bread. I guess my dream wasn't meant to come true after all."
+
+World/Dialogs/NPC_Common/Anevia/Cue_4.jbp
+{n}Anevia gives you a surly look.{/n}
+
+World/Dialogs/NPC_Common/Anevia/Cue_5.jbp
+"I don't feel like it."
+
+World/Dialogs/NPC_Common/Anevia/Cue_6.jbp
+"Yes. I recognize the style." {n}Anevia chuckles.{/n} "Looks like a greeting from the Kenabres chapter of the Eagle Watch. Whoever approaches you with the other half of the coin is one of us and can be trusted. Probably the head of the chapter, a tiefling called Rovus. A brilliant spy. And even more paranoid than me, hard as that is to imagine."
+
+World/Dialogs/NPC_Common/Anevia/MoltenScarQuestAskAnevia.jbp
+"Have you figured out how the demons have been sneaking up on us?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0001.jbp
+"What happened in the tavern cellar?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0001_Ch2_Irabeth_Reinf.jbp
+"We need reinforcements. Can you get us more soldiers?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0004_TakeIrabethReinf.jbp
+[Pay seven and a half thousand gold coins] "You have your orders."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0005.jbp
+"I don't have that kind of money."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0006.jbp
+"Perhaps later."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0008.jbp
+"What do we know about the poor soul who asked the cultist to take him and let the others go?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0009.jbp
+"Who were those fighters?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0010.jbp
+"Allow me to ask a few personal questions."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0011.jbp
+"What do we know about the missing person?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0014.jbp
+"Where are you from?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0015.jbp
+"How did you become a paladin?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0016.jbp
+"How did you come to join a knightly order?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0018.jbp
+"How did the people of Kenabres feel about your background?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0028.jbp
+"Tell me about the Eagle Watch."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0033.jbp
+"On the contrary, if it wasn't for you, there wouldn't be a headquarters at the Defender's Heart. The cultists would have served up the city on a platter to the demons."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0034.jbp
+"Exactly. Intrigue and spying mean nothing when it comes down to honest fighting!"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0035.jbp
+"Success? When we got up to the surface, there were more cultists in the city than crusaders! What exactly was your order doing?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0039.jbp
+"So it turns out that the Queen has her head of counterintelligence watching me? I wonder why!"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0045.jbp
+"Tell me about Anevia."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0046.jbp
+"Thank you for your answers."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0051.jbp
+"I have to go."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0054.jbp
+"How is the Eagle Watch doing in Kenabres?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0057.jbp
+"It's hard to believe your origin is so humble. You deserve a noble title more than many who inherit them."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0070.jbp
+"About the scar on your face..."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0087.jbp
+"We need to talk about what happened during the attack on Drezen."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0094.jbp
+"Who will lead the Eagle Watch then? You know I have no one to replace you."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0095.jbp
+"That suggestion is no better than desertion, except you want me to take responsibility for it. I don't want to hear it! Join the ranks, knight, and fight as you swore to do!"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0098.jbp
+"Few deserve these titles more than you. Don't blame yourself. Under the circumstances, you did everything possible, and more besides."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0098.jbp
+Tried to inspire Irabeth at a difficult moment.
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0099.jbp
+"I guess you're right — you really aren't much use. Unfortunately, I don't have anyone to replace you right now."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0120.jbp
+"Everything is ready for an attack on the Gray Garrison. Time to attack!"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0124.jbp
+"Everything is ready. Onward!"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0125.jbp
+"There's still something more I must do."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0130.jbp
+"What is our strategy for the attack on the Gray Garrison?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0135.jbp
+"There's a traitor I'm trying to track down. Who is your informant among the thieflings?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0137.jbp
+"What is our main objective?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0150.jbp
+"I found a scabbard with your family name on it in the Gray Garrison."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0154.jbp
+"Is Anevia sick?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0155.jbp
+"I can see that you truly love her."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0155.jbp
+Told Irabeth that her actions proved her love for Anevia.
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0156.jbp
+"It's foolish to part with your weapon in the middle of a war."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0156.jbp
+Told Irabeth that pawning her heirloom sword was unwise.
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0157.jbp
+"You had the Order's coffers at your disposal..."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0157.jbp
+Told Irabeth that she should have spent the Order's money on the cure for Anevia.
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0162.jbp
+[Say nothing]
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0164.jbp
+[Give the Solemn Hour to Irabeth] "I found your father's sword. Take it."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0167.jbp
+"Tell me what happened at the battle for Drezen."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0171.jbp
+"These Wardstones — what are they?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0175.jbp
+"Even so, the Count did offer me his aid. He can't be all that bad."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0176.jbp
+"What's your problem with Daeran? Is there bad blood between you two?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0184.jbp
+"Why is he trying to provoke the Queen?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0185.jbp
+"Could you tell me more about the events at Heaven's Edge?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0186.jbp
+"Thank you for telling me all this."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0194.jbp
+"Where have Ramien and his priests gone?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0196.jbp
+"Let's talk about what happened in Iz."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0200.jbp
+"I've taken care of the dragon that was attacking our patrols."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0202.jbp
+"I found Jannah Aldori like you asked."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_0218.jbp
+"I can't imagine the followers of Zon-Kuthon in alliance with demon worshipers. Shouldn't they hate each other?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_15.jbp
+"Whose cultist was it? Baphomet's? Deskari's? Someone else's?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_17.jbp
+"Thank you for your answers."
+
+World/Dialogs/NPC_Common/Irabeth/Answer_19.jbp
+"So, it was a kidnapping, not an attack?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_7.jbp
+"Who are these fighters?"
+
+World/Dialogs/NPC_Common/Irabeth/Answer_TakeWoljif.jbp
+"There is a tiefling chained up in the Defender's Heart. What can you tell me about him?"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0001.jbp
+"You heard what that demon said. They're going to desecrate the Wardstone and blow up the whole barrier around the Worldwound. That would be an even worse disaster than the Worldwound's expansion before the Second Crusade. Not only Kenabres, but every city with a Wardstone will be destroyed, including the capital! We can't allow that, no matter what. We will retake it, even destroy it if we must. Iomedae's gift must not become a weapon of the {g|Abyss}Abyss{/g}!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0002.jbp
+"I'm listening, Commander."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0003.jbp
+{n}Irabeth salutes you with sincere respect.{/n} "Good afternoon, Commander. What can I do for you?"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0004.jbp
+{n}Irabeth's eyes are vacant, her thoughts are clearly somewhere far away. Seeing you, though, she snaps to attention.{/n} "Hail, Commander!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0007.jbp
+"Consider it done!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0008.jbp
+"Then we'll have to make do with what forces we have."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0009.jbp
+"As you command."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0010.jbp
+"A handful of townsfolk who had been held captive by cultists but escaped. One of Anevia's scouts was with them — actually, it was he who warned us that the cultists were planning to attack the tavern. The whole lot of them are made of stern stuff, I've got to say. Making it all the way across the destroyed city with minimal resources and equipment is a truly impressive achievement, especially for the civilians."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0011.jbp
+{n}Irabeth rubs her red and tired eyes.{/n} "Any success? How is the city?"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0012.jbp
+{n}Frowning a little, Irabeth nods.{/n} "Please. But I must warn you, there are some things I don't have the right to discuss."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0015.jbp
+"He didn't look like a worshiper of Baphomet or Deskari or of anyone else we've ever fought. No one got a good look at the profane symbols on his clothes, but the rod he left behind clearly holds ritualistic significance. Which of the demon lords has mastery over ice and bones? I think I remember reading something about monsters like that... But for now we can only guess."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0017.jbp
+{n}A bitter smile appears on the half-orc's face.{/n} "I don't much like to remember it... Believe it or not, the story of how I became a paladin is also the story of how I failed to become a knight."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0019.jbp
+"When I grew older and it was time for me to serve, I decided: anywhere but {g|Kenabres}Kenabres{/g}. That was where my father had served loyally, and his only reward had been injustice. Besides, the witch hunters, led by the honorable Prelate {g|Hulrun}Hulrun{/g}, {g|witchhunt}stalked{/g} the city with a heavy hand. Who knows what they'd have done to a strange girl with green skin. Instead I went to..." {n}A smirk that looks more like a painful grimace crosses her face.{/n} "You can laugh if you want, but I was young and foolish. I chose Lastwall, of all places. You can imagine how well I was accepted in a country that's been battling the orcs of {g|Hold of Belkzen}Belkzen{/g} since its foundation!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0020.jbp
+"There were many there like me, but we were all treated as second-class citizens. To the locals, my green skin was worse than leper scabs. Even my brothers in faith kept their distance. I took my vows, and the goddess granted me the powers of a paladin — but even then, not a single order would accept me into their ranks. I spent another six months knocking on doors before I realized a simple truth: I serve {g|Iomedae}Iomedae{/g}, not these people. I don't have to prostrate myself before them. So I left — as a paladin, but not a knight."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0021.jbp
+"I was born in {g|Kenabres}Kenabres{/g}. I grew up on a farm just outside it. But my way back home lay at the end of a long and winding road. It took me years of traveling through foreign lands before I came to be where I've always belonged."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0022.jbp
+"My parents were crusaders, may their souls stand together in {g|Iomedae}Iomedae's{/g} celestial army. When I was born, they retired from the war and started preparing me to continue their legacy. But my father was an orc. You'd be pressed to find a calmer, wiser and more pious servant of the goddess than he. But still, all his life he was dogged by sideways looks and whispers."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0023.jbp
+"I left Lastwall and went traveling. The goddess guided me, and my path led me to where atrocities were happening. I often fought in exchange for gold. But never for unworthy aims, of course. I wandered the {g|River Kingdoms}River Kingdoms{/g} for a few years, killing monsters and tracking down criminals. Sometimes I thought I was just wasting time, that my true place was in {g|Kenabres}Kenabres{/g}. But I pushed those thoughts away. I didn't even want to think about going back. But in the end, divine providence had brought me to my senses."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0024.jbp
+"It happened in Tymon. I was tracking a gang of bandits, which my employer suspected was a cover for {g|Razmiran}Razmiran{/g} spies. I managed to find their lair, but inside I found something far more dangerous than spies: an unholy temple to {g|Zon-Kuthon}Zon-Kuthon{/g}! When I broke in there, the cultists were about to sacrifice someone — the person who was destined to become my wife. Anevia. But that's another story."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0025.jbp
+"After I cut down the cultists, I examined their papers and couldn't believe my eyes. A network of evil cults had spread through all of Avistan, including Mendev! Worse, the documents clearly showed that their allies — the {g|templars}Templars of the Ivory Labyrinth{/g} — had infested my native Kenabres, and were even among the ranks of the paladins! After that, delaying my homecoming would be tantamount to desertion. Luckily, I was no longer alone. Anevia was as eager to destroy the cultists as I was."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0026.jbp
+"Anevia and I hurried to {g|Kenabres}Kenabres{/g}. We couldn't trust anyone. The papers indicated that the cultists had infiltrated everything. Luckily, I had some experience in investigation, and my beloved..." {n}The half-orc smiles warmly.{/n} "She knew her way around working locks, tailing people, and trading information with the city's bottom feeders. Soon we'd defeated... alas, not the whole hydra, but a few of its heads. Do you know who turned out to be the leader of the cultists? The commander of the Eagle Watch!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0027.jbp
+"Can you imagine? While Prelate Hulrun was {g|witchhunt}chasing{/g} witches through the city, the enemy had infiltrated the very order responsible for internal security! The scandal reached the ears of the Queen. At first she planned to disband the order in disgrace, but then she offered its command to me, and put its salvation in my hands. Of course, there was one small catch: I wasn't a knight. But I was made commander just the same, skipping the usual progression through the ranks."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0029.jbp
+"It was a small order, created to fight not only demons but also the enemy within. To maintain the purity of the paladin ranks, prevent heresy, and identify spies. And it failed miserably at that. The {g|templars}Templars of the Ivory Labyrinth{/g} infiltrated it and formed their nest within its ranks."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0030.jbp
+"After the Queen entrusted me with leading the order, Anevia and I practically built it from scratch. We got rid of dead weight, people who weren't committed. We organized ways to transmit messages and orders safely. We introduced reliable ciphers. We found tacit allies around the city — from crusader orders to street beggars."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0031.jbp
+"This was my personal crusade, to purge the city of the templars who had infested it. And I thought I was winning. I could feel it — we were so close to driving the cultists out of Kenabres. But..." {n}Irabeth frowns.{/n} "It's hard to admit, but those successes didn't count for much once the demons entered the city."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0036.jbp
+{n}The lines on Irabeth's forehead soften.{/n} "Yes, that's true. It's a good thing we achieved something. Thank you."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0037.jbp
+{n}Irabeth looks away.{/n} "The one who loses the quiet war might never live to see open combat... But you're right, of course. In the end, everything is decided with swords."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0038.jbp
+{n}Irabeth lowers her head.{/n} "We did all we could... But it wasn't enough. The cultists were everywhere from the start. And the {g|demons}demons{/g} just razed everything to the ground, despite our efforts."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0040.jbp
+"You think the Queen doesn't trust you? If that were true, she wouldn't have put you in charge of this army. My main task is to be your advisor until you've gained enough experience as a commander. As for counterintelligence... Anevia and I were tasked with keeping an eye on your inner circle. But you're not under suspicion, Commander. You're under our protection."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0041.jbp
+"They tolerated it surprisingly well. I shouldn't have been so wary. Crusaders don't tend to be prejudiced, as a rule. After all, heroes from all over the world, even from other continents, come here to fight the demons. Apparently the people were only suspicious of full-blooded orcs. There were already many like me here, and we don't have any problems... Though the locals do have their superstitions. Mendev is as merciless as Lastwall. They just have a different set of victims."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0042.jbp
+"I kept seeing those same sideways looks and scowls, hearing the familiar whispers. But where once they used to whisper behind my back and point at me, now they whisper in my ear and point at someone else. It's so strange — to be on the other side of humiliation. To wipe the spit from your face — and suddenly be invited to change position, and spit at someone else."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0043.jbp
+"You must have figured out by now that I'm talking about tieflings. It's true there are many of them among the cultists, and few among our crusaders — and our fighters do all they can to drive away those who would be our allies. People shun them, call them 'Areelu's spawn,' or worse — as if they chose to be born like that! I believe it's quite a feat to rise against the call of one's blood and join the forces of good. Still, most only see them as the enemy. I once saw a knight bleeding to death because he wouldn't let a tiefling priest touch his wound. Alas, I haven't been able to change this in all my time in {g|Kenabres}Kenabres{/g}."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0044.jbp
+"Perhaps you will? I hope your example will show others of your kind that they are needed here. Perhaps looking at you, even some of the cultists will see that birth does not consign you to a life in the service of evil."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0047.jbp
+"We met in Tymon as I was wandering aimlessly from one ordeal to another. We returned to {g|Kenabres}Kenabres{/g} together, to expose the {g|templars}Templars of the Ivory Labyrinth{/g}. The day the Queen knighted me was the second happiest day of my life. The first was the day of our wedding."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0048.jbp
+"But Anevia isn't just my beloved. She's my staunchest ally. We share every victory and defeat. The best of me is alive thanks to her."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0049.jbp
+{n}Irabeth nods without saying a word.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0050.jbp
+"Thank you for saving her back then, the day Kenabres fell. Before her return, the only thing giving me the strength to protect the Defender's Heart was the hope that I'd see her again. We are in your debt."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0052.jbp
+{n}Irabeth says goodbye with a short bow.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0053.jbp
+"Go. May Iomedae keep you safe."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0055.jbp
+"Everything is going well. I was wary of handing over the reins, at first. I was afraid that everything would fall apart without Anevia and me. But I took a risk and left a very clever lad in charge — a tiefling, as it happens. He infiltrated the cult alone — they couldn't imagine a tiefling wouldn't be on their side! He exposed an entire cell. I personally knighted him, just before the city was attacked. Of course, there were many who weren't happy about it, but... It's not my job to make people happy."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0056.jbp
+"He hasn't disappointed. He has built up the order's ranks again and is running everything so smoothly, it's as if the demon attack never happened. He's proven more than once that I left Kenabres in good hands... But I admit, it's still strange to think that such a small order as the Eagle Watch now has two chapters — one in Drezen and one in Kenabres."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0058.jbp
+{n}Irabeth's cheeks blush a little.{/n} "Thank you, Commander. It is an honor to hear that, especially from you."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0059.jbp
+"Every noble family begins somewhere. You must have heard the recent story from the {g|Stolen Lands}Stolen Lands{/g} in the River Kingdoms? Just imagine, coming from nowhere and making it all the way to a royal crown in just a few years!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0060.jbp
+"Sometimes I wonder what would happen if I managed to distinguish myself somehow... But then I push away such unworthy, selfish thoughts, of course. We don't fight for rewards. The fate of the world is at stake! And yet..." {n}Irabeth's blush deepens and she falls silent.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0066.jbp
+"Commander, allow me to say something." {n}Irabeth looks even more serious than usual.{/n} "Before you... This wasn't a war. It was agony, drawn out over decades. No one believed in victory anymore. When the demons attacked the city, for some it was a relief. At least the end had come. They laid down their weapons and surrendered without a fight."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0067.jbp
+"I felt the same thing, but I somehow got through on stubbornness and the vague hope that if nobody found Anevia's body, she might by some miracle have survived. And that miracle was you."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0068.jbp
+"You returned my beloved to me when I'd nearly lost all hope of seeing her alive again. Then you went on a suicide mission to the Gray Garrison and won the city back for us. You turned a defeat into a victory. I know it wasn't easy, but you make everything seem so effortless. You do everything just like that!" {n}she says with a snap of her fingers.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0069.jbp
+"The Queen believes in your powers too. But for me, they're just more proof of what I felt that day when I saw Anevia alive, standing next to you. You're the miracle we've been waiting for. You're the one who will finally put an end to this terrible war, and in spite of everything, deliver us the victory we so desperately need. With you, I'm sure this crusade will achieve what the others could not."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0071.jbp
+{n}Irabeth's hand reaches up to touch her face, then falls away. Her back straightens, and determination flares in her eyes.{/n} "I lost control over myself, and put the entire crusade at risk. You had every right to stop me." {n}Irabeth sighs and looks down.{/n} "Commander, please don't bring up this subject again. I've been punished enough for my disgraceful weakness."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0073.jbp
+{n}Irabeth's face remains stoic, but her eyes shine with joy.{/n} "You neutralized the threat and saved many crusaders from a fate worse than death. These days, we need good news more than ever, and the news that you crushed those foul demons and their spells — this has greatly boosted morale in the ranks."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0074.jbp
+"Survivors from Sarkoris? In the middle of the Worldwound? They must be made of tough stuff! I'm sorry they've been set against us." {n}Irabeth grits her teeth.{/n} "And sorrier still for our soldiers. We're losing our people to demon trickery again. But at least the mystery is solved and it won't happen again."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0075.jbp
+{n}Irabeth nods grimly.{/n} "We know. I've seen what that demon ritual did to those poor fellows. It's... monstrous! The lives of these crusaders have been broken, and their souls overwhelmed with rage. Their appearance is horrific. At first I didn't understand why you ordered them to return to the army, instead of sending them to clerics and healers for treatment. But I think I understand now. Let them avenge their suffering. It's their right."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0076.jbp
+{n}Irabeth nods grimly.{/n} "I've been told. You protected us from surprise attacks, and saved the poor fellows who were maimed by demonic rituals. Those poor lads. What have they become... I hope the clerics will be able to heal them, or at least ease their suffering."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0077.jbp
+{n}Irabeth nods grimly.{/n} "We no longer need fear surprise attack. But news of what the demons did to their prisoners has spread through the ranks. Their fate is truly horrible. You did the wise thing in sending them to the mongrels. I hope they'll be able to find at least some semblance of normal life."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0078.jbp
+{n}Irabeth nods grimly and speaks with a note of pain in her voice.{/n} "I've already been told of your victory. And about what the demons did to their prisoners... I take it they're all dead now? Well, you did what you had to. Death is better than endless suffering."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0088.jbp
+"We shouldn't talk about it. It was a moment of weakness, but you brought me to my senses. I swear, it will never happen again."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0089.jbp
+{n}Irabeth nods curtly.{/n} "Yes. I was shamefully fainthearted. Praise Iomedae, it didn't affect the course of the battle. Still, my behavior was unworthy of a knight, even less a commander."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0090.jbp
+{n}Irabeth lowers her head.{/n} "My behavior was unworthy of a knight, even less a commander. How can I lead the soldiers when I was sitting around while the others shed their blood?"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0091.jbp
+{n}Irabeth looks away.{/n} "I was shamefully weak-hearted. The battle for Drezen is a black stain on my honor. I don't know what came over me, but... I don't deserve to be a knight, still less a commander."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0092.jbp
+"Under the circumstances, leaving my position would be tantamount to desertion. Still, as your advisor, I strongly recommend you release me from my position as head of the order, strip me of my knighthood, and send me to serve in the {g|condemned}Condemned{/g}."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0100.jbp
+{n}Irabeth nods.{/n} "Thank you for being honest with me, Commander. I will serve my duties as best I can... for as long as I have left."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0102.jbp
+"Thank you, Commander." {n}The gratitude in Irabeth's voice is sincere. A spark of enthusiasm appears in her eyes, which had grown dull over recent weeks.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0103.jbp
+"Thank you, Commander." {n}Irabeth's voice sounds hollow. She doesn't look you in the eye.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0104.jbp
+"The Eagle Watch... My pride, my creation... How could I ever think of giving up? How many cultists have we destroyed? And how many remain, right under our noses?"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0105.jbp
+"The Eagle Watch... And what did it achieve? Who did it save? Maybe it would have been better for all of us..." {n}Irabeth's voice sinks into indistinguishable mumbling.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0106.jbp
+"Yes... I swore. To the Goddess and the Queen. My faith in my abilities may be weakened, but I can't turn my back on the vows I made. I will do it because I must."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0107.jbp
+"Yes... I swore. To the Goddess and the Queen. And now I'm not just letting myself down, but both of them..." {n}Irabeth's voice sinks into indistinguishable mumbling.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0108.jbp
+{n}The half-orc salutes you sharply. For a moment you once again see the Irabeth who was ready to protect the Defender's Heart to her dying breath.{/n} "Thank you for still trusting me... More than anyone else does in this crusade. Even more than I trust myself."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0109.jbp
+{n}The half-orc salutes you, but the broken woman's gesture seems weak and forced. You barely recognize the Irabeth who protected the Defender's Heart to the end.{/n} "We will... triumph. Definitely. We'll do everything we can... Even if it's not much..."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0110.jbp
+{n}Despite your words, Irabeth obviously still feels unworthy of her commander's rank. Changing her mind will require more than platitudes. Perhaps you can bolster her by appointing her to a position where she can work more closely with rank-and-file soldiers, those whose faith in their commander remains undimmed.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0114.jbp
+"Thanks for the warning. We knew it would happen, but we didn't expect it so soon. The {g|demons}demons{/g} are highly chaotic and disorganized. Someone must be going to great lengths to gather them into a horde and smother the last pockets of resistance. Well, I'll make sure there are a few surprises in store for them."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0116.jbp
+"Great. The places where the demons have gathered need to be cleared one by one. Then they won't be able to stab us in the back when we take on the Gray Garrison. Thank you for your service!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0119.jbp
+{n}Irabeth pensively drums her fingers on her chin.{/n} "My scouts in the city still haven't reported any movements of demon hordes. The Defender's Heart is safe, at least for now. I'll send a messenger for you when the situation changes."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0121.jbp
+"To arms!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0122.jbp
+"Are you sure? You better double-check. We can't afford to lose this battle."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0126.jbp
+"We don't have much time, but that's no reason to rush into battle unprepared."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0128.jbp
+{n}Irabeth shrugs scornfully.{/n} "Woljif is a petty thief from a gang of 'thieflings' operating in Kenabres. That's what we call them in these parts. They tried to rob a vendor of magical items recently. Unfortunately, we apprehended only one of them, and the rest managed to escape."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0129.jbp
+"We have nowhere else to keep him apart from the Defender's Heart, but that's hardly a prison. Woljif knows it, too — he's been begging us for days to let him go free or have someone vouch for him. He's already asked you to put in a good word for him, hasn't he?" {n}Irabeth squints at you thoughtfully, then shrugs.{/n} "If you want to recruit Woljif and put him to good use — go ahead and take him off our guard's hands. We can ill afford to let a soldier spend their days watching over a middling thief. I hope the tiefling proves useful, should you decide to take him along."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0131.jbp
+"I shall lead the rest of my forces in a frontal assault. This will distract the enemy enough to let you use the secret passage and reach the Wardstone. Destroy it before the demons turn Iomedae's gift into a weapon of the Abyss!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0132.jbp
+"Most of the allies you've found will join my forces, but you can expect a certain amount of support from them."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0133.jbp
+"I did not see my informant's face. He slipped out of a dark alley, handed me the note and disappeared." {n}Irabeth hesitates as she tries to remember.{/n} "He had a cloak with a hood masking his face, but the horns — the long horns — didn't fit under it."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0134.jbp
+"There should be a guardian golem in Ancientries and Wonders — the shop they tried to rob. The owner gave us the construct's codeword just in case. The golem itself was destroyed, but the head seems to be intact, so you can interrogate the thing and find out what it saw. The codeword is 'Hand of {g|Irori}Irori{/g}.' The shop's owner must have escaped, but there's a chance you'll get lucky with the golem."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0136.jbp
+{n}Irabeth arches her brows in surprise.{/n} "Kenabres is threatened by a demon horde, and you have enough spare time to help out thieves?" {n}Irabeth sighs.{/n} "I don't like this, but I hope you know what you're doing. I'll tell you everything I know."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0141.jbp
+"My opinion on Prelate Hulrun aside, it is undeniable that his inquisitors are a formidable force. You will benefit from their pinpoint strikes against troublesome enemies."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0142.jbp
+"The problem with Desnans is that you never know what to expect from those daydreamers. Their honorable prior, Ramien, claims he has had a vision in which his goddess was putting demons to sleep. I'd like to hope it wasn't merely a dream."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0143.jbp
+"The Order of the Flaming Lance counts among its members both valiant knights and masters of the occult. We are about to test an experimental ritual they've developed. Should it all go according to plan, your party will have a serious advantage during the battle at the Gray Garrison."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0144.jbp
+"In these dark days, the most unlikely allies join forces to fight the common foe. All tieflings are treated with prejudice in Kenabres, let alone the smugglers and the thieves of their kind. And yet, they are on our side, and I'll make sure their contribution is not forgotten after the victory. They'll be of little use in open combat, but they'll help you spot secret doors and warn you about traps."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0151.jbp
+{n}Irabeth looks down.{/n} "This scabbard held the Solemn Hour — my family sword. My father once fought with it, and I took it when I left home to become a paladin. Alas, it was not stolen. I parted with my heirloom willingly, to help someone dear to me. Anevia needed expensive healing, and, having no other way to procure the money, I pawned my father's sword. I think he would have understood — I'm sure he would have given up everything to help the family."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0152.jbp
+"I hoped to redeem the Solemn Hour eventually, but there was never enough money, and soon the sword disappeared from the pawnshop altogether. I have no idea who took it. Seems like I'll have to part with my father's sword forever."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0158.jbp
+"You'll forgive me if I don't go into detail — it is a private matter. Suffice to say, everything is fine now. The treatment was costly, but it was worth it."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0159.jbp
+{n}A delicate blush appears on Irabeth's cheeks. She nods silently.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0160.jbp
+"Perhaps I acted rashly, but I had no other option."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0161.jbp
+"How can you even suggest that!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0163.jbp
+{n}Irabeth lovingly traces the name imprinted in silver on the scabbard's leather.{/n} "My parents were loyal servants, yet it wasn't enough to earn them a title or a coat of arms. Still, however humble our name might be, it is worth something. I don't know if I'll ever see the Solemn Hour again... but at least I have its scabbard back. Thank you."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0165.jbp
+"Praise Iomedae!" {n}Irabeth takes the sword as gently as if it were a living creature, and sheathes it in the scabbard.{/n} "I don't know what to say... I am forever indebted to you. I never thought I'd get my sword back."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0166.jbp
+"Please, allow me to reward you, and please, no objections! I could never replace this sword. I shall never part with it again, I swear."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0168.jbp
+{n}Irabeth gives you a puzzled look.{/n} "Didn't we discuss it after the battle itself? Commander, we achieved something that no one has managed to do in seventy years: we broke through the Drezen blockade and pushed back the demonic hordes. The fortress held on only through the sheer bravery of its defenders and the determination of Warden Staunton... and the Sword of Valor, too, of course, but... The iron will of Warden Staunton astounded me when I met him. He said it was the belief in your arrival that gave him the strength to hold on and defend Drezen."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0169.jbp
+"As for me... I wish I had Warden Staunton's resilience. I failed to prove myself during the battle, I showed cowardice. You've honored me with your trust, but I still doubt myself at times."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0170.jbp
+"As for me... Then again, it doesn't matter. You've dealt with the threat and saved many a crusader from a fate much worse than death. The news of Drezen's long-awaited liberation has improved the army's morale."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0172.jbp
+"They are our greatest treasure, the shield given to us by Iomedae herself, and placed in Kenabres and other Mendevian cities and fortresses by her herald. The chain of Wardstones forms a protective barrier that stops the expansion of the Worldwound and keeps the demons from moving beyond its borders. I shudder to think what will happen if that barrier falls."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0173.jbp
+"I thank you for saving the esteemed citizens of Kenabres, even though not all of them deserved to be saved, may Iomedae forgive my words." {n}Irabeth casts a meaningful look at Count Arendae, sitting at a nearby table.{/n} "I don't really mean that, of course. I just never fail to be astounded by the way that good people seem to perish, while the... not-so-good prove to be incredibly, amazingly enduring."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0177.jbp
+"Yes, that's not like him at all. Joining the crusades is a tradition among Mendevian nobles, but Daeran Arendae was never too keen on fighting demons."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0178.jbp
+"Oh no, nothing like that. I think he dislikes all paladins equally. But the real question is, who does he like? Only his hangers-on, I'd wager."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0179.jbp
+"The Count has a certain reputation in Mendev. He's not a pleasant individual by any means, but he's not known for any particular villainy either. The Count enjoys a life of leisure surrounded by a gaggle of sycophants, who are always eager to badmouth the Queen at his command. He likes settling scores, too."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0180.jbp
+"There was a hero of the first crusades — Sir Lant, a kind and honest man. After the end of his glorious career as a soldier, he became a wise mentor to the younger generation. He ran afoul of the Count somehow — perhaps by lecturing him about his idle lifestyle and a lack of purpose. When Sir Lant died, the Count managed to buy a portion of his estate and ordered the knight's helmet to be reforged into a chamber pot."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0182.jbp
+"And, of course, he didn't keep his little joke private. The Queen was particularly affronted by it, because Sir Lant used to be her most loyal comrade-in-arms. I was there receiving an assignment from Her Majesty and witnessed the exact moment she found out about the helmet's fate. It's a small thing... but I could see the Queen's anguish at the travesty that had been made of her friend's legacy."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0183.jbp
+"That's what our Count is like as a person. And as for his talent for survival... Do you know the story of Heaven's Edge? He was the only member of his family to escape with his life when the demons unleashed a magical plague at the Arendae estate."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0187.jbp
+"Who knows? It could be some family matter. The Count is Her Majesty's cousin twice removed or something like that. But I think he simply enjoys infuriating people. Crusaders and Iomedae's servants especially."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0188.jbp
+"I don't know all the details. It happened a while ago, back when I was a mercenary and had nothing to do with Kenabres. I only know that there was a grand feast in honor of Daeran's birthday, and all his relatives were invited along with a few other distinguished guests. Everyone died from a mysterious disease someone had unleashed on the estate, including the servants, the guards, and a number of clerics and paladins. But the young count survived — because of his healing ability, I suppose. Daeran does possess an unusually brilliant talent, even if the application of his skills... leaves much to be desired." {n}Irabeth scowls.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0189.jbp
+"My pleasure. I'm sorry you had to endure my grumbling. Watching these things happen to my city has put me in a foul mood."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0191.jbp
+"I don't keep secrets from you, Commander. I used to think reclaiming Drezen was a hopeless dream, but now, thanks to you, even winning this war seems possible. Still, the victory is our common cause, the dream of the entire crusade forces. My personal dream is more modest: putting an end to Baphomet's templars once and for all, to prevent them from invading our ranks and poisoning the minds of our warriors with their deceit."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0192.jbp
+"Rearmament is another thing we'd do well to pursue. Our armor falls into disrepair at an alarming rate, and our warriors' blades are barely sharp enough to pierce the skin of the weakest demons. I understand that Mendev's coffers aren't bottomless, but if we can't order ready-made weapons, I'd be glad to get half a ton of cold iron. Wait, are we still dreaming? A ton of adamantine, then. Or two — that would be enough for..." {n}The paladin is busy doing the calculations.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0193.jbp
+{n}You can barely discern a whisper:{/n} "The templars... the weapons... adamantine... So many wishes at once!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0195.jbp
+"Ramien had another vision, or conversed with the gods, or something. He seemed devastated, and he whispered something about dead adepts while cursing your name. Then he said that he would never help a murderer and he left, taking all his priests with him. Those Desnans, you never know what's going on in their heads."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0197.jbp
+{n}Irabeth replies in a steady, almost monotone voice,{/n} "What happened was the same thing that happens every time I'm around. The Queen took me with her to guard her. I failed, and now she's dead. What else is there to say? Just this: don't rely on me, Commander."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0198.jbp
+"We expected the demons to attack the Defender's Heart. We sharpened our swords and prepared for the worst, but nothing happened. It seems likely that the demons simply couldn't organize the attack in time. If we had been even slightly slower off the mark, I'm sure they would have. And that's all down to you! So, allow me to share some of the surplus resources that we managed to save."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0199.jbp
+"And now — to battle!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0201.jbp
+"That's one less problem to contend with. Now we can take the extra lookouts off dragon duty and reassign them to more useful tasks. Excellent work, Commander!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0203.jbp
+"Yes, thank you. It's good to have her back — we need every fighter we can get." {n}Irabeth frowns.{/n} "I suppose it's asking too much to want fighters that are sober as well."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0206.jbp
+"It's probably hard for you as a human to imagine what it's like, when the very color of your skin and the fangs in your mouth make people in the street turn on their heel to avoid you... I mean no offense, of course."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0207.jbp
+"You hardly need me to tell you this — you know perfectly well what it's like for us."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0208.jbp
+"Things are bound to be tough for your kind, too — you belong to two different races but neither is willing to embrace you as one of their own. But at least relations between humans and elves aren't poisoned by centuries of mutual hatred."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0209.jbp
+"I'm sure you can imagine what it's like — in most places tieflings are despised even more than half-orcs."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0210.jbp
+"Things are bound to be tough for you, too. Most common folk fear death and hate the undead even more than they do orcs. I'm sure you're no stranger to sideways looks and whispers behind your back."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0211.jbp
+"You must stick out like a sore thumb no matter where you go, right? I know many people envy aasimars, but most of the ones I've known found their celestial heritage a burden. I find it hard to imagine what unasked-for adoration must be like — but I'm sure it doesn't make life any easier or any more pleasant."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0212.jbp
+"Elves are often looked on with suspicion in human countries, and even more so in dwarven countries. But half-orcs don't have any nation where they can feel truly accepted."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0213.jbp
+"Dwarves are often looked on with suspicion in human countries, and even more so in elven countries — if they're allowed in, that is. But half-orcs don't have any nation where they can feel truly accepted."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0214.jbp
+"I know it's tough being a halfling as well. You should be able fit in almost anywhere, but instead you're overlooked and belittled. And that's not to mention the countries where your brethren are enslaved!"
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0215.jbp
+"There's no country in the world where gnomes are fully accepted — but that doesn't seem to bother most of you one little bit. Perhaps that's because your true homeland isn't in this world at all? I find it hard to imagine what life's like for your kind."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0216.jbp
+"I cannot even imagine what your life is like in that respect. I admit, you're the first of your kind I've ever seen — and I'm sure that's true for most people in this city. It's unlikely you'll be met with hatred, but with ignorance? Almost certainly."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0217.jbp
+"In your human form, there's nothing about you that stands out. But in your fox form... Do you often have to hide your true nature? I won't lie: I can't even imagine what your life must be like."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_0219.jbp
+"They should. But Baphomet's minions are masters of deception — they manipulate Zon-Kuthon's butchers as eagerly as Iomedae's knights. The cultists from that unholy temple didn't know the true face of their associates in Kenabres. We ourselves learned the truth much later, after getting to the bottom of their nest."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_13.jbp
+"Not very much. He was a gnome by the name of Sendri — not a crusader, but some kind of freelance explorer. He was able of casting minor arcane spells. One of his eyes was bandaged, no doubt an injury he sustained during his escape. Those who had the chance to talk to him describe him as a good-hearted but scatterbrained kind of fellow. And that's all we know. What the cultist wanted from him is a mystery."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_18.jbp
+"I still hope to discover something that will help shed some light on this mysterious event."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_2.jbp
+"And take this as well." {n}Irabeth holds out a macabre-looking rod made of bone.{/n} "While we were preparing for battle, something strange happened in the tavern's cellar — it seems some cultists tried to sneak in via teleportation. We're still trying to figure out what exactly happened, but we found this on the floor — it's clearly of demonic origin. I wanted to destroy it, but Anevia thought you would be able to use the magic in it for noble ends."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_20.jbp
+"Right. Demons and their minions are always scheming against one another. It seems this masked cultist simply took advantage of the chaos to get to his victim and drag him off. To what end, we still don't know."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_3.jbp
+{n}Irabeth frowns.{/n} "When we began the march on Drezen, we chose speed over numbers. If I order more volunteers to be recruited, they simply won't arrive in time. We could pay mages to deliver the troops to the camp, except I doubt that our army's coffers could afford it. If you can spare seven and a half thousand gold coins, I will see to our reinforcements."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_4.jbp
+"Something strange: a portal opened in the middle of the cellar, and a cultist in a terrifying mask emerged from it. Luckily, there were some hardened fighters in the cellar who stopped the cultist from slaughtering everyone here. One of Anevia's scouts knocked a rod from the cultist's hand — the rod I gave to you. In revenge, the demon worshiper cast a spell and vanished, along with the same brave warriors who dared to fight against him."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_5.jbp
+"They were written off as missing in action, but then the portal reopened right in front of our people, and the same brave fighters tumbled back out of it — injured, frostbitten, but alive... All except one. One of them did not return."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_6.jbp
+"There has been no sign of them since then — not of those brave fighters, or the demon worshiper. Witnesses said that one of the warriors shouted that if the cultist wanted him, he should take him and leave the others alone. We don't know what he was referring to."
+
+World/Dialogs/NPC_Common/Irabeth/Cue_7.jbp
+{n}Irabeth opens her mouth to speak, but suddenly a crash is heard from somewhere up above.{/n}
+
+World/Dialogs/NPC_Common/Irabeth/EstrodIsClean.jbp
+"The Tower of Estrod has been cleared of demons."
+
+World/Dialogs/NPC_Common/Irabeth/MoltenScarQuestComplitingIrabeth.jbp
+"I found out how the demons snuck up on us. It won't happen again."
+
+World/Dialogs/NPC_Common/Irabeth/TheyAreComing.jbp
+"The demons plan on attacking the Defender's Heart very soon."
+
+World/Dialogs/NPC_Common/Irabeth/WintersunQuestComplitingIrabeth.jbp
+"We learned the fate of the missing patrol. Our people were killed by clan members from old Sarkoris, they had been bewitched by the demon Jerribeth."

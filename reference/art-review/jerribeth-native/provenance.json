@@ -1,0 +1,19 @@
+{
+  "source_bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "source_sha256": "96675554f6e7865d69530950486cdf42c1f28cc8c37df473f855f123aedc045d",
+  "asset_id": "d890d7d79ef9f9f4d80dbf968ec0c220",
+  "unit_portrait": "6f8d1a597cc64337a2fbb83b0d986768",
+  "texture_path_id": -465410453185449822,
+  "texture_name": "Oolioddroo",
+  "width": 188,
+  "height": 244,
+  "image_sha256": "e3f1faa73d2915d4b811f8c5a1d279951468c054c800da6933c28cc9e0ee9555",
+  "blueprint_paths": [
+    "Units/Portraits/InitiativeBlueprintPortraits/Monsters/Oolioddroo.jbp",
+    "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Jerribeth.jbp",
+    "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Jerribeth_Wintersun.jbp",
+    "Units/NPC/Unique/Act_3_DemonsHerecy/IvorySanctum/Jerribeth_Sanctum.jbp"
+  ],
+  "extractor": "UnityPy 1.25.3 Texture2D.image.save; no resizing, retouching or compositing",
+  "status": "Native unit-linked research reference, not newly generated artwork or shipping approval"
+}

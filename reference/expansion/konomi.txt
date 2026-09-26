@@ -1,0 +1,1943 @@
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0003.jbp
+GUID: 2934f1e591c46f049bb58ee2d660732c
+{g|Diplomacy2_1}[Choice effects]{/g} "Sosiel, invite the High Priest of Nerosyan to the religious festival."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0004.jbp
+GUID: 339feccae4710bc4b9b7c3b34f3400ca
+{g|Diplomacy2_2}[Choice effects]{/g} "Daeran, organize a parade in my honor."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0005.jbp
+GUID: abda20c726bfc754e9268bcb20041fed
+{g|Diplomacy2_3}[Choice effects]{/g} "Lann, spend the funds we have to help those in need. It's more important than any parades."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0006.jbp
+GUID: 9aa91f82b0b091f42946393459b279f7
+{g|Diplomacy2_4}[Choice effects]{/g} "Woljif, see to it that the members of the Royal Council receive our gifts."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0007.jbp
+GUID: 5fe7c68417cfc7748a971d39830bc714
+{g|Diplomacy2_5}[Choice effects]{/g} "We will hold a parade in Her Majesty's honor."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0025.jbp
+GUID: 28ce84d2726930947bfd619e374d0504
+"I have a question about the composition of this council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0028.jbp
+GUID: 72eb18501119a7c4ea13dcba93dec33f
+"Sosiel has never had to deal with diplomatic concerns before."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0029.jbp
+GUID: bfdf372a686633c4e80bb7bb50fbce9b
+"Why did you want Daeran to take part in the council?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0030.jbp
+GUID: b3293fe869cc17040908178d7d119e70
+"Why did you choose Lann to join the council?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0033.jbp
+GUID: 0abc6ae373302de4189853a3578893de
+"Everything is clear to me now."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0042.jbp
+GUID: 449ff38dbeb5a19428aebac31fed0959
+"I want to hear the opinions of my advisors."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0045.jbp
+GUID: 6fb51b07408367e4ca594d465cea1974
+"Sosiel, how does inviting the High Priest to a festival help us?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0046.jbp
+GUID: fda71187be321994f9929b25c702747f
+"Daeran, what's the point of taunting the capital by throwing a parade in my honor?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0047.jbp
+GUID: 609f4dcf245f1a34b8e30bbe1ba1e116
+"Lann, do you think ignoring the capital's worries is a good idea?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0048.jbp
+GUID: ae9a5aada470f1941b62db9d31f43d8f
+"Woljif, how will bribes solve anything here?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0049.jbp
+GUID: 3cdaab4c39bf0c947aacc602eda2db70
+"Lady Konomi, what good will a parade in Her Majesty's honor do?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0050.jbp
+GUID: e58d914ee6aedd045a3177a6809cb7dd
+"Everything is clear."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0089.jbp
+GUID: 586c9c1a90bab28419f2ba509ff033fe
+"What's on the council's agenda today?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0090.jbp
+GUID: 828d2e71c5428e04bac93878c9abdf8c
+"What did I do to incur Nerosyan's discontent?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0099.jbp
+GUID: 24eb6255921e1cf4b8be41d7aa5fcb2c
+"Don't tell me what to do. We are inviting the High Priest. That is all."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0100.jbp
+GUID: 2febdc429602fc84ab70e9b8308cf386
+"A persuasive speech. Very well, I've changed my mind. We'll hold a parade in the Queen's honor."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0103.jbp
+GUID: db203945fc54ba143a3e44c96148c920
+"There will be a parade in my honor whether you like it or not."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0104.jbp
+GUID: 2aa3b4963dd220e478828a89c45d8efd
+"The needs of my soldiers are more important than the whims of your bureaucrats from the capital."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0105.jbp
+GUID: 72fab4fc82c064b429774f78f15c391b
+"Woljif's approach seems more reliable than your suggestion."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0106.jbp
+GUID: 7cb0cefab9499fa44a681e3018653532
+"You think you have the right to talk back to me?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Answer_0109.jbp
+GUID: df01a44bfc6f48e45810e39cf0f91a33
+"You've invited my companions to the Diplomatic Council, and now you refuse to listen to their opinions?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0001.jbp
+GUID: ca146b76ac9671e4a9dc2bba5056c297
+"I'll see to it that the High Priest receives a proper welcome. And let him know that the strength of our faith is just as absolute as our loyalty to Mendev."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0008.jbp
+GUID: 9ee914535aa169240b3a840465a43d55
+{n}A sharp-looking kitsune gives you a quick, businesslike bow.{/n} "Commander, the matters before us are urgent, so let's not stand on ceremony. I am Lady Konomi, the official attaché of {g|Nerosyan}Nerosyan{/g}. Here are my credentials." {n}She presents a scroll adorned with Galfrey's seal.{/n} "Her Majesty has instructed me to lead your headquarters' Diplomatic Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0011.jbp
+GUID: d82163e634609264d99663967e79372d
+"Honestly, I was surprised when Lady Konomi asked me to join this council. But I will do my best to fill the shoes of a trained diplomat."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0012.jbp
+GUID: 502d3a43160eb8344aee3e8d0ab3393c
+"I, like many nobles, have been trained in diplomacy, and, in fact, I hold the title of royal emissary — it is passed down the Arendae line. I must say that prior to this day, I employed my diplomatic skills solely to undermine Mendev's international reputation. It is time to break that habit! I imagine preventing international scandals will be just as interesting as causing them. Who knows, I might even enjoy it."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0013.jbp
+GUID: 711ebbcb91c40524cb88bb6bd1ed85f2
+"Um... Yeah, strange, I got invited to the council too. I'm sure foreign ambassadors will be thrilled to see my face and my manners. Lady Konomi, you haven't mistaken me for some other crusader Lann, have you?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0014.jbp
+GUID: 203fdddd707385e4681f187b0cbadeb6
+{n}Woljif is positively swelling with pride.{/n} "Now this is the place to apply my talents. You know me, chief, I have a way with words. If a fella once managed to smooth-talk the Golden Hands goons, he can talk anybody into anythin'."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0019.jbp
+GUID: 681f5db51cc90924b8cc2dd23cda1b78
+"If we need to demonstrate that we're keeping Nerosyan in mind, why don't we invite the capital's High Priest to Drezen for a religious festival? It'll be appropriate, and the church's support will shield us from the accusations of schemers."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0020.jbp
+GUID: 0340e157c73e95544aa614a7eacf46cb
+"Pander to the naysayers? I think not! I propose we hold a parade in your honor, {name}. This is your victory, and if cousin Galfrey wants to show off in front of the soldiers, she's welcome to capture something of her own."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0021.jbp
+GUID: 640e3cba078faa6489f85e9b60757191
+{n}Lann's eyes flash with anger.{/n} "Are they out of their mind? We've got a whole Drezen full of soldiers who need medicine, food, and weapons. Until everyone has been taken care of, we can't waste a single coin on pointless celebrations."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0022.jbp
+GUID: b92e9fc6521db7f4fb743427e0001438
+"We gotta show we're loyal? No sweat. We grease some palms in the Royal Council, and they'll sing songs about how we're all devoted and well-behaved."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0026.jbp
+GUID: 45dd204253738d144bba6bb95f984494
+"Do you find someone's presence surprising?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0034.jbp
+GUID: 62dded31dee4f4942af70a0de8f1f94b
+"I'm flattered by the respect that the worshipers of my goddess receive in Lady Konomi's homeland." {n}Sosiel bows his head courteously.{/n} "I won't let you down, {name}, and I'll make every effort to prevent our friends from becoming our enemies."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0035.jbp
+GUID: 4d6ae69b65befb546ab385951732f869
+{n}Daeran sneers back at her.{/n} "Oh, believe me, Lady Konomi, I will exert all my effort and influence to make this council's job... exciting."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0036.jbp
+GUID: 9bd702582b09e6e408957b7bab0be5c8
+{n}Lann scoffs and glowers at Lady Konomi.{/n} "I suspected that the word 'diplomat' was synonymous with 'fraud,' but I thought you would be deceiving me, not deceiving others with my help. No, that's not an option. I can represent the mongrels in negotiations, but I'm not going to lie through my teeth."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0039.jbp
+GUID: ec79e64ebb7c3694ea7454fd1278e994
+"In that case, why don't we discuss our first pressing diplomatic issue?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0043.jbp
+GUID: 906a52045261efa4098b6d9f4568daee
+{n}Lady Konomi gives you a look of surprise.{/n} "Whatever for? Aren't the wishes of the capital obvious enough? Although, very well, let us hear their counsel."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0051.jbp
+GUID: 5b4d161e59def8e499438b675aefce84
+"Without a doubt, we should remain loyal to the Queen and respect the hierarchy. But that doesn't mean we have to kowtow to the Royal Council whenever they ask. I think we should neither do their bidding nor seek to quarrel with them. Rather, we should try to take the middle path."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0052.jbp
+GUID: 8559e618bbccd9b438de873ad93abd13
+"There is a fine line between 'taunting' and 'setting boundaries,' and between 'showing respect' and 'putting on a collar.' Mind you, I'm not suggesting anything treasonous or disrespectful. A parade in honor of the true {mf|hero|heroine} of Drezen and Kenabres — what could be more natural than that? Besides, a healthy amount of disobedience guarantees that people won't pester you with lectures and nonsense as often. A dozen tutors responsible for my upbringing can attest to that!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0053.jbp
+GUID: 092198e7fae78db49aebda3a77eda498
+"And what are they going to do about it? We're the ones protecting them from the demons, not the other way around. Having loyalties from the capital is great, but there are more important things — like having the loyalty of our own soldiers. When the demons come, what will we do? Shake our fists and say we've got powerful friends in {g|Nerosyan}Nerosyan{/g}?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0054.jbp
+GUID: f28c2ae6bbd1a244bbfcdf824be00023
+"I reckon the only thing all those fat-ass bureaucrats care about is us hoggin' all the glory and loot and leavin' 'em with bupkis. If we share the wealth, they'll be yellin' their brains out about how great we are 'cause they'll be linin' their pockets with each of our victories."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0055.jbp
+GUID: fd18ebb1a1a834d4695f76b1b7992ace
+"It will be symbolic and affordable. Show them how much you respect and value Her Majesty. Make a curtsy to those who pay for your arrows, swords, and bread. The Royal Council has power. You wouldn't want to turn those patrons into adversaries and test whose influence is greater, yours or theirs. Please them, and they will stop worrying about your loyalty. And you will be able to focus on your war."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0056.jbp
+GUID: 6121fd842f00e80418a571348db0cf97
+"Then I will arrange for the organization of festivities in Queen Galfrey's name?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0067.jbp
+GUID: 38fcca2e236cdd74b841e7ed284362a8
+"The High Priest, not a schemer? I mean, I haven't met him or anything, but you won't find bigger thieves and swindlers in this world than the church! We'll end up donatin' half our spoils before we know it! It's better to hobnob with the most crooked clerks than with holier-than-thous."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0068.jbp
+GUID: 8afdf994205047d45bdb00618ca8e0d7
+"Provoking the capital would be unwise. We're trying to avoid unpleasant consequences, not expedite them. I'm sure that was merely an extravagant jest on the Count's part."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0069.jbp
+GUID: cf32cd8bc6d4252489df80df82f77452
+"Why, that's true, who needs to stay friends with those who supply you with provisions, recruits, and weapons. And there's certainly no reason to fear that base jealousy and envy at the sight of your glory might get the better of their common sense. Because that has never happened before."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0070.jbp
+GUID: 6fc397c5d05e211408e6fe5b6a4a0528
+"So now we're bribing people so they don't bother us while we're fighting their war? What's next? Paying taxes for every demon we kill?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0071.jbp
+GUID: e38655aaa419bee4bb137bd1c9850dbc
+"So let me get this straight, hiding behind our backs and buying their safety from the demon invasion with bread and other people's lives is a new form of charity? Are you sure we shouldn't go to them, drop to our knees, and thank them for allowing us to die in this war?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0072.jbp
+GUID: 5308cfd8d67a4cc43b47e1b174c3af79
+"Oh, this is going to be one glorious parade, I'll make sure of it. An appropriate balance between spectacle and military pragmatism. The best musicians playing hymns, aesthetically pleasing warriors... After this, recruits from all over {g|Avistan}Avistan{/g} will come running to fight under your banner."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0073.jbp
+GUID: 20b69931d77457745952e1754d6118ba
+"That's right. And everyone who's unhappy with our actions can go ahead and leave their mansions in Nerosyan and come here to tell us so in person. And if something happens to them along the way, we'll have just enough money to stitch their arms and legs back on."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0074.jbp
+GUID: 98b8b49df11ffa145910f907d06924ac
+"The clinking of coin is the sound of a deep and mutually beneficial friendship! Let's see what our new pals can do for us."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0075.jbp
+GUID: 42597ae7dcd18bf48a685beadd5c5452
+"I'm glad that you have listened to my proposal. Making friends in the Royal Council will go a long way."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0076.jbp
+GUID: a62595cd2fd521f4dbf6e7b3c8c8bf50
+"And with that, we can bring this meeting of the Diplomatic Council to a close. It is unfortunate that things were so... tense. But I'm sure we'll soon have many more opportunities to resolve any misunderstandings between us."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0077.jbp
+GUID: 503f19ccf25460b40a193b52c14f7e67
+"What, we're gonna just start handin' out coin to soldiers? Yeah, you know what, if I were a capital bureaucrat, I would've gotten antsy and cut our supplies too. It's an obvious sign that we're buyin' our troops' loyalty before we throw a coup."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0080.jbp
+GUID: 62612a04262940e489f7e6bab2c1e4e9
+"That won't be a problem. In my homeland, Tian Xia, inviting clerics and paladins of Shelyn, the Lady of Chrysanthemums, to take part in diplomatic missions is a common practice. They may not be politicians, but they are perceptive, advocate peace, and favor balanced solutions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0081.jbp
+GUID: 377fb8fe97d0a804fb40d9cc1ff6b75a
+"Why, because of Count Arendae's influence, naturally. He's a Mendevian aristocrat, the nobility will be inclined to listen to his opinion. And by ensuring the support of the nobles, we'll find ourselves powerful allies."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0082.jbp
+GUID: 8363e92442f166a41886429e7c32c788
+"We diplomats call this little trick 'mysterious Garundi prince.' During negotiations, it's always useful to have on your side a representative of some obscure but potentially populous and powerful nation. Without knowing what they're up against and how many mongrels there are, our diplomatic partners will have to contend with this dark horse."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0084.jbp
+GUID: 1fdd9310e70ede046b2c80fed809f55f
+"I hate to say it, Commander, but not everyone in {g|Nerosyan}Nerosyan{/g} is pleased with your progress. Some believe that, to use their words, you are out of control and fancy yourself an independent leader. It wouldn't surprise me if you encountered supply disruptions in the near future. I would suggest quelling their anger. Show the capital you haven't forgotten about the chain of command. For example, you could hold a parade in honor of Her Majesty."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0085.jbp
+GUID: f9a52fd5d8d67ec488d4835f41fe279b
+"The High Priest of Nerosyan is a powerful figure, yet he's not a schemer or a politician. By inviting him to the festival, we'll both show that we're not cutting ties with Nerosyan and let them know that we have influential friends and are not about to buckle under to the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0091.jbp
+GUID: d20da67ab530bcb48aa65fe2578f0c0a
+"You were too good. You reclaimed Kenabres, you won the battle of Drezen, you're a menace to the Worldwound... Your authority grows, and the influence of the Queen's confidants diminishes. This creates the impression that there's only enough space for you at the top. The members of the Royal Council are afraid that you will muscle them out of the political arena altogether."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0093.jbp
+GUID: 756a5c391a80e2e4c8655714786149d9
+"After all, if you're doing so well, maybe Her Majesty doesn't need them that much? Therefore they might try to discredit you — impede your war effort, reduce the scale of your victories. Make some concessions, and they'll see that you're open to negotiations."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0094.jbp
+GUID: bbc753282fcfdca4885916de9d2427dc
+"So Mr. Lann will be our 'mongrel prince.' If we're negotiating with foreign ambassadors and I make this sign..." {n}Lady Konomi crosses her fingers in an intricate gesture.{/n} "...you immediately start talking about how offensive their proposition is to the mongrel people. Do we have a deal, Mr. Lann?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0097.jbp
+GUID: 54d7d0d6ff577a242962f321a2e0e163
+"A moment, Commander. I understand that you're used to being the highest authority in all matters, but political decisions are an exception. I am a professional in this field, you are not. By ignoring my recommendations, you are not only deliberately seeking conflict with the capital, but disregarding common sense as well. I urge you to reconsider."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0102.jbp
+GUID: 1796ab9e5a08c9c45baef848985fb310
+{n}Lady Konomi's voice hardens.{/n} "I cannot challenge your decision. However, I have no choice but to inform the capital that you have disregarded my recommendations. Actions like these are precisely what gave Nerosyan cause for concern, Commander. I hope you will revise this defiant stance in future."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0107.jbp
+GUID: 9b0e7e7393012cf4d902dd01e33dc0e6
+{n}She shrugs disarmingly.{/n} "I do hope you'll forgive me this little revolt. I am merely doing my job by trying to satisfy my superiors from the capital. Who are, incidentally, your superiors as well."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0108.jbp
+GUID: 46b48d956adfa2149b46ef354e65225e
+"It's good that we've got off on the right foot, Commander. There will be plenty more issues requiring your decision soon, but I do not doubt that we will handle them just as expediently."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0110.jbp
+GUID: c4a6a8336b4ed224ba297dae3a7eb25b
+"I'm simply suggesting that you give your companions time to find their feet in the council and to grasp the principles of being a diplomat. Also, if they weren't on the council your decisions could be mistaken for the decrees of a tyrant. And that is definitely not the public image you need."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0111.jbp
+GUID: 5831e10b8a87d844789cd1961db58ba1
+"Ah, now I understand the role that I've been given, Lady Konomi. I'm supposed to stand in a pretty doublet and keep my mouth shut. I can promise you the former, but not the latter."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0003.jbp
+GUID: e12d78d86b61e214182346d97c066085
+{g|Diplomacy3_1}[Choice effects]{/g} "Sosiel is right, we will ask Lastwall for help."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0004.jbp
+GUID: 695a946ba2174574680260593e4b2834
+{g|Diplomacy3_2}[Choice effects]{/g} "Daeran, send delegates to the Swordlords."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0005.jbp
+GUID: a43cfa3d8ae3b7e4892f2caf75c78fde
+{g|Diplomacy3_3}[Choice effects]{/g} "Lann, send ambassadors to Numeria."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0006.jbp
+GUID: 0a3d9b4f37d244041bcb6089fd6aa4a4
+{g|Diplomacy3_4}[Choice effects]{/g} "Woljif, we will form an alliance with the Varisian cities."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0007.jbp
+GUID: d11c9199be131964293e921ffb541970
+{g|Diplomacy3_5}[Choice effects]{/g} "Lady Konomi, I'm willing to accept Isger's aid."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0014.jbp
+GUID: 76a519063b04d9542ad24e0a49062847
+"Let's see what the council has to say."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0023.jbp
+GUID: 119d102e895480e42af1dcfb50900fbe
+"Sosiel, why do you suggest we accept Lastwall's aid?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0024.jbp
+GUID: 7ffc80c36a4cfdd4bb6468c45fa553f0
+"Daeran, what benefit do the Swordlords offer us?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0025.jbp
+GUID: e5e76d0021bf2404ebbc61020bef4967
+"Lann, do you think Numeria will join us?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0026.jbp
+GUID: 4cf8fa5ed71e5954fa74a91c935fe1e4
+"Woljif, tell me more about the advantages of a partnership with Varisia."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0027.jbp
+GUID: 580bb15c7becab9419bb3fecc87c53ee
+"Lady Konomi, what sort of help can we expect from Isger?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0028.jbp
+GUID: 1509a5ca5852175408e01a195d35638b
+"I've made my decision."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0053.jbp
+GUID: ea8b2eaf83530194c8a7d94e46d01d8e
+"Why does Nerosyan decide whose help I should accept?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0054.jbp
+GUID: a7cba5d40e4125d46aaef14510ec1523
+"We can't call everyone for help?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0063.jbp
+GUID: eb083b7b0be407f40a212581665ed117
+"You are dangerously close to making me angry."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0064.jbp
+GUID: 82336710aef2fd04a851999ca0fb3003
+"I trust my own council more than the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Answer_0065.jbp
+GUID: 29d83aee43a538d42ba9004ed86fd9be
+{g|Diplomacy3_5}[Choice effects]{/g} "You're right, there's no room for discussion. We'll do what the capital wants us to do."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0001.jbp
+GUID: dec62960c92ee234fa60cef8a39b7c41
+"Commander, upon hearing word of your victory in the battle of Drezen, many leaders in {g|Avistan}Avistan{/g} have considered taking a more active supporting role in the Crusade. Fighting demons in the name of saving the world is a prestigious endeavor, especially when the war is going well."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0010.jbp
+GUID: 7938e24cfcc671f4e9b206c37b6a3f44
+"Lastwall is Mendev's most trusted ally. If we are to ask someone for support, it should be them — the Shining Crusade."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0011.jbp
+GUID: ef02572846b5ec1489d132b3be7a999b
+"What say we invite the {g|Swordlords}Swordlords{/g} of {g|Brevoy}Brevoy{/g} to this party? The righteous Mendevian knights just 'love' those hot-headed provincials who'll draw their weapons and challenge you to a duel at the drop of a hat. And get this — they win such duels. Nerosyan will be ecstatic to have allies like these. And I hope the demons will enjoy their company as well."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0012.jbp
+GUID: 7849ad3585118164398e3f38b4618c3f
+"Just as a note, we happen to have a neighbor who's got barely any presence in the Crusade. I'm talking about {g|Numeria}Numeria{/g}. It's believed to be 'too wild and barbaric' to have any dealings with. How about we show everyone how wild and barbaric tribes can fight, and invite them to play a bigger part in our war?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0013.jbp
+GUID: 85785f3c8f980064398d328a53a29d7f
+"Everyone who wanted to come 'cause they listened to their heart are here already. Time to call those who listen to their purse. We'll drop a line to the {g|Varisia}Varisian{/g} cities, tempt 'em with some nice spoils — and loads of savvy folks'll come runnin'."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0015.jbp
+GUID: 873f67d4fcc2e7745bea9d8ff9500b87
+"Of course, Commander. That is why we are gathered here."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0016.jbp
+GUID: fa8760a137ca40d4ea140b4a458a731b
+"It will be done. The Shining Crusade are without equal in their ability to fight evil sorcery. They will help us both on the battlefield and in the hunt for unknown traitors."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0017.jbp
+GUID: 19efa3faa445c434d896f503a2292dcc
+"Splendid. I will refresh my old contacts... and pleasant memories!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0018.jbp
+GUID: 153d41eb1015aa447b4735ae5dad42cb
+"Many regard mongrels as savages too. It's time we reminded the world that nobility is not exclusive to those who use forks and bathtubs."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0019.jbp
+GUID: c929eb3666a382341aab71755c7186d0
+"Hah! I can just imagine all the hustlers and hotheads that'll join us once they catch wind of the score they can make! A mighty fine company we're gonna have here!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0020.jbp
+GUID: e1a015db32ddac344b7b7c0320e21be3
+"Your wisdom never fails you. Nerosyan will be pleased to know you're not squandering allies whom they have taken such pains to attract. The battle sorcerers of Isger, hardened in the clashes with goblins, will serve you well."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0021.jbp
+GUID: 2bd51599dd803c5479c36452290c7d79
+"I won't detain you any longer, Commander. I'll need time to resolve the scandal your decision will cause in the capital. Once it subsides, I will assemble the Diplomatic Council once more."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0029.jbp
+GUID: 301591c2333e6f54897de3090bdaf05d
+"The Shining Crusade of Lastwall and Mendev have much in common. We protect Golarion from demons, they fight the undead and the legacy of {g|Tar-Baphon}Tar-Baphon{/g}, the Whispering Tyrant. Like us, Lastfolk are used to eternal war, they are persistent, vigilant, and know how to oppose baleful magic. Their swords will aid us on the front lines, and the watchful eye of their inquisitors will do us much good on the home front, where the spies of the Ivory Labyrinth roam."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0030.jbp
+GUID: 1c54097b008ae164ea4e53dbdb073f05
+"A whole slew of benefits. We'll see some fresh blood in this war. Poke the oh-so-formal Nerosyan with a stick. Recruit excellent fighters, proud as peacocks, just begging for a chance to prove themselves. And besides, this alliance can be easily arranged..." {n}Daeran smiles wistfully.{/n} "I used to take private fencing lessons from a certain {g|Swordlords}Swordlord{/g} of high standing. Fencing didn't work out, but her lesson — her lesson was gorgeous."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0031.jbp
+GUID: 30b40fc029515a441bcd0b1ef2b81a50
+"If we treat them as equals, they will. They may be barbarians by the standards of lands like Mendev, but nobody can call them cowards. And many of them are descendants of the {g|Sarkoris}Sarkorians{/g} who fled to their Kellid kin in {g|Numeria}Numeria{/g}. We'll remind them about the time they were wronged by the demons, and whole clans of avengers will answer the call."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0032.jbp
+GUID: 2e1773f33fb3756478e6ac6396f7cc44
+"{g|Varisia}Varisia{/g} is a real frontier, the land of the free. Adventurers of all stripes go there to seek their fortune. The sailors there aren't scared of going after sea dragons and krakens, and the thugs... they're not scared of anyone or anythin' whatsoever. Those daredevils fear no demon — and that's exactly the kind of guts we need."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0033.jbp
+GUID: 3f7ac93f8809088419a7f0977c1c6f6a
+"Isger is a nation locked in a constant territorial struggle with goblin tribes. Countless battles have tempered their army, taught them not to fear losses, and granted experience in both the military craft and the cultivation of untamed lands. Their formidable combat sorcerers would be of great use to Drezen, would you not agree?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0034.jbp
+GUID: 20a88905357c6cb4e9bcb6505ec2d956
+"It is my hope that your decision won't disappoint the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0045.jbp
+GUID: 5a05a8bd29299744d892099e44aa3d6b
+{n}Woljif grimaces in annoyance.{/n} "Yeah, we clearly don't have enough of our own righteous bores, let's bring more from Lastwall. War dogs and snobs, the lot of 'em! They'll barge in here and demand that everyone toe the line."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0046.jbp
+GUID: bc0207f4559077649af0b65daecba0a9
+"Daeran, isn't this going a little far? We can't make decisions of such importance just because you had an affair with a Brevan."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0047.jbp
+GUID: be09250e17ff7e148a6df3640ed572d4
+"There's a reason why Numeria hasn't been invited to join the Crusade. Needless to say, I personally do not share this prejudice against them, but not all sovereigns of {g|Avistan}Avistan{/g} feel the same way. Some will find it beneath them to be involved in the same crusade as... barbarians."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0048.jbp
+GUID: 8978380065c5f9e4986d52869364479e
+"Are we looking for allies or henchmen? Even I'm aware that Varisia is a realm of gangs and self-willed despotism. And I just crawled out from under a rock, you know."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0049.jbp
+GUID: 8b6daffae41fbda4db13864f9a0d9088
+"Lady Konomi, I do not doubt that only your innate modesty forbids you from mentioning the innumerable bribes received by Nerosyan diplomats for facilitating this alliance. I imagine {g|Cheliax}Cheliax{/g} was most generous. However, among the funds that make their way into our army's coffers, I could not spot a single coin of Chelaxian mintage, so... why should we help you?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0052.jbp
+GUID: 00b468248305a514c80ca60d850a7bc9
+"Lann, you are so passionate about finding new friends. Together, you will... let's see... sit by the bonfire... play some dissonant musical instruments... pick your teeth with knives... What else do savages do for fun?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0055.jbp
+GUID: 541da47fd4fa7e945ae5897a2fe727f6
+"Because you are, with all due respect, one of Her Majesty's subjects." {n}Lady Konomi's voice grows sterner, but after a moment, subsides into a more confiding tone.{/n} "And because it took great effort for Mendev's diplomatic corps to win Isger over and ensure you would receive their help. Are you confident that the 'allies' you choose yourself will be as reliable?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0056.jbp
+GUID: 9e6610c47d5d7594a8a8f6a2ded5a5c1
+"I wish we could, but we can't. The Chelaxians and their colonies can't stand the Andorens, Molthune is at war with Nirmathas, Nidal and Lastwall are at daggers drawn, and all of them envy the wealth of Absalom, protest against the godlessness of Druma, and fear the revolutionary plague of Galt."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0058.jbp
+GUID: 43b299a5a0aa1734aa6ccd562fc4b917
+"There is, however, another reason to pursue an alliance with them. Isger is a protectorate of {g|Cheliax}Cheliax{/g}, and with such a mighty patron at their back, they have no shortage of resources or troops. By establishing friendly relations with Isger, we can strengthen our ties with a powerful neighbor in the south. The value of such an alliance is indisputable."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0059.jbp
+GUID: cb856a38820fb8b4ba02194685393c11
+"The one whose help is accepted first will increase their standing in the political arena, which is why the powers are now competing for the right to conclude an alliance with Mendev before their rivals do. Nerosyan has already chosen which of them is to be favored — Isger. We've been building an alliance with that nation for a long time, and now the capital is expecting you to address the Steward of Isger with an official offer to support you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0060.jbp
+GUID: 21ad977245c198b44bddae328a03f620
+"They can tolerate each other in small doses, but an official letter from the Commander summoning one of the nations to assist the Crusade will lead to, shall we say, an eruption of toxic volcanoes across half of the courts of {g|Avistan}Avistan{/g}. So I'm afraid you'll have to choose which of your allies is most desirable to you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0061.jbp
+GUID: f363c2703c8c3934f84da229cf4d9710
+{n}Lady Konomi's voice turns silken and somewhat condescending.{/n} "Commander, we both realize that Mendev's political interests lie beyond the competence of this council. The decision has already been made — in the capital. Nerosyan has shown courtesy and concern for your authority by allowing you to implement the decision yourself."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0066.jbp
+GUID: 4588ef15ddaf96f4e88e56201a9ab51a
+{n}Lady Konomi looks at you fearlessly.{/n} "And you are dangerously close to ruining the carefully arranged political scheme that will allow Mendev to strengthen its relationship with one of the most influential states in {g|Avistan}Avistan{/g}. I believe your tactics are far riskier than mine."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0067.jbp
+GUID: c41fdd098cb4bfa4fb245c9de8a90527
+"Indeed, what could Her Majesty's most loyal servants possibly know about diplomacy? Let us listen to the council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0069.jbp
+GUID: 0ee5fe1ee9201134dbb2896a31b430bf
+"I won't detain you any longer, Commander. When matters of foreign or domestic politics once again require your attention, I will convene the Diplomatic Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_3/Cue_0070.jbp
+GUID: ff6e777665beb5a4fa95743c5b691713
+"We dance around naked, obviously. Sorry, I can't bring you along — they'll make fun of me for having such a scrawny friend!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0003.jbp
+GUID: 4ec0c0a56631a904b80dba02874c8290
+{g|Diplomacy4_1}[Choice effects]{/g} "Sosiel, inform the Queen that we remain loyal to her, but we're being dragged into an intrigue."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0004.jbp
+GUID: 11ac0be65f72fa64f9f5f3bd309d6d0b
+{g|Diplomacy4_2}[Choice effects]{/g} "Daeran, we will support Mendev's nobility."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0005.jbp
+GUID: dfa277755e8760a4a8ded1ea88aab9f3
+{g|Diplomacy4_3}[Choice effects]{/g} "Lann, have the address to the people prepared. Let them know that we take no part in politicians' games."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0006.jbp
+GUID: ad998418200839b40a739271da1b5dd6
+{g|Diplomacy4_4}[Choice effects]{/g} "Woljif, demand the plotters in the capital give us good soldiers for not interfering."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0007.jbp
+GUID: d83d59461e0a39645ae4f94ed69bf275
+{g|Diplomacy4_5}[Choice effects]{/g} "Lady Konomi, we will support the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0014.jbp
+GUID: 0df4eaec786da3043ae7e43ed1e8684b
+"Let's see what the council has to say."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0025.jbp
+GUID: 32585ddc56131c84ea751080426ada32
+"Sosiel, what will we gain from a show of loyalty to Galfrey?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0026.jbp
+GUID: 0697fb8731a65a94fa28088d62d1deca
+"Daeran, what reason do we have to support the rowdy nobles?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0027.jbp
+GUID: a6680e32a788ba3418e8351631f868a0
+"Lann, what's the point of addressing the people?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0028.jbp
+GUID: e5e0050a48424cf43b3707df1cb8f8fc
+"Woljif, please elaborate on your strategy of non-interference."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0029.jbp
+GUID: 9eefb4c3f5b5dd04c9bc3f46c87318ce
+"Lady Konomi, how will the Royal Council repay us for our support?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0035.jbp
+GUID: f0ea448a30a3cc547b83e013116b7d39
+"Now everything is clear."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0052.jbp
+GUID: a767cb425cd3eee43a1eb8fb7daca897
+"Why am I being pulled into Mendev's intrigues?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Answer_0054.jbp
+GUID: 141afc5e7f3f9c04a800ec456b5b2734
+{g|TrustOfSoldiers}[Choice effects]{/g} "I won't interfere in their feuds."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0001.jbp
+GUID: 9d37426fa991f034b842eb222b8ea330
+"Commander, it is time for you to play a more prominent role in Mendev's politics. Fortunately, the ideal opportunity has just presented itself. A conflict is brewing in the capital — a clique of aristocrats displeased with the Royal Council is scheming against Her Majesty's loyal servants. It's the usual power struggle; something of this sort occurs every couple of years in any civilized society."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0010.jbp
+GUID: f60f5e3899467b147a83c42d9188e322
+"I suggest we publicly address Her Majesty and claim that we're being drawn into an intrigue. Let the Queen know that we're loyal only to her, not to any of her servants or subjects."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0011.jbp
+GUID: 5e36a292028848f4eb0825fc2c00fd08
+"Sounds like we're not the only ones bored of the Royal Council. Let us support the disgruntled nobles, and cousin Galfrey's advisors will have too much on their plate to worry about us."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0012.jbp
+GUID: db43b9ea4f9bd7b4c812b056ff067923
+"I say we don't get involved in someone else's squabble. And just to make it clear, we'll write a public statement to the people of Mendev that will have the Commander plainly say, 'Your bickering is not my problem. Leave me alone.'"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0013.jbp
+GUID: 7fa3d75e7ff077d408f486b830b7991d
+"Both the council and the aristocrats want to stop us supporting their opponent, right? Well, let's just get a payoff from both for not messing with their business. That way, we come out with a little somethin' somethin', and we don't ruffle anyone's feathers."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0015.jbp
+GUID: 994db63a6972eee41a0160ad9d57b744
+"I do hope that everyone in this room is aware of the potential benefits of a good relationship with the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0017.jbp
+GUID: aeccc49fb4f2a6a4e9628557595a09a3
+"I hope our actions will remind the rest that we must all remain loyal to the crown and worry about the kingdom, not about personal profit."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0018.jbp
+GUID: da94c1fe38bdc144db727d4f109c09da
+"Isn't this wonderful? The Royal Council will get free entertainment, and we will get powerful new friends. I'm sure that the troops they'll send us will be equipped better than the recruits we've received so far."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0019.jbp
+GUID: 667041990e7a6944c92a301471b8a95c
+"Nice. If the high-and-mighty want to settle their scores with our help, they can do it right here. The Royal Council on the right flank, the nobles on the left. Whoever kills the most demons wins."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0020.jbp
+GUID: 56627c2e297938148bc5d51a7b8b16c7
+"And I will see to it that the Royal Council doesn't inadvertently forget to express their gratitude, Commander. A pleasure working with you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0021.jbp
+GUID: 1fcfca4d89f554f489ab7b9caede4f8e
+"Gettin' paid for doin' nothin' is just the best! That's how you know you're a big fish — when others give ya a cut for not getting up from your chair!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0024.jbp
+GUID: 6f4abfd04e4c85043ad023ec9a5eb997
+"This meeting is adjourned, but I'm certain that the Crusade will soon require another decision from the Diplomatic Council. And before that happens, Commander, I ask that you consider whether or not it's worth losing the Royal Council as an ally."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0030.jbp
+GUID: 93e00e13b20533341bda2034ea9279a3
+"It will remind everyone of the proper behavior of true servants of the crown. Queen Galfrey is our sovereign, leader of the Crusade, and protector of Mendev. In the hour when all her subjects have abandoned their commitments and descended into petty squabbles, we should refresh their memory on the meaning of loyalty and duty. And the Queen, I am sure, will appreciate our endeavors."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0031.jbp
+GUID: 9179f2634c2f7cd4dbd081cf6d9bbff1
+"Like you have any love for the Royal Council. If we support the aristocracy, it will cause a power struggle between them and the council, and everyone will leave us be. Besides, the nobility has access to forces that are very much comparable to those of Galfrey's advisors, and we could use those forces."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0032.jbp
+GUID: 2cfc41a51d037ac4692a3f0989e6f33d
+"Like a true caveman, I believe in naive fairy tales. For example, I believe that the nobility and the members of the Royal Council still have a shred of conscience left. If people look at them and say, 'Stop the infighting,' who knows, it might work on someone? And if not — well, at least we can count on the support of the common folk."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0033.jbp
+GUID: d0dbfae568882644abba1dde99dbbd3f
+"So how these things work on the street, right? Smaller gangs split up the territory, shake down the shopkeepers, and give a cut to the top dog — so that they sit tight without musclin' in on the smaller gangs' business. 'Cause if the top dog is unhappy with the cut and hits the street, it's a turf war and everyone loses a whole lot more."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0034.jbp
+GUID: 4652e02184bd4494e8680a466714bbd5
+"Spoken like a true politician, Commander. Very well, let us talk price." {n}Lady Konomi looks at you with a smug, somewhat predatory smile.{/n} "I can guarantee you that, in return for your loyalty, the Royal Council will ensure the stability of equipment deliveries in the future. Quite convenient, don't you think — having no one twisting your arm with threats of supply shortages?" {n}She glances at you with an obvious hint.{/n}
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0036.jbp
+GUID: 064091a9e0a1e1b4abf761ad6c05e7b4
+"In that case, I trust that you will make a wise decision that will delight the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0042.jbp
+GUID: 01c7d1db6ca53ad4f8f2d13757a4b709
+"The title of 'Her Majesty's good boy' is almost yours, Sosiel. Keep this up and you'll earn yourself a tasty treat."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0043.jbp
+GUID: 7c9ede9a18a4138419d3c20aab6fa1b5
+"I would not recommend it. Count Arendae is simply entertaining himself by turning the Royal Council against you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0044.jbp
+GUID: 8b6cb91e65c4d604cb5a016f7e311121
+"Hah! That part about conscience was a knee-slapper! And the whole common folk support thing was pretty out there, too. We've got nobles and the crown feedin' us resources, and it's still not enough — how are we gonna wage war on chump change from bakers and grocers!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0045.jbp
+GUID: 0e964049a95648f4d99a5a6a97b2fb3e
+"Except we're not a gang. And the Commander was given power to wage a holy war, not to rob shopkeepers and terrorize townsfolk."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0046.jbp
+GUID: a77c2caec0f481c4ba3a0a32723206ed
+"Today, we're pacifying recalcitrant nobles, and then what? Stamping out peasant revolts? I must have dozed off when the priest of Iomedae was mentioning the commandment, 'Fight demons, but never forget about the whims of the powerful.'"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0053.jbp
+GUID: 0e18eb7bea34ba642957cec27eba80dc
+"By gaining the support of the High Priest of Nerosyan, you, Commander, have demonstrated keen political insight. This step has made it clear to many in the capital that you are worth having as an ally."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0055.jbp
+GUID: a3718819afdf0c54c8af64a39561a174
+{n}Lady Konomi studies your face for a while, then says calmly,{/n} "What a shame. Opportunity comes knocking, and you throw it in the garbage."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0057.jbp
+GUID: 847c64b278b174349bd2b835f5dd0d7b
+"By holding a parade in your honor, you, Commander, have asserted yourself as an independent political player. And this assertion has been heard loud and clear."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0058.jbp
+GUID: 8d92ffe25adfa32469f8b73951f842b3
+"By openly ignoring Nerosyan's discontent and showing concern for your soldiers, you have accomplished two things. First, you have declared your independence from the capital. And second, you have won the respect of the general populace. This has improved your standing in the eyes of many powerful players."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0059.jbp
+GUID: a4c45d4e88f899144a2ad2cd7865452d
+"Your bribes have convinced the civil servants in the capital that you're a reasonable business partner. I admit, it was a smart play — they're no longer afraid of you, they see you as their ally. And you can benefit from it."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0060.jbp
+GUID: f3c62f9be1093bd418623dd96d4c3b74
+"By holding a parade in Her Majesty's honor, you have shown the Royal Council that you listen to their suggestions. As I promised, the nobility now regards you as a potential ally instead of a potential problem. And you are free to use your influence for the good of the Crusade."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0063.jbp
+GUID: b94b5f82e2ac1c240b456700e5658968
+"You are a part of those intrigues whether you want it or not. Political influence is an unavoidable part of your position. In the hands of Mendev, you're a priceless tool, and the Royal Council won't pass up a single opportunity to use you for the good of the nation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0064.jbp
+GUID: d76029c03721639458ab2ea3f710a1f3
+"So we'll do the same. The nobles don't want us to support the Royal Council. The council is scared of us backing up the nobles. Make 'em take out their wallets and send us lots of troops — and we'll just sit tight and kill demons without worrying about their games. But if we run out of troops... We'll drop by the capital for one heck of a turf war!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0065.jbp
+GUID: 596c02ffeccbd3845b1ea135bf695809
+"Furthermore, the Royal Council may review Drezen's reinforcement plan. Mendev has plenty of garrisons holding an excess of troops. You need them more than they do."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0066.jbp
+GUID: fd9821336ba7c874fa82d79a26dfc485
+"Your entrance on the political stage is long overdue. Given that your opinion in Mendev is outstandingly well-respected, the Royal Council has decided to make use of it. They are expecting you to denounce publicly the nobles' attempts to challenge their rule."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_4/Cue_0067.jbp
+GUID: 2b4bd6d9a8d845f48898f8b38df761c2
+"Thank you for your time, Commander. I'll make sure word of your decision reaches the capital. That will be all. This meeting is adjourned. Although I'm certain the Crusade will soon require another decision from the Diplomatic Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0003.jbp
+GUID: a4148062a2e90b44b987b0d41e1eff4b
+{g|Diplomacy5_1}[Choice effects]{/g} "Sosiel, tell the Andorens we will accept their weapons and supplies, but not the soldiers."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0004.jbp
+GUID: 134d32a3ae7be3c48b60a77781962f48
+{g|Diplomacy5_2}[Choice effects]{/g} "Daeran, we will accept Andoran's help."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0005.jbp
+GUID: a7d3878a0cdad5945a486c4d029e002c
+{g|Diplomacy5_3}[Choice effects]{/g} "Lann is right. We will publicly announce that we disapprove of Andoran's politics and refuse their armies."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0006.jbp
+GUID: 59675967d830df14abfd13cb1d397f89
+{g|Diplomacy5_4}[Choice effects]{/g} "Woljif, let the Andorens join us under neutral banners."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0007.jbp
+GUID: 18b8f3544a8eed04e99f61727787b416
+{g|Diplomacy5_5}[Choice effects]{/g} "Lady Konomi, I will act according to the will of Nerosyan."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0014.jbp
+GUID: 914dbb4553448aa4c99fb5b0c4f9ca94
+"Let's see what the council has to say."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0025.jbp
+GUID: 4dc31062177a5c44a9d735f7c4a2cc15
+"Sosiel, what solution do you propose?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0026.jbp
+GUID: 57f5904f36850264e9039b90152f4356
+"Daeran, are you sure we should accept Andoran's help?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0027.jbp
+GUID: 8b459ffe02263ea4697d8975ec5f2f69
+"Lann, is it a good idea to rebuke those who send us troops?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0028.jbp
+GUID: 343a537398190cb4b9a220f7bdeb8f75
+"Woljif, what were you saying about mercenaries?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0029.jbp
+GUID: e141a5b1a90d72341b1021a9f167a41d
+"Lady Konomi, why would I refuse Andoran's help?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0030.jbp
+GUID: 460378ab1f04cd7419817a2f9b629881
+"I have no more questions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0052.jbp
+GUID: cc46030a96c63d645943b6cab273abc5
+"What's the gist of this political conflict?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0069.jbp
+GUID: 3046e53699b76cb49aaf8c93d67a6ad1
+"Is that a threat?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0071.jbp
+GUID: cacef81590962dd409edf79dd242a31a
+"The decision has been made, and it's final."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Answer_0074.jbp
+GUID: 5f5850d4abe59f14cb1ece06f1edb0f6
+{g|Diplomacy5_5}[Choice effects]{/g} "Very well, we will refuse Andoran's aid per the request of the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0001.jbp
+GUID: 29123cd19967cb7488f91a7e67922d85
+"Commander, the capital needs you to take decisive action. There has been a major scandal — the nation of {g|Andoran}Andoran{/g}, our diplomatic partner, has sent its army to help the Crusade. However, this apparently generous gesture is nothing more than political provocation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0010.jbp
+GUID: 700b75e4036a5ab4ab8b66d4144a95a2
+"Unfortunately, we can't disregard the decision made by Her Majesty and her council." {n}Sosiel pauses, then suddenly gives you a sly smile.{/n} "But those Andorens didn't come here empty-handed, they brought weapons and supplies. Let them share those with us, since Nerosyan forbids them from joining our army."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0011.jbp
+GUID: 5b74b6fea7dce7144b34b57347286ec1
+{n}Daeran regards Lady Konomi with feigned disapproval.{/n} "Come now, Lady Konomi, all this suspicion! I am sure that the Andorens are driven by nothing more than benevolence and concern for our collective future. We simply must accept them like dear friends."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0012.jbp
+GUID: 5258073d0b5c6e14b832ad660c657ddc
+"We should send the Andorens back home, instead of to Nerosyan. And declare as loudly as possible that we disapprove of their underhanded methods. Otherwise, our capital's diplomats will see it as an opportunity to strike a few deals and sweep the whole scandal under the rug. And that's not right: vile deeds should be exposed, not hidden."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0013.jbp
+GUID: 407c9cf3aa6fafa41bd40943c90250e6
+"If the whole deal is 'bout 'em bein' Andorens, they should just stop bein' 'em. Take down the banners, call themselves mercenaries, problem solved."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0017.jbp
+GUID: 4edec43c1e8d023468e8380fd64601b4
+"Will do. The Andorens won't be glad to hear it, of course, but they'll understand. And our warriors could use new blades and armor."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0018.jbp
+GUID: 27213d0f3597324479f9aac4cb97bc23
+"It will be virtuous and... what was it that dull priest used to say... upright. Every pure soul has the right to be pushing up daisies for Golarion. Not to mention, the Andoren cavalry has the best horses, and I have been thinking about purchasing a stallion."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0019.jbp
+GUID: fce89c2514743fe48a729d95f861c44c
+"Let's see if there are still nations in {g|Avistan}Avistan{/g} who conduct their politics honestly. If there are, our decision won't go unnoticed. And hopefully {g|Andoran}Andoran{/g} will learn its lesson."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0020.jbp
+GUID: caa260477bb1e334eb1250cfa44541a4
+"Always nice to screw over some coxcombs from the capital. And, as a bonus, get our hands on the biggest 'mercenary' army in all of {g|Avistan}Avistan{/g}."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0021.jbp
+GUID: d13f765a3d59e73489c970cebcef7b9a
+"The capital will appreciate your willingness to toe the line. Rest assured, everything you've forfeited will be amply compensated by the treasury."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0022.jbp
+GUID: 4c4210b723edd9143917eaaa8e927a72
+"That will be all. I hope you are all pleased with the work of the Diplomatic Council. I doubt that the capital will henceforth be inclined to involve you in matters of politics, Commander. You may give your demon war your undivided attention."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0023.jbp
+GUID: c2f05a3e279f4f243940912b0bfebacb
+"Hopefully the advice you're about to hear won't lead to an undesirable war."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0031.jbp
+GUID: cca00500ccbb52642a99932db87ce0ec
+"In that case, I hope you will make the correct decision."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0032.jbp
+GUID: 434213c2daa0a634c810ed9dec466a83
+"Firstly, because it is the wish of the capital." {n}Lady Konomi falls silent for a few moments, letting the weight of her argument sink in.{/n} "And secondly — you do understand that this situation is larger and more complex than what you can see from Drezen? It would be inconvenient for us to quarrel with {g|Cheliax}Cheliax{/g} at the moment, and {g|Andoran}Andoran{/g} is pushing us to do exactly that."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0033.jbp
+GUID: 4ee713c46e541f446a9df54a01365d34
+"I know a guy or two with connections in merc circles — a bit creepy, but they keep their word. It'll take five minutes for 'em to turn an Andoren army into a mercenary company. They'll dig up some distinguished name of some currently retired group, fix ya up with the banners and the uniforms, and record the company's arrival in the books of the local mercenary guild."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0034.jbp
+GUID: 8073b1b70f9d73e48a485c79b35cc607
+"The longer I sit on this council, the harder it is for me to figure out which demons we're supposed to defeat — the ones on the front lines or the ones we're protecting? How can people think about plots and intrigues when the world hangs in the balance?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0035.jbp
+GUID: 04e0ce62ce3647c4b98bb53cdafa7570
+"Does it become us to reject the aid of our valiant allies who are on their way here to share the burden of this holy war? I sense the sins of pride, envy, and... yes, a whiff of covetousness too, coming from the direction of Nerosyan. But there can be no place for sin on a crusade!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0036.jbp
+GUID: 5629ab47885db7642ad305f2b3d344c5
+"I come from Andoran myself and, as Shelyn is my witness, I wish I could offer another solution. But we have sworn an oath to Her Majesty. If Nerosyan doesn't wish to see Andoren troops in Drezen, we have no right to invite them."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0047.jbp
+GUID: 8302434194c58984bbd80c393acd7851
+"What touching bashfulness. You're proposing we behave like the daughter of a noble family who wants to give herself to a dashing bard but keep her maiden honor?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0048.jbp
+GUID: 32f500e48a0678b4f9f0b0e280b7b9ab
+{n}Lady Konomi shudders pointedly.{/n} "Don't forget about the sin of slander, Count. Enough tomfoolery. Your jests will lead to diplomatic disaster."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0049.jbp
+GUID: 29a9c2b07bf90f24fa8b997b61300be6
+"The politicians may be at fault here, but what is the soldiers' crime? They are prepared to risk their lives to defend Golarion, and they're certainly not looking to gain anything from this war. Is it just to punish them for the actions of their leaders? With logic like that, we shouldn't be surprised when people start to judge us by the deeds of Nerosyan's bureaucracy."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0050.jbp
+GUID: d7ec319a4e6ed4f47a321d11f86c2d20
+"It's crooked, not clever. If a soldier doesn't care under which banners to fight, then they're not a soldier, just your average cutthroat. If the Andorens agree to something like this, my respect for them will plummet. And it's not high as it is."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0051.jbp
+GUID: 3d2dd7b405450a449a5d403a962aae94
+"Nuh-uh, no dice. When they give you somethin', you take it, especially freebies. Don't bother feedin' us that garbage about 'compensatin' us later.' The authorities do it whenever it's fleecin' time, and then what? The people get nothin' back! Compensatin', my tail!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0053.jbp
+GUID: 35aea17968e6d0344955ced5f5b7859a
+"Isger is a protectorate of Cheliax, and Andoran and Cheliax have a long history of feuds. For the Andorens, the highest values are freedom and equality, and for the Chelaxians, it's order and hierarchy. It's as if the two countries were made to be at odds. The fact that they are both allied with Mendev doesn't stop them from settling scores at any opportunity."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0055.jbp
+GUID: 759e1ca95bdae8b4389aad746efe9ee7
+"That is why Nerosyan insisted on you inviting Isger, Cheliax's protectorate. When you accepted their forces, the Andorens resorted to a provocation — either Nerosyan receives their help, incurring Egorian's discontent, or it risks a diplomatic row. The Royal Council chose the row."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0056.jbp
+GUID: 0a09cf9ccb4eb184891e5a4786dc4cdc
+"When you ruined the carefully devised deal with Isger, Cheliax's protectorate, and did not call for their help, you sent a message to Andoran, 'The alliance with Egorian is not as strong as before. Act now!' As a result, they have resorted to a provocation — either Nerosyan accepts their forces, thus aggravating Cheliax even further, or risks a diplomatic row."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0058.jbp
+GUID: 2ff2612d28952da489036b01e7f13755
+"But — no one can forbid us from accepting their help in the form of weapons and supplies. After all, this war is not just some political conflict, this is a battle for the fate of Golarion. Everyone is entitled to do their part."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0059.jbp
+GUID: 2fbaa63b9b495c8479a22b56058f3c45
+"For the time being, Nerosyan considers it more advantageous to cooperate with Egorian, the capital of Cheliax. No one is cutting ties with Andoran, no, it's just that the relations have... cooled somewhat. It's a common occurrence in the politics of major powers."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0060.jbp
+GUID: 253d2733e2b779e45a22393a7baffadd
+"I can promise you that Mendev will compensate you for your losses. We are guided not by consideration of our own benefit, but of the good of your army and the entire Crusade."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0061.jbp
+GUID: ccf42a72c71898f4cbc97d4eb81c68ec
+"Even the fussiest clerk won't realize that they're not well-respected dogs of war, but a detachment of Andoren regulars. And just like that, under neutral banners, we've accepted our new friends into our army. Clever, eh?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0062.jbp
+GUID: fa723fcd2c1e260479f33023105b1d4e
+"I don't have much faith in the integrity of Nerosyan's bureaucrats. Which is why I'm suggesting that we treat the Andorens in a way that will make it clear — we won't stand for being used. If you want to help, then do it decently, and if you want to scheme — just go home. It will discourage wily opportunists, but win the respect of those who value honesty and decency."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0063.jbp
+GUID: 00978a4e0e3d31c4b9a6a1299ffa06e7
+"If Mendev accepts this help, it will cool our relations with Isger and their suzerain, Cheliax. The Royal Council comman— that is to say, expects — you to reject Andoren aid. Direct them toward Her Majesty's court — they are welcome to negotiate with the capital."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0065.jbp
+GUID: 9bace5dbc5d267041a44f528d3d35b3d
+"The Andorens want to prevent the emerging rapprochement between Mendev and Cheliax, of which I have previously informed you. They've deliberately sent their army to our territory without seeking Nerosyan's approval."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0066.jbp
+GUID: 2c4043b30d1e79f45ae17980df9b0493
+"The Andorens noticed that the emerging rapprochement between Mendev and Cheliax had been jeopardized. They wish to widen the divide between Nerosyan and Egorian, and so they have deliberately sent their army to our territory without our approval."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0067.jbp
+GUID: 9fadddfbe9002694e99aa79bad8b5896
+"Commander, you've managed to establish a working relationship with the Royal Council. Don't destroy it with one careless decision. I'm warning you, Mendev will not forgive you for sabotaging the emerging rapprochement with Cheliax."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0070.jbp
+GUID: 3ef84ef28b80d99499dc626e66ac8987
+"Merely a warning. Your actions, on the other hand, are indeed threatening to Mendev. Her Majesty has entrusted her kingdom to the Royal Council. It is their duty to oppose those who hurt her interests. By turning them against you, you leave them no choice but to start hurting you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0072.jbp
+GUID: 54e1bd906f874b447849385a70d3ff59
+{n}Lady Konomi's hand twitches in frustration.{/n} "There will be consequences! Severe and unpleasant consequences!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0073.jbp
+GUID: 2dd2216f6e0b43745a7132e5d211d3c6
+"Commander, you have already demonstrated your defiance of the Royal Council. Do not cross the line that separates defiance from an open attack on Mendev's interests. The Royal Council will not forgive you for it."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0075.jbp
+GUID: f3794b9c1a04e1349b06bf525b665adf
+"With that, this meeting is adjourned. I doubt there will be a need to assemble the Diplomatic Council anytime soon — it will take a while for Nerosyan to deal with all the internal fuss and the squabbles with foreigners... that is, to resolve important political matters. For the time being, Drezen will be left to its own devices."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_5/Cue_0076.jbp
+GUID: 27ffdb4e68648c147937e39bc82a4fb4
+"Perhaps, perhaps not. One thing I can say for sure — this was a bold move by Andoran. They are willing to invest much in this cause — our cause. I see no reason to refuse. I never was fond of Cheliax anyway — I don't like their practices. Or their wine!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0009.jbp
+GUID: a49f67c12a5460d4ca2666cbc890a11c
+"I would like to hear the council's opinions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0010.jbp
+GUID: cf75816f3e569ee42b864b9a0573acb7
+{g|Diplomacy6_1}[Choice effects]{/g} "Sosiel, we will ask the church to intervene in this conflict."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0011.jbp
+GUID: fee90d934f1473442a55d1cedab0a80f
+{g|Diplomacy6_2}[Choice effects]{/g} "Daeran, we will support the rebellious nobles."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0012.jbp
+GUID: 6b20f1fa5ca39054a9121ae3dd715b68
+{g|Diplomacy6_3}[Choice effects]{/g} "Lann, arrange for a letter to the Mendevian generals to be drafted. Tell them to lead their armies to the capital."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0013.jbp
+GUID: 97ea538458a7709449b5f98a38a80bf8
+{g|Diplomacy6_4}[Choice effects]{/g} "Woljif, send letters to the River Kingdoms. Mendev needs their help."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0014.jbp
+GUID: ee205809b66178d49a8aa7468dae7748
+{g|Diplomacy6_5}[Choice effects]{/g} "Lady Konomi, I will support the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0023.jbp
+GUID: 87c872fa275fded4296eda708c267f61
+"Sosiel, what can the church do in a situation like this?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0024.jbp
+GUID: e7121046825d74e479ddb9a8bcaf4428
+"Daeran, why should we support the nobility?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0025.jbp
+GUID: 8e2f82b4dba059348a5d2697371e08eb
+"Lann, can we count on the military leaders to help us?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0026.jbp
+GUID: bc75232ff2e09bd4081f93a85043122f
+"Woljif, what was that about the River Kingdoms?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0027.jbp
+GUID: d42de6eb0b81fc444a5823b96cf6c8d6
+"Lady Konomi, do you really expect me to support the Royal Council?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0028.jbp
+GUID: 04470ee13b8cbca48ad0e2878e55a223
+"I have heard everything I need."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0050.jbp
+GUID: 9e969dde1d2bcfe439bbbbe7779d9bce
+"Why is there rioting in Nerosyan?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0051.jbp
+GUID: 0a6e0484fee5d3d42b078cf873721440
+"So Nerosyan first demanded, but now is asking? The situation in the capital must really be grim."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0059.jbp
+GUID: fc1681dd53638cd46ad9fecd6fa55107
+"Galfrey, what's your take on this?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0065.jbp
+GUID: ffd2627ad40695641a4f818c9c3e9a72
+"What's the situation in the capital?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0067.jbp
+GUID: f337511aa2137774c8c0070d23c97294
+{g|Diplomacy6_6}[Choice effects]{/g} "Nerosyan's concerns are no longer mine. Get out of my fortress, Lady Konomi."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0070.jbp
+GUID: 73c5728c4c6658344bedcc1b666e598c
+"As I said: you can go to the demons, Lady Konomi. Along with the entire Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0071.jbp
+GUID: 9c0797137ef37824592c8c759a79d7b3
+"Very well, we'll give Nerosyan one last chance."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0001.jbp
+GUID: e1d9630c72c095447be0e6a41f398687
+{n}Lady Konomi doesn't look nearly as confident or bold as before.{/n} "Commander, what a blessing it is to have you back! Mendev is in need of your help! There's been a revolt in Nerosyan — the disgruntled nobles are completely out of control. They proclaimed the Royal Council dissolved and arrested several of its members. Many politicians were accused of collaborating with the demons! Some were executed, others were torn apart by the crowd."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0005.jbp
+GUID: 66294daff1e3e5b4f9115c1b3f117a97
+"If the powerful have gone mad and are spilling blood in the streets, there is only one force that can stop them — the church. We'll appeal to the clerics to intervene in this conflict. Their voices will be heard."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0006.jbp
+GUID: 8811d8b20b666ae4298fee1e28ddf4a4
+"Why would we bother saving the Royal Council? So it can keep pushing us around? I propose we publicly support the nobles. If a few esteemed elders were to depart from the council, it wouldn't be a terrible loss for the nation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0007.jbp
+GUID: 7e35b51a4c1bc8b4f8a6c6d4b44e5973
+"The politicians have neglected their duty, but maybe the soldiers won't? There's got to be some honest generals left in Mendev — we'll ask them to bring their troops to the capital and put an end to the unrest."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0008.jbp
+GUID: 585d5f177250db34fab36948c708778b
+"I know a thiefling, Zarcie, she's from the {g|River Kingdoms}River Kingdoms{/g}. She was sayin' somethin' about a young state over in the Stolen Lands that managed to cobble together a proper, cohesive nation from a bunch of riffraff. Pretty slick, considerin' how tricky it was to make them not hate each other's guts! Wanna invite them to help us patch things up?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0015.jbp
+GUID: 9da5aee315f39d5408c84e8d89c7ffc2
+"Of course. But I implore you, do not delay — every minute counts."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0016.jbp
+GUID: 990384b2a5f2e7e43bfe47f80bd5dd5f
+"The word of truth will stop the bloodshed. My hopes rest on the High Priest of Nerosyan. He is an honorable man."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0017.jbp
+GUID: b3061f69ce9940b409f84c8157040bf1
+"Absolutely." {n}Daeran turns to Lady Konomi and says with a faint smile,{/n} "Please, make sure to tell the Royal Council that it's not them, it's us. Our relationship has run its course, and we're leaving them for another exalted assembly that will likewise be blessing us with invaluable advice while enjoying the safety of the capital."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0018.jbp
+GUID: bba20fa3dbb787d4fa8127ff3717289e
+"I'd say they got lucky. The insurgents will have to deal with garrison troops instead of, I don't know, us. I have a sneaking suspicion that I would've mistaken them for demons and 'accidentally' launched a brutal crusader assault on some very noble gathering."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0019.jbp
+GUID: e599fb4c058ec4a44b8910a1c78f13d0
+"I knew you would choose sensibly. I promise that Her Majesty's servants will not forget your loyalty. Order in the capital will be restored, and you will always be able to count on your extremely grateful friends."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0020.jbp
+GUID: 9e2194902ad918248a179041c608cb25
+"I'll drop a line to Zarcie so she doesn't get us some random nobody, she should find, like, the best advisors there. Maybe like... like a councilor! Sounds neat, huh? A foreign councilor has arrived in the capital to give everyone responsible a good whoopin'. What if they're a troll or somethin'? The {g|River Kingdoms}River Kingdoms{/g} is one wacky place, ya know!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0021.jbp
+GUID: 4f90b2dbcbd1ffb4b882a0ad44f00c8e
+"I pray to Iomedae that your decision is the correct one. Otherwise I will have to answer to Pharasma for all the bloodshed caused by my negligence." {n}She glances at Lady Konomi.{/n} "As for you — if you would be so kind as to tell the Royal Council that when next we meet, they will need to sound very convincing if they hope to plead for leniency."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0029.jbp
+GUID: 05e9d43e77cabbb4086c5e29353980b1
+"Then I hope you will make the right decision."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0030.jbp
+GUID: ba0340801af11ae44990baff65d557f8
+"Become a living wall between the opposing sides. Call for mercy, and if necessary — warn them about Heaven's wrath. People sometimes forget their conscience, and that's what clerics are for. In the end, they will remind the people that we're in the middle of a holy war."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0031.jbp
+GUID: e62a233fa9ff4504fbf79e45861ebd3f
+"They will form a new Royal Council. It's certainly possible that they'll end up being exactly the same — hypocrites, bores, and schemers. But firstly, it will be a new, refreshing set of hypocrites, bores, and schemers. And secondly, they will remember who it was who helped them rise to power, and won't demand at every turn that we kiss their... banner."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0032.jbp
+GUID: 667be6b8e962fa54f987d9706f44b04a
+"A bureaucrat's oath is a little different from a soldier's oath. If the politicians have betrayed Mendev, its last hope is the army. Let the troops march into Nerosyan and bring order back to the streets. That will cool everyone's heads."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0033.jbp
+GUID: 96a2d182d1fab6743b58ea613e65eb1a
+"Zarcie, a friend of mine, was tellin' me about this kingdom in the Stolen Lands, how it was made. For centuries, all kinds of rabble and outcasts were gathered there, and then this new leader appeared — and the whole mishmash became a solid nation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0034.jbp
+GUID: e0e56daadbdb72e4e9715242681f91e0
+"Commander, neither they nor I were ever your enemies. We were doing our duty, although we may have been unwise and presumptuous on occasion. But I assure you, all mistakes have been addressed. By being generous, you will only demonstrate just how wrong the capital was about you, and teach them a lesson."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0045.jbp
+GUID: 654b72f389199974cb180f4983c1e873
+"And who do you think called the shots in the Royal Council before, my good sir cleric? Its leaders — the paladin and the inquisitor. In other words, the pious people — just like the ones you want to ask for help."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0046.jbp
+GUID: 74007ad66f1281146967b8583d0649a1
+"So we're just going to support the insurgents? And bring even more havoc to Mendev? I get the feeling that the next parade in our honor should be held by the demons — we're doing all the work for them."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0047.jbp
+GUID: 2bc7abff06d9b614aa7810bcf93386fc
+"That is a dangerous solution. The military doesn't like to surrender what they have captured — such is the mindset of a soldier. We run the risk of establishing a military dictatorship in Mendev."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0048.jbp
+GUID: 949afda5f312e824db69527ac81f3f3a
+"Anyone who calls on foreigners to solve their country's problems is just asking for an intervention. We have no right to show Mendev's weakness to other nations."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0049.jbp
+GUID: 649e9af221181dc458f05c6f45db1c2d
+"Wow. This is some small-time thief chattin' up the judge stuff, 'Your Honor, I've seen the error of my ways! I was wrong, but I've learned my lesson! Please, be generous!' Cut the crap, we've been around. We know what those promises are worth."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0052.jbp
+GUID: e6e9afbf94240944ca32e1f970dab7f7
+"Because Her Majesty is here, with you, not in the capital. I swear, if this weren't about saving the whole world, I would've advised her to leave for Nerosyan immediately to save her kingdom."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0053.jbp
+GUID: 5296442fd0488374f888f85eb4843b81
+"You are absolutely right, Commander! I admit, the Royal Council hasn't shown you the proper respect and amicability. I myself brought this to their attention on numerous occasions." {n}Lady Konomi's posture is full of repentance.{/n} "But trust me when I say that none of them wished you ill, and they all shared the unshakable belief that you were the savior of our nation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0054.jbp
+GUID: 05a06a1904817ec4db59b38b1a4b022f
+"Her Majesty's return to the capital was short-lived. At this moment, she is hastily gathering a new Mendevian army from the provinces. The capital burns, but the Queen can't take any time away from the war to save her kingdom. I'm sure the decision was not an easy one."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0055.jbp
+GUID: 9d0304f0e16d22b45b106ae356e60761
+"Without Her Majesty's steady hand, the capital has fallen into decay. Some are settling old scores, others have discovered new opportunities. Mendev is accustomed to following a highly respected leader. The only one who can protect the throne from greedy hands is you, Commander." {n}Lady Konomi gives you a deep bow, exuding remorse and obedience.{/n}
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0056.jbp
+GUID: 16ca5303c431ac14f940a9d9b8bd4ca7
+{n}Galfrey furrows her brow menacingly.{/n} "I trusted the wrong people to watch over my nation. Well then, they will not escape punishment for their mistake. Commander, if you believe that someone else will fare better at saving the nation than the Royal Council, I shall support you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0057.jbp
+GUID: 359ffc03ecf90c046be945bb47a7a3ef
+{n}With a frown, Galfrey gives Lady Konomi a searching look.{/n} "It appears that the Royal Council has been negligent in their duties if their misfortunes evoke no sympathy from the Commander. Once the war is over, I will be sure to find those who disobeyed my order not to pressure the Commander."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0060.jbp
+GUID: 374f3df12de3896459cbb4e3e84f438b
+"You are the Commander, you bear responsibly for the victories and the losses of the Crusade. And only you have the right to make decisions on behalf of the Crusade. No one else is entitled to give such an order... not even I." {n}Galfrey is silent for a moment.{/n} "Once, I made the decision for you and sent you into the Abyss. We both know how that turned out."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0063.jbp
+GUID: e095ea13e63ecaf48b384a050187fe3f
+{n}Daeran chuckles under his breath,{/n} "It's so convenient — holding others responsible in a crisis. As if you weren't the one who gave these people power, cousin."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0064.jbp
+GUID: e82d244fe5429a54984a287c3d117f9c
+"I apologize once more for all the misunderstandings we've had in the past, Commander. I thank you and I won't take any more of your time. As soon as the situation in Nerosyan changes, I will immediately convene the Diplomatic Council to give you a full report."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0066.jbp
+GUID: 2e797208250577e4e8f235edf8b1228f
+"The Royal Council, Her Majesty's most trusted civil servants and public officials, have long been in conflict with many powerful Mendevian aristocrats. The former had connections and influence, the latter had their family names, riches, and personal armies comprised of mercenaries, sworn knights, and commoners."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0068.jbp
+GUID: 758e7a18ccd18724488395626de1eb40
+{n}Lady Konomi's tone becomes obsequious.{/n} "But, Commander! Without your aid, Mendev will be consumed by uprisings. Much blood will be spilled. Furthermore, you will be cut off from any support from the capital — in the midst of an insurgency, organized deliveries will become impossible. All you can hope to receive in such circumstances is the help of servants of the crown who are sympathetic to your cause. And their numbers grow smaller by the day."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0072.jbp
+GUID: 42383a59897c58d4f95dc033dade890a
+{n}Lady Konomi responds with a deep bow.{/n} "Your benevolence knows no bounds, Commander."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0073.jbp
+GUID: eeefd2a4eb3b40048ba3f4aa55c09dd8
+{n}Galfrey gives you a short nod.{/n} "I understand you, {name}. When this war is over, I shall return to the ashes of my kingdom and try to salvage what I can. But that is my duty, not yours."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0074.jbp
+GUID: 6265746cc94bd3e4dbbf55483f1fb4a3
+{n}Galfrey's face hardens.{/n} "I understand that you already bear the impossible burden of the war against demon hordes. That Nerosyan is not your responsibility. But still... consider for a moment if you are truly unable to save my nation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0075.jbp
+GUID: 384cd66452a61324cb484c661cd9573d
+{n}Lady Konomi nods ruefully.{/n} "So be it. Farewell, Commander. Despite your decision, I wish you good luck and hope that foreign powers will be able to supply you with troops and resources. I will make haste for Nerosyan. Right now in the capital, every experienced negotiator is worth their weight in gold."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0076.jbp
+GUID: 5b15512e929a3b443a9f95737b2c35fb
+"You are mistaken if you think that those nobles will be better than the Royal Council. They, at least, knew the boundaries that had been set by the Queen. But a band of nobles who seized supreme power will believe that they are entitled to anything."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0077.jbp
+GUID: 8885e41b255c5d34f8a36d77dd2c4753
+{n}Lady Konomi snarls with discontent.{/n} "Give power to the belligerents? They'll order the nation around like a company of recruits on the parade deck. Years of careful diplomatic work will go to waste. No, soldiers are inflexible, they cannot handle such delicate matters."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0078.jbp
+GUID: 0153e0cffa3d6024ba011919b8015b16
+"So it got me thinkin' — if they're so damn good at makin' different sorts see eye to eye, maybe we could put them to use here? They might butter up some folks and give others a scare, but whatever, it'll chill the hotheads, eh?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0079.jbp
+GUID: a4df9d545e84b4746a42da176c1963d7
+"For many years, their strife was latent and civilized — coercion, bribery, intrigue. But the nobility spotted an opportune moment. They decided to overthrow the 'clique of dignitaries that has usurped royal power' — that is what they call the council. A series of arrests ensued, but the Royal Council found its own supporters and retaliated."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0080.jbp
+GUID: 99b05c65caf3202439042cdcdf7e3dd5
+"Currently, numerous aristocrats are assembling their forces in the capital. The Supreme Court building now serves as the base of operations for the new Royal Council formed by the leaders of the nobility. The old Royal Council is holding Her Majesty's castle, the treasury, and the guard headquarters. Every so often, skirmishes break out in the streets. Many civil servants have left their workplaces, and the townspeople are fleeing the city. The capital is paralyzed."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0081.jbp
+GUID: bfafbe1c212e9a442b6e9a7a6fa5ef57
+"The First Treasurer has fled, there's fighting in the streets between mercenaries hired by the aristocrats and the guard, who is loyal to the Royal Council. Drezen has received letters from the insurgents, as well as from the loyal servants of the crown, requesting your support. But both the Royal Council and I have faith that you will elect to defend the legitimate authority. This faith is not misplaced, is it?" {n}Lady Konomi regards you with a devotion you've never seen in her before.{/n}
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0083.jbp
+GUID: 205c0913a1532be45b29421485b04a8b
+"This isn't a game, Count. I ask that you take this matter more seriously."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0084.jbp
+GUID: 54c35c2fd573e18438883d534b2bd961
+{n}Galfrey, who has been staring daggers at Lady Konomi, raises her eyebrows and looks at Daeran indignantly, but forces herself to remain silent.{/n}
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0085.jbp
+GUID: 6c13b4c838547ec4cb35b80187bddd40
+{n}She looks at Lady Konomi grimly.{/n} "And yet, there is something I would like to say. The Royal Council and its messenger has hidden behind my name long enough. They could not handle their responsibilities: they have failed me, and they have failed Mendev. Thus, should the Commander decline to support them, it will be my great pleasure to give them a fair trial upon my return to the capital."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_2.jbp
+GUID: aa315acf57ef4cbdb5334c0e4a21d4db
+"I hope your decision will end the turmoil in my lands." {n}The Queen glances at Lady Konomi.{/n} "As for you, please be so kind as to inform the Royal Council that they shall have to be very convincing indeed if they hope to plead for leniency the next time we meet."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0005.jbp
+GUID: 7683a8f3601c60b499badec6f0c8595d
+"Let's see what the council has to say."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0006.jbp
+GUID: 8995ba7fbed5cd9438992c5aef89bcee
+{g|Diplomacy7_1}[Choice effects]{/g} "Sosiel, summon foreign delegates to resolve the crisis and keep an eye on these uninvited 'helpers.'"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0007.jbp
+GUID: 160e80541cfd1734dbca75ed00dc09b2
+{g|Diplomacy7_2}[Choice effects]{/g} "Daeran, put out a call among the nobles of Mendev and promise them a generous reward."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0008.jbp
+GUID: 4d52dde28adea524e93c10eb68af894f
+{g|Diplomacy7_3}[Choice effects]{/g} "Lann's right. I approve of Isger's actions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0009.jbp
+GUID: ea1c8252e8f83b341b1944ce4f762a1e
+{g|Diplomacy7_6}[Choice effects]{/g} "Woljif, we're issuing a call to arms among the people if Isger pokes its nose in."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0010.jbp
+GUID: 296e6816c431aba4a8963515dd7c1ffc
+{g|Diplomacy7_5}[Choice effects]{/g} "Lady Konomi, I'll send the reinforcements to Mendevian cities to restore order."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0019.jbp
+GUID: 9dc46ddf86e51d84eb2d636f0a91692a
+"Sosiel, elaborate on your idea."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0020.jbp
+GUID: 87826620f306e2847acec1b1a64ea41a
+"Daeran, will the nobles be able to solve the nation's predicament without outside help?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0021.jbp
+GUID: ff133264f9a7a4e4797fbfb0e740ccf3
+"Lann, are you suggesting we allow Isger inside Mendev's borders?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0022.jbp
+GUID: f4ab2ae5b48cf424ba0ea7e9185893c5
+"Woljif, why do you oppose Isger?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0023.jbp
+GUID: 88fe1a69ea70355448997fe3af87a3a1
+"Lady Konomi, what are you expecting from me?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0024.jbp
+GUID: bdaa920245f4924489ddeddf0411a6e8
+"I've heard enough."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0052.jbp
+GUID: 9da97c2a257bca74e9a86e74692f465f
+"I would like to hear from the ambassador."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0058.jbp
+GUID: 62e33c785933c084e95b279122637c19
+"On what conditions do you intend to assist us?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0059.jbp
+GUID: 9c4e4e053d6050e48a2da1344374febc
+"Why do you need my permission?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0060.jbp
+GUID: 61518a74bd8a6df45baed135c75a622c
+"You have satisfied my curiosity."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0064.jbp
+GUID: 3aba94e972704884bbb78e65401b3503
+"What made you think Mendev needed your help?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0087.jbp
+GUID: 591a61fffa8dd7343b198824e0aac2fa
+"Galfrey, what are your thoughts on this?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0092.jbp
+GUID: 28a1d1f713d1e1343a115241d724617c
+"Lann, why do you dislike the Andorens so much?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0093.jbp
+GUID: c5a740d9158df8d4d8a313c1a114836f
+"Woljif, do you trust the Andorens?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0102.jbp
+GUID: 6da35d5d86845b142bcab74030cac765
+{g|Diplomacy7_6}[Choice effects]{/g} "Lann, we're issuing a call to arms among the people if Andoran pokes its nose in."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0103.jbp
+GUID: 9b3934de61a2e4a439aef0136681501c
+{g|Diplomacy7_4}[Choice effects]{/g} "Woljif has convinced me. I approve of Andoran's actions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Answer_0129.jbp
+GUID: 30e848a39f374a6438398a6dcc21d9d4
+"What do you gain from all this?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0001.jbp
+GUID: 39948c9b1c5b63347ac928303854b9af
+{n}The tall woman salutes you sharply.{/n} "Isger greets you, Commander. My name is Nara Kor. My lord, Hedvend VI, Steward of Isger, bid me put myself at your disposal."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0011.jbp
+GUID: 0fd2627cf4f9f934299332d7925cd751
+"I hope all its members are aware that the fate of Mendev is at stake."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0012.jbp
+GUID: aff8769e613343a42a1514f17040c5f6
+"I'm certain the rulers of {g|Avistan}Avistan{/g} will send their best envoys to solve our troubles. They will put the country back in order, help our generals with valuable advice, and make sure no one tries to exploit Mendev's weakness."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0013.jbp
+GUID: d6b3b2eb3e02bab49b23f3c64020e140
+"If there's one thing Mendevian nobility has in abundance, it's pride. They will be outraged by the mere thought that some foreigners might take control of their lands. And if there are new estates on the conquered territories involved — why, they will be twice as vigorous in their efforts to save their homeland."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0014.jbp
+GUID: 1f942bbbf976322469dd0ad8bc64149d
+{n}Lann gives Nara Kor a courteous bow.{/n} "Esteemed Nara Kor, know that once Isgeri troops are done warming up against the rebels, we'll be glad to see them here. We'll save a few demons for you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0015.jbp
+GUID: 83bf8332cafefd74793e5ce243157020
+"Damn straight! Isger got nothin' on us if we've already wiped the floor with the demons... well, we almost have. Mendevian nobles may be a lotta things, but when they feel the heat, they can be real scary."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0016.jbp
+GUID: 648359a72b703604e86104910dd7047c
+"The Commander has made {mf|himself|herself} clear. The patriotism of Mendevian subjects is stronger than ever. We will deal with our problems ourselves, and I doubt any power in Avistan will want to question {mf|his|her} decision."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0017.jbp
+GUID: 6b15e6c0475eec341a78eddce7864d57
+"Thank you for maintaining your faith in Mendev."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0025.jbp
+GUID: 2faf5add30db7c946a4538dd3b31d1e4
+{n}Sosiel gives the ambassador a piercing look.{/n} "We invite one country to help — and it will try to subjugate Mendev. We invite all of them — and everyone will be watching the others jealously, stopping them from taking what they shouldn't. {g|Avistan}Avistan{/g} wants stability, and if Mendev falls under the influence of any external power, that stability will be disrupted."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0026.jbp
+GUID: 28e731c2771542f4683a2a724835434e
+"For all the things people say about my social class, we have one particular quality — any aristocracy has strong ties to its country. Family estates are our roots, and they run deep in the ground; bloodlines are the shoots that grow from local history. So, yes, the nobility can solve this predicament, for they possess not just experience as rulers, but the will to rule. If you wish to bolster their fervor — and win some loyalty — give them new lands here, on the territories reclaimed from demons. Then their ties to you will be almost as strong as they are to Mendev."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0027.jbp
+GUID: 145f18f6e6b860b4f8895c8396531de8
+"I believe them. Mendev is not much of a prize when there's a demon army hanging out at its doorstep. If they wanted to expand their territory, they could've found an easier and wealthier target. So I don't think they're lying, it would just be too costly for them if Mendev were to fall — so here they are, doing their duty as allies. And hey, we might meet a couple of brave warriors in the ranks of the Isgeri who will agree to join our war afterward."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0028.jbp
+GUID: 5cfb8de2621f1054d828b01cd01b61a9
+"If we're not into the idea of marchin' to the devils' tune in the near future, we better rile up the people. Mendevians just love kickin' tieflings around, don't they? Well, how 'bout they work over some devils as well."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0029.jbp
+GUID: b0fa7ba5d0abdf746ad564a775a4d342
+"I'm not denying the fact that Mendev is in the middle of a severe crisis. However, we must solve this problem on our own, without involving foreign powers. Nerosyan did all it could to help Drezen, and now it's time to reciprocate. I ask that you give the order to all newly formed detachments standing ready to set out for Drezen, to march to Mendev's major cities instead."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0030.jbp
+GUID: 3f9188e3ea2079b4a813fff79e1f595e
+"Then I hope you will defend Mendev in this hour of grave danger, as you've done many a time before."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0036.jbp
+GUID: 5d73aed7ea7a9c140b4e3bb69a0dc4dc
+"Saving Mendev benefits all nations of {g|Avistan}Avistan{/g}, so why does it have to be only one country that helps us? We'll ask all our neighbors to send us their trusted servants, who will resolve the crisis... and keep an eye on each other, preventing any temptation to exploit our lands and resources." {n}Sosiel gives the ambassador a soft but knowing smile.{/n}
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0037.jbp
+GUID: c82a3953f5c66cd4990ec25aad9eff73
+"I am not particularly enamored of the idea of calling in outsiders to instill order in our country. Before I know it, I'll no longer be a count, and some disagreeable foreigner will be living in my estate. I imagine other nobles will relate to these concerns, so why don't we ask them for help?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0038.jbp
+GUID: c9895bade87f6f6479666c8532b9cc64
+"Whatever coat of arms is on the banners of the people who bring order, it's all the same to me. If they can take care of the people — let them come and help. Patriots should've thought about that back when their country wasn't plummeting into oblivion."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0039.jbp
+GUID: 947d5440b8cacb74ebcc9260e53dd5d6
+"These sneaky weasels thought they could get their mitts on our turf while we're out here fighting in this dump! Like hell they will! Once we're done with the war, we'll skim Mendev ourselves, thank you very much. And if these unwelcome 'helpers' show their faces, you just say the word, chief, and the people will give 'em the pitchfork! The common folk love Isger 'bout as much as I love donating to charity."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0045.jbp
+GUID: 53375a38ec7ce94468eb15787c602f2a
+"Or, and this is much more plausible, they will ransack Mendev piece by piece ten times faster. It's fascinating how swiftly sovereigns can forget their differences when presented with the opportunity to rob someone else."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0046.jbp
+GUID: 90900399bed2de04f838286c41d0048b
+"So the main incentive for the nobility to save Mendev will still be pride and the thought of keeping their lands? I'm not sure if that is a solid enough footing."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0047.jbp
+GUID: 0ce3484cc15185f448f5dc09d3a96363
+"Nice goin', Scales, keep lickin' those boots. When the devils take over, they might even make ya a taskmaster instead of a common peon. Chief, come on now, send these Isgeri packin' already. We let 'em into Mendev and they'll be barkin' orders the next day."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0048.jbp
+GUID: 59a0cb38754d0804ea036359ac0e790b
+"I'm not surprised that a sneak and a thief is against having the country brought back to order. It's easier to nab something in all the hubbub, eh, Woljif?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0049.jbp
+GUID: fffdf4bbe991f284d8e8d0a548f936c5
+"That's a fantastic idea. I'm sure our soldiers will have plenty of time to put things in order before the demons arrive. I mean, it would be so embarrassing if they came to Nerosyan and said, 'Ugh, all these riots, what a mess!'"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0050.jbp
+GUID: 2decae697404da84b8d7f489cd49a526
+{n}The respectable-looking halfling with luxurious sideburns clears his throat, then addresses you in the low voice of an opera singer,{/n} "Salutations, Commander. My name is Bonvar, and I represent the People's Council of {g|Andoran}Andoran{/g}."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0051.jbp
+GUID: 63ae6b1375c54614b9d0f21785d46dba
+"Apologies, Commander, but an ambassador of a certain nation demands to see you. A nation that we... considered to be our ally, at least until they came up with the outrageous proposition we're about to discuss."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0053.jbp
+GUID: 63cba6670a1286e419fa2801349daa36
+{n}Bonvar nods seriously.{/n} "I am prepared to answer any questions you may have, describe our plan, prove the necessity of this step, and assure you that our intentions are pure."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0054.jbp
+GUID: 8234253b3abdb8d49b576297fdb8659b
+"Ask. I can explain our strategy, provide our view of the current situation, and vouch for the honesty of our intentions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0063.jbp
+GUID: d6c88ee97bcf4064d923a9f8acf78e94
+{n}Galfrey casts a searching look at the ambassador.{/n} "I wish I could believe you, but this looks all too much like an attempt to steal my country under the pretext of rendering assistance."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0079.jbp
+GUID: 3f9beaf90fd38304ab80ee51e8fb7a19
+"Our forces will take the major cities of Mendev and establish the provisional authority of Andoran. That will mean a return to centralized governance. We will stamp out the widespread crime, stop the plundering of public coffers, and mobilize the remaining resources."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0080.jbp
+GUID: 76f06e9e5d29eb1478790cdcc772e1c2
+"A limited military contingent will take control of all major cities in Mendev. Sabotage and corruption will be eliminated, and authority over the respective territories will be given to a network of military security forces, subordinate to the headquarters of the Isgeri army in Nerosyan."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0081.jbp
+GUID: 57fcc6c88d3323a43929f21c803c2728
+{n}Bonvar gives you a shrewd smile.{/n} "Because otherwise it would be common pillaging. If you hear a voice screaming, 'Help!' from inside someone's house and rush inside to help, who would condemn you for it? But if you merely hear a commotion and, suspecting that someone has broken in, you burst inside with the best of intentions... Good luck proving you're a savior, and not a thief who was caught red-handed."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0082.jbp
+GUID: 8746cc319ee0c5a48a0f8ca2fa02dad8
+"We must follow the law. No matter how noble our intentions are, we have no right to interfere in the matters of another country. We need to be invited, or it would be considered an intervention. No one except you has the authority to do it — the political status of the Royal Council is too questionable at the moment."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0085.jbp
+GUID: a435e902c1ecbbf47a2a4a2d79f7d8ff
+{n}Lady Konomi makes a concerned sound.{/n} "I hope you understand that all these courteous speeches are just a velvet glove wrapped around an iron fist."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0086.jbp
+GUID: 80bd22a9e53f797449c125a599819419
+{n}Lady Konomi bows her head and says quietly,{/n} "We will know soon whether or not this decision was prudent. Will Mendev survive this crisis or is it doomed to fall — once the outcome becomes apparent, I will report to you immediately."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0088.jbp
+GUID: 4e64dacfa8f4ffb4aabce95cbcecc456
+"The proposal certainly looks tempting. A helping hand offered when it's most needed, no strings attached... But I must have been wearing the crown for too long, it has spoiled me. I cannot help but search for a hidden threat in this gift."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0090.jbp
+GUID: 2efb45e498eda5c41b72a045008d5fe7
+{n}Daeran opens his mouth for a snide comment, but, catching Galfrey's withering glare, only remarks in a placating tone,{/n} "You really are on edge, aren't you, dear cousin?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0094.jbp
+GUID: 973bdcfe700442e48a895894ac894cec
+"Because from the very start, they've chosen to pursue their goals through intrigues and provocations. I've heard {g|Andoran}Andoran{/g} is a decent nation, but then why are they acting like this? Do they think their way is so much better than ours that it justifies using dirty tactics?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0095.jbp
+GUID: b3f8667173034b94f938d6916c3339c2
+"I've heard how things work in Andoran. They've got equality there, no nobles or commoners, one law for everybody, and the officials serve the people, not the other way around. Sounds to me like those guys are more honest than our lot, so we might as well believe 'em."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0098.jbp
+GUID: 2b2012c4409ed95429678bbe9b6311ca
+"Fat chance, buddy! Everyone's equal under Andoren rule, no nobles, no aristocrats, no nothin', just citizens. Sure, the people will just rise up to drive away those darned 'invaders' and defend their right to keep slavin' away for the blue bloods!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0100.jbp
+GUID: bd85a1c0138ac3d41b53cd1961e6a380
+"There are two kinds of freedom. The first kind is what slaves dream of and what heroes die for. The second is the drunken, irresponsible freedom of hooligans and thieves. And I think I've just worked out which type of freedom {g|Andoran}Andoran{/g} carries with it. Thank you, Woljif, now I'm even more convinced."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0104.jbp
+GUID: 6710c3e96c1d6d24d9566e2e0f1ed97d
+"Let them try — and they'll hear the voice of the people's discontent. We've got it good here, you know — we relieve stress by killing demons. But can you imagine the bitterness of some poor grocer in the capital with a miserable life and no way of spilling someone's guts out?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0105.jbp
+GUID: cc0ed7faaaee7b246acc6ad699044298
+"Sweet! They say life is much easier with Andorens in charge instead of kings and queens! But since they're helpin' themselves to the whole of Mendev, they better remember who did 'em a solid. It'd be nice to have some Andoren soldiers over here."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0115.jbp
+GUID: f627b8a1022a2e940bde15fc7319243c
+"Isger was formed by an expeditionary force, and it has always served one purpose and one purpose only — the expansion of Cheliax's territory. Do not delude yourself. For Isgeri, Mendev will be just another seized region."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0116.jbp
+GUID: 27863dae208da9b41874ba210826cfd6
+"The ambitions of Andoran are well-known. They are zealous in their belief that theirs is the only correct political system and that all others are various forms of enslavement of the common folk. When the war is over, it will be trivial for them to invent some convenient rationale for why they've no obligation to keep their promises."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0117.jbp
+GUID: 7a247544184f6414fa38403d5d49b201
+"What, we're s'posed to die here without reinforcements 'cause gods forbid Mendevian nobles lose their cushy estates? Fuggedaboudit!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0118.jbp
+GUID: 7e97595e43ea4644e8b57b864fe489aa
+"Before recommending this course of action to the People's Council, I personally went to assess the situation in all regions of Mendev. It was a rather dreary trip. The recent revolt in the capital is merely a consequence of the crisis, not its source."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0119.jbp
+GUID: fd3e5c553412ef04b87114899746c103
+"My nation has suffered through grueling goblin wars, and I saw what they did to Isger. Right now, Mendev is worse off than my homeland was back then. The recent upheaval in the capital was just the first sign of the insurrection. Soon, it will spark in the provinces."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0120.jbp
+GUID: 19ec2c5c7cee76f428938ed7781b19ed
+"No ruler will refuse to send their best representatives — otherwise they'll lose control of the situation. Together, those people will bring Mendev back into shape, and after that — who knows, they might even give some advice to our generals. But most importantly, they won't allow each other to profit off our misfortune."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0121.jbp
+GUID: 04f2de9d4c3e7c54ead76b84d55a246d
+"I've heard all this before — {g|Andoran}Andoran{/g} is once again trying to benefit from Mendev's troubles. This time, their friendly help will involve 'bringing us the ideals of freedom.' No, I do not trust them. And neither will the people if you address them, {name}."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0122.jbp
+GUID: 7ecdbd88fea2e81419f4f0f19daf0e14
+"Sounds good to me! {g|Andoran}Andoran's{/g} a free country, no aristocrats, no slaves — equality! I wouldn't have believed anyone else, but these guys are solid."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0123.jbp
+GUID: d5c82dc603429534fb3a2c6e988283e6
+"My country has always considered itself a trusted ally of Mendev. After witnessing the turmoil in Mendevian lands, we believe we have no right to stand by and do nothing. Andoran is ready to send its forces to Nerosyan and the largest cities in Mendev on a peacekeeping mission. We will temporarily bring the kingdom under our control for the purposes of restoring order. But before committing to such an act, we would like to receive your support and approval."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0124.jbp
+GUID: a22c97356da8fee458000fd24a78cfb9
+"Isger regards Mendev as a trusted and loyal ally, and our nation will not leave you in your hour of need. The war has brought chaos and anarchy to the lands of Mendev, and we stand ready to come to your aid. The Isgeri Expeditionary Corps is ready to assume control of Nerosyan and the larger Mendevian cities, to restore order and a central authority. But, to avoid a diplomatic misunderstanding, we ask that you accept our help and allow us to cross Mendev's borders."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0125.jbp
+GUID: e05b5b1a2cb556144a3bb60392371600
+"I'm aware of at least three other uprisings that could break out in the coming weeks. Tax collection has dropped, and there are areas where taxes aren't being collected at all. The city guard has been bled dry by mass desertion, and crime levels have increased fourfold. The storehouses are forced to provide the populace with bread instead of sending it to you, and it won't get any better, considering that the fate of future harvests is up in the air."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0126.jbp
+GUID: e383d302a4b7dea489c7a01433c36a81
+"The kingdom shakes in the fever of lawlessness. If someone honorable and principled doesn't take the reins of Mendev's salvation, it might not recover from this illness. At one time, you did right by Andoran despite your politicians demanding otherwise. We're ready to return the favor."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0127.jbp
+GUID: 60db46366a8c7b340a3dc1bfb62978c5
+"The city garrisons can't maintain order — the best people went to the front lines, and only the incompetent stayed behind. The populace is evading taxes and drafts, and future harvests are at risk. There will be famine, then anarchy, and then... Mendev will be no more."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0128.jbp
+GUID: 6c2acba5f59b02c499dc36b095a31abf
+"But we, Isger, remember the meaning of honor. Our nations have agreed to support each other, and you didn't let Andoren rabble-rousers bring this friendship to ruin. We're willing to help."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0130.jbp
+GUID: d02b76120262f5a46b018c9be514d512
+"If Mendev crumbles, who's going to fight the demons? Us? Hah, no way!" {n}After a bark of laughter, he turns serious once more.{/n} "Great trials breed dictatorships. People flock to strong, authoritarian rulers because they can overcome the crisis. But then the crisis ends, and their rule does not."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0131.jbp
+GUID: f508c089c8fcb31469f169ec07a92da6
+"I'm an officer, so I won't mince words with you. You're {g|Avistan}Avistan's{/g} shield, and if you fall, the burden of this war will be ours to bear. Furthermore, we Isgeri believe in the necessity of order and discipline. Mendev's collapse will lead to chaos; it will create new River Kingdoms that will spread the plague that is anarchy. And therefore, Mendev must endure — for the good of all of us who are united in our adherence to order."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0132.jbp
+GUID: 6b40d22d0d6f7994996a1a8d6bbfa592
+"We don't want the enlightened Mendev to break into smaller kingdoms ruled by tyrannical generals and the greed of the wealthy. Its people do not deserve such a fate."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0133.jbp
+GUID: 0b8dbe197de571a43b55dd9cb7e86a43
+"Our interference in the nation's affairs won't go beyond that. We will not meddle in political matters, push our beliefs, change the laws, or expropriate any lands or wealth. As soon as the crisis passes, we will depart from Mendev without imposing any obligations. This is a humanitarian mission, not an occupation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0134.jbp
+GUID: d9fb747ca6a3f9d46aaa6e3f6b46e342
+"Naturally, the headquarters will cooperate with the Royal Council and act solely based on its approval. Once Nerosyan is capable of keeping Mendev under control, we'll head back home. No demands or indemnities will follow."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0135.jbp
+GUID: fa426998e02f31940a520d8b764ca7e9
+"We are willing to do some good, but we're not about to put a target on our backs. Cheliax will immediately accuse us of launching a destructive occupation either way. But with your approval, the price of our assistance might not be unreasonably high for us in the end."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0136.jbp
+GUID: d78b047187162a142913ec5182e7c6f9
+"They will put things back in order by themselves and remind the people that the crown's authority remains strong. I understand that you will have to hold out here without reinforcements until the disaster passes, but such is the cost of our nation's salvation and independence."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0137.jbp
+GUID: bdfaec5ca3c423e43bd4df61f6f95057
+"I do not wish them luck in achieving their ends. The freedom they proclaim rings of permissiveness. Mendev certainly doesn't need it. We'll reject them publicly, and the people will support us."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0138.jbp
+GUID: 57c309df24a0b35459692ae08014e689
+{n}Lady Konomi cuts off the ambassador.{/n} "Mendev is quite capable of dealing with its issues without external help. Commander, I must ask you to send your own forces to the capital. Don't put the nation into the hands of foreigners."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0139.jbp
+GUID: ba88325831ad5e049b7d0440c1ad6203
+{n}Galfrey's voice sounds hollow.{/n} "Thank you for this generous offer, ambassador. But I have been on the throne for too long to trust such gifts. We all know that even the best of rulers too often forsake honor for political advantage. And I am warning the Commander against accepting your aid."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0140.jbp
+GUID: 384a038b5b3561a4bb23c26c648f801c
+"We're in a pretty sweet spot — Cheliax doesn't bother us 'cause we've got Nerosyan, and Nerosyan minds its own business 'cause we're best buds with Cheliax. So everybody needs us and we don't depend on nobody. But if Mendev gets occupied, we're goin' down next, and then we'll spendin' our lives salutin' Egorian emissaries."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0141.jbp
+GUID: 4c3f900c7446b4946aab292d53b1ab95
+"'Cause I know their masters. Cheliax wants to get its grubby hands on Mendev and us, and Isger are their flunkies doin' all the dirty work. Chelaxians are greedy — if somethin' finds its way to their pockets, there's no gettin' it back."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0143.jbp
+GUID: 6e1b75bdf4817bd4dad30e6cd3edd862
+"Surprisingly sound reasoning, coming from you. However, it is one-sided. Not all Mendevian nobles are driven by ambition and the desire to preserve their estates. Many will rise to protect their homeland for no reason other than the call of their conscience."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0144.jbp
+GUID: 7d121bdb6792f924b90b08779909beef
+"You're honest but naive, warrior. You have yet to learn that the guile of mortals knows no bounds. No matter how strong the voices of reason and conscience, the call of greed is often stronger still."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0145.jbp
+GUID: 6c05b22591964104baa4d2972a9f5144
+{n}Galfrey casts a stern look at Woljif, and he seems to shrink a little.{/n} "I do not know which part of your little speech is more insulting — that you suspect me, and the Mendevian nobility, of dishonesty, or that you question our right to lead our people in this war. But I suggest that, henceforth, you choose your words more carefully."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0146.jbp
+GUID: 61be5e04864daa247bfd323ee6866564
+{n}Galfrey's expression is still, impassive.{/n} "I hope you have made the right decision, {name}. And I shall support it, even though it does not sit well with me."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0147.jbp
+GUID: 1f660cfc9e99cfa418a45822f17e3f60
+"Politics is a dark and duplicitous business, and if it were up to me, I would have steered clear of it. However, duty required that I learn the craft, and as an experienced monarch, I give you this warning — do not believe honeyed words. If you retain even a shred of hope that Mendev can handle this alone — refuse the help of outsiders."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_7/Cue_0150.jbp
+GUID: 7ce34bcb8bd3cf24f8c9751f314a65ed
+"I love my {g|Andoran}Andoran{/g} with all my heart, but the truth must come first. You're wrong to idealize my compatriots, Woljif. They value freedom, but they'll never pass up a chance for profit either. I'm afraid that in this case, their motives are far from altruistic."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0009.jbp
+GUID: e8a948d660a6d4742bf3c99f9e6a577c
+"Let us listen to the council's opinions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0010.jbp
+GUID: e7e0dd275ef38334caf19cff6a971762
+{g|Diplomacy8_1}[Choice effects]{/g} "Sosiel, we will urge Mendevians to offer their prayers to the gods."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0011.jbp
+GUID: bf9b86ced8e60174ebfcf834a6447905
+{g|Diplomacy8_2}[Choice effects]{/g} "Daeran, go ahead and impose your 'tax of the righteous.'"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0012.jbp
+GUID: f75ed0d6e89acdf49b9159a9217cd536
+{g|Diplomacy8_3}[Choice effects]{/g} "Lann, we will hold elections for the members of the Royal Council."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0013.jbp
+GUID: 87e5eac8e1534cb4c95763da4f48d842
+{g|Diplomacy8_4}[Choice effects]{/g} "Congratulations, Woljif. Tieflings will be granted equal rights."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0014.jbp
+GUID: adf0b376112a28f498750de820ccca9e
+{g|Diplomacy8_5}[Choice effects]{/g} "Lady Konomi, send word to the capital that military mobilization has been ordered."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0030.jbp
+GUID: a13209a1fa1171f4ca8a318b05883da4
+"Sosiel, Mendevians have honored the gods before, haven't they? Was it not enough?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0031.jbp
+GUID: 549ffce02888e1d4d8511a9c0fb2da50
+"Daeran, is this really the time for new taxes? Temple taxes, no less?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0032.jbp
+GUID: f6efb137ce0be094c918ad3eb3af7a41
+"Lann, what was that about an election?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0033.jbp
+GUID: e40c181da466bbd47adcac751d2ae904
+"Woljif, explain your point about tieflings and their rights."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0034.jbp
+GUID: 4779c3c95e031fb4db81ceac1ed56d09
+"Lady Konomi, is there anyone left in Mendev who could be mobilized?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0035.jbp
+GUID: ac3ced6b11fecb646890ce635350f44b
+"I'm ready to make my decision."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0075.jbp
+GUID: 6a53f83eaefc24e4f94f157f12883fd2
+"Galfrey, what are you suggesting?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Answer_0096.jbp
+GUID: 1e2d752b2e038e44d8558e4ecac9156a
+{g|Diplomacy8_6}[Choice effects]{/g} "Her Majesty is right. We will invite foreign nobles to become Mendev's new aristocracy."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0001.jbp
+GUID: 59ba491b3e857c145b58a7a59998bab8
+{n}Lady Konomi's voice is brimming with satisfaction.{/n} "Commander, I bring wonderful news. We are getting reports from all regions of Mendev that the nationwide political crisis has been resolved."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0004.jbp
+GUID: cf75497799a50c644a8e36687704a22d
+"We need to remind Mendevians that the gods care for us. They gave us the strength and the wisdom to save the kingdom. Let the people go to the temples, praise them, make donations, and pray. In dark times, we need all the faith we can muster."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0005.jbp
+GUID: 7d14f6a99f131f14787c0fbc25b200de
+"In many lands, the temples collect tithes. I have a fresh new idea — why don't we turn this around and tax the temples? We'll call it 'the tax of the righteous' and tell them that the more pious the temple and its congregation, the more coin will be collected. We will just have to see what wins — faith or greed."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0006.jbp
+GUID: bffcd163de8499046a62b8f22073e15b
+"Someone must take care of Mendev: the old mare won't survive another wild ride like that. Maybe we should hold elections for the members of the Royal Council? Finally let those who are worthy run the country, no matter their social class or wealth?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0007.jbp
+GUID: a6c20711ef16e284f800961e44bebf91
+"Equal rights for tieflings!" {n}Woljif, hands on hips, stares boldly at those around him.{/n} "It's time to stop the oppression of our noble people by Mendevian society. Tails are no reason for persecution!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0015.jbp
+GUID: 47ee9a4ff35604d4c901404a2b8a9999
+"I believe they will be heard. The words of those who have seen so many trials will be sincere. And the higher powers will answer by sending down thunder and ruin upon all who do us wrong."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0016.jbp
+GUID: f790b76dc1d69a8468296e9b4bae8ec3
+"I can see it already — devout priests and churchgoers forming a line, bragging about who has paid more!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0017.jbp
+GUID: 19786c13d9849f549b7a135a9adadf9a
+"Maybe at least this time we'll get folks who are actually competent and we can finally take it easy and fight some demons. Sorry, I'm daydreaming."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0018.jbp
+GUID: c5a9569507d98894f8e7ad0a2948db7f
+{n}Woljif's cries once again fill the room.{/n} "All hail the chief! Our brethren will never forget this, you'll see. There are lots of decent tieflings in Avistan who are being victimized because of their heritage. Once they hear folks stopped treatin' us like dirt here in Mendev, this place will be packed with 'em!" {n}In a lowered voice, he mutters,{/n} "And then we'll see who's gonna spit on who."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0019.jbp
+GUID: accc9a6356e76cf4ca18bb6b19233320
+"It will be done. You've been dealing with Mendev's misfortunes long enough. It is time we reminded ourselves that it's the nation that must support you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0020.jbp
+GUID: 8311ef29223c4fe469c95cd8eb80e539
+{n}Lady Konomi bows respectfully.{/n} "When first we met, I allowed my eyes to deceive me. I failed to discern within you an outstanding politician. You knew nothing of diplomacy, you were unaware of the power structure in Nerosyan and beyond. But you were driven by your uncanny intuition, and with it, you have saved Mendev and strengthened our ties with foreign allies. You have my respect."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0024.jbp
+GUID: 45258075a3a79bf4c91a90dd22ed6145
+"Once, I saw a general in you. Now I see a capable politician as well. I am grateful to you for fulfilling your duty and helping my nation."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0025.jbp
+GUID: d731f9cfaad51cf4e8e7f581abcb056e
+"I wasn't a diplomat before this war, and I haven't become one now. But I think I'm beginning to understand politicians and their actions better. And I'm convinced that the key is never to forsake your conscience. I don't think we have."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0026.jbp
+GUID: 66b0e85084c38f24f9ba9250ad480669
+"I must admit, these council meetings weren't the worst moments of my life. They were almost entertaining. It seems you have the ability to make everything more interesting, be it waging war or hosting ambassadors. And I, like a true son of Mendev, even took part in deciding its fate. We shall see if posterity will curse us for it or sing our praises!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0027.jbp
+GUID: e24c96e430037dc4381751f8cecf7727
+"I can't imagine ever becoming a proper diplomat. All this political skullduggery makes my hand reach for my bow; I was this close to going down in history as Lann the Shooting Ambassador. But I'm impressed with how slick you were at dealing with intrigues and weaving a web of your own."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0028.jbp
+GUID: 8ba280087ac7b074dac6c3012b0ebb46
+"As you wish, Commander. Your advisors have proven their diplomatic and political acumen."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0036.jbp
+GUID: b954e2b4580ff254c986f3da4eb1a5de
+"What will it be?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0037.jbp
+GUID: fe05d6fb50d815e478e7afb68f3238e4
+"There is, rest assured. If everyone was here already, Mendev would have died of famine. But I'm not just talking about people — there are horses that could be commandeered for the needs of the army. Tools that could be reforged into weapons. Apothecary stocks. Services provided by craftsmen, builders, spellcasters. Many can serve the army, and in many ways — not necessarily by enlisting."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0038.jbp
+GUID: 332f24b5820404040b81370d229a8205
+{n}Woljif's speech is loud and surprisingly fluent, as if he has rehearsed it many times.{/n} "We all know about the rampant oppression of tieflings in Mendev! It's like we are the demons here. We get no freedom, no respect, only humiliation and wallops! Gotta lock horns with the horned ones, am I right? And what about rights? Oh, we've got those — the right to pay taxes and the right to serve in the army! Is that fair? No! Should you feel ashamed? Hell yes!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0039.jbp
+GUID: 0af4a1e5956a7d54ea3e435c506c3fc3
+"Right now, Mendev is a smoldering ruin, a realm of devastation whose only riches are patriotism and corpses. We need to save it before it's too late. And we should start with those in charge. We've had enough haughty bureaucrats lining their pockets, and nobles believing themselves superior to others because of their lineage."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0040.jbp
+GUID: 10cc50991d2ef0f49845ce474933df02
+"Normally, you could never get away with something like that. But now, with the end of the Crusade in sight, no one will want to defy you. So we'll kill two birds with one stone — find the new source of funding that we desperately need, and have a grand old time watching the priests being torn between the urge to appear holier than everyone else and the desire to pay less."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0041.jbp
+GUID: ee71e49c8806eaf43b99827d791c5668
+"It was enough, which is why the gods did not let Mendev fall. But when adversity passes, people breathe a sigh of relief, and then they leave the temples — it's just how it always goes. However, even though the crisis in Mendev is behind us, our war rages on. We need to remind everyone that the most terrible evil hasn't yet been defeated, and to unite them around spiritual power instead of worldly authorities as before."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0052.jbp
+GUID: 057d6f3f9ade3fb469d4d82c068b31c2
+"Are you sure there's no one in Mendev more in need of respect than the gods? No one at all? Or are the gods, like, the most downtrodden bunch — is that why you worry about 'em so much?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0053.jbp
+GUID: 396f22c409a700e4fa3d920e7e11f13e
+"No matter how much money we get from Mendev, we'll have to spend it all on personal guards or the crowd will promptly hang us. And the tallest branch will go to Count Arendae in recognition of his irrefutable wisdom."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0054.jbp
+GUID: 3a35132fa4c8118498097a410d57d317
+{n}A spark of worry flashes in Lady Konomi's eyes.{/n} "Is this a good time for reforms of such magnitude? There has been enough disturbance in Mendev already."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0055.jbp
+GUID: e61073e7939af4b48be2c02f51b6b1e6
+{n}In the ensuing silence, it feels like Daeran's whisper can be heard by everyone in Drezen.{/n} "Someone, please tell him that tieflings already have all the rights of Mendevian subjects. Or don't, actually. It's funnier this way."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0056.jbp
+GUID: 066c01952ac11c04090f15c2b71f4cac
+"We took their sons and daughters. Took their gold. Took their bread. Now we're taking their horses. I think we should also take their sticks and rocks — or they'll beat us to death with them soon enough."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0058.jbp
+GUID: 29f5ff16a63c6e54b880c1f4b5ee02bf
+"Many rulers in Avistan answered your call and sent their trusted servants to root out the chaos that had engulfed Mendev. And to ensure that their neighbors didn't carve themselves a piece of our country."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0059.jbp
+GUID: 1162bae4961bf3449bf7e4598883f1e5
+"The nobility has answered your summons and restored order in the kingdom. Your promise to grant them new lands on the territories reclaimed from the demons has met with success... especially among those who have never seen the Worldwound."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0060.jbp
+GUID: 7157168eaa881b1409c233b98eeef649
+"Isgeri forces were deployed across all of Mendev, and have quelled the insurrection. Under their authority, food reserves have been replenished, public services have been restored, and tax collection has resumed."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0061.jbp
+GUID: 7a8c4b445e972e44ba5d1b3ec008789d
+"The common folk of Mendev rose up at your call. In a joint effort, they have solved the most pressing issues and reminded our dear 'allies' of the potential ramifications that their dreams of occupying Mendev might have."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0063.jbp
+GUID: 3f07924707e69864a9b6947fdbeddd12
+"Andoren troops took up positions in the cities. They have stemmed the tide of crime, stamped out sedition, and restored centralized governance of the country's regions. The threat of famine has been completely neutralized."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0064.jbp
+GUID: 2d2a326f28671e945ab18fea6b539355
+"The military detachments you sent across the regions have restored order and suppressed the emerging riots. The entire country is impressed with how you managed to hold the demons back without reinforcements."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0066.jbp
+GUID: 4cd6b22ffc772464092f2185c67a7455
+{n}Galfrey nods at you emphatically.{/n} "I knew I was right to put my faith in you. You have my thanks, {name}."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0067.jbp
+GUID: 93f5b85c8a692c14ebdc356c37676451
+{n}Nara Kor gives a dignified nod.{/n} "And now the troops are preparing to march to Drezen as I promised. Some of our command posts have already been dissolved. Others, the most crucial ones, will remain until the end of the war. But the main forces are headed here to assist you, and once victory is achieved, they will depart Mendev. As you can see, we keep our word."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0068.jbp
+GUID: 11f03d2bbeb1679458c0f26663794e8f
+{n}Galfrey bows her head.{/n} "I am glad to see that you are true to your promises. But I will not be sure of it only when the last soldier of your nation leaves Mendev's borders."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0069.jbp
+GUID: d092b67cb60a4894981c079bdc16bbbd
+{n}Bonvar is smugly patting his sideburns.{/n} "It sounds like we've done some good work. Of course, there's still much room for improvement in Mendev... we could form a parliament, for instance... But we remember our agreement. As such, our main forces are already on their way to Drezen to offer their aid. Once the war ends, we'll depart from Mendev. Please take note that we've done everything as promised."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0070.jbp
+GUID: 56b3896683fc5574a91892aaf4af8ef8
+"I believe it's fair to say that at this moment, Commander, your word carries the greatest weight in Mendev's politics. You could use this influence to accomplish something monumental — for example, you could organize a total military mobilization across the kingdom. What will you do with your newfound power?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0076.jbp
+GUID: 3b150a23e5274b9409eb3b4f6f93da3e
+"Under ordinary circumstances if a noble family were to perish, their lands would go to their heirs by blood — however distant they may be. But I'm willing to change this tradition and take all the estates that have been left without owners. They will be given to those nobles who choose the path of serving Mendev and joined us. Our aristocracy is dying out in this war, but we shall revive it with new blood."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0080.jbp
+GUID: d969a39c518e1eb4ab8f37d9a8661212
+"Looks like politics isn't such a big deal after all. It's just like the gangs on the streets, apart from the cussing. Maybe I should be a diplomat after the war?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081.jbp
+GUID: 7f64a30ceb4bfb046990bccbded7ac75
+"It has been an honor and a pleasure to advise you, Commander. However, I don't think you will need my counsel from here on out. Mendev stands strong, our allies are loyal and reliable. The Diplomatic Council has served its purpose; you don't need it any longer."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0082.jbp
+GUID: 46e6468e97687fb4e9d04bdff34c7831
+"Mendev has suffered heavy losses. Its estates have been desolated, and many noble bloodlines have been cut short. It may go against our customs, but I am willing to pass a reform and offer any noble who swears loyalty to, and enlists in, the Crusade lands and a place in Mendevian aristocracy."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0087.jbp
+GUID: 03134d9842ad72e40b8562a9d7924b56
+"You're like a child. For the sake of a joke you find humorous, you're advising the Commander to go against faith — the only solace people have left in this war-ravaged land."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0088.jbp
+GUID: 00ed970f11989244b9b49925b42c105d
+{n}Bonvar smirks.{/n} "Spoken like a true Andoren. We, too, stand for elected governance. Then why do you loathe us so much?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0089.jbp
+GUID: 5615d4afe0543ba459f2c048a47a652a
+{n}Lann frowns, unconvinced.{/n} "Your goals are decent, it's your methods I have a problem with. It's too early for me to draw any conclusions about you. Leave Mendev for good — then you'll earn my trust. I'll even apologize."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0090.jbp
+GUID: 5df1d6b0741436f4abebcb1e089af844
+"Now don't you go making a sucker outta me, all right? Ya think we don't understand that it's one thing to have these rights on a paper that anyone can wipe their bottom with, but to have them for real — that's a whole different story!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0091.jbp
+GUID: d61950c88a0dfab41b19d7300247dce6
+"I would guess that people have no love for you and your thiefling pals not because of your race, but because you're thieves and crooks to the bone. But don't mind me, who am I to talk? Just some one-horned half-lizard who doesn't know what it's like to be judged on your ancestry."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0092.jbp
+GUID: e7511566fa202034b831e1428d6199f7
+"And if folks treated us nicely, you think we wouldn't show our gratitude? We're not just thieves, you know. We're merchants, guards, lawyers... I mean, clerics, paladins, mages. And if Mendev followed their conscience, you think we tieflings wouldn't repay you for your kindness? Well, we would repay — there, I said it!" {n}Woljif even thumps his chest in excitement.{/n}
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0093.jbp
+GUID: 502850c5ebb91f3408eb62c3a455d11f
+"It would be nice if the Royal Council was composed of those who deserve it. With no regard to family trees, connections, and purse size. The mongrels choose the smartest, bravest, most experienced one among them as their chief. Maybe the uplanders could learn this trick? Or are they too civilized for it?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0094.jbp
+GUID: 3b01be5019e66d24f866ea58bd3263e6
+{n}Woljif sneaks a wink at you and whispers,{/n} "I'll show 'em, chief. For us, and for all of our kind!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0095.jbp
+GUID: 3a2cb2f2ef308af4fbd77d6f4f865b1d
+"Is this all the wisdom of which you are capable, Count? Most lamentable."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0097.jbp
+GUID: f8fb3fa634dcee742b9bb076b19448d1
+"This war has left too many wounds on the body of my nation. It is high time we healed them. Let any who wish to risk their lives for a just cause come to me, and I shall name them my knight and a noble of Mendev."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0008.jbp
+GUID: 47b38df7747ae814c91eed92ffeb91dd
+"Tell me about yourself, Lady Konomi."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0009.jbp
+GUID: 84ddfe54f20b5bf4aae91f48272ada96
+"Kitsune are a rare sight in Mendev."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0013.jbp
+GUID: 4e9a62dc1e0979943985b18691982156
+"What is your role in my army?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0015.jbp
+GUID: e0e977e116f070a43aacc5b52c3f69e7
+"You don't look like a soldier, and you're different from my other advisors."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0017.jbp
+GUID: ddba744fe9427534cbc4ce02aca6d586
+"I have to go. Good day to you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0021.jbp
+GUID: a24c33ab318c17f4ba5dcb8fc22542f6
+"What's the current situation in Mendev?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0022.jbp
+GUID: cf997c49d95e6264abacf51f561020b4
+"I have a question regarding diplomacy."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0025.jbp
+GUID: 75d1e999d6280ad4b9e812298fba81bf
+"I'm not comfortable with the Royal Council imposing its will on me."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0026.jbp
+GUID: a27d84ae5f69cc04295a034715414fe3
+"I have no more questions."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0034.jbp
+GUID: ae72f1e316afbe944a0d2f0d84d541a5
+"What are you reading?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0039.jbp
+GUID: e390f535bc03daa48abde40d681f9bf3
+"Why are you so fascinated by politics? Is this something all kitsune share?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001.jbp
+GUID: 3269417315940ed4daf2a345b5812c4f
+{n}Lady Konomi is engrossed in reading some kind of letter. Upon noticing you, she frowns nervously for a moment, but then greets you with a graceful bow.{/n} "Commander, how may I be of service to you?"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002.jbp
+GUID: bd0fd5f2a10163941a4e01ada9edc850
+{n}Lady Konomi almost begrudgingly looks away from her letter and gives you a polite nod.{/n} "Commander."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0010.jbp
+GUID: 9a397a883c3c0f447948fd10f26cb8fa
+"You are not the first to have taken an interest in my race. Your companion, Nenio, has already... interrogated me. A most amusing individual. Truly, we kitsune are incapable of normalcy. We find our passion and surrender to it entirely, mind and soul. Although, in Nenio's case, I fear that the mind was lost, along with common sense."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0011.jbp
+GUID: b8dcfbd30bd0f9942be9ec3d060bb12e
+"And across all of {g|Avistan}Avistan{/g}. What can I say, I find it more interesting here than back home. Besides, I suspect these lands still have more kitsune diplomats than kitsune commanders." {n}Lady Konomi winks at you.{/n}
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0014.jbp
+GUID: ba4efaac0716c6549998b75d77f51181
+"Oh, don't get me wrong, Commander, but I'm not your soldier. I serve Her Majesty Queen Galfrey. She sent me to head the Diplomatic Council of the Crusade and consult with you on particularly sensitive matters."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0016.jbp
+GUID: 2f4b52dd74dd6a14981d0de2f9b631b0
+"You're right, I'm not a soldier. Warfare has always been too... bloody for my tastes. I prefer the intricate tapestries of politics: proposals with double and triple agendas, clashes of ideologies, and long-term strategizing. But, they say that war is merely a continuation of politics. Which is why my duties have brought me to your headquarters."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0023.jbp
+GUID: 319f94472605d1647b78cae7e5f6d627
+"I am happy to oblige. I'm always willing to talk about my craft."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0027.jbp
+GUID: 6174a4cce0d175b4e8f4db8c145f848b
+"It has been a pleasure to satisfy your curiosity, Commander."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0028.jbp
+GUID: 4014e41c1d763164aaa4ae96efd14cc2
+"Please don't paint the situation in such a bleak light, Commander. The Royal Council does not seek to hinder you, it merely suggests the most sensible course of action. The members of the Royal Council have been serving Her Majesty for many years and have proven their wisdom. While your attention is focused on the war, they think about Mendev's future. Listen to their words, and there will be peace between you."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029.jbp
+GUID: 9980a1ecf3ca24e42ab3b22f858677b5
+"However regrettable it may be to admit, only foreign interference was able to save Mendev from ruin. The garrisons in the cities took authority into their own hands. Robberies were weeded out, and tax collection, order enforcement, and public administration is now being handled by an army of foreigners. However, their actions really have improved the situation. I only hope they won't decide to extend their stay in Mendev once the war is over."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032.jbp
+GUID: 07459f4d09fa81e4b99beea351fb0434
+"Terrible. This crisis is tearing the country apart. The recent turmoil in Nerosyan has split the ruling circles. The cities are teeming with thieves, the provinces are terrorized by highwaymen. Public services are paralyzed, the army is dismayed. And ahead of us is the distinct shadow of an oncoming famine. The nation is feverish, Commander, and only you can save it."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0033.jbp
+GUID: d4ad8d519aff2c1489a0a509d1afc453
+"Things aren't terrible... for a nation that has been at war with a demonic invasion force for a century. The people are weary of taxes, the army continues to pay tributes in blood, and many noble families are dying out — which breeds inheritance disputes."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0035.jbp
+GUID: af7c79e2a6e707e4eb61186206ee9695
+"That is a state secret. But for you, I can offer a hint — every single day, I receive dozens of classified diplomatic missives from all countries supporting the Crusade."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0038.jbp
+GUID: efe7fee421301b84aaff22a3b9dba4cf
+{n}Lady Konomi shrugs.{/n} "I'm a child of a passionate and curious people. We live everywhere, you are just... not always aware of our existence."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0040.jbp
+GUID: 35c3dcd5356d4bc428e70dbf99230463
+"Not at all. However, we kitsune are predators, and our hunting spirit is strong. But, unfortunately, chasing rabbits in the fields is rather boring, vulgar, and unfashionable. Politics is a hunt of a much more dignified sort, refined and captivating. Whenever I pick up the quill to write a letter of protest... oh, I feel like I'm ready to go for my prey's throat! So invigorating!"
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0041.jbp
+GUID: acc85334a689c404b9d682d570f6d131
+"However, the crown stands strong, and its authority remains high. The nobles are ready to follow Her Majesty's orders, and the Royal Council, comprising the closest and most trusted servants of the Queen, governs the nation sensibly and astutely."
+
+World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp
+GUID: 60585f7319a294147a54f440865b21a2
+"Mendev was able to resolve the crisis without outside interference. Crime was suppressed, regional riots were snuffed out, and the authorities in the cities and the capital once again act in unison, following a shared plan. Many brave Mendevians, in their patriotic fervor, are enlisting in the army, and those who cannot hold a weapon are forging our victory on the home front."

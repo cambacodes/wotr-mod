@@ -1,0 +1,5106 @@
+{
+  "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Diplomacy_Officer_dialogue.jbp": {
+    "guid": "a81655ed97277974e947c1aaf9e33525",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "всегда стоит со свитком в руках",
+      "FirstCue": {
+        "Cues": [
+          "!bp_3269417315940ed4daf2a345b5812c4f",
+          "!bp_bd0fd5f2a10163941a4e01ada9edc850"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001.jbp",
+        "guid": "3269417315940ed4daf2a345b5812c4f",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "поклон",
+          "ParentAsset": "a81655ed97277974e947c1aaf9e33525",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "e8b61543-5e98-47ed-b856-e64270ba0734",
+            "m_OwnerString": "3269417315940ed4daf2a345b5812c4f",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "Bow",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_0dc8b8604bb33c846a63f3eb62443674"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Lady Konomi is engrossed in reading some kind of letter. Upon noticing you, she frowns nervously for a moment, but then greets you with a graceful bow.{/n} \"Commander, how may I be of service to you?\""
+      },
+      {
+        "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002.jbp",
+        "guid": "bd0fd5f2a10163941a4e01ada9edc850",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "a81655ed97277974e947c1aaf9e33525",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "c5427492-8ede-4e80-8bc7-1051ac59de6d",
+            "m_OwnerString": "bd0fd5f2a10163941a4e01ada9edc850",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_0dc8b8604bb33c846a63f3eb62443674"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Lady Konomi almost begrudgingly looks away from her letter and gives you a polite nod.{/n} \"Commander.\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
+        "guid": "0dc8b8604bb33c846a63f3eb62443674",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3269417315940ed4daf2a345b5812c4f",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_4e9a62dc1e0979943985b18691982156",
+            "!bp_2905e311d362b654fa5bc49a8e9ee565",
+            "!bp_7e1119c31a3c2804f979d81c1d4dba1c",
+            "!bp_82d6e6891816fde4b99eba34e90a1a39",
+            "!bp_47b38df7747ae814c91eed92ffeb91dd",
+            "!bp_ae72f1e316afbe944a0d2f0d84d541a5",
+            "!bp_cf997c49d95e6264abacf51f561020b4",
+            "!bp_84ddfe54f20b5bf4aae91f48272ada96",
+            "!bp_ddba744fe9427534cbc4ce02aca6d586"
+          ]
+        },
+        "incoming": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001.jbp"
+      },
+      {
+        "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
+        "guid": "0dc8b8604bb33c846a63f3eb62443674",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3269417315940ed4daf2a345b5812c4f",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_4e9a62dc1e0979943985b18691982156",
+            "!bp_2905e311d362b654fa5bc49a8e9ee565",
+            "!bp_7e1119c31a3c2804f979d81c1d4dba1c",
+            "!bp_82d6e6891816fde4b99eba34e90a1a39",
+            "!bp_47b38df7747ae814c91eed92ffeb91dd",
+            "!bp_ae72f1e316afbe944a0d2f0d84d541a5",
+            "!bp_cf997c49d95e6264abacf51f561020b4",
+            "!bp_84ddfe54f20b5bf4aae91f48272ada96",
+            "!bp_ddba744fe9427534cbc4ce02aca6d586"
+          ]
+        },
+        "incoming": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/c3/IvorySanctum/JerribethGreetings/JerribethGreetings_ISanctum_dialog.jbp": {
+    "guid": "80f8dac1bd80ff846ba839fb14ed83b8",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_8a632a5249b3c2541a1381111cae9e37"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": [
+          {
+            "$type": "60ce9f50487c58446aad79d52f8e5e54, PlayCustomMusic",
+            "name": "$PlayCustomMusic$eb5f0e35-3bfb-4212-9756-9477ec2dabac",
+            "MusicEventStart": "MUS_MysteryTheme_Play",
+            "MusicEventStop": "MUS_MysteryTheme_Stop"
+          }
+        ]
+      },
+      "FinishActions": {
+        "Actions": [
+          {
+            "$type": "fc8c0dda384d425087138a6644060968, StopCustomMusic",
+            "name": "$StopCustomMusic$922b31e2-ac4e-4af3-9f81-ead7567972bc"
+          }
+        ]
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001.jbp",
+        "guid": "8a632a5249b3c2541a1381111cae9e37",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "80f8dac1bd80ff846ba839fb14ed83b8",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "285126f8-f314-4a8f-a477-38282da07ef3",
+            "m_OwnerString": "8a632a5249b3c2541a1381111cae9e37",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_10939d0d12eb7fb4da65a58553e19f04",
+              "!bp_6358c34ce5c49544d9566feca769872c"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}A familiar narrow shadow appears before you. The antennae on the creature's head quiver, its hands linked tightly together.{/n} \"You have arrived, Commander,\" {n}comes the high-pitched voice in your head.{/n}"
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0002.jbp",
+        "guid": "10939d0d12eb7fb4da65a58553e19f04",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "если убили Мархевока в винтерсане ИЛИ сказали реинфорс аеона в винтерсане",
+          "ParentAsset": "8a632a5249b3c2541a1381111cae9e37",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "Or",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$9f2053af-c5b1-4af4-b6cd-0c542195ccee",
+                "Not": false,
+                "m_Etude": "!bp_fc03aa45c96a1424680c505627db8144",
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              },
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$43cd941b-913a-4188-a23f-54189459636b",
+                "Not": false,
+                "m_Etude": "!bp_cf180de3790dda84dab3a3a4f910c879",
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "30e1c645-de2c-4859-8397-37d36e5d4afd",
+            "m_OwnerString": "10939d0d12eb7fb4da65a58553e19f04",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_6358c34ce5c49544d9566feca769872c"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"You did me a grave insult at our last meeting. But I still want to speak with you.\""
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0003.jbp",
+        "guid": "6358c34ce5c49544d9566feca769872c",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "10939d0d12eb7fb4da65a58553e19f04",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "e996b4da-e762-4cb6-9db9-1cbf9a0511d6",
+            "m_OwnerString": "6358c34ce5c49544d9566feca769872c",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0003_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_f6a5baf5df275a4418614524a3932e97"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_ab2b55a5c592d754d8997a6f246a2f1d",
+              "!bp_cd47cce2efd882843bb2571a35cda2bd"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"You have discovered my 'castle in the clouds'... although it is a far cry from what it once was.\" {n}{g|Jerribeth}Jerribeth's{/g} voice buzzes with irritation.{/n} \"I have something you need — information and assistance. You can help me in return. Let's talk.\""
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0042.jbp",
+        "guid": "ab2b55a5c592d754d8997a6f246a2f1d",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Если в группе есть кто-то кроме игрока",
+          "ParentAsset": "6358c34ce5c49544d9566feca769872c",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "4874411993c669b48b6ccb90d57a750b, LessThan",
+                "name": "$LessThan$e94f9629-75d9-40dd-9ae0-5f394b7c0b7f",
+                "Not": true,
+                "FloatValues": false,
+                "Value": {
+                  "$type": "594eb1641121be9419363a2f68ab0d7d, CurrentPartySize",
+                  "name": "$CurrentPartySize$7b5eb8d6-7209-437c-acaa-6af43be0d1b9"
+                },
+                "MaxValue": {
+                  "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                  "name": "$IntConstant$a615ada0-d093-49c4-a857-9cf64859af55",
+                  "Value": 2
+                },
+                "FloatValue": null,
+                "FloatMaxValue": null
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "74d54b7a-9311-46ca-9805-1224e38baf55",
+            "m_OwnerString": "ab2b55a5c592d754d8997a6f246a2f1d",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0042_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_f6a5baf5df275a4418614524a3932e97"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_cd47cce2efd882843bb2571a35cda2bd"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"As a gesture of my goodwill, I will even allow your companions to hear our conversation. See, I am eminently reasonable.\""
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/CueSequence_0043.jbp",
+        "guid": "cd47cce2efd882843bb2571a35cda2bd",
+        "type": "BlueprintCueSequence",
+        "data": {
+          "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "ab2b55a5c592d754d8997a6f246a2f1d",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Cues": [
+            "!bp_93dfa9597191a6848b925d964d309fe4"
+          ],
+          "m_Exit": "!bp_6ba82dc2eb175b44e9ac364ee779e3b0"
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0045.jbp",
+        "guid": "93dfa9597191a6848b925d964d309fe4",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "cd47cce2efd882843bb2571a35cda2bd",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "502d4969-be68-4f36-b656-84d163f8aa4f",
+            "m_OwnerString": "93dfa9597191a6848b925d964d309fe4",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0045_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_1b893f7cf2b150e4f8bc2b3c389ba71d",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_c731cb8526887dc49a84daca5816da4c"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"What an interesting example of a demon life form! It's an oolioddroo, a remarkable breed. Did you know that members of this species use their long tongues to lay their eggs inside a sleeping creature? After a certain period, the eggs hatch and have the ability to influence the thought processes of the host!\""
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0046.jbp",
+        "guid": "c731cb8526887dc49a84daca5816da4c",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "93dfa9597191a6848b925d964d309fe4",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "ea14543f-d1ae-4361-b2c9-ad3d43585f53",
+            "m_OwnerString": "c731cb8526887dc49a84daca5816da4c",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0046_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_1b893f7cf2b150e4f8bc2b3c389ba71d",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_9563e66d554938542bba8633f262a209"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Let's see what happens if I put this oolioddroo's tongue in my ear.\" {n}Nenio takes a determined step forward.{/n}"
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0047.jbp",
+        "guid": "9563e66d554938542bba8633f262a209",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "c731cb8526887dc49a84daca5816da4c",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "97e825dc-758d-474c-8dcf-a6a616710d2e",
+            "m_OwnerString": "9563e66d554938542bba8633f262a209",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0047_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Away, get away, creature! I am here to speak to the Commander.\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0005.jbp",
+        "guid": "f6a5baf5df275a4418614524a3932e97",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "6358c34ce5c49544d9566feca769872c",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_df7e1e75015438e4f82cae945b41e53f",
+            "!bp_807cc780b4bdcbe49a69aa179576857d"
+          ]
+        },
+        "incoming": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0003.jbp"
+      },
+      {
+        "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0005.jbp",
+        "guid": "f6a5baf5df275a4418614524a3932e97",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "6358c34ce5c49544d9566feca769872c",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_df7e1e75015438e4f82cae945b41e53f",
+            "!bp_807cc780b4bdcbe49a69aa179576857d"
+          ]
+        },
+        "incoming": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0042.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/c3/Wintersun/BlindCarver/BlindCarver_Wintersun_dialog.jbp": {
+    "guid": "c0a7096d70401a84aae40bc13e4f74cf",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_1e9af5965b5da304c825817c89817c22",
+          "!bp_05d66664080144c4bb8fc08b90cc700b"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001.jbp",
+        "guid": "1e9af5965b5da304c825817c89817c22",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "c0a7096d70401a84aae40bc13e4f74cf",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "b05b5739-bbd6-4a48-b423-f0042827c053",
+            "m_OwnerString": "1e9af5965b5da304c825817c89817c22",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_3ba3a0ff8575be8419159221177c1411",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_59f1321ec585768418d086d7e097081d"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}A woman with a wealth of long dark hair stands by the statue, carefully touching the wood. Her long fingers slide along the smooth surface searching for cracks and scratches. As you approach, the woman startles, tosses her head back, and you see her eye sockets are empty and scabbed over like old scars.{/n} \"Who's there? A stranger? I don't recognize your footsteps...\""
+      },
+      {
+        "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0031.jbp",
+        "guid": "05d66664080144c4bb8fc08b90cc700b",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "c0a7096d70401a84aae40bc13e4f74cf",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "27dbea5d-2648-4b71-b22b-48e446fd87ac",
+            "m_OwnerString": "05d66664080144c4bb8fc08b90cc700b",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Wintersun/BlindCarver/Cue_0031_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_3ba3a0ff8575be8419159221177c1411",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_dc306897f75a31c4aaf9483ebdff0585"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"What do you want with blind Gesmerha, stranger?\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0002.jbp",
+        "guid": "59f1321ec585768418d086d7e097081d",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "1e9af5965b5da304c825817c89817c22",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_7878cbe629d41014da1241adc8270991",
+            "!bp_3523e3ea9f1b83642a418e77a27c6954",
+            "!bp_7e40aa34f49533a42a362d8177e3269a"
+          ]
+        },
+        "incoming": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001.jbp"
+      },
+      {
+        "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0008.jbp",
+        "guid": "dc306897f75a31c4aaf9483ebdff0585",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "b0c40f73b47a904409e4560bc82c5e6d",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_6473f5885afdb6640b049bf73444bc3b",
+            "!bp_fc2c7932ff4e22946b684ce6c1c72fa0",
+            "!bp_62ef92c0c800fe747be0cb14f487bc5a",
+            "!bp_f874f40b24bf83847a60704ef4c8ba09",
+            "!bp_b95ed66ecbf2788458ceb6d533c9a206",
+            "!bp_8f0830dd78251094d80f6add8021ea4f",
+            "!bp_42560f050de48b74ba16b54bd486d5e8",
+            "!bp_03f20d2d218ac2e4a8ce50c0c403e2b9",
+            "!bp_f91e3af33f9d34443be893137bfca2c6",
+            "!bp_d5c7347a0eefc084d8652a72d68057e6"
+          ]
+        },
+        "incoming": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0031.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/PeacefulWoodCarver_Wintersun_dialog.jbp": {
+    "guid": "736b0be04541f5246b41f332ab651f47",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_597b7e82dbec7804490f02048e4bf1ef",
+          "!bp_f3e5dc2716aa0fe41b48c34ff8186f14"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": false,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0001.jbp",
+        "guid": "597b7e82dbec7804490f02048e4bf1ef",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "вход если мы напикали 3 симпатии у нее; она тут дарит игроку уникальный деревяный амулет",
+          "ParentAsset": "736b0be04541f5246b41f332ab651f47",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+                "name": "$FlagUnlocked$6f757c1b-f369-4a0c-97a9-275a21578195",
+                "Not": false,
+                "m_ConditionFlag": "!bp_38a57ef12ef7c6546ad99be7f706b893",
+                "ExceptSpecifiedValues": false,
+                "SpecifiedValues": [
+                  3
+                ]
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "3ce6f04d-6d97-42a2-a709-e0a1070a5d88",
+            "m_OwnerString": "597b7e82dbec7804490f02048e4bf1ef",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_3ba3a0ff8575be8419159221177c1411",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": false,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": [
+              {
+                "$type": "1f1c883ef085c5c4b877eeb4c5da318c, AddItemToPlayer",
+                "name": "$AddItemToPlayer$71ca1f33-183a-4415-bee5-eddaa0363ac0",
+                "m_ItemToGive": "!bp_1bc94bd99a10f7648bd39d8563ca47c9",
+                "Silent": false,
+                "Quantity": 1,
+                "Identify": true,
+                "Equip": false,
+                "EquipOn": null,
+                "PreferredWeaponSet": 0,
+                "ErrorIfDidNotEquip": true
+              }
+            ]
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_7b97983e8fa92744fa711359a8b72c36"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}The blind carver tosses her head back and gives a slight bow.{/n} \"I recognized the sound of your footsteps, Commander. My woodshaping skills are not what they were, but my hands remember what my eyes cannot see. Please, accept this gift as thanks for listening to me and helping the children of Wintersun.\""
+      },
+      {
+        "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0002.jbp",
+        "guid": "f3e5dc2716aa0fe41b48c34ff8186f14",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "736b0be04541f5246b41f332ab651f47",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "2f02d9f8-4c86-4ab7-a2de-156e1c9b04fb",
+            "m_OwnerString": "f3e5dc2716aa0fe41b48c34ff8186f14",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_3ba3a0ff8575be8419159221177c1411",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": false,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_2063ee21356b772408f5c9cfb3ed5bd0"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_7b97983e8fa92744fa711359a8b72c36"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}The blind carver tosses her head back at your approach.{/n} \"Greetings and well met!\""
+      },
+      {
+        "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0013.jbp",
+        "guid": "7b97983e8fa92744fa711359a8b72c36",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "597b7e82dbec7804490f02048e4bf1ef",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "92adc842-7e78-48da-a4b4-46bed123c202",
+            "m_OwnerString": "7b97983e8fa92744fa711359a8b72c36",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0013_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_3ba3a0ff8575be8419159221177c1411",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": false,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_2063ee21356b772408f5c9cfb3ed5bd0"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"I wanted to tell you — our clan has started reviving its old crafts. We have goods to sell. Would you like to take a look?\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/AnswersList_0005.jbp",
+        "guid": "2063ee21356b772408f5c9cfb3ed5bd0",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f3e5dc2716aa0fe41b48c34ff8186f14",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_46fc49da4dfe021469fdf61ad0eeaf45",
+            "!bp_e126356ac4c54860a4e91365420549db",
+            "!bp_e1f0a357f8de84149814f846b677c641",
+            "!bp_89f66933a3e5f674885f57c17665bf92",
+            "!bp_a784e5039914e9544bd4b25081f23ac2",
+            "!bp_cd316e9a851ce5142be306b0d61a2997"
+          ]
+        },
+        "incoming": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0002.jbp"
+      },
+      {
+        "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/AnswersList_0005.jbp",
+        "guid": "2063ee21356b772408f5c9cfb3ed5bd0",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f3e5dc2716aa0fe41b48c34ff8186f14",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_46fc49da4dfe021469fdf61ad0eeaf45",
+            "!bp_e126356ac4c54860a4e91365420549db",
+            "!bp_e1f0a357f8de84149814f846b677c641",
+            "!bp_89f66933a3e5f674885f57c17665bf92",
+            "!bp_a784e5039914e9544bd4b25081f23ac2",
+            "!bp_cd316e9a851ce5142be306b0d61a2997"
+          ]
+        },
+        "incoming": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/Cue_0013.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Jerribeth_Velexia_dialogue.jbp": {
+    "guid": "992c44e6775d87444b562e855fd64af1",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_a1f97de9145c3574ebd2d7f75c3d39c9",
+          "!bp_3857231db61891944999387a4154e9fb"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0002.jbp",
+        "guid": "a1f97de9145c3574ebd2d7f75c3d39c9",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Когда игрок приходит на третье свидание с Велексией\n\nПосле диалог локнется",
+          "ParentAsset": "992c44e6775d87444b562e855fd64af1",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$a0497f37-0059-43e4-9b7a-b60b84831db0",
+                "Not": false,
+                "m_Etude": "!bp_02ffbe686c198854da2d51e72fccb9ca",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "5fff6f68-2225-43d1-a4cf-3fa5643cb64d",
+            "m_OwnerString": "a1f97de9145c3574ebd2d7f75c3d39c9",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_19786fae9c29f9d439e374bb857c2e84"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}The sound of {g|Jerribeth}Jerribeth's{/g} agitated chittering fills your ears.{/n} \"I don't know how adept you are at reading the emotions of others, so I must warn you. You are in danger.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0001.jbp",
+        "guid": "3857231db61891944999387a4154e9fb",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Диалог локается до третьего свидания",
+          "ParentAsset": "992c44e6775d87444b562e855fd64af1",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                "name": "$CueSeen$fe7054b2-fd33-4a56-bd6c-f24aee0ed072",
+                "Not": true,
+                "m_Cue": "!bp_a1f97de9145c3574ebd2d7f75c3d39c9",
+                "CurrentDialog": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "b687f56c-0205-44db-abfb-4a9b4a805c94",
+            "m_OwnerString": "3857231db61891944999387a4154e9fb",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_19786fae9c29f9d439e374bb857c2e84"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}You hear {d|c3 jerribeth lives}Jerribeth's{/d} voice in your mind. She sounds friendly, though slightly wary.{/n} \"So we meet in the Rapture of Rupture. I cannot help but wonder, by what whimsy of fate have our paths crossed again? Why are you in Alushinyrra? More importantly, why are you here? What brings you to the manor where I have taken refuge?\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
+        "guid": "19786fae9c29f9d439e374bb857c2e84",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "a1f97de9145c3574ebd2d7f75c3d39c9",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_1c2ac510641fc1847babb2277d581a32",
+            "!bp_62fbe76a52da40f49951ba2443fdc885",
+            "!bp_6d3822ee9bd458f42beda33770c85ae5",
+            "!bp_75e2dbdaad84a1d418770c7545e646e9",
+            "!bp_83975746ab51d174c8ae9bd3b3b961a9",
+            "!bp_425db1cf7ec99be4e803eefc69b00eba"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0002.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
+        "guid": "19786fae9c29f9d439e374bb857c2e84",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "a1f97de9145c3574ebd2d7f75c3d39c9",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_1c2ac510641fc1847babb2277d581a32",
+            "!bp_62fbe76a52da40f49951ba2443fdc885",
+            "!bp_6d3822ee9bd458f42beda33770c85ae5",
+            "!bp_75e2dbdaad84a1d418770c7545e646e9",
+            "!bp_83975746ab51d174c8ae9bd3b3b961a9",
+            "!bp_425db1cf7ec99be4e803eefc69b00eba"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0001.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Velexia_MainDialogue.jbp": {
+    "guid": "44c7281805fff284e8af6bf4808cd602",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_3850d7abe56fba24fb5acb4b8e0767a6",
+          "!bp_3966bd852576ce14db5d825751da4a81",
+          "!bp_883ec16d197f79e44b0ba66332c4734f",
+          "!bp_57a2435ee794ade4f852f0db1e1ff715"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0001.jbp",
+        "guid": "3850d7abe56fba24fb5acb4b8e0767a6",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "44c7281805fff284e8af6bf4808cd602",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "3723692a-1cf1-4c7d-a8f4-c27e9f4e5336",
+            "m_OwnerString": "3850d7abe56fba24fb5acb4b8e0767a6",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_7f394dd6cd32c44408a59bd08eb1512a"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_0209dca037b369941914fcb6b8dfe2ad"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}The demon that comes to greet you has blond hair and is wearing a modest, but elegant dress. She seems surprisingly friendly. Her soft voice and impeccable manners seem out of place in a city where extreme passions and boundless indulgence prevail over temperance and moderation.{/n} \"A new guest has arrived? How exciting! A mortal from Golarion, if my eyes do not deceive me. What brings you to my manor? This is all very intriguing!\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0048.jbp",
+        "guid": "3966bd852576ce14db5d825751da4a81",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Поднят флаг NobleDemon",
+          "ParentAsset": "44c7281805fff284e8af6bf4808cd602",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$50007e38-205b-4a4d-952d-746941f72cbb",
+                "Not": false,
+                "m_Etude": "!bp_7f2a747b68661bf4e9675ad996ebe285",
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "02669823-4aae-46f5-a631-b8d9a27917e4",
+            "m_OwnerString": "3966bd852576ce14db5d825751da4a81",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0048_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_7f394dd6cd32c44408a59bd08eb1512a"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_0209dca037b369941914fcb6b8dfe2ad"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Look who has graced us with a visit! The Shadowspawn {mf|Lord|Lady}, the recently established leader of the shadow demons! I always knew that Alushinyrra would bow before you, and the title you've claimed with your blood-stained blade proves that I was right.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0020.jbp",
+        "guid": "883ec16d197f79e44b0ba66332c4734f",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Поднят флаг VelexiaTellMyName",
+          "ParentAsset": "44c7281805fff284e8af6bf4808cd602",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$6ad0451c-6203-417f-be8c-3fd6b7a8ccf3",
+                "Not": false,
+                "m_Etude": "!bp_3b66c7303eb2c174e8fa506da99056cc",
+                "NotStarted": false,
+                "Started": true,
+                "Playing": false,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "355f2c5f-1b84-4154-ba0d-5623de16274d",
+            "m_OwnerString": "883ec16d197f79e44b0ba66332c4734f",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0020_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_7f394dd6cd32c44408a59bd08eb1512a"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_0209dca037b369941914fcb6b8dfe2ad"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Vellexia greets you with a graceful wave.{/n} \"Ah, it is you, {name}!\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0039.jbp",
+        "guid": "57a2435ee794ade4f852f0db1e1ff715",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "44c7281805fff284e8af6bf4808cd602",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "0706b8c9-66cd-42b9-bd67-72513bffbee3",
+            "m_OwnerString": "57a2435ee794ade4f852f0db1e1ff715",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0039_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_7f394dd6cd32c44408a59bd08eb1512a"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_0209dca037b369941914fcb6b8dfe2ad"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Vellexia greets you with a graceful wave.{/n} \"Ah, it is you, my dear friend!\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/CueSequence_0056.jbp",
+        "guid": "0209dca037b369941914fcb6b8dfe2ad",
+        "type": "BlueprintCueSequence",
+        "data": {
+          "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3850d7abe56fba24fb5acb4b8e0767a6",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Cues": [
+            "!bp_17201573a5de0b940b5854fbc709ced0",
+            "!bp_8712cd1181b28d94bb2004d525227f95",
+            "!bp_ffd70d52b284db142905840b05ee287c"
+          ],
+          "m_Exit": "!bp_1f31c1bf677e3e848b8731658f1fc9c9"
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0044.jbp",
+        "guid": "17201573a5de0b940b5854fbc709ced0",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Интерапт Герольд",
+          "ParentAsset": "0209dca037b369941914fcb6b8dfe2ad",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$39934e9a-3f2c-4553-9cdb-808e9c176ea5",
+                "Not": true,
+                "m_Etude": "!bp_6fff63cd639565042b9447afa18b8a2b",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "3743cbf4-f9e7-43ad-a7a5-b36ea1355eda",
+            "m_OwnerString": "17201573a5de0b940b5854fbc709ced0",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0044_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": "!bp_ba4d057e32bd2984f969bc781da523ba"
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Vellexia. We have clashed in battle many times. Her claws were always stained with the blood of those she killed on the battlefield. Now, she looks... different. But I am certain that her true nature remains unchanged. She is still violent and dangerous. You must be on your guard, Champion.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0069.jbp",
+        "guid": "8712cd1181b28d94bb2004d525227f95",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "0209dca037b369941914fcb6b8dfe2ad",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+                "name": "$CompanionInParty$4ae66d9e-8948-448c-94f6-60333d1d10a0",
+                "Not": false,
+                "m_companion": "!bp_a352873d37ec6c54c9fa8f6da3a6b3e1",
+                "MatchWhenActive": true,
+                "MatchWhenDetached": false,
+                "MatchWhenRemote": false,
+                "MatchWhenDead": false,
+                "MatchWhenEx": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "21e64c77-bdc3-4b98-b67f-8bdd9e414fd4",
+            "m_OwnerString": "8712cd1181b28d94bb2004d525227f95",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0069_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_4214e0478e09b1149b143b7fc9225d7c"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Vellexia greets Arueshalae with a cordial nod.{/n} \"Sweetheart, you should have told me you were coming! I would have organized a reception to celebrate your return! I must confess, I rather missed having you around. But all is forgiven, and I hope that I can count you among my regular guests once more.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0071.jbp",
+        "guid": "ffd70d52b284db142905840b05ee287c",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "0209dca037b369941914fcb6b8dfe2ad",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "cd35d1f0-7292-48af-a8fa-a3fc177ad9c2",
+            "m_OwnerString": "ffd70d52b284db142905840b05ee287c",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0071_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_1cbbbb892f93c3d439f8417ad7cbb6aa",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_9657daa8188dfc244abd1394ba8bfae5"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Sosiel looks embarrassed. He speaks reluctantly, as if he finds the words difficult.{/n} \"I am sure the heart that beats within your chest is wicked and merciless, but... my goddess demands that I am sincere when I see true beauty, though I dread to ask how many lives such beauty has taken.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0070.jbp",
+        "guid": "4214e0478e09b1149b143b7fc9225d7c",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "8712cd1181b28d94bb2004d525227f95",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "26b266f5-4c51-48dd-843b-821c193369fd",
+            "m_OwnerString": "4214e0478e09b1149b143b7fc9225d7c",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0070_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_a352873d37ec6c54c9fa8f6da3a6b3e1",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_c8cd8cd451fb812488a3964afcee266c"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Arueshalae forces a smile.{/n} \"Thank you for your hospitality, Vellexia. But I doubt that you'll find me very interesting. Things have changed since my last visit. I am a different person now.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0072.jbp",
+        "guid": "9657daa8188dfc244abd1394ba8bfae5",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "ffd70d52b284db142905840b05ee287c",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "c77c0f6e-8779-4a2d-b309-ed6eec6c6b27",
+            "m_OwnerString": "9657daa8188dfc244abd1394ba8bfae5",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0072_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Such a compliment! Sudden and unsophisticated, yet surprisingly delightful! I never thought that words of admiration from a mortal could touch my heart, but... it seems that praise from a cleric of Shelyn can make even a succubus feel flattered.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0058.jbp",
+        "guid": "c8cd8cd451fb812488a3964afcee266c",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "4214e0478e09b1149b143b7fc9225d7c",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "51d80804-4851-414b-b83a-518beeb5f2d0",
+            "m_OwnerString": "c8cd8cd451fb812488a3964afcee266c",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0058_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_a352873d37ec6c54c9fa8f6da3a6b3e1",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_16daec55d13e5fb4ca9ffc6ab4d0c963"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Arueshalae leans toward you and whispers,{/n} \"I have to warn you. Vellexia is much more dangerous than she looks. She knows how to be amicable, but it's only a pretense. Her friendly demeanor is as fake as everything else in this city. If you look behind the mask, you will see someone who is old, cruel, and utterly insane. Someone who adores random acts of senseless violence. Trust me, I... used to know her in my past life.\""
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0059.jbp",
+        "guid": "16daec55d13e5fb4ca9ffc6ab4d0c963",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "c8cd8cd451fb812488a3964afcee266c",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "ce8fb978-9c8c-4f4e-9329-5d2eaaaab38e",
+            "m_OwnerString": "16daec55d13e5fb4ca9ffc6ab4d0c963",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0059_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_766435873b1361c4287c351de194e5f9",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Seriously? You used to swan around grand palaces and rub shoulders with the movers and shakers of demon high society? You were basically a hoity-toity noble, but you left it all behind to sit in some old ruins on Golarion? And you call Vellexia insane?\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
+        "guid": "7f394dd6cd32c44408a59bd08eb1512a",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3850d7abe56fba24fb5acb4b8e0767a6",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_d8c67ceabdc6a004f8dca12597f876e0",
+            "!bp_5da55cb095bd5c04ca320fd8bef50452",
+            "!bp_533536e3a31f6d44192b2977e0c91498",
+            "!bp_2a2e4acfefd4cbe4db782d42d7bc0eb0",
+            "!bp_c63434f6e56c3ad4ab4c66b37b834656",
+            "!bp_0fe0324c6be90b84497df173e3271b39",
+            "!bp_f79724c89cd9ef7469aa6b15190c4e4b"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0001.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
+        "guid": "7f394dd6cd32c44408a59bd08eb1512a",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3850d7abe56fba24fb5acb4b8e0767a6",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_d8c67ceabdc6a004f8dca12597f876e0",
+            "!bp_5da55cb095bd5c04ca320fd8bef50452",
+            "!bp_533536e3a31f6d44192b2977e0c91498",
+            "!bp_2a2e4acfefd4cbe4db782d42d7bc0eb0",
+            "!bp_c63434f6e56c3ad4ab4c66b37b834656",
+            "!bp_0fe0324c6be90b84497df173e3271b39",
+            "!bp_f79724c89cd9ef7469aa6b15190c4e4b"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0048.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
+        "guid": "7f394dd6cd32c44408a59bd08eb1512a",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3850d7abe56fba24fb5acb4b8e0767a6",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_d8c67ceabdc6a004f8dca12597f876e0",
+            "!bp_5da55cb095bd5c04ca320fd8bef50452",
+            "!bp_533536e3a31f6d44192b2977e0c91498",
+            "!bp_2a2e4acfefd4cbe4db782d42d7bc0eb0",
+            "!bp_c63434f6e56c3ad4ab4c66b37b834656",
+            "!bp_0fe0324c6be90b84497df173e3271b39",
+            "!bp_f79724c89cd9ef7469aa6b15190c4e4b"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0020.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
+        "guid": "7f394dd6cd32c44408a59bd08eb1512a",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3850d7abe56fba24fb5acb4b8e0767a6",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_d8c67ceabdc6a004f8dca12597f876e0",
+            "!bp_5da55cb095bd5c04ca320fd8bef50452",
+            "!bp_533536e3a31f6d44192b2977e0c91498",
+            "!bp_2a2e4acfefd4cbe4db782d42d7bc0eb0",
+            "!bp_c63434f6e56c3ad4ab4c66b37b834656",
+            "!bp_0fe0324c6be90b84497df173e3271b39",
+            "!bp_f79724c89cd9ef7469aa6b15190c4e4b"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0039.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Chivarro_dialogue.jbp": {
+    "guid": "70068cbd7746aca48add0715ee1278b8",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_c9339855b3df1cf4daffabcc9c1d6ffa",
+          "!bp_1396960238522c145b71f6334f4c3822",
+          "!bp_a359c42061d698244844ec479381d852",
+          "!bp_f45c844408e5d504a974625ca194a30d"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0194.jbp",
+        "guid": "c9339855b3df1cf4daffabcc9c1d6ffa",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Специальный вход для демона, играющего свой мифик квест в 3 главе\n\nЧиварро припортовалась обратно с новыми врагами, но Йозз ее сейчас остановит\n\nИграется, если демон порешил охранников Чиварро в борделе\nИнтерапт Йозз",
+          "ParentAsset": "70068cbd7746aca48add0715ee1278b8",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$a715e997-1924-46d0-981e-caf5d14b1561",
+                "Not": false,
+                "m_Etude": "!bp_15e0048c7daf0ac4999c2313b58df0e3",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              },
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$36f98ab9-07be-49f3-9ede-7a9d8e127db1",
+                "Not": false,
+                "m_Etude": "!bp_7949ecaa82c9c4b449fbde0c3bf11c35",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "d9eedae6ef48b13479b6e37564c20add",
+              "stringkey": "b614817e-4aef-43d7-b86e-4d1e6dba1e37"
+            }
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_59e13b5f3020b5e4aa05e4bf7bde18ad",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_bbc09eaa0addcdb41a408017f71d1b20"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0221.jbp",
+        "guid": "1396960238522c145b71f6334f4c3822",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Играется в 4 главе если в 3 главе мифик демон нападал на Чиварро и дрался с ее охраной",
+          "ParentAsset": "70068cbd7746aca48add0715ee1278b8",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                "name": "$CueSeen$d8c79ed0-4392-40b4-a87a-693e94db59dc",
+                "Not": false,
+                "m_Cue": "!bp_c9339855b3df1cf4daffabcc9c1d6ffa",
+                "CurrentDialog": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "790a9f54-c051-49ce-b01e-620271e0763b",
+            "m_OwnerString": "1396960238522c145b71f6334f4c3822",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0221_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_5ce68965a500a3142a864c7009b56799"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_68e64a4927e3dc343a9aaf049f820ae0"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Chivarro speaks in a soft purr.{/n} \"Ah, the bloodthirsty mortal. I see you came without Yozz today. How convenient! Ah, I merely jest. I don't hold a grudge for your little trick the last time you were in my establishment. That said, I will not allow such a mess again. I've armed my guards with teleportation wands. If you so much as think of slaying anyone, you'll be back out on the street.\""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0001.jbp",
+        "guid": "a359c42061d698244844ec479381d852",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "70068cbd7746aca48add0715ee1278b8",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "57cab58119d4d974d862b5a93c7d9d46",
+              "stringkey": "aef056e5-3482-4d29-91a3-ca5b728a2596"
+            }
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_594482c2695083344b3699268069aef7"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0002.jbp",
+        "guid": "f45c844408e5d504a974625ca194a30d",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "70068cbd7746aca48add0715ee1278b8",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "78c14ebee51de6a47b1e0a828eb826dd",
+              "stringkey": "ed0ef8e7-6745-455a-a856-ad2ed3e09b93"
+            }
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_5ce68965a500a3142a864c7009b56799"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_68e64a4927e3dc343a9aaf049f820ae0"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/CueSequence_0236.jbp",
+        "guid": "68e64a4927e3dc343a9aaf049f820ae0",
+        "type": "BlueprintCueSequence",
+        "data": {
+          "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f45c844408e5d504a974625ca194a30d",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Cues": [
+            "!bp_28cf8b05c851a7544b64b232cad0134d"
+          ],
+          "m_Exit": "!bp_308bb0261d138c3488f06dad7e016480"
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0081.jbp",
+        "guid": "594482c2695083344b3699268069aef7",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "a359c42061d698244844ec479381d852",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "bde1b17570269c64dae89c8e6d0f54e3",
+              "stringkey": "c151ae0f-417f-45f5-a7b7-0dc4adbd4a82"
+            }
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_562499d73b674af092c21797c7c1a85a",
+              "!bp_ccdd97799622fc448a2f238e2db2bbe6"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0237.jbp",
+        "guid": "28cf8b05c851a7544b64b232cad0134d",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "68e64a4927e3dc343a9aaf049f820ae0",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+                "name": "$CompanionInParty$284e6a14-6bcc-4181-b5c3-f1ce270b53ef",
+                "Not": false,
+                "m_companion": "!bp_0bb1c03b9f7bbcf42bb74478af2c6258",
+                "MatchWhenActive": true,
+                "MatchWhenDetached": false,
+                "MatchWhenRemote": false,
+                "MatchWhenDead": false,
+                "MatchWhenEx": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "350b3065-ea6a-4dad-87f2-43acb63887de",
+            "m_OwnerString": "28cf8b05c851a7544b64b232cad0134d",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0237_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_1de20da66beb8ea4187a35b5911f743a"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"A celebrity in our midst! The gladiator who won his freedom. So that's what you look like under your helmet.\" {n}The demoness licks her lips.{/n} \"I wonder what you look like without clothes on... Have you come here to have a good time? Or are you looking for a new job? You're famous. Our clients would line up to be with you...\""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_2.jbp",
+        "guid": "562499d73b674af092c21797c7c1a85a",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Дать экспы за скип чека",
+          "ParentAsset": "594482c2695083344b3699268069aef7",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                "name": "$UnitClass$58b3ec30-7bef-41de-8a3d-583b896ddb6a",
+                "Not": false,
+                "Unit": {
+                  "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                  "name": "$PlayerCharacter$39ac2e5f-afc4-4451-bbcc-58469412e7a7"
+                },
+                "m_Class": "!bp_15a85e67b7d69554cab9ed5830d0268e",
+                "MinLevel": {
+                  "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                  "name": "$IntConstant$774c3d6a-03c9-49ae-99fd-24f1988759f7",
+                  "Value": 3
+                }
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "741bc5c6-5cd1-4988-89b7-3f3d419c0a79",
+            "m_OwnerString": "562499d73b674af092c21797c7c1a85a",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints\\World\\Dialogs\\c4\\TenThousandDelights\\Chivarro_dialogue\\Cue_2_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": true,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": [
+              {
+                "$type": "db6095c1906d85748b0a8506de7c9dd7, GainExp",
+                "name": "$GainExp$5d85c062-6bf8-456c-9b1f-974e590a1a58",
+                "Encounter": "SkillCheck",
+                "CR": 19,
+                "Modifier": 1.0,
+                "Count": null,
+                "Dummy": false
+              }
+            ]
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_4718ca18a9cf4f54fa3720908c649f00"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}It feels as if someone is touching your mind. Prying fingers are attempting to extract a recent memory, but not very successfully. The wall of the hardened mind of an aeon protects your consciousness from any encroachments.{/n}"
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Check_0075.jbp",
+        "guid": "ccdd97799622fc448a2f238e2db2bbe6",
+        "type": "BlueprintCheck",
+        "data": {
+          "$type": "ab803aaa7a173f84e9172870c15e7493, BlueprintCheck",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "сложно",
+          "ParentAsset": "594482c2695083344b3699268069aef7",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Type": "SaveWill",
+          "DC": 32,
+          "Hidden": false,
+          "DCModifiers": [],
+          "m_Success": "!bp_2592e419d2c1f884bae500ebf498a9bf",
+          "m_Fail": "!bp_454dfd7cea3243a4f9492c96e6fe2bc0",
+          "m_UnitEvaluator": null,
+          "Experience": "NormalExperience"
+        },
+        "text": ""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0238.jbp",
+        "guid": "1de20da66beb8ea4187a35b5911f743a",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "28cf8b05c851a7544b64b232cad0134d",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "232feaa8-f90e-4925-9059-9ad677265dd4",
+            "m_OwnerString": "1de20da66beb8ea4187a35b5911f743a",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0238_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_0bb1c03b9f7bbcf42bb74478af2c6258",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_015492e9d7e765440ae5fa273ad90272"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Shut up, you scum.\" {n}Trever turns away.{/n}"
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0077.jbp",
+        "guid": "4718ca18a9cf4f54fa3720908c649f00",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "2592e419d2c1f884bae500ebf498a9bf",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "6c535864-1257-4ed5-b32a-dd1ec7278d10",
+            "m_OwnerString": "4718ca18a9cf4f54fa3720908c649f00",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0077_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_5ce68965a500a3142a864c7009b56799"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_f966368647e36e840ae9f3eebc63441f",
+              "!bp_68e64a4927e3dc343a9aaf049f820ae0"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}There is mild confusion in the demon's voice.{/n} \"You have an iron will. Few can push me out of their mind with such ease. I saw almost nothing... I'm almost offended. I do, however, respect the power of others. Let your secrets remain yours alone.\""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0240.jbp",
+        "guid": "015492e9d7e765440ae5fa273ad90272",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "1de20da66beb8ea4187a35b5911f743a",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "e80e13ba-4165-4299-a801-802c6f369ccf",
+            "m_OwnerString": "015492e9d7e765440ae5fa273ad90272",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0240_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_9b89390ddcc8f44439d2b69f84276a14"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Ugh, how rude!\""
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0128.jbp",
+        "guid": "f966368647e36e840ae9f3eebc63441f",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "ДЛЯ МИФИК ДЕМОНА В 3 ГЛАВЕ ИСКЛЮЧИТЕЛЬНО\n\nИнтерапт Йозз",
+          "ParentAsset": "4718ca18a9cf4f54fa3720908c649f00",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$8ee3c8e1-2224-486d-8533-5b3bb7460d00",
+                "Not": false,
+                "m_Etude": "!bp_15e0048c7daf0ac4999c2313b58df0e3",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              },
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$6596f92e-d6db-4a20-9a33-ce970c11521b",
+                "Not": false,
+                "m_Etude": "!bp_9a3739370f84b0b4196d0e4d326ea3a8",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "8f329cab-b765-44f2-9d85-9eeaf9aa14d6",
+            "m_OwnerString": "f966368647e36e840ae9f3eebc63441f",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0128_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_59e13b5f3020b5e4aa05e4bf7bde18ad",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_5ce68965a500a3142a864c7009b56799"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_68e64a4927e3dc343a9aaf049f820ae0"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"I wouldn't pry into {mf|his|her} mind if I were you. {mf|He|She} is a guest of Lady Nocticula. If you discover something you shouldn't in {mf|his|her} thoughts, I'll carve a pair of eyes on your pretty face and you'll be weeping blood for all eternity.\" {n}At the demoness's irritated snort, Yozz gives her a charming smile.{/n}"
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0241.jbp",
+        "guid": "9b89390ddcc8f44439d2b69f84276a14",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "015492e9d7e765440ae5fa273ad90272",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "13310273-a2ed-40f2-ad81-2f46c49715ef",
+            "m_OwnerString": "9b89390ddcc8f44439d2b69f84276a14",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0241_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_096fc4a96d675bb45a0396bcaa7aa993",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Now, now, Trever, there's no need to be so rude. Think about it. You've lived an empty, pointless life, offering your loyalty to one master after another. You've gone from paladin to Hellknight, from Hellknight to gladiator... What if whoring in a brothel is your true destiny?\" {n}Watching Trever's fists clench, Daeran holds the pause as long as he can, then adds with a gentle smile,{/n} \"Don't get worked up about it, it was only a friendly jest!\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/AnswersList_0215.jbp",
+        "guid": "bbc09eaa0addcdb41a408017f71d1b20",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "c9339855b3df1cf4daffabcc9c1d6ffa",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_4cd312eae733b7f46ab7aef953ed2bdc",
+            "!bp_30982bb9869216c4182b8f8f72b09d14"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0194.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/AnswersList_0003.jbp",
+        "guid": "5ce68965a500a3142a864c7009b56799",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f95699e141425af4382386dd362e88ec",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_5bfee1ec3b4542043890b92a1dcb75e0",
+            "!bp_35fc87c46e16f384ab35fff12bd63d59",
+            "!bp_15cb33a70d63f334f80763a0ed6a23ed",
+            "!bp_267a1c1b8ce119449b892362e0867b74",
+            "!bp_99d405be21cd4f0e90562cdf6e161083",
+            "!bp_3936d883548d47046a1bd74c475a5c4c",
+            "!bp_20436310c787e0746970264457ff9727",
+            "!bp_f2a5bbf51c8a7f543bd1a43133457867",
+            "!bp_a96d2885e549ae8409083637195be774",
+            "!bp_a48d50d72404aae4697b89995b55029f",
+            "!bp_02363c9226d975b41aea0a4cc9601244",
+            "!bp_fbeb4c016d0f7e9409b6de129e8a5e3e",
+            "!bp_571ca108ea77c924b960412f2192e364",
+            "!bp_d7b5c149f6e053a4a8d7bc7233e2e6c4",
+            "!bp_14d2ab4ba2c7b1a4ea406cde156b274f",
+            "!bp_9acffa7cd562c2c49b8d08d6fcc8520c"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0221.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/AnswersList_0003.jbp",
+        "guid": "5ce68965a500a3142a864c7009b56799",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f95699e141425af4382386dd362e88ec",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_5bfee1ec3b4542043890b92a1dcb75e0",
+            "!bp_35fc87c46e16f384ab35fff12bd63d59",
+            "!bp_15cb33a70d63f334f80763a0ed6a23ed",
+            "!bp_267a1c1b8ce119449b892362e0867b74",
+            "!bp_99d405be21cd4f0e90562cdf6e161083",
+            "!bp_3936d883548d47046a1bd74c475a5c4c",
+            "!bp_20436310c787e0746970264457ff9727",
+            "!bp_f2a5bbf51c8a7f543bd1a43133457867",
+            "!bp_a96d2885e549ae8409083637195be774",
+            "!bp_a48d50d72404aae4697b89995b55029f",
+            "!bp_02363c9226d975b41aea0a4cc9601244",
+            "!bp_fbeb4c016d0f7e9409b6de129e8a5e3e",
+            "!bp_571ca108ea77c924b960412f2192e364",
+            "!bp_d7b5c149f6e053a4a8d7bc7233e2e6c4",
+            "!bp_14d2ab4ba2c7b1a4ea406cde156b274f",
+            "!bp_9acffa7cd562c2c49b8d08d6fcc8520c"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0002.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/AnswersList_0003.jbp",
+        "guid": "5ce68965a500a3142a864c7009b56799",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f95699e141425af4382386dd362e88ec",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_5bfee1ec3b4542043890b92a1dcb75e0",
+            "!bp_35fc87c46e16f384ab35fff12bd63d59",
+            "!bp_15cb33a70d63f334f80763a0ed6a23ed",
+            "!bp_267a1c1b8ce119449b892362e0867b74",
+            "!bp_99d405be21cd4f0e90562cdf6e161083",
+            "!bp_3936d883548d47046a1bd74c475a5c4c",
+            "!bp_20436310c787e0746970264457ff9727",
+            "!bp_f2a5bbf51c8a7f543bd1a43133457867",
+            "!bp_a96d2885e549ae8409083637195be774",
+            "!bp_a48d50d72404aae4697b89995b55029f",
+            "!bp_02363c9226d975b41aea0a4cc9601244",
+            "!bp_fbeb4c016d0f7e9409b6de129e8a5e3e",
+            "!bp_571ca108ea77c924b960412f2192e364",
+            "!bp_d7b5c149f6e053a4a8d7bc7233e2e6c4",
+            "!bp_14d2ab4ba2c7b1a4ea406cde156b274f",
+            "!bp_9acffa7cd562c2c49b8d08d6fcc8520c"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0077.jbp"
+      },
+      {
+        "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/AnswersList_0003.jbp",
+        "guid": "5ce68965a500a3142a864c7009b56799",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f95699e141425af4382386dd362e88ec",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_5bfee1ec3b4542043890b92a1dcb75e0",
+            "!bp_35fc87c46e16f384ab35fff12bd63d59",
+            "!bp_15cb33a70d63f334f80763a0ed6a23ed",
+            "!bp_267a1c1b8ce119449b892362e0867b74",
+            "!bp_99d405be21cd4f0e90562cdf6e161083",
+            "!bp_3936d883548d47046a1bd74c475a5c4c",
+            "!bp_20436310c787e0746970264457ff9727",
+            "!bp_f2a5bbf51c8a7f543bd1a43133457867",
+            "!bp_a96d2885e549ae8409083637195be774",
+            "!bp_a48d50d72404aae4697b89995b55029f",
+            "!bp_02363c9226d975b41aea0a4cc9601244",
+            "!bp_fbeb4c016d0f7e9409b6de129e8a5e3e",
+            "!bp_571ca108ea77c924b960412f2192e364",
+            "!bp_d7b5c149f6e053a4a8d7bc7233e2e6c4",
+            "!bp_14d2ab4ba2c7b1a4ea406cde156b274f",
+            "!bp_9acffa7cd562c2c49b8d08d6fcc8520c"
+          ]
+        },
+        "incoming": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0128.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/KyanaWelcome_SeelahQ2_dialog.jbp": {
+    "guid": "029fe2bf51b828b46b8106e833ca6461",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_0bb8e464eb1a6aa458e8d5dba62f5413"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001.jbp",
+        "guid": "0bb8e464eb1a6aa458e8d5dba62f5413",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "029fe2bf51b828b46b8106e833ca6461",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "3cafc806-3d1e-41fa-b697-51c1d330892b",
+            "m_OwnerString": "0bb8e464eb1a6aa458e8d5dba62f5413",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_180b0eaa5dce387458d2ebf0ee943985",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "CalmShort05",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_1a6b39f7e8ab2084db500b100091d802"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}A slender young woman in a flowing dress walks toward you. The first thing you notice is her eyes — they are a striking blue-green.{/n} \"Welcome, travelers, to the secret-steeped land of {g|Ustalav}Ustalav{/g}! You have come to the kingdom of grim mysteries and exquisite secrets. I, the vampire princess, am delighted to see you in my castle!\" {n}After a pause, the girl smiles coyly,{/n} \"I'm glad to finally meet you, Commander, Seelah. I am Kiana, soon to be the wife of that unfortunate knight who invited you here.\""
+      },
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0002.jbp",
+        "guid": "1a6b39f7e8ab2084db500b100091d802",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "0bb8e464eb1a6aa458e8d5dba62f5413",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "0559a428-8d08-470b-9965-034bb0d2e517",
+            "m_OwnerString": "1a6b39f7e8ab2084db500b100091d802",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_e7626bcfe14a52e47990346b93a112d2"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Seelah rolls her eyes.{/n} \"Horrible! Imagine walking through the Worldwound, and then — bam! — you're in {g|Ustalav}Ustalav{/g}! I'm not even sure if a paladin is allowed to feast with a vampire princess.\""
+      },
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0003.jbp",
+        "guid": "e7626bcfe14a52e47990346b93a112d2",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Арсиноя",
+          "ParentAsset": "1a6b39f7e8ab2084db500b100091d802",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "3c6bcb87-76db-40ad-971e-ac60f560f0f8",
+            "m_OwnerString": "e7626bcfe14a52e47990346b93a112d2",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0003_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_a609ed9b2205d034bb3bb04d2a255681",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_466c4a8957da5f14fa958d1718b4a552"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"It's lucky you are not a follower of Pharasma, valiant Seelah,\" {n}Arsinoe, the Drezen priestess of Abadar, is a short distance away from the happy bride.{/n} \"Although, I'll admit, I'm not used to feasting with the undead either.\""
+      },
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004.jbp",
+        "guid": "466c4a8957da5f14fa958d1718b4a552",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "e7626bcfe14a52e47990346b93a112d2",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "7841b453-df78-4bec-9758-e8daf7622dc4",
+            "m_OwnerString": "466c4a8957da5f14fa958d1718b4a552",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_180b0eaa5dce387458d2ebf0ee943985",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "CalmShort02",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_ad91a2aed6132554782ca2ad10a1ee2a"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Oh, stop it! My friends and I are completely harmless 'vampires.' We won't bite!\" {n}Kiana laughs musically.{/n} \"Truth be told, we chose the theme of {g|Ustalav}Ustalav{/g} because it lets us wear beautiful dresses, light candles, and drink red wine all evening, pretending that it's blood. I personally can't think of a better way to celebrate my wedding!\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/AnswersList_0005.jbp",
+        "guid": "ad91a2aed6132554782ca2ad10a1ee2a",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "466c4a8957da5f14fa958d1718b4a552",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_772da6e7fa7d0bf4ab971406ba139b9e",
+            "!bp_79b1ad542d0e74e4383b0576bec688ba",
+            "!bp_4c02df5422cc1af4b90777c41df51689",
+            "!bp_9c234a9ae99a6824c819127e1f861a25",
+            "!bp_538ca7d4c794f68439704740874c241a",
+            "!bp_450b8ab7c65b30e47a0f932697a1e801",
+            "!bp_8ff6e92c332bf78498f7c27581ca4472"
+          ]
+        },
+        "incoming": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0004.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/ElanKianaAftermath_SeelahQ3_diaog.jbp": {
+    "guid": "27bc5f6c94108a446b8273800f7da48b",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_81109ea8fb20dbc478cf67116740f4a1"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": [
+          {
+            "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+            "name": "$UnlockFlag$50d42513-ab5c-4c89-8f6a-bdc7edfaaaef",
+            "m_flag": "!bp_97b3254015284346ba32f1749cfae0b0",
+            "flagValue": 0
+          }
+        ]
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
+        "guid": "81109ea8fb20dbc478cf67116740f4a1",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "27bc5f6c94108a446b8273800f7da48b",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "b261aab4-14ff-41e7-bd72-21aeeab7df44",
+            "m_OwnerString": "81109ea8fb20dbc478cf67116740f4a1",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": true,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_3f8b3b4fbd6d18d44b91a34c88e2208a"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Elan and Kiana fall into each other's arms, heedless of everyone else around them.{/n}"
+      },
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0002.jbp",
+        "guid": "3f8b3b4fbd6d18d44b91a34c88e2208a",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "81109ea8fb20dbc478cf67116740f4a1",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "540230e3-f605-411d-8189-0f5565b9c1e9",
+            "m_OwnerString": "3f8b3b4fbd6d18d44b91a34c88e2208a",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_a237e3aaab7c937468829bba3578770d"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Seelah smiles broadly.{/n} \"Come on. Let's give them some space.\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/AnswersList_0003.jbp",
+        "guid": "a237e3aaab7c937468829bba3578770d",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "3f8b3b4fbd6d18d44b91a34c88e2208a",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_245ec8482e1f37b4a8702e54430c5aa7",
+            "!bp_f98ed39efa89ddd4cac1d84a195608a9"
+          ]
+        },
+        "incoming": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0002.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/KianaAloneAftermath_SeelahQ3_dialog.jbp": {
+    "guid": "6a197b1557eb815458304ec649228fb8",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_aebbc1845e827dd4da4e28014e7b4162"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": [
+          {
+            "$type": "60ce9f50487c58446aad79d52f8e5e54, PlayCustomMusic",
+            "name": "$PlayCustomMusic$3c7ebc59-be00-4bb9-8fa0-e2b30e2efe3f",
+            "MusicEventStart": "MUS_FriendsDeath_Play",
+            "MusicEventStop": "MUS_FriendsDeath_Stop"
+          }
+        ]
+      },
+      "FinishActions": {
+        "Actions": [
+          {
+            "$type": "fc8c0dda384d425087138a6644060968, StopCustomMusic",
+            "name": "$StopCustomMusic$5dbe86c2-4451-4bfd-927e-207de32363fb"
+          },
+          {
+            "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+            "name": "$UnlockFlag$196a861a-d26c-4e67-99cc-15a0eeefe268",
+            "m_flag": "!bp_b5dff99d2f8140e8bf23fb30048db101",
+            "flagValue": 0
+          }
+        ]
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
+        "guid": "aebbc1845e827dd4da4e28014e7b4162",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "киана",
+          "ParentAsset": "6a197b1557eb815458304ec649228fb8",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c",
+            "m_OwnerString": "aebbc1845e827dd4da4e28014e7b4162",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_180b0eaa5dce387458d2ebf0ee943985",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_cdc3d76b9c6dea74e8773f9eb291aa31"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Kiana appears to be in shock. Her hands are clasped to her chest, and there's a dazed look in her eyes.{/n} \"I was a wife for less than a minute... and now I'm a widow.\""
+      },
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0002.jbp",
+        "guid": "cdc3d76b9c6dea74e8773f9eb291aa31",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Арсиноя",
+          "ParentAsset": "aebbc1845e827dd4da4e28014e7b4162",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "d4517ee5-10fb-44e7-9a34-0ab93f69a881",
+            "m_OwnerString": "cdc3d76b9c6dea74e8773f9eb291aa31",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_a609ed9b2205d034bb3bb04d2a255681",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_e2e8bf92034eccd469d335938f7d0500"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Arsinoe, who had been speaking to Kiana in a low, compassionate voice, turns her attention to you.{/n} \"I told her about Elan.\""
+      },
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0003.jbp",
+        "guid": "e2e8bf92034eccd469d335938f7d0500",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "cdc3d76b9c6dea74e8773f9eb291aa31",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "5f1c23ab-7368-4e61-8c46-9000dfa3aea6",
+            "m_OwnerString": "e2e8bf92034eccd469d335938f7d0500",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0003_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_5c09123a07ee1e047a292c542cce6b74"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Kiana, I know that words aren't much comfort in a time like this, but I just wanted to say... it's all right if you blame me for what happened. I understand. You can yell or scream at me, if that will make you feel better. Or if you just want to talk and cry, and get it all off your chest — I'm here for you. If there's anything I can do to help, anything at all — please, just say the word.\""
+      },
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0004.jbp",
+        "guid": "5c09123a07ee1e047a292c542cce6b74",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Киана",
+          "ParentAsset": "e2e8bf92034eccd469d335938f7d0500",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "cb16d5c5-6f75-4238-9d9d-957abc3aa5a8",
+            "m_OwnerString": "5c09123a07ee1e047a292c542cce6b74",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0004_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_180b0eaa5dce387458d2ebf0ee943985",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_9ca0a745692ef6f45ab13948b67c7fa9"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Kiana smiles sadly.{/n} \"I married a crusader. I knew the risks. I understood that this might happen someday... I just didn't expect it to be so soon.\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/AnswersList_0005.jbp",
+        "guid": "9ca0a745692ef6f45ab13948b67c7fa9",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "5c09123a07ee1e047a292c542cce6b74",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_10746ab3342ce204db8ee0ab96480093",
+            "!bp_23af35c5304d5ef419178ba0e6f050eb"
+          ]
+        },
+        "incoming": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0004.jbp"
+      }
+    ]
+  },
+  "World/Dialogs/NPC_Common/VendorArsinoe/VendorArsinoe_dialogue.jbp": {
+    "guid": "d5adc0bbbad5f054098b527cf9cc64f1",
+    "data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "FirstCue": {
+        "Cues": [
+          "!bp_b29c0641d9743c5438e86e7debff4e2c",
+          "!bp_e54f190cb5b6feb429aa3c617c9a0dec",
+          "!bp_4a72acf84409b124b912353f8da6d5b0",
+          "!bp_0e83a74392bf2bb4b9a7db87b6e158ea",
+          "!bp_19a97a51ab07206448f2409d3a1a6c71"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "initial_cues": [
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0040.jbp",
+        "guid": "b29c0641d9743c5438e86e7debff4e2c",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "6 глава",
+          "ParentAsset": "d5adc0bbbad5f054098b527cf9cc64f1",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$93d702fc-49c4-414c-958b-abbf1ce40f71",
+                "Not": false,
+                "m_Etude": "!bp_41bf413e0fa2ea34b937d4445edd5f89",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "e28c992a-626a-4372-ab04-5bef65bcad58",
+            "m_OwnerString": "b29c0641d9743c5438e86e7debff4e2c",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/NPC_Common/VendorArsinoe/Cue_0040_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_210c59bcc51896c4ebcb3d03ad112b31"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}Arsinoe casts a disapproving glance at the fortress.{/n} \"The demons have completely neglected the fortifications here. They are in complete disarray. However, this plays right into our hands.\""
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0023.jbp",
+        "guid": "e54f190cb5b6feb429aa3c617c9a0dec",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "Если игрок локустик",
+          "ParentAsset": "d5adc0bbbad5f054098b527cf9cc64f1",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$a11c207d-94a1-4208-996c-f559dd2022ae",
+                "Not": false,
+                "m_Etude": "!bp_439e63fed37f52048887d98f99255e40",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "ffbf0d11-2de1-4b54-948a-ead6b6694b5e",
+            "m_OwnerString": "e54f190cb5b6feb429aa3c617c9a0dec",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/NPC_Common/VendorArsinoe/Cue_0023_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_ecaf5cfe8087a4f45a2269974f4885c9"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}The aasimar looks grimly at you.{/n} \"My services are still at your disposal, for this is the order of my god.\""
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0027.jbp",
+        "guid": "4a72acf84409b124b912353f8da6d5b0",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "не локуст, 5 глава",
+          "ParentAsset": "d5adc0bbbad5f054098b527cf9cc64f1",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$2f2bb4ae-d0ac-4abe-bb11-9e0f81d56c1b",
+                "Not": false,
+                "m_Etude": "!bp_5b01aa690202e584888dfc600a4aac0a",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              },
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$a5426530-ce60-45c1-a58d-31c46f03f206",
+                "Not": true,
+                "m_Etude": "!bp_439e63fed37f52048887d98f99255e40",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Text": {
+            "m_Key": "a85af53f-a012-455b-b5e3-4eff52609109",
+            "m_OwnerString": "4a72acf84409b124b912353f8da6d5b0",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/NPC_Common/VendorArsinoe/Cue_0027_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_ecaf5cfe8087a4f45a2269974f4885c9"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"Commander, I'm glad the Abyss did not take you.\""
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0001.jbp",
+        "guid": "0e83a74392bf2bb4b9a7db87b6e158ea",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "d5adc0bbbad5f054098b527cf9cc64f1",
+          "ShowOnce": true,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "14b48dd9-823b-4c15-b8a7-91d1dda9cbee",
+            "m_OwnerString": "0e83a74392bf2bb4b9a7db87b6e158ea",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/NPC_Common/VendorArsinoe/Cue_0001_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_ecaf5cfe8087a4f45a2269974f4885c9"
+          ],
+          "Continue": {
+            "Cues": [
+              "!bp_e54f190cb5b6feb429aa3c617c9a0dec",
+              "!bp_4a72acf84409b124b912353f8da6d5b0"
+            ],
+            "Strategy": "First"
+          }
+        },
+        "text": "{n}A woman in gold-embroidered cleric's robes greets you with a polite bow. Her eyes, the color of molten gold, gleam brightly in her dusky face.{/n} \"Greetings, Commander! My name is Arsinoe. I am a messenger from the temple of {g|Abadar}Abadar{/g} in {g|Absalom}Absalom{/g}, and I came here assuming the defenders of the fortress could use the services of a cleric.\""
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0002.jbp",
+        "guid": "19a97a51ab07206448f2409d3a1a6c71",
+        "type": "BlueprintCue",
+        "data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "d5adc0bbbad5f054098b527cf9cc64f1",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "0f4669a8-6cab-4b21-a607-c97502f37014",
+            "m_OwnerString": "19a97a51ab07206448f2409d3a1a6c71",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/NPC_Common/VendorArsinoe/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_ecaf5cfe8087a4f45a2269974f4885c9"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "text": "\"How can I help you?\""
+      }
+    ],
+    "initial_answer_lists": [
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0041.jbp",
+        "guid": "210c59bcc51896c4ebcb3d03ad112b31",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "b29c0641d9743c5438e86e7debff4e2c",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_239f1982b2d5d254493e0f041f897359",
+            "!bp_c8645f83e10b309419f87a70645017ac",
+            "!bp_62ee095bc1f26d84d8f5db1f7b6037dd"
+          ]
+        },
+        "incoming": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0040.jbp"
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+        "guid": "ecaf5cfe8087a4f45a2269974f4885c9",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "19a97a51ab07206448f2409d3a1a6c71",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_3e0d07b46fad7e640873526143fd1f5d",
+            "!bp_ae05486db656bea4daf421003d71682f",
+            "!bp_a0e745124f165d144b6b22ca7a29fd1b",
+            "!bp_41d9638f7d971164fab4efdbbbffbe70",
+            "!bp_c9a62004d2c47454cbe6aa532e8408e3",
+            "!bp_96a453d24c6f371469e78ad8d1eb7a56",
+            "!bp_ec6890c861bd04f48b00384395af6d61",
+            "!bp_3037ff9051ddb5c40882d8dd516f9d4f",
+            "!bp_d264f9cb758e4324a9e0a5ff862590f7",
+            "!bp_3ddc1b6a8ca280e4b9e26b0cd9d0c47a",
+            "!bp_b02cf7beb0ab38147b46c662d8b2f51a",
+            "!bp_7da37eb16e134f34e8922e0485e06df1",
+            "!bp_5fc7ab938bb002f4fb9ae7a42cafbadc",
+            "!bp_bec0faf8c30316d4f914a21f97fc8ae7"
+          ]
+        },
+        "incoming": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0023.jbp"
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+        "guid": "ecaf5cfe8087a4f45a2269974f4885c9",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "19a97a51ab07206448f2409d3a1a6c71",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_3e0d07b46fad7e640873526143fd1f5d",
+            "!bp_ae05486db656bea4daf421003d71682f",
+            "!bp_a0e745124f165d144b6b22ca7a29fd1b",
+            "!bp_41d9638f7d971164fab4efdbbbffbe70",
+            "!bp_c9a62004d2c47454cbe6aa532e8408e3",
+            "!bp_96a453d24c6f371469e78ad8d1eb7a56",
+            "!bp_ec6890c861bd04f48b00384395af6d61",
+            "!bp_3037ff9051ddb5c40882d8dd516f9d4f",
+            "!bp_d264f9cb758e4324a9e0a5ff862590f7",
+            "!bp_3ddc1b6a8ca280e4b9e26b0cd9d0c47a",
+            "!bp_b02cf7beb0ab38147b46c662d8b2f51a",
+            "!bp_7da37eb16e134f34e8922e0485e06df1",
+            "!bp_5fc7ab938bb002f4fb9ae7a42cafbadc",
+            "!bp_bec0faf8c30316d4f914a21f97fc8ae7"
+          ]
+        },
+        "incoming": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0027.jbp"
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+        "guid": "ecaf5cfe8087a4f45a2269974f4885c9",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "19a97a51ab07206448f2409d3a1a6c71",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_3e0d07b46fad7e640873526143fd1f5d",
+            "!bp_ae05486db656bea4daf421003d71682f",
+            "!bp_a0e745124f165d144b6b22ca7a29fd1b",
+            "!bp_41d9638f7d971164fab4efdbbbffbe70",
+            "!bp_c9a62004d2c47454cbe6aa532e8408e3",
+            "!bp_96a453d24c6f371469e78ad8d1eb7a56",
+            "!bp_ec6890c861bd04f48b00384395af6d61",
+            "!bp_3037ff9051ddb5c40882d8dd516f9d4f",
+            "!bp_d264f9cb758e4324a9e0a5ff862590f7",
+            "!bp_3ddc1b6a8ca280e4b9e26b0cd9d0c47a",
+            "!bp_b02cf7beb0ab38147b46c662d8b2f51a",
+            "!bp_7da37eb16e134f34e8922e0485e06df1",
+            "!bp_5fc7ab938bb002f4fb9ae7a42cafbadc",
+            "!bp_bec0faf8c30316d4f914a21f97fc8ae7"
+          ]
+        },
+        "incoming": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0001.jbp"
+      },
+      {
+        "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+        "guid": "ecaf5cfe8087a4f45a2269974f4885c9",
+        "data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "19a97a51ab07206448f2409d3a1a6c71",
+          "MythicRequirement": "None",
+          "AlignmentRequirement": "None",
+          "ShowOnce": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Answers": [
+            "!bp_3e0d07b46fad7e640873526143fd1f5d",
+            "!bp_ae05486db656bea4daf421003d71682f",
+            "!bp_a0e745124f165d144b6b22ca7a29fd1b",
+            "!bp_41d9638f7d971164fab4efdbbbffbe70",
+            "!bp_c9a62004d2c47454cbe6aa532e8408e3",
+            "!bp_96a453d24c6f371469e78ad8d1eb7a56",
+            "!bp_ec6890c861bd04f48b00384395af6d61",
+            "!bp_3037ff9051ddb5c40882d8dd516f9d4f",
+            "!bp_d264f9cb758e4324a9e0a5ff862590f7",
+            "!bp_3ddc1b6a8ca280e4b9e26b0cd9d0c47a",
+            "!bp_b02cf7beb0ab38147b46c662d8b2f51a",
+            "!bp_7da37eb16e134f34e8922e0485e06df1",
+            "!bp_5fc7ab938bb002f4fb9ae7a42cafbadc",
+            "!bp_bec0faf8c30316d4f914a21f97fc8ae7"
+          ]
+        },
+        "incoming": "World/Dialogs/NPC_Common/VendorArsinoe/Cue_0002.jbp"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1827 @@
+[
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/AngelMythic_BE/Cue_0008.jbp",
+    "guid": "847ed9e7dbbc909438b12d5aae023240",
+    "text": "There they are, up ahead, in the gloom of the cave. What are they waiting for? Are they afraid to draw any closer? Do they believe I am about to die from their traitorous blows? Next to me — a quiet moan. A girl with a golden braid lies on the rocks, clutching her slashed side. She refused to join with the traitors and paid dearly for it. I could have tried to run, but I will not! Whilst I still have strength, I must..."
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/AngelMythic_BE/Cue_0015.jbp",
+    "guid": "662a669ad0724d44ea7d4cb6d502548b",
+    "text": "The frenzy of foreign thoughts comes faster and faster, like a rushing river, and images flash by one after another. A priestess in colorful robes observing the stars. A young female paladin praying, clutching her glowing sword. A majestic golden-winged {g|angel}angel{/g} gazing into the distance, his face covered by a helmet but his voice ringing clear: \"Only if you're willing, and only if you're ready. There is no going back.\""
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MongrelLabyrinth/RadianceFound/Cue_0003.jbp",
+    "guid": "413779fe71c54d7295cb327bff8dcef9",
+    "text": "{n}Seelah stares at you in amazement.{/n} \"Just look at that! The sword seemed to greet you! It senses the hand of a {d|c0 paladin radiance}paladin{/d}. And it seems relieved that we're freeing it from the demons' clutches. A good omen and a good find!\""
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MongrelLabyrinth/SavamelehHosillaDialogue/Cue_0002.jbp",
+    "guid": "3786dd3030d352741ad18c82efbf2cb9",
+    "text": "{n}Your companions writhe in agony: one clutches at their head, another doubles over. You feel saliva pool in your mouth. The metallic tang awakens hunger in you. The hunger turns to rage. This winged filth dares to try to bind you to its will? It dares to tempt you with the sweet scent of meat, untainted by corruption! The wretch must die! Die!{/n}"
+  },
+  {
+    "path": "World/Dialogs/c2_vs/GibberingSwarm/NurahDialog/Cue_0027.jbp",
+    "guid": "fdd7f0aa5a1f90441811ed636a260555",
+    "text": "{n}Irabeth approaches you quickly and clutches Anevia's hand.{/n} \"Commander, my squad has suffered many losses, but we completed the mission as best we could.\""
+  },
+  {
+    "path": "World/Dialogs/c2_vs/LostChapel/Anevia_Start/Answer_0054.jbp",
+    "guid": "ff04883ece0a38745adc52dfd68d0ffc",
+    "text": "\"I can't leave people in the clutches of those monsters.\""
+  },
+  {
+    "path": "World/Dialogs/c2_vs/LostChapel/Companion_Ember/Cue_0037.jbp",
+    "guid": "20a9fb7961786ca4ab55c370eae1dd2b",
+    "text": "\"I think the old fellow is right. You or I could heal an ordinary wound, but we stand little chance against a ghoul bite. Come along, Ember — the longer we stand around out in the open like this, the more likely we are to end up back in the gargoyles' clutches.\" {n}Daeran looks disheveled and slightly disoriented, and his shoulders tremble with excess tension.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c2_vs/LostChapel/Sosiel_Dead_Hellknight/Cue_0026.jbp",
+    "guid": "ac6ce2001dc2f7b4a9d8c4a45dbc6d22",
+    "text": "\"I don't know by what miracle she escaped the gargoyles' clutches. I don't know if any Hellknights survived besides her. But she helped us escape.\""
+  },
+  {
+    "path": "World/Dialogs/c3/DragonsGraveyardBackerQuest/LatimasDoor/Cue_0018.jbp",
+    "guid": "cc26a55581af69d4cbf9e15ca65ac25d",
+    "text": "\"Would you look at this! Ancient draconic runes! Even I can only guess at their meaning. Simply astonishing! How many centuries old is this place?\" {n}Lathimas grins as if he can't quite believe his own luck.{/n} \"And do you see this image? This is {g|Apsu}Apsu{/g} spreading his wings over a clutch of glowing dragon eggs! His spouse is supposed to be depicted right here next to him, but the image has been defaced. Such blasphemy!\""
+  },
+  {
+    "path": "World/Dialogs/c3/Drezen_C3/Veskavor_New_Queen/Cue_0007.jbp",
+    "guid": "0b1696d6d1e43514699a20fc932be96a",
+    "text": "{n}This creature is very young and — for now — utterly defenseless. Her weak chittering causes not madness, but only vague unease. The eggs in the clutch can be counted on two hands, and the translucent chitin covering her body is so delicate that it could be crushed under your boot. But who knows how quickly she will grow, and how much time she will need to repeat in Drezen the nightmare that befell you during the attack?{/n}"
+  },
+  {
+    "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/Cue_0016.jbp",
+    "guid": "99a468ad5f441dd42b16f1a9bc1bf3d3",
+    "text": "{n}After peering at the eggs, Greybor reaches for his weapon.{/n} \"That's a clutch of dragon eggs. They're almost ready to hatch — we need to destroy them.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Aeon/AeonDevilCompanion/Cue_8.jbp",
+    "guid": "239337044ce2457a911b0d2b91270aff",
+    "text": "\"There's no need to lie to me. I know you had her in your clutches but took pity on her. A devil with a soft heart... It's disgusting, like a murderer singing a tearful song about his beloved mother. If Asmodeus ever calls you to account for your willfulness, I advise you to come up with a more convincing lie.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Aeon/Staunton_In_Past/Cue_0024.jbp",
+    "guid": "39770083020db514b944696cc7459ba1",
+    "text": "\"Looks like it...\" {n}Staunton glowers at you, clutching the holy symbol that hangs around his neck.{/n} \"In the name of Torag, state your purpose! Answer me! Who are you, and why have you come here?\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Demon/Alushinyrra/Irmangaleth_C3/Cue_0023.jbp",
+    "guid": "b70399da5873300488143d9ce6086a7e",
+    "text": "{n}Casting an irritated glance at the guards as they clutch their weapons, Yozz mutters through gritted teeth,{/n} \"Golarian! You... You're worse than a child, I swear.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Demon/Nocticula_C3/Cue_0001.jbp",
+    "guid": "ec1b5004af70c0541a0b0416681c8d39",
+    "text": "{n}Nocticula, the Lady in Shadow, the Queen of the Midnight Isles, and a powerful demon lord whose name is known throughout many planes, smiles to you from her throne.{/n} \"Greetings, mortal. I was waiting for an opportunity to meet you in person — during our last encounter I could not appear in my true form due to the circumstances. I did not want to risk falling into Baphomet's clutches. Here, in my palace, we can talk more comfortably.\""
+  },
+  {
+    "path": "World/Dialogs/c3/NoTentaclesSE/NoMoreTentacles/Cue_0031.jbp",
+    "guid": "26dddb5b2f325a5488f9406a6b38f46e",
+    "text": "{n}The second one clutches his chest and steps back.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c3/QuickashGMBE/Cue_0102.jbp",
+    "guid": "2cbdf5df51f459c478e16509997d2a9b",
+    "text": "The body of a paladin, clutching a warhammer in his hands of bone, hangs from one of the urannag's hammers pointing directly upward. The Commander is lucky that this warrior chose to meet his death with weapon in hand. The Commander drags the body toward {mf|him|her} and grabs the hammer, but the servant of light's grip is still surprisingly strong and refuses to relinquish the weapon. The bone arms are easily ripped from the skeleton's shoulders, still holding the hammer. The Commander tosses the lot into the heart of the urannag."
+  },
+  {
+    "path": "World/Dialogs/c3/QuickashGMBE/Cue_0107.jbp",
+    "guid": "9f2b8b89de841b94e9a49c5b62d7e2d6",
+    "text": "After carefully extracting themselves from the clutches of the broken urannag, the Commander and {mf|his|her} party find themselves up to their knees in ashy sludge once more. But this time, it only harmlessly squelches under their feet as they walk. A dark breach yawns before them, and the cry the Commander heard at the entrance to the barrow rises up again: \"help...me...\" Since there is no other route, the Commander decides to..."
+  },
+  {
+    "path": "World/Dialogs/c3/TempleOfDelamere/KyadoPityPriest/Cue_0012.jbp",
+    "guid": "28b7646082b329f4eb31caf2d1447a0d",
+    "text": "{n}The young man clutches his head.{/n} \"What have I d-done? Why did I do this? I just w-wanted to live... live!\" {n}Kyado's eyes are devoid of all reason, and with a raw howl he lunges at you.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0100.jbp",
+    "guid": "10b8eb8a2fd20a3499904cba8fc33166",
+    "text": "\"But h-how am I to l-live? Pilgrims still come here now, albeit rarely! But if you take the relics away, n-no one in their right mind will come here! Only homeless w-wanderers! And what will I do then...?\" {n}The young man clutches his head in despair.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0040.jbp",
+    "guid": "1c9182d585e1d4d4c85c574695337ccb",
+    "text": "Inside the sarcophagus lie the remains of a female archer. The bones are held together by leather armor covered in the same symbols as those on the sarcophagus, and the skeleton's hands are clutching an impressive bow made from an antler. The revolting stench rising from the remains is almost unbearable. The Commander..."
+  },
+  {
+    "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0041.jbp",
+    "guid": "58c349d7429337d408fc50350e85f220",
+    "text": "Inside the sarcophagus lie the remains of a female archer. The bones are held together by leather armor covered in the same symbols as those on the sarcophagus, and the skeleton's hands are clutching an impressive bow made from an antler. Surprisingly, there is no unpleasant smell from the remains. The Commander..."
+  },
+  {
+    "path": "World/Dialogs/c3/TempleOfDelamere/ZanedraInTemple/Cue_0003.jbp",
+    "guid": "378fb9da26739d448b6b1ccdbc5d5ced",
+    "text": "{n}The woman's words carry a taunting edge.{/n} \"I was so looking forward to seeing little Kyado, but it seems you've killed him. Have you no shame? It wasn't the boy's fault that he fell into my clutches. Anyone in his position would have broken too... Why didn't you just turn around and leave, without condemning the boy to {d|c3 kyado dead}death{/d}? You've got a heart of stone! I like it!\""
+  },
+  {
+    "path": "World/Dialogs/c3/Wintersun/GateGuard/Cue_0001.jbp",
+    "guid": "c1fdfbf2486f68745b9652c1e3cdaf30",
+    "text": "{n}The scarred warrior looks at you in astonishment.{/n} \"Traveler? You must be one of those poor souls fleeing Drezen after its capture? How did you manage to break free from the demons' clutches?\""
+  },
+  {
+    "path": "World/Dialogs/c4/AirAdventures/Cue_0269.jbp",
+    "guid": "abae89f5cd5b27744a9cb3e629fa5507",
+    "text": "With a {d|c4 captain kerz}menacing smile{/d}, Captain Kerz approaches the Commander. Pointing at the axe clutched in his hand, he utters just two words: \"Chopping time.\""
+  },
+  {
+    "path": "World/Dialogs/c4/AirAdventures/Cue_0470.jbp",
+    "guid": "458c988c80834fe4a9850c331f758e64",
+    "text": "Clutching his saber, the captain threatens the sailors with the {d|c4 captain nocticula}wrath{/d} of the Lady in Shadow, but they are too tired and too angry to listen to him. Nocticula herself would have to appear on deck to cow the desperate sky wolves into submission."
+  },
+  {
+    "path": "World/Dialogs/c4/AirAdventures/Cue_0473.jbp",
+    "guid": "680c4a89d3f513e419afdd026c023358",
+    "text": "Some sailors react to the bawdy and vulgar songs with hesitant grins. The catchy lines quickly lodge in the sailors' memories and they cannot help but repeat them again and again. At first, the pirates respond with slight chuckles, then the chuckles turn into a chorus of cackling, and before long, believe it or not, the whole crew is rolling on the deck, laughing hysterically and clutching their bellies. The ecstatic, wild laughter drains them of all the aggression, all the desperation the sailors felt, and when the Commander descends from the yardarm, all thoughts of mutiny seem totally forgotten. Wiping away tears of laughter, the crew members return to their posts. The only traces of the pathetic insurrection, which quickly devolved into mass hysteria, are the sporadic outbursts of giggling that continue for some time after."
+  },
+  {
+    "path": "World/Dialogs/c4/BattleBliss/FinalBattleBliss_dialogue/Cue_0044.jbp",
+    "guid": "830e4c33167f0a74d951c0e16e2846fc",
+    "text": "{n}Zeklex clutches the dagger as he hisses through his teeth,{/n} \"Liar! I am so tired of your lies!\""
+  },
+  {
+    "path": "World/Dialogs/c4/BattleBliss/FinalBattleBliss_dialogue/Cue_0045.jbp",
+    "guid": "d59e82f00b235f34f8cbe1488f38d19a",
+    "text": "{n}Zeklex clutches the dagger as he hisses through his teeth,{/n} \"Liar! I am so tired of your lies!\""
+  },
+  {
+    "path": "World/Dialogs/c4/BattleBliss/FinalBattleBliss_dialogue/Cue_0046.jbp",
+    "guid": "98755fc6e4957ed4d81d57fbace4cac5",
+    "text": "{n}Zeklex clutches the dagger as he hisses through his teeth,{/n} \"Liar! I am so tired of your lies!\""
+  },
+  {
+    "path": "World/Dialogs/c4/BattleBliss/FinalBattleBliss_dialogue/Cue_0075.jbp",
+    "guid": "e8ad737a7bdd2e145b6464f711067311",
+    "text": "{n}Greybor watches Zeklex clutch the dagger in his trembling hands. He raises an eyebrow.{/n} \"Hmm... Some creatures just aren't cut out for killing. They can be smart, cunning, and patient, but they're not murderers. That's why my profession exists. If someone can't finish the job, they can pay assassins like me to do it for them.\""
+  },
+  {
+    "path": "World/Dialogs/c4/BattleBliss/Zeklex_dialogue/Cue_0039.jbp",
+    "guid": "371229c50622f694aa31061a8aaf7c5d",
+    "text": "{n}Zeklex clutches his bag to his body protectively. You notice that he is wearing a simple ring on his finger, and he swiftly lifts it to his lips. When he opens his mouth, his voice booms out across the arena.{/n} \"Reject the bliss of battle.\""
+  },
+  {
+    "path": "World/Dialogs/c4/BattleBliss/Zeklex_dialogue/Cue_0055.jbp",
+    "guid": "e8677deb318ac734aa1cef6dab7f7620",
+    "text": "{n}The steward must have recognized something in your eyes, because his expression changes swiftly. The quick-witted tiefling falls to his knees before you can unleash your anger against him. He clutches his bag protectively, causing a loud squeal from within, and lowers his eyes to the floor as he hastily apologizes.{/n} \"I beg your pardon! I didn't know who you were. This will never happen again. I humbly beg for your forgiveness, and promise to do everything within my power to arrange your fight with Gelderfang.\""
+  },
+  {
+    "path": "World/Dialogs/c4/BattleBliss/Zeklex_dialogue/Cue_0070.jbp",
+    "guid": "d8ac1f45d3b2f9a43b8b6dc62b748efc",
+    "text": "{n}Zeklex clutches his bag protectively in one hand, and extends his other hand to you placatingly.{/n} \"Please, let's avoid unnecessary violence. Fights should take place in the arena. I realize that I've provoked you to anger, and I am truly sorry. I assure you that I'll do everything within my power to remedy my mistake.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/NocticulaAfterBaph/Cue_0001.jbp",
+    "guid": "e0fe3f2b5b124c745afd94d695032529",
+    "text": "{n}Nocticula looks at you imperiously as she clutches Baphomet's still-quivering heart in her hand. She raises it high in the air, and her triumphant voice breaks the silence.{/n} \"It has been a long time since I last killed a demon lord... It is good to see that I remain unsurpassed in my craft.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FleshMarket/AasimarSlaves_dialogue/Cue_0001.jbp",
+    "guid": "e120f9dd12b0e7448b3caba6888a17f7",
+    "text": "{n}The aasimars no longer look broken. Hope has brought the pale glow of heavenly fire to their eyes. One of the women clutches a hairpin that by some miracle went unnoticed by the guards — resembling a gleaming stiletto, it ends in a rather vicious-looking point. With their expressions alone, the slaves send a clear message — don't dare come near us, we stand ready to defend ourselves.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c4/FleshMarket/AasimarSlaves_dialogue/Cue_0032.jbp",
+    "guid": "5348747e368ea7e468ae6ce79797b54d",
+    "text": "\"Decided to take the little birds under your wing, have you? Well, just know — I don't let my prey out of my clutches that easily.\""
+  },
+  {
+    "path": "World/Dialogs/c4/FleshMarket/Kerz/Cue_0030.jbp",
+    "guid": "99b6d0688c9f55943ba6397183ccd83b",
+    "text": "{n}The pirate grins.{/n} \"You like gory stories, eh? Fine. Once, we were floating by Migorg, when our lookout spotted the wreckage of a ship caught in a hurricane. So, we decided to search for cargo, but instead, we only found a sailor who was clutching at the wreckage. We fished him out, brought him to his senses, hung him up on the mast, and questioned him properly. Our ship's cook knows how to loosen tongues with his knife... Long story short, the poor sod spilled that he was a pirate himself. His ship had set sail from one of Alir's deserted islands, where they hid part of their spoils... \""
+  },
+  {
+    "path": "World/Dialogs/c4/FleshMarket/MeatSlaver_dialogue/Cue_0098.jbp",
+    "guid": "1816293de65171a4499ca51fe953e192",
+    "text": "\"Decided to take the little birds under your wing, have you? Well, just know — I don't let my prey out of my clutches that easily.\""
+  },
+  {
+    "path": "World/Dialogs/c4/GoodSamaritan_SideQuest/Latverk_main/Cue_0006.jbp",
+    "guid": "b702e69b422497c47af5ce021ebd8e8b",
+    "text": "\"Freeing enslaved aasimars has become my trade, you see. These women are former captives whom I saved from the monsters' clutches, and I protect them to the best of my ability. But I've heard a new shipment of slaves is about to arrive in the Fleshmarkets, and there is nothing I can do to break their shackles. Please do it in my stead. Please buy their freedom and send the women here. I can see that you are a traveler of means. A single act of kindness should not inconvenience you excessively, but we'll be forever indebted to your compassionate soul!\""
+  },
+  {
+    "path": "World/Dialogs/c4/GoodSamaritan_SideQuest/Latverk_main/Cue_0051.jbp",
+    "guid": "966bda017e3fa89499862dd47275a611",
+    "text": "{n}The aasimar opens and closes his mouth several times like a fish, struggling to squeeze out a word.{/n} \"But... What? To a brothel? The things that will be done to them... This is unspeakable! No, no, you must have had a reason. Did you not have enough gold to buy their freedom? Were you forced to cooperate with the evildoers from the Ten Thousand Delights? Yet I suppose even that miserable lot is better than a slow and painful death in Shamira's clutches. I swear I'll go there and buy their freedom the very moment I have enough gold in my pockets!\""
+  },
+  {
+    "path": "World/Dialogs/c4/HaremOfArdentDream/DoorWithBell_dialogue/Cue_0013.jbp",
+    "guid": "d5b9c618c655f3842ad0f05400687d56",
+    "text": "{n}Clutching the door handle, a skinny figure falls through the soap bubble. The bubble contracts then pops, dissolving into thin air. The door slams shut. Cautiously touching the stone floor, the unexpected guest rises slowly to his feet. It seems that the Storyteller — for it is undoubtedly him — is quite surprised.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0044.jbp",
+    "guid": "6ae970a72119e8e41b83e40f7c1247c3",
+    "text": "{n}Staunton wheezes, furiously clutching his weapon. His eyes are lit with a burning desire to attack, and he hisses through clenched teeth,{/n} \"You bitch...\""
+  },
+  {
+    "path": "World/Dialogs/c4/Mythic_Azata/MarketSearch/Cue_0008.jbp",
+    "guid": "a362654999ed6894790362f0a6dbafd9",
+    "text": "{n}Clutching a whip, the demon floating in the air gurgles something in a strange dialect and the tiefling speaks in a monotone voice,{/n} \"Master Sarzaksys expresses his apologies, but he does not conduct business with strangers. His goods are reserved for the most powerful demons of the Upper City...\""
+  },
+  {
+    "path": "World/Dialogs/c4/Mythic_Trickster/KTC_Fail/Cue_0009.jbp",
+    "guid": "b339d5807bdbe1a468c659ffa1cbfa8d",
+    "text": "{n}After wiping the crimson tears of laughter from his black eyes, Socothbenoth clutches your arm tightly.{/n} \"Well, you can't get out of it this time! Come on, let's fly! The Council awaits!\""
+  },
+  {
+    "path": "World/Dialogs/c4/Nexus_Camp/HeraldLetsGo/Cue_0019.jbp",
+    "guid": "11e294ec751368d4eb04535bdd6214a8",
+    "text": "\"It means we will be looking for a particular clutch of demons among thousands of their kind. Alushinyrra is a real demonic metropolis, it's huge and macabre. It is a little safer — or rather, a little less dangerous — than the other corners of the Abyss. Lady Nocticula loves having visitors, including those from other planes, and she does not like it if her guests are dying every day in her city. But if it happens quietly and without too much attention — her black heart won't even skip a beat. We must be twice, even thrice as careful in this nest of sin.\""
+  },
+  {
+    "path": "World/Dialogs/c4/Portal_ToColyphyr/Cue_0052.jbp",
+    "guid": "30679ec205a591c4c8dd376999e7ff47",
+    "text": "\"How did you find out? Don't tell me you just guessed! Really?\" {n}Camellia furtively brushes a tear from her eye and clutches her own shoulders.{/n} \"How dare you... understand me? How did you manage to see into my soul?\""
+  },
+  {
+    "path": "World/Dialogs/c4/SEbosses/Echo/Cue_0056.jbp",
+    "guid": "90a4be8beb7f34443b9c3e788e7a151f",
+    "text": "\"Greetings, {name}. Do you remember snatching old Yaniel from the clutches of that damned Minagho? Well, a day in Drezen was enough for me to realize that I couldn't just leave. I'm not meant to live out the rest of my life in peace and safety. We all may fall, but once a paladin, always a paladin. I was lucky enough to meet Targona, and begged her to take me with her into the Abyss. I want to repay the debt I owe you.\""
+  },
+  {
+    "path": "World/Dialogs/c4/TavernBadLuck/InnKeeper_mainDialogue/Cue_0201.jbp",
+    "guid": "1d55e5c42900fc14ca3ac05674c2bdf6",
+    "text": "{n}Looking at you helplessly, Wenduag goes limp and begins to slide to the floor.{/n} \"It's time for this cat to take a nap somewhere warm... Can I hold on to you? Looks like the floor's about to jump up and hit me.\" {n}The huntress's claws clutch your clothes, and she hangs on to you. She presses her head against your chest, closes her eyes, and, when her mind is already somewhere else, she whispers sleepily,{/n} \"You'll take care of me, won't you?\""
+  },
+  {
+    "path": "World/Dialogs/c4/TenThousandDelights/BrothelGuard_dialogue/Cue_0008.jbp",
+    "guid": "60675c86835e83740a5bd74ae08c158c",
+    "text": "{n}The demon scowls at you, glancing warily at his chain collar and clutching a magic wand in his clawed hand.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0118.jbp",
+    "guid": "cdb5b762d9dd0bc49b1ca7d011bf646e",
+    "text": "\"You won't let my girls die in the clutches of those monsters, will you?\" {n}The demoness smiles enticingly.{/n} \"You are so confident and have such potential! I think you and I will enjoy being... friends.\""
+  },
+  {
+    "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0044.jbp",
+    "guid": "34587a0679ea1604fb9b9b3f6abee346",
+    "text": "{n}As if it has a will of its own, your fist smashes into the succubus's delicate throat. The demoness clutches her throat, wheezing. Bloody tears flow from her blind eye, and the pupil of the healthy one dilates in terror. Diving into the darkness, you see everything you need — the names of the best succubi in the Ten Thousand Delights, the name of the client they are currently serving, the location of the client's house, and how to get there. Your rage subsides, and your fist unclenches.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c4/TenThousandDelights/MorevetBrothel/Cue_0010.jbp",
+    "guid": "634053a3b5371b24f88306d4887cca6e",
+    "text": "{n}The succubus clutches her hands to her chest.{/n} \"Zerieks is a powerful demon, and I was so flattered when he noticed me! But then he grew jealous — he complained that I spent too much time with the other guests, and then he started killing them! Oh, I'm so afraid he'll kill me out of jealousy!\""
+  },
+  {
+    "path": "World/Dialogs/c5/AreeluLabAgain/Opon/Cue_0060.jbp",
+    "guid": "e05ebb7ffa1cbf64da0fd7f8314310fb",
+    "text": "\"Why does it always happen? Good people worship good gods, do the best they can — and because of that, they fall right into the demons' clutches?\""
+  },
+  {
+    "path": "World/Dialogs/c5/DrezenMain_C5/Ciar/Cue_0001.jbp",
+    "guid": "30e04862fe53a6e4cb974fed61681b49",
+    "text": "{n}Ciar has aged since last you met as if ten years had passed rather than six months. His gray hair has thinned, the lines on his face have deepened, and his eyes are sunken. His fingers, however, clutch the hilt of his blade with the same firmness.{/n} \"Commander. Welcome back from the dead. I didn't expect to see you again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0064.jbp",
+    "guid": "7bf3ab091363b344187d079f25f81fce",
+    "text": "{n}Ciar, the old paladin, barely manages to unsheathe his sword — only to die clutching it in his grasp.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0076.jbp",
+    "guid": "60e9625fa37c58f45bbf486ef5b0b218",
+    "text": "{n}Ciar, the old paladin, barely manages to unsheathe his sword — only to die clutching it in his grasp.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0088.jbp",
+    "guid": "e4d7fa507f1e7284eadbf48c660bf40a",
+    "text": "{n}Ciar, the old paladin, barely manages to unsheathe his sword — only to die clutching it in his grasp.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/Banner/Cue_0048.jbp",
+    "guid": "a284e7a3a52708c42b660c7afd084459",
+    "text": "{n}Until her last breath, Nystra Flamefinger was clutching the horrible wound on her abdomen, trying to keep her innards from spilling out.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/Banner/Cue_0053.jbp",
+    "guid": "2ffc387b6623b774a8a9018a8eb0ca8b",
+    "text": "\"The Sword of Valor will never again fall into the demons' clutches. Never!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/IrabethDies/Cue_0019a.jbp",
+    "guid": "be7fbe9847c4a944fafc750ee5aed807",
+    "text": "{n}Seelah clutches her holy symbol in her hand and whispers,{/n} \"Goodbye, sister. Inheritor, please welcome her with honor into your heavenly army.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/IrabethSurvives/Cue_0002.jbp",
+    "guid": "f3f15e6999ec11841aad53d2b60f6c9c",
+    "text": "\"Commander.\" {n}Irabeth clutches her blade, but her breathing is still shallow and her gaze unfocused.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/IrabethSurvives/Cue_0010.jbp",
+    "guid": "2a2a1beb1f22986499798b8e094d46f6",
+    "text": "\"Understood, Commander.\" {n}Irabeth clings to your order like a drowning woman clutching at a lifeline. She snaps to attention before you, making a visible effort to maintain the dignity befitting her rank.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/IrabethSurvives/Cue_0015.jbp",
+    "guid": "b1e598dcd134cb843937790ec5ab3e72",
+    "text": "\"Calm. I must be calm.\" {n}Irabeth takes a deep breath and clutches the holy symbol of her goddess.{/n} \"Iomedae... Help me. Do not leave me. Do not forsake me.\""
+  },
+  {
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Cessily/Cue_0009.jbp",
+    "guid": "5c8053a2b91f54f43b7eb23dff2e0c41",
+    "text": "\"For years and years, they tortured me, until I managed to put an end to it myself. I cut my life short, slipped away from the executioners' grasp, but I sullied myself in the eyes of the Dawnflower... I'm a sinner...\" {n}Cessily's hand is holding a sharpened shard of a bronze bowl. She's clutching it so tightly that the edge has sliced the skin on her palm, cutting deep into the flesh.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Cessily/Cue_0020.jbp",
+    "guid": "2d0d1ae8a28a7204c968d68d9c21fc65",
+    "text": "\"My soul has been stained by suicide, but it still holds a spark of light. I'm willing to give it up to atone for the evil that was committed because of my negligence. My husband's blade, Dawnflower's Kiss, was taken by the demons. It's a holy relic, and defiling it is a grave sin. If you rip it from their clutches, I can try to purify it by the light that even Baphomet couldn't take from me.\""
+  },
+  {
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Cessily/Cue_0054.jbp",
+    "guid": "99f99932e1cfa8f4dbb6f4eb1edd6eb7",
+    "text": "{n}Tears are streaming from her eyes, mixing with the blood pouring from the wound on her throat.{/n} \"Yes... My beloved... My brother-in-arms... We both ended up in Baphomet's clutches, and I see now that his fate was even crueler than my own.\""
+  },
+  {
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Herald/Cue_0003.jbp",
+    "guid": "829d6616c7d3431abe4a478d10d048cf",
+    "text": "{n}Instinctively, you clutch the heart of the Hand of the Inheritor and hold it high above your head so that your opponent sees every detail of what is to come. And then you clench your fist. The heart tears apart, falling in chunks on your hungering tongue as your body shivers in ecstasy.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Svendack_PrisonBoss/Cue_0026.jbp",
+    "guid": "1f1092ffb57ce9f478808f8e95649e1f",
+    "text": "\"No more prisons...\" {n}Trever is growling through his teeth, clutching his weapon with such force it must hurt.{/n} \"No more cages...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mineshaft_14/Foreman/Cue_0081.jbp",
+    "guid": "bdf7fb15023b87c4983f288eda30bf9e",
+    "text": "{n}Clutching a pickaxe with hands that still have strength in them, the old man mutters to his fellows,{/n} \"My father said demons have red eyes and spew fire out of their asses! Is it possible the buggers have grown less nasty over the years?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Angel/IomedaeSecondVisit/Cue_0035.jbp",
+    "guid": "16a654bd91217b740b210b9442254802",
+    "text": "\"The Commander helped the servants of Pulura defend our temple and our sacred knowledge. {mf|He|She} was the first to discern the true intentions of the cultists who came to our temple. {mf|He|She} quickly recognized their visit was one of the Echo of Deskari's schemes. The Commander also freed me from the Echo's clutches, when I was being held captive in the Abyss. Who else could have accomplished such a feat?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Demon/Conspirators/Ziforian_Consp/Cue_0011.jbp",
+    "guid": "f5caa170417cb9f4e9af2e233c7984fa",
+    "text": "{n}Ziforian points a finger at his disfigured face.{/n} \"Do you see this? I didn't always look this way! The Lady in Shadow made me an outcast. She humiliated me... and she mutilated me. Isn't that reason enough? I've waited so long for a chance to settle the score. I've had millennia to think about what I'll do to her pretty face once she's in my clutches.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Devil/DevilishTemptation/Turmoil/Cue_0003.jbp",
+    "guid": "de1a35db7baf4ba1b0b33613670d9b62",
+    "text": "{n}Laya clutches her weapon, her face pale. Her bewildered gaze darts between the Queen and her fellow soldiers.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0004.jbp",
+    "guid": "4f79f48744c309c4bb36038584ef108b",
+    "text": "{n}Halaseliax clears his throat.{/n} \"Tyvanadis. Orgomandias. Nidalynn. Thank you for your assistance, but I do wish that you would put aside your non-stop bickering for just a moment. {name} can't get a word in edgeways.\""
+  },
+  {
+    "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Answer_0027.jbp",
+    "guid": "661c5b230a424a24291d80457172b06b",
+    "text": "\"You will be happy to hear that Katair is alive and well. He has been rescued from the Echo of Deskari's clutches.\""
+  },
+  {
+    "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Answer_0028.jbp",
+    "guid": "fd419afa29e9cf146807aa3d91c3332e",
+    "text": "\"You will be happy to hear that Eliandra is alive and well. She has been rescued from the Echo of Deskari's clutches.\""
+  },
+  {
+    "path": "World/Dialogs/c6/AeonFinal/SetreiOponFighting/Cue_0010.jbp",
+    "guid": "5b568b95f036a194e91075ad609e8be5",
+    "text": "{n}The Sarkorian guard does not even dignify him with a response. He cuts down the mage with a single, swift strike. Opon sways slightly, clutching at the gaping wound in his chest. Then he collapses to the floor.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c6/AeonFinal/SetreiOponFighting/Cue_0016.jbp",
+    "guid": "7bad9573b5fddb94ea043b19474474d1",
+    "text": "{n}The Sarkorian guard gasps slightly and clutches the wound in his stomach.{/n} \"Traitors...\""
+  },
+  {
+    "path": "World/Dialogs/c6/Mythic_Angel/DeskariMeetsAngel/Cue_0019.jbp",
+    "guid": "21a43b82b13704647bb62ea2c3a69247",
+    "text": "{n}Deskari clutches his scythe convulsively.{/n} \"In my realm? This is the Rasping Rifts! You are powerless here. No one has ever defeated me in my own halls!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q3/BackToReality/Cue_0025.jbp",
+    "guid": "8ad7c2ba0e060e545b12269cc5ced777",
+    "text": "\"Freedom. Finally, after all these years... I can feel it — the Abyss has released me from its clutches. I have solved Desna's riddle and have found my dream. I have found you. I am not a monster anymore!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q3_TheFinalDrop/HorgusRevealsTruth/Cue_0014.jbp",
+    "guid": "f084a36307b1959458c71916651ed0f8",
+    "text": "{n}Camellia jolts slightly and turns to you. Her eyes seem to look right through you. Her lips are parted and her rasping breath reminds you of an animal's growl. Her right hand is clutching a thin stiletto that seems to have come out of nowhere.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Daeran/Q3_OneLastBreath/DaeranVsInquisitor/Cue_0001.jbp",
+    "guid": "1fa9c8f8fb552d64eba30fb435a1ed78",
+    "text": "{n}Daeran wraps his arms around himself for a moment, clutching at his shoulders. With a slightly crazed look in his eyes, he surveys the area, his gaze never resting on anything in particular. His lips move but no sound comes out. At last, the Count says,{/n} \"It's... over...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent1/Answer_0003.jbp",
+    "guid": "a4a62450041a61744b10a34c7c228ab6",
+    "text": "Close."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent1/Cue_0002.jbp",
+    "guid": "847169e5862ea704d872e01e07519da4",
+    "text": "The ground is covered in fresh dragon blood and deep claw marks. The winged silhouette soars high up into the night sky and heads east; doubtless toward her lair. The assassin gives the Commander a thumbs up, and throws his pack over his shoulder. The ambush was a success."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent1/Cue_0005.jbp",
+    "guid": "b37c6fed92c72304bb9bb321995ce81d",
+    "text": "Serious loss of blood, though not fatal, causes the dragon's heart to compensate by contracting more rapidly in order to oxygenate the muscles. This makes it more difficult for her to breathe, and weakens her wing capacity. The lack of oxygen then leads to convulsive seizures that force the dragon to descend for short rests. It takes her the entire night to travel the distance she could normally cover in a few hours."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent1/Cue_0006.jbp",
+    "guid": "e5029c4657d993b4f9de03946515f298",
+    "text": "Day {date|(day)}, month {date|(month)}, year {date|(year)}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Answer_0001.jbp",
+    "guid": "388a1c37f388438eb8e62f62a4e311b3",
+    "text": "...rely on {mf|his|her} instincts as a hunter."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Answer_0002.jbp",
+    "guid": "91802fb2f0d54efab963f5f8428c8c73",
+    "text": "...make use of {mf|his|her} skills as a ranger."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Answer_0003.jbp",
+    "guid": "2ed626e56c7740d783189dd0ebe0dfe2",
+    "text": "...trust {mf|his|her} intuition, and rely {mf|his|her} knowledge of dragon nature."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Answer_0006.jbp",
+    "guid": "c8a5246854d981b408afb076be618516",
+    "text": "...personally examine the trail to impress the assassin."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Answer_0007.jbp",
+    "guid": "05d823d254ab0f14c83f2a24fd498b2b",
+    "text": "...ask the assassin for advice."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Answer_0008.jbp",
+    "guid": "bcf79da54fdfd454e9571c092c2d5822",
+    "text": "Close."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Answer_0011.jbp",
+    "guid": "40a26091858bfb0488a05beb093f09e4",
+    "text": "Close."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Cue_0002.jbp",
+    "guid": "27a3c40ca06954543ae470838b301e6f",
+    "text": "Dark splotches of dried blood are visible on the ground. Its foul, pungent scent awakens the predatory instinct of the hunt. Everything nearby is splattered in blood, as if a battle took place here, or someone slaughtered a herd of goats. Yet this blood belongs to neither human nor goat. Its sulfurous odor indicates that this is the blood of a rare fire-breathing dragon. Injured and exhausted, the fleeing dragon stopped here to rest. The Commander decides to..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Cue_0003.jbp",
+    "guid": "6ed5620a59949e847bd79f7c77669f1d",
+    "text": "The dwarf points confidently to the south. The dragon's lair is hidden somewhere among the mountain gorges."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Cue_0004.jbp",
+    "guid": "8f33c0d0fe47482458536070714aab23",
+    "text": "Having examined the blood, the Commander points confidently to the south. The dragon's lair is hidden somewhere among the mountain gorges. The dwarf, who has been watching {mf|him|her}, nods in approval — he seems impressed by the Commander's tracking skills."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Cue_0005.jbp",
+    "guid": "0bd996c5dda3b154d9721921129b2e1d",
+    "text": "After an examination of the blood proves futile, the Commander decides to..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent2/Cue_0012.jbp",
+    "guid": "74fcf323e7da11e4cb3ae12611909248",
+    "text": "Day {date|(day)}, month {date|(month)}, year {date|(year)}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0004.jbp",
+    "guid": "4ac12e5e6c1bc7f42b193615fe003e4e",
+    "text": "...chooses the steep and dangerous path to the left."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0005.jbp",
+    "guid": "69003b5fe469f16439e2bd085a365ae9",
+    "text": "...chooses the path overgrown with suspicious bushes to the right."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0007.jbp",
+    "guid": "f6b9cc8ebaf74fa43ae2636fbe162774",
+    "text": "Continue."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0008.jbp",
+    "guid": "5cf99c28a4ded4e4c8b54a39efacf2e4",
+    "text": "...sends {mf|his|her} most agile companion to lead the way."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0009.jbp",
+    "guid": "c05249acd6070cb4db9e5639b06f7b8a",
+    "text": "...sends {mf|his|her} most careful and intelligent companion to lead the way."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0017.jbp",
+    "guid": "a12f72fd4fa941b4aaf548e6adb8d481",
+    "text": "...decides to find a different way."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0024.jbp",
+    "guid": "d2b97aa9f476a3c4aac6634e25812bc0",
+    "text": "...orders the most knowledgeable member of the party to lead the way. They will be able to recognize the poisonous plants and warn the others."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0025.jbp",
+    "guid": "4add3653868b19049bdab826d69781ae",
+    "text": "...orders the most observant member of the party to lead the others through the thicket by following the tracks left behind by local mountain cats."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0026.jbp",
+    "guid": "3c72b988a26258e438cbbb875c4fc422",
+    "text": "...will try to find another way."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0027.jbp",
+    "guid": "a8f96065bdd0b5a42bfc4da8d1a9cf3c",
+    "text": "Continue."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0032.jbp",
+    "guid": "4b2dab04b2f0fa347a27c24c00f4bad5",
+    "text": "Continue."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0035.jbp",
+    "guid": "914763c1c71708b4fb34e077f7e07da5",
+    "text": "...orders the strongest of {mf|his|her} companions to lead the party's descent down the sheer cliff."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0036.jbp",
+    "guid": "7535bc231d0682e4bb75b0410c49de59",
+    "text": "...orders the most agile of {mf|his|her} companions to carefully lead the party down the slope using the ledges as footholds."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0046.jbp",
+    "guid": "b54f0455249c2ec42987c9c458630e4d",
+    "text": "Continue."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0047.jbp",
+    "guid": "6f2bcd738f07ff34392c677bb633c182",
+    "text": "...scare off the birds."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0048.jbp",
+    "guid": "49b6348a9c26bce4e918d1ef1200e1aa",
+    "text": "...deal with the leader of the flock at all costs."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0055.jbp",
+    "guid": "74b3d4632264ec84d9387e2e2d501f30",
+    "text": "Close."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0060.jbp",
+    "guid": "4440f9932992c2e4db9b907a670d575b",
+    "text": "Continue."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Answer_0063.jbp",
+    "guid": "609eb0591f982d3489468ce583b3f1f9",
+    "text": "Close."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0001.jbp",
+    "guid": "8e2ee26078a24263aef332e59696e5ef",
+    "text": "{name} pulls out a knife and runs the blade over the stones. The metal makes a grating sound and the birds fly away in fright. It is the same sound that their sworn enemies, mountain cats, make when they sharpen their hard claws on the rocks."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0002.jbp",
+    "guid": "05e0125740ad0454d80110456a60d5ae",
+    "text": "The Commander and {mf|his|her} followers are traversing the mountains, trying to track down the female woundwyrm that has lately been wreaking havoc around Drezen. The dwarf leading the party approaches the edge of the cliff, and points down to the ruins of a tower built upon the rock three hundred feet below. Its very existence raises a number of questions: who would dare to build a tower here, so close to the demons? Why would they erect it here, at the bottom of a canyon? An expert analysis of the tower structure provides the answers. Numerous features in its design indicate that the building dates back to the golden age of the {g|Azlant}Azlanti Empire{/g}. It is several times older than the Worldwound, and was originally constructed on top of a mountain, before the cataclysm changed everything. The tectonic plates shifted, causing the tower to sink to the bottom of a newly formed canyon, and the mountains rose up around it like the jaws of a predator, ready to snap shut and bury it beneath the rock forever."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0003.jbp",
+    "guid": "08ed9cfb54f427342ac1067de56b9e2a",
+    "text": "The ancient ruins have been abandoned for ages, barely visible amidst the steep cliffs. The tower would have remained hidden, had the Commander's party not discovered it by following the trail of blood. The dwarf signals that it is time to descend. The alpine path leading to the tower soon splits into two directions. On the left is a rocky ledge, dangerously narrow and visibly unstable. On the right is a broad path, covered in overgrown brambles and thickets. There are many poisonous plants in these mountains, some of which are so dangerous, that merely touching them can lead to numerous adverse reactions. These include, but are not limited to, migraines, disorientation, vomiting, hearing and vision loss, paralysis, and even death. The Commander assesses the risks and..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0006.jbp",
+    "guid": "67d53ab646e5b6441aa7c7cca231e051",
+    "text": "The Commander decides to take the path to the left, which descends steeply down at a dangerous angle. The loose stones along the ledge are treacherous and unstable, and one wrong step could cause a rockslide. This is a task for either a person of outstanding acrobatic talent, or someone attentive and cautious. Whoever leads the way will take on the greatest risk. The Commander..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0013.jbp",
+    "guid": "334a713eda0d84a41b04cfddf82d1a94",
+    "text": "Predictably, the path that's been chosen is full of dangers. {Name} makes a dangerous leap, dislodging the stones beneath {mf|his|her} feet. {mf|He|She} comes dangerously close to falling, teetering precariously before managing to regain {mf|his|her} balance. Having witnessed such a near tragedy, {mf|his|her} companions watch their steps more carefully, and the party navigates the remainder of the perilous trail without further incident."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0014.jbp",
+    "guid": "050b32cce8767604cafa28258f75882c",
+    "text": "Underestimating risk is a common mistake made by inexperienced travelers who are not familiar with the mountains. This is precisely what happens to {name}. One careless step, and the rock beneath {mf|his|her} feet gives way. Fortunately, {mf|his|her} fall is arrested by a rocky ledge a dozen feet below, and {mf|he|she} lands hard, hitting the stone with a painful thud. Alarmed, {mf|his|her} companions rush to provide assistance, carefully bypassing the dangerous place where the accident occurred."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0015.jbp",
+    "guid": "acfa0de60b4b92148a469f4affc149ae",
+    "text": "However, {name} does not make a single mistake as {mf|he|she} skillfully navigates the most dangerous sections of the path. {mf|His|Her} allies watch carefully, mirroring {mf|his|her} every move, and the party arrives at their destination safely."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0016.jbp",
+    "guid": "28f54c3350c276d4a8a8032a3b3cfd32",
+    "text": "A rock {name} thought was stable falls away beneath {mf|his|her} feet. Fortunately, after plummeting through the air for several feet, {mf|his|her} fall is arrested by an outcropping of rock, and {mf|he|she} lands hard, hitting the stone with a painful thud."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0019.jbp",
+    "guid": "f68e3f34874b8c44385e3f625843163f",
+    "text": "The Commander decides to take the path to the right, which leads through thick foliage and overgrown bushes. It is most likely full of dangerous vegetation, and possibly even carnivorous plants. These plants are difficult to distinguish from their less hazardous counterparts, and only a skilled botanist or a wild animal native to the area might know which specimens pose no threat to humans, and which ones must be avoided at all costs. The Commander..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0020.jbp",
+    "guid": "ae409a8a77f63574186100c2abfaf0da",
+    "text": "{Name}'s extensive botanical knowledge allows the party to get past the poisonous bushes without touching the bloodsucking vines that obstruct the path."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0021.jbp",
+    "guid": "586a2c4afbab4a441a76bc4c71d80169",
+    "text": "Apparently, {name} severely overestimates {mf|his|her} knowledge of the local mountain flora. {mf|He|She} leads {mf|his|her} companions right into a dense thicket of bloodsucking vines. They are entangled by the plant's thin, sticky tendrils, which latch on to them hungrily. In severe pain, the party members free themselves from the sucking tendrils. The vines drip with fresh blood, leaving numerous ringed puncture marks across the skin of the victims. The stinging wounds throb as the plant's toxin spreads through their veins. Luckily, it is too weak to paralyze such large prey."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0022.jbp",
+    "guid": "950b23bac05949044945f5e29d1adff4",
+    "text": "This turns out to be a smart decision. The local predators tend to avoid the most poisonous plants. At the end of the trail, {name} notices the recently mummified corpse of a female mountain cat. It fell prey to a thicket of bloodsucking vines."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0023.jbp",
+    "guid": "00f4aec6984b0c244bf521770ec9a478",
+    "text": "Perhaps the local predators are not quite so careful and cunning. The tracks lead the party right into a dense thicket of bloodsucking vines. They are entangled by the plant's thin, sticky tendrils, which latch on to them hungrily. In severe pain, the party members free themselves from the sucking tendrils. The vines drip with fresh blood, leaving numerous ringed puncture marks across the skin of the victims. The stinging wounds throb as the plant's toxin spreads through their veins. Luckily, it is too weak to paralyze such large prey."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0034.jbp",
+    "guid": "37dd3b52ca240e44e85c393675ea22b1",
+    "text": "The path comes to an abrupt end. A recent rockslide has destroyed this section of the trail, leaving behind only a few footholds for those brave enough to attempt the crossing. The Commander's allies hastily tie themselves together with rope, hoping to prevent a fall if anyone loses their footing. The dwarf silently indicates his mountaineering equipment. If they choose to climb down the mountain cliff, they will be able to get back onto the path and avoid the dangers ahead. The Commander..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0041.jbp",
+    "guid": "c714807ba51aa8a47a4df05e29b61336",
+    "text": "Assisted by their training and combat experience, the party climbs down slowly and steadily. {Name} does not panic or make a single mistake, as {mf|he|she} skillfully leads {mf|his|her} followers through the treacherous terrain. Eventually they reach a secure rock ledge."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0042.jbp",
+    "guid": "893a1ce5ad188d447b17b9b42a85331d",
+    "text": "The Commander and the companions descend lower and lower, leaping from one ledge to another. Thanks to {mf|his|her} combat expertise and presence of mind, {name} does not panic or make a single mistake. {mf|He|She} skillfully leads {mf|his|her} followers across the treacherous terrain, and eventually they reach a secure rock ledge."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0043.jbp",
+    "guid": "b6d96db42bfc1734e9c34bfd9f5fce9a",
+    "text": "The party is only halfway through their descent when they hear the sudden crack of splintering stone. The rope instantly goes taut."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0044.jbp",
+    "guid": "711c6d3cf3c9b1d40adf0101b48097b9",
+    "text": "With a cry of warning, the dwarf points to the sky. Giant birds of prey circle ominously overhead. Their beak morphology indicates their carnivorous nature, and their large size suggests they consider those climbing down the cliff to be prospective prey. It is common for them to fling their quarry against the cliffs and then feed on the carcasses. With ear-piercing shrieks, they swoop into formation, and dive down to attack. The Commander gives the order to..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0045.jbp",
+    "guid": "761cfc397c996c241bb9297ace2b6560",
+    "text": "It is unwise to trust the stability of fallen rock. It is no longer solid stone, and the slightest movement can cause it to collapse. {Name} leads the party across the increasingly precarious ledge, when suddenly there is the sharp crack of splintering rocks."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0052.jbp",
+    "guid": "55a7b9f4aee2926458e0293d4ed5759c",
+    "text": "{Name} draws {mf|his|her} knife and slides the blade against the rock, trying to mimic the sound of a mountain cat sharpening its claws. Instead, there is only the unpleasant sound of a knife scraping against stone. This also dulls the blade, rendering it completely useless against the incoming creatures. Their curved beaks pierce through cloth, leather, and skin, tearing off chunks of flesh. The Commander's allies eventually drive them away, but the birds still manage to tear one of the party members from the cliffs."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0053.jbp",
+    "guid": "b6cf5ac2a3d11214e8bd3beed88a4810",
+    "text": "Fighting off winged predators while hanging precariously on a rope over a precipice is not an easy task. Their curved beaks pierce through cloth, leather, and skin, tearing off chunks of flesh. {Name} makes several attempts to take down the leader of the flock, but to no avail. The Commander's allies eventually drive them away, but the birds still manage to tear one of the party members from the cliffs."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0054.jbp",
+    "guid": "b51797da9a53b3b46b3e9397cf72f41a",
+    "text": "The party overcomes every obstacle, and finally descends to the ruined tower. The mountain has been conquered, and no one has fallen victim to its treachery. Now they secretly approach the unsuspecting dragon, stealthily making their way through the surrounding rocks. After leading them to the tower, the dwarf gives his newfound allies a nod of respect, and signals for caution."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0057.jbp",
+    "guid": "defd48fb95c00ff459290f6daa9cb34f",
+    "text": "{name} falls like a stone toward the tower ruins below. {mf|His|Her} allies reach out to catch {mf|him|her}..."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0058.jbp",
+    "guid": "7e35c021bcda11a4dbffc76f4671abae",
+    "text": "...and succeed. {Name} twists desperately in the air, and manages to grab onto someone's hand at the last moment. More importantly, {mf|he|she} doesn't drag {mf|his|her} rescuer off the cliff with {mf|him|her}. This is a remarkable feat, even for an experienced climber."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0059.jbp",
+    "guid": "37bffc1b17bc61c44ba0a204093f6e2b",
+    "text": "...and succeed, unfortunately. {Name} clings to {mf|his|her} allies, pulling them with {mf|him|her} as {mf|he|she} plummets through the air. The safety rope grows taut, as each member of the party is dragged over the precipice, one after another."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0062.jbp",
+    "guid": "58f7300ad7ecc804ca03cdf989db589c",
+    "text": "Amidst a cacophony of shouts and muffled screams, the Commander and {mf|his|her} followers hit the ground with a resounding thud. Luckily, the ledge was not high enough for the fall to be fatal, but they cover the rocks around them with spattered blood and torn bits of clothing as they tumble toward the dragon's lair. The dwarf leading the party tries desperately to slow his descent with a small axe, and curses furiously, punctating his numerous obscenities with occasional prayers to Norgorber."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0065.jbp",
+    "guid": "2bb03751b4fbeac45920b986a7c53041",
+    "text": "Statistics show that mountains often prove to be more cunning and cruel than those who seek to conquer them. Even places that seem harmless, may in fact prove highly dangerous."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_0066.jbp",
+    "guid": "e0134cf13a12b1849ae02a3d89485152",
+    "text": "Day {date|(day)}, month {date|(month)}, year {date|(year)}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent3/Cue_3.jbp",
+    "guid": "ad1817e2a1c64b21955b040dab5e3b7f",
+    "text": "Suspended over the chasm, {name} meets the leader of the flock with a decisive blow. With screeching and splashing of blood, the leader plummets. The rest of the flock fly away in fear, not wanting to share his fate."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Answer_0003.jbp",
+    "guid": "590e8ddcd331b3e4483e7ffe0cc4a553",
+    "text": "\"Let's get started.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Answer_0004.jbp",
+    "guid": "f66f8cf2d15e07c4fb6e75cca2b8fe6b",
+    "text": "\"How do you plan to lure the dragon here?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Answer_0005.jbp",
+    "guid": "6d47a795ace4be84fa1bd9e44d196b5e",
+    "text": "\"What is that stench?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Answer_0006.jbp",
+    "guid": "2f32dc38bfc115c40a4307fb4ab9dfcb",
+    "text": "\"We are not yet ready for battle.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Cue_0001.jbp",
+    "guid": "b5a40406d5d5a24438cfae531e4d46f6",
+    "text": "{n}Greybor meticulously scans the surrounding area and appears pleased with the results. The talon-like hooks of several collapsible spikes protrude from his pack. The dwarf produces a small, tightly wrapped bundle from his pocket, and its pungent smell fills your nostrils.{/n} \"Come over here. This is where we'll set up an ambush for the dragon. Let's light as many fires as we can, so she thinks there's a whole caravan staying here overnight. You can be sure she won't resist such easy prey.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Cue_0007.jbp",
+    "guid": "d205a84801feada479c31c825ea4ddcc",
+    "text": "{n}The dwarf nods his approval. He is calm and composed as he readies himself for battle, but his eyes shine with excitement.{/n} \"This is going to be a fine ambush.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Cue_0008.jbp",
+    "guid": "3f54bb3557fb62041854d66b7b702b02",
+    "text": "\"We will act like a group of careless foragers, ordinary hunters looking for wild game to provision the crusader army. Let's go out hunting, and then we'll hang the carcasses up on hooks to clean and gut them. When the dragon catches the scent of blood and sees the fires, she'll think we're inexperienced nobodies. After all, no skilled hunting party would draw so much attention to themselves. Easy prey, you see? Then, when she swoops down upon us, we'll pounce on her instead.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Cue_0009.jbp",
+    "guid": "86dc9627068dee848a819600e55baab1",
+    "text": "\"It's frog's eye, some herb from Magnimar used as seasoning by the Varisians. I'm not sure they can even eat anything without it... The heat of the fire will cause the smell to rise up in the air, where the wind will carry it far and wide. The dragon will surely catch our scent and take interest. Dragons have a heightened sense of smell, and their sense of taste is even more discerning. The beast won't be able to resist the chance to try some strange new kind of meat.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Cue_0010.jbp",
+    "guid": "b7f6be58eddca8349bf19c118e06e9ed",
+    "text": "{n}With a disappointed shrug, the dwarf spits to the side.{/n} \"If you say so. Tell me when you're ready.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Cue_0013.jbp",
+    "guid": "aa1a2f975a106d041a222fc4475309f5",
+    "text": "\"I do know there are some mean angry dragons around. Some of them even eat the small nice ones — or so I heard! Anyway, I will fight like a beast, and I'll even growl like one too! This wicked old dragon won't eat me.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborAmbush/Cue_0016.jbp",
+    "guid": "2c5b4304ef46e7e4680e55b8934def56",
+    "text": "\"That's awful. I don't want to hear any more stories about dragons eating people. It's sad and just... wrong.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Answer_0003.jbp",
+    "guid": "e5e389aa28f4cfb4283660159c74f467",
+    "text": "\"Have you ever hunted dragons before?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Answer_0004.jbp",
+    "guid": "136656d9e0158d743859330b7f212250",
+    "text": "\"I want to know more about you.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Answer_0005.jbp",
+    "guid": "29ffcc67ec975714bb440d18d547d302",
+    "text": "\"Tell me about your craft.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Answer_0006.jbp",
+    "guid": "7a5f1dd227fd09e4989ae92aaaccf0da",
+    "text": "\"I'm ending our contract.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Answer_0007.jbp",
+    "guid": "161498a8d6b6a5c489bd292de35fadbe",
+    "text": "\"We can stop there.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Answer_0015.jbp",
+    "guid": "9ec1c9b4b9d8be4448c3aa3fc8c3f1e2",
+    "text": "\"You heard me.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Answer_0016.jbp",
+    "guid": "eafff8d1598ea1f4784cf332f6a00ea7",
+    "text": "\"No. I was just wondering how you'd react.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0001.jbp",
+    "guid": "5beed00359fbbe842919d60dd668c781",
+    "text": "{n}Greybor nods to you politely. As always, wisps of sweet smoke rise from his pipe.{/n} \"Can I help you, Commander?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0008.jbp",
+    "guid": "49de63d3d8e5ec845ab62f91d979dbc1",
+    "text": "\"A couple of times. They were younger and smaller than this one, but I do have some experience. The important thing is to force the dragon to fight on our terms. Our best option would be to catch her by surprise in her own lair, but we need to track her down first.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0009.jbp",
+    "guid": "70f9adc808317d541905327d26146f14",
+    "text": "\"Here's my plan. We'll wait for her to go out hunting, and then we'll track her down. This dragon has often been spotted in the skies above Grimwood. The territory has multiple sources of fresh water, and even some wild game, although it's scarce. We'll go there, and set up an ambush for the dragon. We'll try to wound her, and then using the trail of blood, I'll track the dragon to her lair, where we'll finish her off. But it's important that we act quickly. We'll need to get this done before my regular client give me a new assignment. I'll have to leave as soon as that happens.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0010.jbp",
+    "guid": "030544b554236e24fb315d5edf606c60",
+    "text": "{n}The dwarf frowns.{/n} \"I'm afraid we don't know each other well enough for me to answer such questions.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0011.jbp",
+    "guid": "cacead4def3a5464786240fa9b143540",
+    "text": "{n}The dwarf gives you a slight smile.{/n} \"Professionals don't reveal their secrets.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0012.jbp",
+    "guid": "501744fae40df14408b64f100bed8cc9",
+    "text": "\"Whatever you say. Personally, I'm not one for talking. Just remember you hired me exclusively to hunt this dragon. If you're planning on going further west into demon-occupied territory, that will not be covered under our contract.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0013.jbp",
+    "guid": "510462d63a3504c4f9e83cd0c9bdc5a5",
+    "text": "{n}The dwarf removes the pipe from his mouth. His voice is calm.{/n} \"Are you sure? You won't get your money back.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0017.jbp",
+    "guid": "00b2932de6549014fafc0379cd65cd71",
+    "text": "{n}Greybor shrugs.{/n} \"Whatever you want. My services are in high demand, I can take care of myself. Good luck.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborCompanionDialogeDragonHunt/Cue_0018.jbp",
+    "guid": "7f156f7f3f3e5634c858b611d7dc5297",
+    "text": "{n}Greybor looks at you in surprise.{/n} \"How I'd react? Did you expect me to make a scene? You hired me, and you can end my services at any time. It would be unprofessional to argue about such things.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0004.jbp",
+    "guid": "226dd92ee1d8f5841b1a482c1a995f19",
+    "text": "\"I want to hire you for a dragon hunt.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0005.jbp",
+    "guid": "4004d72fcd884ba4e9cd0aec2d896587",
+    "text": "\"Who are you?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0008.jbp",
+    "guid": "3d79d3584cdb7e54489501b4a009eab9",
+    "text": "[Give him 2,500 gold coins] \"I'll pay.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0009.jbp",
+    "guid": "ea1d3d32a30de3c4c9b317db5fed4c78",
+    "text": "\"I don't have that amount right now.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0010.jbp",
+    "guid": "3d2d8a60dbf062842baf0cfabeed5eae",
+    "text": "\"That's unacceptable.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0015.jbp",
+    "guid": "f3b08304783030d438ed0134dc33578d",
+    "text": "\"You've proven yourself to be a good ally. I'd like to extend our contract.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0019.jbp",
+    "guid": "db30db8d43e74de44832cbb6389e2947",
+    "text": "\"You tried to kill that huge demon at the battle of Drezen, but you failed. What happened?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0020.jbp",
+    "guid": "e28f2608da37297409beec6aad1ce1f6",
+    "text": "\"I have to go.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0025.jbp",
+    "guid": "f821746a5e4166541a2510910bea4445",
+    "text": "[Give him 12,500 gold coins] \"Deal.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0026.jbp",
+    "guid": "20a4a7b4ea70fb042a5796c893e61a2e",
+    "text": "[Give him 25,000 gold coins] \"Deal.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0027.jbp",
+    "guid": "76251619336ac824e934f54b8851199c",
+    "text": "\"I don't have that amount right now.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0028.jbp",
+    "guid": "bb962de68416c62448b178b3a8bee00b",
+    "text": "\"Perhaps you'd like to join me free of charge, on account of your conscience?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0029.jbp",
+    "guid": "aa3c24e445646b141a5b870f330f02ce",
+    "text": "[Give him 25,000 gold coins] \"I think your services are worth more than that, so I'm willing to double the price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0030.jbp",
+    "guid": "677774365c2cb3c4386b716d130a333a",
+    "text": "[Give him 50,000 gold coins] \"I think your services are worth more than that, so I'm willing to double the price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0031.jbp",
+    "guid": "fecf16b088dded8478b54efa93e1d106",
+    "text": "\"That won't work.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0041.jbp",
+    "guid": "5757ef3fba3fb9141b8613dd319fb1bd",
+    "text": "\"How about a small discount?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Answer_0043.jbp",
+    "guid": "133e59e34f3bbbd4c95d6c20979d7ff5",
+    "text": "\"We already met in Kenabres, didn't we?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0001.jbp",
+    "guid": "f96e87b3a7de4c144abbe403fcc779bf",
+    "text": "{n}Before you stands a dwarf. He has stern, rugged features, and looks to be well armed. He fills his pipe with tobacco from Garund, lights it, and blows out a cloud of smoke. Finally, he addresses you in a deep, dignified voice.{/n} \"How can I help you?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0002.jbp",
+    "guid": "876bef1c091d06e469132ace55d2b37f",
+    "text": "{n}This dwarf never seems to part with his trusty pipe. He even talks with it still in his mouth, the stem of the pipe clenched firmly between his teeth.{/n} \"Got a job for me, Commander?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0006.jbp",
+    "guid": "f59abf4c68e070f4287dc2abac220331",
+    "text": "{n}The dwarf's eyes light up, but his tone is one of studied indifference.{/n} \"A large adult female? The one that's been snatching people and carrying them off? I've heard about her. That's an impressive target. I can take this job, but only if we do it soon. I'm expecting a new assignment from my regular client, and I'll have to leave as soon as I have the orders. And of course, you should know that this dragon will not come cheaply. Two and a half thousand gold, paid in advance.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0011.jbp",
+    "guid": "e5313b929aba92341858fd129b0cafa6",
+    "text": "\"Excellent. Let's get down to business. It's no easy thing to take down a dragon when you don't have wings, so you'll need to follow my lead. The best thing would be to catch her by surprise in her lair, but we'd need to find it first. Of course, since she doesn't leave tracks, that might be tricky, but I think I have a solution. We need to go west of Drezen, to the Grimwood forest.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0012.jbp",
+    "guid": "422a48e079466f142aa592a4474acb96",
+    "text": "{n}The dwarf shrugs.{/n} \"What a pity. I won't work for anything less. You get what you pay for, and my professional skills command a high price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0013.jbp",
+    "guid": "e22c921ab87f316418322b4bdbcfb9ee",
+    "text": "\"I see that you underestimate my worth. Not that it matters. Those who've questioned my competence can be found in just about every graveyard in Avistan.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0014.jbp",
+    "guid": "c7107752ba1d75a4da294e297cd9f0eb",
+    "text": "{n}Still smoking his pipe, the dwarf offers you a cursory salute.{/n} \"The name's Greybor. I'm an assassin for hire. But I suspect you're not here for small talk. Are you in need of my services?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0016.jbp",
+    "guid": "b75af8db5831d7549a8b61fb3100ee51",
+    "text": "{n}The dwarf nods politely.{/n} \"I'm ready to offer you my services. As you can guess, a full contract will be more expensive than a one-time job. I think twelve and a half thousand gold would be a fair price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0017.jbp",
+    "guid": "56be9e84925913b408c22268087ae5d0",
+    "text": "{n}The dwarf nods politely.{/n} \"I'm ready to offer you my services. As you can guess, a full contract will be more expensive than a one-time job. Additionally, this whole incident with the dragon has left a stain on my reputation. So you'll understand if I compensate for this in the final price, which will bring the total amount to twenty five thousand gold.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0022.jbp",
+    "guid": "956bb9f6a6b8283498bc10e95f5a315e",
+    "text": "{n}The dwarf's face grows grim.{/n} \"Yes, that was a failure. It was supposed to be a clean job. An anonymous client, a worthy target, a substantial fee... But the client insisted that I use an enchanted dagger they provided. I was assured that a single hit would be enough to finish the job, but it didn't work as expected. It was a serious blow to my reputation, and my reputation is everything to me.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0023.jbp",
+    "guid": "26bc36afb50dfa04a82c0f96e6c728eb",
+    "text": "\"Good luck. If you wish to make use of my services, I'll be here, but not for much longer. I am expecting new orders to arrive soon.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0032.jbp",
+    "guid": "c9556e119ee326d41b4c9f74f6216a9d",
+    "text": "{n}The dwarf nods matter-of-factly.{/n} \"From now on, you no longer need to worry about someone making an attempt on your life. If anyone tries, I'll send them straight to their grave.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0035.jbp",
+    "guid": "a37985b25aa6a05448083f5c9c9b9a30",
+    "text": "{n}The dwarf looks at you skeptically.{/n} \"How much do you think my next client will pay me if I work free of charge? It would cheapen the value of my services.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0036.jbp",
+    "guid": "91645746b99d12646af479beace7ec9d",
+    "text": "{n}The dwarf looks at you in surprise. Then he takes a puff of his pipe, and grins.{/n} \"It is always a great pleasure to work with a client who can tell a professional from an amateur. It's rare these days to find someone who appreciates high quality work, and is willing to pay for what it's worth. I think this is the beginning of a long and productive partnership.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0038.jbp",
+    "guid": "d30f632f24b5c264c9b4f9d7564ef525",
+    "text": "{n}The dwarf shrugs indifferently.{/n} \"I do admit, I command a high price for my services. Let me remind you that I will have to turn down all other jobs while ensuring your safety, so I've included the estimated amount of lost income in the final price. I'm sorry if this is more than you can afford.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0039.jbp",
+    "guid": "bcde91ca0eedaf44bb234ebdabb78538",
+    "text": "\"The dragon's been seen there often. According to the scouts, this is likely because there's still some wild game left in those parts. We'll set up an ambush there.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0040.jbp",
+    "guid": "25caa3cc9d006cb4399b93c6299a960b",
+    "text": "{n}Greybor blows a cloud of smoke from his pipe, and gives you a searching glance.{/n} \"I hope I can rely on your honesty. I understand that on our way to the dragon, there may be other fights or places we need to visit for various reasons. That's to be expected. However, should I see that you are deliberately delaying the contract, or that you're dragging me off to assault some demon citadel instead of going after the dragon... We will have to revise the terms of our agreement.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0042.jbp",
+    "guid": "c1fc2e87f55384a4fa0dad0394b6364a",
+    "text": "\"Hmm.... Let's think this through. Are there lots of assassins in this town who have the valuable experience of subduing dragons, and are willing to work for you? Will I lose any profit by protracted haggling? Will you? Is there any chance that someone less competent than I am will be able to locate your target as efficiently as I would? Hmm... No, I don't think so. There is absolutely no reason for me to give you any discounts. Two and a half thousand gold is an honest price for the head of a fire-breather.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0044.jbp",
+    "guid": "252a4158686ccae4f9cfc79e212a206d",
+    "text": "\"Yes. I had a contract to assassinate a rather overconfident demon named Kilas there. I guess that counts as participation in the siege of Kenabres... Not that my employer had any interest in the actual outcome of the battle. Come to think of it, the information my client provided me with was almost suspiciously accurate. They seemed to be aware both of the impending attack on Kenabres, and of the fact that Kilas was going to be there.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborDrezen/Cue_0045.jbp",
+    "guid": "aa4a84b44ba5d50439ea1766765c0ff3",
+    "text": "\"Don't you remember our last meeting?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0005.jbp",
+    "guid": "18411f369b2d3494b847a50df62d802a",
+    "text": "\"I'm ready to hire you.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0006.jbp",
+    "guid": "d86868a8976c3bf47889f024e40e2aa7",
+    "text": "\"Who ordered you to kill Darrazand?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0007.jbp",
+    "guid": "03331071d5ba97c4d868c9f510059e2f",
+    "text": "\"First, you'll have to return the gold from selling that dragon's head.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0008.jbp",
+    "guid": "22f95d87a160e854186540655999d50e",
+    "text": "[Attack him] \"This is the last assignment you'll ever get.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0015.jbp",
+    "guid": "36ec6e7e33d327b459ffe8dda102d14d",
+    "text": "[Give him 12,500 gold coins] \"Deal.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0016.jbp",
+    "guid": "54746886199e96f4da72bfdaf6687b75",
+    "text": "[Give him 25,000 gold coins] \"Deal.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0017.jbp",
+    "guid": "8a2ebfe6a92eeca4d95026c50e608ac6",
+    "text": "\"I don't have that amount right now.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0018.jbp",
+    "guid": "9f02d82518e890c41bb71e3d80730838",
+    "text": "\"Perhaps you'd like to join me free of charge, on account of your conscience?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0019.jbp",
+    "guid": "8fd083f29e0faac42929ecea5c232724",
+    "text": "[Give him 25,000 gold coins] \"I think your services are worth more than that, so I'm willing to double the price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0020.jbp",
+    "guid": "397e6ab2b12ca054999ff7bfb3d408e3",
+    "text": "[Give him 50,000 gold coins] \"I think your services are worth more than that, so I'm willing to double the price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Answer_0021.jbp",
+    "guid": "7fba94d10c82c0b428b4dcb381c2da76",
+    "text": "[Attack him] \"You're not worth the price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0001.jbp",
+    "guid": "94cdc6f82bf166e45bf0defa13917a1a",
+    "text": "{n}Greybor is already waiting for you. He looks around warily, not taking his hand off his weapon.{/n} \"Greetings, Commander. As you may have already guessed, I am not waiting for you here by accident. I'd like to discuss an assignment I've just received.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0002.jbp",
+    "guid": "9c30c5ec980877c4ca82b346d0d9da81",
+    "text": "\"Commander, I have bad news. If you remember our agreement, I could only offer my services for this dragon hunt until my client gave me new orders. Unfortunately, we've run out of time. I've just received a letter with my new assignment. And that's not the only bad news.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0003.jbp",
+    "guid": "a632e89c99feaa34d9d69e0bbd277091",
+    "text": "\"I have a new target — you. I've not accepted the job yet, mostly because I've found this client less than agreeable of late. Now, if you are satisfied with my skills, and you'd like to make use of my services in the future, we can sign a full contract. If not, however, I'm afraid it would not be profitable for me to turn down this new assignment. In such case, as strange as it may sound, I must warn you that I will have no choice but to kill you.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0009.jbp",
+    "guid": "2deac0c6d5392a841bebfa9012b8c51d",
+    "text": "{n}The dwarf grins with anticipation.{/n} \"Many people have tried to end my career. As you can see, none have been successful. Let's see how you do. Sweet dreams.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0010.jbp",
+    "guid": "3987fcd069df6614d9572846b712df68",
+    "text": "{n}Greybor draws his weapon, and looks at you with annoyance.{/n} \"Never try to fool a hired assassin. Our profession doesn't tolerate stupidity. There are very few fools in our ranks — they don't survive long enough. I will keep what is mine.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0011.jbp",
+    "guid": "39a721dc72f43204cab83bd5fd9808e9",
+    "text": "\"It would be against my professional ethics to divulge their name. Besides, this client has kept their identity anonymous, so even if I wanted to, I couldn't tell you anything. But I think I can offer some insight. In my last assignment from the client, I was asked to give \"Willodus's best regards\" to the victim. I don't know who this Willodus is, but if I were you, I would talk to him.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0012.jbp",
+    "guid": "dfd220cc357f46a4eb53d737bc62b8ab",
+    "text": "{n}The dwarf nods politely.{/n} \"I'm ready to offer you my services. As you can guess, a full contract will be more expensive than a one-time job. I think twelve and a half thousand gold would be a fair price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0013.jbp",
+    "guid": "a71aa5f7d7d9ad745ae6651b8ce8346f",
+    "text": "{n}The dwarf nods politely.{/n} \"I'm ready to offer you my services. As you can guess, a full contract will be more expensive than a one-time job. Additionally, this whole incident with the dragon has left a stain on my reputation. So you'll understand if I compensate for this in the final price, which will bring the total amount to twenty five thousand gold.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0022.jbp",
+    "guid": "2c73078e8933a404fbb3eb6298f6b3e1",
+    "text": "{n}The dwarf looks at you skeptically.{/n} \"How much do you think my next client will pay me if I work free of charge? It would cheapen the value of my services.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0023.jbp",
+    "guid": "d329874334a04c14c92ba8623652d5e0",
+    "text": "{n}The dwarf nods matter-of-factly.{/n} \"From now on, you no longer need to worry about someone making an attempt on your life. If anyone tries, I'll send them straight to their grave.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0025.jbp",
+    "guid": "d37b6333154f71249b4f7447fc2e5a05",
+    "text": "{n}The dwarf shrugs.{/n} \"What a pity. I'm afraid I'll have to proceed with my orders. Sweet dreams.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0026.jbp",
+    "guid": "dbdd41502a1a6de43a6b17cfd7bf9461",
+    "text": "{n}The dwarf looks at you in surprise. Then he takes a puff of his pipe, and grins.{/n} \"It is always a great pleasure to work with a client who can tell a professional from an amateur. It's rare these days to find someone who appreciates high quality work, and is willing to pay for what it's worth. I think this is the beginning of a long and productive partnership.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0028.jbp",
+    "guid": "c0c97d9a2dd34814db4db56fafaee273",
+    "text": "{n}Greybor gives you a nasty smile.{/n} \"You don't know my worth, but I know exactly what your head is worth in gold. Sweet dreams.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0029.jbp",
+    "guid": "82c0da8d0863e3142a2febe1c639a833",
+    "text": "{n}With a thin smile, the dwarf hands you a {g|GrimborLetter}neatly folded letter{/g}.{/n} \"Here, have this little souvenir. It's the letter ordering me to kill you. Something to show your grandchildren.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0032.jbp",
+    "guid": "30aed40d5eeeb6547879fd60998f0d7e",
+    "text": "\"Are you stupid? Or are you just wicked? Or maybe you're stupid and wicked!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0033.jbp",
+    "guid": "254d58e9c9035fd408a651807997d31e",
+    "text": "{n}Daeran smirks with sadistic glee.{/n} \"Tell him to bugger off to the Abyss. I should like to see him try and kill you. If he's as good as he claims, this could be quite the dramatic performance. If not, well... it'll still be a one-act comedy.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/GrimborSanctum/Cue_0034.jbp",
+    "guid": "43e9ecef4830cc54bac69c160241f223",
+    "text": "\"You won't believe how many times I've heard that professional soldiers are better. Better than volunteers or paladins, or anybody else who fights for good because they know in their heart it's the right thing to do. So I look at this guy, and you know what I think?\" {n}Seelah spits in disgust.{/n} \"Bullshit. People whose loyalties are so easily bought? Sometimes they're even worse than the demons.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Answer_0005.jbp",
+    "guid": "e176a92c87eccd844a3d1cf69d5fba32",
+    "text": "\"Thank you for your honesty.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Answer_0006.jbp",
+    "guid": "7c372547d3f866244812ebc3babc63a1",
+    "text": "\"Who put a hit out on me?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Answer_0007.jbp",
+    "guid": "57b1f2364c11e404ab3b197e27e6c9e7",
+    "text": "\"I don't really enjoy traveling in the company of an assassin. I'm ending our contract.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Answer_0012.jbp",
+    "guid": "7db132221273fe443923764d54c695eb",
+    "text": "\"You heard me.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Answer_0013.jbp",
+    "guid": "bb63ee6cafffc0e4793a4b946db64722",
+    "text": "\"No. I was just wondering how you'd react.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0001.jbp",
+    "guid": "294422470317b63408149b84b0813ff4",
+    "text": "{n}Greybor looks at you calmly.{/n} \"I must warn you, Commander, someone wants you dead. I recently received a letter with new orders, and you are the target. Naturally, I refused to take the job, since it would be unprofessional to kill one's own client. But I would take some additional safety precautions if I were you. Twenty-five thousand is enough to make a lot of people seek {g|Norgorber}Norgorber's{/g} favor.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0002.jbp",
+    "guid": "49f05c2d1adb2004cbaa814c42c360be",
+    "text": "\"Remember how you offered to pay me twice as much as I asked? That was impressive. You didn't secure my loyalty with that additional money. It was your reason for giving it to me that earned my respect. You saw me as a true professional, and treated me accordingly. The bastard who wants me to kill you considers me a disposable pawn, and that's why I would have refused the order, even if I was offered five times the usual price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0003.jbp",
+    "guid": "f919cc65162670046ae127c2cae9d857",
+    "text": "{n}With a thin smile, the dwarf hands you a {g|GrimborLetter}neatly folded letter{/g}.{/n} \"Here, have this little souvenir. It's the letter ordering me to kill you. Something to show your grandchildren.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0008.jbp",
+    "guid": "37b90c5cd78f05743bcab7306f0bebd8",
+    "text": "{n}The dwarf nods, and gives you a slight smile as he puffs on his pipe.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0009.jbp",
+    "guid": "358810558f7490b458f1a28b22dbfa5a",
+    "text": "\"It would be against my professional ethics to divulge their name. Besides, this client has kept their identity anonymous, so even if I wanted to, I couldn't tell you anything. But I think I can offer some insight. In my last assignment from the client, I was asked to give \"Willodus's best regards\" to the victim. I don't know who this Willodus is, but if I were you, I would talk to him.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0010.jbp",
+    "guid": "e9f55fc7904bbef48883c803614bfb63",
+    "text": "{n}The dwarf removes the pipe from his mouth. His voice is calm.{/n} \"Are you sure? You won't get your money back.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0014.jbp",
+    "guid": "b5ac97739fa461741bd8e4cfdb33bb4c",
+    "text": "{n}Greybor shrugs.{/n} \"Whatever you want. My services are in high demand, I can take care of myself. Good luck.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/KTC_GrimborAssasination/Cue_0015.jbp",
+    "guid": "88bc87f0422570c4c9023ff5fadf79fb",
+    "text": "{n}Greybor looks at you in surprise.{/n} \"How I'd react? Did you expect me to make a scene? You hired me, and you can end my services at any time. It would be unprofessional to argue about such things.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0004.jbp",
+    "guid": "6aedf2e07b668ef4ab1c9b97ae2d1bc6",
+    "text": "\"I think we should continue working together.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0005.jbp",
+    "guid": "e48d619799e5d38469f68a62da884be1",
+    "text": "\"Despite your assurances, the dragon escaped. This is your fault. I demand my money back.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0006.jbp",
+    "guid": "9415c9efb58d6124180aea6f39c53449",
+    "text": "\"Safe travels.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0013.jbp",
+    "guid": "72c2bf7408db14e4abba0d6d876546bc",
+    "text": "\"Many people would have killed you to take back their gold, but I believe a life is worth more than money. I won't fight with you over this. Go away.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0014.jbp",
+    "guid": "e15a8d4f7cd21be4bbaf3f3676318ef7",
+    "text": "\"The money's inconsequential. I won't fight you over it.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0015.jbp",
+    "guid": "89819e235a89c9d498c55a4eecf7cb7b",
+    "text": "[Attack] \"I will get my money back one way or another.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0019.jbp",
+    "guid": "e554256498c61e848b3be3692c6491a6",
+    "text": "[Give him 12,500 gold coins] \"Deal.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0020.jbp",
+    "guid": "96a941bcb254d6049a07ae0f7b997577",
+    "text": "[Give him 25,000 gold coins] \"Deal.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0021.jbp",
+    "guid": "9966b63aa19fa2e44bcf5ea145f9bdd6",
+    "text": "\"I don't have that amount right now.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0022.jbp",
+    "guid": "e7758b41a09341b4e874fc68edb4790d",
+    "text": "\"Perhaps you'd like to join me free of charge, on account of your conscience?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0023.jbp",
+    "guid": "667d738f0bf9257458157730990b780b",
+    "text": "[Give him 25,000 gold coins] \"I think your services are worth more than that, so I'm willing to double the price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0024.jbp",
+    "guid": "aa88a4835d44e2741bb86d0ffc9e9a1a",
+    "text": "[Give him 50,000 gold coins] \"I think your services are worth more than that, so I'm willing to double the price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Answer_0025.jbp",
+    "guid": "09b464a16bd5f4e42a50f524053c5a22",
+    "text": "\"That won't work.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0001.jbp",
+    "guid": "92c8a3875b5de2e4485026951e1a4ebb",
+    "text": "{n}Greybor looks with satisfaction at the surrounding carnage.{/n} \"That's a job well done. You can use her head to decorate your tent. I'm going back to Drezen. It's been a pleasure working with you.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0002.jbp",
+    "guid": "c1437946d29d69546921cb7482c90223",
+    "text": "{n}Greybor appears calm, but the chill in his voice and the veins standing out on his neck leave you in no doubt of his true feelings.{/n} \"I expected more from your party. I managed to track down the dragon and lead you to her lair, and you let her fly away. Now she will be more wary. She'll lay low and will be more careful when she hunts. There's no point in continuing this mission. I am going back to Drezen to look for another job. Farewell.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0007.jbp",
+    "guid": "96eeb19541aaaff4f8d45e07e67ff65c",
+    "text": "\"Good luck. If you'd like to hire me again, you'll find me in Drezen, but I won't be there for long. I'll likely have to leave as soon as I get my next assignment.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0008.jbp",
+    "guid": "6cf578cb8831ac442af779bfdd4f5324",
+    "text": "{n}The dwarf nods politely.{/n} \"I'm ready to offer you my services. As you can guess, a full contract will be more expensive than a one-time job. I think twelve and a half thousand gold would be a fair price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0009.jbp",
+    "guid": "82db7392007fe9e4d888509704ab2adb",
+    "text": "{n}The dwarf looks at you dubiously.{/n} \"You understand that failures like this damage my reputation. If I'm going to work for you, we need to be swift and certain when dealing with our enemies. And this time the price will be higher for my services. Twenty five thousand gold pieces.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0010.jbp",
+    "guid": "2f1bd7b4ea0382c43961bdb5770e46b1",
+    "text": "{n}Greybor lights his pipe unconcernedly, blowing a cloud of smoke into the air before he answers you.{/n} \"These things appear somewhat differently to someone of my experience. I led you right to the dragon, but despite my efforts, you let her slip away. In fact, it would be nice if you compensated me for the damage this failure has done to my reputation.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0016.jbp",
+    "guid": "cc17230ef6706ad4d8c5685aee709364",
+    "text": "{n}The dwarf answers calmly, without boast or threat.{/n} \"You might be successful. Then again, you might not. We won't know who has {g|Norgorber}Norgorber's{/g} favor today until we try, right? Sweet dreams.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0017.jbp",
+    "guid": "9393afb315dcb044f801b7cff257ae0b",
+    "text": "{n}Greybor nods silently, and his grip on his weapon relaxes almost imperceptibly.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0018.jbp",
+    "guid": "38be096a217c4da41a2b73bd13c62be5",
+    "text": "\"Farewell.\" {n}Greybor moves with a swift silence that is surprising for a dwarf. He slips away out of sight, vanishing without a trace.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0026.jbp",
+    "guid": "da4319bc3c6da7342a750130df937438",
+    "text": "{n}The dwarf nods matter-of-factly.{/n} \"From now on, you no longer need to worry about someone making an attempt on your life. If anyone tries, I'll send them straight to their grave.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0027.jbp",
+    "guid": "c794aaa9dd86ff24ab1d0ab663c2cba5",
+    "text": "{n}The dwarf shrugs.{/n} \"What a pity. I won't work for anything less. You get what you pay for, and my professional skills command a high price.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0028.jbp",
+    "guid": "cb99cb753cf4c394cb0e140a6e10aec3",
+    "text": "{n}The dwarf looks at you skeptically.{/n} \"How much do you think my next client will pay me if I work free of charge? It would cheapen the value of my services.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0029.jbp",
+    "guid": "2a5f92deaccded945b22cb6efb7c1e21",
+    "text": "{n}The dwarf looks at you in surprise. Then he takes a puff of his pipe, and grins.{/n} \"It is always a great pleasure to work with a client who can tell a professional from an amateur. It's rare these days to find someone who appreciates high quality work, and is willing to pay for what it's worth. I think this is the beginning of a long and productive partnership.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/GrimborWyrmLair/Cue_0030.jbp",
+    "guid": "6fc1953d3dd34484a9cd56931326943d",
+    "text": "{n}The dwarf shrugs indifferently.{/n} \"I do admit, I command a high price for my services. Let me remind you that I will have to turn down all other jobs while ensuring your safety, so I've included the estimated amount of lost income in the final price. I'm sorry if this is more than you can afford.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Answer_0005.jbp",
+    "guid": "1d884636203a358468392312d7c21dde",
+    "text": "\"I don't want to fight...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Answer_0006.jbp",
+    "guid": "a923d4c8713dc1e49b5c404bd284cf45",
+    "text": "[Attack] \"Prepare to die, monster!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Answer_0011.jbp",
+    "guid": "278b9c11c868b454ab1c26d4e0de26a0",
+    "text": "[Attack] \"The dragon! At last, a worthy opponent! Witness my prowess in battle, Gorum! I dedicate this victory to you!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Cue_0001.jbp",
+    "guid": "aba200299533f71418982cf2048b1942",
+    "text": "{n}You tumble down the rocks toward the dragon amidst a cloud of dust and cascading stones. Your breakneck descent attracts the attention of both the dragon and her prey — an elderly elf who appears to be her latest victim. Greybor groans as he picks himself up off the stone floor, a dour expression on his face.{/n} \"Well, this is a real mess. {g|Norgorber}Norgorber{/g} doesn't favor us today.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Cue_0002.jbp",
+    "guid": "a6793a08b5d24f04ca6268fb74f10dac",
+    "text": "\"You again? Come to finish me off? Was this old dotard a part of your plan to distract me as well? I will devour you whole, and your deaths will be slow and agonizing, you parasites!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Cue_0003.jbp",
+    "guid": "f13f2b64f9e5d5748884e0b6bf49bca1",
+    "text": "{n}To your surprise, you recognize the dragon's captive — the Storyteller. He points urgently to the dragon.{/n} \"Kill her! Kill her right now! If she starts to breathe fire, everything around here will burn!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Cue_0007.jbp",
+    "guid": "5afc260c2653c5f45b9915a8bfe18b4f",
+    "text": "{n}The monster lets out a horrendous roar.{/n} \"How dare you injure me? You will pay for the pain you've caused!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Cue_0010.jbp",
+    "guid": "e7b0ceab5e2eef84ca1f94392dfb064d",
+    "text": "\"You are awfully wicked and you're mean to my friends. I won't feel sorry for you at all when they teach you a lesson.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonBadEnter/Cue_0012.jbp",
+    "guid": "c00a3b8033357c04aa31c84d3ceac9af",
+    "text": "{n}The intoxicating scent of blood fills your nostrils, and its metallic taste lingers on your tongue. Gorum has heard your prayer. You must not disappoint him now!{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0001.jbp",
+    "guid": "e66757a3252141e39abe01d5af312273",
+    "text": "[Attack] \"Today, in Apsu's name, I will rid the world of a spawn of evil!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0005.jbp",
+    "guid": "6869f2c717ecc484ba508ce2fbef47b3",
+    "text": "\"Greybor, what are we going to do?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0006.jbp",
+    "guid": "48cfb05c465e294419b5917d9b344a0e",
+    "text": "[Stay quiet and wait for the right moment to attack]"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0007.jbp",
+    "guid": "aaab43f70a2e5c343b1b7edb883281ed",
+    "text": "[Step out of cover] \"I'm afraid I must interrupt you...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0013.jbp",
+    "guid": "fccc3af34a14da642b4d44749c0f4511",
+    "text": "[Attack] \"Let the Storyteller go, you monster!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0014.jbp",
+    "guid": "1e0ff0f2386c661488a68f3e71dc6a88",
+    "text": "[Move away from the dragon stealthily]"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0019.jbp",
+    "guid": "44d573918e0e39a40a6b1b484b27f965",
+    "text": "[Continue to wait for the right moment]"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0020.jbp",
+    "guid": "5770913bd3264884297571e0fcd0591b",
+    "text": "[Step out of cover] \"This story is so boring! Let me tell you something way more interesting! Once upon a time...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0031.jbp",
+    "guid": "0ed1cecef12e9f04baecbe344aa481db",
+    "text": "[Attack] \"Greybor, to battle!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0032.jbp",
+    "guid": "5488e727111aecf4fb59310898cc10c9",
+    "text": "[Step out of cover] \"I have an interesting story for you, too! It happened...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Answer_0038.jbp",
+    "guid": "5fc0a902cf204fe4a91947787ba4ec72",
+    "text": "[Attack] \"The dragon! At last, a worthy opponent! Witness my prowess in battle, Gorum! I dedicate this victory to you!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0001.jbp",
+    "guid": "f742a582cf4e330449f860407cba62ea",
+    "text": "{n}Greybor whispers approvingly.{/n} \"We've crept up on the toothy old lizard without her noticing us. It's a pleasure to work with real professionals. Let's get a little closer so we can attack when she least expects it.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0002.jbp",
+    "guid": "546738b439bbf064b9dc7499fde143dc",
+    "text": "{n}The dragon looms over an old elf, her vicious teeth bared in an angry snarl. You recognize his face — he is called the Storyteller.{/n} \"I know you're in league with those little parasites who wounded me! They sent you to spy on me! They thought I wouldn't crave the crunch of your old bones! Ha! They were wrong. I've always had a special liking for the taste of elven flesh. But I do love to play with my food. What can you offer me in exchange for your pathetic life? Perhaps I won't kill you if you manage to impress me.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0003.jbp",
+    "guid": "6119664e3723b4f4ab48dadf791b8f32",
+    "text": "{n}The Storyteller is pale as a ghost, but he stands strong and doesn't lose his nerve, though his voice trembles slightly as he speaks.{/n} \"A story. Stories are all I have, but some of them are priceless, more valuable than any treasure. This I can offer you in payment.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0008.jbp",
+    "guid": "ad32468031ec8594198dda8388cd3ab0",
+    "text": "{n}The dwarf looks at you excitedly.{/n} \"Let's wait for the right moment to attack. This old man is distracting the monster, and we can use it to our advantage. He's one tough old fellow. Anyone else would have been shitting bricks by now. Maybe it's because he's blind. He just can't see the intimidating size of her teeth.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0010.jbp",
+    "guid": "ba9fe70606207de49b4ee192a8ed72f2",
+    "text": "\"I have a peculiar item on me... its previous owner was quite sinister, so I think you'll appreciate this story.\" {n}The Storyteller produces a small bundle from his bag, and opens it to reveal a golden signet ring. As he holds it up in his shaking hands, the old man's voice suddenly changes. His tone grows shrill and angry, taking on an exaggerated quality as if doing a mocking imitation of someone else.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0011.jbp",
+    "guid": "e732f3a3c887f6c49a13cb4f24401cfb",
+    "text": "{n}Fragments of stone crack beneath your feet, betraying your presence. With a startled hiss, the dragon turns toward you.{/n} \"What? You again? You sent this miserable old dotard to distract me with his chatter while you sneak up on me?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0012.jbp",
+    "guid": "3d5e59ddc658eb947874a1cac31dd6a4",
+    "text": "{n}The dragon turns toward you in astonishment.{/n} \"What? You again? You sent this miserable old dotard to distract me with his chatter while you sneak up on me?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0015.jbp",
+    "guid": "5e880b8b2f341234b83a790585c9c156",
+    "text": "\"Everything in this throne room is so cheap and vulgar. Jamandi Aldori knows nothing about luxury — another sorry provincial excuse for an aristocrat. And yet I still must bow my head and smile politely at these sword-wagging halfwits. These poor souls have never known anything more luxurious in their life than this rural parody of a palace. I must convince them that I am at their mercy. Ha! Soon they will all beg me for mercy, but I'll see that they're given none, or my name isn't Tartuccio.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0016.jbp",
+    "guid": "b4b25c50e4ea9b64e95ab0f873f5a07e",
+    "text": "\"And look at these foolish idiots who want to become a baron! What a parade of louts. A whining, bumbling bore, more beard than face, who drones on and on. An insolent, unwashed wench carrying around a dull gardening tool as her weapon of choice. An undead sadist, carrying an endless amount of emotional baggage from her childhood... She's actually all right, to be fair. But as for the infuriating halfling who never shuts up...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0017.jbp",
+    "guid": "3195c87f07afa764c992abcc7e64dd0a",
+    "text": "\"How I long to take that little journal of hers and shove it into her blabbering mouth so she'll choke on it and be quiet! A worthless creature who clings like a limpet to someone far more important... my greatest rival. A dark horse. Well, consider this entire performance dedicated to you.\" {n}The old elf is out of breath, and his diminishing voice becomes harder to discern.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0025.jbp",
+    "guid": "880ae3fcb82ebc9428fdbc8c1307a488",
+    "text": "\"This night will be long and bloody. The mercenaries will storm the palace, and kill this useless rabble, hopefully starting with all my rivals. But they won't touch me, for I possess a token of immunity: a ring with King Irovetti's personal coat of arms. After all, it is I who must lead the expedition into the {g|Stolen Lands}Stolen Lands{/g}. Not for stupid titles or glory, oh no! Ha, imagine becoming that fool Jamandi's bootlicker until the end of your life! No, my precious, witless, little soldiers will procure something a lot more valuable than a barony in the middle of nowhere.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0026.jbp",
+    "guid": "18fd33447fa87b343a522f1793f54a01",
+    "text": "\"Something precious is hidden in the {g|Stolen Lands}Stolen Lands{/g}. A wooden sword created by someone who was truly powerful. Nothing like the pathetic scraps of metal worn by these pompous {g|Swordlords}Aldori{/g} simpletons. No, it is a true instrument of fate. It's a pity I don't know how to use it myself. But King Irovetti will pay me an obscene amount of money for it — fortune enough for an eternity of endless debauchery! Not to mention the little bonus he'll give me for Jamandi's venture collapsing like a house of cards. Merely a trifle, really. Barely buys you a palace in {g|Absalom}Absalom{/g}. And then...\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0027.jbp",
+    "guid": "92d5934216e8dc543a9a6173017c4bed",
+    "text": "\"Oh, {g|Calistria}Calistria{/g}! This stinkpot with a sword has started flapping her jaws again! Why can't she just shut up? Her manners are worse than a kobold's! Be careful now, Tartuccio. Don't let anything slip about Jamandi. I hope this loudmouth gets stabbed tonight.\" {n}The Storyteller's voice grows louder and sharper.{/n} \"It's not like you're being kept prisoner. If you don't want to wait, you can always return to the mountains, or whatever other place you crawled out from. I especially advise you to do so if you don't know who the Aldori {g|Swordlords}Swordlords{/g} are!..\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0028_EndOfTart.jbp",
+    "guid": "294462fbf68f995409fe6325d3739c57",
+    "text": "{n}The dragon keeps quiet. Finally she speaks, her voice loud and demanding:{/n} \"How interesting. What happened next?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0029.jbp",
+    "guid": "26650f05010b9ce4cb0202da7e35ce8e",
+    "text": "{n}Greybor tenses, ready to spring. He wastes no words.{/n} \"She's thinking. She's distracted. Attack, now!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0034.jbp",
+    "guid": "5a083cd26e6c39b46b3eddcf648f87c8",
+    "text": "{n}With a deadly silence more frightening than any battle cry, the dwarf drives his weapon deep into the dragon's side just beneath dragon's wing, where her scaled hide is weakest. The dragon lets out a deafening roar of pain. Through clenched teeth, Greybor gives a low chuckle.{/n} \"Sweet dreams.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0037.jbp",
+    "guid": "d653a0005462502459eef9a59f201106",
+    "text": "\"Her teeth are really huge! I want big teeth too. But when I grow up and become a big scary dragon, I will help all the poor old people instead of eating them.\" {n}Aivu makes a noticeable effort to lower her voice. She seems to enjoy this game of hide-and-seek.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0039.jbp",
+    "guid": "47e0d0d3b6964354db60f8561d498d8e",
+    "text": "{n}The intoxicating scent of blood fills your nostrils, and its metallic taste lingers on your tongue. Gorum has heard your prayer. You must not disappoint him now!{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_3.jbp",
+    "guid": "f2c1a763c62c4d13b9799b7e5437a57a",
+    "text": "{n}You hear the ringing of silver scales somewhere far away. It's getting closer, and soon it feels like huge wings are flapping right over your head. {g|Apsu}Apsu{/g} has heard your prayer and will not leave you to face the evil dragon alone.{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/BE_Manor/Cue_0251.jbp",
+    "guid": "b32476ab82b93fc43bcc43c75119f0cd",
+    "text": "The door doesn't budge. The Commander forces it open with {mf|his|her} weight, and enters the same hall where this dangerous expedition first began. The cozy, comfortable setting in no way hints at the nightmares that awaited the Commander inside the mansion. The door outside is wide open, and through the doorway, dark figures can be seen clutching weapons. All of this was nothing but a warm-up — the final, decisive battle is still to come. The Commander prepares for a fight as {mf|he|she} steps outside the accursed mansion."
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Ambush/Answer_0001.jbp",
+    "guid": "4f4a00169bea49e2ab76fcd998e9a90e",
+    "text": "[Clutch your head theatrically] \"You've got me! Oh, no! I am disgraced! How can I bring myself to look Pharasma in the eye after this?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagDefeated/Cue_0001.jbp",
+    "guid": "150c041e18d49ea4b8ff11b860d9719c",
+    "text": "{n}Wenduag jumps back, clutching at her wound, but immediately falls to her knees.{/n} \"Enough... That's enough... I want to... talk to you.\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q2BadBlood/LannFeelsBad/Cue_0008.jbp",
+    "guid": "b9945560d6fba9f419a5628232e980f7",
+    "text": "{n}Lann clenches his teeth.{/n} \"Savamelekh is here, close... The sooner we find him, the better. I don't understand... I haven't been affected by his ritual, then why...\" {n}He clutches his head.{/n} \"Damn it... I'll run straight into his open arms, if it'll only make this stop!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0007.jbp",
+    "guid": "3625b7b683cf87541910c7d2cb0dddda",
+    "text": "{n}Elan and Kiana are clutching each other's hands. The young woman speaks first,{/n} \"We can't leave it like this. Our friends need our help!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0013.jbp",
+    "guid": "5fa8ed029a93b4348b82ec659e6839a0",
+    "text": "\"I'll leave at once. I'll keep watch on the cave and its surroundings. We can meet up there.\" {n}Elan sighs in frustration.{/n} \"I can't bear to wait any longer. I can't leave Kiana's soul in the clutches of those monsters!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Sosiel/Q03_Prisoner/MeetTrever/Cue_0031.jbp",
+    "guid": "461a63d5ac3ae964fbddb331cc441809",
+    "text": "{n}The young cleric places his palms on top of his brother's huge calloused fists clutching the blade's hilt. Their eyes meet through the slit of the helmet, and something changes. Already an enormous, muscular hulk, Trever becomes even larger and stronger. The mythic power bestowed upon Sosiel by his Commander is channeling through his brother as well!{/n}"
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionQuests/Woljif/Q3WoljifAbyssMoonRising/Q3WoljifSmall/Cue_0002.jbp",
+    "guid": "173ad86bf72942c4bb25071a64c5319f",
+    "text": "{n}A boy of about ten runs toward you, and as he gets closer you recognize him as Woljif. He looks scared, and clutches a piece of bread to his chest.{/n} \"Gran! Grandma! Help me! You said I should take the bread from 'em! Hide me! Gran!\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionRomances/Sosiel/Additional_C3/SosielVerse/Cue_0014.jbp",
+    "guid": "e329b6f1796b1cd44ad7de6660269df3",
+    "text": "{n}Sosiel gasps and looks away in embarrassment. You take his hand from your pocket and notice he's clutching a folded piece of paper.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/SpinnerOfNightmaresLair/Lourry/Cue_0005.jbp",
+    "guid": "128730fcd15f427fa4c176d19e2f64f4",
+    "text": "{n}The illusion vanishes, and you see a young woman who is scared to death. Despite her fear, however, she's clutching a small knife, and that knife is confidently pointing at your face.{/n} \"Don't hurt me.\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_0006.jbp",
+    "guid": "d368680393304b5ba324dd5a517140ed",
+    "text": "\"I am Devarra, bane of the Worldwound. And because of you, my clutch was pillaged, and my offspring died before their birth. Do not think I have forgotten.\" {n}She lets out a vengeful hiss.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_0007.jbp",
+    "guid": "24b8c1d855644b0791dafe5d860ac073",
+    "text": "\"Important...\" {n}Devarra scoffs.{/n} \"He simply sent us to clean up a mess. He said this whole tower is steeped in 'anomality' down to the last pebble, and it must be burned along with its contents, without leaving a single page or stone behind. Now that the opportunity has presented itself, I think we should also incinerate its owner.\" {n}She shoots the Storyteller a menacing look.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_27.jbp",
+    "guid": "8c53478782244b90a37f727f7b814318",
+    "text": "\"I am Devarra, bane of the Worldwound. Our last meeting ended with you killing me, but know that I do not hold it against you. I was forced to fight you by the demons who had captured my clutch. I remember you showed mercy to my brood, and for that reason you are not my enemy.\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_8.jbp",
+    "guid": "8273aba6f8ab4c328661380272cee583",
+    "text": "{n}Devarra hisses angrily.{/n} \"I remember you too, you nasty little creature. You must know that dragons have excellent memories? One day, we will meet again, and I will kill you. I promise that your death will be excruciating, perhaps the worst there has ever been.\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/StorytellerEnd/Answer_0015.jbp",
+    "guid": "2e7f9d54d0c24130b05be5884a2d7737",
+    "text": "[Address Chaleb and Devarra] \"Happy?\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/TresholdOutdoor/IntroTeleport/Cue_0009.jbp",
+    "guid": "c5ad0eee80e04d8d8aa4f545b875f7ef",
+    "text": "\"Realizing that combat is inevitable, the Excess clutches {mf|his|her} weapon, ready to turn it against the attacking anomalies...\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/TresholdOutdoor/Mephisto/Cue_49.jbp",
+    "guid": "2eab45f6089841cc979f6b51c0347371",
+    "text": "{n}The judge subtly winks back.{/n} \"It is common knowledge that a deal with a devil, while honest on its face, is an act of violence against whichever soul has fallen into the devil's clutches.\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/TresholdOutdoor/Storyteller/Cue_0001.jbp",
+    "guid": "d5fa5660ff444dcf815772daee18367d",
+    "text": "{n}The Storyteller is sickly pale, his dry hands shaking slightly as they clutch a ring of some kind. His white lips whisper something you cannot make out. He senses your footsteps only when you walk right up to him, saying with a start,{/n} \"Who is this? Ah, Commander. Greetings.\""
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/DLC2_Common/Grave_Personal/Cue_0004.jbp",
+    "guid": "9e0323e28dea4937966a8c7b624cc36e",
+    "text": "{n}Warm light envelops Brodie. He cries out in surprise, then clutches his abdomen.{/n} \"Blessed {g|Iomedae}Iomedae{/g}! I could eat a whole cow! Forget the cow — even my mother-in-law's infernal seaweed pie will do!\" {n}He grabs your hand and grips it tightly, on the verge of tears.{/n} \"Thank you, thank you, {mf|sir|ma'am}! I won't forget your kindness!\""
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map1_Theatre/RestBookEvent_1/Cue_0011.jbp",
+    "guid": "f6e529f6db8a4cc68f9c94cf75a447dc",
+    "text": "Langrat did not protest, but the prospect of getting stuck in some particularly narrow crevice seemed nonetheless daunting to him. In the end, that's exactly what happened — when the rocks were pressing on his chest and back, he panicked and started thrashing about like a fish in a net. Tearing off his skin and turning his clothes into rags, he broke free from the earth's clutches and fell to the ground, thrusting both his hands into a patch of stinging lichen. This mishap marked the end of Langrat's scouting mission — he howled in pain as the others pulled him from the trap."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map1_Theatre/RestBookEvent_1/Cue_9.jbp",
+    "guid": "f2629b7ccb9240f18ec7347cb0dc1024",
+    "text": "Clutching the lasso, Langrat went hunting. Although he never got a chance to use it in the end, carrying some kind of weapon gave him enough courage for the task."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map2_Graveyard/RestBookEvent_2/Cue_0019.jbp",
+    "guid": "0c0042aef8014a3abd8667fab1f24907",
+    "text": "Frada bravely entered the fire. Her strong, unyielding character carried her toward her goal, and the acrid smoke was powerless to blind her unseeing eyes. Fearing nothing, she used her acute hearing to find the house where the victims were struggling behind a locked door. She bashed off the latch with a stone. She returned accompanied by a weeping woman clutching two little girls and looking at Frada as if she were an all-powerful goddess."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map2_Graveyard/RestBookEvent_2/Cue_0028.jbp",
+    "guid": "7b5df2cd352649d4a3655ec4a055b85e",
+    "text": "Inai vanished behind the curtain of smoke with an inscrutable expression on her face. She did not return until much later, carrying a broken doll as her only trophy. The healer clutched her meager treasure with such determination that nobody dared to call her out over this lackluster result. The toy held some meaning that was both tragic and deeply personal."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map2_Graveyard/RestBookEvent_2/Cue_106.jbp",
+    "guid": "3be520aecdf54baa81f91014d31df6e1",
+    "text": "It was a miracle nobody slipped and plunged to their death. Clutching onto the rocks for dear life, the survivors hung suspended over the chasm, and making their way back up cost them tremendous effort, bruised palms, bleeding fingers, and no small amount of terror."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map2_Graveyard/RestBookEvent_2/Cue_22.jbp",
+    "guid": "2cb231ba114f40eaaeaaa034eb70f2a7",
+    "text": "The frail musician dashed into the fire with a determination born of despair. The smoke choked him and the fire burned his tender skin, but it was almost as if Langrat forgot his fear. He found the locked door from where the voices were coming, picked up a stone, and knocked off the latch in a single hit. He returned to his companions followed by a weeping woman with two frightened little girls clutching at her skirt."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map2_Graveyard/RestBookEvent_2/Cue_27.jbp",
+    "guid": "5ad03158b438494388c764bf1e7036bb",
+    "text": "It was a miracle nobody slipped and plunged to their death. Clutching onto the rocks for dear life, the survivors hung suspended over the chasm, and making their way back up cost them tremendous effort, bruised palms, bleeding fingers, and no small amount of terror."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map3_RichQuarters/RestBookEvent_3/Cue_10.jbp",
+    "guid": "cfc754b32f004761b900b61cde4fd8fc",
+    "text": "Bemir snuck up on the knight and lunged at him, trying to knock him out with a crushing blow. But no matter how skilled he was as a robber, Bemir was no match for a seasoned warrior — the knight anticipated Bemir's attack, whipped around, and slashed at Bemir's ribs with his sword. Clutching his deep wound, Bemir hurried away."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map3_RichQuarters/RestBookEvent_3/Cue_12.jbp",
+    "guid": "762f396826b64b4ba2f41dc19785b22a",
+    "text": "Approaching the knight, Frada addressed him in her well-practiced \"bureaucrat\" voice and demanded that he identify himself. Alas, her usual confidence had left her after the ill-fated visit to the town hall. The knight reacted to her words with a roar of fury and a strike with his sword almost took her head clean off. Frada quickly retreated, clutching a deep wound."
+  },
+  {
+    "path": "World/Dialogs/DLC2_LowFantasy/Map6_Abyss/Abducted/Cue_0015.jbp",
+    "guid": "3f0d565178034fecb5a18706b159bf6c",
+    "text": "{n}The cultist on the hill raises his arm and Sendri freezes. The bandage falls from his face, revealing that the eye beneath is glowing with an icy light — much like the light of the cold, deadened sky above your heads. Sendri convulses, clutches his throat, and is seized by violent coughing. When the coughing subsides, Sendri's lips begin to move, but the words that emerge are not his own.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC3_Roguelike/BookEvents/Songbird/Cue_0001.jbp",
+    "guid": "7bcc69bd5cdb4f1d87a95d8b328c1502",
+    "text": "There must have been a moment when possessing her ceased to bring me joy, but I cannot say when the change occurred. What did I see in her before? What made me dream of her while clutching her feather in my fist? Her trills, once so sweet to my ears, now irritate me with their monotony. Her disregard for my gifts makes me grind my teeth in anger. How many precious diadems, necklaces, and rings has she broken? How many dresses has she torn to pieces? Unbidden, my hand curls into a fist."
+  },
+  {
+    "path": "World/Dialogs/DLC3_Roguelike/PortMercCap/Cue_0001.jbp",
+    "guid": "7a688c983e7a423abcbda5362e613738",
+    "text": "{n}The man's face looks like it was chewed on for a long time before being swallowed and partially digested. One of his eyes is covered with a black bandage, the other is spinning wildly in its socket, only briefly stopping to look at you. His maimed hands, a few fingers short, are clutching a pipe filled with strong, foul-smelling tobacco.{/n} \"Eh? Off to sea, are ye? Lookin' to find some cronies? I'm yer man, aye. Angler knows every crook, cutthroat, and daredevil in this city. And what they're worth, and what they'll cost ye.\""
+  },
+  {
+    "path": "World/Dialogs/DLC4_Shifter/UlbrigRomance/RomanceMain_c2/UlbrigMourning/Cue_0001.jbp",
+    "guid": "8f9b796fd321423ebb35fc5969355f2b",
+    "text": "\"Warchief!\" {n}Ulbrig's eyes are red with tears. He is clutching a giant flask filled with beer.{/n} \"Come sit with me. We'll drink to the memory of my kin — give 'em a proper send-off.\""
+  },
+  {
+    "path": "World/Dialogs/DLC5_StoryEnds/DLC5_GiantsOverseers/DLC5_DeleteStones/Cue_60.jbp",
+    "guid": "5a67383020b84de8acb21565962c41ea",
+    "text": "\"Questions like that do make me begin to regret it.\" {n}Penta looks at you with her usual nonchalance.{/n} \"By joining you, I've had the opportunity to visit many places previously unknown to me, to uncover new knowledge and secrets, and to confront a demon lord. Do I regret that choice, after many years of captivity in the clutches of the Technic League? I leave that question to you as an exercise in independent reflection.\""
+  },
+  {
+    "path": "World/Dialogs/DLC5_StoryEnds/Seal_1B_Goblins/DLC5_FirstGoblin_Main/Cue_0001.jbp",
+    "guid": "1c19347e341148328daba5e7ef368d1a",
+    "text": "\"Who are you? You dealt with them so fast... Master Usur told me to say thank you when someone helps you... Oh! Poor master Usur! Poor Norte!\" {n}He clutches his head and wails mournfully.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC5_StoryEnds/Seal_1B_Goblins/DLC5_GoblinsPartyInTheTower_CageForAnimal/Cue_25.jbp",
+    "guid": "9eb968bb0e88422a92a0f1f29710e262",
+    "text": "\"But then... Brother Buuze killed Master Usur!\" {n}Norte clutches his head and starts rocking back and forth.{/n} \"All because Norte wanted to be better than the animals! Norte wanted the master to like him more than the beasts, and now he's dead because of them! Now Norte is all alone... Norte wants them to die, too!\""
+  },
+  {
+    "path": "World/Dialogs/DLC5_StoryEnds/Tavern/DLC5_Companion_Sendri/Cue_2.jbp",
+    "guid": "da1445a0890e4c9ab0a8ea0ec104b596",
+    "text": "{n}Sendri clutches a steaming cup of mulled wine with both hands.{/n} \"What an amazing thing mulled wine is — it warms you up inside and out. What a pity we don't have this on our travels!\""
+  },
+  {
+    "path": "World/Dialogs/DLC6_ADanceOfMasks/KenabresFestival/Seelah_Event/HelpTippler/Cue_0018.jbp",
+    "guid": "039b8199db62469fb03d97e329aa9f99",
+    "text": "\"There! That's it! Much better. Mmph... Whew.\" {n}The gnome noisily sucks fresh air into his chest through reddened nostrils, rubbing his scratched neck with his fist. His other hand is clutching a corked wine bottle, covered in dirt.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC6_ADanceOfMasks/KenabresFestival/Seelah_Event/HelpTippler/Cue_0020.jbp",
+    "guid": "2a52b8af511241bab9c743fcae287d52",
+    "text": "\"Will you look at this... Some help you two were! But you did get me out. Mmph... Whew.\" {n}The gnome noisily sucks fresh air into his chest through reddened nostrils. The grate broke easily from the old masonry, and a few rusty bars fell away by themselves. The gnome has been left with a square collar of four metal bars around his neck. He has balled one hand into a fist and is clutching a dirty wine bottle in the other.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC6_ADanceOfMasks/KenabresFestival/Seelah_Event/SaveThePet/Cue_0025.jbp",
+    "guid": "8a29cbc462e04c8ab852a4ab571be881",
+    "text": "\"Clementine, my Clementine! You won't be running away from me again today!\" {n}The child grabs the opossum and clutches it to her chest. Clementine's face wrinkles in a grimace of resigned suffering.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC6_ADanceOfMasks/TavernFinal/UlbrigRomance/UlbrigGardenDate/Cue_0005.jbp",
+    "guid": "f1a7df66d62449dabc505d3ecfb8be52",
+    "text": "\"Yes, exactly. A lone game piece clutching a sword in the middle of the field. Not a single ploughman behind him. No past, no future, nothing but death wherever he goes.\""
+  },
+  {
+    "path": "World/Dialogs/DLCFree_ChildrenOfMorta/John_Meet/Cue_0001.jbp",
+    "guid": "329c21c505774058813892a0b3082aef",
+    "text": "{n}A tall warrior clutches his sword and shield. His dark hair has a dash of gray, his stern face is tired — but his movements betray no sign of weakness.{/n} \"Thank you for your help. My name is John Bergson.\""
+  },
+  {
+    "path": "World/Dialogs/Epilogues/Cue_15.jbp",
+    "guid": "f06a0653bf874465aafb7a849642d99d",
+    "text": "For a time, the whereabouts of Nurah Dendiwhar were completely {d|c2 nurah trickster}unknown{/d}, but then the River Kingdoms saw the publication of her shocking book — \"To the Abyss and Back: The Crusade Through the Eyes of a Former Cultist\". The book was banned in several countries, and a bounty was placed on Nurah's head — but the elusive writer always escaped the clutches of the inquisitors."
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/Crinukh/Cue_0270.jbp",
+    "guid": "cfc6141de5bee7f44b015217c7143d57",
+    "text": "\"The tribe was attacked by its neighbors, at the devils' instigation. Epidemics broke out, then our slaves rebelled. They came after their former masters in the dead of night. Our clutches of eggs were ravaged, our altars were desecrated, and our warriors were slain in their burrows. The slaves paid us in full for our cruelty and arrogance. They hunted us, chasing us down through the caves and mineshafts, level by level. When we were finally left alone, we had no idea where we were. All we saw around us was darkness, and lurking in that darkness were bloodthirsty and dangerous predators...\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/Kaylessa/Forn_Ambush/Cue_0072.jbp",
+    "guid": "e92f4dd809cbbc240b05f2435b893937",
+    "text": "{n}As she reaches him, a series of dry clicks ring through the air, and she stumbles. Arrows whistle through the air, then the figures of dark elves emerge from the shadows. Clutching the shaft of an arrow now planted in the middle of her clavicle, Kaylessa wheezes,{/n} \"I... told you it was... an ambush...\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0001.jbp",
+    "guid": "2d7d6df431933024591e74d6dfd873e4",
+    "text": "{n}The elf hunched up next to you is clutching a small, but deep, puncture wound. Her appearance is quite remarkable — her skin is blacker than any Garundi's, her teeth are fanged, and her hair is as gray as a crone's. Her crimson eyes glare at you with a gleam of malice.{/n} \"What are you looking at, soldier? Like what you see?\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0059.jbp",
+    "guid": "a71103ae0f782454f979d106eb4cc08c",
+    "text": "{n}Her hand reaches under her cloak, then emerges once more. But instead of a dagger, she is clutching some crumpled papers that she forces into your hand. Then she falls silent forever.{/n}"
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/ScrollVendor_Old/Cue_0039.jbp",
+    "guid": "431bfedf55a7c3641b0b3aff341c5ff0",
+    "text": "\"The God of Walls teaches us to expand civilization to the wildest and remotest corners of the world. I doubt there are many places wilder than the Worldwound! I can't wait to see the walls of Drezen appear on the horizon. This city used to be the crown jewel of Mendev — it's high time it was freed from the demons' filthy clutches!\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/Venture_Captain_Hilor/Hilor_MainDialogue/Cue_0079.jbp",
+    "guid": "72740cd22351f9542963b0f8a38c29d1",
+    "text": "\"You found Lourry... By the gods, you've brought her back to me! But...\" {n}Hilor leans forward to embrace his daughter, but then stops as if he'd hit a wall.{/n} \"No. You are not Lourry. You're the Spinner of Nightmares.\" {n}Hilor clutches his head with his hands, as if trying to hold back this dawning truth.{/n} \"You're both. My daughter, murderer, demon worshiper... Traitor. All you.\" {n}Hilor looks at his daughter, stunned. The walls he'd erected come rumbling down.{/n}"
+  }
+]

@@ -1,0 +1,1382 @@
+[
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/AngelMythic_BE/Cue_0002.jbp",
+    "guid": "bbdbc83db718f9345b7df86ddbf5a421",
+    "text": "A strange flash pierces the gloom, and {name} feels drops of searing blood run down {mf|his|her} chest. The wound healed by Terendelev reopens and weeps scarlet, but there is no pain or weakness. A hazy scene appears, a cave chamber — this one or another one entirely? {name}'s heartbeat quickens, and a stream of thoughts suddenly bursts into {mf|his|her} mind — thoughts that clearly belong to another..."
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MeetCamelia/Answer_0010.jbp",
+    "guid": "35d480d928e845a40a0661de241ceb79",
+    "text": "\"Not many could withstand a strike from a demon lord — not even Terendelev.\""
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MeetCamelia/Cue_0008.jbp",
+    "guid": "e6ba26401a42d994e8906e2f867740d8",
+    "text": "\"Really? I'm so ever glad to hear it...\" {n}The girl relaxes slightly, but she keeps her hand on her sheathed weapon.{/n} \"Allow me to introduce myself: I am Camellia. I was also in the square when... when...\" {n}Her self-control falters for a moment and you glimpse the fear beneath her mask of perfect placidity. She licks her lips nervously.{/n} \"I can scarcely believe it. How did all those demons get into the city? I thought — naively, it now seems — that the {g|wardstone}Wardstone{/g} protected us from attack. And Terendelev? I can't wrap my head around it.\""
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MeetCamelia/Cue_0012.jbp",
+    "guid": "75d3b400f56d56b4f9b55aa303b6ecbf",
+    "text": "\"Deskari himself has come to {g|Kenabres}Kenabres{/g}... There's no mistaking that ugly mug. Terendelev tried to fight him, but what could she do against a near-deity? Even the {g|wardstone}Wardstone{/g} was no help. Our city used to be protected by powerful forces, but now...\" {n}Anevia shakes her head.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0004.jbp",
+    "guid": "159c4442a8672334c9394d9579cfd8f9",
+    "text": "\"That's all that matters. Now we're going to... Hey!\" {n}Spotting you, the knight reaches for her sheathed weapon, but after scrutinizing your face momentarily, she raises her hand in greeting.{/n} \"Fancy meeting you down here — you're the one that Terendelev healed today, right? You aren't injured, are you? Will you help me get her out from under the boulders?\""
+  },
+  {
+    "path": "World/Dialogs/c0/CavesUnderKenabres/MeetSeelahAnevia/Cue_0041.jbp",
+    "guid": "72b5b2c6631961641b61890e9497d98d",
+    "text": "{n}Seelah's expression darkens.{/n} \"I don't even want to think what might be happening up there in the city. Kenabres has lost the protection of Terendelev, and of the {g|wardstone}Wardstone{/g} too, looks like! It's a relic without equal, it was placed here personally by Iomedae's herald with the goddess's blessing. I really wanted to go see it, to pray before it... But there's no point worrying about a stone when there are people dying in the streets.\""
+  },
+  {
+    "path": "World/Dialogs/c0/KenabresSquare/WelcomeDialogue/Cue_0017.jbp",
+    "guid": "76c6a0e7880db144c9138c6b39d386d9",
+    "text": "\"My powers are not enough here. Someone call for Terendelev! You there! Yes, you — stop dithering and gawping and make yourself useful — go and get Terendelev!\""
+  },
+  {
+    "path": "World/Dialogs/c0/KenabresSquare/WelcomeDialogue/Cue_0039.jbp",
+    "guid": "f5651757bd720de4b98b5893152d504a",
+    "text": "\"My name is Terendelev. I am the protector of this city.\""
+  },
+  {
+    "path": "World/Dialogs/c0/KenabresSquare/WelcomeDialogue/Cue_0042.jbp",
+    "guid": "92456eff6ba293f4d85403ba7bb5fb87",
+    "text": "\"But do not be discouraged. You will recover, I promise you that. Tomorrow, come to the cathedral and say that you are expected by Terendelev, protector of {g|Kenabres}Kenabres{/g}. We will find a way to help you. But for now, put this out of your mind and enjoy the festival — they are all too rare in this time of war, and merriment is one of the best medicines.\""
+  },
+  {
+    "path": "World/Dialogs/c0/KenabresSquare/WelcomeDialogue/Cue_0043.jbp",
+    "guid": "ac2c8d1173741a348b69751800f3d586",
+    "text": "\"I'll get her. Terendelev! Has anyone seen Terendelev?\""
+  },
+  {
+    "path": "World/Dialogs/c1/DefendersHeart/ChapterEnd_QueenVisit/Cue_0050.jbp",
+    "guid": "68b9d631651302f4f976f428e4765d1a",
+    "text": "\"I live to please you, my queen. My first thought, when Deskari cruelly robbed us of noble {g|Terendelev}Terendelev{/g} and half of Kenabres's crusaders in one fell swoop, was of you, my queen, and of how these events would weigh heavily on you. No one could have foreseen the demon attack. And we have so successfully held the defense here for four heroic crusades.\""
+  },
+  {
+    "path": "World/Dialogs/c1/EstrodTower/Teldon/Cue_0017.jbp",
+    "guid": "610e5d08d613599448d994c57cf5f8e3",
+    "text": "{n}The old man bursts into agitated muttering, gesticulating furiously with shaking hands.{/n} \"First, the bell started ringing, and then there were noises in the street. Then the dragon, Lady {g|Terendelev}Terendelev{/g}, began to roar. I went to lock the door. But they were already inside — the thieves. There were seven of them... Or perhaps ten... I don't remember. They were talking some rubbish about how they were all orphans, supposedly, and that they were dangerous.\""
+  },
+  {
+    "path": "World/Dialogs/c1/GreyGarrison_ChapterStart/Irabeth_FirstMeet/Cue_0014.jbp",
+    "guid": "3409e8d444d5397488388ee8263f31c6",
+    "text": "{n}Irabeth slowly drags her hand over her face.{/n} \"The city's gone. Most of the defenders, including the dragon {g|Terendelev}Terendelev{/g}, fell in the first few hours. The civilians either fled or died in the chaos. The place is overrun with cultists and demons.\""
+  },
+  {
+    "path": "World/Dialogs/c1/KenabresBurning/BookEvent_Aeon/Cue_0002.jbp",
+    "guid": "a73e2dfa834c9d5408b454e67e98a81f",
+    "text": "The demon invasion transformed all of Kenabres into one great battlefield, but nowhere in the city suffered as much as this square. This place saw a clash of titans — the {g|demon lords}demon lord{/g} {g|Deskari}Deskari{/g}, leading his hordes from the Abyss, and the dragon {g|Terendelev}Terendelev{/g}, the mightiest of the city's defenders, and one of the first to fall. The scene of destruction leaves no doubt as to the battle's outcome. A skilled scout could recreate the course of the battle moment by moment simply by looking at the ruins: from the chimneys torn down by powerful wings in a sharp dive, to the bloody tracks left behind when the demon dragged away the noble reptile's broken body.\nBut it is no hypothetical scout gazing upon the ruins, it is {name}... And {mf|he|she} is not alone."
+  },
+  {
+    "path": "World/Dialogs/c1/KenabresBurning/HurlunRamien_Early/Cue_0004.jbp",
+    "guid": "192d4b7ab7ed1b24686362e5c1265ea3",
+    "text": "\"Harmless? Well, if it's on your say-so, then that must mean there is someone down there! Your associates, no doubt! And they're just waiting for us to abandon our posts before they slink out and try again to...\" {n}The old man notices your approach.{/n} \"And you... I remember you! You appeared in my city the day the demons attacked and {g|Terendelev}Terendelev{/g} died! What are you doing here? Answer at once, or I'll have you strung up by your ankles before you know it! Don't think that the demons have wounded me — I still have enough strength to take on a hundred of your sort!\""
+  },
+  {
+    "path": "World/Dialogs/c1/KenabresBurning/HurlunRamien_Early/Cue_0083.jbp",
+    "guid": "e325be7b8abf1234a9c64d79e6a80826",
+    "text": "\"How very dare you! Of course they're not all like this. We also had a protector, the silver dragon {g|Terendelev}Terendelev{/g}... Oh, yes, she died, if I recall.\""
+  },
+  {
+    "path": "World/Dialogs/c1/KenabresBurning/OraclePartyHouse/Daeran_FirstMeet/Answer_0003.jbp",
+    "guid": "714e65ce9aec4fe4cb59f739f1a14a0d",
+    "text": "\"Kenabres lies in ruins, Deskari killed Terendelev, the Wardstone has been captured, and you're asking me why demons gatecrashed your party?\""
+  },
+  {
+    "path": "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen/Elyanka_MainDialogue/Answer_0113.jbp",
+    "guid": "74f23fc186a04444caeba1982891f6a6",
+    "text": "\"The mighty dragon Terendelev has become my beast companion.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen/Elyanka_MainDialogue/Cue_0114.jbp",
+    "guid": "7f5d90c628704764babe3e2d9129edf8",
+    "text": "\"Even a powerful dragon was too weak to resist you! I bow down before your might! Terendelev was the symbol of the crusade; now that she serves you, this will only strengthen your position and authority.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen/Septimus_MainDialogue/Answer_0065.jbp",
+    "guid": "e21a9d9f4113e61489ff1a4fe00829b2",
+    "text": "\"The mighty dragon Terendelev has become my beast companion.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Aeon/AeonMirrorCompanion/Cue_0062.jbp",
+    "guid": "49b8ddf5d86e59c48b5aa500402c3def",
+    "text": "{n}Memories flash before your eyes. You see the horrible figure of Deskari above the buildings, and you see the brave and daring Terendelev attack the enemy. The swing of a scythe — and her head falls in a splatter of blood. Pain pierces through you, the purest of creatures was destroyed by a being from another plane! This should not have happened. The very fabric of the world screams out against it.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Answer_0007.jbp",
+    "guid": "10d1c299d96d3cf41aaac7192367d55d",
+    "text": "\"I know you tried to save Terendelev from corruption. How did you manage to succeed?\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Answer_0018.jbp",
+    "guid": "3dd28d6587558c54fbf99ccbdbaec0d4",
+    "text": "\"Farewell, Halaseliax.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0001.jbp",
+    "guid": "a70844cc9b764f046b74dac6f7ab41ab",
+    "text": "{n}The dragon looks down on you from above. With every move of his powerful muscles, his golden scales shimmer and shine.{/n} \"Terendelev made the right choice, child. As did you. You were not born a dragon, but the true spirit of a dragon is within you. It is as strong in you as it was in her. Trust me. I knew Terendelev well.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0002.jbp",
+    "guid": "5cb1f5603fb75f540a5d99a37d3a1d55",
+    "text": "{n}The dragon looks down on you from above. With every move of his powerful muscles, his golden scales shimmer and shine.{/n} \"Terendelev once healed your wound without questioning if you deserved to live or die. I feel the touch of her magic upon you, like a last lingering farewell. It is a pity that you do not understand the meaning of her action.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0003.jbp",
+    "guid": "20c87ec7266161a4bb8a94c8739fb9dc",
+    "text": "{n}The dragon looks down on you from above. With every move of his powerful muscles, his golden scales shimmer and shine.{/n} \"Terendelev once healed your wound without questioning if you deserved to live or die. I feel the touch of her magic upon you, like a last lingering farewell. It is a pity that you do not understand the meaning of her action.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0008.jbp",
+    "guid": "379dd083f487b9b41aacc6662582f89f",
+    "text": "\"I am the gold dragon Halaseliax. It was once my honor to teach the protector of Kenabres.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0009.jbp",
+    "guid": "12f8c996f512e484f9f25392aa479ccd",
+    "text": "\"I am the gold dragon Halaseliax. It was once my honor to teach the protector of Kenabres.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0010.jbp",
+    "guid": "442fd1e522c440242883cfb3126c4280",
+    "text": "\"I am Halaseliax. It was once my honor to teach the protector of Kenabres. Do you still want to fight me, child?\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0011.jbp",
+    "guid": "a15853ed9c79f6b449a4faa1ec3f03d4",
+    "text": "{n}Halaseliax sighs heavily.{/n} \"I expected nothing more. If this is your desire — we shall fight!\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0012.jbp",
+    "guid": "5c5ac54cfb90ff948a3063fb5ccfb561",
+    "text": "\"Life itself was testing you. I merely seized the opportunity to look upon you — the last soul helped by Terendelev.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0013.jbp",
+    "guid": "195ef1a822c1c144f80f3cd6d5669d63",
+    "text": "{n}The dragon closes his eyes for a moment.{/n} \"Terendelev... here she found shelter, fighting the desire to decimate and destroy. I flew here to help her. The sun rose and fell more than once as she poured out all her hatred upon me, all the pain that was tearing her soul apart.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0015.jbp",
+    "guid": "ec15d37e25d14b2459398fbe4340ad06",
+    "text": "\"This knowledge will not benefit you. I won't disturb Terendelev's memory for your amusement.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0020.jbp",
+    "guid": "e52b0b0cd8ee12a419a5ddda68d87b46",
+    "text": "\"I taught this to Terendelev when she was on the brink of despair. She thought that, now tarnished, she was doomed to suffering and evil. But I showed her that as long as we are here, and not at {g|Pharasma}Pharasma's{/g} throne, nothing is lost. And no one is lost. Choose the actions that will make the world better — such is the path of a gold dragon.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0024.jbp",
+    "guid": "ef663dfcb316db3488acea0943fab435",
+    "text": "{n}Halaseliax shakes his head.{/n} \"Not now, I'm afraid. I have my own responsibilities to metallic dragons. But I will watch you from afar, and if I see you are ever in need of a dragon's wisdom, I will not be the only one willing to come to your aid.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalDragonForm/Cue_0028.jbp",
+    "guid": "ee424d5b47ec2f146932d559ee88b48c",
+    "text": "\"Terendelev this, Terendelev that... Oh, by the way, a huge demonic beetle with a scythe chopped off her head, and dragged the body to some unknown place, probably to eat it.\" {n}Daeran gives an unpleasant smirk.{/n} \"If we avenged your girlfriend, would you wipe away Deskari's tears, oh kind, wise, forgiving dragon healer?\""
+  },
+  {
+    "path": "World/Dialogs/c3/Mythic_Dragon/HalFirstMeeting/Cue_0021.jbp",
+    "guid": "1877ca9568ca8144d87f62c2280e03c9",
+    "text": "{n}The healer turns toward you, his hazel eyes turn to gold. His voice becomes deeper and more majestic.{/n} \"You acted toward this poor boy as Terendelev acted toward you in Kenabres, when she treated you with no consideration of who you were, or whether you deserved to live. I can feel the touch of her magic upon you, like a last lingering farewell.\""
+  },
+  {
+    "path": "World/Dialogs/c3/Ziggurat/Zacharius_Main/Answer_0101.jbp",
+    "guid": "17112669f3d30434aac7f792146def39",
+    "text": "\"I resurrected the dragon Terendelev. Now she serves me.\""
+  },
+  {
+    "path": "World/Dialogs/c4/Palace/Audience_Areelu/Cue_0095.jbp",
+    "guid": "af5d0b6be337672478f086357442cd15",
+    "text": "\"But there is more. Do you remember when you were taken to Kenabres with a wound that would not heal? Do you remember how Terendelev apparently healed you? That was merely an illusion. The dragon was only able to temporarily dull the pain. In fact, it was I who saved you, when I came to you in the caves and implanted a crystal within you. No, 'saved' is not the right word. Your wound is still not healed. That is why your wound weeps blood from time to time, every drop of which burns your enemies.\""
+  },
+  {
+    "path": "World/Dialogs/c5/DawnOfDragons/DragonsBeforeBattle/Answer_0007.jbp",
+    "guid": "dcbfd243d7939ff45b081c44ebfd1ba6",
+    "text": "\"A black dragon? So Halaseliax was right to worry!\""
+  },
+  {
+    "path": "World/Dialogs/c5/DawnOfDragons/DragonsBeforeBattle/Cue_0011.jbp",
+    "guid": "71696e9d7b84d4347bdaa6149be1f5d1",
+    "text": "\"And let that old crook Halaseliax find out about my plan? Sorry, but I wasn't going to take that risk. I know your 'mentor' well. He pretends to be very wise, and he'll offer you sage advice — but he is too cowardly and lazy to do anything himself.\""
+  },
+  {
+    "path": "World/Dialogs/c5/DawnOfDragons/DragonsBeforeBattle/Cue_0032.jbp",
+    "guid": "2ee633fc8196a954f9d2a1523a487e2b",
+    "text": "\"Don't listen... don't listen to this scoundrel! Halaseliax sensed that the child was in danger... His wisdom and foresight are known to many... and this black wretch... is just trying to confuse you! Don't give in...\""
+  },
+  {
+    "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Answer_0287.jbp",
+    "guid": "5f3f65d94a9358145a81379190b76c46",
+    "text": "\"This victory will not mean an end to conflict. Much needs to be done to revive these lands. I will stand by your side and watch over Drezen as Terendelev once watched over Kenabres.\""
+  },
+  {
+    "path": "World/Dialogs/c5/DrezenMain_C5/KTC_AneviaStart/Cue_0020.jbp",
+    "guid": "831911a799e18584f862c36b6b755192",
+    "text": "\"Y'know... when Terendelev was still alive, I saw her dragon form once. When I did, I thought I may as well lay down and die now, since I ain't never gonna see anythin' cooler — I mean, more majestic — in my life. But here you are. And the way you took on those demons! Anybody else would've just smashed their skulls, but you really took things to another level! They even agreed they were idiots for even trying to take us on! I don't know what's more amazing, that, or Iomedae coming down for a visit!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/DeskariFight/Answer_0041.jbp",
+    "guid": "202fd787cfb7e094cb0d7388e02f207a",
+    "text": "\"In the name of Terendelev, slain by your hand! While you've been cursing Iomedae, an opponent whose strength rivals your own has appeared on Golarion! Leave willingly, and I will spare you!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0005.jbp",
+    "guid": "c37c6235f1748b144903529f78462c50",
+    "text": "\"Good.\" {n}Galfrey's voice is clear and cold.{/n} \"Terendelev was our protector and friend. To grant rest to her soul and her body, which has been corrupted with dark magic, is our duty. Close ranks!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/GalfreyOnTheEdge/Cue_0030.jbp",
+    "guid": "87fdbffb9974f3e4e91b9734229e1b61",
+    "text": "\"An undead monster created from Terendelev's remains has made its lair nearby. I see it as my sacred duty to honor her memory and destroy her abominable imitation.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/Patrol_Chun/Cue_0017.jbp",
+    "guid": "de24fbac04b9d8a43a5fa2593c78f392",
+    "text": "\"The demons have violated the body of Terendelev, the protector of Kenabres. They have made her into a monster. The Queen went to her so she could grant peace to her old ally.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/Patrol_Hulrun/Cue_0013.jbp",
+    "guid": "e6be3f8cddd372b4b82741e4399f0585",
+    "text": "{n}Hulrun lowers his head and says in an uncharacteristically quiet voice,{/n} \"Terendelev's here. Those beasts weren't satisfied with just killing her. They turned her into a sickening undead monstrosity. Her Majesty has headed off into battle to lay our old comrade to rest.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Iz/Patrol_Hulrun/Cue_3.jbp",
+    "guid": "29069cf877e340a1b6eb20bcb55d8e4a",
+    "text": "\"Are you going to try to convince me of something? Terendelev has tried more than once, but I see things differently.\" {n}Hulrun looks at you.{/n} \"Well then, let's talk — in Drezen. Let's see what you have to say.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/KenabresFlashback/Cue_0001.jbp",
+    "guid": "ea61a9ad18606cd4ba3464529467e4ce",
+    "text": "\"My powers are not enough here. Someone call for Terendelev! You there! Yes, you — stop dithering and gawping and make yourself useful — go and get Terendelev!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/KenabresFlashback/Cue_0003.jbp",
+    "guid": "800fe8204fce1a1488a3acdb0391d67f",
+    "text": "\"I'll get her. Terendelev! Has anyone seen Terendelev?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/KenabresFlashback/Cue_0031.jbp",
+    "guid": "81301a915649fdf439eebeba4bbf6c05",
+    "text": "\"My name is Terendelev. I am the protector of this city.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/KenabresFlashback/Cue_0034.jbp",
+    "guid": "34482cadcf684294fa656dcf98f763ed",
+    "text": "\"But do not be discouraged. You will recover, I promise you that. Tomorrow, come to the cathedral and say that you are expected by Terendelev, protector of {g|Kenabres}Kenabres{/g}. We will find a way to help you. But for now, put this out of your mind and enjoy the festival — they are all too rare in this time of war, and merriment is one of the best medicines.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/KenabresMarevo/Cue_0006.jbp",
+    "guid": "94799ecde97ee3549b8048659fba7386",
+    "text": "{n}As you look closer, you can see some of the festivities in the main square. Bright flags flutter in the wind, and Terendelev is bending over a body... Your body.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0003.jbp",
+    "guid": "73833d43582b55e43b91aff74e559640",
+    "text": "\"What do you think of Drezen?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0004.jbp",
+    "guid": "94eebeb33f22dfb499158edfdcf0fd8e",
+    "text": "\"How does it feel to leave Kenabres?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0006.jbp",
+    "guid": "4a622619635ee1b4aaeee61805eb74cb",
+    "text": "\"How did you become Kenabres's champion?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0007.jbp",
+    "guid": "dbaf91629aeb2714b92c0d4170d2facf",
+    "text": "\"Tell me about yourself.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0008.jbp",
+    "guid": "5509dc7accb8f8a498c932834f7e31dd",
+    "text": "\"Tell me more about dragons.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0009.jbp",
+    "guid": "02defc116b5692f449d85081d70257b0",
+    "text": "\"I have to go.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0018.jbp",
+    "guid": "470377cf47432404e950dae09a629465",
+    "text": "\"I did not expect to see you here.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0021.jbp",
+    "guid": "956e258f68bcf2c43b495c5e40c30e9d",
+    "text": "\"What other kinds of dragons are there?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0022.jbp",
+    "guid": "39ca73351c18b5249971be2df316940a",
+    "text": "\"What makes silver dragons different from other dragons?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0023.jbp",
+    "guid": "74d2ec4bd948db94a811f96cd4d3ab1a",
+    "text": "\"Can all dragons turn into humans like you do?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0024.jbp",
+    "guid": "05c25b5a167f442449fc9902892649f5",
+    "text": "\"Thank you. You've told me everything I wanted to know.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Answer_0029.jbp",
+    "guid": "142a44cace6e3464faaef7f89ef83590",
+    "text": "\"I wish to speak about something else.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0001.jbp",
+    "guid": "0c67a34d6ed09114fae595d686e4600d",
+    "text": "{n}Terendelev greets you with a warm smile.{/n} \"Commander. We meet again... in a city that is at peace. I hope we can make it a tradition.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0010.jbp",
+    "guid": "b5a5ae954a21f5b409886498a0ca63fa",
+    "text": "\"Of course. What would you like to know?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0012.jbp",
+    "guid": "121c9d25c18b52947b3eaccfd7feacb7",
+    "text": "\"I hope we meet again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0013.jbp",
+    "guid": "76d4e181a0e2bd547ad10861814e2eab",
+    "text": "\"I spent many long years fighting for Iomedae, because I couldn't bear to see the innocent suffer and die. I've witnessed many woes, and the demonic corruption almost broke my spirit. However, the gold dragon Halaseliax, my mentor, managed to bring me back to the light. I swore an oath to defend the Wardstone so that the demons would never harm anyone again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0015.jbp",
+    "guid": "674166c9c5c273a45ac8f5dcb10f5293",
+    "text": "\"I feel worried! I haven't left Kenabres in such a long time... This must be what a young mother feels like when she flies off hunting for the first time after her children have hatched.\" {n}Terendelev smiles.{/n} \"But the townspeople of Kenabres are not helpless children. If disaster strikes, they will hold out long enough for my return.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0016.jbp",
+    "guid": "1efb427a4ba62934191e6dce98b03293",
+    "text": "\"What do you wish to know?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0019.jbp",
+    "guid": "91ca2aae5d8e22d47b4c5471af28a923",
+    "text": "{n}Terendelev smiles.{/n} \"I spent a long time debating whether or not to leave Kenabres, but in the end I decided to come. How could I miss an event like this? You saved me on the day of my defeat, so I want to congratulate you on the day of your triumph.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0020.jbp",
+    "guid": "699c52b036fb1724ead3528495f2c881",
+    "text": "\"Drezen... No longer looks like a Golarion fortress. I feel like I am in an {g|Axis}Axis{/g} city. Axiomites and inevitables may frighten some, but the sight of them fills my soul with peace. They are creatures of balance, and therefore, they bring balance wherever they go.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0025.jbp",
+    "guid": "79eb7cd37e6ccb14791fecc037d77ab2",
+    "text": "\"I'm glad that I could share my knowledge with you.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0026.jbp",
+    "guid": "4d38a7ab39fcf1a4fb4f160b66746a12",
+    "text": "\"Oh, multitudes! There are metallic dragons, like myself, and planar dragons, who dwell in other worlds. There are the imperial dragons of Tian Xia, the keepers of balance... and of course, there are chromatic dragons, but you're probably familiar with them already... It would take a while to name all the different kinds of dragons. Just like the mortals of Golarion, we all have very different habits and personalities, but we also share a lot of common traits.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0027.jbp",
+    "guid": "6889f08c07c4916439b8edeb989bf297",
+    "text": "{n}Terendelev smiles.{/n} \"I am tempted to say that we are the noblest of all dragons, but that would make me sound conceited. Some call us the bravest of the dragons, but I make no such claim myself. All I can say is that we seek to help others, and that we take great interest in the affairs of the world.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0028.jbp",
+    "guid": "f00f968bbb87d5f4b931a7bc98fdc897",
+    "text": "\"No, they cannot. Not all dragons wish to learn this ability. I choose to look like a human because I am used to this form. Kenabres is too small and cramped for a dragon. I'm afraid I would step in the wrong place, and crush your cute little houses!\" {n}Terendelev laughs.{/n} \"My kin live in the mountains, where the caves are spacious. They seldom descend to human settlements, so many of them do not feel the need to take on other forms.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0030.jbp",
+    "guid": "cd26388038735cf47a7587d4fff40d80",
+    "text": "\"As you wish.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0031.jbp",
+    "guid": "7be082a61b7971d4f871eae28b61303a",
+    "text": "\"At first, I only thought of Kenabres as the location of the Wardstone. But eventually I fell in love with the city... its courageous townsfolk, and its beautiful old streets. And the city, in turn, fell in love with me. You could say that we became a family.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0032.jbp",
+    "guid": "f5d765f5d9e096a448822ceab7c10bdd",
+    "text": "\"We are ancient beings. We live for millenia, mostly away from humans. To us, the lives of warm-blooded creatures are fleeting and hardly last longer than a moment.\" {n}Terendelev sighs.{/n} \"We've always been reclusive, but the opening of the Worldwound stirred many into action. The world had changed, and we had to change, too. I chose to be a champion of the meek, and I have never regretted my decision.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevCompanion/Cue_0033.jbp",
+    "guid": "13348209e0362a245870aeebaee13d08",
+    "text": "\"We honor our oaths, and respect the rules. We follow a code of honor. The older a silver dragon becomes, the more it adheres to these customs and rituals. Even our brethren, the other metallic dragons, often fail to understand our way of life. Many believe that the rules we follow are outdated and obsolete. But our elders live such pure, beautiful lives... It is a shame that the other dragons do not see the value of such a lifestyle. I am still young and inexperienced, but I hope that by the time I am a thousand years old, I too have learned to live such an exemplary life.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Answer_0003.jbp",
+    "guid": "e1459098ee5318c4b8899ec181e8e525",
+    "text": "\"A tragedy is about to happen! Deskari is going to attack Kenabres! You will die, and the city will be captured.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Answer_0005.jbp",
+    "guid": "f0339bf6c8727794aba033e92cf96a78",
+    "text": "\"Don't you see how much I've changed since we last met?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Answer_0010.jbp",
+    "guid": "65336bd7802c39f45bf3c5a85079769b",
+    "text": "[Look at Terendelev with the eyes of the aeon] \"Heed the words of an aeon who knows the past and the future. Accept my aid in the upcoming battle against Deskari.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Answer_0011.jbp",
+    "guid": "3570a95174e5dd947adcac0d5e933ba7",
+    "text": "\"I am an aeon, I know the past and the future. Please, heed my words and accept my aid in the upcoming battle against Deskari.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Answer_0012.jbp",
+    "guid": "8830afabb7f3ca446943651fd0abe256",
+    "text": "\"I am the Commander of the Crusade! The Queen trusts me, and so should you!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Answer_0019.jbp",
+    "guid": "06522043869b79846a4845e48875374d",
+    "text": "\"Listen to me, you dumb lizard. If you want to live, you need to do what I say. I am the Commander of the Fifth Crusade, and this is a serious matter!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0001.jbp",
+    "guid": "44c914f19d87cbe4d821d2b627de8bff",
+    "text": "{n}Terendelev turns to you with obvious confusion.{/n} \"I greet you again, brave Crusader. Do you prefer my company over the entertainments that have been provided?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0006.jbp",
+    "guid": "8e1e3a55053977245bc4a8abdaf45ce7",
+    "text": "{n}Terendelev looks at you sympathetically.{/n} \"Painful wounds and the horrors of war can often beget nightmares. But do not fear. You are safe. The demons can't reach you here. Even Deskari is not all-powerful.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0008.jbp",
+    "guid": "f66343ec129413147b8de971340d228b",
+    "text": "{n}Terendelev gazes at you pensively.{/n} \"You look like you have aged — as if it has been years since we last met, not minutes.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0013.jbp",
+    "guid": "5b1d8b97575ea8142809bad1165674ed",
+    "text": "{n}Terendelev studies you for a while.{/n} \"You have the eyes of a creature older than time itself. Your breath is as cold as the starlit deserts that lie beyond this world.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0014.jbp",
+    "guid": "078a8c5b11881344abc52d271e1b8e15",
+    "text": "{n}Terendelev looks you in the eye.{/n} \"An aeon... Yes, crusader, I feel the currents of energy that swirl around you. Your breath is as cold as the starlit deserts that lie in the great beyond. But that does not make you an aeon. I sense your lack of balance. You are not ready to cast away the things of this world in order to preserve equilibrium.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0015.jbp",
+    "guid": "70e325faf0b995143abd369c4dceb6bb",
+    "text": "{n}Terendelev shakes her head.{/n} \"Queen Galfrey commands the crusade. She does travel incognito among her subjects sometimes, but even in disguise, she would not appear as you do now. Your appearances are too dissimilar. I do not appreciate this jest. Farewell, and do not trouble me again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0016.jbp",
+    "guid": "674a012267039564bacefa531c75c740",
+    "text": "\"I do not know why you are trying to distract me with this nonsense. I do not know whether or not you truly believe what you are saying... But I refuse to believe you. You are no aeon. Farewell, and do not trouble me again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0017.jbp",
+    "guid": "bbacbfd680b614f44bd19f375040eb82",
+    "text": "\"You truly are an aeon. I sense that you are not giving me this warning because you care for me, or for Kenabres. You wish to undo this event because it conflicts with the world order.\" {n}Terendelev looks away and shakes her head.{/n} \"Even I cannot look you in the eye for long. But whatever your reasons for helping me — I am grateful. Together, we will endure the coming storm. I am sure of it.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0018.jbp",
+    "guid": "2f90300b60471f248b532118154f7c87",
+    "text": "{n}You know Terendelev will understand your message. She will see that your mortal shape, much like her own, are only conventions. You will show her what you see in the mirror. She will look into the eyes of the aeon, and see the universe.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0020.jbp",
+    "guid": "3bbb6147787c03c48add1dc8cd8353e3",
+    "text": "{n}Terendelev just smiles.{/n} \"Your angry outburst reminds me of a small child throwing a tantrum to get their mother's attention. But you should not be angry. I gave you my attention. I heard what you had to say. Now I must bid you farewell. Please do not trouble me again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPast/Cue_0021.jbp",
+    "guid": "53a661deb2db31141a952d850b7b1a11",
+    "text": "{n}The currents of time are swift, and resist your attempts to divert them to a different course. Time flows past you like a mountain stream. Everything will happen as it did before. Nothing will be changed. The past purges you like poison.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Answer_0003.jbp",
+    "guid": "95bb18e65024ead49961a3af3e074c01",
+    "text": "\"You're alive... and that means I managed to change the past.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Answer_0004.jbp",
+    "guid": "325f3cd214c130245a6e3ece9e7690a5",
+    "text": "\"What happened to Kenabres after I saved you?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Answer_0005.jbp",
+    "guid": "c9fa3b32d8c63cd448775c3949fdb287",
+    "text": "\"How did you manage to survive the fight with Deskari?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Answer_0009.jbp",
+    "guid": "53f6703d66e9e6746a550980a5996d68",
+    "text": "\"The balance of the Universe is restored. There is nothing left for me to do here.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Answer_0011.jbp",
+    "guid": "69a1bdab662e5074faee2a515ca7ec21",
+    "text": "\"What will you do now?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0001.jbp",
+    "guid": "ed329e364ecc1f042a907e3f586251cf",
+    "text": "{n}Terendelev bows low.{/n} \"Commander. The day has finally come when I can thank you properly. I was told that you were in Kenabres, so I hurried to the square.\" {n}She examines you closely.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0006.jbp",
+    "guid": "a0d4e597a9e31634d9b50d422fd98b8c",
+    "text": "{n}Terendelev looks at you sadly.{/n} \"I remember the conversation we had before the battle. In your timeline, I was too weak and unprepared... I did not survive. The only reason I am alive today is because you saved me. But I've learned my lesson. Now, I am always prepared for a fight. I never let down my guard!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0007.jbp",
+    "guid": "43d3dd7955df47d4b85066f485671c7a",
+    "text": "\"After you disappeared, I continued to defend the city, even though Deskari had wounded me severely. Fortunately, he could not summon the bulk of his troops from the Abyss. The Wardstone bought us the time we needed to survive. Once Deskari realized he couldn't defeat us, he vanished, but his demons still poured into Kenabres. It was a bloody battle, but the crusaders managed to repel the invasion.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0008.jbp",
+    "guid": "5b74379924aae7b49aab041126c4e92d",
+    "text": "\"Even though I knew the attack was going to happen, I did not expect the onslaught to be so fierce. I would never have survived without you. After you disappeared, I kept fighting until reinforcements arrived.\" {n}Terendelev lowers her eyes.{/n} \"I felt the chill of death, and I nearly faltered before the foe. But your determination gave me the strength to keep fighting.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0010.jbp",
+    "guid": "524efdd54631a3647b81d8adb553df84",
+    "text": "\"Commander, my gratitude is not just empty words. I will send you a band of Kenabres's finest soldiers. Now that I have recovered from my wounds, I can once again defend the city.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0012.jbp",
+    "guid": "809b88e51b2aa6b4cbef9e63664f4c7c",
+    "text": "\"Now that I have recovered from my wound, I will continue to defend the city. This is my duty. Kenabres is vulnerable without the Wardstone. The city needs its champion. Thanks to you, I am prepared for the battles ahead.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0013.jbp",
+    "guid": "300893f4519853f43aee3dfd1fc3e803",
+    "text": "\"Sometimes, I think about what would have happened if Deskari had defeated me, and claimed the Wardstone. I imagine Kenabres lying in ruins... But thanks to you, we managed to avoid this fate. I do not have the words to express my gratitude. I owe you my life, and so do many others.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_0014.jbp",
+    "guid": "311d762f7a5bc7e44a75357987d08c8d",
+    "text": "\"The crusaders have done their best to rebuild Kenabres. The effort is still ongoing, but the progress is slow — many of them left for Drezen, and that's where we moved the Wardstone. Unfortunately, I couldn't help with the rebuilding process. My wounds left me so weak, I could barely move. I've been resting in my lair, and regaining my strength. But when they told me you were here, I had to come see you.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Aeon/TerendelevPresent/Cue_2.jbp",
+    "guid": "6f93420d4b8c43508729decffedee385",
+    "text": "\"Wait. After the battle against Deskari, a strange stone blade was found in the Market Square. The magic surrounding it is not familiar to me, but I feel that it is important. Please accept it.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Answer_0008.jbp",
+    "guid": "97603872013245a4fab4ca938d5e2474",
+    "text": "\"First, Halaseliax pretended to be a healer, and now this... Do dragons enjoy deceiving people?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0001.jbp",
+    "guid": "64dc3c162d581444ca2785fb10dbf7cb",
+    "text": "\"Haha! I haven't had this much fun in a long time! Thank you for asking me to do this, Halaseliax! I never thought I'd find myself helping a warmblood become a dragon! Hahaha! And I played my role well, didn't I? I was spectacular!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0002.jbp",
+    "guid": "b9563a974c9bf8c448a05d05a467cf99",
+    "text": "\"You were overacting, Tyvanadis. I could tell that you were putting on a performance. I know copper dragons love a good joke, but Halaseliax asked us to test the Commander without arousing suspicion. His plan could have failed because of you.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0003.jbp",
+    "guid": "b3399115956f2bf43a4076ad1d280d80",
+    "text": "\"Typical Orgomandias — you can't go a year without criticizing someone! I'm surprised Halaseliax asked you to help — I bet you pointed out all the flaws in his plan too. After all, no warmblood has ever become a dragon before!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0004.jbp",
+    "guid": "4f79f48744c309c4bb36038584ef108b",
+    "text": "{n}Halaseliax clears his throat.{/n} \"Tyvanadis. Orgomandias. Nidalynn. Thank you for your assistance, but I do wish that you would put aside your non-stop bickering for just a moment. {name} can't get a word in edgeways.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0010.jbp",
+    "guid": "6d44d6d9156968b48b000d7cb24bbe2d",
+    "text": "\"Halaseliax is our dear friend. He told us about you, and we were intrigued. Your situation is highly unusual. Truth be told, I didn't expect much out of this little exercise. I just thought it would be entertaining... a way to stave off boredom. But you've exceeded all my expectations. It has truly been an honor to meet a warm-blooded creature with the soul of a dragon.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0011.jbp",
+    "guid": "5f41445cf3a1b28449b183da550ab38f",
+    "text": "\"Different dragons enjoy different things! I enjoy jokes and games, so when Halaseliax asked for my help, how could I refuse? Strange people asking you to bring them unusual things... It sounded so amusing! We had so much fun coming up with silly things to ask!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0021.jbp",
+    "guid": "bc292be343186b845a8734f7d33d9872",
+    "text": "{n}Halaseliax gives you a friendly nod.{/n} \"Do you wish to ask something, child?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0036.jbp",
+    "guid": "322d9123ce238a0479a07271ad47e591",
+    "text": "{n}Halaseliax looks surprised.{/n} \"An archaeologist? Strangers and outsiders should not be snooping around the Dragon Burial Ground. If the alarm bell did not ring, then he must not pose a threat... But still, if that man is there when you return, please ask him to leave. The sacred child should not be disturbed.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0037.jbp",
+    "guid": "fac7a2397f144eb44a0db294c289fbde",
+    "text": "\"They are the creators, the first dragons. They created many of the gods you are familiar with... Of course, many of the gods have also been destroyed by the fierce dragon, {g|Dahak}Dahak{/g} — the firstborn of creation. However, by some miracle, Jharsygax managed to survive. Now, he is hidden here, on Golarion. Perhaps the poor child refuses to hatch because he is afraid of Dahak.\" {n}Halaseliax shakes his head.{/n} \"Even the protection of the guardian may not be enough to make him feel safe.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0051.jbp",
+    "guid": "f7ccb4a5c12d8ca4cb2d1a32bd9bfef4",
+    "text": "{n}Halaseliax looks surprised.{/n} \"An archaeologist? Strangers and outsiders should not be snooping around the Dragon Burial Ground. If the alarm bell did not ring, then he must not pose a threat... But still, if that man is there when you return, please ask him to leave. The sacred child should not be disturbed.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0052.jbp",
+    "guid": "c5fd8c064be99ef46ab7218c33c1ae2e",
+    "text": "\"They are the creators, the first dragons. They created many of the gods you are familiar with... Of course, many of the gods have also been destroyed by the fierce dragon, {g|Dahak}Dahak{/g} — the firstborn of creation. However, by some miracle, Jharsygax managed to survive. Now, he is hidden here, on Golarion. Perhaps the poor child refuses to hatch because he is afraid of Dahak.\" {n}Halaseliax shakes his head.{/n} \"Even the protection of the guardian may not be enough to make him feel safe.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0055.jbp",
+    "guid": "f8a89463aa6a74247baa745733a46a93",
+    "text": "{n}Halaseliax nods calmly.{/n} \"I sensed that Hokugaul had died. I have been waiting, wondering if you were going to tell me, or if I would have to ask you myself. Yet you have kept nothing back. Does this mean that you feel no shame for your actions? Or is this confession of guilt an act of repentance? I do not know. I cannot see inside your heart. I have no way to discern your true intentions.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalDrezen/Cue_0001.jbp",
+    "guid": "b26d414b020e9d043b47ca692c2d238d",
+    "text": "{n}A familiar gold-haired {g|Halaseliax}healer{/g} brushes some ash from his sleeve, and shakes his head as he inspects a pile of charred demon corpses.{/n} \"They were too stubborn to retreat. Their determination could have helped them in life, but instead, it has only led to their untimely deaths. I regret having to kill them.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalDrezen/Cue_0008.jbp",
+    "guid": "b457c450d4eb00345a9f5f776a7b5266",
+    "text": "{n}The man smiles, and there's a golden gleam in his hazel eyes.{/n} \"Halaseliax, a gold dragon. You heeded my advice, and spared a young servant of Baphomet instead of killing him. We parted ways, but I promised that we would meet again. And here I am.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalDrezen/Cue_0011.jbp",
+    "guid": "8329ec166e0cb784e9a92e484901b3f4",
+    "text": "\"I debated for a long time whether or not to interfere in Drezen's affairs. However, the words of the loyal warriors who remained behind to defend the fortress touched my heart. I was persuaded to get involved... and none too soon, it seems.\" {n}Halaseliax gestures toward the demon corpses nearby.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalDrezen/Cue_0012.jbp",
+    "guid": "c55ac1adf501b354ca2915e6826ec595",
+    "text": "\"I heard that he became a healer. I do not know if he still worships Baphomet, but even if he does, I'm certain that he will bring more good into the world than evil.\" {n}Halaseliax smiles.{/n} \"You should be proud of yourself. You chose to spare him. Thanks to your decision, the world now has another caretaker of the afflicted.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalDrezen/Cue_0014.jbp",
+    "guid": "aecd77aea27a66b4b9ce61b8f3a7904b",
+    "text": "\"You are not leading a large force against the demons, and that leads me to believe that you do not want to attract attention. And a gold dragon entering the fray is something that attracts a good deal of attention, trust me. Furthermore... \" {n}Halaseliax regards you intently.{/n} \"I wish to see for myself what you have achieved since we last saw each other... I want to observe how the dragon spirit manifests within you.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalDrezen/Cue_0015.jbp",
+    "guid": "10773ec932716e64d9355514d3bc337d",
+    "text": "\"Farewell, Commander. This will be a difficult fight, but if you look within yourself, you'll find that your spirit, the spirit of a dragon, cannot be defeated. If you feel the desire to follow Terendelev's example, come and meet me in Drezen after the battle. And if you do not... Well, then this will be our last meeting.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0001.jbp",
+    "guid": "632239b6be0f33642a332d6ee77d77a3",
+    "text": "{n}Halaseliax breathes in deeply, and smiles.{/n} \"Many dragons can't stand the smell of cities. They dislike the stench of the streets and the pollution in the air. But for me, this is the smell of history in the making.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0003.jbp",
+    "guid": "b5c39600de2df1849adeab37945802ab",
+    "text": "{n}Halaseliax smiles at you.{/n} \"Well, child? How go your studies?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0008.jbp",
+    "guid": "36361915d621c094985e08950559a45c",
+    "text": "\"I will teach you as I taught young Terendelev and her good friend Sevalros. You must learn to trust your heart, and not just your mind. You must look past the surface, and see the truth of every situation. You will learn humility, patience, and the importance of acting selflessly. I want you to learn how to serve others — to look for those who need help, and do anything they ask of you.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0010.jbp",
+    "guid": "37fc6bcaeed5c6d43baa17a824ad5246",
+    "text": "\"This square reminds me of many things. Once, I brought two young silver dragons here — Terendelev and Sevalros. They were just getting to know the world around them. This was the first city they visited... just two silly children, not yet accustomed to their human forms.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0011.jbp",
+    "guid": "8080fcd07ac26c7489376d3d8638030a",
+    "text": "{n}Halaseliax sighs.{/n} \"Later, when Terendelev became the guardian of Kenabres, she spent a lot of time here in the square. She played with the children, talked to the adults, assisted those who needed help, and offered guidance to those seeking counsel. It made her feel like she was a part of the city. She lived in harmony with all of the city's inhabitants... and spending time with them gave her so much joy.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0013.jbp",
+    "guid": "c3d2f6fac6dd0874ebf30cce2e45bfc2",
+    "text": "\"The corruption did not destroy Terendelev, but it got the better of him. My apologies... It still pains me to speak of this. Let us discuss something else.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0022.jbp",
+    "guid": "cce6cd8d99707a84fb1ff933a4059eb3",
+    "text": "{n}Halaseliax chuckles.{/n} \"No one said the path of a dragon would be an easy one, child. Sometimes it is more difficult to battle ourselves and emerge victorious than it is to fight an enemy. It takes courage and humility to admit that you aren't perfect. You have shown me that you can conquer your pride. That is enough for me. As for my comrades... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0023.jbp",
+    "guid": "3a51d8ef67020184ba29903f3732e49d",
+    "text": "{n}Halaseliax sighs.{/n} \"Well, if pride has overpowered the dragon's noble heart within you, then this is where we must part ways, child. If only you had put aside your arrogance and listened to others... Oh, what a glorious dragon you would have become! But it seems life had other plans. Farewell.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/HalKenabres/Cue_0025.jbp",
+    "guid": "14c02025764598e4391d0c3cfb9bcc95",
+    "text": "{n}Halaseliax smiles.{/n} \"Patience, patience, child! I'm pleased with your progress — you overcame your pride and fulfilled the strange, nonsensical requests of strangers. These things might have seemed foolish to you, but they were important to those who sought them. I think the spirit of a gold dragon is strong within you, but my comrades would like to say a few words... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Answer_0029.jbp",
+    "guid": "9066d927e03bbcc458fec834ecee98d0",
+    "text": "\"I want to know more about Terendelev.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Answer_0032.jbp",
+    "guid": "c9d61da12f23caf459cd67b6478597f1",
+    "text": "\"You said that you were Terendelev's teacher. What did you teach her?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Answer_0033.jbp",
+    "guid": "0d20f0778d2003648a244f608bccfa02",
+    "text": "\"What was Terendelev like?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Answer_0034.jbp",
+    "guid": "3194a0de38c1f6c4badd1f94db93fa68",
+    "text": "\"Halaseliax... is a really long name. Can I just call you 'Hal'?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Answer_0065.jbp",
+    "guid": "56553704f461bdf4da860efda6c24ead",
+    "text": "\"Have you seen Terendelev's new form? What do you think of her unlife?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0001.jbp",
+    "guid": "9c081bb09f7d36a409082825439572c8",
+    "text": "{n}{g|Halaseliax}Halaseliax{/g} greets you with a nod. His golden eyes gleam.{/n} \"Congratulations on your victory, Commander. That was an arduous trial, but you pulled through... You invoked the dragon spirit within you. I never thought that I would say this, but... you can become a dragon, child.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0003.jbp",
+    "guid": "81830ac3b94069c45938c4c6012dbb57",
+    "text": "{n}Halaseliax gazes up at the sky.{/n} \"Beautiful weather we're having today. Then again, I think any weather is beautiful.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0008.jbp",
+    "guid": "7e0649c604e896f4ba981ae0c09948c2",
+    "text": "\"Go to the city square in Kenabres. Terendelev drew her strength from her love for this city and its people. I walked its paved streets with her many times, and I soon realized that Kenabres helped her to heal more than any of my philosophical reflections ever could. Out of respect for her memory, I will teach you in the same place where she fought her final battle. It would make her glad.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0014.jbp",
+    "guid": "a29678237a292c14885cfe5c03716e17",
+    "text": "{n}Halaseliax smiles.{/n} \"And what kinds of warmbloods are there? These questions are of similar magnitude, for there are so many of us, and we are so different! Metallic dragons, chromatic dragons... planar dragons, dragons that live outside of planes... not all of us are friendly toward your kind, but I believe you know this already.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0022.jbp",
+    "guid": "38dac742b6c718347a88b6e06b075f55",
+    "text": "\"Sadly... \" {n}Halaseliax gazes past you into the distance.{/n} \"Not all who tread a hero's path reach its end.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0027.jbp",
+    "guid": "163cae2b754ec7e4cbd6a83e87ee0645",
+    "text": "{n}Halaseliax bows his head.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0030.jbp",
+    "guid": "fbcca2cb426ddd042852da40b849b0f8",
+    "text": "{n}Halaseliax sighs.{/n} \"Well, let us remember her together.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0038.jbp",
+    "guid": "42e9f8159be9e6d419bff2765624957b",
+    "text": "{n}Halaseliax glares at you. His soft voice transforms into a roar like thunder.{/n} \"Ignorant child, how dare you shorten my glorious dragon name?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0040.jbp",
+    "guid": "ca57870369e1275489ce5451fd7b7b2b",
+    "text": "\"Terendelev was the kind of silver dragon who was especially sensitive to any injustice. She was always interested in the warm-blooded nations of Golarion, and sought to understand their lives and customs. Eventually, she and Sevalros, her friend and sworn brother, swooped down from the mountains, and joined the paladins of Iomedae in their fight against the demons.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0041.jbp",
+    "guid": "b94a2c558a677c74685164793dd5d6bc",
+    "text": "\"I was their mentor among dragonkind, so I became their guide in the human world... but we did not know the challenges we would face. The war waged on in the Wound, and Terendelev lost one friend after another. When the demons struck her with the corrupting poison, she lost the will to fight completely.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0042.jbp",
+    "guid": "c09e8df285112204692eef73f0596aa0",
+    "text": "\"Her splendid silver scales had blackened and her mind was clouded. But Terendelev did not wish to hurt her comrades, so she asked them to bring her to the ruins where you and I met. I was there to give her aid. The sun rose and set many times as she poured out her hatred on me. She let loose all the pain that was tearing at her soul.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0047.jbp",
+    "guid": "80ab2f3bd5b6bdf44925a1c700358353",
+    "text": "\"Yes, she was.\" {n}Halaseliax's face softens.{/n} \"Fearless, kind, beautiful... I was so proud of her! I've never had a better student.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0048.jbp",
+    "guid": "e4d05cc4c54196843b4d8a1ff28cebf3",
+    "text": "\"I am sorry.\" {n}Halaseliax bows his head sadly.{/n} \"Sorry for her death, and sorry that her fate has scarred your mind and memory of her. But that is all the more reason for me to tell you what she was like when she was still alive... Perhaps the stories of her life will help to soften the horrors of her death.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0049.jbp",
+    "guid": "2ad3860ff7dca4e4a921b6eebc2b9876",
+    "text": "{n}Halaseliax chuckles sadly.{/n} \"Dragons have time in abundance. We sometimes forget that others do not. Do not judge her too harshly.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0054.jbp",
+    "guid": "7436714bfcde2bb44bbfe1f00e682ea7",
+    "text": "{n}Halaseliax bows his head.{/n} \"Something that I was unable to do myself, child. In our conversations, I've mentioned having other students. Sometimes we simply went our separate ways... In other cases, they went on to become teachers themselves. However, there is one among them that I consider to be my greatest failure — Sevalros.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0055.jbp",
+    "guid": "efa0f87f6d3bbc64aba8805d373b1d3e",
+    "text": "\"He was Terendelev's friend, and her sworn brother. He was just as eager to seek justice, and pursue good deeds. But like Terendelev, he fell victim to corruption. Terendelev was held in such high esteem. She was adored by everyone. I even called her my best student. Over time, envy took root in Sevalros's heart. He wanted to prove himself to me. He flew toward the Wound, and declared that he would solve everything himself... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0056.jbp",
+    "guid": "c763b547b4feb6b419e8bfb4051c06a4",
+    "text": "{n}Halaseliax shakes his head.{/n} \"I thought he was dead. By the time I discovered what had really transpired, I was too late. When I saw Sevalros, the corruption had taken hold. His scales were as black as coal. He would not listen to me. We fought... but I could not bring myself to kill him. It would have been like murdering my own child. So I flew away... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0058.jbp",
+    "guid": "2f8d29d084e2dad429c22f127ca787d5",
+    "text": "\"You have my deepest gratitude, dear child.\" {n}Halaseliax smiles sadly.{/n} \"The last time I saw Sevalros, he was in a cave near Iz. Dragons often stay in the same place for long periods of time... it's possible he is still there.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0060.jbp",
+    "guid": "6ab225d78350ffe4bbd1437e795bb460",
+    "text": "{n}Halaseliax shakes his head.{/n} \"I suppose... I should not have asked this of you. You're right. It was my mistake, and I should have set things right myself.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0063.jbp",
+    "guid": "51aed845019616f4cbffb5a2968f3266",
+    "text": "{n}Halaseliax bows his head sadly.{/n} \"Even if we are ready to make the right choice between retribution and redemption, our enemy often does not give us the chance. Sometimes death is the only option... and understanding that is part of being a dragon. It grieves me that Sevalros's soul could not break free until the very end.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0064.jbp",
+    "guid": "90552178ec561e24db56e73b33541e5e",
+    "text": "{n}Halaseliax bows his head sadly.{/n} \"He has suffered for a long time. He deserves his rest. A good death is just as meaningful as a good life. Accepting this truth is an important part of a dragon's journey.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0068.jbp",
+    "guid": "f4a92640c46d5d5489ef9fcd85427b38",
+    "text": "\"My student continues to amaze me. Terendelev has suffered so much pain! Others would yearn for peace, but she has chosen to fight on. She thinks that she is weak. She believes that she has been tainted, and she is ashamed of herself. But if she were to ask me, I would tell her that she is the purest and strongest of dragons. I honor her sacrifice. I only hope that one day, she can see herself as I see her.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0069.jbp",
+    "guid": "2754e35fbebfa554295b977d790f8c76",
+    "text": "{n}Halaseliax's eyes shine with happiness.{/n} \"My child! These are the greatest tidings I have received in centuries! You have brought me such joy today! I truly believe that a day will come when Sevalros and I will finally reconcile. It may not be today, or tomorrow... or even years from now. But we dragons are nothing if not patient. I'll try to pay him a visit sometime. He's in need of a friend at the moment.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0072.jbp",
+    "guid": "7d533db2c2637a34d8dcf27e3eedd23b",
+    "text": "{n}Halaseliax nods calmly.{/n} \"I sensed that Hokugaul had died. I have been waiting, wondering if you were going to tell me, or if I would have to ask you myself. Yet you have kept nothing back. Does this mean that you feel no shame for your actions? Or is this confession of guilt an act of repentance? I do not know. I cannot see inside your heart. I have no way to discern your true intentions.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0076.jbp",
+    "guid": "42598bc8b91105f45a811ef89a80206f",
+    "text": "{n}Halaseliax bows his head.{/n} \"I see. You were the catalyst, but he has made his choice. He has accepted the corruption within himself... but all is not lost. His journey is not yet over. He has succumbed to the darkness, but there is always hope... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Answer_0001.jbp",
+    "guid": "12fa3cd5f6c04e7894052d1f355ec996",
+    "text": "\"Terendelev died a hero. She fell while defending Kenabres. I met her in Iz as an undead creature and convinced her to serve the crusade once again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Answer_0003.jbp",
+    "guid": "823aec5e3ed348641a1fb6c4fa3d325c",
+    "text": "\"Terendelev died a hero. She fell while defending Kenabres. Her selfless act will never be forgotten.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Answer_0005.jbp",
+    "guid": "d04ef629af29fe7418cb548dcbb1ce38",
+    "text": "[Lie] \"Actually, Terendelev is alive and well. She's still protecting Kenabres to this day.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Cue_0001.jbp",
+    "guid": "b8c3e7e756ee3cb4c98d62d883e6d071",
+    "text": "{n}Sevalros is breathing heavily, but his eyes are no longer clouded. His gaze is clear and bright.{/n} \"Traveler, you... Please, one more thing... tell me... What happened to Terendelev? Please tell me she hasn't ended up like me — twisted by hatred... lying on a heap of rubbish... left with nothing but broken hopes and shattered dreams... Tell me she's all right...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Cue_0008.jbp",
+    "guid": "71829b128196cfc48b9f5a132013d08d",
+    "text": "{n}Sevalros closes his eyes and exhales in relief.{/n} \"Good... all is as it should be. Good... Terendelev, sister... I'll be waiting for you in the next life...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Cue_0009.jbp",
+    "guid": "7cdd3445940d0d84296bde56b393f45f",
+    "text": "\"Great {g|Apsu}Apsu{/g}... let me join Terendelev in the next life... that is all I ask...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Cue_0014.jbp",
+    "guid": "20303625492cc3946a300cb5b98f84d0",
+    "text": "{n}Sevalros is breathing heavily, but his eyes are no longer clouded. His gaze is clear and bright.{/n} \"Terendelev... It's been so long since I thought of her. I was too ashamed... I didn't want her to see me like this... Tell me, how is she? Please tell me she hasn't ended up like me — twisted by hatred... lying on a heap of rubbish... left with nothing but broken hopes and shattered dreams... Tell me she's all right...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosDying/Cue_0019.jbp",
+    "guid": "6cfe936a4cceb8443b424122f6e9e21c",
+    "text": "\"Great {g|Apsu}Apsu{/g}... let me join Terendelev in the next life... that is all I ask...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Answer_0004.jbp",
+    "guid": "23ff222f14a29a040951f2d8802ae3e8",
+    "text": "\"I was sent here by your teacher, Halaseliax. He implores you to return to the light.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Answer_0009.jbp",
+    "guid": "6ccb4f7d679565c4183e72db63064975",
+    "text": "\"You refused to accept Halaseliax's help, but it is not too late to change your mind.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Answer_0013.jbp",
+    "guid": "168901ce0afcb554b97f305cc36411b0",
+    "text": "\"A gold dragon calls to your soul, Sevalros! Terendelev would have been devastated to see you like this! Fight the corruption for her sake!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Answer_0018.jbp",
+    "guid": "e7214859955205342900ea399868d1e9",
+    "text": "\"I thought Terendelev, your sworn sister, was your greatest treasure.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Answer_0025.jbp",
+    "guid": "2af145ab9ae55344fae2dce681e80c55",
+    "text": "\"We have something in common, Sevalros. Corruption has taken hold in both of us. There was a time when even Terendelev was afflicted. But my corruption gives me strength. You are controlled by yours!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Cue_0007.jbp",
+    "guid": "4add2997924d8b04894e342a9ba1b666",
+    "text": "\"Halaseliax? That coward fled when I challenged him to battle, and now he's sent you, a warmblood? Hah! Not even Terendelev! You! Oh, I would have loved to have a chat with Terendelev! I would have ripped the heart out of her chest. I'd give her a taste of my suffering!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Cue_0019.jbp",
+    "guid": "7172da734c79979498cfd82068e2c3a0",
+    "text": "\"Terendelev...\" {n}For an instant, it seems as though Sevalros is coming to his senses.{/n} \"If only I could see her, even for a moment... my sister...\" {n}He growls, as though the thought of her brings him unspeakable pain.{/n} \"No! That conceited idiot! I don't need her! I've always been better than her! I... I...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Cue_0024.jbp",
+    "guid": "4c64717149222d940b0d3e8630ed5e6c",
+    "text": "\"You don't know what it's like... \" {n}Sevalros falls silent.{/n} \"Terendelev... She must not see how I have fallen! No! Never!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Cue_0026.jbp",
+    "guid": "6cead87d1b13a4140bba03c6d9c61425",
+    "text": "\"You don't know what it's like... \" {n}Sevalros falls silent.{/n} \"I am weak! I have succumbed to the corruption! I don't deserve to live! I don't deserve to be Terendelev's brother.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0005.jbp",
+    "guid": "1a5afa25e8f974e4484f25f0409146f1",
+    "text": "\"Do you remember me? You tried to heal my wound in Kenabres, before Deskari attacked.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0006.jbp",
+    "guid": "48e50b921c78f8b40a34d58f5f55d838",
+    "text": "\"You think Deskari's promise is worth something? He's lying to you.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0009.jbp",
+    "guid": "116eac0b0f541a047aa0ca3853f31910",
+    "text": "\"Terendelev! I, a gold dragon, call to your soul! Remember who you really are!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0011.jbp",
+    "guid": "fb83f72a9b2496642bcc10971c207b16",
+    "text": "[Step away from the bones] \"It's time you were at peace, dragon.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0016.jbp",
+    "guid": "94a0674517fa7484ba674cedff76648d",
+    "text": "\"What would Halaseliax say if he could see you now? Do you think he would want you to give up?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0017.jbp",
+    "guid": "b51626b755e8d1e479cd81aba54ef689",
+    "text": "\"Your story isn't over yet, Terendelev. It's not too late to do good. You can still help people.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0018.jbp",
+    "guid": "7cf49869217030c47a942ac56ef446d8",
+    "text": "[Step away from the skeleton] \"Rest, sister. No one will ever disturb you again.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0021.jbp",
+    "guid": "7df834bc8040bee43bb92936ac704794",
+    "text": "\"Sevalros, your sworn brother, was corrupted too. But he found his way back to the light.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0023.jbp",
+    "guid": "3aae1543730ecb647b9cb77dc3abfab6",
+    "text": "\"Come back for the sake of your friends and allies. Even Deskari couldn't corrupt the dragon soul within you, and your example will give them strength.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0031.jbp",
+    "guid": "cf52a24ec5f6e8b41a30fe46d872abfc",
+    "text": "[Leave Terendelev's bones in peace]"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0034.jbp",
+    "guid": "422d9179cc0e8eb4b9187a12bb2acc8d",
+    "text": "\"Awaken, Terendelev! You're still here, I know it!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0037.jbp",
+    "guid": "4fcc37913dcf624488e308bafa6e9166",
+    "text": "\"Awaken, Terendelev! I call to your pain! Feel it once more, follow it, and rise from the dead!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0039.jbp",
+    "guid": "961121e746f4233459fe2aae9375fcc2",
+    "text": "\"Terendelev! I, a corruption-touched dragon, call to your soul! Remember who you really are!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0041.jbp",
+    "guid": "722f0e1dd5faf274c98f38b8a5929821",
+    "text": "\"You can't fool me, Terendelev. I can feel your pain, your struggle with the corruption. Even now, after your death, it's still eating away at your soul.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0042.jbp",
+    "guid": "c76aa541a242b5147837c6adb534d55a",
+    "text": "\"Sevalros, your sworn brother, was corrupted too. But he found the strength to struggle against the evil within.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Answer_0044.jbp",
+    "guid": "836a6945c684bd3479ea03872d940c7d",
+    "text": "\"You lost the battle. You were killed. You are angry, but not at the enemy. You're angry at yourself, at your own weakness. Hold onto that feeling! Come back, and become stronger!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0001.jbp",
+    "guid": "bf754037cb7965748b7cf6195b8ffc42",
+    "text": "{n}Terendelev's empty eye sockets stare at you from the recesses of her skull. Her skeleton is engulfed in flames. It is difficult to believe that these bones once belonged to a majestic silver dragon, but you do not feel like Terendelev has departed the Material Plane just yet.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0008.jbp",
+    "guid": "59283e4684791e848811185f0ee7bc2c",
+    "text": "\"There were so many of you... I helped everyone I could... and now what? I am Deskari's weapon... I can't help anyone... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0010.jbp",
+    "guid": "21345c4088e583c4e9eb9fee455be839",
+    "text": "\"It's all I have... It's my only chance to escape this suffering. He'll come to set me free... He'll come.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0012.jbp",
+    "guid": "404cdac2da2f77445aff86a2123f307f",
+    "text": "{n}The skeletal jaws part in a visceral howl of pain and torment, and then you hear Terendelev's familiar voice.{/n} \"A gold dragon... my teacher? No, you are not him... but you're... a friend... No! I have no friends. The accursed Deskari raised me, he condemned me to eternal torture. He commanded me to destroy anyone who tries to invade Iz. Once I complete this task, he will grant me peace. He promised.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0019.jbp",
+    "guid": "d6764b1eced975242aefaa077795d312",
+    "text": "\"He saved me while I was alive... but how can you save what is dead? No... I don't deserve life... I am worth less than the dirt beneath your feet. I am Deskari's plaything, a puppet he uses to scare off crusaders... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0020.jbp",
+    "guid": "6aabd1773bb074549a6f99e571aebfc1",
+    "text": "\"I... I'm undead filth... my body is desecrated, my soul is in agony... I look around and see nothing but suffering and death. Whom can I possibly help?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0022.jbp",
+    "guid": "337f7d48126307140bc51ce4e39b0eaf",
+    "text": "\"Sevalros... I know that I used to love him... but I can no longer feel love nor joy. Sevalros... now it's just a name. It means nothing to me.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0024.jbp",
+    "guid": "46364194f8ec50d41a4a155014163e34",
+    "text": "\"You believe in me. Even though you can see what I've become, you still believe... just like Halaseliax. Yes... I can't let you down, and I can't let down those who were dear to me. I am still a dragon. Still a dragon! And so I will travel to your fortress, {mf|brother|sister}. I will protect it for as long as I am able.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0027.jbp",
+    "guid": "b682b2ff9e692874db463f3cdbd44fc7",
+    "text": "{n}Your dragon's soul reaches out to Terendelev. You call out with your whole being, not to the grisly skeleton, but to the noble and beautiful warrior she used to be.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0035.jbp",
+    "guid": "e1cb7065da06d904b82ef74d8803f449",
+    "text": "\"A gold dragon...\" {n}You sense weariness and sadness in Terendelev's voice.{/n} \"Leave me, or end my torment... I will never be the same as I was before...\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0036.jbp",
+    "guid": "5154537385346534ba337a1157c687be",
+    "text": "\"In the next life... may the gods bless me with redemption...\" {n}The fire in Terendelev's empty eye sockets is extinguished... forever.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0038.jbp",
+    "guid": "95cee22b2e8de254db8aeab3def7a6b7",
+    "text": "{n}Your dragon's soul reaches out to Terendelev. You call out with your whole being, not to the grisly skeleton, but to the warrior she once was... the warrior who fought against the corruption within herself.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0040.jbp",
+    "guid": "90aa7e37aa6f3824c954264ab87238b5",
+    "text": "\"Corruption-touched... like I once was...\" {n}You sense weariness and sadness in Terendelev's voice.{/n} \"Leave me, or end my torment... I will never be the same again... \""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0043.jbp",
+    "guid": "045f1890c191ec840b555db45cb5f377",
+    "text": "\"So what? Why does it matter? I am a corpse, I am bones, I am a memory! Leave me alone!\" {n}Terendelev's voice is filled with fury.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0045.jbp",
+    "guid": "6d05bf7a533c88941af68f4af531c27e",
+    "text": "\"You believe in me. Even though you can see what I've become, you still believe... just like Halaseliax. Yes... you're right, I am weak, I lost. I hate myself for this weakness. But I am still a dragon. Still a dragon! Thank you. You have given me a second chance. I will travel to your fortress, {mf|brother|sister}. I will protect it for as long as I am able.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Answer_0003.jbp",
+    "guid": "34f884cac6e9a684399a7803e7405604",
+    "text": "\"What's it like being undead?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Answer_0004.jbp",
+    "guid": "1d47b7566a4285145ac804f46b9143bd",
+    "text": "\"Don't you want to return to Kenabres?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Answer_0005.jbp",
+    "guid": "37efc2dd8e84352419c97f343da27eb3",
+    "text": "\"How are you and Halaseliax getting along?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Answer_0010.jbp",
+    "guid": "16e27a53129f2604f89b32e493290407",
+    "text": "\"How are Drezen's inhabitants treating you?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Answer_0014.jbp",
+    "guid": "cada9c72d1423ba458e2c9b2e834ecdf",
+    "text": "\"I have to go.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0001.jbp",
+    "guid": "97d585c4a4e3e36409e5de0892fef231",
+    "text": "{n}Terendelev stands as still and unmoving as a statue. However, when she notices you, she bows her head.{/n} \"{mf|Brother...|Sister...}\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0006.jbp",
+    "guid": "2c706e4948f23b54a9b87f42cc3cd5f6",
+    "text": "\"It is torment. The corruption is even worse than before. It tears at my soul. A hunger with no way to sate it, an existence with no future — that is my unlife. The colors of the world have faded, and dark thoughts plague my mind endlessly.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0007.jbp",
+    "guid": "05ecd1da23dd19344b91d10cc51c3eca",
+    "text": "\"I would like to return and continue my service, but... no. My new appearance would only frighten people. They would not want a corpse like me in their city. I want Kenabres to be at peace, and if that means I can never return there... Well, so be it.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0008.jbp",
+    "guid": "e46615325b9d5824ca71753dcc6d8d0d",
+    "text": "\"I try to avoid him. The sight of my former teacher fills me with shame. He told me that he doesn't blame me, and that he's proud of me, but I don't believe him. I was once his best student, but now I'm his greatest disappointment. No one can make me believe otherwise.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0009.jbp",
+    "guid": "26bbcd4a566488544b8709104c55fd1f",
+    "text": "\"All that I have left are my memories... the joyful years I spent in Kenabres, and the moment you brought me back from oblivion. I remember when your soul touched mine, and I regained the ability to feel. The connection only lasted for a moment, but the memory of that experience gives me strength.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0011.jbp",
+    "guid": "ac1110ad0bc1ba94d9bf296d192e9289",
+    "text": "\"They keep their distance from me. Gone are the days when I would take walks in the square, and see smiles everywhere. Now, even those who knew me before avert their eyes. Some of them pity me... and others fear me. But it makes no difference to me anymore. These encounters are... fleeting. My struggle is eternal.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0015.jbp",
+    "guid": "e3226e7554bb420469936eb45945f6d8",
+    "text": "\"I will await your return.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndeadCompanion/Cue_0016.jbp",
+    "guid": "92deb35d13988ae4381a0647e554ac86",
+    "text": "{n}Terendelev stands as still and unmoving as a statue. However, when she notices you, she bows her head.{/n} \"{mf|Brother...|Sister...} I am in your debt, and even an eternity will not be long enough to repay you for what you have done. As long as my mind belongs to me, my will is firm, and corruption does not hold sway over me, I am yours.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Legend/ktc_MythicImpressarios/Cue_0017.jbp",
+    "guid": "4f76ab69b13985e419cccbacefc53545",
+    "text": "\"I said we would never meet again, child, but it turned out differently. I expect you remember me — I am Halaseliax, the gold dragon.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Legend/ktc_MythicImpressarios/Cue_0018.jbp",
+    "guid": "57f0e9458c4a7bd4fb4d0a124afb73c4",
+    "text": "\"I want to help you, child. We have never met before, but we only just missed each other. I am Halaseliax, gold dragon and Terendelev's mentor.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Answer_0003.jbp",
+    "guid": "5462dcb717bff86469a6ed2401111be7",
+    "text": "[Raise Terendelev back to unlife] \"From now on, you shall serve me!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Answer_0004.jbp",
+    "guid": "14ec394cc0291ac40a1b839335ce7518",
+    "text": "[Leave]"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Answer_0007.jbp",
+    "guid": "5459fa037e9967b469c72ccc2b4a6492",
+    "text": "\"I am your new {mf|master|mistress}.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Answer_0008.jbp",
+    "guid": "290275e78dd053f48bc5ecf8b60b4054",
+    "text": "\"Who brought you back to life, and made you fight the crusaders?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Answer_0009.jbp",
+    "guid": "1e4fa7f8a9b612648930f8b778ca608b",
+    "text": "\"Is your soul still devoted to good? Or has it been defiled along with your remains?\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Answer_0010.jbp",
+    "guid": "f5f17ddb18cb514448af46f3c2f68e86",
+    "text": "\"Go to Drezen, and protect my ziggurat.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Answer_0011.jbp",
+    "guid": "769e20bff2da2bb4285184972f7d4084",
+    "text": "\"You are now free. You may now fly wherever you wish.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Cue_0001.jbp",
+    "guid": "21ffae2a289a3a048b1c3cd6869cf8e2",
+    "text": "{n}The magic that once filled the bones of the silver dragon with unlife has been dispelled. But you feel that Terendelev's soul has not yet departed to face Pharasma's judgment — and that means you can bind it with your spells, and enslave the corrupted creature.{/n}"
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Cue_0005.jbp",
+    "guid": "24aa629d3adfae84d8e2f5c1b5fa95b5",
+    "text": "{n}The dragon begins to shudder convulsively. Suddenly, she opens her mouth, revealing rows of sharp teeth, and lets out a visceral roar full of anger, confusion, hatred... and an insufferable anguish too great for words.{/n} \"Blasphemer! Curse you and your kin, and all mortal peoples that inhabit this world! Is there a limit to your depravity? I regret the decades I spent fighting on your behalf, because you — all of you — are ill-natured and vicious creatures, worthy of nothing but death and bloodshed!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Cue_0012.jbp",
+    "guid": "def5d9e3426ac6c478489aa4d87bdaea",
+    "text": "{n}Terendelev snaps her jaws, and growls in frustration.{/n} \"It seems you have become very proficient in your vile craft. You have even succeeded in subduing me. Very well, enjoy your power. Direct me toward your enemies, and I will crush them. It is a shame that I did not possess the gift of foresight when we met for the first time back in Kenabres. I would have killed you right then if I had known you would commit such blasphemy. I would have burned you to ash — you, and the whole lousy city.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Cue_0013.jbp",
+    "guid": "4401a7f7ea248214fa275a04b9e15273",
+    "text": "\"It was Areelu Vorlesh who did this to me. That traitor to mankind corrupted my spirit and made me her pet monster... Very well. The sin was committed by a mortal, so let them all pay for her transgression. My love for them is no more, my mercy is gone, but the fury remains! And I shall unleash it against them all!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Cue_0014.jbp",
+    "guid": "5b496403ad0a4684194a1e74cd3744e7",
+    "text": "\"My soul withered and turned to evil, just like everything else touched by mortals. What irony! I, the champion of goodness and light, the protector of your pathetic Crusade, was turned into a profane monster to kill you. But now I have been brought back again — against all the laws of nature — to fight on your behalf once more!\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Cue_0015.jbp",
+    "guid": "39af481acda7a8c4a9850e92bb96827d",
+    "text": "\"It shall be as you say. I will guard your vile tomb, and find joy in watching you commit dark deeds, as you sow torment and harvest hatred. The mortals deserve nothing less than the destruction you will bring to them.\""
+  },
+  {
+    "path": "World/Dialogs/c5/Mythic_Lich/DeadTerendelev_lich/Cue_0016.jbp",
+    "guid": "3b0ea80d1c383af428addeb0a59e4289",
+    "text": "\"Are you mocking me? Where can I fly if I am bound by your magic? You've left me with no other choice but to serve you. Command me, necromancer... Give me an order to obliterate a city. Tell me to butcher a nation that displeased you, command me to trample their shrines and temples into dust — it shall be done. I am the vengeance that mortals deserve.\""
+  },
+  {
+    "path": "World/Dialogs/c5/PuluraFallsC5/RamienPulura/Cue_0032.jbp",
+    "guid": "30975c1fff1665f43bee2d5c097c42c2",
+    "text": "\"I had a strange dream recently! I was about to fight demons, when I suddenly realized I didn't have any pants on! Then, Terendelev comes flying over to me, but she's really small... like the size of a jackdaw! She perches on my head, and begins to teach me how to tell the difference between an edible mushroom, and a deer from the Mendevian forest. Can you interpret that dream?\""
+  },
+  {
+    "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0033.jbp",
+    "guid": "ec1d667caa54c5d4fa313c30caa0cbb8",
+    "text": "\"It's complete chaos. It's lucky we're here to handle it, right?\" {n}Seelah smiles brightly. Then she gives you a worried look.{/n} \"Does the way I talk bother you? I know I can seem... blasé. Many good people, and our protector {g|Terendelev}Terendelev{/g}, died here in Kenabres. A paladin of Iomedae is expected to be properly respectful and solemn.\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_0006.jbp",
+    "guid": "d368680393304b5ba324dd5a517140ed",
+    "text": "\"I am Devarra, bane of the Worldwound. And because of you, my clutch was pillaged, and my offspring died before their birth. Do not think I have forgotten.\" {n}She lets out a vengeful hiss.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_0007.jbp",
+    "guid": "24b8c1d855644b0791dafe5d860ac073",
+    "text": "\"Important...\" {n}Devarra scoffs.{/n} \"He simply sent us to clean up a mess. He said this whole tower is steeped in 'anomality' down to the last pebble, and it must be burned along with its contents, without leaving a single page or stone behind. Now that the opportunity has presented itself, I think we should also incinerate its owner.\" {n}She shoots the Storyteller a menacing look.{/n}"
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_27.jbp",
+    "guid": "8c53478782244b90a37f727f7b814318",
+    "text": "\"I am Devarra, bane of the Worldwound. Our last meeting ended with you killing me, but know that I do not hold it against you. I was forced to fight you by the demons who had captured my clutch. I remember you showed mercy to my brood, and for that reason you are not my enemy.\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/Chaleb/Cue_8.jbp",
+    "guid": "8273aba6f8ab4c328661380272cee583",
+    "text": "{n}Devarra hisses angrily.{/n} \"I remember you too, you nasty little creature. You must know that dragons have excellent memories? One day, we will meet again, and I will kill you. I promise that your death will be excruciating, perhaps the worst there has ever been.\""
+  },
+  {
+    "path": "World/Dialogs/DLC1_Megaepic/StorytellersTower/StorytellerEnd/Answer_0015.jbp",
+    "guid": "2e7f9d54d0c24130b05be5884a2d7737",
+    "text": "[Address Chaleb and Devarra] \"Happy?\""
+  },
+  {
+    "path": "World/Dialogs/Epilogues/Cue_0535.jbp",
+    "guid": "cdadfdf03caf2be4ea24753d8163208d",
+    "text": "The dragon Halaseliax grew estranged from the affairs of simple mortals. He flew to an unapproachable mountaintop not far from Drezen, so as not to be bothered with trivial matters while still being able to observe from a distance and, if need be, come to the mortals' aid once again."
+  },
+  {
+    "path": "World/Dialogs/Epilogues/Cue_0536.jbp",
+    "guid": "e6c6ea01eedaa3d45ad222303034950d",
+    "text": "Even death {d|dargon terendelev}could not{/d} stop Terendelev from being a protector of mortalkind. And even though she could not go to Kenabres, she would often circle over the city and its environs, keeping travelers safe from any harm."
+  },
+  {
+    "path": "World/Dialogs/Epilogues/Cue_0542.jbp",
+    "guid": "9023c81cc05de0544a81b06da5548707",
+    "text": "Terendelev, the protector of Kenabres, {d|aeon terendelev}continued{/d} to aid mortals after the victory. She healed wounds at temples, gave advice to pilgrims, and helped to dispense justice. She was invited to Nerosyan many a time, but she always returned to Kenabres, the city she had come to love with all her heart."
+  },
+  {
+    "path": "World/Dialogs/Interchapters/c0_before/Cue_0002.jbp",
+    "guid": "0df3b5e250906534eac207b3dc5a5d07",
+    "text": "The silver dragon Terendelev, the protector of Kenabres, fell in battle — hardly surprising, as she had to fight the demon lord Deskari himself. He willed the land to part and swallow all who dared to stand in his way. But the war was still far from over."
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Answer_0077.jbp",
+    "guid": "fbfeeb5dd5ca29542a5dcf4e833a4584",
+    "text": "[Present the purple stone knife] \"I found it in the square where Terendelev perished. What do you make of it?\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Answer_0767.jbp",
+    "guid": "53173097d471d3a45bc31e770e2f35f2",
+    "text": "[Show Terendelev's scale to the Storyteller] \"Tell me about Terendelev.\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Answer_0768.jbp",
+    "guid": "1e368e69e803b574ab5fb82712dd1f67",
+    "text": "[Show a piece of Terendelev's claw] \"Tell me Terendelev's story to the end.\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Answer_0774.jbp",
+    "guid": "d3107360b007cf7449859537d13c25f9",
+    "text": "\"Such hatred... from Terendelev? Wasn't she on our side?\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Answer_0784.jbp",
+    "guid": "fd39fd84212de2047b6b887c9a9cf28e",
+    "text": "\"Can you say anything about Terendelev's future?\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Answer_0786.jbp",
+    "guid": "11e16732f6f9270488eb1b40e5556025",
+    "text": "\"What happened next? Did Halaseliax survive?\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0362.jbp",
+    "guid": "de240a1174d3610498a2dfcb3ad01ba8",
+    "text": "\"I heard the dying roar of Terendelev, the silver dragon, the protector of the city. At the same time, I felt a wave of unfamiliar power sweep over me from head to toe. I would advise you to go to where Terendelev perished and search there for... something. I'm sorry I can't be more specific. But intuition and a strange sense of rightness tell me to point you there.\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0765.jbp",
+    "guid": "21b10801b6c2b194d92506a137ef1307",
+    "text": "{n}The Storyteller's hand runs carefully over the scale that has still not lost its shine.{/n} \"Proud Terendelev, protector of Kenabres. You devoted your life to serving people. Your death is a great loss. But maybe I will be able to find out something about you that is unknown to your many admirers?\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0766.jbp",
+    "guid": "4e1d9c5a6266ce8479c10e5359af0505",
+    "text": "\"Now it is just a shard of the past, but I feel its power.\" {n}The elf carefully strokes Terendelev's claw.{/n} \"Only a great power can resist the most terrifying of enemies — oneself. Please, allow me to immerse myself in this memory and learn the story of the spiritual resurrection of the greatest of silver dragons.\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0775.jbp",
+    "guid": "09b4f14f1e318234dbac72017ac2634b",
+    "text": "\"Terendelev... has come a long way. Her unit was ambushed by demons once, and she was infected with foulness. The Terendelev you met in Kenabres had gone through many trials and regained her former purity.\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0777.jbp",
+    "guid": "c68d9b3a2b887f645ac539f996a63a92",
+    "text": "{n}The Storyteller puts his hand to his forehead.{/n} \"Sometimes the past can be as vague as the future. We all know how Terendelev's story ended, but the beginning is hidden from us. Maybe if you find something else that used to belong to her, we will know more about her struggle.\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0779.jbp",
+    "guid": "fabb0f4a300ac7b4389c7bee48b07c77",
+    "text": "{n}The Storyteller hangs his head, looking sickly and tired.{/n} \"How many times has the moon died and been reborn since I've been here? I have lost count. My friends brought me here. They said goodbye to me, like always, but they looked at me like it was the last time they'd see me... cowards, insidious spawn! They were glad I was going to die! But I'll show them! Terendelev will live! A new Terendelev, whose eyes are finally open!\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0780.jbp",
+    "guid": "e3bfc8e44d8cef848bd793fa9e6f9327",
+    "text": "\"I hear the rustling of wings and I emerge from the cave where I imprisoned myself. Who is it? A friend? An enemy? Sunbeams refract off his scales as he hovers before me surrounded by a glowing halo. The gold dragon Halaseliax!\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0782.jbp",
+    "guid": "6b42c8c8268d2c84a92930bfe70622c5",
+    "text": "\"No, what am I thinking? My mentor has come all this way to save me, I know. He would never abandon me, someone called him to my aid! Moving heavily, I take flight to greet him, but my body, controlled by the foulness, straightens like an arrow. His vulnerable throat is so close — one strike, and I will destroy you, Halaseliax!\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0785.jbp",
+    "guid": "ca71b79bc9a45b741bcc6599ef017fe7",
+    "text": "{n}The Storyteller frowns.{/n} \"It's so strange that you should ask... we all know what happened to Terendelev, but... sometimes it seems I hear her voice in the visions. Her voice, full of pain and despair, as if she is in darkness which she cannot escape. I cannot solve the mystery of this vision, but it worries me.\""
+  },
+  {
+    "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0787.jbp",
+    "guid": "d0c64e4e44062614aa9bef5aa8f94721",
+    "text": "\"I don't know... but I know the place where Terendelev was believed to have sought refuge for her tarnished soul. I saw Sarkorian ruins, a wide-branching tree next to them... Perhaps there will be something there that will shed some light on the fate of mentor and student. Something that can tell us how Terendelev's strength of spirit helped her to ultimately overcome the foulness within her.\""
+  }
+]

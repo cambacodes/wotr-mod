@@ -1,0 +1,552 @@
+[
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_6/Diplomacy_6_Dialogue.jbp",
+    "AssetId": "30333438aac8d3647bef882fa87e978e",
+    "Data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "Если поднят флаг Galfrey_Final - есть Голфри",
+      "FirstCue": {
+        "Cues": [
+          "!bp_e1d9630c72c095447be0e6a41f398687"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": [
+          {
+            "$type": "f4ef63ec9a4741d4bae871a91255f89a, IncrementFlagValue",
+            "name": "$IncrementFlagValue$02606c45-6a30-474e-a3a6-2bb80f89972a",
+            "m_Flag": "!bp_6377a60beb684d8a9453b49c0f3b2f7a",
+            "Value": {
+              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+              "name": "$IntConstant$1446bf27-fe20-46a4-a489-89f4b9462d8a",
+              "Value": 1
+            },
+            "UnlockIfNot": true
+          },
+          {
+            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+            "name": "$Conditional$ee87046b-0050-4c00-83a6-8a8002aa766f",
+            "Comment": "",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+                  "name": "$AnswerSelected$28134a80-73dd-4310-80c7-76ebde27e832",
+                  "Not": false,
+                  "m_Answer": "!bp_73c5728c4c6658344bedcc1b666e598c",
+                  "CurrentDialog": false
+                }
+              ]
+            },
+            "IfTrue": {
+              "Actions": [
+                {
+                  "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                  "name": "$CompleteEtude$b03927e3-9c21-41b7-9c8b-6fd3710515d7",
+                  "Etude": "!bp_b5f301fbc4c44535a6309d610d5bd28a",
+                  "EtudeEvaluator": null,
+                  "Evaluate": false
+                }
+              ]
+            },
+            "IfFalse": {
+              "Actions": []
+            }
+          }
+        ]
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0020.jbp",
+    "AssetId": "8311ef29223c4fe469c95cd8eb80e539",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "поклон",
+      "ParentAsset": "47ee9a4ff35604d4c901404a2b8a9999",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "33e47e84-7eaf-4d2c-8d0f-92343862b149",
+        "m_OwnerString": "8311ef29223c4fe469c95cd8eb80e539",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0020_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "Bow",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_e5cebb0a4f084e44b8424d5e1ef18b73",
+          "!bp_7f64a30ceb4bfb046990bccbded7ac75"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081.jbp",
+    "AssetId": "7f64a30ceb4bfb046990bccbded7ac75",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "7b47815a75f2baa46a5d9a07499f2a60",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "f0c50402-6d80-4bf5-8fcf-3b9f2779c7a2",
+        "m_OwnerString": "7f64a30ceb4bfb046990bccbded7ac75",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Diplomacy_8_Dialogue.jbp",
+    "AssetId": "6178470b05c75484085753b821a6a614",
+    "Data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "если выбрал в Дипломатии 7 ансвер 8 - также приходит посол Исгера\n\nесли выбрал в Дипломатии 7 ансвер 103 - также приходит посол Исгера\n\nЕсли поднят флаг Galfrey_Final - есть и Голфри",
+      "FirstCue": {
+        "Cues": [
+          "!bp_59ba491b3e857c145b58a7a59998bab8"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": [
+          {
+            "$type": "f4ef63ec9a4741d4bae871a91255f89a, IncrementFlagValue",
+            "name": "$IncrementFlagValue$445aff44-993f-4bb9-b696-b99ebcf9a660",
+            "m_Flag": "!bp_6377a60beb684d8a9453b49c0f3b2f7a",
+            "Value": {
+              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+              "name": "$IntConstant$dff7c0a0-c6b8-4519-97d5-0477d06bf24f",
+              "Value": 1
+            },
+            "UnlockIfNot": true
+          },
+          {
+            "$type": "f4ef63ec9a4741d4bae871a91255f89a, IncrementFlagValue",
+            "name": "$IncrementFlagValue$263906ac-718b-423e-b9ce-3b8c23763359",
+            "m_Flag": "!bp_d2eab6bfd8f64055938bf3be5770aabe",
+            "Value": {
+              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+              "name": "$IntConstant$064be78f-b0ef-456b-a6cc-ebc605bb5a3b",
+              "Value": 1
+            },
+            "UnlockIfNot": true
+          },
+          {
+            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+            "name": "$Conditional$f5bce744-3015-4c87-a5da-cf4cd3ac09ac",
+            "Comment": "Check for 2_1 objective of Ch5 main crusader quest completion",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "342eb5cf69e9d0e48917ff4215600e0b, FlagInRange",
+                  "name": "$FlagInRange$f4035d32-62d4-4ebf-a33e-2858771c2956",
+                  "Not": false,
+                  "m_Flag": "!bp_d2eab6bfd8f64055938bf3be5770aabe",
+                  "MinValue": 4,
+                  "MaxValue": 4
+                },
+                {
+                  "$type": "e77a58dedc8350a4faa55f5e66b9f575, ObjectiveStatus",
+                  "name": "$ObjectiveStatus$362384f4-d51d-4f6c-8356-a749b36767dc",
+                  "Not": true,
+                  "m_QuestObjective": "!bp_c6ffc2b19f314f55b78ed9eb97efebcf",
+                  "State": "Failed"
+                }
+              ]
+            },
+            "IfTrue": {
+              "Actions": [
+                {
+                  "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                  "name": "$SetObjectiveStatus$41a59b3f-4a08-471a-a5be-453e5d6b218b",
+                  "Status": "Complete",
+                  "m_Objective": "!bp_7664bd68a68741808a1282ad23804efc",
+                  "StartObjectiveIfNone": false
+                }
+              ]
+            },
+            "IfFalse": {
+              "Actions": []
+            }
+          }
+        ]
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029.jbp",
+    "AssetId": "9980a1ecf3ca24e42ab3b22f858677b5",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "Выбрал в Дипломатии 7 ансверы 8 или 103",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$98b90d46-808b-4d28-93d0-55aa78ffb521",
+            "Not": false,
+            "m_Dialog": "!bp_6178470b05c75484085753b821a6a614"
+          },
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$05d15e0d-7d86-4027-81b3-f4ac8c697330",
+            "Not": false,
+            "m_Etude": "!bp_c6e9a69f602a48e18424f4b6d71062b4",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "78b872c6-6892-4ad0-bdd8-cb003111ca21",
+        "m_OwnerString": "9980a1ecf3ca24e42ab3b22f858677b5",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032.jbp",
+    "AssetId": "07459f4d09fa81e4b99beea351fb0434",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$b8148a07-5500-493a-aaca-9c70fa12b69c",
+            "Not": false,
+            "m_Dialog": "!bp_30333438aac8d3647bef882fa87e978e"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "61406e3b-e2a0-426a-bd0f-95ffac91b96d",
+        "m_OwnerString": "07459f4d09fa81e4b99beea351fb0434",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
+    "AssetId": "60585f7319a294147a54f440865b21a2",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$6a6f3614-a021-40d4-9044-cf439dd4df89",
+            "Not": false,
+            "m_Dialog": "!bp_6178470b05c75484085753b821a6a614"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "54d44567-952f-4129-bd38-d83a0e8c2516",
+        "m_OwnerString": "60585f7319a294147a54f440865b21a2",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/ApprovedHelpFromAnotherCountryDiplomacy7(A8A0103).jbp",
+    "AssetId": "c6e9a69f602a48e18424f4b6d71062b4",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "m_Parent": "!bp_6150c694ecd24f70b4cc66113a8ed563",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": true,
+      "m_LinkedAreaPart": null,
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [],
+      "Priority": 0
+    }
+  }
+]

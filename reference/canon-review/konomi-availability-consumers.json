@@ -1,0 +1,2190 @@
+[
+  {
+    "path": "Root/Upgraders/Player/PF-360384.jbp",
+    "AssetId": "fbda3f5666a44d92af69e12338629a16",
+    "Data": {
+      "$type": "3f84b30d95ddfcf4eb8ddd26cbf70e82, BlueprintPlayerUpgrader",
+      "m_Comment": "",
+      "m_SpecificArea": null,
+      "m_SpecificMechanic": null,
+      "m_CriticalConvert": false,
+      "m_Actions": {
+        "Actions": [
+          {
+            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+            "name": "$Conditional$13c58102-90bd-49fb-9426-9f19e82633e6",
+            "Comment": "",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+                  "name": "$AnswerSelected$75c632be-4fe8-4187-b89e-e1d34c4f293c",
+                  "Not": false,
+                  "m_Answer": "!bp_73c5728c4c6658344bedcc1b666e598c",
+                  "CurrentDialog": false
+                }
+              ]
+            },
+            "IfTrue": {
+              "Actions": [
+                {
+                  "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                  "name": "$CompleteEtude$f6efa955-82ba-4072-8fa9-0fedcccf6694",
+                  "Etude": "!bp_b5f301fbc4c44535a6309d610d5bd28a",
+                  "EtudeEvaluator": null,
+                  "Evaluate": false
+                }
+              ]
+            },
+            "IfFalse": {
+              "Actions": []
+            }
+          }
+        ]
+      }
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_6/Diplomacy_6_Dialogue.jbp",
+    "AssetId": "30333438aac8d3647bef882fa87e978e",
+    "Data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0415\u0441\u043b\u0438 \u043f\u043e\u0434\u043d\u044f\u0442 \u0444\u043b\u0430\u0433 Galfrey_Final - \u0435\u0441\u0442\u044c \u0413\u043e\u043b\u0444\u0440\u0438",
+      "FirstCue": {
+        "Cues": [
+          "!bp_e1d9630c72c095447be0e6a41f398687"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": [
+          {
+            "$type": "f4ef63ec9a4741d4bae871a91255f89a, IncrementFlagValue",
+            "name": "$IncrementFlagValue$02606c45-6a30-474e-a3a6-2bb80f89972a",
+            "m_Flag": "!bp_6377a60beb684d8a9453b49c0f3b2f7a",
+            "Value": {
+              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+              "name": "$IntConstant$1446bf27-fe20-46a4-a489-89f4b9462d8a",
+              "Value": 1
+            },
+            "UnlockIfNot": true
+          },
+          {
+            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+            "name": "$Conditional$ee87046b-0050-4c00-83a6-8a8002aa766f",
+            "Comment": "",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+                  "name": "$AnswerSelected$28134a80-73dd-4310-80c7-76ebde27e832",
+                  "Not": false,
+                  "m_Answer": "!bp_73c5728c4c6658344bedcc1b666e598c",
+                  "CurrentDialog": false
+                }
+              ]
+            },
+            "IfTrue": {
+              "Actions": [
+                {
+                  "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                  "name": "$CompleteEtude$b03927e3-9c21-41b7-9c8b-6fd3710515d7",
+                  "Etude": "!bp_b5f301fbc4c44535a6309d610d5bd28a",
+                  "EtudeEvaluator": null,
+                  "Evaluate": false
+                }
+              ]
+            },
+            "IfFalse": {
+              "Actions": []
+            }
+          }
+        ]
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
+    "AssetId": "0dc8b8604bb33c846a63f3eb62443674",
+    "Data": {
+      "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "3269417315940ed4daf2a345b5812c4f",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "ShowOnce": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Answers": [
+        "!bp_4e9a62dc1e0979943985b18691982156",
+        "!bp_2905e311d362b654fa5bc49a8e9ee565",
+        "!bp_7e1119c31a3c2804f979d81c1d4dba1c",
+        "!bp_82d6e6891816fde4b99eba34e90a1a39",
+        "!bp_47b38df7747ae814c91eed92ffeb91dd",
+        "!bp_ae72f1e316afbe944a0d2f0d84d541a5",
+        "!bp_cf997c49d95e6264abacf51f561020b4",
+        "!bp_84ddfe54f20b5bf4aae91f48272ada96",
+        "!bp_ddba744fe9427534cbc4ce02aca6d586"
+      ]
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0004.jbp",
+    "AssetId": "2905e311d362b654fa5bc49a8e9ee565",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043086 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "b2b04a8e74d7f934fa11dd7f22e49667",
+          "stringkey": "8b3663a9-81e6-4338-bef6-5a3309409419"
+        }
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_2226fbcdd6dcf3d45b73ec011718fa23"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0005.jbp",
+    "AssetId": "7e1119c31a3c2804f979d81c1d4dba1c",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0432\u0438\u0434\u0435\u043b \u04304 \u0418\u041b\u0418 \u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043086 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2\n\n\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043023 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "5158057baf99c5b4cb0c7472b5bc476b",
+          "stringkey": "a9735e1c-0b5c-48f2-b9e0-bd0449433a45"
+        }
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_31e63403272409148a70a5706a993de7"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "Or",
+        "Conditions": [
+          {
+            "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+            "name": "$AnswerSelected$5b9444e9-e6c9-4fc2-8db8-5f8e6b619eec",
+            "Not": false,
+            "m_Answer": "!bp_2905e311d362b654fa5bc49a8e9ee565",
+            "CurrentDialog": false
+          },
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$7f4cc34b-7741-4815-9c2e-db7fb0864f88",
+            "Not": false,
+            "m_Etude": "!bp_e14eb0fa8b4b4532ab8bbbaaabcf85d8",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0008.jbp",
+    "AssetId": "47b38df7747ae814c91eed92ffeb91dd",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043032 \u0438\u043b\u0438 \u043040 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "6281e03b-fab0-458c-850a-23f1c0ddf555",
+        "m_OwnerString": "47b38df7747ae814c91eed92ffeb91dd",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0008_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_380647c36ee9bc54bafcf71d0e495cc5"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0009.jbp",
+    "AssetId": "84ddfe54f20b5bf4aae91f48272ada96",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "c575b70b-1665-4366-b070-d4d1119551e2",
+        "m_OwnerString": "84ddfe54f20b5bf4aae91f48272ada96",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0009_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_b8dcfbd30bd0f9942be9ec3d060bb12e",
+          "!bp_efe7fee421301b84aaff22a3b9dba4cf",
+          "!bp_9a397a883c3c0f447948fd10f26cb8fa"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0013.jbp",
+    "AssetId": "4e9a62dc1e0979943985b18691982156",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "93560f69-3d76-48d0-b1c5-aebb13d7d5e4",
+        "m_OwnerString": "4e9a62dc1e0979943985b18691982156",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0013_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_ba4efaac0716c6549998b75d77f51181"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0017.jbp",
+    "AssetId": "ddba744fe9427534cbc4ce02aca6d586",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "f3484900-f2c3-416f-8861-0c1d58786826",
+        "m_OwnerString": "ddba744fe9427534cbc4ce02aca6d586",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0017_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0022.jbp",
+    "AssetId": "cf997c49d95e6264abacf51f561020b4",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "d2a71484-58ed-4f2f-b11a-9fbc78a3086f",
+        "m_OwnerString": "cf997c49d95e6264abacf51f561020b4",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0022_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_319f94472605d1647b78cae7e5f6d627"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0034.jbp",
+    "AssetId": "ae72f1e316afbe944a0d2f0d84d541a5",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "bc4c2e7b-7245-4b09-9798-c38699c809b7",
+        "m_OwnerString": "ae72f1e316afbe944a0d2f0d84d541a5",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0034_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_af7c79e2a6e707e4eb61186206ee9695"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0044.jbp",
+    "AssetId": "82d6e6891816fde4b99eba34e90a1a39",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0432\u0438\u0434\u0435\u043b \u04304 \u0418\u041b\u0418 \u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043086 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2\n\n\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u0430112 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "8663d342c066b934ca20de5a79b7eaa6",
+          "stringkey": "8efeaf2b-166c-4c9e-b6d9-eac70c842d28"
+        }
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_36b30706771bf5344bddbc47bafff057"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "Or",
+        "Conditions": [
+          {
+            "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+            "name": "$AnswerSelected$5aab8f34-7091-40d9-8e75-4adca37aa11f",
+            "Not": false,
+            "m_Answer": "!bp_2905e311d362b654fa5bc49a8e9ee565",
+            "CurrentDialog": false
+          },
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$f331c5a2-926c-4872-90c0-f512d6e90681",
+            "Not": false,
+            "m_Etude": "!bp_e14eb0fa8b4b4532ab8bbbaaabcf85d8",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001.jbp",
+    "AssetId": "3269417315940ed4daf2a345b5812c4f",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u043f\u043e\u043a\u043b\u043e\u043d",
+      "ParentAsset": "a81655ed97277974e947c1aaf9e33525",
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "e8b61543-5e98-47ed-b856-e64270ba0734",
+        "m_OwnerString": "3269417315940ed4daf2a345b5812c4f",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "Bow",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002.jbp",
+    "AssetId": "bd0fd5f2a10163941a4e01ada9edc850",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a81655ed97277974e947c1aaf9e33525",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "c5427492-8ede-4e80-8bc7-1051ac59de6d",
+        "m_OwnerString": "bd0fd5f2a10163941a4e01ada9edc850",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0010.jbp",
+    "AssetId": "9a397a883c3c0f447948fd10f26cb8fa",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "84ddfe54f20b5bf4aae91f48272ada96",
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "e77a58dedc8350a4faa55f5e66b9f575, ObjectiveStatus",
+            "name": "$ObjectiveStatus$26d1c3f2-2e76-42c3-9069-bc340111c8bc",
+            "Not": false,
+            "m_QuestObjective": "!bp_f40469db3ed9e0d4d898630b0eab4008",
+            "State": "Completed"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "378f01b3-984f-4229-b020-547850913ef3",
+        "m_OwnerString": "9a397a883c3c0f447948fd10f26cb8fa",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0010_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0011.jbp",
+    "AssetId": "b8dcfbd30bd0f9942be9ec3d060bb12e",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "84ddfe54f20b5bf4aae91f48272ada96",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "294fa514f9b7760448adbaa37eb1dbfa, PcRace",
+            "name": "$PcRace$60a802ad-2730-4a6b-805d-e9509b3ea19a",
+            "Not": false,
+            "Race": "Kitsune"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "8ccb19fb-0208-442c-86d8-4d5076364e40",
+        "m_OwnerString": "b8dcfbd30bd0f9942be9ec3d060bb12e",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0011_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [
+          "!bp_9a397a883c3c0f447948fd10f26cb8fa"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0014.jbp",
+    "AssetId": "ba4efaac0716c6549998b75d77f51181",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "4e9a62dc1e0979943985b18691982156",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "571c1850-ed85-491b-84fa-405d9a900007",
+        "m_OwnerString": "ba4efaac0716c6549998b75d77f51181",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0014_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0027.jbp",
+    "AssetId": "6174a4cce0d175b4e8f4db8c145f848b",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a27d84ae5f69cc04295a034715414fe3",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "460bc180-b97a-4f5d-b7fd-29fc3f3931f8",
+        "m_OwnerString": "6174a4cce0d175b4e8f4db8c145f848b",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0027_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0035.jbp",
+    "AssetId": "af7c79e2a6e707e4eb61186206ee9695",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ae72f1e316afbe944a0d2f0d84d541a5",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "9a26a4d8-52a0-4670-99a4-f75d647d06a0",
+        "m_OwnerString": "af7c79e2a6e707e4eb61186206ee9695",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0035_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0036.jbp",
+    "AssetId": "20eb3862c5e64af4da1f5f15a3a51658",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "2226fbcdd6dcf3d45b73ec011718fa23",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "da834e69367b6ec4ea750af02ac463f8",
+          "stringkey": "44d1275b-f4f3-4376-8c00-d6eded22ff46"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0037.jbp",
+    "AssetId": "d2d794acd5896d143b184c0ad98e6922",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "31e63403272409148a70a5706a993de7",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "9e0b1e6cf8ac7f047a50bf21408a3a5a",
+          "stringkey": "05eb396d-6710-4412-9ad3-3076741425d3"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0038.jbp",
+    "AssetId": "efe7fee421301b84aaff22a3b9dba4cf",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "84ddfe54f20b5bf4aae91f48272ada96",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "294fa514f9b7760448adbaa37eb1dbfa, PcRace",
+            "name": "$PcRace$3b302ca2-c8fa-4cd8-82b4-62dca2402eaf",
+            "Not": true,
+            "Race": "Kitsune"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "d21d2901-e480-476d-aafa-ad1eb048c0d7",
+        "m_OwnerString": "efe7fee421301b84aaff22a3b9dba4cf",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0038_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [
+          "!bp_9a397a883c3c0f447948fd10f26cb8fa"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0043.jbp",
+    "AssetId": "7d0576f657d72cc4589c4c8de825ae6f",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "380647c36ee9bc54bafcf71d0e495cc5",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "ac5c00f114dc8f84382fef29649f5840",
+          "stringkey": "a2debf5d-0956-4c1b-9dd6-b1f615597457"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0046.jbp",
+    "AssetId": "4fd7185c1dcdc044580f8f2d610c5a87",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "36b30706771bf5344bddbc47bafff057",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "88548f52243266d49bdbfd89b7ed3c2a",
+          "stringkey": "81c9736d-ebdf-4971-ae1d-ba40db2728dd"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/DiplomacyOfficer_InDrezen.jbp",
+    "AssetId": "b5f301fbc4c44535a6309d610d5bd28a",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "name": "$EtudePlayTrigger$7f791994-d59e-40fd-8c40-0d270b52beb6",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Comment": "",
+          "m_Once": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                "name": "$HideUnit$92a37d59-bab5-44dd-b646-2a8a3996e55a",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$d7a548a7-aa4d-405e-8dbc-9a4ff60542c8",
+                  "Spawner": {
+                    "EntityNameInEditor": "RankUpOfficer_Diplomacy",
+                    "_entity_id": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "Unhide": true,
+                "Fade": false
+              },
+              {
+                "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                "name": "$TranslocateUnit$4e7bc288-e7c6-409d-b20e-5c5fbb253838",
+                "Unit": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$6aacee5b-8753-4eb0-b306-24741ca9370c",
+                  "Spawner": {
+                    "EntityNameInEditor": "RankUpOfficer_Diplomacy",
+                    "_entity_id": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "translocatePosition": {
+                  "EntityNameInEditor": "",
+                  "_entity_id": "",
+                  "SceneAssetGuid": ""
+                },
+                "translocatePositionEvaluator": {
+                  "$type": "ee272e7d88aff6648b4c1b052228fdc7, LocatorPosition",
+                  "name": "$LocatorPosition$8558d308-97b5-4839-bb9a-b8e3deb23c5d",
+                  "Locator": {
+                    "EntityNameInEditor": "DiplomacyOfficer_Position",
+                    "_entity_id": "e6a7de2a-ce6f-4413-b24d-06daf1990e4c",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  },
+                  "Offset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "m_CopyRotation": true,
+                "translocateOrientationEvaluator": {
+                  "$type": "e11ac2cb26534343ba689a3fdd4de609, LocatorOrientation",
+                  "name": "$LocatorOrientation$eb0e448a-bff7-4d30-8284-2ac4c85727ff",
+                  "LocatorEval": null,
+                  "Locator": {
+                    "EntityNameInEditor": "DiplomacyOfficer_Position",
+                    "_entity_id": "e6a7de2a-ce6f-4413-b24d-06daf1990e4c",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "Comment": "",
+      "m_Parent": "!bp_e423e4d675b64f2bb974cb453aaed4fd",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$21150742-75fa-4204-a94c-a8d148159c53",
+            "Not": false,
+            "m_Etude": "!bp_e0d8b253efedb70488badaaa3d47632c",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": true,
+      "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [
+        "!bp_12b19db05c70a2a4fa3210293d35bfd0"
+      ],
+      "Priority": -20
+    }
+  },
+  {
+    "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/RankUps/DiplomacyRankUp2.jbp",
+    "AssetId": "e513ab6862e999644acde5a994911f5a",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": null,
+      "m_Overrides": [
+        "$EtudePlayTrigger$65f1d9a4-487f-4477-b396-c575f033e7c2"
+      ],
+      "Components": [
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "name": "$EtudePlayTrigger$65f1d9a4-487f-4477-b396-c575f033e7c2",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Comment": "",
+          "m_Once": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                "name": "$PlayCutscene$495541ec-d17f-40ce-805d-32aec4b7a42f",
+                "m_Cutscene": "!bp_e8d44f13de8b6154687a05f42f767eb5",
+                "PutInQueue": false,
+                "CheckExistence": true,
+                "Parameters": {
+                  "Parameters": [
+                    {
+                      "Name": "Unit",
+                      "Type": "Unit",
+                      "Evaluator": {
+                        "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                        "name": "$UnitFromSpawner$2c8d43a0-909a-4e32-8553-079850f70ef2",
+                        "Spawner": {
+                          "EntityNameInEditor": "RankUpOfficer_Diplomacy",
+                          "_entity_id": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b",
+                          "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                        }
+                      }
+                    },
+                    {
+                      "Name": "Dialog",
+                      "Type": "Blueprint",
+                      "Evaluator": {
+                        "$type": "5c84f2b0c2d44251b320ae180dcaecd8, Dialog",
+                        "name": "$Dialog$0f12cc2b-3626-4bc8-9b4c-d640cf3bd3cc",
+                        "m_Value": "!bp_feb6a1b8fed8f0a4c9e3b0c21f56eb3c"
+                      }
+                    },
+                    {
+                      "Name": "Etude",
+                      "Type": "Blueprint",
+                      "Evaluator": {
+                        "$type": "1273add9ac97d9b45a4744747bbc65cb, EtudeBlueprint",
+                        "name": "$EtudeBlueprint$df73d2e9-ad72-42aa-8ac1-12511dd04f26",
+                        "m_Value": "!bp_e513ab6862e999644acde5a994911f5a"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$2534dcfd-e286-46b2-a77f-8c42f404af21",
+                "Etude": "!bp_b5f301fbc4c44535a6309d610d5bd28a",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              }
+            ]
+          }
+        }
+      ],
+      "Comment": "",
+      "m_Parent": "!bp_1a2fbd3143c42c542a15be2ff1a2c33d",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ee651e222f282454fbd2821c9ea18a72, AnotherEtudeOfGroupIsPlaying",
+            "name": "$AnotherEtudeOfGroupIsPlaying$23568f68-317e-47ab-8439-7407478e5041",
+            "Not": true,
+            "m_Group": "!bp_10d01be767521a340978c8e57ab536b6"
+          }
+        ]
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": true,
+      "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+      "m_IncludeAreaParts": false,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [
+        "!bp_12b19db05c70a2a4fa3210293d35bfd0",
+        "!bp_10d01be767521a340978c8e57ab536b6",
+        "!bp_829ef51ab732b0e4f934859c5a307870"
+      ],
+      "Priority": 0
+    }
+  },
+  {
+    "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLocust/Drezen_SecondState_Locust.jbp",
+    "AssetId": "3b2a1572df0d448fb262b4115a1fad95",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "m_Flags": 0,
+          "name": "$EtudePlayTrigger$1d1216d5-2145-4019-9834-57ac92b64594",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Comment": "",
+          "m_Once": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "5e4603a125002e449ba3cfc391334f5c, SummonPoolUnits",
+                "name": "$SummonPoolUnits$84cc2811-966f-4b54-b318-25a039fd4c2d",
+                "m_SummonPool": "!bp_3790d9c724af403db095927370822c56",
+                "Conditions": {
+                  "Operation": "And",
+                  "Conditions": []
+                },
+                "Actions": {
+                  "Actions": [
+                    {
+                      "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                      "name": "$HideUnit$13981705-1cdb-40b8-b9b6-246d96f41998",
+                      "Target": {
+                        "$type": "d67e5007013a92946a7f740132296ab4, SummonPoolUnit",
+                        "name": "$SummonPoolUnit$17e0eeeb-137e-46cd-8be8-efe0d7cfee4a"
+                      },
+                      "Unhide": true,
+                      "Fade": false,
+                      "SetHideInSaves": false
+                    }
+                  ]
+                }
+              },
+              {
+                "$type": "3abef1c138b2b3344bebcf6fbbe5cf47, HideMapObject",
+                "name": "$HideMapObject$2a34b0e0-e6b8-4bb6-a062-021f08f1dc58",
+                "MapObject": {
+                  "$type": "2f7f1ee24f13dca42977f3b2b5a847f8, MapObjectFromScene",
+                  "name": "$MapObjectFromScene$75570554-e5bb-42b3-bb76-0d52b1bb0c6c",
+                  "MapObject": {
+                    "EntityNameInEditor": "Critters",
+                    "_entity_id": "2ad2dee4-1315-4d7d-9754-b9ec7540d471",
+                    "SceneAssetGuid": "805628e9d261c114c994433bc0eb358d"
+                  }
+                },
+                "Unhide": false,
+                "UseEntityFader": false
+              },
+              {
+                "$type": "3abef1c138b2b3344bebcf6fbbe5cf47, HideMapObject",
+                "name": "$HideMapObject$35676ae1-1e60-4884-bcd5-7434b07277a3",
+                "MapObject": {
+                  "$type": "2f7f1ee24f13dca42977f3b2b5a847f8, MapObjectFromScene",
+                  "name": "$MapObjectFromScene$bd6ff1c1-5984-49d5-af5b-79964b91d275",
+                  "MapObject": {
+                    "EntityNameInEditor": "NotForLocust",
+                    "_entity_id": "ff792bd1-0169-4f5b-8ba1-02a72e227ed3",
+                    "SceneAssetGuid": "6ba119c0c23d56d4facff0615fff5d19"
+                  }
+                },
+                "Unhide": false,
+                "UseEntityFader": false
+              },
+              {
+                "$type": "3abef1c138b2b3344bebcf6fbbe5cf47, HideMapObject",
+                "name": "$HideMapObject$36b3940a-71c5-4178-80ae-627e20251422",
+                "MapObject": {
+                  "$type": "2f7f1ee24f13dca42977f3b2b5a847f8, MapObjectFromScene",
+                  "name": "$MapObjectFromScene$fa1b6373-c264-4de8-8e1e-1566764da8e9",
+                  "MapObject": {
+                    "EntityNameInEditor": "Critters_Prison",
+                    "_entity_id": "6f9af741-0802-439a-aa68-e1c57c2a3977",
+                    "SceneAssetGuid": "d086ccdf1aac40e4d866cbadc2eb86a2"
+                  }
+                },
+                "Unhide": false,
+                "UseEntityFader": false
+              },
+              {
+                "$type": "3abef1c138b2b3344bebcf6fbbe5cf47, HideMapObject",
+                "name": "$HideMapObject$9a15d28f-a76a-47bc-9e72-ab334aac228b",
+                "MapObject": {
+                  "$type": "2f7f1ee24f13dca42977f3b2b5a847f8, MapObjectFromScene",
+                  "name": "$MapObjectFromScene$e5f98248-3779-4ee3-82cb-a1f943a9af19",
+                  "MapObject": {
+                    "EntityNameInEditor": "NotForLocust_HouseToPrison",
+                    "_entity_id": "6c0f86ee-3910-40f3-8c41-2663595407db",
+                    "SceneAssetGuid": "3161e082d7616104b8d4f475dbf8dcb1"
+                  }
+                },
+                "Unhide": false,
+                "UseEntityFader": false
+              },
+              {
+                "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                "name": "$TranslocateUnit$daf16e49-654c-4296-86ca-d9432b155be4",
+                "Unit": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$6885765b-d7ef-4ec1-9675-2adbb5a2eb96",
+                  "Spawner": {
+                    "EntityNameInEditor": "ExoticCapitalTrader",
+                    "_entity_id": "ce2f8af4-7421-49d1-b9f6-eade620a37ab",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "translocatePosition": {
+                  "EntityNameInEditor": "ExoticCapitalTraderLocust",
+                  "_entity_id": "4c430602-e287-4cab-a81c-9780a36f93d2",
+                  "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                },
+                "translocatePositionEvaluator": null,
+                "m_CopyRotation": false,
+                "translocateOrientationEvaluator": null
+              }
+            ]
+          },
+          "IsActivateOnLoadArea": false
+        },
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "m_Flags": 0,
+          "name": "$EtudePlayTrigger$f56f159b-9d55-46db-9df0-14216a01cf9c",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Comment": "\u0423\u0431\u0438\u0440\u0430\u0435\u043c \u0441\u0442\u0430\u0440\u044b\u0445 \u0442\u043e\u0440\u0433\u0430\u0448\u0435\u0439",
+          "m_Once": true,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$2842e463-a7e7-4e2d-a18d-d94227dea558",
+                "Etude": "!bp_aee729f4de1f5844096ec3f36bcbc4f1",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$dea1ea3c-8666-4112-8e58-69cb9aa55ab1",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$abe4458e-dba5-4cda-93f3-c8c238702892",
+                  "Spawner": {
+                    "EntityNameInEditor": "BlacksmithCapitalTrader",
+                    "_entity_id": "a0a7f948-d390-475c-8b40-4e556193f4fe",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              },
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$0e6da3a8-a766-4258-bd4a-259d38cfbe30",
+                "Etude": "!bp_f5d08d5c41d6b584ca59081039a19f20",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$04af5e61-8210-4454-95a6-265552b7577a",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$f0e02152-a316-47d4-a283-dd9baaa0123c",
+                  "Spawner": {
+                    "EntityNameInEditor": "ExoticCapitalTrader",
+                    "_entity_id": "ce2f8af4-7421-49d1-b9f6-eade620a37ab",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              },
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$67b3a111-b60c-4601-b014-fb83f584223b",
+                "Etude": "!bp_80d962445c436644fa371e3e8324e1f1",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$9f2ce362-2c22-4dab-a065-7e4f35f4bcc2",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$ace0f63f-9faf-433f-9556-c0f95d4e1814",
+                  "Spawner": {
+                    "EntityNameInEditor": "JewelerCapitalTrader",
+                    "_entity_id": "fdf37a46-5768-4e15-8ffc-80a399c45fd0",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              },
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$128b29c3-6094-4eec-883c-d2123d2d1925",
+                "Etude": "!bp_72e751ad27029144bbfbcb5606338bd4",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$cb46081e-1427-460c-b221-3b33e6b51bfc",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$b2cd3ccd-b068-4d3e-adef-465421eb9df8",
+                  "Spawner": {
+                    "EntityNameInEditor": "TailorCapitalTrader",
+                    "_entity_id": "4a378093-68b9-4244-b5c8-7974ae993360",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$aa1c4c11-ea87-4e6e-a1f2-7e1c449ac983",
+                "Etude": "!bp_ca67e1dbfd0145ef9cd53ca8c840c815",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              }
+            ]
+          },
+          "IsActivateOnLoadArea": false
+        },
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "m_Flags": 0,
+          "name": "$EtudePlayTrigger$2dd31ee2-cdc8-4ce8-aa61-7d8af170cf7d",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Comment": "\u0423\u0431\u0438\u0440\u0430\u0435\u043c \u0441\u043e\u0432\u0435\u0442\u043d\u0438\u043a\u0438 \u043f\u043e \u043a\u0440\u0443\u0441\u0435\u0439\u0434\u0443\u0443",
+          "m_Once": true,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$b3ab2788-250a-4149-99d5-fb27469719ba",
+                "Etude": "!bp_b5f301fbc4c44535a6309d610d5bd28a",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$22be7153-ab45-4ec9-a817-ed0e30d7de9b",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$a6aa5728-e4dd-47b9-a900-db5ea9d1fbfd",
+                  "Spawner": {
+                    "EntityNameInEditor": "RankUpOfficer_Diplomacy",
+                    "_entity_id": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              },
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$d80916db-c3a8-493a-bcc1-0b2a5c1f7108",
+                "Etude": "!bp_44741052e75b4c44a0a0d9a40de7787f",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$2b07b6a6-e9e9-487e-8a10-0760298032ed",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$4fbe2532-7a9f-41fd-bc73-7585d42249b5",
+                  "Spawner": {
+                    "EntityNameInEditor": "RankUpOfficer_Leadership",
+                    "_entity_id": "e2134267-958c-4d52-9898-361da1aa9739",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              },
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$333f46d5-54e7-4d92-9d81-d7edcf9c77c7",
+                "Etude": "!bp_c6be8cc816ed47e6929735f877abb229",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$e11df710-1c3f-4f4b-897d-ebcbdf29309f",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$ab868618-905b-41b3-8ce8-3b23bda6b123",
+                  "Spawner": {
+                    "EntityNameInEditor": "RankUpOfficer_Logistics",
+                    "_entity_id": "415f6447-76a3-403d-979d-891da0758c9c",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              },
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$1ff59469-637c-4cb5-b762-a6a4a2c561fc",
+                "Etude": "!bp_bc0713a9d5da4a04871d52a62115fb5f",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "9f0cd598c83b33949802eb2ed789207c, DestroyUnit",
+                "name": "$DestroyUnit$8b65e38e-dfe3-4c3f-a6eb-f7470c57d3c3",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$9ff79bd7-f607-4d67-adc0-63951b4fe64e",
+                  "Spawner": {
+                    "EntityNameInEditor": "RankUpOfficer_Military",
+                    "_entity_id": "45d9356f-b116-4873-a41e-7679f1a58728",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "FadeOut": false
+              }
+            ]
+          },
+          "IsActivateOnLoadArea": false
+        }
+      ],
+      "Comment": "",
+      "m_Parent": "!bp_5fd983da75204b9693eb6c99a4025cfe",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$ecbbdba0-2026-4b9b-a8ec-63768c28f6b3",
+            "Not": false,
+            "m_Etude": "!bp_e0d8b253efedb70488badaaa3d47632c",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": false,
+      "m_LinkedAreaPart": null,
+      "m_LinkedCampaigns": [],
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [
+        "!bp_a8bc625a226f422bb867ff3c43821f24"
+      ],
+      "m_StartsWith": [
+        "!bp_c18e781020de448488e0b2bbe5d6743b",
+        "!bp_62154c5fbeb948b4a311b6fe5f3ce628"
+      ],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [
+        "!bp_26c6c211c5a744b2bb1228f071661ddf"
+      ],
+      "Priority": 210
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  }
+]

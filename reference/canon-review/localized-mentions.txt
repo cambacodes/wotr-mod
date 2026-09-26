@@ -1,0 +1,602 @@
+6c72f7b7-06d7-459c-81ce-fbfdd070e380
+After you interfered, blind Gesmerha the woodshaper became the new chief of the Wintersun clan.
+
+a2c32cde-bf45-4648-9d85-eb465bfc1033
+Lady Konomi
+
+a424d3f0-55d7-4a4e-9a7e-3ca54c07c8f4
+Gesmerha
+
+29f9ac95-73f9-4326-b490-0143f376f463
+Arsinoe
+
+e897e8de-08c4-4b1a-ae65-1c9d86e79b08
+Kiana
+
+ad00f500-f163-4d4f-821c-cb944dc9fe7c
+This meadow on the bank of the river is where Elan and Kiana decided to celebrate their wedding. This picturesque spot seems quite safe.
+
+36e9ada1-3dab-4269-a91e-1dfd3f500522
+Lady Konomi, the Commander's diplomacy advisor, has received fresh news from Nerosyan and asks the Commander for an audience.
+
+a8346ef3-2436-4db0-ad12-4d87338b3577
+Lady Konomi Wants to Talk
+
+5d845050-8a1b-41c3-ac91-67849dc50062
+There is news from Kenabres about an upcoming festival — Arsinoe is ready to report on it.
+
+4c3f52a0-b9fd-4d85-9361-7a6038d4d0ae
+"Tell me about yourself, Lady Konomi. Who are you?"
+
+724c4696-1b09-4c9a-9bcb-b4d8b795bf88
+"Lady Konomi, what good will a parade in Her Majesty's honor do?"
+
+632d08ce-1c4f-4eb0-a056-ea4599f49ecd
+{n}A sharp-looking kitsune gives you a quick, businesslike bow.{/n} "Commander, the matters before us are urgent, so let's not stand on ceremony. I am Lady Konomi, the official attaché of {g|Nerosyan}Nerosyan{/g}. Here are my credentials." {n}She presents a scroll adorned with Galfrey's seal.{/n} "Her Majesty has instructed me to lead your headquarters' Diplomatic Council."
+
+a7c66558-426b-4217-a85d-98c9086bc015
+"Honestly, I was surprised when Lady Konomi asked me to join this council. But I will do my best to fill the shoes of a trained diplomat."
+
+fc3daf57-e7b8-47cf-8040-fddd493f5d77
+"Um... Yeah, strange, I got invited to the council too. I'm sure foreign ambassadors will be thrilled to see my face and my manners. Lady Konomi, you haven't mistaken me for some other crusader Lann, have you?"
+
+bf200499-9069-4f6e-93f8-9e6d6986f0c1
+"I'm flattered by the respect that the worshipers of my goddess receive in Lady Konomi's homeland." {n}Sosiel bows his head courteously.{/n} "I won't let you down, {name}, and I'll make every effort to prevent our friends from becoming our enemies."
+
+8e3ad8e9-9509-4615-8cea-e4a6735fc9ea
+{n}Daeran sneers back at her.{/n} "Oh, believe me, Lady Konomi, I will exert all my effort and influence to make this council's job... exciting."
+
+05b271ab-c504-4572-baf1-8a06a120eb07
+{n}Lann scoffs and glowers at Lady Konomi.{/n} "I suspected that the word 'diplomat' was synonymous with 'fraud,' but I thought you would be deceiving me, not deceiving others with my help. No, that's not an option. I can represent the mongrels in negotiations, but I'm not going to lie through my teeth."
+
+1a73c1df-3705-4e90-b3ae-3598893921bc
+{n}Lady Konomi lowers her eyes in a show of modesty.{/n} "It's unbecoming of a diplomat to talk about themselves at length, but how am I to refuse you? I come from Tian Xia, from the noble kitsune."
+
+fb59c4e3-6a9d-444f-8899-3d0c5cb72e4f
+{n}Lady Konomi gives you a look of surprise.{/n} "Whatever for? Aren't the wishes of the capital obvious enough? Although, very well, let us hear their counsel."
+
+528b1dcc-35d7-404e-8c96-095c0fa93521
+"So Mr. Lann will be our 'mongrel prince.' If we're negotiating with foreign ambassadors and I make this sign..." {n}Lady Konomi crosses her fingers in an intricate gesture.{/n} "...you immediately start talking about how offensive their proposition is to the mongrel people. Do we have a deal, Mr. Lann?"
+
+326f0657-fe99-4873-b9a9-c8a034b652c9
+{n}Lady Konomi's voice hardens.{/n} "I cannot challenge your decision. However, I have no choice but to inform the capital that you have disregarded my recommendations. Actions like these are precisely what gave Nerosyan cause for concern, Commander. I hope you will revise this defiant stance in future."
+
+87dad7b5-3fee-43db-9ea9-0749bd2fe916
+"Ah, now I understand the role that I've been given, Lady Konomi. I'm supposed to stand in a pretty doublet and keep my mouth shut. I can promise you the former, but not the latter."
+
+32ff43a7-07ad-4691-860b-dd4d86e6c565
+{g|Diplomacy3_5}[Choice effects]{/g} "Lady Konomi, I'm willing to accept Isger's aid."
+
+71000a12-7eeb-4be0-8fc2-2021da6a5d1f
+"Lady Konomi, what sort of help can we expect from Isger?"
+
+2970f168-ac11-48f8-ba99-0ec4d8da1581
+"Lady Konomi, I do not doubt that only your innate modesty forbids you from mentioning the innumerable bribes received by Nerosyan diplomats for facilitating this alliance. I imagine {g|Cheliax}Cheliax{/g} was most generous. However, among the funds that make their way into our army's coffers, I could not spot a single coin of Chelaxian mintage, so... why should we help you?"
+
+d7e6288e-314b-4416-93ae-ec18409bdc72
+"Because you are, with all due respect, one of Her Majesty's subjects." {n}Lady Konomi's voice grows sterner, but after a moment, subsides into a more confiding tone.{/n} "And because it took great effort for Mendev's diplomatic corps to win Isger over and ensure you would receive their help. Are you confident that the 'allies' you choose yourself will be as reliable?"
+
+5f4d30ef-4332-4c5d-ab63-3df3061a8bf8
+{n}Lady Konomi's voice turns silken and somewhat condescending.{/n} "Commander, we both realize that Mendev's political interests lie beyond the competence of this council. The decision has already been made — in the capital. Nerosyan has shown courtesy and concern for your authority by allowing you to implement the decision yourself."
+
+80040e72-3fcb-44d3-8722-85d7a11ca303
+{n}Lady Konomi looks at you fearlessly.{/n} "And you are dangerously close to ruining the carefully arranged political scheme that will allow Mendev to strengthen its relationship with one of the most influential states in {g|Avistan}Avistan{/g}. I believe your tactics are far riskier than mine."
+
+3efeda6d-ce1c-4b45-9cf5-10022ad1d8ac
+{g|Diplomacy4_5}[Choice effects]{/g} "Lady Konomi, we will support the Royal Council."
+
+4629c1ea-d76a-4de2-9e98-9fd302864cc4
+"Lady Konomi, how will the Royal Council repay us for our support?"
+
+72094ade-5fb1-4ef2-99b4-b6c70338b5cc
+"Spoken like a true politician, Commander. Very well, let us talk price." {n}Lady Konomi looks at you with a smug, somewhat predatory smile.{/n} "I can guarantee you that, in return for your loyalty, the Royal Council will ensure the stability of equipment deliveries in the future. Quite convenient, don't you think — having no one twisting your arm with threats of supply shortages?" {n}She glances at you with an obvious hint.{/n}
+
+ed6aa3b6-a589-4778-9c19-611d77b7447e
+{n}Lady Konomi studies your face for a while, then says calmly,{/n} "What a shame. Opportunity comes knocking, and you throw it in the garbage."
+
+3885afd6-077c-4ac6-8825-adf3d25f7bad
+{g|Diplomacy5_5}[Choice effects]{/g} "Lady Konomi, I will act according to the will of Nerosyan."
+
+2b12738c-5591-4285-8feb-21dc28e518c7
+"Lady Konomi, why would I refuse Andoran's help?"
+
+e9de279e-b404-430c-b1d1-782627536663
+{n}Daeran regards Lady Konomi with feigned disapproval.{/n} "Come now, Lady Konomi, all this suspicion! I am sure that the Andorens are driven by nothing more than benevolence and concern for our collective future. We simply must accept them like dear friends."
+
+b5588f0c-21f1-4a99-a73b-fa2c093a5b91
+"Firstly, because it is the wish of the capital." {n}Lady Konomi falls silent for a few moments, letting the weight of her argument sink in.{/n} "And secondly — you do understand that this situation is larger and more complex than what you can see from Drezen? It would be inconvenient for us to quarrel with {g|Cheliax}Cheliax{/g} at the moment, and {g|Andoran}Andoran{/g} is pushing us to do exactly that."
+
+683aa68e-2319-4457-acff-d48d39856ebd
+{n}Lady Konomi shudders pointedly.{/n} "Don't forget about the sin of slander, Count. Enough tomfoolery. Your jests will lead to diplomatic disaster."
+
+b9b6e985-7d54-46a9-8ac5-0d4178863ff6
+{n}Lady Konomi's hand twitches in frustration.{/n} "There will be consequences! Severe and unpleasant consequences!"
+
+dcc845f3-ad0b-4e55-af77-204506cc11b6
+{g|Diplomacy6_5}[Choice effects]{/g} "Lady Konomi, I will support the Royal Council."
+
+50dbd7c4-b2b1-4d45-b85a-e20397abb94a
+"Lady Konomi, do you really expect me to support the Royal Council?"
+
+9e53556d-9ec1-45e3-a8a4-2b219ea0af9d
+{g|Diplomacy6_6}[Choice effects]{/g} "Nerosyan's concerns are no longer mine. Get out of my fortress, Lady Konomi."
+
+05aec835-7770-48e7-83bc-cf3cbfc4a9d6
+"As I said: you can go to the demons, Lady Konomi. Along with the entire Royal Council."
+
+999e4217-f1ec-4c43-b103-da5402a7f60f
+{n}Lady Konomi doesn't look nearly as confident or bold as before.{/n} "Commander, what a blessing it is to have you back! Mendev is in need of your help! There's been a revolt in Nerosyan — the disgruntled nobles are completely out of control. They proclaimed the Royal Council dissolved and arrested several of its members. Many politicians were accused of collaborating with the demons! Some were executed, others were torn apart by the crowd."
+
+74019a26-03e1-490e-8350-7eb2ce7653a4
+"Absolutely." {n}Daeran turns to Lady Konomi and says with a faint smile,{/n} "Please, make sure to tell the Royal Council that it's not them, it's us. Our relationship has run its course, and we're leaving them for another exalted assembly that will likewise be blessing us with invaluable advice while enjoying the safety of the capital."
+
+9bfbeb70-8248-4e03-9449-d43917f2f5c0
+"I pray to Iomedae that your decision is the correct one. Otherwise I will have to answer to Pharasma for all the bloodshed caused by my negligence." {n}She glances at Lady Konomi.{/n} "As for you — if you would be so kind as to tell the Royal Council that when next we meet, they will need to sound very convincing if they hope to plead for leniency."
+
+430fe100-0cf5-4192-a13a-c3982c730e9f
+"You are absolutely right, Commander! I admit, the Royal Council hasn't shown you the proper respect and amicability. I myself brought this to their attention on numerous occasions." {n}Lady Konomi's posture is full of repentance.{/n} "But trust me when I say that none of them wished you ill, and they all shared the unshakable belief that you were the savior of our nation."
+
+30af0fbf-2ae2-491b-b9fc-1422ff6d0c35
+"Without Her Majesty's steady hand, the capital has fallen into decay. Some are settling old scores, others have discovered new opportunities. Mendev is accustomed to following a highly respected leader. The only one who can protect the throne from greedy hands is you, Commander." {n}Lady Konomi gives you a deep bow, exuding remorse and obedience.{/n}
+
+e6447e72-e337-41a1-9968-932310585d40
+{n}With a frown, Galfrey gives Lady Konomi a searching look.{/n} "It appears that the Royal Council has been negligent in their duties if their misfortunes evoke no sympathy from the Commander. Once the war is over, I will be sure to find those who disobeyed my order not to pressure the Commander."
+
+f60feb47-e7a9-425b-a639-047123695c6f
+{n}Lady Konomi's tone becomes obsequious.{/n} "But, Commander! Without your aid, Mendev will be consumed by uprisings. Much blood will be spilled. Furthermore, you will be cut off from any support from the capital — in the midst of an insurgency, organized deliveries will become impossible. All you can hope to receive in such circumstances is the help of servants of the crown who are sympathetic to your cause. And their numbers grow smaller by the day."
+
+2cd868d1-89bf-49db-aa14-c7cf5aca1599
+{n}Lady Konomi responds with a deep bow.{/n} "Your benevolence knows no bounds, Commander."
+
+73f3ed79-f08c-477b-901f-6e76e9faf139
+{n}Lady Konomi nods ruefully.{/n} "So be it. Farewell, Commander. Despite your decision, I wish you good luck and hope that foreign powers will be able to supply you with troops and resources. I will make haste for Nerosyan. Right now in the capital, every experienced negotiator is worth their weight in gold."
+
+6118aabd-6c61-471e-9817-abe38d7b3458
+{n}Lady Konomi snarls with discontent.{/n} "Give power to the belligerents? They'll order the nation around like a company of recruits on the parade deck. Years of careful diplomatic work will go to waste. No, soldiers are inflexible, they cannot handle such delicate matters."
+
+af172c33-891b-42ba-975d-3ae823e54be6
+"The First Treasurer has fled, there's fighting in the streets between mercenaries hired by the aristocrats and the guard, who is loyal to the Royal Council. Drezen has received letters from the insurgents, as well as from the loyal servants of the crown, requesting your support. But both the Royal Council and I have faith that you will elect to defend the legitimate authority. This faith is not misplaced, is it?" {n}Lady Konomi regards you with a devotion you've never seen in her before.{/n}
+
+26711ae7-5701-460e-aa88-70cd74517eff
+{n}Galfrey, who has been staring daggers at Lady Konomi, raises her eyebrows and looks at Daeran indignantly, but forces herself to remain silent.{/n}
+
+1a70938a-a473-4a2f-ab5b-b4747be79eaa
+{n}She looks at Lady Konomi grimly.{/n} "And yet, there is something I would like to say. The Royal Council and its messenger has hidden behind my name long enough. They could not handle their responsibilities: they have failed me, and they have failed Mendev. Thus, should the Commander decline to support them, it will be my great pleasure to give them a fair trial upon my return to the capital."
+
+53c9eebb-d8db-44c6-b699-933cfd50c234
+{n}Galfrey bows her head politely.{/n} "The work of this council is not only about the Crusade, but also about Mendevian politics. Thus, it seemed appropriate that I attend. I have already warned Lady Konomi, however, that the final word in the decisions of this council is yours."
+
+7279d094-1b45-4bf5-8c39-c186ba40201a
+"I hope your decision will end the turmoil in my lands." {n}The Queen glances at Lady Konomi.{/n} "As for you, please be so kind as to inform the Royal Council that they shall have to be very convincing indeed if they hope to plead for leniency the next time we meet."
+
+a763ca16-63d0-4dd2-ba48-42052da7ce1c
+{g|Diplomacy7_5}[Choice effects]{/g} "Lady Konomi, I'll send the reinforcements to Mendevian cities to restore order."
+
+d9e00dfd-ecdc-496b-a365-8d8d9d524581
+"Lady Konomi, what are you expecting from me?"
+
+f1f06225-fa47-484e-9641-7ca121d067b2
+{n}Lady Konomi makes a concerned sound.{/n} "I hope you understand that all these courteous speeches are just a velvet glove wrapped around an iron fist."
+
+651cac19-0644-4971-a49f-0bf227f51d52
+{n}Lady Konomi bows her head and says quietly,{/n} "We will know soon whether or not this decision was prudent. Will Mendev survive this crisis or is it doomed to fall — once the outcome becomes apparent, I will report to you immediately."
+
+7641ba06-b8ab-4e35-9cc1-06973f801200
+{n}Lady Konomi cuts off the ambassador.{/n} "Mendev is quite capable of dealing with its issues without external help. Commander, I must ask you to send your own forces to the capital. Don't put the nation into the hands of foreigners."
+
+a651ed32-69e3-4f01-9806-5ec299c066f6
+{g|Diplomacy8_5}[Choice effects]{/g} "Lady Konomi, send word to the capital that military mobilization has been ordered."
+
+0a59bb75-66ff-43cd-9732-fc88dea6e737
+"Lady Konomi, is there anyone left in Mendev who could be mobilized?"
+
+015085cb-8b1d-4051-a3eb-2ab803d9b030
+{n}Lady Konomi's voice is brimming with satisfaction.{/n} "Commander, I bring wonderful news. We are getting reports from all regions of Mendev that the nationwide political crisis has been resolved."
+
+33e47e84-7eaf-4d2c-8d0f-92343862b149
+{n}Lady Konomi bows respectfully.{/n} "When first we met, I allowed my eyes to deceive me. I failed to discern within you an outstanding politician. You knew nothing of diplomacy, you were unaware of the power structure in Nerosyan and beyond. But you were driven by your uncanny intuition, and with it, you have saved Mendev and strengthened our ties with foreign allies. You have my respect."
+
+9729ba60-5955-4abe-b540-ef113ed4e9d4
+{n}A spark of worry flashes in Lady Konomi's eyes.{/n} "Is this a good time for reforms of such magnitude? There has been enough disturbance in Mendev already."
+
+6281e03b-fab0-458c-850a-23f1c0ddf555
+"Tell me about yourself, Lady Konomi."
+
+e8b61543-5e98-47ed-b856-e64270ba0734
+{n}Lady Konomi is engrossed in reading some kind of letter. Upon noticing you, she frowns nervously for a moment, but then greets you with a graceful bow.{/n} "Commander, how may I be of service to you?"
+
+c5427492-8ede-4e80-8bc7-1051ac59de6d
+{n}Lady Konomi almost begrudgingly looks away from her letter and gives you a polite nod.{/n} "Commander."
+
+8ccb19fb-0208-442c-86d8-4d5076364e40
+"And across all of {g|Avistan}Avistan{/g}. What can I say, I find it more interesting here than back home. Besides, I suspect these lands still have more kitsune diplomats than kitsune commanders." {n}Lady Konomi winks at you.{/n}
+
+d21d2901-e480-476d-aafa-ad1eb048c0d7
+{n}Lady Konomi shrugs.{/n} "I'm a child of a passionate and curious people. We live everywhere, you are just... not always aware of our existence."
+
+b5e5bec7-9d08-49fb-abcf-f451d583f29b
+"No. I put you in charge of the crusade and therefore I must trust you. If you want my advice, ask Lady Konomi. Her words are my own."
+
+f92f6f37-3c10-43fd-b7a6-4704b65eb797
+"My name is Gesmerha, I was the senior woodshaper in Wintersun. A woodcarver or sculptor, as you would call it. My level of skill is not bestowed on everyone — we woodshapers do not consider wood to be just a material; we do not 'make' something out of it, we give the wood a new birth, we reveal its beauty in a new form."
+
+c2603091-7bcb-440e-8fba-d7732bf45941
+"Marhevok flew into a rage when he saw my work," {n}Gesmerha says, her voice quieter now.{/n} "He personally cut out my eyes as punishment, and journeymen were given the task of finishing the statue. The clan did not turn its back on me, of course. The children of Wintersun do not drive out their own, even those who have transgressed before the entire community. They allow me to do simple carvings and to take care of the statues. That is how I have lived since that day."
+
+56aabe28-aff3-49c1-b529-729fe15e9189
+"Demons? Within these walls? That's not possible. The Lady of the Sun promised to protect us. Besides, the settlement has old rune stones that start to flicker when demons approach. Even if the monsters had tricked us somehow by disguising themselves, the stones would have warned us about the danger. And my people wouldn't be caught dead chatting to our sworn enemies!" {n}Gesmerha frowns as though puzzling something out.{/n}
+
+27dbea5d-2648-4b71-b22b-48e446fd87ac
+"What do you want with blind Gesmerha, stranger?"
+
+63f695b7-c79a-4a13-b259-0310d3941253
+{n}Gesmerha the carver is standing cowering against the wall.{/n} "She's... gone? I can feel it, I feel like something's changed! I will tell the people what you did for us, Commander."
+
+4728418f-033e-4b73-b72b-be6122f50b33
+"Hand me the axe." {n}Marhevok's voice is grim.{/n} "I have been very patient with you, Gesmerha. You dared to dishonor the Lady of the Sun, our happiness and protection. You didn't repent, you only nursed your malice in secret. I see now that taking your eyes was not enough. This time I will take your hands."
+
+573d4eea-3808-4ebc-a222-c8d6dc8bf901
+"Gesmerha is a lovely woman and very skilled, but what kind of a clan chief will she make? Soon we'll all be dab hands at carving and sewing, but we'll have forgotten how to fight!"
+
+eb0caee1-b712-4126-a9c0-be6f07085a66
+"Like a gravely ill patient that is just starting to turn the tide against the disease. It wasn't easy for us to accept the truth, and it was even harder to learn how to survive without the Lady of the Sun's protection. But the spirit of Sarkorian warriors is tougher than any hardship. We will get through it." {n}Gesmerha's voice sounds unusually firm.{/n}
+
+02d5ff12-b372-4572-aebd-cfed341ccaea
+{n}Lady Konomi lowers her head tactfully.{/n} "Well, they don't talk to you. But they do care about you and your actions. However, I won't waste any more of your time on trifles like politics, Commander."
+
+88acafbd-a170-47a0-a2b6-cb3ae268543d
+{n}Lady Konomi bows respectfully.{/n} "Working with reformers is always so perilous... and exciting!"
+
+4419aeec-4190-4471-9b79-df3fcf9856ca
+{n}After an elegant bow, Lady Konomi gives you a piercing, searching look.{/n} "Oh, yes."
+
+0529899b-87a1-40be-9455-61b6d0a078cc
+"All of Mendev speaks of only one thing — how the Commander returned from the Abyss at the head of a demon army and quickly recaptured Drezen. I applaud your efficiency, but... If I may ask, why couldn't you have found some other allies in the Abyss?" {n}Lady Konomi's voice is solemn, but a twinkle of amusement dances in her eyes.{/n}
+
+18403ac2-fff6-4d72-a6e4-e22b1eb71d33
+"Your methods of repelling the attacks on Drezen were effective, but in terms of your reputation, they were disastrous. Was there truly no other way to destroy the demon horde other than raising the dead en masse?" {n}Lady Konomi's voice is solemn, but a twinkle of amusement dances in her eyes.{/n}
+
+1a8a489f-83e5-4bd2-97ec-e6337ed0c337
+"Of course, they couldn't move the bodies of those poor people whose souls were stolen by that jeweler, Sunhammer or whatever his name is. They've been sheltered in the city. Arsinoe has been looking after 'em, and Seelah's pals from the Houndhearts have been guarding 'em all this time. The demons have attacked a few times and given the knights a thrashing, only Elan was left standing. But none of the victims came to any harm. By Desna, I hope their souls are found so all this won't have been for nothin'."
+
+ba026adc-b9f7-4a42-9b0c-5ef5bc56a346
+"Farewell, Gesmerha."
+
+d4ad23db-8394-4c38-ac57-c117d11b926e
+Devoured Gesmerha.
+
+daccc38e-451f-4df8-b6a2-03eb6f711453
+[Devour Gesmerha] "You're weak, but even this tiny scrap of power will strengthen the swarm."
+
+c6f576d0-652d-4b82-85e4-eaaf599ad9d2
+{n}Gesmerha looks the {d|c3 gesmerha chief}same{/d} as before, but far more weary.{/n} "So it is true — the Commander has returned from the dead. We've heard all manner of rumors, but we did not know what to believe. So I came here myself to be sure it's true and not yet another trick of the demons."
+
+7496baf6-11c6-4e73-aebc-fffc88ce1169
+"We will leave in search of a better life. The place we called home all these centuries no longer accepts us. There are too many ghosts here, too many memories." {n}Gesmerha sighs.{/n} "I do not know where we'll go, but I will pray to the spirits that the new place will accept us."
+
+9f128c81-fc42-4d4a-989c-1855cd709eb9
+{n}Arueshalae's dream is no longer empty: you arrive to discover an avalanche of voices, scents, and images. The smell of Anevia's fresh bread intertwines with the stench of the templars' fresh blood from her wife's dream. The bells and harp strings produce the sweet melodies the One-Eyed Devil wished for. The Storyteller's luxurious bed makes your eyelids heavy, and the trimmed lawn on which it stands would have filled Arsinoe's heart with utter joy.{/n}
+
+2ddbdc96-a441-48af-b3b5-8169da41c1af
+"Luckily, my beloved is now safely away from Kenabres. For half a year I've been getting up my courage to propose to her. I even ordered a ring from Darek Sunhammer, the best jeweler in {g|Mendev}Mendev{/g}. Independent knightly orders live mostly off donations, and I'm not what you would call rich, but I so want to make Kiana happy... Oh, it took me three months to find a jewel the same shade as her eyes! And twice that long to scrape together enough money. Master Darek's work was worth it... but I lost the ring during the demon attack, and I'll probably never find a worthy replacement."
+
+623741ac-1842-49a6-9d90-a06c9f4b7371
+"In any case, forgive me for wasting your time, and subjecting you to danger here. Now at least we know that Curl is a traitor, and Jannah is a coward ready to abandon her friends when the going gets rough. I hope we'll all learn a lesson from these mistakes. As for that blasted ring... to hell with it. Kiana won't love me solely for the gifts I bring her!" {n}Elan makes no attempt to conceal his disappointment. Nodding goodbye, he lowers his head and walks away.{/n}
+
+e4c0fc8b-6c2e-4261-aeb5-e2f58328707c
+{n}Arsinoe lowers her head graciously.{/n} "Knight Commander. How can I help?"
+
+fd93dbc5-182b-42a5-8ad3-601640848da3
+"Three cheers for Elan and Kiana!"
+
+ba70c2d5-558b-4893-9b8f-88bdd50b77e4
+"Kiana and Elan make such a beautiful couple!"
+
+28a21985-e143-4df6-ab44-8ef767e3ff6e
+The rings of the future husband and wife — the one brought by Kiana and the one given by Seelah to Elan.
+
+8211ae5e-24d9-4576-b4ca-3b14650612fe
+"Kiana? Kiana, my love, what's wrong?"
+
+57012455-0309-46a1-80f7-7dddb2af6386
+"Elan, Kiana, stop! It's dangerous!"
+
+f195546e-81d1-4485-b882-da9963174776
+"But you were the one to notice something odd was happening. And you saved Kiana."
+
+9afde22d-56e2-423b-8d2e-811bfd2f11e6
+"Commander, Seelah! Praise Abadar, you're alive!" {n}The usually dignified Arsinoe struggles to catch her breath after running, and she says, nervously clenching her hands,{/n} "I have received news from other temples of Abadar, most disturbing news! What we saw at Elan's and Kiana's wedding has been happening across Mendev. People who bought Darek Sunhammer's jewelry have been dropping to the ground, lifeless, with demons emerging from their bodies."
+
+a6333d6e-34e7-4344-a890-555b475464d1
+"Darek Sunhammer himself escaped too. The inquisition of the church of Iomedae is searching for him, but they have no leads as yet. The church of Abadar is doing whatever it can — we also suffered losses among both our congregation and our clergy." {n}Arsinoe shakes her head sadly.{/n} "Such a devious plot, and how skillfully it was executed!"
+
+a124f801-0020-42d1-8ed3-9df9ddb938ac
+"That is all I can tell you. I hope I've been helpful. If it's within your power, help track down Sunhammer and the stolen souls, Commander. This chaos must be stopped!" {n}Arsinoe bows to you and leaves.{/n}
+
+3b8c4b29-b952-44d8-934b-64b2d14edf60
+{n}As Arsinoe speaks, Seelah's face grows more and more grim, and her hands clench anxiously around her weapon.{/n} "I saw that scumbag right here, I even talked to him! I didn't suspect a thing... I often get a sickening feeling from traders — some of them are nasty pieces of work, the way they rip people off. I got that same feeling from him, but I didn't even think of looking closer..."
+
+e078f03c-5a67-4e87-9caf-482adf477dc5
+"And I'm the one who gave a demon-ridden ring as a wedding present! If it weren't for me, poor Kiana wouldn't have been left without a soul. Seelah, you are such an idiot..."
+
+5cc3e880-72e4-45d8-9f5f-994b87aeeda9
+"We chose a place that is still within range of the holy power of the Sword of Valor. My fellow Houndhearts will be there, and Kiana and her friends know how to handle themselves. Of course, the location is not entirely risk-free. Nowhere in the Worldwound is. But it's as protected as it can be. And the territory has been much calmer since your victory."
+
+d8e4e1a5-7f63-454a-8059-f43865b77834
+"It would be a tremendous honor if you would come to my wedding. We're going to hold it not far from the walls of Drezen, to the east, toward the river. Seelah's already been invited, now I'm asking you. You showed so much kindness to me when you helped me look for that ill-fated ring, I simply must repay you somehow. Besides, Kiana would simply love to meet you, and I can't deny her anything."
+
+17f5d880-294f-443b-9f59-4bb78a22c7bf
+"Elan, please, believe us, all is not lost! We will find the souls of Kiana and others and save them."
+
+10c9a930-29d5-4eaf-be1e-3e16735f8124
+"Arsinoe? What will you do?"
+
+292858fc-a571-4628-9baf-4692a5e4e252
+{n}Arsinoe leans over Curl's body, whispering the words of some prayer or spell. Then she looks up. Her eyes are full of terror.{/n} "Commander... I must inform you... We've fallen victim to a demonic plot. But I don't understand... How? Why?"
+
+a901f20c-109a-4463-af91-280dbe7466f6
+"This young boy's body is alive, but his soul is gone." {n}Arsinoe moves her hand from pointing at Curl to gesture to the other people lying motionless around her.{/n} "As are the souls of the other guests, even the poor dog's. Their bodies have been possessed by demons for some time already, and their souls have been transferred into the jewelry. The demon behind this plot stole the cup, taking all the souls with him. Until the jewelry is found and destroyed, we have no hope of saving these poor people!"
+
+8c7b1686-d354-479b-b241-8a626d5452d8
+{n}Elan and Kiana are clutching each other's hands. The young woman speaks first,{/n} "We can't leave it like this. Our friends need our help!"
+
+680b99d0-5adc-4b50-a483-3971f56ec4c3
+{n}The knight, who has been silent up to now, grows pale.{/n} "But it means that Kiana... she... my love!"
+
+b33b6003-0f40-4a47-9966-9826cfdce89e
+"Oh, be quiet, Seelah! You're always so sorry, aren't you? If only you had helped instead of just apologizing after the fact. Where is your gods-given power now, I ask you?" {n}Madness grows in the knight's eyes.{/n} "Kiana, my love... Why did I bring you here? Everything is lost, everything has perished, everything is pointless..."
+
+7db67d1c-feb8-4af6-9e1b-779a22edec38
+{n}For a moment Elan looks like he is about to destroy everything around him. Then his face freezes, he turns around, and silently kneels at Kiana's body.{/n}
+
+feff42da-736d-4522-9084-c1858ac79227
+"No, we'll stay here and make sure the bodies whose souls were stolen are returned safely to Drezen. We can't leave them unprotected. If we find the lost souls, we'll be able to bring all the demons' victims back to life." {n}He turns to Kiana.{/n} "This will be a strange and sorrowful start to our married life, but we must..."
+
+1a6da933-4cab-47b0-b266-138a1ff66bc6
+"Look, the first ring that bewitched Curl and the second ring that hurt Kiana — they were both made by Darek Sunhammer. And the same thing has probably happened to the other guests — they all had his jewelry! We need to get to Drezen and search his shop. We might find some clues there."
+
+46854585-f801-4b7e-9ea4-67cc52f9c90d
+"I'm begging you, no jokes about the horns, please. I don't want to be remembered as the cuckold bridegroom!" {n}Elan sighs, but then starts smiling again.{/n} "I don't know if you've ever fallen in love, Seelah, I don't remember you ever talking about it. But when it happens, you are no longer who you once were. I suppose I didn't expect this of myself either... but Kiana was so desperate to have an unusual wedding. I thought to myself, if 'unusual' is the goal, then I should do something I've never done before!"
+
+3cafc806-3d1e-41fa-b697-51c1d330892b
+{n}A slender young woman in a flowing dress walks toward you. The first thing you notice is her eyes — they are a striking blue-green.{/n} "Welcome, travelers, to the secret-steeped land of {g|Ustalav}Ustalav{/g}! You have come to the kingdom of grim mysteries and exquisite secrets. I, the vampire princess, am delighted to see you in my castle!" {n}After a pause, the girl smiles coyly,{/n} "I'm glad to finally meet you, Commander, Seelah. I am Kiana, soon to be the wife of that unfortunate knight who invited you here."
+
+3c6bcb87-76db-40ad-971e-ac60f560f0f8
+"It's lucky you are not a follower of Pharasma, valiant Seelah," {n}Arsinoe, the Drezen priestess of Abadar, is a short distance away from the happy bride.{/n} "Although, I'll admit, I'm not used to feasting with the undead either."
+
+7841b453-df78-4bec-9758-e8daf7622dc4
+"Oh, stop it! My friends and I are completely harmless 'vampires.' We won't bite!" {n}Kiana laughs musically.{/n} "Truth be told, we chose the theme of {g|Ustalav}Ustalav{/g} because it lets us wear beautiful dresses, light candles, and drink red wine all evening, pretending that it's blood. I personally can't think of a better way to celebrate my wedding!"
+
+d7ca9128-547b-47ec-a7ed-23f321bf6e46
+{n}Kiana smiles, with a hint of sadness.{/n} "The best way to stop being afraid of something is to laugh at it. None of us would really want to become a vampire and drink human blood. But we can pretend for fun, right?"
+
+8e86bea1-0191-49ef-968d-9e9e6da435c6
+{n}Kiana laughs.{/n} "What a bold idea, Knight Commander! Welcome, enjoy the festivities!"
+
+b61fe906-1fd5-4a72-a84e-1faf9aee4bc8
+{n}Kiana laughs.{/n} "Right, a real dhampir is exactly what we need here! I mean, what I was trying to say is welcome, child. I hope you enjoy my vampire reception!"
+
+93c22932-58b7-4e72-b72b-ba927a0a66da
+"Talk seriously about important matters. You are giving a speech to mark a new stage in Elan and Kiana's life."
+
+88507672-4c64-4006-a02e-00380f277129
+{n}Seelah clears her throat.{/n} "Elan and Kiana! This is a whole new chapter in your life! I congratulate you from the bottom of my heart, but I also want to say, it's good that you found each other, and that we've all gathered together here in such dark times. Sorry for raising a grim subject on this happy occasion, but the forces of the Abyss don't just want to kill and destroy. They want to wipe out all the joy in the world. But as long as we love one another, make friends, and have fun, they will not win!"
+
+047f8bd3-1f85-450a-9a1e-58d6b0eb83aa
+"Oh, you are right indeed, travelers! The love of two wonderful creatures, Elan and Kiana, made this place and brought all of us here today."
+
+3af3c097-c902-4456-8162-7c3d870c9336
+"Oh damn, why'd you have to say that? I, the beautiful fey gate-mistress, made a promise that my gift to Elan and Kiana would be whatever the first guest gave as the answer to my question!"
+
+e8c11806-5a06-4ea5-923f-ed4f0950dea6
+"Indeed! For it was the valor of my comrade Elan that won the heart of the beautiful Kiana!"
+
+dd5ef892-031e-4f36-87a2-51372ccab0ef
+"Oh, please, don't try to do that here. We've already had enough trouble — Kiana worships Desna, I — Iomedae, in the end we invited a priestess of Abadar to conduct the ceremony, so that no one would be offended."
+
+1547a08c-794e-4704-8c01-529e2c3ee5d8
+"Let me tell you everything! Before the official ceremony, all the guests are enjoying themselves at two venues. The one on the right has been organized by my Houndhearts, the one on the left — by Kiana's friends. Each venue has its own theme, but I won't tell you which is which, it will be more fun to see for yourselves! Both venues have food and drinks, and a little contest where you can win prizes. Kiana is greeting guests at her venue, and I'm leaving for mine now — I have a special role to play there!"
+
+8cd9df25-7b9f-44f1-a5cc-3fd68d0424b6
+Gifted an impressive amount of gold to Elan and Kiana.
+
+d4008217-0d49-49f2-b8a3-d208edec7840
+{n}Arsinoe casts a solemn look over the gathered crowd. Her eyes are glistening, either from emotions or the "vampire" wine.{/n} "Welcome, honored guests, to the wedding of Elan and Kiana! Today, I am delighted to play my part in the beginning of something so special — the beginning of a new happy family. When something as strong as your love for one another is born from the chaos of life, all the gods of order triumph."
+
+2f650e81-2c10-4ee9-9f6d-94aa78ff9dd9
+{n}The guests put their gifts into the cup one by one. A luxurious shimmering tiara, a flashy ring... Kiana's friend even takes the bejeweled collar from around her dog's neck and puts it into the cup.{/n}
+
+c281427a-5184-41ae-9859-d61e87737963
+{n}The keeper of the Macabre Menagerie smiles to Kiana, showing her fake fangs.{/n} "Don't even think about refusing. They come with the best of wishes..."
+
+b261aab4-14ff-41e7-bd72-21aeeab7df44
+{n}Elan and Kiana fall into each other's arms, heedless of everyone else around them.{/n}
+
+1aef0e95-dc1e-49fa-9852-3fba13bd5e20
+"Yes, it feels good to be married." {n}Kiana smiles.{/n} "Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade."
+
+0c8edca3-4bab-4535-a37b-ea3d3186213b
+"We're glad too," {n}Kiana replies.{/n} "But I'm very displeased with the way my wedding ended. We didn't even get to enjoy our wedding night together... and it was all because of those damned demons!"
+
+0568c8c8-7e85-4fc3-ba62-309d2bebee00
+"Kiana, my love!" {n}Elan blushes.{/n} "Let's discuss that later... We don't want to embarrass the Commander."
+
+b873d838-c522-4d2f-83e0-b017070b6102
+"Neither can I... See? That's why we make such a good couple. We have so much in common!" {n}Kiana laughs.{/n}
+
+ba2425dd-420f-4ff6-abaa-2b5f0ae95741
+"A trap... there are so many... traps here. I saw Sunhammer with the jewelry. He had the souls... I dashed after him, heedless of anything else. I didn't realize the door was trapped. I went to open it, and..." {n}Elan's body spasms, and he groans.{/n} "Seelah, please... don't make the same mistake I did. Save Kiana and the others! I know you can..." {n}His body spasms again, and he goes still.{/n}
+
+8fbff9f7-a739-4a19-b5cd-8102b2299891
+"Don't say that! It can be hard not to make stupid decisions when you're worried about someone you love. If Kiana's soul wasn't being held hostage by these scumbags, Elan would have never made a mistake like this..."
+
+a4e4b388-60b7-4030-9aaf-4f06f807f1e4
+{n}It takes {g|Jannah}Jannah{/g} a moment to catch her breath.{/n} "Thank goodness you're here! I followed your instructions. I met Elan here, and we were keeping watch, when... he saw that jeweler, Derek Sunhammer. He was carrying the stolen souls! Well, Elan went crazy. I tried to reason with him, I asked him to wait for you, but all he could think about was {d|Seelah Elan desperate}Kiana's soul{/d}. He rushed off on his own! He told me to stay here, and wait for your arrival. I've been so worried. He should never have gone in alone..."
+
+f4a647ab-651d-408e-9576-42b619b96210
+"I am so sorry, Kiana."
+
+1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c
+{n}Kiana appears to be in shock. Her hands are clasped to her chest, and there's a dazed look in her eyes.{/n} "I was a wife for less than a minute... and now I'm a widow."
+
+d4517ee5-10fb-44e7-9a34-0ab93f69a881
+{n}Arsinoe, who had been speaking to Kiana in a low, compassionate voice, turns her attention to you.{/n} "I told her about Elan."
+
+5f1c23ab-7368-4e61-8c46-9000dfa3aea6
+"Kiana, I know that words aren't much comfort in a time like this, but I just wanted to say... it's all right if you blame me for what happened. I understand. You can yell or scream at me, if that will make you feel better. Or if you just want to talk and cry, and get it all off your chest — I'm here for you. If there's anything I can do to help, anything at all — please, just say the word."
+
+cb16d5c5-6f75-4238-9d9d-957abc3aa5a8
+{n}Kiana smiles sadly.{/n} "I married a crusader. I knew the risks. I understood that this might happen someday... I just didn't expect it to be so soon."
+
+294b87a2-1402-4041-9138-8c5875757c57
+"Elan, you need to pull yourself together. We've had this discussion before — we spoke together after the tragedy happened. If you want to help Kiana, you can't let your emotions get the best of you."
+
+5d8e7c45-94d1-4c1a-9b5c-7987b289d282
+{n}A shadow falls across Elan's face.{/n} "Kiana's lifeless body is there now... with the bodies of all the other victims. I've barely left her side since it happened. This is the longest I've been away... I know it's just her body... a shell, and that her soul is somewhere else, but..."
+
+60a2a08c-7b89-429f-8956-30184ad2712e
+"I'll leave at once. I'll keep watch on the cave and its surroundings. We can meet up there." {n}Elan sighs in frustration.{/n} "I can't bear to wait any longer. I can't leave Kiana's soul in the clutches of those monsters!"
+
+87e38061-27ad-44e8-ad6b-2f52b7429fc6
+"What if something has happened to Kiana's soul? Who knows what that monster's done to her! It makes me sick just thinking about it!" {n}Elan takes a deep breath, and tries to regain his composure.{/n} "I... apologize for my sudden outburst. I'm just... tired."
+
+a03f71db-e5e0-4f72-b29a-9834b4a48165
+{n}There's an insane light in Elan's eyes.{/n} "However, a soldier will fight better if they have a purpose... a reason to go into battle. They will do anything, go anywhere, if they truly believe in their cause. And I will stop at nothing to save Kiana."
+
+43e11168-7f70-4aa8-b527-b657268d390f
+{n}Seelah sits quietly with her hands clasped together. She sighs softly, and there's a faraway look in her eyes. You can see from her troubled expression that something is bothering her.{/n} "There you are, {name}! I'm just here, you know... waiting. Arsinoe is going to unite the souls and the bodies. Just a little longer, and we can put all of this behind us..." {n}She falls silent, and looks down at her hands despondently.{/n}
+
+cd9de62b-2a56-4220-b057-6c1a3ea86b25
+"Not long. Arsinoe is just taking a few precautions. She wants to make sure everything goes smoothly when the souls return to their bodies. She'll call us when everything is ready."
+
+da121788-2d61-433b-8bd8-395cc628ac48
+"I am responsible for Elan's death... I didn't uncover the demons' plan at the wedding, I didn't protect Kiana, and I didn't notice how desperate Elan was... I wasn't there for him in his darkest moments."
+
+e69dcff5-2da7-4dab-9e18-3bdbe29d86ad
+"I'm just glad I managed to remain friends with Elan. We were able to help him and Kiana, even though they were tangled up in the schemes of those demon-worshiping cultists."
+
+79f8f4bc-c2db-45f0-b8b7-3d4ffec19a42
+{n}Arsinoe smiles at you both, the picture of solemnity, and yet there is a hint of excitement in her eyes.{/n} "{name}, Lann. There are no guests here today, no feast, no generous gifts. Just two people in love, the gods watching over them, and a priestess that will seal this union in the presence of the gods. Before you say your vows, let us offer a short prayer in silence, so that the gods may grant you clarity and guide your heart."
+
+ac7c4d94-d985-479a-9643-4dbc3709f31e
+{n}Arsinoe holds out her hands over you.{/n} "May Abadar and all other righteous gods watch over your union. May they grant you paths honest and true, may your home be blessed with plenty, may your union be one of love and peace, for the treasures of this world have no worth if not held by hands that know of wisdom and love. Exchange the rings that will be the beginning of your shared wealth."
+
+6fb1dc5d-2f57-410f-bfd6-5b5a10d921cb
+"And you know what else? I also have, um, a surprise. I made arrangements with Arsinoe just in case — she agreed to marry us whenever we want. So why not now? I'm ready for anything right now, and I don't want to waste a single second! Come on, {name}! You're the most beautiful woman in the world, and I love you. And I want to declare it before the gods!"
+
+9c3f40c1-c4fd-4bef-8069-f5106aee9034
+"Gesmerha? You're supposed to be dead."
+
+0330db8a-025d-4919-8485-b505ac9712b0
+Attacked Gesmerha.
+
+a430501f-a411-4dcb-bd6b-7a1eb088c761
+Tried to devour Gesmerha.
+
+cb61ba14-8482-4e15-bce6-4f551d7a4da0
+[Devour Gesmerha] "My swarm hungers."
+
+f6e48235-e9a1-4a30-b4b1-4bbad0c5c2da
+"You are the Commander of the crusaders, the one who helped us break free of the demons' yoke. I am Gesmerha, the woodshaper. Do you remember me?"
+
+cf25152a-ed9d-4055-95d0-de4e7ded3284
+"I am Gesmerha, a woodshaper. A woodcarver or sculptor, as you would call it. My level of skill is not bestowed on everyone — we woodshapers do not consider wood to be just a material; we do not 'make' something out of it, we give the wood a new birth, we reveal its beauty in a new form."
+
+e31b2b71-220a-436a-8135-2c703c4b65f6
+{n}You have already talked about this with Gesmerha, and it seems that her words were at odds with those of Marhevok. It might be worth speaking to her again.{/n}
+
+93d97a2f-a800-43b4-837b-8cccd1a0a49e
+"Commander? When did you return?" {n}Arsinoe is looking at you with concern.{/n} "Did something happen inside Threshold? Were you forced to retreat?"
+
+9899fc0a-097a-4e53-9bb6-a066ecdb28cb
+"An anomaly? What are you talking about?" {n}The furrows on Arsinoe's forehead deepen.{/n} "Are you all right? Is there anything I can do?"
+
+0f269ca5-737a-4a4c-b65d-aa194c2f608d
+{n}Arsinoe takes a step back.{/n} "Commander, you are scaring me."
+
+324bbf47-bb5c-410a-b167-db370eeff31e
+"Could you repeat that? I didn't quite hear you." {n}Arsinoe's visage ripples and begins to fade.{/n} "Commander, you seem to be fading. What is hap—"
+
+2aebf857-c684-4b0c-a297-d66a3a06a1f3
+"Your report should suffice, Arsinoe. I will study it and make a decision."
+
+3439a8ce-c188-4145-b4fc-e2800d93a029
+{n}Arsinoe looks at you with a mixture of concern and determination.{/n} "Commander, I've received troubling news from some of my fellow Abadar-worshipers. It seems that a {d|DLC5_AllDead}new portal{/d} to the Abyss has opened in the Worldwound. I dread to think what could happen if this breach remains open any longer."
+
+eeec16c0-ad4c-463e-82cd-82e393a6d339
+{n}From behind Arsinoe's back, a surly tiefling with thick stubble gives you a sullen look. His lips are pressed into a thin line, and his weary gaze combines bitterness and barely concealed impatience.{/n}
+
+9d78db6e-9a4b-432e-83dd-17d481425d67
+"I will compile a detailed report on this visit and mark the location of the portal on your map, Commander." {n}Arsinoe gives you a short bow.{/n}
+
+c4c1f662-585a-4986-8758-5009575d3e7e
+{n}The guest behind Arsinoe gives you a humble bow.{/n} "Commander, it seems that a new portal to the Abyss has recently opened in the Worldwound — and yet another demon lord is about to invade Golarion. Having seen it with their own eyes, our guest is reluctant to relive the painful {d|DLC5_AllDeadPCAlive}memories{/d} once again, but I've prepared a detailed report on their case for you."
+
+3095cf79-ef4a-4531-8fcb-3b7394d06f9b
+"I will mark the location of the portal on your map, Commander." {n}Arsinoe gives you a short bow.{/n}
+
+26a76a87-1850-445c-9909-e8a5b203535e
+Arsinoe has an urgent report for you.
+
+7340bc29-bc80-4e9b-b91c-04cd84b171e1
+{n}Arsinoe raises an eyebrow and seems to want to say something, before shrugging her shoulders indifferently.{/n}
+
+7d6813a1-4866-4872-ae84-b39004e1b719
+"Glad to be of service... Oh, and one more thing. This came with the invitation." {n}Arsinoe hands you half a copper coin.{/n} "I'm not sure what it means, but it looks like some sort of sign. I assume the other half is in the possession of someone who will be waiting for you in Kenabres."
+
+c8e5c108-2774-457f-83ce-09446afe80c3
+"Commander." {n}Arsinoe greets you with a reserved nod.{/n} "I have reports of a goblin tribe south of Drezen. It's rumors mostly, but sightings seem to be becoming more frequent. Goblins are a rare sight in the north of Avistan, so their presence so close to the Worldwound is worrying. You might want to look into this personally."
+
+64aa657d-d9dc-4d83-bd7f-fecb01ee7774
+Gesmerha was true to her word. The Wintersun clan left the land of their ancestors. Once they had left the borders of the former Sarkoris, the clan split into several branches. One went to the wildlands of Numeria, others set off for free Varisia. A small group led by Gesmerha chose to travel to Andoran, where they were lost among the many refugees fleeing other lands and other wars. The Wintersun clan ceased to be.
+
+b2614d1e-4e7d-416a-8a90-0d79442b82a1
+Gesmerha was true to her word. The Wintersun clan remained in the land of their ancestors. Their scarred spirits and wounded bodies weighed heavily upon them. Not a night passed without someone waking up with a scream on their lips. And yet, under their chieftain's guidance, the people endured. Soon, the skies over Wintersun were pierced by the long-awaited cry of the first child born in the new Sarkoris.
+
+9fa4d273-f657-4222-b412-f70a3cc8add3
+Devoured Arsinoe.
+
+ec021fc9-a989-4527-b9ca-fdc788e51947
+[Devour Arsinoe] "You won't leave Drezen. No one will leave here alive."
+
+14b48dd9-823b-4c15-b8a7-91d1dda9cbee
+{n}A woman in gold-embroidered cleric's robes greets you with a polite bow. Her eyes, the color of molten gold, gleam brightly in her dusky face.{/n} "Greetings, Commander! My name is Arsinoe. I am a messenger from the temple of {g|Abadar}Abadar{/g} in {g|Absalom}Absalom{/g}, and I came here assuming the defenders of the fortress could use the services of a cleric."
+
+36041381-238a-4ca4-b36b-ca1dae028889
+{n}Arsinoe lowers her head respectfully.{/n} "With pleasure. I have not seen a place calmer or better organized than Drezen for some time. The Wound, evil, and chaos are outside its walls, but there is peace and order within the fortress. Everyone carries out their duties, no one is idle or lazy, and our warriors are doing their utmost to expedite our victory. I am happy to be here. To say the least."
+
+33e5f08a-c8b9-458b-99b8-da38aeed7d64
+{n}Arsinoe quickly probes you with the skill of an experienced healer.{/n} "So the wound was right here? And then it disappeared... and reappeared... Amazing! No, this is the first time I've ever heard of such magic."
+
+e28c992a-626a-4372-ab04-5bef65bcad58
+{n}Arsinoe casts a disapproving glance at the fortress.{/n} "The demons have completely neglected the fortifications here. They are in complete disarray. However, this plays right into our hands."
+
+a5660740-177e-4cb7-9715-8b4dc84e555b
+Discuss the discoveries with Gesmerha
+
+c79b73f0-33fc-4383-9af6-8b0380260c50
+Gesmerha the woodshaper told the Commander that the settlement of Wintersun is protected by three rune stones, which emit a warning light when demons are near. Why do the villagers not know that demons walk among them? This unexpected blindness is far beyond the natural human reluctance to face one's personal demons, so to speak. There is a secret here that must be uncovered.
+
+0801695d-d651-45b1-8077-c2e73a631bdf
+Gesmerha, a blind woodcarver, told the Commander about the strange visitors that often come to Wintersun, and she advised the Commander to seek answers from the chief, Marhevok
+
+57e47c09-bf75-4013-8089-d3b1f5b87157
+Prepare for the attack, then report to Arsinoe
+
+e57caad8-ef01-470f-b115-7209d31aad95
+Ask Arsinoe
+
+5271d922-8e90-4856-ae50-4ae70280ac31
+The Commander was invited to Elan and Kiana's wedding. It will be held to the east of Drezen, on the bank of the river. It seems that a happy ending for all is on the horizon, doesn't it?
+
+edc70de1-d4bd-449a-be66-1ad183727468
+Soon Elan and Kiana will join their fates. Priestess Arsinoe will conduct the ceremony. The Commander should talk to her when {mf|he|she} gets bored of the wedding entertainments.
+
+a2109ae2-c2fa-48d5-a042-8a9dedef8f13
+Have fun and then talk to Arsinoe to begin the ceremony
+
+38eebf09-c2c2-4b1e-84ca-9d47b7489dd9
+However ephemeral love and affection might be, they remain the base of the mortal society. The knight Elan has decided to tie the knot with his beloved, Kiana. Seelah's first attempt to ensure her friend's happiness wasn't a success. The ex-thief Curl stole the ring meant to be a present for the bride and set the demons he summoned on the Commander, Elan, and Seelah. Now Seelah wants to make things right and asks for Commander's help.
+
+ef5f2b7e-8e8c-4338-a8c1-acce1e65618f
+The priestess Arsinoe has found where the souls are being kept. It is a cave under a cliff in the southern Worldwound, on the edge of the Winged Wood. But even the faithful servant of Abadar could glean no details about the location from her vision. The knight Elan has gone on ahead to do reconnaissance, and the Commander and Seelah must join him at their destination.

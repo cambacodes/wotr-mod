@@ -1,0 +1,132 @@
+{
+  "World/Dialogs/Epilogues/BookPage_2_EE_CamelliaAeon.jbp": {
+    "AssetId": "e4e11b24b3d04e8e9de928042f7cf4f6",
+    "Data": {
+      "$type": "b6d078a4ae218fe4a82f3fb5707b7e1f, BlueprintBookPage",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u041a\u0430\u043c\u0435\u043b\u0438\u044f \u043b\u0438\u0432\u043d\u0443\u043b\u0430 \u042d\u043e\u043d\u0430 \u043d\u0430 \u0441\u0430\u043c\u043c\u0438\u0442\u0435",
+      "ParentAsset": "80df3c099d3eaac48b7d21f20ba2b255",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$7e232b14-e44d-4120-b804-2f198fc61145",
+            "Not": false,
+            "m_Etude": "!bp_d66a6b25dbe1497da7389459f8aef558",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "Cues": [
+        "!bp_a80b582fbff24a53a6d45b7e09c2fc01"
+      ],
+      "Answers": [
+        "!bp_9f3867cc98564c22aabc96b4bfab3127"
+      ],
+      "OnShow": {
+        "Actions": []
+      },
+      "ImageLink": {
+        "AssetId": "52163ec59b7bf62408b1b24137843bba"
+      },
+      "ForeImageLink": {
+        "AssetId": "388a23b9f15038147ac85f1ea41a3898"
+      },
+      "Title": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": null
+      }
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Dialogs/Epilogues/CueSequence_AeonCompanions.jbp": {
+    "AssetId": "80df3c099d3eaac48b7d21f20ba2b255",
+    "Data": {
+      "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0435\u0441\u043b\u0438 \u0435\u0441\u0442\u044c \u0445\u043e\u0442\u044c \u043e\u0434\u0438\u043d \u043a\u043e\u043c\u043f\u0430\u043d\u044c\u043e\u043d \u0432 \u0440\u043e\u0441\u0442\u0435\u0440\u0435 \u043a\u0440\u043e\u043c\u0435 \u043d\u0430\u0435\u043c\u043d\u0438\u043a\u043e\u0432 \u0438 \u0433\u043e\u043b\u0444\u0440\u0438",
+      "ParentAsset": "1a55629b13dd0264e9799988422c4d4e",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Cues": [
+        "!bp_c92181788063b2e4d8d5fb0b589c51c7",
+        "!bp_e4e11b24b3d04e8e9de928042f7cf4f6",
+        "!bp_d0290eb07bf19494b86d4fd387d480f4",
+        "!bp_ecd67a01e3a536346b3080c1dab21af8",
+        "!bp_c127a8926cdcd4841bd0c15ef2f0b148",
+        "!bp_a1290bf41bf03a844889cd1e39880dc8",
+        "!bp_cda21cdd5138489e819bde7bffd8bdb4",
+        "!bp_943bab0531d8bdf4c8484b36eb75df81",
+        "!bp_6658be827e30b1f4da1c3024afed7800",
+        "!bp_d09c48a643b545b44b079ade81eae709",
+        "!bp_f5f5c76d7158d7643a4c3f33be7ea59b",
+        "!bp_239504cf281e7924a9960f3b541c439c",
+        "!bp_0baf5d3937fee534ab4334aad0be007c"
+      ],
+      "m_Exit": "!bp_c9b8c70c98deb774681b4f8750524d22"
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  "World/Dialogs/Epilogues/CueSequence_AeonFinalWorld.jbp": {
+    "AssetId": "ced82f299d246f448b48afa0b630dd70",
+    "Data": {
+      "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0438\u0433\u0440\u043e\u043a \u043f\u0440\u043e\u0448\u0435\u043b \u0444\u0438\u043d\u0430\u043b \u0430\u0435\u043e\u043d\u0430",
+      "ParentAsset": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$a384122c-4a51-4a7b-b286-d5da267787bc",
+            "Not": false,
+            "m_Etude": "!bp_567084628fd54cac9308c641aa1e1f94",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "Cues": [
+        "!bp_d04c50a49419a5a4bac6e0fdc7f94dda",
+        "!bp_8eeb73370c8d0d942b357d76b1a6a322",
+        "!bp_8f5dbea30be280a4f8a5c30a96e0ddd6",
+        "!bp_7d097a2ff4444094a9a8fde70eb60efe",
+        "!bp_4f285b619c46c0d48b72105ba69ea2b2",
+        "!bp_df27ffc508ad36346b9394fa7ac580c1",
+        "!bp_60568bee3961036439e74861663343cb",
+        "!bp_d9d0ea98139940c4984b0f4c967a8b30"
+      ],
+      "m_Exit": "!bp_1a55629b13dd0264e9799988422c4d4e"
+    }
+  }
+}

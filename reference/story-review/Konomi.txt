@@ -1,0 +1,215 @@
+a2c32cde-bf45-4648-9d85-eb465bfc1033
+Lady Konomi
+
+36e9ada1-3dab-4269-a91e-1dfd3f500522
+Lady Konomi, the Commander's diplomacy advisor, has received fresh news from Nerosyan and asks the Commander for an audience.
+
+a8346ef3-2436-4db0-ad12-4d87338b3577
+Lady Konomi Wants to Talk
+
+4c3f52a0-b9fd-4d85-9361-7a6038d4d0ae
+"Tell me about yourself, Lady Konomi. Who are you?"
+
+724c4696-1b09-4c9a-9bcb-b4d8b795bf88
+"Lady Konomi, what good will a parade in Her Majesty's honor do?"
+
+632d08ce-1c4f-4eb0-a056-ea4599f49ecd
+{n}A sharp-looking kitsune gives you a quick, businesslike bow.{/n} "Commander, the matters before us are urgent, so let's not stand on ceremony. I am Lady Konomi, the official attaché of {g|Nerosyan}Nerosyan{/g}. Here are my credentials." {n}She presents a scroll adorned with Galfrey's seal.{/n} "Her Majesty has instructed me to lead your headquarters' Diplomatic Council."
+
+a7c66558-426b-4217-a85d-98c9086bc015
+"Honestly, I was surprised when Lady Konomi asked me to join this council. But I will do my best to fill the shoes of a trained diplomat."
+
+fc3daf57-e7b8-47cf-8040-fddd493f5d77
+"Um... Yeah, strange, I got invited to the council too. I'm sure foreign ambassadors will be thrilled to see my face and my manners. Lady Konomi, you haven't mistaken me for some other crusader Lann, have you?"
+
+bf200499-9069-4f6e-93f8-9e6d6986f0c1
+"I'm flattered by the respect that the worshipers of my goddess receive in Lady Konomi's homeland." {n}Sosiel bows his head courteously.{/n} "I won't let you down, {name}, and I'll make every effort to prevent our friends from becoming our enemies."
+
+8e3ad8e9-9509-4615-8cea-e4a6735fc9ea
+{n}Daeran sneers back at her.{/n} "Oh, believe me, Lady Konomi, I will exert all my effort and influence to make this council's job... exciting."
+
+05b271ab-c504-4572-baf1-8a06a120eb07
+{n}Lann scoffs and glowers at Lady Konomi.{/n} "I suspected that the word 'diplomat' was synonymous with 'fraud,' but I thought you would be deceiving me, not deceiving others with my help. No, that's not an option. I can represent the mongrels in negotiations, but I'm not going to lie through my teeth."
+
+1a73c1df-3705-4e90-b3ae-3598893921bc
+{n}Lady Konomi lowers her eyes in a show of modesty.{/n} "It's unbecoming of a diplomat to talk about themselves at length, but how am I to refuse you? I come from Tian Xia, from the noble kitsune."
+
+fb59c4e3-6a9d-444f-8899-3d0c5cb72e4f
+{n}Lady Konomi gives you a look of surprise.{/n} "Whatever for? Aren't the wishes of the capital obvious enough? Although, very well, let us hear their counsel."
+
+528b1dcc-35d7-404e-8c96-095c0fa93521
+"So Mr. Lann will be our 'mongrel prince.' If we're negotiating with foreign ambassadors and I make this sign..." {n}Lady Konomi crosses her fingers in an intricate gesture.{/n} "...you immediately start talking about how offensive their proposition is to the mongrel people. Do we have a deal, Mr. Lann?"
+
+326f0657-fe99-4873-b9a9-c8a034b652c9
+{n}Lady Konomi's voice hardens.{/n} "I cannot challenge your decision. However, I have no choice but to inform the capital that you have disregarded my recommendations. Actions like these are precisely what gave Nerosyan cause for concern, Commander. I hope you will revise this defiant stance in future."
+
+87dad7b5-3fee-43db-9ea9-0749bd2fe916
+"Ah, now I understand the role that I've been given, Lady Konomi. I'm supposed to stand in a pretty doublet and keep my mouth shut. I can promise you the former, but not the latter."
+
+32ff43a7-07ad-4691-860b-dd4d86e6c565
+{g|Diplomacy3_5}[Choice effects]{/g} "Lady Konomi, I'm willing to accept Isger's aid."
+
+71000a12-7eeb-4be0-8fc2-2021da6a5d1f
+"Lady Konomi, what sort of help can we expect from Isger?"
+
+2970f168-ac11-48f8-ba99-0ec4d8da1581
+"Lady Konomi, I do not doubt that only your innate modesty forbids you from mentioning the innumerable bribes received by Nerosyan diplomats for facilitating this alliance. I imagine {g|Cheliax}Cheliax{/g} was most generous. However, among the funds that make their way into our army's coffers, I could not spot a single coin of Chelaxian mintage, so... why should we help you?"
+
+d7e6288e-314b-4416-93ae-ec18409bdc72
+"Because you are, with all due respect, one of Her Majesty's subjects." {n}Lady Konomi's voice grows sterner, but after a moment, subsides into a more confiding tone.{/n} "And because it took great effort for Mendev's diplomatic corps to win Isger over and ensure you would receive their help. Are you confident that the 'allies' you choose yourself will be as reliable?"
+
+5f4d30ef-4332-4c5d-ab63-3df3061a8bf8
+{n}Lady Konomi's voice turns silken and somewhat condescending.{/n} "Commander, we both realize that Mendev's political interests lie beyond the competence of this council. The decision has already been made — in the capital. Nerosyan has shown courtesy and concern for your authority by allowing you to implement the decision yourself."
+
+80040e72-3fcb-44d3-8722-85d7a11ca303
+{n}Lady Konomi looks at you fearlessly.{/n} "And you are dangerously close to ruining the carefully arranged political scheme that will allow Mendev to strengthen its relationship with one of the most influential states in {g|Avistan}Avistan{/g}. I believe your tactics are far riskier than mine."
+
+3efeda6d-ce1c-4b45-9cf5-10022ad1d8ac
+{g|Diplomacy4_5}[Choice effects]{/g} "Lady Konomi, we will support the Royal Council."
+
+4629c1ea-d76a-4de2-9e98-9fd302864cc4
+"Lady Konomi, how will the Royal Council repay us for our support?"
+
+72094ade-5fb1-4ef2-99b4-b6c70338b5cc
+"Spoken like a true politician, Commander. Very well, let us talk price." {n}Lady Konomi looks at you with a smug, somewhat predatory smile.{/n} "I can guarantee you that, in return for your loyalty, the Royal Council will ensure the stability of equipment deliveries in the future. Quite convenient, don't you think — having no one twisting your arm with threats of supply shortages?" {n}She glances at you with an obvious hint.{/n}
+
+ed6aa3b6-a589-4778-9c19-611d77b7447e
+{n}Lady Konomi studies your face for a while, then says calmly,{/n} "What a shame. Opportunity comes knocking, and you throw it in the garbage."
+
+3885afd6-077c-4ac6-8825-adf3d25f7bad
+{g|Diplomacy5_5}[Choice effects]{/g} "Lady Konomi, I will act according to the will of Nerosyan."
+
+2b12738c-5591-4285-8feb-21dc28e518c7
+"Lady Konomi, why would I refuse Andoran's help?"
+
+e9de279e-b404-430c-b1d1-782627536663
+{n}Daeran regards Lady Konomi with feigned disapproval.{/n} "Come now, Lady Konomi, all this suspicion! I am sure that the Andorens are driven by nothing more than benevolence and concern for our collective future. We simply must accept them like dear friends."
+
+b5588f0c-21f1-4a99-a73b-fa2c093a5b91
+"Firstly, because it is the wish of the capital." {n}Lady Konomi falls silent for a few moments, letting the weight of her argument sink in.{/n} "And secondly — you do understand that this situation is larger and more complex than what you can see from Drezen? It would be inconvenient for us to quarrel with {g|Cheliax}Cheliax{/g} at the moment, and {g|Andoran}Andoran{/g} is pushing us to do exactly that."
+
+683aa68e-2319-4457-acff-d48d39856ebd
+{n}Lady Konomi shudders pointedly.{/n} "Don't forget about the sin of slander, Count. Enough tomfoolery. Your jests will lead to diplomatic disaster."
+
+b9b6e985-7d54-46a9-8ac5-0d4178863ff6
+{n}Lady Konomi's hand twitches in frustration.{/n} "There will be consequences! Severe and unpleasant consequences!"
+
+dcc845f3-ad0b-4e55-af77-204506cc11b6
+{g|Diplomacy6_5}[Choice effects]{/g} "Lady Konomi, I will support the Royal Council."
+
+50dbd7c4-b2b1-4d45-b85a-e20397abb94a
+"Lady Konomi, do you really expect me to support the Royal Council?"
+
+9e53556d-9ec1-45e3-a8a4-2b219ea0af9d
+{g|Diplomacy6_6}[Choice effects]{/g} "Nerosyan's concerns are no longer mine. Get out of my fortress, Lady Konomi."
+
+05aec835-7770-48e7-83bc-cf3cbfc4a9d6
+"As I said: you can go to the demons, Lady Konomi. Along with the entire Royal Council."
+
+999e4217-f1ec-4c43-b103-da5402a7f60f
+{n}Lady Konomi doesn't look nearly as confident or bold as before.{/n} "Commander, what a blessing it is to have you back! Mendev is in need of your help! There's been a revolt in Nerosyan — the disgruntled nobles are completely out of control. They proclaimed the Royal Council dissolved and arrested several of its members. Many politicians were accused of collaborating with the demons! Some were executed, others were torn apart by the crowd."
+
+74019a26-03e1-490e-8350-7eb2ce7653a4
+"Absolutely." {n}Daeran turns to Lady Konomi and says with a faint smile,{/n} "Please, make sure to tell the Royal Council that it's not them, it's us. Our relationship has run its course, and we're leaving them for another exalted assembly that will likewise be blessing us with invaluable advice while enjoying the safety of the capital."
+
+9bfbeb70-8248-4e03-9449-d43917f2f5c0
+"I pray to Iomedae that your decision is the correct one. Otherwise I will have to answer to Pharasma for all the bloodshed caused by my negligence." {n}She glances at Lady Konomi.{/n} "As for you — if you would be so kind as to tell the Royal Council that when next we meet, they will need to sound very convincing if they hope to plead for leniency."
+
+430fe100-0cf5-4192-a13a-c3982c730e9f
+"You are absolutely right, Commander! I admit, the Royal Council hasn't shown you the proper respect and amicability. I myself brought this to their attention on numerous occasions." {n}Lady Konomi's posture is full of repentance.{/n} "But trust me when I say that none of them wished you ill, and they all shared the unshakable belief that you were the savior of our nation."
+
+30af0fbf-2ae2-491b-b9fc-1422ff6d0c35
+"Without Her Majesty's steady hand, the capital has fallen into decay. Some are settling old scores, others have discovered new opportunities. Mendev is accustomed to following a highly respected leader. The only one who can protect the throne from greedy hands is you, Commander." {n}Lady Konomi gives you a deep bow, exuding remorse and obedience.{/n}
+
+e6447e72-e337-41a1-9968-932310585d40
+{n}With a frown, Galfrey gives Lady Konomi a searching look.{/n} "It appears that the Royal Council has been negligent in their duties if their misfortunes evoke no sympathy from the Commander. Once the war is over, I will be sure to find those who disobeyed my order not to pressure the Commander."
+
+f60feb47-e7a9-425b-a639-047123695c6f
+{n}Lady Konomi's tone becomes obsequious.{/n} "But, Commander! Without your aid, Mendev will be consumed by uprisings. Much blood will be spilled. Furthermore, you will be cut off from any support from the capital — in the midst of an insurgency, organized deliveries will become impossible. All you can hope to receive in such circumstances is the help of servants of the crown who are sympathetic to your cause. And their numbers grow smaller by the day."
+
+2cd868d1-89bf-49db-aa14-c7cf5aca1599
+{n}Lady Konomi responds with a deep bow.{/n} "Your benevolence knows no bounds, Commander."
+
+73f3ed79-f08c-477b-901f-6e76e9faf139
+{n}Lady Konomi nods ruefully.{/n} "So be it. Farewell, Commander. Despite your decision, I wish you good luck and hope that foreign powers will be able to supply you with troops and resources. I will make haste for Nerosyan. Right now in the capital, every experienced negotiator is worth their weight in gold."
+
+6118aabd-6c61-471e-9817-abe38d7b3458
+{n}Lady Konomi snarls with discontent.{/n} "Give power to the belligerents? They'll order the nation around like a company of recruits on the parade deck. Years of careful diplomatic work will go to waste. No, soldiers are inflexible, they cannot handle such delicate matters."
+
+af172c33-891b-42ba-975d-3ae823e54be6
+"The First Treasurer has fled, there's fighting in the streets between mercenaries hired by the aristocrats and the guard, who is loyal to the Royal Council. Drezen has received letters from the insurgents, as well as from the loyal servants of the crown, requesting your support. But both the Royal Council and I have faith that you will elect to defend the legitimate authority. This faith is not misplaced, is it?" {n}Lady Konomi regards you with a devotion you've never seen in her before.{/n}
+
+26711ae7-5701-460e-aa88-70cd74517eff
+{n}Galfrey, who has been staring daggers at Lady Konomi, raises her eyebrows and looks at Daeran indignantly, but forces herself to remain silent.{/n}
+
+1a70938a-a473-4a2f-ab5b-b4747be79eaa
+{n}She looks at Lady Konomi grimly.{/n} "And yet, there is something I would like to say. The Royal Council and its messenger has hidden behind my name long enough. They could not handle their responsibilities: they have failed me, and they have failed Mendev. Thus, should the Commander decline to support them, it will be my great pleasure to give them a fair trial upon my return to the capital."
+
+53c9eebb-d8db-44c6-b699-933cfd50c234
+{n}Galfrey bows her head politely.{/n} "The work of this council is not only about the Crusade, but also about Mendevian politics. Thus, it seemed appropriate that I attend. I have already warned Lady Konomi, however, that the final word in the decisions of this council is yours."
+
+7279d094-1b45-4bf5-8c39-c186ba40201a
+"I hope your decision will end the turmoil in my lands." {n}The Queen glances at Lady Konomi.{/n} "As for you, please be so kind as to inform the Royal Council that they shall have to be very convincing indeed if they hope to plead for leniency the next time we meet."
+
+a763ca16-63d0-4dd2-ba48-42052da7ce1c
+{g|Diplomacy7_5}[Choice effects]{/g} "Lady Konomi, I'll send the reinforcements to Mendevian cities to restore order."
+
+d9e00dfd-ecdc-496b-a365-8d8d9d524581
+"Lady Konomi, what are you expecting from me?"
+
+f1f06225-fa47-484e-9641-7ca121d067b2
+{n}Lady Konomi makes a concerned sound.{/n} "I hope you understand that all these courteous speeches are just a velvet glove wrapped around an iron fist."
+
+651cac19-0644-4971-a49f-0bf227f51d52
+{n}Lady Konomi bows her head and says quietly,{/n} "We will know soon whether or not this decision was prudent. Will Mendev survive this crisis or is it doomed to fall — once the outcome becomes apparent, I will report to you immediately."
+
+7641ba06-b8ab-4e35-9cc1-06973f801200
+{n}Lady Konomi cuts off the ambassador.{/n} "Mendev is quite capable of dealing with its issues without external help. Commander, I must ask you to send your own forces to the capital. Don't put the nation into the hands of foreigners."
+
+a651ed32-69e3-4f01-9806-5ec299c066f6
+{g|Diplomacy8_5}[Choice effects]{/g} "Lady Konomi, send word to the capital that military mobilization has been ordered."
+
+0a59bb75-66ff-43cd-9732-fc88dea6e737
+"Lady Konomi, is there anyone left in Mendev who could be mobilized?"
+
+015085cb-8b1d-4051-a3eb-2ab803d9b030
+{n}Lady Konomi's voice is brimming with satisfaction.{/n} "Commander, I bring wonderful news. We are getting reports from all regions of Mendev that the nationwide political crisis has been resolved."
+
+33e47e84-7eaf-4d2c-8d0f-92343862b149
+{n}Lady Konomi bows respectfully.{/n} "When first we met, I allowed my eyes to deceive me. I failed to discern within you an outstanding politician. You knew nothing of diplomacy, you were unaware of the power structure in Nerosyan and beyond. But you were driven by your uncanny intuition, and with it, you have saved Mendev and strengthened our ties with foreign allies. You have my respect."
+
+9729ba60-5955-4abe-b540-ef113ed4e9d4
+{n}A spark of worry flashes in Lady Konomi's eyes.{/n} "Is this a good time for reforms of such magnitude? There has been enough disturbance in Mendev already."
+
+6281e03b-fab0-458c-850a-23f1c0ddf555
+"Tell me about yourself, Lady Konomi."
+
+e8b61543-5e98-47ed-b856-e64270ba0734
+{n}Lady Konomi is engrossed in reading some kind of letter. Upon noticing you, she frowns nervously for a moment, but then greets you with a graceful bow.{/n} "Commander, how may I be of service to you?"
+
+c5427492-8ede-4e80-8bc7-1051ac59de6d
+{n}Lady Konomi almost begrudgingly looks away from her letter and gives you a polite nod.{/n} "Commander."
+
+8ccb19fb-0208-442c-86d8-4d5076364e40
+"And across all of {g|Avistan}Avistan{/g}. What can I say, I find it more interesting here than back home. Besides, I suspect these lands still have more kitsune diplomats than kitsune commanders." {n}Lady Konomi winks at you.{/n}
+
+d21d2901-e480-476d-aafa-ad1eb048c0d7
+{n}Lady Konomi shrugs.{/n} "I'm a child of a passionate and curious people. We live everywhere, you are just... not always aware of our existence."
+
+b5e5bec7-9d08-49fb-abcf-f451d583f29b
+"No. I put you in charge of the crusade and therefore I must trust you. If you want my advice, ask Lady Konomi. Her words are my own."
+
+02d5ff12-b372-4572-aebd-cfed341ccaea
+{n}Lady Konomi lowers her head tactfully.{/n} "Well, they don't talk to you. But they do care about you and your actions. However, I won't waste any more of your time on trifles like politics, Commander."
+
+88acafbd-a170-47a0-a2b6-cb3ae268543d
+{n}Lady Konomi bows respectfully.{/n} "Working with reformers is always so perilous... and exciting!"
+
+4419aeec-4190-4471-9b79-df3fcf9856ca
+{n}After an elegant bow, Lady Konomi gives you a piercing, searching look.{/n} "Oh, yes."
+
+0529899b-87a1-40be-9455-61b6d0a078cc
+"All of Mendev speaks of only one thing — how the Commander returned from the Abyss at the head of a demon army and quickly recaptured Drezen. I applaud your efficiency, but... If I may ask, why couldn't you have found some other allies in the Abyss?" {n}Lady Konomi's voice is solemn, but a twinkle of amusement dances in her eyes.{/n}
+
+18403ac2-fff6-4d72-a6e4-e22b1eb71d33
+"Your methods of repelling the attacks on Drezen were effective, but in terms of your reputation, they were disastrous. Was there truly no other way to destroy the demon horde other than raising the dead en masse?" {n}Lady Konomi's voice is solemn, but a twinkle of amusement dances in her eyes.{/n}

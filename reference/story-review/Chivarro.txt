@@ -1,0 +1,197 @@
+979ba577-1607-46fa-9bd7-1f14c1642242
+You killed Chivarro, the lilitu who used to run the Ten Thousand Delights.
+
+1947ed96-c7bd-45d5-83b7-aa7a3a7a5c91
+You gave Minagho and Chivarro another chance.
+
+677e60f4-95a8-4fdb-915f-26411752f364
+Chivarro
+
+c4a0f327-f273-47e6-ac33-7299a5a831b4
+"Tell me more about Chivarro."
+
+60c39a84-315e-428c-b74b-07f232d5f690
+"I've seen her a few times at the Battlebliss, which is owned by the cambion Irmangaleth. I also know that she's thrown feasts, both for old acquaintances and new henchmen, at the Ten Thousand Delights. Chivarro, the owner of the venue, constantly brags that Areelu Vorlesh is a regular guest. If you're looking to retrace her steps in the city, these are the places you should visit."
+
+69ae30dc-59b4-4f10-b1a4-ea4a6c7ad327
+{n}There is a dreamy expression on Yozz's normally inscrutable face.{/n} "The beautiful Chivarro? Quite a remarkable lady. She owns the Ten Thousand Delights — and that says it all! To rule a horde of ambitious and insane succubi, one needs an iron will, an intricate mind, and a fearless heart. Their entire life consists of intrigue, violence, and the struggle for power..."
+
+8e3f2706-6d36-4868-ac62-12fe4d178e0a
+"If Chivarro decided to lead the Assassins' Guild, she could do it without batting an eyelash... But if they threw me into the midst of those insane whores, they would rip me to shreds in the blink of an eye."
+
+0edabf5a-e24a-45c9-82dd-e08aa030c706
+"Word on the street is that Chivarro seized control over the succubi from Minagho. But they're both alive, which means they struck some kind of deal."
+
+47e3813b-8a5d-4fa0-a8f0-07f14e598611
+"Chivarro tried to sink her teeth into that stranger. Apparently, her bite wasn't deep enough... because the consequences were unfortunate for her."
+
+4db6285b-c443-4ef3-a2b2-6b0ab89c216f
+"Is it true that Chivarro tried to kill you, but you talked to her and she ran away in tears? That's amazing!"
+
+c3baacd8-426c-41c0-8aef-15e11b5301fb
+"I'll give you thirty if you stop talking rubbish, Dyunk. Or keep going — and you can steer clear of my palace of delights. You can pleasure yourself on your own, you fat chunk of rotten meat. Do you want to get on Chivarro's bad side? Do you really want that?"
+
+360e6e7f-7e04-4b26-aec5-e101385d4d47
+"You may have played your little games with that insolent bitch, Chivarro, but that won't work on me. Ever since I took over her turf, customers have been lining up. I can do quite well even without these aasimars of yours, if I must. So, I'm going to give you thirty thousand, and you're going to accept and say, 'Thank you, most esteemed Herrax, for forgiving me my pathetic attempt to play you for a fool.'"
+
+d24e45a8-bd00-4ba5-a85f-3c5924cf9936
+"Among the succubi, Chivarro is in charge. She's an angry bitch but she acts sweeter than the blood of a righteous man... Minagho used to run the Ten Thousand Delights until Chivarro found her way in. Must be quite a weasel, that one."
+
+58b31b30-76fc-4601-b1ec-624f1ac0a996
+"Chivarro tried to sink her teeth into you, didn't she? Her efforts must have been wasted, because she certainly {d|c4 chivarro dead}didn't like{/d} the consequences. She should've stuck to whores instead of messing with a serious player, am I right?"
+
+3264dc72-578b-4854-a651-c3afe3a69135
+"Chivarro told me about your... complex relationship."
+
+c0395b6a-1edd-442f-9df6-66baef8c7ce0
+"Looks like Chivarro's throne stands empty, and we are supposed to choose a new leader."
+
+f5b9850e-86e9-4384-b70f-d7ae5d038965
+"Chivarro paid well for your death. We won't fail her. We'll kill you immediately."
+
+b04ccca9-bb02-41bd-9376-3b719b051a77
+"You pathetic lowlifes, don't you recognize me? I am Chivarro, madam of the Ten Thousand Delights!"
+
+1a2dfe84-712b-40bc-8192-a865a611d179
+"Chivarro is no longer in charge. Why are her rules still in place?"
+
+1dab3592-fefc-472f-ab8e-3aec1588559c
+"That's none of your busi—" {n}The collar clanks ominously and grows a little tighter. The demon gulps, frightened, and his tone becomes more polite.{/n} "We call them politeness collars. Chivarro ordered all the guards to wear them. If we're rude to the guests or allow them to break the rules, the collars start to tighten until we're decapitated."
+
+41439671-be45-4638-bde8-9e766db19b6b
+"They were Chivarro's rules, now they are Herrax's rules. She stole them from Chivarro along with everything else and let them remain in effect. The only difference is that the collars are less obnoxious. At least they've stopped choking us all the time."
+
+d736dc44-506f-4e57-b037-fd84eada87c1
+{n}The demon takes a closer look at you then grins.{/n} "Right, I see why you're asking. No, it's not a weapon, not exactly. After that bloodbath the last time you were here, Chivarro decided to beef up security. This little trifle is a teleportation wand. It can instantly toss any troublemaker out onto the street."
+
+1ad4d930-60b5-411c-a5af-89aed8cd61a9
+{n}The demon looks at the wand with disgust.{/n} "Some weapon... This is a teleportation wand. Chivarro has grown concerned about security recently. She said something had happened and we should expect unwanted guests. She ordered the guards to arm themselves with these things and toss any troublemakers onto the street at the first hint of danger."
+
+4a6a6164-6949-46ff-a351-3dc1c908b75e
+"Since then, I no longer take pleasure in my job. No more crushing heads, no more gutting... Who are these guests who've got Chivarro so scared, I wonder?"
+
+6436ac7c-9b7d-476e-b62d-61c520c99a9a
+Tried to get through to Chivarro.
+
+aef056e5-3482-4d29-91a3-ca5b728a2596
+{n}An attractive lilitu in a simple but revealing dress greets you with a warm smile. Her eyeless face is serene.{/n} "A new guest? We're always happy to welcome guests to the Ten Thousand Delights. I am Chivarro, ruler of this palace of pleasure. The only taboos here are brawling, moderation, and talking politics. Aside from that, anything goes."
+
+5e9974ee-a7de-4714-a5ae-88ebe732c976
+{n}The guard's chain collar clanks. He aims the wand at Chivarro and states in an uncompromising, slightly vindictive voice,{/n} "Brawling is prohibited. No exceptions! Please proceed to the exit." {n}The demon activates his wand, and Chivarro, howling helplessly, is instantly transported to the streets of Alushinyrra.{/n}
+
+f4c91061-0b71-46ed-a9c9-db28476f6a91
+{n}Chivarro's voice sounds baffled and distrustful but holds a slight hint of hope.{/n} "You let her go? But I thought Minagho was dead... Why hasn't she come to me? Perhaps she didn't want me to see her at her most vulnerable? Or was she afraid she might draw Baphomet's wrath onto me after she failed at his task again? Oh, damn it!"
+
+bab461f4-2a77-402a-94cb-feac2de8253b
+{n}Chivarro gives you a gentle smile.{/n} "You did an excellent job polishing the floor and have earned answers to your questions."
+
+afd4f37a-317d-4a47-b10d-83fa119356f8
+{n}Yozz gently but firmly interrupts the demoness, his courteous tone only serving to highlight his rudeness.{/n} "Do shut up, dear. Our time is precious. Could you save your seductive stories for another time? Let's cut to the chase." {n}The assassin turns to you.{/n} "This place is a brothel, and Chivarro is the madam. That's all you need to know."
+
+b614817e-4aef-43d7-b86e-4d1e6dba1e37
+{n}Yozz raises his voice only slightly, but the steely note makes Chivarro flinch.{/n} "That's enough. I respect your right to test this newcomer, and I recognize your authority within these walls. But you are keeping me from following Lady Nocticula's order to protect this mortal from harm. Is it your intent to interfere with my work and to start a quarrel with me?" {n}Yozz's stern look makes Chivarro sigh and accept her defeat.{/n}
+
+66f981f6-81b8-4db0-a43d-0407619caad7
+{n}Under your furious gaze, Chivarro pales, but she presses her lips together in determination.{/n} "Don't you dare threaten me... This is my domain. I alone have the right to make threats here!"
+
+c0f8c444-840a-417d-a4d9-7c03d5266858
+{n}Chivarro doesn't answer, but a vicious hissing escapes her throat.{/n}
+
+f57fcf53-c5b1-43b7-8b03-50a928fb4d16
+{n}With a loud scoff, Yozz silences Chivarro before she can speak. With an innocent smile, he says,{/n} "Didn't we come here on business? I thought you had some important mission, and I was ordered to follow you and see to your safety during that mission. Even though I am a very busy person." {n}The grin fades from Yozz's face, and his eyes become cold and angry.{/n}
+
+20812fc2-6605-4d84-8bf2-f40c126817aa
+"Do me one favor, and you can consider us the best of friends." {n}Chivarro smiles seductively.{/n} "I need you to kill someone. A brazen gang of demons keeps harassing my girls, attacking them on the street and dragging them back to their lair in the Lower City, a foul den called the Rotten Guttery. Spill their blood, rescue my girls, and come back here for your reward!"
+
+790a9f54-c051-49ce-b01e-620271e0763b
+{n}Chivarro speaks in a soft purr.{/n} "Ah, the bloodthirsty mortal. I see you came without Yozz today. How convenient! Ah, I merely jest. I don't hold a grudge for your little trick the last time you were in my establishment. That said, I will not allow such a mess again. I've armed my guards with teleportation wands. If you so much as think of slaying anyone, you'll be back out on the street."
+
+ffd1ba0b-7c01-4e35-998c-020cb271ecf5
+"What about you, prince charming?" {n}Chivarro smiles ominously.{/n} "What I see in you is... a larva. The cocoon of a beast that will one day be claimed by one of the evil planes. Or do you think you're different from us? That you alone are capable of feeling something other than this thing you've just dismissed as an 'illness'?"
+
+67112dd2-fa33-4b5c-8cd1-511c7989396b
+"What can you tell me about Chivarro and Minagho?"
+
+f89b0a47-bfc9-4b40-900d-b0c7bd3ff43e
+"Chivarro is dead."
+
+c1e9fa91-0357-4c33-b5d9-5eee587ef400
+"I let Chivarro go."
+
+64b79e06-e821-4391-af31-97f3edd69743
+"I have aasimar slaves for Chivarro. She was willing to pay thirty thousand for them, and I would like to be paid."
+
+7c9e693e-46c2-4c1b-9b44-eee39214ef71
+"To everyone else, I am the respected madam of the Ten Thousand Delights, the protector and patron of this palace of pleasures, the strongest who lives here, the one who has earned the right to replace Chivarro on the throne. But you, honey, can just call me Herrax." {n}The succubus's smile is both seductive and unsettling.{/n}
+
+837d4b61-23b3-45f3-ad04-18aa5081d2c5
+"At first, we thought those two would tear each other apart. Chivarro was in charge here for a long time, and no one bothered her because everyone knew who she was. Then Baphomet's minion, Minagho, showed up. They fought, oh, how they fought! They then started to conspire and plot against one another. They sent assassins, then they drew their enemies into a proxy war against each other... By the end, they were obsessed. They went from sworn enemies to partners and took over the Ten Thousand Delights. They started walking around, hand in hand, cooing at each other... After that, they rarely tried to kill one another."
+
+0a8cc36b-9d72-4515-8917-c2107eb35f1c
+{n}Leaning closer with a confident smile, the demoness whispers sensually,{/n} "And if you rid us of Chivarro, my gratitude will know no bounds. I think that bitch is hiding somewhere in the Lower City. Can you take care of her for me, my love?"
+
+c32aaa28-475c-42bf-b010-c4a805b3181f
+{n}The succubus sounds playful and relaxed.{/n} "Welcome to the Ten Thousand Delights! My name is Herrax, and I am the new madam here... Thanks to you. You rid us of that insolent upstart Chivarro, sending her after her haughty lover Minagho, so you can consider me in your debt. Know that you will always be welcome here, and my gift will be proof of that." {n}With a graceful movement, the demoness hands you a gold coin.{/n}
+
+fa5621fe-0c9f-4c09-8214-b1b0eae35531
+{n}You see a massive, beautifully decorated door. It appears impregnable. At eye level, an elegant inscription reads, "Ten Thousand Delights." In smaller letters, another inscription reads, "A gift from Vellexia the Wonderful to Chivarro the Beautiful."{/n}
+
+b49ce3b3-40bc-4e19-91eb-2dbe30286376
+"Better a door than a dolt!" {n}The door giggles in the most vile way.{/n} "Lady Vellexia had a hand in my creation after her rest in the Ten Thousand Delights was disturbed by an overzealous admirer. She presented me to Madam Chivarro to keep out the rabble."
+
+8dbb0b9b-a610-40bc-a023-9a94ed2372b9
+"So Chivarro hired you to kill me?"
+
+2a7bb191-a2ae-4908-a3f4-b0d68ad0ab35
+"It seems I need to have a word with Chivarro."
+
+d4ba5acf-3218-42b0-b58e-f502f6d424d6
+"Chivarro, the lilitu from the Ten Thousand Delights, found us and paid us to take you out. She said she'd get you here and all we'd have to do is crack your skull open... But that bitch neglected to mention that you wouldn't go down easy — you've cracked more than a few skulls yourself, I can tell."
+
+80a4bd10-469d-4b15-8627-593d9d0d785c
+"There are no succubi here! It was a trick, Chivarro's ruse to lure you here. We'd never kidnap those bitches. They'll screw your brains out, take all your money, and call it a weekend well spent. All succubi should be drowned, that's what I think."
+
+e58957f7-ee6a-481b-a602-214a8bb74b0f
+"Of course, I knew Chivarro was a crazy bitch capable of anything, but this is extreme even for her. The last thing I want is to be dragged before Nocticula for killing her new favorite. I won't be part of this foul business. If she wants you dead, she can do it herself."
+
+48a2e5e9-4fe4-4b56-9477-a1889ce93d88
+"The way you responded to Chivarro's taunts. Your assumption that you could love, not just indulge in the kind of sick passion that demons feel."
+
+056942f6-32d0-4480-8ff7-29356b43db19
+Several hundred years after the conclusion of the Fifth Crusade, somewhere on another plane, far from both the Abyss and Golarion, two runaway lilitus {d|lilithu love}met{/d} — Minagho and Chivarro. They met, never to part again.
+
+3fdb5249-7e54-4fc3-941a-368bc8bbb481
+Chivarro's lies have been exposed and her plans for revenge shattered. She is no longer a danger, and the new madam of the Ten Thousand Delights will wish to thank the Commander for {mf|his|her} part in freeing up the position.
+
+7d7c5747-db0b-4304-9b41-54570eb31f26
+Everyone needs friends, especially in a place like Alushinyrra. Chivarro, the madam of the Ten Thousand Delights, could be a valuable ally. After all, demons are driven by their desires, controlled by their whims, so the person who controls the means of satisfying every inclination must naturally wield considerable influence. However, it is most unlikely that Chivarro's favor will be given for free.
+
+c4848b01-ed4f-4ee0-8f63-06a0cb160670
+Chivarro lied — it was not demons residing in the Rotten Guttery, but a gang of professional mercenaries from other planes who earn their living by doing jobs for Alushinyrra's influential citizens. The entire story was but a well-crafted ploy intended to trap the Commander — Chivarro will have to pay for that. After all, failing to avenge a personal affront would stain one's reputation in the eyes of demons. A misdeed going unpunished is anathema here, and anyone seeking to rise in any given society must first demonstrate respect for the customs of that society.
+
+171fa81a-70aa-48f8-8df5-931e2476aa34
+Make Chivarro pay for her lies
+
+85eea026-d576-4713-a78a-ca8a93066ecd
+Chivarro has promised her friendship in exchange for the commodity that is prized above all others in Alushinyrra — timely and tastefully served revenge. Some insolent demons have abducted Chivarro's girls, which constitutes a personal insult to Chivarro and a threat to her establishment's image, to say nothing of lost revenue. Chivarro mentioned that the thugs can be found in their lair located in the Lower City — a place called the Rotten Guttery.
+
+4c509784-f11c-45a7-a5d5-3f45f2b3389a
+Chivarro has been driven out of the Ten Thousand Delights, but it is unlikely she will let this go unpunished. By their nature, demons are incapable of forgetting grudges — the memory of the injury lives in their heads forever, waiting for a chance for revenge. The craving for vengeance grows and grows, eroding them like blood-red rust, enveloping them like flesh-eating moss until nothing remains but pure malice. Chivarro's current whereabouts are unknown, but there is no doubt that others began vying for her position the moment she was tossed out. As soon as Chivarro's successor is chosen, it would be wise to talk with them to figure out where the pernicious demoness can be found.
+
+568a8564-7221-4b82-8a7b-30596ce1f867
+Talk to Chivarro's successor
+
+3a861064-7ab9-49ab-b20d-2838f9bd75cf
+Chivarro has lost everything, and it would be safe to assume that she is now hiding somewhere in the Lower City — a perilous cesspool devoid of morality where the city expels its waste. It would be wise to find Chivarro there and deal with her once and for all, before she devises another revenge plot. Underestimating the vengeful nature of demons is perilous indeed.
+
+6c10c776-9803-42c1-8336-0db71e3cf220
+Find the ousted Chivarro
+
+54e5cc4f-9f34-4ee0-9662-94ed786ad10a
+Talk to Chivarro
+
+caba3665-d2fc-4cd7-ba3a-b21d82981247
+Report to Chivarro
+
+d94ee2b9-caad-4c3d-a456-9a66d486820a
+Chivarro, the madam of a brothel called the Ten Thousand Delights, might have the information the Commander needs. However, as the mistress of a place that sells both pleasure and secrets, it is unlikely she will give up such information for free.

@@ -1,0 +1,287 @@
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0001.jbp | c2d84dd786714e41bf0cbc98a6a18d8f
+"Minagho was a powerless fool. And you can't do anything to me, either."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0006.jbp | 9acffa7cd562c2c49b8d08d6fcc8520c
+"I'm leaving."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0007.jbp | 14d2ab4ba2c7b1a4ea406cde156b274f
+[Attack] "Your rule here has come to an end."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0012.jbp | d7b5c149f6e053a4a8d7bc7233e2e6c4
+"I have a few questions for you."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0015.jbp | a696bbc9ba951154a8e019462f70354b
+"I want to know more about this place."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0016.jbp | 0c8d82573595c9444b20eea79bded318
+"Tell me your story."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0017.jbp | c75ed477ea45d7e4aa46c27f3f3f6481
+"I understand everything."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0054.jbp | 58360d3c6f654e4459c45371dab6ea9f
+"You are a skilled mind reader."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0063.jbp | ab7e57c60e85a994ca220e254e12978d
+"Minagho is a powerless fool. And you can't do anything to me, either."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0079.jbp | 3936d883548d47046a1bd74c475a5c4c
+"Don't you dare pry into my mind ever again."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0092.jbp | e9bf21658d563b74db04dcfd8117efcd
+"Everything seems clear. I won't hurt you. I will simply leave this place."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0114.jbp | 571ca108ea77c924b960412f2192e364
+"I like you. Perhaps we can spend the night together?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0136.jbp | 5bfee1ec3b4542043890b92a1dcb75e0
+"I've done as you requested."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0171.jbp | bf76e7d295317354aa515d9c2713b539
+"I recently met Minagho here in Alushinyrra. Yet again, she tried to attack me, and yet again, she failed."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0176.jbp | 1e5410d2d0474e84393552a846df4111
+"Fine, I'll do as you ask."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0177.jbp | 940b3627d6d7ed14d8f261313f740601
+"You're trying to give me orders? Do you have any idea who I am?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0179.jbp | a4e6a9e4feae92c47a748dfd39f3f1cc
+"I will not clean up the mess left by your guests."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0192.jbp | 35fc87c46e16f384ab35fff12bd63d59
+"I've changed my mind. You can clean up after your guests yourself, you eyeless bitch. If you don't tell me what I want to know, I'll gut you where you stand."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0198.jbp | 95247bae2c9e4164babeb4d698ec69ff
+"I'll kill you for your insolence!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0204.jbp | d135030bf6ea87e43b84c0f17393e686
+"I recently met Minagho here in Alushinyrra. She tried to attack me again, so I killed her."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0207.jbp | 15cb33a70d63f334f80763a0ed6a23ed
+"I'm looking for Areelu Vorlesh. Can you tell me anything useful about her?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0210.jbp | a48d50d72404aae4697b89995b55029f
+"I can see the luminescence of your soul. You have violated the laws of the Abyss. Confess!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0212.jbp | a96d2885e549ae8409083637195be774
+"My friend Camellia would like to avail herself of your brothel's special services."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0216.jbp | 4cd312eae733b7f46ab7aef953ed2bdc
+"If you don't want me to drown you in the blood of your pitiful servants, start talking."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0217.jbp | 30982bb9869216c4182b8f8f72b09d14
+"Maybe I should kill another one of your guests?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0004.jbp | 6dc938ab7b4147a38a03bc05a4cc7a33
+{n}The lilitu latches onto your consciousness. Her face contorts in a tense grimace, and yet she's unable to break through the protection of the mind of an aeon.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0005.jbp | 9a6774d5d8a488b4ab914dde75fe387e
+{n}The lilitu's attempt to get into your mind fails, and you manage to push her out of your thoughts. She hisses in disappointment.{/n} "I merely wanted to learn your preferences. And to make sure you're the one I need. There's no need to be so aggressive."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0009.jbp | 92c312bed89ace14eb610d84814ccecc
+"See you soon, honey. Come back again and we'll have some fun."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0011.jbp | 5b51dc560bb3a5f4f8ed588c014b1c2f
+"Slow down, my sweet. If you seek tender pleasures here, it'll cost more than gold. We need to be friends first. And all it takes to become friends is for you to do a little favor for me. I want you to kill someone for me. A brazen gang of demons keeps harassing my girls, attacking them on the street and dragging them back to their lair in the Lower City, a foul den called the Rotten Guttery. Spill their blood, rescue my girls, and come back here for your reward!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0013.jbp | 092ca445e4b340e42ab74180ffb46e3e
+{n}The demoness smiles mysteriously.{/n} "Are you interested in me? Or in my establishment?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0019.jbp | 27019fe2b31cba142a45594510dd96b2
+{n}With a mysterious smile, the lilitu nods at you.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0020.jbp | 9ae29ac298a56be49a72bf1faee8a508
+{n}The demoness answers with melodious laughter.{/n} "I have secrets I would rather not reveal. And without them, my story would be as insipid as sex without violence..." {n}After a moment's hesitation, the lilitu adds with a smile,{/n} "I was once wild and dangerous. I manipulated others to destroy them, not subdue them."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0021.jbp | 04bbe185aa91ebe42b0a9119eb806819
+"Some are foolish enough to call this place a brothel, but that's a facile misrepresentation. The Ten Thousand Delights is a pleasure palace for every taste. You'll find everything that brings pleasure here — wine, sex, music, good company, violence, gossip, stories, drugs... Every kind of drug — herbal, alchemical, even telepathic. And many things that seem incomprehensible to us but are very popular on other planes."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0033.jbp | 12d147152ce237048b4973dd496b3602
+{n}The lilitu latches onto your consciousness. Her face contorts in a tense grimace, but you manage to fend her off with a determined effort.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0046_DiePlayer.jbp | 274f276f064cde842af108eb03082a28
+{n}With a dull howl, the lilitu attacks you. Her claws seem to grow and sharpen before your eyes.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0049.jbp | fb24aedb699a5a246a410fa0cbe915d8
+{n}The guard's chain collar clanks. He aims the wand at Chivarro and states in an uncompromising, slightly vindictive voice,{/n} "Brawling is prohibited. No exceptions! Please proceed to the exit." {n}The demon activates his wand, and Chivarro, howling helplessly, is instantly transported to the streets of Alushinyrra.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0055.jbp | e8fa7d449c934b54c829349fe6713813
+{n}The lilitu gives you a smug smile.{/n} "It is my calling. To read others' thoughts and motives, plant ideas in their minds, tempt and guide them... But, yes, you are correct. I am unusually skilled even by the standards of my kind."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0065.jbp | caf3ec730c7d73d4aa2ec5eb16af0afa
+{n}The lilitu laughs fearlessly.{/n} "Foolish Golarian! Come on, try to hurt me now!" {n}The demoness attracts the guard's attention with an imperious gesture.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0067.jbp | 605782f904cb6c647928dd5f6457322e
+"They are currently serving a special client in the Upper City. As you surely understand, their caresses do not come cheap. Do you have forty thousand gold, by chance?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0072.jbp | 6a5e1f15c43017a49a29ac7c0a6e5389
+{n}The image of a luxurious mansion in the Upper City appears in your head. The building moves further and further away, as if you were soaring up into the sky, so you see where it is located.{/n} "This place is called the Palace of Incest and Degeneracy. You'll find the girls there. Tell them you've already paid me."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0073.jbp | ff94d10722141114088065b63274aff6
+{n}With a chuckle, the lilitu shakes her head.{/n} "I don't need my ability to read minds to know what you're thinking. Don't be stingy. These succubi are worth every coin."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0074.jbp | 454dfd7cea3243a4f9492c96e6fe2bc0
+{n}You feel warm. Gentle hands seem to touch your consciousness. They neatly separate thoughts from memories, feelings from emotions. Occasionally, images of long-past or recent events drift through your mind.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0076.jbp | 2592e419d2c1f884bae500ebf498a9bf
+{n}It feels as if someone is touching your mind. Prying fingers are attempting to extract a recent memory, but not very successfully. Exerting your will, you manage to eject the alien presence from your head before it digs too deep.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0077.jbp | 4718ca18a9cf4f54fa3720908c649f00
+{n}There is mild confusion in the demon's voice.{/n} "You have an iron will. Few can push me out of their mind with such ease. I saw almost nothing... I'm almost offended. I do, however, respect the power of others. Let your secrets remain yours alone."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0078.jbp | f95699e141425af4382386dd362e88ec
+"A Golarian? I see. Yes, and the commander of the crusade, no less! What fascinating memories you have. Ah, and now we've been properly introduced. You're not offended, are you?" {n}The lilitu gives a deep, pleasant laugh, but her voice trembles with inexplicable excitement.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0080.jbp | e667f461566140d4f8509fc6af82ec47
+{n}The lilitu answers defiantly,{/n} "Or else what? You'll hit me? You can try. But you are my guest here. You don't call the shots. I do."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0082.jbp | f1b4d5251a4f78046967a5e4438d154d
+{n}Your thoughts are flooded with a wave of heat. The lilitu nods in concentration.{/n} "What interesting thoughts you have... What an unusual mortal you are! Well, that's a stroke of luck. It just so happens I need someone like you."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0085.jbp | 8b37d705fb28d6841bf3bd8319a32016
+{n}The lilitu delves into your memories and lets loose a howl of frustration.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0090.jbp | c4227517b7cc7ec459d8644fea92be8c
+"Yes, she lived here for a long time. She owned several rooms — the Den of Sweet Horror, she called them. You can easily find them. Just look for a bunch of crazy, drugged-up cultists. Those degenerates were the Spinner's entourage. When she left the Ten Thousand Delights, she left them here so we could entertain ourselves with them."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0091.jbp | 6098d97e435e0694493ebaf7de128c51
+"You piece of shit! Why couldn't you just quietly go there and die? You've caused nothing but trouble! Damn you for all the suffering you've caused Minagho and me!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0101.jbp | 3ffc9b66a39689f43ac3207aa84ee565
+"You're leaving? Alive and well? No, not a chance!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0102.jbp | ef93b05bea361d74799a8fdb7b38bb7f
+"You are seeing but a small part of the Ten Thousand Delights. Behind these inconspicuous doors lie entire streets, houses, and rooms, a veritable labyrinth of pleasure. No one knows how large this place really is. Anyone who attempts to measure it returns weeks later, exhausted and happy, and somehow changed from when they left. After all, no matter who you are, no matter what your predilections, in the Ten Thousand Delights, you will find the room where you will be fully satisfied."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0104.jbp | a7ad7b26bc30b2c42bf8163c48e4a667
+"But then I met someone. That meeting changed everything. It sparked my hunger. I wanted to stand for something, to rise above the crowd, to become important, influential. It turned out that not only can I create bloody chaos, but I can tame wild whirlwinds of chaos, shape and direct them... And none of that would have happened but for that chance encounter."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0105.jbp | 90bffc7cb9709384a80ea622f3d87a86
+{n}With a playful bow of her head, the lilitu smiles.{/n} "Have you heard that old saying 'Why don't lilitus have eyes? Because eyes are the windows to the soul, and no one can gaze into the soul of a lilitu.'"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0107.jbp | c9274f10f71db514599adc1a8987f0b5
+"Thirty thousand? Seriously? I was never going to pay more than ten for them. I was just haggling. I'm willing to pay you ten thousand, too. You're the one who got the bum deal. Why should I have to pay for it?" {n}With a charming smile, the demoness hands you a pitifully small pouch of coins.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0115.jbp | c68c446394c5e20449b042e03114f08b
+{n}Interest flickers on the lilitu's face, but her answer is brusque.{/n} "I take it you're used to people falling into your arms? Don't expect it of me. My favor must be won. But you seem entirely capable of it."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0118.jbp | cdb5b762d9dd0bc49b1ca7d011bf646e
+"You won't let my girls die in the clutches of those monsters, will you?" {n}The demoness smiles enticingly.{/n} "You are so confident and have such potential! I think you and I will enjoy being... friends."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0123.jbp | 4065098d525ba7749a0885781622bcc0
+"I can see you're intrigued, but slow down! We need to be friends first." {n}With a sensual laugh, the lilitu playfully wags her finger at you.{/n} "Do this one tiny thing for me and we'll be best friends. A brazen gang of demons keeps harassing my girls, attacking them on the street and dragging them back to their lair in the Lower City, a foul den called the Rotten Guttery. Spill their blood, rescue my girls, and come back here for your reward!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0124.jbp | 33bb25f705782c54b870b1bd1c9bf574
+"The words of this fiend sound sweet, but what lurks behind them? Lust? A desire to use you? Something even more insidious? I sense danger here, like the reek of decay near a crypt, faint but clear. Beware this trap, Champion."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0125.jbp | b36e1ec8746f51d4987fa7d514670cc4
+"Could two demons truly fall in love, albeit in their own terrifying way? It's believed their hearts have no capacity for love, but... You and I both know light is stronger than darkness, and it can shine even in the most impenetrable gloom."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0128.jbp | f966368647e36e840ae9f3eebc63441f
+"I wouldn't pry into {mf|his|her} mind if I were you. {mf|He|She} is a guest of Lady Nocticula. If you discover something you shouldn't in {mf|his|her} thoughts, I'll carve a pair of eyes on your pretty face and you'll be weeping blood for all eternity." {n}At the demoness's irritated snort, Yozz gives her a charming smile.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0138.jbp | d56a8194bca84e24cbd8bc5c58ffb4cb
+"Some are foolish enough to call this place a brothel, how utterly trite..."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0144.jbp | a6e0e709221822e468a7c3865da02fdd
+{n}Chivarro gives you a gentle smile.{/n} "You did an excellent job polishing the floor and have earned answers to your questions."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0145.jbp | 0d95fbce0de79d142b6343be03c724a4
+{n}Yozz, snorting, grumbles haughtily under his breath.{/n} "Nocticula ordered me to protect you, but... Do you really expect me to tag along while you enjoy yourself, then watch over you to make sure some whore doesn't slit your throat while you're asleep?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0146.jbp | 5d2edd81b4586ee45b6129f73fc95087
+{n}Yozz gently but firmly interrupts the demoness, his courteous tone only serving to highlight his rudeness.{/n} "Do shut up, dear. Our time is precious. Could you save your seductive stories for another time? Let's cut to the chase." {n}The assassin turns to you.{/n} "This place is a brothel, and Chivarro is the madam. That's all you need to know."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0168.jbp | 0b7a68ede6f07f04ab047905fa3d841a
+"I wish I could see what this fiend would say if she met Arshea, the empyreal lord of freedom, beauty, and sincere physical intimacy. The Abyss offers a distorted reflection of everything we value in the Upper Planes. Even physical attraction, beauty, and love."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0174.jbp | ba0cad31fc44ec84eb82b6a3f758ac92
+"I can, but not for free. First, you must do a favor for me. Though I have no idea how you could be of use to me... Ah, I've thought of something. Last night, Lady Minagho organized a feast for her allies and lackeys in the Ten Thousand Delights. Pleasure reigned, but what a monstrous mess was left in its wake. So roll up your sleeves and get to work. Scrub everything thoroughly. When you finish, I will be willing to answer your questions."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0178.jbp | bd7425739820aaa4f81dd73e44732dcb
+{n}The lilitu smiles, testing your patience.{/n} "Yozz seems to be under orders to follow you everywhere, so you must be Nocticula's newest favorite. Do you think everyone will bow and scrape before you now? Sorry to be the bearer of bad news, but Our Lady in Shadow's affection is fleeting, and tomorrow you risk waking up a nobody... Just as you've always been."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0180.jbp | ff988a453e6115e4e8e309f07abf5484
+{n}The demon chuckles contemptuously.{/n} "Then why should I share information with you, stranger?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0184.jbp | 98a2efa227148314285ba2e6dec636fa
+"Great! I think you'll be able to figure out which rooms require your attention. So roll up your sleeves and get to work — I want that floor so clean I could eat a demon off it."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0199.jbp | f748211432bd2e54883179f72c6777a5
+{n}Under your furious gaze, Chivarro pales, but she presses her lips together in determination.{/n} "Don't you dare threaten me... This is my domain. I alone have the right to make threats here!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0205.jbp | 041728de58870464a8ad09c521b18b1a
+{n}Chivarro doesn't answer, but a vicious hissing escapes her throat.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0208.jbp | 654a64715b4262b40b16f7eb0291a2a5
+{n}With a loud scoff, Yozz silences Chivarro before she can speak. With an innocent smile, he says,{/n} "Didn't we come here on business? I thought you had some important mission, and I was ordered to follow you and see to your safety during that mission. Even though I am a very busy person." {n}The grin fades from Yozz's face, and his eyes become cold and angry.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0211.jbp | 5a557f313242f1942835d78dec621f23
+"I have no idea what you're talking about, Golarian. You're saying I violated some law? That was never my intent! Then again... We still have a chance to get to know each other better. Once you know more about me, you can decide whether I deserve to be punished." {n}The lilitu smiles seductively, but it looks a little forced.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0213.jbp | 01f67a15794e571438efcc0105cf4d26
+"I beg your pardon, but our establishment cannot provide that type of service at the moment. You see, I have a rather delicate problem..." {n}The madam trails off, letting the unspoken words hang in the air.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0214.jbp | 26c2d0655cd8fbc41965df451b561149
+"Do me one favor, and you can consider us the best of friends." {n}Chivarro smiles seductively.{/n} "I need you to kill someone. A brazen gang of demons keeps harassing my girls, attacking them on the street and dragging them back to their lair in the Lower City, a foul den called the Rotten Guttery. Spill their blood, rescue my girls, and come back here for your reward!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0218.jbp | e6128892d7b7e384f97573ea200c4088
+"{mf|He|She} barged into my establishment, killed my servants, and now {mf|he|she}'s threatening me... What an unpleasant guest you've brought me, Yozz! Fine, then, listen."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0219.jbp | 76548462b354c094a9a525cf240a27d4
+"Don't you dare! No, I definitely don't want a mess like that in my establishment. I'll tell you what you want to know, and then you'll get out of here."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0220.jbp | 43ce4eac3ab0fbc41b77eee0613c2256
+"You found out everything you wanted, mortal. Now let's leave this place before we outstay our welcome. We seem to have wearied the mistress of this charming place."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0221.jbp | 1396960238522c145b71f6334f4c3822
+{n}Chivarro speaks in a soft purr.{/n} "Ah, the bloodthirsty mortal. I see you came without Yozz today. How convenient! Ah, I merely jest. I don't hold a grudge for your little trick the last time you were in my establishment. That said, I will not allow such a mess again. I've armed my guards with teleportation wands. If you so much as think of slaying anyone, you'll be back out on the street."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0222.jbp | 3f30586cdc7866b4db9c182df1c6be4d
+{n}Lann looks at you but quickly averts his gaze.{/n} "Love is impossible to resist. No matter what you demons call it — 'passion,' 'desire to destroy'... You're lying to yourselves. If these were the darker feelings accepted by your kind, you would kill each other and be done with it. But you want to be together, no matter what the world thinks. That's love. Trust me."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0223.jbp | da00c53845218b94cbe6641a6ae08b92
+{n}Casting a gloomy glance around the hall full of partying demons and mortals, Regill says,{/n} "This is the most dangerous place I've seen in the Abyss so far. I would rather an army of hungry demons awaited us."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0224.jbp | a759ea501ed74d74e8d278d597e9cb03
+"Allow me to paraphrase — Alushinyrra is a mousetrap, and we have finally found the cheese." {n}Daeran smiles wryly.{/n} "It looks like a delightful place, but it feels like a leper colony. Somehow, I can detect no happiness in the eyes of its denizens. I see a pack of predators and their future victims, and even the predators do not experience true joy, but instead only revel in their vileness and depravity."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0227.jbp | 7710b94891dc5f84e8af5a09e0a3bd94
+{n}Woljif smiles at Daeran, his eyes calculating.{/n} "My dear Count, mayhap we should try our luck elsewhere in this delightful establishment and seek out someone more accommodating? I'd be more than happy to accompany you as you explore this den of temptation. I will see to it that your goblet is always full, and your coin purse doesn't get pilfered by any riffraff. What would you be willin' to pay a humble tiefling for rendering you such a service?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0228.jbp | c283372acd21db2449871d21f59da15c
+"In a place like this, I'd rather have a retinue of paladins. And I say this as someone who barely tolerates the existence of paladins. Just look in the eyes of anyone here. Worse than maniacs. Be patient, and once we're back on Golarion, I'll give you a full pouch of coins and send you on a tour of the best dens of vice in Mendev... Yes, even {g|Absalom}Absalom{/g}. But while we're here, you should keep your mouth shut, your hands in your pockets, and your pants on. For your own good."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0231.jbp | 33dd7d6bba1fdb34ba68e95b41ef60cb
+"It sounds like a story about a serious illness. Very demonic. Is there anything in this world that hasn't been turned into a disease or a disaster?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0232.jbp | 27b0b4422b12558419fce9d6c82e7905
+"What about you, prince charming?" {n}Chivarro smiles ominously.{/n} "What I see in you is... a larva. The cocoon of a beast that will one day be claimed by one of the evil planes. Or do you think you're different from us? That you alone are capable of feeling something other than this thing you've just dismissed as an 'illness'?"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0233.jbp | c39f65904a47e6e4980e69c8e6b31917
+"Well..." {n}Daeran glances at you from under half-closed eyelids then gives a small smile.{/n} "Who knows? Maybe I really am capable of feeling something greater."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0235.jbp | 9338d198d5481b147a37ae788eb6fe58
+{n}Your vision dims and your thoughts become slow and sluggish.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0237.jbp | 28cf8b05c851a7544b64b232cad0134d
+"A celebrity in our midst! The gladiator who won his freedom. So that's what you look like under your helmet." {n}The demoness licks her lips.{/n} "I wonder what you look like without clothes on... Have you come here to have a good time? Or are you looking for a new job? You're famous. Our clients would line up to be with you..."
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0238.jbp | 1de20da66beb8ea4187a35b5911f743a
+"Shut up, you scum." {n}Trever turns away.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0240.jbp | 015492e9d7e765440ae5fa273ad90272
+"Ugh, how rude!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0241.jbp | 9b89390ddcc8f44439d2b69f84276a14
+"Now, now, Trever, there's no need to be so rude. Think about it. You've lived an empty, pointless life, offering your loyalty to one master after another. You've gone from paladin to Hellknight, from Hellknight to gladiator... What if whoring in a brothel is your true destiny?" {n}Watching Trever's fists clench, Daeran holds the pause as long as he can, then adds with a gentle smile,{/n} "Don't get worked up about it, it was only a friendly jest!"
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_2.jbp | 562499d73b674af092c21797c7c1a85a
+{n}It feels as if someone is touching your mind. Prying fingers are attempting to extract a recent memory, but not very successfully. The wall of the hardened mind of an aeon protects your consciousness from any encroachments.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_3.jbp | 2007935de1e6472a8cc87b8219732522
+{n}You feel a faint brush against your consciousness, too weak to pass through the wall of protection that is built around the mind of an aeon.{/n}
+
+World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0045_KillChivarro.jbp | 49135105da5bc6c4f93e312e80286f91
+{n}Leaning closer with a confident smile, the demoness whispers sensually,{/n} "And if you rid us of Chivarro, my gratitude will know no bounds. I think that bitch is hiding somewhere in the Lower City. Can you take care of her for me, my love?"

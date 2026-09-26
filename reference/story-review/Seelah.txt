@@ -1,0 +1,1615 @@
+467d64dd-7184-4a2b-bcd4-e668d3dfd7b4
+Seelah
+
+17f214bc-bff5-4b15-869e-c0de2e716243
+Seelah
+
+5edcee4c-5dc8-40b4-829b-84cc03094750
+You saved the deserter Jannah Aldori, Seelah's friend, and let her go free.
+
+e2727012-31a2-4719-9e5a-cc1f66049375
+Seelah and you unraveled the demons' plot, protected Elan's bride, and saved him from despair.
+
+d8b154f0-a1d4-4e86-a8c9-1b675c9ace2d
+You offered Seelah to give her some money so she could buy a more expensive ring as a wedding gift for her friends.
+
+08ff34e6-b75a-4da1-bc19-40926a6859a8
+Your influence helped Seelah to rethink some of her views and become stricter toward herself and others.
+
+29a38c33-7a9c-4083-8256-0a39f41345ca
+You helped Seelah to overcome her problems and help all her friends. This strengthened Seelah's faith in herself and other people.
+
+8b4d053c-5a43-47c1-85c3-b313e7b2a745
+Seelah traveled a long way with you, but still remained at a crossroads, not fully understanding her feelings and having failed to help everyone she wanted to.
+
+8ddf2961-d203-45e7-b444-d6e83ea72143
+Seelah failed to save her friends. This dealt a serious blow to the morale of the usually cheerful paladin.
+
+0ec03d03-bbbf-4fb2-a46c-76dab8016f99
+Jannah Aldori is an Eagle Watch recruit and friend of Seelah. The young fencer traveled to Mendev from the River Kingdoms to find adventure. You met during the demon attack on Kenabres.
+
+4d8eab40-24ca-4225-9883-fb2110f79647
+The daring and noble Acemi was a paladin of Iomedae, whose death inspired a young Seelah to join the ranks of the knights of the glorious goddess. Seelah honors her memory and treats her like her mentor, though they never once spoke while Acemi was alive.
+
+5cf09332-5302-4a88-ba7b-3cdeabbd54cc
+The halfling Curl is a former thief, and now a crusader from the Condemned squad. He's a friend of Seelah, who you met in devastated Kenabres.
+
+c09b3f75-73e9-43e7-bb69-ecdb1579f1f4
+Sir Elan of the Order of Houndhearts is a young knight and a friend of Seelah. He's among those who distinguished themselves during the defense of Kenabres.
+
+2230e553-5e5e-4811-a743-6f633d89acea
+During the course of the game, you will have to apply your {g|Encyclopedia:Skills}skills{/g} in many different situations.
+{br}Frequently you will have to make a skill {g|Encyclopedia:Check}check{/g} during dialogue — here, for example, we are trying to help Seelah fetch Anevia from beneath the rubble. The result of such checks determines how events subsequently pan out.
+{br}Such a check is usually performed by the character with the highest bonus in the appropriate skill in the party.
+
+a199284b-c686-4384-b2eb-45a5a6674aae
+You have failed the {g|Encyclopedia:Skills}skill{/g} {g|Encyclopedia:Check}check{/g}, so Seelah had to remove Anevia from beneath the rubble alone. Because of this, she became {g|ConditionFatigued}fatigued{/g} and incurred a temporary {g|Encyclopedia:Penalty}penalty{/g} to some of her abilities.
+If your skill check had been successful, there would have been no negative consequences.
+
+5be93b59-10c3-4f9d-a818-7f7a23cbc3cd
+You have made a successful {g|Encyclopedia:Skills}skill{/g} {g|Encyclopedia:Check}check{/g} and helped Seelah pull Anevia from beneath the rubble.
+If you had failed the check, Seelah would have had to act alone, so she would have become {g|ConditionFatigued}fatigued{/g} and incurred a temporary {g|Encyclopedia:Penalty}penalty{/g} to some of her abilities.
+
+99c2ec75-67fe-44fb-bf5e-244ab7e26658
+Seelah can grant her allies in a 30-foot radius shield {g|Encyclopedia:Bonus}bonus{/g} to {g|Encyclopedia:Armor_Class}AC{/g} equal to her {g|Encyclopedia:Charisma}Charisma{/g} modifier for the number of {g|Encyclopedia:Combat_Round}rounds{/g} equal to her {g|Encyclopedia:Caster_Level}caster level{/g}. This ability spends one use of Lay on Hands.
+
+26f5e545-3f8a-4e06-a7f1-566c1c7f30ea
+Seelah
+
+fa95bea2-b913-4eb6-8a7b-c271b4f79ff2
+"Seelah"
+
+6033c579-a58e-4b56-923c-da0b89943da4
+Seelah will personally talk to the best among the crusaders and select the most loyal and pure of heart to look for spies. These warriors will also serve as a model for common soldiers to follow.
+
+1e680c77-d91a-4b8f-a44f-1896dd5cf4e6
+Seelah acted as the head judge at the tournament where everyone was given a chance to prove their worth. The nobles went up against the commoners, and only strength and skill decided the outcome of each fight. Upon witnessing what common warriors were capable of, the aristocrats had no choice but to acknowledge their valor. The tournament served as a bonding experience for the crusaders.
+
+2a14deef-b265-4547-b812-498c850c76fc
+Seelah escorted the committee to the front lines where the pampered bureaucrats were forced to learn of the hardships of military life firsthand. Having gotten caught up in a surprise attack and personally witnessed the demons' brutality, the inspectors swore to supply the army with everything it may need — and do so diligently.
+
+f5e112cb-e9f3-4985-9890-7a3c1858f3ad
+These young mages needed more than just a knack for spellcasting to become proper crusaders. They needed good upbringing. Seelah personally selected the most noble knights who would take these young volunteers as their squires.
+
+c8c1f304-8dc9-4a08-94c6-f0721c9f00b8
+Seelah took on the task of welcoming the young Chelaxians. By showing them the soldiers' daily life, describing the crusaders' glorious feats, and treating them to a rowdy night in a tavern, she convinced the nobles to join the crusade right away.
+
+73837c12-5382-4413-a773-2ac9bd366eba
+This option is unavailable because you do not have Seelah among your companions.
+
+3e5b2d7d-e2de-4df6-8c8c-ec95f895defa
+Seelah wishes to have a private conversation with the Commander whenever {mf|he|she} can spare some time in Drezen.
+
+1c262ad4-9792-4a8f-bfbe-06526497388e
+Seelah Wants to Talk
+
+eb556f6a-7473-42df-be0c-8c9d15ea73a0
+Seelah reports that the crusaders investigating the stolen souls are awaiting an audience in Drezen.
+
+9e26bd76-9052-485d-96bf-f3a2723b25ae
+Seelah will select the most valiant and responsible warriors that will keep their comrades' morale in check and seek out any signs of treason or doubt.
+
+909d35f4-e72a-4278-aa0d-ad202bb5158e
+Seelah has selected the most reliable fighters that will look after their comrades' morale.
+
+f12c656f-90e5-4cbe-bc6c-4ba136ce7e66
+"Seelah, what do you bring to the council?"
+
+ec5fb313-0b89-429f-8048-30309b4843e0
+"Seelah, what's your plan?"
+
+ae86b42e-60ff-43d4-b70c-b3606b96fd68
+{g|Leadership2_1}[Choice effects]{/g} "Seelah, mobilize the priests and the paladins to raise awareness."
+
+27831d93-56a7-41e5-90ae-378f70afd921
+"I'm on this council too." {n}Seelah salutes briskly.{/n} "We'll be racking our brains on how to improve troop morale. I reckon the key is to back up our words with actions. Lead your soldiers by example — and they'll be eager to follow!"
+
+3a86dbec-4299-41df-ab5c-6482bd4ad9ba
+{g|Leadership3_1}[Choice effects]{/g} "Seelah, summon the knights and paladins."
+
+abb9f79d-bc64-485a-af63-0769d198b951
+"The words of Seelah and the other faithful did their job, inspiring the formerly doubt-filled. However, the more cynical officers grumble that preaching doesn't fill empty stomachs."
+
+9049571a-f577-49da-bda8-f4625b9f280e
+{g|Leadership4_1}[Choice effects]{/g} "Seelah, send the preachers to inspire others to volunteer."
+
+8de5f209-388a-4235-b1e7-0a138ee1fb1a
+{g|Leadership5_1}[Choice effects]{/g} "Seelah, see to the construction of the monuments."
+
+4ce296d9-e15d-4e66-bf2e-cc9b92629960
+{g|Leadership6_1}[Choice effects]{/g} "Seelah, we will reach out to the soldiers and appeal to their conscience."
+
+0e8427b9-e968-42b4-aeee-616b7681abb2
+{g|Leadership7_1}[Choice effects]{/g} "Seelah, your advice is sound. Tell them to send us holy relics."
+
+bf93e7c9-e0b1-436e-b7a2-75267c7e7dc1
+{g|Leadership8_1}[Choice effects]{/g} "Seelah, we'll greet our guests with a celebration."
+
+e4939b9d-3aec-4741-9709-230484d38ac2
+"That's your kind of plan, Seelah. It hinges on an extraordinarily optimistic view of human nature. I, for one, believe that, no matter what, the Captain will certainly be foolish enough to give the order, and his troops will be foolish enough to carry it out."
+
+95089962-b9ee-4b13-83e4-3db9250463ab
+Seelah's plan worked: shamed by hearing the words of the Commander's loyal officers, the soldiers willingly turned in the instigators, restoring the army's obedience.
+
+1c7e4168-00b6-485a-b992-ba0d50e30760
+"Seelah, do we really need only the bravest and most capable for our infantry?"
+
+e5884f03-1b8c-4f40-a82a-cb4c333b81f8
+"Seelah, have you ever commanded an army before?"
+
+8e71f1e5-8f0e-404d-9824-955eda9a7202
+"Well, Commander, your sister Seelah is no renowned general, but she's spent half her life tussling with evil. It looks like I'll be stepping up on behalf of all of Iomedae's faithful here! I hope my advice will prove useful."
+
+b4c68e6d-e579-446d-9b6e-e725c07c681a
+{n}A cheeky smile blossoms on Seelah's face.{/n} "You know, I think I might hit the arena once or twice myself, to test the rookies. It'll be a nice warm-up!"
+
+36ffb881-94b1-4cf5-a2a2-38ee3b439dec
+"Why rangers, Seelah?"
+
+42f6a527-be5a-4af7-a83d-e8ee6bcdcc6e
+"It's good to know you're not about to start throwing away the lives of your soldiers. Not all generals," {n}Seelah pauses to glare at Captain Odan with undisguised anger,{/n} "treat their soldiers in the same way."
+
+e3f41e32-3b25-4ede-8e54-39cfef05cf1b
+{n}Seelah's expression darkens.{/n} "Untrained, practically unarmed peasants in the rear... A perfect target."
+
+3c167386-8253-46f7-951d-41d90db556f7
+"Seelah, what advantages do paladins offer?"
+
+66d2566d-3cc8-4206-b8a7-9aa4baff9f5c
+"Seelah, isn't it rash to rely on a cavalry charge?"
+
+ac99c469-f124-4094-9975-d73656755e68
+{n}Seelah snorts.{/n} "You can't win a war by sitting on your hands. Especially against an innumerable force of demons who keep pouring out of the Abyss. We must strive for victory, live for it — that's the only way we'll put an end to them."
+
+5fad3ccd-74fc-4d2b-8f7e-1e0f112b10ab
+"Seelah, are the warpriests battle-ready?"
+
+a4a275c7-a9a0-4e70-815a-b38f880e6bd1
+"Seelah, what strategy do you suggest?"
+
+95c2892b-8ea2-481f-8d13-06ff5bb39e7f
+{g|Military7_1}[Choice effects]{/g} "Seelah, explain to the cavalry's officers what we expect from them."
+
+0eadf95b-6831-4203-b693-b97b05fefc2b
+"Seelah, tell me more about Lastwall."
+
+639e1166-25f2-4785-a601-68233bc79f77
+"Do you really have faith in me, Seelah? But why? You're a paladin, can't you sense the evil in my heart?"
+
+59d4daa7-c412-49d3-83e4-7203fd0e6c08
+"You took a leap of faith when you accepted me, Seelah. Aren't you afraid I will lose control? Then you would feel even worse than if you had never trusted me."
+
+104b669d-a04c-4425-98c6-d7e60f3d2b09
+"Seelah, a ball gown would suit you very nicely. Or any dress."
+
+f59d1183-f25b-4e8c-b55b-25ccf29fd176
+"Come now, Seelah. Don't be such a sourpuss. I am trying earnestly to be a good comrade! I would dearly like to chat with you..."
+
+a45f2e43-5f75-4a25-8b3b-75dab8930f21
+"Another stopping place, another troubled sleep interrupted by the snores of my adored companions. Seelah, could you perhaps sleep a little farther away from me? A mile should do it."
+
+8887eb83-fa25-476f-bcfd-ec58f17f627a
+"Seelah, my dear, won't you tell me again how sinful and morally bankrupt my lifestyle is and how I must see the error of my ways? Your lectures always send me straight to sleep."
+
+f48946f1-b649-48db-97d0-26a0165aa203
+"You are shivering from the cold, Seelah. It makes you look so girlish, and I find it thoroughly charming."
+
+ce022125-828c-49d0-b402-c80708eca7e2
+"Seelah the Shivering, charming counts with her girlish trembling, ha! But seriously, if I'm shivering, it's because I don't like being near you. You give me the creeps."
+
+f5489d75-6792-44af-8d0f-fd21b64f653a
+"Your hope and bravery call to people, Seelah. But if their hopes don't come true and their fates don't change for the better, what can you give them instead?"
+
+c1605ad6-24d9-4632-98d9-2aace2fe2790
+"Poor Seelah, you were so hopeful that I would join the light and that we would fervently pray to our goddesses side by side! It's so charming to see you try to hide your disappointment!"
+
+2ecfbfc0-7fc5-4d82-90ac-bd2e2c88b827
+"Fighting against yourself is so wearing, but freedom is so uplifting... Let us be free together, Seelah."
+
+bc7a33e7-ab71-400d-95b8-21301f8cfc73
+"No, Seelah, everything's fine. I was just thinking about... the past. It's too bad you can't beat that into submission for me."
+
+a3ecfe9e-b242-4c67-8895-8c2008cf20c3
+"Please, Seelah, believe in me! Sometimes I really need to hear that..."
+
+f62bedb2-1896-4fa8-9fc1-126dc73050a8
+"Not calling me sister anymore, is that right, Seelah? Well, I will keep calling you sister. So that you always remember that little birds die."
+
+a39d24a3-6235-4756-b062-454d40a6c201
+"So, is my plumage an extension of my head? Focus, Seelah..."
+
+e62ffcee-9e5b-4af9-9f11-7078c274d9d8
+"Don't think I don't approve of you if I turn away, Seelah. It's not that. It's private."
+
+cdd7cb9f-ebc1-4bf7-9711-ebb68e922141
+"Seriously? Out of everybody in the party, you picked me? I learned the cups and balls trick before I could talk, you little punk! Now sit down and let sister Seelah show you how it's done!"
+
+c989674a-27fd-42cb-bc32-faef822caa46
+"Oh, do forgive me, Seelah. We only intended to pray to Iomedae, but then things simply escalated from there."
+
+ba4ade7e-ae1a-4bf5-a8a3-cda9b892a7a0
+{n}Seelah kneels before the light, offering up a prayer to {g|Iomedae}Iomedae{/g}.{/n}
+
+772005bb-6784-4dd8-aab4-0779f3e992ff
+"Relax, friend, we're not demons or cultists! Don't poke my eye out with that thing, all right? We fell down here during the attack. I'm Seelah, that's Anevia and this is our new friend. We're looking for a way back to the surface."
+
+cd9144d2-f7f9-402e-b009-4e31a458b31a
+"He didn't get these wounds from the fall..." {n}Seelah's eyes warily scan the area.{/n} "Be on your guard. Whatever killed him likely hasn't gone far."
+
+a225c8c0-5bad-4a80-953c-0ba7b958556c
+{n}Seelah frowns.{/n} "Wait, don't do anything rash. These guys may not look like angels, but they're not attacking us. And they probably know a way out of here. Let's give them a chance."
+
+9222c2da-3c1e-462f-b25d-009d0ca99de6
+"In {g|Kenabres}Kenabres{/g} they're called the mongrels. People say that they come up to the surface at night and eat anyone foolish enough to wander alone after midnight." {n}Seelah turns to Lann and Wenduag.{/n} "To tell you the truth, I thought you guys were just a tale to tell kids at night."
+
+c8db33ee-6b26-4c09-9770-64c151b4d894
+"I am a paladin just like you, Seelah. And I came here to protect this world from evil."
+
+5b72532c-d363-4da4-a1b7-73ef9dfc999f
+"Well, I'm Seelah, paladin by the grace of Iomedae. I crossed the whole continent to come to Mendev and fight demons... And well, I've been fighting for a while now."
+
+4e6eae24-9015-42d5-a6f2-7c6e38981664
+{n}Seelah frowns.{/n} "Yeah, we've seen plenty of your type before..."
+
+b1704f02-92f9-458c-817f-0813f67f0354
+"Seelah's right. But if you want somebody to trust you, you don't earn that trust by forcing 'em to blab about themselves when they don't wanna."
+
+390d9b5b-080a-4670-97f3-856acfa5e9e2
+{n}Seelah's expression darkens.{/n} "I don't even want to think what might be happening up there in the city. Kenabres has lost the protection of Terendelev, and of the {g|wardstone}Wardstone{/g} too, looks like! It's a relic without equal, it was placed here personally by Iomedae's herald with the goddess's blessing. I really wanted to go see it, to pray before it... But there's no point worrying about a stone when there are people dying in the streets."
+
+fb38e7c2-8a47-49bd-8fae-542512e72189
+"To summarize: there are three of us, with five working legs, three pairs of decent hands, two clear heads and one made of wood — that's mine. Underground monsters, beware!" {n}Seelah winks.{/n} "Anevia, you stay behind us. You're in no fit state to fight. If we do come up against anything, the two of us will try to manage on our own first. Well, onward! May the good deities lead us back to the open sky soon!"
+
+148b1efa-ed94-4333-af8c-0440080c2362
+{n}A smile blossoms on Seelah's face. She shakes your hand firmly.{/n}
+
+7430ee54-d868-44f8-b17d-e555bc38f93e
+{n}Seelah peers closely at the sword, which seems utterly unexceptional to you.{/n} "Wait, this is... No, it can't be!" {n}Her eyes light up.{/n} "I know that hilt! Radiance, the sword of the great Yaniel, that's what this is. But... it's meant to be in the Tower of Estrod with all the other relics... That's what I heard, at least."
+
+8a38883d-eae9-40fc-88ba-6c572503e06c
+{n}Seelah stares at you in amazement.{/n} "Just look at that! The sword seemed to greet you! It senses the hand of a {d|c0 paladin radiance}paladin{/d}. And it seems relieved that we're freeing it from the demons' clutches. A good omen and a good find!"
+
+5d9ff4e8-210e-48f4-8152-15ba5c952c34
+{n}Seelah laughs.{/n} "I have this weird feeling, like I'm rescuing a fellow warrior from a dungeon. We can't just abandon it, even if it's no use to us. It's no use to anyone down here. But what if it could be repaired?"
+
+ac87ffb2-22bc-41c1-be80-30df96f5c31f
+{n}Seelah frowns.{/n} "Now... nothing, I guess. But this sword was legendary in its day! People say that when Yaniel held it, the blade would glow, striking demons left and right. Soldiers would see Radiance's light from afar and take heart, rushing into the fray and winning. But I don't know what's wrong with it now, or how to restore its power. All I can sense is that they made a mockery of it."
+
+b832d4fb-7f94-4d07-9466-e65dce3bfb08
+"She died as she lived — with pride. She was one of the people defending {g|Drezen}Drezen{/g} to the very end — that's where she perished." {n}Seelah frowns.{/n} "Don't take this the wrong way, but I really hope that she died quickly — a hero's death. Because if she didn't... that means she was taken prisoner and had to endure unspeakable horrors. I wouldn't wish that on anyone."
+
+0235a156-7465-4eab-89e2-400603b45c4b
+"I suppose you could say that." {n}Seelah chuckles.{/n} "I've always felt an affinity with Yaniel. I know what it's like to not be what your commanders want you to be. Whenever I used to feel under pressure, I always thought of Yaniel: maybe some people didn't like how she was, but to the people she pulled out of the Worldwound, she was perfect. And to the people she saved on the battlefield, she was incredible. And to those who keep her memory alive, she is a hero. That's what counts."
+
+ca870a6e-c5eb-4277-915d-35ddc81b516a
+"And one last thing. The Eagle Watch has lost a lot of soldiers recently — some were killed, but others simply haven't been seen since the attack. In the chaos that is now {g|Kenabres}Kenabres{/g}, it's next to impossible to confirm anything for sure." {n}Irabeth clears her throat.{/n} "One of the missing fighters is Jannah Aldori, a new recruit in the Watch. She got along well with Seelah and she often went drinking with her. I honestly thought Seelah and Jannah had died together. But now Seelah's returned with you and there's no sign of Jannah. If you learn anything of her whereabouts when you're out in the city, please report back."
+
+5a68a18d-b7e7-45a5-8fbe-d92e19773d4c
+{n}Seelah's face turns gray and she grips her weapon tighter.{/n} "Sacrilege... She's making a mockery of what is most noble and good in us..."
+
+e284c4f0-7bbe-4006-9dba-d64c06dea1c7
+"Yes, the local commanders got roped into dealing with this. Some idiot kids trying to break into the Wardstone, apparently some of ours, but who even knows these days..." {n}Seelah sighs.{/n} "I know there's no evil in you. I can sense things like that. But what you did was so stupid and impulsive — someone could have got hurt. I know from experience..."
+
+3adaae5d-805c-46e3-bc20-683f89e49172
+{n}The old man fixes his eyes on Seelah.{/n} "Lest you forget, girl: we may serve the same goddess, but you are not an inquisitor. Don't question the way I choose to serve {g|Iomedae}Iomedae{/g}, and I won't question yours."
+
+653b8f3e-b3f0-4c4c-a5d2-260acbcbf9b6
+"I am {g|Iomedae}Iomedae's{/g} paladin!" {n}Seelah raises the sacred symbol above her head.{/n} "If I lie, may the goddess strike me down: what you intend to do is a repugnant crime and heinous blasphemy!"
+
+5eac36b4-5446-413b-93f3-15a0b52a2b1c
+"They're insane!" {n}Seelah looks at you, terror in her eyes.{/n} "We've got to do something!"
+
+a732cdbf-6873-448b-8dd4-3ac18bce3329
+{n}Seelah raises her sword with a flourish and uses its smooth surface as a mirror.{/n} "What about my physiognomy? Sour enough for his lordship? Don't worry, another few minutes with the dazzling count here and it will sour like week-old milk."
+
+36b97d6f-3064-4045-aede-7ed219f004e3
+"What?" {n}Seelah's eyes flash.{/n} "As long as I'm alive, such an atrocity cannot stand." {n}Seelah dashes forward and breaks the chains.{/n}
+
+713cf268-d77f-4a80-99af-0059da519aaf
+"A noble paladin, following a leader who is not so noble. What a curious story. But it doesn't matter. I'm leaving. I hope none of you regrets your decision. Neither you, Seelah, nor you, {name}."
+
+35e9e331-032f-4a59-9be5-3bc250731afa
+{n}Seelah can't hold back an astounded yelp.{/n} "You've been in this dungeon since the day Drezen fell, sister? But that's over seventy years!"
+
+ba1d58ec-fde3-4cb5-bdbf-4dfdc6df6f66
+"Nothing bad has happened yet, right? You can still back out? Sure you can!" {n}Seelah watches your face cautiously.{/n} "And you will, won't you? Why do we need this darkness? Tell me! We don't need it to chop demons' horns off."
+
+4a9608fb-6aba-4b38-aece-b05aaf0d069d
+"A demon leading the crusade to slake their own thirst for power. What a disgrace!" {n}Seelah spits.{/n}
+
+40493624-d802-427c-b449-b17693809b48
+"Seelah, are you all right?"
+
+f57a34c5-e025-4026-93e4-50ebed5321c3
+"Let's go, Seelah. We'll teach these monsters a lesson."
+
+c4c02622-55af-4656-b0e0-d64e357489e5
+{n}Seelah stomps her armored boot on a gargoyle's wing, and with all her might pierces the monster with her sword. Turning around, she yells to the soldiers.{/n} "Shit your pants over there? Come on, don't chicken out on us now! This is how we deal with them!"
+
+107ecf9e-3179-44b6-85af-92df24e98b2e
+{n}Seelah looks at Daeran in confusion, and a second later bursts into giggles.{/n} "Have the fumes gone to your head, Count? Look at you, cracking jokes like the worst kind of bawd!"
+
+d76a43f2-99da-4484-828b-a20589372144
+"{g|Hellknights}Hellknights{/g}!" {n}Seelah curls her fists, almost grunting through her clenched teeth.{/n} "I'd rather ally with a flesh-eating poisonous wyvern!"
+
+c84d8400-1d3a-4759-9626-58992e944332
+{n}Seelah throws out her arm in a warning gesture and whispers out of the corner of her mouth:{/n} "Not bodies. Ghouls."
+
+47b3e658-0214-4048-9524-3697f9fb4807
+"Not so loud, Seelah. He needs quiet now, not battle cries."
+
+5ae7406e-3975-4ff0-a513-31c8cb5f1be3
+{n}Cursing, Seelah rushes to help Irabeth.{/n}
+
+515c2c0b-c9a4-4cd7-9a62-59ea2e4d5929
+{n}Seelah grips her weapon and chokes out an oath.{/n} "A lich, an actual lich... This isn't a laughing matter. We might not get out of this alive!"
+
+a4d90554-440e-4533-9a6e-17ed2fda63bd
+{n}Seelah frowns.{/n} "What do you think you're doing?"
+
+110a6a48-bb5e-47b6-b13d-83dac312c853
+Reined Seelah in.
+
+9df4fc73-b234-49e2-b84a-337c9bf0c079
+"Seelah, show some discipline."
+
+5077573b-20d0-43f8-aa40-a528902fc989
+Supported Seelah.
+
+33d6e275-5652-4b43-86d2-0223ec9c379b
+[Take Seelah's flask] "Give me a sip too. To Her Majesty's health!"
+
+d31b7b0a-cac1-447a-a566-4287dc50d109
+"What did I do? I barked like crazy! Goblins are afraid of dogs, you know. So they all went wild and started running around. I spot my sword — and they spot me! So I jump over to the fire — wearing nothing but my mail shirt — and I grab my sword and I yell in my big tough voice: 'O Inheritor, grant me the power to crush these filthy creatures!' My sword's shining, the goblins are screaming, I jump to attack them, and they fight back... But I fought them off somehow. But ever since then I never take a step without my weapon!" {n}Seelah takes a sip from the flask.{/n}
+
+9549443c-f2c3-442c-b833-6867e3dcc74a
+{n}The knights quickly snap to attention. Seelah raises the flask and says loudly,{/n} "Right you are, Commander {g|Irabeth}Tirabade{/g}! We are but drinking to the Queen's health!"
+
+524c6bba-0d21-418b-bf33-657e4e26bdb1
+{n}Seelah becomes serious and puts the flask away.{/n} "My apologies, Commander."
+
+49afe277-2864-4dda-9223-2bca59a293de
+"I would have said that people don't go around handing out gifts like this for no reason. Especially not Areelu, if she is the one behind this. But I think I should keep out of this decision. It feels like the fate of Golarion might hinge on this, or something like that." {n}Seelah falters.{/n} "You decide, and I'll accept your decision, whatever it is."
+
+2cab4b7a-dbd8-48a9-8e34-2cd575ed7ba3
+{n}Seelah gives an awkward shrug.{/n} "Well, what can I say? I'm a paradox."
+
+c95019e8-1f06-4fcc-8c37-54387ac8fe95
+"Seelah, how many times do I have to tell you? Slow down! With you it's always act first, think later!"
+
+412c2ac9-ab1c-46b9-8188-53e620c98954
+"Seelah? Are you all right?"
+
+e076a7b0-1088-4303-b464-9b13c7ea16b6
+{n}Seelah's dark eyes are filled with tears. She blinks them away.{/n}
+
+18b09f85-857c-4d7d-9796-800891801e98
+"Everything was different for a moment. My life was... different. As if {g|Acemi}Acemi{/g}, the paladin who died because of me, was still alive. She trained me and we traveled all over, and so much happened..." {n}Seelah grits her teeth.{/n} "It was an illusion. Let's just drop it."
+
+c9ace074-1812-4bb8-a1a5-996a43a5817f
+Told Seelah that you like your power, regardless of its evil nature.
+
+b10ae88a-099f-471f-851f-d26115ee9445
+Told Seelah that you have misgivings about the evil nature of your abilities.
+
+a2ab6210-c156-4dda-9b50-93cccd27a91a
+{n}Seelah strides boldly up to you and gives you a grim look.{/n} "Listen, I'm not happy to have to say this to a friend, a friend who crawled through caves with me, a friend who took Drezen with me, but... You know I'm not one for beating about the bush, so I'll just say it: the more I see of this power of yours, the less I like it. It reeks of death and evil. I can sense these things."
+
+d7159d3b-4103-4562-899f-a690de9f3e72
+{n}Seelah frowns.{/n} "Look. I don't want to think that you've already been pulled too far into the darkness, that you're beyond saving. Too much depends on you. Just remember this — we're not supposed to become worse than the demons we're fighting against!"
+
+f1916783-55ec-4068-b6c6-e727048d02ed
+{n}Seelah visibly relaxes.{/n} "Obviously, you didn't choose this power, it was dropped on all of us out of the blue. And I know that our mission demands total commitment. Anyway, sorry for springing all this on you. I'll go and get some fresh air and raise a prayer to the goddess — that usually clears my head."
+
+54008426-ac14-4adf-8dff-53d08e606567
+{n}Seelah lowers her head and whispers quietly,{/n} "The day will come. The day will come when we'll banish every last trace of corruption."
+
+e423a41c-5dad-4dce-88b2-254e600af1bb
+{n}Seelah's eyes narrow in Camellia's direction, and in a casual tone she asks,{/n} "There is something captivating about it, isn't there?"
+
+78a8cfb0-9fc6-4319-bd1c-75a9de18263c
+"'A baby that picked up a knife' could be used to describe somebody else I know," {n}mutters Seelah. And then she adds more loudly,{/n} "Demons aren't children. Don't compare the two, not even as a joke."
+
+8c73e2c8-7812-4468-a049-98c8eaf6ea38
+{n}Seelah frowns.{/n} "What's with all the questions? We already know enough about this freak to destroy him once and for all. The best thing for everyone is if the knowledge of how he came to be like that dies with him."
+
+d22f769e-3b3a-460b-b442-3b8b8edb4e46
+"Oh no, {name}, it looks like we're done for! This fearsome horde's going to overwhelm us at any moment... I'm so afraid, I can barely stand or hold my sword!" {n}Seelah barks a laugh, piercing the cultist with a glare.{/n}
+
+31d8bd2b-6cbf-4390-987f-c9de0f5ae932
+"You can find reasons aplenty in any Mendevian cemetery, Seelah. Each one is full of the graves of those who were deceived by demons."
+
+1fac0b20-e574-4fc1-a577-511786d41dd7
+{n}Seelah reacts faster than thought, stopping your swing.{/n} "Enough! We are crusaders, not villains. I can sense good in this woman, but if my word is not enough for you — let the Hand of the Inheritor take a look at her. He will recognize the true Yaniel!"
+
+40b33957-8853-440e-9123-93de74f1b691
+"Thank you, sister," {n}the woman says softly to Seelah. Then, without sparing you another glance, she turns and strolls away in the direction of Iomedae's herald and your companions.{/n}
+
+ea7b7089-b175-4bed-956b-0d7c28522304
+Killed Seelah.
+
+439b5452-5a80-4df8-a367-c5d37ce2689c
+[Kill Seelah] "You brought this on yourself!"
+
+65384179-6dd2-48ec-97e0-2a15c9b7c4b8
+{n}Seelah moves to step forward, but the look in Jannah's eyes stops her.{/n}
+
+b9e3ba73-9c80-480d-b019-f5b95b26b3e1
+"The truth is, I soon realized that I'd been a foolish, silly girl. I realized it before the attack on Kenabres. But then I met you, Seelah, and that changed everything. Everything came so easily to you, you could fall into the caves below Kenabres, survive terrible dangers, and then turn around and order a tankard of ale in the tavern like it was nothing. You went on the attack on the Gray Garrison and came back stronger than ever, now a companion of Iomedae's chosen one. And then there's your motto: 'No glory without risk!' You were the heroine I had always imagined myself to be. And that's why I insisted on going with you after those demons — I wanted to keep up with you, to prove I was as good as you! And look where it's led me..." {n}Jannah breaks into wracking sobs.{/n}
+
+003b0948-3ef3-4e05-b753-759d6190e886
+{n}Seelah looks shaken and distraught. Gritting her teeth, she turns away.{/n} "You heard what the Commander said, Jannah. Wait here, and soldiers from Drezen will come for you and take you to prison. And... if it counts for anything, I'm sorry."
+
+09d6f8d0-35a0-44ef-aed7-515eb152e196
+"What? That's no kind of justice!" {n}Seelah breaks the lock off the cage in a single strike.{/n} "Jannah, come on, let's get you out of here. Commander, if you're so eager to punish people for their mistakes — think long and hard about whether you want me by your side!"
+
+cb02f7dd-05d0-45d2-bec9-94523ed28131
+"We're not in Regill's party. He doesn't decide here." {n}Seelah looks at you, seeming unaffected by Woljif's barbed comments.{/n}
+
+df3fc127-676b-4af9-9b53-30cfb8947a7b
+{n}Scowling stubbornly, Seelah looks at you.{/n} "I will only answer to you, {name}. You have the right to ask me what the hell I think I'm doing. But tell the rest of them to back off and keep their noses out of it."
+
+ae6068bd-5dc8-4224-add4-f0ff6d1a1de3
+{n}Seelah looks shaken and distraught. Gritting her teeth, she breaks the lock off the cage.{/n} "You heard what the Commander said, Jannah. You're free to go wherever. And... if it counts for anything, I'm sorry."
+
+4ea9c53c-9f37-4d44-a06a-1791a7789523
+{n}Seelah, who has been watching the knight with an expression of sympathy, suddenly jerks away and points to the farthest cage. Another figure is hunkered down inside it, one that seems suspiciously familiar... It looks like Jannah, the new recruit of the Eagle Watch who deserted after the demon attack on the Houndhearts' camp!{/n}
+
+03856282-ca52-441a-9588-9105c0368392
+"You're a strong one, brother! I mean, uh, grandfather. Oh, I don't know what to call you, good sir!" {n}Seelah smiles widely and salutes.{/n}
+
+52930413-ded5-468d-a0ab-04f631c84b6b
+"Seelah... I kind of like her, but I kind of don't. She always treats me like I'm just some little pipsqueak. I mean, I know I'm little, but I'm still a dragon!"
+
+25b29e3b-52f2-425f-8267-ca0cd328e72f
+{n}Seelah sighs bitterly.{/n} "Fear and mistrust have killed many worthy people."
+
+c5aef8ba-56fe-41c9-8fcc-f78b28e3b538
+"I don't know who this Zanedra is, but I'd really like to get my hands on her and... have a chat. Or maybe I'd just reach for my weapon right away — it speaks a language all its own. But a quick death is too good for cultist scum like her — after all the fear and torment and pain they put people through!" {n}After this furious outburst, Seelah calms down again and speaks to Kyado:{/n} "Stay strong, kid. You're not alone — you have allies. And your faith."
+
+1e68ad5f-1b82-4edc-8619-59dac707a278
+{n}Seelah is muttering promises of a slow, painful death.{/n} "Let the boy go, and you will have the chance to survive this day and stand trial for your deeds. One chance."
+
+403fb17f-d141-4407-90e7-d31afe4813df
+"Demons? You're saying that he leaves dead demons? What madness is this? But at least we know now who is responsible for the bodies in the shrine." {n}Seelah's eyes are ablaze.{/n}
+
+7b086b27-1991-42e0-b72f-9504f2d8ece3
+{n}Seelah, her eyes flashing, reaches for her weapon.{/n} "This is going to turn ugly. We need to get the people back to their houses... while we deal with the balor!"
+
+d7292d4b-587e-4743-aa2f-a8daba4f9ef3
+"This is all wrong! Crusaders, brothers-in-arms, shouldn't fight each other!" {n}Seelah says heatedly, gesturing between you.{/n} "{name}, please, show mercy. He attacked you first... but your power is frightening and confusing — and this poor man has just lost his ward."
+
+977c0371-b9b5-4e57-b7e4-d2e280948d7a
+{n}Seelah grimaces.{/n} "I know that our mission is important, and I know we can't allow ourselves to get distracted by feelings and emotions, but... smashing skulls and eviscerating bodies, just to entertain these evil creatures? Iomedae, it makes me sick just to think about it!"
+
+ef6a013e-c1aa-4b8d-acab-6f4fcf8f0704
+"Well, you know what?" {n}Seelah looks at Trever reproachfully.{/n} "It is far more common for servants to forsake the gods to whom they have sworn allegiance!"
+
+25620a8a-2a6d-4cc5-bf04-08c67c0de46c
+{n}Seelah looks grim but says nothing. She gives Kestoglyr a silent salute, and gazes at him for a long moment before she finally speaks.{/n} "May the person you used to be rest in peace. By all accounts, he was a good guy."
+
+f2a9de7d-b614-4aff-a86a-53ed2768dce6
+"You're incorrigible! Stop scaring them, they've suffered enough!" {n}Seelah gives the aasimars her friendliest smile.{/n} "You're safe now. No one is going to hurt you. This wild-looking gal here was just jesting with you. Weren't you, Wenduag?" {n}Seelah gives the huntress a pointed look.{/n}
+
+f6b9dfc3-b711-4c55-a7c1-6fd0911dc563
+{n}Seelah looks at the slaves with pain in her eyes.{/n} "Oh, you poor souls, what have they done to you...? It's over now, we'll help you. Where are you from?"
+
+c668cf4e-9dcd-4280-9784-4a40808d2f5f
+"Wow, that's quite a journey you've had... But you will get to Nerosyan and see your family again, I swear on my life. You hear me? Hold tight, and tell the others not to lose heart." {n}Seelah turns to you and says gravely,{/n} "We must get them out of here at all costs. We can't abandon our own. If we did, we'd be worse than scum."
+
+1d1f59c5-242e-4170-a696-be6d3a0164c4
+"You would let this scoundrel escape punishment? Wake up, Commander! Or I'll take care of it myself!" {n}Seelah adjusts her grip on her weapon, but hesitates, unable to strike. She hisses furiously, looking at the trembling Latverk.{/n} "Damn, I can't kill an unarmed man right after he surrendered, no matter how guilty he is! It would be murder, not justice!"
+
+805710c5-33dd-4c72-be49-09f0c5cfbfb7
+{n}Seelah looks at Red Mask with confusion.{/n} "Curse that wretch! I should have sensed the evil within him! An aasimar, a child of light — how could he have done such monstrous things...?"
+
+712a7d6f-2737-4181-a8ef-05c9308bb905
+{n}Red Mask seems to soften slightly in the face of Seelah's distress.{/n} "It's not surprising you didn't sense the rot in his heart. Latverk has learned how to conceal his true nature. None of us suspected him either, even though some of my companions in misfortune were skilled at sensing evil in its many forms."
+
+3bddde90-ff80-4eee-b2f1-151f6e8cac15
+{n}For a moment Seelah looks around in shock, but then her dark eyes flash with anger.{/n} "Someone will answer for all this evil. And for torturing our friend!"
+
+f0adfa23-667c-403a-afba-e95390d473be
+"I think I see a similar fire in the eyes of Seelah, your companion. She is brave, and her heart is in the right place, but she's so young... She still has a lot to learn."
+
+448e80c2-0b58-4505-bca9-4a7d968d0524
+"So, you know everyone in this hole, {name}? Does Nocticula herself have somebody looking after you?" {n}Seelah frowns.{/n}
+
+5e59afb0-0e5d-4311-beea-7fdd21769e8f
+{n}Seelah frowns.{/n} "I don't know who this is or what kind of association you have, but he reeks more strongly of evil than any other demon in this cursed city."
+
+6d750603-f111-4abb-80a5-96e9ea34c93a
+{n}Seelah observes the battlefield and nods in satisfaction.{/n} "{name}, I am glad to see you again, and I'm sure we'll spend many hours around the campfire sharing stories of the last few months, but... Now we must help the wounded."
+
+1ae5d356-ddba-424b-ba69-e53732b5ada8
+{n}Seelah looks dismissively at a demon corpse that has been cut in half.{/n} "A bunch of demons jumped out of the portal — they didn't even think of trying to go around us. Their desperation made them stronger... but, as usual, it didn't end well for them."
+
+bdd54d07-043b-44ad-9267-19e363b931ab
+{n}Seelah scowls and lowers her eyes.{/n} "We were waiting for you to return and took care of those to whom you showed mercy. Long months full of toil and endless troubles... and it was all reduced to ashes in a single attack."
+
+c80a9d28-4df4-4fa8-af2f-247537f7ed05
+{n}Seelah winks at you.{/n} "So what do you think, Commander? Personally, I'd rather take my chances rowing to this 'another island far from here' in a rusty bucket than make any deals with the Lady in Shadow. I'll steer."
+
+88eb4e3a-29c1-4461-be65-8959448b35d3
+{n}Seelah tries prodding Nenio's side, but not before the question is asked.{/n}
+
+9bc4e16d-1d52-41bc-80c7-6d7e966d06b2
+"You scum! So many good folks died because of filth like you!" {n}Seelah clenches her fists, her eyes burning with rage.{/n}
+
+7b75e310-63ae-41ec-9553-3f4b93e1ccc6
+{n}Woljif gives a sweet smile.{/n} "Pay her no mind, brother. It's just Sister Seelah here still ain't got over the shock of what went down in Kenabres — those scummy crusaders massacred our side, y'know? Seelah lost so many of her brothers and sisters in evil, she did, all of 'em killed by that butcher the people of Mendev call 'the Commander.'"
+
+5f491dcc-12e6-49bb-938c-43a73c658061
+{n}Seelah grits her teeth at the sound of Woljif's words, but with incredible effort forces herself to hold back the stream of curses trying to escape her lips. She simply gives a grim nod, staring daggers at both the halfling and the tiefling in turn.{/n}
+
+1e718920-d4fb-4b15-8d32-ada75d2f4dbb
+{n}Camellia looks past Seelah with contempt.{/n} "He is a demon. I do understand he reminds you of the, ah, repulsive creature you were as an adolescent, but surely you do not intend to raise a spawn of the Abyss to be a paladin of Iomedae? How do you propose to do that? Will you teach him not to tear people apart and feed him blood from your breast instead of milk?"
+
+9342e713-694a-4de2-be2c-fe4805cc2fd4
+"I don't think you understand. Our friend has devoted himself to serving the good goddess, and whenever his emotions run high, Shelyn's light and purity shine forth from within him. It makes demon flesh boil and melt, and our friend is trying to maintain his composure and peace of mind for the safety of your kind. But if you're willing to take the risk..." {n}Seelah grins ominously.{/n}
+
+e3a6d8d9-3b6c-4c4f-9ce5-42bb4f6979cb
+"Bow? How about this instead?" {n}Seelah gestures obscenely at the darkness.{/n}
+
+89a3e2ca-29d1-40cc-aceb-5d3cb9055474
+"Our main purpose is to close the Worldwound... I've repeated these words to myself so many times. I repeated them when I followed you, gritting my teeth when I saw what you were about to become. I believed you were driven by a noble purpose. That what was happening to you wasn't your fault." {n}Seelah raises her head.{/n} "Prove to me that I wasn't wrong to follow you!"
+
+3a2b0d00-f21e-48b3-9e9f-703a9d020604
+"I believed you... Goddess, forgive me for being such a fool!" {n}Seelah adjusts the grip on her weapon, preparing to meet her fate with honor.{/n}
+
+1a8a489f-83e5-4bd2-97ec-e6337ed0c337
+"Of course, they couldn't move the bodies of those poor people whose souls were stolen by that jeweler, Sunhammer or whatever his name is. They've been sheltered in the city. Arsinoe has been looking after 'em, and Seelah's pals from the Houndhearts have been guarding 'em all this time. The demons have attacked a few times and given the knights a thrashing, only Elan was left standing. But none of the victims came to any harm. By Desna, I hope their souls are found so all this won't have been for nothin'."
+
+3f384efa-ffff-4507-bce7-443c5606903e
+{n}Seelah looks a little confused, but her voice is firm.{/n} "It's not my place to gainsay the will of my goddess. But the thing is... I can sense evil, and I don't sense it in your power at all. I just don't. Whatever those horned monsters had planned for you, you definitely aren't playing by their rules."
+
+aba60091-4999-461f-b568-767b0c83e26c
+{n}Seelah's lips press into a thin line, her eyes flashing.{/n} "So that's who I've been following all this time? I believed that together, we could rid the world of the Wound... but now I see that you would rather destroy this world on your own. But mark my words, any evil can be brought to heel — including you!"
+
+0cd66f20-4ad9-41cb-946e-efa401a1b065
+"Don't you worry, Nenio, you'll get your swab." {n}Seelah pats on her scabbard with a chuckle.{/n} "We can get you her entire nose and throat, if you want."
+
+be10e692-d8c1-4c14-918f-48088cd33388
+"Your Majesty! How did this...?" {n}Seelah catches herself. She adds in a quieter, calmer voice,{/n} "Hold on. Help is here."
+
+66675afc-113d-45f0-8fda-1e7005f14347
+{n}Seelah frowns.{/n} "Why? What kind of justice is this?"
+
+99a5bf5d-5068-4e8b-b5ee-49c2b13911b6
+{n}Seelah's gaze darts between the Queen and you. She lays her hand on her weapon, grips it, and lets go — then grips it again.{/n}
+
+91f2afc1-912e-41a7-bb8e-782ed5bf9d5b
+{n}Seelah clutches her holy symbol in her hand and whispers,{/n} "Goodbye, sister. Inheritor, please welcome her with honor into your heavenly army."
+
+87852866-b6ba-4819-99e5-de1e398260c1
+"Do not forsake us," {n}echoes Seelah.{/n} "Do not leave your children in the darkness, O Light of the Sword, but steel our hearts in this hour of terror, and bring us into the light."
+
+0873ce16-d576-4574-b0f7-debd0784b85e
+"Sister..." {n}Irabeth looks at Seelah, lost.{/n} "We both took the same oaths. Do you remember how they go? My strength is not in my sword, but in my heart. If I lose my sword, I have lost a tool. If I betray... If I betray my heart..."
+
+3c8eaafc-de08-40d9-a204-866e2d192f41
+"If I betray my heart, I have died," {n}finishes Seelah.{/n} "But you're alive. And your Nevi is alive! And the goddess hasn't abandoned you. Come on, sister, snap out of it. You must fight and live!"
+
+69c8d016-159f-4d8e-8560-59f57eda5c95
+"It isn't bravado, my friend." {n}Seelah gives Lann a surprisingly serious look.{/n} "It's the reason why I'm still alive. If you let gloom get hold of your soul, even for a moment — that's it, that's your soul, and the strength to keep fighting, gone."
+
+a289bf7d-8324-4d23-8f26-0bffb9af4eb3
+{n}Seelah's words calm him a little. He nods.{/n} "He'll pay. They'll all pay."
+
+d29936b7-2ce5-4612-84e2-98cd7fe02382
+{n}Seelah solemnly drops to one knee in honor of your transformation, but she can barely contain her excitement. Her eyes are shining as she looks at you, and there's a big grin on her face.{/n}
+
+004323a7-a762-450b-92fc-7597eb8168f3
+{n}Seelah stares at the emissary of Heaven in shock, but nevertheless, her hand inches almost unbidden toward her weapon.{/n}
+
+5cfa41da-516c-425e-bbaf-cbb9fe2a0a35
+"I can't bear this waiting anymore! We need to go back to Drezen and organize a search party — there's no way we'll fail to find out what happened to {name}!" {n}Seelah taps her foot impatiently.{/n}
+
+d55036cd-fc8c-4b22-9e70-724295c17a63
+"Oh, Light of the Sword..." {n}Seelah moves as if to drop to one knee before the goddess, but then she notices you and freezes in hesitation, pondering whether she should continue her greeting or rush to you.{/n} "{name}! You're all right!"
+
+2fd9f47d-b26d-4678-a43c-83348864ae58
+"Come on, Commander! You haven't yielded to the demons, so don't you yield now! {name}! {name}!" {n}Seelah's energetic cheering stirs up the soldiers, who start chanting your name.{/n}
+
+81c5fd70-098d-49bd-b1dc-8b2d20ec90be
+"{Name}! Stop!" {n}Seelah stands before you. She is wearing a new set of armor that has been polished to a shine and decorated with Iomedae's sacred symbols.{/n} "Do you even remember your name? Is there anything left of the person you once were?"
+
+699bf1e8-1ccd-4af0-822b-d04f5529e024
+"You are an abomination! I cannot believe I fought side by side with you to liberate Kenabres!" {n}Seelah spits in disgust.{/n}
+
+e09fc6f2-abdc-46dd-af66-c68a758d325e
+"We are here to destroy you before you destroy Golarion." {n}You can hear the determination in Seelah's voice.{/n}
+
+88cff500-857a-450d-b5d1-35f4194431f0
+{n}Seelah's eyes flash dangerously.{/n} "I must warn you — your experience fighting alongside us will not give you an advantage. We've undergone special training. You have become a monster, and the angels of the goddess taught us how to destroy you."
+
+e8e062f7-2f1c-42b5-8730-240349fb2235
+"You're a true friend, Seelah. It's been an honor fighting shoulder to shoulder with you."
+
+f5463e49-dc55-4a5b-b6ec-8b5752470e45
+{n}Seelah salutes you.{/n} "Hey! Well, are we going to stick it to the demons one last time?"
+
+46ef4311-24a5-45b4-99e4-79caae67ee2b
+"I haven't had time to think about it — all my thoughts are focused on the coming battle! But... I think I'll stay here awhile, help the world to return to a life of peace and catch any demons that aren't dead yet. And I don't want to leave all my friends either! When we have peace, there will finally be time to spend with everybody. And after that... well, stick a pin in a map. There are still many places in the world where people are in need of help. Wherever the road takes me, I'll find a way to put my blade to use. And this block of wood!" {n}Seelah taps her head lightly with her knuckles and gives you a broad smile.{/n}
+
+59c022a8-69f3-467f-882f-37508b632300
+{n}Seelah shrugs.{/n} "I don't know yet. I'll probably go back to being a knight errant, going wherever the road takes me, helping folk where I can... But let's win first and we can think about that later!"
+
+32297b44-97e4-4ac3-baa8-ffb6ad3e8193
+{n}Seelah sadly shakes her head.{/n} "After everything that's happened, I don't know if my heart can take any more. I need to fix myself somehow. A paladin whose head's a mess is no use to anybody. So I don't know what I'll do. I'll go... somewhere. Maybe I'll retreat to a quiet enclave of the church of Iomedae in Nerosyan — I can ask the faithful for their counsel."
+
+1a975699-2935-4f56-ac1d-2ff4e12beaee
+"Back at you, {name}." {n}Seelah squeezes your shoulder for a moment.{/n} "So, are we going to go crush some demons? It's time to show them the door once and for all!"
+
+b9c579a4-751e-4c1b-9127-d44a7e79bd31
+"Of course. It was a long time ago now, but it's not the kinda thing you forget. I was almost buried alive. If it wasn't for you and Seelah, my skull would be lyin' in some cave right now with only rats for company."
+
+ee711c78-8f48-48c8-96f2-fe7d5e66d5b6
+"Seelah."
+
+3d9ece73-589c-48e0-aa4b-5e59af4fa2fe
+Told Seelah that life is chaos and just a matter of chance.
+
+d64d1c2e-ad3a-48e1-9864-1cbe3dec8144
+Approved of Seelah's breezy attitude to loss.
+
+6440eb26-d6ee-443b-9131-6d5f871259b4
+Disapproved of Seelah's seeming insensitivity to the mourners in Kenabres and lack of respect for tradition.
+
+bcf83ec7-a7da-4a0f-ae76-0eb44abc3483
+Questioned Seelah's carefree attitude.
+
+6f4d3d53-af3c-4a64-a982-83df934ced6c
+Scoffed at the criminal's selfless act in Seelah's story.
+
+32399175-ffc7-4c9c-9af9-4c04d608ceae
+"Seelah, I found your friend Jannah imprisoned by vrocks."
+
+a59cbac4-dd73-4049-afae-fb627734ee3b
+Banished Seelah.
+
+9719ed11-34c6-471e-be2a-c831835696a7
+Reassured Seelah.
+
+ff90c62a-dfc5-4511-9ff2-67254322e692
+{n}Seelah smiles at you warmly.{/n} "Hey there! During that march through the dungeon, we never got the chance to exchange a proper greeting. It's high time I shake your hand!"
+
+1133fc85-56a6-4a9b-a5af-91d65317e5bf
+{n}Seelah's gaze sharpens momentarily. Then she sighs.{/n} "That's a serious question and a good one. You should ask it of your companions. But it's a long story. To start with, twelve years ago I was nothing like the person I am now. I roamed the streets of Solku with the other homeless orphans. I stole, I fought, I was a hired sword for a bit. Not the proper origin for a paladin, is it?"
+
+2a34986a-d8d2-415d-a2a7-2663c2f94da8
+"A thief lives one day at a time, that's what they say. I was the type that never thought past the next job. Anyhow, I was able to sneak into the knights' camp and steal one of their mithral helms." {n}Seelah pauses, her voice sad and measured.{/n} "And I was right there when a gnoll attacked the helm's owner — Acemi was her name — and dealt a blow to her unprotected head. A gnoll like all those others she'd fearlessly driven from the gates of Solku. That one blow was fatal, but who was really to blame for her death — the gnoll attacker or the young thief named Seelah?"
+
+42985e09-1f99-41be-b300-16ecb4b7a8eb
+"A very long one!" {n}Seelah looks at you cheerfully.{/n} "A traveler is expected to have amusing stories. Unfortunately, I have only three tales of any interest, and I'd like to save them for our next feast. Otherwise I won't have anything to show for myself when it's time to start bragging! And that just won't do. Especially since I'll win the night with my cautionary tale of a battle with chupacabras."
+
+2270460b-706f-4a33-b816-8ca622506b55
+"Yes. You're right a thousand times over. I hate to say it, but I just didn't see it back then. And if I had never got that lesson, my eyes would probably never have been opened. Who knows what would have happened to me if it wasn't for {g|Acemi}Acemi{/g} and her bravery — and her death? Maybe the world would know Seelah as a bandit, not as a knight and protector of those in need. There's a saying I like to remember — 'People rarely find redemption on their own. Someone must show them the way.'"
+
+c273d91c-5a9b-4da3-9596-6b6b4f8c7b26
+"So that's how you see it." {n}Seelah looks at you with curiosity but no hostility.{/n} "I can't accept that point of view. If the story of my youth taught me anything, it's that we're all accountable for our actions. It's too easy to wave off responsibility if you use 'the cruelty of life' as an excuse."
+
+0b29aefa-b716-4c78-8eb5-230b9a40f71e
+"It's complete chaos. It's lucky we're here to handle it, right?" {n}Seelah smiles brightly. Then she gives you a worried look.{/n} "Does the way I talk bother you? I know I can seem... blasé. Many good people, and our protector {g|Terendelev}Terendelev{/g}, died here in Kenabres. A paladin of Iomedae is expected to be properly respectful and solemn."
+
+d66d9529-bc30-460f-b8aa-993cb367a32b
+"It's nice when you and your commander think alike." {n}Seelah smiles softly.{/n}
+
+64f2bbd6-eb8b-497c-8259-81e2f6f57119
+{n}Seelah sighs.{/n} "You may be right. I should keep myself in check more. Better discipline, more self-control — qualities suited to a paladin."
+
+4c2e5dcd-df5a-4a44-a8ef-0272c9f4030b
+{n}Seelah frowns.{/n} "Is that your final decision? Don't get me wrong, you have the right to choose your companions. But every sword counts in war, even if we've had our differences."
+
+4271af0a-2542-43f0-a4fe-dea43d7a5cab
+{n}Seelah smiles.{/n} "See you!"
+
+8394eac8-4c93-467a-9813-a1bc87f7d761
+"How about covering myself in glory and becoming the hero of a hundred ballads? Or at least a dozen — if they're lively ones." {n}Seelah's eyes shine cheerfully.{/n} "Anyway, to be more serious... The area around the {g|Worldwound}Worldwound{/g} is the best place for a paladin who wishes to defend the weak and serve good. Being part of the {g|Crusades}crusade{/g} is reward enough for me. But there's something that worries me."
+
+b31f8728-33ac-455e-b848-207ff83091c9
+"Then good luck to you on your journey." {n}Seelah makes a short bow, turns quickly to conceal the emotion on her face, and walks away.{/n}
+
+ae828c1b-55c0-494a-89a4-05b7e68e73ed
+"Oh, yes." {n}Seelah's face grows serious.{/n} "And they do it very quickly. They bite one victim, suck out their blood, and then strike their next victim quick as a lightning. But now you've tricked me and I've started telling the tale, I may as well do it properly."
+
+ef5f54cf-37e8-4dbd-801e-b9cce61fe172
+{n}Seelah looks anxious. She's honing her sword, but her movements seem nervous. The girl doesn't even notice you at first, but when she does, she smiles cheerlessly and stops what she's doing.{/n} "Hello! So, what d'you reckon about everything that's come crashing down on us? All the responsibility, command... this new power."
+
+243067c6-0b43-44ea-9686-60b9645148ea
+"Don't be sad." {n}Seelah looks at you with compassion.{/n} "Look at me. I'm sitting here worrying over my troubles, but you have it much worse than all of us put together!"
+
+160a8b7b-eed6-4494-a5fa-27d16c3de961
+"Somehow, it really happened. Without all the trumpets or the herald or even anyone explaining what I had to do. Though it's clear as day. My place is here, in this demon-ridden Wound! Quite a lovely war going on in fact. Endless, I hear. I'm gonna need some time to wrap my head around this." {n}Seelah sighs, then laughs weakly.{/n} "Spare me an hour, and I'll crawl into some dark corner and whine about my hard lot. What can I tell you? I cry easily."
+
+382544e8-cf41-4892-b6c0-011cb3d65992
+"There's another thing that's worrying me. The way people react to your power — and mine. They think that if we've been chosen by {g|Iomedae}Iomedae{/g}, they need to pray at our feet. I'm not comfortable with the younger warriors hanging on my every word." {n}Seelah smiles sourly.{/n}
+
+a968ff40-8aca-46ce-b05d-76cfebcbfa19
+"What does it matter how I am? I can't stop thinking about everyone who suffered. Clever Seelah the paladin, companion of the gods' chosen one, didn't even notice a demon conspiracy right under her nose. I'm going to officially change my name to 'Seelah the Dimwit.' That's how I'll introduce myself to everyone I meet, so that they know they can't count on me!" {n}Seelah chuckles grimly, then adds, in a softer, more serious tone,{/n} "If we're too late to save the souls of all these victims, I will never forgive myself."
+
+fa4335ae-2038-404d-87a2-9bd6795fccbf
+{n}Seelah's face grows dark.{/n} "And you're telling me about it just like that? That is not justice! If I'd been there, I wouldn't have let it happen." {n}She presses her lips together and looks away, burning with anger, making it clear she doesn't want to talk anymore.{/n}
+
+10e9d039-28c6-4355-ad2f-5bf0d40cdafd
+{n}Seelah takes a while to process the news.{/n} "She's a deserter, so I guess that's fair. It's hard to accept it... but... if we turn a blind eye to our friends' cowardice, it won't do us any good, will it? I feel sorry for Jannah, but I respect your decision. Prison isn't the same as the gallows, after all. I'll visit Jannah today to find out how she's doing!"
+
+fde48087-4cd9-4c2f-86d3-6f0a3ec08a59
+"The laws of Golarion?" {n}Seelah looks up, but understanding dawns after a moment.{/n} "Ah. You mean how I used to be a thief. And what happened to {g|Acemi}Acemi{/g}, the paladin whose helmet I stole." {n}She looks down.{/n} "I know. That's on me. Whatever you decide, know that I regret those things."
+
+f8bbb848-57b0-4412-9e4c-706a6eb5f19d
+{n}Seelah nods.{/n} "That was always the plan. Thank you for letting me stay and giving me this chance."
+
+d4e2afa7-559a-4271-b309-3c7e09de61e5
+{n}Seelah lowers her head.{/n} "Well, that's your right as a commander and an aeon. I'll leave. But I'm not going to stop helping people — if not in Drezen, then somewhere else. Farewell."
+
+e231261a-66e7-4a21-84f5-acaf078b2907
+"I will learn the weight of my sword... I will have faith in the Inheritor... I am the first into battle, and the last to leave it..." {n}With her eyes half-closed, Seelah whispers the words of the oath of Iomedae's paladins. Trailing off, she opens her eyes and sighs.{/n} "How did we end up here...? I never would've imagined I'd find myself in the Abyss."
+
+5109f580-bd59-4add-87e2-757c1c4f5f48
+{n}Seelah's eyes widen in surprise, and she looks at you with an injured expression.{/n} "Oh really? I guess I'll stop my 'whining,' then. Did you want to ask me something?"
+
+34656ae3-4d88-4a4f-9407-0cc396879181
+"I feel responsible," {n}Seelah answers without thinking.{/n}
+
+579a893f-54ea-4756-9794-970fdb0b7198
+"I feel a burning desire to kick the last demons back to the Abyss, sleep for a week, and then celebrate!" {n}Seelah gives you a broad smile. Then she says, more seriously,{/n} "I'm glad it's all over now, and that it ended the way it did. A huge burden has been lifted from my shoulders!"
+
+97ee245a-ec33-4c40-9027-a9d5cbc12ca9
+{n}Seelah smiles sadly.{/n} "I feel sorrow. And guilt, I guess. We're at war, people die, but I can't stop asking myself: could I have done better? Could I have prevented those deaths? I won't stop trying, I won't give up, but I'll probably never be able to forget our losses."
+
+a13a425d-0a99-4505-beb3-cd1c91b998ee
+{n}Seelah shrugs vaguely,{/n} "My thoughts are so complicated, my dumb brain can't even handle them all. It's good it's all over now, and it's good that all those whose souls were stolen have been saved, but... I can't stop wondering if it could have ended in a better way? Did I mess up somewhere along the line?"
+
+4b1a8286-6da8-45bd-9cfd-d4bae2f7ecbd
+{n}Seelah gives you a lukewarm nod.{/n}
+
+fa148fde-966f-44fb-b5a9-3875a75e09f4
+{n}Seelah is tense and scowling, clearly lost in thought.{/n} "Elan went to get the abducted souls alone. He might not make it on his own... Damn it. Yes, {name}? What did you want?"
+
+2930ed06-894c-4294-ae41-9995d85943b2
+{n}Seelah smiles.{/n} "I'll tell you. I like to recite our code. It feels like I've said it a thousand times, but it never gets old. There is strength in these words..." {n}After a pause she begins, her voice slow and meditative,{/n} "I will learn the weight of my sword. Without my heart to guide it, it is worthless. My strength is not in my sword, but in my heart. If I lose my sword, I have lost a tool. If I betray my heart, I have died."
+
+a955505e-bc33-4d03-ba16-e0a9e945d12d
+"Jannah and I met in Kenabres a few days ago and just hit it off. We went drinking together. We went to that unforgettable celebration together too, but we got separated in the crowd. So we should start looking from the main square — that's where I last saw her." {n}Seelah frowns.{/n} "Jannah's a good fighter, even if she is green. She couldn't have become an Aldori otherwise. I hope that means she's all right."
+
+edfb6614-59ca-43dc-b81d-aeaa878b7de0
+"You have managed to change yourself, Arueshalae. That's the main thing." {n}Seelah looks askance at Dimalchio.{/n} "And he... he betrayed himself."
+
+d4ec5582-52ae-40cd-966b-6238ce6dac60
+"I am absolutely confident that you won't be able to persuade Seelah to dance with you."
+
+f2b41ac8-9bbd-48e3-92a2-3e404c4c32b2
+"Seelah will fight for the honor of all paladins!"
+
+19652e9f-ab73-4559-a08f-c9201312a803
+"Seelah! Seelah! Look, the Commander {mf|himself|herself} is cheering for you!"
+
+c019ea4c-f7cf-4104-955f-dcbb59fb31ae
+"Yes, {mf|sir|ma'am}, Commander! Daeran, my boy, you've still got time to back out. You don't want Auntie Seelah to spank you in front of everyone now, do you?"
+
+5886fc81-3843-491f-b2d4-5cc83737afaf
+"I utterly loathe you for persuading me to ask Seelah to dance. It was the most abominable experience of my life. I absolutely must do it again, just let me catch my breath..."
+
+bae964ce-b57d-43b4-8382-a82f2f24f52d
+"You need constant watching, kiddo...", {n}Seelah mutters. But she heaves a sigh of relief, now that she knows Ember is all right.{/n}
+
+07f49a02-c20e-4484-ab38-2ddc4dd98396
+"You won't believe how many times I've heard that professional soldiers are better. Better than volunteers or paladins, or anybody else who fights for good because they know in their heart it's the right thing to do. So I look at this guy, and you know what I think?" {n}Seelah spits in disgust.{/n} "Bullshit. People whose loyalties are so easily bought? Sometimes they're even worse than the demons."
+
+97462962-6f77-420b-8791-08482e6da72e
+{n}Seelah clenches her fists, her eyes shining.{/n}
+
+071980ba-d283-4e77-9ea6-f7c1d0627e36
+{n}Seelah instinctively lays her hand on her weapon.{/n} "What's going on here? Nenio, is that you?"
+
+5c6aeaa2-baec-4f86-b11e-f7000abdbb12
+"Do you know this person, Seelah?"
+
+2819f1c6-1a32-4e59-8a30-a0963b023ab7
+"You haven't told me how you know Seelah."
+
+3dc96605-b679-42a2-91c6-7516cee23501
+"Meet Rimvi, better known as Curl. He hails from Kenabres, and he fights in the {g|condemned}Condemned{/g}. He's one of a kind: a rogue with a heart of gold." {n}Seelah smiles, then adds a little more seriously,{/n} "Curl, it's probably none of my business, but you should ask yourself if what you were about to do is right."
+
+ab19e7f7-08e3-4f86-b735-1815ebcc6000
+{n}The halfling looks at Seelah and smiles broadly.{/n} "Oh, Lady Seelah! You're alive! Goodness me, that's the second bit of good news on an otherwise lousy day!"
+
+6346f12d-3029-4236-88d0-ec4e3d2dc078
+{n}Seelah's eyebrows lift in apparent surprise.{/n} "Curl! Is that you?"
+
+e1734a43-e566-4981-aa5d-ecf6e8da2c8a
+{n}As he's speaking, the newcomers notice you, and the knight cries out in jubilation.{/n} "Seelah! I never thought I'd see you again! I thought you were headed to the main square — the center of the demons' attack..."
+
+dabb46e9-2fdb-4668-841d-cb7c9b427347
+{n}Seelah's face lights up with joy.{/n} "So you're the other bit of good news Curl was talking about! You and Jannah are alive!"
+
+3025df1b-2d4e-449c-a86b-265c2e48a934
+{n}The half-elf smiles warmly at Seelah.{/n} "Hey, friend! Glad to see you're all right! When we got separated by the crowd at the celebration, I knew right away that something was wrong. And when demons appeared all of a sudden, I realized that was the reason why I'd been so anxious. But I couldn't find you among the dead in the square, so I kept my hopes up, and I was proved right!"
+
+2d1cecd9-3f6f-47e4-abd5-ab5a5e5c6ed5
+Joined the party with Seelah's friends.
+
+e465e1b1-cda8-4e2b-ac94-ee1082d86c6c
+"How do all of you know Seelah?"
+
+f88d1cf5-a296-44f9-a0e0-15967c2a3b1d
+"Seelah, did you call me over just because? Or is something the matter?"
+
+1d571086-d21f-405a-861a-81a58e7c8f6d
+Supported Seelah's decision to hold a celebration in order to raise morale.
+
+b9c43cae-d4c0-48f1-a042-6e928e300ca5
+{n}Seelah pushes a mug of beer toward you and speaks softly,{/n} "It was me who convinced {g|Irabeth}Irabeth{/g} to use what Jannah, Curl, and Elan found for a little party. If you look out the window, you might think the End Times have come and the Abyss has devoured us all. I thought some simple pleasures — good food and good company — could help keep the gloom at bay." {n}Seelah looks at you hesitantly, as if trying to gauge your reaction.{/n}
+
+0b1d1256-72e5-47e5-8d1b-ee0f3f115910
+"Allow me to declare my support for Seelah's decision as well. Experience tells me that we should shed no tears until after our victory. If we start to mourn the fallen while the battle is still raging, we'll be jeopardizing all our efforts. Now is the time for rest. We'll bury the dead after the last demon has been driven from Kenabres."
+
+924543bb-2bc8-406d-a287-d4bfc037cd49
+{n}Seelah frowns disapprovingly.{/n} "That is not what I expected to hear."
+
+48a0b0c5-c52d-44d8-9142-1e49b651598b
+"If I've learned anything in life, it's that there's nothing minor about good and evil." {n}Seelah begins seriously, but then a smile lights up her face.{/n} "Take the three of you, for example. It seems like all you did was save one cart from some lesser demons. But look how many people are happy now! That feat will never be sung of in songs, but who knows, maybe thanks to this one joyous hour of peace and rest, the defenders of Kenabres will find the strength to protect the city." {n}Seelah catches her breath.{/n} "I talk too much, don't I? Well, Sir Elan, I want to help you, and my reputation as a holy warrior of Iomedae won't suffer if it's more of a minor adventure than a glorious feat."
+
+d5981209-6707-42f6-ae7a-8f71ffac1b3c
+"I met Seelah at a tavern in Kenabres. Before the attack, of course. She was one of the few who would sit at a table with the {g|condemned}Condemned{/g}. Knights usually don't even look at us. But Seelah is different — I knew it the moment I saw her!"
+
+58b6353b-0a5e-41b5-9640-dd7f0ff2280d
+{n}Seelah puts her hand on your shoulder.{/n} "Thanks for agreeing to help. Elan is a good man and a true knight, and I think the world should repay those who are so devoted to doing good. Let's help him, so he can propose to his beloved the way he wanted!"
+
+50f03aac-259f-4ec8-8cdf-7bf3a722ffe3
+"I met my noble sister on the road to {g|Kenabres}Kenabres{/g}. I was returning from the south, from my fiancée, and was happy to be in the company of a paladin of Iomedae. We said our farewells at the city gates and I went north, along the road to Drezen, to my order's camp." {n}Elan's face grows grim at the mention of the camp.{/n} "The demons attacked us there at the same time they struck Kenabres, but we managed to fight them off. We hurried to the city's aid and joined forces with the Eagle Watch. All my fellow Houndhearts were wounded during the battle on the streets. I'm the last knight of my order who can still fight. It's so good to see Seelah again! Every loyal heart counts these days."
+
+44c14d07-6e34-4384-ba9a-aee039615e87
+"Seelah, I hope you can convince Irabeth to let me go with you when you do this. I don't want to be parted from my friends!"
+
+2f96db80-cb7e-4148-b72c-64fac97ceab7
+{n}Seelah waves to you. She is sitting at a table with the trio you met previously: the knight, the half-elf, and the red-headed halfling.{/n} "{name}! Come! Let me properly introduce you to Elan, Jannah, and Curl — the fearless warriors of the League of the Inspiring Cart!"
+
+4f05ee50-def5-4055-8f52-9545b67e705d
+"That's what made me notice Seelah too. So I sat down to talk to her. I never understood why everyone treated the Condemned so horribly, and I still don't. Our Curl is a great lad! So after that night, Seelah and I went round the taverns together every day."
+
+02228a13-41a0-4935-affe-65da9b84ddd2
+Approved of Seelah defending the potential traitor.
+
+0d17d712-9ea9-4895-bfb2-45b7e5b18c88
+"Elan, think. Seelah was defending someone she thought was her friend, and she stopped you from doing something you might regret."
+
+a3e4bd49-b32e-4ec9-86df-a17f5eaf5c23
+Disapproved of Seelah defending the potential traitor.
+
+86f7217b-8748-42d7-bf58-2df1fd5c408e
+"So you are willing to let a traitor bring demons down on our heads just to keep your conscience clean? Get serious, Seelah."
+
+5b75cfed-895e-44ae-936b-9aad2f70da8a
+"Greetings, Seelah, and greetings to you, Knight Commander!" {n}Sir Elan puts his hands behind his back and bows slightly. Then he casts an inquisitive glance at you. He seems less friendly than he was the day you met at the Defender's Heart.{/n}
+
+4c5d65d5-f334-401e-a464-2bf4cefa859d
+{n}Seelah frowns a little.{/n} "Let's not talk about it. I assure you, I'm the same Seelah — your friend from the League of the Cart. And we came here to help you look for Elan's ring. By the way, where's {g|Curl}Curl{/g}?"
+
+e05a2489-b5d9-4d57-abd0-72d83c3f15de
+"Seelah, I didn't want to say this, but I think of you as my friend so I'm going to warn you. After what happened at the Gray Garrison, you're in serious danger. And maybe not just you."
+
+1dc33013-2e1b-4887-9296-75e275f2e72b
+"But what happened next was wrong. They began to worship you. The Queen gave you such vast power. All while you sidestepped everything — training, experience, hardship. This is not the first time Her Majesty has behaved rashly, and how much good has this brought Mendev? I'm frightened by what I see. Especially by the way that you, Seelah, trust people so easily and leap into adventures without looking. One day you'll lower your sword when you should have driven the blade home. Just like thousands of bright-eyed youngsters will after you." {n}Elan pauses, as if reluctant to continue, then looks you in the eye.{/n} "I wanted to tell you the same thing, Commander."
+
+aabfd017-11e1-498d-915b-2e17839d9e04
+{n}Seelah watches as he leaves. Her expressive eyes are filled with sadness.{/n} "Everything's become very complicated all of a sudden... Please, {name}, let's go back. And I'd like to talk to you about it — later. I have a lot to think about."
+
+a5f9a75f-fe8c-4a41-9013-73e8a8103ba4
+"I said it to Seelah, and I'll say it again — this wasn't a reproach, but a warning. The power you've been given... it may be your undoing, and the undoing of all the crusaders along with you."
+
+15024931-2954-454d-b5ea-7c94b54522d9
+"I don't need a shepherd to light my path and save me from regrets. Can you say the same, Seelah? Or you, Commander?"
+
+39cc843a-641d-49b2-a20f-0338ecd620c8
+"We're lucky no one died in today's little brawl. But who knows where Seelah's naivety may one day lead you? Do you hear me, sister? You're not just another knight. Whatever you do may have terrible consequences."
+
+9daadee7-3413-41e8-aee7-cb0caf3fde57
+{n}Thrusting herself between Elan and Curl, Seelah barely manages to absorb the blow aimed at the halfling.{/n} "Elan, stop! Have you gone mad?"
+
+6f36c486-d0fb-4993-99f4-8e4fd8aa6354
+"Elan! Jannah!" {n}Seelah glances at her friends, then turns to you.{/n} "They're all right — they'll come round soon. Quickly, {name}, let's catch the little rascal before it runs off with the ring!"
+
+93eefe42-c212-4923-afc8-503007b5f9c8
+"No! Elan, Seelah, help! Damn it, I didn't sign up for this!"
+
+0165bc83-e17f-48f3-adba-8b422811d0bf
+Encouraged Seelah to continue looking for the best in people.
+
+885ff3ec-7098-4965-abc1-0d9b1a5de5c9
+"Don't lose your trust in people, Seelah. So what if you made a few mistakes? It's no reason to give up on your ideals. Somebody has to show people that there's a better path."
+
+ee83b04d-601b-4509-9ec7-1a0af6fcb5ac
+Criticized Seelah's tendency to trust people too easily.
+
+c0638c7c-60b7-453c-a068-a4df36558864
+Dismissed Seelah's attempts to reform people as pointless and idealistic.
+
+78c0efc7-fd68-48bc-a74c-bd94f40f639d
+{n}Seelah looks sad and pensive.{/n} "It's good to see you. Get this — Jannah, the one who ran away when we were attacked by demons, never went back to her unit. She was seen running toward {g|Numeria}Numeria{/g}. Looks like she deserted."
+
+5de8e6f6-916b-4fc3-bf93-db3a7e04440d
+"But mostly — I was wrong about a lot of people. About Jannah, who lost her nerve and abandoned her friends. About Curl — I knew he was a thief, but I really thought he'd turned over a new leaf and deserved a little compassion and trust. And Elan. I thought we were kindred spirits, friends through thick and thin. But it looks like I was wrong about him too." {n}Seelah looks at you closely, waiting for your answer.{/n}
+
+ad20b7ca-75b5-41df-a630-edcf2e94fe7f
+{n}Seelah's expression brightens.{/n} "Thank you, my friend. I needed that support."
+
+c56d6557-8dba-4767-8536-5451b884ed14
+"But I made mistakes in the past, too! And I managed to find my way toward the right path. Why should I deny others the same chance?" {n}Seelah stops.{/n} "Forgive me, I spoke out of turn. I'll think about what you said."
+
+823fe183-0778-427e-982f-286631abb4b6
+{n}Seelah frowns but nods.{/n} "I understand. Let's not talk about this. But there is one thing I should say to you..."
+
+b68defec-658d-42a2-92e5-ebe981a4a9b5
+"What did Seelah call us? The League of the Inspiring Cart? I wish we could set up an official knightly order with that name!"
+
+28a21985-e143-4df6-ab44-8ef767e3ff6e
+The rings of the future husband and wife — the one brought by Kiana and the one given by Seelah to Elan.
+
+12e8f239-5490-4bd7-8c64-99e56966e9c3
+"And Seelah, paladin of Iomedae, the Commander's companion and someone I have the honor of calling a friend. Seelah, would you say a few words?"
+
+b79e2e2a-e08d-481a-a54a-512b23d045e5
+"When I go to pray to the Sword of Valor, this feeling of total calm comes over me. It's like: look around you, Seelah, you've come a long way and now you're exactly where you're supposed to be."
+
+e651affe-5e6a-4314-aaa2-3d98b029f255
+{n}Seelah is standing with her weapon drawn, her eyes ablaze.{/n} "Have you seen the bodies in the streets? I'd bet anything this is the doing of our jeweler! Let's go to his shop quickly, if you're ready!"
+
+9afde22d-56e2-423b-8d2e-811bfd2f11e6
+"Commander, Seelah! Praise Abadar, you're alive!" {n}The usually dignified Arsinoe struggles to catch her breath after running, and she says, nervously clenching her hands,{/n} "I have received news from other temples of Abadar, most disturbing news! What we saw at Elan's and Kiana's wedding has been happening across Mendev. People who bought Darek Sunhammer's jewelry have been dropping to the ground, lifeless, with demons emerging from their bodies."
+
+3b8c4b29-b952-44d8-934b-64b2d14edf60
+{n}As Arsinoe speaks, Seelah's face grows more and more grim, and her hands clench anxiously around her weapon.{/n} "I saw that scumbag right here, I even talked to him! I didn't suspect a thing... I often get a sickening feeling from traders — some of them are nasty pieces of work, the way they rip people off. I got that same feeling from him, but I didn't even think of looking closer..."
+
+0b7e564e-8db6-47df-b35e-8211f283598d
+{n}Seelah sheathes her weapon angrily and sucks in a breath through her teeth. But then she seems to steady herself and looks at you, her eyes bright.{/n} "Well, what do you know! Looks like we got ourselves tangled up in some demonic conspiracy."
+
+fe9da29d-468a-4235-94bb-e67641fdd000
+"I'm so glad you came to the wedding with me! And that we managed to find out what happened. Because otherwise, Seelah the Dimwit would have come alone, given the bride a ring with a surprise demon inside, and would have failed miserably when she tried to help."
+
+e078f03c-5a67-4e87-9caf-482adf477dc5
+"And I'm the one who gave a demon-ridden ring as a wedding present! If it weren't for me, poor Kiana wouldn't have been left without a soul. Seelah, you are such an idiot..."
+
+1e315cc3-e9c8-44c9-8c0b-8a9a03220a03
+{n}Grim determination burns in Seelah's eyes.{/n} "I can't leave it like this. If anyone has an obligation to find that low-life Sunhammer and return all the stolen souls, it's me. I'll do everything in my power to find him. Something tells me that the demon-collaborating scumbag is somewhere here in the Worldwound. I'll seek help from every quarter, I'll interrogate imprisoned demons and cultists, whatever it takes to get to the truth!"
+
+db645537-196a-4380-8129-20c64cbedef7
+"Seelah! Knight Commander!" {n}Elan seems a little discomfited.{/n} "Good to see you."
+
+d59b7dcf-5ef4-4bd4-b078-bf223295013e
+"Oh, Seelah. Thank you so much. But you shouldn't have. I've already apologized to you for how I behaved back at the camp. And I'll say it again — I don't blame you for anything. We fought shoulder to shoulder here in Drezen. Can't we just let bygones be bygones?"
+
+5ff4945a-27b6-4767-b771-09e9443071d6
+"Sure we can. But take the present! Your wedding is right around the corner." {n}Seelah puts the ring in the knight's hand.{/n}
+
+d8e4e1a5-7f63-454a-8059-f43865b77834
+"It would be a tremendous honor if you would come to my wedding. We're going to hold it not far from the walls of Drezen, to the east, toward the river. Seelah's already been invited, now I'm asking you. You showed so much kindness to me when you helped me look for that ill-fated ring, I simply must repay you somehow. Besides, Kiana would simply love to meet you, and I can't deny her anything."
+
+fea3eed6-c2a1-41ad-8c0b-ec84afc03818
+"Thank you, Commander. And you, Seelah, for the gift!"
+
+4b47129b-29aa-4ab0-8012-32755a66fca3
+"So long, my friend." {n}Seelah turns to you.{/n} "Ugh. Thank you for coming for a walk with me. It's nice to take a breather between fights sometimes! I hope we have a good time at the wedding. All these battles and divine powers, we need to make sure we don't lose touch with ordinary life!"
+
+0d67a5a2-0746-421c-b448-a692db869834
+{n}Seelah swears.{/n} "So all this happened because of some sparkly rocks? But wait, that means... that means..."
+
+b33b6003-0f40-4a47-9966-9826cfdce89e
+"Oh, be quiet, Seelah! You're always so sorry, aren't you? If only you had helped instead of just apologizing after the fact. Where is your gods-given power now, I ask you?" {n}Madness grows in the knight's eyes.{/n} "Kiana, my love... Why did I bring you here? Everything is lost, everything has perished, everything is pointless..."
+
+1072c238-5766-4e98-ba18-1e6249fb8e86
+{n}Seelah looks at her friend sadly.{/n} "Things always go so well when I'm involved, don't they? {name}! We need to get back to Drezen right away."
+
+d6edb43a-4ba8-4fe9-86aa-309c18985f24
+"Ugh, you might as well just say it: 'but Seelah got in the middle of it and ruined everything.'" {n}Seelah's face twists into a weary grimace, then she looks away, thinking.{/n}
+
+7c736a3a-1913-46b1-b3bf-c50f4b0c2490
+"How can I not blame myself when all this crap is happening around us? And even with her new divine power, Seelah the Dimwit can't do anything about it."
+
+723ffac2-2bf9-4b7a-862e-312692185147
+"So let me get this straight: we {d|Seelah expensive ring}paid{/d} this scumbag a small fortune just so he could go and set a disgusting demon on us? What a crock!"
+
+46854585-f801-4b7e-9ea4-67cc52f9c90d
+"I'm begging you, no jokes about the horns, please. I don't want to be remembered as the cuckold bridegroom!" {n}Elan sighs, but then starts smiling again.{/n} "I don't know if you've ever fallen in love, Seelah, I don't remember you ever talking about it. But when it happens, you are no longer who you once were. I suppose I didn't expect this of myself either... but Kiana was so desperate to have an unusual wedding. I thought to myself, if 'unusual' is the goal, then I should do something I've never done before!"
+
+c45eddce-b8bb-40d8-8496-29cd1a8b1c9a
+"Seelah wants to talk to you about something."
+
+4253d5cc-9f4e-4641-a353-db20d715b02c
+"If what Seelah is offering is not enough, I will help."
+
+caa868fb-78f9-458c-958e-c0abc11b9462
+Helped Seelah buy a present for her friend's wedding.
+
+a82594b1-e240-4325-9d92-6a0a77738c9b
+"Do my eyes deceive me? The victorious Knight Commander {mf|him|her}self has paid a visit to my shop? Such an honor, such an honor!" {n}A dignified dwarf in a luxurious, beautifully adorned garment bows to you, before turning to Seelah.{/n} "You are most welcome as well, Iomedae's faithful. It is a pleasure to see so many brave crusaders within these walls. I am Darek Sunhammer, the jeweler. This shop is one of many that I own."
+
+5e3f004c-bc43-48ea-ae66-ea1d35411726
+"It's simple, master. You might remember that a while ago Sir Elan of the Houndhearts ordered a ring from you? A silvery ring with a blue-green gem? I would like to buy something similar. But I only have... this much money." {n}Seelah shows him her coin purse.{/n}
+
+fc98df91-aefe-49cc-9d29-cf976bea209a
+"Unfortunately, what you are offering, valiant Seelah, is enough only for my most inexpensive ring. And the gem in it is not the color you need."
+
+97afe57b-4b53-4094-b628-aae5fc83c147
+"Come on, {name}..." {n}Seelah is embarrassed.{/n} "I only invited you along for advice. I can handle the expenses myself!"
+
+ff06b995-ed96-42c6-8c05-cd5cf31880e4
+{n}Seelah sends you a grateful look.{/n}
+
+dd282b21-75ed-453b-8403-489df57fa257
+{n}Master Darek lowers his head respectfully and retrieves a box from the bag on his belt, opening it to reveal an exquisite ring with a glittering blue-green jewel. He lets the light play on the gem's facets, then places the box in Seelah's hand.{/n} "This is a special item, and I'm glad to see it go to someone as worthy as yourself. For how could the Commander's friend be anything but? May it bring good fortune to its owner!"
+
+236e8700-1e5d-4cd1-be62-7a0d035a0a2b
+{n}Master Darek retrieves a box from the bag on his belt, opening it to reveal a humble ring with a small gem, but beautiful nonetheless. Letting the light play on the gem's facets, he presses the box into Seelah's hand.{/n} "As you wish."
+
+f602146c-be43-47b6-b7eb-5cfd0368a056
+"Well! That's that done!" {n}Seelah stows the ring box.{/n} "Come with me to the barracks to give the ring to Elan, will you? After that we can go to the tavern and have a few drinks!"
+
+29a57dff-3489-467c-95f2-ea32de09f434
+{n}Seelah seems to be in a good mood. She smiles at you and then scratches the back of her head, as if suddenly realizing something.{/n} "I probably shouldn't have come to you officially, like to an audience, but this is the only way to catch you these days! I wanted to ask: would you like to go shopping with me?"
+
+30cce8b8-6ce2-4c2b-b3f5-5e2d88e2516c
+{n}Seelah sighs.{/n} "All right. I'll manage on my own..."
+
+3cafc806-3d1e-41fa-b697-51c1d330892b
+{n}A slender young woman in a flowing dress walks toward you. The first thing you notice is her eyes — they are a striking blue-green.{/n} "Welcome, travelers, to the secret-steeped land of {g|Ustalav}Ustalav{/g}! You have come to the kingdom of grim mysteries and exquisite secrets. I, the vampire princess, am delighted to see you in my castle!" {n}After a pause, the girl smiles coyly,{/n} "I'm glad to finally meet you, Commander, Seelah. I am Kiana, soon to be the wife of that unfortunate knight who invited you here."
+
+0559a428-8d08-470b-9965-034bb0d2e517
+{n}Seelah rolls her eyes.{/n} "Horrible! Imagine walking through the Worldwound, and then — bam! — you're in {g|Ustalav}Ustalav{/g}! I'm not even sure if a paladin is allowed to feast with a vampire princess."
+
+3c6bcb87-76db-40ad-971e-ac60f560f0f8
+"It's lucky you are not a follower of Pharasma, valiant Seelah," {n}Arsinoe, the Drezen priestess of Abadar, is a short distance away from the happy bride.{/n} "Although, I'll admit, I'm not used to feasting with the undead either."
+
+0b89e10c-5b1e-4ba0-a941-72cde1ae3c24
+Advised Seelah to make a serious speech.
+
+d996df0d-ba7d-4cde-b498-d4559c54819e
+Advised Seelah to speak from the heart.
+
+3f0b3b31-34f2-4210-aefd-097bd43c0204
+Advised Seelah to give a humorous speech.
+
+2f4101ca-77b7-4b9f-ac11-36783ac81f24
+Spoke arrogantly about Seelah and the wedding guests.
+
+8c1473c3-77a3-4918-96dc-4a0904064f77
+"Uh, hello everyone!" {n}Seelah glances at you and adds in a whisper,{/n} "Hey, I need some advice! What should I say? Giving speeches really isn't my thing..."
+
+3d5c27cb-3e87-42ea-81bb-f50eb7aeceed
+{n}Seelah looks at you reproachfully.{/n} "Elan welcomed you personally. Now, I think they want to hear a friend speak... Fine, I'll come up with something on my own!"
+
+88507672-4c64-4006-a02e-00380f277129
+{n}Seelah clears her throat.{/n} "Elan and Kiana! This is a whole new chapter in your life! I congratulate you from the bottom of my heart, but I also want to say, it's good that you found each other, and that we've all gathered together here in such dark times. Sorry for raising a grim subject on this happy occasion, but the forces of the Abyss don't just want to kill and destroy. They want to wipe out all the joy in the world. But as long as we love one another, make friends, and have fun, they will not win!"
+
+935b6f91-b533-4f2b-ae02-7626587018b1
+{n}Seelah open her arms wide.{/n} "In the first hour of our acquaintance, I uttered words that made a great impression on Elan. I think it was because of these words that he realized I was the friend he had been looking for all his life. These were those very important words, and they shed light on what being a warrior of Iomedae is all about. So, here goes..." {n}Seelah pauses, a sly gleam in her eyes.{/n}
+
+586466ab-4ba6-4614-a9fc-483b9d701af5
+"I'm not one for making big speeches, so here's a few simple words from your sister Seelah: be happy, and let no demons or other evil spirits keep you from your happiness!"
+
+86df8152-ca51-4128-86fd-f7b83d5f44a2
+{n}Seelah turns to you and adds quietly,{/n} "That's what we're fighting for, isn't it? For weddings, fun, and laughter? Even in the cursed lands of the Worldwound, even after a hundred of years of war."
+
+558b1fc9-a7fd-45bf-9446-61066c7c535c
+{n}Seelah smiles.{/n} "You know, I wanted you to come here with me so I could show you that our efforts aren't in vain. Not long ago, demons ruled over all of this area we're in, and they did all sorts of abominable things here. But now Drezen stands as an indestructible fortress, and weddings are taking place here! It's all because of you. So... let's watch the ceremony, and enjoy ourselves!"
+
+d1ce3906-525f-4032-9ec7-d72c7567c4c5
+{n}Seelah frowns.{/n} "Sorry, I... wanted you to look at this wedding and see how your efforts are changing the world. How things are getting better! The demons and their filth leave, and in the place where they so recently ruled, cities have reappeared and people are getting married. Doesn't that make you happy? But, fine. Let's watch the ceremony. I think everyone's waiting."
+
+6fb44000-81e1-4770-9972-861f0649e758
+{n}Seelah turns to you and winks.{/n} "Pah, that wasn't so hard! It turned out great, didn't it? This is what we're fighting for — weddings, fun, and laughter!"
+
+8508f6e4-7e22-4af5-b78e-b74699d8d145
+"Ugh, damn, old-timer Seelah hasn't played games like this since her thieving days... But we've got to accept the challenge, {name}!"
+
+2faca9b4-006c-48a2-9acf-7f87e608584c
+"It's a good thing it's not a real fey tiara. Real fey tiaras can make strange things happen — you put one on and donkey ears might grow out of your head!" {n}Seelah grumbles.{/n}
+
+4790c36d-a58b-4d9f-92fd-5830d1d7cb2d
+{n}Seelah bites her lip thoughtfully.{/n} "Some thought has been niggling at me... This isn't the first piece of jewelry by Sunhammer we've seen here, right? Strange..."
+
+7728741a-274e-48b7-8004-cc1ab0520862
+{n}Seelah rubs her nose, suddenly pensive.{/n} "It's funny that Darek Sunhammer's jewelry is everywhere at this party..."
+
+e41da9d2-aabb-441e-b031-2b6a287a724b
+"Commander, Seelah, you're here!" {n}Elan is trying so desperately to hide his excitement it's almost comical.{/n} "Welcome!"
+
+3d85c70d-ea40-4151-885e-06b65779824a
+"Enjoy, Commander. There is still time before the beginning of the ceremony. Seelah, thank you for coming too!"
+
+50ad582b-456e-4b84-9b61-c15b9c63141f
+[Throw a coin in the cup after Seelah]
+
+ec0a68df-2957-4579-8ab6-8eb17e236613
+"Seelah, the jewelry! There is something wrong with it."
+
+b78fffc4-2a24-4669-97a9-2f4bb11f68d1
+{n}Seelah is listening to the priestess with a broad smile on her face.{/n}
+
+95529f96-e2dd-49f6-bc42-e8a280b2b223
+{n}Seelah is smiling, but her expression is tense as she observes the proceedings.{/n}
+
+afe2f048-3792-4128-9259-6c18315d0a3b
+"Is something wrong?" {n}Seelah looks surprised.{/n} "Huh, well, how about we figure it out once the ceremony's over?"
+
+c489de0e-e3c8-4ccb-8138-9077fa207385
+{n}Seelah looks around anxiously.{/n} "Something is definitely wrong here. This jewelry..."
+
+eb0ce7c1-dc65-4b74-a751-4a8e478a5f4b
+{n}You see Curl standing among those who've been rescued. He is looking around awkwardly, shifting from one foot to the other, as if he's not sure what to do with himself. When he notices you and Seelah, he pales slightly, but takes a step forward.{/n} "I, uh... Thank you so much for saving me from the demons."
+
+d65e88c4-47aa-4a23-a1d0-f6d161afba04
+"But I wanted freedom, Seelah." {n}Curl sighs sadly.{/n} "I'll be honest with you, I'm not much of a crusader. Don't get me wrong, I'm glad I met you, Elan, and Jannah. I couldn't ask for better friends. But... I'm not cut out for war. I don't like fighting demons, and I don't want to die. That's too heavy a sentence for a simple thief."
+
+3e8bce77-82c6-406e-b57b-6a3fbe36b6c0
+{n}Seelah frowns slightly, but nods.{/n} "Don't do anything stupid, Curl. It's going to be a fair trial. I feel for you, and I'll come by to support you, but what you've done is really serious."
+
+160773df-4f00-44f6-9763-659ed1c9bad2
+{n}Seelah frowns.{/n} "Hasn't he suffered enough already? All right, fine! But I'm coming to this court-martial. I'm going to defend you, Curl!"
+
+c21ef6ab-53ee-4841-81d9-89b4f2caa92a
+{n}Seelah glances at you, and says quietly,{/n} "He has a point. The punishment should fit the crime. A harsh sentence won't change what's happened, and it won't turn him into a better person. And after everything he's been through..."
+
+540230e3-f605-411d-8189-0f5565b9c1e9
+{n}Seelah smiles broadly.{/n} "Come on. Let's give them some space."
+
+53c45c83-89ba-4a96-929d-ff1618721431
+"Wait, Commander! Seelah! Everything you've done... I can't thank you enough!"
+
+709b6035-ee30-4bb9-8157-5c50878c49fe
+{n}Elan struggles to lift his head. His face is pale, and a groan escapes his lips.{/n} "Seelah... you came... I should've waited, but..."
+
+937d3d9a-5959-4584-9abb-18dfb1a5eb58
+"Elan! What in the— what happened?" {n}Seelah rushes over to help her friend.{/n}
+
+ba2425dd-420f-4ff6-abaa-2b5f0ae95741
+"A trap... there are so many... traps here. I saw Sunhammer with the jewelry. He had the souls... I dashed after him, heedless of anything else. I didn't realize the door was trapped. I went to open it, and..." {n}Elan's body spasms, and he groans.{/n} "Seelah, please... don't make the same mistake I did. Save Kiana and the others! I know you can..." {n}His body spasms again, and he goes still.{/n}
+
+5070b1da-11fd-4b95-aebe-584a755c80f3
+{n}Seelah stares at Elan's lifeless body in shock. Her face is contorted with grief. She touches her friend's shoulder, either in a vain attempt to wake him or in a final farewell. Then she clenches her fists.{/n} "Why... why like this..."
+
+7e442bf8-845d-4971-9514-90277c047d22
+"He was my friend," {n}Seelah whispers bitterly.{/n} "I thought I could help him reunite with his bride. I just wanted him to be... happy."
+
+54bd0a93-b4e9-4c03-91ed-fb92d85bf839
+"Yes, of course. You're right." {n}Seelah voices her agreement, but you see the doubt in her eyes. Despite her outward confidence, you can sense her inner turmoil.{/n}
+
+bae11288-b876-4371-958f-f4e218d6a49c
+{n}Seelah frowns.{/n} "But... something's wrong. Elan should've been here by now. He was supposed to wait for us here... but he's nowhere in sight."
+
+b8064d2c-fba2-4fa6-8a6f-b6dadab2aee7
+"Greetings, Commander." {n}Elan greets you with the discipline of a soldier. He is {d|Seelah Elan hope}calm{/d} and composed, and his voice is steady.{/n} "I kept watch, just like you instructed. They're definitely keeping the trapped souls here. I've seen the jewelry myself. But the place is well guarded. We'll have to fight our way inside."
+
+a4e4b388-60b7-4030-9aaf-4f06f807f1e4
+{n}It takes {g|Jannah}Jannah{/g} a moment to catch her breath.{/n} "Thank goodness you're here! I followed your instructions. I met Elan here, and we were keeping watch, when... he saw that jeweler, Derek Sunhammer. He was carrying the stolen souls! Well, Elan went crazy. I tried to reason with him, I asked him to wait for you, but all he could think about was {d|Seelah Elan desperate}Kiana's soul{/d}. He rushed off on his own! He told me to stay here, and wait for your arrival. I've been so worried. He should never have gone in alone..."
+
+f4ef3cce-25a4-4e88-a600-696fc62f0b25
+"It looks like this place belongs to those Baphomite creeps." {n}Seelah points to a few familiar symbols.{/n} "I knew it! I knew this was one of their schemes! It was too elaborate to be the Deskarites. Well, it looks like we're up against cultists, demons... the usual."
+
+a1e5b254-bd8f-40e3-80fd-6719c887fd14
+{n}Seelah beams at her two friends.{/n} "For the League of the Inspiring Cart! I'm so happy that you're both here. We'll save the day... together!"
+
+d4c95cd0-fd60-4359-b0be-f89b5d4a8ab8
+"How did Seelah, Curl, and the others get involved in all of this?"
+
+75b26a53-549b-4d89-8f9d-60cbd02c854b
+{n}Master Darek Sunhammer is gravely wounded, but he does not lose his composure. He remains calm and dignified in the face of death.{/n} "It seems that I have made a mistake. I should not have fought you. Still, I do not regret taking the risk." {n}He turns to Seelah, and there's a malevolent gleam in his eyes.{/n}
+
+43e1b9e6-f75c-4f47-8ff2-b94344004a55
+{n}Seelah stares at Darek's lifeless body. She is breathing heavily, but you can't tell if it's from the intensity of the battle, or if she's simply overwhelmed with emotion.{/n} "Is it... over? Have we 'removed the evil'...?"
+
+bbffaf23-04cf-4243-a6f8-ff07c36fcb9c
+{n}Seelah smiles grimly.{/n} "Yes, you're right. We'll discuss this later."
+
+8e4494ff-5209-44e1-9e80-98a8b9d2a6a9
+{n}Seelah picks up the bowl of jewelry and pours the contents into a pouch. Inside the bag, the gemstones gleam ominously.{/n} "We have the souls... I'll keep them with me until we reach Drezen. Let's go, {name}! I... don't want to stay here any longer."
+
+f2ec1ef7-81b0-4c33-a125-b63b31743230
+"It doesn't matter. He tried to poison our souls, but his words mean nothing. He has lost. Commander, Seelah... I spoke harshly to you before. I said things that I regret. But I should never have doubted you. This victory would not have been possible without your help."
+
+00f7e432-376b-4d70-9c63-7d9a3f048eb9
+{n}Seelah listens to all of this in silence. Then she turns to you, and there's a question in her eyes.{/n}
+
+80ed53ab-565b-4c0f-bac5-632b286dcde0
+"No, Seelah, don't look at me like that. I don't blame you for anything. I'm glad Elan had a friend like you. I'd like you to be my friend too. You must come find me when you return from your next heroic journey! But for now, I must ask you to excuse me... I need to be alone for a while."
+
+e4c9d8c7-47f7-4365-9478-66d7a8700192
+"Jannah!" {n}Seelah beams at her friend.{/n} "You're here!"
+
+3b806354-80c6-47cd-85ff-144ea180f081
+"There's not much to tell. As I'm sure you remember, you chose not to punish me — you allowed me to go free. So I went to Kenabres... I figured I'd forget all about the crusades, have a fresh start... but it didn't work out. I heard the news about you and Seelah — that you had descended into the Abyss. And, well... I couldn't stop thinking about everything I had left behind."
+
+a6b0941a-98d4-409f-8b6c-049d1f47de40
+"Yeah, I'm here..." {n}Jannah falters, then blurts out,{/n} "Seelah, how can you be smiling at someone who failed you? I thought you'd never want to see me again..."
+
+e655d25c-7b49-4a12-a898-5db791a04673
+"I mean, I'll definitely give you a piece of my mind once we're in private." {n}Seelah pretends to look stern.{/n} "But I really am glad that you're okay."
+
+789a7e25-299c-4bf6-b881-69d3556bc6d2
+{n}Seelah's words bring a small smile to Jannah's lips. Then the former deserter turns to you.{/n} "Well, let me tell you why I'm here. I have business with you, or rather, a request..."
+
+ec2188d1-671b-4077-8c5f-79fc07598302
+"Commander..." {n}Jannah hesitates, then continues resolutely.{/n} "I know about the stolen souls. I want to help you search for them. I've come to ask if you will let me join you and Seelah on this mission. Please, give me another chance!"
+
+2641cff8-f2b1-4838-916f-921b4c3ec517
+"Of course you will. You'll get your chance to prove yourself — I'm sure of it!" {n}Seelah's tone is soft and encouraging, but she shoots you a look of disapproval.{/n}
+
+4ec90929-6c90-4c24-8e8d-b4df3e5cbd82
+"As soon as I caught wind of your return, I hightailed it to Drezen as fast as I could. But when I got here, I just couldn't find the courage to approach you... so I waited outside the citadel until I saw Elan and Seelah. I knew you must be planning something together. And that's when I realized — this was my chance to make amends. I might never get another opportunity to prove myself. So I came to see you. That's why I'm here."
+
+6a35a07c-7779-40d1-ae5b-63a7534ac654
+"Yeah... yeah, I guess you're right. After all, life is full of second chances..." {n}Jannah smiles sadly. Her eyes are bleak.{/n} "Bye, Seelah. Farewell, Commander..."
+
+8c398568-bd4f-4d9a-9c3b-1ab73b347686
+"People can change," {n}Seelah says quietly.{/n}
+
+e6de3b65-6fc4-415d-af69-204f0b34f56c
+"I made my way to Drezen, but I just couldn't bring myself to face you... until I saw Elan and Seelah heading here. I figured that you were up to something, and that this was it — this was my chance to make amends. It was now or never."
+
+70c2bbcf-fce7-45f7-9bd6-40644f8c44fd
+"No, it's nothing more than I deserve. Well, I guess I'll return to the Condemned. I have to find meaning in life somehow... I'll try to prove my loyalty through service." {n}Jannah smiles sadly. Her eyes are bleak.{/n} "Bye, Seelah. Farewell, Commander..."
+
+4de4b157-6743-4dc5-83d0-b7c84da4573a
+"I can't afford to spend time helping a few people in need when the fate of the entire Worldwound is at stake. That is my priority. And I need your help, Seelah. We have to remember what's important."
+
+d2dd18e4-7728-486c-b9e5-de9201d70d06
+{n}Elan's eyes burn with a {d|Seelah Elan desperate}feverish light{/d}. His face is deathly pale.{/n} "Commander, you have my respect. You survived the Abyss — and that is no small feat."
+
+1242ad8d-b287-46d4-a7f9-a6be0b268938
+{n}Elan looks {d|Seelah Elan hope}calm{/d}, but determined.{/n} "Commander! I'm glad to see you've returned from the Abyss."
+
+6962fab7-3d93-4c05-92fa-ca0c914d4e4d
+"All right, here's the deal." {n}Seelah gets straight to the point.{/n} "While we were in the Abyss, these folks discovered where the souls are being kept — the ones that were stolen by the demons."
+
+8cbeb425-67b1-4e52-93d1-2beddb958902
+{n}Seelah watches her friend worriedly, but remains silent. Her hands are clenched into fists.{/n}
+
+a1c4474d-334d-4d6d-be11-1ad523cad492
+{n}Seelah looks at you in bewilderment and dismay. You can sense her anguish as she struggles to accept your decision. Finally, she nods, but her eyes are filled with sorrow and regret.{/n} "We shouldn't turn our backs on someone who needs our help. But if that's your decision..."
+
+8b555c03-fe28-4d02-85be-b25b99bcd0b0
+{n}Seelah hesitates for a moment, and you can sense her inner turmoil. Then she shakes her head.{/n} "You have plenty of soldiers and companions, {name}. But the trapped souls of Sunhammer's victims... they don't stand a chance without me and Elan. I don't want to leave you, but it seems I have no choice. Farewell! Let's go, Elan. We need to prepare for our departure."
+
+0c40105c-fff7-4997-97da-8c47e9508884
+"You are the Commander's companion, Seelah. You need to follow orders, and do what {mf|he|she} says. I'll go to the cave by myself. I'll see what I can do on my own. Farewell, and farewell to you, Commander!"
+
+418e8294-d872-4bf3-b74d-443da9e227ec
+"The world isn't black and white, Seelah. You don't always make the right decisions, but we all make mistakes. That's part of life."
+
+b28c58ea-9c37-4f23-b3cd-e4e9a17c09ae
+Advised Seelah to control her emotions and discipline her mind.
+
+43e11168-7f70-4aa8-b527-b657268d390f
+{n}Seelah sits quietly with her hands clasped together. She sighs softly, and there's a faraway look in her eyes. You can see from her troubled expression that something is bothering her.{/n} "There you are, {name}! I'm just here, you know... waiting. Arsinoe is going to unite the souls and the bodies. Just a little longer, and we can put all of this behind us..." {n}She falls silent, and looks down at her hands despondently.{/n}
+
+cf0cdc7e-3920-40a7-8a1b-c23643385f29
+{n}Seelah nods. Her face is unreadable.{/n} "Then let me ask you something else. How do you feel about me... and the part I played in all of this? I talked everyone into going to the Houndhearts camp to get the ring. I protected Curl from Elan's blade and saved his life. I'm the reason he — or rather, the demon that took his body — got away. It's my fault that we didn't find out about the jewelry being dangerous. We could have prevented the theft of so many other souls... if it hadn't been for me."
+
+fea80145-b09b-495a-87ce-a837e925f561
+"So many things have happened, {name}... And I just don't know what to think. In moments of doubt, paladins are supposed to find certainty in the words of their oath. So here I am, repeating the words of the code over and over. 'I will be temperate in my actions,' and 'I will guard the honor of my fellows.' 'I will learn the weight of my sword.'" {n}Seelah's words become a chant. She recites each line with conviction.{/n} "'Without my heart to guide it, it is worthless — my strength is not in my sword, but in my heart. If I lose my sword, I have lost a tool. If I betray my heart, I have died.'"
+
+4aebf8b5-534d-4a7e-b798-8557b28e46d6
+{n}Seelah falls silent. Then she turns to you.{/n} "So... what is the weight of my sword? Only idiots think they are infallible. I may not be the smartest person in the room, but I hope I have at least some measure of self-awareness. I need to reflect on everything I've done — on what kind of person I've become."
+
+611cf5cb-1ca8-4078-9eec-b1d7bd3b98a6
+"You've made this point before — both through your words and your actions." {n}Seelah sighs.{/n} "Fine, this dimwitted paladin can take a hint. You're right, {name}. I need to improve... and I will!"
+
+64a44564-6d50-4c80-ab57-3d6a57ccb97f
+{n}Seelah's eyes brighten.{/n} "Thank you. I needed to hear that from you."
+
+afe4a854-e6c9-442f-8755-cc08e4fd140c
+"Greetings, Commander! I'm glad you are here. We are ready to return the stolen souls to their bodies, and bring these poor people back to life. We will need to help them get over their initial shock, and your presence will undoubtedly help ease their transition. First, however, I need your companion. Seelah, everyone is waiting for you."
+
+6ba1cb04-8e0b-40c5-ac6d-6cf64ff0e094
+{n}Seelah gets to her feet.{/n} "Me? Why?"
+
+3cb6cfc5-ab5e-4ddb-a7d1-8ce3775b987f
+"You're confusing me with someone else. I'm Seelah the blockheaded paladin. I'm no hero."
+
+533669df-58a2-4af7-a36d-f2d954bb59c1
+"But suppose he does admit to working with the cultists?" {n}Seelah is not willing to let the matter go.{/n} "What if he claims that he was forced to help them... that they threatened his life? What then? I know it's all hypothetical... but I'd like to know what you would do. This is... really important to me."
+
+6efed8cd-d017-4bda-8b12-a9468ec50675
+{n}Seelah stares at you in shocked silence.{/n}
+
+52a77bc4-cb28-4479-b769-3b681209fe34
+{n}Seelah touches your shoulder and says somberly,{/n} "It's done. It's finally over."
+
+2e4cee9d-7a7c-4c31-9089-b45bae313780
+{n}Seelah looks at Sosiel with sympathy.{/n} "Hold on, brother. If you need to talk, drink, and forget everything or howl your grief at the moon, come to me, I'll support you. War is hard on good people..."
+
+a1490de9-b04a-4390-b044-79594707e50e
+"But this war isn't hard on you, Seelah. What does that mean?"
+
+26ba1653-90da-40d7-bcdb-2b91c655bf39
+"You sure did." {n}Seelah grins.{/n} "I seem to recall you wangling ten coins out of me, promising to repay me with heaps of gold once you found your family and got your inheritance. Well, it's time to pay up!"
+
+b15b5acc-93c7-4763-8807-06ba45db84cc
+It is unusual to find so much cheer in a person with such a dark past. And strange to see a former thief and a street urchin wearing the shining armor of Iomedae's paladin. This young woman has forged her faith from the pain of her losses, and her thirst for justice and redemption. She has managed to preserve her compassion and kindness underneath her steel armor. Will this become Seelah's weakness, leading her to ultimate ruin?
+
+7142a40e-4f77-46fe-a1ee-d461fbb36d50
+Seelah's friendships lie in tatters — it appears that Curl is likely in league with the demons, while Jannah fled like a coward, deserting her fellow fighters in their moment of need. Seelah's quarrel with the knight Elan was yet another strain to endure. The redoubtable paladin fears no enemies, but discord among her friends has wounded her more deeply than she is willing to admit.
+
+49d83527-3617-42c8-a48c-ad73bf240704
+An unforeseen calamity has crashed down upon the crusaders — demons hiding in the jewelry of the brilliant Darek Sunhammer have stolen the souls of the jeweler's clientele. The victims include Curl and the guests at Elan's wedding. A heartwarming tale of fellowship has become a nightmare for Seelah — the paladin spends every spare moment in Drezen's infirmary with the bodies of the victims. And the questions that plague her have no easy answers — how can she restore the souls to these people, and the peace to her own heart?
+
+1bd1a113-5ab0-46bd-9f38-a61887daae20
+After braving all the challenges, Seelah not only succeeded in restoring the stolen souls, but also gained a new, hardened core in her own soul. She has remade herself as a weapon is reforged, and now she is ready for new endeavors and service.
+
+9806f479-0270-4425-9a72-0dc5fa759e9c
+Her victory over the cunning cultist jeweler has taken its toll on Seelah. The paladin succeeded in restoring the stolen souls to the victims, but she has now learned that noble intentions often entail a high cost to one's own soul. Fortunately, sorrow has not broken her spirit — Seelah is ready to continue the fight, to live, and to learn from her mistakes.
+
+9bcf4510-e5ec-4265-87bb-92a30c5b4adc
+The schemes of the shrewd cultist jeweler could not stop Seelah — she succeeded in recovering the stolen souls, and with them seems to have managed to restore peace to her own heart. The whole world lies before the valiant warrior, and nothing will change her desire to make this world just a little bit better.
+
+04f30cbd-a527-45f2-bb42-064e5122a0f9
+"I know she's not the real Areelu and I'm not the real Seelah, but deep down my soul is telling me that she's my enemy!"
+
+a2479bf5-ed1d-44c1-af25-218e0108b92a
+{n}Seelah salutes the fallen knight.{/n} "He may have been created by Valmallos, but he left the world as a true paladin should."
+
+6ed99479-7436-4f5c-8327-5720ac2f6ccd
+"Is that... the Queen?" {n}Seelah blinks rapidly, trying to see through the apparition.{/n}
+
+6bc6ca5f-2f68-4c5a-bc10-e44b167132f5
+{n}Seelah rolls her eyes.{/n} "All I meant was that maybe we should go to the entrance like the voice keeps telling us. Wait, why am I even explaining myself to you? Eugh."
+
+8e53ee9a-8cd9-48eb-94e5-4b6a3ff2548c
+{n}Seelah gives Anevia a reassuring nod.{/n} "We don't abandon our own. We'll get them out, won't we, Commander?"
+
+afb22445-1fc2-4701-a6a7-17574460bacf
+{n}Seelah glares at the new Anevia and grits her teeth.{/n} "That's enough. You're laying into my friend here, and the only reason I haven't knocked you flat is because you're also my friend, in a way. This is a very confusing situation, so shut your trap and quit testing this paladin's self-control."
+
+a3729941-37ed-4beb-a5bd-b154ce1930ea
+"I want to say that the snake is lying to us, but I can't do it. I don't sense any particular evil from them. Does that mean all this is true? Oh, Seelah, you idiot, what have you gotten yourself mixed up in this time?"
+
+5a608b06-4a96-426e-b32a-5792b9842bed
+"Another victory!" {n}Seelah gives you a wide smile.{/n} "No demons allowed on Golarion while old Seelah and her crew are on guard duty!"
+
+b6221410-0716-4ee1-afb0-4db69320d37e
+{n}Seelah frowns, but her eyes betray her amusement.{/n}
+
+c36729d0-0a1c-4d86-8cd5-939d71418fa2
+"Uh oh. You should get some fresh air. Trust your good friend Seelah — I've seen a lot in my life."
+
+8aa25c85-7301-4b45-8a97-cfbee7ef2077
+"Oof, there. I'm fine. Good old Seelah is fine."
+
+fd2ec245-0bfd-4ac1-9adf-db952b5c06d0
+"They say the Commander is accompanied by a paladin of Iomedae named Seelah. I'd dress up as her. She is strong, noble, and smart. I think she's amazing."
+
+756700dc-67b3-445f-a932-7e365f671c2f
+"Seelah is also concerned that the city might be attacked today."
+
+bc673375-b9e0-4859-bf9a-fc0747f382c7
+"Her fears are justified. A celebration in the middle of a war is an unbelievable folly." {n}Regill hesitates and adds reluctantly:{/n} "Seelah does not forget her duty during festivities. I underestimated her."
+
+8619b8c0-ec98-4edd-b708-654ddf86b8a3
+"Seelah, let's get him out of there."
+
+8ba8b226-5c2f-4ea3-ad6a-19bb7e2e7e07
+"Seelah, the three of us are strong enough to lift the cart and assist this poor man."
+
+bece6265-d98a-49f2-ae2d-52199cad6e66
+{n}You use the pike to raise the cart slightly, allowing Seelah to lift it the rest of the way. There is just enough space for the man to wriggle out on his own, which he does — unhurriedly and with heavy sighs.{/n}
+
+52eb0487-4c16-4a68-86ab-690ddf947aaa
+{n}The pike endures the weight for only a few seconds, barely lifting the cart, before breaking with an ear-splitting crack. Seelah moves to drag the unfortunate man out on her own. She takes him by the shoulders and begins to pull...{/n}
+
+85a2ce30-8ecf-41c1-a16a-143770af4e18
+{n}The people gathered around exchange guilty glances, then take a step toward the cart. With everyone working together, and with Seelah's guidance, the cart is righted before you can blink.{/n}
+
+6de72ad0-298b-44b2-a84c-ef76a9c3e28d
+{n}The crowd looks at you skeptically, shaking their heads — no one is willing to strain themselves to help a stranger. Seelah moves to drag the unfortunate man out on her own. She takes him by the shoulders and begins to pull...{/n}
+
+45d095f7-9add-4c2a-b1bc-5de98d7fa714
+{n}The strength of two heroes and one guardsman is not enough to set the cloth-laden cart back on its wheels. Seelah moves to drag the unfortunate man out on her own. She takes him by the shoulders and begins to pull...{/n}
+
+2aefbd2b-733e-4065-936b-9353f7382b98
+{n}After a few minutes of hard work, Seelah finally pulls the man out from under the cart. His face is impassive, and he get up slowly and reluctantly.{/n}
+
+3cc3318b-7f7f-41b6-93d2-1e25d21954d8
+"How are you holding up there, friend?" {n}Seelah leans down toward the man lying under the cart.{/n}
+
+30ec91f0-03e1-4ba3-9480-e3a5b1b328c4
+{n}Seelah wipes the sweat from her brow and sighs.{/n} "He seems to be in one piece. All's well that ends well."
+
+a3fd7cd7-6b3b-40de-9a2e-6ff2802aad4b
+{n}Seelah looks at everyone around her with a smile.{/n} "All's well that ends well. Please go back to enjoying the festival — and stay safe!"
+
+39238751-ade0-4059-9ec9-40651299391d
+"Seelah, the bars are pretty rusty. I think you can pull them apart while I help him get his head out."
+
+6ac17788-f387-406c-916b-77597db0359a
+"Seelah, I think you can pull the bars out of the stone wall."
+
+ab688b57-7e04-4452-b5fe-0c43bcc6be1b
+"Seelah is here! What's going on?" {n}She falters and slowly tilts her head, looking in astonishment at the gnome stuck in the sewer grate.{/n} "I'll be damned! How in the world did you manage this, my good fellow?"
+
+04bfe00d-e2c6-4d7b-b814-6e81322efecb
+"Wait a minute..." {n}Seelah cocks her head and raises an eyebrow, looking questioningly at the gnome and the bottle he is holding.{/n}
+
+bd822af5-60d7-4535-a8e5-7f12496c45e7
+"Take this, love. Thanks for helping me out. Something to remember me by." {n}The gnome hands Seelah the coin he fished out of the gutter.{/n}
+
+8290ebb4-ee62-46bb-afac-0bb5a2ce928e
+"Just find a blacksmith, will you?" {n}Seelah smiles warmly.{/n} "I'm glad we were able to help him."
+
+0bc58975-e2e4-495b-a1c9-15b65539cac7
+{n}Seelah tosses the copper coin and catches it in the air.{/n} "And thanks to you, too. Try not to get stuck anywhere else!"
+
+2786edbe-a31d-469e-a413-cd7f1c5e3cfb
+"What have you got there, Seelah?"
+
+76f4dbab-3104-4582-a00a-749a172a4e83
+"You don't see anything either?" {n}Seelah squints and peers at the top of the tree.{/n} "Hey, little girl, are you sure your Clementine is up there?"
+
+78bf35a9-49ff-462c-95cc-6c9bf9b8768f
+"I don't know!" {n}Seelah shouts, barely holding back her laughter.{/n} "I've never seen anything like it, but it's definitely not a puppy."
+
+78b1ffd8-3abb-4bc3-bf5b-79a85a78877c
+"Gods above, what are you? Ha ha ha! How do I even pick you up? Do you bite? No, you don't. That's a good girl, Clementine, come to Seelah."
+
+a2ad6b94-f528-4325-b2a1-0ac4b412d759
+{n}Seelah comes down from the tree, holding a rat-like creature in her arms: a white snout with a pointy pink nose; round, black ears; dirty gray shaggy fur... There can be no doubt: you are looking at an opossum. A large pink bow is tied around the animal's neck.{/n}
+
+b1579721-b177-477e-be0d-e4b865b294ff
+"Keep a closer watch on your puppy from now on, little girl!" {n}Seelah winks cheerfully.{/n} "And the good deed is done! Thank you, {name}."
+
+aaf05e8c-d15e-49fa-a301-367eb0b8b690
+"Oh! You're so tall! And grown-up! And your armor is so shiny..." {n}Blinking in awe, the little girl stares up at Seelah.{/n} "Can you help me rescue my Clementine? She climbed up too high and now she can't get down!"
+
+c5fee624-932a-4065-8845-3eb6d18b5901
+[Pat Seelah on the shoulder] "You did great. I'm glad we were able to help some of the locals today, too."
+
+d7118ad1-b51b-44b3-8875-817eb33e92c1
+"See you later, Seelah."
+
+9bd6d95a-8c1d-4797-bb00-75ae21708f8c
+"I'll be keeping an eye on everyone! I'll also allow myself a tankard of beer and maybe even a dance..." {n}Seelah winks at you happily.{/n}
+
+72460476-da0f-4b0b-b42a-566af1cb2f8f
+"{name}! There you are!" {n}Seelah notices you from afar and raises a large wooden tankard in greeting.{/n} "How's the festival treating you? Have you tried the local drinks yet? The soldiers are all raving about the apple mead — apparently it's the best harvest they've had in twenty years!"
+
+da61268d-056c-4261-a328-3cfbb33e25c6
+"It's magnificent! Look around — people are happy! Celebrating, singing, wearing colorful costumes... It's like there's no war at all." {n}Seelah looks around with a smile on her face, but there is a hint of concern in her expression.{/n}
+
+6f45b58c-c7ca-4f9e-aca5-aa6aaf694fad
+"Any matter where your friend Seelah's strength, skill, and cunning might come in handy. You know, just call me if you see anyone in trouble."
+
+9018be73-16e1-419f-b491-1d859e10fb78
+"You know, I'm glad you showed up." {n}Seelah sighs heavily.{/n} "I'm a bundle of nerves. I'd love to relax, but I can't. I keep thinking about how celebrations always seem to end in calamity, with demons raining down from the sky. What if they attack again, or something even worse happens?"
+
+36431d7c-96da-48e7-b086-a8ef51a4c3f1
+Perhaps Seelah found somewhere more interesting.
+
+f7f2fa41-43d0-46d3-91f1-2eadc0c5b15f
+Seelah seems to have had enough of the wine tasting.
+
+653b18c8-9c47-4304-a140-9341eeb20775
+It appears Sosiel and Seelah have finished their wine tasting.
+
+19d637f4-2c28-493a-b33a-8ff23a7a7653
+"Wait, where's Seelah? I just went to get some regular wine, and by the time I got back — she was gone."
+
+dd1aaccf-255b-4fc9-b0e2-08125abeca91
+Call Seelah
+
+e4a0a5d8-d694-46d7-83c1-6a90ece29315
+"Seelah taught me. You have no idea how tough she is! 'Lann, straighten your back! Lann, don't pull on the reins! Lann, stop being such a wuss!' And then after practice, she'd come up to me and say, all sweetness and light, 'Great job, Lann!' While I'm lying flat out on the ground, too exhausted to move."
+
+014694f7-28ef-49eb-998d-b856fbe9be2d
+"To be honest, I was more afraid of Seelah. So one fear canceled out the other."
+
+787e452a-156b-496d-a2ac-b0f52c9a3c70
+In the absence of a Worldwound, there was no need for Seelah to journey across the entire continent. She remained in the south, fighting evil and helping those in need just as tirelessly.
+
+56f8a1b2-6ea8-4d7e-a127-526cbdca4e7b
+Among Seelah's war stories, there were a couple of new, particularly {d|aeon memory}fanciful{/d} tales — like the one about a massive demon lord attacking a city, after which Seelah and a certain brave comrade of hers fell down into underground caves and fought their way out. Whenever she told that story, she would always add, "You don't have to believe me." And her eyes would always be tinged with sadness.
+
+b48a2e49-3de3-4ceb-af97-911d3d9bbbe5
+Seelah became an exemplary paladin and, naturally, never veered from the path of opposing evil. She was soon spending more time practicing her leadership skills and {d|Seelah Lawful}working on herself{/d} and less time traveling, and before long, she had formed her own knightly order.
+
+394c7ac2-0841-4a10-b739-e60ce92ff150
+Once again, Seelah heard the call of the open road. Even after gaining mythic powers and coming face to face with a goddess and demon lords, she never stopped being a paladin and a wandering knight whose purpose was to {d|Seelah Good}help{/d} others.
+
+28849a98-7f31-4109-8e47-ed5ba7c3bcce
+Seelah departed Mendev with a heavy heart. All the things she had {d|Seelah Bad}gone through{/d} had left her more confused and saddened than inspired. The paladin went off to seek her path and a way to find inner peace.
+
+20747310-6610-4076-b809-67391ecbfcf0
+Once again, Seelah heard the call of the open road. Even a valiant paladin can be prone to self-doubt, and after everything that had {d|Seelah Neutral}happened{/d} to her, Seelah wanted to sort out her conflicting thoughts and emotions on her own.
+
+1f997ba8-cd99-473c-8b90-69b33ece1f6b
+Ascension enhanced Seelah's power but did not change her character. The irrepressible warrior is frequently seen in the company of good gods, from Cayden Cailean to Chaldira Zuzaristan. Rumor has it that Iomedae herself often honors her with heart-to-heart conversations and joint training sessions — the goddess enjoys reminiscing about her mortal days. Most importantly, Seelah never stops thinking or caring about the common folk in need of help — not for a moment.
+
+c6e606bb-2177-499c-ba4d-acaf4a5b625a
+Seelah refused to {d|Seelah Bad}share{/d} in the Commander's power and eternal life. She wanted to find her own path.
+
+5c5cdd13-b625-492d-bc70-0fba70026543
+Staying true to friends was in Seelah's blood, and it is said that even while journeying through the farthest reaches of Golarion, she tried her best to keep in touch with the Commander. Their rare meetings were always filled with joy.
+
+8df62d54-6b65-4b0f-b455-76867dbc97c5
+One day, a familiar figure appeared on Arueshalae's doorstep — Seelah. She stayed as a welcome guest for several days, trying to soothe the turmoil in her soul. It is not known what the Commander's two companions, the paladin and the former succubus, spoke about, but when the time came for Seelah to set out again, a smile was playing on her lips.
+
+b4a555b4-e19b-48a8-8390-89fde6895169
+Another of the Commander's companions, Seelah the paladin, visited her sister-in-arms on a number of occasions to share tales of her latest adventures. Their meetings were always joyful and their conversations long and heartfelt.
+
+9e0d838d-b53d-4daf-92a9-ce7fbcb82474
+Having received an invitation to the wedding, Seelah was torn about whether or not she should attend. She felt her appearance at her friend's wedding would be a bad omen. In the end, she politely declined.
+
+a008e7f1-ac5c-46b0-8950-fe04af0653e2
+Having received an invitation to the wedding, Seelah was torn about whether or not she should attend. She felt her appearance at her friend's wedding would be a bad omen. In the end, she overcame her fears, and it was well worth it — her stories and army songs were the highlight of the festivities.
+
+8578d082-4b2b-4b65-b475-30c3a9c37806
+One day, Trever received a visit from Seelah, who was recruiting decent fighters for her knightly order. To her disappointment, Trever firmly refused.
+
+808ea0d3-d3a7-40ed-92f6-9abc015c9e9e
+Seelah lived in Gundrun for a time, hoping to find herself while helping to rebuild the town after the war. Alas, she did not remain there long.
+
+d6e081d4-c935-4e42-94bc-05f09c7cf98c
+"The crusade has many unusual friends — but even I haven't met anyone like you before. I'll be glad to see a kobold in our ranks!" {n}Seelah smiles amiably.{/n}
+
+39e157b0-d899-4887-aaab-1bd264172324
+{n}A broad smile blossoms on Seelah's face.{/n} "I never thought we'd run into such jovial company out here! I don't suppose you guys have anything stronger than tea in your canteens?" {n}Catching the halfling's conspiratorial look, she smiles even brighter.{/n}
+
+f8de774a-b6af-4f49-9541-13da1258d4ae
+"You monsters!" {n}Seelah looks at those who appeared to be trusted allies a moment ago with open disgust.{/n} "How did I not see you for what you are right from the start?"
+
+2bd4ad3e-fbf8-44ae-98f3-52919b19129e
+On the day of the celebration, Seelah parted with Jannah Aldori at the market square in Kenabres
+
+97488939-1a38-456e-9217-08cb8908a386
+An Eagle Watch fighter and Seelah's friend, Jannah Aldori went missing during a demon attack. Irabeth would appreciate any information about her.
+
+2533ab1d-31bf-4d93-8745-ffd206b662ba
+Find Jannah Aldori, Seelah's friend
+
+0145d536-6139-41d0-9c91-241428705f0a
+Jannah Aldori was found in the streets of Kenabres along with Seelah's other friends and a barrel of beer. Now the company is ready to celebrate this happy occasion at the Defender's Heart.
+
+c5ab7dde-a585-45e5-b9bc-5558397572a8
+Celebrate Seelah's reunion with her friends at the Defender's Heart
+
+753ebdcb-11b8-4261-8679-edf0ae3a10bf
+The attempt to help those in need turned out to be much more than Seelah bargained for. The paladin has a lot to think about. She will need to talk to her leader about what happened.
+
+6b60437d-eae0-4cf6-a922-ec92922e43fe
+Talk to Seelah
+
+537e5a87-1f39-4e92-9fe5-4ee718842b87
+In true paladin spirit, Seelah gladly lends a helping hand to anyone who needs it — on this occasion, to a young knight, Elan. During the demon attack, he lost an expensive ring, a gift for his fiancée. In the grand scheme of things, this can hardly be considered a serious problem. But surely even minor requests for help should not go unheeded?
+
+0f79a166-e587-40cf-8e19-4304fbeb5293
+Seelah wishes to buy a new ring to replace the one that was stolen and she requests the Commander's advice. She will be waiting at a shop in Drezen's main square.
+
+a38bf780-9c7d-4707-972a-254f76cc281f
+Seelah got what she wanted and now she wishes to give the present to her friend. Elan should be somewhere near the crusader barracks.
+
+3ad9e344-b51c-4a4d-ad67-58cf456bd907
+All the evidence of the tragedy at the wedding points to one person — the jeweler Darek Sunhammer. Seelah wants to visit his shop as quickly as possible.
+
+38eebf09-c2c2-4b1e-84ca-9d47b7489dd9
+However ephemeral love and affection might be, they remain the base of the mortal society. The knight Elan has decided to tie the knot with his beloved, Kiana. Seelah's first attempt to ensure her friend's happiness wasn't a success. The ex-thief Curl stole the ring meant to be a present for the bride and set the demons he summoned on the Commander, Elan, and Seelah. Now Seelah wants to make things right and asks for Commander's help.
+
+ef5f2b7e-8e8c-4338-a8c1-acce1e65618f
+The priestess Arsinoe has found where the souls are being kept. It is a cave under a cliff in the southern Worldwound, on the edge of the Winged Wood. But even the faithful servant of Abadar could glean no details about the location from her vision. The knight Elan has gone on ahead to do reconnaissance, and the Commander and Seelah must join him at their destination.
+
+e4e4c32c-68d4-4542-93bb-2ea6fc09e4b8
+Go to Gravestone Rock with Seelah
+
+884bf99f-bd1e-42ea-ac54-996fe4e8dddb
+The last chapter of this story awaits the Commander back in Drezen. The victims must be brought back to life. Seelah, who is guarding the jewelry containing the souls, will be waiting in the infirmary where the bodies have been kept.
+
+b46d5fa9-4ea9-4e7a-9997-b95c458bd095
+Upon {mf|his|her} return from the Abyss, the Commander is met with a new development — the souls stolen from a number of Mendevians in a devious plot have been tracked down in the Worldwound, and they can still be retrieved. In the long, arduous war against the demons, this episode is hardly noteworthy — just another grief endured, another loss borne, another moment spent hoping for salvation. But for the paladin Seelah, this story means something much, much more...
+
+1f5335d5-cd65-4eaf-b66f-83086feae23f
+Speak with Seelah
+
+bf1b3a99-c57a-41b4-ab37-60b24f3a9186
+Despite the carefree atmosphere of the festival, Seelah is finding it difficult to relax. Her concern that someone might be in trouble is keeping her from enjoying herself. Perhaps someone at the festival could use Seelah's help?
+
+e20784ec-8723-4994-b21a-1e73e1c02466
+"That's what we're fighting for, isn't it? For weddings, fun, and laughter? Even in the cursed lands of the Worldwound, even after a hundred of years of war."
+- Seelah

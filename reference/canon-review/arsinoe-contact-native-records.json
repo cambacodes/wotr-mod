@@ -1,0 +1,341 @@
+[
+  {
+    "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+    "AssetId": "6d3fb96f9b60c0449a01add4be5c4a49",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": null,
+      "m_Overrides": [
+        "$EtudePlayTrigger$d4d5185f-a515-4cf4-943f-2a0367e4c1ec",
+        "$EtudeBracketFollowUnit$8402bb45-19c2-40ff-9256-8841bbae18e6"
+      ],
+      "Components": [
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "m_Flags": 0,
+          "name": "$EtudePlayTrigger$d4d5185f-a515-4cf4-943f-2a0367e4c1ec",
+          "PrototypeLink": {
+            "guid": null,
+            "name": null
+          },
+          "m_Overrides": [],
+          "Comment": "",
+          "m_Once": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "name": "$Conditional$102fee8d-8c9a-490d-8fe7-aac6ee9c638d",
+                "Comment": "Spawn Elan if needed",
+                "ConditionsChecker": {
+                  "Operation": "And",
+                  "Conditions": [
+                    {
+                      "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                      "name": "$EtudeStatus$40ede0b8-395f-440f-8c45-60ecc1136525",
+                      "Not": true,
+                      "m_Etude": "!bp_ded376ed8b73c3e42b0de967fb1d10a9",
+                      "NotStarted": false,
+                      "Started": false,
+                      "Playing": true,
+                      "CompletionInProgress": false,
+                      "Completed": false
+                    }
+                  ]
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "0652c1b85291c994f8411a22deb2b6ec, Spawn",
+                      "name": "$Spawn$85261051-9c76-4632-b912-c39904d296e4",
+                      "Spawners": [
+                        {
+                          "EntityNameInEditor": "Elan",
+                          "_entity_id": "d4ec252b-2ba4-42c8-8c98-bc7ae125f6b8",
+                          "SceneAssetGuid": "44f2aac01fa900e4d89c064a92a89ed0"
+                        }
+                      ],
+                      "ActionsOnSpawn": {
+                        "Actions": []
+                      },
+                      "RespawnIfDead": false
+                    }
+                  ]
+                },
+                "IfFalse": {
+                  "Actions": []
+                }
+              },
+              {
+                "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                "name": "$TranslocateUnit$7e26e7bc-b22b-4496-b225-01aef83fdd2f",
+                "Unit": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$e4c91419-0dc7-4d90-a9a1-c4c4bff91576",
+                  "Spawner": {
+                    "EntityNameInEditor": "SeelahDefaultPosition",
+                    "_entity_id": "108a3190-0de0-4bb1-994f-ca5e1f3f3b50",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "translocatePosition": {
+                  "EntityNameInEditor": "Seelah_Aftermath",
+                  "_entity_id": "14aa67e0-d27d-4de3-9004-c5d29aeb7622",
+                  "SceneAssetGuid": "44f2aac01fa900e4d89c064a92a89ed0"
+                },
+                "translocatePositionEvaluator": null,
+                "m_CopyRotation": true,
+                "translocateOrientationEvaluator": {
+                  "$type": "e11ac2cb26534343ba689a3fdd4de609, LocatorOrientation",
+                  "name": "$LocatorOrientation$fb60f5d6-a780-4216-90fd-60633b856429",
+                  "LocatorEval": null,
+                  "Locator": {
+                    "EntityNameInEditor": "Seelah_Aftermath",
+                    "_entity_id": "14aa67e0-d27d-4de3-9004-c5d29aeb7622",
+                    "SceneAssetGuid": "44f2aac01fa900e4d89c064a92a89ed0"
+                  }
+                }
+              }
+            ]
+          },
+          "IsActivateOnLoadArea": false
+        },
+        {
+          "$type": "f0a72cfdf0ef46c41a504aae88b7809c, EtudeBracketFollowUnit",
+          "m_Flags": 0,
+          "name": "$EtudeBracketFollowUnit$8402bb45-19c2-40ff-9256-8841bbae18e6",
+          "PrototypeLink": {
+            "guid": null,
+            "name": null
+          },
+          "m_Overrides": [],
+          "Comment": "",
+          "Leader": {
+            "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+            "name": "$PlayerCharacter$f2107244-ea3a-47c8-9f4e-2bf4f2815fbe"
+          },
+          "UseSummonPool": false,
+          "Unit": {
+            "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+            "name": "$UnitFromSpawner$d1020290-b73d-4883-af96-35a636daa204",
+            "Spawner": {
+              "EntityNameInEditor": "SeelahDefaultPosition",
+              "_entity_id": "108a3190-0de0-4bb1-994f-ca5e1f3f3b50",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "SummonPool": null,
+          "AlwaysRun": false,
+          "CanBeSlowerThanLeader": false
+        },
+        {
+          "$type": "d3e4fc9142494f99a469c1dd43abe255, AreaDidLoadTrigger",
+          "m_Flags": 0,
+          "name": "$AreaDidLoadTrigger$407f3445-6397-47a9-b37a-d4481f8c53d9",
+          "PrototypeLink": {
+            "guid": "",
+            "name": ""
+          },
+          "m_Overrides": [],
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                "name": "$TranslocateUnit$b8a0dc40-c59d-4174-bec5-4269bca53404",
+                "Unit": {
+                  "$type": "7aafe88b061e08e44aa3e725e8d8ff00, CompanionInParty",
+                  "name": "$CompanionInParty$9fc7f82a-52ce-4c7c-a72e-dc0bb9773991",
+                  "m_Companion": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+                  "IncludeRemote": true,
+                  "IncludeExCompanions": false,
+                  "IncludeDettached": true
+                },
+                "translocatePosition": {
+                  "EntityNameInEditor": "Seelah_Aftermath",
+                  "_entity_id": "14aa67e0-d27d-4de3-9004-c5d29aeb7622",
+                  "SceneAssetGuid": "44f2aac01fa900e4d89c064a92a89ed0"
+                },
+                "translocatePositionEvaluator": null,
+                "m_CopyRotation": true,
+                "translocateOrientationEvaluator": null
+              }
+            ]
+          },
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          }
+        }
+      ],
+      "Comment": "",
+      "m_Parent": "!bp_2cce07bb692914843a6f3ffd164126a3",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": true,
+      "m_LinkedAreaPart": "!bp_b8583f39adb1c0141b5d95825e23ce6f",
+      "m_LinkedCampaigns": null,
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [
+        "!bp_7c4b97682540d3c4fb265b82da841155"
+      ],
+      "m_StartsWith": [],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": true,
+      "m_ConflictingGroups": [
+        "!bp_d0af7ba1e61b1574aaedac7fe4683339",
+        "!bp_c19132d07687cb84ea7cfbe8ab5ef9cc",
+        "!bp_9504283e7703f5e47b353dd16a37ac3d",
+        "!bp_529b43475a208b04fb404f13fb54d62c"
+      ],
+      "Priority": 50
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital.jbp",
+    "AssetId": "3f3fbb973a4ffee47956b4c7714c939a",
+    "Data": {
+      "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [
+        {
+          "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+          "name": "$EtudePlayTrigger$244d58ba-3dcf-441c-a19a-8e939ff6e93a",
+          "m_Overrides": [],
+          "Comment": "",
+          "m_Once": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Actions": {
+            "Actions": [
+              {
+                "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                "name": "$HideUnit$3b6110eb-e468-4ad5-a270-05ddd0c36ff8",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$ae108b17-a22a-43b4-8acc-7e84cd4837eb",
+                  "Spawner": {
+                    "EntityNameInEditor": "Arsinoe",
+                    "_entity_id": "31b377f4-f461-47b1-98a1-4dbb02f23a05",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "Unhide": true,
+                "Fade": false
+              },
+              {
+                "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                "name": "$TranslocateUnit$3f8ea255-7bae-4abd-905e-de9d7b373145",
+                "Unit": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$6c737c9b-1225-403b-ab65-d379e20348da",
+                  "Spawner": {
+                    "EntityNameInEditor": "Arsinoe",
+                    "_entity_id": "31b377f4-f461-47b1-98a1-4dbb02f23a05",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  }
+                },
+                "translocatePosition": {
+                  "EntityNameInEditor": "",
+                  "_entity_id": "",
+                  "SceneAssetGuid": null
+                },
+                "translocatePositionEvaluator": {
+                  "$type": "ee272e7d88aff6648b4c1b052228fdc7, LocatorPosition",
+                  "name": "$LocatorPosition$6eeffc6b-0ddf-4e96-937f-40bbbd95f38d",
+                  "Locator": {
+                    "EntityNameInEditor": "ArsinoePosition",
+                    "_entity_id": "98c1eaf4-5b2f-4ce4-8936-b45a72a5c93b",
+                    "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                  },
+                  "Offset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                },
+                "m_CopyRotation": true,
+                "translocateOrientationEvaluator": null
+              }
+            ]
+          }
+        }
+      ],
+      "Comment": "\u0416\u0440\u0438\u0446\u0430 \u0410\u0431\u0430\u0434\u0430\u0440\u0430",
+      "m_Parent": "!bp_f49b38d311718de4bbc46137a53b92a2",
+      "ActivationCondition": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$8f83a984-b348-43ff-8f66-7c24b2d119a3",
+            "Not": false,
+            "m_Etude": "!bp_e0d8b253efedb70488badaaa3d47632c",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "CompletionCondition": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "m_Synchronized": [],
+      "m_AllowActionStart": true,
+      "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+      "m_IncludeAreaParts": true,
+      "m_AddedAreaMechanics": [],
+      "m_StartsWith": [],
+      "m_StartsOnComplete": [],
+      "m_StartsParent": false,
+      "m_CompletesParent": false,
+      "m_ConflictingGroups": [
+        "!bp_529b43475a208b04fb404f13fb54d62c"
+      ],
+      "Priority": 0
+    }
+  },
+  {
+    "path": "World/Encounters/DrezenCapital/ConditionsHolders/Arsinoe_Dialogue_Conditions.jbp",
+    "AssetId": "c4fa13c72fc350d4bae7431242eb095a",
+    "Data": {
+      "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$56aaf32c-22eb-4b4d-a039-4407c786f421",
+            "Not": true,
+            "m_Etude": "!bp_6d3fb96f9b60c0449a01add4be5c4a49",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      }
+    }
+  }
+]

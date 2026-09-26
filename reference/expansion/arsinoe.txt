@@ -1,0 +1,251 @@
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Answer_0007.jbp
+GUID: 6baf0a7f25bc08b4db465a38365877e8
+"Yes. I do."
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Answer_0008.jbp
+GUID: 3f48270a18649bf4faaabcacd2edebb1
+"No. I can't do it."
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0001.jbp
+GUID: 512b53bf827c7a44ab9738ce4130612b
+{n}Arsinoe smiles at you both, the picture of solemnity, and yet there is a hint of excitement in her eyes.{/n} "{name}, Lann. There are no guests here today, no feast, no generous gifts. Just two people in love, the gods watching over them, and a priestess that will seal this union in the presence of the gods. Before you say your vows, let us offer a short prayer in silence, so that the gods may grant you clarity and guide your heart."
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0002.jbp
+GUID: 17d89609e695e2041b97959a2ab5b5f7
+{n}Lann is looking at you, and even the scaled half of his face doesn't look as impassive as usual. There's laughter in his eyes — he clearly wants to say something, but he's holding it back, biting his lip.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0003.jbp
+GUID: 1c11e3733e3df3c42b34a916fac2e172
+"Let us begin. Lann, do you take the woman sent to you by the gods to be your wife, and stay with her until your soul is sent to be judged by Pharasma?"
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0004.jbp
+GUID: f871bb10ab1a44841acb6500c2186651
+{n}Lann takes a deep breath, as if he's about to dive into cold water.{/n} "Yes. Yes. I do."
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0006.jbp
+GUID: 6dbbee70ba29a8f49a433cf506f39f6b
+"{name}, do you take the man sent to you by the gods to be your husband, and stay with him until your soul is sent to be judged by Pharasma?"
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0009.jbp
+GUID: 05578de679a06404995743a583ed35c8
+{n}Lann closes his eyes for a moment and smiles.{/n} "Yes. She said yes. If this is a dream, I don't want to wake up."
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0010.jbp
+GUID: 77759717bbc56fd46995df5d6bef1a2b
+{n}The color drains from Lann's face.{/n} "But... wait, you're joking, right?" {n}He gazes into your eyes.{/n} "No... you're not... you made me believe that you need me, and now..." {n}He turns away.{/n}
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0011.jbp
+GUID: 5bf81b66636f3fe43aaa994c68a4c7dc
+{n}Arsinoe holds out her hands over you.{/n} "May Abadar and all other righteous gods watch over your union. May they grant you paths honest and true, may your home be blessed with plenty, may your union be one of love and peace, for the treasures of this world have no worth if not held by hands that know of wisdom and love. Exchange the rings that will be the beginning of your shared wealth."
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0012.jbp
+GUID: 2dad8a82b883643429765be4445050ee
+"I... I should probably kiss you, {name}, but I can't move a muscle. Just... give me a couple of minutes, let this sink in, and then do what you want with me!"
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0013.jbp
+GUID: 54d42b613bd1bdb4bbbc05b870990d75
+"Go forth, children of Golarion, and be happy! My congratulations to you both, my sincerest congratulations!"
+
+World/Dialogs/Companions/CompanionRomances/Lann/Event3/ArsinoeWedding/Cue_0014.jbp
+GUID: d557b16a020af0d42b007e878d960eb4
+"This was a cruel thing to do, Commander. If it weren't for the crusade... I would leave. Right now. But I have a duty to you and to the others. So I'll act like nothing happened, and stay friends with you until this war is over. But don't speak to me about love again. Ever."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0006.jbp
+GUID: ec6890c861bd04f48b00384395af6d61
+"Tell me more about Abadar."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0007.jbp
+GUID: 96a453d24c6f371469e78ad8d1eb7a56
+"What services do you provide?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0008.jbp
+GUID: ae05486db656bea4daf421003d71682f
+"I could use the help of a cleric."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0009.jbp
+GUID: d264f9cb758e4324a9e0a5ff862590f7
+"How did you end up in Drezen?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0010.jbp
+GUID: 3ddc1b6a8ca280e4b9e26b0cd9d0c47a
+"You're an aasimar, if I'm not mistaken?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0011.jbp
+GUID: bec0faf8c30316d4f914a21f97fc8ae7
+"I have to go."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0020.jbp
+GUID: c9a62004d2c47454cbe6aa532e8408e3
+"You are a priestess of Abadar and a proponent of order in all things. Tell me, what do you think of my leadership of the crusade?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0024.jbp
+GUID: 077a88a06594f3e4b8dbdc5ca9034715
+[Devour Arsinoe] "You won't leave Drezen. No one will leave here alive."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0025.jbp
+GUID: 41d9638f7d971164fab4efdbbbffbe70
+"Is there any news about the poor folk whose souls were stolen?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0028.jbp
+GUID: 3e0d07b46fad7e640873526143fd1f5d
+"Perhaps you've heard about the wound that sometimes opens in my chest. Are you familiar with this kind of ailment?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0031.jbp
+GUID: 486d0e1d5e8bd7c4783c65919086d72d
+"What do you think it might be?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0032.jbp
+GUID: 9547fa0e7b08f3f4ca1c0d5b704d27a9
+"Can you give me some advice on how to heal it?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0033.jbp
+GUID: ddf7214c5fc66a44ea8bfc68741bd633
+"I want you to try to heal me."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0034.jbp
+GUID: 6e7f5417023b3ad4982a78cd2b5ec435
+"Thank you, it all makes sense to me now."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0042.jbp
+GUID: 239f1982b2d5d254493e0f041f897359
+"What are you doing here?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0043.jbp
+GUID: c8645f83e10b309419f87a70645017ac
+"Can you help me with something before the attack?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0044.jbp
+GUID: 5fc7ab938bb002f4fb9ae7a42cafbadc
+"I need to catch my breath."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0045.jbp
+GUID: 62ee095bc1f26d84d8f5db1f7b6037dd
+"I'm glad that you are with us."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0050.jbp
+GUID: b02cf7beb0ab38147b46c662d8b2f51a
+"I see that you have consecrated the altar of Abadar."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0053.jbp
+GUID: 7da37eb16e134f34e8922e0485e06df1
+"I see that you have brought the altar of Abadar here to the Threshold."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Answer_0054.jbp
+GUID: 3037ff9051ddb5c40882d8dd516f9d4f
+"I am glad that we have a cleric of Abadar in Drezen now. I pray that the god of cities helps us protect its walls."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0001.jbp
+GUID: 0e83a74392bf2bb4b9a7db87b6e158ea
+{n}A woman in gold-embroidered cleric's robes greets you with a polite bow. Her eyes, the color of molten gold, gleam brightly in her dusky face.{/n} "Greetings, Commander! My name is Arsinoe. I am a messenger from the temple of {g|Abadar}Abadar{/g} in {g|Absalom}Absalom{/g}, and I came here assuming the defenders of the fortress could use the services of a cleric."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0002.jbp
+GUID: 19a97a51ab07206448f2409d3a1a6c71
+"How can I help you?"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0003.jbp
+GUID: 532d08eaffe92064c8461cb819f6b827
+"My story has grown longer and longer over the years, yet, sadly, it never gets any more interesting. I was born and raised in {g|Absalom}Absalom{/g}. Soon I realized that bringing the word of Abadar to places where it's already been heard was too easy a challenge for a cleric like me. I have traveled all across Golarion since then, watching civilization bring enlightenment to the wildest of places. This brings joy to my heart and makes me feel like I serve my god with my deeds and not only with my words."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0012.jbp
+GUID: ae54f15efa41cf149b86523fc8073172
+"That is precisely why I am here."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0013.jbp
+GUID: 7bebb812c92fa5f40a183cb1fa566847
+"The tiny barony in the {g|Stolen Lands}Stolen Lands{/g} that had been my home for a very long time eventually turned into a strong and prosperous kingdom, and I felt that I had to go somewhere else and bring the blessing of Abadar to someone who really needed it. It will take quite a long time for Drezen to recover and become an unfailing stronghold once again. I will do my very best to help."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0014.jbp
+GUID: c29c3b029ace6294988fb5b7883c7c3e
+"I can sell you various divine spell scrolls. Even if you don't have anyone in your party who can read them — I'll be happy to read it for you right here. However, take care out there on your travels: a scroll is useless without someone who can read it! To use a scroll while you're on the move, you'll need a spellcaster whose magical training covers such spells, or someone skilled in magical devices."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0015.jbp
+GUID: 6b8e9376e375de844a43cabd6546ab4f
+"I'd be delighted to. Abadar is the patron deity of law, trade, and the prosperity of cities. He teaches that law and order allow civilization to develop and keep people safe and wealthy. Iomedae and Abadar are allies, since Iomedae also holds order and nobility above all else. It's hardly surprising to see so many mighty fortresses and wonderful cities in Mendev bloom under her blessing."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0016.jbp
+GUID: 45e474be0d232444bb054c5ac037ebe3
+"Oh, yes, I am an aasimar. Hard to miss, isn't it? I look exactly like my great-great-grandmother, but I am the only one among my kin to have aasimar blood manifest so visibly in my appearance. I have to admit that it is a very fortunate coincidence: my aasimar features are rather appealing and make people trust me more easily. This is a good quality to have for a priestess wishing to gather a congregation."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0017.jbp
+GUID: fd5a00d8d54d0d84e8acf67f89c7e185
+"I am. Just as you are one yourself. Every time I meet another aasimar it feels like meeting family. I look exactly like my great-great-grandmother, but I am the only one among my kin to have aasimar blood manifest so visibly in my appearance. I have to admit that it is a very fortunate coincidence: my aasimar features are rather appealing and make people trust me more easily. This is a good quality to have for a priestess wishing to gather a congregation."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0019.jbp
+GUID: a13a19e850475e346afcdfe694d3ea99
+"That is a rather strange question indeed, but if it's an order — I will answer. There is a saying: one can't win a war and keep their gloves white, yes? I do understand that there isn't much time and energy left for landscaping when you're fighting hordes of demons to death every day, but... Abadar knows how I'd love to see Drezen neat and tidy for just one day! No missing cobbles in the street, everything sparkling clean, flowerbeds blooming, all the lawns trimmed... Glory and order instead of all this filth!"
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0021.jbp
+GUID: 8622f72d9f589ff4fb7563a5b59b5cd4
+{n}Arsinoe lowers her head respectfully.{/n} "With pleasure. I have not seen a place calmer or better organized than Drezen for some time. The Wound, evil, and chaos are outside its walls, but there is peace and order within the fortress. Everyone carries out their duties, no one is idle or lazy, and our warriors are doing their utmost to expedite our victory. I am happy to be here. To say the least."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0022.jbp
+GUID: 44f77e8f19647074f87fd5dc5dee8801
+"Abadar, I beg you, strike down this unholy beast! Don't let my death go unpunished."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0023.jbp
+GUID: e54f190cb5b6feb429aa3c617c9a0dec
+{n}The aasimar looks grimly at you.{/n} "My services are still at your disposal, for this is the order of my god."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0026.jbp
+GUID: 281db1a5e0832dc46ac1276346336e93
+"No, but believe me, I'm not going to leave this alone. This is a serious crime, one that happened right under my nose. I consider it a personal insult and am willing to help Elan and everyone involved. Every day I spend some time trying to find the stolen souls with prayers and divine magic. My search has brought no results yet, but as soon as it does, I will let you know."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0027.jbp
+GUID: 4a72acf84409b124b912353f8da6d5b0
+"Commander, I'm glad the Abyss did not take you."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0029.jbp
+GUID: fe0fdb24032443c4fbbe7bf42b6a84f7
+{n}Arsinoe quickly probes you with the skill of an experienced healer.{/n} "So the wound was right here? And then it disappeared... and reappeared... Amazing! No, this is the first time I've ever heard of such magic."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0035.jbp
+GUID: 2f73b60cca82a2d47b19475c895fd060
+"Take care of yourself, Commander."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0036.jbp
+GUID: 174829efffc0ee6468ce224d3ad780a0
+"I'm sorry, but I do not have the right to do that. A healer who makes a blind attempt to heal a patient who is not on the verge of death is an irresponsible fool. You do not seem to be dying, so we will not take any unnecessary risks."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0037.jbp
+GUID: 8f0b4ced94119c74ba4efef262490a74
+"I am sure that you have already used the purification and chaos-warding spells. And for obvious reasons, you do not have the option of leaving the campaign and going on a long pilgrimage to various shrines. Since that's the case... keep a diary. Make careful and systematic entries about your well-being. If it gets worse, record the circumstances under which it happens. I'm afraid this is the only advice I can offer right now."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0038.jbp
+GUID: 2d597c8d6c500ca46aaff75ea62ffede
+"I think it is some kind of demonic corruption, or particles of chaos from the Abyss have entered through the wound into your body and made it so... unstable. It sounds quite interesting, incidentally. Judging from the records of researchers of the Abyss, stranger things have happened in this cursed place."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0040.jbp
+GUID: b29c0641d9743c5438e86e7debff4e2c
+{n}Arsinoe casts a disapproving glance at the fortress.{/n} "The demons have completely neglected the fortifications here. They are in complete disarray. However, this plays right into our hands."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0046.jbp
+GUID: bc500a7bfdc41a14388829f1a0e5cf62
+"I fulfill my duty to Abadar, of course. I am not afraid of chaos, so I go into a world of savagery and grief to bring the light of civilization, law, and order."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0047.jbp
+GUID: a402d9045ead7fb4595c86ab87a76f60
+"As before, I can help you cast the necessary spells. And if you wish to recuperate, I will make sure that your rest is not disturbed."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0048.jbp
+GUID: ba9ecf6b0b26e9d46b5ae34e49804909
+"Rest, Commander. A hard battle lies ahead."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0049.jbp
+GUID: 6b4a8c6e13ab6524ca3f6f7536287dcc
+"May Abadar keep you, Commander."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0051.jbp
+GUID: 1b5094af88b595b40a40d7a1bd79eb13
+"So I have. And before you ask me why I did this when there is a temple of Iomedae in Drezen, I will answer. Even though my god is the ally of the Inheritor, some still prefer to pray and trust in Abadar instead of her. After all, my humble altar is no worse at removing the corruption of the Abyss than the grandiose altar in the temple of Iomedae."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0052.jbp
+GUID: 7add3e969b1b3fd469f1e9d60a3a06a8
+"The crusader army needs protection from the corruption of the Abyss, as do you, Commander. I am deeply flattered that the privilege of granting such protection has been given to me and my god."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0055.jbp
+GUID: 6f7a63d8e20e8e445b7bd4f7316f2671
+"You wish to put my faith to the test? A reasonable request. We are surrounded by enemies who are known for their deviousness. Some cultist may try to infiltrate the defenders' ranks disguised as a cleric. So, you want me to tell you about Abadar..."
+
+World/Dialogs/NPC_Common/VendorArsinoe/Cue_0056.jbp
+GUID: cf0e9b17f6b70a84f84a731b4ccbeda7
+"I, in turn, am glad to see my {mf|brother|sister} in faith at the head of the crusade army. Drezen is a very special city in the eyes of Abadar. It may have been erected in honor of the Inheritor, but the Wealthy Father sees it as a relic that was lost and then retrieved. A bastion of civilization, the last frontier separating us all from the sea of chaos. I have faith that you will protect it!"

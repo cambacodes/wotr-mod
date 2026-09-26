@@ -1,0 +1,1064 @@
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0005.jbp | e31c59d72f44ff74eb0b87c29583a48f
+"I killed her. Doesn't that answer your question?"
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0006.jbp | be40129ee2a54a3449d429ddf3164652
+"I am a crusader. And I remember my duty."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0007.jbp | 7c946ed980aabf6468dfe38df8b2257f
+"Why don't you ask that question of my reflection in the mirror? You know, the mirror that used to be Vellexia?"
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0009.jbp | 078318bd4fbc3e748aa2b289524878a6
+"I don't care about recognition. Freeing those poor souls from Vellexia's slavery is the only reward I need."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0013.jbp | 5603f764279521c4492b29641ff922d0
+"Even if Nocticula herself showers me with treasure — my vows will remain unchanged."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0014.jbp | fef4b4041077cbf489106429258643e8
+"This has been such an exciting, whirlwind affair! I enjoy being feared and respected by others!"
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0015.jbp | f94e23fdb408da7428f3f67230a3e5ea
+"This has been very beneficial for my reputation, and that's all that matters."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Answer_0016.jbp | 933caf52e4857af4ba688a47f612466e
+"I don't want to discuss this."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0001.jbp | e5b072104e90d2c498a13371ceded306
+"Vellexia granted you her patronage. Though her interest did not last long, this affair has still brought you recognition, and the fear and respect of Alushinyrra's many residents. I must ask you to be honest with me... Do you like all the attention?"
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0004.jbp | 891d70a417d420e42aa65e707485d951
+"You have accepted Vellexia's advances, and surrendered to her cunning embrace. You cannot pretend yourself immune to her charms, and I am frightened by the way Alushinyrra's high society lavishes you with attention. It all seems like an elaborate trap designed for the single purpose of ensnaring your soul. Tell me, Champion, do you remain true to your beliefs? Do you still believe in the importance of our mission?"
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0008.jbp | eaf5d05d2a5147641a8a27051e4fba2a
+"It is true that she died by your hand... But that simply increased your status among the demons, and now the temptation you face is even stronger. This honor and respect you are given, the patronage you are granted by the most influential nobility... Tell me, Champion, do you feel as if you are finally getting the recognition you deserve? Do you believe the demons treat you better than your stern Queen?"
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0010.jbp | 3e010fbc12caf3049aeb82699745858c
+"Yes... Your mercy does you credit, and your vows are strong. I will not burden you with my doubts any longer."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0011.jbp | da8ad61f5cb07f940934342c927dd294
+"That is true, and I was impressed with the way you delivered justice to Vellexia. She received a fitting punishment for her crimes, and I bow to your sharp mind and clever judgment. It would seem my doubts are groundless. If justice reigns in your heart, no corruption can taint you."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0012.jbp | a3494f6ac60a6be44ba84d29e339ff65
+"And that means you are as strong as ever in your convictions. The souls who fell victim to the promises of cruel Vellexia are beyond count, but your resilience in the face of temptation deserves my wholehearted respect."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0017.jbp | 56390512228ae0b409e0f6cd6d001499
+"I believe you, Champion, and I do not blame you. Oh, if only we had legions behind us, and the full support of my goddess in all her might. We could have destroyed this city, and rooted out its many sins... But that's not our mission, and we must adhere to the laws that govern this place. I simply wished to know if you remained firm in your convictions."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0018.jbp | bcc08430660b9084a82b33baa4becf4a
+"I am sorry to hear that... The fiery passions of the demons have captivated countless mortal souls, and their sensuality and flattery have seduced far too many crusaders. I worry for you, Champion. I worry for your soul. Stay strong."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0019.jbp | 1e95fefe53d3b7e4a848642ff04ef729
+"You are right. It has been beneficial. I only worry that such success comes at too heavy a cost to your soul. Demonic corruption is like a weed. A boulder may seem unbreakable, but the tiniest crack in its surface is enough for a seed to sprout. As the weed grows, its roots will cause the rock to shatter."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0020.jbp | a1c236c95fba68341bf7dc19ba74a494
+"And that is your right. But I also have the right to seek the answers to my questions."
+
+World/Dialogs/c4/RaptureOfRupture/HeraldDoubt_Velexia/Cue_0021.jbp | 0b16ed476e402d34599d4e25c601a38f
+"I must speak to you, Champion. My heart is deeply troubled, and I can no longer remain silent."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0004.jbp | 75e2dbdaad84a1d418770c7545e646e9
+"Why am I in danger?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0005.jbp | 425db1cf7ec99be4e803eefc69b00eba
+"I have to go."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0006.jbp | 1c2ac510641fc1847babb2277d581a32
+"What are you doing here?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0007.jbp | 62fbe76a52da40f49951ba2443fdc885
+"Aren't you afraid of Baphomet's revenge?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0008.jbp | 83975746ab51d174c8ae9bd3b3b961a9
+"Tell me more about Vellexia."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Answer_0017.jbp | 6d3822ee9bd458f42beda33770c85ae5
+"I'd like to gain Vellexia's patronage."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0001.jbp | 3857231db61891944999387a4154e9fb
+{n}You hear {d|c3 jerribeth lives}Jerribeth's{/d} voice in your mind. She sounds friendly, though slightly wary.{/n} "So we meet in the Rapture of Rupture. I cannot help but wonder, by what whimsy of fate have our paths crossed again? Why are you in Alushinyrra? More importantly, why are you here? What brings you to the manor where I have taken refuge?"
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0002.jbp | a1f97de9145c3574ebd2d7f75c3d39c9
+{n}The sound of {g|Jerribeth}Jerribeth's{/g} agitated chittering fills your ears.{/n} "I don't know how adept you are at reading the emotions of others, so I must warn you. You are in danger."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0011.jbp | edeeb17ba4f3d124890d22bdd2d8901d
+"I am enjoying the benefits of my newfound friendship with Vellexia. I have become her servant and companion, and she has given me all the protection and privileges afforded to her inner circle. She loves original and innovative forms of entertainment, and you know how good I am at entertaining demons."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0012.jbp | 6105e94628c17a442b1deb618de60d5f
+"Baphomet won't quarrel with one of Nocticula's best friends just to get revenge on an insignificant worm like myself." {n}You hear amusement in Jerribeth's disembodied voice.{/n} "While the lesser servants of all three demon lords are constantly embroiled in conflict, always trying to entrap one another in webs of intrigue, the powerful and influential demons prefer to stay neutral. The time for their conflict has not yet come."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0013.jbp | 46acd1daa2eaf7f4799d8576db56dfa2
+"She is a magnificent creature, but she has always been afflicted by a terrible condition. She is consumed by boredom. Her entire life is an endless agony, and each day, her torment grows worse. Her efforts to elude this terrible condition are always short-lived and unsuccessful. If Vellexia was not beset by such insatiable curiosity, and if her moods and tastes did not change so quickly, she could have been even more powerful than she is now."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0014.jbp | c6a5266b5fb97744baa2248ef057b8c4
+"That is a wise course of action. Vellexia is one of the most powerful patrons you could have in Alushinyrra. However, she is also one of the most dangerous creatures you will meet in this city. Don't let your guard down, not even for a second."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0015.jbp | 10053d3c4fa857041be169e148934926
+"Vellexia's greatest enemy is her own boredom, and it has bested her once again. My lady grows tired of you, and your company no longer gives her as much joy as it did before. You have ceased to surprise her, and she now finds you tedious and dull. If you wish to keep her interest, you need to stop acting so predictably. Try to keep her puzzled and intrigued by your behavior. If you follow my advice, you may stand a chance of leaving the Rapture of Rupture with your mind and body unharmed."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0016.jbp | 67360cb7b0d70c946bf3be630166346b
+"Of course, you don't want to keep Vellexia waiting. She hates feeling neglected."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0018.jbp | 49fb49902a3472e40bba65cd5b2670fc
+"It is possible that Vellexia could have been a worthy rival to Nocticula several millennia ago. She might even have claimed the throne that now belongs to Our Lady in Shadow. Of course, it is also possible that after three days in power, she might have found her new status as a demon lord to be excruciatingly boring and no longer desirable."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0019.jbp | 2735d5e7d93bdcf4b92e7d45aad3acd7
+"Don't let her refined manners and civilized demeanor fool you — that's just a mask, a momentary whim. Vellexia's true nature is well known in the Abyss, and it is far less restrained, and much more violent. Right now, she is tired of fury and conquest, but that could change at any moment. Beware of her boredom, and do not let her lose interest in you."
+
+World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0020.jbp | fe90384806ef4b24da7ea4b712cf0eb7
+"Why? Nocticula can offer you more than Vellexia ever could, and she is a far more powerful and influential patron. Are you worried that Nocticula is going to lose interest in you? Well, if you are hoping to find safety in Vellexia's mansion, you will most certainly be disappointed. Vellexia is far more fickle than Our Lady in Shadow, and no less dangerous."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0003.jbp | 1a271d8bd8307b748b0699ed0cc5dd8a
+"Your new dress is very elegant."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0005.jbp | 9b9a56cf72294ee4ba4f7707f5adb629
+"You've chosen an interesting location for our date."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0006.jbp | d2bf26e3ed094f645ad05d01bf3ff93f
+"Who is fighting in the arena today?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0007.jbp | e9ab5bf143c3c174485b72f0c8291d46
+"Does it bother you that my companions have accompanied us on our date?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0012.jbp | 447a3b2ec8fa73547bc39324dcc6ca24
+"The Bloody Freak will win."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0013.jbp | 3e6cd6e0b9552e141a35ddb77e6de626
+"My money's on the fighter who never stays dead. Atselm."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0014.jbp | f606ac4092e5a5d4cba292387b733a6e
+"I am not a gambler."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0021.jbp | 1afa5fec115a57543a93d214264e634e
+"Slavery is disgusting!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0023.jbp | 2519d08ce67a1a346a9fbd2c781b3c1e
+"Our conscience and our nobility lead us into battle."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0031.jbp | 6e71e8ac40ba723459340cbcc7b268a7
+"The memories of the deceased live on through their deeds!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0039.jbp | 8a8b64515ee1f6f43add0c3451f3bd56
+[Say nothing]
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0040.jbp | 6d81d61d9ddda2640b2bee1e2e591e4b
+"Do you want to outbid Hepzamirah for this fierce gladiator?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0042.jbp | 6062c5300d2eef84d9e4c74319abf11f
+"Having a formidable bodyguard is quite the status symbol in Alushinyrra."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0043.jbp | ba2beba7054053144bbd636337505d66
+"If you outbid Hepzamirah for this gladiator, you'll wipe the smirk off her arrogant face."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0051.jbp | 9d70e2ed62221cc4192bb5939c8175ac
+"People hold different opinions about slavery on Golarion, but it is forbidden by the law in many places."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0052.jbp | de40545dab89acb49bc6e8de1d170399
+"The very idea of slavery offends my free spirit!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0053.jbp | 0c626b6aaaa854248a63ab4f09440faa
+"I think slavery is a reasonable practice, but unfortunately, not everyone on Golarion shares my opinion."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0054.jbp | 257055af496e2794997635349939b8c2
+"Different lands and different nations have very different customs. It would be difficult to speak for all of them on this matter."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0059.jbp | 48d055e92c09bac41a6189fcddbdeaa1
+"Those with honor will follow the orders of their sovereign and fight because it is their duty."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0060.jbp | a8bf543d29904e649b513ff423e09039
+"Those who are worthy fight for their freedom. As for the rest, they fight because they are obedient to the will of their masters."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0061.jbp | 7687691d70f2dbd4a892397e053428ec
+"Everyone fights for their own interests, they just pretend otherwise."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0062.jbp | 3ad61c45c2dffea48a265e95e3e510ac
+"I cannot see into the souls of others."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0068.jbp | cac2489a8449b344592dbf1bbb88f956
+"There is no reason to be afraid of a worthy death."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0069.jbp | 48aca02ea3ae82a42a5e8075f5412930
+"Death is the end. So we should live life to the fullest while there's still breath in our lungs."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0070.jbp | 24f871cbd0a461a46b6f5d337e1fb1aa
+"If you die, it just means that you were too stupid and lazy to avoid your own demise."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0071.jbp | d096041fa84a3fb41b322b45fc789b3d
+"This question is too complicated to answer without further contemplation."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Answer_0080.jbp | 6b40f6b4934d8164da7064f5c9ffaef5
+[Whisper to the Hand of the Inheritor] "What do you think of Vellexia?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0001.jbp | 4925fdf2e7db22a49ba3f491e6200179
+{n}For your date, Vellexia has swapped out her previous dress for an equally elegant outfit. The blood-red hue of her new gown seems particularly fitting, considering the activities of the arena.{/n} "There you are, my friend! Let's hurry to the box reserved for distinguished guests! I am determined not to let you enjoy the spectacle from any other seats!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0004.jbp | c4c9f39bcfed64f44882c80272cfc4de
+{n}The demon blushes slightly and gives you a pleased smile.{/n} "I am flattered that you notice such things, especially here in the arena, where there are so many other sights to capture your attention. Speaking of which, the fight is about to start!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0008.jbp | 50d5036e5e589f34bb84bd7f363b646e
+{n}The demon shrugs, and glances at you with curiosity.{/n} "Why not? Of course, the gladiator fights are a lowbrow, primitive form of entertainment, but they do quicken the pulse, do they not? I don't see why we shouldn't indulge in such vulgar entertainment every once in a while. Oh, the fight is beginning!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0009.jbp | 2f3627d9bee38144fb88638c4f31665a
+"The Bloody Freak, a fierce, promising newcomer from Colyphyr, will fight Atselm Oft-Killed. Atselm is a member of the Nahyndrian League, the elite circle of gladiators here at the Battlebliss, and has defeated hundreds of enemies. Of course, as her name suggests, she has also died in the arena more than once, but she always comes back from the dead. Will it be a close match? Which fighter will prove victorious? It's time to place your bets!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0010.jbp | 0594d8de78422c7479c34f98970f5544
+{n}The demon glances indifferently at your companions, and shrugs.{/n} "Why should I feel uncomfortable? They're just servants. If you've trained them well, they won't interrupt our conversation. But enough about them. Look! The fight is about to start!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0015.jbp | 61a2c3a62d3a933409afd162df923d8d
+"So you will place your bet on strength and raw power? In that case, I'll throw my support behind skill and experience. And for my stake — how about a kiss? That will be your reward if you win." {n}Vellexia flutters her eyelashes and gives you an innocent smile.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0016.jbp | c1e7226687fca944aa5297ea83a9a7f6
+"So you believe that skill and experience are worth more than unbridled rage? Well, I'll take that bet. And for my stake — how about a kiss? That will be your reward if you win." {n}Vellexia flutters her eyelashes and gives you an innocent smile.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0017.jbp | c8f9c6dee6b023e4199ea4ed53759156
+{n}Vellexia casts a glance in your direction.{/n} "Is that so? What a shame... I am a gambler. Of course, if you were in the arena, I would only place my bets on you."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0018.jbp | 7b2a60b23dfd6054a88b3dfad691d3fc
+{n}A fierce battle unfolds in the arena. The Bloody Freak surges forward, launching into a brutal attack against Atselm. Atselm desperately tries to resist the onslaught, but the Bloody Freak is relentless. He strikes one furious blow after another, showing no signs of exhaustion or fatigue as he bears down on his opponent. Atselm attempts to fight back against her enemy with quick, sudden attacks, but fails to find an opening. Her movements begin to slow, and her footsteps leave behind a crimson trail of blood.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0019.jbp | 4393237ba0c35d4498753b7af6e9d232
+{n}Vellexia observes you closely. Her eyes sparkle with lively curiosity and you are forced to turn your attention away from the fight as she asks,{/n} "Slavery is the cornerstone of our life in the Abyss, and gladiator fights are a popular source of entertainment. How are such shows perceived on your homeland of Golarion? What is your view on slavery?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0022.jbp | c13d788d36f833a45830eaecf4e70322
+{n}Vellexia recoils slightly in mock horror, then she bursts out laughing.{/n} "I can see that a genuine passion burns in your heart, and that you are willing to fight for your beliefs until the end! I like that!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0024.jbp | ab3d4534b73f78c42b7c65d439a58e75
+{n}Vellexia glances disinterestedly at the arena, then returns her attention to you. She is clearly more interested in conversation than in watching the fight.{/n} "Nevertheless, even Golarians who are not enslaved are often forced to fight by those in authority. Yet they still charge into battle with as much zeal as those two gladiators down in the arena. So tell me, what gives them the motivation to fight? What do they hope to achieve?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0026.jbp | e21b33341def78448b42c387c3de7b93
+{n}The demon laughs loudly, though not unkindly.{/n} "Ah, how touching! Such sincerity of belief! It is so charming! There are many warriors in the Abyss who are eager to fight, but they lack both the strength of your resolve, and the genuine faith you have in the rightness of your cause!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0027.jbp | aa9acbf9437eca846981591de3633c48
+{n}With a victorious growl, the Bloody Freak hurls himself recklessly at his rival, who appears to be exhausted from her wounds. However, Atselm was merely feigning weakness — she dodges at the last moment and strikes a resounding blow. Blood gushes from the demon's wound, and his growl of rage gives way to a howl of desperation.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0028.jbp | dceb948d4431dc74db5f3c6967951723
+{n}Atselm, no longer putting up a pretense of weakness, advances against the Bloody Freak, dealing him several painful blows. She strikes with precision, drawing blood, but never delivering a fatal blow. The audience goes wild as Atselm toys with her opponent, and the smell of blood hangs heavy in the air. There is no doubt that the merciless symphony of violence being played out in the arena will soon reach its deadly crescendo.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0029.jbp | 9e0c5a84db7c66f41b79bb1e81898f26
+{n}Vellexia watches Atselm closely. She muses thoughtfully,{/n} "But every warrior will meet their death eventually. How do Golarians face the end of their life? Are they scared of death, do they despise it, or do they welcome it as a friend?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0032.jbp | 9c0d977a04189fb45bfb8ade769cf669
+{n}Vellexia looks at you with newfound respect.{/n} "Your words distinguish you from a multitude of fools who think only about themselves and give no thought to the future. They fear death, and they tremble at the thought that their pathetic lives will come to an end."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0033.jbp | 961c8b1faf5ecdd4fa71f4aec9a2dfb9
+{n}The arena master bows low to {g|Hepzamirah}Hepzamirah{/g}, and the gladiator kneels before her.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0034.jbp | ee14b3514e6414142aa2dbaf9069d30d
+{n}The screams and howls of the crowd are deafening. The Bloody Freak, oblivious to his numerous wounds, basks in the admiration of the audience. The arena master's voice rings out across the Battlebliss.{/n} "All hail the winner! Hail the Bloody Freak!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0035.jbp | d343b3c6432a6204888f0619dc323b5f
+{n}Vellexia leans over to you.{/n} "Looks like you've just won our bet... Well, I'm not going to be a sore loser. Here is your reward, as promised!" {n}Vellexia blows you a little kiss, then bats her eyelashes at you playfully.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0036.jbp | bf827bde60f4ae2429197753e613727e
+"Well, it looks like you've lost our little wager... So what reward should I claim from you? Ah, I've got something in mind! I'll accept your solemn oath that you'll come... on another date!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0037.jbp | 020c8e79ffd19ac4ab3002e868cea48f
+{n}Hepzamirah rises from her place and announces loudly,{/n} "I want this bloodthirsty fighter to be my servant! From now on, he is my slave, and anyone insolent enough to object will face my wrath!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0041.jbp | 02c6e1755b19a2d44a31b9c59df4dcf7
+{n}Vellexia looks at the Bloody Freak doubtfully, then turns back to you.{/n} "He is a formidable fighter, I'll give him that... But I doubt {g|Hepzamirah}Hepzamirah{/g} will forgive anyone who steals her prize from under her nose. Do you think it wise to antagonize her?" {n}Vellexia looks at you curiously.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0046.jbp | b335d3fbcb0908c47b5d2271ce7e492e
+{n}Vellexia grins approvingly, and claps her hands in silent applause.{/n} "I can see that you already understand many of our customs and traditions. I think I might take your advice!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0047.jbp | 2dd819bceb66e9c4b929fedf2feb15b2
+{n}Vellexia frowns at you doubtfully.{/n} "Why would I need a bodyguard? It would only make others think that I am not powerful enough to protect myself. Rest assured, I am not Hepzamirah, I do not need to surround myself with weak lackeys to feel safe."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0048.jbp | f05f5395d5c38304fbbaf83dd2026f55
+{n}Vellexia averts her gaze, but fails to hide her mischievous smile.{/n} "What a positively delightful idea. I can't resist! Ah, what you do to me! You've discovered my weakness!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0049.jbp | b6c9ae65f6979bf4aa8ab52b15520103
+{n}The demon listens to your suggestion with a knowing smile.{/n} "Perhaps I will teach that pathetic cow a lesson. But not today... And not in such a petty way."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0050.jbp | 13d7fa2a566096a409d83c1735dc7ec4
+{n}For your date, Vellexia has exchanged her previous dress for an equally elegant outfit. The blood-red hue of her new gown seems particularly fitting, considering the activities of the arena.{/n} "There you are, {name}! Let's hurry to the box reserved for distinguished guests! I am determined not to let you enjoy the spectacle from any other seats!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0055.jbp | 013369601fb626641b8209521e0babf2
+{n}Vellexia looks slightly perplexed.{/n} "But if these laws dictate the will of others, they restrict freedom. How is that any different from the chains and shackles of slavery? Ah, this is all so complicated... But so exciting at the same time! I'd like to learn more about your world."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0056.jbp | 6d011c36d31f4864a9ce5fc473491e2c
+{n}Vellexia smiles approvingly, clearly pleased with your answer.{/n} "It offends ours too! Demons take great pleasure in enslaving others, and will buy and sell slaves without hesitation. But a demon in chains will not rest until they regain their freedom and tear their captors to pieces!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0057.jbp | f67c119419cae7c4fbd52ef87e8bbbd5
+{n}Vellexia smiles approvingly.{/n} "I can see that your mind is not clouded by the ridiculous propaganda and hypocritical beliefs that are so commonly found in your world. I must say, I find that highly commendable!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0058.jbp | 19813ae886cb8564eb8d8021a4e52e80
+{n}Vellexia looks at you with interest. Her curiosity has clearly been aroused.{/n} "Indeed, I've heard that there are many different cultures on Golarion, and that all of them have contradicting customs and traditions! I imagine the numerous clashes between these cultures are quite dramatic, and provide an endless source of fascination for those who study them."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0063.jbp | 5e2a5180bc44edb43827bc02702cb798
+{n}The demon muses thoughtfully,{/n} "To fight, simply because something within your soul demands that you give your life for another... How incredibly strange and intriguing!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0064.jbp | 2050257f9c609184790a081a5631e6f1
+{n}The demon nods her approval.{/n} "I can see that you are insightful enough to notice the invisible chains and collars that bind your kin. Such depth of perception is truly commendable!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0065.jbp | d7c69dca755f38649906acae50c5c452
+{n}The demon nods her emphatic approval.{/n} "I am so happy that you do not practice the foolish self-deception that is so popular among mortals! Indeed, everyone fights for themselves! It is so nice to make the acquaintance of such a shrewd and insightful individual!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0066.jbp | fe67c58ca9ba3e0408d55e41ea0d9648
+{n}The demon leans back, satisfied with your answer.{/n} "I appreciate your restraint in exercising judgment. It is difficult to discern the motives of others, and those who believe themselves capable of such insight are often arrogant, ridiculous fools."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0067.jbp | 14a0e41a853b929419467c6e7fb4020f
+{n}But the Bloody Freak isn't finished. He lets out a monstrous, bloodthirsty howl. It reverberates around the arena as he channels his powerful rage into one last brutal attack. He strikes as swift as lightning, and Atselm's flurry of blows is brought to a sudden halt. She sways slightly, then doubles over, as if embracing the blade that was just plunged through her body. Then, with another primal roar, the demon cuts her down, dispatching his weakened opponent with one powerful strike.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0072.jbp | d0f4cf54e63930c498542dc61f3b1922
+{n}Vellexia nods approvingly.{/n} "I love bravery. Cowardice and insecurity are so... dull and predictable. Only true courage leads to unexpected results."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0073.jbp | 0cd7be6b40cc912478c88df4e88e57c2
+"You have such a passion for life! I have never seen such depth of feeling! Most people are afraid of their emotions. They lack the courage to show their true feelings, so they try to keep them hidden with tricks and distractions that disguise the cowardice of their souls!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0074.jbp | a724a0e0de3411a45bd9889417122628
+{n}Vellexia laughs delightedly.{/n} "Such a funny, witty phrase! So simple, yet so thought-provoking! I will remember that!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0075.jbp | 9dcb74d97db5b5b45876f425b63520cd
+"Ah! The smell of death is in the air, and it always makes me wax philosophical! I beg your forgiveness! I hope you don't find me too boring?" {n}Vellexia giggles, making it clear she doesn't believe such a thing is possible.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0076.jbp | 74bcd962f91a79040b8e8a78e9e4c920
+"This was so exciting! I've enjoyed our time together here at the arena! However, I cannot resist the urge to appear with you somewhere in high society. I'm sure you wouldn't say no to attending a private reception with me at the Harem of Ardent Dreams. Shamira has prepared something special for her guests, and I would very much like for you to experience it with me! I shall wait for you at the Harem of Ardent Dreams. You really must come — I simply won't take no for an answer!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0077.jbp | 8f1ea320c6cebcb43be1b9b520ecc68c
+{n}Only moments ago, Hepzamirah commanded the attention of the entire audience as she boasted about her power. However, when Vellexia rises from her seat, all eyes turn toward the succubus.{/n} "I dare to challenge the claim of the most esteemed Hepzamirah. I am touched by this fighter's tenacity. He has found a way to my heart, and I wish to make him my bodyguard. If anyone dares to argue against my right to make such a claim, they can say it to my face."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0078.jbp | 8973555db865466488cf6cc6e228b89c
+{n}The arena master glances cautiously at Hepzamirah, then he turns to Vellexia and gives her a respectful nod. The crowd erupts into jeers and shouts, clearly enjoying the public humiliation of Baphomet's daughter. Hepzamirah bellows and utters wild curses, and the sounds of her wrath shake the arena. But Vellexia ignores her threats with a look of magnificent disdain, and gives you a sly smile.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0079.jbp | 5f946e6c8e8ac3a468503f7bfd9b2e13
+{n}The fighter let outs a ferocious roar.{/n} "Glory to my new mistress, Hepzamirah!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0089.jbp | ff7f743740d221b46860f3137299c3d2
+{n}Vellexia suddenly pauses as she is about to leave. She turns toward you with a look of gentle reproach.{/n} "Oh! You should have reminded me. I nearly forgot! After such a wonderful time together, you must become a regular guest. I insist! Please, accept this little gift as a reminder that the doors of my manor are always open to you. This coin is a key to the teleportation arch located in the Upper City. I would not normally give something like this to my ordinary guests, but... there's nothing ordinary about you, is there?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0092.jbp | 6303dd054e8689b4695568badd97ef42
+{n}Greybor can't hide his disdain. He snorts contemptuously.{/n} "The Bloody Freak? I have never heard a more pretentious, tasteless nickname in all my life."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0093.jbp | 1ae624e1185bbee4785fb30c529992c1
+"For all your excellent qualities, Greybor, you have one weakness. You are an aesthete. Your enemies may use that against you."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0096.jbp | 7ff7d195e1df081419e6994df8a17f1d
+"I can fight, all right... but I don't like to watch such horrible fights. Watching them is scary and it makes me unhappy... Oh, here's an idea! I'll just keep my eyes closed!" {n}Aivu squeezes her eyes shut resolutely.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0003.jbp | 0fe0324c6be90b84497df173e3271b39
+[Attack] "I've grown tired of your company."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0004.jbp | c63434f6e56c3ad4ab4c66b37b834656
+"I'd like to get to know you better."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0008.jbp | 96b7000137c52c542b8c7d89cf2cde3c
+"You are not like the other demons. Why is that?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0009.jbp | b65e8be0a9598ca44b757c5a581672e9
+"What made you interested in me?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0010.jbp | 880d6fe6e7e8dff4e92b7ab6d1ffa75e
+"You are very powerful, aren't you?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0011.jbp | fcc85a7455cd6b64fa19deeef67c915e
+"Why do you like to support young talent?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0012.jbp | c383979bcd00e7c45800f50ec1f04433
+"What happens to those who fail to interest you?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0018.jbp | 973957c9868733f4288a34d74b034b09
+"Thank you for your answers."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0021.jbp | f79724c89cd9ef7469aa6b15190c4e4b
+"I have to go."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0024.jbp | 533536e3a31f6d44192b2977e0c91498
+"I seek your patronage, magnificent Vellexia."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0025.jbp | 5da55cb095bd5c04ca320fd8bef50452
+"Everyone talks a lot about you here in Alushinyrra. Who are you?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0026.jbp | 82c7761cba1c6684f9b16fb2c7b29aca
+"Are you skilled in the magic of enchantments?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0032.jbp | e5f3d57a54f808f4ca1377f65d8cb014
+"You can call me {name}."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0033.jbp | 7ba472a95eef9de4085351fab66ab717
+"My name will remain a secret."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0040.jbp | b4f78c11d0c74c0468b9b623f5cd3fc6
+"An acquaintance of mine once mentioned that you used to fly naked over Alushinyrra. They said you wreaked havoc and terrorized the city in every way imaginable."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0043.jbp | 2a2e4acfefd4cbe4db782d42d7bc0eb0
+"I am the commander of the crusaders of Golarion. I am a famous warrior, known for my amazing powers. I seek the honor of your attention, and the pleasure of your inestimable company."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0049.jbp | d8c67ceabdc6a004f8dca12597f876e0
+"Does Alushinyrra's nobility welcome newcomers into their inner circle?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0053.jbp | c496f320800ab29449b36ba495259aff
+"If you know all of the most influential demons in this city, perhaps you've heard of a demon named Willodus?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0083.jbp | 523b205e4a5d33a428f8b7e2504a338d
+"What do you mean by that?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0086.jbp | 8c03a6bc89253144eb54b97b903049e5
+"Arueshalae, is she right?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0089.jbp | 7ad9a8269e146fe479d225c852444433
+"That's rubbish. Arueshalae and I are not going to kill each other."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0091.jbp | e7db85902fccb03468afbbe258efe837
+"This game of yours is nothing more than a pathetic imitation of true affection. You are the one lying to yourself, if you think you know anything about love."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0093.jbp | 0d1e9f1dc14a70142a1750f9d938db06
+"You sound like you're speaking from experience."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0095.jbp | a32725eb3caa9094b8d1acf508994326
+"Arueshalae is not like you. She doesn't play those demon games anymore. Her feelings, whatever they may be, are real."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0098.jbp | 45864f8d8798f03449c2adec8a241e90
+"I see this is an unpleasant topic of conversation for Arueshalae. Let's not discuss it further."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0106.jbp | df1dcc72f118229479e341fffea22387
+"Wenduag, what's wrong?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Answer_0108.jbp | 1ee1f298c86d09c4ba1560a5fbf5f8f5
+"Wenduag, cut it out!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0001.jbp | 3850d7abe56fba24fb5acb4b8e0767a6
+{n}The demon that comes to greet you has blond hair and is wearing a modest, but elegant dress. She seems surprisingly friendly. Her soft voice and impeccable manners seem out of place in a city where extreme passions and boundless indulgence prevail over temperance and moderation.{/n} "A new guest has arrived? How exciting! A mortal from Golarion, if my eyes do not deceive me. What brings you to my manor? This is all very intriguing!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0006.jbp | 1af8862c96a852440b44c47fea14a4d6
+"I am flattered by your attention, and I find your personality intriguing. You know, I take great interest in promising young talent, and I tend to offer my patronage to gifted artists. Unfortunately, many of them turn out to be frauds, unable to keep me entertained for more than a few seconds..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0013.jbp | c06e6223610c82c4c8cd43a60f2abc53
+"Time. It's a simple answer, but true. I know a lady is never supposed to reveal her age, but suffice it to say that I am far older than this city, and can recall the circumstances in which it was founded. During the ages that have passed, I have had time to play... various roles. Perhaps, if the gods of Golarion are generous and bless you with longevity, we will meet again. But if that does happen, say, a thousand years from now, I will be completely different. As time passes, I grow bored with each new version of myself, and since boredom is my sworn enemy, I have to reinvent myself to escape its grasp."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0014.jbp | 3f7359440eea01b409195f412ab345f5
+"Ah, you are so modest!" {n}Vellexia nods knowingly.{/n} "You are a Golarian warrior, and you are responsible for securing several major victories in the Worldwound. You had the courage to descend into the Abyss, and now you've chosen to pay me a visit. Moreover, you are not here to wave a sword in my face, but to have a nice conversation. Now, be honest. If you were me, wouldn't you be intrigued?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0015.jbp | 18010f545d7291740b11133e634731a2
+"It is true that my name carries a certain degree of prestige here in Alushinyrra. My advice, based on millennia of experience, can be truly valuable, and my adventurous life has allowed me to acquire extensive connections, as well as an impressive collection of powerful curiosities... Oh, now really, just listen to me! Talking your ear off like a market seller!" {n}The demon laughs at herself good-naturedly.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0016.jbp | 1447842e408f6624abd1187ee1cf5340
+{n}Vellexia glances at you coyly and gives you a charming smile.{/n} "I could have told you that I am driven by pure altruism and the desire to perform good deeds, and you would have thought me the kindest and most noble of demons... But the truth is that I am easily bored, and by attracting the young and the gifted, I can discover something new every day. They keep me entertained, and to be honest, they add to my prestige. I like making new friends, and with my help, those friends can become very influential indeed."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0017.jbp | 02f2252cb700d2c4fb5bca7583115f2e
+{n}Vellexia looks at you uncomprehendingly for several moments, then bursts into a peal of musical laughter.{/n} "Ah, so you've heard those ridiculous rumors? Don't pay any attention to them. They're all so boring. Whoever invented them has no imagination! I've heard rumors that I kill them, that I keep them in my dungeons, and even — just imagine — that I rape them until they drop dead of exhaustion... It's all an extraordinary load of rubbish. I haven't done anything like that for at least a couple of millennia."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0019.jbp | 6280783316c0480488df7cedf1529be6
+{n}Vellexia gives you a charming smile.{/n} "Thank you for being interested in what I have to say."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0020.jbp | 883ec16d197f79e44b0ba66332c4734f
+{n}Vellexia greets you with a graceful wave.{/n} "Ah, it is you, {name}!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0022.jbp | dec16cc9ff1dba444ada35c70d77a928
+{n}Vellexia smiles warmly as she bids you farewell.{/n} "Please don't stay away too long. Come back soon."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0027.jbp | 66e14ed58c87bfb4986a9cc99e27ea7d
+"Yes, that's one of my many talents. A life that spans thousands of years can be a challenge for even the most lively and curious of minds. I am always looking for something new and exciting to do, so I have studied many strange subjects. I take particular interest in anything bizarre or unusual."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0028.jbp | 14a876dfd6edfe2479bec135cc576f88
+{n}Vellexia laughs happily.{/n} "Ah, how refreshingly direct! Well, let me tell you a little about myself. My name is Lady Vellexia, but it is common for others to add a few epithets before my name, often something like 'magnificent' or 'illustrious.' I hold considerable influence in the Upper City. You could even call it my little queendom. I'm the foremost member of the city's elite, and all the aristocrats of Alushinyrra acknowledge me as their de facto leader. You might be under the misconception that the city is ruled by Shamira, but..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0029.jbp | d17ce6b37056bd9418b9fde6959b2da7
+{n}Vellexia shows off her perfectly styled hair as she playfully twists a strand around her finger.{/n} "A Golarian warrior who seeks the patronage of a demon from the Upper City? And you're a crusader, no less! Ah, this is most intriguing! You are a curious creature indeed, and I would be very interested to learn more about you. There is no need to bother with titles, you can simply call me Vellexia. And you are...?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0034.jbp | 380b4c6157cc7b1478d43363144f5532
+"{name}..." {n}Vellexia rolls your name slowly across her tongue as if tasting the way it sounds.{/n} "What an unusual name. Certainly not in keeping with the spirit of the Abyss... But I like it. You know, {name}, I have a proposal for you. Let's pick a place that's nice and romantic, and go on an innocent little date together. It'll be a chance for us to get to know one another."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0035.jbp | 002899b9967d43842b15147f7885ef2a
+{n}Vellexia claps her hands in delight.{/n} "You would prefer to remain incognito? A mystery knight! Isn't that what you'd be called on Golarion? How absolutely charming! Well, my mysterious new friend, I have a proposal for you. Let's pick a place that's nice and romantic and go on an innocent little date together. It'll be a chance for us to get to know one another."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0036.jbp | 746af280c4d1daa47afbb44c7f8b2eea
+"How about the Battlebliss? It offers simple, spirited entertainment, and it will be a good place for us to talk undisturbed. No one will notice us because they'll be too busy watching the fights in the pit. We can have a nice conversation, and learn more about one another. I'll be waiting for you at the arena. I hope you'll accept my invitation. I will be very disappointed if you deny me the pleasure of your company."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0037.jbp | d875a28f95df4dd48804cf9df780d79e
+{n}Vellexia gives you an admiring smile, and adds,{/n} "After all, you are the champion. You have conquered the arena. Where better to learn more about you than in the place you proved your worth?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0038.jbp | 13b2ee15ce8f769428ef468b371730b9
+"Shamira is nothing more than a glorified cleaner, entrusted with the responsibility of tending to the latrines. I, on the other hand, hold sway over the most powerful and influential demons in the city. You see, my dear friend Nocticula allows me to lead the nobility because I look out for her interests. She knows that I am loyal. Unlike most demons, I do not aspire to power beyond what I already possess. I would never stage a coup against Our Lady in Shadow, nor would I ever use my position in society to support anyone else in such a foolish endeavor."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0039.jbp | 57a2435ee794ade4f852f0db1e1ff715
+{n}Vellexia greets you with a graceful wave.{/n} "Ah, it is you, my dear friend!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0041.jbp | f3b76ac2b5257ed45ab7f5f313acaea5
+{n}Vellexia blushes slightly and hastily brushes off the question.{/n} "Oh, no, that's preposterous! Those are just ridiculous rumors and exaggerated stories! Of course, when I was younger, I may have allowed myself to be a little too... exuberant... but still, what a blatant lie! Flying naked? Such outrageous nonsense!" {n}The demon tries to pretend she is outraged, but a sly, self-satisfied smile plays about her lips.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0042.jbp | 051d6dc1fab94d9439adc0ad4c728308
+{n}Vellexia answers politely but without much enthusiasm.{/n} "Known for your amazing powers? Here in the Abyss, you will need more than power and influence to impress others. Your special abilities will hardly give you the same status as they did on your homeworld. The demons will not see you as worthy of glory and respect until you demonstrate what makes you unique. However, you've managed to pique my interest, and I would be glad to make your acquaintance. There is no need to bother with titles, you can simply call me Vellexia. And you are...?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0044.jbp | 17201573a5de0b940b5854fbc709ced0
+"Vellexia. We have clashed in battle many times. Her claws were always stained with the blood of those she killed on the battlefield. Now, she looks... different. But I am certain that her true nature remains unchanged. She is still violent and dangerous. You must be on your guard, Champion."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0045.jbp | 474158421e7fe754681c89a3da7bb641
+"Don't put your trust in her words, Champion! Vellexia's temper is like the wind that blows across Ishiar — it changes constantly, and bodes poorly for us no matter what direction it turns. You must watch her as vigilantly as a skilled sailor watches the horizon."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0046.jbp | 4b65a5cd88df0da4db7d75edb81567bf
+{n}Vellexia playfully twists a strand of her perfect hair around her finger and asks in pretend surprise,{/n} "My patronage? Why would you have need of that if Our Lady in Shadow has honored you with her special attention? However..." {n}A coy smile plays about her lips.{/n} "How could I resist the opportunity to become more acquainted with the new favorite of Nocticula herself? Oh, and don't bother with titles. Vellexia is just fine. And what should I call you?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0047.jbp | adc0f837fdae7c94d89772dc7eeed7c6
+"Such remarkable modesty! You are a mortal from Golarion who has somehow ended up here in Alushinyrra. You went from bravely fighting demons in the Worldwound, to being granted the good favor of Our Lady in Shadow herself. And you wonder why I am interested in you? How utterly charming!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0048.jbp | 3966bd852576ce14db5d825751da4a81
+"Look who has graced us with a visit! The Shadowspawn {mf|Lord|Lady}, the recently established leader of the shadow demons! I always knew that Alushinyrra would bow before you, and the title you've claimed with your blood-stained blade proves that I was right."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0050.jbp | 02cac8de37432df40a591dafe10a7fa6
+"It depends on the newcomer. But your power cannot be denied, and as a recognized leader among the nobility of Alushinyrra, I am more than happy to welcome you into our circle. The fact that you are mortal will certainly cause a stir, of course, but those who take issue with your origins can go and share their opinions with Ar-Mikheth, don't you agree? On that subject, I ought to mention that I have no regrets about his demise, or about you taking his place. I found him unbearably dull, and he was always so dreadfully gloomy."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0054.jbp | 69dbf086f10a00c46a31499b19f0e597
+{n}Vellexia smirks at you.{/n} "Indeed, though I wish I hadn't. The pompous dullard never stops boasting about his position as Our Lady in Shadow's main arcanist, and perhaps his magic really is that impressive, but... Unfortunately, the same cannot be said of his character. He is a coward and a bore. He may be tenacious, but he certainly lacks any cunning. I heard that he recently hired some assassins and sent them after Darrazand's head. But he wasn't smart enough to hire professionals. Not only did they fail, they also revealed the name of their client, and now everyone knows who ordered the hit job. Such sad mediocrity!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0055.jbp | b02cffc3886d6bc458710da31239122d
+"Please choose your words more carefully. I can assure you that if I were free to deal with Darrazand on my own terms, he would not have survived. And I certainly would not have chosen to attack him with that pathetic toothpick of a weapon I was given."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0058.jbp | c8cd8cd451fb812488a3964afcee266c
+{n}Arueshalae leans toward you and whispers,{/n} "I have to warn you. Vellexia is much more dangerous than she looks. She knows how to be amicable, but it's only a pretense. Her friendly demeanor is as fake as everything else in this city. If you look behind the mask, you will see someone who is old, cruel, and utterly insane. Someone who adores random acts of senseless violence. Trust me, I... used to know her in my past life."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0059.jbp | 16daec55d13e5fb4ca9ffc6ab4d0c963
+"Seriously? You used to swan around grand palaces and rub shoulders with the movers and shakers of demon high society? You were basically a hoity-toity noble, but you left it all behind to sit in some old ruins on Golarion? And you call Vellexia insane?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0060.jbp | 9d940f351b7a4954c867b7030bf66438
+"Who does she think we are? A circus troupe hired to entertain guests at a ball? The effrontery! Call me old-fashioned, but I rather think we should go back to the traditional 'kill on sight' method of dealing with demons."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0063.jbp | 7a54110bd06a25742a0813a405079cec
+"Oh, now you're acting like a man, Daeran! So what, you only start to act like a true warrior when someone gets you really angry? I like you this way! When we're done here, I think we should go out into the city, where we can slaughter demons until we're satisfied! Then we'll satisfy our other desires. After all, some pleasures are best enjoyed after a good fight."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0064.jbp | a2bda8ce784b9d54991c9abf681a04d8
+"I shudder to think what pleasures you find most enjoyable after a fight. Marauding? Cutting the ears off corpses? Dancing on the graves of your enemies? I must admit, I lack the imagination to guess what else is on that list. No, no, don't explain. I don't want to know."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0067.jbp | c40dc11c3e0770740a5bf1a26211e896
+"When you feel bored, it is always so horrible. You've tried so much in your life... But have you ever tried to become good? It is very hard, and takes a very long time, so you won't have a chance to be bored."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0068.jbp | 7ee753ccd60dfda4cb66d61c87c428ac
+{n}Vellexia eyes Ember with mild curiosity, as if observing a mildly amusing animal in a zoo.{/n} "Is she here to entertain you with her oddities? I also enjoy the company of jesters, though I wouldn't like to have one of them as my constant companion."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0069.jbp | 8712cd1181b28d94bb2004d525227f95
+{n}Vellexia greets Arueshalae with a cordial nod.{/n} "Sweetheart, you should have told me you were coming! I would have organized a reception to celebrate your return! I must confess, I rather missed having you around. But all is forgiven, and I hope that I can count you among my regular guests once more."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0070.jbp | 4214e0478e09b1149b143b7fc9225d7c
+{n}Arueshalae forces a smile.{/n} "Thank you for your hospitality, Vellexia. But I doubt that you'll find me very interesting. Things have changed since my last visit. I am a different person now."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0071.jbp | ffd70d52b284db142905840b05ee287c
+{n}Sosiel looks embarrassed. He speaks reluctantly, as if he finds the words difficult.{/n} "I am sure the heart that beats within your chest is wicked and merciless, but... my goddess demands that I am sincere when I see true beauty, though I dread to ask how many lives such beauty has taken."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0072.jbp | 9657daa8188dfc244abd1394ba8bfae5
+"Such a compliment! Sudden and unsophisticated, yet surprisingly delightful! I never thought that words of admiration from a mortal could touch my heart, but... it seems that praise from a cleric of Shelyn can make even a succubus feel flattered."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0078.jbp | 7dc68edf7da6e414ba81ca2fa7f8a711
+"Hold on..." {n}Vellexia's gaze drifts between you and Arueshalae with lazy curiosity.{/n} "I can see the way you look at one another. You can't hide things like that from me. Could it be, my girl, that you have decided to play the most dangerous of all games?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0081.jbp | dad46d22b5d3679468c4d81044ad583e
+"I don't know what you are talking about, Lady Vellexia." {n}Arueshalae does her best to sound polite, but you can tell that she is scared.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0084.jbp | 97671456975cffb418319d8777d74931
+"Every pleasure is available to us here in the Abyss. But which is the most dangerous? The most offensive? Tell me, what is the most unthinkable perversion for a succubus?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0085.jbp | ec58f45a60bec6d438a84993c6a1696e
+{n}Vellexia pauses dramatically, then answers her own question.{/n} "Why, it is sweet self-deception, of course. The gentle feeling so cherished by mortals. To let down your guard and relinquish control. To expose your delicate, defenseless throat, and persuade yourself — just for a moment — that your partner does not want to rip it open... Oh, this game is far more dangerous than any entertainment involving chains, whips, and needles. You see, there are only two ways it can end. The first ending is quite simple. You grow tired of the game, so you stop playing. Only yesterday, you were persuading yourself that you couldn't live without your 'beloved,' and today, you don't feel like letting your 'beloved' into the house. However, the second ending is far more exciting. If you allow the game to continue, one of you will eventually decide to take advantage of the other's defenselessness. In this situation, the game ends when one of you regains control of your senses, and kills the other before they muster up their own courage to strike."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0087.jbp | ba53b1a8a99539341a5567250e4d6d7f
+{n}Pale and terrified, the succubus shakes her head.{/n} "No... No! That's not... That's not what I..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0088.jbp | 656e2b3912b61cc409bc90516b5d8735
+{n}Vellexia sounds amused.{/n} "Of course not. When you are playing the game, you must never allow yourself to think that it will come to an end. You must believe that it will last forever. So you tell yourself that what you have is special. A genuine connection. You convince yourself that this is different from all the other times. This time, it's real. For that, of course, is the first rule of the game. You must deceive yourself."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0090.jbp | 4e4ca66fd7b713f4593872efc8fb0dba
+"No, of course not. Not at this stage of the game. But keep playing, and you'll eventually reach the endgame."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0092.jbp | be4f566720f33114494aa208948e09cf
+{n}Vellexia narrows her eyes slightly.{/n} "Demons and mortals, we are so alike, and yet so different. Both are drawn to the irresistible mysteries and delightful dangers of the other. But here in the Abyss, this is how the game is played. When you choose a demon as your partner, you have doomed yourself to one of these two possible outcomes."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0094.jbp | bfb61043c68a1964ebf7581de44d4cca
+"I might be." {n}Vellexia smiles mysteriously.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0096.jbp | 5ebf18b48e3a4d34b891422498d3bf08
+"Ah, of course. That is exactly what you should be saying to one another. Deceiving yourselves is the hardest part of the game, and the most delightful."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0097.jbp | 6d733764a487c4d4fab6e78d6015c912
+"You are right. Thank you for reminding me," {n}Arueshalae whispers.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0099.jbp | df441de09921a8642817358b1b8ca866
+"Well, I'll say no more about it then. But you've intrigued me, Arueshalae. I will be following the course of events with great interest — and I'll be waiting for its inevitable outcome."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0100.jbp | 8e3266de745424b40932062830fe8b53
+{n}Arueshalae whispers softly in your ear.{/n} "You know, she really has no idea what she is talking about. You could pick any random person off the street in Drezen and they would know more about true affection than she does. Someday, you'll teach me to understand it too..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0101.jbp | c7bde9d9b17d4174e82b15b3b3107fec
+"Hey, stop being mean to my friend! But I guess you don't know what it's like to have friends, you stupid demon! If you have a friend, you can laugh and play together! That's what I do with Ember. We have lots of fun together. But you're just mean, and you don't like when people make you laugh. That's why you don't have fun!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0102.jbp | cb56403532c31f8438efa7057c18589d
+"Just look at how she's all over you, how she tries to woo you... This bitch may look pretty, but she definitely wants something from you. And whatever she's offering stinks."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0103.jbp | 1963c1a93d80f104888d846a3f70518b
+{n}Wenduag sneers mockingly.{/n} "Well, what do you know? So that's who's really in charge of this city! Turns out, it's the slut with the fake blond hair who surrounds herself with a dozen stupid admirers in some sugar house. And here I thought it was that 'ardent dreams' bitch who lives in a palace full of demons in the middle of the city!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0104.jbp | 32cdf4cccd42703409d8de842c30bd51
+{n}Vellexia looks at Wenduag blankly, then turns to you in bewilderment.{/n} "Must your pet... companion behave in such a manner? Can you please subdue her somehow?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0109.jbp | 6d05ef852d0ec3c4a981ce87470813a6
+{n}There's a quiet, angry hiss in your ear.{/n} "This bitch has got her eye on you. But I'm not going to let her near my territory without a fight."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0111.jbp | a2b06f44955ed4247acca1a0b47e2230
+{n}Wenduag scowls and spits on the manor's luxurious tiled floor.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0118.jbp | ede592f3701056646b92b65f30154b02
+{n}Wenduag's lips curl into a sneer.{/n} "So she's just an old hag? She hides behind a sweet face and some curves, but all she's got beneath her disguise are saggy tits and a flabby ass? Not much to brag about..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0013.jbp | 898c6d3a9269e3340881345c2a3762b3
+"You look stunning in your new outfit, as usual."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0022.jbp | b7f4db994ce339645af1bde3a19cb448
+"Shall I entertain you with some conversation?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0025.jbp | 6f6eab24a8628d44a805c6e9a0920f28
+"It is a pure and uplifting feeling in your soul that cleanses your heart of all burdens and pains."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0026.jbp | 791f0450fcbc09a48be3b345a8c8d10f
+"Love is a load of nonsense invented by naive fools."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0027.jbp | 5ffd00a5135de9a4f899523c1773fd87
+"It is a useful illusion that offers an escape from loneliness."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0028.jbp | 67678955c64ac674d8a16b937ff5e70e
+"It is passion, physical attraction, something that pushes you to do all kinds of crazy things!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0035.jbp | 1519acbc682266f449799cb4c21d2816
+"Love is a broad concept. It would be impossible to explain."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0038.jbp | 5b636a2517b3f0144bec7b28347b1854
+"No. These things are caused by lust and dark desire, not true love."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0040.jbp | 7162ac08d4487814eae83ae05cf75508
+"Yes, when a mortal cannot control their emotions, their love can become a devastating force. That's why the feelings and emotions of the heart must be governed by the logic and reason of the mind."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0041.jbp | b8548e11e22102147a2090ebea1ab5e2
+"Ha! When people are 'in love,' the first thing they do is shackle themselves to each other as tightly as possible!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0042.jbp | 616f2917228547e43a955e5d93cf6541
+"I am against all constraints. Free love always triumphs! As for crimes... Well, no one ever said that love wasn't dangerous."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0043.jbp | c0699daa38bf2144ebab6b0bd384e0ef
+"I find that hard to answer."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0052.jbp | 92078afeb59152b4aafb166fec95110b
+"True love lives forever."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0053.jbp | 04fd147e631c00d4699b521682435edc
+"Love comes and goes, but duties and responsibilities remain."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0054.jbp | 65889f51ce622f1488074e3ee708a4b6
+"Love is like the food you buy in a cheap tavern. It smells better than it tastes, and spoils sooner than you'd expect."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0055.jbp | 474d936f0b5028c4b858457b6cc9947f
+"Love never goes away. Old love just gives way to new love."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0056.jbp | 049561985dcf3a94ebcd651f32435f7a
+"I will have a lot to think about after our conversation."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0070.jbp | e460b2e493c997c4b94e5b98d6c9a816
+[Gesture at the trial] "I'm sorry, but doesn't this bother you?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0074.jbp | 62c67d2ff9791b44da593aeda81c88c2
+"So what will happen at this private reception?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0076.jbp | 0e55a7704efeb9640b31c64b824e685a
+"This is not a trial, it's a parody, and it's disgusting."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0088.jbp | 0c2aa97ea180a774393f798ac76f2782
+[Listen to Shamira attentively]
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0089.jbp | 8193ec9777ffac447a3717c543ff21f9
+[Turn a deaf ear to Shamira's words]
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Answer_0093.jbp | 5c5f0026c51e69b40867926e8e23a033
+[Whisper to the Hand of the Inheritor] "Do you still believe Vellexia is dangerous?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0001.jbp | 0bae6309ac907064f8458fd20a4627a7
+"It was a good idea of mine to introduce you to high society at this reception. We're a subject of gossip among the guests. I heard them whispering about how we showed up together."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0014.jbp | 874d405d7dd11cb469a693918aa3d020
+{n}Vellexia covers her mouth with her hand as she gives an elegant little laugh.{/n} "I certainly couldn't go out wearing the same dress as last time, could I? I would have bored you... Moreover, I would have bored myself!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0023.jbp | 32d2dc9452724da479f38347b0c4b881
+{n}Vellexia nods with mock solemnity.{/n} "You have my permission."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0029.jbp | 1fd0f742b06d97b4da7aa4aebeb2734c
+{n}Vellexia stares at you with wide eyes as she repeats your words.{/n} "Pure and uplifting feeling... How intriguing... And how unfamiliar... Our passions are tempestuous, and our feelings stem from the darkest depth of our souls, but you... you say this feeling is pure. Fascinating."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0030.jbp | e146d95b833deb8438aa10222f636b85
+{n}Vellexia smiles knowingly.{/n} "If you keep talking like that, you might find yourself quite popular here in the Abyss."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0031.jbp | 082314f3b812e1745913f9ba4742c829
+{n}Vellexia studies you for a long time.{/n} "I can see that you do not let your emotions cloud your judgment. It requires self-control and a strong will to act with such discipline."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0032.jbp | b9ab93e6f6705694cad11d9fbd45d17d
+"Crazy things? It's been a thousand years since I last did anything truly crazy. How intriguing! But it sounds too good to be true. Are you trying to lure me into a trap?" {n}Vellexia laughs teasingly.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0036.jbp | 25e2356fbbc174e4e9123807ebf9321d
+{n}After a moment's consideration, Vellexia nods approvingly.{/n} "You are a thoughtful and insightful conversationalist. You don't rush to make a witty remark on every subject, and that's a good thing. I will try to be more specific."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0039.jbp | 4638e5608c1ef6f4da4f49ddf8c2862d
+"Is it not true that love restricts freedom, and that its harsh constraints can sometimes lead to cruel, evil deeds? Does not love force people to act contrary to their desires, and subordinate them to the object of their affection? Do not even the most loving souls feel occasional regret about trading away their freedom for love? Haven't the most terrible betrayals been committed for the sake of love? Doesn't unrequited love cause mortals to commit suicide, and isn't rejection the reason they often resort to violence and other terrible crimes? I am most curious to hear your answer to these questions."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0044.jbp | 18aab639a0810224cbd6036fe26782f7
+"So you believe that real love is pure, and leads only to pure deeds? If that is true, I can't help but wonder — what happens to a demon who encounters true love? Will her love darken and die, or will the demon... rise above herself?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0045.jbp | 756c9ad94fe845e4ea5f1d37e6032c1c
+{n}The demon looks at you more closely.{/n} "You speak of love as if it were a weapon. A true warrior respects their blade because it is capable of cutting down enemies and careless owners alike. You treat love as carefully as you would a sword."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0046.jbp | 688704f6865c51d43beaafd0126eab04
+{n}Vellexia's eyes widen in a mixture of horror and disgust.{/n} "Are these raging emotions truly worth this loss of freedom? Why would you choose to be shackled in such a way?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0048.jbp | 250a2496f1cb92049b5f0c7a6279d801
+{n}Vellexia repeats your words slowly, as if tasting them.{/n} "Free love... Dangerous... That sounds thrilling, and perilous. I love games like that."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0049.jbp | 48985270d9db13b4e8ac5f5a8ee65e87
+{n}Vellexia smiles at you knowingly.{/n} "That's the point, isn't it? All this ambiguity. Are you mortals so fascinated by love because it is so complicated and ambiguous?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0050.jbp | 67990314c1a8cbe49bcf85e11f8ef7c8
+"It seems to me that love is like a living creature. Sometimes it behaves one way, and at other times, another way. It is contradictory and inconsistent. It leads to both good and bad outcomes... and, like every living creature, it is bound to die eventually. After all, every love, no matter how strong, is doomed to die. Is that not so?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0057.jbp | 9b75b8dccf8422646ad9e8f542cb0cee
+{n}Vellexia looks at you doubtfully, but you can see how desperately she wants to believe you.{/n} "Don't lie to me. I need you to be honest. Do you truly believe that? Ah, don't answer. I can see that you're being sincere!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0058.jbp | 4788c8731a4717d48a618373423bef95
+{n}Vellexia smiles at you sadly.{/n} "A stern knight in armor, that's what you are. It is duty, not love, that reigns in your heart. Yet surely that does not stop others from loving you. If anything, your unshakeable devotion makes you even more desirable."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0059.jbp | 98b998e899b0ef8449bcc8c48ccd27e8
+{n}Vellexia tries to look stern, but she finally gives up, and bursts out laughing.{/n} "Ah, I don't know if I should be associating with you! You have such a wicked tongue, yet I cannot deny your wit! You may be dreadfully cynical, and terribly naughty, but you are also very clever!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0060.jbp | 9c1cd9b01cdf28e4a8af8961a6ab09e3
+{n}Vellexia maintains her composure, but you can see the corners of her mouth twitch and her eyes twinkle mischievously.{/n} "This is all madness, true madness! Everything you say is nonsense and empty fantasies, yet I find them impossible to resist! My head is spinning! What have you done to me, my cunning friend?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0061.jbp | 327632c1da729094dadf826fe05067a9
+"As shall I, my dear friend, as shall I. Of course, you must understand how complicated it is for a demon to discuss the nuances of love. It would be like trying to explain to you mortals the inconveniences that arise in the second millennium of life, even though you can barely keep track of what happened during the first one..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0062.jbp | d9b30edb544cdc449872c8353767b603
+"Thank you for our conversation. I expected to find it interesting, but I had no idea that our discussion would be so thought-provoking. I am so glad I decided to come here with you, and I sincerely hope that you'll visit me again. I hope to see you at my manor soon."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0063.jbp | 1ac814549ebac7540840a44542435448
+"...to love. It is common knowledge that demons know nothing about love. So why don't you explain it to me?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0065.jbp | 76aac39c73f95864b81c218db7e89324
+"I host small receptions for the most interesting and noteworthy residents of the Upper City. Conversations at these receptions are always entertaining. If you were to attend, we could continue our discussion about love. Of course, I seriously doubt my guests would be as interested in this topic as I am, so perhaps we should finish our conversation in private. I hope to see you soon, sweet {name}. Don't stay away too long. I'm looking forward to your next visit." {n}Vellexia gives you a dazzling smile, then vanishes into thin air.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0066.jbp | 99d697e04be811341957b3d091436f48
+"I host small receptions for the most interesting and noteworthy residents of the Upper City. Conversations at these receptions are always entertaining. If you were to attend, we could continue our discussion about love. Of course, I seriously doubt my guests would be as interested in this topic as I am, so perhaps we should finish our conversation in private. I hope to see you soon, dear friend. Don't stay away too long. I'm looking forward to your next visit." {n}Vellexia gives you a dazzling smile, then vanishes into thin air.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0068.jbp | 374dfd0101af2404498603cbcd92e2d0
+{n}Vellexia is more interested in having a conversation than in watching the sham trial.{/n} "You know, {name}, after our last..." {n}Vellexia pauses playfully.{/n} "...visit to the Battlebliss, I've been thinking a lot about the customs of Golarion. Despite our differences, we actually have a lot in common. Our actions and desires stem from the same passions, except when it comes to..." {n}Vellexia's eyes widen with excitement, and she utters a word that is as foreign to the Abyss as you are.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0069.jbp | 636fff8ef07811547b27081085b2cf85
+{n}Vellexia is more interested in having a conversation than in watching the sham trial.{/n} "You know, my dear friend, after our last..." {n}Vellexia pauses playfully.{/n} "...visit to the Battlebliss, I've been thinking a lot about the customs of Golarion. Despite our differences, we actually have a lot in common. Our actions and desires stem from the same passions, except when it comes to..." {n}Vellexia's eyes widen with excitement, and she utters a word that is as foreign to the Abyss as you are.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0075.jbp | 9e0b0e054e319a8438283949268ce10e
+{n}Vellexia's eyes widen, and she leans forward as if letting you in on a secret.{/n} "Shamira came up with such an interesting idea. Today, she will dispense false justice..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0079.jbp | 56165fac8ca13d94ca276c4070859d73
+{n}Shamira's voice rings out through the hall.{/n} "All rise! The proceedings will now begin with the dispensation of false justice! I, Shamira the Ardent Dream, will perform the duties of judge. The rights of prosecution will be granted to anyone acquainted with rage and hatred, and the part of the defender will be given to time and blind fate. All the participants are obligated to show due dread and obedience to the decisions of the court. Now, our first case is brought by the assassin Dogwurd against the bodyguard-for-hire Catroll. Dogwurd accuses Catroll of being exceedingly nimble and dexterous. This excessive dexterity enabled the defendant to foil three assassination attempts against his employer, thus preventing the plaintiff from fulfilling his contract..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0080.jbp | 4d7d820c9617f9e4f8c32ca87e11083d
+{n}Growling with rage, Catroll the bodyguard has his head chopped off with a giant axe for being too good at his job. The crowd roars its approval, and the beaming plaintiff counts his coins.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0081.jbp | 3fa38df5d16ae194e973a1999619a826
+{n}The execution has the audience in an uproar. The demons howl their approval, and Shamira has to raise her voice to be heard above the noise.{/n} "Next, we'll hear the case of Varsa the Nosecutter. He attacked two of Alushinyrra's visitors from another plane, even though the great Nocticula made it clear that they were under her protection. Varsa the Nosecutter tracked down his victims in the Upper City and killed them with his glaive. Then he robbed them, and cut off their tongues and noses..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0082.jbp | 9b41f80baa546094d8b10383f4653578
+{n}This scrawny demon doesn't look like a hardened killer. He writhes in his shackles, yelling hysterically,{/n} "But I am not Varsa the Nosecutter! I don't even know who that is! My name is Sharzal! And I've never been to the Upper City! I'm not allowed to enter, even though that's where a slaver of my status should live! Besides, I've never held a glaive in my life! This is all Hepzamirah's fault! She wanted to buy my slaves at half price, and I refused to sell! And now she's taking revenge against me, and plans to get her hands on my slaves!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0083.jbp | bb4abb113e87e264b943c55c924603c9
+{n}Shamira shouts to be heard above the screams of "Varsa the Nosecutter."{/n} "The court finds the evidence of the indicted person's innocence to be quite convincing. However, false justice requires every sin be punished, so therefore... I hereby declare that this demon is Varsa the Nosecutter, and he shall be executed without further delay." {n}Shamira throws a conspiratorial glance at Hepzamirah who stands nearby. The latter grins, and bows mockingly. Shamira announces loudly,{/n} "And the last crime for today is the most harmful and treacherous..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0084.jbp | 24a6bb65aa6e8aa498d9bd3a9c6f6cbc
+"The crime of sinful mercy! And the offense was further aggravated by an attempt at self-sacrifice!" {n}A tiefling is brought forward in chains. Shamira glares furiously at the bloodied, beaten figure.{/n} "The mortal who stands before you is a descendant of Sharzal, a slave trader who died recently. A week ago, this tiefling was offered the chance to be an accomplice in the murder of his progenitor, Sharzal, in exchange for a portion of Sharzal's slave holdings."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0085.jbp | 3f2611dcdad8ca2499d0ac0011bbba9e
+"However, this mortal refused to participate in such a cunning, highly profitable murder! Driven by some insane familial sentiment, and a disgusting display of fondness..." {n}Shamira literally spits out this last word.{/n} "...he warned Sharzal about the possible attempt on his life, and personally hired Catroll, one of the best bodyguards in Alushinyrra, to guard his father's life." {n}Shamira has to shout to be heard over the indignant clamor of her demonic audience.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0090.jbp | 738bc5fccb492c94281afedd387f1259
+{n}Vellexia listens to the ruler of Alushinyrra with great interest, but when she catches your glance, she turns her attention to you eagerly.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0091.jbp | 5c943815d040cc64f9bf792d9d90640c
+{n}Vellexia smiles at you, her eyes sparkling with excitement. She seems uninterested in the drama that just played out before your eyes.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0092.jbp | ac11d175834e51e4b9fa8defac0b115d
+"There's more! During the last attempt on Sharzal's life, this mortal, driven by the most disgusting feelings of duty, and gratitude for his own existence, tried to cover his father with his own body to save him from the assassin's dagger! We find such actions to be criminally insane and dangerous. Therefore, false justice demands that we sentence this mortal to death. Sharzal's property will be declared destitute of an heir, and henceforth accessible to anyone who wishes to take possession of it!" {n}The tiefling is too weak to protest, and at a signal from Shamira, he is executed by the guards.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0099.jbp | cc5032810db99784b816b0baaa6094d4
+{n}Ember nods seriously.{/n} "That is true. Love always ends. It either ceases to be love, or is lost altogether when the one we love dies. That is why we mortals value love so much — we know that it will be over before we are ready."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0100.jbp | e89d59e9926d48b45bc51702eaeb4de5
+"But that isn't true! We value it for the moments of true happiness! When you are with the people you love, you can laugh, and drink, and joke, and tell silly stories, and you feel like it will last forever! Because when love is with us, death ceases to exist!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0101.jbp | 6f6169bfe7c01804c8263324c4399076
+{n}Ember answers with a cheerful laugh.{/n} "Of course, you are right. What you say is so nice! And it is so true! Love does help us feel less afraid of death. It can even make us feel immortal."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0104.jbp | f32f743363106814d9a7379565cba644
+{n}Camellia's eyes narrow, and for a moment, she looks at Vellexia with barely concealed envy.{/n} "That dress was an excellent choice. It brings out the color of your eyes quite beautifully."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0105.jbp | 9bb4b2ff55c8aaf4e94a1e830dba849a
+{n}Vellexia looks slightly bewildered. She seems surprised that a mortal would speak to her without first waiting to be addressed. However, after a moment's hesitation, she gives Camellia a gentle smile.{/n} "I thank you, sweet creature. How kind of you to notice. You clearly have excellent taste."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0106.jbp | 385984ff2dc5e0a428b67892520efef0
+{n}Woljif snorts derisively.{/n} "Nobles! Even here, in the Abyss, they all flock together to bow and scrape and kiss each other's... cheeks! All these hypocrites are drawn to one another! Y'know the difference between a noble and a demon? Well, one of them is a heartless creature, made of pure evil, absolutely indifferent to the sufferings of others. They're willing to murder hundreds just to scratch an itch, and they're always coming up with new ways to oppress the weak. Oh, and the other one's a demon. Of course, demons are just as terrible, but you don't see the crusade welcomin' them with open arms!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0109.jbp | e954d142e45392a49aeaec89ec78a3f0
+"This is a perversion of justice. They're making a mockery of the very idea of a fair and noble trial. They enjoy ridiculing the law."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Second_Date/Cue_0110.jbp | 5759a44bd0828a64c85d94549616db47
+"I completely agree with you, my young friend!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0004.jbp | 55b48cb26b7104746a333636431f1712
+"Once again, you look spectacular in your new dress!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0005.jbp | 3270ec01ebbe3ec4b89ebaa29e9924aa
+"So what entertainments have you prepared for your guests?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0006.jbp | e1558852481f96a4d96061a1ddf9257f
+"Who knows what will happen between us tonight?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0007.jbp | 6ede3c335338a594c918afdb9bd8fd15
+"I'm starting to suspect that you are losing interest in our conversations."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0016.jbp | 27eceb509ee9b574ea476f9cffd4283a
+"I bring goodness and light to this dark place."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0017.jbp | 16757b82b460eab4da7541e04361b46d
+"It is what my Queen ordered me to do."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0018.jbp | 001b780954c6dab42a728aee944d47f8
+"I came here because I wanted to."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0019.jbp | c60fdc1bd0c35b64593dfcf7167313c0
+"You invaded my world. Now you will reap what you've sown."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0020.jbp | 7c0de92c076cc1644ad5b913d97420bf
+"I am not prepared to answer such a complex question."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0028.jbp | 2894af5f9f3193c4c8cdce47d4156eb1
+"There is light and mercy in our souls."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0029.jbp | 8b8eb2cd88dbb794d822e9151ccbc6e8
+"We represent order, and you represent chaos."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0030.jbp | d291f7d775f9b454caebd2f09a6f096a
+"There is no difference. We're practically identical!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0031.jbp | 521a37c740629904cbe150b2600038cf
+"We will prevail, and you will choke on your own blood."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0032.jbp | 7b0f9d20e07511e40827b5690e9a119a
+"It would take a philosopher to answer your question."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0042.jbp | d4391c04b8b2a694da0d19626b37dcb2
+"Because I can guide you to the light."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0043.jbp | 42a91a86bc01eca42b117d2043734019
+"Because chivalry and honor are concepts that are entirely foreign to your other suitors."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0044.jbp | c8f0520e1eb30ee469cc8b067d55d8f2
+"Because no one can match the pure, unbridled fury of my soul!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0045.jbp | 09e6725d5b773374db7066a09230a6b0
+"Because I will rise to great heights. It is in your best interest to be friends with me."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0046.jbp | fd19731e245477f40a4e0556215a1fba
+"That is a question you must answer for yourself."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0070.jbp | 2ee010da8a71c5b4182c330f35eca3ea
+"Thank you for your time. I enjoyed our meetings. Now I must go."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0073.jbp | d111c43cfa8878d45b69068eaa49e531
+[Attack] "A fight to the death will rid you of your boredom!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0078.jbp | 3aa48f68198afe14cb6de752ce80cc8f
+[Unleash the raging beast within]
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0093.jbp | 7bdc8003f062a7941b178225e7ce049d
+[Finish the demon off] "You've lived long enough!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0094.jbp | 88ab8f0c4d102954487d5e2c8266f814
+"I grant you my mercy."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0105.jbp | 4cebc2e5150b6d84bb047710ae9382b5
+"You certainly didn't disappoint. I will never forget our time together. But now I have to go."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0109.jbp | 7939537a042690b48b41ef53101833cc
+"What a disappointment. You obviously weren't worth the time I wasted on our three dates..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0111.jbp | 72d1203da4d47ab4eb20f1bb2e2b47b9
+[Attack] "I'll always be your best lover... Because I'll also be your last."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0119.jbp | fa7b8167dd3223049b19cc9b29b3c59b
+[Whisper to the Hand of the Inheritor] "What do you think is going on?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0134.jbp | 5ce5535c62db9ee48b726bb88779210c
+[Show Finnean to Vellexia] "Do you know anything about this? Was this your doing?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0001.jbp | c7c7a3af182c4574bb31b8d83bec638f
+{n}Vellexia's demeanor has changed since the last time you saw her. She looks at you with a mixture of boredom and irritation. When she greets you, her friendliness no longer seems genuine, but forced and insincere.{/n} "Here is our long-awaited guest! The performance is about to begin, and there is so much new talent here today! I wonder if any of them will entertain me." {n}She looks directly at you as she makes this last remark.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0002.jbp | f2a124393cc75bf4e9adaa45092b0e88
+{n}Vellexia regains her beautiful appearance. She wipes the blood from her pretty face as she screams desperately,{/n} "Mercy! In memory of the sweet moments of intimacy that we've shared together, do not kill me!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0008.jbp | 1479054c72a5e3143ba883d3eac35f63
+{n}The demon brushes you off irritably.{/n} "Enough with these stupid compliments! Yes, it's a pretty dress. So what? Is my appearance the only thing you find interesting about me?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0009.jbp | eccf82112680b9e4d8c92e60cfda17a0
+{n}Her voice carries a note of resentment.{/n} "And here I thought you were here to entertain me, not the other way around."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0010.jbp | 63f515ec793e9554081badc015892339
+{n}The demon glares at you indignantly.{/n} "I hope you are not suggesting anything improper! I'm not sure what you are trying to insinuate, but I would advise you not to be insolent with me."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0011.jbp | 6fc86e23a900b5d4e8dce21e060656a8
+{n}Vellexia throws you a withering glance and mutters something under her breath before she answers.{/n} "In that case, you should act fast before you lose what remains of my interest."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0012.jbp | 802f8e51e6492d447a72f3aa071f1f21
+{n}Vellexia claps her hands imperiously, and one of the performers begins to sing a heartfelt ballad in a deep, velvety voice.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0013.jbp | 0ab15426fd5914249b28721140ee6704
+{n}Vellexia looks tired, and her eyes are full of sadness. There's a wistful note in her voice as she asks,{/n} "Tell me, how did you end up here in the Abyss? You are not one of us. Our ways are foreign to you. Why did you come to our world?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0014.jbp | b8a4e7c0c52e053409570c97b8f52db1
+{n}A small, tired smile appears on Vellexia's lips.{/n} "What heroic self-sacrifice... And so much pathos. You are still so young."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0021.jbp | 27dbbd5c22a9ade4f8e4efb9e2a32b79
+{n}Vellexia sounds slightly irritated.{/n} "Do you always follow your queen's orders? If she is the one who does all your thinking for you, perhaps I'd be better off talking with her and not you."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0022.jbp | aff96c60f46202843b58a6bec755315e
+{n}Vellexia sounds slightly annoyed.{/n} "You know, your light-heartedness and carefree attitude were so charming... until you began to bore me with your superficiality."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0023.jbp | fd9af639d8aa03247867054ed6efd45a
+{n}Vellexia sounds slightly disappointed.{/n} "So you only came here to seek revenge? How predictable. I had hoped for something more original."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0024.jbp | f86e62c04fc6405428f9a821e77e148b
+{n}Vellexia snorts contemptuously.{/n} "Too difficult for you? I'm sorry, I'll ask you something simple next time."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0025.jbp | c7bfcefc8afe1db488bd0e9ca7a72c1e
+{n}The demon interrupts the ballad with an impatient clap of her hands. The singer quails beneath her imperious gaze and hurries away. Another performer steps forward, dressed as a jester.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0026.jbp | daad93f5bb5b9a0478d37601a0bb74aa
+"That wailing was starting to annoy me. What do we have next? Oh! Another fool has decided to entertain me with jokes... Well, as far as I'm aware, laughing at cripples and the misfortunate is popular on Golarion as well. If you ask me, it's a primitive form of entertainment. Still, you mortals seem to enjoy it, even though you try to pretend yourselves different from us creatures of vice and evil. Now that I'm thinking about it, what is the difference between demons and Golarians?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0033.jbp | 1c03bb224d83e5e408b72e31305f7fb7
+{n}The demon waves her hand dismissively.{/n} "Do you really think you are the first Golarian I have ever met? There is as much darkness in your souls as there is in ours, and you cannot pretend that your kind is unacquainted with the sins and vices that bring demons such delight. Don't bore me with your religious propaganda."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0034.jbp | d2bd62f72fc1291468913123a73945f0
+{n}The demon shrugs indifferently.{/n} "So what? Those are just labels. You force yourself to live a certain way so that you can fit into some arbitrary category. Then you categorize everyone else, putting them all into little boxes so that you can distinguish yourself from anyone who isn't 'like you.' Then you do it again and again, dividing the world into little boxes that grow smaller each time. But that is the very definition of chaos. Chaos is a lack of uniformity. There is plenty of chaos on Golarion."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0036.jbp | 8673f720a5ad1a54a8d04eedf01741a9
+{n}The demon is clearly disappointed.{/n} "Of course we are different. It is silly to pretend otherwise. I was interested in understanding the nature of our differences... But instead of having a genuine conversation, you chose to answer my question with flattery."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0037.jbp | 8444a4df77c77ea488d88a8069aab690
+{n}Vellexia rolls her eyes and sighs. She looks bored.{/n} "Yes, yes... Such a predictable response. I don't know why I expected anything different. After all, you're a fighter, not a philosopher."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0038.jbp | aabc834c3e6afa3419c260a10fb6538f
+{n}The demon makes no effort to hide her irritation.{/n} "I had hoped that you would be an interesting conversationalist, but it seems that you are making every effort to prove me wrong."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0039.jbp | 4c32088599c817148beedfd7b6d4abad
+{n}Vellexia dismisses the jester with a wave of her hand. A scrawny spellcaster comes forward and immediately conjures up two illusions that begin to fight violently with one another.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0040.jbp | 1c1fc931147741444b60d6981b322ff9
+{n}Vellexia rolls her eyes in exasperation, and her voice is unpleasantly shrill.{/n} "Deep down, I am beginning to wonder if you are worth my time. Why should I desire your company? What more do you have to offer?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0047.jbp | d6f577e7271c6cb41b1d24fac6b9a0f5
+{n}Vellexia's lips twist into a mocking, cynical smile.{/n} "So, you really are naive! Have you decided to — what's the expression — 'save me with your love'? How utterly ridiculous!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0048.jbp | 2f70553ac59c3a343a5723d00da52e40
+{n}Vellexia gazes at you with a mixture of pity and revulsion, as if you were a kitten that's been run over by a wagon.{/n} "What need have I for your chivalry? Have I been abducted by a dragon? Or perhaps the evil ruler of a neighboring kingdom wants to steal my virginity? If I needed a knight in shining armor, I would have gone to the Fleshmarkets and bought myself a dozen of them."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0049.jbp | 3c9a801722294434e94f447683767dc4
+{n}Vellexia's cruel, mocking laughter rings through the air. Her words drip with venom.{/n} "Are you trying to impress me with your claims? You are in the Abyss! Your boasts mean nothing. Do you think this 'unbridled fury' is rare among demons?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0050.jbp | 7e3fefb4f3ac8c1459362f6bd04908f0
+{n}If looks could kill, Vellexia's arrogant smirk could certainly inflict a mortal wound to anyone's self-esteem.{/n} "Don't flatter yourself, little Golarian. Your short, meaningless life and your stupid, painful death will go unnoticed in both Alushinyrra and the Abyss... The millennia will erase your name from history, and all traces of you will turn to dust..."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0051.jbp | 159ed317f1ab2284499784e3158151f7
+{n}Vellexia is no longer trying to be polite. Her face is cold, cruel, and full of malice. Her voice is dangerously calm, but her words carry a clear threat.{/n} "You should think twice before telling me what I 'must' or 'must not' do, Golarian. I'd advise you not to let such a mistake happen again."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0052.jbp | ac4e60dc583e41b419d48a0fec2af176
+"That's enough! All this 'righteousness' makes me sick! What are you, a holy book that's come to life? All you do is lecture me about 'love' and 'beauty'! It's all nonsense. I don't want to hear anything else about Golarians and their feelings. You're all excruciatingly boring!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0054.jbp | 8a142cc07fa2d3446a676e54c58f923a
+{n}Vellexia's face contorts violently. Her beauty disappears, and her features transform into something wild and animalistic. Her jaws expand, revealing her horrible teeth.{/n} "Guards! Kill {mf|him|her}! If you can't amuse me in any other way, at least you can entertain me with a fight!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0055.jbp | e0ee422a413a5f94ea90bede3096ee56
+{n}You hear {g|Jerribeth}Jerribeth's{/g} voice in your head. She doesn't sound happy.{/n} "I knew your friendship with Vellexia would end this way, so I've been thinking about whose side I would take in a conflict between you two. I've made my decision, and I don't think my patron will be thrilled with my choice. I advise you to get ready for a fight."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0056.jbp | 193c2bbab2da4f24bb401c42986aa021
+"That's enough! I feel like I'm talking with a statue that's come to life! It's as if I'm not even talking to you, but to an entire chorus of other mortals who have crammed your head with all these rules, regulations, and prohibitions! You are such a disappointment!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0057.jbp | 2dadf36a0c988e14d82f406b39bb5cb2
+"Enough! You try so hard to talk and act like one of us, but it's just pathetic. You're not even convincing! Oh, look at you, so rebellious and free, so wild-spirited, furious, and defiant! You're certainly ridiculous, but that doesn't make you interesting!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0058.jbp | 2a3781f2f07088c4e8d476ed15bb62b0
+"I won't put up with this any longer! I thought a stranger from Golarion might surprise me with something new and unexpected. However, there's nothing interesting about your shallow little soul. It is as filthy as the souls of those who live in the Abyss! You are a total disappointment!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0059.jbp | c334fe647233ae1419285feb2bbc9a10
+"Enough! You always avoid giving me a straight answer! Why are you so afraid? Are you worried that you might look stupid and shallow if you answer? Well, I'm about to disappoint you! You already look stupid and shallow!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0060.jbp | b7a8486be5063f643879657b3de3b5df
+{n}Jerribeth must have noticed the look of anger that flashed across Vellexia's face. Her telepathic voice interrupts your conversation.{/n} "Your guest had every reason to keep the true purpose of {mf|his|her} visit to the Abyss a secret, Lady Vellexia. It is well known that {mf|he|she} has won many battles against the demons in {mf|his|her} homeworld of Golarion. Perhaps {mf|he|she} is being tight-lipped about {mf|his|her} visit because it is part of an intricate plot for further conquests." {n}Jerribeth's clever words are not without effect. Vellexia smiles slightly, and looks at you with renewed interest.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0061.jbp | c3b0e25cb932aea47845f563e29ff4ee
+{n}It appears that Jerribeth is communicating telepathically with you and Vellexia at the same time.{/n} "When I was on Golarion, I had time to observe the locals. One of the things I found most curious was their ability to adapt. Their souls change in response to their circumstances. It is truly remarkable. Unlike the creatures of the Abyss, these mortals are capable of transforming their very nature." {n}Jerribeth's words have the desired effect. Vellexia looks at you with renewed interest.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0062.jbp | 29d90f8d4a3d48e4785d9b35a57498e6
+{n}Jerribeth uses telepathy to communicate with you and Vellexia simultaneously.{/n} "There are rumors in Alushinyrra... just rumors, of course... that this Golarian craves your attention because {mf|he|she} intends to seek Nocticula's favor. Apparently, {mf|he|she} hopes to receive an audience with Our Lady in Shadow!" {n}Jerribeth's words have the desired effect. Vellexia looks at you with renewed interest.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0064.jbp | 6b1ab7421261f264b8c855f37cfeb70e
+{n}Vellexia is clearly tired of you, and the polite words she forces out from between her clenched teeth do a poor job of hiding her frustration.{/n} "I must admit that our time together has brought me a certain degree of... amusement. However, I do not intend for us to meet again. I ask that you take this humble gift as a sign of my affection, and in fond memory of the pleasure our conversations used to provide."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0066.jbp | 81b15ede1bb2a3e4e926d5ca4be3e193
+{n}The rage within your soul ignites like a flame. This complete indifference, the hostility, these deliberately insulting comments... How dare she?{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0067.jbp | cf9bb281bf74bcb4eafd0b3da891fd84
+{n}Vellexia chose a clever punishment for the performers who failed to keep her entertained. They tried to serve her, but when they were unable to fulfill their task, she gave them a second chance... Well, her idea of a second chance. As you consider her clever scheme, an interesting idea begins to take shape in your own mind. After all, you haven't received much pleasure from this social gathering yourself. Perhaps you are also eligible for some compensation?{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0075.jbp | 834295fb4d1eade489494f6759972074
+{n}Vellexia gives you a cold stare. She lifts her chin haughtily, and mutters through clenched teeth,{/n} "And if I do as you demand, what will happen to my manor? Have you considered that? I've been collecting furniture this way for millennia, and now you want me to leave my house with bare walls and drafty rooms? What unthinkable nonsense!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0076.jbp | fa6db1b41f5394f4f8a23f09fc7061f7
+{n}Vellexia looks at you with barely concealed annoyance, but she forces herself to smile politely.{/n} "Our dates were unforgettable... And now I ask that you leave as soon as possible."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0077.jbp | 78ccd4b00220b554fb3d7d6fce82a73b
+{n}Vellexia leans forward with sudden interest. Her lips twist into a horrible, bloodthirsty grin.{/n} "Now, this is interesting! Let's play, my sweetheart!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp | 42429350764f92140b293b24039b89ef
+"What do you think you're doing? No!" {n}Sparks fly from your fingertips. They look very similar to the ones produced by Vellexia just moments ago. Your magic takes hold of the demon's body and gives it the density of mahogany. Her eyes, which reflect her dark and insatiable soul, become larger and larger until they are all that's left of her. A moment later, a magnificent mirror stands before you, its surface shrouded in a dark, mysterious haze.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0080.jbp | 105971da56eacda4a959f1fdc5b698e0
+{n}The fire that burns inside your soul erupts like a volcano. The furious beast roars within you. How dare she reject you, that pathetic bitch? Vellexia is as pale as a ghost. You can see her terror, confusion, and... awe. Her eyes plead, and her lips whisper, "Be with me." Her heart reaches out to you, "Own me, oh, powerful one." From now on, you are not her toy. You are not her entertainment. Now it is she who will entertain you.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0095.jbp | 6906a289597ab6e41873e79b71f96c95
+"And this is the price of my salvation? Well, they are free to go, these talentless and incompetent idiots! At least in my manor, they were of some use, but you can have them if you want!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0097.jbp | 55b0e77523709a8468c5e5e982ba6952
+{n}Vellexia's elegant manners vanish as she lets out a shrill, bloodthirsty howl.{/n}
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0098.jbp | 58d69774dbe696e46a9232167e8d3479
+"I am grateful for the gift of mercy, and I swear I won't seek revenge... I must admit, you have managed to surprise me one last time before the end of our brief affair."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0099.jbp | 3404e871477874b43aadb24f08bc3ed6
+{n}Vellexia stares at you in amazement.{/n} "Incredible! What hidden powers lurk within you, Golarian? This was... this was beyond all expectations! But how? How could I overlook this when I first saw you? You are the most fascinating person I have ever met! I have never shared my bed with someone so intriguing and mysterious!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0104.jbp | 076c1cb7bf8824148a31c20e909b26a4
+{n}A long moan of pleasure is your answer.{/n} "You can have them all if you want! Let them go, I'd been planning on changing the furniture anyway... I would do anything for a night like I've just had!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0106.jbp | 33fbc8d0ca697f044861681fc2cecbf6
+{n}Vellexia looks at you longingly. Her eyes are full of passion and desire.{/n} "I swear on my life that I will never regret the time I've spent with you. I will always remember the mysterious Golarian who was so amazing, perplexing, and wild! However, I cannot allow you to leave me — my feminine pride would be wounded by such a rejection! So I will send you away instead... With my best wishes, and my promise to never forget you! Farewell!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0110.jbp | ac69e2e64c8c2fb4a9bb13b06018e61a
+{n}Vellexia explodes with rage. There's a sudden flurry of movement, and the air around her becomes a whirlwind of angry, slashing claws, and frenzied screams.{/n} "How dare you, you miserable wretch! I'll rip out your treacherous heart, and your filthy loins!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0113.jbp | c39699949507d284da34067bbd45c75f
+{n}Vellexia looks tired, and her eyes are full of sadness. There's a wistful note in her voice as she asks,{/n} "What are you, child of two worlds? You try so hard to become one of us, to look, talk, and act like you are one of us, but... your true Golarian nature reveals itself at every turn. So why are you so eager to be here? What draws you to the Abyss?"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0132.jbp | 0f556aee8754497449c4a371281c13ef
+{n}You hear the panic in Finnean's voice.{/n} "What... What are you doing, Commander? You can't do that to a living creature! Kill her, if you must, but... don't do that to her! No one deserves that!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0133.jbp | 5cc7f90da44008a49a56772349aca4b0
+{n}The succubus hands you an elegant piece of jewelry.{/n} "This is one of my latest creations. It has an intelligent mind of its own... It is certainly far more clever and sophisticated than many living creatures I know. The jewelry will identify the most important traits and features of its owner, and then it will enhance those abilities. It is a rare and valuable gift, and I hope you appreciate its worth. And now, I must ask you to leave. I have grown tired of your company."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0135.jbp | 3dd61fdefa55e9f428c5d4b73a69a33c
+{n}Vellexia narrows her eyes as she examines Finnean.{/n} "Do you really think I would release such poor craftsmanship into the world? Words fail me. However, I have seen work like this before. It was done by an incompetent, untalented individual who called himself Bladesmith. He showered me with compliments and asked to be my apprentice... But in truth, he just wanted to learn my secrets. Needless to say, I refused him in no uncertain terms."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0136.jbp | e3f0b327f22b2734e9fbce52b150cded
+"Well, let's see what he managed to learn on his own... It looks like he lacked the skills to copy my transformation spells, and he clearly had no idea what he was doing. This is disgustingly crude work. The soul didn't fill the shape completely, and part of it is still lost somewhere. To tell you more, I'll need to disassemble this sample."
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0137.jbp | 82ab52a731c9db24db049bb2cc6f382c
+"Don't even think about it! You demons are always looking for a reason to start dismembering people. If we were here to fight instead of talk, I'd be more than a match for you, sweetheart. You'd have a tough time taking me down!"
+
+World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0138.jbp | e10551f3bd263be41818ce66e9fe9149
+"How abominable, its mind seems flawed too! The Bladesmith should have called himself the Bungler, because that would have been more accurate. Just look at this! He was clearly incapable of selecting the right kind of soul and transforming it properly. What a waste of material!"

@@ -1,0 +1,812 @@
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Answer_0005.jbp | d9e9d8c987c17944cbe25f130163a44a
+"Crusaders never surrender. I will vanquish evil!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Answer_0006.jbp | 72bc0cec8a736514f906edddf457e0b1
+"I will drag your eyeless hide the length and breadth of Kenabres!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Answer_0007.jbp | b8e36cec759958845a0654c33167a43e
+"Now you will answer for your crimes."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Answer_0008.jbp | 9b5bd6a9a4adc1b49a46c316aa08dbad
+"Oh, now we're going to have some fun! Well, fun for me, I don't know about you."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Answer_0009.jbp | f1fd17a0ad4825c4b8c91c94bf78c929
+[Attack without speaking]
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0001.jbp | 015951e54334a51419a0f415f3f25642
+{n}The blisteringly vivid memory releases you, and you return from the depths of the past to the present. You feel a fresh breeze on your face — the energy expelled from the Wardstone has blown the roof off the Gray Garrison.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0002.jbp | 0bcc673bb9dcdd6479c9cf177934bbd6
+"What... What are you doing here? How?" {n}How did {g|Minagho}Minagho{/g} get here? She doesn't rush into the chamber — she has been here the whole time, but some unknown spell has stopped you and your enemies from seeing each other.{/n} "Ah, I see... Tricks from your pathetic goddess. Ha ha ha! So even {g|Iomedae}Iomedae{/g} will resort to dirty tricks when you have her cornered! Don't celebrate yet, mortal. There's no one to hide you from me now!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0003.jbp | ad62f364f16c1d646b94240761a6b320
+{n}The demoness looks formidable with her entourage around her, but her threats ring hollow to you now. You look at her and feel like a titan looking at an ant. Overwhelming, all-conquering power fills you. What, that little demoness? Those irritating hordes of the {g|Abyss}Abyss{/g}? The gods themselves are your only equals now.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0010.jbp | 8b9d4bbc8ac6cb74fb75a37fe28a6431
+"What are you babbling about? You can't possibly still have any hope of victory, you doomed little cockroach! Your pathetic crusades are the laughing stock of the {g|Abyss}Abyss{/g}!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0011.jbp | e9b4e3d349a29b2449218b474cb78563
+"Your goddess sent you to die. You think that's a victory? All you've done is postponed the deaths of all the other mortals... and not even for very long. But your wait for death is over! You won't see what I'm going to do to your little friends, because I'm going to kill you right now."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0012.jbp | f4fd0a6043e24034a9df8130f91b1733
+"There is only one law in this world — strength. And only one crime — weakness. Be honest, do you really think you have strength on your side?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0013.jbp | de432572f9fcfd74588a694c6f596564
+"We'll see who's having more fun when I've got my claws in you..."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0014.jbp | fcce02f181014964ba3b382e6e3c2b82
+"Trying to be brave, are we? That's nice. But never dish out threats if you can't make good on them."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0017.jbp | 8e88ceb9527b3b34cb467345ca734480
+{n}Wenduag grins, baring her teeth.{/n} "You're right, strength is all that matters. Now let's see who has got more of it..."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0020.jbp | 014afe9d476f81b4d995f30442ac3252
+"In Iomedae's name, we will cast you back into the Abyss!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0023.jbp | 0ade4680ca4ce164787dfe6729ce3198
+"Demons laugh a lot... But is it because they're happy? Truth is, I think you're very sad. And you laugh to forget about your sadness."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0024.jbp | 61f0eb067dac3754191a289f12aae239
+"I knew a woman who thought the same thing..." {n}Lann scowls.{/n} "It never led her to anything good."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0027.jbp | de79b5f82ff15db4da9c20dbb285079c
+{n}Camellia's eyes widen incrementally, but she purses her lips in disgust.{/n} "You say such disgusting things. Even imagining them repulses me!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0030.jbp | ec71fde2900d45149bea72f92ea9f485
+"Demons love having fun at others' expense. It would be only fair if we had a little fun at yours!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0032.jbp | 49201abd20b4cc7409d2a92265aab5af
+{n}The Wardstone's energy suffuses you — and through you flows into your allies.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0033.jbp | 84f10e48970ce6d418f2d911bd182990
+"What's that? What's happening to me?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0034.jbp | eb223c70da0734448a56d9e1484ee053
+"Oh, what is it? It tickles!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0035.jbp | 48b313750f5df2c4b8771f8e330b582c
+"All my aches and pains... For the first time ever, they're gone..."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0036.jbp | c76c82190113545499d9f2b6b8c66998
+"What is happening... Help us, Iomedae!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0037.jbp | a04b6823c9c13964f95d35107ff741aa
+"What an odd sensation... I've had my fair share of perception-altering experiences, but this is a novel one!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0038.jbp | ee8e0eaa62bacb541a8e7b99f8e55eaa
+"Woah — what the — ah!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0039.jbp | 1bf0e63e306a4f642887004ba0b7ff56
+"I feel the power... Yes! I feel it!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0041.jbp | 58e822058c8457845a48aed6eb84561a
+"What curious sensations. I feel myself being inflated with power, like a balloon. Oh, how unscientific of me. I must investigate this phenomenon further."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0042.jbp | 4c0a4aed07619ed44ba9c045592036d3
+"Look, you're already wounded! Pathetic mortal, I'll have no trouble finishing you off now!" {n}Looking down, you notice that the wound on your chest has opened up again and is bleeding as if you were hit by a sword. But... there is no pain! All you feel is power filling you. Right before your eyes, the edges of the wound start to join and heal until it closes fully. Minagho's face twists in frustration.{/n} "You'll die anyway!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_0043.jbp | 80f0af9f5e5fc7e43b9975b279a41de7
+"I've never wondered if demons feel pain the same way mortals do. This would be an occasion to find out. I shall be delighted to observe this execution". {n}Daeran grins cruelly.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_2.jbp | e8da0b8dcc9e4c28883a307579c44a2e
+"The room's spinning, but I haven't had a drop of ale... Oh, this is going to be fun!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Awakening/Cue_3.jbp | 5e920ce7c0de4c82aa67d657c008e0c6
+"Too much tongue-wagging and not enough fighting. Come on, show us what you're made of!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Answer_0006.jbp | 64080946dbb8ca5498d11c9e2e593e07
+"Staunton, don't do this!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Answer_0007.jbp | 0e2c017aeb96a4842976d98685146165
+"Minagho! Let him go!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Answer_0008.jbp | fa25fcb400be53544996d6229a8c6f0c
+"The crusaders were right. You're a traitor, you were always a traitor!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Answer_0013.jbp | 244ac17bd8eadd34aa5593dd19cff98a
+"What did she promise you for your betrayal — Drezen? You must know that's a lie?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Answer_0015.jbp | 2de89c99b23b35c4297c84bae4457a5b
+"She doesn't love you. Demons don't know how to love."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Answer_0016.jbp | 7aa48a8eb4f5f4b43abf2f2d6a78fa8e
+"If you betray us, I will get you. And I will make sure that your death is far from quick."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Answer_0019.jbp | 28b3e2f109fd10e4d8ef356e9c0d777a
+"You still have a chance to redeem yourself!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0001.jbp | 14289b6f7a6fa574098876438546ec8b
+{n}All traces of Minagho's bravado have disappeared, and now her voice trembles with panic.{/n} "How are you doing that? Where is your power coming from?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0002.jbp | 395878e20e24d9b4089d0a295da3e583
+"Minagho! To me!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0003.jbp | d98bd4b327a34734bb340d34010cd0f3
+"Staunton! My darling, I knew you'd come back for me!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0004.jbp | 78be700a33fc10348a1dfb1f8a35d252
+"Shut it. Get over here, now. Get behind me." {n}The dwarf turns his hard eyes on you.{/n} "If you want to finish her off, you'll have to step over my dead body first. Killing me won't be a challenge, I know, but I can last long enough to give her time to escape."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0009.jbp | 5a28c87eebb49b04cb18cff7b3e8d3cd
+"Don't do it? And why not?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0010.jbp | fc42442c6cadb414ba75451cc1fbc6ff
+"Let him go? But I haven't done anything. He came to me on his own, of his own free will... Because he still loves me! Isn't that right, my love?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0011.jbp | 3894705aa79d1484084d8f9a5968162f
+"Maybe you're right. But you won't change your mind either way — so why waste my time trying to convince you? No matter what he does, no matter what he says, Staunton Vhane will always be considered a traitor. Well then, Staunton Vhane will finally be the traitor you've always wanted."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0014.jbp | 420dfcc23a95fec4e8a6ff1489b7d736
+"She's already given me a lot more than all you crusaders ever did. Compassion. Understanding. Kind words. So what if it's a lie? I want to believe her lies. I've had it up to here with yours! Your lies about forgiveness and redemption!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0017.jbp | 06de4af313a7ac044b0b334ba21d8276
+"You think I don't know that demons cannot love? You think this is news to me?" {n}Staunton's faces twists into a sickened grin.{/n} "I know that lying wench can't truly love me. But what of it? Maybe I love her anyway. No matter what. And if I don't... What's it got to do with you?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0018.jbp | 6841a7b5d9b31c142b56849a1cfa1bae
+"My death has already dragged on for seventy years. Do you really think a little more torture will frighten me?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0020.jbp | 5ec943648de192c42aa66955569df7ba
+"Shut up!" {n}Staunton clenches his fists.{/n} "I've been listening to fairy tales about redemption for seventy years! Enough! Not another word!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0022.jbp | 25aec1d0dd8d73848ae4eccf9f26f2af
+"No, my sweet, I won't abandon you. We'll leave this place together. And we'll go where we can be happy!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0023.jbp | 98b2d6562ae841041898664790e10628
+{n}After a moment, Staunton grits out the answer, as though every word emerging from his mouth causes him pain.{/n} "Yes. I'm here of my own free will."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0024.jbp | 1e722de2f0a3b884aaa38eff3ba5be24
+"Go. Let me finally..." {n}Staunton clenches his teeth, swallowing the rest of his words. Panting, he looks between Minagho and you, and back again. At last, the dwarf nods.{/n} "Damn it all! Let's go!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0026.jbp | da42e55d81eca7c4ea53b75675994055
+{n}The demon and the traitor vanish in a magical haze. You feel the energy thrumming through your body and soul start to fade. It doesn't leave you, it hides somewhere deep down, leaving behind a small amount of incredible energy — as well as the understanding that you will one day master that inconceivably huge power.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0029.jbp | 8e6d6084dfc080544929d82aa9837559
+"Ha, a tale as old as time! A war hero, man of honor, steadfast and faithful. Throws his whole life on the dung heap for a coquette who breaks his heart. He curses her name. He drinks. He is stoic in his agony. He tries to forget. But then she crooks her finger and — just like that — he goes running back to her, throwing away all that remains of his sad life for a second time."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0030.jbp | debb6a0eb93028c4692a524851135f9b
+"Shut your mouth, you pampered popinjay. What do you know about love? What do you know about suffering?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0032.jbp | 91054078d218cbc4eab03dffbf8cb65c
+"A great deal, or almost nothing at all, depending on your definition of the words. But I'm an expert on broken-hearted lovers who were singly devoted to their one paramour... Why, I've had three just like that... or was it four? I can't quite recall."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0035.jbp | 7faa36bf967f39c44b968e66b14c0bd0
+"Staunton, it's the truth! The crusaders of Kenabres have treated you like dirt, but we would never do that to you. We are your friends."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0038.jbp | a4ab4f980343e484bae38d716d8b878c
+"You're hurting yourself. Just so she can hurt you even worse later. And all so that you can feel hurt until the day you die." {n}Ember sighs.{/n} "You're awfully silly."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0039.jbp | ca444b40d25e6d4459a61fe00316c0f5
+"I know, girl. But it's too late for me to learn any different. When I die, pour one out for the old fool."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0042.jbp | da1e58deb3a3f0043a261b5859a07b2d
+"People are always calling me a monster and a freak. Tell me, how come I've never once considered listening to them and becoming the terrible thing everyone claims I am?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0043.jbp | e680d0a6587d16d408041b5f15cb8d74
+"You might have a point, if you'd been hearing those things every day for seventy years straight."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0044.jbp | 90844400849a2f64d9f4929fa283c91a
+"Seventy years! Woah! At least I won't live long enough to suffer through anything like that. Lucky me, I suppose!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0047.jbp | 678a327c6b4c39e48ade4fb04f5b2e9b
+{n}Wenduag smirks.{/n} "What was it you said? One of the sweetest spoils of war is gloating over your broken and humiliated enemy? Oh, yes. You were so right."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_2.jbp | 33d22c9b429441d48e1139ae8dad6713
+"It's like one o' those hair-raising tales about what happens to folks who carry on with fey." {n}Ulbrig frowns.{/n} "I've heard it said that the cure for fey love spells is a garlic flower picked at the equinox. If I had some on me now, maybe I could help the old clodpole."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0007.jbp | 6e1354264e2fe964796cc14463ca1b1f
+"Don't listen to her, Staunton! She lied to you before, and she's lying to you now!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0008.jbp | 19b908c40c18b4442a254eec6e05bb6f
+"The demon and the traitor. You both deserve to die!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0009.jbp | b5b204908645d104f8b08dd1c7c990dd
+[Do not interfere]
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0016.jbp | 5c6a3d13e26afc344a048fd8223e0bba
+"You'll make a great couple — the eyeless queen and the brainless king!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0017.jbp | 868728afedb440d49aa58af9af7c3225
+"What are you hoping for, demon? Staunton is loyal to the crusader cause. He won't succumb to your lies!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0031.jbp | 8e3afce06e784b84993270ab2276ccff
+"If love is like a shipwreck, which part do you play? The rocks — or the ship that gets dashed against them?"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0032.jbp | af60c3b0c93188f49bce54f969bde556
+[Say nothing]
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Answer_0034.jbp | d0a686f45b44dfc45b241fd087bd3d3c
+"You know little about love, Daeran. Love brings happiness and affection, not destruction".
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0001.jbp | 52f7a86a9a2a6f842884306bcf9009d5
+{n}{g|Stonton}Staunton{/g} lies on the floor, wounded and glaring at {g|Minagho}Minagho{/g} with loathing as she leans over him. Struggling to speak through his cut lips, the dwarf rasps:{/n} "Why did you drag me here, you wench? To mock me one last time? Go on, finish me. Drink my blood, devour my soul — just get on with it, let me die at last."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0002.jbp | a3ad480af627c0a4c9b692baa2d6dc58
+"Staunton, light of my life, don't be so silly! I could never hurt you!" {n}The {g|lilithu}lilitu{/g} caresses his face, and the soft glow of a healing spell closes his wounds.{/n} "I brought you away from the battle to save you. My love, you don't belong in this grubby city where everyone hates you. Come away with me! You know I have always loved you!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0003.jbp | 7bac22da3c035d34a9d1ac531186a4de
+"You lying filth, you have the gall to say that to my face? When it was you, it was all you... You're the reason I lost everything. You're the reason why everyone despises me."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0004.jbp | 865799c1439ed17408f7464eaa760e37
+"So it was me who brought shame upon you in front of the people you called friends? It was me who mocked you year after year, spat on you, forced you to do dirty, demeaning work like you were a drudge, and not the bravest of knights? No, it was all of them, the crusaders, and their witless {g|Galfrey}queen{/g}. If you remember, the day {g|Drezen}Drezen{/g} fell, I asked you to be its new ruler. You refused, of course, you and your principles... But look what's become of you!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0005.jbp | 0f7ae26425a5ff04cb9f8f665ffff10e
+"My offer still stands. Come away from here, my love! You will rule {g|Drezen}Drezen{/g} as a king, and I will be your queen!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0010.jbp | 24a77b9470e681e47bb769cddfeab145
+"Listen to this — the deceitful {g|Galfrey}queen's{/g} servant has the gall to call me a liar. You know the truth, my sweet — I am the only one who has never lied to you!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0011.jbp | 53c414beaae34b7469292b979efbc01b
+"See? You're willing to give your life for these ungrateful swine, and they dare call you a traitor. They all despise you, I'm the only one who loves you!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0012.jbp | 3dff71fd14353974f8d00a4c50eae3c4
+{n}Staunton gets to his feet and looks at the eyeless lilitu with a strange expression on his face. A mountain would sooner weep than this grim dwarf, but tears now well in his eyes.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0013.jbp | 52b61f9a231f72844b0be412dd7ccde9
+"Dearest, it's all right. I'm here. We'll never be parted again. Let's go. Come!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0014.jbp | 416f647912d83d247ace3c40d1ac6c35
+"Get back!" {n}Grasping his weapon, Staunton slashes at Minagho's eyeless face and, with surprising agility for one of his stature, flees up the stairs.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0015.jbp | a78b5fdd6e0f25847ae57b86f20aee13
+"Curses!" {n}The lilitu runs a hand over her face, staining her delicate fingers with blood.{/n} "Stubborn as a mule... Never mind, my pet, never mind. You won't get far. You will kiss this scratch and beg for forgiveness. You will be mine — wholly, eternally, and willingly."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0018.jbp | a3e1e4393e8dc3541b4210baae6150ba
+"There's no bigger lie in all of Golarion than your beloved crusades! It's a century-old delusion encouraged by your disgraced queen. The only thing that is true... is my love for you, my darling!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0019.jbp | 1096abad34896724cb188846a2adcb22
+"See? Your life is one big joke to these ungrateful swine. They'll mock you either way: whether you're miserable and alone, or happy with me."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0021.jbp | f4ac61879aa78ca4794d53a4cd3722de
+"They talk about love... But they are really talking about a terrible disaster. Like an earthquake, or a hurricane, or a shipwreck."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0023.jbp | 0a9c493e3451baa42b3c573fb627708c
+"Perhaps there is another kind of love. But in my experience of love, if it doesn't feel like you've been through a shipwreck, then it's not worthy of the name."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0024.jbp | b6715869d317d9344965c5cbca3ac1dc
+"I'm sorry to say that there is truth in the demon's words. The crusaders really have treated him terribly. I say this as a criminal who has been forgiven by other knights of Iomedae. But like all demons, she has built a mountain of lies and deception upon this one grain of truth!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0025.jbp | e4ad72917c717974094df4f42f9e455e
+"Don't overcomplicate things. Truth, lies... This dwarf is a spineless worm. He prostrates himself before those who wipe their boots on him — and not because he hopes for better treatment, but because he enjoys debasing himself. If he really had to choose a side — the crusaders or the demons — he would choose whoever had caused him the most pain!"
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0028.jbp | 8b2cc7a4b5e35a9499472ecd3d3e48af
+"I can picture your idea of happiness quite vividly. Staunton in chains while you extract his innards, one by one." {n}Camellia wets her dried lips.{/n} "I suppose all your relationships end that way."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0029.jbp | 3a049037bcb23124382e18a9f66232a8
+"I've heard people laugh at their own troubles — and their troubles went away. I've heard people laugh at the troubles of others — and it made them so much worse. Please, don't laugh at the girl with no eyes. It makes her very, very sad."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0033.jbp | 933c764c4326657479b9500326945310
+"I sense the trap in your question. I take it you cast me in the role of the ship? You think I am doomed to be dashed against the rocks... And who will play the lucky rocks, I wonder?" {n}Daeran looks straight at you.{/n} "But to answer your question, I see myself as the wind. All this drama is beneath me."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0035.jbp | 7eda18356ace44248a4c03e9d495ad6c
+"Yes, yes, of course, affection, happiness, shared understanding, and dove-like glances into one other's eyes. And then they lived happily ever after! I see you're one of those people who believe in fairy tales." {n}Daeran smirks, but his expression is almost sad.{/n} "Wonderful, entrancing fairy tales that have nothing in common with reality. Staunton is a fine example of love in the real world."
+
+World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_seduces_Staunton/Cue_0036.jbp | ed6f6da003410c249b31ff61a615f6d8
+{n}An odd, pensive look appears in Daeran's eyes.{/n} "What a pathetic scene. Look what love has reduced him to! Then again, love is always a calamity of some kind. A shipwreck."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Answer_0006.jbp | d4548b407061aaa4bb64d89e5a29ca4d
+"Staunton, do you know this demon?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Answer_0007.jbp | c1a79ec1cf10f11419850b563107ae20
+"Hey, demon woman! What's wrong with your face?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Answer_0009.jbp | 55ce3c0a08f9b994fa86c205383cf408
+"Out of the way, beast!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0001.jbp | 64a6bc907e22cb94b8d5e3b6bb2dee65
+"What's this? Do we have guests?" {n}The face of this demoness could be called pretty, if it had eyes. Her mouth slowly widens into a smug grin.{/n} "Just in time. The place is a bit of a mess, and I haven't even poured the blood into the goblets yet. Why don't you... Oh!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0002.jbp | a9e1c7499f4ff2e47a21c88fcac9fa2f
+{n}The demon's mouth drops open in surprise, and she brings her manicured hand up to cover it.{/n} "What an unexpected surprise! Staunton, my little sweetheart, long time no see. I've missed you so much... Have you missed me? Admit it — you missed me terribly!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0003.jbp | 231c33112ae34174788eb6d4e7725614
+{n}The aged dwarf from Irabeth's troop, silent up to now, spits on the floor. His hardened, craggy face, like storm-weathered stone, twists as if in pain.{/n} "Minagho. You again, you wench."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0004.jbp | 4e5938dc5377f674faa6490a13f1c9bd
+"That wench..." {n}The dwarf's voice rasps like rusted metal.{/n} "She's the one who led me astray. She's the reason my life has gone to the Abyss. She's the reason... why {g|Drezen}Drezen{/g} fell."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0010.jbp | c8f4a60aff95e4e418b22575bddf8eb5
+"Does he know me? Staunton, darling, tell them all how close we were!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0011.jbp | 7eb859ea821a7c540bad5eefeef25f6c
+"Hmph, how rude! You're one to talk, mortal, with a face that even a mother would loathe! Staunton, sweetie, you're not going to let your friends speak to me like that, are you?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0013.jbp | 3bd9a4263d8064b49a9d1eec365807b9
+"That's not very nice... Staunton, my pet, haven't you told your new friends about me?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0015.jbp | e03407b364b5e664883dda34f574d95c
+"Oh my, like butter wouldn't melt!" {n}Minagho threatens Staunton with a dainty clawed finger.{/n} "What I remember is how eagerly you would run to our trysts. How you begged to see me again. How you promised you'd do anything I asked — by your own free will you said this! And now you claim that {g|Drezen}Drezen{/g} fell because of me? No, no, my dear, that was entirely your own doing!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0016.jbp | e2a4a66bb99cc474ab7682fe9e26f308
+"I'll beat your lying lips into your filthy throat!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0017.jbp | 007a2e01dcea84b49bfd547927043db5
+"Now, Staunton, don't say things like that! Not about these lips, the ones you kissed so sweetly...? Staunton, dearest, don't you love me anymore? Remember how good we were together. I was so hoping that we could patch things up..."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0018.jbp | 80693ea57993d07409e3be2e6befbf65
+"I'll kill you!!!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0019.jbp | d25642904519934498ad096797f7dfb5
+"{g|Minagho}Minagho{/g}? The one who..." {n}The half-orc is too well-bred to spit on the floor, but the name sounds like a slur on her tongue.{/n} "Be careful, she's one of the deadliest creatures in the whole demon horde. She was once responsible for a massacre in {g|Kenabres}Kenabres{/g}... She must be back to finish what she started!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Answer_0004.jbp | 16eb3b0090c05a946a813fcde58af409
+"Your evil spells won't stop a righteous army!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Answer_0006.jbp | 614cac465aea6a041883f1d159c753f9
+"You will pay for this, demon scum! You will pay dearly!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Answer_0008.jbp | c810168c4d8a8154aa8ea9e3c5a3bc55
+"You won't break us. We will never give up!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Answer_0024.jbp | 6132f53ccdff28f468a6406ffde81b9c
+"You will regret that. I swear in the name of Calistria, I will have my revenge!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0001.jbp | 15d76c39bc985cd4eab3e219fc364ae0
+"That's it, I'm tired of playing around now." {n}Irritation seeps into Minagho's voice.{/n} "You want to know what will happen when I'm done with the {g|wardstone}Wardstone{/g}? Here's a little demonstration!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0002.jbp | 7abec2ad3309e6241a77216ee24925b6
+{n}The demoness whispers a spell and a wave of darkness sweeps through the chamber. Your companions wince in pain, but it is nothing compared to what you feel: thousands of voices once again burst into your mind, drowning you in their moans, screams, and sobs. Pain rocks through your skull.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0009.jbp | 77bff3a9f31f4cf489de1a02d1440baa
+"Yes, yes, keep telling yourself that!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0011.jbp | 5a5437bde1f24274b83d0a9554b67a83
+"Ha ha ha! Powerless rage — I love it! Threaten me more!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0012.jbp | 1ccbf80dc10f46641a3246ae9a5b1f15
+"It would be a shame if you died without ever surrendering. But, honestly, I'll be satisfied no matter what way you die!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0013.jbp | a847cadcfaaa3b943ae2b3082b64f6f3
+{n}The roar of voices blends into an unbearable wall of screaming. Your vision goes dark.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0020.jbp | 5fbde280cfbc2c74aaa08826d76923a4
+"Iomedae is with us!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0021.jbp | ccaf64222e8f9c04dbce547b2fbc1175
+"We will never give up," {n}Lann echoes, like a mantra.{/n} "We will not break. We will not run..."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0022.jbp | 66c0dbafdbb755b4f870aaad7e2a92a1
+"I will dig out holes where your eyes should be, and pour hot coals in them!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_LightsOut/Cue_0023.jbp | f63d0f503a837274894ee189c6032457
+"How... inventive."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Answer_0006.jbp | d800b75b09b453640ab412bc24eae2b9
+"Who are you?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Answer_0007.jbp | 9b5d7350659ed61499771f1fd376a584
+"What are you doing to the stone?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Answer_0015.jbp | ca41dfe7716bbf64fb6019d42126b130
+[Reveal the Light of Heaven] "Your victory celebrations are a little premature, demon."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Answer_0016.jbp | 15a30bb366ed1f4438a8e76953d2fbf4
+[Attack] "We will stop you, demon! Attack!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Answer_0027.jbp | 108a56b9caecff946ad45c76844098aa
+"Don't listen to her, the fiend wants us to lose all hope. She won't succeed."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Answer_0031.jbp | edd932619b05f654bb60df06a64c9342
+"Shut your filthy mouth, scum!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Answer_0047.jbp | e47f5cbd61b063944adc985c6d984a24
+[Succumb to the rage]
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0001.jbp | 3366bebb89eda3146807ff1da718f1e8
+{n}As soon as you step into the chamber, your vision seems to darken and your knees buckle — you struggle to keep your balance. The air in here is laden with the power coming from the stone. Suddenly, your head is filled with voices — screaming, whispering, cackling, threatening, voices pleading for help, shrieking curses and taunts... You blink, and the illusion passes.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0002.jbp | d07a60f7d55417042be13add3561f7ef
+{n}A demon with a mocking smile stands beside the Wardstone.{/n} "Congratulations. You made it all the way here. This is it, your precious {g|wardstone}Wardstone{/g}. But what are you planning to do now, hm? I could kill you where you stand... But wouldn't it be nice if you could die in battle, like heroes? No. I want you to die in despair, scrabbling around like rats in the blighted ruins of your city — blind and broken, your flesh scabbed and seeping, and every moment knowing precisely what was done to you!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0004.jbp | 32eff3573e6feb843994a0040ed9d150
+"So, you have a choice... Especially you, my pet!" {n}The demon blows Staunton a kiss and then holds out her leg, which ends in a cloven hoof instead of a foot.{/n} "Kiss me on my dainty hoof, pledge your loyalty to {g|Baphomet}Baphomet{/g} — and when the world falls, its ruins shall be yours!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0008.jbp | a782b8780917597458f7a2f4b7ae8259
+"You've already forgotten me? You mortals have awfully short memories, even shorter than your little lives... Staunton, sweetums, don't you want to introduce me to your friends properly? No? Well, I'd better do it myself. I am {g|Minagho}Minagho{/g}, {g|lilithu}lilitu{/g} and faithful servant of {g|Baphomet}Baphomet{/g}, and leader of his armies. This city is mine now. I'm just starting to settle in, get things just how I like them... But once I'm finished, I promise you the results will be simply to die for."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0009.jbp | 41ebf666a9c59ea4ea0b501ce1539b49
+"Well quite, what am I doing to it?" {n}The demon brings her clawed finger coquettishly to her lips.{/n} "Probably the same thing I did to many of your comrades — sweetly and tenderly persuading it to abandon the mortals and join our side!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0010.jbp | 9a1292a4ee16f1544a00678375ddb5e8
+"Prepare to fight to the death, demon — we won't let that happen!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0012.jbp | 19bba769d7205b04480383067602207b
+{n}You feel a sudden rush of wild rage, and with it comes a feeling of monstrous, unbridled destructive power. It is like the power you felt in the Shield Maze, when you were confronting {g|Savamelekh}Savamelekh{/g}, but now it feels more fully fledged, more conscious.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0013.jbp | 67af38a61eb58464e8c335225d5eaeba
+{n}You feel righteous fury swell within you. How dare this demon besmirch the ground of this beautiful world with her hooves, a world created by the gods and cultivated by mortals? And these cultists — how dare they betray all that is sacred in this world and join the forces of the foulest evil? Can they repent and redeem themselves, or have they followed the path of evil past the point of no return? The Wardstone seems to sense your thoughts: the chamber grows slightly brighter.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0018.jbp | 5708fc697b2d34743ad21191c8e69365
+{n}The cultists glance at each other, hesitating. At last, the man who was first to speak up against Minagho rips {g|Baphomet}Baphomet's{/g} unholy symbol from his chest and casts it to the floor.{/n} "I'm done with this shit! I only followed this hoofed menace because I thought the crusaders had had it, and there was no other way to protect my family. But now I see that there is hope. I won't bow before these heinous idols ever again! If they kill me — at least I'll die a decent death."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0019.jbp | 43160909dc82cb541b76d654ce71fa81
+{n}A tattoo-covered cultist reaches for his weapon.{/n} "Turncoat! I'll cut out your heart!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0020.jbp | 51753dc49f0adec4e8704aa6a622aeb7
+"We'll see how tough you really are!" {n}An elf with a face deformed by acid burns throws her unholy symbol at him.{/n} "We let you frighten us once, but it won't happen again!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0022.jbp | 9764a79a2f7ad404db9556fef5b701a0
+{n}You send the troublesome dwarf sprawling to the floor with an elbow to the face. The time for chatter has passed! The demon... That wench. She must die! The rage bursts free. You want only one thing — to rip Minagho's horns from her skull and shove them down her throat!{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0023.jbp | 8324aaaafc557d34386fff05f9301881
+{n}Who does this dwarf think he is? How dare he give you orders? You will silence him — for good! The rage bursts free. You want only one thing — to gouge out Staunton's eyes, break open his ribcage, and rip out his heart!{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0024.jbp | 3fd4c70341aa99f4a85344b15b59ef06
+{n}Hearing the roar, Staunton shoots you a wary look.{/n} "Hey, are you all right? If you're planning on going berserk, don't forget who's friend and who's foe. There she is — the demon. Go get her!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0025.jbp | 3dd3538f3cdcc1b468f82f22f012f12f
+{n}Echoing the holy flame erupting from your hand, the light also gets brighter and brighter until it floods the chamber. You hear the voices again — stronger now, they repeat your words like a choir of angels.{/n}
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0026.jbp | 018753653e82c144d9a2ccbde4b31428
+{n}The demon giggles, but you hear a note of astonishment in her laughter. A man standing among the cultists turns to her:{/n} "Hey, no-eyes, didn't you tell us that {g|Heaven}Heaven{/g} had turned its back on us, and no one would come to our aid?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0030.jbp | 18d22dfe1a9d6f14fae934a774513dd7
+"There isn't a soul that can resist the temptations of the {g|Abyss}Abyss{/g}. Even a stone can be turned. I'm not joking — your precious {g|wardstone}Wardstone{/g}, weakened from the injury inflicted by {g|Deskari}Deskari{/g}, has almost succumbed to my charms. Soon the whole barrier around the Worldwound, the gift of your useless {g|Iomedae}goddess{/g}, will be a weapon of the Abyss. Just a little more, and... boom!" {n}Minagho's laugh rings through the chamber.{/n} "Every city with one of these eyesores stuck in the middle of it, from Kenabres to Nerosyan, will turn into smoking craters, and all the mortals into red sludge beneath our hooves!"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0032.jbp | 59176c41a7b0f8a4990d4e2ebdb1dd96
+"Make me." {n}The demon's face breaks into a saccharine smile.{/n} "One of the sweetest spoils of war is gloating over your broken and humiliated enemy. You want to deny me that pleasure?"
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0035.jbp | fd9daf52b4564a54ba7f713dd185bb5a
+"Sounds terrifying... Except that's how we've been living for generations."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0036.jbp | ee2a704ed7790df4db14d064eadf7f24
+"I will remember these words, scum. And I will say them back to you."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0041.jbp | 8611b65d0c63d3341bf11174cf0b8acd
+"Yes! Return to our side, friends! Have courage! We will welcome you back. And Heaven never abandoned you, no matter what this deceiver told you."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0044.jbp | aee2114fde14cb247847054d2af56c56
+"And it was such a charming little place until you sullied it with your presence. It had such lovely boulevards, quiet and shaded... You took those away from me, and I shan't forgive you for that."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0045.jbp | a7a5bb447daa1c249b93a8bbe61be39b
+"They have done much worse things than spoil the promenades. All the people they've killed..."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0046.jbp | e88143c430393bc4ebafe71fbefebe53
+"Yes, yes, of course. You're right. I grieve for the common folk as well."
+
+World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_Second/Cue_0048.jbp | aff650beac4d25c44bf825cea9f8dbce
+{n}You're sick of talking. Why do you have to listen to her? Why can't you just crush... rip... DEVOUR... whoever you want? Whoever's in your way! A malevolent roar erupts unbidden from your throat.{/n}
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Answer_0003.jbp | f8c022f9197b15646b72b01cdbad5c49
+"Let's talk. Even a demon deserves the chance to be heard."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Answer_0004.jbp | 9fb122d392ebbb249bbc227e3b012788
+"Give me a reason not to kill you right here on the spot."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Answer_0006.jbp | f103f780693761443848e48b1595da15
+[Attack] "I'm tired of you too. Die!"
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Answer_0007.jbp | 4d1daba9f1d441646865a773767b428a
+[Let Minagho go] "I trust you will never dare to stand in my way again. Go."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Answer_0012.jbp | 459b67895f10e344f90b0604894587c3
+"Less of the theatrics, darling. Am I supposed to feel sorry for you because you can't hurt any more crusaders?"
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Answer_0014.jbp | 64062db75ecd9a449a156da523365e87
+"Tell me where the rift leads."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Answer_0015.jbp | 64b2c8689df8c3e449aacef7492aba5f
+[Attack] "I've made my decision — you won't escape me again. Your path ends here."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0001.jbp | b383bf726fdb1af4ebd3e632ad8db323
+{n}Minagho is kneeling, her hands clasped in front of her. Blood from the mark carved on her forehead drips down her eyeless face, but the demon doesn't seem to care.{/n} "I'm so tired of you, {name}. I can't do it anymore. I can't run or fight, nothing. I've hunted the paladins of the good gods for centuries. You could make a burial mound out of the tin heads of all the idiots I've killed or tricked! But you — you're nothing like them. You never do what others expect, and you always appear where you're not supposed to be."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0005.jbp | 2671d7e6d38e01a4cabbd0509b4cd9b7
+{n}Minagho licks her lips nervously, her fleshy tongue resembling a crimson slug.{/n} "I can be useful to you! I'll tell you what I know... about anything you want... I..."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0010.jbp | c25c59774b0d6c34986560be0401f270
+"I hate you!" {n}With an angry, desperate hiss, the demon prepares to fight.{/n}
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0011.jbp | 4a51d27cc7d4d114dbf9c49bf79e0e0c
+"Every stone wall has a weak spot, a place where, if you strike it, the whole structure will come tumbling down. Staunton was that weak spot for the first crusades — I struck it and won Drezen almost single-handedly. But your crusade is not a wall, it's a tangle of disconnected roots and branches. I don't know how to fight you. I can't even undermine the discipline of your followers, because they've never even heard of discipline!"
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0013.jbp | f30fc320424bfed43af0a5fede802258
+"Never lower your guard, especially in places that seem safe. If something looks like a tightly closed door, it is guaranteed to open and let out your worst nightmare. It's best if you set a trap at the threshold beforehand."
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0020.jbp | 27d7f36cc1f12684a8eee36ef948ae09
+{n}Barely letting you finish, the demon dashes to the veil of purple flame. But she lingers at the rift. Turning, she shoots you a 'tender' smile.{/n} "Until we meet again, my sweet and merciful friend!"
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0022.jbp | a744142ca73a6f944b29ac82dddbc87b
+"To the Nexus — a hub of portals in the Midnight Isles. It's the most convenient place for transferring cargo and troops." {n}Despair seeps into Minagho's voice.{/n} "What a tactful reminder that freedom is just a step away! But what kind of freedom would it be? It won't rid me of Baphomet's brand!" {n}The lilitu quickly dashes away the blood from the mark on her forehead, leaving broad scarlet streaks on her smooth skin.{/n}
+
+World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0027.jbp | 34c43055d77be404f906997c93be06aa
+{n}The demon stands up and stumbles to the rift. But at the wall of purple flame she turns around, like she's come to a decision.{/n} "Something tells me you won't stop once you've razed the fane. So here is my advice to you: if you decide to follow your enemies into the Abyss — leave your scruples behind, and trust no one."
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Answer_0007.jbp | bce00b59f19f31743b5f58b8c7ced9de
+"What are you doing here?"
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Answer_0008.jbp | 6359a0b1363a2634a9f2f393c56a84ca
+"Decided to try a new profession? What's the going rate for your services?"
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Answer_0009.jbp | c4773c470d2695244bdab4a579b37f99
+"You won't get away this time. Prepare to die."
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0001.jbp | 614f3a5cd56a0f445b5252d40ab9ceb3
+{n}The brothel is hot and noisy. A thick haze of incense hangs in the air, masking the pungent odors of inhuman bodies. You are surrounded by strange, unfamiliar creatures... However, you're already acquainted with at least one of those present.{/n}
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0003.jbp | 42de94de3b07a6d49af7648b6dab09a1
+{n}Minagho walks toward you. She is clearly agitated about something and is so consumed by her own thoughts that she does not even notice your presence until you are nearly face to face.{/n}
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0004.jbp | cddcbcaa000b2e044ad3ccc6b1cdbfa8
+{n}A figure walks rapidly through the brothel in your direction. She isn't watching where she's going, and as she stumbles into you, you realize it's none other than Minagho herself.{/n}
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0005.jbp | a6fb09d328fce014085933b3dd74379f
+"You!" {n}The demon's voice is a mixture of fear and anger.{/n}
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0010.jbp | f4b7989b29cef3e469d5786d846feb84
+"None of your damn business!"
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0011.jbp | 4ac1a2aad5340864abd03924968f2d90
+"Are you seriously trying to insult me by implying I work at a brothel? Pff! Mortals!"
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0012.jbp | 3156663d96b7bb24dad6f8080cdccec7
+"Don't try anything. The brothel is considered peaceful territory. Those who can't control themselves will be given a clear reminder of how to do so... But we will meet again. Of that, you can be certain. The day will come when I get my revenge."
+
+World/Dialogs/c3/Mythic_Demon/Alushinyrra/Minagho/Cue_0013.jbp | 7d69854b23344424f88234f8727f96db
+"You're always getting in my way. Since you're mortal, why don't you drop dead already?" {n}Minagho scoffs angrily, and hurries off, clearly eager to have the last word.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0005.jbp | 202118febd9f9c647924a045b7f0c4c1
+"Precisely. Shall we play another round? Run, Minagho, run. Let's see how far you can get!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0011.jbp | 66429ecfe3ded1b4b84b7a7000c83d1c
+[Attack] "The game is over. Now you will die."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0026.jbp | 309edad62e592444daebe273a12939ec
+[Let Minagho go] "Get out of my sight!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0027.jbp | 389362a1dab534644915e78504024bbb
+[Attack Minagho] "You won't run from me anymore."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0031.jbp | 12122ecd7553b3548a0439fb44823be7
+"I let you go last time. Why did you send an assassin after me?"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0042.jbp | d45b879d4582a7b4781d3a755da1dcab
+"I can see the luminescence of your soul. You have violated the laws of the Abyss. Admit your transgressions!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Answer_0049.jbp | 7f960f8af1860854ca1cf9e37e5831bd
+"Yaniel, she is yours. Deal with her as you see fit."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0002.jbp | 9b83241925fa0d3438fa1ce5008b9335
+"What are you?!" {n}the demoness shrieks, backing away from you on unsteady hooves.{/n} "I can't kill you, can't deceive you, can't escape... Not even here in the Abyss!" {n}Her voice is almost a wail now, and her eyeless face is streaked with red tears that run from Baphomet's mark.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0003.jbp | 48b22a3a639581340a7ae3bb86a9a337
+"You... You..." {n}Minagho starts backing away from you on unsteady feet but suddenly bursts into hysterical laughter mingled with sobs. Her eyeless face is streaked with crimson tears streaming from Baphomet's mark.{/n} "You're toying with me, aren't you? Like a cat playing with a mouse. Like... Like I used to play with mortals!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0006.jbp | 2a515581f3fb7c94aa9e99e025908713
+"Ha... Hahaha..." {n}Laughing hysterically, barely able to stay on her feet, Minagho backs toward the exit.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0014.jbp | 78a60390d7a4bf74c912bcb91e602617
+"Fine... Fine! Kill me! At least I won't have to run from you anymore!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0028.jbp | 115f3fe08f57ef74b8e7bfc75a026d06
+"You... You will regret this... I will find... Vengeance... Deliver you to great Baphomet..." {n}Minagho backs toward the exit, mumbling incoherent threats and curses at you.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0029.jbp | 99854f97811aa0b4eac54ccd352decbc
+"I can't bear it anymore... Enough... What have I done to you? Stop chasing me!" {n}Minagho's hand reflexively reaches for the wound you gave her in the Midnight Fane. Wailing and mumbling, the demoness disappears behind the door.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0030.jbp | d1cb8997a01eb1c49a44a3158428b53e
+"I will never forgive you! Die! Die already!" {n}Minagho spits out one last curse and disappears behind the door.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0032.jbp | efd4619513c6a884ab7c0c2e7b8aefe2
+"What kind of idiot lets their enemy slip away? At first, I thought it was a clever trap, that you were somehow watching me... Then I thought you were a weakling since you turned your back. Thought I'd take advantage of it and finish you off. But you outplayed me. It was a trap after all. And I walked right into it, like a fool."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0035.jbp | 6852a221c49e0e949a7752840df8d17e
+"I spent so much time trying to figure you out. To understand the way you think, to predict your next move, to find a weak spot... And I failed time and time again. Maybe I should stop thinking and just start acting, like you always do!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0036.jbp | 55f9d42958f3914439458912baacb2b7
+{n}The demoness staggers toward the door. She lingers at the threshold, obviously trying to make a decision.{/n} "You're not going to stop, are you? You'll keep going to the bitter end. Then listen to someone who was born and raised in the Abyss — while you are here, balk at nothing and trust no one. Never lower your guard, especially in places that seem safe. If something looks like a tightly closed door, it is guaranteed to open and let out your worst nightmare. It's best if you set a trap at the threshold beforehand... Well, this is it. I've already said enough to secure myself a death sentence. Farewell."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0043.jbp | 6ff198cae9f018d4598dc78562f88270
+"I... How did you know..." {n}Minagho hisses as if in pain.{/n} "This is none of your business, Golarian scum!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0044.jbp | 6ae970a72119e8e41b83e40f7c1247c3
+{n}Staunton wheezes, furiously clutching his weapon. His eyes are lit with a burning desire to attack, and he hisses through clenched teeth,{/n} "You bitch..."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0045.jbp | 8df51beb05454d241baae53fa70eccd0
+{n}Staunton grins mockingly, and says with glee,{/n} "Suffer! Suffer, you dirty whore! I hope the pain consumes you!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0046.jbp | 2acb4728a40a55b4f9c6ab90fb91b349
+{n}Staunton glares at you with helpless fury. The ugly grimace on his dead face confirms there is nothing he wants more than to strangle the demoness.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0047.jbp | 5a56d628356d34247b9cbe270878b3a5
+"Yes! You will finally answer for my torment! I am the vengeance that hunts you from beyond the grave!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0048.jbp | 7358cb6f7c447c542a66ac35a4dd7337
+{n}Yaniel is calmly studying her former tormentor.{/n} "We owe the fall of Drezen to this twisted snake. What woe and suffering she has caused."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0050.jbp | 1a72f91b235492b4abf59da16c90e816
+"For Drezen and Staunton Vhane!" {n}The woman does not waste time thinking. She delivers a single precise and deadly blow, only then pausing to catch her breath.{/n} "Some say one must show mercy to their enemies. I say not all enemies. And not always."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0051.jbp | 040ebcec7dcb4bc448ed808a5c60e691
+"You shouldn't have done that. She does not deserve mercy."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0064.jbp | ee58894d9c344924e8ee2d1eba860c73
+"That was a mistake. You should have cut down the beast and put an end to this game of cat and mouse. It has gone on far too long."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0067.jbp | ecfa4bb4543b83b41833a4b76c7da4ec
+"Lilitu demons have a special place in my heart. I enjoy watching them die. And the memories of this creature's demise will keep me warm even on my deathbed. Farewell, Minagho!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0074.jbp | 5634806a46bd91946acd08f84b0b6ac1
+"Those two... Is it just me or is there something like genuine affection between them? I thought demon bonds were based entirely on deceit and violence. I did not imagine these monsters could experience something akin to what we feel. But when I listen to her voice now, I hear—"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0076.jbp | 6140d76e289c1444c8662f69105c6e0f
+"Listen here, priest..." {n}The demoness grinds her teeth.{/n} "Would you like me to fold my hands like a penitent and tell you what I think about you, your feelings, the relationship between the two of you, and all the little games you mortals play? I would love to, but it'd make you vomit. So do yourself a favor and shut up!"
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0077.jbp | fff75c0c53338474f821bfcef7103ac8
+"Of all the feelings demons are capable of, fear is the most human by far. Let them be afraid, and often. Let them be terrified."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0078.jbp | 8590ff656a401614582868655c274464
+"Almost all creatures in the multiverse know fear. And it is wonderful. Fear is the foothold the forces of order have in the hearts of their enemies."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0079.jbp | 76460101778b44d44b603cb7c5a74ca9
+"I know what they teach Hellknights. It's foolish. Fear makes some obedient but pushes others to acts of folly. Like this eyeless wretch."
+
+World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0080.jbp | 90a90df34ef90ee4db0cf7f605129171
+"I wouldn't expect any other words from a deserter, a blasphemer, and a coward."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0003.jbp | 7bbd0083960127649ab2c2ac0917f447
+"I am {name}, the victorious commander of the Fifth Crusade!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0004.jbp | ca07d5b4e6dd8bc4e8a42f2b153b8eaf
+"You first!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0005.jbp | 23e60c30cd52fec43b3e92ca35a5818e
+"Who are you and what do you want from me?"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0006.jbp | 9a168864c604d264382bcc653f89c309
+"I am an inscrutable enigma."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0007.jbp | e8f7df02d76520d489b040f2d7724f4e
+[Attack] "I do not have to explain anything. Die!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0015.jbp | e7f44cfcf5c9e8d44bc53ff55b33cb2c
+"Nezirrius, what are you?"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0016.jbp | c5daa0c22fc300e45b94c7c86b4a75f2
+"One shouldn't underestimate mortals. I twice defeated Minagho."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0017.jbp | f6da1aad63ea4224da6dc0d90670fc95
+"Baphomet punished Minagho. She lost her powers."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0022.jbp | a930dd042a74446438402315bc9a7255
+"How much did Minagho pay you? I'll give you more."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0023.jbp | ead107a60c7e7604a901917160245c10
+"Minagho sent you to your death. I have laid waste to armies of demons. You cannot hope to overpower me!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0028.jbp | 17642a2a3fa519943a47a9d5d6d05e6b
+"Where is Minagho hiding? Tell me right now!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0029.jbp | 97ca366669fce754ba23395f0610d359
+[Attack] "Die, monster!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0037.jbp | 13a4c70f73441774d85efa6777043361
+"We have a deal. Where is she?"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0038.jbp | aa2542096b50a6448b7003a3a0f21afa
+[Attack] "I've changed my mind. Die!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0044.jbp | 2289935e003f5664b8732f0ee61c24df
+"Deal!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0054.jbp | 020603a88d4754f448ed8d0c0ee9cc61
+"Are you a fey? Do you by any chance know a fey named Atselm?"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0056.jbp | 4a741edb436b13548a48b456398788a9
+"Since you're an assassin, you must be familiar with Yozz?"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0060.jbp | da3894ee0eaa1c449b4e434640a92729
+"A wise decision."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Answer_0061.jbp | 99277bcec2ed1b54c90b08181d125680
+[Attack] "It's too late. You're here and I'm going to kill you."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0001.jbp | be7c50f6116a2624ca1f92fec4be751a
+{n}The sounds around you fade, and the world is plunged into eerie silence. Street noise never ceases in Alushinyrra, but even it has disappeared. You are surrounded by thick and impenetrable darkness from which three pairs of shimmering eyes observe you. A sibilant whisper reaches your ears.{/n} "Explain yourself."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0003.jbp | 31ba1da79fe6484c8b0d36c3dc975235
+{n}You can taste blood in your mouth, as somewhere far away Achaekek chitters indignantly. To annul a contract just because you were offered more? Blasphemy. This creature deserves to be torn apart — slowly, piece by piece.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0008.jbp | 648b8145d338afb44802de753d14ca8c
+"I know your name. Your nature I know not."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0009.jbp | 1a5e7e83a522c7247831ca2632165fa4
+"Courageous. Brazen. Incomprehensible."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0010.jbp | 19cc6b2cdb32cef40a85af0df5c7e8e1
+"Many questions. Few answers."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0011.jbp | ae0cbe19e700d284b977bf95cd6b8772
+"I like enigmas. Enigmas are fun to solve."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0012.jbp | 7a2acbd93b8975c4ab65af9bd936d08d
+"I'd rather you die first."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0013.jbp | bd9080f3c356efb41ab47925d0ef16d6
+"I am Nezirrius. I kill." {n}The monster's whispered hiss sounds more like an icy blast of wind than human speech. It is impossible to say whether it is boasting, threatening, or simply stating a fact.{/n} "Minagho the lilitu. Purchased your death. Incomprehensible. You are a mortal. Killing you is easy. Why did she not kill you herself? Why me? A trap? An opportunity? An enigma."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0018.jbp | 878a11c75d09f6a469b73ad6e4c40612
+"There was a fey lord. There was an opulent court. There was a court executioner. The lord was generous. Gave the gift of death to many. Everything is different now. The lord is overthrown. The court is disbanded. The executioner is gone. Now I am here. Peddling death."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0020.jbp | b0571734221ae9e4399792faead3a654
+{n}You realize you are facing an ankou. These evil creatures have control over shadows and often serve powerful fey lords as executioners and assassins. It is not surprising this creature makes a living in Alushinyrra as a killer for hire now that its master is gone. And yet this ankou looks unusual even for a fey — the creature must have somehow become tied by blood to the demons during its journey through the Abyss.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0021.jbp | 8dae193325cea5e4aa454d499e578664
+{n}You have no idea what kind of creature might have served as an executioner in a fey lord's court.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0024.jbp | d91471b33d090014ab8b6a963aba75b5
+"Clearer now. Even more perplexing now. How could a mortal defeat a lilitu? Trickery? I cannot be tricked. I am here. I will kill you easily."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0025.jbp | 7b9558e8d8df4e047bf96615edb24d29
+"Now I understand. Minagho is weak. Weaker than the mortal. She bought your death. I will kill you. Then I will kill her. Free of charge. I want to kill the lilitu."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0026.jbp | 4eafb20d1c203df41aa4775fe9ccd654
+"Bargaining, I do not like. Selling death is shameful. Death is a gift from the lord. Freely given. Nobody dares to refuse. But there is no lord. No court. No gifts. No grandeur. Only bargaining. Death has become coin. Shame on me, shame on you. Let us bargain."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0030.jbp | cb88fdfb26747af4883dc3628bf03d13
+"Minagho is afraid of you. Why? Something is wrong." {n}The monster lapses into puzzled silence.{/n} "Minagho is not a lord. Just a client. The deal can be terminated. But there is a condition."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0031.jbp | aa4fe192155748444863a5f9b7058399
+"Why do you want to know? You are about to die. Your death has been paid for. Something is wrong." {n}The monster seems lost in thought for a moment.{/n} "Minagho said you were weak. If she lied, let her die as well."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0032.jbp | 668df2d0f0dee2e4094a490131ebb094
+"If you fend off death at my hand. If you give me my death. Then Minagho's death is yours by right." {n}A house in the Lower City appears in your mind. It disappears after a moment, and a dry chuckle breaks the silence.{/n} "Now you know. But this knowledge is useless. My gift to you was useless. You will die. Now."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0034.jbp | 1f49464e77f94aa42b692eb33905186d
+"A mortal is threatening me, death incarnate. Amusing. You think you will live?" {n}The monster is silent for a few moments, lost in thought.{/n} "I will make you a gift."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0035.jbp | 330d245121c4f4e45b5c9e04612981c5
+"Reputation. A cheated customer means a ruined reputation. Kill Minagho. No client — no contract — no problem."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0039.jbp | 8dce0028c1bbe6a4e81d71456d4187b1
+{n}A house in the Lower City appears in your mind.{/n} "Find her there. Come and kill her."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0040.jbp | 8c2807cc14979cb41b07de078b7345ab
+"You are eager to give death. Generous. Do mortals have lords? I think not. But you could be a lord. There is greatness in you. I will give you a gift."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0041.jbp | a7943e37e169ed343a025dd5782db0cb
+{n}The monster silently vanishes. Your ears are once again filled by the ceaseless din of Alushinyrra's streets.{/n}
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0042.jbp | dcbc28144da7268499329e18413eff76
+"Fifty thousand. This is how much your life is worth. How much Minagho paid. How much it costs to outbid her."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0048.jbp | ce5f1b356bc5519459b519c233eefdf6
+{n}The monster slowly studies your hands, face, and equipment.{/n} "Reasonable."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0049.jbp | 7f35c9f1a00e6134eadbc921a2431256
+"I kill for pleasure. Money is unimportant. I grow tired of bargaining. I will kill you now. But first I will say something else."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0055.jbp | bc548e6b87829ac4199f2c6ee5c01f3b
+"I know all three. The first is wise because she is always unhappy. The second is foolish and is paying for a great mistake. The third is good, she gives death easily. But all three are greedy and fight for money. Shameful."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0057.jbp | f77f2f9904a2dc542a695cd31c15d7b2
+"I know. I despise. Asked me to join the guild, wanted to make me a servant. Threatened me, but was foolish. He is no lord, he does not know how to instill terror. I peddle death, already shameful to me. To serve peddlers would be twice as shameful. Yozz grew offended. Sent an assassin after me. Weak. Did not last a minute. Sent another. Foolish. Could not even approach. Yozz understood. He will not send more."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0058.jbp | 6906ef8c39d65f2449ca4c409578ebe9
+"Do not want to fight. Do not want your gold. Respect the Lady in Shadow, she has her eye on you. Let the lilitu die instead. Useless lilitu."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0062.jbp | c6da29c2fb366e141953225031b99298
+"But first I must do something. Otherwise, it is shameful."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0063.jbp | 3e3d206ca77067b468a2f74ce6c2cff8
+"Bloodthirsty. Greedy. Will make you a gift."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0066.jbp | 91e99aeb54d4e714f9036363ddbf1488
+"Such a pleasure to meet a colleague! An ordinary scuffle transforms into a contest between professionals!"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0069.jbp | 6b44df01a0587274199f6efd279c96d1
+"Before us is a representative of the fey class, genus ankou. Born predators. Just look at the sharp teeth and claws, the latter of which contains traces of cold iron. It is unknown whether this is a genetic mutation or an artificial transformation during this individual's lifetime. Mister Ankou, would you be so kind as to submit one of your claws for scientific analysis?"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0071.jbp | 237fad56ad51cfd4284c9df0e5e006d9
+"A piece of friendly advice — pipe down while you're still alive."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0072.jbp | 0beacd4ca74e22c45b9f8cf298125b7c
+"No, no, let her continue. I, too, should very much like to know what ankou claws are made of."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0073.jbp | a2dbb902e27754e4ab43e4eb432eaddd
+"The claws are my property. If you want them, then buy them. The price is my death."
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_0074.jbp | 965f45d332bdd3a48a7e6927917c2504
+"Ah, consent for an autopsy, even better!" {n}She shifts her gaze to you.{/n} "What are we waiting for?"
+
+World/Dialogs/c4/Minagho_Desperation/Nezirrius/Cue_2.jbp | 3a53f8a5436841dd95f9e5e669597fdc
+{n}You can hear the contemptuous crunch of a mantis's jaw. This creature is an amateur, an upstart, he brings shame to the noble trade of hired killers.{/n}

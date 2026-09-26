@@ -1,0 +1,227 @@
+d9b1ecb9-f490-4e13-98be-ba45ee8ba79f
+You broke Jerribeth's spell that was distorting the perception of all members of the Wintersun clan.
+
+c20f66b7-981b-4ffc-8da5-181b044c28ae
+You allowed Jerribeth to keep the Wintersun clan under her spell — they continue to see demons as mortals, but they no longer see mortals as demons.
+
+45230652-293f-407c-a388-010b9988988e
+You forced Jerribeth to destroy the malicious magic she had used to confuse the minds and souls of the people of Wintersun.
+
+51d17fb6-acdd-4a40-909a-9cd64aa8c7d7
+You allowed Jerribeth to take chief Marhevok, who is in love with her, to her "castle in the clouds" — the Ivory Sanctum.
+
+8ae358e6-56be-464b-9cf8-ed164210e03a
+You sentenced Marhevok to serve his clan honestly, the clan which he had previously betrayed for the sake of his love for the demoness Jerribeth.
+
+6b58e4b5-dd53-43cd-9dd9-6f6c6feb6730
+You made a deal with Jerribeth — she and her people ready to betray Xanthir Vang.
+
+1c366e89-aa9d-4356-9c54-f614196921b5
+In the Ivory Sanctum, you spared the life of the demon Jerribeth who bewitched the Wintersun clan.
+
+920cc1d4-ce4b-4b9e-9225-3d1f3fe581be
+Jerribeth is an oolioddroo demon who put a spell on the Sarkorian settlement of the Wintersun clan. Under the guise of a beautiful elf sorceress, Jerribeth ruled the settlement in secret for years, having turned it into a place of amusement for demons.
+
+7a3c700f-401f-409c-9539-1036f513977d
+Jerribeth
+
+72ed591b-dd6d-4f0c-b815-a9afbb056c22
+Follower of Jerribeth
+
+31fdc50c-2ec8-4269-9e7d-cd11f652e633
+Jerribeth
+
+61a1f58e-a948-4cd7-80f8-96b16dac28df
+This tablet is inscribed with the names of those who have ruled over the Ivory Sanctum since its founding. You recognize the last two names, Jerribeth and Xanthir Vang.
+
+60af036b-c022-48bd-ac1e-fff795f2bd9e
+This sign will make the servants of the demon Jerribeth acknowledge you. If you defeat Xanthir Vang, it will help Jerribeth capture his locust swarm.
+
+a6348a18-c6ef-4aee-8975-c5492c1e8e4a
+Jerribeth's Mark
+
+c6c08e0f-e77c-4826-8393-15f0c5f25f8f
+"My mind keeps returning to Jerribeth. An enormous insect managed to convince everyone she was a great beauty, and to what end? To control a little village in the middle of nowhere and win the favor of an ill-kempt barbarian?"
+
+24c2eca7-e330-4cc3-a5ae-cff1eef07694
+"I do not know what barbarians do in the day to day — running about in the nude waving an axe, possibly, or ripping the heads off wolves. But I think Marhevok was sick to the back teeth of his routine, whatever it was. And then Jerribeth came along — a magical creature from another plane... Yes, I understand what he saw in her."
+
+2eb4aab2-1399-48be-ab85-ea929f9e335c
+"Hail Jerribeth!"
+
+ebeb9f34-8f01-4627-9d18-0b0169005abc
+[Nod to the leader of the templars] "Jerribeth says: 'Do it.'"
+
+c14fdb1b-0fd9-45a7-b2d7-1f287ca6bcca
+{n}Predatory {d|c3 jerribeth deal}grins{/d} appear on the templars' faces, and they reach for their weapons.{/n} "Let's see your Xanthir the Deranged One save you now!"
+
+5ffe99c3-140a-4834-abed-57765c3134cc
+"In the name of Baphomet, for the glory of Jerribeth!"
+
+a8d4428a-516a-49d7-86f9-66021639be72
+[Nod to the templars] "Jerribeth says: 'Do it.'"
+
+30ffd5d4-6b55-49e0-b4f2-65b9204b5b0c
+"You're actually talking sense! Listen up: I know a safe place nearby. Let's hole up there, and when the crusaders swat the locust lord, we'll come back here and put everything back the way it was before. Lady Jerribeth will take care of us!"
+
+7536b64f-41cc-4446-b730-e80cddf0f7b2
+"{d|c3 jerribeth deal}Finally{/d}! Now you're all going to pay!"
+
+e996b4da-e762-4cb6-9db9-1cbf9a0511d6
+"You have discovered my 'castle in the clouds'... although it is a far cry from what it once was." {n}{g|Jerribeth}Jerribeth's{/g} voice buzzes with irritation.{/n} "I have something you need — information and assistance. You can help me in return. Let's talk."
+
+d9ed3bf9-fcf1-4e03-9853-b413f8bff729
+"This place, the Ivory Sanctum, used to be my own personal domain, but in recent times I have been forced to share it with a horde of 'allies.' There is one among them who will likely interest you: Xanthir the Plagued One." {n}Jerribeth's voice chitters with emotion. It drops to a heated whisper.{/n}
+
+c4630d76-0a95-44e3-913c-caa8e03f6e5f
+"Because I am a demon." {n}You detect amusement in Jerribeth's voice.{/n} "Rules, laws, loyalty? Seek them in {g|Hell}Hell{/g} and Heaven, anywhere but the Abyss. I served Lord Baphomet for as long as it benefited me more than it cost me. I was the mistress here, in my 'castle in the clouds.' The entire territory was under my control. But then Minagho, that arrogant fool, botched the attack on Kenabres and the Wardstones. Our laboratory in Drezen was under threat and Xanthir and his minions were quickly pulled out of the city."
+
+de70b6ee-ca61-430d-92b5-73593f8163cf
+"But then there are Baphomet's followers as well. I will give you my mark, so that my subjects will take you for one of our own. They have been dying to take on our unwelcome house guests for a long time, so... Just tell them that their mistress says: 'Do it.'" {n}The demon smiles wistfully.{/n} "My mark will also serve another purpose — if you defeat Xanthir, it will bind his swarm and force it to fly directly into my net. I cannot allow such a unique creature to disappear entirely. I will preserve him... in some form." {n}You once again hear an undercurrent of amusement in Jerribeth's voice.{/n}
+
+ab61b2ee-bbaa-418d-9084-e5f241658eba
+"Because I am a demon." {n}You detect amusement in Jerribeth's voice.{/n} "Rules, laws, loyalty? Seek them in Hell and Heaven, anywhere but the Abyss. I served Lord Baphomet for as long as it benefited me more than it cost me. I was the mistress here, in my 'castle in the clouds.' The entire territory was under my control. But then Minagho, that arrogant fool, botched the attack on Kenabres and the Wardstones. Many of our laboratories around Drezen were under threat and Xanthir and his minions were quickly evacuated."
+
+f9651f01-eb48-47a0-8016-ea0bcd5c4862
+"I've found out everything I wanted to know. Goodbye, Jerribeth."
+
+ffabf446-9cba-4d66-b532-3ea7256df319
+Deceived and killed the demon Jerribeth.
+
+eb28ad3b-053d-4e46-9db2-055fd0a1b1d2
+{n}You discover {g|Jerribeth}Jerribeth{/g} engrossed in a task. She is holding a locust between two delicate clawed fingers — one of the locusts that previously comprised Xanthir Vang — and you watch as she slowly pushes a needle into its body. The demon observes the locust's convulsions with fascination.{/n} "This will require a lot of work... A lot of work to preserve this beauty."
+
+8ef95ea9-32ee-4afe-8644-6d3b93868157
+"You did as you {d|c3 jerribeth deal}promised{/d}, crusader. But you do know that making deals with demons is a losing game, yes? Lucky for you, I enjoy playing 'mortals' so much that I will keep up the act and fulfill my part of the bargain. Ask me a question. I will answer."
+
+e25968c1-6e1c-4248-b498-67f96e933fc3
+{n}Your head is filled with a harsh rattling sound — it seems that Jerribeth is angry.{/n} "Areelu Vorlesh... A hundred years ago, she was a human, a common eldritch sorceress from Sarkoris. But Sarkoris did not care for arcane magic users. Druids, shamans, and priests ruled those lands, and they despised anyone who wielded magic in ways different to their own."
+
+477a629a-a5e3-45ba-88cc-1ce2e93206da
+{n}The demon's words echo in your soul. Chaos, shadows, eternal hunger, rushing forward, toward a world that can exist on its own terms, not as your toy — whose emotions are these? Yours or Jerribeth's? Everything should be as you want it. Everyone should submit to you!{/n}
+
+b77c8beb-f9d8-44ba-8b61-bfe1076771bd
+{n}Before you can think, you rush forward and seize Jerribeth by the throat.{/n}
+
+757cf3cf-86b4-4995-867d-53896c2d0f5d
+{n}Jerribeth trembles and humbly folds her delicate hands on her chest.{/n} "I know, I know... I sense your power, {mf|brother|sister}. The Abyss itself will quake should you ever enter it. And many demons will look upon you with envy."
+
+a9e7f507-9abc-4d81-bd52-41c043957992
+{n}Sincere admiration rings in her disembodied voice. The maelstrom in your soul dies down, replaced with a flash of malicious triumph. You release your grip and let Jerribeth go.{/n}
+
+211502fc-4e67-45a0-8a78-8459e1b03fcb
+"Jerribeth sent me."
+
+6ff2b37e-e67b-455a-9c75-71042b52d13e
+"You again? You? Again!" {n}The vrock points her sharp beak at you.{/n} "You wrecked everything in the Scar, and now here you are? Without your messing, Xanthir the Plagued One would have made the vrock a great demon by now. But all is lost, lost! Now that cursed creepy-crawly {g|Jerribeth}Jerribeth{/g} is laughing at the vrock again!" {n}The demon caws plaintively.{/n}
+
+e4701aaf-56f9-481c-93d7-71cfcead529b
+"Who are you? Vorimeraak has not seen you here before. A new one? Good, good. Listen to the vrock, the vrock is in charge here, above even that no-brain beetle {g|Jerribeth}Jerribeth{/g}. Only Xanthir the Plagued One is above the vrock! Soon he will make the vrock a great demon. Do as the vrock says and you will live!"
+
+0fd65a9d-fd9a-4ab5-8b1c-c2b3bce9c22e
+{n}The vrock sniffs the air, and bursts into outraged caws.{/n} "{g|Jerribeth}Jerribeth{/g}! That brazen little beetle! That mocking creepy-crawly! She is always poking fun at the vrock, always making her jokes! Are you on her side? Bad luck!" {n}The demon's eyes fill with blood and she lunges at you.{/n}
+
+c96e64d9-450b-435a-b09c-ab88c6615dd8
+"What can you tell me about Jerribeth?"
+
+0d2269d3-e1d2-4fca-88d1-02ab999ec5b8
+Revealed Jerribeth's plan to Xanthir.
+
+4761b225-99b5-4230-8be3-0c40b3d56c9f
+"You may be interested to learn that Jerribeth has given me her mark. The swarm you are composed of will fall under her thrall as soon as you release your hold on it."
+
+c7ddab74-b3f4-41a4-a283-daf5ba9b301c
+"A troublesome gnat who thinks herself the queen of this dung heap. She hates me for usurping her in the Sanctum, but she doesn't dare go against the orders of Baphomet and his daughter {g|Hepzamirah}Hepzamirah{/g}. Jerribeth is a known quantity, and a negligible one at that."
+
+4ab4bbbc-e088-4913-91a9-7b643537f6de
+"And the demons I am forced to work with? They are unable to fulfill even the simplest of instructions! All their tiny minds can think about is how to chew one another to pieces! Darrazand, Minagho, Jerribeth — they all started plotting against me as soon as I took up my post! How am I to work under these conditions? I am surrounded by utter morons! My only ambition has been to study the sciences, to discover secret truths, but instead I have been obliged to manage a herd of brainless animals."
+
+eee881b0-bb49-4da4-9d57-b45be969c2a6
+[Break Jerribeth's spells] "What you have wrought here is a perversion of the natural order, and I have the power to correct it with a snap of my fingers."
+
+daa84cca-fbe4-40ca-a2fc-4ddfa8b193b8
+Broke Jerribeth's spells.
+
+6869161f-3e06-438e-94de-ca4296e39905
+Allowed the demon Jerribeth to continue deceiving the Wintersun clan.
+
+6b6a0fe6-357d-4830-8ba5-948fc7bb2452
+Did not allow Jerribeth to continue deceiving the Wintersun clan.
+
+1244e2bc-e900-408f-bd2e-69d91a9f856b
+"That is what they call me here," {n}replies the insect-like shadow.{/n} "But you may call me by another name — Jerribeth."
+
+2a6499de-ee61-4653-9364-d48bb59fe1ec
+{n}Jerribeth twitches oddly. You cannot tell if she is speaking to Marhevok. But her words for you are a malevolent wave of chittering:{/n} "I could not stop you, Commander. In this place, at this time, I could not stop you. But we'll see what happens next!"
+
+8f26708c-61c8-4784-81e1-2940df7768c7
+{n}Jerribeth's shadow disappears into the portal, and her departure spells the end of an era in the life of Wintersun.{/n}
+
+6bf14d04-49a6-46f1-aec7-a417304b58ce
+{n}Marhevok withstands the shock of your power with surprising equanimity. He raises his eyes to Jerribeth and beholds the grotesque creature unflinchingly.{/n} "I have been judged, I have been fairly judged and I must make amends to my people. Farewell, my lady. Farewell, but know — you were and always will be my sun."
+
+a5db60f0-2970-49b3-abbb-bb3b591c9540
+{n}Jerribeth hesitates. The demon's flat, insectoid visage is difficult to read, but her quivering mouth betrays her extreme tension. At last, a phrase rings in your mind:{/n} "All right, I'll do as you say."
+
+0c2809eb-8903-4420-8407-c372bef4a1e8
+"Are you still sad about Jerribeth?"
+
+e66b823f-12fb-4fdb-b7a5-85e6538786dd
+"My power is different from that of Jerribeth, Nulkineth, and the other demons."
+
+de996400-2bc7-49ba-a575-709dfeebcbc5
+"Your power is of the same kind as that of {g|Nulkineth}Nulkineth{/g}, {g|Jerribeth}Jerribeth{/g}, and the other demons that you have met. The power of the Nahyndrian crystal, dissolved into the blood, lies within your soul. I have already... hinted at this to you once before, when I left the essence along with the Lexicon of Paradox in my old laboratory, and ordered the Suture to make sure the gift found its way into your hands."
+
+b687f56c-0205-44db-abfb-4a9b4a805c94
+{n}You hear {d|c3 jerribeth lives}Jerribeth's{/d} voice in your mind. She sounds friendly, though slightly wary.{/n} "So we meet in the Rapture of Rupture. I cannot help but wonder, by what whimsy of fate have our paths crossed again? Why are you in Alushinyrra? More importantly, why are you here? What brings you to the manor where I have taken refuge?"
+
+5fff6f68-2225-43d1-a4cf-3fa5643cb64d
+{n}The sound of {g|Jerribeth}Jerribeth's{/g} agitated chittering fills your ears.{/n} "I don't know how adept you are at reading the emotions of others, so I must warn you. You are in danger."
+
+c578d0d4-511f-4219-855c-2fb4e43f7c8a
+"Baphomet won't quarrel with one of Nocticula's best friends just to get revenge on an insignificant worm like myself." {n}You hear amusement in Jerribeth's disembodied voice.{/n} "While the lesser servants of all three demon lords are constantly embroiled in conflict, always trying to entrap one another in webs of intrigue, the powerful and influential demons prefer to stay neutral. The time for their conflict has not yet come."
+
+ecc42853-d2e6-4613-95c2-de90a01dbfd5
+{n}You hear {g|Jerribeth}Jerribeth's{/g} voice in your head. She doesn't sound happy.{/n} "I knew your friendship with Vellexia would end this way, so I've been thinking about whose side I would take in a conflict between you two. I've made my decision, and I don't think my patron will be thrilled with my choice. I advise you to get ready for a fight."
+
+ea25d022-689f-49c0-8cd7-c77e0c807fb9
+{n}Jerribeth must have noticed the look of anger that flashed across Vellexia's face. Her telepathic voice interrupts your conversation.{/n} "Your guest had every reason to keep the true purpose of {mf|his|her} visit to the Abyss a secret, Lady Vellexia. It is well known that {mf|he|she} has won many battles against the demons in {mf|his|her} homeworld of Golarion. Perhaps {mf|he|she} is being tight-lipped about {mf|his|her} visit because it is part of an intricate plot for further conquests." {n}Jerribeth's clever words are not without effect. Vellexia smiles slightly, and looks at you with renewed interest.{/n}
+
+3b982e63-4c9c-41db-8ce2-763353d48a0b
+{n}It appears that Jerribeth is communicating telepathically with you and Vellexia at the same time.{/n} "When I was on Golarion, I had time to observe the locals. One of the things I found most curious was their ability to adapt. Their souls change in response to their circumstances. It is truly remarkable. Unlike the creatures of the Abyss, these mortals are capable of transforming their very nature." {n}Jerribeth's words have the desired effect. Vellexia looks at you with renewed interest.{/n}
+
+2a79237f-feee-4f7f-bebe-d2576eedeb5a
+{n}Jerribeth uses telepathy to communicate with you and Vellexia simultaneously.{/n} "There are rumors in Alushinyrra... just rumors, of course... that this Golarian craves your attention because {mf|he|she} intends to seek Nocticula's favor. Apparently, {mf|he|she} hopes to receive an audience with Our Lady in Shadow!" {n}Jerribeth's words have the desired effect. Vellexia looks at you with renewed interest.{/n}
+
+f162abec-1a0c-40b3-b09c-3d4c8103e29f
+{n}Jerribeth's voice grows quiet, and you realize that she is no longer projecting her words into Vellexia's mind. This message is intended for you alone.{/n} "I've helped you escape her wrath this time, crusader, but if I continue to interrupt your conversation, I will only share in your grim fate. Stop being so predictable. If you behave more erratically, you might be able to stave off Vellexia's boredom, and survive the reception."
+
+c6f8808e-f214-482d-98b6-2b761a347048
+"You might find this surprising, but... No. That was not my role." {n}The dwarf speaks with surprising candor.{/n} "Demon generals like {g|Jerribeth}Jerribeth{/g} and Minagho have rendered my services unnecessary. They are the ones who lead the troops in the Worldwound. I realized that I could not compete with them, so I moved away from military operations, and began to focus on my own intrigues. And it is thanks to those schemes that our paths have collided..."
+
+54716519-11a2-498c-8446-3cc23446f955
+"The opening of the Worldwound was sudden. Large clans fought the demons, smaller ones fled or were swept away by the demonic armies. But a different fate lay in store for us. The demon Jerribeth bewitched our clan, turning us into the demons' unwitting companions and playthings. And it was only thanks to you that we pulled through."
+
+89d905ea-efc6-49b2-9986-6ec395f63357
+"As I recall, your personal relationship with Jerribeth was rather cozy."
+
+a59c9b84-cc34-4f48-bd21-08d31f197215
+"You may have saved us, but the illusions of that vile Jerribeth remained. Demons kept coming to our village for a long time afterward. If not for your Queen Galfrey and her mages, we would be sitting there still, none the wiser about your crusades."
+
+12e5cb06-63f6-4ee0-b4b6-d2645d241972
+"Once the illusions of that vile Jerribeth were gone, many in the village despaired. We had been blind to the evil of our actions, and afterward, we did not know how to live with the truth."
+
+ee5cfdca-bb86-4306-94ca-87e57464f1f1
+"Marhevok? Jerribeth took you to the Ivory Sanctum. Last time I saw you, you'd been transformed into some kind of plant!"
+
+79634628-61a1-42e0-93cd-145119ba7848
+"We learned the fate of the missing patrol. Our people were killed by clan members from old Sarkoris, they had been bewitched by the demon Jerribeth."
+
+f8ce7264-4c9a-4f05-a626-19d2853c4c6c
+"The Grand Master leads the templars. He is a mysterious figure said to be more of an ideologue than an actual commander. All the cultists I know answer to a woman named Jerribeth. I never saw her myself, but I heard that she is dazzlingly beautiful, and when she speaks, you believe her every word, even if you know that she's lying through her teeth... I have absolutely no idea where to look for her. But I know there's someone much more powerful and dangerous, someone the common followers never see. Rumor has it, it's {g|Baphomet}Baphomet's{/g} flesh-and-blood daughter." {n}Something like reverence seeps into Nurah's voice.{/n}
+
+16b50b9c-9184-4291-995d-ede310de2741
+Jerribeth got what she wanted and now it is time for her to fulfill her end of the deal — by sharing information.
+
+a384b729-691d-4f7b-b56b-8bd9a1fd2130
+Return to Jerribeth

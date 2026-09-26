@@ -1,0 +1,200 @@
+{
+  "scope": "Authoritative offline predicates for Seelah later scenes; no runtime or complete route approval.",
+  "semantics": "Etude Playing does not include Completed; negated Playing includes never started and completed states. Quest and objective Completed must not include Failed.",
+  "predicates": [
+    {
+      "key": "wedding_disaster_known",
+      "guid": "6ba1c92c73ec4cc48acaf26473564492",
+      "type": "BlueprintQuestObjective",
+      "source_path": "World/Quests/Companions/Seelah/Q2_TillDeathDoUsPart/05_HurryToDrezen.jbp",
+      "predicate": "QuestObjective state Started OR Completed",
+      "gotcha": "Granted by wedding aftermath; does not assert Kiana lost her soul."
+    },
+    {
+      "key": "wedding_investigation_concluded",
+      "guid": "a1024628f074e4d4f9d2b15956975459",
+      "type": "BlueprintQuest",
+      "source_path": "World/Quests/Companions/Seelah/Q2_TillDeathDoUsPart/SeelahQ2_TillDeathDoUsPart_quest.jbp",
+      "predicate": "Quest state Completed",
+      "gotcha": "Final Drezen report concluded; completion of final objective finishes quest."
+    },
+    {
+      "key": "sunhammer_death_witnessed",
+      "guid": "beef9b7110dfebc429bf7109cd3be849",
+      "type": "BlueprintCue",
+      "source_path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0042.jbp",
+      "predicate": "CueSeen",
+      "gotcha": "Literal death occurs here; postbattle collection is later."
+    },
+    {
+      "key": "soul_gems_recovered",
+      "guid": "83527eddea019674cb123a6a52bdf169",
+      "type": "BlueprintQuestObjective",
+      "source_path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/02_FindSoulGems.jbp",
+      "predicate": "QuestObjective state Completed",
+      "gotcha": "Cue0051 completes this when Seelah takes jewelry; victims are not yet restored."
+    },
+    {
+      "key": "souls_returned",
+      "guid": "5a5a533c9ce630a48b877f9a194840cb",
+      "type": "BlueprintQuest",
+      "source_path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp",
+      "predicate": "Quest state Completed",
+      "gotcha": "Completed, not merely finished or failed; final Curl dialogue completes ReturnSouls."
+    },
+    {
+      "key": "return_souls_objective",
+      "guid": "5b1e04caadc42114281d29db76c19c4f",
+      "type": "BlueprintQuestObjective",
+      "source_path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/03_ReturnSouls.jbp",
+      "predicate": "QuestObjective state Completed",
+      "gotcha": "FinishParent true; equivalent successful native quest terminal."
+    },
+    {
+      "key": "kiana_soulless_history",
+      "guid": "8a2da1bae7d69b84b999155ac0481223",
+      "type": "BlueprintUnlockableFlag",
+      "source_path": "World/Encounters/DrezenCapital/UnlockableFlags/KyanaSouless.jbp",
+      "predicate": "UnlockableFlag unlocked",
+      "gotcha": "DisasterNewsDrezen Cue0020 sets this; historical marker does not prove still soulless after rescue."
+    },
+    {
+      "key": "wedding_bad",
+      "guid": "d983621f7b887b043acb0c43186bf824",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ2/WeddingEndingBad.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "FinalResolve uses this to spawn Kiana victim; good wedding spawns another victim."
+    },
+    {
+      "key": "wedding_good",
+      "guid": "be924a4c2bfff36459cebb87b84b8fb5",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ2/WeddingEndingGood.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Do not narrate Kiana soul loss in this branch."
+    },
+    {
+      "key": "revival_aftermath",
+      "guid": "6d3fb96f9b60c0449a01add4be5c4a49",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Area-linked temporary staging; not persistent restoration predicate."
+    },
+    {
+      "key": "kiana_married_conversation_done",
+      "guid": "97b3254015284346ba32f1749cfae0b0",
+      "type": "BlueprintUnlockableFlag",
+      "source_path": "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3_ElanKianaAfterDialogue.jbp",
+      "predicate": "UnlockableFlag unlocked",
+      "gotcha": "Native one-shot aftermath happened; does not prove current physical actor presence."
+    },
+    {
+      "key": "kiana_widow_conversation_done",
+      "guid": "b5dff99d2f8140e8bf23fb30048db101",
+      "type": "BlueprintUnlockableFlag",
+      "source_path": "World/Encounters/DrezenCapital/UnlockableFlags/SeelahQ3KyanaAloneAfterDialogue.jbp",
+      "predicate": "UnlockableFlag unlocked",
+      "gotcha": "Native widow aftermath happened; does not prove current physical actor presence."
+    },
+    {
+      "key": "elan_desperate",
+      "guid": "ded376ed8b73c3e42b0de967fb1d10a9",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/ElanDesperate.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Starts before death; aftermath uses this to choose widow branch. Do not label him dead early."
+    },
+    {
+      "key": "elan_dead",
+      "guid": "148423f1d35917946a5ebeeb4f19246c",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "ImportantNPCs fate; FinalResolve starts it if ElanDesperate plays. Absence alone does not prove alive in arbitrary modified saves."
+    },
+    {
+      "key": "final_resolve",
+      "guid": "2b4a5c01a192d1f4aa8c9d32aa149727",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/FinalResolve.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Area-linked stage, starts native Elan death fate and selects Kiana victim by wedding outcome."
+    },
+    {
+      "key": "jannah_prison",
+      "guid": "59632e1775b2f7240af0f6d0db28e35b",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaInPrison.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Completed by Seelah_BeforeQ3 during transfer to Condemned; Completed does not mean currently imprisoned."
+    },
+    {
+      "key": "jannah_condemned",
+      "guid": "46f4524cec981c544964229e3e08c847",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaInCondemned.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Starts upon transfer from prison in Seelah_BeforeQ3."
+    },
+    {
+      "key": "jannah_dead_unknown_to_seelah",
+      "guid": "f8129442feebb7c49b209c83b8ee6267",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaDead_SeelahDoesntKnow.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Character knowledge differs from player knowledge; Seelah main Cue0105 completes this and starts knows flag."
+    },
+    {
+      "key": "jannah_dead_known_to_seelah",
+      "guid": "699b1ad898227c943b2ee9e0cfd355aa",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaDead_SeelahKnows.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Use OR with unknown-death for physical death; use only this for Seelah informed dialogue."
+    },
+    {
+      "key": "jannah_free",
+      "guid": "d99770b13ebc47447881d33763209b03",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/JannaFree.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Release does not establish recruitment or attendance."
+    },
+    {
+      "key": "seelah_lawful_ending",
+      "guid": "c702a52487248224796ba18d7c6336ae",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_LawfulEnding.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Native epilogue establishes knightly order; romance must preserve her career choice."
+    },
+    {
+      "key": "seelah_best_ending",
+      "guid": "c959cc3ef25ce834090ba65cd0169588",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_BestEnding.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Native joyful wandering knight outcome; activation excludes lawful."
+    },
+    {
+      "key": "seelah_moderate_ending",
+      "guid": "2bb1f6f30ca9bb1408f720d6f10c5c05",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_ModerateEnding.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Native solitary self-doubt, not joyful wanderer; activation excludes lawful."
+    },
+    {
+      "key": "seelah_bad_ending",
+      "guid": "e438007efc4f1474eb447031d4b5a60e",
+      "type": "BlueprintEtude",
+      "source_path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_BadEnding.jbp",
+      "predicate": "Etude Playing",
+      "gotcha": "Native sorrowful departure also applies if Q3 not completed; activation excludes lawful."
+    }
+  ],
+  "kiana_contact": "For normal completed Q3 saves, native married versus widow selection is NOT ElanDesperate Playing versus ElanDesperate Playing. Both dialogue holders also require their respective aftermath flag locked. Neither is a reusable root. For authored recurring contact, require successful Q3 rescue or explicit separate restoration and stage an actual actor/invitation. No global Kiana-alive predicate established.",
+  "evidence_file": "seelah-later-sources.json"
+}

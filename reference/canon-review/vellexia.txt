@@ -1,0 +1,119 @@
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Answer_0005.jbp | cead518bf5a86504f9759c726f93a729
+"If you detest your co-conspirators so much, why did you join them?"
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Answer_0006.jbp | adf35cdd77ac29241bc5687b6140f267
+"Aren't you afraid of Nocticula?"
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Answer_0007.jbp | 919024ddfa6d397469ffd0ebe9c797cf
+"We both know that you despise Shamira. Renounce her, and fight on my side instead."
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Answer_0008.jbp | a47181e7fa5e8754caa7379100bfb33d
+"I have nothing more to discuss."
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Answer_0009.jbp | de06f166b655c7040925a18fff8cd989
+"I don't think we've met. What's your name?"
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Answer_0017.jbp | ccd444962e853514891c11b3b825acba
+"But of course! Vellexia! Everyone knows who you are!"
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Answer_0018.jbp | e3184faf8f9097242ade6d42dd4ac820
+"I don't think so."
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0001.jbp | 6ee6043af2e1755429ff9d8b01959256
+{n}The gorgeous succubus delicately stifles a yawn with her hand. She looks at you with an expression of mild curiosity.{/n} "It seems that our little group has a new member. Excellent! This conspiracy has become so dreadfully dull. I was almost ready to abandon it altogether and return to my mansion."
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0002.jbp | 11f688a4fe126f34bbfb8f4bfb16093c
+"It's a shame that Shamira has such poor taste. Even her schemes are pompous, boring, and devoid of even the tiniest spark of imagination... What a disappointment." {n}Vellexia sighs.{/n}
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0003.jbp | e58bd4022b00795498aaac33a0dff2fd
+{n}The demon gives you a charming smile and whispers conspiratorially,{/n} "But I'm not sure why I expected anything better — they're just a bunch of primitive savages led by a pompous goose. That's why I'm so happy you have joined our group. I finally have a worthy co-conspirator!"
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0010.jbp | c158120654ff3c94fb366178b0f6db15
+"Boredom, darling. Terrible, terrible boredom. I thought the carnage of slaughter might alleviate it temporarily..." {n}The aristocratic succubus sounds almost wistful.{/n}
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0011.jbp | 8a989c462fad97349800e9751efa958b
+{n}The demon shrugs slightly.{/n} "I've known Nocticula since she was young. In those days, I was more than capable of taking her on myself. Of course, she's gained immense power since then, but I have a few new tricks up my sleeve as well... Besides, fear is so boring!"
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0012.jbp | ba98d69e41a5377409dd31e7c0d434b2
+{n}Vellexia frowns.{/n} "Well, perhaps in memory of that wonderful moment of intimacy between us..." {n}The succubus gives you a coy glance, and then nods.{/n} "Very well. Today, I'll kill for you. But not because I bear any lingering affection for you... I don't want you to get the wrong idea."
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0013.jbp | 82fef893ab475a44985e78de087b3e37
+"I enjoyed our conversation... and I'm very glad that you're here."
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0014.jbp | df0f4af640a7df4429916f2b89dd976c
+"Oh, of course! Where are my manners! This conspiracy has me out of sorts! You can call me Vellexia. There's no need for titles. Since we are co-conspirators, I think we can skip the formalities. I am the leader of Alushinyrra's elite — I hold sway over the city's high society. Perhaps you've heard of me?" {n}The demon graces you with her most charming smile, and tilts her head to the side expectantly.{/n}
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0015.jbp | 13f6ed53192955340966f96858cc4d14
+"Yes, even death is better than idle complacency!" {n}For a moment, you see past the succubus's affected nonchalance. There's a fire in her eyes, a deep, incurable madness that cannot be contained.{/n}
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0019.jbp | 1e3e537f49a414844bf1eff90db6d640
+{n}The succubus looks pleased. She closes her eyes and gives a sigh of satisfaction.{/n} "Shameless flattery... Still, I find you quite charming."
+
+World/Dialogs/c5/Mythic_Demon/Conspirators/Vellexia_Consp/Cue_0020.jbp | 111ff36598ae75741b89fd4e81531031
+{n}The demon forces a smile to her lips, but her voice is as dry as the desert sand.{/n} "Oh, really? What a shame. You must have a poor memory..."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0004.jbp | 085e018976f9bf94eaf08b155c74f0e9
+"Why are you here?"
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0005.jbp | 93f5e1a2c6d932a458317b9a92a28bdc
+"Who will lead Alushinyrra's high society in your absence?"
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0006.jbp | 02393dac40d94414f963b3256f77ea34
+"You might as well admit it — after the night we spent together, you just can't bear to be away from me."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0007.jbp | da33492021aec2249a4b19654ee8bfb1
+"Well, now that you're here, you might as well make yourself useful."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0008.jbp | 2328d1c55d1c74a47bea0f450d2ba70d
+"I want you to return to the Abyss."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0009.jbp | 52343082ad17def4b877e5459ca59ce0
+"I have to go."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0015.jbp | c52ba1e8043ddc04faae38b3760e1b61
+"I'm not making a request. I'm issuing an order."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0016.jbp | d5e32a55ac40b3c4ca286dea101293ef
+"Fine, you can stay here if you want."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Answer_0023.jbp | ff2e08388d3dba0448e137c303c82361
+"I heard that Laulieh was going to challenge your leadership during Bloody Cauldron Week."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0001.jbp | a374159d10fceb24b81b9c917509041f
+{n}Vellexia looks as regal as ever, sporting a new dress in line with the latest trends in Golarian fashion. When you approach, she gives you an elegant bow.{/n} "I must thank you for this incredible journey! You've opened my eyes! Why should I stay in the Abyss when there are so many other planes to explore! Think of all the pleasures and adventures that await..."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0002.jbp | 65a60b047a8a498479dcb8c01f4224e4
+"Greetings, my {mf|lord|lady}. I am delighted to see you."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0010.jbp | daec3889d9092d546ad3e3ace93157a5
+"I represent the city's nobility. I am here to demonstrate their loyalty to you. Besides... I just can't stay in the Abyss any longer. I'm so fed up with my dull, boring life in Alushinyrra. Also, there may have been a small incident at a reception... I lost my temper and massacred all the guests and servants. I'm sure you can imagine the scandal..."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0011.jbp | 12d07c4398cf26a42a74ecd51ee88ec2
+"I am still their leader. But the nobility wish to be near their new {mf|lord|lady}. The elite of the Midnight Isles are here with you on Golarion. There are only a few members of high society left in Alushinyrra."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0012.jbp | 040d5777b07127942b2adde28d60aeeb
+"You devote too much time to business, my {mf|lord|lady}. You should allow more time for pleasure. All work and no play makes life very dull..."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0013.jbp | 0318ed91153bc094abb06f65d5502c54
+{n}Vellexia frowns slightly, and answers with some irritation,{/n} "You want me to return to Alushinyrra? How preposterous!"
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0017.jbp | d5dac624ccb26f241b5126ffc35392f2
+{n}Vellexia nods graciously, but her eyes are as cold as ice.{/n} "Of course, my {mf|lord|lady}. It seems that I have outstayed my welcome. It's time for me to return to Alushinyrra. I have some... important matters to address there." {n}A sinister smile spreads across the succubus's face, and her eyes glint malevolently.{/n}
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0018.jbp | 892d5c9de8e9bba4196ca78590c7882d
+"Well, in that case, I will stay! I have absolutely no desire to return to the Abyss."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0019.jbp | 5ba1ab80f8b786e4ab4f25e31f5be5d3
+{n}The demon smiles demurely and bites her lower lip.{/n} "Perhaps, my {mf|lord|lady}... Who knows?"
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0020.jbp | 2769d1b2727116e439dd2a9b22f0d0f9
+{n}The succubus's face brightens and she smiles triumphantly.{/n} "I want to study mortals! I don't want a bunch of filthy servants, I want to surround myself with the brightest, most talented mortals this city has to offer. What if I become a tutor for your spellcasters? I've never had a chance to teach mortals before. I could teach them the darkest, vilest secrets of the arcane. I would find it very entertaining! What do you think? It's a great idea, isn't it?"
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0021.jbp | 04cebe78ef6f25644a2551c0fbbc3c1a
+"I followed you here! This place is so unusual. Apparently, mortals compensate for their tragically short lifespans by living extremely exciting lives! Of course, their existence is pointless and devoid of meaning, but they are blissfully unaware of their own insignificance. I find it all quite fascinating!"
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0022.jbp | d8ee8f383575f424184ccac1681e5050
+"Of course! Well, I know that you are at war, but I don't want to be a general. I grew tired of that role a long, long, time ago. Hmm... How can I make myself useful? Well, I can make someone reject their faith... No, that's too boring. I could raze a city... but that's not very interesting either."
+
+World/Dialogs/c5/Mythic_Demon/Demons_InTheDrezen/Vellexia_HailNewLord/Cue_0024.jbp | 343362062880cc645840dc84e92e5428
+{n}The demon smiles cheerfully.{/n} "Who? Oh, yes, that little succubus who served you! Yes, she was so much fun. Her death was so entertaining. I'm sure you'll find another pretty little lackey to replace her, and I sincerely hope for her sake that she has more intelligence than her predecessor."

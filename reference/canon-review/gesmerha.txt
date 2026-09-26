@@ -1,0 +1,89 @@
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0001.jbp | a0e6b86209284ac080362ce87a82f61d
+"Gesmerha? You're supposed to be dead."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0002.jbp | 9ccba3622c4345f1a0d4ab58a5edaab0
+"Show me your wares."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0003.jbp | ce8389f855ca4c0baffa6618d449ad3b
+"I have to go."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0004.jbp | 05d101f17f0b47f5a03c5b6e1f9c2f33
+"Marhevok says the Wintersun clan once had its own seat on the council of chieftains in Iz."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0007.jbp | de0a1b329454413eb896f194a95affc1
+"Remind me who you are."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0008.jbp | 96dcf4fdec1e449bad0a037efc78fdbb
+"What has life been like for your people?"
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0009.jbp | 71faf9afaa0940b38c2d68066b8a0bb8
+[Attack] "I never liked you."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_0011.jbp | e5e68cc6603e4dceb50f7c3610f0b064
+[Devour Gesmerha] "My swarm hungers."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_2.jbp | 7f709e09f3fa46fc97138a08e6728d9c
+"Tell me about Wintersun."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_3.jbp | 27ce7b286ca84f1f89d3b455d44c4d56
+"What do you know about the anomalies?"
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Answer_4.jbp | c19603ad73584b628d45f20c664d10e1
+"Marhevok turned out to be the source of the anomalies!"
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0001.jbp | be303785d6be4537b163aca5d5681700
+"Who's there? A stranger? I recognize your footsteps..." {n}The blind woman with a wealth of dark hair turns toward you.{/n}
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0003.jbp | a704c070d15f456f81442780caf2d65b
+"Wintersun has always been a small village, scarcely known in the wider world of Sarkoris. Many villages lived their own lives back then, everyone had their own rhyme and reason. Our clan meant little — our ancestors weren't on the Sarkorian council of chieftains, and they weren't being burned in the purifying flame at Pulura's Fall. Life for them was peaceful and steady."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0004.jbp | 94f8855ffba04dcca431883bd322a1e2
+"You decided to let the demonic illusions remain, as a show of mercy to our ravaged souls. The realization came to us gradually. Your decision helped save many who could have otherwise gone mad from learning the truth in an instant. The illusions were brought to an end when your Queen Galfrey entered our village on her way to Iz. Her sorcerers unmade the demons' trickery, and as our thanks, we swore to offer our help to the crusade."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0005.jbp | 8b91e53d06d44810b152526d6908b46c
+"That... that is very strange. The chief of Wintersun is bound to know such things. I..." {n}She listens, making sure no one else is around.{/n} "I suggest you take a closer look at Marhevok. I feel like he's not himself these days."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0006.jbp | b9a2aae539c74e3d9fdd8bfa08deba25
+"May the ancestors watch over you."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0007.jbp | 2fb983ec8acc432796db1676914cc2d2
+"You are the Commander of the crusaders, the one who helped us break free of the demons' yoke. I am Gesmerha, the woodshaper. Do you remember me?"
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0008.jbp | c6361bf385534970b36775b48629b2fa
+"I am Gesmerha, a woodshaper. A woodcarver or sculptor, as you would call it. My level of skill is not bestowed on everyone — we woodshapers do not consider wood to be just a material; we do not 'make' something out of it, we give the wood a new birth, we reveal its beauty in a new form."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0009.jbp | 5e98122b0db94cdfa705c6e68a2e713f
+"You destroyed the demonic illusions, and many of our people could not hold on to their sanity once they discovered the truth. Some left the clan to live out their days as hermits. Others just wept and wept, unable to stop. Those were trying times. Still, we owed a debt to the crusaders. And debts are sacred to Sarkorians."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0010.jbp | 22d8cb68f32e4e0aa933418643e0854e
+"What? Why?"
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0013.jbp | af04ace911694f1c999d3ad9d0ac8cdb
+"Our village was consumed by illusions when you came to us. We saw demons as ordinary people and saw people as demons. Our eyes had been deceived by the demons, but I am blind, and so I see with my heart. I confided in you and pointed you to Marhevok, who had been helping the demons to perpetuate the illusions. You defeated him in battle, but let him live. He has ruled our clan since."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0014.jbp | 394a07c7f3f6496a91a5e9c53a786ea8
+"Now we are the only ones with the right to call themselves true Sarkorians. Our place is here, in Iz, where trials were once held and chieftains once gathered, even though no one ever summoned the Wintersun clan to events of such importance."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0015.jbp | 1d09b546472e4677aa8f43c32aca4698
+"The opening of the Worldwound was sudden. Large clans fought the demons, smaller ones fled or were swept away by the demonic armies. But a different fate lay in store for us. The demon Jerribeth bewitched our clan, turning us into the demons' unwitting companions and playthings. And it was only thanks to you that we pulled through."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_0018.jbp | 03cf189650414c4bb3d814a765a45c93
+"What is the world coming to when you can't even count on dead people staying dead?"
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_2.jbp | 04c2daf2470f4fefa7097cdde1345744
+"Now that our village is back on its feet, we have some things to sell. Take a look, if you wish."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_3.jbp | b53b6353d81149b9a16074e91dfd1d25
+{n}She ponders your words for a moment.{/n} "That which you speak of cannot be true, for I stand before you, alive. And yet... and yet it feels as if there is some truth to your words. I don't know what to tell you."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_4.jbp | 8f0241de99f544c4a34a5d104489ade7
+"We've been sending our warriors to fight the Worldwound. And recently, Marhevok gathered our whole clan to march to Iz and Threshold."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_5.jbp | 0bee9ccdee5f467595383d36ec4256ca
+"Not much, and what little I do know, I know from Marhevok. He says that some of the demons and animals in the Worldwound have lost their minds because of these anomalies. It must be true. Marhevok wouldn't lie to us."
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_6.jbp | 2f1eb18c5a564ad086b4434bca65d8fb
+"I knew it... There was a wrongness about him. He disappeared the moment you stepped into the great hall. I doubt he will come back here now that his secret is known. Thank you!"
+
+World/Dialogs/DLC1_Megaepic/Iz/GesmerhaMain/Cue_7.jbp | 6843893b64224e0ca579d123ea7ae1b3
+{n}She falls silent, listening intently, then whispers,{/n} "I can't quite explain it, but I feel that once more, Marhevok... that he's changed in recent weeks. He's become kinder, more open. I welcome this change, even as it frightens me."

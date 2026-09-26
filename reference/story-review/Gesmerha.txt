@@ -1,0 +1,80 @@
+6c72f7b7-06d7-459c-81ce-fbfdd070e380
+After you interfered, blind Gesmerha the woodshaper became the new chief of the Wintersun clan.
+
+a424d3f0-55d7-4a4e-9a7e-3ca54c07c8f4
+Gesmerha
+
+f92f6f37-3c10-43fd-b7a6-4704b65eb797
+"My name is Gesmerha, I was the senior woodshaper in Wintersun. A woodcarver or sculptor, as you would call it. My level of skill is not bestowed on everyone — we woodshapers do not consider wood to be just a material; we do not 'make' something out of it, we give the wood a new birth, we reveal its beauty in a new form."
+
+c2603091-7bcb-440e-8fba-d7732bf45941
+"Marhevok flew into a rage when he saw my work," {n}Gesmerha says, her voice quieter now.{/n} "He personally cut out my eyes as punishment, and journeymen were given the task of finishing the statue. The clan did not turn its back on me, of course. The children of Wintersun do not drive out their own, even those who have transgressed before the entire community. They allow me to do simple carvings and to take care of the statues. That is how I have lived since that day."
+
+56aabe28-aff3-49c1-b529-729fe15e9189
+"Demons? Within these walls? That's not possible. The Lady of the Sun promised to protect us. Besides, the settlement has old rune stones that start to flicker when demons approach. Even if the monsters had tricked us somehow by disguising themselves, the stones would have warned us about the danger. And my people wouldn't be caught dead chatting to our sworn enemies!" {n}Gesmerha frowns as though puzzling something out.{/n}
+
+27dbea5d-2648-4b71-b22b-48e446fd87ac
+"What do you want with blind Gesmerha, stranger?"
+
+63f695b7-c79a-4a13-b259-0310d3941253
+{n}Gesmerha the carver is standing cowering against the wall.{/n} "She's... gone? I can feel it, I feel like something's changed! I will tell the people what you did for us, Commander."
+
+4728418f-033e-4b73-b72b-be6122f50b33
+"Hand me the axe." {n}Marhevok's voice is grim.{/n} "I have been very patient with you, Gesmerha. You dared to dishonor the Lady of the Sun, our happiness and protection. You didn't repent, you only nursed your malice in secret. I see now that taking your eyes was not enough. This time I will take your hands."
+
+573d4eea-3808-4ebc-a222-c8d6dc8bf901
+"Gesmerha is a lovely woman and very skilled, but what kind of a clan chief will she make? Soon we'll all be dab hands at carving and sewing, but we'll have forgotten how to fight!"
+
+eb0caee1-b712-4126-a9c0-be6f07085a66
+"Like a gravely ill patient that is just starting to turn the tide against the disease. It wasn't easy for us to accept the truth, and it was even harder to learn how to survive without the Lady of the Sun's protection. But the spirit of Sarkorian warriors is tougher than any hardship. We will get through it." {n}Gesmerha's voice sounds unusually firm.{/n}
+
+ba026adc-b9f7-4a42-9b0c-5ef5bc56a346
+"Farewell, Gesmerha."
+
+d4ad23db-8394-4c38-ac57-c117d11b926e
+Devoured Gesmerha.
+
+daccc38e-451f-4df8-b6a2-03eb6f711453
+[Devour Gesmerha] "You're weak, but even this tiny scrap of power will strengthen the swarm."
+
+c6f576d0-652d-4b82-85e4-eaaf599ad9d2
+{n}Gesmerha looks the {d|c3 gesmerha chief}same{/d} as before, but far more weary.{/n} "So it is true — the Commander has returned from the dead. We've heard all manner of rumors, but we did not know what to believe. So I came here myself to be sure it's true and not yet another trick of the demons."
+
+7496baf6-11c6-4e73-aebc-fffc88ce1169
+"We will leave in search of a better life. The place we called home all these centuries no longer accepts us. There are too many ghosts here, too many memories." {n}Gesmerha sighs.{/n} "I do not know where we'll go, but I will pray to the spirits that the new place will accept us."
+
+9c3f40c1-c4fd-4bef-8069-f5106aee9034
+"Gesmerha? You're supposed to be dead."
+
+0330db8a-025d-4919-8485-b505ac9712b0
+Attacked Gesmerha.
+
+a430501f-a411-4dcb-bd6b-7a1eb088c761
+Tried to devour Gesmerha.
+
+cb61ba14-8482-4e15-bce6-4f551d7a4da0
+[Devour Gesmerha] "My swarm hungers."
+
+f6e48235-e9a1-4a30-b4b1-4bbad0c5c2da
+"You are the Commander of the crusaders, the one who helped us break free of the demons' yoke. I am Gesmerha, the woodshaper. Do you remember me?"
+
+cf25152a-ed9d-4055-95d0-de4e7ded3284
+"I am Gesmerha, a woodshaper. A woodcarver or sculptor, as you would call it. My level of skill is not bestowed on everyone — we woodshapers do not consider wood to be just a material; we do not 'make' something out of it, we give the wood a new birth, we reveal its beauty in a new form."
+
+e31b2b71-220a-436a-8135-2c703c4b65f6
+{n}You have already talked about this with Gesmerha, and it seems that her words were at odds with those of Marhevok. It might be worth speaking to her again.{/n}
+
+64aa657d-d9dc-4d83-bd7f-fecb01ee7774
+Gesmerha was true to her word. The Wintersun clan left the land of their ancestors. Once they had left the borders of the former Sarkoris, the clan split into several branches. One went to the wildlands of Numeria, others set off for free Varisia. A small group led by Gesmerha chose to travel to Andoran, where they were lost among the many refugees fleeing other lands and other wars. The Wintersun clan ceased to be.
+
+b2614d1e-4e7d-416a-8a90-0d79442b82a1
+Gesmerha was true to her word. The Wintersun clan remained in the land of their ancestors. Their scarred spirits and wounded bodies weighed heavily upon them. Not a night passed without someone waking up with a scream on their lips. And yet, under their chieftain's guidance, the people endured. Soon, the skies over Wintersun were pierced by the long-awaited cry of the first child born in the new Sarkoris.
+
+a5660740-177e-4cb7-9715-8b4dc84e555b
+Discuss the discoveries with Gesmerha
+
+c79b73f0-33fc-4383-9af6-8b0380260c50
+Gesmerha the woodshaper told the Commander that the settlement of Wintersun is protected by three rune stones, which emit a warning light when demons are near. Why do the villagers not know that demons walk among them? This unexpected blindness is far beyond the natural human reluctance to face one's personal demons, so to speak. There is a secret here that must be uncovered.
+
+0801695d-d651-45b1-8077-c2e73a631bdf
+Gesmerha, a blind woodcarver, told the Commander about the strange visitors that often come to Wintersun, and she advised the Commander to seek answers from the chief, Marhevok

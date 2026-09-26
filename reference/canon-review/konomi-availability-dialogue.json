@@ -1,0 +1,3004 @@
+[
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0074.jbp",
+    "text": "\"The clinking of coin is the sound of a deep and mutually beneficial friendship! Let's see what our new pals can do for us.\"",
+    "AssetId": "98b8b49df11ffa145910f907d06924ac",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "1796ab9e5a08c9c45baef848985fb310",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+            "name": "$AnswerSelected$8cf795ce-65f2-4ec7-a8d5-abf0f53e7b56",
+            "Not": false,
+            "m_Answer": "!bp_9aa91f82b0b091f42946393459b279f7",
+            "CurrentDialog": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "5257dcd2-1faa-4cad-9cb4-07590227ba67",
+        "m_OwnerString": "98b8b49df11ffa145910f907d06924ac",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0074_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_766435873b1361c4287c351de194e5f9",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_a62595cd2fd521f4dbf6e7b3c8c8bf50"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0074.jbp",
+    "text": "{n}Galfrey's face hardens.{/n} \"I understand that you already bear the impossible burden of the war against demon hordes. That Nerosyan is not your responsibility. But still... consider for a moment if you are truly unable to save my nation.\"",
+    "AssetId": "6265746cc94bd3e4dbbf55483f1fb4a3",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0413\u043e\u043b\u0444\u0440\u0438",
+      "ParentAsset": "758e7a18ccd18724488395626de1eb40",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+            "name": "$CueSeen$0af7e61f-f1a5-4ac8-9e57-7815fde3812c",
+            "Not": false,
+            "m_Cue": "!bp_16ca5303c431ac14f940a9d9b8bd4ca7",
+            "CurrentDialog": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "969d5169-d000-4d68-a920-2484a423e18c",
+        "m_OwnerString": "6265746cc94bd3e4dbbf55483f1fb4a3",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_6/Cue_0074_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": "!bp_8c5dcc93d68d0ed44afd43902201da40",
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_7c892a5932605694aae2ad72a32edc70"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081.jbp",
+    "text": "\"It has been an honor and a pleasure to advise you, Commander. However, I don't think you will need my counsel from here on out. Mendev stands strong, our allies are loyal and reliable. The Diplomatic Council has served its purpose; you don't need it any longer.\"",
+    "AssetId": "7f64a30ceb4bfb046990bccbded7ac75",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "7b47815a75f2baa46a5d9a07499f2a60",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "f0c50402-6d80-4bf5-8fcf-3b9f2779c7a2",
+        "m_OwnerString": "7f64a30ceb4bfb046990bccbded7ac75",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Diplomacy_8_Dialogue.jbp",
+    "text": "",
+    "AssetId": "6178470b05c75484085753b821a6a614",
+    "Data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0435\u0441\u043b\u0438 \u0432\u044b\u0431\u0440\u0430\u043b \u0432 \u0414\u0438\u043f\u043b\u043e\u043c\u0430\u0442\u0438\u0438 7 \u0430\u043d\u0441\u0432\u0435\u0440 8 - \u0442\u0430\u043a\u0436\u0435 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442 \u043f\u043e\u0441\u043e\u043b \u0418\u0441\u0433\u0435\u0440\u0430\n\n\u0435\u0441\u043b\u0438 \u0432\u044b\u0431\u0440\u0430\u043b \u0432 \u0414\u0438\u043f\u043b\u043e\u043c\u0430\u0442\u0438\u0438 7 \u0430\u043d\u0441\u0432\u0435\u0440 103 - \u0442\u0430\u043a\u0436\u0435 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442 \u043f\u043e\u0441\u043e\u043b \u0418\u0441\u0433\u0435\u0440\u0430\n\n\u0415\u0441\u043b\u0438 \u043f\u043e\u0434\u043d\u044f\u0442 \u0444\u043b\u0430\u0433 Galfrey_Final - \u0435\u0441\u0442\u044c \u0438 \u0413\u043e\u043b\u0444\u0440\u0438",
+      "FirstCue": {
+        "Cues": [
+          "!bp_59ba491b3e857c145b58a7a59998bab8"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": [
+          {
+            "$type": "f4ef63ec9a4741d4bae871a91255f89a, IncrementFlagValue",
+            "name": "$IncrementFlagValue$445aff44-993f-4bb9-b696-b99ebcf9a660",
+            "m_Flag": "!bp_6377a60beb684d8a9453b49c0f3b2f7a",
+            "Value": {
+              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+              "name": "$IntConstant$dff7c0a0-c6b8-4519-97d5-0477d06bf24f",
+              "Value": 1
+            },
+            "UnlockIfNot": true
+          },
+          {
+            "$type": "f4ef63ec9a4741d4bae871a91255f89a, IncrementFlagValue",
+            "name": "$IncrementFlagValue$263906ac-718b-423e-b9ce-3b8c23763359",
+            "m_Flag": "!bp_d2eab6bfd8f64055938bf3be5770aabe",
+            "Value": {
+              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+              "name": "$IntConstant$064be78f-b0ef-456b-a6cc-ebc605bb5a3b",
+              "Value": 1
+            },
+            "UnlockIfNot": true
+          },
+          {
+            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+            "name": "$Conditional$f5bce744-3015-4c87-a5da-cf4cd3ac09ac",
+            "Comment": "Check for 2_1 objective of Ch5 main crusader quest completion",
+            "ConditionsChecker": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "342eb5cf69e9d0e48917ff4215600e0b, FlagInRange",
+                  "name": "$FlagInRange$f4035d32-62d4-4ebf-a33e-2858771c2956",
+                  "Not": false,
+                  "m_Flag": "!bp_d2eab6bfd8f64055938bf3be5770aabe",
+                  "MinValue": 4,
+                  "MaxValue": 4
+                },
+                {
+                  "$type": "e77a58dedc8350a4faa55f5e66b9f575, ObjectiveStatus",
+                  "name": "$ObjectiveStatus$362384f4-d51d-4f6c-8356-a749b36767dc",
+                  "Not": true,
+                  "m_QuestObjective": "!bp_c6ffc2b19f314f55b78ed9eb97efebcf",
+                  "State": "Failed"
+                }
+              ]
+            },
+            "IfTrue": {
+              "Actions": [
+                {
+                  "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                  "name": "$SetObjectiveStatus$41a59b3f-4a08-471a-a5be-453e5d6b218b",
+                  "Status": "Complete",
+                  "m_Objective": "!bp_7664bd68a68741808a1282ad23804efc",
+                  "StartObjectiveIfNone": false
+                }
+              ]
+            },
+            "IfFalse": {
+              "Actions": []
+            }
+          }
+        ]
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    },
+    "Meta": {
+      "ShadowDeleted": false
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
+    "text": "",
+    "AssetId": "0dc8b8604bb33c846a63f3eb62443674",
+    "Data": {
+      "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "3269417315940ed4daf2a345b5812c4f",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "ShowOnce": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Answers": [
+        "!bp_4e9a62dc1e0979943985b18691982156",
+        "!bp_2905e311d362b654fa5bc49a8e9ee565",
+        "!bp_7e1119c31a3c2804f979d81c1d4dba1c",
+        "!bp_82d6e6891816fde4b99eba34e90a1a39",
+        "!bp_47b38df7747ae814c91eed92ffeb91dd",
+        "!bp_ae72f1e316afbe944a0d2f0d84d541a5",
+        "!bp_cf997c49d95e6264abacf51f561020b4",
+        "!bp_84ddfe54f20b5bf4aae91f48272ada96",
+        "!bp_ddba744fe9427534cbc4ce02aca6d586"
+      ]
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0024.jbp",
+    "text": "",
+    "AssetId": "ef7de5bb5097bed49b826aaf4f67b940",
+    "Data": {
+      "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "319f94472605d1647b78cae7e5f6d627",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "ShowOnce": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Answers": [
+        "!bp_a24c33ab318c17f4ba5dcb8fc22542f6",
+        "!bp_e390f535bc03daa48abde40d681f9bf3",
+        "!bp_75d1e999d6280ad4b9e812298fba81bf",
+        "!bp_e0e977e116f070a43aacc5b52c3f69e7",
+        "!bp_a27d84ae5f69cc04295a034715414fe3"
+      ]
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0004.jbp",
+    "text": "\"What's the Diplomatic Council and why do I need it?\"",
+    "AssetId": "2905e311d362b654fa5bc49a8e9ee565",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043086 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "b2b04a8e74d7f934fa11dd7f22e49667",
+          "stringkey": "8b3663a9-81e6-4338-bef6-5a3309409419"
+        }
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_2226fbcdd6dcf3d45b73ec011718fa23"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0005.jbp",
+    "text": "\"I see. You've been sent to keep an eye on me.\"",
+    "AssetId": "7e1119c31a3c2804f979d81c1d4dba1c",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0432\u0438\u0434\u0435\u043b \u04304 \u0418\u041b\u0418 \u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043086 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2\n\n\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043023 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "5158057baf99c5b4cb0c7472b5bc476b",
+          "stringkey": "a9735e1c-0b5c-48f2-b9e0-bd0449433a45"
+        }
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_31e63403272409148a70a5706a993de7"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "Or",
+        "Conditions": [
+          {
+            "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+            "name": "$AnswerSelected$5b9444e9-e6c9-4fc2-8db8-5f8e6b619eec",
+            "Not": false,
+            "m_Answer": "!bp_2905e311d362b654fa5bc49a8e9ee565",
+            "CurrentDialog": false
+          },
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$7f4cc34b-7741-4815-9c2e-db7fb0864f88",
+            "Not": false,
+            "m_Etude": "!bp_e14eb0fa8b4b4532ab8bbbaaabcf85d8",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0008.jbp",
+    "text": "\"Tell me about yourself, Lady Konomi.\"",
+    "AssetId": "47b38df7747ae814c91eed92ffeb91dd",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043032 \u0438\u043b\u0438 \u043040 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "6281e03b-fab0-458c-850a-23f1c0ddf555",
+        "m_OwnerString": "47b38df7747ae814c91eed92ffeb91dd",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0008_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_380647c36ee9bc54bafcf71d0e495cc5"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0009.jbp",
+    "text": "\"Kitsune are a rare sight in Mendev.\"",
+    "AssetId": "84ddfe54f20b5bf4aae91f48272ada96",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "c575b70b-1665-4366-b070-d4d1119551e2",
+        "m_OwnerString": "84ddfe54f20b5bf4aae91f48272ada96",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0009_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_b8dcfbd30bd0f9942be9ec3d060bb12e",
+          "!bp_efe7fee421301b84aaff22a3b9dba4cf",
+          "!bp_9a397a883c3c0f447948fd10f26cb8fa"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0013.jbp",
+    "text": "\"What is your role in my army?\"",
+    "AssetId": "4e9a62dc1e0979943985b18691982156",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "93560f69-3d76-48d0-b1c5-aebb13d7d5e4",
+        "m_OwnerString": "4e9a62dc1e0979943985b18691982156",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0013_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_ba4efaac0716c6549998b75d77f51181"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0015.jbp",
+    "text": "\"You don't look like a soldier, and you're different from my other advisors.\"",
+    "AssetId": "e0e977e116f070a43aacc5b52c3f69e7",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ef7de5bb5097bed49b826aaf4f67b940",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "2c20e6b9-7eef-4e0f-82a9-66efe52b73fe",
+        "m_OwnerString": "e0e977e116f070a43aacc5b52c3f69e7",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0015_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_2f4b52dd74dd6a14981d0de2f9b631b0"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0017.jbp",
+    "text": "\"I have to go. Good day to you.\"",
+    "AssetId": "ddba744fe9427534cbc4ce02aca6d586",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "f3484900-f2c3-416f-8861-0c1d58786826",
+        "m_OwnerString": "ddba744fe9427534cbc4ce02aca6d586",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0017_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0021.jbp",
+    "text": "\"What's the current situation in Mendev?\"",
+    "AssetId": "a24c33ab318c17f4ba5dcb8fc22542f6",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ef7de5bb5097bed49b826aaf4f67b940",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "68dc28fa-05f5-468b-a4b0-9348f7e3fe64",
+        "m_OwnerString": "a24c33ab318c17f4ba5dcb8fc22542f6",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0021_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_9980a1ecf3ca24e42ab3b22f858677b5",
+          "!bp_60585f7319a294147a54f440865b21a2",
+          "!bp_07459f4d09fa81e4b99beea351fb0434",
+          "!bp_d4ad8d519aff2c1489a0a509d1afc453"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0022.jbp",
+    "text": "\"I have a question regarding diplomacy.\"",
+    "AssetId": "cf997c49d95e6264abacf51f561020b4",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "d2a71484-58ed-4f2f-b11a-9fbc78a3086f",
+        "m_OwnerString": "cf997c49d95e6264abacf51f561020b4",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0022_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_319f94472605d1647b78cae7e5f6d627"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0025.jbp",
+    "text": "\"I'm not comfortable with the Royal Council imposing its will on me.\"",
+    "AssetId": "75d1e999d6280ad4b9e812298fba81bf",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ef7de5bb5097bed49b826aaf4f67b940",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "fd40928d-12ae-45cd-b76e-a7b5f45bdbca",
+        "m_OwnerString": "75d1e999d6280ad4b9e812298fba81bf",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0025_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_4014e41c1d763164aaa4ae96efd14cc2"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$0cb53e54-d045-413a-95ba-03bfa9d280f6",
+            "Not": false,
+            "m_Etude": "!bp_15e0048c7daf0ac4999c2313b58df0e3",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0026.jbp",
+    "text": "\"I have no more questions.\"",
+    "AssetId": "a27d84ae5f69cc04295a034715414fe3",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ef7de5bb5097bed49b826aaf4f67b940",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "5526517a-fdba-4118-90a5-84e72e6074b7",
+        "m_OwnerString": "a27d84ae5f69cc04295a034715414fe3",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0026_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_6174a4cce0d175b4e8f4db8c145f848b"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0034.jbp",
+    "text": "\"What are you reading?\"",
+    "AssetId": "ae72f1e316afbe944a0d2f0d84d541a5",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "bc4c2e7b-7245-4b09-9798-c38699c809b7",
+        "m_OwnerString": "ae72f1e316afbe944a0d2f0d84d541a5",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0034_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_af7c79e2a6e707e4eb61186206ee9695"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0039.jbp",
+    "text": "\"Why are you so fascinated by politics? Is this something all kitsune share?\"",
+    "AssetId": "e390f535bc03daa48abde40d681f9bf3",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ef7de5bb5097bed49b826aaf4f67b940",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "04bb34a0-839f-4673-bebb-4a82e5be2d13",
+        "m_OwnerString": "e390f535bc03daa48abde40d681f9bf3",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0039_Text.json",
+        "Shared": null
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_35c3dcd5356d4bc428e70dbf99230463"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Answer_0044.jbp",
+    "text": "\"Tell me more about the Royal Council. What is it?\"",
+    "AssetId": "82d6e6891816fde4b99eba34e90a1a39",
+    "Data": {
+      "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0432\u0438\u0434\u0435\u043b \u04304 \u0418\u041b\u0418 \u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u043086 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2\n\n\u0435\u0441\u043b\u0438 \u0432\u0438\u0434\u0435\u043b \u0430112 \u0432 \u0440\u0430\u043d\u0433\u0430\u043f\u0435 2 - \u0437\u0430\u0441\u0435\u0440\u0438\u0442\u044c",
+      "ParentAsset": "0dc8b8604bb33c846a63f3eb62443674",
+      "MythicRequirement": "None",
+      "AlignmentRequirement": "None",
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "8663d342c066b934ca20de5a79b7eaa6",
+          "stringkey": "8efeaf2b-166c-4c9e-b6d9-eac70c842d28"
+        }
+      },
+      "NextCue": {
+        "Cues": [
+          "!bp_36b30706771bf5344bddbc47bafff057"
+        ],
+        "Strategy": "First"
+      },
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "ShowCheck": {
+        "Type": "Unknown",
+        "DC": 0
+      },
+      "Experience": "NoExperience",
+      "DebugMode": false,
+      "CharacterSelection": {
+        "SelectionType": "Clear",
+        "ComparisonStats": []
+      },
+      "ShowConditions": {
+        "Operation": "Or",
+        "Conditions": [
+          {
+            "$type": "a091db175cce8f94f815f98e9e353a84, AnswerSelected",
+            "name": "$AnswerSelected$5aab8f34-7091-40d9-8e75-4adca37aa11f",
+            "Not": false,
+            "m_Answer": "!bp_2905e311d362b654fa5bc49a8e9ee565",
+            "CurrentDialog": false
+          },
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$f331c5a2-926c-4872-90c0-f512d6e90681",
+            "Not": false,
+            "m_Etude": "!bp_e14eb0fa8b4b4532ab8bbbaaabcf85d8",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "SelectConditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "RequireValidCue": false,
+      "AddToHistory": true,
+      "OnSelect": {
+        "Actions": []
+      },
+      "FakeChecks": [],
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001.jbp",
+    "text": "{n}Lady Konomi is engrossed in reading some kind of letter. Upon noticing you, she frowns nervously for a moment, but then greets you with a graceful bow.{/n} \"Commander, how may I be of service to you?\"",
+    "AssetId": "3269417315940ed4daf2a345b5812c4f",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u043f\u043e\u043a\u043b\u043e\u043d",
+      "ParentAsset": "a81655ed97277974e947c1aaf9e33525",
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "e8b61543-5e98-47ed-b856-e64270ba0734",
+        "m_OwnerString": "3269417315940ed4daf2a345b5812c4f",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0001_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "Bow",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002.jbp",
+    "text": "{n}Lady Konomi almost begrudgingly looks away from her letter and gives you a polite nod.{/n} \"Commander.\"",
+    "AssetId": "bd0fd5f2a10163941a4e01ada9edc850",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a81655ed97277974e947c1aaf9e33525",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "c5427492-8ede-4e80-8bc7-1051ac59de6d",
+        "m_OwnerString": "bd0fd5f2a10163941a4e01ada9edc850",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0002_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0006.jbp",
+    "text": "\"To solve matters of politics, of course. The Crusade is more than just battles and sieges. It is the largest military project in all of {g|Avistan}Avistan{/g}, funded by the treasuries of more than a dozen major powers. And each one of those powers, in addition to seeking victory over the demons, also pursues its own goals.\"",
+    "AssetId": "2226fbcdd6dcf3d45b73ec011718fa23",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "2905e311d362b654fa5bc49a8e9ee565",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "0cd84a0d1295ddc409bb650b5bd76d57",
+          "stringkey": "49f7b43e-165c-40e8-b8e6-d13e4b2c1935"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_20eb3862c5e64af4da1f5f15a3a51658"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0007.jbp",
+    "text": "\"Whatever gave you that idea, Commander? I'm not an overseer, I'm your loyal advisor. I do not intend to meddle in the way you run things, just... consult with you in cases where the price of error is too high. Put your trust in me, and we'll get along swimmingly.\"",
+    "AssetId": "31e63403272409148a70a5706a993de7",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "7e1119c31a3c2804f979d81c1d4dba1c",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "df4cdeb62141049488812207e1b82de8",
+          "stringkey": "e7759869-1f4c-40bd-b74a-1980a74a33ff"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_d2d794acd5896d143b184c0ad98e6922"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0010.jbp",
+    "text": "\"You are not the first to have taken an interest in my race. Your companion, Nenio, has already... interrogated me. A most amusing individual. Truly, we kitsune are incapable of normalcy. We find our passion and surrender to it entirely, mind and soul. Although, in Nenio's case, I fear that the mind was lost, along with common sense.\"",
+    "AssetId": "9a397a883c3c0f447948fd10f26cb8fa",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "84ddfe54f20b5bf4aae91f48272ada96",
+      "ShowOnce": true,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "e77a58dedc8350a4faa55f5e66b9f575, ObjectiveStatus",
+            "name": "$ObjectiveStatus$26d1c3f2-2e76-42c3-9069-bc340111c8bc",
+            "Not": false,
+            "m_QuestObjective": "!bp_f40469db3ed9e0d4d898630b0eab4008",
+            "State": "Completed"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "378f01b3-984f-4229-b020-547850913ef3",
+        "m_OwnerString": "9a397a883c3c0f447948fd10f26cb8fa",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0010_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0011.jbp",
+    "text": "\"And across all of {g|Avistan}Avistan{/g}. What can I say, I find it more interesting here than back home. Besides, I suspect these lands still have more kitsune diplomats than kitsune commanders.\" {n}Lady Konomi winks at you.{/n}",
+    "AssetId": "b8dcfbd30bd0f9942be9ec3d060bb12e",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "84ddfe54f20b5bf4aae91f48272ada96",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "294fa514f9b7760448adbaa37eb1dbfa, PcRace",
+            "name": "$PcRace$60a802ad-2730-4a6b-805d-e9509b3ea19a",
+            "Not": false,
+            "Race": "Kitsune"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "8ccb19fb-0208-442c-86d8-4d5076364e40",
+        "m_OwnerString": "b8dcfbd30bd0f9942be9ec3d060bb12e",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0011_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [
+          "!bp_9a397a883c3c0f447948fd10f26cb8fa"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0012.jbp",
+    "text": "{n}Lady Konomi lowers her eyes in a show of modesty.{/n} \"It's unbecoming of a diplomat to talk about themselves at length, but how am I to refuse you? I come from Tian Xia, from the noble kitsune.\"",
+    "AssetId": "380647c36ee9bc54bafcf71d0e495cc5",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "47b38df7747ae814c91eed92ffeb91dd",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "f1ddec4d20cf3f44897298e200475ccc",
+          "stringkey": "1a73c1df-3705-4e90-b3ae-3598893921bc"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_7d0576f657d72cc4589c4c8de825ae6f"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0014.jbp",
+    "text": "\"Oh, don't get me wrong, Commander, but I'm not your soldier. I serve Her Majesty Queen Galfrey. She sent me to head the Diplomatic Council of the Crusade and consult with you on particularly sensitive matters.\"",
+    "AssetId": "ba4efaac0716c6549998b75d77f51181",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "4e9a62dc1e0979943985b18691982156",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "571c1850-ed85-491b-84fa-405d9a900007",
+        "m_OwnerString": "ba4efaac0716c6549998b75d77f51181",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0014_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0016.jbp",
+    "text": "\"You're right, I'm not a soldier. Warfare has always been too... bloody for my tastes. I prefer the intricate tapestries of politics: proposals with double and triple agendas, clashes of ideologies, and long-term strategizing. But, they say that war is merely a continuation of politics. Which is why my duties have brought me to your headquarters.\"",
+    "AssetId": "2f4b52dd74dd6a14981d0de2f9b631b0",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "e0e977e116f070a43aacc5b52c3f69e7",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "b48679a2-ce8e-4d27-ac89-c83bc21632cb",
+        "m_OwnerString": "2f4b52dd74dd6a14981d0de2f9b631b0",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0016_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0023.jbp",
+    "text": "\"I am happy to oblige. I'm always willing to talk about my craft.\"",
+    "AssetId": "319f94472605d1647b78cae7e5f6d627",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "cf997c49d95e6264abacf51f561020b4",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "381a9906-9a7f-4026-8712-2b6d46b530de",
+        "m_OwnerString": "319f94472605d1647b78cae7e5f6d627",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0023_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0027.jbp",
+    "text": "\"It has been a pleasure to satisfy your curiosity, Commander.\"",
+    "AssetId": "6174a4cce0d175b4e8f4db8c145f848b",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a27d84ae5f69cc04295a034715414fe3",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "460bc180-b97a-4f5d-b7fd-29fc3f3931f8",
+        "m_OwnerString": "6174a4cce0d175b4e8f4db8c145f848b",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0027_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0028.jbp",
+    "text": "\"Please don't paint the situation in such a bleak light, Commander. The Royal Council does not seek to hinder you, it merely suggests the most sensible course of action. The members of the Royal Council have been serving Her Majesty for many years and have proven their wisdom. While your attention is focused on the war, they think about Mendev's future. Listen to their words, and there will be peace between you.\"",
+    "AssetId": "4014e41c1d763164aaa4ae96efd14cc2",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "75d1e999d6280ad4b9e812298fba81bf",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "6035a879-aeeb-49ab-9bd8-e03fbdf39899",
+        "m_OwnerString": "4014e41c1d763164aaa4ae96efd14cc2",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0028_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029.jbp",
+    "text": "\"However regrettable it may be to admit, only foreign interference was able to save Mendev from ruin. The garrisons in the cities took authority into their own hands. Robberies were weeded out, and tax collection, order enforcement, and public administration is now being handled by an army of foreigners. However, their actions really have improved the situation. I only hope they won't decide to extend their stay in Mendev once the war is over.\"",
+    "AssetId": "9980a1ecf3ca24e42ab3b22f858677b5",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": "",
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0412\u044b\u0431\u0440\u0430\u043b \u0432 \u0414\u0438\u043f\u043b\u043e\u043c\u0430\u0442\u0438\u0438 7 \u0430\u043d\u0441\u0432\u0435\u0440\u044b 8 \u0438\u043b\u0438 103",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$98b90d46-808b-4d28-93d0-55aa78ffb521",
+            "Not": false,
+            "m_Dialog": "!bp_6178470b05c75484085753b821a6a614"
+          },
+          {
+            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+            "name": "$EtudeStatus$05d15e0d-7d86-4027-81b3-f4ac8c697330",
+            "Not": false,
+            "m_Etude": "!bp_c6e9a69f602a48e18424f4b6d71062b4",
+            "NotStarted": false,
+            "Started": false,
+            "Playing": true,
+            "CompletionInProgress": false,
+            "Completed": false
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "78b872c6-6892-4ad0-bdd8-cb003111ca21",
+        "m_OwnerString": "9980a1ecf3ca24e42ab3b22f858677b5",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032.jbp",
+    "text": "\"Terrible. This crisis is tearing the country apart. The recent turmoil in Nerosyan has split the ruling circles. The cities are teeming with thieves, the provinces are terrorized by highwaymen. Public services are paralyzed, the army is dismayed. And ahead of us is the distinct shadow of an oncoming famine. The nation is feverish, Commander, and only you can save it.\"",
+    "AssetId": "07459f4d09fa81e4b99beea351fb0434",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$b8148a07-5500-493a-aaca-9c70fa12b69c",
+            "Not": false,
+            "m_Dialog": "!bp_30333438aac8d3647bef882fa87e978e"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "61406e3b-e2a0-426a-bd0f-95ffac91b96d",
+        "m_OwnerString": "07459f4d09fa81e4b99beea351fb0434",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0033.jbp",
+    "text": "\"Things aren't terrible... for a nation that has been at war with a demonic invasion force for a century. The people are weary of taxes, the army continues to pay tributes in blood, and many noble families are dying out \u2014 which breeds inheritance disputes.\"",
+    "AssetId": "d4ad8d519aff2c1489a0a509d1afc453",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "4f3a3843-da0f-49ca-8672-5565c1eac36b",
+        "m_OwnerString": "d4ad8d519aff2c1489a0a509d1afc453",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0033_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_acc85334a689c404b9d682d570f6d131"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0035.jbp",
+    "text": "\"That is a state secret. But for you, I can offer a hint \u2014 every single day, I receive dozens of classified diplomatic missives from all countries supporting the Crusade.\"",
+    "AssetId": "af7c79e2a6e707e4eb61186206ee9695",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "ae72f1e316afbe944a0d2f0d84d541a5",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "9a26a4d8-52a0-4670-99a4-f75d647d06a0",
+        "m_OwnerString": "af7c79e2a6e707e4eb61186206ee9695",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0035_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0036.jbp",
+    "text": "\"The Diplomatic Council will manage this tangle of political interests, and prevent the Crusade from losing the favor of influential benefactors. And while we're at it, ensure that Nerosyan remains satisfied with the state of affairs \u2014 after all, for the last hundred years, the entirety of Mendevian politics has revolved around the crusades in some shape or form. That is why the capital has sent me here \u2014 to observe, offer suggestions, and keep the diplomatic situation under control.\"",
+    "AssetId": "20eb3862c5e64af4da1f5f15a3a51658",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "2226fbcdd6dcf3d45b73ec011718fa23",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "da834e69367b6ec4ea750af02ac463f8",
+          "stringkey": "44d1275b-f4f3-4376-8c00-d6eded22ff46"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0037.jbp",
+    "text": "\"After all, none of us here want to see {g|Cheliax}Cheliax{/g} and {g|Druma}Druma{/g} at each other's throats, trying to settle their dispute by using their influence on us as political leverage. Am I wrong? And I doubt you would like it if we made enemies in the ranks of Nerosyan nobility who would attempt to undermine your war effort. This won't happen as long as you trust my experience.\"",
+    "AssetId": "d2d794acd5896d143b184c0ad98e6922",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "31e63403272409148a70a5706a993de7",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "9e0b1e6cf8ac7f047a50bf21408a3a5a",
+          "stringkey": "05eb396d-6710-4412-9ad3-3076741425d3"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0038.jbp",
+    "text": "{n}Lady Konomi shrugs.{/n} \"I'm a child of a passionate and curious people. We live everywhere, you are just... not always aware of our existence.\"",
+    "AssetId": "efe7fee421301b84aaff22a3b9dba4cf",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "84ddfe54f20b5bf4aae91f48272ada96",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "294fa514f9b7760448adbaa37eb1dbfa, PcRace",
+            "name": "$PcRace$3b302ca2-c8fa-4cd8-82b4-62dca2402eaf",
+            "Not": true,
+            "Race": "Kitsune"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "d21d2901-e480-476d-aafa-ad1eb048c0d7",
+        "m_OwnerString": "efe7fee421301b84aaff22a3b9dba4cf",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0038_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [
+          "!bp_9a397a883c3c0f447948fd10f26cb8fa"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0040.jbp",
+    "text": "\"Not at all. However, we kitsune are predators, and our hunting spirit is strong. But, unfortunately, chasing rabbits in the fields is rather boring, vulgar, and unfashionable. Politics is a hunt of a much more dignified sort, refined and captivating. Whenever I pick up the quill to write a letter of protest... oh, I feel like I'm ready to go for my prey's throat! So invigorating!\"",
+    "AssetId": "35c3dcd5356d4bc428e70dbf99230463",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "e390f535bc03daa48abde40d681f9bf3",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "3b7dcfab-68de-4f49-b392-1c10b6b4d17d",
+        "m_OwnerString": "35c3dcd5356d4bc428e70dbf99230463",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0040_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0041.jbp",
+    "text": "\"However, the crown stands strong, and its authority remains high. The nobles are ready to follow Her Majesty's orders, and the Royal Council, comprising the closest and most trusted servants of the Queen, governs the nation sensibly and astutely.\"",
+    "AssetId": "acc85334a689c404b9d682d570f6d131",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "d4ad8d519aff2c1489a0a509d1afc453",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "bfa6d155-ffde-47bb-aa18-e3c832f0e88c",
+        "m_OwnerString": "acc85334a689c404b9d682d570f6d131",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0041_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
+    "text": "\"Mendev was able to resolve the crisis without outside interference. Crime was suppressed, regional riots were snuffed out, and the authorities in the cities and the capital once again act in unison, following a shared plan. Many brave Mendevians, in their patriotic fervor, are enlisting in the army, and those who cannot hold a weapon are forging our victory on the home front.\"",
+    "AssetId": "60585f7319a294147a54f440865b21a2",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "a24c33ab318c17f4ba5dcb8fc22542f6",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": [
+          {
+            "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+            "name": "$DialogSeen$6a6f3614-a021-40d4-9044-cf439dd4df89",
+            "Not": false,
+            "m_Dialog": "!bp_6178470b05c75484085753b821a6a614"
+          }
+        ]
+      },
+      "Text": {
+        "m_Key": "54d44567-952f-4129-bd38-d83a0e8c2516",
+        "m_OwnerString": "60585f7319a294147a54f440865b21a2",
+        "m_OwnerPropertyPath": "Text",
+        "m_JsonPath": "Strings/Mechanics/Blueprints/World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042_Text.json",
+        "Shared": null
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_ef7de5bb5097bed49b826aaf4f67b940"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0043.jbp",
+    "text": "\"Like any kitsune, I have always been curious to a fault, and my adventures brought me to {g|Avistan}Avistan{/g}. And here, in your lands, I met my first and true love \u2014 politics. I've served as a diplomat in the courts of six different sovereigns, but working for Her Majesty turned out to be the most interesting of all. Such riveting webs of intrigues and interests are spun around the Crusade and the Worldwound!\"",
+    "AssetId": "7d0576f657d72cc4589c4c8de825ae6f",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "380647c36ee9bc54bafcf71d0e495cc5",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "ac5c00f114dc8f84382fef29649f5840",
+          "stringkey": "a2debf5d-0956-4c1b-9dd6-b1f615597457"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0045.jbp",
+    "text": "\"The Royal Council, operating under Her Majesty, is the highest governing body in Mendev, and comprises her most able and trusted servants. It is responsible for day-to-day matters of state. They are the hands and the voice of the Queen.\"",
+    "AssetId": "36b30706771bf5344bddbc47bafff057",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "82d6e6891816fde4b99eba34e90a1a39",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "74ee50a617802dd40a5be828d8006fd4",
+          "stringkey": "c273baf7-c7e4-4ee9-b8ae-d72922532846"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [],
+      "Continue": {
+        "Cues": [
+          "!bp_4fd7185c1dcdc044580f8f2d610c5a87"
+        ],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0046.jbp",
+    "text": "\"The council has gathered people from all walks of life, some of them are nobles, but many more are citizens of humble origins who earned their positions through their wit. Many are rich, but a fair number of them are of more humble means. Some are pious and pure of heart like Lord Inquisitor Casori and Captain Jaspar of the Crusader Heralds. Others are... more flexible and ambitious. But each of them faithfully serves Mendev's cause.\"",
+    "AssetId": "4fd7185c1dcdc044580f8f2d610c5a87",
+    "Data": {
+      "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "",
+      "ParentAsset": "36b30706771bf5344bddbc47bafff057",
+      "ShowOnce": false,
+      "ShowOnceCurrentDialog": false,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "Text": {
+        "m_Key": "",
+        "m_OwnerString": "",
+        "m_OwnerPropertyPath": "",
+        "m_JsonPath": "",
+        "Shared": {
+          "assetguid": "88548f52243266d49bdbfd89b7ed3c2a",
+          "stringkey": "81c9736d-ebdf-4971-ae1d-ba40db2728dd"
+        }
+      },
+      "Experience": "NoExperience",
+      "Speaker": {
+        "m_Blueprint": null,
+        "MoveCamera": true,
+        "NotRevealInFoW": false,
+        "NoSpeaker": false,
+        "SwitchDual": false,
+        "m_SpeakerPortrait": null
+      },
+      "TurnSpeaker": true,
+      "Animation": "None",
+      "m_Listener": null,
+      "OnShow": {
+        "Actions": []
+      },
+      "OnStop": {
+        "Actions": []
+      },
+      "AlignmentShift": {
+        "Direction": "TrueNeutral",
+        "Value": 0,
+        "Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      },
+      "Answers": [
+        "!bp_0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "Continue": {
+        "Cues": [],
+        "Strategy": "First"
+      }
+    }
+  },
+  {
+    "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Diplomacy_Officer_dialogue.jbp",
+    "text": "",
+    "AssetId": "a81655ed97277974e947c1aaf9e33525",
+    "Data": {
+      "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+      "PrototypeLink": null,
+      "m_Overrides": [],
+      "Components": [],
+      "Comment": "\u0432\u0441\u0435\u0433\u0434\u0430 \u0441\u0442\u043e\u0438\u0442 \u0441\u043e \u0441\u0432\u0438\u0442\u043a\u043e\u043c \u0432 \u0440\u0443\u043a\u0430\u0445",
+      "FirstCue": {
+        "Cues": [
+          "!bp_3269417315940ed4daf2a345b5812c4f",
+          "!bp_bd0fd5f2a10163941a4e01ada9edc850"
+        ],
+        "Strategy": "First"
+      },
+      "StartPosition": null,
+      "Conditions": {
+        "Operation": "And",
+        "Conditions": []
+      },
+      "StartActions": {
+        "Actions": []
+      },
+      "FinishActions": {
+        "Actions": []
+      },
+      "ReplaceActions": {
+        "Actions": []
+      },
+      "TurnPlayer": true,
+      "TurnFirstSpeaker": true,
+      "IsLockCameraRotationButtons": false,
+      "Type": "Common",
+      "m_OverrideAreaCR": null
+    }
+  }
+]
