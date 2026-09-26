@@ -78,7 +78,7 @@ s("unbought_work", "Something you have not ordered", '"Are you working on someth
 {n}Her answer is firm, without invitation to bargain.{/n}
 "If you want to do something here, let it be something you can finish with your own hands."
 "I am not a woodshaper."
-"I had guessed. You are watching the knife as though it were waiting for orders."
+"Then you can begin by holding the other end of a plank. Most people survive their first lesson."
 {n}She turns the block toward the open side of the bench.{/n}''', c('[Sit where she has made room.]', "offer")),
     n("chief", "Gesmerha", '''"A chief who cannot refuse will soon have nothing left worth asking for. I am learning. The lesson is not popular with everyone."
 "I recognize that lesson."
@@ -183,7 +183,7 @@ s("whose_mark", "A name on the underside", '"How is the game coming along?"', [
       c('"Would selling them let you make more things you want?"', "price"),
       c('"I cannot discuss this properly now. Keep the example here."', abort=True)),
     n("price", "Gesmerha", '''"Perhaps. I would like better hinges. A sharp little plane of the kind your people carry. There are tools I have heard described and never held. I would enjoy making something that required them."
-{n}She folds the parchment along the edge of the shield.{/n}
+{n}She brings the corners of the parchment together and presses the fold flat with her thumb.{/n}
 "I would also enjoy finishing this game before someone orders twelve. The traveler wanted a date. He wanted me to explain how many people could copy my design. By the time he left, I had apparently become a workshop."
 "You could refuse the order."
 "I have not received an order. I have received a man explaining how fortunate I would be to receive one."
@@ -362,8 +362,8 @@ s("the_unclaimed_hour", "When the tools are put away", '"Would you like company 
 {n}She withdraws her hand from the space between you and folds it over the other in her lap. For a little while she listens to the village.{/n}
 "I am disappointed. It will pass. You need not become excessively kind until it does. That would be more difficult to endure."
 "Would you prefer I left?"
-"I would prefer you told me why you put your third piece on the wrong row last time. I have been trying to decide whether it was a stratagem."
-{n}You explain. She considers the explanation and rejects your best excuse. By the time the cups are empty enough to abandon, the conversation has found its old ease, though you both leave a few subjects alone.{/n}
+"I would prefer you told me why defending that outer row pleased you so much. I am still deciding whether to forgive you."
+{n}You defend your tactics. She considers your argument and rejects your best excuse. By the time the cups are empty enough to abandon, the conversation has found its old ease, though you both leave a few subjects alone.{/n}
 "Come back when the wind drops," she says as you rise. "I have something to show you. A friend is permitted to be impressed."''', c('"I will come as your friend."', flags=("gesmerha.hour_kept", "gesmerha.friendship"))),
 ], requires=("gesmerha.game_kept",))
 

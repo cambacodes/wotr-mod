@@ -66,6 +66,7 @@ BRIDGES = {
 {n}She passes you the loaf and puts her hand on the rail.{/n}''',
         '''"I asked Meral who would be here. He said Edris, us, and an alarming quantity of paper. No surprises."
 {n}She rubs a spot of flour from the note.{/n}
+"The table was surprise enough when he moved in. Elan and Meral wedged it between these walls and argued about whose end needed turning. I stood down here offering advice. They were united in refusing it."
 "I am tired of pausing at doors because I don't know what somebody thinks would be good for me. Meral understood when I asked. I wish I had asked sooner."
 "You can still change your mind."
 "I know. Today I would like to go upstairs and find out whether his shelf is as dangerous as everyone says. The things I cannot settle will still be there afterward."
@@ -196,7 +197,7 @@ letter("uncertain_reports", "Before another answer", [
 "Thank you for saying it. I didn't enjoy reading it. Then I read it again and was glad you trusted me with something I might not enjoy.
 "I will tell you what I learn. Please tell me when you are frightened, before you become magnificently reasonable and make me guess. I am very bad at guessing reasonable people.
 "Would you come to supper? I cannot promise a useful conversation. I can promise there will be food, and that I will be pleased to see you."''', c('[Accept, and promise to speak plainly.]', "end")),
-    n("end", "Narrator", '''{n}You send your answer. The reports remain unsettled. Nobody has been restored to life by a kindly phrase, and nobody's mourning has been erased by an unanswered question.{/n}
+    n("end", "Narrator", '''{n}You send your answer. The reports remain unsettled.{/n}
 {n}Kiana's next note is about supper. She has changed her mind about what to serve and asks which of two alternatives you prefer. At the bottom she adds a line in smaller writing.{/n}
 "No new answers today. I will tell you when there are. I still want you to come."
 {n}You choose a meal and tell her when you can arrive.{/n}''', c('[Send the answer.]', flags=("kiana.uncertain_reports_kept",))),

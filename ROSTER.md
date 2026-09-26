@@ -35,10 +35,10 @@ Existing romance ownership determines whether to extend a route or create a new 
 | Seelah | New addon romance; native companion quests | Restore retained identity and reconcile departure, rescue and moral disagreement | 41 development scenes; retained-companion recovery remains partial |
 | Konomi | New addon romance | Political correspondence and council consequences provide credible renewed access | 47 development scenes including alternate endings; ordinary-path depth and full-route approval pending |
 | Jerribeth | New addon romance | Wintersun, Ivory Sanctum and Vellexia connect invitations, truth and lost contact | 38 development scenes; living Act 4 Trickster contact integrated; broader recovery pending |
-| Kiana | New addon romance | Wedding performance, soul rescue and Elan's actual outcome shape renewed choice | 37 development scenes; mixed Elan-history reconciliation in progress |
+| Kiana | New addon romance | Wedding performance, soul rescue and Elan's actual outcome shape renewed choice | 39 development scenes; two changed-history continuations integrated, witnessed return and broader inconsistent histories pending |
 | Vellexia | Native encounters to extend | Continue her existing tests and Jerribeth connection; make any escape from a lethal outcome real | Canon research; arc pending |
 | Arsinoe | New addon romance | Wedding aftermath, temple duties and Kiana or Konomi introductions | 11 development scenes; full length and campaign incomplete |
-| Gesmerha | New addon romance | Wintersun's aftermath, craft and leadership; preserve blindness rather than making a cure a romance reward | Native post-resolution contact identified; opening arc in progress, not integrated |
+| Gesmerha | New addon romance | Wintersun's aftermath, craft and leadership; preserve blindness rather than making a cure a romance reward | Six development opening scenes with native contact; full length and recovery incomplete |
 | Minagho | RanRomance | Extend existing departure, corruption or attempted-redemption branches | Existing route integration audit pending |
 | Chivarro | Existing Minagho pairing and RanRomance group content | Extend the established female relationship and reconcile lost reunion opportunities | Existing group-route integration audit pending |
 | Nocticula | RanRomance and native events | Preserve gift, allegiance and ascension history; add Trickster-specific continuation where needed | Installed RanRomance readme inspected |

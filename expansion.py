@@ -12,6 +12,7 @@ from storylines import arsinoe_opening, konomi_political
 from storylines import jerribeth_fate
 from storylines import arsinoe_continuation, soana_continuation
 from storylines import targona_opening, kiana_further
+from storylines import kiana_reconciliation, gesmerha_opening
 from storylines import tirabade_later, tirabade_campaign, seelah, seelah_later, seelah_fate, seelah_abyss, seelah_aftermath, konomi, konomi_history, konomi_private, konomi_distance, konomi_future, konomi_private_hearing, jerribeth, jerribeth_consequences, kiana, kiana_consequences, ember, ember_afternoons, soana_opening
 
 ROOT = Path(__file__).parent
@@ -126,6 +127,12 @@ def make_expansion():
     payload["SeenCues"].update(targona_opening.SEEN_CUES)
     payload["Scenes"].extend(kiana_further.SCENES)
     kiana_further.integrate(payload)
+    payload["Scenes"].extend(kiana_reconciliation.SCENES)
+    kiana_reconciliation.integrate(payload)
+    payload["Scenes"].extend(gesmerha_opening.SCENES)
+    payload["Relationships"]["gesmerha"] = gesmerha_opening.RELATIONSHIP
+    payload["Etudes"].update(gesmerha_opening.ETUDES)
+    payload["CompletedQuests"].update(gesmerha_opening.COMPLETED_QUESTS)
     return payload
 
 

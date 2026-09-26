@@ -142,7 +142,8 @@ internal static class KianaFurtherTests
         }
         foreach (var scene in scenes.Append(offer))
         {
-            if (scene != offer) foreach (var node in scene.Nodes) check(seen.Contains(scene.Id + "/" + node.Id), "Kiana further page not visited: " + scene.Id + "/" + node.Id);
+            // The reconciliation suite separately walks changed native histories.
+            if (scene != offer) foreach (var node in scene.Nodes.Where(n => !n.Id.EndsWith("_former_grief") && !n.Id.EndsWith("_uncertain"))) check(seen.Contains(scene.Id + "/" + node.Id), "Kiana further page not visited: " + scene.Id + "/" + node.Id);
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
             ready.Flags.UnionWith(scene.Requires); ready.Flags.Add("kiana.separated");
             check(Rules.Available(story, scene, ready), "Kiana further gate baseline invalid.");

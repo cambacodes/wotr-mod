@@ -6,7 +6,7 @@ The current expansion has no character approved against the complete revised req
 
 ## Current authored content
 
-Source: `development/content-volume-inventory.json`, for story SHA256 `D5E26EF079857222B1D306ECDD6E928F3755FCB6DFD829AB9DD03647A9DF9B87`.
+Source: `development/content-volume-inventory.json`, for story SHA256 `7C9D3E0DAC178A9F573341E28EDDD907AED6EE97D417DA7CAFBC1A309372522F`.
 These counts include all authored branches and choices, not the amount available in one playthrough.
 Exact segment deduplication removes identical passages but does not establish that every remaining word is meaningful or reachable.
 Verified external content has not yet been credited to these counts.
@@ -20,11 +20,12 @@ The combined script now exceeds that arithmetic floor, with meaningfulness, sele
 | Seelah | 30,012 | 27,748 | Earned progression and old-save catch-up integrated; full campaign, native-friend development, Trickster contact, art and runtime approval remain incomplete |
 | Konomi | 33,000 | 27,802 | Native political report context integrated with separate start and witnessed-conclusion history; assembled quality, ordinary-route depth and full-campaign requirements remain incomplete |
 | Jerribeth | 26,315 | 25,904 | Living Act 4 Trickster encounter and later reply integrated; death/departure restoration, universal Trickster attainability, assembled quality, art and runtime approval remain incomplete |
-| Kiana | 24,200 | 24,094 | Public incident and private aftermath integrated after review; aggregate floor crossed, but earlier separation development, mixed Elan histories, native contact, full campaign and release approval remain incomplete |
+| Kiana | 27,901 | 27,612 | Public incident and two changed-history continuations integrated; sixteen history-selector dead ends repaired; earlier separation, witnessed Elan return, other inconsistent states, native contact and full-route approval remain incomplete |
 | Ember, friendship | 6,458 | 6,415 | Incomplete; opening and puppet afternoons do not finish her friendship arc |
 | Soana | 11,841 | 11,742 | Opening and six-scene continuation integrated after literary and interruption review; length, full campaign, mythic restoration, art and runtime requirements remain incomplete |
 | Arsinoe | 13,443 | 13,343 | Opening and six-scene continuation integrated with native contact and temporary ceremony guards; length, full route, mythic development, art and runtime verification remain incomplete |
 | Targona, extension only | 5,400 | 5,355 | Six letters extend verified parent quest finales; existing parent content is excluded from these counts; assembled depth, broader access, artwork and runtime requirements remain incomplete |
+| Gesmerha | 6,952 | 6,930 | Six-scene native-contact opening integrated after independent review; full length, later campaign, Trickster recovery, art and runtime requirements remain incomplete |
 
 The shared Tirabade script retains the original 34 scene IDs, with the original quarrel now revised in development.
 This comparison does not claim that the currently installed package contains the whole development expansion.

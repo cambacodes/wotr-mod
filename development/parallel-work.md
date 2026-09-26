@@ -447,3 +447,13 @@ Gesmerha's six-scene opening is released at source SHA256 `EFB59EC4E0EA0C9282B63
 The Terendelev API investigation and Soana-v6/Targona-v1 art reviews are saved.
 Neither new art candidate passes every discipline: Soana still needs a clearer repair insertion, while Targona needs headroom and a visible hinged paper door.
 `terendelev_api_recover` now owns only `reference/story-review/gesmerha-opening-review.md` for independent literary and canon review.
+
+## Reviewed Gesmerha and Kiana integration
+
+Main now contains 264 scenes at SHA256 `7C9D3E0DAC178A9F573341E28EDDD907AED6EE97D417DA7CAFBC1A309372522F`.
+All three workers have released their latest files and reviews.
+Gesmerha's opening and Kiana's changed-history repairs received independent literary and technical review, with the requested source corrections verified before integration.
+Full final evidence and exclusions are in `reference/parallel/kiana-gesmerha-staging-checkpoint.md`.
+Main covers eleven roster characters across ten route groups, with zero fully approved routes.
+The next substantive work remains complete campaign depth, universal bespoke Trickster access, actual actor delivery, remaining roster introductions and accepted runtime art.
+No deployment occurred.

@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\kiana-targona-final-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\kiana-gesmerha-final-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 444,
-  "unique_targets": 95,
+  "binding_uses": 469,
+  "unique_targets": 103,
   "failures": [],
   "targets": {
     "54be53f0b35bf3c4592a97ae335fe765": {
@@ -12,6 +12,10 @@
     },
     "a609ed9b2205d034bb3bb04d2a255681": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+      "type": "BlueprintUnit"
+    },
+    "3ba3a0ff8575be8419159221177c1411": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/BlindCarver_Wintersun.jbp",
       "type": "BlueprintUnit"
     },
     "417ce3dcf3a9707488f2b9b2a790814b": {
@@ -24,6 +28,10 @@
     },
     "2570015799edf594daf2f076f2f975d8": {
       "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp",
+      "type": "BlueprintArea"
+    },
+    "0a5654e7dc18f074d9356009d55eb51b": {
+      "path": "World/Areas/Act_3_DemonsHerecy/WintersunOutdoor/WintersunOutdoor.jbp",
       "type": "BlueprintArea"
     },
     "8217b05e37078414981d994151f0ffb1": {
@@ -73,6 +81,10 @@
     "b2997124f3662e147a029a6f73e13468": {
       "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0011.jbp",
       "type": "BlueprintCue"
+    },
+    "2063ee21356b772408f5c9cfb3ed5bd0": {
+      "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
     },
     "2b1776f3e398685479ff6b16290b4cc2": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/AnswersList_0002.jbp",
@@ -132,6 +144,22 @@
     },
     "b5f301fbc4c44535a6309d610d5bd28a": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/DiplomacyOfficer_InDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "49839ba15f34bee469c4f093dace0811": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/BlindCarver_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "1fd9e6e1b5440ac469d5466a9b3d6814": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Illusions_removed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "23a7a6020a500004daa8e2c2f47b75a2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Illusions_upgrade.jbp",
+      "type": "BlueprintEtude"
+    },
+    "baa4820ac052d664bbaa261d17ce9b08": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Marhevok_StayLeader.jbp",
       "type": "BlueprintEtude"
     },
     "cd8666952065ce74d94d960a23482133": {
@@ -313,6 +341,10 @@
     "9fc5161813f1497f8eaad1563ac54211": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendCompanions.jbp",
       "type": "BlueprintEtude"
+    },
+    "c0d0b565f4b725241b96c148000f1910": {
+      "path": "World/Quests/c3/Wintersun/Wintersun_quest.jbp",
+      "type": "BlueprintQuest"
     },
     "5a5a533c9ce630a48b877f9a194840cb": {
       "path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp",

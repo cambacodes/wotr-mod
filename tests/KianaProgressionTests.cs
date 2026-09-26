@@ -143,6 +143,7 @@ internal static class KianaProgressionTests
                 "Kiana offers unsupported physical catch-up to a transformed Commander.");
             check(Rules.Available(story, farewell, transformed), "Kiana's existing transformed fallback is trapped behind unavailable full-route scenes.");
         }
-        check(visited.SetEquals(decision.Nodes.Select(n => n.Id)), "Kiana later-decision tests miss an authored page.");
+        // Changed native histories are walked by KianaReconciliationTests.
+        check(visited.SetEquals(decision.Nodes.Where(n => !n.Id.EndsWith("_former_grief") && !n.Id.EndsWith("_uncertain")).Select(n => n.Id)), "Kiana later-decision tests miss an authored page.");
     }
 }
