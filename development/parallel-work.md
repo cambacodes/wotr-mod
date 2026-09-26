@@ -5,6 +5,13 @@ This session provides three child-agent slots plus root, and all three slots are
 The table below is current as of the 291-scene checkpoint on 26 September 2026; later sections retain historical handoffs.
 Root owns shared engine changes, integration, exports, art generation and final verification.
 
+The user's next requested milestone is one complete route suitable for TTS evaluation, including consideration of Chatterbox.
+Prioritize bringing Konomi to an independently reviewed, stable full-route script after the current bounded assignments, rather than adding more unrelated openings first.
+This is a scheduling choice, not a claim that Konomi is complete or that her current text is frozen.
+Reassess her assembled route after the latest private-absence changes, then resolve the remaining career consequences, farewell and acquisition findings before freezing recording text.
+Art, actual delivery and save/ToyBox verification remain separate requirements for an in-game test release.
+Keep all 37 roster characters and their existing requirements in scope.
+
 | Worker | Current status | Exclusive writable files |
 | --- | --- | --- |
 | `/root/terendelev_api_recover` | Aranka parent-route research and continuation | `storylines/aranka_continuation.py`, `tests/ArankaContinuationTests.cs`, `reference/canon-review/aranka-extension-evidence.md`, `reference/parallel/aranka-continuation-handoff.md` |
