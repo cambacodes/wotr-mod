@@ -349,6 +349,16 @@ namespace Tirabade
             foreach (var etude in completedEtudes)
                 if (player.EtudesSystem.EtudeIsCompleted(etude.Value)) state.Flags.Add(etude.Key);
             ReadDialogHistory(player.Dialog, state);
+            if (flags.ContainsKey("konomi.missed_letter_sent") && etudes.TryGetValue("konomi.present", out var office))
+            {
+                // A dormant office is still an appointment, not a missed introduction.
+                bool officeActive = player.EtudesSystem.Etudes.GetFact(office) != null
+                    && !player.EtudesSystem.EtudeIsCompleted(office);
+                var contact = KonomiContactObservation.Observe(officeActive || state.Has("konomi.present"));
+                if (contact.Available) state.Flags.Add("konomi.missed_contact_available");
+                if (contact.Invalidated && (state.Has("konomi.missed_letter_sent") || state.Has("konomi.missed_private_access")))
+                    state.Flags.Add("konomi.missed_contact_invalidated");
+            }
             foreach (var contact in contactUnits)
                 if (NativeContact.IsAvailable(contact.Value)) state.AvailableContacts.Add(contact.Key);
             foreach (var revival in revivalUnits)

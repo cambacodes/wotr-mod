@@ -176,7 +176,8 @@ namespace Tirabade
             || story.CompletedEtudes.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag)
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
             || story.StartedDialogs.ContainsKey(flag)
-            || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later";
+            || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
+            || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated";
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
@@ -221,7 +222,8 @@ namespace Tirabade
             var authoredFlags = new HashSet<string>(story.Scenes.Select(s => s.Id)
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
-            var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later" }
+            var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
+                "konomi.missed_contact_available", "konomi.missed_contact_invalidated" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")));
             foreach (var pair in story.StartedDialogs)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
@@ -287,6 +289,8 @@ namespace Tirabade
                 foreach (var node in scene.Nodes)
                     foreach (var choice in node.Choices)
                     {
+                        if (choice.Set.Any(flag => flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"))
+                            throw new InvalidOperationException("Native contact observation cannot be authored: " + scene.Id);
                         if (choice.Next != null && !nodes.Contains(choice.Next)) throw new InvalidOperationException("Missing node: " + scene.Id + "/" + choice.Next);
                         if (choice.Check != null && (choice.Next != null || choice.Abort || choice.Revive != null
                             || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
