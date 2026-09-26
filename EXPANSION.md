@@ -43,6 +43,8 @@ Her revised 64-scene script passes the assembled editorial review at 91-93 acros
 This is the first assembled script approval, not full route release approval.
 The assembled writing review and its revision notes distinguish editorial approval from remaining game delivery, save and ToyBox verification.
 No character currently has full release approval, and the installed game content remains unchanged.
+The separate `build-expansion.ps1` now builds and verifies a local expansion package with matching binaries and staged artwork.
+Its [packaging checkpoint](reference/parallel/expansion-package-checkpoint.md) records the actual output and missing portrait keys; it does not install the package or certify full routes.
 
 The user has removed the TTS freeze milestone.
 Complete routes through review on their merits without rushing writing or lowering thresholds for a voice-testing deadline.
