@@ -1,0 +1,14 @@
+{
+  "unit": "3ba3a0ff8575be8419159221177c1411",
+  "portrait": "1b85b6cfc4a4485dbd3fda66cb1c3865",
+  "image": "7acbc825e1d92634c85d3ead341602ed",
+  "textures": [
+    {
+      "container": "7acbc825e1d92634c85d3ead341602ed",
+      "path_id": -7705981824331935830,
+      "name": "da39d0aa3f612704faaff8deb929ac2c_BCT_BlindCarver",
+      "file": "reference\\art-review\\gesmerha-native\\da39d0aa3f612704faaff8deb929ac2c_BCT_BlindCarver.png",
+      "sha256": "8361A96955EE34420D6222468F4D75DA442C0B35D022FC9F769DC7DADF629A8B"
+    }
+  ]
+}
