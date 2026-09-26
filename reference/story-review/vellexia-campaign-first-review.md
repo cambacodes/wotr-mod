@@ -60,3 +60,15 @@ The fees and circlet are authored narrative consequences, not verified player-in
 Final review must inspect interruption replay, terminal-only persistent choices, exact branch coverage, relevant native and mythic gates, complete selected-path lengths, cross-module repetition and all endings.
 Neither the aggregate word floor nor full RanRomance parity has been established by this preliminary read.
 No art, live contact, save/reload or ToyBox certification is granted here.
+
+## First revision check
+
+Root reread the affected source nodes after the author's revision.
+The successful examination now calls Tessar into the room before her contribution.
+Taking Vellexia's hand now offers separate kiss and hand-only answers.
+The shared case description now contains papers without implying she retained the circlet.
+The publication passage applies the limited permission to both the sample and the circulated account.
+The Trickster option no longer describes the native key as ordinary.
+The replay is consistently a single stored private recollection experienced in a breath while the witnesses and room continue normally.
+These repairs address the six preliminary findings, subject to the final frozen-source review and branch tests.
+The farewell and endings were still being completed at this check.
