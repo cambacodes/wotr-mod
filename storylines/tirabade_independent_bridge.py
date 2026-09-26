@@ -168,7 +168,7 @@ SCENES = [scene(
           c('[Consider the invitation. Speak again another day.]', abort=True)),
     ],
     requires=("anevia.lover", "irabeth.lover", "anevia.marital_terms_agreed", "irabeth.marital_terms_agreed"),
-    forbids=("closed", "anevia.closed", "irabeth.closed", GROUP_CLOSED, "trying", "committed", "inhuman", "anevia_away", "irabeth_away"),
+    forbids=("closed", "anevia.closed", "irabeth.closed", "irabeth.future_friends", GROUP_CLOSED, "trying", "committed", "inhuman", "anevia_away", "irabeth_away"),
     optional=True, delay=24, Chapters=[3, 5], Areas=[DREZEN], AnswerLists=ANSWERS,
     ContactUnit=ANEVIA, AdditionalContactUnits=[IRABETH], Relationship="tirabade")]
 
@@ -230,6 +230,26 @@ def integrate(payload):
     if "tirabade.negotiated_table" in books:
         raise ValueError("Tirabade independent bridge applied twice")
     payload["Scenes"].extend(deepcopy(SCENES))
+
+    # Ending either romance also ends the shared romance, without deciding the other's answer.
+    for book in books.values():
+        if book.get("Relationship") not in ("anevia", "irabeth"):
+            continue
+        for page in book["Nodes"]:
+            friendship_answers = []
+            for choice in page["Choices"]:
+                if {"anevia.closed", "irabeth.closed", "irabeth.future_friends"}.intersection(choice["Set"]):
+                    choice["Set"] = [*choice["Set"], GROUP_CLOSED]
+                    choice["Text"] += " [Any shared romance between the three of you also ends.]"
+                if book.get("Relationship") == "anevia" and "irabeth.lover" in choice["Requires"]:
+                    if "irabeth.closed" in choice["Requires"]:
+                        friendship = deepcopy(choice)
+                        friendship["Requires"] = [flag for flag in choice["Requires"] if flag != "irabeth.closed"] + ["irabeth.future_friends"]
+                        friendship["Forbids"] = [*choice["Forbids"], "irabeth.closed"]
+                        friendship_answers.append(friendship)
+                    elif "irabeth.closed" in choice["Forbids"]:
+                        choice["Forbids"] = [*choice["Forbids"], "irabeth.future_friends"]
+            page["Choices"].extend(friendship_answers)
 
     for who, ids in (
         ("anevia", ("a_cup", "a_errand", "a_roof", "a_crossing", "a_morning")),
@@ -296,7 +316,7 @@ def integrate(payload):
         if book.get("Relationship", "tirabade") == "tirabade" and book["Id"] not in personal_legacy:
             book["Forbids"].append(GROUP_CLOSED)
             if book["Id"] not in ("a_truth", "i_truth"):
-                book["Forbids"].extend(["anevia.closed", "irabeth.closed"])
+                book["Forbids"].extend(["anevia.closed", "irabeth.closed", "irabeth.future_friends"])
     for sid in ("ordinary", "departure"):
         book = books[sid]
         book["Requires"] = list(dict.fromkeys(flag for flag in book["Requires"] if flag != "table"))

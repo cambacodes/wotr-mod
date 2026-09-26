@@ -106,7 +106,7 @@ internal static class AneviaIndependentTests
         {
             var scene = story.Scenes.Single(s => s.Id == id); affair.Hour += 1000;
             check(Rules.Available(story, scene, affair), "Old single-affair predecessor unavailable: " + id);
-            affair = Program.Walk(scene, affair).First(s => s.Has(id) && !s.Has("closed"));
+            affair = Program.Walk(scene, affair).First(s => s.Has(id) && !s.Has("closed") && Program.LegacyTirabadeOutcome(s));
         }
         check(affair.Has("a_affair") && !affair.Has("i_affair"), "Single-affair witness has wrong native story history.");
         affair = Play("one_truth", affair);
@@ -121,7 +121,7 @@ internal static class AneviaIndependentTests
             if (id == "table") beforeTable = Program.Copy(legacy);
             var scene = story.Scenes.Single(s => s.Id == id); legacy.Hour += 1000;
             check(Rules.Available(story, scene, legacy), "Legacy triad predecessor unavailable: " + id);
-            legacy = Program.Walk(scene, legacy).First(s => s.Has(id) && !s.Has("closed"));
+            legacy = Program.Walk(scene, legacy).First(s => s.Has(id) && !s.Has("closed") && Program.LegacyTirabadeOutcome(s));
         }
         var beforePersonal = Program.Copy(legacy);
         var oldTimes = new Dictionary<string, int>(legacy.Times);
@@ -151,6 +151,54 @@ internal static class AneviaIndependentTests
         var local = Fresh(5); local.Flags.Add("irabeth.closed");
         check(Rules.Available(story, Get("unborrowed_hour"), local), "Irabeth-only refusal closes Anevia's independent acquisition.");
 
+        // Reproduce the review's real early-acquisition history without the optional farewell.
+        var noFarewell = Acquire(3, "active");
+        var earlyDeparture = Play("departure_note", noFarewell);
+        check(!earlyDeparture.Has("anevia.case_consequence_kept"), "Early departure fixture accidentally acquired the later plant.");
+        check(!Get("departure_note").Nodes.Single(n => n.Id == "days").Text.Contains("the plant"), "Early goodbye recalls an unacquired cutting.");
+        foreach (string id in new[] { "borrowed_signature", "the_paper_seller", "the_woman_with_the_basket", "the_counting_room", "what_the_warning_cost", "the_evening_without_a_case" })
+            noFarewell = Play(id, noFarewell);
+        check(!noFarewell.Has("anevia.departed_together"), "Skipped-farewell reproduction secretly played the optional visit.");
+        noFarewell.Chapter = 5;
+        var returnBook = Get("the_life_she_lived");
+        var unlettered = returnBook.Nodes[0].Choices[1];
+        check(Rules.Match(unlettered.Requires, unlettered.Forbids, noFarewell), "Early lover without a farewell lost the ordinary return conversation.");
+        check(!unlettered.Text.Contains("began this after") && !returnBook.Nodes.Single(n => n.Id == "new_days").Text.Contains("still deciding whether to ask"), "Optional farewell still stands in for an acquisition date.");
+        noFarewell = Play("the_life_she_lived", noFarewell);
+        var promised = Play("a_key_that_is_hers", noFarewell, state => state.Has("anevia.committed"));
+        check(promised.Has("anevia.future_chosen") && !promised.Has("anevia.developed"), "Provisional-commitment witness includes the final farewell.");
+        check(Rules.Available(story, Get("ending_promised"), promised) && !Rules.Available(story, Get("ending_unfinished"), promised), "Earned lasting commitment is denied before the optional final farewell.");
+        check(!Get("beths_answer").Nodes.Single(n => n.Id == "finish").Text.Contains("ordinary acquaintance"), "Active Irabeth lover is demoted by the shared agreement page.");
+        var shortAscension = Acquire(5, "none"); shortAscension.Flags.Add("ascended");
+        check(!shortAscension.Has("anevia.ordinary_life_kept") && Rules.Available(story, Get("ending_ascended"), shortAscension), "Ascension requires a game the lover never played.");
+        check(!Get("ending_ascended").Nodes[0].Text.Contains("little game"), "Short ascension invents the optional game.");
+
+        check(story.Etudes.TryGetValue("anevia.irabeth_killed_by_commander", out var killed) && killed == "c0f261c4a259da741ab0052f0100c2a0", "Commander-caused death is not bound to the actual native etude.");
+        foreach (var loss in new[] {
+            (Flag: "irabeth_dead", Ending: "ending_grief_unanswered"),
+            (Flag: "irabeth_gone", Ending: "ending_wife_absent") })
+        {
+            var pending = Program.Copy(promised); pending.Flags.Add(loss.Flag);
+            check(!pending.Has("anevia.survivor_continues"), "Provisional grief fixture fabricates a played continuation.");
+            var endings = story.Scenes.Where(book => book.Relationship == "anevia" && book.Owner == "Epilogue" && Rules.Available(story, book, pending)).ToArray();
+            check(endings.Length == 1 && endings[0].Id == "anevia." + loss.Ending, "Wife loss silently drops or duplicates earned romance before a new conversation: " + loss.Flag);
+        }
+        var departedBereaved = Program.Copy(promised);
+        departedBereaved.Flags.UnionWith(new[] { "irabeth_dead", "anevia_gone", "anevia_away" });
+        departedBereaved.AvailableContacts.Remove(anevia);
+        check(!Rules.Available(story, Get("a_grief_with_a_name"), departedBereaved), "Native post-coronation departure is bypassed for a grief visit.");
+        check(Rules.Available(story, Get("ending_gone"), departedBereaved), "Native departure loses the earned relationship's provisional outcome.");
+        var responsible = Program.Copy(promised);
+        responsible.Flags.UnionWith(new[] { "irabeth_dead", "anevia.irabeth_killed_by_commander" });
+        check(!Rules.Available(story, Get("a_grief_with_a_name"), responsible), "Commander who killed Irabeth gets generic support.");
+        foreach (bool gone in new[] { false, true })
+        {
+            if (gone) responsible.Flags.Add("anevia_gone");
+            var endings = story.Scenes.Where(book => book.Relationship == "anevia" && book.Owner == "Epilogue" && Rules.Available(story, book, responsible)).ToArray();
+            check(endings.Length == 1 && endings[0].Id == "anevia.ending_wife_killed", "Personal responsibility receives contradictory generic bereavement/absence outcome.");
+        }
+
+        // Conditional source coverage only. Native post-Iz free-dialogue availability is not proved.
         var surviving = Program.Copy(developed!); surviving.Flags.Add("irabeth_dead");
         surviving = Play("a_grief_with_a_name", surviving);
         check(Rules.Available(story, Get("ending_survivor"), surviving), "Irabeth's death globally kills Anevia's continuation.");

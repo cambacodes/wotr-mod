@@ -1,0 +1,208 @@
+{
+  "source_sha256": "C258F45ADC334A8C66807BC8BC27E4B634E1397D5CDE68F95E80D23E0D6A0346",
+  "description": "One concrete ordinary early acquisition path, first completing nonclosed choices, success outcome, sealed account, lasting commitment. Not an exhaustive minimum or maximum. Native contacts and chapter transitions remain supplied prerequisites, not Unity proof.",
+  "word_counter": "Markup removed; regex word tokens including apostrophes and hyphens; prose plus selected answers.",
+  "selected_words": 14147,
+  "scenes": [
+    {
+      "scene": "irabeth.a_name_on_the_list",
+      "words": 1027,
+      "nodes": [
+        "start",
+        "piece",
+        "guard",
+        "interest",
+        "flirt",
+        "finish"
+      ]
+    },
+    {
+      "scene": "irabeth.the_question_outside_duty",
+      "words": 669,
+      "nodes": [
+        "start",
+        "rank",
+        "marriage",
+        "wife",
+        "wait"
+      ]
+    },
+    {
+      "scene": "irabeth.anevias_answer",
+      "words": 774,
+      "nodes": [
+        "start",
+        "asked",
+        "other",
+        "separate",
+        "terms",
+        "yes"
+      ]
+    },
+    {
+      "scene": "irabeth.the_evening_she_chose",
+      "words": 1080,
+      "nodes": [
+        "start",
+        "new",
+        "room",
+        "play",
+        "yours",
+        "kiss",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.the_seized_wagon",
+      "words": 1257,
+      "nodes": [
+        "start",
+        "officer",
+        "smith",
+        "test",
+        "tested",
+        "cost",
+        "next"
+      ]
+    },
+    {
+      "scene": "irabeth.the_sealed_account",
+      "words": 1446,
+      "nodes": [
+        "start",
+        "ordel",
+        "copy",
+        "cost",
+        "sealed",
+        "answer_sealed",
+        "lieutenant",
+        "private"
+      ]
+    },
+    {
+      "scene": "irabeth.ten_minutes_in_a_hall",
+      "words": 1289,
+      "nodes": [
+        "start",
+        "hall",
+        "perform",
+        "ending",
+        "outside",
+        "walk",
+        "kiss_question",
+        "kiss",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.the_cost_afterward",
+      "words": 857,
+      "nodes": [
+        "start",
+        "sealed",
+        "officers",
+        "name",
+        "help",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.without_an_account",
+      "words": 865,
+      "nodes": [
+        "start",
+        "morale",
+        "ordinary",
+        "want",
+        "close",
+        "private",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.before_the_unmapped_road",
+      "words": 627,
+      "nodes": [
+        "start",
+        "distance",
+        "ordinary",
+        "touch",
+        "kiss",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.an_unposted_line",
+      "words": 309,
+      "nodes": [
+        "start",
+        "absurd",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.the_person_who_returns",
+      "words": 631,
+      "nodes": [
+        "start",
+        "returned",
+        "history",
+        "letter",
+        "ahead",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.when_the_instruction_is_used",
+      "words": 1031,
+      "nodes": [
+        "start",
+        "hearing",
+        "vela",
+        "result",
+        "name",
+        "last_cost",
+        "sealed_end",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.a_road_she_would_choose",
+      "words": 1172,
+      "nodes": [
+        "start",
+        "drawings",
+        "towns",
+        "practice",
+        "measured",
+        "want",
+        "lasting",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.the_hour_before_battle",
+      "words": 831,
+      "nodes": [
+        "start",
+        "wanted",
+        "future",
+        "lasting",
+        "wife",
+        "wife_living",
+        "choice",
+        "night",
+        "end"
+      ]
+    },
+    {
+      "scene": "irabeth.ending_lasting",
+      "words": 282,
+      "nodes": [
+        "start",
+        "marriage",
+        "living"
+      ]
+    }
+  ]
+}

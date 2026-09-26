@@ -125,6 +125,16 @@ internal static class Program
             Console.WriteLine(JsonSerializer.Serialize(bindings));
             return;
         }
+        if (args.Contains("--tirabade-combined"))
+        {
+            var baseline = JsonSerializer.Deserialize<Story>(File.ReadAllText(args[args.Length - 2]), new JsonSerializerOptions { IncludeFields = true })!;
+            AneviaIndependentTests.Run(story, Check);
+            IrabethIndependentTests.Run(story, Check);
+            TirabadeIndependentBridgeTests.Run(story, baseline, Check);
+            TirabadeCombinedHistoryTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} combined individual, bridge and played-history assertions. Live delivery remains unverified.");
+            return;
+        }
         if (args.Contains("--tirabade-bridge"))
         {
             var baseline = JsonSerializer.Deserialize<Story>(File.ReadAllText(args[args.Length - 2]), new JsonSerializerOptions { IncludeFields = true })!;
@@ -254,6 +264,19 @@ internal static class Program
             "aranka.an_evening_uncommanded", "aranka.the_song_afterwards", "aranka.no_encore_needed",
             "konomi.the_names_admitted", "konomi.the_answer_on_record"
         };
+        if (story.Scenes.Any(s => s.Id == "anevia.the_last_ordinary_thing"))
+        {
+            AneviaIndependentTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "anevia").Select(s => s.Id));
+        }
+        if (story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
+        {
+            IrabethIndependentTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "irabeth").Select(s => s.Id));
+        }
+        if (story.Scenes.Any(s => s.Id == "tirabade.negotiated_table")
+            && story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
+            TirabadeCombinedHistoryTests.Run(story, Check);
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;

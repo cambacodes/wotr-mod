@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\tirabade-bridge-fixture.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\tirabade-combined-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 703,
-  "unique_targets": 137,
+  "binding_uses": 763,
+  "unique_targets": 143,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -182,9 +182,21 @@
       "path": "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "8e808b69a43ed4f43b8eb39d27990a4a": {
+      "path": "World/Dialogs/NPC_Common/Anevia/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
     "871af36f2ab2b1f40b5de77976c54276": {
       "path": "World/Dialogs/NPC_Common/Irabeth/AnswersList_0009.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "c7a7717c516039d498a7525baf6abe04": {
+      "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0071.jbp",
+      "type": "BlueprintCue"
+    },
+    "d47bcd8d88f8ea149a596ca927e1153f": {
+      "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0197.jbp",
+      "type": "BlueprintCue"
     },
     "ecaf5cfe8087a4f45a2269974f4885c9": {
       "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
@@ -196,6 +208,14 @@
     },
     "09f46662bcd14a03a0874267e16d6e6f": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "15e0048c7daf0ac4999c2313b58df0e3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5b01aa690202e584888dfc600a4aac0a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
       "type": "BlueprintEtude"
     },
     "c6e9a69f602a48e18424f4b6d71062b4": {
@@ -328,6 +348,10 @@
     },
     "395aad049186445f9f474d0a769ec8ff": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c0f261c4a259da741ab0052f0100c2a0": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethKilledByPlayer.jbp",
       "type": "BlueprintEtude"
     },
     "148423f1d35917946a5ebeeb4f19246c": {

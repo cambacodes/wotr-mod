@@ -9,11 +9,11 @@ The original 59 scenes, shared builder, engine, generated exports and other auth
 
 | File | SHA256 |
 | --- | --- |
-| `storylines/anevia_independent.py` | `23A3E38B03621C25A9CDF762E695B2005651D7507D47FD87E7B6AF0F1D2BB7B0` |
-| `tests/AneviaIndependentTests.cs` | `4DA6EC71C3DB94AD60D0E761F61DA63BA0B0107039540729EC9FE090F0AB5D43` |
-| Temporary candidate including the labeled bridge-declaration fixture | `3A4C84C24110C4EDA9552623BDE1E8BBC1C385FC97BA19421F45135E1F1E03B4` |
+| `storylines/anevia_independent.py` | `8FFC94B47F698DED312BC30311964C690F79E97FD79A05CBFE93A0831DC5F6AA` |
+| `tests/AneviaIndependentTests.cs` | `527304928C934EAD49F763A24BDB9D38FF889802B66A7C51688F2B22EE7F0A1E` |
+| Temporary candidate including the labeled bridge-declaration fixture | `234B941E7C136A2C58D44E4A771D19A2544618DF1F4CF844575B17D13DADEB89` |
 
-The module exports `RELATIONSHIP` and `SCENES`.
+The module exports `RELATIONSHIP`, `SCENES` and the required native `ETUDES` binding.
 Root owns registration and the separate bridge overlay.
 No author-assigned writing score or approval is supplied.
 
@@ -80,17 +80,21 @@ The later key conversation offers lasting commitment, open continuation or a loc
 `departure_note` is Chapter 3 only and records `anevia.departed_together`.
 `the_blank_half` is a remote Chapter 4 scene requiring that actual farewell.
 It keeps a letter or memory with the Commander and invents no Abyss courier.
-`the_life_she_lived` is Chapter 5 and distinguishes the actual earlier absence from a fresh post-return courtship.
+`the_life_she_lived` is Chapter 5 and distinguishes an actually kept farewell from a general conversation about unseen days.
+The general branch fits both an early lover who skipped the optional farewell and fresh post-return courtship.
 It does not infer a pre-Abyss romance from completing a scene in Chapter 5.
 
 `a_grief_with_a_name` requires native `irabeth_dead`, an already chosen Anevia relationship and physically available Anevia.
 It distinguishes grief, continuing affection and replacement, with a local ending if the Commander cannot continue.
 It does not set a recovery flag, clear the native death or infer a particular unverified manner of death.
-This is current native-baseline bereavement support.
+This is conditional authored bereavement content, not a demonstrated generally available native visit.
+The targeted native audit `reference/canon-review/anevia-after-irabeth-death-audit.md` shows the ceremony starting AneviaGone and hiding her capital actor.
+No ordinary pre-departure conversation window has been proved.
+The scene excludes the actual native Commander-killed-Irabeth etude and never overrides own death, departure or physical contact.
 Historical sticky death flags and any future verified recovery service need explicit integration before claiming recovery-aware bereavement delivery.
 No speculative recovery marker is included.
 
-Eleven ending scenes cover developed commitment, developed open continuation, unfinished romance, local parting, acknowledged survivor continuation, Anevia's own death, departure without assuming death, Commander sacrifice, incompatible transformed power, ascension without automatic inclusion and the dedicated Aeon dispatcher.
+Fifteen ending scenes cover developed commitment, developed open continuation, unfinished romance, local parting, acknowledged survivor continuation, Anevia's own death, departure without assuming death, Commander sacrifice, incompatible transformed power, ascension without automatic inclusion the dedicated Aeon dispatcher, promised commitment before farewell, unanswered grief, wife absence and the consequence of killing Irabeth.
 All have explicit scene guards because epilogue availability bypasses ordinary relationship-record closure checks.
 Individual endings suppress themselves for active legacy `trying` or `committed`, with authored overrides only for the actual `tirabade.group_closed` bridge result.
 Global `closed`, local `anevia.closed` where applicable and native guards remain binding.
@@ -137,15 +141,15 @@ The remote letter and ending pages do not require a live speaker actor.
 
 ## Size and played-path evidence
 
-The module contains 20 main or alternative scenes and 11 endings.
-Using `tools/measure-story-content.py`, it contains 24,757 raw words and 24,729 distinct normalized segment words.
-The raw total comprises 22,292 prose words and 2,465 answer words.
-Only 28 exact repeated words were removed by that segment method; it does not certify semantic originality or absence of repeated ideas.
+The module contains 20 main or alternative scenes and 15 endings.
+Using `tools/measure-story-content.py`, it contains 25,601 raw words and 25,569 distinct normalized segment words.
+The raw total comprises 23,083 prose words and 2,518 answer words.
+Only 32 exact repeated words were removed by that segment method; it does not certify semantic originality or absence of repeated ideas.
 No old game, parent-mod or shared Tirabade prose is credited toward this module's 21,000-word per-character planning floor.
 
 The existing selected-path measurement functions were reused in memory for Anevia, retaining compatible path minima and maxima and one ending.
-An early negotiated path with the actual Chapter 3 farewell and Chapter 4 letter contains 10,898-13,104 selected words across 17 scenes including one developed ending.
-A fresh Chapter 5 negotiated path contains 10,073-12,246 selected words across 15 scenes including one developed ending.
+An early negotiated path with the actual Chapter 3 farewell and Chapter 4 letter contains 11,228-13,399 selected words across 17 scenes including one developed ending.
+A fresh Chapter 5 negotiated path contains 10,418-12,551 selected words across 15 scenes including one developed ending.
 The calculation assumes appropriate physical location, live contacts and sufficient waits.
 It measures source choices, not Unity or a native campaign played from a fresh save.
 The installed RanRomance benchmark is an aggregate inventory, so these selected lengths must not be compared with its full-branch totals as if both measured the same thing.
@@ -154,10 +158,10 @@ The installed RanRomance benchmark is an aggregate inventory, so these selected 
 
 The temporary standalone project is `C:/Users/Z/AppData/Local/Temp/anevia-independent-z5an3x98/Check.csproj`.
 It compiles actual `src/Story.cs`, the new focused tests and the existing `Program.Copy`/`Program.Walk` helpers.
-`Rules.Validate` and the focused suite passed 315,136 assertions.
+`Rules.Validate` and the focused suite passed 341,196 assertions.
 
 ```powershell
-& 'C:/Users/Z/AppData/Local/RanRomanceTools/dotnet/dotnet.exe' run --project 'C:/Users/Z/AppData/Local/Temp/anevia-independent-z5an3x98/Check.csproj' -- 'C:/Users/Z/AppData/Local/Temp/anevia-independent-z5an3x98/candidate.json'
+& 'C:/Users/Z/AppData/Local/RanRomanceTools/dotnet/dotnet.exe' run --project 'C:/Users/Z/AppData/Local/Temp/anevia-independent-z5an3x98/Check.csproj' -- 'C:/Users/Z/AppData/Local/Temp/anevia-independent-z5an3x98/revised-candidate.json'
 ```
 
 The candidate adds one explicitly labeled, never-played `test.bridge_flag_declaration` scene solely to declare root's pending authored bridge output flags for override validation.
@@ -173,3 +177,43 @@ It checks current contact loss and area change, partial-page completion, preserv
 No source-only test proves live actor state, book presentation, native campaign timing, endgame dispatch order or real save serialization.
 The source does not implement Trickster resurrection or retrieval, and surviving availability after every native outcome remains dependent on the actual actor and native restrictions.
 Independent literary/canon review, root's real bridge integration, broader checks, art and live presentation are still required before calling Anevia delivered.
+
+## Revision after first independent review
+
+The reviewed baseline is preserved in git commit `003e7e6`; the first review remains pinned to source `23A3E38B03621C25A9CDF762E695B2005651D7507D47FD87E7B6AF0F1D2BB7B0`.
+This release addresses the mandatory findings in `reference/story-review/anevia-independent-first-review.md` and requires independent rereview.
+No author score or whole-route approval is implied.
+
+The no-farewell return branch now asks about unseen days without claiming acquisition happened after the Abyss.
+The ordinary provisional ending no longer denies an open relationship already chosen; a separate `ending_promised` remembers actual lasting commitment before the final farewell.
+`ending_grief_unanswered` and `ending_wife_absent` preserve earned history without manufacturing the optional grief visit, a death from absence, or renewed consent.
+`ending_wife_killed` handles the native Commander-caused death explicitly and does not turn prior affection into forgiveness.
+The existing gone ending remains available when native Coronation has made Anevia depart.
+
+Root must merge `ETUDES['anevia.irabeth_killed_by_commander'] = 'c0f261c4a259da741ab0052f0100c2a0'` during registration.
+This binding reads `IrabethKilledByPlayer`; no authored choice produces or clears it.
+The generic support visit and survivor ending forbid it.
+The personal-responsibility ending supersedes generic gone/grief outcomes while retaining own-death, incompatible power and ascension precedence.
+
+The pear choice now shares a slice rather than consuming the fruit later offered.
+The direct kiss and refusal no longer move an unworked box onto the sill.
+Both paper-seller entries hear the customer evidence before the impression methods use wet cuffs or blue dye.
+The confrontation names the false notice without asserting which copy survived the warning choice, and the basket's movement no longer assumes the optional desk placement.
+The already-read letter is folded rather than called unopened.
+The shared desire page brings both people together before touching the Commander's neck.
+The early farewell and its remote memory no longer recall a cutting obtained only later.
+Irabeth's shared agreement page keeps the offered conversation without calling a supported lover an acquaintance.
+Ascension recalls universally established teasing rather than an unplayed game.
+
+The future conversation now develops Anevia's native stone-oven and Desnan-refuge dream as part of her life with Irabeth, while letting the Commander choose helping with a first loaf or sharing the meal.
+The two appended answers and pages earn `anevia.bread_company` or `anevia.bread_guest` as actual discussed preferences, not a completed baking event.
+The grief memory recalls what Irabeth's absence means for that specific dream and does not put the Commander in her place.
+These new conversations are authored alternatives grounded in native cues, not a claim that the native dialogue already said them.
+Repeated explanations after shown actions were removed or replaced with physical details and exchanges, including the meta-comments about what an ending awards.
+
+The focused suite now plays the previously failing early-acquisition/no-farewell history, commitment before final farewell, both unresolved wife-loss states, native departure, short ascension without a game, active Irabeth lover agreement and Commander-caused wife death.
+It retains full ordinary campaign branches, existing affair/triad histories, interruption and unrelated-romance preservation checks.
+`Rules.Validate` plus the focused suite pass 341,196 assertions against the revised candidate.
+Narration markup was checked for balanced, non-nested tags across every page.
+The new revision retains the above-21,000 aggregate planning floor without crediting existing shared content.
+Actual bridge joins, native delivery after loss and future bespoke Trickster recovery remain separate unfinished work.

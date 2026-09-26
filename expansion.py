@@ -21,12 +21,13 @@ from storylines import tirabade_chronology
 from storylines import konomi_private_consequence, konomi_early_reciprocity
 from storylines import aranka_continuation
 from storylines import konomi_contact, konomi_political_consequence
+from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import tirabade_later, tirabade_campaign, seelah, seelah_later, seelah_fate, seelah_abyss, seelah_aftermath, konomi, konomi_history, konomi_private, konomi_distance, konomi_future, konomi_private_hearing, jerribeth, jerribeth_consequences, kiana, kiana_consequences, ember, ember_afternoons, soana_opening
 
 ROOT = Path(__file__).parent
 
 
-def make_expansion():
+def make_expansion(*, independent_tirabade=True):
     payload = copy.deepcopy(make_story())
     # Explicit legacy metadata also lets older authored Story.json files keep using
     # the C# defaults while this larger export carries independent relationships.
@@ -173,6 +174,13 @@ def make_expansion():
                 if node.get("Speaker") == "Narrator" and not node.get("Portrait"):
                     node["Portrait"] = "Konomi"
     payload["Scenes"].extend(copy.deepcopy(soana_late_campaign.SCENES))
+    if independent_tirabade:
+        for who, module in (("anevia", anevia_independent), ("irabeth", irabeth_independent)):
+            payload["Relationships"][who] = copy.deepcopy(module.RELATIONSHIP)
+            payload["Scenes"].extend(copy.deepcopy(module.SCENES))
+        payload["Etudes"].update(anevia_independent.ETUDES)
+        irabeth_independent.integrate(payload)
+        tirabade_independent_bridge.integrate(payload)
     return payload
 
 
