@@ -109,3 +109,12 @@ The inventory records 50,014 distinct-segment Konomi words across 64 scenes and 
 Legacy absence page-coverage fixtures retain their earlier scope while the new chronology suite plays every new career page through actual Chapter5 predecessors.
 The authoring-build isolation check and exact export comparison preserve existing source and save identities.
 No installed content has changed.
+
+## User priority correction
+
+The user explicitly removed the TTS freeze milestone: route completion should follow review, without rushing content for voice testing.
+Earlier references to a planned TTS freeze are historical and no longer govern the next milestone.
+Do not freeze or export a route for TTS merely to claim an early deliverable.
+Continue assembled writing, canon, choice, continuity, art and delivery verification on their actual merits.
+The complete 37-character scope and per-character quality and depth requirements remain unchanged.
+Soana's late-campaign authoring and Tirabade's independent-relationship repair planning continue in separate owned files while Konomi's final review proceeds.
