@@ -19,7 +19,7 @@ For another installation, pass `-p:GameDir=<game directory>/` to the build and t
 The .NET Framework 4.8 runtime and Python must be available.
 Set `RRT_PYTHON` to the actual interpreter executable on another machine.
 Without that override the runner uses `python` from the process search path; this machine's PyManager launcher has intermittently delivered empty redirected input, so the checked command selects the interpreter directly.
-The parent manifest supplies explicitly tagged source fixtures for the current Targona extension, not parent-mod initialization.
+The combined parent manifest supplies explicitly tagged source fixtures for the Targona and Aranka extensions, not parent-mod initialization.
 The tiny Python helper reads the installed `blueprints.zip` because .NET Framework's ZIP reader rejects this installation's archive headers.
 It extracts only requested native records and writes no files.
 

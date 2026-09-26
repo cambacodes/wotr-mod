@@ -26,6 +26,20 @@ ToyBox Love Is Free and Jealousy Begone must remain usable without exclusivity c
 The addon must not change either ToyBox setting.
 The user's earlier instruction to proceed without previews remains applicable.
 
+## Current development checkpoint
+
+The integrated development export has 305 scenes across 13 route groups covering 14 of the 37 planned characters.
+These counts describe written and integrated material, not completed routes.
+Konomi has 64 scenes, with the independently reviewed late-career continuity repair integrated and a reviewed general portrait staged.
+Her current export is pinned in [the integration checkpoint](reference/parallel/konomi-political-integration-checkpoint.md).
+The assembled writing review and its revision notes distinguish editorial approval from remaining game delivery, save and ToyBox verification.
+No character currently has full release approval, and the installed game content remains unchanged.
+
+The user has removed the TTS freeze milestone.
+Complete routes through review on their merits without rushing writing or lowering thresholds for a voice-testing deadline.
+Soana's late-campaign continuation and the Tirabade independent-relationship repair are progressing in separate owned files.
+The older scene counts below are historical checkpoints, not the current inventory.
+
 ## Release evidence required
 
 Every resulting character arc must meet or exceed a fully fledged RanRomance route in meaningful content amount and quality.
