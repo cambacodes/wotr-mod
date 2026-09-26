@@ -215,6 +215,32 @@ Use that sequence to test the adapter, then supplement it with focused fixtures.
 - Verify restored current life changes the relevant ending without rewriting historical death or resurrecting a refused romance.
 - Exercise other existing romances with ToyBox free-love/no-jealousy enabled, keeping their flags unchanged.
 
-The concrete next deliverable is the observer and its managed fixtures for the five verified spawners.
-The first playable restoration should target an accepted meeting with a retained living departed actor, followed by retained Iz-death recovery once native resurrection and relocation are proven.
+The observer and its managed fixtures for the five verified spawners are now integrated in commit `619714f`.
+The native transfer audit and isolated ownership probe are recorded in `native-retained-actor-transfer-audit.md` and its sibling Python probe.
+Root independently reran the probe against the installed assembly and read the native add, remove and translocation bodies.
+The probe passed with zero build warnings or errors, demonstrating duplicate source and target list membership after adding the same object to two states.
+This confirms that native add is not a transfer operation; it does not test Unity movement or save serialization.
+The next implementation prerequisite is a reviewed same-state meeting-position contract that handles native event ownership.
+The first playable restoration should target an accepted meeting with a retained living departed actor in its own capital state, followed by retained Iz-death recovery once native resurrection and relocation are proven.
+Cross-area travel remains required work rather than an assumed capability of the same-state operation.
 Anevia's own death and Chapter 6-only entry remain named missing work, not silent exclusions from the eventual universal Trickster requirement.
+
+## Positioning conflict evidence added after the observer
+
+`tirabade-positioning-native.json` preserves all 46 installed etudes under `World/Etudes/` whose exact conflicting-group list contains Anevia's group `27d10af5650a01b4d803da81799cbc86` or Irabeth's group `997d865aa6f17cc48b480bd62ba02841`.
+These records were extracted from the installed blueprint archive, not inferred from filenames.
+This is a complete match for those two group references in that archive subtree, not a proof that every action elsewhere that can move the women has been found.
+
+Both default throne-room placements have priority -50 and both default hidden actors have priority -100.
+The departure hide etudes have priority 99, while coronation placement and several capital events use 100.
+Other members include Camellia, Arueshalae, Wenduag and Sosiel events, crusade defeat, the queen's expedition and mythic scenes, with priorities reaching 1000.
+A recovery etude cannot safely choose a large priority merely to beat the departure hide state.
+It must yield to actual native events, including relevant lower-priority quest conversations that a permanent priority increase could suppress.
+
+Anevia's `NotInDrezen` record has a second play trigger in addition to hiding her.
+When objective `1a32315f0f94f6a4588c2705f9782fee` is Started, it fails that objective and `6b9242706b8c43d49003813b869f023e`.
+Releasing a custom conflict claim may allow native play triggers to run again; the implementation must inspect that lifecycle before claiming release is harmless.
+Do not disable this native quest behavior or rewrite its historical result to support a romance.
+
+Before implementing the invitation position, inspect native conflict selection and activation/deactivation behavior, then define how a pending native scene preempts the meeting and how the same actor is reobserved afterward.
+The current evidence does not yet approve an etude priority, a new meeting locator, a hiding override, or a recovery caller.
