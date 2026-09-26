@@ -16,6 +16,7 @@ from storylines import anevia_independent, tirabade_independent_bridge
 
 payload = make_expansion()
 payload["Relationships"]["anevia"] = deepcopy(anevia_independent.RELATIONSHIP)
+payload["Etudes"].update(getattr(anevia_independent, "ETUDES", {}))
 payload["Scenes"].extend(deepcopy(anevia_independent.SCENES))
 payload["Relationships"]["irabeth"] = dict(
     Title="Irabeth contract fixture, not a played route", StartedFlag="irabeth.started",

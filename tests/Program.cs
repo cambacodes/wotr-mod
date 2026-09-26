@@ -53,10 +53,15 @@ internal static class Program
 
     private static Snapshot Complete(Scene scene, Snapshot state)
     {
-        var outcomes = Walk(scene, state).Where(s => !s.Has("closed") && s.Has(scene.Id)).OrderByDescending(s => s.Flags.Count).ToList();
+        var outcomes = Walk(scene, state).Where(s => !s.Has("closed") && s.Has(scene.Id) && LegacyTirabadeOutcome(s)).OrderByDescending(s => s.Flags.Count).ToList();
         Check(outcomes.Count > 0, "No continuing path in " + scene.Id);
         return outcomes[0];
     }
+
+    // These witnesses deliberately play the retained affair campaign; separate suites play the added alternatives.
+    internal static bool LegacyTirabadeOutcome(Snapshot state) => !new[] {
+        "anevia.closed", "irabeth.closed", "anevia.courtship_requested", "irabeth.courtship_requested", "tirabade.group_closed"
+    }.Any(state.Has);
 
     private static Snapshot Campaign(int startChapter, bool playAbyss)
     {
@@ -64,13 +69,17 @@ internal static class Program
         for (int chapter = startChapter; chapter <= 5; chapter++)
         {
             state.Chapter = chapter;
+            state.Area = chapter == 4 ? "" : "2570015799edf594daf2f076f2f975d8";
+            state.AvailableContacts.Clear();
+            if (chapter != 4) state.AvailableContacts.UnionWith(new[] { "b5e867e13503c6f41bb1316705efb4a2", "280d4712dceb37f4a88e98f1f4c6e64f" });
             state.Flags.Remove("chapter_one"); state.Flags.Remove("chapter_later");
             state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
             if (chapter == 4 && !playAbyss) continue;
             for (int attempt = 0; attempt < 50; attempt++)
             {
                 state.Hour += 72;
-                var scene = story.Scenes.FirstOrDefault(s => s.Relationship == "tirabade" && !s.Optional && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
+                var scene = story.Scenes.FirstOrDefault(s => s.Relationship == "tirabade" && !s.Id.StartsWith("three_", StringComparison.Ordinal)
+                    && !s.Optional && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
                 if (scene == null) break;
                 state = Complete(scene, state);
             }
@@ -335,7 +344,10 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "three_locks")) CheckTirabadeLocks();
-        CheckTirabadeQuarrel();
+        if (args.Contains("--installed-legacy"))
+            Check(story.Scenes.Count == 34 && story.Relationships.Count == 1,
+                "Installed-legacy mode is only for the original standalone 34-scene story.");
+        CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
         KonomiTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
         if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();
@@ -1131,7 +1143,7 @@ internal static class Program
         }
     }
 
-    private static void CheckTirabadeQuarrel()
+    private static void CheckTirabadeQuarrel(bool expanded)
     {
         var scene = story.Scenes.Single(s => s.Id == "ordinary");
         var state = new Snapshot { Chapter = 3, Hour = 1000 };
@@ -1140,8 +1152,12 @@ internal static class Program
         var repaired = outcomes.Where(s => !s.Has("closed")).ToArray();
         Check(repaired.All(s => s.Has("kept_terms") && s.Has("ordinary")), "Quarrel repair leaves the original continuation locked.");
         Check(repaired.Any(s => !s.Has("ordinary.find_after") && !s.Has("ordinary.release_wait")), "Original repair now forces a newly added preference.");
-        Check(repaired.Any(s => s.Has("ordinary.find_after")), "Commander cannot ask for a shorter later meeting.");
-        Check(repaired.Any(s => s.Has("ordinary.release_wait")), "Commander cannot ask to make another plan instead of waiting.");
+        // The installed legacy artifact predates these two authored answers; default builds must retain both.
+        if (expanded)
+        {
+            Check(repaired.Any(s => s.Has("ordinary.find_after")), "Commander cannot ask for a shorter later meeting.");
+            Check(repaired.Any(s => s.Has("ordinary.release_wait")), "Commander cannot ask to make another plan instead of waiting.");
+        }
         Check(repaired.All(s => !(s.Has("ordinary.find_after") && s.Has("ordinary.release_wait"))), "Different waiting preferences overlap.");
         Check(outcomes.Any(s => s.Has("closed") && s.Has("parted_honestly")), "Quarrel revision removes the existing separation outcome.");
     }

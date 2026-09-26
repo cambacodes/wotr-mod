@@ -19,13 +19,14 @@ internal static class TirabadeChronologyTests
             var scene = Find(id);
             var ready = Ready(scene, state);
             check(Rules.Available(story, scene, ready), "Chronology played predecessor unavailable: " + id);
-            return Program.Walk(scene, ready).Where(s => s.Has(id) && !s.Has("closed"))
+            return Program.Walk(scene, ready).Where(s => s.Has(id) && !s.Has("closed") && Program.LegacyTirabadeOutcome(s))
                 .OrderByDescending(s => s.Flags.Count).First();
         }
         var sequence = "a_cup i_watch a_errand i_hands a_roof i_respite a_crossing i_crossing a_morning i_morning reckoning a_truth i_truth table ordinary a_self i_self".Split(' ');
         Snapshot NewState(int chapter)
         {
             var state = new Snapshot { Chapter = chapter, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
+            state.AvailableContacts.UnionWith(new[] { "b5e867e13503c6f41bb1316705efb4a2", "280d4712dceb37f4a88e98f1f4c6e64f" });
             state.Flags.UnionWith(new[] { "trickster", "seelah.committed", "arueshalae.committed" });
             return state;
         }
@@ -93,6 +94,9 @@ internal static class TirabadeChronologyTests
         check(!Page("ending_loss", "end").Text.Contains("scarcely learned to imagine"), "Loss ending minimizes completed shared development.");
         check(Page("ending_loss", "end").Choices.Count == 1 && Page("ending_loss", "end").Choices[0].Next == null,
             "Loss repair changes the terminal ending contract.");
-        check(Find("departure").MaxChapter == 3 && Find("departure").Requires.Contains("table"), "Departure no longer proves the negotiated Chapter 3 history used by this overlay.");
+        var departure = Find("departure");
+        check(departure.MaxChapter == 3 && (departure.Requires.Contains("table")
+            || departure.Requires.Contains("trying") && departure.RequiresAny.SequenceEqual(new[] { "table", "tirabade.negotiated_table" })),
+            "Departure no longer requires an actual Chapter 3 shared agreement.");
     }
 }

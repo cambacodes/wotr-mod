@@ -10,6 +10,7 @@ internal static class TirabadeProgressionTests
         var future = story.Scenes.Single(s => s.Id == "future");
         var watch = story.Scenes.Single(s => s.Id == "last_watch");
         var state = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
+        state.AvailableContacts.UnionWith(new[] { "b5e867e13503c6f41bb1316705efb4a2", "280d4712dceb37f4a88e98f1f4c6e64f" });
         state.Flags.UnionWith(new[] { "power", "a_self", "i_self", "power_terms", "kept_terms", "ordinary",
             "trying", "a_affair", "i_affair", "seelah.committed", "arueshalae.committed" });
         check(Rules.Available(story, future, state), "Tirabade future reproduction setup is unavailable.");
@@ -55,6 +56,7 @@ internal static class TirabadeProgressionTests
         Snapshot OriginalPromise()
         {
             var original = new Snapshot { Chapter = 5, Hour = 1000, Area = state.Area };
+            original.AvailableContacts.UnionWith(state.AvailableContacts);
             original.Flags.UnionWith(new[] { "chapter_later", "trickster", "seelah.committed", "arueshalae.committed" });
             foreach (string id in new[] { "a_cup", "i_watch", "a_errand", "i_hands", "a_roof", "i_respite",
                 "a_crossing", "i_crossing", "a_morning", "i_morning", "reckoning", "a_truth", "i_truth",
@@ -63,7 +65,7 @@ internal static class TirabadeProgressionTests
                 var scene = Find(id);
                 original = Ready(scene, original);
                 check(Rules.Available(story, scene, original), "Original route predecessor is unavailable: " + id);
-                original = Program.Walk(scene, original).Where(s => s.Has(id) && !s.Has("closed"))
+                original = Program.Walk(scene, original).Where(s => s.Has(id) && !s.Has("closed") && Program.LegacyTirabadeOutcome(s))
                     .OrderByDescending(s => s.Flags.Count).First();
             }
             check(original.Has("committed") && original.Has("kept_terms"), "Original played route did not establish the mutual promise.");
