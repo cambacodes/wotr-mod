@@ -28,6 +28,8 @@ An authored saved claim is therefore insufficient proof that an actor is current
 Anevia's departure hide etude `6125c10886d6465091f4e092618ca55a` has priority 99 and two repeatable play triggers.
 The second tests whether objective `1a32315f0f94f6a4588c2705f9782fee` is Started.
 If true, it fails `6b9242706b8c43d49003813b869f023e` with `StartObjectiveIfNone` enabled and then fails the tested objective.
+The independent audit identifies these as Arueshalae's `WhatYouDreamOf/ArueQ3_HiddenFail` and `Obj_01_TalkAnevia`.
+The hidden failure objective finishes its parent quest, so the possible consequence extends to an existing companion's quest.
 Reactivation could therefore change quest state if that condition becomes true between the original activation and the meeting's release.
 Do not change `m_Once`, complete the native etude or suppress its quest actions to conceal this consequence.
 The independent lifecycle review must determine a bounded safe invitation window before this claim can be interrupted.
