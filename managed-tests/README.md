@@ -8,12 +8,18 @@ It reads the supplied story and does not assume a fixed scene count.
 Run from the repository root in PowerShell:
 
 ```powershell
+$env:RRT_PYTHON = "$env:LOCALAPPDATA\Python\pythoncore-3.14-64\python.exe"
+$env:RRT_PARENT_BINDINGS = (Resolve-Path reference/canon-review/targona-parent-bindings.json).Path
+& "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build src/Tirabade.csproj -c Release --nologo -v quiet
 & "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build managed-tests/ManagedBuildTests.csproj -c Release --nologo -v quiet
 & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe 'D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure' development/Story.json
 ```
 
 For another installation, pass `-p:GameDir=<game directory>/` to the build and the same game directory to the executable.
 The .NET Framework 4.8 runtime and Python must be available.
+Set `RRT_PYTHON` to the actual interpreter executable on another machine.
+Without that override the runner uses `python` from the process search path; this machine's PyManager launcher has intermittently delivered empty redirected input, so the checked command selects the interpreter directly.
+The parent manifest supplies explicitly tagged source fixtures for the current Targona extension, not parent-mod initialization.
 The tiny Python helper reads the installed `blueprints.zip` because .NET Framework's ZIP reader rejects this installation's archive headers.
 It extracts only requested native records and writes no files.
 

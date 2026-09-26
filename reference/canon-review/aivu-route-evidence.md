@@ -27,6 +27,11 @@ Native NPC proxies small `8d93d4da064846745809748748df069e`, medium `3e56db348cc
 
 ## Capital availability is not yet proven
 
+This initial uncertainty is superseded by `aivu-capital-contact-audit.md`, which resolves the actual existing-pet spawner and its dialogue from the installed scene.
+The original findings below are retained to show what the blueprint archive alone established.
+`cross-scene-contact-audit.md` and `cross-scene-contact-fix-review.md` document the separate storage guard defect and its correction.
+Actual live dialogue and save verification remain outstanding.
+
 `PetDragonAzata_ThroneRoom` etude `e4a1eb7ccc927bb41afbe8b20f00861f` links Drezen area part `2570015799edf594daf2f076f2f975d8` and prevents direct control of scene spawner `5f0e977b-e342-4a4d-a52c-0beced8ffc87` in scene asset `828e4d2ac7dffa9429c4d6721e7728c2`.
 It does not specify that spawner's blueprint or default dialogue in this archive record.
 A scan of all non-dialogue `.jbp` records found the main dialogue reference only in `PetDragonAzata_Nexus`, GUID `8ec49bab42a211e4f85f593718ecc536`, which explicitly overrides the actual pet's dialogue and requires Azata playing and NoDragon not playing.

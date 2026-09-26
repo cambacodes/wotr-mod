@@ -54,7 +54,7 @@ internal static class Program
     private static Dictionary<string, JObject> ReadNative(string path, IEnumerable<string> ids)
     {
         string script = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../read-native.py"));
-        var start = new System.Diagnostics.ProcessStartInfo("python")
+        var start = new System.Diagnostics.ProcessStartInfo(Environment.GetEnvironmentVariable("RRT_PYTHON") ?? "python")
         {
             Arguments = "\"" + script + "\" \"" + path + "\"",
             UseShellExecute = false, CreateNoWindow = true, RedirectStandardInput = true, RedirectStandardOutput = true
@@ -86,6 +86,7 @@ internal static class Program
         var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyPath))!;
         Rules.Validate(story);
         TerendelevDeliveryBlueprintTests.Run(Check);
+        NativeContactStorageTests.Run(Check);
         var savedSettings = typeof(Kingmaker.Player).GetMember("SettingsList").Single();
         Check(savedSettings.GetCustomAttributes(typeof(JsonPropertyAttribute), true).Length == 1,
             "Player checkpoint container is not included in native JSON serialization");

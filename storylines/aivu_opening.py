@@ -14,7 +14,7 @@ ETUDES = {
 }
 RELATIONSHIP = dict(
     Title="The city underneath", Description="Aivu is making a map of Drezen. She has asked for help with the parts that cannot be seen from the air.",
-    Objective="Help Aivu explore Drezen", Guidance="During Chapter 3, speak with your existing Azata companion in Drezen. Leave time between outings.",
+    Objective="Help Aivu explore Drezen", Guidance="During Chapter 3, speak with Aivu in Drezen's throne room. Leave time between outings.",
     StartedFlag="aivu.started", ClosedFlag="aivu.closed", CommittedFlag="aivu.trusted",
     UnavailableFlags=["aivu.absent", "aivu.detached", "devil", "swarm", "true_lich", "legend", "dragon"], FailureFlags=[],
 )

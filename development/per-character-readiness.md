@@ -6,7 +6,7 @@ The current expansion has no character approved against the complete revised req
 
 ## Current authored content
 
-Source: `development/content-volume-inventory.json`, for story SHA256 `CE614D8CFAA565CE9FCAED793C0A25C46200262A72A7B79873A44FA7D4A88124`.
+Source: `development/content-volume-inventory.json`, for story SHA256 `5E068C8E3601E7552AE501C34A8CD7E749207B00A9F32AABB1C5F99A515A4CA0`.
 These counts include all authored branches and choices, not the amount available in one playthrough.
 Exact segment deduplication removes identical passages but does not establish that every remaining word is meaningful or reachable.
 Verified external content has not yet been credited to these counts.
@@ -18,16 +18,16 @@ The combined script now exceeds that arithmetic floor, with meaningfulness, sele
 | --- | ---: | ---: | --- |
 | Anevia and Irabeth, shared Tirabade script | 46,431 | 46,124 | Volume floor crossed; developed progression and explicit old-save continuation integrated; assembled quality, each woman's development, art and runtime approval remain incomplete |
 | Seelah | 30,012 | 27,748 | Earned progression and old-save catch-up integrated; full campaign, native-friend development, Trickster contact, art and runtime approval remain incomplete |
-| Konomi | 40,780 | 35,582 | Independent assembled review scored writing 89, fidelity 89, romance 91, participation 87 and campaign depth 86; private absence/return continuity, later consequences, native contact, art and full-route approval remain incomplete |
+| Konomi | 48,236 | 39,946 | Private absence and return contribution integrated after independent review, with late-dismissal chronology repaired; prior assembled scores remain below target pending re-review, later career consequences, native contact, art and full-route approval |
 | Jerribeth | 26,315 | 25,904 | Living Act 4 Trickster encounter and later reply integrated; death/departure restoration, universal Trickster attainability, assembled quality, art and runtime approval remain incomplete |
 | Kiana | 27,901 | 27,612 | Public incident and two changed-history continuations integrated; sixteen history-selector dead ends repaired; earlier separation, witnessed Elan return, other inconsistent states, native contact and full-route approval remain incomplete |
 | Ember, friendship | 6,458 | 6,415 | Incomplete; opening and puppet afternoons do not finish her friendship arc |
-| Soana | 11,841 | 11,742 | Opening and six-scene continuation integrated after literary and interruption review; length, full campaign, mythic restoration, art and runtime requirements remain incomplete |
+| Soana | 23,712 | 23,597 | Seventeen local visits cross the aggregate planning floor; eight new visits passed independent review, while full campaign comparison, later-act access, Trickster recovery, art and runtime approval remain incomplete |
 | Arsinoe | 13,443 | 13,343 | Opening and six-scene continuation integrated with native contact and temporary ceremony guards; length, full route, mythic development, art and runtime verification remain incomplete |
 | Targona, extension only | 5,400 | 5,355 | Six letters extend verified parent quest finales; existing parent content is excluded from these counts; assembled depth, broader access, artwork and runtime requirements remain incomplete |
 | Gesmerha | 6,952 | 6,930 | Six-scene native-contact opening integrated after independent review; full length, later campaign, Trickster recovery, art and runtime requirements remain incomplete |
 | Vellexia | 6,508 | 6,508 | Six-part initial manor interlude integrated after independent review; later native-date continuation, full length, recovery, art and runtime requirements remain incomplete |
-| Aivu, friendship | 4,186 | 4,179 | Four visits preserve native Azata pet ownership; independent opening review passed, while capital dialogue access, later campaign, full length, Trickster guest access, art and runtime verification remain incomplete |
+| Aivu, friendship | 4,186 | 4,179 | Four visits preserve native Azata pet ownership; actual throne-room attachment is sourced and cross-scene contact rejection repaired; later campaign, full length, Trickster guest access, art and live verification remain incomplete |
 
 The shared Tirabade script retains the original 34 scene IDs, with the original quarrel now revised in development.
 This comparison does not claim that the currently installed package contains the whole development expansion.

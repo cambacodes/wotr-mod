@@ -1,0 +1,3667 @@
+{
+  "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\drezencapital_mechanics_mythicazata.scenes",
+  "sha256": {
+    "drezencapital_mechanics_mythicazata.scenes": "BE0DD5C3B341A5F5D0DC636462B9E4C1DB112AE19BCB34B12E9373AAD189324E",
+    "Assembly-CSharp.dll": "2CB7160B7154D4FFACC77B9C51B1EB26199E1294300F04FDFC073367B2EF8953"
+  },
+  "scene_objects": [
+    {
+      "path_id": 39,
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 156
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 317
+            }
+          }
+        ],
+        "m_Layer": 0,
+        "m_Name": "AzataDragon_Coronation",
+        "m_Tag": 0,
+        "m_IsActive": true
+      },
+      "components": [
+        {
+          "path_id": 156,
+          "type": "Transform",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 39
+            },
+            "m_LocalRotation": {
+              "x": -0.0,
+              "y": -0.25864294171333313,
+              "z": -0.0,
+              "w": 0.9659730195999146
+            },
+            "m_LocalPosition": {
+              "x": 41.16999816894531,
+              "y": 66.05000305175781,
+              "z": -50.33000183105469
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 131
+            }
+          }
+        },
+        {
+          "path_id": 317,
+          "type": "MonoBehaviour",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 39
+            },
+            "m_Enabled": 1,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 7
+            },
+            "m_Name": "",
+            "m_IsInGame": 1,
+            "UniqueId": "2f5801d8-770a-4cdf-bed5-9d731f63897f",
+            "m_Blueprint": {
+              "guid": "4391e8b9afbb0cf43aeba700c089f56d"
+            },
+            "m_SpawnOnSceneInit": 0,
+            "m_RespawnIfDead": 0,
+            "m_spawnConditions": {
+              "guid": ""
+            },
+            "m_UsePet": 1,
+            "m_IsPlayerPet": 0,
+            "m_PetType": 2,
+            "m_SpawnWhenRemote": 0,
+            "m_SpawnWhenInCapital": 1,
+            "m_SpawnWhenEx": 0,
+            "ShowCondition": {
+              "guid": ""
+            },
+            "m_Dummy": 0
+          }
+        }
+      ],
+      "parents": [
+        {
+          "path_id": 131,
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 14
+            },
+            "m_LocalRotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "m_LocalPosition": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [
+              {
+                "m_FileID": 0,
+                "m_PathID": 144
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 140
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 166
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 178
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 162
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 159
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 156
+              }
+            ],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 134
+            }
+          },
+          "game_object": {
+            "m_Component": [
+              {
+                "component": {
+                  "m_FileID": 0,
+                  "m_PathID": 131
+                }
+              }
+            ],
+            "m_Layer": 0,
+            "m_Name": "Coronation",
+            "m_Tag": 0,
+            "m_IsActive": true
+          }
+        },
+        {
+          "path_id": 134,
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 17
+            },
+            "m_LocalRotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "m_LocalPosition": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [
+              {
+                "m_FileID": 0,
+                "m_PathID": 148
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 180
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 170
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 160
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 146
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 131
+              }
+            ],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          },
+          "game_object": {
+            "m_Component": [
+              {
+                "component": {
+                  "m_FileID": 0,
+                  "m_PathID": 134
+                }
+              }
+            ],
+            "m_Layer": 0,
+            "m_Name": "Spawners",
+            "m_Tag": 0,
+            "m_IsActive": true
+          }
+        }
+      ]
+    },
+    {
+      "path_id": 43,
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 160
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 322
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 321
+            }
+          }
+        ],
+        "m_Layer": 0,
+        "m_Name": "AzataDragon_ThroneRoom",
+        "m_Tag": 0,
+        "m_IsActive": true
+      },
+      "components": [
+        {
+          "path_id": 160,
+          "type": "Transform",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 43
+            },
+            "m_LocalRotation": {
+              "x": -0.0,
+              "y": -0.9161730408668518,
+              "z": -0.0,
+              "w": 0.40078288316726685
+            },
+            "m_LocalPosition": {
+              "x": 218.61700439453125,
+              "y": 79.20700073242188,
+              "z": 14.826000213623047
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 134
+            }
+          }
+        },
+        {
+          "path_id": 322,
+          "type": "MonoBehaviour",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 43
+            },
+            "m_Enabled": 1,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 7
+            },
+            "m_Name": "",
+            "m_IsInGame": 1,
+            "UniqueId": "5f0e977b-e342-4a4d-a52c-0beced8ffc87",
+            "m_Blueprint": {
+              "guid": "4391e8b9afbb0cf43aeba700c089f56d"
+            },
+            "m_SpawnOnSceneInit": 1,
+            "m_RespawnIfDead": 0,
+            "m_spawnConditions": {
+              "guid": ""
+            },
+            "m_UsePet": 1,
+            "m_IsPlayerPet": 0,
+            "m_PetType": 2,
+            "m_SpawnWhenRemote": 0,
+            "m_SpawnWhenInCapital": 1,
+            "m_SpawnWhenEx": 0,
+            "ShowCondition": {
+              "guid": "a55dfc5df40b491d92a873a6e29f6412"
+            },
+            "m_Dummy": 0
+          }
+        },
+        {
+          "path_id": 321,
+          "type": "MonoBehaviour",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 43
+            },
+            "m_Enabled": 1,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 15
+            },
+            "m_Name": "",
+            "OverrideDistance": 0.0,
+            "Conditions": {
+              "guid": ""
+            },
+            "TriggerOnApproach": 0,
+            "TriggerOnParty": 1,
+            "ApproachWorksWhenStealthed": 0,
+            "Cooldown": 5.0,
+            "m_Dialog": {
+              "guid": "de63e66fbc4992e4caf70ed3e9584cbb"
+            }
+          }
+        }
+      ],
+      "parents": [
+        {
+          "path_id": 134,
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 17
+            },
+            "m_LocalRotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "m_LocalPosition": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [
+              {
+                "m_FileID": 0,
+                "m_PathID": 148
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 180
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 170
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 160
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 146
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 131
+              }
+            ],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          },
+          "game_object": {
+            "m_Component": [
+              {
+                "component": {
+                  "m_FileID": 0,
+                  "m_PathID": 134
+                }
+              }
+            ],
+            "m_Layer": 0,
+            "m_Name": "Spawners",
+            "m_Tag": 0,
+            "m_IsActive": true
+          }
+        }
+      ]
+    },
+    {
+      "path_id": 58,
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 175
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 347
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 346
+            }
+          }
+        ],
+        "m_Layer": 0,
+        "m_Name": "AzataDragon_OutdoorCoronation",
+        "m_Tag": 0,
+        "m_IsActive": true
+      },
+      "components": [
+        {
+          "path_id": 175,
+          "type": "Transform",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 58
+            },
+            "m_LocalRotation": {
+              "x": -0.0,
+              "y": -0.015655260533094406,
+              "z": -0.0,
+              "w": 0.9998774528503418
+            },
+            "m_LocalPosition": {
+              "x": 41.16999816894531,
+              "y": 66.05000305175781,
+              "z": -50.33000183105469
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 168
+            }
+          }
+        },
+        {
+          "path_id": 347,
+          "type": "MonoBehaviour",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 58
+            },
+            "m_Enabled": 1,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 20
+            },
+            "m_Name": "",
+            "m_IsInGame": 1,
+            "UniqueId": "fd4e5b8d-056d-4386-bc92-82a057e4d266"
+          }
+        },
+        {
+          "path_id": 346,
+          "type": "MonoBehaviour",
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 58
+            },
+            "m_Enabled": 1,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 14
+            },
+            "m_Name": ""
+          }
+        }
+      ],
+      "parents": [
+        {
+          "path_id": 168,
+          "data": {
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 51
+            },
+            "m_LocalRotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "m_LocalPosition": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "m_Children": [
+              {
+                "m_FileID": 0,
+                "m_PathID": 183
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 139
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 128
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 130
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 133
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 154
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 120
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 124
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 163
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 179
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 123
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 155
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 141
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 149
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 138
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 136
+              },
+              {
+                "m_FileID": 0,
+                "m_PathID": 175
+              }
+            ],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 0
+            }
+          },
+          "game_object": {
+            "m_Component": [
+              {
+                "component": {
+                  "m_FileID": 0,
+                  "m_PathID": 168
+                }
+              }
+            ],
+            "m_Layer": 0,
+            "m_Name": "Locators",
+            "m_Tag": 0,
+            "m_IsActive": true
+          }
+        }
+      ]
+    }
+  ],
+  "blueprints": {
+    "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp": {
+      "AssetId": "32a037e97c3d5c54b85da8f639616c57",
+      "Data": {
+        "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+        "PrototypeLink": "",
+        "m_Overrides": [
+          "CharacterName",
+          "Faction",
+          "StartingInventory",
+          "Prefab",
+          "$AddClassLevels$6a647396-b6db-4fad-ae0f-df4b144bd377",
+          "$AllowDyingCondition$5f97015f-4f84-4d5f-8f43-3da29f6929e9",
+          "$AddResurrectOnRest$884c0c1c-e8f1-4f1f-a567-29b0c59dde6c",
+          "$LockEquipmentSlot$b04f7615-d815-4bb5-85c5-c815b508abf6",
+          "$LockEquipmentSlot$cd763d47-2b83-4bef-9b0e-e26bfefec276",
+          "$LockEquipmentSlot$4f17dd10-5041-4f16-aa71-4c580b88c0ad"
+        ],
+        "Components": [
+          {
+            "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+            "m_Flags": 0,
+            "name": "$AddClassLevels$6a647396-b6db-4fad-ae0f-df4b144bd377",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "m_CharacterClass": "!bp_01a754e7c1b7c5946ba895a5ff0faffc",
+            "m_Archetypes": [
+              "!bp_6e6135c91c2f84e46b7bb49f2158a9ce"
+            ],
+            "Levels": 0,
+            "RaceStat": "Unknown",
+            "LevelsStat": "Charisma",
+            "Skills": [
+              "SkillPerception",
+              "SkillPersuasion",
+              "SkillUseMagicDevice",
+              "SkillKnowledgeArcana"
+            ],
+            "m_SelectSpells": [
+              "!bp_55a037e514c0ee14a8e3ed14b47061de",
+              "!bp_f6f95242abdfac346befd6f4f6222140",
+              "!bp_9d5d2d3ffdd73c648af3eb3e585b1113",
+              "!bp_5590652e1c2225c4ca30c4a699ab3649",
+              "!bp_6b90c773a6543dc49b2505858ce33db5",
+              "!bp_f8bce986adfc88544a42bf4ab7ae75b2",
+              "!bp_03a9630394d10164a9410882d31572f0",
+              "!bp_3361c5df793b4c8448756146a88026ad",
+              "!bp_faabd2cc67efa4646ac58c7bb3e40fcc",
+              "!bp_c927a8b0cd3f5174f8c0b67cdbfde539",
+              "!bp_b48674cef2bff5e478a007cf57d8345b",
+              "!bp_41c9016596fe1de4faf67425ed691203",
+              "!bp_0087fc2d64b6095478bc7b8d7d512caf",
+              "!bp_f2115ac1148256b4ba20788f7e966830",
+              "!bp_e9cc9378fd6841f48ad59384e79e9953",
+              "!bp_5d3d689392e4ff740a761ef346815074",
+              "!bp_0a5ddfbcfb3989543ac7c936fc256889",
+              "!bp_d316d3d94d20c674db2c24d7de96f6a7",
+              "!bp_7792da00c85b9e042a0fdfc2b66ec9a8",
+              "!bp_7792da00c85b9e042a0fdfc2b66ec9a8",
+              "!bp_571221cc141bc21449ae96b3944652aa",
+              "!bp_5da172c4c89f9eb4cbb614f3a67357d3",
+              "!bp_f0f761b808dc4b149b08eaf44b99f633",
+              "!bp_f8cea58227f59c64399044a82c9735c4",
+              "!bp_0cea35de4d553cc439ae80b3a8724397",
+              "!bp_fafd77c6bfa85c04ba31fdc1c962c914",
+              "!bp_80a1a388ee938aa4e90d427ce9a7a3e9",
+              "!bp_1e2d1489781b10a45a3b70192bba9be3",
+              "!bp_1f173a16120359e41a20fc75bb53d449",
+              "!bp_dd3dacafcf40a0145a5824c838e2698d",
+              "!bp_740d943e42b60f64a8de74926ba6ddf7",
+              "!bp_808ab74c12df8784ab4eeaf6a107dbea",
+              "!bp_37302f72b06ced1408bf5bb965766d46",
+              "!bp_867524328b54f25488d371214eea0d90",
+              "!bp_ba48abb52b142164eba309fd09898856",
+              "!bp_41cf93453b027b94886901dbfc680cb9"
+            ],
+            "m_MemorizeSpells": [],
+            "Selections": [
+              {
+                "IsParametrizedFeature": false,
+                "IsFeatureSelectMythicSpellbook": false,
+                "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                "m_Features": [
+                  "!bp_797f25d709f559546b29e7bcb181cc74",
+                  "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "!bp_15e7da6645a7f3d41bdad7c8c4b9de1e"
+                ],
+                "m_ParametrizedFeature": null,
+                "m_ParamObject": null,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "UnarmedStrike",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Spellbook": null
+              },
+              {
+                "IsParametrizedFeature": false,
+                "IsFeatureSelectMythicSpellbook": false,
+                "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                "m_Features": [
+                  "!bp_79042cb55f030614ea29956177977c52",
+                  "!bp_9972f33f977fc724c838e59641b2fca5",
+                  "!bp_175d1577bb6c9a04baf88eec99c66334",
+                  "!bp_d09b20029e9abfe4480b356c92095623",
+                  "!bp_7b64641c76ff4a744a2bce7f91a20f9a",
+                  "!bp_f4201c85a991369408740c6888362e20",
+                  "!bp_f4201c85a991369408740c6888362e20",
+                  "!bp_3ea2215150a1c8a4a9bfed9d9023903e",
+                  "!bp_f5db1cc7ad48d794f85252fa4a64157b",
+                  "!bp_12c1b556df3b667458ae200bfb38ccb8"
+                ],
+                "m_ParametrizedFeature": null,
+                "m_ParamObject": null,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "UnarmedStrike",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Spellbook": null
+              },
+              {
+                "IsParametrizedFeature": true,
+                "IsFeatureSelectMythicSpellbook": false,
+                "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                "m_Features": [
+                  "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                ],
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_ParamObject": null,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Claw",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Spellbook": null
+              },
+              {
+                "IsParametrizedFeature": true,
+                "IsFeatureSelectMythicSpellbook": false,
+                "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                "m_Features": [
+                  "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                ],
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_ParamObject": null,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Bite",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Spellbook": null
+              },
+              {
+                "IsParametrizedFeature": true,
+                "IsFeatureSelectMythicSpellbook": false,
+                "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                "m_Features": [
+                  "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                ],
+                "m_ParametrizedFeature": "!bp_f4201c85a991369408740c6888362e20",
+                "m_ParamObject": null,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Claw",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Spellbook": null
+              },
+              {
+                "IsParametrizedFeature": true,
+                "IsFeatureSelectMythicSpellbook": false,
+                "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                "m_Features": [
+                  "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                ],
+                "m_ParametrizedFeature": "!bp_f4201c85a991369408740c6888362e20",
+                "m_ParamObject": null,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Bite",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Spellbook": null
+              }
+            ],
+            "DoNotApplyAutomatically": false
+          },
+          {
+            "$type": "addae4953430725479cc27bae68ad849, AllowDyingCondition",
+            "m_Flags": 0,
+            "name": "$AllowDyingCondition$5f97015f-4f84-4d5f-8f43-3da29f6929e9",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": []
+          },
+          {
+            "$type": "23979228a66b5e046ae6eec56102f9be, AddResurrectOnRest",
+            "m_Flags": 0,
+            "name": "$AddResurrectOnRest$884c0c1c-e8f1-4f1f-a567-29b0c59dde6c",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": []
+          },
+          {
+            "$type": "537c8f834c094964db16dd2ba24fdb69, LockEquipmentSlot",
+            "m_Flags": "Disabled",
+            "name": "$LockEquipmentSlot$b04f7615-d815-4bb5-85c5-c815b508abf6",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "m_SlotType": "MainHand",
+            "m_Deactivate": false
+          },
+          {
+            "$type": "537c8f834c094964db16dd2ba24fdb69, LockEquipmentSlot",
+            "m_Flags": "Disabled",
+            "name": "$LockEquipmentSlot$cd763d47-2b83-4bef-9b0e-e26bfefec276",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "m_SlotType": "OffHand",
+            "m_Deactivate": false
+          },
+          {
+            "$type": "537c8f834c094964db16dd2ba24fdb69, LockEquipmentSlot",
+            "m_Flags": "Disabled",
+            "name": "$LockEquipmentSlot$4f17dd10-5041-4f16-aa71-4c580b88c0ad",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "m_SlotType": "Armor",
+            "m_Deactivate": false
+          },
+          {
+            "$type": "d79ad4ed064aa4f43ace0e9c238fb9b9, AddFacts",
+            "m_Flags": 0,
+            "name": "$AddFacts$3df9add9-a902-41a1-ae4f-1e022ab29add",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "m_Facts": [
+              "!bp_9c57e9674b4a4a2b9920f9fec47f7e6a"
+            ],
+            "Dummy": null,
+            "CasterLevel": 0,
+            "DoNotRestoreMissingFacts": false,
+            "HasDifficultyRequirements": false,
+            "InvertDifficultyRequirements": false,
+            "MinDifficulty": "Story"
+          },
+          {
+            "$type": "2e45a1126181445ebca3ecb09b9272c6, UnitUpgraderComponent",
+            "m_Flags": 0,
+            "name": "$UnitUpgraderComponent$361f8e41-1fb6-4a61-9934-9c8267316bbb",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "m_Upgraders": [
+              "!bp_9bb96c963f0f47f48e51aabb6c8ac4ff"
+            ]
+          },
+          {
+            "$type": "d79ad4ed064aa4f43ace0e9c238fb9b9, AddFacts",
+            "m_Flags": 0,
+            "name": "$AddFacts$921d4491-bb36-428b-8865-edb00f63ca4a",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "m_Facts": [
+              "!bp_c62ba548b1a34b94b9802925b35737c2"
+            ],
+            "Dummy": null,
+            "CasterLevel": 0,
+            "DoNotRestoreMissingFacts": false,
+            "HasDifficultyRequirements": false,
+            "InvertDifficultyRequirements": false,
+            "MinDifficulty": "Story"
+          }
+        ],
+        "Comment": "",
+        "m_AllowNonContextActions": false,
+        "m_DisplayName": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "m_Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "m_DescriptionShort": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "m_Icon": null,
+        "m_Type": null,
+        "LocalizedName": {
+          "assetguid": "13fc3daff96f90f48990c963f2cec45e",
+          "stringkey": "fb2b4ca2-b418-4f73-90bc-2109f498d191"
+        },
+        "Gender": "Female",
+        "Size": "Small",
+        "IsLeftHanded": false,
+        "Color": {
+          "r": 0.15,
+          "g": 0.15,
+          "b": 0.15,
+          "a": 1.0
+        },
+        "m_Race": null,
+        "Alignment": "ChaoticGood",
+        "m_Portrait": "!bp_1f5bfefa49a8aa2449ad94b1f4f61788",
+        "Prefab": {
+          "AssetId": "4967d58863a545b45b0894a50ea984eb"
+        },
+        "m_CustomizationPreset": null,
+        "Visual": {
+          "BloodType": "Common",
+          "FootprintType": "AnimalPaw",
+          "FootprintScale": 1.0,
+          "ArmorFx": null,
+          "BloodPuddleFx": null,
+          "DismemberFx": null,
+          "RipLimbsApartFx": null,
+          "IsNotUseDismember": false,
+          "IsBlockChangeClothColor": false,
+          "m_Barks": "!bp_e6c1a2a17fe4b554a9a9dd6b48c2b9a6",
+          "ReachFXThresholdBonus": 0.0,
+          "DefaultArmorSoundType": "Flesh",
+          "FootstepSoundSizeType": "BootMedium",
+          "FootSoundType": "HardPaw",
+          "FootSoundSize": "Medium",
+          "BodySoundType": "Flesh",
+          "BodySoundSize": "Medium",
+          "FoleySoundPrefix": "",
+          "NoFinishingBlow": false,
+          "ImportanceOverride": 0,
+          "SilentCaster": true
+        },
+        "m_Faction": "!bp_72f240260881111468db610b6c37c099",
+        "FactionOverrides": {
+          "m_AttackFactionsToAdd": [],
+          "m_AttackFactionsToRemove": []
+        },
+        "m_StartingInventory": [],
+        "m_Brain": "!bp_7116ea9aa44b6ce42beac5efa5a96abc",
+        "AlternativeBrains": [],
+        "Body": {
+          "DisableHands": false,
+          "m_EmptyHandWeapon": "!bp_20375b5a0c9243d45966bd72c690ab74",
+          "m_PrimaryHand": "!bp_48647a4517e6512419e937f7a617ea5c",
+          "m_SecondaryHand": "!bp_bef6f133e728bd74ab871e1f2072e726",
+          "m_PrimaryHandAlternative1": "!bp_48647a4517e6512419e937f7a617ea5c",
+          "m_SecondaryHandAlternative1": "!bp_bef6f133e728bd74ab871e1f2072e726",
+          "m_PrimaryHandAlternative2": "!bp_48647a4517e6512419e937f7a617ea5c",
+          "m_SecondaryHandAlternative2": "!bp_bef6f133e728bd74ab871e1f2072e726",
+          "m_PrimaryHandAlternative3": "!bp_48647a4517e6512419e937f7a617ea5c",
+          "m_SecondaryHandAlternative3": "!bp_bef6f133e728bd74ab871e1f2072e726",
+          "ActiveHandSet": 0,
+          "m_AdditionalLimbs": [
+            "!bp_bef6f133e728bd74ab871e1f2072e726"
+          ],
+          "m_AdditionalSecondaryLimbs": [
+            "!bp_06c210c77c30a36478cb8dbf225fb364",
+            "!bp_06c210c77c30a36478cb8dbf225fb364",
+            "!bp_ae822725634c6f0418b8c48bd29df255"
+          ],
+          "m_Armor": null,
+          "m_Shirt": null,
+          "m_Belt": null,
+          "m_Head": null,
+          "m_Glasses": null,
+          "m_Feet": null,
+          "m_Gloves": null,
+          "m_Neck": null,
+          "m_Ring1": null,
+          "m_Ring2": null,
+          "m_Wrist": null,
+          "m_Shoulders": null,
+          "m_QuickSlots": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "Strength": 21,
+        "Dexterity": 16,
+        "Constitution": 17,
+        "Intelligence": 16,
+        "Wisdom": 15,
+        "Charisma": 18,
+        "Speed": {
+          "m_Value": 60.0
+        },
+        "BaseAttackBonus": 0,
+        "Skills": {
+          "Acrobatics": 0,
+          "Physique": 0,
+          "Diplomacy": 0,
+          "Thievery": 0,
+          "LoreNature": 0,
+          "Perception": 0,
+          "Stealth": 0,
+          "UseMagicDevice": 0,
+          "LoreReligion": 0,
+          "KnowledgeWorld": 0,
+          "KnowledgeArcana": 0
+        },
+        "MaxHP": 0,
+        "m_AdditionalTemplates": [],
+        "m_AddFacts": [
+          "!bp_2d94e1326192d24479f605f0a28ea443",
+          "!bp_0b2d92c6aac8093489dfdadf1e448280",
+          "!bp_136fa0343d5b4b348bdaa05d83408db3",
+          "!bp_f6f8f9bb00a637d43b060706c1b83400",
+          "!bp_f429d531259c48e41a2b30c98d4812f9",
+          "!bp_afb80dea3118a364ba648c2adafecb61",
+          "!bp_59d38f76a8d72c34aa8cb65ba6ff3a78",
+          "!bp_1dd712e7f147ab84bad6ffccd21a878d",
+          "!bp_23247ff3b44fd3a42ab752cd04e629b0",
+          "!bp_42a9104e5cff51f46996d7d1ad65c0a6",
+          "!bp_8bb3bff6f747a8c44a97c6603b933d1f",
+          "!bp_75bb2b3c41c99e041b4743fdb16a4289"
+        ],
+        "IsCheater": false,
+        "IsFake": false,
+        "m_PS4ChunkId": "StartUp",
+        "m_HasAssignedChunkId": false
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "Mythic/Azata/AzataDragon/DragonAzataCompanionFeature.jbp": {
+      "AssetId": "cf36f23d60987224696f03be70351928",
+      "Data": {
+        "$type": "cb208b98ceacca84baee15dba53b1979, BlueprintFeature",
+        "PrototypeLink": null,
+        "m_Overrides": [
+          "$AddPet$858ef2c0-f8cf-41f4-af45-0bb06f90fa00"
+        ],
+        "Components": [
+          {
+            "$type": "d918579b19d94c04b4c0baecd11fcb3c, AddPet",
+            "name": "$AddPet$858ef2c0-f8cf-41f4-af45-0bb06f90fa00",
+            "m_Overrides": [],
+            "Type": "AzataHavocDragon",
+            "ProgressionType": "AzataHavocDragon",
+            "m_Pet": "!bp_32a037e97c3d5c54b85da8f639616c57",
+            "m_UseContextValueLevel": false,
+            "m_LevelRank": "!bp_2780764bf33c46745b11f0e1d2d20092",
+            "m_LevelContextValue": null,
+            "m_ForceAutoLevelup": false,
+            "m_UpgradeFeature": null,
+            "m_DestroyPetOnDeactivate": false,
+            "UpgradeLevel": 4
+          }
+        ],
+        "Comment": "",
+        "m_AllowNonContextActions": false,
+        "m_DisplayName": {
+          "m_Key": "3b250219-510e-47f2-80e7-8248d612507d",
+          "m_OwnerString": "cf36f23d60987224696f03be70351928",
+          "m_OwnerPropertyPath": "m_DisplayName",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/Mythic/Azata/AzataDragon/DragonAzataCompanionFeature_m_DisplayName.json",
+          "Shared": null
+        },
+        "m_Description": {
+          "m_Key": "bbfae127-4158-4541-a2e6-9e8f62eb85b6",
+          "m_OwnerString": "cf36f23d60987224696f03be70351928",
+          "m_OwnerPropertyPath": "m_Description",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/Mythic/Azata/AzataDragon/DragonAzataCompanionFeature_m_Description.json",
+          "Shared": null
+        },
+        "m_DescriptionShort": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "m_Icon": {
+          "guid": "a6dc79e6b9d54114180425123ec2cd9f",
+          "fileid": 21300000
+        },
+        "HideInUI": false,
+        "HideInCharacterSheetAndLevelUp": false,
+        "HideNotAvailibleInUI": false,
+        "DlcType": "None",
+        "Groups": [],
+        "Ranks": 1,
+        "ReapplyOnLevelUp": true,
+        "IsClassFeature": true,
+        "IsPrerequisiteFor": null
+      }
+    },
+    "Units/Pregens/StartGame/StartGame_Player_Unit.jbp": {
+      "AssetId": "4391e8b9afbb0cf43aeba700c089f56d",
+      "Data": {
+        "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+        "PrototypeLink": "d48e03729a253814ebb26d21b4e6a0b3",
+        "m_Overrides": [
+          "m_StartingInventory",
+          "m_AdditionalTemplates",
+          "m_Race",
+          "$ClassLevelLimit$dc99e067-7d8e-41da-990d-65337bf79560",
+          "$CampingSpecialAbility$da84e9b1-e9c1-45e6-bc32-672a3af1f11b"
+        ],
+        "Components": [
+          {
+            "$type": "addae4953430725479cc27bae68ad849, AllowDyingCondition",
+            "name": "$AllowDyingCondition$d5d0cdf1-338d-4d20-8b8a-81c31e477d18(Clone)",
+            "PrototypeLink": {
+              "guid": "d48e03729a253814ebb26d21b4e6a0b3",
+              "name": "$AllowDyingCondition$d5d0cdf1-338d-4d20-8b8a-81c31e477d18"
+            },
+            "m_Overrides": []
+          },
+          {
+            "$type": "5474d502f4f54412b9cd7e7bbd0ddeec, ClassLevelLimit",
+            "name": "$ClassLevelLimit$dc99e067-7d8e-41da-990d-65337bf79560",
+            "m_Overrides": [],
+            "LevelLimit": 0
+          },
+          {
+            "$type": "d40f9df2551cf6843b959531f168e0e7, CampingSpecialAbility",
+            "name": "$CampingSpecialAbility$da84e9b1-e9c1-45e6-bc32-672a3af1f11b",
+            "m_Overrides": [],
+            "Name": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": {
+                "assetguid": "f4bea6c1f64eacf4797d4ba1d7ddf5f9",
+                "stringkey": "429001f3-2825-4dd7-993c-1c72f9bef871"
+              }
+            },
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": {
+                "assetguid": "04e4a58e8b5fbd049a94d94d6452e0ea",
+                "stringkey": "40d9b423-cb36-40c9-84f7-eaffbc1f349f"
+              }
+            },
+            "CampPositionType": "Default",
+            "m_CampCutscene": null,
+            "m_SelfBuff": null,
+            "m_PartyBuff": null,
+            "m_PartyBuffDuringCamp": null,
+            "m_SelfBuffOnRandomEncounter": null,
+            "m_PartyBuffOnRandomEncounter": null,
+            "m_EnemiesBuffOnRandomEncounter": null,
+            "MinEnemyRandomEncounterBuffs": 0,
+            "MaxEnemyRandomEncounterBuffs": 0,
+            "RandomEncounterBuffsChance": 1.0,
+            "ExtraRations": 6,
+            "CustomMechanics": "BaronProcurement",
+            "DLCLock": 1
+          },
+          {
+            "$type": "d79ad4ed064aa4f43ace0e9c238fb9b9, AddFacts",
+            "name": "$AddFacts$2912a6bc-9143-4c0e-ba6e-a322635d7662(Clone)",
+            "PrototypeLink": {
+              "guid": "d48e03729a253814ebb26d21b4e6a0b3",
+              "name": "$AddFacts$2912a6bc-9143-4c0e-ba6e-a322635d7662"
+            },
+            "m_Overrides": [],
+            "m_Facts": [
+              "!bp_c4403567ea9e5fe478ca38e3052fadc2"
+            ],
+            "Dummy": null,
+            "CasterLevel": 0,
+            "DoNotRestoreMissingFacts": false,
+            "HasDifficultyRequirements": false,
+            "InvertDifficultyRequirements": false,
+            "MinDifficulty": "Story"
+          }
+        ],
+        "Comment": "",
+        "m_AllowNonContextActions": false,
+        "m_DisplayName": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "m_Description": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "m_DescriptionShort": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "m_Icon": null,
+        "m_Type": null,
+        "LocalizedName": {
+          "assetguid": "18e5964340b63b547802b77bb20ef745",
+          "stringkey": "1daf8fd5-fb15-4b22-ab80-6245c714c249"
+        },
+        "Gender": "Male",
+        "Size": "Medium",
+        "IsLeftHanded": false,
+        "Color": {
+          "r": 0.607843161,
+          "g": 0.0235294122,
+          "b": 0.003921569,
+          "a": 1.0
+        },
+        "m_Race": null,
+        "Alignment": "TrueNeutral",
+        "m_Portrait": null,
+        "Prefab": {
+          "AssetId": "8e96cca0dd1aea641a90290c60c78c46"
+        },
+        "m_CustomizationPreset": null,
+        "m_RandomParameters": null,
+        "Visual": {
+          "BloodType": "Common",
+          "FootprintType": "Humanoid",
+          "FootprintScale": 1.0,
+          "ArmorFx": null,
+          "BloodPuddleFx": {
+            "AssetId": "f1400b13c4d834549be5b6dc32bc2ce3"
+          },
+          "DismemberFx": null,
+          "RipLimbsApartFx": null,
+          "IsNotUseDismember": false,
+          "m_Barks": null,
+          "ReachFXThresholdBonus": 0.0,
+          "DefaultArmorSoundType": "Flesh",
+          "FootstepSoundSizeType": "BootMedium",
+          "FootSoundType": "Boot",
+          "FootSoundSize": "Medium",
+          "BodySoundType": "Flesh",
+          "BodySoundSize": "Medium",
+          "FoleySoundPrefix": "",
+          "NoFinishingBlow": false,
+          "ImportanceOverride": 0,
+          "SilentCaster": false
+        },
+        "m_Faction": "!bp_72f240260881111468db610b6c37c099",
+        "FactionOverrides": {
+          "m_AttackFactionsToAdd": [],
+          "m_AttackFactionsToRemove": []
+        },
+        "m_StartingInventory": [
+          "!bp_850c86ad8b953c74bb85f9bb1d1148bc",
+          "!bp_850c86ad8b953c74bb85f9bb1d1148bc"
+        ],
+        "m_Brain": "!bp_cf986dd7ba9d4ec46ad8a3a0406d02ae",
+        "AlternativeBrains": [],
+        "Body": {
+          "DisableHands": false,
+          "m_EmptyHandWeapon": "!bp_20375b5a0c9243d45966bd72c690ab74",
+          "m_PrimaryHand": null,
+          "m_SecondaryHand": null,
+          "m_PrimaryHandAlternative1": null,
+          "m_SecondaryHandAlternative1": null,
+          "m_PrimaryHandAlternative2": null,
+          "m_SecondaryHandAlternative2": null,
+          "m_PrimaryHandAlternative3": null,
+          "m_SecondaryHandAlternative3": null,
+          "ActiveHandSet": 0,
+          "m_AdditionalLimbs": [],
+          "m_AdditionalSecondaryLimbs": [],
+          "m_Armor": null,
+          "m_Shirt": null,
+          "m_Belt": null,
+          "m_Head": null,
+          "m_Glasses": null,
+          "m_Feet": null,
+          "m_Gloves": null,
+          "m_Neck": null,
+          "m_Ring1": null,
+          "m_Ring2": null,
+          "m_Wrist": null,
+          "m_Shoulders": null,
+          "m_QuickSlots": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "Strength": 10,
+        "Dexterity": 10,
+        "Constitution": 10,
+        "Intelligence": 10,
+        "Wisdom": 10,
+        "Charisma": 10,
+        "Speed": {
+          "m_Value": 30.0
+        },
+        "BaseAttackBonus": 10,
+        "Skills": {
+          "Acrobatics": 0,
+          "Physique": 0,
+          "Diplomacy": 0,
+          "Thievery": 0,
+          "LoreNature": 0,
+          "Perception": 0,
+          "Stealth": 0,
+          "UseMagicDevice": 0,
+          "LoreReligion": 0,
+          "KnowledgeWorld": 0,
+          "KnowledgeArcana": 0
+        },
+        "MaxHP": 0,
+        "m_AdditionalTemplates": [],
+        "m_AddFacts": [],
+        "IsCheater": false,
+        "IsFake": false
+      }
+    },
+    "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp": {
+      "AssetId": "2570015799edf594daf2f076f2f975d8",
+      "Data": {
+        "$type": "6181425e72507c148a67d77624419aec, BlueprintArea",
+        "PrototypeLink": "",
+        "m_Overrides": [
+          "$OverrideCampingAction$78c242f4-53a0-4486-bb4d-bf355dc96155"
+        ],
+        "Components": [
+          {
+            "$type": "78b331db48d3456090eb99a43da932ce, OverrideCampingAction",
+            "m_Flags": 0,
+            "name": "$OverrideCampingAction$78c242f4-53a0-4486-bb4d-bf355dc96155",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "OnRestActions": {
+              "Actions": [
+                {
+                  "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                  "name": "$Conditional$02877a54-1fe2-4e5e-8b43-699dc871ecf2",
+                  "Comment": "",
+                  "ConditionsChecker": {
+                    "Operation": "And",
+                    "Conditions": [
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$13b8ae9e-1dd4-4c07-9fee-56a210fc5af4",
+                        "Not": false,
+                        "m_Etude": "!bp_349b58202dedf8049992e84efa4cd732",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      },
+                      {
+                        "$type": "ee651e222f282454fbd2821c9ea18a72, AnotherEtudeOfGroupIsPlaying",
+                        "name": "$AnotherEtudeOfGroupIsPlaying$53a1b2d0-7a74-49d5-ba9b-71005d198ee9",
+                        "Not": true,
+                        "m_Group": "!bp_10d01be767521a340978c8e57ab536b6"
+                      },
+                      {
+                        "$type": "ee651e222f282454fbd2821c9ea18a72, AnotherEtudeOfGroupIsPlaying",
+                        "name": "$AnotherEtudeOfGroupIsPlaying$64258fb2-7b73-4906-9fa0-cc481967fba8",
+                        "Not": true,
+                        "m_Group": "!bp_09bcb0ca88c8a394f8601179a094905a"
+                      }
+                    ]
+                  },
+                  "IfTrue": {
+                    "Actions": [
+                      {
+                        "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+                        "name": "$UnlockFlag$549c59eb-9e12-41ec-9881-28adb80f37c6",
+                        "m_flag": "!bp_5f9d7b2407b40a54ab72062005886913",
+                        "flagValue": 0
+                      },
+                      {
+                        "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+                        "name": "$UnlockFlag$134ee85c-e4e8-4878-8126-38ac6e08f0d3",
+                        "m_flag": "!bp_8a03b7367c640164bb4e43a93cf3c63c",
+                        "flagValue": 0
+                      },
+                      {
+                        "$type": "8072988edd00cce40bc433869828e6b3, TeleportParty",
+                        "name": "$TeleportParty$d7ff9c0f-ca9c-48d3-aa7e-bfd3e6b13210",
+                        "m_exitPositon": "!bp_ab3b5c105893562488ae5bb6e7b0cba7",
+                        "AutoSaveMode": "None",
+                        "ForcePauseAfterTeleport": false,
+                        "AfterTeleport": {
+                          "Actions": []
+                        }
+                      }
+                    ]
+                  },
+                  "IfFalse": {
+                    "Actions": [
+                      {
+                        "$type": "904a91540b4d40128c59ce26c864705e, ShowUIWarning",
+                        "name": "$ShowUIWarning$cec0c3b4-f6f2-4b18-9662-41d34594e584",
+                        "Type": "RestOnThisZoneImpossible",
+                        "String": {
+                          "m_Key": "",
+                          "m_OwnerString": "",
+                          "m_OwnerPropertyPath": "",
+                          "m_JsonPath": "",
+                          "Shared": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "SkipRest": true
+          }
+        ],
+        "Comment": "",
+        "m_DynamicScene": {
+          "m_SceneAsset": {
+            "guid": "6ce2c3528312c234ea1fa410d5e19c00",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_ThroneRoom_Mechanics"
+        },
+        "m_StaticScene": {
+          "m_SceneAsset": {
+            "guid": "4a767e5a1c7e2134a850b9756028466d",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_ThroneRoom_Static"
+        },
+        "m_StaticSceneConsoleOverride": {
+          "m_SceneAsset": {
+            "guid": "a451312ec2ac237429dd3309f84bad29",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_ThroneRoom_ConsoleStatic"
+        },
+        "m_LightScene": {
+          "m_SceneAsset": {
+            "guid": "616e29a35e27af849ae9dc9b6ca67d15",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_ThroneRoom_Light"
+        },
+        "m_LightSceneConsoleOverride": {
+          "m_SceneAsset": {
+            "guid": "df0c0b48ceaa44848b3e96ca6d1bd191",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_ThroneRoom_ConsoleLight"
+        },
+        "m_Bounds": {
+          "guid": "2e261f88737d79a4ab88e60dcc22f538",
+          "fileid": 11400000
+        },
+        "m_AudioTimeOfDayVariants": [
+          {
+            "m_SceneAsset": {
+              "guid": "7311cf3af56543c479004ecce8e2e61e",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Day"
+          },
+          {
+            "m_SceneAsset": {
+              "guid": "7311cf3af56543c479004ecce8e2e61e",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Day"
+          },
+          {
+            "m_SceneAsset": {
+              "guid": "82dab16b332e9784a916bd7c79faaa48",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Night"
+          },
+          {
+            "m_SceneAsset": {
+              "guid": "82dab16b332e9784a916bd7c79faaa48",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Night"
+          }
+        ],
+        "m_OverrideCampaign": null,
+        "m_SoundBankNames": [
+          "AMB_PART_DrezenCapital_Church_ThroneRoom",
+          "NARRCH3_DrezenCapital_Camellia_BasementRomance"
+        ],
+        "m_ManageBanksSeparately": false,
+        "m_UnloadBanksDelay": 2.0,
+        "MusicTheme": "MUS_CapitalMythic_Play",
+        "MusicThemeStop": "MUS_CapitalMythic_Stop",
+        "m_IndoorType": "IndoorLikeMorning",
+        "m_WeatherProfile": {
+          "m_WeatherProfile": {
+            "guid": "433604b02ac8eb4449a07545bb4f4311",
+            "fileid": 11400000
+          },
+          "m_Layers": []
+        },
+        "m_WeatherInclemencyMin": "Light",
+        "m_WeatherInclemencyMax": "Heavy",
+        "IsSingleLightScene": false,
+        "LocalMapRotation": 0.0,
+        "Setting": "Urban",
+        "AreaLocalName": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "GraphCache": {
+          "AssetId": "f04f17cfd5ccd6249af10136db006a31"
+        },
+        "NavmeshMask": {
+          "guid": "3eca41f72d1df424fba1d919251eac55",
+          "fileid": 2800000
+        },
+        "m_Parts": [
+          "!bp_8a076e720870a44438d13b9b939933fd",
+          "!bp_bdced7034cf8e95499890a66f03f8a30",
+          "!bp_0670085bf3fe4694d91e2ea159dee079",
+          "!bp_b8583f39adb1c0141b5d95825e23ce6f",
+          "!bp_89725ac859fa31c48afda5908fa82d90",
+          "!bp_4f75776848385ba47bd95bb938f4677b",
+          "!bp_2375bb0062f4c7540ab8ed738b63f2d4",
+          "!bp_771053f7fc63a954ca1c244eb1fcb974",
+          "!bp_aaa9ae2f8ac01284ea8e8136fa40d339",
+          "!bp_9d312be28d7c96b4e821ed1118ddd30d",
+          "!bp_1d7042954c91033468546cfb404c3d95",
+          "!bp_f4dc9c9c26debad44abd2de21ca2231f",
+          "!bp_6754cbd6d22cf0241a327403c7ac8e7a",
+          "!bp_3b20ecf493b4e09478f4ccce4030a853",
+          "!bp_bbcdb71af4e9e5a4383ee370f4db9b84"
+        ],
+        "IsGlobalMap": false,
+        "CameraScrollMultiplier": 1.0,
+        "SetDefaultCameraRotation": false,
+        "CameraRotation": 0.0,
+        "CampingSettings": {
+          "CampingAllowed": true,
+          "HuntingDC": 15,
+          "DivineServiceDCBonus": 15,
+          "CamouflageDC": 10
+        },
+        "RandomEncounterSettings": {
+          "AreRandomEncountersEnabled": true,
+          "OverrideChances": false,
+          "OverrideChanceOnGlobalMap": 1.0,
+          "OverrideChanceOnCamp": 1.0,
+          "OverrideChanceOnCampSecondsTime": 1.0,
+          "PerceptionDCModifier": 0,
+          "Tags": []
+        },
+        "Designer": "ArtemSafonov",
+        "ArtSetting": "DrezenCitadel",
+        "AreaName": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": {
+            "assetguid": "87639b1ad85383849a59ae85beb74233",
+            "stringkey": "a2fc4858-fa9d-4164-8758-a827908f5080"
+          }
+        },
+        "ExcludeFromSave": false,
+        "PS4ChunkId": "Chapter3",
+        "LoadingScreenSprites": [
+          {
+            "AssetId": "ee0e551a09c0a984596bfd590457508e"
+          },
+          {
+            "AssetId": "b408b578962495442bdc2fe9119f2d52"
+          },
+          {
+            "AssetId": "95ff72c54183ae441a9a13c930047d06"
+          }
+        ],
+        "m_DefaultPreset": "!bp_4881f9b9131249dca002482ef3e915af",
+        "RelatedWorkspace": null,
+        "CR": 13,
+        "OverrideCorruption": true,
+        "CorruptionGrowth": 0,
+        "LootSetting": "PF2_Crusaders",
+        "m_HotAreas": [],
+        "IsMayMapWindow": false
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital_Outdoor.jbp": {
+      "AssetId": "8a076e720870a44438d13b9b939933fd",
+      "Data": {
+        "$type": "60192bc8449d2d944a99c6c58f48814b, BlueprintAreaPart",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "m_DynamicScene": {
+          "m_SceneAsset": {
+            "guid": "a807c65ecf46d5a4bbbcfa2b45b3f79a",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_Outdoor_Mechanics"
+        },
+        "m_StaticScene": {
+          "m_SceneAsset": {
+            "guid": "1a3e12f7e9965c94ea061010b06d1c4d",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_Outdoor_Static"
+        },
+        "m_StaticSceneConsoleOverride": {
+          "m_SceneAsset": {
+            "guid": "f7d6de8bce87d4e43ba4643a41b39f75",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_Outdoor_ConsoleStatic"
+        },
+        "m_LightScene": {
+          "m_SceneAsset": {
+            "guid": "541802ea159606a4985a61c45883b30a",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_Outdoor_Light"
+        },
+        "m_LightSceneConsoleOverride": {
+          "m_SceneAsset": {
+            "guid": "be22214abafdb1d4383cc1df309d7658",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_Outdoor_ConsoleLight"
+        },
+        "m_Bounds": {
+          "guid": "982edbcb58579df4d99f965d7de4b4c1",
+          "fileid": 11400000
+        },
+        "m_AudioTimeOfDayVariants": [
+          {
+            "m_SceneAsset": {
+              "guid": "a02a2d20c26243b4bb3949ade0e25f8e",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Day"
+          },
+          {
+            "m_SceneAsset": {
+              "guid": "a02a2d20c26243b4bb3949ade0e25f8e",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Day"
+          },
+          {
+            "m_SceneAsset": {
+              "guid": "9d9d056ceaf82ac41b46f4fc94ea8cfc",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Night"
+          },
+          {
+            "m_SceneAsset": {
+              "guid": "9d9d056ceaf82ac41b46f4fc94ea8cfc",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_Audio_Night"
+          }
+        ],
+        "m_OverrideCampaign": null,
+        "m_SoundBankNames": [
+          "AMB_PART_DrezenCapital_OutdoorWinds",
+          "NARR_CH3_DrezenPeaceful_MidnightfaneOpening",
+          "NARR_CH3_DrezenCapitalOutdoor"
+        ],
+        "m_ManageBanksSeparately": false,
+        "m_UnloadBanksDelay": 2.0,
+        "MusicTheme": "",
+        "MusicThemeStop": "",
+        "m_IndoorType": "None",
+        "m_WeatherProfile": {
+          "m_WeatherProfile": {
+            "guid": "d17f432d5d5fd874b93e0ee1276402b3",
+            "fileid": 11400000
+          },
+          "m_Layers": [
+            {
+              "guid": "9319014616b662041827447154a1c02d",
+              "fileid": 11400000
+            }
+          ]
+        },
+        "m_WeatherInclemencyMin": "Clear",
+        "m_WeatherInclemencyMax": "Moderate",
+        "IsSingleLightScene": true,
+        "LocalMapRotation": 0.0,
+        "Setting": "Urban",
+        "AreaLocalName": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        },
+        "GraphCache": {
+          "AssetId": "fcb38dd54bb4f004ca375ca7980c50a2"
+        },
+        "NavmeshMask": {
+          "guid": "e57ef35a6a214ad4e95fa231fe0e27c6",
+          "fileid": 2800000
+        }
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_MythicAzata.jbp": {
+      "AssetId": "69bf5090bc7e2f34f83b73e64972f54b",
+      "Data": {
+        "$type": "c542bb267f6d4651af99d4c5b3a0df9a, BlueprintAreaMechanics",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "Area": "!bp_2570015799edf594daf2f076f2f975d8",
+        "Scene": {
+          "m_SceneAsset": {
+            "guid": "828e4d2ac7dffa9429c4d6721e7728c2",
+            "fileid": 102900000
+          },
+          "m_SceneName": "DrezenCapital_Mechanics_MythicAzata"
+        },
+        "AdditionalDataBank": {
+          "Value": ""
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/AnswersList_0013.jbp": {
+      "AssetId": "40db17008eb1b7e4fbde32f3811324b7",
+      "Data": {
+        "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "e0b43df6e793475469deaa1e5c86e563",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "ShowOnce": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Answers": [
+          "!bp_0beabce6f37afd14c9518762a81e13e0",
+          "!bp_db13836a3e1c20b4085fe3f0d8990e77"
+        ]
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/AnswersList_0020.jbp": {
+      "AssetId": "890805d2200323a408d057f365158a71",
+      "Data": {
+        "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "8af119a9e9db07848ab1ffb0f8cbbba9",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "ShowOnce": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Answers": [
+          "!bp_b40989b991fd60b43af50c021884cbdd",
+          "!bp_de6ef6f380230794fb7c45d9e21cc72d"
+        ]
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/AnswersList_0027.jbp": {
+      "AssetId": "f1a65c6d838f58d49ad4ff40544b895b",
+      "Data": {
+        "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "12de733844928794080d3b83ca9d8f82",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "ShowOnce": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Answers": [
+          "!bp_023df12aa57113945886dac9ea12e875",
+          "!bp_452c766814aac02498e47800e32e3760",
+          "!bp_f837deee8e902634ab80e0654d44e538",
+          "!bp_41ce58a496d12c642b13674b7b387bd8",
+          "!bp_dafc0683f630a41438573ba54a35a180",
+          "!bp_d3e9d26479f642042b0e068c19f01deb",
+          "!bp_f1d46c8ad051d644ea9527a727ed6211",
+          "!bp_24b7ea9b82093b749b0106c1421fa3e4",
+          "!bp_56efdf64011cfde4b8faf50e643c87c6",
+          "!bp_ad208a940b0a5244fa1384e0fe3ddf37"
+        ]
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0014.jbp": {
+      "AssetId": "0beabce6f37afd14c9518762a81e13e0",
+      "Data": {
+        "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "40db17008eb1b7e4fbde32f3811324b7",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "Text": {
+          "m_Key": "fcfad072-85d1-4081-8a10-211f79bee874",
+          "m_OwnerString": "0beabce6f37afd14c9518762a81e13e0",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0014_Text.json",
+          "Shared": null
+        },
+        "NextCue": {
+          "Cues": [
+            "!bp_8758467ee5750a64ca7269955ee49798"
+          ],
+          "Strategy": "First"
+        },
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "ShowCheck": {
+          "Type": "Unknown",
+          "DC": 0
+        },
+        "Experience": "NoExperience",
+        "DebugMode": false,
+        "CharacterSelection": {
+          "SelectionType": "Clear",
+          "ComparisonStats": []
+        },
+        "ShowConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "SelectConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "RequireValidCue": false,
+        "AddToHistory": true,
+        "OnSelect": {
+          "Actions": []
+        },
+        "FakeChecks": [],
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0015.jbp": {
+      "AssetId": "db13836a3e1c20b4085fe3f0d8990e77",
+      "Data": {
+        "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "40db17008eb1b7e4fbde32f3811324b7",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "Text": {
+          "m_Key": "ff648bb7-fa9d-46af-86a2-6e5f92e3c680",
+          "m_OwnerString": "db13836a3e1c20b4085fe3f0d8990e77",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0015_Text.json",
+          "Shared": null
+        },
+        "NextCue": {
+          "Cues": [
+            "!bp_e6f6c08ea1c8d6840a9bc8ae1615336c"
+          ],
+          "Strategy": "First"
+        },
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "ShowCheck": {
+          "Type": "Unknown",
+          "DC": 0
+        },
+        "Experience": "NoExperience",
+        "DebugMode": false,
+        "CharacterSelection": {
+          "SelectionType": "Clear",
+          "ComparisonStats": []
+        },
+        "ShowConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "SelectConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "RequireValidCue": false,
+        "AddToHistory": true,
+        "OnSelect": {
+          "Actions": []
+        },
+        "FakeChecks": [],
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0021.jbp": {
+      "AssetId": "b40989b991fd60b43af50c021884cbdd",
+      "Data": {
+        "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "890805d2200323a408d057f365158a71",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "Text": {
+          "m_Key": "8290baff-9cf0-47e8-bea4-75956a743258",
+          "m_OwnerString": "b40989b991fd60b43af50c021884cbdd",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0021_Text.json",
+          "Shared": null
+        },
+        "NextCue": {
+          "Cues": [
+            "!bp_7bd8c70bbc87e3d4cb13effc53dbf981"
+          ],
+          "Strategy": "First"
+        },
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "ShowCheck": {
+          "Type": "Unknown",
+          "DC": 0
+        },
+        "Experience": "NoExperience",
+        "DebugMode": false,
+        "CharacterSelection": {
+          "SelectionType": "Clear",
+          "ComparisonStats": []
+        },
+        "ShowConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "SelectConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "RequireValidCue": false,
+        "AddToHistory": true,
+        "OnSelect": {
+          "Actions": []
+        },
+        "FakeChecks": [],
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0022.jbp": {
+      "AssetId": "de6ef6f380230794fb7c45d9e21cc72d",
+      "Data": {
+        "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "890805d2200323a408d057f365158a71",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "Text": {
+          "m_Key": "3edd0d11-ae95-4e18-9c8e-3b50fcf3c5de",
+          "m_OwnerString": "de6ef6f380230794fb7c45d9e21cc72d",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Answer_0022_Text.json",
+          "Shared": null
+        },
+        "NextCue": {
+          "Cues": [
+            "!bp_d39b1e8067e50d142a326de4dbc38c5a"
+          ],
+          "Strategy": "First"
+        },
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "ShowCheck": {
+          "Type": "Unknown",
+          "DC": 0
+        },
+        "Experience": "NoExperience",
+        "DebugMode": false,
+        "CharacterSelection": {
+          "SelectionType": "Clear",
+          "ComparisonStats": []
+        },
+        "ShowConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "SelectConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "RequireValidCue": false,
+        "AddToHistory": true,
+        "OnSelect": {
+          "Actions": []
+        },
+        "FakeChecks": [],
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0001.jbp": {
+      "AssetId": "12de733844928794080d3b83ca9d8f82",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "a71e1d59-ba16-4767-9153-0ae7c474e42d",
+          "m_OwnerString": "12de733844928794080d3b83ca9d8f82",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0001_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0002.jbp": {
+      "AssetId": "4e77332aea0afe84aa3830a3eaa4846e",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "88eadd1f-82ed-485f-a74d-cd1d20e2dfed",
+          "m_OwnerString": "4e77332aea0afe84aa3830a3eaa4846e",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0002_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0003.jbp": {
+      "AssetId": "0879baf22d473104db614a5f7541f1b6",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "9f2a9967-4d69-45ec-be23-c37f6c73b99c",
+          "m_OwnerString": "0879baf22d473104db614a5f7541f1b6",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0003_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0004.jbp": {
+      "AssetId": "e0b43df6e793475469deaa1e5c86e563",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "\u0442\u043e\u043b\u044c\u043a\u043e \u0432 \u0433\u043b\u0430\u0432\u0435 3 ",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": true,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$d395708c-fc8d-4c6f-a337-26fe6393d6ab",
+              "Not": false,
+              "m_Etude": "!bp_15e0048c7daf0ac4999c2313b58df0e3",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "8c20fb67-784d-4ff0-ab96-2a3562852594",
+          "m_OwnerString": "e0b43df6e793475469deaa1e5c86e563",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0004_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_40db17008eb1b7e4fbde32f3811324b7"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0005.jbp": {
+      "AssetId": "efd967daaaaeffc42aa8e804d5a9466f",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "52f4f2e5-d116-4311-adba-061c664c5020",
+          "m_OwnerString": "efd967daaaaeffc42aa8e804d5a9466f",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0005_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0006.jbp": {
+      "AssetId": "8af119a9e9db07848ab1ffb0f8cbbba9",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": true,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "fa138714-c9aa-43b4-8564-45ea56d543c1",
+          "m_OwnerString": "8af119a9e9db07848ab1ffb0f8cbbba9",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0006_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_890805d2200323a408d057f365158a71"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0007.jbp": {
+      "AssetId": "14573020936772441a205e655a3ae0f8",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "06091be3-a8ea-4229-a617-65c4a9fc51a0",
+          "m_OwnerString": "14573020936772441a205e655a3ae0f8",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0007_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0008.jbp": {
+      "AssetId": "4da0cf7da7a9f5b4381c5aa2f060fc4c",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "da89a1fd-4ff2-4fbd-8c68-aca26e16aba6",
+          "m_OwnerString": "4da0cf7da7a9f5b4381c5aa2f060fc4c",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0008_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0009.jbp": {
+      "AssetId": "1dba5ece530b1e445be96e4523803a1d",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "90aa4d53-9214-463b-a4a0-2620466664a9",
+          "m_OwnerString": "1dba5ece530b1e445be96e4523803a1d",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0009_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0010.jbp": {
+      "AssetId": "136a79bea5facea4081d112914dcd24f",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "9f8647f3-372c-4eea-a99a-189a8e0ebe3c",
+          "m_OwnerString": "136a79bea5facea4081d112914dcd24f",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0010_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0011.jbp": {
+      "AssetId": "ee46aee9f5637c8438cd084d2f858bed",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "d2dc6ea1-12b1-402f-b301-d18d7f18209e",
+          "m_OwnerString": "ee46aee9f5637c8438cd084d2f858bed",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0011_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0012.jbp": {
+      "AssetId": "2cbeedac5fde7784dadda34d3af6c785",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de63e66fbc4992e4caf70ed3e9584cbb",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "11bee9d7-5d6f-4295-8480-b29cd058622e",
+          "m_OwnerString": "2cbeedac5fde7784dadda34d3af6c785",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0012_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0017.jbp": {
+      "AssetId": "8758467ee5750a64ca7269955ee49798",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "0beabce6f37afd14c9518762a81e13e0",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "c9f14ff7-a63b-4fcd-a01d-c7b4de6ad0b1",
+          "m_OwnerString": "8758467ee5750a64ca7269955ee49798",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0017_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0018.jbp": {
+      "AssetId": "e6f6c08ea1c8d6840a9bc8ae1615336c",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "db13836a3e1c20b4085fe3f0d8990e77",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "5dd24bda-6905-4f9b-a7a7-d8099e314942",
+          "m_OwnerString": "e6f6c08ea1c8d6840a9bc8ae1615336c",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0018_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0023.jbp": {
+      "AssetId": "7bd8c70bbc87e3d4cb13effc53dbf981",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "b40989b991fd60b43af50c021884cbdd",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "fa850d16-5f11-454a-a3dc-96b2e5fe002a",
+          "m_OwnerString": "7bd8c70bbc87e3d4cb13effc53dbf981",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0023_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0024.jbp": {
+      "AssetId": "d39b1e8067e50d142a326de4dbc38c5a",
+      "Data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "de6ef6f380230794fb7c45d9e21cc72d",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "29b22205-b8ec-4679-82ed-6a152843837b",
+          "m_OwnerString": "d39b1e8067e50d142a326de4dbc38c5a",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0024_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_32a037e97c3d5c54b85da8f639616c57",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_f1a65c6d838f58d49ad4ff40544b895b"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Dracosha_AzataIsland_dialog.jbp": {
+      "AssetId": "de63e66fbc4992e4caf70ed3e9584cbb",
+      "Data": {
+        "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "FirstCue": {
+          "Cues": [
+            "!bp_12de733844928794080d3b83ca9d8f82",
+            "!bp_4e77332aea0afe84aa3830a3eaa4846e",
+            "!bp_e0b43df6e793475469deaa1e5c86e563",
+            "!bp_0879baf22d473104db614a5f7541f1b6",
+            "!bp_efd967daaaaeffc42aa8e804d5a9466f",
+            "!bp_8af119a9e9db07848ab1ffb0f8cbbba9",
+            "!bp_14573020936772441a205e655a3ae0f8",
+            "!bp_4da0cf7da7a9f5b4381c5aa2f060fc4c",
+            "!bp_1dba5ece530b1e445be96e4523803a1d",
+            "!bp_136a79bea5facea4081d112914dcd24f",
+            "!bp_ee46aee9f5637c8438cd084d2f858bed",
+            "!bp_2cbeedac5fde7784dadda34d3af6c785"
+          ],
+          "Strategy": "Random"
+        },
+        "StartPosition": null,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "StartActions": {
+          "Actions": []
+        },
+        "FinishActions": {
+          "Actions": []
+        },
+        "ReplaceActions": {
+          "Actions": []
+        },
+        "TurnPlayer": true,
+        "TurnFirstSpeaker": true,
+        "IsLockCameraRotationButtons": false,
+        "Type": "Common",
+        "m_OverrideAreaCR": null
+      }
+    },
+    "World/Encounters/DrezenCapital/ConditionsHolders/AzataDragon_ThroneRoom_m_spawnConditions.jbp": {
+      "AssetId": "a55dfc5df40b491d92a873a6e29f6412",
+      "Data": {
+        "$type": "b9ea3359b1204b798a61750d6cb4e723, ConditionsHolder",
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "3fc1a5c092d010144a97f0c119b23864, UnitIsInAreaPart",
+              "name": "$UnitIsInAreaPart$87885b06-9034-4584-910d-221ef2e590df",
+              "Not": false,
+              "m_AreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+              "Unit": {
+                "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                "name": "$PlayerCharacter$af29a290-6c72-4f9b-ac50-1c133342bd03"
+              }
+            },
+            {
+              "$type": "6644a1aff0f24b4fac0fd20fcd9f26f3, CurrentAreaIs",
+              "name": "$CurrentAreaIs$f7770856-dd1e-440a-9781-f5b525361dc0",
+              "Not": false,
+              "m_Area": "!bp_2570015799edf594daf2f076f2f975d8"
+            }
+          ]
+        }
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Etudes/Common/WrathOfTheRighteous/Coronation_Azata.jbp": {
+      "AssetId": "885bd62ac2c74836bf63cec88739ea13",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "m_Flags": 0,
+            "name": "$EtudePlayTrigger$82dd6b6b-398d-4d45-8612-132a22ccdf4f",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "m_Once": false,
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": []
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                  "name": "$HideUnit$48fabf92-6a48-41d0-9f15-f925c100b606",
+                  "Target": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "name": "$UnitFromSpawner$dff2aaa2-1ba4-4fd7-9bcb-02e0c1e7f694",
+                    "Spawner": {
+                      "EntityNameInEditor": "AzataDragon_ThroneRoom",
+                      "_entity_id": "5f0e977b-e342-4a4d-a52c-0beced8ffc87",
+                      "SceneAssetGuid": "828e4d2ac7dffa9429c4d6721e7728c2"
+                    }
+                  },
+                  "Unhide": true,
+                  "Fade": false,
+                  "SetHideInSaves": false
+                },
+                {
+                  "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                  "name": "$TranslocateUnit$856518f6-9e5d-4378-92e4-400a7b4df6df",
+                  "Unit": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "name": "$UnitFromSpawner$00c36ebb-d04c-486d-b29f-7daefbe120f1",
+                    "Spawner": {
+                      "EntityNameInEditor": "AzataDragon_ThroneRoom",
+                      "_entity_id": "5f0e977b-e342-4a4d-a52c-0beced8ffc87",
+                      "SceneAssetGuid": "828e4d2ac7dffa9429c4d6721e7728c2"
+                    }
+                  },
+                  "translocatePosition": {
+                    "EntityNameInEditor": "",
+                    "_entity_id": "",
+                    "SceneAssetGuid": ""
+                  },
+                  "translocatePositionEvaluator": {
+                    "$type": "ee272e7d88aff6648b4c1b052228fdc7, LocatorPosition",
+                    "name": "$LocatorPosition$70f8c539-13c5-48f2-b568-b243c72d7585",
+                    "Locator": {
+                      "EntityNameInEditor": "AzataDragon_OutdoorCoronation",
+                      "_entity_id": "fd4e5b8d-056d-4386-bc92-82a057e4d266",
+                      "SceneAssetGuid": "828e4d2ac7dffa9429c4d6721e7728c2"
+                    },
+                    "Offset": "0|0|0"
+                  },
+                  "m_CopyRotation": true,
+                  "translocateOrientationEvaluator": null
+                }
+              ]
+            },
+            "IsActivateOnLoadArea": false
+          }
+        ],
+        "Comment": "",
+        "m_Parent": "!bp_a30fa65c287ebb8418736a544797b7f4",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$fdd39e13-d15b-4b1d-b679-661eb877b68f",
+              "Not": false,
+              "m_Etude": "!bp_d3b47e973d65c6c46af1cce815d1f6ce",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": false,
+        "m_LinkedAreaPart": null,
+        "m_LinkedCampaigns": null,
+        "m_IncludeAreaParts": true,
+        "m_AddedAreaMechanics": [
+          "!bp_69bf5090bc7e2f34f83b73e64972f54b"
+        ],
+        "m_StartsWith": [
+          "!bp_36d9c07746c244238b04b732e3223336",
+          "!bp_bf08cd4882fa48feb98c92b2d2aaeb86",
+          "!bp_20e1031c5b3d47c7a720324e3b759dc2",
+          "!bp_993345465b0342219c50d48e0e4c76a9",
+          "!bp_baac26c744884edaa18de4474fd84d89",
+          "!bp_33efb9f47d734dd3bf3c2a8a7dabdb66",
+          "!bp_c9200c4a982a4318aa0aca3d9e8f1bc5",
+          "!bp_5dc3a00cea4d4e52a478cb99e57569f0"
+        ],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [],
+        "Priority": 0
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/Azata_Capital.jbp": {
+      "AssetId": "d995b5fa774299849862a5e3f5d95199",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "m_Parent": "!bp_0289be5aa42821e4499415b58507efac",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": false,
+        "m_LinkedAreaPart": null,
+        "m_IncludeAreaParts": true,
+        "m_AddedAreaMechanics": [],
+        "m_StartsWith": [
+          "!bp_efce31da9b4f2dd46b3f18d985fbf55e"
+        ],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [],
+        "Priority": 0
+      }
+    },
+    "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/PlayerIsAzata.jbp": {
+      "AssetId": "d3b47e973d65c6c46af1cce815d1f6ce",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": "",
+        "m_Overrides": [
+          "$EtudePlayTrigger$6f09f079-0c3d-43e9-9d07-1901a3e9ca03",
+          "$EtudePlayTrigger$fcebfac0-edb6-482a-8a55-040c9cc061ec"
+        ],
+        "Components": [
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "m_Flags": 0,
+            "name": "$EtudePlayTrigger$6f09f079-0c3d-43e9-9d07-1901a3e9ca03",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "First attempt to lock alignment",
+            "m_Once": true,
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "07003ced083c4a97b44c006b1cf26aff, PlayerAlignmentIs",
+                  "name": "$PlayerAlignmentIs$a6cdd114-10de-44c6-a340-b8811caa2ce0",
+                  "Not": false,
+                  "Alignment": "NeutralGood, ChaoticGood, TrueNeutral, ChaoticNeutral"
+                }
+              ]
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "beb863f2cd06fbf4f924982b22b7af89, LockAlignment",
+                  "name": "$LockAlignment$78358058-be6e-4f8f-bf7b-dd709921a41b",
+                  "Unit": {
+                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                    "name": "$PlayerCharacter$c5a17fb1-2ced-43dc-982b-aa0be66445a1"
+                  },
+                  "AlignmentMask": "NeutralGood, ChaoticGood, TrueNeutral, ChaoticNeutral",
+                  "TargetAlignment": "ChaoticGood"
+                }
+              ]
+            }
+          },
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "m_Flags": 0,
+            "name": "$EtudePlayTrigger$fcebfac0-edb6-482a-8a55-040c9cc061ec",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "m_Once": true,
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": []
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                  "name": "$StartEtude$e03b25ea-5d89-48ee-bc63-74295ece8e1c",
+                  "Etude": "!bp_024a250788da882439590197626b4e47",
+                  "EtudeEvaluator": null,
+                  "Evaluate": false
+                }
+              ]
+            }
+          },
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "m_Flags": 0,
+            "name": "$EtudePlayTrigger$b56b63df-f48a-4550-9723-3dda651609f4",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "\u0410\u0447\u0438\u0432\u043a\u0430 - \u0438\u0433\u0440\u043e\u043a \u0441\u0442\u0430\u043b \u0430\u0437\u0430\u0442\u043e\u0439",
+            "m_Once": true,
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": []
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                  "name": "$StartEtude$05d19b93-9740-4350-8687-6d938d52ba5a",
+                  "Etude": "!bp_0fab8fc657ac4c0ba822d28e68f2b543",
+                  "EtudeEvaluator": null,
+                  "Evaluate": false
+                }
+              ]
+            }
+          }
+        ],
+        "Comment": "",
+        "m_Parent": "!bp_891dbd7391889b2429b64a20bdfcc13a",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+              "name": "$UnitClass$06fe14a9-cdb3-472d-816e-27c8b8ee3e2d",
+              "Not": false,
+              "Unit": {
+                "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                "name": "$PlayerCharacter$2292cb7d-d00d-4208-bcca-fc32a378f426"
+              },
+              "m_Class": "!bp_9a3b2c63afa79744cbca46bea0da9a16",
+              "MinLevel": null
+            },
+            {
+              "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+              "name": "$UnitClass$ced8432c-40fa-4493-a415-a9797610f55e",
+              "Not": true,
+              "Unit": {
+                "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                "name": "$PlayerCharacter$e4d662ed-a665-4bf6-9c77-d56974b91350"
+              },
+              "m_Class": "!bp_211f49705f478b3468db6daa802452a2",
+              "MinLevel": null
+            }
+          ]
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": false,
+        "m_LinkedAreaPart": null,
+        "m_IncludeAreaParts": true,
+        "m_AddedAreaMechanics": [
+          "!bp_69bf5090bc7e2f34f83b73e64972f54b"
+        ],
+        "m_StartsWith": [
+          "!bp_0289be5aa42821e4499415b58507efac"
+        ],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [],
+        "Priority": 0
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/PlayerIsAzata/Azata_Capital_Mechanics.jbp": {
+      "AssetId": "efce31da9b4f2dd46b3f18d985fbf55e",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "m_Parent": "!bp_d995b5fa774299849862a5e3f5d95199",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": false,
+        "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+        "m_IncludeAreaParts": true,
+        "m_AddedAreaMechanics": [],
+        "m_StartsWith": [],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [],
+        "Priority": 0
+      }
+    },
+    "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/PlayerIsAzata/Azata_Capital_Mechanics/PetDragonAzata_ThroneRoom.jbp": {
+      "AssetId": "e4a1eb7ccc927bb41afbe8b20f00861f",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": null,
+        "m_Overrides": [
+          "$EtudeBracketPreventDirectControl$720995b7-94a2-4232-a292-cbb999c759bf"
+        ],
+        "Components": [
+          {
+            "$type": "d7bc8ddb76970d64eb7b373371991305, EtudeBracketPreventDirectControl",
+            "m_Flags": 0,
+            "name": "$EtudeBracketPreventDirectControl$720995b7-94a2-4232-a292-cbb999c759bf",
+            "PrototypeLink": {
+              "guid": null,
+              "name": null
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "Unit": {
+              "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+              "name": "$UnitFromSpawner$61d29faf-0c23-45cf-8089-e99861221672",
+              "Spawner": {
+                "EntityNameInEditor": "AzataDragon_ThroneRoom",
+                "_entity_id": "5f0e977b-e342-4a4d-a52c-0beced8ffc87",
+                "SceneAssetGuid": "828e4d2ac7dffa9429c4d6721e7728c2"
+              }
+            }
+          }
+        ],
+        "Comment": "",
+        "m_Parent": "!bp_efce31da9b4f2dd46b3f18d985fbf55e",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": true,
+        "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+        "m_IncludeAreaParts": false,
+        "m_AddedAreaMechanics": [],
+        "m_StartsWith": [],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [],
+        "Priority": 0
+      }
+    }
+  },
+  "decompiled": {
+    "Kingmaker.View.Spawners.CompanionSpawner": "using System.Collections.Generic;\nusing JetBrains.Annotations;\nusing Kingmaker.Blueprints;\nusing Kingmaker.ElementsSystem;\nusing Kingmaker.EntitySystem;\nusing Kingmaker.EntitySystem.Entities;\nusing Kingmaker.EntitySystem.Persistence.JsonUtility;\nusing Kingmaker.Enums;\nusing Kingmaker.PubSubSystem;\nusing Kingmaker.UnitLogic.Parts;\nusing Kingmaker.Utility;\nusing Newtonsoft.Json;\nusing UnityEngine;\n\nnamespace Kingmaker.View.Spawners;\n\npublic class CompanionSpawner : UnitSpawnerBase, IPartyHandler, IGlobalSubscriber, ISubscriber, IAddInspectorGUI, ICompanionChangeHandler, CompanionSpawner.IResetHandler\n{\n\tprivate new class MyData : UnitSpawnerBase.MyData\n\t{\n\t\tprivate bool m_NeedInitOnPlace;\n\n\t\t[JsonProperty]\n\t\tpublic bool DidSpawnOnce { get; private set; }\n\n\t\tpublic MyData(EntityViewBase view)\n\t\t\t: base(view)\n\t\t{\n\t\t}\n\n\t\tprivate MyData(JsonConstructorMark _)\n\t\t\t: base(_)\n\t\t{\n\t\t}\n\n\t\tpublic override bool ShouldProcessActivation(bool alsoRaiseDead)\n\t\t{\n\t\t\treturn true;\n\t\t}\n\n\t\tpublic void OnPlaceCompanion(bool didPlace)\n\t\t{\n\t\t\tUnitEntityData unit = base.SpawnedUnit.Value;\n\t\t\tif (!(unit != null) || unit.DestroyMark || unit.Destroyed)\n\t\t\t{\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tif (!didPlace)\n\t\t\t{\n\t\t\t\tUnitPartCompanion unitPartCompanion = unit.Get<UnitPartCompanion>();\n\t\t\t\tif (unitPartCompanion != null && unitPartCompanion.IsControllableInParty() && !m_NeedInitOnPlace)\n\t\t\t\t{\n\t\t\t\t\tParts.GetAll<IUnitInitializer>().ForEach(delegate(IUnitInitializer d)\n\t\t\t\t\t{\n\t\t\t\t\t\td.OnDispose(unit);\n\t\t\t\t\t});\n\t\t\t\t\tm_NeedInitOnPlace = true;\n\t\t\t\t}\n\t\t\t}\n\t\t\tif (didPlace && m_NeedInitOnPlace)\n\t\t\t{\n\t\t\t\tParts.GetAll<IUnitInitializer>().ForEach(delegate(IUnitInitializer d)\n\t\t\t\t{\n\t\t\t\t\td.OnInitialize(unit);\n\t\t\t\t});\n\t\t\t\tm_NeedInitOnPlace = false;\n\t\t\t}\n\t\t}\n\n\t\tprotected override void OnSpawned()\n\t\t{\n\t\t\tbase.OnSpawned();\n\t\t\tm_NeedInitOnPlace = false;\n\t\t\tDidSpawnOnce = true;\n\t\t}\n\t}\n\n\tpublic interface IResetHandler : IGlobalSubscriber, ISubscriber\n\t{\n\t\tvoid TryControlCompanion(BlueprintUnit companion);\n\t}\n\n\t[SerializeField]\n\tprivate bool m_UsePet;\n\n\t[SerializeField]\n\t[ConditionalShow(\"m_UsePet\")]\n\tprivate bool m_IsPlayerPet;\n\n\t[SerializeField]\n\t[ConditionalShow(\"m_UsePet\")]\n\tprivate PetType m_PetType;\n\n\t[SerializeField]\n\t[InfoBox(\"Spawn companion in Remote state\\nNote: All three options are used as OR. So if don't need companion in non-capital mode - use ONLY capital mode flag.\")]\n\tprivate bool m_SpawnWhenRemote;\n\n\t[SerializeField]\n\t[InfoBox(\"Spawn companion in Remote and InParty state when capital mode is on\")]\n\tprivate bool m_SpawnWhenInCapital;\n\n\t[SerializeField]\n\t[InfoBox(\"Spawn companion in Ex state\")]\n\tprivate bool m_SpawnWhenEx = true;\n\n\t[SerializeField]\n\tprivate ConditionsReference ShowCondition;\n\n\t[SerializeField]\n\t[AddInspector]\n\t[UsedImplicitly]\n\tprivate bool m_Dummy;\n\n\tprivate bool IsControllingCompanion\n\t{\n\t\tget\n\t\t{\n\t\t\tUnitEntityData myCompanion = GetMyCompanion();\n\t\t\tif (myCompanion != null && myCompanion == base.SpawnedUnit)\n\t\t\t{\n\t\t\t\treturn myCompanion.Get<UnitPartCompanion>()?.GetCurrentSpawner() == this;\n\t\t\t}\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tprivate bool CanControlCompanion\n\t{\n\t\tget\n\t\t{\n\t\t\tif (base.Data == null || (!((MyData)base.Data).DidSpawnOnce && !base.SpawnOnSceneInit))\n\t\t\t{\n\t\t\t\treturn false;\n\t\t\t}\n\t\t\tUnitEntityData myCompanion = GetMyCompanion();\n\t\t\tUnitPartCompanion unitPartCompanion = myCompanion?.Get<UnitPartCompanion>();\n\t\t\tCountableFlag countableFlag = unitPartCompanion?.IgnoresSpawners;\n\t\t\tif (countableFlag != null && (bool)countableFlag)\n\t\t\t{\n\t\t\t\treturn false;\n\t\t\t}\n\t\t\tCompanionSpawner companionSpawner = unitPartCompanion?.GetCurrentSpawner();\n\t\t\tif (myCompanion == base.SpawnedUnit && companionSpawner == this)\n\t\t\t{\n\t\t\t\treturn true;\n\t\t\t}\n\t\t\tif (companionSpawner != null && companionSpawner != this && companionSpawner.ShouldShowUnit(myCompanion))\n\t\t\t{\n\t\t\t\treturn false;\n\t\t\t}\n\t\t\tif (myCompanion != null)\n\t\t\t{\n\t\t\t\treturn ShouldShowUnit(myCompanion);\n\t\t\t}\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tpublic override EntityDataBase CreateEntityData(bool load)\n\t{\n\t\treturn new MyData(this);\n\t}\n\n\tpublic override void HandleAreaSpawnerInit()\n\t{\n\t\tif (base.HasSpawned)\n\t\t{\n\t\t\tif (!IsControllingCompanion)\n\t\t\t{\n\t\t\t\t((MyData)base.Data).Clear();\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\tPlaceCompanion(base.SpawnedUnit, stayInGame: false);\n\t\t\t}\n\t\t}\n\t\tif (CanControlCompanion)\n\t\t{\n\t\t\tbase.HandleAreaSpawnerInit();\n\t\t}\n\t}\n\n\tprivate void BeginControllingCompanion(bool stayInGame = false)\n\t{\n\t\tUnitEntityData myCompanion = GetMyCompanion();\n\t\tif (!IsControllingCompanion)\n\t\t{\n\t\t\tmyCompanion.Get<UnitPartCompanion>()?.SetSpawner(this);\n\t\t\t((MyData)base.Data).SpawnedUnit = myCompanion;\n\t\t}\n\t\tPlaceCompanion(myCompanion, stayInGame);\n\t\tif (myCompanion.Pets.Count > 0 && GetComponent<SpawnerPetSettings>() == null)\n\t\t{\n\t\t\tPlacePets(myCompanion);\n\t\t}\n\t}\n\n\tprivate UnitEntityData GetMyCompanion()\n\t{\n\t\tUnitEntityData unitEntityData = Game.Instance.Player.AllCharacters.SingleItem((UnitEntityData u) => u.Blueprint.CheckEqualsWithPrototype(base.Blueprint));\n\t\tif (m_UsePet)\n\t\t{\n\t\t\tunitEntityData = unitEntityData?.Pets.FirstItem((EntityPartRef<UnitEntityData, UnitPartPet> i) => i.EntityPart?.Type == m_PetType).Entity;\n\t\t}\n\t\treturn unitEntityData;\n\t}\n\n\tprotected override UnitEntityData SpawnUnit(Vector3 position, Quaternion rotation)\n\t{\n\t\tUnitEntityData myCompanion = GetMyCompanion();\n\t\tif (myCompanion == null)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tBeginControllingCompanion();\n\t\treturn myCompanion;\n\t}\n\n\tprivate void PlaceCompanion(UnitEntityData unit, bool stayInGame)\n\t{\n\t\tbool didPlace = false;\n\t\tif (ShouldShowUnit(unit))\n\t\t{\n\t\t\tunit.Position = base.transform.position;\n\t\t\tunit.Orientation = base.transform.rotation.eulerAngles.y;\n\t\t\tif ((bool)unit.View)\n\t\t\t{\n\t\t\t\tunit.View.transform.position = base.transform.position;\n\t\t\t}\n\t\t\tunit.IsInGame = true;\n\t\t\tdidPlace = true;\n\t\t}\n\t\telse if (!stayInGame)\n\t\t{\n\t\t\tUnitPartCompanion unitPartCompanion = unit.Get<UnitPartCompanion>();\n\t\t\tif (unitPartCompanion == null || !unitPartCompanion.IsControllableInParty())\n\t\t\t{\n\t\t\t\tunit.IsInGame = false;\n\t\t\t}\n\t\t}\n\t\t((MyData)base.Data).OnPlaceCompanion(didPlace);\n\t}\n\n\tprivate void PlacePets(UnitEntityData companion)\n\t{\n\t\tIList<EntityPartRef<UnitEntityData, UnitPartPet>> pets = companion.Pets;\n\t\tTransform transform = ((base.transform.childCount > 0) ? base.transform.GetChild(0) : null);\n\t\tif (!transform)\n\t\t{\n\t\t\tFreePlaceSelector.PlaceSpawnPlaces(pets.Count, 0.5f, companion.Position);\n\t\t}\n\t\tint num = 0;\n\t\tforeach (EntityPartRef<UnitEntityData, UnitPartPet> item in pets)\n\t\t{\n\t\t\tUnitEntityData entity = item.Entity;\n\t\t\tif (!(entity == null))\n\t\t\t{\n\t\t\t\tif ((bool)transform)\n\t\t\t\t{\n\t\t\t\t\tentity.Position = transform.position;\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tentity.Position = FreePlaceSelector.GetRelaxedPosition(num, projectOnGround: true);\n\t\t\t\t}\n\t\t\t\tentity.Orientation = base.transform.rotation.eulerAngles.y;\n\t\t\t\tnum++;\n\t\t\t}\n\t\t}\n\t}\n\n\tpublic bool ShouldShowUnit(UnitEntityData unit)\n\t{\n\t\tif (unit == null)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t\tUnitPartCompanion unitPartCompanion = unit.Get<UnitPartCompanion>();\n\t\tCountableFlag countableFlag = unitPartCompanion?.ShouldBeHidden;\n\t\tif (countableFlag != null && (bool)countableFlag)\n\t\t{\n\t\t\treturn false;\n\t\t}\n\t\tif (unit.IsPet)\n\t\t{\n\t\t\tUnitPartPet unitPartPet = unit.Get<UnitPartPet>();\n\t\t\tif (unitPartPet != null && unitPartPet.ShouldBeHidden)\n\t\t\t{\n\t\t\t\treturn false;\n\t\t\t}\n\t\t}\n\t\tCompanionState companionState = unitPartCompanion?.State ?? CompanionState.None;\n\t\tbool flag = companionState == CompanionState.Remote;\n\t\tbool flag2 = (bool)Game.Instance.LoadedAreaState.Settings.CapitalPartyMode && (companionState == CompanionState.Remote || companionState == CompanionState.InParty || m_UsePet);\n\t\tbool flag3 = companionState == CompanionState.ExCompanion;\n\t\tbool flag4 = (m_SpawnWhenRemote && flag) || (m_SpawnWhenEx && flag3) || (m_SpawnWhenInCapital && flag2);\n\t\tif (flag4 && ShowCondition.Get() != null)\n\t\t{\n\t\t\tflag4 = ShowCondition.Get().Conditions.Check();\n\t\t}\n\t\treturn flag4;\n\t}\n\n\tpublic void StopControllingCompanion()\n\t{\n\t\t((MyData)base.Data).Clear();\n\t}\n\n\tpublic void HandleAddCompanion(UnitEntityData unit)\n\t{\n\t\tif ((unit.Blueprint == base.Blueprint || (m_UsePet && unit.Master?.Blueprint == base.Blueprint)) && CanControlCompanion)\n\t\t{\n\t\t\tBeginControllingCompanion();\n\t\t}\n\t}\n\n\tpublic void HandleCompanionActivated(UnitEntityData unit)\n\t{\n\t\tif (unit.Blueprint == base.Blueprint && CanControlCompanion)\n\t\t{\n\t\t\tBeginControllingCompanion();\n\t\t}\n\t}\n\n\tpublic void HandleCompanionRemoved(UnitEntityData unit, bool stayInGame)\n\t{\n\t\tif (unit.Blueprint == base.Blueprint && CanControlCompanion)\n\t\t{\n\t\t\tBeginControllingCompanion(stayInGame);\n\t\t}\n\t}\n\n\tpublic void HandleCapitalModeChanged()\n\t{\n\t\tif (CanControlCompanion)\n\t\t{\n\t\t\tBeginControllingCompanion();\n\t\t}\n\t}\n\n\tvoid ICompanionChangeHandler.HandleRecruit(UnitEntityData companion)\n\t{\n\t\tif (base.SpawnedUnit == null && companion.Blueprint.Equals(base.Blueprint) && CanControlCompanion)\n\t\t{\n\t\t\tBeginControllingCompanion();\n\t\t}\n\t}\n\n\tvoid ICompanionChangeHandler.HandleUnrecruit(UnitEntityData companion)\n\t{\n\t\tif (base.SpawnedUnit == companion && !ShouldShowUnit(companion))\n\t\t{\n\t\t\tUnitEntityData unit = base.SpawnedUnit;\n\t\t\tStopControllingCompanion();\n\t\t\tunit.IsInGame = false;\n\t\t\tEventBus.RaiseEvent(delegate(IPartyHandler x)\n\t\t\t{\n\t\t\t\tx.HandleCompanionRemoved(unit, stayInGame: false);\n\t\t\t});\n\t\t}\n\t}\n\n\tvoid IResetHandler.TryControlCompanion(BlueprintUnit companion)\n\t{\n\t\tif (companion == base.Blueprint && CanControlCompanion)\n\t\t{\n\t\t\tBeginControllingCompanion();\n\t\t}\n\t}\n}\nYou are not using the latest version of the tool, please update.\nLatest version is '11.1.0.9782' (yours is '9.1.0.7988')\n",
+    "Kingmaker.View.Spawners.UnitSpawnerBase": "using System;\nusing System.Collections.Generic;\nusing JetBrains.Annotations;\nusing Kingmaker.Blueprints;\nusing Kingmaker.Controllers.Units;\nusing Kingmaker.ElementsSystem;\nusing Kingmaker.EntitySystem;\nusing Kingmaker.EntitySystem.Entities;\nusing Kingmaker.EntitySystem.Persistence.JsonUtility;\nusing Kingmaker.QA;\nusing Kingmaker.RandomEncounters.Settings;\nusing Kingmaker.ResourceLinks;\nusing Kingmaker.UnitLogic.Parts;\nusing Kingmaker.Utility;\nusing Newtonsoft.Json;\nusing Owlcat.QA.Validation;\nusing Owlcat.Runtime.Core.Utils;\nusing UnityEngine;\n\nnamespace Kingmaker.View.Spawners;\n\npublic abstract class UnitSpawnerBase : EntityViewBase\n{\n\tpublic class MyData : StaticEntityData\n\t{\n\t\t[JsonProperty]\n\t\tprivate UnitReference m_SpawnedUnit;\n\n\t\t[JsonProperty]\n\t\tpublic bool HasSpawned { get; set; }\n\n\t\t[JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]\n\t\tpublic bool HasDied { get; set; }\n\n\t\tpublic UnitReference SpawnedUnit\n\t\t{\n\t\t\tget\n\t\t\t{\n\t\t\t\treturn m_SpawnedUnit;\n\t\t\t}\n\t\t\tset\n\t\t\t{\n\t\t\t\tif (m_SpawnedUnit != value)\n\t\t\t\t{\n\t\t\t\t\tif (m_SpawnedUnit != null)\n\t\t\t\t\t{\n\t\t\t\t\t\tClear();\n\t\t\t\t\t}\n\t\t\t\t\tm_SpawnedUnit = value;\n\t\t\t\t\tOnSpawned();\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tpublic override bool IsViewActive => true;\n\n\t\tpublic MyData(EntityViewBase view)\n\t\t\t: base(view)\n\t\t{\n\t\t}\n\n\t\tprotected MyData(JsonConstructorMark _)\n\t\t\t: base(_)\n\t\t{\n\t\t}\n\n\t\tpublic virtual bool ShouldProcessActivation(bool alsoRaiseDead)\n\t\t{\n\t\t\tUnitSpawnerBase unitSpawnerBase = (UnitSpawnerBase)base.View;\n\t\t\tif (!unitSpawnerBase)\n\t\t\t{\n\t\t\t\treturn false;\n\t\t\t}\n\t\t\tif (unitSpawnerBase.SpawnOnSceneInit)\n\t\t\t{\n\t\t\t\tif (unitSpawnerBase.HasSpawned)\n\t\t\t\t{\n\t\t\t\t\tif (alsoRaiseDead && unitSpawnerBase.m_RespawnIfDead)\n\t\t\t\t\t{\n\t\t\t\t\t\treturn unitSpawnerBase.SpawnedUnitHasDied;\n\t\t\t\t\t}\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t\treturn true;\n\t\t\t}\n\t\t\treturn false;\n\t\t}\n\n\t\tprotected virtual void OnSpawned()\n\t\t{\n\t\t\tif (SpawnedUnit.Value != null)\n\t\t\t{\n\t\t\t\tApplyOnSpawn();\n\t\t\t\tHasSpawned = true;\n\t\t\t}\n\t\t}\n\n\t\tpublic void ApplyOnSpawn()\n\t\t{\n\t\t\tforeach (IUnitInitializer item in Parts.GetAll<IUnitInitializer>())\n\t\t\t{\n\t\t\t\titem.OnSpawn(SpawnedUnit);\n\t\t\t\titem.OnInitialize(SpawnedUnit);\n\t\t\t}\n\t\t}\n\n\t\tprotected override void OnViewDidAttach()\n\t\t{\n\t\t\tbase.OnViewDidAttach();\n\t\t\tUnitEntityData value = SpawnedUnit.Value;\n\t\t\tif (!(value != null))\n\t\t\t{\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tforeach (IUnitInitializer item in Parts.GetAll<IUnitInitializer>())\n\t\t\t{\n\t\t\t\tif (value.IsRestoredFromPlaceholder && item.CallOnSpawnWhenRestoredFromPlaceholder)\n\t\t\t\t{\n\t\t\t\t\titem.OnSpawn(value);\n\t\t\t\t}\n\t\t\t\titem.OnInitialize(value);\n\t\t\t}\n\t\t\tif ((value.SpawnPosition.To2D() - value.Position.To2D()).magnitude < 0.1f)\n\t\t\t{\n\t\t\t\tVector3 spawnPosition = (value.Position = base.View.transform.position);\n\t\t\t\tvalue.SpawnPosition = spawnPosition;\n\t\t\t\tvalue.Orientation = base.View.transform.rotation.eulerAngles.y;\n\t\t\t}\n\t\t}\n\n\t\tprotected override void OnDispose()\n\t\t{\n\t\t\tClear();\n\t\t\tbase.OnDispose();\n\t\t}\n\n\t\tpublic void Clear()\n\t\t{\n\t\t\tApplyOnDispose();\n\t\t\tm_SpawnedUnit = null;\n\t\t\tHasSpawned = false;\n\t\t}\n\n\t\tpublic void ApplyOnDispose()\n\t\t{\n\t\t\tUnitEntityData unit = SpawnedUnit.Value;\n\t\t\tif (unit != null && !unit.DestroyMark && !unit.Destroyed)\n\t\t\t{\n\t\t\t\tParts.GetAll<IUnitInitializer>().ForEach(delegate(IUnitInitializer d)\n\t\t\t\t{\n\t\t\t\t\td.OnDispose(unit);\n\t\t\t\t});\n\t\t\t}\n\t\t}\n\n\t\tprotected override void OnIsInGameChanged()\n\t\t{\n\t\t\tbase.OnIsInGameChanged();\n\t\t}\n\n\t\tpublic void DetachSpawned(bool allowRespawn = false)\n\t\t{\n\t\t\tSpawnedUnit = null;\n\t\t\tbool flag = (base.View as UnitSpawnerBase)?.m_RespawnIfDead ?? false;\n\t\t\tbool flag2 = allowRespawn && flag;\n\t\t\tHasSpawned = !flag2;\n\t\t}\n\t}\n\n\t[SerializeField]\n\t[ValidateNotNull]\n\tprivate BlueprintUnitReference m_Blueprint;\n\n\t[SerializeField]\n\tprivate bool m_SpawnOnSceneInit = true;\n\n\t[InfoBox(\"Respawn only on area load if SpawnOnSceneInit = true\")]\n\t[SerializeField]\n\t[HideIf(\"SpawnsCompanions\")]\n\tprivate bool m_RespawnIfDead;\n\n\t[SerializeField]\n\tprivate ConditionsReference m_spawnConditions;\n\n\tprivate bool SpawnsCompanions => this is CompanionSpawner;\n\n\tpublic bool HasSpawned\n\t{\n\t\tget\n\t\t{\n\t\t\treturn Data.HasSpawned;\n\t\t}\n\t\tprotected set\n\t\t{\n\t\t\tData.HasSpawned = value;\n\t\t}\n\t}\n\n\tpublic BlueprintUnit Blueprint\n\t{\n\t\tget\n\t\t{\n\t\t\treturn m_Blueprint?.Get();\n\t\t}\n\t\tset\n\t\t{\n\t\t\tm_Blueprint = value.ToReference<BlueprintUnitReference>();\n\t\t}\n\t}\n\n\tpublic UnitEntityData SpawnedUnit\n\t{\n\t\tget\n\t\t{\n\t\t\tUnitReference? unitReference = Data?.SpawnedUnit;\n\t\t\tif (!unitReference.HasValue)\n\t\t\t{\n\t\t\t\treturn null;\n\t\t\t}\n\t\t\treturn unitReference.GetValueOrDefault();\n\t\t}\n\t}\n\n\tpublic bool SpawnOnSceneInit => m_SpawnOnSceneInit;\n\n\tpublic bool SpawnedUnitHasDied\n\t{\n\t\tget\n\t\t{\n\t\t\tif (HasSpawned)\n\t\t\t{\n\t\t\t\treturn SpawnedUnit?.State.IsDead ?? Data.HasDied;\n\t\t\t}\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tpublic new MyData Data => (MyData)base.Data;\n\n\tpublic override bool CreatesDataOnLoad => true;\n\n\tpublic virtual void HandleAreaSpawnerInit()\n\t{\n\t\tif (Game.Instance.CurrentlyLoadedArea.GetComponent<CombatRandomEncounterAreaSettings>() == null && (!HasSpawned || (SpawnedUnitHasDied && m_RespawnIfDead)) && m_SpawnOnSceneInit && CheckConditions())\n\t\t{\n\t\t\tif (!(Data.SpawnedUnit.Value?.Get<UnitPartCompanion>()))\n\t\t\t{\n\t\t\t\tData.SpawnedUnit.Value?.MarkForDestroy();\n\t\t\t}\n\t\t\tData.Clear();\n\t\t\tSpawn();\n\t\t}\n\t}\n\n\tpublic bool CheckConditions()\n\t{\n\t\tif (m_spawnConditions.Get() != null)\n\t\t{\n\t\t\tConditionsChecker conditions = m_spawnConditions.Get().Conditions;\n\t\t\tif (conditions.HasConditions)\n\t\t\t{\n\t\t\t\treturn conditions.Check();\n\t\t\t}\n\t\t\treturn true;\n\t\t}\n\t\treturn true;\n\t}\n\n\t[CanBeNull]\n\tpublic UnitEntityData Spawn()\n\t{\n\t\tif (HasSpawned)\n\t\t{\n\t\t\tPFLog.Default.Warning(\"Trying to use spawner {0} twice.\", base.name);\n\t\t\treturn null;\n\t\t}\n\t\tif (m_Blueprint.IsEmpty())\n\t\t{\n\t\t\tPFLog.Default.ErrorWithReport(\"UnitSpawnerBase.Spawn: unit blueprint is null! \" + base.name);\n\t\t\treturn null;\n\t\t}\n\t\tList<IUnitSpawnRestriction> list = TempList.Get<IUnitSpawnRestriction>();\n\t\tGetComponents(list);\n\t\tUnitSpawnRestrictionResult unitSpawnRestrictionResult = UnitSpawnRestrictionResult.CanSpawn;\n\t\tforeach (IUnitSpawnRestriction item in list)\n\t\t{\n\t\t\tUnitSpawnRestrictionResult unitSpawnRestrictionResult2 = item.CanSpawn();\n\t\t\tif (unitSpawnRestrictionResult2 > unitSpawnRestrictionResult)\n\t\t\t{\n\t\t\t\tunitSpawnRestrictionResult = unitSpawnRestrictionResult2;\n\t\t\t}\n\t\t}\n\t\tswitch (unitSpawnRestrictionResult)\n\t\t{\n\t\tcase UnitSpawnRestrictionResult.Delay:\n\t\t\treturn null;\n\t\tcase UnitSpawnRestrictionResult.Disable:\n\t\t\tHasSpawned = true;\n\t\t\treturn null;\n\t\tdefault:\n\t\t{\n\t\t\tUnitEntityData unitEntityData = SpawnUnit(base.transform.position, base.transform.rotation);\n\t\t\tif (unitEntityData == null)\n\t\t\t{\n\t\t\t\treturn null;\n\t\t\t}\n\t\t\tData.SpawnedUnit = unitEntityData;\n\t\t\tunitEntityData.SpawnPosition = base.transform.position;\n\t\t\tunitEntityData.GiveExperienceOnDeath = unitEntityData.GiveExperienceOnDeath && !Data.HasDied;\n\t\t\tUnitPlaceOnGroundController.ForcedTick(unitEntityData);\n\t\t\treturn unitEntityData;\n\t\t}\n\t\t}\n\t}\n\n\tpublic UnitEntityData TrySpawnOrRespawn()\n\t{\n\t\tif (!HasSpawned || SpawnedUnitHasDied)\n\t\t{\n\t\t\tif (!(Data.SpawnedUnit.Value?.Get<UnitPartCompanion>()))\n\t\t\t{\n\t\t\t\tData.SpawnedUnit.Value?.MarkForDestroy();\n\t\t\t}\n\t\t\tData.Clear();\n\t\t\treturn Spawn();\n\t\t}\n\t\treturn null;\n\t}\n\n\t[CanBeNull]\n\tpublic UnitEntityData ForceReSpawn()\n\t{\n\t\tData.SpawnedUnit.Value?.MarkForDestroy();\n\t\tData.Clear();\n\t\tUnitEntityData unitEntityData = SpawnUnit(base.transform.position, base.transform.rotation);\n\t\tif (unitEntityData == null)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tData.SpawnedUnit = unitEntityData;\n\t\tunitEntityData.SpawnPosition = base.transform.position;\n\t\tUnitPlaceOnGroundController.ForcedTick(unitEntityData);\n\t\treturn unitEntityData;\n\t}\n\n\tpublic override EntityDataBase CreateEntityData(bool load)\n\t{\n\t\treturn new MyData(this);\n\t}\n\n\tprotected virtual UnitEntityData SpawnUnit(Vector3 position, Quaternion rotation)\n\t{\n\t\treturn null;\n\t}\n\n\t[NotNull]\n\tprotected UnitViewLink SelectPrefab()\n\t{\n\t\tif (Blueprint == null)\n\t\t{\n\t\t\tthrow new Exception(\"UnitSpawner.SelectPrefab: missing blueprint\");\n\t\t}\n\t\tif (Blueprint.Prefab == null)\n\t\t{\n\t\t\tthrow new Exception(\"UnitSpawner.SelectPrefab: prefab is null\");\n\t\t}\n\t\treturn Blueprint.Prefab;\n\t}\n}\nYou are not using the latest version of the tool, please update.\nLatest version is '11.1.0.9782' (yours is '9.1.0.7988')\n",
+    "Kingmaker.Enums.PetType": "namespace Kingmaker.Enums;\n\npublic enum PetType\n{\n\tAnimalCompanion,\n\tMythicSkeletalChampion,\n\tAzataHavocDragon,\n\tClone,\n\tNightHag\n}\nYou are not using the latest version of the tool, please update.\nLatest version is '11.1.0.9782' (yours is '9.1.0.7988')\n",
+    "Kingmaker.UnitLogic.Interaction.SpawnerInteractionDialog": "using Kingmaker.Blueprints;\nusing Kingmaker.DialogSystem.Blueprints;\nusing Kingmaker.EntitySystem.Entities;\nusing Kingmaker.UnitLogic.Commands.Base;\nusing UnityEngine;\nusing UnityEngine.Serialization;\n\nnamespace Kingmaker.UnitLogic.Interaction;\n\npublic class SpawnerInteractionDialog : SpawnerInteraction, IDialogReference\n{\n\t[SerializeField]\n\t[FormerlySerializedAs(\"Dialog\")]\n\tprivate BlueprintDialogReference m_Dialog;\n\n\tpublic BlueprintDialog Dialog => m_Dialog?.Get();\n\n\tpublic override UnitCommand.ResultType Interact(UnitEntityData user, UnitEntityData target)\n\t{\n\t\tif (Dialog == null)\n\t\t{\n\t\t\treturn UnitCommand.ResultType.Success;\n\t\t}\n\t\tGame.Instance.DialogController.StartDialogWithUnit(Dialog, target, user);\n\t\treturn UnitCommand.ResultType.Success;\n\t}\n\n\tpublic DialogReferenceType GetUsagesFor(BlueprintDialog dialog)\n\t{\n\t\tif (Dialog != dialog)\n\t\t{\n\t\t\treturn DialogReferenceType.None;\n\t\t}\n\t\treturn DialogReferenceType.Start;\n\t}\n}\nYou are not using the latest version of the tool, please update.\nLatest version is '11.1.0.9782' (yours is '9.1.0.7988')\n",
+    "Kingmaker.UnitLogic.Interaction.SpawnerInteraction": "using Kingmaker.ElementsSystem;\nusing Kingmaker.EntitySystem.Entities;\nusing Kingmaker.UnitLogic.Commands.Base;\nusing Kingmaker.Utility;\nusing Kingmaker.View.MapObjects;\nusing Kingmaker.View.Spawners;\nusing UnityEngine;\n\nnamespace Kingmaker.UnitLogic.Interaction;\n\n[RequireComponent(typeof(UnitSpawnerBase))]\npublic abstract class SpawnerInteraction : EntityPartComponent<SpawnerInteractionPart>\n{\n\tpublic float OverrideDistance;\n\n\tpublic ConditionsReference Conditions;\n\n\tpublic bool TriggerOnApproach;\n\n\t[ConditionalShow(\"TriggerOnApproach\")]\n\tpublic bool TriggerOnParty = true;\n\n\t[ConditionalShow(\"TriggerOnApproach\")]\n\tpublic bool ApproachWorksWhenStealthed;\n\n\t[ConditionalShow(\"TriggerOnApproach\")]\n\tpublic float Cooldown = 5f;\n\n\tpublic abstract UnitCommand.ResultType Interact(UnitEntityData user, UnitEntityData target);\n}\nYou are not using the latest version of the tool, please update.\nLatest version is '11.1.0.9782' (yours is '9.1.0.7988')\n",
+    "Kingmaker.UnitLogic.Interaction.SpawnerInteractionPart": "using System.Collections.Generic;\nusing Kingmaker.Designers.EventConditionActionSystem.ContextData;\nusing Kingmaker.ElementsSystem;\nusing Kingmaker.EntitySystem.Entities;\nusing Kingmaker.UnitLogic.Commands.Base;\nusing Kingmaker.UnitLogic.Parts;\nusing Kingmaker.View.MapObjects;\nusing Kingmaker.View.Spawners;\n\nnamespace Kingmaker.UnitLogic.Interaction;\n\npublic class SpawnerInteractionPart : ViewBasedPart, IUnitInitializer\n{\n\tpublic class Wrapper : IUnitInteractionApproach, IUnitInteraction\n\t{\n\t\tpublic SpawnerInteraction Source;\n\n\t\tpublic float Distance\n\t\t{\n\t\t\tget\n\t\t\t{\n\t\t\t\tif (!Source.OverrideDistance.Equals(0f))\n\t\t\t\t{\n\t\t\t\t\treturn Source.OverrideDistance;\n\t\t\t\t}\n\t\t\t\treturn 2f;\n\t\t\t}\n\t\t}\n\n\t\tpublic bool IsApproach => Source.TriggerOnApproach;\n\n\t\tpublic float ApproachCooldown => Source.Cooldown;\n\n\t\tpublic bool AllowStealthed => Source.ApproachWorksWhenStealthed;\n\n\t\tpublic bool MainPlayerPreferred => true;\n\n\t\tpublic UnitPartInteractions.PriorityType Priority => UnitPartInteractions.PriorityType.Spawner;\n\n\t\tpublic virtual bool IsAvailable(UnitEntityData initiator, UnitEntityData target)\n\t\t{\n\t\t\tif (target.Descriptor.State.IsHelpless)\n\t\t\t{\n\t\t\t\treturn false;\n\t\t\t}\n\t\t\tif (Source.TriggerOnApproach && Source.TriggerOnParty)\n\t\t\t{\n\t\t\t\tif (!initiator.IsDirectlyControllable)\n\t\t\t\t{\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t\tif (initiator.IsPet)\n\t\t\t\t{\n\t\t\t\t\treturn IsAvailable(initiator.Master, target);\n\t\t\t\t}\n\t\t\t\tif (initiator.Get<UnitPartSummonedMonster>() != null)\n\t\t\t\t{\n\t\t\t\t\treturn false;\n\t\t\t\t}\n\t\t\t}\n\t\t\tif (Source.Conditions.Get() == null || !Source.Conditions.Get().Conditions.HasConditions)\n\t\t\t{\n\t\t\t\treturn true;\n\t\t\t}\n\t\t\tusing (ContextData<InteractingUnitData>.Request().Setup(initiator))\n\t\t\t{\n\t\t\t\tusing (ContextData<ClickedUnitData>.Request().Setup(target))\n\t\t\t\t{\n\t\t\t\t\treturn Source.Conditions.Get().Conditions.Check();\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tpublic UnitCommand.ResultType Interact(UnitEntityData user, UnitEntityData target)\n\t\t{\n\t\t\treturn Source.Interact(user, target);\n\t\t}\n\t}\n\n\tprivate readonly List<Wrapper> m_Components = new List<Wrapper>();\n\n\tpublic override bool ShouldCheckSourceComponent => false;\n\n\tpublic bool CallOnSpawnWhenRestoredFromPlaceholder => false;\n\n\tpublic override void SetSource(AbstractEntityPartComponent source)\n\t{\n\t\tbase.SetSource(source);\n\t\tm_Components.Add(new Wrapper\n\t\t{\n\t\t\tSource = (SpawnerInteraction)source\n\t\t});\n\t}\n\n\tpublic void OnSpawn(UnitEntityData unit)\n\t{\n\t}\n\n\tpublic void OnInitialize(UnitEntityData unit)\n\t{\n\t\tUnitPartInteractions unitPartInteractions = unit.Ensure<UnitPartInteractions>();\n\t\tforeach (Wrapper component in m_Components)\n\t\t{\n\t\t\tunitPartInteractions.AddInteraction(component);\n\t\t}\n\t}\n\n\tpublic void OnDispose(UnitEntityData unit)\n\t{\n\t\tUnitPartInteractions unitPartInteractions = unit.Ensure<UnitPartInteractions>();\n\t\tforeach (Wrapper component in m_Components)\n\t\t{\n\t\t\tunitPartInteractions.RemoveInteraction(component);\n\t\t}\n\t}\n}\nYou are not using the latest version of the tool, please update.\nLatest version is '11.1.0.9782' (yours is '9.1.0.7988')\n",
+    "Kingmaker.Designers.EventConditionActionSystem.Conditions.UnitIsInAreaPart": "using Kingmaker.Blueprints;\nusing Kingmaker.Blueprints.Area;\nusing Kingmaker.Blueprints.JsonSystem;\nusing Kingmaker.ElementsSystem;\nusing Kingmaker.EntitySystem.Persistence.Versioning;\nusing Owlcat.QA.Validation;\nusing Owlcat.Runtime.Core.Utils;\nusing UnityEngine;\nusing UnityEngine.Serialization;\n\nnamespace Kingmaker.Designers.EventConditionActionSystem.Conditions;\n\n[PlayerUpgraderAllowed(false)]\n[TypeId(\"3fc1a5c092d010144a97f0c119b23864\")]\npublic class UnitIsInAreaPart : Condition\n{\n\t[SerializeField]\n\t[FormerlySerializedAs(\"AreaPart\")]\n\tprivate BlueprintAreaPartReference m_AreaPart;\n\n\t[ValidateNotNull]\n\t[SerializeReference]\n\tpublic UnitEvaluator Unit;\n\n\tpublic BlueprintAreaPart AreaPart => m_AreaPart?.Get();\n\n\tprotected override string GetConditionCaption()\n\t{\n\t\treturn string.Format(\"Unit {1} is in AreaPart {0}\", AreaPart.NameSafe(), Unit);\n\t}\n\n\tprotected override bool CheckCondition()\n\t{\n\t\tif (Unit.TryGetValue(out var value) && value != null)\n\t\t{\n\t\t\treturn AreaPart?.Bounds?.MechanicBounds.ContainsXZ(value.Position) == true;\n\t\t}\n\t\treturn false;\n\t}\n}\nYou are not using the latest version of the tool, please update.\nLatest version is '11.1.0.9782' (yours is '9.1.0.7988')\n"
+  },
+  "scripts": [
+    {
+      "path_id": 7,
+      "data": {
+        "m_Name": "CompanionSpawner",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 75,
+          "bytes[1]": 137,
+          "bytes[2]": 47,
+          "bytes[3]": 103,
+          "bytes[4]": 183,
+          "bytes[5]": 196,
+          "bytes[6]": 121,
+          "bytes[7]": 143,
+          "bytes[8]": 101,
+          "bytes[9]": 48,
+          "bytes[10]": 150,
+          "bytes[11]": 54,
+          "bytes[12]": 190,
+          "bytes[13]": 179,
+          "bytes[14]": 16,
+          "bytes[15]": 118
+        },
+        "m_ClassName": "CompanionSpawner",
+        "m_Namespace": "Kingmaker.View.Spawners",
+        "m_AssemblyName": "Assembly-CSharp.dll"
+      }
+    },
+    {
+      "path_id": 15,
+      "data": {
+        "m_Name": "SpawnerInteractionDialog",
+        "m_ExecutionOrder": 0,
+        "m_PropertiesHash": {
+          "bytes[0]": 89,
+          "bytes[1]": 162,
+          "bytes[2]": 1,
+          "bytes[3]": 99,
+          "bytes[4]": 54,
+          "bytes[5]": 124,
+          "bytes[6]": 91,
+          "bytes[7]": 45,
+          "bytes[8]": 202,
+          "bytes[9]": 247,
+          "bytes[10]": 167,
+          "bytes[11]": 118,
+          "bytes[12]": 223,
+          "bytes[13]": 80,
+          "bytes[14]": 102,
+          "bytes[15]": 143
+        },
+        "m_ClassName": "SpawnerInteractionDialog",
+        "m_Namespace": "Kingmaker.UnitLogic.Interaction",
+        "m_AssemblyName": "Assembly-CSharp.dll"
+      }
+    }
+  ]
+}

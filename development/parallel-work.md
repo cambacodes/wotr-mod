@@ -1,14 +1,15 @@
 # Parallel character development
 
-The user requested concurrent character development with at most three worker agents, exclusive file ownership and integration of any unavoidable overlap.
-This replaces the previous pattern in which the parent authored one character while the workers primarily reviewed that same work.
-The parent coordinates shared integration and continues the unfinished Konomi consequence work.
+The user authorizes up to five parallel workers with exclusive file ownership and independent review.
+This session provides three child-agent slots plus root, and all three slots are in use.
+The table below is current as of the 291-scene checkpoint on 26 September 2026; later sections retain historical handoffs.
+Root owns shared engine changes, integration, exports, art generation and final verification.
 
 | Worker | Current status | Exclusive writable files |
 | --- | --- | --- |
-| `/root/contact_api` | Jerribeth continuation authoring | `storylines/jerribeth_counteroffer.py`, `reference/parallel/jerribeth-counteroffer-handoff.md` |
-| `/root/ember_rereview` | Arsinoe native research and opening | `storylines/arsinoe_opening.py`, `reference/parallel/arsinoe-opening-handoff.md`, `reference/canon-review/arsinoe-route-evidence.md` |
-| `/root/tirabade_next` | Seelah assembled-route audit | `reference/story-review/seelah-assembled-readiness-20260925.md` |
+| `/root/terendelev_api_recover` | Aranka parent-route research and continuation | `storylines/aranka_continuation.py`, `tests/ArankaContinuationTests.cs`, `reference/canon-review/aranka-extension-evidence.md`, `reference/parallel/aranka-continuation-handoff.md` |
+| `/root/gesmerha_recover` | Soana later access and recovery research | `reference/canon-review/soana-late-access-audit.md`, optional `reference/canon-review/soana-late-access-records.json`, optional `tools/probe-soana-late-access.py` |
+| `/root/kiana_reconcile_recover` | Independent assembled Tirabade audit | `reference/story-review/tirabade-assembled-readiness-20260926.md`, optional `tools/measure-tirabade-playthrough.py` |
 
 
 Worker names reflect their earlier roles, not fixed authoring or review assignments.

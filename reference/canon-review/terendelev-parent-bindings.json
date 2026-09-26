@@ -1,0 +1,102 @@
+{
+  "AssemblyPath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Mods\\RanRomance\\RanRomance.dll",
+  "AssemblySha256": "281239B19FF12675D2E8E48CD86B3759C38F6598A93E13F254A044C5E990DB68",
+  "Bindings": [
+    {
+      "Guid": "00a4899cba2c46038f9309d12525262b",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Tere.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTereRom\", \"00a4899cba2c46038f9309d12525262b\")"
+    },
+    {
+      "Guid": "f17a1d19d1b34a9fa469bdfcf819028f",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Tere.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTereOath\", \"f17a1d19d1b34a9fa469bdfcf819028f\")"
+    },
+    {
+      "Guid": "e9e0e0efcdf74f6480915983a4a19704",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Tere.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTereBound\", \"e9e0e0efcdf74f6480915983a4a19704\")"
+    },
+    {
+      "Guid": "274d1b1f473344b3a741614bd1910514",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Tere.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTereRavener\", \"274d1b1f473344b3a741614bd1910514\")"
+    },
+    {
+      "Guid": "615479a8a3d3462a9855ff54895a02ee",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Tere.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTereAeonScale\", \"615479a8a3d3462a9855ff54895a02ee\")"
+    },
+    {
+      "Guid": "bbe7d7dbb92a4923a1ca4433e626a5ec",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Tere.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomTereLichBind\", \"bbe7d7dbb92a4923a1ca4433e626a5ec\")"
+    },
+    {
+      "Guid": "a1d66e27b73d4d819d138868d681280b",
+      "Type": "BlueprintQuest",
+      "Source": "RanRomance.Tere.TereQuest.Configure",
+      "Evidence": "string text = \"a1d66e27b73d4d819d138868d681280b\";\nQuestConfigurator.New(PageName, text)"
+    },
+    {
+      "Guid": "8bf0fdc74bae4ef79dcfe04036e813ab",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook05End.Configure",
+      "Evidence": "string text2 = \"8bf0fdc74bae4ef79dcfe04036e813ab\";\nCueConfigurator.New(Cue0001Name, text2)"
+    },
+    {
+      "Guid": "4791f49d19624dafa2ea1ae6dd18c588",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook05End.Configure",
+      "Evidence": "string text3 = \"4791f49d19624dafa2ea1ae6dd18c588\";\nCueConfigurator.New(Cue0002Name, text3)"
+    },
+    {
+      "Guid": "30b3341acced4fa793dcc92dfe3587a9",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook05End.Configure",
+      "Evidence": "string text4 = \"30b3341acced4fa793dcc92dfe3587a9\";\nCueConfigurator.New(Cue0003Name, text4)"
+    },
+    {
+      "Guid": "10fe0c7bd80d441c8688c37babc19f66",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook05End.Configure",
+      "Evidence": "string text5 = \"10fe0c7bd80d441c8688c37babc19f66\";\nCueConfigurator.New(Cue0004Name, text5)"
+    },
+    {
+      "Guid": "0e09ddffd8fb40e7b1a0b147906b57cd",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook04bEnd.Configure",
+      "Evidence": "string text2 = \"0e09ddffd8fb40e7b1a0b147906b57cd\";\nCueConfigurator.New(Cue0001Name, text2)"
+    },
+    {
+      "Guid": "f0233d7ac79b4557b0f8f5f18a077940",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook04bEnd.Configure",
+      "Evidence": "string text3 = \"f0233d7ac79b4557b0f8f5f18a077940\";\nCueConfigurator.New(Cue0002Name, text3)"
+    },
+    {
+      "Guid": "2ef521fa2e8d468db335980dc2166174",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook04bEnd.Configure",
+      "Evidence": "string text4 = \"2ef521fa2e8d468db335980dc2166174\";\nCueConfigurator.New(Cue0003Name, text4)"
+    },
+    {
+      "Guid": "1a10b8880b054837b2bb2802d11020b7",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook04bEnd.Configure",
+      "Evidence": "string text5 = \"1a10b8880b054837b2bb2802d11020b7\";\nCueConfigurator.New(Cue0004Name, text5)"
+    },
+    {
+      "Guid": "48a730e870d94c73bc61afecaf1c8540",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Tere.TereBook04bEnd.Configure",
+      "Evidence": "string text6 = \"48a730e870d94c73bc61afecaf1c8540\";\nCueConfigurator.New(Cue0005Name, text6)"
+    }
+  ]
+}
