@@ -40,6 +40,7 @@ internal static class KonomiOrdinaryExpansionTests
         foreach (string history in new[] { "fresh", "ordinary_done", "farewell_done" })
         {
             var state = new Snapshot { Chapter = 3, Hour = 1000, Area = ordinary.Areas.Single() };
+            state.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
             state.Flags.UnionWith(new[] { "konomi.present", "seelah.committed", "arueshalae.committed" });
             if (trickster) state.Flags.Add("trickster");
             foreach (string id in new[] { "margin", "reception", "letter", "evening", "disagreement", "leak", "reckoning" }) state = Play(id, state);
@@ -108,6 +109,7 @@ internal static class KonomiOrdinaryExpansionTests
         {
             foreach (var node in scene.Nodes) check(reached.Contains(scene.Id + "/" + node.Id), "Unplayed Konomi expansion page.");
             var ready = new Snapshot { Chapter = 5, Hour = 10000, Area = ordinary.Areas.Single() };
+            ready.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
             ready.Flags.UnionWith(scene.Requires);
             check(Rules.Available(story, scene, ready), "Konomi availability baseline invalid.");
             foreach (string flag in new[] { "konomi.closed", "konomi.dismissed", "inhuman" })
@@ -138,6 +140,7 @@ internal static class KonomiOrdinaryExpansionTests
             foreach (var result in Program.Walk(item.Scene, item.State)) Preserve(item.State, result);
         }
         var transformed = new Snapshot { Chapter = 5, Hour = 10000, Area = ordinary.Areas.Single() };
+        transformed.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
         transformed.Flags.UnionWith(ordinary.Requires); transformed.Flags.Add("inhuman");
         check(Rules.Available(story, ordinary, transformed), "Konomi expansion removes existing transformed companionship.");
         check(offer.ManualOnly && Rules.IsRemote(offer), "Konomi older-save opt-in loses manual delivery.");

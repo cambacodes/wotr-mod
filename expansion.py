@@ -20,6 +20,7 @@ from storylines import soana_later_progression
 from storylines import tirabade_chronology
 from storylines import konomi_private_consequence, konomi_early_reciprocity
 from storylines import aranka_continuation
+from storylines import konomi_contact
 from storylines import tirabade_later, tirabade_campaign, seelah, seelah_later, seelah_fate, seelah_abyss, seelah_aftermath, konomi, konomi_history, konomi_private, konomi_distance, konomi_future, konomi_private_hearing, jerribeth, jerribeth_consequences, kiana, kiana_consequences, ember, ember_afternoons, soana_opening
 
 ROOT = Path(__file__).parent
@@ -163,6 +164,7 @@ def make_expansion():
     payload["Etudes"].update(aranka_continuation.ETUDES)
     payload["SeenCues"].update(aranka_continuation.SEEN_CUES)
     payload["CompletedQuests"].update(aranka_continuation.COMPLETED_QUESTS)
+    konomi_contact.integrate(payload)
     return payload
 
 

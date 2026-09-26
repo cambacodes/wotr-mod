@@ -50,6 +50,7 @@ internal static class KonomiTests
         foreach (var quiet in new[] { false, true })
         {
             var state = new Snapshot { Chapter = startChapter, Hour = 1000, Area = drezen };
+            state.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
             state.Flags.Add("konomi.present");
             state.Flags.Add(path);
             if (path == "true_lich" || path == "swarm") state.Flags.Add("inhuman");
@@ -94,6 +95,7 @@ internal static class KonomiTests
         }
 
         var repairing = new Snapshot { Chapter = 5, Hour = 1000, Area = drezen };
+        repairing.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
         repairing.Flags.Add("konomi.present");
         foreach (var id in new[] { "margin", "reception", "letter", "evening", "disagreement", "leak", "reckoning" })
         {
@@ -116,6 +118,7 @@ internal static class KonomiTests
         elsewhere.Area = drezen;
         check(!Rules.Available(story, Find("margin"), elsewhere), "Konomi begins without native capital presence.");
         elsewhere.Flags.Add("konomi.present");
+        elsewhere.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
         check(Rules.Available(story, Find("margin"), elsewhere), "Konomi cannot begin in Drezen.");
         foreach (var scene in scenes.Where(s => !s.Remote && !s.Owner.EndsWith("Epilogue")))
         {

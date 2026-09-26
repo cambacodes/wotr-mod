@@ -19,6 +19,7 @@ internal static class KonomiLettersTests
             state.Chapter = 5; state.Hour += 48;
             state.Area = returned.Areas.FirstOrDefault() ?? "";
             state.Flags.UnionWith(returned.Requires);
+            if (returned.ContactUnit != null) state.AvailableContacts.Add(returned.ContactUnit);
             check(Rules.Available(story, returned, state), "Konomi cannot receive the retained letter.");
             var outcomes = Program.Walk(returned, state);
             string expected = written.Has("konomi.letter_fear") ? "konomi.fear_answered" : "konomi.wonder_answered";

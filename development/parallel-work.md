@@ -20,6 +20,8 @@ Keep all 37 roster characters and their existing requirements in scope.
 
 
 Worker names reflect their earlier roles, not fixed authoring or review assignments.
+Current main after Konomi contact integration is 303 scenes at SHA256 `D5200B7DB0D2ECA1EAF958BD8929265B7151D92F21BF210F033A187CE58950EC`.
+The exact 22-scene ordinary-contact overlay passed independent review and combined checks, recorded in `reference/parallel/konomi-contact-integration-checkpoint.md`.
 Latest main is 303 scenes at SHA256 `3ACCB25AF2142B70ACBCC2BCA1A6839D0571E1DD38097B5578363720534108AD`, including Aranka's accepted six-visit island continuation.
 The combined current parent fixture is `reference/canon-review/expansion-parent-bindings.json`.
 See `reference/parallel/aranka-integration-checkpoint.md` for verification and remaining full-route requirements.

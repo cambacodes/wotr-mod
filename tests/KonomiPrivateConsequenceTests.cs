@@ -50,6 +50,7 @@ internal static class KonomiPrivateConsequenceTests
             state.Flags.UnionWith(new[] { "trickster", "arueshalae.committed", "jerribeth.committed" });
             if (established)
             {
+                state.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
                 state.Flags.Add("konomi.present");
                 foreach (string id in new[] { "margin", "reception", "letter", "evening", "disagreement", "leak", "reckoning" }) state = Earn(id, state);
                 state.Flags.Remove("konomi.present");

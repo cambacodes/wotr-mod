@@ -314,6 +314,7 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) KonomiPrivateConsequenceTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) KonomiEarlyReciprocityTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) ArankaContinuationTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) KonomiContactTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) JerribethCounterofferTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);
@@ -833,6 +834,7 @@ internal static class Program
         foreach (var history in new[] { "public", "discreet", "denial" })
         {
             var initial = new Snapshot { Chapter = chapter, Hour = 1048, Area = hearing.Areas.Single() };
+            initial.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
             initial.Flags.UnionWith(new[] { "konomi.present", "konomi.lovers", "konomi.scandal_answered", "seelah.committed", "jerribeth.committed" });
             initial.Flags.Add(history == "public" ? "konomi.public" : "konomi.discreet");
             if (history == "denial") initial.Flags.UnionWith(new[] { "konomi.almost_denied", "konomi.apologized" });

@@ -117,6 +117,7 @@ internal static class KonomiPrivateAbsenceTests
         }
         // Reproduce the problematic chronology by playing the real ordinary return before dismissal.
         var lateOffice = new Snapshot { Chapter = 3, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
+        lateOffice.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
         lateOffice.Flags.UnionWith(new[] { "konomi.present", "trickster" });
         foreach (string id in new[] { "margin", "reception", "letter", "evening", "disagreement", "leak", "reckoning" }) lateOffice = Earn(id, lateOffice);
         lateOffice.Chapter = 4; lateOffice = Earn("unsent", lateOffice);

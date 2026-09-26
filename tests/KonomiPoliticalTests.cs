@@ -48,6 +48,7 @@ internal static class KonomiPoliticalTests
         {
             var scene = privateContact ? personal : ordinary;
             var state = new Snapshot { Chapter = 5, Area = "2570015799edf594daf2f076f2f975d8", Hour = 1000 };
+            if (!privateContact) state.AvailableContacts.Add("ca2d58c5c65723945857e04fb85d30ce");
             state.Flags.UnionWith(privateContact
                 ? new[] { "konomi.dismissed", "konomi.office_completed", "konomi.private_returned" }
                 : new[] { "konomi.present", "konomi.return" });
