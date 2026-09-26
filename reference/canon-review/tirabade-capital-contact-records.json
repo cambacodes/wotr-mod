@@ -1,0 +1,1576 @@
+{
+  "blueprints": {
+    "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/AneviaTirabade_DrezenCapital.jbp": {
+      "record": {
+        "AssetId": "b5e867e13503c6f41bb1316705efb4a2",
+        "Data": {
+          "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+          "Alignment": "TrueNeutral",
+          "AlternativeBrains": [],
+          "BaseAttackBonus": 0,
+          "Body": {
+            "ActiveHandSet": 0,
+            "DisableHands": false,
+            "m_AdditionalLimbs": [],
+            "m_AdditionalSecondaryLimbs": [],
+            "m_Armor": "!bp_af51a42724e27474c89d9d61392e09f4",
+            "m_Belt": "!bp_b6af4c1834999e74497b41588d1071cd",
+            "m_EmptyHandWeapon": "!bp_20375b5a0c9243d45966bd72c690ab74",
+            "m_Feet": null,
+            "m_Glasses": null,
+            "m_Gloves": null,
+            "m_Head": null,
+            "m_Neck": null,
+            "m_PrimaryHand": "!bp_2753a0159681be94da3a5eeabc8c8d1a",
+            "m_PrimaryHandAlternative1": "!bp_e795b36fcbf9b8445a2914c1a11b0403",
+            "m_PrimaryHandAlternative2": null,
+            "m_PrimaryHandAlternative3": null,
+            "m_QuickSlots": [
+              "!bp_f991f3051c3b9e64fabc87891077b613",
+              "!bp_5f9fe6030695f48489b59887536748e8",
+              null,
+              null,
+              null
+            ],
+            "m_Ring1": "!bp_f333bf86cd122974792162cbcd27c9ed",
+            "m_Ring2": null,
+            "m_SecondaryHand": null,
+            "m_SecondaryHandAlternative1": null,
+            "m_SecondaryHandAlternative2": null,
+            "m_SecondaryHandAlternative3": null,
+            "m_Shirt": null,
+            "m_Shoulders": "!bp_4aea6773c1da01c42bd382c1b7c384bc",
+            "m_Wrist": null
+          },
+          "Charisma": 13,
+          "Color": {
+            "a": 1.0,
+            "b": 0.5372549,
+            "g": 0.243137255,
+            "r": 0.223529413
+          },
+          "Comment": "",
+          "Components": [
+            {
+              "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+              "DoNotApplyAutomatically": false,
+              "Levels": 1,
+              "LevelsStat": "Dexterity",
+              "PrototypeLink": {
+                "guid": "ea562adea1736874c9c5616d140fe773",
+                "name": "$AddClassLevels$65ec9d91-3f51-4194-8d01-c2ad4c40781b"
+              },
+              "RaceStat": "Dexterity",
+              "Selections": [
+                {
+                  "IsFeatureSelectMythicSpellbook": false,
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "UnarmedStrike",
+                  "Stat": "Unknown",
+                  "m_FeatureSelectMythicSpellbook": null,
+                  "m_Features": [
+                    "!bp_0da0c194d6e1d43419eb8d990b28e0ab",
+                    "!bp_8f3d1e6b4be006f4d896081f2f889665"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": null,
+                  "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                  "m_Spellbook": null
+                },
+                {
+                  "IsFeatureSelectMythicSpellbook": false,
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "UnarmedStrike",
+                  "Stat": "Unknown",
+                  "m_FeatureSelectMythicSpellbook": null,
+                  "m_Features": [
+                    "!bp_9c928dc570bb9e54a9649b3ebfe47a41"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": null,
+                  "m_Selection": "!bp_41c8486641f7d6d4283ca9dae4147a9f",
+                  "m_Spellbook": null
+                }
+              ],
+              "Skills": [
+                "SkillPerception",
+                "SkillStealth"
+              ],
+              "m_Archetypes": [],
+              "m_CharacterClass": "!bp_48ac8db94d5de7645906c7d0ad3bcfbd",
+              "m_Flags": 0,
+              "m_MemorizeSpells": [],
+              "m_Overrides": [],
+              "m_SelectSpells": [],
+              "name": "$AddClassLevels$65ec9d91-3f51-4194-8d01-c2ad4c40781b(Clone)"
+            },
+            {
+              "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+              "DoNotApplyAutomatically": false,
+              "Levels": 3,
+              "LevelsStat": "Dexterity",
+              "PrototypeLink": {
+                "guid": "ea562adea1736874c9c5616d140fe773",
+                "name": "$AddClassLevels$ec332127-06e9-4e45-a40f-7f0a923798d9"
+              },
+              "RaceStat": "Dexterity",
+              "Selections": [
+                {
+                  "IsFeatureSelectMythicSpellbook": false,
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "UnarmedStrike",
+                  "Stat": "Unknown",
+                  "m_FeatureSelectMythicSpellbook": null,
+                  "m_Features": [
+                    "!bp_175d1577bb6c9a04baf88eec99c66334"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": null,
+                  "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                  "m_Spellbook": null
+                },
+                {
+                  "IsFeatureSelectMythicSpellbook": false,
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "UnarmedStrike",
+                  "Stat": "Unknown",
+                  "m_FeatureSelectMythicSpellbook": null,
+                  "m_Features": [
+                    "!bp_71fb4704ad838ad4d91ed429b8936313"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": null,
+                  "m_Selection": "!bp_b78d146cea711a84598f0acef69462ea",
+                  "m_Spellbook": null
+                },
+                {
+                  "IsFeatureSelectMythicSpellbook": false,
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "UnarmedStrike",
+                  "Stat": "Unknown",
+                  "m_FeatureSelectMythicSpellbook": null,
+                  "m_Features": [
+                    "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": null,
+                  "m_Selection": "!bp_c074a5d615200494b8f2a9c845799d93",
+                  "m_Spellbook": null
+                },
+                {
+                  "IsFeatureSelectMythicSpellbook": false,
+                  "IsParametrizedFeature": true,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "Longbow",
+                  "Stat": "Unknown",
+                  "m_FeatureSelectMythicSpellbook": null,
+                  "m_Features": [
+                    "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "m_Selection": "!bp_c074a5d615200494b8f2a9c845799d93",
+                  "m_Spellbook": null
+                }
+              ],
+              "Skills": [
+                "SkillPerception",
+                "SkillStealth"
+              ],
+              "m_Archetypes": [],
+              "m_CharacterClass": "!bp_299aa766dee3cbf4790da4efb8c72484",
+              "m_Flags": 0,
+              "m_MemorizeSpells": [],
+              "m_Overrides": [],
+              "m_SelectSpells": [],
+              "name": "$AddClassLevels$ec332127-06e9-4e45-a40f-7f0a923798d9(Clone)"
+            }
+          ],
+          "Constitution": 10,
+          "Dexterity": 15,
+          "FactionOverrides": {
+            "m_AttackFactionsToAdd": [],
+            "m_AttackFactionsToRemove": []
+          },
+          "Gender": "Female",
+          "Intelligence": 14,
+          "IsCheater": false,
+          "IsFake": false,
+          "IsLeftHanded": false,
+          "LocalizedName": {
+            "assetguid": "48df7a26c72b95148ac574a50a30c4d4",
+            "stringkey": "b3165c2e-49c5-42e8-a84c-0b3adba1cd6f"
+          },
+          "MaxHP": 0,
+          "Prefab": {
+            "AssetId": "b29d15aee22f9f64c87a7e63ad8840c9"
+          },
+          "PrototypeLink": "ea562adea1736874c9c5616d140fe773",
+          "Size": "Medium",
+          "Skills": {
+            "Acrobatics": 0,
+            "Diplomacy": 0,
+            "KnowledgeArcana": 0,
+            "KnowledgeWorld": 0,
+            "LoreNature": 0,
+            "LoreReligion": 0,
+            "Perception": 0,
+            "Physique": 0,
+            "Stealth": 0,
+            "Thievery": 0,
+            "UseMagicDevice": 0
+          },
+          "Speed": {
+            "m_Value": 30.0
+          },
+          "Strength": 12,
+          "Visual": {
+            "ArmorFx": null,
+            "BloodPuddleFx": null,
+            "BloodType": "Common",
+            "BodySoundSize": "Medium",
+            "BodySoundType": "Flesh",
+            "DefaultArmorSoundType": "Flesh",
+            "DismemberFx": {
+              "AssetId": "f1400b13c4d834549be5b6dc32bc2ce3"
+            },
+            "FoleySoundPrefix": "",
+            "FootSoundSize": "Medium",
+            "FootSoundType": "Boot",
+            "FootprintScale": 1.0,
+            "FootprintType": "Humanoid",
+            "FootstepSoundSizeType": "BootMedium",
+            "ImportanceOverride": 0,
+            "IsBlockChangeClothColor": false,
+            "IsNotUseDismember": false,
+            "NoFinishingBlow": false,
+            "ReachFXThresholdBonus": 0.0,
+            "RipLimbsApartFx": null,
+            "SilentCaster": false,
+            "m_Barks": "!bp_c19c6b9c2772526409b7cdb5f3364efe"
+          },
+          "Wisdom": 8,
+          "m_AddFacts": [
+            "!bp_fbbe330f105d1384db6602127925c939",
+            "!bp_79440ddeb1b844818c0834d77ae68dae"
+          ],
+          "m_AdditionalTemplates": [],
+          "m_AllowNonContextActions": false,
+          "m_Brain": "!bp_5abc8884c6f15204c8604cb01a2efbab",
+          "m_CustomizationPreset": null,
+          "m_Description": {
+            "Shared": null,
+            "m_JsonPath": "",
+            "m_Key": "",
+            "m_OwnerPropertyPath": "",
+            "m_OwnerString": ""
+          },
+          "m_DescriptionShort": {
+            "Shared": null,
+            "m_JsonPath": "",
+            "m_Key": "",
+            "m_OwnerPropertyPath": "",
+            "m_OwnerString": ""
+          },
+          "m_DisplayName": {
+            "Shared": null,
+            "m_JsonPath": "",
+            "m_Key": "",
+            "m_OwnerPropertyPath": "",
+            "m_OwnerString": ""
+          },
+          "m_Faction": "!bp_4e1f333e518d4794bb41b025e991edb0",
+          "m_HasAssignedChunkId": true,
+          "m_Icon": null,
+          "m_Overrides": [
+            "m_AddFacts"
+          ],
+          "m_PS4ChunkId": "Chapter1",
+          "m_Portrait": "!bp_2d13cca308ac61342af690dcdb809b5d",
+          "m_Race": "!bp_0a5d473ead98b0646b94495af250fdc4",
+          "m_StartingInventory": [],
+          "m_Type": null
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      },
+      "sha256": "98288BE73EA58F42D9ACD88675DBE8F6BFBE15BCF86AD45A5777FD9F72760618"
+    },
+    "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/IrabethTirabade_DrezenCapital.jbp": {
+      "record": {
+        "AssetId": "280d4712dceb37f4a88e98f1f4c6e64f",
+        "Data": {
+          "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+          "Alignment": "LawfulGood",
+          "AlternativeBrains": [],
+          "BaseAttackBonus": 0,
+          "Body": {
+            "ActiveHandSet": 0,
+            "DisableHands": false,
+            "m_AdditionalLimbs": [],
+            "m_AdditionalSecondaryLimbs": [],
+            "m_Armor": "!bp_ba780a9c1e5b0304892bd2bc0c22fe4d",
+            "m_Belt": "!bp_c354de364a714ee4dbe2cfee628df267",
+            "m_EmptyHandWeapon": "!bp_20375b5a0c9243d45966bd72c690ab74",
+            "m_Feet": null,
+            "m_Glasses": null,
+            "m_Gloves": null,
+            "m_Head": null,
+            "m_Neck": "!bp_209960f8d60e23a4c8e75d14e2261263",
+            "m_PrimaryHand": "!bp_a11ec024bc460ab43803f3ac8ef374cb",
+            "m_PrimaryHandAlternative1": "!bp_adc1a081ba26d2a439a62d702437a40d",
+            "m_PrimaryHandAlternative2": null,
+            "m_PrimaryHandAlternative3": null,
+            "m_QuickSlots": [
+              "!bp_f991f3051c3b9e64fabc87891077b613",
+              "!bp_1365aee7d18c85d438f5b027122ca8cf",
+              null,
+              null,
+              null
+            ],
+            "m_Ring1": "!bp_f333bf86cd122974792162cbcd27c9ed",
+            "m_Ring2": null,
+            "m_SecondaryHand": "!bp_bcd7eb161e664ff46b8b262a8f9810e0",
+            "m_SecondaryHandAlternative1": null,
+            "m_SecondaryHandAlternative2": null,
+            "m_SecondaryHandAlternative3": null,
+            "m_Shirt": null,
+            "m_Shoulders": "!bp_4aea6773c1da01c42bd382c1b7c384bc",
+            "m_Wrist": null
+          },
+          "Charisma": 14,
+          "Color": {
+            "a": 1.0,
+            "b": 0.5019608,
+            "g": 0.31764707,
+            "r": 0.0
+          },
+          "Comment": "",
+          "Components": [
+            {
+              "$type": "011e862b513000f4bae31886f3489ace, Experience",
+              "CR": 5,
+              "Count": null,
+              "Dummy": false,
+              "Encounter": "Mob",
+              "Modifier": 1.0,
+              "PrototypeLink": {
+                "guid": "d1e567736abf23943b9f041ba7a0bc23",
+                "name": "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b"
+              },
+              "m_Flags": 0,
+              "m_Overrides": [],
+              "name": "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b(Clone)"
+            },
+            {
+              "$type": "5474d502f4f54412b9cd7e7bbd0ddeec, ClassLevelLimit",
+              "LevelLimit": 6,
+              "PrototypeLink": {
+                "guid": "d1e567736abf23943b9f041ba7a0bc23",
+                "name": "$ClassLevelLimit$28e274fe-2c67-4b56-b79c-403af5af6867"
+              },
+              "m_Flags": 0,
+              "m_Overrides": [],
+              "name": "$ClassLevelLimit$28e274fe-2c67-4b56-b79c-403af5af6867"
+            },
+            {
+              "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+              "DoNotApplyAutomatically": false,
+              "Levels": 6,
+              "LevelsStat": "Strength",
+              "PrototypeLink": {
+                "guid": "d1e567736abf23943b9f041ba7a0bc23",
+                "name": "$AddClassLevels$65ec9d91-3f51-4194-8d01-c2ad4c40781b"
+              },
+              "RaceStat": "Strength",
+              "Selections": [
+                {
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "UnarmedStrike",
+                  "Stat": "Unknown",
+                  "m_Features": [
+                    "!bp_9972f33f977fc724c838e59641b2fca5",
+                    "!bp_15e7da6645a7f3d41bdad7c8c4b9de1e",
+                    "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": null,
+                  "m_Selection": "!bp_247a4068296e8be42890143f451b4b45"
+                },
+                {
+                  "IsParametrizedFeature": true,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "Longsword",
+                  "Stat": "Unknown",
+                  "m_Features": [
+                    "!bp_9972f33f977fc724c838e59641b2fca5",
+                    "!bp_15e7da6645a7f3d41bdad7c8c4b9de1e",
+                    "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "m_Selection": "!bp_247a4068296e8be42890143f451b4b45"
+                },
+                {
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "Longsword",
+                  "Stat": "Unknown",
+                  "m_Features": [
+                    "!bp_88d5da04361b16746bf5b65795e0c38c"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "m_Selection": "!bp_a7c8b73528d34c2479b4bd638503da1d"
+                },
+                {
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "Longsword",
+                  "Stat": "Unknown",
+                  "m_Features": [
+                    "!bp_e08a817f475c8794aa56fdd904f43a57"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "m_Selection": "!bp_ad7dc4eba7bf92f4aba23f716d7a9ba6"
+                },
+                {
+                  "IsParametrizedFeature": false,
+                  "ParamSpellSchool": "None",
+                  "ParamWeaponCategory": "Longsword",
+                  "Stat": "Unknown",
+                  "m_Features": [
+                    "!bp_e5aa306af9b91974a9b2f2cbe702f562"
+                  ],
+                  "m_ParamObject": null,
+                  "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "m_Selection": "!bp_02b187038a8dce545bb34bbfb346428d"
+                }
+              ],
+              "Skills": [
+                "SkillAthletics"
+              ],
+              "m_Archetypes": [],
+              "m_CharacterClass": "!bp_bfa11238e7ae3544bbeb4d0b92e897ec",
+              "m_Flags": "Disabled",
+              "m_MemorizeSpells": [],
+              "m_Overrides": [],
+              "m_SelectSpells": [],
+              "name": "$AddClassLevels$65ec9d91-3f51-4194-8d01-c2ad4c40781b"
+            }
+          ],
+          "Constitution": 13,
+          "Dexterity": 8,
+          "FactionOverrides": {
+            "m_AttackFactionsToAdd": [],
+            "m_AttackFactionsToRemove": []
+          },
+          "Gender": "Female",
+          "Intelligence": 10,
+          "IsCheater": false,
+          "IsFake": false,
+          "IsLeftHanded": false,
+          "LocalizedName": {
+            "assetguid": "bb71b9c47518a304c8d9dc0d9015a039",
+            "stringkey": "6319f2ee-b1af-4a4b-a1fd-943cca16566a"
+          },
+          "MaxHP": 0,
+          "Prefab": {
+            "AssetId": "a87a6918db826d743a0f8a6577556f22"
+          },
+          "PrototypeLink": "d1e567736abf23943b9f041ba7a0bc23",
+          "Size": "Medium",
+          "Skills": {
+            "Acrobatics": 0,
+            "Diplomacy": 0,
+            "KnowledgeArcana": 0,
+            "KnowledgeWorld": 0,
+            "LoreNature": 0,
+            "LoreReligion": 0,
+            "Perception": 0,
+            "Physique": 0,
+            "Stealth": 0,
+            "Thievery": 0,
+            "UseMagicDevice": 0
+          },
+          "Speed": {
+            "m_Value": 30.0
+          },
+          "Strength": 15,
+          "Visual": {
+            "ArmorFx": null,
+            "BloodPuddleFx": {
+              "AssetId": "f1400b13c4d834549be5b6dc32bc2ce3"
+            },
+            "BloodType": "Common",
+            "BodySoundSize": "Medium",
+            "BodySoundType": "Flesh",
+            "DefaultArmorSoundType": "Flesh",
+            "DismemberFx": {
+              "AssetId": "876334cab63820a4696ecefb8a88d1fb"
+            },
+            "FoleySoundPrefix": "",
+            "FootSoundSize": "Medium",
+            "FootSoundType": "Boot",
+            "FootprintScale": 1.0,
+            "FootprintType": "Humanoid",
+            "FootstepSoundSizeType": "BootMedium",
+            "ImportanceOverride": 0,
+            "IsNotUseDismember": false,
+            "NoFinishingBlow": false,
+            "ReachFXThresholdBonus": 0.0,
+            "RipLimbsApartFx": null,
+            "SilentCaster": false,
+            "m_Barks": "!bp_f8bbd14978df29f44a5388d220a15d27"
+          },
+          "Wisdom": 12,
+          "m_AddFacts": [
+            "!bp_fbbe330f105d1384db6602127925c939",
+            "!bp_e7dbac1915ec4f86b8fd11ad25968811"
+          ],
+          "m_AdditionalTemplates": [],
+          "m_AllowNonContextActions": false,
+          "m_Brain": "!bp_86f9442baac46cd488d181724167e902",
+          "m_CustomizationPreset": null,
+          "m_Description": {
+            "Shared": null,
+            "m_JsonPath": "",
+            "m_Key": "",
+            "m_OwnerPropertyPath": "",
+            "m_OwnerString": ""
+          },
+          "m_DescriptionShort": {
+            "Shared": null,
+            "m_JsonPath": "",
+            "m_Key": "",
+            "m_OwnerPropertyPath": "",
+            "m_OwnerString": ""
+          },
+          "m_DisplayName": {
+            "Shared": null,
+            "m_JsonPath": "",
+            "m_Key": "",
+            "m_OwnerPropertyPath": "",
+            "m_OwnerString": ""
+          },
+          "m_Faction": "!bp_419c5165bae99664b92252b7dcc0a2db",
+          "m_HasAssignedChunkId": true,
+          "m_Icon": null,
+          "m_Overrides": [
+            "m_AddFacts"
+          ],
+          "m_PS4ChunkId": "Chapter1",
+          "m_Portrait": "!bp_14ca57e7f693ba9469d7c1111f79e56e",
+          "m_Race": "!bp_1dc20e195581a804890ddc74218bfd8e",
+          "m_StartingInventory": [],
+          "m_Type": null
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      },
+      "sha256": "17D81275AB6821EDBA0FC2DB211B8B11185679D70AF371194E91ACBAE627CC05"
+    },
+    "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp": {
+      "record": {
+        "AssetId": "33960c7f7af40cd43b7f801a76c87a0b",
+        "Data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "AlignmentRequirement": "None",
+          "Answers": [
+            "!bp_095eec5f820140de8259c8cdc4562de3",
+            "!bp_207608856af1c4c42b83fc0d4891c9dc",
+            "!bp_ac60b84ed62f25f42a2eb0b86e19d345",
+            "!bp_c07e2266817155344bf23aa4e845cff9",
+            "!bp_c13ae3f888a8ebb4e939fadd5d190f33",
+            "!bp_bfea5c6073203754280d24c5947fc763",
+            "!bp_085d2d94e3a8e754f9fd704d53119b04",
+            "!bp_42fe1795525a613489febe886b9ab669",
+            "!bp_786bd454321e347449f79473210e597e",
+            "!bp_a30ea92d5e10c4b439329442e5e9d0b8",
+            "!bp_9fdf3a04c1a9d614d88ec07d306afa84",
+            "!bp_deaf7d362d1c8ad4190b75bea7409149",
+            "!bp_57e13e1e51fe9254cab47a3f845b3707",
+            "!bp_a2d96bffe3955594c9a87624d94fe81a",
+            "!bp_7b8cf7b133641064aae60cdb468b40ab",
+            "!bp_61590a9f2f8458c41a3ac2a9642cb091"
+          ],
+          "Comment": "",
+          "Components": [],
+          "Conditions": {
+            "Conditions": [],
+            "Operation": "And"
+          },
+          "MythicRequirement": "None",
+          "ParentAsset": "23d408fa87ad9894b9775b6e7d52e866",
+          "PrototypeLink": "",
+          "ShowOnce": false,
+          "m_Overrides": []
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      },
+      "sha256": "DE56F133C85029C95C875D7E4780232BA839DBA436EB9DC3496F05C66FF0E77C"
+    },
+    "World/Dialogs/NPC_Common/Anevia/Dialogue_AneviaMain.jbp": {
+      "record": {
+        "AssetId": "de4cc2dd71694b842be37b75d1705b83",
+        "Data": {
+          "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+          "Comment": "",
+          "Components": [],
+          "Conditions": {
+            "Conditions": [],
+            "Operation": "And"
+          },
+          "FinishActions": {
+            "Actions": []
+          },
+          "FirstCue": {
+            "Cues": [
+              "!bp_9cdd999c06fd09743913cec652db5770",
+              "!bp_e84313cb0a5b5644fa1128b6fc6b3f48",
+              "!bp_23d408fa87ad9894b9775b6e7d52e866",
+              "!bp_344794b1af8db1e4d998a2d3b5b976cf",
+              "!bp_31154c1e159341469da61ed9af246541",
+              "!bp_49dbbbaca4cd3944dbce59113bdd344c"
+            ],
+            "Strategy": "First"
+          },
+          "IsLockCameraRotationButtons": false,
+          "PrototypeLink": "",
+          "ReplaceActions": {
+            "Actions": []
+          },
+          "StartActions": {
+            "Actions": []
+          },
+          "StartPosition": null,
+          "TurnFirstSpeaker": false,
+          "TurnPlayer": true,
+          "Type": "Common",
+          "m_OverrideAreaCR": null,
+          "m_Overrides": []
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      },
+      "sha256": "1430B8DB048CCA7752A41AE387A6218BD96009E0C4BF82406CC1CC6919C6B9C3"
+    },
+    "World/Dialogs/NPC_Common/Irabeth/AnswersList_0009.jbp": {
+      "record": {
+        "AssetId": "871af36f2ab2b1f40b5de77976c54276",
+        "Data": {
+          "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+          "AlignmentRequirement": "None",
+          "Answers": [
+            "!bp_cab65208835a4ea459dc20503112a247",
+            "!bp_39cc6e89d33f6b1419bdd859a4e68bf2",
+            "!bp_1502a7686c821a04986ac3a088a9a28f",
+            "!bp_0fbca5b8b92fb8e4f8bd7302e7c79779",
+            "!bp_baf7e04d41bcb6340bc91aaeafb1d0ca",
+            "!bp_70b23d24fd260874b8bfa8884506d920",
+            "!bp_bc5fbe38b99a1eb4b9fd16a4968cc078",
+            "!bp_5196e10a981c13f45b344b5bfcfbe5ba",
+            "!bp_0fbd968ff3fa5d249bd4921094b5c07a",
+            "!bp_a1488d7e3133812469790b2b3880e914",
+            "!bp_f18f63541093a594c92384176402f7e0",
+            "!bp_9de0a8ecb8c568641b4066e9ab11c049",
+            "!bp_40ba7eca48457434f8ccfdc05ae1e7b9",
+            "!bp_7c796e2bbac64874da96f3ca2001434e",
+            "!bp_25507e334eab48a49c148163a087f190",
+            "!bp_0744d1fbd0d5a1744913b29c620a5fca",
+            "!bp_5eef43d4b657ff84b960777b2fa7b53c",
+            "!bp_e17305137d76b09459380756e3bf4c5f",
+            "!bp_690a4440ccca2c142b02bf1d07028a88",
+            "!bp_d04a579035f264941b7fde0248b5daf1",
+            "!bp_58a1ca2f4a6699d4f923606a6b006cd5",
+            "!bp_2ae38a949a0eb8e42aa32ac4583cb208",
+            "!bp_0e8e9d6d8a159da408b3cdfc878f2bef",
+            "!bp_a241ca4bf12960f48aea4a48b2e0f24f",
+            "!bp_a121156cdebe45e8a9d53fe98e09fce9",
+            "!bp_1b7c4f6a20a728b4a8d3c1089b8d14f4",
+            "!bp_decc9d7516ea888489d8fbaaad303713",
+            "!bp_2dbfe9932a802354098b34d4b0309de7",
+            "!bp_04c535f2839e8704993f956a77f7377c"
+          ],
+          "Comment": "",
+          "Components": [],
+          "Conditions": {
+            "Conditions": [],
+            "Operation": "And"
+          },
+          "MythicRequirement": "None",
+          "ParentAsset": "b73d6efc54df0de42b92b0fb1a4cce39",
+          "PrototypeLink": "",
+          "ShowOnce": false,
+          "m_Overrides": []
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      },
+      "sha256": "B099D85F6D0E088CE9D246E8DBBEC5C3F82652829597B9F86B10F7BAE99F92C8"
+    },
+    "World/Dialogs/NPC_Common/Irabeth/Irabeth_Dialogue.jbp": {
+      "record": {
+        "AssetId": "20e94a828d4016d45a6b723765306522",
+        "Data": {
+          "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+          "Comment": "",
+          "Components": [],
+          "Conditions": {
+            "Conditions": [],
+            "Operation": "And"
+          },
+          "FinishActions": {
+            "Actions": []
+          },
+          "FirstCue": {
+            "Cues": [
+              "!bp_eead09c5433ea5b468f764f515223d6b",
+              "!bp_0a6707b8ace5e9445ab98a4d1f49e2dc",
+              "!bp_2a6731fb0eb205d42a513712db220aeb",
+              "!bp_76e6f2f07048359458a4b61d78db19cf",
+              "!bp_7652f83130f67ec4dbde3010bbd403ad",
+              "!bp_b0c3aed2cb6b035499701d5cf68082de"
+            ],
+            "Strategy": "First"
+          },
+          "IsLockCameraRotationButtons": false,
+          "PrototypeLink": "",
+          "ReplaceActions": {
+            "Actions": []
+          },
+          "StartActions": {
+            "Actions": [
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "Comment": "\u0417\u0430\u0441\u0435\u0440\u0438\u0442\u044c 0137 \u0430\u043d\u0441\u0432\u0435\u0440 \u0435\u0441\u043b\u0438 \u0443\u0436\u0435 \u0432\u0438\u0434\u0435\u043b\u0438",
+                "ConditionsChecker": {
+                  "Conditions": [
+                    {
+                      "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+                      "ExceptSpecifiedValues": false,
+                      "Not": false,
+                      "SpecifiedValues": [],
+                      "m_ConditionFlag": "!bp_f046c4a5b6616fc4ab21363b5449ff78",
+                      "name": "$FlagUnlocked$8d282839-c349-4f59-b709-f5df40cf241f"
+                    }
+                  ],
+                  "Operation": "And"
+                },
+                "IfFalse": {
+                  "Actions": []
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "def1c2cbb0e01744292ca51e8f2cd326, MarkAnswersSelected",
+                      "m_Answers": [
+                        "!bp_40ba7eca48457434f8ccfdc05ae1e7b9"
+                      ],
+                      "name": "$MarkAnswersSelected$aed75c80-9faa-45d8-9e59-512180f3a4da"
+                    }
+                  ]
+                },
+                "name": "$Conditional$56543861-11b2-4677-a6bd-59f01c3ff8ef"
+              }
+            ]
+          },
+          "StartPosition": null,
+          "TurnFirstSpeaker": true,
+          "TurnPlayer": true,
+          "Type": "Common",
+          "m_OverrideAreaCR": null,
+          "m_Overrides": []
+        }
+      },
+      "sha256": "E5F5B10E91941C0B0D0B6CFB62E6C3FD52AD90B4F5A388D9F4EDAB1DFA6D443B"
+    }
+  },
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\drezencapital_default_mechanics.scenes",
+  "objects": [
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1074
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 195
+            },
+            "m_LocalPosition": {
+              "x": 214.94931030273438,
+              "y": 78.7699966430664,
+              "z": 9.896586418151855
+            },
+            "m_LocalRotation": {
+              "w": 1.0,
+              "x": -0.0,
+              "y": -0.0,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 934,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "UniqueId": "adee9a01-42a3-4850-b2d1-4a3dfcee9369",
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 195
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 60
+            }
+          },
+          "path_id": 2143,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 195
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 42
+            }
+          },
+          "path_id": 2142,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 934
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2143
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2142
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "IrabethTirabadeThorneRoom_Locator",
+        "m_Tag": 0
+      },
+      "path_id": 195
+    },
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1241
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 298
+            },
+            "m_LocalPosition": {
+              "x": 97.2300033569336,
+              "y": 64.63999938964844,
+              "z": 6.5
+            },
+            "m_LocalRotation": {
+              "w": 0.1600652039051056,
+              "x": -0.0,
+              "y": -0.987106442451477,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1037,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "IgnoreInEncoutnerStatistic": 0,
+            "UniqueId": "86b332a9-5910-4d46-9951-8e06f7dcf0cf",
+            "m_Blueprint": {
+              "guid": "b5e867e13503c6f41bb1316705efb4a2"
+            },
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 298
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_RespawnIfDead": 0,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 53
+            },
+            "m_SpawnOnSceneInit": 1,
+            "m_spawnConditions": {
+              "guid": ""
+            }
+          },
+          "path_id": 2355,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "ApproachWorksWhenStealthed": 0,
+            "Conditions": {
+              "guid": ""
+            },
+            "Cooldown": 5.0,
+            "OverrideDistance": 0.0,
+            "TriggerOnApproach": 0,
+            "TriggerOnParty": 1,
+            "m_Dialog": {
+              "guid": "de4cc2dd71694b842be37b75d1705b83"
+            },
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 298
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 45
+            }
+          },
+          "path_id": 2354,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_ForceOptimizeInSaves": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 298
+            },
+            "m_Name": "",
+            "m_NoOvertipOnConsole": 0,
+            "m_NotOnConsole": 0,
+            "m_OnConsoleOnly": 0,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 30
+            },
+            "m_SimplifyWhenHidden": 1,
+            "m_SleepWhenFarAway": 1,
+            "m_SpawnHidden": 1
+          },
+          "path_id": 2356,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1037
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2355
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2354
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2356
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "AneviaTirabade_DrezenCapital",
+        "m_Tag": 0
+      },
+      "path_id": 298
+    },
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1074
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 309
+            },
+            "m_LocalPosition": {
+              "x": 216.12930297851562,
+              "y": 78.7699966430664,
+              "z": 13.776586532592773
+            },
+            "m_LocalRotation": {
+              "w": 0.14671260118484497,
+              "x": -0.0,
+              "y": -0.9891791939735413,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1048,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "UniqueId": "a81a0987-bcbe-466f-a296-013fe628ad0d",
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 309
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 60
+            }
+          },
+          "path_id": 2380,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 309
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 42
+            }
+          },
+          "path_id": 2379,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1048
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2380
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2379
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "AneviaTirabadeThorneRoom_Locator",
+        "m_Tag": 0
+      },
+      "path_id": 309
+    },
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1074
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 413
+            },
+            "m_LocalPosition": {
+              "x": 32.650001525878906,
+              "y": 66.4000015258789,
+              "z": -46.27000045776367
+            },
+            "m_LocalRotation": {
+              "w": 0.9158667325973511,
+              "x": -0.0,
+              "y": -0.4014825224876404,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1152,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "UniqueId": "3e779194-a087-4771-bfad-e915b7da2086",
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 413
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 60
+            }
+          },
+          "path_id": 2596,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 413
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 42
+            }
+          },
+          "path_id": 2595,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1152
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2596
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2595
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "IrabethNearHerald",
+        "m_Tag": 0
+      },
+      "path_id": 413
+    },
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1146
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 417
+            },
+            "m_LocalPosition": {
+              "x": 43.349998474121094,
+              "y": 66.79000091552734,
+              "z": -53.029998779296875
+            },
+            "m_LocalRotation": {
+              "w": 0.9870107769966125,
+              "x": -0.0,
+              "y": -0.16065450012683868,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1156,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "UniqueId": "f1e7a760-7ca2-4be2-a750-6b047617ddc7",
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 417
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 60
+            }
+          },
+          "path_id": 2605,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 417
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 42
+            }
+          },
+          "path_id": 2604,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1156
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2605
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2604
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "Coronation_IrabethPosition",
+        "m_Tag": 0
+      },
+      "path_id": 417
+    },
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1146
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 418
+            },
+            "m_LocalPosition": {
+              "x": 44.31999969482422,
+              "y": 66.76000213623047,
+              "z": -52.369998931884766
+            },
+            "m_LocalRotation": {
+              "w": -0.9912182092666626,
+              "x": -0.0,
+              "y": 0.1322363018989563,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1157,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "UniqueId": "0c6a9c0e-59eb-4aae-84a7-a3ad8ac0e476",
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 418
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 60
+            }
+          },
+          "path_id": 2607,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 418
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 42
+            }
+          },
+          "path_id": 2606,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1157
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2607
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2606
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "Coronation_AneviaPosition",
+        "m_Tag": 0
+      },
+      "path_id": 418
+    },
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1241
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 477
+            },
+            "m_LocalPosition": {
+              "x": 95.57500457763672,
+              "y": 64.58999633789062,
+              "z": 3.091999053955078
+            },
+            "m_LocalRotation": {
+              "w": 0.9976940751075745,
+              "x": -0.0,
+              "y": -0.06787145137786865,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1216,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "IgnoreInEncoutnerStatistic": 0,
+            "UniqueId": "3dc302d8-58ce-44f3-9766-2a437a080108",
+            "m_Blueprint": {
+              "guid": "280d4712dceb37f4a88e98f1f4c6e64f"
+            },
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 477
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_RespawnIfDead": 0,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 53
+            },
+            "m_SpawnOnSceneInit": 1,
+            "m_spawnConditions": {
+              "guid": ""
+            }
+          },
+          "path_id": 2737,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "ApproachWorksWhenStealthed": 0,
+            "Conditions": {
+              "guid": ""
+            },
+            "Cooldown": 5.0,
+            "OverrideDistance": 0.0,
+            "TriggerOnApproach": 0,
+            "TriggerOnParty": 1,
+            "m_Dialog": {
+              "guid": "20e94a828d4016d45a6b723765306522"
+            },
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 477
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 45
+            }
+          },
+          "path_id": 2736,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_ForceOptimizeInSaves": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 477
+            },
+            "m_Name": "",
+            "m_NoOvertipOnConsole": 0,
+            "m_NotOnConsole": 0,
+            "m_OnConsoleOnly": 0,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 30
+            },
+            "m_SimplifyWhenHidden": 1,
+            "m_SleepWhenFarAway": 1,
+            "m_SpawnHidden": 1
+          },
+          "path_id": 2738,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1216
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2737
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2736
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2738
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "IrabethTirabade_DrezenCapital",
+        "m_Tag": 0
+      },
+      "path_id": 477
+    }
+  ],
+  "sha256": "D451FEF29C6B22F5D13E8BACEA70BA063175DDEE8B3F43F48D6CAE7F22B4A9E3"
+}
