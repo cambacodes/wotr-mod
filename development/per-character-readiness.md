@@ -6,7 +6,7 @@ The current expansion has no character approved against the complete revised req
 
 ## Current authored content
 
-Source: `development/content-volume-inventory.json`, for story SHA256 `42E31536C4B5521B70F98F169A31478478AEA3E2ABDF87DA62B57E0444085B80`.
+Source: `development/content-volume-inventory.json`, for story SHA256 `CE614D8CFAA565CE9FCAED793C0A25C46200262A72A7B79873A44FA7D4A88124`.
 These counts include all authored branches and choices, not the amount available in one playthrough.
 Exact segment deduplication removes identical passages but does not establish that every remaining word is meaningful or reachable.
 Verified external content has not yet been credited to these counts.
@@ -27,6 +27,7 @@ The combined script now exceeds that arithmetic floor, with meaningfulness, sele
 | Targona, extension only | 5,400 | 5,355 | Six letters extend verified parent quest finales; existing parent content is excluded from these counts; assembled depth, broader access, artwork and runtime requirements remain incomplete |
 | Gesmerha | 6,952 | 6,930 | Six-scene native-contact opening integrated after independent review; full length, later campaign, Trickster recovery, art and runtime requirements remain incomplete |
 | Vellexia | 6,508 | 6,508 | Six-part initial manor interlude integrated after independent review; later native-date continuation, full length, recovery, art and runtime requirements remain incomplete |
+| Aivu, friendship | 4,186 | 4,179 | Four visits preserve native Azata pet ownership; independent opening review passed, while capital dialogue access, later campaign, full length, Trickster guest access, art and runtime verification remain incomplete |
 
 The shared Tirabade script retains the original 34 scene IDs, with the original quarrel now revised in development.
 This comparison does not claim that the currently installed package contains the whole development expansion.

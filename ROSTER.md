@@ -53,7 +53,7 @@ Existing romance ownership determines whether to extend a route or create a new 
 | Soana | Experimental new route | Wintersun forest and bear quest; preserve her history and dwarf identity, confront coercive outcomes | Nine development scenes; full length and recovery incomplete; sixth art revision awaiting review |
 | Areelu | Experimental new route | Laboratory, soul experiment and final confrontation; primary work is adversarial reconciliation and research partnership | Native maternal premise requires explicit treatment |
 | Ember | Base-game companion; official expanded friendship route | Develop compassion, doubt, influence and reciprocal support; connect other routes through her own choices | Eight development friendship scenes; full-content arc still required |
-| Aivu | Base-game companion; official expanded friendship route | Develop companionship, independence and rescue history with a credible Trickster connection | Full-content arc required; native companion ownership audit pending |
+| Aivu | Base-game companion; official expanded friendship route | Develop companionship, independence and rescue history with a credible Trickster connection | Four Chapter 3 friendship visits in development; capital dialogue access, later campaign, full length, Trickster guests and art incomplete |
 
 Areelu's native text explicitly frames the Commander as her child and describes the child's soul graft.
 That attachment must not be relabeled as romance.

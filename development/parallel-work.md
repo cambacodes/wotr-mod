@@ -428,6 +428,17 @@ This assignment addresses the assembled audit's missing private-route Abyss abse
 `kiana_reconcile_recover` additionally owns `reference/canon-review/contact-continuation-review.md` for independent review of root's native-forbid continuation fix.
 No other file ownership changes.
 
+Aivu's opening source and tests have been released and independently reviewed.
+`gesmerha_recover` now owns only `storylines/soana_later_progression.py`, `tests/SoanaLaterProgressionTests.cs` and `reference/parallel/soana-later-progression-handoff.md`.
+`kiana_reconcile_recover` owns `reference/story-review/aivu-opening-review.md` for the completed independent opening review and is available for the next independent review.
+Root owns Aivu staging, full rules/binding/managed checks, shared registration and integration.
+Konomi private absence and Soana later progression remain separate writing assignments with no shared source edits.
+
+After releasing Aivu's literary review, `kiana_reconcile_recover` owns only `reference/canon-review/aivu-capital-contact-audit.md`, optional `reference/canon-review/aivu-capital-contact-records.json` and optional `tools/probe-aivu-capital-contact.py` for native scene research.
+It must not change story gates or substitute a different pet without a separate verified implementation.
+Main now contains the reviewed four-scene Aivu development opening, bringing the export to 281 scenes and thirteen roster characters across twelve route groups.
+No full route is approved, and capital contact remains an explicit delivery uncertainty.
+
 ## Konomi, Vellexia and Terendelev batch
 
 After the 264-scene integration, root assigned three separate tasks.

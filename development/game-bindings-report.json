@@ -1,11 +1,15 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\konomi-vellexia-final-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\aivu-opening-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 506,
-  "unique_targets": 110,
+  "binding_uses": 520,
+  "unique_targets": 114,
   "failures": [],
   "targets": {
+    "32a037e97c3d5c54b85da8f639616c57": {
+      "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
+      "type": "BlueprintUnit"
+    },
     "54be53f0b35bf3c4592a97ae335fe765": {
       "path": "Units/Companions/Seelah/Seelah_Companion.jbp",
       "type": "BlueprintUnit"
@@ -77,6 +81,10 @@
     "bf1542830cfa01d4c9db04546681084d": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0001.jbp",
       "type": "BlueprintCue"
+    },
+    "f1a65c6d838f58d49ad4ff40544b895b": {
+      "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/AnswersList_0027.jbp",
+      "type": "BlueprintAnswersList"
     },
     "666c827662e8af14798009a98c5aae52": {
       "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp",
@@ -314,8 +322,16 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAngel/PlayerIsAngel.jbp",
       "type": "BlueprintEtude"
     },
+    "0ece5844b86deb44ea9d54190de1463e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataIsland_DevilDetachDragon.jbp",
+      "type": "BlueprintEtude"
+    },
     "d3b47e973d65c6c46af1cce815d1f6ce": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/PlayerIsAzata.jbp",
+      "type": "BlueprintEtude"
+    },
+    "39008f5a372a6dc42bddfcf4f334bd95": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataQuest_C4/NoDragon.jbp",
       "type": "BlueprintEtude"
     },
     "9a3739370f84b0b4196d0e4d326ea3a8": {

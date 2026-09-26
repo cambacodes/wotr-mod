@@ -223,7 +223,8 @@ internal static class Program
             "konomi.a_useful_supper", "konomi.the_upper_passage", "konomi.two_bad_prices",
             "konomi.the_trial_day", "konomi.a_name_beside_hers", "konomi.the_evening_she_kept",
             "vellexia.unfinished_likeness", "vellexia.second_painter", "vellexia.price_of_novelty",
-            "vellexia.two_observers", "vellexia.unadvertised_hour", "vellexia.a_question_kept"
+            "vellexia.two_observers", "vellexia.unadvertised_hour", "vellexia.a_question_kept",
+            "aivu.a_city_with_wings", "aivu.the_roof_below", "aivu.a_way_for_feet", "aivu.someone_elses_turn"
         };
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
@@ -297,6 +298,7 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "kiana.former_grief")) KianaReconciliationTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.a_useful_supper")) KonomiOrdinaryExpansionTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "vellexia.unfinished_likeness")) VellexiaOpeningTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "aivu.a_city_with_wings")) AivuOpeningTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) JerribethCounterofferTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);
