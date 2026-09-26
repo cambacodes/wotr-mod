@@ -18,3 +18,20 @@ The new suite is not yet registered in the shared test entry point because integ
 It is representative complete-history evidence, not exhaustive branch coverage or an end-to-end Unity run.
 The author's separate tests cover the broader new branch combinations and care sequence.
 Live native contact, game display, save/reload, unavailable-character recovery and full release parity remain unverified.
+
+## Final corrected candidate validation
+
+The final two wording repairs changed the manuscript hash to `5CB72B6FE1BDEB870EC200D856144A19E513C6CED5127BFF6263B694D1256F5C`.
+Root rebuilt the review candidate from that source and the unchanged 431-scene main export.
+The resulting 459-scene candidate has SHA256 `20C417875617D4217F73855BCF37121C400C81209A68316FF1F0CC5E969719B0`.
+Its parsed contents match the author's candidate exactly; differing serialized bytes are not a content discrepancy.
+
+The complete Rules suite passes 22,837,122 assertions with both Ember contribution and assembled tests registered conditionally for the candidate.
+Typed native binding checks pass for 861 uses, 127 archive targets and 29 reviewed parent-source targets.
+Actual managed blueprint construction passes 55,275 assertions over 16,232 generated blueprints and 14 native answer lists.
+The tested DLL hash remains `EEBA86B2454713BFFF1DEECE2D7B96040B9ABC59C4251F4139B4B78B117BE428`.
+
+The independent inventory reports 22,512 raw words and 21,695 distinct segment words across 36 Ember entries.
+This aggregate includes the separate care branch and alternative endings.
+It is not a claim that a single playthrough contains every word or that the care branch has the ordinary campaign's length.
+Final independent editorial approval and main-export registration were still pending when these results were recorded.
