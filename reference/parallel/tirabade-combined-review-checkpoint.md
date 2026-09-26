@@ -26,6 +26,9 @@ The full combined rules suite passes 20,018,848 assertions after the final callb
 The independent review report, `reference/story-review/tirabade-combined-integration-review.md`, accepts this ordinary living-contact combination for integration.
 It does not certify universal Trickster access, runtime delivery or the full doubled-length shared campaign.
 The final builder also passes repeated assembly and returned-scene mutation isolation with both independent manuscripts included.
+After commit `d2ad3fa`, a fresh `git archive HEAD` was extracted into a temporary directory and rebuilt with `tools/verify-source-package.py`.
+The extracted source reproduces the exact 395-scene development bytes and SHA256 above.
+This proves the committed source contains the required builder inputs; it does not execute the installed game.
 
 ## Verification completed during staging
 
