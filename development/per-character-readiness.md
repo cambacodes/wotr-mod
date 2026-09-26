@@ -6,7 +6,7 @@ The current expansion has no character approved against the complete revised req
 
 ## Current authored content
 
-Source: `development/content-volume-inventory.json`, for story SHA256 `070879FB0FF8AF03FAA0E1A9525FDD88AEC61E89912C853877782BAABA952230`.
+Source: `development/content-volume-inventory.json`, for story SHA256 `42E31536C4B5521B70F98F169A31478478AEA3E2ABDF87DA62B57E0444085B80`.
 These counts include all authored branches and choices, not the amount available in one playthrough.
 Exact segment deduplication removes identical passages but does not establish that every remaining word is meaningful or reachable.
 Verified external content has not yet been credited to these counts.
@@ -18,7 +18,7 @@ The combined script now exceeds that arithmetic floor, with meaningfulness, sele
 | --- | ---: | ---: | --- |
 | Anevia and Irabeth, shared Tirabade script | 46,431 | 46,124 | Volume floor crossed; developed progression and explicit old-save continuation integrated; assembled quality, each woman's development, art and runtime approval remain incomplete |
 | Seelah | 30,012 | 27,748 | Earned progression and old-save catch-up integrated; full campaign, native-friend development, Trickster contact, art and runtime approval remain incomplete |
-| Konomi | 40,780 | 35,582 | Six ordinary Chapter 5 visits and old-save opt-in integrated after review; full selected-route depth, native contact, art and full-campaign requirements remain incomplete |
+| Konomi | 40,780 | 35,582 | Independent assembled review scored writing 89, fidelity 89, romance 91, participation 87 and campaign depth 86; private absence/return continuity, later consequences, native contact, art and full-route approval remain incomplete |
 | Jerribeth | 26,315 | 25,904 | Living Act 4 Trickster encounter and later reply integrated; death/departure restoration, universal Trickster attainability, assembled quality, art and runtime approval remain incomplete |
 | Kiana | 27,901 | 27,612 | Public incident and two changed-history continuations integrated; sixteen history-selector dead ends repaired; earlier separation, witnessed Elan return, other inconsistent states, native contact and full-route approval remain incomplete |
 | Ember, friendship | 6,458 | 6,415 | Incomplete; opening and puppet afternoons do not finish her friendship arc |

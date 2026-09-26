@@ -7,5 +7,6 @@
   <ItemGroup>
     <Compile Include="../src/Story.cs" Link="Story.cs" />
     <Compile Include="../src/RecoveryAttempt.cs" Link="RecoveryAttempt.cs" />
+    <Compile Include="../src/TerendelevDeliveryAttempt.cs" Link="TerendelevDeliveryAttempt.cs" />
   </ItemGroup>
 </Project>

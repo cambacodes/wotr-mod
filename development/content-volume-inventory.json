@@ -1,6 +1,6 @@
 {
   "scope": "Authored prose and choices. Exact normalized whole-segment deduplication only; not semantic originality, reachable content, per-character attribution or quality approval.",
-  "story_sha256": "070879FB0FF8AF03FAA0E1A9525FDD88AEC61E89912C853877782BAABA952230",
+  "story_sha256": "42E31536C4B5521B70F98F169A31478478AEA3E2ABDF87DA62B57E0444085B80",
   "tokenizer": "Same as the RanRomance source audit: Unicode alphanumerics, internal apostrophes retained, hyphens split, underscores excluded; curly and angle markup removed; whitespace normalized.",
   "exclusions": [
     "titles",

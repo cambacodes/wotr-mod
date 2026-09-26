@@ -157,8 +157,14 @@ namespace Tirabade
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
                 && (scene.Areas.Length == 0 || scene.Areas.Contains(state.Area))
                 && scene.Requires.All(state.Has)
+                && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && state.Has(flag))
                 && !story.Relationships[scene.Relationship].UnavailableFlags.Any(state.Has)
                 && (scene.RequiresAny.Length == 0 || scene.RequiresAny.Any(state.Has)));
+
+        private static bool IsNativeFlag(Story story, string flag) => story.Etudes.ContainsKey(flag)
+            || story.CompletedEtudes.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag)
+            || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
+            || story.StartedDialogs.ContainsKey(flag);
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 

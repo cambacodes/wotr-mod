@@ -28,7 +28,7 @@ def main():
     found = {}
     with ZipFile(args.game / "blueprints.zip") as archive:
         for name in archive.namelist():
-            if not name.endswith(".jbp") or not name.startswith(("World/Etudes/", "World/Dialogs/", "World/Crusade/", "World/Areas/", "World/Quests/", "Units/")):
+            if not name.endswith(".jbp") or not name.startswith(("World/Etudes/", "World/Dialogs/", "World/Crusade/", "World/Areas/", "World/Quests/", "Units/", "Mythic/")):
                 continue
             with archive.open(name) as stream:
                 header = stream.read(160)

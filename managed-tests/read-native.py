@@ -11,7 +11,7 @@ found = {}
 asset_id = re.compile(rb'"AssetId"\s*:\s*"([0-9a-fA-F]{32})"')
 with ZipFile(sys.argv[1]) as archive:
     for name in archive.namelist():
-        if not name.startswith(("World/", "Units/")) or not name.endswith(".jbp"):
+        if not name.startswith(("World/", "Units/", "Mythic/")) or not name.endswith(".jbp"):
             continue
         with archive.open(name) as stream:
             header = stream.read(200)

@@ -203,6 +203,8 @@ internal static class Program
         SkillCheckTests.Run(Check);
         ForbidOverrideTests.Run(Check);
         StartedDialogTests.Run(Check);
+        ContactContinuationTests.Run(Check);
+        TerendelevDeliveryTests.Run(Check);
         RecoveryTests.Run(Check);
         // These are draft scene checks. Full new-route campaigns need their own
         // ending, transformation and introducer scenarios before release.

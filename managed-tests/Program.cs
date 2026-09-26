@@ -85,6 +85,7 @@ internal static class Program
     {
         var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyPath))!;
         Rules.Validate(story);
+        TerendelevDeliveryBlueprintTests.Run(Check);
         var savedSettings = typeof(Kingmaker.Player).GetMember("SettingsList").Single();
         Check(savedSettings.GetCustomAttributes(typeof(JsonPropertyAttribute), true).Length == 1,
             "Player checkpoint container is not included in native JSON serialization");

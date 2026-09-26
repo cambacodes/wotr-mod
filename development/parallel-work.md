@@ -409,6 +409,25 @@ Implementation must use actual terminal history, extend those existing outcomes,
 The research does not deliver that actor or satisfy universal Trickster access.
 No deployment occurred.
 
+## Current Aivu, Terendelev and Konomi batch
+
+Main contains 277 scenes at SHA256 `070879FB0FF8AF03FAA0E1A9525FDD88AEC61E89912C853877782BAABA952230` after reviewed Konomi and Vellexia integration.
+`gesmerha_recover` owns only `storylines/aivu_opening.py`, `tests/AivuOpeningTests.cs`, `reference/canon-review/aivu-route-evidence.md` and `reference/parallel/aivu-opening-handoff.md`.
+`terendelev_api_recover` owns only `src/TerendelevDelivery.cs`, `src/TerendelevDeliveryAttempt.cs`, `tests/TerendelevDeliveryTests.cs`, `managed-tests/TerendelevDeliveryBlueprintTests.cs` and `reference/parallel/terendelev-delivery-handoff.md`.
+`kiana_reconcile_recover` owns only `reference/story-review/konomi-assembled-readiness-20260926.md` and optional `tools/measure-konomi-playthrough.py` for independent assembled review.
+Root owns shared integration, continuation checks, native readers and test registration.
+These assignments replace the completed batch's ownership without allowing overlapping edits.
+The Terendelev service remains unregistered until independent review.
+Aivu receives age-appropriate friendship content with equal narrative care; her native Azata pet ownership must remain intact.
+The full RanRomance quality and aggregate length floors remain requirements for completed routes, with doubled shared Tirabade length.
+Accepted adult art must remain conventionally attractive, humanoid and recognizably based on the original character, allowing imperfections that improve likeness.
+
+Terendelev's author has released the delivery source and tests for root's independent review.
+`terendelev_api_recover` now owns only `storylines/konomi_private_absence.py`, `tests/KonomiPrivateAbsenceTests.cs` and `reference/parallel/konomi-private-absence-handoff.md`.
+This assignment addresses the assembled audit's missing private-route Abyss absence and return continuity.
+`kiana_reconcile_recover` additionally owns `reference/canon-review/contact-continuation-review.md` for independent review of root's native-forbid continuation fix.
+No other file ownership changes.
+
 ## Konomi, Vellexia and Terendelev batch
 
 After the 264-scene integration, root assigned three separate tasks.

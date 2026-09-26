@@ -95,6 +95,8 @@ internal static class VellexiaOpeningTests
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
                 check(!Rules.Available(story, scene, blocked), "Vellexia ignores entry blocker: " + flag);
+                if (story.SeenCues.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag))
+                    check(!Rules.ContactAvailable(story, scene, blocked), "Vellexia continues after native departure history changes: " + flag);
             }
             foreach (var flag in scene.Requires)
             {
