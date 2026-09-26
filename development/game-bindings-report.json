@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\soana-later-progression-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\konomi-finishing-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 537,
-  "unique_targets": 114,
+  "binding_uses": 543,
+  "unique_targets": 115,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -16,6 +16,10 @@
     },
     "a609ed9b2205d034bb3bb04d2a255681": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+      "type": "BlueprintUnit"
+    },
+    "ca2d58c5c65723945857e04fb85d30ce": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy.jbp",
       "type": "BlueprintUnit"
     },
     "3ba3a0ff8575be8419159221177c1411": {

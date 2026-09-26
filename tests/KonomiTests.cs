@@ -126,6 +126,11 @@ internal static class KonomiTests
             absent.Flags.Add("trickster");
             check(!Rules.Available(story, scene, absent), "Trickster title alone invents Konomi contact: " + scene.Id);
             absent.Flags.Add("konomi.present");
+            if (scene.ContactUnit != null)
+            {
+                check(!Rules.Available(story, scene, absent), "Office state alone invents the physical Konomi actor: " + scene.Id);
+                absent.AvailableContacts.Add(scene.ContactUnit);
+            }
             check(Rules.Available(story, scene, absent), "Native Konomi contact does not restore meeting: " + scene.Id);
             absent.Flags.Remove("konomi.present");
             check(!Rules.Available(story, scene, absent), "Lost Konomi contact remains cached: " + scene.Id);
