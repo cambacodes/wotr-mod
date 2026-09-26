@@ -72,3 +72,9 @@ The existing `narrator/Program.cs` uses Windows `System.Speech.Synthesis` with o
 `src/Main.cs` strips markup and sends whole node text; it does not split character speech from embedded narration, select per-character Chatterbox voices, or load generated audio files.
 A Chatterbox evaluation must therefore distinguish offline voice-quality testing from in-game audio integration.
 No Chatterbox synthesis or local speed benchmark has been performed.
+
+Read-only local TTS environment inspection reports Radeon RX 590 graphics and Python 3.14.5 plus a discoverable Python 3.12.10 installation.
+No `nvidia-smi` command is available.
+The official Chatterbox documentation inspected in this session describes CPU support for Nano and a Python 3.11 development/test environment.
+Those observations support trying an isolated CPU evaluation environment, not assuming the documented CUDA example or advertised speed will match this machine.
+No packages, drivers or Python installations were changed.
