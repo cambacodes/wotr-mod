@@ -24,6 +24,7 @@ from storylines import konomi_contact, konomi_political_consequence
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
 from storylines import gesmerha_campaign
+from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
 from storylines import vellexia_campaign
 from storylines import tirabade_later, tirabade_campaign, seelah, seelah_later, seelah_fate, seelah_abyss, seelah_aftermath, konomi, konomi_history, konomi_private, konomi_distance, konomi_future, konomi_private_hearing, jerribeth, jerribeth_consequences, kiana, kiana_consequences, ember, ember_afternoons, soana_opening
@@ -143,7 +144,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(kiana_reconciliation.SCENES))
     kiana_reconciliation.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(gesmerha_opening.SCENES))
-    payload["Relationships"]["gesmerha"] = gesmerha_opening.RELATIONSHIP
+    payload["Relationships"]["gesmerha"] = copy.deepcopy(gesmerha_opening.RELATIONSHIP)
     payload["Etudes"].update(gesmerha_opening.ETUDES)
     payload["CompletedQuests"].update(gesmerha_opening.COMPLETED_QUESTS)
     payload["Scenes"].extend(copy.deepcopy(vellexia_opening.SCENES))
@@ -197,6 +198,14 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(arsinoe_campaign.SCENES))
     payload["Scenes"].extend(copy.deepcopy(gesmerha_campaign.SCENES))
     gesmerha_campaign.integrate(payload)
+    payload["Scenes"].extend(copy.deepcopy(gesmerha_late_campaign.SCENES))
+    gesmerha_late_campaign.integrate(payload)
+    payload["Relationships"]["gesmerha"]["Guidance"] = (
+        "After resolving Wintersun and reporting to Irabeth, speak to Gesmerha at her native trading dialogue. "
+        "Keep the Chapter 3 visits while she is available. After returning from the Abyss, look for her in Wintersun "
+        "to continue the relationship and help settle the things left to carry. Return between the later visits. "
+        "Her possible audience in Drezen offers a separate reunion; it is not required for the later Wintersun visits."
+    )
     payload["Etudes"].update(ember_campaign.ETUDES)
     payload["CompletedQuests"].update(ember_campaign.COMPLETED_QUESTS)
     payload["Scenes"].extend(copy.deepcopy(ember_campaign.SCENES))

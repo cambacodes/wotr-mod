@@ -286,6 +286,8 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
         {
             GesmerhaCampaignTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "gesmerha.the_things_still_here"))
+                GesmerhaLateCampaignTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "gesmerha").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "ember.something_you_cannot_do"))

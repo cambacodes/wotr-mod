@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 880,
-  "unique_targets": 160,
+  "binding_uses": 899,
+  "unique_targets": 161,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -256,6 +256,10 @@
     },
     "5b01aa690202e584888dfc600a4aac0a": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
+      "type": "BlueprintEtude"
+    },
+    "24505150d0cf493c936f2c50b1c94468": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WinterSunAfterFinalDIalog_Leader.jbp",
       "type": "BlueprintEtude"
     },
     "89d57f73e41040f0ab527d6e83478a64": {

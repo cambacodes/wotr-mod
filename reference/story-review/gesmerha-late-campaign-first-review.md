@@ -1,10 +1,10 @@
 # Gesmerha late campaign review
 
-Status: preliminary independent review with required corrections, not approval.
+Status: revised ordinary living campaign accepted for development integration; full character release remains incomplete.
 Root read all six new visits and the eleven draft ending books, their existing campaign prerequisites and the native character evidence.
 The inspected working source was measured at SHA256 `A022405A8371BED597D8BB61B6C928373DBF5C9237B360872F8294CE1871EA06` before the requested revisions.
 The author still owns and is revising the module and focused tests.
-No score is assigned to an unfinished revision, and this review does not authorize integration.
+The preliminary findings below were sent before approval; the final revision and bounded assessments are recorded at the end.
 
 ## Required findings
 
@@ -72,3 +72,32 @@ Measure assembled content with the standard inventory, preserving the distinctio
 Verify ending precedence, original-scene overlays, other-romance preservation, delay and physical-contact interruption.
 Run final combined Rules, typed binding and managed construction checks after approved integration.
 Late first entry, dead-character Trickster access, artwork and Unity/save/ToyBox verification remain separate unfinished requirements.
+
+## Final revision and independent checks
+
+Root reread the corrected friendship invitation and evening, the loss and sacrifice memories, and the new unfinished-return ending.
+The final source is `CA412FD0C337F1A351EC4B70E34AC997484282B473627E6FE283C327A7D197DC`.
+The tested suite is `42C5A88355EB020FB91D76FD6A36E6F31277E3034EE6F238F4DD267E10C703BA`.
+The invitation now records its friendship-only preference, the next visit honors it directly, and the suite plays that exact slow-to-friend history.
+The revised endings recall particular shared objects and gestures rather than narrating branch requirements.
+The unfinished outcome recalls the first late welcome without assuming later progress.
+
+Root constructed a fresh 501-scene candidate from the current 483-scene development assembly and the released contribution.
+The full Rules suite, including the new played-history tests, passed 23,911,797 assertions.
+The new suite includes ordinary non-Trickster and Trickster histories and verifies that only the new Aeon ending applies after late completion.
+Root independently ran the standard inventory and obtained 25,980 raw and 25,658 distinct segment words across thirty-eight assembled Gesmerha entries.
+The author's separately reported visit-only aggregate is 23,599 distinct words; selected sixteen- or seventeen-visit histories range from 11,302 to 14,051 words.
+Those authored selected-path measurements are not the aggregate count and do not credit native game prose.
+
+| Reviewed discipline | Score / 100 | Basis |
+| --- | ---: | --- |
+| Writing and dialogue | 91 | Specific competing claims, fallible humor and shared memories; some boundary explanations still repeat. |
+| Character voice | 92 | Pride in woodshaping, attachment to the clan, dry humor and blindness remain consequential. |
+| Native continuity | 92 | Leadership and played reunion histories remain distinct; the native return opportunity is source-supported and requires actual contact. |
+| Adult romantic chemistry and agency | 92 | Reciprocal desire, a first kiss or established intimacy, pace and friendship now follow the player's actual answer. |
+| Player participation | 92 | Copy versus loan and the crossing check produce different work, costs and later conversations. |
+| Manuscript depth | 92 | The earlier opening develops through six substantial late visits and earned outcomes beyond the provisional reunion. |
+
+These are one independent reader's assessments of the pinned manuscript, not invented panel votes or probabilities of quality.
+They approve the ordinary living contribution, not unavailable-character recovery, art, every roster requirement or game release.
+Combined managed construction and native binding checks remain required before recording integration as verified.
