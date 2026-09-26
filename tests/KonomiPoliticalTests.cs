@@ -113,6 +113,9 @@ internal static class KonomiPoliticalTests
             check(!Rules.Available(story, scene, elsewhere), "Physical political conversation leaves Drezen without delivery support.");
         }
         foreach (var scene in focused.Scenes)
-            check(visited[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id)), "Political history tests omit an authored page: " + scene.Id);
+            // The separate missed-contact suite plays every new alternative-history page.
+            check(visited[scene.Id].Where(id => !id.StartsWith("missed_", StringComparison.Ordinal)).ToHashSet()
+                .SetEquals(scene.Nodes.Where(n => !n.Id.StartsWith("missed_", StringComparison.Ordinal)).Select(n => n.Id)),
+                "Political history tests omit an original authored page: " + scene.Id);
     }
 }

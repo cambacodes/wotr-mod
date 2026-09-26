@@ -120,11 +120,12 @@ internal static class KonomiPrivateConsequenceTests
         {
             var ready = new Snapshot { Chapter = 5, Hour = 50000, Area = scene.Areas.Single() };
             ready.Flags.UnionWith(scene.Requires);
+            foreach (var group in scene.RequiresAnyGroups) ready.Flags.Add(group[0]);
             ready.Flags.Add("konomi.career_accepts_now");
             ready.Flags.Add("konomi.private_career_exclusive");
             ready.Flags.Add("konomi.private_extra_fee");
             check(Rules.Available(story, scene, ready), "New visit baseline unavailable.");
-            foreach (string flag in scene.Requires)
+            foreach (string flag in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(flag);
                 check(!Rules.Available(story, scene, missing), "Missing earned prerequisite admitted: " + flag);

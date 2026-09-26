@@ -1,5 +1,9 @@
 # Expansion development package verification
 
+The current package is `dist/expansion-20260926-193512-4a81ee50`, containing 533 scenes.
+Its [integration checkpoint](konomi-missed-contact-integration-checkpoint.md) records the exact hashes, successful full checks, independent payload verification and remaining requirements.
+The 527-scene builds below are retained historical packaging evidence.
+
 The existing `build.ps1` invokes `story.py`, and the original package contains thirty-four scenes with no Konomi route.
 The new `build-expansion.ps1` provides a separate build target that generates `development/Story.json` and stages matching binaries and portrait files under a fresh `dist/` directory.
 It does not invoke the original story generator or install files into the game.

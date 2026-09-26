@@ -397,6 +397,7 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "return" && s.Nodes.Any(n => n.Id == "before_the_abyss")))
             TirabadeChronologyTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) KonomiPrivateConsequenceTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "konomi.the_unintroduced_letter")) KonomiMissedContactTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) KonomiEarlyReciprocityTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) ArankaContinuationTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) KonomiContactTests.Run(story, Check);
@@ -506,6 +507,7 @@ internal static class Program
         Check(Rules.Available(story, story.Scenes.Single(s => s.Id == "konomi.before_road"), later), "New checkpoint blocks an already advanced private history.");
         var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = historyScene.Areas.Single() };
         ready.Flags.UnionWith(historyScene.Requires);
+        foreach (var group in historyScene.RequiresAnyGroups) ready.Flags.Add(group[0]);
         foreach (var requirement in historyScene.Requires)
         {
             var missing = Copy(ready); missing.Flags.Remove(requirement);
@@ -551,6 +553,7 @@ internal static class Program
         {
             var initial = new Snapshot { Chapter = chapter, Hour = 1000, Area = scenes[0].Areas.Single() };
             initial.Flags.UnionWith(scenes[0].Requires);
+            foreach (var group in scenes[0].RequiresAnyGroups) initial.Flags.Add(group[0]);
             initial.Flags.UnionWith(new[] { "legend", "konomi.attracted", "konomi.private_departed", "seelah.committed" });
             if (history != "new") initial.Flags.Add("konomi.lovers");
             if (history == "committed") initial.Flags.UnionWith(new[] { "konomi.committed", "konomi.public" });
@@ -643,6 +646,7 @@ internal static class Program
         {
             var initial = new Snapshot { Chapter = chapter, Hour = 1000, Area = scenes[0].Areas.Single() };
             initial.Flags.UnionWith(scenes[0].Requires);
+            foreach (var group in scenes[0].RequiresAnyGroups) initial.Flags.Add(group[0]);
             initial.Flags.UnionWith(new[] { "legend", "seelah.committed", "konomi.reconnection_open" });
             initial.Flags.Add(alternate ? "konomi.departure_arguments" : "konomi.departure_plain_letters");
             initial.Flags.Add(alternate ? "konomi.carriers_asked" : "konomi.carriers_measured");
@@ -713,7 +717,7 @@ internal static class Program
                 }
                 states = continuing;
                 var ready = Copy(initial); ready.Flags.UnionWith(scene.Requires);
-                foreach (var required in scene.Requires)
+                foreach (var required in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
                 {
                     var missing = Copy(ready); missing.Flags.Remove(required);
                     Check(!Rules.Available(story, scene, missing), "Distance continuation ignores " + required);
@@ -740,6 +744,7 @@ internal static class Program
         {
             var initial = new Snapshot { Chapter = chapter, Hour = 1000, Area = scenes[0].Areas.Single() };
             initial.Flags.UnionWith(scenes[0].Requires);
+            foreach (var group in scenes[0].RequiresAnyGroups) initial.Flags.Add(group[0]);
             initial.Flags.UnionWith(new[] { "legend", "konomi.private_unhurried", "seelah.committed" });
             if (history != "new") initial.Flags.Add("konomi.lovers");
             if (history == "committed") initial.Flags.Add("konomi.committed");
@@ -794,7 +799,7 @@ internal static class Program
                 }
                 states = continuing;
                 var ready = Copy(initial); ready.Flags.UnionWith(scene.Requires);
-                foreach (var required in scene.Requires)
+                foreach (var required in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
                 {
                     var missing = Copy(ready); missing.Flags.Remove(required);
                     Check(!Rules.Available(story, scene, missing), "Private continuation ignores " + required);

@@ -32,6 +32,9 @@ INTEGRATION_REQUIREMENTS = {
 
 
 def s(id, title, entry, nodes, requires=(), delay=24):
+    if id == "arsinoe_city_on_paper":
+        for page in nodes:
+            page["Portrait"] = "ArsinoeShop"
     SCENES.append(scene(id, title, "Arsinoe", 3, entry, nodes,
                         requires=("arsinoe.capital", *requires), forbids=("arsinoe.closed",),
                         delay=delay, optional=True, Relationship="arsinoe",

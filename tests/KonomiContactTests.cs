@@ -22,6 +22,9 @@ internal static class KonomiContactTests
             "ending_distance_open", "ending_distance_apart", "ending_distance_changed_open",
             "ending_distance_ascended_open", "ending_distance_lived", "ending_distance_open_lived" };
         var scenes = story.Scenes.Where(s => s.Relationship == "konomi").ToArray();
+        excluded = excluded.Concat(new[] { "the_unintroduced_letter", "the_answer_she_addressed", "the_courtyard_introduction",
+            "ending_missed_declined", "ending_missed_interrupted", "ending_missed_interrupted_aeon" }
+            .Where(id => scenes.Any(s => s.Id == "konomi." + id))).ToArray();
         // These later visits declare the same audited physical contact in their source.
         ordinary = ordinary.Concat(new[] { "the_names_admitted", "the_answer_on_record" }
             .Where(id => scenes.Any(s => s.Id == "konomi." + id))).ToArray();
@@ -120,6 +123,7 @@ internal static class KonomiContactTests
                 Hour = 1000
             };
             remote.Flags.UnionWith(scene.Requires);
+            foreach (var group in scene.RequiresAnyGroups) remote.Flags.Add(group[0]);
             if (scene.RequiresAny.Length > 0) remote.Flags.Add(scene.RequiresAny[0]);
             check(Rules.Available(story, scene, remote), "Konomi remote witness cannot enter: " + id);
             check(remote.AvailableContacts.Count == 0 && Rules.ContactAvailable(story, scene, remote),

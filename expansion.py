@@ -22,6 +22,7 @@ from storylines import tirabade_chronology
 from storylines import konomi_private_consequence, konomi_early_reciprocity
 from storylines import aranka_continuation
 from storylines import konomi_contact, konomi_political_consequence
+from storylines import konomi_missed_contact
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
 from storylines import gesmerha_campaign
@@ -220,6 +221,13 @@ def make_expansion(*, independent_tirabade=True):
     payload["Etudes"].update(ember_campaign.ETUDES)
     payload["CompletedQuests"].update(ember_campaign.COMPLETED_QUESTS)
     payload["Scenes"].extend(copy.deepcopy(ember_campaign.SCENES))
+    konomi_missed_contact.integrate(payload)
+    payload["Relationships"]["konomi"] = copy.deepcopy(payload["Relationships"]["konomi"])
+    payload["Relationships"]["konomi"]["Guidance"] += (
+        " Before her council appointment begins, a Trickster can seek a personal introduction "
+        "during a quiet rest in Drezen. Keep her reply and arrange the meeting she offers. "
+        "A later council appointment pauses these private visits while she holds the office."
+    )
     return payload
 
 

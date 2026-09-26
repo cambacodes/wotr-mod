@@ -17,6 +17,7 @@ internal static class KonomiPrivateHearingTests
         {
             var initial = new Snapshot { Chapter = chapter, Hour = 1000, Area = hearing.Areas.Single() };
             initial.Flags.UnionWith(hearing.Requires);
+            foreach (var group in hearing.RequiresAnyGroups) initial.Flags.Add(group[0]);
             initial.Flags.UnionWith(new[] { "legend", "konomi.lovers", "seelah.committed", "konomi.private_hearing_needed" });
             initial.Flags.Add(publicReply ? "konomi.public" : "konomi.discreet");
             if (priorDenial) initial.Flags.UnionWith(new[] { "konomi.almost_denied", "konomi.apologized" });
@@ -53,9 +54,10 @@ internal static class KonomiPrivateHearingTests
         {
             var ready = new Snapshot { Chapter = 5, Area = scene.Areas.Single(), Hour = 1000 };
             ready.Flags.UnionWith(scene.Requires);
+            foreach (var group in scene.RequiresAnyGroups) ready.Flags.Add(group[0]);
             check(Rules.Available(story, scene, ready), "Private hearing readiness fixture invalid.");
             check(scene.Remote && !Rules.EntryTargets(scene).Any(), "Private hearing wrongly attaches to dismissed officer dialogue.");
-            foreach (string flag in scene.Requires)
+            foreach (string flag in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
             {
                 var state = Program.Copy(ready); state.Flags.Remove(flag);
                 check(!Rules.Available(story, scene, state), "Private hearing ignores contact or progression requirement: " + flag);
@@ -75,6 +77,7 @@ internal static class KonomiPrivateHearingTests
         }
         var migrated = new Snapshot { Chapter = 5, Area = hearing.Areas.Single(), Hour = 1000 };
         migrated.Flags.UnionWith(hearing.Requires);
+            foreach (var group in hearing.RequiresAnyGroups) migrated.Flags.Add(group[0]);
         migrated.Flags.UnionWith(new[] { "konomi.hearing", "konomi.hearing_finished", "konomi.hearing_buyer_barred" });
         check(!Rules.Available(story, hearing, migrated) && Rules.Available(story, after, migrated), "A hearing completed before dismissal must resume at its unfinished aftermath.");
         migrated.Flags.UnionWith(new[] { "konomi.hearing_after", "konomi.hearing_evening_kept", "konomi.hearing_new_letter" });

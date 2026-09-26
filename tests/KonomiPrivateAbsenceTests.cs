@@ -140,15 +140,18 @@ internal static class KonomiPrivateAbsenceTests
         {
             var ready = new Snapshot { Chapter = scene == absence ? 4 : 5, Hour = 50000, Area = scene == absence ? "abyss" : catchup.Areas.Single() };
             ready.Flags.UnionWith(scene.Requires);
+            foreach (var group in scene.RequiresAnyGroups) ready.Flags.Add(group[0]);
             check(Rules.Available(story, scene, ready), "New absence scene baseline invalid.");
-            foreach (var flag in scene.Requires)
+            foreach (var flag in scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0])))
             { var missing = Program.Copy(ready); missing.Flags.Remove(flag); check(!Rules.Available(story, scene, missing), "Missing private prerequisite admitted: " + flag); }
             foreach (var flag in scene.Forbids.Concat(new[] { "konomi.closed" }))
             { var blocked = Program.Copy(ready); blocked.Flags.Add(flag); check(!Rules.Available(story, scene, blocked), "Absence ignores blocker: " + flag); }
             var wrong = Program.Copy(ready); wrong.Chapter = 3;
             check(!Rules.Available(story, scene, wrong), "Absence continuity appears before its chapter.");
             // Later career stages are played in KonomiAbsenceChronologyTests.
-            foreach (var page in scene.Nodes.Where(n => !n.Id.StartsWith("absence_career_", StringComparison.Ordinal)))
+            // Alternative-history pages are played by KonomiMissedContactTests.
+            foreach (var page in scene.Nodes.Where(n => !n.Id.StartsWith("absence_career_", StringComparison.Ordinal)
+                && !n.Id.StartsWith("missed_", StringComparison.Ordinal)))
                 check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed new page: " + scene.Id + "/" + page.Id);
         }
         foreach (var page in reunion.Nodes.Where(n => n.Id.StartsWith("absence_", StringComparison.Ordinal)))
@@ -156,6 +159,7 @@ internal static class KonomiPrivateAbsenceTests
         check(catchup.ManualOnly && catchup.Remote, "Old-save catch-up entered automatic queue.");
         var single = new Story { Scenes = new List<Scene> { catchup }, Relationships = story.Relationships };
         var eligible = new Snapshot { Chapter = 5, Hour = 50000, Area = catchup.Areas.Single() }; eligible.Flags.UnionWith(catchup.Requires);
+            foreach (var group in catchup.RequiresAnyGroups) eligible.Flags.Add(group[0]);
         check(Rules.NextRemote(single, eligible) == null, "Manual catch-up became compulsory rest content.");
     }
 }

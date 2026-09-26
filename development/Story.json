@@ -17991,7 +17991,8 @@
       "Forbids": [
         "konomi.present",
         "inhuman",
-        "konomi.farewell"
+        "konomi.farewell",
+        "konomi.missed_private_access"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -18151,7 +18152,8 @@
       "Forbids": [
         "konomi.present",
         "inhuman",
-        "konomi.farewell"
+        "konomi.farewell",
+        "konomi.missed_private_access"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -18530,7 +18532,8 @@
       "Forbids": [
         "konomi.present",
         "inhuman",
-        "konomi.farewell"
+        "konomi.farewell",
+        "konomi.missed_private_access"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -18577,7 +18580,8 @@
         "konomi.closed",
         "inhuman",
         "ascended",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18616,7 +18620,8 @@
         "konomi.public",
         "inhuman",
         "ascended",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18653,7 +18658,8 @@
       ],
       "Forbids": [
         "konomi.closed",
-        "ascended"
+        "ascended",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18689,7 +18695,8 @@
         "ascended"
       ],
       "Forbids": [
-        "konomi.closed"
+        "konomi.closed",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18726,7 +18733,8 @@
       ],
       "Forbids": [
         "konomi.private_future",
-        "konomi.private_declined"
+        "konomi.private_declined",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18762,7 +18770,8 @@
         "konomi.closed"
       ],
       "Forbids": [
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18799,7 +18808,8 @@
       "Forbids": [
         "konomi.committed",
         "konomi.closed",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18834,7 +18844,8 @@
         "konomi.committed"
       ],
       "Forbids": [
-        "konomi.closed"
+        "konomi.closed",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -18937,7 +18948,8 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "konomi.petition_resolved"
+                "konomi.petition_resolved",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -18947,6 +18959,59 @@
               "Set": [],
               "Requires": [
                 "konomi.petition_resolved"
+              ],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask for the figures you never received.]",
+              "Next": "missed_figures",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.petition_resolved",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask for the figures you never received.]",
+              "Next": "figures",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.petition_resolved"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Recall the delivery and the storehouse inspection she requested.]",
+              "Next": "missed_delivered",
+              "Set": [],
+              "Requires": [
+                "konomi.petition_resolved",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Recall the delivery and the storehouse inspection she requested.]",
+              "Next": "delivered",
+              "Set": [],
+              "Requires": [
+                "konomi.petition_resolved",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
               ],
               "Forbids": [],
               "Abort": false
@@ -18984,6 +19049,31 @@
               "Next": "frank",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We should have been able to finish this argument while we were still speaking.\"",
+              "Next": "missed_frank",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We should have been able to finish this argument while we were still speaking.\"",
+              "Next": "frank",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -19113,7 +19203,9 @@
               "Requires": [
                 "konomi.public"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
               "Abort": false
             },
             {
@@ -19121,6 +19213,58 @@
               "Next": "discreet",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.public",
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the consequences of the public acknowledgment.]",
+              "Next": "missed_public",
+              "Set": [],
+              "Requires": [
+                "konomi.public",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the consequences of the public acknowledgment.]",
+              "Next": "public",
+              "Set": [],
+              "Requires": [
+                "konomi.public",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask whether the discreet reply helped her find the channel.]",
+              "Next": "missed_discreet",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.public",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask whether the discreet reply helped her find the channel.]",
+              "Next": "discreet",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [
                 "konomi.public"
               ],
@@ -19141,6 +19285,35 @@
                 "konomi.public_cost"
               ],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the source of the copied page.]",
+              "Next": "missed_source",
+              "Set": [
+                "konomi.public_cost"
+              ],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the source of the copied page.]",
+              "Next": "source",
+              "Set": [
+                "konomi.public_cost"
+              ],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -19159,6 +19332,35 @@
                 "konomi.traced_leak"
               ],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask who supplied the copy.]",
+              "Next": "missed_source",
+              "Set": [
+                "konomi.traced_leak"
+              ],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask who supplied the copy.]",
+              "Next": "source",
+              "Set": [
+                "konomi.traced_leak"
+              ],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -19212,7 +19414,8 @@
                 "konomi.almost_denied"
               ],
               "Forbids": [
-                "konomi.apologized"
+                "konomi.apologized",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -19246,6 +19449,63 @@
               "Requires": [
                 "konomi.apologized",
                 "konomi.hearing_trust_repaired"
+              ],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Acknowledge that you still owe her an apology for proposing to deny the letter.]",
+              "Next": "missed_apology",
+              "Set": [],
+              "Requires": [
+                "konomi.almost_denied",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.apologized",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Acknowledge that you still owe her an apology for proposing to deny the letter.]",
+              "Next": "apology",
+              "Set": [],
+              "Requires": [
+                "konomi.almost_denied",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.apologized"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"After the hearing, you told me you believed me. I have not forgotten what it took to get there.\"",
+              "Next": "missed_repaired",
+              "Set": [],
+              "Requires": [
+                "konomi.apologized",
+                "konomi.hearing_trust_repaired",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"After the hearing, you told me you believed me. I have not forgotten what it took to get there.\"",
+              "Next": "repaired",
+              "Set": [],
+              "Requires": [
+                "konomi.apologized",
+                "konomi.hearing_trust_repaired",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
               ],
               "Forbids": [],
               "Abort": false
@@ -19458,20 +19718,266 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_figures",
+          "Speaker": "Konomi",
+          "Text": "\"Their reserve was spoiled. The figures we were given counted grain they could no longer eat. I should have asked somebody to inspect it before I treated the answer as reliable.\"\n{n}She takes a receipt from inside the folded petition.{/n}\n\"I sent the corrected account to the charitable collection in Nerosyan. They purchased grain through their own suppliers. This confirms the first delivery. None of it came from the shipment reserved for Drezen.\"\n{n}She lets you examine the receipt before continuing.{/n}\n\"I asked a correspondent whether the donation had arrived. It took longer to obtain an answer than I wanted. I sent a second inquiry, then found another person to ask.\"\n{n}She points to the storehouse named below the delivery.{/n}\n\"I have asked whether the roof has been repaired. Until somebody checks it, this receipt is evidence of one delivery, not a solution to the winter.\"",
+          "Choices": [
+            {
+              "Text": "\"I wanted you to take their need seriously. Thank you for following it through.\"",
+              "Next": "aid",
+              "Set": [],
+              "Requires": [
+                "konomi.aid_priority"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"We protected Drezen. We still owe them an answer about the storehouse.\"",
+              "Next": "reserve",
+              "Set": [],
+              "Requires": [
+                "konomi.reserve_priority"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"We should have been able to finish this argument while we were still speaking.\"",
+              "Next": "frank",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We should have been able to finish this argument while we were still speaking.\"",
+              "Next": "missed_frank",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We should have been able to finish this argument while we were still speaking.\"",
+              "Next": "frank",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_frank",
+          "Speaker": "Konomi",
+          "Text": "\"We should.\"\n{n}She studies the annotations for a moment.{/n}\n\"I disliked leaving the argument unfinished. Leaving their account unanswered would have given them a worse problem than ours.\"\n{n}She folds the receipt into the petition.{/n}\n\"I found another reason to write.\"",
+          "Choices": [
+            {
+              "Text": "[Acknowledge the delivery without declaring the remaining work finished.]",
+              "Next": "letter",
+              "Set": [
+                "konomi.petition_resolved"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_delivered",
+          "Speaker": "Konomi",
+          "Text": "\"You remember. Good. I did not want our last disagreement to become the only thing either of us recalled doing together.\"\n{n}She refolds the petition.{/n}\n\"The receipt did not become less important because our own conversation was interrupted. Nor did the need to keep the next delivery dry. I have kept the address for that correspondence.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what else she wants to discuss.]",
+              "Next": "letter",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_public",
+          "Speaker": "Konomi",
+          "Text": "\"A noble household offered to keep carrying my letters if I supplied copies of my recommendations. Its secretary also withdrew an invitation to a private policy dinner. He described neither request as a punishment.\"\n{n}Her expression hardens.{/n}\n\"I told him he could read my published advice. I did not authorize him to inspect my private correspondence. Since then, I have used other carriers. That is an expense and an inconvenience. I do not intend to describe it as a triumph.\"\n{n}She puts the answer beside the case.{/n}\n\"The dinner matters too. People decide whom to hear before they invite anybody to a formal meeting. I have not become indifferent to that.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about the source of the copied page.]",
+              "Next": "source",
+              "Set": [
+                "konomi.public_cost"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the source of the copied page.]",
+              "Next": "missed_source",
+              "Set": [
+                "konomi.public_cost"
+              ],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the source of the copied page.]",
+              "Next": "source",
+              "Set": [
+                "konomi.public_cost"
+              ],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_discreet",
+          "Speaker": "Konomi",
+          "Text": "\"I sent three dull accounts of a proposed inspection through three different channels. Each gave a different date. Somebody with no reason to have received any of them complained about the second date.\"\n{n}She opens the answer just far enough to show you the line.{/n}\n\"He thought he was proving how well informed he was. It was generous of him to specify the channel.\"\n{n}Her smile is brief and sharp.{/n}\n\"I still enjoy that part. An indiscreet person explaining exactly how clever he has been is excellent company.\"",
+          "Choices": [
+            {
+              "Text": "[Ask who supplied the copy.]",
+              "Next": "source",
+              "Set": [
+                "konomi.traced_leak"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask who supplied the copy.]",
+              "Next": "missed_source",
+              "Set": [
+                "konomi.traced_leak"
+              ],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask who supplied the copy.]",
+              "Next": "source",
+              "Set": [
+                "konomi.traced_leak"
+              ],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_source",
+          "Speaker": "Konomi",
+          "Text": "\"The copyist who handled my writing case sold the page to an intermediary seeking access to my correspondents. When I asked the copyist to account for the work, he named his buyer. He would rather share the blame than be left with all of it.\"\n{n}She folds the answer away.{/n}\n\"He will not handle my correspondence again. I have requested a hearing through his association about the payment and the use of its members' services. I am a client whose letter was sold. That is the complaint I have asked them to hear.\"\n{n}She closes the writing case and leaves her hand on it.{/n}\n\"That is as far as it has gone. Finding the channel did not settle the complaint.\"",
+          "Choices": [
+            {
+              "Text": "[Acknowledge what her investigation established.]",
+              "Next": "trust",
+              "Set": [
+                "konomi.scandal_answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_apology",
+          "Speaker": "Konomi",
+          "Text": "\"Yes. You do.\"\n{n}She does not soften the answer.{/n}\n\"You asked me to call the letter false. I refused, and you agreed to a discreet acknowledgment. I remember that you changed your answer. I also remember what you asked first.\"\n{n}She takes her hands from the case.{/n}\n\"We have discussed arranging these visits. I also need to discuss this. I will not let the argument about the shipment swallow it merely because we would both rather enjoy the afternoon.\"",
+          "Choices": [
+            {
+              "Text": "\"I was frightened of what they would do with it. I asked you to make our relationship a lie instead of admitting that fear. I am sorry.\"",
+              "Next": "accepted",
+              "Set": [
+                "konomi.apologized"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I am not willing to give you the acknowledgment you need.\"",
+              "Next": "part",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_repaired",
+          "Speaker": "Konomi",
+          "Text": "\"I did believe you. I still do.\"\n{n}She moves the case onto her other side, clearing the space beside her.{/n}\n\"There are arguments between us that I still want to finish. But you did not disown that letter when we disagreed. I noticed.\"\n{n}The corner of her mouth lifts.{/n}\n\"Come and sit here. You need not conduct this conversation from the far end of the bench.\"",
+          "Choices": [
+            {
+              "Text": "[Sit beside her and ask what remains of the complaint.]",
+              "Next": "hearing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
-      "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
-        "konomi.private_meeting"
-      ],
+      "Requires": [],
       "Forbids": [
         "konomi.present",
         "inhuman",
         "konomi.farewell",
         "konomi.private_departed",
         "konomi.private_history_ready",
-        "konomi.carriers"
+        "konomi.carriers",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -19483,6 +19989,20 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.private_meeting",
+          "konomi.the_courtyard_introduction"
+        ]
       ]
     },
     {
@@ -19697,17 +20217,15 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.reconnection_open",
-        "konomi.private_meeting",
         "konomi.private_history_ready"
       ],
       "Forbids": [
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_departed"
+        "konomi.private_departed",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -19719,6 +20237,20 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.private_meeting",
+          "konomi.the_courtyard_introduction"
+        ]
       ]
     },
     {
@@ -19805,7 +20337,9 @@
               "Requires": [
                 "konomi.lovers"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
               "Abort": false
             },
             {
@@ -19816,6 +20350,31 @@
               "Forbids": [
                 "konomi.lovers"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I have wanted another evening like this with you.\"",
+              "Next": "missed_lovers",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I have wanted another evening like this with you.\"",
+              "Next": "lovers",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -20005,11 +20564,35 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_lovers",
+          "Speaker": "Konomi",
+          "Text": "\"I kept remembering the things I had planned to tell you. Very small things, mostly. I would think that you would be amused, then remember why I had not sent the note.\"\n{n}She looks at your hand resting beside the chair arm.{/n}\n\"I kept postponing the letter until I had something more important to say. Eventually I began wondering why I thought wanting your company was such an inadequate subject.\"\n{n}She lays her hand beside yours.{/n}\n\"I wanted it.\"",
+          "Choices": [
+            {
+              "Text": "[Take her hand.]",
+              "Next": "near",
+              "Set": [
+                "konomi.before_road_hand"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You can have my company without having to settle every feeling tonight.\"",
+              "Next": "talk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.reconnection_open",
         "konomi.carriers_inspected"
       ],
@@ -20017,7 +20600,8 @@
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_departed"
+        "konomi.private_departed",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -20029,6 +20613,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -20049,7 +20643,9 @@
               "Next": "ready",
               "Set": [],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
               "Abort": false
             },
             {
@@ -20067,6 +20663,29 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            },
+            {
+              "Text": "\"You sound ready.\"",
+              "Next": "missed_ready",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You sound ready.\"",
+              "Next": "ready",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Konomi"
@@ -20241,11 +20860,25 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_ready",
+          "Speaker": "Konomi",
+          "Text": "\"I am. It is possible to want to leave a city and dislike leaving somebody in it. I have had ample opportunity to establish that distinction.\"\n{n}She checks the fastening on her bag, finds it secure, and takes her hand away.{/n}\n\"I have written to people in the capital about the work I would like to do. Some have answered. I expect to spend the journey deciding which of the others to ask again.\"",
+          "Choices": [
+            {
+              "Text": "\"Whom will you approach first?\"",
+              "Next": "capital",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.reconnection_open",
         "konomi.before_road_kept",
         "konomi.private_letters"
@@ -20254,7 +20887,8 @@
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_departed"
+        "konomi.private_departed",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -20266,6 +20900,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -20468,8 +21112,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_departed",
         "konomi.private_address",
         "konomi.private_letters"
@@ -20477,7 +21119,8 @@
       "Forbids": [
         "konomi.present",
         "inhuman",
-        "konomi.farewell"
+        "konomi.farewell",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 336,
       "Optional": true,
@@ -20489,6 +21132,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -20639,8 +21292,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_departed",
         "konomi.private_address",
         "konomi.capital_answer_sent"
@@ -20648,7 +21299,8 @@
       "Forbids": [
         "konomi.present",
         "inhuman",
-        "konomi.farewell"
+        "konomi.farewell",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 168,
       "Optional": true,
@@ -20660,6 +21312,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -20933,7 +21595,8 @@
               ],
               "Forbids": [
                 "konomi.private_absence_kept",
-                "konomi.private_absence_answered"
+                "konomi.private_absence_answered",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -20948,7 +21611,8 @@
               "Forbids": [
                 "konomi.private_absence_kept",
                 "konomi.private_absence_answered",
-                "konomi.return"
+                "konomi.return",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -20959,6 +21623,109 @@
               "Requires": [
                 "konomi.wrote",
                 "konomi.fear_answered"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.wonder_answered",
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We have already spoken since I came home. I would like to understand what has changed since.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.return",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We have already spoken since I came home. I would like to understand what has changed since.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.return",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.wonder_answered",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.wonder_answered",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.fear_answered",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.wonder_answered",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.fear_answered",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
               ],
               "Forbids": [
                 "konomi.private_absence_kept",
@@ -21171,7 +21938,8 @@
                 "konomi.return"
               ],
               "Forbids": [
-                "konomi.private_absence_kept"
+                "konomi.private_absence_kept",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -21186,7 +21954,8 @@
               "Forbids": [
                 "konomi.private_absence_kept",
                 "konomi.private_absence_answered",
-                "konomi.return"
+                "konomi.return",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -21202,7 +21971,8 @@
                 "konomi.private_absence_kept",
                 "konomi.private_absence_answered",
                 "konomi.return",
-                "konomi.wonder_answered"
+                "konomi.wonder_answered",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -21214,6 +21984,106 @@
               "Forbids": [
                 "konomi.private_absence_kept",
                 "konomi.wrote"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We have already spoken since I came home. I would like to understand what has changed since.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.return",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We have already spoken since I came home. I would like to understand what has changed since.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.return",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.wonder_answered",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.wonder_answered",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.fear_answered",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.wonder_answered",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.fear_answered",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.wonder_answered"
               ],
               "Abort": false
             }
@@ -21327,6 +22197,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants you to understand about her life now.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants you to understand about her life now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -21343,6 +22238,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Listen to what changed for her.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Listen to what changed for her.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -21359,6 +22279,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -21383,6 +22328,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell me what has been hardest to fit into the arrangements.\"",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell me what has been hardest to fit into the arrangements.\"",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -21399,6 +22369,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay near and ask what she has been making room for.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay near and ask what she has been making room for.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -21679,11 +22674,91 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_absence_already",
+          "Speaker": "Konomi",
+          "Text": "\"I remember. You need not begin as though you had only just arrived to tell me there is more to say.\"\n{n}She turns toward you, leaving the things between you alone.{/n}\n\"We spoke after you came back. We have also had the business of deciding how to arrange these visits and what we wanted from them. The first conversation did not settle all the later ones.\"\n\"No.\"\n\"I am glad we are having this one. Ask me about the person you have invited here now.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_absence_now",
+          "Speaker": "Konomi",
+          "Text": "\"I am still learning how much of my time to promise before I know what an assignment will require. There is always someone who wants an answer before telling me how much work the question contains. I find it particularly difficult to refuse when the question interests me.\"\n{n}She looks briefly exasperated, then returns her attention to you.{/n}\n\"This is part of the life I am making between these journeys. You have seen some of it. I still want influence. Having something worth doing makes it tempting to give it the next evening as well, and the one after that. I can make a very persuasive case for each evening separately.\"\n\"Including this one?\"\n\"I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else.\"\n{n}She rests her hand beside yours.{/n}\n\"And what should I understand about the future you want now?\"",
+          "Choices": [
+            {
+              "Text": "\"I gave up the power that once found a door for my invitation. I chose to become Legend.\"",
+              "Next": "absence_legend",
+              "Set": [],
+              "Requires": [
+                "legend"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I can still bend a rule. I cannot turn the days we missed into days we spent together.\"",
+              "Next": "absence_trickster",
+              "Set": [],
+              "Requires": [
+                "trickster"
+              ],
+              "Forbids": [
+                "legend"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to make the next invitation without pretending I can promise every part of the future.\"",
+              "Next": "absence_mortal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "legend",
+                "trickster"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_departed",
         "konomi.private_address",
         "konomi.return_expected"
@@ -21691,7 +22766,8 @@
       "Forbids": [
         "konomi.present",
         "inhuman",
-        "konomi.farewell"
+        "konomi.farewell",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 336,
       "Optional": true,
@@ -21703,6 +22779,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -21873,8 +22959,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.reunion_kept"
       ],
@@ -21882,7 +22966,8 @@
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -21894,6 +22979,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -22214,8 +23309,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.career_decided"
       ],
@@ -22223,7 +23316,8 @@
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -22235,6 +23329,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -22376,8 +23480,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.private_evening_kept"
       ],
@@ -22385,7 +23487,8 @@
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -22397,6 +23500,16 @@
       "Chapters": [
         3,
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -22432,7 +23545,8 @@
         "konomi.closed",
         "inhuman",
         "ascended",
-        "konomi.private_consequence_complete"
+        "konomi.private_consequence_complete",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -22472,7 +23586,8 @@
         "konomi.closed",
         "inhuman",
         "ascended",
-        "konomi.private_consequence_complete"
+        "konomi.private_consequence_complete",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -22508,7 +23623,9 @@
         "konomi.closed",
         "konomi.private_parted"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "konomi.missed_contact_invalidated"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "konomi"
@@ -22546,7 +23663,8 @@
       "Forbids": [
         "konomi.committed",
         "konomi.closed",
-        "ascended"
+        "ascended",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -22584,7 +23702,8 @@
       ],
       "Forbids": [
         "konomi.committed",
-        "konomi.closed"
+        "konomi.closed",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -22598,6 +23717,47 @@
       "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
+        {
+          "Id": "missed_entry",
+          "Speaker": "Narrator",
+          "Text": "{n}You make time for Konomi's invitation.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "missed_start",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "start",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
         {
           "Id": "start",
           "Speaker": "Konomi",
@@ -22883,11 +24043,33 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_start",
+          "Speaker": "Konomi",
+          "Text": "{n}Konomi asks you to visit the room she is using during her return to Drezen. On its little table, your letter lies in a plain wrapper beside the stolen copy and the receipt for the copyist's payment.{/n}\n\"The association has offered us a morning. At last. I was beginning to think I should send the complaint a change-of-address notice of its own.\"\n{n}She moves a folded shawl off the second chair.{/n}\n\"Tomorrow, if you can attend. Three members will adjudicate. I have confirmed that they will hear the complaint as a dispute over their members' work. Their members can refuse the buyer further work. They cannot put him in prison.\"\n\"What does he say?\"\n\"He admits buying a copy and calls it a memorandum he believed he could circulate. The receipt says what he paid, not what he read.\"\n{n}Konomi rests one hand beside the wrapped original without opening it.{/n}\n\"I want them to compare the pages. I still want you there to decide what they may read. Coming back to Drezen has not given me permission to answer that question for you.\"",
+          "Choices": [
+            {
+              "Text": "[Attend the hearing with her.]",
+              "Next": "arrival",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I cannot attend tomorrow. Ask them for another date.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.scandal_answered"
       ],
@@ -22896,7 +24078,8 @@
         "konomi.hearing_finished",
         "konomi.present",
         "inhuman",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -22908,7 +24091,17 @@
         3,
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
+      ]
     },
     {
       "Id": "konomi.private_hearing_after",
@@ -22918,6 +24111,47 @@
       "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
+        {
+          "Id": "missed_entry",
+          "Speaker": "Narrator",
+          "Text": "{n}You make time for Konomi's invitation.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "missed_start",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "start",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
         {
           "Id": "start",
           "Speaker": "Konomi",
@@ -23162,11 +24396,37 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_start",
+          "Speaker": "Konomi",
+          "Text": "{n}Konomi opens the door of her borrowed room. The association's written finding lies on the table beside your letter. She has moved her work to the windowsill to make space for supper.{/n}\n\"They sent it here, as I asked. Nobody has attempted to forward it to Nerosyan after I expressly asked them not to. A modest success, but I intend to enjoy it.\"\n{n}She sets a second cup beside yours.{/n}\n\"The wording is as agreed. Our names in the finding, our private sentences out of it. I checked twice.\"\n{n}She leaves the finding on the table and turns toward you in the doorway.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Did getting the decision you wanted help?\"",
+              "Next": "whole",
+              "Set": [],
+              "Requires": [
+                "konomi.hearing_buyer_barred"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"We still disagree about the letter.\"",
+              "Next": "covered",
+              "Set": [],
+              "Requires": [
+                "konomi.hearing_buyer_unbarred"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.hearing_finished"
       ],
@@ -23175,7 +24435,8 @@
         "inhuman",
         "konomi.hearing_evening_kept",
         "konomi.present",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -23187,7 +24448,17 @@
         3,
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
+      ]
     },
     {
       "Id": "konomi.private_new_letter",
@@ -23674,8 +24945,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.hearing_new_letter",
         "konomi.hearing_evening_kept"
@@ -23685,7 +24954,8 @@
         "inhuman",
         "konomi.new_letter_outing",
         "konomi.present",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -23697,7 +24967,17 @@
         3,
         5
       ],
-      "Remote": true
+      "Remote": true,
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
+      ]
     },
     {
       "Id": "jerribeth.invitation",
@@ -45182,7 +46462,7 @@
               "Abort": true
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "picture",
@@ -45221,7 +46501,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "recognized",
@@ -45239,7 +46519,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "uncertain",
@@ -45257,7 +46537,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "ask",
@@ -45275,7 +46555,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "her_eye",
@@ -45293,7 +46573,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "invitation",
@@ -45319,7 +46599,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "warm",
@@ -45337,7 +46617,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         },
         {
           "Id": "city",
@@ -45355,7 +46635,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "ArsinoeShop"
         }
       ],
       "Requires": [
@@ -46898,6 +48178,47 @@
       "Entry": "",
       "Nodes": [
         {
+          "Id": "missed_entry",
+          "Speaker": "Narrator",
+          "Text": "{n}You make time for Konomi's invitation.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "missed_start",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": "start",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
           "Id": "start",
           "Speaker": "Konomi",
           "Text": "{n}Konomi has kept an evening free in the room she is using during her return to Drezen. A folded letter lies beside the lamp.{/n}\n\"An acquaintance thought leaving my appointment might have cured my interest in Mendev. She sent me an account of a supper instead of the news I asked for. I have replied with more precise questions.\"\n{n}She puts the letter down.{/n}\n\"I no longer advise you by virtue of that office. You may still ask what I think. I will probably tell you.\"",
@@ -47051,7 +48372,9 @@
               "Requires": [
                 "konomi.council_conclusion_seen"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
               "Abort": false
             },
             {
@@ -47062,6 +48385,31 @@
               "Forbids": [
                 "konomi.council_conclusion_seen"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You said the Diplomatic Council had served its purpose. What comes after that?\"",
+              "Next": "missed_concluded",
+              "Set": [],
+              "Requires": [
+                "konomi.council_conclusion_seen",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You said the Diplomatic Council had served its purpose. What comes after that?\"",
+              "Next": "concluded",
+              "Set": [],
+              "Requires": [
+                "konomi.council_conclusion_seen",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -47214,18 +48562,57 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_start",
+          "Speaker": "Konomi",
+          "Text": "{n}Konomi has kept an evening free in the room she is using during her return to Drezen. A folded letter lies beside the lamp.{/n}\n\"An acquaintance sent me an account of a supper instead of the news I asked for. I have replied with more precise questions. I already knew she disliked the hostess; I was hoping to discover something about Mendev.\"\n{n}She puts the letter down.{/n}\n\"This evening belongs to us. You may still ask what I think about the country. I will probably tell you.\"",
+          "Choices": [
+            {
+              "Text": "\"Tell me what is occupying you.\"",
+              "Next": "situation",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask to return when you can listen properly.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_concluded",
+          "Speaker": "Konomi",
+          "Text": "\"I meant what I said about the council. I did not mean that I had lost the desire to be useful, or to have my advice taken seriously.\"\n{n}She gives you an appraising look.{/n}\n\"I am aware that those are not always identical ambitions. It would be tedious to pretend otherwise with somebody I want to know me.\"\n\"The work I have chosen has not made me indifferent to what becomes of my country. I still have letters to write and people I hope will answer.\"\n{n}She turns the folded letter over.{/n}\n\"I can ask an acquaintance for information. I have to give her a reason to answer rather than assume the next letter will be more effective simply because I have signed it. Occasionally I have to be pleasant. You may appreciate the sacrifice.\"",
+          "Choices": [
+            {
+              "Text": "[Hear what she wants you to understand.]",
+              "Next": "respect",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned"
       ],
       "Forbids": [
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_future"
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -47237,7 +48624,17 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "Remote": true,
-      "ManualOnly": true
+      "ManualOnly": true,
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
+      ]
     },
     {
       "Id": "jerribeth.fate_envelope",
@@ -63821,8 +65218,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_departed",
         "konomi.private_address"
       ],
@@ -63830,7 +65225,8 @@
         "konomi.present",
         "inhuman",
         "konomi.farewell",
-        "konomi.private_parted"
+        "konomi.private_parted",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -63838,6 +65234,16 @@
       "Remote": true,
       "Chapters": [
         4
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -63933,7 +65339,8 @@
                 "konomi.return"
               ],
               "Forbids": [
-                "konomi.private_absence_kept"
+                "konomi.private_absence_kept",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -63948,7 +65355,8 @@
               "Forbids": [
                 "konomi.private_absence_kept",
                 "konomi.private_absence_answered",
-                "konomi.return"
+                "konomi.return",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -63964,7 +65372,8 @@
                 "konomi.private_absence_kept",
                 "konomi.private_absence_answered",
                 "konomi.return",
-                "konomi.wonder_answered"
+                "konomi.wonder_answered",
+                "konomi.missed_private_access"
               ],
               "Abort": false
             },
@@ -63976,6 +65385,106 @@
               "Forbids": [
                 "konomi.private_absence_kept",
                 "konomi.wrote"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We have already spoken since I came home. I would like to understand what has changed since.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.return",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We have already spoken since I came home. I would like to understand what has changed since.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.return",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.wonder_answered",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.wonder_answered",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "missed_absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.fear_answered",
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.wonder_answered",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You have already answered my letter. I want to talk about our lives now.\"",
+              "Next": "absence_already",
+              "Set": [],
+              "Requires": [
+                "konomi.wrote",
+                "konomi.fear_answered",
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.private_absence_kept",
+                "konomi.private_absence_answered",
+                "konomi.return",
+                "konomi.wonder_answered"
               ],
               "Abort": false
             }
@@ -64089,6 +65598,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants you to understand about her life now.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants you to understand about her life now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -64105,6 +65639,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Listen to what changed for her.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Listen to what changed for her.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -64121,6 +65680,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -64145,6 +65729,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell me what has been hardest to fit into the arrangements.\"",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell me what has been hardest to fit into the arrangements.\"",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -64161,6 +65770,31 @@
               "Next": "absence_now",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay near and ask what she has been making room for.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay near and ask what she has been making room for.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -64806,11 +66440,191 @@
             }
           ],
           "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_absence_already",
+          "Speaker": "Konomi",
+          "Text": "\"I remember. You need not begin as though you had only just arrived to tell me there is more to say.\"\n{n}She turns toward you, leaving the things between you alone.{/n}\n\"We spoke after you came back. We have also had the business of deciding how to arrange these visits and what we wanted from them. The first conversation did not settle all the later ones.\"\n\"No.\"\n\"I am glad we are having this one. Ask me about the person you have invited here now.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "missed_absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what she wants from these visits now.]",
+              "Next": "absence_now",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access",
+                "konomi.dismissed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "missed_absence_now",
+          "Speaker": "Konomi",
+          "Text": "\"I am still learning how much of my time to promise before I know what an assignment will require. There is always someone who wants an answer before telling me how much work the question contains. I find it particularly difficult to refuse when the question interests me.\"\n{n}She looks briefly exasperated, then returns her attention to you.{/n}\n\"This is part of the life I am making between these journeys. You have seen some of it. I still want influence. Having something worth doing makes it tempting to give it the next evening as well, and the one after that. I can make a very persuasive case for each evening separately.\"\n\"Including this one?\"\n\"I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else.\"\n{n}She rests her hand beside yours.{/n}\n\"And what should I understand about the future you want now?\"",
+          "Choices": [
+            {
+              "Text": "\"I gave up the power that once found a door for my invitation. I chose to become Legend.\"",
+              "Next": "absence_legend",
+              "Set": [],
+              "Requires": [
+                "legend"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I can still bend a rule. I cannot turn the days we missed into days we spent together.\"",
+              "Next": "absence_trickster",
+              "Set": [],
+              "Requires": [
+                "trickster"
+              ],
+              "Forbids": [
+                "legend"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to make the next invitation without pretending I can promise every part of the future.\"",
+              "Next": "absence_mortal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "legend",
+                "trickster"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_decision_now",
+              "Set": [],
+              "Requires": [
+                "konomi.career_decided",
+                "konomi.career_accepts_now"
+              ],
+              "Forbids": [
+                "konomi.private_terms_sent"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_decision_wait",
+              "Set": [],
+              "Requires": [
+                "konomi.career_decided"
+              ],
+              "Forbids": [
+                "konomi.career_accepts_now",
+                "konomi.private_terms_sent"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_terms_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_terms_sent",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [
+                "konomi.private_hours_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_terms_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_terms_sent",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [
+                "konomi.private_hours_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_paid_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_hours_kept",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_paid_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_hours_kept",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_settled_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_consequence_complete",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_settled_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_consequence_complete",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_departed",
         "konomi.private_address",
         "konomi.private_returned"
@@ -64819,7 +66633,8 @@
         "konomi.present",
         "inhuman",
         "konomi.private_parted",
-        "konomi.private_absence_answered"
+        "konomi.private_absence_answered",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -64831,6 +66646,16 @@
       ],
       "Chapters": [
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -66528,8 +68353,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.private_evening_kept",
         "konomi.career_decided",
@@ -66541,7 +68364,8 @@
         "konomi.closed",
         "konomi.private_parted",
         "konomi.farewell",
-        "konomi.private_last_visit"
+        "konomi.private_last_visit",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 168,
       "Optional": true,
@@ -66553,6 +68377,16 @@
       ],
       "Chapters": [
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -66815,8 +68649,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.private_evening_kept",
         "konomi.career_decided",
@@ -66829,7 +68661,8 @@
         "konomi.closed",
         "konomi.private_parted",
         "konomi.farewell",
-        "konomi.private_last_visit"
+        "konomi.private_last_visit",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -66841,6 +68674,16 @@
       ],
       "Chapters": [
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -67118,8 +68961,6 @@
         }
       ],
       "Requires": [
-        "konomi.dismissed",
-        "konomi.office_completed",
         "konomi.private_returned",
         "konomi.private_evening_kept",
         "konomi.career_decided",
@@ -67132,7 +68973,8 @@
         "konomi.closed",
         "konomi.private_parted",
         "konomi.farewell",
-        "konomi.private_last_visit"
+        "konomi.private_last_visit",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -67144,6 +68986,16 @@
       ],
       "Chapters": [
         5
+      ],
+      "RequiresAnyGroups": [
+        [
+          "konomi.dismissed",
+          "konomi.missed_private_access"
+        ],
+        [
+          "konomi.office_completed",
+          "konomi.missed_private_access"
+        ]
       ]
     },
     {
@@ -67223,7 +69075,8 @@
       "Forbids": [
         "konomi.closed",
         "inhuman",
-        "ascended"
+        "ascended",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -67307,7 +69160,8 @@
         "konomi.closed",
         "inhuman",
         "ascended",
-        "konomi.committed"
+        "konomi.committed",
+        "konomi.missed_contact_invalidated"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -91422,6 +93276,886 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "ember"
+    },
+    {
+      "Id": "konomi.the_unintroduced_letter",
+      "Title": "A name without an appointment",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The inquiry comes back with the name intact and the destination crossed out. Lady Konomi. Beneath it, the clerk has written that this office cannot arrange a personal introduction.{/n}\n{n}You turn the sheet over. On the blank side, another hand has added: NEITHER CAN THE OTHER SIDE.{/n}\n{n}When you turn it back, the first side has acquired an indignant note asking why the second side was consulted. The two offices appear to occupy a single sheet of paper. Neither considers this a reason to cooperate.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask the paper which side handles a letter addressed to a person.]",
+              "Next": "sides",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the unanswered inquiry for another day.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "sides",
+          "Speaker": "Narrator",
+          "Text": "{n}A rectangular window opens in the sheet. Behind it, an ink-stained finger points to a notice: INTRODUCTIONS REQUIRE PRIOR ACQUAINTANCE.{/n}\n{n}You point out that this makes introductions unnecessary. The finger taps the notice harder.{/n}\n{n}The clerk, who has been watching from a prudent distance, sets a fresh envelope beside you. \"Perhaps you could ask her yourself,\" she says.{/n}\n{n}The finger retreats. You have discovered an alarming possibility: a letter may be delivered before its recipient has agreed to know its sender.{/n}",
+          "Choices": [
+            {
+              "Text": "[Write to Lady Konomi in your own name.]",
+              "Next": "purpose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask whether the delivery would oblige her to answer.]",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Narrator",
+          "Text": "{n}The paper produces a receipt declaring that an answer is not included in the delivery fee. You ask about the fee. A new line appears: ONE LETTER.{/n}\n{n}You offer the blank envelope. The finger pushes it back. For once, the office has a reasonable objection.{/n}",
+          "Choices": [
+            {
+              "Text": "[Find something worth putting inside it.]",
+              "Next": "purpose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "purpose",
+          "Speaker": "Narrator",
+          "Text": "{n}The inquiry has room for her name and almost nothing else. Your new page is more accommodating. You have to decide what you actually want her to read.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask for a personal afternoon, without claiming a previous friendship.]",
+              "Next": "new",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.margin",
+                "konomi.lovers"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Acknowledge the conversations you have already had.]",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "konomi.margin"
+              ],
+              "Forbids": [
+                "konomi.lovers"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her that you miss her company.]",
+              "Next": "lover",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "new",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Lady Konomi, would you consider a private afternoon? I would like to know what you enjoy discussing when nobody has prepared an agenda. You may choose the place. I can offer my company and a willingness to discover what I ought to have asked.\"{/n}\n{n}You add your name. The little window in the sheet waits while you reread the page.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send the invitation.]",
+              "Next": "send",
+              "Set": [
+                "konomi.missed_personal_invitation"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "known",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Konomi, I would like to speak with you again. Privately, at a place you choose, with time to finish an answer. I have wondered what you are doing and caught myself composing the reply before hearing it. You would have something to say about that. I would like to hear it.\"{/n}\n{n}You leave enough room below the invitation for her to write a short refusal, should she prefer that answer.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send the invitation.]",
+              "Next": "send",
+              "Set": [
+                "konomi.missed_known_invitation"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "lover",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Konomi, I miss you. I would like to know how you are, including the things I might find difficult to hear. If you want to see me, name a place and a time. I am asking for an afternoon. I hope there will be more, but I would rather hear your answer than write it for you.\"{/n}\n{n}For a moment you consider making the first sentence more elaborate. You leave it alone.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send the invitation.]",
+              "Next": "send",
+              "Set": [
+                "konomi.missed_lover_invitation"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "send",
+          "Speaker": "Narrator",
+          "Text": "{n}The envelope passes through the window. Its edges do not fold. Instead, the window reluctantly becomes large enough to admit it, bumping into the inquiry's upper margin.{/n}\n{n}The ink-stained finger returns your receipt. Beneath DELIVERY OFFERED, someone has written that future correspondence must use an address supplied by the recipient.{/n}\n{n}The clerk lifts the now ordinary sheet by one corner. She examines the other side, then lays it down.{/n}\n{n}\"Shall I file that under introductions?\"{/n}\n{n}You suggest waiting for the answer.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the receipt.]",
+              "Next": null,
+              "Set": [
+                "konomi.missed_letter_sent"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.missed_contact_available",
+        "trickster"
+      ],
+      "Forbids": [
+        "konomi.present",
+        "konomi.dismissed",
+        "konomi.closed",
+        "konomi.farewell",
+        "inhuman",
+        "konomi.missed_contact_invalidated"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ]
+    },
+    {
+      "Id": "konomi.the_answer_she_addressed",
+      "Title": "The address she supplied",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}An ordinary carrier brings the answer. She checks your name, records the delivery in her book, and asks when she should return for a reply.{/n}\n{n}Inside the envelope is a short note in a precise hand.{/n}\n{n}\"Your invitation interrupted a conversation with two carriers. The envelope appeared between their hands while they were arguing about a contract. Each initially accused the other of producing it. I explained that neither was likely to have gone to such trouble merely to interrupt me.\"{/n}\n{n}\"I am examining their proposed partnership. There are two wagons, six horses, and an uncertain quantity of agreement. I have accepted a fee to find out how much. They intend to travel to Nerosyan. I have arranged to accompany them once we settle the terms.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Read the second page.]",
+              "Next": "invitation",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "invitation",
+          "Speaker": "Narrator",
+          "Text": "{n}\"I can arrange an afternoon in Drezen while I finish that work. The house below lets its covered courtyard to travelers. Its owner has agreed to reserve it. Use the entrance beside the cooper's yard. The yard itself is not a shortcut; I have asked.\"{/n}\n{n}\"I shall be glad to have a conversation in which neither participant owns a disputed wagon. I expect you to find another subject on which we can disagree.\"{/n}\n{n}The address follows. She has proposed two afternoons and left you to choose.{/n}",
+          "Choices": [
+            {
+              "Text": "[Choose an afternoon and send your acceptance through her carrier.]",
+              "Next": "accept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write that you have reconsidered and will not pursue the invitation.]",
+              "Next": "decline",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Set aside time to answer properly.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "accept",
+          "Speaker": "Narrator",
+          "Text": "{n}You give the carrier your answer. She reads the address on the outside, tells you when it will be delivered, and goes. Nothing in the wall opens to assist her.{/n}\n{n}Konomi's chosen afternoon remains ahead of you. You keep her directions where you will find them before leaving.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the appointment.]",
+              "Next": null,
+              "Set": [
+                "konomi.missed_appointment"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "decline",
+          "Speaker": "Narrator",
+          "Text": "{n}You thank Konomi for the answer and tell her you will not take the afternoon she offered. The carrier accepts the sealed reply.{/n}\n{n}The receipt from the impossible office does not produce another envelope. You put it away.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let the invitation end here.]",
+              "Next": null,
+              "Set": [
+                "konomi.closed",
+                "konomi.missed_declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.missed_letter_sent"
+      ],
+      "Forbids": [
+        "konomi.present",
+        "konomi.dismissed",
+        "konomi.closed",
+        "konomi.farewell",
+        "inhuman",
+        "konomi.missed_contact_invalidated"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ]
+    },
+    {
+      "Id": "konomi.the_courtyard_introduction",
+      "Title": "An afternoon by arrangement",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The door beside the cooper's yard opens into a passage smelling of clean linen. Beyond it, Konomi waits in a covered courtyard. She has put a small stone beneath one leg of the second chair.{/n}\n{n}\"Try it before you settle,\" she says. \"I have improved the argument, but I cannot promise I have won it.\"{/n}\n{n}The chair stays level when you sit. She looks briefly satisfied.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Lady Konomi. Thank you for choosing the place.\"",
+              "Next": "first",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_personal_invitation"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I was glad to receive your answer.\"",
+              "Next": "again",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_personal_invitation"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Explain that you must postpone the conversation.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "first",
+          "Speaker": "Konomi",
+          "Text": "{n}She inclines her head.{/n}\n\"You have an unusual understanding of how invitations should be delivered. I have been trying to decide whether the letter would have reached me if I had remained silent until the carriers finished arguing.\"\n{n}Her mouth tightens with amusement.{/n}\n\"We might still be waiting. I chose to read it.\"\n{n}She settles into her own chair.{/n}\n\"What did you hope to discover?\"",
+          "Choices": [
+            {
+              "Text": "\"What you choose when nobody has given you an assignment.\"",
+              "Next": "work",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Whether you would enjoy an afternoon with me.\"",
+              "Next": "company",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "again",
+          "Speaker": "Konomi",
+          "Text": "\"I was pleased to write it. Once I had established that the carrier would not be expected to reproduce your method of delivery.\"\n{n}She rests her hands on her knees.{/n}\n\"We have an afternoon. I would like us to use it without conducting every sentence as though somebody were going to ask us for an account afterward.\"",
+          "Choices": [
+            {
+              "Text": "\"Then tell me about the work you chose.\"",
+              "Next": "work",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I would like to spend some of it simply enjoying your company.\"",
+              "Next": "company",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "work",
+          "Speaker": "Konomi",
+          "Text": "\"The carriers asked me to settle their terms. One has wagons. The other has introductions to customers. Each can describe the other's obligations with considerable precision. Her own are a more delicate subject.\"\n{n}She picks a thread from the chair arm.{/n}\n\"The owner of the wagons is particularly interesting. She becomes angry when her partner exaggerates what they can carry, then immediately begins finding reasons to excuse her. There is something between them that has not reached the contract.\"\n\"You want to know what.\"\n\"Yes. And I would like to be paid before they decide that discussing it constitutes a personal favor.\"\n{n}She smiles.{/n}\n\"I enjoy being useful. I also enjoy discovering that I have understood a difficult person correctly. Occasionally those ambitions help one another.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she would enjoy about this afternoon.]",
+              "Next": "company",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "company",
+          "Speaker": "Konomi",
+          "Text": "\"I would like to be asked a question whose answer you have not already prepared.\"\n{n}She catches your expression.{/n}\n\"I have been practicing that myself. You arrived, and I immediately wanted to decide what your invitation meant. It seemed more efficient than asking.\"\n{n}Her fingers move over the chair arm, then stop.{/n}\n\"So I shall ask. What would you like?\"",
+          "Choices": [
+            {
+              "Text": "\"To see you privately and find out whether the attraction is mutual.\"",
+              "Next": "interest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.lovers"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"To have afternoons together again. I have missed them.\"",
+              "Next": "lover",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Another conversation. I would rather let us discover the rest.\"",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "interest",
+          "Speaker": "Konomi",
+          "Text": "\"It is sufficiently mutual for me to want another afternoon.\"\n{n}She lets you see the smile this time.{/n}\n\"I am not yet prepared to make a more elaborate prediction. It would be unfortunate if the first thing you learned about me were that I become inaccurate when pleased.\"\n{n}She moves her chair a little nearer. The stone beneath yours stays in place.{/n}",
+          "Choices": [
+            {
+              "Text": "[Arrange another visit.]",
+              "Next": "arrange",
+              "Set": [
+                "konomi.private_interest",
+                "konomi.attracted"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "lover",
+          "Speaker": "Konomi",
+          "Text": "\"So have I.\"\n{n}She holds out her hand. When you take it, her fingers close around yours.{/n}\n\"I have thought of several things I wanted to tell you. Most seemed too small to begin a letter. I should probably have begun with one of them.\"\n{n}She looks down at your joined hands.{/n}\n\"I would like another afternoon. Then we may discover whether I have remembered all the small things.\"",
+          "Choices": [
+            {
+              "Text": "[Stay near and make another plan.]",
+              "Next": "arrange",
+              "Set": [
+                "konomi.private_interest"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "slow",
+          "Speaker": "Konomi",
+          "Text": "\"I can agree to that.\"\n{n}She leans back and glances up at the light along the courtyard wall.{/n}\n\"I did not reserve this place merely to improve the comfort of our correspondence. But I would rather discover what we want than obtain an answer because the chairs were already arranged.\"\n{n}A smile returns.{/n}\n\"They were a considerable undertaking. You have no idea how long I looked for that stone.\"",
+          "Choices": [
+            {
+              "Text": "[Promise another conversation.]",
+              "Next": "arrange",
+              "Set": [
+                "konomi.private_unhurried"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "arrange",
+          "Speaker": "Konomi",
+          "Text": "\"The carriers will show me their wagons next. I would like you to come, if they agree. I shall ask them before sending you the time.\"\n{n}She gives you the ordinary carrier's hours. Then she walks with you to the passage, leaving the chairs where they are.{/n}\n\"I have rooms here until the agreement is settled. After that I intend to go to Nerosyan with them. I wanted you to know before arranging the next visit.\"\n{n}At the door, she pauses.{/n}\n\"I am pleased you came. Write to me at this address. I should prefer my next letter to arrive somewhere I have chosen to receive it.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the address and arrange the next conversation.]",
+              "Next": null,
+              "Set": [
+                "konomi.missed_private_access",
+                "konomi.reconnection_open"
+              ],
+              "Requires": [
+                "konomi.disagreement"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the address and arrange the next conversation.]",
+              "Next": null,
+              "Set": [
+                "konomi.missed_private_access",
+                "konomi.reconnection_open",
+                "konomi.private_history_ready"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "konomi.disagreement"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.missed_appointment"
+      ],
+      "Forbids": [
+        "konomi.present",
+        "konomi.dismissed",
+        "konomi.closed",
+        "konomi.farewell",
+        "inhuman",
+        "konomi.missed_contact_invalidated"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ]
+    },
+    {
+      "Id": "konomi.ending_missed_declined",
+      "Title": "The afternoon declined",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Konomi accepted the Commander's refusal of her invitation. She finished the carriers' agreement and went on toward Nerosyan when their work allowed. The proposed afternoon remained a line crossed out in her appointments.{/n}\n{n}She occasionally wondered what she would have made of the conversation. There were other people to meet, and she continued to meet them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.missed_declined",
+        "konomi.closed"
+      ],
+      "Forbids": [
+        "konomi.missed_contact_invalidated"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "konomi"
+    },
+    {
+      "Id": "konomi.ending_missed_interrupted",
+      "Title": "The letters already written",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The copy of the invitation bore Lady Konomi's name. Below it were words intended for one reader, with no provision for an audience. They had not been included among the Commander's public declarations.{/n}",
+          "Choices": [
+            {
+              "Text": "[Recall the invitation in the light of ascension.]",
+              "Next": "ascended",
+              "Set": [],
+              "Requires": [
+                "ascended"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Recall the invitation from before the transformation.]",
+              "Next": "changed",
+              "Set": [],
+              "Requires": [
+                "inhuman"
+              ],
+              "Forbids": [
+                "ascended"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Recall what actually followed the invitation.]",
+              "Next": "history",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "ascended",
+                "inhuman"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "ascended",
+          "Speaker": "Narrator",
+          "Text": "{n}The names by which worshippers now invoked the Commander filled books. On this page, the signature was smaller. The sentence above it asked for an afternoon.{/n}",
+          "Choices": [
+            {
+              "Text": "[Turn to the earlier pages.]",
+              "Next": "history",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "changed",
+          "Speaker": "Narrator",
+          "Text": "{n}The invitation still bore the old forms of address. They belonged to the days before the Commander's transformation. The change had left the ink untouched.{/n}",
+          "Choices": [
+            {
+              "Text": "[Turn to the earlier pages.]",
+              "Next": "history",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "history",
+          "Speaker": "Narrator",
+          "Text": "{n}The pages had been folded to different sizes. Some corners were worn more than others.{/n}",
+          "Choices": [
+            {
+              "Text": "[Remember the life developed through the private visits.]",
+              "Next": "developed",
+              "Set": [],
+              "Requires": [
+                "konomi.private_consequence_complete"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the afternoons that were actually shared.]",
+              "Next": "affection",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers"
+              ],
+              "Forbids": [
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the meeting at which further visits were agreed.]",
+              "Next": "meeting",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.lovers",
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the earlier private meeting.]",
+              "Next": "meeting",
+              "Set": [],
+              "Requires": [
+                "konomi.private_meeting"
+              ],
+              "Forbids": [
+                "konomi.missed_private_access",
+                "konomi.lovers",
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the invitation as an invitation.]",
+              "Next": "invitation",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.missed_private_access",
+                "konomi.private_meeting",
+                "konomi.lovers",
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "developed",
+          "Speaker": "Narrator",
+          "Text": "{n}There had been journeys between cities, a room made ready for an evening, and work that Konomi had chosen with its costs understood. The last farewell belonged to two people who had learned something of how the other kept an appointment.{/n}\n{n}Beyond that part of the packet, an empty sheet had been folded to the same size. It bore no date.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "affection",
+          "Speaker": "Narrator",
+          "Text": "{n}There had been private afternoons and words neither had spoken for the council's benefit. Konomi's handwriting was familiar by then. A page could bring back the way she waited for an answer, the amusement she sometimes allowed into a correction.{/n}\n{n}One correction had been underlined twice. Her voice seemed to belong to that small stroke of the pen. The last page ended well above its lower edge; the empty space had never been filled.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "meeting",
+          "Speaker": "Narrator",
+          "Text": "{n}An invitation had become a meeting. Konomi had given an address for another note and spoken about the work she intended to do. The afternoon had ended with something still to discover.{/n}\n{n}The packet was tied with a short piece of thread. On its outside was only her name.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "invitation",
+          "Speaker": "Narrator",
+          "Text": "{n}The proposed afternoon had not taken place. The copy remained among the personal papers, with the words of the request still legible.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.missed_letter_sent",
+        "konomi.missed_contact_invalidated"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "konomi"
+    },
+    {
+      "Id": "konomi.ending_missed_interrupted_aeon",
+      "Title": "An address in the erased years",
+      "Owner": "AeonEpilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The letter belonged to a crusade that had never begun. Its impossible delivery found no address in the remade history. Whatever had followed it in the erased years remained there.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.missed_letter_sent",
+        "konomi.missed_contact_invalidated"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "konomi"
     }
   ],
   "Etudes": {
@@ -91548,7 +94282,7 @@
       "Title": "Letters without a seal",
       "Description": "Lady Konomi has corrected a report about me. She has also made a point of telling me which criticisms she left intact. Our private correspondence is becoming less easily filed.",
       "Objective": "Make time for Lady Konomi",
-      "Guidance": "Speak to Konomi in Drezen between meetings while she holds her post. If she is dismissed, a Trickster may find another way to send a personal invitation. After she answers, allow time for letters and private visits, and look for them after resting in Drezen. Her political convictions continue even when the conversation becomes personal.",
+      "Guidance": "Speak to Konomi in Drezen between meetings while she holds her post. If she is dismissed, a Trickster may find another way to send a personal invitation. After she answers, allow time for letters and private visits, and look for them after resting in Drezen. Her political convictions continue even when the conversation becomes personal. Before her council appointment begins, a Trickster can seek a personal introduction during a quiet rest in Drezen. Keep her reply and arrange the meeting she offers. A later council appointment pauses these private visits while she holds the office.",
       "StartedFlag": "konomi.started",
       "ClosedFlag": "konomi.closed",
       "CommittedFlag": "konomi.committed",
