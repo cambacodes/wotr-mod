@@ -1,8 +1,8 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\tirabade-combined-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\arsinoe-campaign-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 763,
+  "binding_uses": 787,
   "unique_targets": 143,
   "failures": [],
   "targets": {

@@ -277,6 +277,12 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "tirabade.negotiated_table")
             && story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
             TirabadeCombinedHistoryTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "arsinoe_after_rain"))
+        {
+            ArsinoeCampaignTests.Run(story, Check);
+            ArsinoeAssembledTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
+        }
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
