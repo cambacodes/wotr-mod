@@ -426,3 +426,24 @@ An actual Elan encounter can use the existing physical ContactUnit contract; cor
 Terendelev research confirms native SpawnUnit queues insertion, so its return value alone cannot establish a persistent restored NPC.
 Soana-v6 has been saved with prompt and provenance for independent review.
 Targona's verified native unit portrait has been extracted to ground her first correspondence illustration.
+
+## Local version control and review ownership
+
+At the user's request, root initialized a local Git repository in the actual project directory.
+Baseline commit `70653e0` snapshots the existing development work, source art and review evidence, including unfinished material.
+It is a preservation checkpoint, not approval of every tracked file.
+Installed game files, backups, tool binaries, dependency environments and build outputs are excluded.
+Git preserves file bytes so recorded review hashes are not changed by automatic newline conversion.
+No remote was configured and nothing was published.
+
+The user permits up to five parallel workers, but this session exposes only three child-agent slots plus root.
+Continue using the available slots for distinct character files or independent review, with shared integration owned by root.
+Do not relocate files or switch the shared checkout while a worker is writing.
+Use isolated worktrees for future overlapping edits when appropriate, and preserve both contributions when resolving conflicts.
+Authors may report their checks but cannot approve their own writing, canon fidelity or artwork.
+The full RanRomance depth and length requirements, doubled shared Tirabade requirement, above-90 independent review target and attractive recognizable humanoid art brief remain unchanged.
+
+Gesmerha's six-scene opening is released at source SHA256 `EFB59EC4E0EA0C9282B63E2A8F32109B520C91583642E9F80EB55BC9246E1EBC` and is awaiting independent review and assembled checks.
+The Terendelev API investigation and Soana-v6/Targona-v1 art reviews are saved.
+Neither new art candidate passes every discipline: Soana still needs a clearer repair insertion, while Targona needs headroom and a visible hinged paper door.
+`terendelev_api_recover` now owns only `reference/story-review/gesmerha-opening-review.md` for independent literary and canon review.
