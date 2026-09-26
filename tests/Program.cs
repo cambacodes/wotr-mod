@@ -288,6 +288,12 @@ internal static class Program
             GesmerhaCampaignTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "gesmerha").Select(s => s.Id));
         }
+        if (story.Scenes.Any(s => s.Id == "ember.something_you_cannot_do"))
+        {
+            EmberCampaignTests.Run(story, Check);
+            EmberAssembledTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "ember").Select(s => s.Id));
+        }
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
