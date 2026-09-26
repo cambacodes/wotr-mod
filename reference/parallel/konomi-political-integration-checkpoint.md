@@ -118,3 +118,21 @@ Do not freeze or export a route for TTS merely to claim an early deliverable.
 Continue assembled writing, canon, choice, continuity, art and delivery verification on their actual merits.
 The complete 37-character scope and per-character quality and depth requirements remain unchanged.
 Soana's late-campaign authoring and Tirabade's independent-relationship repair planning continue in separate owned files while Konomi's final review proceeds.
+
+## Assembled editorial approval
+
+The final whole-script review pins export `926687FB240C1E17A565D820D8FFDC920C6E2DDC077B06A61561CB0214F6F41E` and passes the editorial threshold.
+Scores are writing 91, character likeness 92, mature voluntary romance 93, participation 92, campaign depth 91 and cross-stage continuity 92.
+The reviewer reread the changed passages and joins, independently reran 371,366 focused assertions and retained the authorship disclosure and separate independent absence assessment.
+No mandatory writing or continuity repair remains in that review.
+This approval does not cover actual Unity contact, unitless-book presentation, save/load, Legend timing, ToyBox execution or additional unseen art.
+
+The native Legend audit records 27 exact native blueprints and relevant decompiled methods.
+Rank-six dismissal requires Chapter5, but selecting Legend at the summit does not immediately remove every Trickster class level.
+The source supports acquiring the invitation during that residual-power interval and continuing after full conversion; actual live timing remains a verification case.
+Fresh acquisition after completed conversion remains restricted.
+Both the positive sequence and the negative fully-converted case are required when validating that transition in game.
+
+A second Konomi art candidate depicts the private evening before departure using the approved character design.
+It remains unstaged pending independent scene-fit and anatomy review.
+All 37 characters remain in scope, with Soana late-campaign writing, Tirabade relationship repair planning and Jerribeth assembled review assigned separately.

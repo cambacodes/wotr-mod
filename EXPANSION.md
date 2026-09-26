@@ -32,6 +32,8 @@ The integrated development export has 305 scenes across 13 route groups covering
 These counts describe written and integrated material, not completed routes.
 Konomi has 64 scenes, with the independently reviewed late-career continuity repair integrated and a reviewed general portrait staged.
 Her current export is pinned in [the integration checkpoint](reference/parallel/konomi-political-integration-checkpoint.md).
+Her revised 64-scene script passes the assembled editorial review at 91-93 across the reviewed disciplines.
+This is the first assembled script approval, not full route release approval.
 The assembled writing review and its revision notes distinguish editorial approval from remaining game delivery, save and ToyBox verification.
 No character currently has full release approval, and the installed game content remains unchanged.
 

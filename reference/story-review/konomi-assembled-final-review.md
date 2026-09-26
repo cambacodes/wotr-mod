@@ -1,6 +1,7 @@
-# Assembled Konomi review for script freeze
+# Assembled Konomi literary and continuity review
 
-Status: one bounded continuity repair is required before freezing the complete script for TTS.
+Current status: the revised assembled script passes this literary and continuity review, with the independent authorship qualifications and unverified delivery limits below.
+The initial snapshot findings are preserved as history; the final reassessment at the end supersedes its continuity blocker and score.
 The route is substantial and its normal retained-office and late-dismissal histories have complete romantic progressions.
 It does not need another large content addition merely to equalize the two branches.
 This is not release approval or a claim that every mythic history has verified physical delivery.
@@ -120,7 +121,7 @@ Those are polish opportunities; the late-career catch-up below is the actual con
 | Missing terminal quotations | Corrected in the ordinary module; no recurrence found in the inspected endings. |
 | Ordinary office predicate without actor observation | Contact metadata now guards the audited physical meetings; private unitless delivery remains a separate implementation limit. |
 
-## Required change before complete-script TTS freeze
+## Initial snapshot continuity blocker
 
 `konomi.private_absence_catchup` remains available after `private_last_visit` and reaches `absence_now` with a paid career arrangement already settled.
 Its text says she does not yet know which job will lead to influence, after the later scenes have explicitly shown her obtaining and using it.
@@ -135,7 +136,7 @@ I do not claim that run as my own independent execution.
 Repair either the availability window or the late-history wording and entry so that completed career and farewell states cannot be narrated as their own earlier stage.
 Preserve legitimate skipped-absence catch-up before that stage, already-read letter protection, ordinary-return recognition and old-save progression.
 A narrow gate may suffice if the intended opportunity ends before career/farewell; a late-history alternative is needed only if retaining that later opportunity is a product requirement.
-Reproduce the same real Chapter 5 sequence after the repair, verify no duplicated first letter presentation, and refresh only affected TTS text after the revision is pinned.
+Reproduce the same real Chapter 5 sequence after the repair, verify no duplicated first letter presentation, and reassess the exact revised script.
 No shared or story source was edited in this review.
 
 The native chronology claim also needs correction in persistent progress descriptions and measurement fixtures.
@@ -170,4 +171,65 @@ The authorship disclosure above remains part of these assembled judgments; indep
 All Konomi narrator pages in the snapshot have explicit Konomi portrait metadata, but that check is not visual art approval.
 Actual voices, localization layout, book presentation, save/load, loaded actor behavior and ToyBox interaction remain separate verification.
 Private meetings are still presented through inherited unitless books; narrated travel does not place a world actor or verify an occupied room.
-A complete-script TTS freeze should follow the bounded catch-up repair and exact revised review, while unaffected already-pinned scenes can be prepared separately if useful.
+The user has removed any TTS-freeze milestone.
+Review findings determine script quality; no production deadline is a reason to waive them.
+
+
+## Final reassessment of the repaired assembly
+
+The revised export is `development/Story.json`, SHA256 `926687FB240C1E17A565D820D8FFDC920C6E2DDC077B06A61561CB0214F6F41E`.
+The canonical compact sorted-key Konomi scene-array SHA256 is `C2AC44B90133BA23C951AED96FC7C2AB3554C0DC5EBFE49FC9FC1471F27323FF`.
+I independently compared all 64 Konomi scenes with the earlier snapshot.
+Only `private_reunion` and `private_absence_catchup` changed.
+I read all changed prose, appended answers and nine new pages, then checked their relationship to the earlier career decision, sent terms, paid arrangement, final visit and catch-up opening.
+This is a reassessment of the whole-route finding using the unchanged full read and the actual changed joins, not an average of component approvals.
+
+The earlier career-stage contradiction is resolved.
+The shared conversation describes an ongoing difficulty allocating time, which remains true before and after acquiring paid influence.
+It no longer claims that Konomi has not found work already established on screen.
+The older reception is unambiguously remembered in the past.
+The catch-up can acknowledge immediate work or a smaller fee for waiting, submitted exclusive or portfolio terms, their accepted paid result, and the completed final consequence.
+The final alternatives explicitly remember the farewell and completed business.
+They do not invite the player to make the same career decision again.
+Skipping these optional recollections still leaves a truthful conversation.
+
+I reread the catch-up's entry as well as its new middle.
+It frames the encounter as another arranged private conversation during a visit, rather than restarting the earlier departure or first reunion.
+That supplies a coherent literary reason for its remaining available after the farewell.
+Its inherited unitless delivery still does not verify that Konomi is physically visiting on the current game date.
+That implementation limit remains separate from the now-correct remembered career stage.
+The retained first-letter and already-discussed ordinary-return distinctions were not removed by this revision.
+
+I independently ran the focused chronology and original private-absence suites against this exact final export.
+The actual Rules-based runner passed 371,366 assertions.
+It earns the late Chapter 5 private progression and tests both career agreements and intermediate stages, interruption, deferred catch-up, completion and old-history compatibility.
+The result does not simulate native diplomacy selection or Unity actor state.
+The separate reviewer who did not author the private absence independently accepted the correction in `konomi-absence-chronology-review.md`.
+My authorship disclosure still applies to the earlier absence prose.
+
+The native Legend audit in `../canon-review/konomi-legend-sequence-audit.md` prevents two misleading conclusions.
+Normal dismissal cannot occur before Chapter 5, but selecting Legend at the summit does not immediately remove the old Trickster class.
+The installed records support earning the post after native Chapter 5 dismissal while residual Trickster levels remain, then finishing the Legend cleansing and continuing the earned relationship.
+That sequence remains a live-save verification case, not an executed campaign result.
+Acquisition after complete conversion is not supported by the current Trickster gate.
+The ordinary Chapter 4 absence and later private continuation remain the normal established-romance history; the early private absence remains compatibility-only.
+
+The final assembly has 59,184 raw and 50,014 distinct normalized-segment words across 64 scenes.
+Exact repeat words total 9,170.
+The same selected-path measurement was rerun against the final export.
+The first three normal examples above remain 10,857-11,861, 13,386-14,959 and 10,871-11,819 words.
+The established ordinary-to-private example is now 16,972-19,371 words.
+These examples omit the optional later catch-up and are still source-model paths with supplied native histories.
+The additional recalled alternatives do not turn aggregate words into a single playthrough length.
+
+My final whole-script ratings are writing 91, character likeness 92, mature voluntary romance 93, participation and consequences 92, normal campaign depth and pacing 91, and cross-stage continuity 92.
+The continuity score rises because the identified late-career regression has been corrected and the normal versus altered-history accounting is explicit.
+It is lower than a perfect score because the large collection of optional visits still depends on careful staged history, and some repeated qualification and domestic staging would benefit from an eventual line edit.
+Those stylistic observations are not newly discovered mandatory blockers or a request for padding.
+The other ratings remain based on the full read; nine short recollections do not justify inflating them.
+
+The reviewed script is a substantial full romantic progression and passes this editorial assessment on its merits.
+No additional mandatory writing or cross-stage continuity repair was found in this final reassessment.
+That finding is not blanket release readiness, proof of indistinguishability from the original game, or approval of every image and runtime system.
+Live entry and continuation, save/load, physical or unitless presentation, exact Legend transition timing, portrait display and ToyBox coexistence retain their own verification requirements.
+The user's review threshold remains a judgment of actual content and delivery, not a promised score attached to future work.

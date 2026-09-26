@@ -1,0 +1,3869 @@
+{
+  "archive": "D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure/blueprints.zip",
+  "records": [
+    {
+      "path": "Kingdom/CrusadeProjects/RankUps/Diplomacy/DiplomacyRankUp6Project.jbp",
+      "sha256": "02C95E795BF5DF1BDDB64DCEF429E7118F36FE775A56FB0ED54C4FE1992E0EB2",
+      "record": {
+        "AssetId": "1b198b45455d452b8772b9d9f418f864",
+        "Data": {
+          "$type": "597541c35b75df841bb3e3f3a724f15f, BlueprintKingdomProject",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "InfoType": "None",
+          "LocalizedName": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "6acb6ed131d788940b852dc57609d791",
+              "stringkey": "a760ad9f-d029-417d-928f-dea5197e9143"
+            }
+          },
+          "LocalizedDescription": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "cd20cbada4443db449ae0e8f868b9d11",
+              "stringkey": "b9bb5f25-3560-4337-b429-f135d348a072"
+            }
+          },
+          "TriggerCondition": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "4ccd1dbe71ca4eadb6067c854495d13b, KingdomStatCheck",
+                "name": "$KingdomStatCheck$1adf9e54-424b-47fc-9769-56beead53ca8",
+                "Not": false,
+                "StatType": "Diplomacy",
+                "Value": 5,
+                "AtMost": false,
+                "CheckRank": true
+              },
+              {
+                "$type": "4ccd1dbe71ca4eadb6067c854495d13b, KingdomStatCheck",
+                "name": "$KingdomStatCheck$a6fcfee9-abc8-41d9-beae-2001a73382f0",
+                "Not": false,
+                "StatType": "Diplomacy",
+                "Value": 5,
+                "AtMost": true,
+                "CheckRank": true
+              },
+              {
+                "$type": "df186060e14e4bde9ebd897194f7e81d, KingdomRankUpConditions",
+                "name": "$KingdomRankUpConditions$80f2f0ef-88d5-4f48-915a-8a048f7d9021",
+                "Not": false,
+                "Stat": "Diplomacy",
+                "NextRank": 6
+              },
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$471df924-e5b7-4b79-b7be-4607ee6ca0e3",
+                "Not": false,
+                "m_Etude": "!bp_5b01aa690202e584888dfc600a4aac0a",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "ResolutionTime": 1,
+          "ResolveAutomatically": false,
+          "NeedToVisitTheThroneRoom": true,
+          "AICanCheat": false,
+          "SkipRoll": true,
+          "ResolutionDC": 1,
+          "AutoResolveResult": "Success",
+          "Solutions": {
+            "Entries": [
+              {
+                "Leader": "Counselor",
+                "CanBeSolved": false,
+                "DCModifier": 0,
+                "SuccessCount": 0,
+                "Resolutions": [
+                  {
+                    "Margin": "GreatFail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Fail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Success",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": [
+                        {
+                          "$type": "6fa6e405db8147baa4985eece5301e5a, KingdomActionImproveStat",
+                          "name": "$KingdomActionImproveStat$4423cdee-f6a2-4cbc-9ef5-25119c9058ba",
+                          "StatType": 4
+                        }
+                      ]
+                    },
+                    "StatChanges": {
+                      "m_Changes": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "GreatSuccess",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  }
+                ]
+              },
+              {
+                "Leader": "Strategist",
+                "CanBeSolved": false,
+                "DCModifier": 0,
+                "SuccessCount": 0,
+                "Resolutions": [
+                  {
+                    "Margin": "GreatFail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Fail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Success",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": [
+                        null
+                      ]
+                    },
+                    "StatChanges": {
+                      "m_Changes": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "GreatSuccess",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  }
+                ]
+              },
+              {
+                "Leader": "Diplomat",
+                "CanBeSolved": true,
+                "DCModifier": 0,
+                "SuccessCount": 0,
+                "Resolutions": [
+                  {
+                    "Margin": "GreatFail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Fail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Success",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": [
+                        {
+                          "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                          "name": "$StartEtude$f0dd179e-76b4-47e4-9bc0-addbe96694f1",
+                          "Etude": "!bp_ca689964117a4a52924362442702ee8e",
+                          "EtudeEvaluator": null,
+                          "Evaluate": false
+                        }
+                      ]
+                    },
+                    "StatChanges": {
+                      "m_Changes": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "GreatSuccess",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  }
+                ]
+              },
+              {
+                "Leader": "General",
+                "CanBeSolved": false,
+                "DCModifier": 0,
+                "SuccessCount": 0,
+                "Resolutions": [
+                  {
+                    "Margin": "GreatFail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Fail",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "Success",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  },
+                  {
+                    "Margin": "GreatSuccess",
+                    "LeaderAlignment": "Any",
+                    "Condition": {
+                      "Operation": "And",
+                      "Conditions": []
+                    },
+                    "Actions": {
+                      "Actions": []
+                    },
+                    "StatChanges": {
+                      "m_Changes": [],
+                      "ResourcesPerTurn": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      },
+                      "ResourcesOneTime": {
+                        "m_Finances": 0,
+                        "m_Materials": 0,
+                        "m_Favors": 0
+                      }
+                    },
+                    "SuccessCount": 0,
+                    "LocalizedDescription": {
+                      "m_Key": "",
+                      "m_OwnerString": "",
+                      "m_OwnerPropertyPath": "",
+                      "m_JsonPath": "",
+                      "Shared": null
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "DefaultResolutionType": "Diplomat",
+          "DefaultResolutionDescription": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "bff62107e56cce44788a88217a783877",
+              "stringkey": "516745c6-c3eb-4087-ac0b-382ddc8bbb7c"
+            }
+          },
+          "AIStopping": false,
+          "ProjectType": "RankUp",
+          "ProjectStartCost": {
+            "m_Finances": 0,
+            "m_Materials": 0,
+            "m_Favors": 0
+          },
+          "m_MechanicalDescription": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          },
+          "SpendRulerTimeDays": 0,
+          "Repeatable": false,
+          "Cooldown": 0,
+          "IsRankUpProject": true,
+          "RankupProjectFor": "Diplomacy",
+          "AIPriority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/RankUps/DiplomacyRankUp6.jbp",
+      "sha256": "93AE8450A40B8ADF5724EFD808C17912538A6B2B4FD6A31B6132A9BFD23AE921",
+      "record": {
+        "AssetId": "ca689964117a4a52924362442702ee8e",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$EtudePlayTrigger$65f1d9a4-487f-4477-b396-c575f033e7c2"
+          ],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "name": "$EtudePlayTrigger$65f1d9a4-487f-4477-b396-c575f033e7c2",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": false,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                    "name": "$PlayCutscene$495541ec-d17f-40ce-805d-32aec4b7a42f",
+                    "m_Cutscene": "!bp_e8d44f13de8b6154687a05f42f767eb5",
+                    "PutInQueue": false,
+                    "CheckExistence": true,
+                    "Parameters": {
+                      "Parameters": [
+                        {
+                          "Name": "Unit",
+                          "Type": "Unit",
+                          "Evaluator": {
+                            "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                            "name": "$UnitFromSpawner$2c8d43a0-909a-4e32-8553-079850f70ef2",
+                            "Spawner": {
+                              "EntityNameInEditor": "RankUpOfficer_Diplomacy",
+                              "_entity_id": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b",
+                              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                            }
+                          }
+                        },
+                        {
+                          "Name": "Dialog",
+                          "Type": "Blueprint",
+                          "Evaluator": {
+                            "$type": "5c84f2b0c2d44251b320ae180dcaecd8, Dialog",
+                            "name": "$Dialog$0f12cc2b-3626-4bc8-9b4c-d640cf3bd3cc",
+                            "m_Value": "!bp_30333438aac8d3647bef882fa87e978e"
+                          }
+                        },
+                        {
+                          "Name": "Etude",
+                          "Type": "Blueprint",
+                          "Evaluator": {
+                            "$type": "1273add9ac97d9b45a4744747bbc65cb, EtudeBlueprint",
+                            "name": "$EtudeBlueprint$df73d2e9-ad72-42aa-8ac1-12511dd04f26",
+                            "m_Value": "!bp_ca689964117a4a52924362442702ee8e"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_1a2fbd3143c42c542a15be2ff1a2c33d",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ee651e222f282454fbd2821c9ea18a72, AnotherEtudeOfGroupIsPlaying",
+                "name": "$AnotherEtudeOfGroupIsPlaying$23568f68-317e-47ab-8439-7407478e5041",
+                "Not": true,
+                "m_Group": "!bp_10d01be767521a340978c8e57ab536b6"
+              }
+            ]
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+          "m_IncludeAreaParts": false,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [
+            "!bp_12b19db05c70a2a4fa3210293d35bfd0",
+            "!bp_10d01be767521a340978c8e57ab536b6",
+            "!bp_829ef51ab732b0e4f934859c5a307870"
+          ],
+          "Priority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/PlayerIsTrickster.jbp",
+      "sha256": "B1963058F554DA7549CB2ED5F055DB82DFC50146F75542831124BB7FCBD11BA2",
+      "record": {
+        "AssetId": "9f486a9c0c9abfc4a952bb22e88a7e96",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$EtudePlayTrigger$799f8341-68a6-4ae0-8781-675b63cb3ded",
+            "$EtudePlayTrigger$f453a4da-326c-41a6-9625-9a8280de2853"
+          ],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$799f8341-68a6-4ae0-8781-675b63cb3ded",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": true,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "07003ced083c4a97b44c006b1cf26aff, PlayerAlignmentIs",
+                    "name": "$PlayerAlignmentIs$46eacf99-c9b4-4148-8ce1-d6446ffa38ba",
+                    "Not": false,
+                    "Alignment": "TrueNeutral, Chaotic"
+                  }
+                ]
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "beb863f2cd06fbf4f924982b22b7af89, LockAlignment",
+                    "name": "$LockAlignment$625c9821-36d5-4649-975d-f1454fa1d453",
+                    "Unit": {
+                      "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                      "name": "$PlayerCharacter$c2e1e70c-4984-44e5-96e7-6c2161074790"
+                    },
+                    "AlignmentMask": "TrueNeutral, Chaotic",
+                    "TargetAlignment": "ChaoticNeutral"
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$f453a4da-326c-41a6-9625-9a8280de2853",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": true,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$4c5e3846-b9d5-4856-bb20-72cb3ce29646",
+                    "Etude": "!bp_c820b3788f967e14f8bde3c17447157f",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$69347fab-25a3-4fd8-8ea5-6737fd05603d",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "\u0410\u0447\u0438\u0432\u043a\u0430 - \u0438\u0433\u0440\u043e\u043a \u0441\u0442\u0430\u043b \u0442\u0440\u0438\u0441\u043a\u0442\u0435\u0440\u043e\u043c",
+              "m_Once": true,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$366b2a46-e390-426c-91b2-b8d11c6b92b4",
+                    "Etude": "!bp_c4297282ab2e4e628461b42796f1db56",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_c9de3e00b166802448f1ba635fb791ab",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                "name": "$UnitClass$a119e9f1-6d2a-45e5-abcf-26c1eac686b7",
+                "Not": false,
+                "Unit": {
+                  "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                  "name": "$PlayerCharacter$39c60445-b6a6-4f8f-b5b9-bac56544b8c1"
+                },
+                "m_Class": "!bp_8df873a8c6e48294abdb78c45834aa0a",
+                "MinLevel": null
+              }
+            ]
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": false,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [
+            "!bp_8f048efc9c736644ea88160cf18782ff",
+            "!bp_cec0cee4e09e2b6448be31b6eb039ca9",
+            "!bp_a85f2f046aacc6141a385c372f86035e",
+            "!bp_18af27ccc6cfd8a4e9adc840bec2ad83",
+            "!bp_b6eaccea5fa954145a4a9d74fdbf7c62",
+            "!bp_854fd12a17f04d1f93c01663031f5984",
+            "!bp_aca2525cf6e54a2988ed3a51c1c37702"
+          ],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/PlayerIsLegend.jbp",
+      "sha256": "ED93B3E7822C794B8C607B9B611A89C11BE6CA3B42A435926719155BBAF564BA",
+      "record": {
+        "AssetId": "c6165efcd5571c442ae38d7c0601f2df",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "name": "$EtudePlayTrigger$3dbc083f-a6d2-417e-9589-f381633cc2db",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "\u0410\u0447\u0438\u0432\u043a\u0430 - \u0438\u0433\u0440\u043e\u043a \u0441\u0442\u0430\u043b \u043b\u0435\u0433\u0435\u043d\u0434\u043e\u0439",
+              "m_Once": true,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$aaadcba6-e421-44b8-b1ce-8d0d23e6c7d7",
+                    "Etude": "!bp_e98071963e1f43f8b5c8e5ff39d2141c",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_99043bff468a8ed47b65d68c917b52d3",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                "name": "$UnitClass$86d4e7bf-d4ab-43ab-b45a-4385c9764ea0",
+                "Not": false,
+                "Unit": {
+                  "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                  "name": "$PlayerCharacter$d2364fba-3734-4a36-8e2a-d59a1a7ab720"
+                },
+                "m_Class": "!bp_3d420403f3e7340499931324640efe96",
+                "MinLevel": null
+              }
+            ]
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [
+            "!bp_5e6331e4cc06be7498f864b9d616af95",
+            "!bp_e144f17b091f4f91b5800103f3aaab33",
+            "!bp_8e9fed820d594bbb8d3fec9ea440045d"
+          ],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/LegendStates/LegendSelectedSummit.jbp",
+      "sha256": "1A68B9535FAB1A6A675EC12272A53B34FA6FF0F3839D4FE1599E50847A65D3CD",
+      "record": {
+        "AssetId": "64ea08a977214d75b30b0fd101bd7555",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Parent": "!bp_f62294828ea48b7408da40479bbbf641",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/LegendStates/Legend_Begins.jbp",
+      "sha256": "A940139BA93D5D9D3ADFCC169116D486FB088BCAE8627656B87BE02A9E679D7F",
+      "record": {
+        "AssetId": "f082ae4b3608f48498af9bcfad1a75ed",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$08cac1c8-a5e7-4a44-a5f6-792b85779952",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": false,
+              "Conditions": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$dcfe2523-5bce-4db4-9161-c7fc32bae02d",
+                    "Not": false,
+                    "m_Etude": "!bp_024a250788da882439590197626b4e47",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$0d5fc2fc-3a1f-4fcd-b6a3-ca4b691592ad",
+                    "Not": false,
+                    "m_Etude": "!bp_d3b47e973d65c6c46af1cce815d1f6ce",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$61a0cffb-cb1b-44e4-9663-4c4f8d9bb357",
+                    "Etude": "!bp_18f2a98691ab4704daae91ed8755988a",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_f62294828ea48b7408da40479bbbf641",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [
+            "!bp_2750e691a1b81b541a9d5c1a5cdedced"
+          ],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/TricksterMythicPathFailed.jbp",
+      "sha256": "4A7C26794B62C73063EFEB44C80A1758C11CA83412E0E1D22CD82F2FFA610D17",
+      "record": {
+        "AssetId": "256f3c081f21ed84fb3612465a76944b",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$EtudePlayTrigger$ef54ed62-d1ff-44e2-bda0-d11bcec03b5c"
+          ],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$ef54ed62-d1ff-44e2-bda0-d11bcec03b5c",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": true,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                    "name": "$Conditional$3c3215b6-94e5-4bd7-b7dd-a7cb27af05f2",
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                          "name": "$QuestStatus$d48143a4-c7ae-4bbf-8e1f-39e0f2d42e2a",
+                          "Not": false,
+                          "m_Quest": "!bp_fd7a0335f150f054aacf3c97cc1cbde9",
+                          "State": "Started"
+                        }
+                      ]
+                    },
+                    "IfTrue": {
+                      "Actions": [
+                        {
+                          "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                          "name": "$SetObjectiveStatus$0e51346a-4939-4f7a-ac0f-b3ab32163254",
+                          "Status": "Fail",
+                          "m_Objective": "!bp_483191a435f3f8c468c629e568b53eb8",
+                          "StartObjectiveIfNone": true
+                        }
+                      ]
+                    },
+                    "IfFalse": {
+                      "Actions": []
+                    }
+                  },
+                  {
+                    "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                    "name": "$Conditional$419fa160-4167-4b24-a167-ac8306bcdfce",
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                          "name": "$QuestStatus$f3257ed0-3d14-4390-9459-39fb4c4548ab",
+                          "Not": false,
+                          "m_Quest": "!bp_653c8dec252da8d4b872d87e6f656cf2",
+                          "State": "Started"
+                        }
+                      ]
+                    },
+                    "IfTrue": {
+                      "Actions": [
+                        {
+                          "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                          "name": "$SetObjectiveStatus$98e1dd35-2fe2-4b07-93a3-c6fe6ae98127",
+                          "Status": "Fail",
+                          "m_Objective": "!bp_5f12f418dd158a0489e574244f8f5efa",
+                          "StartObjectiveIfNone": true
+                        }
+                      ]
+                    },
+                    "IfFalse": {
+                      "Actions": []
+                    }
+                  },
+                  {
+                    "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                    "name": "$CompleteEtude$6182aa9a-19c9-4084-b2b1-17b59d6771d4",
+                    "Etude": "!bp_a85f2f046aacc6141a385c372f86035e",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  },
+                  {
+                    "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                    "name": "$CompleteEtude$0fe88b32-a307-4e22-abc4-99f49945e017",
+                    "Etude": "!bp_18af27ccc6cfd8a4e9adc840bec2ad83",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  },
+                  {
+                    "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                    "name": "$CompleteEtude$28200c71-7009-4783-b2f2-4cb9ec3c3ee7",
+                    "Etude": "!bp_cec0cee4e09e2b6448be31b6eb039ca9",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "\u042d\u0442\u044e\u0434, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0444\u0435\u0439\u043b\u0438\u0442 \u0442\u0440\u0438\u043a\u0441\u0442\u0435\u0440\u0430",
+          "m_Parent": "!bp_f7e48eaf81461f546a2257c2b4b21584",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$dbaf39b4-cb39-45a5-b2bb-a434716afb42",
+                "Not": true,
+                "m_Etude": "!bp_15fd3a3771e830046b09a1bacaa7e397",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/TricksterChanged.jbp",
+      "sha256": "4D04B8CD10662D1752F2C111E432E2B7A74A8992C637C9D8C15C263FE8605914",
+      "record": {
+        "AssetId": "e81c72eb8268d75439c0d294613600cc",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": null,
+          "m_Overrides": [
+            "$EtudePlayTrigger$bcd5c4ae-2297-4f2f-8a0e-e966a25aa7c9"
+          ],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "name": "$EtudePlayTrigger$bcd5c4ae-2297-4f2f-8a0e-e966a25aa7c9",
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": true,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "34f02a2ceadc2e442bdf2bfe54478571, DialogSeen",
+                    "name": "$DialogSeen$3903261b-aad5-4b9f-a4b2-9d8744b5b9e4",
+                    "Not": true,
+                    "m_Dialog": "!bp_dc3004779384e3848aec6ca6f4252120"
+                  }
+                ]
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$057cd6c7-7c8a-494c-995c-7b0d89753ab2",
+                    "Etude": "!bp_f212a6b8304f10143aeb1dd6b5480747",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_f7e48eaf81461f546a2257c2b4b21584",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen/GoddessesSummit.jbp",
+      "sha256": "B4F16C9AF7A0170D7F5513529DBA7EE92BE9F2DBABB6E0FE1BA5D91A14E734C1",
+      "record": {
+        "AssetId": "81851815200b9d545bec82a65332a1b9",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$EtudePlayTrigger$1bc25c1e-52c7-4113-835b-ae7fd0be914a"
+          ],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$1bc25c1e-52c7-4113-835b-ae7fd0be914a",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": false,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$506ab547-ea31-4964-bff3-353a1143a13d",
+                    "m_companion": "!bp_54be53f0b35bf3c4592a97ae335fe765",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$114905c1-0066-4ee3-82e5-603ba4e35d93",
+                    "m_companion": "!bp_1cbbbb892f93c3d439f8417ad7cbb6aa",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$ef6bc10f-1ef9-43b8-aa8b-ddcf3c6ac3cc",
+                    "m_companion": "!bp_a352873d37ec6c54c9fa8f6da3a6b3e1",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$68d5ba45-ea25-4c7a-80bc-113212f79ef3",
+                    "m_companion": "!bp_0d37024170b172346b3769df92a971f5",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$a011cd5f-2a82-4687-a783-d2de3088eb09",
+                    "m_companion": "!bp_766435873b1361c4287c351de194e5f9",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$b1de5be2-99a4-45c1-bcfd-2e2dc4a11ff3",
+                    "m_companion": "!bp_1b893f7cf2b150e4f8bc2b3c389ba71d",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$8641103f-cfc3-4c19-9a5f-f28f921989b9",
+                    "m_companion": "!bp_096fc4a96d675bb45a0396bcaa7aa993",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$8cada2dc-c2ec-4bb8-8493-e93292c49171",
+                    "m_companion": "!bp_2779754eecffd044fbd4842dba55312c",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$f98b1592-cdfc-44f7-b42d-440d86bf4928",
+                    "m_companion": "!bp_f72bb7c48bb3e45458f866045448fb58",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$45424bfe-eb88-4805-89d9-99a444127449",
+                    "m_companion": "!bp_cb29621d99b902e4da6f5d232352fbda",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$bd18f049-4190-43fc-9111-4092aaf94fc0",
+                    "m_companion": "!bp_0bb1c03b9f7bbcf42bb74478af2c6258",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                    "name": "$Conditional$034b4202-8958-4e50-9496-2b34ab3c20fb",
+                    "Comment": "\u0412\u0435\u043d\u0434\u0443\u0430\u043a \u043d\u0435 \u043f\u0440\u0435\u0434\u0430\u0442\u0435\u043b\u044c",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$61ef9c9c-38df-49af-ae89-6ee47bd15b13",
+                          "Not": true,
+                          "m_Etude": "!bp_dbc6960146c44d78827c9bc2e8d476ca",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        }
+                      ]
+                    },
+                    "IfTrue": {
+                      "Actions": [
+                        {
+                          "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                          "name": "$RaiseDead$9d3399fc-1555-4c91-995f-93273619d1a1",
+                          "m_companion": "!bp_ae766624c03058440a036de90a7f2009",
+                          "riseAllCompanions": false,
+                          "activeAndRemote": false
+                        }
+                      ]
+                    },
+                    "IfFalse": {
+                      "Actions": []
+                    }
+                  },
+                  {
+                    "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+                    "name": "$RaiseDead$9a9e6d04-8a0c-4c93-8e99-fed5729eb286",
+                    "m_companion": "!bp_42f0d5ec3dc844feb44b04507a7c1bfc",
+                    "riseAllCompanions": false,
+                    "activeAndRemote": false
+                  },
+                  {
+                    "$type": "2a580ffc7fd649d7a9cdad06b33c8ef9, SpawnByUnitGroup",
+                    "name": "$SpawnByUnitGroup$4d0883f7-4b69-466b-be4d-a92eb9b27d7c",
+                    "m_Group": {
+                      "EntityNameInEditor": "Citizens",
+                      "_entity_id": "c43cc5c9-3c41-4524-a11c-732316c70b72",
+                      "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                    },
+                    "ActionsOnSpawn": {
+                      "Actions": [
+                        {
+                          "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                          "name": "$PlayCutscene$2949ad34-f945-469a-8f85-af7d1a148960",
+                          "m_Cutscene": "!bp_49b17cddb53548c0a0e04d231bede716",
+                          "PutInQueue": false,
+                          "CheckExistence": true,
+                          "Parameters": {
+                            "Parameters": [
+                              {
+                                "Name": "Unit",
+                                "Type": "Unit",
+                                "Evaluator": {
+                                  "$type": "5abcc51ecc3df064ebb6c4ec13a8a8e9, SpawnedUnit",
+                                  "name": "$SpawnedUnit$82143ef4-a6ee-4996-880a-ba942300519b"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "0652c1b85291c994f8411a22deb2b6ec, Spawn",
+                    "name": "$Spawn$077601d2-1d5a-42c5-ace7-fead53b0d6ec",
+                    "Spawners": [
+                      {
+                        "EntityNameInEditor": "Iomedai",
+                        "_entity_id": "dc2a5115-5827-4226-a5c8-e109d41782fe",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      }
+                    ],
+                    "ActionsOnSpawn": {
+                      "Actions": []
+                    },
+                    "RespawnIfDead": false
+                  },
+                  {
+                    "$type": "0652c1b85291c994f8411a22deb2b6ec, Spawn",
+                    "name": "$Spawn$45efea0d-a1f4-45ef-88c0-5e82724337bd",
+                    "Spawners": [
+                      {
+                        "EntityNameInEditor": "Woljif",
+                        "_entity_id": "ad4297fd-84c8-4922-9919-a9fe1fc17994",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Greybor",
+                        "_entity_id": "1a7ee1f6-a29f-4b68-abfd-d21e43176c8d",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Venduag",
+                        "_entity_id": "fa78a1cd-64ec-4ea4-a54b-643e196f9af0",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Ember",
+                        "_entity_id": "f6476c2b-ae81-40fd-9881-383818fd0616",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Camelia",
+                        "_entity_id": "4265a7fa-5b77-420b-9343-8fa0ec731cb0",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Arueshalae",
+                        "_entity_id": "0203b6d3-2a19-4a5a-aa66-51eed78de238",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Daeran",
+                        "_entity_id": "a9210d0e-9b68-44df-8dbc-2d76bd2076c8",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Regill",
+                        "_entity_id": "e97e6a8c-e0b4-44e8-8a87-cc9904bcecd3",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Seelah",
+                        "_entity_id": "969fd28d-cc71-48f2-b204-36c6f3983c8b",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Lann",
+                        "_entity_id": "0767a5be-5109-405e-b1e0-22573b734804",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Nenio",
+                        "_entity_id": "9f5fbeb7-4118-4c2a-8f59-9fe8f69c0d0a",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Sosiel",
+                        "_entity_id": "2475079b-3295-43f4-b9fb-ce597abe7a7d",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Trever",
+                        "_entity_id": "6ecd9c11-ac7b-4a85-b75c-4ec04950f8fe",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      },
+                      {
+                        "EntityNameInEditor": "Ulbrig",
+                        "_entity_id": "ed0c130c-bc71-4de0-bd0f-ba211f4d56e0",
+                        "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                      }
+                    ],
+                    "ActionsOnSpawn": {
+                      "Actions": [
+                        {
+                          "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                          "name": "$PlayCutscene$32cfd82c-d404-4fef-994f-51e14e42b852",
+                          "m_Cutscene": "!bp_49b17cddb53548c0a0e04d231bede716",
+                          "PutInQueue": false,
+                          "CheckExistence": true,
+                          "Parameters": {
+                            "Parameters": [
+                              {
+                                "Name": "Unit",
+                                "Type": "Unit",
+                                "Evaluator": {
+                                  "$type": "5abcc51ecc3df064ebb6c4ec13a8a8e9, SpawnedUnit",
+                                  "name": "$SpawnedUnit$861bea66-864d-4b37-88ed-6c945f9b38f3"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "RespawnIfDead": false
+                  },
+                  {
+                    "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                    "name": "$PlayCutscene$fbeb8211-1a53-4682-88ca-e9f82f70159c",
+                    "m_Cutscene": "!bp_a2e9960e2a6a2bd46b729d4d6eed8419",
+                    "PutInQueue": false,
+                    "CheckExistence": true,
+                    "Parameters": {
+                      "Parameters": []
+                    }
+                  },
+                  {
+                    "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                    "name": "$CompleteEtude$f59bb392-47a1-4a5f-a9dd-5cdfdb502ce1",
+                    "Etude": "!bp_17f0cafcfaa74634a98b504a54dac593",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  },
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$c40eb6e6-bee6-424a-9c6b-b73fcafb568f",
+                    "Etude": "!bp_5fc90ace2efa4f11bfa3e059147b2221",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              },
+              "IsActivateOnLoadArea": false
+            },
+            {
+              "$type": "1862eb457738a6a4d908e20172213f3a, CapitalCompanionLogic",
+              "m_Flags": 0,
+              "name": "$CapitalCompanionLogic$5b48a32c-fabf-4788-b566-2d8e168eccf8",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_RestAllRemoteCompanions": true
+            },
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$9fc1a1a4-65b1-452c-827b-4ff11f1eb676",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "\u0410\u0447\u0438\u0432\u043a\u0430 - Demonic and Divine",
+              "m_Once": true,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$102ecda3-1f6c-47ce-a431-98307b6a595e",
+                    "Etude": "!bp_348bafe679f7472288e0eb34f8cdfc20",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              },
+              "IsActivateOnLoadArea": false
+            },
+            {
+              "$type": "51c1c76edb91c1143804b582f1f281fe, DisableMountRiding",
+              "m_Flags": 0,
+              "name": "$DisableMountRiding$8dc5c9cf-87dc-4dc1-a468-5dec243acbc0",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": []
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_eb0d42923a0cf6c4281b0925337e8591",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": "!bp_83a099db95e0e6e4485a20b10ce7c28d",
+          "m_LinkedCampaigns": [],
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [
+            "!bp_9bda41e72901054449b973b1457b2050"
+          ],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/LastPartOfDialog.jbp",
+      "sha256": "9763EA167077FEF6A438DA736B3E96B6A0E434BA993F51F40FD02BCE10A6D701",
+      "record": {
+        "AssetId": "9bda41e72901054449b973b1457b2050",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [
+            {
+              "$type": "1862eb457738a6a4d908e20172213f3a, CapitalCompanionLogic",
+              "m_Flags": 0,
+              "name": "$CapitalCompanionLogic$e3fc680b-858d-4050-97b7-968fb2702be3",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_RestAllRemoteCompanions": true
+            },
+            {
+              "$type": "51c1c76edb91c1143804b582f1f281fe, DisableMountRiding",
+              "m_Flags": 0,
+              "name": "$DisableMountRiding$54e0dde6-1107-42b0-875e-f4ffc0c57c96",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": []
+            },
+            {
+              "$type": "b20b3c539fa60ed44abbfc7e367245ea, EtudeCompleteTrigger",
+              "m_Flags": 0,
+              "name": "$EtudeCompleteTrigger$a6e51096-ec9f-4d93-a262-f379302cd359",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "eefa4c5532569b74d9ae18b954372790, DetachBuff",
+                    "name": "$DetachBuff$51564ed1-a451-4f34-a184-c0c2c0503b40",
+                    "m_Buff": "!bp_8eca2611e4324e99ab430a4c1f33abcf",
+                    "TargetType": "Evaluator",
+                    "Target": {
+                      "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                      "name": "$PlayerCharacter$902bcb3d-1b02-41ef-a273-0d49b15c0370"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_eb0d42923a0cf6c4281b0925337e8591",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": false,
+          "m_LinkedAreaPart": null,
+          "m_LinkedCampaigns": [],
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [
+            "!bp_78dcfabaca08aeb41947fbdff85a4ce4"
+          ],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/TpToCapital.jbp",
+      "sha256": "48D65C337B995AA4F7106E1885EFA397C91E1C679224ADF97F49EEB067D4988A",
+      "record": {
+        "AssetId": "78dcfabaca08aeb41947fbdff85a4ce4",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$EtudePlayTrigger$8de89eea-03a0-4336-bcc4-59270dd0da33"
+          ],
+          "Components": [
+            {
+              "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+              "m_Flags": 0,
+              "name": "$EtudePlayTrigger$8de89eea-03a0-4336-bcc4-59270dd0da33",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_Once": false,
+              "Conditions": {
+                "Operation": "And",
+                "Conditions": []
+              },
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "8072988edd00cce40bc433869828e6b3, TeleportParty",
+                    "name": "$TeleportParty$36d00843-6c54-47f8-9c70-778db79d7009",
+                    "m_exitPositon": "!bp_cdaba43118a82ff429b803ae846b35b0",
+                    "AutoSaveMode": "WhenAreaIsUnloaded",
+                    "ForcePauseAfterTeleport": false,
+                    "AfterTeleport": {
+                      "Actions": []
+                    }
+                  },
+                  {
+                    "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                    "name": "$SetObjectiveStatus$b1506c78-4d75-4817-b39a-7a763c02fd7f",
+                    "Status": "Complete",
+                    "m_Objective": "!bp_f92e7c076feb55a44b3022d3fe504f88",
+                    "StartObjectiveIfNone": false
+                  },
+                  {
+                    "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                    "name": "$SetObjectiveStatus$629df783-c22e-453a-a882-7e2b88354cba",
+                    "Status": "Complete",
+                    "m_Objective": "!bp_429b8a441c5f01c4d9e02ae796e66938",
+                    "StartObjectiveIfNone": false
+                  },
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$cfae435a-3f9c-4031-bf74-655cdbf94772",
+                    "Etude": "!bp_5b1278d9ed304e89a352b5aa799231f1",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  },
+                  {
+                    "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                    "name": "$CompleteEtude$23c07f96-de23-4507-8e5a-a52f8a8cc6e6",
+                    "Etude": "!bp_78dcfabaca08aeb41947fbdff85a4ce4",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  },
+                  {
+                    "$type": "fc8c0dda384d425087138a6644060968, StopCustomMusic",
+                    "name": "$StopCustomMusic$f06965d3-1473-4c8a-9705-ec0239f44482"
+                  },
+                  {
+                    "$type": "633639d7e81b7d1499298b189b6f18b3, PartyUnits",
+                    "name": "$PartyUnits$180e34c9-339c-49cf-bce2-8379a86823bf",
+                    "m_UnitsList": "Everyone",
+                    "Actions": {
+                      "Actions": [
+                        {
+                          "$type": "086f25bb4bbcf634289124979aefb433, StopCutscene",
+                          "name": "$StopCutscene$53f85632-4f6f-4e75-808a-5eef60c7afbd",
+                          "m_Cutscene": "!bp_49b17cddb53548c0a0e04d231bede716",
+                          "WithUnit": {
+                            "$type": "2b9ad38748400fb4a9db077957c3a839, PartyUnit",
+                            "name": "$PartyUnit$c534b8aa-b488-4f27-b557-0bd813a6044b"
+                          },
+                          "m_CheckType": "Params"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                    "name": "$StartEtude$9a8fc241-5b43-4f93-831c-e4a0f0d670e6",
+                    "Etude": "!bp_d879f55729e74cacb0dee97a1a27234a",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              },
+              "IsActivateOnLoadArea": false
+            },
+            {
+              "$type": "1862eb457738a6a4d908e20172213f3a, CapitalCompanionLogic",
+              "m_Flags": 0,
+              "name": "$CapitalCompanionLogic$1c66204b-e9ef-40c8-afaf-268b13cebdec",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "m_RestAllRemoteCompanions": true
+            },
+            {
+              "$type": "51c1c76edb91c1143804b582f1f281fe, DisableMountRiding",
+              "m_Flags": 0,
+              "name": "$DisableMountRiding$669ffb3f-d218-45db-9987-809cc7cb1f7b",
+              "PrototypeLink": {
+                "guid": null,
+                "name": null
+              },
+              "m_Overrides": []
+            },
+            {
+              "$type": "b20b3c539fa60ed44abbfc7e367245ea, EtudeCompleteTrigger",
+              "m_Flags": 0,
+              "name": "$EtudeCompleteTrigger$ef211af4-400f-4f1b-8a96-86b0a360d900",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Comment": "",
+              "Actions": {
+                "Actions": [
+                  {
+                    "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                    "name": "$CompleteEtude$b16a339b-db50-4865-89e2-c6f9926f8004",
+                    "Etude": "!bp_5fc90ace2efa4f11bfa3e059147b2221",
+                    "EtudeEvaluator": null,
+                    "Evaluate": false
+                  }
+                ]
+              }
+            }
+          ],
+          "Comment": "",
+          "m_Parent": "!bp_eb0d42923a0cf6c4281b0925337e8591",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": false,
+          "m_LinkedAreaPart": null,
+          "m_LinkedCampaigns": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": true,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/EnterPoints/DrezenCapital_Enter.jbp",
+      "sha256": "3B29851F0D80BC43AA962523069F25CE98B9F75DA46DC3A9A3903ACB42A97C1D",
+      "record": {
+        "AssetId": "cdaba43118a82ff429b803ae846b35b0",
+        "Data": {
+          "$type": "168173fb7e2cd844d86be7f426467d07, BlueprintAreaEnterPoint",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Area": "!bp_2570015799edf594daf2f076f2f975d8",
+          "m_AreaPart": "!bp_8a076e720870a44438d13b9b939933fd",
+          "m_TooltipList": [],
+          "m_Tooltip": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          },
+          "m_CanBeOutsideNavmesh": false,
+          "Icon": null,
+          "HoverIcon": null,
+          "IsClearGFXMemory": true
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/LegendStates/Legend_Begins/LegendFane.jbp",
+      "sha256": "8AE01D449C078300309133CAB14A4580ED878E2D5DB5FB15CE02AA70E89379AB",
+      "record": {
+        "AssetId": "2750e691a1b81b541a9d5c1a5cdedced",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Parent": "!bp_f082ae4b3608f48498af9bcfad1a75ed",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": "!bp_8c78892604c58f443a8fa522ca99fcfc",
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [
+            "!bp_4d96c48c482e99245ab2a646333d6d69"
+          ],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [
+            "!bp_e51c9a21ac645b1498399f83e2c64f0f"
+          ],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/LegendStates/Legend_Begins/LegendDrezen.jbp",
+      "sha256": "646609581FCD6873CA2170F11E25DA68BB2A09BBFCDA86A47FDEB892583E354B",
+      "record": {
+        "AssetId": "e51c9a21ac645b1498399f83e2c64f0f",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Parent": "!bp_f082ae4b3608f48498af9bcfad1a75ed",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [
+            "!bp_53d908e0c5d05404e90b0d6abbb8e313"
+          ],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [
+            "!bp_d48a2b31c34c2d041981ff75cdab25ec"
+          ],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/LegendStates/Legend_QuestComplete.jbp",
+      "sha256": "8EA990B83BF412B0D44607C97AD0611FF034E8E5F8919FED1FC4AC061B6BA8E0",
+      "record": {
+        "AssetId": "230552776ff941e1b054596bf589f9a9",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Parent": "!bp_f62294828ea48b7408da40479bbbf641",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      }
+    },
+    {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster.jbp",
+      "sha256": "3481DBFAD6D851E643885A68541C5D805B91D47864D9057A5A48889D18669977",
+      "record": {
+        "AssetId": "c9de3e00b166802448f1ba635fb791ab",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Parent": "!bp_f0e6f6b732c40284ab3c103cad2455cc",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": false,
+          "m_LinkedAreaPart": null,
+          "m_LinkedCampaigns": [
+            "!bp_fd2e11ebb8a14d6599450fc27f03486a",
+            "!bp_d79943b9b59b446ea5bfc14fa4005b26",
+            "!bp_e1bde745d6ad47c0bc9fb8e479b29153"
+          ],
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [
+            "!bp_9f486a9c0c9abfc4a952bb22e88a7e96",
+            "!bp_f7e48eaf81461f546a2257c2b4b21584"
+          ],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "Mythic/Legend/FakeLegendClass.jbp",
+      "sha256": "8853D8B5E675CA7710CDAC73DE9D3AEF7CAD699A86F1B2BFC4604544714CCE80",
+      "record": {
+        "AssetId": "b82f1fbd191e1f2498266ca41f05027f",
+        "Data": {
+          "$type": "5f2bdd25f161a0d4c97bee89cf923d77, BlueprintCharacterClass",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$MythicClassLockComponent$b8ed3106-6b16-441e-a716-256887d42b15"
+          ],
+          "Components": [
+            {
+              "$type": "9d10d7abc9b160747a9f2b4738c5b4b9, MythicClassLockComponent",
+              "name": "$MythicClassLockComponent$b8ed3106-6b16-441e-a716-256887d42b15",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Locks": [
+                "LegendUnlocked"
+              ]
+            },
+            {
+              "$type": "eb2a8fed522277a499d2374478211954, PrerequisiteEtude",
+              "name": "$PrerequisiteEtude$b5e04340-07d2-48ce-b754-27aa585b8667",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "Etude": "!bp_64ea08a977214d75b30b0fd101bd7555",
+              "UIText": {
+                "m_Key": "",
+                "m_OwnerString": "",
+                "m_OwnerPropertyPath": "",
+                "m_JsonPath": "",
+                "Shared": null
+              },
+              "NotPlaying": true
+            },
+            {
+              "$type": "c2e0b6aa0ffe4b52a461c7e623073090, HideClassIfPrerequisitesRequiredComponent",
+              "name": "$HideClassIfPrerequisitesRequiredComponent$98ffdc8e-0904-488c-82a6-208198434cfa",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": []
+            },
+            {
+              "$type": "eb2a8fed522277a499d2374478211954, PrerequisiteEtude",
+              "name": "$PrerequisiteEtude$be0a1124-ac1b-4743-aff7-c0344bb716ad",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": false,
+              "Etude": "!bp_81851815200b9d545bec82a65332a1b9",
+              "UIText": {
+                "m_Key": "",
+                "m_OwnerString": "",
+                "m_OwnerPropertyPath": "",
+                "m_JsonPath": "",
+                "Shared": null
+              },
+              "NotPlaying": false
+            },
+            {
+              "$type": "5436494344c2496e9f8e835d990897ab, PrerequisiteMainCharacter",
+              "name": "$PrerequisiteMainCharacter$dc1d1b9a-4090-4b79-8448-0439ea65141f",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "Companion": false
+            },
+            {
+              "$type": "36227fa23f553c147b651e99ff3cc485, MythicClassArtComponent",
+              "name": "$MythicClassArtComponent$4dfadb4a-634b-45af-8078-14784430da45",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "m_SelectorPortrait": {
+                "AssetId": "94c71b08e7bd17f4f90c2ea4ced1dd74"
+              },
+              "m_SelectorPortraitLineart": {
+                "AssetId": "94c71b08e7bd17f4f90c2ea4ced1dd74"
+              },
+              "m_CommonFrame": {
+                "AssetId": "a4123bd43851a2841a8bf94027dc6119"
+              },
+              "m_CommonFrameDecor": null,
+              "m_PortraitFrame": {
+                "AssetId": "c68ebc998eaca4040ac22cc571cba49e"
+              },
+              "m_SelectorFrame": {
+                "AssetId": "6118c19e3b8ecb246bf04f5c8ef3a67e"
+              },
+              "m_AbilityFrame": {
+                "AssetId": "36b58d894cd90494589a889b2ad0aa6e"
+              },
+              "m_Emblem": null,
+              "m_Portraits": []
+            }
+          ],
+          "Comment": "",
+          "LocalizedName": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "62a6308db28631541ac0b17411ff027a",
+              "stringkey": "8e298498-6e6c-42d1-829a-1340f3761989"
+            }
+          },
+          "LocalizedDescription": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "73940dbc0fc7b0a4789edf16d6e7f831",
+              "stringkey": "d21244d2-f18a-470b-8b52-fd26d9103b5f"
+            }
+          },
+          "LocalizedDescriptionShort": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          },
+          "m_Icon": null,
+          "SkillPoints": 0,
+          "HitDie": "D8",
+          "HideIfRestricted": false,
+          "PrestigeClass": false,
+          "IsMythic": true,
+          "DlcType": "None",
+          "m_BaseAttackBonus": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_FortitudeSave": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_ReflexSave": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_WillSave": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_Progression": "!bp_03ac38ef7bac0aa40b0a0228ffa4838f",
+          "m_Spellbook": null,
+          "ClassSkills": [],
+          "IsDivineCaster": false,
+          "IsArcaneCaster": false,
+          "m_Archetypes": [],
+          "StartingGold": 0,
+          "m_StartingItems": [],
+          "PrimaryColor": 0,
+          "SecondaryColor": 0,
+          "m_EquipmentEntities": [],
+          "MaleEquipmentEntities": [],
+          "FemaleEquipmentEntities": [],
+          "m_Difficulty": 1,
+          "RecommendedAttributes": [],
+          "NotRecommendedAttributes": [],
+          "m_SignatureAbilities": [],
+          "m_DefaultBuild": null,
+          "m_AdditionalVisualSettings": null
+        }
+      }
+    },
+    {
+      "path": "Mythic/Legend/LegendClass.jbp",
+      "sha256": "FFD00A6E397EC24722935DFDF23447406561AF62990084CD08CACDF2283EFD2A",
+      "record": {
+        "AssetId": "3d420403f3e7340499931324640efe96",
+        "Data": {
+          "$type": "5f2bdd25f161a0d4c97bee89cf923d77, BlueprintCharacterClass",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$MythicClassLockComponent$faa92c8d-ff24-4288-b1ce-aa7f978190e5"
+          ],
+          "Components": [
+            {
+              "$type": "9d10d7abc9b160747a9f2b4738c5b4b9, MythicClassLockComponent",
+              "m_Flags": 0,
+              "name": "$MythicClassLockComponent$faa92c8d-ff24-4288-b1ce-aa7f978190e5",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Locks": [
+                "LegendUnlocked"
+              ]
+            },
+            {
+              "$type": "c2e0b6aa0ffe4b52a461c7e623073090, HideClassIfPrerequisitesRequiredComponent",
+              "m_Flags": 0,
+              "name": "$HideClassIfPrerequisitesRequiredComponent$9edffe88-c2d1-41f5-9ddf-89d9b7945b31",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": []
+            },
+            {
+              "$type": "b1808a1edca51c944b47599c893e7528, PrerequisiteNoClassLevel",
+              "m_Flags": 0,
+              "name": "$PrerequisiteNoClassLevel$5903a97c-9db8-496e-91b9-df3f230a57c9",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "IsFeatureSelectionWhiteList": false,
+              "m_CharacterClass": "!bp_211f49705f478b3468db6daa802452a2"
+            },
+            {
+              "$type": "b1808a1edca51c944b47599c893e7528, PrerequisiteNoClassLevel",
+              "m_Flags": 0,
+              "name": "$PrerequisiteNoClassLevel$dd4f5c7e-a889-4166-a271-ef7173231bd9",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "IsFeatureSelectionWhiteList": false,
+              "m_CharacterClass": "!bp_daf1235b6217787499c14e4e32142523"
+            },
+            {
+              "$type": "b1808a1edca51c944b47599c893e7528, PrerequisiteNoClassLevel",
+              "m_Flags": 0,
+              "name": "$PrerequisiteNoClassLevel$e905f212-7ad3-4f79-8f0e-56679ef6aa75",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "IsFeatureSelectionWhiteList": false,
+              "m_CharacterClass": "!bp_5295b8e13c2303f4c88bdb3d7760a757"
+            },
+            {
+              "$type": "b1808a1edca51c944b47599c893e7528, PrerequisiteNoClassLevel",
+              "m_Flags": 0,
+              "name": "$PrerequisiteNoClassLevel$a1d5d54c-1c88-4c33-baef-065d921c8357",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "IsFeatureSelectionWhiteList": false,
+              "m_CharacterClass": "!bp_3d420403f3e7340499931324640efe96"
+            },
+            {
+              "$type": "fb876f3084f01754db3a4acbbb328a89, PrerequisiteClassLevel",
+              "m_Flags": 0,
+              "name": "$PrerequisiteClassLevel$fba5fcaa-cdfe-4484-9e48-53bc84385835",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "IsFeatureSelectionWhiteList": false,
+              "m_CharacterClass": "!bp_247aa787806d5da4f89cfc3dff0b217f",
+              "Level": 2,
+              "Not": false
+            },
+            {
+              "$type": "5436494344c2496e9f8e835d990897ab, PrerequisiteMainCharacter",
+              "m_Flags": 0,
+              "name": "$PrerequisiteMainCharacter$79773d51-193e-46ef-9abe-3bcbe189807f",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": true,
+              "IsFeatureSelectionWhiteList": false,
+              "Companion": false
+            },
+            {
+              "$type": "36227fa23f553c147b651e99ff3cc485, MythicClassArtComponent",
+              "m_Flags": 0,
+              "name": "$MythicClassArtComponent$eb5dd25c-a101-46e4-8eab-170250d159c4",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "m_SelectorPortrait": {
+                "AssetId": "94c71b08e7bd17f4f90c2ea4ced1dd74"
+              },
+              "m_SelectorPortraitLineart": {
+                "AssetId": "94c71b08e7bd17f4f90c2ea4ced1dd74"
+              },
+              "m_CommonFrame": {
+                "AssetId": "a4123bd43851a2841a8bf94027dc6119"
+              },
+              "m_CommonFrameDecor": null,
+              "m_PortraitFrame": {
+                "AssetId": "c68ebc998eaca4040ac22cc571cba49e"
+              },
+              "m_SelectorFrame": {
+                "AssetId": "6118c19e3b8ecb246bf04f5c8ef3a67e"
+              },
+              "m_AbilityFrame": {
+                "AssetId": "36b58d894cd90494589a889b2ad0aa6e"
+              },
+              "m_Emblem": null,
+              "m_Portraits": []
+            },
+            {
+              "$type": "04ad178079d55944f84f43d4d1725933, PrerequisiteCondition",
+              "m_Flags": 0,
+              "name": "$PrerequisiteCondition$f0ba4d3b-e664-4603-bf8a-303e65bdff4e",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "Group": "All",
+              "CheckInProgression": false,
+              "HideInUI": false,
+              "IsFeatureSelectionWhiteList": false,
+              "Condition": {
+                "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                "name": "$OrAndLogic$82c6a711-149d-416e-a822-fc2c94104e4e",
+                "Not": false,
+                "Comment": "Check quests in main game. Check no mythics in Megaepic DLC",
+                "ConditionsChecker": {
+                  "Operation": "Or",
+                  "Conditions": [
+                    {
+                      "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                      "name": "$OrAndLogic$cc8a5a24-e408-42ba-9aef-f586ce5b5018",
+                      "Not": false,
+                      "Comment": "GoddessSummit is not playing and Legend_QuestComplete is playing",
+                      "ConditionsChecker": {
+                        "Operation": "And",
+                        "Conditions": [
+                          {
+                            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                            "name": "$EtudeStatus$f3ca85ca-f729-402d-88b1-2ccfa1c9cd28",
+                            "Not": true,
+                            "m_Etude": "!bp_81851815200b9d545bec82a65332a1b9",
+                            "NotStarted": false,
+                            "Started": false,
+                            "Playing": true,
+                            "CompletionInProgress": false,
+                            "Completed": false
+                          },
+                          {
+                            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                            "name": "$EtudeStatus$eace6ab8-9a70-46c0-afad-8af4cbaa6591",
+                            "Not": false,
+                            "m_Etude": "!bp_230552776ff941e1b054596bf589f9a9",
+                            "NotStarted": false,
+                            "Started": false,
+                            "Playing": true,
+                            "CompletionInProgress": false,
+                            "Completed": false
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                      "name": "$OrAndLogic$46bbc90b-9ebd-4870-a663-b6de36fe0bd5",
+                      "Not": false,
+                      "Comment": "Megaepic DLC is running and no other mythics are taken",
+                      "ConditionsChecker": {
+                        "Operation": "And",
+                        "Conditions": [
+                          {
+                            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                            "name": "$EtudeStatus$4d2ad4bb-393d-41d4-9d3c-427c53796b26",
+                            "Not": false,
+                            "m_Etude": "!bp_99622b80d692457890f58f73ed864f30",
+                            "NotStarted": false,
+                            "Started": false,
+                            "Playing": true,
+                            "CompletionInProgress": false,
+                            "Completed": false
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$a4e104e7-4a09-421b-8762-b3c28b16f2ce",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$cf8df12d-ad49-4f22-bb4d-0cca7f953128"
+                            },
+                            "m_Class": "!bp_15a85e67b7d69554cab9ed5830d0268e",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$e62899d1-ac52-4e49-9621-55382269fee8",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$6d9c0070-fd5b-4adc-aff3-e6676d319a08",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$2adee3c5-08a6-486a-8cea-aac0fb117f5c"
+                            },
+                            "m_Class": "!bp_a5a9fe8f663d701488bd1db8ea40484e",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$8463aace-27b4-4290-a8c1-2b79ce66ede8",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$08c475ca-b3e7-44b9-a76b-e8b9887e67c8",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$ae4c013c-9bea-48b8-984c-53b171640fd0"
+                            },
+                            "m_Class": "!bp_9a3b2c63afa79744cbca46bea0da9a16",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$056ac44f-6371-4ba4-be34-5791149583f1",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$17172377-9c51-4660-96ae-2a11abd14bf5",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$381d6b3c-c166-4bb1-b138-2243dbe6afb9"
+                            },
+                            "m_Class": "!bp_8e19495ea576a8641964102d177e34b7",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$05d4ac72-727f-4478-b2cd-173fa5901579",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$ccec8025-9271-4b99-b7c5-2c246063a2c4",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$eb22be3f-dcd0-4b44-ac9a-0081caaf2bc9"
+                            },
+                            "m_Class": "!bp_211f49705f478b3468db6daa802452a2",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$a080ddc1-6563-489e-80f8-eccaa89d133c",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$25a0bd69-8911-451b-96d4-e56cf65a1c73",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$40dab498-3e4c-4ede-a4f0-7a431533c985"
+                            },
+                            "m_Class": "!bp_daf1235b6217787499c14e4e32142523",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$ab0c3fa9-e94e-4a13-ac1b-7bd50de0d0ad",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$2fdbb0b3-b533-4761-869f-e4f0ec308f1f",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$46c2233a-9739-46aa-b5a5-05855f785882"
+                            },
+                            "m_Class": "!bp_5d501618a28bdc24c80007a5c937dcb7",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$f50780b3-27fb-4b0e-b8bb-881ef21fe60a",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$ebc21dcc-f86c-464b-a9c7-0eb743fade58",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$f95f3c68-9a77-44c8-9500-ba6cc9fe4779"
+                            },
+                            "m_Class": "!bp_5295b8e13c2303f4c88bdb3d7760a757",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$a6bdbacc-1e73-458e-bae9-4b0c40ea826b",
+                              "Value": 0
+                            }
+                          },
+                          {
+                            "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                            "name": "$UnitClass$8926374b-e6cb-4b34-9f09-72afe637049e",
+                            "Not": true,
+                            "Unit": {
+                              "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                              "name": "$PlayerCharacter$47b0eebd-02dd-42eb-bb39-17532684a2f0"
+                            },
+                            "m_Class": "!bp_8df873a8c6e48294abdb78c45834aa0a",
+                            "LimitMinLevel": false,
+                            "MinLevel": null,
+                            "LimitMaxLevel": false,
+                            "MaxLevel": {
+                              "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                              "name": "$IntConstant$1e857411-1afb-4c53-a6e5-1ebdf49adf9f",
+                              "Value": 0
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                      "name": "$OrAndLogic$ffc0be49-4318-40c7-a5be-619ea3580149",
+                      "Not": false,
+                      "Comment": "Roguelike DLC is running",
+                      "ConditionsChecker": {
+                        "Operation": "And",
+                        "Conditions": [
+                          {
+                            "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                            "name": "$EtudeStatus$4c008231-108a-496f-96b9-70d1c225ea94",
+                            "Not": false,
+                            "m_Etude": "!bp_995ba39f45f44e1dba01e18efc55b0ec",
+                            "NotStarted": false,
+                            "Started": false,
+                            "Playing": true,
+                            "CompletionInProgress": false,
+                            "Completed": false
+                          },
+                          {
+                            "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                            "name": "$OrAndLogic$f0241dff-41a7-4fcf-92bc-c77b7a5820af",
+                            "Not": false,
+                            "Comment": "",
+                            "ConditionsChecker": {
+                              "Operation": "Or",
+                              "Conditions": [
+                                {
+                                  "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                                  "name": "$UnitClass$4a6ff47a-39a3-49a8-8d18-bd77c314b97d",
+                                  "Not": false,
+                                  "Unit": {
+                                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                                    "name": "$PlayerCharacter$43c82093-88b0-4519-9a49-9bfdf5a56402"
+                                  },
+                                  "m_Class": "!bp_15a85e67b7d69554cab9ed5830d0268e",
+                                  "LimitMinLevel": true,
+                                  "MinLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$fcdd0c52-8b48-4c31-b43a-101f522bd094",
+                                    "Value": 5
+                                  },
+                                  "LimitMaxLevel": true,
+                                  "MaxLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$67e600e2-249e-4bd7-9735-8fe4d131c7a7",
+                                    "Value": 5
+                                  }
+                                },
+                                {
+                                  "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                                  "name": "$UnitClass$0f1e9b41-5e4a-4a3f-b6ca-29e8a48fd2c9",
+                                  "Not": false,
+                                  "Unit": {
+                                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                                    "name": "$PlayerCharacter$51dd2b60-517d-4ca6-84ac-18ed766a8e64"
+                                  },
+                                  "m_Class": "!bp_a5a9fe8f663d701488bd1db8ea40484e",
+                                  "LimitMinLevel": true,
+                                  "MinLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$5df26f04-7e5b-4bd0-b9e7-058edac87bdd",
+                                    "Value": 5
+                                  },
+                                  "LimitMaxLevel": true,
+                                  "MaxLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$7785aa63-2183-43dc-a7cc-116f9247fed4",
+                                    "Value": 5
+                                  }
+                                },
+                                {
+                                  "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                                  "name": "$UnitClass$96e9dcac-ed6f-457c-9172-2df37ecb3dea",
+                                  "Not": false,
+                                  "Unit": {
+                                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                                    "name": "$PlayerCharacter$5e420ae2-dba4-4129-b1f5-78b66725d518"
+                                  },
+                                  "m_Class": "!bp_9a3b2c63afa79744cbca46bea0da9a16",
+                                  "LimitMinLevel": true,
+                                  "MinLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$ec1bc5ed-bbf5-4bc5-a01a-c3c1c4a5bd34",
+                                    "Value": 5
+                                  },
+                                  "LimitMaxLevel": true,
+                                  "MaxLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$72cba610-0337-4bd7-9c38-47f8fdcd04f3",
+                                    "Value": 5
+                                  }
+                                },
+                                {
+                                  "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                                  "name": "$UnitClass$33722195-8e76-4874-a96d-9c54f172b179",
+                                  "Not": false,
+                                  "Unit": {
+                                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                                    "name": "$PlayerCharacter$e96e3a19-b102-4de4-aebb-c45f5feebf3d"
+                                  },
+                                  "m_Class": "!bp_8e19495ea576a8641964102d177e34b7",
+                                  "LimitMinLevel": true,
+                                  "MinLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$4194a790-beeb-4590-aab1-610867e8b408",
+                                    "Value": 5
+                                  },
+                                  "LimitMaxLevel": true,
+                                  "MaxLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$556789ac-e8ff-4d4b-b040-64d12531fe37",
+                                    "Value": 5
+                                  }
+                                },
+                                {
+                                  "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                                  "name": "$UnitClass$8376ba3a-2cc7-435d-9bca-03cebf3129a5",
+                                  "Not": false,
+                                  "Unit": {
+                                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                                    "name": "$PlayerCharacter$dc1fc595-f714-4050-9a3e-1fc17b940155"
+                                  },
+                                  "m_Class": "!bp_5d501618a28bdc24c80007a5c937dcb7",
+                                  "LimitMinLevel": true,
+                                  "MinLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$a7524bbb-8e3d-4fdc-978a-4f3e8cf564ae",
+                                    "Value": 5
+                                  },
+                                  "LimitMaxLevel": true,
+                                  "MaxLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$35127922-4e17-47b8-b490-4deff95d14c3",
+                                    "Value": 5
+                                  }
+                                },
+                                {
+                                  "$type": "5630fd6e5ff6d5845b423f9495bce210, UnitClass",
+                                  "name": "$UnitClass$000f51aa-2c8a-4359-9229-f97f16c90e5c",
+                                  "Not": false,
+                                  "Unit": {
+                                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                                    "name": "$PlayerCharacter$27932afc-60f9-4a6c-a7f9-0932d4fcad6d"
+                                  },
+                                  "m_Class": "!bp_8df873a8c6e48294abdb78c45834aa0a",
+                                  "LimitMinLevel": true,
+                                  "MinLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$2cb65968-5df2-40bb-9d51-8c7671ecfdf3",
+                                    "Value": 5
+                                  },
+                                  "LimitMaxLevel": true,
+                                  "MaxLevel": {
+                                    "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                                    "name": "$IntConstant$516d0cb5-a1cb-472d-80d6-8e2a2fbaa6bd",
+                                    "Value": 5
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "UIText": {
+                "m_Key": "",
+                "m_OwnerString": "",
+                "m_OwnerPropertyPath": "",
+                "m_JsonPath": "",
+                "Shared": null
+              }
+            }
+          ],
+          "Comment": "",
+          "LocalizedName": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "62a6308db28631541ac0b17411ff027a",
+              "stringkey": "8e298498-6e6c-42d1-829a-1340f3761989"
+            }
+          },
+          "LocalizedDescription": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "73940dbc0fc7b0a4789edf16d6e7f831",
+              "stringkey": "d21244d2-f18a-470b-8b52-fd26d9103b5f"
+            }
+          },
+          "LocalizedDescriptionShort": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          },
+          "m_Icon": null,
+          "SkillPoints": 0,
+          "HitDie": "D8",
+          "HideIfRestricted": false,
+          "HideInUI": false,
+          "PrestigeClass": false,
+          "IsMythic": true,
+          "DontAddCasterLevels": true,
+          "m_IsHigherMythic": false,
+          "m_BaseAttackBonus": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_FortitudeSave": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_ReflexSave": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_WillSave": "!bp_059c61483910c77408d0473b11d1b922",
+          "m_Progression": "!bp_905383229aaf79e4b8d7e2d316b68715",
+          "m_Spellbook": null,
+          "ClassSkills": [],
+          "IsDivineCaster": false,
+          "IsArcaneCaster": false,
+          "m_Archetypes": [],
+          "StartingGold": 0,
+          "m_StartingItems": [],
+          "PrimaryColor": 0,
+          "SecondaryColor": 0,
+          "m_EquipmentEntities": [],
+          "MaleEquipmentEntities": [],
+          "FemaleEquipmentEntities": [],
+          "m_Difficulty": 1,
+          "RecommendedAttributes": [],
+          "NotRecommendedAttributes": [],
+          "m_SignatureAbilities": [
+            "!bp_63dbc00439ff894489a624abaa8ba79c"
+          ],
+          "m_DefaultBuild": null,
+          "m_AdditionalVisualSettings": null,
+          "VisualSettingsPriority": 0
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0195.jbp",
+      "sha256": "3FD9A2C6800A77C8A7B427BEE54646B039D9394088257C15B2C1FB0376907041",
+      "record": {
+        "AssetId": "a127480567646cc4c8ed6d380d76e5ed",
+        "Data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "\u0418\u043e\u043c\u0435\u0434\u0430\u0439 \u0438\u0441\u0447\u0435\u0437\u0430\u0435\u0442",
+          "ParentAsset": "2536ce7031d04354fbfb202ffb652a7d",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "7ca160e7-7464-4425-9bbf-e7998ded9b02",
+            "m_OwnerString": "a127480567646cc4c8ed6d380d76e5ed",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0195_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_9a1443603c9353d4194a583a31228c8b",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "Angry",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": [
+              {
+                "$type": "3af21dd61b640c941b5704f3df91e16d, GiveObjective",
+                "name": "$GiveObjective$9f280815-b7ac-4175-8361-ec6ae342fd2f",
+                "m_Objective": "!bp_8e5aa2380612fce4db8c6ec32f8716c8"
+              },
+              {
+                "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                "name": "$HideUnit$34a85203-0f70-43eb-bd62-b691dd95c7d5",
+                "Target": {
+                  "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                  "name": "$UnitFromSpawner$99e085d7-4414-4b8d-9b38-56ab96384548",
+                  "Spawner": {
+                    "EntityNameInEditor": "Iomedai",
+                    "_entity_id": "dc2a5115-5827-4226-a5c8-e109d41782fe",
+                    "SceneAssetGuid": "73be1866bac863e4d9097254a9096c81"
+                  }
+                },
+                "Unhide": false,
+                "Fade": true
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$2090ef17-af45-482c-99e2-7b3c09f7d4c5",
+                "Etude": "!bp_f082ae4b3608f48498af9bcfad1a75ed",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$de754450-7450-4adc-a998-e0bb47ec75bc",
+                "Etude": "!bp_2750e691a1b81b541a9d5c1a5cdedced",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$7f0cdd6a-082d-4bd8-8a81-123aa3d2ba15",
+                "Etude": "!bp_86febd9ba2122264abeac82c8da28412",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$210eacbd-7b69-4e24-929c-521e6b67337c",
+                "Etude": "!bp_c145397874232ec4c8a37ede028cfa0d",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "3af21dd61b640c941b5704f3df91e16d, GiveObjective",
+                "name": "$GiveObjective$80b6116d-6861-414c-8d92-73651511909d",
+                "m_Objective": "!bp_b064cd997f6742b29212bac64375c901"
+              },
+              {
+                "$type": "467a8a7fce2048c9976bb89471d6f302, RemoveMythicLevels",
+                "name": "$RemoveMythicLevels$8719f19f-04f2-4b56-870e-0ab43046cb90",
+                "Levels": 1
+              }
+            ]
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        }
+      }
+    },
+    {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0387.jbp",
+      "sha256": "6C12411BC5E912CD0C80329A43288B8DC9D32DEBE1096D029B39C9D78539A1D0",
+      "record": {
+        "AssetId": "5baed9197e5992045bda712cff673343",
+        "Data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "\u041c\u044b \u0432\u044b\u0431\u0440\u0430\u043b\u0438 \u043c\u0438\u0444\u0438\u043a \u0432 \u0423\u0418 \u0432\u044b\u0431\u043e\u0440\u0430 \u043c\u0438\u0444\u0438\u043a\u0430",
+          "ParentAsset": "bac7a86b3f254fa4dbf2c8762e56bdc3",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "5ffaa59a-8044-4b7a-8c7d-3fdc3c0e7a4a",
+            "m_OwnerString": "5baed9197e5992045bda712cff673343",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0387_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": true,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": [
+              {
+                "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+                "name": "$CompleteEtude$6a399236-0137-4db8-91dc-6ad65b0e3dfc",
+                "Etude": "!bp_81851815200b9d545bec82a65332a1b9",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              }
+            ]
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_7f18896facfbd614c96e2e4ea2d6c0d5"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Cutscenes/ReturnToDrezen/SummitMythicLvlUp/CommandAction1.jbp",
+      "sha256": "F6C329C4E304A4C21C57C66FE9B1466CE6E4C87DEFB844F1628E69892264823F",
+      "record": {
+        "AssetId": "bb530e9345434933ba412402ca787bf1",
+        "Data": {
+          "$type": "a07b97ed760cca9409b22e2e3ebc622f, CommandAction",
+          "EntryCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "OnFail": "RemoveTrack",
+          "Action": {
+            "Actions": [
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "name": "$Conditional$813b6936-4cbf-486f-a196-ccbd76ce39b4",
+                "Comment": "",
+                "ConditionsChecker": {
+                  "Operation": "And",
+                  "Conditions": [
+                    {
+                      "$type": "5236ec115f7d59046beea8a13d9f23f3, IsUnitMythicLevel",
+                      "name": "$IsUnitMythicLevel$1d0e140d-ba8b-4756-8de5-e343f92f83aa",
+                      "Not": false,
+                      "Unit": {
+                        "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                        "name": "$PlayerCharacter$9c9e97fd-8fff-47cd-948c-a7483540b600"
+                      },
+                      "CheckMinLevel": true,
+                      "MinLevel": {
+                        "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                        "name": "$IntConstant$eed99402-02f7-4d47-bcc6-d5c7e13acbc4",
+                        "Value": 9
+                      },
+                      "CheckMaxLevel": false,
+                      "MaxLevel": null
+                    }
+                  ]
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                      "name": "$PlayCutscene$06522189-1a60-4f18-92af-5eb3abc11036",
+                      "m_Cutscene": "!bp_ec3953a680e9411dba335778452df7c1",
+                      "PutInQueue": false,
+                      "CheckExistence": true,
+                      "Parameters": {
+                        "Parameters": []
+                      }
+                    }
+                  ]
+                },
+                "IfFalse": {
+                  "Actions": [
+                    {
+                      "$type": "8731ea7b28813994ba10d8e5e66b767a, OpenSelectMythicUI",
+                      "name": "$OpenSelectMythicUI$535b2a6e-6be7-4f35-8323-14750118dec8",
+                      "m_AfterCommitActions": {
+                        "Actions": [
+                          {
+                            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                            "name": "$Conditional$325da685-012b-4fe6-b437-8aa48b1b076b",
+                            "Comment": "If Legend Selected",
+                            "ConditionsChecker": {
+                              "Operation": "And",
+                              "Conditions": [
+                                {
+                                  "$type": "d3f653ddcedba4c4397cab9c05b542f3, IsLegendPathSelected",
+                                  "name": "$IsLegendPathSelected$d73fa2e4-7798-4237-aed1-45dcdb83e6c6",
+                                  "Not": false
+                                }
+                              ]
+                            },
+                            "IfTrue": {
+                              "Actions": [
+                                {
+                                  "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                                  "name": "$StartEtude$e4885c37-ce5e-4c0e-9214-0611b1e7149d",
+                                  "Etude": "!bp_64ea08a977214d75b30b0fd101bd7555",
+                                  "EtudeEvaluator": null,
+                                  "Evaluate": false
+                                }
+                              ]
+                            },
+                            "IfFalse": {
+                              "Actions": []
+                            }
+                          },
+                          {
+                            "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                            "name": "$PlayCutscene$e35b56cb-d946-4be0-815e-439ed5a62216",
+                            "m_Cutscene": "!bp_ec3953a680e9411dba335778452df7c1",
+                            "PutInQueue": false,
+                            "CheckExistence": true,
+                            "Parameters": {
+                              "Parameters": []
+                            }
+                          }
+                        ]
+                      },
+                      "m_LockStopChargen": true,
+                      "m_AfterStopActions": {
+                        "Actions": [
+                          {
+                            "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                            "name": "$Conditional$55b88dbc-58a5-4134-95fe-8f580dc8e447",
+                            "Comment": "If Legend Selectd",
+                            "ConditionsChecker": {
+                              "Operation": "And",
+                              "Conditions": [
+                                {
+                                  "$type": "d3f653ddcedba4c4397cab9c05b542f3, IsLegendPathSelected",
+                                  "name": "$IsLegendPathSelected$61d9e4ab-030f-411a-b063-a0a405592403",
+                                  "Not": false
+                                }
+                              ]
+                            },
+                            "IfTrue": {
+                              "Actions": [
+                                {
+                                  "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                                  "name": "$StartEtude$436d85ca-8c01-4dbc-90b9-fa44aec3eacc",
+                                  "Etude": "!bp_64ea08a977214d75b30b0fd101bd7555",
+                                  "EtudeEvaluator": null,
+                                  "Evaluate": false
+                                }
+                              ]
+                            },
+                            "IfFalse": {
+                              "Actions": []
+                            }
+                          },
+                          {
+                            "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                            "name": "$PlayCutscene$0694116c-bdcc-43c4-9b41-4d1021034945",
+                            "m_Cutscene": "!bp_ec3953a680e9411dba335778452df7c1",
+                            "PutInQueue": false,
+                            "CheckExistence": true,
+                            "Parameters": {
+                              "Parameters": []
+                            }
+                          }
+                        ]
+                      },
+                      "m_MayLoopLevelUp": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Dialogs/c5/Mythic_Legend/LegendDrezen/Cue_0002.jbp",
+      "sha256": "3CCAFE6EE051BE368E876209749A107F05A548D9F02B35147A99B325D166EA8D",
+      "record": {
+        "AssetId": "3eb97e3665cf4344195d45cd2b2c71ca",
+        "Data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "\u0432\u0445\u043e\u0434-2 (\u043f\u043e\u0441\u043b\u0435 \u0443\u0431\u0438\u0439\u0441\u0442\u0432\u0430 \u043a\u0440\u0438\u0447\u0438)",
+          "ParentAsset": "b67fe4b2457e75a4d85062fea3ae9a6f",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "bd53d853-54d7-4d46-bc4b-9353bacbfc80",
+            "m_OwnerString": "3eb97e3665cf4344195d45cd2b2c71ca",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c5/Mythic_Legend/LegendDrezen/Cue_0002_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": "!bp_92f29ae2c49edb74f8943d30ea788dd0",
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "PointForward",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": [
+              {
+                "$type": "60ce9f50487c58446aad79d52f8e5e54, PlayCustomMusic",
+                "name": "$PlayCustomMusic$4245e766-163e-4c75-8625-c330c66c1a6c",
+                "MusicEventStart": "MUS_AreeluTheme_Play",
+                "MusicEventStop": "MUS_AreeluTheme_Stop"
+              },
+              {
+                "$type": "467a8a7fce2048c9976bb89471d6f302, RemoveMythicLevels",
+                "name": "$RemoveMythicLevels$230dd3ed-3487-4eab-b595-0598a9fad34b",
+                "Levels": 1
+              }
+            ]
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [
+            "!bp_9fb76bc6d52b3af42bbce0c6736a9680"
+          ],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Dialogs/c5/Mythic_Legend/LegendFane/Cue_0061.jbp",
+      "sha256": "1658BF90D466000405BF3161C32E3D472B4626F8D3DCE891914C05809E8F2CE7",
+      "record": {
+        "AssetId": "0e5f7e7d35731094182a2d8bc78730b3",
+        "Data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "edd4119ac5aca5d4b85c8c55a379dd8a",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "6425c9f7-6964-4b43-bfa4-399aab7c4286",
+            "m_OwnerString": "0e5f7e7d35731094182a2d8bc78730b3",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c5/Mythic_Legend/LegendFane/Cue_0061_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": true,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": [
+              {
+                "$type": "467a8a7fce2048c9976bb89471d6f302, RemoveMythicLevels",
+                "name": "$RemoveMythicLevels$fbc49119-f4d7-4909-99a3-3133058f137b",
+                "Levels": 1
+              },
+              {
+                "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                "name": "$PlayCutscene$a342d2e1-3966-469a-8d1e-ffe9961e2892",
+                "m_Cutscene": "!bp_d0bfd10d306045129cdbae56e74b0e41",
+                "PutInQueue": false,
+                "CheckExistence": true,
+                "Parameters": {
+                  "Parameters": []
+                }
+              }
+            ]
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [
+              "!bp_471f6fdd772042e4aaed87b4f8514aaa"
+            ],
+            "Strategy": "First"
+          }
+        }
+      }
+    },
+    {
+      "path": "World/Dialogs/c5/Mythic_Legend/LegendLostChapel/Cue_0010.jbp",
+      "sha256": "BB81E2472459B1B606339E0E26B3BF22136A71B3D1EADC6F812B04D5E0F99030",
+      "record": {
+        "AssetId": "1b4e261bcfb595945895f24f8b008939",
+        "Data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "\n\u0441\u043f\u0430\u0432\u043d\u0438\u043c \u043c\u0438\u0444\u0438\u043a \u043a\u0440\u0438\u0447\u0435\u0439 \u0438 \u0434\u0435\u0440\u0435\u043c\u0441\u044f \u0441 \u043d\u0438\u043c\u0438\n",
+          "ParentAsset": "93025378303500f43a41dea90a647c86",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "fab97075-6bc5-48e1-b70d-cb32758c1bb4",
+            "m_OwnerString": "1b4e261bcfb595945895f24f8b008939",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c5/Mythic_Legend/LegendLostChapel/Cue_0010_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": true,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": [
+              {
+                "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                "name": "$PlayCutscene$eaa29223-8b48-4b37-88f3-8881be5de47b",
+                "m_Cutscene": "!bp_7d1571e654e74608ae2a98747ec553ca",
+                "PutInQueue": false,
+                "CheckExistence": true,
+                "Parameters": {
+                  "Parameters": [
+                    {
+                      "Name": "Areelu",
+                      "Type": "Unit",
+                      "Evaluator": {
+                        "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                        "name": "$UnitFromSpawner$d0305ab6-1499-4349-816e-f7d0f6cdfc27",
+                        "Spawner": {
+                          "EntityNameInEditor": "Areelu",
+                          "_entity_id": "9fe8ce85-087f-4cb3-821d-5a59c561e67e",
+                          "SceneAssetGuid": "0b8385d9458b9aa4e9fed07a274f478f"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "OnStop": {
+            "Actions": [
+              {
+                "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                "name": "$PlayCutscene$2b2cb7d4-6c37-4b4a-a09b-ab4f531beb78",
+                "m_Cutscene": "!bp_d0bfd10d306045129cdbae56e74b0e41",
+                "PutInQueue": false,
+                "CheckExistence": true,
+                "Parameters": {
+                  "Parameters": []
+                }
+              },
+              {
+                "$type": "507aef8c6c6218c49aaf0987b355f400, PlayCutscene",
+                "name": "$PlayCutscene$5e65e3c7-75ca-4e35-a344-ed38b6929a92",
+                "m_Cutscene": "!bp_42d7290facb4428f9089f6914e7fa306",
+                "PutInQueue": false,
+                "CheckExistence": true,
+                "Parameters": {
+                  "Parameters": []
+                }
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$7ddda6dd-cb1f-4ad3-8e1c-87d73e4a0585",
+                "Etude": "!bp_552d8cbbf2cf88c42aae0e46b9ce329c",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              },
+              {
+                "$type": "467a8a7fce2048c9976bb89471d6f302, RemoveMythicLevels",
+                "name": "$RemoveMythicLevels$c8b9df32-658b-4204-ab2c-1a46c5c1fd30",
+                "Levels": 2
+              }
+            ]
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        }
+      }
+    },
+    {
+      "path": "World/Dialogs/c5/Mythic_Legend/FinalLegend/FinalLegend_c5_dialog.jbp",
+      "sha256": "84994658BFFCBAE0AFA5783268AB1BC9EF70A1505779D1195489D8EFB572D12C",
+      "record": {
+        "AssetId": "6bb52d158c82cd34fb7f565d9cafb4b4",
+        "Data": {
+          "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "FirstCue": {
+            "Cues": [
+              "!bp_9ece03bf02aab8043afaa95bfc09735c",
+              "!bp_ab7e3aaf9e3683c498f8668452e7242e"
+            ],
+            "Strategy": "First"
+          },
+          "StartPosition": null,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "StartActions": {
+            "Actions": [
+              {
+                "$type": "60ce9f50487c58446aad79d52f8e5e54, PlayCustomMusic",
+                "name": "$PlayCustomMusic$8e1f4e31-9106-4d01-a7d3-8713cfe247c3",
+                "MusicEventStart": "MUS_LegendTheme_Full_Play",
+                "MusicEventStop": "MUS_LegendTheme_Full_Stop"
+              },
+              {
+                "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+                "name": "$StartEtude$2d50556c-3e62-4fbf-ac63-bb6a3c3128c6",
+                "Etude": "!bp_230552776ff941e1b054596bf589f9a9",
+                "EtudeEvaluator": null,
+                "Evaluate": false
+              }
+            ]
+          },
+          "FinishActions": {
+            "Actions": [
+              {
+                "$type": "fc8c0dda384d425087138a6644060968, StopCustomMusic",
+                "name": "$StopCustomMusic$4d264e48-6a15-4ce2-91d2-b06abe88725e"
+              }
+            ]
+          },
+          "ReplaceActions": {
+            "Actions": []
+          },
+          "TurnPlayer": true,
+          "TurnFirstSpeaker": true,
+          "IsLockCameraRotationButtons": false,
+          "Type": "Common",
+          "m_OverrideAreaCR": null
+        }
+      }
+    },
+    {
+      "path": "World/Cutscenes/GrayGarrison_Legend/Iomedae_Vanish/CommandAction2.jbp",
+      "sha256": "9055D8243B9A45E9DEA5E155FB5FC9EA530A5BEBE92C2E2FB58F0EE850A1F124",
+      "record": {
+        "AssetId": "59098e9e822a4010b9cda8281328911d",
+        "Data": {
+          "$type": "a07b97ed760cca9409b22e2e3ebc622f, CommandAction",
+          "EntryCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "OnFail": "RemoveTrack",
+          "Action": {
+            "Actions": [
+              {
+                "$type": "467a8a7fce2048c9976bb89471d6f302, RemoveMythicLevels",
+                "name": "$RemoveMythicLevels$f7c3b5a7-9aa9-46f9-a10f-68cc9d5305df",
+                "Levels": 1
+              },
+              {
+                "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                "name": "$SetObjectiveStatus$a6f8fc23-e03d-493c-a3e1-0ad4eb5a1ef8",
+                "Status": "Complete",
+                "m_Objective": "!bp_31934f4d6e497944a8da7c2954fdc64a",
+                "StartObjectiveIfNone": false
+              },
+              {
+                "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                "name": "$Conditional$9af3dcaa-9a19-473f-8832-a4d24b18da4e",
+                "Comment": "",
+                "ConditionsChecker": {
+                  "Operation": "And",
+                  "Conditions": [
+                    {
+                      "$type": "342eb5cf69e9d0e48917ff4215600e0b, FlagInRange",
+                      "name": "$FlagInRange$0fc7b4fa-22cc-4cdf-b6dc-38cb29017e21",
+                      "Not": false,
+                      "m_Flag": "!bp_b221ec9ba1cb4d3989c6426431a1e4e6",
+                      "MinValue": 0,
+                      "MaxValue": 0
+                    }
+                  ]
+                },
+                "IfTrue": {
+                  "Actions": [
+                    {
+                      "$type": "f4ef63ec9a4741d4bae871a91255f89a, IncrementFlagValue",
+                      "name": "$IncrementFlagValue$51022b12-a1a1-4794-b3c7-b4c44b6c3fae",
+                      "m_Flag": "!bp_b221ec9ba1cb4d3989c6426431a1e4e6",
+                      "Value": {
+                        "$type": "9054151c7eb2e854ca7109522b1c3dde, IntConstant",
+                        "name": "$IntConstant$40e9c411-1a13-456d-a41d-82c59bc0d627",
+                        "Value": 1
+                      },
+                      "UnlockIfNot": false
+                    }
+                  ]
+                },
+                "IfFalse": {
+                  "Actions": []
+                }
+              }
+            ]
+          }
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    },
+    {
+      "path": "World/Cutscenes/GrayGarrison_Legend/Iomedae_Vanish/CommandAction3.jbp",
+      "sha256": "DE914136726F6A0524CC06B50933548A72D7343B8258EF013517C0D435A43C14",
+      "record": {
+        "AssetId": "f2c6607d3ea942819b10d9ae45339efa",
+        "Data": {
+          "$type": "a07b97ed760cca9409b22e2e3ebc622f, CommandAction",
+          "EntryCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "OnFail": "RemoveTrack",
+          "Action": {
+            "Actions": [
+              {
+                "$type": "efeff58c12d74f00a73213c7f3750543, GainMythicLevel",
+                "name": "$GainMythicLevel$ed769c5c-8ea5-4f12-9bf8-ede235dec1ce",
+                "Levels": 1
+              },
+              {
+                "$type": "8731ea7b28813994ba10d8e5e66b767a, OpenSelectMythicUI",
+                "name": "$OpenSelectMythicUI$4843d313-def3-4c04-a14d-8b4a514fc22c",
+                "m_AfterCommitActions": {
+                  "Actions": []
+                },
+                "m_LockStopChargen": true,
+                "m_AfterStopActions": {
+                  "Actions": []
+                }
+              }
+            ]
+          }
+        },
+        "Meta": {
+          "ShadowDeleted": false
+        }
+      }
+    }
+  ]
+}
