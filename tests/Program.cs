@@ -229,6 +229,8 @@ internal static class Program
             "soana.the_thing_in_the_sack", "soana.the_dry_offering", "soana.the_inherited_debt",
             "soana.a_voice_in_the_dark", "soana.what_followed_home", "soana.a_promise_still_spoken",
             "soana.the_unwelcome_path", "soana.after_the_last_visitor",
+            "soana.when_the_road_returns", "soana.a_track_with_two_ends", "soana.what_the_hollow_costs",
+            "soana.where_the_steps_end", "soana.the_days_she_counted", "soana.before_the_far_road",
             "konomi.private_return_terms", "konomi.private_kept_hours", "konomi.private_last_visit",
             "konomi.ending_distance_lived", "konomi.ending_distance_open_lived", "konomi.a_turn_for_herself",
             "aranka.the_wrong_refrain", "aranka.where_the_breath_goes", "aranka.the_name_missing",
@@ -312,6 +314,7 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "konomi.private_absence_catchup" && s.Nodes.Any(n => n.Id == "absence_career_future")))
             KonomiAbsenceChronologyTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "soana.the_thing_in_the_sack")) SoanaLaterProgressionTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "soana.when_the_road_returns")) SoanaLateCampaignTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "return" && s.Nodes.Any(n => n.Id == "before_the_abyss")))
             TirabadeChronologyTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) KonomiPrivateConsequenceTests.Run(story, Check);
