@@ -11,6 +11,7 @@ internal static class KonomiTests
         if (scenes.Length == 0) return;
         var drezen = scenes.Single(s => s.Id == "konomi.margin").Areas.Single();
         Scene Find(string id) => scenes.Single(s => s.Id == "konomi." + id);
+        var ordinaryVisits = new HashSet<string>(new[] { "a_useful_supper", "the_upper_passage", "two_bad_prices", "the_trial_day", "a_name_beside_hers", "the_evening_she_kept" }.Select(id => "konomi." + id));
 
         void Play(Scene scene, Snapshot state, bool publicly, bool quiet, bool nearlyDenied = false)
         {
@@ -29,9 +30,10 @@ internal static class KonomiTests
                 var choice = preferred == null ? choices[0] : choices.Single(c => c.Next == preferred);
                 foreach (var flag in choice.Set)
                     if (state.Flags.Add(flag)) state.Times[flag] = state.Hour;
-                if (choice.Next != null)
+                var next = choice.Check?.Success ?? choice.Next;
+                if (next != null)
                 {
-                    node = scene.Nodes.Single(n => n.Id == choice.Next);
+                    node = scene.Nodes.Single(n => n.Id == next);
                     continue;
                 }
                 check(!choice.Abort, "Konomi campaign unexpectedly aborted " + scene.Id);
@@ -67,8 +69,8 @@ internal static class KonomiTests
                 state.Area = drezen;
                 for (int attempt = 0; attempt < scenes.Length; attempt++)
                 {
-                    state.Hour += 72;
-                    var scene = scenes.FirstOrDefault(s => !s.Optional && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
+                    state.Hour += Math.Max(72, scenes.Max(s => s.DelayHours));
+                    var scene = scenes.FirstOrDefault(s => (!s.Optional || ordinaryVisits.Contains(s.Id)) && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
                     if (scene == null) break;
                     Play(scene, state, publicly, quiet);
                 }
@@ -119,6 +121,7 @@ internal static class KonomiTests
         {
             var absent = new Snapshot { Chapter = scene.Chapters.Last(), Hour = 1000, Area = drezen };
             foreach (var requirement in scene.Requires.Where(r => r != "konomi.present")) absent.Flags.Add(requirement);
+            if (scene.RequiresAny.Length > 0) absent.Flags.Add(scene.RequiresAny[0]);
             check(!Rules.Available(story, scene, absent), "Konomi meeting ignores lost contact: " + scene.Id);
             absent.Flags.Add("trickster");
             check(!Rules.Available(story, scene, absent), "Trickster title alone invents Konomi contact: " + scene.Id);

@@ -217,7 +217,11 @@ internal static class Program
             "targona.unasked_question", "targona.second_margin", "targona.the_folded_room",
             "targona.an_unpromised_future", "targona.the_unscheduled_door", "targona.what_she_keeps",
             "gesmerha.unbought_work", "gesmerha.along_the_grain", "gesmerha.whose_mark",
-            "gesmerha.the_first_game", "gesmerha.the_unclaimed_hour", "gesmerha.against_the_current"
+            "gesmerha.the_first_game", "gesmerha.the_unclaimed_hour", "gesmerha.against_the_current",
+            "konomi.a_useful_supper", "konomi.the_upper_passage", "konomi.two_bad_prices",
+            "konomi.the_trial_day", "konomi.a_name_beside_hers", "konomi.the_evening_she_kept",
+            "vellexia.unfinished_likeness", "vellexia.second_painter", "vellexia.price_of_novelty",
+            "vellexia.two_observers", "vellexia.unadvertised_hour", "vellexia.a_question_kept"
         };
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
@@ -289,6 +293,8 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "targona.unasked_question")) TargonaOpeningTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "gesmerha.unbought_work")) GesmerhaOpeningTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "kiana.former_grief")) KianaReconciliationTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "konomi.a_useful_supper")) KonomiOrdinaryExpansionTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "vellexia.unfinished_likeness")) VellexiaOpeningTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) JerribethCounterofferTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);

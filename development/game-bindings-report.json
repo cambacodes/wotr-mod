@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\kiana-gesmerha-final-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\konomi-vellexia-final-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 469,
-  "unique_targets": 103,
+  "binding_uses": 506,
+  "unique_targets": 110,
   "failures": [],
   "targets": {
     "54be53f0b35bf3c4592a97ae335fe765": {
@@ -24,6 +24,10 @@
     },
     "64805abb52739e44280a758f850b300c": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Soana_Wintersun.jbp",
+      "type": "BlueprintUnit"
+    },
+    "a32a07903e428d34cb0e98a804d40569": {
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/RaptureOfRupture/Vellexia_Default.jbp",
       "type": "BlueprintUnit"
     },
     "2570015799edf594daf2f076f2f975d8": {
@@ -106,6 +110,18 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0011.jbp",
       "type": "BlueprintCue"
     },
+    "7f394dd6cd32c44408a59bd08eb1512a": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3850d7abe56fba24fb5acb4b8e0767a6": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "746af280c4d1daa47afbb44c7f8b2eea": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0036.jbp",
+      "type": "BlueprintCue"
+    },
     "417fa384f3250634bb71859fbc913453": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -184,6 +200,14 @@
     },
     "72e423c719ed9d44fa432a6b9629babd": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "eef93f5400704a0fa3e4820cc62282b3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightBeforeThirdDate.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b5ed357e0f654a6bbd45ef9f74b10f00": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightOnThirdDate.jbp",
       "type": "BlueprintEtude"
     },
     "381a296094804761af0893d2e70dc2df": {
@@ -344,6 +368,10 @@
     },
     "c0d0b565f4b725241b96c148000f1910": {
       "path": "World/Quests/c3/Wintersun/Wintersun_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "820f28d6776755d47a2169e2851e15ca": {
+      "path": "World/Quests/c4/RaptureOfRupture/RaptureOfRupture.jbp",
       "type": "BlueprintQuest"
     },
     "5a5a533c9ce630a48b877f9a194840cb": {

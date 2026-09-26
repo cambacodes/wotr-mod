@@ -430,6 +430,18 @@ Soana-v7 remains below the strict review target for the repair detail.
 Root also reproduced and fixed the source archive's missing expansion inputs; fresh extraction rebuilds the exact reviewed 264-scene story.
 `terendelev_api_recover` now owns only the independent Konomi ordinary-expansion writing review while the other two authors finish their separate modules and focused tests.
 
+## Reviewed ordinary Konomi and Vellexia opening
+
+Main now contains 277 scenes at SHA256 `070879FB0FF8AF03FAA0E1A9525FDD88AEC61E89912C853877782BAABA952230`.
+All workers have released this batch's source, tests and independent reports.
+Both contributions passed separate literary and technical reviews after actual source corrections.
+The exact final combined checks and scope exclusions are in `reference/parallel/konomi-vellexia-staging-checkpoint.md`.
+Main covers twelve roster characters across eleven route groups; zero complete-route approvals remain.
+Vellexia's first greeting continues to another cue before the main menu; independent native review verified that the resulting menu exposes the bound answer list after greeting history is recorded.
+Her native departure is preserved and still needs a later access continuation.
+Konomi's six visits materially improve the ordinary Chapter 5 route; complete attainable depth remains an assembled-review requirement.
+No installed files changed.
+
 ## Recovered parallel batch
 
 The next batch began with Gesmerha's opening, Kiana's mixed Elan-history reconciliation and Terendelev's materialization API investigation.

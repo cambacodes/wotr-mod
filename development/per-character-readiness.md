@@ -6,7 +6,7 @@ The current expansion has no character approved against the complete revised req
 
 ## Current authored content
 
-Source: `development/content-volume-inventory.json`, for story SHA256 `7C9D3E0DAC178A9F573341E28EDDD907AED6EE97D417DA7CAFBC1A309372522F`.
+Source: `development/content-volume-inventory.json`, for story SHA256 `070879FB0FF8AF03FAA0E1A9525FDD88AEC61E89912C853877782BAABA952230`.
 These counts include all authored branches and choices, not the amount available in one playthrough.
 Exact segment deduplication removes identical passages but does not establish that every remaining word is meaningful or reachable.
 Verified external content has not yet been credited to these counts.
@@ -18,7 +18,7 @@ The combined script now exceeds that arithmetic floor, with meaningfulness, sele
 | --- | ---: | ---: | --- |
 | Anevia and Irabeth, shared Tirabade script | 46,431 | 46,124 | Volume floor crossed; developed progression and explicit old-save continuation integrated; assembled quality, each woman's development, art and runtime approval remain incomplete |
 | Seelah | 30,012 | 27,748 | Earned progression and old-save catch-up integrated; full campaign, native-friend development, Trickster contact, art and runtime approval remain incomplete |
-| Konomi | 33,000 | 27,802 | Native political report context integrated with separate start and witnessed-conclusion history; assembled quality, ordinary-route depth and full-campaign requirements remain incomplete |
+| Konomi | 40,780 | 35,582 | Six ordinary Chapter 5 visits and old-save opt-in integrated after review; full selected-route depth, native contact, art and full-campaign requirements remain incomplete |
 | Jerribeth | 26,315 | 25,904 | Living Act 4 Trickster encounter and later reply integrated; death/departure restoration, universal Trickster attainability, assembled quality, art and runtime approval remain incomplete |
 | Kiana | 27,901 | 27,612 | Public incident and two changed-history continuations integrated; sixteen history-selector dead ends repaired; earlier separation, witnessed Elan return, other inconsistent states, native contact and full-route approval remain incomplete |
 | Ember, friendship | 6,458 | 6,415 | Incomplete; opening and puppet afternoons do not finish her friendship arc |
@@ -26,6 +26,7 @@ The combined script now exceeds that arithmetic floor, with meaningfulness, sele
 | Arsinoe | 13,443 | 13,343 | Opening and six-scene continuation integrated with native contact and temporary ceremony guards; length, full route, mythic development, art and runtime verification remain incomplete |
 | Targona, extension only | 5,400 | 5,355 | Six letters extend verified parent quest finales; existing parent content is excluded from these counts; assembled depth, broader access, artwork and runtime requirements remain incomplete |
 | Gesmerha | 6,952 | 6,930 | Six-scene native-contact opening integrated after independent review; full length, later campaign, Trickster recovery, art and runtime requirements remain incomplete |
+| Vellexia | 6,508 | 6,508 | Six-part initial manor interlude integrated after independent review; later native-date continuation, full length, recovery, art and runtime requirements remain incomplete |
 
 The shared Tirabade script retains the original 34 scene IDs, with the original quarrel now revised in development.
 This comparison does not claim that the currently installed package contains the whole development expansion.
@@ -40,7 +41,8 @@ Three further campaign scenes resolve a career offer, an intimate or quiet eveni
 An additional ending handles declining the first private invitation without inventing continued official correspondence.
 The new private-history conversation carries forward the provisions dispute, leaked-letter response and missing apology while preserving a pending hearing.
 It has focused rules coverage and a bounded writing review of 92 after continuity corrections.
-She now has 45 exported scene entries: 32 campaign entries and 13 alternative endings.
+The earlier 45-entry checkpoint contained 32 campaign entries and 13 alternative endings.
+Two political-context scenes and seven ordinary-expansion entries now bring the inventory to 54.
 Three campaign entries are alternate private-contact versions of the same hearing, aftermath and promised outing, not additional independent events.
 Their shared prose is counted once in the distinct-segment inventory; the increase in raw inventory is not new route depth.
 The inventory exceeds the planning floor, but this does not establish a fully developed or sufficiently long attainable playthrough.
@@ -48,8 +50,9 @@ The private branch can reach commitment, open courtship or parting; broader asse
 The [assembled canon audit](../reference/canon-review/konomi-assembled-readiness-20260925.md) confirms the implemented private progression while retaining native political, courier-pressure, bypassed trust-repair, ordinary-route depth and runtime gaps.
 The [assembled writing audit](../reference/story-review/konomi-assembled-readiness-20260925.md) also withholds full approval.
 It classifies 16 ordinary campaign scenes and 12 private campaign scenes, whose separate branches cannot be treated as one uninterrupted experience.
-The ordinary Chapter 5 sequence remains especially compressed, with a generous selected-path upper bound of 854 words across return, power, ordinary and farewell.
-That bound is evidence for revision and expansion, not a replacement benchmark or a claim about native-game attainability.
+The earlier ordinary Chapter 5 sequence had a generous selected-path upper bound of 854 words across return, power, ordinary and farewell.
+The new six-visit expansion adds 5,207-5,338 selected words on its measured paths and directly addresses that gap.
+A new complete retained-office playthrough audit is still required; neither the old bound nor the new contribution measurement establishes full RanRomance parity.
 The table also includes six new Tirabade campaign scenes, four Seelah aftermath scenes and five Jerribeth consequence scenes.
 The installed Tirabade package remains at its earlier 34 scenes; all eight later additions exist only in the development export.
 The new quarrel text is also development-only, so the earlier exact scene-object comparison describes the historical checkpoint rather than the current revised export.
