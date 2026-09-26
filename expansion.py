@@ -15,6 +15,7 @@ from storylines import targona_opening, kiana_further
 from storylines import kiana_reconciliation, gesmerha_opening
 from storylines import vellexia_opening, konomi_ordinary_expansion
 from storylines import aivu_opening
+from storylines import aivu_campaign
 from storylines import konomi_private_absence
 from storylines import soana_later_progression, soana_late_campaign
 from storylines import tirabade_chronology
@@ -164,8 +165,18 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(konomi_ordinary_expansion.SCENES))
     konomi_ordinary_expansion.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(aivu_opening.SCENES))
-    payload["Relationships"]["aivu"] = aivu_opening.RELATIONSHIP
+    payload["Relationships"]["aivu"] = copy.deepcopy(aivu_opening.RELATIONSHIP)
     payload["Etudes"].update(aivu_opening.ETUDES)
+    payload["Scenes"].extend(copy.deepcopy(aivu_campaign.SCENES))
+    payload["CompletedQuests"].update(aivu_campaign.COMPLETED_QUESTS)
+    payload["SeenCues"].update(aivu_campaign.SEEN_CUES)
+    payload["Relationships"]["aivu"]["Guidance"] = (
+        "Speak with Aivu in Drezen while she is your Azata companion. The map outings begin in Chapter 3, "
+        "and the garden visits can continue after your return from the Abyss. If you missed the map outings, "
+        "a separate garden introduction is available in Chapter 5. Leave time between outings. "
+        "An established friendship also offers optional visits at the Nexus; support after her rescue "
+        "requires completing her native rescue quest and having her back with you."
+    )
     payload["Scenes"].extend(copy.deepcopy(konomi_private_absence.SCENES))
     konomi_private_absence.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(soana_later_progression.SCENES))

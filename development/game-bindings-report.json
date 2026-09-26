@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 899,
-  "unique_targets": 161,
+  "binding_uses": 949,
+  "unique_targets": 163,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -125,6 +125,10 @@
     "f1a65c6d838f58d49ad4ff40544b895b": {
       "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/AnswersList_0027.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "9bbebfddf8861584d89b097263329352": {
+      "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0056.jbp",
+      "type": "BlueprintCue"
     },
     "666c827662e8af14798009a98c5aae52": {
       "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp",
@@ -532,6 +536,10 @@
     },
     "5a5a533c9ce630a48b877f9a194840cb": {
       "path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "1ad9b8fa1fe3cb84b932e8a889fc1897": {
+      "path": "World/Quests/MythicQuests/Azata/C4_WheresMyDragon/WheresMyDragon_azata_c4_quest.jbp",
       "type": "BlueprintQuest"
     },
     "4774e38b267c47f2b5f6c0975ec486f0": {

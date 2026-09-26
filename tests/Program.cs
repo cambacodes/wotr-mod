@@ -297,6 +297,11 @@ internal static class Program
             RemoteContinuationTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "ember").Select(s => s.Id));
         }
+        if (story.Scenes.Any(s => s.Id == "aivu.a_garden_that_can_go"))
+        {
+            AivuCampaignTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "aivu").Select(s => s.Id));
+        }
         if (story.Scenes.Any(s => s.Id == "vellexia.the_unused_reply"))
         {
             VellexiaCampaignTests.Run(story, Check);

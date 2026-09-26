@@ -28,14 +28,15 @@ The user's earlier instruction to proceed without previews remains applicable.
 
 ## Current development checkpoint
 
-The integrated development export has 501 scenes across 15 route groups covering 14 of the 37 planned characters.
+The integrated development export has 527 scenes across 15 route groups covering 14 of the 37 planned characters.
 These counts describe written and integrated material, not completed routes.
 The latest [Vellexia integration checkpoint](reference/parallel/vellexia-campaign-integration-checkpoint.md) records the assembled export, remote-conversation repair, verification and remaining character work.
 Vellexia now has thirty entries with an independently reviewed ordinary correspondence campaign.
 Ember's thirty-six friendship entries include the reviewed late start and separate care branch.
 Gesmerha's later living campaign has passed independent review and is integrated, with thirty-eight total entries and 25,658 distinct counted words.
 The [late-campaign checkpoint](reference/parallel/gesmerha-late-campaign-integration-checkpoint.md) records its checks and remaining access requirements.
-Aivu's expanded friendship is undergoing independent revision review and is not integrated yet.
+Aivu's ordinary Azata friendship campaign has passed independent review and is integrated, with thirty entries and 24,172 distinct counted words.
+Its [integration checkpoint](reference/parallel/aivu-campaign-integration-checkpoint.md) separates that approval from unfinished Trickster guest access and runtime verification.
 Konomi has 64 scenes, with the independently reviewed late-career continuity repair integrated and a reviewed general portrait staged.
 Her current export is pinned in [the integration checkpoint](reference/parallel/konomi-political-integration-checkpoint.md).
 Her revised 64-scene script passes the assembled editorial review at 91-93 across the reviewed disciplines.
@@ -47,8 +48,8 @@ The user has removed the TTS freeze milestone.
 Complete routes through review on their merits without rushing writing or lowering thresholds for a voice-testing deadline.
 Soana's late-campaign continuation has passed two independent reviews and is integrated, bringing her material to 23 visits and 12 endings.
 The exact export and verification limits are recorded in [the Soana integration checkpoint](reference/parallel/soana-late-campaign-integration-checkpoint.md).
-Anevia and Irabeth's independent campaigns are progressing in separately owned files while Jerribeth's recovery work proceeds independently.
-The [staged Tirabade bridge](reference/parallel/tirabade-bridge-staging-checkpoint.md) has passed its bounded literary review and focused joins, but is not yet in the development export.
+Anevia and Irabeth's independent campaigns and their reviewed shared bridge are integrated.
+Their restored-character access remains under native actor and event-lifecycle development.
 The [Jerribeth observer review](reference/parallel/jerribeth-recovery-observer-review.md) accepts a read-only recovery prerequisite, not a working resurrection or relocation.
 The older scene counts below are historical checkpoints, not the current inventory.
 
