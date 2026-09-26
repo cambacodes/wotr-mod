@@ -78,3 +78,14 @@ No `nvidia-smi` command is available.
 The official Chatterbox documentation inspected in this session describes CPU support for Nano and a Python 3.11 development/test environment.
 Those observations support trying an isolated CPU evaluation environment, not assuming the documented CUDA example or advertised speed will match this machine.
 No packages, drivers or Python installations were changed.
+
+## Reviewed Konomi portrait staged
+
+The built-in image tool produced version 2 by widening the first candidate's framing to recover the clipped ear and add headroom.
+Independent actual-image review scores identity 93, adult attractiveness 95, anatomy 92, story fit 93, painterly consistency 94 and composition 93.
+The accepted PNG is staged as `art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/Konomi.png`, SHA256 `74267A675F25A786A118B54631D9093305478A484AACEA370082708AFB35B196`.
+It exactly matches `art/candidates/konomi/konomi-v2.png`; the exact edit prompt and both source candidates are retained.
+Every Konomi page in the frozen export resolves to this staged image key.
+This is a general character portrait with an office setting, not a literal scene illustration for each road, lodging or letter.
+Actual Unity image loading, scaling and placement beside text remain unverified.
+No installed portrait was changed.
