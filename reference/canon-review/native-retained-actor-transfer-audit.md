@@ -112,3 +112,24 @@ Verify release returns control to the intended native positioning behavior witho
 For cross-area transport, the missing prerequisite is a demonstrated non-disposing detach plus target adoption with consistent serialization, registry and view lifecycle.
 No inspected public operation provided that contract.
 Until such an operation is demonstrated, stage contact in the original scene or leave cross-area delivery explicitly unavailable.
+
+## Follow-up: callers that mutate the exposed entity list
+
+The parent correctly identified `AllEntityData`'s mutable list as a second discovery path.
+I reran the installed-assembly scan with actual IL instruction boundaries and resolved method tokens, instead of the earlier byte-pattern candidate search.
+It examined declared method bodies, including compiler-generated iterator methods, for calls to `get_AllEntityData` and removal/clear methods in the same body.
+This search does not prove the absence of mutation through a helper, a previously stored list alias, reflection or another assembly.
+
+One concrete direct-list removal exists in `Player.RemoveEverybody`.
+It first calls `RemoveCompanionInternal` for party members, collects all `UnitEntityData` from `CrossSceneState.AllEntityData`, removes those objects directly from that list and updates the character lists.
+It does not adopt the actors into an area state, update their `HoldingState`, reconcile target spawners or establish a surviving view in a destination.
+It is a bulk party reset precedent, not a complete NPC transfer operation.
+
+I also decompiled `Player.RemoveCompanion`, `RemoveCompanionInternal` and `UnitPartCompanion.SetState`.
+They change party membership, companion state, pet state, visibility and associated notifications.
+They do not provide source-to-target scene ownership transfer.
+The other matched bodies remove party references, clear derived character caches, dispose scene entities, change the saved-area collection or clean up unrelated inventory/import state.
+The scene-loader methods were already read in full for the earlier findings.
+
+The additional native precedent therefore confirms that bypassing disposal through direct list removal is possible in special-purpose engine code, but leaves the required complete transfer contract unproved.
+Do not promote that partial operation to a production recovery primitive without target adoption, native-spawner behavior, save/reload and view-lifecycle evidence.
