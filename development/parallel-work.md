@@ -421,6 +421,15 @@ Native teleports limit the verified initial actor window; later access and resto
 Root retains shared integration, production code and image generation ownership.
 No worker may approve their own delivered writing or art.
 
+The Terendelev actor audit and exact records are now released.
+They identify the native human prefab's prologue combat behavior, a clone recipe, the actual outdoor scene and a Storyteller-area anchor on a parsed static-walkable navigation triangle.
+Runtime free-space selection, persistent delivery and ordinary click interaction remain implementation requirements.
+Targona-v2 passed independent source-image review and is staged under the exact TargonaCorrespondence scene key alongside the previously accepted Jerribeth-v4 source.
+Both staged files were verified inside the locally generated package without changing installed assets.
+Soana-v7 remains below the strict review target for the repair detail.
+Root also reproduced and fixed the source archive's missing expansion inputs; fresh extraction rebuilds the exact reviewed 264-scene story.
+`terendelev_api_recover` now owns only the independent Konomi ordinary-expansion writing review while the other two authors finish their separate modules and focused tests.
+
 ## Recovered parallel batch
 
 The next batch began with Gesmerha's opening, Kiana's mixed Elan-history reconciliation and Terendelev's materialization API investigation.

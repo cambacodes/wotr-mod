@@ -10,3 +10,7 @@ Root inspected the output and retained the face, clothing, hands and painted tre
 Independent assessment is still required; the generation prompt is not evidence of acceptance.
 The original v1 remains available for comparison.
 No runtime crop or installed asset was changed.
+
+Independent review in `reference/art-review/targona-v2-review.md` subsequently accepted this source at 92-94 across the reviewed disciplines.
+The exact source has been copied to the development scene-art key `TargonaCorrespondence` without cropping or resizing.
+Actual game display and separate small portrait crops remain unverified.
