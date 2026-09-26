@@ -3,6 +3,8 @@
 Root independently read all six source visits, including both musical trials, failed checks, non-roll alternatives, alternate song endings, aftermath choices and the three private-evening outcomes.
 The initial reviewed source SHA256 was `9C541DE0472C1A2C176997696E882A49B761E5B0D9CDE6722C111F46F49B9828`.
 This report requests revisions and does not approve integration.
+The requested corrections were subsequently verified and a separate independent final review accepted the repaired contribution.
+See `aranka-continuation-final-review.md` and `../parallel/aranka-integration-checkpoint.md` for the final revision and actual integration results; the findings below preserve the initial review history.
 
 ## Required corrections
 

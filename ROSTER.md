@@ -45,7 +45,7 @@ Existing romance ownership determines whether to extend a route or create a new 
 | Nurah | RanRomance | Extend recruitment, liberation and good/chaos/evil branches; preserve existing Trickster reactivity | Installed RanRomance readme inspected |
 | Targona | RanRomance | Extend wing-healing and mythic-power choices with reachable Trickster follow-through | Six development letters extend verified parent finales; full assembled audit and artwork pending |
 | Terendelev | RanRomance | Extend the scale, Ravener and remains branches; preserve original identity during restoration | Reviewed unregistered delivery service and parent outcome bindings; actual caller, actor delivery and continuation remain incomplete |
-| Aranka | RanRomance | Reach her established story through Desnan contacts without falsely changing Trickster into Azata | Installed state and journal map audited; current physical contact still needs implementation |
+| Aranka | RanRomance | Reach her established story through Desnan contacts without falsely changing Trickster into Azata | Six reviewed continuation visits integrated at exact living island contact; parent finales preserved; Trickster acquisition, art and runtime verification remain incomplete |
 | Arueshalae | Base game | Extend actual romance and dream history; keep redeemed and corrupted outcomes distinct | Native romance root identified; adapter pending |
 | Camellia | Base game | Extend native romance and revelations without inventing automatic reform | Native romance root identified; adapter pending |
 | Wenduag | Base game | Extend loyalty and trust; use her own ambitions in introductions and intrigue | Native romance root identified; adapter pending |

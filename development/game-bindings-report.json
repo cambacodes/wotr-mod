@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\konomi-finishing-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\aranka-continuation-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 543,
-  "unique_targets": 115,
+  "binding_uses": 578,
+  "unique_targets": 132,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -22,6 +22,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy.jbp",
       "type": "BlueprintUnit"
     },
+    "430cba7801b149b4e8494ace6baf4f7c": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_DesnaPriest.jbp",
+      "type": "BlueprintUnit"
+    },
     "3ba3a0ff8575be8419159221177c1411": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/BlindCarver_Wintersun.jbp",
       "type": "BlueprintUnit"
@@ -37,6 +41,10 @@
     "a32a07903e428d34cb0e98a804d40569": {
       "path": "Units/NPC/Unique/Act_4_MidnightIsles/RaptureOfRupture/Vellexia_Default.jbp",
       "type": "BlueprintUnit"
+    },
+    "31bab5549f7ea384186159a238360c8d": {
+      "path": "World/Areas/Act_3_DemonsHerecy/AzataIsland/AzataIsland.jbp",
+      "type": "BlueprintArea"
     },
     "2570015799edf594daf2f076f2f975d8": {
       "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp",
@@ -85,6 +93,10 @@
     "bf1542830cfa01d4c9db04546681084d": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0001.jbp",
       "type": "BlueprintCue"
+    },
+    "5ff8a80442182f84e849b4281f98b9ca": {
+      "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/AnswersList_0008.jbp",
+      "type": "BlueprintAnswersList"
     },
     "f1a65c6d838f58d49ad4ff40544b895b": {
       "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/AnswersList_0027.jbp",
@@ -326,6 +338,14 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAngel/PlayerIsAngel.jbp",
       "type": "BlueprintEtude"
     },
+    "5f72b252bd7fa8d48bd04c27982a4f9c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataDevilDecision_Contract.jbp",
+      "type": "BlueprintEtude"
+    },
+    "0b129925567b68d4fb712b4bee6c0f9a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataDevilDecision_Deception.jbp",
+      "type": "BlueprintEtude"
+    },
     "0ece5844b86deb44ea9d54190de1463e": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataIsland_DevilDetachDragon.jbp",
       "type": "BlueprintEtude"
@@ -497,6 +517,78 @@
     "ec76729da60441a1b2028f340743c0a8": {
       "type": "BlueprintCue",
       "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2e98dbe685f045cdabf88b66e4cde9ff": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Aran.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d4dd8a50613e4d528913d0a24d06fca1": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Aran.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1dacd3dfe1bf47c8a73074814e40b1c8": {
+      "type": "BlueprintQuest",
+      "path": "RanRomance.Aran.AranQuest.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a16f4be6de0a4f35a9b13eca4395d6e5": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "61461d05999b46218e7700e6596243b5": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04Azata.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "363860bffda1404db6ec996384fe2f26": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04Azata.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "43936228f4614272a7c7e25ebaaec2c7": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04Azata.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "599e7c0cc51741cda1bc55b787734c57": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "fefc9911dde04a76975e9027118c7935": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f9df40d7d6b346298075b435eee6921c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e16e5b0b3aea426a888e8bb61c521815": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b18d250fa2fb4fdf9fe4eba04e9d1655": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook03End.Configure",
       "provenance": "reviewed-parent-source",
       "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
     }

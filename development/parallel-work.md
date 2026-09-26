@@ -2,7 +2,7 @@
 
 The user authorizes up to five parallel workers with exclusive file ownership and independent review.
 This session provides three child-agent slots plus root, and all three slots are in use.
-The table below is current as of the 291-scene checkpoint on 26 September 2026; later sections retain historical handoffs.
+The table below is current as of the 303-scene checkpoint on 26 September 2026; later sections retain historical handoffs.
 Root owns shared engine changes, integration, exports, art generation and final verification.
 
 The user's next requested milestone is one complete route suitable for TTS evaluation, including consideration of Chatterbox.
@@ -20,6 +20,9 @@ Keep all 37 roster characters and their existing requirements in scope.
 
 
 Worker names reflect their earlier roles, not fixed authoring or review assignments.
+Latest main is 303 scenes at SHA256 `3ACCB25AF2142B70ACBCC2BCA1A6839D0571E1DD38097B5578363720534108AD`, including Aranka's accepted six-visit island continuation.
+The combined current parent fixture is `reference/canon-review/expansion-parent-bindings.json`.
+See `reference/parallel/aranka-integration-checkpoint.md` for verification and remaining full-route requirements.
 Current main is 297 scenes at SHA256 `742FBC71101C2A5CD82DABAFF7D746DFAE07E7339EF8368769F4E24A5245E86F`.
 Konomi's early reciprocity and private career/farewell contributions passed independent review after corrections and are integrated.
 See `reference/parallel/konomi-finishing-checkpoint.md` for exact verification and remaining requirements.

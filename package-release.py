@@ -24,6 +24,8 @@ with ZipFile(dist / f"ThreeAtTheTable-source-{version}.zip", "w", ZIP_DEFLATED) 
     for file in (ROOT / "tools").glob("*.py"):
         archive.write(file, file.relative_to(ROOT))
     archive.write(ROOT / "reference/canon-review/targona-parent-bindings.json", "reference/canon-review/targona-parent-bindings.json")
+    archive.write(ROOT / "reference/canon-review/aranka-parent-bindings.json", "reference/canon-review/aranka-parent-bindings.json")
+    archive.write(ROOT / "reference/canon-review/expansion-parent-bindings.json", "reference/canon-review/expansion-parent-bindings.json")
     archive.write(ROOT / "reference/expansion/etudes.json", "reference/expansion/etudes.json")
     archive.write(ROOT / "package/Info.json", "package/Info.json")
 for archive in dist.glob("*.zip"):

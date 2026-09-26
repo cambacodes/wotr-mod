@@ -9,7 +9,7 @@ Run from the repository root in PowerShell:
 
 ```powershell
 $env:RRT_PYTHON = "$env:LOCALAPPDATA\Python\pythoncore-3.14-64\python.exe"
-$env:RRT_PARENT_BINDINGS = (Resolve-Path reference/canon-review/targona-parent-bindings.json).Path
+$env:RRT_PARENT_BINDINGS = (Resolve-Path reference/canon-review/expansion-parent-bindings.json).Path
 & "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build src/Tirabade.csproj -c Release --nologo -v quiet
 & "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build managed-tests/ManagedBuildTests.csproj -c Release --nologo -v quiet
 & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe 'D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure' development/Story.json
