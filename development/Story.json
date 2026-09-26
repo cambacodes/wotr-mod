@@ -62498,6 +62498,1999 @@
         "0dc8b8604bb33c846a63f3eb62443674"
       ],
       "ContactUnit": "ca2d58c5c65723945857e04fb85d30ce"
+    },
+    {
+      "Id": "soana.when_the_road_returns",
+      "Title": "When the road returns",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I wondered what you would say when I came back.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Soana turns at the sound of your voice. She has a small bundle of roots in one hand. For a moment she simply looks at you. Then she puts the roots down in a place where they promptly begin to roll apart.{/n}\n\"Something sharper. I had an excellent beginning prepared.\"\n{n}One root reaches the edge of the stone. She catches it without looking away from you.{/n}\n\"You have been gone long enough for me to improve it several times. Now I shall have to make do with what occurs to me.\"\n\"I came back.\"\n\"Yes. I can see that. Do not require me to make it a sensible matter immediately.\"\n{n}She leaves the scattered bundle where it is and comes toward you.{/n}",
+          "Choices": [
+            {
+              "Text": "[Meet her as the woman you have been courting.]",
+              "Next": "welcome",
+              "Set": [],
+              "Requires": [
+                "soana.later_courting"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Greet the friend whose company you have missed.]",
+              "Next": "friend",
+              "Set": [],
+              "Requires": [
+                "soana.later_friends"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I cannot stay yet. I wanted you to know I was here.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "welcome",
+          "Speaker": "Soana",
+          "Text": "{n}She holds out both hands. You take them, and she draws you close enough to examine your face without tilting her head so far.{/n}\n\"There. That is a more useful distance.\"\n\"For examining me?\"\n\"Among other things. I shall ask before undertaking a more thorough examination.\"\n{n}Her smile arrives slowly, then gives way to an expression less easily teased away.{/n}\n\"I wanted to know whether you would still want to stand here. I disliked having to wait for the answer. I am pleased with the one I have.\"\n\"I missed you.\"\n\"Tell me something of it while we walk. Not every danger. Something you wished I had been there to hear.\"\n{n}She keeps one of your hands while reaching for her stick with the other. At the first uneven patch she lets go to find her footing, then offers her hand again when the ground permits it.{/n}\n\"And if there is something you cannot tell me yet, say that. I have managed not knowing. I shall not promise to enjoy further practice.\"",
+          "Choices": [
+            {
+              "Text": "[Walk with her toward the nursery.]",
+              "Next": "nursery",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "friend",
+          "Speaker": "Soana",
+          "Text": "\"You have come back with the same unfortunate opening. I ought to have taught you better.\"\n\"You could begin again.\"\n\"An alarming proposal. We should first discover whether I am pleased to see you.\"\n{n}She picks up her stick and gestures for you to come beside her. The roots remain scattered on the stone.{/n}\n\"Leave those. They will not become less edible because someone saw me hurry.\"\n{n}You tell her one small thing you remember from the road: a place where the wind sounded as though it were moving water, until you found only dry grass. She listens, asks which way the ground sloped, and lets the description remain a description after you answer.{/n}\n\"I should have liked to hear it,\" she says. \"I am pleased you thought of telling me. There. We have settled the question without beginning our entire acquaintance again.\"\n{n}She turns toward the nursery path. You walk beside her, matching the pace she chooses.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask what the nursery looks like now.]",
+              "Next": "nursery",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "nursery",
+          "Speaker": "Narrator",
+          "Text": "{n}The path is familiar enough for you to anticipate its turn. Soana notices when you avoid the loose stone without being told.{/n}\n\"Some education survives travel,\" she says.\n{n}She stops where the young trees stand, or stood, between the sheltering banks.{/n}",
+          "Choices": [
+            {
+              "Text": "[Look at the trees she carried the voice to save.]",
+              "Next": "saved",
+              "Set": [],
+              "Requires": [
+                "soana.nursery_saved"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Look at the ground the working left bare.]",
+              "Next": "lost",
+              "Set": [],
+              "Requires": [
+                "soana.nursery_lost"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "saved",
+          "Speaker": "Soana",
+          "Text": "\"Two died despite all our cleverness. A third has grown sideways as if to demonstrate its independence.\"\n{n}She points out the crooked sapling. The surviving leaves look ordinary, which is startling after remembering what they cost her.{/n}\n\"The nights stopped speaking in borrowed voices,\" she says. \"Eventually. I had an afternoon when I caught myself being angry about something entirely new. It was a relief.\"\n\"You could have told me that first.\"\n\"I wanted to show you the trees. I still choose them. I have not spent your absence turning my answer into a mistake so that our next meeting might be easier.\"\n{n}She bends the crooked stem gently, tests its spring, and leaves it pointing where it was.{/n}\n\"Nor have I discovered what became of Corven. A stolen voice was never news. Some days I remember the sound. Most days I remember something less convenient for a hungry thing to imitate. The way he used to laugh before I reached the end of a complaint, for instance.\"\n\"Was he usually right?\"\n\"Frequently enough to be irritating. I miss that too.\"",
+          "Choices": [
+            {
+              "Text": "[Return toward the upper path with her.]",
+              "Next": "path",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "lost",
+          "Speaker": "Soana",
+          "Text": "{n}There are seedlings in the sheltered corner, spaced widely enough that the bare ground remains visible between them. Soana kneels to lift a fallen twig from one.{/n}\n\"Meret's seed. A little of it came up. I was tempted to count the new shoots every morning. I restricted myself to every other morning and felt exceptionally reasonable.\"\n\"You have begun again.\"\n\"Yes. The dead stems did not turn green because I decided to be industrious. Those are still there.\"\n{n}She indicates the pale sticks farther up the slope. Nothing is growing against the dry ridge where the thing was contained.{/n}\n\"I have not opened the bowl. I have not reopened the shrine. A quiet season is not an invitation to poke at the answer.\"\n{n}She rises and brushes soil from her palm.{/n}\n\"Come. Meret has found something she wants me to see before she leaves. I had begun to suspect that you would arrive only after I had found a satisfactory way to be angry about it. You have interrupted the process.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what Meret found.]",
+              "Next": "path",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "path",
+          "Speaker": "Soana",
+          "Text": "{n}At the upper bend you find Meret waiting with a cut length of wire wrapped around a stick. Her bow is on her back. The worn family mark hangs at her belt.{/n}\n\"There are snares beyond the hollow,\" she says. \"Not ours. Fresh cuts where someone has taken hazel, and sacks dragged along the ground. I found this one empty. I did not walk through the rest to make sure.\"\n\"A welcome survival of good sense,\" Soana says.\n\"I have to leave with my camp. That has survived too.\"\n{n}Soana's mouth tightens. Meret turns to you.{/n}\n\"I said I would look at the eastern paths when I was here. I looked. Now I am telling her what I saw before I go. I am not handing you my place for the rest of your life either.\"\n\"I had not offered it,\" you say.\n\"Good. We may finish this conversation before the roots grow over us.\"\n{n}Soana examines the wire without unwrapping it. Then she looks toward the route you helped agree upon.{/n}",
+          "Choices": [
+            {
+              "Text": "\"We kept the carts out of the cleft. This is something else to investigate.\"",
+              "Next": "cleft",
+              "Set": [],
+              "Requires": [
+                "soana.path_cleft"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"The flood passage did not authorize snares. We should find who put them there.\"",
+              "Next": "flood",
+              "Set": [],
+              "Requires": [
+                "soana.path_flood"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "cleft",
+          "Speaker": "Soana",
+          "Text": "\"Varn still carries his loads through. He has acquired a more varied vocabulary for the narrowest part. I hear it before I see him.\"\n{n}Meret makes a short, appreciative sound.{/n}\n\"Someone has been walking beyond the carrying path,\" Soana continues. \"That does not make every person who used it responsible. Nor does it make the cut branches less cut.\"\n\"What would you have done before I returned?\"\n\"Followed the trail. Then decided whether the people at its end were more use frightened or listening. I have not forgotten either method.\"\n{n}She hands the wire back to Meret.{/n}\n\"Leave that outside the cave. I want to recognize another piece of the same work when I see it.\"",
+          "Choices": [
+            {
+              "Text": "[Agree to inspect the eastern ground in daylight.]",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "flood",
+          "Speaker": "Soana",
+          "Text": "\"The families used their permission twice. They left the marker as agreed. The kindling was replaced, though one bundle had more damp twigs than I should have accepted from a child.\"\n\"Did you tell Varn?\"\n\"In sufficient detail.\"\n{n}Meret turns her face aside to hide a smile.{/n}\n\"This wire was beyond the permitted camp,\" Soana continues. \"I want to know whose hands put it there. Then I want it out. That need not wait until I have decided how charming to be about the people attached to those hands.\"\n{n}She gives the wrapped wire back to Meret.{/n}\n\"Keep it where I can compare it with the rest. No bare fingers on the loop. It was made by somebody who expected resistance.\"",
+          "Choices": [
+            {
+              "Text": "[Agree to inspect the eastern ground in daylight.]",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Soana",
+          "Text": "{n}Meret promises to show you the beginning of the trail before her camp leaves. Soana begins to ask for more time, stops, and asks for the place where Meret will leave her last report instead.{/n}\n\"Here,\" Meret says. \"With you. I can stay for the inspection. After that, you will have to decide without my grandmother standing conveniently behind me.\"\n\"Your grandmother knew when to stop enjoying a point.\"\n\"No, she didn't.\"\n{n}Soana's answer is a reluctant snort. Back at the cave, she retrieves the scattered roots and puts them in their basket. Then she turns to you.{/n}\n\"I have something disagreeable to deal with. I am also glad you came. The first fact has not swallowed the second.\"\n{n}She touches your forearm briefly, without making the touch a request for service.{/n}\n\"Come when we can see the ground. Bring boots you can bear to get muddy. I have had enough of people declaring themselves ready while dressed to be admired.\"",
+          "Choices": [
+            {
+              "Text": "[Return for the trail, with the welcome remembered.]",
+              "Next": null,
+              "Set": [
+                "soana.late_returned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.after_quest",
+        "soana.progression_kept",
+        "soana.progression_kept"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ]
+    },
+    {
+      "Id": "soana.a_track_with_two_ends",
+      "Title": "A track with two ends",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Show me where Meret found the wire.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Meret leads you from the cave to a patch of churned earth beyond the upper bend. Soana follows with a short hooked stick. She has wrapped cloth around its lower end so that it will not slide in a tightened loop.{/n}\n\"For lifting what we have seen,\" she says. \"Not for waving about until something happens.\"\n{n}The dragged sacks have left two shallow furrows. Hoofprints cross them. A narrower trail turns under a hazel whose lowest branches have been cut away. At the edge of it, a tuft of coarse gray hair clings to a thorn.{/n}\n\"I heard something beyond there,\" Meret says. \"It stopped when I stopped. I thought it might be a wolf.\"\n{n}Soana examines the thorn without touching the hair.{/n}\n\"It might. The ground is willing to tell us more, if we refrain from putting our feet over its mouth.\"\n{n}Farther in, something scrapes once against a root.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lore Nature DC 26] [Separate the animal trail from the people who laid the traps.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillLoreNature",
+                "DC": 26,
+                "Success": "read",
+                "Failure": "mistake",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Have Meret watch the movement while you and Soana inspect the ground one strip at a time.]",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"We should return when we can give the ground our attention.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "read",
+          "Speaker": "Narrator",
+          "Text": "{n}The gray hair is caught below the level of the hoofprints' owner. The narrow trail belongs to a dog, not a wolf: a dragged tether has brushed the wet earth beside it, leaving a repeated line between the paw marks. Beyond the cut hazel the prints bunch together and stop.{/n}\n{n}You point out the tether before anyone moves. Meret goes around the hazel on bare stone. From there she can see the animal lying with one hind foot held by a low wire loop.{/n}\n\"Alive,\" she says. \"And making an effort to convince me it has plenty of teeth.\"\n{n}Soana crouches where the dog can see her without dragging itself around. She speaks to it in a low, unadorned voice. It growls. She tells it that its opinion has been received.{/n}\n{n}You follow the wire to the peg and show Meret where to release its tension. Soana lifts the loop with the padded stick. The dog snaps at the cloth, frees its leg, and crawls under the hazel before trying to stand.{/n}\n\"Keep back,\" she says. \"It has just learned how much strangers improve an afternoon. Give it time to reconsider.\"\n{n}With the animal clear, you can see the little knots of wire continuing in a line toward the camp. Several have been set in the paths used by smaller animals. One already holds a dead hare.{/n}",
+          "Choices": [
+            {
+              "Text": "[Mark the other loops before following the tether toward its owner.]",
+              "Next": "found_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "found_end",
+          "Speaker": "Soana",
+          "Text": "{n}The tether leads to a woman carrying two empty sacks. When the dog limps out to meet her she drops both sacks and kneels beside it.{/n}\n\"Tarn! You were tied.\"\n{n}She sees the bitten end of the tether, then the wrapped wire in Meret's hand.{/n}\n\"That was mine,\" she says. \"The snare. I did not mean it for him.\"\n\"I had suspected you were not running short of dogs,\" Soana replies. \"Whom did you mean it for?\"\n\"Hares. There are people to feed.\"\n{n}The woman gives her name as Hessa. She keeps a hand on the dog's back while he tries the injured foot. Soana waits until he can stand before asking Hessa to show her every trap, including the empty ones.{/n}\n\"Now?\"\n\"We have daylight, and you have seen what happens when only the person who set them knows where they are.\"\n{n}Hessa leads the inspection. The dog stays beside her. You find the whole short line before the light fades, gather the hare, and dismantle the wire. She takes the food but does not attempt to reset anything.{/n}\n{n}At the last peg, Soana asks her to come to the cave when she has settled the dog at camp. Hessa agrees to bring someone who can speak for their stores.{/n}",
+          "Choices": [
+            {
+              "Text": "[Return knowing who set the snares and where they ran.]",
+              "Next": null,
+              "Set": [
+                "soana.late_track_read",
+                "soana.late_trail_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "mistake",
+          "Speaker": "Narrator",
+          "Text": "{n}You take the narrow track for the approach of an animal still moving through the scrub. The nearest dry patch appears safe. When you step onto it, wire tightens against a branch and a hoarse yelp answers from beneath the hazel.{/n}\n{n}You stop. Soana pulls your sleeve back, hard enough to make you take the same step in reverse.{/n}\n\"There is another line. Look at it before you look for somewhere to stand.\"\n{n}The sound comes again. Now you can see a dog caught by a hind foot. It has dragged a loose tether into a second snare while struggling against the first. Your step disturbed that line and frightened it into pulling harder.{/n}\n{n}Meret reaches the dry stone beyond the hazel and calls to the dog. It keeps struggling. A woman answers from farther down the slope and comes running, stopping only when Soana orders her to look at the ground.{/n}\n\"Tarn. Stay, you foolish thing. Stay.\"\n{n}The dog recognizes her voice. She reaches him from the stony side, gets a hand beneath his chest, and holds him while Soana lifts the wire. He tries to stand afterwards but will not put weight on the trapped foot.{/n}\n{n}You acknowledge your mistake. The woman nods once and begins examining the foot instead of reassuring you. Soana puts the loosened wire around the stick.{/n}\n\"We inspect the rest slowly,\" she says. \"Being wrong has not made the ground less crowded.\"",
+          "Choices": [
+            {
+              "Text": "[Help carry the dog clear, then inspect with Hessa rather than guessing again.]",
+              "Next": "late_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "slow",
+          "Speaker": "Soana",
+          "Text": "{n}Meret finds a place above the hazel and stays there. She calls out when she can see the movement clearly: a dog, low to the ground, trying to reach a tether caught against a root.{/n}\n\"There is wire at the foot,\" she adds. \"I cannot see where it goes.\"\n{n}You and Soana begin at the last patch of undisturbed earth. She points out each place worth examining; you follow the line with your eyes before easing aside a leaf or fallen twig. It is slow work. The dog complains whenever a branch moves.{/n}\n\"I agree,\" Soana tells it. \"Complaining is appropriate. Moving about is not helping.\"\n{n}The first loop is empty. The second holds the tether, which leads to a third around the dog's hind foot. You call the pattern to Meret. She repeats it before moving down from her stone.{/n}\n{n}A woman from the camp hears the voices and arrives while you are loosening the first peg. She identifies herself as Hessa and admits the snares are hers before anyone asks. At Soana's direction she reaches the dog from the stony side and holds it still while the wire comes away.{/n}\n{n}He is shaken and tender-footed, but can walk to the edge of the scrub. You have used the clear part of the afternoon finding a safe approach. There is not enough light to check the entire trap line.{/n}\n\"No one goes through it tonight,\" Soana says. \"Not even someone who is certain she remembers every peg. Especially not her.\"",
+          "Choices": [
+            {
+              "Text": "[Mark the closed approach and arrange to finish the inspection in daylight.]",
+              "Next": "slow_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "late_end",
+          "Speaker": "Soana",
+          "Text": "{n}Hessa carries Tarn to a dry place near the camp and settles him on an old cloak. She says she will keep him off the foot until she can see whether it improves. There is no quick cure offered by anyone present.{/n}\n{n}The three of you then follow her as she points out the traps she can remember. You remove those and mark the approach to the remaining section. When the light begins to fail, Soana insists on stopping.{/n}\n\"You will forget something because you are frightened for him,\" she tells Hessa. \"I would prefer to find it with morning light instead of my ankle.\"\n{n}You return at dawn. Hessa meets you without the dog, which she has left with someone at camp. The inspection finds two more loops hidden under fallen leaves. All the snares come up. Hessa takes the hare from the one that caught it, then wraps the empty wire around a piece of wood.{/n}\n\"I will bring our stores keeper to hear what you want,\" she tells Soana.\n\"You are capable of hearing it yourself. Bring the person who can answer for what you have already taken.\"\n{n}Hessa agrees. Meret has delayed her departure to finish the search. She will leave after the meeting, even if the conversation remains unpleasant.{/n}",
+          "Choices": [
+            {
+              "Text": "[Return after the full inspection, with its cost remembered.]",
+              "Next": null,
+              "Set": [
+                "soana.late_track_missed",
+                "soana.late_trail_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "slow_end",
+          "Speaker": "Soana",
+          "Text": "{n}Hessa takes Tarn back to camp and leaves the closed approach marked. In the morning she meets you with the empty sacks, walks the trap line from its beginning, and shows you each loop before anyone crosses it.{/n}\n{n}The dog follows a little way before she sends him back. His foot is sore, and for once he accepts an instruction without testing its length.{/n}\n{n}You dismantle the whole line. One snare holds a hare; Hessa takes it after checking with Soana that she does not mean to have food wasted as part of the argument.{/n}\n\"Eat it,\" Soana says. \"Then come to the cave with whoever can speak for your stores. I want to know what else you intended to carry away.\"\n{n}Hessa ties the bundle of wire and agrees. Meret has stayed to see the search through, postponing her departure until after the meeting. She reminds Soana that this is a delay she chose, not an extension of her grandmother's promise.{/n}\n\"I heard you the first time,\" Soana says.\n\"Then the second should require very little effort.\"\n{n}Soana looks at the bundle of snares and does not quite succeed in hiding a smile.{/n}",
+          "Choices": [
+            {
+              "Text": "[Return after the careful search has established the whole line.]",
+              "Next": null,
+              "Set": [
+                "soana.late_track_slow",
+                "soana.late_trail_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.after_quest",
+        "soana.progression_kept",
+        "soana.late_returned"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ]
+    },
+    {
+      "Id": "soana.what_the_hollow_costs",
+      "Title": "What the hollow costs",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Hessa said she would bring someone to answer for the stores.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Hessa has brought a narrow sack and a woman with a bandaged palm. They wait beyond the cave mouth rather than setting their belongings in it. Meret stands beside the path with her pack already fastened.{/n}\n\"Mava,\" the newcomer says. \"I count what we have left to eat. I also count what people insist they cannot part with before admitting it is food.\"\n{n}Hessa opens the sack. Inside are hazelnuts, loose husks, and a small bundle of thin branches cut for smoking meat.{/n}\n\"We can return the nuts,\" Mava says. \"The hare has been eaten. I will not offer to return that.\"\n\"How many sacks?\" Soana asks.\n\"Two. This is what remains of the second.\"\n{n}Soana reaches toward the nuts, then stops short of taking any.{/n}\n\"And the branches?\"\n\"From where the hazel crowded the trail.\"\n\"It was not crowding its own ground.\"\n{n}Mava looks at the cut ends. She does not try that explanation again.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let Soana ask about the intended harvest before offering a judgment.]",
+              "Next": "stores",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I need time to hear everyone. Let us arrange another meeting.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "stores",
+          "Speaker": "Soana",
+          "Text": "\"Three days,\" Mava says. \"Enough gathering to buy meal for the journey. The small nuts we keep. The good ones sell. Hessa can smoke what she catches, if she is allowed to catch anything.\"\n\"Not in that hollow,\" Soana says.\n\"We did not find a notice saying who owned it.\"\n\"You found a forest in a country being devoured. I should have thought the demand for caution might occur to you without a notice.\"\n{n}Hessa closes the sack. Mava watches her hands for a moment before answering.{/n}\n\"We are not passing through for amusement. Our first store was taken on the road. The next village will sell, but not on our promise of what we might earn. I can leave these nuts and go there with less. I will do it if that is your answer. I want you to know what you are telling us to carry.\"\n{n}Soana looks toward Meret. Meret shakes her head before a request can form.{/n}\n\"I cannot feed both camps. I can show them the road when we leave. That is what I can give.\"\n\"I had not asked.\"\n\"I know the expression.\"\n{n}Soana's nostrils flare, then she lets the interrupted request fall.{/n}\n\"The hollow holds food for creatures that cannot buy elsewhere,\" she tells Mava. \"Strip it because you are frightened, and the next hungry people will find an empty place. They will ask why I did nothing while there was still something to keep.\"",
+          "Choices": [
+            {
+              "Text": "\"What can the ground bear? Show us that much before we decide.\"",
+              "Next": "ground",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "ground",
+          "Speaker": "Soana",
+          "Text": "{n}You walk to the hazel edge together. Meret waits where she can see both the camp's approach and the path home. Mava opens the sack again, comparing the gathered nuts with what remains overhead.{/n}\n{n}Soana shows her branches already stripped clean and the small heaps of husks below them. Farther south there is a heavier crop on rougher ground. Reaching it with full sacks would take longer. It would also put the gatherers beyond the deer hollow.{/n}\n\"Three daylight visits there,\" she says. \"No snares. No branches cut. You carry your empty sacks in where I can see them and your full sacks out the same way. I will have to spend those days watching people pick through what I would rather leave.\"\n\"Would it be enough?\" you ask Mava.\n\"For less meal. Enough to make the bargaining possible.\"\n\"And the other answer?\" you ask Soana.\n\"They leave the sack and go with Meret. I keep this edge closed while the animals need it. I will spend time watching that boundary instead. Keeping people out is not an occupation performed by pronouncing a sentence.\"\n{n}She studies the low branches, then looks at you.{/n}\n\"I can make an approach unpleasant enough that a person thinks before returning. I cannot make a whole forest invulnerable, and I cannot be here in every weather. You have heard enough of my plans to understand the size of those omissions.\"\n\"Tell them what unpleasant means.\"\n\"I was going to. They will see where the line is before they meet it.\"",
+          "Choices": [
+            {
+              "Text": "[Hear the working and its limits.]",
+              "Next": "thorn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "thorn",
+          "Speaker": "Soana",
+          "Text": "\"A turning thorn. Three cuts in dead wood, ash from the same branch, and a name for the piece of ground I mean to keep. Whoever steps over the marked approach hears footsteps coming after them. The nearer they press, the nearer the steps. Turn back, and it stops.\"\n\"Whose feet?\" Hessa asks.\n\"Nobody's. A remembered sound given a little reach. There is no creature tied inside it. It cannot bite, and it cannot stop someone determined to pass. It can make a frightened person run badly. That is why you are hearing about it before I set it.\"\n{n}Hessa folds her arms.{/n}\n\"You intend to frighten us.\"\n\"I intend to discourage people from emptying this place while I am elsewhere. You are not exempt from the difficulty merely because you have explained it well.\"\n{n}Soana draws a short line in the dirt with her stick.{/n}\n\"It will keep only the approach I mark. Beyond it the forest remains a forest. Rain spoils the ash. I renew it or leave it. A person who knows the sign can break it with a wet cloth. There is no life knotted to its life.\"\n{n}She says the last words without looking away from you.{/n}\n\"You may compare it with the other thing I did. You may not call them the same because both offend you.\"\n\"And if we permit the three days?\"\n\"The line goes beyond the southern gathering ground. They can collect what we agreed without crossing it. More of the edge is left open. I shall dislike every sack that leaves, and count them all.\"",
+          "Choices": [
+            {
+              "Text": "\"Close the hollow. They have a road out, and taking its last food will leave others hungry.\"",
+              "Next": "reserve",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Allow the three days on the southern ground. Keep the inner approach marked and leave them a harvest they can sell.\"",
+              "Next": "harvest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "reserve",
+          "Speaker": "Soana",
+          "Text": "\"Then that is my answer,\" Soana says. \"Leave the sack. Take the road Meret showed you. I will not accuse you of stealing the hare back out of your own stomachs.\"\n{n}Mava looks down at the nuts. Hessa asks whether they may have enough for the morning's walk. Soana measures a portion into Hessa's empty hands before taking the rest.{/n}\n\"You have names now,\" Mava says. \"If we arrive hungry, you may use them while explaining why the animals needed the food.\"\n\"I will remember them,\" Soana answers. \"I would remember an empty hollow too.\"\n{n}There is no gratitude between them. Mava ties the mouth of the nearly empty sack and asks Meret how far they can travel before dark. Meret tells her. They begin discussing which loads must be made lighter. Hessa agrees to stay long enough to see the marked boundary before they leave. Meret gives her the directions once more, then goes to join her own camp.{/n}\n{n}Soana waits until they move away before speaking to you.{/n}\n\"I wanted that answer. It would be a relief to pretend I only endured it because you advised me. I shall spare you the privilege.\"\n\"You heard what it costs them.\"\n\"Yes. Stay long enough to see what keeping my side costs me. The thorn must be tested. A warning I have not listened to myself is merely a threat I find convenient.\"",
+          "Choices": [
+            {
+              "Text": "[Agree to test the closed approach with her.]",
+              "Next": null,
+              "Set": [
+                "soana.late_reserve",
+                "soana.late_boundary_agreed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "harvest",
+          "Speaker": "Soana",
+          "Text": "{n}Soana looks at the southern hazel for a long time. Then she names the three visits, ending each at midday so she can inspect the ground while there is still light. Mava repeats them. Hessa repeats the part about snares without waiting to be asked.{/n}\n\"The sack we brought?\" Mava asks.\n\"Counts toward what leaves. You are not beginning with empty hands merely because you brought one back.\"\n{n}Mava weighs that, then nods. She will stay with Hessa for the gathering and take a later road than Meret's camp. Waiting costs them company on the journey. She chooses it anyway.{/n}\n{n}Meret describes the safer fork twice, makes Hessa point it out from the bend, and shoulders her own pack again.{/n}\n\"I can leave without someone deciding that means I have ceased to care,\" she says.\n\"Go,\" Soana tells her. \"Before I find a reason to detain you that we both recognize.\"\n{n}Meret gives the wrapped wire to Hessa. The traps leave with their owner, dismantled. The deer hollow remains beyond the allowed ground.{/n}\n{n}Soana watches the hunters part.{/n}\n\"I would have preferred the quiet edge. I can choose to give some of it and still know what I preferred. We shall test the inner line before I let anyone gather near it. I will not have a running person trample the roots because I was careless about where a sound could reach.\"",
+          "Choices": [
+            {
+              "Text": "[Agree to test the boundary before the gathering begins.]",
+              "Next": null,
+              "Set": [
+                "soana.late_harvest",
+                "soana.late_boundary_agreed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.after_quest",
+        "soana.progression_kept",
+        "soana.late_trail_known"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ]
+    },
+    {
+      "Id": "soana.where_the_steps_end",
+      "Title": "Where the steps end",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I am ready to hear the thorn before anyone has to trust it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Soana has laid three pieces of dead thorn beside a shallow dish of ash. She has cut a different notch in each. There is no bowl from the old shrine among her tools.{/n}\n\"That one stays buried,\" she says when she sees where your eyes go. \"I can dislike beginning again without reusing everything that once hurt me.\"\n{n}She puts a wet cloth in your hand.{/n}\n\"Across all three cuts. That ends this working. If the sound follows someone beyond the place I showed you, use it. Do not wait for a more elegant failure.\"\n\"And if it remains inside?\"\n\"We see whether it gives enough warning to be worth the trouble. I am not asking for an act of faith.\"\n{n}She leaves the cloth with you while picking up the marked wood. Her fingers move confidently over the cuts, finding each by touch.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask where she wants you to stand, remembering the interrupted voice-working.]",
+              "Next": "changed_role",
+              "Set": [],
+              "Requires": [
+                "soana.voice_interrupted"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask which part of the test she wants you to undertake.]",
+              "Next": "role",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.voice_interrupted"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I cannot give the test its attention now. Leave the marks unlit until I can.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "changed_role",
+          "Speaker": "Soana",
+          "Text": "\"At the approach. You cross after I have spoken, then return by the same way. The cloth is for a sound that will not stay where I put it.\"\n\"You said you would ask someone else to close the next bowl.\"\n\"I remember what I said. This is not a bowl, and I am not putting my voice within reach of something that can take it. If you dislike the sound, you step back. You need not decide how much pain I ought to endure.\"\n{n}She turns the middle thorn in her hand.{/n}\n\"I have chosen a task whose limit either of us can enforce. That is not the same as forgetting what happened in the nursery.\"\n\"No.\"\n\"Nor is remembering it a promise never to put anything useful in your hands again. I have a forest to tend. I cannot afford such an elaborate grudge.\"\n{n}Her glance takes some of the sting from the words. She waits until you have understood the new task, then leads you toward the marked ground.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take the role she has actually offered.]",
+              "Next": "placing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "role",
+          "Speaker": "Soana",
+          "Text": "\"Walk the approach when I tell you. Listen. Turn back before you are tempted to invent an enemy for the sound. I shall watch from beside the marker.\"\n\"Have you used this before?\"\n\"A smaller sign, around a store people would not leave alone. It frightened a person I disliked and a person I wanted to welcome. I learned to show people where it began.\"\n{n}She picks up the last thorn.{/n}\n\"I have not used it here. The slope may carry the sound where I do not want it. That is why I asked for someone who could tell me what happened instead of telling me how wise I must have been.\"\n\"An exacting qualification.\"\n\"You have managed it. Sometimes with enthusiasm I found excessive.\"\n{n}She touches your elbow as she passes. The cloth remains in your hand. You follow her toward the ground she means to mark.{/n}",
+          "Choices": [
+            {
+              "Text": "[Walk with her to the chosen boundary.]",
+              "Next": "placing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "placing",
+          "Speaker": "Narrator",
+          "Text": "{n}The first thorn goes into a crack in dead wood beside the path. Soana sets the second where bare earth meets the roots, the third where a person returning would be able to see it. She lays ash in the cuts and speaks to the ground in a low voice.{/n}\n{n}No answering voice comes. A leaf turns on its stem and stops. Soana steps clear of the approach.{/n}\n\"Now. Slowly.\"\n{n}You cross the first mark. A footstep sounds behind you, heavy enough to press grit into the earth. You know that nobody followed. Knowing does not prevent your shoulders tightening.{/n}\n{n}Another step answers your next. When you stop, it stops a fraction later. The little difference makes it harder to dismiss.{/n}\n\"Come back,\" Soana says.\n{n}You turn. At the first thorn the sound ends. Then a loose pebble falls from the bank, making you look behind once more. Soana sees the movement and does not laugh.{/n}\n\"That part was a pebble. Sit if you need to. I know what the rest can do to the breath.\"",
+          "Choices": [
+            {
+              "Text": "\"Keep the sound this strong. The end is clear, and a warning must make someone stop.\"",
+              "Next": "strong",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Make it softer. Someone running from that could be hurt before they understand the way out.\"",
+              "Next": "soft",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "strong",
+          "Speaker": "Soana",
+          "Text": "\"Then we test the end again,\" she says. \"Knowing where it is helped you. Hessa will not be allowed to mistake that for everybody's experience.\"\n{n}She approaches the first thorn herself. You take her place beside the marker. The steps sound as she crosses, and her grip tightens on the stick before she can conceal it. She walks back deliberately, stopping just outside the sign.{/n}\n\"There. I dislike hearing myself followed. I still want a stranger to know that this is not unclaimed ground.\"\n{n}You walk the outer edge together. From one place below the bank the sound can be heard as a distant scrape, though neither of you has crossed. Soana moves the second thorn closer to the first and repeats the working. On the next circuit, the sound remains within the marked approach.{/n}\n\"Less ground,\" she says. \"A price I can see.\"\n{n}She asks you to stay while she shows Hessa and Mava the marker. They approach only as far as they choose. Mava hears enough to stop, then studies the route back instead of pretending she was not frightened.{/n}\n\"Put the warning where someone arriving late can see it,\" she says.\n{n}Soana agrees to leave pale stones on either side of the first thorn. The sound keeps its strength. The approach now advertises where it begins.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay until the visible warning and the tested boundary agree.]",
+              "Next": "strong_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "soft",
+          "Speaker": "Soana",
+          "Text": "{n}Soana studies you, then the uneven ground beyond the first thorn.{/n}\n\"A useful objection. I had been imagining a trespasser with the courtesy to fall somewhere less inconvenient.\"\n{n}She rubs some ash from the middle cut and renews the words. On the next crossing, the sound is a tread on dry leaves rather than a heavy foot on earth. It is still near enough to make you look around. It no longer seems about to reach you.{/n}\n\"Some will ignore it,\" she says.\n\"They could ignore the stronger one.\"\n\"More will ignore this. You need not make the cost disappear in order to prefer it.\"\n{n}You walk the outer edge together. At one point beneath the bank you hear a faint scrape without entering the marked ground. Soana moves the second thorn inward, surrendering a little reach. The next test holds the sound inside.{/n}\n{n}When Hessa and Mava come to see the boundary, Soana lets them choose how far to approach. Hessa crosses one step, hears the tread, and withdraws without being hurried.{/n}\n\"I would have thought something was in the bushes,\" she says.\n\"That is the intention. These stones show where the thought begins. Tell anyone you bring with you.\"\n{n}Mava says she would prefer a simple request. Soana answers that she has made one and is making this as well. They leave the disagreement where the pale stones stand.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay until the gentler warning has been tested from both sides.]",
+              "Next": "soft_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "strong_end",
+          "Speaker": "Soana",
+          "Text": "{n}Back outside the cave, Soana takes the unused wet cloth from you and lays it over the rim of a pot. She looks tired, but there is satisfaction in the way she sets the marked stick within reach.{/n}\n\"I shall inspect it after rain. Until then, that approach can speak without waiting for me to hear it first.\"\n\"And the rest of the forest?\"\n\"Remains larger than my intentions.\"\n{n}She holds up one finger before you answer.{/n}\n\"Let me enjoy one small success before we list everything it has not done. Hessa has seen the line. Mava knows the terms. I have kept the strength I wanted and made the beginning visible. Those are things that happened.\"\n{n}She sits, leaves a place beside her, and asks you to tell her exactly what the first step sounded like.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the tested, stronger warning and return to hear how the terms were kept.]",
+              "Next": null,
+              "Set": [
+                "soana.late_thorn_strong",
+                "soana.late_thorn_tested"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "soft_end",
+          "Speaker": "Soana",
+          "Text": "{n}At the cave Soana takes the unused cloth and drapes it over the rim of a pot. She puts the marked stick within reach, then sits before finding another task.{/n}\n\"I will go out to look more often,\" she says. \"A softer warning buys us something and asks something in return. I shall remember that when I find myself resenting the walk.\"\n\"Will you regret it?\"\n\"I expect I shall regret many things briefly. I would prefer not to be required to change them all before supper.\"\n{n}She gestures to the place beside her.{/n}\n\"Tell me about the second crossing. Where did you begin to believe you could stop?\"\n{n}You describe the sound on the leaves, and the moment when your breath ceased trying to outrun your feet. She listens without improving the account.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the gentler warning and return to hear how the terms were kept.]",
+              "Next": null,
+              "Set": [
+                "soana.late_thorn_soft",
+                "soana.late_thorn_tested"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.after_quest",
+        "soana.progression_kept",
+        "soana.late_boundary_agreed"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ]
+    },
+    {
+      "Id": "soana.the_days_she_counted",
+      "Title": "The days she counted",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"What became of the terms we left with Hessa and Mava?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Soana is sitting outside the cave with the marked thorn across her knees. One of the cuts has been washed clean. She turns it so you can see the pale wood.{/n}\n\"Rain. Entirely unimpressed by my intentions. I checked the approach afterwards. It was silent, as it should have been.\"\n\"Will you renew it?\"\n\"When I need that ground kept. I will not keep a warning alive merely because I went to the trouble of inventing one.\"\n{n}She sets it beside the walking stick and makes room for you.{/n}\n\"There is an account you should hear first. The people did not disappear because we finished deciding what to tell them.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about the families who left without the harvest.]",
+              "Next": "reserve",
+              "Set": [],
+              "Requires": [
+                "soana.late_reserve"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the three days of gathering.]",
+              "Next": "harvest",
+              "Set": [],
+              "Requires": [
+                "soana.late_harvest"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to hear it when I can stay.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "reserve",
+          "Speaker": "Soana",
+          "Text": "\"They left the remaining nuts. Hessa took the wire, wound tight enough that nothing could put a foot through it. Mava asked for the name of the village that would sell meal. I gave her the road as well.\"\n{n}Soana looks toward the upper bend.{/n}\n\"Tarn could walk a little way before Hessa carried him. She had made a sling from one of the empty sacks. I watched them go until I could no longer see whether she was resting or arguing with him.\"\n\"Did they say anything else?\"\n\"Mava said I would find the hollow very quiet. She was right.\"\n{n}For a moment Soana lets that answer stand without protecting it.{/n}\n\"I put the nuts back in small heaps under the hazel, away from the path. Some were gone by the next morning. I cannot tell you which mouth took every one. I can tell you the food remained where I meant it to.\"\n\"Was it worth sending them away with less?\"\n\"I think so. I dislike knowing their names because it prevents me from making the answer comfortable. I am keeping the answer anyway.\"\n{n}She turns toward you.{/n}\n\"If you come here only when I can tell a pleasing story about myself, we shall have very irregular visits. I would rather you knew what I was willing to defend.\"",
+          "Choices": [
+            {
+              "Text": "[Hear the rest without requiring her to make the choice painless.]",
+              "Next": "meret",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "harvest",
+          "Speaker": "Soana",
+          "Text": "\"Three mornings. I inspected six sacks, heard seven complaints about the climb, and found one cut branch that was old enough for Hessa to enjoy proving I had accused her too quickly.\"\n\"Did you acknowledge it?\"\n\"With admirable brevity.\"\n{n}Her mouth moves at one corner.{/n}\n\"They kept to the southern ground. On the last morning Mava wanted another hour. I refused. The nuts were still overhead, and she could see them. That made ending the agreement less pleasant than beginning it.\"\n\"Did she stop?\"\n\"Yes. She asked whether I understood how much meal the last sack would buy. I asked whether she understood how often a last sack can be followed by one more. We both understood. She tied the sacks.\"\n{n}Soana brushes a flake of ash from her sleeve.{/n}\n\"I found fewer tracks along that edge the next day. The gatherers disturbed it. I do not know which animals will return, and I have resisted pretending that I counted them all before we began. The inner hollow was not cut. The camp is empty.\"\n\"And the warning?\"\n\"They left it alone. Hessa took the dismantled wire away. Tarn walked beside her for part of the road and rode in a sack for the rest. I hope he learned to dislike the smell of his owner's handiwork.\"\n{n}She looks at the thorn by her stick.{/n}\n\"I gave three mornings and part of a harvest. I did not give the right to take the next one. That distinction survived having people stand in front of me wanting more.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about Meret after the camp departed.]",
+              "Next": "meret",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "meret",
+          "Speaker": "Soana",
+          "Text": "\"She went with her own people. Before Hessa finished preparing to leave. I began suggesting another thing she might inspect on the way, and she asked whether I was giving directions or finding a reason to keep her.\"\n\"Which was it?\"\n\"Both. I provided the directions. She left.\"\n{n}Soana folds her hands around one knee.{/n}\n\"Her grandmother's mark is still hers. The report she gave me is mine to use. I dislike how much smaller that makes my claim, until I remember how much easier it was to believe the report when she could have chosen not to bring it.\"\n\"Will you ask her again?\"\n\"If she comes this way. I will also look for other eyes. I have spent too much time treating one useful person as though finding her meant I would never need another.\"\n{n}She looks directly at you, without exempting herself from the difficulty of what she has said.{/n}\n\"That includes you. I would be glad of your help again. I will not keep inventing an unfinished task each time you begin to stand.\"\n\"You might simply ask me to sit.\"\n\"I was preparing to. Your habit of anticipating the sensible part remains tiresome.\"\n{n}She moves a little nearer, leaving you room to decide whether to close the rest of the distance.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask what she wants kept when you have to leave again.]",
+              "Next": "guardian",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "guardian",
+          "Speaker": "Soana",
+          "Text": "\"The account,\" she says. \"What the warning did, where it stopped, and what I asked of the people who passed. Put no grand title on it. I have enough trouble with people mistaking an old woman for every answer the forest ought to have.\"\n{n}She rests a hand against the hollow at the base of her throat, then lowers it.{/n}\n\"And write the thing it did not do. The clay medallion and the brand on Orso belonged to another working. I do not want a tale about three thorns to grow until someone thinks we undid that life knot with a wet cloth.\"",
+          "Choices": [
+            {
+              "Text": "\"The thorn did not release Orso. The binding and its cost remain.\"",
+              "Next": "bound",
+              "Set": [],
+              "Requires": [
+                "soana.old_defender"
+              ],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"The thorn did not bring Orso back, or supply a replacement guardian.\"",
+              "Next": "dead",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "bound",
+          "Speaker": "Soana",
+          "Text": "\"Yes. You still object. I still fear what would come through if I broke what holds him. I do not have an answer that makes those two things cease to matter.\"\n{n}Her jaw tightens, but she stays beside you.{/n}\n\"I have made a protection here that I can end without killing what carries it. I intend to use that knowledge. I will not tell you it has already become strong enough to take his place.\"\n\"I will not tell you affection has settled my objection.\"\n\"Then I know who is sitting beside me. I would rather endure that than discover later that you had spent every pleasant evening preparing to forgive something you never meant to question again.\"\n{n}She takes a folded piece of bark from beside the water pot. You recognize the smear where an old beginning was rubbed away.{/n}\n\"I have finished another account. This one is not for the forest.\"",
+          "Choices": [
+            {
+              "Text": "[Let her show you what became of the letter to Corven.]",
+              "Next": "letter",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dead",
+          "Speaker": "Soana",
+          "Text": "\"No. He remains absent. I have not found another creature whose life I can persuade myself is a convenient answer.\"\n{n}She looks at the path for a moment, listening out of habit.{/n}\n\"That sentence is not a promise that I have become incapable of doing harm. It is what happened. I have made one smaller protection and learned its limits before relying on it. I mean to keep doing that work.\"\n\"Without pretending the forest is safe?\"\n\"Without pretending you need another task from me before you are permitted to leave. Those are different matters, and I have been making excellent use of confusing them.\"\n{n}She gives you a wry look, then takes a folded piece of bark from beside the water pot. The dark smear from her earlier attempt remains on its outer face.{/n}\n\"I finished this. An argument I could end even without receiving an answer.\"",
+          "Choices": [
+            {
+              "Text": "[Hear what she chose to write to Corven.]",
+              "Next": "letter",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "letter",
+          "Speaker": "Soana",
+          "Text": "\"I told him about the spring as it is,\" she says. \"About work I was proud of, and work I would rather have described differently. I wrote your name. I crossed out the sentence that began by explaining what a difficult woman he had married. He knew.\"\n{n}She turns the bark over without offering it to you.{/n}\n\"I have no address for it. No newly discovered grave. No witness with a tale that changes what I told you before. I will keep it here. If there is ever a person to receive it, he will receive my words, not a stranger's kind explanation of what I must have meant.\"\n\"May I ask what you wrote about me?\"\n\"That you came back. That I wanted you to. That I have had a life while I did not know where he was, and I will not call every part of it an apology.\"\n{n}She puts the bark away. The act is plain and complete, with no ceremony to make a message travel where she cannot send it.{/n}\n\"There. I have said what I had to say to him, as far as I can. Now I would like to finish deciding what I am asking of you.\"",
+          "Choices": [
+            {
+              "Text": "\"I want to talk about the life we could keep making together.\"",
+              "Next": "future",
+              "Set": [],
+              "Requires": [
+                "soana.later_courting"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I am here as your friend. Tell me what you want our friendship to keep.\"",
+              "Next": "friend",
+              "Set": [],
+              "Requires": [
+                "soana.later_friends"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "future",
+          "Speaker": "Soana",
+          "Text": "\"I want a place in your plans that is not reserved for the occasions when you need a witch. I want to know when you hope to come, to be allowed to miss you when you cannot, and to hear the reason from you when you can give it.\"\n{n}She looks at the cave, then back at you.{/n}\n\"I will not leave this place merely because other people would find our arrangement easier to name. Nor will I ask you to put every other love, duty, and desire on the wrong side of its entrance. I want us to arrange time we actually mean to share.\"\n\"What would you offer?\"\n\"Time I have stopped promising to the forest before I look to see whether it needs me. A place for your things if you want one. My company, including the days when I have no intention of being instructive.\"\n{n}Her smile grows a little bolder.{/n}\n\"I can think of several uses for those days. I would enjoy discovering whether you can.\"\n{n}Then she lets the smile settle.{/n}\n\"I have not become unmarried by writing on bark. I cannot promise what Corven would say. I can promise that I will not hide you behind a more convenient word when speaking of my own choices. What are you willing to promise me?\"",
+          "Choices": [
+            {
+              "Text": "\"A shared life, with time we choose and room for the people we both love. I want to be your partner.\"",
+              "Next": "commit",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want this courtship and the next visit. I am not ready to promise a shared life.\"",
+              "Next": "open",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to keep you in my life as a friend. I cannot promise the romance we have been trying.\"",
+              "Next": "part_as_friends",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "commit",
+          "Speaker": "Soana",
+          "Text": "{n}She takes your hand and brings it to her cheek. For a moment her eyes close. When she opens them again, she looks pleased enough to be irritated by how much you can see.{/n}\n\"Yes. That is what I wanted to hear.\"\n\"You could leave it there.\"\n\"I am considering the possibility.\"\n{n}She kisses your palm, a quick, deliberate touch, then keeps your hand against her face.{/n}\n\"Beloved will do, when I want a word. Your name will do when I want you to look at me. I do not require a second wedding to know what I have agreed to.\"\n{n}You settle the small practical beginning: a place kept clear beside the blanket, and a longer visit when the fighting allows it. If either of you must change it, the other will hear the change before a stranger is sent to explain it.{/n}\n\"Come before you go to the final fighting,\" she says. \"Not because there will be one last service to perform. I have spent enough of our time finding those. I want an evening I can remember without inventorying what we repaired.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the partnership and the farewell she has asked for.]",
+              "Next": null,
+              "Set": [
+                "soana.committed",
+                "soana.late_future_chosen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "open",
+          "Speaker": "Soana",
+          "Text": "{n}She draws a slow breath. Her hand remains beside yours instead of retreating into her sleeve.{/n}\n\"Less than I hoped. More than an answer made large because you expect me to be hurt.\"\n\"I do want to return.\"\n\"Then return when you can mean it. I will decide what I want when you ask, with everything we have already done remembered. We need not promise to feel the same forever in order to be honest about wanting one another now.\"\n{n}She brushes one finger along your knuckles.{/n}\n\"I would still like the evening before you leave for the final fighting. I am not keeping it as a trap in which to obtain a better promise. I would like to be wanted for it without first winning an argument.\"\n\"You are.\"\n\"Good. I have been remarkably patient while arriving at that simple piece of information.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the courtship and an evening freely wanted.]",
+              "Next": null,
+              "Set": [
+                "soana.late_open",
+                "soana.late_future_chosen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "part_as_friends",
+          "Speaker": "Soana",
+          "Text": "{n}Her fingers close against her own palm. She looks past you, letting the first response pass before choosing words.{/n}\n\"Then we are stopping a romance. I will not have our earlier evenings renamed as though we were both merely being polite.\"\n\"Neither will I.\"\n\"I want the friendship. I will need room to find its comfortable places again. Do not become excessively helpful while I am doing it. I shall resent being treated as a project immediately after being kissed.\"\n{n}She looks at you again. The attempt at sharpness has steadied her.{/n}\n\"Come before the fighting, if you want to. We can sit. I may not wish to hear how relieved you are that we managed the conversation well.\"\n\"I will remember.\"\n\"See that you do. It would improve the evening considerably.\"",
+          "Choices": [
+            {
+              "Text": "[Accept friendship without erasing the courtship.]",
+              "Next": null,
+              "Set": [
+                "soana.late_friends",
+                "soana.late_romance_ended",
+                "soana.late_future_chosen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "friend",
+          "Speaker": "Soana",
+          "Text": "\"The visits in which nobody is in danger. They seem to be the first ones everyone postpones.\"\n{n}She takes a scrap of the old proposal from beneath a weight and turns it over. There are corrections on both sides now, none leaving enough room for another beginning.{/n}\n\"You have spent quite enough time hearing why your methods were inadequate. Come before the final fighting with something foolish you want to tell me. I shall attempt to hear it without making a lesson of it.\"\n\"An ambitious undertaking.\"\n\"I have not promised success. I have promised an attempt.\"\n{n}She gives you the worn page to read once more, then takes it back before you can mistake the gesture for surrendering her copy.{/n}\n\"I will keep this. I like remembering that you brought something and remained willing to discover where it failed. I also like remembering the goat in the song. Both are legitimate occupations for a mind that has endured enough solemnity.\"\n{n}You agree on another evening. She keeps the place beside her clear while you finish the one you are in.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the friendship and the promised evening.]",
+              "Next": null,
+              "Set": [
+                "soana.late_friends",
+                "soana.late_future_chosen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.after_quest",
+        "soana.progression_kept",
+        "soana.late_thorn_tested"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ]
+    },
+    {
+      "Id": "soana.before_the_far_road",
+      "Title": "Before the far road",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I came for the evening, before I have to leave.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}There is no experiment laid out at the cave mouth. The water pot stands in its cradle, the tools are put away, and a clean cloth covers the place where you usually sit. Soana has left her walking stick within reach rather than leaning it across the entrance.{/n}\n\"I considered taking you to the bend,\" she says. \"Then I considered how much of an evening we might spend discussing whether the stone was damp. I have chosen dry shelter. You may admire my courage.\"\n{n}She closes the clasp of her shawl, discovers that she has fastened it crookedly, and corrects it with an impatient little breath.{/n}\n\"You have time?\"\n\"For this.\"\n\"Then come in. If you have a speech prepared, allow it to suffer in silence while you sit down.\"",
+          "Choices": [
+            {
+              "Text": "[Sit beside the woman with whom you chose a shared life.]",
+              "Next": "beloved",
+              "Set": [],
+              "Requires": [
+                "soana.committed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Join her for the courtship you are both still choosing.]",
+              "Next": "courtship",
+              "Set": [],
+              "Requires": [
+                "soana.late_open"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the evening as her friend.]",
+              "Next": "friend",
+              "Set": [],
+              "Requires": [
+                "soana.late_friends"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I cannot give you the evening yet. Let me return when I can keep it.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "beloved",
+          "Speaker": "Soana",
+          "Text": "{n}She leans against you as soon as you are settled. No accidental errand brings her nearer. Her hand finds yours beneath the edge of the shawl.{/n}\n\"I have been trying to decide what a person ought to say before someone she loves goes to fight a terrible thing. All the excellent answers appear to have been worn smooth by other people's use.\"\n\"You could tell me something you want.\"\n\"I want you to come back. I want the long visit we discussed. I want to be cross because you have put your belongings in the wrong place, and to discover that I moved them there myself.\"\n{n}She lifts her head to look at you.{/n}\n\"I know wanting does not arrange it. You need not protect me from the knowledge. It is what I want.\"\n\"It is what I want too.\"\n{n}She presses your hand once, satisfied with an answer that does not attempt more than it can carry.{/n}\n\"Then let us have an evening worth bringing back to. I have done enough rehearsing how gracefully to lose one.\"",
+          "Choices": [
+            {
+              "Text": "[Turn toward her.]",
+              "Next": "desire",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "courtship",
+          "Speaker": "Soana",
+          "Text": "\"You remembered which invitation I gave you.\"\n\"Did you expect me not to?\"\n\"I expected to spend part of the evening being offered a larger promise because it seemed unkind to leave without one. I had several replies ready.\"\n\"You can save them.\"\n\"An unusual gift. I shall enjoy the room they leave.\"\n{n}She moves close enough for your shoulders to meet and asks for your hand. When you offer it, she traces the line of your thumb with hers.{/n}\n\"I still want you. I still wish we could know more about what follows. I am going to enjoy this evening without making either admission apologize for the other.\"\n\"May I do the same?\"\n\"I should prefer it. I did not invite a witness to my self-control.\"\n{n}She looks at your mouth, then meets your eyes, smiling with an impatience she no longer needs to hide.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let the evening belong to what you both want now.]",
+              "Next": "desire",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "desire",
+          "Speaker": "Soana",
+          "Text": "{n}Soana lifts a hand to your cheek. The pad of her thumb is rough from work; the touch is careful until you lean into it. Then she stops being tentative.{/n}\n\"There you are,\" she says softly.\n{n}She moves close enough that you can feel her breath, then waits. One loose strand of hair catches against her lip. You move it clear. Her hand closes gently around yours before you can lower it.{/n}\n\"I would like to kiss you. I would like to keep you here until the daylight makes us admit there is work beyond the entrance. I had a cleverer way of asking.\"\n\"You can save it.\"\n\"No. This one was good. I shall recover it when you are least prepared.\"\n{n}Her laughter is low and close. The shawl has slipped from one shoulder; she lets it fall into her lap and asks how much of the night you can give her.{/n}",
+          "Choices": [
+            {
+              "Text": "\"I want to stay with you. Tell me when you want anything slower.\"",
+              "Next": "night",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want the evening and your kisses. I need to leave before the night is over.\"",
+              "Next": "kiss",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Hold me for a while. That is what I want most tonight.\"",
+              "Next": "hold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Narrator",
+          "Text": "{n}She pulls you close by the hand you have left in hers. You kiss her, and she answers with an eagerness that makes the careful waiting seem far away. The kiss is interrupted only because she laughs when her shawl catches beneath your knee. You free it together. She spreads it over the unused tools rather than returning it to its peg.{/n}\n{n}\"Let them endure a little inconvenience,\" she says. \"I have been unusually considerate of useful things.\"{/n}\n{n}Later, with the blanket drawn close, the questions are smaller and easier to answer. Where her hand is welcome. Whether you are warm. Whether you can stay just there a little longer. She answers your own questions with the same frankness, and sometimes with a kiss before finding words.{/n}\n{n}A branch brushes the rock outside. Soana lifts her head, listens once, and settles against you again. Her hand returns to the place it had found at your shoulder. She asks whether you remember the first reed she made you pull out of the carrier. You tell her you have had considerable practice remembering her corrections. She laughs against your neck.{/n}\n{n}In the morning she is watching the light at the entrance when you wake. She turns immediately when you move.{/n}\n{n}\"I recovered the clever remark,\" she says. \"It was not as good as I remembered. We may keep what happened instead.\"{/n}\n{n}You kiss her before getting up. She answers without hurrying the moment toward goodbye.{/n}",
+          "Choices": [
+            {
+              "Text": "[Rise together when it is time to leave.]",
+              "Next": "leave_night",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "leave_night",
+          "Speaker": "Soana",
+          "Text": "{n}At the entrance she catches your hand once more. Her expression is steady until you turn toward the path, then briefly much less so.{/n}\n\"Go carefully. I am allowed one ordinary request after all the trouble I took to avoid an ordinary speech.\"\n\"You are.\"\n\"Then hear it.\"\n{n}You do. She lets go when you are ready, not because she has ceased wanting the hand.{/n}",
+          "Choices": [
+            {
+              "Text": "[Carry the night with you, without calling it a guarantee.]",
+              "Next": null,
+              "Set": [
+                "soana.lovers",
+                "soana.late_farewell_night",
+                "soana.late_campaign_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "kiss",
+          "Speaker": "Narrator",
+          "Text": "{n}She accepts the time you name, then leans into the kiss you offer. The pleasure has lost none of its urgency merely because you have agreed when to stop.{/n}\n{n}Afterwards she rests against you and begins the song about the goat. You remember enough to anticipate its most undignified turn. She changes the verse and catches you trying to sing the wrong words.{/n}\n{n}\"An older version,\" she says solemnly. \"The goat has acquired further experience.\"{/n}\n{n}You laugh against her hair. She tells you the new ending, which appears to have been invented for the pleasure of making you laugh exactly there.{/n}\n{n}When the time comes, she does not begin another verse. She walks with you to the entrance and asks for one last kiss. It is long enough that you have to adjust the way you stand to keep it comfortable. Neither of you apologizes for the difficulty.{/n}\n{n}\"Go carefully,\" she says. \"I would like to hear you get the words wrong again.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave at the time you chose, with the farewell kept.]",
+              "Next": null,
+              "Set": [
+                "soana.late_farewell_kiss",
+                "soana.late_campaign_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "hold",
+          "Speaker": "Narrator",
+          "Text": "{n}She opens her arms. You settle against her, adjusting the blanket until the stone no longer presses where you do not want it. She rests one hand at the back of your neck and leaves it still.{/n}\n{n}For a while you listen to the small sounds outside: a bird settling, leaves brushing rock, water farther down the slope. Nothing asks to be interpreted. When you begin to speak, the words come less neatly than you intended.{/n}\n{n}Soana listens to the unfinished thought. Once she asks a question, then waits while you discover that the first answer was not quite what you meant. She does not turn uncertainty into a reason you ought to have kept silent.{/n}\n{n}\"Stay here a little longer,\" she says when you stop. \"You have brought enough of tomorrow into the room.\"{/n}\n{n}When you leave, she walks to the entrance with you. She touches her forehead briefly to yours and says your name. For this goodbye, she lets that be enough.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave with the closeness you chose.]",
+              "Next": null,
+              "Set": [
+                "soana.late_farewell_held",
+                "soana.late_campaign_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "friend",
+          "Speaker": "Soana",
+          "Text": "{n}She passes you a small wooden clapper from the warning experiment. Its edges are smooth where it has been handled.{/n}\n\"Useful wood,\" she says. \"I have spent an unreasonable amount of time deciding what it should become.\"\n\"Perhaps it has finished being something.\"\n\"Then we are agreed. It may rest. I wanted to show you that I kept it, not appoint you to find its next occupation.\"\n{n}She sets it beside the pot and settles back. You tell the foolish story you brought, about an argument on the road in which both people had been defending the same direction while pointing different ways. Soana asks whether either admitted it. You explain the elaborate compromise by which both managed to remain right.{/n}\n\"A pity they did not consult the road. It might have had an opinion.\"\n{n}She answers with a story about the festival, a misplaced cloak, and the indignation of a man who found it on the person he had spent the evening trying to impress. The story is not instructive. She looks pleased when you notice.{/n}\n{n}At the entrance, later, she rests a hand on your arm.{/n}\n\"I am glad we had this. Whatever the next road does with you, it has not undone an evening already spent. Come back if you can. Bring yourself before you bring a problem.\"\n{n}She squeezes your arm, then releases it and leaves the path clear.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take leave of the friend who asked for your company.]",
+              "Next": null,
+              "Set": [
+                "soana.late_farewell_friend",
+                "soana.late_campaign_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.after_quest",
+        "soana.progression_kept",
+        "soana.late_future_chosen"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ]
+    },
+    {
+      "Id": "soana.ending_kept_life",
+      "Title": "A life with an open path",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander returned to Soana with time to stay, not merely another question about what the forest could endure. The place beside her blanket acquired belongings she occasionally moved before complaining that they had been misplaced. Some visits were interrupted. Others survived an entire afternoon without improving anything.{/n}\n{n}They had chosen a shared life that made room for other people and other loves. It required messages, changed plans and the occasional difficult answer. Soana kept her forest and her temper. She also kept time that she had once given away before anyone asked for it.{/n}\n{n}Corven's unanswered place in her history was not replaced by a convenient tale of death or consent. The bark she had written remained among her belongings. When she called the Commander beloved, she meant the choice she had actually made.{/n}\n{n}At the cave, the warning thorn was renewed when needed and allowed to wash quiet when it was not. Visitors learned to look for the pale stones. The Commander learned that a familiar path could still lead to an evening neither had planned, and that Soana's laughter was worth coming home to hear.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.late_campaign_kept",
+        "soana.committed"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "ascended",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_chosen_visits",
+      "Title": "The next invitation",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana and the Commander kept the courtship they had chosen without improving its last farewell into a promise of a household. They asked for visits, found time for some, and spoke plainly when an answer disappointed them. The affection in the asking mattered even when the road prevented the answer they wanted.{/n}\n{n}She remained capable of wanting more. The Commander remained free to answer. Neither found an honest life made easier by pretending those questions had been settled in advance.{/n}\n{n}The forest still occupied much of her attention. Yet there were evenings when she left a useful task unfinished because she wanted to hear a voice at the entrance. She did not ask a spirit to preserve those evenings. She remembered them, and sometimes began planning another before the last had ended.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.late_campaign_kept",
+        "soana.late_open"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "ascended",
+        "sacrifice",
+        "soana.committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_familiar_company",
+      "Title": "Company without a debt",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander remained welcome at Soana's cave as a friend. She did not disguise the friendship as a romance denied its proper ending, or reduce it to the services each could perform. Sometimes the visit involved a difficult question. Sometimes the most pressing dispute concerned the correct words of a song.{/n}\n{n}Meret's old family mark never became an order binding her descendants. Soana remembered the help it had once stood for and asked living people for the help they could choose to give. She was often impatient with the answer. Those who returned generally knew that before setting out.{/n}\n{n}The worn proposal stayed beneath its weight. On the back, where there was finally no room for another correction, Soana wrote the date of an evening in which she and the Commander had done nothing especially useful. She found it worth keeping.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.late_campaign_kept",
+        "soana.late_friends"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "ascended",
+        "sacrifice",
+        "soana.committed",
+        "soana.late_open"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_sacrifice",
+      "Title": "The visit that did not follow",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana heard what the Commander had done to close the Worldwound. For a while she found the praise surrounding the sacrifice impossible to bear. She understood the need the great accounts described. She also remembered the person who had sat beside her and wanted another evening.{/n}\n{n}She kept the last visit as it had been: the company actually offered, the promises actually spoken, the pauses nobody had needed to fill. Grief did not entitle her to enlarge them. Nor did the world's relief require her to call the loss small.{/n}\n{n}The thorn washed quiet in the next hard rain. She went out afterwards, examined the ground and chose what needed doing that day. It was work she knew how to begin. Returning to the empty place beside the blanket was harder.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.late_campaign_kept",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "ascended"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_beyond_the_forest",
+      "Title": "An invitation without a summons",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander's ascent gave Soana no reason to withdraw what she had chosen, and no certainty about how a god might answer it. She addressed the absence with familiar impatience. A new grandeur did not turn an unanswered invitation into an afternoon together.{/n}\n{n}She neither knotted the Commander's name into a charm nor offered the forest as payment for a return. Once she had made a terrible binding because she could not bear to lose protection. Whatever power now existed beyond her reach, it would receive a request rather than another tether.{/n}\n{n}The last mortal visit remained hers to remember. In the cave she sometimes began an account of the day aloud before deciding whether she meant to finish it. She made no claim to have received an answer merely because she wanted one.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.late_campaign_kept",
+        "ascended"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_unrecognizable_return",
+      "Title": "What the invitation did not permit",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}What the Commander became could not be welcomed by reciting an earlier invitation. Soana knew the temptation to call a dangerous power necessary and then require everyone near it to accept the cost. Recognition did not make her willing to surrender her own door.{/n}\n{n}She remembered the visits that had been freely chosen. They gave the new being no ownership of her, no right to obedience, and no power to turn fear into the affection she had once offered. Those evenings remained part of her life. They did not bind the rest of it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.late_campaign_kept",
+        "inhuman"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_native_loss",
+      "Title": "The path that could not be kept",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}What followed at Wintersun ended the future imagined during the Commander's visits. The work already done had not been worthless. The warmth or friendship freely offered had not been a lie. Neither had protected the forest against everything that could come afterwards.{/n}",
+          "Choices": [
+            {
+              "Text": "[Remember Soana's death at Camellia's hand.]",
+              "Next": "camellia",
+              "Set": [],
+              "Requires": [
+                "soana.killed_by_camellia"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the woman who died.]",
+              "Next": "dead",
+              "Set": [],
+              "Requires": [
+                "soana.dead"
+              ],
+              "Forbids": [
+                "soana.killed_by_camellia"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the forest that was lost.]",
+              "Next": "forest",
+              "Set": [],
+              "Requires": [
+                "soana.forest_dead"
+              ],
+              "Forbids": [
+                "soana.dead",
+                "soana.killed_by_camellia"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "camellia",
+          "Speaker": "Narrator",
+          "Text": "{n}Camellia killed Soana. The last evening at the cave could not be remembered honestly without also remembering that ending. A woman who had defended her own right to choose, argued fiercely and offered affection in her own terms had not been preserved by having once been loved.{/n}\n{n}The familiar path no longer led to her impatient welcome. No retelling of the earlier visits could make her death into a willing farewell, or turn the interrupted life into something already complete.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dead",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana died, and the practical objects she had handled outlasted her: a carrier with a repaired handle, a stick worn smooth where she gripped it, words crowded onto a page that had been corrected too often. They were evidence of a life, not a method of returning it.{/n}\n{n}She had been difficult company and had known it. She had also made room beside her. Both belonged in any account of the woman whose voice would no longer answer from the cave.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "forest",
+          "Speaker": "Narrator",
+          "Text": "{n}The forest's loss broke the arrangement the visitors had worked to keep. The limited harvest, the marked approach and the young trees had depended on a place that could still sustain them. Its destruction was not undone by remembering how carefully a smaller danger had once been contained.{/n}\n{n}The future imagined beside that cave could no longer be claimed as something already secured. What remained certain was the time actually shared there, and the person Soana had been when she chose to share it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.late_campaign_kept"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead"
+      ]
+    },
+    {
+      "Id": "soana.ending_aeon",
+      "Title": "A path outside the remembered world",
+      "Owner": "AeonEpilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}In the history remade without the Worldwound, the private road the Commander had taken to Soana's cave had no cause to unfold as it once had. No trapped fox led to the same water carrier, no borrowed voice brought the same three people to a sealed bowl, and no last evening could compel the new world to preserve the choices of the old.{/n}\n{n}Whatever Soana's life became in that history, it was not a reward owed to the vanished Commander. Corven's place in it could not be decided by a memory the new world did not share. Neither love nor friendship entitled the erased visitor to summon her out of the life that remained her own.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.progression_kept"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_unfinished_sacrifice",
+      "Title": "The conversation left unfinished",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander's sacrifice ended a conversation Soana had expected to continue. She had not been given a completed farewell to treasure in place of the next visit. There were questions she had saved, an answer she meant to dispute, and ordinary company she had begun to want without inventing work for it.{/n}\n{n}She heard the accounts of what the sacrifice had achieved. They could be true without telling her how to endure the person it had taken. She kept the worn proposal, the blanket, and her own memory of the visits. She remembered exactly what had been promised, including the things both had left for another day.{/n}\n{n}At times she began the foolish festival song and stopped before its ending. On other days she finished it. Neither was a measure of how well she understood what the Commander had done.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.progression_kept",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.late_campaign_kept",
+        "inhuman",
+        "ascended"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_unfinished_ascent",
+      "Title": "A question beyond its former reach",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander's ascent carried their interrupted visits beyond the terms Soana had known how to discuss. She had wanted another visit from a particular person. Godhood was a considerable event and a poor substitute for that answer.{/n}\n{n}She remembered the shared work, the closed shrine and the evening she had offered without demanding a service in return. Nothing in those memories established what a god would now choose. She would not supply the missing answer by calling her wishes a revelation.{/n}\n{n}When she spoke the Commander's name, she used the voice with which she had once invited the traveler to sit. There was no charm around it, no bargain by which the invitation acquired a claim. She had learned enough about binding a needed presence to know that she could want something fiercely without making it hers.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.progression_kept",
+        "ascended"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.late_campaign_kept",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_unfinished_change",
+      "Title": "An invitation withdrawn",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The being the Commander became was not entitled to claim every part of the private future Soana had once been willing to discuss. Soana's earlier welcome had been offered to someone she could argue with, refuse and choose to see again. It did not consent in advance to every use of the power that followed.{/n}\n{n}She kept her account of the visits without making it an excuse to open her door. The work at the shrine had happened. So had the laughter, the difficult admissions and the company she had wanted. Those things belonged to her life even when she no longer wanted what stood beyond it to come nearer.{/n}\n{n}She had once called a terrible binding necessary. She recognized the danger of a familiar argument returning with a different face. Recognition gave it no further right to her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.progression_kept",
+        "inhuman"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.late_campaign_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": []
+    },
+    {
+      "Id": "soana.ending_unfinished_loss",
+      "Title": "The earlier path that ended",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}What followed at Wintersun ended the private future before the visits could reach their later farewell. A place had been made beside Soana, and time had been shared there. The unfinished part could not be recovered by describing the earlier evenings as though they had already settled everything.{/n}",
+          "Choices": [
+            {
+              "Text": "[Remember Soana's death at Camellia's hand.]",
+              "Next": "camellia",
+              "Set": [],
+              "Requires": [
+                "soana.killed_by_camellia"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the woman who died.]",
+              "Next": "dead",
+              "Set": [],
+              "Requires": [
+                "soana.dead"
+              ],
+              "Forbids": [
+                "soana.killed_by_camellia"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the forest that was lost.]",
+              "Next": "forest",
+              "Set": [],
+              "Requires": [
+                "soana.forest_dead"
+              ],
+              "Forbids": [
+                "soana.dead",
+                "soana.killed_by_camellia"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "camellia",
+          "Speaker": "Narrator",
+          "Text": "{n}Camellia killed Soana. The last evening at the cave could not be remembered honestly without also remembering that ending. A woman who had defended her own right to choose, argued fiercely and offered affection in her own terms had not been preserved by having once been loved.{/n}\n{n}The familiar path no longer led to her impatient welcome. No retelling of the earlier visits could make her death into a willing farewell, or turn the interrupted life into something already complete.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dead",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana died, and the practical objects she had handled outlasted her: a carrier with a repaired handle, a stick worn smooth where she gripped it, words crowded onto a page that had been corrected too often. They were evidence of a life, not a method of returning it.{/n}\n{n}She had been difficult company and had known it. She had also made room beside her. Both belonged in any account of the woman whose voice would no longer answer from the cave.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "forest",
+          "Speaker": "Narrator",
+          "Text": "{n}The forest's loss destroyed the place in which Soana and the Commander had begun imagining further visits. The warning line and the sealed shrine had dealt with particular dangers. They had not preserved the whole forest against what followed.{/n}\n{n}Their interrupted visits could not be given a completed future merely because that would make the account easier to end. What remained certain was the work and company actually shared, and Soana's own choice to welcome them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "soana.progression_kept"
+      ],
+      "Forbids": [
+        "soana.late_campaign_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "RequiresAny": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead"
+      ]
     }
   ],
   "Etudes": {

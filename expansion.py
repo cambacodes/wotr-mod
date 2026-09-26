@@ -16,7 +16,7 @@ from storylines import kiana_reconciliation, gesmerha_opening
 from storylines import vellexia_opening, konomi_ordinary_expansion
 from storylines import aivu_opening
 from storylines import konomi_private_absence
-from storylines import soana_later_progression
+from storylines import soana_later_progression, soana_late_campaign
 from storylines import tirabade_chronology
 from storylines import konomi_private_consequence, konomi_early_reciprocity
 from storylines import aranka_continuation
@@ -172,6 +172,7 @@ def make_expansion():
             for node in scene["Nodes"]:
                 if node.get("Speaker") == "Narrator" and not node.get("Portrait"):
                     node["Portrait"] = "Konomi"
+    payload["Scenes"].extend(copy.deepcopy(soana_late_campaign.SCENES))
     return payload
 
 

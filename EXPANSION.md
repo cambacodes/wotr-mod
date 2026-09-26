@@ -28,7 +28,7 @@ The user's earlier instruction to proceed without previews remains applicable.
 
 ## Current development checkpoint
 
-The integrated development export has 305 scenes across 13 route groups covering 14 of the 37 planned characters.
+The integrated development export has 323 scenes across 13 route groups covering 14 of the 37 planned characters.
 These counts describe written and integrated material, not completed routes.
 Konomi has 64 scenes, with the independently reviewed late-career continuity repair integrated and a reviewed general portrait staged.
 Her current export is pinned in [the integration checkpoint](reference/parallel/konomi-political-integration-checkpoint.md).
@@ -39,7 +39,9 @@ No character currently has full release approval, and the installed game content
 
 The user has removed the TTS freeze milestone.
 Complete routes through review on their merits without rushing writing or lowering thresholds for a voice-testing deadline.
-Soana's late-campaign continuation and the Tirabade independent-relationship repair are progressing in separate owned files.
+Soana's late-campaign continuation has passed two independent reviews and is integrated, bringing her material to 23 visits and 12 endings.
+The exact export and verification limits are recorded in [the Soana integration checkpoint](reference/parallel/soana-late-campaign-integration-checkpoint.md).
+Anevia and Irabeth's independent campaigns are progressing in separately owned files while Jerribeth's recovery work proceeds independently.
 The older scene counts below are historical checkpoints, not the current inventory.
 
 ## Release evidence required
