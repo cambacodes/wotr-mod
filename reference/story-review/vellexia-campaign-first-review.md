@@ -1,9 +1,11 @@
-# Vellexia campaign independent review in progress
+# Vellexia campaign independent review
 
-This is a preliminary review of the ten drafted visits through `two_unremarkable_pleasures`.
-The author is still writing the farewell, endings and tests, so this document does not approve integration or assign scores.
-Root read the actual manuscript independently of its author and sent the findings below for revision.
-Final review must identify the frozen source hash and inspect the completed paths after the repairs.
+Root independently read all eleven new visits and thirteen outcome pages, checked the repaired passages and examined the relevant native records.
+The reviewed final manuscript hash is `24AE43736DD2C967E9E3D5BB8CCAA83816FB54D75C02C766246F53E43F5C1C99`.
+The focused test hash is `668B2BF94E382C179B4D25A779755FAFD7156E750E56368E4E659092E6090BA7`.
+Accept the bounded correspondence manuscript after the revisions below.
+Combined integration remains pending the separate remote-continuation repair and its validation.
+This is not approval of missing physical access, excluded-history recovery or the complete character release.
 
 ## Findings sent to the author
 
@@ -72,3 +74,37 @@ The Trickster option no longer describes the native key as ordinary.
 The replay is consistently a single stored private recollection experienced in a breath while the witnesses and room continue normally.
 These repairs address the six preliminary findings, subject to the final frozen-source review and branch tests.
 The farewell and endings were still being completed at this check.
+
+## Completed farewell and ending review
+
+The final farewell preserves the previously selected relationship rather than assuming every correspondent became a lover.
+An undecided history can accept new terms and become lovers, remain uncertain or choose friendship.
+An existing lover can end the relationship without rewriting the earlier affection.
+The affectionate passages remain non-graphic and acknowledge the actual distance between the participants.
+
+The first ending implementation gave generic death precedence over the observed mirror transformation.
+That was incorrect for native `Cue_0079`, which starts `VellexiaKilled` on stop after the transformation.
+The repaired mirror ending accepts both observed mirror and death flags, while generic death excludes the mirror history.
+The focused test now exercises that exact combined state instead of an isolated synthetic mirror flag.
+The final minor prop repair explicitly changes the shell's angle before the moved vase becomes visible again.
+Root reread both repairs in the pinned source.
+
+The independent project inventory on candidate `94B125A525514652231D6E5C14F91E580C9BA7EE0C4D1270B7C51A64BC288E41` reports 24,980 raw words and 24,527 distinct segment words across thirty assembled entries.
+This exceeds the aggregate planning floor without crediting native date dialogue.
+The author's selected full seventeen-visit paths measure 12,283–13,801 words excluding endings; this is a separately attributed measurement, not the aggregate count.
+The author's focused suite reports 237,254 assertions.
+Root's final combined rules and managed runs remain pending the shared continuation repair.
+
+| Reviewed discipline | Score / 100 | Basis |
+| --- | ---: | --- |
+| Writing and dialogue | 92 | The fraud, clerk's ambitions and wager sustain a connected story, with distinct private conversations afterward. |
+| Character voice | 91 | Vanity, threats, artistic appetite and resentment remain visible; some explicit explanations of boundaries are still repetitive. |
+| Native continuity | 93 | The actual dismissal, key gift, actor distinction and mirror/death combination are preserved after repair. |
+| Adult romantic chemistry and agency | 92 | Mutual attraction develops after shared work; hand contact, kissing, pace and renewed commitment are separately chosen. |
+| Player participation | 92 | The check, publication permissions, wager disposition and differing losses have specific narrated consequences. |
+| Manuscript depth | 92 | Eleven new visits and differentiated endings extend the original six beyond an opening draft; physical continuation remains missing. |
+
+These are one independent reader's assessments of the pinned manuscript, not fabricated reviewer votes or probabilities.
+The remote engine defect has no passing technical score here.
+Its repair must guard actual generated answers, checks and actions as well as `Rules.ContactAvailable`.
+The remaining physical, missed-entry, hostile, mirror and death routes remain part of the full character requirement.
