@@ -9,10 +9,16 @@ Root owns shared engine changes, integration, exports, art generation and final 
 | --- | --- | --- |
 | `/root/terendelev_api_recover` | Aranka parent-route research and continuation | `storylines/aranka_continuation.py`, `tests/ArankaContinuationTests.cs`, `reference/canon-review/aranka-extension-evidence.md`, `reference/parallel/aranka-continuation-handoff.md` |
 | `/root/gesmerha_recover` | Soana later access and recovery research | `reference/canon-review/soana-late-access-audit.md`, optional `reference/canon-review/soana-late-access-records.json`, optional `tools/probe-soana-late-access.py` |
-| `/root/kiana_reconcile_recover` | Independent assembled Tirabade audit | `reference/story-review/tirabade-assembled-readiness-20260926.md`, optional `tools/measure-tirabade-playthrough.py` |
+| `/root/kiana_reconcile_recover` | Tirabade chronology repair after completed independent audit | `storylines/tirabade_chronology.py`, `tests/TirabadeChronologyTests.cs`, `reference/parallel/tirabade-chronology-handoff.md` |
 
 
 Worker names reflect their earlier roles, not fixed authoring or review assignments.
+The completed Tirabade audit and measurement tool are released to root.
+Its 46,124 distinct aggregate words clear the doubled floor, but relationship agency scored 82 and revised campaign coverage 74.
+Mandatory dual-affair acquisition, unavailable independent romances, missing Trickster recovery and native-history gaps remain open requirements.
+The assigned chronology repair addresses fresh Chapter 5 courtship, established intimacy and developed loss only.
+Because its author also wrote the preceding audit, another reviewer must inspect the repair before acceptance.
+Root retains integration ownership and must preserve each worker's changes when resolving any conflict.
 All previous delivered source modules and handoffs are returned to the parent.
 The Ember and Kiana modules and handoffs are delivered, corrected and owned by the parent.
 Soana's delivered source and handoff are owned by the parent; its reviewer owns only the report.
@@ -42,6 +48,7 @@ No worker assignment, scheduling change or handoff creates an exception.
 - The Anevia-Irabeth-Commander route needs at least 42,000 meaningful combined words, with independent development for both women and shared text counted once.
 - Aggregate branching text and repeated passages do not prove sufficient attainable campaign depth.
 - Characterization and appearance must remain grounded in native evidence, with authored alternate developments identified explicitly.
+- Adult redesigns must be conventionally attractive and humanoid while retaining recognizable identity and racial traits; imperfections that improve likeness are welcome.
 - Every eligible adult romance needs bespoke attainable Trickster access; other mythics retain the revised character-appropriate restrictions.
 - Existing base-game and RanRomance relationships must be integrated without duplicate romances or erased history.
 - ToyBox Love Is Free and Jealousy Begone compatibility must preserve other relationships.
