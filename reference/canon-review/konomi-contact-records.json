@@ -1,0 +1,784 @@
+{
+  "blueprints": {
+    "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy.jbp": {
+      "AssetId": "ca2d58c5c65723945857e04fb85d30ce",
+      "Data": {
+        "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+        "Alignment": "ChaoticNeutral",
+        "AlternativeBrains": [],
+        "BaseAttackBonus": 0,
+        "Body": {
+          "ActiveHandSet": 0,
+          "DisableHands": false,
+          "m_AdditionalLimbs": [],
+          "m_AdditionalSecondaryLimbs": [],
+          "m_Armor": "!bp_9809987cc12d94545a64ff20e6fdb216",
+          "m_Belt": null,
+          "m_EmptyHandWeapon": "!bp_20375b5a0c9243d45966bd72c690ab74",
+          "m_Feet": null,
+          "m_Glasses": null,
+          "m_Gloves": null,
+          "m_Head": null,
+          "m_Neck": null,
+          "m_PrimaryHand": "!bp_4de4658c0e9b0d146b9a08ed6f030f8a",
+          "m_PrimaryHandAlternative1": "!bp_571c56d11dafbb04094cbaae659974b5",
+          "m_PrimaryHandAlternative2": null,
+          "m_PrimaryHandAlternative3": null,
+          "m_QuickSlots": [
+            "!bp_d52566ae8cbe8dc4dae977ef51c27d91",
+            "!bp_d52566ae8cbe8dc4dae977ef51c27d91",
+            null,
+            null,
+            null
+          ],
+          "m_Ring1": null,
+          "m_Ring2": null,
+          "m_SecondaryHand": null,
+          "m_SecondaryHandAlternative1": "!bp_571c56d11dafbb04094cbaae659974b5",
+          "m_SecondaryHandAlternative2": null,
+          "m_SecondaryHandAlternative3": null,
+          "m_Shirt": null,
+          "m_Shoulders": null,
+          "m_Wrist": null
+        },
+        "Charisma": 10,
+        "Color": {
+          "a": 1.0,
+          "b": 0.15,
+          "g": 0.15,
+          "r": 0.15
+        },
+        "Comment": "",
+        "Components": [
+          {
+            "$type": "011e862b513000f4bae31886f3489ace, Experience",
+            "CR": 4,
+            "Count": null,
+            "Dummy": false,
+            "Encounter": "Mob",
+            "Modifier": 1.0,
+            "PlayerGainsNoExp": false,
+            "PrototypeLink": {
+              "guid": "928e50a55465ad34b9247c45f8b9009a",
+              "name": "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b"
+            },
+            "m_Flags": 0,
+            "m_Overrides": [
+              "CR"
+            ],
+            "name": "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b(Clone)"
+          },
+          {
+            "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+            "DoNotApplyAutomatically": false,
+            "Levels": 5,
+            "LevelsStat": "Dexterity",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "RaceStat": "Strength",
+            "Selections": [
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": false,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "UnarmedStrike",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_d09b20029e9abfe4480b356c92095623",
+                  "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                  "!bp_0da0c194d6e1d43419eb8d990b28e0ab",
+                  "!bp_8f3d1e6b4be006f4d896081f2f889665"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": null,
+                "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+                "m_Spellbook": null
+              },
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": true,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Longbow",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_9972f33f977fc724c838e59641b2fca5",
+                  "!bp_31470b17e8446ae4ea0dacd6c5817d86"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_Selection": "!bp_41c8486641f7d6d4283ca9dae4147a9f",
+                "m_Spellbook": null
+              },
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": false,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Longsword",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_f643b38acc23e8e42a3ed577daeb6949",
+                  "!bp_7283344b0309d8e4cb77eb22f1e7c57a"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_Selection": "!bp_16cc2c937ea8d714193017780e7d4fc6",
+                "m_Spellbook": null
+              },
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": false,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Longsword",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_3cf94df3f1cf9a443a880bc1ae9be3c6"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_Selection": "!bp_c6d0da9124735a44f93ac31df803b9a9",
+                "m_Spellbook": null
+              },
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": false,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Longsword",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_9c928dc570bb9e54a9649b3ebfe47a41"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_Selection": "!bp_3cf94df3f1cf9a443a880bc1ae9be3c6",
+                "m_Spellbook": null
+              },
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": false,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Longsword",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_19e1c418cbad1b540ad52fee0fd7f16b"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_Selection": "!bp_a6ea422d7308c0d428a541562faedefd",
+                "m_Spellbook": null
+              },
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": false,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Longsword",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_6dddf5ba2291f41498df2df7f8fa2b35"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_Selection": "!bp_b705c5184a96a84428eeb35ae2517a14",
+                "m_Spellbook": null
+              },
+              {
+                "IsFeatureSelectMythicSpellbook": false,
+                "IsParametrizedFeature": false,
+                "ParamSpellSchool": "None",
+                "ParamWeaponCategory": "Longsword",
+                "Stat": "Unknown",
+                "m_FeatureSelectMythicSpellbook": null,
+                "m_Features": [
+                  "!bp_f643b38acc23e8e42a3ed577daeb6949"
+                ],
+                "m_ParamObject": null,
+                "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+                "m_Selection": "!bp_c1be13839472aad46b152cf10cf46179",
+                "m_Spellbook": null
+              }
+            ],
+            "Skills": [
+              "SkillPerception"
+            ],
+            "m_Archetypes": [],
+            "m_CharacterClass": "!bp_cda0615668a6df14eb36ba19ee881af6",
+            "m_Flags": 0,
+            "m_MemorizeSpells": [],
+            "m_Overrides": [
+              "m_CharacterClass",
+              "Selections",
+              "Levels"
+            ],
+            "m_SelectSpells": [],
+            "name": "$AddClassLevels$9081ee09-311a-497a-b935-0fb26732379e"
+          },
+          {
+            "$type": "080212e5ff3741dfa69c367117e7a426, ForbidOwnAreaEffects",
+            "PrototypeLink": {
+              "guid": "928e50a55465ad34b9247c45f8b9009a",
+              "name": "$ForbidOwnAreaEffects$51bebca3-eb00-4610-a9d4-87ff3d797dc3"
+            },
+            "m_Flags": 0,
+            "m_Overrides": [],
+            "name": "$ForbidOwnAreaEffects$51bebca3-eb00-4610-a9d4-87ff3d797dc3"
+          }
+        ],
+        "Constitution": 13,
+        "Dexterity": 14,
+        "FactionOverrides": {
+          "m_AttackFactionsToAdd": [],
+          "m_AttackFactionsToRemove": []
+        },
+        "Gender": "Female",
+        "Intelligence": 10,
+        "IsCheater": false,
+        "IsFake": false,
+        "IsLeftHanded": false,
+        "LocalizedName": {
+          "assetguid": "03b3d012ab9116a4bb909e970f9a80cd",
+          "stringkey": "a2c32cde-bf45-4648-9d85-eb465bfc1033"
+        },
+        "MaxHP": 0,
+        "Prefab": {
+          "AssetId": "58866e97d128a2d41b42571fd3037ba2"
+        },
+        "PrototypeLink": "928e50a55465ad34b9247c45f8b9009a",
+        "Size": "Medium",
+        "Skills": {
+          "Acrobatics": 0,
+          "Diplomacy": 0,
+          "KnowledgeArcana": 0,
+          "KnowledgeWorld": 0,
+          "LoreNature": 0,
+          "LoreReligion": 0,
+          "Perception": 0,
+          "Physique": 0,
+          "Stealth": 0,
+          "Thievery": 0,
+          "UseMagicDevice": 0
+        },
+        "Speed": {
+          "m_Value": 30.0
+        },
+        "Strength": 14,
+        "Visual": {
+          "ArmorFx": null,
+          "BloodPuddleFx": {
+            "AssetId": "f1400b13c4d834549be5b6dc32bc2ce3"
+          },
+          "BloodType": "Common",
+          "BodySoundSize": "Medium",
+          "BodySoundType": "Flesh",
+          "DefaultArmorSoundType": "Flesh",
+          "DismemberFx": {
+            "AssetId": "876334cab63820a4696ecefb8a88d1fb"
+          },
+          "FoleySoundPrefix": "",
+          "FootSoundSize": "Medium",
+          "FootSoundType": "Boot",
+          "FootprintScale": 1.0,
+          "FootprintType": "Humanoid",
+          "FootstepSoundSizeType": "BootMedium",
+          "ImportanceOverride": 0,
+          "IsBlockChangeClothColor": false,
+          "IsNotUseDismember": false,
+          "NoFinishingBlow": false,
+          "ReachFXThresholdBonus": 0.0,
+          "RipLimbsApartFx": null,
+          "SilentCaster": false,
+          "m_Barks": "!bp_4ea5acc53d950b34e9c7397cdb0321fa"
+        },
+        "Wisdom": 12,
+        "m_AddFacts": [
+          "!bp_8d665cf41716dc24581137ee84ecec27"
+        ],
+        "m_AdditionalTemplates": [],
+        "m_AllowNonContextActions": false,
+        "m_Brain": "!bp_5abc8884c6f15204c8604cb01a2efbab",
+        "m_CustomizationPreset": "!bp_26ff3bb325634b2da9ff7a03ab894a6c",
+        "m_Description": {
+          "Shared": null,
+          "m_Key": ""
+        },
+        "m_DescriptionShort": {
+          "Shared": null,
+          "m_Key": ""
+        },
+        "m_DisplayName": {
+          "Shared": null,
+          "m_Key": ""
+        },
+        "m_Faction": "!bp_d8de50cc80eb4dc409a983991e0b77ad",
+        "m_HasAssignedChunkId": true,
+        "m_Icon": null,
+        "m_Overrides": [
+          "LocalizedName",
+          "$AddClassLevels$42d65e3f-1b25-410a-85eb-a6526c8a10e3",
+          "$AddClassLevels$9081ee09-311a-497a-b935-0fb26732379e",
+          "Strength",
+          "Charisma",
+          "Dexterity",
+          "Constitution",
+          "Wisdom",
+          "Body.m_PrimaryHand",
+          "Body.m_SecondaryHand",
+          "Body.m_PrimaryHandAlternative1",
+          "Body.m_SecondaryHandAlternative1",
+          "Prefab",
+          "Gender",
+          "m_Race",
+          "m_AddFacts",
+          "Alignment"
+        ],
+        "m_PS4ChunkId": "Chapter1",
+        "m_Portrait": "!bp_7929611eb7f84fd583ed8befc53de0e8",
+        "m_Race": "!bp_fd188bb7bb0002e49863aec93bfb9d99",
+        "m_StartingInventory": [],
+        "m_Type": null
+      },
+      "Meta": {
+        "ShadowDeleted": false
+      }
+    },
+    "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp": {
+      "AssetId": "0dc8b8604bb33c846a63f3eb62443674",
+      "Data": {
+        "$type": "52ca6275d0a87bf428811a8c24d89de4, BlueprintAnswersList",
+        "AlignmentRequirement": "None",
+        "Answers": [
+          "!bp_4e9a62dc1e0979943985b18691982156",
+          "!bp_2905e311d362b654fa5bc49a8e9ee565",
+          "!bp_7e1119c31a3c2804f979d81c1d4dba1c",
+          "!bp_82d6e6891816fde4b99eba34e90a1a39",
+          "!bp_47b38df7747ae814c91eed92ffeb91dd",
+          "!bp_ae72f1e316afbe944a0d2f0d84d541a5",
+          "!bp_cf997c49d95e6264abacf51f561020b4",
+          "!bp_84ddfe54f20b5bf4aae91f48272ada96",
+          "!bp_ddba744fe9427534cbc4ce02aca6d586"
+        ],
+        "Comment": "",
+        "Components": [],
+        "Conditions": {
+          "Conditions": [],
+          "Operation": "And"
+        },
+        "MythicRequirement": "None",
+        "ParentAsset": "3269417315940ed4daf2a345b5812c4f",
+        "PrototypeLink": null,
+        "ShowOnce": false,
+        "m_Overrides": []
+      }
+    },
+    "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Diplomacy_Officer_dialogue.jbp": {
+      "AssetId": "a81655ed97277974e947c1aaf9e33525",
+      "Data": {
+        "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+        "Comment": "\u0432\u0441\u0435\u0433\u0434\u0430 \u0441\u0442\u043e\u0438\u0442 \u0441\u043e \u0441\u0432\u0438\u0442\u043a\u043e\u043c \u0432 \u0440\u0443\u043a\u0430\u0445",
+        "Components": [],
+        "Conditions": {
+          "Conditions": [],
+          "Operation": "And"
+        },
+        "FinishActions": {
+          "Actions": []
+        },
+        "FirstCue": {
+          "Cues": [
+            "!bp_3269417315940ed4daf2a345b5812c4f",
+            "!bp_bd0fd5f2a10163941a4e01ada9edc850"
+          ],
+          "Strategy": "First"
+        },
+        "IsLockCameraRotationButtons": false,
+        "PrototypeLink": null,
+        "ReplaceActions": {
+          "Actions": []
+        },
+        "StartActions": {
+          "Actions": []
+        },
+        "StartPosition": null,
+        "TurnFirstSpeaker": true,
+        "TurnPlayer": true,
+        "Type": "Common",
+        "m_OverrideAreaCR": null,
+        "m_Overrides": []
+      }
+    },
+    "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/DiplomacyOfficer_InDrezen.jbp": {
+      "AssetId": "b5f301fbc4c44535a6309d610d5bd28a",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "ActivationCondition": {
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "Completed": false,
+              "CompletionInProgress": false,
+              "Not": false,
+              "NotStarted": false,
+              "Playing": true,
+              "Started": false,
+              "m_Etude": "!bp_e0d8b253efedb70488badaaa3d47632c",
+              "name": "$EtudeStatus$21150742-75fa-4204-a94c-a8d148159c53"
+            }
+          ],
+          "Operation": "And"
+        },
+        "Comment": "",
+        "CompletionCondition": {
+          "Conditions": [],
+          "Operation": "And"
+        },
+        "Components": [
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                  "Fade": false,
+                  "Target": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "Spawner": {
+                      "EntityNameInEditor": "RankUpOfficer_Diplomacy",
+                      "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4",
+                      "_entity_id": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b"
+                    },
+                    "name": "$UnitFromSpawner$d7a548a7-aa4d-405e-8dbc-9a4ff60542c8"
+                  },
+                  "Unhide": true,
+                  "name": "$HideUnit$92a37d59-bab5-44dd-b646-2a8a3996e55a"
+                },
+                {
+                  "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                  "Unit": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "Spawner": {
+                      "EntityNameInEditor": "RankUpOfficer_Diplomacy",
+                      "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4",
+                      "_entity_id": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b"
+                    },
+                    "name": "$UnitFromSpawner$6aacee5b-8753-4eb0-b306-24741ca9370c"
+                  },
+                  "m_CopyRotation": true,
+                  "name": "$TranslocateUnit$4e7bc288-e7c6-409d-b20e-5c5fbb253838",
+                  "translocateOrientationEvaluator": {
+                    "$type": "e11ac2cb26534343ba689a3fdd4de609, LocatorOrientation",
+                    "Locator": {
+                      "EntityNameInEditor": "DiplomacyOfficer_Position",
+                      "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4",
+                      "_entity_id": "e6a7de2a-ce6f-4413-b24d-06daf1990e4c"
+                    },
+                    "LocatorEval": null,
+                    "name": "$LocatorOrientation$eb0e448a-bff7-4d30-8284-2ac4c85727ff"
+                  },
+                  "translocatePosition": {
+                    "EntityNameInEditor": "",
+                    "SceneAssetGuid": "",
+                    "_entity_id": ""
+                  },
+                  "translocatePositionEvaluator": {
+                    "$type": "ee272e7d88aff6648b4c1b052228fdc7, LocatorPosition",
+                    "Locator": {
+                      "EntityNameInEditor": "DiplomacyOfficer_Position",
+                      "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4",
+                      "_entity_id": "e6a7de2a-ce6f-4413-b24d-06daf1990e4c"
+                    },
+                    "Offset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "name": "$LocatorPosition$8558d308-97b5-4839-bb9a-b8e3deb23c5d"
+                  }
+                }
+              ]
+            },
+            "Comment": "",
+            "Conditions": {
+              "Conditions": [],
+              "Operation": "And"
+            },
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Once": false,
+            "m_Overrides": [],
+            "name": "$EtudePlayTrigger$7f791994-d59e-40fd-8c40-0d270b52beb6"
+          }
+        ],
+        "Priority": -20,
+        "PrototypeLink": "",
+        "m_AddedAreaMechanics": [],
+        "m_AllowActionStart": true,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [
+          "!bp_12b19db05c70a2a4fa3210293d35bfd0"
+        ],
+        "m_IncludeAreaParts": true,
+        "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+        "m_Overrides": [],
+        "m_Parent": "!bp_e423e4d675b64f2bb974cb453aaed4fd",
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_StartsWith": [],
+        "m_Synchronized": []
+      }
+    }
+  },
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\drezencapital_default_mechanics.scenes",
+  "objects": [
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1074
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 521
+            },
+            "m_LocalPosition": {
+              "x": -28.40999984741211,
+              "y": 53.5,
+              "z": -24.969999313354492
+            },
+            "m_LocalRotation": {
+              "w": -0.7905071377754211,
+              "x": -0.0,
+              "y": 0.6124528646469116,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1260,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "UniqueId": "e6a7de2a-ce6f-4413-b24d-06daf1990e4c",
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 521
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 60
+            }
+          },
+          "path_id": 2829,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 521
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 42
+            }
+          },
+          "path_id": 2828,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1260
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2829
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2828
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "DiplomacyOfficer_Position",
+        "m_Tag": 0
+      },
+      "path_id": 521
+    },
+    {
+      "components": [
+        {
+          "data": {
+            "m_Children": [],
+            "m_Father": {
+              "m_FileID": 0,
+              "m_PathID": 1241
+            },
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 535
+            },
+            "m_LocalPosition": {
+              "x": 94.56600189208984,
+              "y": 64.55000305175781,
+              "z": 3.7839999198913574
+            },
+            "m_LocalRotation": {
+              "w": 1.0,
+              "x": -0.0,
+              "y": -0.0,
+              "z": -0.0
+            },
+            "m_LocalScale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            }
+          },
+          "path_id": 1274,
+          "type": "Transform"
+        },
+        {
+          "data": {
+            "IgnoreInEncoutnerStatistic": 1,
+            "UniqueId": "c658c4cf-116e-4b61-9ff9-8905bcf4fd6b",
+            "m_Blueprint": {
+              "guid": "ca2d58c5c65723945857e04fb85d30ce"
+            },
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 535
+            },
+            "m_IsInGame": 1,
+            "m_Name": "",
+            "m_RespawnIfDead": 0,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 53
+            },
+            "m_SpawnOnSceneInit": 1,
+            "m_spawnConditions": {
+              "guid": ""
+            }
+          },
+          "path_id": 2855,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "ApproachWorksWhenStealthed": 0,
+            "Conditions": {
+              "guid": ""
+            },
+            "Cooldown": 5.0,
+            "OverrideDistance": 0.0,
+            "TriggerOnApproach": 0,
+            "TriggerOnParty": 1,
+            "m_Dialog": {
+              "guid": "a81655ed97277974e947c1aaf9e33525"
+            },
+            "m_Enabled": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 535
+            },
+            "m_Name": "",
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 45
+            }
+          },
+          "path_id": 2856,
+          "type": "MonoBehaviour"
+        },
+        {
+          "data": {
+            "m_Enabled": 1,
+            "m_ForceOptimizeInSaves": 1,
+            "m_GameObject": {
+              "m_FileID": 0,
+              "m_PathID": 535
+            },
+            "m_Name": "",
+            "m_NoOvertipOnConsole": 0,
+            "m_NotOnConsole": 0,
+            "m_OnConsoleOnly": 0,
+            "m_Script": {
+              "m_FileID": 1,
+              "m_PathID": 30
+            },
+            "m_SimplifyWhenHidden": 1,
+            "m_SleepWhenFarAway": 1,
+            "m_SpawnHidden": 1
+          },
+          "path_id": 2857,
+          "type": "MonoBehaviour"
+        }
+      ],
+      "data": {
+        "m_Component": [
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 1274
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2855
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2856
+            }
+          },
+          {
+            "component": {
+              "m_FileID": 0,
+              "m_PathID": 2857
+            }
+          }
+        ],
+        "m_IsActive": true,
+        "m_Layer": 0,
+        "m_Name": "RankUpOfficer_Diplomacy",
+        "m_Tag": 0
+      },
+      "path_id": 535
+    }
+  ],
+  "sha256": "D451FEF29C6B22F5D13E8BACEA70BA063175DDEE8B3F43F48D6CAE7F22B4A9E3"
+}

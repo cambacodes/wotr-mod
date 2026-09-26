@@ -15,11 +15,15 @@ Keep all 37 roster characters and their existing requirements in scope.
 | Worker | Current status | Exclusive writable files |
 | --- | --- | --- |
 | `/root/terendelev_api_recover` | Aranka parent-route research and continuation | `storylines/aranka_continuation.py`, `tests/ArankaContinuationTests.cs`, `reference/canon-review/aranka-extension-evidence.md`, `reference/parallel/aranka-continuation-handoff.md` |
-| `/root/gesmerha_recover` | Soana later access and recovery research | `reference/canon-review/soana-late-access-audit.md`, optional `reference/canon-review/soana-late-access-records.json`, optional `tools/probe-soana-late-access.py` |
+| `/root/gesmerha_recover` | Konomi private-career consequences and farewell | `storylines/konomi_private_consequence.py`, `tests/KonomiPrivateConsequenceTests.cs`, `reference/parallel/konomi-private-consequence-handoff.md` |
 | `/root/kiana_reconcile_recover` | Tirabade chronology repair after completed independent audit | `storylines/tirabade_chronology.py`, `tests/TirabadeChronologyTests.cs`, `reference/parallel/tirabade-chronology-handoff.md` |
 
 
 Worker names reflect their earlier roles, not fixed authoring or review assignments.
+Soana's later-access audit, raw records and probe are delivered and returned to root.
+They support a living Chapter 5 return at her original contact and distinguish combat death, Camellia's hidden actor and Orso's released remains.
+They do not establish a tested recovery or live Chapter 5 scene.
+Root has separately extracted Konomi's exact ordinary unit/spawner/dialogue connection; implementation and review of the physical-contact guard remain pending.
 The completed Tirabade audit and measurement tool are released to root.
 Its 46,124 distinct aggregate words clear the doubled floor, but relationship agency scored 82 and revised campaign coverage 74.
 Mandatory dual-affair acquisition, unavailable independent romances, missing Trickster recovery and native-history gaps remain open requirements.
