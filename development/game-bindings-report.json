@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\konomi-contact-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 600,
-  "unique_targets": 132,
+  "binding_uses": 609,
+  "unique_targets": 135,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -85,6 +85,18 @@
     "0dc8b8604bb33c846a63f3eb62443674": {
       "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "9980a1ecf3ca24e42ab3b22f858677b5": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "07459f4d09fa81e4b99beea351fb0434": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032.jbp",
+      "type": "BlueprintCue"
+    },
+    "60585f7319a294147a54f440865b21a2": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
+      "type": "BlueprintCue"
     },
     "8a632a5249b3c2541a1381111cae9e37": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001.jbp",

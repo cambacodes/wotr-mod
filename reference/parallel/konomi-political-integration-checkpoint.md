@@ -14,3 +14,43 @@ Source author reports 1,643 distinct-segment words across the two contextual ver
 The contribution still needs independent writing and canon review before promotion.
 Its full-route political story, Trickster attainability and runtime behavior are not certified by this stage.
 The main export remains 225 scenes and the installed mod remains unchanged.
+
+## Later political follow-through and narration image correction
+
+The development export contains 305 scenes, including 64 Konomi scenes.
+Its SHA256 is `C3C9D2D3FE27F64E883DFEFA8A99E5E26F09612DEA6CCFE1B37C04C11AF86210`.
+The approved political source is `C2C1B917481A6A178BACF0666F44D6D90C864978EE6D5828483C200562D91559`.
+The independent political review scores this contribution 91 to 94 and does not approve the assembled campaign.
+
+An exact structural comparison against the previous committed export plus the approved contribution proves that the only additional changes are 21 explicit `Portrait=Konomi` fields on formerly empty Konomi narration pages.
+The runtime previously resolved those pages to the available Tirabade couple image.
+Existing explicit portraits and all other relationships remain unchanged.
+The correction selects the correct key but does not supply the missing Konomi illustration.
+The art reference audit recovered the native model texture and rejected the unrelated male soldier portrait placeholder.
+
+Rules verification passed 14,520,503 assertions.
+Managed construction passed 41,044 assertions over 12,004 blueprints and eleven native answer lists, including repeated construction and native/parent sequence preservation.
+Bindings verification passed 609 uses against 106 native archive targets and 29 reviewed parent-source targets.
+The production DLL remains `CB2FCD2383C770D7046C36581C84E92673E032571E7884B0E376E7615B7EA59C`.
+These checks do not establish Unity execution, actual parent initialization, art rendering, ToyBox behavior or save persistence.
+No installed files changed.
+
+The updated content inventory measures 49,416 distinct-segment Konomi words across alternatives, not a single selected playthrough.
+Full script freeze remains pending assembled review.
+Reviewers must disclose authorship overlap and defer those contributions to another reviewer.
+The independent chronology audit found that native rank-six dismissal requires Chapter05, so pre-Abyss dismissed-office history cannot be credited as ordinary native campaign coverage.
+The late private absence catch-up may also regress completed career decisions and requires correction after exact branch review.
+A separate integration audit reproduced a preexisting repeated in-process authoring-build failure caused by mutation of imported scene templates; a fresh one-shot export succeeds.
+Root corrected the authoring builder to copy imported scene collections before applying overlays.
+The runnable `tools/check-expansion-isolation.py` verifies repeated construction and isolation from returned-scene mutation.
+JSON-normalized output remains exactly equal to the frozen export; no additional story text or graph changed.
+
+## Next milestones
+
+Resolve the late catch-up continuity regression and label pre-Abyss dismissed history as altered-sequence compatibility.
+The ordinary Abyss letter followed by Chapter5 dismissal remains the native attainable campaign path; no early dismissal should be invented merely to make branches symmetrical.
+Complete independent whole-script review before freezing dialogue for TTS.
+Export stable scene/node identities and text hashes when the script is ready so revised lines can be regenerated independently.
+Generate and independently review Konomi artwork against verified model traits and the current attractive adult humanoid redesign brief.
+Verify actual game delivery and ToyBox compatibility before calling the route ready for player testing.
+All 37 planned characters remain in scope; no route is fully approved at this checkpoint.

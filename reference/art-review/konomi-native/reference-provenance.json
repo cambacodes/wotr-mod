@@ -1,0 +1,46 @@
+{
+  "unit": "ca2d58c5c65723945857e04fb85d30ce",
+  "unit_record": "reference/canon-review/konomi-contact-records.json",
+  "portrait_blueprint_path": "Units/PortraitsGenerated/d7d34a2cbeb4c6841905e87c51d04847_BCT_Rand_Crusader_Soldier.jbp",
+  "portrait_guid": "7929611eb7f84fd583ed8befc53de0e8",
+  "portrait_sprite_asset": "5d51770a9a755bc44a0082c041d46b61",
+  "portrait_bundle": "D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure/Bundles/portraits",
+  "portrait_sprite_path_id": -5372300196617306070,
+  "prefab": "58866e97d128a2d41b42571fd3037ba2",
+  "diffuse_texture_path_id": -3683816850660787530,
+  "material_path_id": 5948448819311337514,
+  "files": [
+    {
+      "file": "-2758958872117174963.png",
+      "sha256": "E3BEEB0B9EE99651A8D5D70A75EBC7E3D492B42CEF933388EBDE4C319D7AF85B",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "file": "-3683816850660787530.png",
+      "sha256": "1E74E34AE1624AE4B70904B5F7C6F488E1BCADCC7D4AC3566D17385CB35EF1B3",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "file": "-445827898678602424.png",
+      "sha256": "B61D1BB085106C627A3857EFF2B45F9D19DB595CE66EA2D6F33F77A74BFE671C",
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "file": "unit-linked-soldier-placeholder.png",
+      "sha256": "B9B1F8D331D168012CFAC7E531C81D070CC1FF4B05696498C2FBEAFD5D894D40",
+      "dimensions": [
+        184,
+        244
+      ]
+    }
+  ]
+}

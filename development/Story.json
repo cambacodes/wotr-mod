@@ -14377,7 +14377,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "wonder",
@@ -14405,7 +14405,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "fear",
@@ -14446,7 +14446,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "fear_judgment",
@@ -14462,7 +14462,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "fear_ordinary",
@@ -14478,7 +14478,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "write",
@@ -14496,7 +14496,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
@@ -15095,6 +15095,18 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"Those papers have an afternoon of ours in them. I have been thinking about the trial and what you chose to write.\"",
+              "Next": "work_remembered",
+              "Set": [],
+              "Requires": [
+                "konomi.ordinary_expanded",
+                "konomi.trial_lived",
+                "konomi.readers_answered"
+              ],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Konomi"
@@ -15158,6 +15170,162 @@
               "Set": [
                 "konomi.at_home"
               ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "work_remembered",
+          "Speaker": "Konomi",
+          "Text": "\"Then tell me which part stayed with you. I remember several things I would have preferred to discover more elegantly. I also remember being glad you were there.\"",
+          "Choices": [
+            {
+              "Text": "[Recall keeping the evening stopping time even with casks left to unload.]",
+              "Next": "work_evening",
+              "Set": [],
+              "Requires": [
+                "konomi.evening_trial"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Recall the morning arrival, including the watch, charcoal and blocked entrance.]",
+              "Next": "work_morning",
+              "Set": [],
+              "Requires": [
+                "konomi.morning_trial"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "work_evening",
+          "Speaker": "Konomi",
+          "Text": "\"Two casks, and Varine looking at me as though ten minutes had never hurt anyone. I had made the attractive proposal. I am glad you also saw the part where we stopped.\"\n{n}She sets the papers farther from the plant.{/n}\n\"Oselda wrote down the cost. I resisted making the account more flattering. We both contributed.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about the private reports they agreed to write together.]",
+              "Next": "work_joint",
+              "Set": [],
+              "Requires": [
+                "konomi.joint_offer"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the circular they sent to readers of their own choosing.]",
+              "Next": "work_circular",
+              "Set": [],
+              "Requires": [
+                "konomi.circular_offer"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "work_morning",
+          "Speaker": "Konomi",
+          "Text": "\"And the handcart. I remember what my glove looked like afterward. Oselda's arrangement worked, though neither of us had allowed for everything it would cost.\"\n{n}She sets the papers farther from the plant.{/n}\n\"I wanted my proposal chosen. I am glad I was there to see hers work. I can still find both things true without needing another trial to reconcile them.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about the private reports they agreed to write together.]",
+              "Next": "work_joint",
+              "Set": [],
+              "Requires": [
+                "konomi.joint_offer"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the circular they sent to readers of their own choosing.]",
+              "Next": "work_circular",
+              "Set": [],
+              "Requires": [
+                "konomi.circular_offer"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "work_joint",
+          "Speaker": "Konomi",
+          "Text": "\"Two reports, both names and a reduced fee. Their first question went to Oselda. I have not ceased wanting to be asked first, but it was useful to discover that being asked second did not prevent me from enjoying the work.\"\n{n}She turns back toward you.{/n}\n\"Those are the papers. They can still wait. I have been looking forward to this evening.\"",
+          "Choices": [
+            {
+              "Text": "\"You promised me honest disagreement. Tell me something I will argue with.\"",
+              "Next": "honesty",
+              "Set": [],
+              "Requires": [
+                "konomi.wants_honesty"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You promised me an evening when I need not impress anybody.\"",
+              "Next": "rest",
+              "Set": [],
+              "Requires": [
+                "konomi.wants_rest"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I would like to hear about something that went well for you.\"",
+              "Next": "news",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "work_circular",
+          "Speaker": "Konomi",
+          "Text": "\"Six copies, then answers we had not known to expect. I wanted a more impressive beginning. I liked the account we actually wrote enough to let it leave the room.\"\n{n}She turns back toward you.{/n}\n\"Those are the papers. They can still wait. I have been looking forward to this evening.\"",
+          "Choices": [
+            {
+              "Text": "\"You promised me honest disagreement. Tell me something I will argue with.\"",
+              "Next": "honesty",
+              "Set": [],
+              "Requires": [
+                "konomi.wants_honesty"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You promised me an evening when I need not impress anybody.\"",
+              "Next": "rest",
+              "Set": [],
+              "Requires": [
+                "konomi.wants_rest"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I would like to hear about something that went well for you.\"",
+              "Next": "news",
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -16483,7 +16651,7 @@
               "Abort": true
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "door",
@@ -16507,7 +16675,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "distinction",
@@ -16525,7 +16693,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "second_slot",
@@ -16543,7 +16711,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "letter",
@@ -16571,7 +16739,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "lover",
@@ -16587,7 +16755,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "first",
@@ -16603,7 +16771,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "send",
@@ -16621,7 +16789,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
@@ -16680,7 +16848,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "lover",
@@ -16696,7 +16864,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "first",
@@ -16712,7 +16880,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "answer",
@@ -16744,7 +16912,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "accepted",
@@ -16762,7 +16930,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "declined",
@@ -16781,7 +16949,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         }
       ],
       "Requires": [
@@ -16848,7 +17016,7 @@
               "Abort": true
             }
           ],
-          "Portrait": ""
+          "Portrait": "Konomi"
         },
         {
           "Id": "lover",
@@ -61383,6 +61551,584 @@
         "aranka.ran_keep_final",
         "aranka.ran_release_final"
       ]
+    },
+    {
+      "Id": "konomi.the_names_admitted",
+      "Title": "The names admitted to the room",
+      "Owner": "Konomi",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Did you receive the political reply you wanted to show me?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "{n}Konomi has opened a letter beside a list of names. Some names have titles beside them; others have been struck through. She turns both pages toward you.{/n}\n\"Veyra keeps correspondence for a small circle in Nerosyan. They compare accounts supplied by people who have held public responsibilities. No authority to issue orders. Considerable influence over which account of an order becomes accepted.\"\n{n}She rests a finger beside her own name.{/n}\n\"She has invited me to review their next collection. I asked what I could show you. These terms, the disputed admission and the examples in her reply. Nothing from the restricted papers.\"\n\"A difficult answer?\"\n\"An attractive one. Those require rather more care.\"",
+          "Choices": [
+            {
+              "Text": "[Read the terms with her.]",
+              "Next": "context",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Return when you can give the reply your attention.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "context",
+          "Speaker": "Konomi",
+          "Text": "\"They want to compare who gave an instruction, who carried it out, and who later claimed the credit. A modest beginning. Several correspondents have already objected to the second column.\"\n{n}Her smile lasts only a moment.{/n}\n\"You have heard why I care about that. What we can say about Mendev now must still depend on the account we actually have.\"",
+          "Choices": [
+            {
+              "Text": "[Recall her report of foreign garrisons taking over administration.]",
+              "Next": "foreign",
+              "Set": [],
+              "Requires": [
+                "konomi.rank_eight_started",
+                "konomi.foreign_help_playing",
+                "konomi.foreign_report_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"What can these letters establish?\"",
+              "Next": "unconfirmed",
+              "Set": [],
+              "Requires": [
+                "konomi.rank_eight_started",
+                "konomi.foreign_help_playing"
+              ],
+              "Forbids": [
+                "konomi.foreign_report_seen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Recall her report of Mendev resolving the crisis without outside intervention.]",
+              "Next": "domestic",
+              "Set": [],
+              "Requires": [
+                "konomi.rank_eight_started",
+                "konomi.domestic_report_seen"
+              ],
+              "Forbids": [
+                "konomi.foreign_help_playing"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"What is the circle willing to show you?\"",
+              "Next": "unconfirmed",
+              "Set": [],
+              "Requires": [
+                "konomi.rank_eight_started"
+              ],
+              "Forbids": [
+                "konomi.foreign_help_playing",
+                "konomi.domestic_report_seen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Recall her account of failing services and divided authority.]",
+              "Next": "crisis",
+              "Set": [],
+              "Requires": [
+                "konomi.rank_six_started",
+                "konomi.crisis_report_seen"
+              ],
+              "Forbids": [
+                "konomi.rank_eight_started"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what this limited collection can establish.]",
+              "Next": "unconfirmed",
+              "Set": [],
+              "Requires": [
+                "konomi.rank_six_started"
+              ],
+              "Forbids": [
+                "konomi.rank_eight_started",
+                "konomi.crisis_report_seen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"What do you expect to learn from this collection?\"",
+              "Next": "unconfirmed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.rank_six_started",
+                "konomi.rank_eight_started"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "foreign",
+          "Speaker": "Konomi",
+          "Text": "\"Order improved. Administration passed to foreign soldiers. I told you both, and I still want an account that preserves both. Otherwise gratitude becomes a remarkably convenient substitute for asking who can answer an instruction.\"\n{n}She draws the list closer.{/n}\n\"This collection will not make a garrison leave. It can preserve the names of the people who knew the work before somebody else began commanding it. I want those names available when somebody claims that Mendev has nobody capable of taking it back.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what the circle requires of her.]",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "domestic",
+          "Speaker": "Konomi",
+          "Text": "\"The cities and the capital acted together again. I was glad to tell you so. I do not want every account written afterward to begin with the claim that this was inevitable.\"\n{n}She touches one of the crossed-out names.{/n}\n\"Institutions survived because people did things, not because the correct names remained on the doors. I want the record kept by people who understand those institutions. That is also how I might keep their most comfortable explanations from going unchallenged.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what the circle requires of her.]",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "crisis",
+          "Speaker": "Konomi",
+          "Text": "\"When services fail, a person who can still obtain an answer matters more than a title. It does not follow that we should accept every account that arrives with a persuasive description of its author's usefulness.\"\n{n}Her finger follows the list down to a name without a title.{/n}\n\"I would like reliable records while they can still be made. Not a victory announcement, and not another demand that somebody else solve the country before we decide which letter to believe.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what the circle requires of her.]",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "unconfirmed",
+          "Speaker": "Konomi",
+          "Text": "\"An account of the letters its members handled. Who sent them, who answered, and what the writers are willing to have examined. That is enough to begin without declaring the country saved or lost.\"\n{n}She leaves the folded correspondence where you can see its extent.{/n}\n\"I have wanted better answers. Here are people willing to supply some, on terms I have not yet accepted. I would rather decide what those terms cost than improve the account beyond what they sent.\"",
+          "Choices": [
+            {
+              "Text": "[Read the proposed terms.]",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Konomi",
+          "Text": "\"They admit people whose service can be confirmed through an office already represented. Members have agreed to share certain extracts with that group. Veyra has obtained their permission for me to read them if I accept.\"\n\"And the crossed-out names?\"\n\"People without that confirmation. Marenne kept a district office's correspondence while its appointed secretary was absent. She can show the work. The secretary will not confirm her place in it. He says assistance does not constitute appointment.\"\n{n}Konomi's expression is cool.{/n}\n\"He is correct about the appointment. I suspect he is less interested in accuracy than in being the only person who can explain his absence.\"\n\"Would you admit her?\"\n\"I would like to hear her. I also want an institution capable of saying who may read a letter entrusted to it. I have no intention of treating access to private papers as a reward for being the most sympathetic person excluded.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what arrangements she would accept.]",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "choice",
+          "Speaker": "Konomi",
+          "Text": "\"I can accept the existing rules. Marenne may submit an account, but she will not see the restricted replies. I would have access and a place among people who can answer my questions without asking a second intermediary. I want that place.\"\n{n}She turns the page.{/n}\n\"Or I can sponsor her for this one comparison. Veyra allows a member to take responsibility for an unconfirmed correspondent. We would work from a smaller set of extracts whose authors permit that arrangement. I would give up the broader reading and put my name beside hers when errors are corrected.\"\n\"A cost to your own access.\"\n\"And perhaps my reputation. She may remember something incorrectly. So may the secretary. The difference is that nobody asks me to guarantee his entire character before hearing him.\"\n{n}She looks at you with open impatience, not all of it directed at the circle.{/n}\n\"Those are the two arrangements I can defend. I would prefer not to be told that wanting the larger reading makes the first indefensible.\"",
+          "Choices": [
+            {
+              "Text": "\"Take the established place. Make them answer the record you can actually examine, including what Marenne submits.\"",
+              "Next": "recognized",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Sponsor her for the limited comparison. Giving her a chance to answer may be worth losing the broader reading.\"",
+              "Next": "sponsor",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "recognized",
+          "Speaker": "Konomi",
+          "Text": "\"Yes. I want to know what they say to one another when they believe the reader understands why the institution matters. I might learn more than I could by standing outside and objecting to the invitation.\"\n{n}She writes her acceptance, then a separate request for Marenne's account. She specifies that the account may be considered without giving its author access to the other papers.{/n}\n\"She may refuse. I would dislike being asked to trust a discussion I could not hear. I am choosing it anyway.\"\n{n}Konomi puts down the pen.{/n}\n\"Stay while I read this once more. Then I should like to walk with you somewhere that does not contain the word credentials.\"",
+          "Choices": [
+            {
+              "Text": "[Stay for the rereading, then leave together.]",
+              "Next": null,
+              "Set": [
+                "konomi.political_recognized",
+                "konomi.political_terms_sent"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "sponsor",
+          "Speaker": "Konomi",
+          "Text": "\"For the comparison, then. I shall not certify an appointment she did not hold, or promise that I agree with everything she remembers.\"\n{n}She writes the offer carefully, including the reduced reading and her responsibility for answering corrections. Beside it she puts a request for Marenne's own agreement to those terms.{/n}\n\"The secretary will call this patronage. He will be right. He might find it harder to enjoy that observation if it occurred to him how he obtained his own audience.\"\n{n}Her mouth curves, sharp and pleased.{/n}\n\"I rather like choosing whom they must hear with me. Stay while I make that sound less provocative. Not much less.\"",
+          "Choices": [
+            {
+              "Text": "[Stay until the answer is ready, then leave the work together.]",
+              "Next": null,
+              "Set": [
+                "konomi.political_sponsored",
+                "konomi.political_terms_sent"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.present",
+        "konomi.political_account"
+      ],
+      "Forbids": [
+        "konomi.dismissed",
+        "konomi.closed",
+        "konomi.farewell",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "AnswerLists": [
+        "0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "ContactUnit": "ca2d58c5c65723945857e04fb85d30ce"
+    },
+    {
+      "Id": "konomi.the_answer_on_record",
+      "Title": "The answer she puts her name to",
+      "Owner": "Konomi",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"What did the circle send back?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "{n}Konomi has set aside two sheets. The rest of the packet is secured inside her case.{/n}\n\"The answer, and the correction they have agreed I may show you. I have not brought you here to admire a successful request for more correspondence. We reached a result.\"\n{n}She moves the empty chair nearer with her foot.{/n}\n\"One I wanted, though I have had to practice saying which part.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she found through the recognized circle.]",
+              "Next": "recognized",
+              "Set": [],
+              "Requires": [
+                "konomi.political_recognized"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what the sponsored comparison established.]",
+              "Next": "sponsor",
+              "Set": [],
+              "Requires": [
+                "konomi.political_sponsored"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Arrange to hear the answer another day.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "recognized",
+          "Speaker": "Konomi",
+          "Text": "\"Marenne sent her account. She declined further questions unless they came in writing. Veyra found that unnecessarily suspicious. I found it quite intelligible.\"\n{n}Konomi puts the first sheet before you.{/n}\n\"The secretary claimed to have authorized a disputed instruction before leaving. His own covering letter shows that he received it afterward. I could compare the dates because I had the broader reading. The circle has corrected its summary and sent the correction to everyone who received the first version.\"\n\"Does Marenne get to see it?\"\n\"Her own contribution and the corrected conclusion. Not the private replies. She wrote that she would have preferred to answer them herself. I believe her. I have not obtained her gratitude.\"\n{n}Konomi folds the sheet along its existing crease.{/n}\n\"I have obtained a correction people inside the circle will actually read. Veyra wants me to review another set. The secretary has stopped answering my personal letters. I shall manage without those.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she takes from the result.]",
+              "Next": "role",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "sponsor",
+          "Speaker": "Konomi",
+          "Text": "\"Marenne accepted. The narrower extracts showed that her first date was wrong. She had copied the day she received the instruction where the form asked when it was issued. I sent the correction under both our names.\"\n{n}Konomi slides the second sheet toward you.{/n}\n\"It did not establish the secretary's account either. He could not supply the authorization he claimed to have given. The circle amended its summary: the chain of instruction remains unproven. Both versions attached. No invented certainty.\"\n\"And your place?\"\n\"Limited to this comparison, as agreed. I was not invited into the broader reading. Marenne was allowed to answer the questions about her account herself. She disputed my wording twice. The second objection was good.\"\n{n}Konomi looks pleased despite the lost invitation.{/n}\n\"Veyra says I have made the next sponsorship more troublesome. People will expect their answers to be included. I told her that was one of the purposes of asking a question. I enjoyed writing it.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she takes from the result.]",
+              "Next": "role",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "role",
+          "Speaker": "Narrator",
+          "Text": "{n}She returns the shared pages to their wrapper. Nothing from the restricted packet has been left on your side of the table.{/n}",
+          "Choices": [
+            {
+              "Text": "\"You said the Diplomatic Council had served its purpose. This is a different kind of influence.\"",
+              "Next": "concluded",
+              "Set": [],
+              "Requires": [
+                "konomi.council_conclusion_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You found work you wanted without waiting for another council instruction.\"",
+              "Next": "ongoing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.council_conclusion_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "concluded",
+          "Speaker": "Konomi",
+          "Text": "\"It is. I meant what I said about that council. I did not resign every interest I have in whose account is believed.\"\n{n}She secures the packet in her case.{/n}\n\"My appointment still has its duties. This correspondence does not entitle me to issue a new order in its name. It gives me a place in an argument I wanted to enter. I am glad of the distinction. It means I can admit how much I wanted the place.\"",
+          "Choices": [
+            {
+              "Text": "[Let her close the case.]",
+              "Next": "respect",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "ongoing",
+          "Speaker": "Konomi",
+          "Text": "\"I did. The appointment gives me responsibilities. It need not provide every reason I have for writing a letter.\"\n{n}She secures the packet in her case.{/n}\n\"I am not presenting this as a council decision. It is an account I helped correct and a circle of people who now know what it is like to receive my questions. Some of them will be less eager next time. I have survived worse introductions.\"",
+          "Choices": [
+            {
+              "Text": "[Let her close the case.]",
+              "Next": "respect",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "respect",
+          "Speaker": "Konomi",
+          "Text": "\"You heard what I wanted before you knew whether the answer would flatter me. I liked that.\"\n{n}She moves her chair away from the desk and turns toward you.{/n}",
+          "Choices": [
+            {
+              "Text": "\"You once acknowledged my political judgment. I liked being asked for it without being promised agreement.\"",
+              "Next": "earned",
+              "Set": [],
+              "Requires": [
+                "konomi.political_respect_seen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I liked being asked. I did not expect that to make your judgment mine.\"",
+              "Next": "unearned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.political_respect_seen"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "earned",
+          "Speaker": "Konomi",
+          "Text": "\"I remember the acknowledgment. I have not misplaced it merely because I might dislike your next recommendation.\"\n{n}She reaches for your hand.{/n}\n\"Nor have I mistaken this for another occasion to bestow it. I wanted your company while deciding something I cared about. You gave me an answer I could use, and stayed to hear what happened. That mattered in a rather less official way.\"",
+          "Choices": [
+            {
+              "Text": "[Stay near.]",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "unearned",
+          "Speaker": "Konomi",
+          "Text": "\"A sensible expectation. I shall endeavor not to disappoint it by becoming too easily persuaded.\"\n{n}She reaches for your hand, smiling at the effort that would require.{/n}\n\"I wanted your company while deciding something I cared about. I also wanted to be able to show you an answer without first making myself appear blameless in it. That is more difficult than inviting somebody to agree with me.\"",
+          "Choices": [
+            {
+              "Text": "[Stay near.]",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Konomi",
+          "Text": "{n}She draws your hand into her lap and rests both of hers around it.{/n}\n\"Enough. The correction has been sent. The invitations have been accepted or lost. There is no remaining person you must impress before I can enjoy the rest of our evening.\"\n{n}Her thumb moves slowly across your knuckles.{/n}\n\"I have been looking at you while explaining all this. You may have noticed that my attention was not entirely on the chronology.\"",
+          "Choices": [
+            {
+              "Text": "[Kiss her, and stay after the case is put away.]",
+              "Next": "kiss",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep her hand and ask for a quiet walk together.]",
+              "Next": "walk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "kiss",
+          "Speaker": "Narrator",
+          "Text": "{n}Konomi meets you halfway. Her other hand comes to the back of your neck, and the careful pause after the first kiss lasts only until you draw her closer.{/n}\n{n}When she finally lets you move back, she is smiling without trying to make it look like a favorable assessment.{/n}\n\"Yes,\" she says, though you have asked no question.\n{n}She puts the case beneath the desk, well away from the chair beside her. You remain with her while the light changes at the window.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the rest of the visit for each other.]",
+              "Next": null,
+              "Set": [
+                "konomi.political_reply_kept",
+                "konomi.political_reply_kissed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "walk",
+          "Speaker": "Narrator",
+          "Text": "{n}She agrees at once, then spends a moment looking for the gloves she put inside her own case. You wait while she finds them. She gives you a look that discourages the most obvious remark and invites a better one.{/n}\n{n}Outside, she takes your arm. You choose the first turning; she chooses the next. Neither has an appointment at the end of the street.{/n}\n\"There,\" she says. \"We have found a use for two people who insist on choosing.\"\n{n}You continue walking until one of you wants to turn back, and say so.{/n}",
+          "Choices": [
+            {
+              "Text": "[Enjoy the walk and return together.]",
+              "Next": null,
+              "Set": [
+                "konomi.political_reply_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.present",
+        "konomi.political_account",
+        "konomi.political_terms_sent"
+      ],
+      "Forbids": [
+        "konomi.dismissed",
+        "konomi.closed",
+        "konomi.farewell",
+        "inhuman"
+      ],
+      "DelayHours": 168,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "AnswerLists": [
+        "0dc8b8604bb33c846a63f3eb62443674"
+      ],
+      "ContactUnit": "ca2d58c5c65723945857e04fb85d30ce"
     }
   ],
   "Etudes": {
@@ -61740,6 +62486,15 @@
     ],
     "aranka.ran_failure": [
       "b18d250fa2fb4fdf9fe4eba04e9d1655"
+    ],
+    "konomi.foreign_report_seen": [
+      "9980a1ecf3ca24e42ab3b22f858677b5"
+    ],
+    "konomi.domestic_report_seen": [
+      "60585f7319a294147a54f440865b21a2"
+    ],
+    "konomi.crisis_report_seen": [
+      "07459f4d09fa81e4b99beea351fb0434"
     ]
   },
   "StartedDialogs": {

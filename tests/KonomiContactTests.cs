@@ -22,6 +22,9 @@ internal static class KonomiContactTests
             "ending_distance_open", "ending_distance_apart", "ending_distance_changed_open",
             "ending_distance_ascended_open", "ending_distance_lived", "ending_distance_open_lived" };
         var scenes = story.Scenes.Where(s => s.Relationship == "konomi").ToArray();
+        // These later visits declare the same audited physical contact in their source.
+        ordinary = ordinary.Concat(new[] { "the_names_admitted", "the_answer_on_record" }
+            .Where(id => scenes.Any(s => s.Id == "konomi." + id))).ToArray();
         var native = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys)
             .Concat(story.SelectedAnswers.Keys).Concat(story.SeenCues.Keys).Concat(story.StartedDialogs.Keys).ToHashSet();
         check(story.Etudes["konomi.present"] == "b5f301fbc4c44535a6309d610d5bd28a", "Konomi ordinary contact lost its real presence gate.");

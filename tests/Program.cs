@@ -232,7 +232,8 @@ internal static class Program
             "konomi.private_return_terms", "konomi.private_kept_hours", "konomi.private_last_visit",
             "konomi.ending_distance_lived", "konomi.ending_distance_open_lived", "konomi.a_turn_for_herself",
             "aranka.the_wrong_refrain", "aranka.where_the_breath_goes", "aranka.the_name_missing",
-            "aranka.an_evening_uncommanded", "aranka.the_song_afterwards", "aranka.no_encore_needed"
+            "aranka.an_evening_uncommanded", "aranka.the_song_afterwards", "aranka.no_encore_needed",
+            "konomi.the_names_admitted", "konomi.the_answer_on_record"
         };
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
@@ -315,6 +316,7 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) KonomiEarlyReciprocityTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) ArankaContinuationTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) KonomiContactTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "konomi.the_names_admitted")) KonomiPoliticalConsequenceTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) JerribethCounterofferTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);
