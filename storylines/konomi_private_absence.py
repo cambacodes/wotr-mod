@@ -139,9 +139,9 @@ def reply_nodes(final_flags=()):
 "I have wanted to ask you the same thing. There are days when I am tired, or cross, and have not yet learned anything worth explaining from either condition. I would like some company before I become interesting again."
 "I might find you interesting then."
 "You may discover how repetitive my complaints become. I am prepared to risk it if you are."''', c('[Stay near and ask what she has been making room for.]', "absence_now")),
-      n("absence_now", "Konomi", '''"I am still learning how much of my time to promise before I know what an assignment will require. I have invitations to submit proposals. Those are not appointments. One may become paid work; another may become an afternoon explaining why I will not supply the whole negotiation for the price of considering it."
+      n("absence_now", "Konomi", '''"I am still learning how much of my time to promise before I know what an assignment will require. There is always someone who wants an answer before telling me how much work the question contains. I find it particularly difficult to refuse when the question interests me."
 {n}She looks briefly exasperated, then returns her attention to you.{/n}
-"This is part of the life I am making after the dismissal. You have seen some of it. I want more influence than a succession of small jobs will give me, and I do not yet know which job will lead to it. That makes it tempting to leave every evening available for someone who might offer something important."
+"This is part of the life I am making after the dismissal. You have seen some of it. I still want influence. Having something worth doing makes it tempting to give it the next evening as well, and the one after that. I can make a very persuasive case for each evening separately."
 "Including this one?"
 "I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else."
 {n}She rests her hand beside yours.{/n}
@@ -182,7 +182,7 @@ def reply_nodes(final_flags=()):
 "I am pleased to be here now. I would like that to be allowed to matter on its own."
 "It does."
 "Then stay for what I actually have to tell you. There is quite a lot of it. Some of it may even interest you."''', c('[Listen without asking her to revise the missing days.]', "absence_her_days")),
-      n("absence_her_days", "Konomi", '''"I have two invitations to submit proposals, from a reception I made time to attend. Neither was an offer of a position. I wrote both proposals. One received an answer. I have been trying to decide how often to remind the other woman that she asked."
+      n("absence_her_days", "Konomi", '''"That reception gave me two invitations to submit proposals. Neither was an offer of a position. I wrote both proposals. One received an answer. I remember trying to decide how often to remind the other woman that she had asked. It occupied much more of my attention than I should like to admit."
 {n}Her expression brightens at the professional problem before she notices your attention and returns to the more difficult subject.{/n}
 "That is what I mean. Those days were not an interval in which nothing happened. I was sometimes afraid you would never hear about them. Then I was afraid you would come back and be too changed to care."
 "You might have changed too."
@@ -246,6 +246,41 @@ CATCHUP = scene("konomi.private_absence_catchup", "What we have not said yet", "
 ], Relationship="konomi", Remote=True, ManualOnly=True, Areas=[DREZEN], Chapters=[5],
     requires=(*BASE, "konomi.private_returned"),
     forbids=("konomi.present", "inhuman", "konomi.private_parted", "konomi.private_absence_answered"), optional=True, delay=0)
+# The manual conversation can be deferred until after every career visit.
+# Append earned recollections without moving any original answer or replaying a decision.
+def add_career_recollections(item):
+    moments = [
+        ("decision_now", "We chose to take the owner's work without waiting. I wanted it. I still do. That does not entitle me to the tenant's good opinion as part of the fee. You heard me admit both things. I am glad I did not have to pretend to want less before you would stay beside me.",
+         ("konomi.career_decided", "konomi.career_accepts_now"), ("konomi.private_terms_sent",)),
+        ("decision_wait", "We chose to give the tenant time to find another adviser. I agreed to a smaller fee, not to become someone who no longer notices money. I still want the owner's work. You know what waiting cost me, and you have not required me to sound delighted about the cost every time I mention it.",
+         ("konomi.career_decided",), ("konomi.career_accepts_now", "konomi.private_terms_sent")),
+        ("terms_exclusive", "I sent the seasonal terms we discussed. First sight of the applicants, a guaranteed payment, a limit on how long that claim lasts. I am waiting for the owner's answer to those terms. I am not waiting to discover whether I want the work. You were there while I decided how expensive I meant to be.",
+         ("konomi.private_terms_sent", "konomi.private_career_exclusive"), ("konomi.private_hours_kept",)),
+        ("terms_portfolio", "I sent the smaller guarantee we discussed, with the freedom to approach other owners. I am waiting for her answer. I still remember the larger figure. It has not grown less attractive merely because I crossed it out. I chose the room to maneuver, and I liked having you beside me while I chose it.",
+         ("konomi.private_terms_sent", "konomi.private_career_portfolio"), ("konomi.private_hours_kept",)),
+        ("paid_exclusive", "She accepted the seasonal arrangement and paid me. You heard what the applicant thought of losing my help, and what I thought of finally choosing which proposals the owner hears. Neither account has become false. I want to be able to tell you when I enjoy this work without first proving that everyone enjoyed my getting it.",
+         ("konomi.private_hours_kept", "konomi.private_career_exclusive"), ("konomi.private_consequence_complete",)),
+        ("paid_portfolio", "The smaller guarantee was accepted. It keeps my room in Nerosyan paid for, and leaves me free to approach another landlord. It also leaves the owner free to ask another negotiator. You heard how much less appealing I found that part. I still want the independence. I am glad I can tell you when it is inconvenient.",
+         ("konomi.private_hours_kept", "konomi.private_career_portfolio"), ("konomi.private_consequence_complete",)),
+        ("settled_exclusive", "The tenant paid for her option. The seasonal agreement is signed, and I have been paid. You also heard about the applicant the owner listened to because I put her forward. I liked being able to do that. I have work worth returning to, and someone I want to tell about it. Our farewell did not make either thing smaller.",
+         ("konomi.private_consequence_complete", "konomi.private_career_exclusive"), ()),
+        ("settled_portfolio", "The tenant paid for her option. The other applicant chose the second place I found, and paid the agreed fee. The narrower terms held when the owner questioned them. You heard how pleased I was, even after paying for all those letters. Our farewell did not leave that business unfinished. I want more of that work, and more evenings in which to tell you about it.",
+         ("konomi.private_consequence_complete", "konomi.private_career_portfolio"), ()),
+    ]
+    now = next(node for node in item["Nodes"] if node["Id"] == "absence_now")
+    days = next(node for node in item["Nodes"] if node["Id"] == "absence_her_days")
+    future_choices = deepcopy(now["Choices"])
+    for suffix, words, requires, forbids in moments:
+        identity = "absence_career_" + suffix
+        for origin in (now, days):
+            origin["Choices"].append(c('[Ask about the work she chose, and what she wants from it now.]', identity,
+                requires=requires, forbids=forbids))
+        item["Nodes"].append(n(identity, "Konomi", '"' + words + '"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}',
+            c('[Take her hand and tell her what you want her to understand about your own future.]', "absence_career_future")))
+    item["Nodes"].append(n("absence_career_future", "Konomi", '"There. That is the woman you have invited. What should I understand about the person sitting beside her?"', *future_choices))
+
+
+add_career_recollections(CATCHUP)
 SCENES.append(CATCHUP)
 for item in SCENES:
     for node in item["Nodes"]:

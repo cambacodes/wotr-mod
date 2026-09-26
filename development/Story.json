@@ -20217,7 +20217,7 @@
         {
           "Id": "absence_now",
           "Speaker": "Konomi",
-          "Text": "\"I am still learning how much of my time to promise before I know what an assignment will require. I have invitations to submit proposals. Those are not appointments. One may become paid work; another may become an afternoon explaining why I will not supply the whole negotiation for the price of considering it.\"\n{n}She looks briefly exasperated, then returns her attention to you.{/n}\n\"This is part of the life I am making after the dismissal. You have seen some of it. I want more influence than a succession of small jobs will give me, and I do not yet know which job will lead to it. That makes it tempting to leave every evening available for someone who might offer something important.\"\n\"Including this one?\"\n\"I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else.\"\n{n}She rests her hand beside yours.{/n}\n\"And what should I understand about the future you want now?\"",
+          "Text": "\"I am still learning how much of my time to promise before I know what an assignment will require. There is always someone who wants an answer before telling me how much work the question contains. I find it particularly difficult to refuse when the question interests me.\"\n{n}She looks briefly exasperated, then returns her attention to you.{/n}\n\"This is part of the life I am making after the dismissal. You have seen some of it. I still want influence. Having something worth doing makes it tempting to give it the next evening as well, and the one after that. I can make a very persuasive case for each evening separately.\"\n\"Including this one?\"\n\"I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else.\"\n{n}She rests her hand beside yours.{/n}\n\"And what should I understand about the future you want now?\"",
           "Choices": [
             {
               "Text": "\"I gave up the power that once found a door for my invitation. I chose to become Legend.\"",
@@ -20338,7 +20338,7 @@
         {
           "Id": "absence_her_days",
           "Speaker": "Konomi",
-          "Text": "\"I have two invitations to submit proposals, from a reception I made time to attend. Neither was an offer of a position. I wrote both proposals. One received an answer. I have been trying to decide how often to remind the other woman that she asked.\"\n{n}Her expression brightens at the professional problem before she notices your attention and returns to the more difficult subject.{/n}\n\"That is what I mean. Those days were not an interval in which nothing happened. I was sometimes afraid you would never hear about them. Then I was afraid you would come back and be too changed to care.\"\n\"You might have changed too.\"\n\"I did. I am still finding out where.\"\n{n}She draws a breath.{/n}\n\"Tell me what you want me to understand about the person who came back.\"",
+          "Text": "\"That reception gave me two invitations to submit proposals. Neither was an offer of a position. I wrote both proposals. One received an answer. I remember trying to decide how often to remind the other woman that she had asked. It occupied much more of my attention than I should like to admit.\"\n{n}Her expression brightens at the professional problem before she notices your attention and returns to the more difficult subject.{/n}\n\"That is what I mean. Those days were not an interval in which nothing happened. I was sometimes afraid you would never hear about them. Then I was afraid you would come back and be too changed to care.\"\n\"You might have changed too.\"\n\"I did. I am still finding out where.\"\n{n}She draws a breath.{/n}\n\"Tell me what you want me to understand about the person who came back.\"",
           "Choices": [
             {
               "Text": "\"I gave up the power that once found a door for my invitation. I chose to become Legend.\"",
@@ -56757,7 +56757,7 @@
         {
           "Id": "absence_now",
           "Speaker": "Konomi",
-          "Text": "\"I am still learning how much of my time to promise before I know what an assignment will require. I have invitations to submit proposals. Those are not appointments. One may become paid work; another may become an afternoon explaining why I will not supply the whole negotiation for the price of considering it.\"\n{n}She looks briefly exasperated, then returns her attention to you.{/n}\n\"This is part of the life I am making after the dismissal. You have seen some of it. I want more influence than a succession of small jobs will give me, and I do not yet know which job will lead to it. That makes it tempting to leave every evening available for someone who might offer something important.\"\n\"Including this one?\"\n\"I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else.\"\n{n}She rests her hand beside yours.{/n}\n\"And what should I understand about the future you want now?\"",
+          "Text": "\"I am still learning how much of my time to promise before I know what an assignment will require. There is always someone who wants an answer before telling me how much work the question contains. I find it particularly difficult to refuse when the question interests me.\"\n{n}She looks briefly exasperated, then returns her attention to you.{/n}\n\"This is part of the life I am making after the dismissal. You have seen some of it. I still want influence. Having something worth doing makes it tempting to give it the next evening as well, and the one after that. I can make a very persuasive case for each evening separately.\"\n\"Including this one?\"\n\"I kept this one for you. I want to keep doing that. I would rather tell you what it competes with than arrive pretending I never wanted anything else.\"\n{n}She rests her hand beside yours.{/n}\n\"And what should I understand about the future you want now?\"",
           "Choices": [
             {
               "Text": "\"I gave up the power that once found a door for my invitation. I chose to become Legend.\"",
@@ -56790,6 +56790,106 @@
                 "legend",
                 "trickster"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_decision_now",
+              "Set": [],
+              "Requires": [
+                "konomi.career_decided",
+                "konomi.career_accepts_now"
+              ],
+              "Forbids": [
+                "konomi.private_terms_sent"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_decision_wait",
+              "Set": [],
+              "Requires": [
+                "konomi.career_decided"
+              ],
+              "Forbids": [
+                "konomi.career_accepts_now",
+                "konomi.private_terms_sent"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_terms_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_terms_sent",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [
+                "konomi.private_hours_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_terms_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_terms_sent",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [
+                "konomi.private_hours_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_paid_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_hours_kept",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_paid_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_hours_kept",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_settled_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_consequence_complete",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_settled_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_consequence_complete",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -56878,7 +56978,7 @@
         {
           "Id": "absence_her_days",
           "Speaker": "Konomi",
-          "Text": "\"I have two invitations to submit proposals, from a reception I made time to attend. Neither was an offer of a position. I wrote both proposals. One received an answer. I have been trying to decide how often to remind the other woman that she asked.\"\n{n}Her expression brightens at the professional problem before she notices your attention and returns to the more difficult subject.{/n}\n\"That is what I mean. Those days were not an interval in which nothing happened. I was sometimes afraid you would never hear about them. Then I was afraid you would come back and be too changed to care.\"\n\"You might have changed too.\"\n\"I did. I am still finding out where.\"\n{n}She draws a breath.{/n}\n\"Tell me what you want me to understand about the person who came back.\"",
+          "Text": "\"That reception gave me two invitations to submit proposals. Neither was an offer of a position. I wrote both proposals. One received an answer. I remember trying to decide how often to remind the other woman that she had asked. It occupied much more of my attention than I should like to admit.\"\n{n}Her expression brightens at the professional problem before she notices your attention and returns to the more difficult subject.{/n}\n\"That is what I mean. Those days were not an interval in which nothing happened. I was sometimes afraid you would never hear about them. Then I was afraid you would come back and be too changed to care.\"\n\"You might have changed too.\"\n\"I did. I am still finding out where.\"\n{n}She draws a breath.{/n}\n\"Tell me what you want me to understand about the person who came back.\"",
           "Choices": [
             {
               "Text": "\"I gave up the power that once found a door for my invitation. I chose to become Legend.\"",
@@ -56911,6 +57011,106 @@
                 "legend",
                 "trickster"
               ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_decision_now",
+              "Set": [],
+              "Requires": [
+                "konomi.career_decided",
+                "konomi.career_accepts_now"
+              ],
+              "Forbids": [
+                "konomi.private_terms_sent"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_decision_wait",
+              "Set": [],
+              "Requires": [
+                "konomi.career_decided"
+              ],
+              "Forbids": [
+                "konomi.career_accepts_now",
+                "konomi.private_terms_sent"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_terms_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_terms_sent",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [
+                "konomi.private_hours_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_terms_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_terms_sent",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [
+                "konomi.private_hours_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_paid_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_hours_kept",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_paid_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_hours_kept",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [
+                "konomi.private_consequence_complete"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_settled_exclusive",
+              "Set": [],
+              "Requires": [
+                "konomi.private_consequence_complete",
+                "konomi.private_career_exclusive"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the work she chose, and what she wants from it now.]",
+              "Next": "absence_career_settled_portfolio",
+              "Set": [],
+              "Requires": [
+                "konomi.private_consequence_complete",
+                "konomi.private_career_portfolio"
+              ],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -57020,6 +57220,175 @@
               ],
               "Requires": [],
               "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_decision_now",
+          "Speaker": "Konomi",
+          "Text": "\"We chose to take the owner's work without waiting. I wanted it. I still do. That does not entitle me to the tenant's good opinion as part of the fee. You heard me admit both things. I am glad I did not have to pretend to want less before you would stay beside me.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_decision_wait",
+          "Speaker": "Konomi",
+          "Text": "\"We chose to give the tenant time to find another adviser. I agreed to a smaller fee, not to become someone who no longer notices money. I still want the owner's work. You know what waiting cost me, and you have not required me to sound delighted about the cost every time I mention it.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_terms_exclusive",
+          "Speaker": "Konomi",
+          "Text": "\"I sent the seasonal terms we discussed. First sight of the applicants, a guaranteed payment, a limit on how long that claim lasts. I am waiting for the owner's answer to those terms. I am not waiting to discover whether I want the work. You were there while I decided how expensive I meant to be.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_terms_portfolio",
+          "Speaker": "Konomi",
+          "Text": "\"I sent the smaller guarantee we discussed, with the freedom to approach other owners. I am waiting for her answer. I still remember the larger figure. It has not grown less attractive merely because I crossed it out. I chose the room to maneuver, and I liked having you beside me while I chose it.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_paid_exclusive",
+          "Speaker": "Konomi",
+          "Text": "\"She accepted the seasonal arrangement and paid me. You heard what the applicant thought of losing my help, and what I thought of finally choosing which proposals the owner hears. Neither account has become false. I want to be able to tell you when I enjoy this work without first proving that everyone enjoyed my getting it.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_paid_portfolio",
+          "Speaker": "Konomi",
+          "Text": "\"The smaller guarantee was accepted. It keeps my room in Nerosyan paid for, and leaves me free to approach another landlord. It also leaves the owner free to ask another negotiator. You heard how much less appealing I found that part. I still want the independence. I am glad I can tell you when it is inconvenient.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_settled_exclusive",
+          "Speaker": "Konomi",
+          "Text": "\"The tenant paid for her option. The seasonal agreement is signed, and I have been paid. You also heard about the applicant the owner listened to because I put her forward. I liked being able to do that. I have work worth returning to, and someone I want to tell about it. Our farewell did not make either thing smaller.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_settled_portfolio",
+          "Speaker": "Konomi",
+          "Text": "\"The tenant paid for her option. The other applicant chose the second place I found, and paid the agreed fee. The narrower terms held when the owner questioned them. You heard how pleased I was, even after paying for all those letters. Our farewell did not leave that business unfinished. I want more of that work, and more evenings in which to tell you about it.\"\n{n}She rests her hand beside yours, leaving you room to take it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand and tell her what you want her to understand about your own future.]",
+              "Next": "absence_career_future",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "absence_career_future",
+          "Speaker": "Konomi",
+          "Text": "\"There. That is the woman you have invited. What should I understand about the person sitting beside her?\"",
+          "Choices": [
+            {
+              "Text": "\"I gave up the power that once found a door for my invitation. I chose to become Legend.\"",
+              "Next": "absence_legend",
+              "Set": [],
+              "Requires": [
+                "legend"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I can still bend a rule. I cannot turn the days we missed into days we spent together.\"",
+              "Next": "absence_trickster",
+              "Set": [],
+              "Requires": [
+                "trickster"
+              ],
+              "Forbids": [
+                "legend"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to make the next invitation without pretending I can promise every part of the future.\"",
+              "Next": "absence_mortal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "legend",
+                "trickster"
+              ],
               "Abort": false
             }
           ],

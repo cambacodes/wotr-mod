@@ -147,7 +147,9 @@ internal static class KonomiPrivateAbsenceTests
             { var blocked = Program.Copy(ready); blocked.Flags.Add(flag); check(!Rules.Available(story, scene, blocked), "Absence ignores blocker: " + flag); }
             var wrong = Program.Copy(ready); wrong.Chapter = 3;
             check(!Rules.Available(story, scene, wrong), "Absence continuity appears before its chapter.");
-            foreach (var page in scene.Nodes) check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed new page: " + scene.Id + "/" + page.Id);
+            // Later career stages are played in KonomiAbsenceChronologyTests.
+            foreach (var page in scene.Nodes.Where(n => !n.Id.StartsWith("absence_career_", StringComparison.Ordinal)))
+                check(reached.Contains(scene.Id + "/" + page.Id), "Unplayed new page: " + scene.Id + "/" + page.Id);
         }
         foreach (var page in reunion.Nodes.Where(n => n.Id.StartsWith("absence_", StringComparison.Ordinal)))
             check(reached.Contains(reunion.Id + "/" + page.Id), "Unplayed appended reunion page: " + page.Id);

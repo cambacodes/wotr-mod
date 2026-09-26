@@ -89,3 +89,23 @@ Every Konomi page in the frozen export resolves to this staged image key.
 This is a general character portrait with an office setting, not a literal scene illustration for each road, lodging or letter.
 Actual Unity image loading, scaling and placement beside text remain unverified.
 No installed portrait was changed.
+
+## Late catch-up chronology repair integrated
+
+The independently reviewed source `6DA8E3C1FD997ACFD143095E79E6ED5381092976BA030989595ED464A4F8C963` is integrated into export `926687FB240C1E17A565D820D8FFDC920C6E2DDC077B06A61561CB0214F6F41E`.
+Only `konomi.private_reunion` and `konomi.private_absence_catchup` change relative to the previous export.
+Existing scene metadata, node identities and choice-index prefixes are preserved.
+Two existing passages now remain truthful across career stages; nine new optional pages recall earned decisions, sent terms, payment or the completed farewell.
+Catch-up eligibility and deferral remain intact, and the new pages do not repeat or overwrite career decisions.
+
+The independent reviewer read all new pages against the actual prior outcomes and reran 371,366 focused assertions.
+Bounded revision scores are writing 92, characterization 93, mature romance 92, responsive choices 93 and continuity 94.
+The original full-route reviewer is separately reassessing the complete-script freeze against this exact integrated revision.
+
+Root's complete rules suite passes 14,575,304 assertions.
+Managed construction passes 41,287 assertions over 12,049 generated blueprints, preserving native and parent sequences and repeated construction.
+The DLL remains unchanged.
+The inventory records 50,014 distinct-segment Konomi words across 64 scenes and their alternatives; selected-playthrough length is a separate measurement.
+Legacy absence page-coverage fixtures retain their earlier scope while the new chronology suite plays every new career page through actual Chapter5 predecessors.
+The authoring-build isolation check and exact export comparison preserve existing source and save identities.
+No installed content has changed.
