@@ -409,6 +409,18 @@ Implementation must use actual terminal history, extend those existing outcomes,
 The research does not deliver that actor or satisfy universal Trickster access.
 No deployment occurred.
 
+## Konomi, Vellexia and Terendelev batch
+
+After the 264-scene integration, root assigned three separate tasks.
+`gesmerha_recover` owns only `storylines/konomi_ordinary_expansion.py`, `tests/KonomiOrdinaryExpansionTests.cs` and its handoff.
+That work addresses the ordinary Chapter 5 depth gap while preserving the existing private path and political history.
+Its professional disagreement must differ from Kiana's public-performance incident.
+`kiana_reconcile_recover` owns only `storylines/vellexia_opening.py`, `tests/VellexiaOpeningTests.cs`, its handoff and `reference/canon-review/vellexia-route-evidence.md`.
+Native teleports limit the verified initial actor window; later access and restoration remain requirements, not assumptions.
+`terendelev_api_recover` owns only the Terendelev actor-blueprint audit and exact records, followed by the independent Targona-v2 art review.
+Root retains shared integration, production code and image generation ownership.
+No worker may approve their own delivered writing or art.
+
 ## Recovered parallel batch
 
 The next batch began with Gesmerha's opening, Kiana's mixed Elan-history reconciliation and Terendelev's materialization API investigation.
