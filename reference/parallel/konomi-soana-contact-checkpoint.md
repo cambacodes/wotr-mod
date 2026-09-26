@@ -49,3 +49,6 @@ Aranka's author is tracing and extending actual parent finales through verified 
 Soana's author is researching later-act access and concrete Trickster recovery.
 The third worker is independently auditing the assembled Tirabade route, including each wife's development and genuinely optional group participation.
 Root retains shared integration and review ownership.
+
+After this checkpoint, root removed one extra blank line at EOF from `tests/KonomiPrivateAbsenceTests.cs` to satisfy Git's whitespace check.
+The test body is unchanged; the review's original test hash identifies the executed revision before this whitespace-only normalization.

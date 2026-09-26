@@ -156,4 +156,3 @@ internal static class KonomiPrivateAbsenceTests
         check(Rules.NextRemote(single, eligible) == null, "Manual catch-up became compulsory rest content.");
     }
 }
-
