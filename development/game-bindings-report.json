@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\soana-late-campaign-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\native-check-fixture.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 627,
-  "unique_targets": 135,
+  "binding_uses": 629,
+  "unique_targets": 137,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -14,8 +14,16 @@
       "path": "Units/Companions/Seelah/Seelah_Companion.jbp",
       "type": "BlueprintUnit"
     },
+    "b5e867e13503c6f41bb1316705efb4a2": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/AneviaTirabade_DrezenCapital.jbp",
+      "type": "BlueprintUnit"
+    },
     "a609ed9b2205d034bb3bb04d2a255681": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+      "type": "BlueprintUnit"
+    },
+    "280d4712dceb37f4a88e98f1f4c6e64f": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/IrabethTirabade_DrezenCapital.jbp",
       "type": "BlueprintUnit"
     },
     "ca2d58c5c65723945857e04fb85d30ce": {

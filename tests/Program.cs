@@ -111,9 +111,16 @@ internal static class Program
                 .Concat(story.StartedDialogs.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintDialog", Source = e.Key }))
                 .Concat(story.CompletedEtudes.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintEtude", Source = e.Key }))
                 .Concat(story.Revivals.Select(e => new { Guid = e.Value.Unit, ExpectedType = "BlueprintUnit", Source = "revive." + e.Key }))
-                .Concat(story.Scenes.Where(s => s.ContactUnit != null).Select(s => new { Guid = s.ContactUnit!, ExpectedType = "BlueprintUnit", Source = s.Id }))
+                .Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits).Select(guid => new { Guid = guid, ExpectedType = "BlueprintUnit", Source = s.Id })))
                 .Concat(story.Scenes.SelectMany(s => s.Areas.Select(guid => new { Guid = guid, ExpectedType = "BlueprintArea", Source = s.Id })));
             Console.WriteLine(JsonSerializer.Serialize(bindings));
+            return;
+        }
+        if (args.Contains("--tirabade-bridge"))
+        {
+            var baseline = JsonSerializer.Deserialize<Story>(File.ReadAllText(args[args.Length - 2]), new JsonSerializerOptions { IncludeFields = true })!;
+            TirabadeIndependentBridgeTests.Run(story, baseline, Check);
+            Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
         foreach (var recovery in story.Scenes.Where(s => s.Recovery != null))
@@ -204,6 +211,7 @@ internal static class Program
         ForbidOverrideTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
+        PairedContactTests.Run(Check);
         TerendelevDeliveryTests.Run(Check);
         RecoveryTests.Run(Check);
         // These are draft scene checks. Full new-route campaigns need their own
@@ -243,6 +251,7 @@ internal static class Program
             var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
             if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
+            state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
             if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
             if (scene.Relationship == "soana") state.Flags.Add("soana.fox_waited");
             if (scene.Id.StartsWith("jerribeth.counterfeit_", StringComparison.Ordinal))

@@ -87,6 +87,7 @@ internal static class Program
         Rules.Validate(story);
         TerendelevDeliveryBlueprintTests.Run(Check);
         NativeContactStorageTests.Run(Check);
+        JerribethRecoveryObservationTests.Run(Check);
         var savedSettings = typeof(Kingmaker.Player).GetMember("SettingsList").Single();
         Check(savedSettings.GetCustomAttributes(typeof(JsonPropertyAttribute), true).Length == 1,
             "Player checkpoint container is not included in native JSON serialization");
@@ -101,7 +102,7 @@ internal static class Program
             "Native Newtonsoft JSON checkpoint encoding lost recovery identity or action");
         var targetIds = story.Scenes.SelectMany(Rules.EntryTargets).Distinct().ToArray();
         var sequenceIds = new[] { "ed4baeaf69394754902344f0598d7e5a", "ced82f299d246f448b48afa0b630dd70" };
-        var unitIds = story.Revivals.Values.Select(r => r.Unit).Concat(story.Scenes.Where(s => s.ContactUnit != null).Select(s => s.ContactUnit!)).Distinct().ToArray();
+        var unitIds = story.Revivals.Values.Select(r => r.Unit).Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits))).Distinct().ToArray();
         var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds));
         // RanRomance creates the first sequence; it is absent from the base-game archive.
         // Sentinels verify preservation without pretending to execute the parent mod.
@@ -169,6 +170,12 @@ internal static class Program
         build.Invoke(null, null);
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
+        var contacts = (Dictionary<string, BlueprintUnit>)main.GetField("contactUnits", PrivateStatic)!.GetValue(null)!;
+        var expectedContacts = story.Scenes.Where(s => s.ContactUnit != null)
+            .SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct().ToArray();
+        Check(new HashSet<string>(contacts.Keys).SetEquals(expectedContacts), "Build omitted or added native contact observers.");
+        foreach (string guid in expectedContacts)
+            Check(contacts[guid].AssetGuid == BlueprintGuid.Parse(guid), "Contact observer uses the wrong unit: " + guid);
         var readHistory = main.GetMethod("ReadDialogHistory", PrivateStatic)!;
         foreach (var binding in story.StartedDialogs)
         {

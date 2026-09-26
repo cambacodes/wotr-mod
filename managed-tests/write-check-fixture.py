@@ -23,7 +23,9 @@ payload["Scenes"].append(scene("mechanics_check_fixture", "Native check fixture"
     n("start", "Narrator", "Choose a native skill check.", *choices),
     n("success", "Narrator", "The check succeeds.", c(flags=("fixture.success",))),
     n("failure", "Narrator", "The check fails; the story continues.", c(flags=("fixture.failure",))),
-], Relationship="tirabade", Remote=True, optional=True, ContactUnit="64805abb52739e44280a758f850b300c"))
+], Relationship="tirabade", Remote=True, optional=True,
+    ContactUnit="b5e867e13503c6f41bb1316705efb4a2",
+    AdditionalContactUnits=["280d4712dceb37f4a88e98f1f4c6e64f"]))
 destination = ROOT / "development/native-check-fixture.json"
 destination.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(f"Wrote isolated native-check fixture: {destination}")

@@ -152,7 +152,7 @@ namespace Tirabade
                 foreach (var pair in story.StartedDialogs) startedDialogs.Add(pair.Key, Get<BlueprintDialog>(pair.Value));
                 foreach (var pair in story.CompletedEtudes) completedEtudes.Add(pair.Key, Get<BlueprintEtude>(pair.Value));
                 foreach (var pair in story.Revivals) revivalUnits.Add(pair.Key, Get<BlueprintUnit>(pair.Value.Unit));
-                foreach (var guid in story.Scenes.Where(s => s.ContactUnit != null).Select(s => s.ContactUnit!).Distinct())
+                foreach (var guid in story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct())
                     contactUnits.Add(guid, Get<BlueprintUnit>(guid));
                 var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct().ToArray();
                 var keys = story.Scenes.Select(s => s.Id).Concat(story.Scenes.Select(s => "hour." + s.Id))

@@ -42,6 +42,8 @@ Complete routes through review on their merits without rushing writing or loweri
 Soana's late-campaign continuation has passed two independent reviews and is integrated, bringing her material to 23 visits and 12 endings.
 The exact export and verification limits are recorded in [the Soana integration checkpoint](reference/parallel/soana-late-campaign-integration-checkpoint.md).
 Anevia and Irabeth's independent campaigns are progressing in separately owned files while Jerribeth's recovery work proceeds independently.
+The [staged Tirabade bridge](reference/parallel/tirabade-bridge-staging-checkpoint.md) has passed its bounded literary review and focused joins, but is not yet in the development export.
+The [Jerribeth observer review](reference/parallel/jerribeth-recovery-observer-review.md) accepts a read-only recovery prerequisite, not a working resurrection or relocation.
 The older scene counts below are historical checkpoints, not the current inventory.
 
 ## Release evidence required

@@ -64,6 +64,7 @@ namespace Tirabade
         public bool ManualOnly;
         public string? Recovery;
         public string? ContactUnit;
+        public string[] AdditionalContactUnits = Array.Empty<string>();
         public int MinChapter = 1;
         public int MaxChapter = 5;
         public int DelayHours;
@@ -153,6 +154,7 @@ namespace Tirabade
         // Continuation checks must not reapply authored closure or scene delays mid-conversation.
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state) => scene.ContactUnit == null
             || (state.AvailableContacts.Contains(scene.ContactUnit)
+                && scene.AdditionalContactUnits.All(state.AvailableContacts.Contains)
                 && state.Chapter >= scene.MinChapter && state.Chapter <= scene.MaxChapter
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
                 && (scene.Areas.Length == 0 || scene.Areas.Contains(state.Area))
@@ -249,6 +251,11 @@ namespace Tirabade
                 if (!story.Relationships.ContainsKey(scene.Relationship)) throw new InvalidOperationException("Unknown relationship: " + scene.Relationship);
                 if (scene.ContactUnit != null && !Guid.TryParseExact(scene.ContactUnit, "N", out _))
                     throw new InvalidOperationException("Invalid native contact unit: " + scene.Id);
+                if (scene.AdditionalContactUnits == null || scene.AdditionalContactUnits.Any(id => !Guid.TryParseExact(id, "N", out _))
+                    || (scene.AdditionalContactUnits.Length > 0 && scene.ContactUnit == null)
+                    || scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit })
+                        .Distinct(StringComparer.OrdinalIgnoreCase).Count() != scene.AdditionalContactUnits.Length + (scene.ContactUnit == null ? 0 : 1))
+                    throw new InvalidOperationException("Invalid additional native contact units: " + scene.Id);
                 if (scene.RequiresAny.Any(string.IsNullOrWhiteSpace) || scene.RequiresAny.Distinct().Count() != scene.RequiresAny.Length)
                     throw new InvalidOperationException("Invalid alternative prerequisites: " + scene.Id);
                 if (scene.Recovery != null && (!story.Revivals.TryGetValue(scene.Recovery, out var revival)
