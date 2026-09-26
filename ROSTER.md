@@ -39,8 +39,8 @@ Existing romance ownership determines whether to extend a route or create a new 
 | Vellexia | Native encounters to extend | Continue her existing tests and Jerribeth connection; make any escape from a lethal outcome real | Six-part initial manor interlude integrated; native-date continuation and recovery remain incomplete |
 | Arsinoe | New addon romance | Wedding aftermath, temple duties and Kiana or Konomi introductions | 11 development scenes; full length and campaign incomplete |
 | Gesmerha | New addon romance | Wintersun's aftermath, craft and leadership; preserve blindness rather than making a cure a romance reward | Six development opening scenes with native contact; full length and recovery incomplete |
-| Minagho | RanRomance | Extend existing departure, corruption or attempted-redemption branches | Existing route integration audit pending |
-| Chivarro | Existing Minagho pairing and RanRomance group content | Extend the established female relationship and reconcile lost reunion opportunities | Existing group-route integration audit pending |
+| Minagho | RanRomance | Extend existing departure, corruption or attempted-redemption branches | Installed parent audit complete; continuation in authoring, not integrated |
+| Chivarro | Existing Minagho pairing and RanRomance group content | Extend the established female relationship and reconcile lost reunion opportunities | Parent audit complete; played arrival and individual relationship development in authoring |
 | Nocticula | RanRomance and native events | Preserve gift, allegiance and ascension history; add Trickster-specific continuation where needed | Installed RanRomance readme inspected |
 | Nurah | RanRomance | Extend recruitment, liberation and good/chaos/evil branches; preserve existing Trickster reactivity | Installed RanRomance readme inspected |
 | Targona | RanRomance | Extend wing-healing and mythic-power choices with reachable Trickster follow-through | Six development letters extend verified parent finales; full assembled audit and artwork pending |
@@ -146,6 +146,9 @@ Do not start a second first romance, replay a completed confession or add a comp
 Native romance roots already found in `reference/expansion/etudes.json` include Arueshalae `d6a90c0f6536331498cafa1f3195d886`, Camellia `89f8c2f1a7a8ea24794bf4af231e89a1`, Wenduag `39c388b5f2ab0f14b90030bab1b676b9`, and Galfrey `133842cc9812fc74f88a21e12ec2c6f8`.
 These identifiers establish existing integration targets, not proof that their activation predicates or complete romance state machines have been audited.
 The existing Minagho/Chivarro group route must be extended rather than replaced by an invented first introduction.
+The [installed-route audit](reference/canon-review/minagho-chivarro-integration.md) distinguishes their established mutual relationship from Chivarro's still-unplayed arrival in the parent campaign.
+Its configured parent corpus contains 15,680 distinct words, predominantly Minagho content; the 1,497-word Chivarro-naming subset is shared material, not an additional full character arc.
+The continuation must preserve real Book 3 outcomes and earn Chivarro's participation rather than treating a promised epilogue as an already played group relationship.
 Aranka's [installed integration map](reference/canon-review/aranka-integration.md) identifies her existing romance, dream-warden development, Alluring Reverie partnership and Arueshalae ending connection.
 Preserve Reverie as an existing dream-route participant rather than inventing a duplicate corporeal NPC or erasing her when another woman joins a scene.
 Read existing romance etudes without restarting or completing them, because those operations change the parent mod's romance counter.
