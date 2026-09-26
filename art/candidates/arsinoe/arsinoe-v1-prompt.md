@@ -1,0 +1,10 @@
+# Arsinoe v1 prompt
+
+Built-in image generation using the unit-linked native portrait as the identity reference.
+This is a candidate awaiting independent visual review and game crop verification.
+
+Use case: illustration-story.
+Asset type: full-color painterly character illustration for a Pathfinder Wrath of the Righteous romance expansion, Arsinoe general scene art.
+Transform the supplied low-resolution in-game Arsinoe portrait into a polished waist-up narrative painting of the same recognizable adult female aasimar cleric. Reference image is character identity and costume reference, not a pixel-art style target.
+Preserve center-parted bright golden hair swept back and tied low, fine ornate golden brow diadem with raised arched center, molten-gold luminous eyes, straight nose, firm softly full mouth, ivory high collar with gold front fastening, slate-blue shoulders and gold embroidery. Use a warm dusky complexion consistent with her in-game dialogue description. She is a conventionally attractive adult woman around her thirties, with a human face, subtle individual facial asymmetry and believable skin, rather than a flawless doll. Expression: composed, observant, a small knowing smile, comfortable with being admired, a merchant-cleric who has paused to hear a worthwhile proposition.
+Place her in a stone Drezen shop with rolled parchment and a wooden counter, subdued background. One relaxed natural hand rests on a closed ledger on the counter, the other is outside the frame. Rich but practical cleric robes, fully clothed. Keep the face, diadem and upper torso unobstructed and central with generous margins for game illustration cropping. No other people. Painterly realistic fantasy RPG illustration with visible restrained brushwork, balanced anatomy, detailed face, soft cool stone light and warm gold accents. No text, watermark, modern objects, horns, wings, pointed ears, erotic pose or exaggerated cleavage. Reference-specific face and costume matter more than decorative spectacle.

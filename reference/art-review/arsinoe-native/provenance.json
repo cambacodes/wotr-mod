@@ -1,0 +1,38 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "unit": "a609ed9b2205d034bb3bb04d2a255681",
+  "portrait": "e38efa21a3104c8db31f1a953d10f89f",
+  "image": "b11644a73e0593849aa288de27ad0a14",
+  "textures": [
+    {
+      "name": "32d1b598f0ac2a74f94d7d2fd7390e0f_BCT_Arsinoe",
+      "path_id": -3428637306944916812,
+      "width": 184,
+      "height": 244,
+      "file": "reference\\art-review\\arsinoe-native\\32d1b598f0ac2a74f94d7d2fd7390e0f_BCT_Arsinoe.png",
+      "sha256": "56FFE2E7755BB599DE32BACB2C21EDC5BD4575998F1FEB6B346F3ED25B21F418"
+    },
+    {
+      "name": "BCT_Arsinoe",
+      "path_id": 4630331060674503579,
+      "width": 188,
+      "height": 244,
+      "file": "reference\\art-review\\arsinoe-native\\BCT_Arsinoe.png",
+      "sha256": "C9A82B354843D3BCDD2E41A6AFCA96B11E2BA17BD10CA440F97AEC5CEADBD078"
+    }
+  ],
+  "unit_linked_container_entries": [
+    {
+      "container": "b11644a73e0593849aa288de27ad0a14",
+      "path_id": -3428637306944916812,
+      "type": "Texture2D",
+      "name": "32d1b598f0ac2a74f94d7d2fd7390e0f_BCT_Arsinoe"
+    },
+    {
+      "container": "b11644a73e0593849aa288de27ad0a14",
+      "path_id": -6501329332243895422,
+      "type": "Sprite",
+      "name": "32d1b598f0ac2a74f94d7d2fd7390e0f_BCT_Arsinoe"
+    }
+  ]
+}
