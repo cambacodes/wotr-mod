@@ -1,13 +1,17 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\gesmerha-campaign-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 807,
-  "unique_targets": 147,
+  "binding_uses": 880,
+  "unique_targets": 160,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
       "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
+      "type": "BlueprintUnit"
+    },
+    "2779754eecffd044fbd4842dba55312c": {
+      "path": "Units/Companions/Ember/Ember_Companion.jbp",
       "type": "BlueprintUnit"
     },
     "54be53f0b35bf3c4592a97ae335fe765": {
@@ -154,6 +158,10 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0011.jbp",
       "type": "BlueprintCue"
     },
+    "ff7f743740d221b46860f3137299c3d2": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0089.jbp",
+      "type": "BlueprintCue"
+    },
     "7f394dd6cd32c44408a59bd08eb1512a": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
@@ -164,6 +172,18 @@
     },
     "746af280c4d1daa47afbb44c7f8b2eea": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0036.jbp",
+      "type": "BlueprintCue"
+    },
+    "3aa48f68198afe14cb6de752ce80cc8f": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0078.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "fa6db1b41f5394f4f8a23f09fc7061f7": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0076.jbp",
+      "type": "BlueprintCue"
+    },
+    "42429350764f92140b293b24039b89ef": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp",
       "type": "BlueprintCue"
     },
     "fb3a88e8ed751214c9136f87891ec07b": {
@@ -177,6 +197,14 @@
     "164cf168d833c3f4ba458f72df62bda0": {
       "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0037.jbp",
       "type": "BlueprintCue"
+    },
+    "f2a35965e9bc601449498bd022b04d9d": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "fd8276a6302f4d44583eba3f0b9663bf": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0126.jbp",
+      "type": "BlueprintAnswersList"
     },
     "417fa384f3250634bb71859fbc913453": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
@@ -308,6 +336,18 @@
     },
     "787273d702a87884e9f14cfb7ef91180": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b1d0c45e438c2ae458466ed56de99a9d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Evil.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b981026a5be6a9a49bf1f7ab57f9e1bb": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Good.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f55fcc7bf5fd0c14384cb15dce345c8e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
       "type": "BlueprintEtude"
     },
     "26ae0f50130942b4bb8dfe658e77b1c6": {
@@ -472,6 +512,18 @@
     },
     "820f28d6776755d47a2169e2851e15ca": {
       "path": "World/Quests/c4/RaptureOfRupture/RaptureOfRupture.jbp",
+      "type": "BlueprintQuest"
+    },
+    "1fdf404b17d464a489267f69d58b846d": {
+      "path": "World/Quests/Companions/Ember/Q1_Wayward/Ember_Q1_Wayward_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "a3f445a64ee130f4396c20a07c30ece0": {
+      "path": "World/Quests/Companions/Ember/Q2_Wicked/Ember_Q2_Wicked_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "49b7496143daed149ab4557a9684dd53": {
+      "path": "World/Quests/Companions/Ember/Q3_Worshipped/Ember_Q3_Worshipped_quest.jbp",
       "type": "BlueprintQuest"
     },
     "5a5a533c9ce630a48b877f9a194840cb": {

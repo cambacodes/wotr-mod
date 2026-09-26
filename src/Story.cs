@@ -151,22 +151,28 @@ namespace Tirabade
             return state.Hour - last >= scene.DelayHours;
         }
 
-        // Continuation checks must not reapply authored closure or scene delays mid-conversation.
-        public static bool ContactAvailable(Story story, Scene scene, Snapshot state) => scene.ContactUnit == null
-            || (state.AvailableContacts.Contains(scene.ContactUnit)
+        // Remote conversations need live-state guards too, without reapplying authored closure or delays.
+        public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
+        {
+            if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
+            var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
+            return (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit))
                 && scene.AdditionalContactUnits.All(state.AvailableContacts.Contains)
                 && state.Chapter >= scene.MinChapter && state.Chapter <= scene.MaxChapter
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
                 && (scene.Areas.Length == 0 || scene.Areas.Contains(state.Area))
                 && scene.Requires.All(state.Has)
                 && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && state.Has(flag))
-                && !story.Relationships[scene.Relationship].UnavailableFlags.Any(state.Has)
-                && (scene.RequiresAny.Length == 0 || scene.RequiresAny.Any(state.Has)));
+                && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag && state.Has(flag))
+                && (recovery == null || state.Has("revive." + scene.Recovery + ".available"))
+                && (scene.RequiresAny.Length == 0 || scene.RequiresAny.Any(state.Has));
+        }
 
         private static bool IsNativeFlag(Story story, string flag) => story.Etudes.ContainsKey(flag)
             || story.CompletedEtudes.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag)
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
-            || story.StartedDialogs.ContainsKey(flag);
+            || story.StartedDialogs.ContainsKey(flag)
+            || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later";
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 

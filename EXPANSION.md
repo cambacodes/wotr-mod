@@ -28,8 +28,12 @@ The user's earlier instruction to proceed without previews remains applicable.
 
 ## Current development checkpoint
 
-The integrated development export has 323 scenes across 13 route groups covering 14 of the 37 planned characters.
+The integrated development export has 483 scenes across 15 route groups covering 14 of the 37 planned characters.
 These counts describe written and integrated material, not completed routes.
+The latest [Vellexia integration checkpoint](reference/parallel/vellexia-campaign-integration-checkpoint.md) records the assembled export, remote-conversation repair, verification and remaining character work.
+Vellexia now has thirty entries with an independently reviewed ordinary correspondence campaign.
+Ember's thirty-six friendship entries include the reviewed late start and separate care branch.
+Gesmerha's later campaign and Aivu's expanded friendship are being authored in separate files and have not yet passed review.
 Konomi has 64 scenes, with the independently reviewed late-career continuity repair integrated and a reviewed general portrait staged.
 Her current export is pinned in [the integration checkpoint](reference/parallel/konomi-political-integration-checkpoint.md).
 Her revised 64-scene script passes the assembled editorial review at 91-93 across the reviewed disciplines.

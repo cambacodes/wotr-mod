@@ -108,7 +108,22 @@ internal static class KonomiContactTests
             var scene = scenes.Single(s => s.Id == "konomi." + id);
             check(scene.ContactUnit == null, "Ordinary actor requirement attached to excluded delivery: " + id);
             check(Rules.IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal), "Excluded Konomi delivery changed classification: " + id);
-            check(Rules.ContactAvailable(story, scene, new Snapshot()), "A letter, private route or epilogue acquired ordinary continuation gating.");
+            if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
+            {
+                check(Rules.ContactAvailable(story, scene, new Snapshot()), "Konomi epilogue acquired live continuation gating: " + id);
+                continue;
+            }
+            var remote = new Snapshot
+            {
+                Chapter = scene.Chapters.FirstOrDefault(scene.MinChapter),
+                Area = scene.Areas.FirstOrDefault() ?? "",
+                Hour = 1000
+            };
+            remote.Flags.UnionWith(scene.Requires);
+            if (scene.RequiresAny.Length > 0) remote.Flags.Add(scene.RequiresAny[0]);
+            check(Rules.Available(story, scene, remote), "Konomi remote witness cannot enter: " + id);
+            check(remote.AvailableContacts.Count == 0 && Rules.ContactAvailable(story, scene, remote),
+                "Valid Konomi remote conversation requires a physical officer: " + id);
         }
         var invitation = scenes.Single(s => s.Id == "konomi.another_evening");
         check(invitation.Requires.Contains("konomi.present") && invitation.ManualOnly && invitation.Remote,

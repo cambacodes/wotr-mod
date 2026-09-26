@@ -262,11 +262,12 @@ internal static class Program
                 Check(page != null, "Missing page: " + nodeId);
                 Check(page!.Cues.Count == 1 && page.Cues[0].Get() is BlueprintCue, "Missing page cue: " + nodeId);
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
                 bool plainEnding = ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                     && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
                     && node.Choices[0].Set.Length == 0 && node.Choices[0].Text == "Continue"
                     && !node.Choices[0].Abort && node.Choices[0].Revive == null;
-                Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (scene.ContactUnit == null ? 0 : 1)), "Wrong choice count: " + nodeId);
+                Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1)), "Wrong choice count: " + nodeId);
                 foreach (var reference in page.Answers) Check(reference.Get() is BlueprintAnswer, "Unresolved generated answer: " + nodeId);
                 if (plainEnding)
                 {
@@ -275,7 +276,7 @@ internal static class Program
                     Check(leave.OnSelect.Actions.Length == 0 && leave.NextCue.Cues.Count == 0, "Plain ending mutates progress or continues: " + nodeId);
                     continue;
                 }
-                if (scene.ContactUnit != null)
+                if (continuation != null)
                 {
                     var leave = (BlueprintAnswer)page.Answers.Last().Get();
                     Check(leave.AssetGuid == Id("answer." + nodeId + ".contact_lost"), "Contact exit changes stable answer identities: " + nodeId);
@@ -290,7 +291,6 @@ internal static class Program
                     Check(answer.SelectConditions.Conditions.Single() is Tirabade.Main.RouteCondition selected && ReferenceEquals(selected.Choice, choice) && ReferenceEquals(selected.Owner, answer), "Choice lost its selection guard or owner: " + nodeId);
                     var action = answer.OnSelect.Actions.Single() as Tirabade.Main.RouteAction;
                     Check(action != null && ReferenceEquals(action.Choice, choice) && ReferenceEquals(action.Owner, answer), "Choice lost its effects or action owner: " + nodeId);
-                    var continuation = scene.ContactUnit == null ? null : scene;
                     Check(ReferenceEquals(((Tirabade.Main.RouteCondition)answer.ShowConditions.Conditions.Single()).Continuation, continuation)
                         && ReferenceEquals(((Tirabade.Main.RouteCondition)answer.SelectConditions.Conditions.Single()).Continuation, continuation)
                         && ReferenceEquals(action!.Continuation, continuation), "Contact continuation is not guarded at visibility, selection and mutation: " + nodeId);

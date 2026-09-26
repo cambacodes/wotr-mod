@@ -292,7 +292,13 @@ internal static class Program
         {
             EmberCampaignTests.Run(story, Check);
             EmberAssembledTests.Run(story, Check);
+            RemoteContinuationTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "ember").Select(s => s.Id));
+        }
+        if (story.Scenes.Any(s => s.Id == "vellexia.the_unused_reply"))
+        {
+            VellexiaCampaignTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "vellexia").Select(s => s.Id));
         }
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {

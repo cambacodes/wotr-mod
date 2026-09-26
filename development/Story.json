@@ -55672,6 +55672,3094 @@
       ]
     },
     {
+      "Id": "vellexia.the_unused_reply",
+      "Title": "A reply she has not written",
+      "Owner": "Vellexia",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "\"You said I might return. What if I am somewhere you cannot hear me knock?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Vellexia",
+          "Text": "{n}Vellexia has been selecting rings from a shallow tray. At your question she places two beside each other, studies the effect, and returns one to its compartment.{/n}\n\"You could write. People do. Some even improve in writing, though the delay deprives me of watching them discover that I disagree.\"\n\"Would you answer?\"\n\"What a demanding question to ask before composing a sentence.\"\n{n}She lifts a ring to the light. Its dark stone contains a moving thread of color, which twists when her finger passes over it.{/n}\n\"There are ways to send a voice,\" she says. \"A few of them permit the recipient to decide whether to listen. I find those receive better answers, though fewer admirers request them.\"\n\"The others prefer certainty?\"\n\"The others prefer access. Then they wonder why I grow tired of hearing them.\"\n{n}She closes the ring tray and rests both hands on its lid.{/n}\n\"You have thought of leaving already. How very mortal. You stand in an interesting room and begin calculating how long it will take to reach another.\"",
+          "Choices": [
+            {
+              "Text": "\"I want a way to ask for another conversation. You would still choose whether to have it.\"",
+              "Next": "asking",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I am curious what you would send when you had time to invent your entrance.\"",
+              "Next": "entrance",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"We can discuss it another time.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "asking",
+          "Speaker": "Vellexia",
+          "Text": "\"A surprisingly expensive distinction. I have punished people for failing to understand it.\"\n\"And do you understand it when someone is asking you to wait?\"\n{n}She looks up from the tray.{/n}\n\"Yes. Understanding a thing does not oblige me to enjoy it.\"\n\"Then we have something in common.\"\n{n}Her smile appears slowly.{/n}\n\"You are asking for a door that can remain closed. I begin to see why I might want one too. There is a particular gentleman who sends an illusion of himself whenever he has composed a compliment. I have broken three of his messengers. He considers that evidence of my passion.\"\n\"Did you tell him otherwise?\"\n\"With admirable clarity. He continues to have a poor ear.\"\n{n}She rises and crosses to a cabinet. Its doors stand open; inside are cases too small to hold the grand curiosities displayed elsewhere in the house.{/n}\n\"Wait there. If I return with anything that speaks before it is opened, you may accuse me of failing to understand my own complaint.\"",
+          "Choices": [
+            {
+              "Text": "[Wait while she chooses something from the cabinet.]",
+              "Next": "shell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "entrance",
+          "Speaker": "Vellexia",
+          "Text": "\"Naturally. A letter is an entrance one can rehearse without admitting it.\"\n\"You would admit it?\"\n\"To the right audience. A little visible artifice makes the rest easier to overlook.\"\n{n}She leans back, studying you with renewed amusement.{/n}\n\"I might send a line from that play and discover whether you had the patience to find the insult. Or a description of an evening whose most interesting guest never arrived. You would spend a pleasant moment wondering whether I meant you.\"\n\"Then I might ask.\"\n\"And spoil all that excellent uncertainty? You are determined to be an expensive correspondent.\"\n{n}She rises and crosses to a cabinet of small cases. Her fingers hover over one, then choose another.{/n}\n\"We should give the recipient a way to decline the performance. I dislike a captive audience when I am one of its members. You may enjoy that observation without pretending it has altered the rest of my opinions.\"",
+          "Choices": [
+            {
+              "Text": "[Watch what she takes from the cabinet.]",
+              "Next": "shell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "shell",
+          "Speaker": "Vellexia",
+          "Text": "{n}She returns with two palm-sized shells set in silver rims. Each has a hinged cover of cloudy glass. When she opens one, its hollow gives back the quiet sound of her fingernail against the table.{/n}\n\"An echo pair. Made for a collector who wanted to hear the sea without visiting it. A mistake. The sea is enormously repetitive.\"\n\"Who made them?\"\n\"A craftswoman who understood the difference between a shell and a person. Before you ask, these have never been either lovers or servants. They were mineral, silver and a considerable fee.\"\n{n}She opens the other cover. Her next word sounds beside your hand as well as across the table. When she closes your shell, the second voice stops.{/n}\n\"A sound can ask to be heard. Both covers must be open before conversation begins. The little light is the request. It cannot make your hand move.\"\n\"And when I close it?\"\n\"You become unavailable. An accomplishment some of my guests have spent centuries failing to achieve.\"\n{n}She turns your shell so its hinge lies away from you.{/n}\n\"We would have to bind the pair to our voices. I cannot promise every plane or every obstruction would permit an answer. Nor shall you assume that a closed shell means a broken one. I may simply have better company.\"",
+          "Choices": [
+            {
+              "Text": "\"Then let us test it before we decide.\"",
+              "Next": "test",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Keep it for now. I want to think before accepting.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "test",
+          "Speaker": "Narrator",
+          "Text": "{n}You each speak a short phrase into one shell. Vellexia chooses your name with a small, deliberate change in emphasis. You choose hers. She watches your mouth while you say it, then lowers her gaze to the light gathering under the cloudy glass.{/n}\n{n}She goes to the far side of the sitting room and closes her cover. Your first request produces no answering voice. A moment later the light in your shell dims. She has declined it.{/n}\n\"Cruel already?\" you call across the room.\n\"Thorough. Try again.\"\n{n}This time she opens the cover. The glass clears to show a small image of her face. Her voice sounds close, but her body remains across the room, one hand resting on the cabinet. You ask her to close it while you are speaking. The sound stops in the middle of a word and the glass clouds again.{/n}\n{n}She returns and waits for you to open yours again. Only then does she speak into her shell.{/n}\n\"I was about to tell you which word I disliked. You may have saved yourself a considerable explanation.\"\n{n}You shut your cover. Her real laughter crosses the room without assistance.{/n}",
+          "Choices": [
+            {
+              "Text": "[Open it once more and finish the test.]",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "choice",
+          "Speaker": "Vellexia",
+          "Text": "\"It works,\" she says. \"Now we may decide whether that was a sensible discovery.\"\n{n}She puts your shell into a narrow case. There is no ribbon to untie and no inscription claiming you before you have answered.{/n}\n\"I offer conversation. No command hidden in the sound, no claim on the person who opens it. If I want something more, I can ask while you are listening.\"\n\"And what do you want now?\"\n\"To discover whether you can interest me without the advantage of standing where I can touch you.\"\n{n}The words are teasing; the attention behind them is not casual.{/n}\n\"There is also an opinion I may want. An old acquaintance has begun selling predictions about other people's tastes. He claims he can tell a patron what will delight them before they have chosen it. His own conversation is exquisitely predictable. I am considering whether to make that public.\"\n\"You want a collaborator.\"\n\"Possibly. I have not yet decided whether he is worth the inconvenience. You will be disappointed to learn that my gifts occasionally precede my schemes.\"\n{n}She slides the case within reach.{/n}",
+          "Choices": [
+            {
+              "Text": "\"I will take it. Ask when you have something you want me to hear.\"",
+              "Next": "accepted",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I would rather leave it here today.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "accepted",
+          "Speaker": "Vellexia",
+          "Text": "{n}You take the case. Vellexia watches you close it, then puts her own shell beside the ring tray.{/n}\n\"No speech?\"\n\"Would you like one?\"\n\"I was preparing to dislike it. You have left me an unexpected interval.\"\n{n}She draws you close enough to take a pale thread from your shoulder. Once it is gone, her hand remains there for a moment.{/n}\n\"Our next meeting can still be somewhere with other people. I have not renounced the pleasure of being seen with an interesting guest.\"\n\"And if you cease finding me interesting?\"\n\"Then I may leave the cover closed. You should believe that answer even when you enjoy the voice giving it.\"\n{n}She lets her hand fall.{/n}\n\"Before you go, I would like to show you something the prediction seller sent. Not today if you are occupied. I can endure being the only person in the room who has read it. For a while.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the echo shell and accept another look at the seller's claim.]",
+              "Next": null,
+              "Set": [
+                "vellexia.seal_agreed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.greeted",
+        "vellexia.opening_kept"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman",
+        "vellexia.arena_invited",
+        "vellexia.native_finished"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "ContactUnit": "a32a07903e428d34cb0e98a804d40569",
+      "Areas": [
+        "8217b05e37078414981d994151f0ffb1"
+      ],
+      "AnswerLists": [
+        "7f394dd6cd32c44408a59bd08eb1512a"
+      ]
+    },
+    {
+      "Id": "vellexia.the_price_of_tomorrow",
+      "Title": "A taste for being wrong",
+      "Owner": "Vellexia",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "\"Show me what the seller thinks he knows about you.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Vellexia",
+          "Text": "{n}Vellexia has spread a narrow strip of silk on the table. Along it, a fine hand has written the names of entertainments, some with dates beside them. Two have been crossed out in a darker ink.{/n}\n\"Ilveris,\" she says. \"He would prefer a title, but he changes it whenever the old one becomes associated with a debt. At present he calls himself an assessor of future pleasure.\"\n\"What did he assess?\"\n\"Me. Without the courtesy of asking how expensive that might prove.\"\n{n}She taps the first crossed-out line.{/n}\n\"A quartet. He predicted I would tire of it before the third movement. I did. The second prediction concerned a perfume. I sent it away unopened. He claims that counts as tiring of it before the first use.\"\n\"A generous standard for himself.\"\n\"He has always been his most devoted patron.\"\n{n}The third entry mentions a portrait. Vellexia leaves it for you to read.{/n}",
+          "Choices": [
+            {
+              "Text": "[Read what he predicted about the picture she kept.]",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [
+                "vellexia.kept_picture"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Read what he predicted about the picture she returned.]",
+              "Next": "returned",
+              "Set": [],
+              "Requires": [
+                "vellexia.returned_picture"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I cannot give this proper attention yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Vellexia",
+          "Text": "\"He says I kept it because the flaws gave me something to punish. He has not seen the work. He has seen an invoice describing the reduction in price.\"\n\"Would you have kept it without the reduction?\"\n\"No. That does not give him the rest of the answer.\"\n{n}She turns the picture toward you. The painted woman sits with a hand suspended over a closed book. While you look, the hand lowers and the book opens. Vellexia turns the frame away before you can see what is written there.{/n}\n\"I do enjoy an accurate accusation,\" she says. \"It saves a great deal of explanation. This is a poor accusation wearing the clothes of a clever one.\"\n\"You want to prove him wrong.\"\n\"I want him to be wrong where people can enjoy it. Those are distinct pleasures. The second is worth dressing for.\"\n{n}She lays the silk beside the key to the frame.{/n}\n\"Our artist apparently sold his revised bill as a sample. I shall not purchase his next apology. He may keep it for a more hopeful collector.\"",
+          "Choices": [
+            {
+              "Text": "[Read the offer beneath the prediction.]",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "returned",
+          "Speaker": "Vellexia",
+          "Text": "\"He says I sent it back because indignation was cheaper than admitting curiosity. He has purchased the artist's account of my refusal. A wonderfully affordable authority on my character.\"\n\"You did say you wanted the picture more after refusing it.\"\n\"To you. In this room. I did not publish the observation for him to sell by the yard.\"\n{n}She smooths the edge of the silk with one finger.{/n}\n\"And wanting the picture was not the same as wanting to reward the claim attached to it. He has chosen the part that fits his little trade and discarded the rest.\"\n\"Will you buy it back to contradict him?\"\n\"No. That would give him two sales from one bad account. Do not make my enemies' work easier merely because you have understood their method.\"\n{n}She looks toward the empty place the frame once occupied.{/n}\n\"I dislike how much time I have given a man who has not yet managed to enter the room. We shall have to charge him for it somehow.\"",
+          "Choices": [
+            {
+              "Text": "[Read the offer beneath the prediction.]",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "offer",
+          "Speaker": "Narrator",
+          "Text": "{n}Ilveris offers a private demonstration. He will name what a guest most wants, select an amusement and predict the moment the guest ceases to enjoy it. Patrons may pay for access to the predictions before inviting that guest elsewhere.{/n}\n{n}A second hand has added a brief note beneath the flourishing signature. The demonstration requires three questions answered in advance. The names of any companions and their proposed parts in the evening must also be supplied.{/n}\n\"His clerk,\" Vellexia says. \"Tessar. A precise woman with a regrettable habit of finishing the sentences he leaves useful only to himself.\"\n\"Does she make the predictions?\"\n\"I do not know. I should enjoy asking him in front of her.\"\n{n}You read the three questions. What would you refuse? What would you pay to avoid? What would you be ashamed to want twice?{/n}\n\"He could use those answers to arrange the result,\" you say.\n\"Certainly. I object to his calling the arrangement a discovery.\"\n{n}She rests her chin on one hand, watching you read the last question again.{/n}\n\"That one interests you. Have you found an answer?\"",
+          "Choices": [
+            {
+              "Text": "\"An easy victory. I enjoy them more than I like to admit.\"",
+              "Next": "victory",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"An evening with someone who has already told me I ought to know better.\"",
+              "Next": "evening",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "victory",
+          "Speaker": "Vellexia",
+          "Text": "\"Of course you do. Difficulty improves a story afterward. It is frequently a nuisance while one is having it.\"\n\"You would prefer an easy victory over Ilveris?\"\n\"I would prefer a victory that leaves him alive to hear the account repeated. Ease would be a welcome addition.\"\n{n}She reads the question aloud once more, testing its rhythm.{/n}\n\"But I see why he asks. A person ashamed of wanting something will pay to be persuaded that the wanting was beyond their control. Fate makes an excellent accomplice. It rarely comes to collect its share.\"\n\"You sound as though you have used that explanation.\"\n\"I have used nearly every explanation worth hearing. I have also been bored by people who used them badly.\"\n{n}She lays the silk down.{/n}\n\"Keep that answer for yourself. I have no intention of sending it to him merely because he left a space for it.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she will send instead.]",
+              "Next": "reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "evening",
+          "Speaker": "Vellexia",
+          "Text": "{n}Vellexia's smile is slow and unpleasantly perceptive.{/n}\n\"That sounds like an accusation delivered as a compliment. You have learned something in this house.\"\n\"Would you send him that answer?\"\n\"I would charge him for being allowed to read it. Then I would send something less useful.\"\n{n}She touches the silk's lowest edge, careful not to smear the fresh note.{/n}\n\"There is a pleasure in returning to something one was warned against. Do not confuse it with liking the thing itself. Some of my admirers have loved the warning so much that they scarcely noticed me.\"\n\"You noticed.\"\n\"Immediately. It is a tedious form of neglect, all the more insulting because they believe themselves daring.\"\n{n}She looks back at you.{/n}\n\"When you want another evening, ask for the evening. I would like to know whether the person inviting me has found anything beyond the danger to enjoy.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she intends to send.]",
+              "Next": "reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "reply",
+          "Speaker": "Vellexia",
+          "Text": "\"Nothing yet. Let him wait until he begins predicting whether I will answer.\"\n{n}She folds the silk with the writing inward.{/n}\n\"I may visit. I may invite him here and find another use for the time. There is no need to make him important merely because he has asked to be.\"\n\"And the picture?\"\n\"The artist has spent one piece of information. I have learned what he considers his customers' privacy worth. That is useful enough to keep.\"\n{n}She reaches toward your case, then stops short of touching it.{/n}\n\"If I decide to pursue this, I may ask for your opinion through the shell. It will be a new request. Do not spend the interval considering yourself employed.\"\n\"What if I decline?\"\n\"Then I shall have to find another way to amuse myself. I have managed before.\"\n{n}Her fingers settle on the table beside yours. She turns her hand palm upward, an invitation small enough to ignore without turning it into an argument.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take her hand before leaving.]",
+              "Next": "touch",
+              "Set": [],
+              "Requires": [
+                "vellexia.courting"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Ask when you decide. I will answer then.\"",
+              "Next": "part",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "touch",
+          "Speaker": "Vellexia",
+          "Text": "{n}Her fingers close around yours. She draws your hand toward her, then gives you time to choose whether to follow it.{/n}\n\"An encouragingly direct answer to a question I had not quite asked.\"\n\"You left room for it.\"\n\"So I did.\"\n{n}She leaves your joined hands between you.{/n}\n\"Would you like a kiss before you go?\"",
+          "Choices": [
+            {
+              "Text": "\"Yes. I would.\"",
+              "Next": "kiss",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Only your hand, this time.\"",
+              "Next": "hand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "hand",
+          "Speaker": "Vellexia",
+          "Text": "\"Then only my hand. You may tell me when the answer changes. I am capable of remembering a question.\"\n{n}Her fingers tighten briefly around yours. When you step back she releases them and wishes you an interesting evening elsewhere in the city.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave the next invitation for another choice.]",
+              "Next": null,
+              "Set": [
+                "vellexia.prediction_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kiss",
+          "Speaker": "Vellexia",
+          "Text": "{n}You come nearer. She touches your cheek and kisses you, taking her time over the parting.{/n}\n\"There. No prediction improved that,\" she says.\n{n}When you step back, she releases your hand. The silk remains folded on the table, and her shell remains closed beside it.{/n}\n\"Enjoy the rest of the city. I should hate to be blamed for having left you nothing to discover elsewhere.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the next invitation for another choice.]",
+              "Next": null,
+              "Set": [
+                "vellexia.prediction_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "part",
+          "Speaker": "Vellexia",
+          "Text": "\"An admirably unprofitable promise. I cannot even sell it to Ilveris as evidence of what you will do.\"\n{n}She closes her hand and rises. At the door she pauses to turn back toward the folded silk.{/n}\n\"He has given me something to think about,\" she admits. \"I dislike that more than the invoice. I had intended to choose my own occupation today.\"\n\"You still can.\"\n\"Yes. I am deciding how much of it to spend disliking him.\"\n{n}Her laughter follows you to the threshold. She does not ask you to remain, and does not make a promise about the next time you will see her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave the next invitation for another choice.]",
+              "Next": null,
+              "Set": [
+                "vellexia.prediction_known"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.greeted",
+        "vellexia.seal_agreed"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman",
+        "vellexia.arena_invited",
+        "vellexia.native_finished"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "ContactUnit": "a32a07903e428d34cb0e98a804d40569",
+      "Areas": [
+        "8217b05e37078414981d994151f0ffb1"
+      ],
+      "AnswerLists": [
+        "7f394dd6cd32c44408a59bd08eb1512a"
+      ]
+    },
+    {
+      "Id": "vellexia.the_second_invitation",
+      "Title": "The invitation after the dismissal",
+      "Owner": "Memory",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "[Consider the light beneath the echo shell's cover.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}A dim light moves beneath the closed cover of the echo shell. You have heard nothing from it since Vellexia asked you to leave her reception. Her parting was clear enough: whatever pleasure she had found in your dates, she did not intend another.{/n}\n{n}The light waits. There is no voice insisting that you misunderstood her, no message already playing over whatever you meant to do with the evening. When you open the cover, its cloudy glass shows the close, bright image of one dark eye.{/n}\n\"Ah. Too near.\"\n{n}Vellexia moves her shell farther away. Her face comes into view. She wears an expression of annoyance that becomes amusement as soon as she sees you noticing it.{/n}\n\"I have discovered a disadvantage in a conversation one must arrange one's own flattering distance for. You may enjoy that before I begin.\"",
+          "Choices": [
+            {
+              "Text": "\"You said you did not intend for us to meet again.\"",
+              "Next": "dismissed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Close the cover. Decide whether to hear her another time.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "dismissed",
+          "Speaker": "Vellexia",
+          "Text": "\"I did. I had become tired of the performance we were giving each other. I was not speaking in a secret language that meant you should pursue me more vigorously.\"\n\"Then what has changed?\"\n\"Ilveris has made himself useful. I expect to punish him for it.\"\n{n}She brings the folded silk into view, then lowers it when it hides her face.{/n}\n\"He has distributed a prediction about our dates. He says he knew precisely how long they would hold my interest. That much is cheap enough. Half the city expected a short entertainment. The part I dislike is his claim to have arranged it.\"\n\"Did he?\"\n\"Not to my knowledge. I dislike having to add that qualification.\"\n{n}Her mouth tightens.{/n}\n\"He says every answer I heard was one he had prepared for me to reject. He says I performed his demonstration without knowing I had agreed to appear in it.\"\n\"And you want me to contradict him.\"\n\"If he is lying. If he is not, I want to know how he accomplished it before I decide which part of him should regret the ingenuity.\"\n{n}She watches your expression in her glass.{/n}\n\"That is the new request. The old dismissal was real.\"",
+          "Choices": [
+            {
+              "Text": "\"I will hear the evidence. I will not pretend our dates ended differently to improve your position.\"",
+              "Next": "evidence",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Your quarrel interests me. That is not an agreement to resume courting you.\"",
+              "Next": "evidence",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I do not want another arrangement with you.\"",
+              "Next": "refuse",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "evidence",
+          "Speaker": "Vellexia",
+          "Text": "\"Good. A witness who changes the past to please me would be almost as useless as Ilveris. Less amusing, because I would have no reason to be surprised.\"\n{n}She holds a paper close enough for you to make out a few lines. The writing is a transcription of questions from her reception. Beneath them are several possible answers. Some resemble things you might have said. Others turn you into a pompous caricature.{/n}\n\"He had it printed,\" she says. \"Before the evening, he claims.\"\n\"The list could have been written afterward.\"\n\"Certainly. Or copied from someone who had heard me ask the same questions of another guest. I am ancient, darling, not inexhaustible. Even my admirers have occasionally heard a question twice.\"\n{n}She lowers the page.{/n}\n\"Tessar has asked me to pay for the original account rather than the advertisement. That is the first interesting thing to come out of his house. He either has a clerk who dislikes being underpaid, or he has decided to sell the explanation of his fraud as a second service.\"\n\"You have not bought it?\"\n\"Not yet. I am offering you a share in choosing what we ask for. No souls. No part of your crusade. If you are determined to charge a fee, name it before I become fond of the work.\"",
+          "Choices": [
+            {
+              "Text": "\"Pay the clerk for her time and let her leave when the work is finished. That is my price.\"",
+              "Next": "clerk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Give me a copy of whatever we learn. I want to know how he used my name.\"",
+              "Next": "copy",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "clerk",
+          "Speaker": "Vellexia",
+          "Text": "\"Tessar is employed, not chained. I can pay a woman without congratulating myself on having freed her.\"\n\"Then put the limit of the work in your offer. I do not want her discovering she has sold a lifetime when she named a price for an account.\"\n{n}Vellexia regards you for a moment, then nods.{/n}\n\"A dull clause. Useful, perhaps, if she is deciding whom she dares disappoint. I shall include it. I want an answer from someone who expects to remain capable of giving another.\"\n\"And afterward?\"\n\"Afterward she may take her cleverness elsewhere. You are purchasing a particular arrangement, not my admiration for every principle behind it.\"\n{n}She reaches for a fresh sheet and writes while keeping you in view.{/n}\n\"There. A defined task, a fee, and no continuing service owed to my house. She may decline. You may witness her acceptance through the shell if she chooses to speak to you.\"\n{n}Vellexia reads the offer back without making it prettier than you asked.{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept that limited commission.]",
+              "Next": "terms_clerk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "copy",
+          "Speaker": "Vellexia",
+          "Text": "\"A witness with an appetite for the account. How much more interesting than a witness who merely wants to be thanked.\"\n\"I want to know what he sold.\"\n\"So do I. We may yet quarrel over what to do with the knowledge, but at least we shall begin by wanting the same packet.\"\n{n}She writes a short offer to Tessar, then reads it aloud. It buys a copy of the predictions and the account of when they were prepared. Tessar may withhold names unrelated to the sale, but she must say what has been withheld.{/n}\n\"I will give you the same papers I keep,\" Vellexia says. \"You may use the part concerning your own name. I will not ask you to swear that your use of it will flatter mine.\"\n\"You would dislike it if it did not.\"\n\"Immensely. That is not a reason to purchase an agreement I cannot expect you to keep.\"\n{n}She sets the sheet aside.{/n}\n\"If she accepts, we shall examine it together. You may accuse me of selective reading where I can hear you.\"",
+          "Choices": [
+            {
+              "Text": "[Accept access to the same account.]",
+              "Next": "terms_copy",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "terms_clerk",
+          "Speaker": "Vellexia",
+          "Text": "\"One more matter. You will not go into his house on the strength of my amusement. I am quite capable of deciding I dislike a person while they are still useful. You should know where the doors are without relying on my mood.\"\n\"We can work through the shell.\"\n\"For now. I shall arrange the papers here. If I invite anyone to speak, you will know who is in the room before I open our conversation to them.\"\n{n}She moves her own shell enough to show you the empty part of the table around it, then returns the glass to her face.{/n}\n\"I have missed a certain quality of your disagreement,\" she says. \"Do not become sentimental about the admission. It does not mean I have decided what else I miss.\"\n\"Then we can leave that undecided.\"\n\"Yes. At last, something I am being allowed not to predict.\"\n{n}She waits for your answer before closing the cover. The light goes out, leaving you with an ordinary quiet and the inconvenience of being interested.{/n}",
+          "Choices": [
+            {
+              "Text": "[Agree to examine the account when it arrives.]",
+              "Next": null,
+              "Set": [
+                "vellexia.case_opened",
+                "vellexia.clerk_terms"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "terms_copy",
+          "Speaker": "Vellexia",
+          "Text": "\"One more matter. You will not go into his house on the strength of my amusement. I am quite capable of deciding I dislike a person while they are still useful. You should know where the doors are without relying on my mood.\"\n\"We can work through the shell.\"\n\"For now. I shall arrange the papers here. If I invite anyone to speak, you will know who is in the room before I open our conversation to them.\"\n{n}She moves her own shell enough to show you the empty part of the table around it, then returns the glass to her face.{/n}\n\"I have missed a certain quality of your disagreement,\" she says. \"Do not become sentimental about the admission. It does not mean I have decided what else I miss.\"\n\"Then we can leave that undecided.\"\n\"Yes. At last, something I am being allowed not to predict.\"\n{n}She waits for your answer before closing the cover. The light goes out, leaving you with an ordinary quiet and the inconvenience of being interested.{/n}",
+          "Choices": [
+            {
+              "Text": "[Agree to examine the account when it arrives.]",
+              "Next": null,
+              "Set": [
+                "vellexia.case_opened",
+                "vellexia.shared_account"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "refuse",
+          "Speaker": "Vellexia",
+          "Text": "{n}Her expression stills. For a moment you can see her deciding which unpleasant answer would please her most.{/n}\n\"Very well,\" she says at last. \"I asked. You answered. I shall seek a different audience.\"\n\"You do not sound pleased.\"\n\"I am not. You were permitted to refuse, not promised that I would enjoy the refusal.\"\n{n}She reaches toward her cover, then pauses.{/n}\n\"Keep the account of our dates accurate if anyone asks. I have no intention of improving it for your reputation either.\"\n{n}The glass clouds as she closes the shell. No second request follows. Whatever becomes of Ilveris, it will not be a commission you accepted.{/n}",
+          "Choices": [
+            {
+              "Text": "[Close the shell and end this private correspondence.]",
+              "Next": null,
+              "Set": [
+                "vellexia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.prediction_known"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ]
+    },
+    {
+      "Id": "vellexia.the_claim_before_the_event",
+      "Title": "What the account can prove",
+      "Owner": "Memory",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "[Open the echo shell to examine Tessar's account.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Vellexia",
+          "Text": "\"She accepted,\" Vellexia says as the glass clears. \"I find a promptly answered offer almost suspicious. Fortunately, the account is irritating enough to restore my faith in the enterprise.\"\n{n}Three sheets lie on her table. She brings them into view one at a time, giving you time to read before moving the shell again.{/n}\n\"These are her copies. She says the originals remain where Ilveris's creditors can inspect them. He requires patrons to deposit a stake before he will guarantee a prediction. The stake is returned when they accept his account of the result.\"\n\"And if they disagree?\"\n\"He retains it while they prove him wrong. Such a beautiful little arrangement. I almost regret not having invented it.\"\n{n}The first sheet lists dates and sealed packets. The second gives the predictions. The third records what happened and how Ilveris chose to describe it afterward.{/n}\n\"Tessar says the seals on the first page are genuine. She refuses to tell me that this makes the third page honest. I begin to appreciate her precision.\"",
+          "Choices": [
+            {
+              "Text": "[Compare the dated predictions with the later descriptions of the results.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillKnowledgeWorld",
+                "DC": 29,
+                "CommanderOnly": true,
+                "Success": "found",
+                "Failure": "missed"
+              }
+            },
+            {
+              "Text": "\"Have Tessar choose one disputed entry and explain how it was recorded.\"",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Close the shell until you can study the account.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "found",
+          "Speaker": "Vellexia",
+          "Text": "{n}The date on one prediction belongs to the sealed packet, not to every line inside it. Tessar's copy records an addition made after the packet was opened. Ilveris's later account prints that addition beneath the earlier date without distinguishing it.{/n}\n{n}You point out the change. Vellexia turns the sheet toward herself, reads it twice and gives a soft, delighted laugh.{/n}\n\"A prediction of yesterday, guaranteed by an envelope from last week. How very efficient.\"\n\"It proves he altered this entry. It does not prove every prediction is false.\"\n\"No. We shall have to inconvenience him with the precise accusation.\"\n{n}You find a second alteration in the account of the perfume. The unbroken seal covers his prediction that she would reject an unfamiliar scent. The words 'without opening it' were added later.{/n}\n\"That one is mine,\" she says. \"I shall keep the original where he can see me keeping it.\"\n{n}The account concerning your dates has no such addition. Vellexia's smile thins.{/n}\n\"Now we reach the part I was hoping would be equally simple.\"\n{n}She calls Tessar into the room. A composed voice answers from just outside the glass: \"I have the purchaser's extract here, my lady. Shall I read it beside the original?\" Vellexia tells her to remain while you compare them.{/n}",
+          "Choices": [
+            {
+              "Text": "[Read the sealed prediction about the Commander.]",
+              "Next": "yours",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "missed",
+          "Speaker": "Narrator",
+          "Text": "{n}You mistake the repeated date for evidence that two packets were opened at once. Vellexia calls Tessar into the room and asks her to compare the entries with your explanation.{/n}\n{n}A composed voice answers from outside the glass.{/n}\n\"That is the date of settlement. The prediction is on the previous line. I used different columns because the same date would have been misleading.\"\n{n}There is a pause in which Vellexia appears to enjoy several possible remarks before selecting one.{/n}\n\"Our witness has demonstrated the usefulness of your columns. Continue.\"\n{n}You acknowledge the mistake. Tessar reads the disputed entry in full. Your attempted shortcut has consumed the time she reserved for making another copy; Vellexia must buy a second appointment if she wants the remaining papers delivered promptly.{/n}\n\"I shall pay,\" Vellexia says. \"You may repay me by making your next certainty more expensive to obtain.\"\n{n}Tessar identifies the later additions herself. The account concerning your dates, however, appears to have been sealed before the first meeting at the arena.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask to hear that particular entry in full.]",
+              "Next": "yours",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Vellexia",
+          "Text": "\"You would rather hear the person who wrote it. A habit I should find less disappointing by now.\"\n{n}She calls Tessar into the room. The clerk remains outside the glass and introduces herself before speaking. Her voice is low and careful, with no apparent effort to resemble Vellexia's polished hospitality.{/n}\n\"I can explain the perfume entry. That is the smallest dispute. The later description includes a phrase that was not in the sealed prediction. I marked its addition in my copy.\"\n{n}She takes you through the columns without being hurried. Vellexia attempts to interrupt once. Tessar asks whether she should stop accounting for the work she has been paid to do. Vellexia laughs and lets her finish.{/n}\n{n}The explanation uses the time Tessar had reserved for preparing a second set of papers. Vellexia purchases another appointment rather than asking her to remain indefinitely.{/n}\n\"I have acquired a very expensive appreciation of neat columns,\" she says when the clerk pauses. \"Now tell us about the Commander.\"\n\"That prediction was sealed earlier,\" Tessar replies. \"The changes are in the account of what it means.\"",
+          "Choices": [
+            {
+              "Text": "[Listen to the prediction about you.]",
+              "Next": "yours",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "yours",
+          "Speaker": "Vellexia",
+          "Text": "{n}The prediction lists five answers a visitor might give about coming to the Abyss. Duty, revenge, pleasure, uncertainty and ambition. Beside each, Ilveris has written a possible reason Vellexia would eventually dislike hearing it.{/n}\n\"He sold the entire list,\" she says. \"He only needs one answer to fit.\"\n\"Does the account say which one he predicted I would give?\"\n\"No. It says the packet contained the answer. A claim generously assisted by containing several others.\"\n{n}Tessar adds, from beyond the glass, that Ilveris charged each purchaser for a different extract. Those whose extracts proved unhelpful received a credit toward another demonstration. They had an interest in continuing rather than announcing what they had lost.{/n}\n\"So he did not arrange what I said,\" you observe.\n\"He arranged what people would pay to believe about it,\" Vellexia answers. \"I dislike that more. If he had controlled you, at least there would have been a spell worth examining.\"\n{n}She lowers the papers. For a moment her irritation is bare.{/n}\n\"I was predictable enough to make his lie convenient. That is the part he will expect me to deny. We should find a better answer.\"",
+          "Choices": [
+            {
+              "Text": "\"Expose how he changes the account after the event. Leave your tastes out of it.\"",
+              "Next": "method",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Offer him one prediction that must name a result before either of us chooses it.\"",
+              "Next": "challenge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "method",
+          "Speaker": "Vellexia",
+          "Text": "\"A clean accusation. Almost irritatingly clean. He loses his claim to honest accounting, and I lose the pleasure of watching him attempt to read me.\"\n\"You would still win something.\"\n\"Yes. That is why I am considering it.\"\n{n}She asks Tessar whether the later additions can be certified without exposing the names of every purchaser. Tessar says they can, but someone must pay for a second clerk to compare the originals.{/n}\n\"Send me the cost,\" Vellexia says. \"And do not find the cheapest clerk merely because you think I will enjoy having paid less. I want Ilveris unable to buy the answer back.\"\n{n}Tessar leaves to prepare it. Vellexia waits until you hear the door close.{/n}\n\"You have offered me a result with fewer opportunities to become magnificent. I shall remember that when you next ask why I prefer your company to an obedient audience. Sometimes I do not.\"\n{n}Her smile returns, sharper than before.{/n}\n\"We shall compare the price with the more extravagant possibility before deciding.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the accounting approach available.]",
+              "Next": null,
+              "Set": [
+                "vellexia.account_read",
+                "vellexia.method_first"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "challenge",
+          "Speaker": "Vellexia",
+          "Text": "\"There. You do understand the expensive part.\"\n{n}She asks Tessar to remain long enough to hear the proposed rule. One question. One declared result. No substitution after the choice has been made, and no losing purchaser required to buy another chance merely to recover the first stake.{/n}\n\"He will ask what he gains by accepting,\" Tessar says.\n\"My name attached to the result if he is right. An admission in public. He has been selling a counterfeit of it; let him try to obtain the original.\"\n\"And if you refuse to make the admission?\"\n{n}Vellexia looks toward the unseen clerk.{/n}\n\"Then I lose the stake as well as giving him a better story. Put it in the account. I will not pay you to pretend that I am an easy person to collect from.\"\n{n}Tessar leaves to calculate the terms. Vellexia watches you through the glass.{/n}\n\"This could be unpleasant,\" she says. \"I find I have missed being uncertain about which unpleasantness I will prefer.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the public challenge available.]",
+              "Next": null,
+              "Set": [
+                "vellexia.account_read",
+                "vellexia.challenge_first"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.case_opened"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ]
+    },
+    {
+      "Id": "vellexia.the_clerks_own_price",
+      "Title": "The woman who kept the accounts",
+      "Owner": "Memory",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "[Hear Tessar's terms through the echo shell.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Vellexia",
+          "Text": "\"Tessar is here,\" Vellexia says when you answer. \"She has asked to speak before I begin improving the proposal. I find that impertinent enough to be promising.\"\n{n}She moves the shell to show a woman standing beside the table. Tessar has short dark horns and a mouth that looks accustomed to being held still while somebody else speaks. A leather case rests beneath one hand.{/n}\n\"I have agreed to discuss the accounts,\" Tessar says. \"Not to be introduced as the conscience of Ilveris's establishment. You should know that before we begin.\"\n\"I had not mistaken you for it,\" Vellexia answers.\n\"Some of your guests may. They will want an admirable reason for my changing patrons. I would prefer an accurate one.\"\n{n}She looks toward the glass, waiting for you to speak.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Then tell me why you are willing to sell the account.\"",
+              "Next": "reason",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Postpone until you can hear her without interruption.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "reason",
+          "Speaker": "Tessar",
+          "Text": "\"I prepared the settlements. Ilveris took the fee for each successful prediction and deducted the cost of the unsuccessful ones from mine. He called the first his insight and the second my poor selection of clients.\"\n\"You agreed to that?\"\n\"For one season. I thought I could learn enough to leave with clients of my own. I learned that he intended to sell those introductions separately.\"\n{n}Vellexia leans back, visibly pleased by a story with room for more than one appetite.{/n}\n\"And now?\" you ask.\n\"Now I want three things. Payment for the work I have done. A record that I did not alter the sealed predictions. And permission to show prospective employers what I can prepare without asking Ilveris to recommend me.\"\n\"Permission from whom?\"\n\"From the people whose names are in it. I can conceal purchasers. I cannot conceal Lady Vellexia and the Commander while making this particular account intelligible.\"\n{n}She opens her case and lays down a prepared sample. Most names have been replaced by marks. Yours and Vellexia's remain, along with the questions used to describe your dates.{/n}",
+          "Choices": [
+            {
+              "Text": "[Examine the sample she wants to use.]",
+              "Next": "sample",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "sample",
+          "Speaker": "Vellexia",
+          "Text": "\"She wants to make a career from the account of my having been misrepresented. An enterprising choice.\"\n\"I want to make a career from a correct account,\" Tessar says. \"It is more difficult to sell than you might imagine.\"\n\"I can imagine several prices.\"\n{n}Vellexia studies the sample. The record includes her own refusal to examine the perfume before rejecting it. It also includes the fact that she declined to give a reason afterward.{/n}\n\"That is accurate,\" she says. \"I dislike the order in which it makes me appear unreasonable.\"\n\"The order is chronological.\"\n{n}For a moment the room on the other side of the glass becomes very quiet.{/n}\n\"I noticed,\" Vellexia says at last. \"Do not cultivate insolence merely because it worked once.\"\n{n}Tessar lowers her eyes but does not take the sample away.{/n}\n\"The Commander must decide about the questions attributed to them,\" she says. \"I cannot claim that every possible answer was spoken. I have made that distinction. I need them to tell me whether it is clear.\"",
+          "Choices": [
+            {
+              "Text": "\"It is clear. You may use this account, including my name, once the alterations are independently checked.\"",
+              "Next": "named",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Use the method, but remove my name and the private questions. I will attest that your accounting was clear.\"",
+              "Next": "limited",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "named",
+          "Speaker": "Tessar",
+          "Text": "\"That gives me something I can show without asking a listener to trust an anonymous example. Thank you.\"\n\"Do not thank too soon,\" Vellexia says. \"You still require my answer.\"\n{n}Tessar waits. Vellexia reads the sample again, stopping at the unfavorable line she has already objected to.{/n}\n\"You may use it,\" she says. \"Once it is checked. Keep the part in which Ilveris claimed my rejection was his invention. If I am to appear unreasonable, I want the neighboring folly represented at full size.\"\n\"It is already there.\"\n\"Then we have saved each other a correction.\"\n{n}Tessar closes her case with both permissions recorded. Her sample will carry recognizable names and the possibility of attracting powerful resentment. She does not ask Vellexia to promise that resentment will never arrive.{/n}\n\"I can afford one carefully documented enemy,\" she says. \"I could not afford another year of paying for his unsuccessful predictions.\"",
+          "Choices": [
+            {
+              "Text": "[Let her finish the arrangement before she leaves.]",
+              "Next": "named_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "limited",
+          "Speaker": "Tessar",
+          "Text": "{n}Tessar considers the restriction, then sets the named sample aside.{/n}\n\"I can prepare an anonymous version. Your attestation will help, though it will not demonstrate as much. Some employers will assume the interesting names were invented.\"\n\"They were not,\" you say.\n\"No. But I am asking them to distinguish my accurate account from Ilveris's advertising. I should expect the question.\"\n{n}Vellexia watches her select the pages that will need alteration.{/n}\n\"I will permit my name in the part concerning the perfume,\" she says. \"The Commander has their own appetite for being discussed. I have mine.\"\n\"That will make the sample uneven.\"\n\"Then explain the reason. You are very good at explaining reasons when I would prefer you had overlooked them.\"\n{n}Tessar nods. She will have to do more work, and the sample will be harder to sell. In return, she has a narrower piece of the Commander's life to account for when the questions begin.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her finish the arrangement before she leaves.]",
+              "Next": "limited_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "named_end",
+          "Speaker": "Vellexia",
+          "Text": "{n}Tessar leaves after reading back the limits of the work. You hear the clasp click as she checks her case, then the door opens and shuts. Vellexia brings the shell nearer.{/n}\n\"I wanted to frighten her when she corrected me,\" she says. \"You noticed.\"\n\"Yes.\"\n\"I wanted her to remain accurate too. A tiresome interference between pleasures.\"\n\"You chose the account.\"\n\"Today. Do not turn a practical decision into a discovery of my hidden goodness. I would like to be able to enjoy it without having to disprove your conclusion.\"\n{n}She looks toward the door Tessar used.{/n}\n\"She may leave with a better position than either of us intended to give her. That would be a pleasing result. Or she may use my name badly, in which case I shall have a new occupation.\"\n\"You agreed to the sample you read.\"\n\"I did. I intend to remember exactly how much I agreed to. So should she.\"\n{n}Vellexia turns back to you.{/n}\n\"I also noticed that you answered the question she asked, rather than explaining what sort of grateful person she ought to become. I find that quality increasingly useful in you.\"\n\"Useful?\"\n\"Do not hurry me. I am choosing the compliments myself.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the agreed limits and await the final offer.]",
+              "Next": null,
+              "Set": [
+                "vellexia.witness_heard",
+                "vellexia.named_sample"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "limited_end",
+          "Speaker": "Vellexia",
+          "Text": "{n}Tessar leaves after reading back the limits of the work. You hear the clasp click as she checks her case, then the door opens and shuts. Vellexia brings the shell nearer.{/n}\n\"I wanted to frighten her when she corrected me,\" she says. \"You noticed.\"\n\"Yes.\"\n\"I wanted her to remain accurate too. A tiresome interference between pleasures.\"\n\"You chose the account.\"\n\"Today. Do not turn a practical decision into a discovery of my hidden goodness. I would like to be able to enjoy it without having to disprove your conclusion.\"\n{n}She looks toward the door Tessar used.{/n}\n\"She may leave with a better position than either of us intended to give her. That would be a pleasing result. Or she may use my name badly, in which case I shall have a new occupation.\"\n\"You agreed to the sample you read.\"\n\"I did. I intend to remember exactly how much I agreed to. So should she.\"\n{n}Vellexia turns back to you.{/n}\n\"I also noticed that you answered the question she asked, rather than explaining what sort of grateful person she ought to become. I find that quality increasingly useful in you.\"\n\"Useful?\"\n\"Do not hurry me. I am choosing the compliments myself.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the agreed limits and await the final offer.]",
+              "Next": null,
+              "Set": [
+                "vellexia.witness_heard",
+                "vellexia.limited_sample"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.account_read"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ]
+    },
+    {
+      "Id": "vellexia.the_wager_with_an_edge",
+      "Title": "The cost of a certain answer",
+      "Owner": "Memory",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "[Hear Ilveris's response to the proposed challenge.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Vellexia",
+          "Text": "{n}Vellexia has opened her ring tray again. Through the glass you see her lift a narrow circlet from it and place it beside Tessar's revised account.{/n}\n\"Ilveris accepted the possibility of a demonstration. He has declined the possibility of being paid merely to admit that his descriptions were dishonest. A severe limitation in his understanding of entertainment.\"\n\"What does he want?\"\n\"This. A piece I made when I was less easily offended by excellent work belonging to someone else. I won it back from its third purchaser after deciding I disliked seeing it worn badly.\"\n\"Is it alive?\"\n\"No. Enchanted silver. My own work, my own property, and sufficiently valuable that losing it would annoy me. He chose well.\"\n{n}She puts one finger through the circlet and turns it without sliding it onto her hand.{/n}\n\"He will risk the original packets, the deposits attached to this series of predictions and a public correction. He wants me to risk the circlet and an admission that he understood something I could not bear to hear.\"\n\"Even if what he understood was how to arrange the result?\"\n\"Precisely. He wishes to sell that distinction afterward. We must decide whether to let him try.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about exposing the altered accounts without taking his wager.]",
+              "Next": "account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what one result he proposes to predict.]",
+              "Next": "question",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the decision until you can consider it carefully.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "account",
+          "Speaker": "Vellexia",
+          "Text": "\"The second clerk has confirmed the additions. We can publish that much now. It will cost the fee already spent, and Ilveris will lose some confidence among his purchasers.\"\n\"Some?\"\n\"Some of them buy him because they like what he lets them believe about themselves. A careful explanation will not impoverish that trade overnight.\"\n{n}She lifts the circlet, then sets it back in its compartment.{/n}\n\"It would end our particular work cleanly. He did not control your answers. He changed his claims afterward. We could say so, let Tessar use the agreed sample and find a different occupation.\"\n\"You sound disappointed.\"\n\"I am. I also like this piece of silver. Both deserve consideration.\"\n{n}Her gaze returns to yours through the glass.{/n}\n\"If you choose the account, I will not pretend it was cowardice merely because I wanted a spectacle. I may complain that the spectacle would have been better. You are already acquainted with the distinction.\"",
+          "Choices": [
+            {
+              "Text": "\"Publish the checked account. Keep the circlet and let this be enough.\"",
+              "Next": "publish",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell me the proposed prediction before I decide.\"",
+              "Next": "question",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "question",
+          "Speaker": "Vellexia",
+          "Text": "\"He will prepare two sealed descriptions. One contains an amusement he claims I will prefer; the other contains an account of why I will choose against it when I know he expects the preference.\"\n\"That still allows him both answers.\"\n\"Yes. I told him so in words Tessar has declined to preserve in her formal record.\"\n{n}Vellexia smiles.{/n}\n\"The revised version has one sealed prediction and three offers. A repeat of an entertainment I once praised, a new work I have not examined, and an hour left entirely for my own use. He must name the one I will choose. I must actually spend the hour on it.\"\n\"He could make one of them unbearable.\"\n\"We choose who supplies the offers. He sees their descriptions in advance, as do I. He must state his answer before we see the finished works.\"\n{n}She lifts the circlet again.{/n}\n\"He proposes that you choose the order in which I receive them. I believe he wants to make my decision look like a decision about you. We could refuse that part. Or leave him the temptation to mistake my appetite for something simpler.\"",
+          "Choices": [
+            {
+              "Text": "\"Take the wager, but let Tessar draw the order. I will witness it.\"",
+              "Next": "draw",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I will choose the order. He can risk his claim on understanding both of us.\"",
+              "Next": "order",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No. Publish the checked account instead.\"",
+              "Next": "publish",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "publish",
+          "Speaker": "Vellexia",
+          "Text": "{n}She closes the ring tray with the circlet inside it.{/n}\n\"Very well. I shall have to enjoy being correct without making an entire room watch me discover it.\"\n\"You can make the room read.\"\n\"A cruel suggestion. Some of them would prefer a more immediate punishment.\"\n{n}She calls Tessar and gives the instruction. The corrected account will go to the purchasers of the affected predictions, with an invitation to compare their copies. Tessar applies the permissions you gave to both documents: if you withheld your name and private questions, neither version will contain them. The alterations can be demonstrated through the perfume entry without identifying you. The wider account names Ilveris and Vellexia only with her separate agreement.{/n}\n\"The fee is mine,\" Vellexia says. \"The part concerning the Commander is theirs to keep. No admission that the list of possible answers was a prediction of a single answer. Put that plainly.\"\n{n}When the clerk leaves, Vellexia looks almost satisfied.{/n}\n\"He will receive questions he has not written for himself. That may be worth imagining even without a seat in the room.\"\n\"And the demonstration?\"\n\"Canceled. I will not leave him expecting a stake I have decided to keep.\"",
+          "Choices": [
+            {
+              "Text": "[Let the checked account stand without a wager.]",
+              "Next": null,
+              "Set": [
+                "vellexia.wager_chosen",
+                "vellexia.published_accounts"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "draw",
+          "Speaker": "Vellexia",
+          "Text": "\"You deprive him of a convenient romance. I imagine he will manufacture another.\"\n\"He must predict the choice, not the explanation he will sell afterward.\"\n\"Yes. Let us make that expensive to forget.\"\n{n}She calls Tessar into view. The clerk reads the revised terms and records her own responsibility for drawing the order. Ilveris will seal one named result before the draw, and copies of the seal will be witnessed by purchasers who have deposits at risk.{/n}\n\"I will not promise he loses,\" Tessar says.\n\"I would not pay you to,\" Vellexia answers. \"You would be selling the same service with less attractive handwriting.\"\n{n}Vellexia lifts the circlet toward the shell, letting you see its fine joined edges.{/n}\n\"If I lose, I want you to remember that this was excellent work. Do not soothe me by saying the loss was nothing.\"\n\"I will remember.\"\n\"Good. We have begun agreeing on the difficult parts.\"",
+          "Choices": [
+            {
+              "Text": "[Accept a witnessed draw and the real risk of losing.]",
+              "Next": null,
+              "Set": [
+                "vellexia.wager_chosen",
+                "vellexia.drawn_order"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "order",
+          "Speaker": "Vellexia",
+          "Text": "\"You are certain you want to stand where his explanation will point?\"\n\"I want to see whether your choice needs his explanation.\"\n{n}She studies you for a moment, then calls Tessar forward. The clerk records that you will choose the order after the prediction is sealed. The offers themselves will be checked by the same witnesses who hold copies of the seal.{/n}\n\"If you arrange the order to make her lose,\" Tessar says, \"the loss remains a loss. I will not be asked to rewrite it because the reason was intimate.\"\n\"You will not,\" Vellexia says. \"And if I choose merely to thwart the Commander, he will not be permitted to call that my having chosen freely while every other answer would have been manipulation. Record the choice. Leave him to argue about his own cleverness.\"\n{n}After Tessar has written, Vellexia moves the shell nearer.{/n}\n\"I might surprise you unpleasantly,\" she says.\n\"You have done so before.\"\n\"And you have opened the cover again. An interesting fact. I shall avoid explaining it too quickly.\"",
+          "Choices": [
+            {
+              "Text": "[Accept responsibility for choosing the order.]",
+              "Next": null,
+              "Set": [
+                "vellexia.wager_chosen",
+                "vellexia.commander_order"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.witness_heard"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ]
+    },
+    {
+      "Id": "vellexia.an_hour_that_counts",
+      "Title": "The result he must keep",
+      "Owner": "Memory",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "[Answer Vellexia's request on the evening of the decision.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The light beneath the shell's cover burns steadily. When you answer, Vellexia has already placed her own shell where both hands are free. You see the edge of a table and her face beyond it.{/n}\n\"You are in time,\" she says. \"I have been deciding how much of this evening I want you to witness. The unflattering parts seem determined to occur first.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about the published account.]",
+              "Next": "published",
+              "Set": [],
+              "Requires": [
+                "vellexia.published_accounts"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask whether the prediction is sealed.]",
+              "Next": "sealed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.published_accounts"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Close the cover and postpone the conversation.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "published",
+          "Speaker": "Vellexia",
+          "Text": "\"Ilveris has answered. He says the altered descriptions were interpretive notes, never intended to be confused with predictions. Then he objects that Tessar disclosed his method to people incapable of appreciating it.\"\n\"Did they believe him?\"\n\"Some. Others have asked for deposits he assured them they would recover after another purchase. He is attempting to decide which question to answer first.\"\n{n}She lifts an opened letter into view.{/n}\n\"This purchaser thanks me for helping him discover that three of his most perceptive remarks about his lover came from the same sealed packet. He proposes that I help him recover the price.\"\n\"Will you?\"\n\"No. I did not undertake to make everybody who enjoyed Ilveris's flattery wealthy again. I have given him a correct account. He may use whatever intelligence survives the disappointment.\"\n{n}She sets the letter down with evident pleasure.{/n}\n\"Tessar has two offers for work. She has asked whether either employer is likely to expect gratitude in place of a wage. I advised her to ask them in writing. It is a question that deserves to be preserved.\"\n\"And you?\"\n\"I have my circlet and an enemy whose explanation requires longer every time he gives it. I find the result more satisfying than I expected.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she intends to do with the rest of the evening.]",
+              "Next": "unspent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "unspent",
+          "Speaker": "Vellexia",
+          "Text": "\"I have an hour I had reserved for being vindicated in public. It has become available for a less improving occupation.\"\n{n}She takes a small book from beside the shell. You recognize the marked page from the sitting room, though the edge has acquired another impatient crease.{/n}\n\"I thought of inviting people to hear the account. Then I imagined the third person congratulating me on my insight, and the pleasure began to curdle. I wanted to have been right. I did not want to hear everybody describe the accomplishment.\"\n\"What would you rather hear?\"\n\"Your opinion of a line I have been attempting not to enjoy again. I suspect repetition has been unfairly blamed for several deficiencies in my guests.\"\n{n}She reads the insult from the play. Her delivery is slower than you remember; she holds the final word until you have almost supplied it yourself. You laugh, and she looks up with an expression too pleased to conceal quickly.{/n}\n\"There. He would have sold that as a prediction too.\"\n{n}She reads the reply, then shuts the book before the next scene can demand its turn.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay for the conversation after the account.]",
+              "Next": "published_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "sealed",
+          "Speaker": "Vellexia",
+          "Text": "\"Sealed, copied and witnessed. Ilveris has written that I will choose the unused hour. He has supplied an explanation, but it will be opened afterward. I refuse to have the evening spoiled by being told what I must think about it in advance.\"\n\"You know his answer?\"\n\"We agreed I would. The wager is that he can predict my choice even when I have an excellent reason to make another. He considers pride a predictable inconvenience. I am about to give that opinion a costly audience.\"\n{n}She turns the shell to show Tessar at the far end of the table. Beside her stand three witnesses holding their copies. Ilveris has sent his signed acceptance; he has declined to attend in person.{/n}\n\"A sensible man on a rare occasion,\" Vellexia says.\n{n}The first offer is the old play, performed by two paid actors who have agreed to one hour and know when they may leave. The second is a new mechanical theater whose silver figures dismantle an emperor's triumphal procession to build a privy. The third is the empty hour.{/n}\n\"No souls in the figures,\" Tessar says before you ask. \"I checked the maker's bill and the workings. Lady Vellexia requested that the point not become the entire discussion.\"\n{n}Vellexia smiles at the irritation in the clerk's exact repetition.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let Tessar draw the order as agreed.]",
+              "Next": "draw",
+              "Set": [],
+              "Requires": [
+                "vellexia.drawn_order"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Begin with the new theater. Let her discover whether it deserves her time.\"",
+              "Next": "new",
+              "Set": [],
+              "Requires": [
+                "vellexia.commander_order"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Begin with the empty hour. I will not conceal what he expects her to want.\"",
+              "Next": "quiet",
+              "Set": [],
+              "Requires": [
+                "vellexia.commander_order"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"The coin you gave me opened the way through your arch. Would you like to try giving this hour an unexpected ending?\"",
+              "Next": "fate_offer",
+              "Set": [],
+              "Requires": [
+                "vellexia.commander_order",
+                "trickster",
+                "vellexia.coin_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "draw",
+          "Speaker": "Narrator",
+          "Text": "{n}Tessar draws the new theater first. The mechanism begins with a tiny fanfare so overconfident that Vellexia laughs before any figure has moved. The emperor lifts a silver arm. His servants begin dismantling the arch above him.{/n}\n{n}The transformation takes longer than good taste would advise. Vellexia leans forward, impatient, just as a workman returns to measure the emperor himself for the door. The little ruler is too wide. The workman removes the imperial crown and tries again.{/n}\n\"Oh, that is ugly,\" Vellexia says delightedly. \"Leave it running.\"\n{n}Tessar reminds her that the other offers remain to be sampled. Vellexia permits the old play's opening and hears its familiar insult without smiling. Then she dismisses both samples and asks the mechanism's maker whether the emperor fits through the door by the end.{/n}\n\"That would tell you the last joke,\" the maker answers from beyond the glass.\n\"Then remain alive to receive a compliment if it is good. I choose the theater.\"\n{n}Tessar records the choice. The prediction has failed, but the hour must still be spent as agreed.{/n}",
+          "Choices": [
+            {
+              "Text": "[Watch the hour she chose, without asking her to change the decision.]",
+              "Next": "won",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "new",
+          "Speaker": "Narrator",
+          "Text": "{n}You choose the new theater first. Its maker starts the mechanism where the shell can show you the moving figures. A silver emperor raises his arm to accept the adoration of a procession whose servants have begun dismantling his triumphal arch.{/n}\n{n}Vellexia laughs when the first column becomes a privy door. By the time the workmen discover the emperor is too wide to enter, she has asked the maker two questions and been refused the answer to both.{/n}\n\"You understand how to sell an ending,\" she says. \"That is more than can be said for our absent assessor.\"\n{n}She hears the sample of the old play, then spends several silent moments considering the empty hour. You do not fill them for her.{/n}\n\"The theater,\" she decides. \"I want to know whether the little tyrant ever becomes useful. The question may occupy me longer than the answer.\"\n{n}Tessar records the choice. Vellexia glances toward your image.{/n}\n\"You chose well,\" she says. \"Do not assume that will make you better at it tomorrow.\"\n{n}She turns back to the figures before you can offer a reply.{/n}",
+          "Choices": [
+            {
+              "Text": "[Watch the hour she chose.]",
+              "Next": "won",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "quiet",
+          "Speaker": "Vellexia",
+          "Text": "{n}She looks at you through the glass, then at the witnesses.{/n}\n\"The honest temptation first. Very well.\"\n{n}She samples the old play. She watches the mechanical emperor begin to lose his triumphal arch. The joke makes her laugh, but when the maker reaches to continue it, she raises a hand.{/n}\n\"No. I choose the empty hour.\"\n{n}Tessar pauses with her pen above the account.{/n}\n\"You understand that this is the sealed prediction.\"\n\"I heard it. I also heard the beginning of two entertainments I have no particular wish to finish tonight. I will not spend an hour displeased merely to rescue my reputation for being difficult to understand.\"\n{n}She picks up the circlet and places it beside the witnesses' copies.{/n}\n\"Send it. Record that he was right about this choice. Keep the corrections to his earlier accounts where people can read them. One accurate prediction does not mend the others.\"\n{n}The decision has made her angry. It has not made her ask you to find a false way around it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept the loss without calling it meaningless.]",
+              "Next": "lost",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "fate_offer",
+          "Speaker": "Vellexia",
+          "Text": "\"Explain it before you entertain yourself at my expense.\"\n\"The shell already carries an echo. Perhaps it could keep the experience of this hour for you, then let you live through that memory once more in the space of a breath. You would know what was coming. Nobody else would repeat a word or lose a moment. You would choose what to notice the second time.\"\n\"Would that make him wrong?\"\n\"Not by the terms you agreed. It would be a fourth offer. You would forfeit the stake if you took it.\"\n{n}She becomes very still. Then she smiles.{/n}\n\"An expensive trick that admits its price. Tessar, record the forfeit. I would like to be the person who knows why I paid it.\"\n\"You may still choose one of the three offers,\" the clerk says.\n\"I know. That is what makes spending the silver interesting.\"\n{n}Vellexia speaks her agreement into the shell. You ask the echo to keep the hour between its first note and its last. A second light appears beneath the glass, following the first a heartbeat behind. Vellexia studies the doubled gleam, then deliberately holds her hand before it.{/n}\n\"Once,\" she says. \"Not until you tire of watching me.\"\n{n}You promise one turn and leave her to choose what she does with it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the echo to the single recollection she accepted.]",
+              "Next": "fate",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "fate",
+          "Speaker": "Narrator",
+          "Text": "{n}The hour passes. Vellexia chooses the old play and dismisses it after the familiar insult. She watches the mechanical emperor fail to fit through his new door. Then she spends the remainder talking to the maker about an earlier, less successful machine.{/n}\n{n}At the last note of the shell, Vellexia closes her eyes. The stored hour passes through her awareness again, from the first insult to the maker's final explanation. She knows each word before it arrives and listens this time for the moment his pride gives way to embarrassment. Across the room a witness finishes drawing breath. To everyone else, only that breath has passed. The second light goes out.{/n}\n\"Enough,\" she says.\n{n}The glass remains dark until she opens her eyes; no second recollection follows.{/n}\n{n}She sits without speaking for several breaths.{/n}\n\"I knew which parts were coming. I still wanted to hear one of them. How extraordinarily inconvenient.\"\n{n}Tessar asks whether the forfeit stands. Vellexia hands her the circlet.{/n}\n\"Of course. He may tell people he won an object. He will have to ask me what I bought with it.\"\n{n}The witnesses leave with the recorded result. No prediction has been rewritten, and no earlier choice has been removed from the account.{/n}",
+          "Choices": [
+            {
+              "Text": "[Remain while she dismisses the last spectators.]",
+              "Next": "fate_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "won",
+          "Speaker": "Vellexia",
+          "Text": "{n}She stays for the promised hour. By the end, the emperor has become the privy's door handle and the procession has begun praising his accessibility. Vellexia laughs so suddenly that one of the witnesses forgets to be discreet about staring.{/n}\n\"Yes, I enjoyed it,\" she tells him. \"You may report the astonishing event without inventing a more flattering cause.\"\n{n}Tessar records the completed hour, returns the circlet to its owner and prepares the correction Ilveris must circulate. His deposits will go back to the purchasers named in the agreement. He will keep whatever business does not depend on this wager.{/n}\n\"Not ruined,\" Vellexia observes. \"Merely inconvenienced in public. I shall have to make the most of it.\"\n{n}She asks the maker for a price for another performance, then rejects the first figure offered with such enthusiasm that the negotiation becomes an entertainment of its own. She does not buy the mechanism or claim its maker's future work.{/n}\n{n}When the room empties, she moves the shell close again.{/n}\n\"You stayed. Even through the parts in which I had almost nothing to say to you. I find that more pleasant than I expected.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the finished result and the unexpected pleasure.]",
+              "Next": null,
+              "Set": [
+                "vellexia.verdict_kept",
+                "vellexia.wager_won"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "lost",
+          "Speaker": "Vellexia",
+          "Text": "{n}She dismisses the performers and gives the witnesses leave to go. The empty compartment in the ring tray remains within the glass's view until she notices it and moves the tray aside.{/n}\n\"I wanted that piece,\" she says. \"I can make another. I wanted that one.\"\n\"You chose the hour knowing the cost.\"\n\"Yes. I have been attempting to resent you for presenting it first. You may be pleased to hear the attempt is going badly.\"\n{n}She sits back and looks at your image without smiling.{/n}\n\"Stay if you want to. Do not congratulate me for losing gracefully. I have not decided to be graceful, and you would spoil the occupation.\"\n{n}You stay. She tells you how she recovered the circlet from its third purchaser, and the story is vain, vindictive and funny enough that you understand why she wanted the object back. When you laugh, she reaches toward the shell before remembering the distance.{/n}\n\"There,\" she says, drawing her hand back. \"Something worth the price of a poor temper.\"",
+          "Choices": [
+            {
+              "Text": "[Spend the rest of the empty hour with her.]",
+              "Next": null,
+              "Set": [
+                "vellexia.verdict_kept",
+                "vellexia.wager_lost"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "fate_end",
+          "Speaker": "Vellexia",
+          "Text": "\"Do not tell me you have cured my boredom,\" she says when you are alone. \"I shall become bored with the sentence before you finish it.\"\n\"You wanted to try one unexpected ending.\"\n\"I did. I obtained it. I also lost something I liked, which will prevent me becoming unbearably grateful.\"\n{n}She touches the closed ring tray and pushes it out of view.{/n}\n\"The memory is mine. The room did not become another room. Nobody spent the hour again because I wanted to hear a joke twice. That was the part I needed to know before agreeing.\"\n\"Would you do it again?\"\n\"Not tonight. Tonight I would like to find out what happens after it.\"\n{n}She brings the shell nearer and asks you about the moment you knew her answer would cost her the circlet. She listens closely, especially where your account differs from the one she expected.{/n}",
+          "Choices": [
+            {
+              "Text": "[Finish the evening without another turn of the trick.]",
+              "Next": null,
+              "Set": [
+                "vellexia.verdict_kept",
+                "vellexia.fate_hour"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "published_end",
+          "Speaker": "Vellexia",
+          "Text": "\"I expected to spend tonight humiliating a man in front of people whose opinions I would dislike by morning. Instead I have humiliated him in writing and found a better use for the remaining time.\"\n\"You have no regrets?\"\n\"Several. I would have enjoyed his face when he lost. I would also have disliked hearing him describe the loss as part of his plan. You have deprived me of both.\"\n{n}She rests the book beside the shell.{/n}\n\"Tessar will send the final receipts. Once I have paid them, this is finished. Ilveris may continue to be irritating, but I refuse to let that become an obligation to correspond with him.\"\n\"And with me?\"\n{n}Her attention settles on your face.{/n}\n\"A different question. Ask it when I can answer without pretending we are still discussing an invoice.\"",
+          "Choices": [
+            {
+              "Text": "[Let the work end with the account actually settled.]",
+              "Next": null,
+              "Set": [
+                "vellexia.verdict_kept",
+                "vellexia.account_published"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.wager_chosen"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ]
+    },
+    {
+      "Id": "vellexia.the_question_after_business",
+      "Title": "What she asks without a fee",
+      "Owner": "Memory",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "[Open the shell for a conversation without an account to settle.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Vellexia",
+          "Text": "{n}When the glass clears, Vellexia is fastening an earring. She finishes before speaking, then turns her face slightly as though she expects an opinion and has not decided whether to request it.{/n}\n\"Tessar has been paid. The receipts have been copied. Ilveris has discovered that describing a disappointment at greater length does not always increase its sale price. I have decided we may cease discussing him.\"\n\"A generous decision.\"\n\"For us. I intend to let him wonder which of his latest explanations I have read.\"\n{n}She leans toward the shell.{/n}\n\"I asked for this conversation because I wanted it. I have no difficult packet to put in your hands first. You may find the change alarming.\"\n\"What would you like to talk about?\"\n\"The fact that you kept opening this little door after I had given you an excellent reason to leave it shut.\"",
+          "Choices": [
+            {
+              "Text": "\"I wanted the work settled. I also wanted to hear you.\"",
+              "Next": "want",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the request unanswered until you can give it time.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "want",
+          "Speaker": "Vellexia",
+          "Text": "\"Yes. That second part has become inconveniently important to me.\"\n{n}She moves her hand away from the earring.{/n}\n\"I disliked your company at the end of our dates. I wanted you to go. I would not improve either of those facts merely because I now find myself wanting a different answer.\"\n\"You could ask for one.\"\n\"I am approaching the indignity with suitable care.\"\n{n}Her smile returns, but she does not let it finish the conversation for her.{/n}\n\"You let me be wrong without pretending I had become a helpless creature who needed your good influence. You disagreed, sometimes at exactly the moment I wanted obedience. You also found things to enjoy that I had not selected to impress you.\"\n\"That sounds like another assessment.\"\n\"It is. I have been attempting to understand why I want your voice when the matter giving me an excuse to hear it is finished. I do not intend to sell the answer to anyone else.\"\n{n}She looks directly into the glass.{/n}\n\"I want to be your lover. A new invitation, not a correction written over the old dismissal. I would like to know whether you want it.\"",
+          "Choices": [
+            {
+              "Text": "\"I do. I want to find out what we choose after the first excitement has passed.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to keep exploring this, but I am not ready to call us lovers.\"",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want your company. I do not want a romance with you.\"",
+              "Next": "company",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Vellexia",
+          "Text": "\"Then there are some things I will say before you become fond of imagining me in your rooms.\"\n\"Go on.\"\n\"I am not offering to become harmless. I will not account for every person I dislike as though you had been appointed to correct my temper. Nor will I send my quarrels into your house and call your having a lover permission to make them yours.\"\n{n}She watches you absorb the distinction.{/n}\n\"If I ask for help, you may refuse. If you ask me to refrain from something, I will answer. I may answer badly. You may decide the answer means you do not want me.\"\n\"That is more honest than a promise you would resent.\"\n\"It is less flattering. I am attempting to tolerate the discovery.\"\n{n}She draws the shell a little nearer.{/n}\n\"I will have other pleasures, and I expect you to have a life that continues when this cover is closed. Do not offer me somebody else's consent. Do not promise another person's time to make yours appear more available. I have had enough admiration built from things the admirer did not own.\"\n\"And we choose our own time together.\"\n\"Yes. As much of it as we actually want. I may become greedy. You should say so where I can hear you.\"",
+          "Choices": [
+            {
+              "Text": "\"I accept those terms. I want the affection we can choose honestly.\"",
+              "Next": "near",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I cannot promise that without more thought. Let us slow down.\"",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "near",
+          "Speaker": "Vellexia",
+          "Text": "\"Come a little nearer the glass,\" she says. \"I would like to see your face when I stop explaining myself.\"\n{n}You lift the shell. Her image grows clearer as she adjusts her own. For a moment the practical business of finding a comfortable position makes you both laugh.{/n}\n\"We have selected an inconvenient distance for this conversation,\" you say.\n\"An exquisite inconvenience. I can imagine what I would do if you were here without being distracted by whether my earring has caught in your collar.\"\n\"What would you do?\"\n\"Ask you to put the shell down. Then discover whether you come to me before I have finished asking.\"\n{n}Her voice lowers. She describes the kiss she would like to give you, the pause afterward and the pleasure of finding you still close. Nothing reaches through the glass. Your own breath catches anyway.{/n}\n\"Tell me what you want,\" she says. \"I have spent enough of this evening listening to myself be brave.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her how you would welcome her, and keep the private conversation between you.]",
+              "Next": "desire",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tonight I want your voice and an unhurried conversation. The rest can wait.\"",
+              "Next": "gentle",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "desire",
+          "Speaker": "Vellexia",
+          "Text": "{n}You tell her. She listens without the interruption you expected, then asks you to repeat one part more slowly. Her answer is a quiet laugh and a promise concerning the next kiss, if you both choose the meeting that would make it possible.{/n}\n{n}The conversation grows intimate without pretending the distance has disappeared. You learn which pauses she enjoys and which make her ask whether you have begun composing something too polished to say. She learns that you can make her lose her place in a sentence without being in the room.{/n}\n\"I was saying something excellent,\" she complains.\n\"You can begin again.\"\n\"I would rather hear what you were about to say. A shameful failure of discipline.\"\n{n}Later, when the eagerness has quieted, neither of you closes the cover immediately. She asks you a small question about where you are sitting, and you answer without trying to make the place worthy of her.{/n}\n\"I would like to know that room,\" she says. \"Not tonight. Tonight this has been enough to make tomorrow inconvenient.\"",
+          "Choices": [
+            {
+              "Text": "[End the call as lovers, with another conversation freely chosen.]",
+              "Next": null,
+              "Set": [
+                "vellexia.departure_kept",
+                "vellexia.renewed_lovers",
+                "vellexia.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "gentle",
+          "Speaker": "Vellexia",
+          "Text": "\"Then give me something unpolished to listen to. I refuse to spend a quiet evening hearing a visitor become solemn because nobody is touching them.\"\n{n}You tell her about a small irritation from your day. She offers a solution so excessive that you begin laughing before she finishes. She looks pleased, then asks what you actually did.{/n}\n\"That worked?\"\n\"Well enough.\"\n\"How disappointing. I had almost enjoyed my version.\"\n{n}You keep talking. At one point she rests her cheek against her hand, listening, and the familiar expression becomes unexpectedly intimate when you realize she is making no attempt to improve it for you.{/n}\n\"There,\" she says after a comfortable silence. \"I have managed to want the next kiss without requiring this conversation to hurry toward it. I hope you will not reward the achievement with a lecture about patience.\"\n\"I was going to ask whether you wanted another evening.\"\n\"An excellent substitution. Yes.\"",
+          "Choices": [
+            {
+              "Text": "[End the call as lovers who have chosen this pace.]",
+              "Next": null,
+              "Set": [
+                "vellexia.departure_kept",
+                "vellexia.renewed_lovers",
+                "vellexia.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "slow",
+          "Speaker": "Vellexia",
+          "Text": "{n}She leans back. The disappointment in her face is plain enough that she does not bother denying it.{/n}\n\"You make an unfinished answer sound very deliberate. I shall have to believe you mean it.\"\n\"I do.\"\n\"Then I will decide how much patience I want to spend, rather than telling myself yours is a promise in disguise.\"\n{n}She turns the shell slightly, adjusting a reflection that has crossed the glass.{/n}\n\"We can still speak. I would prefer that you bring me something besides an apology for not wanting exactly what I wanted tonight. I have received the answer. Let us find another use for the time.\"\n{n}You ask about the earring. She tells you why its maker hates the woman who owns the matching piece, and the conversation wanders into a feud ridiculous enough to please her without needing to become yours.{/n}\n\"Ask again if your answer changes,\" she says before the cover closes. \"I may have a different one too. We shall discover whether the timing is merciful.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the relationship question open without promising an answer.]",
+              "Next": null,
+              "Set": [
+                "vellexia.departure_kept",
+                "vellexia.renewed_slow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "company",
+          "Speaker": "Vellexia",
+          "Text": "\"An unequivocal answer. I had hoped for a more flattering one.\"\n{n}She turns her head away, then back.{/n}\n\"I can enjoy a person who does not want to kiss me. I have managed it before, though I prefer being wanted.\"\n\"I would like our conversations to continue.\"\n\"So would I. For the moment, let me be disappointed without inviting me to demonstrate how reasonably I bear it.\"\n{n}You give her the silence she asks for. After a while she tells you something Tessar said when the final payment arrived: that it was the first time a patron had paid the agreed amount without attempting to make a better price part of the celebration.{/n}\n\"I considered correcting the omission,\" Vellexia says. \"Then I decided I preferred having one person leave my house surprised.\"\n{n}The conversation finds its way back to ease gradually. When it ends, she asks you to open the cover another time. The invitation carries no further question hidden inside it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept another conversation as company, not courtship.]",
+              "Next": null,
+              "Set": [
+                "vellexia.departure_kept",
+                "vellexia.renewed_company"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.verdict_kept"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ]
+    },
+    {
+      "Id": "vellexia.the_voice_after_the_abyss",
+      "Title": "A different room for the same voice",
+      "Owner": "Memory",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Answer the echo shell in Drezen.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The shell has survived the journey back to Golarion. For a time its closed glass showed no light at all. Now a pale thread moves beneath the cover while the sounds of Drezen pass outside your room.{/n}\n{n}When you answer, Vellexia is looking away. She turns sharply at the sound of your voice, then composes her expression with enough care to reveal what she is concealing.{/n}\n\"You have become inconveniently difficult to reach,\" she says. \"I considered taking offense. Then I discovered I preferred hearing whether you were still capable of offending me yourself.\"\n\"I am here.\"\n\"So I hear. I would like to see it without the glare from whatever lamp you have placed behind you.\"\n{n}You turn the shell until the image clears. She leans nearer, and for a moment says nothing.{/n}",
+          "Choices": [
+            {
+              "Text": "\"I wanted to hear you again.\"",
+              "Next": "lovers",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"We left a question open. I have not forgotten it.\"",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_slow"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I have missed our conversations.\"",
+              "Next": "company",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_company"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Close the cover until you can speak without interruption.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "lovers",
+          "Speaker": "Vellexia",
+          "Text": "\"Yes. So did I. I had an excellent complaint prepared, but it required you to have been careless rather than absent. I may save it for a more suitable occasion.\"\n{n}Her fingers rise toward the edge of the glass. She lowers them again with a small, impatient laugh.{/n}\n\"I dislike this part of the arrangement. I want to touch your face and discover whether you look as tired as the shell insists.\"\n\"I could tell you I am perfectly rested.\"\n\"You could. I would enjoy the lie for approximately as long as it took you to finish it.\"\n{n}You tell her something true about the return. She does not demand the whole account. When you stop, she asks whether you have had a quiet hour since arriving.{/n}\n\"This one may have to do,\" you say.\n\"Then put the shell somewhere your arm will not ache. I refuse to be remembered as an inconvenient weight when I have gone to considerable trouble to be a voice.\"",
+          "Choices": [
+            {
+              "Text": "[Settle in and ask what became of her own business.]",
+              "Next": "result",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "slow",
+          "Speaker": "Vellexia",
+          "Text": "\"Good. I would have resented being the only one who remembered leaving it there.\"\n{n}She watches your face for a moment before sitting back.{/n}\n\"I am not asking you to answer it in your first breath from another world. Tell me something about where you are. I have spent enough time imagining it to distrust the picture.\"\n{n}You describe the room without improving it. She asks which sounds come through the door, then whether the chair is comfortable.{/n}\n\"That is the room in which you are choosing to hear me?\"\n\"At present.\"\n\"I shall attempt not to compete with the chair. It has had a considerable advantage in becoming familiar.\"\n{n}Her smile returns without demanding a declaration from you.{/n}\n\"You may ask about my days too. Some of them contained things besides waiting to see whether this expensive shell was broken.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what became of Ilveris and the account.]",
+              "Next": "result",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "company",
+          "Speaker": "Vellexia",
+          "Text": "\"You should. I have been obliged to have several without you. In one of them a man explained a joke to me after I had laughed at it. I wanted to preserve the experience for someone capable of sharing my disgust.\"\n\"You could have closed the conversation.\"\n\"He was in the room. I had neglected to put a lid on him.\"\n{n}She looks amused by the possibility, then turns her attention back to you.{/n}\n\"I am pleased you returned. There. A remarkably plain sentence. You may receive it without requiring me to repeat the accomplishment.\"\n{n}You tell her a small thing about Drezen. She asks a question sharp enough to turn the account into a story, and for a while the interruption feels wonderfully familiar.{/n}\n\"Now,\" she says, \"you may inquire after the consequences of our enterprise. I have been waiting to tell someone who remembers which parts I chose badly.\"",
+          "Choices": [
+            {
+              "Text": "[Ask for the actual outcome.]",
+              "Next": "result",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "result",
+          "Speaker": "Narrator",
+          "Text": "{n}Vellexia has put the final account into the same narrow case that once held Ilveris's silk. She opens it where you can see the papers arranged inside.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask about the published corrections and the circlet she kept.]",
+              "Next": "papers",
+              "Set": [],
+              "Requires": [
+                "vellexia.account_published"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask whether Ilveris paid after losing his wager.]",
+              "Next": "won",
+              "Set": [],
+              "Requires": [
+                "vellexia.wager_won"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what became of the circlet she lost.]",
+              "Next": "lost",
+              "Set": [],
+              "Requires": [
+                "vellexia.wager_lost"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask whether Ilveris managed to describe the hour she bought with the forfeit.]",
+              "Next": "fate",
+              "Set": [],
+              "Requires": [
+                "vellexia.fate_hour"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "papers",
+          "Speaker": "Vellexia",
+          "Text": "\"The corrections circulated. One purchaser obtained a repayment. Another bought a new prediction because he believed Ilveris would be especially careful after being caught. I cannot prevent people from investing in their own foolishness.\"\n{n}She lifts the circlet, lets the light pass along its edge, and returns it to the case.{/n}\n\"The man who thanked me for the account sent a second letter asking whether I might advise him about his lover. I declined. Our accuracy seems to have given him an inflated opinion of my generosity.\"\n\"Does Ilveris still sell predictions?\"\n\"Under another title. Fewer guarantees, more language about possibility. He is learning to charge for the part no one can disprove.\"\n{n}Her smile sharpens.{/n}\n\"We did not make him honest. We made that particular dishonest account expensive. I am content to have accomplished something with an ending.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about Tessar.]",
+              "Next": "tessar",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "won",
+          "Speaker": "Vellexia",
+          "Text": "\"He paid. Reluctantly, which improved the pleasure. The witnesses were purchasers with deposits of their own; they had no interest in admiring his explanation instead of collecting.\"\n{n}She lifts the circlet, then slides it onto one finger.{/n}\n\"He sent a private letter suggesting that my having known his answer invalidated the prediction. Tessar returned a copy of the terms he signed. He complained that her handwriting had become insolent since she left his employment.\"\n\"Had it?\"\n\"I like to think so.\"\n{n}She turns her hand to consider the silver.{/n}\n\"The theater's maker has acquired several commissions. I have refused two invitations to hear patrons explain how much better they understand the joke than everyone else. The little emperor deserved a less tiresome triumph.\"\n\"Would you watch it again?\"\n\"Perhaps. I am enjoying being allowed not to decide yet.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what Tessar chose next.]",
+              "Next": "tessar",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "lost",
+          "Speaker": "Vellexia",
+          "Text": "\"Ilveris sold it. That offended me more than winning it. He had no intention of wearing the thing; he wanted to turn the account of my loss into a price.\"\n\"Will you buy it back?\"\n\"Not at the price he has taught its new owner to request. I made the piece. I know exactly which of its virtues he has misunderstood in the advertisement.\"\n{n}She shows you the empty space in the case, then closes it.{/n}\n\"I have begun another design. It is not a replacement, and I am not asking you to soothe me by pretending the loss improved my work. I liked the old piece. I also liked the hour I bought by letting it go.\"\n\"Both can remain true.\"\n\"An inconvenient arrangement. I have made room for it.\"\n{n}She tells you Ilveris has had less success selling his one accurate prediction than he expected. Too many listeners ask why a woman who knew she would lose chose the hour anyway.{/n}\n\"His answer becomes duller each time. Mine remains mine.\"",
+          "Choices": [
+            {
+              "Text": "[Ask about Tessar's work.]",
+              "Next": "tessar",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "fate",
+          "Speaker": "Vellexia",
+          "Text": "\"He has described it in three incompatible ways. A concealed trick, a confession that he had won, and an entertainment he generously permitted me to purchase. I expect a fourth as soon as he finds a new audience.\"\n\"He did receive the circlet.\"\n\"Yes. I have not disputed the forfeit. It ruins his more indignant explanations when someone points that out.\"\n{n}She taps the edge of the closed case.{/n}\n\"I remember the repeated hour. I have not discovered a secret by which everything becomes new again. I am still capable of hearing a familiar line and wanting its speaker silenced. You may retain your opinion of my character.\"\n\"I had no intention of revising it without asking you.\"\n\"How prudent.\"\n{n}Her expression softens into amusement.{/n}\n\"I also remember wanting one part again. I find that worth keeping. It requires less explanation than Ilveris would prefer.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what Tessar made of the finished account.]",
+              "Next": "tessar",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "tessar",
+          "Speaker": "Vellexia",
+          "Text": "\"Tessar chose her next work herself. I offered another commission. She declined it, politely enough to make it difficult to enjoy being insulted.\"\n\"Why?\"\n\"She wants two patrons who cannot agree on a reason to dismiss her. I understood the calculation. I disliked being included in it.\"\n{n}Vellexia checks the clasp of the case while you speak.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask about the sample carrying both your names.]",
+              "Next": "named",
+              "Set": [],
+              "Requires": [
+                "vellexia.named_sample"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the limited sample and your attestation.]",
+              "Next": "limited",
+              "Set": [],
+              "Requires": [
+                "vellexia.limited_sample"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "named",
+          "Speaker": "Vellexia",
+          "Text": "\"It found her work quickly. It also found her a man who assumed she could provide an introduction to you. She sent him your permission to use the account and asked him to point to the part promising your company.\"\n\"What did he say?\"\n\"Nothing worth preserving, apparently. She took a different commission.\"\n{n}Vellexia sounds pleased with a reply she has not been permitted to claim as her own.{/n}\n\"Your name was useful. It was also troublesome. She has begun charging for the trouble rather than pretending it is an honor. I suspect she will do well enough to become irritating in a new way.\"",
+          "Choices": [
+            {
+              "Text": "[Let the completed work remain completed.]",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "limited",
+          "Speaker": "Vellexia",
+          "Text": "\"It took her longer. One employer declined to consider an anonymous example, despite your attestation. Another asked to see a second, smaller account, and hired her after she corrected his estimate of the work.\"\n\"Was she disappointed?\"\n\"Certainly. She preferred obtaining work quickly. She also discovered that people who accepted her limits were less likely to ask her to sell them an introduction she did not possess.\"\n{n}Vellexia rests her hand on the case.{/n}\n\"I would have chosen differently. She knows. We have reached the civilized arrangement of not requiring each other's admiration before collecting our fees.\"",
+          "Choices": [
+            {
+              "Text": "[Let the completed work remain completed.]",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Vellexia",
+          "Text": "\"There. An account with a last page. We should be careful not to make another occupation from rereading it until we cease liking one another.\"\n\"What occupation would you prefer?\"\n\"I would like to see whether we can share an evening that neither of us has to improve into a useful event. Choose something you would want to do in that room if you were not trying to make it impressive enough for me.\"\n\"And you?\"\n\"I shall choose something here. We will discover whether the two pleasures tolerate being interrupted by conversation.\"\n{n}She looks past the shell toward her own room, apparently considering several possibilities.{/n}\n\"No audience. No wager. If it disappoints, we may say so and find another way to spend the time. I have lately acquired an appreciation of giving an evening a recognizable end.\"",
+          "Choices": [
+            {
+              "Text": "[Agree to another private call.]",
+              "Next": null,
+              "Set": [
+                "vellexia.return_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.departure_kept"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "vellexia.two_unremarkable_pleasures",
+      "Title": "What she does with an unclaimed evening",
+      "Owner": "Memory",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Open the shell for the evening you agreed to share.]",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You have set aside one small occupation you would ordinarily attempt alone: sorting the loose pages that have accumulated among your personal things. Some deserve to be kept. Others have survived because deciding what to do with them seemed less urgent than putting them down.{/n}\n{n}Vellexia answers beside a table crowded with tiny stoppered bottles. She is holding one beneath her nose, looking profoundly dissatisfied.{/n}\n\"Awful,\" she says. \"I had almost forgotten how much I disliked it. A useful beginning.\"\n\"Perfume?\"\n\"Old perfume. Mine. I am deciding which scent I was foolish enough to associate with a marvelous evening. I suspect the evening did most of the work.\"\n{n}She looks at the papers beside your shell.{/n}\n\"You have brought your own small excavation. Excellent. We can be disappointed at separate tables.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her about a page you have been reluctant to throw away.]",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Postpone until you can keep the evening clear.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "page",
+          "Speaker": "Vellexia",
+          "Text": "{n}You show her a rough drawing of an inn's roofline. It is poor work, made during an idle moment, and you have kept it longer than several more useful records.{/n}\n\"Did you like the place?\" she asks.\n\"For a while.\"\n\"A remarkably sufficient reason to keep a poor drawing. I approve.\"\n\"You would have thrown it away?\"\n\"I would have commissioned a better one and resented finding that it reminded me of the artist instead. I have made that mistake before.\"\n{n}She uncorks another bottle, considers it and sets it to one side.{/n}\n\"That one is tolerable. It reminds me of a man who tried to flatter me by claiming he had never enjoyed anything so much as my company. I asked him what he had compared it with. He answered 'everything.' We had almost nothing to discuss afterward.\"\n\"You kept the scent.\"\n\"Yes. It has outlived the conversation. Not an exacting achievement.\"\n{n}She waits while you decide where to put the drawing.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the drawing, imperfect and familiar.]",
+              "Next": "keep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Set it aside to discard. Tell her what you will remember without it.]",
+              "Next": "discard",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "keep",
+          "Speaker": "Vellexia",
+          "Text": "\"There. A choice no purchaser can make more flattering by paying for it.\"\n{n}You put the drawing among the things you intend to keep. Vellexia takes the first, disliked bottle and sets it beside the tolerable one.{/n}\n\"I am keeping this too,\" she says. \"For the pleasure of discovering that I was right to dislike it. A meaner attachment than yours, perhaps, but it is mine.\"\n\"Would you wear it?\"\n\"Certainly not. Possessing a mistake does not oblige me to repeat it on my skin.\"\n{n}She looks up, smiling at your expression.{/n}\n\"You hoped I would throw it away and become easier to understand. I could see the beginning of the hope.\"\n\"I was wondering how many bottles you keep for that reason.\"\n\"An excellent question. We may need another evening to answer it.\"",
+          "Choices": [
+            {
+              "Text": "[Ask which scent she actually wants tonight.]",
+              "Next": "chosen",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "discard",
+          "Speaker": "Vellexia",
+          "Text": "{n}You set the drawing aside and describe the sound of rain above the inn's window, the smell of a meal from downstairs and the idle time in which you made it. Vellexia listens without asking you to turn the recollection into an occasion worthy of a better artist.{/n}\n\"I understand keeping that,\" she says. \"Though I would probably keep the paper too and complain that it occupied space.\"\n\"You could commission a cabinet for the complaint.\"\n\"I have several. You are beginning to understand my household.\"\n{n}She removes one bottle from the table and puts it out of reach.{/n}\n\"That one will go. It reminds me of an evening I have described so often that I am tired of hearing the account in my own head. If I miss it, I can be annoyed about having discarded it. A new subject, at least.\"",
+          "Choices": [
+            {
+              "Text": "[Ask which scent she actually wants tonight.]",
+              "Next": "chosen",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "chosen",
+          "Speaker": "Vellexia",
+          "Text": "{n}She opens a small bottle with no label, tests it and touches one drop behind her ear.{/n}\n\"This one. I cannot remember who gave it to me. That leaves the scent with an unusual amount of freedom.\"\n\"Describe it.\"\n\"Bitter at first. Something warmer beneath it. Your world has a fruit whose peel does almost the same thing when one presses it between the fingers. I never remember the name until someone says the wrong one.\"\n{n}You offer possibilities. She rejects several, laughs at another and finally accepts one with the satisfaction of having made you do the remembering.{/n}\n\"There. Now tell me something from your room I cannot smell through this troublesome glass.\"\n{n}You tell her about ink, paper and the air coming through the window. The exchange is intimate in its small inaccuracies. Each of you asks questions the other would not have thought to answer.{/n}\n\"I would like to be able to get that wrong in person,\" she says. \"To tell you the room smells of something you have stopped noticing.\"\n{n}She pauses before adding anything to the wish.{/n}",
+          "Choices": [
+            {
+              "Text": "\"I want a meeting too. We would have to choose where it could actually happen.\"",
+              "Next": "meeting",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"For tonight, tell me what you would say if you were here.\"",
+              "Next": "voice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to keep the closeness we can have now, without making a larger promise.\"",
+              "Next": "voice",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_slow"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "meeting",
+          "Speaker": "Vellexia",
+          "Text": "\"Yes. You have a city full of people who would reasonably dislike my arrival. I have a city full of people who would enjoy mistaking yours for an announcement. I can imagine several entertaining mistakes and very few convenient introductions.\"\n\"The shell does not carry people.\"\n\"I noticed. I have had considerable reason to resent the limitation.\"\n{n}She leans nearer the glass.{/n}\n\"I would not arrive in your room without being asked. You may enjoy hearing that without mistaking it for a promise to become agreeable to everyone outside the door. If we arrange a meeting, we will choose it in words other people cannot make for us.\"\n\"That is what I want.\"\n\"Then we share a difficult wish. I find it more interesting than a convenient lie.\"\n{n}She touches her finger to her mouth, then rests it beside the shell.{/n}\n\"For tonight, stay where I can hear you. I have been thinking about the last time you were close enough to interrupt me without speaking.\"",
+          "Choices": [
+            {
+              "Text": "[Stay for the private conversation.]",
+              "Next": "lovers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "voice",
+          "Speaker": "Vellexia",
+          "Text": "\"I would probably complain about the chair first. Then I would want to know why you kept one of those pages and discarded another. At some point you would ask whether I had come merely to criticize your room.\"\n\"Had you?\"\n\"No. I would have come because I wanted your company. I would hope you had noticed before making me admit it so inelegantly.\"\n{n}She closes the bottle she chose and puts the others away one by one. The little clinks accompany your conversation until the table is almost clear.{/n}\n\"I am here for the same reason now,\" she says. \"You may imagine the complaint about the chair if it makes the admission easier to believe.\"",
+          "Choices": [
+            {
+              "Text": "[Enjoy the quiet affection between lovers.]",
+              "Next": "lovers",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay with the company you have chosen without changing its terms.]",
+              "Next": "company_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.renewed_lovers"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "lovers",
+          "Speaker": "Vellexia",
+          "Text": "{n}You talk until the pages beside you have been sorted or abandoned. Vellexia asks you to leave the shell open while she unfastens the earring that has begun to catch in her hair. She complains about its maker with an inventiveness that makes it difficult to answer soberly.{/n}\n\"Do not laugh too much,\" she says. \"I may remember you fondly whenever it annoys me. An association you might regret.\"\n\"I can think of worse.\"\n\"So can I. I prefer this one.\"\n{n}After a while her voice grows quiet. She asks what kind of kiss you would want if the distance were less considerable. You tell her, and the silence after your answer has nothing vacant in it.{/n}\n\"I would like that,\" she says. \"Keep the rest for another conversation. I want something to anticipate that you have not described perfectly in advance.\"\n{n}You arrange another call, and she closes the cover only after hearing your answer.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the evening and the next chosen call.]",
+              "Next": null,
+              "Set": [
+                "vellexia.private_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "company_end",
+          "Speaker": "Vellexia",
+          "Text": "{n}The conversation lasts longer than the sorting. Vellexia asks which discarded page was easiest to release, and you tell her. Her answer is an account of something extravagant she kept solely because an enemy had offered to buy it.{/n}\n\"Did you want it?\"\n\"Less than he did. That was sufficient at the time.\"\n{n}She sounds amused by the comparison rather than chastened. Before the evening ends, she asks whether you have room for another conversation soon.{/n}\n\"I have enjoyed this one,\" she says. \"There is no invoice to explain the remark. You may have to believe I mean it.\"\n{n}You agree on another call. The glass clouds only after both of you have said what you meant to say.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the evening and the next chosen call.]",
+              "Next": null,
+              "Set": [
+                "vellexia.private_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.return_kept"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "vellexia.the_cover_before_the_battle",
+      "Title": "Before the next silence",
+      "Owner": "Memory",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I want to speak before I leave again.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Vellexia",
+          "Text": "{n}When Vellexia answers, a servant is removing a vase from the table behind her. She stops him at the door.{/n}\n\"The flowers may go. The vase stays. I disliked the giver, not the workmanship.\"\n{n}He returns the empty vase and leaves. She waits until the door has closed before bringing the shell nearer.{/n}\n\"You have the look of someone who has been saying important things all day. I had hoped to provide an interruption.\"\n\"You still can. I wanted to tell you that I am preparing to leave again. The next part may be difficult to come back from.\"\n\"Yes. People seldom arrange a war around the convenience of my correspondence.\"\n{n}The remark costs her more effort than usual. She rests her fingers on the rim without touching the cover.{/n}\n\"How much time do you have now?\"\n\"Enough to choose how we spend it.\"\n\"A useful answer. I dislike being given a farewell so complete that nothing I say can change its shape.\"\n{n}She moves the empty vase out of the glass's view.{/n}\n\"Tell me what you came to ask. Then I shall tell you whether it is the thing I wanted to hear.\"",
+          "Choices": [
+            {
+              "Text": "\"I want to keep what we chose. I cannot promise when I will answer again.\"",
+              "Next": "absence",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to settle what we mean to each other before I go.\"",
+              "Next": "meaning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want this to be our last call. I cannot keep offering what you want.\"",
+              "Next": "ending",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Explain that you must go now and ask to return to the conversation.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "absence",
+          "Speaker": "Vellexia",
+          "Text": "\"I would rather know that than sit here interpreting every quiet evening as an insult. I can invent sufficiently unpleasant explanations without your assistance.\"\n\"You might have reasons of your own not to answer.\"\n\"I have many. Some are even respectable. I will not leave the cover open as a demonstration that I deserve your return.\"\n{n}She glances toward the door, then back at you.{/n}\n\"There is a performance next week. A singer I have dismissed twice intends to sing the same piece again, apparently because she believes I missed its finer qualities while objecting to the middle. I intend to go and find out whether she has acquired better reasons or merely greater confidence.\"\n\"You sound pleased.\"\n\"I am looking forward to being difficult about something familiar. I had not intended to admit that today.\"\n\"Then tell me about it if I come back.\"\n\"I might. You may have to hear me complain about it first.\"\n{n}Her fingers relax against the rim.{/n}\n\"I want you to return. I shall continue doing things I want while you are away. Those are two true statements, however poorly they flatter a dramatic farewell.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her what you want the next answer to mean.]",
+              "Next": "meaning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "meaning",
+          "Speaker": "Vellexia",
+          "Text": "\"I have not mistaken the shell for your whole life,\" she says. \"You should not mistake it for mine. But it has become a part I would notice losing.\"\n{n}She looks at its silver edge with a brief, dissatisfied smile.{/n}\n\"I chose this because it let me decline a tiresome visitor. Now I notice when it remains dark. I find that sufficiently irritating without being required to call it an improvement in my character.\"\n\"You are allowed to want someone.\"\n\"I have never needed permission for wanting. It is the part where the person has an answer of their own that makes such trouble.\"\n{n}She meets your eyes again.{/n}\n\"What do you want that answer to be, if we have another evening?\"",
+          "Choices": [
+            {
+              "Text": "\"I want to remain your lover, with the freedom and care we agreed.\"",
+              "Next": "lovers",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I am ready to choose you as a lover, if you still want that.\"",
+              "Next": "new_terms",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_slow"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want this friendship. I do not want to turn it into a romance.\"",
+              "Next": "friends",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.renewed_lovers"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I still need a slower answer. I want to keep knowing you without promising romance.\"",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_slow"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want to stop being lovers. If you need distance after that, I understand.\"",
+              "Next": "ending",
+              "Set": [],
+              "Requires": [
+                "vellexia.renewed_lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "new_terms",
+          "Speaker": "Vellexia",
+          "Text": "{n}Her smile comes before the answer.{/n}\n\"Yes. I dislike the timing, but I want you. You have managed to make both statements rather urgent.\"\n\"Then we should say what we are offering.\"\n\"Affection. Desire. Time we actually choose. I will have other pleasures, and I expect you to have other people whose claims on your time matter. Neither of us can give away their answers.\"\n{n}She pauses, watching your face.{/n}\n\"I am not becoming harmless. You may refuse to help me, and I may refuse something you ask. If an answer changes what you want, say so. I will do the same. I do not want a lover who praises me in the evening and hopes to discover a different woman in the morning.\"\n\"I know who I am asking.\"\n\"Then ask me again when there is less glass between us. For now, I would like to hear that you mean it.\"",
+          "Choices": [
+            {
+              "Text": "\"I mean it. I choose those terms, and I want you.\"",
+              "Next": "new_lovers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I cannot accept that yet. Let us keep the slower answer.\"",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "lovers",
+          "Speaker": "Vellexia",
+          "Text": "\"Good. I wanted to hear it before discovering how extravagantly I might resent a different answer.\"\n{n}She moves closer. The small image cannot conceal the care with which she studies your face.{/n}\n\"You look tired. I had several excellent suggestions for how to occupy the time, and now I find myself wanting to hear you speak without spending another ounce of effort making the words impressive.\"\n\"I want to come back. I want to hear you complain about the singer.\"\n\"There. Appalling flattery. Almost nothing in it for anyone but me.\"\n{n}Her laughter is brief and warm.{/n}\n\"I want another kiss,\" she says. \"The fact that I cannot have it now has not made the wish more dignified. Tell me how you would leave if you were standing here.\"",
+          "Choices": [
+            {
+              "Text": "[Describe a lingering kiss and let her answer in her own words.]",
+              "Next": "warm",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I would hold your hand a while. Then I would go when I had to.\"",
+              "Next": "quiet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "new_lovers",
+          "Speaker": "Vellexia",
+          "Text": "\"Then I accept. Come nearer. I have waited through enough careful answers to enjoy this one without pretending I was indifferent to it.\"\n{n}You lift the shell. She tells you how she would greet you if you could step into the room, stopping after the first kiss to ask what you would want next. Your answer makes her close her eyes for a moment.{/n}\n\"An inconvenient thing to hear just before you leave. I intend to remember it.\"\n{n}You talk until the impending departure becomes something you can mention without allowing it every sentence. She asks for one ordinary detail of your morning and laughs at the answer.{/n}\n\"Keep yourself alive if you can,\" she says at last. \"I want more of this particular person. I have no use for a monument that cannot answer back.\"\n{n}You say goodbye as lovers. The cover closes after she has said it too.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the freely chosen relationship and the farewell.]",
+              "Next": null,
+              "Set": [
+                "vellexia.farewell_kept",
+                "vellexia.farewell_lovers",
+                "vellexia.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "warm",
+          "Speaker": "Vellexia",
+          "Text": "{n}You tell her. She answers with a soft correction to the way you imagined her hands, then asks you to begin again. This time she lets the description finish.{/n}\n\"Yes,\" she says. \"That is a departure I would resent properly.\"\n\"Properly?\"\n\"With enough pleasure to make the next arrival worth anticipating.\"\n{n}For a while you speak quietly about what you want from that arrival. Neither room changes. Her voice is enough to make the distance feel personal, something between two bodies rather than a line on a map.{/n}\n\"Go when you must,\" she says. \"I dislike rehearsing it.\"\n{n}You tell her you have to leave. She asks for another breath, and you give it before saying goodbye. Her answer is unadorned. She keeps looking at you until you close the cover.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the affection and the farewell you gave each other.]",
+              "Next": null,
+              "Set": [
+                "vellexia.farewell_kept",
+                "vellexia.farewell_lovers"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "quiet",
+          "Speaker": "Vellexia",
+          "Text": "\"Then I would keep your hand until you told me. I am capable of wanting a thing without making every moment an attempt to obtain more. Do not look so relieved. It is a selective talent.\"\n{n}She rests her hand beside the shell. You put yours where she can see it. There is silver under your fingers, no borrowed sensation passing between them.{/n}\n\"There,\" she says. \"A poor substitute. I am glad you suggested it.\"\n{n}You sit together until it is time to go. Once she asks whether you have remembered something you need to take. Her next remark is extravagant enough to make you laugh, as though she has grown suspicious of her own practical concern.{/n}\n\"I want the next answer,\" she says when you stand. \"I shall not pretend I have it already.\"\n{n}You tell her goodbye. She answers before the glass clouds.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the quiet affection and the farewell.]",
+              "Next": null,
+              "Set": [
+                "vellexia.farewell_kept",
+                "vellexia.farewell_lovers"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "friends",
+          "Speaker": "Vellexia",
+          "Text": "\"Then friendship. I am not going to spend every conversation treating the word as a puzzle you must eventually solve in my favor.\"\n{n}She settles back and angles the shell toward her, bringing the empty vase into the edge of the image again.{/n}\n\"I have enjoyed your company. I expect to find you irritating again, if you return with enough energy to have opinions. I would rather risk that than have you agree with me as a farewell gift.\"\n\"I was not planning to.\"\n\"Good. There is an improvement to the singer's middle passage I would like to propose, and you may be just unreasonable enough to tell me why she would refuse it.\"\n{n}You discuss the proposal. It is lavish, insulting and almost certainly calculated to make Vellexia the subject of the performance. She defends it with increasing pleasure as you object.{/n}\n{n}When you leave, the last sound before the cover closes is her laughter at something you said. You find yourself smiling after the room has gone quiet.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the friendship you both named.]",
+              "Next": null,
+              "Set": [
+                "vellexia.farewell_kept",
+                "vellexia.farewell_friends"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "slow",
+          "Speaker": "Vellexia",
+          "Text": "\"You have made patience an unexpectedly demanding entertainment.\"\n\"I am not asking you to wait for a different answer.\"\n\"I know. I can decide whether I want the conversation you are offering. I do.\"\n{n}She turns the shell slightly, removing the lamp's reflection from its glass.{/n}\n\"There are things I would like to ask you that have nothing to do with persuading you into my bed. Some of them are even about you. You may find the novelty irresistible.\"\n\"You could try one now.\"\n{n}She does. The question concerns a place you miss, and she listens long enough to ask a better second question. Her own answer is less tender: she misses the view from a balcony because she once enjoyed watching a rival discover that his procession had taken the wrong street.{/n}\n{n}The departure arrives during an argument about whether she arranged that mistake. She refuses to improve the story by answering too soon.{/n}\n\"Ask another time,\" she says. \"I may still refuse.\"\n{n}You say goodbye without turning the uncertainty into a pledge. She sends you away with a smile.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the slower, unpromised relationship.]",
+              "Next": null,
+              "Set": [
+                "vellexia.farewell_kept",
+                "vellexia.farewell_slow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "ending",
+          "Speaker": "Vellexia",
+          "Text": "{n}Her hand leaves the rim.{/n}\n\"I would prefer a different answer. I am not going to persuade you to give it merely because I would enjoy hearing it.\"\n\"I meant what I offered before.\"\n\"Then leave it true. We need not make every pleasant evening a mistake in order to stop having them.\"\n{n}She studies you for a moment longer.{/n}\n\"I do not want another call while I discover how much I resent this one. Keep your shell closed. If that changes, it will not change because you have found a more elegant explanation to send me.\"\n\"I will respect that.\"\n\"I expect you to.\"\n{n}She draws the cover toward her. Before it closes, she looks back once.{/n}\n\"I enjoyed the part you cannot give back. Remember that if you are tempted to become noble about having spared me something.\"\n{n}The glass clouds. No light follows it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Respect her answer and end the correspondence.]",
+              "Next": null,
+              "Set": [
+                "vellexia.farewell_kept",
+                "vellexia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.dismissed_native",
+        "vellexia.native_finished",
+        "vellexia.private_kept"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "inhuman"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "vellexia.ending_lovers",
+      "Title": "A light beneath the cover",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Vellexia remained a difficult correspondent. She sent invitations at inconvenient hours, complained when her own answer had been kept waiting, and sometimes declined a call because she preferred the company already in her room. The Commander could do the same. There were silences they chose and others that annoyed them enough to be discussed at the next meeting of their voices.{/n}\n{n}The echo shell carried affection as well as complaints. Vellexia discovered that the Commander remembered details she had included carelessly: an earring that caught in her hair, a singer's disputed passage, the name of someone she had hoped would feel suitably insulted. She pretended to regret having supplied such material and continued supplying it.{/n}\n{n}They remained lovers across an inconvenient distance. No body stepped through the little glass. The prospect of a physical visit still required a place, an invitation and an arrangement both would actually choose. In the meantime, there were evenings worth answering for. Vellexia did not become gentle toward the world to enjoy them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "vellexia.farewell_lovers"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "inhuman",
+        "ascended",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_friends",
+      "Title": "An argument worth continuing",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander and Vellexia continued their friendship through the echo shell. Some invitations concerned performances, some an insult too elaborate to enjoy without an audience, and some no subject she cared to admit had been an excuse to call.{/n}\n{n}She did not become a kinder patron through having acquired a friend. The Commander could disagree, refuse a request or close the cover. Sometimes Vellexia resented the answer. Sometimes she returned with a better question and an insistence that nobody call it an apology.{/n}\n{n}There was pleasure in being remembered accurately. When she misquoted the old play to improve an insult, the Commander corrected her. Her delighted indignation kept the conversation alive long after either had intended to retire.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "vellexia.farewell_friends"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "inhuman",
+        "ascended",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_slow",
+      "Title": "An answer still open",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Vellexia kept calling when she wanted the Commander's company. The slower answer remained what they had actually chosen. She was not entitled to turn it into a promise of romance, and the Commander did not ask her to wait faithfully for a desire that might never arrive.{/n}\n{n}There were other evenings in both their lives. The ones they spent speaking through the shell acquired jokes too old to explain to another listener and disagreements they returned to with suspicious enthusiasm. When Vellexia finally explained the procession and the wrong street, the Commander accused her of having delayed the best detail deliberately. She denied only that it had been the best.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "vellexia.farewell_slow"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "inhuman",
+        "ascended",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_interrupted",
+      "Title": "The last conversation",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The correspondence did not reach another settled farewell. Vellexia had offered a way to ask for her attention, and the Commander had learned how to use it. Neither could supply a later answer simply by remembering the earlier invitation.{/n}\n{n}The silver cover kept its small, familiar weight. What they had said before the silence remained part of their history, including any affection and promises they had actually chosen. No later meeting arrived to decide what should follow them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "vellexia.closed",
+        "inhuman",
+        "ascended",
+        "sacrifice",
+        "vellexia.farewell_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_closed",
+      "Title": "A cover left closed",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Their correspondence ended. Vellexia did not send a gentler version of her last answer, and the Commander did not keep requesting one. The shell remained a thing that could be closed.{/n}\n{n}She had enjoyed the company while she wanted it. The ending did not persuade her to despise every earlier pleasure. When a line from the old play reminded her of the Commander, she could laugh at the recollection and still decline to reopen the conversation.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "vellexia.closed"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_dead",
+      "Title": "The unanswered request",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Vellexia died. The shell could carry no answer from her. It had never contained the woman whose voice had used it.{/n}\n{n}The Commander remembered a presence larger and more troublesome than the little object: her appetite for novelty, the sudden pleasure of a remark that reached her, the cruelty she did not hide. Death did not make her harmless in retrospect. Nor did it erase the occasions on which she had freely wanted that particular company.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "vellexia.dead"
+      ],
+      "Forbids": [
+        "vellexia.mirrored"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_mirror",
+      "Title": "No voice borrowed from glass",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Vellexia had been transformed into a mirror. The echo shell did not release her from that fate, and the earlier invitation did not turn her transformation into something she had chosen.{/n}\n{n}There was no answering voice to make the silence comfortable. The Commander could remember the woman who had offered the shell. What it would take to restore her, and what she would say afterward, remained unanswered.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "vellexia.mirrored"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_coercion",
+      "Title": "The invitation cannot answer",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander's demonic domination of Vellexia changed the meaning of any later claim to her willingness. The earlier freely offered shell could not speak for the woman placed under that power.{/n}\n{n}The correspondence did not continue on the strength of frightened surrender. No account of their earlier pleasure supplied the answer that would have to be given without that threat. Whatever happened next remained outside the invitation they had once made.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "vellexia.native_coercion"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_hostility",
+      "Title": "The invitation overtaken",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Violence overtook the invitation Vellexia had made. The shell did not preserve a safe, unchanged hostess somewhere beyond the quarrel. An earlier pleasant hour was no guarantee that either could resume the conversation that followed it.{/n}\n{n}There was no new agreement between them. The recollection of her laughter remained exact and insufficient.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "RequiresAny": [
+        "vellexia.early_fight",
+        "vellexia.final_fight"
+      ]
+    },
+    {
+      "Id": "vellexia.ending_changed",
+      "Title": "Another kind of silence",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander changed beyond the life in which the echo pair had first been offered. The old arrangement did not furnish a new one for that altered existence. No familiar signal appeared merely because the shell still had its cover.{/n}\n{n}Vellexia had chosen particular conversations with a particular person. The memory could remain without claiming she had accepted every possible being that might follow them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "inhuman"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_ascent",
+      "Title": "A god is not an answer",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}When the Commander ascended, Vellexia wanted to hear the account twice. Then she asked a question the messenger could not answer and dismissed him before he attempted to invent something flattering.{/n}\n{n}She had known a voice that could request her attention through a small silver shell. A god might have other ways to call. That possibility did not make the next invitation hers to assume, or make an old agreement sufficient for an altered existence.{/n}\n{n}She kept the shell. Sometimes she resented its silence. Sometimes she was entertained by the thought of how much she would enjoy criticizing a divine entrance. No answer from the new power was recorded in the glass.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "ascended"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "inhuman",
+        "vellexia.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_sacrifice",
+      "Title": "What she wanted back",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander's sacrifice left Vellexia with news she could neither bargain against nor improve by refusing to hear. She dismissed a visitor who began praising the magnificence of the loss. Later she sent for him to finish the factual part of his account.{/n}\n{n}She wanted the person back. She was vain enough to resent having acquired a want that admiration could not satisfy, and honest enough in private to know what she missed. Any words they had actually spoken remained theirs. She added no unmade promise to them.{/n}\n{n}The shell stayed closed for a long time. When she finally opened it, she heard only the small sound of her nail against its rim. She closed it again before anyone entered the room.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known",
+        "sacrifice"
+      ],
+      "Forbids": [
+        "vellexia.dead",
+        "vellexia.mirrored",
+        "vellexia.native_coercion",
+        "vellexia.early_fight",
+        "vellexia.final_fight",
+        "inhuman",
+        "ascended",
+        "vellexia.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.ending_aeon",
+      "Title": "An invitation not made",
+      "Owner": "AeonEpilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}In the history remade without the Worldwound, the Commander did not travel the same road to Vellexia's rooms. The offered shell, the dispute over predictions and the private answers that might have followed had no unchanged place in that world.{/n}\n{n}Vellexia's appetites belonged to her own life. No memory of an erased visitor arrived to turn them into a promise she had never made.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "vellexia.prediction_known"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
       "Id": "konomi.another_evening",
       "Title": "An invitation after the promise",
       "Owner": "Konomi",
@@ -83637,7 +86725,7 @@
       "Title": "The unfinished likeness",
       "Description": "Vellexia has offered me a private wager about a portrait. Her interest is flattering, expensive, and unlikely to stay still.",
       "Objective": "Return to Vellexia's gallery",
-      "Guidance": "Speak to Vellexia in her manor before accepting her Battlebliss invitation. These optional visits need her living original manor actor during her initial manor window. The six parts have no required wait and can be played in one extended visit. Accepting Battlebliss pauses this interlude pending a later continuation; it does not erase progress. Her native dates remain separate.",
+      "Guidance": "Complete the gallery interlude and its two follow-up visits before accepting Vellexia's Battlebliss invitation. All eight visits take place in her manor without a required wait. After she offers the echo shell, complete her native dates and leave peacefully when she dismisses you. The correspondence can then continue at the Nexus, and later in Drezen after your return from the Abyss. Her native dates remain separate. The shell carries her voice and image; it does not bring her to you.",
       "StartedFlag": "vellexia.started",
       "ClosedFlag": "vellexia.closed",
       "CommittedFlag": "vellexia.committed",
@@ -83738,7 +86826,8 @@
     "ember.native_q3_complete": "49b7496143daed149ab4557a9684dd53"
   },
   "SelectedAnswers": {
-    "konomi.dismissed": "73c5728c4c6658344bedcc1b666e598c"
+    "konomi.dismissed": "73c5728c4c6658344bedcc1b666e598c",
+    "vellexia.native_coercion": "3aa48f68198afe14cb6de752ce80cc8f"
   },
   "CompletedEtudes": {
     "konomi.office_completed": "b5f301fbc4c44535a6309d610d5bd28a"
@@ -83787,6 +86876,15 @@
     ],
     "vellexia.arena_invited": [
       "746af280c4d1daa47afbb44c7f8b2eea"
+    ],
+    "vellexia.dismissed_native": [
+      "fa6db1b41f5394f4f8a23f09fc7061f7"
+    ],
+    "vellexia.coin_given": [
+      "ff7f743740d221b46860f3137299c3d2"
+    ],
+    "vellexia.mirrored": [
+      "42429350764f92140b293b24039b89ef"
     ],
     "aranka.ran_keep_final": [
       "a16f4be6de0a4f35a9b13eca4395d6e5",

@@ -238,6 +238,7 @@ namespace Tirabade
             {
                 var page = local[node.Id];
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
                 // Preserve saved terminal answer IDs while building authored ending branches normally.
                 if (ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                     && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
@@ -256,7 +257,6 @@ namespace Tirabade
                     var answer = New<BlueprintAnswer>("answer." + scene.Id + "." + node.Id + "." + i);
                     InitializeAnswer(answer);
                     answer.Text = Text(answer.name, choice.Text);
-                    var continuation = scene.ContactUnit == null ? null : scene;
                     answer.ShowConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
                     answer.SelectConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
                     answer.OnSelect = Actions(new RouteAction { Choice = choice, Continuation = continuation, Complete = !ending && choice.Next == null && choice.Check == null && !choice.Abort ? scene : null });
@@ -283,7 +283,7 @@ namespace Tirabade
                     }
                     page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
                 }
-                if (scene.ContactUnit != null)
+                if (continuation != null)
                 {
                     var leave = New<BlueprintAnswer>("answer." + scene.Id + "." + node.Id + ".contact_lost");
                     InitializeAnswer(leave);

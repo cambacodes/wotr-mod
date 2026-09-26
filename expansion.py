@@ -25,6 +25,7 @@ from storylines import anevia_independent, irabeth_independent, tirabade_indepen
 from storylines import arsinoe_campaign
 from storylines import gesmerha_campaign
 from storylines import ember_campaign
+from storylines import vellexia_campaign
 from storylines import tirabade_later, tirabade_campaign, seelah, seelah_later, seelah_fate, seelah_abyss, seelah_aftermath, konomi, konomi_history, konomi_private, konomi_distance, konomi_future, konomi_private_hearing, jerribeth, jerribeth_consequences, kiana, kiana_consequences, ember, ember_afternoons, soana_opening
 
 ROOT = Path(__file__).parent
@@ -146,10 +147,19 @@ def make_expansion(*, independent_tirabade=True):
     payload["Etudes"].update(gesmerha_opening.ETUDES)
     payload["CompletedQuests"].update(gesmerha_opening.COMPLETED_QUESTS)
     payload["Scenes"].extend(copy.deepcopy(vellexia_opening.SCENES))
-    payload["Relationships"]["vellexia"] = vellexia_opening.RELATIONSHIP
+    payload["Relationships"]["vellexia"] = copy.deepcopy(vellexia_opening.RELATIONSHIP)
     payload["Etudes"].update(vellexia_opening.ETUDES)
     payload["SeenCues"].update(vellexia_opening.SEEN_CUES)
     payload["CompletedQuests"].update(vellexia_opening.COMPLETED_QUESTS)
+    payload["Scenes"].extend(copy.deepcopy(vellexia_campaign.SCENES))
+    vellexia_campaign.integrate(payload)
+    payload["Relationships"]["vellexia"]["Guidance"] = (
+        "Complete the gallery interlude and its two follow-up visits before accepting Vellexia's Battlebliss invitation. "
+        "All eight visits take place in her manor without a required wait. "
+        "After she offers the echo shell, complete her native dates and leave peacefully when she dismisses you. "
+        "The correspondence can then continue at the Nexus, and later in Drezen after your return from the Abyss. "
+        "Her native dates remain separate. The shell carries her voice and image; it does not bring her to you."
+    )
     payload["Scenes"].extend(copy.deepcopy(konomi_ordinary_expansion.SCENES))
     konomi_ordinary_expansion.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(aivu_opening.SCENES))
