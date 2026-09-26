@@ -7,7 +7,7 @@ DREZEN = "2570015799edf594daf2f076f2f975d8"
 
 def s(id, title, nodes, requires=(), delay=24):
     for node in nodes:
-        node["Portrait"] = "Konomi"
+        node["Portrait"] = "KonomiPrivateEvening" if id == "before_road" and node["Id"] == "start" else "Konomi"
     SCENES.append(scene("konomi." + id, title, "Konomi", 3, "", nodes,
                         Relationship="konomi", Remote=True, Areas=[DREZEN], Chapters=[3, 5],
                         requires=("konomi.dismissed", "konomi.office_completed", "konomi.reconnection_open", *requires),
