@@ -110,6 +110,12 @@ internal static class Program
     {
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        if (args.Contains("--prerequisite-groups"))
+        {
+            PrerequisiteGroupsTests.Run(Check);
+            Console.WriteLine($"PASS: {checks} prerequisite group assertions.");
+            return;
+        }
         if (args.Contains("--bindings"))
         {
             var bindings = story.Scenes.SelectMany(s => Rules.EntryTargets(s).Select(guid => new { Guid = guid, ExpectedType = "BlueprintAnswersList", Source = s.Id }))
@@ -142,6 +148,7 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
+        PrerequisiteGroupsTests.Run(Check);
         foreach (var recovery in story.Scenes.Where(s => s.Recovery != null))
         {
             var revival = story.Revivals[recovery.Recovery!];
@@ -171,7 +178,7 @@ internal static class Program
             .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman" }));
         foreach (var scene in story.Scenes)
         {
-            foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
+            foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
                 Check(known.Contains(flag), "Unknown condition " + flag + " in " + scene.Id);
             foreach (var node in scene.Nodes)
                 Check(node.Text.Count(c => c == '\u2014') == 0, "Em dash in " + scene.Id + "/" + node.Id);
@@ -315,6 +322,7 @@ internal static class Program
             if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
             state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
             if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
+            foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
             if (scene.Relationship == "soana") state.Flags.Add("soana.fox_waited");
             if (scene.Id.StartsWith("jerribeth.counterfeit_", StringComparison.Ordinal))
                 state.Flags.UnionWith(new[] { "jerribeth.counter_cache_intact", "jerribeth.counter_clerk_witness", "jerribeth.counter_return_agreement", "jerribeth.counter_public_account" });

@@ -71,6 +71,7 @@ namespace Tirabade
         public bool Optional;
         public string[] Requires = Array.Empty<string>();
         public string[] RequiresAny = Array.Empty<string>();
+        public string[][] RequiresAnyGroups = Array.Empty<string[]>();
         public string[] Forbids = Array.Empty<string>();
         public Dictionary<string, string> ForbidOverrides = new Dictionary<string, string>();
         public List<Node> Nodes = new List<Node>();
@@ -136,6 +137,7 @@ namespace Tirabade
             if (!scene.Requires.All(state.Has) || scene.Forbids.Any(flag => state.Has(flag)
                 && (!scene.ForbidOverrides.TryGetValue(flag, out var overrideFlag) || !state.Has(overrideFlag)))) return false;
             if (scene.RequiresAny.Length > 0 && !scene.RequiresAny.Any(state.Has)) return false;
+            if (!scene.RequiresAnyGroups.All(group => group.Any(state.Has))) return false;
             if (!ContactAvailable(story, scene, state)) return false;
             if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return true;
             var relationship = story.Relationships[scene.Relationship];
@@ -147,7 +149,8 @@ namespace Tirabade
                 if (!IsRemote(scene) && state.Chapter == 4) return false;
                 if (scene.Owner == "Together" && state.Chapter >= 5 && (state.Has("irabeth_away") || state.Has("anevia_away"))) return false;
             }
-            int last = scene.Requires.Where(state.Times.ContainsKey).Select(k => state.Times[k]).DefaultIfEmpty(state.Hour - scene.DelayHours).Max();
+            int last = scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(group => group).Where(state.Has))
+                .Where(state.Times.ContainsKey).Select(k => state.Times[k]).DefaultIfEmpty(state.Hour - scene.DelayHours).Max();
             return state.Hour - last >= scene.DelayHours;
         }
 
@@ -165,7 +168,8 @@ namespace Tirabade
                 && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && state.Has(flag))
                 && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag && state.Has(flag))
                 && (recovery == null || state.Has("revive." + scene.Recovery + ".available"))
-                && (scene.RequiresAny.Length == 0 || scene.RequiresAny.Any(state.Has));
+                && (scene.RequiresAny.Length == 0 || scene.RequiresAny.Any(state.Has))
+                && scene.RequiresAnyGroups.All(group => group.Any(state.Has));
         }
 
         private static bool IsNativeFlag(Story story, string flag) => story.Etudes.ContainsKey(flag)
@@ -264,6 +268,9 @@ namespace Tirabade
                     throw new InvalidOperationException("Invalid additional native contact units: " + scene.Id);
                 if (scene.RequiresAny.Any(string.IsNullOrWhiteSpace) || scene.RequiresAny.Distinct().Count() != scene.RequiresAny.Length)
                     throw new InvalidOperationException("Invalid alternative prerequisites: " + scene.Id);
+                if (scene.RequiresAnyGroups == null || scene.RequiresAnyGroups.Any(group => group == null
+                    || group.Length == 0 || group.Any(string.IsNullOrWhiteSpace) || group.Distinct().Count() != group.Length))
+                    throw new InvalidOperationException("Invalid prerequisite groups: " + scene.Id);
                 if (scene.Recovery != null && (!story.Revivals.TryGetValue(scene.Recovery, out var revival)
                     || revival.Relationship != scene.Relationship || !IsRemote(scene)))
                     throw new InvalidOperationException("Invalid recovery scene: " + scene.Id);

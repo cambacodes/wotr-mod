@@ -18,6 +18,7 @@ def allowed(item, flags):
     overrides = item.get("ForbidOverrides", {})
     return (all(x in flags for x in item.get("Requires", []))
             and (not item.get("RequiresAny") or any(x in flags for x in item["RequiresAny"]))
+            and all(any(x in flags for x in group) for group in item.get("RequiresAnyGroups", []))
             and not any(x in flags and overrides.get(x) not in flags for x in item.get("Forbids", [])))
 
 
@@ -52,6 +53,7 @@ def relevant(scenes):
             for name in ("Requires", "Forbids", "RequiresAny"):
                 keys.update(item.get(name, []))
             keys.update(item.get("ForbidOverrides", {}).values())
+            keys.update(x for group in item.get("RequiresAnyGroups", []) for x in group)
     return keys | {"konomi.closed", "konomi.committed", "konomi.private_future"}
 
 

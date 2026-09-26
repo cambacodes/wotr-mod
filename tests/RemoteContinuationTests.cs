@@ -17,6 +17,7 @@ internal static class RemoteContinuationTests
             };
             state.Flags.UnionWith(scene.Requires);
             if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
+            foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
             if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
             state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
