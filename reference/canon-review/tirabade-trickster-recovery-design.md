@@ -244,3 +244,7 @@ Do not disable this native quest behavior or rewrite its historical result to su
 
 Before implementing the invitation position, inspect native conflict selection and activation/deactivation behavior, then define how a pending native scene preempts the meeting and how the same actor is reobserved afterward.
 The current evidence does not yet approve an etude priority, a new meeting locator, a hiding override, or a recovery caller.
+
+The subsequent `tirabade-meeting-position-contract.md` records the inspected native selection and trigger lifecycle and a concrete first retained-living-Irabeth meeting contract.
+It distinguishes the ordinary departure hide from the queen expedition and requires pending native events to preempt the proposed meeting regardless of their priority.
+The independent lifecycle replay audit remains separate from implementation approval.

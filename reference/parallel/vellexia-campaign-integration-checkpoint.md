@@ -46,6 +46,8 @@ The tested DLL SHA256 is `6ADEDEE3CA9085D8C98DF8191C764BCDDD169EB18277635E5AA5D8
 The first combined managed invocation failed while parsing the Python native-reader stdin, before archive extraction.
 An identical sequential invocation passed; the failure remains an observed transient with cause under investigation, not a proven concurrency defect or a silently discarded result.
 Both invocations explicitly used the same Python interpreter path.
+The subsequent [bounded investigation](native-reader-pipe-investigation.md) passed eight isolated native-reader pipe attempts and left the cause undetermined.
+The parse error establishes invalid initial JSON input, not necessarily an empty byte stream.
 
 These checks construct real managed blueprint objects but do not prove Unity presentation, parent-mod initialization, actual ToyBox execution or game save/load.
 The installed addon's Story SHA256 remains `3176BB0102324BAB5BAF664D6956D5DEB3A4FB638029789D74F0EFCDF73DC6D4`.
