@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\arsinoe-campaign-review.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\gesmerha-campaign-review.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 787,
-  "unique_targets": 143,
+  "binding_uses": 807,
+  "unique_targets": 147,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -166,6 +166,18 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0036.jbp",
       "type": "BlueprintCue"
     },
+    "fb3a88e8ed751214c9136f87891ec07b": {
+      "path": "World/Dialogs/c5/KTC_WintersunHelp/AnswersList_0027.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "64388ef1f915e8c4991848f511408fa9": {
+      "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0015.jbp",
+      "type": "BlueprintCue"
+    },
+    "164cf168d833c3f4ba458f72df62bda0": {
+      "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0037.jbp",
+      "type": "BlueprintCue"
+    },
     "417fa384f3250634bb71859fbc913453": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -216,6 +228,10 @@
     },
     "5b01aa690202e584888dfc600a4aac0a": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
+      "type": "BlueprintEtude"
+    },
+    "89d57f73e41040f0ab527d6e83478a64": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_WintersunHelp_BlindCarver.jbp",
       "type": "BlueprintEtude"
     },
     "c6e9a69f602a48e18424f4b6d71062b4": {

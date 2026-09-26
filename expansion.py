@@ -23,6 +23,7 @@ from storylines import aranka_continuation
 from storylines import konomi_contact, konomi_political_consequence
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
+from storylines import gesmerha_campaign
 from storylines import tirabade_later, tirabade_campaign, seelah, seelah_later, seelah_fate, seelah_abyss, seelah_aftermath, konomi, konomi_history, konomi_private, konomi_distance, konomi_future, konomi_private_hearing, jerribeth, jerribeth_consequences, kiana, kiana_consequences, ember, ember_afternoons, soana_opening
 
 ROOT = Path(__file__).parent
@@ -183,6 +184,8 @@ def make_expansion(*, independent_tirabade=True):
         irabeth_independent.integrate(payload)
         tirabade_independent_bridge.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(arsinoe_campaign.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(gesmerha_campaign.SCENES))
+    gesmerha_campaign.integrate(payload)
     return payload
 
 

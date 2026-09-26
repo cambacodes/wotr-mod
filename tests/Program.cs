@@ -283,6 +283,11 @@ internal static class Program
             ArsinoeAssembledTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
+        if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
+        {
+            GesmerhaCampaignTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "gesmerha").Select(s => s.Id));
+        }
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
