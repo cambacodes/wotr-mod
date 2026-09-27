@@ -190,6 +190,7 @@ internal static class Program
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
         if (hasParentEndingRules) ParentEndingIntegrationTests.Run(story, Check);
+        EndingDeliveryTests.Run(story, Id, Check);
         var contacts = (Dictionary<string, BlueprintUnit>)main.GetField("contactUnits", PrivateStatic)!.GetValue(null)!;
         var expectedContacts = story.Scenes.Where(s => s.ContactUnit != null)
             .SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct().ToArray();
@@ -281,6 +282,7 @@ internal static class Program
                 Check(page != null, "Missing page: " + nodeId);
                 Check(page!.Cues.Count == 1 && page.Cues[0].Get() is BlueprintCue, "Missing page cue: " + nodeId);
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+                Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
                 bool plainEnding = ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                     && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
@@ -346,7 +348,7 @@ internal static class Program
         Console.WriteLine($"PASS: {checks} assertions; real Main.Build, {story.Scenes.Count} scenes, {registered.Count} generated blueprints, {targetIds.Length} native answer lists, 1 native Aeon sequence and 1 parent-mod sentinel sequence, idempotence.");
         Console.WriteLine("DLL SHA256 " + Hash(typeof(Tirabade.Main).Assembly.Location));
         Console.WriteLine("Story SHA256 " + Hash(storyPath));
-        Console.WriteLine("Scope: real managed blueprint construction; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. No parent-mod initialization, Unity runtime, condition evaluation, portraits, ToyBox execution or game save round trip.");
+        Console.WriteLine("Scope: real managed blueprint construction and native ending seen-state checks; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. Ending probes bypass route eligibility, Unity page rendering and debug logging. No parent-mod initialization, full campaign condition evaluation, portraits, ToyBox execution or game save round trip.");
         return 0;
     }
 }

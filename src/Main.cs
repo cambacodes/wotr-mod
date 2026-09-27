@@ -238,6 +238,7 @@ namespace Tirabade
             {
                 string id = scene.Id + "." + node.Id;
                 var page = New<BlueprintBookPage>("page." + id);
+                page.ShowOnce = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
                 page.OnShow = Actions();
                 page.Title = Text("title." + id, scene.Title);

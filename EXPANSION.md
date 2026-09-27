@@ -76,6 +76,9 @@ Her revised general portrait preserves the native exposed-skin costume pattern a
 The integrated export passed 27,527,067 Rules assertions, 1,139 binding uses, and 74,817 managed construction assertions with the existing reviewed addon DLL.
 See [the 612-scene checkpoint](reference/parallel/expansion-612-shared-verification.md) for exact hashes and remaining approval boundaries.
 Nocticula's new acquisition, recovery and universal Trickster access remain unfinished.
+The subsequent [native ending-history correction](reference/parallel/ending-native-history-handoff.md) reproduces and fixes replay through the game's global seen-page policy.
+It passed independent old/new-code review, all 248 ending-page checks, and 79,911 assertions in the full managed runner.
+Conditional Expanded Epilogue attachment and a real save round trip remain separate requirements.
 The [585-scene shared verification](reference/parallel/expansion-585-shared-verification.md) records the exact export, assembly, completed headless checks and remaining runtime boundaries.
 The latest [Vellexia integration checkpoint](reference/parallel/vellexia-campaign-integration-checkpoint.md) records the assembled export, remote-conversation repair, verification and remaining character work.
 Vellexia now has thirty entries with an independently reviewed ordinary correspondence campaign.
