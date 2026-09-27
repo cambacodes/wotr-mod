@@ -14,6 +14,8 @@ namespace Tirabade
         public Dictionary<string, string> StartedDialogs = new Dictionary<string, string>();
         public Dictionary<string, string> CompletedEtudes = new Dictionary<string, string>();
         public Dictionary<string, Revival> Revivals = new Dictionary<string, Revival>();
+        public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
+        public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
         public string[] PermanentEtudes = Array.Empty<string>();
         public Dictionary<string, Relationship> Relationships = new Dictionary<string, Relationship>
         {
@@ -29,6 +31,34 @@ namespace Tirabade
             }
         };
     }
+
+    public class ParentEndingText
+    {
+        public string LocalizedKey = "";
+        public string? Text;
+    }
+
+    public sealed class ParentEndingEdit : ParentEndingText
+    {
+        public string ParentKey = "";
+        public string Owner = "";
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+    }
+
+    public sealed class ParentEndingLossRule
+    {
+        public string Id = "";
+        public string Owner = "";
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public string[] ReplacementScenes = Array.Empty<string>();
+        public string[] SuppressPages = Array.Empty<string>();
+        public string[] SuppressCues = Array.Empty<string>();
+        public Dictionary<string, ParentEndingText> SurvivorAlternates = new Dictionary<string, ParentEndingText>();
+    }
+
+    public enum ParentEndingSelection { Original, Suppress, Ordinary, Survivor }
 
     public sealed class Revival
     {
@@ -129,6 +159,33 @@ namespace Tirabade
 
         public static bool Match(IEnumerable<string> requires, IEnumerable<string> forbids, Snapshot state) =>
             requires.All(state.Has) && !forbids.Any(state.Has);
+
+        // These gates add earned story policy; the native page and cue checkers still decide eligibility.
+        public static ParentEndingLossRule? ParentEndingLoss(Story story, string owner, Snapshot state) =>
+            story.ParentEpilogueLossRules.Where(rule => rule.Owner == owner && Match(rule.Requires, rule.Forbids, state)
+                && rule.ReplacementScenes.Any(id => story.Scenes.Any(scene => scene.Id == id && scene.Owner == owner
+                    && (state.Has(id) || Available(story, scene, state))))).SingleOrDefault();
+
+        public static bool ParentEndingPageSuppressed(Story story, string page, string owner, Snapshot state) =>
+            ParentEndingLoss(story, owner, state)?.SuppressPages.Contains(page) == true;
+
+        public static ParentEndingSelection ParentEndingCue(Story story, string page, string cue, string owner,
+            Snapshot state, out ParentEndingText? alternate)
+        {
+            alternate = null;
+            var loss = ParentEndingLoss(story, owner, state);
+            if (loss != null)
+            {
+                if (loss.SuppressPages.Contains(page)) return ParentEndingSelection.Suppress;
+                if (loss.SurvivorAlternates.TryGetValue(cue, out alternate)) return ParentEndingSelection.Survivor;
+                if (loss.SuppressCues.Contains(cue)) return ParentEndingSelection.Suppress;
+            }
+            if (!story.ParentEpilogueEdits.TryGetValue(cue, out var edit) || edit.Owner != owner
+                || !Match(edit.Requires, edit.Forbids, state)) return ParentEndingSelection.Original;
+            if (edit.Text == null) return ParentEndingSelection.Suppress;
+            alternate = edit;
+            return ParentEndingSelection.Ordinary;
+        }
 
         public static bool Available(Story story, Scene scene, Snapshot state)
         {
@@ -344,6 +401,97 @@ namespace Tirabade
                 }
                 if (reached.Count != nodes.Count) throw new InvalidOperationException("Unreachable node in " + scene.Id);
             }
+            ValidateParentEndings(story, authoredFlags, derivedFlags);
+        }
+
+        private static void ValidateParentEndings(Story story, HashSet<string> authored, HashSet<string> derived)
+        {
+            if (story.ParentEpilogueEdits == null || story.ParentEpilogueLossRules == null)
+                throw new InvalidOperationException("Parent ending collections cannot be null.");
+            if (story.ParentEpilogueEdits.Count == 0 && story.ParentEpilogueLossRules.Count == 0) return;
+            var deaths = new Dictionary<string, string> {
+                ["minagho.dead"] = "3b8c0801d5e9a694b848ee13564d2ad7", ["chivarro.dead"] = "fd2ab9b67ce3e284184b1894c82c6c5d" };
+            var nativeKeys = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys)
+                .Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).ToArray();
+            var nativeBindings = story.Etudes.Concat(story.CompletedEtudes).Concat(story.CompletedQuests)
+                .Concat(story.SelectedAnswers).Concat(story.StartedDialogs)
+                .Concat(story.SeenCues.SelectMany(pair => pair.Value.Select(id => new KeyValuePair<string, string>(pair.Key, id))))
+                .ToLookup(pair => pair.Key, pair => pair.Value);
+            var known = new HashSet<string>(authored.Concat(derived).Concat(nativeKeys));
+            foreach (string earned in new[] { "minachiv.invitation_kept", "minachiv.arrival_kept" })
+                if (!authored.Contains(earned) || nativeKeys.Contains(earned) || derived.Contains(earned))
+                    throw new InvalidOperationException("Parent endings require authored relationship evidence: " + earned);
+            bool GuidValid(string value) => Guid.TryParseExact(value, "N", out var guid) && guid != Guid.Empty && value == guid.ToString("N");
+            bool NamesValid(string[]? values) => values != null && !values.Any(string.IsNullOrWhiteSpace)
+                && values.Distinct(StringComparer.Ordinal).Count() == values.Length;
+            bool TargetsValid(string[]? values) => NamesValid(values) && values!.All(GuidValid);
+            foreach (var death in deaths)
+                if (!story.Etudes.TryGetValue(death.Key, out var guid) || guid != death.Value || authored.Contains(death.Key)
+                    || nativeKeys.Count(key => key == death.Key) != 1)
+                    throw new InvalidOperationException("Parent endings require the exact native death observation: " + death.Key);
+            void Gate(string owner, string[] requires, string[] forbids)
+            {
+                if (owner != "Epilogue" || !NamesValid(requires) || !NamesValid(forbids)
+                    || requires.Intersect(forbids).Any() || requires.Concat(forbids).Any(flag => !known.Contains(flag)
+                        || nativeBindings[flag].Any(id => !GuidValid(id)) || nativeKeys.Count(key => key == flag) > 1
+                        || authored.Contains(flag) && nativeKeys.Contains(flag)))
+                    throw new InvalidOperationException("Invalid parent ending owner or flag aliases.");
+            }
+            var privateKeys = new HashSet<string>(StringComparer.Ordinal);
+            var parentKeys = new HashSet<string>(story.ParentEpilogueEdits.Values.Where(edit => edit != null).Select(edit => edit.ParentKey));
+            void Text(ParentEndingText value, string expectedKey, bool suppressible)
+            {
+                if (value == null || value.LocalizedKey != expectedKey || parentKeys.Contains(value.LocalizedKey)
+                    || !privateKeys.Add(value.LocalizedKey) || (value.Text == null ? !suppressible : string.IsNullOrWhiteSpace(value.Text)))
+                    throw new InvalidOperationException("Parent ending alternate needs unique private localization and valid text.");
+            }
+            var reunions = new[] { "c47829fba057400c8e0279990be3d25e", "8399dbc5987b462594b2b4168764e269", "5787f92575364c1459df8f075676c2db" };
+            foreach (var pair in story.ParentEpilogueEdits)
+            {
+                var edit = pair.Value;
+                if (!GuidValid(pair.Key) || edit == null || string.IsNullOrWhiteSpace(edit.ParentKey))
+                    throw new InvalidOperationException("Invalid parent cue identity or original text key.");
+                Gate(edit.Owner, edit.Requires, edit.Forbids);
+                if (!deaths.Keys.All(edit.Forbids.Contains)
+                    || !edit.Requires.Contains(reunions.Contains(pair.Key) ? "minachiv.arrival_kept" : "minachiv.invitation_kept"))
+                    throw new InvalidOperationException("Ordinary parent edit lacks earned living-history scope: " + pair.Key);
+                Text(edit, "Tirabade.Minachiv.ParentEnding." + pair.Key, true);
+            }
+            var ids = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var rule in story.ParentEpilogueLossRules)
+            {
+                if (rule == null || string.IsNullOrWhiteSpace(rule.Id) || !ids.Add(rule.Id))
+                    throw new InvalidOperationException("Empty or duplicate parent loss rule.");
+                Gate(rule.Owner, rule.Requires, rule.Forbids);
+                if (!rule.Requires.Contains("minachiv.invitation_kept") || !deaths.Keys.Any(rule.Requires.Contains)
+                    || !deaths.Keys.All(flag => rule.Requires.Contains(flag) || rule.Forbids.Contains(flag))
+                    || !NamesValid(rule.ReplacementScenes) || rule.ReplacementScenes.Length == 0
+                    || !TargetsValid(rule.SuppressPages) || !TargetsValid(rule.SuppressCues)
+                    || rule.SuppressPages.Intersect(rule.SuppressCues).Any() || rule.SuppressPages.Length + rule.SuppressCues.Length == 0
+                    || rule.SurvivorAlternates == null)
+                    throw new InvalidOperationException("Invalid parent loss evidence or suppression targets: " + rule.Id);
+                foreach (string id in rule.ReplacementScenes)
+                {
+                    var scene = story.Scenes.SingleOrDefault(item => item.Id == id);
+                    if (scene == null || scene.Owner != rule.Owner || scene.Relationship != "minagho_chivarro"
+                        || !deaths.Keys.Where(rule.Requires.Contains).All(scene.Requires.Contains)
+                        || !deaths.Keys.Where(rule.Forbids.Contains).All(scene.Forbids.Contains))
+                        throw new InvalidOperationException("Missing or incompatible parent loss replacement: " + id);
+                }
+                foreach (var pair in rule.SurvivorAlternates)
+                {
+                    if (!GuidValid(pair.Key) || !rule.SuppressCues.Contains(pair.Key) || deaths.Keys.Count(rule.Requires.Contains) != 1)
+                        throw new InvalidOperationException("Survivor alternate must replace a suppressed cue with one living woman: " + pair.Key);
+                    Text(pair.Value, "Tirabade.Minachiv.Survivor." + pair.Key, false);
+                }
+            }
+            for (int i = 0; i < story.ParentEpilogueLossRules.Count; i++)
+                foreach (var other in story.ParentEpilogueLossRules.Skip(i + 1))
+                {
+                    var rule = story.ParentEpilogueLossRules[i];
+                    if (rule.Owner == other.Owner && !rule.Requires.Intersect(other.Forbids).Any() && !other.Requires.Intersect(rule.Forbids).Any())
+                        throw new InvalidOperationException("Overlapping parent loss rules: " + rule.Id + "/" + other.Id);
+                }
         }
     }
 }
