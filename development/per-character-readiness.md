@@ -1,5 +1,17 @@
 # Per-character readiness audit
 
+## Current status, 2026-09-27
+
+The detailed inventory below is an earlier checkpoint and is not the current scene count or word inventory.
+
+The latest [roster readiness audit](../reference/parallel/current-roster-readiness-audit.md) checks the 612-scene export and all 37 planned characters against the current acceptance gates.
+
+That audit finds authored material for 15 adult characters plus the two official friendship characters, with no route yet approved against the full standard.
+
+Nurah's unexported continuation now passes its exact-source independent literary review at 27,069 distinct new words, with all scoped scores above 90; her runtime interaction, export, art mapping and in-game checks remain open.
+
+The route still requires at least 21,000 meaningful words attributable to each woman, 42,000 for the Anevia-Irabeth relationship, a substantial reachable playthrough, independent scores above 90 in every required dimension, reviewed art, bespoke Trickster access and recovery, concurrency checks, and runtime evidence.
+
 This audit applies the user's full-route requirement retroactively to all earlier work, including the original Tirabade addon.
 No route is exempt because it was previously installed, called complete under an older scope, or received a high passage-review score.
 The current expansion has no character approved against the complete revised requirement.

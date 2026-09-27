@@ -64,11 +64,11 @@ The other 20 are Nurah, Terendelev, Arueshalae, Camellia, Wenduag, Galfrey, Aree
 
 “Not in the export” does not mean no research or draft exists.
 
-Nurah has an unexported continuation manuscript in active revision: the current source file is `storylines/nurah_continuation.py`, SHA256 `4927D41B97A691BFE30726BA28D7E5C42556104A0A580706F090DB2C1C0CAF23`.
+Nurah has an unexported continuation manuscript frozen at SHA256 `4927D41B97A691BFE30726BA28D7E5C42556104A0A580706F090DB2C1C0CAF23`.
 
-The latest literary rereview covers an earlier freeze, SHA256 `0FD50C841A5733096FBF2C3FA843DDBD34F41DBCD06CDF36E7D66F6CD1F0513B`, and withholds approval for a cross-branch publication conflict.
+The independent literary rereview SHA256 `197F6CCE2D5E6FE4B04A96D6C4E856D0EAD6CC4188B12D1D0BB8FD127D710A42` now approves that exact source within its scope, with every required score strictly above 90, 27,069 distinct new words, and 240 review checks across 33 paths.
 
-Because the current source hash differs, that score and verdict cannot be transferred to the present revision.
+This clears the manuscript writing gate only; native interaction, story export, runtime integration, art mapping, headless integration and in-game route approval remain open.
 
 Terendelev has research and a reviewed but unregistered delivery service; the real caller, actor delivery, full continuation and route review remain open.
 
@@ -84,7 +84,7 @@ Existing reviews are revision-specific and often cover one scene, one branch, or
 
 For example, Nocticula's integrated manuscript has a third independent review in the 91-95 range, but its integration report explicitly leaves acquisition, recovery, alternate Expanded Epilogue delivery, live presentation and complete-route approval open.
 
-Nurah's most recent reviewed snapshot failed the strict all-dimensions-above-90 requirement, and the current file no longer matches that snapshot.
+Nurah's exact current manuscript now passes the scoped independent literary review; the route remains incomplete because its runtime integration and other release gates are open.
 
 The art tree contains staged portraits and several reviewed candidates, but it does not establish a reviewed, correctly mapped, in-game-verified art set for every roster route.
 
