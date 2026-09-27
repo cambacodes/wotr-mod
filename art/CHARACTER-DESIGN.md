@@ -18,6 +18,9 @@ Visual rejuvenation does not rewrite canonical chronology, relationships or pers
 For Soana, preserve her adult dwarf identity, silver hair, blue markings, practical forest setting and established history while avoiding the heavily aged treatment previously requested.
 Subtle imperfections that strengthen her likeness are welcome; flawless skin is not a requirement.
 The earlier reviewer requirement for visibly elderly facial anatomy no longer governs her visual acceptance.
+The user subsequently rejected Soana-v10 specifically for its old, jagged and wrinkled face.
+Soana revisions must visibly soften severe facial contours and prominent age lines while preserving her silver hair, brown eyes, blue markings and sturdy adult dwarf proportions.
+Review the delivered face for conventional attractiveness; retention of character traits does not excuse repeating the rejected aged treatment.
 For Jerribeth, preserve her recognizable demonic palette, crest and wing or appendage cues, but humanize the face and mouth instead of making the native insectile face or long proboscis mandatory.
 The recently generated native-form Jerribeth-v2 is therefore a reference iteration, not the final target under this revised brief.
 
