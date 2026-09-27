@@ -251,7 +251,8 @@ namespace Tirabade
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available"
             || flag == "konomi.return_correspondence_available"
-            || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived";
+            || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
+            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived";
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
@@ -301,11 +302,13 @@ namespace Tirabade
                 .Concat(relationshipFlags));
             var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
                 "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available",
-                "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived" }
+                "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
+                "nurah.correspondence_available", "nurah.meeting_arrived" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available",
-                "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived" });
+                "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
+                "nurah.correspondence_available", "nurah.meeting_arrived" });
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")

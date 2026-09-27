@@ -110,6 +110,7 @@ internal static class Program
     {
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        NurahContactEvidenceTests.Run(Check);
         if (args.Contains("--prerequisite-groups"))
         {
             PrerequisiteGroupsTests.Run(Check);
