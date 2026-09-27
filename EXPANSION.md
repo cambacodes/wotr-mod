@@ -26,7 +26,16 @@ Writing will use mature themes, romantic tension, and non-graphic intimacy.
 Relationships need not be healthy, redemptive or morally good.
 Preserve character-appropriate ambition, manipulation, jealousy as characterization, betrayal and destructive choices, while respecting the requested ToyBox behavior rather than enforcing automatic romantic exclusivity.
 Reviewers must assess whether such behavior fits the character and follows from the player's choices, not require every relationship to become supportive or therapeutic.
+Character fidelity and consequential gameplay are hard acceptance constraints for every character and route, including existing manuscripts, individual branches, group relationships, recovery arcs and endings.
+Earlier contribution approval does not exempt assembled content from this gate.
+Reject manufactured agreeableness that makes a romance or quest solution possible by weakening a character's motives, intelligence, hostility or ambition.
+Earned interest must survive believable disagreement and counterplay; clever dialogue alone must not guarantee affection or erase the consequences of the Commander's conduct.
 Mythic and alignment responses should produce concrete quest, trust, access or ending consequences where the story warrants them.
+Review good and evil choices for distinct character reactions and later consequences, and distinguish implemented changes to the game world from dialogue that merely describes a consequence.
+The work must read and play as an expansion of Wrath: preserve recognizable characterization, integrate existing quests and relationship histories, and implement the triggers, checks, costs and consequences promised by its scenes.
+Authored alternate developments must earn changes in trust or desire through the campaign rather than silently replacing the character's personality.
+Trickster's universal access requires at least one credible, earnable route for each eligible adult partner; it does not mean every tactic succeeds, every answer pleases her, or every consequence vanishes.
+Independent reviewers must block acceptance when character fidelity or promised gameplay fails, even if word counts or other scores pass.
 An evil branch is not a substitute for resolving a candidate's identity and relationship premise.
 Adult romance artwork follows the user's latest [humanized character-design brief](art/CHARACTER-DESIGN.md): attractive humanized redesigns retaining recognizable native identity, racial traits and useful imperfections.
 This supersedes earlier visual requirements for wrinkles or exact monstrous facial anatomy without rewriting character history.

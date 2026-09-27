@@ -7,6 +7,14 @@ This roster uses local game text, blueprint references and installed-mod evidenc
 
 ## Path and content requirements
 
+Character fidelity and consequential gameplay are hard acceptance constraints for every listed character and every route, including existing work, alternate branches, group relationships, recovery and endings.
+The expansion must preserve recognizable motives, intelligence, agency, conflicts and moral differences; a character cannot become agreeable merely to permit romance or solve a scene.
+Changes in trust and desire must follow earned situations and sustained development.
+Good and evil Commander choices must have distinct, character-consistent reactions and consequences where appropriate.
+When a scene promises a quest, resource, access, survival or ending consequence, the implementation and verification must establish that consequence rather than relying on dialogue alone.
+Reviewers must reject failures of these constraints regardless of word count or an average review score.
+Apply the same gate retrospectively to already written routes; prior scoped approval does not substitute for assembled-route review.
+
 Every eligible adult romance character needs a bespoke, attainable Trickster route.
 Ember and Aivu are official full-content friendship and companion routes, with equally substantial arcs, choices, art, introductions, endings and verification.
 Their themes differ from the adult romances, but their eventual quality and content requirements remain equal.
