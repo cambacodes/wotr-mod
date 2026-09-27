@@ -55,7 +55,8 @@ def norm_scene(s):
              AfterDeparture=None, ContactUnit=None, AdditionalContactUnits=[], MinChapter=1, MaxChapter=5,
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
              ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None,
-             EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None, ReturnToList=False, ReturnText=None)
+             EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None, ReturnToList=False, ReturnText=None,
+             ContinueBefore=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", ""); n.setdefault("Paragraphs", [])
@@ -82,7 +83,7 @@ def is_nurah_hub(s):
 
 
 def entry_targets(s):
-    if is_remote(s) or is_epilogue(s): return []
+    if is_remote(s) or is_epilogue(s) or s.get("ContinueBefore"): return []
     if s["InteractionHub"] is not None:
         if is_nurah_hub(s): return []
         raise ValueError("Unrecognized authored interaction hub: " + s["Id"])
@@ -539,6 +540,9 @@ def build_names(model):
         suf = "" if rid == "tirabade" else "." + rid
         names += [("quest" + suf, "BlueprintQuest"), ("objective" + suf, "BlueprintQuestObjective")]
     for s in scenes:
+        if s["ContinueBefore"]:   # E14e: one registered line (Main.BuildContinueBefore)
+            names.append(("cue.%s.continue" % s["Id"], "BlueprintCue"))
+            continue
         if s["ReturnToList"]:   # E14b: one inline graph per list (Main.BuildReturnToList)
             for lst in s["AnswerLists"]:
                 pre = s["Id"] + "." + lst
@@ -572,7 +576,7 @@ def build_names(model):
         names += [("answer.nurah.arrival_hub." + s["Id"], "BlueprintAnswer") for s in scenes if is_nurah_hub(s)]
         names += [("answer.nurah.arrival_hub.leave", "BlueprintAnswer"), ("dialog.nurah.arrival_hub", "BlueprintDialog")]
     for s in scenes:
-        if is_epilogue(s) or is_remote(s) or s["InteractionHub"] is not None or s["ReturnToList"]: continue
+        if is_epilogue(s) or is_remote(s) or s["InteractionHub"] is not None or s["ReturnToList"] or s["ContinueBefore"]: continue
         names.append(("entry." + s["Id"], "BlueprintAnswer"))
     return names, flagkeys
 
@@ -1283,6 +1287,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                 want.append((s["EpilogueAfter"], "BlueprintCueBase", "EpilogueAfter@" + s["Id"]))   # a cue or a book page
             for n in s["Nodes"]:
                 if n.get("SpeakerUnit"): want.append((n["SpeakerUnit"], "BlueprintUnit", "SpeakerUnit@%s/%s" % (s["Id"], n["Id"])))
+            if s["ContinueBefore"]:
+                want.append((s["ContinueBefore"].get("Cue"), "BlueprintCue", "ContinueBefore@" + s["Id"]))
+                want += [(g, "BlueprintCue", "ContinueBefore.Parents@" + s["Id"]) for g in s["ContinueBefore"].get("Parents") or []]
             if s["EpilogueSequence"]: want.append(("a3096e5b145badb448827a7336d86d02", "BlueprintCueSequence", "EpilogueSequence@" + s["Id"]))
             for n in s["Nodes"]:
                 for c in n["Choices"]:

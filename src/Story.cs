@@ -145,6 +145,12 @@ namespace Tirabade
         public bool Submitted;         // the record says a copy was spawned
     }
 
+    public sealed class ContinueSpec
+    {
+        public string Cue = "";
+        public string[] Parents = Array.Empty<string>();
+    }
+
     public sealed class NativeEpilogueEditSpec
     {
         public string Page = "";
@@ -200,6 +206,9 @@ namespace Tirabade
         // its own cue graph ending in an authored return cue (ReturnText) that shows that list again.
         public bool ReturnToList;
         public string? ReturnText;
+        // E14e: a one-node line inserted ahead of a native cue in native parents' Continue(First) lists (e.g. Pharasma's
+        // closing line after each afterlogue verdict). It plays when the scene is available; its choice's flags are recorded.
+        public ContinueSpec? ContinueBefore;
         // E13: native effects on the scene's entry answer (the one injected into a native answer list), as E5 does for choices.
         public string? EntryMythic;
         public AlignmentChoice? EntryAlignment;
@@ -636,7 +645,7 @@ namespace Tirabade
 
         public static string[] EntryTargets(Scene scene)
         {
-            if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return Array.Empty<string>();
+            if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.ContinueBefore != null) return Array.Empty<string>();
             if (scene.InteractionHub != null)
             {
                 if (IsNurahHubScene(scene)) return Array.Empty<string>();
@@ -840,6 +849,17 @@ namespace Tirabade
                     || scene.EntryAlignment != null && (!AlignmentDirections.Contains(scene.EntryAlignment.Direction)
                         || scene.EntryAlignment.Value <= 0 || scene.EntryAlignment.Value > 100)))
                     throw new InvalidOperationException("Invalid entry mythic/alignment (physical entry answers only; Mythic and AlignmentShiftDirection names): " + scene.Id);
+                if (scene.ContinueBefore != null && (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    || scene.AnswerLists.Length != 0 || scene.ContactUnit != null || scene.NativeReturnCue != null || scene.ReturnToList
+                    || scene.InteractionHub != null || scene.Recovery != null || scene.Nodes.Count != 1 || scene.Nodes[0].Choices.Count != 1
+                    || scene.Nodes[0].Choices[0].Next != null || scene.Nodes[0].Choices[0].Check != null || scene.Nodes[0].Choices[0].Abort
+                    || scene.Nodes[0].Choices[0].Revive != null || scene.Nodes[0].Choices[0].NativeNext != null
+                    || scene.Nodes[0].Choices[0].Requires.Length != 0 || scene.Nodes[0].Choices[0].Forbids.Length != 0
+                    || !Guid.TryParseExact(scene.ContinueBefore.Cue, "N", out _) || scene.ContinueBefore.Parents == null
+                    || scene.ContinueBefore.Parents.Length == 0 || scene.ContinueBefore.Parents.Distinct().Count() != scene.ContinueBefore.Parents.Length
+                    || scene.ContinueBefore.Parents.Any(p => !Guid.TryParseExact(p, "N", out _) || p == scene.ContinueBefore.Cue)))
+                    throw new InvalidOperationException("Invalid continue-before line (one node, one unconditional terminal choice, no lists or contact, "
+                        + "native cue and distinct parent GUIDs): " + scene.Id);
                 if (scene.ReturnToList && (scene.NativeReturnCue != null || IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || scene.ContactUnit != null || scene.InteractionHub != null || scene.Recovery != null || scene.AnswerLists.Length == 0
                     || scene.AnswerLists.Distinct().Count() != scene.AnswerLists.Length

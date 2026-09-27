@@ -213,6 +213,18 @@ namespace Tirabade
                         || nativeReturn.Answers.Count != 1 || !ReferenceEquals(nativeReturn.Answers[0].Get(), returnList))
                         Degrade(scene.Relationship, "Native audience return must reopen its answer list without replaying actions: " + scene.Id);
                 }
+                // E14e: every parent must be a native cue whose Continue(First) holds the anchor cue, or the scene's relationship is disabled.
+                var continueParents = new Dictionary<Scene, BlueprintCue[]>();
+                foreach (var scene in story.Scenes.Where(s => s.ContinueBefore != null))
+                {
+                    var spec = scene.ContinueBefore!;
+                    var parents = spec.Parents.Select(id => Resolve<BlueprintCue>(id, "Continue parent " + scene.Id)).ToArray();
+                    var anchor = BlueprintGuid.Parse(spec.Cue);
+                    if (parents.Any(parent => parent == null || parent.Continue?.Cues == null || parent.Continue.Strategy != Strategy.First
+                        || parent.Continue.Cues.Count(reference => reference.Guid == anchor) != 1))
+                        Degrade(scene.Relationship, "continue-before parents of " + scene.Id + " are missing or no longer continue First into " + spec.Cue);
+                    else continueParents.Add(scene, parents!);
+                }
                 // E14d: native epilogue edits need their exact reviewed evidence, or their replacement relationship is disabled.
                 var nativeEditSources = new Dictionary<string, (BlueprintCue Cue, BlueprintBookPage Page)>();
                 foreach (var pair in story.NativeEpilogueEdits)
@@ -342,12 +354,14 @@ namespace Tirabade
                 var nurahEtude = New<BlueprintEtude>("etude.nurah.private_meeting");
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
                 foreach (var scene in story.Scenes)
-                    if (scene.ReturnToList) BuildReturnToList(scene); else BuildScene(scene);
+                    if (scene.ReturnToList) BuildReturnToList(scene);
+                    else if (scene.ContinueBefore != null) BuildContinueBefore(scene);
+                    else BuildScene(scene);
                 foreach (var scene in story.Scenes)
                 {
                     // Entry answers are recorded in dialogue history, so they exist even when their relationship is degraded.
                     if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || Rules.IsRemote(scene) || scene.InteractionHub != null
-                        || scene.ReturnToList) continue;
+                        || scene.ReturnToList || scene.ContinueBefore != null) continue;
                     var answer = New<BlueprintAnswer>("entry." + scene.Id);
                     InitializeAnswer(answer);
                     answer.Text = Text("entry." + scene.Id, scene.Entry);
@@ -441,6 +455,13 @@ namespace Tirabade
                         var answer = Get<BlueprintAnswer>(GuidFor(scene.ReturnToList ? "entry." + scene.Id + "." + id : "entry." + scene.Id).ToString());
                         targets[id].Answers.Insert(Math.Max(0, targets[id].Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
                     }
+                }
+                foreach (var pair in continueParents)
+                {
+                    if (degraded.Contains(pair.Key.Relationship)) continue;
+                    var line = Ref<BlueprintCueBaseReference>(Get<BlueprintCue>(GuidFor("cue." + pair.Key.Id + ".continue").ToString()));
+                    var anchor = BlueprintGuid.Parse(pair.Key.ContinueBefore!.Cue);
+                    foreach (var parent in pair.Value) InsertContinueBefore(parent, line, anchor);
                 }
                 foreach (var plan in nativeEditPlans)
                 {
@@ -722,6 +743,24 @@ namespace Tirabade
                 if (scene.EntryMythic != null || scene.EntryAlignment != null)
                     ConfigureNativeEffects(entryAnswer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
             }
+        }
+
+        internal static void InsertContinueBefore(BlueprintCue parent, BlueprintCueBaseReference line, BlueprintGuid anchor)
+        {
+            if (parent.Continue.Cues.Any(reference => reference.Guid == line.Guid)) return;
+            int index = parent.Continue.Cues.FindIndex(reference => reference.Guid == anchor);
+            if (index < 0) throw new InvalidOperationException("Continue anchor " + anchor + " left " + parent.AssetGuid);
+            parent.Continue.Cues.Insert(index, line);
+        }
+
+        // E14e: the line is one registered cue; showing it records the scene's single choice (flags and completion).
+        private static void BuildContinueBefore(Scene scene)
+        {
+            var node = scene.Nodes[0];
+            CueSetup(out var cue, "cue." + scene.Id + ".continue", node.Text);
+            cue.Speaker = InlineSpeaker(node, new DialogSpeaker { NoSpeaker = false, MoveCamera = false });
+            cue.Conditions = Conditions(new RouteCondition { Scene = scene });
+            cue.OnShow = Actions(new RouteAction { Choice = node.Choices[0], Complete = scene });
         }
 
         // E14f: a named unit (its portrait/name, camera untouched), the dialog's conversant, or the scene's default.
