@@ -66,14 +66,12 @@ s("three_borrowed_names", "The price of your name", "Together",
 {n}Irabeth rests her hand beside Anevia's on the table, close enough for her wife to take if she wishes. Anevia does, without looking away from Wenna.{/n}''',
       c('"He will not turn our private life into proof of a debt."', "private"),
       c('"The fastest answer is a clear denial from everyone named."', "denial")),
-    n("private", "Irabeth", '''"Agreed. But I want our answer to say exactly what is false."
-{n}She turns the page so the guarantee faces you.{/n}
-"I will deny signing this. I will deny promising military favor. I won't stand in front of Anevia and deny that I wanted you at our table."
-{n}Anevia looks at her wife, her thumb moving once across Irabeth's knuckles.{/n}
-"Wasn't going to ask you to."
-"I know. I am saying it while the distinction is still easy to keep."
-{n}Wenna studies the document rather than either woman.{/n}
-"Then please make sure he cannot claim you paid him to protect that distinction. I would rather leave owing him an argument than have him tell people he did us a kindness."''', c('[Return to the false guarantee.]', "plan")),
+    n("private", "Irabeth", '''"Then we deny the guarantee. Each name, each supposed signature."
+{n}Irabeth turns the sheet toward you.{/n}
+"I won't deny wanting you at our table to save him explaining this."
+{n}Anevia's thumb moves across her wife's knuckles.{/n}
+"Make him talk about the money. He'd much rather talk about us."
+"And don't pay him to stop," Wenna says. "He'll tell everyone we bought his kindness. I want my wife's account cleared."''', c('[Return to the false guarantee.]', "plan")),
     n("denial", "Anevia", '''"Might be. Though if you shout it from the walls, half the city will ask what they're supposed to have heard."
 {n}She lets the sheet fall flat.{/n}
 "Let's have something to put beside the denial. Otherwise it's four respectable people and me saying a merchant's a liar."
@@ -82,27 +80,23 @@ s("three_borrowed_names", "The price of your name", "Together",
 {n}Ista gives a short laugh despite herself.{/n}
 "I want him to withdraw the claim in front of the people he told. That would do more good than a speech to people who have never hired me."
 {n}You draw those names onto Irabeth's sheet. The list is smaller than the city and therefore something you can actually begin.{/n}''', c('[Work out what each witness can establish.]', "plan")),
-    n("plan", "Narrator", '''{n}Gresa saw the stolen book change hands. She may also have kept the scrap on which Vald wrote his commission price. Ista knows a copyist called Ressa who has prepared honest duplicates of her delivery accounts. Irabeth offers to ask what Ressa remembers; Anevia wants to look at Gresa's scrap before anyone tells the stallkeeper which marks to find.{/n}
-{n}"I am coming to the meeting with Malven," Ista says. "You can help me. You can't settle it while I wait outside."{/n}
-{n}"I would prefer you there," Irabeth replies.{/n}
-{n}Wenna folds her coat over her arm. Before leaving, she takes the disputed guarantee herself. Irabeth keeps only the copy Ista permits her to make.{/n}
-{n}When the door closes, Anevia leans back against it.{/n}
-{n}"There goes our quiet afternoon."{/n}
-{n}Irabeth stands close enough to kiss her, and does.{/n}
-{n}"We can have another."{/n}
-{n}"Very confident." Anevia catches her wife's sleeve, then reaches out to catch yours. "I like it. Keep talking while I get my coat."{/n}''', c('[Arrange to follow the two leads.]', flags=("three_borrowed_names.heard",))),
+    n("plan", "Narrator", '''{n}Irabeth puts the disputed entries on a separate sheet. Ressa, the copyist who has worked for Ista before, may recognize how the list was prepared. Anevia wants Gresa's commission scrap preserved before anyone tells her which mark they hope to find.{/n}
+{n}"I am coming to the meeting," Ista says. "You can't settle my account while I wait outside."{/n}
+{n}"Bring your customers' names," Irabeth replies. "He will have to correct his story to each of them."{/n}
+{n}Wenna takes the original guarantee. Irabeth keeps the copy Ista permits her to make. Anevia has already found her coat by the time they reach the door.{/n}
+{n}"Copyist for you, scrap for me?" she asks her wife.{/n}
+{n}"And no warning Malven which questions we are bringing."{/n}
+{n}"There she is." Anevia brushes a kiss against Irabeth's mouth, then looks at you. "Choose where you want to start."{/n}''', c('[Arrange to follow the two leads.]', flags=("three_borrowed_names.heard",))),
 ])
 
 
 s("three_back_of_seal", "The scrap she kept", "Anevia",
   '"Shall we speak to Gresa?"', [
-    n("start", "Anevia", '''"She kept it. Under a jar of buttons. I'm beginning to think that's where all important papers ought to live."
-{n}Anevia walks beside you toward Gresa's stall. She has brought no uniform, badge, or armed escort. A short pencil is tucked behind one ear.{/n}
-"Told her what we wanted. Told her she can say no. She asked whether saying yes meant losing the scrap. I said we'd ask before taking anything."
-{n}She glances at you.{/n}
-"There's a first time for everything."
-{n}Gresa has cleared half her counter. The other half still holds buckles and combs, and she continues selling them while Anevia explains the claim. A customer spends so long comparing two identical buckles that Anevia finally looks at you with an expression of profound suffering.{/n}
-"Not even spies are that careful," she murmurs. "Most just pick the expensive one and blame their superiors."''',
+    n("start", "Anevia", '''"She kept it. Under a jar of buttons. Might start using one myself."
+{n}Anevia walks beside you toward Gresa's stall, a short pencil tucked behind one ear.{/n}
+"She won't lend it. We can look while she's there."
+{n}Gresa has cleared half her counter. The rest holds buckles and combs; she goes on selling them while Anevia explains the claim. A customer compares two identical buckles until Anevia turns to you in silent appeal.{/n}
+"Not even spies are that careful," she murmurs. "Most pick the expensive one and blame their superiors."''',
       c('[Wait until Gresa can give you her attention.]', "scrap"),
       c('[Ask to return when the stall is less busy.]', abort=True)),
     n("scrap", "Narrator", '''{n}Gresa unwraps a scrap of stout paper. On the front Vald recorded his commission price for the stolen travel book. On the back, beneath an old wax stain, are a few cramped letters. The scrap was cut from a larger commercial form.{/n}
@@ -111,13 +105,11 @@ s("three_back_of_seal", "The scrap she kept", "Anevia",
 {n}"What about the back?" you ask.{/n}
 {n}"Wax hid it when he gave it to me. Flaked off in the jar. I thought it was dirt."{/n}
 {n}The old pressure marks cross several newer creases. Gresa permits you to examine the original under the awning's slanting light. Anevia lays a clean sheet nearby for notes, keeping her pencil away from the fragile scrap.{/n}''', c('[Look over the available ways to compare it.]', "method")),
-    n("method", "Anevia", '''"Could be another guarantee. See the ruled edge? But a form's a form. We need the name, or a second example somebody can identify."
-{n}Gresa has a drawer of purchase notes from the same traders. Sorting them will take most of her remaining afternoon. She will help, but she will have to close while the papers cover her counter.{/n}
-"I'd rather lose an afternoon than have Vald come back claimin' I'm his partner," she says. "Still, it is an afternoon."
-{n}Anevia turns the scrap without lifting it. For a moment the light catches an indentation below the wax stain, then loses it.{/n}
-"Your eyes might do this faster. If they don't, we stop. Rubbing it won't put back letters that aren't there."
-{n}She smiles at you, briefly.{/n}
-"And no, I won't think less of you for borrowing a shopkeeper's patience."''',
+    n("method", "Anevia", '''"Could be another guarantee. See the ruled edge? We need a name, or a complete form somebody can identify."
+{n}Gresa has a drawer of purchase notes from the same traders. Sorting it will take most of her remaining afternoon. She will have to close while the papers cover her counter.{/n}
+"I'd rather lose an afternoon than have Vald call me his partner," she says. "Still, it is an afternoon."
+{n}Anevia turns the scrap. The light catches an indentation, then loses it.{/n}
+"Your eyes might do it faster. Don't rub it. I'd like the paper to survive whichever way we try."''',
       c('[Inspect the faint impression beneath the old seal.]', check=dict(Skill="SkillPerception", DC=25, Success="impression", Failure="unreadable", CommanderOnly=True)),
       c('[Help Gresa sort her purchase notes for a complete example.]', "catalogue")),
     n("impression", "Narrator", '''{n}You move the paper closer to the awning's edge. A downstroke emerges beneath the crack in the wax, followed by the shallow curve of a name. The front's ink does not follow those grooves. They belong to the form which was cut apart.{/n}
@@ -137,32 +129,26 @@ s("three_back_of_seal", "The scrap she kept", "Anevia",
 {n}"Useful," Anevia says. "Less useful than I'd hoped."{/n}
 {n}It establishes how easily an ordinary receipt could have been cut into a commission note. It does not establish whose receipt Vald used. Gresa gives you a copy of the blank form and agrees to explain that distinction at the meeting.{/n}
 {n}When you put the drawer back, she counts the afternoon's takings without trying to hide it. Anevia waits until she is done before thanking her. Gresa accepts the thanks, then asks you both to leave the counter clear. She still has an hour in which to sell something.{/n}''', c('[Help return the stock to its place.]', "after", flags=("three_back_of_seal.catalogue",))),
-    n("after", "Anevia", '''{n}Outside the stall, Anevia pulls the pencil from behind her ear. It has left a dark mark on her skin. When you tell her, she rubs the wrong place.{/n}
-"Here?"
-{n}You point. She hands you a corner of her handkerchief and stands still while you wipe it away.{/n}
-"Beth usually does that. Then tells me I'd lose the pencil less often if I put it in a pocket. Terrible habit, being right where I can hear her."
-{n}She takes the cloth back, but stays close.{/n}
-"I've wanted to bring you along on something like this. A piece of work where I don't have to give you a list and watch you leave to do the dangerous part."
-{n}A wagon passes. She draws you against the wall to let it through, her hand firm around your wrist.{/n}
-"I know there are easier ways to spend an afternoon with me. I like those too. But I liked having you at the counter."''',
+    n("after", "Anevia", '''{n}Outside, Anevia pulls the pencil from behind her ear. It has left a dark mark. You point; she rubs the wrong place, then hands you her handkerchief.{/n}
+"Beth usually gets it on the first try. Don't give her anything to boast about."
+{n}She stands still while you wipe it away, watching you from very close.{/n}
+"I liked having you beside me. Usually I give you a list and watch you leave to do the dangerous part."
+{n}A wagon passes. She draws you against the wall with her.{/n}
+"We should try this again. Preferably without a merchant's hand in Ista's purse."''',
       c('"I liked watching you work."', "watching"),
       c('"Next time, give me a job before we arrive."', "job")),
-    n("watching", "Anevia", '''"Oh, I noticed."
-{n}Her smile turns wicked.{/n}
-"Almost dropped the scrap when you leaned over. Very professional of me. Gresa would've charged extra for the entertainment."
-{n}You ask whether she noticed anything else. Anevia takes her time answering, looking first at your mouth and then back to your eyes.{/n}
-"Enough to be inconvenient. I was trying to count the lines on a piece of paper."
-{n}She reaches past you to smooth the collar which the wall has turned up.{/n}
-"If Beth had been there, she'd have noticed me noticing. Then I would have had two problems."
-{n}Her fingers linger at your collar before she steps away from the passing traffic.{/n}''', c('[Walk with her into the quieter lane.]', "old_work")),
-    n("job", "Anevia", '''"Careful. I might ask you to carry the drawer."
-{n}She thinks about it as you walk.{/n}
-"You can keep track of which question I haven't asked. Sometimes I see a promising thread and forget there's a whole coat attached. Beth catches me at it. Usually by asking the poor fellow whether he'd like to sit down before I question him through another meal."
+    n("watching", "Anevia", '''"I could see you in the glass of the button jar."
+{n}Anevia smiles at your expression.{/n}
+"Fine view. Very difficult to count lines on a scrap with that going on beside me."
+{n}Her gaze moves to your mouth. She takes her time looking up again.{/n}
+"Beth would've caught me watching the reflection. Then I'd have had two problems."
+{n}She smooths the collar which the wall has turned up, leaving her fingers there until the wagon has passed.{/n}''', c('[Walk with her into the quieter lane.]', "old_work")),
+    n("job", "Anevia", '''"Keep track of the question I haven't asked. I get a promising answer and start pulling at it. Beth's usually the one who remembers we came for something else."
 "And what will you do?"
-"All the interesting bits, naturally."
-{n}Her elbow nudges yours.{/n}
-"No. We'll switch. I want to see what you find when I'm not pointing at it."
-{n}At the next corner she pauses, then lets you choose the turning. The quieter lane brings you back toward the wives' lodging by a different way.{/n}''', c('[Ask whether she thinks Vald is still in Drezen.]', "old_work")),
+"The interesting bits."
+{n}She nudges your elbow.{/n}
+"Until you catch something I miss. Then I'll try very hard to be gracious."
+{n}At the corner she leaves you room to choose the quieter lane toward home.{/n}''', c('[Ask whether she thinks Vald is still in Drezen.]', "old_work")),
     n("old_work", "Anevia", '''"Vald might still be in Drezen. Or he could be congratulatin' himself somewhere else. We know he stole a book. We don't know that he wrote this guarantee."
 {n}Her expression tightens.{/n}
 "I don't like him. That makes it easy to let him explain everything. Then you stop looking."
@@ -211,43 +197,39 @@ s("three_beth_account", "Her own account", "Irabeth",
 {n}"I should have asked Ista. She has sent work through other people before. I believed him because it was ordinary and paid the ordinary rate. That's the extent of my cleverness."{/n}
 {n}"May I look?" Irabeth asks.{/n}
 {n}The copyist nods. Irabeth draws the work record toward her, leaving Ressa's hands resting on the edge of her own desk.{/n}''', c('[Compare the dates without interrupting her account.]', "history")),
-    n("history", "Irabeth", '''"You can establish that the guarantee was added after you copied the delivery list. And that Malven gave you the details."
-"I can establish what I remember and what I wrote down. He'll say I'm saving my business."
-"You are allowed to want to keep it."
-{n}Ressa looks at Irabeth properly for the first time.{/n}
+    n("history", "Irabeth", '''"Malven supplied the details. You copied them. The guarantee was added afterward."
+"That's what I can swear to. He'll say I'm saving my business."
+"Can you show the entry for his payment?"
+{n}Ressa taps the open record.{/n}
+"Here. But I'm not lending the book. My other customers haven't accused me of anything."
+{n}She offers to bring it and show the relevant page herself. Alternatively, she will sign an account for the meeting.{/n}
 "I won't have you promise no one will blame me. People who can't tell a bad copy from a good one can still stop buying either."
-{n}Irabeth closes her mouth around an answer and takes a breath.{/n}
-"Then I will not promise it. What are you willing to give us?"
-{n}Ressa offers a signed account for the people at the meeting. She will also show the original work record there if you think the inspection necessary, but will not lend the whole book. It contains other customers' business.{/n}
-"He knows I kept it," she says. "If he thought that would save me trouble, he wouldn't have asked me to copy the list."''',
+{n}Irabeth studies the payment mark.{/n}
+"I can't promise that. We will begin with his payment. He can hardly claim you invented his money."''',
       c('"Bring the work record. Let him answer the original entries."', "record", flags=("three_beth_account.record",)),
       c('"The signed account is enough. Keep your other customers out of this."', "statement", flags=("three_beth_account.statement",))),
-    n("record", "Narrator", '''{n}Ressa draws a strip of cloth around the pages which do not concern Ista. She will unfasten only the relevant section, hold the book herself, and answer questions about her own work. Irabeth writes those terms on the copy of the invitation.{/n}
-{n}"You can refuse a question," she tells Ressa. "If it makes our case less convenient, we will have to endure it."{/n}
-{n}"Will you?"{/n}
-{n}Irabeth looks at you, then back at the copyist.{/n}
-{n}"Yes."{/n}
-{n}Ressa reads the invitation once more. She agrees to come. As you rise, she asks Irabeth whether the meeting requires her best coat.{/n}
-{n}"Wear the one you can sit in comfortably," Irabeth says. "We may have to listen to a great deal of explanation."{/n}
-{n}The copyist's laugh follows you down the stairs.{/n}''', c('[Walk back with Irabeth.]', "walk")),
-    n("statement", "Narrator", '''{n}Ressa writes while you wait. Irabeth asks her to remove a sentence claiming Malven must have planned the forgery from the beginning.{/n}
+    n("record", "Narrator", '''{n}Ressa binds the unrelated pages with a strip of cloth. She will hold the book and open only the section concerning Ista. Irabeth adds that limit to the invitation and returns it for her signature.{/n}
+{n}"When he asks about somebody else's money?" Ressa says.{/n}
+{n}"I shall bring him back to his own."{/n}
+{n}Ressa signs. As you rise, she asks whether the meeting requires her best coat.{/n}
+{n}"The one you can sit in comfortably," Irabeth says. "We may have to listen to a great deal of explanation."{/n}''', c('[Walk back with Irabeth.]', "walk")),
+    n("statement", "Narrator", '''{n}Ressa writes while you wait. Irabeth asks her to strike out a sentence claiming Malven planned the forgery from the beginning.{/n}
 {n}"You suspect that. So do I. You did not see it."{/n}
 {n}"It would sound better."{/n}
 {n}"Until he asks how you know."{/n}
-{n}The copyist scratches it out and starts a clean sheet. When she has finished, Irabeth reads the account aloud so that Ressa hears precisely what will be presented. The explanation is shorter than the first version and leaves room for several unpleasant questions.{/n}
-{n}"I could come if he disputes it," Ressa says.{/n}
-{n}"We would ask you again," Irabeth answers. "Agreeing to this page does not agree you to every use someone finds for it."{/n}
-{n}Ressa signs. She watches Irabeth put the account into a dry cover before allowing herself to begin clearing the desk.{/n}''', c('[Walk back with Irabeth.]', "walk")),
-    n("walk", "Irabeth", '''"I nearly told her that she would be safe."
-{n}Irabeth does not look at you while she says it. She is watching a man lift a shutter into place across the lane.{/n}
-"I wanted her to believe me. It would have been easy to say."
-"You stopped."
-"This time."
-{n}She steps aside to let a woman carrying a basket pass.{/n}
-"I know what I can do with a sword in my hand. Even when I am frightened, I know where to put my feet. In a room like that I keep wanting the words to have the same weight."
-{n}The shutter drops into its bracket. Irabeth waits until the noise has passed.{/n}
-"Anevia used to watch me look at a locked door. I could feel her waiting for me to finish being honorable so she could finish being useful. Then she would open it, and I would be furious that she had made me laugh."
-{n}Her smile appears before she finishes speaking.{/n}''',
+{n}Ressa starts a clean sheet. Irabeth reads it aloud when she finishes; Ressa corrects a date, then signs.{/n}
+{n}"If he disputes it, you can ask me to come," she says.{/n}
+{n}"We will ask."{/n}
+{n}Irabeth puts the account into a dry cover before they shake hands.{/n}''', c('[Walk back with Irabeth.]', "walk")),
+    n("walk", "Irabeth", '''{n}Anevia is waiting below the copyist's stairs. She hears Irabeth's account, then looks up at the window.{/n}
+"Don't lead with her account. Let him tell us where he got the list before he sees what she kept. Otherwise he'll build his collector around her dates."
+"I won't have Ressa treated as an accomplice to get him talking," Irabeth says.
+"Neither will I. Keep her out of his reach. Just don't feed him her answers."
+{n}Irabeth considers it, then nods.{/n}
+"Ista's account first. His explanation. Then we show Ressa's evidence. I will stop him wandering into her other work."
+"There. Between us we might get him to finish a sentence that means something."
+{n}Anevia has a message to collect. She squeezes her wife's hand before going, leaving you to walk back with Irabeth.{/n}
+"She used to watch me hesitate at locked doors," Irabeth says. "Then she would open one and ask whether I meant to spend all night admiring the hinges. I would be furious that she had made me laugh."''',
       c('"What did you do when she made you laugh?"', "laugh"),
       c('"She still likes getting past your guard."', "guard")),
     n("laugh", "Irabeth", '''"Tried to look stern. Poorly, by all accounts."
@@ -267,13 +249,13 @@ s("three_beth_account", "Her own account", "Irabeth",
 {n}Irabeth stops beneath a projecting roof, out of the traffic, and offers you her hand.{/n}
 "You needn't always wait for her to arrange the surprise."
 {n}For a moment the woman looking at you seems very pleased with the difficulty she has caused. Then she laughs at herself and draws you closer.{/n}''', c('[Take her hand.]', "want")),
-    n("want", "Irabeth", '''"I wanted something for us before this claim arrived. I have not decided to give it up."
-{n}She rests her shoulder against the wall. The unfamiliar ease lasts only a moment before she straightens again.{/n}
-"A room away from our work. For one evening. Somewhere Anevia won't see a loose hinge and I won't remember the report beneath a cup. I asked Tessa if she knew a place. She has an upstairs room she sometimes lets to visiting relatives. She offered to let us see it."
-{n}Irabeth studies your expression.{/n}
-"I would like to arrive with both of you. To be the person who has arranged it. I know I could simply ask you home, but I want the pleasure of doing this for you."
+    n("want", "Irabeth", '''"I asked Tessa about a room for the three of us. Before this business arrived."
+{n}Irabeth rests her shoulder against the wall.{/n}
+"She lets the upstairs room to visiting relatives. There is a window over the yard. I want an evening there with you both."
 "Does Anevia know?"
-"She knows I am planning something. She has been insufferable. It has made choosing rather enjoyable."''',
+"That I am planning something. She has been insufferable. I have rather enjoyed making her wait."
+{n}Irabeth takes your hand.{/n}
+"Will you come and see it?"''',
       c('"Show us the room. I want to see what you chose."', "room", flags=("three_beth_account.room",)),
       c('"An evening away sounds good. Keep the sleeping arrangements for later."', "evening", flags=("three_beth_account.evening",))),
     n("room", "Irabeth", '''{n}Her smile broadens before she can hide it.{/n}
@@ -392,15 +374,16 @@ s("three_counterclaim", "What he can afford to say", "Together",
 {n}"You may yet have to account for that fee," Irabeth says.{/n}
 {n}"I am always happy to explain my charges."{/n}
 {n}Wenna gives a short, humorless laugh. Everyone at the counter has now spent long enough with him to understand it.{/n}''', c('[Hear Ista\'s terms.]', "terms")),
-    n("terms", "Ista", '''"You withdraw the debt. You tell every customer you approached that I did not undertake it. Wenna and I keep the written withdrawal."
-{n}Malven begins to qualify the correction. Ista talks over him.{/n}
-"The same customers. By name. We will ask them."
-{n}He agrees. She turns toward you.{/n}
-"I can accept the money he has offered today and keep pursuing whatever remains. Or I can refuse his settlement, send the account to the other brokers I work with, and wait for the deposit while they argue. Neither one promises to put Vald in front of us."
-{n}Anevia's eyes flick toward the door, then return to Ista.{/n}
-"I'd like him there too," she says. "But she's right."
-{n}Ista taps the forged household guarantee.{/n}
-"If we circulate this, your names go with it. I won't make that choice for you. I am willing to take either course. Which will you stand behind?"''',
+    n("terms", "Ista", '''"You withdraw the debt," Ista says. "You correct it with every customer you approached. By name. We will ask them."
+{n}Malven begins to qualify the correction. She taps the list. He agrees.{/n}
+"I can take the money he has offered and keep pursuing the rest. Or circulate this through the brokers I know and wait for the deposit while they argue. Neither puts Vald in front of us."
+"Circulate it," Anevia says. "Let his next customer ask about the collector before handing over a deposit. He'll keep using that story while it only costs him one awkward meeting."
+"And Ista loses another booking," Irabeth says. "Take the refund and the signed withdrawal. Put the money back to work. We can still demand his collector's name."
+"We can demand plenty. Doesn't make him answer."
+{n}Ista looks from one wife to the other.{/n}
+"I know what waiting costs. I can bear it if we take that course. I haven't promised him silence if we take the money, either."
+{n}She turns the false guarantee toward you.{/n}
+"If I circulate it, your names go with it. Which course will you stand behind?"''',
       c('"Take the offered refund. Keep the withdrawal and the right to pursue the rest."', "settlement", flags=("three_counterclaim.settlement",)),
       c('"Circulate the evidence with our signed denial. We will answer for our names."', "circulate", flags=("three_counterclaim.circulated",))),
     n("settlement", "Narrator", '''{n}Wenna reads the withdrawal twice. She strikes out a line which would have forbidden Ista to discuss the agreement. Malven objects; Ista pushes the pen back toward him and waits.{/n}
@@ -431,12 +414,13 @@ s("three_counterclaim", "What he can afford to say", "Together",
 {n}Ista will send copies through the brokers she already knows. She will include the witness accounts their authors authorized, without claiming an arrest, a judgment, or proof of who forged the final lines.{/n}
 {n}Malven leaves before the copying begins. Anevia watches him go, then sits down beside Irabeth and asks for a clean sheet.{/n}
 {n}"We ought to make it legible," she says. "Wouldn't want to give Ressa more work fixing our spelling."{/n}''', c('[Sign your own account of the meeting.]', "leave", flags=("three_counterclaim.unpaid",))),
-    n("leave", "Narrator", '''{n}Outside, Irabeth asks Anevia whether she wants to follow Malven. Anevia keeps looking down the lane for several breaths.{/n}
-{n}"Yes. Not tonight."{/n}
-{n}She turns to her wife and straightens the collar of the blue coat, a gesture which has nothing to do with Malven and does not quite steady her hands.{/n}
-{n}"I wanted him to be easier to beat."{/n}
-{n}"So did I," Irabeth says.{/n}
-{n}Anevia looks toward you. You walk together until the counter, the papers, and the empty chair are out of sight. At the next turning, Irabeth offers her arm to her wife. Anevia takes it, then reaches back for you.{/n}''', c('[Go back with them.]', flags=("three_counterclaim.kept",))),
+    n("leave", "Narrator", '''{n}Outside, Irabeth follows Anevia's gaze down the lane.{/n}
+{n}"Are you going after him?"{/n}
+{n}"He'll expect it. Let him keep looking over his shoulder tonight."{/n}
+{n}Anevia waits until Malven disappears around the turning.{/n}
+{n}"Tomorrow, I want to know who else he's offered that collector story to."{/n}
+{n}"Ask before he has time to prepare them," Irabeth says.{/n}
+{n}They take the lane toward home. Anevia is still watching the turning when her wife reaches for her hand. She catches it without looking, then reaches back for yours.{/n}''', c('[Go back with them.]', flags=("three_counterclaim.kept",))),
 ], requires=("three_back_of_seal.kept", "three_beth_account.kept"))
 
 
@@ -470,15 +454,14 @@ s("three_unposted_notice", "Who gets to hear it", "Together",
 "Good answer."
 "I thought so."
 {n}Wenna pulls the boot on and stamps once, testing the patch. The sound has the satisfying finality which the larger business still lacks.{/n}''', c('[Ask about the next journey.]', "records")),
-    n("half", "Ista", '''"A smaller load. Wenna has two repairs to finish before we can pay for the rest of the space. We are still asking for the unpaid half."
-{n}She looks at Anevia before continuing.{/n}
-"You needn't chase him every time you see me. I will tell you if there is something you can do. Some days I would rather be angry about him without arranging another meeting."
-{n}Anevia nods, chastened but listening.{/n}
-"Fair."
-"And one customer came back. The one who had wanted their money returned. They saw the withdrawal. That part worked."
-{n}Wenna flexes her repaired boot.{/n}
-"I would still have preferred the money."
-"So would I," Ista says. She reaches down to brush a fleck of leather from her wife's sleeve.{/n}''', c('[Ask about the next journey.]', "records")),
+    n("half", "Ista", '''"A smaller load. Wenna has two repairs to finish before we can pay for the rest of the space. We're still asking for the unpaid half."
+{n}Anevia begins to answer. Ista stops her.{/n}
+"Tomorrow. Please. I want to finish this tea without him in it."
+{n}Anevia pushes the jug closer.{/n}
+"One customer came back," Ista continues. "The one who wanted their payment returned. They saw the withdrawal."
+"I would still have preferred the money," Wenna says, testing her repaired boot.
+"So would I."
+{n}Ista brushes a fleck of leather from her wife's sleeve.{/n}''', c('[Ask about the next journey.]', "records")),
     n("public", "Ista", '''"Two brokers answered. One wants to see the originals before dealing with him again. The other asked whether I could carry a smaller load. We have not been repaid."
 {n}She sets down the cup.{/n}
 "The warning is doing something. The lost booking did something too. Wenna has taken repairs while we wait. I knew that was the choice. I still dislike living through it."
@@ -498,13 +481,13 @@ s("three_unposted_notice", "Who gets to hear it", "Together",
 "You remember that about most days."
 "You keep planning walks across them."
 {n}Ista laughs, then closes the book carefully. The gap remains. It now has a second account beside it, in Wenna's heavier handwriting.{/n}''', c('[Wish them a better journey.]', "names")),
-    n("lost", "Ista", '''"Not yet. The customer is still away. I can work without it, but I have to explain the gap every time somebody asks."
-{n}She touches the intact travel book through its wrapping.{/n}
-"This one still opens where it should. I am glad of that. Both things remain true, whatever sort of day I am having."
-{n}Wenna takes the duplicate load list and puts it inside her own coat.{/n}
-"Separate copies. Separate pockets. We are becoming very dull people to rob."
-"I hope so," Ista says. "I have other uses for excitement."{/n}
-{n}She looks at her wife, who answers with a smile she does not offer anyone else in the room.{/n}''', c('[Wish them a better journey.]', "names")),
+    n("lost", "Ista", '''"Not yet. The customer is still away. I have to explain the gap every time somebody asks."
+{n}Ista touches the intact travel book through its wrapping, then checks the fastening of her bag.{/n}
+"At least this one can come on the journey."
+{n}Wenna puts the duplicate load list inside her own coat.{/n}
+"Separate copies. Separate pockets. Very dull people to rob."
+"I hope so. I have other uses for excitement."
+{n}Ista looks at her wife. Wenna answers with a smile she has not offered anyone else in the room.{/n}''', c('[Wish them a better journey.]', "names")),
     n("names", "Anevia", '''{n}After Ista and Wenna leave, Anevia picks up a scrap which has fallen beneath their chairs. It is only the paper wrapped around Wenna's boot patch. She checks both sides anyway.{/n}
 "We're going to be looking at the back of every shopping list for a month."
 {n}Irabeth gathers the cups.{/n}
@@ -610,18 +593,14 @@ s("three_rooms_unlocked", "The room she chose", "Together",
 {n}"You've got one."{/n}
 {n}You help move the chairs toward the window. The comfortable one turns out to be too low for Irabeth, who chooses another with a look which dares Anevia to make that an argument.{/n}
 {n}Anevia sits down smiling.{/n}''', c('[Settle beside the window.]', "sitting")),
-    n("sitting", "Irabeth", '''"I kept thinking of things I ought to bring. A book. Something to mend. Something to make the time useful."
-{n}She flexes her empty hands, then rests one on Anevia's knee.{/n}
-"I left them."
-"Very reckless."
-"I thought you might approve."
-{n}Anevia covers her wife's hand with her own.{/n}
-"I do. I'm also hungry. Was food part of your great plan?"
-"There is a covered tray downstairs. Tessa said to fetch it when we wanted it."
-"A woman of foresight. You should marry her."
-{n}Irabeth gives Anevia a long look.{/n}
+    n("sitting", "Irabeth", '''{n}Irabeth settles beside the window and rests a hand on Anevia's knee.{/n}
+"Stay there."
+"Wasn't goin' anywhere. Unless you've forgotten supper."
+"A covered tray downstairs. We can fetch it when we want it."
+"A woman of foresight. I should marry you."
+{n}Irabeth gives her a long look.{/n}
 "I have quite enough difficulty getting the wife I have to sit still while I admire her."
-{n}Anevia stops moving. She tilts her head and waits, playful at first, then quieter as Irabeth continues looking.{/n}
+{n}Anevia stops moving. She tilts her head, playful at first, then quieter as Irabeth continues looking.{/n}
 "Better?"
 "Very."''',
       c('[Stay with Anevia while Irabeth fetches the tray she arranged.]', "anevia"),

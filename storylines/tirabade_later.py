@@ -50,15 +50,13 @@ SCENES = [scene("three_locks", "A respectable use for a bad habit", "Together", 
 {n}Irabeth lifts the opened lock from the hasp and lays it on the cloth.{/n}
 {n}"And now she will tell everyone she taught the Commander patience."{/n}
 {n}"Only people who'd enjoy hearin' it."{/n}''', c('[Pass the tools to Irabeth.]', "beth_turn")),
-    n("irabeth", "Irabeth", '''{n}Irabeth takes the tools. Her first attempt produces nothing but a scrape. Anevia opens her mouth, then closes it when her wife looks up.{/n}
+    n("irabeth", "Irabeth", '''{n}Irabeth takes the tools. Her first attempt produces a scrape. Anevia opens her mouth, then closes it when her wife looks up.{/n}
 "I know. Too much pressure."
-{n}Irabeth tries again. This time she pauses after the first click instead of forcing the turn. The lock opens. She removes it from the hasp and lays it on the cloth.{/n}
+{n}On the second attempt, Irabeth pauses after the click. The lock opens. She lays it on the cloth.{/n}
 {n}Anevia leans forward to inspect it.{/n}
-"You really have been practicin'."
-"I told you."
-"People say things."
-{n}Irabeth's expression changes. Anevia sees it at once.{/n}
-"No, love. Didn't mean you."''',
+"You really have been practicin'. Behind my back."
+"You told me to surprise you."
+"I meant with supper."''',
       c('[Give Irabeth time to enjoy her success.]', "beth_proud", flags=("three_locks.irabeth_taught",))),
     n("beth_proud", "Irabeth", '''"I know. You are very surprised to find that someone else can be secretive."
 {n}She is smiling now. Anevia reaches across you to squeeze her wife's wrist, and Irabeth turns her hand to catch the offered fingers.{/n}
@@ -140,10 +138,10 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
       c('[Take Irabeth\'s hand.]', "beth_dance"),
       c('"Anevia, will you dance with me?"', "anevia_dance"),
       c('"I am enjoying watching you both. Stay with me for the end of the tune."', "listen")),
-    n("beth_dance", "Irabeth", '''{n}Irabeth draws you into the little space the dancers have left. Her hand settles at your back, steady without pushing you where she wants you.{/n}
+    n("beth_dance", "Irabeth", '''{n}Irabeth draws you into the little space the dancers have left. Her hand settles at your back; she smiles when you find the rhythm together.{/n}
 "Tell me if I tread on you. Anevia claims I improve only when threatened."
-{n}You turn together. When you glance back, Anevia raises her cup in a small salute. Irabeth follows your glance and smiles at her.{/n}
-{n}At the end of the tune, Irabeth keeps your hand until all three of you have found each other again.{/n}''', c('[Leave together for the walk home.]', "walk", flags=("three_outing.beth_dance",))),
+{n}You turn. Anevia raises her cup in a small salute. Irabeth answers with a smile before drawing your attention back to her.{/n}
+{n}At the end of the tune, she keeps your hand until all three of you have found each other again.{/n}''', c('[Leave together for the walk home.]', "walk", flags=("three_outing.beth_dance",))),
     n("anevia_dance", "Anevia", '''"Thought you'd never ask. Well, I was givin' you another minute."
 {n}Anevia takes your hand. Her movements are small and assured; when another couple comes too close, she turns the collision into a change of direction and grins at you.{/n}
 "See? Completely planned."

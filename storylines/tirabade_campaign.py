@@ -76,17 +76,15 @@ s("three_yard", "A game with no useful purpose", "Together",
 {n}"You are welcome to demonstrate."{/n}
 {n}Anevia comes back from the counter with another ball and nudges your shoulder with hers.{/n}
 {n}"She's goin' to be unbearable. We should've taken her somewhere dull."{/n}''', c('[Make room for her next attempt.]', "together")),
-    n("together", "Irabeth", '''{n}After several turns, Tessa carries over a slate with three names already written on it.{/n}
-"There is a match when enough people want one," Tessa says. "Two teams of three. Olva, Nessa, and Perrin usually come together. They would be pleased to have opponents."
-{n}Irabeth's hand closes around the ball she has just retrieved.{/n}
-"I would like that."
-"Would you?" Anevia asks. "Can't imagine what gave her that idea, Tessa."
-{n}Irabeth puts the ball down and looks at her wife.{/n}
-"Would you? I want to play with you. I do not want to drag you through an afternoon you are only tolerating."
-{n}Anevia's reply comes without the expected joke.{/n}
+    n("together", "Irabeth", '''{n}After several turns, Tessa brings over a slate with three names already written on it.{/n}
+"Olva, Nessa, and Perrin. They usually come together. Looking for opponents, if you're interested."
+"I am," Irabeth says promptly.
+"Hadn't noticed," Anevia tells her.
+{n}Irabeth puts down the ball.{/n}
+"And you? I want you on my team."
 "I like seein' what you do when you want to win something small. Yes. I'll play."
-{n}She turns to you.{/n}
-"Your decision. She'll recruit you very politely if you give her time."''',
+{n}Anevia turns to you.{/n}
+"That leaves you. Want advice from two experts, or room to ignore us?"''',
       c('"I want to be on your team. I also want you to let me make my own mistakes."', "mistakes", flags=("three_yard.own_roll",)),
       c('"I want both of you arguing over how to improve my score."', "coaches", flags=("three_yard.coaches",))),
     n("mistakes", "Irabeth", '''"Fair. I will ask before offering advice."
@@ -207,36 +205,36 @@ s("three_beth_score", "What she wanted to win", "Irabeth",
       c('[Ask to return when you can give her your attention.]', abort=True)),
     n("believe", "Irabeth", '''"I believed she meant to. I did not see her foot. Neither did she."
 {n}She turns the guard over to loosen a twisted lace.{/n}
-"There. That is the sentence I should have used. It sounds less generous than declaring complete faith in somebody, but at least it describes what I know."
-{n}She leaves the lace loose.{/n}
-"I also wanted nobody to have a reason to say we won because of who we are. That part was mine. I put it into her hand and asked her to roll it down a lane."''',
+"I should have said that instead of declaring complete faith and then asking her to prove it."
+{n}The lace comes free.{/n}
+"I wanted nobody to say we won because of who we are. Anevia was the one I asked to risk eight points for it."''',
       c('"You can tell her that part without asking her to change her account."', "hers")),
-    n("rank", "Irabeth", '''"I saw Olva look at you before she looked at the line. I have been on the other side of that glance. Wondering whether an ordinary objection will sound like insolence."
-{n}She sets the guard down.{/n}
-"Then she did object. Perhaps I should have given her more credit for it. She did not need me to imagine every answer on her behalf."
-{n}Irabeth looks at you directly.{/n}
-"I wanted an afternoon where I could be good at something without anybody needing me to be. I was enjoying it so much that I tried to protect it from becoming untidy."''',
+    n("rank", "Irabeth", '''"Olva looked at you before she looked at the line. I know that calculation. How much trouble will an objection cost me?"
+{n}Irabeth sets the guard down.{/n}
+"Then she objected anyway. And Tessa heard her. I should have let the keeper finish her work."
+{n}She looks toward you.{/n}
+"Instead I began managing the afternoon. I was doing rather better when I was only bowling."''',
       c('"It was untidy. You still played well."', "hers")),
-    n("hers", "Irabeth", '''"I know."
-{n}The answer is quiet, but immediate.{/n}
-"I would like to enjoy that without first apologizing for how much I cared about seven wooden pins. I have cared less about larger things, on days when I was tired."
-{n}She notices you looking at her and gives a brief smile.{/n}
-"That was not an invitation to tell me how much the larger things need me."
-{n}Irabeth reaches for your hand, palm open on the bench.{/n}
+    n("hers", "Irabeth", '''"Yes."
+{n}She nods, then looks down at the bench.{/n}
+"Seven pins. I can still see the two I left standing."
+{n}She draws their positions on the bench with a finger, then catches herself and smiles.{/n}
+"Next time."
+{n}Her hand turns palm up beside yours.{/n}
 "What did you want from the afternoon? I have been so occupied with the ending that I have scarcely asked."''',
       c('"I liked being useful to a team without anybody depending on us to survive."', "team", flags=("three_beth_score.team",)),
       c('"I wanted you to notice me doing something well. I enjoyed your hand finding mine."', "noticed", flags=("three_beth_score.noticed",))),
-    n("team", "Irabeth", '''"Then we ought to play again. That much was real."
-{n}She takes your offered hand and presses her thumb against your knuckles.{/n}
-"I keep discovering that I would like another turn. I used to think leisure was what happened when nothing remained to be done. An impossible condition."
-{n}A smile spreads slowly across her face.{/n}
-"And I want to see whether Nessa can make that ridiculous slow roll work twice. She looks so certain of it. I would like to be the person who makes her look less certain."''', c('[Tell her you want another turn beside her.]', "outcome")),
+    n("team", "Irabeth", '''"Then take your place beside me next time."
+{n}Her thumb presses warmly against your knuckles.{/n}
+"I want another look at Nessa's slow roll. She releases the ball so late that I keep expecting her to drop it on her foot."
+{n}Irabeth's smile becomes distinctly competitive.{/n}
+"If she can do it twice, I shall have to learn how to beat it."''', c('[Tell her you want another turn beside her.]', "outcome")),
     n("noticed", "Irabeth", '''"I noticed."
-{n}She takes your hand and draws it onto her knee. Her fingers close over it.{/n}
+{n}She draws your hand onto her knee.{/n}
 "When you looked back at us, I wanted to pull you straight off the lane. I remembered Anevia still needed to play."
-{n}Her ears redden. This time she does not look away.{/n}
-"I also liked that she saw me want to. I have spent enough time trying to make every feeling occur in a separate room."
-{n}She lets your hand rest against her for a moment before loosening her grip.{/n}
+{n}Her ears redden, but her fingers tighten over yours.{/n}
+"Anevia caught me. She looked at my hand, then at your mouth. I nearly forgot to watch her roll."
+{n}Irabeth lets your hand rest against her for another moment.{/n}
 "You were very distracting for someone asking me to watch a game."''', c('[Enjoy her attention without hurrying her.]', "outcome")),
     n("outcome", "Narrator", '''{n}Irabeth puts the guards together and slides them beneath the bench. Her hand remains near yours.{/n}''',
       c('"What will you do with the pennant?"', "pennant", requires=("three_match.pennant",)),
@@ -251,17 +249,16 @@ s("three_beth_score", "What she wanted to win", "Irabeth",
 "She can be very precise when she is annoyed. I suspect you have noticed."
 {n}Her smile softens.{/n}
 "She did take my hand afterward. That helped more than a fourth explanation would have."''', c('[Make room for a second afternoon.]', "finish")),
-    n("finish", "Irabeth", '''"I will tell her we spoke. About my part in it. The rest is yours to share."
-{n}She stands, leaving the guards where they are.{/n}
-"Before you go, may I kiss you?"
-{n}There is no room in her expression for a guess about what you ought to answer.{/n}''',
+    n("finish", "Irabeth", '''"I will ask Anevia when she can play again."
+{n}Irabeth stands, leaving the guards beneath the bench for another moment.{/n}
+"Before you go, may I kiss you?"''',
       c('[Stand and kiss her.]', "kiss", flags=("three_beth_score.kissed",)),
       c('[Take her hand and ask her to walk with you instead.]', "walk")),
     n("kiss", "Narrator", '''{n}Irabeth's hand settles against your back. Her kiss begins carefully, then becomes less careful when you lean closer. She laughs softly against your mouth before letting you go.{/n}
 {n}"I had been considering that since the lane."{/n}
 {n}She picks up the guards and leaves with you, looking pleased enough that you need not ask whether the interruption was welcome.{/n}''', c('[Walk back together.]', flags=("three_beth_score.heard",))),
-    n("walk", "Narrator", '''{n}She threads her fingers through yours and picks up the guards with her free hand. At the door she pauses to let you choose the direction.{/n}
-{n}"I have a little time," she says. "Use it well. That is advice, not a command."{/n}''', c('[Choose a quieter way back.]', flags=("three_beth_score.heard",))),
+    n("walk", "Narrator", '''{n}She threads her fingers through yours and picks up the guards. At the door she pauses to let you choose the direction.{/n}
+{n}"Somewhere without a scoreboard. I have neglected you quite enough for one afternoon."{/n}''', c('[Choose a quieter way back.]', flags=("three_beth_score.heard",))),
 ], requires=("three_match.finished",), delay=24)
 
 
@@ -287,11 +284,11 @@ s("three_anevia_flour", "The loaf she wanted to make", "Anevia",
 {n}Anevia looks so affronted that you laugh. After a moment she does, too.{/n}''',
       c('"You really want to learn this."', "want"),
       c('"What do you hope this lesson will do for your bread?"', "imagined")),
-    n("want", "Anevia", '''"Yes. Had the idea for ages. Kept findin' reasons not to ask somebody to watch me get it wrong. One day I'll have an oven of my own. Until then, Dalia's toleratin' me."
-{n}She folds the dough as Dalia showed her. This time it releases from the board without tearing.{/n}
-"Figured I'd get somebody to explain it, understand the trick, skip straight to bein' tolerable. Turns out the trick's mostly doin' the part you aren't good at yet."
-{n}She glances toward the flour shelves, checking that Dalia is occupied.{/n}
-"Don't tell her I said that. She'll make me embroider it on an apron."''',
+    n("want", "Anevia", '''"Yes. Had the idea for ages. One day I'll have an oven of my own. Until then, Dalia's toleratin' me."
+{n}She folds the dough. It releases from the board without tearing.{/n}
+"Did you see that?"
+{n}She checks that Dalia is occupied, then tries again. The next fold sticks.{/n}
+"You saw the first one. Remember that when she asks."''',
       c('[Stay beside her while she works.]', "match"),
       c('"Will Beth still get the worst bit of crust?"', "old_crust", requires=("a_errand",))),
     n("imagined", "Anevia", '''"Round. Brown. Recognizable from a safe distance."
@@ -328,9 +325,9 @@ s("three_anevia_flour", "The loaf she wanted to make", "Anevia",
 "What stung was Beth lookin' relieved before I took the second shot. As if the difficult part was over. It was about to be mine."
 {n}Anevia turns back to you.{/n}
 "I told her. She heard me. Didn't stop wantin' the replay. We managed to leave it there."''', c('[Let her continue.]', "motive")),
-    n("motive", "Anevia", '''"I don't want you adjudicatin' our marriage. Beth isn't sendin' you to collect an apology, is she?"
-{n}You shake your head. Anevia nods, accepting it.{/n}
-"Good. Then tell me what you thought. About your choice. I know what we both said while you were tryin' to make it."''',
+    n("motive", "Anevia", '''"Beth isn't sendin' you to collect an apology, is she?"
+{n}You shake your head. Anevia pulls out the stool beside hers.{/n}
+"Good. Sit down and tell me why you chose it. Your reasons. I've heard ours enough."''',
       c('"I would choose the same again. I also want to understand what it cost you."', "same", flags=("three_anevia_flour.same",)),
       c('"I was trying to end the argument quickly. I should have taken more time."', "quick", flags=("three_anevia_flour.quick",)),
       c('"I thought keeping the ruling was enough. Now I think a replay might have been worth the risk of losing."', "reconsider_stood", requires=("three_match.stood",), flags=("three_anevia_flour.reconsidered",)),
@@ -345,16 +342,15 @@ s("three_anevia_flour", "The loaf she wanted to make", "Anevia",
 "But I agreed to the replay. Don't take that bit away from me because you've changed your mind. I got a say. I used it."
 "I remember."
 "Good. Next time we might both do it differently. Still want you on my team."''', c('[Lean against her until Dalia returns.]', "shape")),
-    n("same", "Anevia", '''"Then you can ask me without lookin' like you expect a sentence."
-{n}She reaches for your hand, checks the flour on her fingers, and washes them before taking it.{/n}
-"I wanted you to think I was brilliant. Instead you got the part where I keep an argument goin' after everyone else would like a nice ending."
-{n}Her thumb traces the side of your hand.{/n}
-"You'll get more of both. I hope you're still interested."''', c('"I am. Including another attempt at the brilliant part."', "shape")),
-    n("quick", "Anevia", '''"We weren't exactly givin' you a quiet place to think."
-{n}She washes her hands and dries them before returning to your side.{/n}
-"Next time, tell us to stop talkin' for a moment. I'll complain. Beth will apologize, then explain why she was explainin'. Eventually we'll both stop."
-{n}She rests a hand at your waist for a brief moment.{/n}
-"I can wait for your answer. I'd rather get yours than the one you think will get us out the gate."''', c('[Promise to take the time you need.]', "shape")),
+    n("same", "Anevia", '''"Then stand by it. I still want to hear you say it."
+{n}She washes the flour from her fingers before taking your hand.{/n}
+"I wanted you to think I was brilliant. You got a magnificent roll and an argument that followed you home. Still interested?"
+{n}Her thumb moves over your knuckles while she waits.{/n}''', c('"I am. Including another attempt at the brilliant part."', "shape")),
+    n("quick", "Anevia", '''"We weren't exactly giving you peace to think."
+{n}She washes her hands and returns to your side.{/n}
+"Next time, make us wait. Beth will fill the silence unless you stop her. So will I."
+{n}Her hand rests briefly at your waist.{/n}
+"I'd rather hear what you think than watch you hunting for the quickest way out."''', c('[Promise to take the time you need.]', "shape")),
     n("shape", "Narrator", '''{n}Dalia returns to check the dough. It has risen. Anevia looks absurdly proud of something she was instructed not to touch.{/n}
 {n}"Now shape it," Dalia says.{/n}
 {n}Anevia folds the edges under as shown. A seam opens. She closes it, presses too hard, and looks toward the flour bowl.{/n}
@@ -517,11 +513,11 @@ s("three_small_journeys", "Places they had not gone", "Together",
 "An hour? I'd have a terrible time choosin'."
 "That is what you said you wanted."''',
       c('[Add a meeting place where the three routes can end.]', "order")),
-    n("order", "Narrator", '''{n}You add your mark. Anevia puts her cup down and studies the space between the garden and the town.{/n}
+    n("order", "Narrator", '''{n}Anevia measures the road between the garden and town with her thumb.{/n}
 {n}"We can't do all of it in one day."{/n}
-{n}"No," Irabeth says. "I thought perhaps we could stop trying to plan only one day."{/n}
-{n}Her wife looks up. Irabeth has kept her attention on the map, but her hand is still beside Anevia's shoulder.{/n}
-{n}"I do not know when," Irabeth continues. "I know there are things I want to do when I can. I would like you both to help me choose."{/n}''',
+{n}"Then we shall need more than one," Irabeth says. "A room, too. I refuse to spend the whole journey catching up with our luggage."{/n}
+{n}She offers you the pencil.{/n}
+{n}"Which way first?"{/n}''',
       c('"Begin with the garden. Let Irabeth choose a day we do not have to hurry."', "garden", flags=("three_small_journeys.garden_first",)),
       c('"Begin with the market. Let Anevia take us somewhere she has never had to work."', "market", flags=("three_small_journeys.market_first",))),
     n("garden", "Irabeth", '''{n}Irabeth circles the garden. Anevia takes the pencil from her and draws a basket beside it.{/n}
