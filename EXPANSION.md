@@ -26,8 +26,16 @@ Trickster needs a bespoke, attainable route for every eligible adult romance cha
 These routes must support concurrent relationships across the roster with ToyBox Love Is Free and Jealousy Begone enabled.
 Individual route availability is insufficient evidence for this requirement; verification must also exercise combined relationship states and identify cross-route conflicts.
 The Trickster Commander should act through wit, preparation, investigation, strategic bargains and earned mythic power, with enough competence and danger to credibly engage powerful partners.
+Give the Commander distinctive, resourceful dialogue choices that can use kindness, deception, intimidation or restraint for an intelligible purpose.
+Do not reduce Trickster characterization to random jokes, universal remorse or passive agreement with every partner.
+Let companions and partners interpret the Commander's tactics, keep their own agendas and attempt counterplays; convincing success must follow from information and decisions the player can actually obtain and make.
 Do not substitute fourth-wall jokes or unexplained fate rewrites for quest foundations, character motives and consequences.
 Keep romantic development substantial even when an intervention solves the initial access problem.
+Severe consequences, including death, may require difficult, multi-stage Trickster recovery involving advance preparation, side quests, resources, checks and later follow-through.
+Document which preparation can be recovered after a missed opportunity and which consequences require a different authored intervention; do not silently bypass native death or history.
+Provide a final player guide for achieving the combined Trickster romance outcome across the roster.
+Derive the guide from implemented triggers and played route evidence, with chronological quest order, prerequisites, roll outcomes, recovery steps, irreversible choices, compatibility settings and ending requirements.
+The guide must distinguish a verified simultaneous campaign from separate successful per-character test cases.
 Other mythic paths retain character-appropriate restrictions, with the reason and transition behavior documented per character.
 Existing all-path draft simulations are regression evidence, not a requirement to keep every romance available to every mythic path.
 Claimed physical rescues must reconcile actual game state, not just hide a death flag from the romance rules.
