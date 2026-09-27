@@ -166,6 +166,16 @@ internal static class Program
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintDialog", StringComparison.Ordinal), "Wrong native started-dialog type: " + guid);
             Seed<BlueprintDialog>(guid);
         }
+        bool hasParentEndingRules = story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0;
+        if (hasParentEndingRules)
+        {
+            string contractPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                "../../../fixtures/parent-ending-source/verified-contract.json");
+            ParentEndingIntegrationTests.PrepareSourceFixtures(JObject.Parse(File.ReadAllText(contractPath)),
+                ParentEndingSourceFixtures.Build(), ParentEndingSourceFixtures.PageActions());
+            ParentEndingIntegrationTests.CheckPreflight(story, Check);
+            foreach (var pair in sequences) originalCues[pair.Key] = pair.Value.Cues.ToArray();
+        }
         var entry = new UnityModManager.ModEntry(new UnityModManager.ModInfo { Id = "ManagedBuildTests", Version = "1.0.0", ManagerVersion = "0.27.11" }, modDirectory);
         Type main = typeof(Tirabade.Main);
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
@@ -176,6 +186,7 @@ internal static class Program
         KonomiMeetingIntegrationTests.Run(Check);
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
+        if (hasParentEndingRules) ParentEndingIntegrationTests.Run(story, Check);
         var contacts = (Dictionary<string, BlueprintUnit>)main.GetField("contactUnits", PrivateStatic)!.GetValue(null)!;
         var expectedContacts = story.Scenes.Where(s => s.ContactUnit != null)
             .SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct().ToArray();

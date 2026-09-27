@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 960,
-  "unique_targets": 163,
+  "binding_uses": 1105,
+  "unique_targets": 245,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -222,6 +222,14 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
       "type": "BlueprintCue"
     },
+    "5c95d8e3fa4f3b44896914987cb04b0b": {
+      "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
+      "type": "BlueprintBookPage"
+    },
+    "5787f92575364c1459df8f075676c2db": {
+      "path": "World/Dialogs/Epilogues/Cue_0317.jbp",
+      "type": "BlueprintCue"
+    },
     "33960c7f7af40cd43b7f801a76c87a0b": {
       "path": "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -312,6 +320,14 @@
     },
     "c97882cbc65c4c546aed1810627a5b81": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/Wintersun_OldDefender.jbp",
+      "type": "BlueprintEtude"
+    },
+    "71f85264d9064074f9cf74999ecbffa9": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fd2ab9b67ce3e284184b1894c82c6c5d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
       "type": "BlueprintEtude"
     },
     "72e423c719ed9d44fa432a6b9629babd": {
@@ -416,6 +432,10 @@
     },
     "c0f261c4a259da741ab0052f0100c2a0": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethKilledByPlayer.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3b8c0801d5e9a694b848ee13564d2ad7": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoDead.jbp",
       "type": "BlueprintEtude"
     },
     "148423f1d35917946a5ebeeb4f19246c": {
@@ -713,6 +733,468 @@
     "b18d250fa2fb4fdf9fe4eba04e9d1655": {
       "type": "BlueprintCue",
       "path": "RanRomance.Aran.AranBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "0a8411c2cb0a44f1ab317ed425f6ec94": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "0b1b31d7125547219daa747eba45a063": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "18d22b6258a24fe29dd9d0ea4235432e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "19099aba216e46e98d446709c3f2e0f3": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1980e50e5e204431bf643fbad487909f": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0008.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "19fd9027465f4cbebe949b26d04a2826": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1e6ca1514807446ea2fddd65e4f5bcc8": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "286434b491b74174a97dfd2d7344f57a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2cd9538f67f7414d808d9032386f6be9": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "341b62dd58d14906959d3262b12f1a43": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3b8d47b3c9694002aff26510ac4dedf0": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3d21fa8120d040338ec1d4b8461fa536": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3d4137f1cf98459f996ef1da83737cdb": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "4a29c758798d47a1a32f506d1ca6081b": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "4dbb41f1fb134b90ab3900dc05488e8f": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "51104e1c8755436e8aa290a6cedfcb3a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5584da70433e4f079d521d40ce77f230": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5831af75932d43ed902a2d8def2adf3d": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "58557969a797441983022c8ba0400400": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "592dcdccbef043f58031fa234faf137a": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "59cf28c3824944fd88547bc61bc5cf62": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5ab5c6a3c62b4f2ba88053cbbbc47737": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5b0a132d97404072b3d664899871d7b7": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5cd5f22437a1465180b45c080899577a": {
+      "type": "BlueprintQuest",
+      "path": "RanRomance.Mina.MinaQuest.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5db846019acd46ef83f12be220727f50": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "64afcd565e044e53977e1878444f4ee1": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "67e3bb3b649d42a4a84115f3c7ac6bf1": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6eba6f627ac34cf4955c89e5ad59e106": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "784575a522e64ad58f2171abcb073d0c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "7edf5529523a4a9da520138783fdeb93": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8009e775a3a343c79ef4e40d72bc5e6a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "813cc79c053d4b3e869a0d0ca2f3d85d": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "819314e916514a498a8e336371b4788e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "829c837c76f6429fa01d3d2583069b35": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8399dbc5987b462594b2b4168764e269": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "85b479a3da8a4fa6b602fedf89201695": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "92162854b221413984468d2663ffcffb": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9806218e467f41acb502b52160ab38dd": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "982627a0bbd34fe4b16b5b078e56355a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "98baa5299ae444bfa1ac8ba8e84f2c7c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9a5eb7aff04943c28da2260aac68874e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9bfbb3f217ca476cadbeffc4d389717d": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9e3bd8247f0c40eba62368fe2912bb84": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a1774d0a9fb34fd2ac58abc1c6db55bd": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a77e415c6eb44d719839e07a3f164d87": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a875684118e64d7ab29f70ca3460c365": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a87da83417ff4be28c9ccfaf9b154e96": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a8f7a881cc6d427b91cbbee14f43e0ee": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook01Page004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "acb0d15ef71c410484b7c37b270e30fe": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b474eb4460cb42729be2717d05e7d42b": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b5c19cd01e364df99f6c946c7da14751": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b9e2550bc7244f6c8480106b41667d96": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "bb49f54dc0a547c287238b5d7d8489b3": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "c01f7f83a2584555b2f551918f169cdb": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "c47829fba057400c8e0279990be3d25e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0008.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "c51a76731dc24865b6c472ffe6bf3e18": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "cce5f180fbe7455989544c1c81428463": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d47984953fc74c488ef0a02588bde92b": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d6714bd8d48e425d862f854018cb123c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d6b960c14e37492682de6284af1c5417": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "dc14cdafb9fa43e8bc3b0816626b3dbe": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e15de525c99d40c6a6faf0afa61be756": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03Page003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e303c58d307849cd892fa5810124da92": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e87b43c31c1c4253a7137c7d6c05b246": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f18391398cb5470c94f8932e9d8d2fd7": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f37b7a5fcff84551b86ecbba823e2fa5": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f5e580bedafc43f3acb6843fd71d8120": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "fb32a8f9c464496abe90307c68ec271e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ff2042ad95e14b73a5f75f2cfd84b5e4": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "01677da8df6e42c6b4803ceef524b1fe": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "126762ac92364ac5bdec69c6e3fdfd1a": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3792457f35734d75a4d4b53055f7f5d0": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0008.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5a5865ceca0e42049288351a76b18ba9": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6db8635856e74b6cac46330bd82b4ff5": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8df5edb6f69040c69d7da78d2bf20cb6": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "951e4432cf844a36a8a222b27589fb43": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9c5c5825bf3245d0ae763c6e69ecdc38": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0007.Configure",
       "provenance": "reviewed-parent-source",
       "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
     }

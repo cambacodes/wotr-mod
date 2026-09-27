@@ -35,7 +35,7 @@ def inventory(story):
         raw = sum(words(text) for _, text in segments)
         distinct = sum(words(text) for text in unique)
         output[route] = {
-            "planning_floor_words": SINGLE_CHARACTER_FLOOR * (2 if route == "tirabade" else 1),
+            "planning_floor_words": SINGLE_CHARACTER_FLOOR * (2 if route in {"tirabade", "minagho_chivarro"} else 1),
             "scenes": scenes[route],
             "raw_words": raw,
             "prose_words": sum(words(text) for kind, text in segments if kind == "prose"),

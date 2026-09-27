@@ -1,6 +1,6 @@
 {
   "scope": "Authored prose and choices. Exact normalized whole-segment deduplication only; not semantic originality, reachable content, per-character attribution or quality approval.",
-  "story_sha256": "8DCEB83D44925E5C07C7407D1FCEABE9381CE147D9A862B22E4E88420583C300",
+  "story_sha256": "780BDC23146431CECD7F1ED9594B5F129C5E149DB535CC40F2BD128A2126647A",
   "tokenizer": "Same as the RanRomance source audit: Unicode alphanumerics, internal apostrophes retained, hyphens split, underscores excluded; curly and angle markup removed; whitespace normalized.",
   "exclusions": [
     "titles",
@@ -186,6 +186,18 @@
       "choice_words": 2412,
       "distinct_segment_words": 25725,
       "exact_repeat_words": 163,
+      "integrated_external_words": null,
+      "attainable_playthrough_words": null,
+      "full_route_approved": false
+    },
+    "minagho_chivarro": {
+      "planning_floor_words": 42000,
+      "scenes": 47,
+      "raw_words": 34469,
+      "prose_words": 31911,
+      "choice_words": 2558,
+      "distinct_segment_words": 33799,
+      "exact_repeat_words": 670,
       "integrated_external_words": null,
       "attainable_playthrough_words": null,
       "full_route_approved": false

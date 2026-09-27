@@ -13,6 +13,11 @@ See `ROSTER.md` for individual ownership, source evidence, unresolved premises a
 Wenduag can participate in introductions and intrigue while retaining her own motives.
 Only adult women are new romance participants; existing male partners may remain consequential non-romantic characters.
 Writing will use mature themes, romantic tension, and non-graphic intimacy.
+Relationships need not be healthy, redemptive or morally good.
+Preserve character-appropriate ambition, manipulation, jealousy as characterization, betrayal and destructive choices, while respecting the requested ToyBox behavior rather than enforcing automatic romantic exclusivity.
+Reviewers must assess whether such behavior fits the character and follows from the player's choices, not require every relationship to become supportive or therapeutic.
+Mythic and alignment responses should produce concrete quest, trust, access or ending consequences where the story warrants them.
+An evil branch is not a substitute for resolving a candidate's identity and relationship premise.
 Adult romance artwork follows the user's latest [humanized character-design brief](art/CHARACTER-DESIGN.md): attractive humanized redesigns retaining recognizable native identity, racial traits and useful imperfections.
 This supersedes earlier visual requirements for wrinkles or exact monstrous facial anatomy without rewriting character history.
 
@@ -32,8 +37,9 @@ The user's earlier instruction to proceed without previews remains applicable.
 
 ## Current development checkpoint
 
-The integrated development export has 538 scenes across 15 route groups covering 14 of the 37 planned characters.
+The integrated development export has 585 scenes across 16 route groups covering 16 of the 37 planned characters.
 These counts describe written and integrated material, not completed routes.
+The [585-scene shared verification](reference/parallel/expansion-585-shared-verification.md) records the exact export, assembly, completed headless checks and remaining runtime boundaries.
 The latest [Vellexia integration checkpoint](reference/parallel/vellexia-campaign-integration-checkpoint.md) records the assembled export, remote-conversation repair, verification and remaining character work.
 Vellexia now has thirty entries with an independently reviewed ordinary correspondence campaign.
 Ember's thirty-six friendship entries include the reviewed late start and separate care branch.
@@ -54,17 +60,18 @@ Its [packaging checkpoint](reference/parallel/expansion-package-checkpoint.md) r
 The [alternative prerequisite implementation](reference/parallel/prerequisite-groups-checkpoint.md) now supports earned access without manufacturing native appointment or dismissal history.
 Konomi's [native observer integration](reference/parallel/konomi-native-observer-integration-checkpoint.md) now supplies positive initial actor evidence and checks retained saved-area loss evidence during later correspondence.
 Her [missed-contact integration](reference/parallel/konomi-missed-contact-integration-checkpoint.md) includes reviewed conditional endings and played coverage of alternate absence and political scenes.
-The last checked local package contains the earlier 533-scene export; the current development export has 538 scenes.
+The last checked local package contains the earlier 533-scene export; the current development export has 585 scenes.
 Native recovery and actual game verification remain separate requirements.
 Arsinoe's approved shop portrait is assigned to all nine pages of her opening counter conversation after independent context review.
 The [Minagho and Chivarro audit](reference/canon-review/minagho-chivarro-integration.md) establishes which parent events and endings must be extended rather than duplicated.
 Their 47-scene continuation has passed [revision 3 literary review](reference/story-review/minagho-chivarro-continuation-third-review.md), with separate credited budgets of 22,278 words for Minagho and 21,991 for Chivarro.
 Chivarro's own arrival and choices are required before any expanded group relationship.
 The [revised ending contract](reference/canon-review/minagho-chivarro-ending-contract-third-review.md) preserves earned reunion, survivor outcomes and original parent selectors.
-This candidate is not in the 538-scene export yet; conditional parent-ending implementation and verification remain required before that integration is complete.
+This continuation is now integrated into the 585-scene export with independently reviewed conditional parent-ending implementation and portable source fixtures.
+The shared managed runner passed 71,672 assertions against this export; actual parent initialization and rendered endings still need in-game verification.
 Konomi's [retained-return placement audit](reference/canon-review/konomi-return-placement-audit.md) identifies a temporary personal meeting that can displace only the native hidden fallback without restoring her office.
 Its helper has passed independent engineering review and the accepted remote invitation is integrated.
-Registration, physical delivery and explicit retry integration remain underway; the current export still requires physical contact already supplied by the game.
+Registration and explicit retry integration are wired and independently reviewed; physical actor arrival and save persistence still need in-game verification.
 The [Irabeth selector witness](reference/canon-review/irabeth-meeting-selector-review.md) proves bounded native claim arbitration, while explicitly leaving actual activation, actor arrival and save persistence unverified.
 
 The user has removed the TTS freeze milestone.
@@ -72,6 +79,8 @@ Complete routes through review on their merits without rushing writing or loweri
 Soana's late-campaign continuation has passed two independent reviews and is integrated, bringing her material to 23 visits and 12 endings.
 The exact export and verification limits are recorded in [the Soana integration checkpoint](reference/parallel/soana-late-campaign-integration-checkpoint.md).
 Anevia and Irabeth's independent campaigns and their reviewed shared bridge are integrated.
+The fresh [assembled trio review](reference/story-review/tirabade-assembled-review-20260926-current.md) passes the doubled aggregate length floor but requires revisions to early motivations, repetition, native-history responses and gameplay before all literary scores exceed 90.
+An author is revising the reproduced opening injury contradiction and early motivations; those revisions require a separate review.
 Their restored-character access remains under native actor and event-lifecycle development.
 The [Jerribeth observer review](reference/parallel/jerribeth-recovery-observer-review.md) accepts a read-only recovery prerequisite, not a working resurrection or relocation.
 The older scene counts below are historical checkpoints, not the current inventory.

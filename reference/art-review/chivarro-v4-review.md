@@ -53,6 +53,20 @@ This is not a claim of exact pixel preservation outside the face.
 
 ## Assignment and limits
 
+The following scores are this reviewer's subjective judgments of the viewed v4 image on a 100-point scale.
+They are not objective measurements, a panel consensus or predictions of the user's preference.
+Each criterion independently exceeds 90; no average is used to offset a weaker criterion.
+
+| Criterion | Score | Basis |
+| --- | ---: | --- |
+| Facial appeal | 92 | Softer cheeks and a readable asymmetric smile improve v2/v3; intentional eyeless smoothness and the restrained expression limit the score. |
+| Recognizable identity | 94 | Established hair, horns, ears, jewelry and composed bearing survive the facial change. |
+| Clearly adult presentation | 97 | Face, proportions and bearing consistently read as adult without an aged treatment. |
+| Anatomy | 94 | Coherent eyeless face and plausible visible hands, limbs and horns; no obvious new defect. |
+| Composition | 95 | Full figure, complete horn headroom and readable dress gesture remain balanced with the room. |
+| Painterly game fit | 92 | Consistent fantasy illustration and window lighting; the highly polished skin is slightly smoother than the surrounding textures. |
+| Scoped scene fit | 94 | Copper dress, loose sleeve and room support the approved general dressing scene; exact cuff-to-cup action is outside this approval. |
+
 Approve only `minachiv.the_entrance_she_wants`, node `warm`, using the existing `ChivarroWarm` key.
 That node follows her choice of the loose-sleeved dress and return from behind the hanging cloth.
 The picture remains a general illustration of trying that dress, not the exact instant the cuff nearly touches the cup.
