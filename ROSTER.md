@@ -53,13 +53,14 @@ Existing romance ownership determines whether to extend a route or create a new 
 | Wenduag | Base game | Extend loyalty and trust; use her own ambitions in introductions and intrigue | Native romance root identified; adapter pending |
 | Galfrey | Base game | Extend duty, campaign decisions and native courtship with bespoke Trickster opportunities | Native romance root identified; adapter pending |
 | Soana | Experimental new route | Wintersun forest and bear quest; preserve her history and dwarf identity, confront coercive outcomes | 23 visits and 12 endings integrated, 35,578 distinct-segment words; late contribution passed two reviews; universal Trickster recovery, fresh late access, art and live verification remain incomplete |
-| Areelu | Experimental new route | Laboratory, soul experiment and final confrontation; primary work is adversarial reconciliation and research partnership | Native maternal premise requires explicit treatment |
+| Areelu | Experimental alternate premise; native relationship retained separately | Laboratory, soul experiment and final confrontation; investigate an adult intellectual-rivalry romance only with genuinely unrelated adults and no parental relationship | User-requested alternate romance research brief recorded; identity and continuity design unresolved; no romantic manuscript approved |
 | Ember | Base-game companion; official expanded friendship route | Develop compassion, doubt, influence and reciprocal support; connect other routes through her own choices | 36 development friendship scenes; substantial campaign reviewed with earlier openings and aggregate floor cleared; Trickster access, art and live verification remain incomplete |
 | Aivu | Base-game companion; official expanded friendship route | Develop companionship, independence and rescue history with a credible Trickster connection | 30 development friendship scenes; substantial campaign reviewed with earlier openings and aggregate floor cleared; native contact sourced; Trickster guest access, art and live verification remain incomplete |
 
 Areelu's native text explicitly frames the Commander as her child and describes the child's soul graft.
 That attachment must not be relabeled as romance.
 Any separately explored adult romantic alternate premise would need genuinely unrelated adult participants and an explicit departure from that native premise; it is not approved or implemented by this roster entry.
+The user has requested that investigation through intellectual rivalry and Trickster ingenuity, as recorded in the [alternate relationship research brief](reference/story-review/areelu-alternate-route-brief.md).
 Her experimental non-romantic story remains part of the project regardless of that investigation's outcome.
 
 ## Additional official script candidates
