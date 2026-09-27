@@ -4,6 +4,13 @@ Current delivery priority: finish the adult romance partners and conduct the fir
 This follows the user's latest instruction and changes scheduling, not their eventual full-content friendship scope or quality requirements.
 Preserve all existing Ember and Aivu work.
 
+Current Irabeth departure checkpoint: the three-scene invitation manuscript passed independent scoped review, and its narrow Rules exception passed independent review in commits `c9441d9` and `a6d32a8`.
+The registered isolated 588-scene candidate passed 25,962,607 Rules assertions at SHA256 `ABAF62B57835480AF46A7C1648820AE071BFC0624AB8EFFD74DA87D19F58F87A`.
+The manuscript adds 1,736 distinct words and earns one personal meeting after a living political departure.
+Its supplier investigation, subsequent relationship and full departure recovery remain unfinished.
+Native meeting integration and test registration are under separate independent review; actual Unity arrival, withdrawal, save/load and ToyBox remain unverified.
+The shared export remains the earlier 585-scene checkpoint, and no new package or installed mod is implied by this isolated result.
+
 The requested outcome is an installed, shareable expansion with distinct routes for the eligible adult women in [the roster](ROSTER.md), extending existing game and RanRomance content where it already exists.
 The original Anevia and Irabeth relationship must continue to work with existing saves.
 Relationships may intersect through introductions, affairs, and optional Commander-plus-two-women relationships.
