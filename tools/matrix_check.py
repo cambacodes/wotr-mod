@@ -22,7 +22,18 @@ Checked per device state (a state with a setup, fallback_setup or payoff scene o
   todo       no open TODO(B) marker anywhere in the character (use --allow-todo to report without failing)
 Characters with relationship_status pending-signoff are reported and skipped.
 
+Runtime-rule mode (--rules, see tools/matrix_rules.py): checks every scene object against what Rules.Validate and
+Main.Build enforce, reading blueprints.zip from --game: inline native_return_cue safety, native_next type/terminal/
+same-dialog, no mythic/alignment on epilogues, trickster_device for scenes that must run while their relationship's own
+unavailable flag holds, remove_item whitelist. Each finding is FATAL (whole mod disabled), DEGRADES (relationship
+disabled), BLOCKED (scene never available) or GATE (build gate fails). It also executes every state's rules_test against
+the matrix compiled into Rules-compatible scenes (rrt_verify's Python port of Rules.Available: Derived, Latches,
+UnavailableOverrides, ForbidOverrides, TricksterDevice, RequiresAnyGroups) -> TEST; checks each relationship has a
+CommittedFlag producer -> ROUTE; lints singleton requires_any_groups (DEGRADES), delays anchored on unstamped native keys,
+scene/choice sets contradictions and textless node references (WARN). Exit 1 on any finding except WARN.
+
 Usage: python tools/matrix_check.py [MATRIX] [--story development/Story.json] [--json OUT] [--allow-todo] [--quiet]
+       python tools/matrix_check.py [MATRIX] --rules [--game DIR] [--json OUT] [--quiet]
 """
 import argparse
 import json
@@ -223,12 +234,26 @@ def main():
     ap.add_argument("--json", help="write the per-character findings here")
     ap.add_argument("--allow-todo", action="store_true", help="report open TODO(B) markers without failing on them")
     ap.add_argument("--quiet", action="store_true", help="summary table only")
+    ap.add_argument("--rules", action="store_true", help="runtime-rule mode (validate_rules); exit 1 on any finding")
+    ap.add_argument("--game", default=r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure",
+                    help="game folder whose blueprints.zip the --rules checks read")
     a = ap.parse_args()
     try:   # matrix text carries arrows and em dashes; never crash a Windows console on them
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     except (AttributeError, ValueError):
         pass
     matrix = json.loads(Path(a.matrix).read_text(encoding="utf-8"))
+    if a.rules:
+        import matrix_rules
+        story = json.loads(Path(a.story).read_text(encoding="utf-8")) if a.story and Path(a.story).is_file() else {}
+        results = matrix_rules.validate_rules(matrix, matrix_rules.Archive(a.game), story)
+        for name, more in matrix_rules.run_rules_tests(matrix, story).items():
+            results.setdefault(name, []).extend(more)
+        total = matrix_rules.print_rules(results, a.quiet)
+        if a.json:
+            Path(a.json).write_text(json.dumps({k: [dict(severity=s, where=w, message=m) for s, w, m in v] for k, v in results.items()},
+                                               indent=1, ensure_ascii=False), encoding="utf-8")
+        sys.exit(1 if total else 0)
     known = story_keys(a.story)
     out, rows = {}, []
     print("# matrix_check: %s (%s, %d characters); known Story.json keys: %d"
