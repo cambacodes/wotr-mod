@@ -57,7 +57,44 @@ namespace Tirabade
             && !LoadingProcess.Instance.IsLoadingInProcess && game.State.LoadedAreaState?.MainState != null
             && game.CurrentlyLoadedArea?.AssetGuid.ToString() == Spec.Area;
 
-        private Vector3 Target => new Vector3(Spec.Position!.X, Spec.Position.Y, Spec.Position.Z);
+        // E12b: the placement for this tick (captured Position, or the live At anchor plus its offset).
+        private Vector3 target;
+        private float facing;
+        internal bool AnchorFailed { get; private set; }
+
+        private bool ResolveTarget(Game game)
+        {
+            if (Spec.At == null)
+            {
+                if (Spec.Position == null) return false;
+                target = new Vector3(Spec.Position.X, Spec.Position.Y, Spec.Position.Z);
+                facing = Spec.Position.Orientation;
+                return true;
+            }
+            Vector3 anchor;
+            float orientation = 0f;
+            if (Spec.At.NearUnit != null)
+            {
+                var guid = BlueprintGuid.Parse(Spec.At.NearUnit);
+                var near = game.State.LoadedAreaState.AllEntityData.OfType<UnitEntityData>().Where(unit => unit.Blueprint?.AssetGuid == guid
+                    && !unit.Destroyed && !unit.DestroyMark && !unit.IsDisposed && unit.IsInGame && !unit.State.IsDead && !unit.State.IsFinallyDead).Take(2).ToArray();
+                if (near.Length != 1) return false;
+                anchor = near[0].Position;
+                orientation = near[0].Orientation;
+            }
+            else
+            {
+                var entity = EntityService.Instance.GetEntity(Spec.At.Locator!);
+                if (entity == null || entity.Destroyed) return false;
+                anchor = entity.Position;
+            }
+            var offset = Rules.AnchorOffset(Spec.At, orientation);
+            target = anchor + new Vector3(offset.Dx, 0f, offset.Dz);
+            facing = offset.Facing;
+            return true;
+        }
+
+        private Vector3 Target => target;
 
         internal PresenceObservation Observe(out UnitEntityData? native, out UnitEntityData? copy, out PresenceRecord? record)
         {
@@ -67,6 +104,7 @@ namespace Tirabade
             var seen = new PresenceObservation();
             if (game == null || !AreaLoaded(game)) return seen;
             seen.AreaLoaded = true;
+            seen.AnchorResolved = ResolveTarget(game);
             record = Read();
             seen.Recorded = record != null;
             seen.RecordedUnhide = record?.Unhidden == true;
@@ -85,7 +123,7 @@ namespace Tirabade
                 native = natives[0];
                 seen.NativeAlive = true;
                 seen.NativeHidden = !native.IsInGame;
-                seen.NativeAtPosition = Spec.Position == null || (native.Position - Target).sqrMagnitude <= 2.25f;
+                seen.NativeAtPosition = Spec.Position == null && Spec.At == null || !seen.AnchorResolved || (native.Position - Target).sqrMagnitude <= 2.25f;
             }
             return seen;
         }
@@ -97,10 +135,13 @@ namespace Tirabade
             {
                 var seen = Observe(out var native, out var copy, out var record);
                 var steps = Rules.PlanPresence(Spec, wanted, seen);
+                // E12b: an anchored copy that cannot be placed is reported, and exposed as <key>.failed for the letter twin.
+                AnchorFailed = wanted && seen.AreaLoaded && Spec.At != null && !seen.AnchorResolved && !seen.CopyFound && !seen.NativeAlive;
                 foreach (var step in steps) Execute(step, native, copy, record);
                 Status = !seen.AreaLoaded ? "area not loaded" : (wanted ? "wanted" : "not wanted")
                     + (seen.NativeAlive ? ", native present" + (seen.NativeHidden ? " (hidden)" : "") : "")
-                    + (seen.CopyFound ? ", copy present" : "") + (steps.Length > 0 ? " -> " + string.Join("+", steps) : "");
+                    + (seen.CopyFound ? ", copy present" : "") + (AnchorFailed ? ", anchor not found (not spawned)" : "")
+                    + (steps.Length > 0 ? " -> " + string.Join("+", steps) : "");
             }
             catch (Exception ex) { LastError = ex; Status = "error: " + ex.Message; }
         }
@@ -115,7 +156,7 @@ namespace Tirabade
                     native!.IsInGame = true;
                     break;
                 case PresenceStep.Move:
-                    native!.Translocate(Target, Spec.Position!.Orientation);
+                    native!.Translocate(Target, facing);
                     break;
                 case PresenceStep.Hide:
                     native!.IsInGame = false;
@@ -125,7 +166,7 @@ namespace Tirabade
                     // Persist before spawning: an ambiguous submitted record is never spawned twice (TerendelevDelivery pattern).
                     var fresh = new PresenceRecord { Key = Key, UnitId = Guid.NewGuid().ToString(), Submitted = true };
                     Write(fresh);
-                    game.EntityCreator.SpawnUnit(Blueprint, Target, Quaternion.Euler(0f, Spec.Position!.Orientation, 0f),
+                    game.EntityCreator.SpawnUnit(Blueprint, Target, Quaternion.Euler(0f, facing, 0f),
                         game.State.LoadedAreaState.MainState, fresh.UnitId);
                     break;
                 case PresenceStep.Remove:

@@ -122,7 +122,18 @@ namespace Tirabade
         public int MinChapter = 1;
         public int MaxChapter = 6;
         public PresencePosition? Position;
+        // E12b: place relative to a live native anchor instead of captured coordinates.
+        public PresenceAnchor? At;
         public string[] AnswerLists = Array.Empty<string>();
+    }
+
+    public sealed class PresenceAnchor
+    {
+        public string? NearUnit;      // native BlueprintUnit GUID standing in the area
+        public string? Locator;       // native scene entity id (e.g. a locator used by a native Translocate)
+        public float[]? Offset;       // [dx, dz] in world space, or
+        public string? Side;          // left | right | front | behind, relative to the anchor's facing
+        public float Distance = 1.5f;
     }
 
     public sealed class PresencePosition
@@ -137,6 +148,7 @@ namespace Tirabade
     public sealed class PresenceObservation
     {
         public bool AreaLoaded;
+        public bool AnchorResolved = true;   // E12b: the At anchor was found alive in the loaded area
         public bool NativeAlive;       // a live, friendly unit of the blueprint that is not our copy
         public bool NativeHidden;      // that unit is out of game (hidden by native state)
         public bool NativeAtPosition = true;
@@ -588,7 +600,7 @@ namespace Tirabade
                 if (wanted && seen.NativeAlive)
                 {
                     if (seen.NativeHidden) steps.Add(PresenceStep.Unhide);
-                    if (presence.Position != null && !seen.NativeAtPosition) steps.Add(PresenceStep.Move);
+                    if ((presence.Position != null || presence.At != null && seen.AnchorResolved) && !seen.NativeAtPosition) steps.Add(PresenceStep.Move);
                 }
                 else if (!wanted && seen.RecordedUnhide && seen.NativeAlive && !seen.NativeHidden) steps.Add(PresenceStep.Hide);
                 else if (!wanted && seen.Recorded) steps.Add(PresenceStep.Forget);
@@ -599,6 +611,7 @@ namespace Tirabade
                 if (seen.CopyFound) { if (!seen.CopyAlive) steps.Add(PresenceStep.Blocked); }
                 else if (seen.NativeAlive) { if (seen.Recorded) steps.Add(PresenceStep.Forget); }
                 else if (seen.Submitted) steps.Add(PresenceStep.Blocked);
+                else if (!seen.AnchorResolved) steps.Add(PresenceStep.Blocked);   // E12b: never spawn without a live anchor
                 else steps.Add(PresenceStep.Spawn);
             }
             else if (seen.CopyFound) steps.Add(PresenceStep.Remove);
@@ -637,6 +650,33 @@ namespace Tirabade
 
         // E14d: scenes used as native-cue replacements are never attached as pages of their own.
         public static bool IsNativeReplacement(Story story, Scene scene) => story.NativeEpilogueEdits.Values.Any(edit => edit.Replacement == scene.Id);
+
+        // E12b: the planar offset (dx, dz) from an anchor facing `orientation` degrees (Unity: 0 = +z, clockwise), and the
+        // orientation that faces the anchor from the placed unit.
+        public static (float Dx, float Dz, float Facing) AnchorOffset(PresenceAnchor at, float orientation)
+        {
+            float dx, dz;
+            if (at.Offset != null) { dx = at.Offset[0]; dz = at.Offset[1]; }
+            else
+            {
+                double r = orientation * Math.PI / 180.0;
+                float fx = (float)Math.Sin(r), fz = (float)Math.Cos(r);        // forward
+                float rx = fz, rz = -fx;                                        // right (clockwise 90 degrees)
+                switch (at.Side)
+                {
+                    case "left": dx = -rx; dz = -rz; break;
+                    case "right": dx = rx; dz = rz; break;
+                    case "behind": dx = -fx; dz = -fz; break;
+                    default: dx = fx; dz = fz; break;                           // front
+                }
+                dx *= at.Distance; dz *= at.Distance;
+            }
+            float facing = (float)(Math.Atan2(-dx, -dz) * 180.0 / Math.PI);
+            return (dx, dz, facing < 0 ? facing + 360f : facing);
+        }
+
+        // E12b: the runtime observation a letter twin can wait on when an anchored copy could not be placed.
+        public static string PresenceFailedFlag(string presenceKey) => presenceKey + ".failed";
 
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
@@ -718,11 +758,11 @@ namespace Tirabade
             var authoredFlags = new HashSet<string>(story.Scenes.Select(s => s.Id)
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
-            var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
+            var derivedFlags = new HashSet<string>(story.Presences.Where(p => p.Value?.At != null).Select(p => PresenceFailedFlag(p.Key)).Concat(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
                 "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
-                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")));
+                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available"))));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
@@ -978,10 +1018,17 @@ namespace Tirabade
             foreach (var pair in story.Presences)
             {
                 var p = pair.Value;
+                if (p?.At != null && authored.Contains(PresenceFailedFlag(pair.Key)))
+                    throw new InvalidOperationException("The runtime presence observation cannot be authored: " + PresenceFailedFlag(pair.Key));
                 string relationship = pair.Key.EndsWith(".presence", StringComparison.Ordinal) ? pair.Key.Substring(0, pair.Key.Length - ".presence".Length) : "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null
-                    || p.Mode == "spawn-copy" && (p.Position == null || p.Requires.Length == 0)
+                    || p.Mode == "spawn-copy" && (p.Position == null && p.At == null || p.Requires.Length == 0)
+                    || p.At != null && ((p.At.NearUnit == null) == (p.At.Locator == null)
+                        || p.At.NearUnit != null && !GuidOk(p.At.NearUnit) || p.At.Locator != null && string.IsNullOrWhiteSpace(p.At.Locator)
+                        || p.At.Offset != null && (p.At.Offset.Length != 2 || p.At.Side != null)
+                        || p.At.Offset == null && (p.At.Side != null && !new[] { "left", "right", "front", "behind" }.Contains(p.At.Side)
+                            || p.At.Distance <= 0f || p.At.Distance > 10f))
                     || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter
                     || p.Requires.Concat(p.Forbids).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))

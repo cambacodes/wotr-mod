@@ -243,6 +243,12 @@ namespace Tirabade
                 {
                     string relationship = pair.Key.Substring(0, pair.Key.Length - ".presence".Length);
                     var unit = Resolve<BlueprintUnit>(pair.Value.Unit, "Presence unit " + pair.Key);
+                    // E12b: a NearUnit anchor must be a native unit; a wrong one disables only this presence.
+                    if (pair.Value.At?.NearUnit != null && Resolve<BlueprintUnit>(pair.Value.At.NearUnit, "Presence anchor " + pair.Key) == null)
+                    {
+                        warnings.Add("Presence " + pair.Key + " disabled: its anchor unit " + pair.Value.At.NearUnit + " is not a BlueprintUnit.");
+                        continue;
+                    }
                     var area = Resolve<BlueprintArea>(pair.Value.Area, "Presence area " + pair.Key);
                     var hosts = pair.Value.AnswerLists.Select(id => Resolve<BlueprintAnswersList>(id, "Presence answer list " + pair.Key)).ToArray();
                     if (unit == null || area == null || hosts.Any(list => list == null)) Degrade(relationship, "presence " + pair.Key + " is missing native data");
@@ -932,6 +938,8 @@ namespace Tirabade
             foreach (var contact in contactUnits)
                 if (NativeContact.IsAvailable(contact.Value)) state.AvailableContacts.Add(contact.Key);
             if (IrabethCorrespondenceAvailable()) state.Flags.Add("irabeth.return_correspondence_available");
+            foreach (var presence in presences)
+                if (presence.AnchorFailed) state.Flags.Add(Rules.PresenceFailedFlag(presence.Key));
             if (irabethMeeting?.Arrived() == true) state.Flags.Add("irabeth.return_meeting_arrived");
             if (nurahMeeting?.CorrespondenceAvailable() == true) state.Flags.Add("nurah.correspondence_available");
             if (nurahMeeting?.ArrivedActor() != null)

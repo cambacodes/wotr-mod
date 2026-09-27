@@ -220,6 +220,8 @@ internal static class Program
                 .Concat(story.RemovableItems.Select(guid => new { Guid = guid, ExpectedType = "BlueprintItem*", Source = "RemovableItems" }))
                 .Concat(story.Presences.SelectMany(p => new[] { new { Guid = p.Value.Unit, ExpectedType = "BlueprintUnit", Source = p.Key },
                     new { Guid = p.Value.Area, ExpectedType = "BlueprintArea*", Source = p.Key } }
+                    .Concat(p.Value.At?.NearUnit == null ? new[] { new { Guid = p.Value.Unit, ExpectedType = "BlueprintUnit", Source = p.Key } }
+                        : new[] { new { Guid = p.Value.At.NearUnit, ExpectedType = "BlueprintUnit", Source = p.Key + ".At" } })
                     .Concat(p.Value.AnswerLists.Select(g => new { Guid = g, ExpectedType = "BlueprintAnswersList", Source = p.Key }))))
                 .Concat(story.Revivals.Select(e => new { Guid = e.Value.Unit, ExpectedType = "BlueprintUnit", Source = "revive." + e.Key }))
                 .Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits).Select(guid => new { Guid = guid, ExpectedType = "BlueprintUnit", Source = s.Id })))
@@ -360,6 +362,7 @@ internal static class Program
         ContinueBeforeTests.Run(Check);
         CountTests.Run(Check);
         SceneAnchorTests.Run(Check);
+        PresenceAnchorTests.Run(Check);
         // __E14_RULES__
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);

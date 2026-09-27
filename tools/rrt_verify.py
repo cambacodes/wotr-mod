@@ -129,7 +129,8 @@ class Model:
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
-        self.derived = {"loss", "ascended", "inhuman", "chapter_one", "chapter_later"} | CONTACT_EVIDENCE | \
+        self.derived = {k + ".failed" for k, p in (story.get("Presences") or {}).items() if p.get("At")} | \
+                       {"loss", "ascended", "inhuman", "chapter_one", "chapter_later"} | CONTACT_EVIDENCE | \
                        {"revive.%s.available" % k for k in self.revivals}
         self.builtin_derived = set(self.derived)
         # E1 latches: authored flags the runtime records from native sources (never set by a choice).
@@ -603,7 +604,7 @@ def validate(model):
         rel = k[:-len(".presence")] if k.endswith(".presence") else None
         if (rel not in rels or not hexre.match(p.get("Unit") or "") or not hexre.match(p.get("Area") or "")
                 or p.get("Mode", "reuse-native") not in ("reuse-native", "spawn-copy")
-                or (p.get("Mode") == "spawn-copy" and (not p.get("Position") or not p.get("Requires")))):
+                or (p.get("Mode") == "spawn-copy" and (not (p.get("Position") or p.get("At")) or not p.get("Requires")))):
             errs.append("Invalid presence: " + k)
     for k, r in rels.items():
         for a, b in (r.get("UnavailableOverrides") or {}).items():
@@ -1307,6 +1308,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k, p in (story.get("Presences") or {}).items():
             want.append((p.get("Unit"), "BlueprintUnit", "Presences." + k))
             want.append((p.get("Area"), "BlueprintArea", "Presences." + k))
+            if (p.get("At") or {}).get("NearUnit"): want.append((p["At"]["NearUnit"], "BlueprintUnit", "Presences.At." + k))
             for g in p.get("AnswerLists") or []: want.append((g, "BlueprintAnswersList", "Presences." + k))
         for r in story.get("ParentEpilogueLossRules") or []:
             for g in r.get("SuppressPages", []): want.append((g, "BlueprintBookPage", "LossRule.SuppressPages"))
