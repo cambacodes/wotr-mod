@@ -1,0 +1,23 @@
+// Headless reconstruction of extracted expressions using actual native condition types.
+internal class ConditionsBuilder {
+ readonly List<Condition> conditions=new List<Condition>(); bool useOr;
+ internal static ConditionsBuilder New()=>new ConditionsBuilder();
+ internal static object Reference(Type type,string text){var result=Activator.CreateInstance(type);typeof(Kingmaker.Blueprints.BlueprintReferenceBase).GetField("deserializedGuid",BindingFlags.Instance|BindingFlags.Public|BindingFlags.NonPublic).SetValue(result,Kingmaker.Blueprints.BlueprintGuid.Parse(text));return result;}
+ ConditionsBuilder Add(Condition c){conditions.Add(c);return this;}
+ static void Ref(object c,string field,string id){var f=c.GetType().GetField(field,BindingFlags.Instance|BindingFlags.Public|BindingFlags.NonPublic);f.SetValue(c,Reference(f.FieldType,id));}
+ internal ConditionsBuilder UseOr(){useOr=true;return this;}
+ internal ConditionsBuilder AddOrAndLogic(ConditionsBuilder b,bool negate=false)=>Add(new Kingmaker.Designers.EventConditionActionSystem.Conditions.OrAndLogic{ConditionsChecker=b.Build(null),Not=negate});
+ internal ConditionsBuilder EtudeStatus(bool? completed,bool? completionInProgress,string etude,bool negate=false,bool? notStarted=null,bool? playing=null,bool? started=null){
+ var c=new Kingmaker.Designers.EventConditionActionSystem.Conditions.EtudeStatus{Not=negate};Ref(c,"m_Etude",etude);
+ if(completed.HasValue)c.Completed=completed.Value;if(completionInProgress.HasValue)c.CompletionInProgress=completionInProgress.Value;if(notStarted.HasValue)c.NotStarted=notStarted.Value;if(playing.HasValue)c.Playing=playing.Value;if(started.HasValue)c.Started=started.Value;return Add(c);}
+ internal ConditionsBuilder DialogSeen(string dialog,bool negate=false){var c=new Kingmaker.Assets.Designers.EventConditionActionSystem.Conditions.DialogSeen{Not=negate};Ref(c,"m_Dialog",dialog);return Add(c);}
+ internal ConditionsBuilder AnswerSelected(string answer,bool? currentDialog=null,bool negate=false){var c=new Kingmaker.Designers.EventConditionActionSystem.Conditions.AnswerSelected{Not=negate};if(currentDialog.HasValue)c.CurrentDialog=currentDialog.Value;Ref(c,"m_Answer",answer);return Add(c);}
+ internal ConditionsBuilder FlagUnlocked(string conditionFlag,bool? exceptSpecifiedValues=null,bool negate=false,List<int> specifiedValues=null){var c=new Kingmaker.Designers.EventConditionActionSystem.Conditions.FlagUnlocked{Not=negate};if(exceptSpecifiedValues.HasValue)c.ExceptSpecifiedValues=exceptSpecifiedValues.Value;if(specifiedValues!=null)c.SpecifiedValues=specifiedValues;Ref(c,"m_ConditionFlag",conditionFlag);return Add(c);}
+ internal ConditionsChecker Build(object validator)=>new ConditionsChecker{Conditions=conditions.ToArray(),Operation=useOr?Operation.Or:Operation.And};
+}
+internal class ActionsBuilder {
+ readonly List<GameAction> actions=new List<GameAction>();
+ internal static ActionsBuilder New()=>new ActionsBuilder();
+ internal ActionsBuilder MarkCuesSeen(params string[] cues){var c=new Kingmaker.Designers.EventConditionActionSystem.Actions.MarkCuesSeen();typeof(Kingmaker.Designers.EventConditionActionSystem.Actions.MarkCuesSeen).GetField("m_Cues",BindingFlags.Instance|BindingFlags.NonPublic|BindingFlags.Public).SetValue(c,cues.Select(s=>(Kingmaker.Blueprints.BlueprintCueBaseReference)ConditionsBuilder.Reference(typeof(Kingmaker.Blueprints.BlueprintCueBaseReference),s)).ToArray());actions.Add(c);return this;}
+ internal ActionList Build(object validator)=>new ActionList{Actions=actions.ToArray()};
+}

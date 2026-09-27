@@ -1,0 +1,77 @@
+using BlueprintCore.Blueprints.Configurators.DialogSystem;
+using BlueprintCore.Conditions.Builder;
+using BlueprintCore.Conditions.Builder.StoryEx;
+
+namespace RanRomance.Mina;
+
+public class Slide0006
+{
+	private static readonly string SlideName = "RanRomMinaSlide0006";
+
+	private static readonly string Cue0001Name = "RanRomMinaSlide0006Cue0001";
+
+	private static readonly string Cue0002Name = "RanRomMinaSlide0006Cue0002";
+
+	private static readonly string Cue0003Name = "RanRomMinaSlide0006Cue0003";
+
+	private static readonly string Cue0004Name = "RanRomMinaSlide0006Cue0004";
+
+	private static readonly string Cue0005Name = "RanRomMinaSlide0006Cue0005";
+
+	private static readonly string Cue0006Name = "RanRomMinaSlide0006Cue0006";
+
+	public static string Configure()
+	{
+		string text = "01677da8df6e42c6b4803ceef524b1fe";
+		string text2 = "56f4e95390ec472b855e759fbc548b81";
+		string text3 = "85b479a3da8a4fa6b602fedf89201695";
+		string text4 = "64afcd565e044e53977e1878444f4ee1";
+		string text5 = "b9e2550bc7244f6c8480106b41667d96";
+		string text6 = "bb49f54dc0a547c287238b5d7d8489b3";
+		string text7 = "5831af75932d43ed902a2d8def2adf3d";
+		ConditionsBuilder conditions = ConditionsBuilder.New().EtudeStatus(null, null, "RanRomMinaDragon", negate: false, null, true);
+		ConditionsBuilder conditions2 = ConditionsBuilder.New().EtudeStatus(null, null, "71f85264d9064074f9cf74999ecbffa9", negate: false, null, true);
+		ConditionsBuilder conditions3 = ConditionsBuilder.New().EtudeStatus(null, null, "c6935ff7cbfd4aed8ac479e94e66918d", negate: false, null, true).EtudeStatus(null, null, "71f85264d9064074f9cf74999ecbffa9", negate: true, null, true)
+			.EtudeStatus(null, null, "RanRomMinaRomance", negate: false, null, true);
+		ConditionsBuilder conditions4 = ConditionsBuilder.New().EtudeStatus(null, null, "c6935ff7cbfd4aed8ac479e94e66918d", negate: false, null, true).EtudeStatus(null, null, "71f85264d9064074f9cf74999ecbffa9", negate: false, null, true)
+			.EtudeStatus(null, null, "RanRomMinaRomance", negate: false, null, true);
+		ConditionsBuilder conditions5 = ConditionsBuilder.New().EtudeStatus(null, null, "c6935ff7cbfd4aed8ac479e94e66918d", negate: true, null, true).EtudeStatus(null, null, "381a296094804761af0893d2e70dc2df", negate: true, null, true)
+			.EtudeStatus(null, null, "71f85264d9064074f9cf74999ecbffa9", negate: true, null, true)
+			.EtudeStatus(null, null, "RanRomMinaRomance", negate: false, null, true);
+		ConditionsBuilder conditions6 = ConditionsBuilder.New().EtudeStatus(null, null, "c6935ff7cbfd4aed8ac479e94e66918d", negate: true, null, true).EtudeStatus(null, null, "381a296094804761af0893d2e70dc2df", negate: true, null, true)
+			.EtudeStatus(null, null, "71f85264d9064074f9cf74999ecbffa9", negate: false, null, true)
+			.EtudeStatus(null, null, "RanRomMinaRomance", negate: false, null, true);
+		BookPageConfigurator.New(SlideName, text).SetImageLink("482f509e50aa6484bafee746ddb3849f").SetForeImageLink("1abecb015eedf484eab1b0229a7cecf7")
+			.AddToCues(text2)
+			.AddToCues(text3)
+			.AddToCues(text4)
+			.AddToCues(text5)
+			.AddToCues(text6)
+			.AddToCues(text7)
+			.SetConditions(conditions)
+			.AddToCues("RanRomFiller")
+			.AddToAnswers("1afb887108b34ac1b082dabf64a786b6")
+			.SetShowOnce()
+			.Configure();
+		CueConfigurator.New(Cue0001Name, text2).SetText("RanRomMinaSlide0006Cue0001.Text").SetShowOnce()
+			.Configure();
+		CueConfigurator.New(Cue0002Name, text3).SetConditions(conditions2).SetText("RanRomMinaSlide0006Cue0002.Text")
+			.SetShowOnce()
+			.Configure();
+		CueConfigurator.New(Cue0003Name, text4).SetConditions(conditions3).SetText("RanRomMinaSlide0006Cue0003.Text")
+			.SetShowOnce()
+			.Configure();
+		CueConfigurator.New(Cue0004Name, text5).SetConditions(conditions4).SetText("RanRomMinaSlide0006Cue0004.Text")
+			.SetShowOnce()
+			.Configure();
+		CueConfigurator.New(Cue0005Name, text6).SetConditions(conditions5).SetText("RanRomMinaSlide0006Cue0005.Text")
+			.SetShowOnce()
+			.Configure();
+		CueConfigurator.New(Cue0006Name, text7).SetConditions(conditions6).SetText("RanRomMinaSlide0006Cue0006.Text")
+			.SetShowOnce()
+			.Configure();
+		return text;
+	}
+}
+You are not using the latest version of the tool, please update.
+Latest version is '11.1.0.9782' (yours is '9.1.0.7988')

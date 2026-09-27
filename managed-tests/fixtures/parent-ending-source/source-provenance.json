@@ -1,0 +1,70 @@
+{
+  "parent_assembly": {
+    "path": "Mods/RanRomance/RanRomance.dll",
+    "sha256": "281239B19FF12675D2E8E48CD86B3759C38F6598A93E13F254A044C5E990DB68"
+  },
+  "game_assembly": {
+    "path": "Wrath_Data/Managed/Assembly-CSharp.dll",
+    "sha256": "2CB7160B7154D4FFACC77B9C51B1EB26199E1294300F04FDFC073367B2EF8953"
+  },
+  "decompiler": "ilspycmd 9.1.0.7988",
+  "inputs": {
+    "verified-contract.json": {
+      "sha256": "9A3C8B03067FF5EE0E5FCF68487B142A9DB32709B104737E2383173FBA0B8347",
+      "origin": "minichiv ending source audit, extracted from installed RanRomance DLL and native blueprint archive"
+    },
+    "native-paired.json": {
+      "sha256": "28F46A6C71E94CBD959447E7B567B36F75BE72A4A389C74C192183E60E8DB3B2",
+      "origin": "minichiv ending source audit, extracted from installed RanRomance DLL and native blueprint archive"
+    },
+    "Slide0001.cs.txt": {
+      "sha256": "6441A74E7AD5CFEB47CFC8208359686294EC4BE112C370C9B7D2BE335CE0D180",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0001"
+    },
+    "Slide0002.cs.txt": {
+      "sha256": "C7556E93C1232FF8A4109EDC2AC2EE48D980EF04A2234DCD51C3C66A2784D5E6",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0002"
+    },
+    "Slide0003.cs.txt": {
+      "sha256": "0BF872A0F454742A74FC82DCC214AC10EA16A9C0A4F07D98BA747060DF253653",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0003"
+    },
+    "Slide0004.cs.txt": {
+      "sha256": "2720A9CC62603A764D7E5246B83B12B90886650703E4423B28F0222761F82F9E",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0004"
+    },
+    "Slide0005.cs.txt": {
+      "sha256": "584A5AC9765F4FD10F7AEDF55BE0EB875B537E512947B3E907FF4DA92EE94961",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0005"
+    },
+    "Slide0006.cs.txt": {
+      "sha256": "037F20741654B69F828CA386373045AB3D647DC03E4F1991D4AF9C43D751D5A5",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0006"
+    },
+    "Slide0007.cs.txt": {
+      "sha256": "DDB9B2822821805D7384853C016ACC572A12B81960F690E87EF437A3DD988B8E",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0007"
+    },
+    "Slide0008.cs.txt": {
+      "sha256": "A6A1EE6709D257F720E58D8A190369B3E92620B2C41406859B168313C892AA95",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Slide0008"
+    },
+    "SlideAeon.cs.txt": {
+      "sha256": "485C7A207C10575054A5306DEEDB77854C621D08EF497EDBC4EF720001A20181",
+      "origin": "ILSpy decompilation of RanRomance.Mina.SlideAeon"
+    },
+    "MinaEpil.cs.txt": {
+      "sha256": "F057D47C4C9976327D1CF12DAEBC6726927876990CAC11C4CC99CA32F9791B0D",
+      "origin": "ILSpy decompilation of RanRomance.Mina.MinaEpil"
+    },
+    "MinaMain.cs.txt": {
+      "sha256": "8E20D64F9775E049B276EAF081D3CBF5E27D3AC971FF0478BBC0810FB57C6D98",
+      "origin": "ILSpy decompilation of RanRomance.Mina.Main"
+    },
+    "EpSetup.cs.txt": {
+      "sha256": "76AEFB70A8EA425407476EE38B032C3D509969713DE4BE2E1CEE0F7F0AE34346",
+      "origin": "ILSpy decompilation of Epilogue.Setup.EpSetup"
+    }
+  },
+  "scope": "Extracted evidence and reconstructed actual native condition objects. No parent initialization or successful populated Unity condition evaluation."
+}
