@@ -26,6 +26,8 @@ namespace Tirabade
         public string[] PermanentEtudes = Array.Empty<string>();
         // E12 (GLOBAL-07-lite): returned presences, keyed "<relationship>.presence".
         public Dictionary<string, Presence> Presences = new Dictionary<string, Presence>();
+        // E14d: reviewed native epilogue cues replaced by an RRT epilogue scene's text when an earned condition holds.
+        public Dictionary<string, NativeEpilogueEditSpec> NativeEpilogueEdits = new Dictionary<string, NativeEpilogueEditSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
         // E1: authored flags recorded forever the first time any native/derived source key is observed (TT-02).
@@ -141,6 +143,15 @@ namespace Tirabade
         public bool Recorded;          // a saved presence record exists
         public bool RecordedUnhide;    // the record says we unhid the native unit
         public bool Submitted;         // the record says a copy was spawned
+    }
+
+    public sealed class NativeEpilogueEditSpec
+    {
+        public string Page = "";
+        public string Sequence = "";
+        public string Key = "";
+        public string Replacement = "";
+        public string[][] When = Array.Empty<string[]>();
     }
 
     public sealed class TricksterAccess
@@ -589,6 +600,12 @@ namespace Tirabade
         public static bool ParagraphAlwaysShown(Scene scene, Paragraph paragraph) => paragraph.Requires.All(scene.Requires.Contains)
             && !paragraph.Forbids.Any() && paragraph.AnyGroups.All(group => group.Any(scene.Requires.Contains));
 
+        // E14d: an OR of AND-groups over the snapshot.
+        public static bool WhenHolds(string[][] when, Snapshot state) => when.Any(group => group.All(state.Has));
+
+        // E14d: scenes used as native-cue replacements are never attached as pages of their own.
+        public static bool IsNativeReplacement(Story story, Scene scene) => story.NativeEpilogueEdits.Values.Any(edit => edit.Replacement == scene.Id);
+
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
 
@@ -753,6 +770,7 @@ namespace Tirabade
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
             ValidatePresences(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
                 throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
@@ -909,6 +927,27 @@ namespace Tirabade
                     || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area))
                     throw new InvalidOperationException("Invalid presence (\"<relationship>.presence\", unit and area GUIDs, reuse-native|spawn-copy, "
                         + "known gates, spawn-copy needs Position and Requires): " + pair.Key);
+            }
+        }
+
+        // E14d: each edit names a whitelisted cue with its exact evidence, a 1-node epilogue replacement scene, and When groups
+        // that each require the replacement relationship's CommittedFlag.
+        private static void ValidateNativeEpilogueEdits(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeEpilogueEdits == null) throw new InvalidOperationException("NativeEpilogueEdits cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            foreach (var pair in story.NativeEpilogueEdits)
+            {
+                var edit = pair.Value;
+                var scene = story.Scenes.FirstOrDefault(s => s.Id == edit?.Replacement);
+                if (edit == null || !Guid.TryParseExact(pair.Key, "N", out _) || scene == null
+                    || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
+                    || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
+                    || edit.When == null || edit.When.Length == 0 || edit.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
+                        || !g.Contains(story.Relationships[scene.Relationship].CommittedFlag))
+                    || story.NativeEpilogueEdits.Count(other => other.Value?.Replacement == edit.Replacement) != 1)
+                    throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement, known When groups that each "
+                        + "require its relationship's CommittedFlag): " + pair.Key);
             }
         }
 

@@ -68,6 +68,7 @@ namespace Tirabade
         private static readonly Dictionary<string, BlueprintQuest> startedQuests = new Dictionary<string, BlueprintQuest>();
         // E12 returned presences, and the last status line logged for each.
         private static readonly List<GuestPresence> presences = new List<GuestPresence>();
+        private static readonly List<NativeEpilogueEdit.Plan> nativeEditPlans = new List<NativeEpilogueEdit.Plan>();
         private static readonly Dictionary<string, string> presenceStatus = new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, BlueprintUnit> revivalUnits = new Dictionary<string, BlueprintUnit>();
         private static readonly Dictionary<string, BlueprintUnit> contactUnits = new Dictionary<string, BlueprintUnit>();
@@ -212,6 +213,19 @@ namespace Tirabade
                         || nativeReturn.Answers.Count != 1 || !ReferenceEquals(nativeReturn.Answers[0].Get(), returnList))
                         Degrade(scene.Relationship, "Native audience return must reopen its answer list without replaying actions: " + scene.Id);
                 }
+                // E14d: native epilogue edits need their exact reviewed evidence, or their replacement relationship is disabled.
+                var nativeEditSources = new Dictionary<string, (BlueprintCue Cue, BlueprintBookPage Page)>();
+                foreach (var pair in story.NativeEpilogueEdits)
+                {
+                    var owner = story.Scenes.First(s => s.Id == pair.Value.Replacement).Relationship;
+                    string? refusal;
+                    try { refusal = NativeEpilogueEdit.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)),
+                        ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("ced82f299d246f448b48afa0b630dd70")) as BlueprintCueSequence); }
+                    catch (Exception ex) { refusal = ex.Message; }
+                    if (refusal != null) Degrade(owner, "native epilogue edit " + pair.Key + ": " + refusal);
+                    else nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!,
+                        (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!);
+                }
                 // E12: a presence needs its native unit, area and host lists, or its relationship is disabled.
                 foreach (var pair in story.Presences)
                 {
@@ -349,6 +363,24 @@ namespace Tirabade
                         ConfigureNativeEffects(answer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
                 }
                 if (story.Scenes.Any(Rules.IsNurahHubScene)) nurahHub = BuildNurahHub();
+                // E14d: every replacement cue is registered (save names); only verified edits get their native presentation.
+                foreach (var pair in story.NativeEpilogueEdits)
+                {
+                    var scene = story.Scenes.First(s => s.Id == pair.Value.Replacement);
+                    var replacement = New<BlueprintCue>("native-edit." + pair.Key);
+                    replacement.Text = Text("native-edit." + pair.Key, scene.Nodes[0].Text);
+                    var when = pair.Value.When;
+                    Func<bool> applies = () => enabled && initialized && Game.Instance?.Player != null && Rules.WhenHolds(when, State());
+                    if (nativeEditSources.TryGetValue(pair.Key, out var source))
+                        nativeEditPlans.Add(NativeEpilogueEdit.Prepare(pair.Key, pair.Value, source.Cue, source.Page, replacement, applies));
+                    else
+                    {
+                        replacement.Conditions = Conditions();
+                        replacement.OnShow = Actions();
+                        replacement.OnStop = Actions();
+                        replacement.Continue = Cues();
+                    }
+                }
 
                 // ---------- Phase 3: optional helpers and native attachment, each isolated ----------
                 T? Optional<T>(string what, Func<T?> create) where T : class
@@ -392,6 +424,7 @@ namespace Tirabade
                     if (degraded.Contains(scene.Relationship)) continue;
                     if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
                     {
+                        if (Rules.IsNativeReplacement(story, scene)) continue;   // E14d: shown only in place of its native cue
                         var sequence = scene.EpilogueSequence != null ? nativeSequences.TryGetValue(scene.EpilogueSequence, out var native) ? native : null
                             : scene.Owner == "AeonEpilogue" ? aeon : epilogue;
                         if (sequence == null || !parentAttached && parentOwned.Contains(scene.Relationship)) continue;
@@ -408,6 +441,18 @@ namespace Tirabade
                         var answer = Get<BlueprintAnswer>(GuidFor(scene.ReturnToList ? "entry." + scene.Id + "." + id : "entry." + scene.Id).ToString());
                         targets[id].Answers.Insert(Math.Max(0, targets[id].Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
                     }
+                }
+                foreach (var plan in nativeEditPlans)
+                {
+                    var relationship = story.Scenes.First(s => s.Id == plan.Spec.Replacement).Relationship;
+                    if (degraded.Contains(relationship)) continue;
+                    var when = plan.Spec.When;
+                    Optional<object>("Native epilogue edit " + plan.CueId, () =>
+                    {
+                        NativeEpilogueEdit.Attach(plan, Ref<BlueprintCueBaseReference>(plan.Replacement),
+                            () => enabled && initialized && Game.Instance?.Player != null && Rules.WhenHolds(when, State()));
+                        return new object();
+                    });
                 }
                 if (epilogue == null) warnings.Add("Epilogue pages are not shown: the RanRomance parent epilogue is missing.");
                 initialized = true;

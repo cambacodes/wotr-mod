@@ -355,6 +355,7 @@ internal static class Program
         NativeEpilogueTests.Run(Check);
         ReturnToListTests.Run(Check);
         ParagraphTests.Run(Check);
+        NativeEpilogueEditTests.Run(Check);
         // __E14_RULES__
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);

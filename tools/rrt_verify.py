@@ -564,6 +564,8 @@ def build_names(model):
             if not ending and (s["ContactUnit"] is not None or is_remote(s)):
                 names.append(("answer.%s.%s.contact_lost" % (s["Id"], n["Id"]), "BlueprintAnswer"))
         if s["NativeReturnCue"] is None: names.append(("dialog." + s["Id"], "BlueprintDialog"))
+    for cue in (model.story.get("NativeEpilogueEdits") or {}):   # E14d replacement cues
+        names.append(("native-edit." + cue, "BlueprintCue"))
     if any(is_nurah_hub(s) for s in scenes):
         names += [("page.nurah.arrival_hub", "BlueprintBookPage"), ("cue.nurah.arrival_hub", "BlueprintCue")]
         names += [("answer.nurah.arrival_hub." + s["Id"], "BlueprintAnswer") for s in scenes if is_nurah_hub(s)]
@@ -1284,6 +1286,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                     if c["NativeNext"]: want.append((c["NativeNext"], "BlueprintCue", "NativeNext@%s/%s" % (s["Id"], n["Id"])))
         for k in (story.get("ParentEpilogueEdits") or {}): want.append((k, "BlueprintCue", "ParentEpilogueEdit"))
         for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
+        for g, e in (story.get("NativeEpilogueEdits") or {}).items():
+            want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
+                     (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueEdits." + g)]
         for k, p in (story.get("Presences") or {}).items():
             want.append((p.get("Unit"), "BlueprintUnit", "Presences." + k))
             want.append((p.get("Area"), "BlueprintArea", "Presences." + k))
