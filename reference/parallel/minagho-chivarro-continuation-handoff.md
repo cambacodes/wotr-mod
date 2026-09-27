@@ -1,145 +1,142 @@
 # Minagho and Chivarro continuation handoff
 
-Revision 2, frozen for independent re-review on 2026-09-26.
-The first independent review required revision; no approval or score is asserted for this revision.
-This is an author candidate for the qualifying living parent-history continuation, not a complete universal acquisition/recovery implementation or release.
-The first review remains unchanged at `reference/story-review/minagho-chivarro-continuation-first-review.md`.
+Revision 3, frozen for independent literary and ending-contract review on 2026-09-26.
+The previous reviews required revision and remain unchanged.
+No score or approval is assigned by this author.
+This is the qualifying living parent-history continuation, not the outstanding universal Trickster acquisition and resurrection work.
 
 ## Frozen artifacts
 
-- Manuscript: `storylines/minagho_chivarro_continuation.py`, SHA256 `BAD0191730C8B2EFFB879030AC67245B64C7A8E5ECE58FF8D8D3735E89D3C5C6`.
-- Focused test: `tests/MinaghoChivarroContinuationTests.cs`, SHA256 `50F8BA23A32D893755CD582A70AFAC34C5D3BB7F420872DE1FEB1772AE544BB6`.
-- Isolated candidate: `C:/Users/Z/AppData/Local/Temp/minagho-chivarro-continuation-i9fs7kkh/candidate-v2.json`, SHA256 `83E2BE0D6ED03913A9B6E90599073A053BC1E6FD2895753E6F36A47CEADD80AA`.
-- Isolated harness: `C:/Users/Z/AppData/Local/Temp/minagho-chivarro-continuation-i9fs7kkh/Check.csproj`.
-- Attribution and full selected-path traces: `attribution-v2.json` and `selected-paths-v2.json` beside that harness.
+- Manuscript `storylines/minagho_chivarro_continuation.py`: `6A2D00C5F30E42C5E54E5D16FE338491E39F63784C46CB3DD8695D3814165E49`.
+- Focused tests `tests/MinaghoChivarroContinuationTests.cs`: `50F8BA23A32D893755CD582A70AFAC34C5D3BB7F420872DE1FEB1772AE544BB6`.
+- Isolated `candidate-v3.json`: `B3F618DE4F73BBEABA37BF893E6D664B4EB567F35BFC0572D08A7328FD5A222F`.
 
-The candidate adds 47 scenes to the 533-scene development export, producing 580 scenes in the isolated file only.
-There are 23 consecutive narrated visits and 24 ending variants.
-No shared registry, development export, binding manifest, Main, installed mod or shared build output was changed by this author.
+The isolated files are in `C:/Users/Z/AppData/Local/Temp/minagho-chivarro-continuation-i9fs7kkh`.
+That candidate contains the 533-scene base snapshot plus 47 additions, totaling 580 scenes.
+Root's subsequent 537-scene integration is separate; this author did not overwrite its export.
+The authored additions remain 23 narrated visits and 24 ending variants.
+`attribution-v3.json`, `selected-paths-v3.json` and `room-branch-transcripts-v3.txt` provide inventory, selected choice traces and the two connected room paths.
+Only this manuscript, its assigned tests and this handoff belong to the author task.
+Shared export, bindings, Main and installed files remain root-owned.
 
-## Revision against the independent findings
+## Revision 3 changes
 
-The immediate pursuit is now described as ended, without inventing assassins' deaths on dragon, legend or sanctuary histories.
-The fate intervention explicitly affects copies of the duplicated invitation, so Orven's changed copy matches its stated scope and exposure cost.
-The after-show private encounter has zero delay after `show_kept`, permitting the same-evening continuation promised by its text.
-Other consecutive visits retain their 24-hour earned delay.
-The focused chronology check now distinguishes that one immediate continuation instead of assuming every visit must wait.
-The books narrate an ordered evening; actual engine scheduling, manual Read use and rest delivery still need runtime verification.
+The separate-room branch now leaves the overfilled cup on the table, and the shared tea page performs the only handoff.
+The strong tea is explained by the elapsed conversation, not by pins only one branch examined.
+Both `choose -> notice -> tea` and `choose -> separate -> tea` are connected text sequences in the isolated transcript witness.
+The preview fee was agreed before rehearsals, without the false yesterday reference across six mandatory days or a longer player delay.
+The last pursuit simply failed, preserving captured, dead and uncertain parent outcomes without inventing where the attack ended.
+The inspection success makes Minagho's use of the admission receipt a visible bluff about the advertised evidence, not an unexplained second payment.
 
-Private encounters were rewritten around different behavior rather than repeated summaries of asking and pausing.
-Minagho competes with the evening's supposed time limit and loses her prepared composure.
-The shared encounter uses the women's existing rivalry and the game between all three.
-Chivarro's hired room and after-performance night turn on her furniture, a reluctant fastening, deliberate teasing and fatigue.
-Consent choices, slower alternatives, friendship and service restrictions remain.
-Age bookkeeping was removed from business dialogue; all introduced supporting performers and contacts are adults, recorded in production notes.
+The later commitment and farewell now spend less time explaining invitations and independent obligations.
+Chivarro discusses a new performance, her letters, travel complaints, the first address and a room she wants the Commander to return to.
+Minagho asks what would make the Commander useless for an afternoon and admits wanting to keep a place beside her.
+The group farewell uses the women's teasing and the prospective couch instead of another statement of relationship procedure.
+Choices for lasting affection, open visits, friendship, separate relationships and a mutually chosen group remain intact.
+Service restrictions, nonexclusivity, consent and slower alternatives were retained.
+The revision cuts 374 distinct words overall rather than filling the removed explanations with additional endings.
+The prior fraud, intimidation, fee dispute, shared attraction and two new Minagho visits remain.
 
-Chivarro can now inflate Nerath's private-showing price while leaving Sivane's agreed fee unchanged.
-Sivane notices, and her later competing offer and demand for a share put pressure on Chivarro's profitable decision.
-On the other branch Chivarro deliberately humiliates Nerath before the remaining buyers, enjoying the damage to his reputation while resenting the lost money.
-The musician's later account and the partnership discussion have less repeated moral explanation and more actual self-interest and bargaining.
-The dispute over Chivarro's separate room remains awkward until a later played exchange with Minagho.
+## Disjoint content accounting
 
-Two new Minagho visits provide 3,160 distinct words of substantive action and consequence.
-In `the_price_of_her_name`, a salvager sells genuine orders mixed with a false accusation against a living buyer.
-Minagho's cult, redemption, dragon, legend and service histories supply different motives without declaring them all redeemed.
-A Knowledge: World DC 31 success exposes the discrepancy; failure or the non-roll purchase costs Minagho her own money; letting her conduct the interrogation produces a public correction through intimidation.
-`the_paper_she_kept` remembers the actual approach, leaves the genuine harm in the record, and lets the Commander disagree with Minagho's successful threat without making her instantly repent.
-Chivarro's return with a book resolves the room disagreement through an actual visit and shared joke rather than another speech about permission.
-These supporting records, people and meetings are authored alternate developments, not assertions of hidden native canon.
+The new corpus contains 34,469 raw words and 33,799 distinct normalized whole-segment words.
+The 670 exact-repeat words receive no second credit.
+Counts include prose and choices, exclude titles and metadata, and are aggregate branching inventory rather than one reading length.
+Exact-segment counting cannot certify meaningful originality or literary quality.
 
-## Conservative numerical attribution
-
-Revision 2 contains 34,843 raw words and 34,173 exact-normalized-segment distinct words of new scenes.
-This includes prose and choices, excludes titles and metadata, and counts branching inventory rather than a single reading length.
-The counter cannot detect semantic repetition or certify literary quality.
-
-All parent epilogues are excluded from the two individual planning budgets below.
-This removes the first revision's dependence on potentially suppressed parent ending words.
-The remaining parent credit is 12,163 distinct words from the verified books and chapter dialogue, all allocated to Minagho alone.
-The source audit is `reference/canon-review/minagho-chivarro-integration.md`.
-The Chivarro-mention subset in that parent corpus receives no second credit.
+All parent epilogues and all proposed replacement metadata remain excluded from the individual budgets.
+The verified parent books and chapter dialogue contribute 12,163 words to Minagho alone.
+No parent Chivarro-mention subset receives duplicate credit.
 
 | Allocation | Distinct words |
 | --- | ---: |
-| Retained parent books and chapter dialogue, Minagho only | 12,163 |
-| Shared first five new visits, Minagho only | 5,150 |
-| Three new Minagho individual visits | 4,936 |
-| Minagho numerical budget, excluding every parent epilogue | 22,249 |
-| New Chivarro individual visits | 17,177 |
-| Shared offer outcome, affectionate evening and farewell, Chivarro only | 5,217 |
-| Chivarro numerical budget | 22,394 |
-| New ending material unallocated to either individual budget | 1,693 |
+| Parent books and chapter dialogue, Minagho only | 12,163 |
+| First five shared new visits, Minagho only | 5,146 |
+| Three individual Minagho visits | 4,969 |
+| Minagho budget | 22,278 |
+| Individual Chivarro visits | 16,935 |
+| Shared offer outcome, affectionate evening and farewell, Chivarro only | 5,056 |
+| Chivarro budget | 21,991 |
+| New ending material unallocated to either budget | 1,693 |
 
-No shared paragraph is credited to both women in these budgets.
-The first five shared visits are `two_answers`, `her_own_arrival`, `the_remaining_customers`, `the_second_address` and `a_factor_at_the_table`.
-The Minagho individual visits are `minaghos_unfinished_sentence`, `the_price_of_her_name` and `the_paper_she_kept`.
+The combined counted corpus is 45,962 words, with every shared segment counted once.
+The Minagho shared allocation is `two_answers`, `her_own_arrival`, `the_remaining_customers`, `the_second_address` and `a_factor_at_the_table`.
+Her individual allocation is `minaghos_unfinished_sentence`, `the_price_of_her_name` and `the_paper_she_kept`.
 Chivarro receives the remaining individual visits plus `what_the_offer_bought`, `the_unhired_evening` and `before_the_last_road`.
-The combined counted new and non-ending-parent corpus is 46,336 words, including the unallocated new endings once.
-No retained or edited parent epilogue receives additional credit in this total.
-The proposed cue replacement text is integration metadata and also earns no new word credit.
-These figures clear the planning floor numerically, subject to independent meaningful-content and attribution review.
+These are numerical planning-floor results pending independent assessment, not approvals.
 
-Condition-aware source walks count visited prose and chosen answers through all 23 visits and one eligible ordinary ending.
-They assume sufficient waits and the stated living native history in Chapter 5 Drezen.
-They exclude the already played parent books and are not Unity transcripts.
+Source-level selected walks count visited prose and chosen answers through all 23 visits and one eligible ordinary ending.
+They assume Chapter 5 Drezen, the stated living parent history and sufficient waits.
+They exclude the already played parent books and are not in-game transcripts.
 
 | Initial history and ending | Minimum | Maximum |
 | --- | ---: | ---: |
-| Freed Trickster, shared three-person future | 16,529 | 18,690 |
-| Freed Trickster, Chivarro lasting relationship | 16,337 | 18,630 |
-| Freed Trickster, friendships | 16,146 | 18,437 |
-| Sanctuary, shared three-person future | 16,590 | 18,586 |
-| Demon service, Chivarro lasting relationship | 16,429 | 18,847 |
+| Freed Trickster, shared three-person future | 16,315 | 18,524 |
+| Freed Trickster, Chivarro lasting relationship | 16,150 | 18,491 |
+| Freed Trickster, friendships | 16,055 | 18,383 |
+| Sanctuary, shared three-person future | 16,376 | 18,420 |
+| Demon service, Chivarro lasting relationship | 16,242 | 18,708 |
 
-Parent selected-playthrough lengths remain unmeasured and are not invented or added to these ranges.
+## Corrected parent-ending contract
 
-## Parent outcome preservation contract
+The manuscript proposes 35 ordinary cue edits, including a separately scoped alternate for native paired cue `5787f92575364c1459df8f075676c2db`.
+Each entry now carries its own `Requires`, ordinary owner, living guards and unique `LocalizedKey`.
+The source `ParentKey` is evidence only and must never be globally replaced.
+The two fallback copies using `056942f6-32d0-4480-8ff7-29356b43db19` have different addon localization keys.
+Unplayed parent and native saves keep their original text and selector.
 
-Do not suppress whole parent pages and replace them with generic new relationship endings.
-`PARENT_EPILOGUE_EDITS` now specifies 34 exact parent cues for selective changes after earned `minachiv.invitation_kept`.
-It is proposed author metadata for review and root implementation, not an executable ending guard.
-Every unchanged cue, page selection condition, individual cue condition, existing mutual-exclusion mechanism and parent-only save must remain intact.
-A `Text=None` entry suppresses only the named pure Commander-romance cue.
-A text entry replaces a mixed cue while preserving its nonrelationship result.
+The configured fallback, native fallback and Legend reunion alternates require `minachiv.arrival_kept`.
+They cannot claim an earlier reunion after only `invitation_kept`.
+Other relationship edits retain invitation scope so an interrupted invitation cannot acquire automatic Commander intimacy.
+The addon unfinished paragraph now describes sending the invitation answer back to Chivarro instead of claiming that both women have already met the Commander.
+Single-woman Dragon ascension cue `64afcd565e044e53977e1878444f4ee1` now preserves achieved mastery and a female dragon accompanying the Commander.
 
-The contract preserves the parent's cult infiltration, rival-cult violence, shadow church, redemption, Heaven, divine portfolios, service and mortal schemes, dragon awakening and training, legend freedom, and departure consequences under their original selectors.
-It retains the couple's own relationship rather than treating their bond as a Commander reward.
-Mixed redemption cues retain leadership of the church while removing automatically imposed Commander intimacy.
-Mixed dragon cues retain divine travel and actual draconic development while removing automatic three-person romance.
-Mixed service cues retain Minagho's schemes without assigning Chivarro an unchosen service bond.
-Legend and fallback reunion passages acknowledge that the extension has already played an earlier reunion.
-The fallback cue `c47829fba057400c8e0279990be3d25e` uses native localization key `056942f6-32d0-4480-8ff7-29356b43db19`; it is deliberately not labeled as a configured RanRomMina text key.
+`PARENT_EPILOGUE_LOSS_RULES` provides three explicit, disjoint ordinary-loss contracts.
+Every rule requires earned invitation progress, the corresponding actual native death observations and at least one listed matching addon loss scene available or already played.
+The complete and interrupted replacement scene IDs are listed explicitly.
+If observation fails or no applicable replacement exists, do not suppress an original.
+The contract is metadata for root implementation and independent review, not a claim that native guards already execute it.
 
-Root must implement and verify these edits at the actual cue layer, or supply an equivalent preservation mechanism proved against the original parent selectors.
-The module does not implement this by writing parent romance, quest, etude or selected-answer history.
-Confirmed loss and erased-timeline handling must take precedence over living parent futures.
-The original parent Aeon consequences remain subject to their original conditions; the new Aeon memory paragraph concerns only the erased addon visits.
-The proposed metadata needs independent review, especially mixed-history and interrupted-save combinations.
-No headless author test here proves the live parent cue replacement mechanism.
+- Both women lost: suppress the eight ordinary parent pages and native paired page only behind `ending_both_lost` or its completed counterpart.
+- Minagho lost: suppress those same living futures behind `ending_minagho_lost` or its completed counterpart, whose survivor is Chivarro.
+- Chivarro lost: preserve the eight ordinary parent pages and their native selectors, suppress the native paired page to avoid a blank pair-only page, and suppress the explicitly listed Chivarro-dependent original cues.
 
-## State and verification
+The Chivarro-loss rule supplies four Minagho survivor alternates at the original mixed-cue positions.
+They preserve church leadership, mortal schemes, divine dragon mastery and ordinary dragon flight without describing Chivarro as alive.
+Their private localization keys differ from both native keys and ordinary extension alternates.
+An original in `SuppressCues` is hidden while its corresponding survivor alternate retains the original conditions and list position.
+Other Minagho-only base cues remain under their original selectors.
+The loss rules take precedence over the ordinary living edits; the latter explicitly forbid either woman's death.
 
-Every visit requires the completed parent quest, a witnessed Book 3 terminal and Chivarro's search state.
-Known death, inhuman Commander state, route closure, wrong chapter and wrong area block the visits, including checks after entry.
-Narrated books describe arrival rather than claiming native capital actors have spawned.
-Only `minachiv.` progression is written.
-Native death, parent romance, HappyEnd, timers, quests, other romances and RanRomCount remain untouched.
-Demon service blocks new Minagho physical romance and a new three-person commitment while permitting discussion and Chivarro's independently chosen relationship.
-Current Trickster plus the witnessed parent brand trick unlocks the new invitation intervention; an earned meeting remains available after changing mythic, but that power does not.
+Commander sacrifice is not either woman's death and does not trigger these rules.
+The parent sacrifice consequences, including seclusion, cult redirection and return to the Abyss, retain their original conditions.
+Aeon is a separate owner and receives none of the ordinary death or reunion edits.
+Its native political, remembered-Kenabres and possible joint-departure selectors remain intact.
+Pre-rewrite death flags must not suppress rewritten lives.
 
-The focused production-rules harness passed 123,237 assertions across eleven source-audited external parent-history fixtures.
-It earns all addon progress through choices, reaches every visit page and authored flag, and covers both skill outcomes.
-It tests postponement, repeated entry, immediate after-show chronology, other earned delays, contact checks after entry, parent history, captured/unknown pursuit recollections, native life guards, absent area/chapter, no native or other-romance mutation, Demon-service limits, changed-mythic power access, and complete/interrupted ending exclusivity.
-An interrupted Chivarro commitment retains its actual promise.
-These are source-level witnesses, not execution of all native books or real dice rolls.
+Root must preserve original page order, element ownership, cue conditions, actions and the ordinary parent OnShow arbitration.
+Do not copy page actions onto alternate cues, mark original cues seen artificially or run actions while evaluating guards.
+Do not rewrite parent romance, quest, etude, selected-answer or death history to achieve these changes.
+Removing intimacy-based cult legitimacy or diplomatic access after a declined relationship is an authored alternate consequence; not every subordinate political detail is claimed unchanged.
+Base cult infiltration, rivalry, church control, divine portfolios, redemption, service, dragon and legend outcomes remain the preservation requirement.
+
+## Verification and remaining work
+
+The focused harness passed 123,237 assertions on revision 3.
+It still covers eleven source-audited parent histories, every visit page and output flag, postponement, replay protection, delays, immediate after-show availability, contact guards after entry, native life/history gates, no mutation of other romances, service restrictions, changed-mythic power access and complete/interrupted ending selection.
+The fixtures do not execute the native parent books inside Unity.
+
+The source-contract matrix checks invitation versus arrival, ordinary versus Aeon, either or both deaths, Commander sacrifice and unavailable replacement observations.
+Connected room paths were exported for text inspection.
+These checks evaluate author metadata and scene graphs, not a native cue replacement implementation.
+No native initialization, actual selector execution, save persistence or rendered epilogue behavior is certified.
 
 ```powershell
-& C:/Users/Z/AppData/Local/RanRomanceTools/dotnet/dotnet.exe run --project C:/Users/Z/AppData/Local/Temp/minagho-chivarro-continuation-i9fs7kkh/Check.csproj -- C:/Users/Z/AppData/Local/Temp/minagho-chivarro-continuation-i9fs7kkh/candidate-v2.json
+& C:/Users/Z/AppData/Local/RanRomanceTools/dotnet/dotnet.exe run --project C:/Users/Z/AppData/Local/Temp/minagho-chivarro-continuation-i9fs7kkh/Check.csproj -- C:/Users/Z/AppData/Local/Temp/minagho-chivarro-continuation-i9fs7kkh/candidate-v3.json
 ```
 
-Independent re-review of the actual revised manuscript remains required.
-Root registration, binding validation, selective parent-ending integration, real delivery and persistence remain unfinished.
-If using Anevia/Storyteller dispatch, preserve their answer order and finish actions and share the same event identity across both.
-Art, likeness, adult attractive redesign, crop review, managed construction, in-game rest/manual entry, save/load and actual ToyBox behavior are unverified for this candidate.
-Dead, displaced, missed, never-met and other unqualified histories still need their bespoke Trickster acquisition and recovery work.
-No full character or release is approved by this handoff.
+Independent literary and contract re-review remain required on this revision.
+Root registration, actual parent cue/loss guards, binding validation and delivery remain unfinished.
+Art, likeness, attractive adult redesign, crops, managed construction, manual/rest entry, save/load and actual ToyBox behavior remain unverified for this candidate.
+Dead, displaced, missed, never-met and other unqualified histories still need their bespoke Trickster acquisition and recovery routes.
+No full character, complete mythic coverage or release is approved here.

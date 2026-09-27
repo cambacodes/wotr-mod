@@ -33,7 +33,7 @@ SEEN_CUES = {
 }
 # Proposed parent cue edit contract for independent review and root integration.
 # Preserve each original page selector, cue condition and nonlisted cue verbatim.
-# Apply only after earned minachiv.invitation_kept; None suppresses that cue alone.
+# Apply each edit only in its earned Requires scope; None suppresses that cue alone.
 # Actual death/erased-history arbitration must run before these living-history edits.
 # Text below replaces mixed relationship/consequence cues while retaining their
 # political, divine, draconic and service outcomes. It earns no new word credit.
@@ -67,12 +67,134 @@ PARENT_EPILOGUE_EDITS = {
     'd47984953fc74c488ef0a02588bde92b': dict(ParentKey='RanRomMinaSlide0005Cue0003.Text', Text="Minagho continued masterminding schemes in the mortal realm to expand the Commander's influence beyond the Sarkoris Scar. The service under which she worked remained distinct from any affection she expressed."),
     'b474eb4460cb42729be2717d05e7d42b': dict(ParentKey='RanRomMinaSlide0005Cue0004.Text', Text="Minagho continued masterminding schemes in the mortal realm to expand the Commander's influence beyond the Sarkoris Scar. Chivarro kept her own dealings and could assist Minagho without acquiring her service bond or an unchosen role in the Commander's bed."),
     '2cd9538f67f7414d808d9032386f6be9': dict(ParentKey='RanRomMinaSlide0005Cue0006.Text', Text="Chivarro remained close to Minagho and assisted schemes she chose to support. Minagho's service did not make Chivarro another servant, and Chivarro did not allow her own affection to be cited as proof that the bond had disappeared."),
-    '64afcd565e044e53977e1878444f4ee1': dict(ParentKey='RanRomMinaSlide0006Cue0003.Text', Text="Minagho joined the Commander in the divine realm. Remnants of her former master's presence still troubled her, but she continued learning to master the draconic soul awakened through the dragons' teaching."),
-    'b9e2550bc7244f6c8480106b41667d96': dict(ParentKey='RanRomMinaSlide0006Cue0004.Text', Text="Minagho and Chivarro joined the Commander in the divine realm. With the Commander's help they learned to master their draconic souls, though the remnants of Minagho's former master's presence still troubled her."),
+    '64afcd565e044e53977e1878444f4ee1': dict(ParentKey='RanRomMinaSlide0006Cue0003.Text', Text="Minagho joined the Commander in the divine realm. Remnants of her former master's presence still troubled her, but with the Commander's help she mastered the draconic soul awakened through the dragons' teaching. A female dragon was later seen accompanying the Commander through the realm."),
+    'b9e2550bc7244f6c8480106b41667d96': dict(ParentKey='RanRomMinaSlide0006Cue0004.Text', Text="Minagho and Chivarro joined the Commander in the divine realm. With the Commander's help they learned to master their draconic souls, though the remnants of Minagho's former master's presence still troubled her. Two female dragons were later seen accompanying the Commander through the realm."),
     'bb49f54dc0a547c287238b5d7d8489b3': dict(ParentKey='RanRomMinaSlide0006Cue0005.Text', Text='Minagho continued studying her draconic soul after the Fifth Crusade. Years later, stories described the Commander teaching a delighted female dragon to fly.'),
     '5831af75932d43ed902a2d8def2adf3d': dict(ParentKey='RanRomMinaSlide0006Cue0006.Text', Text='Minagho and Chivarro continued studying their draconic souls after the Fifth Crusade. Years later, stories described the Commander teaching two delighted female dragons to fly.'),
     '8399dbc5987b462594b2b4168764e269': dict(ParentKey='RanRomMinaSlide0007Cue0002.Text', Text="Chivarro remained beside Minagho after their earlier reunion. Minagho's decision to stay among mortals gave the two women new things to argue about and a life neither had fully imagined when their search for each other began."),
 }
+
+# Every alternate gets a private addon key; ParentKey is evidence, never a key to mutate.
+PARENT_EPILOGUE_EDITS["5787f92575364c1459df8f075676c2db"] = deepcopy(PARENT_EPILOGUE_EDITS["c47829fba057400c8e0279990be3d25e"])
+for cue_guid, edit in PARENT_EPILOGUE_EDITS.items():
+    edit["Requires"] = ["minachiv.arrival_kept" if cue_guid in {
+        "c47829fba057400c8e0279990be3d25e", "8399dbc5987b462594b2b4168764e269",
+        "5787f92575364c1459df8f075676c2db",
+    } else "minachiv.invitation_kept"]
+    edit["LocalizedKey"] = "Tirabade.Minachiv.ParentEnding." + cue_guid
+    edit["Owner"] = "Epilogue"
+    edit["Forbids"] = ["minagho.dead", "chivarro.dead"]
+
+# Apply only in the ordinary epilogue sequence after a matching addon loss page
+# is available or already played. Evaluation failure leaves the original intact.
+# Never use sacrifice as either woman's death or apply these rules to Aeon.
+# Loss rules supersede ordinary edits. SuppressCues hides originals, while each
+# SurvivorAlternate retains that original cue's conditions and list position.
+# Original page order, selectors and OnShow actions remain unchanged.
+PARENT_EPILOGUE_LOSS_RULES = [{'Id': 'both_lost',
+  'Owner': 'Epilogue',
+  'Requires': ['minachiv.invitation_kept', 'minagho.dead', 'chivarro.dead'],
+  'Forbids': [],
+  'ReplacementScenes': ['minachiv.ending_both_lost', 'minachiv.ending_both_lost_completed'],
+  'SuppressPages': ['951e4432cf844a36a8a222b27589fb43',
+                    '6db8635856e74b6cac46330bd82b4ff5',
+                    '8df5edb6f69040c69d7da78d2bf20cb6',
+                    '5a5865ceca0e42049288351a76b18ba9',
+                    '126762ac92364ac5bdec69c6e3fdfd1a',
+                    '01677da8df6e42c6b4803ceef524b1fe',
+                    '9c5c5825bf3245d0ae763c6e69ecdc38',
+                    '3792457f35734d75a4d4b53055f7f5d0',
+                    '5c95d8e3fa4f3b44896914987cb04b0b'],
+  'SuppressCues': [],
+  'Survivor': None,
+  'SurvivorAlternates': {}},
+ {'Id': 'minagho_lost',
+  'Owner': 'Epilogue',
+  'Requires': ['minachiv.invitation_kept', 'minagho.dead'],
+  'Forbids': ['chivarro.dead'],
+  'ReplacementScenes': ['minachiv.ending_minagho_lost', 'minachiv.ending_minagho_lost_completed'],
+  'SuppressPages': ['951e4432cf844a36a8a222b27589fb43',
+                    '6db8635856e74b6cac46330bd82b4ff5',
+                    '8df5edb6f69040c69d7da78d2bf20cb6',
+                    '5a5865ceca0e42049288351a76b18ba9',
+                    '126762ac92364ac5bdec69c6e3fdfd1a',
+                    '01677da8df6e42c6b4803ceef524b1fe',
+                    '9c5c5825bf3245d0ae763c6e69ecdc38',
+                    '3792457f35734d75a4d4b53055f7f5d0',
+                    '5c95d8e3fa4f3b44896914987cb04b0b'],
+  'SuppressCues': [],
+  'Survivor': 'Chivarro',
+  'SurvivorAlternates': {}},
+ {'Id': 'chivarro_lost',
+  'Owner': 'Epilogue',
+  'Requires': ['minachiv.invitation_kept', 'chivarro.dead'],
+  'Forbids': ['minagho.dead'],
+  'ReplacementScenes': ['minachiv.ending_chivarro_lost', 'minachiv.ending_chivarro_lost_completed'],
+  'SuppressPages': ['5c95d8e3fa4f3b44896914987cb04b0b'],
+  'SuppressCues': ['e87b43c31c1c4253a7137c7d6c05b246',
+                   '9bfbb3f217ca476cadbeffc4d389717d',
+                   '7edf5529523a4a9da520138783fdeb93',
+                   '19fd9027465f4cbebe949b26d04a2826',
+                   'f5e580bedafc43f3acb6843fd71d8120',
+                   '92162854b221413984468d2663ffcffb',
+                   '6eba6f627ac34cf4955c89e5ad59e106',
+                   '9a5eb7aff04943c28da2260aac68874e',
+                   '9806218e467f41acb502b52160ab38dd',
+                   '829c837c76f6429fa01d3d2583069b35',
+                   '3b8d47b3c9694002aff26510ac4dedf0',
+                   'fb32a8f9c464496abe90307c68ec271e',
+                   'a77e415c6eb44d719839e07a3f164d87',
+                   '0a8411c2cb0a44f1ab317ed425f6ec94',
+                   'dc14cdafb9fa43e8bc3b0816626b3dbe',
+                   'acb0d15ef71c410484b7c37b270e30fe',
+                   '982627a0bbd34fe4b16b5b078e56355a',
+                   '67e3bb3b649d42a4a84115f3c7ac6bf1',
+                   '286434b491b74174a97dfd2d7344f57a',
+                   '5db846019acd46ef83f12be220727f50',
+                   '3d4137f1cf98459f996ef1da83737cdb',
+                   '18d22b6258a24fe29dd9d0ea4235432e',
+                   'a1774d0a9fb34fd2ac58abc1c6db55bd',
+                   'b474eb4460cb42729be2717d05e7d42b',
+                   '2cd9538f67f7414d808d9032386f6be9',
+                   '5b0a132d97404072b3d664899871d7b7',
+                   '0b1b31d7125547219daa747eba45a063',
+                   '85b479a3da8a4fa6b602fedf89201695',
+                   'b9e2550bc7244f6c8480106b41667d96',
+                   '5831af75932d43ed902a2d8def2adf3d',
+                   '8399dbc5987b462594b2b4168764e269',
+                   'ff2042ad95e14b73a5f75f2cfd84b5e4',
+                   '1980e50e5e204431bf643fbad487909f',
+                   'c47829fba057400c8e0279990be3d25e',
+                   '5787f92575364c1459df8f075676c2db'],
+  'Survivor': 'Minagho',
+  'SurvivorAlternates': {'9a5eb7aff04943c28da2260aac68874e': {'Text': "To Minagho's surprise, her efforts "
+                                                                      'and her connection with the Commander '
+                                                                      "led to her selection as the church's "
+                                                                      'first leader. She retained a sharp '
+                                                                      'interest in which factions invoked '
+                                                                      "the Commander's name and what they "
+                                                                      'expected to gain by doing so.',
+                                                              'LocalizedKey': 'Tirabade.Minachiv.Survivor.9a5eb7aff04943c28da2260aac68874e'},
+                         'b474eb4460cb42729be2717d05e7d42b': {'Text': 'Minagho continued masterminding '
+                                                                      'schemes in the mortal realm to expand '
+                                                                      "the Commander's influence beyond the "
+                                                                      'Sarkoris Scar. Her service remained '
+                                                                      'unresolved.',
+                                                              'LocalizedKey': 'Tirabade.Minachiv.Survivor.b474eb4460cb42729be2717d05e7d42b'},
+                         'b9e2550bc7244f6c8480106b41667d96': {'Text': 'Minagho joined the Commander in the '
+                                                                      'divine realm. Remnants of her former '
+                                                                      "master's presence still troubled her, "
+                                                                      "but with the Commander's help she "
+                                                                      'mastered her draconic soul. A female '
+                                                                      'dragon was later seen accompanying '
+                                                                      'the Commander through the realm.',
+                                                              'LocalizedKey': 'Tirabade.Minachiv.Survivor.b9e2550bc7244f6c8480106b41667d96'},
+                         '5831af75932d43ed902a2d8def2adf3d': {'Text': 'Minagho continued studying her '
+                                                                      'draconic soul after the Fifth '
+                                                                      'Crusade. Years later, stories '
+                                                                      'described the Commander teaching a '
+                                                                      'delighted female dragon to fly.',
+                                                              'LocalizedKey': 'Tirabade.Minachiv.Survivor.5831af75932d43ed902a2d8def2adf3d'}}}]
 
 RELATIONSHIP = dict(Title="The company they choose", Description="Minagho and Chivarro have unfinished business with an old acquaintance. Each has her own reason for asking me to stay.", Objective="Answer their invitation", Guidance="After completing Minagho's RanRomance Book 3, return to Drezen in Chapter 5. Both women must be alive, and Chivarro must have begun her search for Minagho. These optional book visits arrive between rests and can also be read from the mod's available events.", StartedFlag="minachiv.started", ClosedFlag="minachiv.closed", CommittedFlag="minachiv.complete", UnavailableFlags=["minagho.dead", "chivarro.dead", "inhuman"], FailureFlags=[])
 SCENES = []
@@ -205,7 +327,7 @@ s("the_remaining_customers", "The remaining customers", [
 "And you get?"
 "A share in the gatherings. Introductions in my own name. A room whose guests know they are there because I invited them."
 {n}Minagho makes an impatient sound.{/n}
-"And he gets a list he can sell to someone less entertaining. One of those customers supplied agents of Baphomet. I recognize the account description. The last pursuit ended before it reached me. This would give another employer an excellent address book."
+"And he gets a list he can sell to someone less entertaining. One of those customers supplied agents of Baphomet. I recognize the account description. The last pursuit failed. This would give another employer an excellent address book."
 "Or give us a way to know who is buying it," Chivarro says.
 "I would rather give him a reason to stop breathing."
 "Yes. You have been wonderfully consistent about that."''', c('"What do you each want to send him?"', "plans")),
@@ -975,9 +1097,9 @@ She opens the door herself. Inside are a low couch, a table with one sound drawe
 "There. You have heard the entire sensible conversation I intended us to have. Now tell me whether you prefer this wall with a curtain or without."
 "Chivarro."
 "I know. I heard myself. I am still entitled to dislike it."
-{n}She waits beside the couch instead of beginning another explanation. When you join her, she hands you the overfilled cup with an expression that dares you to complain.{/n}''', c('"What would you like from tonight?"', "tea")),
+{n}She waits beside the couch instead of beginning another explanation. When you join her, she sets the overfilled cup on the table with an expression that dares you to complain.{/n}''', c('"What would you like from tonight?"', "tea")),
     n("tea", "Chivarro", '''"Company while the light lasts. Then whatever we agree before it goes."
-{n}She gives you a cup. The tea is too strong. She notices your first sip and admits that she lost track of it while considering the pins.{/n}
+{n}She gives you a cup. The tea is too strong. She notices your first sip and removes the leaves, which have been steeping throughout your conversation.{/n}
 "I could pretend I prefer it this way."
 "Do you?"
 "No. Fortunately I invited someone who has already seen me make a more expensive mistake."
@@ -1129,7 +1251,8 @@ Beside the first sheet lies a packet tied with a faded cord. Minagho's fingers s
 He begins explaining the difficulty of wartime copies. Minagho interrupts with the correct abbreviation, its meaning, and the name of the clerk whose handwriting he has attempted to imitate.
 The listener with the notebook stops writing.
 The salvager reaches for the sheet. You lay his own receipt beside it.{/n}
-"A close inspection," Minagho says. "For which I have paid. We have not finished."
+"An account supported by genuine papers," Minagho says, reading the promise above his signature. "Show us what we paid to hear about."
+{n}He looks at the receipt. Inspection was meant to cost extra; she has made refusing it sound like an admission that the advertisement was false.{/n}
 {n}She has not raised her voice. The reader takes his hand away. She draws the true order toward herself and points to the line she dictated years ago.
 For the first time that evening, she does not offer a joke.{/n}
 "This part happened. That part is your invention. Do not make me defend you by mixing them."
@@ -1360,7 +1483,7 @@ Sivane unfolds the proposal when she returns.{/n}
 "You doubled it."
 "Nearly. I left him something to congratulate himself on."
 "My fee remains the same?"
-"We agreed it yesterday."
+"We agreed it before rehearsals began."
 {n}Sivane's expression changes. Chivarro notices and puts the coin purse beside her rather than between them.{/n}
 "Finish the lamps. We can discuss the next performance when this one has paid for its room."
 {n}The performer takes her mask and leaves. Chivarro watches the door, then counts the money without offering an explanation for either victory.{/n}''', c('[Keep the limited private booking.]', flags=done("preview_kept", "private_booking"))),
@@ -1741,52 +1864,57 @@ She has not given up the room yet. The packing is a way to discover what another
 "Not a city. A way of choosing. I want to know what a place offers before I decide that the only respectable answer is to conquer its attention. I can enjoy being noticed without turning every empty seat into an insult."
 {n}She closes a small traveling case and tests its latch.{/n}
 "I would like to talk about what I take with me. Some of it cannot be folded."''', c('"Tell me what you want to keep."', "keep")),
-    n("keep", "Chivarro", '''"The work with Sivane, for as long as we both keep choosing it. The right to decide whom I receive without selling the answer to a patron first. Minagho, though she will dislike being placed in a list beside a business arrangement."
-{n}Her smile softens without becoming less exact.{/n}
-"And some part of this. Your company. The way you ask a second question when the first answer was attractive but incomplete. The fact that you have seen me want something and have not decided that wanting it makes me available for any price."
-"You have not made it easy to mistake the price."
-"I have tried. I was not always certain whether I was being clear or merely difficult."
-{n}She moves the traveling case off the couch, clearing the place beside her.{/n}
-"I am not asking you to become the patron of my future. I want to know what sort of place you would ask for in it. I can answer a wish. I cannot answer a silence you expect me to read indefinitely."''',
+    n("keep", "Chivarro", '''"The work. Minagho, if she can resist telling everyone how much better she would have arranged it. And you."
+{n}She lifts the ornament box out of the case and discovers that the lid no longer closes. Something beneath it has shifted.{/n}
+"That sounded uncomfortably like a list of possessions. Help me before I begin assigning shelf space."
+{n}You find a folded handbill under the box. It is the advertisement for Sivane's first performance. Chivarro smooths the crease with her thumb.{/n}
+"I want to show you the next one. Preferably from a room where I am still pleased to see you when the lamps have gone out."
+{n}She puts the bill into a narrow side pocket, then clears the place beside her on the couch.{/n}
+"What shall I keep that place for?"''',
       c('"I want an enduring relationship with you. It does not have to make every evening or every journey ours."', "lasting", requires=done("chivarro_affection")),
       c('"I want us to keep choosing particular visits, without promising a shared home."', "visits"),
       c('"I want to keep you in my life as a friend. I do not want to leave a romantic promise hanging between us."', "friends")),
-    n("lasting", "Chivarro", '''{n}Chivarro sits very still. When she answers, the carefully prepared part of her voice has gone quiet.{/n}
-"I want that too. I wanted to hear whether you would ask for it while understanding that I have somewhere of my own to go."
-"You need not stop wanting the work."
-"No. Nor need you arrange your whole life around making my departures painless. I would be a very poor lover if the only freedom I could enjoy was my own."
-{n}She reaches for your hand.{/n}
-"I will tell you when I mean to leave and when I can reasonably return. If an answer changes, I will send the changed answer. I will not let you wait while I decide that explaining would make me look uncertain."
-"And if I cannot be here?"
-"Then tell me. I may be disappointed. We can survive an honest disappointment much better than a beautiful promise that becomes someone else's duty to excuse."
-{n}She kisses your knuckles, then looks up.{/n}
-"That was almost a speech. You may stop me before I become pleased with it."''',
+    n("lasting", "Chivarro", '''{n}Chivarro sits very still.{/n}
+"Yes."
+{n}She reaches for the case, closes it, and puts it on the floor. It tips against her ankle. She pushes it away without looking.{/n}
+"I had prepared something much more impressive. You have inconvenienced me."
+"Do you want time to remember it?"
+"No. Come here before I do."
+{n}Her hand closes over yours. She looks down at your joined fingers, smiling despite an evident effort to make the expression less revealing.{/n}
+"You realize I shall write dreadful complaints about the places I stay? I expect replies. Preferably ones in which your accommodations sound worse."
+"And if I cannot come?"
+"Then tell me where to send the next complaint. I am resourceful."''',
       c('"Then come closer. We have said enough to begin keeping it."', "lasting_close"),
       c('"I want to talk through the first separation before we have to make it."', "distance")),
-    n("lasting_close", "Narrator", '''{n}Chivarro moves beside you. You kiss her slowly enough that the first kiss can be an answer rather than the beginning of another question. Her hand settles against your chest, feeling the closeness she has chosen.
-Afterward she takes the case off the floor and opens it again. Beneath the ornament box is a narrow pocket. She puts a sheet of paper there and tells you that the first address she can safely receive a reply at will be written on it before she leaves.
-The paper is still blank. Neither of you pretends otherwise. She closes the case without making the blankness seem like a withdrawal.
-You sit together while she tells you what she would like to show you in a city that has not seen her lose anything. It is a desire, not a travel arrangement. You answer with something you would like to show her when there is time to enjoy it.{/n}''', c('[Choose a lasting relationship that allows both of you your own work and journeys.]', flags=done("chivarro_future_spoken", "chivarro_lasting"))),
-    n("distance", "Chivarro", '''"The first separation may be yours. You still have a war to finish. I have no intention of pretending my calendar can settle that."
-{n}She draws the case closer and opens its empty side pocket.{/n}
-"Before I leave anywhere, I will give you the best address I can. If I cannot give a return date honestly, I shall not make one up because the farewell would sound better with it. I would rather hear that you dislike not knowing than discover I have taught you not to trust an answer."
-"What would you ask of me?"
-"A message when you can send one. The truth when you cannot come. And when you do arrive, some time in which you are not merely recovering enough strength to leave again. I want to enjoy you while you are awake."
-{n}Her hand closes over yours.{/n}
-"There are less sensible requests. I shall save them for an evening when you can answer in person."''', c('[Agree to the lasting relationship and the honest messages.]', flags=done("chivarro_future_spoken", "chivarro_lasting"))),
-    n("visits", "Chivarro", '''"Particular visits. I like knowing what the invitation means."
-{n}She considers the answer before deciding how much pleasure to show.{/n}
-"I would not want to make an open door into a claim on every room behind it. There may be other people you want to see. There will be work I want to do without asking whether it keeps me sufficiently available. We can agree to find each other without making absence an accusation."
-"Does that give you enough?"
-"It gives me something I want. If I begin wanting more, I can say so. You may answer then. I would rather risk hearing an answer than improve your promise in my imagination and resent you for failing to keep the improvement."
-{n}She sets the case aside and leaves the couch clear.{/n}
-"Stay for a while. Let this be one of the particular visits. We have discussed the next ones quite enough for an afternoon."''',
+    n("lasting_close", "Narrator", '''{n}You kiss her before the next joke is ready. Chivarro catches your sleeve and keeps you close after the kiss ends.
+Afterward she opens the case again. She puts a blank sheet into the narrow pocket with the handbill.{/n}
+"For the first address. If I put it elsewhere, I shall decide it is business and write to you like a client."
+{n}You ask how she writes to clients she especially likes. She shows you, adopting a courteous expression whose promise becomes quite unmistakable halfway through the demonstration. Then she spoils it by laughing.
+You stay while she repacks the case. This time she leaves the lid open and rests her feet beside it on the couch, where you have room to sit close.{/n}''', c('[Choose a lasting relationship that allows both of you your own work and journeys.]', flags=done("chivarro_future_spoken", "chivarro_lasting"))),
+    n("distance", "Chivarro", '''"Your first journey will be worse than mine. I have been trying not to count the ways."
+{n}She opens the narrow pocket in the case and slips a blank sheet beside the handbill.{/n}
+"An address, when I have one. You will receive it before a description of the room. I know my own habits."
+"What would you want sent back?"
+"Your own handwriting. Anevia may be wonderfully efficient, but I would prefer she not conduct my courtship for me."
+{n}She looks at your hand in hers.{/n}
+"And when you do come, arrive early enough to find me awake. I have spent several evenings imagining a grand welcome and then falling asleep over the guest list. I should hate to waste a magnificent entrance on that."
+"I could wake you."
+"You could try. I am told I am difficult."''', c('[Agree to the lasting relationship and the honest messages.]', flags=done("chivarro_future_spoken", "chivarro_lasting"))),
+    n("visits", "Chivarro", '''"Then I shall have to make the invitations interesting."
+{n}She considers you with a hostess's appraising attention.{/n}
+"Sivane has promised me a new scene in which a judge must sentence his own reflection. I should like to sit beside you when he discovers who has been summoned as a witness."
+"Does the audience get a part?"
+"If you are afraid of another key, I can reserve a place beyond throwing distance."
+{n}She smiles, then moves the case off the couch.{/n}
+"That one is for later. Today I have a little time, a room I enjoy and no performer to distract us. Stay."''',
       c('[Stay close, keeping the affection you have chosen.]', "visits_close", requires=done("chivarro_affection")),
       c('[Stay for conversation and leave the future open.]', "visits_talk")),
-    n("visits_close", "Narrator", '''{n}Chivarro welcomes your arm around her. She does not ask you to repeat the answer until it becomes more permanent. Instead she tells you about a place she would like to visit for no reason connected with a customer, a patron or a rival.
-She has heard of a coast where the stones in the shallows turn green beneath the water. She cannot tell you who gave her the description without admitting that she once listened to a guest she claimed to find boring. You enjoy her reluctance to reveal that detail until she laughs and admits it.
-The conversation ends in a kiss. Afterward she keeps your hand between hers and says that she would like to hear what you find worth seeing, even when you cannot show it to her yourself.
-It is an invitation you can keep without promising to arrive at every shore together.{/n}''', c('[Choose continuing visits without a shared-home promise.]', flags=done("chivarro_future_spoken", "chivarro_open_visits"))),
+    n("visits_close", "Narrator", '''{n}Chivarro settles beneath your arm and tells you about a coast where the stones turn green in the shallows. She wants to see it before a merchant improves the description enough to spoil the place.
+You ask who told her about it. She admits, reluctantly, that it was a guest she claimed to find boring.{/n}
+"He spoke for almost an hour. I cannot remember his name."
+"You remember the stones."
+"Yes. I am furious with him."
+{n}She kisses you, then describes the little boat she would refuse to board and the view she would insist on seeing from it. By the time she finishes, you have both found several reasons to laugh at the imagined journey.{/n}''', c('[Choose continuing visits without a shared-home promise.]', flags=done("chivarro_future_spoken", "chivarro_open_visits"))),
     n("visits_talk", "Narrator", '''{n}You remain while Chivarro sorts the ornaments into their separate wrappings. Each has a story she can choose to tell. Some she keeps short. Others acquire an unexpected detail when you ask why she bothered to keep the object.
 One plain pin belonged to no powerful admirer. She bought it because the seller insisted it was too severe for her. Chivarro demonstrates the severe expression she wore while paying, and you accuse her of having rehearsed it for years.
 She denies the charge badly enough to make you both laugh.
@@ -1809,37 +1937,35 @@ Chivarro sets three cups beside the fruit.{/n}
 "An ambitious standard," Minagho says.
 "I have been told I am an ambitious woman."
 {n}Minagho touches her hand, and the answer between them becomes briefly private. Then they turn toward you.{/n}''', c('"There is something I want to settle before I leave."', "answers")),
-    n("answers", "Chivarro", '''"Then say it. We have had enough practice surviving a direct question."
-{n}She sits beside Minagho without closing the space available to you. The two women have their own life to discuss after this meeting. They have not placed it on the table as something you can award or withdraw.
-Minagho rests her hands around the cup.{/n}
-"I know what you and Chivarro have said about the future. She told me what she wanted me to know. If you want something different with me, you can ask me. If you want something that includes all of us, you will have to hear two answers. I recommend allowing time for the objections."
-"There may be fewer than you expect," Chivarro says.
-"Then I shall be pleasantly surprised. A dangerous habit, but I have begun to acquire it."''',
+    n("answers", "Chivarro", '''"Then say it before Minagho eats the last of those."
+{n}Minagho has a piece of sugared fruit halfway to her mouth. She offers it to Chivarro instead, who accepts it with no sign that the maneuver has distracted her.
+When Minagho turns to you, the amusement fades a little.{/n}
+"I dislike farewells. People say things they cannot possibly know, and then expect gratitude for the prophecy. Tell me what you want when you return. I shall try to listen without improving it."
+{n}Chivarro moves her cup to make room for yours beside it.{/n}''',
       c('"Minagho, I want to keep a lasting relationship with you too."', "minagho", requires=done("minagho_chosen"), forbids=("minagho.ran_demon",)),
       c('"I want a relationship the three of us choose together, while keeping room for our other lives."', "together", requires=done("minagho_chosen", "chivarro_lasting"), forbids=("minagho.ran_demon",)),
       c('"Minagho, I want friendship between us. What Chivarro and I have agreed remains our answer."', "friendship", forbids=("minagho.ran_demon",)),
       c('"I want to keep choosing our visits without promising a shared future tonight."', "open", forbids=("minagho.ran_demon", "minachiv.chivarro_lasting")),
       c('"Minagho, your service remains unresolved. I will not turn this farewell into a claim that it has changed."', "service", requires=("minagho.ran_demon",))),
-    n("minagho", "Minagho", '''{n}Minagho's answer arrives after a silence that gives it weight.{/n}
-"Yes. I want more than a good story about an evening we once had. I want to hear you arrive and have somewhere beside me that I have kept because I expected you."
-"You need not give up the rest of what you are doing."
-"I would have argued if you asked. I am pleased to save the time."
-{n}Chivarro smiles at that, then turns toward you.{/n}
-"You and I have already spoken. I am not withdrawing my answer because hers has become clearer. Nor am I requiring every private hour to include me. We can ask for what we want without making the other woman an obstacle to it."
-{n}Minagho takes your hand.{/n}
-"There will be inconvenient journeys. There will be evenings when one of us is impossible to please. I would like to discover what ordinary annoyances we can acquire after surviving the extraordinary ones."
-{n}She kisses you, then rests her forehead near yours for a moment before allowing the conversation to continue.{/n}''',
+    n("minagho", "Minagho", '''{n}Minagho looks at you for long enough that Chivarro quietly rescues the fruit from her idle hand.{/n}
+"Yes. I should like somewhere beside me that I keep because I expect you."
+"Where?"
+"An excellent question. I intend to complain about several possibilities before selecting the one Chivarro suggested first."
+"I have offered no suggestions," Chivarro says.
+"You will. You are incapable of leaving an inadequately furnished room alone."
+{n}Chivarro smiles at you over Minagho's shoulder. Minagho takes your hand, pulls you close and kisses you with a sudden impatience that betrays how carefully she has been sitting still.
+Afterward she rests her forehead near yours.{/n}
+"Come back with something better to discuss than your enemies. I want to know what makes you useless for an afternoon."''',
       c('[Keep two individually chosen lasting relationships, without requiring every visit to be shared.]', flags=done("complete", "future_two"), requires=done("chivarro_lasting")),
       c('[Keep the lasting relationship with Minagho and the visits Chivarro chose.]', flags=done("complete", "future_minagho"), forbids=done("chivarro_lasting"))),
-    n("together", "Chivarro", '''"I want it. I want to choose some evenings with both of you, to know when a room has been made ready for three, and to be able to ask for an hour alone without making it a verdict on anyone else."
-{n}She turns toward Minagho.{/n}
-"I also want you to stop telling people what I will probably agree to. You may tell them to ask."
-"A severe restriction on an excellent source of conversation."
-"You will survive."
-{n}Minagho laughs, then gives her own answer.{/n}
-"Yes. I want the three of us. I want the difficult conversations before we discover that everyone has been keeping a different agreement. And I want some thoroughly unreasonable pleasure in exchange for all this clarity."
-{n}You tell them what you want. They hear it, object to one assumption about travel, and find an answer all three can keep. No one promises the same address forever or demands that other loves disappear.
-When Chivarro takes your hand, she places her other hand in Minagho's. The circle lasts a moment before Minagho draws you both closer.{/n}''', c('[Kiss each of them and keep the shared relationship you have all chosen.]', flags=done("complete", "future_together"))),
+    n("together", "Chivarro", '''"Yes," Chivarro says. "And I am buying a better couch. The one in my room squeaks whenever I look at it. I expect better manners from something I have paid for."
+"I hope you intend to look at me instead," Minagho says.
+"You are already excessively pleased with yourself."
+"I shall attempt consistency."
+{n}Minagho reaches for your hand. Her thumb presses once against your palm before she speaks.{/n}
+"Yes. The three of us. I should like another evening in which she forgets which of us she was scolding."
+{n}Chivarro takes your other hand and draws both of you toward her. The first kiss becomes an argument over who has moved which chair. The second settles it.
+When you sit back, their hands remain with yours on the table. Chivarro begins describing the better couch with such precision that Minagho asks how long she has been considering it. She does not get an answer.{/n}''', c('[Kiss each of them and keep the shared relationship you have all chosen.]', flags=done("complete", "future_together"))),
     n("friendship", "Minagho", '''{n}Minagho hears the answer without pretending it has cost her nothing.{/n}
 "Then I shall know what invitation I am sending. I would rather have the truth than become very good at misreading your politeness."
 "I do want you in my life."
@@ -1852,12 +1978,11 @@ After a moment, Minagho reaches for the sugared fruit.{/n}
       c('[Keep the lasting relationship Chivarro chose and the friendship Minagho accepted.]', flags=done("complete", "future_chivarro"), requires=done("chivarro_lasting")),
       c('[Keep Chivarro\'s open visits and Minagho\'s friendship.]', flags=done("complete", "future_open"), requires=done("chivarro_open_visits")),
       c('[Keep both friendships.]', flags=done("complete", "future_friends"), requires=done("chivarro_friendship"))),
-    n("open", "Chivarro", '''"Then we ask again when there is an evening to offer. I can keep that answer."
-{n}Minagho turns her cup once between her hands.{/n}
-"So can I. I do not require every pleasant thing to become a fortress before I will enter it. Some of the fortresses I have known were remarkably unpleasant."
-{n}Chivarro looks at her, and both women begin laughing. You are allowed to enjoy the laugh without being made to repeat its oldest reasons.
-They talk through how to send a message while plans are uncertain. Chivarro will give an address when she has one she can use. Minagho will answer in her own voice rather than assuming Chivarro has already said enough for both of them.
-At the door, each says farewell separately. There is no last-minute attempt to make the parting more binding than the conversation that preceded it.{/n}''', c('[Keep the future open and the invitations honest.]', flags=done("complete", "future_open"))),
+    n("open", "Chivarro", '''"Then send word when you have an evening," Chivarro says. "I shall try to have something worth missing sleep over."
+"Her letters will sound far more respectable than the event," Minagho warns you. "Mine will sound worse. You may enjoy comparing them."
+{n}They begin disputing who wrote the more misleading invitation. Chivarro produces the little skull Minagho drew on the first note. Minagho claims it was an accurate warning about the conversation.
+You leave them arguing over which of you should keep it. Before you reach the stair, Chivarro slips it into your hand.
+Minagho has added a second skull beside the first.{/n}''', c('[Keep the future open and the invitations honest.]', flags=done("complete", "future_open"))),
     n("service", "Minagho", '''"Then we have at least named the thing correctly."
 {n}She does not offer you a softer answer for the sake of the farewell.{/n}
 "I have spoken about what I want. Chivarro has spoken for herself. You can remember those answers without turning them into evidence that the service has become something else."
@@ -1920,7 +2045,7 @@ Minagho remembered the note instead. She had expected another dangerous negotiat
 They spoke of the Commander differently. Neither required the other to choose a single account of the loss.{/n}''', requires=("sacrifice",), forbids=("minagho.dead", "chivarro.dead", "inhuman", "ascended"), complete=False)
 ending("unfinished_lasting", "The address she still meant to send", '''{n}Chivarro had told the Commander what she wanted and received a lasting answer. The final farewell had not taken place, but she did not treat its absence as permission to forget the conversation they had actually had beside her traveling case.
 She kept the blank sheet in its narrow pocket until she had an address worth writing on it. Then she sent it. Minagho knew why the message mattered and, for once, supplied no joke while Chivarro sealed it.{/n}''', requires=done("chivarro_lasting"), forbids=ORDINARY_BAD, complete=False)
-ending("unfinished", "A conversation still open", '''{n}The invitation had been answered. Minagho and Chivarro had begun a conversation with the Commander that no earlier account of their lives could have supplied for them.
+ending("unfinished", "A conversation still open", '''{n}Minagho's invitation had received an answer. She sent that answer on to Chivarro, who had added her own sharp correction beneath the little skull on the note.
 Their later letters were irregular, sometimes affectionate and sometimes occupied entirely by a difficulty neither woman wished to discuss with a stranger. An unfinished visit could still be followed by another question. Whether the Commander would answer it remained part of the life ahead, not something either woman could settle by writing both halves of the exchange.{/n}''', forbids=ORDINARY_BAD + done("chivarro_lasting"), complete=False)
 ending("aeon", "The room that was not hired", '''{n}In the remade history, no invitation bearing two different hands brought these evenings into being. Chivarro did not hire the room for this performance, and Minagho did not discover that particular bad stair in the Commander's company.
 Their lives had other rooms, other bargains and their own long entanglement. No recollection of the erased visits arrived to turn those lives toward a guest they had not met in that way.{/n}''', owner="AeonEpilogue", complete=False)

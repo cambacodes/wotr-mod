@@ -53,7 +53,12 @@ The last checked local package contains the earlier 533-scene export; the curren
 Native recovery and actual game verification remain separate requirements.
 Arsinoe's approved shop portrait is assigned to all nine pages of her opening counter conversation after independent context review.
 The [Minagho and Chivarro audit](reference/canon-review/minagho-chivarro-integration.md) establishes which parent events and endings must be extended rather than duplicated.
-Their new continuation is in authoring, with Chivarro's own arrival and choices required before any expanded group relationship.
+Their 47-scene continuation has passed [revision 3 literary review](reference/story-review/minagho-chivarro-continuation-third-review.md), with separate credited budgets of 22,278 words for Minagho and 21,991 for Chivarro.
+Chivarro's own arrival and choices are required before any expanded group relationship.
+The [revised ending contract](reference/canon-review/minagho-chivarro-ending-contract-third-review.md) preserves earned reunion, survivor outcomes and original parent selectors.
+This candidate is not in the 537-scene export yet; conditional parent-ending implementation and verification remain required before that integration is complete.
+Konomi's [retained-return placement audit](reference/canon-review/konomi-return-placement-audit.md) identifies a temporary personal meeting that can displace only the native hidden fallback without restoring her office.
+Its implementation and independent review are underway; the current export still requires physical contact already supplied by the game.
 The [Irabeth selector witness](reference/canon-review/irabeth-meeting-selector-review.md) proves bounded native claim arbitration, while explicitly leaving actual activation, actor arrival and save persistence unverified.
 
 The user has removed the TTS freeze milestone.
