@@ -52,6 +52,10 @@ def n(id, speaker, text, *choices, portrait=""):
 
 
 def scene(id, title, owner, chapter, entry, nodes, requires=(), forbids=(), delay=0, last=5, optional=False, **extra):
+    """One scene. Common **extra fields: Relationship, AnswerLists, Remote, Areas, Chapters, ContactUnit, ForbidOverrides,
+    NativeReturnCue, RequiresAnyGroups, TricksterDevice / TricksterState (ER-2), EpilogueAfter (ER-3), and E13 entry effects:
+    EntryMythic="PlayerIsTrickster" (a Mythic enum name) and EntryAlignment=dict(Direction="Chaotic", Value=1) put the native
+    mythic requirement/icon + achievement counter and an AlignmentShift on the entry answer of a physical scene."""
     return dict(Id=id, Title=title, Owner=owner, MinChapter=chapter, MaxChapter=last,
                 Entry=entry, Nodes=nodes, Requires=list(requires), Forbids=list(forbids),
                 DelayHours=delay, Optional=optional, **extra)

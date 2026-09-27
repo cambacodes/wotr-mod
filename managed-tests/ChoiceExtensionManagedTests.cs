@@ -123,6 +123,14 @@ internal static class ChoiceExtensionManagedTests
         check(gain != null && gained.Equals(Kingmaker.Kingdom.KingdomResourcesAmount.FromFavors(3)), "Crusade gain differs from AddCrusadeResources.");
         check(Enum.GetNames(typeof(Kingmaker.Kingdom.KingdomResource)).Except(new[] { "None" }).SequenceEqual(Rules.CrusadeResources),
             "Rules.CrusadeResources differs from Kingmaker.Kingdom.KingdomResource.");
+        // E13: Build applies Scene.EntryMythic / EntryAlignment to the entry answer through the same ConfigureNativeEffects.
+        var entryAnswer = new BlueprintAnswer();
+        entryAnswer.OnSelect = new Kingmaker.ElementsSystem.ActionList { Actions = new Kingmaker.ElementsSystem.GameAction[] { new Main.RouteAction() } };
+        typeof(Main).GetMethod("ConfigureNativeEffects", PrivateStatic)!.Invoke(null, new object[] { entryAnswer,
+            new Choice { Mythic = "PlayerIsTrickster", Alignment = new AlignmentChoice { Direction = "Chaotic", Value = 1 } }, new Action<string>(_ => { }) });
+        check(entryAnswer.MythicRequirement == Mythic.PlayerIsTrickster && entryAnswer.OnSelect.Actions.Length == 2
+            && entryAnswer.OnSelect.Actions[1] is IncrementFlagValue && entryAnswer.AlignmentShift.Direction == AlignmentShiftDirection.Chaotic,
+            "Entry-answer native effects differ from the E5 choice shape.");
         Console.WriteLine("PASS: E5/E11 choice extensions built with the real assemblies (Mythic, NativeNext, Alignment, Crusade, RemoveItem) and matched native shapes.");
     }
 }

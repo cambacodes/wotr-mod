@@ -143,6 +143,9 @@ namespace Tirabade
         // ER-3: an epilogue page placed right after this native page or cue of its sequence (authored order among pages
         // sharing an anchor); appended as before when the anchor is not a member of the sequence.
         public string? EpilogueAfter;
+        // E13: native effects on the scene's entry answer (the one injected into a native answer list), as E5 does for choices.
+        public string? EntryMythic;
+        public AlignmentChoice? EntryAlignment;
         public string[] Requires = Array.Empty<string>();
         public string[] RequiresAny = Array.Empty<string>();
         public string[][] RequiresAnyGroups = Array.Empty<string[]>();
@@ -652,7 +655,9 @@ namespace Tirabade
             {
                 if (scene.InteractionHub != null && !IsNurahHubScene(scene))
                     throw new InvalidOperationException("Invalid authored Nurah interaction-hub contract: " + scene.Id);
-                if (scene.Relationship == "nurah" && !IsRemote(scene) && !IsNurahHubScene(scene))
+                // E13: a Trickster device may meet Nurah physically on explicit native lists (prison, pardon, Camellia).
+                if (scene.Relationship == "nurah" && !IsRemote(scene) && !IsNurahHubScene(scene)
+                    && !(scene.TricksterDevice && scene.InteractionHub == null && scene.AnswerLists.Length > 0))
                     throw new InvalidOperationException("Physical Nurah scenes require the authored arrival hub: " + scene.Id);
                 if (scene.ManualOnly && !IsRemote(scene))
                     throw new InvalidOperationException("Manual-only delivery requires a remote scene: " + scene.Id);
@@ -700,6 +705,12 @@ namespace Tirabade
                 if (scene.AfterDeparture != null) ValidateDepartureVisit(story, scene);
                 if (scene.Reaction) ValidateReaction(story, scene);
                 if (scene.TricksterDevice || scene.TricksterState != null) ValidateDevice(story, scene);
+                if ((scene.EntryMythic != null || scene.EntryAlignment != null) && (IsRemote(scene) || scene.InteractionHub != null
+                    || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    || scene.EntryMythic != null && !MythicNames.Contains(scene.EntryMythic)
+                    || scene.EntryAlignment != null && (!AlignmentDirections.Contains(scene.EntryAlignment.Direction)
+                        || scene.EntryAlignment.Value <= 0 || scene.EntryAlignment.Value > 100)))
+                    throw new InvalidOperationException("Invalid entry mythic/alignment (physical entry answers only; Mythic and AlignmentShiftDirection names): " + scene.Id);
                 if (scene.EpilogueAfter != null && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || !Guid.TryParseExact(scene.EpilogueAfter, "N", out var anchor) || anchor == Guid.Empty))
                     throw new InvalidOperationException("EpilogueAfter needs an epilogue page and a native page or cue GUID: " + scene.Id);

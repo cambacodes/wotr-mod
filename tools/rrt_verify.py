@@ -55,7 +55,7 @@ def norm_scene(s):
              AfterDeparture=None, ContactUnit=None, AdditionalContactUnits=[], MinChapter=1, MaxChapter=5,
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
              ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None,
-             EpilogueAfter=None)
+             EpilogueAfter=None, EntryMythic=None, EntryAlignment=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", "")
@@ -607,7 +607,15 @@ def validate(model):
         except ValueError as e:
             errs.append(str(e)); tg = []
         if s["InteractionHub"] is not None and not is_nurah_hub(s): errs.append("Invalid Nurah hub contract: " + sid)
-        if s["Relationship"] == "nurah" and not is_remote(s) and not is_nurah_hub(s): errs.append("Physical Nurah scene without hub: " + sid)
+        if (s["Relationship"] == "nurah" and not is_remote(s) and not is_nurah_hub(s)
+                and not (s["TricksterDevice"] and s["InteractionHub"] is None and s["AnswerLists"])):
+            errs.append("Physical Nurah scene without hub (or a TricksterDevice on explicit AnswerLists): " + sid)
+        if (s["EntryMythic"] is not None or s["EntryAlignment"] is not None) and (
+                is_remote(s) or s["InteractionHub"] is not None or is_epilogue(s)
+                or (s["EntryMythic"] is not None and s["EntryMythic"] not in MYTHIC_ENUM)
+                or (s["EntryAlignment"] is not None and (s["EntryAlignment"].get("Direction") not in ALIGNMENT_DIRECTIONS
+                                                      or not 0 < s["EntryAlignment"].get("Value", 0) <= 100))):
+            errs.append("Invalid entry mythic/alignment: " + sid)
         if s["ManualOnly"] and not is_remote(s): errs.append("ManualOnly non-remote: " + sid)
         if s["TricksterDevice"] or s["TricksterState"] is not None:
             rel = rels.get(s["Relationship"], {})

@@ -314,6 +314,9 @@ namespace Tirabade
                         answer.NextCue = Cues(Get<BlueprintCue>(GuidFor("cue." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
                     else
                         answer.OnSelect = Actions(new RouteAction { Start = scene });
+                    // E13: the entry itself can be a native [Trickster] answer or shift alignment (same shape as E5 choices).
+                    if (scene.EntryMythic != null || scene.EntryAlignment != null)
+                        ConfigureNativeEffects(answer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
                 }
                 if (story.Scenes.Any(Rules.IsNurahHubScene)) nurahHub = BuildNurahHub();
 
