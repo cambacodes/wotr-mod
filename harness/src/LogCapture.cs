@@ -88,8 +88,18 @@ namespace RRT.TestHarness
 
         void ILogSink.Destroy() { }
 
+        // Third-party behavior observed in live runs that is not an RRT defect. Kept in the report, tagged, never failing.
+        private static readonly (string Pattern, string Reason)[] KnownBenign =
+        {
+            ("[Audio] Failed to play sound evt_RRT.", "WOTR_AIVO requests a voice clip for every cue; RRT cues are unvoiced (audio only, no effect on dialogue)"),
+        };
+
+        internal static string? BenignReason(string message) =>
+            KnownBenign.Where(b => message.IndexOf(b.Pattern, StringComparison.Ordinal) >= 0).Select(b => b.Reason).FirstOrDefault();
+
         internal static bool IsRelevant(string message, string? stack)
         {
+            if (BenignReason(message) != null) return false;
             string text = message + "\n" + stack;
             return text.IndexOf("Tirabade", StringComparison.Ordinal) >= 0
                 || text.IndexOf("RRT_", StringComparison.Ordinal) >= 0
@@ -114,7 +124,8 @@ namespace RRT.TestHarness
                 if (entries.Count >= Cap) return;
                 entries.Add(new CapturedLog
                 {
-                    Source = source, Severity = severity, Message = message ?? "", StackTrace = stack,
+                    Source = source, Severity = severity,
+                    Message = BenignReason(message ?? "") is string reason ? "[known benign: " + reason + "] " + message : message ?? "", StackTrace = stack,
                     AtSeconds = Math.Round(clock.Elapsed.TotalSeconds, 3), Context = Context,
                     Relevant = source == "finalizer" || IsRelevant(message ?? "", stack),
                 });
