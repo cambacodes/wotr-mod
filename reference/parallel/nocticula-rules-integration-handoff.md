@@ -51,3 +51,14 @@ Candidate SHA256 is 57CF856A23048192AAD5A8E970BAB42EA729C6FBE9828DF10BADD23E7DCB
 The same actual Rules suite again passed 569,185 focused assertions.
 This repetition is tied to a newly frozen manuscript, not a new claim about the earlier version.
 Independent editorial rereview and review of the root-authored tests remain pending.
+
+## Independent test corrections
+
+The independent test reviewer reproduced two missed regressions: postponement could set acceptance, and a selected ending could write native state without failing the original suite.
+Root added exact postponement state preservation, retry and next-scene checks, explicit choice coverage, and actual traversal of selected ending pages.
+The reviewer independently reran the corrected baseline and confirmed that both mutants now fail.
+The final test revision additionally prohibits revival and native writes across all twenty-four scenes and checks adjacent chapters and lost-area contact.
+Final test SHA256 is 71A6C253CC2C16FEA7CD58B4FAD53E0510FB1D0048EFF2E2A7F6D511CC013677.
+Root's final run passed 569,618 focused assertions.
+The independent report at reference/parallel/nocticula-rules-tests-review.md approves this bounded suite for registration while preserving its acquisition, runtime and narrative limits.
+The manuscript's second editorial review still requires revisions, so the route remains outside the shared export.

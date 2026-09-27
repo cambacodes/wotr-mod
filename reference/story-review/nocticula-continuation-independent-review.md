@@ -177,3 +177,166 @@ It does not solve the living-Shamira alternative required by the user's concurre
 No synthetic flag combination can substitute for an actual quest and relationship acquisition witness.
 Art, native export and binding verification, actual Rules tests, managed construction, saved-game behavior, and live ToyBox coexistence remain separate work.
 This first manuscript is not approved, integrated, or ready for manual gameplay review.
+
+## Second complete review: revision 9CDD
+
+Reviewed on 2026-09-26 after completing the separate Tirabade assembled review.
+Frozen source SHA256: `9CDD2490621BCE273D3E36E7977208EAFBE41173E0D80ED0BCA8A42EF89E6E74`.
+Verdict: revision still required.
+This revision materially improves Nocticula's motives, several personal scenes, and the remembered consequences of the hearing.
+It does not yet pass the strict prose, pacing, and continuity requirements.
+The original findings above remain evidence of the first snapshot, not claims that every old defect remains present.
+
+### Reading and independent checks
+
+I read the whole revised manuscript: all 16 visits, all 117 visit nodes, all eight supplementary endings, and all 177 choice records including ending continuations.
+The review was not limited to the four reported leaks or the added Gift exchange.
+I reread the parent audit and the first review, and checked the revised branches against their actual incoming requirements and prior producers.
+The source, reading copies, imported scene objects, and independent comparison/count result are preserved under `C:/Users/Z/AppData/Local/Temp/nocticula-independent-9cdd`.
+The result file is `revision-probe.json`.
+
+My independent count reproduces 25,411 raw words and 25,323 distinct normalized text-and-choice words.
+The visits alone contain 24,192 distinct words, with no parent contribution.
+The word rule remains markup removal, whitespace normalization, Unicode words with internal apostrophes, and exact whole-segment deduplication.
+This is aggregate branch volume, not a selected-playthrough count.
+There is room for a meaningful editorial trim while retaining the 21,000-word floor.
+
+The parent/native alias maps, relationship metadata, and every scene's non-node metadata are identical to the first frozen version.
+The four new nodes are `what_she_keeps/fee_admission`, `extra_observer`, `return_condition`, and `new_price`.
+Existing choice-record differences are limited to `after_the_lamps/matter`, `what_she_keeps/commissioned`, and `second_door/rescue`.
+The first and last change their response text; the commission node now chooses the appropriate new consequence by its saved hearing result.
+All local node targets resolve in the independent probe.
+These are source checks, not native execution, economic simulation, or saved-game attainability proof.
+
+### Actual revised scores
+
+| Dimension | Score | Revised assessment |
+| --- | ---: | --- |
+| Nocticula's voice and recognizable motives | 92 | Her desired acquisition, anger, threats, proprietary knowledge, and interest in a useful rival persist across the route. The improvement extends beyond one Gift paragraph. |
+| Prose and scene construction | 89 | Actual exchanges have replaced several explanations, but conspicuous narrator commentary about the story's correctness remains. |
+| Pacing and variation | 88 | The personal scenes are better; the surrounding investigation still relies too heavily on another report, another advisory question, and another explanation of its significance. |
+| Mature non-graphic attraction | 92 | Competitive attention, deliberate touch, the poisoner anecdote, the interpreter story, and the interrupted courtier proposal give desire more specific texture. |
+| Agency and other-lovers compatibility in the manuscript | 94 | No compulsory exclusivity or invented removal of the Gift; practical conflicts remain possible and Laulieh's separate history is recognized. |
+| Continuity and branch memory | 88 | The original four leaks are repaired, but a further definite recognition leak and two prop-continuity problems remain. |
+| Decisions and authored consequences | 93 | The hearing results now receive actual later distinctions, and the carrier, crossing, chart, injury, and disposition branches retain consequences. |
+| Parent relationship continuity within stated scope | 92 | The Worldwound bargain, accepted relationship, patronage, and conditional ambition/Laulieh history remain intact in the reviewed source. |
+| Meaningful aggregate length | 94 | The volume is substantial and the investigation has a coherent sequence and aftermath; repetition still needs trimming rather than protection by the count. |
+
+These remain subjective assessments of this exact manuscript.
+No average overrides a failing dimension.
+The parent-continuity and decisions scores are not approvals of unimplemented native integration or every promised gameplay effect.
+
+### Original defects that are now repaired
+
+`white_shoes/meeting` now shows Dessa's reservations with the blank seventh line before any player chooses the seventh-berth inquiry.
+That supplies the knowledge on ledger, bait, and contradictory-offer histories alike.
+`cost_of_return/start` introduces Teren's examination of the return arrangements in common context without claiming that every player previously chose him to enter.
+The actual volunteer acceptance remains in its own branch.
+`hearing/business` no longer recalls the earlier contradictory-buyers choice as if everyone had made it.
+`her_own_face/night` introduces the book's flood and poisoner material directly instead of recalling the queen/drainage story from the mutually exclusive talk branch.
+
+The four hearing flags now matter when Ilvara receives the commission.
+Proof supplies an admission used to reject a disguised storage charge.
+Failure produces a second observer and two delayed proposals while the unexplained danger is investigated.
+The direct return-condition answer rejects a substitute witness who does not know the objects.
+The Trickster business question produces payment for reproducible preparation and actual return, rather than speculative future promises.
+Confinement and exile do not receive those employment costs, which is appropriate to their different dispositions.
+These are distinct authored reports selected by saved flags, not yet verified live resource deductions, timed quest delays, or new engine-level research systems.
+
+### Nocticula is more than an agreeable patron in this revision
+
+The common Gift exchange at `her_own_face/start` acknowledges that the power persists and that Nocticula is choosing to ask on this occasion.
+She does not promise that affection has removed the leverage or replaced the old bargain.
+Her reason for asking includes wanting an answer unlike obedience, which fits her interest in an exceptional, useful person more closely than a declaration of universal benevolence would.
+
+`demonstration/price` gives her anger a dangerous object: she considers breaking the lamps in front of Ilvara even though captives depend on them.
+The Commander must offer her something she wants more, including the method and buyers.
+That is a credible local reason for restraint, not a conversion speech.
+The unreinforced crossing preserves a secret but injures Vessa and loses the chart.
+The limited Trickster approach saves the passengers while denying Nocticula the passage she hoped to acquire.
+Her subsequent admission that she searched for a second door is especially useful: she obeyed the specified bargain while still pursuing her own advantage.
+
+She keeps the intact chart herself, decides who may read Vessa's technical knowledge, warns that Ilvara's usefulness may cease to outweigh execution, and refuses to buy back threats Ossin has already circulated.
+She does not dismiss those interests because the player offered a kinder principle.
+The confinement, commission, and exile choices are options she has herself decided are worth considering, so accepting advice among them is not equivalent to accepting any proposal the player might invent.
+
+The route therefore need not acquire gratuitous cruelty to prove that she remains Nocticula.
+It should retain these actual interests and limits while revising the prose around them.
+In particular, do not replace the required edit with more assurances that she is dangerous, has not been redeemed, or may disagree later.
+The best evidence is the possession she keeps, the terms she tests, and the inconvenient answer she gives now.
+
+The Commander's tactics are not interchangeable within the authored incident.
+A quiet purchase and a public threat protect Dessa differently; Ilvara as carrier attempts to conceal a pin, while Teren uses a retreat condition before continuing; protecting the secret, reinforcing openly, and limiting the permission have different costs.
+The initial rescue/power/curiosity selections primarily express motive and receive final callbacks, rather than establishing three independent campaigns.
+Noct's future alliance remains a chosen intention, not implemented command of her agents or access to a usable harbor.
+These limits must remain explicit in readiness reporting.
+
+### Remaining continuity corrections
+
+**A. Definite branch-memory leak: `captains_reply/start`.**
+The narrator says, "You recognize the cloth from Orren's account."
+The blue cloth appears only in `sixth_passenger/missing`.
+The other two inquiry branches, `measure` and `theft`, go directly to `terms` without that detail, and the common passenger introduction contains no blue cloth.
+The earlier embroidered sailcloth from `unlit_quay` is a different described object, not a shared producer for this recognition.
+Thus `sixth_passenger/start -> theft -> terms`, followed by the next investigation stages, reaches a recognition the player did not hear.
+Give Nocticula or the narrator a present introduction to the object, or place the needed observation in actually shared context.
+No extra saved flag is necessary if this can be stated without a false recollection.
+
+**B. The glove is destroyed and then retained without a transition.**
+In `demonstration/price`, Nocticula closes her fist, opens it to a vanished glove and a fading scorch, and the prose says there is nothing left to burn.
+`demonstration/witness` subsequently has her tuck the torn glove into her sleeve.
+`ending_death` also recalls her keeping the torn glove long afterward.
+The dream can recreate an object, but the text does not say she does so here.
+This is an object-continuity defect, not evidence that her dream powers could not accomplish it.
+Show the recreation or revise the later retention; preserve the useful new expression of anger.
+
+**C. Conditional physical detail in `hearing/start`.**
+Ilvara's shoe seam is split where the harbor's sand entered it.
+The played account establishes that sand on her shoes in `return_count/ilvara`, where she personally crosses.
+The Teren-carrier branch instead keeps her outside while he does that work.
+The common hearing does not establish another visit or incident that produced the same damage.
+This is less definite than A because she could have visited her own harbor at another time, but it currently reads as a callback to the conditional extraction.
+Use an established common detail, gate the damage, or give it a present explanation rather than relying on an unmentioned off-page event.
+
+### Prose and pacing revisions still required
+
+The revision improves several individual endings of scenes without sufficiently varying the larger sequence.
+Thirteen of the sixteen visits still principally begin with an account, testimony, request, or document about work performed elsewhere, ask for advice or interpretation, and conclude by explaining what the exchange shows about the partners.
+The dream-delivery restriction explains why the Commander cannot physically perform the extraction.
+It does not require private time to use the same briefing cadence throughout.
+
+Concrete residual narrator commentary includes:
+
+- `return_count/limited`: "The rescued passengers are real. The lost door is real. Your cleverness has not made either fact disappear."
+- `what_she_keeps/disposition`: the assurance that Nocticula has not secretly exchanged the chosen outcome for a more convenient one.
+- `what_she_keeps/start`: the claim that the player chooses which report to hear first, although the three entry answers are mutually exclusive chart histories and the disposition always follows.
+- `second_door/start`: the inventory of absent captive lamps and victory symbols, explaining which interpretation the set is meant to avoid.
+- `second_door/curiosity`: the narrator's catalog of her choices and statement that none completely explains her, before the actual conversation continues.
+- `her_own_face/morning`: the explanation that wanting something from the Commander and wanting the Commander's company have not swallowed one another, immediately around dialogue already making that tension visible.
+
+The problems are not isolated forbidden phrases.
+These passages instruct the reader to credit nuance, continuity, or fairness after the preceding actions have already supplied the evidence.
+They weaken the voice by making the narrator sound like the reviewer of the scene.
+
+The next edit should remove redundant interpretation across the final report and commitment scenes, preserve every necessary factual consequence, and use the recovered space selectively for present interaction.
+`after_the_lamps` through `hearing` and the transition from `what_she_keeps` into `second_door` are the priority stretches.
+At least one of those private intervals should have a different dramatic movement from presenting another document and agreeing on its proper interpretation.
+Nocticula can pursue an immediate pleasure, impose a limit the Commander must actually navigate, withhold something she wants to keep, or counter a tactic in the room.
+A real refusal or competing desire need not become a moral lesson or be resolved into a warmer agreement before the scene ends.
+This can remain entirely inside a narrated dream and need not invent transport, a new native power, or a compulsory healing arc.
+
+Preserve the improved concrete passages: her lost poisoner, ink on the Commander's sleeve, pursuit of a secret second door, the interpreter anecdote, choosing to postpone the courtier scheme, and wanting the lamp left on to look at the Commander.
+Those already do more for her personality and attraction than another paragraph describing why attraction is not obedience.
+Recount the finished edit; keep meaningful volume above the floor without replacing removed explanations with equivalent explanations elsewhere.
+
+### Scope after this review
+
+This remains an ordinary living, gifted, accepted-parent continuation candidate.
+No new missed-entry acquisition, rejection reversal, gift replacement, resurrection, living-Shamira resolution, or universal Trickster access has been proved.
+The eight endings are supplementary recollections and still need exact selection and parent coexistence verification, including the parent's distinct Aeon response.
+The revised manuscript preserves source gates but has not received native registration, live scheduling, save/reload, or actual ToyBox concurrence approval from this review.
+The newly reinforced project hard constraint also requires each promised gameplay effect to be implemented and verified within its actual scope.
+Remembered authored outcomes are not a substitute for that work, and fictional expenditure by Nocticula must not be reported as an implemented player-resource mechanic.
+
+No manuscript approval or manual-play readiness is granted for revision 9CDD.
+The next review should inspect the resulting complete prose in context, not automatically raise the scores when the three local continuity edits are made.

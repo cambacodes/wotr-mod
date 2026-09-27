@@ -1,0 +1,1279 @@
+{
+  "Status": "Research evidence only; not merged into production bindings or independently approved.",
+  "AssemblyPath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Mods\\RanRomance\\RanRomance.dll",
+  "AssemblySha256": "281239B19FF12675D2E8E48CD86B3759C38F6598A93E13F254A044C5E990DB68",
+  "LocalizationSha256": "534D49567F0172193CD78F9C56A7A9A8244021F1701E2EC46F0C04FDBFBBCF3F",
+  "ReadmeSha256": "8CB10A67132130C179359BC2941E91EA058FFA47F1D394180F0D00AC373581CD",
+  "RetainedIlSha256": "074AC42A4125B96715B96BEF6EE3F64A77894B9422D0E4FC29A5BD237B74683B",
+  "Bindings": [
+    {
+      "Guid": "867cd560e29e4259a2194e23f7cf374d",
+      "Type": "BlueprintBookPage",
+      "Name": "RanRomNuraAeon",
+      "Source": "RanRomance.Nura.Aeon.Configure",
+      "SourceFileSha256": "2EBCBD8F9EB2DFBB0EC7A066C7959C78DD030A75612F48C1C86D7EA9EE153E16",
+      "Evidence": "BookPageConfigurator.New(SlideName, text).SetImageLink(\"b8160f03d066dbf46a16466eecb277d5\").SetForeImageLink(\"1a0e82c01e6873946b5ea4ec9dc92fe1\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"867cd560e29e4259a2194e23f7cf374d\";"
+    },
+    {
+      "Guid": "2e4e1db0564142269bfaddbf55be6a38",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraFlirt",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraFlirt\", \"2e4e1db0564142269bfaddbf55be6a38\").SetAllowActionStart().Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "f74eaab69b3d49d0a222eb1b2834777e",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraChaos",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraChaos\", \"f74eaab69b3d49d0a222eb1b2834777e\").SetAllowActionStart().Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "3d2d02611cd24f579e7b7b411b94263e",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraEvil",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraEvil\", \"3d2d02611cd24f579e7b7b411b94263e\").SetAllowActionStart().Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "91f7abac0d8e46e19ce8fc45fa3df58e",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraGood",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraGood\", \"91f7abac0d8e46e19ce8fc45fa3df58e\").SetAllowActionStart().Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "9f655e252d334f04884f10188b0d8928",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraRomance",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraRomance\", \"9f655e252d334f04884f10188b0d8928\").AddEtudePlayTrigger(ActionsBuilder.New().IncrementFlagValue(\"RanRomCount\", true, (IntEvaluator?)(object)val2)).AddEtudeCompleteTrigger(ActionsBuilder.New().IncrementFlagValue(\"RanRomCount\", true, (IntEvaluator?)(object)val3))\n\t\t\t.SetAllowActionStart()\n\t\t\t.Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "d91b9bc44b174e598069f88f86ceae65",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraHandkerchief",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraHandkerchief\", \"d91b9bc44b174e598069f88f86ceae65\").SetAllowActionStart().Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "857c9366224c4b278fcc4ba3273b4b6b",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraLich",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraLich\", \"857c9366224c4b278fcc4ba3273b4b6b\").SetAllowActionStart().Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "c27a359a6e4e44b9b9cd9c0e54a1dd41",
+      "Type": "BlueprintEtude",
+      "Name": "RanRomNuraQueen",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "EtudeConfigurator.New(\"RanRomNuraQueen\", \"c27a359a6e4e44b9b9cd9c0e54a1dd41\").SetAllowActionStart().Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "e155cfbd6c6142d8bb5c4e1a1a5298c7",
+      "Type": "BlueprintUnlockableFlag",
+      "Name": "RanRomNuraEvilCount",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "UnlockableFlagConfigurator.New(\"RanRomNuraEvilCount\", \"e155cfbd6c6142d8bb5c4e1a1a5298c7\").Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "e0e8647ce9e0455ea132ebdbaee62949",
+      "Type": "BlueprintUnlockableFlag",
+      "Name": "RanRomNuraGoodCount",
+      "Source": "RanRomance.Nura.Main.Configure",
+      "SourceFileSha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC",
+      "Evidence": "UnlockableFlagConfigurator.New(\"RanRomNuraGoodCount\", \"e0e8647ce9e0455ea132ebdbaee62949\").Configure();",
+      "GuidDeclaration": null
+    },
+    {
+      "Guid": "6ce0e47ee5b94576a60c607ec0fc063d",
+      "Type": "BlueprintDialog",
+      "Name": "RanRomNuraBook01",
+      "Source": "RanRomance.Nura.NuraBook01.Configure",
+      "SourceFileSha256": "CA7B2911318B94C65AFBA02A53A917C71D8F16174B412E70F48AD1EFC8FF8421",
+      "Evidence": "DialogConfigurator.New(BookName, text).SetStartActions(startActions).SetFinishActions(finishActions)\n\t\t\t.SetFirstCue(val)\n\t\t\t.SetType((DialogType)3)\n\t\t\t.SetTurnFirstSpeaker(turnFirstSpeaker: false)\n\t\t\t.SetTurnPlayer(turnPlayer: false)\n\t\t\t.SetIsLockCameraRotationButtons(isLockCameraRotationButtons: false)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"6ce0e47ee5b94576a60c607ec0fc063d\";"
+    },
+    {
+      "Guid": "aca6f74af98549fab00bb1f82fa24878",
+      "Type": "BlueprintDialog",
+      "Name": "RanRomNuraBook02",
+      "Source": "RanRomance.Nura.NuraBook02.Configure",
+      "SourceFileSha256": "E991F5E7CB5CD5761AA907F7A16CCAF379EEEF5C0C6CE10B9F0BB2F4723CCB0E",
+      "Evidence": "DialogConfigurator.New(BookName, text).SetStartActions(startActions).SetFinishActions(finishActions)\n\t\t\t.SetFirstCue(val)\n\t\t\t.SetType((DialogType)3)\n\t\t\t.SetTurnFirstSpeaker(turnFirstSpeaker: false)\n\t\t\t.SetTurnPlayer(turnPlayer: false)\n\t\t\t.SetIsLockCameraRotationButtons(isLockCameraRotationButtons: false)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"aca6f74af98549fab00bb1f82fa24878\";"
+    },
+    {
+      "Guid": "c47ffdc9a62b40ac9648ce6006673cb8",
+      "Type": "BlueprintDialog",
+      "Name": "RanRomNuraBook03",
+      "Source": "RanRomance.Nura.NuraBook03.Configure",
+      "SourceFileSha256": "9DD28F9084DA9A2BC2C4E9847531953D446090B0BB9CE19269633F9B8A9B4759",
+      "Evidence": "DialogConfigurator.New(BookName, text).SetStartActions(startActions).SetFinishActions(finishActions)\n\t\t\t.SetFirstCue(val)\n\t\t\t.SetType((DialogType)3)\n\t\t\t.SetTurnFirstSpeaker(turnFirstSpeaker: false)\n\t\t\t.SetTurnPlayer(turnPlayer: false)\n\t\t\t.SetIsLockCameraRotationButtons(isLockCameraRotationButtons: false)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"c47ffdc9a62b40ac9648ce6006673cb8\";"
+    },
+    {
+      "Guid": "c230e40eb7e34f00bfacecd6d55034a1",
+      "Type": "BlueprintDialog",
+      "Name": "RanRomNuraBook04",
+      "Source": "RanRomance.Nura.NuraBook04.Configure",
+      "SourceFileSha256": "3C561D6915C12C8D9C44F562E51706E5BEA651D997227F12B6BA9F5CF3BDEE10",
+      "Evidence": "DialogConfigurator.New(BookName, text).SetStartActions(startActions).SetFinishActions(finishActions)\n\t\t\t.SetFirstCue(val2)\n\t\t\t.SetType((DialogType)3)\n\t\t\t.SetTurnFirstSpeaker(turnFirstSpeaker: false)\n\t\t\t.SetTurnPlayer(turnPlayer: false)\n\t\t\t.SetIsLockCameraRotationButtons(isLockCameraRotationButtons: false)\n\t\t\t.SetConditions(conditions2)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"c230e40eb7e34f00bfacecd6d55034a1\";"
+    },
+    {
+      "Guid": "17e224c5f33141f59456f3e4effdcf8e",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook04EndCue0001",
+      "Source": "RanRomance.Nura.NuraBook04End.Configure",
+      "SourceFileSha256": "471A4BFD9A789AE86C45828D4BCDE20583A5971900B8B1749EA3CAD0A1301DBB",
+      "Evidence": "CueConfigurator.New(Cue0001Name, text2).SetConditions(conditions).SetText(\"RanRomNuraBook04EndCue0001.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text2 = \"17e224c5f33141f59456f3e4effdcf8e\";"
+    },
+    {
+      "Guid": "67370b4a2f974ac3ba16ea34fdea0c24",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook04EndCue0005",
+      "Source": "RanRomance.Nura.NuraBook04End.Configure",
+      "SourceFileSha256": "471A4BFD9A789AE86C45828D4BCDE20583A5971900B8B1749EA3CAD0A1301DBB",
+      "Evidence": "CueConfigurator.New(Cue0005Name, text6).SetConditions(conditions5).SetText(\"RanRomNuraBook04EndCue0005.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text6 = \"67370b4a2f974ac3ba16ea34fdea0c24\";"
+    },
+    {
+      "Guid": "968b8f00f553498c8a2ba53c992e20cb",
+      "Type": "BlueprintAnswer",
+      "Name": "RanRomNuraBook04Page002Ans0013",
+      "Source": "RanRomance.Nura.NuraBook04Page002.Configure",
+      "SourceFileSha256": "D3D238D9E0C3C34DEACF1C75763C275807B87AEE4D40BDC239C3AEF8A987D74A",
+      "Evidence": "AnswerConfigurator.New(Ans0013Name, text19).SetShowConditions(showConditions5).SetShowOnce()\n\t\t\t.SetText(\"RanRomNuraBook04Page002Ans0013.Text\")\n\t\t\t.SetNextCue(val4)\n\t\t\t.SetOnSelect(ActionsBuilder.New().StartEtude(\"RanRomNuraRomance\"))\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text19 = \"968b8f00f553498c8a2ba53c992e20cb\";"
+    },
+    {
+      "Guid": "9947a33fcd4543d18a6ab92ea292119f",
+      "Type": "BlueprintDialog",
+      "Name": "RanRomNuraBook05",
+      "Source": "RanRomance.Nura.NuraBook05.Configure",
+      "SourceFileSha256": "F9B0AE895370E8A0B8CF53F37D5C46B747B751949A30D5D85131EE609F84D2C7",
+      "Evidence": "DialogConfigurator.New(BookName, text).SetStartActions(startActions).SetFinishActions(finishActions)\n\t\t\t.SetFirstCue(val)\n\t\t\t.SetType((DialogType)3)\n\t\t\t.SetTurnFirstSpeaker(turnFirstSpeaker: false)\n\t\t\t.SetTurnPlayer(turnPlayer: false)\n\t\t\t.SetIsLockCameraRotationButtons(isLockCameraRotationButtons: false)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"9947a33fcd4543d18a6ab92ea292119f\";"
+    },
+    {
+      "Guid": "b7c37130c10d491abbef16dfa1dfe813",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook05EndCue0001",
+      "Source": "RanRomance.Nura.NuraBook05End.Configure",
+      "SourceFileSha256": "CEF4984CD25D4C7B950D56A98357A4E12A36F36EB38271264F9DB2EE402EA240",
+      "Evidence": "CueConfigurator.New(Cue0001Name, text2).SetConditions(conditions).SetText(\"RanRomNuraBook05EndCue0001.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.SetOnShow(ActionsBuilder.New().CompleteEtude(\"RanRomNuraRomance\"))\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text2 = \"b7c37130c10d491abbef16dfa1dfe813\";"
+    },
+    {
+      "Guid": "f8a7511233524742bc42b25190609f4c",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook05EndCue0003",
+      "Source": "RanRomance.Nura.NuraBook05End.Configure",
+      "SourceFileSha256": "CEF4984CD25D4C7B950D56A98357A4E12A36F36EB38271264F9DB2EE402EA240",
+      "Evidence": "CueConfigurator.New(Cue0003Name, text4).SetConditions(conditions3).SetText(\"RanRomNuraBook05EndCue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text4 = \"f8a7511233524742bc42b25190609f4c\";"
+    },
+    {
+      "Guid": "ea8bc70ed743483eb29e6af6c4960766",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook05Page001Cue0003",
+      "Source": "RanRomance.Nura.NuraBook05Page001.Configure",
+      "SourceFileSha256": "79747A185DBD30E9B945ED118FB3A8E37A3180734AAC30522D51F9395249BA02",
+      "Evidence": "CueConfigurator.New(Cue0003Name, text5).SetConditions(conditions3).SetText(\"RanRomNuraBook05Page001Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.SetOnShow(onShow)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text5 = \"ea8bc70ed743483eb29e6af6c4960766\";"
+    },
+    {
+      "Guid": "40fe81fb70264fbb8a0400fbde172a95",
+      "Type": "BlueprintAnswer",
+      "Name": "RanRomNuraBook05Page001Ans0023",
+      "Source": "RanRomance.Nura.NuraBook05Page001.Configure",
+      "SourceFileSha256": "79747A185DBD30E9B945ED118FB3A8E37A3180734AAC30522D51F9395249BA02",
+      "Evidence": "AnswerConfigurator.New(Ans0023Name, text33).SetShowConditions(showConditions9).SetShowOnce()\n\t\t\t.SetText(\"RanRomNuraBook05Page001Ans0023.Text\")\n\t\t\t.SetNextCue(val2)\n\t\t\t.SetOnSelect(ActionsBuilder.New().StartEtude(\"RanRomNuraQueen\"))\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text33 = \"40fe81fb70264fbb8a0400fbde172a95\";"
+    },
+    {
+      "Guid": "319cc9e35abd471384c9c4698f9d22e1",
+      "Type": "BlueprintAnswer",
+      "Name": "RanRomNuraBook05Page002Ans0002",
+      "Source": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "SourceFileSha256": "5515B91F22653A4D1E6CCA6151C36B06C1D06944323EA5C6AF55CD757BDCD53C",
+      "Evidence": "AnswerConfigurator.New(Ans0002Name, text4).SetShowConditions(showConditions2).SetShowOnce()\n\t\t\t.SetText(\"RanRomNuraBook05Page002Ans0002.Text\")\n\t\t\t.SetNextCue(val)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text4 = \"319cc9e35abd471384c9c4698f9d22e1\";"
+    },
+    {
+      "Guid": "7c6afad00d9d4cf2af07fd0f80c1ed3e",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook05Page002Cue0003",
+      "Source": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "SourceFileSha256": "5515B91F22653A4D1E6CCA6151C36B06C1D06944323EA5C6AF55CD757BDCD53C",
+      "Evidence": "CueConfigurator.New(Cue0003Name, text6).SetText(\"RanRomNuraBook05Page002Cue0003.Text\").SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text6 = \"7c6afad00d9d4cf2af07fd0f80c1ed3e\";"
+    },
+    {
+      "Guid": "41ed1ca58daa4576ae7d834d898b2298",
+      "Type": "BlueprintAnswer",
+      "Name": "RanRomNuraChpt02Dial004Ans0005",
+      "Source": "RanRomance.Nura.NuraChpt02Dial004.Configure",
+      "SourceFileSha256": "70037FC35D1B857C719BD083A335DE9DF4EF21F077B89B2A095DA683EFE3EC56",
+      "Evidence": "AnswerConfigurator.New(Ans0005Name, text8).SetShowConditions(showConditions4).SetShowOnce()\n\t\t\t.SetText(\"RanRomNuraChpt02Dial004Ans0005.Text\")\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text8 = \"41ed1ca58daa4576ae7d834d898b2298\";"
+    },
+    {
+      "Guid": "63a2446ee4004894b1a138d86d865e7b",
+      "Type": "BlueprintQuestObjective",
+      "Name": "RanRomNuraQuestEntry0001",
+      "Source": "RanRomance.Nura.NuraQuest.Configure",
+      "SourceFileSha256": "9388AC13BB198F905ACD662BFA2BCFA1C881362B120768CB6BA33661B5EA7D84",
+      "Evidence": "QuestObjectiveConfigurator.New(Entry0001Name, text2).SetTitle(\"RanRomNuraQuestEntry0001.Text\").SetDescription(\"RanRomNuraQuestEntry0001L.Text\")\n\t\t\t.SetType((Type)0)\n\t\t\t.AddToAddendums(text3)\n\t\t\t.SetQuest(text)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text2 = \"63a2446ee4004894b1a138d86d865e7b\";"
+    },
+    {
+      "Guid": "1331fbdb6a2f4b0c99ee56d2d9204ad5",
+      "Type": "BlueprintQuestObjective",
+      "Name": "RanRomNuraQuestEntry1001",
+      "Source": "RanRomance.Nura.NuraQuest.Configure",
+      "SourceFileSha256": "9388AC13BB198F905ACD662BFA2BCFA1C881362B120768CB6BA33661B5EA7D84",
+      "Evidence": "QuestObjectiveConfigurator.New(Entry1001Name, text3).SetDescription(\"RanRomNuraQuestEntry1001.Text\").SetType((Type)1)\n\t\t\t.SetQuest(text)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text3 = \"1331fbdb6a2f4b0c99ee56d2d9204ad5\";"
+    },
+    {
+      "Guid": "5e95cccb00fd4deaa3473b3c82b3be8c",
+      "Type": "BlueprintQuestObjective",
+      "Name": "RanRomNuraQuestEntry0002",
+      "Source": "RanRomance.Nura.NuraQuest.Configure",
+      "SourceFileSha256": "9388AC13BB198F905ACD662BFA2BCFA1C881362B120768CB6BA33661B5EA7D84",
+      "Evidence": "QuestObjectiveConfigurator.New(Entry0002Name, text4).SetTitle(\"RanRomNuraQuestEntry0002.Text\").SetDescription(\"RanRomNuraQuestEntry0002L.Text\")\n\t\t\t.SetType((Type)0)\n\t\t\t.SetQuest(text)\n\t\t\t.SetFinishParent()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text4 = \"5e95cccb00fd4deaa3473b3c82b3be8c\";"
+    },
+    {
+      "Guid": "92b871ccd0ed4840b921ccb810d1d1b1",
+      "Type": "BlueprintQuestObjective",
+      "Name": "RanRomNuraQuestEntryFail",
+      "Source": "RanRomance.Nura.NuraQuest.Configure",
+      "SourceFileSha256": "9388AC13BB198F905ACD662BFA2BCFA1C881362B120768CB6BA33661B5EA7D84",
+      "Evidence": "QuestObjectiveConfigurator.New(FailName, text5).SetHidden().SetType((Type)0)\n\t\t\t.SetQuest(text)\n\t\t\t.SetFinishParent()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text5 = \"92b871ccd0ed4840b921ccb810d1d1b1\";"
+    },
+    {
+      "Guid": "e45b69d1c39144308edb6a37f29769b6",
+      "Type": "BlueprintQuestObjective",
+      "Name": "RanRomNuraQuestEntrySuccess",
+      "Source": "RanRomance.Nura.NuraQuest.Configure",
+      "SourceFileSha256": "9388AC13BB198F905ACD662BFA2BCFA1C881362B120768CB6BA33661B5EA7D84",
+      "Evidence": "QuestObjectiveConfigurator.New(SucName, text6).SetHidden().SetType((Type)0)\n\t\t\t.SetQuest(text)\n\t\t\t.SetFinishParent()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text6 = \"e45b69d1c39144308edb6a37f29769b6\";"
+    },
+    {
+      "Guid": "6d81baee6e6842168846664c29f5ad67",
+      "Type": "BlueprintQuest",
+      "Name": "RanRomNuraQuest",
+      "Source": "RanRomance.Nura.NuraQuest.Configure",
+      "SourceFileSha256": "9388AC13BB198F905ACD662BFA2BCFA1C881362B120768CB6BA33661B5EA7D84",
+      "Evidence": "QuestConfigurator.New(PageName, text).SetTitle(\"RanRomNuraQuestName.Text\").SetDescription(\"RanRomNuraQuestIntro.Text\")\n\t\t\t.SetCompletionText(\"RanRomNuraQuestOutro.Text\")\n\t\t\t.SetGroup((QuestGroupId)18)\n\t\t\t.SetLastChapter(5)\n\t\t\t.SetType((QuestType)0)\n\t\t\t.AddToObjectives(text2)\n\t\t\t.AddToObjectives(text3)\n\t\t\t.AddToObjectives(text4)\n\t\t\t.AddToObjectives(text5)\n\t\t\t.AddToObjectives(text6)\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"6d81baee6e6842168846664c29f5ad67\";"
+    },
+    {
+      "Guid": "fbf183affeff40dabc3f6f3b18649ce5",
+      "Type": "BlueprintBookPage",
+      "Name": "RanRomNuraSlide0001",
+      "Source": "RanRomance.Nura.Slide0001.Configure",
+      "SourceFileSha256": "67D2FB6604CBA3CCED36DE2A5C729FE431D39D56E32B134BF0E83DBB139EFC64",
+      "Evidence": "BookPageConfigurator.New(SlideName, text).SetImageLink(\"b8160f03d066dbf46a16466eecb277d5\").SetForeImageLink(\"1a0e82c01e6873946b5ea4ec9dc92fe1\")\n\t\t\t.AddToCues(text2)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetOnShow(onShow)\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"fbf183affeff40dabc3f6f3b18649ce5\";"
+    },
+    {
+      "Guid": "43893703cd434ef685b1debd7a0104c2",
+      "Type": "BlueprintBookPage",
+      "Name": "RanRomNuraSlide0002",
+      "Source": "RanRomance.Nura.Slide0002.Configure",
+      "SourceFileSha256": "D5B99C1A5536489048EAC677F056238D30FE4C6E48E1DB00E189EBD2644EB497",
+      "Evidence": "BookPageConfigurator.New(SlideName, text).SetImageLink(\"b8160f03d066dbf46a16466eecb277d5\").SetForeImageLink(\"1a0e82c01e6873946b5ea4ec9dc92fe1\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text13)\n\t\t\t.AddToCues(text14)\n\t\t\t.AddToCues(text15)\n\t\t\t.AddToCues(text16)\n\t\t\t.AddToCues(text17)\n\t\t\t.AddToCues(text18)\n\t\t\t.AddToCues(text19)\n\t\t\t.AddToCues(text20)\n\t\t\t.AddToCues(text21)\n\t\t\t.AddToCues(text22)\n\t\t\t.AddToCues(text23)\n\t\t\t.AddToCues(text24)\n\t\t\t.AddToCues(text25)\n\t\t\t.AddToCues(text26)\n\t\t\t.AddToCues(text27)\n\t\t\t.AddToCues(text28)\n\t\t\t.AddToCues(text29)\n\t\t\t.AddToCues(text30)\n\t\t\t.AddToCues(text31)\n\t\t\t.AddToCues(text32)\n\t\t\t.AddToCues(text33)\n\t\t\t.AddToCues(text34)\n\t\t\t.AddToCues(text35)\n\t\t\t.AddToCues(text36)\n\t\t\t.AddToCues(text37)\n\t\t\t.AddToCues(text38)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.SetOnShow(onShow)\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"43893703cd434ef685b1debd7a0104c2\";"
+    },
+    {
+      "Guid": "dfda010fcebc4d22abd968c04baefd51",
+      "Type": "BlueprintBookPage",
+      "Name": "RanRomNuraSlide0003",
+      "Source": "RanRomance.Nura.Slide0003.Configure",
+      "SourceFileSha256": "21D3C83684AC6BEA7EDCBAA62ABD36465920AC391FBA46C0201FCA2C1ED06EC2",
+      "Evidence": "BookPageConfigurator.New(SlideName, text).SetImageLink(\"b8160f03d066dbf46a16466eecb277d5\").SetForeImageLink(\"1a0e82c01e6873946b5ea4ec9dc92fe1\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.SetConditions(conditions2)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.SetOnShow(onShow)\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"dfda010fcebc4d22abd968c04baefd51\";"
+    },
+    {
+      "Guid": "3403aa9f535242a28459eacb2175fb1f",
+      "Type": "BlueprintBookPage",
+      "Name": "RanRomNuraSlide0004",
+      "Source": "RanRomance.Nura.Slide0004.Configure",
+      "SourceFileSha256": "422B4F4FFE4B199F375A985AD0A8A5CC2BC342BE063E7554AB2C02F36A1AD4CE",
+      "Evidence": "BookPageConfigurator.New(SlideName, text).SetImageLink(\"b8160f03d066dbf46a16466eecb277d5\").SetForeImageLink(\"1a0e82c01e6873946b5ea4ec9dc92fe1\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text13)\n\t\t\t.AddToCues(text14)\n\t\t\t.AddToCues(text15)\n\t\t\t.AddToCues(text16)\n\t\t\t.AddToCues(text17)\n\t\t\t.AddToCues(text18)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.SetOnShow(onShow)\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "GuidDeclaration": "string text = \"3403aa9f535242a28459eacb2175fb1f\";"
+    }
+  ],
+  "NativeEvidence": [
+    {
+      "Guid": "a879a3a637a7eeb43b40677e4a8c4450",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahDefault/NurahRecruitedByTrickster.jbp",
+      "EntrySha256": "DC6AE4E3EC86F659CAD1ECA7CD7610E82798B4F85E82057E99C28C7712D33E0A",
+      "Data": null
+    },
+    {
+      "Guid": "a837c3bc9cbb4e846ab5565915165c91",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahKilledAfterDrezen.jbp",
+      "EntrySha256": "6C0565270B96886CD5CD712B56D910ECD067DC99836127E6829E31EB68185A1C",
+      "Data": null
+    },
+    {
+      "Guid": "739b9fe9b8998c641b4b3dfed40bc217",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahKilledByCamellia.jbp",
+      "EntrySha256": "6D764D77693E651755A12AE98B489D585341E65E9FA2DE3F20D8D14CCF50DCE0",
+      "Data": null
+    },
+    {
+      "Guid": "20927a9471c00814b808fd69e88879c7",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahKilledInDrezen.jbp",
+      "EntrySha256": "13700884EE195FD79A42C7EEAB5C4F4209215C9F0F3746B8DC562B68C374395D",
+      "Data": null
+    },
+    {
+      "Guid": "c922e0cbe25a0cf4dad4ce7a3ca81935",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NuraInPrisonAfterDrezen.jbp",
+      "EntrySha256": "29C732A9574C034EF605CC3D8FF66E79E176802CF3AF594E4E927CA8045FC8FE",
+      "Data": null
+    },
+    {
+      "Guid": "a86ab44f1a4d3f54fbeb51f5568bbb5c",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NuraRanOffAfterDrezen.jbp",
+      "EntrySha256": "E72AEE6FAE040132B9A445BA103FEB35FFDE15A1AA2B1B6A9D1F7EBFD9D3C19F",
+      "Data": null
+    },
+    {
+      "Guid": "8215b7dfa0bd45bb8bbe9a987562e2ae",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/NurahRedeemed.jbp",
+      "EntrySha256": "662DDE3D6D5A35F01DEFE0492F707F0C86A0A0D580B90D12307D5E0EACBC4102",
+      "Data": null
+    },
+    {
+      "Guid": "245524f91e743b64eaa16445c3ea8e73",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Capital_NPC_DefaultActors/Nurah_DefaultActor.jbp",
+      "EntrySha256": "AD87EF3B2606E118DAA57808AE55425E2E9D681B1BC8F77E8C4A67DBE63D9160",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "m_Flags": 0,
+            "name": "$EtudePlayTrigger$52baabc5-1949-4c5f-b799-b5f61cd82fc8",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "m_Once": false,
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": [
+                {
+                  "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                  "name": "$OrAndLogic$ca7479f1-ce6c-413a-969b-71fab1dc2a87",
+                  "Not": true,
+                  "Comment": "\u0432\u044b\u043a\u043b\u044e\u0447\u0430\u0442\u044c \u043f\u043e\u0441\u043b\u0435 \u0441\u043c\u0435\u0440\u0442\u0438",
+                  "ConditionsChecker": {
+                    "Operation": "Or",
+                    "Conditions": [
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$fb235d6c-04e7-444e-9595-1fc52784b126",
+                        "Not": false,
+                        "m_Etude": "!bp_a837c3bc9cbb4e846ab5565915165c91",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                  "name": "$HideUnit$1a7cf603-1c22-4f3e-b95e-8afcaf30a745",
+                  "Target": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "name": "$UnitFromSpawner$f67dc52f-c2c7-4ca1-8179-b4391d6644bc",
+                    "Spawner": {
+                      "EntityNameInEditor": "Nura",
+                      "_entity_id": "c2b298fc-d794-4995-8b49-822b75c3bb62",
+                      "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                    }
+                  },
+                  "Unhide": false,
+                  "Fade": false
+                }
+              ]
+            }
+          }
+        ],
+        "Comment": "",
+        "m_Parent": "!bp_ce5f755519ff2c945ab4eacd67d3f8e3",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": false,
+        "m_LinkedAreaPart": null,
+        "m_IncludeAreaParts": true,
+        "m_AddedAreaMechanics": [],
+        "m_StartsWith": [],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [
+          "!bp_d0210e61193c8c746bc33bf7d1fff325"
+        ],
+        "Priority": -100
+      }
+    },
+    {
+      "Guid": "21a061de3610732438072d2b975b6f43",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NuraInPrisonAfterDrezen/NurahInPrisonCapitalMechanic.jbp",
+      "EntrySha256": "3E370F68D27719DEF91B833DB07986EAD80137D4A1D0AF2956A39B8CB1230A98",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": "",
+        "m_Overrides": [
+          "$EtudePlayTrigger$c3383e36-d05d-4979-8342-036e15b16a3d",
+          "$EtudeBracketOverrideDialog$3a8a0830-b86e-46b1-8c11-9eab1dea3890"
+        ],
+        "Components": [
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "m_Flags": 0,
+            "name": "$EtudePlayTrigger$c3383e36-d05d-4979-8342-036e15b16a3d",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "m_Once": false,
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": []
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                  "name": "$Conditional$a9c1d3e6-bc61-487f-9fdc-9d8ff1e4a343",
+                  "Comment": "\u0442\u043e\u043b\u044c\u043a\u043e \u0432 3 \u0433\u043b\u0430\u0432\u0435",
+                  "ConditionsChecker": {
+                    "Operation": "And",
+                    "Conditions": [
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$a1813511-bd48-42f7-9558-d30a21a9c238",
+                        "Not": false,
+                        "m_Etude": "!bp_15e0048c7daf0ac4999c2313b58df0e3",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      }
+                    ]
+                  },
+                  "IfTrue": {
+                    "Actions": [
+                      {
+                        "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                        "name": "$HideUnit$c32d9f15-f613-4d1e-9780-453ca2b5f870",
+                        "Target": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$d1ae0c89-db74-4bb8-9c91-0f16e9b42617",
+                          "Spawner": {
+                            "EntityNameInEditor": "Nura",
+                            "_entity_id": "c2b298fc-d794-4995-8b49-822b75c3bb62",
+                            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                          }
+                        },
+                        "Unhide": true,
+                        "Fade": false
+                      },
+                      {
+                        "$type": "38b104786c153ae409ee91b85544a4a5, TranslocateUnit",
+                        "name": "$TranslocateUnit$c61ebf39-eb4c-4591-b375-31ad9ea53cd5",
+                        "Unit": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$acf0863a-55e5-4853-af6a-f1c0a5d5cddc",
+                          "Spawner": {
+                            "EntityNameInEditor": "Nura",
+                            "_entity_id": "c2b298fc-d794-4995-8b49-822b75c3bb62",
+                            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                          }
+                        },
+                        "translocatePosition": {
+                          "EntityNameInEditor": "",
+                          "_entity_id": "",
+                          "SceneAssetGuid": ""
+                        },
+                        "translocatePositionEvaluator": {
+                          "$type": "ee272e7d88aff6648b4c1b052228fdc7, LocatorPosition",
+                          "name": "$LocatorPosition$0708ec28-cd98-42b2-8566-2a9ab0b2b3c3",
+                          "Locator": {
+                            "EntityNameInEditor": "NurahInPrison_Locator",
+                            "_entity_id": "336980c3-ad90-4633-aad9-4ef3f40c13f6",
+                            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                          },
+                          "Offset": "0|0|0"
+                        },
+                        "m_CopyRotation": true,
+                        "translocateOrientationEvaluator": null
+                      }
+                    ]
+                  },
+                  "IfFalse": {
+                    "Actions": [
+                      {
+                        "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+                        "name": "$HideUnit$73637835-ad57-4c05-85ce-f1d4edd638c2",
+                        "Target": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$fd5167fb-ee65-4f7b-8493-6765b117c3c5",
+                          "Spawner": {
+                            "EntityNameInEditor": "Nura",
+                            "_entity_id": "c2b298fc-d794-4995-8b49-822b75c3bb62",
+                            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+                          }
+                        },
+                        "Unhide": false,
+                        "Fade": false
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "$type": "8b4c3a5898712654596bc06311e73737, EtudeBracketOverrideDialog",
+            "m_Flags": 0,
+            "name": "$EtudeBracketOverrideDialog$3a8a0830-b86e-46b1-8c11-9eab1dea3890",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "m_Distance": 10.0,
+            "Unit": {
+              "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+              "name": "$UnitFromSpawner$7d8789ad-b841-415f-85fb-3a2f7c2d5974",
+              "Spawner": {
+                "EntityNameInEditor": "Nura",
+                "_entity_id": "c2b298fc-d794-4995-8b49-822b75c3bb62",
+                "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+              }
+            },
+            "Dialog": "!bp_b8315f57179a6584ebf40d110b517352"
+          }
+        ],
+        "Comment": "",
+        "m_Parent": "!bp_c922e0cbe25a0cf4dad4ce7a3ca81935",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$69c5337b-f3a1-4ca6-ae48-18b533e2f2ce",
+              "Not": true,
+              "Comment": "\u0432\u044b\u043a\u043b\u044e\u0447\u0430\u0442\u044c \u043f\u043e\u0441\u043b\u0435 \u0441\u043c\u0435\u0440\u0442\u0438/\u043f\u043e\u0431\u0435\u0433\u0430",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$dbb25901-b5ba-4f80-a0fe-f8e27bc696a8",
+                    "Not": false,
+                    "m_Etude": "!bp_a837c3bc9cbb4e846ab5565915165c91",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$50ec59e0-14fa-4e51-b784-a4e1efa21a66",
+                    "Not": false,
+                    "m_Etude": "!bp_a86ab44f1a4d3f54fbeb51f5568bbb5c",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$778b8564-5618-40e6-ba10-d1ea99e4a016",
+              "Not": true,
+              "m_Etude": "!bp_1bbeffed922bfff408ca18782357795d",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": false,
+        "m_LinkedAreaPart": "!bp_2570015799edf594daf2f076f2f975d8",
+        "m_IncludeAreaParts": true,
+        "m_AddedAreaMechanics": [],
+        "m_StartsWith": [],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [
+          "!bp_d0210e61193c8c746bc33bf7d1fff325"
+        ],
+        "Priority": 0
+      }
+    },
+    {
+      "Guid": "d0210e61193c8c746bc33bf7d1fff325",
+      "Type": "BlueprintEtudeConflictingGroup",
+      "ArchivePath": "World/Etudes/ConflictingGroups/CapitalConflictingGroups/Capital_NPC_Nurah.jbp",
+      "EntrySha256": "11476B006647F00507A3DFE7008377A217CF80821D341BC0B6626C3E0231EE40",
+      "Data": null
+    },
+    {
+      "Guid": "c44d5c157091e7e46af1f11a4c79303d",
+      "Type": "BlueprintUnit",
+      "ArchivePath": "Units/NPC/Unique/Act_2_SwordOfValor/Warcamp/Nurah.jbp",
+      "EntrySha256": "190F159BA2F605881BD7DC881F521010F95E0F4429738AE1967F331D4A6C8B25",
+      "Data": null
+    },
+    {
+      "Guid": "f999fc37ddb225640b7f98c0a05d6948",
+      "Type": "BlueprintUnit",
+      "ArchivePath": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/NurahCapital.jbp",
+      "EntrySha256": "6B3A3C503E78EC976672B4A6255F16F723815A3424004B9C2401E99DF96D05EE",
+      "Data": null
+    },
+    {
+      "Guid": "75a4fb7cf239bb14f8d7bfd29073ffaf",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/PuluraFall/Pulura_Chapter05_MutasafenFight.jbp",
+      "EntrySha256": "DF32E1C9BAEE63BA081B37FC1DB8F25A22A2536DA27201A76E8A1659502D063B",
+      "Data": {
+        "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+        "PrototypeLink": null,
+        "m_Overrides": [
+          "$EvaluatedUnitDeathTrigger$0d8d09e8-6eef-4e24-a683-ae05de589d6b",
+          "$EtudePlayTrigger$0ac77126-801e-4c9c-a374-15f554e6039a"
+        ],
+        "Components": [
+          {
+            "$type": "576c0defa521db5409ebace3b946bf6a, EvaluatedUnitDeathTrigger",
+            "m_Flags": 0,
+            "name": "$EvaluatedUnitDeathTrigger$0d8d09e8-6eef-4e24-a683-ae05de589d6b",
+            "PrototypeLink": {
+              "guid": null,
+              "name": null
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "AnyUnit": false,
+            "Unit": {
+              "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+              "name": "$UnitFromSpawner$5e62657b-caac-4ca8-ae20-131118d819f3",
+              "Spawner": {
+                "EntityNameInEditor": "[Mutasafen]",
+                "_entity_id": "1ecbfae1-af75-407d-8ffe-2929991a02fc",
+                "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+              }
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+                  "name": "$UnlockFlag$1157e281-a915-49da-a125-a2026980b983",
+                  "m_flag": "!bp_04841f0b76b25d84c9ee6536bd8ecd27",
+                  "flagValue": 0
+                },
+                {
+                  "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                  "name": "$Conditional$56b377a2-7570-48c6-b5d1-e18e54632a3c",
+                  "Comment": "Captives dead?",
+                  "ConditionsChecker": {
+                    "Operation": "And",
+                    "Conditions": [
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$9aca9c58-1f2e-4508-941c-2fa9a0abf510",
+                        "Not": false,
+                        "m_Etude": "!bp_e02683b27fe26ce4bb6ac6f6f9e038bf",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      }
+                    ]
+                  },
+                  "IfTrue": {
+                    "Actions": [
+                      {
+                        "$type": "31abd123cda0b4147b509219dbb097a0, SetObjectiveStatus",
+                        "name": "$SetObjectiveStatus$051d0060-b9e9-4441-9972-92ea3a794df6",
+                        "Status": "Complete",
+                        "m_Objective": "!bp_0a4665a793bd31541a9676f3ae9a07e2",
+                        "StartObjectiveIfNone": false
+                      }
+                    ]
+                  },
+                  "IfFalse": {
+                    "Actions": [
+                      {
+                        "$type": "3af21dd61b640c941b5704f3df91e16d, GiveObjective",
+                        "name": "$GiveObjective$288ef940-6913-4989-9793-c61013676a83",
+                        "m_Objective": "!bp_cf7a0cc593eedd442aa7d2125b23b161"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "$type": "fec4340333b7d1f4189d73aa8ff10eee, EtudePlayTrigger",
+            "m_Flags": 0,
+            "name": "$EtudePlayTrigger$0ac77126-801e-4c9c-a374-15f554e6039a",
+            "PrototypeLink": {
+              "guid": "",
+              "name": ""
+            },
+            "m_Overrides": [],
+            "Comment": "",
+            "m_Once": false,
+            "Conditions": {
+              "Operation": "And",
+              "Conditions": []
+            },
+            "Actions": {
+              "Actions": [
+                {
+                  "$type": "cbc450c881049cb43a3d474b0a176122, StartCombat",
+                  "name": "$StartCombat$f4731c6f-fed2-4a80-aa14-48152615a08f",
+                  "Unit1": {
+                    "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                    "name": "$UnitFromSpawner$094b157a-c766-4fe9-80a7-76c554585e1b",
+                    "Spawner": {
+                      "EntityNameInEditor": "[Mutasafen]",
+                      "_entity_id": "1ecbfae1-af75-407d-8ffe-2929991a02fc",
+                      "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                    }
+                  },
+                  "Unit2": {
+                    "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                    "name": "$PlayerCharacter$125a831c-bc06-40ca-ba59-6c75062a8643"
+                  }
+                },
+                {
+                  "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                  "name": "$Conditional$e6de7d1c-e2dc-4eaa-b044-8aafa4135c59",
+                  "Comment": "Nurah",
+                  "ConditionsChecker": {
+                    "Operation": "Or",
+                    "Conditions": [
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$9ce3a96f-5cd7-4f77-93e6-52cdc6163ea2",
+                        "Not": false,
+                        "m_Etude": "!bp_a879a3a637a7eeb43b40677e4a8c4450",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      },
+                      {
+                        "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                        "name": "$EtudeStatus$9837eb00-05b0-4ef4-948e-cef0006f9cf5",
+                        "Not": false,
+                        "m_Etude": "!bp_8215b7dfa0bd45bb8bbe9a987562e2ae",
+                        "NotStarted": false,
+                        "Started": false,
+                        "Playing": true,
+                        "CompletionInProgress": false,
+                        "Completed": false
+                      }
+                    ]
+                  },
+                  "IfTrue": {
+                    "Actions": [
+                      {
+                        "$type": "4ba3c72bb22d4da7857a6fbcdfd82f46, SwitchFaction",
+                        "name": "$SwitchFaction$fa721526-354e-4386-a1c5-5859ac79a61e",
+                        "Target": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$7a157567-3ae0-4f00-bd06-5297dfb68d52",
+                          "Spawner": {
+                            "EntityNameInEditor": "[Nurah]",
+                            "_entity_id": "6fd861eb-21e0-40b5-9f56-998cf6b99d52",
+                            "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                          }
+                        },
+                        "m_Faction": "!bp_31359684b6f0ca9438e1fd6be6766cb0",
+                        "IncludeGroup": true,
+                        "ResetAllRelations": true,
+                        "ChangePetsFaction": true
+                      },
+                      {
+                        "$type": "cbc450c881049cb43a3d474b0a176122, StartCombat",
+                        "name": "$StartCombat$a939aa48-dff0-4270-8833-47b817f07484",
+                        "Unit1": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$7650e227-7b18-4ef3-afeb-a6dee853df95",
+                          "Spawner": {
+                            "EntityNameInEditor": "[Nurah]",
+                            "_entity_id": "6fd861eb-21e0-40b5-9f56-998cf6b99d52",
+                            "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                          }
+                        },
+                        "Unit2": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$d28351a2-6e57-4ebd-a286-6c847a469d88",
+                          "Spawner": {
+                            "EntityNameInEditor": "[Mutasafen]",
+                            "_entity_id": "1ecbfae1-af75-407d-8ffe-2929991a02fc",
+                            "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                          }
+                        }
+                      },
+                      {
+                        "$type": "0c996f778c13abb408bdd05f7f6fe317, AttachBuff",
+                        "name": "$AttachBuff$3963310b-879c-424a-a03c-c3be6fc90a59",
+                        "m_Buff": "!bp_281a1f606d92728409ee5cbf5599855d",
+                        "Target": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$06fd4079-44fb-485a-b313-b64b72e817a2",
+                          "Spawner": {
+                            "EntityNameInEditor": "[Nurah]",
+                            "_entity_id": "6fd861eb-21e0-40b5-9f56-998cf6b99d52",
+                            "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                          }
+                        },
+                        "Duration": null,
+                        "BattleLog": false,
+                        "HasCustomBattleLogMessage": false,
+                        "CustomBattleLogMessage": {
+                          "m_Key": "",
+                          "m_OwnerString": "",
+                          "m_OwnerPropertyPath": "",
+                          "m_JsonPath": "",
+                          "Shared": null
+                        }
+                      }
+                    ]
+                  },
+                  "IfFalse": {
+                    "Actions": [
+                      {
+                        "$type": "682c5c563ccf44d198d9330db89f4e0e, CombineToGroup",
+                        "name": "$CombineToGroup$39b1f8ff-dc1a-403d-bfda-e3de5fcc57e5",
+                        "TargetUnit": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$26f43279-00f1-4f79-be58-bc73b5bdbe34",
+                          "Spawner": {
+                            "EntityNameInEditor": "[Nurah]",
+                            "_entity_id": "6fd861eb-21e0-40b5-9f56-998cf6b99d52",
+                            "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                          }
+                        },
+                        "GroupHolder": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$a3d61b54-6ed7-4f28-aa8f-c8e1f79a6ab1",
+                          "Spawner": {
+                            "EntityNameInEditor": "[Mutasafen]",
+                            "_entity_id": "1ecbfae1-af75-407d-8ffe-2929991a02fc",
+                            "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                          }
+                        }
+                      },
+                      {
+                        "$type": "cbc450c881049cb43a3d474b0a176122, StartCombat",
+                        "name": "$StartCombat$073ef92b-1924-499b-ad3e-ba734bb21e50",
+                        "Unit1": {
+                          "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                          "name": "$UnitFromSpawner$fb6b3839-2005-45b5-9016-ae8c2dc43c70",
+                          "Spawner": {
+                            "EntityNameInEditor": "[Nurah]",
+                            "_entity_id": "6fd861eb-21e0-40b5-9f56-998cf6b99d52",
+                            "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                          }
+                        },
+                        "Unit2": {
+                          "$type": "25c132cb07bfaef4683b062a74f6e012, PlayerCharacter",
+                          "name": "$PlayerCharacter$37da024b-5e06-483d-8fc6-c3425371c5a0"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "IsActivateOnLoadArea": false
+          }
+        ],
+        "Comment": "",
+        "m_Parent": "!bp_a6e26159152a54c47a70ec91495499cf",
+        "ActivationCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "CompletionCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "m_Synchronized": [],
+        "m_AllowActionStart": true,
+        "m_LinkedAreaPart": null,
+        "m_LinkedCampaigns": null,
+        "m_IncludeAreaParts": true,
+        "m_AddedAreaMechanics": [],
+        "m_StartsWith": [],
+        "m_StartsOnComplete": [],
+        "m_StartsParent": false,
+        "m_CompletesParent": false,
+        "m_ConflictingGroups": [],
+        "Priority": 0
+      }
+    },
+    {
+      "Guid": "a6e26159152a54c47a70ec91495499cf",
+      "Type": "BlueprintEtude",
+      "ArchivePath": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/PuluraFall/Pulura_Chapter05_Mechanics.jbp",
+      "EntrySha256": "91E69E5126066164E0CCA966EFEF86E03C2D90D3E41ECC2124FDA9ACF2303ABB",
+      "Data": null
+    },
+    {
+      "Guid": "b7dde671c16eded41addd8aa0d585941",
+      "Type": "CommandAction",
+      "ArchivePath": "World/Cutscenes/PuluraFall/PuluraFall_NurahTeleport/CommandAction.jbp",
+      "EntrySha256": "7F19041396AC7506636815479052205E406268E72A1D54DB0DF0A96238827342",
+      "Data": {
+        "$type": "a07b97ed760cca9409b22e2e3ebc622f, CommandAction",
+        "EntryCondition": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "OnFail": "RemoveTrack",
+        "Action": {
+          "Actions": [
+            {
+              "$type": "0edf8920d3df9b54c9db189bdad67cac, HideUnit",
+              "name": "$HideUnit$4d306075-8b83-4738-815a-83f02f811682",
+              "Target": {
+                "$type": "da45a98792587f244901f1020d4b35b1, UnitFromSpawner",
+                "name": "$UnitFromSpawner$78803daa-d9dd-4e53-904b-722794928092",
+                "Spawner": {
+                  "EntityNameInEditor": "[Nurah]",
+                  "_entity_id": "6fd861eb-21e0-40b5-9f56-998cf6b99d52",
+                  "SceneAssetGuid": "42332f3087ee8e34b8fd90aa34d64614"
+                }
+              },
+              "Unhide": false,
+              "Fade": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "Guid": "3915e283ab044349981fe9fa0be800b0",
+      "Type": "BlueprintBookPage",
+      "ArchivePath": "World/Dialogs/Epilogues/BookPage_5.jbp",
+      "EntrySha256": "DC0151551F5F0BA7F6F9290F15AADC2CC12CC4D97BB22A99830F7C9406EA4225",
+      "Data": null
+    },
+    {
+      "Guid": "3e6e304e94a735d42af9a6e57dc8f2c5",
+      "Type": "BlueprintBookPage",
+      "ArchivePath": "World/Dialogs/Epilogues/BookPage_0577.jbp",
+      "EntrySha256": "09A4E4B32BF688D50D411F70C9A379933D6C0F0D0C92C3496006E4A6A41B0017",
+      "Data": null
+    },
+    {
+      "Guid": "900512dc72f04a34aaf864aa595d72a2",
+      "Type": "BlueprintBookPage",
+      "ArchivePath": "World/Dialogs/Epilogues/BookPage_0005_EEMachine.jbp",
+      "EntrySha256": "493A4251C8311F465B6BAAAC61A924F6125152178ED3134D9FDBC20469F400B9",
+      "Data": null
+    }
+  ],
+  "SourceFiles": [
+    {
+      "Type": "RanRomance.Nura.Aeon",
+      "File": "Aeon.cs",
+      "Sha256": "2EBCBD8F9EB2DFBB0EC7A066C7959C78DD030A75612F48C1C86D7EA9EE153E16"
+    },
+    {
+      "Type": "RanRomance.Nura.Blac",
+      "File": "Blac.cs",
+      "Sha256": "E2786B1A1CE0B41389E5F8EF6A7363E311C19755BF95B2FFCCE73C97250F04CB"
+    },
+    {
+      "Type": "RanRomance.Nura.Fool",
+      "File": "Fool.cs",
+      "Sha256": "DC05AA46B62F2CDD500CA7C3007EC42CACD87342BB25E0263C5F740B06D35D98"
+    },
+    {
+      "Type": "RanRomance.Nura.Main",
+      "File": "Main.cs",
+      "Sha256": "548BB42AF855E9F532AAA3024438230225FEA52D8F1C01A639A9CD59840BA4FC"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook01",
+      "File": "NuraBook01.cs",
+      "Sha256": "CA7B2911318B94C65AFBA02A53A917C71D8F16174B412E70F48AD1EFC8FF8421"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook01Page001",
+      "File": "NuraBook01Page001.cs",
+      "Sha256": "7661FB090633C219C49282C0A1BD5F1744162162B4C3F21751F343A42ED831F9"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook01Page002",
+      "File": "NuraBook01Page002.cs",
+      "Sha256": "DCC5EB92E72504569FEE12F77B00621ADD0E04D7C46C546B4FF9CF37B99B59C7"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook01Page003",
+      "File": "NuraBook01Page003.cs",
+      "Sha256": "52E75A0BDA92611C65D2A5B4E2CD1CE9E64D7DE0285A4554F3B8897C37A6AD48"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook01Page004",
+      "File": "NuraBook01Page004.cs",
+      "Sha256": "B4DDF187E51C8CF1954ABE935A6E2C657A31E2BDEF0C45C9FE9AA2811835E99A"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook01Page005",
+      "File": "NuraBook01Page005.cs",
+      "Sha256": "2D3590A2670E9D86179AB2FF69A346C2E820B892F637341BDD19D77252134D73"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook02",
+      "File": "NuraBook02.cs",
+      "Sha256": "E991F5E7CB5CD5761AA907F7A16CCAF379EEEF5C0C6CE10B9F0BB2F4723CCB0E"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook02End",
+      "File": "NuraBook02End.cs",
+      "Sha256": "DC1A179C1F5B4E609EBC58B4274AF021DEDA3D612FF4A33EB21FA6424BE7E4B9"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook02Page001",
+      "File": "NuraBook02Page001.cs",
+      "Sha256": "8057CF4EC36C98A6CD8D98305D637071D52C144110EE59AD99F9AECB75B0FEE0"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook02Page002",
+      "File": "NuraBook02Page002.cs",
+      "Sha256": "4E588618845647503E8D0D1609DAEE80D67F636855339BA41F8922F9496729EB"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook02Page003",
+      "File": "NuraBook02Page003.cs",
+      "Sha256": "72B1465A13962D936C24510918FA017BFE34989451AE1B15A968C5EC08EFFA20"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook02Page004",
+      "File": "NuraBook02Page004.cs",
+      "Sha256": "866A24AF9439EEE61D2E8DAEC4326581FD2250767EEAA35C33DE0CCA54537A5A"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook03",
+      "File": "NuraBook03.cs",
+      "Sha256": "9DD28F9084DA9A2BC2C4E9847531953D446090B0BB9CE19269633F9B8A9B4759"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook03End",
+      "File": "NuraBook03End.cs",
+      "Sha256": "946476ECA260C6A7F56BB97DFEC1CCDAC50A775FBAE0CC5A6957F09DED034FCE"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook03Page001",
+      "File": "NuraBook03Page001.cs",
+      "Sha256": "7853654D71BFEEBF6EFABF74C0FCFB20FB742D27EA8C1EF86354733609F7711D"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook03Page002",
+      "File": "NuraBook03Page002.cs",
+      "Sha256": "72DFD74C78084281979CC1478FCC356A43E8C0D0AA2D156C14EDA704D50EB64D"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook03Page003",
+      "File": "NuraBook03Page003.cs",
+      "Sha256": "C044F07F767532BD3349B01DBD0A27F65F941D22D1761C35BED862EC0B77A0F6"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook03Page004",
+      "File": "NuraBook03Page004.cs",
+      "Sha256": "B96745917B6B6963065C64B9E2CFFC2C62F058B4D51DE98EA43B6E60A0F8741F"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook04",
+      "File": "NuraBook04.cs",
+      "Sha256": "3C561D6915C12C8D9C44F562E51706E5BEA651D997227F12B6BA9F5CF3BDEE10"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook04End",
+      "File": "NuraBook04End.cs",
+      "Sha256": "471A4BFD9A789AE86C45828D4BCDE20583A5971900B8B1749EA3CAD0A1301DBB"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook04Page001",
+      "File": "NuraBook04Page001.cs",
+      "Sha256": "651DB1FE78A506ACABDDA4092BA350BE2B80128E02B888036F900D352D447F49"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook04Page002",
+      "File": "NuraBook04Page002.cs",
+      "Sha256": "D3D238D9E0C3C34DEACF1C75763C275807B87AEE4D40BDC239C3AEF8A987D74A"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook04Page003",
+      "File": "NuraBook04Page003.cs",
+      "Sha256": "DE738B51E6DC1C1A52682C4786C4EA4BD8B080CB0D163801121EFF937C83D79C"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook05",
+      "File": "NuraBook05.cs",
+      "Sha256": "F9B0AE895370E8A0B8CF53F37D5C46B747B751949A30D5D85131EE609F84D2C7"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook05End",
+      "File": "NuraBook05End.cs",
+      "Sha256": "CEF4984CD25D4C7B950D56A98357A4E12A36F36EB38271264F9DB2EE402EA240"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook05Page001",
+      "File": "NuraBook05Page001.cs",
+      "Sha256": "79747A185DBD30E9B945ED118FB3A8E37A3180734AAC30522D51F9395249BA02"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraBook05Page002",
+      "File": "NuraBook05Page002.cs",
+      "Sha256": "5515B91F22653A4D1E6CCA6151C36B06C1D06944323EA5C6AF55CD757BDCD53C"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraChpt02Dial001",
+      "File": "NuraChpt02Dial001.cs",
+      "Sha256": "3B007B0BF11BF4DF3A404837F3B5D49220C6BA652B36356518D7AA37461D109B"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraChpt02Dial002",
+      "File": "NuraChpt02Dial002.cs",
+      "Sha256": "1DE77BAD65F9038002B65CABE49453A9FAEBDD5DB68324108D3A528C58589B98"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraChpt02Dial003",
+      "File": "NuraChpt02Dial003.cs",
+      "Sha256": "CD84BE890E891211D8727DB0BE0184CAE0C40254FFAC305E473BBCF270685AEA"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraChpt02Dial004",
+      "File": "NuraChpt02Dial004.cs",
+      "Sha256": "70037FC35D1B857C719BD083A335DE9DF4EF21F077B89B2A095DA683EFE3EC56"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraChpt02Dial005",
+      "File": "NuraChpt02Dial005.cs",
+      "Sha256": "3DB42803653D486705ACFE4DF3DE2E1944AB120D598509EEEE64CEFAED6F8049"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraEpil",
+      "File": "NuraEpil.cs",
+      "Sha256": "456497CD1D4DC0E28119A2B5357148292ACBEA047275465817F777F061392ABE"
+    },
+    {
+      "Type": "RanRomance.Nura.NuraQuest",
+      "File": "NuraQuest.cs",
+      "Sha256": "9388AC13BB198F905ACD662BFA2BCFA1C881362B120768CB6BA33661B5EA7D84"
+    },
+    {
+      "Type": "RanRomance.Nura.Slide0001",
+      "File": "Slide0001.cs",
+      "Sha256": "67D2FB6604CBA3CCED36DE2A5C729FE431D39D56E32B134BF0E83DBB139EFC64"
+    },
+    {
+      "Type": "RanRomance.Nura.Slide0002",
+      "File": "Slide0002.cs",
+      "Sha256": "D5B99C1A5536489048EAC677F056238D30FE4C6E48E1DB00E189EBD2644EB497"
+    },
+    {
+      "Type": "RanRomance.Nura.Slide0003",
+      "File": "Slide0003.cs",
+      "Sha256": "21D3C83684AC6BEA7EDCBAA62ABD36465920AC391FBA46C0201FCA2C1ED06EC2"
+    },
+    {
+      "Type": "RanRomance.Nura.Slide0004",
+      "File": "Slide0004.cs",
+      "Sha256": "422B4F4FFE4B199F375A985AD0A8A5CC2BC342BE063E7554AB2C02F36A1AD4CE"
+    }
+  ],
+  "Limits": "Creation/type/source verified against fresh decompilation and retained literal IL. This is not execution of parent builders or Unity actor/contact verification."
+}
