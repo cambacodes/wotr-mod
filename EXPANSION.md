@@ -8,8 +8,11 @@ Current Irabeth departure checkpoint: the three-scene invitation manuscript pass
 The registered isolated 588-scene candidate passed 25,962,607 Rules assertions at SHA256 `ABAF62B57835480AF46A7C1648820AE071BFC0624AB8EFFD74DA87D19F58F87A`.
 The manuscript adds 1,736 distinct words and earns one personal meeting after a living political departure.
 Its supplier investigation, subsequent relationship and full departure recovery remain unfinished.
-Native meeting integration and test registration are under separate independent review; actual Unity arrival, withdrawal, save/load and ToyBox remain unverified.
-The shared export remains the earlier 585-scene checkpoint, and no new package or installed mod is implied by this isolated result.
+Native meeting integration and test registration passed separate independent review and are committed in `2d52cf5`; actual Unity arrival, withdrawal, save/load and ToyBox remain unverified.
+The shared export and local development package now contain 588 scenes at that same story hash.
+The complete packaging command passed 25,962,607 Rules assertions, 1,110 binding uses and 72,389 managed construction assertions.
+See [the 588-scene checkpoint](reference/parallel/expansion-588-shared-verification.md) for exact artifacts, evidence and limits.
+No installed mod changed.
 
 The requested outcome is an installed, shareable expansion with distinct routes for the eligible adult women in [the roster](ROSTER.md), extending existing game and RanRomance content where it already exists.
 The original Anevia and Irabeth relationship must continue to work with existing saves.
