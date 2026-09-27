@@ -3,16 +3,20 @@
 # Short path names accepted by c(mythic=...); any Kingmaker Mythic enum name is accepted as-is.
 MYTHIC_PATHS = {"Aeon", "Angel", "Azata", "Demon", "Devil", "Dragon", "Legend", "Lich", "Locust", "Trickster"}
 MYTHIC_NAMES = {"PlayerIs" + p for p in MYTHIC_PATHS} | {p + "Unlocked" for p in MYTHIC_PATHS}
+CRUSADE_RESOURCES = {"Finances", "Materials", "Favors"}
 ALIGNMENT_DIRECTIONS = {"LawfulGood", "NeutralGood", "ChaoticGood", "LawfulNeutral", "TrueNeutral", "ChaoticNeutral",
                         "LawfulEvil", "NeutralEvil", "ChaoticEvil", "Good", "Evil", "Lawful", "Chaotic"}
 
 
 def c(text="Continue", next=None, flags=(), requires=(), forbids=(), abort=False, revive=None, check=None,
-      mythic=None, native_next=None, alignment=None):
+      mythic=None, native_next=None, alignment=None, crusade=None, remove_item=None):
     """One answer. Native effects (E5), each validated again by Rules.Validate:
     mythic="Trickster"          native [Trickster] answer: MythicRequirement PlayerIsTrickster + the mythic-choice achievement counter
     native_next="<cue guid>"    terminal choice of an inline (NativeReturnCue) scene continues into that native cue of the same dialog
     alignment=("Chaotic", 1)    native AlignmentShift (direction, points > 0) applied on select
+    crusade=("Finances", -500)  native crusade resource change (Finances/Materials/Favors; Chapter 3+ scenes)
+    remove_item="<item guid>"   native removal of one item; the GUID must be in Story.RemovableItems and the choice or
+                                scene must Require an InventoryItems key bound to it
     """
     choice = dict(Text=text, Next=next, Set=list(flags), Requires=list(requires), Forbids=list(forbids), Abort=abort)
     if revive is not None:
@@ -33,6 +37,13 @@ def c(text="Continue", next=None, flags=(), requires=(), forbids=(), abort=False
         if direction not in ALIGNMENT_DIRECTIONS or not isinstance(value, int) or value <= 0:
             raise ValueError("Invalid alignment shift: %r" % (alignment,))
         choice["Alignment"] = dict(Direction=direction, Value=value)
+    if crusade is not None:
+        resource, amount = crusade
+        if resource not in CRUSADE_RESOURCES or not isinstance(amount, int) or amount == 0:
+            raise ValueError("Invalid crusade cost: %r" % (crusade,))
+        choice["Crusade"] = dict(Resource=resource, Amount=amount)
+    if remove_item is not None:
+        choice["RemoveItem"] = remove_item
     return choice
 
 

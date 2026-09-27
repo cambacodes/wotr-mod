@@ -217,6 +217,7 @@ internal static class Program
                 .Concat(story.QuestObjectives.Select(e => new { Guid = e.Value[0], ExpectedType = "BlueprintQuestObjective", Source = e.Key }))
                 .Concat(story.InventoryItems.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintItem*", Source = e.Key }))
                 .Concat(story.StartedQuests.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintQuest", Source = e.Key }))
+                .Concat(story.RemovableItems.Select(guid => new { Guid = guid, ExpectedType = "BlueprintItem*", Source = "RemovableItems" }))
                 .Concat(story.Revivals.Select(e => new { Guid = e.Value.Unit, ExpectedType = "BlueprintUnit", Source = "revive." + e.Key }))
                 .Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits).Select(guid => new { Guid = guid, ExpectedType = "BlueprintUnit", Source = s.Id })))
                 .Concat(story.Scenes.SelectMany(s => s.Areas.Select(guid => new { Guid = guid, ExpectedType = "BlueprintArea", Source = s.Id })))
@@ -275,7 +276,7 @@ internal static class Program
         var known = new HashSet<string>(story.Scenes.Select(s => s.Id)
             .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag }))
             .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
-            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
+            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
@@ -345,6 +346,7 @@ internal static class Program
         TricksterAccessTests.Run(Check);
         NativeReaderTests.Run(Check);
         EpilogueAfterTests.Run(Check);
+        NativeCostTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);

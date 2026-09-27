@@ -209,6 +209,11 @@ namespace Tirabade
                         || nativeReturn.Answers.Count != 1 || !ReferenceEquals(nativeReturn.Answers[0].Get(), returnList))
                         Degrade(scene.Relationship, "Native audience return must reopen its answer list without replaying actions: " + scene.Id);
                 }
+                // E11: a whitelisted removable item must resolve, or the relationships that remove it are disabled.
+                foreach (string guid in story.RemovableItems)
+                    if (Resolve<Kingmaker.Blueprints.Items.BlueprintItem>(guid, "Removable item " + guid) == null)
+                        foreach (var scene in story.Scenes.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.RemoveItem == guid)))
+                            Degrade(scene.Relationship, "removable item " + guid + " for " + scene.Id + " is missing");
                 // E5: a native continuation must resolve to a BlueprintCue, or its relationship is disabled.
                 foreach (var scene in story.Scenes)
                     foreach (var guid in scene.Nodes.SelectMany(n => n.Choices).Select(c => c.NativeNext).OfType<string>().Distinct())
@@ -535,6 +540,35 @@ namespace Tirabade
                 }
                 else warn("Mythic-choice achievement counter unavailable for " + choice.Mythic + "; the requirement is kept without it.");
             }
+            if (choice.Crusade != null)
+            {
+                int amount = Math.Abs(choice.Crusade.Amount);
+                var resources = choice.Crusade.Resource == "Finances" ? Kingmaker.Kingdom.KingdomResourcesAmount.FromFinances(amount)
+                    : choice.Crusade.Resource == "Materials" ? Kingmaker.Kingdom.KingdomResourcesAmount.FromMaterials(amount)
+                    : Kingmaker.Kingdom.KingdomResourcesAmount.FromFavors(amount);
+                GameAction change;
+                if (choice.Crusade.Amount > 0)
+                {
+                    change = new Kingmaker.Kingdom.Blueprints.AddCrusadeResources();
+                    Field(change, "_resourcesAmount", resources);
+                }
+                else
+                {
+                    change = new Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources();
+                    Field(change, "m_ResourcesAmount", resources);
+                }
+                answer.OnSelect = Actions((answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).Concat(new[] { change }).ToArray());
+            }
+            if (choice.RemoveItem != null)
+            {
+                if (ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(choice.RemoveItem)) is Kingmaker.Blueprints.Items.BlueprintItem item)
+                {
+                    var remove = new Kingmaker.Designers.EventConditionActionSystem.Actions.RemoveItemFromPlayer { Quantity = 1 };
+                    Field(remove, "m_ItemToRemove", Ref<BlueprintItemReference>(item));
+                    answer.OnSelect = Actions((answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).Concat(new GameAction[] { remove }).ToArray());
+                }
+                else warn("Removable item " + choice.RemoveItem + " is missing; the choice removes nothing.");
+            }
             if (choice.Alignment != null)
                 answer.AlignmentShift = new Kingmaker.UnitLogic.Alignments.AlignmentShift
                 {
@@ -700,6 +734,7 @@ namespace Tirabade
                 {
                     if (KonomiRecovery.CanRequest()) state.Flags.Add("revive.konomi.available");
                     if (KonomiRecovery.RetainedDead()) state.Flags.Add("konomi.retained_dead");
+                    else if (KonomiRecovery.RetainedHostile()) state.Flags.Add("konomi.retained_hostile");
                     if (konomiMeeting?.ContactAvailable() == true) state.Flags.Add("konomi.return_contact_available");
                     if (KonomiRecovery.ReturnCorrespondenceAvailable()) state.Flags.Add("konomi.return_correspondence_available");
                 }

@@ -26,7 +26,7 @@ GAME = Path(os.environ.get("RRT_GAME_DIR") or r"D:\SteamLibrary\steamapps\common
 SCRATCH = HERE / "scratch"
 
 MYTHIC = ["trickster", "angel", "demon", "lich", "aeon", "azata", "devil", "dragon", "legend", "swarm"]
-CONTACT_EVIDENCE = {"konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead",
+CONTACT_EVIDENCE = {"konomi.retained_hostile", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead",
                     "konomi.return_contact_available", "konomi.return_correspondence_available",
                     "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                     "nurah.correspondence_available", "nurah.meeting_arrived"}
@@ -37,6 +37,7 @@ MYTHIC_PATHS = ("Aeon", "Angel", "Azata", "Demon", "Devil", "Dragon", "Legend", 
 MYTHIC_ENUM = {"PlayerIs" + p for p in MYTHIC_PATHS} | {p + "Unlocked" for p in MYTHIC_PATHS}
 ALIGNMENT_DIRECTIONS = {"LawfulGood", "NeutralGood", "ChaoticGood", "LawfulNeutral", "TrueNeutral", "ChaoticNeutral",
                         "LawfulEvil", "NeutralEvil", "ChaoticEvil", "Good", "Evil", "Lawful", "Chaotic"}
+CRUSADE_RESOURCES = {"Finances", "Materials", "Favors"}
 CUE_BASE_TYPES = {"BlueprintCue", "BlueprintBookPage", "BlueprintCueSequence", "BlueprintCheck"}
 NURAH_CAPITAL = "2570015799edf594daf2f076f2f975d8"
 NURAH_CONTACT = "f999fc37ddb225640b7f98c0a05d6948"
@@ -61,7 +62,7 @@ def norm_scene(s):
         n.setdefault("Choices", [])
         for c in n["Choices"]:
             for k, v in dict(Text="Continue", Next=None, Abort=False, Revive=None, Check=None, Set=[], Requires=[],
-                             Forbids=[], Mythic=None, NativeNext=None, Alignment=None).items():
+                             Forbids=[], Mythic=None, NativeNext=None, Alignment=None, Crusade=None, RemoveItem=None).items():
                 if c.get(k) is None and v is not None:
                     c[k] = v
                 c.setdefault(k, v)
@@ -664,6 +665,15 @@ def validate(model):
                 al = c["Alignment"]
                 if al is not None and (is_epilogue(s) or al.get("Direction") not in ALIGNMENT_DIRECTIONS or not 0 < al.get("Value", 0) <= 100):
                     errs.append("Invalid alignment shift: %s/%s" % (sid, n["Id"]))
+                cr = c["Crusade"]
+                if cr is not None and (is_epilogue(s) or s["MinChapter"] < 3 or cr.get("Resource") not in CRUSADE_RESOURCES
+                                       or not cr.get("Amount") or abs(cr.get("Amount", 0)) > 100000):
+                    errs.append("Invalid crusade cost: %s/%s" % (sid, n["Id"]))
+                ri = c["RemoveItem"]
+                inv = st.get("InventoryItems") or {}
+                if ri is not None and (is_epilogue(s) or ri not in (st.get("RemovableItems") or [])
+                                       or not any(inv.get(k) == ri for k in list(c["Requires"]) + list(s["Requires"]))):
+                    errs.append("Invalid item removal: %s/%s" % (sid, n["Id"]))
                 if c["NativeNext"] is not None and (not hexre.match(c["NativeNext"]) or s["NativeReturnCue"] is None or c["Next"] is not None
                                                     or c["Check"] or c["Abort"] or c["Revive"] is not None):
                     errs.append("Invalid native continuation (terminal choice of an inline scene only): %s/%s" % (sid, n["Id"]))
@@ -1246,6 +1256,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                 for c in n["Choices"]:
                     if c["NativeNext"]: want.append((c["NativeNext"], "BlueprintCue", "NativeNext@%s/%s" % (s["Id"], n["Id"])))
         for k in (story.get("ParentEpilogueEdits") or {}): want.append((k, "BlueprintCue", "ParentEpilogueEdit"))
+        for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
         for r in story.get("ParentEpilogueLossRules") or []:
             for g in r.get("SuppressPages", []): want.append((g, "BlueprintBookPage", "LossRule.SuppressPages"))
             for g in r.get("SuppressCues", []): want.append((g, "BlueprintCue", "LossRule.SuppressCues"))

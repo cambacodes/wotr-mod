@@ -24,6 +24,8 @@ namespace Tirabade
         public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
         public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
         public string[] PermanentEtudes = Array.Empty<string>();
+        // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
+        public string[] RemovableItems = Array.Empty<string>();
         // E1: authored flags recorded forever the first time any native/derived source key is observed (TT-02).
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
@@ -174,6 +176,16 @@ namespace Tirabade
         public string? Mythic;
         public string? NativeNext;
         public AlignmentChoice? Alignment;
+        // E11 native costs: a crusade resource change (native AddCrusadeResources / RemoveCrusadeResources) and the removal
+        // of one whitelisted item (native RemoveItemFromPlayer, quantity 1).
+        public CrusadeChoice? Crusade;
+        public string? RemoveItem;
+    }
+
+    public sealed class CrusadeChoice
+    {
+        public string Resource = "";
+        public int Amount;
     }
 
     public sealed class AlignmentChoice
@@ -256,6 +268,9 @@ namespace Tirabade
             ["Legend"] = "deb42e87a7a54194bac798a8f98f8beb", ["Lich"] = "b7f5fe87397b446aadc6f061de76f109",
             ["Locust"] = "271b28c9b5b7441c809a825885f00d29", ["Trickster"] = "611b65da018c4922b3f0656055fd0553",
         };
+
+        // Kingmaker.Kingdom.KingdomResource minus None; KingdomResourcesAmount has m_Finances, m_Materials, m_Favors.
+        public static readonly string[] CrusadeResources = { "Finances", "Materials", "Favors" };
 
         public static string MythicPath(string mythic) => mythic.StartsWith("PlayerIs", StringComparison.Ordinal)
             ? mythic.Substring("PlayerIs".Length) : mythic.Substring(0, mythic.Length - "Unlocked".Length);
@@ -402,7 +417,7 @@ namespace Tirabade
             || story.InventoryItems.ContainsKey(flag) || story.StartedQuests.ContainsKey(flag)
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
-            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available"
+            || flag == "konomi.retained_dead" || flag == "konomi.retained_hostile" || flag == "konomi.return_contact_available"
             || flag == "konomi.return_correspondence_available"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
             || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived";
@@ -545,12 +560,12 @@ namespace Tirabade
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
             var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
-                "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
-                "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
@@ -627,6 +642,9 @@ namespace Tirabade
             if (story.PostBagSize < 1 || story.PostBagSize > 10 || story.QueueCapPerRelationship < 1
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
+            if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
+                || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
+                throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
             foreach (var key in story.PermanentEtudes)
                 if (!story.Etudes.ContainsKey(key)) throw new InvalidOperationException("Unknown permanent etude: " + key);
             var ids = new HashSet<string>();
@@ -712,7 +730,7 @@ namespace Tirabade
                             throw new InvalidOperationException("Invalid skill check: " + scene.Id + "/" + node.Id);
                         if (choice.Revive != null && (choice.Revive != scene.Recovery || choice.Next != null || choice.Abort))
                             throw new InvalidOperationException("Revival must be a terminal recovery choice: " + scene.Id);
-                        ValidateNativeEffects(scene, node, choice);
+                        ValidateNativeEffects(story, scene, node, choice);
                     }
                 var reached = new HashSet<string>();
                 var pending = new Stack<string>();
@@ -764,8 +782,17 @@ namespace Tirabade
         }
 
         // E5: native answer effects are whitelisted and shaped like their native counterparts.
-        private static void ValidateNativeEffects(Scene scene, Node node, Choice choice)
+        private static void ValidateNativeEffects(Story story, Scene scene, Node node, Choice choice)
         {
+            // The crusade (KingdomState) exists from Chapter 3; a removal must be gated on holding that exact item.
+            if (choice.Crusade != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.MinChapter < 3
+                || !CrusadeResources.Contains(choice.Crusade.Resource) || choice.Crusade.Amount == 0 || Math.Abs(choice.Crusade.Amount) > 100000))
+                throw new InvalidOperationException("Invalid crusade cost (Finances/Materials/Favors, non-zero, Chapter 3+): " + scene.Id + "/" + node.Id);
+            if (choice.RemoveItem != null && (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                || !story.RemovableItems.Contains(choice.RemoveItem)
+                || !choice.Requires.Concat(scene.Requires).Any(key => story.InventoryItems.TryGetValue(key, out var held) && held == choice.RemoveItem)))
+                throw new InvalidOperationException("Invalid item removal (whitelisted in RemovableItems and gated on an InventoryItems key for it): "
+                    + scene.Id + "/" + node.Id);
             bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
             if (choice.Mythic != null && (ending || !MythicNames.Contains(choice.Mythic)))
                 throw new InvalidOperationException("Invalid mythic requirement: " + scene.Id + "/" + node.Id + " (" + choice.Mythic + ")");

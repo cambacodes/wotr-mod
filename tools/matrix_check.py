@@ -36,7 +36,7 @@ KINDS = {"Etudes", "CompletedEtudes", "CompletedQuests", "SeenCues", "SelectedAn
          "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests"}
 RUNTIME = {"trickster.ever", "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
            # runtime contact evidence (Rules.Validate contactEvidence)
-           "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead",
+           "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile",
            "konomi.return_contact_available", "konomi.return_correspondence_available",
            "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
            "nurah.correspondence_available", "nurah.meeting_arrived"}

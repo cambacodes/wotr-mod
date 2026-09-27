@@ -80,6 +80,18 @@ namespace Tirabade
             catch { return false; }
         }
 
+        // E11: the exact retained actor is loaded, alive and hostile to the Commander. Read-only, and observable only while
+        // her capital scene is loaded (the same inspection RetainedDead uses); elsewhere it reads false.
+        internal static bool RetainedHostile()
+        {
+            try
+            {
+                return TryObserve(out var actor, out var commander) && !actor!.State.IsDead && !actor.State.IsFinallyDead
+                    && actor.IsEnemy(commander!);
+            }
+            catch { return false; }
+        }
+
         // authorized represents the caller's current quest, mythic and explicit-choice requirements.
         internal static Outcome Request(string requestIdentity, bool authorized, out string message)
         {
@@ -139,7 +151,10 @@ namespace Tirabade
 
         private static UnitEntityData? ObserveCurrent() => TryLoaded(out var actor, out _) ? actor : null;
 
-        private static bool TryLoaded(out UnitEntityData? actor, out UnitEntityData? commander)
+        private static bool TryLoaded(out UnitEntityData? actor, out UnitEntityData? commander) =>
+            TryObserve(out actor, out commander) && !actor!.IsEnemy(commander!);
+
+        private static bool TryObserve(out UnitEntityData? actor, out UnitEntityData? commander)
         {
             actor = null;
             commander = null;
@@ -155,7 +170,7 @@ namespace Tirabade
             actor = Inspect(area.AreaGuid.ToString(), area.GetAllSceneStates().ToArray(),
                 state => state.IsSceneLoaded && state.IsSceneLoadedThreadSafe && state.IsPostLoadExecuted && !state.SkipSerialize,
                 id => EntityService.Instance.GetEntity(id));
-            return actor != null && !actor.IsEnemy(commander);
+            return actor != null;
         }
 
         internal static UnitEntityData? Inspect(string area, SceneEntitiesState[] states,

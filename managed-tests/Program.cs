@@ -500,7 +500,7 @@ internal static class Program
         Console.WriteLine($"PASS: {checks} assertions; real Main.Build, {story.Scenes.Count} scenes, {registered.Count} generated blueprints, {targetIds.Length} native answer lists, 1 native Aeon sequence and 1 parent-mod sentinel sequence, idempotence.");
         Console.WriteLine("DLL SHA256 " + Hash(typeof(Tirabade.Main).Assembly.Location));
         Console.WriteLine("Story SHA256 " + Hash(storyPath));
-        ChoiceExtensionManagedTests.Run(native, Seed<BlueprintUnlockableFlag>, Seed<BlueprintCue>, Id, Check);
+        ChoiceExtensionManagedTests.Run(native, Seed<BlueprintUnlockableFlag>, Seed<BlueprintCue>, Seed<Kingmaker.Blueprints.Items.BlueprintItem>, Id, Check);
         NativeReaderManagedTests.Run(story, native, Check);
         EpilogueAfterManagedTests.Run(Id, Check);
         Console.WriteLine("Scope: real managed blueprint construction and native ending seen-state checks; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. Ending probes bypass route eligibility, Unity page rendering and debug logging. No parent-mod initialization, full campaign condition evaluation, portraits, ToyBox execution or game save round trip.");
