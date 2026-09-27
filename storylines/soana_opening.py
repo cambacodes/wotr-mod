@@ -17,7 +17,9 @@ RELATIONSHIP = dict(
 
 def s(id, title, entry, nodes, requires=(), delay=24):
     for page in nodes:
-        page["Portrait"] = "Soana"
+        page["Portrait"] = "SoanaForest" if id == "water_carrier" and page["Id"] in {
+            "start", "promised", "work", "hands", "own_work"
+        } else "Soana"
     SCENES.append(scene(
         "soana." + id, title, "Soana", 3, entry, nodes,
         Relationship="soana", Chapters=[3], last=3,
