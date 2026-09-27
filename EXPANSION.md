@@ -697,3 +697,22 @@ This export passed 2,425,468 rules assertions, 294 binding uses across 62 typed 
 The trio's exported inventory is now 34,554 raw words and 34,315 distinct-segment words, still below the 42,000 combined planning floor.
 Its investigation choices currently produce deterministic narrative branches; they do not yet use native rolls or an interactive area encounter.
 Arsinoe's opening and Jerribeth's next continuation are assigned to separate writers while an independent reviewer audits the complete assembled Seelah route.
+
+## Konomi meeting integration and ending policy checkpoint
+
+The shared development export remains 538 scenes at SHA256 `8DCEB83D44925E5C07C7407D1FCEABE9381CE147D9A862B22E4E88420583C300`.
+Konomi's consent-based return meeting and explicit failed-visit retry are integrated in commit `17301f3` after independent review.
+The root managed build passed 67,302 assertions, and the independent reviewer passed 67,314 including additional adversarial cases.
+These results do not establish Unity placement, withdrawal, full game saves or ToyBox execution.
+
+The Minagho/Chivarro typed ending policy is committed in `39d9722` after the independent reviewer exposed and rechecked a native-alias substitution defect.
+Corrected policy passed 358 focused assertions, 1,075 compatibility assertions and 18,481 independent checks.
+Its 47 continuation scenes remain outside the shared export until native ending integration and binding verification pass.
+The isolated candidate has 585 scenes.
+
+Parallel ownership now separates native ending integration in Main and a new integration class, parent-binding evidence in the manifest, and Soana portrait assignment review.
+Soana v12 and the Minagho/Chivarro portrait candidates are preserved in git with prompts and scoped reviews.
+Soana's facial review and Chivarro's general warm-dress scene review passed; exact basket repair and sleeve-catching actions are not approved depictions.
+No new portrait has been installed by this checkpoint.
+The full roster, per-character word-count and independent quality requirements remain unchanged.
+No route gains full release approval from these partial integration checks.
