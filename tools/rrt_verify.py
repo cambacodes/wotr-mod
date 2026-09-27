@@ -175,6 +175,7 @@ class Model:
                         for f in c[k]: ref[f].append(("%s/%s/%d" % (s["Id"], n["Id"], i), "choice." + k))
         for rk, r in self.rels.items():
             for f in r.get("UnavailableFlags", []): ref[f].append(("rel:" + rk, "UnavailableFlags"))
+            for f in (r.get("UnavailableOverrides") or {}).values(): ref[f].append(("rel:" + rk, "UnavailableOverride"))
             for f in r.get("FailureFlags", []): ref[f].append(("rel:" + rk, "FailureFlags"))
         for k, e in (self.story.get("ParentEpilogueEdits") or {}).items():
             for f in e.get("Requires", []): ref[f].append(("parentEdit:" + k, "Requires"))
@@ -269,6 +270,8 @@ class Reach:
         for f in rel.get("UnavailableFlags", []):
             if rec and f == rec.get("DeathFlag"): continue
             if s["AfterDeparture"] == "irabeth" and f == "irabeth_gone": continue
+            ov = (rel.get("UnavailableOverrides") or {}).get(f)
+            if ov and (self.possible(ov, ch) or f in s["Requires"]): continue   # E2: an authored return (or the device scene itself) lifts this block
             if self.forced(f, ch): return "unavailable-forced:" + f
         if s["Relationship"] == "tirabade" and self.chaptered and not is_remote(s) and ch == 4: return "tirabade-ch4"
         return None
@@ -545,6 +548,11 @@ def validate(model):
             relflags.add(f)
     for k in model.permanent_etudes:
         if k not in model.etudes: errs.append("Unknown permanent etude: " + k)
+    for k, r in rels.items():
+        for a, b in (r.get("UnavailableOverrides") or {}).items():
+            if (a not in r.get("UnavailableFlags", []) or b == a or b not in model.authored or b in model.native
+                    or b in model.derived or b in r.get("UnavailableFlags", []) or any(x["ClosedFlag"] == b for x in rels.values())):
+                errs.append("Invalid unavailable override %s/%s" % (k, a))
     for k, src in model.latches.items():
         if (not k or k in model.authored or k in model.native or k in model.builtin_derived or not src or len(set(src)) != len(src)
                 or k.startswith(("rrt.degraded.", "served.", "hour.", "revive."))
@@ -690,7 +698,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         kinds = collections.Counter(k for _, k in w)
         P("  - %-45s used %d x %s  e.g. %s" % (f, len(w), dict(kinds), w[0][0]))
     # forbid-only flags with no producer are harmless; requires ones are fatal
-    fatal = {f: w for f, w in no_producer.items() if any(k in ("Requires", "choice.Requires", "RequiresAnyGroups", "ForbidOverride") for _, k in w)}
+    fatal = {f: w for f, w in no_producer.items() if any(k in ("Requires", "choice.Requires", "RequiresAnyGroups", "ForbidOverride", "UnavailableOverride") for _, k in w)}
     R["no_producer_required"] = sorted(fatal)
     P("  => of which REQUIRED somewhere (hard dead gates): %d %s" % (len(fatal), sorted(fatal)[:30]))
 

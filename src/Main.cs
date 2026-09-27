@@ -945,7 +945,7 @@ namespace Tirabade
             foreach (var pair in objectives)
             {
                 if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.Started
-                    && story.Relationships[pair.Key].FailureFlags.Any(state.Has)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
+                    && Rules.Failed(story.Relationships[pair.Key], state)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
             }
             if (restPending && pending == null)
             {

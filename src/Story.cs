@@ -80,6 +80,8 @@ namespace Tirabade
         public string CommittedFlag = "";
         public string[] UnavailableFlags = Array.Empty<string>();
         public string[] FailureFlags = Array.Empty<string>();
+        // E2: an UnavailableFlag stops blocking once its authored return flag is held (Trickster returns).
+        public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
     }
 
     public sealed class Scene
@@ -214,7 +216,7 @@ namespace Tirabade
             if (recovery != null && !state.Has("revive." + scene.Recovery + ".available")) return false;
             if (state.Has(relationship.ClosedFlag) && scene.Recovery != "konomi" && scene.AfterRecovery == null
                 || relationship.UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
-                    && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && state.Has(flag))) return false;
+                    && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && Blocks(relationship, flag, state, scene))) return false;
             if (scene.Relationship == "tirabade")
             {
                 if (!IsRemote(scene) && state.Chapter == 4) return false;
@@ -232,6 +234,17 @@ namespace Tirabade
             return state.Hour - last >= scene.DelayHours;
         }
 
+        // E2: a held UnavailableFlag blocks unless the relationship's authored return flag overrides it.
+        // The device scene that performs the return necessarily Requires the overridable state itself; that
+        // explicit requirement is the only other exemption, and only for flags the relationship declares overridable.
+        public static bool Blocks(Relationship relationship, string flag, Snapshot state, Scene? scene = null) => state.Has(flag)
+            && !(relationship.UnavailableOverrides.TryGetValue(flag, out var returned)
+                && (state.Has(returned) || scene != null && scene.Requires.Contains(flag)));
+
+        // Journal failure follows the same return: an overridden unavailable flag no longer fails the objective.
+        public static bool Failed(Relationship relationship, Snapshot state) =>
+            relationship.FailureFlags.Any(flag => Blocks(relationship, flag, state));
+
         // Remote conversations need live-state guards too, without reapplying authored closure or delays.
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
         {
@@ -245,7 +258,7 @@ namespace Tirabade
                 && scene.Requires.All(state.Has)
                 && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && state.Has(flag))
                 && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
-                    && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && state.Has(flag))
+                    && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && Blocks(story.Relationships[scene.Relationship], flag, state, scene))
                 && (scene.AfterDeparture == null || !state.Has(story.Relationships[scene.Relationship].ClosedFlag)
                     && !scene.Forbids.Any(state.Has))
                 && (recovery == null || state.Has("revive." + scene.Recovery + ".available"))
@@ -411,6 +424,17 @@ namespace Tirabade
                     || story.SeenCues.ContainsKey(pair.Key) || pair.Key.StartsWith("hour.", StringComparison.Ordinal)
                     || authoredFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Key))
                     throw new InvalidOperationException("Invalid completed-etude binding: " + pair.Key);
+            foreach (var pair in story.Relationships)
+            {
+                if (pair.Value.UnavailableOverrides == null) throw new InvalidOperationException("UnavailableOverrides cannot be null: " + pair.Key);
+                foreach (var entry in pair.Value.UnavailableOverrides)
+                    if (!pair.Value.UnavailableFlags.Contains(entry.Key) || string.IsNullOrWhiteSpace(entry.Value) || entry.Key == entry.Value
+                        || !authoredFlags.Contains(entry.Value) || story.Latches.ContainsKey(entry.Value) || nativeKeys.Contains(entry.Value)
+                        || derivedFlags.Contains(entry.Value) || pair.Value.UnavailableFlags.Contains(entry.Value)
+                        || story.Relationships.Values.Any(r => r.ClosedFlag == entry.Value))
+                        throw new InvalidOperationException("Invalid unavailable override (key must be one of the relationship's UnavailableFlags, value an authored return flag): "
+                            + pair.Key + "/" + entry.Key);
+            }
             foreach (var key in story.PermanentEtudes)
                 if (!story.Etudes.ContainsKey(key)) throw new InvalidOperationException("Unknown permanent etude: " + key);
             var ids = new HashSet<string>();

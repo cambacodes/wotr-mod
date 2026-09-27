@@ -329,6 +329,7 @@ internal static class Program
         SkillCheckTests.Run(Check);
         ForbidOverrideTests.Run(Check);
         TricksterLatchTests.Run(Check);
+        UnavailableOverrideTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);
