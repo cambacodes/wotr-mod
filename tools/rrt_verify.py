@@ -12,6 +12,8 @@ Usage:
 
 Sections: A producers | B reachability per mythic world | C chapter/delay traps | D cross-route forbid matrix
           E lints | F native GUID bindings | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
+          E9 rest budget: Trickster full-roster simulation with E8 post bags (report only; --rest-cadence, --chapter-days,
+             --bag-size, --queue-cap, --sim-natives); also run per matrix supply profile in --matrix mode
 """
 import argparse, collections, difflib, hashlib, importlib, json, os, re, shutil, sys, time, zipfile
 from pathlib import Path
@@ -944,6 +946,10 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     R["remote_order"] = order
     P("  Rest-letter delivery: NextRemote picks the FIRST available remote scene in list order. Relationship priority order:", order)
     for ch, c in comp.items(): P("     ch%d competing remote scenes by relationship: %s" % (ch, dict(c)))
+    # E9 rest budget (report only; never a hard failure)
+    rb = simulate_rest_budget(model, **(REST_OPTIONS or {}))
+    print_rest_budget(rb, P)
+    R["rest_budget"] = rb
     # volatile etudes used as history
     vol = []
     for f, where in refs.items():
@@ -1432,6 +1438,249 @@ def check_drafts(story, P, game):
     return res
 
 
+# ----------------------------------------------------------------------------- E9 rest-budget simulator
+# Chapter lengths are ESTIMATES to calibrate against real Trickster playthroughs (in-game days).
+SIM_CHAPTER_DAYS = {1: 2, 2: 6, 3: 30, 4: 12, 5: 40, 6: 1}
+SIM_REST_CADENCE = 16   # in-game hours of travel between successful rests (default; per chapter via --rest-cadence)
+REST_OPTIONS = {}       # set from the command line (--rest-cadence, --chapter-days, --bag-size, --queue-cap)
+
+
+class SimState:
+    def __init__(self, chapter, hour):
+        self.chapter, self.hour, self.flags, self.times = chapter, hour, set(), {}
+
+    def has(self, f): return f in self.flags
+
+
+def sim_complete(model, st):
+    """Mirror of Rules.Complete: latches, then Story.Derived composites."""
+    for k, src in model.latches.items():
+        if any(x in st.flags for x in src): st.flags.add(k)
+    changed = True
+    while changed:
+        changed = False
+        for k, groups in model.composites.items():
+            if k not in st.flags and any(all(x in st.flags for x in g) for g in groups):
+                st.flags.add(k); changed = True
+
+
+def sim_available(model, s, st):
+    """Mirror of Rules.Available with every contact present and the player in the right area (Recovery scenes excluded)."""
+    ch = st.chapter
+    if ch < s["MinChapter"] or ch > s["MaxChapter"] or s["Id"] in st.flags: return False
+    if s["Chapters"] and ch not in s["Chapters"]: return False
+    if not all(f in st.flags for f in s["Requires"]): return False
+    for f in s["Forbids"]:
+        ov = s["ForbidOverrides"].get(f)
+        if f in st.flags and not (ov and ov in st.flags): return False
+    if s["RequiresAny"] and not any(f in st.flags for f in s["RequiresAny"]): return False
+    if not all(any(f in st.flags for f in g) for g in s["RequiresAnyGroups"]): return False
+    if is_epilogue(s): return True
+    if s["Recovery"] is not None: return False
+    rel = model.rels.get(s["Relationship"], {})
+    if rel.get("ClosedFlag") in st.flags and s["AfterRecovery"] is None: return False
+    detects = device_detects(rel, s) if s["TricksterDevice"] else set()
+    for f in rel.get("UnavailableFlags", []):
+        ov = (rel.get("UnavailableOverrides") or {}).get(f)
+        if f in st.flags and not (ov and ov in st.flags) and f not in detects: return False
+    if s["Relationship"] == "tirabade":
+        if not is_remote(s) and ch == 4: return False
+        if s["Owner"] == "Together" and ch >= 5 and ("irabeth_away" in st.flags or "anevia_away" in st.flags): return False
+    held = list(s["Requires"]) + [f for g in s["RequiresAnyGroups"] for f in g if f in st.flags]
+    last = max([st.times[k] for k in held if k in st.times] or [st.hour - s["DelayHours"]])
+    return st.hour - last >= s["DelayHours"]
+
+
+def sim_bag(model, st, served, size, queued=(), cap=10 ** 9, skip=()):
+    """Mirror of Rules.NextRemoteBag (E8); `skip` holds letters the simulated player declines."""
+    def key(rel): return (model.rels.get(rel) or {}).get("RotationKey") or rel
+    groups = collections.OrderedDict()
+    for s in model.scenes:
+        if not is_remote(s) or s["ManualOnly"] or is_epilogue(s) or s in queued or s["Id"] in skip: continue
+        if sum(1 for q in queued if q["Relationship"] == s["Relationship"]) >= cap: continue
+        if sim_available(model, s, st): groups.setdefault(key(s["Relationship"]), []).append(s)
+    ranked = sorted(groups.values(), key=lambda g: (min(x["MaxChapter"] for x in g), max(served.get(x["Relationship"], -10 ** 9) for x in g)))
+    bag = [g[0] for g in ranked[:max(0, size)]]
+    order = {id(s): i for i, s in enumerate(model.scenes)}
+    return sorted(bag, key=lambda s: order[id(s)])
+
+
+def sim_plan(model, s, st, rel_flags):
+    """Best path through one scene: (score, choices); score = (commits? 0:1, closures set, completes? 0:1, length).
+    Abort keeps the relationship open but leaves the scene unfinished."""
+    committed, closed = rel_flags["committed"], rel_flags["closed"]
+    nodes = model.nodes[s["Id"]]
+
+    def best(node, held, gained, depth):
+        if node not in nodes or depth > 24: return (1, 9, 1, depth), []
+        found = None
+        for c in nodes[node]["Choices"]:
+            if not all(f in held for f in c["Requires"]) or any(f in held for f in c["Forbids"]): continue
+            now, got = held | set(c["Set"]), gained | (set(c["Set"]) - held)
+            nxt = c["Check"]["Success"] if c.get("Check") else c["Next"]
+            if c["Abort"]: score, path = (0 if got & committed else 1, len(got & closed), 1, depth), []
+            elif nxt is None: score, path = (0 if got & committed else 1, len(got & closed), 0, depth), []
+            else: score, path = best(nxt, now, got, depth + 1)
+            if found is None or score < found[0]: found = (score, [c] + path)
+        return found or ((1, 9, 1, depth), [])
+
+    return best(s["Nodes"][0]["Id"] if s["Nodes"] else None, set(st.flags), set(), 0)
+
+
+def sim_wanted(plan):
+    """A pursuing player opens a scene only when it commits, or completes without closing anything."""
+    score, path = plan
+    return bool(path) and (score[0] == 0 or (score[1] == 0 and score[2] == 0))
+
+
+def sim_play(model, s, st, rel_flags, plan=None):
+    """Plays one scene along its best path. Returns True when the scene completed."""
+    if not is_epilogue(s) and s["NativeReturnCue"] is None:
+        sf = model.rels.get(s["Relationship"], {}).get("StartedFlag")
+        if sf and sf not in st.flags: st.flags.add(sf); st.times[sf] = st.hour
+    _, path = plan or sim_plan(model, s, st, rel_flags)
+    for c in path:
+        for f in c["Set"]:
+            if f not in st.flags: st.flags.add(f); st.times[f] = st.hour
+        if c["Abort"]: return False
+    if path and path[-1].get("Check") is None and path[-1]["Next"] is None:
+        st.flags.add(s["Id"]); st.times[s["Id"]] = st.hour
+        return True
+    return False
+
+
+def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap=2, rests_per_chapter=None, caps=None, label="default",
+                         natives=None):
+    """E9: a Trickster full-roster campaign. Every relationship is pursued, physical scenes are visited daily for free,
+    remote letters arrive only through E8 post bags at each rest. Natives: `trickster` from Chapter 1; every other native
+    progress key a scene Requires turns true at the earliest MinChapter that requires it (loss, departure, hostility and
+    other mythic paths are never forced)."""
+    days = dict(SIM_CHAPTER_DAYS)
+    days.update({c: d for c, d in (chapter_days or {}).items() if d > 0})
+    cadence = cadence or {}
+    loss_like = re.compile(r"dead|gone|away|absent|killed|hostile|departed|dismissed|lost|fail|kicked|unavailable|sacrifice|ascend|lich|swarm|locust")
+    native_on = {}
+    # Branch markers (a native some scene forbids: a fight, a rejection, a death) stay absent; pure progress keys turn on.
+    forbidden = {f for x in model.scenes if not is_epilogue(x) for f in list(x["Forbids"]) + [g for n in x["Nodes"] for c in n["Choices"] for g in c["Forbids"]]}
+    for s in model.scenes:
+        for f in list(s["Requires"]) + [x for g in s["RequiresAnyGroups"] for x in g] + list(s["RequiresAny"]):
+            if f in model.native and f not in MYTHIC and not loss_like.search(f) and f != "true_lich" and f not in forbidden:
+                native_on[f] = min(native_on.get(f, 99), s["MinChapter"])
+    native_on.update(natives or {})   # --sim-natives: extra native keys forced true from a chapter
+    rel_flags = {"committed": {r["CommittedFlag"] for r in model.rels.values()}, "closed": {r["ClosedFlag"] for r in model.rels.values()}}
+    by_rel = collections.OrderedDict((rk, [s for s in model.scenes if s["Relationship"] == rk and not is_epilogue(s)
+                                           and (not is_remote(s) or s["ManualOnly"])]) for rk in model.rels)
+    st = SimState(1, 0)
+    served, played, ever, commit_at, delivered, declined = {}, set(), {}, {}, collections.Counter(), set()
+    per_rel_ch = collections.defaultdict(collections.Counter)
+    chapters = []
+    for ch in sorted(days):
+        st.chapter = ch
+        st.flags -= {"chapter_one", "chapter_later"}
+        st.flags |= {"trickster", "chapter_one" if ch == 1 else "chapter_later"}
+        st.flags |= {f for f, c in native_on.items() if c <= ch}
+        hours = int(days[ch] * 24)
+        step = cadence.get(ch) or (hours / rests_per_chapter[ch] if rests_per_chapter and rests_per_chapter.get(ch) else SIM_REST_CADENCE)
+        available_rests = rests_per_chapter.get(ch) if rests_per_chapter and rests_per_chapter.get(ch) else int(hours // step)
+        info = dict(chapter=ch, days=days[ch], rests_available=available_rests, rests_used=0, letters=0, missed=0, backlog_peak=0)
+        start, next_rest, next_visit, rests_done = st.hour, st.hour + step, st.hour, 0
+        end = start + hours
+        while st.hour < end:
+            sim_complete(model, st)
+            if st.hour >= next_visit:   # a daily round of physical visits and manual reads: free
+                next_visit += 24
+                for rk, visitable in by_rel.items():
+                    for s in visitable:
+                        if s["Id"] in declined or not sim_available(model, s, st): continue
+                        plan = sim_plan(model, s, st, rel_flags)
+                        if not sim_wanted(plan):
+                            declined.add(s["Id"]); continue
+                        ever.setdefault(s["Id"], ch)
+                        if sim_play(model, s, st, rel_flags, plan): played.add(s["Id"])
+                        sim_complete(model, st)
+                        break
+            if st.hour >= next_rest and rests_done < available_rests:
+                next_rest += step
+                rests_done += 1
+                for s in model.scenes:   # letters a pursuing player would decline are never requested
+                    if (is_remote(s) and not s["ManualOnly"] and not is_epilogue(s) and s["Id"] not in declined
+                            and sim_available(model, s, st) and not sim_wanted(sim_plan(model, s, st, rel_flags))):
+                        declined.add(s["Id"])
+                waiting = [s for s in model.scenes if is_remote(s) and not s["ManualOnly"] and not is_epilogue(s)
+                           and s["Id"] not in declined and sim_available(model, s, st)]
+                for s in waiting: ever.setdefault(s["Id"], ch)
+                info["backlog_peak"] = max(info["backlog_peak"], len({(model.rels.get(s["Relationship"]) or {}).get("RotationKey") or s["Relationship"] for s in waiting}))
+                bag = sim_bag(model, st, served, bag_size, (), cap, declined)
+                if bag: info["rests_used"] += 1
+                for s in bag:
+                    if not sim_available(model, s, st): continue
+                    served[s["Relationship"]] = st.hour
+                    if sim_play(model, s, st, rel_flags): played.add(s["Id"])
+                    delivered[s["Relationship"]] += 1
+                    per_rel_ch[s["Relationship"]][ch] += 1
+                    info["letters"] += 1
+                    sim_complete(model, st)
+            for rk, r in model.rels.items():
+                if r["CommittedFlag"] in st.flags and rk not in commit_at: commit_at[rk] = st.hour
+            # Jump to the next event (a daily visit round or a rest); nothing else changes in between.
+            targets = [next_visit, end] + ([next_rest] if rests_done < available_rests else [])
+            st.hour = max(st.hour + 1, int(-(-min(targets) // 1)))
+        info["missed"] = sum(1 for sid, c in ever.items() if sid not in played and model.by_id[sid]["MaxChapter"] == ch)
+        info["rests_needed"] = info["rests_used"] + -(-info["missed"] // max(1, bag_size))
+        info["load"] = round((info["letters"] + info["missed"]) / float(max(1, info["rests_available"] * bag_size)), 2)
+        chapters.append(info)
+    rels = []
+    for rk, r in model.rels.items():
+        missed = sorted(sid for sid, c in ever.items() if sid not in played and model.by_id[sid]["Relationship"] == rk)
+        over = []
+        if caps:
+            for ch, n in per_rel_ch[rk].items():
+                limit = caps.get("ch%d" % ch)
+                if limit is not None and n > limit: over.append("ch%d %d>%d" % (ch, n, limit))
+        why = None
+        if rk not in commit_at:   # the nearest unplayed scene and what keeps it shut at the end of the run
+            cands = []
+            for x in model.scenes:
+                if x["Relationship"] != rk or is_epilogue(x) or x["Id"] in played: continue
+                miss = [f for f in x["Requires"] if f not in st.flags]
+                forb = [f for f in x["Forbids"] if f in st.flags and not (x["ForbidOverrides"].get(f) in st.flags)]
+                cands.append((len(miss) + len(forb) + (1 if x["Id"] in declined else 0), x["Id"], miss, forb, x["Id"] in declined))
+            if cands:
+                _, sid, miss, forb, dec = min(cands)
+                why = "%s%s%s%s" % (sid, (" needs " + ",".join(miss[:3])) if miss else "", (" forbidden by " + ",".join(forb[:3])) if forb else "",
+                                     " (declined: only aborts or closes)" if dec else "")
+        rels.append(dict(relationship=rk, committed=rk in commit_at, day=(commit_at[rk] // 24 + 1) if rk in commit_at else None,
+                         letters={("ch%d" % c): n for c, n in sorted(per_rel_ch[rk].items())}, missed=missed, over_caps=over, blocked=why))
+    return dict(label=label, chapter_days=days, bag_size=bag_size, queue_cap=cap, chapters=chapters, relationships=rels)
+
+
+def print_rest_budget(res, P):
+    days = res["chapter_days"]
+    P("\n## E9. Rest budget [%s]: Trickster full-roster simulation, E8 post bags of %d, <= %d unread per relationship"
+      % (res["label"], res["bag_size"], res["queue_cap"]))
+    P("  Chapter lengths in in-game days (ESTIMATES, calibrate against real Trickster runs): %s"
+      % ", ".join("ch%d %s" % (c, d) for c, d in sorted(days.items())))
+    P("  Physical scenes and manual reads are visited daily at no rest cost; native progress keys (required somewhere, forbidden")
+    P("  nowhere, not loss/departure) turn true at the first chapter a scene needs them; each scene follows its committing path, else a path that completes without")
+    P("  closing anything; scenes that would only abort or close (partings, refusals) are declined and cost nothing.")
+    P("\n  RESTS NEEDED vs AVAILABLE")
+    P("  %-8s %6s %10s %10s %11s %8s %8s %13s %6s" % ("chapter", "days", "available", "used", "needed", "letters", "missed", "peak waiting", "load"))
+    for c in res["chapters"]:
+        flag = "  OVER" if c["rests_needed"] > c["rests_available"] or c["load"] > 1.0 else ""
+        P("  ch%-6d %6s %10d %10d %11d %8d %8d %13d %6.2f%s" % (c["chapter"], c["days"], c["rests_available"], c["rests_used"],
+                                                             c["rests_needed"], c["letters"], c["missed"], c["backlog_peak"], c["load"], flag))
+    P("\n  %-24s %-9s %-6s %-26s %s" % ("relationship", "committed", "day", "letters per chapter", "scenes that missed their window"))
+    for r in res["relationships"]:
+        letters = " ".join("%s:%d" % kv for kv in r["letters"].items()) or "-"
+        missed = ", ".join(r["missed"][:4]) + (" (+%d)" % (len(r["missed"]) - 4) if len(r["missed"]) > 4 else "") if r["missed"] else "-"
+        over = ("  CAP " + ", ".join(r["over_caps"])) if r["over_caps"] else ""
+        P("  %-24s %-9s %-6s %-26s %s%s" % (r["relationship"][:24], "yes" if r["committed"] else "NO", r["day"] or "-", letters[:26], missed, over))
+        if r.get("blocked"): P("  %-24s   stops at %s" % ("", r["blocked"]))
+    n_commit = sum(1 for r in res["relationships"] if r["committed"])
+    P("  => %d/%d relationships reach CommittedFlag; %d scenes missed their window; chapters over budget: %s"
+      % (n_commit, len(res["relationships"]), sum(len(r["missed"]) for r in res["relationships"]),
+         [c["chapter"] for c in res["chapters"] if c["rests_needed"] > c["rests_available"] or c["load"] > 1.0] or "none"))
+
 # ----------------------------------------------------------------------------------------- TT-20 matrix mode
 LOSS_LIKE = re.compile(r"dead|gone|hostile|killed|departed|closed")
 
@@ -1476,6 +1725,21 @@ def matrix_world_keys(model, st, guid_to_key):
             if g in guid_to_key: true.add(guid_to_key[g])
             else: unresolved.append("%s:%s" % (kind[:-1], g[:8]))
     return true, false, unresolved
+
+
+def matrix_rest_budget(model, matrix, P):
+    """E9 in --matrix mode: the default cadence plus every supply profile in matrix.rest_budget (rests per chapter)."""
+    budget = matrix.get("rest_budget") or {}
+    opts = dict(REST_OPTIONS or {})
+    opts["bag_size"] = budget.get("pages_per_rest", opts.get("bag_size", 3))
+    caps = budget.get("per_relationship_caps")
+    runs = [simulate_rest_budget(model, caps=caps, label="cadence", **opts)]
+    for name, supply in (budget.get("supply_profiles") or {}).items():
+        rests = {int(k[2:]): v for k, v in supply.items() if k.startswith("ch")}
+        runs.append(simulate_rest_budget(model, rests_per_chapter=rests, caps=caps, label="profile " + name,
+                                         **{k: v for k, v in opts.items() if k != "cadence"}))
+    for r in runs: print_rest_budget(r, P)
+    return {"rest_budget": runs}
 
 
 def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None):
@@ -1620,9 +1884,21 @@ def main():
     ap.add_argument("--strict", action="store_true", help="exit 1 on hard failures (for build gates)")
     ap.add_argument("--matrix", help="TT-20: check a trickster-matrix.json against the story (report; --strict fails on registered rows)")
     ap.add_argument("--matrix-json", default=str(HERE / "rrt_verify_report.matrix.json"))
+    ap.add_argument("--rest-cadence", help="E9: hours of travel per rest, one value or per chapter '3:16,5:12' (default 16)")
+    ap.add_argument("--chapter-days", help="E9: in-game days per chapter, e.g. '3:30,4:12,5:40' (defaults are estimates)")
+    ap.add_argument("--bag-size", type=int, default=3, help="E9: letters per rest (E8 PostBagSize)")
+    ap.add_argument("--queue-cap", type=int, default=2, help="E9: undelivered letters per relationship (E8 QueueCapPerRelationship)")
+    ap.add_argument("--sim-natives", help="E9: extra native keys held from a chapter, e.g. 'seelah.souls_returned:5,vellexia.native_finished:3'")
     a = ap.parse_args()
+    def per_chapter(text, cast):
+        if not text: return {}
+        if ":" not in text: return {c: cast(text) for c in range(1, 7)}
+        return {int(k): cast(v) for k, v in (x.split(":") for x in text.split(","))}
+    REST_OPTIONS.update(cadence=per_chapter(a.rest_cadence, float), chapter_days=per_chapter(a.chapter_days, float),
+                        bag_size=a.bag_size, cap=a.queue_cap,
+                        natives={k: int(v) for k, v in (x.split(":") for x in a.sim_natives.split(","))} if a.sim_natives else {})
     if a.matrix:
-        _, code = run_matrix(a.matrix, a.story, strict=a.strict, out_json=a.matrix_json)
+        _, code = run_matrix(a.matrix, a.story, strict=a.strict, out_json=a.matrix_json, extra=matrix_rest_budget)
         sys.exit(code)
     R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
     Path(a.text).write_text(text, encoding="utf-8")
