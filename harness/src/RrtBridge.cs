@@ -29,6 +29,7 @@ namespace RRT.TestHarness
             ("Tirabade.Main", "flags", "static-field", "Dictionary<String,BlueprintUnlockableFlag>"),
             ("Tirabade.Main", "State", "static-method()", "Snapshot"),
             ("Tirabade.Main", "Set", "static-method(String,Int32)", "Void"),
+            ("Tirabade.Main", "PresenceReport", "static-method()", "String[]"),
             ("Tirabade.Main+RouteCondition", "CheckCondition", "instance-method()", "Boolean"),
             ("Tirabade.Main+RouteAction", "RunAction", "instance-method()", "Void"),
             ("Tirabade.Story", "Scenes", "field", "List<Scene>"),
@@ -109,7 +110,7 @@ namespace RRT.TestHarness
 
         public Assembly Assembly { get; }
         readonly Type main, rules, sceneT, nodeT, choiceT, snapshotT, storyT, relationshipT;
-        readonly MethodInfo state, set, available, contactAvailable, match, isRemote;
+        readonly MethodInfo state, set, available, contactAvailable, match, isRemote, presenceReport;
 
         public RrtBridge(Assembly asm)
         {
@@ -121,6 +122,7 @@ namespace RRT.TestHarness
             MethodInfo M(Type t, string name, string kind) => (MethodInfo)(Find(t, name, kind) ?? throw new MissingMethodException(t.FullName, name));
             state = M(main, "State", "static-method()");
             set = M(main, "Set", "static-method(String,Int32)");
+            presenceReport = M(main, "PresenceReport", "static-method()");
             available = M(rules, "Available", "static-method(Story,Scene,Snapshot)");
             contactAvailable = M(rules, "ContactAvailable", "static-method(Story,Scene,Snapshot)");
             match = M(rules, "Match", "static-method(IEnumerable<String>,IEnumerable<String>,Snapshot)");
@@ -144,6 +146,8 @@ namespace RRT.TestHarness
         public IDictionary Flags => (IDictionary)Static("flags")!;
 
         public object State() => Invoke(state, null);
+        /// <summary>E12: one line per returned presence ("key [mode] wanted; status"), for verifying a presence appears.</summary>
+        public string[] PresenceReport() => (string[])Invoke(presenceReport, null);
         public void Set(string key, int value = 1) => Invoke(set, key, value);
 
         static object Invoke(MethodInfo m, params object?[]? args)

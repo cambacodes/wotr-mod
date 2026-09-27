@@ -218,6 +218,9 @@ internal static class Program
                 .Concat(story.InventoryItems.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintItem*", Source = e.Key }))
                 .Concat(story.StartedQuests.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintQuest", Source = e.Key }))
                 .Concat(story.RemovableItems.Select(guid => new { Guid = guid, ExpectedType = "BlueprintItem*", Source = "RemovableItems" }))
+                .Concat(story.Presences.SelectMany(p => new[] { new { Guid = p.Value.Unit, ExpectedType = "BlueprintUnit", Source = p.Key },
+                    new { Guid = p.Value.Area, ExpectedType = "BlueprintArea*", Source = p.Key } }
+                    .Concat(p.Value.AnswerLists.Select(g => new { Guid = g, ExpectedType = "BlueprintAnswersList", Source = p.Key }))))
                 .Concat(story.Revivals.Select(e => new { Guid = e.Value.Unit, ExpectedType = "BlueprintUnit", Source = "revive." + e.Key }))
                 .Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits).Select(guid => new { Guid = guid, ExpectedType = "BlueprintUnit", Source = s.Id })))
                 .Concat(story.Scenes.SelectMany(s => s.Areas.Select(guid => new { Guid = guid, ExpectedType = "BlueprintArea", Source = s.Id })))
@@ -348,6 +351,7 @@ internal static class Program
         EpilogueAfterTests.Run(Check);
         NativeCostTests.Run(Check);
         EntryEffectTests.Run(Check);
+        PresenceTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);

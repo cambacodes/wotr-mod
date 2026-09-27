@@ -24,6 +24,8 @@ namespace Tirabade
         public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
         public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
         public string[] PermanentEtudes = Array.Empty<string>();
+        // E12 (GLOBAL-07-lite): returned presences, keyed "<relationship>.presence".
+        public Dictionary<string, Presence> Presences = new Dictionary<string, Presence>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
         // E1: authored flags recorded forever the first time any native/derived source key is observed (TT-02).
@@ -101,6 +103,44 @@ namespace Tirabade
         public Dictionary<string, TricksterAccess> TricksterAccess = new Dictionary<string, TricksterAccess>();
         // ER-4: relationships sharing a rotation key (e.g. nocticula and nocticula.acquisition) share one post-bag slot.
         public string? RotationKey;
+    }
+
+    // E12: a character made present in an area while Requires hold and no Forbid holds. "reuse-native" unhides and
+    // (optionally) moves the existing native unit when it exists alive and friendly; "spawn-copy" spawns one copy of the
+    // native blueprint at Position when no live unit of that blueprint is in the area, and removes it when unwanted.
+    public sealed class Presence
+    {
+        public string Unit = "";
+        public string Area = "";
+        public string Mode = "reuse-native";
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public int MinChapter = 1;
+        public int MaxChapter = 6;
+        public PresencePosition? Position;
+        public string[] AnswerLists = Array.Empty<string>();
+    }
+
+    public sealed class PresencePosition
+    {
+        public float X, Y, Z;
+        public float Orientation;
+    }
+
+    public enum PresenceStep { None, Unhide, Move, Hide, Spawn, Remove, Forget, Blocked }
+
+    // What the runtime observed for one presence in the loaded area (pure input to Rules.PlanPresence).
+    public sealed class PresenceObservation
+    {
+        public bool AreaLoaded;
+        public bool NativeAlive;       // a live, friendly unit of the blueprint that is not our copy
+        public bool NativeHidden;      // that unit is out of game (hidden by native state)
+        public bool NativeAtPosition = true;
+        public bool CopyFound;         // our recorded copy is in the area state
+        public bool CopyAlive;
+        public bool Recorded;          // a saved presence record exists
+        public bool RecordedUnhide;    // the record says we unhid the native unit
+        public bool Submitted;         // the record says a copy was spawned
     }
 
     public sealed class TricksterAccess
@@ -482,6 +522,39 @@ namespace Tirabade
 
         public const string ServedPrefix = "served.";
 
+        // E12: the presence is wanted in this snapshot (area, chapter window, Requires, Forbids).
+        public static bool PresenceWanted(Presence presence, Snapshot state) => state.Area == presence.Area
+            && state.Chapter >= presence.MinChapter && state.Chapter <= presence.MaxChapter
+            && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has);
+
+        // E12: the steps the runtime takes for one presence. A spawned copy is never created twice for one record.
+        public static PresenceStep[] PlanPresence(Presence presence, bool wanted, PresenceObservation seen)
+        {
+            if (!seen.AreaLoaded) return Array.Empty<PresenceStep>();
+            var steps = new List<PresenceStep>();
+            if (presence.Mode == "reuse-native")
+            {
+                if (wanted && seen.NativeAlive)
+                {
+                    if (seen.NativeHidden) steps.Add(PresenceStep.Unhide);
+                    if (presence.Position != null && !seen.NativeAtPosition) steps.Add(PresenceStep.Move);
+                }
+                else if (!wanted && seen.RecordedUnhide && seen.NativeAlive && !seen.NativeHidden) steps.Add(PresenceStep.Hide);
+                else if (!wanted && seen.Recorded) steps.Add(PresenceStep.Forget);
+                return steps.ToArray();
+            }
+            if (wanted)
+            {
+                if (seen.CopyFound) { if (!seen.CopyAlive) steps.Add(PresenceStep.Blocked); }
+                else if (seen.NativeAlive) { if (seen.Recorded) steps.Add(PresenceStep.Forget); }
+                else if (seen.Submitted) steps.Add(PresenceStep.Blocked);
+                else steps.Add(PresenceStep.Spawn);
+            }
+            else if (seen.CopyFound) steps.Add(PresenceStep.Remove);
+            else if (seen.Recorded) steps.Add(PresenceStep.Forget);
+            return steps.ToArray();
+        }
+
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
 
@@ -645,6 +718,7 @@ namespace Tirabade
             if (story.PostBagSize < 1 || story.PostBagSize > 10 || story.QueueCapPerRelationship < 1
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
+            ValidatePresences(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
                 throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
@@ -756,6 +830,28 @@ namespace Tirabade
                 if (reached.Count != nodes.Count) throw new InvalidOperationException("Unreachable node in " + scene.Id);
             }
             ValidateParentEndings(story, authoredFlags, derivedFlags);
+        }
+
+        // E12: presences name a relationship, a native unit and area, a mode, known gates and (for copies) a position.
+        private static void ValidatePresences(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.Presences == null) throw new InvalidOperationException("Presences cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            bool GuidOk(string? value) => value != null && Guid.TryParseExact(value, "N", out var guid) && guid != Guid.Empty;
+            foreach (var pair in story.Presences)
+            {
+                var p = pair.Value;
+                string relationship = pair.Key.EndsWith(".presence", StringComparison.Ordinal) ? pair.Key.Substring(0, pair.Key.Length - ".presence".Length) : "";
+                if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
+                    || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null
+                    || p.Mode == "spawn-copy" && (p.Position == null || p.Requires.Length == 0)
+                    || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter
+                    || p.Requires.Concat(p.Forbids).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
+                    || p.AnswerLists.Any(id => !GuidOk(id))
+                    || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area))
+                    throw new InvalidOperationException("Invalid presence (\"<relationship>.presence\", unit and area GUIDs, reuse-native|spawn-copy, "
+                        + "known gates, spawn-copy needs Position and Requires): " + pair.Key);
+            }
         }
 
         // E6: a reaction is one node of terminal choices; it never closes, and never touches another relationship's state.

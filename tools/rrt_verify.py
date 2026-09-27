@@ -577,6 +577,12 @@ def validate(model):
             relflags.add(f)
     for k in model.permanent_etudes:
         if k not in model.etudes: errs.append("Unknown permanent etude: " + k)
+    for k, p in (st.get("Presences") or {}).items():
+        rel = k[:-len(".presence")] if k.endswith(".presence") else None
+        if (rel not in rels or not hexre.match(p.get("Unit") or "") or not hexre.match(p.get("Area") or "")
+                or p.get("Mode", "reuse-native") not in ("reuse-native", "spawn-copy")
+                or (p.get("Mode") == "spawn-copy" and (not p.get("Position") or not p.get("Requires")))):
+            errs.append("Invalid presence: " + k)
     for k, r in rels.items():
         for a, b in (r.get("UnavailableOverrides") or {}).items():
             if (a not in r.get("UnavailableFlags", []) or b == a or (b not in model.authored and b not in model.latches and b not in model.composites)
@@ -1265,6 +1271,10 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                     if c["NativeNext"]: want.append((c["NativeNext"], "BlueprintCue", "NativeNext@%s/%s" % (s["Id"], n["Id"])))
         for k in (story.get("ParentEpilogueEdits") or {}): want.append((k, "BlueprintCue", "ParentEpilogueEdit"))
         for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
+        for k, p in (story.get("Presences") or {}).items():
+            want.append((p.get("Unit"), "BlueprintUnit", "Presences." + k))
+            want.append((p.get("Area"), "BlueprintArea", "Presences." + k))
+            for g in p.get("AnswerLists") or []: want.append((g, "BlueprintAnswersList", "Presences." + k))
         for r in story.get("ParentEpilogueLossRules") or []:
             for g in r.get("SuppressPages", []): want.append((g, "BlueprintBookPage", "LossRule.SuppressPages"))
             for g in r.get("SuppressCues", []): want.append((g, "BlueprintCue", "LossRule.SuppressCues"))

@@ -66,6 +66,9 @@ namespace Tirabade
             new Dictionary<string, KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>>();
         private static readonly Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem> nativeItems = new Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem>();
         private static readonly Dictionary<string, BlueprintQuest> startedQuests = new Dictionary<string, BlueprintQuest>();
+        // E12 returned presences, and the last status line logged for each.
+        private static readonly List<GuestPresence> presences = new List<GuestPresence>();
+        private static readonly Dictionary<string, string> presenceStatus = new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, BlueprintUnit> revivalUnits = new Dictionary<string, BlueprintUnit>();
         private static readonly Dictionary<string, BlueprintUnit> contactUnits = new Dictionary<string, BlueprintUnit>();
         private static string? recoveryMessage;
@@ -208,6 +211,16 @@ namespace Tirabade
                         || returnList.MythicRequirement != default || returnList.AlignmentRequirement != default
                         || nativeReturn.Answers.Count != 1 || !ReferenceEquals(nativeReturn.Answers[0].Get(), returnList))
                         Degrade(scene.Relationship, "Native audience return must reopen its answer list without replaying actions: " + scene.Id);
+                }
+                // E12: a presence needs its native unit, area and host lists, or its relationship is disabled.
+                foreach (var pair in story.Presences)
+                {
+                    string relationship = pair.Key.Substring(0, pair.Key.Length - ".presence".Length);
+                    var unit = Resolve<BlueprintUnit>(pair.Value.Unit, "Presence unit " + pair.Key);
+                    var area = Resolve<BlueprintArea>(pair.Value.Area, "Presence area " + pair.Key);
+                    var hosts = pair.Value.AnswerLists.Select(id => Resolve<BlueprintAnswersList>(id, "Presence answer list " + pair.Key)).ToArray();
+                    if (unit == null || area == null || hosts.Any(list => list == null)) Degrade(relationship, "presence " + pair.Key + " is missing native data");
+                    else presences.Add(new GuestPresence(pair.Key, pair.Value, unit));
                 }
                 // E11: a whitelisted removable item must resolve, or the relationships that remove it are disabled.
                 foreach (string guid in story.RemovableItems)
@@ -1095,6 +1108,7 @@ namespace Tirabade
             ReconcileRecoveries();
             RecordLatches();
             var state = State();
+            TickPresences(state);
             foreach (var pair in objectives)
             {
                 if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.Started
@@ -1129,6 +1143,29 @@ namespace Tirabade
                 Set(Rules.ServedPrefix + scene.Relationship, Math.Max(1, (int)Game.Instance.Player.GameTime.TotalHours + 1));
             Game.Instance.DialogController.StartDialogWithoutTarget(dialogs[scene.Id], null);
         }
+
+        // E12: place, unhide, spawn or remove returned presences for the loaded area. Idle only; each change is logged once.
+        private static void TickPresences(Snapshot state)
+        {
+            if (presences.Count == 0) return;
+            foreach (var presence in presences)
+            {
+                bool wanted = !degraded.Contains(presence.Key.Substring(0, presence.Key.Length - ".presence".Length))
+                    && Rules.PresenceWanted(presence.Spec, state);
+                presence.Tick(wanted);
+                string line = presence.Report(wanted);
+                if (!presenceStatus.TryGetValue(presence.Key, out var last) || last != line)
+                {
+                    presenceStatus[presence.Key] = line;
+                    entry.Logger.Log("Presence " + line);
+                }
+            }
+            InvalidateState();
+        }
+
+        // Harness hook (GLOBAL-20): one line per presence, "<key> [mode] wanted|not wanted; <status>".
+        internal static string[] PresenceReport() => presences.Select(presence =>
+            presenceStatus.TryGetValue(presence.Key, out var line) ? line : presence.Key + " [" + presence.Spec.Mode + "] not observed").ToArray();
 
         // E1: persist every latch the current snapshot observes. Idle-only, so native state is settled.
         private static void RecordLatches()
