@@ -109,6 +109,8 @@ namespace Tirabade
         public int MaxChapter = 5;
         public int DelayHours;
         public bool Optional;
+        // E6: a one-node companion/NPC reaction to a Trickster device (story_format.reaction).
+        public bool Reaction;
         public string[] Requires = Array.Empty<string>();
         public string[] RequiresAny = Array.Empty<string>();
         public string[][] RequiresAnyGroups = Array.Empty<string[]>();
@@ -551,6 +553,7 @@ namespace Tirabade
                         : scene.ContactUnit != "ca2d58c5c65723945857e04fb85d30ce" || !scene.Requires.Contains("konomi.return_contact_available"))))
                     throw new InvalidOperationException("Invalid retained-return aftermath: " + scene.Id);
                 if (scene.AfterDeparture != null) ValidateDepartureVisit(story, scene);
+                if (scene.Reaction) ValidateReaction(story, scene);
                 foreach (var target in EntryTargets(scene))
                     if (!Guid.TryParseExact(target, "N", out _)) throw new InvalidOperationException("Invalid dialogue attachment: " + scene.Id + "/" + target);
                 foreach (var area in scene.Areas)
@@ -593,6 +596,22 @@ namespace Tirabade
                 if (reached.Count != nodes.Count) throw new InvalidOperationException("Unreachable node in " + scene.Id);
             }
             ValidateParentEndings(story, authoredFlags, derivedFlags);
+        }
+
+        // E6: a reaction is one node of terminal choices; it never closes, and never touches another relationship's state.
+        private static void ValidateReaction(Story story, Scene scene)
+        {
+            var own = story.Relationships[scene.Relationship];
+            var others = story.Relationships.Where(pair => pair.Key != scene.Relationship)
+                .SelectMany(pair => new[] { pair.Value.StartedFlag, pair.Value.ClosedFlag, pair.Value.CommittedFlag }).ToArray();
+            var choices = scene.Nodes.SelectMany(node => node.Choices).ToArray();
+            if (scene.Nodes.Count != 1 || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Recovery != null
+                || scene.AfterRecovery != null || scene.AfterDeparture != null || scene.InteractionHub != null
+                || !Rules.IsRemote(scene) && scene.AnswerLists.Length == 0
+                || choices.Any(choice => choice.Next != null || choice.Check != null || choice.Revive != null || choice.NativeNext != null)
+                || choices.SelectMany(choice => choice.Set).Any(flag => flag == own.ClosedFlag || others.Contains(flag))
+                || scene.Forbids.Concat(choices.SelectMany(choice => choice.Forbids)).Any(others.Contains))
+                throw new InvalidOperationException("Invalid reaction (one node; never closes or touches another relationship): " + scene.Id);
         }
 
         // E5: native answer effects are whitelisted and shaped like their native counterparts.

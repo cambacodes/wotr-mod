@@ -335,6 +335,7 @@ internal static class Program
         NativeForbidOverrideTests.Run(Check);
         DerivedFlagTests.Run(Check);
         ChoiceExtensionTests.Run(Check);
+        ReactionTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);

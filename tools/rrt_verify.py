@@ -49,7 +49,7 @@ def norm_scene(s):
              Remote=False, ManualOnly=False, InteractionHub=None, Recovery=None, AfterRecovery=None,
              AfterDeparture=None, ContactUnit=None, AdditionalContactUnits=[], MinChapter=1, MaxChapter=5,
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
-             ForbidOverrides={}, Nodes=[], Entry="", Title="")
+             ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", "")
@@ -588,6 +588,15 @@ def validate(model):
         if s["InteractionHub"] is not None and not is_nurah_hub(s): errs.append("Invalid Nurah hub contract: " + sid)
         if s["Relationship"] == "nurah" and not is_remote(s) and not is_nurah_hub(s): errs.append("Physical Nurah scene without hub: " + sid)
         if s["ManualOnly"] and not is_remote(s): errs.append("ManualOnly non-remote: " + sid)
+        if s["Reaction"]:
+            own = rels.get(s["Relationship"], {})
+            others = {f for k, r in rels.items() if k != s["Relationship"] for f in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"])}
+            chs = [c for n in s["Nodes"] for c in n["Choices"]]
+            if (len(s["Nodes"]) != 1 or is_epilogue(s) or (not is_remote(s) and not s["AnswerLists"])
+                    or any(c["Next"] or c["Check"] or c["Revive"] or c["NativeNext"] for c in chs)
+                    or any(f == own.get("ClosedFlag") or f in others for c in chs for f in c["Set"])
+                    or any(f in others for f in list(s["Forbids"]) + [f for c in chs for f in c["Forbids"]])):
+                errs.append("Invalid reaction: " + sid)
         if not sid or sid in ids: errs.append("Duplicate or empty scene: " + sid)
         ids.add(sid)
         if s["Relationship"] not in rels: errs.append("Unknown relationship: %s (%s)" % (s["Relationship"], sid))

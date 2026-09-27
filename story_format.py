@@ -44,3 +44,28 @@ def scene(id, title, owner, chapter, entry, nodes, requires=(), forbids=(), dela
     return dict(Id=id, Title=title, Owner=owner, MinChapter=chapter, MaxChapter=last,
                 Entry=entry, Nodes=nodes, Requires=list(requires), Forbids=list(forbids),
                 DelayHours=delay, Optional=optional, **extra)
+
+
+def reaction(owner, id, requires, text, answer_list=None, remote=False, forbids=(), *, relationship=None, entry=None,
+             title=None, chapter=1, last=5, delay=0, speaker=None, portrait="", flags=(), **extra):
+    """E6: a one-node companion or NPC reaction to a device (TT-25, playbook P4).
+
+    Attached to the reactor's native answer list (answer_list="<guid>") or delivered as a rest letter (remote=True).
+    The scene belongs to the device's relationship (the id prefix unless relationship= is given) and is tagged
+    Reaction=True: Rules.Validate keeps it to one node of terminal choices that never set a ClosedFlag, never touch
+    another relationship's state and never forbid another relationship's Started/Closed/Committed flag.
+    """
+    if bool(answer_list) == bool(remote):
+        raise ValueError("reaction %s needs exactly one of answer_list or remote=True" % id)
+    if any(f == "closed" or f.endswith(".closed") for f in flags):
+        raise ValueError("reaction %s may not close a relationship" % id)
+    rel = relationship or id.split(".")[0]
+    body = scene(id, title or "%s's word" % owner, owner, chapter,
+                 "" if remote else (entry or '"What do you make of what happened?"'),
+                 [n("start", speaker or owner, text, c("Continue", flags=flags), portrait=portrait)],
+                 requires=requires, forbids=forbids, delay=delay, last=last, Relationship=rel, Reaction=True, **extra)
+    if remote:
+        body["Remote"] = True
+    else:
+        body["AnswerLists"] = [answer_list]
+    return body
