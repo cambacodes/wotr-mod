@@ -208,6 +208,8 @@ def done(*flags):
 def s(id, title, nodes, previous=None, delay=24):
     for page in nodes:
         page["Portrait"] = page["Speaker"] if page["Speaker"] in ("Minagho", "Chivarro") else ""
+        if id == "the_entrance_she_wants" and page["Id"] == "warm":
+            page["Portrait"] = "ChivarroWarm"
     SCENES.append(scene("minachiv." + id, title, "Memory", 5, title, nodes,
         requires=("minagho.ran_complete", "minagho.book_three_finished", "chivarro.searching") + (("minachiv." + previous,) if previous else ()),
         forbids=BLOCKERS, delay=delay, optional=True, Relationship="minagho_chivarro", Remote=True,
