@@ -73,6 +73,10 @@ namespace Tirabade
         private static NurahInteraction? nurahInteraction;
         private static BlueprintDialog? nurahHub;
         private static ParentEndingIntegration? parentEndings;
+        // Relationships whose native dependencies failed to resolve. Their blueprints stay registered for save safety,
+        // but they offer no entries, letters or endings until the dependency is available again.
+        private static readonly HashSet<string> degraded = new HashSet<string>(StringComparer.Ordinal);
+        private static readonly List<string> warnings = new List<string>();
         internal const string KonomiMeetingRetry = "konomi.return_meeting_retry";
         internal const string IrabethMeetingRetry = "irabeth.return_meeting_retry";
         internal const string NurahMeetingRetry = "nurah.private_meeting_retry";
@@ -150,76 +154,117 @@ namespace Tirabade
         }
 
         // Register all save references before any saved game is deserialized.
+        // Phase 1 resolves native references without throwing and records what is missing.
+        // Phase 2 always registers every blueprint a save can reference (flags, quests, cues, pages, answers, dialogs, etudes).
+        // Phase 3 attaches to native content per relationship; a missing dependency degrades only its own relationship.
         private static void Build()
         {
             if (initialized || error != null) return;
             try
             {
-                // Check integration points before creating or attaching anything.
-                var targets = story.Scenes.SelectMany(Rules.EntryTargets).Distinct().ToDictionary(id => id, Get<BlueprintAnswersList>);
+                // ---------- Phase 1: resolve native references (never throws for a missing binding) ----------
+                var missingKeys = new HashSet<string>(StringComparer.Ordinal);
+                T? Resolve<T>(string guid, string what) where T : SimpleBlueprint
+                {
+                    try { return Get<T>(guid); }
+                    catch (Exception ex) { warnings.Add(what + ": " + ex.Message); return null; }
+                }
+                void Degrade(string relationship, string reason)
+                {
+                    if (degraded.Add(relationship)) warnings.Add("Relationship '" + relationship + "' disabled: " + reason);
+                }
+                var targets = new Dictionary<string, BlueprintAnswersList>();
+                foreach (var id in story.Scenes.SelectMany(Rules.EntryTargets).Distinct())
+                {
+                    var list = Resolve<BlueprintAnswersList>(id, "Dialogue attachment " + id);
+                    if (list != null) targets.Add(id, list);
+                }
+                foreach (var scene in story.Scenes)
+                    foreach (var id in Rules.EntryTargets(scene).Where(id => !targets.ContainsKey(id)))
+                        Degrade(scene.Relationship, "dialogue attachment " + id + " is missing (scene " + scene.Id + ")");
                 foreach (var scene in story.Scenes.Where(s => s.NativeReturnCue != null))
                 {
-                    var nativeReturn = Get<BlueprintCue>(scene.NativeReturnCue!);
-                    var returnList = targets[scene.AnswerLists.Single()];
+                    var nativeReturn = Resolve<BlueprintCue>(scene.NativeReturnCue!, "Native audience return " + scene.Id);
+                    if (nativeReturn == null || !targets.TryGetValue(scene.AnswerLists.Single(), out var returnList))
+                    {
+                        Degrade(scene.Relationship, "native audience return for " + scene.Id + " is missing");
+                        continue;
+                    }
                     if (nativeReturn.ShowOnce || nativeReturn.ShowOnceCurrentDialog || nativeReturn.Conditions.Conditions.Length != 0
                         || nativeReturn.OnShow.Actions.Length != 0 || nativeReturn.OnStop.Actions.Length != 0
                         || nativeReturn.Continue.Cues.Count != 0 || nativeReturn.Experience != DialogExperience.NoExperience
                         || nativeReturn.AlignmentShift.Value != 0 || returnList.ShowOnce || returnList.Conditions.Conditions.Length != 0
                         || returnList.MythicRequirement != default || returnList.AlignmentRequirement != default
                         || nativeReturn.Answers.Count != 1 || !ReferenceEquals(nativeReturn.Answers[0].Get(), returnList))
-                        throw new InvalidOperationException("Native audience return must reopen its answer list without replaying actions: " + scene.Id);
+                        Degrade(scene.Relationship, "Native audience return must reopen its answer list without replaying actions: " + scene.Id);
                 }
-                var epilogue = Get<BlueprintCueSequence>("ed4baeaf69394754902344f0598d7e5a");
-                var aeon = Get<BlueprintCueSequence>("ced82f299d246f448b48afa0b630dd70");
+                var epilogue = Resolve<BlueprintCueSequence>("ed4baeaf69394754902344f0598d7e5a", "Parent epilogue sequence (RanRomance)");
+                var aeon = Resolve<BlueprintCueSequence>("ced82f299d246f448b48afa0b630dd70", "Native Aeon epilogue sequence");
                 var expanded = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2b9424b1b93e4d0896b0958db79d2339"));
                 if (expanded != null && !(expanded is BlueprintCueSequence))
-                    throw new InvalidOperationException("Optional parent epilogue has the wrong type: 2b9424b1b93e4d0896b0958db79d2339");
+                    warnings.Add("Optional parent epilogue has the wrong type: 2b9424b1b93e4d0896b0958db79d2339; it is ignored.");
                 var expandedEpilogue = expanded as BlueprintCueSequence;
-                parentEndings = ParentEndingIntegration.Prepare(story, epilogue, aeon, Get<SimpleBlueprint>,
-                    id => New<BlueprintCue>(id), () => initialized && enabled ? State() : null);
-                foreach (var pair in story.Etudes) etudes.Add(pair.Key, Get<BlueprintEtude>(pair.Value));
-                foreach (var pair in story.CompletedQuests) completedQuests.Add(pair.Key, Get<BlueprintQuest>(pair.Value));
-                foreach (var pair in story.SeenCues) seenCues.Add(pair.Key, pair.Value.Select(Get<BlueprintCue>).ToArray());
-                foreach (var pair in story.SelectedAnswers) selectedAnswers.Add(pair.Key, Get<BlueprintAnswer>(pair.Value));
-                foreach (var pair in story.StartedDialogs) startedDialogs.Add(pair.Key, Get<BlueprintDialog>(pair.Value));
-                foreach (var pair in story.CompletedEtudes) completedEtudes.Add(pair.Key, Get<BlueprintEtude>(pair.Value));
-                foreach (var pair in story.Revivals) revivalUnits.Add(pair.Key, Get<BlueprintUnit>(pair.Value.Unit));
+                foreach (var pair in story.Etudes)
+                    if (Resolve<BlueprintEtude>(pair.Value, "Etude " + pair.Key) is BlueprintEtude e) etudes.Add(pair.Key, e); else missingKeys.Add(pair.Key);
+                foreach (var pair in story.CompletedQuests)
+                    if (Resolve<BlueprintQuest>(pair.Value, "Quest " + pair.Key) is BlueprintQuest q) completedQuests.Add(pair.Key, q); else missingKeys.Add(pair.Key);
+                foreach (var pair in story.SeenCues)
+                {
+                    var cues = pair.Value.Select(id => Resolve<BlueprintCue>(id, "Seen cue " + pair.Key)).ToArray();
+                    if (cues.All(c => c != null)) seenCues.Add(pair.Key, cues!); else missingKeys.Add(pair.Key);
+                }
+                foreach (var pair in story.SelectedAnswers)
+                    if (Resolve<BlueprintAnswer>(pair.Value, "Selected answer " + pair.Key) is BlueprintAnswer a) selectedAnswers.Add(pair.Key, a); else missingKeys.Add(pair.Key);
+                foreach (var pair in story.StartedDialogs)
+                    if (Resolve<BlueprintDialog>(pair.Value, "Started dialog " + pair.Key) is BlueprintDialog d) startedDialogs.Add(pair.Key, d); else missingKeys.Add(pair.Key);
+                foreach (var pair in story.CompletedEtudes)
+                    if (Resolve<BlueprintEtude>(pair.Value, "Completed etude " + pair.Key) is BlueprintEtude c) completedEtudes.Add(pair.Key, c); else missingKeys.Add(pair.Key);
+                foreach (var pair in story.Revivals)
+                    if (Resolve<BlueprintUnit>(pair.Value.Unit, "Revival unit " + pair.Key) is BlueprintUnit u) revivalUnits.Add(pair.Key, u);
+                    else Degrade(pair.Value.Relationship, "revival unit for " + pair.Key + " is missing");
                 foreach (var guid in story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct())
-                    contactUnits.Add(guid, Get<BlueprintUnit>(guid));
+                    if (Resolve<BlueprintUnit>(guid, "Contact unit " + guid) is BlueprintUnit u) contactUnits.Add(guid, u);
+                foreach (var scene in story.Scenes.Where(s => s.ContactUnit != null))
+                    if (new[] { scene.ContactUnit! }.Concat(scene.AdditionalContactUnits).Any(guid => !contactUnits.ContainsKey(guid)))
+                        Degrade(scene.Relationship, "contact unit for " + scene.Id + " is missing");
+                // Derived flags inherit a missing input: a missing death etude must not read as "alive".
+                if (new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Any(missingKeys.Contains)) missingKeys.Add("loss");
+                if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(missingKeys.Contains)) missingKeys.Add("ascended");
+                if (missingKeys.Contains("swarm") || missingKeys.Contains("true_lich")) missingKeys.Add("inhuman");
+                if (missingKeys.Count > 0)
+                {
+                    foreach (var scene in story.Scenes)
+                    {
+                        var uses = scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(g => g)).Concat(scene.Forbids)
+                            .Concat(scene.ForbidOverrides.Values).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(ch => ch.Requires.Concat(ch.Forbids)));
+                        var hit = uses.FirstOrDefault(missingKeys.Contains);
+                        if (hit != null) Degrade(scene.Relationship, "native state '" + hit + "' is unavailable (scene " + scene.Id + ")");
+                    }
+                    foreach (var pair in story.Relationships)
+                    {
+                        var hit = pair.Value.UnavailableFlags.Concat(pair.Value.FailureFlags).FirstOrDefault(missingKeys.Contains);
+                        if (hit != null) Degrade(pair.Key, "native state '" + hit + "' is unavailable");
+                    }
+                }
+
+                // ---------- Phase 2: register every save-referenced blueprint, unconditionally ----------
                 var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct().ToArray();
                 var keys = story.Scenes.Select(s => s.Id).Concat(story.Scenes.Select(s => "hour." + s.Id))
                     .Concat(effects).Concat(effects.Select(key => "hour." + key))
                     .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag })).Distinct();
                 foreach (var key in keys) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
-                flags.Add(KonomiMeetingRetry, New<BlueprintUnlockableFlag>("flag." + KonomiMeetingRetry));
-                konomiMeeting = new KonomiMeeting(New<BlueprintEtude>("etude.konomi.personal_return"),
-                    CurrentKonomiVisit, Get<SimpleBlueprint>);
-                foreach (string key in new[] { IrabethMeetingRetry, "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
-                    "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words" })
+                foreach (string key in new[] { KonomiMeetingRetry, IrabethMeetingRetry, "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
+                    "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words", NurahMeetingRetry })
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
-                irabethMeeting = new IrabethMeeting(New<BlueprintEtude>("etude.irabeth.personal_return"),
-                    CurrentIrabethVisit, Get<SimpleBlueprint>);
-                flags.Add(NurahMeetingRetry, New<BlueprintUnlockableFlag>("flag." + NurahMeetingRetry));
-                nurahMeeting = new NurahMeeting(New<BlueprintEtude>("etude.nurah.private_meeting"),
-                    CurrentNurahVisit, Get<SimpleBlueprint>);
+                var konomiEtude = New<BlueprintEtude>("etude.konomi.personal_return");
+                var irabethEtude = New<BlueprintEtude>("etude.irabeth.personal_return");
+                var nurahEtude = New<BlueprintEtude>("etude.nurah.private_meeting");
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
                 foreach (var scene in story.Scenes) BuildScene(scene);
-                if (story.Scenes.Any(Rules.IsNurahHubScene))
-                {
-                    nurahHub = BuildNurahHub();
-                    nurahInteraction = new NurahInteraction(nurahMeeting!, nurahHub!, CanOpenNurahHub);
-                }
                 foreach (var scene in story.Scenes)
                 {
-                    if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
-                    {
-                        var sequence = scene.Owner == "AeonEpilogue" ? aeon : epilogue;
-                        var page = Ref<BlueprintCueBaseReference>(Get<BlueprintBookPage>(GuidFor("page." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
-                        sequence.Cues.Add(page);
-                        if (scene.Owner != "AeonEpilogue") expandedEpilogue?.Cues.Add(page);
-                        continue;
-                    }
-                    if (Rules.IsRemote(scene) || scene.InteractionHub != null) continue;
+                    // Entry answers are recorded in dialogue history, so they exist even when their relationship is degraded.
+                    if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || Rules.IsRemote(scene) || scene.InteractionHub != null) continue;
                     var answer = New<BlueprintAnswer>("entry." + scene.Id);
                     InitializeAnswer(answer);
                     answer.Text = Text("entry." + scene.Id, scene.Entry);
@@ -230,9 +275,27 @@ namespace Tirabade
                         answer.NextCue = Cues(Get<BlueprintCue>(GuidFor("cue." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
                     else
                         answer.OnSelect = Actions(new RouteAction { Start = scene });
-                    foreach (var id in Rules.EntryTargets(scene))
-                        targets[id].Answers.Insert(Math.Max(0, targets[id].Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
                 }
+                if (story.Scenes.Any(Rules.IsNurahHubScene)) nurahHub = BuildNurahHub();
+
+                // ---------- Phase 3: optional helpers and native attachment, each isolated ----------
+                T? Optional<T>(string what, Func<T?> create) where T : class
+                {
+                    try { return create(); }
+                    catch (Exception ex) { warnings.Add(what + " unavailable: " + ex.Message); entry.Logger.LogException(ex); return null; }
+                }
+                konomiMeeting = Optional("Konomi meeting", () => new KonomiMeeting(konomiEtude, CurrentKonomiVisit, Get<SimpleBlueprint>));
+                irabethMeeting = Optional("Irabeth meeting", () => new IrabethMeeting(irabethEtude, CurrentIrabethVisit, Get<SimpleBlueprint>));
+                nurahMeeting = Optional("Nurah meeting", () => new NurahMeeting(nurahEtude, CurrentNurahVisit, Get<SimpleBlueprint>));
+                if (nurahHub != null && nurahMeeting != null)
+                    nurahInteraction = Optional("Nurah hub", () => new NurahInteraction(nurahMeeting, nurahHub, CanOpenNurahHub));
+                // Relationships whose endings are rewritten through the parent's epilogue; without the integration
+                // their own pages are withheld so they cannot contradict the parent's unmodified slides.
+                var parentOwned = new HashSet<string>(story.ParentEpilogueLossRules.SelectMany(r => r.ReplacementScenes)
+                    .Select(id => story.Scenes.FirstOrDefault(s => s.Id == id)?.Relationship).OfType<string>(), StringComparer.Ordinal);
+                if (epilogue != null && aeon != null && (story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0))
+                    parentEndings = Optional("Parent ending integration", () => ParentEndingIntegration.Prepare(story, epilogue, aeon, Get<SimpleBlueprint>,
+                        id => New<BlueprintCue>(id), () => initialized && enabled ? State() : null));
                 foreach (var blueprint in registered)
                 {
                     foreach (var field in blueprint.GetType().GetFields())
@@ -249,9 +312,32 @@ namespace Tirabade
                     }
                     blueprint.OnEnable();
                 }
-                parentEndings?.Attach();
+                bool parentAttached = parentEndings != null
+                    && Optional<object>("Parent ending attachment", () => { parentEndings!.Attach(); return new object(); }) != null;
+                if (!parentAttached) parentEndings = null;
+                foreach (var scene in story.Scenes)
+                {
+                    if (degraded.Contains(scene.Relationship)) continue;
+                    if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
+                    {
+                        var sequence = scene.Owner == "AeonEpilogue" ? aeon : epilogue;
+                        if (sequence == null || !parentAttached && parentOwned.Contains(scene.Relationship)) continue;
+                        var page = Ref<BlueprintCueBaseReference>(Get<BlueprintBookPage>(GuidFor("page." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
+                        sequence.Cues.Add(page);
+                        if (scene.Owner != "AeonEpilogue") expandedEpilogue?.Cues.Add(page);
+                        continue;
+                    }
+                    if (Rules.IsRemote(scene) || scene.InteractionHub != null) continue;
+                    var answer = Get<BlueprintAnswer>(GuidFor("entry." + scene.Id).ToString());
+                    foreach (var id in Rules.EntryTargets(scene))
+                        targets[id].Answers.Insert(Math.Max(0, targets[id].Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
+                }
+                if (epilogue == null) warnings.Add("Epilogue pages are not shown: the RanRomance parent epilogue is missing.");
                 initialized = true;
-                entry.Logger.Log("Registered " + story.Scenes.Count + " scenes. Existing dialogue answers and finish actions preserved.");
+                entry.Logger.Log("Registered " + story.Scenes.Count + " scenes. Existing dialogue answers and finish actions preserved."
+                    + (warnings.Count == 0 ? "" : " " + warnings.Count + " integration warning(s); disabled relationships: "
+                        + (degraded.Count == 0 ? "none" : string.Join(", ", degraded.OrderBy(r => r))) + "."));
+                foreach (var warning in warnings) entry.Logger.Log("Integration warning: " + warning);
             }
             catch (Exception ex) { error = ex.Message; entry.Logger.LogException(ex); }
         }
@@ -269,7 +355,8 @@ namespace Tirabade
         private static void BuildScene(Scene scene)
         {
             var local = new Dictionary<string, BlueprintCueBase>();
-            var nativeReturn = scene.NativeReturnCue == null ? null : Get<BlueprintCue>(scene.NativeReturnCue);
+            bool inline = scene.NativeReturnCue != null;
+            var nativeReturn = inline ? ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(scene.NativeReturnCue!)) as BlueprintCue : null;
             foreach (var node in scene.Nodes)
             {
                 string id = scene.Id + "." + node.Id;
@@ -277,12 +364,12 @@ namespace Tirabade
                 cue.Conditions = Conditions();
                 cue.OnShow = Actions();
                 cue.OnStop = Actions();
-                cue.Speaker = nativeReturn != null && node.Speaker == scene.Owner
+                cue.Speaker = inline && nativeReturn != null && node.Speaker == scene.Owner
                     ? nativeReturn.Speaker : new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
                 cue.TurnSpeaker = false;
                 cue.Continue = Cues();
                 cue.Text = Text("cue." + id, node.Text);
-                if (nativeReturn != null)
+                if (inline)
                 {
                     cue.ShowOnce = false;
                     local.Add(node.Id, cue);
@@ -357,7 +444,7 @@ namespace Tirabade
                     answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
                 }
             }
-            if (nativeReturn != null) return;
+            if (inline) return;
             var dialog = New<BlueprintDialog>("dialog." + scene.Id);
             dialog.Type = DialogType.Book;
             dialog.Conditions = Conditions();
@@ -493,6 +580,7 @@ namespace Tirabade
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
             state.Flags.Add(player.Chapter == 1 ? "chapter_one" : "chapter_later");
+            foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);
             return state;
         }
 
@@ -851,6 +939,7 @@ namespace Tirabade
             if (GUILayout.Button("Stop narration")) StopNarration();
             GUILayout.Label("Windows narration is synthetic, not the original actors. Existing AI Voiceover lines are untouched.");
             if (error != null) { GUILayout.Label("Route initialization failed: " + error); return; }
+            if (degraded.Count > 0) GUILayout.Label("Unavailable in this installation (missing game or RanRomance content): " + string.Join(", ", degraded.OrderBy(r => r)) + ". Other relationships are unaffected; details are in the mod log.");
             if (!initialized || Game.Instance?.Player == null) { GUILayout.Label("Load a main-campaign save after restarting the application once."); return; }
             var state = State();
             if (CanRetryKonomiVisit() && GUILayout.Button("Arrange Konomi's visit again")) RetryKonomiVisit();

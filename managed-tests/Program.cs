@@ -250,29 +250,70 @@ internal static class Program
         KonomiMeetingIntegrationTests.PrepareNativePlacement();
         IrabethMeetingIntegrationTests.PrepareNativePlacement();
         NurahMeetingTests.PrepareNativePlacement();
+        // RRT_TEST_MISSING_ETUDE=<key> simulates a game or parent-mod update that removed a native binding.
+        string? missingEtude = Environment.GetEnvironmentVariable("RRT_TEST_MISSING_ETUDE");
+        if (missingEtude != null)
+        {
+            Check(story.Etudes.ContainsKey(missingEtude), "Unknown etude key for the missing-binding fixture: " + missingEtude);
+            story.Etudes[missingEtude] = "0123456789abcdef0123456789abcdef";
+        }
         build.Invoke(null, null);
+        HashSet<string> Degraded() => (HashSet<string>)main.GetField("degraded", PrivateStatic)!.GetValue(null)!;
+        List<string> Warnings() => (List<string>)main.GetField("warnings", PrivateStatic)!.GetValue(null)!;
+        bool Initialized() => (bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!;
         if (invalidNativeReturn)
         {
-            Check(!(bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Unsafe native return initialized the addon.");
-            Check(((string?)main.GetField("error", PrivateStatic)!.GetValue(null))?.Contains("Native audience return must reopen") == true,
-                "Unsafe native return did not fail its preflight.");
-            Check(((List<SimpleBlueprint>)main.GetField("registered", PrivateStatic)!.GetValue(null)!).Count == 0,
-                "Unsafe native return created addon blueprints before failing.");
-            Check(sequences.All(pair => pair.Value.Cues.SequenceEqual(originalCues[pair.Key])), "Failed return preflight changed native sequences.");
-            Check(answerLists.All(pair => pair.Value.Answers.SequenceEqual(originalAnswers[pair.Key])), "Failed return preflight changed native answers.");
-            Console.WriteLine($"PASS: {checks} assertions; unsafe native return rejected before mutation.");
+            // Save-safe contract: an unsafe native return disables only its own relationship. Every blueprint a save
+            // can reference is still registered, and no entry of that relationship is attached to any native list.
+            var unsafeScene = story.Scenes.First(s => s.NativeReturnCue == nativeReturnIds[0]);
+            Check(Initialized(), "Unsafe native return disabled the whole addon instead of its relationship.");
+            Check(Degraded().SetEquals(new[] { unsafeScene.Relationship }), "Unsafe native return degraded the wrong relationships: " + string.Join(",", Degraded()));
+            Check(Warnings().Any(w => w.Contains("Native audience return must reopen")), "Unsafe native return was not reported.");
+            foreach (var scene in story.Scenes.Where(s => s.Relationship == unsafeScene.Relationship))
+                Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + scene.Id)) is BlueprintUnlockableFlag, "Degraded relationship lost a save flag: " + scene.Id);
+            var degradedEntries = new HashSet<BlueprintGuid>(story.Scenes.Where(s => s.Relationship == unsafeScene.Relationship).Select(s => Id("entry." + s.Id)));
+            Check(answerLists.Values.All(list => !list.Answers.Any(reference => degradedEntries.Contains(reference.Guid))), "Degraded relationship was attached to a native list.");
+            Check(answerLists.All(pair => originalAnswers[pair.Key].All(pair.Value.Answers.Contains)), "Failed return preflight removed native answers.");
+            var probe = new Snapshot { Chapter = unsafeScene.MinChapter, Hour = 100000 };
+            probe.Flags.Add(Rules.DegradedPrefix + unsafeScene.Relationship);
+            Check(!Rules.Available(story, unsafeScene, probe), "Degraded relationship remains available to the rules.");
+            Console.WriteLine($"PASS: {checks} assertions; unsafe native return degraded only '{unsafeScene.Relationship}', saves stay resolvable.");
+            return 0;
+        }
+        if (missingEtude != null)
+        {
+            var dependent = new HashSet<string>(story.Scenes.Where(sc => sc.Requires.Concat(sc.RequiresAny).Concat(sc.RequiresAnyGroups.SelectMany(g => g))
+                    .Concat(sc.Forbids).Concat(sc.ForbidOverrides.Values).Concat(sc.Nodes.SelectMany(n => n.Choices).SelectMany(ch => ch.Requires.Concat(ch.Forbids)))
+                    .Any(f => f == missingEtude || f == "loss" && new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Contains(missingEtude)
+                        || f == "inhuman" && (missingEtude == "swarm" || missingEtude == "true_lich")))
+                .Select(sc => sc.Relationship)
+                .Concat(story.Relationships.Where(r => r.Value.UnavailableFlags.Concat(r.Value.FailureFlags).Any(f => f == missingEtude
+                    || f == "loss" && new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Contains(missingEtude)
+                    || f == "inhuman" && (missingEtude == "swarm" || missingEtude == "true_lich"))).Select(r => r.Key)));
+            Check(Initialized(), "A missing native etude disabled the whole addon.");
+            Check(dependent.Count > 0, "Missing-binding fixture chose an etude no relationship uses.");
+            Check(Degraded().SetEquals(dependent), "Missing etude degraded the wrong set. Expected " + string.Join(",", dependent.OrderBy(x => x))
+                + " got " + string.Join(",", Degraded().OrderBy(x => x)));
+            foreach (var scene in story.Scenes)
+                Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + scene.Id)) is BlueprintUnlockableFlag, "Save flag missing after partial integration: " + scene.Id);
+            foreach (var key in story.Relationships.Keys)
+                Check(ResourcesLibrary.TryGetBlueprint(Id(key == "tirabade" ? "quest" : "quest." + key)) is BlueprintQuest, "Journal quest missing after partial integration: " + key);
+            var degradedEntries = new HashSet<BlueprintGuid>(story.Scenes.Where(sc => dependent.Contains(sc.Relationship)).Select(sc => Id("entry." + sc.Id)));
+            var liveEntries = new HashSet<BlueprintGuid>(story.Scenes.Where(sc => !dependent.Contains(sc.Relationship) && Rules.EntryTargets(sc).Length > 0 && sc.NativeReturnCue == null).Select(sc => Id("entry." + sc.Id)));
+            Check(answerLists.Values.All(list => !list.Answers.Any(r => degradedEntries.Contains(r.Guid))), "A degraded relationship was attached to a native list.");
+            Check(liveEntries.All(guid => answerLists.Values.Any(list => list.Answers.Any(r => r.Guid == guid))), "An unaffected relationship lost its native entries.");
+            Console.WriteLine($"PASS: {checks} assertions; missing etude '{missingEtude}' degraded only [{string.Join(", ", dependent.OrderBy(x => x))}]; "
+                + $"{story.Scenes.Count} scene flags and {story.Relationships.Count} journal quests stay registered.");
             return 0;
         }
         if (invalidExpandedEpilogue)
         {
-            Check(!(bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Invalid optional epilogue initialized the addon.");
-            Check(((string?)main.GetField("error", PrivateStatic)!.GetValue(null))?.Contains("Optional parent epilogue has the wrong type") == true,
-                "Invalid optional epilogue did not fail its type preflight.");
-            Check(((List<SimpleBlueprint>)main.GetField("registered", PrivateStatic)!.GetValue(null)!).Count == 0,
-                "Invalid optional epilogue created addon blueprints before failing.");
-            Check(sequences.All(pair => pair.Value.Cues.SequenceEqual(originalCues[pair.Key])), "Failed preflight changed native sequences.");
-            Check(answerLists.All(pair => pair.Value.Answers.SequenceEqual(originalAnswers[pair.Key])), "Failed preflight changed native answers.");
-            Console.WriteLine($"PASS: {checks} assertions; wrong-type optional epilogue rejected before mutation.");
+            var wrong = (BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2b9424b1b93e4d0896b0958db79d2339"))!;
+            Check(Initialized(), "Invalid optional epilogue disabled the whole addon.");
+            Check(Degraded().Count == 0, "Invalid optional epilogue degraded a relationship.");
+            Check(Warnings().Any(w => w.Contains("Optional parent epilogue has the wrong type")), "Invalid optional epilogue was not reported.");
+            Check(sequences.All(pair => originalCues.TryGetValue(pair.Key, out var before) ? before.All(pair.Value.Cues.Contains) : true), "Invalid optional epilogue removed native sequence pages.");
+            Console.WriteLine($"PASS: {checks} assertions; wrong-type optional epilogue ignored with a warning; addon initialized.");
             return 0;
         }
         KonomiMeetingIntegrationTests.Run(Check);

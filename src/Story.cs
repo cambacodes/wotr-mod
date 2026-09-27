@@ -192,8 +192,12 @@ namespace Tirabade
             return ParentEndingSelection.Ordinary;
         }
 
+        // Set by Main.Build when a relationship's native dependencies are missing; never authored.
+        public const string DegradedPrefix = "rrt.degraded.";
+
         public static bool Available(Story story, Scene scene, Snapshot state)
         {
+            if (state.Has(DegradedPrefix + scene.Relationship)) return false;
             if (state.Chapter < scene.MinChapter || state.Chapter > scene.MaxChapter || state.Has(scene.Id)) return false;
             if (scene.Chapters.Length > 0 && !scene.Chapters.Contains(state.Chapter)) return false;
             if (scene.Areas.Length > 0 && !scene.Areas.Contains(state.Area)) return false;
@@ -326,6 +330,10 @@ namespace Tirabade
                 "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
+            if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
+                .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys)
+                .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal)))
+                throw new InvalidOperationException("The " + DegradedPrefix + " prefix is reserved for runtime integration state.");
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")
