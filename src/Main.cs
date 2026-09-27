@@ -231,6 +231,7 @@ namespace Tirabade
                 if (new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Any(missingKeys.Contains)) missingKeys.Add("loss");
                 if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(missingKeys.Contains)) missingKeys.Add("ascended");
                 if (missingKeys.Contains("swarm") || missingKeys.Contains("true_lich")) missingKeys.Add("inhuman");
+                Rules.PropagateMissing(story, missingKeys);
                 if (missingKeys.Count > 0)
                 {
                     foreach (var scene in story.Scenes)
@@ -257,6 +258,9 @@ namespace Tirabade
                     "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words", NurahMeetingRetry })
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 foreach (string key in story.Relationships.Keys.Select(key => Rules.ServedPrefix + key))
+                    if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
+                // E1: each latch is an ordinary authored flag (with its hour) recorded by Update().
+                foreach (string key in story.Latches.Keys.SelectMany(key => new[] { key, "hour." + key }))
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 var konomiEtude = New<BlueprintEtude>("etude.konomi.personal_return");
                 var irabethEtude = New<BlueprintEtude>("etude.irabeth.personal_return");
@@ -611,6 +615,8 @@ namespace Tirabade
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
             state.Flags.Add(player.Chapter == 1 ? "chapter_one" : "chapter_later");
+            // Latches and data-driven composites read the completed native picture.
+            Rules.Complete(story, state);
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);
             return state;
         }
@@ -934,6 +940,7 @@ namespace Tirabade
             if (!Idle() || Game.Instance?.Player == null || Game.Instance.IsLoadingSave || Game.Instance.IsUnloading
                 || LoadingProcess.Instance.IsLoadingInProcess) return;
             ReconcileRecoveries();
+            RecordLatches();
             var state = State();
             foreach (var pair in objectives)
             {
@@ -959,6 +966,22 @@ namespace Tirabade
             if (flags.ContainsKey(Rules.ServedPrefix + scene.Relationship))
                 Set(Rules.ServedPrefix + scene.Relationship, Math.Max(1, (int)Game.Instance.Player.GameTime.TotalHours + 1));
             Game.Instance.DialogController.StartDialogWithoutTarget(dialogs[scene.Id], null);
+        }
+
+        // E1: persist every latch the current snapshot observes. Idle-only, so native state is settled.
+        private static void RecordLatches()
+        {
+            if (story.Latches.Count == 0) return;
+            var state = State();
+            int hour = (int)Game.Instance.Player.GameTime.TotalHours;
+            foreach (var key in story.Latches.Keys)
+            {
+                if (!state.Has(key) || !flags.TryGetValue(key, out var flag)
+                    || Game.Instance.Player.UnlockableFlags.GetFlagValue(flag) > 0) continue;
+                Set("hour." + key, hour + 1);
+                Set(key);
+                entry.Logger.Log("Recorded latch: " + key);
+            }
         }
 
         private static void CancelPending()

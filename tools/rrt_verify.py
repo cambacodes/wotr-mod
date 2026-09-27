@@ -107,6 +107,10 @@ class Model:
         self.revivals = story.get("Revivals", {})
         self.derived = {"loss", "ascended", "inhuman", "chapter_one", "chapter_later"} | CONTACT_EVIDENCE | \
                        {"revive.%s.available" % k for k in self.revivals}
+        self.builtin_derived = set(self.derived)
+        # E1 latches: authored flags the runtime records from native sources (never set by a choice).
+        self.latches = {k: list(v) for k, v in (story.get("Latches") or {}).items()}
+        self.derived |= set(self.latches)
         # producers: flag -> list of (scene, node, choice-index or None)
         self.producers = collections.defaultdict(list)
         for s in self.scenes:
@@ -124,7 +128,7 @@ class Model:
         self.nodes = {s["Id"]: {n["Id"]: n for n in s["Nodes"]} for s in self.scenes}
         self.gate_flags = {s["Id"]: list(s["Requires"]) + list(s["RequiresAny"]) + [x for g in s["RequiresAnyGroups"] for x in g]
                            for s in self.scenes}
-        allf = set(self.authored) | set(self.native)
+        allf = set(self.authored) | set(self.native) | set(self.latches)
         forb = set()
         for s in self.scenes:
             forb |= set(s["Forbids"])
@@ -139,7 +143,7 @@ class Model:
                 for c in n["Choices"]:
                     for f in c["Requires"]: self.choice_req_scenes[f].add(s["Id"])
         # must-analysis only needs flags that are ever forbidden (projection commutes with union/intersection)
-        self.persistent = frozenset(f for f in allf if (f in self.authored or self.is_persistent_native(f)) and f in forb) |             ({"loss", "ascended"} & forb)
+        self.persistent = frozenset(f for f in allf if (f in self.authored or f in self.latches or self.is_persistent_native(f)) and f in forb) |             ({"loss", "ascended"} & forb)
         self.forbidden_any = frozenset(forb)
         self.static_ctx = {}
         for f, lst in self.producers.items():
@@ -194,6 +198,7 @@ def mythic_world(m, model, name=None, true=(), false=()):
     tr = set(true)
     if m and m in model.native: tr.add(m)
     if m != "lich": fl.add("true_lich")
+    if m != "trickster" and "trickster.was" in model.native: fl.add("trickster.was")  # only a former Trickster
     return World(name or (m or "none"), tr, fl)
 
 
@@ -213,6 +218,7 @@ class Reach:
         m, w = self.m, self.w
         if f in w.false: return False
         if f in m.native: return True
+        if f in m.latches: return any(self.native_possible(x, ch) for x in m.latches[f])
         if f == "chapter_one": return (ch == 1) if ch else True
         if f == "chapter_later": return (ch > 1) if ch else True
         if f == "inhuman": return self.native_possible("swarm", ch) or self.native_possible("true_lich", ch)
@@ -229,6 +235,7 @@ class Reach:
     def forced(self, f, ch):
         w = self.w
         if f in w.true: return True
+        if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
         if f == "chapter_one": return ch == 1 if ch else False
         if f == "chapter_later": return (ch or 0) > 1
         if f == "inhuman": return "swarm" in w.true or "true_lich" in w.true
@@ -491,6 +498,8 @@ def build_names(model):
               "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words"]:
         if k not in keys: names.append(("flag." + k, "BlueprintUnlockableFlag"))
     names += [("flag.served." + rid, "BlueprintUnlockableFlag") for rid in model.rels if "served." + rid not in keys]
+    for k in model.latches:
+        names += [("flag." + x, "BlueprintUnlockableFlag") for x in (k, "hour." + k) if x not in keys]
     names += [("etude.konomi.personal_return", "BlueprintEtude"), ("etude.irabeth.personal_return", "BlueprintEtude"),
               ("etude.nurah.private_meeting", "BlueprintEtude")]
     for rid in model.rels:
@@ -536,6 +545,11 @@ def validate(model):
             relflags.add(f)
     for k in model.permanent_etudes:
         if k not in model.etudes: errs.append("Unknown permanent etude: " + k)
+    for k, src in model.latches.items():
+        if (not k or k in model.authored or k in model.native or k in model.builtin_derived or not src or len(set(src)) != len(src)
+                or k.startswith(("rrt.degraded.", "served.", "hour.", "revive."))
+                or any(x not in model.native and x not in model.builtin_derived for x in src)):
+            errs.append("Invalid latch: " + k)
     hexre = re.compile(r"^[0-9a-fA-F]{32}$")
     for s in model.scenes:
         sid = s["Id"]

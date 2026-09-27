@@ -282,14 +282,16 @@ internal static class Program
         }
         if (missingEtude != null)
         {
+            // Runtime-derived flags, latches and data-driven composites inherit the missing input.
+            var lost = new HashSet<string> { missingEtude };
+            if (new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Contains(missingEtude)) lost.Add("loss");
+            if (missingEtude == "swarm" || missingEtude == "true_lich") lost.Add("inhuman");
+            Rules.PropagateMissing(story, lost);
             var dependent = new HashSet<string>(story.Scenes.Where(sc => sc.Requires.Concat(sc.RequiresAny).Concat(sc.RequiresAnyGroups.SelectMany(g => g))
                     .Concat(sc.Forbids).Concat(sc.ForbidOverrides.Values).Concat(sc.Nodes.SelectMany(n => n.Choices).SelectMany(ch => ch.Requires.Concat(ch.Forbids)))
-                    .Any(f => f == missingEtude || f == "loss" && new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Contains(missingEtude)
-                        || f == "inhuman" && (missingEtude == "swarm" || missingEtude == "true_lich")))
+                    .Any(lost.Contains))
                 .Select(sc => sc.Relationship)
-                .Concat(story.Relationships.Where(r => r.Value.UnavailableFlags.Concat(r.Value.FailureFlags).Any(f => f == missingEtude
-                    || f == "loss" && new[] { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" }.Contains(missingEtude)
-                    || f == "inhuman" && (missingEtude == "swarm" || missingEtude == "true_lich"))).Select(r => r.Key)));
+                .Concat(story.Relationships.Where(r => r.Value.UnavailableFlags.Concat(r.Value.FailureFlags).Any(lost.Contains)).Select(r => r.Key)));
             Check(Initialized(), "A missing native etude disabled the whole addon.");
             Check(dependent.Count > 0, "Missing-binding fixture chose an etude no relationship uses.");
             Check(Degraded().SetEquals(dependent), "Missing etude degraded the wrong set. Expected " + string.Join(",", dependent.OrderBy(x => x))
@@ -321,6 +323,9 @@ internal static class Program
         NurahHubIntegrationTests.Run(story, Check);
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
+        foreach (var latch in story.Latches.Keys)
+            Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + latch)) is BlueprintUnlockableFlag
+                && ResourcesLibrary.TryGetBlueprint(Id("flag.hour." + latch)) is BlueprintUnlockableFlag, "Latch flag not registered: " + latch);
         NativeAudienceTests.Run(story, Check);
         if (hasParentEndingRules) ParentEndingIntegrationTests.Run(story, Check);
         EndingDeliveryTests.Run(story, Id, Check);

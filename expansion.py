@@ -291,7 +291,27 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(nurah_scenes)
     payload["ParentEpilogueEdits"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_EDITS)
     payload["ParentEpilogueLossRules"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_LOSS_RULES)
+    trickster_engine(payload)
     return payload
+
+
+# Verified in blueprints.zip (2026-09-27): every GUID below is a BlueprintEtude.
+TRICKSTER_ETUDES = {
+    # World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/PlayerWasTrickster
+    "trickster.was": "c820b3788f967e14f8bde3c17447157f",
+}
+
+
+def trickster_engine(payload):
+    """Engine-level Trickster state shared by every device spec (02-TRICKSTER-ENGINE-API.md)."""
+    for key, guid in TRICKSTER_ETUDES.items():
+        if payload["Etudes"].get(key, guid) != guid:
+            raise ValueError(f"Conflicting Trickster binding: {key}")
+        payload["Etudes"][key] = guid
+    # A started-then-completed state still counts as observed history.
+    payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | set(TRICKSTER_ETUDES))
+    # TT-02: Chapter 4 can complete PlayerIsTrickster; the latch keeps device payoffs alive afterwards.
+    payload.setdefault("Latches", {})["trickster.ever"] = ["trickster", "trickster.was"]
 
 
 if __name__ == "__main__":

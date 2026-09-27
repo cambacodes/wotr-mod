@@ -17,6 +17,8 @@ namespace Tirabade
         public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
         public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
         public string[] PermanentEtudes = Array.Empty<string>();
+        // E1: authored flags recorded forever the first time any native/derived source key is observed (TT-02).
+        public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         public Dictionary<string, Relationship> Relationships = new Dictionary<string, Relationship>
         {
             ["tirabade"] = new Relationship
@@ -251,6 +253,14 @@ namespace Tirabade
                 && scene.RequiresAnyGroups.All(group => group.Any(state.Has));
         }
 
+        public static IEnumerable<string> NativeKeys(Story story) => story.Etudes.Keys.Concat(story.CompletedEtudes.Keys)
+            .Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys)
+            .Concat(story.StartedDialogs.Keys);
+
+        private static bool IsReservedKey(string key) => key.StartsWith(DegradedPrefix, StringComparison.Ordinal)
+            || key.StartsWith(ServedPrefix, StringComparison.Ordinal) || key.StartsWith("hour.", StringComparison.Ordinal)
+            || key.StartsWith("revive.", StringComparison.Ordinal);
+
         private static bool IsNativeFlag(Story story, string flag) => story.Etudes.ContainsKey(flag)
             || story.CompletedEtudes.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag)
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
@@ -261,6 +271,24 @@ namespace Tirabade
             || flag == "konomi.return_correspondence_available"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
             || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived";
+
+        // E1: latch keys whose source is observed in this snapshot but which are not recorded yet.
+        public static string[] PendingLatches(Story story, Snapshot state) => story.Latches
+            .Where(pair => !state.Has(pair.Key) && pair.Value.Any(state.Has)).Select(pair => pair.Key).ToArray();
+
+        // Latches (then Story.Derived composites) complete a snapshot after every native reader has run.
+        public static void Complete(Story story, Snapshot state)
+        {
+            foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
+        }
+
+        // Build: a missing native input makes dependent composites unavailable too (like "loss").
+        // A latch is only lost when every source is missing: one surviving source can still record it.
+        public static void PropagateMissing(Story story, HashSet<string> missing)
+        {
+            foreach (var pair in story.Latches)
+                if (pair.Value.All(missing.Contains)) missing.Add(pair.Key);
+        }
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
@@ -354,6 +382,16 @@ namespace Tirabade
                     .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys)
                     .Any(key => contactEvidence.Contains(key) || key == "konomi.retained_return_confirmed"))
                 throw new InvalidOperationException("Authored state or native aliases cannot manufacture contact evidence.");
+            var nativeKeys = new HashSet<string>(NativeKeys(story));
+            if (story.Latches == null) throw new InvalidOperationException("Latches cannot be null.");
+            foreach (var pair in story.Latches)
+                if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key)
+                    || derivedFlags.Contains(pair.Key) || contactEvidence.Contains(pair.Key) || IsReservedKey(pair.Key)
+                    || pair.Value == null || pair.Value.Length == 0 || pair.Value.Distinct().Count() != pair.Value.Length
+                    || pair.Value.Any(source => !nativeKeys.Contains(source) && !derivedFlags.Contains(source)))
+                    throw new InvalidOperationException("Invalid latch (sources must be native or runtime-derived keys; the key must be new): " + pair.Key);
+            // A latch is an ordinary authored flag once recorded.
+            authoredFlags.UnionWith(story.Latches.Keys);
             foreach (var pair in story.StartedDialogs)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)

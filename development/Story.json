@@ -134754,7 +134754,8 @@
     "nurah.dead_drezen": "a837c3bc9cbb4e846ab5565915165c91",
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
-    "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935"
+    "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
+    "trickster.was": "c820b3788f967e14f8bde3c17447157f"
   },
   "Relationships": {
     "tirabade": {
@@ -135844,5 +135845,14 @@
         }
       }
     }
-  ]
+  ],
+  "PermanentEtudes": [
+    "trickster.was"
+  ],
+  "Latches": {
+    "trickster.ever": [
+      "trickster",
+      "trickster.was"
+    ]
+  }
 }
