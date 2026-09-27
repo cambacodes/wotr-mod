@@ -19,6 +19,8 @@ namespace Tirabade
         public string[] PermanentEtudes = Array.Empty<string>();
         // E1: authored flags recorded forever the first time any native/derived source key is observed (TT-02).
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
+        // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
+        public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
         public Dictionary<string, Relationship> Relationships = new Dictionary<string, Relationship>
         {
             ["tirabade"] = new Relationship
@@ -296,6 +298,17 @@ namespace Tirabade
         public static void Complete(Story story, Snapshot state)
         {
             foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
+            // Validate guarantees an acyclic graph, so this reaches its fixed point in at most Derived.Count passes.
+            for (bool changed = story.Derived.Count > 0; changed;)
+            {
+                changed = false;
+                foreach (var pair in story.Derived)
+                    if (!state.Has(pair.Key) && pair.Value.Any(group => group.All(state.Has)))
+                    {
+                        state.Flags.Add(pair.Key);
+                        changed = true;
+                    }
+            }
         }
 
         // Build: a missing native input makes dependent composites unavailable too (like "loss").
@@ -304,6 +317,16 @@ namespace Tirabade
         {
             foreach (var pair in story.Latches)
                 if (pair.Value.All(missing.Contains)) missing.Add(pair.Key);
+            for (bool changed = true; changed;)
+            {
+                changed = false;
+                foreach (var pair in story.Derived)
+                    if (!missing.Contains(pair.Key) && pair.Value.SelectMany(group => group).Any(missing.Contains))
+                    {
+                        missing.Add(pair.Key);
+                        changed = true;
+                    }
+            }
         }
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
@@ -408,6 +431,7 @@ namespace Tirabade
                     throw new InvalidOperationException("Invalid latch (sources must be native or runtime-derived keys; the key must be new): " + pair.Key);
             // A latch is an ordinary authored flag once recorded.
             authoredFlags.UnionWith(story.Latches.Keys);
+            ValidateDerived(story, authoredFlags, nativeKeys, derivedFlags, contactEvidence);
             foreach (var pair in story.StartedDialogs)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
@@ -458,7 +482,7 @@ namespace Tirabade
                 // or a closure). The override value must be authored: never native, runtime-derived or a closure.
                 foreach (var pair in scene.ForbidOverrides)
                     if (!scene.Forbids.Contains(pair.Key) || authoredFlags.Contains(pair.Key) == nativeKeys.Contains(pair.Key)
-                        || !authoredFlags.Contains(pair.Value) || pair.Key == pair.Value
+                        || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) || pair.Key == pair.Value
                         || story.Relationships.Values.Any(r => r.ClosedFlag == pair.Key || r.ClosedFlag == pair.Value)
                         || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Value))
                         throw new InvalidOperationException("Invalid authored forbid override: " + scene.Id + "/" + pair.Key);
@@ -532,6 +556,37 @@ namespace Tirabade
                 if (reached.Count != nodes.Count) throw new InvalidOperationException("Unreachable node in " + scene.Id);
             }
             ValidateParentEndings(story, authoredFlags, derivedFlags);
+        }
+
+        // E4: composite keys are new names over known flags, without cycles.
+        private static void ValidateDerived(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime, HashSet<string> evidence)
+        {
+            if (story.Derived == null) throw new InvalidOperationException("Derived cannot be null.");
+            foreach (var pair in story.Derived)
+            {
+                if (string.IsNullOrWhiteSpace(pair.Key) || authored.Contains(pair.Key) || native.Contains(pair.Key) || runtime.Contains(pair.Key)
+                    || evidence.Contains(pair.Key) || IsReservedKey(pair.Key))
+                    throw new InvalidOperationException("Derived key collides with an authored, native or reserved key: " + pair.Key);
+                if (pair.Value == null || pair.Value.Length == 0 || pair.Value.Any(group => group == null || group.Length == 0
+                    || group.Any(string.IsNullOrWhiteSpace) || group.Distinct().Count() != group.Length))
+                    throw new InvalidOperationException("Derived key needs non-empty AND-groups: " + pair.Key);
+                foreach (var source in pair.Value.SelectMany(group => group))
+                    if (!authored.Contains(source) && !native.Contains(source) && !runtime.Contains(source) && !story.Derived.ContainsKey(source))
+                        throw new InvalidOperationException("Derived key reads an unknown flag: " + pair.Key + "/" + source);
+            }
+            var state = new Dictionary<string, int>();
+            void Visit(string key, int depth)
+            {
+                if (state.TryGetValue(key, out int mark))
+                {
+                    if (mark == 1) throw new InvalidOperationException("Derived keys form a cycle through: " + key);
+                    return;
+                }
+                state[key] = 1;
+                foreach (var source in story.Derived[key].SelectMany(group => group).Where(story.Derived.ContainsKey)) Visit(source, depth + 1);
+                state[key] = 2;
+            }
+            foreach (var key in story.Derived.Keys) Visit(key, 0);
         }
 
         // A personal visit does not reverse departure or reopen the ordinary relationship.

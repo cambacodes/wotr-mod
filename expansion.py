@@ -299,6 +299,13 @@ def make_expansion(*, independent_tirabade=True):
 TRICKSTER_ETUDES = {
     # World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/PlayerWasTrickster
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
+    # World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_Trickster ("Nirvana" finale)
+    "ending.trickster": "db5375333382d044089475d256f19582",
+    # .../Chapter06_Extra/Ending_Trickster_AllPlanes and _AllPlanesAndFW (started by Ending_TricksterFull)
+    "ending.trickster_all_planes": "f7343e290a8d4ed887af8f04d1b3446b",
+    "ending.trickster_all_planes_fw": "5f63f6d43c9b465f822db70af7d69b92",
+    # .../Chapter06_Extra/Ending_TricksterFull
+    "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
 }
 
 
@@ -312,6 +319,11 @@ def trickster_engine(payload):
     payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | set(TRICKSTER_ETUDES))
     # TT-02: Chapter 4 can complete PlayerIsTrickster; the latch keeps device payoffs alive afterwards.
     payload.setdefault("Latches", {})["trickster.ever"] = ["trickster", "trickster.was"]
+    # TT-22: the Trickster "punchline" finale sets Ending_PlayerSacrifice (sacrifice), yet the native rewrite page
+    # says this Commander "found a way of cheating death". Epilogues may lift their sacrifice forbid with it.
+    payload.setdefault("Derived", {})["trickster.cheated_death"] = [
+        ["sacrifice", "trickster.ever", ending] for ending in
+        ("ending.trickster", "ending.trickster_all_planes", "ending.trickster_all_planes_fw", "ending.trickster_full")]
 
 
 if __name__ == "__main__":

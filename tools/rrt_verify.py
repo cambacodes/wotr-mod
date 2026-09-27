@@ -111,6 +111,9 @@ class Model:
         # E1 latches: authored flags the runtime records from native sources (never set by a choice).
         self.latches = {k: list(v) for k, v in (story.get("Latches") or {}).items()}
         self.derived |= set(self.latches)
+        # E4 data-driven composites (OR of AND-groups).
+        self.composites = {k: [list(g) for g in v] for k, v in (story.get("Derived") or {}).items()}
+        self.derived |= set(self.composites)
         # producers: flag -> list of (scene, node, choice-index or None)
         self.producers = collections.defaultdict(list)
         for s in self.scenes:
@@ -220,6 +223,7 @@ class Reach:
         if f in w.false: return False
         if f in m.native: return True
         if f in m.latches: return any(self.native_possible(x, ch) for x in m.latches[f])
+        if f in m.composites: return any(all(self.possible(x, ch) for x in g) for g in m.composites[f])
         if f == "chapter_one": return (ch == 1) if ch else True
         if f == "chapter_later": return (ch > 1) if ch else True
         if f == "inhuman": return self.native_possible("swarm", ch) or self.native_possible("true_lich", ch)
@@ -237,6 +241,7 @@ class Reach:
         w = self.w
         if f in w.true: return True
         if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
+        if f in self.m.composites: return any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
         if f == "chapter_one": return ch == 1 if ch else False
         if f == "chapter_later": return (ch or 0) > 1
         if f == "inhuman": return "swarm" in w.true or "true_lich" in w.true
@@ -553,6 +558,17 @@ def validate(model):
             if (a not in r.get("UnavailableFlags", []) or b == a or b not in model.authored or b in model.native
                     or b in model.derived or b in r.get("UnavailableFlags", []) or any(x["ClosedFlag"] == b for x in rels.values())):
                 errs.append("Invalid unavailable override %s/%s" % (k, a))
+    known = model.authored | set(model.native) | model.builtin_derived | set(model.latches) | set(model.composites)
+    for k, groups in model.composites.items():
+        if (not k or k in model.authored or k in model.native or k in model.builtin_derived or k in model.latches
+                or k.startswith(("rrt.degraded.", "served.", "hour.", "revive.")) or not groups or any(not g for g in groups)
+                or any(x not in known for g in groups for x in g)):
+            errs.append("Invalid derived key: " + k)
+    def cyclic(k, path):
+        if k in path: return True
+        return any(cyclic(x, path | {k}) for g in model.composites.get(k, []) for x in g if x in model.composites)
+    for k in model.composites:
+        if cyclic(k, frozenset()): errs.append("Derived cycle through: " + k)
     for k, src in model.latches.items():
         if (not k or k in model.authored or k in model.native or k in model.builtin_derived or not src or len(set(src)) != len(src)
                 or k.startswith(("rrt.degraded.", "served.", "hour.", "revive."))
@@ -582,7 +598,7 @@ def validate(model):
         for a, b in s["ForbidOverrides"].items():
             closed = {r["ClosedFlag"] for r in rels.values()}
             if (a not in s["Forbids"] or (a in model.authored) == (a in model.native) or a in model.builtin_derived
-                    or (b not in model.authored and b not in model.latches) or b in model.native or b in model.builtin_derived
+                    or (b not in model.authored and b not in model.latches and b not in model.composites) or b in model.native or b in model.builtin_derived
                     or a == b or a in closed or b in closed):
                 errs.append("Invalid forbid override %s/%s" % (sid, a))
         nodes = {}

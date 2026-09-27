@@ -134755,7 +134755,11 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "trickster.was": "c820b3788f967e14f8bde3c17447157f"
+    "trickster.was": "c820b3788f967e14f8bde3c17447157f",
+    "ending.trickster": "db5375333382d044089475d256f19582",
+    "ending.trickster_all_planes": "f7343e290a8d4ed887af8f04d1b3446b",
+    "ending.trickster_all_planes_fw": "5f63f6d43c9b465f822db70af7d69b92",
+    "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a"
   },
   "Relationships": {
     "tirabade": {
@@ -135847,12 +135851,40 @@
     }
   ],
   "PermanentEtudes": [
+    "ending.trickster",
+    "ending.trickster_all_planes",
+    "ending.trickster_all_planes_fw",
+    "ending.trickster_full",
     "trickster.was"
   ],
   "Latches": {
     "trickster.ever": [
       "trickster",
       "trickster.was"
+    ]
+  },
+  "Derived": {
+    "trickster.cheated_death": [
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster"
+      ],
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster_all_planes"
+      ],
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster_all_planes_fw"
+      ],
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster_full"
+      ]
     ]
   }
 }
