@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <AssemblyName>RRT.TestHarness.SelfTest</AssemblyName>
+    <GameDir Condition="'$(GameDir)' == ''">D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure\</GameDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <!-- The harness DLL is copied next to the exe; game assemblies are resolved from GameDir at run time. -->
+    <ProjectReference Include="..\RRT.TestHarness.csproj" />
+    <Reference Include="$(GameDir)Wrath_Data\Managed\Newtonsoft.Json.dll" Private="false" />
+  </ItemGroup>
+</Project>

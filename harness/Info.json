@@ -1,0 +1,10 @@
+{
+  "Id": "RRTTestHarness",
+  "DisplayName": "RRT Test Harness (automated tests, inactive without a plan)",
+  "Author": "RRT",
+  "Version": "0.1.0",
+  "ManagerVersion": "0.27.11",
+  "LoadAfter": ["RanRomanceTirabade"],
+  "AssemblyName": "RRT.TestHarness.dll",
+  "EntryMethod": "RRT.TestHarness.Entry.Load"
+}

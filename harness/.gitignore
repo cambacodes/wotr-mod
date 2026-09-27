@@ -1,0 +1,5 @@
+.runs/
+bin/
+obj/
+SelfTest/bin/
+SelfTest/obj/
