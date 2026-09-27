@@ -1,0 +1,40 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "sha256": "96675554f6e7865d69530950486cdf42c1f28cc8c37df473f855f123aedc045d",
+  "extractor": "UnityPy Texture2D.image.save; unchanged original texture dimensions; no generated art",
+  "images": [
+    {
+      "asset": "1abecb015eedf484eab1b0229a7cecf7",
+      "path_id": 1220329622077947025,
+      "name": "MinaghoFemaleDemon",
+      "dimensions": [
+        692,
+        1024
+      ],
+      "file": "minagho-native-portrait.png",
+      "sha256": "8c20ca472ee9b595ed06a0cf1bb986bafb591191c5d837f55c6cd40f11798e58"
+    },
+    {
+      "asset": "6c7353eb8220fad46ab72a1a44d4d3d9",
+      "path_id": 2577681700413514195,
+      "name": "Lilithu",
+      "dimensions": [
+        188,
+        244
+      ],
+      "file": "chivarro-linked-generic-lilitu.png",
+      "sha256": "cc502fea05c5e4a6e938731a378376f44c32fa0a540e0a6c5feb0150ec9e8fc9"
+    },
+    {
+      "asset": "8bd5e79fda4317b48b80eb32f5c9ce15",
+      "path_id": -358865347255476584,
+      "name": "MinaghoFemaleDemon_Half",
+      "dimensions": [
+        332,
+        432
+      ],
+      "file": "minagho-native-half.png",
+      "sha256": "95fa203882b31f63b34007a343d2674c66863d1564fa633f814e94d1bc8ca47d"
+    }
+  ]
+}
