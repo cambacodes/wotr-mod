@@ -91,6 +91,7 @@ internal static class Program
         TirabadeRecoveryObservationTests.Run(Check);
         KonomiContactObservationTests.Run(Check);
         KonomiRecoveryTests.Run(Check);
+        KonomiMeetingTests.Run(Check);
         var savedSettings = typeof(Kingmaker.Player).GetMember("SettingsList").Single();
         Check(savedSettings.GetCustomAttributes(typeof(JsonPropertyAttribute), true).Length == 1,
             "Player checkpoint container is not included in native JSON serialization");
@@ -170,7 +171,9 @@ internal static class Program
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
         main.GetField("story", PrivateStatic)!.SetValue(null, story);
         MethodInfo build = main.GetMethod("Build", PrivateStatic)!;
+        KonomiMeetingIntegrationTests.PrepareNativePlacement();
         build.Invoke(null, null);
+        KonomiMeetingIntegrationTests.Run(Check);
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
         var contacts = (Dictionary<string, BlueprintUnit>)main.GetField("contactUnits", PrivateStatic)!.GetValue(null)!;

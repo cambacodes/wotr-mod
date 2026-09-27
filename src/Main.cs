@@ -20,6 +20,7 @@ using Kingmaker.DialogSystem;
 using Kingmaker.DialogSystem.Blueprints;
 using Kingmaker.DialogSystem.State;
 using Kingmaker.ElementsSystem;
+using Kingmaker.EntitySystem.Persistence;
 using Kingmaker.GameModes;
 using Kingmaker.Localization;
 using Kingmaker.UI.MVVM._VM.Dialog.BookEvent;
@@ -66,6 +67,8 @@ namespace Tirabade
         private static Process? narrator;
         private static float pollAt;
         private static bool restPending;
+        private static KonomiMeeting? konomiMeeting;
+        internal const string KonomiMeetingRetry = "konomi.return_meeting_retry";
 
         public static bool Load(UnityModManager.ModEntry mod)
         {
@@ -84,6 +87,7 @@ namespace Tirabade
                     }
                     enabled = value;
                     if (!value) CancelPending();
+                    konomiMeeting?.Tick();
                     return true;
                 };
                 mod.OnGUI = OnGUI;
@@ -159,6 +163,9 @@ namespace Tirabade
                     .Concat(effects).Concat(effects.Select(key => "hour." + key))
                     .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag })).Distinct();
                 foreach (var key in keys) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
+                flags.Add(KonomiMeetingRetry, New<BlueprintUnlockableFlag>("flag." + KonomiMeetingRetry));
+                konomiMeeting = new KonomiMeeting(New<BlueprintEtude>("etude.konomi.personal_return"),
+                    CurrentKonomiVisit, Get<SimpleBlueprint>);
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
                 foreach (var scene in story.Scenes) BuildScene(scene);
                 foreach (var scene in story.Scenes)
@@ -366,7 +373,7 @@ namespace Tirabade
                 {
                     if (KonomiRecovery.CanRequest()) state.Flags.Add("revive.konomi.available");
                     if (KonomiRecovery.RetainedDead()) state.Flags.Add("konomi.retained_dead");
-                    if (KonomiRecovery.ReturnContactAvailable()) state.Flags.Add("konomi.return_contact_available");
+                    if (konomiMeeting?.ContactAvailable() == true) state.Flags.Add("konomi.return_contact_available");
                     if (KonomiRecovery.ReturnCorrespondenceAvailable()) state.Flags.Add("konomi.return_correspondence_available");
                 }
                 else if (Fate.CanRevive(revival.Value)) state.Flags.Add("revive." + revival.Key + ".available");
@@ -467,11 +474,80 @@ namespace Tirabade
             && Game.Instance.Player.Dialog.Scheduled == null && !Game.Instance.Player.IsInCombat
             && Game.Instance.CurrentMode == GameModeType.Default;
 
+        // Raw saved consent only. Never call State here: its contact observer calls the meeting helper.
+        internal static string? KonomiVisitRequest(Func<string, int> read, int hour)
+        {
+            if (read("konomi.retained_return_confirmed") <= 0 || read("konomi.return_visit_declined") > 0
+                || read("konomi.return_second_visit") > 0) return null;
+            int restored = read("hour.konomi.retained_return_confirmed");
+            int retry = read(KonomiMeetingRetry);
+            if (restored <= 0 || (long)hour - (restored - 1L) < 12 || retry < 0) return null;
+            bool firstDone = read("konomi.return_first_words") > 0;
+            if (firstDone)
+            {
+                int invited = read("hour.konomi.return_followup_invited");
+                if (read("konomi.return_followup_invited") <= 0 || invited <= 0 || (long)hour - (invited - 1L) < 48) return null;
+            }
+            else if (read("konomi.return_meeting_accepted") <= 0) return null;
+            return (firstDone ? "konomi.return.followup/" : "konomi.return.first/")
+                + retry.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        private static string? CurrentKonomiVisit()
+        {
+            if (!initialized || !enabled) return null;
+            var game = Game.Instance;
+            if (game?.Player == null || game.IsLoadingSave || game.IsUnloading
+                || LoadingProcess.Instance.IsLoadingInProcess || game.Player.IsInCombat
+                || (game.Player.Chapter != 3 && game.Player.Chapter != 5)) return null;
+            var player = game.Player;
+            foreach (string key in new[] { "swarm", "true_lich" })
+                if (etudes.TryGetValue(key, out var mythic) && (player.EtudesSystem.Etudes.GetFact(mythic)?.IsPlaying == true
+                    || (key == "true_lich" || story.PermanentEtudes.Contains(key)) && player.EtudesSystem.EtudeIsCompleted(mythic))) return null;
+            int Read(string key) => flags.TryGetValue(key, out var flag) ? player.UnlockableFlags.GetFlagValue(flag) : 0;
+            string? request = KonomiVisitRequest(Read, (int)player.GameTime.TotalHours);
+            if (request == null || !KonomiRecovery.ReturnCorrespondenceAvailable()) return null;
+            string scene = Read("konomi.return_first_words") > 0 ? "konomi.return_second_visit" : "konomi.return_first_words";
+            return KonomiVisitWindow(scene) ? request : null;
+        }
+
+        private static bool KonomiVisitWindow(string scene)
+        {
+            var game = Game.Instance;
+            // Keep the actor through her own visit; unrelated dialogue/events withdraw the temporary claim.
+            bool ownDialog = dialogs.TryGetValue(scene, out var dialog) && ReferenceEquals(game.DialogController?.Dialog, dialog);
+            return !game.Player.IsInCombat && game.Player.Dialog.Scheduled == null
+                && (Idle() || ownDialog && game.CurrentMode == GameModeType.Dialog);
+        }
+
+        private static bool CanRetryKonomiVisit()
+        {
+            try
+            {
+                return initialized && enabled && Idle() && konomiMeeting?.CurrentRequest != null
+                    && konomiMeeting.SavedFailed && KonomiRecovery.ReturnCorrespondenceAvailable()
+                    && Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[KonomiMeetingRetry]) < int.MaxValue;
+            }
+            catch { return false; }
+        }
+
+        private static void RetryKonomiVisit()
+        {
+            if (!CanRetryKonomiVisit()) return;
+            int prior = Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[KonomiMeetingRetry]);
+            if (prior < 0 || prior == int.MaxValue) return;
+            Set(KonomiMeetingRetry, checked(prior + 1));
+            konomiMeeting!.Tick();
+        }
+
         private static void Update()
         {
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S)) StopNarration();
-            if (!initialized || !enabled || Time.realtimeSinceStartup < pollAt) return;
+            if (!initialized || Time.realtimeSinceStartup < pollAt) return;
             pollAt = Time.realtimeSinceStartup + 0.3f;
+            // Disabled, combat and other-event states must still withdraw an existing meeting claim.
+            konomiMeeting?.Tick();
+            if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();
             if (recoveryPlayer != null && !ReferenceEquals(recoveryPlayer, Game.Instance?.Player))
@@ -479,7 +555,8 @@ namespace Tirabade
                 recoveryMessage = null;
                 recoveryPlayer = null;
             }
-            if (!Idle() || Game.Instance?.Player == null) return;
+            if (!Idle() || Game.Instance?.Player == null || Game.Instance.IsLoadingSave || Game.Instance.IsUnloading
+                || LoadingProcess.Instance.IsLoadingInProcess) return;
             ReconcileRecoveries();
             var state = State();
             foreach (var pair in objectives)
@@ -523,6 +600,7 @@ namespace Tirabade
             if (error != null) { GUILayout.Label("Route initialization failed: " + error); return; }
             if (!initialized || Game.Instance?.Player == null) { GUILayout.Label("Load a main-campaign save after restarting the application once."); return; }
             var state = State();
+            if (CanRetryKonomiVisit() && GUILayout.Button("Arrange Konomi's visit again")) RetryKonomiVisit();
             foreach (var pair in story.Relationships)
             {
                 GUILayout.Label(pair.Value.Title);

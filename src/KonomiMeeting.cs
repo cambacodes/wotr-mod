@@ -32,6 +32,7 @@ namespace Tirabade
         internal readonly BlueprintEtude Blueprint;
         private readonly Func<string?> acceptedRequest;
         private readonly BlueprintEtude hidden;
+        private readonly BlueprintEtude office;
         private readonly BlueprintEtudeConflictingGroup group;
         private readonly HideUnit show;
         private readonly TranslocateUnit move;
@@ -44,7 +45,7 @@ namespace Tirabade
             Blueprint = blueprint;
             this.acceptedRequest = acceptedRequest ?? throw new ArgumentNullException(nameof(acceptedRequest));
             hidden = (BlueprintEtude)resolve(Hidden);
-            var office = (BlueprintEtude)resolve(Office);
+            office = (BlueprintEtude)resolve(Office);
             group = (BlueprintEtudeConflictingGroup)resolve(Group);
             ValidatePlacement(hidden, Hidden, -100, false);
             ValidatePlacement(office, Office, -20, true);
@@ -182,6 +183,45 @@ namespace Tirabade
         }
 
         private bool Held() => ReferenceEquals(Game.Instance.Player.EtudesSystem.GetConflictingGroupTask(group), Blueprint);
+        internal string? CurrentRequest
+        {
+            get
+            {
+                try { return acceptedRequest(); }
+                catch (Exception ex) { LastError = ex; return null; }
+            }
+        }
+
+        // Failure is saved separately from exceptions; a partial unhide can fail without throwing.
+        internal bool SavedFailed
+        {
+            get
+            {
+                try
+                {
+                    var request = CurrentRequest;
+                    if (string.IsNullOrWhiteSpace(request)) return false;
+                    var data = SavedData(Game.Instance?.Player?.EtudesSystem.Etudes.GetFact(Blueprint));
+                    return data != null && data.Request == request && data.Failed;
+                }
+                catch (Exception ex) { LastError = ex; return false; }
+            }
+        }
+
+        internal bool ContactAvailable()
+        {
+            try
+            {
+                var holder = Game.Instance?.Player?.EtudesSystem.GetConflictingGroupTask(group);
+                return ContactPermitted(holder, Blueprint, office, Arrived, KonomiRecovery.ReturnContactAvailable);
+            }
+            catch (Exception ex) { LastError = ex; return false; }
+        }
+
+        internal static bool ContactPermitted(BlueprintEtude? holder, BlueprintEtude meeting, BlueprintEtude office,
+            Func<bool> arrived, Func<bool> contact)
+            => ReferenceEquals(holder, meeting) ? arrived() : ReferenceEquals(holder, office) && contact();
+
         internal bool Arrived()
         {
             try
