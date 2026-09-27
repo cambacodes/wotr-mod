@@ -37,3 +37,20 @@ Distinguish every authored departure from native facts in the design evidence.
 Apply the same per-character content floor, independent editorial rubrics, art requirements and verification gates as other adult routes.
 No score, route availability or completion is promised by this brief.
 The adult partner priority remains ahead of further Ember and Aivu work.
+
+## Follow-up questions for critical review
+
+The user proposes a grief trajectory involving disappointment, anger, sadness and possible hostility after a failed restoration.
+Review which responses are supported by the specific native branch rather than assigning the same emotional sequence to every ending.
+The user also proposes a renewed graft experiment and a future family as possible conclusions.
+These ideas require separate assessment and are not approved romantic endings.
+
+A renewed graft could represent a relapse into control, denial or dangerous research, rather than proof that Areelu has healed.
+Do not use a sexual or conception storyline with a familial Commander to restore her child.
+Any hypothetical family involving genuinely unrelated adult partners must recognize a new child's independent identity, not frame that child as a vessel or replacement for the deceased.
+Restoring the lost child, if explored as a non-romantic research outcome, requires its own lore evidence and must not be conflated with conception.
+
+Canon review must distinguish the original mortal soul, the grafted remnants, Areelu's interpretation and any actual change to those facts.
+Character review should test whether her choices preserve pride, grief, ambition and moral responsibility rather than turning her into a reward for defeating her.
+Creative review should compare acceptance, unresolved alliance and renewed dangerous experimentation as distinct outcomes.
+Romantic interest, where the unrelated-adult premise is established, must be freely chosen and cannot be inferred from defeat, dependency or submission to authority.
