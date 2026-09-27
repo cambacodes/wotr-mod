@@ -198,6 +198,11 @@ namespace Tirabade
                         || nativeReturn.Answers.Count != 1 || !ReferenceEquals(nativeReturn.Answers[0].Get(), returnList))
                         Degrade(scene.Relationship, "Native audience return must reopen its answer list without replaying actions: " + scene.Id);
                 }
+                // E5: a native continuation must resolve to a BlueprintCue, or its relationship is disabled.
+                foreach (var scene in story.Scenes)
+                    foreach (var guid in scene.Nodes.SelectMany(n => n.Choices).Select(c => c.NativeNext).OfType<string>().Distinct())
+                        if (Resolve<BlueprintCue>(guid, "Native continuation " + scene.Id) == null)
+                            Degrade(scene.Relationship, "native continuation " + guid + " for " + scene.Id + " is missing or not a cue");
                 var epilogue = Resolve<BlueprintCueSequence>("ed4baeaf69394754902344f0598d7e5a", "Parent epilogue sequence (RanRomance)");
                 var aeon = Resolve<BlueprintCueSequence>("ced82f299d246f448b48afa0b630dd70", "Native Aeon epilogue sequence");
                 var expanded = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2b9424b1b93e4d0896b0958db79d2339"));
@@ -418,7 +423,12 @@ namespace Tirabade
                     answer.SelectConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
                     answer.OnSelect = Actions(new RouteAction { Choice = choice, Continuation = continuation, Complete = !ending && choice.Next == null && choice.Check == null && !choice.Abort ? scene : null });
                     if (choice.Next != null) answer.NextCue = Cues(local[choice.Next]);
+                    else if (choice.NativeNext != null && choice.Check == null)
+                        // A missing target degraded the relationship in phase 1; keep the saved answer resolvable.
+                        answer.NextCue = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(choice.NativeNext)) is BlueprintCue next
+                            ? Cues(next) : nativeReturn != null ? Cues(nativeReturn) : Cues();
                     else if (nativeReturn != null && choice.Check == null) answer.NextCue = Cues(nativeReturn);
+                    ConfigureNativeEffects(answer, choice, warnings.Add);
                     if (choice.Check != null)
                     {
                         var specification = choice.Check;
@@ -460,6 +470,44 @@ namespace Tirabade
             dialog.StartActions = Actions();
             dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
             dialogs.Add(scene.Id, dialog);
+        }
+
+        // E5: whitelisted native effects on an injected answer, shaped exactly like native answers
+        // (MythicRequirement + IncrementFlagValue MythicChoices_<path>_Achievement; AlignmentShift on select).
+        internal static void ConfigureNativeEffects(BlueprintAnswer answer, Choice choice, Action<string> warn)
+        {
+            if (choice.Mythic != null)
+            {
+                answer.MythicRequirement = (Kingmaker.DialogSystem.Blueprints.Mythic)Enum.Parse(typeof(Kingmaker.DialogSystem.Blueprints.Mythic), choice.Mythic);
+                string path = Rules.MythicPath(choice.Mythic);
+                if (Rules.MythicAchievementFlags.TryGetValue(path, out var guid)
+                    && ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(guid)) is BlueprintUnlockableFlag counter)
+                {
+                    var value = new Kingmaker.Designers.EventConditionActionSystem.Evaluators.IntConstant { Value = 1 };
+                    value.Owner = answer;
+                    value.name = "$IntConstant$" + System.Guid.NewGuid();
+                    answer.AddToElementsList(value);
+                    var increment = new Kingmaker.Designers.EventConditionActionSystem.Actions.IncrementFlagValue { Value = value, UnlockIfNot = true };
+                    Field(increment, "m_Flag", Ref<BlueprintUnlockableFlagReference>(counter));
+                    answer.OnSelect = Actions((answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).Concat(new GameAction[] { increment }).ToArray());
+                }
+                else warn("Mythic-choice achievement counter unavailable for " + choice.Mythic + "; the requirement is kept without it.");
+            }
+            if (choice.Alignment != null)
+                answer.AlignmentShift = new Kingmaker.UnitLogic.Alignments.AlignmentShift
+                {
+                    Direction = (Kingmaker.UnitLogic.Alignments.AlignmentShiftDirection)Enum.Parse(
+                        typeof(Kingmaker.UnitLogic.Alignments.AlignmentShiftDirection), choice.Alignment.Direction),
+                    Value = choice.Alignment.Value,
+                    Description = EmptyText()
+                };
+        }
+
+        private static LocalizedString EmptyText()
+        {
+            var text = new LocalizedString();
+            Field(text, "m_Key", "");
+            return text;
         }
 
         private static BlueprintDialog BuildNurahHub()

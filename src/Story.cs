@@ -136,6 +136,18 @@ namespace Tirabade
         public string[] Set = Array.Empty<string>();
         public string[] Requires = Array.Empty<string>();
         public string[] Forbids = Array.Empty<string>();
+        // E5 native answer effects. Mythic: a Kingmaker.DialogSystem.Blueprints.Mythic name (MythicRequirement plus the
+        // native mythic-choice achievement counter). NativeNext: a native BlueprintCue of the same dialog, for a terminal
+        // choice of an inline (NativeReturnCue) scene. Alignment: a native AlignmentShift applied on select.
+        public string? Mythic;
+        public string? NativeNext;
+        public AlignmentChoice? Alignment;
+    }
+
+    public sealed class AlignmentChoice
+    {
+        public string Direction = "";
+        public int Value;
     }
 
     public sealed class SkillCheck
@@ -163,6 +175,30 @@ namespace Tirabade
         public const string NurahCapital = "2570015799edf594daf2f076f2f975d8";
         public const string NurahContact = "f999fc37ddb225640b7f98c0a05d6948";
         public static readonly string[] CheckSkills = { "SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana", "SkillKnowledgeWorld", "SkillLoreNature", "SkillLoreReligion", "SkillPerception", "SkillUseMagicDevice", "CheckDiplomacy", "CheckBluff", "CheckIntimidate" };
+
+        // Kingmaker.DialogSystem.Blueprints.Mythic (Assembly-CSharp), minus None.
+        public static readonly string[] MythicNames = { "PlayerIsAeon", "PlayerIsAngel", "PlayerIsAzata", "PlayerIsDemon", "PlayerIsDevil",
+            "PlayerIsDragon", "PlayerIsLegend", "PlayerIsLich", "PlayerIsLocust", "PlayerIsTrickster", "AeonUnlocked", "AngelUnlocked",
+            "AzataUnlocked", "DemonUnlocked", "DevilUnlocked", "DragonUnlocked", "LegendUnlocked", "LocustUnlocked", "LichUnlocked", "TricksterUnlocked" };
+
+        // Kingmaker.UnitLogic.Alignments.AlignmentShiftDirection.
+        public static readonly string[] AlignmentDirections = { "LawfulGood", "NeutralGood", "ChaoticGood", "LawfulNeutral", "TrueNeutral",
+            "ChaoticNeutral", "LawfulEvil", "NeutralEvil", "ChaoticEvil", "Good", "Evil", "Lawful", "Chaotic" };
+
+        // MythicChoices_<path>_Achievement BlueprintUnlockableFlags (blueprints.zip, GameAchievements_Flag). Native answers with
+        // MythicRequirement PlayerIs<path> or <path>Unlocked add IncrementFlagValue(flag, IntConstant 1, UnlockIfNot) on select
+        // (e.g. Goddesses_Summit/Answer_0214); verified for every path, including the one Lich-path answer that counts for Devil.
+        public static readonly Dictionary<string, string> MythicAchievementFlags = new Dictionary<string, string>
+        {
+            ["Aeon"] = "7715151721f747eebf0ab22fe14ff190", ["Angel"] = "c1691692455b46228ba19ad9eb1d3b3d",
+            ["Azata"] = "04aa3a7e7fc14101b4453f7fd7d83d88", ["Demon"] = "1604aba2aae245a5bcb481a99b8bdaeb",
+            ["Devil"] = "5c2c056854a44ec4904d258505e03eea", ["Dragon"] = "1711d42130814faebc6f2bb5b0a5b514",
+            ["Legend"] = "deb42e87a7a54194bac798a8f98f8beb", ["Lich"] = "b7f5fe87397b446aadc6f061de76f109",
+            ["Locust"] = "271b28c9b5b7441c809a825885f00d29", ["Trickster"] = "611b65da018c4922b3f0656055fd0553",
+        };
+
+        public static string MythicPath(string mythic) => mythic.StartsWith("PlayerIs", StringComparison.Ordinal)
+            ? mythic.Substring("PlayerIs".Length) : mythic.Substring(0, mythic.Length - "Unlocked".Length);
 
         public static IEnumerable<string> NextNodes(Choice choice) => choice.Check != null
             ? new[] { choice.Check.Success, choice.Check.Failure }
@@ -542,6 +578,7 @@ namespace Tirabade
                             throw new InvalidOperationException("Invalid skill check: " + scene.Id + "/" + node.Id);
                         if (choice.Revive != null && (choice.Revive != scene.Recovery || choice.Next != null || choice.Abort))
                             throw new InvalidOperationException("Revival must be a terminal recovery choice: " + scene.Id);
+                        ValidateNativeEffects(scene, node, choice);
                     }
                 var reached = new HashSet<string>();
                 var pending = new Stack<string>();
@@ -556,6 +593,22 @@ namespace Tirabade
                 if (reached.Count != nodes.Count) throw new InvalidOperationException("Unreachable node in " + scene.Id);
             }
             ValidateParentEndings(story, authoredFlags, derivedFlags);
+        }
+
+        // E5: native answer effects are whitelisted and shaped like their native counterparts.
+        private static void ValidateNativeEffects(Scene scene, Node node, Choice choice)
+        {
+            bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+            if (choice.Mythic != null && (ending || !MythicNames.Contains(choice.Mythic)))
+                throw new InvalidOperationException("Invalid mythic requirement: " + scene.Id + "/" + node.Id + " (" + choice.Mythic + ")");
+            if (choice.Alignment != null && (ending || !AlignmentDirections.Contains(choice.Alignment.Direction)
+                || choice.Alignment.Value <= 0 || choice.Alignment.Value > 100))
+                throw new InvalidOperationException("Invalid alignment shift: " + scene.Id + "/" + node.Id);
+            // Only an inline scene runs inside the native dialog, so only it can continue into that dialog's own cue.
+            if (choice.NativeNext != null && (!Guid.TryParseExact(choice.NativeNext, "N", out var cue) || cue == Guid.Empty
+                || scene.NativeReturnCue == null || choice.Next != null || choice.Check != null || choice.Abort || choice.Revive != null
+                || string.Equals(choice.NativeNext, scene.NativeReturnCue, StringComparison.OrdinalIgnoreCase)))
+                throw new InvalidOperationException("Invalid native continuation (terminal choice of an inline scene only): " + scene.Id + "/" + node.Id);
         }
 
         // E4: composite keys are new names over known flags, without cycles.

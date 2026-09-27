@@ -30,6 +30,10 @@ CONTACT_EVIDENCE = {"konomi.missed_contact_available", "konomi.missed_contact_in
 CHECK_SKILLS = {"SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana",
                 "SkillKnowledgeWorld", "SkillLoreNature", "SkillLoreReligion", "SkillPerception",
                 "SkillUseMagicDevice", "CheckDiplomacy", "CheckBluff", "CheckIntimidate"}
+MYTHIC_PATHS = ("Aeon", "Angel", "Azata", "Demon", "Devil", "Dragon", "Legend", "Lich", "Locust", "Trickster")
+MYTHIC_ENUM = {"PlayerIs" + p for p in MYTHIC_PATHS} | {p + "Unlocked" for p in MYTHIC_PATHS}
+ALIGNMENT_DIRECTIONS = {"LawfulGood", "NeutralGood", "ChaoticGood", "LawfulNeutral", "TrueNeutral", "ChaoticNeutral",
+                        "LawfulEvil", "NeutralEvil", "ChaoticEvil", "Good", "Evil", "Lawful", "Chaotic"}
 NURAH_CAPITAL = "2570015799edf594daf2f076f2f975d8"
 NURAH_CONTACT = "f999fc37ddb225640b7f98c0a05d6948"
 ANEVIA_LIST, IRABETH_LIST = "33960c7f7af40cd43b7f801a76c87a0b", "871af36f2ab2b1f40b5de77976c54276"
@@ -52,7 +56,7 @@ def norm_scene(s):
         n.setdefault("Choices", [])
         for c in n["Choices"]:
             for k, v in dict(Text="Continue", Next=None, Abort=False, Revive=None, Check=None, Set=[], Requires=[],
-                             Forbids=[]).items():
+                             Forbids=[], Mythic=None, NativeNext=None, Alignment=None).items():
                 if c.get(k) is None and v is not None:
                     c[k] = v
                 c.setdefault(k, v)
@@ -616,6 +620,14 @@ def validate(model):
                     errs.append("Invalid skill check: %s/%s" % (sid, n["Id"]))
                 if c["Revive"] is not None and (c["Revive"] != s["Recovery"] or c["Next"] is not None or c["Abort"]):
                     errs.append("Revival must be terminal recovery choice: " + sid)
+                if c["Mythic"] is not None and (is_epilogue(s) or c["Mythic"] not in MYTHIC_ENUM):
+                    errs.append("Invalid mythic requirement: %s/%s %s" % (sid, n["Id"], c["Mythic"]))
+                al = c["Alignment"]
+                if al is not None and (is_epilogue(s) or al.get("Direction") not in ALIGNMENT_DIRECTIONS or not 0 < al.get("Value", 0) <= 100):
+                    errs.append("Invalid alignment shift: %s/%s" % (sid, n["Id"]))
+                if c["NativeNext"] is not None and (not hexre.match(c["NativeNext"]) or s["NativeReturnCue"] is None or c["Next"] is not None
+                                                    or c["Check"] or c["Abort"] or c["Revive"] is not None):
+                    errs.append("Invalid native continuation (terminal choice of an inline scene only): %s/%s" % (sid, n["Id"]))
         if s["Nodes"]:
             seen, stack = set(), [s["Nodes"][0]["Id"]]
             while stack:
@@ -1182,6 +1194,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             except ValueError: pass
             for g in s["Areas"]: want.append((g, "BlueprintArea", "Area@" + s["Id"]))
             if s["NativeReturnCue"]: want.append((s["NativeReturnCue"], "BlueprintCue", "NativeReturnCue@" + s["Id"]))
+            for n in s["Nodes"]:
+                for c in n["Choices"]:
+                    if c["NativeNext"]: want.append((c["NativeNext"], "BlueprintCue", "NativeNext@%s/%s" % (s["Id"], n["Id"])))
         for k in (story.get("ParentEpilogueEdits") or {}): want.append((k, "BlueprintCue", "ParentEpilogueEdit"))
         for r in story.get("ParentEpilogueLossRules") or []:
             for g in r.get("SuppressPages", []): want.append((g, "BlueprintBookPage", "LossRule.SuppressPages"))
@@ -1224,6 +1239,23 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                 txt = re.sub(r"\{[^}]*\}", "", str(txt))[:60]
                 exitish = (not cues) or bool(re.search(r"leave|farewell|goodbye|go now|that.s all|nothing|later|bye|excuse me|must go|have to go|must be going|until next time|another time|see you", txt, re.I))
                 tails[g] = ("exit-ok" if exitish else "LAST ANSWER IS NOT AN EXIT") + " [%s] %r cues=%d" % (Path(idx[last][1]).stem, txt, len(cues))
+        # E5: a native continuation must belong to the dialog that owns the scene's answer list (same ParentAsset).
+        with zipfile.ZipFile(game / "blueprints.zip") as z:
+            def parent(g):
+                """The owning BlueprintDialog: ParentAsset names the immediate owner (a list's cue, a cue's dialog...)."""
+                seen = set()
+                while g in idx and g not in seen and idx[g][0] != "BlueprintDialog":
+                    seen.add(g)
+                    g = json.loads(z.read(idx[g][1]))["Data"].get("ParentAsset")
+                return g if g in idx and idx[g][0] == "BlueprintDialog" else None
+            for s in model.scenes:
+                for n in s["Nodes"]:
+                    for c in n["Choices"]:
+                        g = c["NativeNext"]
+                        if not g or not s["AnswerLists"] or g not in idx: continue
+                        if parent(g) is None or parent(g) != parent(s["AnswerLists"][0]):
+                            bad.append(dict(guid=g, expected="BlueprintCue of the answer list's dialog", where="NativeNext@%s/%s" % (s["Id"], n["Id"]),
+                                            actual="cue dialog %s vs answer-list dialog %s" % (parent(g), parent(s["AnswerLists"][0]))))
         R["bindings"] = dict(checked=len(seen), failures=bad, src_hardcoded_missing=src_missing, rrt_native_collisions=rrt_coll, list_tails=tails,
                              index_size=len(idx), parent_guids=len(par))
         R["_typeids"] = typeids

@@ -204,6 +204,8 @@ internal static class Program
         {
             var bindings = story.Scenes.SelectMany(s => Rules.EntryTargets(s).Select(guid => new { Guid = guid, ExpectedType = "BlueprintAnswersList", Source = s.Id }))
                 .Concat(story.Scenes.Where(s => s.NativeReturnCue != null).Select(s => new { Guid = s.NativeReturnCue!, ExpectedType = "BlueprintCue", Source = s.Id }))
+                .Concat(story.Scenes.SelectMany(s => s.Nodes.SelectMany(n => n.Choices).Where(c => c.NativeNext != null)
+                    .Select(c => new { Guid = c.NativeNext!, ExpectedType = "BlueprintCue", Source = s.Id + "/native_next" })))
                 .Concat(story.Etudes.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintEtude", Source = e.Key }))
                 .Concat(story.CompletedQuests.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintQuest", Source = e.Key }))
                 .Concat(story.SeenCues.SelectMany(e => e.Value.Select(guid => new { Guid = guid, ExpectedType = "BlueprintCue", Source = e.Key })))
@@ -332,6 +334,7 @@ internal static class Program
         UnavailableOverrideTests.Run(Check);
         NativeForbidOverrideTests.Run(Check);
         DerivedFlagTests.Run(Check);
+        ChoiceExtensionTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);
