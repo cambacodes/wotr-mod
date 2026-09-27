@@ -93,6 +93,7 @@ internal static class Program
         KonomiRecoveryTests.Run(Check);
         KonomiMeetingTests.Run(Check);
         IrabethMeetingTests.Run(Check);
+        NurahMeetingTests.Run(Check);
         var savedSettings = typeof(Kingmaker.Player).GetMember("SettingsList").Single();
         Check(savedSettings.GetCustomAttributes(typeof(JsonPropertyAttribute), true).Length == 1,
             "Player checkpoint container is not included in native JSON serialization");

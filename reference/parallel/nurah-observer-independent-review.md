@@ -76,3 +76,39 @@ Chapter, mythic path, closure, acceptance, refusal, and delay requirements remai
 The Yaker location investigation is not approval of an empty or available meeting point.
 After correcting and independently rechecking the prison transition, this can be approved only as a retained-living-actor observer foundation.
 It cannot establish an attainable complete Nurah route, resurrection, physical visit, or manual-play readiness.
+
+
+## Targeted correction re-review
+
+The original defect and reproduction above remain the verdict for source 95B06.
+This section reviews corrected source `723223CE6F6AD0DBF7B19B02DEFC23757FF49314DBF28A9B54050436DDE38DBD` and tests `A69C732F7637B0BB38500B96960FF9C831388C3F617E7CEE2CFDE0B9F55202D8`.
+
+Verdict: pass as an observer-only foundation after the prison adapter correction.
+No movement, invitation, arrival, Main integration, or route readiness approval is added by this verdict.
+
+CorrespondenceAvailable now obtains imprisonment through PrisonBlocks using both the actual EtudesTree fact and saved native history.
+A retained fact blocks while unfinished, Playing, or CompletionInProgress, regardless of the saved dictionary having already published Completed.
+Started or pending recorded imprisonment also blocks when no live fact is available.
+Completed history without a retained prison fact and never-imprisoned history remain eligible for the other independent prerequisites.
+The actor, romance, personality, finale, and death checks are otherwise unchanged.
+
+The corrected tests build actual EntityFactsManager and EtudesTree objects, insert the prison fact into native fact storage, and verify that GetFact resolves that exact object.
+They reproduce the dictionary Completed plus Playing/CompletionInProgress interval through the new adapter instead of substituting a boolean result.
+The transition now blocks as required.
+They additionally cover deactivated but completing, unfinished dormant, completed but still-playing, started history, missing live fact, fully completed history, and no imprisonment.
+
+I copied the corrected production source and submitted tests into a separate isolated harness at `C:/Users/Z/AppData/Local/Temp/nurah-observer-independent-fixed/`.
+I retained the fourteen independent provenance/history checks from the first review alongside the eleven new submitted adapter assertions.
+Both production and runner builds complete with zero warnings and errors.
+The combined run passes all 55 assertions.
+No shared assembly or test output was overwritten.
+
+A further native lifecycle check matters when interpreting the test fixtures.
+Freshly decompiled Etude.FinishCompletion sets IsCompleted but does not clear CompletionInProgress.
+EtudesTree.MaybeDeactivateCompletedEtudes subsequently removes completed facts and preserves completed history through InternalMarkCompleted.
+The representative ordinary released state is therefore the tested completed-history/no-retained-fact case.
+The test's retained completed/non-completing fact is an additional permissive consistency case, not a claim that native FinishCompletion creates that exact combination.
+Conservatively blocking the still-retained completing fact until cleanup avoids the original early release without permanently blocking the normal cleaned-up state.
+
+The earlier full Game/Unity entry-point, consent, native-claim, placement, and live contact limits remain unchanged.
+The corrected observer and its focused tests can proceed to shared managed-runner adoption; later movement work needs its own independent review.
