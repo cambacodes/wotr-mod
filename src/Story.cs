@@ -120,6 +120,11 @@ namespace Tirabade
         public bool Optional;
         // E6: a one-node companion/NPC reaction to a Trickster device (story_format.reaction).
         public bool Reaction;
+        // ER-2: a Trickster device scene is reachable while its relationship's detected unavailable state still holds
+        // (before the return is recorded). TricksterState names the relationship's TricksterAccess entry; when omitted,
+        // the entry whose Device is this scene is used, else every entry of the relationship.
+        public bool TricksterDevice;
+        public string? TricksterState;
         public string[] Requires = Array.Empty<string>();
         public string[] RequiresAny = Array.Empty<string>();
         public string[][] RequiresAnyGroups = Array.Empty<string[]>();
@@ -287,11 +292,25 @@ namespace Tirabade
             && (!scene.ForbidOverrides.TryGetValue(flag, out var overrideFlag) || !state.Has(overrideFlag));
 
         // E2: a held UnavailableFlag blocks unless the relationship's authored return flag overrides it.
-        // The device scene that performs the return necessarily Requires the overridable state itself; that
-        // explicit requirement is the only other exemption, and only for flags the relationship declares overridable.
+        // ER-2: a TricksterDevice scene also ignores the unavailable flags its TricksterAccess state detects, and nothing else.
         public static bool Blocks(Relationship relationship, string flag, Snapshot state, Scene? scene = null) => state.Has(flag)
-            && !(relationship.UnavailableOverrides.TryGetValue(flag, out var returned)
-                && (state.Has(returned) || scene != null && scene.Requires.Contains(flag)));
+            && !(relationship.UnavailableOverrides.TryGetValue(flag, out var returned) && state.Has(returned))
+            && !(scene != null && scene.TricksterDevice && DeviceDetects(relationship, scene).Contains(flag));
+
+        // The unavailable flags a device scene is built to serve: its TricksterAccess state's detect keys ("!" = absent, ignored).
+        public static IEnumerable<string> DeviceDetects(Relationship relationship, Scene scene)
+        {
+            IEnumerable<TricksterAccess> entries;
+            if (scene.TricksterState != null)
+                entries = relationship.TricksterAccess.TryGetValue(scene.TricksterState, out var named) ? new[] { named } : Array.Empty<TricksterAccess>();
+            else
+            {
+                var own = relationship.TricksterAccess.Values.Where(entry => entry.Device == scene.Id).ToArray();
+                entries = own.Length > 0 ? own : relationship.TricksterAccess.Values;
+            }
+            return entries.SelectMany(entry => entry.Detect).Where(key => !key.StartsWith("!", StringComparison.Ordinal))
+                .Intersect(relationship.UnavailableFlags);
+        }
 
         // Journal failure follows the same return: an overridden unavailable flag no longer fails the objective.
         public static bool Failed(Relationship relationship, Snapshot state) =>
@@ -502,9 +521,10 @@ namespace Tirabade
             {
                 if (pair.Value.UnavailableOverrides == null) throw new InvalidOperationException("UnavailableOverrides cannot be null: " + pair.Key);
                 foreach (var entry in pair.Value.UnavailableOverrides)
+                    // ER-1: the value is an authored flag, a latch or a Story.Derived composite; never native or runtime-owned.
                     if (!pair.Value.UnavailableFlags.Contains(entry.Key) || string.IsNullOrWhiteSpace(entry.Value) || entry.Key == entry.Value
-                        || !authoredFlags.Contains(entry.Value) || story.Latches.ContainsKey(entry.Value) || nativeKeys.Contains(entry.Value)
-                        || derivedFlags.Contains(entry.Value) || pair.Value.UnavailableFlags.Contains(entry.Value)
+                        || !authoredFlags.Contains(entry.Value) && !story.Derived.ContainsKey(entry.Value) || nativeKeys.Contains(entry.Value)
+                        || derivedFlags.Contains(entry.Value) || IsReservedKey(entry.Value) || pair.Value.UnavailableFlags.Contains(entry.Value)
                         || story.Relationships.Values.Any(r => r.ClosedFlag == entry.Value))
                         throw new InvalidOperationException("Invalid unavailable override (key must be one of the relationship's UnavailableFlags, value an authored return flag): "
                             + pair.Key + "/" + entry.Key);
@@ -533,7 +553,7 @@ namespace Tirabade
                 // or a closure). The override value must be authored: never native, runtime-derived or a closure.
                 foreach (var pair in scene.ForbidOverrides)
                     if (!scene.Forbids.Contains(pair.Key) || authoredFlags.Contains(pair.Key) == nativeKeys.Contains(pair.Key)
-                        || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) || pair.Key == pair.Value
+                        || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) || IsReservedKey(pair.Value) || pair.Key == pair.Value
                         || story.Relationships.Values.Any(r => r.ClosedFlag == pair.Key || r.ClosedFlag == pair.Value)
                         || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Value))
                         throw new InvalidOperationException("Invalid authored forbid override: " + scene.Id + "/" + pair.Key);
@@ -567,6 +587,7 @@ namespace Tirabade
                     throw new InvalidOperationException("Invalid retained-return aftermath: " + scene.Id);
                 if (scene.AfterDeparture != null) ValidateDepartureVisit(story, scene);
                 if (scene.Reaction) ValidateReaction(story, scene);
+                if (scene.TricksterDevice || scene.TricksterState != null) ValidateDevice(story, scene);
                 foreach (var target in EntryTargets(scene))
                     if (!Guid.TryParseExact(target, "N", out _)) throw new InvalidOperationException("Invalid dialogue attachment: " + scene.Id + "/" + target);
                 foreach (var area in scene.Areas)
@@ -625,6 +646,24 @@ namespace Tirabade
                 || choices.SelectMany(choice => choice.Set).Any(flag => flag == own.ClosedFlag || others.Contains(flag))
                 || scene.Forbids.Concat(choices.SelectMany(choice => choice.Forbids)).Any(others.Contains))
                 throw new InvalidOperationException("Invalid reaction (one node; never closes or touches another relationship): " + scene.Id);
+        }
+
+        // ER-2: a device scene needs the Trickster power (live for setups, latched for payoffs), declared access, and a
+        // choice that records the device (the return, a primer or a cost).
+        private static void ValidateDevice(Story story, Scene scene)
+        {
+            var relationship = story.Relationships[scene.Relationship];
+            var records = new HashSet<string>(relationship.TricksterAccess.Values.Select(entry => entry.Returned).OfType<string>()
+                .Concat(relationship.UnavailableOverrides.Values));
+            bool Records(string flag) => records.Contains(flag) || flag.Contains(".trickster.primed")
+                || flag.Contains(".trickster.returned") || flag.Contains(".trickster.cost.");
+            if (!scene.TricksterDevice || relationship.TricksterAccess.Count == 0 || scene.Reaction
+                || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                || scene.TricksterState != null && !relationship.TricksterAccess.ContainsKey(scene.TricksterState)
+                || !scene.Requires.Contains("trickster") && !scene.Requires.Contains("trickster.ever")
+                || !scene.Nodes.SelectMany(node => node.Choices).SelectMany(choice => choice.Set).Any(Records))
+                throw new InvalidOperationException("Invalid Trickster device (needs TricksterAccess, trickster or trickster.ever, "
+                    + "and a choice setting the return, primed or cost flag): " + scene.Id);
         }
 
         // E5: native answer effects are whitelisted and shaped like their native counterparts.

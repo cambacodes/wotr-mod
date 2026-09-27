@@ -50,7 +50,7 @@ def norm_scene(s):
              Remote=False, ManualOnly=False, InteractionHub=None, Recovery=None, AfterRecovery=None,
              AfterDeparture=None, ContactUnit=None, AdditionalContactUnits=[], MinChapter=1, MaxChapter=5,
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
-             ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False)
+             ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", "")
@@ -86,6 +86,17 @@ def entry_targets(s):
         if s["Owner"] == "Irabeth": return [IRABETH_LIST]
         if s["Owner"] == "Together": return [ANEVIA_LIST, IRABETH_LIST]
     raise ValueError("No dialogue attachment points for %s (%s)" % (s["Id"], s["Owner"]))
+
+
+def device_detects(rel, s):
+    """ER-2: unavailable flags a TricksterDevice scene ignores (mirrors Rules.DeviceDetects)."""
+    acc = rel.get("TricksterAccess") or {}
+    if s.get("TricksterState") is not None:
+        entries = [acc[s["TricksterState"]]] if s["TricksterState"] in acc else []
+    else:
+        entries = [e for e in acc.values() if e.get("Device") == s["Id"]] or list(acc.values())
+    keys = {k for e in entries for k in e.get("Detect", []) if not k.startswith("!")}
+    return keys & set(rel.get("UnavailableFlags", []))
 
 
 def next_nodes(c):
@@ -281,7 +292,8 @@ class Reach:
             if rec and f == rec.get("DeathFlag"): continue
             if s["AfterDeparture"] == "irabeth" and f == "irabeth_gone": continue
             ov = (rel.get("UnavailableOverrides") or {}).get(f)
-            if ov and (self.possible(ov, ch) or f in s["Requires"]): continue   # E2: an authored return (or the device scene itself) lifts this block
+            if ov and self.possible(ov, ch): continue   # E2: an authored return can lift this block
+            if s["TricksterDevice"] and f in device_detects(rel, s): continue   # ER-2: the device serving this state
             if self.forced(f, ch): return "unavailable-forced:" + f
         if s["Relationship"] == "tirabade" and self.chaptered and not is_remote(s) and ch == 4: return "tirabade-ch4"
         return None
@@ -560,8 +572,9 @@ def validate(model):
         if k not in model.etudes: errs.append("Unknown permanent etude: " + k)
     for k, r in rels.items():
         for a, b in (r.get("UnavailableOverrides") or {}).items():
-            if (a not in r.get("UnavailableFlags", []) or b == a or b not in model.authored or b in model.native
-                    or b in model.derived or b in r.get("UnavailableFlags", []) or any(x["ClosedFlag"] == b for x in rels.values())):
+            if (a not in r.get("UnavailableFlags", []) or b == a or (b not in model.authored and b not in model.latches and b not in model.composites)
+                    or b in model.native or b in model.builtin_derived or b.startswith(("rrt.degraded.", "served.", "hour.", "revive."))
+                    or b in r.get("UnavailableFlags", []) or any(x["ClosedFlag"] == b for x in rels.values())):
                 errs.append("Invalid unavailable override %s/%s" % (k, a))
     known = model.authored | set(model.native) | model.builtin_derived | set(model.latches) | set(model.composites)
     for k, groups in model.composites.items():
@@ -589,6 +602,16 @@ def validate(model):
         if s["InteractionHub"] is not None and not is_nurah_hub(s): errs.append("Invalid Nurah hub contract: " + sid)
         if s["Relationship"] == "nurah" and not is_remote(s) and not is_nurah_hub(s): errs.append("Physical Nurah scene without hub: " + sid)
         if s["ManualOnly"] and not is_remote(s): errs.append("ManualOnly non-remote: " + sid)
+        if s["TricksterDevice"] or s["TricksterState"] is not None:
+            rel = rels.get(s["Relationship"], {})
+            acc = rel.get("TricksterAccess") or {}
+            rec = {e.get("Returned") for e in acc.values()} | set((rel.get("UnavailableOverrides") or {}).values())
+            sets = [f for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]]
+            if (not s["TricksterDevice"] or not acc or s["Reaction"] or is_epilogue(s)
+                    or (s["TricksterState"] is not None and s["TricksterState"] not in acc)
+                    or not ({"trickster", "trickster.ever"} & set(s["Requires"]))
+                    or not any(f in rec or ".trickster.primed" in f or ".trickster.returned" in f or ".trickster.cost." in f for f in sets)):
+                errs.append("Invalid Trickster device: " + sid)
         if s["Reaction"]:
             own = rels.get(s["Relationship"], {})
             others = {f for k, r in rels.items() if k != s["Relationship"] for f in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"])}

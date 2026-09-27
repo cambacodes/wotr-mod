@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Tirabade;
 
-// E2: Relationship.UnavailableOverrides lets an authored Trickster return lift one UnavailableFlag.
+// E2: Relationship.UnavailableOverrides lets an authored Trickster return lift one UnavailableFlag; ER-1 widens the value
+// to latches and Story.Derived keys; ER-2 lets a TricksterDevice scene serve the detected state before the return.
 // Includes TT-02's acceptance: a returned character stays available after TricksterMythicPathFailed; setups vanish.
 internal static class UnavailableOverrideTests
 {
@@ -18,8 +19,12 @@ internal static class UnavailableOverrideTests
         irabeth.UnavailableOverrides["irabeth_dead"] = "irabeth.trickster.returned";
         story.Etudes["irabeth_gone"] = "fedcba9876543210fedcba9876543210";
         story.Etudes["trickster.failed"] = "256f3c081f21ed84fb3612465a76944b"; // TricksterMythicPathFailed
-        // The payoff is the device scene that defies the death: it requires the native death explicitly.
-        story.Scenes.Single(s => s.Id == "irabeth.trickster.dead.payoff").Requires = new[] { "trickster.ever", "irabeth.trickster.primed", "irabeth_dead" };
+        // The payoff is the device scene that defies the death (ER-2): it serves the "dead" access state.
+        irabeth.TricksterAccess["irabeth_dead"] = new TricksterAccess { Detect = new[] { "irabeth_dead" },
+            Device = "irabeth.trickster.dead.payoff", Returned = "irabeth.trickster.returned" };
+        var payoff = story.Scenes.Single(s => s.Id == "irabeth.trickster.dead.payoff");
+        payoff.Requires = new[] { "trickster.ever", "irabeth.trickster.primed", "irabeth_dead" };
+        payoff.TricksterDevice = true;
         // A physical Chapter 5 visit that needs her actual presence.
         story.Scenes.Add(new Scene
         {
@@ -62,11 +67,26 @@ internal static class UnavailableOverrideTests
         check(!Rules.Available(story, Get("irabeth.trickster.dead.visit"), dead), "Physical visit available before the return.");
         check(Rules.Failed(irabeth, dead), "Death without a return does not fail the journal objective.");
         check(Rules.Blocks(irabeth, "irabeth_dead", dead), "Death does not block before the return.");
-        // Without a declared override, requiring the death does not lift it.
+        // Only a declared device scene is exempt: merely requiring the death does not lift it.
         var plain = Fixture();
-        plain.Relationships["irabeth"].UnavailableOverrides.Clear();
+        plain.Scenes.Single(s => s.Id == "irabeth.trickster.dead.payoff").TricksterDevice = false;
         check(!Rules.Available(plain, plain.Scenes.Single(s => s.Id == "irabeth.trickster.dead.payoff"), dead),
-            "A scene bypassed an undeclared unavailable flag by requiring it.");
+            "A non-device scene bypassed an unavailable flag by requiring it.");
+        // The device ignores only its detected flag: departure and closure still block it.
+        foreach (string blocker in new[] { "irabeth_gone", "irabeth.closed" })
+        {
+            var blocked = Program.Copy(dead);
+            blocked.Flags.Add(blocker);
+            check(!Rules.Available(story, Get("irabeth.trickster.dead.payoff"), blocked), "Device bypasses an undetected blocker: " + blocker);
+        }
+        // TricksterState selects exactly one access entry.
+        var named = Fixture();
+        named.Relationships["irabeth"].TricksterAccess["irabeth_gone"] = new TricksterAccess { Detect = new[] { "irabeth_gone" } };
+        var namedPayoff = named.Scenes.Single(s => s.Id == "irabeth.trickster.dead.payoff");
+        namedPayoff.TricksterState = "irabeth_gone";
+        Rules.Validate(named);
+        check(Rules.DeviceDetects(named.Relationships["irabeth"], namedPayoff).SequenceEqual(new[] { "irabeth_gone" })
+            && !Rules.Available(named, namedPayoff, dead), "TricksterState did not restrict the device to its named state.");
 
         // Returned: the death stops blocking, including the physical contact guard.
         dead.Flags.Add("irabeth.trickster.returned");
@@ -112,9 +132,34 @@ internal static class UnavailableOverrideTests
         Invalid("unwritten value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "irabeth.never_written");
         Invalid("native value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "trickster.was");
         Invalid("runtime-derived value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "loss");
-        Invalid("latch value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "trickster.ever");
+        Invalid("reserved value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "served.irabeth");
         Invalid("closed-flag value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "irabeth.closed");
         Invalid("self value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "irabeth_dead");
         Invalid("another unavailable flag as value", s => s.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "irabeth_gone");
+        // ER-1: latch and Story.Derived values are accepted; the composite lifts the flag when it holds.
+        var latched = Fixture();
+        latched.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "trickster.ever";
+        Rules.Validate(latched);
+        var composite = Fixture();
+        composite.Derived["irabeth.defeated_not_dead"] = new[] { new[] { "irabeth_dead", "trickster.ever", "irabeth.trickster.primed" } };
+        composite.Relationships["irabeth"].UnavailableOverrides["irabeth_dead"] = "irabeth.defeated_not_dead";
+        Rules.Validate(composite);
+        var world = new Snapshot { Chapter = 5, Hour = 3000 };
+        world.Flags.UnionWith(new[] { "irabeth_dead", "trickster.ever", "irabeth.trickster.primed" });
+        Rules.Complete(composite, world);
+        check(Rules.Available(composite, composite.Scenes.Single(s => s.Id == "irabeth.ordinary"), world), "ER-1: a Derived override value does not lift the flag.");
+        void InvalidDevice(string what, Action<Scene, Story> mutate)
+        {
+            var bad = Fixture();
+            mutate(bad.Scenes.Single(s => s.Id == "irabeth.trickster.dead.payoff"), bad);
+            bool rejected = false;
+            try { Rules.Validate(bad); } catch (InvalidOperationException) { rejected = true; }
+            check(rejected, "Invalid Trickster device accepted: " + what);
+        }
+        InvalidDevice("no Trickster power", (d, _) => d.Requires = new[] { "irabeth.trickster.primed", "irabeth_dead" });
+        InvalidDevice("records nothing", (d, _) => d.Nodes[0].Choices[0].Set = new[] { "irabeth.other" });
+        InvalidDevice("unknown state", (d, _) => d.TricksterState = "irabeth_missing");
+        InvalidDevice("no access declared", (_, s) => s.Relationships["irabeth"].TricksterAccess.Clear());
+        InvalidDevice("reaction device", (d, _) => d.Reaction = true);
     }
 }
