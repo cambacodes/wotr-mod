@@ -153,6 +153,10 @@ namespace Tirabade
                 var targets = story.Scenes.SelectMany(Rules.EntryTargets).Distinct().ToDictionary(id => id, Get<BlueprintAnswersList>);
                 var epilogue = Get<BlueprintCueSequence>("ed4baeaf69394754902344f0598d7e5a");
                 var aeon = Get<BlueprintCueSequence>("ced82f299d246f448b48afa0b630dd70");
+                var expanded = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2b9424b1b93e4d0896b0958db79d2339"));
+                if (expanded != null && !(expanded is BlueprintCueSequence))
+                    throw new InvalidOperationException("Optional parent epilogue has the wrong type: 2b9424b1b93e4d0896b0958db79d2339");
+                var expandedEpilogue = expanded as BlueprintCueSequence;
                 parentEndings = ParentEndingIntegration.Prepare(story, epilogue, aeon, Get<SimpleBlueprint>,
                     id => New<BlueprintCue>(id), () => initialized && enabled ? State() : null);
                 foreach (var pair in story.Etudes) etudes.Add(pair.Key, Get<BlueprintEtude>(pair.Value));
@@ -184,7 +188,9 @@ namespace Tirabade
                     if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
                     {
                         var sequence = scene.Owner == "AeonEpilogue" ? aeon : epilogue;
-                        sequence.Cues.Add(Ref<BlueprintCueBaseReference>(Get<BlueprintBookPage>(GuidFor("page." + scene.Id + "." + scene.Nodes[0].Id).ToString())));
+                        var page = Ref<BlueprintCueBaseReference>(Get<BlueprintBookPage>(GuidFor("page." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
+                        sequence.Cues.Add(page);
+                        if (scene.Owner != "AeonEpilogue") expandedEpilogue?.Cues.Add(page);
                         continue;
                     }
                     if (Rules.IsRemote(scene)) continue;

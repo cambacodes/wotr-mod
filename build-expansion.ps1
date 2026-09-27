@@ -5,6 +5,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $previousPython = $env:RRT_PYTHON
 $previousBindings = $env:RRT_PARENT_BINDINGS
+$previousExpandedEpilogue = $env:RRT_TEST_EXPANDED_EPILOGUE
 Push-Location $PSScriptRoot
 try {
     $GameDir = (Resolve-Path -LiteralPath $GameDir).Path
@@ -27,8 +28,11 @@ try {
     if ($LASTEXITCODE) { throw 'Expansion native binding validation failed' }
     & $dotnetPath build managed-tests/ManagedBuildTests.csproj -c Release --nologo -v quiet "-p:GameDir=$GameDir/"
     if ($LASTEXITCODE) { throw 'Managed verification build failed' }
-    & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe $GameDir development/Story.json
-    if ($LASTEXITCODE) { throw 'Expansion managed construction validation failed' }
+    foreach ($fixtureMode in @('0', '1', 'wrong-type')) {
+        $env:RRT_TEST_EXPANDED_EPILOGUE = $fixtureMode
+        & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe $GameDir development/Story.json
+        if ($LASTEXITCODE) { throw "Expansion managed construction validation failed: optional epilogue $fixtureMode" }
+    }
     if ((Get-FileHash -LiteralPath 'development/Story.json').Hash -ne $validatedStoryHash) {
         throw 'Expansion story changed during validation; rebuild before packaging'
     }
@@ -85,5 +89,6 @@ try {
 } finally {
     $env:RRT_PYTHON = $previousPython
     $env:RRT_PARENT_BINDINGS = $previousBindings
+    $env:RRT_TEST_EXPANDED_EPILOGUE = $previousExpandedEpilogue
     Pop-Location
 }

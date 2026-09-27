@@ -178,6 +178,18 @@ internal static class Program
             ParentEndingIntegrationTests.CheckPreflight(story, Check);
             foreach (var pair in sequences) originalCues[pair.Key] = pair.Value.Cues.ToArray();
         }
+        BlueprintCueSequence? expandedEpilogue = null;
+        BlueprintCueBaseReference[] expandedOriginal = Array.Empty<BlueprintCueBaseReference>();
+        bool invalidExpandedEpilogue = Environment.GetEnvironmentVariable("RRT_TEST_EXPANDED_EPILOGUE") == "wrong-type";
+        if (invalidExpandedEpilogue) Seed<BlueprintCue>("2b9424b1b93e4d0896b0958db79d2339");
+        if (Environment.GetEnvironmentVariable("RRT_TEST_EXPANDED_EPILOGUE") == "1")
+        {
+            // The reviewed parent creates this optional sequence from the same page references.
+            // Its plugin-owned caller graph is not installed and is not simulated here.
+            expandedEpilogue = Seed<BlueprintCueSequence>("2b9424b1b93e4d0896b0958db79d2339");
+            expandedOriginal = sequences[sequenceIds[0]].Cues.ToArray();
+            expandedEpilogue.Cues.AddRange(expandedOriginal);
+        }
         var entry = new UnityModManager.ModEntry(new UnityModManager.ModInfo { Id = "ManagedBuildTests", Version = "1.0.0", ManagerVersion = "0.27.11" }, modDirectory);
         Type main = typeof(Tirabade.Main);
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
@@ -186,12 +198,31 @@ internal static class Program
         KonomiMeetingIntegrationTests.PrepareNativePlacement();
         IrabethMeetingIntegrationTests.PrepareNativePlacement();
         build.Invoke(null, null);
+        if (invalidExpandedEpilogue)
+        {
+            Check(!(bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Invalid optional epilogue initialized the addon.");
+            Check(((string?)main.GetField("error", PrivateStatic)!.GetValue(null))?.Contains("Optional parent epilogue has the wrong type") == true,
+                "Invalid optional epilogue did not fail its type preflight.");
+            Check(((List<SimpleBlueprint>)main.GetField("registered", PrivateStatic)!.GetValue(null)!).Count == 0,
+                "Invalid optional epilogue created addon blueprints before failing.");
+            Check(sequences.All(pair => pair.Value.Cues.SequenceEqual(originalCues[pair.Key])), "Failed preflight changed native sequences.");
+            Check(answerLists.All(pair => pair.Value.Answers.SequenceEqual(originalAnswers[pair.Key])), "Failed preflight changed native answers.");
+            Console.WriteLine($"PASS: {checks} assertions; wrong-type optional epilogue rejected before mutation.");
+            return 0;
+        }
         KonomiMeetingIntegrationTests.Run(Check);
         IrabethMeetingIntegrationTests.Run(Check);
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
         if (hasParentEndingRules) ParentEndingIntegrationTests.Run(story, Check);
         EndingDeliveryTests.Run(story, Id, Check);
+        if (expandedEpilogue != null)
+        {
+            Check(expandedEpilogue.Cues.Take(expandedOriginal.Length).SequenceEqual(expandedOriginal),
+                "Optional epilogue changes existing parent page references.");
+            Check(expandedEpilogue.Cues.Select(reference => reference.Guid).SequenceEqual(sequences[sequenceIds[0]].Cues.Select(reference => reference.Guid)),
+                "Optional epilogue omits or reorders addon endings.");
+        }
         var contacts = (Dictionary<string, BlueprintUnit>)main.GetField("contactUnits", PrivateStatic)!.GetValue(null)!;
         var expectedContacts = story.Scenes.Where(s => s.ContactUnit != null)
             .SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)).Distinct().ToArray();
@@ -342,10 +373,13 @@ internal static class Program
         var registeredBefore = registered.ToArray();
         var answersBefore = answerLists.ToDictionary(pair => pair.Key, pair => pair.Value.Answers.ToArray());
         var cuesBefore = sequences.ToDictionary(pair => pair.Key, pair => pair.Value.Cues.ToArray());
+        var expandedBefore = expandedEpilogue?.Cues.ToArray();
         build.Invoke(null, null);
         Check(registered.SequenceEqual(registeredBefore), "Second Build creates duplicate blueprints");
         Check(answerLists.All(pair => pair.Value.Answers.SequenceEqual(answersBefore[pair.Key])), "Second Build duplicates answers");
         Check(sequences.All(pair => pair.Value.Cues.SequenceEqual(cuesBefore[pair.Key])), "Second Build duplicates epilogues");
+        if (expandedEpilogue != null) Check(expandedEpilogue.Cues.SequenceEqual(expandedBefore!), "Second Build duplicates optional epilogue pages.");
+        Console.WriteLine("Optional Expanded Epilogue fixture: " + (expandedEpilogue == null ? "absent" : "present; parent reference preservation and attachment checked, external caller graph not executed"));
         Console.WriteLine($"PASS: {checks} assertions; real Main.Build, {story.Scenes.Count} scenes, {registered.Count} generated blueprints, {targetIds.Length} native answer lists, 1 native Aeon sequence and 1 parent-mod sentinel sequence, idempotence.");
         Console.WriteLine("DLL SHA256 " + Hash(typeof(Tirabade.Main).Assembly.Location));
         Console.WriteLine("Story SHA256 " + Hash(storyPath));
