@@ -238,6 +238,21 @@ namespace Tirabade
                 if (expanded != null && !(expanded is BlueprintCueSequence))
                     warnings.Add("Optional parent epilogue has the wrong type: 2b9424b1b93e4d0896b0958db79d2339; it is ignored.");
                 var expandedEpilogue = expanded as BlueprintCueSequence;
+                // E14a: native sequence targets. A missing sequence or anchor disables only the relationships that use it.
+                var nativeSequences = new Dictionary<string, BlueprintCueSequence>();
+                foreach (var scene in story.Scenes.Where(s => s.EpilogueSequence != null))
+                {
+                    string name = scene.EpilogueSequence!;
+                    if (!nativeSequences.TryGetValue(name, out var target))
+                    {
+                        target = Resolve<BlueprintCueSequence>(Rules.PlayerFinalChoice, "Native epilogue sequence " + name)!;
+                        if (target != null) nativeSequences.Add(name, target);
+                    }
+                    if (target == null || !target.Cues.Any(reference => reference.Guid == BlueprintGuid.Parse(scene.EpilogueAfter!)))
+                        Degrade(scene.Relationship, "native epilogue anchor " + scene.EpilogueAfter + " for " + scene.Id + " is missing from " + name);
+                }
+                if (nativeSequences.Count > 0 && Harmony.HasAnyPatches("RanEpilogue"))
+                    warnings.Add("RanEpilogue is installed and patches epilogues; pages placed in PlayerFinalChoice may interleave with its changes.");
                 foreach (var pair in story.Etudes)
                     if (Resolve<BlueprintEtude>(pair.Value, "Etude " + pair.Key) is BlueprintEtude e) etudes.Add(pair.Key, e); else missingKeys.Add(pair.Key);
                 foreach (var pair in story.CompletedQuests)
@@ -375,12 +390,14 @@ namespace Tirabade
                     if (degraded.Contains(scene.Relationship)) continue;
                     if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
                     {
-                        var sequence = scene.Owner == "AeonEpilogue" ? aeon : epilogue;
+                        var sequence = scene.EpilogueSequence != null ? nativeSequences.TryGetValue(scene.EpilogueSequence, out var native) ? native : null
+                            : scene.Owner == "AeonEpilogue" ? aeon : epilogue;
                         if (sequence == null || !parentAttached && parentOwned.Contains(scene.Relationship)) continue;
                         var page = Ref<BlueprintCueBaseReference>(Get<BlueprintBookPage>(GuidFor("page." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
                         if (!InsertEpiloguePage(sequence.Cues, page, scene.EpilogueAfter))
                             warnings.Add("Epilogue anchor " + scene.EpilogueAfter + " is not in the sequence; " + scene.Id + " was appended.");
-                        if (scene.Owner != "AeonEpilogue" && expandedEpilogue != null) InsertEpiloguePage(expandedEpilogue.Cues, page, scene.EpilogueAfter);
+                        if (scene.Owner != "AeonEpilogue" && scene.EpilogueSequence == null && expandedEpilogue != null)
+                            InsertEpiloguePage(expandedEpilogue.Cues, page, scene.EpilogueAfter);
                         continue;
                     }
                     if (Rules.IsRemote(scene) || scene.InteractionHub != null) continue;

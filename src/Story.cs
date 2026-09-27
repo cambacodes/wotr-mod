@@ -183,6 +183,8 @@ namespace Tirabade
         // ER-3: an epilogue page placed right after this native page or cue of its sequence (authored order among pages
         // sharing an anchor); appended as before when the anchor is not a member of the sequence.
         public string? EpilogueAfter;
+        // E14a: an epilogue page placed in a native sequence instead of the RanRomance one ("PlayerFinalChoice").
+        public string? EpilogueSequence;
         // E13: native effects on the scene's entry answer (the one injected into a native answer list), as E5 does for choices.
         public string? EntryMythic;
         public AlignmentChoice? EntryAlignment;
@@ -555,6 +557,14 @@ namespace Tirabade
             return steps.ToArray();
         }
 
+        // E14a: native epilogue sequences a page may target, with the anchors (member pages) it may follow.
+        public const string PlayerFinalChoice = "a3096e5b145badb448827a7336d86d02";
+        public static readonly Dictionary<string, string[]> NativeEpilogueSequences = new Dictionary<string, string[]>
+        {
+            // CueSequence_PlayerFinalChoice: after BookPage_0147 (Trickster ending) or BookPage_0115 (Wound closed).
+            ["PlayerFinalChoice"] = new[] { "fb42f8bd123bf1f40a448f6dbc66cbbe", "8f234537d0e0e504ba7fa281f02a3601" },
+        };
+
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
 
@@ -785,6 +795,11 @@ namespace Tirabade
                     || scene.EntryAlignment != null && (!AlignmentDirections.Contains(scene.EntryAlignment.Direction)
                         || scene.EntryAlignment.Value <= 0 || scene.EntryAlignment.Value > 100)))
                     throw new InvalidOperationException("Invalid entry mythic/alignment (physical entry answers only; Mythic and AlignmentShiftDirection names): " + scene.Id);
+                if (scene.EpilogueSequence != null && (!NativeEpilogueSequences.TryGetValue(scene.EpilogueSequence, out var anchors)
+                    || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue"
+                    || scene.EpilogueAfter == null || !anchors.Contains(scene.EpilogueAfter)))
+                    throw new InvalidOperationException("Invalid native epilogue sequence (PlayerFinalChoice, non-Aeon epilogue page, anchored after "
+                        + "BookPage_0147 or BookPage_0115): " + scene.Id);
                 if (scene.EpilogueAfter != null && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || !Guid.TryParseExact(scene.EpilogueAfter, "N", out var anchor) || anchor == Guid.Empty))
                     throw new InvalidOperationException("EpilogueAfter needs an epilogue page and a native page or cue GUID: " + scene.Id);

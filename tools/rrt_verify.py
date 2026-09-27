@@ -55,7 +55,7 @@ def norm_scene(s):
              AfterDeparture=None, ContactUnit=None, AdditionalContactUnits=[], MinChapter=1, MaxChapter=5,
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
              ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None,
-             EpilogueAfter=None, EntryMythic=None, EntryAlignment=None)
+             EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", "")
@@ -1265,7 +1265,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             except ValueError: pass
             for g in s["Areas"]: want.append((g, "BlueprintArea", "Area@" + s["Id"]))
             if s["NativeReturnCue"]: want.append((s["NativeReturnCue"], "BlueprintCue", "NativeReturnCue@" + s["Id"]))
-            if s["EpilogueAfter"]: want.append((s["EpilogueAfter"], "BlueprintCueBase", "EpilogueAfter@" + s["Id"]))   # a cue or a book page
+            if s["EpilogueAfter"] and not s["EpilogueAfter"].startswith("scene:"):
+                want.append((s["EpilogueAfter"], "BlueprintCueBase", "EpilogueAfter@" + s["Id"]))   # a cue or a book page
+            if s["EpilogueSequence"]: want.append(("a3096e5b145badb448827a7336d86d02", "BlueprintCueSequence", "EpilogueSequence@" + s["Id"]))
             for n in s["Nodes"]:
                 for c in n["Choices"]:
                     if c["NativeNext"]: want.append((c["NativeNext"], "BlueprintCue", "NativeNext@%s/%s" % (s["Id"], n["Id"])))

@@ -352,6 +352,7 @@ internal static class Program
         NativeCostTests.Run(Check);
         EntryEffectTests.Run(Check);
         PresenceTests.Run(Check);
+        NativeEpilogueTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);
