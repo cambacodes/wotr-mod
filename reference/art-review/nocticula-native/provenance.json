@@ -1,0 +1,87 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "bundle_sha256": "96675554f6e7865d69530950486cdf42c1f28cc8c37df473f855f123aedc045d",
+  "method": "Native Texture2D extraction, no image editing",
+  "textures": [
+    {
+      "name": "d4ccbced666f39c468306baee424116c_BCT_NocticulaPriestess",
+      "path_id": -8234043660409928158,
+      "width": 184,
+      "height": 244,
+      "file": "d4ccbced666f39c468306baee424116c_BCT_NocticulaPriestess.png",
+      "sha256": "11025c0058dfb21a39bacb0f9017d246a31229179d6d6cafc1252aa2081ff90c"
+    },
+    {
+      "name": "49d43d30d0e93fc4d9c5be517921326f_BCT_NocticulaCaptain",
+      "path_id": -4654388325098312769,
+      "width": 184,
+      "height": 244,
+      "file": "49d43d30d0e93fc4d9c5be517921326f_BCT_NocticulaCaptain.png",
+      "sha256": "b9c9e5eb659b3d32bfb88b940409f08e956b2a782688f4507bc4d54124664f5f"
+    },
+    {
+      "name": "NocticulaFemaleDemonlord_Portrait",
+      "path_id": -3185489396986863177,
+      "width": 184,
+      "height": 244,
+      "file": "NocticulaFemaleDemonlord_Portrait.png",
+      "sha256": "eb0d16e013ad54724f9950777738bc51b1974cea9c010bb5e16a75aba0926f7a"
+    },
+    {
+      "name": "NocticulaFemaleDemonlord_Half",
+      "path_id": -2877553783121864952,
+      "width": 332,
+      "height": 432,
+      "file": "NocticulaFemaleDemonlord_Half.png",
+      "sha256": "5c93dae5aa1f48c7384ead790aa98d400f9ae367e1578ec6f43a901d6309b336"
+    },
+    {
+      "name": "BCT_NocticulaPriestess",
+      "path_id": 3391656865692513203,
+      "width": 188,
+      "height": 244,
+      "file": "BCT_NocticulaPriestess.png",
+      "sha256": "672a2f7506a402c1f6e3d86567545b13b2033c4d47a438159a002768464acc52"
+    },
+    {
+      "name": "NocticulaFemaleDemonlord",
+      "path_id": 6490634452410532060,
+      "width": 692,
+      "height": 1024,
+      "file": "NocticulaFemaleDemonlord.png",
+      "sha256": "096f66a4715ac49302022d979faad7788e8ee416004bf53d3ca2d7546338e778"
+    }
+  ],
+  "container_links": [
+    {
+      "container": "028c1ddc366a97c428e579bb46c9cdfc",
+      "path_id": 6490634452410532060,
+      "type": "Texture2D"
+    },
+    {
+      "container": "028c1ddc366a97c428e579bb46c9cdfc",
+      "path_id": 6447742083899151720,
+      "type": "Sprite"
+    },
+    {
+      "container": "20a9146a1424d2e4db37046d22893148",
+      "path_id": -3185489396986863177,
+      "type": "Texture2D"
+    },
+    {
+      "container": "20a9146a1424d2e4db37046d22893148",
+      "path_id": 3787913173826744820,
+      "type": "Sprite"
+    },
+    {
+      "container": "45ca322332a5682459d2dcaec7e642bd",
+      "path_id": -2877553783121864952,
+      "type": "Texture2D"
+    },
+    {
+      "container": "45ca322332a5682459d2dcaec7e642bd",
+      "path_id": 1811825669329759822,
+      "type": "Sprite"
+    }
+  ]
+}
