@@ -24,6 +24,7 @@ from storylines import aranka_continuation
 from storylines import konomi_contact, konomi_political_consequence
 from storylines import konomi_missed_contact
 from storylines import konomi_retained_return
+from storylines import konomi_return_invitation
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
 from storylines import gesmerha_campaign
@@ -231,6 +232,8 @@ def make_expansion(*, independent_tirabade=True):
     )
     first_konomi = next(i for i, scene in enumerate(payload["Scenes"]) if scene.get("Relationship") == "konomi")
     payload["Scenes"][first_konomi:first_konomi] = copy.deepcopy(konomi_retained_return.SCENES)
+    payload["Scenes"][first_konomi:first_konomi] = copy.deepcopy(konomi_return_invitation.SCENES)
+    konomi_return_invitation.integrate(payload)
     payload["Revivals"].update(copy.deepcopy(konomi_retained_return.REVIVALS))
     payload["Relationships"]["konomi"]["UnavailableFlags"].append(konomi_retained_return.DEAD)
     payload["Relationships"]["konomi"]["Description"] = (
@@ -239,7 +242,8 @@ def make_expansion(*, independent_tirabade=True):
     )
     payload["Relationships"]["konomi"]["Guidance"] += (
         " If Konomi has died and her body remains in Drezen, a Trickster can investigate a possible return "
-        "through the available events. Visits afterward require her to be well enough and available to meet. "
+        "through the available events. After her return, allow half a day before sending a personal letter. "
+        "Accept her reply to arrange the first visit. Visits require her to be well enough and available to meet. "
         "A return does not reverse an earlier refusal or restore her office."
     )
     return payload

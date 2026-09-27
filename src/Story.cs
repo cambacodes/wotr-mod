@@ -180,7 +180,8 @@ namespace Tirabade
             || story.StartedDialogs.ContainsKey(flag)
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
-            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available";
+            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available"
+            || flag == "konomi.return_correspondence_available";
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
@@ -229,10 +230,10 @@ namespace Tirabade
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
             var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
-                "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available" }
+                "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
-                "konomi.retained_dead", "konomi.return_contact_available" });
+                "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available" });
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")
@@ -297,8 +298,10 @@ namespace Tirabade
                     throw new InvalidOperationException("Konomi's retained return requires one unambiguous terminal request per scene: " + scene.Id);
                 if (scene.AfterRecovery != null && (scene.AfterRecovery != "konomi" || scene.Recovery != null
                     || !story.Revivals.ContainsKey("konomi") || scene.Relationship != "konomi"
-                    || scene.ContactUnit != "ca2d58c5c65723945857e04fb85d30ce"
-                    || !scene.Requires.Contains("konomi.retained_return_confirmed") || !scene.Requires.Contains("konomi.return_contact_available")))
+                    || !scene.Requires.Contains("konomi.retained_return_confirmed")
+                    || (scene.ContactUnit == null
+                        ? !IsRemote(scene) || !scene.Requires.Contains("konomi.return_correspondence_available")
+                        : scene.ContactUnit != "ca2d58c5c65723945857e04fb85d30ce" || !scene.Requires.Contains("konomi.return_contact_available"))))
                     throw new InvalidOperationException("Invalid retained-return aftermath: " + scene.Id);
                 foreach (var target in EntryTargets(scene))
                     if (!Guid.TryParseExact(target, "N", out _)) throw new InvalidOperationException("Invalid dialogue attachment: " + scene.Id + "/" + target);
@@ -314,7 +317,7 @@ namespace Tirabade
                     foreach (var choice in node.Choices)
                     {
                         if (choice.Set.Any(flag => flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
-                            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available"))
+                            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available" || flag == "konomi.return_correspondence_available"))
                             throw new InvalidOperationException("Native contact observation cannot be authored: " + scene.Id);
                         if (choice.Revive == "konomi" && !choice.Set.SequenceEqual(new[] { "konomi.retained_return_confirmed" })
                             || choice.Set.Contains("konomi.retained_return_confirmed") && choice.Revive != "konomi")

@@ -13996,6 +13996,171 @@
       }
     },
     {
+      "Id": "konomi.return_letter",
+      "Title": "A reply in her own hand",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You have written Lady Konomi's name on a fresh sheet. The map lies folded beneath a paperweight. It has contributed nothing to the letter, though one corner has tried to lift itself twice.{/n}\n{n}There is a great deal you could ask her. You begin with a question she can answer without explaining what happened to her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask whether she would welcome a short personal visit.]",
+              "Next": "request",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Send your good wishes without asking her to receive you.]",
+              "Next": "good_wishes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put the unfinished letter aside for now.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "request",
+          "Speaker": "Narrator",
+          "Text": "{n}You keep the request brief. You would like to see her when she feels able, and there is no need to send an immediate answer. You add that you can bring the map if she wishes to inspect the instrument of your argument.{/n}\n{n}Her reply arrives folded around your own letter. Your final sentence has acquired a small mark in the margin.{/n}\n{n}\"I am pleased to discover that the map has not been appointed to manage my correspondence. Please keep it occupied elsewhere for the present. I have questions for you before I have questions for a piece of paper.\"{/n}\n{n}Beneath that, in slightly less even handwriting, she has written another paragraph.{/n}",
+          "Choices": [
+            {
+              "Text": "[Read the rest of her reply.]",
+              "Next": "reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "reply",
+          "Speaker": "Narrator",
+          "Text": "{n}\"I would welcome a short visit in Drezen. I shall sit down, and you may tell me what you attempted without turning it into a report for the council. If I become tired, I shall say so. Please believe me before I have to become diplomatic about it.\"{/n}\n{n}There is a pause in the ink before the last line.{/n}\n{n}\"I find that I would rather hear your voice than read another account of myself.\"{/n}\n{n}She has signed the letter herself. You recognize the care with which she has made the final stroke, even though the pen has pressed harder than the flourish requires.{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept the short visit she has offered.]",
+              "Next": "accept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Reply that you will leave her these quiet hours.]",
+              "Next": "decline",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep her reply while you consider whether to visit.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "accept",
+          "Speaker": "Narrator",
+          "Text": "{n}You send a short acceptance. The map begins to unfold as you reach for the seal. You put the paperweight back.{/n}\n{n}Konomi's reply has settled one question. She would like to see you. The visit itself must wait until she is able to receive you and Drezen's other demands leave the hour free.{/n}\n{n}You keep her letter where you will find it again. There is no title beneath her signature, and no request for you to supply one.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the appointment as a personal visit.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_meeting_accepted"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "decline",
+          "Speaker": "Narrator",
+          "Text": "{n}You thank her for the invitation and write that you will leave her the quiet time. Her answer is a single line.{/n}\n{n}\"Very well. I intend to make disgracefully little use of it.\"{/n}\n{n}You set the note beside the map. For once, neither has anything further to add.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave the visit unarranged.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_visit_declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "good_wishes",
+          "Speaker": "Narrator",
+          "Text": "{n}You write that you are glad she is alive and that she need not account for her recovery to you. You stop before adding an invitation disguised as a question about her health.{/n}\n{n}Her reply thanks you for the letter. She has underlined one word in her own sentence.{/n}\n{n}\"I am discovering that rest requires a certain determination. Fortunately, I possess some.\"{/n}\n{n}The paper carries no appointment. You leave it that way.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let the good wishes stand on their own.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_visit_declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "konomi.retained_return_confirmed",
+        "konomi.return_correspondence_available"
+      ],
+      "Forbids": [
+        "konomi.retained_dead",
+        "inhuman",
+        "konomi.return_first_words"
+      ],
+      "DelayHours": 12,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "AfterRecovery": "konomi",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
       "Id": "konomi.retained_inquiry",
       "Title": "An objection to the last line",
       "Owner": "Konomi",
@@ -14696,7 +14861,8 @@
       ],
       "Requires": [
         "konomi.retained_return_confirmed",
-        "konomi.return_contact_available"
+        "konomi.return_contact_available",
+        "konomi.return_meeting_accepted"
       ],
       "Forbids": [
         "konomi.retained_dead",
@@ -95363,7 +95529,7 @@
       "Title": "Letters without a seal",
       "Description": "Lady Konomi's official duties and private choices do not always lead in the same direction. There may be more to learn in our conversations.",
       "Objective": "Make time for Lady Konomi",
-      "Guidance": "Speak to Konomi in Drezen between meetings while she holds her post. If she is dismissed, a Trickster may find another way to send a personal invitation. After she answers, allow time for letters and private visits, and look for them after resting in Drezen. Her political convictions continue even when the conversation becomes personal. Before her council appointment begins, a Trickster can seek a personal introduction during a quiet rest in Drezen. Keep her reply and arrange the meeting she offers. A later council appointment pauses these private visits while she holds the office. If Konomi has died and her body remains in Drezen, a Trickster can investigate a possible return through the available events. Visits afterward require her to be well enough and available to meet. A return does not reverse an earlier refusal or restore her office.",
+      "Guidance": "Speak to Konomi in Drezen between meetings while she holds her post. If she is dismissed, a Trickster may find another way to send a personal invitation. After she answers, allow time for letters and private visits, and look for them after resting in Drezen. Her political convictions continue even when the conversation becomes personal. Before her council appointment begins, a Trickster can seek a personal introduction during a quiet rest in Drezen. Keep her reply and arrange the meeting she offers. A later council appointment pauses these private visits while she holds the office. If Konomi has died and her body remains in Drezen, a Trickster can investigate a possible return through the available events. After her return, allow half a day before sending a personal letter. Accept her reply to arrange the first visit. Visits require her to be well enough and available to meet. A return does not reverse an earlier refusal or restore her office.",
       "StartedFlag": "konomi.started",
       "ClosedFlag": "konomi.closed",
       "CommittedFlag": "konomi.committed",

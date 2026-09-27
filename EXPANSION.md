@@ -28,7 +28,7 @@ The user's earlier instruction to proceed without previews remains applicable.
 
 ## Current development checkpoint
 
-The integrated development export has 537 scenes across 15 route groups covering 14 of the 37 planned characters.
+The integrated development export has 538 scenes across 15 route groups covering 14 of the 37 planned characters.
 These counts describe written and integrated material, not completed routes.
 The latest [Vellexia integration checkpoint](reference/parallel/vellexia-campaign-integration-checkpoint.md) records the assembled export, remote-conversation repair, verification and remaining character work.
 Vellexia now has thirty entries with an independently reviewed ordinary correspondence campaign.
@@ -37,7 +37,8 @@ Gesmerha's later living campaign has passed independent review and is integrated
 The [late-campaign checkpoint](reference/parallel/gesmerha-late-campaign-integration-checkpoint.md) records its checks and remaining access requirements.
 Aivu's ordinary Azata friendship campaign has passed independent review and is integrated, with thirty entries and 24,172 distinct counted words.
 Its [integration checkpoint](reference/parallel/aivu-campaign-integration-checkpoint.md) separates that approval from unfinished Trickster guest access and runtime verification.
-Konomi has 74 scenes, with independently reviewed late-career continuity, missed-contact acquisition and four retained-return scenes integrated, and reviewed general and private-evening portraits staged.
+Konomi has 75 scenes, with independently reviewed late-career continuity, missed-contact acquisition, four retained-return scenes and a remote invitation integrated, and reviewed general and private-evening portraits staged.
+The [return-invitation checkpoint](reference/parallel/konomi-return-invitation-integration-checkpoint.md) records the earned first-visit consent gate and the 538-scene checks.
 The [retained-return checkpoint](reference/parallel/konomi-retained-return-integration-checkpoint.md) records the new manuscript, headless checks and unfinished physical meeting access.
 Her earlier 64-scene export is pinned in [the political integration checkpoint](reference/parallel/konomi-political-integration-checkpoint.md).
 That base manuscript passed its assembled editorial review at 91-93 across the reviewed disciplines.
@@ -49,16 +50,17 @@ Its [packaging checkpoint](reference/parallel/expansion-package-checkpoint.md) r
 The [alternative prerequisite implementation](reference/parallel/prerequisite-groups-checkpoint.md) now supports earned access without manufacturing native appointment or dismissal history.
 Konomi's [native observer integration](reference/parallel/konomi-native-observer-integration-checkpoint.md) now supplies positive initial actor evidence and checks retained saved-area loss evidence during later correspondence.
 Her [missed-contact integration](reference/parallel/konomi-missed-contact-integration-checkpoint.md) includes reviewed conditional endings and played coverage of alternate absence and political scenes.
-The last checked local package contains the earlier 533-scene export; the current development export has 537 scenes.
+The last checked local package contains the earlier 533-scene export; the current development export has 538 scenes.
 Native recovery and actual game verification remain separate requirements.
 Arsinoe's approved shop portrait is assigned to all nine pages of her opening counter conversation after independent context review.
 The [Minagho and Chivarro audit](reference/canon-review/minagho-chivarro-integration.md) establishes which parent events and endings must be extended rather than duplicated.
 Their 47-scene continuation has passed [revision 3 literary review](reference/story-review/minagho-chivarro-continuation-third-review.md), with separate credited budgets of 22,278 words for Minagho and 21,991 for Chivarro.
 Chivarro's own arrival and choices are required before any expanded group relationship.
 The [revised ending contract](reference/canon-review/minagho-chivarro-ending-contract-third-review.md) preserves earned reunion, survivor outcomes and original parent selectors.
-This candidate is not in the 537-scene export yet; conditional parent-ending implementation and verification remain required before that integration is complete.
+This candidate is not in the 538-scene export yet; conditional parent-ending implementation and verification remain required before that integration is complete.
 Konomi's [retained-return placement audit](reference/canon-review/konomi-return-placement-audit.md) identifies a temporary personal meeting that can displace only the native hidden fallback without restoring her office.
-Its implementation and independent review are underway; the current export still requires physical contact already supplied by the game.
+Its helper has passed independent engineering review and the accepted remote invitation is integrated.
+Registration, physical delivery and explicit retry integration remain underway; the current export still requires physical contact already supplied by the game.
 The [Irabeth selector witness](reference/canon-review/irabeth-meeting-selector-review.md) proves bounded native claim arbitration, while explicitly leaving actual activation, actor arrival and save persistence unverified.
 
 The user has removed the TTS freeze milestone.

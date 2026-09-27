@@ -176,7 +176,7 @@ internal static class Program
         var known = new HashSet<string>(story.Scenes.Select(s => s.Id)
             .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag }))
             .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
-            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available" }));
+            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available" }));
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
@@ -401,6 +401,7 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) KonomiPrivateConsequenceTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.the_unintroduced_letter")) KonomiMissedContactTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.retained_inquiry")) KonomiRetainedReturnTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "konomi.return_letter")) KonomiReturnInvitationTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) KonomiEarlyReciprocityTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) ArankaContinuationTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) KonomiContactTests.Run(story, Check);

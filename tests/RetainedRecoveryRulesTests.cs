@@ -61,6 +61,29 @@ internal static class RetainedRecoveryRulesTests
         state.Area = "elsewhere";
         check(!Rules.Available(story, after, state), "Retained source meeting escaped its area restriction.");
 
+        var letter = Page("konomi.return_letter_fixture");
+        letter.AfterRecovery = "konomi";
+        letter.Requires = new[] { "konomi.retained_return_confirmed", "konomi.return_correspondence_available" };
+        story.Scenes.Add(letter);
+        Rules.Validate(story);
+        state.Area = capital;
+        state.AvailableContacts.Clear();
+        state.Flags.Remove("konomi.return_contact_available");
+        check(!Rules.Available(story, letter, state), "A saved return checkpoint manufactured current correspondence.");
+        state.Flags.Add("konomi.return_correspondence_available");
+        check(Rules.Available(story, letter, state) && Rules.ContactAvailable(story, letter, state),
+            "Verified living hidden Konomi cannot answer a remote invitation after a prior refusal.");
+        check(!Rules.Available(story, after, state) && !Rules.Available(story, ordinary, state),
+            "Correspondence proof substituted for physical arrival or reopened ordinary romance.");
+        state.Flags.Remove("konomi.return_correspondence_available");
+        check(!Rules.ContactAvailable(story, letter, state), "A remote reply ignored lost current life/contact evidence.");
+        state.Flags.Add("konomi.return_correspondence_available");
+        state.Flags.Remove("konomi.retained_return_confirmed");
+        check(!Rules.Available(story, letter, state), "Unconfirmed restoration admitted correspondence.");
+        state.Flags.Add("konomi.retained_return_confirmed");
+        state.Area = "elsewhere";
+        check(!Rules.Available(story, letter, state), "Retained correspondence escaped its loaded source area.");
+
         void Reject(Action change, Action restoreValue, string description)
         {
             change();
@@ -82,7 +105,14 @@ internal static class RetainedRecoveryRulesTests
             "Retained restoration omitted current Trickster authorization.");
         Reject(() => after.Nodes[0].Choices[0].Set = new[] { "konomi.return_contact_available" }, () => after.Nodes[0].Choices[0].Set = Array.Empty<string>(),
             "Authored choice manufactured native contact evidence.");
-        foreach (string reserved in new[] { "konomi.retained_dead", "konomi.return_contact_available", "konomi.retained_return_confirmed" })
+        Reject(() => letter.Requires = new[] { "konomi.retained_return_confirmed" },
+            () => letter.Requires = new[] { "konomi.retained_return_confirmed", "konomi.return_correspondence_available" },
+            "Remote aftercare accepted stale proof without current correspondence evidence.");
+        Reject(() => { letter.Remote = false; letter.Owner = "Konomi"; },
+            () => { letter.Remote = true; letter.Owner = "Memory"; }, "A physical conversation used the remote correspondence exception.");
+        Reject(() => letter.ContactUnit = unit, () => letter.ContactUnit = null,
+            "Physical contact metadata accepted correspondence in place of arrival evidence.");
+        foreach (string reserved in new[] { "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available", "konomi.retained_return_confirmed" })
         {
             Reject(() => ordinary.Id = reserved, () => ordinary.Id = "konomi.ordinary_fixture", "Scene completion manufactured reserved evidence: " + reserved);
             Reject(() => story.Relationships["konomi"].StartedFlag = reserved, () => story.Relationships["konomi"].StartedFlag = "konomi.started",
@@ -96,6 +126,8 @@ internal static class RetainedRecoveryRulesTests
             () => attempt.Nodes[0].Choices.RemoveAt(1), "Ambiguous identical saved request choices were accepted.");
         state.Area = capital;
         state.Flags.Add("konomi.retained_dead");
+        check(!Rules.Available(story, letter, state) && !Rules.ContactAvailable(story, letter, state),
+            "A later death failed to stop return correspondence.");
         check(!Rules.Available(story, ordinary, state) && !Rules.Available(story, after, state), "A later retained death was ignored after verified recovery.");
         check(!Rules.Available(story, attempt, state), "A later death without recovery eligibility reused an old request.");
         var options = new JsonSerializerOptions { IncludeFields = true };

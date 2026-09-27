@@ -367,6 +367,7 @@ namespace Tirabade
                     if (KonomiRecovery.CanRequest()) state.Flags.Add("revive.konomi.available");
                     if (KonomiRecovery.RetainedDead()) state.Flags.Add("konomi.retained_dead");
                     if (KonomiRecovery.ReturnContactAvailable()) state.Flags.Add("konomi.return_contact_available");
+                    if (KonomiRecovery.ReturnCorrespondenceAvailable()) state.Flags.Add("konomi.return_correspondence_available");
                 }
                 else if (Fate.CanRevive(revival.Value)) state.Flags.Add("revive." + revival.Key + ".available");
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");

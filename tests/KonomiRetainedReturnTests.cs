@@ -73,6 +73,16 @@ internal static class KonomiRetainedReturnTests
                 verified.Flags.UnionWith(new[] { "konomi.retained_return_confirmed", contact });
                 verified.AvailableContacts.Add(unit);
                 verified.Flags.Remove("trickster"); verified.Flags.Add("legend");
+                var letter = story.Scenes.SingleOrDefault(scene => scene.Id == "konomi.return_letter");
+                if (letter != null)
+                {
+                    check(!Rules.Available(story, first, verified), "Physical aftercare bypassed Konomi's reply.");
+                    verified.Flags.Add("konomi.return_correspondence_available");
+                    verified.Times["konomi.retained_return_confirmed"] = verified.Hour;
+                    verified.Hour += 12;
+                    check(Rules.Available(story, letter, verified), "Verified return cannot request the first visit.");
+                    verified = Program.Walk(letter, verified).Single(state => state.Has("konomi.return_meeting_accepted"));
+                }
                 check(Rules.Available(story, first, verified), "Verified return cannot receive aftercare after an earned Legend transition.");
                 foreach (string needed in new[] { "konomi.retained_return_confirmed", contact })
                 {

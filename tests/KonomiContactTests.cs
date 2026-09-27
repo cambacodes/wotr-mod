@@ -23,7 +23,7 @@ internal static class KonomiContactTests
             "ending_distance_ascended_open", "ending_distance_lived", "ending_distance_open_lived" };
         var scenes = story.Scenes.Where(s => s.Relationship == "konomi").ToArray();
         excluded = excluded.Concat(new[] { "the_unintroduced_letter", "the_answer_she_addressed", "the_courtyard_introduction",
-            "ending_missed_declined", "ending_missed_interrupted", "ending_missed_interrupted_aeon", "retained_inquiry", "retained_attempt" }
+            "ending_missed_declined", "ending_missed_interrupted", "ending_missed_interrupted_aeon", "retained_inquiry", "retained_attempt", "return_letter" }
             .Where(id => scenes.Any(s => s.Id == "konomi." + id))).ToArray();
         var aftercare = new[] { "return_first_words", "return_second_visit" }
             .Where(id => scenes.Any(s => s.Id == "konomi." + id)).ToArray();

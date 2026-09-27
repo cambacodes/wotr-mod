@@ -42,6 +42,16 @@ namespace Tirabade
 
         internal static string? RequestedAction() => Read()?.Request;
 
+        internal static bool ReturnCorrespondenceAvailable()
+        {
+            try
+            {
+                return TryLoaded(out var actor, out _) && HasVerifiedReturn(actor!)
+                    && actor!.State.IsConscious && !actor.Suppressed;
+            }
+            catch { return false; }
+        }
+
         internal static bool ReturnContactAvailable()
         {
             try
