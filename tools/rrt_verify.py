@@ -59,6 +59,7 @@ def norm_scene(s):
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", ""); n.setdefault("Paragraphs", [])
+        n.setdefault("SpeakerUnit", None)
         n.setdefault("Choices", [])
         for c in n["Choices"]:
             for k, v in dict(Text="Continue", Next=None, Abort=False, Revive=None, Check=None, Set=[], Requires=[],
@@ -1280,6 +1281,8 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             if s["NativeReturnCue"]: want.append((s["NativeReturnCue"], "BlueprintCue", "NativeReturnCue@" + s["Id"]))
             if s["EpilogueAfter"] and not s["EpilogueAfter"].startswith("scene:"):
                 want.append((s["EpilogueAfter"], "BlueprintCueBase", "EpilogueAfter@" + s["Id"]))   # a cue or a book page
+            for n in s["Nodes"]:
+                if n.get("SpeakerUnit"): want.append((n["SpeakerUnit"], "BlueprintUnit", "SpeakerUnit@%s/%s" % (s["Id"], n["Id"])))
             if s["EpilogueSequence"]: want.append(("a3096e5b145badb448827a7336d86d02", "BlueprintCueSequence", "EpilogueSequence@" + s["Id"]))
             for n in s["Nodes"]:
                 for c in n["Choices"]:

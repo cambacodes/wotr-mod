@@ -220,6 +220,9 @@ namespace Tirabade
         public List<Choice> Choices = new List<Choice>();
         // E14c: epilogue pages only. Conditional paragraphs appended after the node text, in order (the native BookPage idiom).
         public List<Paragraph> Paragraphs = new List<Paragraph>();
+        // E14f: who speaks this node's cue in a native dialog: a BlueprintUnit GUID, or Speaker "conversant" for the dialog's
+        // conversant. Only inline cues (NativeReturnCue, ReturnToList, ContinueBefore) use it; book pages stay narrated.
+        public string? SpeakerUnit;
     }
 
     public sealed class Paragraph
@@ -871,6 +874,9 @@ namespace Tirabade
                         || string.IsNullOrWhiteSpace(node.Text) && !node.Paragraphs.Any(p => ParagraphAlwaysShown(scene, p))))
                         throw new InvalidOperationException("Invalid paragraphs (epilogue pages only; a textless node needs a paragraph its scene's Requires always show): "
                             + scene.Id + "/" + node.Id);
+                    if (node.SpeakerUnit != null && (!Guid.TryParseExact(node.SpeakerUnit, "N", out var speaker) || speaker == Guid.Empty
+                        || node.Speaker == "conversant"))
+                        throw new InvalidOperationException("Invalid speaker unit (a BlueprintUnit GUID, not combined with \"conversant\"): " + scene.Id + "/" + node.Id);
                     if (!nodes.Add(node.Id) || string.IsNullOrWhiteSpace(node.Text) && !paragraphs || node.Choices.Count == 0)
                         throw new InvalidOperationException("Invalid node: " + scene.Id + "/" + node.Id);
                 }

@@ -52,8 +52,12 @@ def p(text, requires=(), forbids=(), any_groups=()):
     return dict(Text=text.strip(), Requires=list(requires), Forbids=list(forbids), AnyGroups=[list(g) for g in any_groups])
 
 
-def n(id, speaker, text, *choices, portrait="", paragraphs=()):
+def n(id, speaker, text, *choices, portrait="", paragraphs=(), speaker_unit=None):
+    """speaker="conversant" (the native dialog's conversant) or speaker_unit="<BlueprintUnit guid>" (E14f) give an inline cue a
+    native speaker; paragraphs=(p(...), ...) are E14c epilogue paragraphs."""
     node = dict(Id=id, Speaker=speaker, Text=text.strip(), Choices=list(choices) or [c()], Portrait=portrait)
+    if speaker_unit is not None:
+        node["SpeakerUnit"] = speaker_unit
     if paragraphs:
         node["Paragraphs"] = list(paragraphs)
     return node

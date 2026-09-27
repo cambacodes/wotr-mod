@@ -504,8 +504,8 @@ namespace Tirabade
                 cue.Conditions = Conditions();
                 cue.OnShow = Actions();
                 cue.OnStop = Actions();
-                cue.Speaker = inline && nativeReturn != null && node.Speaker == scene.Owner
-                    ? nativeReturn.Speaker : new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
+                cue.Speaker = inline ? InlineSpeaker(node, nativeReturn != null && node.Speaker == scene.Owner ? nativeReturn.Speaker : null)
+                    : new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
                 cue.TurnSpeaker = false;
                 cue.Continue = Cues();
                 cue.Text = Text("cue." + id, node.Text);
@@ -696,6 +696,7 @@ namespace Tirabade
                 foreach (var node in scene.Nodes)
                 {
                     CueSetup(out var cue, "cue." + prefix + "." + node.Id, node.Text);
+                    cue.Speaker = InlineSpeaker(node, null);
                     local.Add(node.Id, cue);
                 }
                 foreach (var node in scene.Nodes)
@@ -721,6 +722,24 @@ namespace Tirabade
                 if (scene.EntryMythic != null || scene.EntryAlignment != null)
                     ConfigureNativeEffects(entryAnswer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
             }
+        }
+
+        // E14f: a named unit (its portrait/name, camera untouched), the dialog's conversant, or the scene's default.
+        // A unit that does not resolve falls back to the default rather than show a wrong portrait.
+        internal static DialogSpeaker InlineSpeaker(Node node, DialogSpeaker? fallback)
+        {
+            if (node.SpeakerUnit != null)
+            {
+                if (ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(node.SpeakerUnit)) is BlueprintUnit unit)
+                {
+                    var speaker = new DialogSpeaker { NoSpeaker = false, MoveCamera = false };
+                    Field(speaker, "m_Blueprint", Ref<BlueprintUnitReference>(unit));
+                    return speaker;
+                }
+                warnings.Add("Speaker unit " + node.SpeakerUnit + " is missing; node " + node.Id + " is narrated.");
+            }
+            else if (node.Speaker == "conversant") return new DialogSpeaker { NoSpeaker = false, MoveCamera = false };
+            return fallback ?? new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
         }
 
         private static void CueSetup(out BlueprintCue cue, string name, string text)
