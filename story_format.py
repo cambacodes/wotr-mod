@@ -65,7 +65,9 @@ def n(id, speaker, text, *choices, portrait="", paragraphs=(), speaker_unit=None
 
 def scene(id, title, owner, chapter, entry, nodes, requires=(), forbids=(), delay=0, last=5, optional=False, **extra):
     """One scene. Common **extra fields: Relationship, AnswerLists, Remote, Areas, Chapters, ContactUnit, ForbidOverrides,
-    NativeReturnCue, RequiresAnyGroups, TricksterDevice / TricksterState (ER-2), EpilogueAfter (ER-3), and E13 entry effects:
+    NativeReturnCue, RequiresAnyGroups, TricksterDevice / TricksterState (ER-2), EpilogueAfter (ER-3; "scene:<id>" E14h),
+    EpilogueSequence="PlayerFinalChoice" (E14a), ReturnToList=True + ReturnText (E14b), ContinueBefore=dict(Cue=, Parents=[]) (E14e),
+    and E13 entry effects:
     EntryMythic="PlayerIsTrickster" (a Mythic enum name) and EntryAlignment=dict(Direction="Chaotic", Value=1) put the native
     mythic requirement/icon + achievement counter and an AlignmentShift on the entry answer of a physical scene."""
     return dict(Id=id, Title=title, Owner=owner, MinChapter=chapter, MaxChapter=last,
