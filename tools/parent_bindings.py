@@ -15,7 +15,7 @@ def load_parent_bindings(path):
     if actual.lower() != manifest["AssemblySha256"].lower():
         raise ValueError("Parent assembly differs from reviewed binding evidence")
     allowed = {"BlueprintEtude", "BlueprintCue", "BlueprintDialog", "BlueprintAnswer",
-               "BlueprintAnswersList", "BlueprintQuest", "BlueprintUnit", "BlueprintCueSequence"}
+               "BlueprintAnswersList", "BlueprintQuest", "BlueprintUnit", "BlueprintCueSequence", "BlueprintBookPage"}
     result = {}
     for item in manifest["Bindings"]:
         guid = item["Guid"]

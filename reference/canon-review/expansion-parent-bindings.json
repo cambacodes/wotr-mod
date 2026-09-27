@@ -175,6 +175,1790 @@
       "Type": "BlueprintCue",
       "Source": "RanRomance.Aran.AranBook03End.Configure",
       "Evidence": "string text2 = \"b18d250fa2fb4fdf9fe4eba04e9d1655\";\nCueConfigurator.New(Cue0001Name, text2)"
+    },
+    {
+      "Guid": "0a8411c2cb0a44f1ab317ed425f6ec94",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text3 = \"0a8411c2cb0a44f1ab317ed425f6ec94\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions3).SetText(\"RanRomMinaSlide0003Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0003Cue0002.Text",
+      "OriginalTextSha256": "F1DDF8BFFCBC2BCBF0C671D0191CAF97DF3008C852D249830038172850E6E6D0",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "0b1b31d7125547219daa747eba45a063",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text11 = \"0b1b31d7125547219daa747eba45a063\";\nCueConfigurator.New(Cue0000Name, text11).SetConditions(conditions11).SetText(\"RanRomMinaSlide0005Cue0000.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005Cue0000",
+      "OriginalTextKey": "RanRomMinaSlide0005Cue0000.Text",
+      "OriginalTextSha256": "AB38F0B04FB8E224137EF8256F2D277DDE0FBBD83A16B55399348E73737571F0",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "PageCueIndex": 9
+    },
+    {
+      "Guid": "18d22b6258a24fe29dd9d0ea4235432e",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0004.Configure",
+      "Evidence": "string text9 = \"18d22b6258a24fe29dd9d0ea4235432e\";\nCueConfigurator.New(Cue0008Name, text9).SetConditions(conditions9).SetText(\"RanRomMinaSlide0004Cue0008.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0004Cue0008",
+      "OriginalTextKey": "RanRomMinaSlide0004Cue0008.Text",
+      "OriginalTextSha256": "9890532C9BED86FA6306F4874D9EC324D1B43D96855AD940A9361727BD34FF52",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "5a5865ceca0e42049288351a76b18ba9",
+      "PageCueIndex": 7
+    },
+    {
+      "Guid": "19099aba216e46e98d446709c3f2e0f3",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03End.Configure",
+      "Evidence": "string text2 = \"19099aba216e46e98d446709c3f2e0f3\";\nCueConfigurator.New(Cue0001Name, text2).SetConditions(conditions).SetText(\"RanRomMinaBook03EndCue0001.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03EndCue0001",
+      "OriginalTextKey": "RanRomMinaBook03EndCue0001.Text",
+      "OriginalTextSha256": "FA6BEF2B284A6A6A0EAA95C79C58AC13C131E075C25CBB64BEBF3216D4C799C1",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "f9c0ac1a434e450293c244ffc6a54a9f",
+      "PageCueIndex": 0
+    },
+    {
+      "Guid": "1980e50e5e204431bf643fbad487909f",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0008.Configure",
+      "Evidence": "string text3 = \"1980e50e5e204431bf643fbad487909f\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions3).SetText(\"RanRomMinaSlide0008Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0008Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0008Cue0002.Text",
+      "OriginalTextSha256": "AB38F0B04FB8E224137EF8256F2D277DDE0FBBD83A16B55399348E73737571F0",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "3792457f35734d75a4d4b53055f7f5d0",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "19fd9027465f4cbebe949b26d04a2826",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text9 = \"19fd9027465f4cbebe949b26d04a2826\";\nCueConfigurator.New(Cue0008Name, text9).SetConditions(conditions10).SetText(\"RanRomMinaSlide0001Cue0008.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0008",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0008.Text",
+      "OriginalTextSha256": "26C95CE5701EE598C3EB45AACF549E4674E1A260A92F41C5441DA2EEE6A9387B",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 7
+    },
+    {
+      "Guid": "1e6ca1514807446ea2fddd65e4f5bcc8",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaSanctuary\", \"1e6ca1514807446ea2fddd65e4f5bcc8\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaSanctuary"
+    },
+    {
+      "Guid": "286434b491b74174a97dfd2d7344f57a",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0004.Configure",
+      "Evidence": "string text3 = \"286434b491b74174a97dfd2d7344f57a\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions3).SetText(\"RanRomMinaSlide0004Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0004Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0004Cue0002.Text",
+      "OriginalTextSha256": "56FD4D6914EADB4E5DA7542B162922CD2D3D9EF98E07D3857699D4C4535AF106",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "5a5865ceca0e42049288351a76b18ba9",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "2cd9538f67f7414d808d9032386f6be9",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text7 = \"2cd9538f67f7414d808d9032386f6be9\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions7).SetText(\"RanRomMinaSlide0005Cue0006.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005Cue0006",
+      "OriginalTextKey": "RanRomMinaSlide0005Cue0006.Text",
+      "OriginalTextSha256": "3CCFF98D483D33AB192B412C28AFC3E5667EF83C10D203172BCA8AD9F1C31C4C",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "PageCueIndex": 5
+    },
+    {
+      "Guid": "341b62dd58d14906959d3262b12f1a43",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03End.Configure",
+      "Evidence": "string text7 = \"341b62dd58d14906959d3262b12f1a43\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions7).SetText(\"RanRomMinaBook03EndCue0006.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03EndCue0006",
+      "OriginalTextKey": "RanRomMinaBook03EndCue0006.Text",
+      "OriginalTextSha256": "5A1C514C99750652EBB1BF1D1B1E78F0A41ED0F879C98097447DCF2028B4E849",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "f9c0ac1a434e450293c244ffc6a54a9f",
+      "PageCueIndex": 5
+    },
+    {
+      "Guid": "3b8d47b3c9694002aff26510ac4dedf0",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text11 = \"3b8d47b3c9694002aff26510ac4dedf0\";\nCueConfigurator.New(Cue0000Name, text11).SetConditions(conditions11).SetText(\"RanRomMinaSlide0002Cue0000.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0000",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0000.Text",
+      "OriginalTextSha256": "AC1B295CAEF2938B8F56B837D7242CB330626F36B00F69B860EEA6F8366E82ED",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 9
+    },
+    {
+      "Guid": "3d21fa8120d040338ec1d4b8461fa536",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaCult\", \"3d21fa8120d040338ec1d4b8461fa536\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaCult"
+    },
+    {
+      "Guid": "3d4137f1cf98459f996ef1da83737cdb",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0004.Configure",
+      "Evidence": "string text7 = \"3d4137f1cf98459f996ef1da83737cdb\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions7).SetText(\"RanRomMinaSlide0004Cue0006.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0004Cue0006",
+      "OriginalTextKey": "RanRomMinaSlide0004Cue0006.Text",
+      "OriginalTextSha256": "56FD4D6914EADB4E5DA7542B162922CD2D3D9EF98E07D3857699D4C4535AF106",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "5a5865ceca0e42049288351a76b18ba9",
+      "PageCueIndex": 5
+    },
+    {
+      "Guid": "4a29c758798d47a1a32f506d1ca6081b",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaBanner\", \"4a29c758798d47a1a32f506d1ca6081b\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaBanner"
+    },
+    {
+      "Guid": "4dbb41f1fb134b90ab3900dc05488e8f",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03End.Configure",
+      "Evidence": "string text5 = \"4dbb41f1fb134b90ab3900dc05488e8f\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions5).SetText(\"RanRomMinaBook03EndCue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03EndCue0004",
+      "OriginalTextKey": "RanRomMinaBook03EndCue0004.Text",
+      "OriginalTextSha256": "6B456DC6E1C8F6E572EA47AE6A538CC0793B51956C1AE433466A9AFDB2E0457C",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "f9c0ac1a434e450293c244ffc6a54a9f",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "51104e1c8755436e8aa290a6cedfcb3a",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text12 = \"51104e1c8755436e8aa290a6cedfcb3a\";\nCueConfigurator.New(Cue0011Name, text12).SetConditions(conditions12).SetText(\"RanRomMinaSlide0002Cue0011.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0011",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0011.Text",
+      "OriginalTextSha256": "A9C9159B20BEEEB891F1D0C751546159249E4CB6181851EFE12E75F24B9697BB",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 10
+    },
+    {
+      "Guid": "5584da70433e4f079d521d40ce77f230",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03End.Configure",
+      "Evidence": "string text3 = \"5584da70433e4f079d521d40ce77f230\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions3).SetText(\"RanRomMinaBook03EndCue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03EndCue0002",
+      "OriginalTextKey": "RanRomMinaBook03EndCue0002.Text",
+      "OriginalTextSha256": "756D48D4C2F7DA41AC639FBF45B634F67CD9860FBFB5DD5E77F5729780E817CE",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "f9c0ac1a434e450293c244ffc6a54a9f",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "5831af75932d43ed902a2d8def2adf3d",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0006.Configure",
+      "Evidence": "string text7 = \"5831af75932d43ed902a2d8def2adf3d\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions6).SetText(\"RanRomMinaSlide0006Cue0006.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0006Cue0006",
+      "OriginalTextKey": "RanRomMinaSlide0006Cue0006.Text",
+      "OriginalTextSha256": "3E84E2B55EBD21C24E1817E18D127F4E1ADE0A86FE3F06A0EF3117901AFB0D40",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "01677da8df6e42c6b4803ceef524b1fe",
+      "PageCueIndex": 5
+    },
+    {
+      "Guid": "58557969a797441983022c8ba0400400",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaDemon\", \"58557969a797441983022c8ba0400400\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaDemon"
+    },
+    {
+      "Guid": "592dcdccbef043f58031fa234faf137a",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaRedemption\", \"592dcdccbef043f58031fa234faf137a\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaRedemption"
+    },
+    {
+      "Guid": "59cf28c3824944fd88547bc61bc5cf62",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text12 = \"59cf28c3824944fd88547bc61bc5cf62\";\nCueConfigurator.New(Cue0011Name, text12).SetConditions(conditions13).SetText(\"RanRomMinaSlide0001Cue0011.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0011",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0011.Text",
+      "OriginalTextSha256": "05B0BC9F9F3D3FF6CBF4A16B3F84D96B002F2E3B54C6993B6401A0C4A1E83042",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 10
+    },
+    {
+      "Guid": "5ab5c6a3c62b4f2ba88053cbbbc47737",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text4 = \"5ab5c6a3c62b4f2ba88053cbbbc47737\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions4).SetText(\"RanRomMinaSlide0003Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003Cue0003",
+      "OriginalTextKey": "RanRomMinaSlide0003Cue0003.Text",
+      "OriginalTextSha256": "B1BF0B8DB496EC0C8174900224C5EB4E5DCB467A4B362823F76FF4CB41214DD8",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "5b0a132d97404072b3d664899871d7b7",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text9 = \"5b0a132d97404072b3d664899871d7b7\";\nCueConfigurator.New(Cue0008Name, text9).SetConditions(conditions9).SetText(\"RanRomMinaSlide0005Cue0008.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005Cue0008",
+      "OriginalTextKey": "RanRomMinaSlide0005Cue0008.Text",
+      "OriginalTextSha256": "276C4D117D31DBDF0883983AC9EB5B83D531D0092434666D9749EA2665600AF7",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "PageCueIndex": 7
+    },
+    {
+      "Guid": "5cd5f22437a1465180b45c080899577a",
+      "Type": "BlueprintQuest",
+      "Source": "RanRomance.Mina.MinaQuest.Configure",
+      "Evidence": "string text = \"5cd5f22437a1465180b45c080899577a\";\nQuestConfigurator.New(PageName, text).SetTitle(\"RanRomMinaQuestName.Text\").SetDescription(\"RanRomMinaQuestIntro.Text\")\n\t\t\t.SetCompletionText(\"RanRomMinaQuestOutro.Text\")\n\t\t\t.SetGroup((QuestGroupId)18)\n\t\t\t.SetLastChapter(5)\n\t\t\t.SetType((QuestType)0)\n\t\t\t.AddToObjectives(text2)\n\t\t\t.AddToObjectives(text3)\n\t\t\t.AddToObjectives(text4)\n\t\t\t.Configure();",
+      "Name": "RanRomMinaQuest",
+      "LocalizationKeys": {
+        "SetTitle": "RanRomMinaQuestName.Text",
+        "SetDescription": "RanRomMinaQuestIntro.Text"
+      }
+    },
+    {
+      "Guid": "5db846019acd46ef83f12be220727f50",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0004.Configure",
+      "Evidence": "string text5 = \"5db846019acd46ef83f12be220727f50\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions5).SetText(\"RanRomMinaSlide0004Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0004Cue0004",
+      "OriginalTextKey": "RanRomMinaSlide0004Cue0004.Text",
+      "OriginalTextSha256": "F00FD7786AC17BE721E5C34BE9A03A5BE13EF77FEE9FC7EC349577F7AA62A771",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "5a5865ceca0e42049288351a76b18ba9",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "64afcd565e044e53977e1878444f4ee1",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0006.Configure",
+      "Evidence": "string text4 = \"64afcd565e044e53977e1878444f4ee1\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions3).SetText(\"RanRomMinaSlide0006Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0006Cue0003",
+      "OriginalTextKey": "RanRomMinaSlide0006Cue0003.Text",
+      "OriginalTextSha256": "953B2A171F5841ABF387D3A0E15D5AECEACA33EAE8506E2DAAF71C50D5E7B15F",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "01677da8df6e42c6b4803ceef524b1fe",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "67e3bb3b649d42a4a84115f3c7ac6bf1",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text11 = \"67e3bb3b649d42a4a84115f3c7ac6bf1\";\nCueConfigurator.New(Cue0000Name, text11).SetConditions(conditions11).SetText(\"RanRomMinaSlide0003Cue0000.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003Cue0000",
+      "OriginalTextKey": "RanRomMinaSlide0003Cue0000.Text",
+      "OriginalTextSha256": "C4A68A4CB3B25E4FC13BA3AA0CEABA9A54E5BEBE8E19ADC0893B47FE0ADE3934",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "PageCueIndex": 9
+    },
+    {
+      "Guid": "6eba6f627ac34cf4955c89e5ad59e106",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text3 = \"6eba6f627ac34cf4955c89e5ad59e106\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions3).SetText(\"RanRomMinaSlide0002Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0002.Text",
+      "OriginalTextSha256": "9E61919A7E87BF0EB68630852A7534777FBC08CAD656D96EDC8AF7775E986186",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "784575a522e64ad58f2171abcb073d0c",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0004.Configure",
+      "Evidence": "string text4 = \"784575a522e64ad58f2171abcb073d0c\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions4).SetText(\"RanRomMinaSlide0004Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0004Cue0003",
+      "OriginalTextKey": "RanRomMinaSlide0004Cue0003.Text",
+      "OriginalTextSha256": "27671DBD972F7A282DC933457643200D5E8332F732EF5B296A41189F3042FD73",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "5a5865ceca0e42049288351a76b18ba9",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "7edf5529523a4a9da520138783fdeb93",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text7 = \"7edf5529523a4a9da520138783fdeb93\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions8).SetText(\"RanRomMinaSlide0001Cue0006.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0006",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0006.Text",
+      "OriginalTextSha256": "2A2841C8466B9B5116B4622E356EF2AEE355F0F13D707E0315F0E26EC8321528",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 5
+    },
+    {
+      "Guid": "8009e775a3a343c79ef4e40d72bc5e6a",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text8 = \"8009e775a3a343c79ef4e40d72bc5e6a\";\nCueConfigurator.New(Cue0007Name, text8).SetConditions(conditions8).SetText(\"RanRomMinaSlide0005Cue0007.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005Cue0007",
+      "OriginalTextKey": "RanRomMinaSlide0005Cue0007.Text",
+      "OriginalTextSha256": "C8783B5C5346070F633A8A5CC95C45FB792D39A79E964509D8E2228199710780",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "PageCueIndex": 6
+    },
+    {
+      "Guid": "813cc79c053d4b3e869a0d0ca2f3d85d",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaConscience\", \"813cc79c053d4b3e869a0d0ca2f3d85d\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaConscience"
+    },
+    {
+      "Guid": "819314e916514a498a8e336371b4788e",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text4 = \"819314e916514a498a8e336371b4788e\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions5).SetText(\"RanRomMinaSlide0001Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0003",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0003.Text",
+      "OriginalTextSha256": "D77ED50CCE9DC74F762A34CD8A82DCB90EB695EED641897C2348812763682D53",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "829c837c76f6429fa01d3d2583069b35",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text9 = \"829c837c76f6429fa01d3d2583069b35\";\nCueConfigurator.New(Cue0008Name, text9).SetConditions(conditions9).SetText(\"RanRomMinaSlide0002Cue0008.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0008",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0008.Text",
+      "OriginalTextSha256": "32C11B5B98C025271B2A6E057BD5A29E3C67BFE7606EA62ECABF5ACCC49B9BBE",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 7
+    },
+    {
+      "Guid": "8399dbc5987b462594b2b4168764e269",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0007.Configure",
+      "Evidence": "string text3 = \"8399dbc5987b462594b2b4168764e269\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions2).SetText(\"RanRomMinaSlide0007Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0007Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0007Cue0002.Text",
+      "OriginalTextSha256": "9B10ABAA6B0AB7DDCFA924DD56C77EE85BEF139B87911A98B4385A9AF3C11CB4",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "9c5c5825bf3245d0ae763c6e69ecdc38",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "85b479a3da8a4fa6b602fedf89201695",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0006.Configure",
+      "Evidence": "string text3 = \"85b479a3da8a4fa6b602fedf89201695\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions2).SetText(\"RanRomMinaSlide0006Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0006Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0006Cue0002.Text",
+      "OriginalTextSha256": "1CB2AABD8AA967AD34077B80F4918F0A260740CF5C51E02573D3D28A7CEE43AD",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "01677da8df6e42c6b4803ceef524b1fe",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "92162854b221413984468d2663ffcffb",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text13 = \"92162854b221413984468d2663ffcffb\";\nCueConfigurator.New(Cue0012Name, text13).SetConditions(conditions14).SetText(\"RanRomMinaSlide0001Cue0012.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0012",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0012.Text",
+      "OriginalTextSha256": "9C02358BEB2C4D02D916C9000913ABD24DAEB9D5313D7F31FBCBAE0C9AC05F8B",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 11
+    },
+    {
+      "Guid": "9806218e467f41acb502b52160ab38dd",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text7 = \"9806218e467f41acb502b52160ab38dd\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions7).SetText(\"RanRomMinaSlide0002Cue0006.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0006",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0006.Text",
+      "OriginalTextSha256": "2A9F1E4A8BB0A560745B5F51D3C550FF50ECFD8DD756EB15F530D4BA3EE559EB",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 5
+    },
+    {
+      "Guid": "982627a0bbd34fe4b16b5b078e56355a",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text9 = \"982627a0bbd34fe4b16b5b078e56355a\";\nCueConfigurator.New(Cue0008Name, text9).SetConditions(conditions9).SetText(\"RanRomMinaSlide0003Cue0008.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003Cue0008",
+      "OriginalTextKey": "RanRomMinaSlide0003Cue0008.Text",
+      "OriginalTextSha256": "F38CACE33C3CFE44A423EE7D33E8A56F6A21318AFD824C01E88B6566E222562F",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "PageCueIndex": 7
+    },
+    {
+      "Guid": "98baa5299ae444bfa1ac8ba8e84f2c7c",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03End.Configure",
+      "Evidence": "string text8 = \"98baa5299ae444bfa1ac8ba8e84f2c7c\";\nCueConfigurator.New(Cue0007Name, text8).SetConditions(conditions8).SetText(\"RanRomMinaBook03EndCue0007.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03EndCue0007",
+      "OriginalTextKey": "RanRomMinaBook03EndCue0007.Text",
+      "OriginalTextSha256": "715CB04DAD8C3825AF847ACFFD0ACBE5846928B5C1814F56220331DE52E63551",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "f9c0ac1a434e450293c244ffc6a54a9f",
+      "PageCueIndex": 6
+    },
+    {
+      "Guid": "9a5eb7aff04943c28da2260aac68874e",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text5 = \"9a5eb7aff04943c28da2260aac68874e\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions5).SetText(\"RanRomMinaSlide0002Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0004",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0004.Text",
+      "OriginalTextSha256": "483B89C72D7BB8BFB0891663C2F2FE09244D7C1B40F492C136BBB1FA2382326E",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "9bfbb3f217ca476cadbeffc4d389717d",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text5 = \"9bfbb3f217ca476cadbeffc4d389717d\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions6).SetText(\"RanRomMinaSlide0001Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0004",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0004.Text",
+      "OriginalTextSha256": "2C4F90191DC322DD8130180CE41D80B2B438EC4A300A0009A352901009349DC9",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "9e3bd8247f0c40eba62368fe2912bb84",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0004.Configure",
+      "Evidence": "string text8 = \"9e3bd8247f0c40eba62368fe2912bb84\";\nCueConfigurator.New(Cue0007Name, text8).SetConditions(conditions8).SetText(\"RanRomMinaSlide0004Cue0007.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0004Cue0007",
+      "OriginalTextKey": "RanRomMinaSlide0004Cue0007.Text",
+      "OriginalTextSha256": "0102B28C3EF37523010C620EB960187516127467787FF59BA4DCFAA8F7557116",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "5a5865ceca0e42049288351a76b18ba9",
+      "PageCueIndex": 6
+    },
+    {
+      "Guid": "a1774d0a9fb34fd2ac58abc1c6db55bd",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text3 = \"a1774d0a9fb34fd2ac58abc1c6db55bd\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions3).SetText(\"RanRomMinaSlide0005Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0005Cue0002.Text",
+      "OriginalTextSha256": "3E7F31CF797A5DC350062C12257B03EFE1CA2DA48121D4361DCD927256A474C8",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "a77e415c6eb44d719839e07a3f164d87",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text15 = \"a77e415c6eb44d719839e07a3f164d87\";\nCueConfigurator.New(Cue0014Name, text15).SetConditions(conditions15).SetText(\"RanRomMinaSlide0002Cue0014.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0014",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0014.Text",
+      "OriginalTextSha256": "D84B6F6981309D1FAFDF04ED02484DA4FC746F6C17383329FF1D3FCD0CF41FDA",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 13
+    },
+    {
+      "Guid": "a875684118e64d7ab29f70ca3460c365",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text4 = \"a875684118e64d7ab29f70ca3460c365\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions4).SetText(\"RanRomMinaSlide0002Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0003",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0003.Text",
+      "OriginalTextSha256": "DB2BF0E6B87F16B4F09F58997C6E69B1604E73541097611D9FF1C687DF761655",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "a87da83417ff4be28c9ccfaf9b154e96",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaLegend\", \"a87da83417ff4be28c9ccfaf9b154e96\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaLegend"
+    },
+    {
+      "Guid": "a8f7a881cc6d427b91cbbee14f43e0ee",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook01Page004.Configure",
+      "Evidence": "string text5 = \"a8f7a881cc6d427b91cbbee14f43e0ee\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions4).SetText(\"RanRomMinaBook01Page004Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook01Page004Cue0004",
+      "OriginalTextKey": "RanRomMinaBook01Page004Cue0004.Text",
+      "OriginalTextSha256": "3FBBE7C7AFDD4C025DC99BE6F9F3085E5E5345D2EAC87D9618764F126ECA89AC",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "bab1eeaecb67424fb3d589fdb3648b9c",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "acb0d15ef71c410484b7c37b270e30fe",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text7 = \"acb0d15ef71c410484b7c37b270e30fe\";\nCueConfigurator.New(Cue0006Name, text7).SetConditions(conditions7).SetText(\"RanRomMinaSlide0003Cue0006.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003Cue0006",
+      "OriginalTextKey": "RanRomMinaSlide0003Cue0006.Text",
+      "OriginalTextSha256": "56FD4D6914EADB4E5DA7542B162922CD2D3D9EF98E07D3857699D4C4535AF106",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "PageCueIndex": 5
+    },
+    {
+      "Guid": "b474eb4460cb42729be2717d05e7d42b",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text5 = \"b474eb4460cb42729be2717d05e7d42b\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions5).SetText(\"RanRomMinaSlide0005Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005Cue0004",
+      "OriginalTextKey": "RanRomMinaSlide0005Cue0004.Text",
+      "OriginalTextSha256": "9C5391DD53CBEBD50EE548A6E4D1D35E55BCD1F9F4F494AB06D3B4568CACF1A7",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "b5c19cd01e364df99f6c946c7da14751",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaRomance\", \"b5c19cd01e364df99f6c946c7da14751\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaRomance"
+    },
+    {
+      "Guid": "b9e2550bc7244f6c8480106b41667d96",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0006.Configure",
+      "Evidence": "string text5 = \"b9e2550bc7244f6c8480106b41667d96\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions4).SetText(\"RanRomMinaSlide0006Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0006Cue0004",
+      "OriginalTextKey": "RanRomMinaSlide0006Cue0004.Text",
+      "OriginalTextSha256": "2BD9A5B02607A659A855CFB7F24AF71012D66B40D86F50EF70E4B39171EBA098",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "01677da8df6e42c6b4803ceef524b1fe",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "bb49f54dc0a547c287238b5d7d8489b3",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0006.Configure",
+      "Evidence": "string text6 = \"bb49f54dc0a547c287238b5d7d8489b3\";\nCueConfigurator.New(Cue0005Name, text6).SetConditions(conditions5).SetText(\"RanRomMinaSlide0006Cue0005.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0006Cue0005",
+      "OriginalTextKey": "RanRomMinaSlide0006Cue0005.Text",
+      "OriginalTextSha256": "DC2B88C0A6D9758358C42933D6BE1FA222F5A2DDE364A14B8A4C5F3705FD1209",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "01677da8df6e42c6b4803ceef524b1fe",
+      "PageCueIndex": 4
+    },
+    {
+      "Guid": "c01f7f83a2584555b2f551918f169cdb",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03End.Configure",
+      "Evidence": "string text4 = \"c01f7f83a2584555b2f551918f169cdb\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions4).SetText(\"RanRomMinaBook03EndCue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03EndCue0003",
+      "OriginalTextKey": "RanRomMinaBook03EndCue0003.Text",
+      "OriginalTextSha256": "04C78425ABBF63CC44C8899DAA1B1C0DFA07890961D71273F70BE5C116F38D7C",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "f9c0ac1a434e450293c244ffc6a54a9f",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "c47829fba057400c8e0279990be3d25e",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0008.Configure",
+      "Evidence": "string text5 = \"c47829fba057400c8e0279990be3d25e\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions5).SetText(\"056942f6-32d0-4480-8ff7-29356b43db19\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0008Cue0004",
+      "OriginalTextKey": "056942f6-32d0-4480-8ff7-29356b43db19",
+      "OriginalTextSha256": "3DB9ED6DA8A201ABA80C130511DC4895A94C0ED24A1067A8BAF251FDDBAFA0F7",
+      "OriginalTextOrigin": "native-localization",
+      "PageGuid": "3792457f35734d75a4d4b53055f7f5d0",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "c51a76731dc24865b6c472ffe6bf3e18",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03End.Configure",
+      "Evidence": "string text6 = \"c51a76731dc24865b6c472ffe6bf3e18\";\nCueConfigurator.New(Cue0005Name, text6).SetConditions(conditions6).SetText(\"RanRomMinaBook03EndCue0005.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03EndCue0005",
+      "OriginalTextKey": "RanRomMinaBook03EndCue0005.Text",
+      "OriginalTextSha256": "E4161874CCB32A58057B20FB0B97C82F250D6591B00E29F948926DD8F9A05788",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "f9c0ac1a434e450293c244ffc6a54a9f",
+      "PageCueIndex": 4
+    },
+    {
+      "Guid": "cce5f180fbe7455989544c1c81428463",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text8 = \"cce5f180fbe7455989544c1c81428463\";\nCueConfigurator.New(Cue0007Name, text8).SetConditions(conditions8).SetText(\"RanRomMinaSlide0002Cue0007.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0007",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0007.Text",
+      "OriginalTextSha256": "8163D1CDFA1F098869EF1D12F450280C9D91F576835FCC5F6B8F9EDC3EBA0D19",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 6
+    },
+    {
+      "Guid": "d47984953fc74c488ef0a02588bde92b",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text4 = \"d47984953fc74c488ef0a02588bde92b\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions4).SetText(\"RanRomMinaSlide0005Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005Cue0003",
+      "OriginalTextKey": "RanRomMinaSlide0005Cue0003.Text",
+      "OriginalTextSha256": "E7B87E1425C2864AB34822DC68DE45A6BFA827CB55317708F89BB9A9B48EFC76",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "d6714bd8d48e425d862f854018cb123c",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0007.Configure",
+      "Evidence": "string text4 = \"d6714bd8d48e425d862f854018cb123c\";\nCueConfigurator.New(Cue0003Name, text4).SetConditions(conditions3).SetText(\"RanRomMinaSlide0007Cue0003.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0007Cue0003",
+      "OriginalTextKey": "RanRomMinaSlide0007Cue0003.Text",
+      "OriginalTextSha256": "2F9391551D49A06A956265EFAEDD9DAA4BFD5D43CE1288874CF69126A1CDD079",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "9c5c5825bf3245d0ae763c6e69ecdc38",
+      "PageCueIndex": 2
+    },
+    {
+      "Guid": "d6b960c14e37492682de6284af1c5417",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text8 = \"d6b960c14e37492682de6284af1c5417\";\nCueConfigurator.New(Cue0007Name, text8).SetConditions(conditions9).SetText(\"RanRomMinaSlide0001Cue0007.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0007",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0007.Text",
+      "OriginalTextSha256": "F7114EBA02BDDF5E587D69B66EC49348C49AACD592950AA3295FACB0DF451F4E",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 6
+    },
+    {
+      "Guid": "dc14cdafb9fa43e8bc3b0816626b3dbe",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text5 = \"dc14cdafb9fa43e8bc3b0816626b3dbe\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions5).SetText(\"RanRomMinaSlide0003Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003Cue0004",
+      "OriginalTextKey": "RanRomMinaSlide0003Cue0004.Text",
+      "OriginalTextSha256": "F38CACE33C3CFE44A423EE7D33E8A56F6A21318AFD824C01E88B6566E222562F",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "e15de525c99d40c6a6faf0afa61be756",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.MinaBook03Page003.Configure",
+      "Evidence": "string text11 = \"e15de525c99d40c6a6faf0afa61be756\";\nCueConfigurator.New(Cue0007Name, text11).SetConditions(conditions8).SetText(\"RanRomMinaBook03Page003Cue0007.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaBook03Page003Cue0007",
+      "OriginalTextKey": "RanRomMinaBook03Page003Cue0007.Text",
+      "OriginalTextSha256": "8E4BBEFBCE0E1F8F128BFA500BAFAB33F48500375AE61612D6ABC753EAB4B354",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "c20314ead63a446c90140d04f52ee89e",
+      "PageCueIndex": 6
+    },
+    {
+      "Guid": "e303c58d307849cd892fa5810124da92",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaDragon\", \"e303c58d307849cd892fa5810124da92\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaDragon"
+    },
+    {
+      "Guid": "e87b43c31c1c4253a7137c7d6c05b246",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text3 = \"e87b43c31c1c4253a7137c7d6c05b246\";\nCueConfigurator.New(Cue0002Name, text3).SetConditions(conditions4).SetText(\"RanRomMinaSlide0001Cue0002.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0002",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0002.Text",
+      "OriginalTextSha256": "0ABF577790FE9D086E3B3F0863ABC3C7A4B9BEADEBF1AFA5108C47197B316453",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 1
+    },
+    {
+      "Guid": "f18391398cb5470c94f8932e9d8d2fd7",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Mina.Main.Configure",
+      "Evidence": "EtudeConfigurator.New(\"RanRomMinaFreed\", \"f18391398cb5470c94f8932e9d8d2fd7\").SetAllowActionStart().Configure();",
+      "Name": "RanRomMinaFreed"
+    },
+    {
+      "Guid": "f37b7a5fcff84551b86ecbba823e2fa5",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text8 = \"f37b7a5fcff84551b86ecbba823e2fa5\";\nCueConfigurator.New(Cue0007Name, text8).SetConditions(conditions8).SetText(\"RanRomMinaSlide0003Cue0007.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003Cue0007",
+      "OriginalTextKey": "RanRomMinaSlide0003Cue0007.Text",
+      "OriginalTextSha256": "B1BF0B8DB496EC0C8174900224C5EB4E5DCB467A4B362823F76FF4CB41214DD8",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "PageCueIndex": 6
+    },
+    {
+      "Guid": "f5e580bedafc43f3acb6843fd71d8120",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text11 = \"f5e580bedafc43f3acb6843fd71d8120\";\nCueConfigurator.New(Cue0000Name, text11).SetConditions(conditions12).SetText(\"RanRomMinaSlide0001Cue0000.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001Cue0000",
+      "OriginalTextKey": "RanRomMinaSlide0001Cue0000.Text",
+      "OriginalTextSha256": "2A2841C8466B9B5116B4622E356EF2AEE355F0F13D707E0315F0E26EC8321528",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "951e4432cf844a36a8a222b27589fb43",
+      "PageCueIndex": 9
+    },
+    {
+      "Guid": "fb32a8f9c464496abe90307c68ec271e",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text13 = \"fb32a8f9c464496abe90307c68ec271e\";\nCueConfigurator.New(Cue0012Name, text13).SetConditions(conditions13).SetText(\"RanRomMinaSlide0002Cue0012.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002Cue0012",
+      "OriginalTextKey": "RanRomMinaSlide0002Cue0012.Text",
+      "OriginalTextSha256": "504F92E13A7C66C0A1DDDB70AA5251B5B74C0369D3A10B296CCF76E02549587E",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "6db8635856e74b6cac46330bd82b4ff5",
+      "PageCueIndex": 11
+    },
+    {
+      "Guid": "ff2042ad95e14b73a5f75f2cfd84b5e4",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Mina.Slide0007.Configure",
+      "Evidence": "string text5 = \"ff2042ad95e14b73a5f75f2cfd84b5e4\";\nCueConfigurator.New(Cue0004Name, text5).SetConditions(conditions4).SetText(\"RanRomMinaSlide0007Cue0004.Text\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0007Cue0004",
+      "OriginalTextKey": "RanRomMinaSlide0007Cue0004.Text",
+      "OriginalTextSha256": "B34F8E819CA0652C2EFCBA1729618CB5C25B9C2602A82BC90670EA00EF4D94D4",
+      "OriginalTextOrigin": "parent-localization",
+      "PageGuid": "9c5c5825bf3245d0ae763c6e69ecdc38",
+      "PageCueIndex": 3
+    },
+    {
+      "Guid": "01677da8df6e42c6b4803ceef524b1fe",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0006.Configure",
+      "Evidence": "string text = \"01677da8df6e42c6b4803ceef524b1fe\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0006",
+      "CueOrder": [
+        "56f4e95390ec472b855e759fbc548b81",
+        "85b479a3da8a4fa6b602fedf89201695",
+        "64afcd565e044e53977e1878444f4ee1",
+        "b9e2550bc7244f6c8480106b41667d96",
+        "bb49f54dc0a547c287238b5d7d8489b3",
+        "5831af75932d43ed902a2d8def2adf3d",
+        "RanRomFiller"
+      ]
+    },
+    {
+      "Guid": "126762ac92364ac5bdec69c6e3fdfd1a",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0005.Configure",
+      "Evidence": "string text = \"126762ac92364ac5bdec69c6e3fdfd1a\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"f96ad5fa9c59d7549adff4c90f0703ab\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0005",
+      "CueOrder": [
+        "7d970543808f428380fb1042b32f896e",
+        "a1774d0a9fb34fd2ac58abc1c6db55bd",
+        "d47984953fc74c488ef0a02588bde92b",
+        "b474eb4460cb42729be2717d05e7d42b",
+        "f6d5d9bfdf1442528be5e6d81b656ac2",
+        "2cd9538f67f7414d808d9032386f6be9",
+        "8009e775a3a343c79ef4e40d72bc5e6a",
+        "5b0a132d97404072b3d664899871d7b7",
+        "a200043a0b9a4d97a0da3fea0c0890a1",
+        "0b1b31d7125547219daa747eba45a063",
+        "RanRomFiller"
+      ]
+    },
+    {
+      "Guid": "3792457f35734d75a4d4b53055f7f5d0",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0008.Configure",
+      "Evidence": "string text = \"3792457f35734d75a4d4b53055f7f5d0\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"f96ad5fa9c59d7549adff4c90f0703ab\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0008",
+      "CueOrder": [
+        "dce10a002c5c4e83838d1b85096b2d15",
+        "1980e50e5e204431bf643fbad487909f",
+        "bf05f030b0044487bca43db8296dfe31",
+        "c47829fba057400c8e0279990be3d25e",
+        "RanRomFiller"
+      ]
+    },
+    {
+      "Guid": "5a5865ceca0e42049288351a76b18ba9",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0004.Configure",
+      "Evidence": "string text = \"5a5865ceca0e42049288351a76b18ba9\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0004",
+      "CueOrder": [
+        "a7d2f947a47e40bc9d7c0c24da1b9be3",
+        "286434b491b74174a97dfd2d7344f57a",
+        "784575a522e64ad58f2171abcb073d0c",
+        "5db846019acd46ef83f12be220727f50",
+        "1f1d17818c9f4057be26e47d1632e2c6",
+        "3d4137f1cf98459f996ef1da83737cdb",
+        "9e3bd8247f0c40eba62368fe2912bb84",
+        "18d22b6258a24fe29dd9d0ea4235432e",
+        "8c6accdc29f54a428d3a59786c1c856d",
+        "RanRomFiller"
+      ]
+    },
+    {
+      "Guid": "6db8635856e74b6cac46330bd82b4ff5",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0002.Configure",
+      "Evidence": "string text = \"6db8635856e74b6cac46330bd82b4ff5\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text13)\n\t\t\t.AddToCues(text14)\n\t\t\t.AddToCues(text15)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0002",
+      "CueOrder": [
+        "417936bb80bc48f28e1f0cee032d9ab6",
+        "6eba6f627ac34cf4955c89e5ad59e106",
+        "a875684118e64d7ab29f70ca3460c365",
+        "9a5eb7aff04943c28da2260aac68874e",
+        "a259e48a6513439483a2d8f31ea7ff39",
+        "9806218e467f41acb502b52160ab38dd",
+        "cce5f180fbe7455989544c1c81428463",
+        "829c837c76f6429fa01d3d2583069b35",
+        "f9ec524d3ff04b999afc1e8bfe50ae4e",
+        "3b8d47b3c9694002aff26510ac4dedf0",
+        "51104e1c8755436e8aa290a6cedfcb3a",
+        "fb32a8f9c464496abe90307c68ec271e",
+        "222f780971834ea28357b2533f921e9d",
+        "a77e415c6eb44d719839e07a3f164d87",
+        "RanRomFiller"
+      ]
+    },
+    {
+      "Guid": "8df5edb6f69040c69d7da78d2bf20cb6",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0003.Configure",
+      "Evidence": "string text = \"8df5edb6f69040c69d7da78d2bf20cb6\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"f96ad5fa9c59d7549adff4c90f0703ab\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0003",
+      "CueOrder": [
+        "5570b60904f34d29ab925ef19757f024",
+        "0a8411c2cb0a44f1ab317ed425f6ec94",
+        "5ab5c6a3c62b4f2ba88053cbbbc47737",
+        "dc14cdafb9fa43e8bc3b0816626b3dbe",
+        "2741346e336e4c3899748e51bf103460",
+        "acb0d15ef71c410484b7c37b270e30fe",
+        "f37b7a5fcff84551b86ecbba823e2fa5",
+        "982627a0bbd34fe4b16b5b078e56355a",
+        "02fd8486e8e44191ab01cf914087a00e",
+        "67e3bb3b649d42a4a84115f3c7ac6bf1",
+        "2c5edf138eac4848940d8ebbafe1535d",
+        "RanRomFiller"
+      ]
+    },
+    {
+      "Guid": "951e4432cf844a36a8a222b27589fb43",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0001.Configure",
+      "Evidence": "string text = \"951e4432cf844a36a8a222b27589fb43\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"df4a5da19a0a64542929dc8409b29bbe\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text13)\n\t\t\t.SetConditions(conditions2)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0001",
+      "CueOrder": [
+        "26789d87b5a44ba988079b4842bad81c",
+        "e87b43c31c1c4253a7137c7d6c05b246",
+        "819314e916514a498a8e336371b4788e",
+        "9bfbb3f217ca476cadbeffc4d389717d",
+        "e0551b6120c94d70aa9d10a5fcc4ec86",
+        "7edf5529523a4a9da520138783fdeb93",
+        "d6b960c14e37492682de6284af1c5417",
+        "19fd9027465f4cbebe949b26d04a2826",
+        "84e26e3c483c4e7985ac656de08a5b05",
+        "f5e580bedafc43f3acb6843fd71d8120",
+        "59cf28c3824944fd88547bc61bc5cf62",
+        "92162854b221413984468d2663ffcffb",
+        "RanRomFiller"
+      ]
+    },
+    {
+      "Guid": "9c5c5825bf3245d0ae763c6e69ecdc38",
+      "Type": "BlueprintBookPage",
+      "Source": "RanRomance.Mina.Slide0007.Configure",
+      "Evidence": "string text = \"9c5c5825bf3245d0ae763c6e69ecdc38\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+      "Name": "RanRomMinaSlide0007",
+      "CueOrder": [
+        "7b56a6e716ce4aacaae1060fb33c3a0f",
+        "8399dbc5987b462594b2b4168764e269",
+        "d6714bd8d48e425d862f854018cb123c",
+        "ff2042ad95e14b73a5f75f2cfd84b5e4",
+        "RanRomFiller"
+      ]
     }
-  ]
+  ],
+  "MinaghoChivarroEvidence": {
+    "Scope": "Supplemental source evidence for localization, page order, native origins, and sequence topology. The eight directly requested parent ending pages are also core Bindings; the three witness-only pages remain supplemental.",
+    "ParentLocalizationPath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Mods\\RanRomance\\LocalizedStrings.json",
+    "ParentLocalizationSha256": "534D49567F0172193CD78F9C56A7A9A8244021F1701E2EC46F0C04FDBFBBCF3F",
+    "NativeArchivePath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip",
+    "NativeArchiveSha256": "BE61C9B723EF06558DA8D7CFC7F0C7EA869F60BA9952EBBBBD116CF681863EA5",
+    "NativeLocalizationPath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Wrath_Data\\StreamingAssets\\Localization\\enGB.json",
+    "NativeLocalizationSha256": "3289C3EBAB206BA6312D4C2D512C0B5623E52D7E2B86596074B81D355725AA75",
+    "SourceExtractionDirectory": "C:\\Users\\Z\\AppData\\Local\\Temp\\minachiv-binding-expansion-e4c287\\source",
+    "SourceFilesSha256": {
+      "Main.cs": "8E20D64F9775E049B276EAF081D3CBF5E27D3AC971FF0478BBC0810FB57C6D98",
+      "MinaBook01Page003.cs": "5FE41FF386A944174D6D229775DD0162F36169453FC73ADE0B1206765CFD9781",
+      "MinaBook01Page004.cs": "A5966AC2BC9F15AAE644605C73FD34099635FB17BAF7756853AA0107916011EC",
+      "MinaBook03End.cs": "644894E6AFAEAF8C519E6F542E49803957D6737422EF52F1A56D2C075A5FD6D8",
+      "MinaBook03Page002.cs": "99DFF8B46ABD15E6109DC6B0D401117CA84DA82FFAF1833862535BC7630DBB9E",
+      "MinaBook03Page003.cs": "166A67B63AE7B159FA74B6299B263B4FC239D2C499319C2D630EA168ABDFFDCD",
+      "MinaEpil.cs": "E22B38F56A7BB30C90B10FE9B13C151BC6D14392AAC212D5055CF8A315141ADE",
+      "MinaQuest.cs": "824B2A0233986005DDB3D79FEEED63BD0C986161812D05DE3724A75B44CA9264",
+      "Slide0001.cs": "0799CEDCD1B7CA65E278213B0611E12B71C7EFC0C34901AEAA2D1B8A51A97226",
+      "Slide0002.cs": "CF3F57951974D7F9AE4644194E752BD725F2715A54E7B400376C9A5737F1DFF4",
+      "Slide0003.cs": "4B28EDF099584E40C20B75B3FB6077DBC9DC9B23DD853495A8F541CEF4C0CFB3",
+      "Slide0004.cs": "081976B038F1DDABE11E147D519B21F591A056E7703AC3FB776660502AB096D4",
+      "Slide0005.cs": "B416E21A02D838C7D877549E85A4A9AB4EABB778CDE41D956EB7614A6B3C9402",
+      "Slide0006.cs": "F1A56075E3886D793C6D875DC636D8CD57991CA476CB15E6B3598E77DC43639F",
+      "Slide0007.cs": "6B1927658CEB603791C63C943B5B4DEB968417A016076DDFEF4B6B7358959D2B",
+      "Slide0008.cs": "A27D0AAFE60E80B48D0950FDD59C363536413BD2AC93AA5C513F3446E85225B2",
+      "SlideAeon.cs": "C882834D6C9D1798B9BBE32BD38450A2D674D8B91572D3AD053053915A08BC8C"
+    },
+    "ParentBookPages": [
+      {
+        "Guid": "01677da8df6e42c6b4803ceef524b1fe",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0006.Configure",
+        "Evidence": "string text = \"01677da8df6e42c6b4803ceef524b1fe\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0006",
+        "CueOrder": [
+          "56f4e95390ec472b855e759fbc548b81",
+          "85b479a3da8a4fa6b602fedf89201695",
+          "64afcd565e044e53977e1878444f4ee1",
+          "b9e2550bc7244f6c8480106b41667d96",
+          "bb49f54dc0a547c287238b5d7d8489b3",
+          "5831af75932d43ed902a2d8def2adf3d",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "126762ac92364ac5bdec69c6e3fdfd1a",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0005.Configure",
+        "Evidence": "string text = \"126762ac92364ac5bdec69c6e3fdfd1a\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"f96ad5fa9c59d7549adff4c90f0703ab\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0005",
+        "CueOrder": [
+          "7d970543808f428380fb1042b32f896e",
+          "a1774d0a9fb34fd2ac58abc1c6db55bd",
+          "d47984953fc74c488ef0a02588bde92b",
+          "b474eb4460cb42729be2717d05e7d42b",
+          "f6d5d9bfdf1442528be5e6d81b656ac2",
+          "2cd9538f67f7414d808d9032386f6be9",
+          "8009e775a3a343c79ef4e40d72bc5e6a",
+          "5b0a132d97404072b3d664899871d7b7",
+          "a200043a0b9a4d97a0da3fea0c0890a1",
+          "0b1b31d7125547219daa747eba45a063",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "3792457f35734d75a4d4b53055f7f5d0",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0008.Configure",
+        "Evidence": "string text = \"3792457f35734d75a4d4b53055f7f5d0\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"f96ad5fa9c59d7549adff4c90f0703ab\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0008",
+        "CueOrder": [
+          "dce10a002c5c4e83838d1b85096b2d15",
+          "1980e50e5e204431bf643fbad487909f",
+          "bf05f030b0044487bca43db8296dfe31",
+          "c47829fba057400c8e0279990be3d25e",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "5a5865ceca0e42049288351a76b18ba9",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0004.Configure",
+        "Evidence": "string text = \"5a5865ceca0e42049288351a76b18ba9\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0004",
+        "CueOrder": [
+          "a7d2f947a47e40bc9d7c0c24da1b9be3",
+          "286434b491b74174a97dfd2d7344f57a",
+          "784575a522e64ad58f2171abcb073d0c",
+          "5db846019acd46ef83f12be220727f50",
+          "1f1d17818c9f4057be26e47d1632e2c6",
+          "3d4137f1cf98459f996ef1da83737cdb",
+          "9e3bd8247f0c40eba62368fe2912bb84",
+          "18d22b6258a24fe29dd9d0ea4235432e",
+          "8c6accdc29f54a428d3a59786c1c856d",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "6db8635856e74b6cac46330bd82b4ff5",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0002.Configure",
+        "Evidence": "string text = \"6db8635856e74b6cac46330bd82b4ff5\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text13)\n\t\t\t.AddToCues(text14)\n\t\t\t.AddToCues(text15)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0002",
+        "CueOrder": [
+          "417936bb80bc48f28e1f0cee032d9ab6",
+          "6eba6f627ac34cf4955c89e5ad59e106",
+          "a875684118e64d7ab29f70ca3460c365",
+          "9a5eb7aff04943c28da2260aac68874e",
+          "a259e48a6513439483a2d8f31ea7ff39",
+          "9806218e467f41acb502b52160ab38dd",
+          "cce5f180fbe7455989544c1c81428463",
+          "829c837c76f6429fa01d3d2583069b35",
+          "f9ec524d3ff04b999afc1e8bfe50ae4e",
+          "3b8d47b3c9694002aff26510ac4dedf0",
+          "51104e1c8755436e8aa290a6cedfcb3a",
+          "fb32a8f9c464496abe90307c68ec271e",
+          "222f780971834ea28357b2533f921e9d",
+          "a77e415c6eb44d719839e07a3f164d87",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "8df5edb6f69040c69d7da78d2bf20cb6",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0003.Configure",
+        "Evidence": "string text = \"8df5edb6f69040c69d7da78d2bf20cb6\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"f96ad5fa9c59d7549adff4c90f0703ab\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0003",
+        "CueOrder": [
+          "5570b60904f34d29ab925ef19757f024",
+          "0a8411c2cb0a44f1ab317ed425f6ec94",
+          "5ab5c6a3c62b4f2ba88053cbbbc47737",
+          "dc14cdafb9fa43e8bc3b0816626b3dbe",
+          "2741346e336e4c3899748e51bf103460",
+          "acb0d15ef71c410484b7c37b270e30fe",
+          "f37b7a5fcff84551b86ecbba823e2fa5",
+          "982627a0bbd34fe4b16b5b078e56355a",
+          "02fd8486e8e44191ab01cf914087a00e",
+          "67e3bb3b649d42a4a84115f3c7ac6bf1",
+          "2c5edf138eac4848940d8ebbafe1535d",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "951e4432cf844a36a8a222b27589fb43",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0001.Configure",
+        "Evidence": "string text = \"951e4432cf844a36a8a222b27589fb43\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"df4a5da19a0a64542929dc8409b29bbe\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text13)\n\t\t\t.SetConditions(conditions2)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0001",
+        "CueOrder": [
+          "26789d87b5a44ba988079b4842bad81c",
+          "e87b43c31c1c4253a7137c7d6c05b246",
+          "819314e916514a498a8e336371b4788e",
+          "9bfbb3f217ca476cadbeffc4d389717d",
+          "e0551b6120c94d70aa9d10a5fcc4ec86",
+          "7edf5529523a4a9da520138783fdeb93",
+          "d6b960c14e37492682de6284af1c5417",
+          "19fd9027465f4cbebe949b26d04a2826",
+          "84e26e3c483c4e7985ac656de08a5b05",
+          "f5e580bedafc43f3acb6843fd71d8120",
+          "59cf28c3824944fd88547bc61bc5cf62",
+          "92162854b221413984468d2663ffcffb",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "9c5c5825bf3245d0ae763c6e69ecdc38",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.Slide0007.Configure",
+        "Evidence": "string text = \"9c5c5825bf3245d0ae763c6e69ecdc38\";\nBookPageConfigurator.New(SlideName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.AddToAnswers(\"1afb887108b34ac1b082dabf64a786b6\")\n\t\t\t.SetShowOnce()\n\t\t\t.Configure();",
+        "Name": "RanRomMinaSlide0007",
+        "CueOrder": [
+          "7b56a6e716ce4aacaae1060fb33c3a0f",
+          "8399dbc5987b462594b2b4168764e269",
+          "d6714bd8d48e425d862f854018cb123c",
+          "ff2042ad95e14b73a5f75f2cfd84b5e4",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "bab1eeaecb67424fb3d589fdb3648b9c",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.MinaBook01Page004.Configure",
+        "Evidence": "string text = \"bab1eeaecb67424fb3d589fdb3648b9c\";\nBookPageConfigurator.New(PageName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToAnswers(text8)\n\t\t\t.AddToCues(text10)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text14)\n\t\t\t.AddToAnswers(text13)\n\t\t\t.AddToCues(text15)\n\t\t\t.AddToCues(text16)\n\t\t\t.AddToCues(text17)\n\t\t\t.AddToCues(text19)\n\t\t\t.AddToAnswers(text18)\n\t\t\t.AddToCues(text21)\n\t\t\t.AddToAnswers(text20)\n\t\t\t.AddToCues(text23)\n\t\t\t.AddToAnswers(text22)\n\t\t\t.AddToCues(text25)\n\t\t\t.AddToAnswers(text24)\n\t\t\t.AddToCues(text26)\n\t\t\t.AddToCues(text27)\n\t\t\t.AddToCues(text29)\n\t\t\t.AddToAnswers(text28)\n\t\t\t.AddToCues(text31)\n\t\t\t.AddToAnswers(text30)\n\t\t\t.AddToAnswers(text32)\n\t\t\t.AddToAnswers(text33)\n\t\t\t.AddToAnswers(text34)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.Configure();",
+        "Name": "RanRomMinaBook01Page004",
+        "CueOrder": [
+          "d974ec38dd0c4efdbc7031b4e7cc03df",
+          "fc6eb1406ddd421787af4cb5922703eb",
+          "9d62950c832a4331b4c90c53a576bda0",
+          "a8f7a881cc6d427b91cbbee14f43e0ee",
+          "1d044abfa92e4b4ba168d7ec2c206ced",
+          "278631fb9d984662ab9ce247ddcad02c",
+          "a9c822c74c9c485e821bdb3bf955db00",
+          "2ad8b7636f3e42f6af42533fb81f760f",
+          "69662f85fcbf4de293c16a210b9d1847",
+          "f4eb20d441624fbd8102c3f8ffb8afd3",
+          "2999387bc867415cb81559acbe43acab",
+          "1cc6c2b1cc7c43e2b01e14e2c251535e",
+          "1404dd62a1404f0a9fc32c00e588c91a",
+          "c9ab479a1692423e9153a61770ed9ce3",
+          "2f8a1379847e425da2c3b88bb0548142",
+          "a89fa7398c6141b5aad9452f0465a5cf",
+          "b2d80cfd5c344bf8a8d6fa232514ac51",
+          "aac29e481e7d4f1da700f7baf240373a",
+          "8ac6766b96c647f48674de38d149808d",
+          "4886441be6594df9a9474cc71cf7ca94",
+          "76c74631db374214a8bb17bed351b0d6",
+          "943114710fbc4a3f9333cb06a79a07e2",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "c20314ead63a446c90140d04f52ee89e",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.MinaBook03Page003.Configure",
+        "Evidence": "string text = \"c20314ead63a446c90140d04f52ee89e\";\nBookPageConfigurator.New(PageName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToAnswers(text5)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToAnswers(text7)\n\t\t\t.AddToCues(text9)\n\t\t\t.AddToCues(text11)\n\t\t\t.AddToAnswers(text10)\n\t\t\t.AddToCues(text12)\n\t\t\t.AddToCues(text13)\n\t\t\t.AddToAnswers(text14)\n\t\t\t.AddToAnswers(text15)\n\t\t\t.SetConditions(conditions)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.Configure();",
+        "Name": "RanRomMinaBook03Page003",
+        "CueOrder": [
+          "5244f58548f9440cab4da66769fbf615",
+          "1aa2cdb539754f39a29dd1a6626eb670",
+          "1a3b51700cf3427a8d35f629f7c77e6d",
+          "a1fabe2bd4354649aa1ede9a7bca136d",
+          "449862085b774d6295949a92f158397e",
+          "1334e7fe3fc2461bac0ca67599b32878",
+          "e15de525c99d40c6a6faf0afa61be756",
+          "e8af7bdaaece4995bfe1e0e9eec871a9",
+          "80ad6d6f87d54a43b019e25f69df1c0c",
+          "RanRomFiller"
+        ]
+      },
+      {
+        "Guid": "f9c0ac1a434e450293c244ffc6a54a9f",
+        "Type": "BlueprintBookPage",
+        "Source": "RanRomance.Mina.MinaBook03End.Configure",
+        "Evidence": "string text = \"f9c0ac1a434e450293c244ffc6a54a9f\";\nBookPageConfigurator.New(PageName, text).SetImageLink(\"482f509e50aa6484bafee746ddb3849f\").SetForeImageLink(\"1abecb015eedf484eab1b0229a7cecf7\")\n\t\t\t.AddToCues(text2)\n\t\t\t.AddToCues(text3)\n\t\t\t.AddToCues(text4)\n\t\t\t.AddToCues(text5)\n\t\t\t.AddToCues(text6)\n\t\t\t.AddToCues(text7)\n\t\t\t.AddToCues(text8)\n\t\t\t.AddToCues(\"RanRomFiller\")\n\t\t\t.Configure();",
+        "Name": "RanRomMinaBook03End",
+        "CueOrder": [
+          "19099aba216e46e98d446709c3f2e0f3",
+          "5584da70433e4f079d521d40ce77f230",
+          "c01f7f83a2584555b2f551918f169cdb",
+          "4dbb41f1fb134b90ab3900dc05488e8f",
+          "c51a76731dc24865b6c472ffe6bf3e18",
+          "341b62dd58d14906959d3262b12f1a43",
+          "98baa5299ae444bfa1ac8ba8e84f2c7c",
+          "RanRomFiller"
+        ]
+      }
+    ],
+    "NativeTargets": [
+      {
+        "Guid": "2570015799edf594daf2f076f2f975d8",
+        "Type": "BlueprintArea",
+        "Path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp",
+        "Data": {
+          "$type": "6181425e72507c148a67d77624419aec, BlueprintArea",
+          "PrototypeLink": "",
+          "m_Overrides": [
+            "$OverrideCampingAction$78c242f4-53a0-4486-bb4d-bf355dc96155"
+          ],
+          "Components": [
+            {
+              "$type": "78b331db48d3456090eb99a43da932ce, OverrideCampingAction",
+              "m_Flags": 0,
+              "name": "$OverrideCampingAction$78c242f4-53a0-4486-bb4d-bf355dc96155",
+              "PrototypeLink": {
+                "guid": "",
+                "name": ""
+              },
+              "m_Overrides": [],
+              "OnRestActions": {
+                "Actions": [
+                  {
+                    "$type": "52d8973f2e470e14c97b74209680491a, Conditional",
+                    "name": "$Conditional$02877a54-1fe2-4e5e-8b43-699dc871ecf2",
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$13b8ae9e-1dd4-4c07-9fee-56a210fc5af4",
+                          "Not": false,
+                          "m_Etude": "!bp_349b58202dedf8049992e84efa4cd732",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ee651e222f282454fbd2821c9ea18a72, AnotherEtudeOfGroupIsPlaying",
+                          "name": "$AnotherEtudeOfGroupIsPlaying$53a1b2d0-7a74-49d5-ba9b-71005d198ee9",
+                          "Not": true,
+                          "m_Group": "!bp_10d01be767521a340978c8e57ab536b6"
+                        },
+                        {
+                          "$type": "ee651e222f282454fbd2821c9ea18a72, AnotherEtudeOfGroupIsPlaying",
+                          "name": "$AnotherEtudeOfGroupIsPlaying$64258fb2-7b73-4906-9fa0-cc481967fba8",
+                          "Not": true,
+                          "m_Group": "!bp_09bcb0ca88c8a394f8601179a094905a"
+                        }
+                      ]
+                    },
+                    "IfTrue": {
+                      "Actions": [
+                        {
+                          "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+                          "name": "$UnlockFlag$549c59eb-9e12-41ec-9881-28adb80f37c6",
+                          "m_flag": "!bp_5f9d7b2407b40a54ab72062005886913",
+                          "flagValue": 0
+                        },
+                        {
+                          "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+                          "name": "$UnlockFlag$134ee85c-e4e8-4878-8126-38ac6e08f0d3",
+                          "m_flag": "!bp_8a03b7367c640164bb4e43a93cf3c63c",
+                          "flagValue": 0
+                        },
+                        {
+                          "$type": "8072988edd00cce40bc433869828e6b3, TeleportParty",
+                          "name": "$TeleportParty$d7ff9c0f-ca9c-48d3-aa7e-bfd3e6b13210",
+                          "m_exitPositon": "!bp_ab3b5c105893562488ae5bb6e7b0cba7",
+                          "AutoSaveMode": "None",
+                          "ForcePauseAfterTeleport": false,
+                          "AfterTeleport": {
+                            "Actions": []
+                          }
+                        }
+                      ]
+                    },
+                    "IfFalse": {
+                      "Actions": [
+                        {
+                          "$type": "904a91540b4d40128c59ce26c864705e, ShowUIWarning",
+                          "name": "$ShowUIWarning$cec0c3b4-f6f2-4b18-9662-41d34594e584",
+                          "Type": "RestOnThisZoneImpossible",
+                          "String": {
+                            "m_Key": "",
+                            "m_OwnerString": "",
+                            "m_OwnerPropertyPath": "",
+                            "m_JsonPath": "",
+                            "Shared": null
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "SkipRest": true
+            }
+          ],
+          "Comment": "",
+          "m_DynamicScene": {
+            "m_SceneAsset": {
+              "guid": "6ce2c3528312c234ea1fa410d5e19c00",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_ThroneRoom_Mechanics"
+          },
+          "m_StaticScene": {
+            "m_SceneAsset": {
+              "guid": "4a767e5a1c7e2134a850b9756028466d",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_ThroneRoom_Static"
+          },
+          "m_StaticSceneConsoleOverride": {
+            "m_SceneAsset": {
+              "guid": "a451312ec2ac237429dd3309f84bad29",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_ThroneRoom_ConsoleStatic"
+          },
+          "m_LightScene": {
+            "m_SceneAsset": {
+              "guid": "616e29a35e27af849ae9dc9b6ca67d15",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_ThroneRoom_Light"
+          },
+          "m_LightSceneConsoleOverride": {
+            "m_SceneAsset": {
+              "guid": "df0c0b48ceaa44848b3e96ca6d1bd191",
+              "fileid": 102900000
+            },
+            "m_SceneName": "DrezenCapital_ThroneRoom_ConsoleLight"
+          },
+          "m_Bounds": {
+            "guid": "2e261f88737d79a4ab88e60dcc22f538",
+            "fileid": 11400000
+          },
+          "m_AudioTimeOfDayVariants": [
+            {
+              "m_SceneAsset": {
+                "guid": "7311cf3af56543c479004ecce8e2e61e",
+                "fileid": 102900000
+              },
+              "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Day"
+            },
+            {
+              "m_SceneAsset": {
+                "guid": "7311cf3af56543c479004ecce8e2e61e",
+                "fileid": 102900000
+              },
+              "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Day"
+            },
+            {
+              "m_SceneAsset": {
+                "guid": "82dab16b332e9784a916bd7c79faaa48",
+                "fileid": 102900000
+              },
+              "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Night"
+            },
+            {
+              "m_SceneAsset": {
+                "guid": "82dab16b332e9784a916bd7c79faaa48",
+                "fileid": 102900000
+              },
+              "m_SceneName": "DrezenCapital_Audio_Church_TroneRoom_Night"
+            }
+          ],
+          "m_OverrideCampaign": null,
+          "m_SoundBankNames": [
+            "AMB_PART_DrezenCapital_Church_ThroneRoom",
+            "NARRCH3_DrezenCapital_Camellia_BasementRomance"
+          ],
+          "m_ManageBanksSeparately": false,
+          "m_UnloadBanksDelay": 2.0,
+          "MusicTheme": "MUS_CapitalMythic_Play",
+          "MusicThemeStop": "MUS_CapitalMythic_Stop",
+          "m_IndoorType": "IndoorLikeMorning",
+          "m_WeatherProfile": {
+            "m_WeatherProfile": {
+              "guid": "433604b02ac8eb4449a07545bb4f4311",
+              "fileid": 11400000
+            },
+            "m_Layers": []
+          },
+          "m_WeatherInclemencyMin": "Light",
+          "m_WeatherInclemencyMax": "Heavy",
+          "IsSingleLightScene": false,
+          "LocalMapRotation": 0.0,
+          "Setting": "Urban",
+          "AreaLocalName": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          },
+          "GraphCache": {
+            "AssetId": "f04f17cfd5ccd6249af10136db006a31"
+          },
+          "NavmeshMask": {
+            "guid": "3eca41f72d1df424fba1d919251eac55",
+            "fileid": 2800000
+          },
+          "m_Parts": [
+            "!bp_8a076e720870a44438d13b9b939933fd",
+            "!bp_bdced7034cf8e95499890a66f03f8a30",
+            "!bp_0670085bf3fe4694d91e2ea159dee079",
+            "!bp_b8583f39adb1c0141b5d95825e23ce6f",
+            "!bp_89725ac859fa31c48afda5908fa82d90",
+            "!bp_4f75776848385ba47bd95bb938f4677b",
+            "!bp_2375bb0062f4c7540ab8ed738b63f2d4",
+            "!bp_771053f7fc63a954ca1c244eb1fcb974",
+            "!bp_aaa9ae2f8ac01284ea8e8136fa40d339",
+            "!bp_9d312be28d7c96b4e821ed1118ddd30d",
+            "!bp_1d7042954c91033468546cfb404c3d95",
+            "!bp_f4dc9c9c26debad44abd2de21ca2231f",
+            "!bp_6754cbd6d22cf0241a327403c7ac8e7a",
+            "!bp_3b20ecf493b4e09478f4ccce4030a853",
+            "!bp_bbcdb71af4e9e5a4383ee370f4db9b84"
+          ],
+          "IsGlobalMap": false,
+          "CameraScrollMultiplier": 1.0,
+          "SetDefaultCameraRotation": false,
+          "CameraRotation": 0.0,
+          "CampingSettings": {
+            "CampingAllowed": true,
+            "HuntingDC": 15,
+            "DivineServiceDCBonus": 15,
+            "CamouflageDC": 10
+          },
+          "RandomEncounterSettings": {
+            "AreRandomEncountersEnabled": true,
+            "OverrideChances": false,
+            "OverrideChanceOnGlobalMap": 1.0,
+            "OverrideChanceOnCamp": 1.0,
+            "OverrideChanceOnCampSecondsTime": 1.0,
+            "PerceptionDCModifier": 0,
+            "Tags": []
+          },
+          "Designer": "ArtemSafonov",
+          "ArtSetting": "DrezenCitadel",
+          "AreaName": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": {
+              "assetguid": "87639b1ad85383849a59ae85beb74233",
+              "stringkey": "a2fc4858-fa9d-4164-8758-a827908f5080"
+            }
+          },
+          "ExcludeFromSave": false,
+          "PS4ChunkId": "Chapter3",
+          "LoadingScreenSprites": [
+            {
+              "AssetId": "ee0e551a09c0a984596bfd590457508e"
+            },
+            {
+              "AssetId": "b408b578962495442bdc2fe9119f2d52"
+            },
+            {
+              "AssetId": "95ff72c54183ae441a9a13c930047d06"
+            }
+          ],
+          "m_DefaultPreset": "!bp_4881f9b9131249dca002482ef3e915af",
+          "RelatedWorkspace": null,
+          "CR": 13,
+          "OverrideCorruption": true,
+          "CorruptionGrowth": 0,
+          "LootSetting": "PF2_Crusaders",
+          "m_HotAreas": [],
+          "IsMayMapWindow": false
+        }
+      },
+      {
+        "Guid": "5c95d8e3fa4f3b44896914987cb04b0b",
+        "Type": "BlueprintBookPage",
+        "Path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
+        "Data": {
+          "$type": "b6d078a4ae218fe4a82f3fb5707b7e1f, BlueprintBookPage",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "\u043c\u0438\u043d\u043e\u0433\u0430\n\u043f\u043e\u0440\u0442\u0440\u0435\u0442 \u043c\u0438\u043d\u043e\u0433\u0438 \u0431\u0435\u0437 \u043f\u0435\u043d\u0442\u0430\u0433\u0440\u0430\u043c\u043c\u044b \u043d\u0430 \u043b\u0431\u0443 \u0435\u0441\u043b\u0438 \u0435\u0441\u0442\u044c",
+          "ParentAsset": "f8d7f50e3bb88c143834d234c0b24474",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": [
+              {
+                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                "name": "$EtudeStatus$1ef01d8e-8a77-4a8c-bb62-7c0fccab6fea",
+                "Not": false,
+                "m_Etude": "!bp_71f85264d9064074f9cf74999ecbffa9",
+                "NotStarted": false,
+                "Started": false,
+                "Playing": true,
+                "CompletionInProgress": false,
+                "Completed": false
+              }
+            ]
+          },
+          "Cues": [
+            "!bp_5787f92575364c1459df8f075676c2db"
+          ],
+          "Answers": [
+            "!bp_d4184a7a4cc574640933b8fe94d3b18c"
+          ],
+          "OnShow": {
+            "Actions": []
+          },
+          "ImageLink": {
+            "AssetId": "f96ad5fa9c59d7549adff4c90f0703ab"
+          },
+          "ForeImageLink": {
+            "AssetId": "8bd5e79fda4317b48b80eb32f5c9ce15"
+          },
+          "WithBaron": false,
+          "Title": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        }
+      },
+      {
+        "Guid": "5787f92575364c1459df8f075676c2db",
+        "Type": "BlueprintCue",
+        "Path": "World/Dialogs/Epilogues/Cue_0317.jbp",
+        "Data": {
+          "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "\u0432\u043e\u0441\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0438 \u0438\u0445 \u0441 \u0427\u0438\u0432\u0430\u0440\u0440\u043e",
+          "ParentAsset": "5c95d8e3fa4f3b44896914987cb04b0b",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Text": {
+            "m_Key": "056942f6-32d0-4480-8ff7-29356b43db19",
+            "m_OwnerString": "5787f92575364c1459df8f075676c2db",
+            "m_OwnerPropertyPath": "Text",
+            "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Epilogues/Cue_0317_Text.json",
+            "Shared": null
+          },
+          "Experience": "NoExperience",
+          "Speaker": {
+            "m_Blueprint": null,
+            "MoveCamera": true,
+            "NotRevealInFoW": false,
+            "NoSpeaker": false,
+            "SwitchDual": false,
+            "m_SpeakerPortrait": null
+          },
+          "TurnSpeaker": true,
+          "Animation": "None",
+          "m_Listener": null,
+          "OnShow": {
+            "Actions": []
+          },
+          "OnStop": {
+            "Actions": []
+          },
+          "AlignmentShift": {
+            "Direction": "TrueNeutral",
+            "Value": 0,
+            "Description": {
+              "m_Key": "",
+              "m_OwnerString": "",
+              "m_OwnerPropertyPath": "",
+              "m_JsonPath": "",
+              "Shared": null
+            }
+          },
+          "Answers": [],
+          "Continue": {
+            "Cues": [],
+            "Strategy": "First"
+          }
+        },
+        "OriginalTextKey": "056942f6-32d0-4480-8ff7-29356b43db19",
+        "OriginalTextSha256": "3DB9ED6DA8A201ABA80C130511DC4895A94C0ED24A1067A8BAF251FDDBAFA0F7",
+        "PageGuid": "5c95d8e3fa4f3b44896914987cb04b0b",
+        "PageCueIndex": 0
+      },
+      {
+        "Guid": "71f85264d9064074f9cf74999ecbffa9",
+        "Type": "BlueprintEtude",
+        "Path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "\u041c\u0438\u043d\u0430\u0433\u043e \u0438 \u0427\u0438\u0432\u0430\u0440\u0440\u043e \u0436\u0438\u0432\u044b \u0438 \u0432\u0441\u0451 \u0443 \u043d\u0438\u0445 \u0445\u043e\u0440\u043e\u0448\u043e\u0441",
+          "m_Parent": "!bp_591f5e933c1c4b61b1b05c599a1700a0",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      },
+      {
+        "Guid": "fd2ab9b67ce3e284184b1894c82c6c5d",
+        "Type": "BlueprintEtude",
+        "Path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Parent": "!bp_591f5e933c1c4b61b1b05c599a1700a0",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      },
+      {
+        "Guid": "3b8c0801d5e9a694b848ee13564d2ad7",
+        "Type": "BlueprintEtude",
+        "Path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoDead.jbp",
+        "Data": {
+          "$type": "de1b6b4bab9b223478a7bc8835ca81d7, BlueprintEtude",
+          "PrototypeLink": null,
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "m_Parent": "!bp_9739fa017d04fe7478bf51dc1ad18b53",
+          "ActivationCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "CompletionCondition": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "m_Synchronized": [],
+          "m_AllowActionStart": true,
+          "m_LinkedAreaPart": null,
+          "m_IncludeAreaParts": true,
+          "m_AddedAreaMechanics": [],
+          "m_StartsWith": [],
+          "m_StartsOnComplete": [],
+          "m_StartsParent": false,
+          "m_CompletesParent": false,
+          "m_ConflictingGroups": [],
+          "Priority": 0
+        }
+      }
+    ],
+    "NativePairedPageReconfiguration": "using BlueprintCore.Actions.Builder;\nusing BlueprintCore.Actions.Builder.StoryEx;\nusing BlueprintCore.Blueprints.Configurators.DialogSystem;\nusing BlueprintCore.Conditions.Builder;\nusing BlueprintCore.Conditions.Builder.StoryEx;\n\nnamespace RanRomance.Mina;\n\npublic class MinaEpil\n{\n\tpublic static void Configure()\n\t{\n\t\tSlideAeon.Configure();\n\t\tSlide0001.Configure();\n\t\tSlide0002.Configure();\n\t\tSlide0003.Configure();\n\t\tSlide0004.Configure();\n\t\tSlide0005.Configure();\n\t\tSlide0006.Configure();\n\t\tSlide0007.Configure();\n\t\tSlide0008.Configure();\n\t\tActionsBuilder onShow = ActionsBuilder.New().MarkCuesSeen(\"RanRomMinaSlide0001\").MarkCuesSeen(\"RanRomMinaSlide0002\")\n\t\t\t.MarkCuesSeen(\"RanRomMinaSlide0003\")\n\t\t\t.MarkCuesSeen(\"RanRomMinaSlide0004\")\n\t\t\t.MarkCuesSeen(\"RanRomMinaSlide0005\")\n\t\t\t.MarkCuesSeen(\"RanRomMinaSlide0006\")\n\t\t\t.MarkCuesSeen(\"RanRomMinaSlide0007\")\n\t\t\t.MarkCuesSeen(\"RanRomMinaSlide0008\");\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0001\").SetOnShow(onShow).Configure();\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0002\").SetOnShow(onShow).Configure();\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0003\").SetOnShow(onShow).Configure();\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0004\").SetOnShow(onShow).Configure();\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0005\").SetOnShow(onShow).Configure();\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0006\").SetOnShow(onShow).Configure();\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0007\").SetOnShow(onShow).Configure();\n\t\tBookPageConfigurator.For(\"RanRomMinaSlide0008\").SetOnShow(onShow).Configure();\n\t\tConditionsBuilder conditions = ConditionsBuilder.New().DialogSeen(\"91a3699b2b12496db23b33dad6746d31\").AnswerSelected(\"b192e1e211654bcca27924c12e8aa617\", null, negate: true);\n\t\tConditionsBuilder conditions2 = ConditionsBuilder.New().AddOrAndLogic(conditions, negate: true).EtudeStatus(null, null, \"71f85264d9064074f9cf74999ecbffa9\", negate: false, null, true);\n\t\tBookPageConfigurator.For(\"5c95d8e3fa4f3b44896914987cb04b0b\").SetConditions(conditions2).Configure();\n\t}\n}",
+    "SequenceTopology": {
+      "Scope": "Context only; these sequence targets are additional to the original 83 direct continuation/ending targets and are not added to core Bindings.",
+      "NativePairedSequence": {
+        "Guid": "f8d7f50e3bb88c143834d234c0b24474",
+        "Type": "BlueprintCueSequence",
+        "Path": "World/Dialogs/Epilogues/CueSequence_Special.jbp",
+        "Data": {
+          "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+          "PrototypeLink": "",
+          "m_Overrides": [],
+          "Components": [],
+          "Comment": "",
+          "ParentAsset": "f4958714381a3044b8d83c0bba86c21c",
+          "ShowOnce": false,
+          "ShowOnceCurrentDialog": false,
+          "Conditions": {
+            "Operation": "And",
+            "Conditions": []
+          },
+          "Cues": [
+            "!bp_1d9f98606a634f94bf5cfb7999121914",
+            "!bp_32774ce2179449099220783b7e2f9837",
+            "!bp_7dadb517c882435f95f82d069b6422f4",
+            "!bp_ae1f824fe248d9f4aac7d39ec2e12140",
+            "!bp_99eddf2ebc4ddee4daedc247f00ee310",
+            "!bp_5c95d8e3fa4f3b44896914987cb04b0b",
+            "!bp_8f494f2b927b478458268bb0b3d177d2",
+            "!bp_743a5ff3baab9264aa92c306b47456f8",
+            "!bp_1df02d216bdd4e246b66b21074479767",
+            "!bp_69239b35f60e4d47b42f629b93c6e56d",
+            "!bp_900512dc72f04a34aaf864aa595d72a2",
+            "!bp_3915e283ab044349981fe9fa0be800b0",
+            "!bp_7ad402cd701a44cda57c5af3ea4d3e8c",
+            "!bp_441adfe8222567345b01892fe11806d8",
+            "!bp_9af05128f0bf94349bde191f62aeba3d"
+          ],
+          "m_Exit": "!bp_d649f17a42a8e0c418bb336ced272934"
+        }
+      },
+      "NativePairedPageGuid": "5c95d8e3fa4f3b44896914987cb04b0b",
+      "NativePairedPageIndex": 5,
+      "ParentSequence": {
+        "Guid": "ed4baeaf69394754902344f0598d7e5a",
+        "Type": "BlueprintCueSequence",
+        "Name": "RanRomAdd",
+        "Source": "Epilogue.Setup.EpSetup.Configure",
+        "Evidence": "CueSequenceConfigurator.New(\"RanRomAdd\", \"ed4baeaf69394754902344f0598d7e5a\").AddToCues(\"RanRomAranSlideHulr\").AddToCues(\"RanRomNoctSlide0001\")\n\t\t\t.AddToCues(\"RanRomNoctSlide0003\")\n\t\t\t.AddToCues(\"RanRomNoctSlide0002\")\n\t\t\t.AddToCues(\"RanRomNoctSlide0004\")\n\t\t\t.AddToCues(\"RanRomNuraSlide0001\")\n\t\t\t.AddToCues(\"RanRomNuraSlide0002\")\n\t\t\t.AddToCues(\"RanRomNuraSlide0003\")\n\t\t\t.AddToCues(\"RanRomNuraSlide0004\")\n\t\t\t.AddToCues(\"RanRomTargSlideSwarm\")\n\t\t\t.AddToCues(\"RanRomTargSlide0001\")\n\t\t\t.AddToCues(\"RanRomTargSlide2001\")\n\t\t\t.AddToCues(\"RanRomTargSlide0002\")\n\t\t\t.AddToCues(\"RanRomTargSlide2002\")\n\t\t\t.AddToCues(\"RanRomTargSlide0003\")\n\t\t\t.AddToCues(\"RanRomTargSlide0004\")\n\t\t\t.AddToCues(\"RanRomTargSlide2004\")\n\t\t\t.AddToCues(\"RanRomTargSlide0007\")\n\t\t\t.AddToCues(\"RanRomTargSlide2007\")\n\t\t\t.AddToCues(\"RanRomTargSlide1001\")\n\t\t\t.AddToCues(\"RanRomTargSlide3001\")\n\t\t\t.AddToCues(\"RanRomTargSlide0005\")\n\t\t\t.AddToCues(\"RanRomTargSlide2005\")\n\t\t\t.AddToCues(\"RanRomTargSlide0006\")\n\t\t\t.AddToCues(\"RanRomTargSlide2006\")\n\t\t\t.AddToCues(\"RanRomTargSlide0008\")\n\t\t\t.AddToCues(\"RanRomTargSlide2008\")\n\t\t\t.AddToCues(\"RanRomTereSlide0001\")\n\t\t\t.AddToCues(\"RanRomTereSlide0002\")\n\t\t\t.AddToCues(\"RanRomTereSlide0003\")\n\t\t\t.AddToCues(\"RanRomTereSlide0004\")\n\t\t\t.AddToCues(\"RanRomTereSlide0005\")\n\t\t\t.AddToCues(\"RanRomTereSlide0006\")\n\t\t\t.AddToCues(\"RanRomTereSlide0007\")\n\t\t\t.AddToCues(\"RanRomAranSlide0001\")\n\t\t\t.AddToCues(\"RanRomAranSlide0002\")\n\t\t\t.AddToCues(\"RanRomAranSlide0004\")\n\t\t\t.AddToCues(\"RanRomAranSlide0005\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0001\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0002\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0003\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0004\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0005\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0006\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0007\")\n\t\t\t.AddToCues(\"RanRomMinaSlide0008\")\n\t\t\t.SetConditions(conditions)\n\t\t\t.SetExit(\"RanRomAddExit\")\n\t\t\t.Configure();",
+        "MinaghoPages": [
+          {
+            "Name": "RanRomMinaSlide0001",
+            "Guid": "951e4432cf844a36a8a222b27589fb43",
+            "SourceCueIndex": 38
+          },
+          {
+            "Name": "RanRomMinaSlide0002",
+            "Guid": "6db8635856e74b6cac46330bd82b4ff5",
+            "SourceCueIndex": 39
+          },
+          {
+            "Name": "RanRomMinaSlide0003",
+            "Guid": "8df5edb6f69040c69d7da78d2bf20cb6",
+            "SourceCueIndex": 40
+          },
+          {
+            "Name": "RanRomMinaSlide0004",
+            "Guid": "5a5865ceca0e42049288351a76b18ba9",
+            "SourceCueIndex": 41
+          },
+          {
+            "Name": "RanRomMinaSlide0005",
+            "Guid": "126762ac92364ac5bdec69c6e3fdfd1a",
+            "SourceCueIndex": 42
+          },
+          {
+            "Name": "RanRomMinaSlide0006",
+            "Guid": "01677da8df6e42c6b4803ceef524b1fe",
+            "SourceCueIndex": 43
+          },
+          {
+            "Name": "RanRomMinaSlide0007",
+            "Guid": "9c5c5825bf3245d0ae763c6e69ecdc38",
+            "SourceCueIndex": 44
+          },
+          {
+            "Name": "RanRomMinaSlide0008",
+            "Guid": "3792457f35734d75a4d4b53055f7f5d0",
+            "SourceCueIndex": 45
+          }
+        ]
+      },
+      "ConditionalParentSequence": {
+        "Guid": "2b9424b1b93e4d0896b0958db79d2339",
+        "Type": "BlueprintCueSequence",
+        "Name": "RanRomInt",
+        "Source": "Epilogue.Setup.EpSetup.Configure",
+        "Condition": "Harmony.HasAnyPatches(\"RanEpilogue\")",
+        "Evidence": "CueSequenceConfigurator.New(\"RanRomInt\", \"2b9424b1b93e4d0896b0958db79d2339\").AddToCues(\"RanRomAranSlideHulr\").AddToCues(\"RanRomNoctSlide0001\")\n\t\t\t\t.AddToCues(\"RanRomNoctSlide0003\")\n\t\t\t\t.AddToCues(\"RanRomNoctSlide0002\")\n\t\t\t\t.AddToCues(\"RanRomNoctSlide0004\")\n\t\t\t\t.AddToCues(\"RanRomNuraSlide0001\")\n\t\t\t\t.AddToCues(\"RanRomNuraSlide0002\")\n\t\t\t\t.AddToCues(\"RanRomNuraSlide0003\")\n\t\t\t\t.AddToCues(\"RanRomNuraSlide0004\")\n\t\t\t\t.AddToCues(\"RanRomTargSlideSwarm\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0001\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide2001\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0002\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide2002\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0003\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0004\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide2004\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0007\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide2007\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide1001\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide3001\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0005\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide2005\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0006\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide2006\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide0008\")\n\t\t\t\t.AddToCues(\"RanRomTargSlide2008\")\n\t\t\t\t.AddToCues(\"RanRomTereSlide0001\")\n\t\t\t\t.AddToCues(\"RanRomTereSlide0002\")\n\t\t\t\t.AddToCues(\"RanRomTereSlide0003\")\n\t\t\t\t.AddToCues(\"RanRomTereSlide0004\")\n\t\t\t\t.AddToCues(\"RanRomTereSlide0005\")\n\t\t\t\t.AddToCues(\"RanRomTereSlide0006\")\n\t\t\t\t.AddToCues(\"RanRomTereSlide0007\")\n\t\t\t\t.AddToCues(\"RanRomAranSlide0001\")\n\t\t\t\t.AddToCues(\"RanRomAranSlide0002\")\n\t\t\t\t.AddToCues(\"RanRomAranSlide0004\")\n\t\t\t\t.AddToCues(\"RanRomAranSlide0005\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0001\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0002\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0003\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0004\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0005\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0006\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0007\")\n\t\t\t\t.AddToCues(\"RanRomMinaSlide0008\")\n\t\t\t\t.SetConditions(conditions)\n\t\t\t\t.SetExit(\"RanRomIntExit\")\n\t\t\t\t.Configure();",
+        "RuntimeActivationVerified": false
+      },
+      "ExtractionPath": "C:\\Users\\Z\\AppData\\Local\\Temp\\minachiv-binding-expansion-e4c287\\EpSetup.cs",
+      "ExtractionSha256": "E001985249EB6C6369F4DA8B5E5AE68DC4E81EA9329F594EE6E45B1A0424DDE6"
+    },
+    "ReviewedContractManuscriptSha256": "BD12627BB8F5BA80DAB93746388BC714E34B058AF76D2F65D6D64CFCC6EAF7FF",
+    "CurrentManuscriptSha256": "171AF8D4950B6C97596C0D9636FCA6982AAB2D176DD653022B0DBFBA27C19665",
+    "CurrentManuscriptChanges": [
+      {
+        "Scene": "minachiv.the_entrance_she_wants",
+        "Node": "warm",
+        "Before": "",
+        "After": "ChivarroWarm"
+      }
+    ]
+  }
 }

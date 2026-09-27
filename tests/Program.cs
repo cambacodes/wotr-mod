@@ -127,7 +127,10 @@ internal static class Program
                 .Concat(story.CompletedEtudes.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintEtude", Source = e.Key }))
                 .Concat(story.Revivals.Select(e => new { Guid = e.Value.Unit, ExpectedType = "BlueprintUnit", Source = "revive." + e.Key }))
                 .Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits).Select(guid => new { Guid = guid, ExpectedType = "BlueprintUnit", Source = s.Id })))
-                .Concat(story.Scenes.SelectMany(s => s.Areas.Select(guid => new { Guid = guid, ExpectedType = "BlueprintArea", Source = s.Id })));
+                .Concat(story.Scenes.SelectMany(s => s.Areas.Select(guid => new { Guid = guid, ExpectedType = "BlueprintArea", Source = s.Id })))
+                .Concat(story.ParentEpilogueEdits.Select(e => new { Guid = e.Key, ExpectedType = "BlueprintCue", Source = "parent-ending-edit" }))
+                .Concat(story.ParentEpilogueLossRules.SelectMany(r => r.SuppressPages.Select(guid => new { Guid = guid, ExpectedType = "BlueprintBookPage", Source = r.Id })))
+                .Concat(story.ParentEpilogueLossRules.SelectMany(r => r.SuppressCues.Concat(r.SurvivorAlternates.Keys).Select(guid => new { Guid = guid, ExpectedType = "BlueprintCue", Source = r.Id })));
             Console.WriteLine(JsonSerializer.Serialize(bindings));
             return;
         }

@@ -37,6 +37,14 @@ class ParentBindingTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "identity/type"):
                 read()
             record["Type"] = "BlueprintEtude"
+            page = {"Guid": "951e4432cf844a36a8a222b27589fb43", "Type": "BlueprintBookPage",
+                    "Source": "Fixture.Page", "Evidence": 'BookPageConfigurator.New("Page", "951e4432cf844a36a8a222b27589fb43")'}
+            manifest["Bindings"].append(page)
+            self.assertEqual(read()[page["Guid"]]["type"], "BlueprintBookPage")
+            page["Evidence"] = page["Evidence"].replace("BookPageConfigurator", "CueConfigurator")
+            with self.assertRaisesRegex(ValueError, "identity/type"):
+                read()
+            manifest["Bindings"].pop()
             manifest["Bindings"].append(dict(record))
             with self.assertRaisesRegex(ValueError, "Duplicate"):
                 read()
