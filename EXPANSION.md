@@ -1,5 +1,9 @@
 # Romance expansion work record
 
+Current delivery priority: finish the adult romance partners and conduct the first in-game test before resuming further Ember and Aivu work.
+This follows the user's latest instruction and changes scheduling, not their eventual full-content friendship scope or quality requirements.
+Preserve all existing Ember and Aivu work.
+
 The requested outcome is an installed, shareable expansion with distinct routes for the eligible adult women in [the roster](ROSTER.md), extending existing game and RanRomance content where it already exists.
 The original Anevia and Irabeth relationship must continue to work with existing saves.
 Relationships may intersect through introductions, affairs, and optional Commander-plus-two-women relationships.
