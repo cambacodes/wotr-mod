@@ -502,6 +502,7 @@ internal static class Program
         Console.WriteLine("Story SHA256 " + Hash(storyPath));
         ChoiceExtensionManagedTests.Run(native, Seed<BlueprintUnlockableFlag>, Seed<BlueprintCue>, Id, Check);
         NativeReaderManagedTests.Run(story, native, Check);
+        EpilogueAfterManagedTests.Run(Id, Check);
         Console.WriteLine("Scope: real managed blueprint construction and native ending seen-state checks; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. Ending probes bypass route eligibility, Unity page rendering and debug logging. No parent-mod initialization, full campaign condition evaluation, portraits, ToyBox execution or game save round trip.");
         return 0;
     }

@@ -37,6 +37,7 @@ MYTHIC_PATHS = ("Aeon", "Angel", "Azata", "Demon", "Devil", "Dragon", "Legend", 
 MYTHIC_ENUM = {"PlayerIs" + p for p in MYTHIC_PATHS} | {p + "Unlocked" for p in MYTHIC_PATHS}
 ALIGNMENT_DIRECTIONS = {"LawfulGood", "NeutralGood", "ChaoticGood", "LawfulNeutral", "TrueNeutral", "ChaoticNeutral",
                         "LawfulEvil", "NeutralEvil", "ChaoticEvil", "Good", "Evil", "Lawful", "Chaotic"}
+CUE_BASE_TYPES = {"BlueprintCue", "BlueprintBookPage", "BlueprintCueSequence", "BlueprintCheck"}
 NURAH_CAPITAL = "2570015799edf594daf2f076f2f975d8"
 NURAH_CONTACT = "f999fc37ddb225640b7f98c0a05d6948"
 ANEVIA_LIST, IRABETH_LIST = "33960c7f7af40cd43b7f801a76c87a0b", "871af36f2ab2b1f40b5de77976c54276"
@@ -52,7 +53,8 @@ def norm_scene(s):
              Remote=False, ManualOnly=False, InteractionHub=None, Recovery=None, AfterRecovery=None,
              AfterDeparture=None, ContactUnit=None, AdditionalContactUnits=[], MinChapter=1, MaxChapter=5,
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
-             ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None)
+             ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None,
+             EpilogueAfter=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", "")
@@ -1239,6 +1241,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             except ValueError: pass
             for g in s["Areas"]: want.append((g, "BlueprintArea", "Area@" + s["Id"]))
             if s["NativeReturnCue"]: want.append((s["NativeReturnCue"], "BlueprintCue", "NativeReturnCue@" + s["Id"]))
+            if s["EpilogueAfter"]: want.append((s["EpilogueAfter"], "BlueprintCueBase", "EpilogueAfter@" + s["Id"]))   # a cue or a book page
             for n in s["Nodes"]:
                 for c in n["Choices"]:
                     if c["NativeNext"]: want.append((c["NativeNext"], "BlueprintCue", "NativeNext@%s/%s" % (s["Id"], n["Id"])))
@@ -1256,7 +1259,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             if not hit: bad.append(dict(guid=g, expected=t, where=where, actual=None))
             elif hit[0] == "?parent-literal":
                 parent_untyped.append(dict(guid=g, expected=t, where=where, source=hit[1]))
-            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1])):
+            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES):
                 bad.append(dict(guid=g, expected=t, where=where, actual=hit[0], path=hit[1]))
         # hard-coded GUIDs in src/*.cs
         srcg = collections.defaultdict(set)

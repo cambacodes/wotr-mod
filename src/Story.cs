@@ -138,6 +138,9 @@ namespace Tirabade
         // the entry whose Device is this scene is used, else every entry of the relationship.
         public bool TricksterDevice;
         public string? TricksterState;
+        // ER-3: an epilogue page placed right after this native page or cue of its sequence (authored order among pages
+        // sharing an anchor); appended as before when the anchor is not a member of the sequence.
+        public string? EpilogueAfter;
         public string[] Requires = Array.Empty<string>();
         public string[] RequiresAny = Array.Empty<string>();
         public string[][] RequiresAnyGroups = Array.Empty<string[]>();
@@ -679,6 +682,9 @@ namespace Tirabade
                 if (scene.AfterDeparture != null) ValidateDepartureVisit(story, scene);
                 if (scene.Reaction) ValidateReaction(story, scene);
                 if (scene.TricksterDevice || scene.TricksterState != null) ValidateDevice(story, scene);
+                if (scene.EpilogueAfter != null && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    || !Guid.TryParseExact(scene.EpilogueAfter, "N", out var anchor) || anchor == Guid.Empty))
+                    throw new InvalidOperationException("EpilogueAfter needs an epilogue page and a native page or cue GUID: " + scene.Id);
                 foreach (var target in EntryTargets(scene))
                     if (!Guid.TryParseExact(target, "N", out _)) throw new InvalidOperationException("Invalid dialogue attachment: " + scene.Id + "/" + target);
                 foreach (var area in scene.Areas)

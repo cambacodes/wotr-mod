@@ -357,8 +357,9 @@ namespace Tirabade
                         var sequence = scene.Owner == "AeonEpilogue" ? aeon : epilogue;
                         if (sequence == null || !parentAttached && parentOwned.Contains(scene.Relationship)) continue;
                         var page = Ref<BlueprintCueBaseReference>(Get<BlueprintBookPage>(GuidFor("page." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
-                        sequence.Cues.Add(page);
-                        if (scene.Owner != "AeonEpilogue") expandedEpilogue?.Cues.Add(page);
+                        if (!InsertEpiloguePage(sequence.Cues, page, scene.EpilogueAfter))
+                            warnings.Add("Epilogue anchor " + scene.EpilogueAfter + " is not in the sequence; " + scene.Id + " was appended.");
+                        if (scene.Owner != "AeonEpilogue" && expandedEpilogue != null) InsertEpiloguePage(expandedEpilogue.Cues, page, scene.EpilogueAfter);
                         continue;
                     }
                     if (Rules.IsRemote(scene) || scene.InteractionHub != null) continue;
@@ -374,6 +375,24 @@ namespace Tirabade
                 foreach (var warning in warnings) entry.Logger.Log("Integration warning: " + warning);
             }
             catch (Exception ex) { error = ex.Message; entry.Logger.LogException(ex); }
+        }
+
+        // ER-3: pages anchored after a native page follow it (and the RRT pages already placed after it, keeping authored order).
+        private static readonly HashSet<BlueprintCueBaseReference> anchoredPages = new HashSet<BlueprintCueBaseReference>();
+
+        internal static bool InsertEpiloguePage(List<BlueprintCueBaseReference> cues, BlueprintCueBaseReference page, string? after)
+        {
+            int at = after == null ? -1 : cues.FindIndex(reference => reference.Guid == BlueprintGuid.Parse(after));
+            if (at < 0)
+            {
+                cues.Add(page);
+                return after == null;
+            }
+            int index = at + 1;
+            while (index < cues.Count && anchoredPages.Contains(cues[index])) index++;
+            cues.Insert(index, page);
+            anchoredPages.Add(page);
+            return true;
         }
 
         private static void InitializeAnswer(BlueprintAnswer answer)

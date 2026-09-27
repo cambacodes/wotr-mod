@@ -54,7 +54,9 @@ def main():
     for binding in bindings:
         target = found.get(binding["Guid"])
         expected = binding["ExpectedType"]
-        matches = target is not None and (target["type"].startswith(expected[:-1]) if expected.endswith("*") else target["type"] == expected)
+        cue_base = {"BlueprintCue", "BlueprintBookPage", "BlueprintCueSequence", "BlueprintCheck"}
+        matches = target is not None and (target["type"].startswith(expected[:-1]) if expected.endswith("*")
+                                          else target["type"] in cue_base if expected == "BlueprintCueBase" else target["type"] == expected)
         if not matches:
             failures.append({**binding, "Actual": target})
     report = {
