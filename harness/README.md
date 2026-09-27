@@ -213,3 +213,7 @@ The script therefore launches the normal windowed game minimized. `-Windowed` ad
 4. To reproduce a failure deterministically, rerun with the same `-Seed`, `-SceneFilter <scene id>` and `-Saves <save>`.
    For branch coverage of one scene, use `-Mode dfs -MaxPathsPerScene 32`.
 5. Nightly or pre-release, run `-Force` over a late-game save for crash-hunting across all scenes.
+
+## Presence hooks (E12/E12c)
+
+`RrtBridge.PresenceReport()` returns one line per presence ("key [mode] wanted; status; click-to-talk attached|not attached"). `RrtBridge.PresenceClick(key)` clicks a presence the way the player would and returns true when its RRT hub dialog started; a live run can assert that the presence appeared and that its hub opens.

@@ -13,6 +13,9 @@ using Kingmaker.UnitLogic.Parts;
 namespace Tirabade
 {
     // Transient click ownership only. Arrival and the authored greeting are supplied separately.
+    // Also used by E12c presence hubs. The interaction lives only in UnitPartInteractions.m_Interactions, which Owlcat does not
+    // serialize (native SpawnerInteractionDialog adds its dialog interaction the same way at runtime), so nothing custom persists;
+    // Ensure<UnitPartInteractions>() may leave an empty native part on the unit, which loads without the mod.
     internal sealed class NurahInteraction
     {
         private readonly Func<UnitEntityData?> arrivedActor, commander;
@@ -26,6 +29,7 @@ namespace Tirabade
         private UnitPartInteractions? part;
         private bool attached, selectingOthers;
         internal Exception? LastError { get; private set; }
+        internal bool Attached => attached;
 
         internal NurahInteraction(NurahMeeting meeting, BlueprintDialog dialog, Func<bool> canOpen)
             : this(meeting.ArrivedActor, () => Game.Instance?.Player?.MainCharacter.Value, dialog, canOpen,

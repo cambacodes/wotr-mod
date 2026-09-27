@@ -68,6 +68,9 @@ namespace Tirabade
         private static readonly Dictionary<string, BlueprintQuest> startedQuests = new Dictionary<string, BlueprintQuest>();
         // E12 returned presences, and the last status line logged for each.
         private static readonly List<GuestPresence> presences = new List<GuestPresence>();
+        // E12c: click-to-talk hubs for presences with Dialog "hub" (the Nurah hub pattern, generalized).
+        private static readonly Dictionary<string, BlueprintDialog> presenceHubs = new Dictionary<string, BlueprintDialog>();
+        private static readonly Dictionary<string, NurahInteraction> presenceClicks = new Dictionary<string, NurahInteraction>();
         private static readonly List<NativeEpilogueEdit.Plan> nativeEditPlans = new List<NativeEpilogueEdit.Plan>();
         private static readonly Dictionary<string, string> presenceStatus = new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, BlueprintUnit> revivalUnits = new Dictionary<string, BlueprintUnit>();
@@ -117,6 +120,7 @@ namespace Tirabade
                     irabethMeeting?.Tick();
                     nurahMeeting?.Tick();
                     nurahInteraction?.Tick();
+                    foreach (var click in presenceClicks.Values) click.Tick();
                     return true;
                 };
                 mod.OnGUI = OnGUI;
@@ -384,6 +388,8 @@ namespace Tirabade
                         ConfigureNativeEffects(answer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
                 }
                 if (story.Scenes.Any(Rules.IsNurahHubScene)) nurahHub = BuildNurahHub();
+                foreach (var pair in story.Presences.Where(p => p.Value.Dialog == "hub"))
+                    presenceHubs[pair.Key] = BuildPresenceHub(pair.Key, pair.Value);
                 // E14d: every replacement cue is registered (save names); only verified edits get their native presentation.
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
@@ -414,6 +420,15 @@ namespace Tirabade
                 nurahMeeting = Optional("Nurah meeting", () => new NurahMeeting(nurahEtude, CurrentNurahVisit, Get<SimpleBlueprint>));
                 if (nurahHub != null && nurahMeeting != null)
                     nurahInteraction = Optional("Nurah hub", () => new NurahInteraction(nurahMeeting, nurahHub, CanOpenNurahHub));
+                foreach (var presence in presences)
+                    if (presenceHubs.TryGetValue(presence.Key, out var hub))
+                    {
+                        var guest = presence;
+                        var click = Optional("Presence hub " + guest.Key, () => new NurahInteraction(() => guest.Actor,
+                            () => Game.Instance?.Player?.MainCharacter.Value, hub, () => CanOpenPresenceHub(guest),
+                            (dialog, target, user) => Game.Instance.DialogController.StartDialogWithUnit(dialog, target, user)));
+                        if (click != null) presenceClicks[guest.Key] = click;
+                    }
                 // Relationships whose endings are rewritten through the parent's epilogue; without the integration
                 // their own pages are withheld so they cannot contradict the parent's unmodified slides.
                 var parentOwned = new HashSet<string>(story.ParentEpilogueLossRules.SelectMany(r => r.ReplacementScenes)
@@ -800,6 +815,68 @@ namespace Tirabade
             cue.Continue = Cues();
             cue.ShowOnce = false;
             cue.Text = Text(name.Substring("cue.".Length), text);
+        }
+
+        // E12c: the Nurah arrival hub, generalized: one page listing the presence's hub scenes (each entry starts its scene
+        // through RouteAction, exactly as a native-list entry does) and a leave answer.
+        private static BlueprintDialog BuildPresenceHub(string key, Presence presence)
+        {
+            var scenes = story.Scenes.Where(scene => scene.InteractionHub == key).ToArray();
+            var page = New<BlueprintBookPage>("page." + key + ".hub");
+            page.ShowOnce = false;
+            page.Conditions = Conditions();
+            page.OnShow = Actions();
+            page.Title = Text("title." + key + ".hub", scenes[0].Title);
+            string greeting = presence.Greeting ?? "{n}There is time to talk, if you want it.{/n}";
+            CueSetup(out var cue, "cue." + key + ".hub", greeting);
+            page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
+            pages.Add(page.AssetGuid.ToString(), new Node { Id = "hub", Speaker = scenes[0].Owner, Portrait = scenes[0].Owner, Text = greeting });
+            foreach (var scene in scenes)
+            {
+                var answer = New<BlueprintAnswer>("answer." + key + ".hub." + scene.Id);
+                InitializeAnswer(answer);
+                answer.Text = Text(answer.name, scene.Entry.Length > 0 ? scene.Entry : scene.Title);
+                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene });
+                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene });
+                answer.OnSelect = Actions(new RouteAction { Start = scene });
+                if (scene.EntryMythic != null || scene.EntryAlignment != null)
+                    ConfigureNativeEffects(answer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
+                page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
+            }
+            var leave = New<BlueprintAnswer>("answer." + key + ".hub.leave");
+            InitializeAnswer(leave);
+            leave.Text = Text(leave.name, "[Another time.]");
+            page.Answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
+            var dialog = New<BlueprintDialog>("dialog." + key + ".hub");
+            dialog.Type = DialogType.Book;
+            dialog.Conditions = Conditions();
+            dialog.FirstCue = Cues(page);
+            dialog.TurnPlayer = false;
+            dialog.TurnFirstSpeaker = false;
+            dialog.StartActions = Actions();
+            dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
+            return dialog;
+        }
+
+        private static bool CanOpenPresenceHub(GuestPresence presence)
+        {
+            if (!initialized || !enabled || !Idle() || presence.Actor == null) return false;
+            string relationship = presence.Key.Substring(0, presence.Key.Length - ".presence".Length);
+            if (degraded.Contains(relationship)) return false;
+            var state = State();
+            return Rules.PresenceWanted(presence.Spec, state)
+                && story.Scenes.Any(scene => scene.InteractionHub == presence.Key && Rules.Available(story, scene, state));
+        }
+
+        // Harness hook (E12c): click a presence the way the player would; true when its hub dialog started.
+        internal static bool PresenceClick(string key)
+        {
+            if (!presenceClicks.TryGetValue(key, out var click)) return false;
+            var guest = presences.FirstOrDefault(p => p.Key == key);
+            var user = Game.Instance?.Player?.MainCharacter.Value;
+            if (guest?.Actor == null || user == null || !CanOpenPresenceHub(guest)) return false;
+            Game.Instance.DialogController.StartDialogWithUnit(presenceHubs[key], guest.Actor, user);
+            return true;
         }
 
         private static BlueprintDialog BuildNurahHub()
@@ -1295,6 +1372,7 @@ namespace Tirabade
             irabethMeeting?.Tick();
             nurahMeeting?.Tick();
             nurahInteraction?.Tick();
+            foreach (var click in presenceClicks.Values) click.Tick();
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();
@@ -1367,7 +1445,9 @@ namespace Tirabade
 
         // Harness hook (GLOBAL-20): one line per presence, "<key> [mode] wanted|not wanted; <status>".
         internal static string[] PresenceReport() => presences.Select(presence =>
-            presenceStatus.TryGetValue(presence.Key, out var line) ? line : presence.Key + " [" + presence.Spec.Mode + "] not observed").ToArray();
+            (presenceStatus.TryGetValue(presence.Key, out var line) ? line : presence.Key + " [" + presence.Spec.Mode + "] not observed")
+            + (presenceClicks.TryGetValue(presence.Key, out var click) ? "; click-to-talk " + (click.Attached ? "attached" : "not attached")
+                + (click.LastError != null ? " (" + click.LastError.Message + ")" : "") : "")).ToArray();
 
         // E1: persist every latch the current snapshot observes. Idle-only, so native state is settled.
         private static void RecordLatches()

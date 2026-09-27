@@ -363,6 +363,7 @@ internal static class Program
         CountTests.Run(Check);
         SceneAnchorTests.Run(Check);
         PresenceAnchorTests.Run(Check);
+        PresenceHubTests.Run(Check);
         // __E14_RULES__
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);

@@ -30,6 +30,7 @@ namespace RRT.TestHarness
             ("Tirabade.Main", "State", "static-method()", "Snapshot"),
             ("Tirabade.Main", "Set", "static-method(String,Int32)", "Void"),
             ("Tirabade.Main", "PresenceReport", "static-method()", "String[]"),
+            ("Tirabade.Main", "PresenceClick", "static-method(String)", "Boolean"),
             ("Tirabade.Main+RouteCondition", "CheckCondition", "instance-method()", "Boolean"),
             ("Tirabade.Main+RouteAction", "RunAction", "instance-method()", "Void"),
             ("Tirabade.Story", "Scenes", "field", "List<Scene>"),
@@ -110,7 +111,7 @@ namespace RRT.TestHarness
 
         public Assembly Assembly { get; }
         readonly Type main, rules, sceneT, nodeT, choiceT, snapshotT, storyT, relationshipT;
-        readonly MethodInfo state, set, available, contactAvailable, match, isRemote, presenceReport;
+        readonly MethodInfo state, set, available, contactAvailable, match, isRemote, presenceReport, presenceClick;
 
         public RrtBridge(Assembly asm)
         {
@@ -123,6 +124,7 @@ namespace RRT.TestHarness
             state = M(main, "State", "static-method()");
             set = M(main, "Set", "static-method(String,Int32)");
             presenceReport = M(main, "PresenceReport", "static-method()");
+            presenceClick = M(main, "PresenceClick", "static-method(String)");
             available = M(rules, "Available", "static-method(Story,Scene,Snapshot)");
             contactAvailable = M(rules, "ContactAvailable", "static-method(Story,Scene,Snapshot)");
             match = M(rules, "Match", "static-method(IEnumerable<String>,IEnumerable<String>,Snapshot)");
@@ -148,6 +150,8 @@ namespace RRT.TestHarness
         public object State() => Invoke(state, null);
         /// <summary>E12: one line per returned presence ("key [mode] wanted; status"), for verifying a presence appears.</summary>
         public string[] PresenceReport() => (string[])Invoke(presenceReport, null);
+        /// <summary>E12c: click a presence like the player; true when its RRT hub dialog started.</summary>
+        public bool PresenceClick(string key) => (bool)Invoke(presenceClick, key);
         public void Set(string key, int value = 1) => Invoke(set, key, value);
 
         static object Invoke(MethodInfo m, params object?[]? args)

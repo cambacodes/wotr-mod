@@ -125,6 +125,10 @@ namespace Tirabade
         // E12b: place relative to a live native anchor instead of captured coordinates.
         public PresenceAnchor? At;
         public string[] AnswerLists = Array.Empty<string>();
+        // E12c: "hub" makes the placed unit clickable; the click opens an RRT hub listing the available scenes whose
+        // InteractionHub is this presence key (the generalized Nurah arrival hub). Greeting is the hub page's text.
+        public string? Dialog;
+        public string? Greeting;
     }
 
     public sealed class PresenceAnchor
@@ -708,7 +712,7 @@ namespace Tirabade
             if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.ContinueBefore != null) return Array.Empty<string>();
             if (scene.InteractionHub != null)
             {
-                if (IsNurahHubScene(scene)) return Array.Empty<string>();
+                if (IsNurahHubScene(scene) || IsPresenceHubScene(scene)) return Array.Empty<string>();
                 throw new InvalidOperationException("Unrecognized authored interaction hub: " + scene.Id + "/" + scene.InteractionHub);
             }
             if (scene.AnswerLists.Length > 0) return scene.AnswerLists;
@@ -720,6 +724,12 @@ namespace Tirabade
             }
             throw new InvalidOperationException("No dialogue attachment points for " + scene.Id + " (" + scene.Owner + ").");
         }
+
+        // E12c: a physical scene offered in a presence's click-to-talk hub (InteractionHub = "<rel>.presence").
+        public static bool IsPresenceHubScene(Scene scene) => scene.InteractionHub != null
+            && scene.InteractionHub.EndsWith(".presence", StringComparison.Ordinal) && scene.InteractionHub != "nurah.arrival"
+            && !IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && scene.AnswerLists.Length == 0
+            && scene.NativeReturnCue == null && !scene.ReturnToList && scene.ContinueBefore == null;
 
         public static bool IsNurahHubScene(Scene scene) => scene.InteractionHub == "nurah.arrival"
             && scene.Relationship == "nurah" && scene.Owner == "Nurah" && !IsRemote(scene)
@@ -858,10 +868,13 @@ namespace Tirabade
             var ids = new HashSet<string>();
             foreach (var scene in story.Scenes)
             {
-                if (scene.InteractionHub != null && !IsNurahHubScene(scene))
-                    throw new InvalidOperationException("Invalid authored Nurah interaction-hub contract: " + scene.Id);
+                if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !(IsPresenceHubScene(scene)
+                    && story.Presences.TryGetValue(scene.InteractionHub, out var hubPresence) && hubPresence?.Dialog == "hub"
+                    && scene.InteractionHub == scene.Relationship + ".presence"))
+                    throw new InvalidOperationException("Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
+                        + "relationship whose presence has Dialog \"hub\"): " + scene.Id);
                 // E13: a Trickster device may meet Nurah physically on explicit native lists (prison, pardon, Camellia).
-                if (scene.Relationship == "nurah" && !IsRemote(scene) && !IsNurahHubScene(scene)
+                if (scene.Relationship == "nurah" && !IsRemote(scene) && !IsNurahHubScene(scene) && !IsPresenceHubScene(scene)
                     && !(scene.TricksterDevice && scene.InteractionHub == null && scene.AnswerLists.Length > 0))
                     throw new InvalidOperationException("Physical Nurah scenes require the authored arrival hub: " + scene.Id);
                 if (scene.ManualOnly && !IsRemote(scene))
@@ -1032,6 +1045,8 @@ namespace Tirabade
                     || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter
                     || p.Requires.Concat(p.Forbids).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))
+                    || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key))
+                    || p.Greeting != null && (p.Dialog == null || string.IsNullOrWhiteSpace(p.Greeting))
                     || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area))
                     throw new InvalidOperationException("Invalid presence (\"<relationship>.presence\", unit and area GUIDs, reuse-native|spawn-copy, "
                         + "known gates, spawn-copy needs Position and Requires): " + pair.Key);

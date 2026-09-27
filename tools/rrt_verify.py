@@ -82,10 +82,17 @@ def is_nurah_hub(s):
             and "nurah.meeting_accepted" in s["Requires"] and "nurah.meeting_arrived" in s["Requires"])
 
 
+def is_presence_hub(s):
+    """E12c: a physical scene offered in a presence's click-to-talk hub."""
+    h = s["InteractionHub"]
+    return (h is not None and h.endswith(".presence") and h != "nurah.arrival" and not is_remote(s) and not is_epilogue(s)
+            and not s["AnswerLists"] and s["NativeReturnCue"] is None and not s.get("ReturnToList") and not s.get("ContinueBefore"))
+
+
 def entry_targets(s):
     if is_remote(s) or is_epilogue(s) or s.get("ContinueBefore"): return []
     if s["InteractionHub"] is not None:
-        if is_nurah_hub(s): return []
+        if is_nurah_hub(s) or is_presence_hub(s): return []
         raise ValueError("Unrecognized authored interaction hub: " + s["Id"])
     if s["AnswerLists"]: return list(s["AnswerLists"])
     if s["Relationship"] == "tirabade":
@@ -575,6 +582,11 @@ def build_names(model):
             if not ending and (s["ContactUnit"] is not None or is_remote(s)):
                 names.append(("answer.%s.%s.contact_lost" % (s["Id"], n["Id"]), "BlueprintAnswer"))
         if s["NativeReturnCue"] is None: names.append(("dialog." + s["Id"], "BlueprintDialog"))
+    for key, p in (model.story.get("Presences") or {}).items():   # E12c presence hubs (Main.BuildPresenceHub)
+        if p.get("Dialog") != "hub": continue
+        names += [("page.%s.hub" % key, "BlueprintBookPage"), ("cue.%s.hub" % key, "BlueprintCue")]
+        names += [("answer.%s.hub.%s" % (key, s["Id"]), "BlueprintAnswer") for s in scenes if s["InteractionHub"] == key]
+        names += [("answer.%s.hub.leave" % key, "BlueprintAnswer"), ("dialog.%s.hub" % key, "BlueprintDialog")]
     for cue in (model.story.get("NativeEpilogueEdits") or {}):   # E14d replacement cues
         names.append(("native-edit." + cue, "BlueprintCue"))
     if any(is_nurah_hub(s) for s in scenes):
@@ -635,8 +647,11 @@ def validate(model):
             tg = entry_targets(s)
         except ValueError as e:
             errs.append(str(e)); tg = []
-        if s["InteractionHub"] is not None and not is_nurah_hub(s): errs.append("Invalid Nurah hub contract: " + sid)
-        if (s["Relationship"] == "nurah" and not is_remote(s) and not is_nurah_hub(s)
+        if s["InteractionHub"] is not None and not is_nurah_hub(s) and not (
+                is_presence_hub(s) and ((st.get("Presences") or {}).get(s["InteractionHub"]) or {}).get("Dialog") == "hub"
+                and s["InteractionHub"] == s["Relationship"] + ".presence"):
+            errs.append("Invalid interaction hub: " + sid)
+        if (s["Relationship"] == "nurah" and not is_remote(s) and not is_nurah_hub(s) and not is_presence_hub(s)
                 and not (s["TricksterDevice"] and s["InteractionHub"] is None and s["AnswerLists"])):
             errs.append("Physical Nurah scene without hub (or a TricksterDevice on explicit AnswerLists): " + sid)
         if (s["EntryMythic"] is not None or s["EntryAlignment"] is not None) and (

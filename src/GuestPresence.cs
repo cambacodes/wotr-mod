@@ -61,6 +61,8 @@ namespace Tirabade
         private Vector3 target;
         private float facing;
         internal bool AnchorFailed { get; private set; }
+        // E12c: the unit a click-to-talk hub attaches to (our copy, else the present native unit), refreshed each tick.
+        internal UnitEntityData? Actor { get; private set; }
 
         private bool ResolveTarget(Game game)
         {
@@ -135,6 +137,7 @@ namespace Tirabade
             {
                 var seen = Observe(out var native, out var copy, out var record);
                 var steps = Rules.PlanPresence(Spec, wanted, seen);
+                Actor = !wanted ? null : copy != null && seen.CopyAlive && copy.IsInGame ? copy : native != null && native.IsInGame ? native : null;
                 // E12b: an anchored copy that cannot be placed is reported, and exposed as <key>.failed for the letter twin.
                 AnchorFailed = wanted && seen.AreaLoaded && Spec.At != null && !seen.AnchorResolved && !seen.CopyFound && !seen.NativeAlive;
                 foreach (var step in steps) Execute(step, native, copy, record);
