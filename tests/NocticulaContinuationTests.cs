@@ -147,6 +147,8 @@ internal static class NocticulaContinuationTests
             check(aeon.Length == 1,
                 "Nocticula lacks a distinct altered-history recollection.");
             foreach (var page in available.Concat(aeon))
+            // Walk supplies synthetic completion state; native ending buttons do not.
+            // This checks Rules policy, not in-game once-only delivery or persistence.
             foreach (var result in Program.Walk(page, ending))
             {
                 var expectedFlags = new HashSet<string>(ending.Flags) { page.Id };
@@ -154,7 +156,7 @@ internal static class NocticulaContinuationTests
                 check(result.Flags.SetEquals(expectedFlags) && result.Times.Count == expectedTimes.Count
                     && expectedTimes.All(p => result.Times.TryGetValue(p.Key, out int value) && value == p.Value),
                     "Nocticula ending changes history beyond its own completion marker.");
-                check(!Rules.Available(story, page, result), "Completed Nocticula recollection repeats.");
+                check(!Rules.Available(story, page, result), "Nocticula recollection ignores a simulated completion flag.");
             }
             ending.Flags.Remove("noct.complete");
             check(!endings.Any(s => Rules.Available(story, s, ending)), "An unfinished undertaking grants a completed recollection.");

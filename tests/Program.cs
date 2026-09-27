@@ -332,6 +332,11 @@ internal static class Program
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "minagho_chivarro"
                 && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).Select(s => s.Id));
         }
+        if (story.Relationships.ContainsKey("nocticula"))
+        {
+            NocticulaContinuationTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula").Select(s => s.Id));
+        }
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;

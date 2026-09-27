@@ -9,7 +9,7 @@ The registered isolated 588-scene candidate passed 25,962,607 Rules assertions a
 The manuscript adds 1,736 distinct words and earns one personal meeting after a living political departure.
 Its supplier investigation, subsequent relationship and full departure recovery remain unfinished.
 Native meeting integration and test registration passed separate independent review and are committed in `2d52cf5`; actual Unity arrival, withdrawal, save/load and ToyBox remain unverified.
-The shared export and local development package now contain 588 scenes at that same story hash.
+The preceding local development package contains 588 scenes at that story hash.
 The complete packaging command passed 25,962,607 Rules assertions, 1,110 binding uses and 72,389 managed construction assertions.
 See [the 588-scene checkpoint](reference/parallel/expansion-588-shared-verification.md) for exact artifacts, evidence and limits.
 No installed mod changed.
@@ -69,8 +69,13 @@ The user's earlier instruction to proceed without previews remains applicable.
 
 ## Current development checkpoint
 
-The integrated development export has 585 scenes across 16 route groups covering 16 of the 37 planned characters.
+The integrated development export now has 612 scenes across 17 route groups covering 17 of the 37 planned characters.
 These counts describe written and integrated material, not completed routes.
+Nocticula adds sixteen living continuation scenes and eight supplementary endings after independent manuscript review scored every required category above 90.
+Her revised general portrait preserves the native exposed-skin costume pattern and is assigned explicitly to all 128 new pages.
+The integrated export passed 27,527,067 Rules assertions, 1,139 binding uses, and 74,817 managed construction assertions with the existing reviewed addon DLL.
+See [the 612-scene checkpoint](reference/parallel/expansion-612-shared-verification.md) for exact hashes and remaining approval boundaries.
+Nocticula's new acquisition, recovery and universal Trickster access remain unfinished.
 The [585-scene shared verification](reference/parallel/expansion-585-shared-verification.md) records the exact export, assembly, completed headless checks and remaining runtime boundaries.
 The latest [Vellexia integration checkpoint](reference/parallel/vellexia-campaign-integration-checkpoint.md) records the assembled export, remote-conversation repair, verification and remaining character work.
 Vellexia now has thirty entries with an independently reviewed ordinary correspondence campaign.

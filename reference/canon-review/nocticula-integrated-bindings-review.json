@@ -1,0 +1,1274 @@
+{
+  "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\Story.json",
+  "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
+  "binding_uses": 1139,
+  "unique_targets": 258,
+  "failures": [],
+  "targets": {
+    "32a037e97c3d5c54b85da8f639616c57": {
+      "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
+      "type": "BlueprintUnit"
+    },
+    "2779754eecffd044fbd4842dba55312c": {
+      "path": "Units/Companions/Ember/Ember_Companion.jbp",
+      "type": "BlueprintUnit"
+    },
+    "54be53f0b35bf3c4592a97ae335fe765": {
+      "path": "Units/Companions/Seelah/Seelah_Companion.jbp",
+      "type": "BlueprintUnit"
+    },
+    "b5e867e13503c6f41bb1316705efb4a2": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/AneviaTirabade_DrezenCapital.jbp",
+      "type": "BlueprintUnit"
+    },
+    "a609ed9b2205d034bb3bb04d2a255681": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+      "type": "BlueprintUnit"
+    },
+    "280d4712dceb37f4a88e98f1f4c6e64f": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/IrabethTirabade_DrezenCapital.jbp",
+      "type": "BlueprintUnit"
+    },
+    "ca2d58c5c65723945857e04fb85d30ce": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy.jbp",
+      "type": "BlueprintUnit"
+    },
+    "430cba7801b149b4e8494ace6baf4f7c": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_DesnaPriest.jbp",
+      "type": "BlueprintUnit"
+    },
+    "3ba3a0ff8575be8419159221177c1411": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/BlindCarver_Wintersun.jbp",
+      "type": "BlueprintUnit"
+    },
+    "417ce3dcf3a9707488f2b9b2a790814b": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Jerribeth.jbp",
+      "type": "BlueprintUnit"
+    },
+    "64805abb52739e44280a758f850b300c": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Soana_Wintersun.jbp",
+      "type": "BlueprintUnit"
+    },
+    "a32a07903e428d34cb0e98a804d40569": {
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/RaptureOfRupture/Vellexia_Default.jbp",
+      "type": "BlueprintUnit"
+    },
+    "31bab5549f7ea384186159a238360c8d": {
+      "path": "World/Areas/Act_3_DemonsHerecy/AzataIsland/AzataIsland.jbp",
+      "type": "BlueprintArea"
+    },
+    "2570015799edf594daf2f076f2f975d8": {
+      "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp",
+      "type": "BlueprintArea"
+    },
+    "0a5654e7dc18f074d9356009d55eb51b": {
+      "path": "World/Areas/Act_3_DemonsHerecy/WintersunOutdoor/WintersunOutdoor.jbp",
+      "type": "BlueprintArea"
+    },
+    "8217b05e37078414981d994151f0ffb1": {
+      "path": "World/Areas/Act_4_MidnightIsles/AlushinyrraHigherCity/AlushinyrraHigherCity.jbp",
+      "type": "BlueprintArea"
+    },
+    "7847c3e3537104f4694167af0b9fcd0e": {
+      "path": "World/Areas/Act_4_MidnightIsles/Nexus/Nexus.jbp",
+      "type": "BlueprintArea"
+    },
+    "73c5728c4c6658344bedcc1b666e598c": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_6/Answer_0070.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "30333438aac8d3647bef882fa87e978e": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_6/Diplomacy_6_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "8311ef29223c4fe469c95cd8eb80e539": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "7f64a30ceb4bfb046990bccbded7ac75": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Cue_0081.jbp",
+      "type": "BlueprintCue"
+    },
+    "6178470b05c75484085753b821a6a614": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_8/Diplomacy_8_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "0dc8b8604bb33c846a63f3eb62443674": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "9980a1ecf3ca24e42ab3b22f858677b5": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "07459f4d09fa81e4b99beea351fb0434": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0032.jbp",
+      "type": "BlueprintCue"
+    },
+    "60585f7319a294147a54f440865b21a2": {
+      "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
+      "type": "BlueprintCue"
+    },
+    "8a632a5249b3c2541a1381111cae9e37": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "bf1542830cfa01d4c9db04546681084d": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "5ff8a80442182f84e849b4281f98b9ca": {
+      "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/AnswersList_0008.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "f1a65c6d838f58d49ad4ff40544b895b": {
+      "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/AnswersList_0027.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "9bbebfddf8861584d89b097263329352": {
+      "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0056.jbp",
+      "type": "BlueprintCue"
+    },
+    "666c827662e8af14798009a98c5aae52": {
+      "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "b2997124f3662e147a029a6f73e13468": {
+      "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "2063ee21356b772408f5c9cfb3ed5bd0": {
+      "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "2b1776f3e398685479ff6b16290b4cc2": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "19786fae9c29f9d439e374bb857c2e84": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3857231db61891944999387a4154e9fb": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "a1f97de9145c3574ebd2d7f75c3d39c9": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "edeeb17ba4f3d124890d22bdd2d8901d": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "ff7f743740d221b46860f3137299c3d2": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_First_Date/Cue_0089.jbp",
+      "type": "BlueprintCue"
+    },
+    "7f394dd6cd32c44408a59bd08eb1512a": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3850d7abe56fba24fb5acb4b8e0767a6": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "746af280c4d1daa47afbb44c7f8b2eea": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0036.jbp",
+      "type": "BlueprintCue"
+    },
+    "3aa48f68198afe14cb6de752ce80cc8f": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0078.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "fa6db1b41f5394f4f8a23f09fc7061f7": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0076.jbp",
+      "type": "BlueprintCue"
+    },
+    "42429350764f92140b293b24039b89ef": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp",
+      "type": "BlueprintCue"
+    },
+    "fb3a88e8ed751214c9136f87891ec07b": {
+      "path": "World/Dialogs/c5/KTC_WintersunHelp/AnswersList_0027.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "64388ef1f915e8c4991848f511408fa9": {
+      "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0015.jbp",
+      "type": "BlueprintCue"
+    },
+    "164cf168d833c3f4ba458f72df62bda0": {
+      "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0037.jbp",
+      "type": "BlueprintCue"
+    },
+    "bb552fe4e21cb874fa3c98c2cc328186": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "f2a35965e9bc601449498bd022b04d9d": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "fd8276a6302f4d44583eba3f0b9663bf": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0126.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "417fa384f3250634bb71859fbc913453": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "81109ea8fb20dbc478cf67116740f4a1": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "aebbc1845e827dd4da4e28014e7b4162": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "5c95d8e3fa4f3b44896914987cb04b0b": {
+      "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
+      "type": "BlueprintBookPage"
+    },
+    "5787f92575364c1459df8f075676c2db": {
+      "path": "World/Dialogs/Epilogues/Cue_0317.jbp",
+      "type": "BlueprintCue"
+    },
+    "33960c7f7af40cd43b7f801a76c87a0b": {
+      "path": "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "8e808b69a43ed4f43b8eb39d27990a4a": {
+      "path": "World/Dialogs/NPC_Common/Anevia/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
+    "871af36f2ab2b1f40b5de77976c54276": {
+      "path": "World/Dialogs/NPC_Common/Irabeth/AnswersList_0009.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "c7a7717c516039d498a7525baf6abe04": {
+      "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0071.jbp",
+      "type": "BlueprintCue"
+    },
+    "d47bcd8d88f8ea149a596ca927e1153f": {
+      "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0197.jbp",
+      "type": "BlueprintCue"
+    },
+    "ecaf5cfe8087a4f45a2269974f4885c9": {
+      "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "ba365d0ae03c414a8f6f906837a4fe91": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "09f46662bcd14a03a0874267e16d6e6f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "15e0048c7daf0ac4999c2313b58df0e3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5b01aa690202e584888dfc600a4aac0a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
+      "type": "BlueprintEtude"
+    },
+    "24505150d0cf493c936f2c50b1c94468": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WinterSunAfterFinalDIalog_Leader.jbp",
+      "type": "BlueprintEtude"
+    },
+    "89d57f73e41040f0ab527d6e83478a64": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_WintersunHelp_BlindCarver.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c6e9a69f602a48e18424f4b6d71062b4": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/ApprovedHelpFromAnotherCountryDiplomacy7(A8A0103).jbp",
+      "type": "BlueprintEtude"
+    },
+    "b5f301fbc4c44535a6309d610d5bd28a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/DiplomacyOfficer_InDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "49839ba15f34bee469c4f093dace0811": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/BlindCarver_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "1fd9e6e1b5440ac469d5466a9b3d6814": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Illusions_removed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "23a7a6020a500004daa8e2c2f47b75a2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Illusions_upgrade.jbp",
+      "type": "BlueprintEtude"
+    },
+    "baa4820ac052d664bbaa261d17ce9b08": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Marhevok_StayLeader.jbp",
+      "type": "BlueprintEtude"
+    },
+    "cd8666952065ce74d94d960a23482133": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/JerribethDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "995f0ac2951bbb041b062806c163fbf1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/BearDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fccdd316924af204da00c99f01c0e222": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/SoanaAfterQuest.jbp",
+      "type": "BlueprintEtude"
+    },
+    "ff0d7227c56b2b0488b006893b96040e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/Wintersun_ForestDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c97882cbc65c4c546aed1810627a5b81": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/Wintersun_OldDefender.jbp",
+      "type": "BlueprintEtude"
+    },
+    "71f85264d9064074f9cf74999ecbffa9": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fd2ab9b67ce3e284184b1894c82c6c5d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "0c1695f4a362f0243a4afcfd1957eb0d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ProfaneGift.jbp",
+      "type": "BlueprintEtude"
+    },
+    "72e423c719ed9d44fa432a6b9629babd": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "eef93f5400704a0fa3e4820cc62282b3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightBeforeThirdDate.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b5ed357e0f654a6bbd45ef9f74b10f00": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightOnThirdDate.jbp",
+      "type": "BlueprintEtude"
+    },
+    "381a296094804761af0893d2e70dc2df": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_PlayerSacrifice.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3a708ad53771a2d44ac506361fb7aafc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "79519b75e04ffc744b9bb72a2b369786": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fcbd1ad00e1c7044b8485d7feda8b9b7": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "787273d702a87884e9f14cfb7ef91180": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b1d0c45e438c2ae458466ed56de99a9d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Evil.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b981026a5be6a9a49bf1f7ab57f9e1bb": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Good.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f55fcc7bf5fd0c14384cb15dce345c8e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
+      "type": "BlueprintEtude"
+    },
+    "26ae0f50130942b4bb8dfe658e77b1c6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c33407f132b192643a438bd33797efa1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "e438007efc4f1474eb447031d4b5a60e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_BadEnding.jbp",
+      "type": "BlueprintEtude"
+    },
+    "2bb1f6f30ca9bb1408f720d6f10c5c05": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/Seelah_ModerateEnding.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6d3fb96f9b60c0449a01add4be5c4a49": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6125c10886d6465091f4e092618ca55a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/AneviaNotInDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3f3fbb973a4ffee47956b4c7714c939a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital.jbp",
+      "type": "BlueprintEtude"
+    },
+    "260454e5186fbd34694a0393097f77b5": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/IrabethNotInDrezenCh5_WithGalfrey.jbp",
+      "type": "BlueprintEtude"
+    },
+    "e581f609dc0f44a481e7e88824ac39da": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/NocticulaDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d4b624463e52e21438da6f4870320fee": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/SoanaDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f102a4d0677148f4cab007f901a5ed3c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/SoanaKilledByCamellia.jbp",
+      "type": "BlueprintEtude"
+    },
+    "7a038ff7b70e91844954407b18e8feb6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethBroken_Chapter03.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b14e13f9359585e498fcd81ab95d4d7e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "8b0924efc23df3540b4d8b5fbffd522f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethEncouraged_Chapter03.jbp",
+      "type": "BlueprintEtude"
+    },
+    "395aad049186445f9f474d0a769ec8ff": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c0f261c4a259da741ab0052f0100c2a0": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethKilledByPlayer.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3b8c0801d5e9a694b848ee13564d2ad7": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "148423f1d35917946a5ebeeb4f19246c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "1aaee57d670b0494e9d8662bffbf4f6a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaCondemnedAreeluLab.jbp",
+      "type": "BlueprintEtude"
+    },
+    "bc65b234df544a718afc4856eb7f33fc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaDiedInMutasafenLair.jbp",
+      "type": "BlueprintEtude"
+    },
+    "720af1f72f413354db3f4d41f76d5af6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaIsFreeInAreeluLab.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3b8bd37108050a94b9be14e22501e090": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaIsWasKilledInAreeluLab.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3a040afde22f4b742a2f607354ab17e7": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAeon/PlayerIsAeon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3a82aba4de71b89458ac82949ed957c4": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAngel/PlayerIsAngel.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5f72b252bd7fa8d48bd04c27982a4f9c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataDevilDecision_Contract.jbp",
+      "type": "BlueprintEtude"
+    },
+    "0b129925567b68d4fb712b4bee6c0f9a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataDevilDecision_Deception.jbp",
+      "type": "BlueprintEtude"
+    },
+    "0ece5844b86deb44ea9d54190de1463e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataIsland_DevilDetachDragon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d3b47e973d65c6c46af1cce815d1f6ce": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/PlayerIsAzata.jbp",
+      "type": "BlueprintEtude"
+    },
+    "39008f5a372a6dc42bddfcf4f334bd95": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAzata/AzataQuest_C4/NoDragon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9a3739370f84b0b4196d0e4d326ea3a8": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDemon/PlayerIsDemon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "a1db9daf676b36f4d99c6a788a0fe1af": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDevil/PlayerIsDevil.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9b193d30c89a20b409fd3dda9bd109bf": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicDragon/PlayerIsDragon.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c6165efcd5571c442ae38d7c0601f2df": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLegend/PlayerIsLegend.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b6b0399039dbdbf43bf8946f7e686469": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLich/MythicLich_TrueLich.jbp",
+      "type": "BlueprintEtude"
+    },
+    "11fc5662e0ce8074ea145a022282b879": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLich/PlayerIsLich.jbp",
+      "type": "BlueprintEtude"
+    },
+    "439e63fed37f52048887d98f99255e40": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicLocust/PlayerIsLocust.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9f486a9c0c9abfc4a952bb22e88a7e96": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/PlayerIsTrickster.jbp",
+      "type": "BlueprintEtude"
+    },
+    "07ad18ffb08145b69522f8eee0230857": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAll.jbp",
+      "type": "BlueprintEtude"
+    },
+    "08e47548e25945e286fe77b896884b32": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAlone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "63279a971792474ba0439b9f75795a7a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAreelu.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9fc5161813f1497f8eaad1563ac54211": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendCompanions.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c0d0b565f4b725241b96c148000f1910": {
+      "path": "World/Quests/c3/Wintersun/Wintersun_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "820f28d6776755d47a2169e2851e15ca": {
+      "path": "World/Quests/c4/RaptureOfRupture/RaptureOfRupture.jbp",
+      "type": "BlueprintQuest"
+    },
+    "1fdf404b17d464a489267f69d58b846d": {
+      "path": "World/Quests/Companions/Ember/Q1_Wayward/Ember_Q1_Wayward_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "a3f445a64ee130f4396c20a07c30ece0": {
+      "path": "World/Quests/Companions/Ember/Q2_Wicked/Ember_Q2_Wicked_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "49b7496143daed149ab4557a9684dd53": {
+      "path": "World/Quests/Companions/Ember/Q3_Worshipped/Ember_Q3_Worshipped_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "5a5a533c9ce630a48b877f9a194840cb": {
+      "path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "1ad9b8fa1fe3cb84b932e8a889fc1897": {
+      "path": "World/Quests/MythicQuests/Azata/C4_WheresMyDragon/WheresMyDragon_azata_c4_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "4774e38b267c47f2b5f6c0975ec486f0": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e1837a6b241f4095a4312e0115988721": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2660c0d29eaf4dce9de52b3994462df1": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "383cc2c9ea3f47c4a71982cb06535118": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "64e2b82829694b8fac652ea06f4dc8a7": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "480fead956f24022930a83d4457a377c": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6ba14669a2a74dfbb308f66fecda8f6e": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2edcb6e5a1c3439fa9b9e0b3b96a49fb": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "94bc04d1ed474feaab54af2f77a94574": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ecdddd77ad964561b38ad1848cb4553f": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "df70df5cb6824ff5a9776a2478eee6c6": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "80cb9c6f466b4eaaaa9561ca56c5f348": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Targ.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6ec03ce2f763460c8ac89f4c2064c5ad": {
+      "type": "BlueprintQuest",
+      "path": "RanRomance.Targ.TargQuest.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ad655c40be31401386b85287483b3841": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "cfc5f3cb2cf94672a96cab742e62225d": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "62c24328ae744ee98fabd219dbe74c92": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ec76729da60441a1b2028f340743c0a8": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Targ.TargBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2e98dbe685f045cdabf88b66e4cde9ff": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Aran.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d4dd8a50613e4d528913d0a24d06fca1": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Aran.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1dacd3dfe1bf47c8a73074814e40b1c8": {
+      "type": "BlueprintQuest",
+      "path": "RanRomance.Aran.AranQuest.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a16f4be6de0a4f35a9b13eca4395d6e5": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "61461d05999b46218e7700e6596243b5": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04Azata.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "363860bffda1404db6ec996384fe2f26": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04Azata.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "43936228f4614272a7c7e25ebaaec2c7": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook04Azata.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "599e7c0cc51741cda1bc55b787734c57": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "fefc9911dde04a76975e9027118c7935": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f9df40d7d6b346298075b435eee6921c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e16e5b0b3aea426a888e8bb61c521815": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook14End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b18d250fa2fb4fdf9fe4eba04e9d1655": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Aran.AranBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "0a8411c2cb0a44f1ab317ed425f6ec94": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "0b1b31d7125547219daa747eba45a063": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "18d22b6258a24fe29dd9d0ea4235432e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "19099aba216e46e98d446709c3f2e0f3": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1980e50e5e204431bf643fbad487909f": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0008.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "19fd9027465f4cbebe949b26d04a2826": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1e6ca1514807446ea2fddd65e4f5bcc8": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "286434b491b74174a97dfd2d7344f57a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "2cd9538f67f7414d808d9032386f6be9": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "341b62dd58d14906959d3262b12f1a43": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3b8d47b3c9694002aff26510ac4dedf0": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3d21fa8120d040338ec1d4b8461fa536": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3d4137f1cf98459f996ef1da83737cdb": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "4a29c758798d47a1a32f506d1ca6081b": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "4dbb41f1fb134b90ab3900dc05488e8f": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "51104e1c8755436e8aa290a6cedfcb3a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5584da70433e4f079d521d40ce77f230": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5831af75932d43ed902a2d8def2adf3d": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "58557969a797441983022c8ba0400400": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "592dcdccbef043f58031fa234faf137a": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "59cf28c3824944fd88547bc61bc5cf62": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5ab5c6a3c62b4f2ba88053cbbbc47737": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5b0a132d97404072b3d664899871d7b7": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5cd5f22437a1465180b45c080899577a": {
+      "type": "BlueprintQuest",
+      "path": "RanRomance.Mina.MinaQuest.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5db846019acd46ef83f12be220727f50": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "64afcd565e044e53977e1878444f4ee1": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "67e3bb3b649d42a4a84115f3c7ac6bf1": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6eba6f627ac34cf4955c89e5ad59e106": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "784575a522e64ad58f2171abcb073d0c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "7edf5529523a4a9da520138783fdeb93": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8009e775a3a343c79ef4e40d72bc5e6a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "813cc79c053d4b3e869a0d0ca2f3d85d": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "819314e916514a498a8e336371b4788e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "829c837c76f6429fa01d3d2583069b35": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8399dbc5987b462594b2b4168764e269": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "85b479a3da8a4fa6b602fedf89201695": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "92162854b221413984468d2663ffcffb": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9806218e467f41acb502b52160ab38dd": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "982627a0bbd34fe4b16b5b078e56355a": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "98baa5299ae444bfa1ac8ba8e84f2c7c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9a5eb7aff04943c28da2260aac68874e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9bfbb3f217ca476cadbeffc4d389717d": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9e3bd8247f0c40eba62368fe2912bb84": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a1774d0a9fb34fd2ac58abc1c6db55bd": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a77e415c6eb44d719839e07a3f164d87": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a875684118e64d7ab29f70ca3460c365": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a87da83417ff4be28c9ccfaf9b154e96": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a8f7a881cc6d427b91cbbee14f43e0ee": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook01Page004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "acb0d15ef71c410484b7c37b270e30fe": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b474eb4460cb42729be2717d05e7d42b": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b5c19cd01e364df99f6c946c7da14751": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b9e2550bc7244f6c8480106b41667d96": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "bb49f54dc0a547c287238b5d7d8489b3": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "c01f7f83a2584555b2f551918f169cdb": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "c47829fba057400c8e0279990be3d25e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0008.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "c51a76731dc24865b6c472ffe6bf3e18": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "cce5f180fbe7455989544c1c81428463": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d47984953fc74c488ef0a02588bde92b": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d6714bd8d48e425d862f854018cb123c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "d6b960c14e37492682de6284af1c5417": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "dc14cdafb9fa43e8bc3b0816626b3dbe": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e15de525c99d40c6a6faf0afa61be756": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.MinaBook03Page003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e303c58d307849cd892fa5810124da92": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "e87b43c31c1c4253a7137c7d6c05b246": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f18391398cb5470c94f8932e9d8d2fd7": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Mina.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f37b7a5fcff84551b86ecbba823e2fa5": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f5e580bedafc43f3acb6843fd71d8120": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "fb32a8f9c464496abe90307c68ec271e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "ff2042ad95e14b73a5f75f2cfd84b5e4": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "01677da8df6e42c6b4803ceef524b1fe": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0006.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "126762ac92364ac5bdec69c6e3fdfd1a": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0005.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3792457f35734d75a4d4b53055f7f5d0": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0008.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5a5865ceca0e42049288351a76b18ba9": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0004.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "6db8635856e74b6cac46330bd82b4ff5": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8df5edb6f69040c69d7da78d2bf20cb6": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "951e4432cf844a36a8a222b27589fb43": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0001.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9c5c5825bf3245d0ae763c6e69ecdc38": {
+      "type": "BlueprintBookPage",
+      "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "18affced672d4c56a52bf6ffc00601b9": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8a28bbd82568486bb757d00a2087a6cf": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "761ca3572c1145ebb755032d613bff46": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9591c34df22b4d518a059cf608255458": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "19e5d6f04b9b4483b2e2979baf8736e4": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "631bf0ede36742559cee476f34dcb5de": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "cb13766be07b448f8cacb477be32e13c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5388a7d7a1da48deb333d34abab1a6d0": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b3a4ce99bc30440fa9ebcbfce2776176": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1110f2b6304549999fb546e7ecc4c8a1": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    }
+  }
+}

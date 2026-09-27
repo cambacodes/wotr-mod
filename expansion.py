@@ -27,6 +27,7 @@ from storylines import konomi_retained_return
 from storylines import konomi_return_invitation
 from storylines import irabeth_return_invitation
 from storylines import minagho_chivarro_continuation
+from storylines import nocticula_continuation
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
 from storylines import gesmerha_campaign
@@ -252,6 +253,8 @@ def make_expansion(*, independent_tirabade=True):
     )
     minagho_chivarro_continuation.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(minagho_chivarro_continuation.SCENES))
+    nocticula_continuation.integrate(payload)
+    payload["Scenes"].extend(copy.deepcopy(nocticula_continuation.SCENES))
     payload["ParentEpilogueEdits"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_EDITS)
     payload["ParentEpilogueLossRules"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_LOSS_RULES)
     return payload

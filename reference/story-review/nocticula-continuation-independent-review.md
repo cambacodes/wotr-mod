@@ -340,3 +340,161 @@ Remembered authored outcomes are not a substitute for that work, and fictional e
 
 No manuscript approval or manual-play readiness is granted for revision 9CDD.
 The next review should inspect the resulting complete prose in context, not automatically raise the scores when the three local continuity edits are made.
+
+
+## Third full read: source 74E0
+
+Reviewed on 2026-09-26 against `storylines/nocticula_continuation.py`, SHA256 `74E0ADD67AB90CEF31C247C9429BD8249080EFB359EFACB0CAF5C7BAEC68BB25`.
+The preceding revision-required findings remain evidence about their exact earlier snapshots.
+This assessment follows another complete read of all sixteen visits and all eight supplementary endings, including every alternative node and choice.
+It is not a score adjustment based only on the author's change list.
+
+Verdict: the ordinary living, accepted-parent continuation passes this scoped literary review.
+It does not pass the separate full-route gameplay, native ending integration, universal Trickster access, art, or release gates merely because the writing now passes.
+The remaining wording suggestions below are nonblocking clarity edits, not requests to soften Nocticula or replace her ambitions.
+
+### Measured scope
+
+The candidate contains 24 scenes, 128 nodes, and 181 choice objects.
+The living visits contain 120 nodes.
+An independent run of the repository's content counter gives 25,967 raw words and 25,879 distinct normalized whole-segment words across the full candidate.
+The visits alone contain 24,751 distinct words, including 23,120 raw prose words and 1,712 raw choice words before segment deduplication.
+No parent material, journal metadata, or speculative future scenes contribute to these totals.
+This is branch-inclusive manuscript volume, not a claim that one traversal delivers every alternative or 25,879 words.
+The counting method removes exact whole-segment repetition; it does not establish semantic originality by itself.
+
+I compared the scene metadata and all 83 effect-flag names against the independently retained 9CDD snapshot.
+They are unchanged, as are the ETUDES, SEEN_CUES, and RELATIONSHIP declarations.
+No local direct or check target is missing.
+The additional private branches introduce an actual different encounter before rejoining the note discussion, rather than a new global relationship state.
+These are structural observations, not a substitute for root's actual Rules run or native condition execution.
+Read exports, the pinned source, and the comparison/count ledger are retained under `C:/Users/Z/AppData/Local/Temp/nocticula-independent-74e0/`.
+
+### Independent literary scores
+
+These scores are editorial judgments about this exact manuscript and its stated scope, not objective probabilities or a panel average.
+Each listed literary criterion clears the required greater-than-90 threshold separately.
+An unverified engineering gate cannot borrow a passing score from this table.
+
+| Criterion | Score | Basis |
+| --- | ---: | --- |
+| Nocticula's voice, motives, and continuity of personality | 93 | She keeps the Gift, leverage, appetite, impatience, strategic secrets, and the right to dislike the Commander's answer. |
+| Prose and dialogue | 92 | The new final exchanges perform desire through action; most redundant explanations of the intended moral reading have been removed. |
+| Pacing and scene variety | 91 | The private dance/refusal, room construction, and final bottle encounter interrupt the report cadence with immediate wants and friction. |
+| Mature non-graphic attraction | 94 | Competition, intimate attention, delayed gratification, and her active preference for company carry the romance. |
+| Independent agency and other-lovers characterization | 94 | She can refuse the Commander's preferred timing, retain information, and argue over real interests without compulsory exclusivity. |
+| Branch continuity and supported recollection | 92 | The three previously identified object/history defects are repaired; hearing, injury, chart, and parent histories remain conditional. |
+| Decisions and narrated consequences | 93 | Investigation methods, coercion or volunteering, crossing risk, hearing results, disposition, and publicity produce different retained developments. |
+| Parent relationship and authored-alternative discipline | 92 | The accepted dream bargain and Gift stay relevant, disclosure history remains gated, and the extension does not promise a replacement for the Worldwound bargain. |
+| Meaningful manuscript volume | 95 | Substantial alternative investigations, costs, private encounters, and consequences exceed the floor without parent credit. |
+
+Pacing has the narrowest margin.
+The manuscript still favors verbal investigation and reports, and it will appeal more to players who enjoy that mode than to players expecting a physical companion quest.
+The improvement is sufficient because the central recovery sequence changes the stakes, the final reports pay off actual choices, and the private intervals now have their own conflicts instead of repeatedly explaining a relationship principle.
+Further expansion should add a new incident or encounter rather than another summary of the same contract.
+
+### What the third revision actually repairs
+
+`captains_reply/start` describes the blue cloth in the present instead of telling every Commander that they recognize an optional Orren detail.
+`demonstration/witness` explicitly recreates the glove after the earlier destruction, and `ending_death` no longer grants that particular retention history to everyone.
+`hearing/start` uses Ilvara's current finger movements instead of attributing the carrier branch's shoe damage to a common hearing.
+These repair the stated second-review defects without changing the actual outcome flags.
+
+`another_place/start`, `dance`, and `refused_dance` now make a private meeting happen before discussing what it means.
+She asks for something she wants.
+Accepting produces a contest over the measure, the lead, and the suspiciously convenient window.
+Refusing does not produce praise for setting a boundary; she makes the Commander wait while she finishes with her hair, and the missed dance remains an absence between them.
+The common note has the same information afterward, but the played encounter is different.
+That is an appropriate local consequence and needs no invented later penalty.
+
+`what_she_keeps/start` gives her a frustrating practical task inside the dream, and `disposition` has her block the doorway to finish her business before allowing the evening to move on.
+The report-order claim is gone; the choices honestly select the applicable chart history.
+`second_door` begins with the bottle and the room, then each motive branch moves toward a present kiss, glance, interruption, or request for attention.
+The final waking paragraph stops explaining the finished story and lets the remembered taste compete with someone knocking at the door.
+The result reads less like the manuscript supplying its own review notes.
+
+### No manufactured agreeableness
+
+The common Gift exchange in `her_own_face/start` matters throughout the read.
+Nocticula has not relinquished her power or declared the older bargain harmless.
+She wants an answer because obedience bores her, and warns the Commander to remember that a pleasant evening does not cancel the bargain.
+This remains a relationship with a dangerous patron, not a conversion accomplished by considerate dialogue.
+
+Her anger in `demonstration/price` includes wanting to break the lamps while the captives remain inside.
+The Commander offers method, buyers, and control of the stolen door as something she wants more.
+The intervention is credible because it redirects her appetite through a useful alternative rather than making her suddenly share the Commander's conscience.
+On the limited-crossing path she checks for a secret second entrance after agreeing to the limitation and candidly says she would have used it.
+On the intact-chart path she keeps the dangerous knowledge and controls who reads it.
+She values a surviving skilled criminal, makes that criminal teach, and keeps execution available if the relevant calculation changes.
+These choices support a durable personality beyond a single threatening line.
+
+Her concessions also have specific motives.
+Paying for Vessa's injury follows the accepted operation and preserves valuable future work.
+Protecting Dessa can buy time or announce a threat.
+Letting Senet decline preserves the incentive to bring her useful offers.
+Rejecting Ossin's price follows his demonstrated inability to keep the threat exclusive.
+None proves that she has become generally benevolent, and the text does not require that conclusion.
+
+The Commander can favor rescue, power, curiosity, coercion, guarded research, or expulsion without every answer becoming the same compliment.
+The story does not offer unlimited arbitrary cruelty or let any persuasion erase her larger priorities.
+That is appropriate to this particular undertaking; a choice list need not include every conceivable evil act to preserve a ruthless character.
+Her three final disposition proposals are her own acceptable options, so choosing among them is not evidence that the Commander can talk her into anything.
+
+### Consequences and gameplay boundary
+
+The ledger check's failure loses quiet investigation and goes through the conspicuous shipment.
+The double offer gains a specific transfer answer while warning the collector.
+Buying the lease and sending the threat preserve different protections and levels of publicity.
+Ilvara attempts to retain a pin when forced inside; Teren uses and returns from his negotiated retreat.
+Reinforcement reveals a secret but preserves the chart, the unreinforced crossing injures Vessa and loses the chart, and the Trickster limit returns the passengers while closing the desired harbor.
+The hearing's four evidence histories now receive four separate commissioned-work reports; failure costs another observer and delayed proposals rather than silently becoming proof.
+Confinement and exile have different subsequent reports without inheriting costs that were conditional on employment.
+The final buyer check also has a failure consequence instead of quietly presenting the same success answer.
+
+Those are meaningful narrated outcomes backed by different addon state and conditional text.
+They are not proof of changed native quest objectives, gold, army statistics, travel access, or live NPC survival.
+The harbor, Ilvara, Rhez, and its passengers are authored fiction conveyed through reconstructed dreams.
+This review approves their coherence as that kind of story, not a claim that new actors or a playable harbor map exist.
+Before any promise of gameplay readiness, integration tests must verify the actual saved flags and selected consequences, the checks, interruption and re-entry behavior, and ending delivery.
+The user's hard requirement about implemented consequences remains in force in its actual scope.
+Do not market fictional expenditure by Nocticula as a player-resource mechanic, or report these scenes as completion of an unimplemented native quest.
+
+### Parent history and remaining precision edits
+
+The other-lovers discussion fits the parent acceptance of other relationships while retaining actual disputes over interests.
+Laulieh participation and departure history have separate conditional responses.
+Neither grants a new triad or silently restores a completed relationship.
+The optional ambition disclosure remains tied to observed parent history, and the final invitation explicitly leaves the Worldwound bargain unresolved.
+The larger harbor mechanism is an authored alternate development, not a newly discovered canon spell or proof that Trickster can resurrect every candidate.
+
+Two small clarity improvements would make the text more exact without changing this verdict.
+In `lamp_measure/start`, "the brass instrument Orren described" could become a direct present introduction of the instrument from his account.
+His description exists in the underlying witness account, but only the optional theft question shows it to the player before this scene.
+Unlike the earlier blue-cloth defect, the sentence does not explicitly say the Commander recognizes or remembers it, and the common scene immediately explains the craftsman's drawing.
+I therefore do not treat it as proof of an impossible history.
+In `another_place/refused_dance`, specify reaching for the drawer rather than the note, since the preceding common node placed the note inside it.
+The present wording can describe reaching into the drawer, but the visual staging would be cleaner if it said so.
+Neither suggestion requires another flag, a new branch, or a rewrite of her behavior.
+
+The eight endings are supplementary recollections, not verified substitutes for native or parent slides.
+The Aeon recollection still requires coexistence review against the parent's distinct altered-history response.
+Death, sacrifice, ascension, changed Commander, and ordinary relationship selections need their own actual integration tests, including overlapping flags and parent sequence order.
+This literary pass does not approve suppression or replacement of any existing ending.
+
+### Final scoped disposition
+
+The ordinary manuscript can proceed to independent engineering and assembled-integration review at this exact source hash.
+The missing or rejected parent acquisition route, Gift-loss re-entry, death recovery, living-Shamira concurrent resolution, and universal Trickster access remain unfinished.
+Actual ToyBox concurrency, Unity scheduling, save migration, art assignment, and manual-play readiness are not established here.
+No manuscript source or shared export was modified by this reviewer.
+
+
+### General portrait assignment follow-up
+
+At root's request after the literary verdict, I viewed `art/candidates/Nocticula-v3.png`, pinned by its independent art review to SHA256 `D82D234E6E60DCAA614A06C320001E0FE22A54330FBA185604AA6DCDEF5BD5C5`.
+The neutral Nocticula portrait does not establish a lover, rescued captive, redemption, victory, or resurrection.
+I found no page in this manuscript on which her identity as a general portrait would itself misrepresent the text.
+The death, changed-Commander, and Aeon pages discuss or remember her; a conventional portrait there must not be presented as a literal current visitation.
+Its armor, folded hands, closed book, and harbor background do not illustrate the specific gown, glove, earrings, dancing, anger, private night, or waterless-quay descriptions.
+General portrait assignment is appropriate within that limit, and the prose should not be altered to force this outfit into every dream.
+This is a manuscript-to-portrait scope check, not a second art rubric approval or a runtime crop test.

@@ -1,15 +1,15 @@
 # Nocticula continuation author handoff
 
-Status: revised complete manuscript candidate for a second independent review, not approved or exported.
+Status: third complete manuscript candidate for another independent full review, not approved or exported.
 Date: 2026-09-26.
 Owned source: `storylines/nocticula_continuation.py`.
-Frozen SHA256: `9CDD2490621BCE273D3E36E7977208EAFBE41173E0D80ED0BCA8A42EF89E6E74`.
+Frozen SHA256: `74E0ADD67AB90CEF31C247C9429BD8249080EFB359EFACB0CAF5C7BAEC68BB25`.
 The author supplies no editorial score and cannot independently approve this work.
 
 ## Delivered scope
 
 The uncounted shore is a sixteen-visit living continuation of the existing RanRomance Chapter 5 dream relationship.
-It contains 117 visit nodes and eight supplementary ending nodes, for 125 nodes total.
+It contains 120 visit nodes and eight supplementary ending nodes, for 128 nodes total.
 All intimate participants are adults; new intimacy is non-graphic.
 No portrait has been assigned and no art is claimed complete.
 
@@ -85,11 +85,11 @@ Metadata, titles, comments, IDs, journal guidance, and parent text receive no cr
 The total is branch-inclusive manuscript content, not words read in one playthrough.
 Independent reviewers must still decide whether it is meaningful content rather than treating the numerical floor as literary approval.
 
-- Raw text/choice words: 25,411.
-- Distinct normalized text/choice words: 25,323.
-- Distinct visit words alone: 24,192.
-- Distinct supplementary ending words: 1,131.
-- Segments: 302 total, 287 distinct.
+- Raw text/choice words: 25,967.
+- Distinct normalized text/choice words: 25,879.
+- Distinct visit words alone: 24,751.
+- Distinct supplementary ending words: 1,128.
+- Segments: 309 total, 294 distinct.
 - Parent-credit contribution: zero.
 
 | Visit | New distinct words |
@@ -97,19 +97,19 @@ Independent reviewers must still decide whether it is meaningful content rather 
 | unlit_quay | 881 |
 | sixth_passenger | 1,148 |
 | lamp_measure | 1,117 |
-| captains_reply | 1,458 |
-| her_own_face | 1,320 |
+| captains_reply | 1,466 |
+| her_own_face | 1,299 |
 | white_shoes | 1,431 |
-| demonstration | 1,621 |
+| demonstration | 1,634 |
 | voices_in_glass | 1,313 |
 | cost_of_return | 1,507 |
-| return_count | 1,563 |
+| return_count | 1,580 |
 | after_the_lamps | 1,375 |
-| another_place | 1,431 |
-| hearing | 1,837 |
+| another_place | 2,034 |
+| hearing | 1,845 |
 | last_buyer | 1,681 |
-| what_she_keeps | 2,569 |
-| second_door | 1,940 |
+| what_she_keeps | 2,625 |
+| second_door | 1,815 |
 
 ## Revision after the first independent review
 
@@ -142,6 +142,38 @@ Author probe ledger: `C:/Users/Z/AppData/Local/Temp/nocticula-revision-author-pr
 Root reported 569,185 actual focused Rules assertions on an intermediate revision, not on this final frozen hash.
 The author does not transfer that result to the final candidate; root will rerun its owned tests after freeze.
 
+## Third revision after the complete 9CDD review
+
+The second independent report remains revision-required evidence for source `9CDD2490621BCE273D3E36E7977208EAFBE41173E0D80ED0BCA8A42EF89E6E74`.
+The author has not assigned new scores or approved these corrections.
+
+The blue cloth in captains_reply/start receives a present physical description instead of recognition from an optional Orren answer.
+The destroyed dream glove is explicitly recreated before it is tucked away on the witness branch.
+The death recollection no longer claims that every branch kept that glove.
+Ilvara's hearing posture uses a present finger-counting detail instead of shoe damage inferred from her optional carrier history.
+
+The principal pacing change is an immediate private encounter at the beginning of another_place.
+Nocticula requests a dance before discussing her note.
+Accepting leads to a contested dance in which she counters the Commander's attempt to lead; pressing for business leads to her withholding the note while she finishes with her hair.
+She does not turn the refusal into praise or agree to the Commander's preferred timing.
+Both paths reach the existing note and relationship discussion, preserving its Laulieh gates and other-lovers policy.
+The new pages are another_place/start, dance, and refused_dance; the old opening is now note.
+These are played dialogue choices with immediate different encounters, not a promised future dance mechanic or a newly granted relationship status.
+No new flags are needed for the immediate branch distinction.
+
+The final report now occurs while Nocticula struggles to arrange her unfinished room around the bollard.
+She blocks the doorway to finish discussing Ilvara before inviting the Commander farther inside.
+The prose no longer claims the player can choose report order when only one chart history applies.
+The final evening starts with an awkward bottle stopper, and the three motive-dependent responses now lead into present attention, curiosity, and desire rather than a catalog of the whole investigation.
+The private morning and limited-crossing conclusion use objects and actions instead of commentary about how their meaning should be interpreted.
+All previously praised sharper motives, loss conditions, Gift acknowledgment, and four hearing consequences remain.
+
+Scene identity and non-node metadata, native/parent bindings, relationship metadata, all eighty-three effect flags, and ending selectors were compared directly with the preserved 9CDD module and remain unchanged.
+The additional three nodes raise the total to 128, with 120 living nodes.
+Author structural traversal and final word ledger are preserved in `C:/Users/Z/AppData/Local/Temp/nocticula-third-revision-author-probe.json`.
+The root's prior actual Rules result belongs to 9CDD; the revised final source requires its own rerun.
+The different reviewer must read this complete third candidate and decide whether the prose and pacing now pass.
+
 ## Author verification performed
 
 Python import with `-B` passed without writing bytecode.
@@ -152,9 +184,9 @@ A continuity scan also corrected an unconditional claim that the Commander had s
 
 A custom author data traversal supplied 32 combinations of Trickster, LaulRom, LaulRom2, parent ambition disclosure, and Socothbenoth disclosure history.
 It explored direct choices and both skill-check results, retained only flags read by future nodes when merging states, and rejected any reachable node without a valid choice.
-The revised source traversal reached all 117 visit nodes and 172 distinct choice/check outcomes over 108,976 evaluated transitions.
+The third source traversal reached all 120 visit nodes and 176 distinct choice/check outcomes over 109,936 evaluated transitions.
 The three completed ordinary outcome histories each selected exactly one of the company, alliance, or limit recollections.
-A final wording correction changed an unconditional chart reference to a report; it changed neither the traversed structure nor the word count.
+The last waking-room paragraph was trimmed after traversal; it changed no structure and the final count was recomputed.
 
 This is an author structural probe, not an independent review and not execution of the C# Rules engine.
 No Unity dialog, native condition evaluation, real sleeping transition, ToyBox setting, actor lifecycle, portrait crop, or saved-game migration was executed for this new module.
@@ -181,5 +213,10 @@ The following remain unimplemented and must not be reported as fulfilled by this
 - Art generation, independent art review, and any portrait assignment.
 - Installed ToyBox Love Is Free and Jealousy Begone coexistence tests.
 
-The source is ready for the different reviewer's full read and targeted criticism.
-It is not ready to be called approved, integrated, playable, or complete across every planned mythic and recovery history.
+The preceding paragraphs record the author's pre-review handoff.
+The third manuscript subsequently passed the independent full review with all relevant scores above 90.
+Root integrated that manuscript after two small continuity clarifications and explicit general portrait assignment on all pages.
+Final source SHA256 is `81526DA3BCF6CD672E4F956B4F0BA84098C8E9BD787BD9AFBA6193728ED9DE02`.
+The generated 612-scene export, full Rules suite, binding verifier and managed construction checks passed as recorded in `reference/parallel/expansion-612-shared-verification.md`.
+The independently reviewed v3 portrait is staged as a general identity image, not an exact illustration of every scene.
+These checks do not establish live play, complete ending delivery, ToyBox execution or the missing acquisition and recovery paths listed above.

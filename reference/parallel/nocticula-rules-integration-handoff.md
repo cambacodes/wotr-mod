@@ -62,3 +62,13 @@ Final test SHA256 is 71A6C253CC2C16FEA7CD58B4FAD53E0510FB1D0048EFF2E2A7F6D511CC0
 Root's final run passed 569,618 focused assertions.
 The independent report at reference/parallel/nocticula-rules-tests-review.md approves this bounded suite for registration while preserving its acquisition, runtime and narrative limits.
 The manuscript's second editorial review still requires revisions, so the route remains outside the shared export.
+
+## Final manuscript integration
+
+The third full manuscript review passed, and the root integrated its clarified final source in the 612-scene export.
+The registered shared Rules runner passed 27,527,067 assertions against export `A23F0AE6ABE6FAB6F0C275FBF8E1E8044EBEEA1FD040C12D61C4BD0F7D5829CC`.
+The dedicated Nocticula suite retains the reviewed logic; its final comment and failure message explicitly describe synthetic ending completion.
+Final test source SHA256 is `3308F608E0D3E8D279B12E050A8A32A7100D6AAE5BD3FF5404CBF646A710EAD2`.
+`Program.Walk` supplies ending completion flags and timestamps that the native plain-ending Continue button does not write.
+Therefore the suite proves the pure Rules response to simulated completion, not once-only native ending delivery or persistence.
+The shared checkpoint and separate final integration review preserve the outstanding runtime and alternate epilogue delivery requirements.
