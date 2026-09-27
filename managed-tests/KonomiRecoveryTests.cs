@@ -131,6 +131,8 @@ internal static class KonomiRecoveryTests
         attempt = JsonConvert.DeserializeObject(checkpoint!, attemptType)!;
         writes = 0;
         check(Apply(true) == "Confirmed" && writes == 0, "Repeated request replayed mutation or rewrote confirmed checkpoint");
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Unconscious);
+        check(Apply(false) == "Pending" && writes == 0, "Confirmed history alone satisfied current conscious-return confirmation");
         Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Dead);
         Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", true);
         check(Apply(true) == "Blocked" && actor.State.IsFinallyDead && writes == 0, "Old proof resurrected a new death");
@@ -169,6 +171,14 @@ internal static class KonomiRecoveryTests
             Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
             Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", false);
             check(Proof() && spawner.HasDied, "Verified same-actor life requires erasing native HasDied history");
+            Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Unconscious);
+            check(Proof(), "Temporary unconsciousness erased confirmed historical return");
+            Set(attempt, attemptType, "Confirmed", false);
+            service.GetMethod("Save", statics)!.Invoke(null, new[] { attempt });
+            check(!Proof(), "Pending unconscious actor acquired historical return proof");
+            Set(attempt, attemptType, "Confirmed", true);
+            service.GetMethod("Save", statics)!.Invoke(null, new[] { attempt });
+            Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
             Set(actor, typeof(EntityDataBase), "<DestroyMark>k__BackingField", true);
             check(!Proof(), "Verified proof authorizes a destroyed body");
             Set(actor, typeof(EntityDataBase), "<DestroyMark>k__BackingField", false);

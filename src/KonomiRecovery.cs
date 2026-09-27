@@ -92,7 +92,7 @@ namespace Tirabade
             { LastError = ex; return Outcome.Blocked; }
         }
 
-        // Only an exception to historical HasDied, after the caller independently validates saved provenance.
+        // Historical return remains established during temporary unconsciousness, after the caller validates saved provenance.
         // It is not a substitute for actor identity, destruction, hostility or office checks.
         internal static bool HasVerifiedReturn(UnitEntityData actor)
         {
@@ -102,7 +102,7 @@ namespace Tirabade
                 return attempt?.Confirmed == true && actor.UniqueId == attempt.UnitId
                     && actor.Blueprint.AssetGuid.ToString() == source.Blueprint
                     && !actor.Destroyed && !actor.DestroyMark && !actor.IsDisposed
-                    && !actor.State.IsDead && !actor.State.IsFinallyDead && actor.State.IsConscious;
+                    && !actor.State.IsDead && !actor.State.IsFinallyDead;
             }
             catch { return false; }
         }

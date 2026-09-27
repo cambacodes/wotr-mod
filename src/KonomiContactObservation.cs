@@ -42,6 +42,7 @@ namespace Tirabade
         // Unloaded saved storage can disprove eligibility but can never grant initial contact.
         internal static Result InspectSaved(PersistentState persistent, Func<string, EntityDataBase?> lookup)
         {
+            bool recordedDeath = false;
             try
             {
                 var areas = persistent.SavedAreaStates.Concat(persistent.LoadedAreaState == null
@@ -61,14 +62,15 @@ namespace Tirabade
                 if (spawner.HoldingState != null && !ReferenceEquals(spawner.HoldingState, scenes[0])) return new Result(false, true);
                 var registeredSpawner = lookup(source.Spawner);
                 if (registeredSpawner != null && !ReferenceEquals(registeredSpawner, spawner)) return new Result(false, true);
-                if (spawner.HasDied || spawner.Destroyed || spawner.DestroyMark || spawner.IsDisposed)
+                recordedDeath = spawner.HasDied;
+                if (spawner.Destroyed || spawner.DestroyMark || spawner.IsDisposed)
                     return new Result(false, true);
                 string id = spawner.SpawnedUnit.UniqueId;
-                if (string.IsNullOrEmpty(id)) return new Result(false, false);
+                if (string.IsNullOrEmpty(id)) return new Result(false, spawner.HasDied);
                 if (!spawner.HasSpawned || entries.OfType<UnitSpawnerBase.MyData>().Any(other => !ReferenceEquals(other, spawner)
                     && other.SpawnedUnit.UniqueId == id)) return new Result(false, true);
                 var actors = entries.Where(entity => entity.UniqueId == id).ToArray();
-                if (actors.Length == 0) return new Result(false, false);
+                if (actors.Length == 0) return new Result(false, spawner.HasDied);
                 if (actors.Length != 1 || !(actors[0] is UnitEntityData actor)
                     || !scenes[0].AllEntityData.Contains(actor) || actor.Blueprint.AssetGuid.ToString() != source.Blueprint)
                     return new Result(false, true);
@@ -76,11 +78,13 @@ namespace Tirabade
                 if (registeredActor != null && !ReferenceEquals(registeredActor, actor)) return new Result(false, true);
                 if (actor.HoldingState != null && !ReferenceEquals(actor.HoldingState, scenes[0])) return new Result(false, true);
                 return new Result(false, actor.State.IsDead || actor.State.IsFinallyDead
-                    || actor.Destroyed || actor.DestroyMark || actor.IsDisposed);
+                    || actor.Destroyed || actor.DestroyMark || actor.IsDisposed
+                    || spawner.HasDied && (entries.OfType<UnitEntityData>().Count(unit => unit.Blueprint.AssetGuid.ToString() == source.Blueprint) != 1
+                        || !KonomiRecovery.HasVerifiedReturn(actor)));
             }
             catch
             {
-                return new Result(false, false);
+                return new Result(false, recordedDeath);
             }
         }
 
@@ -92,6 +96,7 @@ namespace Tirabade
             if (observation.Kind == Evidence.NotLoaded) return new Result(false, false);
             if (observation.Kind == Evidence.Conflict || observation.Kind == Evidence.RetainedDead
                 || observation.Kind == Evidence.RecordedDeadMissingActor) return new Result(false, true);
+            bool recordedDeath = false;
             try
             {
                 var entries = states.SelectMany(state => state.AllEntityData).ToArray();
@@ -100,8 +105,9 @@ namespace Tirabade
                     || !ReferenceEquals(lookup(source.Spawner), spawner)
                     || spawner.HoldingState?.SceneName != source.Scene)
                     return new Result(false, false);
-                // This route cannot explain a resurrection, even if current life has been restored.
-                if (spawner.HasDied || spawner.Destroyed || spawner.DestroyMark || spawner.IsDisposed)
+                recordedDeath = spawner.HasDied;
+                // Destruction remains invalid even when a separate authored return has been verified.
+                if (spawner.Destroyed || spawner.DestroyMark || spawner.IsDisposed)
                     return new Result(false, true);
                 string actorId = spawner.SpawnedUnit.UniqueId;
                 if (!string.IsNullOrEmpty(actorId))
@@ -113,12 +119,22 @@ namespace Tirabade
                         && ReferenceEquals(actor.HoldingState, spawner.HoldingState)
                         && (actor.Destroyed || actor.DestroyMark || actor.IsDisposed)) return new Result(false, true);
                 }
+                // Historical death is excused only after the exact original retained actor has been validated.
+                if (spawner.HasDied)
+                {
+                    if (observation.Kind != Evidence.RetainedAlive
+                        || !(lookup(actorId) is UnitEntityData recovered)
+                        || entries.OfType<UnitEntityData>().Count(unit => unit.Blueprint.AssetGuid.ToString() == source.Blueprint) != 1
+                        || !KonomiRecovery.HasVerifiedReturn(recovered)) return new Result(false, true);
+                    // Temporary unconsciousness delays new contact without undoing an established return.
+                    return new Result(recovered.State.IsConscious, false);
+                }
                 return new Result(observation.Kind == Evidence.RetainedAlive, false);
             }
             catch
             {
-                // Incomplete native state is not positive evidence of either survival or death.
-                return new Result(false, false);
+                // An incomplete observation cannot erase a death already established by the original spawner.
+                return new Result(false, recordedDeath);
             }
         }
     }
