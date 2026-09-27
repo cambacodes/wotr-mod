@@ -84,6 +84,15 @@ namespace Tirabade
         public string[] FailureFlags = Array.Empty<string>();
         // E2: an UnavailableFlag stops blocking once its authored return flag is held (Trickster returns).
         public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
+        // E7: authoring metadata for the verifier (TT-20). Opaque to the runtime; only its shape is validated.
+        public Dictionary<string, TricksterAccess> TricksterAccess = new Dictionary<string, TricksterAccess>();
+    }
+
+    public sealed class TricksterAccess
+    {
+        public string[] Detect = Array.Empty<string>();
+        public string? Device;
+        public string? Returned;
     }
 
     public sealed class Scene
@@ -500,6 +509,10 @@ namespace Tirabade
                         throw new InvalidOperationException("Invalid unavailable override (key must be one of the relationship's UnavailableFlags, value an authored return flag): "
                             + pair.Key + "/" + entry.Key);
             }
+            foreach (var pair in story.Relationships)
+                if (pair.Value.TricksterAccess == null || pair.Value.TricksterAccess.Any(access => string.IsNullOrWhiteSpace(access.Key)
+                    || access.Value == null || access.Value.Detect == null || access.Value.Detect.Any(string.IsNullOrWhiteSpace)))
+                    throw new InvalidOperationException("Malformed TricksterAccess metadata: " + pair.Key);
             foreach (var key in story.PermanentEtudes)
                 if (!story.Etudes.ContainsKey(key)) throw new InvalidOperationException("Unknown permanent etude: " + key);
             var ids = new HashSet<string>();

@@ -292,6 +292,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["ParentEpilogueEdits"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_EDITS)
     payload["ParentEpilogueLossRules"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_LOSS_RULES)
     trickster_engine(payload)
+    normalize_trickster_access(payload)
     return payload
 
 
@@ -302,11 +303,24 @@ TRICKSTER_ETUDES = {
     # World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_Trickster ("Nirvana" finale)
     "ending.trickster": "db5375333382d044089475d256f19582",
     # .../Chapter06_Extra/Ending_Trickster_AllPlanes and _AllPlanesAndFW (started by Ending_TricksterFull)
-    "ending.trickster_all_planes": "f7343e290a8d4ed887af8f04d1b3446b",
-    "ending.trickster_all_planes_fw": "5f63f6d43c9b465f822db70af7d69b92",
+    "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
+    "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
     # .../Chapter06_Extra/Ending_TricksterFull
     "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
 }
+
+
+def normalize_trickster_access(payload):
+    """E7: RELATIONSHIP["TricksterAccess"] = {state: {"detect": [...], "device": id, "returned": flag}} is authored in
+    lower case; Story.json carries it as Detect/Device/Returned metadata for rrt_verify (the runtime ignores it)."""
+    for rel in payload["Relationships"].values():
+        access = rel.get("TricksterAccess")
+        if access is None:
+            continue
+        rel["TricksterAccess"] = {state: {"Detect": list(entry.get("detect", entry.get("Detect", []))),
+                                          "Device": entry.get("device", entry.get("Device")),
+                                          "Returned": entry.get("returned", entry.get("Returned"))}
+                                  for state, entry in access.items()}
 
 
 def trickster_engine(payload):
@@ -323,7 +337,7 @@ def trickster_engine(payload):
     # says this Commander "found a way of cheating death". Epilogues may lift their sacrifice forbid with it.
     payload.setdefault("Derived", {})["trickster.cheated_death"] = [
         ["sacrifice", "trickster.ever", ending] for ending in
-        ("ending.trickster", "ending.trickster_all_planes", "ending.trickster_all_planes_fw", "ending.trickster_full")]
+        ("ending.trickster", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.trickster_full")]
 
 
 if __name__ == "__main__":

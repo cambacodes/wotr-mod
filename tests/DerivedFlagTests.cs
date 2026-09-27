@@ -7,15 +7,15 @@ using Tirabade;
 // trickster.cheated_death lets an epilogue that forbids `sacrifice` survive the Trickster punchline ending.
 internal static class DerivedFlagTests
 {
-    private static readonly string[] Endings = { "ending.trickster", "ending.trickster_all_planes", "ending.trickster_all_planes_fw", "ending.trickster_full" };
+    private static readonly string[] Endings = { "ending.trickster", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.trickster_full" };
 
     private static Story Fixture()
     {
         var story = TricksterLatchTests.Fixture();
         story.Etudes["sacrifice"] = "381a296094804761af0893d2e70dc2df";
         story.Etudes["ending.trickster"] = "db5375333382d044089475d256f19582";
-        story.Etudes["ending.trickster_all_planes"] = "f7343e290a8d4ed887af8f04d1b3446b";
-        story.Etudes["ending.trickster_all_planes_fw"] = "5f63f6d43c9b465f822db70af7d69b92";
+        story.Etudes["ending.trickster_allplanes"] = "f7343e290a8d4ed887af8f04d1b3446b";
+        story.Etudes["ending.trickster_allplanes_fw"] = "5f63f6d43c9b465f822db70af7d69b92";
         story.Etudes["ending.trickster_full"] = "6ff418aeda24e6e48be844e6258e3c5a";
         story.Derived["trickster.cheated_death"] = Endings.Select(e => new[] { "sacrifice", "trickster.ever", e }).ToArray();
         // A composite over a composite and an authored flag (evaluation order must not matter).

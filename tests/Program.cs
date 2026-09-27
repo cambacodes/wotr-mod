@@ -336,6 +336,7 @@ internal static class Program
         DerivedFlagTests.Run(Check);
         ChoiceExtensionTests.Run(Check);
         ReactionTests.Run(Check);
+        TricksterAccessTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);

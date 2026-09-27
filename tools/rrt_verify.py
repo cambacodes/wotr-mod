@@ -8,6 +8,7 @@ lockouts, chapter traps, lint problems and bad native GUID bindings, without Uni
 Usage:
   python rrt_verify.py [--story PATH] [--game DIR] [--json OUT] [--no-zip] [--quiet]
   python rrt_verify.py --drafts          # also build + check unregistered storyline drafts (from a scratch COPY)
+  python rrt_verify.py --matrix ../handoffs/trickster-matrix.json   # TT-20 roster matrix: entry / commit / coexist per character
 
 Sections: A producers | B reachability per mythic world | C chapter/delay traps | D cross-route forbid matrix
           E lints | F native GUID bindings | G runtime-risk metrics | H Trickster roster matrix | I TypeId lint
@@ -1408,6 +1409,182 @@ def check_drafts(story, P, game):
     return res
 
 
+# ----------------------------------------------------------------------------------------- TT-20 matrix mode
+LOSS_LIKE = re.compile(r"dead|gone|hostile|killed|departed|closed")
+
+
+def matrix_rel_ids(c, rels=None):
+    """'nocticula (+ nocticula.acquisition)' -> ['nocticula', 'nocticula.acquisition'] (registered ids only when rels given)."""
+    raw = c.get("relationship_id") or ""
+    toks = re.findall(r"[a-z][a-z0-9_]*(?:\.[a-z0-9_]+)*", raw.split("(renamed")[0])
+    if rels is None: return toks[:1] + [t for t in toks[1:] if "." in t]
+    return [t for t in toks if t in rels]
+
+
+def matrix_states(c):
+    return c.get("states") or c.get("native_states") or []
+
+
+def matrix_scene_ids(st):
+    """Device scene ids of one state: v2 setup / fallback_setup / payoff objects, v1 setup_scene_id / device_scene_id."""
+    ids = []
+    for k in ("setup", "fallback_setup", "payoff"):
+        v = st.get(k)
+        if isinstance(v, dict) and v.get("id"): ids.append(v["id"])
+    for k in ("setup_scene_id", "device_scene_id"):
+        if st.get(k): ids.append(st[k])
+    return ids
+
+
+def matrix_world_keys(model, st, guid_to_key):
+    """(true, false, unresolved) native keys one state forces. Authored keys are left for scenes to produce."""
+    det = st.get("detect") or {}
+    if isinstance(det, list): det = {"story_keys": det}
+    pos = list(det.get("all", [])) + [k for k in det.get("story_keys", []) if not k.startswith("!")]
+    neg = list(det.get("none", [])) + [k[1:] for k in det.get("story_keys", []) if k.startswith("!")]
+    true, false, unresolved = set(), set(), []
+    for keys, into in ((pos, true), (neg, false)):
+        for key in keys:
+            if key in model.native or key in model.builtin_derived: into.add(key)
+            elif key not in model.authored and key not in model.derived: unresolved.append(key)
+    for kind in ("etudes", "cues", "answers", "quests"):
+        for g in det.get(kind, []):
+            g = str(g).replace("!bp_", "").lower()
+            if g in guid_to_key: true.add(guid_to_key[g])
+            else: unresolved.append("%s:%s" % (kind[:-1], g[:8]))
+    return true, false, unresolved
+
+
+def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None):
+    story = json.loads(Path(story_path).read_text(encoding="utf-8"))
+    matrix = json.loads(Path(matrix_path).read_text(encoding="utf-8"))
+    model = Model(story)
+    guid_to_key = {}
+    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems"):
+        for k, g in (story.get(sec) or {}).items(): guid_to_key.setdefault(str(g).lower(), k)
+    for k, v in (story.get("QuestObjectives") or {}).items(): guid_to_key.setdefault(str(v[0]).lower(), k)
+    for k, v in (story.get("SeenCues") or {}).items():
+        for g in v: guid_to_key.setdefault(g.lower(), k)
+    cache = {}
+
+    def reach(true, false):
+        key = (frozenset(true), frozenset(false))
+        if key not in cache:
+            cache[key] = Reach(model, mythic_world("trickster", model, "matrix", true=true, false=false))
+        return cache[key]
+
+    chars = matrix.get("characters", [])
+    # forbids_never: flags of one relationship that no scene of ANY other relationship may Require or Forbid.
+    never = {}
+    for c in chars:
+        fl = set(c.get("forbids_never", []) if isinstance(c.get("forbids_never"), list) else [])
+        for x in list(c.get("coexistence_constraints", [])) + list(matrix_states(c)):
+            if isinstance(x, dict): fl |= set(x.get("forbids_never", []))
+        never[c.get("character")] = fl
+    explicit_never = any(never.values())
+    # The combined Trickster world: every device state's detect forced at once.
+    # Only implemented device states (scenes in Story.json, detect keys bound) are forced; planned ones are spec-only.
+    combined_true, combined_false, combined_spec = set(), set(), 0
+    for c in chars:
+        for st in matrix_states(c):
+            ids = matrix_scene_ids(st)
+            if not ids: continue
+            t, f, unresolved = matrix_world_keys(model, st, guid_to_key)
+            if unresolved or any(i not in model.by_id for i in ids):
+                combined_spec += 1
+                continue
+            combined_true |= t; combined_false |= f
+    conflict = combined_true & combined_false
+    combined_true -= conflict; combined_false -= conflict
+    combined = reach(combined_true, combined_false)
+    story_reactions = collections.Counter()
+    for s in model.scenes:
+        if s["Reaction"]: story_reactions[s["Relationship"]] += 1
+
+    lines = []
+    P = lines.append
+    P("# TT-20 Trickster matrix %s (%s, %d characters) vs %s" % (matrix_path, matrix.get("schema", "?"), len(chars), story_path))
+    P("# world  = trickster playing + the state's detect keys forced (authored keys must be produced by scenes)")
+    P("# entry  = each state's device scenes (setup/payoff) reachable; a state with no device needs any scene of the relationship")
+    P("# commit = the relationship's CommittedFlag reachable in each evaluated state")
+    P("# coexist= CommittedFlag reachable with ALL implemented device states forced at once, and none of the relationship's scenes Requires or")
+    P("#          Forbids another character's forbids_never flag%s" % ("" if explicit_never else " (no forbids_never in the matrix: other relationships' ClosedFlag/loss flags, Requires only)"))
+    P("# spec-only = the relationship, its device scenes or a detect key are not in Story.json yet (reported, never failing)")
+    hdr = "%-18s %-22s %-16s %-24s %-14s %-22s %s" % ("character", "relationship", "status", "entry", "commit", "coexist", "reactions(story/spec)")
+    P(""); P(hdr); P("-" * len(hdr))
+    rows, failures = [], 0
+    for c in chars:
+        name, status = c.get("character", "?"), str(c.get("relationship_status", "?"))
+        rids = matrix_rel_ids(c, model.rels)
+        soft = status.startswith("pending") or status.startswith("draft") or status.startswith("new")
+        row = dict(character=name, relationship=c.get("relationship_id"), registered=rids, status=status, notes=[])
+        spec_react = sum(len(st.get("reactions") or []) for st in matrix_states(c))
+        story_react = sum(story_reactions[r] for r in rids)
+        if not rids:
+            row.update(entry="spec-only", commit="spec-only", coexist="spec-only")
+        else:
+            rels = [model.rels[r] for r in rids]
+            rel_scenes = [s for s in model.scenes if s["Relationship"] in rids and not is_epilogue(s)]
+            ent_ok = ent_n = com_ok = spec = 0
+            for st in matrix_states(c):
+                t, f, unresolved = matrix_world_keys(model, st, guid_to_key)
+                ids = matrix_scene_ids(st)
+                missing = [i for i in ids if i not in model.by_id]
+                if unresolved or missing:
+                    spec += 1
+                    why = (["scenes " + ",".join(missing)] if missing else []) + (["keys " + ",".join(unresolved[:3])] if unresolved else [])
+                    row["notes"].append("%s: spec-only (%s)" % (st.get("state"), "; ".join(why)))
+                    continue
+                rr = reach(t, f)
+                ent_n += 1
+                ok = all(i in rr.reached for i in ids) if ids else any(s["Id"] in rr.reached for s in rel_scenes)
+                committed = any(r["CommittedFlag"] in rr.held for r in rels)
+                ent_ok += ok; com_ok += committed
+                if not ok or not committed:
+                    row["notes"].append("%s: %s%s" % (st.get("state"), "" if ok else "entry unreachable ", "" if committed else "commit unreachable"))
+            tail = " +%d spec-only" % spec if spec else ""
+            row["entry"] = ("spec-only" if ent_n == 0 else ("PASS" if ent_ok == ent_n else "FAIL") + " %d/%d" % (ent_ok, ent_n)) + (tail if ent_n else "")
+            row["commit"] = "spec-only" if ent_n == 0 else ("PASS" if com_ok == ent_n else "FAIL") + " %d/%d" % (com_ok, ent_n)
+            if explicit_never:
+                # Characters sharing this relationship (Minagho/Chivarro) are not "another entry".
+                watched = set().union(set(), *[never[x.get("character")] for x in chars
+                                               if not set(matrix_rel_ids(x, model.rels)) & set(rids)]) - set(never.get(name, set()))
+            else:
+                own_unavail = {f for r in rels for f in r.get("UnavailableFlags", [])}
+                watched = {r["ClosedFlag"] for k, r in model.rels.items() if k not in rids} | {
+                    f for k, r in model.rels.items() if k not in rids for f in r.get("UnavailableFlags", [])
+                    if LOSS_LIKE.search(f) and f not in own_unavail and f not in MYTHIC}
+            deps = []
+            for s in model.scenes:
+                if s["Relationship"] not in rids or s["Reaction"]: continue
+                pos = set(s["Requires"]) | set(s["RequiresAny"]) | {x for g in s["RequiresAnyGroups"] for x in g}
+                deps += ["%s requires %s" % (s["Id"], f) for f in sorted(pos & watched)]
+                if explicit_never: deps += ["%s forbids %s" % (s["Id"], f) for f in sorted(set(s["Forbids"]) & watched)]
+            committed_all = any(r["CommittedFlag"] in combined.held for r in rels)
+            row["coexist"] = "PASS" if committed_all and not deps else "FAIL" + ("" if committed_all else " commit") + (" %d dep" % len(deps) if deps else "")
+            if deps: row["notes"].append("coexistence: " + "; ".join(deps[:3]) + (" (+%d more)" % (len(deps) - 3) if len(deps) > 3 else ""))
+        row["reactions"] = dict(story=story_react, spec=spec_react)
+        failed = any(str(row[k]).startswith("FAIL") for k in ("entry", "commit", "coexist"))
+        row["failed"] = bool(failed and not soft)
+        failures += row["failed"]
+        P("%-18s %-22s %-16s %-24s %-14s %-22s %d/%d" % (name[:18], (",".join(rids) or matrix_rel_ids(c)[0] if matrix_rel_ids(c) else "-")[:22],
+                                                        status[:16], row["entry"], row["commit"], row["coexist"], story_react, spec_react))
+        for n in row["notes"][:5]: P("      - " + n)
+        if len(row["notes"]) > 5: P("      - ... %d more" % (len(row["notes"]) - 5))
+        rows.append(row)
+    P("")
+    P("combined Trickster world: %d native keys forced true, %d false; %d conflicting keys dropped %s; %d planned device states not forced (spec-only)"
+      % (len(combined_true), len(combined_false), len(conflict), sorted(conflict)[:6], combined_spec))
+    P("rows: %d; FAIL rows among registered relationships: %d (draft/new/pending rows report without failing)" % (len(rows), failures))
+    result = dict(schema=matrix.get("schema"), rows=rows, failures=failures,
+                  combined_true=sorted(combined_true), combined_false=sorted(combined_false))
+    if extra is not None:
+        result.update(extra(model, matrix, P))
+    text = "\n".join(lines)
+    print(text)
+    if out_json: Path(out_json).write_text(json.dumps(result, indent=1, default=str), encoding="utf-8")
+    return result, (1 if strict and failures else 0)
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--story", default=str(MOD / "development/Story.json"))
@@ -1418,7 +1595,12 @@ def main():
     ap.add_argument("--drafts", action="store_true")
     ap.add_argument("--quiet", action="store_true")
     ap.add_argument("--strict", action="store_true", help="exit 1 on hard failures (for build gates)")
+    ap.add_argument("--matrix", help="TT-20: check a trickster-matrix.json against the story (report; --strict fails on registered rows)")
+    ap.add_argument("--matrix-json", default=str(HERE / "rrt_verify_report.matrix.json"))
     a = ap.parse_args()
+    if a.matrix:
+        _, code = run_matrix(a.matrix, a.story, strict=a.strict, out_json=a.matrix_json)
+        sys.exit(code)
     R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
     Path(a.text).write_text(text, encoding="utf-8")
     hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
