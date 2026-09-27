@@ -119,7 +119,8 @@ class Model:
         self.etudes = story.get("Etudes", {})
         self.permanent_etudes = set(story.get("PermanentEtudes", []))
         nk = {}
-        for sec in ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes"):
+        for sec in ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
+                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests"):
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
@@ -177,6 +178,7 @@ class Model:
     def is_persistent_native(self, f):
         sec = self.native.get(f)
         if sec is None: return False
+        if sec in ("UnlockableFlags", "InventoryItems", "QuestObjectives"): return False   # values can change back
         if sec != "Etudes": return True
         return (f in self.permanent_etudes or f.endswith("_dead") or f.endswith("_gone") or f.startswith("ascend_")
                 or f in ("sacrifice", "true_lich"))
@@ -1225,6 +1227,10 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             for g in v: want.append((g, "BlueprintCue", "SeenCues." + k))
         for k, g in story.get("SelectedAnswers", {}).items(): want.append((g, "BlueprintAnswer", "SelectedAnswers." + k))
         for k, g in story.get("StartedDialogs", {}).items(): want.append((g, "BlueprintDialog", "StartedDialogs." + k))
+        for k, g in story.get("UnlockableFlags", {}).items(): want.append((g, "BlueprintUnlockableFlag", "UnlockableFlags." + k))
+        for k, v in story.get("QuestObjectives", {}).items(): want.append((v[0], "BlueprintQuestObjective", "QuestObjectives." + k))
+        for k, g in story.get("InventoryItems", {}).items(): want.append((g, "BlueprintItem*", "InventoryItems." + k))
+        for k, g in story.get("StartedQuests", {}).items(): want.append((g, "BlueprintQuest", "StartedQuests." + k))
         for k, v in model.revivals.items(): want.append((v["Unit"], "BlueprintUnit", "Revivals." + k))
         for s in model.scenes:
             for g in ([s["ContactUnit"]] if s["ContactUnit"] else []) + list(s["AdditionalContactUnits"]): want.append((g, "BlueprintUnit", "ContactUnit@" + s["Id"]))
@@ -1250,7 +1256,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             if not hit: bad.append(dict(guid=g, expected=t, where=where, actual=None))
             elif hit[0] == "?parent-literal":
                 parent_untyped.append(dict(guid=g, expected=t, where=where, source=hit[1]))
-            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t == "BlueprintCue" and hit[0] == "BlueprintCue"):
+            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1])):
                 bad.append(dict(guid=g, expected=t, where=where, actual=hit[0], path=hit[1]))
         # hard-coded GUIDs in src/*.cs
         srcg = collections.defaultdict(set)

@@ -13,6 +13,13 @@ namespace Tirabade
         public Dictionary<string, string> SelectedAnswers = new Dictionary<string, string>();
         public Dictionary<string, string> StartedDialogs = new Dictionary<string, string>();
         public Dictionary<string, string> CompletedEtudes = new Dictionary<string, string>();
+        // E10 read-only native readers: a BlueprintUnlockableFlag with value > 0; a quest objective in the named state
+        // ([guid, "Started"|"Completed"|"Failed"]); an item in the party inventory or the shared stash; ER-5: a quest
+        // that is Started or Completed.
+        public Dictionary<string, string> UnlockableFlags = new Dictionary<string, string>();
+        public Dictionary<string, string[]> QuestObjectives = new Dictionary<string, string[]>();
+        public Dictionary<string, string> InventoryItems = new Dictionary<string, string>();
+        public Dictionary<string, string> StartedQuests = new Dictionary<string, string>();
         public Dictionary<string, Revival> Revivals = new Dictionary<string, Revival>();
         public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
         public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
@@ -373,7 +380,13 @@ namespace Tirabade
 
         public static IEnumerable<string> NativeKeys(Story story) => story.Etudes.Keys.Concat(story.CompletedEtudes.Keys)
             .Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys)
-            .Concat(story.StartedDialogs.Keys);
+            .Concat(story.StartedDialogs.Keys).Concat(ReaderKeys(story));
+
+        // E10 reader kinds.
+        public static IEnumerable<string> ReaderKeys(Story story) => story.UnlockableFlags.Keys.Concat(story.QuestObjectives.Keys)
+            .Concat(story.InventoryItems.Keys).Concat(story.StartedQuests.Keys);
+
+        public static readonly string[] ObjectiveStates = { "Started", "Completed", "Failed" };
 
         private static bool IsReservedKey(string key) => key.StartsWith(DegradedPrefix, StringComparison.Ordinal)
             || key.StartsWith(ServedPrefix, StringComparison.Ordinal) || key.StartsWith("hour.", StringComparison.Ordinal)
@@ -382,7 +395,8 @@ namespace Tirabade
         private static bool IsNativeFlag(Story story, string flag) => story.Etudes.ContainsKey(flag)
             || story.CompletedEtudes.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag)
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
-            || story.StartedDialogs.ContainsKey(flag)
+            || story.StartedDialogs.ContainsKey(flag) || story.UnlockableFlags.ContainsKey(flag) || story.QuestObjectives.ContainsKey(flag)
+            || story.InventoryItems.ContainsKey(flag) || story.StartedQuests.ContainsKey(flag)
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available"
@@ -500,6 +514,8 @@ namespace Tirabade
         public static void Validate(Story story)
         {
             if (story.Scenes.Count == 0) throw new InvalidOperationException("The route has no scenes.");
+            if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null)
+                throw new InvalidOperationException("Native reader collections cannot be null.");
             foreach (var pair in story.CompletedQuests)
                 if (string.IsNullOrWhiteSpace(pair.Key) || story.Etudes.ContainsKey(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _))
                     throw new InvalidOperationException("Invalid completed quest binding: " + pair.Key);
@@ -535,7 +551,7 @@ namespace Tirabade
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
-                .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys)
+                .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
                 .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
                 throw new InvalidOperationException("The " + DegradedPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
             if (authoredFlags.Any(contactEvidence.Contains)
@@ -546,6 +562,20 @@ namespace Tirabade
                     .Any(key => contactEvidence.Contains(key) || key == "konomi.retained_return_confirmed"))
                 throw new InvalidOperationException("Authored state or native aliases cannot manufacture contact evidence.");
             var nativeKeys = new HashSet<string>(NativeKeys(story));
+            // E10: reader keys are new names, each bound once, to a well-formed GUID (and objective state).
+            var others = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
+                .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).ToList();
+            var readers = ReaderKeys(story).ToList();
+            foreach (var key in readers)
+            {
+                string? guid = story.UnlockableFlags.TryGetValue(key, out var f) ? f : story.InventoryItems.TryGetValue(key, out var i) ? i
+                    : story.StartedQuests.TryGetValue(key, out var q) ? q : story.QuestObjectives.TryGetValue(key, out var o) && o?.Length == 2
+                        && ObjectiveStates.Contains(o[1]) ? o[0] : null;
+                if (string.IsNullOrWhiteSpace(key) || guid == null || !Guid.TryParseExact(guid, "N", out var parsed) || parsed == Guid.Empty
+                    || readers.Count(other => other == key) != 1 || others.Contains(key) || authoredFlags.Contains(key)
+                    || derivedFlags.Contains(key) || contactEvidence.Contains(key) || IsReservedKey(key))
+                    throw new InvalidOperationException("Invalid native reader binding: " + key);
+            }
             if (story.Latches == null) throw new InvalidOperationException("Latches cannot be null.");
             foreach (var pair in story.Latches)
                 if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key)

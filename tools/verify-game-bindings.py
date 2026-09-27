@@ -30,7 +30,8 @@ def main():
     found = {}
     with ZipFile(args.game / "blueprints.zip") as archive:
         for name in archive.namelist():
-            if not name.endswith(".jbp") or not name.startswith(("World/Etudes/", "World/Dialogs/", "World/Crusade/", "World/Areas/", "World/Quests/", "Units/", "Mythic/")):
+            # E10 readers bind flags, objectives and items that live anywhere in the archive (Items/, Equipment/, World/...).
+            if not name.endswith(".jbp"):
                 continue
             with archive.open(name) as stream:
                 header = stream.read(160)
@@ -52,7 +53,9 @@ def main():
                     pending.remove(guid)
     for binding in bindings:
         target = found.get(binding["Guid"])
-        if target is None or target["type"] != binding["ExpectedType"]:
+        expected = binding["ExpectedType"]
+        matches = target is not None and (target["type"].startswith(expected[:-1]) if expected.endswith("*") else target["type"] == expected)
+        if not matches:
             failures.append({**binding, "Actual": target})
     report = {
         "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",

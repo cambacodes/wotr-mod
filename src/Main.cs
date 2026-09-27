@@ -60,6 +60,12 @@ namespace Tirabade
         private static readonly Dictionary<string, BlueprintAnswer> selectedAnswers = new Dictionary<string, BlueprintAnswer>();
         private static readonly Dictionary<string, BlueprintDialog> startedDialogs = new Dictionary<string, BlueprintDialog>();
         private static readonly Dictionary<string, BlueprintEtude> completedEtudes = new Dictionary<string, BlueprintEtude>();
+        // E10 read-only readers (never written).
+        private static readonly Dictionary<string, BlueprintUnlockableFlag> nativeFlags = new Dictionary<string, BlueprintUnlockableFlag>();
+        private static readonly Dictionary<string, KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>> nativeObjectives =
+            new Dictionary<string, KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>>();
+        private static readonly Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem> nativeItems = new Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem>();
+        private static readonly Dictionary<string, BlueprintQuest> startedQuests = new Dictionary<string, BlueprintQuest>();
         private static readonly Dictionary<string, BlueprintUnit> revivalUnits = new Dictionary<string, BlueprintUnit>();
         private static readonly Dictionary<string, BlueprintUnit> contactUnits = new Dictionary<string, BlueprintUnit>();
         private static string? recoveryMessage;
@@ -229,6 +235,18 @@ namespace Tirabade
                     if (Resolve<BlueprintDialog>(pair.Value, "Started dialog " + pair.Key) is BlueprintDialog d) startedDialogs.Add(pair.Key, d); else missingKeys.Add(pair.Key);
                 foreach (var pair in story.CompletedEtudes)
                     if (Resolve<BlueprintEtude>(pair.Value, "Completed etude " + pair.Key) is BlueprintEtude c) completedEtudes.Add(pair.Key, c); else missingKeys.Add(pair.Key);
+                foreach (var pair in story.UnlockableFlags)
+                    if (Resolve<BlueprintUnlockableFlag>(pair.Value, "Native flag " + pair.Key) is BlueprintUnlockableFlag nf) nativeFlags.Add(pair.Key, nf); else missingKeys.Add(pair.Key);
+                foreach (var pair in story.QuestObjectives)
+                    if (Resolve<BlueprintQuestObjective>(pair.Value[0], "Quest objective " + pair.Key) is BlueprintQuestObjective qo)
+                        nativeObjectives.Add(pair.Key, new KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>(qo,
+                            (QuestObjectiveState)Enum.Parse(typeof(QuestObjectiveState), pair.Value[1])));
+                    else missingKeys.Add(pair.Key);
+                foreach (var pair in story.InventoryItems)
+                    if (Resolve<Kingmaker.Blueprints.Items.BlueprintItem>(pair.Value, "Inventory item " + pair.Key) is Kingmaker.Blueprints.Items.BlueprintItem it) nativeItems.Add(pair.Key, it);
+                    else missingKeys.Add(pair.Key);
+                foreach (var pair in story.StartedQuests)
+                    if (Resolve<BlueprintQuest>(pair.Value, "Started quest " + pair.Key) is BlueprintQuest sq) startedQuests.Add(pair.Key, sq); else missingKeys.Add(pair.Key);
                 foreach (var pair in story.Revivals)
                     if (Resolve<BlueprintUnit>(pair.Value.Unit, "Revival unit " + pair.Key) is BlueprintUnit u) revivalUnits.Add(pair.Key, u);
                     else Degrade(pair.Value.Relationship, "revival unit for " + pair.Key + " is missing");
@@ -636,6 +654,8 @@ namespace Tirabade
             foreach (var etude in completedEtudes)
                 if (player.EtudesSystem.EtudeIsCompleted(etude.Value)) state.Flags.Add(etude.Key);
             ReadDialogHistory(player.Dialog, state);
+            ReadNativeProgress(player.UnlockableFlags, player.QuestBook,
+                item => player.Inventory.Contains(item) || player.SharedStash?.Contains(item) == true, state);
             if (flags.ContainsKey("konomi.missed_letter_sent") && etudes.TryGetValue("konomi.present", out var office))
             {
                 // A dormant office is still an appointment, not a missed introduction.
@@ -673,6 +693,27 @@ namespace Tirabade
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);
             return state;
         }
+
+        // E10: read-only native progress. Items: the party inventory (which holds every party member's equipped items, as the
+        // native ItemsEnough condition reads it) or the shared stash; never the vendor or loot collections.
+        internal static void ReadNativeProgress(Kingmaker.AreaLogic.QuestSystem.UnlockableFlagsManager unlockable, QuestBook quests,
+            Func<Kingmaker.Blueprints.Items.BlueprintItem, bool> holds, Snapshot state)
+        {
+            // A native container that throws (e.g. a quest whose objective list changed in a patch) reads as "not held".
+            void Read(string key, Func<bool> observe)
+            {
+                try { if (observe()) state.Flags.Add(key); }
+                catch (Exception ex) { if (readerWarnings.Add(key)) entry?.Logger.Log("Native reader '" + key + "' unavailable: " + ex.Message); }
+            }
+            foreach (var pair in nativeFlags) Read(pair.Key, () => unlockable.GetFlagValue(pair.Value) > 0);
+            foreach (var pair in nativeObjectives) Read(pair.Key, () => quests.GetObjectiveState(pair.Value.Key) == pair.Value.Value);
+            foreach (var pair in startedQuests)
+                Read(pair.Key, () => quests.GetQuestState(pair.Value) is QuestState questState
+                    && (questState == QuestState.Started || questState == QuestState.Completed));
+            foreach (var pair in nativeItems) Read(pair.Key, () => holds(pair.Value));
+        }
+
+        private static readonly HashSet<string> readerWarnings = new HashSet<string>(StringComparer.Ordinal);
 
         private static void ReadDialogHistory(DialogState dialog, Snapshot state)
         {
