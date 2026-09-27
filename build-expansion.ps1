@@ -13,13 +13,20 @@ try {
     $dotnetPath = Join-Path $env:LOCALAPPDATA 'RanRomanceTools/dotnet/dotnet.exe'
     if (!(Test-Path -LiteralPath $dotnetPath)) { $dotnetPath = (Get-Command dotnet -ErrorAction Stop).Source }
     $env:RRT_PYTHON = $pythonPath
-    $env:RRT_PARENT_BINDINGS = Join-Path $PSScriptRoot 'reference/canon-review/expansion-parent-bindings.json'
+    $env:RRT_PARENT_BINDINGS = (@(
+        'reference/canon-review/expansion-parent-bindings.json'
+        'reference/canon-review/nurah-parent-bindings.json'
+        'reference/canon-review/nurah-parent-runtime-cue-bindings.json'
+    ) | ForEach-Object { Join-Path $PSScriptRoot $_ } | Where-Object { Test-Path -LiteralPath $_ }) -join [IO.Path]::PathSeparator
 
     & $pythonPath expansion.py
     if ($LASTEXITCODE) { throw 'Expansion generation failed' }
     $validatedStoryHash = (Get-FileHash -LiteralPath 'development/Story.json').Hash
     & $dotnetPath build src/Tirabade.csproj -c Release --nologo -v quiet "-p:GameDir=$GameDir/"
     if ($LASTEXITCODE) { throw 'Expansion assembly build failed' }
+    # Static gate (GLOBAL-15): structure, dead gates, TypeIds, native bindings, released-save references.
+    & $pythonPath tools/rrt_verify.py --strict --quiet --story development/Story.json --game $GameDir
+    if ($LASTEXITCODE) { throw 'Static verification failed (tools/rrt_verify_report.txt)' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
     if ($LASTEXITCODE) { throw 'Narrator build failed' }
     & $dotnetPath run --project tests/RulesTests.csproj -c Release -- development/Story.json
@@ -32,6 +39,21 @@ try {
         $env:RRT_TEST_EXPANDED_EPILOGUE = $fixtureMode
         & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe $GameDir development/Story.json
         if ($LASTEXITCODE) { throw "Expansion managed construction validation failed: optional epilogue $fixtureMode" }
+    }
+    # Real UMM entry point: Story.json deserialize + Rules.Validate + Harmony PatchAll per class (GLOBAL-02).
+    $env:RRT_TEST_EXPANDED_EPILOGUE = '0'
+    $env:RRT_TEST_LOAD = '1'
+    & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe $GameDir development/Story.json
+    $loadExit = $LASTEXITCODE
+    $env:RRT_TEST_LOAD = $null
+    if ($loadExit) { throw 'Load smoke test failed: the mod would not load in UnityModManager' }
+    # Save-safe degradation (GLOBAL-01): a vanished native binding disables only the relationships that use it.
+    foreach ($missing in @('irabeth_dead', 'trickster')) {
+        $env:RRT_TEST_MISSING_ETUDE = $missing
+        & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe $GameDir development/Story.json
+        $missingExit = $LASTEXITCODE
+        $env:RRT_TEST_MISSING_ETUDE = $null
+        if ($missingExit) { throw "Partial-integration fixture failed: missing $missing" }
     }
     if ((Get-FileHash -LiteralPath 'development/Story.json').Hash -ne $validatedStoryHash) {
         throw 'Expansion story changed during validation; rebuild before packaging'

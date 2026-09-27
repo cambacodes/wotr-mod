@@ -488,6 +488,10 @@ internal static class Program
         Check(sequences.All(pair => pair.Value.Cues.SequenceEqual(cuesBefore[pair.Key])), "Second Build duplicates epilogues");
         if (expandedEpilogue != null) Check(expandedEpilogue.Cues.SequenceEqual(expandedBefore!), "Second Build duplicates optional epilogue pages.");
         Console.WriteLine("Optional Expanded Epilogue fixture: " + (expandedEpilogue == null ? "absent" : "present; parent reference preservation and attachment checked, external caller graph not executed"));
+        // RRT_DUMP_REGISTERED=<path> writes every generated blueprint name and GUID for the save-reference ledger (tools/save_ledger.py).
+        string? dump = Environment.GetEnvironmentVariable("RRT_DUMP_REGISTERED");
+        if (!string.IsNullOrEmpty(dump))
+            File.WriteAllLines(dump, registered.Select(bp => bp.name + "	" + bp.AssetGuid + "	" + bp.GetType().Name).OrderBy(line => line, StringComparer.Ordinal));
         Console.WriteLine($"PASS: {checks} assertions; real Main.Build, {story.Scenes.Count} scenes, {registered.Count} generated blueprints, {targetIds.Length} native answer lists, 1 native Aeon sequence and 1 parent-mod sentinel sequence, idempotence.");
         Console.WriteLine("DLL SHA256 " + Hash(typeof(Tirabade.Main).Assembly.Location));
         Console.WriteLine("Story SHA256 " + Hash(storyPath));

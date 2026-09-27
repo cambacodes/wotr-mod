@@ -13,3 +13,6 @@ package/*.config
 .env.*
 !.env.example
 *.log
+tools/rrt_verify_report.*
+tools/scratch/
+harness/.runs/
