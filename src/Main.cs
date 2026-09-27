@@ -327,11 +327,13 @@ namespace Tirabade
                 var irabethEtude = New<BlueprintEtude>("etude.irabeth.personal_return");
                 var nurahEtude = New<BlueprintEtude>("etude.nurah.private_meeting");
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
-                foreach (var scene in story.Scenes) BuildScene(scene);
+                foreach (var scene in story.Scenes)
+                    if (scene.ReturnToList) BuildReturnToList(scene); else BuildScene(scene);
                 foreach (var scene in story.Scenes)
                 {
                     // Entry answers are recorded in dialogue history, so they exist even when their relationship is degraded.
-                    if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || Rules.IsRemote(scene) || scene.InteractionHub != null) continue;
+                    if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || Rules.IsRemote(scene) || scene.InteractionHub != null
+                        || scene.ReturnToList) continue;
                     var answer = New<BlueprintAnswer>("entry." + scene.Id);
                     InitializeAnswer(answer);
                     answer.Text = Text("entry." + scene.Id, scene.Entry);
@@ -401,9 +403,11 @@ namespace Tirabade
                         continue;
                     }
                     if (Rules.IsRemote(scene) || scene.InteractionHub != null) continue;
-                    var answer = Get<BlueprintAnswer>(GuidFor("entry." + scene.Id).ToString());
                     foreach (var id in Rules.EntryTargets(scene))
+                    {
+                        var answer = Get<BlueprintAnswer>(GuidFor(scene.ReturnToList ? "entry." + scene.Id + "." + id : "entry." + scene.Id).ToString());
                         targets[id].Answers.Insert(Math.Max(0, targets[id].Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
+                    }
                 }
                 if (epilogue == null) warnings.Add("Epilogue pages are not shown: the RanRomance parent epilogue is missing.");
                 initialized = true;
@@ -617,6 +621,61 @@ namespace Tirabade
             var text = new LocalizedString();
             Field(text, "m_Key", "");
             return text;
+        }
+
+        // E14b: one inline cue graph per native list; terminal and abort answers go to an authored return cue whose only answer
+        // is that list, so the native menu reappears. Completion is recorded on the terminal choice, so the entry then hides.
+        private static void BuildReturnToList(Scene scene)
+        {
+            foreach (string list in scene.AnswerLists)
+            {
+                string prefix = scene.Id + "." + list;
+                CueSetup(out var returnCue, "cue." + prefix + ".return", scene.ReturnText ?? "{n}The moment passes. The conversation resumes.{/n}");
+                var listReference = new BlueprintAnswerBaseReference();
+                Field(listReference, "deserializedGuid", BlueprintGuid.Parse(list));
+                returnCue.Answers.Add(listReference);
+                var local = new Dictionary<string, BlueprintCue>();
+                foreach (var node in scene.Nodes)
+                {
+                    CueSetup(out var cue, "cue." + prefix + "." + node.Id, node.Text);
+                    local.Add(node.Id, cue);
+                }
+                foreach (var node in scene.Nodes)
+                    for (int i = 0; i < node.Choices.Count; i++)
+                    {
+                        var choice = node.Choices[i];
+                        var answer = New<BlueprintAnswer>("answer." + prefix + "." + node.Id + "." + i);
+                        InitializeAnswer(answer);
+                        answer.Text = Text(answer.name, choice.Text);
+                        answer.ShowConditions = Conditions(new RouteCondition { Choice = choice });
+                        answer.SelectConditions = Conditions(new RouteCondition { Choice = choice });
+                        answer.OnSelect = Actions(new RouteAction { Choice = choice, Complete = choice.Next == null && !choice.Abort ? scene : null });
+                        answer.NextCue = Cues(choice.Next != null ? local[choice.Next] : returnCue);
+                        ConfigureNativeEffects(answer, choice, warnings.Add);
+                        local[node.Id].Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
+                    }
+                var entryAnswer = New<BlueprintAnswer>("entry." + prefix);
+                InitializeAnswer(entryAnswer);
+                entryAnswer.Text = Text("entry." + prefix, scene.Entry);
+                entryAnswer.ShowConditions = Conditions(new RouteCondition { Scene = scene });
+                entryAnswer.SelectConditions = Conditions(new RouteCondition { Scene = scene });
+                entryAnswer.NextCue = Cues(local[scene.Nodes[0].Id]);
+                if (scene.EntryMythic != null || scene.EntryAlignment != null)
+                    ConfigureNativeEffects(entryAnswer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
+            }
+        }
+
+        private static void CueSetup(out BlueprintCue cue, string name, string text)
+        {
+            cue = New<BlueprintCue>(name);
+            cue.Conditions = Conditions();
+            cue.OnShow = Actions();
+            cue.OnStop = Actions();
+            cue.Speaker = new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
+            cue.TurnSpeaker = false;
+            cue.Continue = Cues();
+            cue.ShowOnce = false;
+            cue.Text = Text(name.Substring("cue.".Length), text);
         }
 
         private static BlueprintDialog BuildNurahHub()

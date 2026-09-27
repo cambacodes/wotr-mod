@@ -353,6 +353,8 @@ internal static class Program
         EntryEffectTests.Run(Check);
         PresenceTests.Run(Check);
         NativeEpilogueTests.Run(Check);
+        ReturnToListTests.Run(Check);
+        // __E14_RULES__
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);

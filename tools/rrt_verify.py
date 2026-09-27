@@ -55,7 +55,7 @@ def norm_scene(s):
              AfterDeparture=None, ContactUnit=None, AdditionalContactUnits=[], MinChapter=1, MaxChapter=5,
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
              ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None,
-             EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None)
+             EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None, ReturnToList=False, ReturnText=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", "")
@@ -538,6 +538,14 @@ def build_names(model):
         suf = "" if rid == "tirabade" else "." + rid
         names += [("quest" + suf, "BlueprintQuest"), ("objective" + suf, "BlueprintQuestObjective")]
     for s in scenes:
+        if s["ReturnToList"]:   # E14b: one inline graph per list (Main.BuildReturnToList)
+            for lst in s["AnswerLists"]:
+                pre = s["Id"] + "." + lst
+                names.append(("cue." + pre + ".return", "BlueprintCue"))
+                names += [("cue.%s.%s" % (pre, n["Id"]), "BlueprintCue") for n in s["Nodes"]]
+                names += [("answer.%s.%s.%d" % (pre, n["Id"], i), "BlueprintAnswer") for n in s["Nodes"] for i in range(len(n["Choices"]))]
+                names.append(("entry." + pre, "BlueprintAnswer"))
+            continue
         for n in s["Nodes"]:
             i = s["Id"] + "." + n["Id"]
             names.append(("cue." + i, "BlueprintCue"))
@@ -559,7 +567,7 @@ def build_names(model):
         names += [("answer.nurah.arrival_hub." + s["Id"], "BlueprintAnswer") for s in scenes if is_nurah_hub(s)]
         names += [("answer.nurah.arrival_hub.leave", "BlueprintAnswer"), ("dialog.nurah.arrival_hub", "BlueprintDialog")]
     for s in scenes:
-        if is_epilogue(s) or is_remote(s) or s["InteractionHub"] is not None: continue
+        if is_epilogue(s) or is_remote(s) or s["InteractionHub"] is not None or s["ReturnToList"]: continue
         names.append(("entry." + s["Id"], "BlueprintAnswer"))
     return names, flagkeys
 

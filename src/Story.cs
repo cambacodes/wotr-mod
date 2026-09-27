@@ -185,6 +185,10 @@ namespace Tirabade
         public string? EpilogueAfter;
         // E14a: an epilogue page placed in a native sequence instead of the RanRomance one ("PlayerFinalChoice").
         public string? EpilogueSequence;
+        // E14b: an inline scene inside a native dialog whose list has no clean return cue. For each AnswerList the runtime builds
+        // its own cue graph ending in an authored return cue (ReturnText) that shows that list again.
+        public bool ReturnToList;
+        public string? ReturnText;
         // E13: native effects on the scene's entry answer (the one injected into a native answer list), as E5 does for choices.
         public string? EntryMythic;
         public AlignmentChoice? EntryAlignment;
@@ -795,6 +799,14 @@ namespace Tirabade
                     || scene.EntryAlignment != null && (!AlignmentDirections.Contains(scene.EntryAlignment.Direction)
                         || scene.EntryAlignment.Value <= 0 || scene.EntryAlignment.Value > 100)))
                     throw new InvalidOperationException("Invalid entry mythic/alignment (physical entry answers only; Mythic and AlignmentShiftDirection names): " + scene.Id);
+                if (scene.ReturnToList && (scene.NativeReturnCue != null || IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    || scene.ContactUnit != null || scene.InteractionHub != null || scene.Recovery != null || scene.AnswerLists.Length == 0
+                    || scene.AnswerLists.Distinct().Count() != scene.AnswerLists.Length
+                    || (scene.ReturnText ?? "").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length > 25
+                    || scene.Nodes.SelectMany(node => node.Choices).Any(choice => choice.Check != null || choice.NativeNext != null || choice.Revive != null))
+                    || !scene.ReturnToList && scene.ReturnText != null)
+                    throw new InvalidOperationException("Invalid return-to-list scene (physical, explicit AnswerLists, no NativeReturnCue/ContactUnit/"
+                        + "hub, ReturnText <= 25 words, no check/native_next/revive choices): " + scene.Id);
                 if (scene.EpilogueSequence != null && (!NativeEpilogueSequences.TryGetValue(scene.EpilogueSequence, out var anchors)
                     || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue"
                     || scene.EpilogueAfter == null || !anchors.Contains(scene.EpilogueAfter)))
