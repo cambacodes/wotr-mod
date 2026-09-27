@@ -934,8 +934,8 @@ s("ending_loss", "An empty place", "Epilogue", 0, "", [
 ], requires=("a_affair", "i_affair", "loss"), forbids=("swarm", "true_lich", "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions"), last=99)
 
 s("ending_ascend", "Beyond the promised years", "Epilogue", 0, "", [
-    n("end", "Narrator", '''{n}The Commander's ascent made ordinary plans seem very small. It did not make them meaningless. Anevia had asked not to be mourned before her time. Irabeth had asked that power never become an answer to a question she had not been allowed to ask.{/n}
-{n}Those requests survived the transformation. Whatever reach the Commander's new existence permitted, affection could not be commanded into permanence. The women kept their own choices, their own work, and the right to welcome or refuse a presence that the world had begun to treat as beyond refusal.{/n}
+    n("end", "Narrator", '''{n}The Commander's ascent made ordinary plans seem very small. It did not make them meaningless. Anevia regarded eternity as a poor excuse for missing supper. Irabeth was less amused by the prospect of every disagreement acquiring a congregation.{/n}
+{n}Neither mistook divinity for agreement. Whatever reach the Commander's new existence permitted, affection could not be commanded into permanence. The women kept their own choices, their own work, and the right to welcome or refuse a presence that the world had begun to treat as beyond refusal.{/n}
 {n}Among the grand claims later made about the Commander's nature, there was a quieter story. It concerned someone who had once learned, with considerable difficulty, to arrive when expected and speak honestly at a table meant for three. Whether told as a memory or a hope, it was a story neither woman allowed the worshipers to improve.{/n}'''),
 ], requires=("committed", "ascended"), forbids=("closed", "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone"), last=99)
 
@@ -1094,8 +1094,8 @@ s("return", "People who kept living", "Together", 5,
       c('[Show them the letter you wrote in the Abyss.]', "letter", requires=("wrote_letter",)),
       c('"Tell me how you are now, not how you think I need you to be."', "now")),
     n("letter", "Narrator", '''{n}You put the folded page on the table. Anevia recognizes neither the paper nor the handwriting's hurried slant, but she understands its condition. She handles it as carefully as she would a report that cost someone's life to carry.{/n}
-{n}Irabeth reads it slowly. When she reaches the part about the repaired glove, she looks down at her own hands.{/n}
-"You remembered that?"
+{n}Irabeth reads it slowly, smoothing a crease with her thumb. She stops before the last line and looks at you.{/n}
+"You kept this all that time?"
 {n}Anevia finishes first, then returns to the beginning.{/n}
 "This is a very bad military report," she says. "No useful intelligence at all."
 {n}She keeps the paper between her palms until she is ready to hand it to her wife.{/n}''', c('"It was not written for the officers."', "now")),
