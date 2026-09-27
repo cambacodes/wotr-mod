@@ -47,6 +47,7 @@ internal static class IrabethMeetingTests
         {
             var value = new EntityReference();
             value.UniqueId = id;
+            value.SceneAssetGuid = Constant("SceneAsset");
             return value;
         }
         BlueprintEtude Blueprint(string id, int priority)
@@ -83,10 +84,11 @@ internal static class IrabethMeetingTests
         var departure = Background("Departure", 99, false);
         var expedition = Blueprint(Constant("Expedition"), 400);
         Blueprint(Constant("Death"), 0);
+        Blueprint(Constant("Gone"), 0);
         map[Constant("Group")] = group;
         map[Constant("Capital")] = new BlueprintArea { AssetGuid = BlueprintGuid.Parse(Constant("Capital")) };
         var meeting = Blueprint("67d14f48c926473dbf0389f6583209e8", 0);
-        var request = new BlueprintUnlockableFlag();
+        Func<string?> request = () => "fixture.request/0";
         var nativeBefore = throne.ComponentsArray[0];
         var instance = Activator.CreateInstance(service, Members, null,
             new object[] { meeting, request, new Func<string, SimpleBlueprint>(id => map[id]) }, null)!;

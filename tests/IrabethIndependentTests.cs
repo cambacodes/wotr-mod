@@ -12,7 +12,7 @@ internal static class IrabethIndependentTests
         const string ann = "b5e867e13503c6f41bb1316705efb4a2";
         Scene Get(string id) => story.Scenes.Single(s => s.Id == "irabeth." + id);
         var reached = new HashSet<string>();
-        var newScenes = story.Scenes.Where(s => s.Relationship == "irabeth").ToArray();
+        var newScenes = story.Scenes.Where(s => s.Relationship == "irabeth" && s.AfterDeparture == null).ToArray();
         var ends = newScenes.Where(s => s.Owner == "Epilogue").ToArray();
         var bindings = story.Etudes.Keys.Concat(story.SeenCues.Keys).Concat(story.CompletedEtudes.Keys)
             .Concat(story.CompletedQuests.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys)

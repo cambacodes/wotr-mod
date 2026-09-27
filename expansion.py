@@ -25,6 +25,7 @@ from storylines import konomi_contact, konomi_political_consequence
 from storylines import konomi_missed_contact
 from storylines import konomi_retained_return
 from storylines import konomi_return_invitation
+from storylines import irabeth_return_invitation
 from storylines import minagho_chivarro_continuation
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
@@ -209,6 +210,7 @@ def make_expansion(*, independent_tirabade=True):
             payload["Scenes"].extend(copy.deepcopy(module.SCENES))
         payload["Etudes"].update(anevia_independent.ETUDES)
         tirabade_independent_bridge.integrate(payload)
+        payload["Scenes"].extend(copy.deepcopy(irabeth_return_invitation.SCENES))
     irabeth_independent.integrate(payload)
     tirabade_chronology.integrate_morale(payload)
     payload["Scenes"].extend(copy.deepcopy(arsinoe_campaign.SCENES))

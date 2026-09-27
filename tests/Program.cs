@@ -183,7 +183,8 @@ internal static class Program
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
-                Check(known.Contains(flag), "Unknown condition " + flag + " in " + scene.Id);
+                Check(known.Contains(flag) || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived",
+                    "Unknown condition " + flag + " in " + scene.Id);
             foreach (var node in scene.Nodes)
                 Check(node.Text.Count(c => c == '\u2014') == 0, "Em dash in " + scene.Id + "/" + node.Id);
         }
@@ -284,7 +285,13 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
         {
             IrabethIndependentTests.Run(story, Check);
-            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "irabeth").Select(s => s.Id));
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "irabeth" && s.AfterDeparture == null).Select(s => s.Id));
+        }
+        if (story.Scenes.Any(s => s.AfterDeparture == "irabeth"))
+        {
+            IrabethDepartureVisitTests.Run(story, Check);
+            IrabethDepartureCampaignTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.AfterDeparture == "irabeth").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "tirabade.negotiated_table")
             && story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))

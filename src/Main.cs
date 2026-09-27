@@ -68,8 +68,10 @@ namespace Tirabade
         private static float pollAt;
         private static bool restPending;
         private static KonomiMeeting? konomiMeeting;
+        private static IrabethMeeting? irabethMeeting;
         private static ParentEndingIntegration? parentEndings;
         internal const string KonomiMeetingRetry = "konomi.return_meeting_retry";
+        internal const string IrabethMeetingRetry = "irabeth.return_meeting_retry";
 
         public static bool Load(UnityModManager.ModEntry mod)
         {
@@ -89,6 +91,7 @@ namespace Tirabade
                     enabled = value;
                     if (!value) CancelPending();
                     konomiMeeting?.Tick();
+                    irabethMeeting?.Tick();
                     return true;
                 };
                 mod.OnGUI = OnGUI;
@@ -169,6 +172,11 @@ namespace Tirabade
                 flags.Add(KonomiMeetingRetry, New<BlueprintUnlockableFlag>("flag." + KonomiMeetingRetry));
                 konomiMeeting = new KonomiMeeting(New<BlueprintEtude>("etude.konomi.personal_return"),
                     CurrentKonomiVisit, Get<SimpleBlueprint>);
+                foreach (string key in new[] { IrabethMeetingRetry, "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
+                    "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words" })
+                    if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
+                irabethMeeting = new IrabethMeeting(New<BlueprintEtude>("etude.irabeth.personal_return"),
+                    CurrentIrabethVisit, Get<SimpleBlueprint>);
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
                 foreach (var scene in story.Scenes) BuildScene(scene);
                 foreach (var scene in story.Scenes)
@@ -372,6 +380,8 @@ namespace Tirabade
             }
             foreach (var contact in contactUnits)
                 if (NativeContact.IsAvailable(contact.Value)) state.AvailableContacts.Add(contact.Key);
+            if (IrabethCorrespondenceAvailable()) state.Flags.Add("irabeth.return_correspondence_available");
+            if (irabethMeeting?.Arrived() == true) state.Flags.Add("irabeth.return_meeting_arrived");
             foreach (var revival in revivalUnits)
                 if (revival.Key == "konomi")
                 {
@@ -535,6 +545,75 @@ namespace Tirabade
             catch { return false; }
         }
 
+        internal static string? IrabethVisitRequest(Func<string, int> read, int hour)
+        {
+            int accepted = read("hour.irabeth.return_meeting_accepted");
+            int retry = read(IrabethMeetingRetry);
+            if (read("irabeth.return_meeting_accepted") <= 0 || read("irabeth.return_reply") <= 0
+                || read("irabeth.return_meeting_declined") > 0
+                || read("irabeth.return_first_words") > 0 || read("irabeth.closed") > 0 || read("closed") > 0
+                || accepted <= 0 || retry < 0
+                || (long)hour - (accepted - 1L) < 12) return null;
+            return "irabeth.return.first/" + retry.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        private static bool IrabethCorrespondenceAvailable()
+        {
+            try
+            {
+                if (!initialized || !enabled) return false;
+                var game = Game.Instance;
+                if (game?.Player == null || game.IsLoadingSave || game.IsUnloading || LoadingProcess.Instance.IsLoadingInProcess
+                    || game.Player.Chapter != 5 || game.CurrentlyLoadedArea?.AssetGuid.ToString() != IrabethMeeting.Capital
+                    || !etudes.TryGetValue("trickster", out var trickster)
+                    || game.Player.EtudesSystem.Etudes.GetFact(trickster)?.IsPlaying != true) return false;
+                foreach (string key in new[] { "swarm", "true_lich" })
+                    if (etudes.TryGetValue(key, out var path) && (game.Player.EtudesSystem.Etudes.GetFact(path)?.IsPlaying == true
+                        || key == "true_lich" && game.Player.EtudesSystem.EtudeIsCompleted(path))) return false;
+                return irabethMeeting?.CorrespondenceAvailable() == true;
+            }
+            catch { return false; }
+        }
+
+        // Raw saved request plus current native evidence; never call State from this callback.
+        private static string? CurrentIrabethVisit()
+        {
+            if (!IrabethCorrespondenceAvailable()) return null;
+            var game = Game.Instance;
+            int Read(string key) => flags.TryGetValue(key, out var flag) ? game.Player.UnlockableFlags.GetFlagValue(flag) : 0;
+            string? request = IrabethVisitRequest(Read, (int)game.Player.GameTime.TotalHours);
+            return request != null && IrabethVisitWindow() ? request : null;
+        }
+
+        private static bool IrabethVisitWindow()
+        {
+            var game = Game.Instance;
+            bool ownDialog = dialogs.TryGetValue("irabeth.return_first_words", out var dialog)
+                && ReferenceEquals(game.DialogController?.Dialog, dialog);
+            return game.Player.Dialog.Scheduled == null && !game.Player.IsInCombat
+                && (Idle() || ownDialog && game.CurrentMode == GameModeType.Dialog);
+        }
+
+        private static bool CanRetryIrabethVisit()
+        {
+            try
+            {
+                return initialized && enabled && Idle() && irabethMeeting?.CurrentRequest != null
+                    && irabethMeeting.SavedFailed && IrabethCorrespondenceAvailable()
+                    && Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[IrabethMeetingRetry]) < int.MaxValue;
+            }
+            catch { return false; }
+        }
+
+        private static void RetryIrabethVisit()
+        {
+            if (!CanRetryIrabethVisit()) return;
+            int prior = Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[IrabethMeetingRetry]);
+            if (prior < 0 || prior == int.MaxValue) return;
+            Set(IrabethMeetingRetry, checked(prior + 1));
+            irabethMeeting!.Tick();
+        }
+
         private static void RetryKonomiVisit()
         {
             if (!CanRetryKonomiVisit()) return;
@@ -551,6 +630,7 @@ namespace Tirabade
             pollAt = Time.realtimeSinceStartup + 0.3f;
             // Disabled, combat and other-event states must still withdraw an existing meeting claim.
             konomiMeeting?.Tick();
+            irabethMeeting?.Tick();
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();
@@ -605,6 +685,7 @@ namespace Tirabade
             if (!initialized || Game.Instance?.Player == null) { GUILayout.Label("Load a main-campaign save after restarting the application once."); return; }
             var state = State();
             if (CanRetryKonomiVisit() && GUILayout.Button("Arrange Konomi's visit again")) RetryKonomiVisit();
+            if (CanRetryIrabethVisit() && GUILayout.Button("Arrange Irabeth's visit again")) RetryIrabethVisit();
             foreach (var pair in story.Relationships)
             {
                 GUILayout.Label(pair.Value.Title);
