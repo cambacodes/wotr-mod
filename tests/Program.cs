@@ -158,7 +158,8 @@ internal static class Program
             Check(!Rules.Available(story, recovery, state), "Recovery offered without a recoverable native entity");
             state.Flags.Add("revive." + recovery.Recovery + ".available");
             Check(Rules.Available(story, recovery, state), "Recoverable death cannot reach its recovery scene");
-            foreach (string blocker in relationship.UnavailableFlags.Where(f => f != revival.DeathFlag).Append(relationship.ClosedFlag))
+            foreach (string blocker in relationship.UnavailableFlags.Where(f => f != revival.DeathFlag)
+                .Concat(recovery.Recovery == "konomi" ? Array.Empty<string>() : new[] { relationship.ClosedFlag }))
             {
                 var blocked = Copy(state);
                 blocked.Flags.Add(blocker);
@@ -175,7 +176,7 @@ internal static class Program
         var known = new HashSet<string>(story.Scenes.Select(s => s.Id)
             .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag }))
             .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
-            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated" }));
+            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available" }));
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
@@ -240,6 +241,7 @@ internal static class Program
         PairedContactTests.Run(Check);
         TerendelevDeliveryTests.Run(Check);
         RecoveryTests.Run(Check);
+        RetainedRecoveryRulesTests.Run(Check);
         // These are draft scene checks. Full new-route campaigns need their own
         // ending, transformation and introducer scenarios before release.
         // These continuations have actual predecessor walkthroughs below; a snapshot

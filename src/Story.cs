@@ -63,6 +63,7 @@ namespace Tirabade
         public bool Remote;
         public bool ManualOnly;
         public string? Recovery;
+        public string? AfterRecovery;
         public string? ContactUnit;
         public string[] AdditionalContactUnits = Array.Empty<string>();
         public int MinChapter = 1;
@@ -143,7 +144,8 @@ namespace Tirabade
             var relationship = story.Relationships[scene.Relationship];
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             if (recovery != null && !state.Has("revive." + scene.Recovery + ".available")) return false;
-            if (state.Has(relationship.ClosedFlag) || relationship.UnavailableFlags.Any(flag => flag != recovery?.DeathFlag && state.Has(flag))) return false;
+            if (state.Has(relationship.ClosedFlag) && scene.Recovery != "konomi" && scene.AfterRecovery == null
+                || relationship.UnavailableFlags.Any(flag => flag != recovery?.DeathFlag && state.Has(flag))) return false;
             if (scene.Relationship == "tirabade")
             {
                 if (!IsRemote(scene) && state.Chapter == 4) return false;
@@ -177,7 +179,8 @@ namespace Tirabade
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
             || story.StartedDialogs.ContainsKey(flag)
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
-            || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated";
+            || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
+            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available";
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
@@ -206,7 +209,10 @@ namespace Tirabade
             var relationshipFlags = new HashSet<string>();
             foreach (var pair in story.Revivals)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value.Unit, "N", out _)
-                    || !story.Relationships.ContainsKey(pair.Value.Relationship) || !story.Etudes.ContainsKey(pair.Value.DeathFlag)
+                    || !story.Relationships.ContainsKey(pair.Value.Relationship)
+                    || (pair.Key == "konomi" ? pair.Value.Relationship != "konomi"
+                        || pair.Value.Unit != "ca2d58c5c65723945857e04fb85d30ce" || pair.Value.DeathFlag != "konomi.retained_dead"
+                        : !story.Etudes.ContainsKey(pair.Value.DeathFlag))
                     || !story.Relationships[pair.Value.Relationship].UnavailableFlags.Contains(pair.Value.DeathFlag))
                     throw new InvalidOperationException("Invalid revival binding: " + pair.Key);
             foreach (var pair in story.SeenCues)
@@ -223,8 +229,17 @@ namespace Tirabade
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
             var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
-                "konomi.missed_contact_available", "konomi.missed_contact_invalidated" }
+                "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")));
+            var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
+                "konomi.retained_dead", "konomi.return_contact_available" });
+            if (authoredFlags.Any(contactEvidence.Contains)
+                || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
+                || relationshipFlags.Contains("konomi.retained_return_confirmed")
+                || story.Etudes.Keys.Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
+                    .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys)
+                    .Any(key => contactEvidence.Contains(key) || key == "konomi.retained_return_confirmed"))
+                throw new InvalidOperationException("Authored state or native aliases cannot manufacture Konomi recovery evidence.");
             foreach (var pair in story.StartedDialogs)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
@@ -276,6 +291,15 @@ namespace Tirabade
                 if (scene.Recovery != null && (!story.Revivals.TryGetValue(scene.Recovery, out var revival)
                     || revival.Relationship != scene.Relationship || !IsRemote(scene)))
                     throw new InvalidOperationException("Invalid recovery scene: " + scene.Id);
+                if (scene.Recovery == "konomi" && (!scene.Requires.Contains("trickster") || !scene.Requires.Contains("konomi.retained_dead")))
+                    throw new InvalidOperationException("Konomi's retained return requires Trickster power and current retained death: " + scene.Id);
+                if (scene.Recovery == "konomi" && scene.Nodes.SelectMany(node => node.Choices).Count(choice => choice.Revive == "konomi") > 1)
+                    throw new InvalidOperationException("Konomi's retained return requires one unambiguous terminal request per scene: " + scene.Id);
+                if (scene.AfterRecovery != null && (scene.AfterRecovery != "konomi" || scene.Recovery != null
+                    || !story.Revivals.ContainsKey("konomi") || scene.Relationship != "konomi"
+                    || scene.ContactUnit != "ca2d58c5c65723945857e04fb85d30ce"
+                    || !scene.Requires.Contains("konomi.retained_return_confirmed") || !scene.Requires.Contains("konomi.return_contact_available")))
+                    throw new InvalidOperationException("Invalid retained-return aftermath: " + scene.Id);
                 foreach (var target in EntryTargets(scene))
                     if (!Guid.TryParseExact(target, "N", out _)) throw new InvalidOperationException("Invalid dialogue attachment: " + scene.Id + "/" + target);
                 foreach (var area in scene.Areas)
@@ -289,8 +313,12 @@ namespace Tirabade
                 foreach (var node in scene.Nodes)
                     foreach (var choice in node.Choices)
                     {
-                        if (choice.Set.Any(flag => flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"))
+                        if (choice.Set.Any(flag => flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
+                            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available"))
                             throw new InvalidOperationException("Native contact observation cannot be authored: " + scene.Id);
+                        if (choice.Revive == "konomi" && !choice.Set.SequenceEqual(new[] { "konomi.retained_return_confirmed" })
+                            || choice.Set.Contains("konomi.retained_return_confirmed") && choice.Revive != "konomi")
+                            throw new InvalidOperationException("Konomi restoration records only verified return, not relationship access: " + scene.Id);
                         if (choice.Next != null && !nodes.Contains(choice.Next)) throw new InvalidOperationException("Missing node: " + scene.Id + "/" + choice.Next);
                         if (choice.Check != null && (choice.Next != null || choice.Abort || choice.Revive != null
                             || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)

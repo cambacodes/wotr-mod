@@ -362,7 +362,13 @@ namespace Tirabade
             foreach (var contact in contactUnits)
                 if (NativeContact.IsAvailable(contact.Value)) state.AvailableContacts.Add(contact.Key);
             foreach (var revival in revivalUnits)
-                if (Fate.CanRevive(revival.Value)) state.Flags.Add("revive." + revival.Key + ".available");
+                if (revival.Key == "konomi")
+                {
+                    if (KonomiRecovery.CanRequest()) state.Flags.Add("revive.konomi.available");
+                    if (KonomiRecovery.RetainedDead()) state.Flags.Add("konomi.retained_dead");
+                    if (KonomiRecovery.ReturnContactAvailable()) state.Flags.Add("konomi.return_contact_available");
+                }
+                else if (Fate.CanRevive(revival.Value)) state.Flags.Add("revive." + revival.Key + ".available");
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
             state.Flags.Add(player.Chapter == 1 ? "chapter_one" : "chapter_later");
@@ -415,6 +421,22 @@ namespace Tirabade
             {
                 try
                 {
+                    if (pair.Key == "konomi")
+                    {
+                        var request = KonomiRecovery.RequestedAction();
+                        if (request == null) continue;
+                        var match = story.Scenes.Where(s => s.Recovery == "konomi")
+                            .SelectMany(s => s.Nodes.SelectMany(n => n.Choices).Where(c => c.Revive == "konomi")
+                                .Select(c => new { Scene = s, Choice = c }))
+                            .SingleOrDefault(item => KonomiRequestIdentity(item.Scene, item.Choice) == request);
+                        if (match == null) throw new InvalidOperationException("The saved Konomi return no longer matches its authored choice.");
+                        if (Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[match.Scene.Id]) > 0) continue;
+                        // The saved exact choice witnesses the earlier authorized action. Verification consumes no new mythic power.
+                        if (KonomiRecovery.Poll(true, out var message) == KonomiRecovery.Outcome.Confirmed)
+                            RecordProgress(match.Choice, match.Scene);
+                        messages.Add(message);
+                        continue;
+                    }
                     var attempt = Fate.Pending(pair.Key);
                     if (attempt == null) continue;
                     var status = Fate.Inspect(pair.Value);
@@ -436,6 +458,9 @@ namespace Tirabade
             }
             if (messages.Count > 0) ReportRecovery(string.Join(Environment.NewLine, messages));
         }
+
+        private static string KonomiRequestIdentity(Scene scene, Choice choice) =>
+            JsonConvert.SerializeObject(new object[] { scene.Id, choice });
 
         private static bool Idle() => Game.Instance?.Player != null && Game.Instance.DialogController?.Dialog == null
             && Game.Instance.Player.Dialog.Scheduled == null && !Game.Instance.Player.IsInCombat
@@ -606,13 +631,16 @@ namespace Tirabade
                     if (Choice.Revive != null)
                     {
                         if (Complete == null || !Rules.Available(story, Complete, State())) return;
-                        bool restored = Fate.TryRevive(Choice.Revive, revivalUnits[Choice.Revive], Complete, Choice, out var message);
+                        string message;
+                        bool restored = Choice.Revive == "konomi"
+                            ? KonomiRecovery.Request(KonomiRequestIdentity(Complete, Choice), true, out message) == KonomiRecovery.Outcome.Confirmed
+                            : Fate.TryRevive(Choice.Revive, revivalUnits[Choice.Revive], Complete, Choice, out message);
                         ReportRecovery(message);
                         if (!restored) return;
                     }
                 }
                 RecordProgress(Choice, Complete);
-                if (Choice?.Revive != null) Fate.Clear(Choice.Revive);
+                if (Choice?.Revive != null && Choice.Revive != "konomi") Fate.Clear(Choice.Revive);
             }
         }
 

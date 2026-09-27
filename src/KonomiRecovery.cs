@@ -11,7 +11,7 @@ using Source = Tirabade.JerribethRecovery.Source;
 
 namespace Tirabade
 {
-    // Explicit recovery of the retained native body only; no caller or automatic update hook is registered.
+    // Explicit recovery of the retained native body only; polling never repeats resurrection.
     internal static class KonomiRecovery
     {
         internal enum Outcome { NotRequested, Blocked, Pending, Confirmed }
@@ -40,6 +40,20 @@ namespace Tirabade
 
         private static void Save(Attempt attempt) => Game.Instance.Player.SettingsList[Key] = JsonConvert.SerializeObject(attempt);
 
+        internal static string? RequestedAction() => Read()?.Request;
+
+        internal static bool ReturnContactAvailable()
+        {
+            try
+            {
+                if (!TryLoaded(out var actor, out _) || !HasVerifiedReturn(actor!)) return false;
+                var visibleCandidates = Game.Instance.State.Units.Where(unit => unit.Blueprint == actor!.Blueprint).Take(2).ToArray();
+                return visibleCandidates.Length == 1 && ReferenceEquals(visibleCandidates[0], actor)
+                    && NativeContact.IsAvailable(actor!.Blueprint);
+            }
+            catch { return false; }
+        }
+
         internal static bool CanRequest()
         {
             try
@@ -47,6 +61,12 @@ namespace Tirabade
                 return TryLoaded(out var actor, out _) && Read()?.Confirmed != true
                     && (actor!.State.IsDead || actor.State.IsFinallyDead);
             }
+            catch { return false; }
+        }
+
+        internal static bool RetainedDead()
+        {
+            try { return TryLoaded(out var actor, out _) && (actor!.State.IsDead || actor.State.IsFinallyDead); }
             catch { return false; }
         }
 
