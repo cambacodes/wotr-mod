@@ -23,6 +23,11 @@ This supersedes earlier visual requirements for wrinkles or exact monstrous faci
 
 The user's revised path requirement supersedes the earlier universal-mythic-access requirement.
 Trickster needs a bespoke, attainable route for every eligible adult romance character, with quest connections and credible fate interventions for otherwise lost opportunities.
+These routes must support concurrent relationships across the roster with ToyBox Love Is Free and Jealousy Begone enabled.
+Individual route availability is insufficient evidence for this requirement; verification must also exercise combined relationship states and identify cross-route conflicts.
+The Trickster Commander should act through wit, preparation, investigation, strategic bargains and earned mythic power, with enough competence and danger to credibly engage powerful partners.
+Do not substitute fourth-wall jokes or unexplained fate rewrites for quest foundations, character motives and consequences.
+Keep romantic development substantial even when an intervention solves the initial access problem.
 Other mythic paths retain character-appropriate restrictions, with the reason and transition behavior documented per character.
 Existing all-path draft simulations are regression evidence, not a requirement to keep every romance available to every mythic path.
 Claimed physical rescues must reconcile actual game state, not just hide a death flag from the romance rules.
