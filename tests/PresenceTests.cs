@@ -91,6 +91,25 @@ internal static class PresenceTests
             s.Relationships["anevia"] = new Relationship { Title = "Anevia", StartedFlag = "anevia.started", ClosedFlag = "anevia.closed", CommittedFlag = "anevia.committed" };
             s.Presences["anevia.presence"] = x;
         });
+        // Named presences per scenario share a unit and area only when mutually exclusive.
+        var named = Fixture();
+        named.Presences["irabeth.presence.cells"] = new Presence { Unit = IrabethUnit, Area = Capital, Mode = "reuse-native",
+            Requires = new[] { "irabeth.closed" }, Forbids = new[] { "trickster.ever" } };
+        Rules.Validate(named);
+        check(Rules.PresenceRelationship("minagho_chivarro.presence.chivarro") == "minagho_chivarro"
+            && Rules.PresenceRelationship("nocticula.acquisition.presence") == "nocticula.acquisition"
+            && Rules.PresenceRelationship("irabeth.evil_presence") == null && Rules.PresenceRelationship("irabeth.presence.Bad") == null,
+            "Presence key grammar wrong.");
+        Invalid("overlapping named presences", (s, x) => s.Presences["irabeth.presence.cells"] = new Presence { Unit = IrabethUnit, Area = Capital,
+            Mode = "reuse-native", Requires = new[] { "trickster.ever" } });
+        Invalid("nonconforming key", (s, x) => { s.Presences.Remove("irabeth.presence"); s.Presences["irabeth.evil_presence"] = x; });
+        var grouped = Fixture().Presences["irabeth.presence"];
+        grouped.RequiresAnyGroups = new[] { new[] { "irabeth.trickster.primed", "irabeth.committed" } };
+        var world = new Snapshot { Chapter = 5, Hour = 100, Area = Capital };
+        world.Flags.UnionWith(new[] { "trickster.ever", "irabeth.trickster.returned" });
+        check(!Rules.PresenceWanted(grouped, world), "Presence RequiresAnyGroups ignored.");
+        world.Flags.Add("irabeth.trickster.primed");
+        check(Rules.PresenceWanted(grouped, world), "Presence RequiresAnyGroups not satisfied by one member.");
         // reuse-native needs no position or gate.
         var plain = Fixture();
         plain.Presences["irabeth.presence"] = new Presence { Unit = IrabethUnit, Area = Capital };

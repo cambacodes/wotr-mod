@@ -82,10 +82,16 @@ def is_nurah_hub(s):
             and "nurah.meeting_accepted" in s["Requires"] and "nurah.meeting_arrived" in s["Requires"])
 
 
+def presence_relationship(key):
+    """E12: "<rel>.presence" or "<rel>.presence.<name>" -> rel."""
+    mm = re.match(r"^(.+?)\.presence(?:\.[a-z0-9_]+)?$", key or "")
+    return mm.group(1) if mm else None
+
+
 def is_presence_hub(s):
     """E12c: a physical scene offered in a presence's click-to-talk hub."""
     h = s["InteractionHub"]
-    return (h is not None and h.endswith(".presence") and h != "nurah.arrival" and not is_remote(s) and not is_epilogue(s)
+    return (h is not None and presence_relationship(h) is not None and h != "nurah.arrival" and not is_remote(s) and not is_epilogue(s)
             and not s["AnswerLists"] and s["NativeReturnCue"] is None and not s.get("ReturnToList") and not s.get("ContinueBefore"))
 
 
@@ -613,7 +619,7 @@ def validate(model):
     for k in model.permanent_etudes:
         if k not in model.etudes: errs.append("Unknown permanent etude: " + k)
     for k, p in (st.get("Presences") or {}).items():
-        rel = k[:-len(".presence")] if k.endswith(".presence") else None
+        rel = presence_relationship(k)
         if (rel not in rels or not hexre.match(p.get("Unit") or "") or not hexre.match(p.get("Area") or "")
                 or p.get("Mode", "reuse-native") not in ("reuse-native", "spawn-copy")
                 or (p.get("Mode") == "spawn-copy" and (not (p.get("Position") or p.get("At")) or not p.get("Requires")))):
@@ -649,7 +655,7 @@ def validate(model):
             errs.append(str(e)); tg = []
         if s["InteractionHub"] is not None and not is_nurah_hub(s) and not (
                 is_presence_hub(s) and ((st.get("Presences") or {}).get(s["InteractionHub"]) or {}).get("Dialog") == "hub"
-                and s["InteractionHub"] == s["Relationship"] + ".presence"):
+                and presence_relationship(s["InteractionHub"]) == s["Relationship"]):
             errs.append("Invalid interaction hub: " + sid)
         if (s["Relationship"] == "nurah" and not is_remote(s) and not is_nurah_hub(s) and not is_presence_hub(s)
                 and not (s["TricksterDevice"] and s["InteractionHub"] is None and s["AnswerLists"])):

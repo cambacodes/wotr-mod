@@ -124,6 +124,8 @@ namespace Tirabade
         public PresencePosition? Position;
         // E12b: place relative to a live native anchor instead of captured coordinates.
         public PresenceAnchor? At;
+        // Each group needs at least one held flag (as Scene.RequiresAnyGroups).
+        public string[][] RequiresAnyGroups = Array.Empty<string[]>();
         public string[] AnswerLists = Array.Empty<string>();
         // E12c: "hub" makes the placed unit clickable; the click opens an RRT hub listing the available scenes whose
         // InteractionHub is this presence key (the generalized Nurah arrival hub). Greeting is the hub page's text.
@@ -592,7 +594,8 @@ namespace Tirabade
         // E12: the presence is wanted in this snapshot (area, chapter window, Requires, Forbids).
         public static bool PresenceWanted(Presence presence, Snapshot state) => state.Area == presence.Area
             && state.Chapter >= presence.MinChapter && state.Chapter <= presence.MaxChapter
-            && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has);
+            && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has)
+            && presence.RequiresAnyGroups.All(group => group.Any(state.Has));
 
         // E12: the steps the runtime takes for one presence. A spawned copy is never created twice for one record.
         public static PresenceStep[] PlanPresence(Presence presence, bool wanted, PresenceObservation seen)
@@ -725,9 +728,26 @@ namespace Tirabade
             throw new InvalidOperationException("No dialogue attachment points for " + scene.Id + " (" + scene.Owner + ").");
         }
 
-        // E12c: a physical scene offered in a presence's click-to-talk hub (InteractionHub = "<rel>.presence").
+        // E12: presence keys are "<relationship>.presence" or "<relationship>.presence.<name>" (several per relationship,
+        // e.g. minagho_chivarro.presence.chivarro or one per Wenduag scenario).
+        private static readonly System.Text.RegularExpressions.Regex PresenceKey =
+            new System.Text.RegularExpressions.Regex(@"^(?<rel>.+?)\.presence(?:\.[a-z0-9_]+)?$");
+
+        public static string? PresenceRelationship(string key)
+        {
+            var match = PresenceKey.Match(key ?? "");
+            return match.Success ? match.Groups["rel"].Value : null;
+        }
+
+        // Two presences may share a unit and area only when they can never be wanted together: disjoint chapter windows,
+        // or one requires a flag the other forbids.
+        public static bool PresencesExclusive(Presence a, Presence b) => a.MaxChapter < b.MinChapter || b.MaxChapter < a.MinChapter
+            || a.Requires.Any(b.Forbids.Contains) || b.Requires.Any(a.Forbids.Contains)
+            || a.RequiresAnyGroups.Any(group => group.All(b.Forbids.Contains)) || b.RequiresAnyGroups.Any(group => group.All(a.Forbids.Contains));
+
+        // E12c: a physical scene offered in a presence's click-to-talk hub (InteractionHub = the exact presence key).
         public static bool IsPresenceHubScene(Scene scene) => scene.InteractionHub != null
-            && scene.InteractionHub.EndsWith(".presence", StringComparison.Ordinal) && scene.InteractionHub != "nurah.arrival"
+            && PresenceRelationship(scene.InteractionHub) != null && scene.InteractionHub != "nurah.arrival"
             && !IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && scene.AnswerLists.Length == 0
             && scene.NativeReturnCue == null && !scene.ReturnToList && scene.ContinueBefore == null;
 
@@ -870,7 +890,7 @@ namespace Tirabade
             {
                 if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !(IsPresenceHubScene(scene)
                     && story.Presences.TryGetValue(scene.InteractionHub, out var hubPresence) && hubPresence?.Dialog == "hub"
-                    && scene.InteractionHub == scene.Relationship + ".presence"))
+                    && PresenceRelationship(scene.InteractionHub) == scene.Relationship))
                     throw new InvalidOperationException("Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
                         + "relationship whose presence has Dialog \"hub\"): " + scene.Id);
                 // E13: a Trickster device may meet Nurah physically on explicit native lists (prison, pardon, Camellia).
@@ -1033,7 +1053,7 @@ namespace Tirabade
                 var p = pair.Value;
                 if (p?.At != null && authored.Contains(PresenceFailedFlag(pair.Key)))
                     throw new InvalidOperationException("The runtime presence observation cannot be authored: " + PresenceFailedFlag(pair.Key));
-                string relationship = pair.Key.EndsWith(".presence", StringComparison.Ordinal) ? pair.Key.Substring(0, pair.Key.Length - ".presence".Length) : "";
+                string relationship = PresenceRelationship(pair.Key) ?? "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null
                     || p.Mode == "spawn-copy" && (p.Position == null && p.At == null || p.Requires.Length == 0)
@@ -1043,13 +1063,16 @@ namespace Tirabade
                         || p.At.Offset == null && (p.At.Side != null && !new[] { "left", "right", "front", "behind" }.Contains(p.At.Side)
                             || p.At.Distance <= 0f || p.At.Distance > 10f))
                     || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter
-                    || p.Requires.Concat(p.Forbids).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
+                    || p.RequiresAnyGroups == null || p.RequiresAnyGroups.Any(g => g == null || g.Length == 0)
+                    || p.Requires.Concat(p.Forbids).Concat(p.RequiresAnyGroups.SelectMany(g => g)).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))
                     || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key))
                     || p.Greeting != null && (p.Dialog == null || string.IsNullOrWhiteSpace(p.Greeting))
-                    || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area))
-                    throw new InvalidOperationException("Invalid presence (\"<relationship>.presence\", unit and area GUIDs, reuse-native|spawn-copy, "
-                        + "known gates, spawn-copy needs Position and Requires): " + pair.Key);
+                    || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area
+                        && !PresencesExclusive(p, other.Value)))
+                    throw new InvalidOperationException("Invalid presence (\"<relationship>.presence[.<name>]\", unit and area GUIDs, reuse-native|spawn-copy, "
+                        + "known gates, spawn-copy needs Position and Requires, presences sharing a unit and area must be mutually exclusive): " + pair.Key);
+
             }
         }
 

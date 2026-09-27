@@ -245,7 +245,7 @@ namespace Tirabade
                 // E12: a presence needs its native unit, area and host lists, or its relationship is disabled.
                 foreach (var pair in story.Presences)
                 {
-                    string relationship = pair.Key.Substring(0, pair.Key.Length - ".presence".Length);
+                    string relationship = Rules.PresenceRelationship(pair.Key)!;
                     var unit = Resolve<BlueprintUnit>(pair.Value.Unit, "Presence unit " + pair.Key);
                     // E12b: a NearUnit anchor must be a native unit; a wrong one disables only this presence.
                     if (pair.Value.At?.NearUnit != null && Resolve<BlueprintUnit>(pair.Value.At.NearUnit, "Presence anchor " + pair.Key) == null)
@@ -861,7 +861,7 @@ namespace Tirabade
         private static bool CanOpenPresenceHub(GuestPresence presence)
         {
             if (!initialized || !enabled || !Idle() || presence.Actor == null) return false;
-            string relationship = presence.Key.Substring(0, presence.Key.Length - ".presence".Length);
+            string relationship = Rules.PresenceRelationship(presence.Key)!;
             if (degraded.Contains(relationship)) return false;
             var state = State();
             return Rules.PresenceWanted(presence.Spec, state)
@@ -1430,7 +1430,7 @@ namespace Tirabade
             if (presences.Count == 0) return;
             foreach (var presence in presences)
             {
-                bool wanted = !degraded.Contains(presence.Key.Substring(0, presence.Key.Length - ".presence".Length))
+                bool wanted = !degraded.Contains(Rules.PresenceRelationship(presence.Key)!)
                     && Rules.PresenceWanted(presence.Spec, state);
                 presence.Tick(wanted);
                 string line = presence.Report(wanted);

@@ -272,7 +272,7 @@ def validate_rules(matrix, ar, story=None):
                     out.append(("FATAL", where, "trickster_device on an epilogue page"))
                 # Nurah physical scenes need the hub, an explicit-list device or a presence hub
                 hub = o.get("interaction_hub") or o.get("InteractionHub")
-                if rel == "nurah" and not remote and not epilogue and not (device and lists) and not (hub and str(hub).endswith(".presence")):
+                if rel == "nurah" and not remote and not epilogue and not (device and lists) and not (hub and rv.presence_relationship(str(hub))):
                     out.append(("FATAL", where, "physical Nurah scene outside the arrival hub must be a trickster_device on explicit answer_lists"))
                 # E14b return-to-list scenes
                 if truthy(o, "return_to_list", "ReturnToList"):
@@ -314,8 +314,11 @@ def validate_rules(matrix, ar, story=None):
             where = "presence " + key
             mode = p.get("Mode", "reuse-native")
             at = p.get("At") or p.get("at")
-            if not key.endswith(".presence"):
-                out.append(("FATAL", where, "presence key must be <relationship>.presence"))
+            prel = rv.presence_relationship(key)
+            if prel is None or not re.fullmatch(r"[a-z0-9_]+", key.split(".presence")[-1].lstrip(".") or "x"):
+                out.append(("FATAL", where, "presence key must be <relationship>.presence or <relationship>.presence.<name>"))
+            elif prel not in rids:
+                out.append(("FATAL", where, "presence key names relationship %r, not this character's %s" % (prel, rids)))
             if mode not in ("reuse-native", "spawn-copy"):
                 out.append(("FATAL", where, "Mode must be reuse-native or spawn-copy"))
             if mode == "spawn-copy" and (not (p.get("Position") or at) or not p.get("Requires")):
@@ -338,6 +341,17 @@ def validate_rules(matrix, ar, story=None):
                     out.append(("DEGRADES", where, "At.NearUnit %s is %s, not a BlueprintUnit (presence disabled)" % (near, ar.type(near) or "missing")))
                 if at.get("Side") not in (None, "left", "right", "front", "behind") or (at.get("Offset") is not None and len(at["Offset"]) != 2):
                     out.append(("FATAL", where, "At.Side must be left/right/front/behind, or Offset [dx, dz]"))
+            for other_key, q in pres.items():
+                if other_key <= key or q.get("Unit") != p.get("Unit") or q.get("Area") != p.get("Area"): continue
+                a_req, a_forb = set(p.get("Requires") or []), set(p.get("Forbids") or [])
+                b_req, b_forb = set(q.get("Requires") or []), set(q.get("Forbids") or [])
+                a_lo, a_hi = p.get("MinChapter", 1), p.get("MaxChapter", 6)
+                b_lo, b_hi = q.get("MinChapter", 1), q.get("MaxChapter", 6)
+                a_groups = [set(g) for g in p.get("RequiresAnyGroups") or []]
+                b_groups = [set(g) for g in q.get("RequiresAnyGroups") or []]
+                if not (a_req & b_forb or b_req & a_forb or a_hi < b_lo or b_hi < a_lo
+                        or any(g <= b_forb for g in a_groups) or any(g <= a_forb for g in b_groups)):
+                    out.append(("FATAL", where, "shares unit and area with %s but they are not mutually exclusive (Requires/Forbids or chapters)" % other_key))
             if p.get("Dialog") not in (None, "hub"):
                 out.append(("FATAL", where, "Dialog must be \"hub\" (E12c)"))
         results[name] = out
