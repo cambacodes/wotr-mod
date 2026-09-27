@@ -24,6 +24,11 @@ Review the delivered face for conventional attractiveness; retention of characte
 For Jerribeth, preserve her recognizable demonic palette, crest and wing or appendage cues, but humanize the face and mouth instead of making the native insectile face or long proboscis mandatory.
 The recently generated native-form Jerribeth-v2 is therefore a reference iteration, not the final target under this revised brief.
 
+The user finds Chivarro-v2 beautiful but less appealing than Minagho and requests further facial refinement.
+Her next revision should aim for comparable appeal through softer cheek and brow transitions, a more expressive mouth and less rigid facial shading, while retaining her own face, warm blond hair, horns, eyeless lilitu traits and composed bearing.
+Do not make her a copy of Minagho or treat prior passing scores as grounds to disregard this preference.
+The existing v2 warm-dress assignment remains a reviewed candidate until an actual replacement passes independent review.
+
 Ember and Aivu remain non-romantic friendship characters with their established ages and age-appropriate presentation.
 This art instruction does not change their route scope or authorize adult-romance redesigns of them.
 
