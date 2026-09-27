@@ -41,3 +41,12 @@ Do flag loss of identifying features, generic faces, childish presentation of ad
 Earlier scores remain historical assessments under their recorded briefs and must not be represented as acceptance under this new one.
 The above-90 target still requires independent review of the actual revision, with no guaranteed score.
 Runtime crops and in-game presentation remain separate verification requirements.
+
+## Nocticula costume fidelity
+
+The user rejected the high-collared formal costume as a general replacement for Nocticula's native design.
+Her exposed shoulders, arms and midriff, visible body markings and ornamental armor are defining costume cues.
+Exposed skin is not inherently sexual, and a tool rejection is not a reason to impose a covered costume that conflicts with the character.
+Keep intimate areas covered while preserving the native design's silhouette and exposed-skin pattern in a neutral character portrait.
+The v2 formal-gown review remains a historical assessment of that alternate outfit and does not approve it as the general character portrait.
+Future review must explicitly assess native costume fidelity, not accept a generic attractive face and racial traits as sufficient.
