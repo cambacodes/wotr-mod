@@ -94,6 +94,7 @@ namespace Tirabade
         public bool ManualOnly;
         public string? Recovery;
         public string? AfterRecovery;
+        public string? AfterDeparture;
         public string? ContactUnit;
         public string[] AdditionalContactUnits = Array.Empty<string>();
         public int MinChapter = 1;
@@ -202,11 +203,19 @@ namespace Tirabade
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             if (recovery != null && !state.Has("revive." + scene.Recovery + ".available")) return false;
             if (state.Has(relationship.ClosedFlag) && scene.Recovery != "konomi" && scene.AfterRecovery == null
-                || relationship.UnavailableFlags.Any(flag => flag != recovery?.DeathFlag && state.Has(flag))) return false;
+                || relationship.UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
+                    && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && state.Has(flag))) return false;
             if (scene.Relationship == "tirabade")
             {
                 if (!IsRemote(scene) && state.Chapter == 4) return false;
                 if (scene.Owner == "Together" && state.Chapter >= 5 && (state.Has("irabeth_away") || state.Has("anevia_away"))) return false;
+            }
+            if (scene.AfterDeparture == "irabeth")
+            {
+                string? waitedFor = scene.Id == "irabeth.return_reply" ? "irabeth.return_request_sent"
+                    : scene.Id == "irabeth.return_first_words" ? "irabeth.return_meeting_accepted" : null;
+                if (waitedFor != null && (!state.Times.TryGetValue(waitedFor, out int requestedAt)
+                    || requestedAt < 0 || (long)state.Hour - requestedAt < scene.DelayHours)) return false;
             }
             int last = scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(group => group).Where(state.Has))
                 .Where(state.Times.ContainsKey).Select(k => state.Times[k]).DefaultIfEmpty(state.Hour - scene.DelayHours).Max();
@@ -225,7 +234,10 @@ namespace Tirabade
                 && (scene.Areas.Length == 0 || scene.Areas.Contains(state.Area))
                 && scene.Requires.All(state.Has)
                 && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && state.Has(flag))
-                && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag && state.Has(flag))
+                && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
+                    && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && state.Has(flag))
+                && (scene.AfterDeparture == null || !state.Has(story.Relationships[scene.Relationship].ClosedFlag)
+                    && !scene.Forbids.Any(state.Has))
                 && (recovery == null || state.Has("revive." + scene.Recovery + ".available"))
                 && (scene.RequiresAny.Length == 0 || scene.RequiresAny.Any(state.Has))
                 && scene.RequiresAnyGroups.All(group => group.Any(state.Has));
@@ -238,7 +250,8 @@ namespace Tirabade
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available"
-            || flag == "konomi.return_correspondence_available";
+            || flag == "konomi.return_correspondence_available"
+            || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived";
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
@@ -287,17 +300,19 @@ namespace Tirabade
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
             var derivedFlags = new HashSet<string>(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
-                "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available" }
+                "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
-                "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available" });
+                "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived" });
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")
                 || story.Etudes.Keys.Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                     .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys)
                     .Any(key => contactEvidence.Contains(key) || key == "konomi.retained_return_confirmed"))
-                throw new InvalidOperationException("Authored state or native aliases cannot manufacture Konomi recovery evidence.");
+                throw new InvalidOperationException("Authored state or native aliases cannot manufacture contact evidence.");
             foreach (var pair in story.StartedDialogs)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
@@ -360,6 +375,7 @@ namespace Tirabade
                         ? !IsRemote(scene) || !scene.Requires.Contains("konomi.return_correspondence_available")
                         : scene.ContactUnit != "ca2d58c5c65723945857e04fb85d30ce" || !scene.Requires.Contains("konomi.return_contact_available"))))
                     throw new InvalidOperationException("Invalid retained-return aftermath: " + scene.Id);
+                if (scene.AfterDeparture != null) ValidateDepartureVisit(story, scene);
                 foreach (var target in EntryTargets(scene))
                     if (!Guid.TryParseExact(target, "N", out _)) throw new InvalidOperationException("Invalid dialogue attachment: " + scene.Id + "/" + target);
                 foreach (var area in scene.Areas)
@@ -373,8 +389,7 @@ namespace Tirabade
                 foreach (var node in scene.Nodes)
                     foreach (var choice in node.Choices)
                     {
-                        if (choice.Set.Any(flag => flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
-                            || flag == "konomi.retained_dead" || flag == "konomi.return_contact_available" || flag == "konomi.return_correspondence_available"))
+                        if (choice.Set.Any(contactEvidence.Contains))
                             throw new InvalidOperationException("Native contact observation cannot be authored: " + scene.Id);
                         if (choice.Revive == "konomi" && !choice.Set.SequenceEqual(new[] { "konomi.retained_return_confirmed" })
                             || choice.Set.Contains("konomi.retained_return_confirmed") && choice.Revive != "konomi")
@@ -402,6 +417,33 @@ namespace Tirabade
                 if (reached.Count != nodes.Count) throw new InvalidOperationException("Unreachable node in " + scene.Id);
             }
             ValidateParentEndings(story, authoredFlags, derivedFlags);
+        }
+
+        // A personal visit does not reverse departure or reopen the ordinary relationship.
+        private static void ValidateDepartureVisit(Story story, Scene scene)
+        {
+            bool first = scene.Id == "irabeth.return_first_words";
+            bool reply = scene.Id == "irabeth.return_reply";
+            if (scene.AfterDeparture != "irabeth" || (!first && !reply && scene.Id != "irabeth.return_request")
+                || scene.Relationship != "irabeth" || scene.Owner != "Irabeth"
+                || scene.Recovery != null || scene.AfterRecovery != null
+                || scene.MinChapter != 5 || scene.MaxChapter != 5
+                || !scene.Areas.SequenceEqual(new[] { "2570015799edf594daf2f076f2f975d8" })
+                || !new[] { "trickster", "irabeth_gone" }.All(scene.Requires.Contains)
+                || !new[] { "closed", "irabeth.closed", "irabeth.return_meeting_declined", "irabeth_dead", "inhuman", "swarm", "true_lich" }.All(scene.Forbids.Contains)
+                || scene.ForbidOverrides.Count != 0 || scene.AdditionalContactUnits.Length != 0
+                || scene.Nodes.SelectMany(node => node.Choices).SelectMany(choice => choice.Set)
+                    .Any(flag => !flag.StartsWith("irabeth.return_", StringComparison.Ordinal) || IsNativeFlag(story, flag))
+                || (first
+                    ? IsRemote(scene) || scene.ContactUnit != "280d4712dceb37f4a88e98f1f4c6e64f"
+                        || !scene.AnswerLists.SequenceEqual(new[] { "871af36f2ab2b1f40b5de77976c54276" })
+                        || !new[] { "irabeth.return_reply", "irabeth.return_meeting_accepted", "irabeth.return_meeting_arrived" }.All(scene.Requires.Contains)
+                        || scene.DelayHours < 12
+                    : !IsRemote(scene) || scene.ContactUnit != null || scene.AnswerLists.Length != 0
+                        || !scene.Requires.Contains("irabeth.return_correspondence_available")
+                        || (reply && (!new[] { "irabeth.return_request", "irabeth.return_request_sent" }.All(scene.Requires.Contains)
+                            || !scene.Forbids.Contains("irabeth.return_meeting_accepted") || scene.DelayHours < 48))))
+                throw new InvalidOperationException("Invalid Irabeth departure visit: " + scene.Id);
         }
 
         private static void ValidateParentEndings(Story story, HashSet<string> authored, HashSet<string> derived)
