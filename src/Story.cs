@@ -614,6 +614,14 @@ namespace Tirabade
             ["PlayerFinalChoice"] = new[] { "fb42f8bd123bf1f40a448f6dbc66cbbe", "8f234537d0e0e504ba7fa281f02a3601" },
         };
 
+        // E14h: an anchor is a native GUID, or "scene:<id>" for another RRT epilogue page (its first page).
+        public static string? EpilogueAnchor(Story story, string? after, Func<string, string> pageGuid)
+        {
+            if (after == null || !after.StartsWith("scene:", StringComparison.Ordinal)) return after;
+            var scene = story.Scenes.FirstOrDefault(s => s.Id == after.Substring("scene:".Length));
+            return scene == null ? after : pageGuid("page." + scene.Id + "." + scene.Nodes[0].Id);
+        }
+
         // E14c: a paragraph shows when its requires hold, no forbid holds and every any-group has a member.
         public static bool ParagraphVisible(Paragraph paragraph, Snapshot state) => paragraph.Requires.All(state.Has)
             && !paragraph.Forbids.Any(state.Has) && paragraph.AnyGroups.All(group => group.Any(state.Has));
@@ -889,10 +897,18 @@ namespace Tirabade
                         + "hub, ReturnText <= 25 words, no check/native_next/revive choices): " + scene.Id);
                 if (scene.EpilogueSequence != null && (!NativeEpilogueSequences.TryGetValue(scene.EpilogueSequence, out var anchors)
                     || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue"
-                    || scene.EpilogueAfter == null || !anchors.Contains(scene.EpilogueAfter)))
+                    || scene.EpilogueAfter == null || !anchors.Contains(scene.EpilogueAfter) && !scene.EpilogueAfter.StartsWith("scene:", StringComparison.Ordinal)))
                     throw new InvalidOperationException("Invalid native epilogue sequence (PlayerFinalChoice, non-Aeon epilogue page, anchored after "
                         + "BookPage_0147 or BookPage_0115): " + scene.Id);
-                if (scene.EpilogueAfter != null && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                // E14h: "scene:<id>" anchors after another RRT epilogue page of the same sequence.
+                var anchorScene = scene.EpilogueAfter != null && scene.EpilogueAfter.StartsWith("scene:", StringComparison.Ordinal)
+                    ? story.Scenes.FirstOrDefault(s => s.Id == scene.EpilogueAfter.Substring("scene:".Length)) : null;
+                if (scene.EpilogueAfter != null && scene.EpilogueAfter.StartsWith("scene:", StringComparison.Ordinal) && (anchorScene == null
+                    || anchorScene == scene || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    || !anchorScene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || Rules.IsNativeReplacement(story, anchorScene)
+                    || (anchorScene.Owner == "AeonEpilogue") != (scene.Owner == "AeonEpilogue") || anchorScene.EpilogueSequence != scene.EpilogueSequence))
+                    throw new InvalidOperationException("EpilogueAfter scene anchor must be another epilogue page of the same sequence: " + scene.Id);
+                if (scene.EpilogueAfter != null && anchorScene == null && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     || !Guid.TryParseExact(scene.EpilogueAfter, "N", out var anchor) || anchor == Guid.Empty))
                     throw new InvalidOperationException("EpilogueAfter needs an epilogue page and a native page or cue GUID: " + scene.Id);
                 foreach (var target in EntryTargets(scene))

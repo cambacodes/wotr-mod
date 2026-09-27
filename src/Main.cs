@@ -274,7 +274,8 @@ namespace Tirabade
                         target = Resolve<BlueprintCueSequence>(Rules.PlayerFinalChoice, "Native epilogue sequence " + name)!;
                         if (target != null) nativeSequences.Add(name, target);
                     }
-                    if (target == null || !target.Cues.Any(reference => reference.Guid == BlueprintGuid.Parse(scene.EpilogueAfter!)))
+                    if (target == null || !scene.EpilogueAfter!.StartsWith("scene:", StringComparison.Ordinal)
+                        && !target.Cues.Any(reference => reference.Guid == BlueprintGuid.Parse(scene.EpilogueAfter)))
                         Degrade(scene.Relationship, "native epilogue anchor " + scene.EpilogueAfter + " for " + scene.Id + " is missing from " + name);
                 }
                 if (nativeSequences.Count > 0 && Harmony.HasAnyPatches("RanEpilogue"))
@@ -443,10 +444,11 @@ namespace Tirabade
                             : scene.Owner == "AeonEpilogue" ? aeon : epilogue;
                         if (sequence == null || !parentAttached && parentOwned.Contains(scene.Relationship)) continue;
                         var page = Ref<BlueprintCueBaseReference>(Get<BlueprintBookPage>(GuidFor("page." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
-                        if (!InsertEpiloguePage(sequence.Cues, page, scene.EpilogueAfter))
+                        string? after = Rules.EpilogueAnchor(story, scene.EpilogueAfter, name => GuidFor(name).ToString());
+                        if (!InsertEpiloguePage(sequence.Cues, page, after))
                             warnings.Add("Epilogue anchor " + scene.EpilogueAfter + " is not in the sequence; " + scene.Id + " was appended.");
                         if (scene.Owner != "AeonEpilogue" && scene.EpilogueSequence == null && expandedEpilogue != null)
-                            InsertEpiloguePage(expandedEpilogue.Cues, page, scene.EpilogueAfter);
+                            InsertEpiloguePage(expandedEpilogue.Cues, page, after);
                         continue;
                     }
                     if (Rules.IsRemote(scene) || scene.InteractionHub != null) continue;

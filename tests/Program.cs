@@ -359,6 +359,7 @@ internal static class Program
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);
         CountTests.Run(Check);
+        SceneAnchorTests.Run(Check);
         // __E14_RULES__
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
