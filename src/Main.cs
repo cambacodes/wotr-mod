@@ -69,9 +69,13 @@ namespace Tirabade
         private static bool restPending;
         private static KonomiMeeting? konomiMeeting;
         private static IrabethMeeting? irabethMeeting;
+        private static NurahMeeting? nurahMeeting;
+        private static NurahInteraction? nurahInteraction;
+        private static BlueprintDialog? nurahHub;
         private static ParentEndingIntegration? parentEndings;
         internal const string KonomiMeetingRetry = "konomi.return_meeting_retry";
         internal const string IrabethMeetingRetry = "irabeth.return_meeting_retry";
+        internal const string NurahMeetingRetry = "nurah.private_meeting_retry";
 
         public static bool Load(UnityModManager.ModEntry mod)
         {
@@ -92,6 +96,8 @@ namespace Tirabade
                     if (!value) CancelPending();
                     konomiMeeting?.Tick();
                     irabethMeeting?.Tick();
+                    nurahMeeting?.Tick();
+                    nurahInteraction?.Tick();
                     return true;
                 };
                 mod.OnGUI = OnGUI;
@@ -151,6 +157,18 @@ namespace Tirabade
             {
                 // Check integration points before creating or attaching anything.
                 var targets = story.Scenes.SelectMany(Rules.EntryTargets).Distinct().ToDictionary(id => id, Get<BlueprintAnswersList>);
+                foreach (var scene in story.Scenes.Where(s => s.NativeReturnCue != null))
+                {
+                    var nativeReturn = Get<BlueprintCue>(scene.NativeReturnCue!);
+                    var returnList = targets[scene.AnswerLists.Single()];
+                    if (nativeReturn.ShowOnce || nativeReturn.ShowOnceCurrentDialog || nativeReturn.Conditions.Conditions.Length != 0
+                        || nativeReturn.OnShow.Actions.Length != 0 || nativeReturn.OnStop.Actions.Length != 0
+                        || nativeReturn.Continue.Cues.Count != 0 || nativeReturn.Experience != DialogExperience.NoExperience
+                        || nativeReturn.AlignmentShift.Value != 0 || returnList.ShowOnce || returnList.Conditions.Conditions.Length != 0
+                        || returnList.MythicRequirement != default || returnList.AlignmentRequirement != default
+                        || nativeReturn.Answers.Count != 1 || !ReferenceEquals(nativeReturn.Answers[0].Get(), returnList))
+                        throw new InvalidOperationException("Native audience return must reopen its answer list without replaying actions: " + scene.Id);
+                }
                 var epilogue = Get<BlueprintCueSequence>("ed4baeaf69394754902344f0598d7e5a");
                 var aeon = Get<BlueprintCueSequence>("ced82f299d246f448b48afa0b630dd70");
                 var expanded = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("2b9424b1b93e4d0896b0958db79d2339"));
@@ -181,8 +199,16 @@ namespace Tirabade
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 irabethMeeting = new IrabethMeeting(New<BlueprintEtude>("etude.irabeth.personal_return"),
                     CurrentIrabethVisit, Get<SimpleBlueprint>);
+                flags.Add(NurahMeetingRetry, New<BlueprintUnlockableFlag>("flag." + NurahMeetingRetry));
+                nurahMeeting = new NurahMeeting(New<BlueprintEtude>("etude.nurah.private_meeting"),
+                    CurrentNurahVisit, Get<SimpleBlueprint>);
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
                 foreach (var scene in story.Scenes) BuildScene(scene);
+                if (story.Scenes.Any(Rules.IsNurahHubScene))
+                {
+                    nurahHub = BuildNurahHub();
+                    nurahInteraction = new NurahInteraction(nurahMeeting!, nurahHub!, CanOpenNurahHub);
+                }
                 foreach (var scene in story.Scenes)
                 {
                     if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
@@ -193,14 +219,17 @@ namespace Tirabade
                         if (scene.Owner != "AeonEpilogue") expandedEpilogue?.Cues.Add(page);
                         continue;
                     }
-                    if (Rules.IsRemote(scene)) continue;
+                    if (Rules.IsRemote(scene) || scene.InteractionHub != null) continue;
                     var answer = New<BlueprintAnswer>("entry." + scene.Id);
                     InitializeAnswer(answer);
                     answer.Text = Text("entry." + scene.Id, scene.Entry);
                     answer.ShowConditions = Conditions(new RouteCondition { Scene = scene });
                     // SelectConditions are also checked when ToyBox displays unavailable answers.
                     answer.SelectConditions = Conditions(new RouteCondition { Scene = scene });
-                    answer.OnSelect = Actions(new RouteAction { Start = scene });
+                    if (scene.NativeReturnCue != null)
+                        answer.NextCue = Cues(Get<BlueprintCue>(GuidFor("cue." + scene.Id + "." + scene.Nodes[0].Id).ToString()));
+                    else
+                        answer.OnSelect = Actions(new RouteAction { Start = scene });
                     foreach (var id in Rules.EntryTargets(scene))
                         targets[id].Answers.Insert(Math.Max(0, targets[id].Answers.Count - 1), Ref<BlueprintAnswerBaseReference>(answer));
                 }
@@ -239,23 +268,31 @@ namespace Tirabade
 
         private static void BuildScene(Scene scene)
         {
-            var local = new Dictionary<string, BlueprintBookPage>();
+            var local = new Dictionary<string, BlueprintCueBase>();
+            var nativeReturn = scene.NativeReturnCue == null ? null : Get<BlueprintCue>(scene.NativeReturnCue);
             foreach (var node in scene.Nodes)
             {
                 string id = scene.Id + "." + node.Id;
+                var cue = New<BlueprintCue>("cue." + id);
+                cue.Conditions = Conditions();
+                cue.OnShow = Actions();
+                cue.OnStop = Actions();
+                cue.Speaker = nativeReturn != null && node.Speaker == scene.Owner
+                    ? nativeReturn.Speaker : new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
+                cue.TurnSpeaker = false;
+                cue.Continue = Cues();
+                cue.Text = Text("cue." + id, node.Text);
+                if (nativeReturn != null)
+                {
+                    cue.ShowOnce = false;
+                    local.Add(node.Id, cue);
+                    continue;
+                }
                 var page = New<BlueprintBookPage>("page." + id);
                 page.ShowOnce = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
                 page.OnShow = Actions();
                 page.Title = Text("title." + id, scene.Title);
-                var cue = New<BlueprintCue>("cue." + id);
-                cue.Conditions = Conditions();
-                cue.OnShow = Actions();
-                cue.OnStop = Actions();
-                cue.Speaker = new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
-                cue.TurnSpeaker = false;
-                cue.Continue = Cues();
-                cue.Text = Text("cue." + id, node.Text);
                 page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
                 local.Add(node.Id, page);
                 pages.Add(page.AssetGuid.ToString(), node);
@@ -263,6 +300,7 @@ namespace Tirabade
             foreach (var node in scene.Nodes)
             {
                 var page = local[node.Id];
+                var answers = page is BlueprintBookPage book ? book.Answers : ((BlueprintCue)page).Answers;
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
                 // Preserve saved terminal answer IDs while building authored ending branches normally.
@@ -274,7 +312,7 @@ namespace Tirabade
                     var next = New<BlueprintAnswer>("answer." + scene.Id + "." + node.Id + ".continue");
                     InitializeAnswer(next);
                     next.Text = Text(next.name, "Continue");
-                    page.Answers.Add(Ref<BlueprintAnswerBaseReference>(next));
+                    answers.Add(Ref<BlueprintAnswerBaseReference>(next));
                     continue;
                 }
                 for (int i = 0; i < node.Choices.Count; i++)
@@ -287,6 +325,7 @@ namespace Tirabade
                     answer.SelectConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
                     answer.OnSelect = Actions(new RouteAction { Choice = choice, Continuation = continuation, Complete = !ending && choice.Next == null && choice.Check == null && !choice.Abort ? scene : null });
                     if (choice.Next != null) answer.NextCue = Cues(local[choice.Next]);
+                    else if (nativeReturn != null && choice.Check == null) answer.NextCue = Cues(nativeReturn);
                     if (choice.Check != null)
                     {
                         var specification = choice.Check;
@@ -307,7 +346,7 @@ namespace Tirabade
                         }
                         answer.NextCue = Cues(roll);
                     }
-                    page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
+                    answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
                 }
                 if (continuation != null)
                 {
@@ -315,9 +354,10 @@ namespace Tirabade
                     InitializeAnswer(leave);
                     leave.Text = Text(leave.name, "[The conversation can no longer continue. Leave.]");
                     leave.ShowConditions = Conditions(new RouteCondition { Continuation = scene, ContactLost = true });
-                    page.Answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
+                    answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
                 }
             }
+            if (nativeReturn != null) return;
             var dialog = New<BlueprintDialog>("dialog." + scene.Id);
             dialog.Type = DialogType.Book;
             dialog.Conditions = Conditions();
@@ -327,6 +367,52 @@ namespace Tirabade
             dialog.StartActions = Actions();
             dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
             dialogs.Add(scene.Id, dialog);
+        }
+
+        private static BlueprintDialog BuildNurahHub()
+        {
+            var scenes = story.Scenes.Where(Rules.IsNurahHubScene).ToArray();
+            if (scenes.Length == 0) throw new InvalidOperationException("Nurah arrival hub has no authored physical scenes.");
+            var page = New<BlueprintBookPage>("page.nurah.arrival_hub");
+            page.ShowOnce = false;
+            page.Conditions = Conditions();
+            page.OnShow = Actions();
+            page.Title = Text("title.nurah.arrival_hub", "A private appointment");
+            var cue = New<BlueprintCue>("cue.nurah.arrival_hub");
+            cue.Conditions = Conditions();
+            cue.OnShow = Actions();
+            cue.OnStop = Actions();
+            cue.Speaker = new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
+            cue.TurnSpeaker = false;
+            cue.Continue = Cues();
+            const string greeting = "Nurah closes the door behind her and lays the open proofs aside. \"I have brought the work, the questions it caused, and enough time to hear what you actually came to say. Choose what deserves our attention. Or leave me to finish the page.\"";
+            cue.Text = Text("cue.nurah.arrival_hub", greeting);
+            page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
+            pages.Add(page.AssetGuid.ToString(), new Node { Id = "arrival_hub", Speaker = "Nurah", Portrait = "Nurah", Text = greeting });
+            foreach (var scene in scenes)
+            {
+                var answer = New<BlueprintAnswer>("answer.nurah.arrival_hub." + scene.Id);
+                InitializeAnswer(answer);
+                answer.Text = Text(answer.name, scene.Title);
+                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene });
+                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene });
+                answer.OnSelect = Actions(new RouteAction { Start = scene });
+                page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
+            }
+            var leave = New<BlueprintAnswer>("answer.nurah.arrival_hub.leave");
+            InitializeAnswer(leave);
+            leave.Text = Text(leave.name, "Leave the proofs for another time.");
+            page.Answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
+
+            var dialog = New<BlueprintDialog>("dialog.nurah.arrival_hub");
+            dialog.Type = DialogType.Book;
+            dialog.Conditions = Conditions();
+            dialog.FirstCue = Cues(page);
+            dialog.TurnPlayer = false;
+            dialog.TurnFirstSpeaker = false;
+            dialog.StartActions = Actions();
+            dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
+            return dialog;
         }
 
         private static void BuildJournal(string id, Relationship relationship)
@@ -389,6 +475,12 @@ namespace Tirabade
                 if (NativeContact.IsAvailable(contact.Value)) state.AvailableContacts.Add(contact.Key);
             if (IrabethCorrespondenceAvailable()) state.Flags.Add("irabeth.return_correspondence_available");
             if (irabethMeeting?.Arrived() == true) state.Flags.Add("irabeth.return_meeting_arrived");
+            if (nurahMeeting?.CorrespondenceAvailable() == true) state.Flags.Add("nurah.correspondence_available");
+            if (nurahMeeting?.ArrivedActor() != null)
+            {
+                state.Flags.Add("nurah.meeting_arrived");
+                state.AvailableContacts.Add(NurahMeeting.Unit);
+            }
             foreach (var revival in revivalUnits)
                 if (revival.Key == "konomi")
                 {
@@ -437,6 +529,10 @@ namespace Tirabade
             foreach (var pair in objectives)
             {
                 var relationship = story.Relationships[pair.Key];
+                if (choice != null && choice.Set.Contains(relationship.StartedFlag)
+                    && !state.Has(relationship.ClosedFlag) && !state.Has(relationship.CommittedFlag)
+                    && Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.None)
+                    Game.Instance.Player.QuestBook.GiveObjective(pair.Value);
                 if ((state.Has(relationship.ClosedFlag) || state.Has(relationship.CommittedFlag))
                     && Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.Started)
                     Game.Instance.Player.QuestBook.CompleteObjective(pair.Value);
@@ -512,6 +608,70 @@ namespace Tirabade
             else if (read("konomi.return_meeting_accepted") <= 0) return null;
             return (firstDone ? "konomi.return.followup/" : "konomi.return.first/")
                 + retry.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        internal static string? NurahVisitRequest(Func<string, int> read, int hour)
+        {
+            int accepted = read("hour.nurah.meeting_accepted");
+            int retry = read(NurahMeetingRetry);
+            if (read("nurah.meeting_accepted") <= 0 || read("nurah.meeting_declined") > 0
+                || read("nurah.meeting_withdrawn") > 0 || read("nurah.closed") > 0
+                || read("nurah.complete") > 0 || read("closed") > 0 || read("inhuman") > 0
+                || accepted <= 0 || retry < 0 || (long)hour - (accepted - 1L) < 12) return null;
+            return "nurah.private/" + retry.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        }
+
+        private static string? CurrentNurahVisit()
+        {
+            try
+            {
+                if (!initialized || !enabled) return null;
+                var game = Game.Instance;
+                if (game?.Player == null || game.IsLoadingSave || game.IsUnloading
+                    || LoadingProcess.Instance.IsLoadingInProcess || game.Player.Chapter != 5
+                    || game.Player.IsInCombat || game.CurrentlyLoadedArea?.AssetGuid.ToString() != NurahMeeting.Capital
+                    || !NurahVisitWindow()) return null;
+                int Read(string key) => flags.TryGetValue(key, out var flag) ? game.Player.UnlockableFlags.GetFlagValue(flag) : 0;
+                var request = NurahVisitRequest(Read, (int)game.Player.GameTime.TotalHours);
+                return request != null && nurahMeeting?.CorrespondenceAvailable() == true ? request : null;
+            }
+            catch { return null; }
+        }
+
+        private static bool NurahVisitWindow()
+        {
+            var game = Game.Instance;
+            bool ownDialog = nurahHub != null && ReferenceEquals(game.DialogController?.Dialog, nurahHub)
+                || story.Scenes.Where(Rules.IsNurahHubScene).Any(scene => dialogs.TryGetValue(scene.Id, out var dialog)
+                    && ReferenceEquals(game.DialogController?.Dialog, dialog));
+            return game.Player.Dialog.Scheduled == null && !game.Player.IsInCombat
+                && (Idle() || ownDialog && game.CurrentMode == GameModeType.Dialog);
+        }
+
+        private static bool CanOpenNurahHub()
+        {
+            if (!initialized || !enabled || nurahMeeting?.ArrivedActor() == null || !Idle()) return false;
+            var state = State();
+            return story.Scenes.Where(Rules.IsNurahHubScene).Any(scene => Rules.Available(story, scene, state));
+        }
+
+        private static bool CanRetryNurahVisit()
+        {
+            try
+            {
+                return initialized && enabled && Idle() && nurahMeeting?.CurrentRequest != null
+                    && nurahMeeting.SavedFailed && Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[NurahMeetingRetry]) < int.MaxValue;
+            }
+            catch { return false; }
+        }
+
+        private static void RetryNurahVisit()
+        {
+            if (!CanRetryNurahVisit()) return;
+            int prior = Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[NurahMeetingRetry]);
+            if (prior < 0 || prior == int.MaxValue) return;
+            Set(NurahMeetingRetry, checked(prior + 1));
+            nurahMeeting!.Tick();
         }
 
         private static string? CurrentKonomiVisit()
@@ -638,6 +798,8 @@ namespace Tirabade
             // Disabled, combat and other-event states must still withdraw an existing meeting claim.
             konomiMeeting?.Tick();
             irabethMeeting?.Tick();
+            nurahMeeting?.Tick();
+            nurahInteraction?.Tick();
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();
@@ -693,6 +855,10 @@ namespace Tirabade
             var state = State();
             if (CanRetryKonomiVisit() && GUILayout.Button("Arrange Konomi's visit again")) RetryKonomiVisit();
             if (CanRetryIrabethVisit() && GUILayout.Button("Arrange Irabeth's visit again")) RetryIrabethVisit();
+            if (CanRetryNurahVisit() && GUILayout.Button("Retry Nurah's private appointment")) RetryNurahVisit();
+            if (state.Has("nurah.meeting_arrived")
+                && story.Scenes.Where(Rules.IsNurahHubScene).Any(scene => Rules.Available(story, scene, state)))
+                GUILayout.Label("Nurah is waiting by the private chambers. Click her to choose what you discuss.");
             foreach (var pair in story.Relationships)
             {
                 GUILayout.Label(pair.Value.Title);
@@ -701,7 +867,7 @@ namespace Tirabade
                     GUILayout.Label(scene.Title + (scene.ManualOnly ? " | choose Read below" : Rules.IsRemote(scene) ? " | available at your next rest" : " | speak to " + (scene.Owner == "Together" ? "Anevia or Irabeth" : scene.Owner)));
                     if (Rules.IsRemote(scene) && Idle() && GUILayout.Button("Read: " + scene.Title)) Queue(scene);
                 }
-                if (state.Has(pair.Value.ClosedFlag)) GUILayout.Label("This relationship has ended.");
+                if (state.Has(pair.Value.ClosedFlag)) GUILayout.Label(pair.Key == "nocticula" ? "The harbor undertaking has ended." : "This relationship has ended.");
                 else if (state.Has(pair.Value.CommittedFlag)) GUILayout.Label("You have chosen a relationship. Later meetings follow campaign progress.");
             }
             GUILayout.Label("If no meeting is listed, continue the campaign or allow a day or two between conversations.");

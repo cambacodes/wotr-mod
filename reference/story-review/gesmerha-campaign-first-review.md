@@ -47,7 +47,7 @@ Runa, Dera, Vesk and the later death of Runa are authored characters and events,
 They must stay labeled that way in project evidence.
 
 The private scene makes Gesmerha express desire in her own terms and lets the player choose intimacy, a slower pace or friendship.
-The closed-door passage is mature and non-graphic.
+The closed-door passage is mature and graphic and explicit.
 It keeps scars and blindness without turning them into either a cure objective or a reason that she cannot direct an intimate encounter.
 Most physical detail is thoughtful: the Commander describes moved objects, asks before touching her hair, and accepts her direction near a tender scar.
 The corrected sensory and prop joins are necessary to maintain that standard.

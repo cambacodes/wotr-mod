@@ -9,7 +9,11 @@ Run from the repository root in PowerShell:
 
 ```powershell
 $env:RRT_PYTHON = "$env:LOCALAPPDATA\Python\pythoncore-3.14-64\python.exe"
-$env:RRT_PARENT_BINDINGS = (Resolve-Path reference/canon-review/expansion-parent-bindings.json).Path
+$env:RRT_PARENT_BINDINGS = @(
+    (Resolve-Path reference/canon-review/expansion-parent-bindings.json).Path
+    (Resolve-Path reference/canon-review/nurah-parent-bindings.json).Path
+    (Resolve-Path reference/canon-review/nurah-parent-runtime-cue-bindings.json).Path
+) -join [IO.Path]::PathSeparator
 & "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build src/Tirabade.csproj -c Release --nologo -v quiet
 & "$env:LOCALAPPDATA/RanRomanceTools/dotnet/dotnet.exe" build managed-tests/ManagedBuildTests.csproj -c Release --nologo -v quiet
 & ./managed-tests/bin/Release/net48/ManagedBuildTests.exe 'D:/SteamLibrary/steamapps/common/Pathfinder Second Adventure' development/Story.json
@@ -19,7 +23,7 @@ For another installation, pass `-p:GameDir=<game directory>/` to the build and t
 The .NET Framework 4.8 runtime and Python must be available.
 Set `RRT_PYTHON` to the actual interpreter executable on another machine.
 Without that override the runner uses `python` from the process search path; this machine's PyManager launcher has intermittently delivered empty redirected input, so the checked command selects the interpreter directly.
-The combined parent manifest supplies explicitly tagged source fixtures for the Targona and Aranka extensions, not parent-mod initialization.
+The parent manifests supply explicitly tagged source fixtures for the Targona and Aranka extensions and parent-created Nurah blueprints, not parent-mod initialization.
 The tiny Python helper reads the installed `blueprints.zip` because .NET Framework's ZIP reader rejects this installation's archive headers.
 It extracts only requested native records and writes no files.
 

@@ -1,0 +1,178 @@
+{
+  "scope": "Every staged scene image, including unreferenced files; matching bytes do not prove visual approval. Candidate-only images and NPC crops also need the art review checklist.",
+  "images": [
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/Anevia.png",
+      "sha256": "C964F8C95CFD8E426F2F493463CABAD1A230BDEFF544EB11A4B528CD35B2DDF8",
+      "matching_sources": [
+        "art/CustomNpcPortraits/Portraits - Npc/Anevia/Medium.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/ArsinoeShop.png",
+      "sha256": "C3DDEC27FF8409B049F82D6A3D07028001CB1D485F5829BF4C2942C7AE307315",
+      "matching_sources": [
+        "art/candidates/arsinoe/arsinoe-v1.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/ChivarroWarm.png",
+      "sha256": "0BFC0F27C92CADFDEC2FE5F9D803E7D4C9DBE86D60A1B37A18B050095FEC48A2",
+      "matching_sources": [
+        "art/expansion/originals/Chivarro-v4.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/GesmerhaWorkshop.png",
+      "sha256": "EB3FD14D0D06EAAF5E4578DB833CA6B474A8593659F39F740ADFA47E513596DE",
+      "matching_sources": [
+        "art/candidates/gesmerha/gesmerha-v1.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/Irabeth.png",
+      "sha256": "7319099690CE2755A108F2B7A0F7FB767BEC1018E1CDDECA78B3ED66EE12B83D",
+      "matching_sources": [
+        "art/CustomNpcPortraits/Portraits - Npc/Irabeth/Medium.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/Jerribeth.png",
+      "sha256": "D27050B867E90E8E151496E9B94AA71811726FAD0A8263F8DC3F84EE3DB63509",
+      "matching_sources": [
+        "art/expansion/originals/Jerribeth-v4.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/Konomi.png",
+      "sha256": "74267A675F25A786A118B54631D9093305478A484AACEA370082708AFB35B196",
+      "matching_sources": [
+        "art/candidates/konomi/konomi-v2.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/KonomiPrivateClose.png",
+      "sha256": "5D605330C541FC3A39A671E0ADB7786CBE6F9FBD1D6203A9CF96CD8091C9D504",
+      "matching_sources": [
+        "art/candidates/konomi/konomi-private-close-v2.png"
+      ],
+      "latest_brief_full_design_approval": "Scoped before_road/lovers, missed_lovers, talk, letters, others; reference/art-review/konomi-private-close-v2-independent-review.md; not near/kiss, runtime unverified",
+      "sequence_review_status": "Provisional after user correction: review together for pose, angle, expression, physical action and narrative variation; isolated image scores do not approve the sequence."
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/KonomiPrivateDialogue.png",
+      "sha256": "9208ED76F84A33C146AA672BAC54DA57FED88EE9CEDA1EC2333FAF2F5B87DE48",
+      "matching_sources": [
+        "art/candidates/konomi/konomi-private-dialogue-v2.png"
+      ],
+      "latest_brief_full_design_approval": "Scoped talk/letters/others static conversation; reference/art-review/konomi-private-dialogue-v2-independent-review.md; no literal offscreen contact verification",
+      "sequence_review_status": "New pose/angle/expression reviewed; whole evening still incomplete at lovers/near/kiss; runtime unverified"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/KonomiPrivateEvening.png",
+      "sha256": "FFA19D95FFB15CA81EBDA953E14E543BAC0D44847F69E99EDD9DED5D673E8B2C",
+      "matching_sources": [
+        "art/candidates/konomi/konomi-private-arrival-v2.png"
+      ],
+      "latest_brief_full_design_approval": "Scoped before_road/start only; reference/art-review/konomi-private-arrival-v2-independent-review.md; native body fidelity and runtime crop unverified",
+      "sequence_review_status": "Provisional after user correction: review together for pose, angle, expression, physical action and narrative variation; isolated image scores do not approve the sequence."
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/KonomiPrivateSeated.png",
+      "sha256": "12560274FDE2B08548136F3471A5ACD974DA6245D2DD1D3F2C37AEB1F2C675EF",
+      "matching_sources": [
+        "art/candidates/konomi/konomi-private-v4.png"
+      ],
+      "latest_brief_full_design_approval": "Scoped departure/company/histories only; reference/art-review/konomi-private-v4-independent-review.md; native body fidelity and runtime unverified",
+      "sequence_review_status": "Provisional after user correction: review together for pose, angle, expression, physical action and narrative variation; isolated image scores do not approve the sequence."
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/Nocticula.png",
+      "sha256": "D82D234E6E60DCAA614A06C320001E0FE22A54330FBA185604AA6DCDEF5BD5C5",
+      "matching_sources": [
+        "art/candidates/Nocticula-v3.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/SoanaForest.png",
+      "sha256": "323F34726445958368D1441E4929D83C33258457BEF0CDD0B54F429701856334",
+      "matching_sources": [
+        "art/expansion/originals/Soana-v12.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/TargonaCorrespondence.png",
+      "sha256": "0214664A70C5A74C7CA790068799394FADA5872E594F7522E0578EA76AD99FE6",
+      "matching_sources": [
+        "art/expansion/originals/Targona-v2.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/Together.png",
+      "sha256": "D125515DA14EA5333DFB8E800F766F5ABC0C3B2820C78BF506E880271457EBBF",
+      "matching_sources": [
+        "art/originals/Together.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/TogetherReckoning.png",
+      "sha256": "1BF1BC93BA18CEF86DE3616ED503BE1085B884E5D8791372324D9E6BFC44C508",
+      "matching_sources": [
+        "art/candidates/TogetherReckoning-v4.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/TogetherYard.png",
+      "sha256": "4D16D17364793720D49710AE55C02F182F34122765FD89542A0D53823C05B609",
+      "matching_sources": [
+        "art/candidates/TogetherYard-v2.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/VellexiaManorSpeaker.png",
+      "sha256": "9AB756D627479508C414CBAF3BD8940142F42BFBBF98F0082B1B1963B11D77D3",
+      "matching_sources": [
+        "art/candidates/Vellexia-v1.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/VellexiaPaintingChanged.png",
+      "sha256": "42CD5DDFD78D8696FBD52719840020FA9B7E584FD86614BDF7DBCA2D984E178A",
+      "matching_sources": [
+        "art/candidates/VellexiaPaintingChanged-v5.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/VellexiaPaintingDay.png",
+      "sha256": "4074EF5BF78192FCBF0780F060CBC9AB0A7049F94394DEE8BD05F27EEAFCEAA7",
+      "matching_sources": [
+        "art/candidates/VellexiaPaintingDay-v2.png"
+      ],
+      "latest_brief_full_design_approval": "requires per-image review evidence"
+    },
+    {
+      "staged_file": "art/CustomNpcPortraits/RanRomance-Tirabade/Scenes/KonomiPrivateNear.png",
+      "sha256": "5B774776DE5FDA5696CC9EA68F55CE34B7EF0B07F00555A3BB498C6BBD01277E",
+      "matching_sources": [
+        "art/candidates/konomi/konomi-private-near-v2.png"
+      ],
+      "latest_brief_full_design_approval": "Independent scoped pass for before_road/near chair snag and shared laugh; whole sequence and game crop remain unverified.",
+      "review": "reference/art-review/konomi-private-near-v2-independent-review.md"
+    }
+  ]
+}

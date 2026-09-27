@@ -464,7 +464,7 @@ s("reckoning", "Three accounts of the same evening", "Together", 3,
 "I thought you had stopped asking how I was because you were exhausted. I was relieved. It meant I did not have to tell you where I had been."
 {n}Anevia shuts her eyes.{/n}
 "Desna. We were helping each other hide it."
-{n}For a while you hear nothing but the lamp and someone walking in the passage outside.{/n}''', c('[Listen.]', "hurt")),
+{n}For a while you hear nothing but the lamp and someone walking in the passage outside.{/n}''', c('[Listen.]', "hurt"), portrait="TogetherReckoning"),
     n("hurt", "Irabeth", '''"Were you unhappy with me?"
 {n}The question costs Irabeth more than anger would have. Anevia answers at once.{/n}
 "I was happy to come home to you. I was happy up there on that landing, too. I thought if I kept the two apart, I could keep both."

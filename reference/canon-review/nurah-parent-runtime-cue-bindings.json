@@ -1,0 +1,31 @@
+{
+  "AssemblyPath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Mods\\RanRomance\\RanRomance.dll",
+  "AssemblySha256": "281239B19FF12675D2E8E48CD86B3759C38F6598A93E13F254A044C5E990DB68",
+  "SourceMethodSha256": "5515B91F22653A4D1E6CCA6151C36B06C1D06944323EA5C6AF55CD757BDCD53C",
+  "Bindings": [
+    {
+      "Guid": "a81d2fc67aa9435999b2eba84eabf368",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook05Page002Cue0004",
+      "Source": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "Evidence": "CueConfigurator.New(Cue0004Name, text7).SetConditions(...).SetText(...).SetShowOnce().Configure();",
+      "GuidDeclaration": "string text7 = \\\"a81d2fc67aa9435999b2eba84eabf368\\\";"
+    },
+    {
+      "Guid": "64bd5f9b742d4033b17f12b9b519970e",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook05Page002Cue0011",
+      "Source": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "Evidence": "CueConfigurator.New(Cue0011Name, text14).SetConditions(...).SetText(...).SetShowOnce().Configure();",
+      "GuidDeclaration": "string text14 = \\\"64bd5f9b742d4033b17f12b9b519970e\\\";"
+    },
+    {
+      "Guid": "5a06af413442436a88c2362c9e9dcbd0",
+      "Type": "BlueprintCue",
+      "Name": "RanRomNuraBook05Page002Cue0017",
+      "Source": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "Evidence": "CueConfigurator.New(Cue0017Name, text20).SetConditions(...).SetText(...).SetShowOnce().Configure();",
+      "GuidDeclaration": "string text20 = \\\"5a06af413442436a88c2362c9e9dcbd0\\\";"
+    }
+  ]
+}

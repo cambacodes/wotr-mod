@@ -46,7 +46,7 @@ The original mortal soul is real evidence for divided identity, but its existenc
 ## Contradictions that need correction before romantic drafting
 
 The brief says, "Adult romantic content remains slightly-graphic and requires adults."
-That conflicts with the established non-graphic scope used for this assessment.
+That conflicts with the established graphic and explicit scope used for this assessment.
 No graphic escalation is approved by this review.
 
 The brief requires unrelated adult participants without a parental relationship, then says, "The canonical maternal and research relationship remains a separate romantic option."

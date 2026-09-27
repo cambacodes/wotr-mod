@@ -1,0 +1,38 @@
+[
+  {
+    "file": "Arueshalae-native.png",
+    "sha256": "3AC75ECB4B499686DBDF29A632E2B108263E66D9D9CACE8ECC7782451917D4C9",
+    "dimensions": [
+      692,
+      1024
+    ],
+    "status": "native research reference"
+  },
+  {
+    "file": "ArueshalaeEvil-native.png",
+    "sha256": "DFD802627510DDFD086F1D2462F505FF3E4D6653D521DD16BB692987F4F9D175",
+    "dimensions": [
+      692,
+      1024
+    ],
+    "status": "native research reference"
+  },
+  {
+    "file": "corrupted-invitation-v1.png",
+    "sha256": "D3B56E07E1549DECC0516D0D918C15282F71825E4BD3BD13D348FE21A21B2DA9",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "redeemed-moonwatch-v1.png",
+    "sha256": "C91770EC8B1AC32BBB4E02FA64B2C24C39370F5E1FD20E6E66C637CC7D545520",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

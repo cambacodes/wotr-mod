@@ -4,22 +4,25 @@
 
 The detailed inventory below is an earlier checkpoint and is not the current scene count or word inventory.
 
-The latest [roster readiness audit](../reference/parallel/current-roster-readiness-audit.md) checks the 612-scene export and all 37 planned characters against the current acceptance gates.
+The latest [roster readiness audit](../reference/parallel/current-roster-readiness-audit.md) checks the 631-scene export and all 37 planned characters against the current acceptance gates.
 
-That audit finds authored material for 15 adult characters plus the two official friendship characters, with no route yet approved against the full standard.
+That audit finds authored material for 16 adult characters plus the two official friendship characters, with no route yet approved against the full standard.
 
-Nurah's unexported continuation now passes its exact-source independent literary review at 27,069 distinct new words, with all scoped scores above 90; her runtime interaction, export, art mapping and in-game checks remain open.
+Nurah's 13-scene continuation is now in the export at 27,069 distinct normalized segment words, and its exact manuscript passed a scoped independent literary review with all scoped scores above 90.
+The managed build constructs the Nurah hub, while live actor placement, click-through, save/load, art mapping, campaign access and in-game checks remain open.
 
-The route still requires at least 21,000 meaningful words attributable to each woman, 42,000 for the Anevia-Irabeth relationship, a substantial reachable playthrough, independent scores above 90 in every required dimension, reviewed art, bespoke Trickster access and recovery, concurrency checks, and runtime evidence.
+Every character must be attainable on all ten mythic paths through path-appropriate authored routes and tested recovery, while preserving agency and characterization.
+The route still requires at least 21,000 meaningful words attributable to each woman, 42,000 for the Anevia-Irabeth relationship, a substantial reachable playthrough, independent scores above 90 in every required dimension, reviewed art, concurrency checks, and runtime evidence.
 
 This audit applies the user's full-route requirement retroactively to all earlier work, including the original Tirabade addon.
 No route is exempt because it was previously installed, called complete under an older scope, or received a high passage-review score.
 The current expansion has no character approved against the complete revised requirement.
 
-## Current authored content
+## Historical authored content checkpoint
 
-Source: `development/content-volume-inventory.json`, for story SHA256 `5E068C8E3601E7552AE501C34A8CD7E749207B00A9F32AABB1C5F99A515A4CA0`.
-These counts include all authored branches and choices, not the amount available in one playthrough.
+The table below is an older checkpoint and does not describe the current export.
+Use the linked [current roster readiness audit](../reference/parallel/current-roster-readiness-audit.md) and [generated content inventory](content-volume-inventory.json) for current counts.
+The historical counts included all authored branches and choices, not the amount available in one playthrough.
 Exact segment deduplication removes identical passages but does not establish that every remaining word is meaningful or reachable.
 Verified external content has not yet been credited to these counts.
 The 21,000-word planning floor remains subordinate to the full RanRomance quality and content comparison.
@@ -81,7 +84,7 @@ Unexported drafts, including the first Kiana-Aranka rehearsal, receive no delive
 - Evidence distinguishes actual game mechanics from narrated actions and dialogue choices; a rest-triggered book or a displayed check label alone does not prove interactive gameplay depth.
 - Full assembled-route review of characterization, pacing, dialogue and continuity, including the joins between existing and new writing.
 - Dedicated art and correctly framed game portraits, with actual display verification.
-- Attainable bespoke Trickster access, appropriate other-path restrictions and tested recovery/contact behavior where required.
+- Attainable entry on all ten mythic paths, path-appropriate relationship development, and tested recovery/contact behavior for missed or unavailable outcomes.
 - Compatibility with existing relationship states and ToyBox settings, plus save and game-engine verification.
 
 Earlier scene and passage scores remain evidence for those exact revisions only.

@@ -15,7 +15,7 @@ The route is substantial enough to deserve a focused revision rather than anothe
 | --- | ---: | --- |
 | Writing and pacing | 89 | Good concrete scenes remain interrupted by repeated explanations of invitations, separate answers and obligations. |
 | Native and parent characterization | 91 | The added fraud, intimidation and profit disputes restore meaningful ambition and malice; some unusually polished self-analysis remains. |
-| Mature, non-graphic romantic tension | 93 | The collar, games, couch, teasing and post-performance fatigue distinguish the encounters. |
+| Mature, graphic and explicit romantic tension | 93 | The collar, games, couch, teasing and post-performance fatigue distinguish the encounters. |
 | Mutual attraction, agency and nonexclusivity | 94 | The women desire each other, have a history outside the Commander, and retain separate decisions. |
 | Gameplay and consequential progression | 92 | Investigation, skill outcomes, reputation, financial terms and later recollections change the experience; these are source findings, not native runtime proof. |
 | Conditional memory and earned outcomes | 88 | A merged page imports an unchosen branch and repeats a handoff; an explicit yesterday contradicts the mandatory visit schedule. |

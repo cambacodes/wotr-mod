@@ -63,7 +63,7 @@ The open branch lets her want more while refusing to obtain a larger promise thr
 The committed branch retains the place of other people and obligations in their lives.
 Neither branch turns commitment into exclusivity.
 The quiet and overnight conclusions both preserve affection without forcing physical escalation.
-The physical writing is adult, voluntary, and non-graphic.
+The physical writing is adult, voluntary, and graphic and explicit.
 
 The two new epilogues correctly distinguish ongoing courtship from the agreed shared life.
 Each then remembers the selected career arrangement.

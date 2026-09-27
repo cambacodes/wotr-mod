@@ -39,7 +39,7 @@ s("three_yard", "A game with no useful purpose", "Together",
 "Years ago. Badly. I would like to discover whether I still do."
 "Always admired your ambition, Beth."''',
       c('"Show us how you would begin, Irabeth."', "beth"),
-      c('"Anevia, you are looking at those boards as if you have an idea."', "anevia")),
+      c('"Anevia, you are looking at those boards as if you have an idea."', "anevia"), portrait="TogetherYard"),
     n("beth", "Irabeth", '''{n}Irabeth steps to the chalk, leaving the ball on the counter while she tries the movement empty-handed.{/n}
 "I used to put everything into the release. It was impressive until it reached the pins."
 {n}She retrieves the ball and rolls it. It strikes the front pin, knocks down four more, and stops against the fence.{/n}

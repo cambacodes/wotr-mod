@@ -1,0 +1,54 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "bundle_sha256": "96675554F6E7865D69530950486CDF42C1F28CC8C37DF473F855F123AEDC045D",
+  "method": "UnityPy native texture decode at original dimensions, without image editing; no prefab render",
+  "units": [
+    {
+      "label": "Iomedae",
+      "unit_path": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/Goddesses_Summit/Iomedae.jbp",
+      "unit_id": "9a1443603c9353d4194a583a31228c8b",
+      "unit_sha256": "5765D5BEE3E390F929C03654F5E42457D1A90BA8AABF9BAD0C72045802E6909C",
+      "prefab": {
+        "AssetId": "cdeb873048d2d3b4298cdf4fe450a290"
+      },
+      "portrait_path": "Units/Portraits/Player/IomedaeGoddessFemale_Portrait.jbp",
+      "portrait_id": "438135f5553f4a0cb5635c5ac2caaeea",
+      "portrait_sha256": "43260890017F7E6BCF4FB22E103BD1119109E855F5A3FFDAE1E125E3FEB64313",
+      "images": [
+        {
+          "field": "m_PortraitImage",
+          "asset_id": "05584f17b8cf2b14594424fc74497b3b",
+          "status": "decoded",
+          "file": "Iomedae-m_PortraitImage.png",
+          "name": "IomedaeGoddessFemale_Portrait",
+          "path_id": 7742505409670005902,
+          "width": 184,
+          "height": 244,
+          "sha256": "FECB94EDCC06FA894779DABCA6D0ADDA08C9F53C2F101F1EE6B1A85C20560317"
+        },
+        {
+          "field": "m_HalfLengthImage",
+          "asset_id": "a1ab4b89e93cfb047abb1d6ef7af8ebb",
+          "status": "decoded",
+          "file": "Iomedae-m_HalfLengthImage.png",
+          "name": "IomedaeGoddessFemale_Half",
+          "path_id": -8615624061429936695,
+          "width": 332,
+          "height": 432,
+          "sha256": "9736960710386BFEDB6F166A178F9B71A06443315506492D5C59763C4AE8BF5D"
+        },
+        {
+          "field": "m_FullLengthImage",
+          "asset_id": "91d369732220b494fb4726cc0aeec269",
+          "status": "decoded",
+          "file": "Iomedae-m_FullLengthImage.png",
+          "name": "IomedaeGoddessFemale",
+          "path_id": 66671263696383120,
+          "width": 692,
+          "height": 1024,
+          "sha256": "8EDA5A9DCD7E9CEA5FF4B4E595729E5AB0FDD36C098C4CFB70820A37F13F4E37"
+        }
+      ]
+    }
+  ]
+}

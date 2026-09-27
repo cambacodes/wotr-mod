@@ -1,0 +1,29 @@
+[
+  {
+    "file": "native-reference.png",
+    "sha256": "BE0F2D3C0F50FCB804D56FF3FA77A879CD3DFA166341D54E487A2DCC780144A0",
+    "dimensions": [
+      184,
+      244
+    ],
+    "status": "native research reference"
+  },
+  {
+    "file": "private-feast-v1.png",
+    "sha256": "C6CEA8FE2A464AC25D40BD77F06AADE4C1A582ED0BFF6DC67AC912865C64085F",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "urgathoa-envoy-v1.png",
+    "sha256": "76C3F11D95F7DF0AA94BA0EE5B9AA7EE15DDF75AF1094A5CF4DC25FFE7DA3441",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

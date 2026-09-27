@@ -1,0 +1,418 @@
+{
+  "story_sha256": "8194A71F0A5780CEC21BB28DE4A04F8DC6E18A2E781D39590F72ED6432B19DD2",
+  "scope": "Exported page keys and staged PNG headers only; no image decoding, visual approval or Unity execution.",
+  "assets": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\art\\CustomNpcPortraits\\RanRomance-Tirabade\\Scenes",
+  "portraits": [
+    {
+      "key": "Aivu",
+      "pages": 136,
+      "first_use": {
+        "scene": "aivu.a_city_with_wings",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Anevia",
+      "pages": 321,
+      "first_use": {
+        "scene": "a_cup",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 330,
+      "height": 432,
+      "sha256": "C964F8C95CFD8E426F2F493463CABAD1A230BDEFF544EB11A4B528CD35B2DDF8"
+    },
+    {
+      "key": "Aranka",
+      "pages": 93,
+      "first_use": {
+        "scene": "aranka.the_wrong_refrain",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Arsinoe",
+      "pages": 155,
+      "first_use": {
+        "scene": "arsinoe_printers_view",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "ArsinoeShop",
+      "pages": 9,
+      "first_use": {
+        "scene": "arsinoe_city_on_paper",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "C3DDEC27FF8409B049F82D6A3D07028001CB1D485F5829BF4C2942C7AE307315"
+    },
+    {
+      "key": "Chivarro",
+      "pages": 87,
+      "first_use": {
+        "scene": "minachiv.her_own_arrival",
+        "node": "account"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "ChivarroWarm",
+      "pages": 1,
+      "first_use": {
+        "scene": "minachiv.the_entrance_she_wants",
+        "node": "warm"
+      },
+      "status": "present",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0BFC0F27C92CADFDEC2FE5F9D803E7D4C9DBE86D60A1B37A18B050095FEC48A2"
+    },
+    {
+      "key": "Ember",
+      "pages": 159,
+      "first_use": {
+        "scene": "ember.drawing",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Gesmerha",
+      "pages": 165,
+      "first_use": {
+        "scene": "gesmerha.unbought_work",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Irabeth",
+      "pages": 374,
+      "first_use": {
+        "scene": "i_watch",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 330,
+      "height": 432,
+      "sha256": "7319099690CE2755A108F2B7A0F7FB767BEC1018E1CDDECA78B3ED66EE12B83D"
+    },
+    {
+      "key": "Ista",
+      "pages": 15,
+      "first_use": {
+        "scene": "three_stolen_roads",
+        "node": "stakes"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Jerribeth",
+      "pages": 251,
+      "first_use": {
+        "scene": "jerribeth.invitation",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "D27050B867E90E8E151496E9B94AA71811726FAD0A8263F8DC3F84EE3DB63509"
+    },
+    {
+      "key": "Jerribeth-Guise",
+      "pages": 2,
+      "first_use": {
+        "scene": "jerribeth.evening",
+        "node": "private_guise"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Kiana",
+      "pages": 240,
+      "first_use": {
+        "scene": "kiana.invitation",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Konomi",
+      "pages": 614,
+      "first_use": {
+        "scene": "konomi.return_first_words",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "74267A675F25A786A118B54631D9093305478A484AACEA370082708AFB35B196"
+    },
+    {
+      "key": "KonomiPrivateClose",
+      "pages": 2,
+      "first_use": {
+        "scene": "konomi.before_road",
+        "node": "lovers"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "5D605330C541FC3A39A671E0ADB7786CBE6F9FBD1D6203A9CF96CD8091C9D504"
+    },
+    {
+      "key": "KonomiPrivateDialogue",
+      "pages": 3,
+      "first_use": {
+        "scene": "konomi.before_road",
+        "node": "talk"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9208ED76F84A33C146AA672BAC54DA57FED88EE9CEDA1EC2333FAF2F5B87DE48"
+    },
+    {
+      "key": "KonomiPrivateEvening",
+      "pages": 1,
+      "first_use": {
+        "scene": "konomi.before_road",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "FFA19D95FFB15CA81EBDA953E14E543BAC0D44847F69E99EDD9DED5D673E8B2C"
+    },
+    {
+      "key": "KonomiPrivateNear",
+      "pages": 1,
+      "first_use": {
+        "scene": "konomi.before_road",
+        "node": "near"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "5B774776DE5FDA5696CC9EA68F55CE34B7EF0B07F00555A3BB498C6BBD01277E"
+    },
+    {
+      "key": "KonomiPrivateSeated",
+      "pages": 5,
+      "first_use": {
+        "scene": "konomi.before_road",
+        "node": "departure"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "12560274FDE2B08548136F3471A5ACD974DA6245D2DD1D3F2C37AEB1F2C675EF"
+    },
+    {
+      "key": "Minagho",
+      "pages": 42,
+      "first_use": {
+        "scene": "minachiv.two_answers",
+        "node": "reply"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Nerath",
+      "pages": 1,
+      "first_use": {
+        "scene": "minachiv.the_first_small_audience",
+        "node": "proposal"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Nocticula",
+      "pages": 966,
+      "first_use": {
+        "scene": "noct.unlit_quay",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "D82D234E6E60DCAA614A06C320001E0FE22A54330FBA185604AA6DCDEF5BD5C5"
+    },
+    {
+      "key": "Nurah",
+      "pages": 106,
+      "first_use": {
+        "scene": "nurah.the_author_arrives",
+        "node": "kiss"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Rasen",
+      "pages": 1,
+      "first_use": {
+        "scene": "minachiv.the_man_who_remembers",
+        "node": "terms"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Sava",
+      "pages": 2,
+      "first_use": {
+        "scene": "nurah.a_page_with_teeth",
+        "node": "paid_help"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Seelah",
+      "pages": 356,
+      "first_use": {
+        "scene": "seelah.boots",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Sivane",
+      "pages": 1,
+      "first_use": {
+        "scene": "minachiv.the_performer_and_the_key",
+        "node": "proposal"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Soana",
+      "pages": 231,
+      "first_use": {
+        "scene": "soana.threshold",
+        "node": "start"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "SoanaForest",
+      "pages": 5,
+      "first_use": {
+        "scene": "soana.water_carrier",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "323F34726445958368D1441E4929D83C33258457BEF0CDD0B54F429701856334"
+    },
+    {
+      "key": "TargonaCorrespondence",
+      "pages": 58,
+      "first_use": {
+        "scene": "targona.unasked_question",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0214664A70C5A74C7CA790068799394FADA5872E594F7522E0578EA76AD99FE6"
+    },
+    {
+      "key": "Together",
+      "pages": 383,
+      "first_use": {
+        "scene": "reckoning",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "D125515DA14EA5333DFB8E800F766F5ABC0C3B2820C78BF506E880271457EBBF"
+    },
+    {
+      "key": "TogetherReckoning",
+      "pages": 1,
+      "first_use": {
+        "scene": "reckoning",
+        "node": "truth"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "1BF1BC93BA18CEF86DE3616ED503BE1085B884E5D8791372324D9E6BFC44C508"
+    },
+    {
+      "key": "TogetherYard",
+      "pages": 1,
+      "first_use": {
+        "scene": "three_yard",
+        "node": "rules"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "4D16D17364793720D49710AE55C02F182F34122765FD89542A0D53823C05B609"
+    },
+    {
+      "key": "Tovin",
+      "pages": 3,
+      "first_use": {
+        "scene": "arsinoe_printers_view",
+        "node": "proposal"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "Vellexia",
+      "pages": 157,
+      "first_use": {
+        "scene": "vellexia.unfinished_likeness",
+        "node": "warning"
+      },
+      "status": "missing"
+    },
+    {
+      "key": "VellexiaManorSpeaker",
+      "pages": 5,
+      "first_use": {
+        "scene": "vellexia.unfinished_likeness",
+        "node": "start"
+      },
+      "status": "present",
+      "width": 1089,
+      "height": 1444,
+      "sha256": "9AB756D627479508C414CBAF3BD8940142F42BFBBF98F0082B1B1963B11D77D3"
+    },
+    {
+      "key": "VellexiaPaintingChanged",
+      "pages": 1,
+      "first_use": {
+        "scene": "vellexia.unfinished_likeness",
+        "node": "picture_changed"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "42CD5DDFD78D8696FBD52719840020FA9B7E584FD86614BDF7DBCA2D984E178A"
+    },
+    {
+      "key": "VellexiaPaintingDay",
+      "pages": 1,
+      "first_use": {
+        "scene": "vellexia.unfinished_likeness",
+        "node": "picture"
+      },
+      "status": "present",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "4074EF5BF78192FCBF0780F060CBC9AB0A7049F94394DEE8BD05F27EEAFCEAA7"
+    }
+  ]
+}

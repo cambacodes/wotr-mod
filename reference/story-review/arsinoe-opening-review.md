@@ -83,7 +83,7 @@ The economic consequences are narrated, not transactions in the player's invento
 The rooftop interest is initiated by Arsinoe after shared time and an invitation she arranged herself.
 Courtship, taking things slowly and friendship set distinct histories.
 The final scene respects them: kissing is offered only on courtship, handholding can replace it, and neither slow nor friendship awards the kiss flag.
-The kiss is adult, voluntary and non-graphic, with enough physical specificity to distinguish it from a generic affection reward.
+The kiss is adult, voluntary and graphic and explicit, with enough physical specificity to distinguish it from a generic affection reward.
 No skill success grants intimacy.
 
 One optional polish point is `arsinoe_hours_of_her_own/company`.

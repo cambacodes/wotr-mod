@@ -1,0 +1,679 @@
+{
+  "snapshot_utc": "2026-09-27T21:40:21.864869+00:00",
+  "scope": "Versioned PNG candidates under art/candidates; excludes extracted references and art/expansion/originals. File count is not character or scene completion.",
+  "count": 96,
+  "files": [
+    {
+      "file": "art/candidates/aranka/performance-v1.png",
+      "sha256": "B0B1C567E04AAB9C90D9FF3F7C5FFC02889D70AF2CBC30DFDA4F74BA2078E690",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/aranka/portrait-v1.png",
+      "sha256": "694F94E99053891F4137DC562254165FC93260F4BF329AC05DF6F99B2E008DF6",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/areelu/observatory-threshold-v1.png",
+      "sha256": "8D161E23DA6B29691ABC81B427BC59BB9702EC0B29EBEAA975B1E732B70FFD9A",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/areelu/research-study-v1.png",
+      "sha256": "36D7C793838187D4DBFA03FAAE92974CB988DDBD3601B1B78B63000A8029DB73",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Areelu-v1.png",
+      "sha256": "59BCE444DB29567E2ACE0F38F775911CE7442D6A308974EF51BFB9A4261A6B17",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Areelu-v2.png",
+      "sha256": "1A41B9D08515F4AE6B7FE963D94D967772743C6BE2C7C2011E97F92A3BF1BB9E",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Areelu-v3.png",
+      "sha256": "6368DDE950B85F3ACA2AC81494F5AB0E92412DAEA2F426BCD9E6BBDB29B71EAA",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Areelu-v4.png",
+      "sha256": "E6A7B40D583AE670113D05330753574751F7B9C3F54E5D512B41D88DA18D76D7",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Areelu-v5.png",
+      "sha256": "F9A307C695E70478D3099F98652EDD2AA6C883C34BAD1D96DEB57C9E48C0011B",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Areelu-v6.png",
+      "sha256": "5C1B8AC6ECE1A27112ABC901AF4606361F0BCC624BE3D4623297EE90CCDE0CFF",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/arsinoe/arsinoe-v1.png",
+      "sha256": "C3DDEC27FF8409B049F82D6A3D07028001CB1D485F5829BF4C2942C7AE307315",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/arueshalae/corrupted-invitation-v1.png",
+      "sha256": "D3B56E07E1549DECC0516D0D918C15282F71825E4BD3BD13D348FE21A21B2DA9",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/arueshalae/redeemed-moonwatch-v1.png",
+      "sha256": "C91770EC8B1AC32BBB4E02FA64B2C24C39370F5E1FD20E6E66C637CC7D545520",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/camellia/private-glance-v1.png",
+      "sha256": "A512AC3257E4F2F9F09E7DD8661E20764B7A9758108668AF0352D7AC506B2563",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/camellia/public-composure-v1.png",
+      "sha256": "4CC8F7382FA3E1E78C38245088E90B87F74155053D60E3BD06F9F0B2E64D0FE4",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/chadali/council-cookie-v1.png",
+      "sha256": "6C5DAF6D234F9F797E531B4E051AD395D512E3DDFD21AE213EA78E11162FBE22",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/chivarro/chivarro-native-inspired-v1.png",
+      "sha256": "0570784CEA9ACC6FBFFCA95A26A6E0C2E17951BF3D4E1F84F1397A6B721321F5",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/chivarro/chivarro-warm-cuff-v1.png",
+      "sha256": "77B63696A8DA1045C7634506ABB4B4521A9AF579C4D66C3AEE8CC335BEF859B9",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Devarra-v1.png",
+      "sha256": "135A261DCE6BC2CA660CF024E0B9B4348598D51F55CD7E789F6FBBE0C16C20A9",
+      "width": 1101,
+      "height": 1429,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/dorgelinda/dorgelinda-logistics-v1.png",
+      "sha256": "413730B0D9827B1990288DCAB7FD480B9F4AAFAE261CD6664BA89C96F5271C36",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/eliandra/western-arch-v1.png",
+      "sha256": "39D30241EF16F0231187B02538B00267CE1EA40BFA6F7BACAC3C5A67EAB3DD41",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/eritrice/council-minutes-v1.png",
+      "sha256": "085E35AC538B55605857B4A49D896AB81B4D5D58ACB922CFCE4559491EB51AAE",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/eritrice/council-minutes-v2.png",
+      "sha256": "B876258131E1A23ADE5007FC027256DA3046412A72A96A60581D9CB5331B661A",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/galfrey/impossible-decree-v1.png",
+      "sha256": "25A1892DE7A4F00859611187E2418BCF1E8C4F85E8462567B43343088A7B40B2",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/gesmerha/gesmerha-v1.png",
+      "sha256": "EB3FD14D0D06EAAF5E4578DB833CA6B474A8593659F39F740ADFA47E513596DE",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/hepzamirah/colyphyr-authority-v1.png",
+      "sha256": "A70B7B9177785B0498F7856FF64123D8246223B6C9E62534BDCBC3111A833870",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/hepzamirah/living-nephilim-portrait-v1.png",
+      "sha256": "65EA79519982961939C344908DD44E4B3308EAE2DF7C7A0C9A38B0C1C3C7D650",
+      "width": 1089,
+      "height": 1444,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/herrax/herrax-appraisal-reaction-v1.png",
+      "sha256": "1D722FEFC01466E414570196F65B2D5EEECE0DEFAA5B10695D78B7F833519055",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/herrax/herrax-madam-v1.png",
+      "sha256": "68D277B09B41EEAAC45AF4CFCCC7BEC8574A933BEC4304BC869FADB95E18BE44",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/jannah/parole-conversation-v1.png",
+      "sha256": "2DC846AD1EABC8D6877E05F8BF9107F18983B205982C2CA92140DFDA78BB5183",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/jannah/practice-yard-v1.png",
+      "sha256": "C0FED37AA04D4E135873C13CFBC022AF6E33BF1614278AD95CA948878973B5E3",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/jerribeth/jerribeth-crest-study-v1.png",
+      "sha256": "00F093B4A09B8FCA33808006D0455043956A3E5361A9FCD299D7CEE1D263798E",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/jerribeth/jerribeth-crest-study-v2.png",
+      "sha256": "7557BA5B097CB51DAF7D18A23DBEDE50F1D13B1ED92576F8B7138CCA660F3824",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/jerribeth/jerribeth-crest-study-v3.png",
+      "sha256": "730B90339A0F6264CEFFD58BD322A3ED2B5F6650C2A7589BB9BC7A14C6DDC38C",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/jerribeth/jerribeth-projection-amusement-v1.png",
+      "sha256": "63CD02A19CAF005670ACB1AFB6684C8A47D6DFB169BFCAA550BB319649EF2C34",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/kaylessa/kaylessa-wary-camp-v1.png",
+      "sha256": "5C25C47A737267B7810146B27BE2EE5576FB924181A0DB2DA9CF9E5F15D541A9",
+      "width": 1089,
+      "height": 1444,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/kaylessa/kaylessa-wary-portrait-v1.png",
+      "sha256": "08115AD72E3D0473B790D343752FFFA5C0749BCE9310D74C9B67AB3F77B18161",
+      "width": 1089,
+      "height": 1444,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/kiana/kiana-married-conversation-v1.png",
+      "sha256": "196E8B80A69654F70C8952041E22B8D48B02C494CBC3E931F96612793C957461",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/kiana/kiana-princess-rehearsal-v1.png",
+      "sha256": "6B22EB6873EE40BD3A94BC1BC4597005C45AEE834F493F27E7B5E75F5C8E28CC",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/humanization-comparison-v1.png",
+      "sha256": "33BADA9EED7CBB8106DBBC442E44ED50854A77828A80A460781CEDFD4FD32825",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-afterkiss-v1.png",
+      "sha256": "AB1B2E0FF64577F07153D7C9A05F2F934B99327950EBC3A3B06E750C94D3472D",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-afterkiss-v2.png",
+      "sha256": "D78457A832ABEE1453FE1574126525BBD652F659B5315577099BE60B35D2D9E5",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-arrival-v1.png",
+      "sha256": "F3EDA04987EFEC6270649D5DBF8F522B9F4B2EE89795304F220BC3B55CAB0D4D",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-arrival-v2.png",
+      "sha256": "FFA19D95FFB15CA81EBDA953E14E543BAC0D44847F69E99EDD9DED5D673E8B2C",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-close-v1.png",
+      "sha256": "097686A3CC92BC984CA1037AA30D34AE6765476ED0A5CF2A5CBAEC9C7C8ABEEE",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-close-v2.png",
+      "sha256": "5D605330C541FC3A39A671E0ADB7786CBE6F9FBD1D6203A9CF96CD8091C9D504",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-dialogue-v1.png",
+      "sha256": "90350AC4479D011EE08185E503C7968BF933E60041EF921388482BBA5676FB2B",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-dialogue-v2.png",
+      "sha256": "9208ED76F84A33C146AA672BAC54DA57FED88EE9CEDA1EC2333FAF2F5B87DE48",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-near-v1.png",
+      "sha256": "9A5B349F25887D78258A45BE7E037D988A13249DBE745817F6F4B36895AC7D35",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-near-v2.png",
+      "sha256": "5B774776DE5FDA5696CC9EA68F55CE34B7EF0B07F00555A3BB498C6BBD01277E",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-v1.png",
+      "sha256": "A03084AD642094DFF404EEEF99129AB6DB204499347AE9ED5997F2D48D1DA9B0",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-v2.png",
+      "sha256": "F15BD4CFC2C6547B027D522A53CAEFDCB2C164080E45564D5B78A3E17D608665",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-v3.png",
+      "sha256": "BCB644CC8DDE8064C09F610EB213B1926CADA1DBF85E009E70191007E8A928A8",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-private-v4.png",
+      "sha256": "12560274FDE2B08548136F3471A5ACD974DA6245D2DD1D3F2C37AEB1F2C675EF",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-v1.png",
+      "sha256": "2B455D6B28A3F7B8A51165EFB45415A3B7FD9A4A4F55115961A51687E9A85D54",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/konomi/konomi-v2.png",
+      "sha256": "74267A675F25A786A118B54631D9093305478A484AACEA370082708AFB35B196",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/mielarah/cabin-invitation-v1.png",
+      "sha256": "7F493704D9427B5855076307CC66ADAA135AFF0EF12FD5BD9F394B1E2D530D4F",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/mielarah/captain-on-deck-v1.png",
+      "sha256": "7EAA4DC3B9266671362BCDE70255A6EACF1D36DDA909E232A1DAA6180E7CA4FE",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/minagho/minagho-branded-defiance-v1.png",
+      "sha256": "093D6B136282AA10858FA76DEE7A2CC653DD851DBBCED8CDAB5E45015C9984BE",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/minagho/minagho-released-glove-v1.png",
+      "sha256": "2E593593FB2B27A7B349C470ADFFF481F197B391B9727C752666303F8242C4BE",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/nenio/nenio-human-study-v1.png",
+      "sha256": "59A3818B0A259464E74EA6510FE8D8A22BC968A671C5B8B2BEE3C1222C4C32CA",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/nenio/nenio-humanized-kitsune-v1.png",
+      "sha256": "45D1124171F936CB3706DE79C5F1B3F10AD289C1502AB18CC603DA20131ABF58",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Nocticula-v1.png",
+      "sha256": "5CF97A0728493A4C1E37998A5E3A4D03694C7C79E55F7B0CAA917AA8BCD769A9",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Nocticula-v2.png",
+      "sha256": "655471CF4FADDF4D259DA0013B1A853FB0D1CFDAE016577F612823548784B95C",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Nocticula-v3.png",
+      "sha256": "D82D234E6E60DCAA614A06C320001E0FE22A54330FBA185604AA6DCDEF5BD5C5",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Nocticula-v4.png",
+      "sha256": "F706CC5A6AC919697BF5FFF781715A0AF516BBFF4480564B4F26C8B05602DDDF",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/nurah/nurah-margin-wit-v1.png",
+      "sha256": "EE533F1F20083AAE7834324BE01A7C49FB117CF7C9E301CDF85B0DEBE569DD26",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/nurah/nurah-watchful-evening-v1.png",
+      "sha256": "BE078E4388B5FFD7BFD25CE4C0C48776C6C3EBC9EE11A3433EFAD5A23D319D9D",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Nurah-v1.png",
+      "sha256": "C68A99ECFE7FF30DC94BDFC27C193ACB6CF130CAF5530C1F8B1582DA9BFCFBDF",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/seelah/portrait-v1.png",
+      "sha256": "8B959955E6A2B9AE162A0A7CA1F959D86718C30833AB6FDCBF69206ACBAC0C1F",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/seelah/yard-race-v1.png",
+      "sha256": "40DFEDF5AC0784ECFF6C230E7608DFEFF23A726F4A48091F8231DE63748449B6",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/shamira/audience-portrait-v1.png",
+      "sha256": "E01276F0C90FF776D7765682F70C21D905DD078AF2A18717CE7C62D905D0171A",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/shamira/mindreading-reaction-v1.png",
+      "sha256": "E126A1A40A4A15F4B7E1102E01A3441305DD568A1EB1E4101CE11BE449AC5397",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/soana/farewell-v1.png",
+      "sha256": "1FEAF6E209AB03101D991A23ECDA7E95225AF74266B9680E476EC9649F4CCC8D",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/soana/portrait-v1.png",
+      "sha256": "2E92B6F26FA4B0A52B10E081B4617EABBC415B41292464E34D8F6942FD6BF009",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/targona/courtyard-walk-v1.png",
+      "sha256": "DD23ED77D92ED543983035A1F391103F1B95902FFE172713ED91705C5452B123",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/targona/mixed-wing-portrait-v1.png",
+      "sha256": "67131622D3284EE6A358C1ECE94F7F834287C49993CAB2921706EAC04AE2539A",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/terendelev/guardian-portrait-v1.png",
+      "sha256": "86DD6197186F90FF9C66D28A20132D61E21B1C0ADA6A6950387ADA9947D70F2A",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/TogetherReckoning-v1.png",
+      "sha256": "4DE6389C669FAE3D67718786D017870538473340EA48AD2153204CF1CD704964",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/TogetherReckoning-v2.png",
+      "sha256": "1A27170EB0C57534B231CEEF158F372BA47E066CC055D723C4FFCE006208B02F",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/TogetherReckoning-v3.png",
+      "sha256": "449B6D6609953744137B80AD9EA1E0AE1D33C5678A7381690CC9185B326A0943",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/TogetherReckoning-v4.png",
+      "sha256": "1BF1BC93BA18CEF86DE3616ED503BE1085B884E5D8791372324D9E6BFC44C508",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/TogetherYard-v1.png",
+      "sha256": "4CFA2507910142E0052DAE4B56686593A5BD5152FAA049A59201BA2F8BBEE1C5",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/TogetherYard-v2.png",
+      "sha256": "4D16D17364793720D49710AE55C02F182F34122765FD89542A0D53823C05B609",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/Vellexia-v1.png",
+      "sha256": "9AB756D627479508C414CBAF3BD8940142F42BFBBF98F0082B1B1963B11D77D3",
+      "width": 1089,
+      "height": 1444,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/VellexiaPaintingChanged-v1.png",
+      "sha256": "933024FC0135D747895D6C625738A5D1F8E98819DFDE6BC31BD1448B25A9C046",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/VellexiaPaintingChanged-v2.png",
+      "sha256": "C2CB9A8FC81B482A1D366A56BB574C314F84973EA6219BCC01DCF481B8F07579",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/VellexiaPaintingChanged-v3.png",
+      "sha256": "035DF1898D41309AD52027429C6935E2813A5D2884F87569C6FB24CDCC20601D",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/VellexiaPaintingChanged-v4.png",
+      "sha256": "4E90392CD2AF89D371FC08B71ABAF5A8E26F9613B2168764AC0EB75B6B0C8776",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/VellexiaPaintingChanged-v5.png",
+      "sha256": "42CD5DDFD78D8696FBD52719840020FA9B7E584FD86614BDF7DBCA2D984E178A",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/VellexiaPaintingDay-v1.png",
+      "sha256": "E70702628614DE76EFE64A2E8CDC2F9240B897D20892B82DC07F718ED883DF85",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/VellexiaPaintingDay-v2.png",
+      "sha256": "4074EF5BF78192FCBF0780F060CBC9AB0A7049F94394DEE8BD05F27EEAFCEAA7",
+      "width": 1536,
+      "height": 1024,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/wenduag/hunter-v1.png",
+      "sha256": "FECA9BBA4985C917CC2985980CD9A7D9667C81F3800CA7F91F05DF3E3AEBD75F",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/wenduag/private-challenge-v1.png",
+      "sha256": "74262949DBA3DED5534EE181263AD3160AEC85540D3B0BA4E7B69D568DBE7724",
+      "width": 1031,
+      "height": 1525,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/yaniel/east-gate-breakfast-v1.png",
+      "sha256": "4C30C9D48B62AF7814AC540104558340A2F72952277142331FFC5791B132138C",
+      "width": 1024,
+      "height": 1536,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    },
+    {
+      "file": "art/candidates/yaniel/genuine-rescued-portrait-v1.png",
+      "sha256": "FD9D1D5D7F1A4A8155A5F6A6AF17683E75693EB5DEEEC6D1D9041294CEAA7FB2",
+      "width": 1089,
+      "height": 1444,
+      "status": "candidate; consult adjacent notes and exact review, not approval"
+    }
+  ]
+}

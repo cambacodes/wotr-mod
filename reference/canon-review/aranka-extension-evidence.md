@@ -128,7 +128,7 @@ The new Sella, Rovan, Neris, Deren, swallow refrain, rehearsal, disputed verse, 
 They are dialogue encounters rather than new engine-spawned NPCs, inventory, timed performances or healing effects.
 Rovan's damaged singing voice is not cured by a romance reward.
 The new song does not replace Starward Gaze, alter its existing musical choice, or grant a buff.
-Current Aranka romance supports adult non-graphic intimacy without replaying courtship acquisition.
+Current Aranka romance supports adult graphic and explicit intimacy without replaying courtship acquisition.
 The inherited Reverie partnership is acknowledged only when its real parent state is Playing and the retained-artifact ending is supported.
 The optional Kiana rehearsal remains unapproved reference material and contributes no text or claimed relationship here.
 

@@ -1,0 +1,274 @@
+{
+  "AssetId": "280d4712dceb37f4a88e98f1f4c6e64f",
+  "Data": {
+    "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+    "PrototypeLink": "d1e567736abf23943b9f041ba7a0bc23",
+    "m_Overrides": [
+      "m_AddFacts"
+    ],
+    "Components": [
+      {
+        "$type": "011e862b513000f4bae31886f3489ace, Experience",
+        "m_Flags": 0,
+        "name": "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b(Clone)",
+        "PrototypeLink": {
+          "guid": "d1e567736abf23943b9f041ba7a0bc23",
+          "name": "$Experience$2152fa9d-40c7-493b-a4b5-3d477f91961b"
+        },
+        "m_Overrides": [],
+        "Encounter": "Mob",
+        "CR": 5,
+        "Modifier": 1.0,
+        "Count": null,
+        "Dummy": false
+      },
+      {
+        "$type": "5474d502f4f54412b9cd7e7bbd0ddeec, ClassLevelLimit",
+        "m_Flags": 0,
+        "name": "$ClassLevelLimit$28e274fe-2c67-4b56-b79c-403af5af6867",
+        "PrototypeLink": {
+          "guid": "d1e567736abf23943b9f041ba7a0bc23",
+          "name": "$ClassLevelLimit$28e274fe-2c67-4b56-b79c-403af5af6867"
+        },
+        "m_Overrides": [],
+        "LevelLimit": 6
+      },
+      {
+        "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+        "m_Flags": "Disabled",
+        "name": "$AddClassLevels$65ec9d91-3f51-4194-8d01-c2ad4c40781b",
+        "PrototypeLink": {
+          "guid": "d1e567736abf23943b9f041ba7a0bc23",
+          "name": "$AddClassLevels$65ec9d91-3f51-4194-8d01-c2ad4c40781b"
+        },
+        "m_Overrides": [],
+        "m_CharacterClass": "!bp_bfa11238e7ae3544bbeb4d0b92e897ec",
+        "m_Archetypes": [],
+        "Levels": 6,
+        "RaceStat": "Strength",
+        "LevelsStat": "Strength",
+        "Skills": [
+          "SkillAthletics"
+        ],
+        "m_SelectSpells": [],
+        "m_MemorizeSpells": [],
+        "Selections": [
+          {
+            "IsParametrizedFeature": false,
+            "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+            "m_Features": [
+              "!bp_9972f33f977fc724c838e59641b2fca5",
+              "!bp_15e7da6645a7f3d41bdad7c8c4b9de1e",
+              "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+            ],
+            "m_ParametrizedFeature": null,
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "UnarmedStrike",
+            "Stat": "Unknown"
+          },
+          {
+            "IsParametrizedFeature": true,
+            "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+            "m_Features": [
+              "!bp_9972f33f977fc724c838e59641b2fca5",
+              "!bp_15e7da6645a7f3d41bdad7c8c4b9de1e",
+              "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+            ],
+            "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Longsword",
+            "Stat": "Unknown"
+          },
+          {
+            "IsParametrizedFeature": false,
+            "m_Selection": "!bp_a7c8b73528d34c2479b4bd638503da1d",
+            "m_Features": [
+              "!bp_88d5da04361b16746bf5b65795e0c38c"
+            ],
+            "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Longsword",
+            "Stat": "Unknown"
+          },
+          {
+            "IsParametrizedFeature": false,
+            "m_Selection": "!bp_ad7dc4eba7bf92f4aba23f716d7a9ba6",
+            "m_Features": [
+              "!bp_e08a817f475c8794aa56fdd904f43a57"
+            ],
+            "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Longsword",
+            "Stat": "Unknown"
+          },
+          {
+            "IsParametrizedFeature": false,
+            "m_Selection": "!bp_02b187038a8dce545bb34bbfb346428d",
+            "m_Features": [
+              "!bp_e5aa306af9b91974a9b2f2cbe702f562"
+            ],
+            "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Longsword",
+            "Stat": "Unknown"
+          }
+        ],
+        "DoNotApplyAutomatically": false
+      }
+    ],
+    "Comment": "",
+    "m_AllowNonContextActions": false,
+    "m_DisplayName": {
+      "m_Key": "",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_Description": {
+      "m_Key": "",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_DescriptionShort": {
+      "m_Key": "",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_Icon": null,
+    "m_Type": null,
+    "LocalizedName": {
+      "assetguid": "bb71b9c47518a304c8d9dc0d9015a039",
+      "stringkey": "6319f2ee-b1af-4a4b-a1fd-943cca16566a"
+    },
+    "Gender": "Female",
+    "Size": "Medium",
+    "IsLeftHanded": false,
+    "Color": {
+      "r": 0.0,
+      "g": 0.31764707,
+      "b": 0.5019608,
+      "a": 1.0
+    },
+    "m_Race": "!bp_1dc20e195581a804890ddc74218bfd8e",
+    "Alignment": "LawfulGood",
+    "m_Portrait": "!bp_14ca57e7f693ba9469d7c1111f79e56e",
+    "Prefab": {
+      "AssetId": "a87a6918db826d743a0f8a6577556f22"
+    },
+    "m_CustomizationPreset": null,
+    "Visual": {
+      "BloodType": "Common",
+      "FootprintType": "Humanoid",
+      "FootprintScale": 1.0,
+      "ArmorFx": null,
+      "BloodPuddleFx": {
+        "AssetId": "f1400b13c4d834549be5b6dc32bc2ce3"
+      },
+      "DismemberFx": {
+        "AssetId": "876334cab63820a4696ecefb8a88d1fb"
+      },
+      "RipLimbsApartFx": null,
+      "IsNotUseDismember": false,
+      "m_Barks": "!bp_f8bbd14978df29f44a5388d220a15d27",
+      "ReachFXThresholdBonus": 0.0,
+      "DefaultArmorSoundType": "Flesh",
+      "FootstepSoundSizeType": "BootMedium",
+      "FootSoundType": "Boot",
+      "FootSoundSize": "Medium",
+      "BodySoundType": "Flesh",
+      "BodySoundSize": "Medium",
+      "FoleySoundPrefix": "",
+      "NoFinishingBlow": false,
+      "ImportanceOverride": 0,
+      "SilentCaster": false
+    },
+    "m_Faction": "!bp_419c5165bae99664b92252b7dcc0a2db",
+    "FactionOverrides": {
+      "m_AttackFactionsToAdd": [],
+      "m_AttackFactionsToRemove": []
+    },
+    "m_StartingInventory": [],
+    "m_Brain": "!bp_86f9442baac46cd488d181724167e902",
+    "AlternativeBrains": [],
+    "Body": {
+      "DisableHands": false,
+      "m_EmptyHandWeapon": "!bp_20375b5a0c9243d45966bd72c690ab74",
+      "m_PrimaryHand": "!bp_a11ec024bc460ab43803f3ac8ef374cb",
+      "m_SecondaryHand": "!bp_bcd7eb161e664ff46b8b262a8f9810e0",
+      "m_PrimaryHandAlternative1": "!bp_adc1a081ba26d2a439a62d702437a40d",
+      "m_SecondaryHandAlternative1": null,
+      "m_PrimaryHandAlternative2": null,
+      "m_SecondaryHandAlternative2": null,
+      "m_PrimaryHandAlternative3": null,
+      "m_SecondaryHandAlternative3": null,
+      "ActiveHandSet": 0,
+      "m_AdditionalLimbs": [],
+      "m_AdditionalSecondaryLimbs": [],
+      "m_Armor": "!bp_ba780a9c1e5b0304892bd2bc0c22fe4d",
+      "m_Shirt": null,
+      "m_Belt": "!bp_c354de364a714ee4dbe2cfee628df267",
+      "m_Head": null,
+      "m_Glasses": null,
+      "m_Feet": null,
+      "m_Gloves": null,
+      "m_Neck": "!bp_209960f8d60e23a4c8e75d14e2261263",
+      "m_Ring1": "!bp_f333bf86cd122974792162cbcd27c9ed",
+      "m_Ring2": null,
+      "m_Wrist": null,
+      "m_Shoulders": "!bp_4aea6773c1da01c42bd382c1b7c384bc",
+      "m_QuickSlots": [
+        "!bp_f991f3051c3b9e64fabc87891077b613",
+        "!bp_1365aee7d18c85d438f5b027122ca8cf",
+        null,
+        null,
+        null
+      ]
+    },
+    "Strength": 15,
+    "Dexterity": 8,
+    "Constitution": 13,
+    "Intelligence": 10,
+    "Wisdom": 12,
+    "Charisma": 14,
+    "Speed": {
+      "m_Value": 30.0
+    },
+    "BaseAttackBonus": 0,
+    "Skills": {
+      "Acrobatics": 0,
+      "Physique": 0,
+      "Diplomacy": 0,
+      "Thievery": 0,
+      "LoreNature": 0,
+      "Perception": 0,
+      "Stealth": 0,
+      "UseMagicDevice": 0,
+      "LoreReligion": 0,
+      "KnowledgeWorld": 0,
+      "KnowledgeArcana": 0
+    },
+    "MaxHP": 0,
+    "m_AdditionalTemplates": [],
+    "m_AddFacts": [
+      "!bp_fbbe330f105d1384db6602127925c939",
+      "!bp_e7dbac1915ec4f86b8fd11ad25968811"
+    ],
+    "IsCheater": false,
+    "IsFake": false,
+    "m_PS4ChunkId": "Chapter1",
+    "m_HasAssignedChunkId": true
+  },
+  "Meta": {
+    "ShadowDeleted": false
+  }
+}

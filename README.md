@@ -2,7 +2,7 @@
 
 A Relations and Romances extension for Anevia, Irabeth, and the Commander.
 Two independent affairs lead to discovery, difficult conversations, and an optional three-person relationship.
-The route contains mature themes and non-graphic intimacy.
+The route contains mature themes and graphic and explicit intimacy.
 
 ## Playing
 

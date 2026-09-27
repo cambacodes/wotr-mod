@@ -1,0 +1,12 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "bundle_sha256": "96675554F6E7865D69530950486CDF42C1F28CC8C37DF473F855F123AEDC045D",
+  "image_asset_id": "11d331d17f3029a4fa3ec9333a6ad1fb",
+  "texture_path_id": -6996794576727759936,
+  "texture_name": "Woundwyrm",
+  "width": 188,
+  "height": 244,
+  "output": "Woundwyrm.png",
+  "sha256": "245D0094A353D936215E3D0F6C6E3D2645409AFADFDFF50B6EDE522105DDAC36",
+  "method": "UnityPy 1.25.3 native texture decode at original dimensions, no retouching or resizing"
+}

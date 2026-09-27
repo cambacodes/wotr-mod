@@ -1,0 +1,29 @@
+[
+  {
+    "file": "authored-humanoid-teacher-v1.png",
+    "sha256": "9DA5EC1936935A02282F1E5A6CCFE52C532F7888E9A605ED2A8990DD8F494B65",
+    "dimensions": [
+      1096,
+      1435
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "native-reference.png",
+    "sha256": "5E5B52DC3C026F7CED04FD037320422CE6FBC180AEC95A8B3BFCD0E250C82D8A",
+    "dimensions": [
+      370,
+      484
+    ],
+    "status": "native research reference"
+  },
+  {
+    "file": "silver-dragon-v1.png",
+    "sha256": "861FC04E18CFEBB35E13124DBB694F4FC103BB20B0375F6915174D0B8D1C25A2",
+    "dimensions": [
+      1096,
+      1435
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

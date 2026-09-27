@@ -7,10 +7,10 @@ internal static class NocticulaContinuationTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
-        var scenes = story.Scenes.Where(s => s.Relationship == "nocticula").ToArray();
+        var scenes = story.Scenes.Where(s => s.Relationship == "nocticula" && !s.Id.Contains(".acquired.")).ToArray();
         var visits = scenes.Where(s => !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         var endings = scenes.Except(visits).ToArray();
-        check(visits.Length == 16 && endings.Length == 8, "Nocticula campaign or ending coverage changed; review the test scope.");
+        check(visits.Length == 24 && endings.Length == 8, "Nocticula campaign or ending coverage changed; review the test scope.");
         var reached = visits.ToDictionary(s => s.Id, _ => new HashSet<string>());
         var reachedChoices = visits.ToDictionary(s => s.Id, _ => new HashSet<string>());
         var native = story.Etudes.Keys.Concat(story.SeenCues.Keys).Concat(story.CompletedQuests.Keys)
@@ -70,6 +70,18 @@ internal static class NocticulaContinuationTests
                         check(result.Flags.Where(native.Contains).ToHashSet().SetEquals(nativeBefore), "Nocticula changes native or parent history.");
                         check(initial.Flags.IsSubsetOf(result.Flags), "Nocticula deletes an existing relationship or history.");
                         check(result.AvailableContacts.Count == 0, "A dream manufactures a physical contact.");
+                        if (result.Has("noct.closed"))
+                        {
+                            check(result.Has("noct.undertaking_declined") != result.Has("noct.undertaking_withdrawn"),
+                                "Nocticula closure lacks a single refusal or withdrawal reason.");
+                            check(!result.Has("noct.complete"), "Withdrawing completes Nocticula's undertaking.");
+                            var futureClosed = Program.Copy(result); futureClosed.Hour += 1000;
+                            check(visits.All(s => !Rules.Available(story, s, futureClosed)),
+                                "Nocticula offers another harbor visit after withdrawal.");
+                            check(endings.All(s => !Rules.Available(story, s, futureClosed)),
+                                "An unfinished Nocticula undertaking receives a completed recollection.");
+                            continue;
+                        }
                         if (!result.Has(scene.Id))
                         {
                             check(scene.Id == "noct.unlit_quay", "Unreviewed Nocticula postponement added.");

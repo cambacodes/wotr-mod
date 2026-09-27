@@ -30,13 +30,16 @@ manifest = os.environ.get("RRT_PARENT_BINDINGS")
 if pending and manifest:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
     from parent_bindings import load_parent_bindings
-    for guid, record in load_parent_bindings(manifest).items():
-        if guid in pending:
-            # Explicit typed fixtures only; no native fields or parent behavior invented.
-            found[guid] = {"$type": "ReviewedParentFixture, " + record["type"],
-                           "FixtureProvenance": record}
-            pending.remove(guid)
-            print("Parent source fixture: " + guid + " " + record["type"], file=sys.stderr)
+    for manifest_path in manifest.split(os.pathsep):
+        if not manifest_path:
+            continue
+        for guid, record in load_parent_bindings(manifest_path).items():
+            if guid in pending:
+                # Explicit typed fixtures only; no native fields or parent behavior invented.
+                found[guid] = {"$type": "ReviewedParentFixture, " + record["type"],
+                               "FixtureProvenance": record}
+                pending.remove(guid)
+                print("Parent source fixture: " + guid + " " + record["type"], file=sys.stderr)
 if pending:
     raise RuntimeError("Missing native blueprints: " + ", ".join(sorted(pending)))
 json.dump(found, sys.stdout)

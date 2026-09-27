@@ -109,7 +109,7 @@ The final confrontation trades either for a signed account of the concealed reco
 The next scene reports distinct invitation losses/inspection or commercial access/continued danger.
 Both settlements return the working adjustments, so neither is described as physically destroying Vardess's future room.
 
-The last scene offers own-form or knowingly invented adult guise, desired non-graphic imagining or quiet company, and voluntary continuation.
+The last scene offers own-form or knowingly invented adult guise, desired graphic and explicit imagining or quiet company, and voluntary continuation.
 The closer branch explicitly concerns an arrival imagined together, not a physical visit.
 No intimate choice depends on passing the roll or choosing a particular settlement.
 

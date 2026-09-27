@@ -59,7 +59,7 @@ The private conversation then permits courtship, uncertainty or company.
 Vellexia can be disappointed by the last answer while remaining sufficiently intrigued to continue this particular conversation.
 That is a limited authored response consistent with the current early interest, not a universal rule that she accepts every refusal harmlessly.
 
-The kiss is chosen and non-graphic.
+The kiss is chosen and graphic and explicit.
 The alternative close companionship does not secretly set the kiss flag.
 The slow and company endings retain their actual intention and do not declare an unearned commitment.
 Her dialogue remains teasing and self-interested, with moments of direct desire that do not require a confession of hidden goodness.

@@ -68,7 +68,7 @@ Kiana's jokes about poor costumes, inadequate castles, food and other people's e
 Her present desire is directed toward the Commander she is actually spending time with.
 She chooses the clothes, pays for the fabric, invites admiration and initiates closeness.
 The optional kiss and hand-holding both let the scene continue.
-The intimacy is restrained and non-graphic, appropriate to this social contribution rather than proof of a fully developed mature romance.
+The intimacy is restrained and graphic and explicit, appropriate to this social contribution rather than proof of a fully developed mature romance.
 
 Lenna, Odrin, Edris and Meral are new authored social contacts.
 The source and handoff identify them as such instead of inventing native quest references.

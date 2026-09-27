@@ -30,7 +30,7 @@ The explicit costs, paid places, privacy objection and attendance tradeoff devel
 The follow-up account acknowledges who misses the chosen hour and gives the decision a specific continuing consequence.
 
 The personal game and bad adventure story have lively dialogue and voluntary reciprocal interest.
-The eventual private room and kiss are mature and non-graphic.
+The eventual private room and kiss are mature and graphic and explicit.
 Slow courtship and friendship retain complete evenings and separate closing dialogue.
 The local cast and gatherings are authored additions; no native wedding, stolen-soul resolution, companion outcome or present spouse is asserted.
 Her wish to stay develops her native traveling history without claiming a canonical permanent settlement.

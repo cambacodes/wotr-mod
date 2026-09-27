@@ -61,7 +61,7 @@ The concrete grief sentence about missing disagreement with Elan is stronger tha
 An unsent living-Elan draft leaves his whereabouts and response unasserted.
 The incomplete-rescue branch continues to name unfinished work and does not invent a rescue result to justify a pleasant afternoon.
 
-The adult intimacy remains voluntary and non-graphic.
+The adult intimacy remains voluntary and graphic and explicit.
 The private question supports a night, kisses alone, or company without further intimacy.
 The quiet answer completes the evening and future invitation rather than reducing affection or demanding that the player make up for refusal.
 The existing commitment is read when discussing future plans, not created by the race or by renting a cupboard.

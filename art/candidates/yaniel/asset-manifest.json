@@ -1,0 +1,20 @@
+[
+  {
+    "file": "east-gate-breakfast-v1.png",
+    "sha256": "4C30C9D48B62AF7814AC540104558340A2F72952277142331FFC5791B132138C",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "genuine-rescued-portrait-v1.png",
+    "sha256": "FD9D1D5D7F1A4A8155A5F6A6AF17683E75693EB5DEEEC6D1D9041294CEAA7FB2",
+    "dimensions": [
+      1089,
+      1444
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

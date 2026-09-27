@@ -1,0 +1,353 @@
+{
+  "AssetId": "85c7a3fd80f93db43a3e588ba5f5f9bc",
+  "Data": {
+    "$type": "fa4fa7e4548127a47a2846c91b051065, BlueprintUnit",
+    "PrototypeLink": "",
+    "m_Overrides": [
+      "$AddClassLevels$ccf8a9a2-81d3-4d3a-94b2-1848cc4585a4",
+      "CharacterName",
+      "Faction",
+      "StartingInventory",
+      "Prefab",
+      "$AddFacts$3a348de5-7325-4e3e-aeec-52628af65cff"
+    ],
+    "Components": [
+      {
+        "$type": "81d1333a815e48c4baf215e1b7adf8d6, AddClassLevels",
+        "m_Flags": 0,
+        "name": "$AddClassLevels$ccf8a9a2-81d3-4d3a-94b2-1848cc4585a4",
+        "PrototypeLink": {
+          "guid": "",
+          "name": ""
+        },
+        "m_Overrides": [],
+        "m_CharacterClass": "!bp_01a754e7c1b7c5946ba895a5ff0faffc",
+        "m_Archetypes": [],
+        "Levels": 33,
+        "RaceStat": "Constitution",
+        "LevelsStat": "Unknown",
+        "Skills": [
+          "SkillPerception",
+          "SkillStealth",
+          "SkillKnowledgeArcana",
+          "SkillAthletics",
+          "SkillPersuasion"
+        ],
+        "m_SelectSpells": [],
+        "m_MemorizeSpells": [],
+        "Selections": [
+          {
+            "IsParametrizedFeature": false,
+            "IsFeatureSelectMythicSpellbook": false,
+            "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+            "m_Features": [
+              "!bp_797f25d709f559546b29e7bcb181cc74",
+              "!bp_9972f33f977fc724c838e59641b2fca5",
+              "!bp_14a1fc1356df9f146900e1e42142fc9d",
+              "!bp_e2d1fa11f6b095e4fb2fd1dcf5e36eb3",
+              "!bp_52913092cd018da47845f36e6fbe240f",
+              "!bp_787e56055e3ef864d9c78a3ec21e56be",
+              "!bp_8ac59959b1b23c347a0361dc97cc786d",
+              "!bp_d09b20029e9abfe4480b356c92095623",
+              "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+              "!bp_f4201c85a991369408740c6888362e20",
+              "!bp_f4201c85a991369408740c6888362e20",
+              "!bp_86669ce8759f9d7478565db69b8c19ad",
+              "!bp_0f8939ae6f220984e8fb568abbdfba95"
+            ],
+            "m_ParametrizedFeature": null,
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "UnarmedStrike",
+            "Stat": "Unknown",
+            "m_FeatureSelectMythicSpellbook": null,
+            "m_Spellbook": null
+          },
+          {
+            "IsParametrizedFeature": true,
+            "IsFeatureSelectMythicSpellbook": false,
+            "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+            "m_Features": [
+              "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+            ],
+            "m_ParametrizedFeature": "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Bite",
+            "Stat": "Unknown",
+            "m_FeatureSelectMythicSpellbook": null,
+            "m_Spellbook": null
+          },
+          {
+            "IsParametrizedFeature": true,
+            "IsFeatureSelectMythicSpellbook": false,
+            "m_Selection": "!bp_247a4068296e8be42890143f451b4b45",
+            "m_Features": [
+              "!bp_1e1f627d26ad36f43bbd26cc2bf8ac7e"
+            ],
+            "m_ParametrizedFeature": "!bp_f4201c85a991369408740c6888362e20",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Bite",
+            "Stat": "Unknown",
+            "m_FeatureSelectMythicSpellbook": null,
+            "m_Spellbook": null
+          },
+          {
+            "IsParametrizedFeature": false,
+            "IsFeatureSelectMythicSpellbook": false,
+            "m_Selection": "!bp_c9629ef9eebb88b479b2fbc5e836656a",
+            "m_Features": [
+              "!bp_3a8d34905eae4a74892aae37df3352b9"
+            ],
+            "m_ParametrizedFeature": "!bp_f4201c85a991369408740c6888362e20",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Bite",
+            "Stat": "Unknown",
+            "m_FeatureSelectMythicSpellbook": null,
+            "m_Spellbook": null
+          },
+          {
+            "IsParametrizedFeature": true,
+            "IsFeatureSelectMythicSpellbook": false,
+            "m_Selection": "!bp_c9629ef9eebb88b479b2fbc5e836656a",
+            "m_Features": [
+              "!bp_3a8d34905eae4a74892aae37df3352b9"
+            ],
+            "m_ParametrizedFeature": "!bp_f4201c85a991369408740c6888362e20",
+            "m_ParamObject": null,
+            "ParamSpellSchool": "None",
+            "ParamWeaponCategory": "Claw",
+            "Stat": "Unknown",
+            "m_FeatureSelectMythicSpellbook": null,
+            "m_Spellbook": null
+          }
+        ],
+        "DoNotApplyAutomatically": false
+      },
+      {
+        "$type": "214dfec3ad680e740a7218f62ad49b1c, AddAbilityToCharacterComponent",
+        "m_Flags": 0,
+        "name": "$AddAbilityToCharacterComponent$6656c81b-b214-4daf-bc9b-19a6fead5b16(Clone)",
+        "PrototypeLink": {
+          "guid": "",
+          "name": ""
+        },
+        "m_Overrides": [],
+        "m_Abilities": [
+          "!bp_486eaff58293f6441a5c2759c4872f98",
+          "!bp_6381660e646656d4790a54335e0ec733",
+          "!bp_b37b9ae24e3e53a47983c2b1e6b309dd",
+          "!bp_c047db972c60dac4dbdc29cc1ea39017",
+          "!bp_4e8855a842926404295e6444f4f59691"
+        ]
+      },
+      {
+        "$type": "011e862b513000f4bae31886f3489ace, Experience",
+        "m_Flags": 0,
+        "name": "$Experience$848979cc-0262-4fde-8260-9191ff454afc(Clone)",
+        "PrototypeLink": {
+          "guid": "",
+          "name": ""
+        },
+        "m_Overrides": [],
+        "Encounter": "Boss",
+        "CR": 26,
+        "Modifier": 1.0,
+        "Count": null,
+        "PlayerGainsNoExp": false,
+        "Dummy": false
+      },
+      {
+        "$type": "d79ad4ed064aa4f43ace0e9c238fb9b9, AddFacts",
+        "m_Flags": 0,
+        "name": "$AddFacts$3a348de5-7325-4e3e-aeec-52628af65cff",
+        "PrototypeLink": {
+          "guid": "",
+          "name": ""
+        },
+        "m_Overrides": [],
+        "m_Facts": [
+          "!bp_03464790f40c3c24aa684b57155f3280",
+          "!bp_dd3ad347240624d46a11a092b4dd4674",
+          "!bp_9c0fa9b438ada3f43864be8dd8b3e741",
+          "!bp_b8da3ec045ec04845a126948e1f4fc1a",
+          "!bp_b175001b42b1a02479881b72fe132116",
+          "!bp_f011d0ab4a405e54aa0e83cd10e54430",
+          "!bp_533592a86adecda4e9fd5ed37a028432",
+          "!bp_8c385a7610aa409468f3a6c0f904ac92",
+          "!bp_a92acdf18049d784eaa8f2004f5d2304",
+          "!bp_9c57e9674b4a4a2b9920f9fec47f7e6a"
+        ],
+        "Dummy": null,
+        "CasterLevel": 29,
+        "DoNotRestoreMissingFacts": false,
+        "HasDifficultyRequirements": false,
+        "InvertDifficultyRequirements": false,
+        "MinDifficulty": "Story"
+      }
+    ],
+    "Comment": "placeholder",
+    "m_AllowNonContextActions": false,
+    "m_DisplayName": {
+      "m_Key": "",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_Description": {
+      "m_Key": "",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_DescriptionShort": {
+      "m_Key": "",
+      "m_OwnerString": "",
+      "m_OwnerPropertyPath": "",
+      "m_JsonPath": "",
+      "Shared": null
+    },
+    "m_Icon": null,
+    "m_Type": "!bp_f77d2345f35641bb9a165f585a24888e",
+    "LocalizedName": {
+      "assetguid": "5fc1f7585d9859d40b02595da86d4781",
+      "stringkey": "42f3db27-5732-4117-8d9f-4b64ad4d650d"
+    },
+    "Gender": "Female",
+    "Size": "Huge",
+    "IsLeftHanded": false,
+    "Color": {
+      "r": 0.15,
+      "g": 0.15,
+      "b": 0.15,
+      "a": 1.0
+    },
+    "m_Race": null,
+    "Alignment": "ChaoticEvil",
+    "m_Portrait": "!bp_ca8d2f8a110149b890d75080e01089a5",
+    "Prefab": {
+      "AssetId": "19f52bbfe67ce304ebfb5ff6c7f98af7"
+    },
+    "m_CustomizationPreset": null,
+    "Visual": {
+      "BloodType": "Common",
+      "FootprintType": "Humanoid",
+      "FootprintScale": 1.0,
+      "ArmorFx": null,
+      "BloodPuddleFx": null,
+      "DismemberFx": null,
+      "RipLimbsApartFx": null,
+      "IsNotUseDismember": false,
+      "m_Barks": "!bp_a526fcf667234d4e8bb2ba5376a0f91a",
+      "ReachFXThresholdBonus": 0.0,
+      "DefaultArmorSoundType": "Flesh",
+      "FootstepSoundSizeType": "BootMedium",
+      "FootSoundType": "HardPaw",
+      "FootSoundSize": "Large",
+      "BodySoundType": "Flesh",
+      "BodySoundSize": "Huge",
+      "FoleySoundPrefix": "",
+      "NoFinishingBlow": false,
+      "ImportanceOverride": 0,
+      "SilentCaster": true
+    },
+    "m_Faction": "!bp_d64258e86eeb1d8479f35a9b16f6590a",
+    "FactionOverrides": {
+      "m_AttackFactionsToAdd": [],
+      "m_AttackFactionsToRemove": []
+    },
+    "m_StartingInventory": [],
+    "m_Brain": "!bp_ece9155770a1b4a43a511ef6adade8e5",
+    "AlternativeBrains": [],
+    "Body": {
+      "DisableHands": false,
+      "m_EmptyHandWeapon": null,
+      "m_PrimaryHand": "!bp_cb3d56dab7e5c17468707da5950a4a01",
+      "m_SecondaryHand": null,
+      "m_PrimaryHandAlternative1": null,
+      "m_SecondaryHandAlternative1": null,
+      "m_PrimaryHandAlternative2": null,
+      "m_SecondaryHandAlternative2": null,
+      "m_PrimaryHandAlternative3": null,
+      "m_SecondaryHandAlternative3": null,
+      "ActiveHandSet": 0,
+      "m_AdditionalLimbs": [
+        "!bp_614a4965a7c28af4583d915e32122efd",
+        "!bp_614a4965a7c28af4583d915e32122efd"
+      ],
+      "m_AdditionalSecondaryLimbs": [
+        "!bp_2f4eced2e3d978345a92685bcde4551e",
+        "!bp_2f4eced2e3d978345a92685bcde4551e",
+        "!bp_efe700e7e536e7942bccd585b49e8861"
+      ],
+      "m_Armor": null,
+      "m_Shirt": null,
+      "m_Belt": "!bp_637c4de135be4d59a84fba1da9135b9b",
+      "m_Head": null,
+      "m_Glasses": null,
+      "m_Feet": null,
+      "m_Gloves": null,
+      "m_Neck": "!bp_975aad0cf1a32534fb4c1359b7d952b2",
+      "m_Ring1": "!bp_ae3638b2f8016f84d87122ae60d26937",
+      "m_Ring2": "!bp_254755ca73eb52a4d8ab1a663106659b",
+      "m_Wrist": null,
+      "m_Shoulders": "!bp_04dff7841c5f499478c91487d9bbdcef",
+      "m_QuickSlots": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "Strength": 44,
+    "Dexterity": 16,
+    "Constitution": 31,
+    "Intelligence": 30,
+    "Wisdom": 31,
+    "Charisma": 30,
+    "Speed": {
+      "m_Value": 60.0
+    },
+    "BaseAttackBonus": 0,
+    "Skills": {
+      "Acrobatics": 0,
+      "Physique": 0,
+      "Diplomacy": 0,
+      "Thievery": 0,
+      "LoreNature": 0,
+      "Perception": 0,
+      "Stealth": 0,
+      "UseMagicDevice": 0,
+      "LoreReligion": 0,
+      "KnowledgeWorld": 0,
+      "KnowledgeArcana": 0
+    },
+    "MaxHP": 0,
+    "m_AdditionalTemplates": [],
+    "m_AddFacts": [
+      "!bp_fca5ab160420a3e40a4f16abac08913b",
+      "!bp_59fea514ade4b474d8f6e8e618ff123e",
+      "!bp_a92acdf18049d784eaa8f2004f5d2304",
+      "!bp_205205053a2915d4782cf48dc0cc3c09",
+      "!bp_ec7f7dbe34726704b97c462ded1ef219",
+      "!bp_9ae23798a9284e044ad2716a772a410e",
+      "!bp_41d5e076fcea3fa4a9158ffded9185f7",
+      "!bp_8ac319e47057e2741b42229210eb43ed",
+      "!bp_377e770e0d2fab5469e7210a511ab71c",
+      "!bp_9c57e9674b4a4a2b9920f9fec47f7e6a",
+      "!bp_663e025a197d40c4abe1ae29b73c1d00"
+    ],
+    "IsCheater": false,
+    "IsFake": false,
+    "m_PS4ChunkId": "Chapter4",
+    "m_HasAssignedChunkId": true
+  },
+  "Meta": {
+    "ShadowDeleted": false
+  }
+}

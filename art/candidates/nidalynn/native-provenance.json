@@ -1,0 +1,13 @@
+{
+  "unit": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/MythicDragon_Ch5/NidalynnDragon.jbp",
+  "unit_id": "c966ef14763c5e649beab50af6e22972",
+  "portrait": "Units/Portraits/InitiativeBlueprintPortraits/Monsters/SilverDragon.jbp",
+  "portrait_id": "e5214b3c659a4cb39402f4b975e969f3",
+  "image_asset": "fed7e840191ce8f49919a127c5194fdd",
+  "path_id": -1830430167484338957,
+  "texture": "SilverDragon",
+  "dimensions": [
+    370,
+    484
+  ]
+}

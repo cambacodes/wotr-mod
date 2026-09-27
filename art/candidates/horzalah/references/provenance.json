@@ -1,0 +1,17 @@
+{
+  "unit_path": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/GreyborQ3/Horzalah.jbp",
+  "unit_guid": "38f0acf8ba7c3b64b87369d478014fda",
+  "portrait_path": "Units/PortraitsGenerated/9b0b37635183b1048b37f024fc92e97b_Nephilim.jbp",
+  "portrait_guid": "5cf92593747540e29b285b16d23cbf16",
+  "prefab": {
+    "AssetId": "9b0b37635183b1048b37f024fc92e97b"
+  },
+  "texture_id": "bb06b92c2653ed64f9c75e501d713b86",
+  "dimensions": [
+    184,
+    244
+  ],
+  "file_hash": "432d80fc95879ef8a26b711856bf0d0c6dcf6be3d5f548663bfa2d26796f86f4",
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "method": "UnityPy native original Texture2D decode without editing"
+}

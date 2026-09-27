@@ -32,7 +32,7 @@ It does not restore Trickster powers or her council office.
 The older letter paths retain the distinct fear and wonder responses.
 The already-returned and unrecorded paths discuss current visits without manufacturing a kept Abyss letter.
 The quiet ending supports closeness and continued conversation instead of treating a declined kiss as a failed relationship.
-The tactile romantic ending is mature and non-graphic.
+The tactile romantic ending is mature and graphic and explicit.
 No scene treats Free Love as a requirement to erase the character's preferences or another relationship's history.
 
 Some of Konomi's established correction-and-qualification cadence remains, especially in the discussion of invitations and usefulness.

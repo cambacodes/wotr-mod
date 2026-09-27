@@ -35,7 +35,7 @@ The explicit marriage conversation is a deliberate authored development around a
 Corven's existence as her husband is native evidence; her present uncertainty about his survival and wish to explore courtship are new writing.
 The handoff correctly distinguishes those categories.
 Friendship, delayed decision and voluntary closure are necessary choices here and receive their own dialogue.
-The kiss is brief, adult, non-graphic and selected through expressed interest rather than a skill result.
+The kiss is brief, adult, graphic and explicit and selected through expressed interest rather than a skill result.
 
 The Perception check has different direct observations for success and failure.
 Failure startles the animal and loses the chance to observe the initial mechanism; the patient alternative consumes more daylight and divides attention between the characters.

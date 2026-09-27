@@ -15,7 +15,7 @@ No character, art asset or in-game package is approved by this review.
 | --- | ---: | --- |
 | Writing and pacing | 88 | Strong individual exchanges, but repeated negotiations about permission, invitations and honest answers flatten the long middle. |
 | Native and parent characterization | 85 | Ambition and wit remain recognizable; default restraint and exceptionally articulate self-analysis become too universal across radically different histories. |
-| Mature, non-graphic romantic tension | 87 | Affection is credible, but several private encounters describe mutually agreeable intimacy in interchangeable language. |
+| Mature, graphic and explicit romantic tension | 87 | Affection is credible, but several private encounters describe mutually agreeable intimacy in interchangeable language. |
 | Mutual attraction, independent agency and nonexclusivity | 94 | Each woman can choose separately, their existing relationship remains theirs, and service is not silently renamed consent. |
 | Gameplay and consequential progression | 89 | The first investigation has a real cost and useful alternatives; later branching often changes commentary more than events. |
 | Conditional memory and earned outcomes | 86 | An unconditional claim about dead assassins contradicts supported parent histories, and two concrete scene-continuity errors remain. |

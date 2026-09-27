@@ -103,7 +103,7 @@ The final private evening offers her own form or a knowingly invented adult elve
 The deliberate shimmer remains visible; it is not presented as a concealed replacement identity.
 The desire scene explicitly imagines an arrival that has not occurred and contrasts it with the unmoved boundary of the frame.
 Quiet company remains available, including after initially expressing desire.
-The non-graphic attraction has a specific object in her expression, voice and willingness to be watched.
+The graphic and explicit attraction has a specific object in her expression, voice and willingness to be watched.
 It is not an automatic reward for choosing the public settlement or passing the check.
 
 The narrow remote contract is therefore respected in the inspected intimacy.

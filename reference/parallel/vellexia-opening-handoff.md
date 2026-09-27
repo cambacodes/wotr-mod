@@ -32,7 +32,7 @@ A real Commander-only Arcana DC28 check has success, failure and non-roll inquir
 The artist's repair or demonstration leads to a choice of retaining the work at an honestly described price or sending it back.
 The next encounter follows that disposition.
 A reciprocal portrait exercise leads to a private conversation and voluntary courting, slow exploration or company.
-The final chosen intimacy is non-graphic and records only authored opening history.
+The final chosen intimacy is graphic and explicit and records only authored opening history.
 Jerribeth's existing advice is conditionally recalled without duplicating it or making her a broker of affection.
 Vellexia retains her ancient, proud, dangerous and capricious characterization; this episode does not cure her boredom or free/erase her victims.
 

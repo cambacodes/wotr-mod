@@ -1,0 +1,29 @@
+[
+  {
+    "file": "cabin-invitation-v1.png",
+    "sha256": "7F493704D9427B5855076307CC66ADAA135AFF0EF12FD5BD9F394B1E2D530D4F",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "captain-on-deck-v1.png",
+    "sha256": "7EAA4DC3B9266671362BCDE70255A6EACF1D36DDA909E232A1DAA6180E7CA4FE",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "native-reference.png",
+    "sha256": "1962D46B40AA20400FD26FE88F5FA87278CA1B8381DF4F203781674CC4FDD4D0",
+    "dimensions": [
+      184,
+      244
+    ],
+    "status": "native research reference"
+  }
+]

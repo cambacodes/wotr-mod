@@ -39,7 +39,7 @@ Failure and the nonroll detour preserve the box but lead to a lesson held withou
 These are narrated costs, not implemented inventory, gold or injury changes.
 
 The private evening develops attraction through reciprocal touch, a troublesome fastener, laughter and a cramped bed.
-Its intimacy remains non-graphic, with separate choices for closeness and pace.
+Its intimacy remains graphic and explicit, with separate choices for closeness and pace.
 The friendship evening has jokes and pleasure unrelated to repairing the clan.
 Gesmerha's blindness remains consequential through described positions, touch and sound, without a cure or supernatural visual knowledge.
 The earlier campaign's paid Dera afternoons establish the previously delayed tools referred to by this contribution.

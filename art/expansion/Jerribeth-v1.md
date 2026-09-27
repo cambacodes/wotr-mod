@@ -23,4 +23,4 @@ Her head tilts slightly toward the viewer as if listening to an interesting repl
 Refine material detail and painterly finish while preserving the distinctive unsettling silhouette.
 Composition includes headroom for full horns and wings, enough margin for portrait crops, face readable near the upper third.
 No jewelry invented as a major identity marker, no decorative border, no text, no logos, no photoreal camera blur, no cute styling.
-This is a non-graphic character illustration for a mature romance story, with attraction conveyed through intelligent attention rather than exposed skin.
+This is a graphic and explicit character illustration for a mature romance story, with attraction conveyed through intelligent attention rather than exposed skin.

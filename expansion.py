@@ -28,6 +28,11 @@ from storylines import konomi_return_invitation
 from storylines import irabeth_return_invitation
 from storylines import minagho_chivarro_continuation
 from storylines import nocticula_continuation
+from storylines import nocticula_trickster_acquisition
+from storylines import nocticula_trickster_concession
+from storylines import nocticula_trickster_harbor_join
+from storylines import nocticula_acquired_harbor
+from storylines import nurah_continuation
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
 from storylines import gesmerha_campaign
@@ -254,7 +259,36 @@ def make_expansion(*, independent_tirabade=True):
     minagho_chivarro_continuation.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(minagho_chivarro_continuation.SCENES))
     nocticula_continuation.integrate(payload)
-    payload["Scenes"].extend(copy.deepcopy(nocticula_continuation.SCENES))
+    harbor = copy.deepcopy(nocticula_continuation.SCENES)
+    for scene in harbor:
+        scene["Forbids"].append("noct.join.harbor_variant_ready")
+    payload["Scenes"].extend(harbor)
+    payload["Scenes"].extend(copy.deepcopy(nocticula_acquired_harbor.SCENES))
+    payload["Relationships"]["nocticula"]["Description"] = nocticula_acquired_harbor.RELATIONSHIP["Description"]
+    payload["Relationships"]["nocticula"]["Guidance"] = (
+        "An existing dream relationship can lead to this undertaking after accepting Nocticula's Chapter 5 offer. "
+        "Rest in Drezen while she lives and her Profane Gift remains. "
+        "A Trickster who missed or refused that offer can instead earn a separate invitation through personal correspondence. "
+        + nocticula_acquired_harbor.RELATIONSHIP["Guidance"]
+    )
+    acquisition = nocticula_trickster_acquisition
+    payload["Relationships"]["nocticula.acquisition"] = copy.deepcopy(acquisition.RELATIONSHIP)
+    for key, bindings in (("Etudes", acquisition.ETUDES), ("CompletedEtudes", acquisition.COMPLETED_ETUDES),
+                          ("SeenCues", acquisition.SEEN_CUES), ("SelectedAnswers", acquisition.SELECTED_ANSWERS)):
+        for flag, binding in bindings.items():
+            if flag in payload[key] and payload[key][flag] != binding:
+                raise ValueError(f"Conflicting Nocticula binding: {flag}")
+            payload[key][flag] = copy.deepcopy(binding)
+    # The post-conflict draft has no verified lifecycle producer and is not deliverable yet.
+    payload["Scenes"].extend(copy.deepcopy([s for s in acquisition.SCENES if s["Id"] != "noct.acq.after_the_council"]))
+    payload["Scenes"].extend(copy.deepcopy(nocticula_trickster_concession.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(nocticula_trickster_harbor_join.SCENES))
+    nurah_continuation.integrate(payload)
+    nurah_scenes = copy.deepcopy(nurah_continuation.SCENES)
+    for scene in nurah_scenes:
+        if not scene.get("Remote", False):
+            scene["InteractionHub"] = "nurah.arrival"
+    payload["Scenes"].extend(nurah_scenes)
     payload["ParentEpilogueEdits"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_EDITS)
     payload["ParentEpilogueLossRules"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_LOSS_RULES)
     return payload

@@ -67,7 +67,7 @@ Vald and the second thief remain at large.
 
 The decision to tell Tessa that the three are lovers is separate from circulating the commercial denial.
 Keeping the relationship explanation private does not reduce warmth or block the shared evening.
-The final scene offers non-graphic shared intimacy, shared sleep without further intimacy, or a walk home and separate sleep.
+The final scene offers graphic and explicit shared intimacy, shared sleep without further intimacy, or a walk home and separate sleep.
 No choice writes another romance's flags or a ToyBox setting.
 
 ## Canon and authored material

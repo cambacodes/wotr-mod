@@ -1,0 +1,24 @@
+{
+  "archive": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip",
+  "method": "Exact blueprint bytes from installed archive; no texture extraction or visual inspection",
+  "sources": [
+    {
+      "archive_path": "Units/Monsters/RedDragon/IvorySanctum/RedDragon_Sanctum.jbp",
+      "asset_id": "b01da68dab56e004f952d7ad0e83cc46",
+      "local_file": "RedDragon_Sanctum.jbp",
+      "sha256": "81E4A566F315B1701637F77D64EFFC60F22FD4FA435A63E61DE0921686E077B3"
+    },
+    {
+      "archive_path": "Units/Monsters/BlackDragon/WoundWormsLair/WoundWormsLair_BlackDragon.jbp",
+      "asset_id": "c540d81c08822c14da75761493427e4c",
+      "local_file": "WoundWormsLair_BlackDragon.jbp",
+      "sha256": "D8175C375A6C1022C90CC407A23907BF5CA17A2D5AF7BE9E51EE9AF4CC6EC3FD"
+    },
+    {
+      "archive_path": "Units/Portraits/InitiativeBlueprintPortraits/Monsters/Woundwyrm.jbp",
+      "asset_id": "271d1a7d87784d37ae42961732ec3cc3",
+      "local_file": "Woundwyrm.jbp",
+      "sha256": "582DB197E0D3C914BFBAFF2E95BF32D4EA627870EA2ACDA64D9DFD661C82DFFB"
+    }
+  ]
+}

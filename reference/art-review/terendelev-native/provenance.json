@@ -1,0 +1,54 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "bundle_sha256": "96675554F6E7865D69530950486CDF42C1F28CC8C37DF473F855F123AEDC045D",
+  "method": "UnityPy native texture decode at original dimensions, without image editing; no prefab render",
+  "units": [
+    {
+      "label": "TerendelevHuman",
+      "unit_path": "Units/NPC/Unique/Act_0_Prologue/Prologue_Kenabres/TerendelevHuman.jbp",
+      "unit_id": "9e8401e7703907e4d94189d5992dd13e",
+      "unit_sha256": "48E65DB7D3BB02B04730C65CB17C3B93AD2D53155A6D9D5048D9224C69ECF807",
+      "prefab": {
+        "AssetId": "ec900f647b97f4643a9181bf609d3a89"
+      },
+      "portrait_path": "Units/PortraitsGenerated/ec900f647b97f4643a9181bf609d3a89_BCT_TerendelevHuman.jbp",
+      "portrait_id": "d9d0098309a546c6bd8fe825874e50ae",
+      "portrait_sha256": "386B86121C5F28655555EDBE1E4A894C5500A51F5308E83C6D71A41EAC891E03",
+      "images": [
+        {
+          "field": "m_PortraitImage",
+          "asset_id": "0d62c614533e9a6479c703446fad0b62",
+          "status": "decoded",
+          "file": "TerendelevHuman-m_PortraitImage.png",
+          "name": "ec900f647b97f4643a9181bf609d3a89_BCT_TerendelevHuman",
+          "path_id": -3273547608572213764,
+          "width": 184,
+          "height": 244,
+          "sha256": "32F9F2EF5C755B6A6A4DC07F438466E7C63B5588615B6F1A46FD42EAB16230F6"
+        },
+        {
+          "field": "m_HalfLengthImage",
+          "asset_id": "0d62c614533e9a6479c703446fad0b62",
+          "status": "decoded",
+          "file": "TerendelevHuman-m_HalfLengthImage.png",
+          "name": "ec900f647b97f4643a9181bf609d3a89_BCT_TerendelevHuman",
+          "path_id": -3273547608572213764,
+          "width": 184,
+          "height": 244,
+          "sha256": "32F9F2EF5C755B6A6A4DC07F438466E7C63B5588615B6F1A46FD42EAB16230F6"
+        },
+        {
+          "field": "m_FullLengthImage",
+          "asset_id": "0d62c614533e9a6479c703446fad0b62",
+          "status": "decoded",
+          "file": "TerendelevHuman-m_FullLengthImage.png",
+          "name": "ec900f647b97f4643a9181bf609d3a89_BCT_TerendelevHuman",
+          "path_id": -3273547608572213764,
+          "width": 184,
+          "height": 244,
+          "sha256": "32F9F2EF5C755B6A6A4DC07F438466E7C63B5588615B6F1A46FD42EAB16230F6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# Nenio humanized kitsune study
+
+Built-in imagegen, unassigned/unapproved.
+Native NenioFox_Portrait extracted and viewed, with human portrait as identity/costume reference.
+Humanized face is an intentional alternate design, not native muzzle fidelity or a romance milestone.
+Sorting stones is authored scholarly activity; no new physiology is asserted.
+
+## Exact prompt
+
+New painterly WotR character study of Nenio in an explicitly AUTHORED HUMANIZED KITSUNE FORM, clearly adult attractive woman about thirty, not a child or mascot. Native fox portrait supplies orange-russet fur, white cheeks/throat, black ear tips, sharp fox ears, huge fluffy orange tail with white tip and practical scholar outfit. Humanize the FACE into graceful adult human proportions with a short subtle foxlike nose, appealing human mouth and intelligent amber eyes, no long animal muzzle; keep russet fur framing temple/cheeks and small white cheek patches, fox ears and one substantial tail. Retain circular upper-arm marking, green embroidered asymmetric scholar vest, ochre scarf, loose blue patterned trousers, wraps and sandals, not gown or generic fox pinup. Distinct scholarly action: seated cross-legged on a stone bench, leaning forward to arrange three ordinary labeled-by-shape stone samples in a row, one finger paused over the wrong sample while she glances up with dry distracted irritation. No readable writing. Other hand steadies a worn open notebook; coherent shoulders/ribcage/pelvis and fingers. Fur localized and soft, broad exposed humanized face/skin smooth not gritty, cloth has matte weave, trousers compress naturally over bent knees, leather satchel on ground. Single tail emerges plausibly behind lower back around bench side with full tip visible; no multiple tails or foxlike child body. Entire ear tips plus twelve percent headroom, all hands and bench inside wide composition, daylight in quiet camp scholar corner, no romance/heat-cycle state implied. Attractive, recognizably Nenio, not Konomi. Fine painterly game style.

@@ -15,7 +15,8 @@ def load_parent_bindings(path):
     if actual.lower() != manifest["AssemblySha256"].lower():
         raise ValueError("Parent assembly differs from reviewed binding evidence")
     allowed = {"BlueprintEtude", "BlueprintCue", "BlueprintDialog", "BlueprintAnswer",
-               "BlueprintAnswersList", "BlueprintQuest", "BlueprintUnit", "BlueprintCueSequence", "BlueprintBookPage"}
+               "BlueprintAnswersList", "BlueprintQuest", "BlueprintUnit", "BlueprintCueSequence",
+               "BlueprintBookPage", "BlueprintQuestObjective", "BlueprintUnlockableFlag"}
     result = {}
     for item in manifest["Bindings"]:
         guid = item["Guid"]
@@ -25,7 +26,9 @@ def load_parent_bindings(path):
         if guid in result or not item["Source"].strip():
             raise ValueError("Duplicate or unattributed parent binding: " + guid)
         creator = kind.removeprefix("Blueprint") + "Configurator.New("
-        if guid not in item["Evidence"] or (kind not in item["Evidence"] and creator not in item["Evidence"]):
+        declaration = item.get("GuidDeclaration") or ""
+        if (guid not in item["Evidence"] and guid not in declaration) \
+                or (kind not in item["Evidence"] and creator not in item["Evidence"]):
             raise ValueError("Parent creation excerpt lacks the requested identity/type: " + guid)
         result[guid] = {"type": kind, "path": item["Source"],
                         "provenance": "reviewed-parent-source", "assembly_sha256": actual}

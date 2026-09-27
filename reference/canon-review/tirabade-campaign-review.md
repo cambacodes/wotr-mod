@@ -42,7 +42,7 @@ The joint return pays off the Commander's separate answer to Irabeth while conti
 The women kiss and attend to one another independently of the Commander.
 The Commander receives direct, chosen affection from each, including an optional Irabeth kiss and Anevia's private hand or waist contact.
 The final map scene preserves both women's desired destinations and includes the Commander's preference without replacing either wife.
-The intimate night is non-graphic; quiet company and leaving for another promise remain complete alternatives.
+The intimate night is graphic and explicit; quiet company and leaving for another promise remain complete alternatives.
 No answer purchases intimacy by arbitrating the marriage correctly, and no outcome punishes another relationship.
 
 ## Native characterization and authored adaptation

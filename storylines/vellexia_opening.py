@@ -30,7 +30,7 @@ SCENES = []
 
 def s(id, title, entry, nodes, requires=(), delay=0):
     for page in nodes:
-        page["Portrait"] = "Vellexia"
+        page["Portrait"] = page["Portrait"] or "Vellexia"
     SCENES.append(scene("vellexia." + id, title, "Vellexia", 4, entry, nodes,
         Relationship="vellexia", ContactUnit=UNIT, Chapters=[4], last=4,
         Areas=[AREA], AnswerLists=[ANSWER_LIST],
@@ -49,7 +49,7 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 {n}She studies you over the bracelet.{/n}
 "Would you like to be useful, or would that ruin your entrance?"''',
         c('"I would like to see what disappointed you."', "warning"),
-        c('"I would rather return when I have time to disappoint you properly."', abort=True)),
+        c('"I would rather return when I have time to disappoint you properly."', abort=True), portrait="VellexiaManorSpeaker"),
     n("warning", "Narrator", '''{n}She puts the bracelet down beside the picture. The movement is unhurried. A small space on the table has already been cleared for your hands.{/n}''',
         c('"Jerribeth warned me that pleasing you yesterday might not help today."', "jerribeth", requires=("vellexia.introduced",)),
         c('"What exactly did the artist promise?"', "terms", forbids=("vellexia.introduced",))),
@@ -60,7 +60,7 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 "Her advice is hers to give. She has not offered you to me, and I have not commissioned her to arrange your gratitude. Do remember that if you are tempted to blame her for enjoying yourself."
 "I can answer for myself."
 "A claim worth testing. Let us begin with something small enough to survive the test."
-{n}She rests one finger on the back of the frame.{/n}''', c('"Tell me about the promise."', "terms")),
+{n}She rests one finger on the back of the frame.{/n}''', c('"Tell me about the promise."', "terms"), portrait="VellexiaManorSpeaker"),
     n("terms", "Vellexia", '''"He said it would surprise me. I asked whether he meant once or whenever I looked. He said whenever. Such a lovely, ruinous word."
 "And you paid him?"
 "Half. The rest depends on my satisfaction. He also insisted the workings were his secret. I agreed to leave them alone until he returned."
@@ -69,17 +69,18 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 "I want to discover whether you would. But no. Today I want you to look. You have had fewer centuries to practice being disappointed. Perhaps you will notice what I am overlooking."
 "What happens to him if I don't?"
 "He will leave without the second half of his fee. I have other uses for my temper. If he is wise, he will not try to collect those instead."
-{n}She turns the frame toward you.{/n}''', c('[Examine the picture without opening the frame.]', "picture")),
+{n}She turns the frame toward you.{/n}''', c('[Examine the picture without opening the frame.]', "picture"), portrait="VellexiaManorSpeaker"),
     n("picture", "Narrator", '''{n}Vellexia's painted likeness stands in a room you do not recognize. Her dress is white; one sleeve has slipped to the elbow. The expression is so openly pleased that for a moment the portrait seems more intimate than a naked figure would have been.{/n}
 {n}Then you notice the room. Its window shows a sky that could belong to Golarion. The table holds a cup with a chipped rim. Nothing in it is magnificent enough for the woman standing there.{/n}
 "Well?" asks the actual Vellexia.
 "The room is very ordinary."
-"To you, perhaps. To me it resembles an industrious attempt at an insult."
-{n}You look back. The cup is whole. The sky has darkened. The woman now wears an expression of faint impatience.{/n}
+"To you, perhaps. To me it resembles an industrious attempt at an insult."''',
+        c('[Look back at the picture.]', "picture_changed"), portrait="VellexiaPaintingDay"),
+    n("picture_changed", "Narrator", '''{n}You look back. The cup is whole. The sky has darkened. The woman now wears an expression of faint impatience.{/n}
 "It changed."
 "Yes. It is very good at agreeing that something ought to change. I am less convinced it knows what."''',
         c('"It may be showing what the person looking expects to see."', "expectation"),
-        c('"Then make a wager with me. Let us find something it cannot flatter."', "wager")),
+        c('"Then make a wager with me. Let us find something it cannot flatter."', "wager"), portrait="VellexiaPaintingChanged"),
     n("expectation", "Vellexia", '''"Then it has made the same mistake as half the people who visit me. It has confused attention with service."
 "You asked it for a surprise."
 "I did. It has offered me my own impatience in a new dress. I already have mirrors, darling. Excellent ones."
@@ -90,7 +91,7 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 "You may be worth an afternoon. He is waiting nearby. Give me a moment to ask what he thinks he has sold me, then join me by the picture."
 "Will he have a chance to answer?"
 "A generous one. I want to hear him invent the explanation."
-{n}She turns the picture away before it can imitate her smile.{/n}''', c('"I will return to hear it too."', flags=("vellexia.gallery_invited", "vellexia.noticed_expectation"))),
+{n}She turns the picture away before it can imitate her smile.{/n}''', c('"I will return to hear it too."', flags=("vellexia.gallery_invited", "vellexia.noticed_expectation")), portrait="VellexiaManorSpeaker"),
     n("wager", "Vellexia", '''"You offer to defeat a picture. How refreshing. Most warriors require a larger audience."
 "You would be the audience."
 "Flattery already? We have barely begun."
@@ -101,7 +102,7 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 "That is my wager."
 {n}Her gaze holds yours long enough for the smile to become a decision.{/n}
 "Accepted. I shall ask the artist to explain his triumph. He is waiting nearby. Join me again when he has finished, if I have not ceased believing he has one."
-{n}She turns the picture toward the wall.{/n}''', c('"Leave the back closed until we can examine it together."', flags=("vellexia.gallery_invited", "vellexia.question_wager"))),
+{n}She turns the picture toward the wall.{/n}''', c('"Leave the back closed until we can examine it together."', flags=("vellexia.gallery_invited", "vellexia.question_wager")), portrait="VellexiaManorSpeaker"),
 ], delay=0)
 
 

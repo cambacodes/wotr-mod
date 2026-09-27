@@ -42,7 +42,7 @@ The completed endings retain their actual final-visit prerequisites.
 | --- | ---: | --- |
 | Prose | 91 | The wet stocking, awkward loan discussion, stone lesson and private room give conversations actions and changing subjects; the revised endings describe what she does. |
 | Native characterization | 93 | Her Abadaran civic interest, practical commerce, confidence in her attractiveness and history of leaving successful settlements shape the disagreement and decision to remain. |
-| Adult romance | 93 | Commitment, open affection, holding, kissing and the non-graphic overnight visit are reciprocal and distinct; continued slow courtship and friendship remain substantial. |
+| Adult romance | 93 | Commitment, open affection, holding, kissing and the graphic and explicit overnight visit are reciprocal and distinct; continued slow courtship and friendship remain substantial. |
 | Choices and consequences | 92 | Inspection, loan versus staged repair, her response to criticism, and personal commitments have different later accounts. |
 | Continuity | 93 | The corrected sale and debtor references are established on their actual paths; early farewells are optional, and Chapter 5 acquisition does not manufacture one. |
 | Contribution depth | 92 | The repair develops through investigation, disagreement, work and consequence before the private decision and later appointment question. |

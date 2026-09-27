@@ -83,7 +83,7 @@ An uncommitted Kiana arranges a particular evening without presenting it as a po
 | `follow_guest_role` / `follow_listens` | The Commander reads the guest or listens while Edris reads that role. |
 | `follow_heard_readers` / `follow_asked_readers` | Kiana hears an unsolicited interpretation or identifies the particular line that prompted the response. |
 | `follow_quiet_desk` / `follow_shared_room` | She rents quiet working hours and copies slowly herself, or pays Meral for copies and works amid useful but disruptive company. |
-| `follow_ink_kiss` / `follow_ink_walk` | A non-graphic private evening or an actual market walk for cakes. |
+| `follow_ink_kiss` / `follow_ink_walk` | A graphic and explicit private evening or an actual market walk for cakes. |
 | `follow_waited_page` / `follow_stopped_page` | The Commander fetches supper while she finishes the page, or Kiana puts it aside and serves the food she has ready. |
 | `follow_market_morning` / `follow_music_wish` | Different explicit future discovery wishes, not falsely completed outings. |
 | `follow_last_kiss` / `follow_last_quiet` | An extended kiss or quiet company before the evening ends. |
@@ -172,7 +172,7 @@ The direct walk does not model rest queues, native state changing during an even
 
 Independent writing, canon, art and integration reviewers must assess the actual frozen content, targeting above 90 in each required discipline without a promised result.
 No artwork is supplied by this module.
-The restrained intimacy is adult, voluntary and non-graphic; other relationships are neither reset nor checked for exclusivity.
+The restrained intimacy is adult, voluntary and graphic and explicit; other relationships are neither reset nor checked for exclusivity.
 Neither ToyBox setting is read or changed.
 That limited implementation fact is not a runtime compatibility certification.
 Full-route amount, meaningful attainable depth, endpoint coherence, native access, Trickster recovery, additional discovery gameplay and game/save verification remain unfinished.

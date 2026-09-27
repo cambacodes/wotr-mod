@@ -66,7 +66,7 @@ The change does not make forgiveness automatic or remove the refusal branches.
 | Recognizable characterization and honest canon distinction | 92 |
 | Distinct, enacted attraction and motives | 93 |
 | Prose and local pacing | 93 |
-| Mature non-graphic romantic tension | 94 |
+| Mature graphic and explicit romantic tension | 94 |
 | Independent choices and morally complicated consequences | 94 |
 | Response continuity | 88 |
 | Structural preservation | 100 |

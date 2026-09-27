@@ -31,7 +31,7 @@ Sella, Rovan, Neris, Deren and these events are authored fiction, not claimed na
 The retained-artifact and relinquished-artifact branches do not assume the same ongoing dream access.
 The flight memory requires actual alternate Azata finale cues and describes dream wings.
 The Reverie exchange requires the existing parent partnership and retained-artifact history, while excluding relinquishment history.
-The private evening offers adult non-graphic intimacy, a shorter kiss and quiet companionship.
+The private evening offers adult graphic and explicit intimacy, a shorter kiss and quiet companionship.
 
 The frequent automatically supplied Commander replies merit attention in the assembled review: some exchanges dictate humor, apologies or preferences rather than letting the player select them.
 This is an editorial observation, not a new requirement to turn every line into a menu.

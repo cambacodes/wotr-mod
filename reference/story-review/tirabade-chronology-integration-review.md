@@ -19,7 +19,7 @@ The shared closing page works both for first intimacy and established partners, 
 The loss ending no longer dismisses extensive played household development as a barely imagined future.
 
 The short domestic exchange preserves Anevia's practical wit and Irabeth's affection without using the wives as interchangeable speakers.
-Intimacy remains adult, voluntary and non-graphic.
+Intimacy remains adult, voluntary and graphic and explicit.
 Bounded editorial scores are 92 for continuity, 91 for dialogue and characterization, and 92 for romantic continuity.
 These assess the repair only; the assembled route's independent-romance, optional-triad and Trickster-recovery gaps remain unresolved.
 

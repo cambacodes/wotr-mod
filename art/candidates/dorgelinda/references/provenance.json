@@ -1,0 +1,17 @@
+{
+  "unit_path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Logistics.jbp",
+  "unit_guid": "8692bff6041c47a0b13158d5977f291b",
+  "portrait_path": "Units/PortraitsGenerated/d7d34a2cbeb4c6841905e87c51d04847_BCT_Rand_Crusader_Soldier.jbp",
+  "portrait_guid": "7929611eb7f84fd583ed8befc53de0e8",
+  "prefab": {
+    "AssetId": "df5bb2c064ebaa84f86c8625b760daf1"
+  },
+  "texture_id": "5d51770a9a755bc44a0082c041d46b61",
+  "dimensions": [
+    184,
+    244
+  ],
+  "file_hash": "b9b1f8d331d168012cfac7e531c81d070cc1ff4b05696498c2fbeafd5d894d40",
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "method": "UnityPy native original Texture2D decode without editing"
+}

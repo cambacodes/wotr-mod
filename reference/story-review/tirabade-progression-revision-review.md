@@ -45,7 +45,7 @@ Requirements, delays, state writes, next nodes, abort behavior and other metadat
 | Character voice within the earned authored development | 93 |
 | Continuity across the required branches | 96 |
 | Prose and local pacing | 93 |
-| Adult non-graphic romantic tension | 93 |
+| Adult graphic and explicit romantic tension | 93 |
 | Mutual attraction and independent desire | 94 |
 | Clarity of the existing progression decisions | 95 |
 

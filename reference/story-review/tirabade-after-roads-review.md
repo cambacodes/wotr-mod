@@ -70,7 +70,7 @@ The choice to name the relationship to Tessa or keep it private has a specific l
 Neither answer is treated as shame, betrayal or insufficient commitment.
 The sleeping options allow shared intimacy, affectionate sleep or a walk back to separate beds.
 All complete the evening without a jealousy penalty.
-The intimate passage is adult and non-graphic, with the wives' mutual attraction still present when the Commander joins them.
+The intimate passage is adult and graphic and explicit, with the wives' mutual attraction still present when the Commander joins them.
 
 The branch selecting hand-holding instead of initial kisses still leads to affectionate dialogue.
 That choice moderates the immediate action; it is not presented as a permanent rejection of all romantic touch.

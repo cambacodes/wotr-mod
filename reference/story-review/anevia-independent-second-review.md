@@ -60,7 +60,7 @@ The changed confrontation with Cale restores some of Anevia's sharper practical 
 She admits selling information herself and attacks the actual deception and harm, rather than becoming an interchangeable lecturer about proper behavior.
 The new ending details, including the misplaced goat and the note repeatedly begun, give actions the work previously assigned to comments about what the ending should award.
 
-The ordinary campaign already contained real investigative choices, consequences, playfulness and non-graphic intimacy.
+The ordinary campaign already contained real investigative choices, consequences, playfulness and graphic and explicit intimacy.
 Those strengths survive the edits.
 It remains somewhat fond of explaining expectations and invitations, but the worst repeated narrator instructions have been removed, and the revised concrete scenes provide sufficient character and momentum.
 A further wholesale expansion or rewrite is not needed to repair this manuscript.

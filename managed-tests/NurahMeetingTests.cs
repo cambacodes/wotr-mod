@@ -37,6 +37,91 @@ internal static class NurahMeetingTests
     }
     private static T Bare<T>() => (T)FormatterServices.GetUninitializedObject(typeof(T));
 
+    internal static Dictionary<string, string> NativeBlueprintBindings()
+    {
+        var service = typeof(Tirabade.Main).Assembly.GetType("Tirabade.NurahMeeting", true)!;
+        string Constant(string name) => (string)service.GetField(name, Members)!.GetRawConstantValue()!;
+        var result = new Dictionary<string, string>
+        {
+            [Constant("Hidden")] = "BlueprintEtude",
+            [Constant("HiddenParent")] = "BlueprintEtude",
+            [Constant("Group")] = "BlueprintEtudeConflictingGroup",
+            [Constant("CapitalKtc")] = "BlueprintEtudeConflictingGroup",
+            [Constant("Capital")] = "BlueprintArea",
+            [Constant("VisitorCommand")] = "CommandAction",
+            [Constant("Romance")] = "BlueprintEtude",
+            [Constant("Prison")] = "BlueprintEtude",
+            [Constant("Finale")] = "BlueprintCue"
+        };
+        foreach (string id in (string[])service.GetField("Deaths", Members)!.GetValue(null)!) result[id] = "BlueprintEtude";
+        foreach (string id in (string[])service.GetField("Personalities", Members)!.GetValue(null)!) result[id] = "BlueprintEtude";
+        return result;
+    }
+
+    // Detached fixtures preserve the native placement shape needed by the production constructor.
+    internal static void PrepareNativePlacement()
+    {
+        var service = typeof(Tirabade.Main).Assembly.GetType("Tirabade.NurahMeeting", true)!;
+        string Constant(string name) => (string)service.GetField(name, Members)!.GetRawConstantValue()!;
+        T Seed<T>(string id) where T : SimpleBlueprint, new()
+        {
+            var guid = BlueprintGuid.Parse(id);
+            var existing = ResourcesLibrary.TryGetBlueprint(guid);
+            if (existing != null) return (T)existing;
+            var blueprint = new T { AssetGuid = guid, name = "NurahMeetingFixture_" + id };
+            ResourcesLibrary.BlueprintsCache.AddCachedBlueprint(guid, blueprint);
+            return blueprint;
+        }
+        T Reference<T>(SimpleBlueprint blueprint) where T : BlueprintReferenceBase, new()
+        {
+            var value = new T();
+            Set(value, "deserializedGuid", blueprint.AssetGuid);
+            Set(value, "<Cached>k__BackingField", blueprint);
+            return value;
+        }
+        EntityReference Entity(string id) => new EntityReference { UniqueId = id, SceneAssetGuid = Constant("SceneAsset") };
+
+        var group = Seed<BlueprintEtudeConflictingGroup>(Constant("Group"));
+        Seed<BlueprintEtudeConflictingGroup>(Constant("CapitalKtc"));
+        Seed<BlueprintArea>(Constant("Capital"));
+        var parent = Seed<BlueprintEtude>(Constant("HiddenParent"));
+        var hidden = Seed<BlueprintEtude>(Constant("Hidden"));
+        if (hidden.ComponentsArray.OfType<EtudePlayTrigger>().Any()) return;
+
+        var deathId = ((string[])service.GetField("Deaths", Members)!.GetValue(null)!)[0];
+        var death = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(deathId)) as BlueprintEtude
+            ?? throw new InvalidOperationException("Nurah hidden-fixture death etude was not seeded from the reviewed story bindings.");
+        hidden.Priority = -100;
+        hidden.ActivationCondition = new ConditionsChecker { Conditions = Array.Empty<Condition>() };
+        hidden.CompletionCondition = new ConditionsChecker { Conditions = Array.Empty<Condition>() };
+        Set(hidden, "m_Parent", Reference<BlueprintEtudeReference>(parent));
+        Set(hidden, "m_ConflictingGroups", new List<BlueprintEtudeConflictingGroupReference>
+            { Reference<BlueprintEtudeConflictingGroupReference>(group) });
+        var deathCondition = new EtudeStatus { Playing = true };
+        Set(deathCondition, "m_Etude", Reference<BlueprintEtudeReference>(death));
+        var trigger = new EtudePlayTrigger
+        {
+            Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = new Condition[]
+            {
+                new OrAndLogic { Not = true, ConditionsChecker = new ConditionsChecker
+                { Operation = Operation.Or, Conditions = new Condition[] { deathCondition } } }
+            } },
+            Actions = new ActionList { Actions = new GameAction[]
+            {
+                new HideUnit { Target = new UnitFromSpawner { Spawner = Entity(Constant("Spawner")) }, Unhide = false }
+            } }
+        };
+        hidden.ComponentsArray = new BlueprintComponent[] { trigger };
+
+        var show = new HideUnit { Target = new NamedParameterUnit { Parameter = "Unit" }, Unhide = true };
+        var move = new TranslocateUnit { Unit = new NamedParameterUnit { Parameter = "Unit" },
+            translocatePosition = Entity(Constant("Locator")) };
+        Set(move, "m_CopyRotation", true);
+        var command = Seed<CommandAction>(Constant("VisitorCommand"));
+        command.EntryCondition = new ConditionsChecker { Conditions = Array.Empty<Condition>() };
+        command.Action = new ActionList { Actions = new GameAction[] { show, move } };
+    }
+
     internal static void Run(Action<bool, string> check)
     {
         var service = typeof(Tirabade.Main).Assembly.GetType("Tirabade.NurahMeeting", true)!;

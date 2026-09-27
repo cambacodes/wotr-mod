@@ -150,7 +150,7 @@ All scene entry predicates, delivery contracts, source bindings, parent flags, a
 
 ## Hard limits
 
-All intimate participants are adults and intimacy is non-graphic.
+All intimate participants are adults and intimacy is graphic and explicit.
 Other lovers remain compatible; ideological disagreement and operational risk are not erased by that compatibility.
 No new triad is assumed from the parent's jokes or ending rumors.
 No native quest, settlement, economy, companion, or inventory effect is fulfilled merely by describing one.

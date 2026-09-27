@@ -24,7 +24,7 @@ She can also admit that she chose a reception and professional introductions ins
 The Commander may admit an unfair wish to have been missed constantly; she does not offer to have been more miserable to reassure them.
 Her ambitions and irritation survive the affectionate response.
 The later kiss is offered and chosen, with a quiet conversation available instead.
-Intimacy is adult and non-graphic.
+Intimacy is adult and graphic and explicit.
 
 Current Legend receives a specific response about giving up the power that first opened postal access.
 Konomi acknowledges that power had uses she valued, then distinguishes their continuing practical arrangements from a vanished or unreliable magical door.

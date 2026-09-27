@@ -1,0 +1,13 @@
+{
+  "unit": "Units/NPC/Unique/Act_4_MidnightIsles/Colyphir/Hepzamirah.jbp",
+  "unit_id": "bd2a925967b5f5f489f6da0b03236d03",
+  "portrait": "Units/PortraitsGenerated/9b0b37635183b1048b37f024fc92e97b_Nephilim.jbp",
+  "portrait_id": "5cf92593747540e29b285b16d23cbf16",
+  "image_asset": "bb06b92c2653ed64f9c75e501d713b86",
+  "path_id": 6343702868591713870,
+  "texture": "9b0b37635183b1048b37f024fc92e97b_Nephilim",
+  "dimensions": [
+    184,
+    244
+  ]
+}

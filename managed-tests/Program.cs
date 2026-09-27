@@ -73,6 +73,15 @@ internal static class Program
     private static string[] NativeReferences(JObject data, string field) =>
         ((JArray?)data[field] ?? new JArray()).Select(value => ((string)value!).Replace("!bp_", "")).ToArray();
 
+    private static void SeedNativeFields(SimpleBlueprint target, JObject data, params string[] names)
+    {
+        foreach (string name in names)
+        {
+            var field = target.GetType().GetField(name)!;
+            field.SetValue(target, data[name]!.ToObject(field.FieldType));
+        }
+    }
+
     private static string Hash(string path)
     {
         using (var sha = SHA256.Create())
@@ -94,6 +103,8 @@ internal static class Program
         KonomiMeetingTests.Run(Check);
         IrabethMeetingTests.Run(Check);
         NurahMeetingTests.Run(Check);
+        NurahInteractionTests.Run(Check);
+        NurahHubTests.Run(story, Check);
         var savedSettings = typeof(Kingmaker.Player).GetMember("SettingsList").Single();
         Check(savedSettings.GetCustomAttributes(typeof(JsonPropertyAttribute), true).Length == 1,
             "Player checkpoint container is not included in native JSON serialization");
@@ -107,9 +118,14 @@ internal static class Program
             && restoredCheckpoint.SceneId == checkpoint.SceneId && restoredCheckpoint.ChoiceJson == checkpoint.ChoiceJson,
             "Native Newtonsoft JSON checkpoint encoding lost recovery identity or action");
         var targetIds = story.Scenes.SelectMany(Rules.EntryTargets).Distinct().ToArray();
+        var nativeReturnIds = story.Scenes.Where(s => s.NativeReturnCue != null).Select(s => s.NativeReturnCue!).Distinct().ToArray();
         var sequenceIds = new[] { "ed4baeaf69394754902344f0598d7e5a", "ced82f299d246f448b48afa0b630dd70" };
         var unitIds = story.Revivals.Values.Select(r => r.Unit).Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits))).Distinct().ToArray();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds));
+        var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys));
+        foreach (var binding in nurahNativeBindings)
+            Check(((string)native[binding.Key]["$type"]!).EndsWith(", " + binding.Value, StringComparison.Ordinal),
+                "Nurah native binding has the wrong archive type: " + binding.Key);
         // RanRomance creates the first sequence; it is absent from the base-game archive.
         // Sentinels verify preservation without pretending to execute the parent mod.
         native[sequenceIds[0]] = new JObject
@@ -123,6 +139,8 @@ internal static class Program
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintAnswersList", StringComparison.Ordinal), "Wrong native target type: " + guid);
             var list = Seed<BlueprintAnswersList>(guid);
+            if (nativeReturnIds.Any(id => NativeReferences(native[id], "Answers").Contains(guid)))
+                SeedNativeFields(list, native[guid], "ShowOnce", "Conditions", "MythicRequirement", "AlignmentRequirement");
             foreach (string answer in NativeReferences(native[guid], "Answers")) list.Answers.Add(Reference<BlueprintAnswerBaseReference>(answer));
             answerLists.Add(guid, list);
             originalAnswers.Add(guid, list.Answers.ToArray());
@@ -152,6 +170,24 @@ internal static class Program
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintCue", StringComparison.Ordinal), "Wrong native seen-cue type: " + guid);
             Seed<BlueprintCue>(guid);
+        }
+        foreach (string guid in nativeReturnIds)
+        {
+            var data = native[guid];
+            Check(((string)data["$type"]!).EndsWith(", BlueprintCue", StringComparison.Ordinal), "Wrong native return-cue type: " + guid);
+            // Preserve archive fields used by BuildScene's safety guard and native speaker selection.
+            // This graph fixture does not execute Unity's camera or dialogue controller.
+            var cue = Seed<BlueprintCue>(guid);
+            cue.ShowOnce = (bool)data["ShowOnce"]!;
+            cue.ShowOnceCurrentDialog = (bool)data["ShowOnceCurrentDialog"]!;
+            cue.Conditions = data["Conditions"]!.ToObject<Kingmaker.ElementsSystem.ConditionsChecker>()!;
+            cue.OnShow = data["OnShow"]!.ToObject<Kingmaker.ElementsSystem.ActionList>()!;
+            cue.OnStop = data["OnStop"]!.ToObject<Kingmaker.ElementsSystem.ActionList>()!;
+            cue.Speaker = data["Speaker"]!.ToObject<Kingmaker.DialogSystem.DialogSpeaker>()!;
+            SeedNativeFields(cue, data, "Experience", "AlignmentShift");
+            cue.Continue = data["Continue"]!.ToObject<Kingmaker.DialogSystem.CueSelection>()!;
+            cue.Answers.Clear();
+            cue.Answers.AddRange(NativeReferences(data, "Answers").Select(Reference<BlueprintAnswerBaseReference>));
         }
         foreach (string guid in story.CompletedQuests.Values.Distinct())
         {
@@ -191,13 +227,42 @@ internal static class Program
             expandedEpilogue.Cues.AddRange(expandedOriginal);
         }
         var entry = new UnityModManager.ModEntry(new UnityModManager.ModInfo { Id = "ManagedBuildTests", Version = "1.0.0", ManagerVersion = "0.27.11" }, modDirectory);
+        string? invalidReturnKind = Environment.GetEnvironmentVariable("RRT_TEST_NATIVE_RETURN");
+        bool invalidNativeReturn = !string.IsNullOrEmpty(invalidReturnKind);
+        if (invalidNativeReturn)
+        {
+            Check(nativeReturnIds.Length > 0, "Native return rejection test needs an inline scene.");
+            var unsafeCue = Seed<BlueprintCue>(nativeReturnIds[0]);
+            switch (invalidReturnKind)
+            {
+                case "show-once": unsafeCue.ShowOnceCurrentDialog = true; break;
+                case "list-show-once": ((BlueprintAnswersList)unsafeCue.Answers.Single().Get()).ShowOnce = true; break;
+                case "experience": unsafeCue.Experience = (Kingmaker.DialogSystem.DialogExperience)1; break;
+                case "alignment": unsafeCue.AlignmentShift.Value = 1; break;
+                case "extra-list": unsafeCue.Answers.Add(unsafeCue.Answers.Single()); break;
+                default: throw new InvalidOperationException("Unknown native return rejection fixture: " + invalidReturnKind);
+            }
+        }
         Type main = typeof(Tirabade.Main);
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
         main.GetField("story", PrivateStatic)!.SetValue(null, story);
         MethodInfo build = main.GetMethod("Build", PrivateStatic)!;
         KonomiMeetingIntegrationTests.PrepareNativePlacement();
         IrabethMeetingIntegrationTests.PrepareNativePlacement();
+        NurahMeetingTests.PrepareNativePlacement();
         build.Invoke(null, null);
+        if (invalidNativeReturn)
+        {
+            Check(!(bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Unsafe native return initialized the addon.");
+            Check(((string?)main.GetField("error", PrivateStatic)!.GetValue(null))?.Contains("Native audience return must reopen") == true,
+                "Unsafe native return did not fail its preflight.");
+            Check(((List<SimpleBlueprint>)main.GetField("registered", PrivateStatic)!.GetValue(null)!).Count == 0,
+                "Unsafe native return created addon blueprints before failing.");
+            Check(sequences.All(pair => pair.Value.Cues.SequenceEqual(originalCues[pair.Key])), "Failed return preflight changed native sequences.");
+            Check(answerLists.All(pair => pair.Value.Answers.SequenceEqual(originalAnswers[pair.Key])), "Failed return preflight changed native answers.");
+            Console.WriteLine($"PASS: {checks} assertions; unsafe native return rejected before mutation.");
+            return 0;
+        }
         if (invalidExpandedEpilogue)
         {
             Check(!(bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Invalid optional epilogue initialized the addon.");
@@ -212,8 +277,10 @@ internal static class Program
         }
         KonomiMeetingIntegrationTests.Run(Check);
         IrabethMeetingIntegrationTests.Run(Check);
+        NurahHubIntegrationTests.Run(story, Check);
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
+        NativeAudienceTests.Run(story, Check);
         if (hasParentEndingRules) ParentEndingIntegrationTests.Run(story, Check);
         EndingDeliveryTests.Run(story, Id, Check);
         if (expandedEpilogue != null)
@@ -295,7 +362,7 @@ internal static class Program
             Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Native epilogue references changed: " + pair.Key);
             Check(pair.Value.Cues.Take(originalCues[pair.Key].Length).SequenceEqual(originalCues[pair.Key]), "Native epilogue reference instances replaced");
         }
-        foreach (var scene in story.Scenes)
+        foreach (var scene in story.Scenes.Where(s => s.NativeReturnCue == null))
         {
             var dialog = ResourcesLibrary.TryGetBlueprint(Id("dialog." + scene.Id)) as BlueprintDialog;
             Check(dialog != null, "Missing dialog: " + scene.Id);

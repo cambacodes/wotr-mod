@@ -1,0 +1,29 @@
+[
+  {
+    "file": "authored-humanoid-negotiator-v1.png",
+    "sha256": "3F9634FC678D8B41524DDC6F058C33FFA166434D7E72B76A5E3E86600FE00FAB",
+    "dimensions": [
+      1096,
+      1435
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "native-reference.png",
+    "sha256": "1D51EC9D430743DA1E6EE4CC9F7139EA11CBBC684CCB558AF0C2BBE92EEDA9FB",
+    "dimensions": [
+      370,
+      484
+    ],
+    "status": "native research reference"
+  },
+  {
+    "file": "umbral-dragon-portrait-v1.png",
+    "sha256": "5F965B76F9BA65CDFE1A19F8F1E2AE5E35114E084A55AB1E2EDFF40E455251F9",
+    "dimensions": [
+      1096,
+      1435
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

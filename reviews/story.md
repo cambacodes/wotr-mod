@@ -50,7 +50,7 @@ Anevia wants to keep a promise to a friend while Irabeth wants the rare uninterr
 The Commander wants to accompany one woman on a risky errand while the other believes that turns private affection into visible favoritism.
 A worthwhile branch lets someone be disappointed without making the player a villain or immediately closing the romance.
 
-The existing private nights are non-graphic and affectionate.
+The existing private nights are graphic and explicit and affectionate.
 They are differentiated in speech, but both follow a similar pause, kiss, darkness, and reflective aftermath sequence.
 New scenes should vary who initiates, who makes the other laugh, what interruption occurs, and what small trace remains the next morning.
 Romantic tension can come from a wager, choosing a partner for a dance, an almost-private remark at a public event, or a reunion that starts with an argument.
@@ -67,7 +67,7 @@ An automated repetition scan is supporting evidence, never an art or writing jud
 | --- | ---: | --- |
 | Character voice and canon fidelity | 30 | Distinct speech, retained convictions and relationships, canon references, appearance and species consistency |
 | Adult emotional complexity | 20 | Conflicting wants, earned attachment, believable reactions to affairs and power, women retaining goals outside romance |
-| Romantic tension | 15 | Specific chemistry, initiative from both sides, anticipation and non-graphic intimacy that changes with the relationship |
+| Romantic tension | 15 | Specific chemistry, initiative from both sides, anticipation and graphic and explicit intimacy that changes with the relationship |
 | Branching and consequences | 20 | At least two substantially different outcomes, remembered choices, meaningful links, credible all-path continuation |
 | Prose and pacing | 15 | Varied scene activity, economical narration, differentiated exchanges, enough ordinary pleasure between crises |
 
@@ -813,7 +813,7 @@ A reader should encounter the couple's humor, not repeatedly receive assurances 
 `letter/alone`, `disagreement/frank`, `power/limits`, and parts of `return/talk` repeat the distinction between affection and agreement in polished language.
 Keep the initial agreement and let later events test it.
 A second kiss after an argument, an invitation she almost withdraws, or her choosing to introduce the Commander publicly after the leak would carry adult tension through action.
-The current private night is affectionate and non-graphic, but after it the romance spends much more time explaining its principles than showing renewed desire.
+The current private night is affectionate and graphic and explicit, but after it the romance spends much more time explaining its principles than showing renewed desire.
 More explicit sexual detail is unnecessary.
 The missing element is changed chemistry after conflict.
 
@@ -995,7 +995,7 @@ That is a good continuation of the opening's actual behavior.
 `door/wanted` permits other lovers while asking whether a specific promise would make tonight dishonest.
 It does not introduce a romance-count or gender restriction.
 `door/wait` allows postponement without treating the player as a failed partner.
-`door/night` keeps the physical scene non-graphic while retaining Seelah's initiative and humor.
+`door/night` keeps the physical scene graphic and explicit while retaining Seelah's initiative and humor.
 The lamp callback is personal and economical.
 
 `watch/tell` gives the Abyss a specific moral pressure through a polite negotiation over a person.
@@ -1293,7 +1293,7 @@ The shared artwork provides a route-specific form of intimacy.
 Keep that distinction from Konomi's letters and Seelah's camp routines.
 
 `evening/private` currently substitutes a narrator statement about a very private conversation for the conversation itself.
-The mode can remain non-graphic while including one direct exchange that changes their closeness.
+The mode can remain graphic and explicit while including one direct exchange that changes their closeness.
 She might admit which part of preparing the image she worried over, or ask the Commander to look at her actual form for a moment before ending the projection.
 The desired intensity comes from who chooses to be seen and what that costs, not explicit anatomy.
 
@@ -1387,7 +1387,7 @@ Let that behavior carry some of the confession.
 The bird illusion and her irritation are better specific anchors.
 Keep them prominent.
 
-The projection mechanism gives this draft a coherent way to offer non-graphic closeness to varied Commander forms.
+The projection mechanism gives this draft a coherent way to offer graphic and explicit closeness to varied Commander forms.
 Actual history gating is reported as implemented by the parent, but this literary review has not executed it.
 Death and restoration remain separate requirements.
 The selected portrait path for elf-guise nodes also needs a later art/integration audit, since several nodes still inherit the default portrait key.

@@ -33,7 +33,7 @@ The earlier aftermath scene directly supports her reference to not putting answe
 The private evening offers a night, kisses alone or quiet company without treating the latter options as failed seduction.
 Its strongest details are physical and specific: the remembered turn, the song, the missed chalk, her forgotten clever line and the dropped boot.
 Those do more for her voice than general explanations of what wanting someone ought to mean.
-The prose remains adult and non-graphic.
+The prose remains adult and graphic and explicit.
 
 ## Required correction: a demonstration the fixed branch did not show
 

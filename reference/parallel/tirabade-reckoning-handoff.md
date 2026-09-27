@@ -73,7 +73,7 @@ The player may accept a home visit or leave for another obligation, with distinc
 
 The last scene is a later private visit, not a claim to resume the immediately preceding night after a rest.
 The home history acknowledges returning the borrowed lamps before the previous visit; the leaving history acknowledges the newly kept evening.
-Mutual desire leads to a non-graphic night, kisses followed by leaving, or close company without further intimacy.
+Mutual desire leads to a graphic and explicit night, kisses followed by leaving, or close company without further intimacy.
 Every choice completes the contribution without a relationship penalty.
 
 ## Canon evidence and authored departures

@@ -194,7 +194,7 @@ Parent conscience, dragon and legend developments can change her direction witho
 The first three events contain substantial Minagho discussion, but little direct Chivarro agency.
 Their joint continuation should include mutual teasing, a genuine professional disagreement and actions showing why they keep choosing each other.
 The Commander should be able to desire either woman, both, or neither without dissolving their attachment by default.
-New intimacy should be adult, voluntary and non-graphic, with a real slower or non-romantic alternative.
+New intimacy should be adult, voluntary and graphic and explicit, with a real slower or non-romantic alternative.
 
 ## Ending integration
 
@@ -276,7 +276,7 @@ A first eight-visit contribution will not automatically meet that end state.
    Chivarro can preserve future access at the cost of a concession, or destroy that access to deny the intermediary leverage.
    Minagho's cult, redemption, sanctuary, legend, dragon and freely released histories change what resources and objections she actually has.
 6. **One evening, three intentions.** Their mutual attraction is visible in a shared activity and disagreement they resolve themselves.
-   Offer individual time, a jointly chosen non-graphic intimate evening, slower affection or friendship.
+   Offer individual time, a jointly chosen graphic and explicit intimate evening, slower affection or friendship.
    Existing Minagho romance is acknowledged; new Chivarro intimacy requires her own played choice.
 7. **What she keeps for herself.** Give Chivarro an individual visit about the future she wants beyond being someone's second-in-command.
    Give Minagho room to disagree without the Commander becoming the judge of both women.

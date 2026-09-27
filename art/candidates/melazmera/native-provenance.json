@@ -1,0 +1,13 @@
+{
+  "unit": "Units/Monsters/UmbralDragon/ColyphyrDungeon/Melazmera.jbp",
+  "unit_id": "85c7a3fd80f93db43a3e588ba5f5f9bc",
+  "portrait": "Units/Portraits/InitiativeBlueprintPortraits/Monsters/BlackDragon.jbp",
+  "portrait_id": "ca8d2f8a110149b890d75080e01089a5",
+  "image_asset": "5aa8e3cc21b1a92419661eb0c777ce36",
+  "path_id": -8603803227041380305,
+  "texture": "BlackDragon",
+  "dimensions": [
+    370,
+    484
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "unit": "Units/NPC/Unique/Act_4_MidnightIsles/BadLuck/Mielara.jbp",
+  "unit_id": "9d9c523bc2b17434bb66df212b127187",
+  "portrait": "Units/PortraitsGenerated/a67f85e0be338254493e4449610ae777_BCT_Mielara.jbp",
+  "portrait_id": "55aaada6899b415c99227ec23aff520f",
+  "image_asset": "5154dcd516a2ad34bb1d87b2eccc8424",
+  "path_id": 5867588730174715621,
+  "texture": "a67f85e0be338254493e4449610ae777_BCT_Mielara",
+  "dimensions": [
+    184,
+    244
+  ]
+}

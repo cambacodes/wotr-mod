@@ -1,0 +1,11 @@
+# Dorgelinda logistics concept
+
+Built-in candidate, unassigned/unapproved.
+Native unit direct portrait is generic male crusader and was rejected as female likeness.
+Viewed matching prefab-generated Logistics_Officer portrait for gray bob/palette; it lacks textual injuries.
+Native Logistics_2 description governs adult dwarf, eye patch, claw scars and impaired hand; injured side is authored.
+Supply inspection is an authored work concept informed by Writer's ledger/caravan handoff, not an implemented scene.
+
+## Exact prompt
+
+Create painterly fantasy CRPG portrait of Dorgelinda Stranglehold, explicitly a MIDDLE-AGED ADULT DWARF WOMAN and capable logistics veteran, attractive mature face not a craggy elderly caricature. Reference image is matching logistics prefab thumbnail for gray bob haircut and crusader palette only; dialogue establishes black eye patch over one eye, long healed CLAW SCARS crossing cheek, one worn stiff hand. Preserve short straight gray bob with blunt fringe, broad dwarf cheekbones, warm tan skin, strong nose, dark uncovered eye, handsome expressive mouth and composed dry intelligence. Smooth skin between defined scars, no excessive grain or deep random wrinkles. Eye patch on her left/viewer right is authored side. Broad sturdy short adult build, adult head proportions, no juvenile features. Work scene: standing at a supply crate inspecting a frayed packing cord held in good hand while stiff other hand rests naturally flat on a ledger, no damaged-hand agile flourish. Must have two coherent hands and aligned shoulders/ribs/waist/pelvis. Functional ochre and muted green wool officer tunic, modest chain collar and leather belt/pouches echo reference, tough charcoal trousers and stout boots, no dress or modern uniform. Different rough canvas sack, grainy timber, small chain rings, thick wool and supple leather surfaces. Drezen depot, barrels and supply crates, skeptical raised eyebrow as if quantity doesn't match invoice. Full sturdy dwarf figure and both boots, entire head and at least twelve percent headroom, no tall-human proportions. No text or romance implication. High-quality painterly game art, appealing feminine face while retaining scars and eye patch.

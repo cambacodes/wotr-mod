@@ -43,7 +43,7 @@ Quiet company and leaving remain complete outcomes without jealousy punishment.
 
 The later scenes play out enjoyable courtship activities through dance practice, the portrait, the gathering, and a private visit.
 They are more substantial than a sequence of narrated errands followed by assurances that everyone communicated correctly.
-The non-graphic intimacy uses touch, hesitation, humor, and the women's initiative effectively.
+The graphic and explicit intimacy uses touch, hesitation, humor, and the women's initiative effectively.
 It does not offer sex as compensation for selecting the preferred investigation result.
 
 ## Corrections checked in the final source

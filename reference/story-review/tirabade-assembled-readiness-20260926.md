@@ -105,7 +105,7 @@ Irabeth wants the sketch of Anevia, chooses a coat and then chooses the later ev
 The wives kiss, tease and make private plans without requiring the Commander to validate every gesture.
 Neither is consistently reduced to the welcoming intermediary who supplies the other.
 
-The triad's adult intimacy is convincing and non-graphic.
+The triad's adult intimacy is convincing and graphic and explicit.
 Desire has physical expression, including hands at a waist, a deliberately prolonged kiss, the blue coat's fastenings and a bed that betrays the promised quiet.
 Quiet company, sleep, returning home and postponement remain legitimate choices.
 The endings of individual investigations are not simply sex rewards for agreeing with the relevant wife.
@@ -247,7 +247,7 @@ No new artwork was reviewed here, and literary acceptance does not approve portr
 | Prose and dramatic scene construction | 89 | Substantial played events, with repeated self-analysis and core/expansion joins still visible. |
 | Recognizable native characterization | 88 | Strong private voices and marriage; thin native morale/violence/Iz variation and overly parallel affair motivations. |
 | Existing wives' attraction and developed triad | 92 | Each woman initiates affection, preserves the marriage and has separate desires. |
-| Mature romantic tension | 91 | Specific adult desire and non-graphic intimacy with credible quieter alternatives. |
+| Mature romantic tension | 91 | Specific adult desire and graphic and explicit intimacy with credible quieter alternatives. |
 | Player relationship agency | 82 | Good choices within the triad, but a mandatory two-affair acquisition and shared closure prevent independent outcomes. |
 | Gameplay and consequence quality | 85 | Several real tradeoffs and one useful check; acquisition remains mostly timed conversation. |
 | Full-campaign and revised-scope coverage | 74 | Missing individual romances, Trickster recovery, native-history depth and truthful late-start reunion. |

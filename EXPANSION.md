@@ -22,8 +22,8 @@ The expanded official inventory now contains 37 distinct characters, including f
 See `ROSTER.md` for individual ownership, source evidence, unresolved premises and the revised path and content requirements.
 Wenduag can participate in introductions and intrigue while retaining her own motives.
 Only adult women are new romance participants; existing male partners may remain consequential non-romantic characters.
-Writing will use mature themes, romantic tension, and non-graphic intimacy.
-Adult desire and sensuality should remain explicit parts of characterization where appropriate; non-graphic presentation does not require sexless dialogue, demure characterization or fully covered costumes.
+Writing will use mature themes, romantic tension, and graphic and explicit intimacy.
+Adult desire and sensuality should remain explicit parts of characterization where appropriate; graphic and explicit presentation does not require sexless dialogue, demure characterization or fully covered costumes.
 Art and prose reviewers must preserve the native character's themes and the scene's intended intimacy instead of treating restraint as an automatic quality improvement.
 Relationships need not be healthy, redemptive or morally good.
 Preserve character-appropriate ambition, manipulation, jealousy as characterization, betrayal and destructive choices, while respecting the requested ToyBox behavior rather than enforcing automatic romantic exclusivity.

@@ -81,7 +81,7 @@ The player can keep the relabeled picture at a reduced price or have it returned
 The fee is Vellexia's narrated purchase, not a subtraction from the player's inventory or a native economy operation.
 The initial wager is recalled only if chosen.
 Courting, uncertainty and company are separate terminal outcomes.
-The chosen kiss is non-graphic and does not mark a native Vellexia intimate encounter, overwrite an existing romance, or grant full commitment.
+The chosen kiss is graphic and explicit and does not mark a native Vellexia intimate encounter, overwrite an existing romance, or grant full commitment.
 
 All scenes require the actual initial living contact, Chapter 4, the Upper City, witnessed native greeting, and the earned prior milestone.
 Death, native fight history, inhuman state, native invitation, completed native quest and authored closure prevent new entry.

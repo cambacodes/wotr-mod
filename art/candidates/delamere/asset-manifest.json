@@ -1,0 +1,29 @@
+[
+  {
+    "file": "native-reference.png",
+    "sha256": "0AA5F4ADAD3B0A38EBC3351ADA83A8CB57D16E95BB306A38E731B04B6511FDD1",
+    "dimensions": [
+      692,
+      1024
+    ],
+    "status": "native research reference"
+  },
+  {
+    "file": "restored-living-forest-v1.png",
+    "sha256": "5A067742E22979367BC26E3E95EF8C2B72738C555D4171B70ED14AB9B2D9F6A6",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "undead-ranger-v1.png",
+    "sha256": "7AA46CB215A7A9C92F9C3902580E6FAE971EE5C9F5613122E70E06523C499A8A",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

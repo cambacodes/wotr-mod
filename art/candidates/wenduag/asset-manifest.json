@@ -1,0 +1,29 @@
+[
+  {
+    "file": "hunter-v1.png",
+    "sha256": "FECA9BBA4985C917CC2985980CD9A7D9667C81F3800CA7F91F05DF3E3AEBD75F",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "private-challenge-v1.png",
+    "sha256": "74262949DBA3DED5534EE181263AD3160AEC85540D3B0BA4E7B69D568DBE7724",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "Wenduag-native.png",
+    "sha256": "4C6B384FCB504A35A9934726217DA88668DE8E64B7ECF5BCD5E0ED39A69DD34B",
+    "dimensions": [
+      692,
+      1024
+    ],
+    "status": "native research reference"
+  }
+]

@@ -106,6 +106,89 @@ internal static class Program
 
     private static IEnumerable<Scene> Endings(Snapshot state) => story.Scenes.Where(s => s.Relationship == "tirabade" && s.Owner == "Epilogue" && Rules.Available(story, s, state));
 
+    private static void TargonaContinuation()
+    {
+        var meeting = story.Scenes.SingleOrDefault(s => s.Id == "targona.the_open_threshold");
+        var followup = story.Scenes.SingleOrDefault(s => s.Id == "targona.the_key_remains_hers");
+        if (meeting == null || followup == null) return;
+
+        var tricksterHistories = new[] { "targona.extra_ending", "targona.ordinary_ending" };
+        foreach (var history in tricksterHistories)
+        {
+            var state = new Snapshot { Chapter = meeting.MinChapter, Hour = 10000, Area = meeting.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(meeting.Requires) };
+            state.Flags.UnionWith(new[] { "trickster", "targona.ran_trickster", history });
+            if (meeting.RequiresAny.Length > 0) state.Flags.Add(meeting.RequiresAny[0]);
+            Check(Rules.Available(story, meeting, state), "Targona Trickster history cannot open the meeting: " + history);
+            var outcomes = Walk(meeting, state);
+            Check(outcomes.Any(s => s.Has("targona.visit_correspondence")), "Targona Trickster history has no correspondence fallback: " + history);
+            Check(outcomes.Any(s => s.Has("targona.visit_tender")), "Targona Trickster history has no tender visit ending: " + history);
+            Check(outcomes.Any(s => s.Has("targona.visit_desire")), "Targona Trickster history has no desire visit ending: " + history);
+            Check(outcomes.Any(s => s.Has("targona.visit_pause")), "Targona Trickster history has no pause or departure ending: " + history);
+        }
+
+        foreach (var history in new[] { "targona.extra_ending", "targona.ordinary_ending" })
+        {
+            var state = new Snapshot { Chapter = meeting.MinChapter, Hour = 10000, Area = meeting.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(meeting.Requires) };
+            state.Flags.UnionWith(new[] { "targona.ran_none", history });
+            if (meeting.RequiresAny.Length > 0) state.Flags.Add(meeting.RequiresAny[0]);
+            Check(Rules.Available(story, meeting, state), "Targona ordinary history cannot open the meeting: " + history);
+            var outcomes = Walk(meeting, state);
+            Check(outcomes.Any(s => s.Has("targona.visit_correspondence")), "Targona ordinary history has no correspondence fallback: " + history);
+        }
+
+        var replies = new[]
+        {
+            ("targona.visit_desire", "desire"),
+            ("targona.visit_tender", "tender"),
+            ("targona.visit_pause", "pause"),
+            ("targona.visit_correspondence", "correspondence")
+        };
+        foreach (var reply in replies)
+        {
+            var state = new Snapshot { Chapter = followup.MinChapter, Hour = 12000, Area = followup.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(followup.Requires) };
+            state.Flags.Add(reply.Item1);
+            if (followup.RequiresAny.Length > 0) state.Flags.Add(followup.RequiresAny[0]);
+            Check(Rules.Available(story, followup, state), "Targona follow-up cannot open after its preceding outcome: " + reply.Item1);
+            var visited = new HashSet<string>(StringComparer.Ordinal);
+            var outcomes = Walk(followup, state, (node, _) => visited.Add(node));
+            Check(visited.Contains(reply.Item2), "Targona follow-up cannot reach the matching history page: " + reply.Item1);
+            Check(!visited.Any(node => node != "start" && node != reply.Item2), "Targona follow-up exposes another history page: " + reply.Item1);
+            Check(outcomes.Count > 0, "Targona follow-up has no terminal response: " + reply.Item1);
+        }
+    }
+
+    private static void ArankaContinuation()
+    {
+        var followup = story.Scenes.SingleOrDefault(s => s.Id == "aranka.the_next_verse");
+        if (followup == null) return;
+
+        var historyFlags = new[] { "aranka.story_game", "aranka.story_restraint", "aranka.story_left_alone" };
+        foreach (var history in historyFlags)
+        {
+            var state = new Snapshot { Chapter = followup.MinChapter, Hour = 15000, Area = followup.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(followup.Requires) };
+            state.Flags.Add(history);
+            if (followup.RequiresAny.Length > 0) state.Flags.Add(followup.RequiresAny[0]);
+            if (followup.ContactUnit != null) state.AvailableContacts.Add(followup.ContactUnit);
+            state.AvailableContacts.UnionWith(followup.AdditionalContactUnits);
+            Check(Rules.Available(story, followup, state), "Aranka follow-up cannot open after its preceding history: " + history);
+            var outcomes = Walk(followup, state);
+            Check(outcomes.Any(s => s.Has("aranka.relationship_plan")), "Aranka follow-up history has no concrete-plan branch: " + history);
+            Check(outcomes.Any(s => s.Has("aranka.after_story_deferred")), "Aranka follow-up history has no deferral branch: " + history);
+        }
+
+        var deferral = story.Scenes.SingleOrDefault(s => s.Id == "aranka.the_deferred_answer");
+        if (deferral != null)
+        {
+            var state = new Snapshot { Chapter = deferral.MinChapter, Hour = 18000, Area = deferral.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(deferral.Requires) };
+            if (deferral.RequiresAny.Length > 0) state.Flags.Add(deferral.RequiresAny[0]);
+            if (deferral.ContactUnit != null) state.AvailableContacts.Add(deferral.ContactUnit);
+            state.AvailableContacts.UnionWith(deferral.AdditionalContactUnits);
+            Check(Rules.Available(story, deferral, state), "Aranka deferred answer cannot open after its stated retry interval.");
+            var outcomes = Walk(deferral, state);
+            Check(outcomes.Any(s => s.Has("aranka.relationship_plan")), "Aranka deferred answer has no accepted-plan branch.");
+        }
+    }
+
     private static void Main(string[] args)
     {
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
@@ -120,6 +203,7 @@ internal static class Program
         if (args.Contains("--bindings"))
         {
             var bindings = story.Scenes.SelectMany(s => Rules.EntryTargets(s).Select(guid => new { Guid = guid, ExpectedType = "BlueprintAnswersList", Source = s.Id }))
+                .Concat(story.Scenes.Where(s => s.NativeReturnCue != null).Select(s => new { Guid = s.NativeReturnCue!, ExpectedType = "BlueprintCue", Source = s.Id }))
                 .Concat(story.Etudes.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintEtude", Source = e.Key }))
                 .Concat(story.CompletedQuests.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintQuest", Source = e.Key }))
                 .Concat(story.SeenCues.SelectMany(e => e.Value.Select(guid => new { Guid = guid, ExpectedType = "BlueprintCue", Source = e.Key })))
@@ -153,6 +237,8 @@ internal static class Program
             return;
         }
         PrerequisiteGroupsTests.Run(Check);
+        TargonaContinuation();
+        ArankaContinuation();
         foreach (var recovery in story.Scenes.Where(s => s.Recovery != null))
         {
             var revival = story.Revivals[recovery.Recovery!];
@@ -180,7 +266,7 @@ internal static class Program
         var known = new HashSet<string>(story.Scenes.Select(s => s.Id)
             .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag }))
             .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
-            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available" }));
+            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
@@ -338,6 +424,17 @@ internal static class Program
             NocticulaContinuationTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula").Select(s => s.Id));
         }
+        if (story.Scenes.Any(s => s.Id == "noct.acq.her_hand"))
+        {
+            NocticulaAcquisitionTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "noct.acq.borrowed_signature"))
+                NocticulaConcessionTests.Run(story, Check);
+            NocticulaHarborJoinTests.Run(story, Check);
+            NocticulaAcquiredHarborTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Id.StartsWith("noct.join.", StringComparison.Ordinal)).Select(s => s.Id));
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
+                && s.Id != "noct.acq.after_the_council").Select(s => s.Id));
+        }
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
@@ -370,7 +467,8 @@ internal static class Program
                 state.Flags.UnionWith(new[] { "seelah.late_fixed_lessons", "seelah.late_running", "seelah.late_race_lost", "seelah.late_pc_delight" });
             if (scene.Id == "konomi.hearing_after" || scene.Id == "konomi.private_hearing_after") state.Flags.Add("konomi.hearing_buyer_barred");
             Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
-            Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
+            if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
+                Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
         }
         if (story.Scenes.Any(s => s.Id == "seelah.kept")) CheckSeelahOpening();
         if (story.Scenes.Any(s => s.Id == "seelah.door")) CheckSeelahContinuation();

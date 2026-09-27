@@ -88,10 +88,12 @@ namespace Tirabade
         public string Owner = "Anevia";
         public string Relationship = "tirabade";
         public string[] AnswerLists = Array.Empty<string>();
+        public string? NativeReturnCue;
         public string[] Areas = Array.Empty<string>();
         public int[] Chapters = Array.Empty<int>();
         public bool Remote;
         public bool ManualOnly;
+        public string? InteractionHub;
         public string? Recovery;
         public string? AfterRecovery;
         public string? AfterDeparture;
@@ -152,6 +154,8 @@ namespace Tirabade
 
     public static class Rules
     {
+        public const string NurahCapital = "2570015799edf594daf2f076f2f975d8";
+        public const string NurahContact = "f999fc37ddb225640b7f98c0a05d6948";
         public static readonly string[] CheckSkills = { "SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana", "SkillKnowledgeWorld", "SkillLoreNature", "SkillLoreReligion", "SkillPerception", "SkillUseMagicDevice", "CheckDiplomacy", "CheckBluff", "CheckIntimidate" };
 
         public static IEnumerable<string> NextNodes(Choice choice) => choice.Check != null
@@ -257,11 +261,17 @@ namespace Tirabade
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
 
         public static Scene? NextRemote(Story story, Snapshot state) => story.Scenes
-            .FirstOrDefault(scene => IsRemote(scene) && !scene.ManualOnly && Available(story, scene, state));
+            .FirstOrDefault(scene => IsRemote(scene) && !scene.ManualOnly
+                && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state));
 
         public static string[] EntryTargets(Scene scene)
         {
             if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return Array.Empty<string>();
+            if (scene.InteractionHub != null)
+            {
+                if (IsNurahHubScene(scene)) return Array.Empty<string>();
+                throw new InvalidOperationException("Unrecognized authored interaction hub: " + scene.Id + "/" + scene.InteractionHub);
+            }
             if (scene.AnswerLists.Length > 0) return scene.AnswerLists;
             if (scene.Relationship == "tirabade")
             {
@@ -271,6 +281,13 @@ namespace Tirabade
             }
             throw new InvalidOperationException("No dialogue attachment points for " + scene.Id + " (" + scene.Owner + ").");
         }
+
+        public static bool IsNurahHubScene(Scene scene) => scene.InteractionHub == "nurah.arrival"
+            && scene.Relationship == "nurah" && scene.Owner == "Nurah" && !IsRemote(scene)
+            && scene.ContactUnit == NurahContact && scene.AnswerLists.Length == 0
+            && scene.Areas.SequenceEqual(new[] { NurahCapital })
+            && scene.Chapters.SequenceEqual(new[] { 5 })
+            && scene.Requires.Contains("nurah.meeting_accepted") && scene.Requires.Contains("nurah.meeting_arrived");
 
         public static void Validate(Story story)
         {
@@ -340,8 +357,17 @@ namespace Tirabade
             var ids = new HashSet<string>();
             foreach (var scene in story.Scenes)
             {
+                if (scene.InteractionHub != null && !IsNurahHubScene(scene))
+                    throw new InvalidOperationException("Invalid authored Nurah interaction-hub contract: " + scene.Id);
+                if (scene.Relationship == "nurah" && !IsRemote(scene) && !IsNurahHubScene(scene))
+                    throw new InvalidOperationException("Physical Nurah scenes require the authored arrival hub: " + scene.Id);
                 if (scene.ManualOnly && !IsRemote(scene))
                     throw new InvalidOperationException("Manual-only delivery requires a remote scene: " + scene.Id);
+                if (scene.NativeReturnCue != null && (!Guid.TryParseExact(scene.NativeReturnCue, "N", out _)
+                    || IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    || scene.ContactUnit != null || scene.InteractionHub != null || scene.AnswerLists.Length != 1
+                    || scene.Nodes.SelectMany(node => node.Choices).Any(choice => choice.Revive != null)))
+                    throw new InvalidOperationException("Invalid native audience return: " + scene.Id);
                 foreach (var pair in scene.ForbidOverrides)
                     if (!scene.Forbids.Contains(pair.Key) || !authoredFlags.Contains(pair.Key)
                         || !authoredFlags.Contains(pair.Value) || pair.Key == pair.Value

@@ -14,7 +14,7 @@ This is not full route, universal Trickster access, art, integration or release 
 | --- | ---: | --- |
 | Writing and pacing | 91 | The commitment and farewell now develop particular desires instead of repeatedly explaining the relationship agreement; some explanatory habits remain. |
 | Native and parent characterization | 92 | Both women retain ambition, vanity and dangerous methods; their affection and changed circumstances do not erase those motives. |
-| Mature, non-graphic romantic tension | 93 | Competitive flirtation, interrupted composure and distinct private encounters carry desire without graphic description. |
+| Mature, graphic and explicit romantic tension | 93 | Competitive flirtation, interrupted composure and distinct private encounters carry desire without graphic description. |
 | Mutual attraction, agency and nonexclusivity | 95 | Their existing attraction has its own conflicts and reconciliations, while each independently develops a relationship with the Commander. |
 | Gameplay and consequential progression | 92 | Investigation, costs, business terms, performance choices and conditional recollections produce an authored experience with consequences. |
 | Conditional memory, chronology and earned outcomes | 92 | Prior blocking branch errors are repaired; the corrected ending prose preserves the reviewed specific outcome without inventing romance. |

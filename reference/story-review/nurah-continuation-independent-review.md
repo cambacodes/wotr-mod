@@ -99,7 +99,7 @@ The manuscript's sexual interest is real and belongs to her voice.
 The doorway joke, rehearsal, interrupted fastening, lap scene, and final night connect her teasing and appetite for control with affection.
 Parent Book4 explicitly presents attraction without exclusivity, and Book5 includes her direct invitations to the Commander's room.
 The continuation therefore does not need to make her demure, remove desire, or turn the partnership into a healthy-relationship lesson.
-Its non-graphic intimacy is appropriate to the agreed scope.
+Its graphic and explicit intimacy is appropriate to the agreed scope.
 The final conversation option is an alternative form of closeness, not a morally superior ending.
 
 There is some over-explanation around the appointment contract and consequences.

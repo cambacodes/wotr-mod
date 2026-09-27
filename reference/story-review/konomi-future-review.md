@@ -23,7 +23,7 @@ Waiting concerns independent advice and her knowledge of the tenant's concession
 The next supper continues her professional enthusiasm instead of requiring romantic approval to make her modest.
 The proposed breakfast for mutually proud contacts is specific, funny, and recognizably strategic.
 The Commander can enjoy her enthusiasm or request attention without condemning her ambitions.
-The intimate night is reciprocal and non-graphic.
+The intimate night is reciprocal and graphic and explicit.
 The quiet branch includes closeness and a separately arranged breakfast without silently turning it into a night together.
 A new courtship can become a commitment or remain open, while existing committed lovers have their own promise-renewal choice.
 The final departure actually occurs, honoring the previous scene's temporary-return premise.

@@ -1,0 +1,20 @@
+[
+  {
+    "file": "parole-conversation-v1.png",
+    "sha256": "2DC846AD1EABC8D6877E05F8BF9107F18983B205982C2CA92140DFDA78BB5183",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "practice-yard-v1.png",
+    "sha256": "C0FED37AA04D4E135873C13CFBC022AF6E33BF1614278AD95CA948878973B5E3",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "AssetId": "d227d31233aa2494fba89cb715afbb87",
+  "Data": {
+    "$type": "c596f85ac9e041d7a0e73ec01f67c2f4, BlueprintPortrait",
+    "PrototypeLink": null,
+    "m_Overrides": [],
+    "Components": [],
+    "Comment": "",
+    "Data": {
+      "m_PortraitImage": {
+        "AssetId": "1735844c08be34f4aa359f5cd4996fb3"
+      },
+      "m_HalfLengthImage": {
+        "AssetId": "4e86588f800679f4fa9bd47819e04813"
+      },
+      "m_FullLengthImage": {
+        "AssetId": "388a23b9f15038147ac85f1ea41a3898"
+      },
+      "InterchapterPortraitLink": null,
+      "PortraitCategory": "None",
+      "IsDefault": false,
+      "InitiativePortrait": false
+    },
+    "m_BackupPortrait": null
+  }
+}

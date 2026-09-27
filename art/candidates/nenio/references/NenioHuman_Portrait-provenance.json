@@ -1,0 +1,13 @@
+{
+  "portrait_path": "Units/Portraits/Companions/NenioHuman_Portrait.jbp",
+  "portrait_id": "a6e4ff25a8da46a44a24ecc5da296073",
+  "texture_id": "2f61f4338563d6b40b067ae0cede5a3f",
+  "texture_name": "NenioFemaleHumanWizard",
+  "dimensions": [
+    692,
+    1024
+  ],
+  "png_sha256": "50ad88a5f35931677fc33c13773d31209deec3f1640b8e864e2849f78296bba2",
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "method": "UnityPy original Texture2D decode, no editing"
+}

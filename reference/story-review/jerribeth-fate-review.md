@@ -26,7 +26,7 @@ Neither branch substitutes a successful roll or an irreversible magical answer f
 The later letter provides different drawings, subjects and player replies for the two chosen questions.
 The exit puzzle retains her interest in manipulating experience without retroactively giving her prisoners or claiming that she has reformed.
 The bad-performance invitation gives the romantic branch wit and specificity rather than a generic declaration of desire.
-Its intimacy is adult and non-graphic, appropriately tentative for an optional contact opportunity.
+Its intimacy is adult and graphic and explicit, appropriately tentative for an optional contact opportunity.
 
 The final paragraphs explain the distinction between an invitation and a promise more explicitly than the strongest dialogue needs.
 That is a minor stylistic reservation, not a continuity defect or a reason to lengthen these scenes.

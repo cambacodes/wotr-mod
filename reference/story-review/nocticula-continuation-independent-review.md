@@ -215,7 +215,7 @@ These are source checks, not native execution, economic simulation, or saved-gam
 | Nocticula's voice and recognizable motives | 92 | Her desired acquisition, anger, threats, proprietary knowledge, and interest in a useful rival persist across the route. The improvement extends beyond one Gift paragraph. |
 | Prose and scene construction | 89 | Actual exchanges have replaced several explanations, but conspicuous narrator commentary about the story's correctness remains. |
 | Pacing and variation | 88 | The personal scenes are better; the surrounding investigation still relies too heavily on another report, another advisory question, and another explanation of its significance. |
-| Mature non-graphic attraction | 92 | Competitive attention, deliberate touch, the poisoner anecdote, the interpreter story, and the interrupted courtier proposal give desire more specific texture. |
+| Mature graphic and explicit attraction | 92 | Competitive attention, deliberate touch, the poisoner anecdote, the interpreter story, and the interrupted courtier proposal give desire more specific texture. |
 | Agency and other-lovers compatibility in the manuscript | 94 | No compulsory exclusivity or invented removal of the Gift; practical conflicts remain possible and Laulieh's separate history is recognized. |
 | Continuity and branch memory | 88 | The original four leaks are repaired, but a further definite recognition leak and two prop-continuity problems remain. |
 | Decisions and authored consequences | 93 | The hearing results now receive actual later distinctions, and the carrier, crossing, chart, injury, and disposition branches retain consequences. |
@@ -381,7 +381,7 @@ An unverified engineering gate cannot borrow a passing score from this table.
 | Nocticula's voice, motives, and continuity of personality | 93 | She keeps the Gift, leverage, appetite, impatience, strategic secrets, and the right to dislike the Commander's answer. |
 | Prose and dialogue | 92 | The new final exchanges perform desire through action; most redundant explanations of the intended moral reading have been removed. |
 | Pacing and scene variety | 91 | The private dance/refusal, room construction, and final bottle encounter interrupt the report cadence with immediate wants and friction. |
-| Mature non-graphic attraction | 94 | Competition, intimate attention, delayed gratification, and her active preference for company carry the romance. |
+| Mature graphic and explicit attraction | 94 | Competition, intimate attention, delayed gratification, and her active preference for company carry the romance. |
 | Independent agency and other-lovers characterization | 94 | She can refuse the Commander's preferred timing, retain information, and argue over real interests without compulsory exclusivity. |
 | Branch continuity and supported recollection | 92 | The three previously identified object/history defects are repaired; hearing, injury, chart, and parent histories remain conditional. |
 | Decisions and narrated consequences | 93 | Investigation methods, coercion or volunteering, crossing risk, hearing results, disposition, and publicity produce different retained developments. |

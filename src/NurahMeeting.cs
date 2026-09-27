@@ -28,10 +28,10 @@ namespace Tirabade
     // A voluntary private visit of retained living Nurah, without actor creation or native history writes.
     internal sealed class NurahMeeting
     {
-        internal const string Capital = "2570015799edf594daf2f076f2f975d8";
+        internal const string Capital = Rules.NurahCapital;
         internal const string SceneAsset = "3e2b5ea054cd5b2479e7f13134363ef4";
         internal const string Spawner = "c2b298fc-d794-4995-8b49-822b75c3bb62";
-        internal const string Unit = "f999fc37ddb225640b7f98c0a05d6948";
+        internal const string Unit = Rules.NurahContact;
         internal const string Group = "d0210e61193c8c746bc33bf7d1fff325";
         internal const string Hidden = "245524f91e743b64eaa16445c3ea8e73";
         internal const string Prison = "c922e0cbe25a0cf4dad4ce7a3ca81935";

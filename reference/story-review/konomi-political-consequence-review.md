@@ -53,7 +53,7 @@ Her impatience, appetite for an influential audience and pleasure in a pointed r
 The hand in her lap, distraction while explaining the chronology, responsive kiss and chosen walk make the attraction voluntary and concrete.
 The walk does not reduce closeness or punish declining the kiss.
 Neither professional branch buys a more intimate reward.
-The non-graphic ending is appropriate to an already established adult relationship.
+The graphic and explicit ending is appropriate to an already established adult relationship.
 
 The ordinary callback is earned by the completed trial and publication chain, including the later reply.
 The evening memory correctly recalls the stopping time and two remaining casks.

@@ -177,7 +177,7 @@ The follow-through delivers an actual authored reading with separate public-room
 The long/short speech choice changes performance and revision, and Commander/Edris casting remains consistent.
 The quiet desk versus shared room changes cost, copying, interruptions and the later week's report.
 Kiana pays her own narrated expenses and remains a beginner rather than becoming famous through the Commander's approval.
-The physical intimacy is voluntary, adult and non-graphic, with worthwhile quieter alternatives.
+The physical intimacy is voluntary, adult and graphic and explicit, with worthwhile quieter alternatives.
 
 These are meaningful developments, not disposable filler.
 They also occupy a narrow range of settings and concerns: meals, paper, borrowed rooms, rehearsals and negotiating enough time to enjoy company.

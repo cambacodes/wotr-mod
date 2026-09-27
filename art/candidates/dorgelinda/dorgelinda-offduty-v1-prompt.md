@@ -1,0 +1,9 @@
+# Dorgelinda off-duty concept
+
+Built-in candidate, unassigned/unapproved.
+Authored personality/outfit exploration, not an existing route event or romance claim.
+Native dialogue injuries and dwarf identity retained; prefab-matched gray bob used cautiously.
+
+## Exact prompt
+
+New painterly WotR scene concept of Dorgelinda Stranglehold off duty, clearly adult middle-aged DWARF WOMAN, attractive mature broad face and sturdy short feminine build, gray blunt bob with silver sheen, tan skin, black eyepatch over HER LEFT/viewer right eye, three healed claw scars crossing cheeks, one worn stiff hand. Keep identity imperfections but smooth skin between scars, soften angular cheek shading, no caricature of age. Native matching prefab thumbnail supplies hair/palette, text supplies injuries. Distinct outfit from work officer tunic: simple rust-red soft linen blouse with open collar and rolled sleeves, dark moss-green woven vest cut to waist WITHOUT belt pouches or chain collar, charcoal pleated wool skirt and plain short boots. Sideways on a solid tavern bench at end of long table, leaning back in dry amused disbelief with one corner of mouth raised; good hand lifts small pewter cup, stiff hand rests relaxed flat on thigh, no dexterous gesture by impaired hand. Whole coherent seated body, short sturdy legs/feet supported on floor, shoulders/ribs/pelvis aligned, both hands visible. Warm quiet inn alcove, single lamp and unused folded work ledger at far end rather than another active audit desk. No Commander or romantic touch, authored off-duty personality concept not implemented scene. Linen elbows wrinkle naturally, dense wool drapes with weight, cup dull metal, smooth face and differentiated scar texture. Full head/ears and twelve percent top clearance, complete boots in frame, painterly game style, no text.

@@ -78,7 +78,7 @@ Mera, Orsa, the smith, washer's customer, alcove, washing platform, and terrace 
 Mera and Orsa are explicitly adults and have no romantic role.
 Money, damage, repayment, and repair are narrated circumstances in a small civilian incident, not an inventory transaction or native construction quest.
 The gift and loan have distinct consequences rather than treating the recipient's gratitude as proof that Seelah is right.
-The roof scene offers voluntary non-graphic affection or quiet company and preserves other partners without jealousy tests.
+The roof scene offers voluntary graphic and explicit affection or quiet company and preserves other partners without jealousy tests.
 This humanoid-only contribution adds no Trickster resurrection or departure repair; existing fate work remains separately required and must be reviewed independently.
 
 ## Checks performed

@@ -39,7 +39,7 @@ The renewed introductions and second departure for Nerosyan continue the destina
 
 The supper gives both career decisions an aftermath before moving into affection.
 Konomi can enjoy influence without the story insisting that romance has made her modest or politically compliant.
-The intimate branch is non-graphic and follows an explicit invitation to stay.
+The intimate branch is graphic and explicit and follows an explicit invitation to stay.
 The quiet branch parts for the night and explicitly arranges breakfast, making the common morning valid for both branches.
 Neither requires exclusivity or a competing relationship's termination.
 The common lovers flag is a relationship-stage result here and is not textual proof that the quiet branch had sex.

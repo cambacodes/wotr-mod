@@ -1,0 +1,29 @@
+[
+  {
+    "file": "colyphyr-authority-v1.png",
+    "sha256": "A70B7B9177785B0498F7856FF64123D8246223B6C9E62534BDCBC3111A833870",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "living-nephilim-portrait-v1.png",
+    "sha256": "65EA79519982961939C344908DD44E4B3308EAE2DF7C7A0C9A38B0C1C3C7D650",
+    "dimensions": [
+      1089,
+      1444
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "native-reference.png",
+    "sha256": "432D80FC95879EF8A26B711856BF0D0C6DCF6BE3D5F548663BFA2D26796F86F4",
+    "dimensions": [
+      184,
+      244
+    ],
+    "status": "native research reference"
+  }
+]

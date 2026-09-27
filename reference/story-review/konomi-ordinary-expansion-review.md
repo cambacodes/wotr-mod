@@ -83,7 +83,7 @@ The module does not narrate her dismissal, restored appointment or abandonment o
 Affection appears during the practical work as well as after it: a hand held while removing a splinter, a kiss at the corner, brief under-table contact, and her discomfort at caring what the Commander saw while she defended a flawed idea.
 Those moments connect attraction to the played scene rather than attaching an interchangeable kiss to its end.
 Her wish for attention at supper is direct and reciprocal.
-The intimate-night branch is warm, more urgent than the earlier public contact, and non-graphic.
+The intimate-night branch is warm, more urgent than the earlier public contact, and graphic and explicit.
 The walk-home branch gives a separate affectionate ending without implying they spent the night together.
 
 The final private scene assumes an already committed embodied relationship, which its requirements establish.
@@ -130,7 +130,7 @@ I inspected this actual correction and found no remaining blocking contribution-
 | --- | ---: | --- |
 | Writing and dialogue | 92 | Concrete work and social friction support the wit; the corrected shared passages now fit both trial branches. |
 | Canon and character likeness | 92 | She retains pride, appetite for influence and strategic interest while the relationship permits credible authored growth. |
-| Mature voluntary romance | 93 | Professional embarrassment, direct desire and private warmth develop into distinct non-graphic intimate or parting outcomes. |
+| Mature voluntary romance | 93 | Professional embarrassment, direct desire and private warmth develop into distinct graphic and explicit intimate or parting outcomes. |
 | Choices and delivered consequences | 93 | The skill trial, selected unloading arrangement and publication decision each produce played consequences rather than unearned praise. |
 | Branch continuity | 92 | The setting, props, invitations and later replies now join coherently within the inspected sequence. |
 | Contribution depth | 93 | Six substantial visits carry an experiment through consequences and a professional decision into a private evening; this score is not full-route length approval. |

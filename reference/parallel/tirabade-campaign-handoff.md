@@ -57,7 +57,7 @@ The final evening uses an ordinary traveler's sketch to explore Irabeth's wish t
 The garden and market preferences are authored inventions, not native facts.
 The couple's shared travel plan accommodates the Commander without replacing either wife's wish.
 This is planning for a future they cannot schedule, not a magically completed holiday or a new epilogue.
-The player can stay for a non-graphic intimate night, choose quiet company and depart, or keep a separate later promise.
+The player can stay for a graphic and explicit intimate night, choose quiet company and depart, or keep a separate later promise.
 The last option plays out the agreed departure without jealousy or a demand to abandon another attachment.
 
 ## Exact integration point

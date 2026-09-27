@@ -95,7 +95,7 @@ The ring-throwing date has authored outcomes rather than a die roll; that is acc
 The Trickster post office is a character-specific access intervention with two played approaches and an ordinary voluntary reply afterward.
 Its lack of a romance-success roll is appropriate: it opens correspondence rather than compelling attraction.
 
-The relationship is mature and non-graphic.
+The relationship is mature and graphic and explicit.
 Konomi initiates contact, wants to be admired, enjoys being influential, can dislike an answer and still want the Commander close.
 Quiet company is an affirmative form of intimacy rather than a failed attempt at the more physical ending.
 Open private courtship remains distinct from committed partnership through the final farewell and epilogues.

@@ -1,0 +1,10 @@
+# Jerribeth crest study
+
+Built-in imagegen, candidate only.
+Native unit-linked oolioddroo thumbnail and authored Jerribeth-v4 were viewed as references.
+Humanized mouth, nose, garment and fuller anatomy are authored redesign choices; crop evidence does not establish a native dress.
+No precise event assignment; dangerous social invitation concept.
+
+## Exact prompt
+
+New painterly fantasy CRPG character portrait, adult Jerribeth the OOLIODDROO, not a succubus or fairy. Reference1 is native unit-linked insectile portrait, reference2 prior humanized design. Create an attractive adult humanoid interpretation balancing them: narrow graceful pale lilac face, appealing human nose and lips WITHOUT long proboscis, very large pale cyan luminous eyes with subtly faceted irises and dark surrounds, swept UP teal crest and short featherlike side tufts instead of flowing human hair. Retain fine chitin cheek ridges, dark lateral pointed head appendages and visible delicate VEINED insect wings, never bat wings. Adult dangerous intelligence and cool appraising half-smile, upright chin, three-quarter profile looking back toward viewer; one long elegant hand holding closed small dark invitation card, other resting on stone ledge. Authored clothing, not claimed native: open-shouldered deep violet silk wrap dress with narrow chitin-like ornamental shoulder clasps, V neckline, mature full bust, exposed arms, opaque fitted bodice and flowing weighty skirt, no extra high collar or armor covering. Texture dark natural chitin distinct from supple silk with restrained fold-following sheen, translucent veined wing membranes rim-lit cyan, gold minimal. WotR painterly atmosphere in shadowy Ivory Sanctum-inspired stone interior, no modern hardware or sexual act. Medium full torso down to knees, ALL head appendages and visible hands wholly inside picture; wide composition with at least 10 percent margin above crest and beyond wings. Graceful but unmistakably insect-demon, no generic horned human face, no butterflies or flower-fairy decor. No text.

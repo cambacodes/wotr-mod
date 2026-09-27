@@ -1,5 +1,5 @@
 {
-  "scope": "Local script inventory. No implementation, no guaranteed availability, no inferred contents of missing side conversation. Ember and Aivu friendship only.",
+  "scope": "Local script inventory. Every listed candidate must have an attainable path-appropriate route on all ten mythic paths. No implementation or availability is claimed, and the missing side conversation contributes no evidence. Ember and Aivu remain friendship only.",
   "candidates": [
     {
       "name": "Soana",
@@ -31,8 +31,8 @@
         "guid": "7c4aebf4bbfa61e45b8920868016b4fc",
         "text": "\"And when I realized that...\" {n}Areelu's voice grows stronger, and a storm rages in her eyes.{/n} \"I rebelled. But not against my jailers. Not against those who had murdered my child. Not even against Sarkoris. My uprising was against destiny, death, and the laws that the gods had forced upon our lives. I realized then that I wouldn't be satisfied with simply returning my {mf|son|daughter} to life. I had to shatter this order once and for all, and make it so that neither Pharasma and her lackeys, nor death itself, could ever stand between us. Only by stepping beyond the bounds of what had been ordained for mortalkind, by obtaining powers that rivaled the divine, could we become free.\""
       },
-      "authored_concept": "Experimental family-boundary review first. A nonromantic alliance concerning fate and loss is supported.",
-      "constraints": "Do not turn the native child-replacement/maternal premise into romance; an unrelated adult premise would need separate explicit authorship and audit.",
+      "authored_concept": "Experimental adult route requested by the user. The original mortal soul inhabiting the Commander is distinct from the grafted remnants; grief may create a maternal projection and identity conflict, but the failed graft does not make him her child or establish attraction.",
+      "constraints": "Develop an authored adult relationship through earned rivalry, grief, anger, desire and choice, with all-path access and nonromantic or hostile outcomes retained.",
       "integration_status": "No native romance established by reviewed evidence; any new route must still be checked against installed expansion content."
     },
     {
@@ -99,7 +99,7 @@
         "guid": "836b49836cd1fb44496ccde3175d74ea",
         "text": "{n}The old woman answers with ease, but there is bitter disappointment in her eyes.{/n} \"My time will come. One day I will become the daughter of {g|Urgathoa}Urgathoa{/g}, her adopted child. I will have the immortality and power promised to me. But for now the goddess wants me to remain mortal. This way I can be of more use to the cult, as a messenger who spreads the wisdom of her church. If it were up to me, I would have left this grubby, sweat-reeking, disgusting mortal life many years ago.\""
       },
-      "authored_concept": "New Trickster encounter with an adult Urgathoa priestess whose native access is Lich-centered.",
+      "authored_concept": "New route on all mythic paths, with a bespoke Trickster introduction beyond her native Lich-centered access.",
       "constraints": "Her desired undeath is not a condition she already possesses. Preserve fanaticism and Septimus conflict.",
       "integration_status": "No native romance established by reviewed evidence; any new route must still be checked against installed expansion content."
     },
@@ -150,7 +150,7 @@
         "guid": "76f6e12133981714eaf235d1bf799144",
         "text": "{n}Shamira ignores you, looking somewhere else. But in your mind, you hear her angry hiss.{/n} \"So speak, if you have! But use your mind instead of your flapping lips! Your mind!\""
       },
-      "authored_concept": "New intrigue route through Harem audience and an authored Trickster alternative to Demon political scenes.",
+      "authored_concept": "New intrigue route on all mythic paths through a path-appropriate Harem audience and political stakes, including authored Trickster alternatives.",
       "constraints": "Telepathy, coercive information demands and dangerous ambition remain; submission or mental intrusion does not prove affection.",
       "integration_status": "No native romance established by reviewed evidence; any new route must still be checked against installed expansion content."
     },
@@ -184,7 +184,7 @@
         "guid": "48c4c2d62b5217a4fa2f827cfeeddc59",
         "text": "\"I congratulate you on your victory, {name}, as one warrior to another. Deskari, the self-proclaimed Usher of the Apocalypse, was defeated in the Worldwound, at the entrance to his own realm. History will remember you as the {mf|hero|heroine} who accomplished this feat. But you have the chance to achieve an even greater victory — you can rid Golarion of its bleeding wound once and for all.\""
       },
-      "authored_concept": "Highly experimental divine audience route; Trickster access and reciprocal personal interest would be new.",
+      "authored_concept": "Highly experimental divine audience route on every mythic path; Trickster access and reciprocal personal interest would be new.",
       "constraints": "Native congratulations or approval do not imply romance. Preserve duty and independence; no mortal recruitment pretense.",
       "integration_status": "No native romance established by reviewed evidence; any new route must still be checked against installed expansion content."
     },
@@ -201,7 +201,7 @@
         "guid": "c0dd70f8eb05b8a4fb13342b5507958a",
         "text": "\"You should honor her request, Champion. Eliandra is one of the most radiant souls I know, and Katair is one of the most loyal and devoted. They have spent a hundred years together with their comrades in voluntary isolation. It would be easy to lose one's clarity of perspective. I do not know mortals well enough to sense whether doubt or despair lives in the hearts of those who dwell in the Fall, but perhaps you can?\""
       },
-      "authored_concept": "New route from Pulura vigil and rescue, with a bespoke Trickster access alternative.",
+      "authored_concept": "New route on every mythic path from Pulura vigil and rescue, with a bespoke Trickster access route.",
       "constraints": "Katair is explicitly her fellow leader; reviewed evidence does not establish spouses. Avoid assuming a romance from their shared vigil.",
       "integration_status": "No native romance established by reviewed evidence; any new route must still be checked against installed expansion content."
     },
@@ -219,7 +219,7 @@
         "text": "\"Countless times, by whatever means we could think of. Nothing worked. Maybe if we'd had a powerful cleric or spellcaster among us... Then again, seems unlikely if Areelu imprisoned an actual {g|angel}angel{/g} down here so easily, doesn't it?\" {n}The elf nods toward the unmoving winged woman.{/n} \"We can't even explore the whole laboratory — some of the passages are blocked by barriers that only let demons through.\""
       },
       "authored_concept": "Existing RanRomance route extension through laboratory captivity, altered wing, and recovery; not a new route.",
-      "constraints": "Healing/restoration and personal choice are prerequisites, not payment for rescue. Angel-specific native continuation needs authored Trickster access.",
+      "constraints": "Healing/restoration and personal choice are prerequisites, not payment for rescue. Every-path access, including a bespoke Trickster route, remains to be authored.",
       "integration_status": "Existing RanRomance Targona route documented in installed readme.txt, with wing/power branches and Aeon/Trickster reactivity; extend rather than duplicate."
     }
   ]

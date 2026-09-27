@@ -166,7 +166,7 @@ Irabeth chooses the coat, arranges the room and enjoys deciding where she wants 
 Their kisses and jokes occur between them before the Commander joins.
 The original marriage remains an active relationship, rather than background permission for the player to collect two women.
 
-The intimate pages are adult and non-graphic, with specific anticipation, physical attraction and humor.
+The intimate pages are adult and graphic and explicit, with specific anticipation, physical attraction and humor.
 Quiet company, sleeping together and leaving for another promise have complete responses.
 Keeping those alternatives does not require ending every sensual passage with an explanation of why the alternatives are legitimate.
 
@@ -231,7 +231,7 @@ Every required literary discipline must exceed 90 independently; the strong leng
 | Recognizable characterization and native-history treatment | 86 | Strong marriage and private voices, but an opening injury contradiction and thin morale/violence/Iz response. |
 | Branch continuity | 89 | Important old joins are repaired; the entry contradiction and uneven earned emotional development still need work. |
 | Mutual attraction and separate agency | 94 | Both wives initiate, retain their own desires and respond independently to shared or separate arrangements. |
-| Mature non-graphic romantic tension | 92 | Specific adult desire, teasing and physical affection with credible quieter alternatives. |
+| Mature graphic and explicit romantic tension | 92 | Specific adult desire, teasing and physical affection with credible quieter alternatives. |
 | Player relationship choice | 93 | Negotiated entry, local refusals, separate continuation and postponement have distinct meanings. |
 | Gameplay and lasting consequences | 87 | Good tradeoffs and evidence memory, but limited acquisition variety and mythic consequence depth. |
 | Meaningful aggregate length and developed-route substance | 95 | Clears the doubled floor without solo-campaign credit or duplicate-bridge dependence. |

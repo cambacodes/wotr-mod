@@ -16,7 +16,7 @@ Use ochre-brown woven clothing, a modest neckline and a muted shawl with restrai
 Her hands should follow the curved edge of a supported wooden carving by touch.
 Place a plain staff beside her chest seat, safely laid-out tools in the background and generous crop room around her head and hands.
 Use painterly realism, warm timber, believable anatomy and no text, frame or signature.
-The scene is fully clothed and non-graphic.
+The scene is fully clothed and graphic and explicit.
 
 ## Reference and review limits
 

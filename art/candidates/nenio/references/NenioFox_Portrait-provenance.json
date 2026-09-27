@@ -1,0 +1,13 @@
+{
+  "portrait_path": "Units/Portraits/Companions/NenioFox_Portrait.jbp",
+  "portrait_id": "2b4b8a23024093e42a5db714c2f52dbc",
+  "texture_id": "fe1bffb342d957b4abf6d564361d9296",
+  "texture_name": "NenioFemaleKitsuneWizard",
+  "dimensions": [
+    692,
+    1024
+  ],
+  "png_sha256": "235b4e3b3090098015d0d3e19e52cdf6ebf2ba3d0d55cf1571ce452269388dcd",
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "method": "UnityPy original Texture2D decode, no editing"
+}

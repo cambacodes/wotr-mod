@@ -1,0 +1,101 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "bundle_sha256": "96675554F6E7865D69530950486CDF42C1F28CC8C37DF473F855F123AEDC045D",
+  "method": "UnityPy native texture decode at original dimensions, without image editing; no prefab render",
+  "units": [
+    {
+      "label": "Chadali",
+      "unit_path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicTrickster_Ch3/Council/Chadali.jbp",
+      "unit_id": "75fd91d9d6119ea408a981680c659267",
+      "unit_sha256": "C600F8C76923EE7F90816690B15F8CAC4B784808B986B76867DE51E38528079C",
+      "prefab": {
+        "AssetId": "74248040fe0043d4692f2d180a5ad6be"
+      },
+      "portrait_path": "Units/PortraitsGenerated/74248040fe0043d4692f2d180a5ad6be_BCT_Chadali.jbp",
+      "portrait_id": "9e345fa0473847bbad181091908c7187",
+      "portrait_sha256": "5446B4380807A1A30CD22229602DEF57316343ADC769FC5B5E885BD053D8FDD3",
+      "images": [
+        {
+          "field": "m_PortraitImage",
+          "asset_id": "1837e54c9e7e95e43a4f12f84855f5ae",
+          "status": "decoded",
+          "file": "Chadali-m_PortraitImage.png",
+          "name": "74248040fe0043d4692f2d180a5ad6be_BCT_Chadali",
+          "path_id": 426218556327543587,
+          "width": 184,
+          "height": 244,
+          "sha256": "5BCA95A716376C16E1A8E31A4BA28FEBEB960A4D7CA89454B2274BAEBF63C370"
+        },
+        {
+          "field": "m_HalfLengthImage",
+          "asset_id": "1837e54c9e7e95e43a4f12f84855f5ae",
+          "status": "decoded",
+          "file": "Chadali-m_HalfLengthImage.png",
+          "name": "74248040fe0043d4692f2d180a5ad6be_BCT_Chadali",
+          "path_id": 426218556327543587,
+          "width": 184,
+          "height": 244,
+          "sha256": "5BCA95A716376C16E1A8E31A4BA28FEBEB960A4D7CA89454B2274BAEBF63C370"
+        },
+        {
+          "field": "m_FullLengthImage",
+          "asset_id": "1837e54c9e7e95e43a4f12f84855f5ae",
+          "status": "decoded",
+          "file": "Chadali-m_FullLengthImage.png",
+          "name": "74248040fe0043d4692f2d180a5ad6be_BCT_Chadali",
+          "path_id": 426218556327543587,
+          "width": 184,
+          "height": 244,
+          "sha256": "5BCA95A716376C16E1A8E31A4BA28FEBEB960A4D7CA89454B2274BAEBF63C370"
+        }
+      ]
+    },
+    {
+      "label": "Eritrice",
+      "unit_path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicTrickster_Ch3/Council/Eritrice.jbp",
+      "unit_id": "4a47d14a45ce264408a1c6a33345dd89",
+      "unit_sha256": "7FCC6B8D60B4CFE9277EDB7D0A831691D37F825E55D594B3A5DF6C66F107AECA",
+      "prefab": {
+        "AssetId": "97f2027001854c84dad5172298e30069"
+      },
+      "portrait_path": "Units/PortraitsGenerated/97f2027001854c84dad5172298e30069_BCT_Eritrice.jbp",
+      "portrait_id": "0ff2545969264becaa2af75e7e7002fa",
+      "portrait_sha256": "D26C2398A350FA6C98798122F5AEF863BF02DB96168918634DFEAF36FA0DBFB9",
+      "images": [
+        {
+          "field": "m_PortraitImage",
+          "asset_id": "e7a668822eaad1144b9bcf0e8441fcba",
+          "status": "decoded",
+          "file": "Eritrice-m_PortraitImage.png",
+          "name": "97f2027001854c84dad5172298e30069_BCT_Eritrice",
+          "path_id": 6618965343538889210,
+          "width": 184,
+          "height": 244,
+          "sha256": "329253C6930B9E07BA9DBA4DC74AE63DB5BFD874212D85945F8A6740C37270A1"
+        },
+        {
+          "field": "m_HalfLengthImage",
+          "asset_id": "e7a668822eaad1144b9bcf0e8441fcba",
+          "status": "decoded",
+          "file": "Eritrice-m_HalfLengthImage.png",
+          "name": "97f2027001854c84dad5172298e30069_BCT_Eritrice",
+          "path_id": 6618965343538889210,
+          "width": 184,
+          "height": 244,
+          "sha256": "329253C6930B9E07BA9DBA4DC74AE63DB5BFD874212D85945F8A6740C37270A1"
+        },
+        {
+          "field": "m_FullLengthImage",
+          "asset_id": "e7a668822eaad1144b9bcf0e8441fcba",
+          "status": "decoded",
+          "file": "Eritrice-m_FullLengthImage.png",
+          "name": "97f2027001854c84dad5172298e30069_BCT_Eritrice",
+          "path_id": 6618965343538889210,
+          "width": 184,
+          "height": 244,
+          "sha256": "329253C6930B9E07BA9DBA4DC74AE63DB5BFD874212D85945F8A6740C37270A1"
+        }
+      ]
+    }
+  ]
+}

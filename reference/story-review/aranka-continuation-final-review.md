@@ -63,7 +63,7 @@ These are appropriate uses of existing skills rather than an invented Performanc
 The Commander can sing a line or listen, choose the song's ending, and offer limited future travel or continued meetings without promising constant companionship.
 These choices have discernible consequences without ending an established romance over one failed attempt.
 The final private evening provides an overnight visit, a shorter kiss, and quiet companionship as legitimate outcomes.
-Desire is specific and adult, and the prose remains non-graphic.
+Desire is specific and adult, and the prose remains graphic and explicit.
 
 There are still many automatically supplied Commander replies.
 Some determine a joke, an apology, or a small personal disclosure instead of offering a menu.

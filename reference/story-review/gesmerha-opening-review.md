@@ -72,7 +72,7 @@ The first kiss is earned by time together and her expressed desire, not rescue g
 Her admission that she listens for the Commander's boots provides a specific, vulnerable attraction cue.
 The friendship answer allows disappointment without punishment or an immediate claim that she feels nothing.
 The slow answer leaves the relationship undecided, and choosing to hold her postpones the kiss without cancelling courtship.
-The intimacy is warm and non-graphic, appropriate for an opening rather than a mature route's final level of intimacy.
+The intimacy is warm and graphic and explicit, appropriate for an opening rather than a mature route's final level of intimacy.
 
 The wood check is useful because both failure and cautious non-roll play produce different costs.
 The paired trays later slide apart, and the cloth becomes a remembered practical solution.

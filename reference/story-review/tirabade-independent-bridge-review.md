@@ -94,7 +94,7 @@ It adds useful negotiated access to existing substantial material; its own prose
 | --- | ---: | --- |
 | Character voice and canon compatibility | 93 | Distinct wives, recognizable marriage and personal agency. |
 | Prose and pacing | 92 | Domestic activity and humor support the negotiation; occasional explanatory narration remains. |
-| Non-graphic maturity | 94 | Attraction, disappointment and consent all have concrete expression. |
+| graphic and explicit maturity | 94 | Attraction, disappointment and consent all have concrete expression. |
 | Meaningful relationship choices | 94 | Shared, separate, postponed and local-ended relationships have different actual consequences. |
 | History and continuity | 86 | Three remaining passages import or misname relationship history. |
 
@@ -123,6 +123,6 @@ That execution is attributed to root; I independently inspected the repaired sou
 This remains separate from the final assembled integration, Unity delivery and each independent campaign's own review.
 
 The corrected continuity score is 94.
-Character voice remains 93, prose 92, non-graphic maturity 94 and relationship choices 94.
+Character voice remains 93, prose 92, graphic and explicit maturity 94 and relationship choices 94.
 No mandatory literary or history correction remains in this reviewed bridge snapshot.
 These scores apply to the bridge contribution and do not approve my own Anevia campaign.

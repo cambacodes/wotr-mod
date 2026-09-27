@@ -1,4 +1,4 @@
-"""Anevia's independent, adult, non-graphic campaign.
+"""Anevia's independent, adult, graphic and explicit campaign.
 
 The native marriage, actors and dispatchers are preserved.
 Scenes and all civilian events below are authored alternate developments.

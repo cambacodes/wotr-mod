@@ -1,0 +1,20 @@
+[
+  {
+    "file": "courtyard-walk-v1.png",
+    "sha256": "DD23ED77D92ED543983035A1F391103F1B95902FFE172713ED91705C5452B123",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "mixed-wing-portrait-v1.png",
+    "sha256": "67131622D3284EE6A358C1ECE94F7F834287C49993CAB2921706EAC04AE2539A",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

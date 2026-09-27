@@ -1,0 +1,13 @@
+{
+  "unit": "Units/NPC/Unique/Act_3_DemonsHerecy/TempleOfDelamere/Delamere.jbp",
+  "unit_id": "433b2850e2f5a1f4e82a6969bf43af66",
+  "portrait": "Units/Portraits/Companions/Delamere_Portrait.jbp",
+  "portrait_id": "4e84c3522e1c4444f9b78ecd998821e0",
+  "image_asset": "f61ca321df5d8224197ca0c175728d48",
+  "path_id": -3711385955062384974,
+  "texture": "DelamereUndeadFemale",
+  "dimensions": [
+    692,
+    1024
+  ]
+}

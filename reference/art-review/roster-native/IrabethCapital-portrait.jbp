@@ -1,0 +1,39 @@
+{
+  "AssetId": "14ca57e7f693ba9469d7c1111f79e56e",
+  "Data": {
+    "$type": "c596f85ac9e041d7a0e73ec01f67c2f4, BlueprintPortrait",
+    "PrototypeLink": "",
+    "m_Overrides": [],
+    "Components": [
+      {
+        "$type": "12ae235c782b452ba868e3067c61b591, PortraitDollSettings",
+        "m_Flags": 0,
+        "name": "$PortraitDollSettings$75f76bd5-2f97-4076-9421-b15ff924853b",
+        "PrototypeLink": {
+          "guid": "",
+          "name": ""
+        },
+        "m_Overrides": [],
+        "Gender": "Female",
+        "m_Race": "!bp_1dc20e195581a804890ddc74218bfd8e"
+      }
+    ],
+    "Comment": "",
+    "Data": {
+      "m_PortraitImage": {
+        "AssetId": "2e2b0e30b592329479cfb6b812d2f1d9"
+      },
+      "m_HalfLengthImage": {
+        "AssetId": "0ff397f27a904ad42b7c3e2c487c93b4"
+      },
+      "m_FullLengthImage": {
+        "AssetId": "6a013b5384b68004d9e1f2888503eb61"
+      },
+      "InterchapterPortraitLink": null,
+      "PortraitCategory": "Wrath",
+      "IsDefault": false,
+      "InitiativePortrait": false
+    },
+    "m_BackupPortrait": "!bp_d4479a2afc7e4d91b969b16732514960"
+  }
+}

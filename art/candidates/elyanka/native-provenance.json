@@ -1,0 +1,13 @@
+{
+  "unit": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicLich_Ch3/MythicLich_KTC_Elyanka.jbp",
+  "unit_id": "68bc27eb628a7584b96e901f4b4c4071",
+  "portrait": "Units/PortraitsGenerated/b2a8810cddfdbe74b80723634af289c3_BCT_ElyankaHuman.jbp",
+  "portrait_id": "db50a1cef98b4c0798982836f0af09cb",
+  "image_asset": "33519b6531ca99e4384233d709e735b7",
+  "path_id": 4995487090559365178,
+  "texture": "b2a8810cddfdbe74b80723634af289c3_BCT_ElyankaHuman",
+  "dimensions": [
+    184,
+    244
+  ]
+}

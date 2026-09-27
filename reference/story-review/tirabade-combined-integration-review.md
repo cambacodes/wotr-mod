@@ -83,7 +83,7 @@ They keep the women's private conversation and marriage outside the Commander's 
 The authored example is compatible with retaining other romances; it does not require claiming that no character can feel disappointed by a breakup.
 The choice-label consequence is less literary than an additional speech, but its directness is useful at this consequential interaction and avoids making an absent wife deliver an invented response.
 
-Revision-specific editorial scores for this bridge and its inspected joins: prose 91, character continuity 93, mature non-graphic intimacy 93, player agency 95, modeled relationship continuity 94.
+Revision-specific editorial scores for this bridge and its inspected joins: prose 91, character continuity 93, mature graphic and explicit intimacy 93, player agency 95, modeled relationship continuity 94.
 These are editorial judgments about the actual revised content, not automated percentages or guarantees for every unplayed runtime state.
 The separate full-manuscript judgments remain necessary; a successful bridge cannot repair unrelated missing native access by implication.
 

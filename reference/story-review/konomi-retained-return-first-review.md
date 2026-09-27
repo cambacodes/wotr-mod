@@ -17,7 +17,7 @@ This does not approve the complete Konomi route, unsupported recovery histories,
 | Writing and pacing | 92 | The short absurd investigation gives way to quieter visits without reducing the death to a joke. |
 | Konomi characterization | 93 | Precision, dry judgment and political independence survive her vulnerability. |
 | Believable authored Trickster intervention | 91 | The false inference in the map is concrete, and preparing an opportunity remains distinct from successfully restoring a person. |
-| Mature, non-graphic intimacy and aftercare | 94 | An existing lover receives restrained closeness; gratitude does not become a new courtship or overwrite a refusal. |
+| Mature, graphic and explicit intimacy and aftercare | 94 | An existing lover receives restrained closeness; gratitude does not become a new courtship or overwrite a refusal. |
 | Earned history and continuity | 94 | The revised memories support minimal acquaintance, private correspondence, previous intimacy and ended relationships without inventing an office history. |
 | Gameplay interest within this extension | 91 | A deliberate preparation and attempt lead to delayed aftercare, with a character response to the method actually used. |
 

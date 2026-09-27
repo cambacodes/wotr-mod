@@ -21,3 +21,12 @@ V1 was subsequently generated from a neutral formal portrait description without
 The user rejected v2's formal costume as a general replacement despite its scoped alternate-outfit art pass.
 V3 restores the exposed shoulders, arms, midriff and markings with opaque ornamental armor, and shortens the hair toward the native silhouette.
 All three use the built-in imagegen tool and remain unstaged; v3 needs independent costume-fidelity review and an appropriate scene assignment.
+
+## Latest costume revision
+
+The roster reassessment rejects v3 native-costume fidelity under the latest user direction because its continuous breastplate is substantially heavier than the native ornaments.
+V4 uses v3 and the extracted native portrait as direct generation references and replaces that breastplate with separate angular ornaments, chains and lighter arm jewelry.
+Its source is `art/candidates/Nocticula-v4.png`, SHA-256 `F706CC5A6AC919697BF5FFF781715A0AF516BBFF4480564B4F26C8B05602DDDF`.
+V4 passed independent source-image review, with costume fidelity scored 93.
+The independent reviewer found no literal match among the examined dream balcony, indoor investigation and private book scenes, so a scene-specific variant is needed before assignment.
+The earlier versions remain available as alternate costumes.

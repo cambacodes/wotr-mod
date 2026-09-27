@@ -1,0 +1,101 @@
+{
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "bundle_sha256": "96675554F6E7865D69530950486CDF42C1F28CC8C37DF473F855F123AEDC045D",
+  "method": "UnityPy native texture decode at original dimensions, without image editing; no prefab render",
+  "units": [
+    {
+      "label": "Galfrey",
+      "unit_path": "Units/NPC/Unique/Act_2_SwordOfValor/Warcamp/QueenGalfrey.jbp",
+      "unit_id": "97d1c33c784100140b9fa317aef5a499",
+      "unit_sha256": "D3D3EA7BC2D7FA53471A1A940381152FE25A5021EABB624DE3D5FDA4C57801FD",
+      "prefab": {
+        "AssetId": "934c66be6d3c15f40b1fa874e48ac5da"
+      },
+      "portrait_path": "Units/Portraits/NPC/GalfreyYoung_Portrait.jbp",
+      "portrait_id": "a3ba06b4723c7a74fb5054ccb2289efb",
+      "portrait_sha256": "124406B0BD3C5DD2F2B5F83525C7BD2DA6FC96C4E4905BC90A3984010FDB5215",
+      "images": [
+        {
+          "field": "m_PortraitImage",
+          "asset_id": "a9646a8501e024d43a3635a095e0ed90",
+          "status": "decoded",
+          "file": "Galfrey-m_PortraitImage.png",
+          "name": "GalfreyFemalePaladin_Portrait",
+          "path_id": 5118859497564720571,
+          "width": 184,
+          "height": 244,
+          "sha256": "847C7681F619F8961D60BE14C37EA7D8FFFF4E6A3CDA2304ECBC866B7FA24AF5"
+        },
+        {
+          "field": "m_HalfLengthImage",
+          "asset_id": "f579b17c4fa6644458146c7199c92d69",
+          "status": "decoded",
+          "file": "Galfrey-m_HalfLengthImage.png",
+          "name": "GalfreyFemalePaladin_Half",
+          "path_id": -5849405686035939733,
+          "width": 332,
+          "height": 432,
+          "sha256": "21DC390A1CA524CB545FCCC191509BCC13B46BD2361071B127787AEC15A14965"
+        },
+        {
+          "field": "m_FullLengthImage",
+          "asset_id": "75a5abe6d8621444b858f3be1f1f0bb1",
+          "status": "decoded",
+          "file": "Galfrey-m_FullLengthImage.png",
+          "name": "GalfreyFemalePaladin",
+          "path_id": 4424007620992131939,
+          "width": 692,
+          "height": 1024,
+          "sha256": "EDAEE88B91E3B730752C13D9435AEDBEDC4947CF020D30B349D9A6B9AC7413BB"
+        }
+      ]
+    },
+    {
+      "label": "Jannah",
+      "unit_path": "Units/NPC/Unique/Act_1_WorldwoundIncursion/DefendersHeart/DH_SeelasFriend_DeserterJanna.jbp",
+      "unit_id": "588418cb0dfd7cb45b6e6d370ef42bea",
+      "unit_sha256": "317D414A551E1274ADDA4918FE097C4C465C383E453A9E4A972EC433254EFAB6",
+      "prefab": {
+        "AssetId": "706ac012d4b33f6428b642c49d3e7130"
+      },
+      "portrait_path": "Units/PortraitsGenerated/706ac012d4b33f6428b642c49d3e7130_BCT_Janna.jbp",
+      "portrait_id": "550a859fc62244ceadeb40d79ca4d261",
+      "portrait_sha256": "4313825F1C9F27B5AAB39F6F3E487484ECAD98F005815360F46C7456F9511B61",
+      "images": [
+        {
+          "field": "m_PortraitImage",
+          "asset_id": "77c189759194b27488b7e8f3f35340b1",
+          "status": "decoded",
+          "file": "Jannah-m_PortraitImage.png",
+          "name": "706ac012d4b33f6428b642c49d3e7130_BCT_Janna",
+          "path_id": 7975970837267763031,
+          "width": 184,
+          "height": 244,
+          "sha256": "29CF61B976F03DC6387D0BCB5472EF1102B6A7F8222E1433A3B6EA02D755E070"
+        },
+        {
+          "field": "m_HalfLengthImage",
+          "asset_id": "77c189759194b27488b7e8f3f35340b1",
+          "status": "decoded",
+          "file": "Jannah-m_HalfLengthImage.png",
+          "name": "706ac012d4b33f6428b642c49d3e7130_BCT_Janna",
+          "path_id": 7975970837267763031,
+          "width": 184,
+          "height": 244,
+          "sha256": "29CF61B976F03DC6387D0BCB5472EF1102B6A7F8222E1433A3B6EA02D755E070"
+        },
+        {
+          "field": "m_FullLengthImage",
+          "asset_id": "77c189759194b27488b7e8f3f35340b1",
+          "status": "decoded",
+          "file": "Jannah-m_FullLengthImage.png",
+          "name": "706ac012d4b33f6428b642c49d3e7130_BCT_Janna",
+          "path_id": 7975970837267763031,
+          "width": 184,
+          "height": 244,
+          "sha256": "29CF61B976F03DC6387D0BCB5472EF1102B6A7F8222E1433A3B6EA02D755E070"
+        }
+      ]
+    }
+  ]
+}

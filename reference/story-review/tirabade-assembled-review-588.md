@@ -36,7 +36,7 @@ The required threshold is strictly greater than 90 in each relevant dimension.
 | Pacing and meaningful variety | 91 | The revised later sequence replaces repeated reassurance with games, investigation, a dance, and changing material consequences. The formal relationship discussions remain the slowest section. |
 | Character voice and plausible authored development | 92 | Anevia's acquisitive curiosity and teasing, and Irabeth's pride, formality, faith, and competitiveness remain distinguishable. Neither becomes an interchangeable counselor. |
 | Wives' mutual attraction and independent agency | 95 | They initiate affection, disagree professionally, surprise one another, and retain private interests without treating the Commander as the owner of their marriage. |
-| Mature non-graphic romantic tension | 94 | Wanting to impress, being caught looking, deliberate physical proximity, the blue coat, and the rented room make desire specific and reciprocal. |
+| Mature graphic and explicit romantic tension | 94 | Wanting to impress, being caught looking, deliberate physical proximity, the blue coat, and the rented room make desire specific and reciprocal. |
 | Commander participation and relationship choices | 92 | The player can disagree, choose risks, preserve private relationships, set an evening's degree of intimacy, or leave without every answer becoming the same promise. |
 | Decisions, checks, and remembered consequences | 92 | The disputed roll, stolen records, evidence examination, refund, and circulation choice affect later scenes rather than merely changing a response adjective. |
 | Continuity and branch memory | 87 | Two unconditional callbacks assign specific earlier content to paths that do not contain it. Both need correction before this manuscript passes. |
@@ -134,7 +134,7 @@ The open or fastened coat and the leading or following dance practice receive co
 Irabeth's desire becomes increasingly active: she chooses the room, enjoys making Anevia wait, and tells the Commander where she wants them.
 Anevia can be rendered briefly speechless rather than always supplying a protective joke.
 
-The shared nights remain non-graphic, with desire conveyed through interrupted speech, kisses, warmth, attention, and the practical comedy of furniture and clothing.
+The shared nights remain graphic and explicit, with desire conveyed through interrupted speech, kisses, warmth, attention, and the practical comedy of furniture and clothing.
 Choosing company, sleep, a walk, or a separate bed does not make the other options disappear from the characters' personalities.
 The wives keep wanting each other after the Commander leaves.
 

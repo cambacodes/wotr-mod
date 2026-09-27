@@ -1,0 +1,11 @@
+# Horzalah Guild countermove concept
+
+Built-in candidate, unassigned/unapproved.
+Authored negotiation image grounded in native Chapter 5 Guild authority and Writer handoff's refusal to make her tame or owned.
+No implemented scene or romance acceptance is claimed.
+Native seals released; historical neck scar is a scar, not an item or ownership token.
+Table action, outfit and room are authored staging, distinct from the armored portrait.
+
+## Exact prompt
+
+New painterly fantasy game scene concept of HORZALAH, adult FEMALE NEPHILIM, commanding assassin-guild ruler, not succubus. Use native generic nephilim head ONLY for swept-back long gray-silver hair, bronze tan skin, amber pale eyes, pointed ears and thick brown ridged curved ram horns; make face conventionally beautiful adult female with smooth soft skin planes, strong elegant jaw and expressive lips, no masculinized brutal brow or elderly creases. Chapter5 after native release from flaming seals: NO glowing brands, no chains, no metal collar, no submissive pose. A faint old collar-SHAPED SCAR around neck is skin only. Distinct noncombat private council wardrobe: sleeveless dark aubergine woven wrap tunic with deep angular neckline, one bronze shoulder clasp, bare powerful arms, asymmetrical thigh-length split hem over fitted dark trousers and low boots; no long gown, no corset cuirass or metal shoulder plates. She leans forward over a small stone strategy table and slides a carved game piece away from a proposed position with one firm forefinger, other palm planted on table; broad controlled smile that suggests threat rather than agreeability. Shoulders/ribs/waist/pelvis one coherent forward lean, elbows/hands/legs clear and weight supported, not unnaturally twisted model pose. Unseen visitor opposite her, no Commander form fixed. This is authored Guild negotiation concept, not implemented romance or native scene claim. Table has simple unlettered map and three pieces, private Abyssal chamber cool blue-lit arch and restrained amber brazier, no throne. Heavy matte wool-silk tunic with folds at leaning waist, softer trousers creased at hip, rough stone table, bronze has metal shine without everything becoming glossy. Wide fullfigure with whole horns and twelve percent headroom, both boots within frame, no skin grain, no text.

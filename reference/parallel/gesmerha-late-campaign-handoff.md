@@ -72,7 +72,7 @@ Her blindness remains present in physical staging.
 She asks where people and objects are, follows audible movement, uses her staff and requests an offered arm without surrendering all control of the walk.
 She does not see expressions, silently read papers or gain supernatural certainty about another person's state.
 The private scene preserves old scars and bodily limitations without making them a cure objective.
-Intimacy is voluntary and non-graphic, with a night together, gentler affection, a new slower-history relationship, continued uncertainty and friendship.
+Intimacy is voluntary and graphic and explicit, with a night together, gentler affection, a new slower-history relationship, continued uncertainty and friendship.
 The relationship permits other attachments and does not claim another partner's consent.
 
 ## New authored history

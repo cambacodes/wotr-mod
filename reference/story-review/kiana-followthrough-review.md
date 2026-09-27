@@ -91,7 +91,7 @@ An uncommitted visit remains a particular evening rather than an implied postwar
 The last market and music choices are accurately called intentions, with explicit room for a later discovery scene.
 They must not be counted as delivered dates.
 
-The private intimacy is mature, chosen and non-graphic.
+The private intimacy is mature, chosen and graphic and explicit.
 The ink-mark passage works because it connects desire to a specific moment of physical closeness without rewarding work with affection.
 The alternative is an actual walk and food, not punishment for refusing a kiss.
 The later choice to stop writing or finish the page receives a distinct practical outcome and then the same opportunity for company.

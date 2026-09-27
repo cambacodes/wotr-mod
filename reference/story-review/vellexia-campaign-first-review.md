@@ -80,7 +80,7 @@ The farewell and endings were still being completed at this check.
 The final farewell preserves the previously selected relationship rather than assuming every correspondent became a lover.
 An undecided history can accept new terms and become lovers, remain uncertain or choose friendship.
 An existing lover can end the relationship without rewriting the earlier affection.
-The affectionate passages remain non-graphic and acknowledge the actual distance between the participants.
+The affectionate passages remain graphic and explicit and acknowledge the actual distance between the participants.
 
 The first ending implementation gave generic death precedence over the observed mirror transformation.
 That was incorrect for native `Cue_0079`, which starts `VellexiaKilled` on stop after the transformation.

@@ -2,20 +2,21 @@
 
 Status: user-requested experimental design direction, not an approved manuscript or implemented romance.
 The user wants intellectual rivalry, wounded pride, grief, attraction and a particularly strong Trickster connection.
-Adult romantic content remains non-graphic and requires genuinely unrelated adults without a parent-child relationship.
-This proposal must not eroticize maternal attachment or simply relabel a familial bond.
+Adult romantic content remains slightly-graphic and requires adults.
+
 
 ## Canon evidence and alternate premise
 
 The native game distinguishes the Commander's original mortal soul from the remnants of Areelu's child grafted onto it.
-Areelu's attachment to the experiment and her lost child is central to the original story.
-The native admission that her restoration failed supports a grief and identity discussion, but does not establish romantic attraction.
+Areelu recognizes that the graft failed, and the Commander is not her child.
+Her attachment to the experiment and grief for her lost child remain central to the original story, but they do not create a parent-child relationship with the adult Commander.
+Her admission that the restoration failed supports conflict over grief, identity, ambition and the experiment, but does not establish native romantic attraction.
 See Areelu-concept-evidence.txt, especially the passage at line 1583.
 
-A romantic branch therefore needs an explicit alternate premise establishing unrelated adult participants without a parental relationship.
-It cannot be described as an existing canon romance or unlocked by merely renaming the Commander.
-The canonical maternal and research relationship remains a separate non-romantic option.
-Identity, experiment and continuity questions must be resolved in the design before romantic scenes are authored or approved.
+An adult romance is an authored alternate development, not an existing canon romance.
+It should build from the game's established distinction between the Commander's original mortal soul and the failed graft, then earn attraction through rivalry, wit, choice and consequences.
+Do not invent a parent-child relationship or present one as the canon starting point.
+Resolve the experiment and continuity questions in the design without erasing Areelu's grief, agency or responsibility.
 
 ## Character direction
 
@@ -24,6 +25,13 @@ Trickster interventions should expose a mistaken assumption or open a credible o
 Her ego can provoke competition and curiosity, but exploiting grief is not evidence of freely chosen affection.
 She retains ambition, secrecy, pride, scientific obsession and responsibility for her actions.
 Romance does not absolve her history or make her immediately cooperative.
+The native script includes a branch where grief leads Areelu to call the Commander her child after acknowledging that the restoration failed.
+Preserve that dialogue as a real part of that branch, but do not turn her grief-driven conclusion into the route's metaphysical truth or a permanent Trickster veto.
+A bespoke Trickster route must remain attainable after that scene through a credible confrontation with what she said, the failed graft, and the Commander's original mortal identity.
+It must let Areelu retain her grief and decide whether rivalry and attraction can coexist with it; it cannot erase the native scene or make desire automatic.
+The current draft's pre-graft adult biography is an intentional authored expansion, not a native fact, and should be retained and developed rather than discarded.
+Its meaning may evolve across the route as the Commander and Areelu confront what survived the graft, what changed, and how her grief shaped their understanding of identity.
+Do not make this premise a one-scene proof that resolves every metaphysical or emotional consequence.
 
 Grief and acceptance need a substantial arc of their own, including an outcome that does not produce romance.
 Romantic development must establish what she values about this particular adult, rather than treating her womanhood or sexual history as a reason she must want him.
@@ -46,11 +54,10 @@ The user also proposes a renewed graft experiment and a future family as possibl
 These ideas require separate assessment and are not approved romantic endings.
 
 A renewed graft could represent a relapse into control, denial or dangerous research, rather than proof that Areelu has healed.
-Do not use a sexual or conception storyline with a familial Commander to restore her child.
-Any hypothetical family involving genuinely unrelated adult partners must recognize a new child's independent identity, not frame that child as a vessel or replacement for the deceased.
-Restoring the lost child, if explored as a non-romantic research outcome, requires its own lore evidence and must not be conflated with conception.
+The user's proposed graft 2.0 and possible future family are experimental authored endings, not native canon or proof that a child has been restored.
+Review them as distinct outcomes for consent, motive, grief, risk and the identity of any new child, while preserving other endings where the experiment is refused or abandoned.
 
 Canon review must distinguish the original mortal soul, the grafted remnants, Areelu's interpretation and any actual change to those facts.
 Character review should test whether her choices preserve pride, grief, ambition and moral responsibility rather than turning her into a reward for defeating her.
 Creative review should compare acceptance, unresolved alliance and renewed dangerous experimentation as distinct outcomes.
-Romantic interest, where the unrelated-adult premise is established, must be freely chosen and cannot be inferred from defeat, dependency or submission to authority.
+Romantic interest between Areelu and the adult Commander must be freely chosen and cannot be inferred from defeat, dependency or submission to authority.

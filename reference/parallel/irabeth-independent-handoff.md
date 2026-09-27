@@ -54,7 +54,7 @@ The chosen consequences recur in training equipment, Ordel's employment and the 
 A later hearing shows another officer using the new instruction, exposes a flaw in the form and resolves the original case's remaining updates.
 These are authored civilian and professional events; the module does not spawn native NPCs, issue an actual crusade decree or alter kingdom statistics.
 
-A private evening offers kissing, non-graphic intimacy, holding or company without touch.
+A private evening offers kissing, graphic and explicit intimacy, holding or company without touch.
 The final travel outing uses Sella's road drawings and a played city exercise.
 Its measured and shortcut outcomes differ, and the shared callbacks no longer invent a locked-gate encounter on the measured path.
 The future choice is lasting commitment, an open continuing relationship or friendship after courtship.

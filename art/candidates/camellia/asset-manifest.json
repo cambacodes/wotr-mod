@@ -1,0 +1,29 @@
+[
+  {
+    "file": "Camellia-native.png",
+    "sha256": "5A369122455143E1E449ECD3C7A667C55B51E889301AB00F393D8D873C3F33A3",
+    "dimensions": [
+      692,
+      1024
+    ],
+    "status": "native research reference"
+  },
+  {
+    "file": "private-glance-v1.png",
+    "sha256": "A512AC3257E4F2F9F09E7DD8661E20764B7A9758108668AF0352D7AC506B2563",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  },
+  {
+    "file": "public-composure-v1.png",
+    "sha256": "4CC8F7382FA3E1E78C38245088E90B87F74155053D60E3BD06F9F0B2E64D0FE4",
+    "dimensions": [
+      1031,
+      1525
+    ],
+    "status": "unassigned candidate; independent review pending"
+  }
+]

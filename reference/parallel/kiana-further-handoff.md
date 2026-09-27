@@ -41,7 +41,7 @@ The player can agree to wait for her request or retain the right to object to hu
 Different replies address the actual choice to speak or remain silent at the yard.
 Waited, affair, and widow histories then lead to separate private exchanges.
 The affair branch keeps responsibility for the undisclosed kiss; a stranger's cruelty does not retroactively make it considerate.
-The closing intimacy is adult and non-graphic, with a private evening or an unadvertised walk.
+The closing intimacy is adult and graphic and explicit, with a private evening or an unadvertised walk.
 Neither changes commitment or demands exclusivity.
 
 ## Integration contract

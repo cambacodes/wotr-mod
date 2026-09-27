@@ -1,0 +1,13 @@
+{
+  "portrait_path": "Units/PortraitsGenerated/902e2889bba6c514788b35a7e3e39db5_BCT_Kaylessa.jbp",
+  "portrait_id": "f1d4b8ee52d14783a73cf6dea090ed41",
+  "texture_id": "35506412016c0c34bb7d9ed731ca9c40",
+  "texture_name": "902e2889bba6c514788b35a7e3e39db5_BCT_Kaylessa",
+  "dimensions": [
+    184,
+    244
+  ],
+  "png_sha256": "820dab15572e6b4ae0f474109364e81207305b4cb4d4b81dd2f127a50a4cb9de",
+  "bundle": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Bundles\\portraits",
+  "method": "UnityPy original Texture2D decode, no editing"
+}

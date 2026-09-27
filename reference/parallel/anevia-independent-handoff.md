@@ -71,7 +71,7 @@ Dema chooses limited cooperation and can instead be spared the delivery.
 The confrontation trades preserving receipts against stopping the buyer, and the consequence scene retains the resulting repayment and evidence limitations.
 No investigation outcome awards or removes affection for passing a roll.
 
-The ordinary private evening includes competition, playful experimentation, personal disclosure and a choice among adult non-graphic intimacy, quiet sleep or keeping a promise elsewhere.
+The ordinary private evening includes competition, playful experimentation, personal disclosure and a choice among adult graphic and explicit intimacy, quiet sleep or keeping a promise elsewhere.
 All lead to a real continued relationship rather than treating sex as mandatory progression.
 The later key conversation offers lasting commitment, open continuation or a local parting.
 

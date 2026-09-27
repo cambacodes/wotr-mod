@@ -14,7 +14,7 @@ No shared source, tests, exports, native data or installed files were changed.
 | late_lesson | late_course_planned | An actual shield lesson puts those two arrangements into practice; a time-limited participant receives either one practiced movement or a useful question exposing misunderstanding. |
 | late_page | late_lesson_kept | Seelah makes personal plans with current native quest-outcome reactivity and either an Elan memory, an unsent draft or an unresolved-rescue conversation; Commander names a personal wish. |
 | late_race | late_lesson_kept and late_page_kept | Practice consequences appear; Commander runs or judges; the race produces a win or loss, different songs and remembered desire. |
-| late_afterglow | late_race_kept | Her competitive pleasure develops into direct attraction; a voluntary non-graphic night, kisses only or quiet company each completes the evening. |
+| late_afterglow | late_race_kept | Her competitive pleasure develops into direct attraction; a voluntary graphic and explicit night, kisses only or quiet company each completes the evening. |
 | late_first_step | late_evening_kept | The Commander's chosen wish is enacted as a music visit or a rented cupboard with actual reserved space; existing commitment is acknowledged without setting or removing it. |
 
 Every scene additionally requires `seelah.courting` and `seelah.aftermath_ready`.

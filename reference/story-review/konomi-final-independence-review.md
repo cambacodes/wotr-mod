@@ -24,7 +24,7 @@ Page versus memory and wanting to be missed versus wondering about her independe
 Konomi can want ordinary company, ask for help, attend a reception and pursue work without becoming a reward for the Commander's loneliness.
 The response to admitting that one wanted her to miss every day is especially useful because she answers the admission without agreeing to rewrite her own experience.
 The voluntary kiss and quiet-company ending are both complete romantic responses.
-The prose is mature and non-graphic.
+The prose is mature and graphic and explicit.
 
 The already-discussed ordinary letter branch avoids a second first presentation after a later dismissal.
 The unrecorded branch does not manufacture an Abyss letter.

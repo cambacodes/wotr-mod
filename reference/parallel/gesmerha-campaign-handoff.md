@@ -50,7 +50,7 @@ Neither option restores her sight, changes native mythic powers, settles Winters
 Courtship or slow exploration can become a mutually chosen adult relationship, remain open or become friendship.
 Existing friendship does not turn into romance without another invitation.
 The relationship discussion permits other relationships, requires honest time and excludes promises made on another person's behalf.
-The private-door and holding alternatives give different, non-graphic intimacy tempos.
+The private-door and holding alternatives give different, graphic and explicit intimacy tempos.
 The scene discusses an uncertain future absence without claiming the Commander has received an unplayed mission order.
 
 `the_voice_at_court` remembers paired trays versus the narrow board, actual lover/slow/friend intentions and the observed native future report.

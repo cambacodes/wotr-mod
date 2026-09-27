@@ -10,7 +10,7 @@ The author supplies no editorial score and cannot independently approve this wor
 
 The uncounted shore is a sixteen-visit living continuation of the existing RanRomance Chapter 5 dream relationship.
 It contains 120 visit nodes and eight supplementary ending nodes, for 128 nodes total.
-All intimate participants are adults; new intimacy is non-graphic.
+All intimate participants are adults; new intimacy is graphic and explicit.
 No portrait has been assigned and no art is claimed complete.
 
 Nocticula asks the Commander to investigate a private passage operating under a stolen remnant of her protection.
@@ -125,7 +125,7 @@ The private night introduces the book's flood and poisoner anecdote itself rathe
 The her_own_face common opening explicitly acknowledges the continuing gift and its coercive potential.
 Nocticula chooses to ask for an answer in this meeting; neither the scene nor its effects removes her existing power.
 The demonstration's anger, the threat against Dessa's employer, and several aftermath responses now show specific appetites and conduct instead of relying on a narrator's statement that she remains dangerous.
-Private final company and alliance scenes contain actual exchanges and physical intimacy within the non-graphic limit, replacing assurances about what the encounter should mean.
+Private final company and alliance scenes contain actual exchanges and physical intimacy within the graphic and explicit limit, replacing assurances about what the encounter should mean.
 A sustained narration pass removed author-facing moral and ending guarantees across the investigation, aftermath, final invitation, and all eight recollections.
 This is an editorial revision submitted for judgment, not proof that the character voice now passes.
 

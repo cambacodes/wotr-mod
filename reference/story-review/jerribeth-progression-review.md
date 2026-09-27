@@ -68,7 +68,7 @@ That is a more specific romantic change than another promise to respect consent 
 The finished physical section also gives the imaginary ambition a material limit.
 Serit still expects payment for the next section, and she has not bought a whole room simply by imagining it.
 
-The remote intimate option is adult and non-graphic.
+The remote intimate option is adult and graphic and explicit.
 Both sets of hands remain on their respective sides, and the shared experience consists of spoken description and voluntary response.
 The alternative remains close company with the image open.
 No kiss, physical visit, transported object, mind-reading power or new portal is smuggled through the charm.

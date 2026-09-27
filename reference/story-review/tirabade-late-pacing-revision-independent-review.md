@@ -93,7 +93,7 @@ This is not a count of the final combined source candidate or a single selected 
 | Recognizable character behavior and canon distinction | 93 |
 | Prose and pacing of the revised passages | 94 |
 | Continuity across the affected branches and joins | 93 |
-| Mature non-graphic romantic tension | 93 |
+| Mature graphic and explicit romantic tension | 93 |
 | Wives' mutual attraction and independent wishes | 94 |
 | Meaningful framing of the retained player decisions | 94 |
 

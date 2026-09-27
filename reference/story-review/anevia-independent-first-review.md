@@ -29,7 +29,7 @@ Dema can decline the dangerous delivery, and the later repayment problem remembe
 These are meaningful player actions, even though their world effects currently exist in authored book-event prose rather than inventory or native quest changes.
 
 The goat game, the difficulty undoing a buckle while laughing, and Anevia's quick practical jokes create convincing adult attraction.
-Intimacy is non-graphic, voluntary and compatible with choosing quiet company or keeping another appointment.
+Intimacy is graphic and explicit, voluntary and compatible with choosing quiet company or keeping another appointment.
 The route permits a local refusal without closing Irabeth's romance or every other partner.
 The negotiated opening, actual single-affair disclosure and established-triad date make materially different claims about how the relationship began.
 They do not simply erase the old affair flags.
@@ -159,7 +159,7 @@ These are editorial judgments for this exact revision, not automatic test result
 | --- | ---: | --- |
 | Prose and pacing | 86 | Strong concrete moments repeatedly diluted by explanations of their intended meaning. |
 | Native characterization | 87 | Humor, observation and loyalty work; native roughness, practical edge and specific future dream need stronger continuity. |
-| Adult romantic development | 92 | Actual attraction, personal dates and voluntary non-graphic intimacy beyond a mere acquisition flag. |
+| Adult romantic development | 92 | Actual attraction, personal dates and voluntary graphic and explicit intimacy beyond a mere acquisition flag. |
 | Player participation and agency | 93 | Useful investigation alternatives, failure consequences, distinct relationship answers and local exits. |
 | Branch continuity and remembered history | 76 | Reproduced wrong chronology, commitment contradiction and missing provisional bereavement ending, plus physical joins. |
 | Campaign depth and history coverage | 85 | Substantial ordinary route; bereaved and unavailable histories remain limited and integration is pending. |
