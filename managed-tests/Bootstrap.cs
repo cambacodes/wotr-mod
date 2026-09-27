@@ -25,7 +25,13 @@ internal static class Bootstrap
             }
             return null;
         };
-        try { return (int)typeof(Bootstrap).Assembly.GetType("Program").GetMethod("Run").Invoke(null, new object[] { game, Path.GetFullPath(args[1]), mod }); }
+        try
+        {
+            // RRT_TEST_LOAD=1 runs the real UMM entry point (Main.Load + Harmony PatchAll) instead of the Build suite.
+            if (Environment.GetEnvironmentVariable("RRT_TEST_LOAD") == "1")
+                return (int)typeof(Bootstrap).Assembly.GetType("LoadSmokeTests").GetMethod("Run").Invoke(null, new object[] { Path.GetFullPath(args[1]), mod });
+            return (int)typeof(Bootstrap).Assembly.GetType("Program").GetMethod("Run").Invoke(null, new object[] { game, Path.GetFullPath(args[1]), mod });
+        }
         catch (Exception ex) { Console.Error.WriteLine(ex); return 1; }
     }
 

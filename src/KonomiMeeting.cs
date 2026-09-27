@@ -300,7 +300,7 @@ namespace Tirabade
             [JsonProperty] public bool Failed;
             [JsonIgnore] public bool Placed;
         }
-        [TypeId("b460e4d8f74f48e28dc474568382ff24b")]
+        [TypeId("b460e4d8f74f48e28dc474568382ff24")]
         public sealed class Placement : EtudeBracketTrigger<MeetingData>, IEtudesUpdateHandler
         {
             internal KonomiMeeting Meeting = null!;
