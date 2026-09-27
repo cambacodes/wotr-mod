@@ -25,6 +25,7 @@ from storylines import konomi_contact, konomi_political_consequence
 from storylines import konomi_missed_contact
 from storylines import konomi_retained_return
 from storylines import konomi_return_invitation
+from storylines import minagho_chivarro_continuation
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
 from storylines import gesmerha_campaign
@@ -246,6 +247,10 @@ def make_expansion(*, independent_tirabade=True):
         "Accept her reply to arrange the first visit. Visits require her to be well enough and available to meet. "
         "A return does not reverse an earlier refusal or restore her office."
     )
+    minagho_chivarro_continuation.integrate(payload)
+    payload["Scenes"].extend(copy.deepcopy(minagho_chivarro_continuation.SCENES))
+    payload["ParentEpilogueEdits"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_EDITS)
+    payload["ParentEpilogueLossRules"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_LOSS_RULES)
     return payload
 
 

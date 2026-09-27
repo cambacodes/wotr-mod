@@ -316,6 +316,12 @@ internal static class Program
             VellexiaCampaignTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "vellexia").Select(s => s.Id));
         }
+        if (story.Relationships.ContainsKey("minagho_chivarro"))
+        {
+            MinaghoChivarroContinuationTests.Run(story, Check);
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "minagho_chivarro"
+                && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).Select(s => s.Id));
+        }
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
@@ -402,6 +408,7 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "konomi.the_unintroduced_letter")) KonomiMissedContactTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.retained_inquiry")) KonomiRetainedReturnTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.return_letter")) KonomiReturnInvitationTests.Run(story, Check);
+        if (story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0) ParentEndingRulesTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) KonomiEarlyReciprocityTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) ArankaContinuationTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) KonomiContactTests.Run(story, Check);

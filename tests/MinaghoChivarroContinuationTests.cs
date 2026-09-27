@@ -152,11 +152,13 @@ internal static class MinaghoChivarroContinuationTests
         foreach (var page in visits.SelectMany(s => s.Nodes.Select(n => s.Id + "/" + n.Id))) check(reached.Contains(page), "No earned-history witness for page " + page);
         foreach (var flag in visits.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct())
             check(produced.Contains(flag), "No played producer for outcome " + flag);
+        var witnessedEndings = new HashSet<string>();
         foreach (var state in finished.Concat(partial))
         {
             var complete = state.Has("minachiv.complete");
             var ordinary = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, state)).ToArray();
             check(ordinary.Length == 1, "Normal ending overlap/gap: " + string.Join(",", ordinary.Select(e => e.Id)));
+            witnessedEndings.Add(ordinary[0].Id);
             check(complete || ordinary[0].Id.Contains("unfinished"), "Interrupted history receives a completed farewell.");
             if (!complete && state.Has("minachiv.chivarro_lasting")) check(ordinary[0].Id == "minachiv.ending_unfinished_lasting", "Interrupted farewell erases an already chosen Chivarro commitment.");
             foreach (var variant in new[]
@@ -173,10 +175,14 @@ internal static class MinaghoChivarroContinuationTests
                 var selected = endings.Where(e => e.Owner == "Epilogue" && Rules.Available(story, e, changed)).ToArray();
                 var expected = prefix + "ending_" + variant.Item2 + (complete ? "_completed" : "");
                 check(selected.Length == 1 && selected[0].Id == expected, "Special ending arbitration failed: " + expected);
+                witnessedEndings.Add(selected[0].Id);
             }
             var aeon = endings.Where(e => e.Owner == "AeonEpilogue" && Rules.Available(story, e, state)).ToArray();
             check(aeon.Length == 1 && aeon[0].Id == "minachiv.ending_aeon" + (complete ? "_completed" : ""), "Aeon ending lacks an earned complete/interrupted witness.");
+            witnessedEndings.Add(aeon[0].Id);
         }
+        foreach (var ending in endings)
+            check(witnessedEndings.Contains(ending.Id), "No played-history witness selects ending " + ending.Id);
         foreach (var scene in visits)
         foreach (var choice in scene.Nodes.SelectMany(n => n.Choices))
             check(choice.Set.All(f => f.StartsWith(prefix, StringComparison.Ordinal)) && choice.Revive == null, "Continuation writes parent progress or invents recovery.");
