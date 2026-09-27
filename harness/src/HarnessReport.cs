@@ -135,6 +135,8 @@ namespace RRT.TestHarness
         public int RoundTripsPassed;
         public int RoundTripsFailed;
         public List<string> Failures = new List<string>();
+        // Saves that could not be exercised for reasons outside RRT (e.g. the save opens inside a native dialog).
+        public List<string> Skipped = new List<string>();
     }
 
     public sealed class HarnessReport
@@ -165,7 +167,11 @@ namespace RRT.TestHarness
                 if (save.LoadOk) s.SavesLoaded++;
                 else s.Failures.Add(save.Save + ": load failed: " + save.LoadError);
                 if (save.StateError != null) s.Failures.Add(save.Save + ": State() failed: " + save.StateError);
-                if (save.NotIdle != null) s.Failures.Add(save.Save + ": loaded but never idle: " + save.NotIdle);
+                // A save that opens inside a native (non-RRT) dialog or cutscene cannot be driven; that is a save choice, not a defect.
+                bool nativeHold = save.NotIdle != null && save.NotIdle.StartsWith("dialog open:", StringComparison.Ordinal)
+                    && save.NotIdle.IndexOf("RRT_", StringComparison.Ordinal) < 0;
+                if (nativeHold) s.Skipped.Add(save.Save + ": opens inside a native dialog (" + save.NotIdle + "); pick a save made in free roam");
+                else if (save.NotIdle != null) s.Failures.Add(save.Save + ": loaded but never idle: " + save.NotIdle);
                 foreach (var run in save.Runs)
                 {
                     s.Runs++;

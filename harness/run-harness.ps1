@@ -316,6 +316,7 @@ try {
         }
         Say ("Runs {0}/{1} passed, choices {2}, relevant exceptions {3}, oracle failures {4}" -f $s.RunsPassed, $s.Runs, $s.Choices, $s.RelevantExceptions, $s.OracleFailures)
         foreach ($f in @($s.Failures) | Select-Object -First 25) { Say "  - $f" Red }
+        if ($s.PSObject.Properties['Skipped']) { foreach ($k in @($s.Skipped)) { Say "  (skipped) $k" Yellow } }
         if ($s.Passed) { Say 'PASS' Green; $exitCode = 0 }
         elseif ($r.Status -ne 'complete') { Say 'FAIL (harness did not complete)' Red; $exitCode = 2 }
         else { Say 'FAIL' Red; $exitCode = 1 }

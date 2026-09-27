@@ -92,6 +92,7 @@ namespace RRT.TestHarness
         private static readonly (string Pattern, string Reason)[] KnownBenign =
         {
             ("[Audio] Failed to play sound evt_RRT.", "WOTR_AIVO requests a voice clip for every cue; RRT cues are unvoiced (audio only, no effect on dialogue)"),
+            ("[Audio] Failed to play sound ev_stop_aivo", "WOTR_AIVO stop event when an unvoiced RRT cue interrupts playback (audio only)"),
         };
 
         internal static string? BenignReason(string message) =>
