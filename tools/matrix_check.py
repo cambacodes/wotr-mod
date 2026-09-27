@@ -224,6 +224,10 @@ def main():
     ap.add_argument("--allow-todo", action="store_true", help="report open TODO(B) markers without failing on them")
     ap.add_argument("--quiet", action="store_true", help="summary table only")
     a = ap.parse_args()
+    try:   # matrix text carries arrows and em dashes; never crash a Windows console on them
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
     matrix = json.loads(Path(a.matrix).read_text(encoding="utf-8"))
     known = story_keys(a.story)
     out, rows = {}, []

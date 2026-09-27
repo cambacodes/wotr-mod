@@ -1928,6 +1928,10 @@ def main():
     ap.add_argument("--queue-cap", type=int, default=2, help="E9: undelivered letters per relationship (E8 QueueCapPerRelationship)")
     ap.add_argument("--sim-natives", help="E9: extra native keys held from a chapter, e.g. 'seelah.souls_returned:5,vellexia.native_finished:3'")
     a = ap.parse_args()
+    try:   # matrix text carries arrows and em dashes; never crash a Windows console on them
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
     def per_chapter(text, cast):
         if not text: return {}
         if ":" not in text: return {c: cast(text) for c in range(1, 7)}
