@@ -268,6 +268,19 @@ namespace Tirabade
             .FirstOrDefault(scene => IsRemote(scene) && !scene.ManualOnly
                 && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state));
 
+        // Fair rest delivery (GLOBAL-03): the relationship served least recently goes first, then the one whose
+        // chapter window closes soonest; within a relationship, authored order is kept.
+        public static Scene? NextRemote(Story story, Snapshot state, IReadOnlyDictionary<string, int> lastServedHour) => story.Scenes
+            .Where(scene => IsRemote(scene) && !scene.ManualOnly
+                && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state))
+            .GroupBy(scene => scene.Relationship)
+            .OrderBy(group => lastServedHour.TryGetValue(group.Key, out int hour) ? hour : int.MinValue)
+            .ThenBy(group => group.Min(scene => scene.MaxChapter))
+            .Select(group => group.First()).FirstOrDefault();
+
+        public const string ServedPrefix = "served.";
+
+
         public static string[] EntryTargets(Scene scene)
         {
             if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return Array.Empty<string>();
@@ -332,8 +345,8 @@ namespace Tirabade
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys)
-                .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal)))
-                throw new InvalidOperationException("The " + DegradedPrefix + " prefix is reserved for runtime integration state.");
+                .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
+                throw new InvalidOperationException("The " + DegradedPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")

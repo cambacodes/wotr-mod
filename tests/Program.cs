@@ -236,6 +236,7 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
+        FairRestTests.Run(Check);
         PrerequisiteGroupsTests.Run(Check);
         TargonaContinuation();
         ArankaContinuation();

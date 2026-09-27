@@ -256,6 +256,8 @@ namespace Tirabade
                 foreach (string key in new[] { KonomiMeetingRetry, IrabethMeetingRetry, "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
                     "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words", NurahMeetingRetry })
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
+                foreach (string key in story.Relationships.Keys.Select(key => Rules.ServedPrefix + key))
+                    if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 var konomiEtude = New<BlueprintEtude>("etude.konomi.personal_return");
                 var irabethEtude = New<BlueprintEtude>("etude.irabeth.personal_return");
                 var nurahEtude = New<BlueprintEtude>("etude.nurah.private_meeting");
@@ -523,8 +525,37 @@ namespace Tirabade
             objectives.Add(id, objective);
         }
 
+        // One snapshot per frame (GLOBAL-11): opening a native list with ~60 RRT entries used to rebuild it ~120 times.
+        // Invalidated by every RRT flag write; a native change in the same frame is picked up on the next frame.
+        private static Snapshot? cachedState;
+        private static int cachedFrame = -1;
+        private static object? cachedPlayer;
+        internal static int StateBuilds;
+
+        [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)]
+        private static int UnityFrame() => Time.frameCount;
+
+        private static int CurrentFrame()
+        {
+            try { return UnityFrame(); }
+            catch { return -1; } // outside Unity (managed tests): never cache
+        }
+
+        internal static void InvalidateState() => cachedState = null;
+
         internal static Snapshot State()
         {
+            int frame = CurrentFrame();
+            var owner = Game.Instance?.Player;
+            if (frame >= 0 && cachedState != null && cachedFrame == frame && ReferenceEquals(cachedPlayer, owner)) return cachedState;
+            var built = BuildState();
+            if (frame >= 0) { cachedState = built; cachedFrame = frame; cachedPlayer = owner; }
+            return built;
+        }
+
+        private static Snapshot BuildState()
+        {
+            StateBuilds++;
             var player = Game.Instance.Player;
             var state = new Snapshot { Chapter = player.Chapter, Hour = (int)player.GameTime.TotalHours,
                 Area = Game.Instance.CurrentlyLoadedArea?.AssetGuid.ToString() ?? "" };
@@ -595,7 +626,11 @@ namespace Tirabade
                 if (dialog.ShownDialogs.Contains(started.Value)) state.Flags.Add(started.Key);
         }
 
-        private static void Set(string key, int value = 1) => Game.Instance.Player.UnlockableFlags.SetFlagValue(flags[key], value);
+        private static void Set(string key, int value = 1)
+        {
+            Game.Instance.Player.UnlockableFlags.SetFlagValue(flags[key], value);
+            InvalidateState();
+        }
 
         private static void ReportRecovery(string message)
         {
@@ -908,7 +943,9 @@ namespace Tirabade
             if (restPending && pending == null)
             {
                 restPending = false;
-                pending = Rules.NextRemote(story, state);
+                var served = story.Relationships.Keys.ToDictionary(key => key, key =>
+                    flags.TryGetValue(Rules.ServedPrefix + key, out var flag) ? Game.Instance.Player.UnlockableFlags.GetFlagValue(flag) - 1 : -1);
+                pending = Rules.NextRemote(story, state, served);
             }
             if (pending == null || Time.frameCount < pendingFrame) return;
             var scene = pending;
@@ -918,6 +955,9 @@ namespace Tirabade
             Set(story.Relationships[scene.Relationship].StartedFlag);
             var objective = objectives[scene.Relationship];
             if (Game.Instance.Player.QuestBook.GetObjectiveState(objective) == QuestObjectiveState.None) Game.Instance.Player.QuestBook.GiveObjective(objective);
+            // Remember when each relationship last received a letter so the next rest serves someone else first.
+            if (flags.ContainsKey(Rules.ServedPrefix + scene.Relationship))
+                Set(Rules.ServedPrefix + scene.Relationship, Math.Max(1, (int)Game.Instance.Player.GameTime.TotalHours + 1));
             Game.Instance.DialogController.StartDialogWithoutTarget(dialogs[scene.Id], null);
         }
 

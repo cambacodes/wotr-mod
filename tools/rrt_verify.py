@@ -490,6 +490,7 @@ def build_names(model):
     for k in ["irabeth.return_meeting_retry", "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
               "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words"]:
         if k not in keys: names.append(("flag." + k, "BlueprintUnlockableFlag"))
+    names += [("flag.served." + rid, "BlueprintUnlockableFlag") for rid in model.rels if "served." + rid not in keys]
     names += [("etude.konomi.personal_return", "BlueprintEtude"), ("etude.irabeth.personal_return", "BlueprintEtude"),
               ("etude.nurah.private_meeting", "BlueprintEtude")]
     for rid in model.rels:
