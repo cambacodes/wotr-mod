@@ -21,6 +21,10 @@ namespace Tirabade
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
         public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
+        // E8 (TT-09, ER-4): a successful rest delivers up to PostBagSize letters, at most one per rotation key, and a
+        // relationship never holds more than QueueCapPerRelationship undelivered letters.
+        public int PostBagSize = 3;
+        public int QueueCapPerRelationship = 2;
         public Dictionary<string, Relationship> Relationships = new Dictionary<string, Relationship>
         {
             ["tirabade"] = new Relationship
@@ -86,6 +90,8 @@ namespace Tirabade
         public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
         // E7: authoring metadata for the verifier (TT-20). Opaque to the runtime; only its shape is validated.
         public Dictionary<string, TricksterAccess> TricksterAccess = new Dictionary<string, TricksterAccess>();
+        // ER-4: relationships sharing a rotation key (e.g. nocticula and nocticula.acquisition) share one post-bag slot.
+        public string? RotationKey;
     }
 
     public sealed class TricksterAccess
@@ -173,6 +179,34 @@ namespace Tirabade
         public string Success = "";
         public string Failure = "";
         public bool CommanderOnly = true;
+    }
+
+    // E8: the undelivered letters of successive rests. Main starts the next one whenever no dialog is open, so a
+    // finished RRT letter chains into the next (after the 2-frame UI delay in Main.Queue).
+    public sealed class PostBag
+    {
+        public readonly List<Scene> Queue = new List<Scene>();
+
+        public int Fill(Story story, Snapshot state, IReadOnlyDictionary<string, int> lastServedHour, int size)
+        {
+            var bag = Rules.NextRemoteBag(story, state, lastServedHour, size, Queue, Math.Max(1, story.QueueCapPerRelationship));
+            Queue.AddRange(bag);
+            return bag.Count;
+        }
+
+        // The next letter still deliverable now; letters that stopped being available are dropped.
+        public Scene? Next(Story story, Snapshot state)
+        {
+            while (Queue.Count > 0)
+            {
+                var scene = Queue[0];
+                Queue.RemoveAt(0);
+                if (Rules.Available(story, scene, state)) return scene;
+            }
+            return null;
+        }
+
+        public void Clear() => Queue.Clear();
     }
 
     public sealed class Snapshot
@@ -413,6 +447,30 @@ namespace Tirabade
 
         public const string ServedPrefix = "served.";
 
+        public static string RotationKey(Story story, string relationship) =>
+            story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
+
+        // E8: one rest's post bag. Groups the deliverable letters by rotation key, takes the most urgent keys first (soonest
+        // closing chapter window, then least recently served), one letter per key (its first in authored order), skips a
+        // relationship that already holds `cap` undelivered letters, and returns the bag in story list order.
+        public static List<Scene> NextRemoteBag(Story story, Snapshot state, IReadOnlyDictionary<string, int> lastServedHour,
+            int size, IReadOnlyCollection<Scene>? queued = null, int cap = int.MaxValue)
+        {
+            queued ??= Array.Empty<Scene>();
+            int Served(string relationship) => lastServedHour.TryGetValue(relationship, out int hour) ? hour : int.MinValue;
+            var order = story.Scenes.Select((scene, index) => (scene, index)).ToDictionary(pair => pair.scene, pair => pair.index);
+            return story.Scenes
+                .Where(scene => IsRemote(scene) && !scene.ManualOnly && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    && !queued.Contains(scene) && queued.Count(other => other.Relationship == scene.Relationship) < cap
+                    && Available(story, scene, state))
+                .GroupBy(scene => RotationKey(story, scene.Relationship))
+                .OrderBy(group => group.Min(scene => scene.MaxChapter))
+                .ThenBy(group => group.Max(scene => Served(scene.Relationship)))
+                .Take(Math.Max(0, size))
+                .Select(group => group.First())
+                .OrderBy(scene => order[scene]).ToList();
+        }
+
 
         public static string[] EntryTargets(Scene scene)
         {
@@ -533,6 +591,9 @@ namespace Tirabade
                 if (pair.Value.TricksterAccess == null || pair.Value.TricksterAccess.Any(access => string.IsNullOrWhiteSpace(access.Key)
                     || access.Value == null || access.Value.Detect == null || access.Value.Detect.Any(string.IsNullOrWhiteSpace)))
                     throw new InvalidOperationException("Malformed TricksterAccess metadata: " + pair.Key);
+            if (story.PostBagSize < 1 || story.PostBagSize > 10 || story.QueueCapPerRelationship < 1
+                || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
+                throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
             foreach (var key in story.PermanentEtudes)
                 if (!story.Etudes.ContainsKey(key)) throw new InvalidOperationException("Unknown permanent etude: " + key);
             var ids = new HashSet<string>();

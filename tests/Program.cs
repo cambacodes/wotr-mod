@@ -239,6 +239,7 @@ internal static class Program
             return;
         }
         FairRestTests.Run(Check);
+        PostBagTests.Run(Check);
         PrerequisiteGroupsTests.Run(Check);
         TargonaContinuation();
         ArankaContinuation();

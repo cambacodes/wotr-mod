@@ -33,6 +33,8 @@ namespace Tirabade
     public sealed class Settings : UnityModManager.ModSettings
     {
         public bool Narration = true;
+        // E8: letters per rest; 0 uses Story.PostBagSize.
+        public int PostBagSize;
         public override void Save(UnityModManager.ModEntry entry) => Save(this, entry);
     }
 
@@ -67,6 +69,9 @@ namespace Tirabade
         private static Process? narrator;
         private static float pollAt;
         private static bool restPending;
+        private static readonly PostBag postBag = new PostBag();
+        private static object? postBagPlayer;
+        private static int BagSize() => settings.PostBagSize > 0 ? settings.PostBagSize : story.PostBagSize;
         private static KonomiMeeting? konomiMeeting;
         private static IrabethMeeting? irabethMeeting;
         private static NurahMeeting? nurahMeeting;
@@ -980,6 +985,8 @@ namespace Tirabade
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();
+            // Undelivered letters belong to the save that rested; loading another save drops them.
+            if (postBag.Queue.Count > 0 && !ReferenceEquals(postBagPlayer, Game.Instance?.Player)) postBag.Clear();
             if (recoveryPlayer != null && !ReferenceEquals(recoveryPlayer, Game.Instance?.Player))
             {
                 recoveryMessage = null;
@@ -995,12 +1002,21 @@ namespace Tirabade
                 if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.Started
                     && Rules.Failed(story.Relationships[pair.Key], state)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
             }
-            if (restPending && pending == null)
+            if (restPending)
             {
                 restPending = false;
                 var served = story.Relationships.Keys.ToDictionary(key => key, key =>
                     flags.TryGetValue(Rules.ServedPrefix + key, out var flag) ? Game.Instance.Player.UnlockableFlags.GetFlagValue(flag) - 1 : -1);
-                pending = Rules.NextRemote(story, state, served);
+                int added = postBag.Fill(story, state, served, BagSize());
+                postBagPlayer = Game.Instance.Player;
+                if (added > 0) entry.Logger.Log("Post bag: " + added + " letter(s) after rest; " + postBag.Queue.Count + " waiting.");
+            }
+            // E8: whenever no dialog is open, the next undelivered letter follows (a finished letter chains into the next).
+            if (pending == null && postBag.Queue.Count > 0 && postBag.Next(story, state) is Scene next)
+            {
+                pending = next;
+                pendingPlayer = Game.Instance.Player;
+                pendingFrame = Time.frameCount + 2;
             }
             if (pending == null || Time.frameCount < pendingFrame) return;
             var scene = pending;
@@ -1037,6 +1053,7 @@ namespace Tirabade
             pending = null;
             pendingPlayer = null;
             restPending = false;
+            postBag.Clear();
             StopNarration();
         }
 
@@ -1048,6 +1065,12 @@ namespace Tirabade
             if (settings.Narration && !narration) StopNarration();
             settings.Narration = narration;
             if (GUILayout.Button("Stop narration")) StopNarration();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Letters delivered per rest: " + BagSize() + (settings.PostBagSize > 0 ? "" : " (story default)"));
+            if (GUILayout.Button("-", GUILayout.Width(30))) settings.PostBagSize = Math.Max(1, BagSize() - 1);
+            if (GUILayout.Button("+", GUILayout.Width(30))) settings.PostBagSize = Math.Min(10, BagSize() + 1);
+            if (settings.PostBagSize > 0 && GUILayout.Button("Default", GUILayout.Width(70))) settings.PostBagSize = 0;
+            GUILayout.EndHorizontal();
             GUILayout.Label("Windows narration is synthetic, not the original actors. Existing AI Voiceover lines are untouched.");
             if (error != null) { GUILayout.Label("Route initialization failed: " + error); return; }
             if (degraded.Count > 0) GUILayout.Label("Unavailable in this installation (missing game or RanRomance content): " + string.Join(", ", degraded.OrderBy(r => r)) + ". Other relationships are unaffected; details are in the mod log.");
