@@ -1102,6 +1102,66 @@
         "ff2042ad95e14b73a5f75f2cfd84b5e4",
         "RanRomFiller"
       ]
+    },
+    {
+      "Guid": "18affced672d4c56a52bf6ffc00601b9",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string text = \"18affced672d4c56a52bf6ffc00601b9\"; EtudeConfigurator.New(name, text)"
+    },
+    {
+      "Guid": "8a28bbd82568486bb757d00a2087a6cf",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string guid4 = \"8a28bbd82568486bb757d00a2087a6cf\"; EtudeConfigurator.New(name5, guid4)"
+    },
+    {
+      "Guid": "761ca3572c1145ebb755032d613bff46",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string text2 = \"761ca3572c1145ebb755032d613bff46\"; EtudeConfigurator.New(name6, text2)"
+    },
+    {
+      "Guid": "9591c34df22b4d518a059cf608255458",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string guid2 = \"9591c34df22b4d518a059cf608255458\"; EtudeConfigurator.New(name3, guid2)"
+    },
+    {
+      "Guid": "19e5d6f04b9b4483b2e2979baf8736e4",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string guid3 = \"19e5d6f04b9b4483b2e2979baf8736e4\"; EtudeConfigurator.New(name4, guid3)"
+    },
+    {
+      "Guid": "631bf0ede36742559cee476f34dcb5de",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "Evidence": "string text29 = \"631bf0ede36742559cee476f34dcb5de\"; CueConfigurator.New(Cue0020Name, text29)"
+    },
+    {
+      "Guid": "cb13766be07b448f8cacb477be32e13c",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "Evidence": "string text30 = \"cb13766be07b448f8cacb477be32e13c\"; CueConfigurator.New(Cue0021Name, text30)"
+    },
+    {
+      "Guid": "5388a7d7a1da48deb333d34abab1a6d0",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "Evidence": "string text31 = \"5388a7d7a1da48deb333d34abab1a6d0\"; CueConfigurator.New(Cue0022Name, text31)"
+    },
+    {
+      "Guid": "b3a4ce99bc30440fa9ebcbfce2776176",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "Evidence": "string text4 = \"b3a4ce99bc30440fa9ebcbfce2776176\"; CueConfigurator.New(Cue0002Name, text4)"
+    },
+    {
+      "Guid": "1110f2b6304549999fb546e7ecc4c8a1",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "Evidence": "string text11 = \"1110f2b6304549999fb546e7ecc4c8a1\"; CueConfigurator.New(Cue0007Name, text11)"
     }
   ],
   "MinaghoChivarroEvidence": {

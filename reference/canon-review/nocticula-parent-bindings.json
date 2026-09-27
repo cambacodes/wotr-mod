@@ -1,0 +1,72 @@
+{
+  "AssemblyPath": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\Mods\\RanRomance\\RanRomance.dll",
+  "AssemblySha256": "281239B19FF12675D2E8E48CD86B3759C38F6598A93E13F254A044C5E990DB68",
+  "Bindings": [
+    {
+      "Guid": "18affced672d4c56a52bf6ffc00601b9",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string text = \"18affced672d4c56a52bf6ffc00601b9\"; EtudeConfigurator.New(name, text)"
+    },
+    {
+      "Guid": "8a28bbd82568486bb757d00a2087a6cf",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string guid4 = \"8a28bbd82568486bb757d00a2087a6cf\"; EtudeConfigurator.New(name5, guid4)"
+    },
+    {
+      "Guid": "761ca3572c1145ebb755032d613bff46",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string text2 = \"761ca3572c1145ebb755032d613bff46\"; EtudeConfigurator.New(name6, text2)"
+    },
+    {
+      "Guid": "9591c34df22b4d518a059cf608255458",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string guid2 = \"9591c34df22b4d518a059cf608255458\"; EtudeConfigurator.New(name3, guid2)"
+    },
+    {
+      "Guid": "19e5d6f04b9b4483b2e2979baf8736e4",
+      "Type": "BlueprintEtude",
+      "Source": "RanRomance.Noct.Main.Configure",
+      "Evidence": "string guid3 = \"19e5d6f04b9b4483b2e2979baf8736e4\"; EtudeConfigurator.New(name4, guid3)"
+    },
+    {
+      "Guid": "631bf0ede36742559cee476f34dcb5de",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "Evidence": "string text29 = \"631bf0ede36742559cee476f34dcb5de\"; CueConfigurator.New(Cue0020Name, text29)"
+    },
+    {
+      "Guid": "cb13766be07b448f8cacb477be32e13c",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "Evidence": "string text30 = \"cb13766be07b448f8cacb477be32e13c\"; CueConfigurator.New(Cue0021Name, text30)"
+    },
+    {
+      "Guid": "5388a7d7a1da48deb333d34abab1a6d0",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "Evidence": "string text31 = \"5388a7d7a1da48deb333d34abab1a6d0\"; CueConfigurator.New(Cue0022Name, text31)"
+    },
+    {
+      "Guid": "b3a4ce99bc30440fa9ebcbfce2776176",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "Evidence": "string text4 = \"b3a4ce99bc30440fa9ebcbfce2776176\"; CueConfigurator.New(Cue0002Name, text4)"
+    },
+    {
+      "Guid": "1110f2b6304549999fb546e7ecc4c8a1",
+      "Type": "BlueprintCue",
+      "Source": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "Evidence": "string text11 = \"1110f2b6304549999fb546e7ecc4c8a1\"; CueConfigurator.New(Cue0007Name, text11)"
+    }
+  ],
+  "ReviewStatus": "Candidate source evidence awaiting independent review; not merged into expansion manifest.",
+  "SourceHashes": {
+    "Main.cs": "fd2580406a8eb01bcfbd80de73f782f1a1b7c34ad7f6814f7651280d673d58e2",
+    "NoctBook02Page002.cs": "2bbff934c809ef2289b401be0d4fdae050064879c5317241006737ec6da55731",
+    "NoctBook03Page003.cs": "45a7e2b1ce799af55c17980ce4209ba7003c4e9a757a11049dadadf0cd3a29f8"
+  }
+}

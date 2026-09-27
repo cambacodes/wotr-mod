@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("story", type=Path)
+    parser.add_argument("--output", type=Path, default=ROOT / "development/game-bindings-report.json")
     parser.add_argument("--parent-bindings", type=Path, help="Reviewed parent-mod evidence manifest, pinned to the installed assembly")
     parser.add_argument("--game", type=Path, default=Path(r"D:\SteamLibrary\steamapps\common\Pathfinder Second Adventure"))
     args = parser.parse_args()
@@ -57,7 +58,7 @@ def main():
         "binding_uses": len(bindings), "unique_targets": len(found),
         "failures": failures, "targets": found,
     }
-    report_path = ROOT / "development/game-bindings-report.json"
+    report_path = args.output
     report_path.parent.mkdir(exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     if failures:
