@@ -33,8 +33,8 @@ s("three_choose_days", "Before we call it the last evening",
     n("short", "Irabeth", '''"Then we will speak about leaving. I won't pretend the things we have not done are memories."
 {n}Anevia rubs a thumb across her wife's fingers.{/n}
 "I still want you here. That doesn't become untrue because we have less to look back on. We'll have to find out what we can make of the promise when there's time."
-{n}The remaining shared Drezen conversations will stay unfinished when you complete the final watch. This choice keeps the earlier promise, without treating those unplayed days as part of your history.{/n}''',
-      c('[Choose the shorter course and make the final watch available.]', flags=("three_progression.short_chosen",)),
+{n}Irabeth draws the lamp closer. Anevia keeps hold of her hand, waiting for you to sit with them.{/n}''',
+      c('[Make the final watch available; leave the remaining shared Drezen visits unfinished.]', flags=("three_progression.short_chosen",)),
       c('[Do not settle this yet.]', abort=True)),
 ], forbids=("last_watch", "three_rooms_unlocked.kept", "three_progression.developed"), delay=24)
 
@@ -45,7 +45,7 @@ s("three_more_days", "After the words already said",
 {n}Anevia looks toward Irabeth, who closes the paper she was reading.{/n}
 "Neither have I," Irabeth says. "I also haven't left. If we have time for another evening, I would like to use it."
 "There are things we never got round to," Anevia tells you. "We can pick up the next one. Nobody needs to tear up a farewell speech first."
-{n}The wives wait for your answer. Continuing will reopen the unfinished shared Drezen conversations while preserving the choices and goodbyes already recorded.{/n}''',
+{n}Irabeth lays the folded paper aside. Anevia leans against her chair, watching you.{/n}''',
       c('"I would like those evenings with you both."', "yes"),
       c('[Keep the earlier goodbye for now. You can ask again later.]', abort=True)),
     n("yes", "Irabeth", '''"Then come when you can stay. We will begin with the next thing we meant to do."
@@ -54,7 +54,7 @@ s("three_more_days", "After the words already said",
 "You may also be pleased," Irabeth says.
 "Very. I thought that was obvious."
 {n}She looks at you, and the smile she gives you leaves little doubt.{/n}''',
-      c('[Make time for the unfinished conversations.]', flags=("three_progression.catchup_requested",))),
+      c('[Resume unfinished shared Drezen visits, keeping earlier choices and goodbyes.]', flags=("three_progression.catchup_requested",))),
 ], requires=("last_watch",), forbids=("three_progression.developed",))
 
 
@@ -76,13 +76,16 @@ s("three_kept_days", "The days behind the promise",
 "We'd die of old age."
 {n}Anevia looks toward her wife, then at you.{/n}
 "I liked having you with me while we tried. I liked coming home afterward. That's what I want more of. You in the middle of a day, instead of only at the beginning of a grand promise."''', c('[Ask what Irabeth wants from those days.]', "beth")),
-    n("beth", "Irabeth", '''"I want to be able to ask for something before I have earned it by exhausting myself."
-{n}She smiles at Anevia's expression.{/n}
-"Yes. You have said so before. I am trying to say it for myself."
-"I'll be quiet for a moment, then."
-"A rare gift."
-{n}Irabeth turns toward you.{/n}
-"I want work I believe in. I want my wife. I want you. We will have to keep deciding how those wants fit into a day, and sometimes we will be bad at it. I have seen enough of us together to want the next attempt."
+    n("beth", "Irabeth", '''"I want to choose the next outing. Both of you have had ample opportunity to observe my dancing. I intend to find something at which you are equally vulnerable."
+"A threat," Anevia says, pleased.
+"An invitation. You may decline."
+"And let you think I'm frightened?"
+{n}Irabeth's smile broadens. She reaches past her wife to straighten your collar, though it needs no attention.{/n}
+"I want you to come looking for me, too. I like seeing you forget what you meant to say."
+"She practises that look," Anevia tells you.
+"With considerable success."
+{n}Irabeth leaves her fingers resting against your collar for another moment before sitting back.{/n}
+"Find us an evening. I will make the arrangements."
 {n}Anevia kisses her wife's hand before turning her own palm toward you.{/n}
 "Your answer?"''',
       c('"I want to keep building a life with you both, with room for the people and work we each love."', "keep"),
