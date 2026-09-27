@@ -42,3 +42,12 @@ The shared 588-scene report remained unmodified during this check.
 
 Before integration, rerun against the final independently reviewed manuscript, review the new tests, and verify the supplementary ending delivery against the existing parent ending sequence.
 The ten reviewed read bindings alone do not establish that ending integration contract.
+
+## Revised manuscript probe
+
+The author subsequently froze revision 9CDD2490621BCE273D3E36E7977208EAFBE41173E0D80ED0BCA8A42EF89E6E74 for independent rereview.
+Root combined that revision with the unchanged shared 588-scene export in Revised.json beside the isolated project.
+Candidate SHA256 is 57CF856A23048192AAD5A8E970BAB42EA729C6FBE9828DF10BADD23E7DCB20FC.
+The same actual Rules suite again passed 569,185 focused assertions.
+This repetition is tied to a newly frozen manuscript, not a new claim about the earlier version.
+Independent editorial rereview and review of the root-authored tests remain pending.
