@@ -68,6 +68,7 @@ namespace Tirabade
         private static float pollAt;
         private static bool restPending;
         private static KonomiMeeting? konomiMeeting;
+        private static ParentEndingIntegration? parentEndings;
         internal const string KonomiMeetingRetry = "konomi.return_meeting_retry";
 
         public static bool Load(UnityModManager.ModEntry mod)
@@ -149,6 +150,8 @@ namespace Tirabade
                 var targets = story.Scenes.SelectMany(Rules.EntryTargets).Distinct().ToDictionary(id => id, Get<BlueprintAnswersList>);
                 var epilogue = Get<BlueprintCueSequence>("ed4baeaf69394754902344f0598d7e5a");
                 var aeon = Get<BlueprintCueSequence>("ced82f299d246f448b48afa0b630dd70");
+                parentEndings = ParentEndingIntegration.Prepare(story, epilogue, aeon, Get<SimpleBlueprint>,
+                    id => New<BlueprintCue>(id), () => initialized && enabled ? State() : null);
                 foreach (var pair in story.Etudes) etudes.Add(pair.Key, Get<BlueprintEtude>(pair.Value));
                 foreach (var pair in story.CompletedQuests) completedQuests.Add(pair.Key, Get<BlueprintQuest>(pair.Value));
                 foreach (var pair in story.SeenCues) seenCues.Add(pair.Key, pair.Value.Select(Get<BlueprintCue>).ToArray());
@@ -203,6 +206,7 @@ namespace Tirabade
                     }
                     blueprint.OnEnable();
                 }
+                parentEndings?.Attach();
                 initialized = true;
                 entry.Logger.Log("Registered " + story.Scenes.Count + " scenes. Existing dialogue answers and finish actions preserved.");
             }
