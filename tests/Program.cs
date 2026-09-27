@@ -330,6 +330,7 @@ internal static class Program
         ForbidOverrideTests.Run(Check);
         TricksterLatchTests.Run(Check);
         UnavailableOverrideTests.Run(Check);
+        NativeForbidOverrideTests.Run(Check);
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
         PairedContactTests.Run(Check);

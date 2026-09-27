@@ -580,7 +580,10 @@ def validate(model):
             errs.append("Invalid chapter/timing: " + sid)
         if not s["Nodes"] or s["MinChapter"] > s["MaxChapter"]: errs.append("Invalid scene: " + sid)
         for a, b in s["ForbidOverrides"].items():
-            if a not in s["Forbids"] or a not in model.authored or b not in model.authored or a == b:
+            closed = {r["ClosedFlag"] for r in rels.values()}
+            if (a not in s["Forbids"] or (a in model.authored) == (a in model.native) or a in model.builtin_derived
+                    or (b not in model.authored and b not in model.latches) or b in model.native or b in model.builtin_derived
+                    or a == b or a in closed or b in closed):
                 errs.append("Invalid forbid override %s/%s" % (sid, a))
         nodes = {}
         for n in s["Nodes"]:

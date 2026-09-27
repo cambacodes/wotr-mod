@@ -205,8 +205,7 @@ namespace Tirabade
             if (state.Chapter < scene.MinChapter || state.Chapter > scene.MaxChapter || state.Has(scene.Id)) return false;
             if (scene.Chapters.Length > 0 && !scene.Chapters.Contains(state.Chapter)) return false;
             if (scene.Areas.Length > 0 && !scene.Areas.Contains(state.Area)) return false;
-            if (!scene.Requires.All(state.Has) || scene.Forbids.Any(flag => state.Has(flag)
-                && (!scene.ForbidOverrides.TryGetValue(flag, out var overrideFlag) || !state.Has(overrideFlag)))) return false;
+            if (!scene.Requires.All(state.Has) || scene.Forbids.Any(flag => ForbidHolds(scene, flag, state))) return false;
             if (scene.RequiresAny.Length > 0 && !scene.RequiresAny.Any(state.Has)) return false;
             if (!scene.RequiresAnyGroups.All(group => group.Any(state.Has))) return false;
             if (!ContactAvailable(story, scene, state)) return false;
@@ -234,6 +233,10 @@ namespace Tirabade
             return state.Hour - last >= scene.DelayHours;
         }
 
+        // A held Forbid blocks unless the scene's authored ForbidOverride for it is also held (E3: native keys too).
+        public static bool ForbidHolds(Scene scene, string flag, Snapshot state) => state.Has(flag)
+            && (!scene.ForbidOverrides.TryGetValue(flag, out var overrideFlag) || !state.Has(overrideFlag));
+
         // E2: a held UnavailableFlag blocks unless the relationship's authored return flag overrides it.
         // The device scene that performs the return necessarily Requires the overridable state itself; that
         // explicit requirement is the only other exemption, and only for flags the relationship declares overridable.
@@ -256,7 +259,7 @@ namespace Tirabade
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
                 && (scene.Areas.Length == 0 || scene.Areas.Contains(state.Area))
                 && scene.Requires.All(state.Has)
-                && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && state.Has(flag))
+                && !scene.Forbids.Any(flag => IsNativeFlag(story, flag) && ForbidHolds(scene, flag, state))
                 && !story.Relationships[scene.Relationship].UnavailableFlags.Any(flag => flag != recovery?.DeathFlag
                     && !(scene.AfterDeparture == "irabeth" && flag == "irabeth_gone") && Blocks(story.Relationships[scene.Relationship], flag, state, scene))
                 && (scene.AfterDeparture == null || !state.Has(story.Relationships[scene.Relationship].ClosedFlag)
@@ -451,13 +454,13 @@ namespace Tirabade
                     || scene.ContactUnit != null || scene.InteractionHub != null || scene.AnswerLists.Length != 1
                     || scene.Nodes.SelectMany(node => node.Choices).Any(choice => choice.Revive != null)))
                     throw new InvalidOperationException("Invalid native audience return: " + scene.Id);
+                // E3: the overridden key may be an authored flag or a native binding (never both, never runtime-derived
+                // or a closure). The override value must be authored: never native, runtime-derived or a closure.
                 foreach (var pair in scene.ForbidOverrides)
-                    if (!scene.Forbids.Contains(pair.Key) || !authoredFlags.Contains(pair.Key)
+                    if (!scene.Forbids.Contains(pair.Key) || authoredFlags.Contains(pair.Key) == nativeKeys.Contains(pair.Key)
                         || !authoredFlags.Contains(pair.Value) || pair.Key == pair.Value
-                        || story.Relationships.Values.Any(r => r.ClosedFlag == pair.Key)
-                        || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)
-                        || story.SeenCues.ContainsKey(pair.Key) || story.SelectedAnswers.ContainsKey(pair.Key)
-                        || story.CompletedEtudes.ContainsKey(pair.Key) || story.StartedDialogs.ContainsKey(pair.Key) || derivedFlags.Contains(pair.Key))
+                        || story.Relationships.Values.Any(r => r.ClosedFlag == pair.Key || r.ClosedFlag == pair.Value)
+                        || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Value))
                         throw new InvalidOperationException("Invalid authored forbid override: " + scene.Id + "/" + pair.Key);
                 if (string.IsNullOrWhiteSpace(scene.Id) || !ids.Add(scene.Id)) throw new InvalidOperationException("Duplicate or empty scene: " + scene.Id);
                 if (!story.Relationships.ContainsKey(scene.Relationship)) throw new InvalidOperationException("Unknown relationship: " + scene.Relationship);
