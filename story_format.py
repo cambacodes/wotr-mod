@@ -47,8 +47,16 @@ def c(text="Continue", next=None, flags=(), requires=(), forbids=(), abort=False
     return choice
 
 
-def n(id, speaker, text, *choices, portrait=""):
-    return dict(Id=id, Speaker=speaker, Text=text.strip(), Choices=list(choices) or [c()], Portrait=portrait)
+def p(text, requires=(), forbids=(), any_groups=()):
+    """E14c: one conditional paragraph of an epilogue page (appended after the node text, in order)."""
+    return dict(Text=text.strip(), Requires=list(requires), Forbids=list(forbids), AnyGroups=[list(g) for g in any_groups])
+
+
+def n(id, speaker, text, *choices, portrait="", paragraphs=()):
+    node = dict(Id=id, Speaker=speaker, Text=text.strip(), Choices=list(choices) or [c()], Portrait=portrait)
+    if paragraphs:
+        node["Paragraphs"] = list(paragraphs)
+    return node
 
 
 def scene(id, title, owner, chapter, entry, nodes, requires=(), forbids=(), delay=0, last=5, optional=False, **extra):

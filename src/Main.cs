@@ -475,7 +475,20 @@ namespace Tirabade
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
                 page.OnShow = Actions();
                 page.Title = Text("title." + id, scene.Title);
-                page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
+                // E14c: a textless paragraph node keeps its (registered) base cue off the page.
+                if (!string.IsNullOrWhiteSpace(node.Text)) page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
+                for (int p = 0; p < node.Paragraphs.Count; p++)
+                {
+                    var paragraph = New<BlueprintCue>("cue." + id + ".p" + p);
+                    paragraph.Conditions = Conditions(new ParagraphCondition { Paragraph = node.Paragraphs[p] });
+                    paragraph.OnShow = Actions();
+                    paragraph.OnStop = Actions();
+                    paragraph.Speaker = new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
+                    paragraph.TurnSpeaker = false;
+                    paragraph.Continue = Cues();
+                    paragraph.Text = Text("cue." + id + ".p" + p, node.Paragraphs[p].Text);
+                    page.Cues.Add(Ref<BlueprintCueBaseReference>(paragraph));
+                }
                 local.Add(node.Id, page);
                 pages.Add(page.AssetGuid.ToString(), node);
             }
@@ -1368,6 +1381,15 @@ namespace Tirabade
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
                         && Rules.Match(Choice.Requires, Choice.Forbids, State()));
+        }
+
+        // E14c: one conditional paragraph of an epilogue page.
+        public sealed class ParagraphCondition : Condition
+        {
+            public Paragraph? Paragraph;
+            protected override string GetConditionCaption() => "Three at the Table epilogue paragraph";
+            protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null && Paragraph != null
+                && Rules.ParagraphVisible(Paragraph, State());
         }
 
         private static void Queue(Scene scene)

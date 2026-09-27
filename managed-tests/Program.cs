@@ -506,6 +506,7 @@ internal static class Program
         PresenceManagedTests.Run(story, native, Check);
         NativeEpilogueManagedTests.Run(native, Id, Check);
         ReturnToListManagedTests.Run(native, Id, Check);
+        ParagraphManagedTests.Run(Id, Check);
         // __E14_MANAGED__
         Console.WriteLine("Scope: real managed blueprint construction and native ending seen-state checks; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. Ending probes bypass route eligibility, Unity page rendering and debug logging. No parent-mod initialization, full campaign condition evaluation, portraits, ToyBox execution or game save round trip.");
         return 0;

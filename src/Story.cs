@@ -207,6 +207,16 @@ namespace Tirabade
         public string Portrait = "";
         public string Text = "";
         public List<Choice> Choices = new List<Choice>();
+        // E14c: epilogue pages only. Conditional paragraphs appended after the node text, in order (the native BookPage idiom).
+        public List<Paragraph> Paragraphs = new List<Paragraph>();
+    }
+
+    public sealed class Paragraph
+    {
+        public string Text = "";
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public string[][] AnyGroups = Array.Empty<string[]>();
     }
 
     public sealed class Choice
@@ -569,6 +579,16 @@ namespace Tirabade
             ["PlayerFinalChoice"] = new[] { "fb42f8bd123bf1f40a448f6dbc66cbbe", "8f234537d0e0e504ba7fa281f02a3601" },
         };
 
+        // E14c: a paragraph shows when its requires hold, no forbid holds and every any-group has a member.
+        public static bool ParagraphVisible(Paragraph paragraph, Snapshot state) => paragraph.Requires.All(state.Has)
+            && !paragraph.Forbids.Any(state.Has) && paragraph.AnyGroups.All(group => group.Any(state.Has));
+
+        public static Paragraph[] VisibleParagraphs(Node node, Snapshot state) => node.Paragraphs.Where(p => ParagraphVisible(p, state)).ToArray();
+
+        // A paragraph that every world satisfying the scene's own Requires shows (guards against an empty page).
+        public static bool ParagraphAlwaysShown(Scene scene, Paragraph paragraph) => paragraph.Requires.All(scene.Requires.Contains)
+            && !paragraph.Forbids.Any() && paragraph.AnyGroups.All(group => group.Any(scene.Requires.Contains));
+
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
 
@@ -824,7 +844,18 @@ namespace Tirabade
                 if (scene.Nodes.Count == 0 || scene.MinChapter > scene.MaxChapter) throw new InvalidOperationException("Invalid scene: " + scene.Id);
                 var nodes = new HashSet<string>();
                 foreach (var node in scene.Nodes)
-                    if (!nodes.Add(node.Id) || string.IsNullOrWhiteSpace(node.Text) || node.Choices.Count == 0) throw new InvalidOperationException("Invalid node: " + scene.Id + "/" + node.Id);
+                {
+                    if (node.Paragraphs == null) throw new InvalidOperationException("Paragraphs cannot be null: " + scene.Id + "/" + node.Id);
+                    bool paragraphs = node.Paragraphs.Count > 0;
+                    if (paragraphs && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                        || node.Paragraphs.Any(p => p == null || string.IsNullOrWhiteSpace(p.Text) || p.Requires == null || p.Forbids == null
+                            || p.AnyGroups == null || p.AnyGroups.Any(g => g == null || g.Length == 0))
+                        || string.IsNullOrWhiteSpace(node.Text) && !node.Paragraphs.Any(p => ParagraphAlwaysShown(scene, p))))
+                        throw new InvalidOperationException("Invalid paragraphs (epilogue pages only; a textless node needs a paragraph its scene's Requires always show): "
+                            + scene.Id + "/" + node.Id);
+                    if (!nodes.Add(node.Id) || string.IsNullOrWhiteSpace(node.Text) && !paragraphs || node.Choices.Count == 0)
+                        throw new InvalidOperationException("Invalid node: " + scene.Id + "/" + node.Id);
+                }
                 foreach (var node in scene.Nodes)
                     foreach (var choice in node.Choices)
                     {

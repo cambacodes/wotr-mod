@@ -58,7 +58,7 @@ def norm_scene(s):
              EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None, ReturnToList=False, ReturnText=None)
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
-        n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", "")
+        n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", ""); n.setdefault("Paragraphs", [])
         n.setdefault("Choices", [])
         for c in n["Choices"]:
             for k, v in dict(Text="Continue", Next=None, Abort=False, Revive=None, Check=None, Set=[], Requires=[],
@@ -549,7 +549,9 @@ def build_names(model):
         for n in s["Nodes"]:
             i = s["Id"] + "." + n["Id"]
             names.append(("cue." + i, "BlueprintCue"))
-            if s["NativeReturnCue"] is None: names.append(("page." + i, "BlueprintBookPage"))
+            if s["NativeReturnCue"] is None:
+                names.append(("page." + i, "BlueprintBookPage"))
+                names += [("cue.%s.p%d" % (i, k), "BlueprintCue") for k in range(len(n.get("Paragraphs") or []))]
         for n in s["Nodes"]:
             ch = n["Choices"]
             ending = is_epilogue(s)
@@ -669,7 +671,8 @@ def validate(model):
                 errs.append("Invalid forbid override %s/%s" % (sid, a))
         nodes = {}
         for n in s["Nodes"]:
-            if n["Id"] in nodes or not n["Text"].strip() or not n["Choices"]: errs.append("Invalid node: %s/%s" % (sid, n["Id"]))
+            if n["Id"] in nodes or not (n["Text"].strip() or n["Paragraphs"]) or not n["Choices"]: errs.append("Invalid node: %s/%s" % (sid, n["Id"]))
+            if n["Paragraphs"] and not is_epilogue(s): errs.append("Paragraphs outside an epilogue page: %s/%s" % (sid, n["Id"]))
             nodes[n["Id"]] = n
         for n in s["Nodes"]:
             for c in n["Choices"]:
