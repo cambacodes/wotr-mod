@@ -34,6 +34,8 @@ namespace Tirabade
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
         public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
+        // E14g: count composites, true when at least Min of Of hold; computed after Derived (groundwork).
+        public Dictionary<string, CountSpec> Counts = new Dictionary<string, CountSpec>();
         // E8 (TT-09, ER-4): a successful rest delivers up to PostBagSize letters, at most one per rotation key, and a
         // relationship never holds more than QueueCapPerRelationship undelivered letters.
         public int PostBagSize = 3;
@@ -143,6 +145,12 @@ namespace Tirabade
         public bool Recorded;          // a saved presence record exists
         public bool RecordedUnhide;    // the record says we unhid the native unit
         public bool Submitted;         // the record says a copy was spawned
+    }
+
+    public sealed class CountSpec
+    {
+        public string[] Of = Array.Empty<string>();
+        public int Min = 1;
     }
 
     public sealed class ContinueSpec
@@ -523,6 +531,8 @@ namespace Tirabade
                         changed = true;
                     }
             }
+            foreach (var pair in story.Counts)
+                if (!state.Has(pair.Key) && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
         }
 
         // Build: a missing native input makes dependent composites unavailable too (like "loss").
@@ -541,6 +551,8 @@ namespace Tirabade
                         changed = true;
                     }
             }
+            foreach (var pair in story.Counts)
+                if (pair.Value.Of.Any(missing.Contains)) missing.Add(pair.Key);
         }
 
         public static bool IsRemote(Scene scene) => scene.Remote || scene.Owner == "Memory";
@@ -743,6 +755,13 @@ namespace Tirabade
             // A latch is an ordinary authored flag once recorded.
             authoredFlags.UnionWith(story.Latches.Keys);
             ValidateDerived(story, authoredFlags, nativeKeys, derivedFlags, contactEvidence);
+            if (story.Counts == null) throw new InvalidOperationException("Counts cannot be null.");
+            foreach (var pair in story.Counts)
+                if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key) || derivedFlags.Contains(pair.Key)
+                    || contactEvidence.Contains(pair.Key) || story.Derived.ContainsKey(pair.Key) || IsReservedKey(pair.Key) || pair.Value?.Of == null
+                    || pair.Value.Of.Length == 0 || pair.Value.Of.Distinct().Count() != pair.Value.Of.Length || pair.Value.Min < 1 || pair.Value.Min > pair.Value.Of.Length
+                    || pair.Value.Of.Any(f => !authoredFlags.Contains(f) && !nativeKeys.Contains(f) && !derivedFlags.Contains(f) && !story.Derived.ContainsKey(f)))
+                    throw new InvalidOperationException("Invalid count composite (new key; 1 <= Min <= |Of|; distinct known sources, no other counts): " + pair.Key);
             foreach (var pair in story.StartedDialogs)
                 if (string.IsNullOrWhiteSpace(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _)
                     || story.Etudes.ContainsKey(pair.Key) || story.CompletedQuests.ContainsKey(pair.Key)

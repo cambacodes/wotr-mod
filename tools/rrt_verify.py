@@ -138,6 +138,9 @@ class Model:
         # E4 data-driven composites (OR of AND-groups).
         self.composites = {k: [list(g) for g in v] for k, v in (story.get("Derived") or {}).items()}
         self.derived |= set(self.composites)
+        # E14g count composites.
+        self.counts = {k: (list(v.get("Of") or []), int(v.get("Min", 1))) for k, v in (story.get("Counts") or {}).items()}
+        self.derived |= set(self.counts)
         # producers: flag -> list of (scene, node, choice-index or None)
         self.producers = collections.defaultdict(list)
         for s in self.scenes:
@@ -249,6 +252,7 @@ class Reach:
         if f in m.native: return True
         if f in m.latches: return any(self.native_possible(x, ch) for x in m.latches[f])
         if f in m.composites: return any(all(self.possible(x, ch) for x in g) for g in m.composites[f])
+        if f in m.counts: return sum(1 for x in m.counts[f][0] if self.possible(x, ch)) >= m.counts[f][1]
         if f == "chapter_one": return (ch == 1) if ch else True
         if f == "chapter_later": return (ch > 1) if ch else True
         if f == "inhuman": return self.native_possible("swarm", ch) or self.native_possible("true_lich", ch)
@@ -267,6 +271,7 @@ class Reach:
         if f in w.true: return True
         if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
         if f in self.m.composites: return any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
+        if f in self.m.counts: return sum(1 for x in self.m.counts[f][0] if self.forced(x, ch)) >= self.m.counts[f][1]
         if f == "chapter_one": return ch == 1 if ch else False
         if f == "chapter_later": return (ch or 0) > 1
         if f == "inhuman": return "swarm" in w.true or "true_lich" in w.true
@@ -1528,6 +1533,8 @@ def sim_complete(model, st):
         for k, groups in model.composites.items():
             if k not in st.flags and any(all(x in st.flags for x in g) for g in groups):
                 st.flags.add(k); changed = True
+    for k, (of, least) in model.counts.items():
+        if k not in st.flags and sum(1 for x in of if x in st.flags) >= least: st.flags.add(k)
 
 
 def sim_available(model, s, st):
