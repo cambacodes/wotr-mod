@@ -210,6 +210,7 @@ def make_expansion(*, independent_tirabade=True):
         payload["Etudes"].update(anevia_independent.ETUDES)
         irabeth_independent.integrate(payload)
         tirabade_independent_bridge.integrate(payload)
+    tirabade_chronology.integrate_morale(payload)
     payload["Scenes"].extend(copy.deepcopy(arsinoe_campaign.SCENES))
     payload["Scenes"].extend(copy.deepcopy(gesmerha_campaign.SCENES))
     gesmerha_campaign.integrate(payload)

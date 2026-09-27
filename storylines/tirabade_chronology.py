@@ -1,4 +1,5 @@
 """History-safe prose joins for existing Tirabade saves and late starts."""
+from copy import deepcopy
 from story_format import c, n
 
 SCENES = []
@@ -61,3 +62,49 @@ def integrate(payload):
     loss["Text"] = '''{n}War had taken a future the three had wanted. The days they had shared were not made less real by losing the days still ahead. Private hopes remained in ordinary things: a book left open, a cup set out before its owner remembered, a place someone still turned to look.{/n}
 {n}No promise made in tenderness overruled the loss. No intimacy changed the choices that had brought them to it. Those who remained were left with the difficult freedom of deciding what to do with love that could no longer be returned in the way they had wished.{/n}
 {n}The crusade's histories preserved victories and sacrifices. They had little room for the smaller things that made the sacrifices unbearable.{/n}'''
+
+
+def integrate_morale(payload):
+    # Append after negotiated joins to preserve existing answer GUIDs.
+    books = {scene["Id"]: scene for scene in payload["Scenes"]}
+    reunion = books["return"]
+    pages = {node["Id"]: node for node in reunion["Nodes"]}
+    pages["now"]["Choices"].append(c(
+        '"And the days when you cannot find much confidence in yourself?"',
+        "morale", requires=("broken",)))
+    reunion["Nodes"].append(n("morale", "Irabeth", '''"I still have them."
+{n}Irabeth turns her cup once, aligning its handle with the edge of the table.{/n}
+"A report arrives and I know what I would have told another officer to do. Then I sit there looking for the mistake I must have missed. Sometimes I find one. That does not help me trust the next answer."
+"She still gives it," Anevia says.
+"Yes. I do."
+{n}Irabeth looks up before her wife can add anything.{/n}
+"I would like to come to supper without having to give you a better account of myself first. I may have very little to say."
+"I can provide enough conversation for three," Anevia offers.
+"That was not in doubt."
+{n}The reply brings a brief smile. Irabeth leaves the cup where it is.{/n}
+"And I want to hear about your day. Even a bad one. I am tired of everyone deciding what news I can bear."''',
+        c('"Then I will tell you about mine, and leave you to tell me what you wish."', "future")))
+
+    watch = books["last_watch"]
+    for page in watch["Nodes"]:
+        for choice in list(page["Choices"]):
+            if choice.get("Next") == "life":
+                # Keep existing answer positions and GUIDs; append the conditional alternative.
+                alternate = deepcopy(choice)
+                alternate["Next"] = "life_broken"
+                alternate["Requires"].append("broken")
+                page["Choices"].append(alternate)
+                choice["Forbids"].append("broken")
+    watch["Nodes"].append(n("life_broken", "Irabeth", '''"I have kept the list. The places we spoke about."
+{n}Irabeth takes a folded sheet from her pocket. One corner has worn through.{/n}
+"There are days when I think I should hand everything over to someone better and be grateful if they let me go. Then I look at this and find myself planning the road as though I had already earned the journey."
+"You can plan a road without putting yourself on trial," Anevia says.
+{n}Irabeth presses the fold flat with her thumb. She does not answer at once.{/n}
+"I know what you mean. I cannot always believe it."
+{n}Anevia sits closer. She reads the first place on the sheet, then the second.{/n}
+"That one's three days out of our way."
+"Four. The shorter road floods."
+"Then we'd better hope the view's worth it."
+{n}Irabeth almost smiles. When she offers you the page, her hand is steady.{/n}
+"Will you keep a copy? I would like someone else to know the way, on the days when I cannot see much beyond the next duty."''',
+        c('"Yes. We can choose the first road together when there is time."', "end")))

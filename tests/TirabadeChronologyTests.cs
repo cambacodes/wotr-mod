@@ -55,10 +55,32 @@ internal static class TirabadeChronologyTests
         check(earlyPages.Contains("before_the_abyss") && earlyResults.All(s => s.Has("departure")), "Reunion callback loses established departure history.");
         var oldResume = Page("return", "now");
         check(oldResume.Choices[0].Next == "future" && oldResume.Choices[1].Next == "back", "Saved return page choice indices changed.");
+        if (story.Scenes.Any(s => s.Id == "tirabade.negotiated_table"))
+            check(oldResume.Choices[2].Next == "back_negotiated" && oldResume.Choices[3].Next == "morale",
+                "Existing negotiated return answer index changed when adding native morale response.");
 
         late = Play("return", late);
         late = Play("power", late);
         late = Play("future", late);
+        foreach (var nativeFlags in new[] { Array.Empty<string>(), new[] { "broken" }, new[] { "encouraged" }, new[] { "broken", "encouraged" } })
+        {
+            var morale = Program.Copy(late);
+            morale.Flags.UnionWith(nativeFlags);
+            var visited = new System.Collections.Generic.HashSet<string>();
+            var results = Program.Walk(returnScene, Ready(returnScene, morale), (id, _) => visited.Add(id));
+            check(visited.Contains("morale") == morale.Has("broken"), "Reunion morale response ignores actual native Broken status.");
+            morale.Flags.Add("three_progression.short_chosen");
+            var watch = Find("last_watch");
+            check(Rules.Available(story, watch, Ready(watch, morale)), "Morale witness cannot reach the final watch.");
+            visited.Clear();
+            results = Program.Walk(watch, Ready(watch, morale), (id, _) => visited.Add(id));
+            check(visited.Contains("life_broken") == morale.Has("broken")
+                && visited.Contains("life") != morale.Has("broken"), "Final watch mixes incompatible native morale responses.");
+            check(results.Count > 0 && results.All(s => s.Has("last_watch") && s.Has("last_words")), "Morale branch does not finish the existing final watch.");
+            foreach (var result in results)
+                check(result.Has("broken") == morale.Has("broken") && result.Has("encouraged") == morale.Has("encouraged")
+                    && result.Has("seelah.committed") && result.Has("arueshalae.committed"), "Final watch changes native morale or another relationship.");
+        }
         var night = Find("shared_night");
         var near = Page("shared_night", "near");
         check(near.Choices[0].Next == "close" && near.Choices[1].Next == "quiet", "Original shared-night answers changed.");
