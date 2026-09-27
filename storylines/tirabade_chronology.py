@@ -85,6 +85,57 @@ def integrate_morale(payload):
 "And I want to hear about your day. Even a bad one. I am tired of everyone deciding what news I can bear."''',
         c('"Then I will tell you about mine, and leave you to tell me what you wish."', "future")))
 
+    pages["now"]["Choices"].extend([
+        c('"There is also the scar I gave you. I have not forgotten it."', "scar", requires=("irabeth.scar_known",)),
+        c('"I remember what you told me about the Queen at Iz."', "queen", requires=("irabeth.queen_loss_known",)),
+    ])
+    reunion["Nodes"].extend([
+        n("scar", "Irabeth", '''{n}Irabeth's fingers stop against the cup.{/n}
+"I would rather not discuss it again."
+{n}Anevia looks at you. Her expression has lost its warmth.{/n}
+"Then don't make her explain it for you. If you've got something to say about what you did, say that."
+{n}Irabeth turns toward her wife, but Anevia holds her gaze.{/n}
+"I heard what you said, Beth. I haven't agreed with it."
+{n}For a moment neither woman looks at you. Then Irabeth sets the cup down.{/n}
+"Well?"''',
+            c('"I will not ask either of you to call it a kindness."', "scar_quiet"),
+            c('"I still believe it was necessary."', "scar_disputed"),
+            c('[Respect her request and leave the subject.]', "scar_quiet")),
+        n("scar_quiet", "Narrator", '''{n}Irabeth nods once. She does not touch her face or offer an explanation.{/n}
+{n}Anevia draws the lamp away from the edge of the table. For a while, its small scraping sound is the only answer she gives you.{/n}
+"I'd like some air," she says at last.
+{n}Irabeth rises with her. At the door she pauses, one hand resting on the latch.{/n}
+"We will speak another evening."
+{n}She leaves with her wife. The cups remain on the table.{/n}''',
+            c('[Let the evening end here.]', flags=("tirabade.scar_left_unsettled",))),
+        n("scar_disputed", "Anevia", '''"I know what you believe. I was hoping you had something else to say."
+"Anevia."
+"No, Beth. You can think it helped you. I watched you keeping the mark because you thought you deserved it. I don't have to be pleased."
+{n}Irabeth looks down at her hands, then back at you.{/n}
+"I do not want to spend this evening defending my answer to either of you."
+{n}Anevia's reply comes more quietly.{/n}
+"All right."
+{n}She collects her wife's cloak. When Irabeth stands, Anevia hands it to her without looking at you.{/n}
+"I'm going with her. We can leave the rest for another day."
+{n}Irabeth waits by the door until her wife joins her.{/n}''',
+            c('[Let them leave without demanding agreement.]', flags=("tirabade.scar_left_unsettled", "tirabade.scar_defended"))),
+        n("queen", "Irabeth", '''"Then you remember what I said about relying on me."
+{n}Anevia opens her mouth, then shuts it. Irabeth notices.{/n}
+"You need not agree. Neither of you. But I was there, and she did not come back."
+{n}She pulls the unused saucer toward her. There is a chip in its rim; she turns it out of sight.{/n}
+"I have begun three letters to people who will want to know what happened. I keep finding a way to write about the battle without saying that I came home."
+"Who are they for?" Anevia asks.
+{n}Irabeth gives her the names. This time her wife listens without trying to finish the answer.{/n}''',
+            c('"We can sit with you while you write, if you want."', "queen_letters"),
+            c('"You need not finish them tonight. I would still like to hear what you want next."', "future")),
+        n("queen_letters", "Narrator", '''{n}Irabeth fetches the unfinished pages. Anevia clears a place beside the lamp and sits down again.{/n}
+"I want to write it myself," Irabeth says.
+{n}She reads the first line under her breath. Crosses out a word. Leaves the next sentence alone.{/n}
+{n}Anevia catches your eye when you move to speak. You let the silence stand. After a while Irabeth asks for fresh ink, and her wife goes to find it.{/n}
+{n}You remain beside her. By the time Anevia returns, Irabeth has reached the sentence she could not write before. She does not read it aloud.{/n}''',
+            c('[Stay while she writes, without offering words for her.]', flags=("tirabade.queen_letters_shared",))),
+    ])
+
     watch = books["last_watch"]
     for page in watch["Nodes"]:
         for choice in list(page["Choices"]):
@@ -108,3 +159,32 @@ def integrate_morale(payload):
 {n}Irabeth almost smiles. When she offers you the page, her hand is steady.{/n}
 "Will you keep a copy? I would like someone else to know the way, on the days when I cannot see much beyond the next duty."''',
         c('"Yes. We can choose the first road together when there is time."', "end")))
+
+    watch_start = next(node for node in watch["Nodes"] if node["Id"] == "start")
+    watch_start["Choices"].extend([
+        c('"We left a difficult evening unfinished. I have not forgotten that either."', "scar_unsettled",
+          requires=("tirabade.scar_left_unsettled",)),
+        c('"Did you send the letters you wrote while we sat together?"', "queen_letters",
+          requires=("tirabade.queen_letters_shared",)),
+    ])
+    watch["Nodes"].extend([
+        n("scar_unsettled", "Anevia", '''"Good."
+{n}Anevia's answer is short. Irabeth looks between you.{/n}
+"I don't want to spend tonight on it," she says.
+"Neither do I. But I don't want a grand farewell to do the arguing for us."
+{n}Anevia reaches for her wife's hand. When she looks back at you, the anger has not vanished from her face.{/n}
+"I want us to come back. Then we'll still have things to say."
+{n}Irabeth's thumb moves across her wife's knuckles.{/n}
+"I would rather have the time for an argument than have everything left unsaid."''',
+            c('"Then let us speak about coming home."', "life", forbids=("broken",)),
+            c('"Then let us speak about coming home."', "life_broken", requires=("broken",))),
+        n("queen_letters", "Irabeth", '''"Yes. I read them once more in the morning, then sent them."
+{n}Irabeth smooths a crease in her sleeve.{/n}
+"I nearly asked to have them brought back. Anevia had already given them to the courier."
+"You told me to."
+"I know. Thank you."
+{n}She turns toward you.{/n}
+"I remember that you stayed. You cannot promise me that nobody will need to write another letter after the next battle. I would like to know what you hope to do if you return."''',
+            c('"I want the life we planned. I will fight for the chance to live it."', "life", forbids=("broken",)),
+            c('"I want the life we planned. I will fight for the chance to live it."', "life_broken", requires=("broken",))),
+    ])

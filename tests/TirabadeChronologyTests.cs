@@ -59,6 +59,40 @@ internal static class TirabadeChronologyTests
             check(oldResume.Choices[2].Next == "back_negotiated" && oldResume.Choices[3].Next == "morale",
                 "Existing negotiated return answer index changed when adding native morale response.");
 
+        for (int history = 0; history < 8; history++)
+        {
+            var known = Program.Copy(late);
+            if ((history & 1) != 0) known.Flags.Add("irabeth.scar_known");
+            if ((history & 2) != 0) known.Flags.Add("irabeth.queen_loss_known");
+            if ((history & 4) != 0) known.Flags.Add("broken");
+            var visited = new System.Collections.Generic.HashSet<string>();
+            var reunionResults = Program.Walk(returnScene, Ready(returnScene, known), (id, _) => visited.Add(id));
+            check(visited.Contains("scar") == known.Has("irabeth.scar_known")
+                && visited.Contains("queen") == known.Has("irabeth.queen_loss_known"), "Reunion invents or omits witnessed native history.");
+            check(reunionResults.Any(s => s.Has("tirabade.scar_defended")) == known.Has("irabeth.scar_known"),
+                "Witnessed scar history does not offer the contested response, or offers it without history.");
+            check(reunionResults.Any(s => s.Has("tirabade.queen_letters_shared")) == known.Has("irabeth.queen_loss_known"),
+                "Shared letter-writing memory is unavailable or fabricated.");
+            foreach (var result in reunionResults.Where(s => s.Has("return") && !s.Has("closed") && Program.LegacyTirabadeOutcome(s)))
+            {
+                check(result.Has("broken") == known.Has("broken")
+                    && result.Has("irabeth.scar_known") == known.Has("irabeth.scar_known")
+                    && result.Has("irabeth.queen_loss_known") == known.Has("irabeth.queen_loss_known"), "Reunion changes native history or morale.");
+                var continuation = Play("power", result);
+                continuation = Play("future", continuation);
+                continuation.Flags.Add("three_progression.short_chosen");
+                var watchScene = Find("last_watch");
+                check(Rules.Available(story, watchScene, Ready(watchScene, continuation)), "Native-history reunion cannot continue to final watch.");
+                visited.Clear();
+                var endings = Program.Walk(watchScene, Ready(watchScene, continuation), (id, _) => visited.Add(id));
+                check(visited.Contains("scar_unsettled") == result.Has("tirabade.scar_left_unsettled")
+                    && visited.Contains("queen_letters") == result.Has("tirabade.queen_letters_shared"), "Final watch invents or drops an authored shared memory.");
+                check(visited.Contains("life_broken") == result.Has("broken") && visited.Contains("life") != result.Has("broken"),
+                    "Native-history callback bypasses final-watch morale selection.");
+                check(endings.All(s => s.Has("last_words") && s.Has("seelah.committed") && s.Has("arueshalae.committed")
+                    && s.Has("broken") == known.Has("broken")), "Native-history continuation changes unrelated romance or native morale.");
+            }
+        }
         late = Play("return", late);
         late = Play("power", late);
         late = Play("future", late);
