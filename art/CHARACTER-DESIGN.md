@@ -34,6 +34,15 @@ This art instruction does not change their route scope or authorize adult-romanc
 
 ## Review criteria
 
+Costume and sensuality follow each character's native design, themes and the particular scene.
+There is no blanket requirement for full clothing, demure poses, or emotionally neutral romance art.
+Exposed skin, revealing costumes, adult allure and sensuality are valid parts of characterization.
+A neutral general portrait is one asset type, not the required tone for every relationship scene.
+Preserve revealing native designs instead of covering them to make an image less sensual.
+Preserve practical native outfits where those are the character's design; do not impose the same revealing costume on every woman either.
+Scene-specific art may convey adult desire and intimacy through expression, proximity, clothing and setting while keeping intimacy non-graphic.
+Reviewers must assess whether that sensuality suits the character and scene, and must not award higher fidelity scores merely for removing it.
+
 Review actual delivered revisions for attractiveness under this brief, recognizable identity, coherent racial traits, clearly adult presentation where applicable, anatomy, composition, painterly game consistency and story fit.
 Balance attractiveness with recognizable likeness, allowing identity-defining imperfections instead of automatically polishing them away.
 Do not penalize intentional humanization solely because the native model differs, or require removal of every wrinkle or unusual feature.

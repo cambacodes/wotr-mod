@@ -23,6 +23,8 @@ See `ROSTER.md` for individual ownership, source evidence, unresolved premises a
 Wenduag can participate in introductions and intrigue while retaining her own motives.
 Only adult women are new romance participants; existing male partners may remain consequential non-romantic characters.
 Writing will use mature themes, romantic tension, and non-graphic intimacy.
+Adult desire and sensuality should remain explicit parts of characterization where appropriate; non-graphic presentation does not require sexless dialogue, demure characterization or fully covered costumes.
+Art and prose reviewers must preserve the native character's themes and the scene's intended intimacy instead of treating restraint as an automatic quality improvement.
 Relationships need not be healthy, redemptive or morally good.
 Preserve character-appropriate ambition, manipulation, jealousy as characterization, betrayal and destructive choices, while respecting the requested ToyBox behavior rather than enforcing automatic romantic exclusivity.
 Reviewers must assess whether such behavior fits the character and follows from the player's choices, not require every relationship to become supportive or therapeutic.
