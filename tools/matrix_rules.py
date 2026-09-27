@@ -270,9 +270,76 @@ def validate_rules(matrix, ar, story=None):
                                 out.append(("BLOCKED", where, "trickster_device does not ignore %s: no trickster_access detect lists it" % sorted(held - ignored)))
                 elif device:
                     out.append(("FATAL", where, "trickster_device on an epilogue page"))
-                # Nurah physical scenes need the hub or an explicit-list device
-                if rel == "nurah" and not remote and not epilogue and not (device and lists):
+                # Nurah physical scenes need the hub, an explicit-list device or a presence hub
+                hub = o.get("interaction_hub") or o.get("InteractionHub")
+                if rel == "nurah" and not remote and not epilogue and not (device and lists) and not (hub and str(hub).endswith(".presence")):
                     out.append(("FATAL", where, "physical Nurah scene outside the arrival hub must be a trickster_device on explicit answer_lists"))
+                # E14b return-to-list scenes
+                if truthy(o, "return_to_list", "ReturnToList"):
+                    if inline or o.get("contact_unit") or remote or epilogue or not lists or len(set(lists)) != len(lists) or hub:
+                        out.append(("FATAL", where, "return_to_list needs a physical scene with explicit distinct answer_lists and no native_return_cue, contact_unit or hub"))
+                    rt = o.get("return_text") or o.get("ReturnText") or ""
+                    if len(str(rt).split()) > 25:
+                        out.append(("FATAL", where, "return_text is longer than 25 words"))
+                    if any(ch.get("native_next") or ch.get("check") or ch.get("revive") for ch in chs) or o.get("native_next"):
+                        out.append(("FATAL", where, "return_to_list choices cannot use native_next, check or revive"))
+                    for g in lists:
+                        t = ar.type(g) if GUID.match(str(g)) else None
+                        if t != "BlueprintAnswersList":
+                            out.append(("DEGRADES", where, "return_to_list list %s is %s, not a BlueprintAnswersList" % (g, t or "missing")))
+                elif (o.get("return_text") or o.get("ReturnText")):
+                    out.append(("FATAL", where, "return_text without return_to_list"))
+                # E14a placement / ER-3 / E14h anchors
+                seq = o.get("epilogue_sequence") or o.get("EpilogueSequence")
+                after = o.get("epilogue_after") or o.get("EpilogueAfter")
+                if isinstance(after, str) and after.lower().startswith("none"): after = None
+                if seq is not None:
+                    allowed = ("fb42f8bd123bf1f40a448f6dbc66cbbe", "8f234537d0e0e504ba7fa281f02a3601")
+                    if seq != "PlayerFinalChoice" or not epilogue or str(o.get("owner") or "") == "AeonEpilogue" \
+                            or not after or (after not in allowed and not str(after).startswith("scene:")):
+                        out.append(("FATAL", where, "epilogue_sequence must be PlayerFinalChoice on a non-Aeon epilogue page, after BookPage_0147 or BookPage_0115 (or scene:<id>)"))
+                if after and not str(after).startswith("scene:"):
+                    if not epilogue or not GUID.match(str(after)):
+                        out.append(("FATAL", where, "epilogue_after %r needs an epilogue page and a native page/cue GUID or scene:<id>" % after))
+                    elif ar.type(after) not in ("BlueprintCue", "BlueprintBookPage", "BlueprintCueSequence", "BlueprintCheck"):
+                        out.append(("GATE", where, "epilogue_after %s is %s, not a cue or page" % (after[:8], ar.type(after) or "missing")))
+        # E12 / E12b / E12c presences
+        pres = {}
+        for key in ("presences", "presences_add"):
+            v = c.get(key)
+            if isinstance(v, dict): pres.update({k: x for k, x in v.items() if isinstance(x, dict)})
+        v = c.get("presence")
+        if isinstance(v, dict) and v.get("key"): pres[v["key"]] = v
+        for key, p in pres.items():
+            where = "presence " + key
+            mode = p.get("Mode", "reuse-native")
+            at = p.get("At") or p.get("at")
+            if not key.endswith(".presence"):
+                out.append(("FATAL", where, "presence key must be <relationship>.presence"))
+            if mode not in ("reuse-native", "spawn-copy"):
+                out.append(("FATAL", where, "Mode must be reuse-native or spawn-copy"))
+            if mode == "spawn-copy" and (not (p.get("Position") or at) or not p.get("Requires")):
+                out.append(("FATAL", where, "spawn-copy needs Position or At, and non-empty Requires"))
+            if isinstance(p.get("Position"), dict) and not all(isinstance(p["Position"].get(k), (int, float)) for k in ("X", "Y", "Z")):
+                out.append(("FATAL", where, "Position needs numeric X, Y, Z (use At for an anchor)"))
+            for field, want in (("Unit", "BlueprintUnit"), ("Area", "BlueprintArea")):
+                g = p.get(field)
+                t = ar.type(g) if GUID.match(str(g or "")) else None
+                if not t or not t.startswith(want):
+                    out.append(("DEGRADES", where, "%s %s is %s, not a %s" % (field, g, t or "missing", want)))
+            for g in p.get("AnswerLists") or []:
+                if ar.type(g) != "BlueprintAnswersList":
+                    out.append(("DEGRADES", where, "answer list %s is %s" % (g, ar.type(g) or "missing")))
+            if at is not None:
+                near, loc = at.get("NearUnit"), at.get("Locator")
+                if (near is None) == (loc is None):
+                    out.append(("FATAL", where, "At needs exactly one of NearUnit or Locator"))
+                elif near is not None and ar.type(near) != "BlueprintUnit":
+                    out.append(("DEGRADES", where, "At.NearUnit %s is %s, not a BlueprintUnit (presence disabled)" % (near, ar.type(near) or "missing")))
+                if at.get("Side") not in (None, "left", "right", "front", "behind") or (at.get("Offset") is not None and len(at["Offset"]) != 2):
+                    out.append(("FATAL", where, "At.Side must be left/right/front/behind, or Offset [dx, dz]"))
+            if p.get("Dialog") not in (None, "hub"):
+                out.append(("FATAL", where, "Dialog must be \"hub\" (E12c)"))
         results[name] = out
     return results
 
