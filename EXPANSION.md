@@ -28,7 +28,7 @@ The user's earlier instruction to proceed without previews remains applicable.
 
 ## Current development checkpoint
 
-The integrated development export has 533 scenes across 15 route groups covering 14 of the 37 planned characters.
+The integrated development export has 537 scenes across 15 route groups covering 14 of the 37 planned characters.
 These counts describe written and integrated material, not completed routes.
 The latest [Vellexia integration checkpoint](reference/parallel/vellexia-campaign-integration-checkpoint.md) records the assembled export, remote-conversation repair, verification and remaining character work.
 Vellexia now has thirty entries with an independently reviewed ordinary correspondence campaign.
@@ -37,7 +37,8 @@ Gesmerha's later living campaign has passed independent review and is integrated
 The [late-campaign checkpoint](reference/parallel/gesmerha-late-campaign-integration-checkpoint.md) records its checks and remaining access requirements.
 Aivu's ordinary Azata friendship campaign has passed independent review and is integrated, with thirty entries and 24,172 distinct counted words.
 Its [integration checkpoint](reference/parallel/aivu-campaign-integration-checkpoint.md) separates that approval from unfinished Trickster guest access and runtime verification.
-Konomi has 70 scenes, with the independently reviewed late-career continuity repair and missed-contact acquisition integrated, and reviewed general and private-evening portraits staged.
+Konomi has 74 scenes, with independently reviewed late-career continuity, missed-contact acquisition and four retained-return scenes integrated, and reviewed general and private-evening portraits staged.
+The [retained-return checkpoint](reference/parallel/konomi-retained-return-integration-checkpoint.md) records the new manuscript, headless checks and unfinished physical meeting access.
 Her earlier 64-scene export is pinned in [the political integration checkpoint](reference/parallel/konomi-political-integration-checkpoint.md).
 That base manuscript passed its assembled editorial review at 91-93 across the reviewed disciplines.
 The additional missed-contact writing and joins passed their separate review at 92-94; neither approval is full route release approval.
@@ -48,7 +49,8 @@ Its [packaging checkpoint](reference/parallel/expansion-package-checkpoint.md) r
 The [alternative prerequisite implementation](reference/parallel/prerequisite-groups-checkpoint.md) now supports earned access without manufacturing native appointment or dismissal history.
 Konomi's [native observer integration](reference/parallel/konomi-native-observer-integration-checkpoint.md) now supplies positive initial actor evidence and checks retained saved-area loss evidence during later correspondence.
 Her [missed-contact integration](reference/parallel/konomi-missed-contact-integration-checkpoint.md) includes reviewed conditional endings and played coverage of alternate absence and political scenes.
-The checked local package contains this 533-scene export; native recovery and actual game verification remain separate requirements.
+The last checked local package contains the earlier 533-scene export; the current development export has 537 scenes.
+Native recovery and actual game verification remain separate requirements.
 Arsinoe's approved shop portrait is assigned to all nine pages of her opening counter conversation after independent context review.
 The [Minagho and Chivarro audit](reference/canon-review/minagho-chivarro-integration.md) establishes which parent events and endings must be extended rather than duplicated.
 Their new continuation is in authoring, with Chivarro's own arrival and choices required before any expanded group relationship.

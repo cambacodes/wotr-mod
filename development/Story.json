@@ -13996,6 +13996,1087 @@
       }
     },
     {
+      "Id": "konomi.retained_inquiry",
+      "Title": "An objection to the last line",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The little map of Drezen has acquired an annotation you did not write. Lady Konomi's name stands beside a narrow black stroke. When you move the lamp, the stroke remains dark. When you turn the map over, it appears on the other side.{/n}\n{n}Konomi is dead. Her body is still in Drezen. Beneath your hand, the map seems unusually determined to tell you that these two facts settle the matter.{/n}\n{n}On the map, a line of smaller writing appears. NO FURTHER CORRESPONDENCE EXPECTED.{/n}\n{n}It is an extravagant claim to fit in so little space.{/n}",
+          "Choices": [
+            {
+              "Text": "[Examine the claim before attempting to change anything.]",
+              "Next": "examine",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the map open. You are not ready to attempt this.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "examine",
+          "Speaker": "Narrator",
+          "Text": "{n}The annotation gives no reason why an expectation should be binding. You trace its letters without touching the black stroke. A second line emerges: ALL REPLIES RECEIVED AFTER CLOSURE WILL BE RETURNED TO SENDER.{/n}\n{n}You ask who signed for the closure. The map produces a smudge shaped like a signature. You ask for a legible copy. The smudge acquires a second smudge certifying the first.{/n}\n{n}A clerk passing the doorway sees you arguing with a map and quietly takes her documents elsewhere. You cannot fault her judgment.{/n}",
+          "Choices": [
+            {
+              "Text": "[Find the distinction between closing an account and deciding every future entry. Knowledge (World), DC 22.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillKnowledgeWorld",
+                "DC": 22,
+                "Success": "distinction",
+                "Failure": "read_again"
+              }
+            },
+            {
+              "Text": "[Read every line aloud until the map is forced to hear what it claims.]",
+              "Next": "read_again",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "distinction",
+          "Speaker": "Narrator",
+          "Text": "{n}You have seen merchants close a ledger and open another on the same afternoon. A completed account can be accurate without being the last account anyone will ever keep.{/n}\n{n}The map tries to move its annotation beneath the legend. You pin it with the lamp.{/n}\n{n}The black stroke remains. You have not disproved her death. You have found a place where a true sentence has been made to do more work than it can bear.{/n}",
+          "Choices": [
+            {
+              "Text": "[Separate what happened from what may happen next.]",
+              "Next": "name",
+              "Set": [
+                "konomi.return_distinction"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "read_again",
+          "Speaker": "Narrator",
+          "Text": "{n}The writing becomes smaller whenever you approach the end. You borrow a magnifying glass. The writing becomes faint. You move the lamp closer. At last, forced into the margin, the map supplies a qualification: EXPECTATION DOES NOT CONSTITUTE PROOF.{/n}\n{n}It then attempts to fold itself. The magnifying glass holds one corner down and the lamp holds another.{/n}\n{n}You have spent an irritating hour obtaining a sentence that should have appeared first. The black stroke remains. Her death happened. The claim that nothing can follow it is a separate matter.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave room for something after the black stroke.]",
+              "Next": "name",
+              "Set": [
+                "konomi.return_patient_reading"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "name",
+          "Speaker": "Narrator",
+          "Text": "{n}There is room now for one line beneath Konomi's name. You could fill it with a title, an account of her usefulness, or a list of things you wanted from her. None would identify the woman more precisely.{/n}\n{n}You write her name again. The second inscription does not erase the first.{/n}",
+          "Choices": [
+            {
+              "Text": "[Remember the woman whose company you have shared as a lover.]",
+              "Next": "lover",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the private address she chose to give you.]",
+              "Next": "address",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.lovers"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the private meeting she agreed to after her dismissal.]",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "konomi.private_meeting"
+              ],
+              "Forbids": [
+                "konomi.lovers",
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Remember the personal conversations you began with her.]",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "konomi.margin"
+              ],
+              "Forbids": [
+                "konomi.lovers",
+                "konomi.missed_private_access",
+                "konomi.private_meeting"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave room for the woman you have yet to know privately.]",
+              "Next": "unmet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.lovers",
+                "konomi.missed_private_access",
+                "konomi.private_meeting",
+                "konomi.margin"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "lover",
+          "Speaker": "Narrator",
+          "Text": "{n}You remember the pause before she lets herself smile. There were times when you wanted to hurry through it, to hear the answer you hoped was coming. Now you remember how much of her was in making you wait.{/n}\n{n}The map offers the word BELOVED in elaborate lettering. You turn it down. You want Konomi back, including the parts of the next conversation you cannot predict.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the memory without writing her next answer.]",
+              "Next": "prepare",
+              "Set": [
+                "konomi.return_remembers_love"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "address",
+          "Speaker": "Narrator",
+          "Text": "{n}She supplied her own address. You remember the practical instructions and the unmistakable pleasure beneath them. An impossible delivery had led to an ordinary place where she wanted to receive another letter.{/n}\n{n}You copy no promise into the new line. The address belongs to a history already lived, and that history will still be there if she returns.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the address among your own papers.]",
+              "Next": "prepare",
+              "Set": [
+                "konomi.return_remembers_address"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "known",
+          "Speaker": "Narrator",
+          "Text": "{n}You remember the care she took over an answer. Even a few words could leave very little room for you to hear only what suited you. It is a precision you would like to encounter again.{/n}\n{n}You almost improve her answer in the recollection. Then you remember the raised eyebrow that would have greeted your version, and find yourself smiling at an empty chair.{/n}",
+          "Choices": [
+            {
+              "Text": "[Remember the beginning as it was.]",
+              "Next": "prepare",
+              "Set": [
+                "konomi.return_remembers_talk"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "unmet",
+          "Speaker": "Narrator",
+          "Text": "{n}You know her name. You write it carefully. For once, the map cannot offer you a form with the rest conveniently filled in.{/n}\n{n}The map seems disappointed by the blank space. You leave it blank. If there is to be a private acquaintance, she will have to take part in it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Prepare the attempt without inventing an acquaintance.]",
+              "Next": "prepare",
+              "Set": [
+                "konomi.return_no_private_history"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "prepare",
+          "Speaker": "Narrator",
+          "Text": "{n}You draw a small arrow past the black stroke. The ink disappears. You draw it again, beginning beneath the second name rather than over the first. This time it holds.{/n}\n{n}The arrow pulls at your fingertip. There is something at its other end, something the little map has been trying to keep you from noticing. Following it will take more than another argument with stationery.{/n}\n{n}You leave the map beneath the lamp. The final annotation has changed to FURTHER CORRESPONDENCE UNDETERMINED.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the prepared path for a deliberate attempt.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_path_prepared"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "konomi.retained_dead"
+      ],
+      "Forbids": [
+        "konomi.retained_return_confirmed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "Recovery": "konomi",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "konomi.retained_attempt",
+      "Title": "The line after her name",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The arrow beneath Konomi's name has not moved. Its point ends at the place where the map insists there should be no more writing.{/n}\n{n}You set a clean sheet beside it. The map promptly stamps the sheet COPY. You turn it over and write ORIGINAL CONTINUES. The stamp lifts itself from the paper, offended.{/n}\n{n}Nothing has happened to Konomi yet. This is the opening you prepared, not proof that your power has reached her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take up the prepared thread of fate.]",
+              "Next": "attempt",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Wait before committing your power.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "attempt",
+          "Speaker": "Narrator",
+          "Text": "{n}You follow the arrow with one finger. The room seems to take a breath and hold it. Somewhere close, the map's absurd argument touches something that has never been made of ink.{/n}\n{n}Her death remains on the map. Beneath her name, you begin another line. You think of breath catching in a throat, of someone opening her eyes and wanting to know who has left a lamp burning.{/n}\n{n}The paper grows warm beneath your hand. At its edge, a tiny annotation begins to write CONDITIONS MAY APPLY. You put your thumb over it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Use your Trickster power to attempt to bring Konomi back to life.]",
+              "Next": null,
+              "Set": [
+                "konomi.retained_return_confirmed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Revive": "konomi"
+            },
+            {
+              "Text": "[Release the thread without making the attempt.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "konomi.retained_dead",
+        "konomi.return_path_prepared"
+      ],
+      "Forbids": [
+        "konomi.retained_return_confirmed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "Recovery": "konomi",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "konomi.return_first_words",
+      "Title": "The first unfinished answer",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "{n}Konomi looks at you, then down at her own hand. She opens it once, slowly, as though testing an unfamiliar glove.{/n}\n\"I have been told the simplest version. I would like to hear what you actually did.\"\n{n}Her voice is quiet. She chooses each word with care, then stops after the sentence to take another breath.{/n}\n\"Begin with the part you know. We can leave the embellishments until I am better equipped to dislike them.\"",
+          "Choices": [
+            {
+              "Text": "\"I found a way to attempt your return. You are here. I cannot give you an account of everything between.\"",
+              "Next": "account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"There was an argument with a map. The map lost its certainty before I gained mine.\"",
+              "Next": "map",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Give her time before continuing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "map",
+          "Speaker": "Konomi",
+          "Text": "{n}Her eyes close briefly.{/n}\n\"Of course there was.\"\n{n}You describe the repeated name and the arrow that would not cross out the black stroke. She listens without interrupting until you reach the annotation about further correspondence.{/n}\n\"That is a very poor filing system.\"\n{n}Her mouth moves before the rest of her face does. It is almost a smile.{/n}\n\"I understand why you found it congenial. Tell me what remains uncertain.\"",
+          "Choices": [
+            {
+              "Text": "\"The useful distinction was between a closed account and the last account anyone will ever keep.\"",
+              "Next": "method_ledger",
+              "Set": [],
+              "Requires": [
+                "konomi.return_distinction"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I read the fine print aloud until it admitted that an expectation was not proof.\"",
+              "Next": "method_patient",
+              "Set": [],
+              "Requires": [
+                "konomi.return_patient_reading"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Give her the plain account as well.]",
+              "Next": "account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "method_ledger",
+          "Speaker": "Konomi",
+          "Text": "\"You persuaded a document to admit it had exceeded its authority.\"\n{n}Her eyebrows rise a little.{/n}\n\"I know several people who would take that distinction as a personal insult. I hope the map was one of them.\"\n{n}She looks down at her hand again. This time she leaves it still.{/n}\n\"I am glad you noticed.\"\n{n}For once she does not add a qualification.{/n}",
+          "Choices": [
+            {
+              "Text": "[Continue with what you can tell her plainly.]",
+              "Next": "account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "method_patient",
+          "Speaker": "Konomi",
+          "Text": "\"You outlasted it.\"\n{n}She considers you with a small, tired smile.{/n}\n\"I had wondered whether patience would ever become one of your more dangerous qualities. I should have expected you to discover it while inconveniencing somebody.\"\n\"The map was very determined.\"\n\"Apparently it had met its equal.\"\n{n}She draws a breath before continuing.{/n}\n\"Thank you for staying with the argument. I am rather pleased to be here to hear how irritating it was.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her the rest without embellishing your victory.]",
+              "Next": "account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "account",
+          "Speaker": "Konomi",
+          "Text": "{n}You tell her what you can establish without supplying an explanation for every strange part of it. She asks two questions, considers the answers, and does not ask you to improve the second one.{/n}\n\"I have no useful recollection to contribute. There are people who would find that disappointing.\"\n{n}She runs her thumb along the side of her forefinger.{/n}\n\"I would find their disappointment exhausting. For the moment I should prefer they direct their questions elsewhere.\"\n{n}She looks up again.{/n}\n\"And you? What have you been waiting to say?\"",
+          "Choices": [
+            {
+              "Text": "\"You do not need to revisit the decision we made about us.\"",
+              "Next": "boundary",
+              "Set": [],
+              "Requires": [
+                "konomi.closed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Our farewell still belongs to us. This visit need not undo it.\"",
+              "Next": "boundary",
+              "Set": [],
+              "Requires": [
+                "konomi.farewell"
+              ],
+              "Forbids": [
+                "konomi.closed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We parted. I still wanted you to have another day.\"",
+              "Next": "boundary",
+              "Set": [],
+              "Requires": [
+                "konomi.private_parted"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I missed you.\"",
+              "Next": "love",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I hoped we would have another private afternoon.\"",
+              "Next": "private",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted",
+                "konomi.lovers"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I hoped we would meet privately again.\"",
+              "Next": "private",
+              "Set": [],
+              "Requires": [
+                "konomi.private_meeting"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted",
+                "konomi.lovers",
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I wanted another conversation with you.\"",
+              "Next": "acquainted",
+              "Set": [],
+              "Requires": [
+                "konomi.margin"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted",
+                "konomi.lovers",
+                "konomi.missed_private_access",
+                "konomi.private_meeting"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I am glad we can have this conversation.\"",
+              "Next": "introduction",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted",
+                "konomi.lovers",
+                "konomi.missed_private_access",
+                "konomi.private_meeting",
+                "konomi.margin"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "boundary",
+          "Speaker": "Konomi",
+          "Text": "\"I remember. I did not imagine you had forgotten.\"\n{n}She rests both hands on the chair arms.{/n}\n\"I am glad you have said it plainly. I have had too many people today speaking as though my life has become a story they know how to finish.\"\n{n}The tension at the corner of her mouth eases.{/n}\n\"Thank you for coming. And for what you attempted before there was an answer. We need not turn that into a different answer to an older question.\"",
+          "Choices": [
+            {
+              "Text": "[Let the visit remain a visit of recovery.]",
+              "Next": "water",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "love",
+          "Speaker": "Konomi",
+          "Text": "{n}She reaches for your hand, misses it by a little, and lets you bring it the rest of the way. Her fingers close firmly once they have found yours.{/n}\n\"That is the first answer today that has made sense immediately.\"\n{n}For several breaths she says nothing. Her thumb rests against your knuckle.{/n}\n\"I cannot manage a grand reunion. I can manage being pleased that you are here. You may have to accept that for this afternoon.\"",
+          "Choices": [
+            {
+              "Text": "\"I can stay for the afternoon.\"",
+              "Next": "water",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Kiss the back of her hand and remain beside her.]",
+              "Next": "water",
+              "Set": [
+                "konomi.return_hand_kissed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "private",
+          "Speaker": "Konomi",
+          "Text": "\"So did I.\"\n{n}She seems surprised by the steadiness of the answer.{/n}\n\"I have been trying to decide which plans must be reconsidered. It is a relief to discover one I need not discard immediately.\"\n{n}She adjusts her hand on the chair arm.{/n}\n\"An afternoon will have to be shorter than we might wish. I am discovering that answering one question can leave me with very little appetite for the next.\"",
+          "Choices": [
+            {
+              "Text": "\"Then we need not use up the afternoon talking.\"",
+              "Next": "water",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "acquainted",
+          "Speaker": "Konomi",
+          "Text": "\"I remember our conversations. I should dislike having to begin by pretending they had made no impression.\"\n{n}She pauses, measuring the effort it takes to continue.{/n}\n\"But there are things I cannot tell you today merely because I was able to discuss them before. I am still finding out what an ordinary hour feels like.\"\n{n}Her glance moves toward the water within reach.{/n}\n\"That may be the most useful place to begin.\"",
+          "Choices": [
+            {
+              "Text": "[Offer the water.]",
+              "Next": "water",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "introduction",
+          "Speaker": "Konomi",
+          "Text": "\"As am I. Though I suspect neither of us expected to begin a personal conversation this way.\"\n{n}She studies you more closely, then inclines her head.{/n}\n\"Lady Konomi. I believe you know that already. I should prefer to make the introduction myself in any case.\"\n{n}You give her your name without a recital of titles. She accepts it with a faint movement of her eyebrows.{/n}\n\"I have opinions about you. We need not begin with all of them. It would give the wrong impression that I have made up my mind about everything.\"",
+          "Choices": [
+            {
+              "Text": "\"We can leave something for the next conversation.\"",
+              "Next": "water",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "water",
+          "Speaker": "Konomi",
+          "Text": "{n}She takes the cup herself and drinks. When she sets it down, she looks annoyed by how carefully she had to attend to the simple movement.{/n}\n\"I would like a second visit. Tomorrow would be unwise. I will spend it convincing myself that tomorrow exists without immediately filling it.\"\n{n}She looks at you over the cup.{/n}\n\"The day after, perhaps. Bring the map, if it has finished arguing. I should like to see whether it has spelled my name correctly.\"\n{n}She does not ask you to leave at once. You remain until she begins to tire, then let the visit end before she has to insist.{/n}",
+          "Choices": [
+            {
+              "Text": "[Agree to the later visit.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_first_words",
+                "konomi.return_followup_invited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.retained_return_confirmed",
+        "konomi.return_contact_available"
+      ],
+      "Forbids": [
+        "konomi.retained_dead",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "AfterRecovery": "konomi",
+      "ContactUnit": "ca2d58c5c65723945857e04fb85d30ce",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "konomi.return_second_visit",
+      "Title": "A day she has left partly empty",
+      "Owner": "Konomi",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "{n}Konomi has placed a blank sheet beside the map. She has also brought a ruler.{/n}\n\"Your account suggested something much less legible.\"\n{n}The map's annotation is ordinary ink now. She reads it twice, then measures the empty space beneath her second name.{/n}\n\"There is room for several lines. A little presumptuous to decide that none would ever be needed.\"\n{n}She sets down the ruler. You notice that she has brought it as an excuse to occupy her hands rather than because the measurement tells her anything.{/n}",
+          "Choices": [
+            {
+              "Text": "\"What would you put there?\"",
+              "Next": "plans",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You seem stronger.\"",
+              "Next": "stronger",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "stronger",
+          "Speaker": "Konomi",
+          "Text": "\"I am. I am also becoming better at recognizing the point before I cease to be.\"\n{n}She leans back rather than proving the claim by sitting straighter.{/n}\n\"A woman stopped me this morning to say how wonderful it must be to receive a second chance. She meant kindly. I wanted to ask whether the first chance had come with instructions that I had somehow misplaced.\"\n{n}The irritation fades into amusement.{/n}\n\"I thanked her. Then I came here and left two appointments unmade.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what she wants from the time she has kept.]",
+              "Next": "plans",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "plans",
+          "Speaker": "Konomi",
+          "Text": "\"A meal I finish while it is warm. A walk whose length is decided before I begin it. A chance to hear an argument without everyone stopping to ask whether it has upset me.\"\n{n}She glances at the blank sheet.{/n}\n\"I am not going to become a different woman merely because other people would find the story tidier. There are things I still believe. There are people I still find foolish. I intend to discover whether that list has grown.\"\n{n}Her eyes return to you.{/n}\n\"You will hear about it if you are included.\"",
+          "Choices": [
+            {
+              "Text": "\"I assumed I had a reserved place.\"",
+              "Next": "laugh",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I would rather hear your opinion than a version prepared to thank me.\"",
+              "Next": "laugh",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "laugh",
+          "Speaker": "Konomi",
+          "Text": "\"You have earned a hearing. Do not confuse that with a favorable judgment.\"\n{n}She laughs, briefly and without preparing for it. Afterward she looks down as though the sound had surprised her into remembering something pleasant.{/n}\n\"There. That was useful.\"\n{n}She folds the blank sheet once, then opens it again.{/n}\n\"We should also be accurate about what has not changed.\"",
+          "Choices": [
+            {
+              "Text": "[Speak about her continuing official position.]",
+              "Next": "office",
+              "Set": [],
+              "Requires": [
+                "konomi.present"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Speak about the dismissal that already happened.]",
+              "Next": "dismissed",
+              "Set": [],
+              "Requires": [
+                "konomi.dismissed"
+              ],
+              "Forbids": [
+                "konomi.present"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep official appointments separate from this visit.]",
+              "Next": "unappointed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.present",
+                "konomi.dismissed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "office",
+          "Speaker": "Konomi",
+          "Text": "\"My work has not become a love letter because you brought me back to it.\"\n{n}The familiar firmness returns to her voice.{/n}\n\"There will still be matters on which I advise you to do something you dislike. If I need time before resuming a particular task, I shall say so. I will not turn a disagreement into a test of whether I am sufficiently grateful.\"\n{n}She presses the fold out of the paper with her palm.{/n}\n\"Outside that work, we may have a conversation because we both wish to have it. I should like that to remain an ordinary possibility.\"",
+          "Choices": [
+            {
+              "Text": "[Let her official decisions remain her own.]",
+              "Next": "next",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "dismissed",
+          "Speaker": "Konomi",
+          "Text": "\"I remember being dismissed. I have had no difficulty retaining my opinion of it.\"\n{n}Her expression permits you a small smile, though she does not join it immediately.{/n}\n\"This visit is not a return to that office. There would be decisions to make if either of us wished to discuss such a thing. We have not made them by discussing my health.\"\n{n}She looks at the map again.{/n}\n\"An inaccurate account of this would be particularly irritating after all the effort you apparently spent distinguishing one line from the next.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the old dismissal out of the new appointment.]",
+              "Next": "next",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "unappointed",
+          "Speaker": "Konomi",
+          "Text": "\"No appointment has been offered or accepted in this room. I would prefer that neither of us leave with the impression that it happened between the water and the map.\"\n{n}She says it lightly, but waits until you answer.{/n}\n\"Good. That leaves us with the question I actually meant to ask. Whether there is another conversation we would enjoy, once I have stopped treating an afternoon as a considerable expedition.\"",
+          "Choices": [
+            {
+              "Text": "[Ask what kind of invitation she would welcome.]",
+              "Next": "next",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "next",
+          "Speaker": "Konomi",
+          "Text": "{n}She folds the paper again and places it beneath the map.{/n}\n\"Keep that. You may eventually need a sheet that has not already expressed an opinion about my future.\"\n{n}You slide it free. She has written only her name in the corner, in her own hand this time.{/n}\n\"I should like the next account of my life to contain something I have decided for myself. A modest ambition. Apparently it requires considerable persistence.\"",
+          "Choices": [
+            {
+              "Text": "[End the visit without reopening the relationship she has left.]",
+              "Next": "closed",
+              "Set": [],
+              "Requires": [
+                "konomi.closed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep your farewell intact while wishing her well.]",
+              "Next": "closed",
+              "Set": [],
+              "Requires": [
+                "konomi.farewell"
+              ],
+              "Forbids": [
+                "konomi.closed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Let your parting remain a parting.]",
+              "Next": "closed",
+              "Set": [],
+              "Requires": [
+                "konomi.private_parted"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the next afternoon you can spend together.]",
+              "Next": "familiar",
+              "Set": [],
+              "Requires": [
+                "konomi.lovers"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Use the private address she already gave you.]",
+              "Next": "address",
+              "Set": [],
+              "Requires": [
+                "konomi.missed_private_access"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted",
+                "konomi.lovers"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask about the next private visit you had already begun arranging.]",
+              "Next": "familiar",
+              "Set": [],
+              "Requires": [
+                "konomi.private_meeting"
+              ],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted",
+                "konomi.lovers",
+                "konomi.missed_private_access"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask whether she would welcome a personal letter.]",
+              "Next": "begin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.closed",
+                "konomi.farewell",
+                "konomi.private_parted",
+                "konomi.lovers",
+                "konomi.missed_private_access",
+                "konomi.private_meeting"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "closed",
+          "Speaker": "Konomi",
+          "Text": "\"Thank you.\"\n{n}The answer is short, and she leaves it that way.{/n}\n\"I mean to take the walk I mentioned. A short one, before I decide that good weather is an instruction to prove something.\"\n{n}She puts the ruler away and leaves the map with you. You tuck her signed sheet beside it.{/n}\n\"I hope you find a better use for that than arguing with it again. Though I suspect it knows where to find you.\"\n{n}She leaves with plans for her own afternoon. Your earlier parting has not been erased, and this visit has not needed to erase it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let the next afternoon belong to her.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_aftercare_complete"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "familiar",
+          "Speaker": "Konomi",
+          "Text": "\"You may also write something shorter than an account of the future.\"\n{n}She watches you put away the sheet.{/n}\n\"For example, that you would like to see me on a particular afternoon. Or that you have thought of something I would find amusing. You need not wait until the subject is important enough for a report.\"\n{n}She lets her hand rest beside yours before drawing it back.{/n}\n\"I should like something ordinary to look forward to.\"",
+          "Choices": [
+            {
+              "Text": "[Keep her request for the next invitation.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_conversation_resumed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "address",
+          "Speaker": "Konomi",
+          "Text": "\"The address was given for that purpose. I should be annoyed to discover you had begun treating it as a relic.\"\n{n}She smiles at the word, then reaches to straighten the map's curling edge.{/n}\n\"Ask me about the plans we made. Some may need to wait. I would rather tell you that than have you decide on my behalf that I have abandoned them.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the next invitation practical and personal.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_conversation_resumed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        },
+        {
+          "Id": "begin",
+          "Speaker": "Konomi",
+          "Text": "\"A letter is manageable. I can put it down when I tire and return to it without making its author worry that the silence means something terrible.\"\n{n}Her expression warms.{/n}\n\"I am not promising the answer you may want. I am telling you that I would like to read the question. There is a difference, and you have recently shown an unusual talent for finding those.\"",
+          "Choices": [
+            {
+              "Text": "[Let any new invitation earn its own answer.]",
+              "Next": null,
+              "Set": [
+                "konomi.return_invitation_welcome"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi"
+        }
+      ],
+      "Requires": [
+        "konomi.retained_return_confirmed",
+        "konomi.return_contact_available",
+        "konomi.return_followup_invited"
+      ],
+      "Forbids": [
+        "konomi.retained_dead",
+        "inhuman"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "konomi",
+      "Remote": true,
+      "AfterRecovery": "konomi",
+      "ContactUnit": "ca2d58c5c65723945857e04fb85d30ce",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
       "Id": "konomi.margin",
       "Title": "An alteration in the margin",
       "Owner": "Konomi",
@@ -94280,13 +95361,15 @@
     },
     "konomi": {
       "Title": "Letters without a seal",
-      "Description": "Lady Konomi has corrected a report about me. She has also made a point of telling me which criticisms she left intact. Our private correspondence is becoming less easily filed.",
+      "Description": "Lady Konomi's official duties and private choices do not always lead in the same direction. There may be more to learn in our conversations.",
       "Objective": "Make time for Lady Konomi",
-      "Guidance": "Speak to Konomi in Drezen between meetings while she holds her post. If she is dismissed, a Trickster may find another way to send a personal invitation. After she answers, allow time for letters and private visits, and look for them after resting in Drezen. Her political convictions continue even when the conversation becomes personal. Before her council appointment begins, a Trickster can seek a personal introduction during a quiet rest in Drezen. Keep her reply and arrange the meeting she offers. A later council appointment pauses these private visits while she holds the office.",
+      "Guidance": "Speak to Konomi in Drezen between meetings while she holds her post. If she is dismissed, a Trickster may find another way to send a personal invitation. After she answers, allow time for letters and private visits, and look for them after resting in Drezen. Her political convictions continue even when the conversation becomes personal. Before her council appointment begins, a Trickster can seek a personal introduction during a quiet rest in Drezen. Keep her reply and arrange the meeting she offers. A later council appointment pauses these private visits while she holds the office. If Konomi has died and her body remains in Drezen, a Trickster can investigate a possible return through the available events. Visits afterward require her to be well enough and available to meet. A return does not reverse an earlier refusal or restore her office.",
       "StartedFlag": "konomi.started",
       "ClosedFlag": "konomi.closed",
       "CommittedFlag": "konomi.committed",
-      "UnavailableFlags": [],
+      "UnavailableFlags": [
+        "konomi.retained_dead"
+      ],
       "FailureFlags": []
     },
     "jerribeth": {
@@ -94507,6 +95590,11 @@
       "Relationship": "seelah",
       "Unit": "54be53f0b35bf3c4592a97ae335fe765",
       "DeathFlag": "seelah_dead"
+    },
+    "konomi": {
+      "Relationship": "konomi",
+      "Unit": "ca2d58c5c65723945857e04fb85d30ce",
+      "DeathFlag": "konomi.retained_dead"
     }
   },
   "SeenCues": {

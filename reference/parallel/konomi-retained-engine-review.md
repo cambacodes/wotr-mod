@@ -19,6 +19,9 @@ The service remains limited to the exact retained native body in its loaded capi
 | `tests/Program.cs` | `34D9C879AB046D696EF3A9EC715F1049BDB855A1545541C2A159490A905B2E8E` |
 
 I independently verified these hashes after root reported the engine frozen.
+The `tests/Program.cs` hash records that review checkpoint, not later suite registration.
+Afterward, root adjusted the generic recovery fixture to exclude the relationship closed flag only for Konomi recovery, matching the reviewed exception while retaining other characters' closure checks.
+I inspected that fixture delta; the three production engine files and 38-assertion focused file remained unchanged.
 I read the current diffs, full recovery service, contact observer, reused source-provenance inspector, physical-contact helper and earlier independent service/observer reports.
 I also inspected the Main action, reconciliation, state publication and journal-entry paths.
 

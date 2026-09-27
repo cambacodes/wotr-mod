@@ -23,18 +23,28 @@ internal static class KonomiContactTests
             "ending_distance_ascended_open", "ending_distance_lived", "ending_distance_open_lived" };
         var scenes = story.Scenes.Where(s => s.Relationship == "konomi").ToArray();
         excluded = excluded.Concat(new[] { "the_unintroduced_letter", "the_answer_she_addressed", "the_courtyard_introduction",
-            "ending_missed_declined", "ending_missed_interrupted", "ending_missed_interrupted_aeon" }
+            "ending_missed_declined", "ending_missed_interrupted", "ending_missed_interrupted_aeon", "retained_inquiry", "retained_attempt" }
             .Where(id => scenes.Any(s => s.Id == "konomi." + id))).ToArray();
+        var aftercare = new[] { "return_first_words", "return_second_visit" }
+            .Where(id => scenes.Any(s => s.Id == "konomi." + id)).ToArray();
         // These later visits declare the same audited physical contact in their source.
         ordinary = ordinary.Concat(new[] { "the_names_admitted", "the_answer_on_record" }
             .Where(id => scenes.Any(s => s.Id == "konomi." + id))).ToArray();
         var native = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys)
             .Concat(story.SelectedAnswers.Keys).Concat(story.SeenCues.Keys).Concat(story.StartedDialogs.Keys).ToHashSet();
         check(story.Etudes["konomi.present"] == "b5f301fbc4c44535a6309d610d5bd28a", "Konomi ordinary contact lost its real presence gate.");
-        check(scenes.Select(s => s.Id).ToHashSet().SetEquals(ordinary.Concat(excluded).Select(id => "konomi." + id)),
+        check(scenes.Select(s => s.Id).ToHashSet().SetEquals(ordinary.Concat(excluded).Concat(aftercare).Select(id => "konomi." + id)),
             "Konomi contact classification needs review for an added or missing scene.");
-        check(scenes.Where(s => s.ContactUnit != null).Select(s => s.Id).ToHashSet().SetEquals(ordinary.Select(id => "konomi." + id)),
+        check(scenes.Where(s => s.ContactUnit != null).Select(s => s.Id).ToHashSet().SetEquals(ordinary.Concat(aftercare).Select(id => "konomi." + id)),
             "Konomi contact escaped the audited physical scene set.");
+        foreach (string id in aftercare)
+        {
+            var scene = scenes.Single(s => s.Id == "konomi." + id);
+            check(scene.ContactUnit == actor && Rules.IsRemote(scene) && scene.AfterRecovery == "konomi",
+                "Aftercare must use current physical contact even though delivered as a book: " + id);
+            check(scene.Requires.Contains("konomi.retained_return_confirmed") && scene.Requires.Contains("konomi.return_contact_available")
+                && !scene.Requires.Contains("konomi.present"), "Aftercare substitutes office history for verified return: " + id);
+        }
 
         foreach (string id in ordinary)
         {
@@ -125,6 +135,11 @@ internal static class KonomiContactTests
             remote.Flags.UnionWith(scene.Requires);
             foreach (var group in scene.RequiresAnyGroups) remote.Flags.Add(group[0]);
             if (scene.RequiresAny.Length > 0) remote.Flags.Add(scene.RequiresAny[0]);
+            if (scene.Recovery != null)
+            {
+                check(!Rules.Available(story, scene, remote), "Remote recovery ignores unavailable retained body: " + id);
+                remote.Flags.Add("revive." + scene.Recovery + ".available");
+            }
             check(Rules.Available(story, scene, remote), "Konomi remote witness cannot enter: " + id);
             check(remote.AvailableContacts.Count == 0 && Rules.ContactAvailable(story, scene, remote),
                 "Valid Konomi remote conversation requires a physical officer: " + id);

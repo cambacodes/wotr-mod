@@ -1,6 +1,6 @@
 {
   "scope": "Authored prose and choices. Exact normalized whole-segment deduplication only; not semantic originality, reachable content, per-character attribution or quality approval.",
-  "story_sha256": "D0D019E06C1A9656CA2145DCD06EF717DB5D356F663DC7A202CE8F3D250E6045",
+  "story_sha256": "68DB5A6148241DE959B60A1402F62A23AEEEDE4DEA6B5D00DCDC8E92202DA171",
   "tokenizer": "Same as the RanRomance source audit: Unicode alphanumerics, internal apostrophes retained, hyphens split, underscores excluded; curly and angle markup removed; whitespace normalized.",
   "exclusions": [
     "titles",
@@ -36,11 +36,11 @@
     },
     "konomi": {
       "planning_floor_words": 21000,
-      "scenes": 70,
-      "raw_words": 64497,
-      "prose_words": 54730,
-      "choice_words": 9767,
-      "distinct_segment_words": 53817,
+      "scenes": 74,
+      "raw_words": 67773,
+      "prose_words": 57444,
+      "choice_words": 10329,
+      "distinct_segment_words": 57093,
       "exact_repeat_words": 10680,
       "integrated_external_words": null,
       "attainable_playthrough_words": null,
