@@ -147,26 +147,28 @@ for suffix, lst, nrc, nxt in (("after_bear_a", "001686714a5c2384ba09686b45bd033f
 
 SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "Soana", 3, "", [
     nar("start", '''{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground; the forest does not have anyone left who would.{/n}
-{n}The clay knot she wore is where it fell, or where you left it, or in your pack. It is tied in a way nobody living knows how to untie. When you close your hand on it, something out in the trees stops moving.{/n}''',
+{n}Something out in the trees stops moving when you step inside.{/n}''',
         c("Continue", "orso", forbids=(BEAR_DEAD,)), c("Continue", "spirit", requires=(BEAR_DEAD,))),
-    nar("orso", '''{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is the same knot you are holding, and it has not faded.{/n}''',
+    nar("orso", '''{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded.{/n}''',
         c("Continue", "read")),
-    nar("spirit", '''{n}Orso's bones lie where he fell, and something still lies in them. The grass around the carcass has gone black in the shape of a knot, and it does not stir when the wind does.{/n}''',
+    nar("spirit", '''{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones.{/n}''',
         c("Continue", "read")),
     nar("read", '''{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}
 {n}She never said whose life went first.{/n}''',
-        c('[Hold the medallion to the guardian\'s brand] "You linked your lives together. You never said whose goes first. Pay her debt."',
-          "wake", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
+        c('[Hold her clay medallion to the guardian\'s brand] "You linked your lives together. You never said whose goes first. Pay her debt."',
+          "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
           flags=(RETURNED, STARTED, GUARDIAN, SPENT)),
-        c('[Read the knot her own words] "You linked your lives together. You never said whose goes first. Pay her debt."',
-          "wake", mythic="Trickster", alignment=("Chaotic", 1), forbids=("soana.medallion_held",),
+        c('[Lay your hand on the brand and read it her own words] "You linked your lives together. You never said whose goes first. Pay her debt."',
+          "wake_brand", mythic="Trickster", alignment=("Chaotic", 1), forbids=("soana.medallion_held",),
           flags=(RETURNED, STARTED, GUARDIAN)),
         c('[Leave the knot tied] "No. She said she was finished. Let her be finished."', flags=(CLOSED,))),
-    nar("wake", '''{n}The brand darkens, as a rope darkens when it is pulled wet. The knot in your hand draws tight, tighter than clay can bear, and cracks down the middle with a sound like a knuckle.{/n}''',
+    nar("wake_clay", '''{n}The brand darkens, as a rope darkens when it is pulled wet. The clay knot in your hand draws tight, tighter than clay can bear, and cracks down the middle with a sound like a knuckle.{/n}''',
         c("Continue", "wake_orso", forbids=(BEAR_DEAD,)), c("Continue", "wake_spirit", requires=(BEAR_DEAD,))),
-    nar("wake_orso", '''{n}Out in the ferns, Orso lies down on his own tracks and does not get up. The brand on his hide goes grey, then goes. He was a demon in a bear's skin, and for thirty winters he guarded the only person who ever gave him a job. He does not make a sound.{/n}''',
+    nar("wake_brand", '''{n}The brand darkens under your palm, as a rope darkens when it is pulled wet, and draws tight until the skin of your hand burns with cold. When you take the hand away, the shape of the knot is printed on it in white.{/n}''',
+        c("Continue", "wake_orso", forbids=(BEAR_DEAD,)), c("Continue", "wake_spirit", requires=(BEAR_DEAD,))),
+    nar("wake_orso", '''{n}Out in the ferns, Orso lies down on his own tracks and does not get up. The brand on his hide goes grey, then goes. He was a demon in a bear's skin, and winter after winter he guarded the only person who ever gave him a job. He does not make a sound.{/n}''',
         c("Continue", "soana")),
-    nar("wake_spirit", '''{n}The black grass around the bones turns to plain dead grass. Whatever lived in the carcass has been spent, all at once, like a coin.{/n}''',
+    nar("wake_spirit", '''{n}The black grass around the bones turns to plain dead grass. Whatever still lived in the carcass has been spent, all at once, like a coin.{/n}''',
         c("Continue", "soana")),
     s("soana", '''{n}Behind you, someone coughs up forest loam.{/n}
 "...Bloody hunter. Of course. Who else would hold a dead woman to her own words?"
@@ -181,7 +183,7 @@ at_cave("soana.trickster.returned.graveyard", "What the knot cost", '"Soana."', 
     s("start", '''{n}Soana has a spade in one hand. At her feet, rolled in a hide that has gone the colour of ash, is something much larger than a woman.{/n}
 "Two days I have been walking this forest. Not a squirrel in it. The spirits I bound are hungry, and there is nothing left to feed them but the dead."''',
         c("Continue", "orso", forbids=(BEAR_DEAD,)), c("Continue", "spirit", requires=(BEAR_DEAD,))),
-    s("orso", '''"Orso is under that hide. He carried me for thirty winters, and you used him to pay a debt that was not his. He was a demon. He was also mine. He does not go in the ground with a hunter's rope around his neck. He goes in deep, and by hand."''',
+    s("orso", '''"Orso is under that hide. He guarded me winter after winter, and you used him to pay a debt that was not his. He was a demon. He was also mine. He does not go in the ground with a hunter's rope around his neck. He goes in deep, and by hand."''',
         c("Continue", "dig")),
     s("spirit", '''"The thing I bound into Orso has nothing left to live in now. It sleeps under his bones. I want those bones under the earth before it wakes and remembers who spent it, and before the demons on your road smell something they can use."''',
         c("Continue", "dig")),
@@ -199,7 +201,7 @@ at_cave("soana.trickster.returned.graveyard", "What the knot cost", '"Soana."', 
 TERMS_NIGHT = '''{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}
 "Knots listen." {n}Her eyes do not leave yours.{/n} "So do I. So listen."
 {n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}
-"Thirty winters I slept with a demon at the door. I am done sleeping."
+"All those winters I slept with a demon at the door. I am done sleeping."
 {n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}'''
 TERMS_MORNING = '''{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}
 {n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}
@@ -325,7 +327,7 @@ inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you
         c("Continue", "cheat", requires=(CHEAT,)), c("Continue", "terms", forbids=(REST, ROLL, CHEAT))),
     n("rest", "Soana", '''"You said you would let her lie down. I have been turning that over like a stone, looking for the worm under it. There is no worm. I find that irritating."''',
         c("Continue", "terms")),
-    n("roll", "Soana", '''"You said you would roll again as long as it takes. That is a child's answer. I have been alone with a demon in a bear for thirty winters; I find I have a taste for children's answers."''',
+    n("roll", "Soana", '''"You said you would roll again as long as it takes. That is a child's answer. I have been alone with a demon in a bear for more winters than I care to count; I find I have a taste for children's answers."''',
         c("Continue", "terms")),
     n("cheat", "Soana", '''"You said you would call a one a twenty. I laughed. I have not laughed like that since before your crusade was born. I am still angry about it."''',
         c("Continue", "terms")),
