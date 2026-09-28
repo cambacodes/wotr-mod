@@ -197,7 +197,7 @@ internal static class AreeluTricksterTests
               && !Available(collect, World(story, 6, "trickster.ever", "council.cauldron_given", Primed, Bet, Struck, Committed)),
             "The collection does not need both the soul cauldron and the named stake.");
         var collected = Program.Walk(collect, cauldronWorld).Where(r => r.Has(collect.Id)).ToList();
-        check(collected.Count == 1 && collected[0].Has(Drawn) && collect.Nodes[0].Choices.Any(ch => ch.Mythic == "PlayerIsTrickster"),
+        check(collected.Count == 1 && collected[0].Has(Drawn) && collect.Nodes.SelectMany(n => n.Choices).Any(ch => ch.Mythic == "PlayerIsTrickster") && collect.Nodes.Any(n => n.Id == "contest"),
             "The collection does not draw the graft with a [Trickster] act.");
         var rewriteWorld = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed, Named, Drawn);
         check(Available(rewrite, rewriteWorld) && Available(after, rewriteWorld) && !Available(survived, rewriteWorld), "Trk_Areelu_Rewrite failed.");

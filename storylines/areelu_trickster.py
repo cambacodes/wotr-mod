@@ -517,9 +517,14 @@ inline("areelu.trickster.rift.odds", "What the winner keeps", 6,
         c('"And if neither of us burns?"', "neither"),
         c('[Joke] "That\'s the most romantic thing anyone\'s ever said to me."', "romantic"),
         c('"And if I win? What do I get?"', "win"),
+        c('"You keep looking at my belt."', "belt", requires=(CAULDRON,)),
         c('[Joke] "If I win, can I keep your notes? As a souvenir."', "souvenir")),
     ar("souvenir", '''"A souvenir." {n}She says it as though tasting something she has never been offered before and does not trust.{/n}
 "A century of the most dangerous research ever done on Golarion, bound in the skins of things you do not want to know about, and you would put it on a shelf beside a seashell." "No. If you win, my notes burn with me. Nobody will ever read them. That is not spite. It is the only kindness I know how to do the world."''',
+        c('"And if neither of us burns?"', "neither")),
+    ar("belt", '''"At the Council's cauldron. Yes." {n}Her eyes stay on it, the way a physician's stay on a blade.{/n}
+"It drinks the essence of another plane; that is what they built it for, and it does it well. I am half another plane, Commander. I sewed the Abyss into my own soul at the edge of this rift. Put that crystal against me and it would drink, and I do not know whether it would stop."
+"If you ever mean to find out, tell me first. I will want to watch."''',
         c('"And if neither of us burns?"', "neither")),
     ar("win", '''"If you win, I burn, and you get what is left of me." {n}She spreads her hands, and the violet light runs over them like water.{/n}
 "Look closely. A wound that will not close. A century of notes nobody else can read. Two demon lords who would like me dead, and a goddess who has been waiting for my page since before your crusade was born."
@@ -610,6 +615,11 @@ at_threshold("areelu.trickster.wager.collect", "Into the cauldron", '[Take out t
     ar("start", '''{n}Areelu looks at the crystal in your hands: the Council's soul cauldron, a diamond in a gold cradle, made to draw the essence of another plane.{/n}
 "The Council's toy." {n}She understands before you say it; she always does.{/n} "What is left of me is my work, we said. The graft is work. It is the essence of another plane, sewn into a Sarkorian woman's soul, and that thing was made to drink exactly that."
 "You mean to take the Abyss out of me with a trinket, here, before you choose."''',
+        c('"Will the rift take it in your place?"', "contest"),
+        c("[Put the cauldron away.]", abort=True)),
+    ar("contest", '''"I do not know." {n}She says it as if it were the most interesting sentence she has spoken in a century.{/n}
+"Two hypotheses. If the rift wants a quantity of the Abyss, it will take what is in the cauldron and be satisfied. If it wants a life, it will take me anyway, the cauldron will have hurt me for nothing, and you will have lost the bet and kept nothing."
+"I accept the experiment. I have never refused one." {n}She lifts her chin, and the wound above her heart pulses once, violet.{/n} "Well? Collect."''',
         c('[Collect the stake] "Whoever burns pays up. Pay into this."', "drawn", mythic="Trickster"),
         c("[Put the cauldron away.]", abort=True)),
     ar("drawn", '''{n}You set the cradle against the wound above her heart. For a moment nothing happens. Then the violet light comes out of her like blood from a cut: slowly, then all at once, pouring into the diamond until it glows like a small, furious star.{/n}
@@ -767,12 +777,14 @@ def report(id, title, nodes, after, any_group=None):
 
 page("areelu.trickster.finale.rewrite", "What burned", [
     nar("end", '''{n}The report on the experiment called Areelu Vorlesh should have ended at Threshold, where it began: with the siphon bursting, and its sparks dragging her to the edge of the rift, and her life spent to open the new rifts, exactly as the Commander's joke required.{/n}''',
+        c("[Wait while she takes her inventory.]", "inventory"),
+        c("[Joke] \"Welcome to being mortal. The food's better than you'd think.\"", "mortal"),
         paragraphs=(
             p("Fine. Then how about this: what the sparks dragged into the rift was the Abyss, and not the woman. An hour "
               "before, the Commander had collected her stake into the Council's soul cauldron, a vessel made to drink the "
               "essence of another plane, and the essence of another plane was what she had sewn into herself a century "
-              "ago. When the siphon burst, the rift took what was in it. It took a life's worth of the Abyss, and it was "
-              "satisfied."),
+              "ago. When the siphon burst, the rift took what was in it: a quantity, as her first hypothesis said. It "
+              "did not come back for the woman. Her second hypothesis was wrong, and she wrote so in the margin, twice."),
             p("The laboratories of Threshold burned in the same fire: a century of notes, the soul research, the "
               "Nahyndrian ledgers, every page she had written in that prison. She watched them go from the edge of the "
               "rift and did not try to save one. They had been part of the stake too."),
@@ -787,19 +799,32 @@ page("areelu.trickster.finale.rewrite", "What burned", [
               requires=(LENS_HELD,)),
             p("The woman walked out of the smoke with grey at her temples, no magic at all, and ink on her fingers that "
               "would not wash off."),
-            p("She held out her hand to the Commander as she came: the real one, as asked for in her cell, cold and "
-              "shaking and entirely mortal. It was the first thing she did with it.", requires=(REAL_HAND,)),
+            p("She did not take the hand the Commander held out. She looked at it: the real one, as asked for in her "
+              "cell. \"Not yet,\" she said. \"I am taking an inventory.\"", requires=(REAL_HAND,)),
             p("She did not look back at Threshold. The Commander did, once, and saw the smoke go up from the place where "
               "a century of her work was burning, and understood, too late to say so, that this was the fire the "
               "hunters had wanted all along, and that the joke had given it to them, and that she knew."),
-        ))],
+        )),
+    nar("inventory", '''{n}She sat down in the ash at the edge of the rift and took it methodically: a word of power, which did nothing; a gesture that had once split stone, which did nothing; her own pulse, counted against the Commander's breathing, which was fast, and hers, and mortal.{/n}
+{n}Then she put her face in her hands and made a sound the Commander had never heard from her and never heard again. It was not weeping. It was the noise a door makes when it is forced.{/n}''',
+        c("Continue", "terms")),
+    nar("mortal", '''{n}"Mortal." She tried a word of power on the Commander, very deliberately, to see what would happen. Nothing happened. "You took a century from me with a crystal and a pun, and you are recommending the food."{/n}
+{n}Her hands were shaking. She held them up between them and looked at them, and let the Commander see her look.{/n}''',
+        c("Continue", "terms")),
+    nar("terms", '''{n}When she stood up, her face was composed again, and colder than the Commander had ever seen it.{/n}
+{n}"Here is what I will do," said Areelu Vorlesh. "I will follow you until I understand how you did it. Not because I want to. Because I lost, and I do not leave an experiment until I know why it failed. You will not read my notes. You will not pity me. When you cease to interest me, I will go, and I will not say goodbye."{/n}''',
+        c('"Deal."'),
+        c("[Say nothing. Hold out your hand again.]", "hand_again")),
+    nar("hand_again", '''{n}She looked at the hand for a long time. Then she took it, briefly, the way one takes a document one intends to read later, and let it go.{/n}
+{n}"Noted," she said.{/n}''')],
     requires=("trickster.ever", STRUCK, SAC_TRICK, DRAWN, ON_SCREEN), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
     overrides=ROMANCE_OVERRIDES)
 
 page("areelu.trickster.finale.after", "The bet is still open", [
     nar("end", '''"You reduced a century of work to a pun, and me to a woman of forty. How thorough."
 {n}She did not thank the Commander. Nobody had expected her to.{/n}
-"You lost the bet," said the Commander. "I lost my notes," said Areelu Vorlesh. "The bet is still open. I have perhaps thirty years left. That is more than enough to learn how you did it, and I will not share what I find."''',
+"You lost the bet," said the Commander. "I lost my notes," said Areelu Vorlesh. "The bet is still open. I have perhaps thirty years left. That is more than enough to learn how you did it, and I will not share what I find."
+{n}She took the rooms across the hall because they were the nearest place from which to observe the Commander, and said so. She paid for them herself, from somewhere, and would not say where.{/n}''',
         paragraphs=(
             p("A kitsune scholar arrived within the week, with calipers and a folio, to measure her. Areelu allowed it "
               "exactly once, and corrected the arithmetic.", forbids=NENIO_GONE),
@@ -1128,7 +1153,7 @@ report("areelu.trickster.report.participation", "The report: participation", [
         c("Continue", "morning_after")),
     nar("morning_after", '''{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}
 {n}"The door," she said, when the Commander pointed out that there was now only one room and no hallway, "was a control. The control has failed. I am told that happens, in the best experiments."{/n}
-{n}She knew exactly who else the Commander loved; they had been in the file for years. "Share your bed with whomever you like," she said, once, and only once. "Do not bore me with the ledger. The desk stays where it is."{/n}'''),
+{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. "They are not my concern," she said, when the Commander asked. "And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you." She did not raise it again, and she did not pretend not to have read the letters.{/n}'''),
     nar("closed", '''{n}The Commander closed the door gently between them.{/n}
 {n}Through the wood, after a long moment, came a dry sound that might have been a laugh. "Subject declined," said Areelu Vorlesh. "Noted." Her footsteps went back across the hall.{/n}
 {n}She did not knock again that winter, and she did not seem, in the mornings, to hold it against anyone. She only wrote more.{/n}

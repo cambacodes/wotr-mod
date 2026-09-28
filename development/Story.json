@@ -175008,6 +175008,16 @@
               "Abort": false
             },
             {
+              "Text": "\"You keep looking at my belt.\"",
+              "Next": "belt",
+              "Set": [],
+              "Requires": [
+                "council.cauldron_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
               "Text": "[Joke] \"If I win, can I keep your notes? As a souvenir.\"",
               "Next": "souvenir",
               "Set": [],
@@ -175022,6 +175032,22 @@
           "Id": "souvenir",
           "Speaker": "Areelu",
           "Text": "\"A souvenir.\" {n}She says it as though tasting something she has never been offered before and does not trust.{/n}\n\"A century of the most dangerous research ever done on Golarion, bound in the skins of things you do not want to know about, and you would put it on a shelf beside a seashell.\" \"No. If you win, my notes burn with me. Nobody will ever read them. That is not spite. It is the only kindness I know how to do the world.\"",
+          "Choices": [
+            {
+              "Text": "\"And if neither of us burns?\"",
+              "Next": "neither",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "belt",
+          "Speaker": "Areelu",
+          "Text": "\"At the Council's cauldron. Yes.\" {n}Her eyes stay on it, the way a physician's stay on a blade.{/n}\n\"It drinks the essence of another plane; that is what they built it for, and it does it well. I am half another plane, Commander. I sewed the Abyss into my own soul at the edge of this rift. Put that crystal against me and it would drink, and I do not know whether it would stop.\"\n\"If you ever mean to find out, tell me first. I will want to watch.\"",
           "Choices": [
             {
               "Text": "\"And if neither of us burns?\"",
@@ -175541,6 +175567,30 @@
           "Id": "start",
           "Speaker": "Areelu",
           "Text": "{n}Areelu looks at the crystal in your hands: the Council's soul cauldron, a diamond in a gold cradle, made to draw the essence of another plane.{/n}\n\"The Council's toy.\" {n}She understands before you say it; she always does.{/n} \"What is left of me is my work, we said. The graft is work. It is the essence of another plane, sewn into a Sarkorian woman's soul, and that thing was made to drink exactly that.\"\n\"You mean to take the Abyss out of me with a trinket, here, before you choose.\"",
+          "Choices": [
+            {
+              "Text": "\"Will the rift take it in your place?\"",
+              "Next": "contest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put the cauldron away.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "contest",
+          "Speaker": "Areelu",
+          "Text": "\"I do not know.\" {n}She says it as if it were the most interesting sentence she has spoken in a century.{/n}\n\"Two hypotheses. If the rift wants a quantity of the Abyss, it will take what is in the cauldron and be satisfied. If it wants a life, it will take me anyway, the cauldron will have hurt me for nothing, and you will have lost the bet and kept nothing.\"\n\"I accept the experiment. I have never refused one.\" {n}She lifts her chin, and the wound above her heart pulses once, violet.{/n} \"Well? Collect.\"",
           "Choices": [
             {
               "Text": "[Collect the stake] \"Whoever burns pays up. Pay into this.\"",
@@ -176266,8 +176316,16 @@
           "Text": "{n}The report on the experiment called Areelu Vorlesh should have ended at Threshold, where it began: with the siphon bursting, and its sparks dragging her to the edge of the rift, and her life spent to open the new rifts, exactly as the Commander's joke required.{/n}",
           "Choices": [
             {
-              "Text": "Continue",
-              "Next": null,
+              "Text": "[Wait while she takes her inventory.]",
+              "Next": "inventory",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Welcome to being mortal. The food's better than you'd think.\"",
+              "Next": "mortal",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -176277,7 +176335,7 @@
           "Portrait": "Areelu",
           "Paragraphs": [
             {
-              "Text": "Fine. Then how about this: what the sparks dragged into the rift was the Abyss, and not the woman. An hour before, the Commander had collected her stake into the Council's soul cauldron, a vessel made to drink the essence of another plane, and the essence of another plane was what she had sewn into herself a century ago. When the siphon burst, the rift took what was in it. It took a life's worth of the Abyss, and it was satisfied.",
+              "Text": "Fine. Then how about this: what the sparks dragged into the rift was the Abyss, and not the woman. An hour before, the Commander had collected her stake into the Council's soul cauldron, a vessel made to drink the essence of another plane, and the essence of another plane was what she had sewn into herself a century ago. When the siphon burst, the rift took what was in it: a quantity, as her first hypothesis said. It did not come back for the woman. Her second hypothesis was wrong, and she wrote so in the margin, twice.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -176319,7 +176377,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She held out her hand to the Commander as she came: the real one, as asked for in her cell, cold and shaking and entirely mortal. It was the first thing she did with it.",
+              "Text": "She did not take the hand the Commander held out. She looked at it: the real one, as asked for in her cell. \"Not yet,\" she said. \"I am taking an inventory.\"",
               "Requires": [
                 "areelu.trickster.real_hand_asked"
               ],
@@ -176333,6 +176391,78 @@
               "AnyGroups": []
             }
           ]
+        },
+        {
+          "Id": "inventory",
+          "Speaker": "Narrator",
+          "Text": "{n}She sat down in the ash at the edge of the rift and took it methodically: a word of power, which did nothing; a gesture that had once split stone, which did nothing; her own pulse, counted against the Commander's breathing, which was fast, and hers, and mortal.{/n}\n{n}Then she put her face in her hands and made a sound the Commander had never heard from her and never heard again. It was not weeping. It was the noise a door makes when it is forced.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Mortal.\" She tried a word of power on the Commander, very deliberately, to see what would happen. Nothing happened. \"You took a century from me with a crystal and a pun, and you are recommending the food.\"{/n}\n{n}Her hands were shaking. She held them up between them and looked at them, and let the Commander see her look.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Narrator",
+          "Text": "{n}When she stood up, her face was composed again, and colder than the Commander had ever seen it.{/n}\n{n}\"Here is what I will do,\" said Areelu Vorlesh. \"I will follow you until I understand how you did it. Not because I want to. Because I lost, and I do not leave an experiment until I know why it failed. You will not read my notes. You will not pity me. When you cease to interest me, I will go, and I will not say goodbye.\"{/n}",
+          "Choices": [
+            {
+              "Text": "\"Deal.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing. Hold out your hand again.]",
+              "Next": "hand_again",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "hand_again",
+          "Speaker": "Narrator",
+          "Text": "{n}She looked at the hand for a long time. Then she took it, briefly, the way one takes a document one intends to read later, and let it go.{/n}\n{n}\"Noted,\" she said.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
         }
       ],
       "Requires": [
@@ -176374,7 +176504,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "\"You reduced a century of work to a pun, and me to a woman of forty. How thorough.\"\n{n}She did not thank the Commander. Nobody had expected her to.{/n}\n\"You lost the bet,\" said the Commander. \"I lost my notes,\" said Areelu Vorlesh. \"The bet is still open. I have perhaps thirty years left. That is more than enough to learn how you did it, and I will not share what I find.\"",
+          "Text": "\"You reduced a century of work to a pun, and me to a woman of forty. How thorough.\"\n{n}She did not thank the Commander. Nobody had expected her to.{/n}\n\"You lost the bet,\" said the Commander. \"I lost my notes,\" said Areelu Vorlesh. \"The bet is still open. I have perhaps thirty years left. That is more than enough to learn how you did it, and I will not share what I find.\"\n{n}She took the rooms across the hall because they were the nearest place from which to observe the Commander, and said so. She paid for them herself, from somewhere, and would not say where.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -178147,7 +178277,7 @@
         {
           "Id": "morning_after",
           "Speaker": "Narrator",
-          "Text": "{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}\n{n}\"The door,\" she said, when the Commander pointed out that there was now only one room and no hallway, \"was a control. The control has failed. I am told that happens, in the best experiments.\"{/n}\n{n}She knew exactly who else the Commander loved; they had been in the file for years. \"Share your bed with whomever you like,\" she said, once, and only once. \"Do not bore me with the ledger. The desk stays where it is.\"{/n}",
+          "Text": "{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}\n{n}\"The door,\" she said, when the Commander pointed out that there was now only one room and no hallway, \"was a control. The control has failed. I am told that happens, in the best experiments.\"{/n}\n{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. \"They are not my concern,\" she said, when the Commander asked. \"And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you.\" She did not raise it again, and she did not pretend not to have read the letters.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -181296,8 +181426,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
