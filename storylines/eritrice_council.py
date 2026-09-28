@@ -556,7 +556,8 @@ sitting(GONE, "So many years of preparation", '"Socothbenoth\'s gone."', [
       c('"Then call the next session."', "next")),
     e("set", '''{n}She stares at you. Then she looks down the length of the long table, at every chair, at the one turned to the wall.{/n}
 "I did set it." {n}Slowly.{/n} "He suggested. I convened. I chose the chairs and the rules and the minutes. He brought a trap. I brought a table. Only one of us is still here." {n}She takes up the quill.{/n}
-"Minuted. The chair notes that she has just been comforted by the Commander, and that it worked, and that she does not know how."''',
+{n}She does not write it down at once. She sits with her hand flat over the scroll, and her shoulders, for the first time you can remember, are not squared.{/n}
+"You comforted me. It worked. I do not know how, and I am not going to minute it. Stay until I do."''',
       c("[Stay while she writes.]", flags=(K + "table_stands",))),
     e("next", '''"Yes." {n}She reaches for a fresh scroll.{/n} "The Council will reconvene. Without him. The first item on the agenda will be the Worldwound, as it always has been. The second item will be the Commander's crossroads, as it has been since you arrived."
 "And the third item..." {n}She writes it, and turns the scroll so that you can read it: "That the chair was not wasted."{/n} "I am going to carry that motion. I do not care how many sessions it takes."''',

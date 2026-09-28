@@ -90,13 +90,18 @@ def letter(id, title, nodes, requires, forbids=(), delay=0, **extra):
 
 SCENES.append(scene(P + "council.motion", "Motion carried", "Eritrice", 3, '"Madam Chair. A motion."', [
     e("start", '''"There is no quorum. There is no floor. This is a private audience, Commander, and a motion requires a session, a second, a..."
-{n}Her quill has already moved. At the foot of the long scroll, in her own upright hand, stands a single word: "carried". She stares at it. The ink does not smudge, and she does not strike it through.{/n}
-"...The chair will consider the matter. Privately."''',
+{n}But she has already dipped the quill. It is the oldest habit she has: every question put in her hearing is written down, so that no one can say afterwards it was never asked. The long scroll is open at the foot of the last session, and her claws are waiting over it.{/n}''',
       c('[Move a motion from the floor] "I move that the chair is in dire need of a private debate. All in favour?"', "carried",
         flags=(PRIMED, CENSURED), mythic="Trickster", alignment=("Chaotic", 1)),
       c("Never mind.", abort=True)),
-    e("carried", '''{n}The quill scratches on, as if of its own accord. "Motion from the floor, the Commander." A pause. "Carried." Then, lower, in a smaller hand: "The chair censures the mover for moving it."{/n}
-"I do not write lies, Commander. I would like very much to know why I just wrote that one down, and why it is not one."''',
+    e("carried", '''{n}She writes the motion down, word for word, because it was put. She writes "In favour: the mover." Then she writes "Opposed:", and the quill stops, and stays stopped.{/n}
+{n}You watch her try. Her claws tighten on the quill. She cannot write her own name after that word, because it would not be true, and she has never once written a thing that was not true. The silence goes on long enough to be an answer.{/n}
+{n}She writes "Carried." Then, lower, in a smaller and much harder hand: "The chair censures the mover for moving it."{/n}''',
+      c("Continue", "law")),
+    e("law", '''"You asked me a question I could only answer honestly. That is a very low trick, Commander, and a very good one."
+{n}A growl, deep in her chest, the sound of a lion that has been cornered by a rule it wrote itself.{/n}
+"I could strike it. I have the authority. And then I would have to write beside it why I struck it: that I opposed the motion. That would be a lie. A minute once written is never amended at my table, not by me, not by anyone, because the day it is, every minute I have ever kept becomes something a clever creature could edit." {n}She sands the ink with a hard flick of the wrist.{/n}
+"So it stands. The chair owes you a private debate. The chair pays what she owes. Come back when the Council has sat again, and I will collect the censure first."''',
       c("[Let her sand the ink dry.]")),
 ], requires=("trickster",), forbids=(PRIMED, LOST), last=5, Relationship="eritrice", Chapters=[3, 5],
     AnswerLists=[LIST], NativeReturnCue=WELCOME))
@@ -115,9 +120,9 @@ SCENES.append(scene(P + "council.private_debate", "The minutes stand", "Eritrice
     e("honest", '''{n}A low growl, not entirely displeased.{/n} "Objection noted. ...Sustained. ...Overruled."
 {n}She sets down the quill.{/n} "Proceed. The chair is listening. And the chair will remember that you argued it straight."''',
       c('[Argue it honestly] "Point one: you like losing to me. Prove it isn\'t true."', flags=(STARTED, MINUTES_READ, STRAIGHT))),
-    e("trick", '''"The chair heard no ayes. The chair heard one Commander, speaking in several voices."
-{n}Her amethyst eyes narrow. The quill scratches.{/n} "Minuted: 'the Commander attempted to carry a vote by acclamation of the Commander.'"
-"The debate will continue regardless. The chair does not abandon a debate because one side cheats. The chair wins it anyway."''',
+    e("trick", '''{n}Her claws come out and go into the table, all five, and the wood creaks. For a moment she is not the chair of anything. She is a lion someone has lied to.{/n}
+"I heard no ayes. I heard one Commander, speaking in several voices, at my table, in the one room in the multiverse where nobody has ever dared." {n}She draws the claws back, slowly, and writes it down, and her hand is not steady.{/n} "Minuted: 'the Commander attempted to carry a vote by acclamation of the Commander.'"
+"I will debate you anyway. I do not abandon a debate because one side cheats. But I will remember, every time you speak, that you are capable of it."''',
       c('[Let her win the round] "Then the debate goes on."', flags=(STARTED, MINUTES_READ, CAUGHT))),
 ], requires=("trickster.ever", PRIMED, "council.session_minuted"), forbids=(STARTED, LOST), delay=24, last=5,
     Relationship="eritrice", Chapters=[3, 5], AnswerLists=[LIST], NativeReturnCue=WELCOME))
@@ -144,7 +149,7 @@ hall(P + "council.second_reading", "The second reading", '"You called for a seco
       c('[Ask her to vote for you] "You decide. For both of us."', "refused")),
     e("carried", '''"All those in favour."
 {n}She raises her own hand. The hall is silent. She writes the rest of the heading, and it takes her a long time, because her hand is not steady: "...the chair and the Commander be, henceforth, one another's."{/n}
-"Carried." {n}Her voice has dropped to something close to a purr.{/n} "The chair notes that it voted aye before the floor had finished speaking. The chair does not care."''',
+"Carried." {n}Her voice has dropped to something close to a purr.{/n} "I voted aye before you had finished speaking. I have never once in my existence voted before the floor had finished. I do not care."''',
       c("[Stay while she sands the line.]")),
     e("refused", '''"The chair does not vote on behalf of the floor, and the chair does not carry motions by trickery. Not this one."
 {n}She rolls the scroll closed, gently.{/n} "The chair declines to put the question. It may be moved again, once, when the mover is ready to stand behind it."''',

@@ -215,7 +215,7 @@ minutes(QUILL, "The quill", '"Can I ask about the quill?"', [
       c("[Hand it back, unused.]", "unused")),
     e("wrote", '''{n}She reads it upside down, before you have finished the last word. Her ears go back, and then forward again.{/n}
 {n}She says it as though accusing you:{/n} "That is true. I checked. I cannot find the lie in it." {n}She takes the quill back and, under your line, writes her own: "Nor is the Commander."{/n}
-"The chair notes that both statements were made in good faith. The chair also notes that she is out of breath, and does not know why."''',
+"Both made in good faith." {n}Her voice is not steady.{/n} "I am out of breath, Commander. I do not know why. That is a lie. I think I do."''',
       c("Continue", "close")),
     e("wrote_joke", '''"That is a lie." {n}She is already reaching for it, and stops.{/n} "No. It is a joke. It is written as a joke, so it is true as a joke." {n}Her whiskers twitch, violently.{/n}
 "You have found the one thing in my minutes I have no rule for. Nobody has ever made a joke in them before." {n}She does not strike it out. She writes, underneath: "Minuted as a jest. The chair concedes that it was funny."{/n}
@@ -419,9 +419,9 @@ minutes(AT_WORST, "At worst", '"About the key. \'At worst, you\'ll die.\'"', [
 {n}She lifts her head.{/n} "Yes. I meant it. If the truth about the Worldwound had required your death, I would have minuted it, and grieved, and considered it well spent. That is what I am. I am the thing that would rather be right than kind."
 "Now you know. Rule two: a point is answered honestly or not at all. I have answered. Your turn."''', *KEY_CHOICES),
     e("forgive", '''{n}She stares at you as if you had spoken in a language she did not know she understood.{/n}
-"That is not a refutation." {n}Her voice has gone rough.{/n} "That is a pardon. Nobody has ever pardoned the chair. The chair did not know it was possible."
+"That is not a refutation." {n}Her voice has gone rough.{/n} "That is a pardon. Nobody has ever pardoned me. I did not know it was a thing that could be done to me."
 {n}She writes it down, and her hand shakes so badly the line runs downhill across the scroll. She does not rewrite it.{/n}
-"The chair will remember that the Commander was told the worst thing about her, on the record, and stayed at the table."''',
+"I told you the worst thing about me. On the record. And you stayed at the table." {n}She looks at the crooked line as if it were a wound that had closed wrong and would have to stay that way.{/n} "I will remember it for longer than you will live. I am sorry for that. I am not sorry for anything else."''',
       c("[Stay at the table.]")),
     e("held", '''"Yes. You should." {n}She says it at once, and it seems to steady her, as if she had been braced for something worse.{/n}
 "Remember it every time I vote. Remember it when I am kind to you. It will make you a better judge of me than I am." {n}She writes: "Point conceded by the chair. The Commander will not forget it."{/n}
@@ -462,7 +462,7 @@ minutes(SEATS, "Stay in your seats", '"They walked out on you."', [
       c("[Go.]", flags=(M + "temper_fed",))),
     e("hand", '''{n}Her claws close around your fingers. They do not cut. It is a near thing, and you both know it, and neither of you lets go.{/n}
 {n}At last:{/n} "You are the only one who ever comes back after a session. Did you know that? Every one of them leaves, and you come back." {n}The claws draw in, slowly, until it is only a hand.{/n}
-"The chair will remember that. The chair is not writing it down. Some things are not for the record."''',
+"I will remember that. I am not writing it down. Some things are not for the record, and I did not know until tonight that I had any."''',
       c("[Stay a while.]")),
 ], requires=(POINT_ONE, WALKED_OUT), forbids=(SEATS,), chapters=(5,))
 
