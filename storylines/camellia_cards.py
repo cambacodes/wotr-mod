@@ -136,7 +136,15 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
     cam("stacked", '''{n}She stares at you. Then at the cards. Then at you.{/n}
 "You did not." {n}She searches your face, and you watch her fail to find the seam. It is not a thing you have seen before.{/n} "You couldn't have. I was watching your hands the whole time. I always watch hands." {n}Her voice drops.{/n} "Did you?"
 {n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}''',
-        c("Continue", "close")),
+        c("Continue", "silk")),
+    nar("silk", '''{n}The cards slide under your shoulders like cold scales. She is astride you before the last of them has stopped moving, her knees in the black silk, her hair come loose over both of you, and she is still laughing, low, into your mouth.{/n}
+{n}Her knife is out. You did not see her draw it. She lays the flat of it along your throat, cool, and trails it down, slowly, opening your shirt one button at a time with the point, and her breath stops each time the steel touches skin. When the last button goes she sets the blade down on the silk beside your head, within her reach, not yours, and presses her mouth to the place where it rested.{/n}
+"Don't tell me," {n}she whispers.{/n} "Don't ever tell me whether you did."''',
+        c("[Pull her down to you]", "morning")),
+    nar("morning", '''{n}You wake alone on the floor, with the imprint of a card pressed into your back and the deck gathered up and gone. The candles have burned to stubs.{/n}
+{n}Only one card is left. It is pinned to the inside of your door at eye height by her small clean knife, driven into the wood to the hilt: the laughing man, mask side out, turned so that anyone who opens the door will see the mask first.{/n}
+{n}It takes you both hands to work the knife free. When you do, there is a line scratched into the back of the card in her small schoolroom hand: "I still don't know. Keep the knife where I can find it."{/n}''',
+        c("[Keep the card, and the knife]")),
     cam("close", '''"Whatever the truth is," {n}she says, some time later, from somewhere near your collar,{/n} "I'm not going to find out. I'm going to leave it exactly where it is. It's the first thing in my life I've ever wanted to leave alone."''',
         c("[Leave the cards where they fell]")),
 ], requires=("trickster.ever", COMMITTED), delay=72, optional=True, living=())
