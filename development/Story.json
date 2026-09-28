@@ -186965,7 +186965,7 @@
         {
           "Id": "truth",
           "Speaker": "Eritrice",
-          "Text": "\"I will not lie to you. It is the one thing I have never done, and I will not begin now to make this easier for either of us.\"\n{n}She lifts her head.{/n} \"Yes. I meant it. If the truth about the Worldwound had required your death, I would have minuted it, and grieved, and considered it well spent. That is what I am. I am the thing that would rather be right than kind.\"\n\"Now you know. Rule two: a point is answered honestly or not at all. I have answered. Your turn.\"",
+          "Text": "\"I will not lie to you. It is the one thing I have never done, and I will not begin now to make this easier for either of us.\"\n{n}She lifts her head.{/n} \"Yes. I meant it. If the truth about the Worldwound had required your death, I would have minuted it, and grieved, and considered it well spent. That is what I am. I am the thing that would rather be right than kind.\"\n{n}Her hands are flat on the table, and she does not take them away, and she does not look down.{/n} \"Now you know what I am. Tell me what you are going to do with it.\"",
           "Choices": [
             {
               "Text": "\"You were honest. That's all I've ever asked of you.\"",
@@ -187023,7 +187023,7 @@
         {
           "Id": "held",
           "Speaker": "Eritrice",
-          "Text": "\"Yes. You should.\" {n}She says it at once, and it seems to steady her, as if she had been braced for something worse.{/n}\n\"Remember it every time I vote. Remember it when I am kind to you. It will make you a better judge of me than I am.\" {n}She writes: \"Point conceded by the chair. The Commander will not forget it.\"{/n}\n\"That is fair. I would not trust anyone who forgot it. Least of all myself.\"",
+          "Text": "\"Yes. You should.\" {n}She says it at once, and it seems to steady her, as if she had been braced for something worse.{/n}\n\"Remember it every time I vote. Remember it when I am kind to you. It will make you a better judge of me than I am.\"\n{n}She is quiet a moment, and when she speaks again it is very low.{/n} \"I would not trust anyone who forgot it. Least of all myself.\"",
           "Choices": [
             {
               "Text": "[Let the point stand.]",
@@ -191624,8 +191624,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

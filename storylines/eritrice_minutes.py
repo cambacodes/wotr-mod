@@ -417,15 +417,15 @@ minutes(AT_WORST, "At worst", '"About the key. \'At worst, you\'ll die.\'"', [
       c("Continue", "truth")),
     e("truth", '''"I will not lie to you. It is the one thing I have never done, and I will not begin now to make this easier for either of us."
 {n}She lifts her head.{/n} "Yes. I meant it. If the truth about the Worldwound had required your death, I would have minuted it, and grieved, and considered it well spent. That is what I am. I am the thing that would rather be right than kind."
-"Now you know. Rule two: a point is answered honestly or not at all. I have answered. Your turn."''', *KEY_CHOICES),
+{n}Her hands are flat on the table, and she does not take them away, and she does not look down.{/n} "Now you know what I am. Tell me what you are going to do with it."''', *KEY_CHOICES),
     e("forgive", '''{n}She stares at you as if you had spoken in a language she did not know she understood.{/n}
 "That is not a refutation." {n}Her voice has gone rough.{/n} "That is a pardon. Nobody has ever pardoned me. I did not know it was a thing that could be done to me."
 {n}She writes it down, and her hand shakes so badly the line runs downhill across the scroll. She does not rewrite it.{/n}
 "I told you the worst thing about me. On the record. And you stayed at the table." {n}She looks at the crooked line as if it were a wound that had closed wrong and would have to stay that way.{/n} "I will remember it for longer than you will live. I am sorry for that. I am not sorry for anything else."''',
       c("[Stay at the table.]")),
     e("held", '''"Yes. You should." {n}She says it at once, and it seems to steady her, as if she had been braced for something worse.{/n}
-"Remember it every time I vote. Remember it when I am kind to you. It will make you a better judge of me than I am." {n}She writes: "Point conceded by the chair. The Commander will not forget it."{/n}
-"That is fair. I would not trust anyone who forgot it. Least of all myself."''',
+"Remember it every time I vote. Remember it when I am kind to you. It will make you a better judge of me than I am."
+{n}She is quiet a moment, and when she speaks again it is very low.{/n} "I would not trust anyone who forgot it. Least of all myself."''',
       c("[Let the point stand.]")),
     e("used", '''{n}Her ears go flat. For a long moment you think she is going to reach across the table.{/n}
 "You are trading on my guilt." {n}Very quietly.{/n} "That is what Alichino would do."
