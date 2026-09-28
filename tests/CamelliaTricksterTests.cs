@@ -126,6 +126,16 @@ internal static class CamelliaTricksterTests
         check(performance.InteractionHub == "camellia.presence" && performance.ContactUnit == Unit && performance.Areas.SequenceEqual(new[] { Drezen }),
             "The return is not met in person at her presence.");
         var back = Take(performance, primed, "primed", 0, Returned, P + "cost.knows_you_tried", "camellia.started");
+        // The trick's mechanism and price are on the page: her own exit through the lid (her hands), and her death kept on
+        // the register over the Commander's signature (Chaotic 1); refusing to sign ends it.
+        check(performance.Nodes.Any(n => n.Id == "how") && Ch(performance, "primed", 0).Next == "register",
+            "The return does not show how she got out, or skips the register.");
+        var signed = Take(performance, primed, "sign", 0, P + "cost.false_witness", Returned);
+        check(Ch(performance, "sign", 0).Alignment?.Direction == "Chaotic", "Swearing to her death is not a Chaotic act.");
+        check(Through(performance, primed, "unsigned", 0).All(r => r.Has(Closed) && r.Has(P + "declined")),
+            "Refusing to sign her death does not end the return.");
+        check(Ch(letter, "price", 0).Set.Contains(P + "cost.false_witness") && Ch(letter, "price", 1).Set.Contains(P + "cost.false_witness"),
+            "The letter twin does not carry the register price.");
 
         // Trk_Camellia_KilledWithDeadEtude
         check(Avail(performance, World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed")),

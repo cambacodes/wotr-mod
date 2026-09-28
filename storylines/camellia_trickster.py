@@ -97,6 +97,8 @@ OLD_NAME = P + "gift.her_stone"          # the Commander gave her a rubbing of h
 BOWL_HELD = P + "masks.bowl_held"        # the Commander held Mireya's bowl, or said grace over it
 AMULET_KEPT = P + "amulet_kept"          # she gave the Commander the amulet of a spirit she never had
 UNMASKED = "camellia.mireya_unmasked"    # FinalTruth/Cue_0012 seen: "There is no Mireya. I made her up."
+WILL_GIVEN = "camellia.will_given"       # Camelia/Cue_0174 seen: Horgus's will, acknowledging her, handed to her
+WITNESS = P + "cost.false_witness"       # the Commander signed the burial register as witness to her death
 FRIEND_WARNED = P + "friend.warned"      # the Commander frightened her new friend away with a lie
 FRIEND_WATCHED = P + "cost.friend_kept"  # the Commander let the friendship run, and watches
 
@@ -120,7 +122,8 @@ RELATIONSHIP = dict(
     },
 )
 REVIVALS = {"camellia": dict(Relationship=REL, Unit=UNIT, DeathFlag=DEAD)}
-SEEN_CUES = {UNMASKED: ["6aa5270c8474fc14487e6ad42b278339"]}    # FinalTruth/Cue_0012 (her Q3 confession about Mireya)
+SEEN_CUES = {UNMASKED: ["6aa5270c8474fc14487e6ad42b278339"],   # FinalTruth/Cue_0012 (her Q3 confession about Mireya)
+             WILL_GIVEN: ["320802ce6b647e942aaf33d96ed9321d"]}  # Camelia/Cue_0174 (the will, acknowledging her)
 PRESENCES = {
     # Her native unit was Unrecruited and killed, so a copy of her companion blueprint sits veiled at the far end of Fye's
     # bar, on his left beyond Seelah and Vellexia (Aranka keeps his right). Her native dialog would greet a living
@@ -284,7 +287,13 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
 "Call me Mireya today. It seems only fair: you made up my death, so I have made up my name."''',
         c("Continue", "who")),
     *lead([("who", cam, '''"Do sit. Fye is pretending I am a widow from Nerosyan who drinks nothing and tips in silver. He is quite good at it. Everyone in this city is quite good at not seeing the dead."''', None),
-           *PERFORMANCE_LEADS], "why"),
+           *PERFORMANCE_LEADS], "how"),
+    cam("how", '''{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. The fingertips are wrapped in strips of linen, brown at the ends. Under the linen there are no nails.{/n}
+"You made my death a performance. You said the word, and it was true, the way your words are true: I died the way an actress dies, completely, every night, and gets up when the curtain comes down. Only nobody lowered a curtain. You forgot to write me an exit." {n}She flexes the wrapped fingers.{/n} "So I wrote my own. Three nights, and pine is softer than you'd think."''',
+        c("Continue", "how_late", requires=(LATE,)),
+        c("Continue", "why", forbids=(LATE,))),
+    cam("how_late", '''"You lifted the lid and said your line to me, and then your sexton put it back and was too frightened to come back with the hammer. That saved me a nail or two." {n}She considers her hand.{/n} "Not all of them."''',
+        c("Continue", "why")),
     cam("why", '''"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us."
 {n}She turns her glass a quarter turn.{/n} "I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and the whole time I was lying in that box I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
 "I couldn't possibly stay dead after that. It would have been so rude."''',
@@ -292,8 +301,20 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
     cam("primed", '''"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course."
 {n}She presses something into your palm under the lilies: a small, clean knife, still warm from her glove.{/n} "Keep it. Next time, use it properly. And do not look for me. I shall find you. A dead woman keeps very flexible hours."
 {n}Under the lace her mouth curves.{/n} "Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story."''',
-        c('[Keep the knife] "I\'ll keep it close. Closer than you\'d like."', flags=(RET, KNOWS, STARTED)),
+        c('[Keep the knife] "I\'ll keep it close. Closer than you\'d like."', "register", flags=(RET, KNOWS, STARTED)),
         c('[Hand the knife back, point first] "Stay dead. It suits you."', "back")),
+    cam("register", '''"One more thing, and then I'll let you go." {n}She slides a folded paper across the bar: a page of the crusade's burial register, torn out very neatly. Her name is on it. There is a space beneath for a witness.{/n}
+"Camellia Gwerm is dead. That's the price of the trick, and it's mine to pay. Whatever claim I had on my father's name, his house, his money, it all went into the ground with the lilies. I shall never be her again." {n}She taps the empty line.{/n} "But a death needs a witness, or someone clever starts asking questions. Sign it. Swear you saw me die. You did, after all."''',
+        c("Continue", "will", requires=(WILL_GIVEN,)),
+        c("Continue", "sign", forbids=(WILL_GIVEN,))),
+    cam("will", '''"You gave me papa's will once, acknowledging his bastard at last. I carried it to my own grave. It's worth nothing now: a dead woman can't inherit. The Gwerm estate goes to the crown. I laughed about that for most of the second night."''',
+        c("Continue", "sign")),
+    cam("sign", '''{n}The pen is already in her hand, held out to you, the way she held out the knife.{/n}''',
+        c("[Sign as witness to her death]", flags=(WITNESS,), alignment=("Chaotic", 1)),
+        c('[Refuse] "I won\'t swear to a lie in a register of the dead."', "unsigned")),
+    cam("unsigned", '''{n}She looks at the pen, and then at you, and folds the page away into her glove.{/n}
+"How very correct." {n}The smile does not reach anywhere near her eyes.{/n} "Then somebody clever will start asking questions, and the dead woman at the end of Fye's bar will have to go somewhere nobody asks anything. Goodbye, my friend. It was a wonderful trick. You simply wouldn't finish it."''',
+        c("[Let her go]", flags=(DECLINED, CLOSED))),
     cam("back", '''{n}She takes the knife by the blade, carefully, the way one takes a letter one has decided not to read.{/n}
 "How disappointing. I was dead for you, my friend, and you did not even come to see the second act." {n}The veil comes down. When you look up from your hands, the stool is empty and the lilies are on the floor.{/n}''',
         c("[Let her go]", flags=(DECLINED, CLOSED))),
@@ -311,11 +332,11 @@ SCENES.append(scene(P + "killed.performance_letter", "A letter from Mireya", "Me
     cam("letter_why", '''"I have been sleeping in the loft above a chandler's, among the tallow, very comfortably. Nobody looks up in Drezen. I have watched you twice from the window cross the square below, and you did not look up either, and I was quite hurt."
 "But I forgive you. You told me to die convincingly. A person who asks for that deserves to be taken at their word, and then some."''',
         c("Continue", "price")),
-    cam("price", '''"Since I cannot trust you to find me, my price for staying comes by post. Your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know."''',
+    cam("price", '''"Since I cannot trust you to find me, my price for staying comes by post. First, the torn page of the burial register folded in here: sign it as witness to my death, or someone clever will start asking questions. Camellia Gwerm is dead, her name and her father's house with her; that part of the trick is mine to pay. Then: your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know."''',
         c('[Write back "My blood"] "Whenever you ask. From your knife. I won\'t flinch."',
-          flags=(RET, KNOWS, STARTED, BLED, TERMS)),
+          flags=(RET, KNOWS, STARTED, BLED, TERMS, WITNESS), alignment=("Chaotic", 1)),
         c('[Write back your own] "If you ever need to kill a friend, start with me."',
-          flags=(RET, KNOWS, STARTED, MARKED, TERMS)),
+          flags=(RET, KNOWS, STARTED, MARKED, TERMS, WITNESS), alignment=("Chaotic", 1)),
         c("[Burn the letter]", flags=(DECLINED, CLOSED))),
     ], requires=("trickster.ever", PRIMED, KILLED, PRESENCE_FAILED), forbids=(PERFORMANCE, RET, DECLINED), delay=96,
     last=5, Relationship=REL, Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
@@ -469,6 +490,7 @@ KEPT_PARAS = (
     p("{n}Anevia never stopped looking for the lower-city killer. She never found anyone, and she never quite believed that.{/n}", requires=(INVESTIGATED,)),
     p("{n}Once, when the Commander had been gone a season, she was found in the dark of the citadel with a knife in one hand and the other flat on the Commander's empty pillow, counting. Nobody asked her what.{/n}", requires=(NOT_TODAY,)),
     p("{n}Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}", requires=(KILLED,)),
+    p("{n}The burial register of the Fifth Crusade still lists Camellia Gwerm among its dead, over the Commander's signature as witness. The Gwerm estate went to the crown. She never once asked for it back.{/n}", requires=(WITNESS,)),
     p("{n}In Nerosyan, a widow named Mireya Voss kept a house in the Lantern Quarter for many years, and paid her taxes, and was said to have been married to a wine merchant who died of eels. Nobody ever saw her husband's grave.{/n}", requires=(NEW_NAME,)),
     p("{n}Over the Commander's bed hung a charcoal rubbing of a gravestone, framed. Guests who asked about it were told it was a family memorial, and that the family member in question was in the next room.{/n}", requires=(OLD_NAME,)),
     p("{n}The cells under the citadel were never quite used again. The guards said a prisoner had died down there of a failure of the heart, and that the last one to hear him had heard him laughing, and then not laughing.{/n}", requires=(PRISONER_HERS,)),
@@ -535,9 +557,10 @@ def integrate(payload):
     other routes' Camellia reactions (condition-only, G6(b))."""
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     seen = payload.setdefault("SeenCues", {})
-    if seen.get(UNMASKED, SEEN_CUES[UNMASKED]) != SEEN_CUES[UNMASKED]:
-        raise ValueError("Conflicting seen-cue binding: " + UNMASKED)
-    seen[UNMASKED] = list(SEEN_CUES[UNMASKED])
+    for key, cues in SEEN_CUES.items():
+        if seen.get(key, cues) != cues:
+            raise ValueError("Conflicting seen-cue binding: " + key)
+        seen[key] = list(cues)
     revivals = payload.setdefault("Revivals", {})
     if "camellia" in revivals and revivals["camellia"] != REVIVALS["camellia"]:
         raise ValueError("Conflicting revival: camellia")

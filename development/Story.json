@@ -195234,7 +195234,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "why",
+              "Next": "how",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195338,7 +195338,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "why",
+              "Next": "how",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195425,7 +195425,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "why",
+              "Next": "how",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195496,7 +195496,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "why",
+              "Next": "how",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195552,7 +195552,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "why",
+              "Next": "how",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195594,7 +195594,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "why",
+              "Next": "how",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195623,7 +195623,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "why",
+              "Next": "how",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195638,6 +195638,50 @@
           "Id": "wrong",
           "Speaker": "Camellia",
           "Text": "\"And the lilies. You promised me the wrong flowers, and someone brought the wrong flowers, and I lay under them and laughed at every mourner who wept. The chaplain thought the wind was in the trees.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "how",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "how",
+          "Speaker": "Camellia",
+          "Text": "{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. The fingertips are wrapped in strips of linen, brown at the ends. Under the linen there are no nails.{/n}\n\"You made my death a performance. You said the word, and it was true, the way your words are true: I died the way an actress dies, completely, every night, and gets up when the curtain comes down. Only nobody lowered a curtain. You forgot to write me an exit.\" {n}She flexes the wrapped fingers.{/n} \"So I wrote my own. Three nights, and pine is softer than you'd think.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "how_late",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "how_late",
+          "Speaker": "Camellia",
+          "Text": "\"You lifted the lid and said your line to me, and then your sexton put it back and was too frightened to come back with the hammer. That saved me a nail or two.\" {n}She considers her hand.{/n} \"Not all of them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -195673,7 +195717,7 @@
           "Choices": [
             {
               "Text": "[Keep the knife] \"I'll keep it close. Closer than you'd like.\"",
-              "Next": null,
+              "Next": "register",
               "Set": [
                 "camellia.trickster.returned",
                 "camellia.trickster.cost.knows_you_tried",
@@ -195687,6 +195731,99 @@
               "Text": "[Hand the knife back, point first] \"Stay dead. It suits you.\"",
               "Next": "back",
               "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "register",
+          "Speaker": "Camellia",
+          "Text": "\"One more thing, and then I'll let you go.\" {n}She slides a folded paper across the bar: a page of the crusade's burial register, torn out very neatly. Her name is on it. There is a space beneath for a witness.{/n}\n\"Camellia Gwerm is dead. That's the price of the trick, and it's mine to pay. Whatever claim I had on my father's name, his house, his money, it all went into the ground with the lilies. I shall never be her again.\" {n}She taps the empty line.{/n} \"But a death needs a witness, or someone clever starts asking questions. Sign it. Swear you saw me die. You did, after all.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "will",
+              "Set": [],
+              "Requires": [
+                "camellia.will_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "sign",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.will_given"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "will",
+          "Speaker": "Camellia",
+          "Text": "\"You gave me papa's will once, acknowledging his bastard at last. I carried it to my own grave. It's worth nothing now: a dead woman can't inherit. The Gwerm estate goes to the crown. I laughed about that for most of the second night.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sign",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "sign",
+          "Speaker": "Camellia",
+          "Text": "{n}The pen is already in her hand, held out to you, the way she held out the knife.{/n}",
+          "Choices": [
+            {
+              "Text": "[Sign as witness to her death]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.cost.false_witness"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Refuse] \"I won't swear to a lie in a register of the dead.\"",
+              "Next": "unsigned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "unsigned",
+          "Speaker": "Camellia",
+          "Text": "{n}She looks at the pen, and then at you, and folds the page away into her glove.{/n}\n\"How very correct.\" {n}The smile does not reach anywhere near her eyes.{/n} \"Then somebody clever will start asking questions, and the dead woman at the end of Fye's bar will have to go somewhere nobody asks anything. Goodbye, my friend. It was a wonderful trick. You simply wouldn't finish it.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.declined",
+                "camellia.closed"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -195850,7 +195987,7 @@
         {
           "Id": "price",
           "Speaker": "Camellia",
-          "Text": "\"Since I cannot trust you to find me, my price for staying comes by post. Your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know.\"",
+          "Text": "\"Since I cannot trust you to find me, my price for staying comes by post. First, the torn page of the burial register folded in here: sign it as witness to my death, or someone clever will start asking questions. Camellia Gwerm is dead, her name and her father's house with her; that part of the trick is mine to pay. Then: your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know.\"",
           "Choices": [
             {
               "Text": "[Write back \"My blood\"] \"Whenever you ask. From your knife. I won't flinch.\"",
@@ -195860,11 +195997,16 @@
                 "camellia.trickster.cost.knows_you_tried",
                 "camellia.started",
                 "camellia.trickster.cost.bled",
-                "camellia.trickster.terms_named"
+                "camellia.trickster.terms_named",
+                "camellia.trickster.cost.false_witness"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
             },
             {
               "Text": "[Write back your own] \"If you ever need to kill a friend, start with me.\"",
@@ -195874,11 +196016,16 @@
                 "camellia.trickster.cost.knows_you_tried",
                 "camellia.started",
                 "camellia.trickster.cost.marked",
-                "camellia.trickster.terms_named"
+                "camellia.trickster.terms_named",
+                "camellia.trickster.cost.false_witness"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
             },
             {
               "Text": "[Burn the letter]",
@@ -199351,6 +199498,14 @@
               "Text": "{n}Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}",
               "Requires": [
                 "camellia.killed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The burial register of the Fifth Crusade still lists Camellia Gwerm among its dead, over the Commander's signature as witness. The Gwerm estate went to the crown. She never once asked for it back.{/n}",
+              "Requires": [
+                "camellia.trickster.cost.false_witness"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -210588,6 +210743,9 @@
     ],
     "camellia.mireya_unmasked": [
       "6aa5270c8474fc14487e6ad42b278339"
+    ],
+    "camellia.will_given": [
+      "320802ce6b647e942aaf33d96ed9321d"
     ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"
