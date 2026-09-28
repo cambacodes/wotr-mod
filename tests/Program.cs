@@ -207,7 +207,9 @@ internal static class Program
         {
             var bindings = story.Scenes.SelectMany(s => Rules.EntryTargets(s).Select(guid => new { Guid = guid, ExpectedType = "BlueprintAnswersList", Source = s.Id }))
                 .Concat(story.Scenes.Where(s => s.NativeReturnCue != null).Select(s => new { Guid = s.NativeReturnCue!, ExpectedType = "BlueprintCue", Source = s.Id }))
-                .Concat(story.Scenes.Where(s => s.EpilogueAfter != null).Select(s => new { Guid = s.EpilogueAfter!, ExpectedType = "BlueprintCueBase", Source = s.Id + "/epilogue_after" }))
+                // E14h "scene:<id>" anchors name another RRT page (Rules.Validate checks them); only native GUIDs are bindings.
+                .Concat(story.Scenes.Where(s => s.EpilogueAfter != null && !s.EpilogueAfter.StartsWith("scene:", StringComparison.Ordinal))
+                    .Select(s => new { Guid = s.EpilogueAfter!, ExpectedType = "BlueprintCueBase", Source = s.Id + "/epilogue_after" }))
                 .Concat(story.Scenes.SelectMany(s => s.Nodes.SelectMany(n => n.Choices).Where(c => c.NativeNext != null)
                     .Select(c => new { Guid = c.NativeNext!, ExpectedType = "BlueprintCue", Source = s.Id + "/native_next" })))
                 .Concat(story.Etudes.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintEtude", Source = e.Key }))
@@ -459,6 +461,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) TargonaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) HepzamirahTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) EritriceTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))

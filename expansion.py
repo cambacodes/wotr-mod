@@ -53,6 +53,7 @@ from storylines import dorgelinda_trickster, dorgelinda_ledger
 from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
+from storylines import areelu_trickster
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -372,6 +373,10 @@ def make_expansion(*, independent_tirabade=True):
     eritrice_trickster.integrate(payload)
     eritrice_minutes.integrate(payload)
     eritrice_council.integrate(payload)
+    # Areelu has no registered route of her own: the Trickster wager (areelu-vorlesh.md) is the whole relationship.
+    payload["Relationships"]["areelu"] = copy.deepcopy(areelu_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(areelu_trickster.SCENES))
+    areelu_trickster.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)
