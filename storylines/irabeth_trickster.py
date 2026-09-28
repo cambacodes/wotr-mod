@@ -243,7 +243,7 @@ physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knigh
       c('"Understood, Knight-Captain."')),
     i("lie", '''{n}Something shuts behind her eyes, the way a gate shuts.{/n}
 "The dragon. Of course."
-{n}She sheathes the sword, very carefully.{/n}
+{n}She sheathes the sword, very carefully, and keeps her hand on the hilt.{/n}
 "I'm back on duty, Commander. I'll serve. Don't ask me for more than that."''',
       c('"Dismissed."')),
     nar("salute", '''{n}She salutes. It is a perfect salute, the one she gives the Queen.{/n}
@@ -264,6 +264,12 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
     i("sword", '''"I can't put this down. I tried, to shave. It won't leave my hand for longer than a breath. The chaplain thinks it's a curse. I think it's a clause."
 {n}She lifts it an inch: steel, and a hand that will not open.{/n}
 "Until the Wound is shut, apparently. Your joke has fine print, Commander. I'd like to have read it first."''',
+      c("Continue", "question"),
+      c('[Offer to sign her discharge now] "Then I\'ll sign it. You\'re free."', "unsigned")),
+    i("unsigned", '''"The chaplain thought of that, the first night. Sign it and I'm discharged, Commander. All the way. Back to wherever I was for those two days."
+{n}She holds out her free hand for the pen anyway, palm up, perfectly steady.{/n}
+"Your call. It's always been your call. That's the part I can't forgive."
+{n}You do not give her the pen. After a while she lowers the hand.{/n}''',
       c("Continue", "question")),
     i("question", '''"One question, and you answer it straight. Did you do it for the crusade, or for me?"
 {n}She waits.{/n}
@@ -274,18 +280,18 @@ physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A w
         flags=("irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her"))),
 ], requires=("trickster.ever", RETURNED), forbids=("irabeth.trickster.back_on_duty",), delay=48)
 
-THRESHOLD = '''{n}She sets the sword down on the throne-room step. It stays down. Her hand shakes, and it is not fear.{/n}
-"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. Slowly. I want to remember it."
-{n}Gauntlets, then vambraces, plate by plate. Her fingers stop working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door to the cot in the guardroom, breathing as if she had run the walls. She pulls you down onto her, hooks a leg behind yours, and draws you in.{/n}'''
+THRESHOLD = '''{n}She tries to set the sword down on the throne-room step. Her fingers will not open. She laughs once, short and furious, and holds the blade out to the side, point to the floor, the way you would hold a torch you cannot drop.{/n}
+"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. One-handed is all I've got. Slowly. I want to remember it."
+{n}Gauntlet, then vambrace, one arm at a time around a hilt she cannot let go. Her free hand stops working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door to the cot in the guardroom, her sword arm flung out over the edge of it, the point ringing once on the flagstones. With the other she pulls you down onto her, hooks a leg behind yours, and draws you in.{/n}'''
 
-MORNING_NOTE = '''{n}Dawn. She is back in armour, all but one gauntlet, and she keeps flexing the bare hand as if it belonged to someone else.{/n}
+MORNING_NOTE = '''{n}Dawn. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
 "Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can."
-{n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}
+{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-MORNING_HOME = '''{n}Dawn. She is back in armour, all but one gauntlet, and she keeps flexing the bare hand as if it belonged to someone else.{/n}
+MORNING_HOME = '''{n}Dawn. She is back in armour, all but the gauntlet that will not go on over the hilt without help. She holds that hand out to you without a word. There is a white groove across her palm where the grip lay all night.{/n}
 "Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn."
-{n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}
+{n}You buckle it for her. She flexes the hand inside the steel, around the sword, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
 physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the record."', [

@@ -199,6 +199,11 @@ internal static class IrabethTricksterTests
         justBack.Times[Returned] = justBack.Hour - 47;
         check(!Rules.Available(story, duty, justBack) && Rules.Available(story, duty, Later(story, justBack, 1)), "Test beat mistimed.");
         check(Program.Walk(duty, Later(story, justBack, 1)).All(r => r.Has("irabeth.trickster.back_on_duty")), "Test beat does not record.");
+        var dutyPages = new HashSet<string>();
+        Program.Walk(duty, Later(story, justBack, 1), (page, _) => dutyPages.Add(page));
+        check(dutyPages.Contains("unsigned"), "The unsigned discharge cannot be offered: the sword clause costs nothing.");
+        check(!S("irabeth.trickster.commit").Nodes.Concat(S("irabeth.trickster.second_ask").Nodes).Any(n => n.Text.Contains("It stays down")),
+            "The intimate beat puts down a sword she cannot put down.");
 
         // Registered route: her pre-Iz private scenes stay closed; her endings return with her (G6).
         var registered = story.Scenes.Where(s => s.Relationship == "irabeth" && !s.Id.StartsWith("irabeth.trickster.", StringComparison.Ordinal)
