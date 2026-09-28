@@ -765,9 +765,11 @@ page("areelu.trickster.finale.rewrite", "What burned", [
               "own soul to the Abyss: the longest working she ever ran, and by her own definition work. The stake "
               "collected it. The stitch came undone, the Abyss went back where it came from, and what was left was a "
               "Sarkorian woman who had been born mortal and was mortal again."),
-            p("The new rifts opened anyway, as the joke required, and wider than any scholar has since been able to "
-              "explain: a century of the Abyss's own research burns hotter than one woman's life. Everything the "
-              "Crossroads became, it became on her notes.", requires=(SAC_TRICK,)),
+            p("The new rifts opened anyway, as the joke required. Whether a century of notes can pay what a life was "
+              "meant to pay, or whether the rifts simply opened because the Commander had decided they would, the report "
+              "does not pretend to know. It records the rifts, and the ash, and a woman who was not in the ash; and in "
+              "the margin, in her hand: \"Mechanism unknown. Result confirmed. I dislike this intensely.\"",
+              requires=(SAC_TRICK,)),
             p("It cost the Commander the wound. That had been her price at Threshold for letting paper burn in her "
               "place: win or lose, the Commander's wound was hers to keep, for study. She collected it the same night, "
               "with a silver probe, and it never closed again for anyone but her.", requires=(WOUND_CEDED,)),
@@ -1487,7 +1489,7 @@ report("areelu.trickster.report.promise", "The report: the promise", [
         c("[Take her hand, and leave the notebook where it is.]", "keep"),
         c('"Why haven\'t you done it?"', "why")),
     nar("why", '''{n}"Because of the promise." She said it at once, as if she had been waiting nine years for somebody to ask.{/n}
-{n}"I held my child at the door and I promised that the world would not stay as it was. I have kept it. The world did not stay as it was, and the world that came out the other side has you in it, laughing at the Lady of Graves in her own ledger." She laid one hand flat on the notebook. "If I take this out of you, I break the only thing I ever made that did not scream. I have not yet found the arithmetic that makes that come out."{/n}''',
+{n}"I held my child at the door and I promised that the world would not stay as it was. I have kept it. Nothing else I promised anyone survived the Wound." She laid one hand flat on the notebook. "If I take this out of you, I have a fragment of {mf|him|her}, damaged, and a dead Commander, and a bet I lost. That is a worse result than the one I have. The arithmetic does not come out. When it does, I will not ask you first."{/n}''',
         c("[Burn it.]", "burn_mortal", requires=MORTAL),
         c("[Burn it.]", "burn_witch", forbids=MORTAL),
         c('"Then let\'s do it properly. Not to me. We take the case to the Lady of Graves."', "join"),
@@ -1509,12 +1511,11 @@ report("areelu.trickster.report.promise", "The report: the promise", [
         c("Continue", "burned_witch", forbids=MORTAL)),
     nar("burned_mortal", '''{n}The last of the letters came in a hand so unsteady that the Commander did not recognise it at first: an old woman's hand, spotted with ink, pressing too hard. It said only, "Still correct. Still not today." There was no address. The Commander never learned whether "not today" had been about the notebook, or about something else, and supposed, in the end, that it had been about both.{/n}'''),
     nar("burned_witch", '''{n}The last of the letters came up out of the ground, one winter night, through the floor of the Commander's study, written in frost on the inside of a window that faced nowhere. "Still correct," it said. "Still watching. Do not look for me. I have gone somewhere the Lady keeps no pages, to see whether it is true." The frost melted before morning. The Commander copied it out before it did.{/n}'''),
-    nar("join", '''{n}"Together." She said the word as if testing whether it would bear weight.{/n}
-{n}"Not a prank. A claim, priced and argued, the way the Lady's own clerks argue. A Trickster and the Architect, pleading a child's soul before the court that sent {mf|him|her} into the Abyss." For the first time in nine years she smiled with her whole face, and it was a terrible thing to see. "Yes. Oh, yes. They will never have heard anything like it."{/n}''',
+    nar("join", '''{n}"Together." She said the word as if testing whether it would bear weight, and found that it would not.{/n}
+{n}"No. You would make it a joke, and the Lady would laugh, and I would lose {mf|him|her} a second time to a punchline." She closed the notebook. "The claim is mine. I will file it myself, priced and argued, the way her own clerks argue, in my own name. You may carry it to the door of the Boneyard, if you like. You may not come in."{/n}''',
         c("Continue", "filed")),
-    nar("filed", '''{n}They spent the rest of her years on it. What they built, and what they bargained, and what it cost the two of them, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand.{/n}
-{n}The last line of the report is in two hands. The first, small and neat: "The case is filed." The second, which seems to be laughing even on paper: "The bet is still open."{/n}
-{n}It is said in certain temples of the Lady of Graves that there is one petition on her docket that has been waiting longer than any other, and that it is signed twice, and that the clerks draw straws each year to decide who must read it again.{/n}'''),
+    nar("filed", '''{n}She spent the rest of her years on it. What she built, and what she bargained, and what it cost her, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand. The Commander carried the petition to the door, once, and waited outside, as agreed.{/n}
+{n}The last line of the report is in her hand: "The case is filed. It has not been heard." Beneath it, every year until the report ends, a date, and the same two words: "Not heard." The Commander never wrote in that column. It was not the Commander's.{/n}'''),
     nar("keep", '''{n}The Commander took her hand across the table and left the notebook between them, open.{/n}
 {n}"You are a fool," said Areelu Vorlesh. She did not take her hand back. "You will wake one morning and wonder whether today is the day the arithmetic comes out differently." "Every morning." "Good," she said. "So will I. That is the experiment."{/n}''',
         c("Continue", "kept")),

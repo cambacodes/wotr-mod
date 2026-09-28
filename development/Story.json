@@ -176230,7 +176230,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The new rifts opened anyway, as the joke required, and wider than any scholar has since been able to explain: a century of the Abyss's own research burns hotter than one woman's life. Everything the Crossroads became, it became on her notes.",
+              "Text": "The new rifts opened anyway, as the joke required. Whether a century of notes can pay what a life was meant to pay, or whether the rifts simply opened because the Commander had decided they would, the report does not pretend to know. It records the rifts, and the ash, and a woman who was not in the ash; and in the margin, in her hand: \"Mechanism unknown. Result confirmed. I dislike this intensely.\"",
               "Requires": [
                 "areelu.sacrifice_trickster"
               ],
@@ -180537,7 +180537,7 @@
         {
           "Id": "why",
           "Speaker": "Narrator",
-          "Text": "{n}\"Because of the promise.\" She said it at once, as if she had been waiting nine years for somebody to ask.{/n}\n{n}\"I held my child at the door and I promised that the world would not stay as it was. I have kept it. The world did not stay as it was, and the world that came out the other side has you in it, laughing at the Lady of Graves in her own ledger.\" She laid one hand flat on the notebook. \"If I take this out of you, I break the only thing I ever made that did not scream. I have not yet found the arithmetic that makes that come out.\"{/n}",
+          "Text": "{n}\"Because of the promise.\" She said it at once, as if she had been waiting nine years for somebody to ask.{/n}\n{n}\"I held my child at the door and I promised that the world would not stay as it was. I have kept it. Nothing else I promised anyone survived the Wound.\" She laid one hand flat on the notebook. \"If I take this out of you, I have a fragment of {mf|him|her}, damaged, and a dead Commander, and a bet I lost. That is a worse result than the one I have. The arithmetic does not come out. When it does, I will not ask you first.\"{/n}",
           "Choices": [
             {
               "Text": "[Burn it.]",
@@ -180689,7 +180689,7 @@
         {
           "Id": "join",
           "Speaker": "Narrator",
-          "Text": "{n}\"Together.\" She said the word as if testing whether it would bear weight.{/n}\n{n}\"Not a prank. A claim, priced and argued, the way the Lady's own clerks argue. A Trickster and the Architect, pleading a child's soul before the court that sent {mf|him|her} into the Abyss.\" For the first time in nine years she smiled with her whole face, and it was a terrible thing to see. \"Yes. Oh, yes. They will never have heard anything like it.\"{/n}",
+          "Text": "{n}\"Together.\" She said the word as if testing whether it would bear weight, and found that it would not.{/n}\n{n}\"No. You would make it a joke, and the Lady would laugh, and I would lose {mf|him|her} a second time to a punchline.\" She closed the notebook. \"The claim is mine. I will file it myself, priced and argued, the way her own clerks argue, in my own name. You may carry it to the door of the Boneyard, if you like. You may not come in.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -180705,7 +180705,7 @@
         {
           "Id": "filed",
           "Speaker": "Narrator",
-          "Text": "{n}They spent the rest of her years on it. What they built, and what they bargained, and what it cost the two of them, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand.{/n}\n{n}The last line of the report is in two hands. The first, small and neat: \"The case is filed.\" The second, which seems to be laughing even on paper: \"The bet is still open.\"{/n}\n{n}It is said in certain temples of the Lady of Graves that there is one petition on her docket that has been waiting longer than any other, and that it is signed twice, and that the clerks draw straws each year to decide who must read it again.{/n}",
+          "Text": "{n}She spent the rest of her years on it. What she built, and what she bargained, and what it cost her, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand. The Commander carried the petition to the door, once, and waited outside, as agreed.{/n}\n{n}The last line of the report is in her hand: \"The case is filed. It has not been heard.\" Beneath it, every year until the report ends, a date, and the same two words: \"Not heard.\" The Commander never wrote in that column. It was not the Commander's.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -181223,8 +181223,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
