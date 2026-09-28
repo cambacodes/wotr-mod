@@ -151,7 +151,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
         c("Continue", "orso", forbids=(BEAR_DEAD,)), c("Continue", "spirit", requires=(BEAR_DEAD,))),
     nar("orso", '''{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded.{/n}''',
         c("Continue", "read")),
-    nar("spirit", '''{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones.{/n}''',
+    nar("spirit", '''{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, with nowhere left to go and nobody left to hold its leash.{/n}''',
         c("Continue", "read")),
     nar("read", '''{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}
 {n}She never said whose life went first.{/n}''',
@@ -166,35 +166,36 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
         c("Continue", "wake_orso", forbids=(BEAR_DEAD,)), c("Continue", "wake_spirit", requires=(BEAR_DEAD,))),
     nar("wake_brand", '''{n}The brand darkens under your palm, as a rope darkens when it is pulled wet, and draws tight until the skin of your hand burns with cold. When you take the hand away, the shape of the knot is printed on it in white.{/n}''',
         c("Continue", "wake_orso", forbids=(BEAR_DEAD,)), c("Continue", "wake_spirit", requires=(BEAR_DEAD,))),
-    nar("wake_orso", '''{n}Out in the ferns, Orso lies down on his own tracks and does not get up. The brand on his hide goes grey, then goes. He was a demon in a bear's skin, and winter after winter he guarded the only person who ever gave him a job. He does not make a sound.{/n}''',
+    nar("wake_orso", '''{n}The knot does not take a life. It takes the leash. Out in the ferns Orso rears up, and something tears loose from him: a shadow the size of a man, black as burnt grass, that goes into the trees faster than anything that size should move.{/n}
+{n}Orso comes down on all fours and shakes himself like a dog out of a river. The brand on his shoulder is grey and cold. He looks at you with a bear's eyes, only a bear's, and does not know you, or the cave, or his own name.{/n}''',
         c("Continue", "soana")),
-    nar("wake_spirit", '''{n}The black grass around the bones turns to plain dead grass. Whatever still lived in the carcass has been spent, all at once, like a coin.{/n}''',
+    nar("wake_spirit", '''{n}The knot does not take a life. It takes the leash. The black grass around the bones turns to plain dead grass, and something leaves the carcass in a rush, low to the ground, like smoke looking for a door. It goes into the trees. Behind it, the bones are only bones.{/n}''',
         c("Continue", "soana")),
     s("soana", '''{n}Behind you, someone coughs up forest loam.{/n}
 "...Bloody hunter. Of course. Who else would hold a dead woman to her own words?"
 {n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order.{/n}
-"I was finished. I had earned it. Look at this forest. You spent my guardian to drag me back and tend a graveyard."''',
+"I was finished. I had earned it. And you paid for me with my knot. The thing I bound is loose in my forest, looking for a skin to wear, and there is nobody left to hold its leash but me."''',
         c('"You can hate me standing up."')),
     ], requires=("trickster", "trickster.ever"), forbids=(RETURNED, CLOSED), delay=0, last=5, Relationship="soana",
     Chapters=[3, 5], Remote=True, TricksterDevice=True, TricksterState="killed",
     RequiresAnyGroups=[[DEAD, KILLED]]))
 
 at_cave("soana.trickster.returned.graveyard", "What the knot cost", '"Soana."', [
-    s("start", '''{n}Soana has a spade in one hand. At her feet, rolled in a hide that has gone the colour of ash, is something much larger than a woman.{/n}
-"Two days I have been walking this forest. Not a squirrel in it. The spirits I bound are hungry, and there is nothing left to feed them but the dead."''',
+    s("start", '''{n}Soana has a spade in one hand. Around the cave mouth are new mounds, a row of them, small and large: a fox, two wolves, a hind with her calf. Beside the last is a hole she has not finished.{/n}
+"Two days I have been walking this forest behind the thing you let off its leash. It rides whatever it can catch, runs it until its heart bursts, and gets off. I bury what it leaves. The demons on your road would pay well for a rider like that."''',
         c("Continue", "orso", forbids=(BEAR_DEAD,)), c("Continue", "spirit", requires=(BEAR_DEAD,))),
-    s("orso", '''"Orso is under that hide. He guarded me winter after winter, and you used him to pay a debt that was not his. He was a demon. He was also mine. He does not go in the ground with a hunter's rope around his neck. He goes in deep, and by hand."''',
+    s("orso", '''"Orso is in the ravine. He will not come when I call. He is only a bear now, and an old one, and the thing that wore him for so long remembers where he sleeps. You used him to pay a debt that was not his, hunter. He was a demon's cage, and he was mine."''',
         c("Continue", "dig")),
-    s("spirit", '''"The thing I bound into Orso has nothing left to live in now. It sleeps under his bones. I want those bones under the earth before it wakes and remembers who spent it, and before the demons on your road smell something they can use."''',
+    s("spirit", '''"Orso's bones are in the ground; I put them there myself, the first night, with my hands. What was in them is not. It remembers who let it out. It will come looking for you before long, and it will come through my forest to do it."''',
         c("Continue", "dig")),
     s("dig", '''{n}She holds out the spade, handle first.{/n}
-"You were very quick with my knot, bloody hunter. Let us see how quick you are with this."''',
+"You were very quick with my knot, bloody hunter. Let us see how quick you are with a grave. Then we will talk about catching it."''',
         c('[Take the spade]', "dug", flags=(GRAVE_KEPT, DUG)),
         c('"I\'ll send to Drezen for diggers."', "bought", crusade=("Finances", -100), flags=(GRAVE_KEPT, BOUGHT)),
         c('[Leave her with her graves]', flags=(CLOSED, LEFT))),
-    nar("dug", '''{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hide finally goes in she says something over it in a language that sounds like branches knocking.{/n}''',
+    nar("dug", '''{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hind and her calf finally go in she says something over them in a language that sounds like branches knocking.{/n}''',
         c('[Wipe your hands]')),
-    nar("bought", '''{n}The diggers come from Drezen three days later, crusaders with good boots and bad manners. They dig fast and deep and argue about who has to touch the hide. Soana watches them from the cave mouth the whole time with an expression you would not wish on an enemy.{/n}''',
+    nar("bought", '''{n}The diggers come from Drezen three days later, crusaders with good boots and bad manners. They dig fast and deep and argue about who has to carry the calf. Soana watches them from the cave mouth the whole time with an expression you would not wish on an enemy.{/n}''',
         c('[Pay them off]')),
     ], requires=("trickster.ever", RETURNED), forbids=(CLOSED, GRAVE_KEPT), delay=48)
 
@@ -216,7 +217,7 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"You said you ha
     s("bought", '''"Your diggers came, dug, ate my last smoked fish and left. Paying is easy for you people. It is the one thing you are good at. Remember that I noticed."''',
         c("Continue", "price")),
     s("price", '''{n}She opens her hand. The two halves of the clay knot lie in it.{/n}
-"A knot with one strand is not a knot. It is a piece of string. If I am to go on binding things for this forest, the knot needs a second life at the other end. You spent the last one. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first."
+"A knot with one strand is not a knot. It is a piece of string. If I am to catch that thing and bind it again, the knot needs a second life at the other end. Orso's has gone out of it; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first."
 "Those are my terms. I will not say them twice, and I will not make them sweeter."''',
         c('[Hold out your hand for the pieces]', "bind"),
         c('"Ask me again when the ground thaws."', "no"),
@@ -226,9 +227,9 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"You said you ha
         c('"Mine first."', "night", flags=(COMMITTED, BEARER)),
         c('[Laugh]', "no")),
     s("no", '''{n}She closes her fist over the shards and turns away.{/n}
-"No. You laughed at my knot once already, and it cost a bear. Come back when you can hold still for a thing that matters."''',
+"No. You laughed at my knot once already, and it cost me my guardian. Come back when you can hold still for a thing that matters."''',
         c('[Go]', flags=(DECLINED,))),
-    s("fool", '''"I already found one. He is lying under those ferns with his hide gone grey."
+    s("fool", '''"I already found one. He is in the ravine, and he does not know his own name."
 {n}She does not look at you again.{/n}''',
         c('[Go]', flags=(CLOSED,))),
     s("night", TERMS_NIGHT, c("Continue", "morning")),
@@ -354,7 +355,7 @@ inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you
 inline("soana.trickster.missed.second_ask", "The bowl's price", 5, '"About your bowl."', [
     n("start", "Soana", '''"I said it would cost you. It does."
 {n}She sets the bowl on the stone between you.{/n}
-"The Sarkorian clans cut wood in these trees and take my beasts for their pots, crusade or no crusade. Send them word under your seal that the Wintersun woods are mine, and that anyone who takes a hide from them answers to the Commander. They will hate you for it. Then ask me again."''',
+"Your scouts watch my beasts fight on the road, and they report it. Soon your foragers will read the reports too, and come for the meat. Seal an order: no crusader hunts in the Wintersun woods, for any pot, for as long as the war lasts, and whoever does answers to the Commander. Your officers will hate you for it. Then ask me again."''',
         c('[Seal the letter] "Done. Keep the die. And me."', "night", crusade=("Favors", -150),
           flags=(COMMITTED, DIE_KEPT, SEALED)),
         c('"No. Not at that price."', flags=(CLOSED,))),
@@ -370,12 +371,12 @@ EPILOGUE_PARAGRAPHS = (
     p("She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.", requires=(SECOND,)),
     p("The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept "
       "getting up. The scouts stopped reporting it. It had become ordinary.", requires=(CATCHUP,)),
-    p("The Sarkorian clans never forgave the Commander for the Wintersun woods, and never again took a hide from them.",
+    p("The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
       requires=(SEALED,)),
 )
 
 SCENES.append(scene("soana.trickster.epilogue.knot", "The second strand", "Epilogue", 5, "", [
-    nar("start", '''{n}Soana buried the Wintersun woods one grave a day, and when the demons were gone she began, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}
+    nar("start", '''{n}Soana caught the thing her knot had let loose in the first thaw after the war, in a gully full of dead deer, and bound it again with the Commander's life at the other end of the clay. Then she began, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}
 {n}The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, Soana said that was how you knew it was working.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
     requires=(RETURNED, COMMITTED), forbids=(CLOSED,), last=99, Relationship="soana"))
@@ -419,7 +420,7 @@ REACTIONS = [
              '''"The scouts say the Wintersun bears keep getting up after the demons knock them down. That's your dice, isn't it? I hope somebody asked the bears first. Somebody should always ask the bears."''',
              answer_list=EMBER_HUB, forbids=EMBER_GONE, chapter=5, last=5, delay=24, entry='"About the Wintersun bears..."'),
     reaction("Ulbrig", "soana.trickster.react.ulbrig_knot", (GUARDIAN, "ulbrig.talked"),
-             '''"You asked me once what these new powers want in return, warchief. Now we know. That one wanted a bear. Every power must have a name, and a price that's fair, and I'd not call a bear's life for a crone's a fair price. Nor would the crone, I'd wager."''',
+             '''"I asked you once what these new powers want in return, warchief. Now we know. That one wanted the crone's leash: there's a demon loose in the Wintersun woods, riding deer until their hearts burst. Every power must have a name, and a price that's fair. I'd not call that fair. Nor would the crone, I'd wager."''',
              answer_list=ULBRIG_HUB, forbids=ULBRIG_GONE, chapter=3, last=5, delay=24, entry='"About Soana..."'),
     reaction("Ulbrig", "soana.trickster.react.ulbrig_luck", (CATCHUP, "ulbrig.talked"),
              '''"The Wintersun crone's beasts are fighting demons on the road again, warchief. A she-bear with her guts hanging out stood up three times, the scouts say. Spirits don't do that for free. What did you give them? And what will they want next?"''',
