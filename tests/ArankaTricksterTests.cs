@@ -5,13 +5,16 @@ using Tirabade;
 
 // Aranka, Trickster (Writer/handoffs/trickster/aranka.md): the boast made true (F05) in the Fool King's tavern, the verse
 // where the Commander loses (parent-mod failure) and the court poet billed before she was asked (parent romance done).
-// One block per spec rules test (Trk_Aranka_*), plus hooks, the presence, the letter twin, the night, epilogues and
+// One block per spec rules test (Trk_Aranka_*), plus hooks, the presences, the yard copies for a Fye-less capital, the night, epilogues and
 // reactions.
 internal static class ArankaTricksterTests
 {
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
     private const string Unit = "430cba7801b149b4e8494ace6baf4f7c";
     private const string Fye = "0f12118177d102f428a3b30b15b132eb";
+    private const string YardUnit = "bd0c4fe722aeef94b8495ac284b96bc8";
+    private const string Quartermaster = "a380d926e92f70e429681eb9654478f9";
+    private const string FyeGone = "aranka.presence.failed";
     private const string KingC3 = "1a17d8053a3be7f47a7908eb6706f2fe";
     private const string KingC3Return = "814dd1a078a1c2849aefc85e2e15b2d2";
     private const string KingC5 = "6dccfd39947ef4242a8afbe36b21a46c";
@@ -47,7 +50,6 @@ internal static class ArankaTricksterTests
         var anyTavern = S(P + "verse.any_tavern");
         var herLetter = S(P + "verse.her_letter");
         var duet = S(P + "verse.duet");
-        var twin = S(P + "verse.her_letter_twin");
         var encore = S(P + "verse.encore");
         var third = S(P + "verse.third_verse");
         var mocking = S(P + "failure.mocking_verse");
@@ -94,9 +96,20 @@ internal static class ArankaTricksterTests
         foreach (var s in new[] { duet, encore, third, arrives })
             check(s.InteractionHub == "aranka.presence" && s.ContactUnit == Unit && Rules.IsPresenceHubScene(s)
                   && s.Chapters.SequenceEqual(new[] { 3, 5 }), "An in-person beat left her place at Fye's counter: " + s.Id);
-        foreach (var s in new[] { anyTavern, herLetter, twin, mockingAny, secondVerse, boast })
+        foreach (var s in new[] { anyTavern, herLetter, mockingAny, secondVerse, boast })
             check(Rules.IsRemote(s), "A letter is physical: " + s.Id);
-        check(twin.Chapters.SequenceEqual(new[] { 3 }), "The letter twin reaches past Chapter 3.");
+        check(!story.Scenes.Any(s => s.Id == P + "verse.her_letter_twin"), "The retired letter twin came back.");
+        foreach (var s in new[] { duet, encore, third, arrives })
+        {
+            var y = S(s.Id + "_yard");
+            check(y.InteractionHub == "aranka.presence.yard" && y.ContactUnit == YardUnit && Rules.IsPresenceHubScene(y)
+                  && y.Requires.Contains(FyeGone) && y.Requires.Except(new[] { FyeGone }).SequenceEqual(s.Requires)
+                  && y.Forbids.SequenceEqual(s.Forbids) && y.DelayHours == s.DelayHours && y.Chapters.SequenceEqual(s.Chapters)
+                  && y.Nodes.Select(n => n.Id).SequenceEqual(s.Nodes.Select(n => n.Id))
+                  && y.Nodes.SelectMany(n => n.Choices).Select(c => string.Join(",", c.Set)).SequenceEqual(s.Nodes.SelectMany(n => n.Choices).Select(c => string.Join(",", c.Set)))
+                  && !y.Nodes.Any(n => n.Text.Contains("Fye's counter") || n.Text.Contains("above Fye's") || n.Text.Contains('@')),
+                "The yard copy drifted from its counter scene: " + y.Id);
+        }
         var rel = story.Relationships["aranka"];
         check(rel.UnavailableOverrides["aranka.ran_failure"] == P + "returned" && rel.TricksterAccess.Count == 3
               && rel.TricksterAccess["aranka.ran_failure"].Detect.SequenceEqual(new[] { "aranka.ran_failure" })
@@ -107,6 +120,10 @@ internal static class ArankaTricksterTests
               && presence.At?.NearUnit == Fye && presence.Dialog == "hub" && presence.Forbids.Contains(Closed)
               && presence.MinChapter == 3 && presence.MaxChapter == 5 && presence.Requires.Contains("aranka.trickster.in_drezen"),
             "Her presence at Fye's counter is missing or malformed.");
+        check(story.Presences.TryGetValue("aranka.presence.yard", out var yard) && yard.Unit == YardUnit && yard.Unit != presence.Unit
+              && yard.At?.NearUnit == Quartermaster && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
+              && yard.Forbids.Contains(Closed) && yard.MinChapter == 3 && yard.MaxChapter == 5,
+            "The yard presence for a Fye-less capital is missing or malformed.");
         check(!story.Presences.Any(p => p.Key != "aranka.presence" && p.Value.At?.NearUnit == Fye && p.Value.At.Side == presence.At!.Side),
             "Aranka's copy would stand on another presence's side of Fye.");
 
@@ -220,15 +237,39 @@ internal static class ArankaTricksterTests
         foreach (var w in new[] { fresh, c5, gone, failed, failedLate, done })
             check(setups.Count(s => Rules.Available(story, s, w)) <= 1, "Two Aranka setups open at once.");
 
-        // The anchor fails: the Chapter 3 letter twin, for the verse and the touring arrival alike.
-        var anchorless = Later(story, answered, 96); anchorless.Flags.Add("aranka.presence.failed");
-        check(Rules.Available(story, twin, anchorless) && !Rules.Available(story, twin, Later(story, answered, 96)),
-            "The letter twin does not replace a failed presence, or opens while it stands.");
-        var billedAnchorless = World(story, 3, "trickster.ever", "aranka.ran_romance", "aranka.ran_quest_complete", P + "primed",
-                                     P + "cost.announced", "aranka.presence.failed");
-        check(Rules.Available(story, twin, Later(story, billedAnchorless, 96)), "A billed Aranka cannot reach a failed anchor.");
-        var twinOut = Play(twin, anchorless).Single();
-        check(twinOut.Has(P + "duet_sung") && !Rules.Available(story, duet, Later(story, twinOut, 72)), "The twin plays beside the duet.");
+        // Fye has left the capital (Chapter 3 or 5): every in-person beat plays in the quartermaster's yard instead, through
+        // the commit, her soft no, the priced second ask and the stage (audit round 3, INT/HOW).
+        Snapshot Yard(int chapter, params string[] flags)
+        {
+            var w = World(story, chapter, flags.Concat(new[] { FyeGone }).ToArray());
+            w.AvailableContacts.Remove(Unit); w.AvailableContacts.Add(YardUnit);
+            return w;
+        }
+        Scene Y(Scene s) => S(s.Id + "_yard");
+        foreach (var chapter in new[] { 3, 5 })
+        {
+            var yAnswered = Yard(chapter, "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
+            check(Rules.Available(story, Y(duet), yAnswered) && !Rules.Available(story, duet, yAnswered),
+                "Fye-less duet: the yard copy is missing, or the counter scene still opens (chapter " + chapter + ").");
+            var ySung = Play(Y(duet), yAnswered).First(r => r.Has(P + "duet_sung"));
+            var yEncore = Later(story, ySung, 72);
+            check(Rules.Available(story, Y(encore), yEncore), "Fye-less encore unavailable (chapter " + chapter + ").");
+            var yPages = new HashSet<string>();
+            var yOut = Program.Walk(Y(encore), yEncore, (page, _) => yPages.Add(page));
+            check(yOut.Any(r => r.Has(Kept) && r.Has(P + "night_kept")) && yPages.Contains("threshold") && yPages.Contains("morning"),
+                "Fye-less commit: no yes, or no night (chapter " + chapter + ").");
+            check(yOut.Any(r => r.Has(P + "gone_to_nerosyan") && r.Has(Closed)), "Fye-less stage ending missing (chapter " + chapter + ").");
+            var yNo = yOut.First(r => r.Has(P + "declined"));
+            var yThird = Later(story, yNo, 72);
+            check(Rules.Available(story, Y(third), yThird) && !Rules.Available(story, third, yThird), "Fye-less third verse unavailable.");
+            var yThirdOut = Play(Y(third), yThird);
+            check(yThirdOut.Any(r => r.Has(Kept) && r.Has(P + "cost.sang_alone")) && yThirdOut.Any(r => r.Has(Closed) && !r.Has(Kept)),
+                "Fye-less priced second ask or hard no missing (chapter " + chapter + ").");
+            var yBilled = Yard(chapter, "trickster.ever", "aranka.ran_romance", "aranka.ran_quest_complete", P + "primed", P + "cost.announced");
+            check(Rules.Available(story, Y(arrives), Later(story, yBilled, 48)) && !Rules.Available(story, arrives, Later(story, yBilled, 48)),
+                "Fye-less touring arrival missing (chapter " + chapter + ").");
+        }
+        check(!Rules.Available(story, Y(duet), answered), "The yard copy opens while Fye is serving.");
 
         // Epilogue pages (R2-6): the late commit, her no, the credit, the stage.
         var lateWorld = World(story, 5, "trickster.ever", P + "duet_sung", P + "answered", P + "cost.credited");

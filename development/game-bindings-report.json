@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-aranka\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1575,
-  "unique_targets": 391,
+  "binding_uses": 1585,
+  "unique_targets": 393,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -30,6 +30,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/BlacksmithCapitalTrader.jbp",
       "type": "BlueprintUnit"
     },
+    "a380d926e92f70e429681eb9654478f9": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/DrezenCapital_Quartermaster.jbp",
+      "type": "BlueprintUnit"
+    },
     "0f12118177d102f428a3b30b15b132eb": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Fye_Bartender.jbp",
       "type": "BlueprintUnit"
@@ -48,6 +52,10 @@
     },
     "430cba7801b149b4e8494ace6baf4f7c": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_DesnaPriest.jbp",
+      "type": "BlueprintUnit"
+    },
+    "bd0c4fe722aeef94b8495ac284b96bc8": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_RankupSpeaker.jbp",
       "type": "BlueprintUnit"
     },
     "3ba3a0ff8575be8419159221177c1411": {
