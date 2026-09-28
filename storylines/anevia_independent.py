@@ -1035,7 +1035,9 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
       c('[Ask for a quiet night of sleep and company.]', "sleep")),
     n("night", "Narrator", '''{n}She puts the little pieces into their parcel without caring which way they face. The crooked goat remains beside the lamp until she notices it watching, laughs and turns it toward the wall.{/n}
 {n}Then her attention is wholly yours. She kisses you at the edge of the bed, lingering when your hand finds her waist. There is a buckle she cannot undo while you keep making her laugh. She catches your wrist, presses a kiss to your knuckles and asks you to be helpful for once.{/n}
-{n}Later the lamp is low and the room has lost its need for explanations. The rest of the night belongs to the two of you.{/n}
+{n}You are helpful. The buckle gives, and the belt, and she steps out of the rest herself, quick and unembarrassed, like a woman shedding a disguise she has worn too long. "Your turn," she says, and does not wait for you to manage it; she has your shirt over your head before you can make a joke of it.{/n}
+"There," she murmurs against your mouth. "That's what I'd like."
+{n}She pulls you down onto the bed after her by a fistful of whatever you are still wearing, laughing once, low, and then not laughing at all. Her knee draws up along your hip; her hand spreads flat between your shoulders and holds you there, exactly where she wants you.{/n}
 {n}In the morning Anevia wakes with one arm across you and a complaint about the window already forming. She abandons it when you turn toward her. For a while neither of you gets up to discover whether the complaint was justified.{/n}''',
       c('[Keep the morning as part of the invitation.]', "morning", flags=("anevia.private_night",))),
     n("sleep", "Anevia", '''"I would like that. I am very good at being quiet once somebody has persuaded me to stop talking."
