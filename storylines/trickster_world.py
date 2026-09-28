@@ -600,7 +600,10 @@ def _bound(payload, key):
 def integrate(payload):
     """Bind every world key read by a registered scene (transitively through Derived/Latches). Never overrides an
     existing binding: the registered routes' own keys win, and a conflicting GUID is an error."""
-    pending = sorted({k for s in payload["Scenes"] for k in _keys(s)})
+    pending = sorted({k for s in payload["Scenes"] for k in _keys(s)}
+                     | {k for p in (payload.get("Presences") or {}).values()
+                        for k in [*(p.get("Requires") or []), *(p.get("Forbids") or []),
+                                  *(k for g in p.get("RequiresAnyGroups") or [] for k in g)]})
     while pending:
         key = pending.pop()
         if key in BINDINGS:

@@ -19,6 +19,9 @@ internal static class IrabethDepartureVisitTests
         // Keep mutation tests small while testing the caller's actual authored scene contracts.
         var story = new Story();
         story.Relationships["irabeth"] = Copy(source.Relationships["irabeth"]);
+        // The Trickster return (irabeth.trickster.returned) is produced by scenes this mini story leaves out.
+        story.Relationships["irabeth"].UnavailableOverrides.Clear();
+        story.Relationships["irabeth"].TricksterAccess.Clear();
         story.Etudes = new Dictionary<string, string>(source.Etudes);
         foreach (string id in new[] { "irabeth.return_request", "irabeth.return_reply", "irabeth.return_first_words" })
             story.Scenes.Add(Copy(source.Scenes.Single(s => s.Id == id)));

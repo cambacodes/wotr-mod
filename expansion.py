@@ -36,6 +36,7 @@ from storylines import nurah_continuation
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
 from storylines import arsinoe_trickster, trickster_world
+from storylines import irabeth_trickster
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -294,6 +295,9 @@ def make_expansion(*, independent_tirabade=True):
     payload["ParentEpilogueEdits"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_EDITS)
     payload["ParentEpilogueLossRules"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_LOSS_RULES)
     arsinoe_trickster.integrate(payload)
+    if "irabeth" in payload["Relationships"]:
+        payload["Scenes"].extend(copy.deepcopy(irabeth_trickster.SCENES))
+        irabeth_trickster.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

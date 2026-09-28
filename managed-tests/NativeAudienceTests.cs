@@ -94,7 +94,10 @@ internal static class NativeAudienceTests
                     if (terminal)
                     {
                         terminals++;
-                        check(ReferenceEquals(destination, native),
+                        // E5: a terminal native_next continues into that native cue of the same dialog instead.
+                        var expected = choice.NativeNext != null && choice.Check == null
+                            ? ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(choice.NativeNext)) : native;
+                        check(expected != null && ReferenceEquals(destination, expected),
                             "Terminal, refusal or abort does not return to the original native cue: " + answerKey);
                     }
                     else if (choice.Next != null)

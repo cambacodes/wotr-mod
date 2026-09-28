@@ -81973,7 +81973,8 @@
         "committed",
         "irabeth.personal_ready",
         "irabeth.courtship_requested",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -82217,7 +82218,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -82533,7 +82535,8 @@
         "irabeth.personal_ready",
         "irabeth.spousal_conversation_requested",
         "irabeth.absence_wait",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -82692,7 +82695,8 @@
         "irabeth.personal_ready",
         "anevia_dead",
         "anevia_gone",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -82987,7 +82991,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "irabeth.the_evening_she_chose",
@@ -83222,7 +83229,8 @@
         "irabeth.personal_ready",
         "anevia_dead",
         "anevia_gone",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -83443,7 +83451,8 @@
         "tirabade.group_closed",
         "anevia_dead",
         "anevia_gone",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -83663,7 +83672,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -83904,7 +83914,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -84121,7 +84132,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -84407,7 +84419,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -84559,7 +84572,8 @@
         "irabeth.personal_ready",
         "anevia_dead",
         "anevia_gone",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -84748,7 +84762,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -84867,7 +84882,8 @@
       "Forbids": [
         "closed",
         "irabeth.closed",
-        "inhuman"
+        "inhuman",
+        "irabeth_dead"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -85196,7 +85212,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -85416,7 +85433,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -85693,7 +85711,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -86042,7 +86061,8 @@
         "closed",
         "irabeth.closed",
         "inhuman",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -86139,7 +86159,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         },
         {
           "Id": "dead",
@@ -86155,7 +86254,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         },
         {
           "Id": "gone",
@@ -86171,7 +86349,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -86198,7 +86455,8 @@
       "RequiresAny": [],
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
       }
     },
     {
@@ -86223,7 +86481,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -86250,7 +86587,8 @@
       "RequiresAny": [],
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
       }
     },
     {
@@ -86275,7 +86613,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -86302,7 +86719,8 @@
       "RequiresAny": [],
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
       }
     },
     {
@@ -86327,7 +86745,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -86353,7 +86850,8 @@
       "RequiresAny": [],
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
       }
     },
     {
@@ -86434,7 +86932,8 @@
         "closed",
         "irabeth.closed",
         "trying",
-        "committed"
+        "committed",
+        "irabeth.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -86470,7 +86969,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -86494,7 +87072,8 @@
       ],
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
       }
     },
     {
@@ -86519,7 +87098,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -86543,7 +87201,8 @@
       "RequiresAny": [],
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
       }
     },
     {
@@ -86568,7 +87227,86 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -86593,7 +87331,8 @@
       "RequiresAny": [],
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
       }
     },
     {
@@ -86771,7 +87510,8 @@
         "irabeth.closed",
         "inhuman",
         "irabeth.personal_ready",
-        "irabeth_away"
+        "irabeth_away",
+        "irabeth_dead"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -135397,6 +136137,1661 @@
         5
       ],
       "InteractionHub": "nurah.arrival"
+    },
+    {
+      "Id": "irabeth.trickster.dead.standing_order",
+      "Title": "A standing order",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"When we reach the Queen, you'll stand in front of her. I know you. Fine. Afterwards you report to me. In person. That order doesn't lapse until I sign it off.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "\"In person.\"\n{n}Irabeth does not look at the Storyteller. She looks at you, the way she looks at a dispatch she suspects of carrying a second meaning.{/n}\n\"Commander, I always report in person. You know that. Why say it now?\"",
+          "Choices": [
+            {
+              "Text": "[Hold her gaze] \"In person.\"",
+              "Next": "roster",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "roster",
+          "Speaker": "Irabeth",
+          "Text": "\"That isn't an order a knight can promise to keep.\"\n{n}Her eyes go to the old elf, then back to you. Her jaw sets.{/n}\n\"But it's an order. Understood. It goes in the duty roster tonight, in my hand, so nobody can say you made it up afterwards. And if you're planning something, Commander, I'd rather you planned it where I can see.\"",
+          "Choices": [
+            {
+              "Text": "[Let her write it into the roster] \"Your hand. Your roster. I'll sign it off when I sign it off.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.standing_order"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Forget I said it.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "storyteller.asked_queen"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth_dead",
+        "irabeth.trickster.standing_order",
+        "irabeth.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "06184e4f0a65650488e36600d8274d26"
+      ],
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "irabeth.trickster.killed.drill",
+      "Title": "A step, not a block",
+      "Owner": "Irabeth",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Got an hour, Knight-Captain? I want to teach you something the Trickster taught me.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "\"A trick. With a sword.\"\n{n}She has her gauntlets half off already, which is how you know she means to humor you.{/n}\n\"I block, Commander. I've blocked for thirty years. Demons, cultists, one very determined goat. It's the one thing I'm good at that isn't paperwork.\"",
+          "Choices": [
+            {
+              "Text": "\"Stand there. I'm going to swing at you. Don't block. Step.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillMobility",
+                "DC": 20,
+                "Success": "stepped",
+                "Failure": "bruised",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "stepped",
+          "Speaker": "Irabeth",
+          "Text": "{n}The blade goes where she was. She is half a pace to the left, inside your guard, close enough to break your wrist, and she looks as surprised as you do.{/n}\n\"...I didn't decide to do that.\"\n{n}She rolls her shoulder, frowning at her own feet as if they had disobeyed an order.{/n}\n\"Again. If I'm going to have a bad habit, I want it drilled properly.\"",
+          "Choices": [
+            {
+              "Text": "\"Again. Until you do it without thinking.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.drilled",
+                "irabeth.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "bruised",
+          "Speaker": "Irabeth",
+          "Text": "{n}She blocks on instinct. Steel rings, your feet go out from under you, and you both end up on the flagstones.{/n}\n\"Thirty years, Commander.\"\n{n}She offers you a hand up and does not let go of it quite at once.{/n}\n\"Come back when you've got thirty more. Or tomorrow. Tomorrow would do.\"",
+          "Choices": [
+            {
+              "Text": "\"Tomorrow, then.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth_dead",
+        "anevia.irabeth_killed_by_commander",
+        "irabeth.trickster.drilled",
+        "irabeth_away"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ],
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "irabeth.trickster.dead.setup",
+      "Title": "Relieved",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Relieved of duty, Knight-Captain. Not dismissed. You still have my order: take care of your Nevi.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}Her hand has already started the salute. It stops halfway, because you are not returning it.{/n}\n\"Relieved...\"\n{n}She says the word the way she reads an order: twice, to be sure of it. Her eyes are going somewhere past your shoulder, and you cannot tell whether she heard the rest.{/n}",
+          "Choices": [
+            {
+              "Text": "[Refuse her salute] \"Not dismissed, Irabeth. You hear me? Not dismissed.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.primed",
+                "irabeth.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "dc5a8da498d2cd945a50f4e6a107e6fc",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "irabeth.deathbed"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.trickster.primed",
+        "irabeth_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "09b65ca563cc63141aebf70b7abe7270"
+      ],
+      "NativeReturnCue": "12f0d4c8dc3024a4cb86ab222ed3be66",
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "irabeth.trickster.dead.late_order",
+      "Title": "An empty bunk",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Her bunk in the barracks has been stripped to the ropes. Someone has set her boots under it anyway, toes to the wall, the way she always left them.{/n}\n{n}The knights on watch have a bottle between them and are not drinking it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "roster",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.standing_order"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "alone",
+              "Set": [],
+              "Requires": [
+                "iz.left_early"
+              ],
+              "Forbids": [
+                "irabeth.trickster.standing_order"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "cup",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.standing_order",
+                "iz.left_early"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "roster",
+          "Speaker": "Narrator",
+          "Text": "{n}The duty roster hangs on its nail by the door. Under her name, in her own square hand, is the order you gave her in the siege: \"To report to the Commander in person. Not to be struck off except by the Commander.\"{/n}\n{n}Nobody has struck it off. Nobody has dared.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cup",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "alone",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody was with her at the end. The report from Iz lists her among the dead in the same clerk's hand as the quartermaster's losses, between a broken wagon axle and forty spears.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cup",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "cup",
+          "Speaker": "Narrator",
+          "Text": "{n}One of the knights holds out the bottle to you without a word. The chaplain on duty watches from the doorway, his hands folded over his book.{/n}",
+          "Choices": [
+            {
+              "Text": "[Raise a cup to the empty bunk] \"Knight-Captain Irabeth: absent without leave. Report at dawn.\"",
+              "Next": "toast",
+              "Set": [
+                "irabeth.trickster.primed",
+                "irabeth.trickster.cost.late",
+                "irabeth.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "[Let her rest] \"...No. She earned it.\"",
+              "Next": "rest",
+              "Set": [
+                "irabeth.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "toast",
+          "Speaker": "Narrator",
+          "Text": "{n}The knights stare at you. Then one of them, very slowly, answers for her: \"Present.\" Another laughs, badly, and stops.{/n}\n{n}The chaplain sets down his cup untouched and writes something in his own ledger. By morning the whole citadel has heard that the Commander took a roll call of the dead as a joke. The priests of Iomedae will not forget it soon.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Dawn, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "rest",
+          "Speaker": "Narrator",
+          "Text": "{n}You drink. The knights drink. Nobody says anything clever, and the boots stay under the bunk until morning, when the quartermaster takes them away.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Goodbye, Irabeth.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "irabeth_dead",
+        "irabeth.dead.latched"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.trickster.primed",
+        "irabeth.trickster.returned",
+        "irabeth.trickster.declined",
+        "anevia.irabeth_killed_by_commander"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dead"
+    },
+    {
+      "Id": "irabeth.trickster.dead.relieved_not_dismissed",
+      "Title": "Reporting in person",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Knight-Captain?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The clerk strikes her name from the duty roster at dusk. At dawn it is back, in a square, patient hand, under \"On watch\". He strikes it again. It comes back again, underlined.{/n}\n{n}On the third night the knight keeping vigil over her body finds the bier empty and the burial whites gone. The Knight-Captain is in the throne room, at attention before your chair, waiting to report.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "report",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "report",
+          "Speaker": "Irabeth",
+          "Text": "\"Knight-Captain Tirabade, reporting in person. As ordered.\"\n{n}Her voice is hoarse, and very irritated. The burial whites are belted over her arming coat. Her sword is in her hand.{/n}\n\"The chaplain says I was dead two days. The chaplain also says my discharge was 'misplaced'. I have never misplaced a form in my life, Commander.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "torn",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.soul_wound_told"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "standing",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.standing_order"
+              ],
+              "Forbids": [
+                "irabeth.trickster.soul_wound_told"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "toasted",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Forbids": [
+                "irabeth.trickster.soul_wound_told",
+                "irabeth.trickster.standing_order"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "discharge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.soul_wound_told",
+                "irabeth.trickster.standing_order",
+                "irabeth.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "torn",
+          "Speaker": "Irabeth",
+          "Text": "\"That dragon's magic went through my soul like a saw. I told you so at Iz. I felt it come apart.\"\n{n}She flexes her sword hand. The knuckles are white.{/n}\n\"It's held together now. With your order. I can feel exactly where the stitches are.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "standing",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.standing_order"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "toasted",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Forbids": [
+                "irabeth.trickster.standing_order"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "discharge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.standing_order",
+                "irabeth.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "standing",
+          "Speaker": "Irabeth",
+          "Text": "\"I wrote that order into the roster myself. 'In person.' I thought you were being sentimental. You were being a lawyer.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "toasted",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "discharge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "toasted",
+          "Speaker": "Irabeth",
+          "Text": "\"And somebody toasted my empty bunk and called it a roll call. The chaplains are still complaining. I'd complain too, if I weren't standing here.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "discharge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "discharge",
+          "Speaker": "Narrator",
+          "Text": "{n}She holds out her hand, palm up, for the paper that would let her go. She does not look at it. She looks at you.{/n}",
+          "Choices": [
+            {
+              "Text": "[Hold out the unsigned discharge] \"Your discharge needs my signature. I've misplaced my pen. For two days.\"",
+              "Next": "answer",
+              "Set": [
+                "irabeth.trickster.returned",
+                "irabeth.started",
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Hold out the unsigned discharge] \"Your discharge needs my signature. I've misplaced my pen. I'm still looking.\"",
+              "Next": "answer",
+              "Set": [
+                "irabeth.trickster.returned",
+                "irabeth.started",
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Requires": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Irabeth",
+          "Text": "{n}Her jaw works.{/n}\n\"...Crazy orders. Every time. And every time we win.\"\n{n}She does not smile.{/n}\n\"Don't you ever do that to me again, Commander. Not to me, and not to her. Now tell me where Nevi is.\"",
+          "Choices": [
+            {
+              "Text": "\"She left at the Coronation. South, I think.\"",
+              "Next": "south",
+              "Set": [],
+              "Requires": [
+                "anevia_gone"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Here. In Drezen. She never left.\"",
+              "Next": "home",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia_gone"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "south",
+          "Speaker": "Narrator",
+          "Text": "{n}She hears it standing at attention, and she stays that way a long moment after you have finished.{/n}\n\"South. Of course south. She never could sit in a house with a draught in it.\"\n{n}She is gone before noon on a borrowed horse and back two days later, alone, sword still in her hand, and she reports that too.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Welcome back, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "home",
+          "Speaker": "Narrator",
+          "Text": "{n}She is out of the throne room before you finish the sentence, burial whites and all, with the sword in her hand because she cannot put it down.{/n}\n{n}Nobody in the citadel sees that meeting. The guard at the stair reports only that the Knight-Captain's wife said one word, loudly, and that it was not a word for a chapel.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Welcome back, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "irabeth_dead",
+        "irabeth.trickster.primed",
+        "coronation.seen"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.trickster.returned",
+        "anevia.irabeth_killed_by_commander"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "dead"
+    },
+    {
+      "Id": "irabeth.trickster.killed.late_step",
+      "Title": "The report of the day",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The chaplain who came back from Iz is writing the report of the day by candlelight. He has written \"Knight-Captain Irabeth Tirabade, slain by\" and stopped.{/n}\n{n}He is looking at you. So is the knight holding the candle.{/n}",
+          "Choices": [
+            {
+              "Text": "[Dictate the step] \"Write it down. I swung. She stepped. Everyone saw her step.\"",
+              "Next": "lie",
+              "Set": [
+                "irabeth.trickster.drilled",
+                "irabeth.trickster.cost.late",
+                "irabeth.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Let the blow stand] \"No. It happened. I did it.\"",
+              "Next": "stands",
+              "Set": [
+                "irabeth.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "lie",
+          "Speaker": "Narrator",
+          "Text": "{n}He writes it. His hand shakes on \"stepped\", and the word comes out crooked. When he is done he sands the page, folds it, and gives it to the knight to carry to the archive.{/n}\n\"I will remember the other one, Commander,\" he says, very quietly. \"Every day. So will he.\"\n{n}The knight with the candle does not say anything. By the end of the week the whole order has heard some version of it, and no two versions agree.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Remember what you like. File what I said.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "stands",
+          "Speaker": "Narrator",
+          "Text": "{n}He finishes the line in your words. He does not soften them. When he is done he looks at the page for a long time, then at you, and nods once, as if you had passed something.{/n}",
+          "Choices": [
+            {
+              "Text": "\"File it.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "irabeth_dead",
+        "anevia.irabeth_killed_by_commander",
+        "irabeth.dead.latched"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.trickster.drilled",
+        "irabeth.trickster.returned",
+        "irabeth.trickster.declined"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "killed"
+    },
+    {
+      "Id": "irabeth.trickster.killed.blow_missed",
+      "Title": "The step she learned",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Knight-Captain?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She is in the throne room with her sword in her hand. There is a fresh seam in her surcoat, over the ribs, where your blade went in.{/n}\n{n}The report of the day at Iz, in the archive, says the Knight-Captain stepped inside the Commander's blow, fell into the ruins and was dug out alive on the second morning.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "shaken",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "both",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "shaken",
+          "Speaker": "Narrator",
+          "Text": "{n}The chaplain's hand shook on \"stepped\". You can see it from here, in the way she keeps touching the seam.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "both",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "both",
+          "Speaker": "Irabeth",
+          "Text": "\"I remember your blade in me. I remember the cold, after. I also remember stepping, the way you taught me, half a pace left and inside.\"\n{n}Her knuckles whiten on the hilt.{/n}\n\"Both are true, Commander. I hate both of them.\"",
+          "Choices": [
+            {
+              "Text": "[Remember it the other way] \"I swung. You stepped. Everybody saw you step.\"",
+              "Next": "accounting",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Let the blow stand] \"No. I did it. I won't take it back.\"",
+              "Next": "salute",
+              "Set": [
+                "irabeth.trickster.declined",
+                "irabeth.trickster.blow_stands"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "accounting",
+          "Speaker": "Irabeth",
+          "Text": "\"Everybody saw what you told them to see. I know how this works now.\"\n{n}She takes one step closer. It is a very precise step.{/n}\n\"So which one did you mean, Commander? The swing, or the lesson?\"",
+          "Choices": [
+            {
+              "Text": "\"I meant it. At Iz, I meant it. I don't now.\"",
+              "Next": "truth",
+              "Set": [
+                "irabeth.trickster.returned",
+                "irabeth.started",
+                "irabeth.trickster.blow_rewritten",
+                "irabeth.trickster.cost.remembers_the_blow",
+                "irabeth.trickster.accounting_truth",
+                "irabeth.accounting_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"It was the dragon's sorcery. It wasn't me.\"",
+              "Next": "lie",
+              "Set": [
+                "irabeth.trickster.returned",
+                "irabeth.started",
+                "irabeth.trickster.blow_rewritten",
+                "irabeth.trickster.cost.remembers_the_blow",
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "truth",
+          "Speaker": "Irabeth",
+          "Text": "{n}She takes it like a blow she saw coming. She does not step away from it.{/n}\n\"Good. I'd have known if you lied. I've questioned cultists who lied better than you, and I hanged them.\"\n{n}She sheathes the sword. Her hand stays on the hilt.{/n}\n\"I'm back on duty. Don't mistake that for forgiveness.\"",
+          "Choices": [
+            {
+              "Text": "\"Understood, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "lie",
+          "Speaker": "Irabeth",
+          "Text": "{n}Something shuts behind her eyes, the way a gate shuts.{/n}\n\"The dragon. Of course.\"\n{n}She sheathes the sword, very carefully.{/n}\n\"I'm back on duty, Commander. I'll serve. Don't ask me for more than that.\"",
+          "Choices": [
+            {
+              "Text": "\"Dismissed.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "salute",
+          "Speaker": "Narrator",
+          "Text": "{n}She salutes. It is a perfect salute, the one she gives the Queen.{/n}\n{n}When you look up, the throne room is empty, and the report from Iz in the archive says what it always said.{/n}",
+          "Choices": [
+            {
+              "Text": "\"...Goodbye, Irabeth.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia.irabeth_killed_by_commander",
+        "irabeth.trickster.drilled",
+        "coronation.seen"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.trickster.returned",
+        "trickster.failed",
+        "irabeth.trickster.declined"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "killed"
+    },
+    {
+      "Id": "irabeth.trickster.back_on_duty",
+      "Title": "Back on duty",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Knight-Captain. A word.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She is at her post in the throne room as if she never left it. The sword is in her hand. It has been in her hand since she came back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hymn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "blow",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "hymn",
+          "Speaker": "Irabeth",
+          "Text": "\"They sang for me, Commander. The whole hall. I'm not walking back in there to tell them they wasted a good hymn, so I'm standing here instead.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sword",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "blow",
+          "Speaker": "Narrator",
+          "Text": "{n}She keeps the sword between you, point down, and does not pretend otherwise.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sword",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "sword",
+          "Speaker": "Irabeth",
+          "Text": "\"I can't put this down. I tried, to shave. It won't leave my hand for longer than a breath. The chaplain thinks it's a curse. I think it's a clause.\"\n{n}She lifts it an inch: steel, and a hand that will not open.{/n}\n\"Until the Wound is shut, apparently. Your joke has fine print, Commander. I'd like to have read it first.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "question",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "question",
+          "Speaker": "Irabeth",
+          "Text": "\"One question, and you answer it straight. Did you do it for the crusade, or for me?\"\n{n}She waits.{/n}\n\"There's a right answer. I'm not telling you which.\"",
+          "Choices": [
+            {
+              "Text": "\"Because the crusade needs its Knight-Captain.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.back_on_duty",
+                "irabeth.trickster.answered_crusade"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because I needed you back. Not the crusade. Me.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.back_on_duty",
+                "irabeth.trickster.answered_her"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "irabeth.trickster.returned"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.trickster.back_on_duty"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "irabeth.trickster.commit",
+      "Title": "Off the record",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Knight-Captain. Off the record.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}Late. The throne room is empty but for the two of you and the sword she still cannot put down.{/n}\n\"You're going to say something I'll have to answer. I can see it on you. Go on, then.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.answered_her"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "crusade",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.answered_crusade"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "her",
+          "Speaker": "Irabeth",
+          "Text": "\"You said 'for me'. Nobody's said that to me since Nevi. It was the right answer. I hate that it was the right answer.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lied",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "crusade",
+          "Speaker": "Irabeth",
+          "Text": "\"You said 'for the crusade'. Honest. A month ago I'd have thrown you out for the other one.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lied",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "lied",
+          "Speaker": "Irabeth",
+          "Text": "\"And you lied to me about Iz. I know you did. One more and I'm gone, orders or no orders.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Irabeth",
+          "Text": "{n}She waits for you to say it. Her sword hand is very still.{/n}",
+          "Choices": [
+            {
+              "Text": "[Salute] \"Dismissed, Knight-Captain. For tonight.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.friends"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Something's stopping you. Say it.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "no",
+          "Speaker": "Irabeth",
+          "Text": "\"Nevi's out on that road. I'm not doing this behind her back. Not while she's out there. Maybe not after.\"\n{n}She looks at the empty throne, not at you.{/n}\n\"Ask me when she's home, and ask me like a person, not like a Commander. Until then I'm your knight, and that's all I am.\"",
+          "Choices": [
+            {
+              "Text": "[Step back] \"Then I'll ask again. Not as your Commander.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "irabeth.trickster.back_on_duty"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.committed",
+        "irabeth.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "irabeth.trickster.second_ask",
+      "Title": "A request, signed",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Knight-Captain. I'm asking again.\"",
+      "Nodes": [
+        {
+          "Id": "price",
+          "Speaker": "Irabeth",
+          "Text": "\"You want to ask again. Then here's my price, Commander. Write it down. Not an order. A request, signed, the way a person asks.\"\n{n}She pushes a sheet of roster paper across the step, and a pen. Your own pen, the one you misplaced.{/n}\n\"I'll send it south to Nevi before I read it myself. If she laughs, the answer's no.\"",
+          "Choices": [
+            {
+              "Text": "[Write it as a request and sign it] \"Not an order. A request. Signed. Nevi reads it first.\"",
+              "Next": "sent",
+              "Set": [
+                "irabeth.committed",
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Some things I don't sign.\"",
+              "Next": "refused",
+              "Set": [
+                "irabeth.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Irabeth",
+          "Text": "\"Then you're my Commander, and that's the end of it.\"\n{n}She takes the paper back and folds it into her roster, blank.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Understood.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "sent",
+          "Speaker": "Irabeth",
+          "Text": "{n}It is five days before she finds you again. She has the paper in her free hand, travel-stained, sealed with a dead drop's wax.{/n}\n\"I sent it to her. It came back with one word on it. I'm not telling you which.\"\n{n}She is smiling, for the first time since Iz.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets the sword down on the throne-room step. It stays down. Her hand shakes, and it is not fear.{/n}\n\"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. Slowly. I want to remember it.\"\n{n}Gauntlets, then vambraces, plate by plate. Her fingers stop working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door to the cot in the guardroom, breathing as if she had run the walls. She pulls you down onto her, hooks a leg behind yours, and draws you in.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Irabeth",
+          "Text": "{n}Dawn. She is back in armour, all but one gauntlet, and she keeps flexing the bare hand as if it belonged to someone else.{/n}\n\"Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can.\"\n{n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
+          "Choices": [
+            {
+              "Text": "\"Dismissed, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "irabeth.trickster.declined",
+        "irabeth.trickster.back_on_duty"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.committed"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "irabeth",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "irabeth.trickster.epilogue.under_orders",
+      "Title": "Until the Wound is shut",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Irabeth Tirabade served the crusade until the Worldwound was closed. She could not have stopped sooner if she had wanted to, and she complained about it at length, in writing, to anyone who would file it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth",
+          "Paragraphs": [
+            {
+              "Text": "She had come back under an order and not under a vow. In the Drezen roster, under 'On watch', her name stayed in her own square hand for the rest of the war, and no clerk ever tried to strike it again.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the first had not happened. She taught the step to every recruit who would stand still for it.",
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had been blamed for enough already.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, the sword opened her hand at last. The Commander signed the discharge that same night, with the pen that had been misplaced for so long. She read it twice, the way she read every order, and put it in her pocket instead of the roster. What she did with the free hand was her own business, and she made sure everyone understood that.",
+              "Requires": [
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Wound closed, Irabeth Tirabade put her sword down for the first time since Iz, flexed the hand, and asked the Commander the question she had been saving: not as a knight, and not under orders. She asked it in writing, signed, and Anevia read it first.",
+              "Requires": [
+                "irabeth.trickster.late_committed"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed",
+                "irabeth.trickster.declined",
+                "irabeth.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took it, and did not look back.",
+              "Requires": [
+                "irabeth.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her Commander, who knew exactly how far the other would go.",
+              "Requires": [
+                "irabeth.trickster.friends"
+              ],
+              "Forbids": [
+                "irabeth.committed",
+                "irabeth.closed"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "irabeth.trickster.returned"
+      ],
+      "Forbids": [
+        "irabeth.lover"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "irabeth"
+    },
+    {
+      "Id": "irabeth.trickster.dead.react_seelah",
+      "Title": "Seelah's word",
+      "Owner": "Seelah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Irabeth is back.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Seelah",
+          "Text": "{n}Seelah does not sit down. She stands with her arms folded, and her holy symbol is in her fist.{/n}\n\"I asked the Inheritor to take her. I knelt in the mud at Iz and asked Her to welcome my sister into Her army. And you told Her Irabeth was still on shift.\"\n{n}Her voice cracks on the last word.{/n}\n\"I'm going to be angry with you for a week, Commander. Then I'm going to hug her until she complains.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "irabeth.trickster.returned",
+        "irabeth.trickster.seelah_prayed"
+      ],
+      "Forbids": [
+        "seelah_dead",
+        "seelah_gone",
+        "anevia.irabeth_killed_by_commander"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "irabeth",
+      "Reaction": true,
+      "AnswerLists": [
+        "417fa384f3250634bb71859fbc913453"
+      ]
+    },
+    {
+      "Id": "irabeth.trickster.dead.react_galfrey",
+      "Title": "A letter under the Queen's seal",
+      "Owner": "Galfrey",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Galfrey",
+          "Text": "{n}A letter under the Queen's seal, in the Queen's own hand.{/n}\n\"I wept for you in front of my knights, Knight Tirabade. I would do it again. You gave your life for mine at Iz, and I will not be told that the gift was a clerical error.\nYou owe me the dignity of an explanation. Your Commander owes me a better one.\nGalfrey.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "irabeth.trickster.returned"
+      ],
+      "Forbids": [
+        "galfrey.dead",
+        "galfrey.killed_by_commander",
+        "anevia.irabeth_killed_by_commander"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "irabeth",
+      "Reaction": true,
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "irabeth.trickster.killed.react_seelah",
+      "Title": "Seelah's word",
+      "Owner": "Seelah",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Irabeth is back.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Seelah",
+          "Text": "{n}Seelah's hands are shaking. She hides them behind her back, the way she did as a novice.{/n}\n\"Everyone says she stepped. The men who carried her out of Iz say they saw your sword go in. And now they remember her stepping too, and so do I, and I wasn't even there.\"\n\"Commander, I'm going to pray about this. And then I'm going to hit you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "irabeth.trickster.blow_rewritten"
+      ],
+      "Forbids": [
+        "seelah_dead",
+        "seelah_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "irabeth",
+      "Reaction": true,
+      "AnswerLists": [
+        "417fa384f3250634bb71859fbc913453"
+      ]
     }
   ],
   "Etudes": {
@@ -135521,8 +137916,13 @@
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
     "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
+    "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
     "socot.gone": "007c4990584473046ac29666a235efb3",
     "shamira.killed": "dd6731e2cb230694f9c394fa32391ad5",
+    "iz.left_early": "a583e4ab47544f5e928fc5b6b7c41e48",
+    "coronation.after": "b9cbdf8a2f0545f694366b87ae7d7d44",
+    "galfrey.killed_by_commander": "eb30187696a04f99aa194859b13a629e",
+    "galfrey.dead": "a4f20ae9f6a6c3d4ba204721589470a2",
     "fool_king.gone": "10f5e03534e6fe74fbc8a94dc2e2c15c",
     "fool_king.crowned": "cc76b7abcda591f438d0f24972dafddc",
     "ending.wound_closed": "10cf0442f31a4796af8b28281f35e944",
@@ -135756,7 +138156,7 @@
       "Title": "Irabeth: The name she would make",
       "Description": "Irabeth has a difficult case and an invitation of her own. Her marriage, her judgment and the life she wants beyond the war all matter to what follows.",
       "Objective": "Make time for Irabeth",
-      "Guidance": "Speak with Irabeth in Drezen. Keep the appointments you choose, and speak with Anevia when Irabeth asks. A private relationship does not require a shared romance.",
+      "Guidance": "Speak with Irabeth in Drezen. Keep the appointments you choose, and speak with Anevia when Irabeth asks. A private relationship does not require a shared romance. On the Trickster path, a fallen Irabeth may still be under the Commander's orders. After the Coronation, look for her in the throne room.",
       "StartedFlag": "irabeth.started",
       "ClosedFlag": "irabeth.closed",
       "CommittedFlag": "irabeth.committed",
@@ -135770,7 +138170,28 @@
         "irabeth_dead",
         "irabeth_gone",
         "inhuman"
-      ]
+      ],
+      "UnavailableOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "TricksterAccess": {
+        "dead": {
+          "Detect": [
+            "irabeth_dead",
+            "!anevia.irabeth_killed_by_commander"
+          ],
+          "Device": "irabeth.trickster.dead.setup",
+          "Returned": "irabeth.trickster.returned"
+        },
+        "killed": {
+          "Detect": [
+            "irabeth_dead",
+            "anevia.irabeth_killed_by_commander"
+          ],
+          "Device": "irabeth.trickster.killed.blow_missed",
+          "Returned": "irabeth.trickster.returned"
+        }
+      }
     },
     "minagho_chivarro": {
       "Title": "The company they choose",
@@ -135852,7 +138273,8 @@
   "SelectedAnswers": {
     "konomi.dismissed": "73c5728c4c6658344bedcc1b666e598c",
     "vellexia.native_coercion": "3aa48f68198afe14cb6de752ce80cc8f",
-    "noct.acq.council_disclosed": "fd4f6c1d6397fa94db7aaf08de7dfeca"
+    "noct.acq.council_disclosed": "fd4f6c1d6397fa94db7aaf08de7dfeca",
+    "storyteller.asked_queen": "b9d78ba896d19b14aa6c371dda617979"
   },
   "CompletedEtudes": {
     "konomi.office_completed": "b5f301fbc4c44535a6309d610d5bd28a",
@@ -136023,6 +138445,13 @@
     "nurah.friedhelm_soldier_seen": [
       "5a06af413442436a88c2362c9e9dcbd0"
     ],
+    "irabeth.trickster.soul_wound_told": [
+      "056e1df95bf941243b31265a46c05e1d",
+      "a207da6cc9abfeb4190ab9600b8d9aed"
+    ],
+    "irabeth.trickster.seelah_prayed": [
+      "be7fbe9847c4a944fafc750ee5aed807"
+    ],
     "council.cauldron_given": [
       "b936cf96571c0354fb7a57f4987fea5c"
     ],
@@ -136041,7 +138470,8 @@
   },
   "StartedDialogs": {
     "konomi.rank_six_started": "30333438aac8d3647bef882fa87e978e",
-    "konomi.rank_eight_started": "6178470b05c75484085753b821a6a614"
+    "konomi.rank_eight_started": "6178470b05c75484085753b821a6a614",
+    "irabeth.deathbed": "48a3a4ff8955b7045bac0ea06092e085"
   },
   "ParentEpilogueEdits": {
     "c47829fba057400c8e0279990be3d25e": {
@@ -136633,6 +139063,26 @@
       }
     }
   ],
+  "Presences": {
+    "irabeth.presence": {
+      "Unit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "reuse-native",
+      "Requires": [
+        "trickster.ever",
+        "irabeth.trickster.presence_on"
+      ],
+      "Forbids": [
+        "irabeth.closed",
+        "irabeth.trickster.blow_stands"
+      ],
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    }
+  },
   "PermanentEtudes": [
     "ending.trickster",
     "ending.trickster_allplanes",
@@ -136644,6 +139094,12 @@
     "trickster.ever": [
       "trickster",
       "trickster.was"
+    ],
+    "coronation.seen": [
+      "coronation.after"
+    ],
+    "irabeth.dead.latched": [
+      "irabeth_dead"
     ]
   },
   "Derived": {
@@ -136667,6 +139123,28 @@
         "sacrifice",
         "trickster.ever",
         "ending.trickster_full"
+      ]
+    ],
+    "irabeth.trickster.presence_on": [
+      [
+        "irabeth_dead",
+        "irabeth.trickster.primed",
+        "coronation.seen"
+      ],
+      [
+        "irabeth_dead",
+        "irabeth.trickster.drilled",
+        "coronation.seen",
+        "anevia.irabeth_killed_by_commander"
+      ],
+      [
+        "irabeth.trickster.returned"
+      ]
+    ],
+    "irabeth.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "irabeth.trickster.back_on_duty"
       ]
     ],
     "fool_king.available": [

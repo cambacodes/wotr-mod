@@ -119,10 +119,13 @@ internal static class Program
             "Native Newtonsoft JSON checkpoint encoding lost recovery identity or action");
         var targetIds = story.Scenes.SelectMany(Rules.EntryTargets).Distinct().ToArray();
         var nativeReturnIds = story.Scenes.Where(s => s.NativeReturnCue != null).Select(s => s.NativeReturnCue!).Distinct().ToArray();
+        // E5 native continuations (c(native_next=...)) are real cues of the same dialog; seed them as the game would load them.
+        var nativeNextIds = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Select(c => c.NativeNext).OfType<string>()
+            .Distinct().Except(nativeReturnIds).Except(story.SeenCues.Values.SelectMany(ids => ids)).ToArray();
         var sequenceIds = new[] { "ed4baeaf69394754902344f0598d7e5a", "ced82f299d246f448b48afa0b630dd70" };
         var unitIds = story.Revivals.Values.Select(r => r.Unit).Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits))).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Distinct());
         foreach (var binding in nurahNativeBindings)
             Check(((string)native[binding.Key]["$type"]!).EndsWith(", " + binding.Value, StringComparison.Ordinal),
                 "Nurah native binding has the wrong archive type: " + binding.Key);
@@ -169,6 +172,11 @@ internal static class Program
         foreach (string guid in story.SeenCues.Values.SelectMany(ids => ids).Distinct())
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintCue", StringComparison.Ordinal), "Wrong native seen-cue type: " + guid);
+            Seed<BlueprintCue>(guid);
+        }
+        foreach (string guid in nativeNextIds)
+        {
+            Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintCue", StringComparison.Ordinal), "Wrong native continuation type: " + guid);
             Seed<BlueprintCue>(guid);
         }
         foreach (string guid in nativeReturnIds)

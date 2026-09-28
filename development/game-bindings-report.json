@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1325,
-  "unique_targets": 298,
+  "binding_uses": 1363,
+  "unique_targets": 312,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -194,6 +194,42 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp",
       "type": "BlueprintCue"
     },
+    "06184e4f0a65650488e36600d8274d26": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "b9d78ba896d19b14aa6c371dda617979": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/Answer_0008.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "09b65ca563cc63141aebf70b7abe7270": {
+      "path": "World/Dialogs/c5/Iz/IrabethDies/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "12f0d4c8dc3024a4cb86ab222ed3be66": {
+      "path": "World/Dialogs/c5/Iz/IrabethDies/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "dc5a8da498d2cd945a50f4e6a107e6fc": {
+      "path": "World/Dialogs/c5/Iz/IrabethDies/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "be7fbe9847c4a944fafc750ee5aed807": {
+      "path": "World/Dialogs/c5/Iz/IrabethDies/Cue_0019a.jbp",
+      "type": "BlueprintCue"
+    },
+    "056e1df95bf941243b31265a46c05e1d": {
+      "path": "World/Dialogs/c5/Iz/IrabethDies/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "a207da6cc9abfeb4190ab9600b8d9aed": {
+      "path": "World/Dialogs/c5/Iz/IrabethDies/Cue_0021.jbp",
+      "type": "BlueprintCue"
+    },
+    "48a3a4ff8955b7045bac0ea06092e085": {
+      "path": "World/Dialogs/c5/Iz/IrabethDies/IrabethDies_Iz_c5_dialog.jbp",
+      "type": "BlueprintDialog"
+    },
     "fb3a88e8ed751214c9136f87891ec07b": {
       "path": "World/Dialogs/c5/KTC_WintersunHelp/AnswersList_0027.jbp",
       "type": "BlueprintAnswersList"
@@ -314,6 +350,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
       "type": "BlueprintEtude"
     },
+    "b9cbdf8a2f0545f694366b87ae7d7d44": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/KTCs_AfterCoronation.jbp",
+      "type": "BlueprintEtude"
+    },
     "a837c3bc9cbb4e846ab5565915165c91": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahKilledAfterDrezen.jbp",
       "type": "BlueprintEtude"
@@ -418,6 +458,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_Outcomes/Nocticula_GiftBroken.jbp",
       "type": "BlueprintEtude"
     },
+    "a583e4ab47544f5e928fc5b6b7c41e48": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/DidntVisitedEvents.jbp",
+      "type": "BlueprintEtude"
+    },
     "381a296094804761af0893d2e70dc2df": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_PlayerSacrifice.jbp",
       "type": "BlueprintEtude"
@@ -512,6 +556,14 @@
     },
     "f102a4d0677148f4cab007f901a5ed3c": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/SoanaKilledByCamellia.jbp",
+      "type": "BlueprintEtude"
+    },
+    "a4f20ae9f6a6c3d4ba204721589470a2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "eb30187696a04f99aa194859b13a629e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyKilledByCommander.jbp",
       "type": "BlueprintEtude"
     },
     "7a038ff7b70e91844954407b18e8feb6": {
@@ -648,6 +700,10 @@
     },
     "007c4990584473046ac29666a235efb3": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/SocotGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "256f3c081f21ed84fb3612465a76944b": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/TricksterMythicPathFailed.jbp",
       "type": "BlueprintEtude"
     },
     "07ad18ffb08145b69522f8eee0230857": {

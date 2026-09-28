@@ -618,6 +618,7 @@ def validate(model):
             relflags.add(f)
     for k in model.permanent_etudes:
         if k not in model.etudes: errs.append("Unknown permanent etude: " + k)
+    hexre = re.compile(r"^[0-9a-fA-F]{32}$")
     for k, p in (st.get("Presences") or {}).items():
         rel = presence_relationship(k)
         if (rel not in rels or not hexre.match(p.get("Unit") or "") or not hexre.match(p.get("Area") or "")
