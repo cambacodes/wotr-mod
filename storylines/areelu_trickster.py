@@ -1151,11 +1151,12 @@ report("areelu.trickster.report.participation", "The report: participation", [
     nar("in_witch_2", '''{n}The old wound from Kenabres she kisses once, very precisely. The wound above her own heart flares in answer until the room is full of its light. Crimson to the edges of her eyes. "Yes," she says, against your mouth, as if confirming a result, and then she is not confirming anything.{/n}
 {n}She pulls you down on top of her, rolls you both, and comes up astride, her hair a curtain around your faces, her hands pinning your wrists to the pillow; and for the first time in a hundred years Areelu Vorlesh stops taking notes.{/n}''',
         c("Continue", "morning")),
-    nar("want", '''{n}"Want." She said the word as if it were a specimen someone had handed her without gloves.{/n}
-{n}"I have wanted exactly two things in my life," she said. "One of them is in the Abyss, and the other is standing in front of me asking stupid questions in its nightclothes. I have measured the second one for eight years, Commander. I would like to stop measuring it, for one night, and see what it is like without the instruments." She did not look away. "That is what I want. Now let me in, or tell me no. I will not ask a second time."{/n}''',
+    nar("want", '''{n}"Want." She turned the word over as if someone had handed it to her without gloves.{/n}
+{n}"You are asking me to separate the two. I never have. I wanted my child back, and I opened a hole in the world to reach it. Anyone who calls that wanting and not measuring has understood neither word." She looked at you the way she had looked into her mirror in Alushinyrra, as if something on the far side of the glass had moved without permission. "You are the only one of my works that answers back. It deserves to be studied. I have not decided what I will do with the results, and I will not show you my working."{/n}
+{n}She did not step closer, and she did not step back. The door stood open between you, and she left it so, and wrote nothing down; which was, in its way, the only thing she had not yet tried.{/n}''',
         c("[Let her in.]", "in_mortal", requires=MORTAL),
         c("[Let her in.]", "in_witch", forbids=MORTAL),
-        c("[Tell her no, gently.]", "closed")),
+        c("[Close the door gently between you.]", "closed")),
     nar("notebook", '''{n}She lets the notebook go. It lands on the floor, open, face down, and something in her goes very still and then very bright.{/n}
 {n}"That," she says, "was a mistake. Now you will have to be my notes." Both hands on your chest, a push, and you are on your back on the bed with her following, her mouth hot and exact and not at all the mouth of someone who has forgotten what she wants.{/n}
 {n}She comes down astride you. One hand pins your wrists above your head; the other begins, unhurriedly, to unfasten everything it can reach. "Hold still," she says. "I am observing." The lamp goes over. Neither of you reaches for it, and she is not observing anything at all.{/n}''',
