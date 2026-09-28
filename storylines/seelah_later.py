@@ -308,7 +308,7 @@ s("parting", "A conversation without armor", 3, '"We need to talk about our rela
 "I'm going to miss you. I may need a little space before I get good at being your friend again."
 {n}She looks away, then back at you.{/n}
 "But I'm glad you said it to me. I would have hated guessing from the way you stopped looking for me."''', c('[Part honestly.]', flags=("seelah.closed", "seelah.parted",))),
-    n("stay", "Seelah", '''"Then let's choose a time now. I don't want us to keep being understanding until there's nothing left to understand."
+    n("stay", "Seelah", '''"Then let's choose a time now. Out loud, with a day in it." She counts on her fingers. "I've had three suppers go cold waiting for you this month, and I told everyone who asked that you were busy saving the world. You were. I still ate them alone."
 {n}She waits while you work out when you can both be free.{/n}''', c('[Keep the relationship and make a plan.]', abort=True)),
 ], requires=("seelah.lovers",), optional=True)
 
