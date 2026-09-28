@@ -140080,13 +140080,28 @@
             },
             {
               "Text": "Continue",
+              "Next": "killer",
+              "Set": [],
+              "Requires": [
+                "anevia.irabeth_killed_by_commander"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.wrong_door",
+                "anevia.trickster.cost.stolen_door",
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "beth_dead",
               "Set": [],
               "Requires": [],
               "Forbids": [
                 "anevia.trickster.cost.wrong_door",
                 "anevia.trickster.cost.stolen_door",
-                "irabeth.trickster.returned"
+                "irabeth.trickster.returned",
+                "anevia.irabeth_killed_by_commander"
               ],
               "Abort": false
             }
@@ -140110,11 +140125,24 @@
             },
             {
               "Text": "Continue",
+              "Next": "killer",
+              "Set": [],
+              "Requires": [
+                "anevia.irabeth_killed_by_commander"
+              ],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "beth_dead",
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "irabeth.trickster.returned"
+                "irabeth.trickster.returned",
+                "anevia.irabeth_killed_by_commander"
               ],
               "Abort": false
             }
@@ -140138,11 +140166,24 @@
             },
             {
               "Text": "Continue",
+              "Next": "killer",
+              "Set": [],
+              "Requires": [
+                "anevia.irabeth_killed_by_commander"
+              ],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "beth_dead",
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "irabeth.trickster.returned"
+                "irabeth.trickster.returned",
+                "anevia.irabeth_killed_by_commander"
               ],
               "Abort": false
             }
@@ -140166,11 +140207,24 @@
             },
             {
               "Text": "Continue",
+              "Next": "killer",
+              "Set": [],
+              "Requires": [
+                "anevia.irabeth_killed_by_commander"
+              ],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "beth_dead",
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "irabeth.trickster.returned"
+                "irabeth.trickster.returned",
+                "anevia.irabeth_killed_by_commander"
               ],
               "Abort": false
             }
@@ -140257,7 +140311,84 @@
         {
           "Id": "rest",
           "Speaker": "Anevia",
-          "Text": "\"...No. That's not fair. They told me. You stood at her bunk with a cup in your hand and let her rest.\"\n{n}She wipes her eyes with the back of the knife hand, carefully, blade out.{/n}\n\"Good. Somebody in this family should get to.\"",
+          "Text": "\"...No. That's not fair. They told me. You could've done somethin', some trick, and you let her rest instead.\"\n{n}She wipes her eyes with the back of the knife hand, carefully, blade out.{/n}\n\"Good. Somebody in this family should get to.\"",
+          "Choices": [
+            {
+              "Text": "[Sit until the candle's done] \"Till the candle's done, then.\"",
+              "Next": "named",
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Sit, and hope the coats keep quiet] \"...Nobody else is here.\"",
+              "Next": "thrown_out",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "killer",
+          "Speaker": "Anevia",
+          "Text": "{n}She knows. Of course she knows: she is a spy, and the report from Iz reached Kenabres before you did.{/n}\n\"You put your sword through my wife.\"\n{n}The knife doesn't shake. Her voice does, once, and then it doesn't.{/n}\n\"And now you climb outta my wardrobe like it's a joke. Sit down. Not 'cause I forgive you. 'Cause I want to look at you while I decide what you are.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "owned",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Sit until the candle's done] \"Till the candle's done, then.\"",
+              "Next": "named",
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.socoth_listening",
+                "irabeth.trickster.declined"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Sit, and hope the coats keep quiet] \"...Nobody else is here.\"",
+              "Next": "thrown_out",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [
+                "irabeth.trickster.declined"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "owned",
+          "Speaker": "Anevia",
+          "Text": "\"They say you wouldn't let the chaplain write it any other way. That you stood there and said 'I did it' while he wrote.\"\n{n}She turns the knife over, once, and looks at the blade instead of you.{/n}\n\"That's the only reason you're still breathin'.\"",
           "Choices": [
             {
               "Text": "[Sit until the candle's done] \"Till the candle's done, then.\"",
@@ -140936,11 +141067,24 @@
             },
             {
               "Text": "Continue",
+              "Next": "widow_killed",
+              "Set": [],
+              "Requires": [
+                "anevia.irabeth_killed_by_commander"
+              ],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "widow",
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "irabeth.trickster.returned"
+                "irabeth.trickster.returned",
+                "anevia.irabeth_killed_by_commander"
               ],
               "Abort": false
             }
@@ -140951,6 +141095,30 @@
           "Id": "widow",
           "Speaker": "Anevia",
           "Text": "\"I buried her in my head a hundred times on the road. Every time, you were standin' at the graveside with your hands in your pockets like you knew somethin'.\"\n{n}She breathes out, and it smokes in the cold.{/n}\n\"You didn't. Nobody did. That's what makes it bearable.\"",
+          "Choices": [
+            {
+              "Text": "[Ask her to stay] \"Stay. Not in there. Here, with me.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing and wait] \"...\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "widow_killed",
+          "Speaker": "Anevia",
+          "Text": "\"I buried her in my head a hundred times on the road. Every time, it was your sword in her.\"\n{n}She breathes out, and it smokes in the cold.{/n}\n\"I don't know what it says about me that I came back to this gate anyway. I'm not gonna pretend it doesn't say somethin'.\"",
           "Choices": [
             {
               "Text": "[Ask her to stay] \"Stay. Not in there. Here, with me.\"",

@@ -41,6 +41,7 @@ I_DECLINED = "irabeth.trickster.declined"
 I_REWRITTEN = "irabeth.trickster.blow_rewritten"
 I_LIED = "irabeth.trickster.cost.accounting_lied"
 I_UNDER = "irabeth.trickster.cost.under_orders"
+KILLED = "anevia.irabeth_killed_by_commander"
 OUTLIVED = ("socot.gone", "council.fought", "council.fought_nocta_allied")
 OWN = ("anevia.closed",)
 
@@ -76,9 +77,14 @@ def nar(id, text, *choices):
     return n(id, "Narrator", text, *choices, portrait="Anevia")
 
 
-def to_beth(back, widow, forbids=()):
-    """Continue to the Beth-first page that fits Irabeth's state: back from the dead, or not."""
-    return (c("Continue", back, requires=(I_RET,), forbids=forbids), c("Continue", widow, forbids=(*forbids, I_RET)))
+def to_beth(back, widow, forbids=(), killer=None):
+    """Continue to the Beth-first page that fits Irabeth's state: back from the dead, dead by the Commander's own
+    sword (when the scene has a page for it), or dead."""
+    if killer is None:
+        return (c("Continue", back, requires=(I_RET,), forbids=forbids), c("Continue", widow, forbids=(*forbids, I_RET)))
+    return (c("Continue", back, requires=(I_RET,), forbids=forbids),
+            c("Continue", killer, requires=(KILLED,), forbids=(*forbids, I_RET)),
+            c("Continue", widow, forbids=(*forbids, I_RET, KILLED)))
 
 
 # --- State gone_after_coronation: the wardrobe in Kenabres -----------------------------------------------------------
@@ -150,16 +156,16 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
     a("candle", CANDLE,
       c("Continue", "wimple", requires=(WRONG,)),
       c("Continue", "stolen", requires=(STOLEN,)),
-      *to_beth("beth_back", "beth_dead", forbids=(WRONG, STOLEN))),
+      *to_beth("beth_back", "beth_dead", forbids=(WRONG, STOLEN), killer="killer")),
     a("candle_crate", '''"Get out."
 {n}She doesn't move. Neither does the knife.{/n}
 "...No. Sit. On the crate, where I can see you. You've got till the candle's done. Then you go back in, and I'm nailin' the lid on and postin' you north as salt pork."''',
-      *to_beth("beth_back", "beth_dead")),
+      *to_beth("beth_back", "beth_dead", killer="killer")),
     a("wimple", '''"You're late, you smell of incense, and there's a wimple on your head. I'm not gonna ask."
 {n}She asks with her eyebrows anyway.{/n}''',
-      *to_beth("beth_back", "beth_dead")),
+      *to_beth("beth_back", "beth_dead", killer="killer")),
     nar("stolen", '''{n}The closet door sighs shut behind you. It will not open onto this room a second time; you know it the way you know the cold.{/n}''',
-      *to_beth("beth_back", "beth_dead")),
+      *to_beth("beth_back", "beth_dead", killer="killer")),
     a("beth_back", '''"And don't tell me about Beth. I've had a letter. In her hand, sayin' she's back on watch in Drezen with a sword she can't put down. I read it eleven times, and I still think it's a forgery."
 {n}She looks at the knife as if she has only just noticed it.{/n}
 "It's not a forgery. Is it."''',
@@ -174,9 +180,24 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
         flags=(RETURNED, "anevia.started", NAILED)),
       c('[Sit, and hope the coats keep quiet] "...Nobody else is here."', "thrown_out", requires=(LISTEN,),
         forbids=(I_DECLINED,))),
-    a("rest", '''"...No. That's not fair. They told me. You stood at her bunk with a cup in your hand and let her rest."
+    a("rest", '''"...No. That's not fair. They told me. You could've done somethin', some trick, and you let her rest instead."
 {n}She wipes her eyes with the back of the knife hand, carefully, blade out.{/n}
 "Good. Somebody in this family should get to."''',
+      c('[Sit until the candle\'s done] "Till the candle\'s done, then."', "named", forbids=(LISTEN,),
+        flags=(RETURNED, "anevia.started", NAILED)),
+      c('[Sit, and hope the coats keep quiet] "...Nobody else is here."', "thrown_out", requires=(LISTEN,))),
+    a("killer", '''{n}She knows. Of course she knows: she is a spy, and the report from Iz reached Kenabres before you did.{/n}
+"You put your sword through my wife."
+{n}The knife doesn't shake. Her voice does, once, and then it doesn't.{/n}
+"And now you climb outta my wardrobe like it's a joke. Sit down. Not 'cause I forgive you. 'Cause I want to look at you while I decide what you are."''',
+      c("Continue", "owned", requires=(I_DECLINED,)),
+      c('[Sit until the candle\'s done] "Till the candle\'s done, then."', "named", forbids=(LISTEN, I_DECLINED),
+        flags=(RETURNED, "anevia.started", NAILED)),
+      c('[Sit, and hope the coats keep quiet] "...Nobody else is here."', "thrown_out", requires=(LISTEN,),
+        forbids=(I_DECLINED,))),
+    a("owned", '''"They say you wouldn't let the chaplain write it any other way. That you stood there and said 'I did it' while he wrote."
+{n}She turns the knife over, once, and looks at the blade instead of you.{/n}
+"That's the only reason you're still breathin'."''',
       c('[Sit until the candle\'s done] "Till the candle\'s done, then."', "named", forbids=(LISTEN,),
         flags=(RETURNED, "anevia.started", NAILED)),
       c('[Sit, and hope the coats keep quiet] "...Nobody else is here."', "thrown_out", requires=(LISTEN,))),
@@ -289,10 +310,15 @@ THRESHOLD = '''{n}She doesn't wait for you to decide. Her fist is in your collar
 physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."', [
     a("start", '''{n}Same gate, same mud line, a colder night. She has brought a lantern and set it down on her side.{/n}
 "Guard asked me if I was a deserter. Told him I'm retired. He didn't believe me either."''',
-      *to_beth("share", "widow")),
+      *to_beth("share", "widow", killer="widow_killed")),
     a("widow", '''"I buried her in my head a hundred times on the road. Every time, you were standin' at the graveside with your hands in your pockets like you knew somethin'."
 {n}She breathes out, and it smokes in the cold.{/n}
 "You didn't. Nobody did. That's what makes it bearable."''',
+      c('[Ask her to stay] "Stay. Not in there. Here, with me."', "terms"),
+      c('[Say nothing and wait] "..."', "terms")),
+    a("widow_killed", '''"I buried her in my head a hundred times on the road. Every time, it was your sword in her."
+{n}She breathes out, and it smokes in the cold.{/n}
+"I don't know what it says about me that I came back to this gate anyway. I'm not gonna pretend it doesn't say somethin'."''',
       c('[Ask her to stay] "Stay. Not in there. Here, with me."', "terms"),
       c('[Say nothing and wait] "..."', "terms")),
     a("share", '''"Beth said, and I'm quotin', 'I'd rather share than bury.' Then she went red and walked into a door."

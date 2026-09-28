@@ -122,6 +122,22 @@ internal static class AneviaTricksterTests
             check(!Rules.Failed(rel, back[0]), "Journal still fails after her return.");
         }
 
+        // The Commander's own blow at Iz, not undone: she faces her wife's killer, and says so.
+        foreach (bool owned in new[] { false, true })
+        {
+            var killer = Program.Copy(primed); killer.Flags.Add(Killed);
+            if (owned) killer.Flags.Add("irabeth.trickster.declined");
+            var pages = new HashSet<string>();
+            var back = Program.Walk(wardrobe, killer, (page, _) => pages.Add(page));
+            check(back.Count == 1 && back[0].Has(Returned) && pages.Contains("killer") && !pages.Contains("beth_dead")
+                  && pages.Contains("owned") == owned, "The wardrobe forgets who killed Beth.");
+            var ask = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen");
+            ask.Times["anevia.trickster.gate_seen"] = ask.Hour - 96;
+            var commitPages = new HashSet<string>();
+            Program.Walk(commit, ask, (page, _) => commitPages.Add(page));
+            check(commitPages.Contains("widow_killed") && !commitPages.Contains("widow"), "The commit forgets whose sword it was.");
+        }
+
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.
         var withBeth = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, Primed);
         check(Rules.Available(story, wardrobe, withBeth) && !Any(withBeth, fetched, confession), "Trk_Anevia_Coexistence_Primed failed.");
