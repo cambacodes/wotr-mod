@@ -176,6 +176,23 @@ internal static class HepzamirahTricksterTests
         check(loud.Has(P + "primed") && loud.Has(P + "cost.late"), "Trk_Hepzamirah_Dispersed: the late steal does not cost the late terms.");
         check(Reaches(loud, "hepzamirah.committed"), "Trk_Hepzamirah_Dispersed: no road to the commit.");
 
+        // Trk_Hepzamirah_Deed: the Commander left the Labyrinth without either steal; the deed burned on his altar, priced.
+        var deed = S(P + "ghost.deed_by_fire");
+        var walkedPast = World(story, 5, "trickster", "trickster.ever", "hepzamirah.dead", "baphomet.parley.latched");
+        check(Rules.IsRemote(deed) && deed.TricksterDevice && deed.DelayHours == 72 && deed.Requires.Contains("trickster"),
+            "Trk_Hepzamirah_Deed: the post-Labyrinth fallback is not a live-path Trickster device, three days later.");
+        check(Rules.Available(story, deed, walkedPast), "Trk_Hepzamirah_Deed: the deed does not open after the Labyrinth.");
+        var burned = After(deed, walkedPast, "deed", 0).First();
+        check(burned.Has(P + "primed") && burned.Has(P + "cost.altar") && burned.Has(P + "cost.late")
+              && Choice(deed, "deed", 0).Crusade?.Resource == "Favors" && Choice(deed, "deed", 0).Alignment?.Value == 2,
+            "Trk_Hepzamirah_Deed: burning the deed costs nothing, or does not prime her.");
+        check(After(deed, walkedPast, "deed", 1).All(r => r.Has("hepzamirah.closed") && !r.Has(P + "primed")),
+            "Trk_Hepzamirah_Deed: breaking the altar is not the hard no.");
+        check(!Rules.Available(story, deed, World(story, 5, "trickster.ever", "trickster.failed", "hepzamirah.dead", "baphomet.parley.latched")),
+            "Trk_Hepzamirah_Deed: the deed opens without the live path.");
+        check(Rules.Available(story, body, Later(story, burned, 48)) && Reaches(burned, "hepzamirah.committed"),
+            "Trk_Hepzamirah_Deed: no road from the altar to the commit.");
+
         // Trk_Hepzamirah_LeftToRot: the Commander's hard no.
         var rot = After(second, leavable, "sneer", 1).First();
         check(rot.Has("hepzamirah.closed") && !rot.Has(P + "primed") && !Any(Later(story, rot, 100), body, first, second),

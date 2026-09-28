@@ -55,6 +55,7 @@ VIAL_PAID = P + "cost.vial_paid"
 COURIER_KILLED = P + "cost.courier_killed"
 VIAL_FORGED = P + "cost.vial_forged"
 LANDLORD = P + "landlord"
+ALTAR = P + "cost.altar"
 PICK_ITEM = "3b8021631cd1b7d4eb749601047a7bda"       # DreadfulOnslaughtItem, her +5 unholy heavy pick (Colyphyr loot)
 PICK_HELD = "hepzamirah.pick_held"
 DECLINED = P + "declined"
@@ -226,6 +227,24 @@ SCENES.append(scene(P + "ghost.late_gather", "The wall, stolen aloud", "Hepzamir
     TricksterDevice=True, TricksterState="ghost"))
 
 
+# --- The post-Labyrinth fallback (remote): the Commander left without stealing her corner. Everything burned on the Lord of
+# Beasts' altar goes to him, into his prison; the deed of theft goes the same way. Dearer than either setup, and priced.
+
+SCENES.append(scene(P + "ghost.deed_by_fire", "A deed, by fire", "Memory", 5, "", [
+    nar("cellar", '''{n}Three nights after the Labyrinth, the watch finds a cellar under the old grain exchange where a handful of your own soldiers have been cutting a horned head into their forearms. They have an altar down there: a slab of black stone, a brazier, and the old words of the Lord of Beasts' cult scratched round the rim. Everything they burned on it, the chaplains say, went to him.{/n}
+{n}Somewhere in his prison, two corridors from the lich's stolen cell, his daughter is still hiding in her corner from men with hooks. You did not steal it. You walked past.{/n}''',
+        c("Continue", "deed")),
+    nar("deed", '''{n}A deed of theft is only paper. But paper burned on his altar goes where he is.{/n}''',
+        c('[Burn a deed of theft on his altar, in front of the chaplains] "I steal the corner where Hepzamirah hides, and name it Leavable. Signed, the Commander. Deliver it."',
+          "burned", mythic="Trickster", alignment=("Chaotic", 2), crusade=("Favors", -200), flags=(PRIMED, GRUDGE, LATE, ALTAR, STARTED)),
+        c('"Let her rot. Break the altar."', flags=(CLOSED,), alignment=("Lawful", 1))),
+    nar("burned", '''{n}The chaplains watch the Commander of the crusade kneel at an altar of the Lord of Beasts and set fire to a sheet of paper on it. They do not stop you. One of them begins, very quietly, to write a letter to Nerosyan.{/n}
+{n}The paper burns green. Somewhere very far down, something gives, like wet parchment. When you climb out of the cellar the candles on the stair are burning sideways.{/n}''',
+        c("[Go up into the air.]")),
+    ], requires=("trickster", DEAD, "baphomet.parley.latched"), forbids=(PRIMED, CLOSED), delay=72, last=5, optional=True,
+    Relationship=REL, Remote=True, Chapters=[5], TricksterDevice=True, TricksterState="ghost"))
+
+
 # --- The payoff (remote, 48 h): a haunting with no body, a deal with the traitor who grows them, and the rename. -------
 
 BODY_LEADS = [
@@ -266,6 +285,7 @@ M."{/n}
     *lead([("flesh", nar, '''{n}Somewhere, very far away, a glass vial cracks on a laboratory shelf. The cold on your shoulder is gone. The thing in the crate opens its one good eye.{/n}
 {n}She sits up in the brine and touches the scar, the stump and the dead eye, slowly, the way a moneylender counts coins that have been clipped.{/n}''', None),
            ("flesh_late", hz, '''"You struck me before you freed me. The jailers whispered your name all the way to Drezen. I counted every whisper."''', LATE),
+           ("flesh_altar", hz, '''"You walked past me in his prison. Then you knelt at his altar in your own city and burned a deed of theft on it, to reach me. I felt the corner come loose like a rotten tooth." {n}Her lip curls.{/n} "My father's altar. You used his own post. I have never been so insulted in my life."''', ALTAR),
            ("flesh_offer", hz, '''"'Look me up.' You said it in Colyphyr, over the angel's head. I have looked you up, clown. Here I am, in a crate."''', OFFER)],
           "first_rent"),
     hz("first_rent", '''"You *mended* me." {n}It is said the way another woman would say "you spat on me".{/n} "Baphomet's daughter, grown in a jar by my own servant and unwrapped by a clown with a quill."

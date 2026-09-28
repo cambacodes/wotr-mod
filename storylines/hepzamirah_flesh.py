@@ -1122,8 +1122,8 @@ yard(NEROSYAN, "A letter from court", '"Nerosyan has written about us."', [
 "But understand what you bought with it, clown. You bought spears with a little piece of me. I sold a great many people for less. I am only surprised to find myself on the other side of the table."''',
        c("[Leave it there.]")),
     hz("embassy_reply", '''{n}The clerk opens his mouth, and shuts it, and writes it down, and reads it back, and his face goes through several stages of a man learning something about canon law that his masters in Nerosyan will not enjoy.{/n}
-"*Diplomatic relations.*" {n}She says it after he has gone, very slowly, as if tasting an unfamiliar wine.{/n} "You made our bed a matter of state. They cannot touch it without starting a war with a cell in my father's prison." {n}The scarred smile.{/n} "The lords will still delay their levies. But they will not know why they are angry, and that is worth the spears."''',
-       c("[Leave it there.]", crusade=("Favors", -50))),
+"*Diplomatic relations.*" {n}She says it after he has gone, very slowly, as if tasting an unfamiliar wine.{/n} "You made our bed a matter of state. They cannot touch it without starting a war with a cell in my father's prison." {n}The scarred smile.{/n} "The lords will still delay their levies, and your treasury will pay for the spears they keep back. But they will not know why they are angry. That is worth the price."''',
+       c("[Leave it there.]", crusade=("Finances", -300), flags=(P + "court_defied",))),
 ], requires=("trickster.ever", COMMITTED, KNOWN), delay=48)
 
 
@@ -1133,8 +1133,8 @@ yard(TREATY, "Articles of the Embassy", '"You wanted to see the Commander. Offic
     nar("treaty", '''{n}She has written it out on a sheet of the quartermaster's best vellum, which she did not ask for, in her square violent hand, under a heading she has drawn with great care: TREATY BETWEEN THE EMBASSY OF THE LEAVABLE PRISON AND THE CRUSADE OF MENDEV. It has seven articles. She holds it out to you across the trough as if it were a challenge to a duel.{/n}''',
         c("[Read it.]", "articles")),
     hz("articles", '''"*Article the first: the Embassy has no lock.* That one is not negotiable. *Article the second: the Ambassador goes first into every fight.* Also not negotiable. *Article the third: the Commander of the crusade may enter the Embassy at any hour, without knocking, and is expected to.*" {n}She watches your face.{/n}
-"*Article the fourth: no priest.* *The fifth: Mutasafen is the Ambassador's.* *The sixth: the Lord of Beasts is the Ambassador's.* The seventh I have left blank. My father's treaties always left one article blank, for whatever he decided to take later."
-"Well, clown? The crusade may propose the seventh article. I am in a generous mood. It will not last."''',
+"*Article the fourth: no priest.* *The fifth: Mutasafen is the Ambassador's.* *The sixth: the Lord of Beasts is the Ambassador's.* The seventh I have left blank."
+{n}She holds the pen out, point first.{/n} "Fill it, clown. Carefully. Whatever you write, I will hold you to it until one of us is dead, and then I will hold your ghost to it."''',
        c('"Article the seventh: the Ambassador comes back from every fight."', "back", flags=(P + "treaty_signed",)),
        c('"Article the seventh: the Commander goes first into the Embassy\'s bed."', "bed", flags=(P + "treaty_signed",)),
        c('"Article the seventh: either party may leave. Neither party will."', "leave", flags=(P + "treaty_signed",))),
@@ -1146,7 +1146,7 @@ yard(TREATY, "Articles of the Embassy", '"You wanted to see the Commander. Offic
 {n}She signs it with the point of the pick's spike, dipped in the forge-ash.{/n}''',
        c("[Sign it.]")),
     hz("leave", '''{n}She stops with the pen above the vellum, and for a long moment she does not write anything.{/n}
-"*Either party may leave. Neither party will.*" {n}She writes it at last, very carefully, as if the letters might break.{/n} "That is the whole treaty, clown. You have put all seven articles into one. My father never wrote an article like that in his life. He would not have known how."
-{n}She signs it with the point of the pick's spike, dipped in the forge-ash, and hands you the pick to sign it with too.{/n}''',
+{n}She writes it at last, very carefully, as if the letters might break, and does not read it back. She signs it with the point of the pick's spike, dipped in the forge-ash, and hands you the pick.{/n}
+"Sign," {n}she says.{/n} "Before I tear it up."''',
        c("[Sign it.]")),
 ], requires=("trickster.ever", COMMITTED, EMBASSY), delay=24)

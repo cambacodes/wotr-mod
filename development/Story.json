@@ -184424,6 +184424,111 @@
       "TricksterState": "ghost"
     },
     {
+      "Id": "hepzamirah.trickster.ghost.deed_by_fire",
+      "Title": "A deed, by fire",
+      "Owner": "Memory",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "cellar",
+          "Speaker": "Narrator",
+          "Text": "{n}Three nights after the Labyrinth, the watch finds a cellar under the old grain exchange where a handful of your own soldiers have been cutting a horned head into their forearms. They have an altar down there: a slab of black stone, a brazier, and the old words of the Lord of Beasts' cult scratched round the rim. Everything they burned on it, the chaplains say, went to him.{/n}\n{n}Somewhere in his prison, two corridors from the lich's stolen cell, his daughter is still hiding in her corner from men with hooks. You did not steal it. You walked past.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "deed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Hepzamirah"
+        },
+        {
+          "Id": "deed",
+          "Speaker": "Narrator",
+          "Text": "{n}A deed of theft is only paper. But paper burned on his altar goes where he is.{/n}",
+          "Choices": [
+            {
+              "Text": "[Burn a deed of theft on his altar, in front of the chaplains] \"I steal the corner where Hepzamirah hides, and name it Leavable. Signed, the Commander. Deliver it.\"",
+              "Next": "burned",
+              "Set": [
+                "hepzamirah.trickster.primed",
+                "hepzamirah.trickster.cost.baphomet_grudge",
+                "hepzamirah.trickster.cost.late",
+                "hepzamirah.trickster.cost.altar",
+                "hepzamirah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 2
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "\"Let her rot. Break the altar.\"",
+              "Next": null,
+              "Set": [
+                "hepzamirah.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Lawful",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Hepzamirah"
+        },
+        {
+          "Id": "burned",
+          "Speaker": "Narrator",
+          "Text": "{n}The chaplains watch the Commander of the crusade kneel at an altar of the Lord of Beasts and set fire to a sheet of paper on it. They do not stop you. One of them begins, very quietly, to write a letter to Nerosyan.{/n}\n{n}The paper burns green. Somewhere very far down, something gives, like wet parchment. When you climb out of the cellar the candles on the stair are burning sideways.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go up into the air.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Hepzamirah"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "hepzamirah.dead",
+        "baphomet.parley.latched"
+      ],
+      "Forbids": [
+        "hepzamirah.trickster.primed",
+        "hepzamirah.closed"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "hepzamirah",
+      "Remote": true,
+      "Chapters": [
+        5
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "ghost"
+    },
+    {
       "Id": "hepzamirah.trickster.ghost.body",
       "Title": "The lodger",
       "Owner": "Memory",
@@ -184772,13 +184877,26 @@
             },
             {
               "Text": "Continue",
+              "Next": "flesh_altar",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.altar"
+              ],
+              "Forbids": [
+                "hepzamirah.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
               "Next": "flesh_offer",
               "Set": [],
               "Requires": [
                 "hepzamirah.trickster.colyphyr_offer"
               ],
               "Forbids": [
-                "hepzamirah.trickster.cost.late"
+                "hepzamirah.trickster.cost.late",
+                "hepzamirah.trickster.cost.altar"
               ],
               "Abort": false
             },
@@ -184789,6 +184907,7 @@
               "Requires": [],
               "Forbids": [
                 "hepzamirah.trickster.cost.late",
+                "hepzamirah.trickster.cost.altar",
                 "hepzamirah.trickster.colyphyr_offer"
               ],
               "Abort": false
@@ -184800,6 +184919,47 @@
           "Id": "flesh_late",
           "Speaker": "Hepzamirah",
           "Text": "\"You struck me before you freed me. The jailers whispered your name all the way to Drezen. I counted every whisper.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "flesh_altar",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.altar"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "flesh_offer",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.colyphyr_offer"
+              ],
+              "Forbids": [
+                "hepzamirah.trickster.cost.altar"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "first_rent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "hepzamirah.trickster.cost.altar",
+                "hepzamirah.trickster.colyphyr_offer"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Hepzamirah"
+        },
+        {
+          "Id": "flesh_altar",
+          "Speaker": "Hepzamirah",
+          "Text": "\"You walked past me in his prison. Then you knelt at his altar in your own city and burned a deed of theft on it, to reach me. I felt the corner come loose like a rotten tooth.\" {n}Her lip curls.{/n} \"My father's altar. You used his own post. I have never been so insulted in my life.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -192533,18 +192693,20 @@
         {
           "Id": "embassy_reply",
           "Speaker": "Hepzamirah",
-          "Text": "{n}The clerk opens his mouth, and shuts it, and writes it down, and reads it back, and his face goes through several stages of a man learning something about canon law that his masters in Nerosyan will not enjoy.{/n}\n\"*Diplomatic relations.*\" {n}She says it after he has gone, very slowly, as if tasting an unfamiliar wine.{/n} \"You made our bed a matter of state. They cannot touch it without starting a war with a cell in my father's prison.\" {n}The scarred smile.{/n} \"The lords will still delay their levies. But they will not know why they are angry, and that is worth the spears.\"",
+          "Text": "{n}The clerk opens his mouth, and shuts it, and writes it down, and reads it back, and his face goes through several stages of a man learning something about canon law that his masters in Nerosyan will not enjoy.{/n}\n\"*Diplomatic relations.*\" {n}She says it after he has gone, very slowly, as if tasting an unfamiliar wine.{/n} \"You made our bed a matter of state. They cannot touch it without starting a war with a cell in my father's prison.\" {n}The scarred smile.{/n} \"The lords will still delay their levies, and your treasury will pay for the spears they keep back. But they will not know why they are angry. That is worth the price.\"",
           "Choices": [
             {
               "Text": "[Leave it there.]",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "hepzamirah.trickster.court_defied"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false,
               "Crusade": {
-                "Resource": "Favors",
-                "Amount": -50
+                "Resource": "Finances",
+                "Amount": -300
               }
             }
           ],
@@ -192598,7 +192760,7 @@
         {
           "Id": "articles",
           "Speaker": "Hepzamirah",
-          "Text": "\"*Article the first: the Embassy has no lock.* That one is not negotiable. *Article the second: the Ambassador goes first into every fight.* Also not negotiable. *Article the third: the Commander of the crusade may enter the Embassy at any hour, without knocking, and is expected to.*\" {n}She watches your face.{/n}\n\"*Article the fourth: no priest.* *The fifth: Mutasafen is the Ambassador's.* *The sixth: the Lord of Beasts is the Ambassador's.* The seventh I have left blank. My father's treaties always left one article blank, for whatever he decided to take later.\"\n\"Well, clown? The crusade may propose the seventh article. I am in a generous mood. It will not last.\"",
+          "Text": "\"*Article the first: the Embassy has no lock.* That one is not negotiable. *Article the second: the Ambassador goes first into every fight.* Also not negotiable. *Article the third: the Commander of the crusade may enter the Embassy at any hour, without knocking, and is expected to.*\" {n}She watches your face.{/n}\n\"*Article the fourth: no priest.* *The fifth: Mutasafen is the Ambassador's.* *The sixth: the Lord of Beasts is the Ambassador's.* The seventh I have left blank.\"\n{n}She holds the pen out, point first.{/n} \"Fill it, clown. Carefully. Whatever you write, I will hold you to it until one of us is dead, and then I will hold your ghost to it.\"",
           "Choices": [
             {
               "Text": "\"Article the seventh: the Ambassador comes back from every fight.\"",
@@ -192668,7 +192830,7 @@
         {
           "Id": "leave",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She stops with the pen above the vellum, and for a long moment she does not write anything.{/n}\n\"*Either party may leave. Neither party will.*\" {n}She writes it at last, very carefully, as if the letters might break.{/n} \"That is the whole treaty, clown. You have put all seven articles into one. My father never wrote an article like that in his life. He would not have known how.\"\n{n}She signs it with the point of the pick's spike, dipped in the forge-ash, and hands you the pick to sign it with too.{/n}",
+          "Text": "{n}She stops with the pen above the vellum, and for a long moment she does not write anything.{/n}\n{n}She writes it at last, very carefully, as if the letters might break, and does not read it back. She signs it with the point of the pick's spike, dipped in the forge-ash, and hands you the pick.{/n}\n\"Sign,\" {n}she says.{/n} \"Before I tear it up.\"",
           "Choices": [
             {
               "Text": "[Sign it.]",
