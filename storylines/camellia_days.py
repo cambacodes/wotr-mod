@@ -117,10 +117,10 @@ met(NEW_FRIEND, "A new friend", '"Who was that you were laughing with?"', [
 {n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}''',
         c("Continue", "warned")),
     cam("warned", '''"Consumption." {n}Camellia holds up the ribbon, blue, with a little bow.{/n} "You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth."
-{n}She winds the ribbon round her finger, and unwinds it.{/n} "You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand." {n}She smiles, slowly.{/n} "That's the most jealous thing anyone has ever done for me. I shall keep the ribbon forever."''',
+{n}She winds the ribbon round her finger, and unwinds it.{/n} "You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand." {n}She smiles, slowly.{/n} "You lied to a girl to take my plaything away. How very possessive of you." {n}She ties the ribbon round her wrist, tight enough to mark.{/n} "I shall keep this. It's evidence of what you'll do when something of mine is in the way."''',
         c("[Take her hand]", flags=(FRIEND_WARNED,))),
     cam("watch", '''"You'll be watching." {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}
-"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it." {n}Her voice is perfectly pleasant.{/n} "You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me."''',
+"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it." {n}Her voice is perfectly pleasant.{/n} "You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. I'm writing it down somewhere you'll never find."''',
         c("Continue", "cost")),
     nar("cost", '''{n}Down in the yard, Ilse is laughing, like a wren. She sees you at the window and waves, and holds up a blue ribbon for you to admire: for her wedding, she calls up. For the Third Company's sergeant. The lady Camellia helped her choose it.{/n}
 {n}Camellia waves back, very prettily, and does not take her eyes off your face while she does it.{/n}''',

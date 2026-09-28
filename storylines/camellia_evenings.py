@@ -147,7 +147,7 @@ living(GLOVES, "A pair of gloves", '"Are those for me?"', [
     cam("slept", '''"With a ribbon. It took no time at all." {n}She says it as though it were the most natural thing in the world.{/n} "One should always know the measurements of the people one cares for. Hands, throats, the distance between one rib and the next." {n}She laughs.{/n} "Oh, your face. I'm teasing, my friend. Mostly about the ribs."''',
         c("Continue", "close")),
     cam("awake", '''{n}Her hand stops on your cuff. For the length of a breath she is perfectly still, the way she goes still when she is listening to something nobody else can hear.{/n}
-"You were awake." {n}Very softly.{/n} "You lay there and let me measure you with a ribbon in the dark, and you never moved." {n}Then she smiles, slow and radiant.{/n} "That's either the bravest thing anyone has ever done in front of me, or the most insulting. I can't decide. I'm going to spend all night deciding."''',
+"You were awake." {n}Very softly.{/n} "You lay there and let me measure you with a ribbon in the dark, and you never moved." {n}Then she smiles, slow and radiant.{/n} "That's either brave or insulting. I'll decide later, when it's more convenient for me."''',
         c("Continue", "close")),
     cam("close", '''"Wear them. Always. Especially to battle." {n}She sits back and folds her own bare hands in her lap.{/n} "If anything ever happens to you, I want to be the one who knows which hands they were."''',
         c("[Keep them on]")),
@@ -283,14 +283,14 @@ met(GIFT, "A gift for a dead woman", '"I have something for you."', [
         c("Give her a pair of fencing foils with real points.", "foils")),
     cam("papers", '''{n}She breaks the seal, and reads, and her eyebrows go up, and up.{/n}
 "'Mireya Voss, widow, of the Lantern Quarter, Nerosyan. Born in Taldor. No known relations.'" {n}She looks at you over the top of the paper.{/n} "You've made me a person. You've made me a whole new person, with a street and a widowhood and a dead husband. Who was he?"
-{n}You tell her he was a wine merchant who died of a surfeit of eels. She presses the papers to her chest.{/n} "It's the nicest thing anyone has ever made up for me. I shall wear her to every party."''',
+{n}You tell her he was a wine merchant who died of a surfeit of eels. She presses the papers to her chest.{/n} "I shall wear her to every party. She'll be much better company than I am."''',
         c("Continue", "close", flags=(NEW_NAME,))),
     cam("stone", '''{n}She unwraps it, slowly, and then she is very quiet for a long time, looking at the charcoal letters of her own name and the date of her own death, pressed off stone onto paper.{/n}
 "You went to my grave," {n}she says at last, softly.{/n} "Without me. You knelt in the grass and rubbed charcoal over my name. So that I could keep it."
-{n}She traces the letters with one finger.{/n} "Nobody has ever kept my name before. They only ever wanted to make me change it."''',
+{n}She traces the letters with one finger.{/n} "My name. You kept it." {n}Her mouth tightens, then smooths.{/n} "How sentimental. I'll allow it, for now."''',
         c("Continue", "close", flags=(OLD_NAME,))),
     cam("foils", '''{n}She draws one from its sheath and tests the point on her thumb. A bead of blood wells up. She looks at it, and then at you, and her smile is slow and radiant.{/n}
-"Real points." {n}She sucks the blood off her thumb.{/n} "You want to fence with me with real points. You want to converse with me properly." {n}She salutes you with the naked blade, very correctly.{/n} "That is the most dangerous present anyone has ever given me. I'm going to cherish it."''',
+"Real points." {n}She sucks the blood off her thumb.{/n} "You want to fence with me with real points. You want to converse with me properly." {n}She salutes you with the naked blade, very correctly.{/n} "Now we'll find out which of us is sentimental."''',
         c("Continue", "close")),
     cam("close", '''"I have nothing for you. I didn't think." {n}She says it with a small, perplexed frown, as if she had forgotten something as basic as her own name.{/n} "I'll think of something. I'm very good at thinking of things. I'll give you something nobody else could possibly give you."
 {n}She smiles.{/n} "Don't look so worried. It won't be anyone you know."''',

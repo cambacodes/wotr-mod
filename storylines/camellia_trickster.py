@@ -408,7 +408,7 @@ SCENES.append(scene(P + "dead.overacting", "Curtain call", "Memory", 3, "", [
 # --- Her price (terms) and her test (the commit). Both in person; her refusal is reachable on every branch. -----------
 
 TERMS_LEADS = [
-    ("bowl", cam, '''"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I have thought about that more than about anything anyone has ever said to me."''', BOWL_HELD),
+    ("bowl", cam, '''"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I keep turning it over, like a coin I think might be false."''', BOWL_HELD),
     ("fed", cam, '''"In the Abyss, when the flies were loud, you sent me east to bleed demons until they were quiet. You knew exactly what I was, and you pointed. I have been waiting ever since to see whether you would pretend otherwise."''', FED),
     ("dug", cam, '''"Your little thief is still digging after that porter in the lower city. She is very good. Tell her to stop before she reaches the bottom, or I will have to be very good too."''', INVESTIGATED),
     ("covered", cam, '''"'Deserters.' You wrote it yourself. I read it in the register and laughed until the spirits hushed me. You lie beautifully for a murderer, my friend."''', COVERED),
@@ -416,7 +416,7 @@ TERMS_LEADS = [
     ("flinched", cam, '''"You flinched, when I put my knife in your hand and my throat under it. I have forgiven you. I forgive very little, so you may treasure it."''', FLINCHED),
 ]
 met(P + "returned.terms", "What a dead woman wants", '"You said you would find me. You didn\'t. I found you."', [
-    cam("start", '''"Every friend I have ever had, I have killed. It is the only thing that quiets the flies." {n}She says "flies" the way other women say "my headaches", with a small apologetic flutter of the hand.{/n} "You are the first friend I have kept past the point where I usually stop. And I find the flies are very loud."''',
+    cam("start", '''"Every friend I have ever had, I have killed. It is the only thing that quiets the flies." {n}She says "flies" the way other women say "my headaches", with a small apologetic flutter of the hand.{/n} "You are still alive, which is unusual. And I find the flies are very loud."''',
         c("Continue", "flies")),
     cam("flies", '''"You've never asked me what the flies are. Everyone who stays long enough asks, eventually. Then they stop staying."
 {n}She taps her temple with one manicured nail.{/n} "They're the voices. The spirits, if you like; I have called them that for so long that I no longer know what else to call them. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop."
@@ -470,7 +470,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("[Put your own knife to her ribs]", "blade"),
         c("[Shout for the guard]", "guard")),
     cam("steady", '''"There. That face. Not dread. Not fury. Interest." {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}
-"I have killed every friend I ever had. I find I would rather keep you on a shelf a while longer."''',
+"I have killed every friend I ever had. I haven't decided about you. Let's call it an experiment, and see how long it runs."''',
         c('[Ask her to stay] "Then stay."', "yes"),
         c("[Ask her to put the knife away for good]", "no")),
     cam("blade", '''"Oh, good." {n}Neither of you moves. Two points, one breath.{/n} "Someone who cuts back. You have no idea how rare that is. The spirits are quite beside themselves. So am I, a little."''',

@@ -250,7 +250,7 @@ SCENES.append(scene(P + "beat.her_own_grave", "Her own grave", "Camellia", 3,
     cam("why", '''"Because nobody else can come with me." {n}She says it quite simply.{/n} "It's a very lonely thing, to have a grave. One stands in front of it and there is no one to say, 'Do you remember when she did such and such?' Only strangers who didn't know me, and friends who did, and I am rather short of friends who did, as you know."''',
         c("Continue", "last")),
     cam("eulogy", '''{n}You clear your throat. You tell the stone that Camellia Gwerm was a liar of the first water, a spirit talker of great appetite and poor table manners, that she was cruel to waiters and kind to insects in the most suspicious way, and that anyone who believed she was dead deserved what was coming to them.{/n}
-{n}She listens with her hands clasped under her chin. When you have finished she is crying, very prettily, without a sound, and you cannot for your life tell if it is real.{/n} "That," {n}she says,{/n} "is the nicest thing anyone has ever said about me. I'm going to have it carved on the back."''',
+{n}She listens with her hands clasped under her chin. When you have finished she is crying, very prettily, without a sound, and you cannot for your life tell if it is real.{/n} "That," {n}she says,{/n} "I'm going to have carved on the back. Nobody will ever believe it's about me."''',
         c("Continue", "last")),
     cam("lie_down", '''{n}She looks at you as if you had suggested something shocking at a dinner party. Then she laughs, gathers up her skirts, and lies down beside you in the long grass, on top of herself, with her hands folded on her breast.{/n}
 "So this is what it looked like," {n}she says to the hawthorn.{/n} "From the outside. I always wondered." {n}Her hand finds yours in the grass and holds it, hard.{/n} "It's very peaceful. I don't care for it at all."''',
@@ -349,7 +349,7 @@ met(P + "bond.shelf", "The shelf", '"Camellia. What have you done to my room?"',
         c("[Fold it and put it back on the shelf]", "kept"),
         c("[Hold it to the candle]", "burned")),
     cam("kept", '''{n}You fold it along its old creases and put it back on the shelf, beside the knife. She watches you do it. Her face does something complicated.{/n}
-"You're keeping it." {n}Very quietly.{/n} "You're keeping my friends on your shelf. Next to your own name." {n}She laughs, a little unsteadily.{/n} "That's the most terrifying thing anyone has ever done to me. Now I shall have to be careful. You'll know if one of them changes."''',
+"You're keeping it." {n}Very quietly.{/n} "You're keeping my friends on your shelf. Next to your own name." {n}She laughs, a little unsteadily.{/n} "Now I shall have to be careful. How tiresome. You'll know if one of them changes."''',
         c("[Leave it where it is]", flags=(SHELF, LIST_KEPT))),
     cam("burned", '''{n}The paper catches at the corner and goes up all at once, as old paper does. She watches it burn with her chin on her hand and an expression of great, patient amusement.{/n}
 "How gallant. How completely useless." {n}She taps her temple with the point of the knife.{/n} "I have them all by heart, my friend. I wrote them down for you, not for me." {n}She picks up the apple again.{/n} "But you tried. I do like it when you try."''',
@@ -404,7 +404,7 @@ met(P + "bond.not_today", "Not today", '"You\'re very quiet tonight."', [
 "Yes," {n}she says at last.{/n} "Yes, you would. That's why it hasn't been today." {n}She holds out her hand, and you take it, and she pulls you down to the window seat beside her, and does not let go.{/n}''',
         c("Continue", "night", flags=(NOT_TODAY,))),
     cam("convincing", '''"Oh." {n}It is almost a gasp. Then she is laughing, with her forehead against your shoulder.{/n} "Oh, you monster. You'd do it. You'd lie there with my knife in you and I would never, ever know whether you were really dead. You'd ruin it for me forever."
-{n}She lifts her head.{/n} "That's the cruellest thing anyone has ever promised me. Say it again."''',
+{n}She lifts her head.{/n} "Oh, that's cruel. Say it again."''',
         c("Continue", "night", flags=(NOT_TODAY,))),
     cam("today", '''"Not today." {n}She says it after you, carefully, the way she says the names of flowers.{/n} "No. Not today. Today I'm going to do something very ordinary, and very dull, and I've never done it before in my life."
 {n}She closes the shutters on the rain.{/n} "I'm going to go to bed with someone I'm not going to kill."''',

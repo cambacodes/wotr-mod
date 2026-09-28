@@ -195,7 +195,7 @@ met(AMULET, "The amulet", '"You haven\'t fed Mireya in weeks."', [
         c('"I knew."', "knew"),
         c('"Why tell me now?"', "why"),
         c("[Say nothing]", "silent")),
-    cam("knew", '''"You knew." {n}She looks up sharply, and then, slowly, she starts to smile.{/n} "Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it." {n}She closes her hand around the amulet.{/n} "You let me keep my imaginary friend. That's the kindest thing anyone has ever done for me."''',
+    cam("knew", '''"You knew." {n}She looks up sharply, and then, slowly, she starts to smile.{/n} "Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it." {n}She closes her hand around the amulet.{/n} "You let me keep my imaginary friend." {n}Her eyes narrow, just slightly.{/n} "I wonder what you wanted in return. People always want something."''',
         c("Continue", "close")),
     cam("why", '''"Because I don't need a reason any more." {n}She opens her hand and looks at the snake.{/n} "I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you didn't need me to have a reason. You just... watched. You watched, and you stayed." {n}She shrugs, a small, bewildered movement.{/n} "She's out of work. Poor thing. I made her up and now I've made her redundant."''',
         c("Continue", "close")),

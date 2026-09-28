@@ -196485,7 +196485,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "\"Every friend I have ever had, I have killed. It is the only thing that quiets the flies.\" {n}She says \"flies\" the way other women say \"my headaches\", with a small apologetic flutter of the hand.{/n} \"You are the first friend I have kept past the point where I usually stop. And I find the flies are very loud.\"",
+          "Text": "\"Every friend I have ever had, I have killed. It is the only thing that quiets the flies.\" {n}She says \"flies\" the way other women say \"my headaches\", with a small apologetic flutter of the hand.{/n} \"You are still alive, which is unusual. And I find the flies are very loud.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -196620,7 +196620,7 @@
         {
           "Id": "bowl",
           "Speaker": "Camellia",
-          "Text": "\"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I have thought about that more than about anything anyone has ever said to me.\"",
+          "Text": "\"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I keep turning it over, like a coin I think might be false.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -197036,7 +197036,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "\"Every friend I have ever had, I have killed. It is the only thing that quiets the flies.\" {n}She says \"flies\" the way other women say \"my headaches\", with a small apologetic flutter of the hand.{/n} \"You are the first friend I have kept past the point where I usually stop. And I find the flies are very loud.\"",
+          "Text": "\"Every friend I have ever had, I have killed. It is the only thing that quiets the flies.\" {n}She says \"flies\" the way other women say \"my headaches\", with a small apologetic flutter of the hand.{/n} \"You are still alive, which is unusual. And I find the flies are very loud.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -197171,7 +197171,7 @@
         {
           "Id": "bowl",
           "Speaker": "Camellia",
-          "Text": "\"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I have thought about that more than about anything anyone has ever said to me.\"",
+          "Text": "\"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I keep turning it over, like a coin I think might be false.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -198298,7 +198298,7 @@
         {
           "Id": "steady",
           "Speaker": "Camellia",
-          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}\n\"I have killed every friend I ever had. I find I would rather keep you on a shelf a while longer.\"",
+          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}\n\"I have killed every friend I ever had. I haven't decided about you. Let's call it an experiment, and see how long it runs.\"",
           "Choices": [
             {
               "Text": "[Ask her to stay] \"Then stay.\"",
@@ -199182,7 +199182,7 @@
         {
           "Id": "steady",
           "Speaker": "Camellia",
-          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}\n\"I have killed every friend I ever had. I find I would rather keep you on a shelf a while longer.\"",
+          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}\n\"I have killed every friend I ever had. I haven't decided about you. Let's call it an experiment, and see how long it runs.\"",
           "Choices": [
             {
               "Text": "[Ask her to stay] \"Then stay.\"",
@@ -201615,7 +201615,7 @@
         {
           "Id": "eulogy",
           "Speaker": "Camellia",
-          "Text": "{n}You clear your throat. You tell the stone that Camellia Gwerm was a liar of the first water, a spirit talker of great appetite and poor table manners, that she was cruel to waiters and kind to insects in the most suspicious way, and that anyone who believed she was dead deserved what was coming to them.{/n}\n{n}She listens with her hands clasped under her chin. When you have finished she is crying, very prettily, without a sound, and you cannot for your life tell if it is real.{/n} \"That,\" {n}she says,{/n} \"is the nicest thing anyone has ever said about me. I'm going to have it carved on the back.\"",
+          "Text": "{n}You clear your throat. You tell the stone that Camellia Gwerm was a liar of the first water, a spirit talker of great appetite and poor table manners, that she was cruel to waiters and kind to insects in the most suspicious way, and that anyone who believed she was dead deserved what was coming to them.{/n}\n{n}She listens with her hands clasped under her chin. When you have finished she is crying, very prettily, without a sound, and you cannot for your life tell if it is real.{/n} \"That,\" {n}she says,{/n} \"I'm going to have carved on the back. Nobody will ever believe it's about me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -202334,7 +202334,7 @@
         {
           "Id": "kept",
           "Speaker": "Camellia",
-          "Text": "{n}You fold it along its old creases and put it back on the shelf, beside the knife. She watches you do it. Her face does something complicated.{/n}\n\"You're keeping it.\" {n}Very quietly.{/n} \"You're keeping my friends on your shelf. Next to your own name.\" {n}She laughs, a little unsteadily.{/n} \"That's the most terrifying thing anyone has ever done to me. Now I shall have to be careful. You'll know if one of them changes.\"",
+          "Text": "{n}You fold it along its old creases and put it back on the shelf, beside the knife. She watches you do it. Her face does something complicated.{/n}\n\"You're keeping it.\" {n}Very quietly.{/n} \"You're keeping my friends on your shelf. Next to your own name.\" {n}She laughs, a little unsteadily.{/n} \"Now I shall have to be careful. How tiresome. You'll know if one of them changes.\"",
           "Choices": [
             {
               "Text": "[Leave it where it is]",
@@ -202510,7 +202510,7 @@
         {
           "Id": "kept",
           "Speaker": "Camellia",
-          "Text": "{n}You fold it along its old creases and put it back on the shelf, beside the knife. She watches you do it. Her face does something complicated.{/n}\n\"You're keeping it.\" {n}Very quietly.{/n} \"You're keeping my friends on your shelf. Next to your own name.\" {n}She laughs, a little unsteadily.{/n} \"That's the most terrifying thing anyone has ever done to me. Now I shall have to be careful. You'll know if one of them changes.\"",
+          "Text": "{n}You fold it along its old creases and put it back on the shelf, beside the knife. She watches you do it. Her face does something complicated.{/n}\n\"You're keeping it.\" {n}Very quietly.{/n} \"You're keeping my friends on your shelf. Next to your own name.\" {n}She laughs, a little unsteadily.{/n} \"Now I shall have to be careful. How tiresome. You'll know if one of them changes.\"",
           "Choices": [
             {
               "Text": "[Leave it where it is]",
@@ -203134,7 +203134,7 @@
         {
           "Id": "convincing",
           "Speaker": "Camellia",
-          "Text": "\"Oh.\" {n}It is almost a gasp. Then she is laughing, with her forehead against your shoulder.{/n} \"Oh, you monster. You'd do it. You'd lie there with my knife in you and I would never, ever know whether you were really dead. You'd ruin it for me forever.\"\n{n}She lifts her head.{/n} \"That's the cruellest thing anyone has ever promised me. Say it again.\"",
+          "Text": "\"Oh.\" {n}It is almost a gasp. Then she is laughing, with her forehead against your shoulder.{/n} \"Oh, you monster. You'd do it. You'd lie there with my knife in you and I would never, ever know whether you were really dead. You'd ruin it for me forever.\"\n{n}She lifts her head.{/n} \"Oh, that's cruel. Say it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -203500,7 +203500,7 @@
         {
           "Id": "convincing",
           "Speaker": "Camellia",
-          "Text": "\"Oh.\" {n}It is almost a gasp. Then she is laughing, with her forehead against your shoulder.{/n} \"Oh, you monster. You'd do it. You'd lie there with my knife in you and I would never, ever know whether you were really dead. You'd ruin it for me forever.\"\n{n}She lifts her head.{/n} \"That's the cruellest thing anyone has ever promised me. Say it again.\"",
+          "Text": "\"Oh.\" {n}It is almost a gasp. Then she is laughing, with her forehead against your shoulder.{/n} \"Oh, you monster. You'd do it. You'd lie there with my knife in you and I would never, ever know whether you were really dead. You'd ruin it for me forever.\"\n{n}She lifts her head.{/n} \"Oh, that's cruel. Say it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -204292,7 +204292,7 @@
         {
           "Id": "awake",
           "Speaker": "Camellia",
-          "Text": "{n}Her hand stops on your cuff. For the length of a breath she is perfectly still, the way she goes still when she is listening to something nobody else can hear.{/n}\n\"You were awake.\" {n}Very softly.{/n} \"You lay there and let me measure you with a ribbon in the dark, and you never moved.\" {n}Then she smiles, slow and radiant.{/n} \"That's either the bravest thing anyone has ever done in front of me, or the most insulting. I can't decide. I'm going to spend all night deciding.\"",
+          "Text": "{n}Her hand stops on your cuff. For the length of a breath she is perfectly still, the way she goes still when she is listening to something nobody else can hear.{/n}\n\"You were awake.\" {n}Very softly.{/n} \"You lay there and let me measure you with a ribbon in the dark, and you never moved.\" {n}Then she smiles, slow and radiant.{/n} \"That's either brave or insulting. I'll decide later, when it's more convenient for me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -205366,7 +205366,7 @@
         {
           "Id": "papers",
           "Speaker": "Camellia",
-          "Text": "{n}She breaks the seal, and reads, and her eyebrows go up, and up.{/n}\n\"'Mireya Voss, widow, of the Lantern Quarter, Nerosyan. Born in Taldor. No known relations.'\" {n}She looks at you over the top of the paper.{/n} \"You've made me a person. You've made me a whole new person, with a street and a widowhood and a dead husband. Who was he?\"\n{n}You tell her he was a wine merchant who died of a surfeit of eels. She presses the papers to her chest.{/n} \"It's the nicest thing anyone has ever made up for me. I shall wear her to every party.\"",
+          "Text": "{n}She breaks the seal, and reads, and her eyebrows go up, and up.{/n}\n\"'Mireya Voss, widow, of the Lantern Quarter, Nerosyan. Born in Taldor. No known relations.'\" {n}She looks at you over the top of the paper.{/n} \"You've made me a person. You've made me a whole new person, with a street and a widowhood and a dead husband. Who was he?\"\n{n}You tell her he was a wine merchant who died of a surfeit of eels. She presses the papers to her chest.{/n} \"I shall wear her to every party. She'll be much better company than I am.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -205384,7 +205384,7 @@
         {
           "Id": "stone",
           "Speaker": "Camellia",
-          "Text": "{n}She unwraps it, slowly, and then she is very quiet for a long time, looking at the charcoal letters of her own name and the date of her own death, pressed off stone onto paper.{/n}\n\"You went to my grave,\" {n}she says at last, softly.{/n} \"Without me. You knelt in the grass and rubbed charcoal over my name. So that I could keep it.\"\n{n}She traces the letters with one finger.{/n} \"Nobody has ever kept my name before. They only ever wanted to make me change it.\"",
+          "Text": "{n}She unwraps it, slowly, and then she is very quiet for a long time, looking at the charcoal letters of her own name and the date of her own death, pressed off stone onto paper.{/n}\n\"You went to my grave,\" {n}she says at last, softly.{/n} \"Without me. You knelt in the grass and rubbed charcoal over my name. So that I could keep it.\"\n{n}She traces the letters with one finger.{/n} \"My name. You kept it.\" {n}Her mouth tightens, then smooths.{/n} \"How sentimental. I'll allow it, for now.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -205402,7 +205402,7 @@
         {
           "Id": "foils",
           "Speaker": "Camellia",
-          "Text": "{n}She draws one from its sheath and tests the point on her thumb. A bead of blood wells up. She looks at it, and then at you, and her smile is slow and radiant.{/n}\n\"Real points.\" {n}She sucks the blood off her thumb.{/n} \"You want to fence with me with real points. You want to converse with me properly.\" {n}She salutes you with the naked blade, very correctly.{/n} \"That is the most dangerous present anyone has ever given me. I'm going to cherish it.\"",
+          "Text": "{n}She draws one from its sheath and tests the point on her thumb. A bead of blood wells up. She looks at it, and then at you, and her smile is slow and radiant.{/n}\n\"Real points.\" {n}She sucks the blood off her thumb.{/n} \"You want to fence with me with real points. You want to converse with me properly.\" {n}She salutes you with the naked blade, very correctly.{/n} \"Now we'll find out which of us is sentimental.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -205506,7 +205506,7 @@
         {
           "Id": "papers",
           "Speaker": "Camellia",
-          "Text": "{n}She breaks the seal, and reads, and her eyebrows go up, and up.{/n}\n\"'Mireya Voss, widow, of the Lantern Quarter, Nerosyan. Born in Taldor. No known relations.'\" {n}She looks at you over the top of the paper.{/n} \"You've made me a person. You've made me a whole new person, with a street and a widowhood and a dead husband. Who was he?\"\n{n}You tell her he was a wine merchant who died of a surfeit of eels. She presses the papers to her chest.{/n} \"It's the nicest thing anyone has ever made up for me. I shall wear her to every party.\"",
+          "Text": "{n}She breaks the seal, and reads, and her eyebrows go up, and up.{/n}\n\"'Mireya Voss, widow, of the Lantern Quarter, Nerosyan. Born in Taldor. No known relations.'\" {n}She looks at you over the top of the paper.{/n} \"You've made me a person. You've made me a whole new person, with a street and a widowhood and a dead husband. Who was he?\"\n{n}You tell her he was a wine merchant who died of a surfeit of eels. She presses the papers to her chest.{/n} \"I shall wear her to every party. She'll be much better company than I am.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -205524,7 +205524,7 @@
         {
           "Id": "foils",
           "Speaker": "Camellia",
-          "Text": "{n}She draws one from its sheath and tests the point on her thumb. A bead of blood wells up. She looks at it, and then at you, and her smile is slow and radiant.{/n}\n\"Real points.\" {n}She sucks the blood off her thumb.{/n} \"You want to fence with me with real points. You want to converse with me properly.\" {n}She salutes you with the naked blade, very correctly.{/n} \"That is the most dangerous present anyone has ever given me. I'm going to cherish it.\"",
+          "Text": "{n}She draws one from its sheath and tests the point on her thumb. A bead of blood wells up. She looks at it, and then at you, and her smile is slow and radiant.{/n}\n\"Real points.\" {n}She sucks the blood off her thumb.{/n} \"You want to fence with me with real points. You want to converse with me properly.\" {n}She salutes you with the naked blade, very correctly.{/n} \"Now we'll find out which of us is sentimental.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -207889,7 +207889,7 @@
         {
           "Id": "knew",
           "Speaker": "Camellia",
-          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend. That's the kindest thing anyone has ever done for me.\"",
+          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend.\" {n}Her eyes narrow, just slightly.{/n} \"I wonder what you wanted in return. People always want something.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -208062,7 +208062,7 @@
         {
           "Id": "knew",
           "Speaker": "Camellia",
-          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend. That's the kindest thing anyone has ever done for me.\"",
+          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend.\" {n}Her eyes narrow, just slightly.{/n} \"I wonder what you wanted in return. People always want something.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -209117,7 +209117,7 @@
         {
           "Id": "warned",
           "Speaker": "Camellia",
-          "Text": "\"Consumption.\" {n}Camellia holds up the ribbon, blue, with a little bow.{/n} \"You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth.\"\n{n}She winds the ribbon round her finger, and unwinds it.{/n} \"You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand.\" {n}She smiles, slowly.{/n} \"That's the most jealous thing anyone has ever done for me. I shall keep the ribbon forever.\"",
+          "Text": "\"Consumption.\" {n}Camellia holds up the ribbon, blue, with a little bow.{/n} \"You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth.\"\n{n}She winds the ribbon round her finger, and unwinds it.{/n} \"You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand.\" {n}She smiles, slowly.{/n} \"You lied to a girl to take my plaything away. How very possessive of you.\" {n}She ties the ribbon round her wrist, tight enough to mark.{/n} \"I shall keep this. It's evidence of what you'll do when something of mine is in the way.\"",
           "Choices": [
             {
               "Text": "[Take her hand]",
@@ -209135,7 +209135,7 @@
         {
           "Id": "watch",
           "Speaker": "Camellia",
-          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me.\"",
+          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. I'm writing it down somewhere you'll never find.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -209309,7 +209309,7 @@
         {
           "Id": "warned",
           "Speaker": "Camellia",
-          "Text": "\"Consumption.\" {n}Camellia holds up the ribbon, blue, with a little bow.{/n} \"You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth.\"\n{n}She winds the ribbon round her finger, and unwinds it.{/n} \"You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand.\" {n}She smiles, slowly.{/n} \"That's the most jealous thing anyone has ever done for me. I shall keep the ribbon forever.\"",
+          "Text": "\"Consumption.\" {n}Camellia holds up the ribbon, blue, with a little bow.{/n} \"You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth.\"\n{n}She winds the ribbon round her finger, and unwinds it.{/n} \"You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand.\" {n}She smiles, slowly.{/n} \"You lied to a girl to take my plaything away. How very possessive of you.\" {n}She ties the ribbon round her wrist, tight enough to mark.{/n} \"I shall keep this. It's evidence of what you'll do when something of mine is in the way.\"",
           "Choices": [
             {
               "Text": "[Take her hand]",
@@ -209327,7 +209327,7 @@
         {
           "Id": "watch",
           "Speaker": "Camellia",
-          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me.\"",
+          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. I'm writing it down somewhere you'll never find.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -210001,8 +210001,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
