@@ -50,6 +50,7 @@ from storylines import aranka_trickster
 from storylines import gesmerha_trickster
 from storylines import seelah_trickster
 from storylines import dorgelinda_trickster, dorgelinda_ledger
+from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -353,6 +354,14 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(dorgelinda_ledger.SCENES))
     dorgelinda_trickster.integrate(payload)
     dorgelinda_ledger.integrate(payload)
+    # Eritrice: a new relationship, opened only by the Trickster motion in her private audience (eritrice_trickster).
+    payload["Relationships"]["eritrice"] = copy.deepcopy(eritrice_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(eritrice_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(eritrice_minutes.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(eritrice_council.SCENES))
+    eritrice_trickster.integrate(payload)
+    eritrice_minutes.integrate(payload)
+    eritrice_council.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

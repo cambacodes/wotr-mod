@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-eritrice\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1936,
-  "unique_targets": 493,
+  "binding_uses": 2006,
+  "unique_targets": 517,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -338,6 +338,50 @@
       "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0056.jbp",
       "type": "BlueprintCue"
     },
+    "68981c2d5949c2744a2a985813222f01": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_1/Cue_0024.jbp",
+      "type": "BlueprintCue"
+    },
+    "6cc3a4f0d7dc4c949b62a80dc81cabc0": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_2/Cue_0030.jbp",
+      "type": "BlueprintCue"
+    },
+    "784db62832f3c0743a9250b2382052c1": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_2/Cue_0034.jbp",
+      "type": "BlueprintCue"
+    },
+    "55eecf755f351b147a265f40d1db09a5": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_3/Cue_0040.jbp",
+      "type": "BlueprintCue"
+    },
+    "cf4e1e4352bb4fe4ea85d93d82c4b4b5": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_3/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
+    "e649f211c6b002a49a0c633061877927": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Chadali/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "d07bffc320b9127459c40869ab3e8ee4": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "2abad22288daf834f950acb6b2b7a812": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "ecfda3ea2f76d2e4c8a970c09a449ed4": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "3b128644f6776f94ca41902a85a2b2a1": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0018.jbp",
+      "type": "BlueprintCue"
+    },
+    "9b90dc19d38651741b19e380a2bfe2ff": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0019.jbp",
+      "type": "BlueprintCue"
+    },
     "1a17d8053a3be7f47a7908eb6706f2fe": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0009.jbp",
       "type": "BlueprintAnswersList"
@@ -476,6 +520,22 @@
     },
     "0aa00bcf3121a694dbf306bea0f62153": {
       "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0025.jbp",
+      "type": "BlueprintCue"
+    },
+    "c455162655e5aa74fa10d6445315c7a3": {
+      "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0040.jbp",
+      "type": "BlueprintCue"
+    },
+    "3d5645ec9fcc0b147bcae86edb345795": {
+      "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0046.jbp",
+      "type": "BlueprintCue"
+    },
+    "222e6f61837a88c42825b4e4bf800e78": {
+      "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0048.jbp",
+      "type": "BlueprintCue"
+    },
+    "88a1ec4c7221d0e4ea21a18133b43749": {
+      "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0050.jbp",
       "type": "BlueprintCue"
     },
     "19786fae9c29f9d439e374bb857c2e84": {
@@ -634,8 +694,24 @@
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Prison_Baph_dialogue.jbp",
       "type": "BlueprintDialog"
     },
+    "512981db805f7184aa9af6361286323a": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0010.jbp",
+      "type": "BlueprintCue"
+    },
+    "53e715f39ea70d249ae916610e5bf340": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
     "b936cf96571c0354fb7a57f4987fea5c": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0041.jbp",
+      "type": "BlueprintCue"
+    },
+    "f2022cc8f6117df4c9418824428c592a": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0063.jbp",
+      "type": "BlueprintCue"
+    },
+    "3108154bf2ca3414e83ca4db4eb790da": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-2/Cue_0040.jbp",
       "type": "BlueprintCue"
     },
     "aff2802d5af0f77408793b489334befc": {
@@ -644,6 +720,10 @@
     },
     "adf1456e429a3d94693417ef7d090d5e": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Debrief_Council/Cue_0005.jbp",
+      "type": "BlueprintCue"
+    },
+    "5e04945c677b757489ffebeba2ddef1a": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Debrief_Council/Cue_0015.jbp",
       "type": "BlueprintCue"
     },
     "6a5c262473dfe824886bed3eb3eef59d": {
@@ -822,12 +902,28 @@
       "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/Shifter_CompanionDialogue.jbp",
       "type": "BlueprintDialog"
     },
+    "b2fd1f720322d6749b921cdd34328c3a": {
+      "path": "World/Dialogs/Epilogues/BookPage_0187.jbp",
+      "type": "BlueprintBookPage"
+    },
     "5c95d8e3fa4f3b44896914987cb04b0b": {
       "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
       "type": "BlueprintBookPage"
     },
     "5787f92575364c1459df8f075676c2db": {
       "path": "World/Dialogs/Epilogues/Cue_0317.jbp",
+      "type": "BlueprintCue"
+    },
+    "0ffd4b0bb2346fc4282aed98f478cb96": {
+      "path": "World/Dialogs/Epilogues/Cue_0568.jbp",
+      "type": "BlueprintCue"
+    },
+    "99e4689d8527c824da642c18507bf813": {
+      "path": "World/Dialogs/Epilogues/Cue_0569.jbp",
+      "type": "BlueprintCue"
+    },
+    "684c56330c5a4db4d80b99150a308c69": {
+      "path": "World/Dialogs/Epilogues/Cue_0571.jbp",
       "type": "BlueprintCue"
     },
     "33960c7f7af40cd43b7f801a76c87a0b": {
