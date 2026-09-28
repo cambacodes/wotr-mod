@@ -31,7 +31,9 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 {n}Arsinoe's gold eyes go to it before you have taken your hand away. She does not touch it. Her fingers stop a breath above the stone, the way they would over an offering plate.{/n}
 "If this is what I think it is..."
 {n}She takes a jeweler's loupe from her sleeve and bends to the cradle. Under the grime of the Abyss there is a line of worn lettering, stamped, not engraved. Clerks' capitals.{/n}
-"By the First Vault. *Treasury of Abadar, Absalom.* A soul cauldron, Commander. Consecrated to my god and inventoried by his temple. It belongs in a temple vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it."''',
+"By the First Vault. *Treasury of Abadar, Absalom.*"
+{n}She straightens, frowning, and taps the loupe against her lip.{/n}
+"A soul cauldron, Commander, if I am any judge, and I am. Marks can be forged; I have forged a few, for training purposes. But if this one is genuine, then this stone was consecrated to my god and entered in his inventory, and it belongs in a vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it."''',
       c("Continue", "shamira", requires=("shamira.killed",)),
       c("Continue", "terms", forbids=("shamira.killed",))),
     n("shamira", "Arsinoe", '''{n}She tilts the stone toward the lamp. Deep inside it something that is not light moves, slow and patient, like a fish under ice.{/n}
@@ -50,6 +52,7 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 "Leased."
 {n}She looks at you for a long, pleased moment, the way she looks at a customer who has finally made an offer worth her time.{/n}
 "A lease is a contract. A contract is lawful. And a lawful arrangement for the use of the Treasury's property, drawn up by an ordained priestess in good standing, is... something I could defend before my superiors, if I had to. I would enjoy defending it."
+"But I am not a fool, and neither is the Treasury. I will write to Absalom tonight, with a drawing of the mark. If they deny the stone is theirs, the lease lapses and the temple keeps the rent for its trouble. If they confirm it, the lease stands, and I am the priestess who found the Treasury's lost property *and* made it pay. Either way, I do not end up explaining to a tribunal why I let a demigod walk off with a god's diamond on a handshake."
 "Rent, then. Five hundred crowns to the temple, from the crusade's chest, today. The same again every season the property is out of the vault. I do not haggle over the Treasury's property, Commander. I will, however, listen."''',
       c('"Agreed."', "leased"),
       c('"Five hundred a season is robbery with a halo."',
@@ -79,6 +82,8 @@ physical(LEASE, "Property of the Treasury", '"I have something a priestess of Ab
 
 physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
     n("start", "Arsinoe", '''{n}A ledger lies open on the counter. A stick of gold wax is softening over a candle, and beside it there is a second copy of the lease, annotated in three colors of ink.{/n}
+"Absalom has answered." {n}She lays a letter on the ledger, heavy paper, a seal in gold wax far older and larger than hers.{/n} "The mark is genuine. The Treasury confirms the loss of one soul cauldron, 'circumstances of removal unrecorded', and ratifies the lease. I have been commended. I have also been instructed to ensure the property's safe return. So.
+{n}She turns the letter face down.{/n}
 "An inspection, Commander. I am told my lessee intends to carry the property to the place where the Worldwound was first opened, and then, I assume, to do something heroic with it. My ledger calls that 'unusual wear'. The temple requires collateral against total loss."''',
       c("Continue", "pledge")),
     # Cross-route ledger reads (the wedding guests, row 8's consular rider) return when the Kiana and Konomi Trickster
@@ -114,7 +119,7 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 "The lien stands, Commander. This is outside the lease. Abadar keeps the accounts; he does not keep the curtains. Close them."
 {n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and takes you by the lapels and pulls, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}
 {n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was and climbs up after you, her shift already gone the way of the robe, her hair falling around both your faces like a drawn curtain. She looks down at you for one long, appraising moment, the look of a woman about to sign.{/n}
-{n}Then she takes you in hand and sinks down onto you, all at once, with a sharp, satisfied breath through her teeth, and whatever the church of Abadar holds a lien on, it is not this.{/n}''',
+{n}Then she settles astride you, and reaches down between you, and draws a sharp, satisfied breath through her teeth, and whatever the church of Abadar holds a lien on, it is not this.{/n}''',
       c("Continue", "morning")),
     n("morning", "Arsinoe", '''{n}Morning. The sign still says CLOSED. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}
 "Interest on the property: accrued. Everything else: no charge."
