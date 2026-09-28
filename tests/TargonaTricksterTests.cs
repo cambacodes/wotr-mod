@@ -292,6 +292,10 @@ internal static class TargonaTricksterTests
             "A reaction is not guarded against its reactor's absence.");
         check(Rules.Available(story, S(P + "react.seelah_furlough"), back) && !Rules.Available(story, S(P + "react.seelah_furlough"),
               World(story, 5, "trickster.ever", P + "returned", "seelah_dead")), "Seelah's reaction is wrong.");
+        // G6(b): Seelah back on her own Trickster route lifts her death or departure for this bark.
+        check(Rules.Available(story, S(P + "react.seelah_furlough"), World(story, 5, "trickster.ever", P + "returned", "seelah_dead", "seelah.trickster.returned"))
+              && Rules.Available(story, S(P + "react.seelah_furlough"), World(story, 5, "trickster.ever", P + "returned", "seelah_gone", "seelah.trickster.returned")),
+            "Seelah's reaction ignores her Trickster return.");
         check(!reactions.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Any(),
             "A reaction sets state.");
         var ember = S(P + "react.ember_wand").Nodes[0].Text;
