@@ -136342,8 +136342,7 @@
       ],
       "Forbids": [
         "irabeth.closed",
-        "irabeth.trickster.primed",
-        "irabeth_dead"
+        "irabeth.trickster.primed"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -136355,7 +136354,9 @@
         "09b65ca563cc63141aebf70b7abe7270"
       ],
       "NativeReturnCue": "12f0d4c8dc3024a4cb86ab222ed3be66",
-      "EntryMythic": "PlayerIsTrickster"
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true,
+      "TricksterState": "dead"
     },
     {
       "Id": "irabeth.trickster.dead.late_order",

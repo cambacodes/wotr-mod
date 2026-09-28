@@ -124,9 +124,9 @@ SCENES.append(scene("irabeth.trickster.dead.setup", "Relieved", "Irabeth", 5,
 {n}She says the word the way she reads an order: twice, to be sure of it. Her eyes are going somewhere past your shoulder, and you cannot tell whether she heard the rest.{/n}''',
       c('[Refuse her salute] "Not dismissed, Irabeth. You hear me? Not dismissed."', native_next=CLEAR_CONSCIENCE,
         alignment=("Chaotic", 1), flags=(PRIMED, "irabeth.started"))),
-], requires=("trickster", "irabeth.deathbed"), forbids=(*OWN, PRIMED, "irabeth_dead"), last=5, optional=True,
+], requires=("trickster", "irabeth.deathbed"), forbids=(*OWN, PRIMED), last=5, optional=True,
    Relationship="irabeth", Chapters=[5], AnswerLists=[DEATHBED], NativeReturnCue=DEATHBED_RETURN,
-   EntryMythic="PlayerIsTrickster"))
+   EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="dead"))
 
 letter("irabeth.trickster.dead.late_order", "An empty bunk", [
     nar("start", '''{n}Her bunk in the barracks has been stripped to the ropes. Someone has set her boots under it anyway, toes to the wall, the way she always left them.{/n}
