@@ -148,7 +148,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
 {n}The projection leans closer. Its breath is cold, and smells of night-blooming flowers.{/n} "Choose your answer well. I will know if it is one of his."''',
         c('"Because I\'m the only one who\'ll never ask you for anything real."', "verdict_true"),
         c('[Joke] "Because you laughed. Under the projection. I heard it."', "verdict_joke")),
-    nt("verdict_true", '''"Liar." {n}She says it the way other women say darling.{/n} "You will ask me for everything, and I will enjoy refusing most of it."''', *VERDICT),
+    nt("verdict_true", '''"Liar." {n}She tastes the word, and seems to like it.{/n} "You will ask me for everything, clown, and I will enjoy refusing most of it. Slowly. In front of people."''', *VERDICT),
     nt("verdict_joke", '''"I did not laugh."
 {n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold remembers it for a long moment afterwards.{/n}''', *VERDICT),
     nt("reason_paid", '''{n}She considers you the way she considered her price: from the end backwards.{/n}

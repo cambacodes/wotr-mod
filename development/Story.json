@@ -150908,7 +150908,7 @@
         {
           "Id": "verdict_true",
           "Speaker": "Nocticula",
-          "Text": "\"Liar.\" {n}She says it the way other women say darling.{/n} \"You will ask me for everything, and I will enjoy refusing most of it.\"",
+          "Text": "\"Liar.\" {n}She tastes the word, and seems to like it.{/n} \"You will ask me for everything, clown, and I will enjoy refusing most of it. Slowly. In front of people.\"",
           "Choices": [
             {
               "Text": "\"Then say yes.\"",
@@ -185804,8 +185804,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
