@@ -6,7 +6,8 @@ by their pictures). She feeds Mireya demon blood in a bowl (Cue_0108, Cue_0112).
 here, after the answer, in her own time. Two lies and a truth is played a second time, when the stakes have changed.
 """
 from story_format import c
-from storylines.camellia_trickster import (AMULET_KEPT, BOWL_HELD, COMMITTED, DUE, GAME, GRAVE, OUT_LIED, P, SHE_WON, UNMASKED,
+from storylines.camellia_trickster import (AMULET_KEPT, BARGAIN_COST, BARGAINED, BOWL_HELD, COMMITTED, DUE, GAME, GRAVE, OUT_LIED, P,
+                                           SHE_WON, UNMASKED,
                                            cam, met, nar)
 from storylines.camellia_masks import MIREYA, TWO_LIES, living
 
@@ -74,7 +75,14 @@ living(BOWL, "A bowl for Mireya", '"You look pleased with yourself. It\'s never 
         c("Continue", "after")),
     cam("after", '''"She's quieter now. Much quieter." {n}She fastens the amulet back at her throat.{/n} "She'll sleep for days. And then she'll be hungry again, and I'll find her something. There's always something, out here."
 {n}She stands, brushing off her knees.{/n} "Thank you for staying. It's a very private thing. I've never let anyone watch before." {n}She considers you.{/n} "I wonder why I let you."''',
-        c("[Walk back with her]")),
+        c("[Walk back with her]"),
+        c("[Trickster] While she fastens the amulet, cut your palm over the empty bowl, and speak to what stands at her back",
+          "bargain", forbids=(BARGAINED,))),
+    nar("bargain", '''{n}She has told you herself: a shaman goes to war with spirits at her side, always, and in a fight they grow loud. You speak to those, not to the snake in the amulet. You let your blood run into the silver while her head is bent over the clasp, and you say it very quietly: if she dies, by my hand or on my word, keep her three nights, and give her back to me.{/n}
+{n}The blood in the bowl moves, though nothing touches it. It goes down in a slow ring until the silver is clean. Somewhere very close, something with no breath lets one out.{/n}''',
+        c("Continue", "paid")),
+    cam("paid", '''{n}She looks up from the clasp and sees your hand.{/n} "You've cut yourself." {n}She takes your wrist and turns the palm to the light, and her nostrils flare, very slightly.{/n} "And my bowl is clean. How strange. I only fed her half." {n}She wraps your palm in a strip torn from her own hem, very neatly.{/n} "Be more careful. The spirits out here will take anything that's offered, and they always come back for more."''',
+        c("[Let her bind it]", flags=(BARGAINED, BARGAIN_COST))),
 ], requires=(TWO_LIES,), delay=48)
 
 

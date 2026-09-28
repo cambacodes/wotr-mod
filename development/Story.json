@@ -194771,7 +194771,50 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}For a moment Camellia simply looks at you, head tilted, as if you had praised her gown in a language she does not speak. Then one corner of her mouth lifts.{/n}\n\"Convincingly? My friend, I have never done anything any other way.\"\n{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}",
+          "Text": "{n}For a moment Camellia simply looks at you, head tilted, as if you had praised her gown in a language she does not speak. Then one corner of her mouth lifts.{/n}\n\"Convincingly? My friend, I have never done anything any other way.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "spirits",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.spirits_bargained"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "game",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.game"
+              ],
+              "Forbids": [
+                "camellia.trickster.spirits_bargained"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Draw your weapon]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.primed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.game"
+              ],
+              "Abort": false,
+              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "spirits",
+          "Speaker": "Camellia",
+          "Text": "{n}Something at her back goes still, the way a hall goes still when the band stops. Her eyes flick to the bandage on your palm, and back to your face.{/n} \"Oh,\" {n}she says softly.{/n} \"Oh, you've been talking to them. Behind my back.\" {n}Her smile deepens.{/n} \"Very well. Convincingly.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -194794,11 +194837,7 @@
                 "camellia.trickster.masks.game"
               ],
               "Abort": false,
-              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11",
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
             }
           ],
           "Portrait": "Camellia"
@@ -194817,11 +194856,7 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false,
-              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11",
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
             }
           ],
           "Portrait": "Camellia"
@@ -194857,7 +194892,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}Camellia's laugh is short and genuinely delighted, the first true sound she has made all evening.{/n}\n\"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about.\"\n{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}",
+          "Text": "{n}Camellia's laugh is short and genuinely delighted, the first true sound she has made all evening.{/n}\n\"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about.\"",
           "Choices": [
             {
               "Text": "[Draw your weapon]",
@@ -194868,11 +194903,7 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false,
-              "NativeNext": "be5af575d343fdb49badcd32d8336996",
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "NativeNext": "be5af575d343fdb49badcd32d8336996"
             }
           ],
           "Portrait": "Camellia"
@@ -194911,7 +194942,7 @@
         {
           "Id": "start",
           "Speaker": "Anevia",
-          "Text": "{n}Anevia turns the word over like a coin she suspects of being shaved.{/n}\n\"Convincingly. Commander, dead's dead. Where I come from we don't grade it.\" {n}She shrugs, and her hand is already on the knife at her belt.{/n} \"Fine. I'll tell her. Might even be the last thing she hears.\"\n{n}She glances at the scroll case on your belt, the one with the chaplains' seal still on it, and grins. \"Stealing from priests, Commander? I'll pretend I didn't see.\"{/n}",
+          "Text": "{n}Anevia turns the word over like a coin she suspects of being shaved.{/n}\n\"Convincingly. Commander, dead's dead. Where I come from we don't grade it.\" {n}She shrugs, and her hand is already on the knife at her belt.{/n} \"Fine. I'll tell her. Might even be the last thing she hears.\"",
           "Choices": [
             {
               "Text": "[Give the order]",
@@ -194923,11 +194954,7 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false,
-              "NativeNext": "6d583904c4659fe478c2e26e9305ad4d",
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "NativeNext": "6d583904c4659fe478c2e26e9305ad4d"
             }
           ],
           "Portrait": "Anevia"
@@ -195074,19 +195101,18 @@
         {
           "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}Then you break the chaplains' seal on the scroll case you lifted from their strongbox, and read the scroll of raise dead over her by the sexton's lantern. The words go out of the parchment as you say them. The sexton has stopped breathing. She has started.{/n}",
+          "Text": "{n}Then you draw your knife across your own palm and hold it over her mouth, and speak to what goes to war with her: the spirits of battle she swore were always at her side. Keep her three nights more, you tell them, and give her back, and take it out of me. The blood runs between her lips. The lantern gutters. The sexton has stopped breathing. She has started.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "shut",
-              "Set": [],
+              "Set": [
+                "camellia.trickster.cost.blood_bargain",
+                "camellia.trickster.spirits_bargained"
+              ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "Abort": false
             }
           ],
           "Portrait": "Camellia"
@@ -195094,7 +195120,7 @@
         {
           "Id": "shut",
           "Speaker": "Narrator",
-          "Text": "{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} \"Rude. Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it?\"\n{n}You nod to the sexton. He lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to hear the small, delighted exhalation from inside the box as it closes.{/n}",
+          "Text": "{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} \"Rude. You bled on my face. Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it?\"\n{n}You nod to the sexton. He lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to hear the small, delighted exhalation from inside the box as it closes.{/n}",
           "Choices": [
             {
               "Text": "[Walk back to the citadel]",
@@ -195157,7 +195183,7 @@
           "Text": "{n}The crusade buried Camellia under a plain stone at the edge of the Drezen cemetery, with a wrong bunch of flowers: lilies, the white wedding kind. On the third night you stand over the stone with the sexton, a stooped man with a lantern, who has been paid not to nail the lid and is now very sorry he agreed.{/n}",
           "Choices": [
             {
-              "Text": "[Have him lift the lid]",
+              "Text": "[Have him start digging]",
               "Next": "coffin",
               "Set": [],
               "Requires": [],
@@ -195181,18 +195207,53 @@
         {
           "Id": "coffin",
           "Speaker": "Narrator",
-          "Text": "{n}The lid comes up with a groan of wet wood. She lies exactly as she was laid out, hands folded over the bone snake at her throat, chin lifted a fraction, like an actress who knows where the light falls. She is dead. She has been very convincingly dead for three days.{/n}",
+          "Text": "{n}Before the sexton can set his spade, you hear it: a scratching from under the earth, slow, patient, like a dog at a door. The sexton hears it too. He drops the lantern.{/n}",
           "Choices": [
             {
-              "Text": "[Break the chaplains' seal and read the scroll of raise dead over her]",
-              "Next": "breath",
+              "Text": "[Dig]",
+              "Next": "dug",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.spirits_bargained"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Dig]",
+              "Next": "unbargained",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.spirits_bargained"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "unbargained",
+          "Speaker": "Narrator",
+          "Text": "{n}There is no scratching. You dig anyway, and lift the lid, and she lies exactly as she was laid out, hands folded over the bone snake at her throat. She is dead. The joke held; nothing was ever asked of the spirits at her back to keep her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Cut your palm over her mouth and bargain with her spirits now, on dearer terms]",
+              "Next": "late_bargain",
               "Set": [
+                "camellia.trickster.cost.blood_bargain",
+                "camellia.trickster.spirits_bargained",
+                "camellia.trickster.cost.bargain_late",
                 "camellia.trickster.raised",
                 "camellia.trickster.cost.sexton_paid"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
             },
             {
               "Text": "[Close the lid] \"No. Let her stay dead.\"",
@@ -195209,9 +195270,44 @@
           "Portrait": "Camellia"
         },
         {
+          "Id": "late_bargain",
+          "Speaker": "Narrator",
+          "Text": "{n}You speak to the spirits of battle she swore were always at her side, with your blood running between her lips. They are slow to answer, and when they do they want more than blood: they want the next fight, and the one after, fought with them at your back, whether you like their company or not. You agree. Her chest moves.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "breath",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "dug",
+          "Speaker": "Narrator",
+          "Text": "{n}The lid is unnailed, as you paid for. It lifts at the first touch, from inside. Her fingers come over the edge of it first, and the tips are raw to the quick, the nails torn, the pine under them scored in long pale furrows. She has been at it for hours. The spirits kept her three nights, as you bargained, and gave her back on the third, and she has been clawing ever since.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "breath",
+              "Set": [
+                "camellia.trickster.raised",
+                "camellia.trickster.cost.sexton_paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
           "Id": "breath",
           "Speaker": "Narrator",
-          "Text": "{n}The words go out of the parchment as you say them. Nothing happens, and then her chest moves, once, the way a sleeper's does before waking. The sexton sits down very suddenly in the wet grass.{/n}\n{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} \"Rude. I was resting.\" {n}A pause.{/n} \"Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it? Go home. I'll find you.\"",
+          "Text": "{n}She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} \"Rude. You took your time.\" {n}A pause.{/n} \"Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it? Go home. I'll find you.\"",
           "Choices": [
             {
               "Text": "[Put the lid back]",
@@ -195810,7 +195906,7 @@
         {
           "Id": "how",
           "Speaker": "Camellia",
-          "Text": "{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. It is a living hand, warm and a little unsteady.{/n}\n\"You had the scroll on your belt when you told me to die. I saw it. I understood the joke at once: I was to die, really and truly, and stay dead through my own funeral, convincingly, so that nobody would ever think to look for me. And then you would come on the third night with the chaplains' paper and read me back.\" {n}She flexes the fingers.{/n} \"Dying was easy. Lying still in that box afterwards, listening to your chaplains weep, was the hardest performance of my life.\"",
+          "Text": "{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. The fingertips are wrapped in strips of linen, brown at the ends. Under the linen there are no nails.{/n}\n\"You bled into my bowl and asked my spirits to keep me for you. The ones that go to war with me; I'd have heard you, if I hadn't been so busy with Mireya. And then you told me to die convincingly, and I understood the whole joke at once: die truly, stay dead through my own funeral, so that nobody ever looks for me, and let them hold me until the third night.\" {n}She flexes the wrapped fingers.{/n} \"They kept their word. They simply didn't think to give me a door. Pine is softer than you'd think.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -195838,7 +195934,7 @@
         {
           "Id": "how_late",
           "Speaker": "Camellia",
-          "Text": "\"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then read me back. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies.\"",
+          "Text": "\"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then bled on my face and haggled with my spirits over my body like a fishwife. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -206437,6 +206533,51 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Trickster] While she fastens the amulet, cut your palm over the empty bowl, and speak to what stands at her back",
+              "Next": "bargain",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.spirits_bargained"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "bargain",
+          "Speaker": "Narrator",
+          "Text": "{n}She has told you herself: a shaman goes to war with spirits at her side, always, and in a fight they grow loud. You speak to those, not to the snake in the amulet. You let your blood run into the silver while her head is bent over the clasp, and you say it very quietly: if she dies, by my hand or on my word, keep her three nights, and give her back to me.{/n}\n{n}The blood in the bowl moves, though nothing touches it. It goes down in a slow ring until the silver is clean. Somewhere very close, something with no breath lets one out.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Camellia",
+          "Text": "{n}She looks up from the clasp and sees your hand.{/n} \"You've cut yourself.\" {n}She takes your wrist and turns the palm to the light, and her nostrils flare, very slightly.{/n} \"And my bowl is clean. How strange. I only fed her half.\" {n}She wraps your palm in a strip torn from her own hem, very neatly.{/n} \"Be more careful. The spirits out here will take anything that's offered, and they always come back for more.\"",
+          "Choices": [
+            {
+              "Text": "[Let her bind it]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.spirits_bargained",
+                "camellia.trickster.cost.blood_bargain"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Camellia"
@@ -209860,8 +210001,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

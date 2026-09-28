@@ -120,16 +120,22 @@ internal static class CamelliaTricksterTests
         Take(setupQ1, q1, "start", 0, P + "primed", P + "primed_by_order");
 
         // Trk_Camellia_KilledPrimed
-        // The device: a scroll of raise dead signed out before the kill (the setups cost Favors -100), read over her coffin on
-        // the third night (killed.third_night). Without the raise, the veiled mourner does not appear.
+        // The device is hers: before the kill the Commander bleeds into her bowl and bargains with her battle spirits
+        // (cards.a_bowl_for_mireya, node bargain); on the third night they give her back and she claws at the lid
+        // (killed.third_night). Unbargained, the Commander may bargain at the open coffin, dearer (Evil 1).
         var third = S(P + "killed.third_night");
-        foreach (var setup in new[] { setupHub, setupQ3, setupQ1 })
-            check(setup.Nodes.SelectMany(n => n.Choices).Where(c => c.NativeNext != null).All(c => c.Crusade?.Resource == "Favors" && c.Crusade.Amount == -100),
-                "The scroll of raise dead is not signed out at the kill: " + setup.Id);
-        var buried = World(story, 3, "trickster", "trickster.ever", Killed, P + "primed");
-        check(!Avail(performance, buried) && Avail(third, Later(story, buried, 100)), "The raise does not stand between the kill and her return.");
+        var bowl = S(P + "cards.a_bowl_for_mireya");
+        check(bowl.Forbids.Contains(Killed) && Ch(bowl, "paid", 0).Set.Contains(P + "spirits_bargained") && Ch(bowl, "paid", 0).Set.Contains(P + "cost.blood_bargain"),
+            "The bargain with her spirits is not made in blood, before the kill.");
+        var buried = World(story, 3, "trickster", "trickster.ever", Killed, P + "primed", P + "spirits_bargained");
+        check(!Avail(performance, buried) && Avail(third, Later(story, buried, 100)), "The third night does not stand between the kill and her return.");
         check(third.Remote && third.Chapters.SequenceEqual(new[] { 3, 5 }), "The third night is not a Drezen rest page.");
-        var raisedNight = Take(third, Later(story, buried, 100), "coffin", 0, P + "raised");
+        var raisedNight = Take(third, Later(story, buried, 100), "dug", 0, P + "raised");
+        var cold = Later(story, World(story, 3, "trickster", "trickster.ever", Killed, P + "primed"), 100);
+        Take(third, cold, "unbargained", 0, P + "raised", P + "cost.bargain_late", P + "spirits_bargained");
+        check(Ch(third, "unbargained", 0).Alignment?.Direction == "Evil", "The late bargain at the coffin is not dearer (Evil 1).");
+        check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).Any(n => n.Text.Contains("raise dead")),
+            "A clerical scroll came back as her return device.");
         check(Avail(performance, Later(story, raisedNight, 100)), "The veiled mourner does not follow the raise.");
         var primed = World(story, 5, "trickster", "trickster.ever", Killed, P + "primed", P + "raised");
         check(Avail(performance, primed) && !Avail(overacting, primed) && !Avail(late, primed) && !Avail(letter, primed),
@@ -163,7 +169,7 @@ internal static class CamelliaTricksterTests
             "The sexton is not paid for in Finances (-100).");
         check(Ch(late, "coffin", 0).Mythic == "PlayerIsTrickster", "The line said to the corpse is not a native [Trickster] answer.");
         Take(late, unprimed, "coffin", 0, P + "primed", P + "cost.late", P + "raised");
-        check(Ch(late, "scroll", 0).Crusade?.Resource == "Favors", "The late raise is not paid for in Favors.");
+        check(Ch(late, "scroll", 0).Set.Contains(P + "cost.blood_bargain"), "The late curtain's bargain is not paid in the Commander's blood.");
         Take(late, unprimed, "choose", 1, P + "declined", Closed);
 
         // Trk_Camellia_KilledAfterFailure

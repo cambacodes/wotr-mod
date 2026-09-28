@@ -43,7 +43,9 @@ DEAD = "camellia.dead"
 KICKED = "camellia.kicked_out"
 ROMANCE = "camellia.romance"                      # CamelliaRomance (read only)
 PRIMED = P + "primed"
-RAISED = P + "raised"                    # the scroll read over her coffin: she breathes again
+RAISED = P + "raised"                    # her spirits give her back on the third night: she breathes again
+BARGAINED = P + "spirits_bargained"      # before the kill, the Commander bled into her bowl and bargained with her spirits
+BARGAIN_COST = P + "cost.blood_bargain"  # the Commander's blood, given to her battle spirits, owed again each new moon
 BY_ORDER = P + "primed_by_order"
 RET = P + "returned"
 DECLINED = P + "declined"
@@ -222,21 +224,23 @@ JOKE = '[Play a cruel trick on Camellia] "Go on, then. Die convincingly. I\'ll k
 
 SCENES.append(scene(P + "killed.setup_hub", "Die convincingly", "Camellia", 3, JOKE, [
     cam("start", '''{n}For a moment Camellia simply looks at you, head tilted, as if you had praised her gown in a language she does not speak. Then one corner of her mouth lifts.{/n}
-"Convincingly? My friend, I have never done anything any other way."
-{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}''',
+"Convincingly? My friend, I have never done anything any other way."''',
+        c("Continue", "spirits", requires=(BARGAINED,)),
+        c("Continue", "game", requires=(GAME,), forbids=(BARGAINED,)),
+        c("[Draw your weapon]", native_next=KILL_NEXT, forbids=(GAME,), flags=(PRIMED,))),
+    cam("spirits", '''{n}Something at her back goes still, the way a hall goes still when the band stops. Her eyes flick to the bandage on your palm, and back to your face.{/n} "Oh," {n}she says softly.{/n} "Oh, you've been talking to them. Behind my back." {n}Her smile deepens.{/n} "Very well. Convincingly."''',
         c("Continue", "game", requires=(GAME,)),
-        c("[Draw your weapon]", native_next=KILL_NEXT, forbids=(GAME,), flags=(PRIMED,), crusade=("Favors", -100))),
+        c("[Draw your weapon]", native_next=KILL_NEXT, forbids=(GAME,), flags=(PRIMED,))),
     cam("game", '''"Two lies and a truth, then, one last time." {n}She draws her knife and holds it up to the light, as if to judge its colour.{/n} "You are going to kill me. I am going to let you. I have never been so pleased with anyone in my life. Guess which one I made up."''',
-        c("[Draw your weapon]", native_next=KILL_NEXT, flags=(PRIMED,), crusade=("Favors", -100))),
+        c("[Draw your weapon]", native_next=KILL_NEXT, flags=(PRIMED,))),
     ], requires=("trickster",), forbids=(PRIMED, KILLED, DEAD), last=5, Relationship=REL, AnswerLists=[KILL_LIST],
     NativeReturnCue=KILL_RETURN, EntryMythic="PlayerIsTrickster", TricksterDevice=True,
     TricksterState="killed_by_commander"))
 
 SCENES.append(scene(P + "killed.setup_q3", "Die convincingly", "Camellia", 5, JOKE, [
     cam("start", '''{n}Camellia's laugh is short and genuinely delighted, the first true sound she has made all evening.{/n}
-"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about."
-{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}''',
-        c("[Draw your weapon]", native_next=Q3_NEXT, flags=(PRIMED,), crusade=("Favors", -100))),
+"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about."''',
+        c("[Draw your weapon]", native_next=Q3_NEXT, flags=(PRIMED,))),
     ], requires=("trickster",), forbids=(PRIMED, KILLED, DEAD), last=5, Relationship=REL, Chapters=[5], AnswerLists=[Q3_LIST],
     NativeReturnCue=Q3_RETURN, EntryMythic="PlayerIsTrickster", TricksterDevice=True,
     TricksterState="killed_by_commander"))
@@ -247,8 +251,8 @@ SCENES.append(scene(P + "killed.setup_q1", "A message for the killer", "Anevia",
     '[Play a cruel trick on Camellia] "The killer is in the building. Tell her from me: die convincingly. I\'ll know if she doesn\'t."', [
     n("start", "Anevia", '''{n}Anevia turns the word over like a coin she suspects of being shaved.{/n}
 "Convincingly. Commander, dead's dead. Where I come from we don't grade it." {n}She shrugs, and her hand is already on the knife at her belt.{/n} "Fine. I'll tell her. Might even be the last thing she hears."
-{n}She glances at the scroll case on your belt, the one with the chaplains' seal still on it, and grins. "Stealing from priests, Commander? I'll pretend I didn't see."{/n}''',
-      c("[Give the order]", native_next=Q1_NEXT, flags=(PRIMED, BY_ORDER), crusade=("Favors", -100)), portrait="Anevia"),
+''',
+      c("[Give the order]", native_next=Q1_NEXT, flags=(PRIMED, BY_ORDER)), portrait="Anevia"),
     ], requires=("trickster",), forbids=(PRIMED, KILLED, DEAD), last=5, Relationship=REL, AnswerLists=[Q1_LIST],
     NativeReturnCue=Q1_RETURN, EntryMythic="PlayerIsTrickster", EntryAlignment=dict(Direction="Chaotic", Value=1),
     TricksterDevice=True, TricksterState="killed_by_commander"))
@@ -267,9 +271,9 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
         c('[Play a cruel trick on Camellia] "Go on, then. Die convincingly. This time I\'m watching."', "scroll",
           mythic="Trickster", flags=(PRIMED, LATE, RAISED)),
         c('[Close the lid] "No. Let her stay dead."', flags=(DECLINED, CLOSED))),
-    nar("scroll", '''{n}Then you break the chaplains' seal on the scroll case you lifted from their strongbox, and read the scroll of raise dead over her by the sexton's lantern. The words go out of the parchment as you say them. The sexton has stopped breathing. She has started.{/n}''',
-        c("Continue", "shut", crusade=("Favors", -100))),
-    nar("shut", '''{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it?"
+    nar("scroll", '''{n}Then you draw your knife across your own palm and hold it over her mouth, and speak to what goes to war with her: the spirits of battle she swore were always at her side. Keep her three nights more, you tell them, and give her back, and take it out of me. The blood runs between her lips. The lantern gutters. The sexton has stopped breathing. She has started.{/n}''',
+        c("Continue", "shut", flags=(BARGAIN_COST, BARGAINED))),
+    nar("shut", '''{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. You bled on my face. Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it?"
 {n}You nod to the sexton. He lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to hear the small, delighted exhalation from inside the box as it closes.{/n}''',
         c("[Walk back to the citadel]", "walk")),
     nar("walk", '''{n}The sexton walks back with you as far as the cemetery gate, very fast, holding the lantern high. At the gate he stops, and says, not looking at you, that he has buried a great many people in this ground and that none of them ever laughed at him before, and he would like it very much if the Commander did not bring him any more work of that kind. Then he goes home, and, you learn later, does not come out again for three days.{/n}''',
@@ -282,13 +286,20 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
 
 SCENES.append(scene(P + "killed.third_night", "The third night", "Memory", 3, "", [
     nar("start", '''{n}The crusade buried Camellia under a plain stone at the edge of the Drezen cemetery, with a wrong bunch of flowers: lilies, the white wedding kind. On the third night you stand over the stone with the sexton, a stooped man with a lantern, who has been paid not to nail the lid and is now very sorry he agreed.{/n}''',
-        c("[Have him lift the lid]", "coffin"),
+        c("[Have him start digging]", "coffin"),
         c('[Let the grave keep her] "Leave it. She stays where she is."', flags=(DECLINED, CLOSED))),
-    nar("coffin", '''{n}The lid comes up with a groan of wet wood. She lies exactly as she was laid out, hands folded over the bone snake at her throat, chin lifted a fraction, like an actress who knows where the light falls. She is dead. She has been very convincingly dead for three days.{/n}''',
-        c("[Break the chaplains' seal and read the scroll of raise dead over her]", "breath", flags=(RAISED, P + "cost.sexton_paid")),
+    nar("coffin", '''{n}Before the sexton can set his spade, you hear it: a scratching from under the earth, slow, patient, like a dog at a door. The sexton hears it too. He drops the lantern.{/n}''',
+        c("[Dig]", "dug", requires=(BARGAINED,)),
+        c("[Dig]", "unbargained", forbids=(BARGAINED,))),
+    nar("unbargained", '''{n}There is no scratching. You dig anyway, and lift the lid, and she lies exactly as she was laid out, hands folded over the bone snake at her throat. She is dead. The joke held; nothing was ever asked of the spirits at her back to keep her.{/n}''',
+        c("[Cut your palm over her mouth and bargain with her spirits now, on dearer terms]", "late_bargain",
+          flags=(BARGAIN_COST, BARGAINED, P + "cost.bargain_late", RAISED, P + "cost.sexton_paid"), alignment=("Evil", 1)),
         c('[Close the lid] "No. Let her stay dead."', flags=(DECLINED, CLOSED))),
-    nar("breath", '''{n}The words go out of the parchment as you say them. Nothing happens, and then her chest moves, once, the way a sleeper's does before waking. The sexton sits down very suddenly in the wet grass.{/n}
-{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. I was resting." {n}A pause.{/n} "Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it? Go home. I'll find you."''',
+    nar("late_bargain", '''{n}You speak to the spirits of battle she swore were always at her side, with your blood running between her lips. They are slow to answer, and when they do they want more than blood: they want the next fight, and the one after, fought with them at your back, whether you like their company or not. You agree. Her chest moves.{/n}''',
+        c("Continue", "breath")),
+    nar("dug", '''{n}The lid is unnailed, as you paid for. It lifts at the first touch, from inside. Her fingers come over the edge of it first, and the tips are raw to the quick, the nails torn, the pine under them scored in long pale furrows. She has been at it for hours. The spirits kept her three nights, as you bargained, and gave her back on the third, and she has been clawing ever since.{/n}''',
+        c("Continue", "breath", flags=(RAISED, P + "cost.sexton_paid"))),
+    nar("breath", '''{n}She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. You took your time." {n}A pause.{/n} "Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it? Go home. I'll find you."''',
         c("[Put the lid back]", "home")),
     nar("home", '''{n}You walk the sexton back to the cemetery gate. He does not say anything. When you look back from the gate the lid is already a little askew, and the lilies on the grave have been rearranged, very neatly, by somebody with a strong opinion about flowers.{/n}''',
         c("[Go home]")),
@@ -314,11 +325,11 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
         c("Continue", "who")),
     *lead([("who", cam, '''"Do sit. Fye is pretending I am a widow from Nerosyan who drinks nothing and tips in silver. He is quite good at it. Everyone in this city is quite good at not seeing the dead."''', None),
            *PERFORMANCE_LEADS], "how"),
-    cam("how", '''{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. It is a living hand, warm and a little unsteady.{/n}
-"You had the scroll on your belt when you told me to die. I saw it. I understood the joke at once: I was to die, really and truly, and stay dead through my own funeral, convincingly, so that nobody would ever think to look for me. And then you would come on the third night with the chaplains' paper and read me back." {n}She flexes the fingers.{/n} "Dying was easy. Lying still in that box afterwards, listening to your chaplains weep, was the hardest performance of my life."''',
+    cam("how", '''{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. The fingertips are wrapped in strips of linen, brown at the ends. Under the linen there are no nails.{/n}
+"You bled into my bowl and asked my spirits to keep me for you. The ones that go to war with me; I'd have heard you, if I hadn't been so busy with Mireya. And then you told me to die convincingly, and I understood the whole joke at once: die truly, stay dead through my own funeral, so that nobody ever looks for me, and let them hold me until the third night." {n}She flexes the wrapped fingers.{/n} "They kept their word. They simply didn't think to give me a door. Pine is softer than you'd think."''',
         c("Continue", "how_late", requires=(LATE,)),
         c("Continue", "why", forbids=(LATE,))),
-    cam("how_late", '''"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then read me back. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies."''',
+    cam("how_late", '''"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then bled on my face and haggled with my spirits over my body like a fishwife. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies."''',
         c("Continue", "why")),
     cam("why", '''"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us."
 {n}She turns her glass a quarter turn.{/n} "I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
