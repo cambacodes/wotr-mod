@@ -139151,7 +139151,7 @@
               "Abort": false
             },
             {
-              "Text": "[Kiss her] \"No orders. Nobody's Commander. Just this.\"",
+              "Text": "[Kiss her] \"Irabeth.\" Not her rank. Her name.",
               "Next": "reckon",
               "Set": [
                 "irabeth.committed"

@@ -315,7 +315,7 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
       c('[Salute] "Dismissed, Knight-Captain. For tonight."', flags=("irabeth.trickster.friends",)),
       c('"Something\'s stopping you. Say it."', "no", forbids=(A_RET,)),
       c('"Something\'s stopping you. Say it."', "no_home", requires=(SHARES,)),
-      c('[Kiss her] "No orders. Nobody\'s Commander. Just this."', "reckon", requires=(SHARES,), forbids=(LIED,),
+      c('[Kiss her] "Irabeth." Not her rank. Her name.', "reckon", requires=(SHARES,), forbids=(LIED,),
         flags=("irabeth.committed",)),
       c('[Wait for her to decide] "Whatever you want. Not an order."', "decides", requires=(SHARES,),
         flags=("irabeth.committed",)),
