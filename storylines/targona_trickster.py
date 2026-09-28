@@ -113,11 +113,12 @@ SCENES.append(scene(P + "dead.setup", "Something of my brother", "Targona", 3, '
         c(JOKE, "seal", mythic="Trickster", alignment=("Chaotic", 1)),
         c('"Nothing. Forget I spoke."', abort=True)),
     nar("seal", '''{n}You put your palm flat against the barrier over her heart, and your other hand over your own, where the light is. You use it the way you have learned to use a wand: so lightly that the use goes unnoticed, and nothing is drawn down.{/n}
-{n}Areelu's wards do not stir. The vessels along the wall do not stir. Something small and bright crosses the barrier the way warmth crosses glass, and settles in your chest beside what Lariel left there. Her eyes go wide.{/n}''',
+{n}Areelu's wards do not stir. The vessels along the wall do not stir. Something small and bright crosses the barrier the way warmth crosses glass, and settles in your chest beside what Lariel left there. Her eyes go wide.{/n}
+{n}And then, faintly, from inside your own ribs, you hear her. Not her voice through the barrier: the same words a heartbeat later, from the shred, as if it were still listening for her. You remember the caves under Kenabres. Lariel's sealed shred had waited in the rock long after his body was gone, and when you let it go it woke whole, memory and sword and all. A shred of an angel, sealed away and then released, finds its way back to the whole.{/n}''',
         c("Continue", "after", flags=(PRIMED, LAB_LINE))),
     t("after", '''{n}She stares at you through the barrier for a long moment. The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n}
 "You took some of me." {n}She presses her own hand to her breastbone, where it went out of her.{/n} "My brother and I were meant to be locked in the Wardstones. We escaped that. And now you carry a piece of each of us, like a thief with two purses." {n}She is quiet too long.{/n} "I do not know if it will hold. Nobody knows how ours works. There were only ever two of us to ask, and he is gone."
-"I do not understand you. I told you this was a test. I did not think the test would be you."
+"I do not understand you. I have called all of this a test." {n}Her voice is not steady.{/n} "I did not think anyone would try to carry part of it for me."
 {n}She lowers her head again, as she did before, and waits for you to choose.{/n}''',
       c('[Step back from the barrier.]')),
 ], requires=("trickster",), forbids=(PRIMED, FREE, DEAD, CONDEMNED), last=3, optional=True, Relationship="targona",
@@ -142,8 +143,8 @@ letter(P + "dead.one_soul", "Nothing left to spend", [
         c("Continue", "full", forbids=(ECHO_SPENT,)),
         c("Continue", "cold", requires=(ECHO_SPENT,))),
     nar("full", '''{n}You did not know it would hold. For three days the shred she gave you behind the barrier has beaten against your ribs like a moth against a lamp, and last night it stopped.{/n}
-{n}Now it pulls. Not upward, towards Heaven, but out: towards the infirmary behind the quartermaster's stores, where the wounded are. Angels are made from souls, the old man at Estrod said, or from the pure essence of the Upper Planes. You let it go the way you would use a wand, lightly, unnoticed. It goes. Lariel's part stays where it was, warm and full. It was used. It was not spent.{/n}
-{n}What was spent is yours. Your hands are cold to the wrist and stay cold for a week, and the chaplain who takes your pulse at breakfast does not like what he finds.{/n}''',
+{n}Now it pulls, the way Lariel's did in the caves when your hand closed on the hilt: not upward towards Heaven, but out, towards the whole it came from. Somewhere her soul has been waiting in the dark for its missing piece. You let it go the way you would use a wand, lightly, unnoticed. It goes. Lariel's part stays where it was, warm and full. It was used. It was not spent.{/n}
+{n}An angel is made from a soul and the pure essence of the Upper Planes, the old man at Estrod said. You have no Upper Planes to give. The shard takes what warmth it can find on the way out, and all it can find is yours. Your hands go cold to the wrist and stay cold for a week. You fight the next sortie on the walls with a sword you cannot feel, and the chaplain who takes your pulse at breakfast does not like what he finds.{/n}''',
         c("Continue", "news")),
     nar("cold", '''{n}The place in your chest where Lariel's light used to burn is cold and empty. It is not coming back. You spent it at the altar, all of it, into the one soul the twins shared, and it went looking for her. Whatever it bought is somewhere in the dark, walking.{/n}''',
         c("Continue", "news")),
