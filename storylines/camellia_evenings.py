@@ -269,7 +269,7 @@ met(BREAKFAST, "Breakfast", '"You\'re awake early."', [
         c("Continue", "close")),
     cam("close", '''"We should do this every morning. I'll bring the bread, and you'll decide whether to trust me, and neither of us will ever get bored." {n}She settles back against the bedpost, your shirt slipping off one shoulder, the knife held loosely in her lap.{/n} "It's the most domestic thing I've ever done. I'm finding it strangely exciting."''',
         c("[Finish breakfast]")),
-], requires=("trickster.ever", COMMITTED, SHELF), delay=24, optional=True)
+], requires=("trickster.ever", COMMITTED, SHELF), delay=24, optional=True, living=())
 
 
 # --- A gift for a dead woman. -----------------------------------------------------------------------------------------
@@ -322,7 +322,7 @@ met(PRISONER, "The prisoner", '"Camellia. They told me you were in the cells."',
 "Trial," {n}she says.{/n} "Of course. How very correct of you."
 {n}She stands, and straightens her skirt, and walks past you to the door. She stops beside you, close enough that her breath touches your ear.{/n} "One day you'll say yes. I can wait. I'm very, very good at waiting." {n}She kisses your cheek, and goes up the stair.{/n}''',
         c("[Let her go]", flags=(PRISONER_SPARED,))),
-], requires=("trickster.ever", COMMITTED), any_groups=[[WITNESS_LIED, WITNESS_HERS]], delay=48, optional=True)
+], requires=("trickster.ever", COMMITTED), any_groups=[[WITNESS_LIED, WITNESS_HERS]], delay=48, optional=True, living=())
 
 
 # --- The mirror. ------------------------------------------------------------------------------------------------------

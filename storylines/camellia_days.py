@@ -94,7 +94,7 @@ met(SECOND_DANCE, "The second dance", '"Three steps and a turn?"', [
         c("Continue", "end")),
     nar("end", '''{n}The dance stops somewhere in the middle of a turn, and neither of you notices. She kisses you as she fences, close and quick and always coming in, and she is laughing against your mouth, and her fingers are in your collar, then under it. One of the candles goes out, and then another. She pulls you down onto the bare boards in the middle of the cleared floor, one-two-three, and the last thing she says before she stops counting altogether is that this, at last, is the end of the lesson.{/n}''',
         c("[Let the last candle burn down.]")),
-], requires=("trickster.ever", COMMITTED, SHELF), delay=72, optional=True)
+], requires=("trickster.ever", COMMITTED, SHELF), delay=72, optional=True, living=())
 
 
 # --- A new friend: the villain's day. ----------------------------------------------------------------------------------
@@ -125,4 +125,4 @@ met(NEW_FRIEND, "A new friend", '"Who was that you were laughing with?"', [
     nar("cost", '''{n}Down in the yard, Ilse is laughing, like a wren. She sees you at the window and waves, and holds up a blue ribbon for you to admire: for her wedding, she calls up. For the Third Company's sergeant. The lady Camellia helped her choose it.{/n}
 {n}Camellia waves back, very prettily, and does not take her eyes off your face while she does it.{/n}''',
         c("[Wave back]", flags=(FRIEND_WATCHED,), alignment=("Evil", 1))),
-], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=96, optional=True)
+], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=96, optional=True, living=())

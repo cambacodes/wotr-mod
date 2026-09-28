@@ -197572,6 +197572,553 @@
       "ContactUnit": "397b090721c41044ea3220445300e1b8"
     },
     {
+      "Id": "camellia.trickster.returned.terms_alive",
+      "Title": "What she wants",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Camellia. You said you had a price.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "\"Every friend I have ever had, I have killed. It is the only thing that quiets the flies.\" {n}She says \"flies\" the way other women say \"my headaches\", with a small apologetic flutter of the hand.{/n} \"You are still alive, which is unusual. And I find the flies are very loud.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "flies",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "flies",
+          "Speaker": "Camellia",
+          "Text": "\"You've never asked me what the flies are. Everyone who stays long enough asks, eventually. Then they stop staying.\"\n{n}She taps her temple with one manicured nail.{/n} \"They're the voices. The spirits, if you like; I have called them that for so long that I no longer know what else to call them. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop.\"\n\"It isn't blood. I told everyone it was blood. It's the look. The moment a friend understands what I am. When I see that, everything goes quiet, like snow.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "lead",
+          "Speaker": "Camellia",
+          "Text": "\"So I have been thinking about what to do with you. I think best in cemeteries and knife shops, and I have visited both.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bowl",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.bowl_held"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "fed",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.voices_fed"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.bowl_held"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "dug",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.investigated"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.bowl_held",
+                "camellia.trickster.masks.voices_fed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "covered",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.bowl_held",
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.steady"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.bowl_held",
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "flinched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.bowl_held",
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.bowl_held",
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady",
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "bowl",
+          "Speaker": "Camellia",
+          "Text": "\"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I keep turning it over, like a coin I think might be false.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "fed",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.voices_fed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "dug",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.investigated"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.voices_fed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "covered",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.steady"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "flinched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.voices_fed",
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady",
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "fed",
+          "Speaker": "Camellia",
+          "Text": "\"In the Abyss, when the flies were loud, you sent me east to bleed demons until they were quiet. You knew exactly what I was, and you pointed. I have been waiting ever since to see whether you would pretend otherwise.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dug",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.investigated"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "covered",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Forbids": [
+                "camellia.trickster.cost.investigated"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.steady"
+              ],
+              "Forbids": [
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "flinched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Forbids": [
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.cost.investigated",
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady",
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "dug",
+          "Speaker": "Camellia",
+          "Text": "\"Your little thief is still digging after that porter in the lower city. She is very good. Tell her to stop before she reaches the bottom, or I will have to be very good too.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "covered",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.steady"
+              ],
+              "Forbids": [
+                "camellia.trickster.cost.covered_murder"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "flinched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Forbids": [
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.cost.covered_murder",
+                "camellia.trickster.lesson.steady",
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "covered",
+          "Speaker": "Camellia",
+          "Text": "\"'Deserters.' You wrote it yourself. I read it in the register and laughed until the spirits hushed me. You lie beautifully for a murderer, my friend.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.steady"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "flinched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Forbids": [
+                "camellia.trickster.lesson.steady"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.lesson.steady",
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "steady",
+          "Speaker": "Camellia",
+          "Text": "\"You held my knife at my throat, and your hand did not shake. I have been thinking about your hand ever since. It is a very inconvenient thing to think about.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "flinched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "flinched",
+          "Speaker": "Camellia",
+          "Text": "\"You flinched, when I put my knife in your hand and my throat under it. I have forgiven you. I forgive very little, so you may treasure it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Camellia",
+          "Text": "\"So. My price for staying. Your blood, or your name.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"Your blood: from my knife, into my bowl, whenever the flies want it, and you keep your hand on the table and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
+          "Choices": [
+            {
+              "Text": "[Give her your blood] \"Whenever you ask. From your knife. I won't flinch.\"",
+              "Next": "named",
+              "Set": [
+                "camellia.trickster.cost.bled",
+                "camellia.trickster.terms_named"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Give her yours] \"If you ever need to kill a friend, start with me. I'll make it interesting.\"",
+              "Next": "mine",
+              "Set": [
+                "camellia.trickster.cost.marked",
+                "camellia.trickster.terms_named"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No names. No knives. Not in my crusade.\"",
+              "Next": "none",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "named",
+          "Speaker": "Camellia",
+          "Text": "\"Your blood.\" {n}She takes your wrist and turns it to the lamp, and runs her thumbnail very lightly along the vein, the way a jeweller runs a nail along a seam.{/n} \"You didn't even hesitate. That's either very brave or very foolish, and I shall find out which.\" {n}She lets go, and stands.{/n} \"Three nights. Wear something with a loose sleeve.\"\n{n}At the door she turns.{/n} \"Nobody has ever given me any. I have always had to take it. I don't know yet whether I'll like it better.\"",
+          "Choices": [
+            {
+              "Text": "[Watch her go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "mine",
+          "Speaker": "Camellia",
+          "Text": "{n}For once she has no answer ready. She studies your mouth, then your hands, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}\n\"Oh, you are dreadful. Nobody has ever offered before. They only ever found out.\" {n}She stands.{/n} \"Three nights. Sleep lightly.\"\n{n}At the door she turns, and her voice is almost shy.{/n} \"You understand what you've done? You've made yourself the first name on my list and the last. There's nobody else on it now who matters. Everyone else is only practice.\"",
+          "Choices": [
+            {
+              "Text": "[Watch her go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "none",
+          "Speaker": "Camellia",
+          "Text": "\"Not in your crusade.\" {n}She repeats it like a phrase in a foreign grammar book, carefully, to be sure of the endings.{/n} \"Then I am not in your crusade either, my friend. What a pity. It was such a nice crusade.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go]",
+              "Next": null,
+              "Set": [
+                "camellia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.trickster.beat.lesson"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned",
+        "camellia.trickster.terms_named"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
       "Id": "camellia.trickster.returned.test",
       "Title": "A knife at the right height",
       "Owner": "Camellia",
@@ -198304,7 +198851,9 @@
               "Text": "[Ask her to stay] \"Then stay.\"",
               "Next": "yes",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "camellia.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -198328,7 +198877,9 @@
               "Text": "[Ask her to stay] \"Then stay.\"",
               "Next": "yes",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "camellia.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -199188,7 +199739,9 @@
               "Text": "[Ask her to stay] \"Then stay.\"",
               "Next": "yes",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "camellia.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -199212,7 +199765,9 @@
               "Text": "[Ask her to stay] \"Then stay.\"",
               "Next": "yes",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "camellia.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -199324,6 +199879,890 @@
       "Forbids": [
         "camellia.closed",
         "camellia.killed",
+        "camellia.committed"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
+      "Id": "camellia.trickster.returned.test_alive",
+      "Title": "A knife at the right height",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Come to your quarters tonight. Alone. Bring the knife I gave you.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Your quarters are dark, and not empty.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bowl",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.bled"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "throat",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.cost.bled"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "bowl",
+          "Speaker": "Camellia",
+          "Text": "{n}The silver bowl is on your table, polished, empty. Camellia sits on the edge of your bed with your wrist in her lap and her small clean knife laid along the inside of it, flat, cold, not yet cutting.{/n}\n\"You promised me your blood whenever I asked. I'm asking now.\" {n}She turns the blade, very slowly, until the edge rests on the vein.{/n} \"I want to watch your face while I take it. I want to see how much you'll let me have before you stop me. Don't disappoint me, my friend.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lead_c",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "throat",
+          "Speaker": "Camellia",
+          "Text": "{n}You wake to a weight on your chest and cold steel under your jaw. She is smiling, and her eyes are wide open, watching for the thing she has always watched for.{/n}\n\"You told me to start with you. I am a woman of my word.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lead_t",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "lead_c",
+          "Speaker": "Narrator",
+          "Text": "{n}The first cut is shallow and very neat. The blood runs down into the silver, and she does not watch it. She watches you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "knife",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.knife_noticed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "touched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.salle.touched"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "she_won",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "danced",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_c",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "knife",
+          "Speaker": "Camellia",
+          "Text": "\"You found the knife under my skirt when we danced, and you did not pretend you hadn't. Nobody asks. They only ever find out.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "touched",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.salle.touched"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "she_won",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Forbids": [
+                "camellia.trickster.salle.touched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "danced",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_c",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "touched",
+          "Speaker": "Camellia",
+          "Text": "\"You touched me once in the salle by lying with your whole body. I have wanted to know ever since what your body says when it is not lying.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "she_won",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "danced",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_c",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "she_won",
+          "Speaker": "Camellia",
+          "Text": "\"You lost my game once. Two lies and a truth, and you let the lie walk straight past you. Let us see whether you lose this one.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "danced",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_c",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "danced",
+          "Speaker": "Camellia",
+          "Text": "\"You danced with me once, with this under my skirt. You never once looked down. I noticed that. I notice everything that does not look down.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "out_lied",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_c",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "out_lied",
+          "Speaker": "Camellia",
+          "Text": "\"You beat me at my own game once, with three lies I believed. I have been waiting ever since to see whether your face can lie as well as your mouth.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "judge_c",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "lead_t",
+          "Speaker": "Narrator",
+          "Text": "{n}The knife does not press. It does not need to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "knife_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.knife_noticed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "touched_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.salle.touched"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "she_won_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "danced_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_t",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.knife_noticed",
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "knife_t",
+          "Speaker": "Camellia",
+          "Text": "\"You found the knife under my skirt when we danced, and you did not pretend you hadn't. Nobody asks. They only ever find out.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "touched_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.salle.touched"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "she_won_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Forbids": [
+                "camellia.trickster.salle.touched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "danced_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_t",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.salle.touched",
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "touched_t",
+          "Speaker": "Camellia",
+          "Text": "\"You touched me once in the salle by lying with your whole body. I have wanted to know ever since what your body says when it is not lying.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "she_won_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "danced_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_t",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.she_won",
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "she_won_t",
+          "Speaker": "Camellia",
+          "Text": "\"You lost my game once. Two lies and a truth, and you let the lie walk straight past you. Let us see whether you lose this one.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "danced_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "out_lied_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_t",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "danced_t",
+          "Speaker": "Camellia",
+          "Text": "\"You danced with me once, with this under my skirt. You never once looked down. I noticed that. I notice everything that does not look down.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "out_lied_t",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "judge_t",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "out_lied_t",
+          "Speaker": "Camellia",
+          "Text": "\"You beat me at my own game once, with three lies I believed. I have been waiting ever since to see whether your face can lie as well as your mouth.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "judge_t",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "judge_c",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody moves.{/n}",
+          "Choices": [
+            {
+              "Text": "[Hold her gaze and say nothing]",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put your own knife to her ribs]",
+              "Next": "blade",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Shout for the guard]",
+              "Next": "guard",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "judge_t",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody moves.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lie still and smile back]",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put your own knife to her ribs]",
+              "Next": "blade",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Shout for the guard]",
+              "Next": "guard",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "steady",
+          "Speaker": "Camellia",
+          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}\n\"I have killed every friend I ever had. I haven't decided about you. Let's call it an experiment, and see how long it runs.\"",
+          "Choices": [
+            {
+              "Text": "[Ask her to stay] \"Then stay.\"",
+              "Next": "yes_a",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask her to put the knife away for good]",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "blade",
+          "Speaker": "Camellia",
+          "Text": "\"Oh, good.\" {n}Neither of you moves. Two points, one breath.{/n} \"Someone who cuts back. You have no idea how rare that is. The spirits are quite beside themselves. So am I, a little.\"",
+          "Choices": [
+            {
+              "Text": "[Ask her to stay] \"Then stay.\"",
+              "Next": "yes_a",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask her to put the knife away for good]",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "guard",
+          "Speaker": "Camellia",
+          "Text": "\"Guards. How terribly ordinary.\" {n}By the time the door opens, the window is open instead, and the lace caught on the sill is the only thing left of her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her go]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.cost.called_guard",
+                "camellia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "yes_a",
+          "Speaker": "Camellia",
+          "Text": "\"Stay?\" {n}She laughs, softly, as if you had said something charming in a language she is still learning.{/n} \"I've been staying for months, my friend. You simply never asked me in so many words.\" {n}She slides her knife into your belt, hilt first, and leaves her hand there.{/n} \"Keep it close. One day I shall want it back, and you will know the day, because I shall be smiling.\"",
+          "Choices": [
+            {
+              "Text": "[Keep it]",
+              "Next": "threshold",
+              "Set": [
+                "camellia.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not take her hand away. She takes your belt instead, and walks you backwards by it until the edge of the bed stops you, and then she climbs into your lap with her skirts in her fists and the knife's hilt digging into both of you.{/n}\n{n}She kisses the way she talks, politely and then not at all. Her teeth find your lower lip and test it, exactly as hard as she means to. Her breath is quick and hot and smells of lilies and iron. When your hands find the laces at her back she makes a small, pleased sound and does not help, and when the last one gives she catches your wrist and holds your palm flat over her heart, so you can count it with her. It is going very fast.{/n}\n\"Beat,\" {n}she whispers against your mouth.{/n} \"Beat. Beat.\"",
+          "Choices": [
+            {
+              "Text": "[Put out the lamp.]",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}Grey light. The knife is on the pillow between you, point towards the door, where she put it some time in the night. She is awake, lying on her side, watching your face with her chin on her folded hands, the way she watched the funeral from the parapet.{/n}\n\"You slept,\" {n}she says, wonderingly.{/n} \"With me in the bed and my knife on the pillow. You slept like a child. Nobody has ever done that. They lie awake. I can always hear them lying awake.\"\n{n}She reaches out and touches your eyelid with one fingertip, very lightly, as if to make sure it is real.{/n} \"I'm going to have to think about this for a very long time.\"",
+          "Choices": [
+            {
+              "Text": "[Close your eyes again]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "no",
+          "Speaker": "Camellia",
+          "Text": "{n}Her smile does not move, which is worse than if it had.{/n}\n\"Without the knife? You want the woman and not the appetite. There is no such woman. There was, once, and her name was Mireya, and I made her up.\"",
+          "Choices": [
+            {
+              "Text": "[Watch her go]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.cost.asked_her_tame",
+                "camellia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.trickster.terms_named"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned",
         "camellia.committed"
       ],
       "DelayHours": 72,
@@ -199728,7 +201167,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Camellia Gwerm was entered in the crusade's register as dead, and never troubled to correct it. She stayed at the Commander's side through the Threshold and after it, a veiled woman whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}\n{n}She took no new friends, or said she took none. Once a year, on the date of her funeral, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}\n{n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}",
+          "Text": "{n}Camellia Gwerm stayed at the Commander's side through the Threshold and after it, a lady in black whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}\n{n}She took no new friends, or said she took none. Once a year, on a date she would never explain, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}\n{n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -199782,7 +201221,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}",
+              "Text": "{n}She had been entered in the crusade's register as dead, and never troubled to correct it. Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}",
               "Requires": [
                 "camellia.killed"
               ],
@@ -199952,7 +201391,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The war ended before Camellia finished her test. She finished it anyway. On one moonless night the next spring a veiled woman let herself into the Commander's rooms, laid a small clean knife on the pillow, point towards the door, and sat down to wait. She was still there in the morning. She said she had decided, on her own terms, that the Commander was more interesting alive. She did not say for how long.{/n}\n{n}She stayed. She kept the knife on the pillow between them, point towards the door, every night of her life, and every morning she was surprised to find that it was still there, and so was she.{/n}",
+          "Text": "{n}The war ended before Camellia finished her test. She finished it anyway. On one moonless night the next spring she let herself into the Commander's rooms, laid a small clean knife on the pillow, point towards the door, and sat down to wait. She was still there in the morning. She said she had decided, on her own terms, that the Commander was more interesting alive. She did not say for how long.{/n}\n{n}She stayed. She kept the knife on the pillow between them, point towards the door, every night of her life, and every morning she was surprised to find that it was still there, and so was she.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -201853,7 +203292,7 @@
         {
           "Id": "open",
           "Speaker": "Camellia",
-          "Text": "\"I did. Lock the door.\" {n}She waits until you have. Then she draws the small clean knife, not from her sleeve, but from yours; you did not feel her put it there.{/n} \"You've been carrying it wrong. Everybody does. They carry it as if they might need it. You should carry it as if you've already decided.\"",
+          "Text": "\"I did. Lock the door.\" {n}She waits until you have. Then she draws the small clean knife, not from her sleeve, but from yours; you did not feel her put it there.{/n} \"You've been carrying it since breakfast, and wrong. Everybody does. They carry it as if they might need it. You should carry it as if you've already decided.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -202043,7 +203482,7 @@
         {
           "Id": "open",
           "Speaker": "Camellia",
-          "Text": "\"I did. Lock the door.\" {n}She waits until you have. Then she draws the small clean knife, not from her sleeve, but from yours; you did not feel her put it there.{/n} \"You've been carrying it wrong. Everybody does. They carry it as if they might need it. You should carry it as if you've already decided.\"",
+          "Text": "\"I did. Lock the door.\" {n}She waits until you have. Then she draws the small clean knife, not from her sleeve, but from yours; you did not feel her put it there.{/n} \"You've been carrying it since breakfast, and wrong. Everybody does. They carry it as if they might need it. You should carry it as if you've already decided.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -202216,6 +203655,187 @@
           "camellia.trickster.beat.spirits_due"
         ]
       ]
+    },
+    {
+      "Id": "camellia.trickster.beat.lesson_alive",
+      "Title": "Where a friend would stand",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You said you wanted to teach me something.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"I did. Lock the door.\" {n}She waits until you have. Then she draws the small clean knife, not from her sleeve, but from yours; you did not feel her put it there.{/n} \"You've been carrying it since breakfast, and wrong. Everybody does. They carry it as if they might need it. You should carry it as if you've already decided.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "where",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "where",
+          "Speaker": "Camellia",
+          "Text": "{n}She takes your hand and closes it round the hilt, and then she moves your hand, slowly, the way the dancing master moved her feet.{/n}\n\"Not here. Everybody goes for here. It's a soldier's mistake. The ribs are in the way.\" {n}She moves it an inch to the side, under her own breastbone.{/n} \"Here. Up and in. And you must be close. As close as a friend. Close enough that they don't see it coming, because they're looking at your face.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "heart",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "heart",
+          "Speaker": "Camellia",
+          "Text": "\"Did you know that blood only flows while the heart is still beating? I didn't, until I watched. Beat. Beat. Beat. And then nothing, and it simply lies there, like a dropped glove.\" {n}She says it dreamily, as if describing a sunset.{/n}\n\"The heart is the last honest thing in anyone. It can't lie. It can only stop.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "throat",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "throat",
+          "Speaker": "Camellia",
+          "Text": "{n}She lifts your hand, and the knife in it, and lays the edge against her own throat, just under the jaw where the pulse is. Then she lets go.{/n}\n\"Now,\" {n}she says, and her eyes are very wide, and very bright, and fixed on yours.{/n} \"Tell me what you feel. Don't lie. I'll know.\"",
+          "Choices": [
+            {
+              "Text": "[Hold it perfectly still, and look back at her]",
+              "Next": "steady",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Take the knife away]",
+              "Next": "flinched",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"I feel like you've done this before, from the other side.\"",
+              "Next": "other_side",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "steady",
+          "Speaker": "Camellia",
+          "Text": "{n}The knife does not move. Her pulse jumps against the steel, once, twice, and then settles, and then, very slowly, speeds up again, and it has nothing to do with fear.{/n}\n\"Oh,\" {n}she breathes.{/n} \"Oh, there it is. There it is. Nobody has ever looked at me like that with a knife in their hand. They look frightened, or angry, or sick.\" {n}She puts two fingers on your wrist and takes the knife back, very gently.{/n} \"You just look interested.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "done",
+              "Set": [
+                "camellia.trickster.beat.lesson",
+                "camellia.trickster.lesson.steady"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "other_side",
+          "Speaker": "Camellia",
+          "Text": "{n}For one moment, all the brightness goes out of her face, and what is left underneath is very still and very old.{/n}\n\"Yes,\" {n}she says.{/n} \"Many times. Never from this side.\"\n{n}The knife has not moved. Her pulse is going like a bird's under it. She looks at the edge, and at your hand, and then at you, and she smiles, slowly, as if she had just been given a present she had not dared to ask for.{/n} \"It's much more frightening from this side. I like it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "done",
+              "Set": [
+                "camellia.trickster.beat.lesson",
+                "camellia.trickster.lesson.steady"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "flinched",
+          "Speaker": "Camellia",
+          "Text": "{n}You take the knife away. She watches it go with an expression you cannot read, then takes it from your hand and tucks it back into your sleeve herself.{/n}\n\"There. That's what most people do.\" {n}She doesn't sound disappointed. She sounds as though she has learned something she will think about later.{/n} \"It's all right, my friend. It isn't a test. Not yet. That comes afterwards, and it's much harder.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "done",
+              "Set": [
+                "camellia.trickster.beat.lesson",
+                "camellia.trickster.lesson.flinched"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "done",
+          "Speaker": "Camellia",
+          "Text": "\"Go now. I have to think about my price.\" {n}She is at the door before you, unlocking it.{/n} \"I've never had to set one before. Nobody ever lived long enough to pay.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.trickster.masks.a_dance_with_a_knife_in_it"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned",
+        "camellia.trickster.beat.lesson"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
     },
     {
       "Id": "camellia.trickster.bond.shelf",
@@ -202442,7 +204062,9 @@
               "Text": "Continue",
               "Next": "what_d",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "camellia.trickster.returned"
+              ],
               "Forbids": [
                 "camellia.killed"
               ],
@@ -202554,6 +204176,178 @@
       "Forbids": [
         "camellia.closed",
         "camellia.killed",
+        "camellia.trickster.bond.shelf"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
+      "Id": "camellia.trickster.bond.shelf_alive",
+      "Title": "The shelf",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Camellia. What have you done to my room?\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}Your room has been tidied. Not cleaned; tidied, the way a museum is. Your papers are in stacks squared to the edge of the desk. Your spare boots stand at attention. On the shelf above the bed, where you keep nothing in particular, there is now a row of things: a dried rose, a pressed camellia flower in a little frame, the bone snake of an amulet coiled in a saucer, a small clean knife, and a folded sheet of paper.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "shelf",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "shelf",
+          "Speaker": "Camellia",
+          "Text": "\"I've moved in.\" {n}She is sitting on your bed with her ankles crossed, eating an apple with a knife, in small precise slices.{/n} \"A little. The things I keep are on the shelf. Everything I own that means anything fits on one shelf. Isn't that sad? Isn't that tidy?\"\n\"The rose is from my father's garden, where I walked every day for twelve years and never once saw the gate open. The camellia is pressed, because my name is the only thing my mother left me, and a name won't stand up on a shelf by itself. The knife you know.\" {n}She points at the paper with the knife, not the apple.{/n} \"And that is my list.\"",
+          "Choices": [
+            {
+              "Text": "\"What list?\"",
+              "Next": "list",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "list",
+          "Speaker": "Camellia",
+          "Text": "{n}You unfold it. It is a list of names in her small, beautiful, schoolroom hand, perhaps thirty of them. Some are crossed out. Beside every crossed-out name is a date. You recognise two: a steward from Kenabres who was found in a canal, and a chaplain in Drezen who fell down a stair. At the very top of the list is your own name. It has been crossed out, very neatly, and written again underneath.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "what_a",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "what_a",
+          "Speaker": "Camellia",
+          "Text": "\"Those are my friends.\" {n}She says it with great tenderness.{/n} \"All my friends. The ones with lines through them, I have finished being friends with. The others are still waiting. They don't know that. It's the only kindness I can do them.\"\n{n}She slices the apple.{/n} \"I wrote you in the evening you beat me at my own game. I crossed you out the night I decided how I'd do it. Then I wrote you in again. I've never kept a name I've crossed out. I thought you ought to have it.\"",
+          "Choices": [
+            {
+              "Text": "[Fold it and put it back on the shelf]",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Hold it to the candle]",
+              "Next": "burned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"There are names on here that aren't crossed out.\"",
+              "Next": "names",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "names",
+          "Speaker": "Camellia",
+          "Text": "\"Yes.\" {n}She doesn't pretend not to understand.{/n} \"There are. You're going to ask me to promise. I'll say something charming, and you'll know it's a lie, and we'll both feel very grown up.\"\n{n}She sets the apple down.{/n} \"Or you could do something with the paper, and I'll learn what kind of person I'm living with. I'd prefer that. I've had quite enough of promises. I've made a great many of them.\"",
+          "Choices": [
+            {
+              "Text": "[Fold it and put it back on the shelf]",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Hold it to the candle]",
+              "Next": "burned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Camellia",
+          "Text": "{n}You fold it along its old creases and put it back on the shelf, beside the knife. She watches you do it. Her face does something complicated.{/n}\n\"You're keeping it.\" {n}Very quietly.{/n} \"You're keeping my friends on your shelf. Next to your own name.\" {n}She laughs, a little unsteadily.{/n} \"Now I shall have to be careful. How tiresome. You'll know if one of them changes.\"",
+          "Choices": [
+            {
+              "Text": "[Leave it where it is]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.bond.shelf",
+                "camellia.trickster.bond.list_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "burned",
+          "Speaker": "Camellia",
+          "Text": "{n}The paper catches at the corner and goes up all at once, as old paper does. She watches it burn with her chin on her hand and an expression of great, patient amusement.{/n}\n\"How gallant. How completely useless.\" {n}She taps her temple with the point of the knife.{/n} \"I have them all by heart, my friend. I wrote them down for you, not for me.\" {n}She picks up the apple again.{/n} \"But you tried. I do like it when you try.\"",
+          "Choices": [
+            {
+              "Text": "[Brush the ash off the shelf]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.bond.shelf",
+                "camellia.trickster.bond.list_burned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned",
         "camellia.trickster.bond.shelf"
       ],
       "DelayHours": 48,
@@ -202725,7 +204519,9 @@
               "Text": "Continue",
               "Next": "dead_w",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "camellia.trickster.returned"
+              ],
               "Forbids": [
                 "camellia.killed"
               ],
@@ -202836,6 +204632,146 @@
       "Forbids": [
         "camellia.closed",
         "camellia.killed",
+        "camellia.trickster.bond.witness_lied",
+        "camellia.trickster.cost.witness"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
+      "Id": "camellia.trickster.bond.witness_alive",
+      "Title": "The witness",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You're worried. You never look worried.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"I'm not worried. I'm inconvenienced.\" {n}She is pacing, which you have never seen her do: six steps to the wall, six back, her skirts hissing.{/n} \"Someone saw me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "alive_w",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "alive_w",
+          "Speaker": "Camellia",
+          "Text": "\"A lamplighter in the lower city, last week. I was very neat. I always am.\" {n}She stops pacing.{/n} \"He didn't see anything but my face coming out of the alley behind the tannery, and my face is very memorable, and now the porter is dead and there is a man in a tavern by the river telling everyone who will listen that he saw a lady come out of that alley with her sleeves rolled up.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "choice",
+          "Speaker": "Camellia",
+          "Text": "\"I can take care of it.\" {n}She says it lightly, reasonably, the way one offers to see to the washing.{/n} \"It would be very easy. People like that fall down stairs all the time. It's practically their vocation.\"\n\"Or you can take care of it. Your way.\" {n}She looks at you.{/n} \"I'm asking. I've never asked anyone before. I thought I'd see what it felt like.\"",
+          "Choices": [
+            {
+              "Text": "[Trickster] \"Leave it to me. By tomorrow, nobody will believe a word the witness says. Including the witness.\"",
+              "Next": "lied",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Do it your way.\"",
+              "Next": "hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "lied",
+          "Speaker": "Camellia",
+          "Text": "{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lied_after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "lied_after",
+          "Speaker": "Camellia",
+          "Text": "\"You made them into a ghost story.\" {n}Camellia is laughing so hard she has to sit down on the edge of the table.{/n} \"Oh, that's so much crueller than anything I would have done. They'll spend the rest of their life being the person who saw the ghost.\"\n{n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} \"You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient.\"",
+          "Choices": [
+            {
+              "Text": "[Let her say it]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.bond.witness_lied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "hers",
+          "Speaker": "Camellia",
+          "Text": "\"Thank you.\" {n}She says it as sincerely as she has ever said anything. She kisses your cheek, and straightens your collar, and leaves.{/n}\n{n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not stop.{/n}",
+          "Choices": [
+            {
+              "Text": "[Hold her gaze]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.cost.witness"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed",
+        "camellia.trickster.bond.shelf"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned",
         "camellia.trickster.bond.witness_lied",
         "camellia.trickster.cost.witness"
       ],
@@ -203558,6 +205494,368 @@
       "Forbids": [
         "camellia.closed",
         "camellia.killed",
+        "camellia.trickster.bond.not_today"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8",
+      "RequiresAnyGroups": [
+        [
+          "camellia.trickster.bond.witness_lied",
+          "camellia.trickster.cost.witness"
+        ]
+      ]
+    },
+    {
+      "Id": "camellia.trickster.bond.not_today_alive",
+      "Title": "Not today",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You're very quiet tonight.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}It is late, and raining, and she is sitting at your window with the shutters open, watching the water run off the eaves. The small clean knife is on the sill beside her, point towards the room, as it always is. She does not turn round.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "lead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "lead",
+          "Speaker": "Camellia",
+          "Text": "\"I'm thinking.\" {n}She draws a line in the condensation on the glass, and then another across it.{/n} \"About after. After the war. After your Wound is closed and your crusade is over and everyone goes home.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.bond.list_kept"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "burned",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.bond.list_burned"
+              ],
+              "Forbids": [
+                "camellia.trickster.bond.list_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "ghost",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.bond.witness_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.bond.list_kept",
+                "camellia.trickster.bond.list_burned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "steps",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.witness"
+              ],
+              "Forbids": [
+                "camellia.trickster.bond.list_kept",
+                "camellia.trickster.bond.list_burned",
+                "camellia.trickster.bond.witness_lied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.bond.list_kept",
+                "camellia.trickster.bond.list_burned",
+                "camellia.trickster.bond.witness_lied",
+                "camellia.trickster.cost.witness"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Camellia",
+          "Text": "\"You still have my list on your shelf. I look at it every night before I sleep. Nobody on it has changed.\" {n}A small, wry smile.{/n} \"You see what you've done to me. I'm keeping accounts.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "burned",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.bond.list_burned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "ghost",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.bond.witness_lied"
+              ],
+              "Forbids": [
+                "camellia.trickster.bond.list_burned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "steps",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.witness"
+              ],
+              "Forbids": [
+                "camellia.trickster.bond.list_burned",
+                "camellia.trickster.bond.witness_lied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.bond.list_burned",
+                "camellia.trickster.bond.witness_lied",
+                "camellia.trickster.cost.witness"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "burned",
+          "Speaker": "Camellia",
+          "Text": "\"You burned my list. I rewrote it the next morning, from memory, and then I burned it myself. It seemed only polite to finish what you started.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ghost",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.bond.witness_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "steps",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.witness"
+              ],
+              "Forbids": [
+                "camellia.trickster.bond.witness_lied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.bond.witness_lied",
+                "camellia.trickster.cost.witness"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "ghost",
+          "Speaker": "Camellia",
+          "Text": "\"They're still telling the story of the singing ghost in the chapel, you know. I heard it in the market yesterday. The dog has grown wings.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "steps",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cost.witness"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.cost.witness"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "steps",
+          "Speaker": "Camellia",
+          "Text": "\"I walked by the river steps last night. Somebody has put up a railing.\" {n}She says it without any expression at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "after",
+          "Speaker": "Camellia",
+          "Text": "\"I'll want it back, you know. The knife. One day.\" {n}Now she turns round.{/n} \"Not because I've stopped loving you. Because I will have. That's how it works, with me. The more I love someone, the more I want to see their face when they understand. It's the only thing I've ever wanted, and I have wanted it so very much.\"\n\"I'm telling you so you'll know the day. I'll be smiling. I promised you that.\"",
+          "Choices": [
+            {
+              "Text": "\"Then I'll be smiling back.\"",
+              "Next": "smile",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"When that day comes, I'll die convincingly. You'll never know if I meant it.\"",
+              "Next": "convincing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Not today, though.\"",
+              "Next": "today",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "smile",
+          "Speaker": "Camellia",
+          "Text": "{n}She looks at you for a long time, the rain loud on the shutters.{/n}\n\"Yes,\" {n}she says at last.{/n} \"Yes, you would. That's why it hasn't been today.\" {n}She holds out her hand, and you take it, and she pulls you down to the window seat beside her, and does not let go.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "night",
+              "Set": [
+                "camellia.trickster.bond.not_today"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "convincing",
+          "Speaker": "Camellia",
+          "Text": "\"Oh.\" {n}It is almost a gasp. Then she is laughing, with her forehead against your shoulder.{/n} \"Oh, you monster. You'd do it. You'd lie there with my knife in you and I would never, ever know whether you were really dead. You'd ruin it for me forever.\"\n{n}She lifts her head.{/n} \"Oh, that's cruel. Say it again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "night",
+              "Set": [
+                "camellia.trickster.bond.not_today"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "today",
+          "Speaker": "Camellia",
+          "Text": "\"Not today.\" {n}She says it after you, carefully, the way she says the names of flowers.{/n} \"No. Not today. Today I'm going to do something very ordinary, and very dull, and I've never done it before in my life.\"\n{n}She closes the shutters on the rain.{/n} \"I'm going to go to bed with someone I'm not going to kill.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "night",
+              "Set": [
+                "camellia.trickster.bond.not_today"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Narrator",
+          "Text": "{n}She takes the knife off the sill and puts it, point first, in the wood of the window frame, where it quivers and is still. Then she takes your face in both hands and kisses you, slowly, thoroughly, with her eyes open, as if she means to remember exactly what your face does.{/n}\n{n}Her hands are cold from the window and then they are not. She undoes your shirt one button at a time and counts them under her breath, the way she counted the dance. On the last button she stops counting and pulls you down onto the bed with her, and the rain goes on and on against the shutters, and neither of you hears it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Put out the candle.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned",
         "camellia.trickster.bond.not_today"
       ],
       "DelayHours": 72,
@@ -205306,6 +207604,146 @@
       "ContactUnit": "397b090721c41044ea3220445300e1b8"
     },
     {
+      "Id": "camellia.trickster.evening.breakfast_alive",
+      "Title": "Breakfast",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You're awake early.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"I never sleep late. Sleep is a waste of the only time nobody is watching me.\" {n}She is sitting cross-legged at the end of your bed in your shirt, eating bread and honey off a knife, which she licks after every bite.{/n} \"I brought breakfast. I've never brought anyone breakfast before. I had to ask the cook how it's done. He was terrified.\"",
+          "Choices": [
+            {
+              "Text": "\"What did you tell him?\"",
+              "Next": "cook",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "cook",
+          "Speaker": "Camellia",
+          "Text": "\"I told him the Commander had a guest, and the guest was very hungry, and very particular, and did not like to be kept waiting.\" {n}She takes another bite.{/n} \"All true. He gave me the good honey. He kept looking at my hands.\"\n{n}She holds out the knife to you, with bread on it.{/n} \"Here. Try it. It's lovely. I didn't do anything to it. I promise.\"",
+          "Choices": [
+            {
+              "Text": "[Eat it off the knife]",
+              "Next": "ate",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"You first.\"",
+              "Next": "first",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Do you ever say 'I promise' and mean it?\"",
+              "Next": "promise",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "ate",
+          "Speaker": "Camellia",
+          "Text": "{n}You take the bread off the blade with your teeth, carefully. She watches you do it with enormous interest, and when you have swallowed she lets out a long, soft breath, as though she has been holding it.{/n}\n\"You just did that. You just ate something a murderess held out to you on a knife, first thing in the morning, without even looking at it first.\" {n}She shakes her head, wondering.{/n} \"You are either the bravest person I have ever met or the stupidest. I adore not knowing which.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "first",
+          "Speaker": "Camellia",
+          "Text": "\"Me first?\" {n}She looks offended for exactly one heartbeat, and then enchanted.{/n} \"You think I might have poisoned your breakfast. On our first morning. How romantic.\" {n}She eats the bread off the knife in one bite, chews, swallows, and licks the blade clean.{/n} \"There. If I die, you'll know. And if I don't...\" {n}She cuts another piece.{/n} \"You'll never be quite sure I didn't simply have the antidote.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "promise",
+          "Speaker": "Camellia",
+          "Text": "\"Sometimes.\" {n}She considers.{/n} \"I promised my teacher I'd always be kind to the spirits. I have been. I promised Sir Pomfrey he wouldn't feel anything. He didn't.\" {n}She licks honey off her thumb.{/n} \"I've kept every promise I ever meant. There are only a very few of them. It's why I make so many that I don't. It hides the real ones.\"\n{n}She holds out the knife again.{/n} \"Eat your breakfast.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Camellia",
+          "Text": "\"We should do this every morning. I'll bring the bread, and you'll decide whether to trust me, and neither of us will ever get bored.\" {n}She settles back against the bedpost, your shirt slipping off one shoulder, the knife held loosely in her lap.{/n} \"It's the most domestic thing I've ever done. I'm finding it strangely exciting.\"",
+          "Choices": [
+            {
+              "Text": "[Finish breakfast]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed",
+        "camellia.trickster.bond.shelf"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
       "Id": "camellia.trickster.evening.a_gift_for_a_dead_woman",
       "Title": "A gift for a dead woman",
       "Owner": "Camellia",
@@ -205862,6 +208300,157 @@
       "Forbids": [
         "camellia.closed",
         "camellia.killed"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8",
+      "RequiresAnyGroups": [
+        [
+          "camellia.trickster.bond.witness_lied",
+          "camellia.trickster.cost.witness"
+        ]
+      ]
+    },
+    {
+      "Id": "camellia.trickster.evening.the_prisoner_alive",
+      "Title": "The prisoner",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Camellia. They told me you were in the cells.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}The cells under the citadel are cold and badly lit. In the last one, a demon cultist sits chained to the wall: a man with the horned head of the Lord of Beasts cut into his forearms, captured on the walls three nights ago. He has not said a word to the interrogators. Camellia is sitting on a stool in front of him, very close, with her hands in her lap, looking at his face.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "her",
+          "Speaker": "Camellia",
+          "Text": "\"He killed a child on the walls,\" {n}she says, without turning round.{/n} \"A drummer boy. Twelve years old. He cut his throat in front of the boy's sergeant and laughed. The interrogators have told me all about it. They are very angry. They want me to make him talk.\"\n{n}She tilts her head. The cultist stares back at her with dull, hating eyes.{/n} \"I don't care whether he talks. I've been sitting here for an hour, looking for the thing I look for. He hasn't got it. He isn't afraid of anything. He's quite, quite empty. Like a room with the furniture taken out.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Camellia",
+          "Text": "\"But he would be. Afraid. At the end. I know how.\" {n}Now she turns round. Her face is calm and flushed and very beautiful.{/n}\n\"He isn't anyone's friend. He isn't on any list. Nobody would ever miss him; nobody in the whole world has ever loved him. The spirits would drink him and thank me.\" {n}She holds out her hand to you.{/n} \"I'm asking you. Can I have him?\"",
+          "Choices": [
+            {
+              "Text": "\"He's yours.\"",
+              "Next": "yes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No. He goes to trial.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"Only if I can watch your face, not his.\"",
+              "Next": "watch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "yes",
+          "Speaker": "Camellia",
+          "Text": "\"Thank you.\" {n}She says it quite simply, the way one thanks a friend for passing the salt. She takes a small, clean knife from her sleeve.{/n} \"You should go now, my friend. Or stay. It's up to you. I know it isn't pretty.\"\n{n}You leave. Behind you, as the door closes, you hear her begin to talk to him, softly, pleasantly, as if she were telling him a bedtime story. The guards on the stair do not look at you. Later, the chaplain records that the prisoner died in his chains of a failure of the heart.{/n}",
+          "Choices": [
+            {
+              "Text": "[Walk up into the light]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.cost.prisoner"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "watch",
+          "Speaker": "Camellia",
+          "Text": "{n}She blinks. Then something opens in her face, something unguarded and nearly shy.{/n}\n\"Mine?\" {n}She lets out a breath.{/n} \"You want to watch me. Not him. Nobody has ever wanted to watch that part.\"\n{n}So you stand against the wall, and you watch her. You do not look at the man. You look at her face, the whole long time, and she looks back at you over his shoulder, and it is the most intimate and the most terrible thing you have ever shared with anyone. Afterwards she washes her hands in the bucket, slowly, and does not speak, and when she comes to you her eyes are wet.{/n}",
+          "Choices": [
+            {
+              "Text": "[Hold her]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.cost.prisoner"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "no",
+          "Speaker": "Camellia",
+          "Text": "{n}For a moment you see it: the flash of something bright and furious behind her eyes, gone almost before it is there, the look of a woman who has had her plate taken away.{/n}\n\"Trial,\" {n}she says.{/n} \"Of course. How very correct of you.\"\n{n}She stands, and straightens her skirt, and walks past you to the door. She stops beside you, close enough that her breath touches your ear.{/n} \"One day you'll say yes. I can wait. I'm very, very good at waiting.\" {n}She kisses your cheek, and goes up the stair.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her go]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.prisoner_spared"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -207310,6 +209899,181 @@
       "ContactUnit": "397b090721c41044ea3220445300e1b8"
     },
     {
+      "Id": "camellia.trickster.cards.the_deck_again_alive",
+      "Title": "The deck, again",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You brought the cards.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"I brought the cards.\" {n}She is sitting on the floor of your room with the black silk unfolded in front of her and the deck in her hands, shuffling, over and over.{/n} \"I thought I would read us. Both of us, together. My teacher said you should never read a couple. She said the cards get jealous. I've always wanted to find out whether that's true.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "read_back",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.cards.read_back"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "cards",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.cards.read_back"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "read_back",
+          "Speaker": "Camellia",
+          "Text": "\"And last time you made me read my own card. The widow. I've been thinking about her ever since.\" {n}She stops shuffling.{/n} \"I'm not afraid of her any more. I've been her. It was quite comfortable.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cards",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "cards",
+          "Speaker": "Camellia",
+          "Text": "{n}She lays down two cards, side by side, face down. She puts one of your hands on the left one and her own on the right.{/n}\n\"Yours, and mine. We turn them together. And whatever they say, we don't argue with it. That's the rule.\" {n}Her fingers tighten on the back of her card.{/n} \"Ready?\"",
+          "Choices": [
+            {
+              "Text": "[Turn it over]",
+              "Next": "turned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "turned",
+          "Speaker": "Narrator",
+          "Text": "{n}Your card shows a man with a mask held up in front of his face, laughing behind it. Hers shows the veiled widow, as it always does, with the knife behind her back. The two pictures lie side by side on the black silk. The laughing man's free hand is reaching towards the widow's knife. The widow's free hand is reaching towards his mask.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "meaning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "meaning",
+          "Speaker": "Camellia",
+          "Text": "{n}Camellia is very quiet. Then she laughs, softly, disbelievingly.{/n}\n\"The fool, and the widow. She's reaching for his mask and he's reaching for her knife.\" {n}She touches the painted hands.{/n} \"My teacher had a name for this. Two cards that reach for each other. She called it a marriage. She said it was the most dangerous spread there is, because neither card ever lets go first.\"",
+          "Choices": [
+            {
+              "Text": "\"Then we won't let go.\"",
+              "Next": "wont",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"I stacked the deck while you weren't looking.\"",
+              "Next": "stacked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "wont",
+          "Speaker": "Camellia",
+          "Text": "\"No.\" {n}She gathers up the two cards and holds them together, face to face, as though they were kissing.{/n} \"No, I don't think we shall. I think we're far too stubborn.\" {n}She tucks them into her bodice together, apart from the rest of the deck.{/n} \"I shall keep these two. The others can be jealous.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "stacked",
+          "Speaker": "Camellia",
+          "Text": "{n}She stares at you. Then at the cards. Then at you.{/n}\n\"You did not.\" {n}She searches your face, and you watch her fail to find the seam. It is not a thing you have seen before.{/n} \"You couldn't have. I was watching your hands the whole time. I always watch hands.\" {n}Her voice drops.{/n} \"Did you?\"\n{n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Camellia",
+          "Text": "\"Whatever the truth is,\" {n}she says, some time later, from somewhere near your collar,{/n} \"I'm not going to find out. I'm going to leave it exactly where it is. It's the first thing in my life I've ever wanted to leave alone.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the cards where they fell]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
       "Id": "camellia.trickster.cards.two_lies_again",
       "Title": "Two lies and a truth, again",
       "Owner": "Camellia",
@@ -207803,6 +210567,251 @@
       "ContactUnit": "397b090721c41044ea3220445300e1b8"
     },
     {
+      "Id": "camellia.trickster.cards.two_lies_again_alive",
+      "Title": "Two lies and a truth, again",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Play a game with me?\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"I thought you'd never ask.\" {n}She is already sitting up in bed, cross-legged, with her hair down and her knife on the pillow.{/n} \"Two lies and a truth. Like the first time. I've been wanting to play it again for months, but I wanted to wait until the stakes were properly high.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "won",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "lost",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.she_won"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.out_lied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.out_lied",
+                "camellia.trickster.masks.she_won"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "won",
+          "Speaker": "Camellia",
+          "Text": "\"You beat me the last time we played. I haven't forgiven you. I've been practising.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "lost",
+          "Speaker": "Camellia",
+          "Text": "\"You lost the last time we played. I've let you think about it long enough.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "hers",
+          "Speaker": "Camellia",
+          "Text": "{n}She folds her hands in her lap, like a girl at a recital, exactly as she did the first time.{/n}\n\"One. I have never been happier in my life than I am in this bed.\nTwo. I will never want the knife back.\nThree.\" {n}She holds your eyes.{/n} \"I love you.\"",
+          "Choices": [
+            {
+              "Text": "\"One is the lie.\"",
+              "Next": "one",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Two is the lie.\"",
+              "Next": "two",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Three is the lie.\"",
+              "Next": "three",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "one",
+          "Speaker": "Camellia",
+          "Text": "\"One?\" {n}She laughs, but her eyes are strange.{/n} \"No. One is true. I'm very happy. It's the strangest feeling. It's like being full after a meal I didn't eat.\" {n}She leans towards you.{/n} \"Guess again.\"",
+          "Choices": [
+            {
+              "Text": "\"Two, then.\"",
+              "Next": "two",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Three, then.\"",
+              "Next": "three",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "three",
+          "Speaker": "Camellia",
+          "Text": "{n}Her face does not change at all, and that is how you know you have said something terrible.{/n}\n\"No,\" {n}she says quietly.{/n} \"Three is true. Three is the one I was most afraid you'd pick.\" {n}She looks down at her hands.{/n} \"I said it last, the way people save the lie for last. You told me that once. I wanted to see if you'd remember.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "two",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "two",
+          "Speaker": "Camellia",
+          "Text": "\"Two.\" {n}She lets out a breath she seems to have been holding for a very long time.{/n} \"Yes. Two is the lie. Of course it is. I will want the knife back one day, darling. I can't help it. It's the one true thing about me that nobody can ever make untrue.\"\n{n}She picks the knife up off the pillow and turns it in the candlelight.{/n} \"But not today. And I'll tell you something else, since you won.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "else",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "else",
+          "Speaker": "Camellia",
+          "Text": "\"I lied the first time too. When we first played. I said I had never lied to you, and you caught it, and I laughed.\" {n}She puts the knife back down, very carefully, point towards the door.{/n}\n\"That wasn't the lie. The lie was that I laughed because you were clever. I laughed because you were the first person who ever caught me, and I was so frightened I thought I might die.\" {n}She smiles.{/n} \"Your turn. Three things. Make them good.\"",
+          "Choices": [
+            {
+              "Text": "[Trickster] \"I love you. I love you. I love you.\"",
+              "Next": "all",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'm not afraid of you. I never was. I love you.\"",
+              "Next": "mine",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "all",
+          "Speaker": "Camellia",
+          "Text": "\"That's three truths.\" {n}Her voice cracks on it, just slightly.{/n} \"That's cheating. You always cheat. You cheat with the truth, which is the only thing I can't see through.\" {n}She pulls you down to her by the collar.{/n} \"Don't ever stop.\"",
+          "Choices": [
+            {
+              "Text": "[Don't stop]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "mine",
+          "Speaker": "Camellia",
+          "Text": "\"The first one's a lie,\" {n}she says at once, with enormous satisfaction.{/n} \"You're a little afraid of me. You always have been. It's the nicest thing about you.\" {n}She pulls you down to her by the collar.{/n} \"And the rest?\"\n{n}You don't answer. You don't have to. She has already found the seam.{/n}",
+          "Choices": [
+            {
+              "Text": "[Put out the candle]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed",
+        "camellia.trickster.masks.game"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
       "Id": "camellia.trickster.cards.the_amulet",
       "Title": "The amulet",
       "Owner": "Camellia",
@@ -207841,7 +210850,7 @@
         {
           "Id": "known",
           "Speaker": "Camellia",
-          "Text": "\"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up.\" {n}She turns the little snake over.{/n} \"What I never told you is why I kept wearing her afterwards. Even after I'd confessed. Even dead.\"\n\"Habit, I thought. It isn't habit. She was the only friend I ever had who couldn't look at me. I made her so that someone would always be near me who wasn't afraid.\"",
+          "Text": "\"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up.\" {n}She turns the little snake over.{/n} \"What I never told you is why I kept wearing her afterwards. Even after I'd confessed.\"\n\"Habit, I thought. It isn't habit. She was the only friend I ever had who couldn't look at me. I made her so that someone would always be near me who wasn't afraid.\"",
           "Choices": [
             {
               "Text": "\"And now?\"",
@@ -207889,7 +210898,7 @@
         {
           "Id": "knew",
           "Speaker": "Camellia",
-          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend.\" {n}Her eyes narrow, just slightly.{/n} \"I wonder what you wanted in return. People always want something.\"",
+          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend.\" {n}Her eyes narrow, just slightly.{/n} \"I wonder what you wanted in return. People always want something.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -208014,7 +211023,7 @@
         {
           "Id": "known",
           "Speaker": "Camellia",
-          "Text": "\"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up.\" {n}She turns the little snake over.{/n} \"What I never told you is why I kept wearing her afterwards. Even after I'd confessed. Even dead.\"\n\"Habit, I thought. It isn't habit. She was the only friend I ever had who couldn't look at me. I made her so that someone would always be near me who wasn't afraid.\"",
+          "Text": "\"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up.\" {n}She turns the little snake over.{/n} \"What I never told you is why I kept wearing her afterwards. Even after I'd confessed.\"\n\"Habit, I thought. It isn't habit. She was the only friend I ever had who couldn't look at me. I made her so that someone would always be near me who wasn't afraid.\"",
           "Choices": [
             {
               "Text": "\"And now?\"",
@@ -208062,7 +211071,7 @@
         {
           "Id": "knew",
           "Speaker": "Camellia",
-          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend.\" {n}Her eyes narrow, just slightly.{/n} \"I wonder what you wanted in return. People always want something.\"",
+          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend.\" {n}Her eyes narrow, just slightly.{/n} \"I wonder what you wanted in return. People always want something.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -208134,6 +211143,175 @@
       "Forbids": [
         "camellia.closed",
         "camellia.killed"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
+      "Id": "camellia.trickster.cards.the_amulet_alive",
+      "Title": "The amulet",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You haven't fed Mireya in weeks.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"No.\" {n}She is sitting by the window with the bone snake of the amulet in her open palm, looking at it as one looks at a letter from a relative one has stopped writing to.{/n} \"I don't need to. I've been meaning to tell you why. I kept putting it off, because it's the last thing, and after it there won't be any more secrets, and I don't know what I'll do without them.\"",
+          "Choices": [
+            {
+              "Text": "\"Tell me.\"",
+              "Next": "tell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.mireya_unmasked"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell me.\"",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "camellia.mireya_unmasked"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "known",
+          "Speaker": "Camellia",
+          "Text": "\"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up.\" {n}She turns the little snake over.{/n} \"What I never told you is why I kept wearing her afterwards. Even after I'd confessed.\"\n\"Habit, I thought. It isn't habit. She was the only friend I ever had who couldn't look at me. I made her so that someone would always be near me who wasn't afraid.\"",
+          "Choices": [
+            {
+              "Text": "\"And now?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "tell",
+          "Speaker": "Camellia",
+          "Text": "{n}She turns the little snake over. Its empty eye sockets catch the light.{/n}\n\"There is no Mireya. There never was. I made her up.\" {n}She says it gently, as one tells a child about a pet that has been given away.{/n} \"There was no poor broken spirit in the ruins. There was only me, and a pretty bone amulet, and a need for a reason. A reason that would sound holy, or sad, or mad. Anything but what it was. So I invented a spirit who needed blood, and I fed her, and everyone felt so sorry for me.\"",
+          "Choices": [
+            {
+              "Text": "\"I knew.\"",
+              "Next": "knew",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why tell me now?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing]",
+              "Next": "silent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "knew",
+          "Speaker": "Camellia",
+          "Text": "\"You knew.\" {n}She looks up sharply, and then, slowly, she starts to smile.{/n} \"Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me.\" {n}She closes her hand around the amulet.{/n} \"You let me keep my imaginary friend.\" {n}Her eyes narrow, just slightly.{/n} \"I wonder what you wanted in return. People always want something.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Camellia",
+          "Text": "\"Because I don't need a reason any more.\" {n}She opens her hand and looks at the snake.{/n} \"I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you didn't need me to have a reason. You just... watched. You watched, and you stayed.\" {n}She shrugs, a small, bewildered movement.{/n} \"She's out of work. Poor thing. I made her up and now I've made her redundant.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "silent",
+          "Speaker": "Camellia",
+          "Text": "{n}She waits for you to say something. You don't. She nods slowly, as if you had said exactly the right thing, and looks back down at the amulet.{/n}\n\"Yes. That's what I thought you'd say.\" {n}Very softly.{/n} \"You never needed her. Only I did.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Camellia",
+          "Text": "{n}She holds the amulet out to you, dangling from its cord.{/n}\n\"Here. You have her. Put her on your shelf, next to my list. Next to your name.\" {n}She folds your fingers around the little bone snake.{/n} \"If anyone ever asks, tell them she was a very old and very beautiful spirit, and that she was mine. It isn't true. But it's the nicest thing I ever made.\"",
+          "Choices": [
+            {
+              "Text": "[Keep it]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.amulet_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
       ],
       "DelayHours": 72,
       "Optional": true,
@@ -209003,6 +212181,195 @@
       "ContactUnit": "397b090721c41044ea3220445300e1b8"
     },
     {
+      "Id": "camellia.trickster.day.the_second_dance_alive",
+      "Title": "The second dance",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Three steps and a turn?\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"You remembered.\" {n}She has already cleared the floor. The candles are in the corners again, as they were the first time, and she is barefoot, and her skirt is pinned up to the ankle.{/n} \"I promised myself, the first time, that I would finish the lesson one day. I never finish lessons. I get bored halfway, or the other person dies. You're the first one who's still here for the second half.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "danced_d",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "noticed_d",
+              "Set": [],
+              "Requires": [
+                "camellia.trickster.masks.knife_noticed"
+              ],
+              "Forbids": [
+                "camellia.trickster.masks.danced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "new_d",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "camellia.trickster.masks.danced",
+                "camellia.trickster.masks.knife_noticed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "danced_d",
+          "Speaker": "Camellia",
+          "Text": "\"And last time you didn't look down. You felt the knife and you went on dancing.\" {n}She takes your left hand, and puts your right at her waist.{/n} \"It's still there. It's always there. Tonight you may look, if you like.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dance",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "noticed_d",
+          "Speaker": "Camellia",
+          "Text": "\"And last time you found the knife, and said so, and I was very cross with you, and I have forgiven you entirely.\" {n}She takes your left hand, and puts your right at her waist.{/n} \"It's still there. Tonight I shan't be cross.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dance",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "new_d",
+          "Speaker": "Camellia",
+          "Text": "\"We never had a first half, did we? I was dead too soon. So I shall teach you the whole thing at once, which is how I prefer to learn things, and people.\" {n}She takes your left hand and puts your right at her waist, a little lower than a dancing master would.{/n} \"Three steps and a turn. Don't look at your feet.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dance",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "dance",
+          "Speaker": "Narrator",
+          "Text": "{n}Three steps and a turn. She counts under her breath, one-two-three, one-two-three, and the candles go round the walls. She is closer than the dance requires, and then closer still. Your hand at her waist finds the knife strapped high on her thigh, and this time she stops, and puts her own hand over yours, and holds it there.{/n}",
+          "Choices": [
+            {
+              "Text": "[Unbuckle the strap]",
+              "Next": "strap",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave it where it is]",
+              "Next": "leave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "strap",
+          "Speaker": "Camellia",
+          "Text": "{n}She watches your face while you do it. The buckle is stiff; she does not help. When it gives, the knife slides down into your palm, warm from her skin, and she lets out a long, shaky breath.{/n}\n\"There,\" {n}she whispers.{/n} \"Now you're holding the only thing I've never let anyone hold. Put it somewhere I can see it.\"\n{n}You lay it on the floor between two of the candles. She looks at it for a moment, and then she does not look at it again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "leave",
+          "Speaker": "Camellia",
+          "Text": "\"Leave it?\" {n}Her breath catches, and her eyes go dark and bright at once.{/n} \"You'd dance with me armed. You'd lie down with me armed.\" {n}She presses closer, until you can feel the hilt between you both.{/n} \"Nobody has ever wanted me with the knife. They always want me to take it off first. As if that made any difference.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The dance stops somewhere in the middle of a turn, and neither of you notices. She kisses you as she fences, close and quick and always coming in, and she is laughing against your mouth, and her fingers are in your collar, then under it. One of the candles goes out, and then another. She pulls you down onto the bare boards in the middle of the cleared floor, one-two-three, and the last thing she says before she stops counting altogether is that this, at last, is the end of the lesson.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let the last candle burn down.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed",
+        "camellia.trickster.bond.shelf"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
       "Id": "camellia.trickster.day.a_new_friend",
       "Title": "A new friend",
       "Owner": "Camellia",
@@ -209372,6 +212739,194 @@
       "Forbids": [
         "camellia.closed",
         "camellia.killed"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
+      "Id": "camellia.trickster.day.a_new_friend_alive",
+      "Title": "A new friend",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Who was that you were laughing with?\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"Oh, that was Ilse.\" {n}Camellia is cutting flowers for a vase, her back to you, with neat, precise snips.{/n} \"A quartermaster's girl. She mends the banners. She has the loveliest laugh, like a wren. We've been taking walks together in the evenings. She tells me all about her sweetheart in the Third Company and her mother in Tabor and the ribbons she means to buy for her wedding.\"\n{n}Snip.{/n} \"She says I'm the best friend she's ever had.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "list",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "list",
+          "Speaker": "Narrator",
+          "Text": "{n}Something in the way she says it makes you look at the shelf over your bed. The list is there, where it has always been, or the ash of it, or the memory. You think of the names on it that are not yet crossed out. You think of the names that are. You find that you know, without being told, whose name will be written at the bottom of the list tonight.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Camellia",
+          "Text": "\"You're looking at me the way you look at demons.\" {n}She puts the scissors down.{/n} \"Say it. You'll feel better. I shan't be offended. I'm never offended by the truth. It's so rare.\"",
+          "Choices": [
+            {
+              "Text": "\"She's going on the list.\"",
+              "Next": "list_ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] Tell Ilse, tomorrow, that Camellia has consumption and must be allowed to rest. Alone. For months.",
+              "Next": "warn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"She's your friend. That's your business.\"",
+              "Next": "watch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "list_ask",
+          "Speaker": "Camellia",
+          "Text": "\"She's going on the list.\" {n}Camellia agrees serenely, and picks the scissors up again.{/n} \"She went on the list the first evening, when she laughed at my joke about the chaplain's hat. She doesn't know. That's what makes it lovely. She gets to be happy for such a long time first.\"\n{n}Snip.{/n} \"You're wondering whether I'll do it. So am I. That's the most exciting part. I honestly don't know. I haven't decided. You've made me so very indecisive.\"",
+          "Choices": [
+            {
+              "Text": "[Trickster] Tell Ilse, tomorrow, that Camellia has consumption and must be allowed to rest. Alone. For months.",
+              "Next": "warn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then I'll be watching.\"",
+              "Next": "watch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "warn",
+          "Speaker": "Camellia",
+          "Text": "{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}\n{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "warned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "warned",
+          "Speaker": "Camellia",
+          "Text": "\"Consumption.\" {n}Camellia holds up the ribbon, blue, with a little bow.{/n} \"You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth.\"\n{n}She winds the ribbon round her finger, and unwinds it.{/n} \"You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand.\" {n}She smiles, slowly.{/n} \"You lied to a girl to take my plaything away. How very possessive of you.\" {n}She ties the ribbon round her wrist, tight enough to mark.{/n} \"I shall keep this. It's evidence of what you'll do when something of mine is in the way.\"",
+          "Choices": [
+            {
+              "Text": "[Take her hand]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.friend.warned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "watch",
+          "Speaker": "Camellia",
+          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. I'm writing it down somewhere you'll never find.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cost",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "cost",
+          "Speaker": "Narrator",
+          "Text": "{n}Down in the yard, Ilse is laughing, like a wren. She sees you at the window and waves, and holds up a blue ribbon for you to admire: for her wedding, she calls up. For the Third Company's sergeant. The lady Camellia helped her choose it.{/n}\n{n}Camellia waves back, very prettily, and does not take her eyes off your face while she does it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Wave back]",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.cost.friend_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed",
+        "camellia.trickster.bond.not_today"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
       ],
       "DelayHours": 96,
       "Optional": true,
@@ -209882,6 +213437,146 @@
         "589d83230bbbfd04bb1220ee4fef1ce1"
       ],
       "ContactUnit": "397b090721c41044ea3220445300e1b8"
+    },
+    {
+      "Id": "camellia.trickster.day.the_eve_alive",
+      "Title": "The eve",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Tomorrow we march on the Threshold.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Camellia",
+          "Text": "\"I know. The whole citadel is praying. I can hear them through the floor, like mice.\" {n}She is sitting on the end of your bed with her knife across her knees, polishing it, very slowly, with a square of silk.{/n} \"I've never been to a battle where everyone expected to die. It's rather beautiful. Everyone is being so kind to everyone else.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Camellia",
+          "Text": "\"May I ask you something, my friend? I've never asked anyone this before, because nobody I asked it of ever lived long enough to answer.\" {n}She holds the blade up to the lamp, and turns it.{/n} \"If you die tomorrow, will you do it convincingly?\"",
+          "Choices": [
+            {
+              "Text": "\"I don't intend to die.\"",
+              "Next": "intend",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"No. I'll do it so badly you'll have to come and tell me I'm overacting.\"",
+              "Next": "badly",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"If I do, I want your face to be the last thing I see.\"",
+              "Next": "face",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "intend",
+          "Speaker": "Camellia",
+          "Text": "\"Good.\" {n}She puts down the silk.{/n} \"Then don't.\" {n}Somewhere below, a sergeant is shouting the names of a watch roster, and a horse is refusing a cart. She listens to both for a moment.{/n} \"I did it once. I didn't care for the lying still. You'd hate it. You fidget.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "badly",
+          "Speaker": "Camellia",
+          "Text": "{n}For a moment she simply stares. Then she drops the knife on the blanket and laughs until she has to wipe her eyes on the corner of the silk.{/n}\n\"You would. You'd lie there on the Threshold with your mouth open and your eyes rolled up like a bad actor in a provincial farce, just to make me come and fetch you.\" {n}She shakes her head.{/n} \"And I would. I'd walk into whatever's left of the Abyss and tell your corpse it was an embarrassment. You've ruined dying for me forever. I hope you're pleased.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "face",
+          "Speaker": "Camellia",
+          "Text": "{n}Her hand stops on the blade.{/n}\n\"My face.\" {n}She says it very quietly.{/n} \"You want to see my face. At the end.\" {n}She looks down at the knife in her lap, and then back up at you, and her eyes are enormous and bright and quite dry.{/n}\n\"That's what I've always wanted. The other way round. And you'd give it to me for nothing, as a gift, as if it were a flower.\" {n}She puts the knife away, into its sheath, carefully, all the way home.{/n} \"Then you'd better not die tomorrow. I'm not ready for that. I want to be so much better at it first.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Camellia",
+          "Text": "\"Go to sleep. I'll sit up.\" {n}She takes the lamp to the window, and sits with her back to the wall and her knife across her knees, facing the door.{/n} \"Nothing is going to kill you in your sleep tonight, darling. I've made quite sure of that. I'm the only one in this city with the right.\"",
+          "Choices": [
+            {
+              "Text": "[Sleep]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.committed",
+        "camellia.trickster.bond.not_today"
+      ],
+      "Forbids": [
+        "camellia.closed",
+        "camellia.killed",
+        "camellia.dead",
+        "camellia.trickster.returned"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "camellia",
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ],
+      "ContactUnit": "397b090721c41044ea3220445300e1b8"
     }
   ],
   "Etudes": {
@@ -210001,8 +213696,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -210781,9 +214476,9 @@
     },
     "camellia": {
       "Title": "A dead woman's hand",
-      "Description": "Camellia is officially dead. The crusade buried her under a plain stone with the wrong flowers. She is not staying that way on my account, she says, and she has not said on whose.",
+      "Description": "Camellia kills the friends who trust her. She says so herself, when she is in the mood to be honest. She has decided, for now, that I am more interesting alive. She has not said for how long.",
       "Objective": "Answer Camellia",
-      "Guidance": "On the Trickster path, when you turn on Camellia, tell her to die convincingly. If her body fell some other way, tell it that it's overacting. A veiled woman may then ask for you at the end of Fye's bar in Drezen. Camellia chooses the hour.",
+      "Guidance": "On the Trickster path, play her games at camp and learn her dance; she will choose the hour. If you turn on her instead, tell her to die convincingly; if her body fell some other way, tell it that it's overacting. A veiled woman may then ask for you at the end of Fye's bar in Drezen.",
       "StartedFlag": "camellia.started",
       "ClosedFlag": "camellia.closed",
       "CommittedFlag": "camellia.committed",

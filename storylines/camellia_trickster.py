@@ -111,12 +111,12 @@ REGILL_GONE = ("regill.dead", "regill.kicked_out", "regill.left_plot")
 
 RELATIONSHIP = dict(
     Title="A dead woman's hand",
-    Description=("Camellia is officially dead. The crusade buried her under a plain stone with the wrong flowers. She is "
-                 "not staying that way on my account, she says, and she has not said on whose."),
+    Description=("Camellia kills the friends who trust her. She says so herself, when she is in the mood to be honest. She "
+                 "has decided, for now, that I am more interesting alive. She has not said for how long."),
     Objective="Answer Camellia",
-    Guidance=("On the Trickster path, when you turn on Camellia, tell her to die convincingly. If her body fell some other "
-              "way, tell it that it's overacting. A veiled woman may then ask for you at the end of Fye's bar in Drezen. "
-              "Camellia chooses the hour."),
+    Guidance=("On the Trickster path, play her games at camp and learn her dance; she will choose the hour. If you turn on "
+              "her instead, tell her to die convincingly; if her body fell some other way, tell it that it's overacting. A "
+              "veiled woman may then ask for you at the end of Fye's bar in Drezen."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[KILLED, DEAD, KICKED], FailureFlags=[],
     UnavailableOverrides={KILLED: RET, DEAD: RET},
@@ -181,13 +181,21 @@ def lead(seq, then):
     return nodes
 
 
-def _branch(nodes, killed):
-    """The twin's own copy of the nodes: drop choices gated on the other branch (camellia.killed), then drop nodes that are
-    no longer reachable from the first node."""
+def _branch(nodes, mode):
+    """The twin's own copy of the nodes. mode "killed" (the veiled Camellia at her presence), "camp" (raised from a
+    retained death, on her companion hub) or "alive" (never killed, on her companion hub). Choices gated on another branch
+    are dropped (by camellia.killed, her return, or her retained death), then nodes no longer reachable."""
     nodes = copy.deepcopy(nodes)
+
+    def keep(ch):
+        req, forb = set(ch["Requires"]), set(ch["Forbids"])
+        if mode == "killed":
+            return KILLED not in forb and RET not in forb
+        if mode == "camp":
+            return KILLED not in req and RET not in forb
+        return not req & {KILLED, RET, DEAD}
     for node in nodes:
-        node["Choices"] = [ch for ch in node["Choices"]
-                           if not (killed and KILLED in ch["Forbids"]) and not (not killed and KILLED in ch["Requires"])]
+        node["Choices"] = [ch for ch in node["Choices"] if keep(ch)]
         if not node["Choices"]:
             raise ValueError("branch pruning emptied node " + node["Id"])
     by_id = {node["Id"]: node for node in nodes}
@@ -202,20 +210,29 @@ def _branch(nodes, killed):
 
 
 def met(id, title, entry, nodes, requires, forbids=(), delay=24, optional=False, any_groups=(), camp_entry=None,
-        alive_ok=False):
-    """A physical scene after her return, in two hosts that never overlap. The veiled Camellia (killed) is met at her
-    presence at the end of Fye's bar in Drezen; a Camellia raised from a retained death is back on her own companion hub.
-    Both carry the same nodes; branch text is chosen inside the nodes by camellia.killed. On her companion hub the scene
-    requires her return, unless alive_ok (a scene the living, never-killed Camellia may also have), which forbids her death."""
+        alive_ok=False, living=None, living_groups=None, living_entry=None, living_title=None):
+    """A physical scene in up to three hosts that never overlap. The veiled Camellia (killed) is met at her presence at the
+    end of Fye's bar in Drezen; a Camellia raised from a retained death is back on her own companion hub (_camp). With
+    `living` (extra requires), a third twin (_alive) gives the same scene to a Camellia who was never killed, on her
+    companion hub: death is never the entry price of her romance. alive_ok is the older form for scenes the living and the
+    raised Camellia share in one twin (the oath)."""
     groups = dict(RequiresAnyGroups=[list(g) for g in any_groups]) if any_groups else {}
-    SCENES.append(scene(id, title, "Camellia", 3, entry, _branch(nodes, True),
+    SCENES.append(scene(id, title, "Camellia", 3, entry, _branch(nodes, "killed"),
                         requires=tuple(dict.fromkeys((*requires, KILLED, RET))), forbids=(CLOSED, *forbids),
                         delay=delay, last=5, optional=optional, Relationship=REL, Chapters=[3, 5], ContactUnit=UNIT,
                         Areas=[DREZEN], InteractionHub=PRESENCE, **groups))
-    SCENES.append(scene(id + "_camp", title, "Camellia", 3, camp_entry or entry, _branch(nodes, False),
+    SCENES.append(scene(id + "_camp", title, "Camellia", 3, camp_entry or entry, _branch(nodes, "alive" if alive_ok else "camp"),
                         requires=tuple(dict.fromkeys(requires if alive_ok else (*requires, RET))),
                         forbids=(CLOSED, KILLED, *((DEAD,) if alive_ok else ()), *forbids), delay=delay, last=5,
                         optional=optional, Relationship=REL, AnswerLists=[HUB_LIST], ContactUnit=UNIT, **groups))
+    if living is not None:
+        lgroups = living_groups if living_groups is not None else any_groups
+        lextra = dict(RequiresAnyGroups=[list(g) for g in lgroups]) if lgroups else {}
+        SCENES.append(scene(id + "_alive", living_title or title, "Camellia", 3, living_entry or camp_entry or entry,
+                            _branch(nodes, "alive"),
+                            requires=tuple(dict.fromkeys((*[r for r in requires if r != RET], *living))),
+                            forbids=(CLOSED, KILLED, DEAD, RET, *forbids), delay=delay, last=5, optional=optional,
+                            Relationship=REL, AnswerLists=[HUB_LIST], ContactUnit=UNIT, **lextra))
 
 
 # --- The joke, at the kill (P1 primers). Owlcat's inline mythic answers are the tone target. ---------------------------
@@ -439,7 +456,8 @@ met(P + "returned.terms", "What a dead woman wants", '"You said you would find m
         c("[Watch her go]")),
     cam("none", '''"Not in your crusade." {n}She repeats it like a phrase in a foreign grammar book, carefully, to be sure of the endings.{/n} "Then I am not in your crusade either, my friend. What a pity. It was such a nice crusade."''',
         c("[Let her go]", flags=(CLOSED,))),
-], requires=("trickster.ever", RET, LESSON), forbids=(TERMS,), delay=48)
+], requires=("trickster.ever", RET, LESSON), forbids=(TERMS,), delay=48, living=(),
+   living_entry='"Camellia. You said you had a price."', living_title="What she wants")
 
 TEST_LEADS = [
     ("knife", cam, '''"You found the knife under my skirt when we danced, and you did not pretend you hadn't. Nobody asks. They only ever find out."''', KNIFE_NOTICED),
@@ -471,14 +489,18 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("[Shout for the guard]", "guard")),
     cam("steady", '''"There. That face. Not dread. Not fury. Interest." {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}
 "I have killed every friend I ever had. I haven't decided about you. Let's call it an experiment, and see how long it runs."''',
-        c('[Ask her to stay] "Then stay."', "yes"),
+        c('[Ask her to stay] "Then stay."', "yes", requires=(RET,)),
+        c('[Ask her to stay] "Then stay."', "yes_a", forbids=(RET,)),
         c("[Ask her to put the knife away for good]", "no")),
     cam("blade", '''"Oh, good." {n}Neither of you moves. Two points, one breath.{/n} "Someone who cuts back. You have no idea how rare that is. The spirits are quite beside themselves. So am I, a little."''',
-        c('[Ask her to stay] "Then stay."', "yes"),
+        c('[Ask her to stay] "Then stay."', "yes", requires=(RET,)),
+        c('[Ask her to stay] "Then stay."', "yes_a", forbids=(RET,)),
         c("[Ask her to put the knife away for good]", "no")),
     cam("guard", '''"Guards. How terribly ordinary." {n}By the time the door opens, the window is open instead, and the lace caught on the sill is the only thing left of her.{/n}''',
         c("[Let her go]", flags=(GUARD, CLOSED))),
     cam("yes", '''"Stay? My friend, I never left. I simply stopped lying down." {n}She slides her knife into your belt, hilt first, and leaves her hand there.{/n} "Keep it close. One day I shall want it back, and you will know the day, because I shall be smiling."''',
+        c("[Keep it]", "threshold", flags=(COMMITTED,))),
+    cam("yes_a", '''"Stay?" {n}She laughs, softly, as if you had said something charming in a language she is still learning.{/n} "I've been staying for months, my friend. You simply never asked me in so many words." {n}She slides her knife into your belt, hilt first, and leaves her hand there.{/n} "Keep it close. One day I shall want it back, and you will know the day, because I shall be smiling."''',
         c("[Keep it]", "threshold", flags=(COMMITTED,))),
     nar("threshold", '''{n}She does not take her hand away. She takes your belt instead, and walks you backwards by it until the edge of the bed stops you, and then she climbs into your lap with her skirts in her fists and the knife's hilt digging into both of you.{/n}
 {n}She kisses the way she talks, politely and then not at all. Her teeth find your lower lip and test it, exactly as hard as she means to. Her breath is quick and hot and smells of lilies and iron. When your hands find the laces at her back she makes a small, pleased sound and does not help, and when the last one gives she catches your wrist and holds your palm flat over her heart, so you can count it with her. It is going very fast.{/n}
@@ -491,7 +513,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
     cam("no", '''{n}Her smile does not move, which is worse than if it had.{/n}
 "Without the knife? You want the woman and not the appetite. There is no such woman. There was, once, and her name was Mireya, and I made her up."''',
         c("[Watch her go]", flags=(TAME, CLOSED))),
-], requires=("trickster.ever", RET, TERMS), forbids=(COMMITTED,), delay=72)
+], requires=("trickster.ever", RET, TERMS), forbids=(COMMITTED,), delay=72, living=())
 
 
 # --- Optional: the oath (ledger 05 row 12): a woman Camellia herself killed, walking again. --------------------------
@@ -531,7 +553,7 @@ KEPT_PARAS = (
     p("{n}Somewhere in Drezen a body was found, one year, with no wounds but one, very neat, right where a friend would stand. The report said deserters. It was in the Commander's hand.{/n}", requires=(COVERED,)),
     p("{n}Anevia never stopped looking for the lower-city killer. She never found anyone, and she never quite believed that.{/n}", requires=(INVESTIGATED,)),
     p("{n}Once, when the Commander had been gone a season, she was found in the dark of the citadel with a knife in one hand and the other flat on the Commander's empty pillow, counting. Nobody asked her what.{/n}", requires=(NOT_TODAY,)),
-    p("{n}Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}", requires=(KILLED,)),
+    p("{n}She had been entered in the crusade's register as dead, and never troubled to correct it. Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}", requires=(KILLED,)),
     p("{n}The grave at the edge of the Drezen cemetery still bears her name. The Gwerm estate went to the crown. What lies in her coffin, only two people ever knew, and she never once asked for her name back.{/n}", requires=(FILLED,)),
     p("{n}Some nights the Commander still dreamed of the weight of a hanged man on a borrowed cart.{/n}", requires=(GALLOWS,)),
     p("{n}In Nerosyan, a widow named Mireya Voss kept a house in the Lantern Quarter for many years, and paid her taxes, and was said to have been married to a wine merchant who died of eels. Nobody ever saw her husband's grave.{/n}", requires=(NEW_NAME,)),
@@ -546,8 +568,8 @@ KEPT_PARAS = (
     p("{n}A banner-mender named Ilse took walks every evening with a veiled lady for three years. Every evening the Commander waited for her to come home, and watched her face when she did. Ilse married her sergeant in the spring. Camellia sent the flowers: white lilies, the wedding kind. Whether that was a gift or a promise, nobody ever found out. Least of all Ilse.{/n}", requires=(FRIEND_WATCHED,)),
 )
 SCENES.append(scene(P + "epilogue.kept", "", "CamelliaEpilogue", 6, "", [
-    nar("page", '''{n}Camellia Gwerm was entered in the crusade's register as dead, and never troubled to correct it. She stayed at the Commander's side through the Threshold and after it, a veiled woman whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}
-{n}She took no new friends, or said she took none. Once a year, on the date of her funeral, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}
+    nar("page", '''{n}Camellia Gwerm stayed at the Commander's side through the Threshold and after it, a lady in black whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}
+{n}She took no new friends, or said she took none. Once a year, on a date she would never explain, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}
 {n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
@@ -558,7 +580,7 @@ SCENES.append(scene(P + "epilogue.kept_on_record", "", "CamelliaEpilogue", 6, ""
     requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.cheated_death", CLOSED), **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "The knife, returned", "CamelliaEpilogue", 6, "", [
-    nar("page", '''{n}The war ended before Camellia finished her test. She finished it anyway. On one moonless night the next spring a veiled woman let herself into the Commander's rooms, laid a small clean knife on the pillow, point towards the door, and sat down to wait. She was still there in the morning. She said she had decided, on her own terms, that the Commander was more interesting alive. She did not say for how long.{/n}
+    nar("page", '''{n}The war ended before Camellia finished her test. She finished it anyway. On one moonless night the next spring she let herself into the Commander's rooms, laid a small clean knife on the pillow, point towards the door, and sat down to wait. She was still there in the morning. She said she had decided, on her own terms, that the Commander was more interesting alive. She did not say for how long.{/n}
 {n}She stayed. She kept the knife on the pillow between them, point towards the door, every night of her life, and every morning she was surprised to find that it was still there, and so was she.{/n}''')],
     requires=("trickster.ever", TERMS), forbids=(COMMITTED, CLOSED, DECLINED), **EP))
 

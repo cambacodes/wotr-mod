@@ -139,7 +139,7 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
         c("Continue", "close")),
     cam("close", '''"Whatever the truth is," {n}she says, some time later, from somewhere near your collar,{/n} "I'm not going to find out. I'm going to leave it exactly where it is. It's the first thing in my life I've ever wanted to leave alone."''',
         c("[Leave the cards where they fell]")),
-], requires=("trickster.ever", COMMITTED), delay=72, optional=True)
+], requires=("trickster.ever", COMMITTED), delay=72, optional=True, living=())
 
 
 # --- After her answer: two lies and a truth, again. -------------------------------------------------------------------
@@ -178,7 +178,7 @@ Three." {n}She holds your eyes.{/n} "I love you."''',
     cam("mine", '''"The first one's a lie," {n}she says at once, with enormous satisfaction.{/n} "You're a little afraid of me. You always have been. It's the nicest thing about you." {n}She pulls you down to her by the collar.{/n} "And the rest?"
 {n}You don't answer. You don't have to. She has already found the seam.{/n}''',
         c("[Put out the candle]")),
-], requires=("trickster.ever", COMMITTED, GAME), delay=72, optional=True)
+], requires=("trickster.ever", COMMITTED, GAME), delay=72, optional=True, living=())
 
 
 # --- After her answer: the amulet. -------------------------------------------------------------------------------------
@@ -187,7 +187,7 @@ met(AMULET, "The amulet", '"You haven\'t fed Mireya in weeks."', [
     cam("open", '''"No." {n}She is sitting by the window with the bone snake of the amulet in her open palm, looking at it as one looks at a letter from a relative one has stopped writing to.{/n} "I don't need to. I've been meaning to tell you why. I kept putting it off, because it's the last thing, and after it there won't be any more secrets, and I don't know what I'll do without them."''',
         c('"Tell me."', "tell", forbids=(UNMASKED,)),
         c('"Tell me."', "known", requires=(UNMASKED,))),
-    cam("known", '''"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up." {n}She turns the little snake over.{/n} "What I never told you is why I kept wearing her afterwards. Even after I'd confessed. Even dead."
+    cam("known", '''"You already know the worst of it. I told you in Kenabres, with my father's house around us and my knife in my hand: there is no Mireya. I made her up." {n}She turns the little snake over.{/n} "What I never told you is why I kept wearing her afterwards. Even after I'd confessed."
 "Habit, I thought. It isn't habit. She was the only friend I ever had who couldn't look at me. I made her so that someone would always be near me who wasn't afraid."''',
         c('"And now?"', "why")),
     cam("tell", '''{n}She turns the little snake over. Its empty eye sockets catch the light.{/n}
@@ -195,7 +195,7 @@ met(AMULET, "The amulet", '"You haven\'t fed Mireya in weeks."', [
         c('"I knew."', "knew"),
         c('"Why tell me now?"', "why"),
         c("[Say nothing]", "silent")),
-    cam("knew", '''"You knew." {n}She looks up sharply, and then, slowly, she starts to smile.{/n} "Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me. You called me back from the dead knowing it." {n}She closes her hand around the amulet.{/n} "You let me keep my imaginary friend." {n}Her eyes narrow, just slightly.{/n} "I wonder what you wanted in return. People always want something."''',
+    cam("knew", '''"You knew." {n}She looks up sharply, and then, slowly, she starts to smile.{/n} "Of course you knew. You've known what I was since the first time I lied to you, and you went on letting me." {n}She closes her hand around the amulet.{/n} "You let me keep my imaginary friend." {n}Her eyes narrow, just slightly.{/n} "I wonder what you wanted in return. People always want something."''',
         c("Continue", "close")),
     cam("why", '''"Because I don't need a reason any more." {n}She opens her hand and looks at the snake.{/n} "I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you didn't need me to have a reason. You just... watched. You watched, and you stayed." {n}She shrugs, a small, bewildered movement.{/n} "She's out of work. Poor thing. I made her up and now I've made her redundant."''',
         c("Continue", "close")),
@@ -205,4 +205,4 @@ met(AMULET, "The amulet", '"You haven\'t fed Mireya in weeks."', [
     cam("close", '''{n}She holds the amulet out to you, dangling from its cord.{/n}
 "Here. You have her. Put her on your shelf, next to my list. Next to your name." {n}She folds your fingers around the little bone snake.{/n} "If anyone ever asks, tell them she was a very old and very beautiful spirit, and that she was mine. It isn't true. But it's the nicest thing I ever made."''',
         c("[Keep it]", flags=(AMULET_KEPT,))),
-], requires=("trickster.ever", COMMITTED), delay=72, optional=True)
+], requires=("trickster.ever", COMMITTED), delay=72, optional=True, living=())

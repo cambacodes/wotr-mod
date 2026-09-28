@@ -293,7 +293,7 @@ SCENES.append(scene(P + "beat.spirits_due", "The spirits' due", "Camellia", 3,
 # --- The lesson: where a friend would stand. -------------------------------------------------------------------------
 
 met(P + "beat.lesson", "Where a friend would stand", '"You said you wanted to teach me something."', [
-    cam("open", '''"I did. Lock the door." {n}She waits until you have. Then she draws the small clean knife, not from her sleeve, but from yours; you did not feel her put it there.{/n} "You've been carrying it wrong. Everybody does. They carry it as if they might need it. You should carry it as if you've already decided."''',
+    cam("open", '''"I did. Lock the door." {n}She waits until you have. Then she draws the small clean knife, not from her sleeve, but from yours; you did not feel her put it there.{/n} "You've been carrying it since breakfast, and wrong. Everybody does. They carry it as if they might need it. You should carry it as if you've already decided."''',
         c("Continue", "where")),
     cam("where", '''{n}She takes your hand and closes it round the hilt, and then she moves your hand, slowly, the way the dancing master moved her feet.{/n}
 "Not here. Everybody goes for here. It's a soldier's mistake. The ribs are in the way." {n}She moves it an inch to the side, under her own breastbone.{/n} "Here. Up and in. And you must be close. As close as a friend. Close enough that they don't see it coming, because they're looking at your face."''',
@@ -318,7 +318,8 @@ met(P + "beat.lesson", "Where a friend would stand", '"You said you wanted to te
         c("Continue", "done", flags=(LESSON, FLINCHED))),
     cam("done", '''"Go now. I have to think about my price." {n}She is at the door before you, unlocking it.{/n} "I've never had to set one before. Nobody ever lived long enough to pay."''',
         c("[Go]")),
-], requires=("trickster.ever", RET), forbids=(LESSON,), delay=24, any_groups=[[GRAVE, DUE]])
+], requires=("trickster.ever", RET), forbids=(LESSON,), delay=24, any_groups=[[GRAVE, DUE]],
+   living=(DANCE,), living_groups=())
 
 
 # === After her answer ===================================================================================================
@@ -333,7 +334,13 @@ met(P + "bond.shelf", "The shelf", '"Camellia. What have you done to my room?"',
         c('"What list?"', "list")),
     cam("list", '''{n}You unfold it. It is a list of names in her small, beautiful, schoolroom hand, perhaps thirty of them. Some are crossed out. Beside every crossed-out name is a date. You recognise two: a steward from Kenabres who was found in a canal, and a chaplain in Drezen who fell down a stair. At the very top of the list is your own name. It has been crossed out, very neatly, and written again underneath.{/n}''',
         c("Continue", "what", requires=(KILLED,)),
-        c("Continue", "what_d", forbids=(KILLED,))),
+        c("Continue", "what_d", requires=(RET,), forbids=(KILLED,)),
+        c("Continue", "what_a", forbids=(RET,))),
+    cam("what_a", '''"Those are my friends." {n}She says it with great tenderness.{/n} "All my friends. The ones with lines through them, I have finished being friends with. The others are still waiting. They don't know that. It's the only kindness I can do them."
+{n}She slices the apple.{/n} "I wrote you in the evening you beat me at my own game. I crossed you out the night I decided how I'd do it. Then I wrote you in again. I've never kept a name I've crossed out. I thought you ought to have it."''',
+        c("[Fold it and put it back on the shelf]", "kept"),
+        c("[Hold it to the candle]", "burned"),
+        c('"There are names on here that aren\'t crossed out."', "names")),
     cam("what", '''"Those are my friends." {n}She says it with great tenderness.{/n} "All my friends. The ones with lines through them, I have finished being friends with. The others are still waiting. They don't know that. It's the only kindness I can do them."
 {n}She slices the apple.{/n} "I crossed you out the night you told me to die convincingly. Then I wrote you in again. I have never done that before. I thought you ought to have it. It's the most romantic thing I own."''',
         c("[Fold it and put it back on the shelf]", "kept"),
@@ -354,7 +361,7 @@ met(P + "bond.shelf", "The shelf", '"Camellia. What have you done to my room?"',
     cam("burned", '''{n}The paper catches at the corner and goes up all at once, as old paper does. She watches it burn with her chin on her hand and an expression of great, patient amusement.{/n}
 "How gallant. How completely useless." {n}She taps her temple with the point of the knife.{/n} "I have them all by heart, my friend. I wrote them down for you, not for me." {n}She picks up the apple again.{/n} "But you tried. I do like it when you try."''',
         c("[Brush the ash off the shelf]", flags=(SHELF, LIST_BURNED))),
-], requires=("trickster.ever", COMMITTED), forbids=(SHELF,), delay=48)
+], requires=("trickster.ever", COMMITTED), forbids=(SHELF,), delay=48, living=())
 
 
 # --- The witness. ------------------------------------------------------------------------------------------------------
@@ -362,7 +369,10 @@ met(P + "bond.shelf", "The shelf", '"Camellia. What have you done to my room?"',
 met(P + "bond.witness", "The witness", '"You\'re worried. You never look worried."', [
     cam("open", '''"I'm not worried. I'm inconvenienced." {n}She is pacing, which you have never seen her do: six steps to the wall, six back, her skirts hissing.{/n} "Someone saw me."''',
         c("Continue", "killed_w", requires=(KILLED,)),
-        c("Continue", "dead_w", forbids=(KILLED,))),
+        c("Continue", "dead_w", requires=(RET,), forbids=(KILLED,)),
+        c("Continue", "alive_w", forbids=(RET,))),
+    cam("alive_w", '''"A lamplighter in the lower city, last week. I was very neat. I always am." {n}She stops pacing.{/n} "He didn't see anything but my face coming out of the alley behind the tannery, and my face is very memorable, and now the porter is dead and there is a man in a tavern by the river telling everyone who will listen that he saw a lady come out of that alley with her sleeves rolled up."''',
+        c("Continue", "choice")),
     cam("killed_w", '''"A woman at the chapel, at the service for the Kenabres dead. I went for the music. I sat at the back, and I lifted my veil, just for a moment, because it was very hot. And a woman in the pew in front turned round." {n}She stops pacing.{/n} "She knew me. She used to buy candles from my father's steward. She went white as a sheet and said 'Lady Gwerm' in front of the chaplain, and then she fainted. They carried her out. She's in the infirmary. She's telling everyone who will listen that she saw a dead woman in church."''',
         c("Continue", "choice")),
     cam("dead_w", '''"A night-soil man in the lower city. The night the spirits were paid." {n}She stops pacing.{/n} "He saw me come out of the alley. He didn't see anything else, he couldn't have, I was very neat. But he saw my face, and my face is very memorable, and now the porter is dead and there is a man in a tavern by the river telling everyone who will listen that he saw a lady come out of that alley with her sleeves rolled up."''',
@@ -379,7 +389,7 @@ met(P + "bond.witness", "The witness", '"You\'re worried. You never look worried
     cam("hers", '''"Thank you." {n}She says it as sincerely as she has ever said anything. She kisses your cheek, and straightens your collar, and leaves.{/n}
 {n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not stop.{/n}''',
         c("[Hold her gaze]", flags=(WITNESS_HERS,))),
-], requires=("trickster.ever", COMMITTED, SHELF), forbids=(WITNESS_LIED, WITNESS_HERS), delay=72)
+], requires=("trickster.ever", COMMITTED, SHELF), forbids=(WITNESS_LIED, WITNESS_HERS), delay=72, living=())
 
 
 # --- Not today. --------------------------------------------------------------------------------------------------------
@@ -412,4 +422,4 @@ met(P + "bond.not_today", "Not today", '"You\'re very quiet tonight."', [
     nar("night", '''{n}She takes the knife off the sill and puts it, point first, in the wood of the window frame, where it quivers and is still. Then she takes your face in both hands and kisses you, slowly, thoroughly, with her eyes open, as if she means to remember exactly what your face does.{/n}
 {n}Her hands are cold from the window and then they are not. She undoes your shirt one button at a time and counts them under her breath, the way she counted the dance. On the last button she stops counting and pulls you down onto the bed with her, and the rain goes on and on against the shutters, and neither of you hears it.{/n}''',
         c("[Put out the candle.]")),
-], requires=("trickster.ever", COMMITTED), any_groups=[[WITNESS_LIED, WITNESS_HERS]], forbids=(NOT_TODAY,), delay=72)
+], requires=("trickster.ever", COMMITTED), any_groups=[[WITNESS_LIED, WITNESS_HERS]], forbids=(NOT_TODAY,), delay=72, living=())

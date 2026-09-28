@@ -290,6 +290,27 @@ internal static class CamelliaTricksterTests
             "Her price does not follow the lesson on her companion hub.");
         check(!testCamp.Requires.Contains(Killed), "The raised branch's test requires the killed state.");
 
+        // --- Death is never the entry price: a Camellia who was never killed reaches the same lesson, price, test and commit
+        // on her own companion hub, after the courtship's dance (the _alive twins). -------------------------------------
+        foreach (var twin in story.Scenes.Where(s => s.Relationship == "camellia" && s.Id.EndsWith("_alive", StringComparison.Ordinal)))
+            check(twin.AnswerLists.SequenceEqual(new[] { Hub }) && twin.InteractionHub == null && twin.Forbids.Contains(Killed)
+                  && twin.Forbids.Contains(Dead) && twin.Forbids.Contains(Returned) && !twin.Requires.Contains(Returned)
+                  && !twin.Nodes.SelectMany(n => n.Choices).Any(c => c.Requires.Contains(Killed) || c.Requires.Contains(Returned) || c.Requires.Contains(Dead)),
+                "A living twin needs her death, or keeps the dead branches' choices: " + twin.Id);
+        var danced = World(story, 4, "trickster", "trickster.ever", P + "masks.game", P + "masks.two_lies", P + "masks.mireya",
+                           P + "masks.a_dance_with_a_knife_in_it", P + "masks.danced");
+        var lessonAlive = S(P + "beat.lesson_alive");
+        check(Avail(lessonAlive, Later(story, danced, 100)), "The living Camellia's lesson does not follow the dance.");
+        var taughtAlive = Take(lessonAlive, Later(story, danced, 100), "steady", 0, P + "beat.lesson");
+        var termsAlive = S(P + "returned.terms_alive");
+        check(Avail(termsAlive, Later(story, taughtAlive, 100)), "Her price does not follow the lesson, alive.");
+        var pricedAlive = Take(termsAlive, Later(story, taughtAlive, 100), "price", 0, P + "cost.bled", P + "terms_named");
+        var testAlive = S(P + "returned.test_alive");
+        check(Avail(testAlive, Later(story, pricedAlive, 100)), "Her test does not follow her price, alive.");
+        var yesAlive = Take(testAlive, Later(story, pricedAlive, 100), "yes_a", 0, Committed);
+        check(!yesAlive.Has(Killed) && !yesAlive.Has(Returned), "The living commit passed through a death.");
+        check(Avail(S(P + "bond.shelf_alive"), Later(story, yesAlive, 100)), "The life after her answer does not follow a living commit.");
+
         // --- After her answer: the intimate scenes sit only behind the commit; the life goes on. ----------------------
         var afterCommit = new[] { "bond.shelf", "bond.witness", "bond.not_today", "evening.breakfast", "evening.a_gift_for_a_dead_woman",
             "evening.the_prisoner", "evening.the_mirror", "cards.the_deck_again", "cards.two_lies_again", "cards.the_amulet",

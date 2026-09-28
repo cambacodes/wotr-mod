@@ -65,4 +65,4 @@ met(EVE, "The eve", '"Tomorrow we march on the Threshold."', [
         c("Continue", "close")),
     cam("close", '''"Go to sleep. I'll sit up." {n}She takes the lamp to the window, and sits with her back to the wall and her knife across her knees, facing the door.{/n} "Nothing is going to kill you in your sleep tonight, darling. I've made quite sure of that. I'm the only one in this city with the right."''',
         c("[Sleep]")),
-], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=48, optional=True)
+], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=48, optional=True, living=())
