@@ -31,6 +31,7 @@ TOLD_SOCOTH = "eritrice.told_socoth"          # Council_Eritrice/Cue_0018 or Cue
 NARROW = "eritrice.narrow_outlook"            # Council_1/Cue_0024: "the mortal brain is capable of conceiving an idea"
 CIPHER = "eritrice.cipher_unread"             # Council_Lexicon2/Cue_0050: "But I can't read it. You try."
 PROPOSED_KEY = "eritrice.proposed_key"        # Council_Lexicon2/Cue_0040 "Why, you, of course!" or Cue_0046 "At worst, you'll die"
+ESSENCE_GIVEN = "eritrice.essence_given"      # Council_Eritrice/Cue_0026 "I won't lie, it was excruciating." (she gave hers, allied branch)
 
 SEEN_CUES = {
     CHAIR_USURPED: ["cf4e1e4352bb4fe4ea85d93d82c4b4b5"],
@@ -41,6 +42,7 @@ SEEN_CUES = {
     NARROW: ["68981c2d5949c2744a2a985813222f01"],
     CIPHER: ["88a1ec4c7221d0e4ea21a18133b43749"],
     PROPOSED_KEY: ["c455162655e5aa74fa10d6445315c7a3", "3d5645ec9fcc0b147bcae86edb345795"],
+    ESSENCE_GIVEN: ["449c6513d5c3b9844bf29547b3ce33ab"],
 }
 
 POINT_ONE = M + "point_one"
@@ -606,7 +608,7 @@ EPILOGUE_PARAGRAPHS = [
     (MINUTED, "{n}The minutes of one private session were sealed by the chair and marked \"not to be read by Alichino\". Alichino read them. He was not seen at the Council for a decade, and when he returned, he did not meet the chair's eyes.{/n}"),
     (OMITTED, "{n}Among thousands of pages of minutes there is one entry that reads only \"The chair was otherwise occupied.\" It is the only evasion ever found in her records, and she annotated it, in her smallest hand: \"Learned from the Commander. Not regretted.\"{/n}"),
     (AFTER_WAR, "{n}The standing item remained on every agenda for as long as there were agendas: what the Commander intends to do after the war. The answer was entered anew every session, in two hands. It never changed much.{/n}"),
-    (URGED, "{n}She gave her essence to the cauldron, and afterwards she told the Commander that it had been excruciating, because she had promised to say so.{/n}"),
+    ((URGED, ESSENCE_GIVEN), "{n}She gave her essence to the cauldron, and afterwards she told the Commander that it had been excruciating, because she had promised to say so.{/n}"),
     (PROMISED, "{n}The Commander's promise that nobody would take anything from her by force was entered in her minutes the week before the cauldron came. She kept the page folded down.{/n}"),
     (M + "temper_warned", "{n}In the Commander's hand, in the margin of a session that ended in overturned chairs: \"The Commander warned the chair.\" She read it more often than anyone knew.{/n}"),
 ]
@@ -621,4 +623,5 @@ def integrate(payload):
         payload["SeenCues"][key] = list(cues)
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["eritrice.trickster.epilogue.we_did_meet"]["Nodes"][0]
-    page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    page.setdefault("Paragraphs", []).extend(p(text, requires=flag if isinstance(flag, tuple) else (flag,))
+                                             for flag, text in EPILOGUE_PARAGRAPHS)

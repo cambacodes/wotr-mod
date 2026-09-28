@@ -184914,7 +184914,8 @@
             {
               "Text": "{n}She gave her essence to the cauldron, and afterwards she told the Commander that it had been excruciating, because she had promised to say so.{/n}",
               "Requires": [
-                "eritrice.minutes.essence_urged"
+                "eritrice.minutes.essence_urged",
+                "eritrice.essence_given"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -191532,8 +191533,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -192573,6 +192574,9 @@
     "eritrice.proposed_key": [
       "c455162655e5aa74fa10d6445315c7a3",
       "3d5645ec9fcc0b147bcae86edb345795"
+    ],
+    "eritrice.essence_given": [
+      "449c6513d5c3b9844bf29547b3ce33ab"
     ],
     "eritrice.aid_moved": [
       "6cc3a4f0d7dc4c949b62a80dc81cabc0"

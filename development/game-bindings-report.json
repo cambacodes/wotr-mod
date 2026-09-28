@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-eritrice\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2006,
-  "unique_targets": 517,
+  "binding_uses": 2007,
+  "unique_targets": 518,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -380,6 +380,10 @@
     },
     "9b90dc19d38651741b19e380a2bfe2ff": {
       "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0019.jbp",
+      "type": "BlueprintCue"
+    },
+    "449c6513d5c3b9844bf29547b3ce33ab": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0026.jbp",
       "type": "BlueprintCue"
     },
     "1a17d8053a3be7f47a7908eb6706f2fe": {
