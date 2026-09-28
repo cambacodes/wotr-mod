@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-targona\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1741,
-  "unique_targets": 448,
+  "binding_uses": 1764,
+  "unique_targets": 454,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -24,6 +24,10 @@
     },
     "54be53f0b35bf3c4592a97ae335fe765": {
       "path": "Units/Companions/Seelah/Seelah_Companion.jbp",
+      "type": "BlueprintUnit"
+    },
+    "81297c673b63b60448ef88a10db6bc78": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/AreeluLab/AngelTargona.jbp",
       "type": "BlueprintUnit"
     },
     "b5e867e13503c6f41bb1316705efb4a2": {
@@ -150,9 +154,17 @@
       "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
       "type": "BlueprintCue"
     },
+    "67eb3b5ed760435487fb011f454988e8": {
+      "path": "World/Dialogs/c1/EstrodTower/Teldon/Cue_3.jbp",
+      "type": "BlueprintCue"
+    },
     "f21279d12e1c70449bd037e75d7fd4a7": {
       "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
       "type": "BlueprintCue"
+    },
+    "2a75fbc8e86fd514e82117c99fc9e528": {
+      "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
     },
     "190fda58a169c9340b626f1a503c696f": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0011.jbp",
@@ -638,6 +650,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "129b55b8b5d50974f84f7c607d894fd0": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Sosiel/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "ced27e744d2dded40bbb5adf17816dbb": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -1028,6 +1044,14 @@
     },
     "6d3fb96f9b60c0449a01add4be5c4a49": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+      "type": "BlueprintEtude"
+    },
+    "08190b43ca1b76447890752f6d8167f3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SosielCompanion/SosielNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "2c4abd2b51e4307469e034d9919850c2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SosielCompanion/SosielNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
     "4863a2dfe7f847e588df50710ebf2a3f": {
