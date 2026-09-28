@@ -275,6 +275,11 @@ internal static class Program
             }
             foreach (var ordinary in story.Scenes.Where(s => s.Relationship == recovery.Relationship && s.Recovery == null && !s.Owner.EndsWith("Epilogue")))
             {
+                // G6: a scene that Requires the relationship's declared override of this death (a Trickster return that
+                // lifts it, e.g. a Seelah raised far from her body), or an ER-2 device answering the death itself, is not an
+                // ordinary conversation.
+                if (relationship.UnavailableOverrides.TryGetValue(revival.DeathFlag, out var lift) && ordinary.Requires.Contains(lift)
+                    || ordinary.TricksterDevice && ordinary.Requires.Contains(revival.DeathFlag)) continue;
                 var dead = new Snapshot { Chapter = ordinary.MinChapter, Hour = 10000, Area = ordinary.Areas.FirstOrDefault() ?? "" };
                 dead.Flags.UnionWith(ordinary.Requires);
                 dead.Flags.Add(revival.DeathFlag);
@@ -448,6 +453,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "soana.trickster.killed.knot")) SoanaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) ArankaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "gesmerha.trickster.dead.unfinished_work")) GesmerhaTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket")) SeelahTricksterTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))

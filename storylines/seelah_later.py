@@ -71,8 +71,11 @@ s("door", "The latch on the inside", 3, '"Could we have an evening somewhere wit
       c('[Kiss her again, then settle beside her to talk.]', "quiet", flags=("seelah.kissed",))),
     n("night", "Seelah", '''{n}She turns the latch, then comes back to you. In the lamplight you can see the old scars on her hands and the small crease of a smile she keeps failing to suppress.{/n}
 "You can tell me if I'm being clumsy," she says. "Preferably before I knock the lamp over."
+{n}She is not clumsy. She unbuckles her sword belt and hangs it on the bedpost as if it has earned a rest, then pulls her shirt over her head in one impatient motion and stands there in the lamplight, freckled to the waist, grinning at your face.{/n}
+"I've been thinking about that look all day," she says. "Now you. Hurry up. I'm a paladin, not a saint."
+{n}She helps, which is to say she undoes your laces faster than you do and kisses every part of you that comes free of them. The bed is too narrow for two and she does not care. She pushes you down onto it, climbs over you, knees either side of your hips, and takes your face in both hands to kiss you, slow now, as she settles her weight down onto you.{/n}
 {n}The lamp survives. Neither of you remembers to put it out until much later.{/n}
-{n}When the room is quiet, Seelah finds your hand beneath the blanket and holds it as she falls asleep.{/n}''', c('[Stay through the night.]', flags=("seelah.lovers", "seelah.private_night", "seelah.kissed"))),
+{n}When the room is quiet, Seelah finds your hand beneath the blanket and holds it as she falls asleep, still smiling, one foot hooked over yours as if you might try to leave.{/n}''', c('[Stay through the night.]', flags=("seelah.lovers", "seelah.private_night", "seelah.kissed"))),
     n("quiet", "Seelah", '''"Then we'll have a quiet evening. I can manage one of those."
 {n}She settles beside you, then makes a face.{/n}
 "That sounded like a challenge. Give me a moment."
@@ -305,7 +308,7 @@ s("parting", "A conversation without armor", 3, '"We need to talk about our rela
 "I'm going to miss you. I may need a little space before I get good at being your friend again."
 {n}She looks away, then back at you.{/n}
 "But I'm glad you said it to me. I would have hated guessing from the way you stopped looking for me."''', c('[Part honestly.]', flags=("seelah.closed", "seelah.parted",))),
-    n("stay", "Seelah", '''"Then let's choose a time now. I don't want us to keep being understanding until there's nothing left to understand."
+    n("stay", "Seelah", '''"Then let's choose a time now. Out loud, with a day in it." She counts on her fingers. "I've had three suppers go cold waiting for you this month, and I told everyone who asked that you were busy saving the world. You were. I still ate them alone."
 {n}She waits while you work out when you can both be free.{/n}''', c('[Keep the relationship and make a plan.]', abort=True)),
 ], requires=("seelah.lovers",), optional=True)
 
