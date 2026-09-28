@@ -135,6 +135,12 @@ internal static class JerribethProgressionTests
                     "Catch-up erases or retimes the old farewell.");
             }
             if (history == "short") state = Play("ordinary", state, queue: true);
+            if (state.Chapter == 3)
+            {
+                // JER-08: the Chapter 3 courtship is eight letters; the campaign waits for Chapter 4-5.
+                check(!Rules.Available(story, Find(campaign[0]), state), "JER-08: the campaign opens in Chapter 3.");
+                state.Chapter = 5;
+            }
             bool automatic = true;
             foreach (string id in campaign)
             {

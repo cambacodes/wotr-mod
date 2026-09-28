@@ -10,7 +10,7 @@ internal static class JerribethCounterofferTests
         Scene Find(string id) => story.Scenes.Single(s => s.Id == "jerribeth." + id);
         var scenes = story.Scenes.Where(s => s.Id.StartsWith("jerribeth.counterfeit_")).ToArray();
         var observed = new HashSet<string>();
-        foreach (int chapter in new[] { 3, 4, 5 })
+        foreach (int chapter in scenes[0].Chapters)   // JER-08: Chapters 4-5
         foreach (bool exposed in new[] { false, true })
         {
             var state = new Snapshot { Chapter = chapter, Area = scenes[0].Areas[chapter == 4 ? 1 : 0], Hour = 1000 };
@@ -58,7 +58,7 @@ internal static class JerribethCounterofferTests
             check(observed.Contains("jerribeth." + outcome), "Counteroffer misses consequential outcome: " + outcome);
         foreach (var scene in scenes)
         {
-            var ready = new Snapshot { Chapter = 3, Area = scene.Areas[0], Hour = 1000 };
+            var ready = new Snapshot { Chapter = scene.Chapters[0], Area = scene.Areas[scene.Chapters[0] == 4 ? 1 : 0], Hour = 1000 };   // JER-08
             ready.Flags.UnionWith(scene.Requires);
             check(Rules.Available(story, scene, ready), "Counteroffer valid baseline unavailable.");
             foreach (string blocker in scene.Forbids)

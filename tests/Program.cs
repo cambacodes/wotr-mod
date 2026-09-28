@@ -430,6 +430,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) JerribethTricksterTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
@@ -533,7 +534,7 @@ internal static class Program
                 Scenes = story.Scenes.Where(s => s.Id == "jerribeth.parting" || s.Id == "jerribeth.offered_signature").ToList()
             };
             var visit = delivery.Scenes.Single(s => s.Id == "jerribeth.offered_signature");
-            var ready = new Snapshot { Chapter = 3, Area = visit.Areas[0], Hour = 1000 };
+            var ready = new Snapshot { Chapter = 5, Area = visit.Areas[0], Hour = 1000 };   // JER-08: offered_signature is a Chapter 4-5 letter
             ready.Flags.UnionWith(visit.Requires);
             ready.Flags.Add("jerribeth.lovers");
             Check(Rules.NextRemote(delivery, ready)?.Id == visit.Id, "Jerribeth repeatable breakup starves the next eligible continuation.");
@@ -1317,7 +1318,7 @@ internal static class Program
                 for (int attempt = 0; attempt < story.Scenes.Count; attempt++)
                 {
                     state.Hour += 48;
-                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "jerribeth" && s.Id != "jerribeth.parting" && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
+                    var next = story.Scenes.FirstOrDefault(s => s.Relationship == "jerribeth" && s.Id != "jerribeth.parting" && !s.Id.StartsWith("jerribeth.trickster.") && !s.Owner.EndsWith("Epilogue") && Rules.Available(story, s, state));
                     if (next == null) break;
                     Check(Rules.EntryTargets(next).Length == 0 && Rules.IsRemote(next), "Jerribeth correspondence takes over a native encounter.");
                     var outcomes = Walk(next, state).Where(s => s.Has(next.Id) && !s.Has("jerribeth.closed"));
@@ -1328,7 +1329,8 @@ internal static class Program
             }
             Check(state.Has("jerribeth.farewell_kept") && state.Has("jerribeth.committed"), "Jerribeth campaign cannot reach farewell.");
             Check(state.Has("jerribeth.fate_terms"), "Jerribeth Trickster response is unreachable.");
-            Check(state.Has("jerribeth.refuge_acknowledged") == patronLost, "Jerribeth patron-loss aftermath has wrong availability.");
+            // COX edit (Trickster spec): the refuge gates on her own evidence; the patron loss is a variant of its text.
+            Check(state.Has("jerribeth.refuge_acknowledged"), "Jerribeth refuge unreachable on her own evidence.");
             Check(state.Has("jerribeth.warned") != patronLost, "Jerribeth offers a dead patron's protection.");
             Check(state.Has("jerribeth.collection") == knowledge, "Jerribeth Xanthir topic ignores actual knowledge.");
             Check(!state.Has("jerribeth.condemned_wintersun") || knowledge, "Jerribeth debate invents knowledge of Wintersun.");

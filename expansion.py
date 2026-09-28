@@ -38,6 +38,7 @@ from storylines import arsinoe_campaign
 from storylines import arsinoe_trickster, trickster_world
 from storylines import irabeth_trickster
 from storylines import anevia_trickster
+from storylines import jerribeth_trickster
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -302,6 +303,9 @@ def make_expansion(*, independent_tirabade=True):
     if "anevia" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(anevia_trickster.SCENES))
         anevia_trickster.integrate(payload)
+    if "jerribeth" in payload["Relationships"]:
+        payload["Scenes"].extend(copy.deepcopy(jerribeth_trickster.SCENES))
+        jerribeth_trickster.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

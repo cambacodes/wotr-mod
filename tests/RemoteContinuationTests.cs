@@ -32,6 +32,7 @@ internal static class RemoteContinuationTests
             "A required historical death incorrectly blocks a grief conversation.");
         var refuge = Find("jerribeth.refuge");
         var patronLost = Ready(refuge);
+        patronLost.Flags.Add("jerribeth.patron_lost");   // a variant read since the Trickster COX edit, no longer a gate
         check(patronLost.Has("jerribeth.patron_lost") && Rules.ContactAvailable(story, refuge, patronLost),
             "A required patron loss incorrectly blocks the refuge conversation.");
 

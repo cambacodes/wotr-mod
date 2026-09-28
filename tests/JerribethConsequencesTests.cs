@@ -8,7 +8,7 @@ internal static class JerribethConsequencesTests
     internal static void Run(Story story, Action<bool, string> check)
     {
         Scene Find(string id) => story.Scenes.Single(s => s.Id == "jerribeth." + id);
-        foreach (int chapter in new[] { 3, 4, 5 })
+        foreach (int chapter in Find("offered_signature").Chapters)   // JER-08: Chapters 4-5
         foreach (string area in Find("offered_signature").Areas)
         foreach (bool wintersun in new[] { false, true })
         {
@@ -63,7 +63,7 @@ internal static class JerribethConsequencesTests
         }
         foreach (var scene in story.Scenes.Where(s => new[] { "offered_signature", "borrowed_sun", "small_print", "unsold_evening", "purchaser_answer" }.Any(id => s.Id == "jerribeth." + id)))
         {
-            var ready = new Snapshot { Chapter = 3, Area = scene.Areas[0], Hour = 1000 };
+            var ready = new Snapshot { Chapter = scene.Chapters[0], Area = scene.Areas[scene.Chapters[0] == 4 ? 1 : 0], Hour = 1000 };
             ready.Flags.UnionWith(scene.Requires);
             check(Rules.Available(story, scene, ready), "Jerribeth consequence readiness fixture invalid.");
             check(!Rules.EntryTargets(scene).Any(), "Remote Jerribeth scene attaches to native conversation.");
@@ -77,7 +77,7 @@ internal static class JerribethConsequencesTests
                 var state = Program.Copy(ready); state.Flags.Add(blocked);
                 check(!Rules.Available(story, scene, state), "Jerribeth ignores blocker: " + blocked);
             }
-            ready.Chapter = 2;
+            ready.Chapter = 3;   // JER-08: not a Chapter 3 letter any more
             check(!Rules.Available(story, scene, ready), "Jerribeth consequence appears too early.");
             ready.Chapter = 5; ready.Area = "elsewhere";
             check(!Rules.Available(story, scene, ready), "Jerribeth consequence ignores area.");
