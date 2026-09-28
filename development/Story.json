@@ -220724,7 +220724,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Her body lies where it fell, wings spread over the bones of her boys. It has not rotted. Demons are tidy that way: nothing in the Abyss wants to eat a succubus except another succubus, and they have manners about it.{/n}\n{n}In the rubble a vrock with a broken beak is picking through the dead for rings. It owes you its life from the fight; you let it crawl away. You catch it by the scruff of its feathered neck.{/n}",
+          "Text": "{n}Her body lies where it fell, wings spread over the bones of her boys. It has not rotted, and nothing in the lair has touched it. The rubble around her is thick with scavengers, and every one of them gives her a wide berth, as if something far away had already laid a claim to her.{/n}\n{n}In the rubble a vrock with a broken beak is picking through the dead for rings. It owes you its life from the fight; you let it crawl away. You catch it by the scruff of its feathered neck.{/n}",
           "Choices": [
             {
               "Text": "[Give the vrock the referral, word for word] \"Say this to your queen: patient, one succubus, deceased, misdiagnosed. Requesting a second opinion. Now say it back to me.\"",
@@ -230831,8 +230831,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

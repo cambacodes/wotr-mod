@@ -227,7 +227,7 @@ SCENES.append(scene(P + "evil.diagnosis", "Bedside manner", "Arueshalae", 5,
     TricksterDevice=True, TricksterState="evil_dead"))
 
 letter(P + "evil.late_referral", "A referral, posthumously", 5, [
-    nar("start", '''{n}Her body lies where it fell, wings spread over the bones of her boys. It has not rotted. Demons are tidy that way: nothing in the Abyss wants to eat a succubus except another succubus, and they have manners about it.{/n}
+    nar("start", '''{n}Her body lies where it fell, wings spread over the bones of her boys. It has not rotted, and nothing in the lair has touched it. The rubble around her is thick with scavengers, and every one of them gives her a wide berth, as if something far away had already laid a claim to her.{/n}
 {n}In the rubble a vrock with a broken beak is picking through the dead for rings. It owes you its life from the fight; you let it crawl away. You catch it by the scruff of its feathered neck.{/n}''',
         c('[Give the vrock the referral, word for word] "Say this to your queen: patient, one succubus, deceased, misdiagnosed. Requesting a second opinion. Now say it back to me."',
           "sent", mythic="Trickster", flags=(PRIMED, LATE)),
