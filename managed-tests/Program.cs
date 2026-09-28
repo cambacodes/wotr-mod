@@ -174,6 +174,12 @@ internal static class Program
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintUnlockableFlag", StringComparison.Ordinal), "Wrong native flag type: " + guid);
             Seed<BlueprintUnlockableFlag>(guid);
         }
+        // E10 main-character facts (a chosen mythic trick) must resolve before Build, or the scenes that read them degrade.
+        foreach (string guid in story.MainCharacterFacts.Values.Distinct())
+        {
+            Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintFeature", StringComparison.Ordinal), "Wrong native fact type: " + guid);
+            Seed<Kingmaker.Blueprints.Classes.BlueprintFeature>(guid);
+        }
         foreach (string guid in unitIds)
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintUnit", StringComparison.Ordinal), "Wrong native unit type: " + guid);

@@ -220,6 +220,7 @@ internal static class Program
                 .Concat(story.QuestObjectives.Select(e => new { Guid = e.Value[0], ExpectedType = "BlueprintQuestObjective", Source = e.Key }))
                 .Concat(story.InventoryItems.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintItem*", Source = e.Key }))
                 .Concat(story.StartedQuests.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintQuest", Source = e.Key }))
+                .Concat(story.MainCharacterFacts.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintFeature", Source = e.Key }))
                 .Concat(story.RemovableItems.Select(guid => new { Guid = guid, ExpectedType = "BlueprintItem*", Source = "RemovableItems" }))
                 .Concat(story.Presences.SelectMany(p => new[] { new { Guid = p.Value.Unit, ExpectedType = "BlueprintUnit", Source = p.Key },
                     new { Guid = p.Value.Area, ExpectedType = "BlueprintArea*", Source = p.Key } }

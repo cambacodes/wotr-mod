@@ -65,6 +65,7 @@ namespace Tirabade
         private static readonly Dictionary<string, KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>> nativeObjectives =
             new Dictionary<string, KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>>();
         private static readonly Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem> nativeItems = new Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem>();
+        private static readonly Dictionary<string, Kingmaker.Blueprints.Facts.BlueprintUnitFact> mainCharacterFacts = new Dictionary<string, Kingmaker.Blueprints.Facts.BlueprintUnitFact>();
         private static readonly Dictionary<string, BlueprintQuest> startedQuests = new Dictionary<string, BlueprintQuest>();
         // E12 returned presences, and the last status line logged for each.
         private static readonly List<GuestPresence> presences = new List<GuestPresence>();
@@ -314,6 +315,9 @@ namespace Tirabade
                     else missingKeys.Add(pair.Key);
                 foreach (var pair in story.InventoryItems)
                     if (Resolve<Kingmaker.Blueprints.Items.BlueprintItem>(pair.Value, "Inventory item " + pair.Key) is Kingmaker.Blueprints.Items.BlueprintItem it) nativeItems.Add(pair.Key, it);
+                    else missingKeys.Add(pair.Key);
+                foreach (var pair in story.MainCharacterFacts)
+                    if (Resolve<Kingmaker.Blueprints.Facts.BlueprintUnitFact>(pair.Value, "Main character fact " + pair.Key) is Kingmaker.Blueprints.Facts.BlueprintUnitFact mcf) mainCharacterFacts.Add(pair.Key, mcf);
                     else missingKeys.Add(pair.Key);
                 foreach (var pair in story.StartedQuests)
                     if (Resolve<BlueprintQuest>(pair.Value, "Started quest " + pair.Key) is BlueprintQuest sq) startedQuests.Add(pair.Key, sq); else missingKeys.Add(pair.Key);
@@ -1002,6 +1006,7 @@ namespace Tirabade
             ReadDialogHistory(player.Dialog, state);
             ReadNativeProgress(player.UnlockableFlags, player.QuestBook,
                 item => player.Inventory.Contains(item) || player.SharedStash?.Contains(item) == true, state);
+            ReadMainCharacterFacts(fact => player.MainCharacter.Value?.Descriptor?.Facts?.Contains(f => f.Blueprint == fact) == true, state);
             if (flags.ContainsKey("konomi.missed_letter_sent") && etudes.TryGetValue("konomi.present", out var office))
             {
                 // A dormant office is still an appointment, not a missed introduction.
@@ -1060,6 +1065,14 @@ namespace Tirabade
                 Read(pair.Key, () => quests.GetQuestState(pair.Value) is QuestState questState
                     && (questState == QuestState.Started || questState == QuestState.Completed));
             foreach (var pair in nativeItems) Read(pair.Key, () => holds(pair.Value));
+        }
+
+        // E10: facts (features, mythic tricks) held by the main character. A fact read that throws reads as "not held".
+        internal static void ReadMainCharacterFacts(Func<Kingmaker.Blueprints.Facts.BlueprintUnitFact, bool> has, Snapshot state)
+        {
+            foreach (var pair in mainCharacterFacts)
+                try { if (has(pair.Value)) state.Flags.Add(pair.Key); }
+                catch (Exception ex) { if (readerWarnings.Add(pair.Key)) entry?.Logger.Log("Native reader '" + pair.Key + "' unavailable: " + ex.Message); }
         }
 
         private static readonly HashSet<string> readerWarnings = new HashSet<string>(StringComparer.Ordinal);

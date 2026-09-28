@@ -44,7 +44,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GUID = re.compile(r"^[0-9a-f]{32}$")
 KINDS = {"Etudes", "CompletedEtudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs",
-         "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests"}
+         "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts"}
 RUNTIME = {"trickster.ever", "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
            # runtime contact evidence (Rules.Validate contactEvidence)
            "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile",
@@ -74,7 +74,7 @@ def story_keys(path):
     story = json.loads(Path(path).read_text(encoding="utf-8"))
     keys = set()
     for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs",
-                "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "Latches", "Derived"):
+                "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts", "Latches", "Derived"):
         keys |= set((story.get(sec) or {}).keys())
     for s in story.get("Scenes", []):
         keys.add(s["Id"])

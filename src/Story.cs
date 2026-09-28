@@ -20,6 +20,8 @@ namespace Tirabade
         public Dictionary<string, string[]> QuestObjectives = new Dictionary<string, string[]>();
         public Dictionary<string, string> InventoryItems = new Dictionary<string, string>();
         public Dictionary<string, string> StartedQuests = new Dictionary<string, string>();
+        // E10: a BlueprintFeature (any fact) the main character holds, e.g. a mythic path trick the player chose.
+        public Dictionary<string, string> MainCharacterFacts = new Dictionary<string, string>();
         public Dictionary<string, Revival> Revivals = new Dictionary<string, Revival>();
         public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
         public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
@@ -510,7 +512,7 @@ namespace Tirabade
 
         // E10 reader kinds.
         public static IEnumerable<string> ReaderKeys(Story story) => story.UnlockableFlags.Keys.Concat(story.QuestObjectives.Keys)
-            .Concat(story.InventoryItems.Keys).Concat(story.StartedQuests.Keys);
+            .Concat(story.InventoryItems.Keys).Concat(story.StartedQuests.Keys).Concat(story.MainCharacterFacts.Keys);
 
         public static readonly string[] ObjectiveStates = { "Started", "Completed", "Failed" };
 
@@ -522,7 +524,7 @@ namespace Tirabade
             || story.CompletedEtudes.ContainsKey(flag) || story.CompletedQuests.ContainsKey(flag)
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
             || story.StartedDialogs.ContainsKey(flag) || story.UnlockableFlags.ContainsKey(flag) || story.QuestObjectives.ContainsKey(flag)
-            || story.InventoryItems.ContainsKey(flag) || story.StartedQuests.ContainsKey(flag)
+            || story.InventoryItems.ContainsKey(flag) || story.StartedQuests.ContainsKey(flag) || story.MainCharacterFacts.ContainsKey(flag)
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.retained_hostile" || flag == "konomi.return_contact_available"
@@ -761,7 +763,8 @@ namespace Tirabade
         public static void Validate(Story story)
         {
             if (story.Scenes.Count == 0) throw new InvalidOperationException("The route has no scenes.");
-            if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null)
+            if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null
+                || story.MainCharacterFacts == null)
                 throw new InvalidOperationException("Native reader collections cannot be null.");
             foreach (var pair in story.CompletedQuests)
                 if (string.IsNullOrWhiteSpace(pair.Key) || story.Etudes.ContainsKey(pair.Key) || !Guid.TryParseExact(pair.Value, "N", out _))
@@ -816,7 +819,8 @@ namespace Tirabade
             foreach (var key in readers)
             {
                 string? guid = story.UnlockableFlags.TryGetValue(key, out var f) ? f : story.InventoryItems.TryGetValue(key, out var i) ? i
-                    : story.StartedQuests.TryGetValue(key, out var q) ? q : story.QuestObjectives.TryGetValue(key, out var o) && o?.Length == 2
+                    : story.StartedQuests.TryGetValue(key, out var q) ? q : story.MainCharacterFacts.TryGetValue(key, out var mf) ? mf
+                    : story.QuestObjectives.TryGetValue(key, out var o) && o?.Length == 2
                         && ObjectiveStates.Contains(o[1]) ? o[0] : null;
                 if (string.IsNullOrWhiteSpace(key) || guid == null || !Guid.TryParseExact(guid, "N", out var parsed) || parsed == Guid.Empty
                     || readers.Count(other => other == key) != 1 || others.Contains(key) || authoredFlags.Contains(key)
