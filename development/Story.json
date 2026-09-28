@@ -154431,7 +154431,7 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. If they are to keep standing up, they eat. Salt and meat, a cart of each, every month until this war is done. That is my price for your joke. I will not haggle.\"",
+          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. If they are to keep standing up, they eat. Salt and meat, a full cart of each from your stores before the next snow: enough to keep them on their feet until this war is done. That is my price for your joke. I will not haggle.\"",
           "Choices": [
             {
               "Text": "[Send the salt and the meat] \"Done. That's your price.\"",
@@ -154522,7 +154522,7 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "\"Salt and meat, two carts a month, and the die stays with me. You threw it; you do not get it back.\"",
+          "Text": "\"Salt and meat, two full carts of each from your stores before the next snow, and the die stays with me. You threw it; you do not get it back.\"",
           "Choices": [
             {
               "Text": "[Pay what she asks] \"Salt, meat, and the die. Done.\"",
