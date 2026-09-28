@@ -183931,7 +183931,23 @@
         {
           "Id": "law",
           "Speaker": "Eritrice",
-          "Text": "\"You asked me a question I could only answer honestly. That is a very low trick, Commander, and a very good one.\"\n{n}A growl, deep in her chest, the sound of a lion that has been cornered by a rule it wrote itself.{/n}\n\"I could strike it. I have the authority. And then I would have to write beside it why I struck it: that I opposed the motion. That would be a lie. A minute once written is never amended at my table, not by me, not by anyone, because the day it is, every minute I have ever kept becomes something a clever creature could edit.\" {n}She sands the ink with a hard flick of the wrist.{/n}\n\"So it stands. The chair owes you a private debate. The chair pays what she owes. Come back when the Council has sat again, and I will collect the censure first.\"",
+          "Text": "\"You asked me a question I could only answer honestly. That is a very low trick, Commander, and a very good one.\"\n{n}A growl, deep in her chest, the sound of a lion that has been cornered by a rule it wrote itself.{/n}\n\"Standing Order One of this Council. I drafted it, and every member signed it on the first day, Socothbenoth in rouge: the minutes are not amended. Alichino asked for an exception that same afternoon. I refused him. If I strike this line, I must write beside it why, that I opposed the motion, which is a lie; and I must grant Alichino his exception, which is worse.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Eritrice",
+          "Text": "{n}She sands the ink with a hard flick of the wrist.{/n}\n\"So it stands, and here is exactly what it buys you. It binds the chair to hear you out, in private, point by point. It does not bind the Council. It does not bind my vote. And the censure goes into the Council's own minutes, which every member reads: you are now the only member of this Council ever to be censured. Alichino will have it copied into his little black book before the ink is dry.\"\n\"Come back when the Council has sat again. I will read the censure into the record first.\"",
           "Choices": [
             {
               "Text": "[Let her sand the ink dry.]",
@@ -187908,7 +187924,7 @@
         {
           "Id": "wait",
           "Speaker": "Eritrice",
-          "Text": "\"Then it stays on the table.\" {n}She moves the dagger from the corner of the scroll back to her belt, which lets the corner curl, a little, toward her.{/n}\n\"The third reading has a price. You will not like it. I will not make it cheaper because I want you to pay it.\" {n}She meets your eyes.{/n} \"I want you to pay it. Minute that, if you are keeping your own minutes. I am not keeping it in mine.\"",
+          "Text": "\"Then it stays on the table.\" {n}She moves the dagger from the corner of the scroll back to her belt, which lets the corner curl, a little, toward her.{/n}\n\"The third reading has a price. You will not like it. I will not make it cheaper because I want you to pay it.\" {n}She meets your eyes.{/n} \"I want you to pay it. I have never before in my existence wanted anyone to pay a price at my table. I do not like what that says about me, and I am not going to stop wanting it.\"",
           "Choices": [
             {
               "Text": "[Leave the line blank a while longer.]",
@@ -188334,7 +188350,7 @@
         {
           "Id": "laughed",
           "Speaker": "Eritrice",
-          "Text": "\"Once. Briefly. It is minuted as 'the chair was momentarily overcome'.\" {n}Her ears are flat with mortification.{/n}\n\"Cobblehoof has not forgiven me. He snorts twice whenever I call the session to order now. Twice, Commander. That means it cannot be proven that I am fit to chair.\"",
+          "Text": "\"Once. Briefly. In front of Alichino.\" {n}Her ears are flat with mortification.{/n}\n\"Cobblehoof has not forgiven me. He snorts twice whenever I call the session to order now. Twice, Commander. That means it cannot be proven that I am fit to chair.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -188475,7 +188491,7 @@
         {
           "Id": "bother",
           "Speaker": "Eritrice",
-          "Text": "\"Yes.\" {n}Immediately. Then, with enormous effort:{/n} \"It would bother me. It would not be a reason to object. A Council is not a household. I do not require that my allies have no other allies.\"\n\"I would require the minutes to be accurate. And I would growl. You would have to allow me the growl.\" {n}Her ears are very flat.{/n} \"That is the most undignified sentence I have ever spoken. Leave now, before I minute it.\"",
+          "Text": "\"Yes.\" {n}Immediately. Then, with enormous effort:{/n} \"It would bother me. It would not be a reason to object. A Council is not a household. I do not require that my allies have no other allies.\"\n\"I would require the minutes to be accurate. And I would growl. You would have to allow me the growl.\" {n}Her ears are very flat.{/n} \"That is the most undignified sentence I have ever spoken. Leave now, before I say something else I will have to live with for the next thousand years.\"",
           "Choices": [
             {
               "Text": "[Leave, smiling.]",
@@ -188624,7 +188640,7 @@
         {
           "Id": "me",
           "Speaker": "Eritrice",
-          "Text": "\"You do lie better. Anyone would.\" {n}Something like a smile.{/n} \"I will accept the comparison, provisionally. It is minuted as a claim, not a finding.\"",
+          "Text": "\"You do lie better. Anyone would.\" {n}Something like a smile.{/n} \"I will accept the comparison. A liar at least knows which side of the truth they are standing on. Most of this Council does not.\"",
           "Choices": [
             {
               "Text": "[Leave her to her finding.]",
@@ -191146,7 +191162,7 @@
         {
           "Id": "start",
           "Speaker": "Eritrice",
-          "Text": "\"From Erebus. Alichino does not attend sessions, but he writes.\" {n}She lays the letter on the table between you, face up. The hand is small and very neat, and the seal is black.{/n}\n\"He moves that the mortal member be expelled from the Council. The grounds are that the Commander 'brings the petty concerns of a single crusade to a body concerned with the multiverse', that the Commander 'is unreliable in procedure', and that the Commander 'adjourns meetings without the authority of the chair'.\" {n}She pauses.{/n} \"The last is true. I have minuted it several times.\"",
+          "Text": "\"From Erebus. Alichino does not attend sessions, but he writes.\" {n}She lays the letter on the table between you, face up. The hand is small and very neat, and the seal is black.{/n}\n\"He moves that the mortal member be expelled from the Council. The grounds are that the Commander 'brings the petty concerns of a single crusade to a body concerned with the multiverse', that the Commander 'is unreliable in procedure', and that the Commander 'adjourns meetings without the authority of the chair'.\" {n}She pauses.{/n} \"The last is true.\" {n}She turns the page.{/n} \"He supports the second ground by quoting, in full, the chair's own censure of you, for the motion you carried in a room with no floor. He has copied it out of my minutes in a very small, very neat hand. I told you he would.\"",
           "Choices": [
             {
               "Text": "Continue",

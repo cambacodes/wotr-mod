@@ -594,7 +594,7 @@ minutes(BLANK, "The blank line", '"Is the motion still on the table?"', [
 "I have been at a table for a very long time with people who wanted me to carry their motions for them. I did not want you to be one of them. I still do not."''',
       c("Continue", "wait")),
     e("wait", '''"Then it stays on the table." {n}She moves the dagger from the corner of the scroll back to her belt, which lets the corner curl, a little, toward her.{/n}
-"The third reading has a price. You will not like it. I will not make it cheaper because I want you to pay it." {n}She meets your eyes.{/n} "I want you to pay it. Minute that, if you are keeping your own minutes. I am not keeping it in mine."''',
+"The third reading has a price. You will not like it. I will not make it cheaper because I want you to pay it." {n}She meets your eyes.{/n} "I want you to pay it. I have never before in my existence wanted anyone to pay a price at my table. I do not like what that says about me, and I am not going to stop wanting it."''',
       c("[Leave the line blank a while longer.]")),
 ], requires=(DECLINED,), forbids=(BLANK, COMMITTED))
 

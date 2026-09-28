@@ -100,8 +100,11 @@ SCENES.append(scene(P + "council.motion", "Motion carried", "Eritrice", 3, '"Mad
       c("Continue", "law")),
     e("law", '''"You asked me a question I could only answer honestly. That is a very low trick, Commander, and a very good one."
 {n}A growl, deep in her chest, the sound of a lion that has been cornered by a rule it wrote itself.{/n}
-"I could strike it. I have the authority. And then I would have to write beside it why I struck it: that I opposed the motion. That would be a lie. A minute once written is never amended at my table, not by me, not by anyone, because the day it is, every minute I have ever kept becomes something a clever creature could edit." {n}She sands the ink with a hard flick of the wrist.{/n}
-"So it stands. The chair owes you a private debate. The chair pays what she owes. Come back when the Council has sat again, and I will collect the censure first."''',
+"Standing Order One of this Council. I drafted it, and every member signed it on the first day, Socothbenoth in rouge: the minutes are not amended. Alichino asked for an exception that same afternoon. I refused him. If I strike this line, I must write beside it why, that I opposed the motion, which is a lie; and I must grant Alichino his exception, which is worse."''',
+      c("Continue", "terms")),
+    e("terms", '''{n}She sands the ink with a hard flick of the wrist.{/n}
+"So it stands, and here is exactly what it buys you. It binds the chair to hear you out, in private, point by point. It does not bind the Council. It does not bind my vote. And the censure goes into the Council's own minutes, which every member reads: you are now the only member of this Council ever to be censured. Alichino will have it copied into his little black book before the ink is dry."
+"Come back when the Council has sat again. I will read the censure into the record first."''',
       c("[Let her sand the ink dry.]")),
 ], requires=("trickster",), forbids=(PRIMED, LOST), last=5, Relationship="eritrice", Chapters=[3, 5],
     AnswerLists=[LIST], NativeReturnCue=WELCOME))

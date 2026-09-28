@@ -127,7 +127,7 @@ sitting(PROOF, "Phrr", '"What does Cobblehoof actually say?"', [
     e("orange", '''"And then you told Chadali there was a magical orange in his bag." {n}Her voice drops.{/n} "There are no magical orange trees in Axis. I said so. In session. On the record."
 "Chadali believed you, and clapped, and Cobblehoof looked as though his entire plane had been insulted, and then he shook the bag at us to prove there was something in it." {n}A long pause.{/n} "It was the most undignified session of this Council's existence. I laughed. I had to minute that I laughed."''',
       c('"You laughed?"', "laughed")),
-    e("laughed", '''"Once. Briefly. It is minuted as 'the chair was momentarily overcome'." {n}Her ears are flat with mortification.{/n}
+    e("laughed", '''"Once. Briefly. In front of Alichino." {n}Her ears are flat with mortification.{/n}
 "Cobblehoof has not forgiven me. He snorts twice whenever I call the session to order now. Twice, Commander. That means it cannot be proven that I am fit to chair."''',
       c("Continue", "close")),
     e("close", '''"He will come back with his proof. He always does. Axis is slow, but it arrives." {n}She writes a note in the margin, in her small private hand.{/n}
@@ -156,7 +156,7 @@ sitting(LUCK, "Luck is not a position", '"You and Chadali..."', [
       c('"Would it bother you? If she and I..."', "bother"),
       c('"I\'m not going anywhere, Madam Chair."', "staying")),
     e("bother", '''"Yes." {n}Immediately. Then, with enormous effort:{/n} "It would bother me. It would not be a reason to object. A Council is not a household. I do not require that my allies have no other allies."
-"I would require the minutes to be accurate. And I would growl. You would have to allow me the growl." {n}Her ears are very flat.{/n} "That is the most undignified sentence I have ever spoken. Leave now, before I minute it."''',
+"I would require the minutes to be accurate. And I would growl. You would have to allow me the growl." {n}Her ears are very flat.{/n} "That is the most undignified sentence I have ever spoken. Leave now, before I say something else I will have to live with for the next thousand years."''',
       c("[Leave, smiling.]")),
     e("staying", '''"You do not know that. You are mortal; you do not even know if you are going anywhere tomorrow." {n}But her voice has gone soft around the edges.{/n}
 "Still. It is the kind of thing Chadali would say. I find I do not mind it as much from you." {n}She writes, in the small hand: "The floor claims to be staying. Unproven. Hoped."{/n}''',
@@ -184,7 +184,7 @@ sitting(ELDEST, "The Eldest's version", '"Does Shyka ever tell you the truth?"',
       c('"Like you. I just lie better."', "me"),
       c('"Like them. But I\'d never choose a dull future for you."', "them"),
       c('"Neither. I\'m the one who makes you both argue."', "neither")),
-    e("me", '''"You do lie better. Anyone would." {n}Something like a smile.{/n} "I will accept the comparison, provisionally. It is minuted as a claim, not a finding."''',
+    e("me", '''"You do lie better. Anyone would." {n}Something like a smile.{/n} "I will accept the comparison. A liar at least knows which side of the truth they are standing on. Most of this Council does not."''',
       c("[Leave her to her finding.]")),
     e("them", '''{n}She is quiet for a moment, and then she laughs, low and surprised, the way she did at the orange.{/n}
 "A trickster who would not choose a dull future for me. That is the most frightening thing anyone has said to me since the Council was convened." {n}She writes it down, in full, and underlines "for me".{/n}''',
@@ -683,7 +683,7 @@ SEEN_CUES[AUDACITY] = ["784db62832f3c0743a9250b2382052c1"]
 
 sitting(EXPEL, "A motion to expel", '"You look like you\'ve had a letter from Hell."', [
     e("start", '''"From Erebus. Alichino does not attend sessions, but he writes." {n}She lays the letter on the table between you, face up. The hand is small and very neat, and the seal is black.{/n}
-"He moves that the mortal member be expelled from the Council. The grounds are that the Commander 'brings the petty concerns of a single crusade to a body concerned with the multiverse', that the Commander 'is unreliable in procedure', and that the Commander 'adjourns meetings without the authority of the chair'." {n}She pauses.{/n} "The last is true. I have minuted it several times."''',
+"He moves that the mortal member be expelled from the Council. The grounds are that the Commander 'brings the petty concerns of a single crusade to a body concerned with the multiverse', that the Commander 'is unreliable in procedure', and that the Commander 'adjourns meetings without the authority of the chair'." {n}She pauses.{/n} "The last is true." {n}She turns the page.{/n} "He supports the second ground by quoting, in full, the chair's own censure of you, for the motion you carried in a room with no floor. He has copied it out of my minutes in a very small, very neat hand. I told you he would."''',
       c("Continue", "remembers", requires=(AUDACITY,)),
       c("Continue", "rule", forbids=(AUDACITY,))),
     e("remembers", '''"He said, the day you met him, that he would remember your audacity. He does. Devils always do. It is the most reliable thing about them." {n}Her claws tap the black seal, once.{/n}''',
