@@ -165,6 +165,14 @@ internal static class AreeluTricksterTests
             "Reactions: Nenio after the wager, Ember after the bet.");
         check(!Available(nenio, With(story, wagers.First(r => r.Has(Struck)), "nenio.dead")) && !Available(ember, With(story, bet[0], "ember_gone")),
             "Reactions are not guarded.");
+        // Seelah objects on her own hub once the Commander commits; G6: her return lifts her death/departure guard.
+        var seelah = S(P + "react.seelah_objects");
+        var courted = World(story, 6, "trickster.ever", Struck, Bet, Committed);
+        check(seelah.Reaction && seelah.AnswerLists.SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" })
+              && Available(seelah, courted) && !Available(seelah, World(story, 6, "trickster.ever", Struck, Bet)),
+            "Seelah's reaction is not on her hub, or not gated on the commit.");
+        check(!Available(seelah, With(story, courted, "seelah_dead")) && !Available(seelah, With(story, courted, "seelah_gone"))
+              && seelah.Nodes.SelectMany(n => n.Choices).All(ch => ch.Set.Length == 0), "Seelah's guard is wrong.");
 
         // Chapter 6 beats after the wager.
         var ch6 = World(story, 6, "trickster", "trickster.ever", Primed, Bet, Struck, Started);

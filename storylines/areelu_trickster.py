@@ -43,6 +43,7 @@ RIFT_RETURN = "c4f9dac3d26416d43b3c1662d07a99c0"      # Cue_0047 "How strange. Y
 FINAL_LIST = "f56a69dc64a48b14096a557697f43f2a"       # c6/SecondFloor/GrandFinal/AnswersList_0003 (defeated, bleeding)
 FINAL_RETURN = "{n}Areelu waits, bleeding, for your answer.{/n}"
 TRICKSTER_PAGE = "fb42f8bd123bf1f40a448f6dbc66cbbe"   # Epilogues/BookPage_0147 (the Trickster ending; "What kind of an ending...")
+SEELAH_HUB = "417fa384f3250634bb71859fbc913453"       # CompanionDialogues/Seelah/AnswersList_0003
 NENIO_HUB = "1ab909cc3a6194840b1475b99547c263"        # CompanionDialogues/Nenio/AnswersList_0015
 EMBER_HUB = "f2a35965e9bc601449498bd022b04d9d"        # CompanionDialogues/Ember hub (friendship only)
 
@@ -751,6 +752,12 @@ SCENES.extend([
 "I don't think she forgot it. I think she just forgot where she put it. That happens to me with shoes."
 "If you win, will you help her look? I think it would be nice if somebody helped her look."''',
              answer_list=EMBER_HUB, forbids=("ember_dead", "ember_gone"), chapter=5, last=6, entry='"About Areelu..."'),
+    reaction("Seelah", "areelu.trickster.react.seelah_objects", (COMMITTED,),
+             '''{n}Seelah hears it from someone else first, and comes to find you with her holy symbol in her fist and her jaw set.{/n}
+"Areelu Vorlesh. The woman who opened the Worldwound. Who made the Wound in you, and in me, and in every child in Sarkoris who never grew up."
+"I am not going to tell you what to do with your heart, Commander. The Inheritor never told me what to do with mine. But I will not stand at your side and call it anything but what it is. If she lays a hand on you that I do not like, I will cut it off, and I will pray for her afterwards, and I will mean both."''',
+             answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone"), chapter=6, last=6,
+             entry='"About Areelu..."'),   # G6 override -> seelah.trickster.returned waits for the Seelah merge (backlog)
 ])
 
 
@@ -1518,23 +1525,24 @@ report("areelu.trickster.report.name", "The report: a name", [
 
 report("areelu.trickster.report.promise", "The report: the promise", [
     nar("start", '''{n}In the spring after that winter, the Commander found the other notebook.{/n}
-{n}It was hidden where she hid nothing else: inside the one she wrote in every day, cut into the binding. Its pages were dated from the first week after Threshold. They were about the Commander's soul, and about what was left in it of a child who had died in a house in Sarkoris a century before the Commander was born.{/n}''',
+{n}It was hidden where she hid nothing else: inside the one she wrote in every day, cut into the binding. Its pages were dated from the first week after Threshold. They were about the Commander's power: the spark she had made and put there, the gift she had called it in Alushinyrra, which had carried her child's remnant until Threshold cut the two apart. The remnant was gone. The spark was still there, and so was her claim to it.{/n}''',
         c("[Put it on the table between you, and wait.]", "confront"),
         c("[Put it back where you found it.]", "back"),
         paragraphs=(
-            p("The method in it was careful, and elegant, and very nearly finished. It would separate the one from the "
-              "other. It would not need the Commander to die, quite. Its last page said, in her small neat hand: "
+            p("The method in it was careful, and elegant, and very nearly finished. It would take her gift back out of "
+              "the Commander, on her hypothesis that it still held the shape of what it had carried. It would not need the "
+              "Commander to die, quite. Its last page said, in her small neat hand: "
               "\"I'll try again.\""),
         )),
     nar("confront", '''{n}She saw it on the table and did not pretend.{/n}
-{n}"Yes," she said. "Every morning. I read it every morning, and every morning I put it away." Then: "Do not look at me as if I had confused you with my child. That is a category error, and I stopped making it at Threshold. What is left of {mf|him|her} in you is a fragment, and I intend to have it. When the method no longer costs me my only witness, and my only proof that the bet was won, I will take it. Every morning I do the arithmetic again. Every morning it says: not today."{/n}''',
+{n}"Yes," she said. "Every morning. I read it every morning, and every morning I put it away." Then: "Do not look at me as if I had confused you with my child. That is a category error, and I stopped making it at Threshold, when your souls came apart in front of me. {mf|He|She} is not in you. What is in you is my work: the spark {mf|he|she} was carried in, the only vessel that ever held {mf|him|her} and did not break. I believe it remembers the shape. I cannot prove it. When the method can prove it without costing me my only witness, and my only proof that the bet was won, I will take the spark back. Every morning I do the arithmetic again. Every morning it says: not today."{/n}''',
         c("[Burn it.]", "burn_mortal", requires=MORTAL),
         c("[Burn it.]", "burn_witch", forbids=MORTAL),
         c('"Then let\'s do it properly. Not to me. We take the case to the Lady of Graves."', "join"),
         c("[Take her hand, and leave the notebook where it is.]", "keep"),
         c('"Why haven\'t you done it?"', "why")),
     nar("why", '''{n}"Because of the promise." She said it at once, as if she had been waiting nine years for somebody to ask.{/n}
-{n}"I held my child at the door and I promised that the world would not stay as it was. I have kept it. Nothing else I promised anyone survived the Wound." She laid one hand flat on the notebook. "If I take this out of you, I have a fragment of {mf|him|her}, damaged, and a dead Commander, and a bet I lost. That is a worse result than the one I have. The arithmetic does not come out. When it does, I will not ask you first."{/n}''',
+{n}"I held my child at the door and I promised that the world would not stay as it was. I have kept it. Nothing else I promised anyone survived the Wound." She laid one hand flat on the notebook. "If I take this out of you, I have an empty vessel that may remember a shape, and a dead Commander, and a bet I lost. That is a worse result than the one I have. The arithmetic does not come out. When it does, I will not ask you first."{/n}''',
         c("[Burn it.]", "burn_mortal", requires=MORTAL),
         c("[Burn it.]", "burn_witch", forbids=MORTAL),
         c('"Then let\'s do it properly. Not to me. We take the case to the Lady of Graves."', "join"),
@@ -1557,7 +1565,7 @@ report("areelu.trickster.report.promise", "The report: the promise", [
     nar("burned_mortal", '''{n}The last of the letters came in a hand so unsteady that the Commander did not recognise it at first: an old woman's hand, spotted with ink, pressing too hard. It said only, "Still correct. Still not today." There was no address. The Commander never learned whether "not today" had been about the notebook, or about something else, and supposed, in the end, that it had been about both.{/n}'''),
     nar("burned_witch", '''{n}The last of the letters came up out of the ground, one winter night, through the floor of the Commander's study, written in frost on the inside of a window that faced nowhere. "Still correct," it said. "Still watching. Do not look for me. I have gone somewhere the Lady keeps no pages, to see whether it is true." The frost melted before morning. The Commander copied it out before it did.{/n}'''),
     nar("join", '''{n}"Together." She said the word as if testing whether it would bear weight, and found that it would not.{/n}
-{n}"No. You would make it a joke, and the Lady would laugh, and I would lose {mf|him|her} a second time to a punchline." She closed the notebook. "The claim is mine. I will file it myself, priced and argued, the way her own clerks argue, in my own name. You may carry it to the door of the Boneyard, if you like. You may not come in."{/n}''',
+{n}"No. You would make it a joke, and the Lady would laugh, and I would lose {mf|him|her} a second time to a punchline. The claim is for what went into the Abyss, not for what is in you." She closed the notebook. "The claim is mine. I will file it myself, priced and argued, the way her own clerks argue, in my own name. You may carry it to the door of the Boneyard, if you like. You may not come in."{/n}''',
         c("Continue", "filed")),
     nar("filed", '''{n}She spent the rest of her years on it. What she built, and what she bargained, and what it cost her, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand. The Commander carried the petition to the door, once, and waited outside, as agreed.{/n}
 {n}The last line of the report is in her hand: "The case is filed. It has not been heard." Beneath it, every year until the report ends, a date, and the same two words: "Not heard." The Commander never wrote in that column. It was not the Commander's.{/n}'''),

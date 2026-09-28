@@ -176754,6 +176754,46 @@
       ]
     },
     {
+      "Id": "areelu.trickster.react.seelah_objects",
+      "Title": "Seelah's word",
+      "Owner": "Seelah",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"About Areelu...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Seelah",
+          "Text": "{n}Seelah hears it from someone else first, and comes to find you with her holy symbol in her fist and her jaw set.{/n}\n\"Areelu Vorlesh. The woman who opened the Worldwound. Who made the Wound in you, and in me, and in every child in Sarkoris who never grew up.\"\n\"I am not going to tell you what to do with your heart, Commander. The Inheritor never told me what to do with mine. But I will not stand at your side and call it anything but what it is. If she lays a hand on you that I do not like, I will cut it off, and I will pray for her afterwards, and I will mean both.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "areelu.committed"
+      ],
+      "Forbids": [
+        "seelah_dead",
+        "seelah_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu",
+      "Reaction": true,
+      "AnswerLists": [
+        "417fa384f3250634bb71859fbc913453"
+      ]
+    },
+    {
       "Id": "areelu.trickster.finale.rewrite",
       "Title": "What burned",
       "Owner": "Epilogue",
@@ -181107,7 +181147,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}In the spring after that winter, the Commander found the other notebook.{/n}\n{n}It was hidden where she hid nothing else: inside the one she wrote in every day, cut into the binding. Its pages were dated from the first week after Threshold. They were about the Commander's soul, and about what was left in it of a child who had died in a house in Sarkoris a century before the Commander was born.{/n}",
+          "Text": "{n}In the spring after that winter, the Commander found the other notebook.{/n}\n{n}It was hidden where she hid nothing else: inside the one she wrote in every day, cut into the binding. Its pages were dated from the first week after Threshold. They were about the Commander's power: the spark she had made and put there, the gift she had called it in Alushinyrra, which had carried her child's remnant until Threshold cut the two apart. The remnant was gone. The spark was still there, and so was her claim to it.{/n}",
           "Choices": [
             {
               "Text": "[Put it on the table between you, and wait.]",
@@ -181129,7 +181169,7 @@
           "Portrait": "Areelu",
           "Paragraphs": [
             {
-              "Text": "The method in it was careful, and elegant, and very nearly finished. It would separate the one from the other. It would not need the Commander to die, quite. Its last page said, in her small neat hand: \"I'll try again.\"",
+              "Text": "The method in it was careful, and elegant, and very nearly finished. It would take her gift back out of the Commander, on her hypothesis that it still held the shape of what it had carried. It would not need the Commander to die, quite. Its last page said, in her small neat hand: \"I'll try again.\"",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -181139,7 +181179,7 @@
         {
           "Id": "confront",
           "Speaker": "Narrator",
-          "Text": "{n}She saw it on the table and did not pretend.{/n}\n{n}\"Yes,\" she said. \"Every morning. I read it every morning, and every morning I put it away.\" Then: \"Do not look at me as if I had confused you with my child. That is a category error, and I stopped making it at Threshold. What is left of {mf|him|her} in you is a fragment, and I intend to have it. When the method no longer costs me my only witness, and my only proof that the bet was won, I will take it. Every morning I do the arithmetic again. Every morning it says: not today.\"{/n}",
+          "Text": "{n}She saw it on the table and did not pretend.{/n}\n{n}\"Yes,\" she said. \"Every morning. I read it every morning, and every morning I put it away.\" Then: \"Do not look at me as if I had confused you with my child. That is a category error, and I stopped making it at Threshold, when your souls came apart in front of me. {mf|He|She} is not in you. What is in you is my work: the spark {mf|he|she} was carried in, the only vessel that ever held {mf|him|her} and did not break. I believe it remembers the shape. I cannot prove it. When the method can prove it without costing me my only witness, and my only proof that the bet was won, I will take the spark back. Every morning I do the arithmetic again. Every morning it says: not today.\"{/n}",
           "Choices": [
             {
               "Text": "[Burn it.]",
@@ -181191,7 +181231,7 @@
         {
           "Id": "why",
           "Speaker": "Narrator",
-          "Text": "{n}\"Because of the promise.\" She said it at once, as if she had been waiting nine years for somebody to ask.{/n}\n{n}\"I held my child at the door and I promised that the world would not stay as it was. I have kept it. Nothing else I promised anyone survived the Wound.\" She laid one hand flat on the notebook. \"If I take this out of you, I have a fragment of {mf|him|her}, damaged, and a dead Commander, and a bet I lost. That is a worse result than the one I have. The arithmetic does not come out. When it does, I will not ask you first.\"{/n}",
+          "Text": "{n}\"Because of the promise.\" She said it at once, as if she had been waiting nine years for somebody to ask.{/n}\n{n}\"I held my child at the door and I promised that the world would not stay as it was. I have kept it. Nothing else I promised anyone survived the Wound.\" She laid one hand flat on the notebook. \"If I take this out of you, I have an empty vessel that may remember a shape, and a dead Commander, and a bet I lost. That is a worse result than the one I have. The arithmetic does not come out. When it does, I will not ask you first.\"{/n}",
           "Choices": [
             {
               "Text": "[Burn it.]",
@@ -181343,7 +181383,7 @@
         {
           "Id": "join",
           "Speaker": "Narrator",
-          "Text": "{n}\"Together.\" She said the word as if testing whether it would bear weight, and found that it would not.{/n}\n{n}\"No. You would make it a joke, and the Lady would laugh, and I would lose {mf|him|her} a second time to a punchline.\" She closed the notebook. \"The claim is mine. I will file it myself, priced and argued, the way her own clerks argue, in my own name. You may carry it to the door of the Boneyard, if you like. You may not come in.\"{/n}",
+          "Text": "{n}\"Together.\" She said the word as if testing whether it would bear weight, and found that it would not.{/n}\n{n}\"No. You would make it a joke, and the Lady would laugh, and I would lose {mf|him|her} a second time to a punchline. The claim is for what went into the Abyss, not for what is in you.\" She closed the notebook. \"The claim is mine. I will file it myself, priced and argued, the way her own clerks argue, in my own name. You may carry it to the door of the Boneyard, if you like. You may not come in.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -181877,8 +181917,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
