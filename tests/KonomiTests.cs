@@ -7,7 +7,8 @@ internal static class KonomiTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
-        var scenes = story.Scenes.Where(s => s.Relationship == "konomi").ToArray();
+        // The Trickster route (konomi.trickster.*) meets her outside the office by design: KonomiTricksterTests.
+        var scenes = story.Scenes.Where(s => s.Relationship == "konomi" && !s.Id.StartsWith("konomi.trickster.", StringComparison.Ordinal)).ToArray();
         if (scenes.Length == 0) return;
         var drezen = scenes.Single(s => s.Id == "konomi.margin").Areas.Single();
         Scene Find(string id) => scenes.Single(s => s.Id == "konomi." + id);

@@ -87,9 +87,13 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 "Absalom has answered." {n}She lays a letter on the ledger, heavy paper, a seal in gold wax far older and larger than hers.{/n} "The mark is genuine. The Treasury confirms the loss of one soul cauldron, 'circumstances of removal unrecorded', and ratifies the lease. I have been commended. I have also been instructed to ensure the property's safe return. So.
 {n}She turns the letter face down.{/n}
 "An inspection, Commander. I am told my lessee intends to carry the property to the place where the Worldwound was first opened, and then, I assume, to do something heroic with it. My ledger calls that 'unusual wear'. The temple requires collateral against total loss."''',
+      c("Continue", "pledge", forbids=("konomi.trickster.cost.recalled",)),
+      c("Continue", "rider", requires=("konomi.trickster.cost.recalled",))),
+    # Ledger row 8: the only Konomi line Arsinoe bills is the consular recall rider. The wedding (Kiana) returns when the
+    # Kiana Trickster route produces kiana.trickster.cost.guests_robbed (rrt_verify: no dead gates).
+    n("rider", "Arsinoe", '''{n}She turns back a page of the ledger, to a line in red ink she has clearly been waiting to show you.{/n}
+"One more entry, while the book is open. The Mendevian consulate billed the crusade for Lady Konomi's recall rider. A clerk's rider, one, sent after a dispatch that said she was dead. Paid." {n}She taps the figure.{/n} "It came across my desk because I keep the only honest books in Drezen. I know what it bought. I simply wanted you to know that I saw it, and that I entered it at cost."''',
       c("Continue", "pledge")),
-    # Cross-route ledger reads (the wedding guests, row 8's consular rider) return when the Kiana and Konomi Trickster
-    # routes produce kiana.trickster.cost.guests_robbed / konomi.trickster.cost.recalled (rrt_verify: no dead gates).
     n("pledge", "Arsinoe", '''{n}She dips her pen and waits, the nib a finger's width above the page.{/n}
 "So. What does the Commander pledge?"''',
       c('"The Fool King\'s still. A barrel baron and everything he guards."', "still",
