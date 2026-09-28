@@ -216,77 +216,12 @@ inline("areelu.trickster.rivalry.iz_bet", "My money's on neither", 5,
 ], requires=("trickster",), forbids=(BET, PRIMED), lists=(IZ_LIST,), return_cue=IZ_RETURN, EntryMythic="PlayerIsTrickster")
 
 
-# --- Chapter 5, the lens (R2-2 late fallback when the Iz bet was missed: the one letter) ----------------------------
-
-SCENES.append(scene("areelu.trickster.rivalry.lens", "Knock knock", "Areelu", 5, "", [
-    nar("start", '''{n}Among the loot from Iz is a lens of dark glass in a silver ring, cold to the touch. Nobody remembers picking it up.{/n}
-{n}When you hold it to your eye you do not see the tent around you. You see your tent from above, as a bird would, and a woman's hand at a desk, writing notes about it. The hand is steady. The margins are full of small, neat corrections.{/n}''',
-        c('[Tap the lens twice] "Knock knock. You\'ve been watching me since Kenabres. Rude not to say hello."', "reply",
-          mythic="Trickster"),
-        c("[Hold the lens up to the lamp and read her notes backwards.]", "backwards"),
-        c("[Wrap it in cloth and put it away.]", abort=True)),
-    nar("backwards", '''{n}Held to the lamp, the notes read backwards through the glass. Most of them are about you: your hours, your rations, which of your companions you laugh with and which you only answer. At the bottom, underlined twice: "Subject remains unpredictable. Correction scheduled for Threshold."{/n}
-{n}The hand stops writing. Then, very deliberately, it adds: "Subject is reading this."{/n}''',
-        c('[Breathe on the glass and write in the mist] "Correction? I prefer \'punchline\'."', "reply2", mythic="Trickster")),
-    ar("reply", '''{n}The lens frosts over, and letters form in the frost, small and precise.{/n}
-"Knock knock. How childish. Yes, I have been watching. I told you at Iz that I would follow you, and I do not say things I do not mean."
-{n}The frost thickens, is wiped away from the other side, and forms again.{/n} "You are worth watching. That is not a compliment. It is a measurement."''',
-        c('"Then measure this. One of us is supposed to burn at the end. My money\'s on neither."', "terms")),
-    ar("reply2", '''{n}The lens frosts over from the other side. Letters form in it, small and precise.{/n}
-"Punchline. You insist on the vocabulary of the stage, as if the Wound were a comedy and you had read the last act."
-"You have not. I wrote it."''',
-        c('"Then here\'s a line you didn\'t write. One of us is supposed to burn. My money\'s on neither."', "terms")),
-    ar("terms", '''{n}For a long moment the glass stays clear, and you think she has gone. Then:{/n}
-"Neither. You might have said that to my face at Iz, if you had thought of it in time. Instead you say it through my own lens, which you did not steal so much as fail to return."
-"Very well. When you find the place I have prepared for you, and you will, bring your wager with you. Until then, keep the lens. I prefer my specimens where I can see them."''',
-        c("[Keep the lens.]", flags=(PRIMED, LENS, LATE, LENS_HELD)),
-        c('"Why would you give your enemy a window into your study?"', "window")),
-    ar("window", '''"I did not give it to you. You picked it up out of the ruins of Iz, where I dropped it while I was warning you about Deskari's trap, which you did not thank me for either."
-{n}A pause.{/n} "And a window works both ways, Commander. Every time you look through it, you tell me something: when you are awake, when you are alone, how long you can bear to look at me before you put me away. I have learned more about you from how you hold this glass than from a year of notes."''',
-        c("[Keep the lens.]", flags=(PRIMED, LENS, LATE, LENS_HELD))),
-], requires=("trickster", "areelu.met"), forbids=(PRIMED, STRUCK), last=5, optional=True, Relationship="areelu",
-   Remote=True, Chapters=[5]))
-
-
-# --- Chapter 5, the lens between Iz and her cell: "Until then, I'll continue to follow you..." (Cue_0041) -------------
-
-def lens_letter(id, title, nodes, requires, forbids=(), delay=48):
-    SCENES.append(scene(id, title, "Areelu", 5, "", nodes, requires=requires, forbids=(STRUCK, CLOSED, *forbids),
-                        delay=delay, last=5, optional=True, Relationship="areelu", Remote=True, Chapters=[5]))
-
-
-# The bet was offered at Iz: she leaves her lens on the Commander's table (the late-primer path already holds it).
-lens_letter("areelu.trickster.lens.watched", "The glass on the table", [
-    nar("start", '''{n}The night after Iz, among the loot your people carried out of the ruins, there is a lens of dark glass in a silver ring. It is cold to the touch, and it is lying on your camp table, on top of your maps, exactly where you would put your hand.{/n}
-{n}Nobody admits to having put it there. Nobody, when you ask, remembers seeing it at all.{/n}''',
-        c("[Look through it.]", "look"),
-        c("[Turn it face down.]", "facedown")),
-    nar("facedown", '''{n}You turn the lens face down on the table. After a moment the silver ring grows cold enough to frost the wood around it, and letters form in the frost, reversed, so that you have to read them in your shaving mirror:{/n}
-"Face down. As if that has ever stopped me. You offered me a wager at Iz, Commander. Pick me up."''',
-        c("[Pick it up.]", "look")),
-    ar("look", '''{n}Through the glass you see your own tent from above, as a bird would see it, and a woman's hand at a desk, writing. The hand pauses. Frost creeps across the lens from the other side, and letters form in it.{/n}
-"You offered me a wager at Iz. I am told gamblers like to watch their opponents' faces. Here is mine. Try not to waste it."''',
-        c('"You could have knocked."', "knocked"),
-        c('[Joke] "Your handwriting is terrible. Is that the Abyss, or just you?"', "script"),
-        c('[Breathe on the glass and write] "Show me your face."', "face")),
-    ar("face", '''{n}The frost clears completely. For one long moment the glass shows you nothing but a desk, a lamp, and the edge of a sleeve. Then the sleeve moves, and the lamp is turned, deliberately, so that the light falls away from whoever is sitting there.{/n}
-"No." {n}The letters form slowly this time.{/n} "You have seen my face at Iz, and in Alushinyrra, and you will see it again at Threshold. Here you may have my hand. It is the part of me that has done the most damage. It seems fair that it is the part you should watch."''',
-        c("Continue", "knocked")),
-    ar("script", '''"It is Sarkorian, and it was thought very fine, once, by people who are now in the Wound." {n}The frost thickens with something that might be irritation.{/n}
-"You are the only living creature who has ever mocked my hand. Most people are too busy being frightened of what it wrote."''',
-        c("Continue", "knocked")),
-    ar("knocked", '''"I did knock. At Kenabres, at Drezen, in Alushinyrra. You were always too busy being alive to answer."
-{n}The frost clears, and forms again.{/n} "Keep the lens. I will watch you through it, as I always have. You may watch me through it, if you can bear to. We will see which of us learns more before Threshold."''',
-        c("[Keep the lens.]", flags=(LENS_HELD,))),
-], requires=(BET, "areelu.met"), forbids=(LENS_HELD,), delay=24)
-
 QUESTION_THREE = '''{n}The frost clears for a long moment. Then:{/n}
 "Third. When you look at me through this glass, Commander, what do you see? Be precise. I will know if you are being kind."'''
 
-lens_letter("areelu.trickster.lens.questions", "Three questions", [
-    nar("start", '''{n}Two nights later the lens frosts over on its own, while you are pulling off your boots. The letters are small and quick, as if written by someone who has been waiting to write them all day.{/n}''',
-        c("Continue", "first")),
-    ar("first", '''"I have questions. You will answer them, because you want to know what I will ask."
+# The lens's night (the one Chapter 5 letter on either path; letters_max.5 = 1): her three questions, then where she was.
+LENS_NIGHT = [
+    ar("first", '''"Now that you have the glass, I have questions. You will answer them, because you want to know what I will ask."
 "First. Why are you not afraid of Threshold? Everyone who has ever gone there was afraid, even the ones who built it. I was afraid. You are not. I have watched you plan the march, and there is no fear in your hands."''',
         c('[Joke] "Because I\'ve already read how it ends."', "read"),
         c('"I am. I just hide it better than you do."', "hide"),
@@ -325,19 +260,17 @@ lens_letter("areelu.trickster.lens.questions", "Three questions", [
     ar("slept", '''"Accurate." {n}The frost holds the word a long time, as if she were looking at it.{/n}
 "I have not slept properly since the hunters came to my house. You are the first person to notice who did not also try to kill me for it."
 "Go to sleep, Commander. One of us should."''',
-        c("[Put the lens away.]", flags=(LENS_ASKED,))),
+        c("Continue", "acc_start", flags=(LENS_ASKED,))),
     ar("notes", '''"The only one who has taken notes on you. Yes." {n}Something in the writing changes: the letters are no less precise, but they lean, very slightly, as if the hand were tired.{/n}
 "Everyone else looks at you and sees a saviour, or a monster, or a clown. I look at you and see a record. It is the most intimate thing I know how to do. Do not make me regret telling you so."''',
-        c("[Put the lens away.]", flags=(LENS_ASKED,))),
+        c("Continue", "acc_start", flags=(LENS_ASKED,))),
     ar("frost", '''"Frost." {n}The glass fogs over completely, and clears, and fogs again: once, twice, three times.{/n}
 "That was a laugh, Commander. I thought you should know what one looks like, from this side. Do not expect another."''',
-        c("[Put the lens away.]", flags=(LENS_ASKED,))),
-], requires=(LENS_HELD, PRIMED))
-
-lens_letter("areelu.trickster.lens.accounts", "Where she was", [
-    nar("start", '''{n}This time it is you who breathes on the glass first, and writes in the mist with a fingertip: "Where were you, all those years you were watching?"{/n}
+        c("Continue", "acc_start", flags=(LENS_ASKED,))),
+    nar("acc_start", '''{n}The frost fades, and before she can clear the glass again it is you who breathes on it, and writes in the mist with a fingertip: "Where were you, all those years you were watching?"{/n}
 {n}The answer is a long time coming. When it comes, the letters fill the whole lens, edge to edge, and she has to clear it twice to finish.{/n}''',
-        c("Continue", "accounts")),
+        c("Continue", "accounts"),
+        c("[Put the lens away for the night.]")),
     ar("accounts", '''"Where you needed me, which was nearly everywhere. In Kenabres, when you fell into the crevice with your unfortunate companions, I saved you. At the Gray Garrison I distracted Minagho, so you could reach the wardstone. In Drezen I wore Yaniel's face to guide you to the Sword of Valor."
 "I told you all of this in Alushinyrra. You did not thank me then. Do not thank me now."''',
         c('[Joke] "Thank you. You were a terrible Yaniel, by the way."', "yaniel"),
@@ -367,7 +300,84 @@ lens_letter("areelu.trickster.lens.accounts", "Where she was", [
 "Bring your wager. Say it to my face, or to what I have left of one. I would like to see you say 'neither' while I am looking at you."
 {n}The frost clears, and does not form again that night.{/n}''',
         c("[Put the lens away.]")),
-], requires=(LENS_ASKED,))
+]
+
+
+def lens_night(opening):
+    """The letter's own opening nodes, then the shared night through the frost."""
+    return [*opening, *LENS_NIGHT]
+
+
+# --- Chapter 5, the lens (R2-2 late fallback when the Iz bet was missed: the one letter) ----------------------------
+
+SCENES.append(scene("areelu.trickster.rivalry.lens", "Knock knock", "Areelu", 5, "", lens_night([
+    nar("start", '''{n}Among the loot from Iz is a lens of dark glass in a silver ring, cold to the touch. Nobody remembers picking it up.{/n}
+{n}When you hold it to your eye you do not see the tent around you. You see your tent from above, as a bird would, and a woman's hand at a desk, writing notes about it. The hand is steady. The margins are full of small, neat corrections.{/n}''',
+        c('[Tap the lens twice] "Knock knock. You\'ve been watching me since Kenabres. Rude not to say hello."', "reply",
+          mythic="Trickster"),
+        c("[Hold the lens up to the lamp and read her notes backwards.]", "backwards"),
+        c("[Wrap it in cloth and put it away.]", abort=True)),
+    nar("backwards", '''{n}Held to the lamp, the notes read backwards through the glass. Most of them are about you: your hours, your rations, which of your companions you laugh with and which you only answer. At the bottom, underlined twice: "Subject remains unpredictable. Correction scheduled for Threshold."{/n}
+{n}The hand stops writing. Then, very deliberately, it adds: "Subject is reading this."{/n}''',
+        c('[Breathe on the glass and write in the mist] "Correction? I prefer \'punchline\'."', "reply2", mythic="Trickster")),
+    ar("reply", '''{n}The lens frosts over, and letters form in the frost, small and precise.{/n}
+"Knock knock. How childish. Yes, I have been watching. I told you at Iz that I would follow you, and I do not say things I do not mean."
+{n}The frost thickens, is wiped away from the other side, and forms again.{/n} "You are worth watching. That is not a compliment. It is a measurement."''',
+        c('"Then measure this. One of us is supposed to burn at the end. My money\'s on neither."', "terms")),
+    ar("reply2", '''{n}The lens frosts over from the other side. Letters form in it, small and precise.{/n}
+"Punchline. You insist on the vocabulary of the stage, as if the Wound were a comedy and you had read the last act."
+"You have not. I wrote it."''',
+        c('"Then here\'s a line you didn\'t write. One of us is supposed to burn. My money\'s on neither."', "terms")),
+    ar("terms", '''{n}For a long moment the glass stays clear, and you think she has gone. Then:{/n}
+"Neither. You might have said that to my face at Iz, if you had thought of it in time. Instead you say it through my own lens, which you did not steal so much as fail to return."
+"Very well. When you find the place I have prepared for you, and you will, bring your wager with you. Until then, keep the lens. I prefer my specimens where I can see them."''',
+        c("[Keep the lens, and keep looking.]", "keep_looking", flags=(PRIMED, LENS, LATE, LENS_HELD)),
+        c("[Keep the lens, and put it away.]", flags=(PRIMED, LENS, LATE, LENS_HELD)),
+        c('"Why would you give your enemy a window into your study?"', "window")),
+    ar("window", '''"I did not give it to you. You picked it up out of the ruins of Iz, where I dropped it while I was warning you about Deskari's trap, which you did not thank me for either."
+{n}A pause.{/n} "And a window works both ways, Commander. Every time you look through it, you tell me something: when you are awake, when you are alone, how long you can bear to look at me before you put me away. I have learned more about you from how you hold this glass than from a year of notes."''',
+        c("[Keep the lens, and keep looking.]", "keep_looking", flags=(PRIMED, LENS, LATE, LENS_HELD)),
+        c("[Keep the lens, and put it away.]", flags=(PRIMED, LENS, LATE, LENS_HELD))),
+    nar("keep_looking", '''{n}You do not put it away. The frost clears, and forms again, faster, as if the hand on the other side had been waiting.{/n}''',
+        c("Continue", "first")),
+]), requires=("trickster", "areelu.met"), forbids=(PRIMED, STRUCK), last=5, optional=True, Relationship="areelu",
+   Remote=True, Chapters=[5]))
+
+
+# --- Chapter 5, the lens between Iz and her cell: "Until then, I'll continue to follow you..." (Cue_0041) -------------
+
+def lens_letter(id, title, nodes, requires, forbids=(), delay=48):
+    SCENES.append(scene(id, title, "Areelu", 5, "", nodes, requires=requires, forbids=(STRUCK, CLOSED, *forbids),
+                        delay=delay, last=5, optional=True, Relationship="areelu", Remote=True, Chapters=[5]))
+
+
+# The bet was offered at Iz: she leaves her lens on the Commander's table (the late-primer path already holds it).
+lens_letter("areelu.trickster.lens.watched", "The glass on the table", lens_night([
+    nar("start", '''{n}The night after Iz, among the loot your people carried out of the ruins, there is a lens of dark glass in a silver ring. It is cold to the touch, and it is lying on your camp table, on top of your maps, exactly where you would put your hand.{/n}
+{n}Nobody admits to having put it there. Nobody, when you ask, remembers seeing it at all.{/n}''',
+        c("[Look through it.]", "look"),
+        c("[Turn it face down.]", "facedown")),
+    nar("facedown", '''{n}You turn the lens face down on the table. After a moment the silver ring grows cold enough to frost the wood around it, and letters form in the frost, reversed, so that you have to read them in your shaving mirror:{/n}
+"Face down. As if that has ever stopped me. You offered me a wager at Iz, Commander. Pick me up."''',
+        c("[Pick it up.]", "look")),
+    ar("look", '''{n}Through the glass you see your own tent from above, as a bird would see it, and a woman's hand at a desk, writing. The hand pauses. Frost creeps across the lens from the other side, and letters form in it.{/n}
+"You offered me a wager at Iz. I am told gamblers like to watch their opponents' faces. Here is mine. Try not to waste it."''',
+        c('"You could have knocked."', "knocked"),
+        c('[Joke] "Your handwriting is terrible. Is that the Abyss, or just you?"', "script"),
+        c('[Breathe on the glass and write] "Show me your face."', "face")),
+    ar("face", '''{n}The frost clears completely. For one long moment the glass shows you nothing but a desk, a lamp, and the edge of a sleeve. Then the sleeve moves, and the lamp is turned, deliberately, so that the light falls away from whoever is sitting there.{/n}
+"No." {n}The letters form slowly this time.{/n} "You have seen my face at Iz, and in Alushinyrra, and you will see it again at Threshold. Here you may have my hand. It is the part of me that has done the most damage. It seems fair that it is the part you should watch."''',
+        c("Continue", "knocked")),
+    ar("script", '''"It is Sarkorian, and it was thought very fine, once, by people who are now in the Wound." {n}The frost thickens with something that might be irritation.{/n}
+"You are the only living creature who has ever mocked my hand. Most people are too busy being frightened of what it wrote."''',
+        c("Continue", "knocked")),
+    ar("knocked", '''"I did knock. At Kenabres, at Drezen, in Alushinyrra. You were always too busy being alive to answer."
+{n}The frost clears, and forms again.{/n} "Keep the lens. I will watch you through it, as I always have. You may watch me through it, if you can bear to. We will see which of us learns more before Threshold."''',
+        c("[Keep the lens, and keep looking.]", "keep_looking", flags=(LENS_HELD,)),
+        c("[Keep the lens, and put it away.]", flags=(LENS_HELD,))),
+    nar("keep_looking", '''{n}You do not put it away. The frost clears, and forms again, faster, as if the hand on the other side had been waiting.{/n}''',
+        c("Continue", "first")),
+]), requires=(BET, "areelu.met"), forbids=(LENS_HELD,), delay=24)
 
 
 # --- Chapter 5, her laboratory cell: the wager struck, after "One of us must burn" -----------------------------------

@@ -173439,7 +173439,20 @@
           "Text": "{n}For a long moment the glass stays clear, and you think she has gone. Then:{/n}\n\"Neither. You might have said that to my face at Iz, if you had thought of it in time. Instead you say it through my own lens, which you did not steal so much as fail to return.\"\n\"Very well. When you find the place I have prepared for you, and you will, bring your wager with you. Until then, keep the lens. I prefer my specimens where I can see them.\"",
           "Choices": [
             {
-              "Text": "[Keep the lens.]",
+              "Text": "[Keep the lens, and keep looking.]",
+              "Next": "keep_looking",
+              "Set": [
+                "areelu.trickster.primed",
+                "areelu.trickster.rivalry.lens",
+                "areelu.trickster.cost.late",
+                "areelu.trickster.lens_held"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the lens, and put it away.]",
               "Next": null,
               "Set": [
                 "areelu.trickster.primed",
@@ -173468,7 +173481,20 @@
           "Text": "\"I did not give it to you. You picked it up out of the ruins of Iz, where I dropped it while I was warning you about Deskari's trap, which you did not thank me for either.\"\n{n}A pause.{/n} \"And a window works both ways, Commander. Every time you look through it, you tell me something: when you are awake, when you are alone, how long you can bear to look at me before you put me away. I have learned more about you from how you hold this glass than from a year of notes.\"",
           "Choices": [
             {
-              "Text": "[Keep the lens.]",
+              "Text": "[Keep the lens, and keep looking.]",
+              "Next": "keep_looking",
+              "Set": [
+                "areelu.trickster.primed",
+                "areelu.trickster.rivalry.lens",
+                "areelu.trickster.cost.late",
+                "areelu.trickster.lens_held"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the lens, and put it away.]",
               "Next": null,
               "Set": [
                 "areelu.trickster.primed",
@@ -173482,184 +173508,11 @@
             }
           ],
           "Portrait": "Areelu"
-        }
-      ],
-      "Requires": [
-        "trickster",
-        "areelu.met"
-      ],
-      "Forbids": [
-        "areelu.trickster.primed",
-        "areelu.trickster.wager_struck"
-      ],
-      "DelayHours": 0,
-      "Optional": true,
-      "Relationship": "areelu",
-      "Remote": true,
-      "Chapters": [
-        5
-      ]
-    },
-    {
-      "Id": "areelu.trickster.lens.watched",
-      "Title": "The glass on the table",
-      "Owner": "Areelu",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
+        },
         {
-          "Id": "start",
+          "Id": "keep_looking",
           "Speaker": "Narrator",
-          "Text": "{n}The night after Iz, among the loot your people carried out of the ruins, there is a lens of dark glass in a silver ring. It is cold to the touch, and it is lying on your camp table, on top of your maps, exactly where you would put your hand.{/n}\n{n}Nobody admits to having put it there. Nobody, when you ask, remembers seeing it at all.{/n}",
-          "Choices": [
-            {
-              "Text": "[Look through it.]",
-              "Next": "look",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Turn it face down.]",
-              "Next": "facedown",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Areelu"
-        },
-        {
-          "Id": "facedown",
-          "Speaker": "Narrator",
-          "Text": "{n}You turn the lens face down on the table. After a moment the silver ring grows cold enough to frost the wood around it, and letters form in the frost, reversed, so that you have to read them in your shaving mirror:{/n}\n\"Face down. As if that has ever stopped me. You offered me a wager at Iz, Commander. Pick me up.\"",
-          "Choices": [
-            {
-              "Text": "[Pick it up.]",
-              "Next": "look",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Areelu"
-        },
-        {
-          "Id": "look",
-          "Speaker": "Areelu",
-          "Text": "{n}Through the glass you see your own tent from above, as a bird would see it, and a woman's hand at a desk, writing. The hand pauses. Frost creeps across the lens from the other side, and letters form in it.{/n}\n\"You offered me a wager at Iz. I am told gamblers like to watch their opponents' faces. Here is mine. Try not to waste it.\"",
-          "Choices": [
-            {
-              "Text": "\"You could have knocked.\"",
-              "Next": "knocked",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Joke] \"Your handwriting is terrible. Is that the Abyss, or just you?\"",
-              "Next": "script",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Breathe on the glass and write] \"Show me your face.\"",
-              "Next": "face",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Areelu"
-        },
-        {
-          "Id": "face",
-          "Speaker": "Areelu",
-          "Text": "{n}The frost clears completely. For one long moment the glass shows you nothing but a desk, a lamp, and the edge of a sleeve. Then the sleeve moves, and the lamp is turned, deliberately, so that the light falls away from whoever is sitting there.{/n}\n\"No.\" {n}The letters form slowly this time.{/n} \"You have seen my face at Iz, and in Alushinyrra, and you will see it again at Threshold. Here you may have my hand. It is the part of me that has done the most damage. It seems fair that it is the part you should watch.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "knocked",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Areelu"
-        },
-        {
-          "Id": "script",
-          "Speaker": "Areelu",
-          "Text": "\"It is Sarkorian, and it was thought very fine, once, by people who are now in the Wound.\" {n}The frost thickens with something that might be irritation.{/n}\n\"You are the only living creature who has ever mocked my hand. Most people are too busy being frightened of what it wrote.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "knocked",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Areelu"
-        },
-        {
-          "Id": "knocked",
-          "Speaker": "Areelu",
-          "Text": "\"I did knock. At Kenabres, at Drezen, in Alushinyrra. You were always too busy being alive to answer.\"\n{n}The frost clears, and forms again.{/n} \"Keep the lens. I will watch you through it, as I always have. You may watch me through it, if you can bear to. We will see which of us learns more before Threshold.\"",
-          "Choices": [
-            {
-              "Text": "[Keep the lens.]",
-              "Next": null,
-              "Set": [
-                "areelu.trickster.lens_held"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Areelu"
-        }
-      ],
-      "Requires": [
-        "areelu.trickster.bet_offered",
-        "areelu.met"
-      ],
-      "Forbids": [
-        "areelu.trickster.wager_struck",
-        "areelu.closed",
-        "areelu.trickster.lens_held"
-      ],
-      "DelayHours": 24,
-      "Optional": true,
-      "Relationship": "areelu",
-      "Remote": true,
-      "Chapters": [
-        5
-      ]
-    },
-    {
-      "Id": "areelu.trickster.lens.questions",
-      "Title": "Three questions",
-      "Owner": "Areelu",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}Two nights later the lens frosts over on its own, while you are pulling off your boots. The letters are small and quick, as if written by someone who has been waiting to write them all day.{/n}",
+          "Text": "{n}You do not put it away. The frost clears, and forms again, faster, as if the hand on the other side had been waiting.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -173675,7 +173528,7 @@
         {
           "Id": "first",
           "Speaker": "Areelu",
-          "Text": "\"I have questions. You will answer them, because you want to know what I will ask.\"\n\"First. Why are you not afraid of Threshold? Everyone who has ever gone there was afraid, even the ones who built it. I was afraid. You are not. I have watched you plan the march, and there is no fear in your hands.\"",
+          "Text": "\"Now that you have the glass, I have questions. You will answer them, because you want to know what I will ask.\"\n\"First. Why are you not afraid of Threshold? Everyone who has ever gone there was afraid, even the ones who built it. I was afraid. You are not. I have watched you plan the march, and there is no fear in your hands.\"",
           "Choices": [
             {
               "Text": "[Joke] \"Because I've already read how it ends.\"",
@@ -173894,8 +173747,8 @@
           "Text": "\"Accurate.\" {n}The frost holds the word a long time, as if she were looking at it.{/n}\n\"I have not slept properly since the hunters came to my house. You are the first person to notice who did not also try to kill me for it.\"\n\"Go to sleep, Commander. One of us should.\"",
           "Choices": [
             {
-              "Text": "[Put the lens away.]",
-              "Next": null,
+              "Text": "Continue",
+              "Next": "acc_start",
               "Set": [
                 "areelu.trickster.lens.asked"
               ],
@@ -173912,8 +173765,8 @@
           "Text": "\"The only one who has taken notes on you. Yes.\" {n}Something in the writing changes: the letters are no less precise, but they lean, very slightly, as if the hand were tired.{/n}\n\"Everyone else looks at you and sees a saviour, or a monster, or a clown. I look at you and see a record. It is the most intimate thing I know how to do. Do not make me regret telling you so.\"",
           "Choices": [
             {
-              "Text": "[Put the lens away.]",
-              "Next": null,
+              "Text": "Continue",
+              "Next": "acc_start",
               "Set": [
                 "areelu.trickster.lens.asked"
               ],
@@ -173930,8 +173783,8 @@
           "Text": "\"Frost.\" {n}The glass fogs over completely, and clears, and fogs again: once, twice, three times.{/n}\n\"That was a laugh, Commander. I thought you should know what one looks like, from this side. Do not expect another.\"",
           "Choices": [
             {
-              "Text": "[Put the lens away.]",
-              "Next": null,
+              "Text": "Continue",
+              "Next": "acc_start",
               "Set": [
                 "areelu.trickster.lens.asked"
               ],
@@ -173941,40 +173794,23 @@
             }
           ],
           "Portrait": "Areelu"
-        }
-      ],
-      "Requires": [
-        "areelu.trickster.lens_held",
-        "areelu.trickster.primed"
-      ],
-      "Forbids": [
-        "areelu.trickster.wager_struck",
-        "areelu.closed"
-      ],
-      "DelayHours": 48,
-      "Optional": true,
-      "Relationship": "areelu",
-      "Remote": true,
-      "Chapters": [
-        5
-      ]
-    },
-    {
-      "Id": "areelu.trickster.lens.accounts",
-      "Title": "Where she was",
-      "Owner": "Areelu",
-      "MinChapter": 5,
-      "MaxChapter": 5,
-      "Entry": "",
-      "Nodes": [
+        },
         {
-          "Id": "start",
+          "Id": "acc_start",
           "Speaker": "Narrator",
-          "Text": "{n}This time it is you who breathes on the glass first, and writes in the mist with a fingertip: \"Where were you, all those years you were watching?\"{/n}\n{n}The answer is a long time coming. When it comes, the letters fill the whole lens, edge to edge, and she has to clear it twice to finish.{/n}",
+          "Text": "{n}The frost fades, and before she can clear the glass again it is you who breathes on it, and writes in the mist with a fingertip: \"Where were you, all those years you were watching?\"{/n}\n{n}The answer is a long time coming. When it comes, the letters fill the whole lens, edge to edge, and she has to clear it twice to finish.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "accounts",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put the lens away for the night.]",
+              "Next": null,
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -174131,13 +173967,628 @@
         }
       ],
       "Requires": [
-        "areelu.trickster.lens.asked"
+        "trickster",
+        "areelu.met"
+      ],
+      "Forbids": [
+        "areelu.trickster.primed",
+        "areelu.trickster.wager_struck"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "areelu",
+      "Remote": true,
+      "Chapters": [
+        5
+      ]
+    },
+    {
+      "Id": "areelu.trickster.lens.watched",
+      "Title": "The glass on the table",
+      "Owner": "Areelu",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The night after Iz, among the loot your people carried out of the ruins, there is a lens of dark glass in a silver ring. It is cold to the touch, and it is lying on your camp table, on top of your maps, exactly where you would put your hand.{/n}\n{n}Nobody admits to having put it there. Nobody, when you ask, remembers seeing it at all.{/n}",
+          "Choices": [
+            {
+              "Text": "[Look through it.]",
+              "Next": "look",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Turn it face down.]",
+              "Next": "facedown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "facedown",
+          "Speaker": "Narrator",
+          "Text": "{n}You turn the lens face down on the table. After a moment the silver ring grows cold enough to frost the wood around it, and letters form in the frost, reversed, so that you have to read them in your shaving mirror:{/n}\n\"Face down. As if that has ever stopped me. You offered me a wager at Iz, Commander. Pick me up.\"",
+          "Choices": [
+            {
+              "Text": "[Pick it up.]",
+              "Next": "look",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "look",
+          "Speaker": "Areelu",
+          "Text": "{n}Through the glass you see your own tent from above, as a bird would see it, and a woman's hand at a desk, writing. The hand pauses. Frost creeps across the lens from the other side, and letters form in it.{/n}\n\"You offered me a wager at Iz. I am told gamblers like to watch their opponents' faces. Here is mine. Try not to waste it.\"",
+          "Choices": [
+            {
+              "Text": "\"You could have knocked.\"",
+              "Next": "knocked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Your handwriting is terrible. Is that the Abyss, or just you?\"",
+              "Next": "script",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Breathe on the glass and write] \"Show me your face.\"",
+              "Next": "face",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "face",
+          "Speaker": "Areelu",
+          "Text": "{n}The frost clears completely. For one long moment the glass shows you nothing but a desk, a lamp, and the edge of a sleeve. Then the sleeve moves, and the lamp is turned, deliberately, so that the light falls away from whoever is sitting there.{/n}\n\"No.\" {n}The letters form slowly this time.{/n} \"You have seen my face at Iz, and in Alushinyrra, and you will see it again at Threshold. Here you may have my hand. It is the part of me that has done the most damage. It seems fair that it is the part you should watch.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "knocked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "script",
+          "Speaker": "Areelu",
+          "Text": "\"It is Sarkorian, and it was thought very fine, once, by people who are now in the Wound.\" {n}The frost thickens with something that might be irritation.{/n}\n\"You are the only living creature who has ever mocked my hand. Most people are too busy being frightened of what it wrote.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "knocked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "knocked",
+          "Speaker": "Areelu",
+          "Text": "\"I did knock. At Kenabres, at Drezen, in Alushinyrra. You were always too busy being alive to answer.\"\n{n}The frost clears, and forms again.{/n} \"Keep the lens. I will watch you through it, as I always have. You may watch me through it, if you can bear to. We will see which of us learns more before Threshold.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the lens, and keep looking.]",
+              "Next": "keep_looking",
+              "Set": [
+                "areelu.trickster.lens_held"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the lens, and put it away.]",
+              "Next": null,
+              "Set": [
+                "areelu.trickster.lens_held"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "keep_looking",
+          "Speaker": "Narrator",
+          "Text": "{n}You do not put it away. The frost clears, and forms again, faster, as if the hand on the other side had been waiting.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "first",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "first",
+          "Speaker": "Areelu",
+          "Text": "\"Now that you have the glass, I have questions. You will answer them, because you want to know what I will ask.\"\n\"First. Why are you not afraid of Threshold? Everyone who has ever gone there was afraid, even the ones who built it. I was afraid. You are not. I have watched you plan the march, and there is no fear in your hands.\"",
+          "Choices": [
+            {
+              "Text": "[Joke] \"Because I've already read how it ends.\"",
+              "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I am. I just hide it better than you do.\"",
+              "Next": "hide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because you'll be there.\"",
+              "Next": "there",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because I've already died once. It didn't take.\"",
+              "Next": "died",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "died",
+          "Speaker": "Areelu",
+          "Text": "\"Many times. I have watched them all.\" {n}The letters come faster, as if she had been waiting to say this.{/n}\n\"In Kenabres, in the crevice, twice. In Drezen, once, very nearly. You do not stay dead, Commander. That is not courage. It is a property, like the boiling point of water, and I would very much like to know who set it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "second",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "read",
+          "Speaker": "Areelu",
+          "Text": "\"Nobody has read how it ends. I have been writing it for a century, and even I have not read it.\"\n{n}The frost hesitates.{/n} \"And yet you say it as if it were true. That is what makes you difficult, Commander. When you lie, the world leans closer to listen.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "second",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "hide",
+          "Speaker": "Areelu",
+          "Text": "\"You do not. I have seen you hide things. You hide them badly and cheerfully, like a child with a stolen cake behind its back.\"\n{n}A pause, long enough that the frost begins to melt at the edges.{/n} \"I did not say that to be cruel. I said it because it is accurate. I have seen a great many children hiding things.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "second",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "there",
+          "Speaker": "Areelu",
+          "Text": "{n}The frost goes blank. For a long time nothing forms in it at all.{/n}\n\"That is not an answer. That is a provocation. I will record it as one.\" {n}Then, smaller, in the corner of the glass:{/n} \"Recorded.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "second",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "second",
+          "Speaker": "Areelu",
+          "Text": "\"Second. What is a soul, to a Trickster? The priests say it is a thing to be weighed. The demons say it is a thing to be eaten. I have spent a hundred years treating it as a thing to be mended, and I have not managed it. What do you say it is?\"",
+          "Choices": [
+            {
+              "Text": "\"A joke the gods haven't finished telling.\"",
+              "Next": "unfinished",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Something that belongs to whoever it's in.\"",
+              "Next": "belongs",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Honestly? A lot of paperwork.\"",
+              "Next": "paperwork",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "unfinished",
+          "Speaker": "Areelu",
+          "Text": "\"An unfinished joke.\" {n}The letters come slowly now, as if she were writing them down somewhere else at the same time.{/n}\n\"Then the gods are poor comedians. They have been telling the same one since the first mortal died, and nobody has laughed yet.\"\n\"I intend to interrupt them. You will want to be there. It is the only joke I have ever made.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "third",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "belongs",
+          "Speaker": "Areelu",
+          "Text": "\"Whoever it is in.\" {n}The frost cracks, very faintly, along one edge of the glass.{/n}\n\"You do not know what you have said. You will, at Threshold. Remember that you said it, Commander. I will.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "third",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "paperwork",
+          "Speaker": "Areelu",
+          "Text": "\"Paperwork.\" {n}A long pause.{/n} \"The Lady of Graves keeps it, and she has never once lost a page. I know. I have looked for the one I wanted.\"\n\"Do not joke about that particular ledger. Not to me. Not yet.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "third",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "third",
+          "Speaker": "Areelu",
+          "Text": "{n}The frost clears for a long moment. Then:{/n}\n\"Third. When you look at me through this glass, Commander, what do you see? Be precise. I will know if you are being kind.\"",
+          "Choices": [
+            {
+              "Text": "\"A woman who hasn't slept in a hundred years.\"",
+              "Next": "slept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"The only person who's ever taken notes on me.\"",
+              "Next": "notes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Mostly frost.\"",
+              "Next": "frost",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "slept",
+          "Speaker": "Areelu",
+          "Text": "\"Accurate.\" {n}The frost holds the word a long time, as if she were looking at it.{/n}\n\"I have not slept properly since the hunters came to my house. You are the first person to notice who did not also try to kill me for it.\"\n\"Go to sleep, Commander. One of us should.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "acc_start",
+              "Set": [
+                "areelu.trickster.lens.asked"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "notes",
+          "Speaker": "Areelu",
+          "Text": "\"The only one who has taken notes on you. Yes.\" {n}Something in the writing changes: the letters are no less precise, but they lean, very slightly, as if the hand were tired.{/n}\n\"Everyone else looks at you and sees a saviour, or a monster, or a clown. I look at you and see a record. It is the most intimate thing I know how to do. Do not make me regret telling you so.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "acc_start",
+              "Set": [
+                "areelu.trickster.lens.asked"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "frost",
+          "Speaker": "Areelu",
+          "Text": "\"Frost.\" {n}The glass fogs over completely, and clears, and fogs again: once, twice, three times.{/n}\n\"That was a laugh, Commander. I thought you should know what one looks like, from this side. Do not expect another.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "acc_start",
+              "Set": [
+                "areelu.trickster.lens.asked"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "acc_start",
+          "Speaker": "Narrator",
+          "Text": "{n}The frost fades, and before she can clear the glass again it is you who breathes on it, and writes in the mist with a fingertip: \"Where were you, all those years you were watching?\"{/n}\n{n}The answer is a long time coming. When it comes, the letters fill the whole lens, edge to edge, and she has to clear it twice to finish.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "accounts",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put the lens away for the night.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "accounts",
+          "Speaker": "Areelu",
+          "Text": "\"Where you needed me, which was nearly everywhere. In Kenabres, when you fell into the crevice with your unfortunate companions, I saved you. At the Gray Garrison I distracted Minagho, so you could reach the wardstone. In Drezen I wore Yaniel's face to guide you to the Sword of Valor.\"\n\"I told you all of this in Alushinyrra. You did not thank me then. Do not thank me now.\"",
+          "Choices": [
+            {
+              "Text": "[Joke] \"Thank you. You were a terrible Yaniel, by the way.\"",
+              "Next": "yaniel",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why tell me again?\"",
+              "Next": "again",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You kept me alive so you could kill me at Threshold.\"",
+              "Next": "alive",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"And in Drezen, lately? Were you watching when I crowned the Fool King?\"",
+              "Next": "fool_king",
+              "Set": [],
+              "Requires": [
+                "fool_king.ever_crowned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"What's the last thing you watched me do, before I asked?\"",
+              "Next": "last",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "last",
+          "Speaker": "Areelu",
+          "Text": "\"Sleep.\" {n}The letters come at once.{/n}\n\"You sleep on your left side, with one hand under the pillow, as if something might be taken from under it in the night. You talk, sometimes. Last night you said 'neither' twice, and something I could not read, and then you laughed.\"\n\"I have watched a great many people sleep, Commander, for a great many reasons. You are the first who laughed. I wrote it down. I did not know under which heading.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bait",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "fool_king",
+          "Speaker": "Areelu",
+          "Text": "{n}The frost thickens until the lens is almost white.{/n}\n\"I was watching. The Commander of the Fifth Crusade, in the capital that crusaders bled for, put a crown on a fool and made the city kneel to him. The priests wept. The knights drank. The fool, I am told, gave a very good speech.\"\n\"I have seen demon lords crowned, Commander. I have seen them uncrowned. None of them made me laugh.\" {n}A pause.{/n} \"Do not ask whether I laughed. I am not going to tell you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bait",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "yaniel",
+          "Speaker": "Areelu",
+          "Text": "\"I was an excellent Yaniel. You followed her, did you not? You went exactly where she led you. That is the only measure of a disguise that matters.\"\n{n}The frost settles.{/n} \"It was the first time I spoke to you with a face. I chose a kind one. You did not notice the difference. Neither, I confess, did I, until afterwards.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bait",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "again",
+          "Speaker": "Areelu",
+          "Text": "\"Because you asked where I was, and it is a question nobody has asked me for a hundred years. They ask what I did. They ask how many. Never where I was.\"\n{n}The frost thins.{/n} \"I was at a great many windows, Commander. Most of them were yours.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bait",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "alive",
+          "Speaker": "Areelu",
+          "Text": "\"Yes.\" {n}No hesitation at all.{/n} \"I kept you alive so that you would be whole when it mattered. A vessel that breaks too early is useless.\"\n\"You wanted me to say something softer. I do not have anything softer. I have this, which is true, and which I have never said to anyone else.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bait",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "bait",
+          "Speaker": "Areelu",
+          "Text": "\"Now listen. Soon you will find a crystal. When you do, you will find my laboratory, and me in it. I chose the bait myself.\"\n\"Bring your wager. Say it to my face, or to what I have left of one. I would like to see you say 'neither' while I am looking at you.\"\n{n}The frost clears, and does not form again that night.{/n}",
+          "Choices": [
+            {
+              "Text": "[Put the lens away.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "areelu.trickster.bet_offered",
+        "areelu.met"
       ],
       "Forbids": [
         "areelu.trickster.wager_struck",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.lens_held"
       ],
-      "DelayHours": 48,
+      "DelayHours": 24,
       "Optional": true,
       "Relationship": "areelu",
       "Remote": true,

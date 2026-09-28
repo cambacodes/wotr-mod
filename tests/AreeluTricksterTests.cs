@@ -56,8 +56,6 @@ internal static class AreeluTricksterTests
         var izBet = S(P + "rivalry.iz_bet");
         var lens = S(P + "rivalry.lens");
         var watched = S(P + "lens.watched");
-        var questions = S(P + "lens.questions");
-        var accounts = S(P + "lens.accounts");
         var struck = S(P + "wager.struck");
         var welcome = S(P + "threshold.welcome");
         var desk = S(P + "truth.the_desk");
@@ -98,8 +96,11 @@ internal static class AreeluTricksterTests
         check(new[] { late, raised }.All(s => s.ReturnToList && s.AnswerLists.SequenceEqual(new[] { FinalList }) && s.NativeReturnCue == null)
               && lastWords.ReturnToList && lastWords.AnswerLists.SequenceEqual(new[] { "b6bc1d5fb28e115499b8bcbbc0d541f9" }),
             "The Threshold beats are not E14b return-to-list scenes on GrandFinal.");
-        check(new[] { lens, watched, questions, accounts }.All(s => Rules.IsRemote(s) && s.Chapters.SequenceEqual(new[] { 5 })),
-            "The lens correspondence is not Chapter 5 letters.");
+        check(new[] { lens, watched }.All(s => Rules.IsRemote(s) && s.Chapters.SequenceEqual(new[] { 5 })),
+            "The lens is not a Chapter 5 letter.");
+        // letters_max.5 = 1: the lens is the only Areelu letter on either path (the late primer or the glass after the bet).
+        check(ours.Count(s => Rules.IsRemote(s)) == 2 && lens.Forbids.Contains(Primed) && watched.Requires.Contains(Bet),
+            "Areelu has more than one Chapter 5 letter on a path.");
         check(rewrite.EpilogueSequence == "PlayerFinalChoice" && rewrite.EpilogueAfter == TricksterPage, "The rewrite is not after BookPage_0147.");
         var chain = new[] { rewrite, after, unnamed, survived }.Concat(report).ToArray();
         for (int i = 1; i < chain.Length; i++)
@@ -138,15 +139,15 @@ internal static class AreeluTricksterTests
         var kept = Program.Walk(lens, iz).Where(r => r.Has(lens.Id)).ToList();
         check(kept.Count > 0 && kept.All(r => r.Has(Primed) && r.Has(Lens) && r.Has(Late) && r.Has(LensHeld)), "Trk_Areelu_Lens: flags.");
         check(lens.Nodes.SelectMany(n => n.Choices).Any(c => c.Mythic == "PlayerIsTrickster"), "The knock on the lens is not a [Trickster] answer.");
-        var asked = Program.Walk(questions, With(story, kept[0])).Where(r => r.Has(questions.Id)).ToList();
-        check(Available(questions, With(story, kept[0])) && asked.Count > 0 && asked.All(r => r.Has(LensAsked)), "The three questions do not follow the lens.");
-        check(Available(accounts, With(story, asked[0])), "Where she was does not follow the questions.");
-        var betHeld = Program.Walk(watched, With(story, bet[0])).Where(r => r.Has(watched.Id)).ToList();
-        check(betHeld.Count > 0 && betHeld.All(r => r.Has(LensHeld)) && Available(questions, With(story, betHeld[0])),
-            "The bet path never gets the lens.");
-        var foolPages = new HashSet<string>();
-        Program.Walk(accounts, With(story, asked[0], "fool_king.ever_crowned"), (page, _) => foolPages.Add(page));
-        check(foolPages.Contains("fool_king"), "The lens never mentions the Fool King.");
+        // The same letter carries her three questions and where she was; both lens letters share that night.
+        foreach (var (letter, world) in new[] { (lens, iz), (watched, With(story, bet[0])) })
+        {
+            var nights = new HashSet<string>();
+            var ends = Program.Walk(letter, With(story, world, "fool_king.ever_crowned"), (node, _) => nights.Add(node)).Where(r => r.Has(letter.Id)).ToList();
+            check(ends.Count > 0 && ends.All(r => r.Has(LensHeld)) && ends.Any(r => r.Has(LensAsked)) && ends.Any(r => !r.Has(LensAsked))
+                  && new[] { "first", "second", "third", "accounts", "fool_king", "bait" }.All(nights.Contains),
+                "The lens night (questions, where she was) is not in the letter: " + letter.Id);
+        }
 
         // Trk_Areelu_Wager.
         var cell = World(story, 5, "trickster", "trickster.ever", "areelu.met", "areelu.one_must_burn", Primed, Bet);
