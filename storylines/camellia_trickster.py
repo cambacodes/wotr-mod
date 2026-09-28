@@ -607,6 +607,10 @@ SCENES.append(scene(P + "react.anevia_body", "Another body", "Anevia", 3,
 SCENES.append(reaction("Regill", P + "react.regill_grave", (RET, KILLED, "regill.in_party"),
     '''"The Gwerm woman is walking Drezen in a veil. The crusade's register lists her as buried." {n}Regill does not raise his voice. He never needs to.{/n} "Under the Order, a false entry in a register of the dead is a crime of its own, Commander, separate from whatever she is. I have noted both."''',
     answer_list=REGILL_LIST, forbids=REGILL_GONE, entry='"About Camellia..."', chapter=3, last=5, portrait="Regill"))
+SCENES.append(reaction("Regill", P + "react.regill_quarters", (COMMITTED, "regill.in_party"),
+    '''"The Gwerm woman sleeps in your quarters now. The watch reports your door barred from the inside, and the lamp lit past the second bell." {n}Regill's voice does not change. It never does.{/n} "I do not care whom you share a pillow with, Commander. I care that people she smiles at have a habit of turning up in alleys with one wound, very neat. I have told the watch to knock twice at your door. If nobody answers the second knock, they are to break it."''',
+    answer_list=REGILL_LIST, forbids=(*REGILL_GONE, DEAD), entry='"About Camellia..."', chapter=3, last=5, portrait="Regill",
+    ForbidOverrides={DEAD: RET}))
 SCENES.append(reaction("Regill", P + "react.regill_covered", (COVERED, "regill.in_party"),
     '''"A body in the lower city with one wound and a clerk's note that says 'deserters'. Deserters run, Commander. They are not laid out." {n}He folds his hands behind his back.{/n} "You signed a lie over a murder. I will not ask by whom. I will remember that you did not."''',
     answer_list=REGILL_LIST, forbids=(*REGILL_GONE, DEAD), entry='"About the lower city..."', chapter=3, last=5, portrait="Regill",

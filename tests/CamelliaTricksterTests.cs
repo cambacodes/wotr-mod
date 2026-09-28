@@ -319,6 +319,11 @@ internal static class CamelliaTricksterTests
             foreach (var s in new[] { S(P + id), S(P + id + "_camp") })
                 check(s.Requires.Contains(Committed) || s.RequiresAnyGroups.Any(g => g.Contains(Committed)),
                     "A scene of the life after her answer does not require the commit: " + s.Id);
+        var quarters = S(P + "react.regill_quarters");
+        check(quarters.Reaction && quarters.Requires.Contains(Committed) && quarters.Requires.Contains("regill.in_party")
+              && quarters.AnswerLists.SequenceEqual(new[] { "2366a8db6481070439fee222c0c52e45" })
+              && Avail(quarters, World(story, 5, "trickster.ever", Committed, "regill.in_party")),
+            "Nobody in the party notices the commit (Directive 12: a companion reaction to the intimacy).");
         check(test.Nodes.Any(n => n.Id == "threshold") && Ch(test, "threshold", 0).Next == "morning",
             "The night after her answer does not cut at the start of the act and wake to the morning.");
         var together = World(story, 5, "trickster.ever", Killed, Returned, Committed);

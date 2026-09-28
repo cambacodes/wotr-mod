@@ -201594,6 +201594,52 @@
       ]
     },
     {
+      "Id": "camellia.trickster.react.regill_quarters",
+      "Title": "Regill's word",
+      "Owner": "Regill",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About Camellia...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Regill",
+          "Text": "\"The Gwerm woman sleeps in your quarters now. The watch reports your door barred from the inside, and the lamp lit past the second bell.\" {n}Regill's voice does not change. It never does.{/n} \"I do not care whom you share a pillow with, Commander. I care that people she smiles at have a habit of turning up in alleys with one wound, very neat. I have told the watch to knock twice at your door. If nobody answers the second knock, they are to break it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Regill"
+        }
+      ],
+      "Requires": [
+        "camellia.committed",
+        "regill.in_party"
+      ],
+      "Forbids": [
+        "regill.dead",
+        "regill.kicked_out",
+        "regill.left_plot",
+        "camellia.dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "camellia",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "camellia.dead": "camellia.trickster.returned"
+      },
+      "AnswerLists": [
+        "2366a8db6481070439fee222c0c52e45"
+      ]
+    },
+    {
       "Id": "camellia.trickster.react.regill_covered",
       "Title": "Regill's word",
       "Owner": "Regill",
@@ -213696,8 +213742,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
