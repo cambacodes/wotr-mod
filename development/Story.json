@@ -183883,11 +183883,11 @@
         {
           "Id": "start",
           "Speaker": "Eritrice",
-          "Text": "\"There is no quorum. There is no floor. This is a private audience, Commander, and a motion requires a session, a second, a...\"\n{n}But she has already dipped the quill. It is the oldest habit she has: every question put in her hearing is written down, so that no one can say afterwards it was never asked. The long scroll is open at the foot of the last session, and her claws are waiting over it.{/n}",
+          "Text": "\"There is no quorum. There is no floor. This is a private audience, Commander, and a motion requires a session, a second, a...\"\n{n}She has dipped the quill anyway. She writes down every proposal put to her; the whole Council has watched her do it at every session.{/n}",
           "Choices": [
             {
               "Text": "[Move a motion from the floor] \"I move that the chair is in dire need of a private debate. All in favour?\"",
-              "Next": "carried",
+              "Next": "declared",
               "Set": [
                 "eritrice.trickster.primed",
                 "eritrice.trickster.cost.censured"
@@ -183913,13 +183913,41 @@
           "Portrait": "Eritrice"
         },
         {
-          "Id": "carried",
-          "Speaker": "Eritrice",
-          "Text": "{n}She writes the motion down, word for word, because it was put. She writes \"In favour: the mover.\" Then she writes \"Opposed:\", and the quill stops, and stays stopped.{/n}\n{n}You watch her try. Her claws tighten on the quill. She cannot write her own name after that word, because it would not be true, and she has never once written a thing that was not true. The silence goes on long enough to be an answer.{/n}\n{n}She writes \"Carried.\" Then, lower, in a smaller and much harder hand: \"The chair censures the mover for moving it.\"{/n}",
+          "Id": "declared",
+          "Speaker": "Narrator",
+          "Text": "{n}You do not wait for her answer. You raise your own hand, look slowly around the empty hall as if counting heads, and say, in her own cadence: \"Passed unanimously. This meeting is adjourned.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "law",
+              "Next": "again",
+              "Set": [],
+              "Requires": [
+                "eritrice.chair_usurped"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "first",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eritrice.chair_usurped"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "again",
+          "Speaker": "Eritrice",
+          "Text": "\"My dear {name}, with all due respect, I do not recall appointing you chairperson.\"\n{n}She stops. She has said exactly those words to you before, in front of the whole Council, and then adjourned the meeting anyway, because you had already done it and every member had heard.{/n}\n\"...Again. You have done it to me again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "record",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -183929,9 +183957,25 @@
           "Portrait": "Eritrice"
         },
         {
-          "Id": "law",
+          "Id": "first",
           "Speaker": "Eritrice",
-          "Text": "\"You asked me a question I could only answer honestly. That is a very low trick, Commander, and a very good one.\"\n{n}A growl, deep in her chest, the sound of a lion that has been cornered by a rule it wrote itself.{/n}\n\"Standing Order One of this Council. I drafted it, and every member signed it on the first day, Socothbenoth in rouge: the minutes are not amended. Alichino asked for an exception that same afternoon. I refused him. If I strike this line, I must write beside it why, that I opposed the motion, which is a lie; and I must grant Alichino his exception, which is worse.\"",
+          "Text": "\"My dear {name}, with all due respect, I do not recall appointing you chairperson. You cannot call a vote, cast it, count it and declare it, all by yourself, in a room with nobody in it, and...\"\n{n}Her quill has stopped moving.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "record",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "record",
+          "Speaker": "Eritrice",
+          "Text": "{n}She could strike the line. You watch her consider it. Then she writes, because she writes down what happens in her hearing, and this has happened: \"Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time.\"{/n}\n{n}And beneath it, in a smaller and much harder hand: \"The chair censures the mover.\"{/n}\n\"Every word of that is true. I did not object in time. I was too busy being astonished.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -183947,7 +183991,7 @@
         {
           "Id": "terms",
           "Speaker": "Eritrice",
-          "Text": "{n}She sands the ink with a hard flick of the wrist.{/n}\n\"So it stands, and here is exactly what it buys you. It binds the chair to hear you out, in private, point by point. It does not bind the Council. It does not bind my vote. And the censure goes into the Council's own minutes, which every member reads: you are now the only member of this Council ever to be censured. Alichino will have it copied into his little black book before the ink is dry.\"\n\"Come back when the Council has sat again. I will read the censure into the record first.\"",
+          "Text": "{n}A growl, deep in her chest.{/n} \"I could object now, and have it out with you, and win. A chair may. I will not. Not because I cannot. Because I find, to my considerable irritation, that I would like to hear this debate, and I will not pretend otherwise to a record I keep true.\"\n\"So here is what it buys you. The chair will hear you out, in private, point by point. It does not bind the Council. It does not bind my vote. And the censure goes into the Council's own minutes, which every member reads: you are the only member of this Council ever to be censured. Alichino will copy it into his little black book before the ink is dry.\"",
           "Choices": [
             {
               "Text": "[Let her sand the ink dry.]",
@@ -183991,7 +184035,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She unrolls the scroll of the last session and turns it so you can read it. Among the Council's business, in her own upright hand: \"Motion from the floor, the Commander: that the chair is in dire need of a private debate. Carried unanimously.\"{/n}",
+          "Text": "{n}She unrolls the scroll and turns it so you can read it. Among the Council's business, in her own upright hand: \"Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time.\" The censure beneath it has been read into the Council's record since, and there is a small neat tick beside it that is not in her hand.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -184007,7 +184051,7 @@
         {
           "Id": "record",
           "Speaker": "Eritrice",
-          "Text": "\"I do not write lies. My element is truth, the truth that only honest debate can reach, and it seems the truth is that I agreed.\"\n{n}Her claws tap the scroll, once for each word.{/n} \"The censure stands too. It is read into the record first: the mover is rebuked for moving a motion in a room with no floor.\"\n\"Now: the debate. Point by point, until one of us concedes. I have never lost an argument, Commander. I have been at this table longer than your crusade has had a name.\"",
+          "Text": "\"Alichino's tick. He reads everything that might one day be useful.\" {n}Her claws tap the scroll, once for each word.{/n}\n\"I have read that line every night since, asking myself why I did not object. My element is truth, the truth that only honest debate can reach, and the truth is the one I gave you: I wanted to hear the debate.\"\n\"Now: the debate. Point by point, until one of us concedes. I have never lost an argument, Commander. I have been at this table longer than your crusade has had a name.\"",
           "Choices": [
             {
               "Text": "Continue.",
@@ -184362,7 +184406,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}A scroll case arrives by courier, sealed with a lion's head in amethyst wax. Inside is a fair copy of the minutes of the Council's last session, and one item is underlined in red: \"Motion from the floor, the Commander: that the chair is in dire need of a private debate. Carried unanimously.\"{/n}",
+          "Text": "{n}A scroll case arrives by courier, sealed with a lion's head in amethyst wax. Inside is a fair copy of the minutes of the Council's last session, and one item is underlined in red: \"Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time.\"{/n}",
           "Choices": [
             {
               "Text": "Read the letter.",
@@ -184378,7 +184422,7 @@
         {
           "Id": "letter",
           "Speaker": "Eritrice",
-          "Text": "{n}Beneath it, in the same upright hand:{/n} \"The hall is sealed, and the Council no longer convenes. The minutes stand. A motion carried under my pen cannot be struck, and so the chair is obliged to hold the debate by correspondence. The chair notes the delay. Your opening argument, Commander. Keep it short. Keep it true.\"",
+          "Text": "{n}Beneath it, in the same upright hand:{/n} \"The hall is sealed, and the Council no longer convenes. The minutes stand. I did not object in time, and I will not object now by post when I did not do it to your face; and so the chair will hold the debate by correspondence. The chair notes the delay. Your opening argument, Commander. Keep it short. Keep it true.\"",
           "Choices": [
             {
               "Text": "[Countersign the minutes] \"Carried. Signed. Point one: you kept the minutes.\"",

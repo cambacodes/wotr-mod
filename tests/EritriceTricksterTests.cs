@@ -103,6 +103,9 @@ internal static class EritriceTricksterTests
         check(Choice(motion, "start", 0).Mythic == "PlayerIsTrickster" && Choice(motion, "start", 0).Alignment?.Direction == "Chaotic"
               && Choice(motion, "start", 0).Alignment!.Value == 1 && Choice(motion, "start", 1).Abort,
             "The motion is not a Trickster answer (Chaotic 1) with a way back.");
+        check(motion.Nodes.Single(n => n.Id == "declared").Choices.Count == 2
+              && Choice(motion, "declared", 0).Requires.Contains("eritrice.chair_usurped") && Choice(motion, "declared", 1).Forbids.Contains("eritrice.chair_usurped"),
+            "The motion does not recognise the usurped chair of Council_3 (Cue_0045).");
         foreach (var hall in own.Where(s => !Rules.IsRemote(s)))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
                   && hall.Chapters.All(c => c == 3 || c == 5) && hall.Forbids.Contains("eritrice.lost_at_council"),

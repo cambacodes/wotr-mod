@@ -9,8 +9,9 @@ force!" (Council_5-2/Cue_0035 b138a1a4). If the Commander fights the Council, it
 bled of their essence (Shyka_Offer/Cue_0002 c3b8e7f1), then pretend they never met (Epilogues/Cue_0568 0ffd4b0b):
 hostility and a sealed hall, not death.
 
-F10 root: the minutes are true by her own law, so a motion she wrote down as carried was carried. Nothing moves her pen
-but her own honesty. Her private dialog sits on the hall spawner and her unit has no dialog component, so every physical
+F10 root: the usurped chair (Council_3/Answer_0039 -> Cue_0045). The Commander calls the vote, casts it and declares
+it carried, acting as chair without appointment, as once before in front of the whole Council. She keeps her minutes
+true, so she records exactly that, "the chair did not object in time", and chooses not to object after the fact. Her private dialog sits on the hall spawner and her unit has no dialog component, so every physical
 scene is a hall scene on Council_Eritrice/AnswersList_0002; once the hall is sealed she can only write. The courtship
 that the spine opens is eritrice_minutes (the standing debate).
 """
@@ -23,6 +24,7 @@ HALL = "28a49e115795ed44397b5a1503cef4f0"          # Area TricksterCouncil
 LIST = "d07bffc320b9127459c40869ab3e8ee4"          # Council_Eritrice/AnswersList_0002
 WELCOME = "2abad22288daf834f950acb6b2b7a812"       # Council_Eritrice/Cue_0001 "Welcome to the Council, Commander." (clean)
 CHADALI_LIST = "e649f211c6b002a49a0c633061877927"  # Council_Chadali/AnswersList_0003
+CHAIR_USURPED = "eritrice.chair_usurped"             # Council_3/Cue_0045 "I don't recall appointing you chairperson" (bound in eritrice_minutes)
 NENIO_HUB = "1ab909cc3a6194840b1475b99547c263"     # CompanionDialogues/Nenio/AnswersList_0015
 COUNCIL_PAGE = "b2fd1f720322d6749b921cdd34328c3a"  # Epilogues BookPage_0187 (the Council's page, Cue_0568)
 
@@ -90,21 +92,26 @@ def letter(id, title, nodes, requires, forbids=(), delay=0, **extra):
 
 SCENES.append(scene(P + "council.motion", "Motion carried", "Eritrice", 3, '"Madam Chair. A motion."', [
     e("start", '''"There is no quorum. There is no floor. This is a private audience, Commander, and a motion requires a session, a second, a..."
-{n}But she has already dipped the quill. It is the oldest habit she has: every question put in her hearing is written down, so that no one can say afterwards it was never asked. The long scroll is open at the foot of the last session, and her claws are waiting over it.{/n}''',
-      c('[Move a motion from the floor] "I move that the chair is in dire need of a private debate. All in favour?"', "carried",
+{n}She has dipped the quill anyway. She writes down every proposal put to her; the whole Council has watched her do it at every session.{/n}''',
+      c('[Move a motion from the floor] "I move that the chair is in dire need of a private debate. All in favour?"', "declared",
         flags=(PRIMED, CENSURED), mythic="Trickster", alignment=("Chaotic", 1)),
       c("Never mind.", abort=True)),
-    e("carried", '''{n}She writes the motion down, word for word, because it was put. She writes "In favour: the mover." Then she writes "Opposed:", and the quill stops, and stays stopped.{/n}
-{n}You watch her try. Her claws tighten on the quill. She cannot write her own name after that word, because it would not be true, and she has never once written a thing that was not true. The silence goes on long enough to be an answer.{/n}
-{n}She writes "Carried." Then, lower, in a smaller and much harder hand: "The chair censures the mover for moving it."{/n}''',
-      c("Continue", "law")),
-    e("law", '''"You asked me a question I could only answer honestly. That is a very low trick, Commander, and a very good one."
-{n}A growl, deep in her chest, the sound of a lion that has been cornered by a rule it wrote itself.{/n}
-"Standing Order One of this Council. I drafted it, and every member signed it on the first day, Socothbenoth in rouge: the minutes are not amended. Alichino asked for an exception that same afternoon. I refused him. If I strike this line, I must write beside it why, that I opposed the motion, which is a lie; and I must grant Alichino his exception, which is worse."''',
+    nar("declared", '''{n}You do not wait for her answer. You raise your own hand, look slowly around the empty hall as if counting heads, and say, in her own cadence: "Passed unanimously. This meeting is adjourned."{/n}''',
+        c("Continue", "again", requires=(CHAIR_USURPED,)),
+        c("Continue", "first", forbids=(CHAIR_USURPED,))),
+    e("again", '''"My dear {name}, with all due respect, I do not recall appointing you chairperson."
+{n}She stops. She has said exactly those words to you before, in front of the whole Council, and then adjourned the meeting anyway, because you had already done it and every member had heard.{/n}
+"...Again. You have done it to me again."''',
+      c("Continue", "record")),
+    e("first", '''"My dear {name}, with all due respect, I do not recall appointing you chairperson. You cannot call a vote, cast it, count it and declare it, all by yourself, in a room with nobody in it, and..."
+{n}Her quill has stopped moving.{/n}''',
+      c("Continue", "record")),
+    e("record", '''{n}She could strike the line. You watch her consider it. Then she writes, because she writes down what happens in her hearing, and this has happened: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time."{/n}
+{n}And beneath it, in a smaller and much harder hand: "The chair censures the mover."{/n}
+"Every word of that is true. I did not object in time. I was too busy being astonished."''',
       c("Continue", "terms")),
-    e("terms", '''{n}She sands the ink with a hard flick of the wrist.{/n}
-"So it stands, and here is exactly what it buys you. It binds the chair to hear you out, in private, point by point. It does not bind the Council. It does not bind my vote. And the censure goes into the Council's own minutes, which every member reads: you are now the only member of this Council ever to be censured. Alichino will have it copied into his little black book before the ink is dry."
-"Come back when the Council has sat again. I will read the censure into the record first."''',
+    e("terms", '''{n}A growl, deep in her chest.{/n} "I could object now, and have it out with you, and win. A chair may. I will not. Not because I cannot. Because I find, to my considerable irritation, that I would like to hear this debate, and I will not pretend otherwise to a record I keep true."
+"So here is what it buys you. The chair will hear you out, in private, point by point. It does not bind the Council. It does not bind my vote. And the censure goes into the Council's own minutes, which every member reads: you are the only member of this Council ever to be censured. Alichino will copy it into his little black book before the ink is dry."''',
       c("[Let her sand the ink dry.]")),
 ], requires=("trickster",), forbids=(PRIMED, LOST), last=5, Relationship="eritrice", Chapters=[3, 5],
     AnswerLists=[LIST], NativeReturnCue=WELCOME))
@@ -113,10 +120,10 @@ SCENES.append(scene(P + "council.motion", "Motion carried", "Eritrice", 3, '"Mad
 # --- The payoff: the private debate, once a Council session has been minuted. ------------------------------------
 
 SCENES.append(scene(P + "council.private_debate", "The minutes stand", "Eritrice", 3, '"About my motion, Madam Chair."', [
-    nar("start", '''{n}She unrolls the scroll of the last session and turns it so you can read it. Among the Council's business, in her own upright hand: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Carried unanimously."{/n}''',
+    nar("start", '''{n}She unrolls the scroll and turns it so you can read it. Among the Council's business, in her own upright hand: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time." The censure beneath it has been read into the Council's record since, and there is a small neat tick beside it that is not in her hand.{/n}''',
         c("Continue", "record")),
-    e("record", '''"I do not write lies. My element is truth, the truth that only honest debate can reach, and it seems the truth is that I agreed."
-{n}Her claws tap the scroll, once for each word.{/n} "The censure stands too. It is read into the record first: the mover is rebuked for moving a motion in a room with no floor."
+    e("record", '''"Alichino's tick. He reads everything that might one day be useful." {n}Her claws tap the scroll, once for each word.{/n}
+"I have read that line every night since, asking myself why I did not object. My element is truth, the truth that only honest debate can reach, and the truth is the one I gave you: I wanted to hear the debate."
 "Now: the debate. Point by point, until one of us concedes. I have never lost an argument, Commander. I have been at this table longer than your crusade has had a name."''',
       c("Continue.", "honest"),
       c('[Win the vote with a trick] "I move the question be called. The ayes have it: I heard them."', "trick")),
@@ -184,9 +191,9 @@ CHADALI_PS = nar("postscript", '''{n}In the margin someone has drawn a small hea
                  c("[Fold the letter away.]"))
 
 letter(P + "council.minutes_letter", "The minutes by courier", [
-    nar("start", '''{n}A scroll case arrives by courier, sealed with a lion's head in amethyst wax. Inside is a fair copy of the minutes of the Council's last session, and one item is underlined in red: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Carried unanimously."{/n}''',
+    nar("start", '''{n}A scroll case arrives by courier, sealed with a lion's head in amethyst wax. Inside is a fair copy of the minutes of the Council's last session, and one item is underlined in red: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time."{/n}''',
         c("Read the letter.", "letter")),
-    e("letter", '''{n}Beneath it, in the same upright hand:{/n} "The hall is sealed, and the Council no longer convenes. The minutes stand. A motion carried under my pen cannot be struck, and so the chair is obliged to hold the debate by correspondence. The chair notes the delay. Your opening argument, Commander. Keep it short. Keep it true."''',
+    e("letter", '''{n}Beneath it, in the same upright hand:{/n} "The hall is sealed, and the Council no longer convenes. The minutes stand. I did not object in time, and I will not object now by post when I did not do it to your face; and so the chair will hold the debate by correspondence. The chair notes the delay. Your opening argument, Commander. Keep it short. Keep it true."''',
       c('[Countersign the minutes] "Carried. Signed. Point one: you kept the minutes."', "postscript",
         flags=(STARTED, MINUTES_READ, LATE), forbids=("chadali.lost_at_council",)),
       c('[Countersign the minutes] "Carried. Signed. Point one: you kept the minutes."',
