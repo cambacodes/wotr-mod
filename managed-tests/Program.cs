@@ -129,7 +129,7 @@ internal static class Program
             // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
             .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(story.RemovableItems).Distinct());
         foreach (var binding in nurahNativeBindings)
             Check(((string)native[binding.Key]["$type"]!).EndsWith(", " + binding.Value, StringComparison.Ordinal),
                 "Nurah native binding has the wrong archive type: " + binding.Key);
@@ -206,6 +206,20 @@ internal static class Program
             cue.Continue = data["Continue"]!.ToObject<Kingmaker.DialogSystem.CueSelection>()!;
             cue.Answers.Clear();
             cue.Answers.AddRange(NativeReferences(data, "Answers").Select(Reference<BlueprintAnswerBaseReference>));
+        }
+        // E11: a whitelisted removable item must resolve before Build, or the relationships that remove it degrade.
+        foreach (string guid in story.RemovableItems.Distinct())
+        {
+            Check(((string)native[guid]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last().StartsWith("BlueprintItem", StringComparison.Ordinal),
+                "Removable item is not a BlueprintItem: " + guid);
+            Seed<Kingmaker.Blueprints.Items.BlueprintItem>(guid);
+        }
+        // E12 presence areas outside the capital are native areas the game loads; seed them like the capital fixture.
+        foreach (string guid in story.Presences.Values.Select(p => p.Area).Distinct())
+        {
+            Check(((string)native[guid]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last().StartsWith("BlueprintArea", StringComparison.Ordinal),
+                "Presence area is not a BlueprintArea: " + guid);
+            Seed<Kingmaker.Blueprints.Area.BlueprintArea>(guid);
         }
         foreach (string guid in story.CompletedQuests.Values.Distinct())
         {

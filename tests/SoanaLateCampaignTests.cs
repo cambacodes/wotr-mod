@@ -13,7 +13,7 @@ internal static class SoanaLateCampaignTests
         string[] oldIds = { "threshold", "water_carrier", "guardian_question", "one_account", "watch_line", "price_of_warning", "ordinary_feast", "name_between", "lower_bend", "the_thing_in_the_sack", "the_dry_offering", "the_inherited_debt", "a_voice_in_the_dark", "what_followed_home", "a_promise_still_spoken", "the_unwelcome_path", "after_the_last_visitor" };
         string[] visitIds = { "when_the_road_returns", "a_track_with_two_ends", "what_the_hollow_costs", "where_the_steps_end", "the_days_she_counted", "before_the_far_road" };
         var visits = visitIds.Select(Get).ToArray();
-        var endings = story.Scenes.Where(s => s.Relationship == "soana" && s.Owner == "Epilogue").ToArray();
+        var endings = story.Scenes.Where(s => s.Relationship == "soana" && s.Owner == "Epilogue" && !s.Id.StartsWith("soana.trickster.", StringComparison.Ordinal)).ToArray();
         var reached = new HashSet<string>();
         var protectedFlags = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.CompletedQuests.Keys)
             .Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys)

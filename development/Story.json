@@ -78246,7 +78246,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -78289,7 +78309,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -78333,7 +78373,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -78378,7 +78438,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -78420,7 +78500,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -78582,7 +78682,9 @@
       "Requires": [
         "soana.late_campaign_kept"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "soana.trickster.returned"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "soana",
@@ -78856,7 +78958,8 @@
         "soana.progression_kept"
       ],
       "Forbids": [
-        "soana.late_campaign_kept"
+        "soana.late_campaign_kept",
+        "soana.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -153226,6 +153329,2200 @@
       "AnswerLists": [
         "4d978cbd2aa780d46874255282039f3f"
       ]
+    },
+    {
+      "Id": "soana.trickster.handover.after_quest",
+      "Title": "The spirits' portion",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Play a cruel trick on Camellia] \"My friend wants your blood turned to a good cause. Your forest is a good cause. Bleed for it first, and she can have what's left.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman looks at you for a long moment. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}\n\"A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss.\"\n{n}She wraps the hand in a rag without looking at it, the way other people tie a bootlace.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cost",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cost",
+          "Speaker": "Soana",
+          "Text": "\"Do not look so pleased with yourself. The spirits ate, so now they know my taste. Every winter from this one they will come to the cave mouth and ask for more, and I will give it to them, because a bargain is a bargain even when a fool strikes it for you.\"\n\"Why do it, then?\"\n\"Because your friend would have taken all of it, and the spirits would have had nothing. I serve the forest. I do not serve you, and I certainly do not serve her.\"",
+          "Choices": [
+            {
+              "Text": "[Leave before she changes her mind]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed",
+                "soana.trickster.cost.blood_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "fef727987297e8d4eb34068688fdac27"
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "camellia.asked_for_soana"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "EntryMythic": "PlayerIsTrickster",
+      "EntryAlignment": {
+        "Direction": "Chaotic",
+        "Value": 1
+      },
+      "TricksterDevice": true,
+      "TricksterState": "handover"
+    },
+    {
+      "Id": "soana.trickster.handover.after_bear_a",
+      "Title": "The spirits' portion",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Play a cruel trick on Camellia] \"You heard her: her blood serves the spirits. So let the spirits have it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman barks a laugh at Camellia, not at you, and draws her knife across her own palm. Blood runs into the moss. Somewhere in the trees, something answers.{/n}\n\"There, spirit talker. The spirits of this land have had their portion, from my own hand. That is all you get. That is all *anyone* gets.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "camellia",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "camellia",
+          "Speaker": "Camellia",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Choices": [
+            {
+              "Text": "[Leave before either of them decides otherwise]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed",
+                "soana.trickster.cost.blood_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "c6b676fa989a5494cb6ce0c981979907"
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "397b090721c41044ea3220445300e1b8"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "001686714a5c2384ba09686b45bd033f"
+      ],
+      "NativeReturnCue": "726e936d05fde7a4798854a917b4b73d",
+      "EntryMythic": "PlayerIsTrickster",
+      "EntryAlignment": {
+        "Direction": "Chaotic",
+        "Value": 1
+      },
+      "TricksterDevice": true,
+      "TricksterState": "handover",
+      "RequiresAnyGroups": [
+        [
+          "camellia.claimed_soana_a",
+          "camellia.claimed_soana_b"
+        ]
+      ]
+    },
+    {
+      "Id": "soana.trickster.handover.after_bear_b",
+      "Title": "The spirits' portion",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Play a cruel trick on Camellia] \"You heard her: her blood serves the spirits. So let the spirits have it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman barks a laugh at Camellia, not at you, and draws her knife across her own palm. Blood runs into the moss. Somewhere in the trees, something answers.{/n}\n\"There, spirit talker. The spirits of this land have had their portion, from my own hand. That is all you get. That is all *anyone* gets.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "camellia",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "camellia",
+          "Speaker": "Camellia",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Choices": [
+            {
+              "Text": "[Leave before either of them decides otherwise]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed",
+                "soana.trickster.cost.blood_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "74664ddd7bb36744ba825c29aad6f4b3"
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "397b090721c41044ea3220445300e1b8"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "f7b5537dc61ccdc41b0732f0a1b700b2"
+      ],
+      "NativeReturnCue": "396b1d46a2cfb1e48b205468d4360ee9",
+      "EntryMythic": "PlayerIsTrickster",
+      "EntryAlignment": {
+        "Direction": "Chaotic",
+        "Value": 1
+      },
+      "TricksterDevice": true,
+      "TricksterState": "handover",
+      "RequiresAnyGroups": [
+        [
+          "camellia.claimed_soana_a",
+          "camellia.claimed_soana_b"
+        ]
+      ]
+    },
+    {
+      "Id": "soana.trickster.killed.knot",
+      "Title": "The knot never checked",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground; the forest does not have anyone left who would.{/n}\n{n}The clay knot she wore is where it fell, or where you left it, or in your pack. It is tied in a way nobody living knows how to untie. When you close your hand on it, something out in the trees stops moving.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "orso",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "spirit",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "orso",
+          "Speaker": "Narrator",
+          "Text": "{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is the same knot you are holding, and it has not faded.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "spirit",
+          "Speaker": "Narrator",
+          "Text": "{n}Orso's bones lie where he fell, and something still lies in them. The grass around the carcass has gone black in the shape of a knot, and it does not stir when the wind does.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "read",
+          "Speaker": "Narrator",
+          "Text": "{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}\n{n}She never said whose life went first.{/n}",
+          "Choices": [
+            {
+              "Text": "[Hold the medallion to the guardian's brand] \"You linked your lives together. You never said whose goes first. Pay her debt.\"",
+              "Next": "wake",
+              "Set": [
+                "soana.trickster.returned",
+                "soana.started",
+                "soana.trickster.cost.guardian_paid",
+                "soana.trickster.cost.medallion_spent"
+              ],
+              "Requires": [
+                "soana.medallion_held"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "RemoveItem": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
+            },
+            {
+              "Text": "[Read the knot her own words] \"You linked your lives together. You never said whose goes first. Pay her debt.\"",
+              "Next": "wake",
+              "Set": [
+                "soana.trickster.returned",
+                "soana.started",
+                "soana.trickster.cost.guardian_paid"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "soana.medallion_held"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Leave the knot tied] \"No. She said she was finished. Let her be finished.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wake",
+          "Speaker": "Narrator",
+          "Text": "{n}The brand darkens, as a rope darkens when it is pulled wet. The knot in your hand draws tight, tighter than clay can bear, and cracks down the middle with a sound like a knuckle.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wake_orso",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wake_spirit",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wake_orso",
+          "Speaker": "Narrator",
+          "Text": "{n}Out in the ferns, Orso lies down on his own tracks and does not get up. The brand on his hide goes grey, then goes. He was a demon in a bear's skin, and for thirty winters he guarded the only person who ever gave him a job. He does not make a sound.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "soana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wake_spirit",
+          "Speaker": "Narrator",
+          "Text": "{n}The black grass around the bones turns to plain dead grass. Whatever lived in the carcass has been spent, all at once, like a coin.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "soana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "soana",
+          "Speaker": "Soana",
+          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course. Who else would hold a dead woman to her own words?\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order.{/n}\n\"I was finished. I had earned it. Look at this forest. You spent my guardian to drag me back and tend a graveyard.\"",
+          "Choices": [
+            {
+              "Text": "\"You can hate me standing up.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "soana.trickster.returned",
+        "soana.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "killed",
+      "RequiresAnyGroups": [
+        [
+          "soana.dead",
+          "soana.killed_by_camellia"
+        ]
+      ]
+    },
+    {
+      "Id": "soana.trickster.returned.graveyard",
+      "Title": "What the knot cost",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Soana.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Soana has a spade in one hand. At her feet, rolled in a hide that has gone the colour of ash, is something much larger than a woman.{/n}\n\"Two days I have been walking this forest. Not a squirrel in it. The spirits I bound are hungry, and there is nothing left to feed them but the dead.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "orso",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "spirit",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "orso",
+          "Speaker": "Soana",
+          "Text": "\"Orso is under that hide. He carried me for thirty winters, and you used him to pay a debt that was not his. He was a demon. He was also mine. He does not go in the ground with a hunter's rope around his neck. He goes in deep, and by hand.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dig",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "spirit",
+          "Speaker": "Soana",
+          "Text": "\"The thing I bound into Orso has nothing left to live in now. It sleeps under his bones. I want those bones under the earth before it wakes and remembers who spent it, and before the demons on your road smell something they can use.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dig",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dig",
+          "Speaker": "Soana",
+          "Text": "{n}She holds out the spade, handle first.{/n}\n\"You were very quick with my knot, bloody hunter. Let us see how quick you are with this.\"",
+          "Choices": [
+            {
+              "Text": "[Take the spade]",
+              "Next": "dug",
+              "Set": [
+                "soana.trickster.graveyard_kept",
+                "soana.trickster.cost.grave_dug"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll send to Drezen for diggers.\"",
+              "Next": "bought",
+              "Set": [
+                "soana.trickster.graveyard_kept",
+                "soana.trickster.cost.grave_bought"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Leave her with her graves]",
+              "Next": null,
+              "Set": [
+                "soana.closed",
+                "soana.trickster.cost.left_the_grave"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dug",
+          "Speaker": "Narrator",
+          "Text": "{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hide finally goes in she says something over it in a language that sounds like branches knocking.{/n}",
+          "Choices": [
+            {
+              "Text": "[Wipe your hands]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "bought",
+          "Speaker": "Narrator",
+          "Text": "{n}The diggers come from Drezen three days later, crusaders with good boots and bad manners. They dig fast and deep and argue about who has to touch the hide. Soana watches them from the cave mouth the whole time with an expression you would not wish on an enemy.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pay them off]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.trickster.graveyard_kept"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "InteractionHub": "soana.presence"
+    },
+    {
+      "Id": "soana.trickster.returned.terms",
+      "Title": "The second strand",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You said you had terms.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The grave is a low mound under the ferns. She has laid stones on it in a pattern you almost recognize.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dug",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.cost.grave_dug"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "bought",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.cost.grave_bought"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.trickster.cost.grave_dug",
+                "soana.trickster.cost.grave_bought"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dug",
+          "Speaker": "Soana",
+          "Text": "\"You dug. Badly, and too shallow at the head end, but you dug, with your own hands, in the cold. That is more than your friends in Drezen would have done. I have been thinking about what it means. I do not like the answer.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "bought",
+          "Speaker": "Soana",
+          "Text": "\"Your diggers came, dug, ate my last smoked fish and left. Paying is easy for you people. It is the one thing you are good at. Remember that I noticed.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"A knot with one strand is not a knot. It is a piece of string. If I am to go on binding things for this forest, the knot needs a second life at the other end. You spent the last one. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
+          "Choices": [
+            {
+              "Text": "[Hold out your hand for the pieces]",
+              "Next": "bind",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Ask me again when the ground thaws.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Find another fool.\"",
+              "Next": "fool",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "bind",
+          "Speaker": "Soana",
+          "Text": "{n}She does not take your hand yet. She looks at it: the calluses, the scars, the crusade's grime.{/n}\n\"Say it, then. 'Mine first.' Knots listen.\"",
+          "Choices": [
+            {
+              "Text": "\"Mine first.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.knot_bearer"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Laugh]",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "no",
+          "Speaker": "Soana",
+          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and it cost a bear. Come back when you can hold still for a thing that matters.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "fool",
+          "Speaker": "Soana",
+          "Text": "\"I already found one. He is lying under those ferns with his hide gone grey.\"\n{n}She does not look at you again.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen,\" she says. \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"Thirty winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned",
+        "soana.trickster.graveyard_kept"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.committed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "InteractionHub": "soana.presence"
+    },
+    {
+      "Id": "soana.trickster.returned.second_ask",
+      "Title": "The price goes up",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About your terms.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "\"Back. Good. The price has gone up while you were away, hunter.\"\n{n}She points with her chin at the trees behind her. Half of them are grey to the heartwood.{/n}\n\"The forest needs burying, all of it, and I cannot do it with one spade. Lye, timber, carts. From your stores, not your purse, so that somebody in Drezen goes without. Then the pieces, and the words.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "\"Well? I will not wait for the ground to thaw twice.\"",
+          "Choices": [
+            {
+              "Text": "[Pay for the lye and the timber] \"Mine first.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.knot_bearer",
+                "soana.trickster.cost.second_ask"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "\"No. Not at that price.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen,\" she says. \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"Thirty winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned",
+        "soana.trickster.declined"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.committed"
+      ],
+      "DelayHours": 96,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "InteractionHub": "soana.presence"
+    },
+    {
+      "Id": "soana.trickster.missed.dice_bowl",
+      "Title": "An offering",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Drop a die into her offering bowl] \"For your spirits. They look like they could use the luck.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The die rattles in the bone bowl and stops on a one. She looks at it, then at you. When she looks back, it shows a twenty.{/n}\n\"Spirits take what is offered. They do not say thank you, and neither do I.\"\n{n}She does not take it out of the bowl. She does not touch it at all.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave it where it landed]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed_dice"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "soana.after_quest"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.trickster.primed_dice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ],
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "soana.trickster.missed.crooked_luck",
+      "Title": "Crooked luck",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Look at the die in her bowl] \"Still twenty up, shaman? I hear your beasts don't stay down.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. As you come near she gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}\n\"That is the third time she has done that. Your die has been in my bowl since the snow. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. If they are to keep standing up, they eat. Salt and meat, a cart of each, every month until this war is done. That is my price for your joke. I will not haggle.\"",
+          "Choices": [
+            {
+              "Text": "[Send the salt and the meat] \"Done. That's your price.\"",
+              "Next": null,
+              "Set": [
+                "soana.trickster.luck_kept",
+                "soana.trickster.cost.catchup",
+                "soana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Take your die back and go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.luck_refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.after_quest",
+        "soana.trickster.primed_dice"
+      ],
+      "Forbids": [
+        "soana.progression_kept",
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "soana.trickster.luck_refused",
+        "soana.trickster.luck_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "missed"
+    },
+    {
+      "Id": "soana.trickster.missed.late_luck",
+      "Title": "Crooked luck, thrown late",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Throw your special die at her feet] \"Rolled a one. Watch it turn into a twenty.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The die stops on a one, then shows a twenty. Outside, a she-bear that has been dying across the cave mouth all morning gets up on three legs and limps toward the road.{/n}\n\"You do not put a thing like that in front of my beasts without paying for it, hunter. They will go out on your luck now whether I send them or not, and they will come back hungry.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "\"Salt and meat, two carts a month, and the die stays with me. You threw it; you do not get it back.\"",
+          "Choices": [
+            {
+              "Text": "[Pay what she asks] \"Salt, meat, and the die. Done.\"",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed_dice",
+                "soana.trickster.cost.late",
+                "soana.trickster.luck_kept",
+                "soana.trickster.cost.catchup",
+                "soana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Pick up your die and go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.luck_refused",
+                "soana.trickster.cost.late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "soana.after_quest"
+      ],
+      "Forbids": [
+        "soana.progression_kept",
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "soana.trickster.luck_refused",
+        "soana.trickster.primed_dice",
+        "soana.trickster.luck_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "missed",
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "soana.trickster.missed.she_bear",
+      "Title": "The she-bear",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"How is your she-bear?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}\n\"She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away.\"\n{n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "question",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "question",
+          "Speaker": "Soana",
+          "Text": "\"Your luck keeps her standing. My spirits keep her walking. Neither of us asked her. So I will ask you instead, since you are the one with the dice.\"\n\"When this war is done and the luck runs thin, and she lies down, will you let her stay down? Or will you roll again?\"",
+          "Choices": [
+            {
+              "Text": "\"I'll let her rest. She's earned it.\"",
+              "Next": "rest",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_rest"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll roll again. As long as it takes.\"",
+              "Next": "roll",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_roll"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Grin] \"I'll roll for her. And if it comes up one, I'll call it twenty.\"",
+              "Next": "cheat",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_cheat"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why does it matter what I'd do?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "why",
+          "Speaker": "Soana",
+          "Text": "{n}She looks at you with those small black eyes, sunk deep in the driftwood.{/n}\n\"Because I am older than she is, hunter. Answer the question.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll let her rest. She's earned it.\"",
+              "Next": "rest",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_rest"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll roll again. As long as it takes.\"",
+              "Next": "roll",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_roll"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Grin] \"I'll roll for her. And if it comes up one, I'll call it twenty.\"",
+              "Next": "cheat",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_cheat"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rest",
+          "Speaker": "Soana",
+          "Text": "\"A true protector is the one who sacrifices themselves. You heard me say it once, and you were listening. Hm.\"\n{n}She goes back to scratching the bear's ear, and for a while she says nothing at all, which from her is a speech.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave them in the sun]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "roll",
+          "Speaker": "Soana",
+          "Text": "\"That is what a child says. A child with a toy it does not want to put away.\"\n{n}She pulls a burr out of the bear's fur and flicks it at your boots.{/n}\n\"But it is honest. The last one who lied to me in this cave was your friend with the knife. Go away. I am thinking.\"",
+          "Choices": [
+            {
+              "Text": "[Leave them in the sun]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cheat",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman laughs so suddenly that the bear lifts her head.{/n}\n\"Of course you would. You would cheat the Abyss out of its teeth and call it a favour to the Abyss. I have met demons with better manners and worse ideas.\"\n{n}She is still laughing, quietly, when you go.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave them in the sun]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.luck_kept"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.trickster.luck_tested"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
+    },
+    {
+      "Id": "soana.trickster.missed.bowl",
+      "Title": "The thing in her bowl",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You said you had been thinking.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The bone bowl is on the fire-stone. Your die sits in it, one face up, as it has since the snow. There is a second blanket on her pallet, which there was not before.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rest",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.answered_rest"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "roll",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.answered_roll"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "cheat",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.answered_cheat"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.trickster.answered_rest",
+                "soana.trickster.answered_roll",
+                "soana.trickster.answered_cheat"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rest",
+          "Speaker": "Soana",
+          "Text": "\"You said you would let her lie down. I have been turning that over like a stone, looking for the worm under it. There is no worm. I find that irritating.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "roll",
+          "Speaker": "Soana",
+          "Text": "\"You said you would roll again as long as it takes. That is a child's answer. I have been alone with a demon in a bear for thirty winters; I find I have a taste for children's answers.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cheat",
+          "Speaker": "Soana",
+          "Text": "\"You said you would call a one a twenty. I laughed. I have not laughed like that since before your crusade was born. I am still angry about it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Soana",
+          "Text": "\"Here are my terms, hunter. A thing that sits in my bowl is mine. I do not keep things I have not touched. Take your die out now, and everything it has done comes undone with it: the she-bear lies down at the cave mouth and stays there. Or leave it, and it is mine, and you with it, for as long as the luck holds.\"\n\"Which is to say, until I decide it does not.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the die in the bowl] \"Keep it. And me.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.die_in_her_bowl"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Let me think about it.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Take your die out of the bowl]",
+              "Next": "taken",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "no",
+          "Speaker": "Soana",
+          "Text": "{n}She shrugs, and puts the second blanket back on the shelf.{/n}\n\"Think, then. The bowl is patient. I am not. Do not make me ask the question twice; if I have to, it will cost you.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "taken",
+          "Speaker": "Soana",
+          "Text": "{n}You reach into the bowl. The die is warm. Outside, something large lies down across the cave mouth with a long sigh, and does not get up.{/n}\n{n}Soana does not look at the door. She looks at you.{/n}\n\"There. Now you know what you are. Go.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She takes the bowl off the fire-stone with her bare hands and sets it between you. The die is still in it, twenty up.{/n}\n\"Then it stays. And so do you, tonight. I am too old to wait for you to guess.\"\n{n}She washes the road off you herself, with water that smells of pine tar and is hotter than you would choose, scrubbing at your neck as if you were a pot. Her hands slow on your shoulders and do not hurry again. When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pulls the furs over the both of you and her hand closes on your hip like a root closing on a stone.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn,\" she says. \"She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.luck_kept",
+        "soana.trickster.luck_tested"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.committed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
+    },
+    {
+      "Id": "soana.trickster.missed.second_ask",
+      "Title": "The bowl's price",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About your bowl.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "\"I said it would cost you. It does.\"\n{n}She sets the bowl on the stone between you.{/n}\n\"The Sarkorian clans cut wood in these trees and take my beasts for their pots, crusade or no crusade. Send them word under your seal that the Wintersun woods are mine, and that anyone who takes a hide from them answers to the Commander. They will hate you for it. Then ask me again.\"",
+          "Choices": [
+            {
+              "Text": "[Seal the letter] \"Done. Keep the die. And me.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.die_in_her_bowl",
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "\"No. Not at that price.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She takes the bowl off the fire-stone with her bare hands and sets it between you. The die is still in it, twenty up.{/n}\n\"Then it stays. And so do you, tonight. I am too old to wait for you to guess.\"\n{n}She washes the road off you herself, with water that smells of pine tar and is hotter than you would choose, scrubbing at your neck as if you were a pot. Her hands slow on your shoulders and do not hurry again. When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pulls the furs over the both of you and her hand closes on your hip like a root closing on a stone.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn,\" she says. \"She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.luck_kept",
+        "soana.trickster.declined"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.committed"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
+    },
+    {
+      "Id": "soana.trickster.epilogue.knot",
+      "Title": "The second strand",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana buried the Wintersun woods one grave a day, and when the demons were gone she began, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}\n{n}The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, Soana said that was how you knew it was working.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Sarkorian clans never forgave the Commander for the Wintersun woods, and never again took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.returned",
+        "soana.committed"
+      ],
+      "Forbids": [
+        "soana.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.luck",
+      "Title": "The die in the bowl",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The die stayed in Soana's bowl after the war, twenty up, and the she-bear who had carried the Commander's luck to the roads grew grey in the muzzle and very fat. The Commander came to Wintersun whenever the world allowed it, and some times when it did not.{/n}\n{n}Soana never admitted to missing anyone. She did keep the second blanket on the pallet, and she never once put it back on the shelf.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Sarkorian clans never forgave the Commander for the Wintersun woods, and never again took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.luck_kept",
+        "soana.committed"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.trickster.returned",
+        "soana.late_campaign_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.commit",
+      "Title": "Your end",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana buried the Wintersun woods alone, one grave a day, and bound what she could into what was left. The year after the Worldwound closed she walked all the way to Drezen with a broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}\n\"Your end,\" she said. \"Don't lose it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Sarkorian clans never forgave the Commander for the Wintersun woods, and never again took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.late_committed"
+      ],
+      "Forbids": [
+        "soana.committed",
+        "soana.closed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.declined",
+      "Title": "One strand",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who could not hold still for a thing that mattered, and that was all she said.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.declined"
+      ],
+      "Forbids": [
+        "soana.committed",
+        "soana.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.react.camellia_portion",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About Soana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "\"You cheated me out of a perfectly good death, my friend. The old woman fed her trees and left me the smell of it.\" {n}Camellia smooths her skirt with both hands, very slowly.{/n} \"I shall have to think of a way to thank you. I have already thought of several.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.blood_given"
+      ],
+      "Forbids": [
+        "camellia.dead",
+        "camellia.killed",
+        "camellia.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.camellia_knot",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About Soana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "\"The old woman is walking again? I bled her myself. I felt her stop.\" {n}Camellia smiles, slowly, and does not blink.{/n} \"How very interesting you make things. I wonder what else of mine you would take back, if I let you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.returned",
+        "soana.killed_by_camellia"
+      ],
+      "Forbids": [
+        "camellia.dead",
+        "camellia.killed",
+        "camellia.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ember_portion",
+      "Title": "Ember's word",
+      "Owner": "Ember",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About the old woman in the woods...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ember",
+          "Text": "\"The old lady cut her own hand so nobody would cut her throat. That's the saddest clever thing I ever saw. You made her do it with a joke. I think she knew it was a joke. I think that's why she did it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.blood_given"
+      ],
+      "Forbids": [
+        "ember_dead",
+        "ember_gone"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "f2a35965e9bc601449498bd022b04d9d"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ember_luck",
+      "Title": "Ember's word",
+      "Owner": "Ember",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the Wintersun bears...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ember",
+          "Text": "\"The scouts say the Wintersun bears keep getting up after the demons knock them down. That's your dice, isn't it? I hope somebody asked the bears first. Somebody should always ask the bears.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.catchup"
+      ],
+      "Forbids": [
+        "ember_dead",
+        "ember_gone"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "f2a35965e9bc601449498bd022b04d9d"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ulbrig_knot",
+      "Title": "Ulbrig's word",
+      "Owner": "Ulbrig",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About Soana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ulbrig",
+          "Text": "\"You asked me once what these new powers want in return, warchief. Now we know. That one wanted a bear. Every power must have a name, and a price that's fair, and I'd not call a bear's life for a crone's a fair price. Nor would the crone, I'd wager.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.guardian_paid",
+        "ulbrig.talked"
+      ],
+      "Forbids": [
+        "ulbrig.dead",
+        "ulbrig.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "0a50c9c878844ed4a69b8d6131304c5e"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ulbrig_luck",
+      "Title": "Ulbrig's word",
+      "Owner": "Ulbrig",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the Wintersun beasts...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ulbrig",
+          "Text": "\"The Wintersun crone's beasts are fighting demons on the road again, warchief. A she-bear with her guts hanging out stood up three times, the scouts say. Spirits don't do that for free. What did you give them? And what will they want next?\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.catchup",
+        "ulbrig.talked"
+      ],
+      "Forbids": [
+        "ulbrig.dead",
+        "ulbrig.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "0a50c9c878844ed4a69b8d6131304c5e"
+      ]
     }
   ],
   "Etudes": {
@@ -153353,6 +155650,8 @@
     "woljif.kicked_out": "2046d985bbc28a04188efa5fb06b6004",
     "woljif.dead": "2df11d659d8f57846a6a3f16492adbb8",
     "vellexia.slaves_freed": "89965a2b67b792f438bf935fdb6ab96b",
+    "ulbrig.kicked_out": "3b31ef42338b4f83ab822fbcae79a41c",
+    "ulbrig.dead": "4863a2dfe7f847e588df50710ebf2a3f",
     "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
     "storyteller.dead_dlc": "96ca61bbf4a54228be37a4a95fa0704d",
     "storyteller.dead_main": "3c1405201bec99f4db67371f41a3c32a",
@@ -153523,7 +155822,7 @@
       "Title": "At the edge of her forest",
       "Description": "Soana has allowed me another visit. She expects useful hands and a legible argument. I would like to discover what else she might welcome.",
       "Objective": "Return to Soana",
-      "Guidance": "Speak to Soana at her cave after resolving the bear quest while she remains alive and willing to talk. Allow time between visits.",
+      "Guidance": "Speak to Soana at her cave after resolving the bear quest while she remains alive and willing to talk. Allow time between visits. On the Trickster path, a Soana handed to Camellia may be taken at Camellia's word instead; a Soana who died may be held to her own; and one whose visits were missed may find a die in her bowl.",
       "StartedFlag": "soana.started",
       "ClosedFlag": "soana.closed",
       "CommittedFlag": "soana.committed",
@@ -153532,7 +155831,40 @@
         "soana.killed_by_camellia",
         "soana.forest_dead"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "soana.dead": "soana.trickster.returned",
+        "soana.killed_by_camellia": "soana.trickster.returned",
+        "soana.forest_dead": "soana.trickster.returned"
+      },
+      "TricksterAccess": {
+        "killed": {
+          "Detect": [
+            "soana.dead",
+            "soana.killed_by_camellia",
+            "soana.forest_dead"
+          ],
+          "Device": "soana.trickster.killed.knot",
+          "Returned": "soana.trickster.returned"
+        },
+        "handover": {
+          "Detect": [
+            "camellia.asked_for_soana",
+            "camellia.claimed_soana_a",
+            "camellia.claimed_soana_b"
+          ],
+          "Device": "soana.trickster.handover.after_quest",
+          "Returned": null
+        },
+        "missed": {
+          "Detect": [
+            "chapter_later",
+            "!soana.progression_kept"
+          ],
+          "Device": "soana.trickster.missed.crooked_luck",
+          "Returned": null
+        }
+      }
     },
     "arsinoe": {
       "Title": "A city worth staying in",
@@ -154050,6 +156382,15 @@
     "closets.known": [
       "2f4be0bde527a7d4cb7c73131ab551db"
     ],
+    "camellia.claimed_soana_b": [
+      "2fb85dd5779e8c141b15ec119d889fd3"
+    ],
+    "camellia.claimed_soana_a": [
+      "b2e418443ec73974faa09a5496564d03"
+    ],
+    "camellia.asked_for_soana": [
+      "f505392f3d7c18348b178da457b4272e"
+    ],
     "siphon.burst_areelu_b": [
       "8a50fd9c430a80c498da5c09366ff5fc"
     ],
@@ -154066,6 +156407,7 @@
   "StartedDialogs": {
     "konomi.rank_six_started": "30333438aac8d3647bef882fa87e978e",
     "konomi.rank_eight_started": "6178470b05c75484085753b821a6a614",
+    "ulbrig.talked": "20b70c9bb93940b9a21a488f1721f41c",
     "noct.acq.audience_started": "2c57f65d4b98d764d98794ae8ef9ffdd",
     "irabeth.deathbed": "48a3a4ff8955b7045bac0ea06092e085"
   },
@@ -154747,6 +157089,30 @@
       "AnswerLists": [],
       "Dialog": "hub",
       "Greeting": "{n}Vellexia is leaning on Fye's bar as if she had bought it. Judging by Fye's face, she is considering it.{/n}"
+    },
+    "soana.presence": {
+      "Unit": "64805abb52739e44280a758f850b300c",
+      "Area": "0a5654e7dc18f074d9356009d55eb51b",
+      "Mode": "spawn-copy",
+      "At": {
+        "Locator": "cf766aaf-a3a9-490b-ae88-27ebcf6976e6",
+        "Offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned"
+      ],
+      "Forbids": [
+        "soana.closed"
+      ],
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}Soana is standing where Camellia stood, in her own cave, with loam still under her nails. She does not look up.{/n} \"Well? Say what you came to say, hunter. The dead have more patience than I do.\""
     }
   },
   "Derived": {
@@ -154772,6 +157138,16 @@
       ],
       [
         "vellexia.trickster.returned"
+      ]
+    ],
+    "soana.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "soana.trickster.returned"
+      ],
+      [
+        "trickster.ever",
+        "soana.trickster.luck_kept"
       ]
     ],
     "trickster.cheated_death": [
@@ -154953,6 +157329,9 @@
     "jerribeth.unavailable",
     "trickster.was"
   ],
+  "RemovableItems": [
+    "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
+  ],
   "Latches": {
     "trickster.ever": [
       "trickster",
@@ -154967,6 +157346,9 @@
     "irabeth.dead.latched": [
       "irabeth_dead"
     ]
+  },
+  "InventoryItems": {
+    "soana.medallion_held": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
   },
   "UnlockableFlags": {
     "kyado.dead": "8c8b748a66ebad84f9b4cbcd73c2aab9"
