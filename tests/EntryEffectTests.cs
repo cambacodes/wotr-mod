@@ -42,6 +42,19 @@ internal static class EntryEffectTests
             try { Rules.Validate(bad); } catch (InvalidOperationException) { rejected = true; }
             check(rejected, "Invalid scene accepted: " + what);
         }
+        // E6: a reaction to her route is spoken by its reactor on the reactor's own list; a non-reaction there is still refused.
+        var reacted = Fixture();
+        reacted.Scenes.Add(new Scene
+        {
+            Id = "nurah.trickster.react.irabeth", Title = "Word", Owner = "Irabeth", Relationship = "nurah", MinChapter = 3, Reaction = true,
+            AnswerLists = new[] { "871af36f2ab2b1f40b5de77976c54276" }, Requires = new[] { "nurah.trickster.returned" },
+            Nodes = new List<Node> { new Node { Id = "start", Text = "x", Choices = new List<Choice> { new Choice() } } }
+        });
+        Rules.Validate(reacted);
+        reacted.Scenes[1].Reaction = false;
+        bool refused = false;
+        try { Rules.Validate(reacted); } catch (InvalidOperationException) { refused = true; }
+        check(refused, "A physical non-device Nurah scene on another character's list was accepted.");
         // The hub contract still applies to her ordinary physical scenes.
         Invalid("non-device physical Nurah scene", s => s.TricksterDevice = false);
         Invalid("device without explicit lists", s => s.AnswerLists = Array.Empty<string>());

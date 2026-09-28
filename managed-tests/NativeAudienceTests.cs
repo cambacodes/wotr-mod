@@ -82,7 +82,14 @@ internal static class NativeAudienceTests
                     var answer = Find(answerKey) as BlueprintAnswer;
                     check(answer != null && ReferenceEquals(cue.Answers[i].Get(), answer),
                         "Inline choice ID or ordering changed: " + answerKey);
-                    check(answer!.OnSelect.Actions.Length == 1 && answer.OnSelect.Actions[0] is Main.RouteAction,
+                    // E5/E11: the only actions after the RouteAction are the choice's own native effects (the mythic-choice
+                    // counter, a crusade resource change, an item removal), each present only when authored.
+                    var effects = answer!.OnSelect.Actions.Skip(1).ToArray();
+                    check(answer.OnSelect.Actions.Length >= 1 && answer.OnSelect.Actions[0] is Main.RouteAction
+                        && effects.Count(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources) == (choice.Crusade != null ? 1 : 0)
+                        && effects.All(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources
+                            || a is Kingmaker.Designers.EventConditionActionSystem.Actions.RemoveItemFromPlayer && choice.RemoveItem != null
+                            || a is Kingmaker.Designers.EventConditionActionSystem.Actions.IncrementFlagValue && choice.Mythic != null),
                         "Inline choice lost its sole authored RouteAction: " + answerKey);
                     var action = (Main.RouteAction)answer.OnSelect.Actions[0];
                     bool terminal = choice.Next == null && choice.Check == null;

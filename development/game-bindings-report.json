@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1515,
-  "unique_targets": 377,
+  "binding_uses": 1544,
+  "unique_targets": 385,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -221,6 +221,14 @@
     "2b1776f3e398685479ff6b16290b4cc2": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "52cca621c1d850641abdde32373ca592": {
+      "path": "World/Dialogs/c4/FleshMarket/HologramSlaver/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "96301374cccd56d438a5a5069d4821f0": {
+      "path": "World/Dialogs/c4/FleshMarket/HologramSlaver/Cue_0014.jbp",
+      "type": "BlueprintCue"
     },
     "19786fae9c29f9d439e374bb857c2e84": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
@@ -494,6 +502,22 @@
       "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0197.jbp",
       "type": "BlueprintCue"
     },
+    "01d00f006e0e16543b7507ff38e9fb8a": {
+      "path": "World/Dialogs/NPC_Common/Nurah-Prison/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "6201570ac1b1d8c4b878f935a7b0160e": {
+      "path": "World/Dialogs/NPC_Common/Nurah-Prison/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "c852cfeeaf0fa4744ade8f3e36e01d74": {
+      "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0035.jbp",
+      "type": "BlueprintCue"
+    },
+    "9aab5c83956171d4c8a017dcff3a1554": {
+      "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0055.jbp",
+      "type": "BlueprintCue"
+    },
     "2f5b7e0b76d3c5a42a431e1e33a8db09": {
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
@@ -552,6 +576,14 @@
     },
     "c922e0cbe25a0cf4dad4ce7a3ca81935": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NuraInPrisonAfterDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "a86ab44f1a4d3f54fbeb51f5568bbb5c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NuraRanOffAfterDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "a879a3a637a7eeb43b40677e4a8c4450": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahDefault/NurahRecruitedByTrickster.jbp",
       "type": "BlueprintEtude"
     },
     "24505150d0cf493c936f2c50b1c94468": {

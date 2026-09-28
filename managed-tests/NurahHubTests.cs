@@ -24,7 +24,10 @@ internal static class NurahHubTests
 
     internal static void Run(Story story, Action<bool, string> check)
     {
-        var scenes = story.Scenes.Where(scene => scene.Relationship == "nurah").ToArray();
+        // The registered continuation only: the Trickster route (nurah.trickster.*) meets her at her cell, in Ramisa's
+        // market or at an E12c presence, and has its own suite (tests/NurahTricksterTests.cs).
+        var scenes = story.Scenes.Where(scene => scene.Relationship == "nurah"
+            && !scene.Id.StartsWith("nurah.trickster.", StringComparison.Ordinal)).ToArray();
         var physical = scenes.Where(scene => !Rules.IsRemote(scene)).ToArray();
         var remote = scenes.Where(Rules.IsRemote).ToArray();
         check(scenes.Length == 13 && physical.Length == 11 && remote.Length == 2,
