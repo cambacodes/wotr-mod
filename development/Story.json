@@ -222284,7 +222284,7 @@
         {
           "Id": "danger",
           "Speaker": "conversant",
-          "Text": "\"To Drezen? She is dangerous to everything that moves, Commander, and to some things that do not.\" {n}A thin smile.{/n} \"But she has not eaten anyone who was not an ox or a horse. For a woundwyrm, that is restraint so severe it borders on piety. She is waiting for something. I would very much like it to be you, and not the city.\"",
+          "Text": "\"Two men of the north watch went up the ridge last night with torches, on a wager, to see her.\" {n}He does not smile.{/n} \"She sent their helmets down to the north gate this morning, and nothing else. I did not ask her why. She told me anyway: 'The city may keep its walls. The ridge is mine. Anything that climbs it without being sent for is food.' I am told the watch has stopped making wagers.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -222561,7 +222561,7 @@
         {
           "Id": "hers",
           "Speaker": "Devarra",
-          "Text": "\"Yes.\" {n}She says it the way a judge signs a sentence.{/n} \"Good. You can be taught. The old man said you could not; he says you have never once let a story end the way it wanted to.\"",
+          "Text": "\"Yes.\" {n}She says it the way a judge passes a sentence.{/n} \"Good. You can be taught. So here is how it will be, and I am not asking. Your city is safe while it stays off my mountain. You are safe while you amuse me. Either of those can end the day I am bored.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -222628,7 +222628,7 @@
         {
           "Id": "leave",
           "Speaker": "Devarra",
-          "Text": "\"Go down now. Come back when I send for you.\" {n}Her eye closes.{/n} \"And tell the quartermaster that if he sends another man up here with a list of stolen oxen, I will add the man to the list.\"",
+          "Text": "\"Go down now. Come back when I send for you.\" {n}She breathes out as you turn, once, not at you but past you, and the stone of the doorway beside your head goes red and runs. Your cloak is smoking at the shoulder. The heat stays in your cheek all the way down the ridge, and for a week afterwards the skin there peels.{/n}\n\"So that your sentries know where you have been,\" she says behind you, \"and that you came back down because I allowed it.\"",
           "Choices": [
             {
               "Text": "[Go down the mountain.]",
@@ -222946,10 +222946,10 @@
         {
           "Id": "end",
           "Speaker": "conversant",
-          "Text": "{n}He climbs the ridge at dusk and comes back after dark, and sits down across from you without a word for a while.{/n}\n\"She listened to all three without interrupting. Then she said, 'The thing is more interesting than I thought, and less honest than it thinks.' Then she ate a sheep.\" {n}A pause.{/n} \"I believe that went well.\"",
+          "Text": "{n}He climbs the ridge at dusk and comes back after dark, and sits down across from you without a word for a while.{/n}\n\"She listened to all three without interrupting. Then she said, 'The thing is more interesting than I thought, and less honest than it thinks.' Then she took my lantern out of my hand, and kept it, and told me to find my own way down.\" {n}He turns his useless eyes toward the window.{/n} \"I have been blind for six hundred years, Commander. It was a long way down.\"",
           "Choices": [
             {
-              "Text": "\"I believe it did.\"",
+              "Text": "\"I will get you another lantern.\"",
               "Next": null,
               "Set": [
                 "devarra.tower.questioned"
@@ -223904,7 +223904,7 @@
         {
           "Id": "end",
           "Speaker": "conversant",
-          "Text": "{n}The Storyteller is waiting at the foot of the ridge, as he always is, with the lantern he does not need.{/n} \"You were a long time.\" {n}He falls in beside you.{/n} \"I heard a little of it. Not much; I kept back. There are things a messenger should not carry.\" {n}A pause.{/n} \"I will say only this. In the lair, she talked about her eggs as if they were treasure. Tonight she talked about them as if they were people. Something did come out of that carcass that was not there before.\"",
+          "Text": "{n}The Storyteller is waiting at the foot of the ridge, as he always is, with the lantern he does not need.{/n} \"You were a long time.\" {n}He falls in beside you.{/n} \"I heard a little of it. Not much; I kept back. There are things a messenger should not carry.\" {n}A pause.{/n} {n}He does not ask what she said. At the gate he stops.{/n} \"Whatever she asked you for tonight, Commander, she will ask again. She does not forget a debt, and she has decided that her children are one you owe.\"",
           "Choices": [
             {
               "Text": "\"I know.\"",
@@ -224093,7 +224093,7 @@
         {
           "Id": "end",
           "Speaker": "conversant",
-          "Text": "{n}When you come down, the Storyteller is sitting on a rock at the foot of the ridge, listening to the wind.{/n} \"She hunted all through my captivity, too, and brought nothing back but bones. She is bringing things back to someone now.\" {n}He stands.{/n} \"I am old enough to know what that is. I will not say it aloud. She might hear.\"",
+          "Text": "{n}When you come down, the Storyteller is sitting on a rock at the foot of the ridge, listening to the wind.{/n} \"She hunted all through my captivity, too, and brought nothing back but bones. She is bringing things back to someone now.\" {n}He stands.{/n} \"That is how a cat brings a mouse to the door. I would not mistake it for anything gentler, and neither, I think, would she.\"",
           "Choices": [
             {
               "Text": "\"Good night.\"",
@@ -225445,7 +225445,7 @@
         {
           "Id": "end",
           "Speaker": "conversant",
-          "Text": "{n}The Storyteller is waiting at the bottom of the ridge with a bucket of water, which he holds out without comment.{/n} \"You are covered in dragon.\" {n}He sniffs.{/n} \"She is quiet up there now. Quieter than I have ever heard her. If I did not know better I would say you had done the one thing I thought nobody could do to a woundwyrm.\" {n}He takes back the bucket.{/n} \"You have made her comfortable. Be careful, Commander. That is a kind of power, and she will know you have it.\"",
+          "Text": "{n}The Storyteller is waiting at the bottom of the ridge with a bucket of water, which he holds out without comment.{/n} \"You are covered in dragon.\" {n}He sniffs.{/n} \"She is quiet up there now. Quieter than I have ever heard her. If I did not know better I would say you had done the one thing I thought nobody could do to a woundwyrm.\" {n}He takes back the bucket.{/n} \"You have made her comfortable, and she let you see where she itches. Be careful, Commander. She will want something back for that, and she will choose what.\"",
           "Choices": [
             {
               "Text": "\"I know.\"",
@@ -227862,7 +227862,7 @@
         {
           "Id": "end",
           "Speaker": "conversant",
-          "Text": "{n}At the bottom of the ridge that night, the Storyteller asks how it went, and listens without interrupting.{/n} \"In the lair,\" he says at last, \"she told me that her hoard was the only thing in the world she loved. I believed her. I think it was true, then.\" {n}He turns his face toward the ridge.{/n} \"I think she has moved it up the mountain so that it can be near something else.\"",
+          "Text": "{n}At the bottom of the ridge that night, the Storyteller asks how it went, and listens without interrupting.{/n} \"In the lair,\" he says at last, \"she told me that her hoard was the only thing in the world she loved. I believed her. I think it was true, then.\" {n}He turns his face toward the ridge.{/n} \"A dragon who lets you carry her hoard up a mountain is not trusting you, Commander. She is counting it, and you with it.\"",
           "Choices": [
             {
               "Text": "\"...\"",
@@ -228257,7 +228257,7 @@
         {
           "Id": "end",
           "Speaker": "conversant",
-          "Text": "{n}The next morning the sentries report that the grey dragon went hunting at dawn, far out over the Wound's edge, and came back with a vrock in each claw, and ate them both on the sill in full view of the north wall, very noisily.{/n}\n{n}The Storyteller smiles when he hears.{/n} \"She is feeling better,\" he says. \"And she wants the city to know.\"",
+          "Text": "{n}The next morning the sentries report that the grey dragon went hunting at dawn, far out over the Wound's edge, and came back with a vrock in each claw, and ate them both on the sill in full view of the north wall, very noisily.{/n}\n{n}The Storyteller smiles when he hears.{/n} \"She wants the city to remember what she is,\" he says. \"It had begun to forget. So had she.\"",
           "Choices": [
             {
               "Text": "\"Good.\"",
@@ -228336,7 +228336,7 @@
         {
           "Id": "her",
           "Speaker": "Devarra",
-          "Text": "\"Someone told me there was a book.\" {n}She does not look at you.{/n} \"A hundred to one that I would never come down into your city. I decided that a hundred to one was an insult. So I came down.\" {n}Her tail shifts along the tiles, and three of them slide off and shatter in the courtyard below.{/n} \"I have not eaten anyone. Tell them I have not eaten anyone. It is very difficult.\"",
+          "Text": "\"Someone told me there was a book.\" {n}She does not look at you.{/n} \"A hundred to one that I would never come down into your city. I decided that a hundred to one was an insult. So I came down.\" {n}Her tail shifts along the tiles, and three of them slide off and shatter in the courtyard below.{/n} \"I have not eaten anyone tonight. Tell them that. Tell them it is very difficult.\"",
           "Choices": [
             {
               "Text": "\"Why did you really come down?\"",
