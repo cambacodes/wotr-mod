@@ -63,7 +63,9 @@ internal static class SoanaTricksterTests
         List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w).Where(r => r.Has(scene.Id)).ToList();
         Snapshot Pick(Scene scene, Snapshot w, params string[] flags)
         {
-            var hit = Play(scene, w).FirstOrDefault(r => flags.All(r.Has));
+            // Prefer an outcome that keeps the relationship open unless the closing flag is the one asked for.
+            var hit = Play(scene, w).Where(r => flags.All(r.Has))
+                .OrderBy(r => !flags.Contains("soana.closed") && r.Has("soana.closed") ? 1 : 0).FirstOrDefault();
             check(hit != null, "No outcome of " + scene.Id + " sets " + string.Join(", ", flags));
             return hit ?? w;
         }
@@ -205,6 +207,10 @@ internal static class SoanaTricksterTests
               && Rules.Available(story, terms, Later(story, bought, 72)),
             "Trk_Soana_Graveyard: the terms ignore their three days.");
         var walked = Pick(graveyard, back, "soana.closed", P + "cost.left_the_grave");
+        var gravePages = new HashSet<string>();
+        var graveEnds = Program.Walk(graveyard, back, (id, _) => gravePages.Add(id));
+        check(gravePages.Contains("decide") && graveEnds.Any(r => r.Has(P + "graveyard_kept") && r.Has("soana.closed")),
+            "The grave has no word of hers on what the Commander wants, or no way to leave after digging.");
         check(!Reaches(walked, "soana.committed"), "Walking away from the grave still commits.");
 
         // Trk_Soana_Terms: her terms, the commit, the night and the morning.

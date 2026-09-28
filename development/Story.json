@@ -39027,7 +39027,7 @@
           "Text": "{n}The path ends at a shallow run of water between stones. Soana steadies herself against a tree before stepping down. You wait rather than pull her after you.{/n}\n{n}She lowers the pot into the water herself. When she gives it back, the repaired handle takes the full weight. The weave creaks once and holds.{/n}\n\"Slowly uphill,\" she says. \"Unless you want to do the filling twice.\"\n{n}On the return, she stops to catch her breath. There is no coyness in it. Her age is in the effort, in the care with which she places each foot, and in the impatient glance she gives you when you look ready to speak.{/n}",
           "Choices": [
             {
-              "Text": "\"I like being here with you. I am not asking you to become somebody younger to make that easier to say.\"",
+              "Text": "[Flirt] \"I like being here with you. Temper, hands, years and all.\"",
               "Next": "attraction",
               "Set": [
                 "soana.attraction_named"
@@ -39054,7 +39054,7 @@
         {
           "Id": "attraction",
           "Speaker": "Soana",
-          "Text": "\"Then say the first part next time. I know how old I am.\"\n{n}She regards you with a searching, unsentimental attention.{/n}\n\"You like being here with me? With this temper? These hands?\"\n\"Yes. And I have heard what you said about Corven. I am not asking you to answer anything you have not chosen to discuss.\"\n{n}She looks down at the hand resting on the tree. A smile touches one corner of her mouth.{/n}\n\"You have not heard the worst of the temper.\"\n\"I suspected that.\"\n\"Good. Suspicion may keep you from becoming tedious.\"\n{n}She lifts her hand from the tree and resumes the walk. She makes no promise about where your interest may lead.{/n}",
+          "Text": "\"Leave off the years next time. I know how old I am. I do not need a young fool counting them for me.\"\n{n}She regards you with a searching, unsentimental attention.{/n}\n\"You like being here with me? With this temper? These hands?\"\n\"Yes. And I heard what you said about Corven. I won't pry.\"\n{n}She looks down at the hand resting on the tree. A smile touches one corner of her mouth.{/n}\n\"You have not heard the worst of the temper.\"\n\"I suspected that.\"\n\"Good. Suspicion may keep you from becoming tedious.\"\n{n}She lifts her hand from the tree and resumes the walk. She makes no promise about where your interest may lead.{/n}",
           "Choices": [
             {
               "Text": "[Match her pace and carry the water back.]",
@@ -153934,7 +153934,7 @@
           "Choices": [
             {
               "Text": "[Wipe your hands]",
-              "Next": null,
+              "Next": "decide",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -153950,7 +153950,7 @@
           "Choices": [
             {
               "Text": "[Pay them off]",
-              "Next": null,
+              "Next": "decide",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -153958,6 +153958,32 @@
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "decide",
+          "Speaker": "Soana",
+          "Text": "{n}She leans on the spade and looks at you the way she looks at weather.{/n}\n\"Hear me, hunter, because I will say it once. The thing in my woods I will catch with you or without you. That is the forest's business, and it does not buy you anything from me. What you want from me is another matter, and I have not decided what I think of it.\"\n\"Come back in three days. By then I will know my own mind. I always do, in the end.\"",
+          "Choices": [
+            {
+              "Text": "\"Three days, then.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I dug your graves. That's all I came for.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
         }
       ],
       "Requires": [
@@ -154063,7 +154089,7 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"A knot with one strand is not a knot. It is a piece of string. If I am to catch that thing and bind it again, the knot needs a second life at the other end. Orso's has gone out of it; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
+          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance. So you will have my terms, and you will take them as they are or not at all.\"\n\"A knot with one strand is not a knot. It is a piece of string. If I am to catch that thing and bind it again, the knot needs a second life at the other end. Orso's has gone out of it; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
           "Choices": [
             {
               "Text": "[Hold out your hand for the pieces]",

@@ -177,12 +177,12 @@ s("water_carrier", "The weight of water", '"You said the water pot needed a carr
 {n}She lowers the pot into the water herself. When she gives it back, the repaired handle takes the full weight. The weave creaks once and holds.{/n}
 "Slowly uphill," she says. "Unless you want to do the filling twice."
 {n}On the return, she stops to catch her breath. There is no coyness in it. Her age is in the effort, in the care with which she places each foot, and in the impatient glance she gives you when you look ready to speak.{/n}''',
-      c('"I like being here with you. I am not asking you to become somebody younger to make that easier to say."', "attraction", forbids=("soana.flower_thanks",), flags=("soana.attraction_named",)),
+      c('[Flirt] "I like being here with you. Temper, hands, years and all."', "attraction", forbids=("soana.flower_thanks",), flags=("soana.attraction_named",)),
       c('"The work was worth doing. I would help again."', "company", flags=("soana.practical_company",))),
-    n("attraction", "Soana", '''"Then say the first part next time. I know how old I am."
+    n("attraction", "Soana", '''"Leave off the years next time. I know how old I am. I do not need a young fool counting them for me."
 {n}She regards you with a searching, unsentimental attention.{/n}
 "You like being here with me? With this temper? These hands?"
-"Yes. And I have heard what you said about Corven. I am not asking you to answer anything you have not chosen to discuss."
+"Yes. And I heard what you said about Corven. I won't pry."
 {n}She looks down at the hand resting on the tree. A smile touches one corner of her mouth.{/n}
 "You have not heard the worst of the temper."
 "I suspected that."

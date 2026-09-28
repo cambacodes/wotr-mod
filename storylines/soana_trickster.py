@@ -194,9 +194,14 @@ at_cave("soana.trickster.returned.graveyard", "What the knot cost", '"Soana."', 
         c('"I\'ll send to Drezen for diggers."', "bought", crusade=("Finances", -100), flags=(GRAVE_KEPT, BOUGHT)),
         c('[Leave her with her graves]', flags=(CLOSED, LEFT))),
     nar("dug", '''{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hind and her calf finally go in she says something over them in a language that sounds like branches knocking.{/n}''',
-        c('[Wipe your hands]')),
+        c('[Wipe your hands]', "decide")),
     nar("bought", '''{n}The diggers come from Drezen three days later, crusaders with good boots and bad manners. They dig fast and deep and argue about who has to carry the calf. Soana watches them from the cave mouth the whole time with an expression you would not wish on an enemy.{/n}''',
-        c('[Pay them off]')),
+        c('[Pay them off]', "decide")),
+    s("decide", '''{n}She leans on the spade and looks at you the way she looks at weather.{/n}
+"Hear me, hunter, because I will say it once. The thing in my woods I will catch with you or without you. That is the forest's business, and it does not buy you anything from me. What you want from me is another matter, and I have not decided what I think of it."
+"Come back in three days. By then I will know my own mind. I always do, in the end."''',
+        c('"Three days, then."'),
+        c('"I dug your graves. That\'s all I came for."', flags=(CLOSED,))),
     ], requires=("trickster.ever", RETURNED), forbids=(CLOSED, GRAVE_KEPT), delay=48)
 
 TERMS_NIGHT = '''{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}
@@ -217,6 +222,7 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"You said you ha
     s("bought", '''"Your diggers came, dug, ate my last smoked fish and left. Paying is easy for you people. It is the one thing you are good at. Remember that I noticed."''',
         c("Continue", "price")),
     s("price", '''{n}She opens her hand. The two halves of the clay knot lie in it.{/n}
+"I have decided. I want you, hunter, which is a great nuisance. So you will have my terms, and you will take them as they are or not at all."
 "A knot with one strand is not a knot. It is a piece of string. If I am to catch that thing and bind it again, the knot needs a second life at the other end. Orso's has gone out of it; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first."
 "Those are my terms. I will not say them twice, and I will not make them sweeter."''',
         c('[Hold out your hand for the pieces]', "bind"),
