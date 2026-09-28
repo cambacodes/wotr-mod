@@ -144,7 +144,7 @@ s("evening", "An invitation without witnesses", [
     n("want", "Jerribeth", '''"Tell me what you wanted when you opened the frame. You have been quite brave about my answers. I should like to see how you manage your own."
 {n}She waits. For once, she does not supply an interpretation for you.{/n}''',
       c('"I wanted to hear that you had been waiting for me."', "waiting"),
-      c('"I wanted a private evening with you, without pretending it was only curiosity."', "private"),
+      c('"I wanted to see what you do when you stop performing. And I wanted you to know I was watching."', "private"),
       c('"I want your company. Let us go slowly."', "slow")),
     n("waiting", "Jerribeth", '''"I was."
 {n}The answer comes too quickly for her to make it sound like a concession.{/n}

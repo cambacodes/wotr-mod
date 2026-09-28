@@ -276,8 +276,12 @@ TRICKSTER_PARAGRAPHS = (
       "her. It amused her for the rest of the Commander's life.", requires=(LATE,)),
     p("In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray "
       "the one who made it. She considered this the finest betrayal of her career.", requires=(TOAST,)),
-    p("The forfeit clause was never invoked. She kept it the way other people keep a knife under the pillow, and she made "
-      "sure the Commander knew exactly which memory she had her eye on.", requires=(FORFEIT,)),
+    p("She collected the forfeit on the first anniversary of the contract, without warning, as she had said she would. "
+      "She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards "
+      "the Commander knew they had met only because she said so, and she told it differently every time, a little more "
+      "flattering to herself with each telling. \"You cannot contradict me,\" she said, when the Commander objected. "
+      "\"That was the point. Now I am the only one who remembers how we began, and I intend to improve it.\"",
+      requires=(FORFEIT,)),
 )
 REFUSED_PARAGRAPH = p(
     "A crusade clerk later found, in the Commander's papers, a blank contract with a single line written in a small, neat "
@@ -286,7 +290,8 @@ REFUSED_PARAGRAPH = p(
 SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocked", "Epilogue", 5, "", [
     nar("end", '''{n}The war ended before the contract did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}
 "The forfeit is one memory, of my choosing, when I choose. Sign, or do not. I have already read your answer."
-{n}The Commander signed. She read the signature twice, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}''',
+{n}The Commander signed. She read the signature twice, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
+{n}She collected a year later to the day. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS)],
     requires=("trickster.ever", "jerribeth.commission", LATE_COMMITTED),
     forbids=("jerribeth.committed", "jerribeth.closed", DECLINED, DEAD), last=99, Relationship="jerribeth",
