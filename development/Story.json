@@ -224920,7 +224920,7 @@
         {
           "Id": "stars",
           "Speaker": "Arueshalae",
-          "Text": "\"I know everything about how. Every way there is. I was taught by the best in the Upper City.\" {n}She is standing with her back to the stars.{/n} \"I don't know how to do it so that it's for both of us. I've never once done it so that it was for both of us. So I brought us somewhere I've never done anything at all, and I'll find out here.\"",
+          "Text": "\"I know every way there is. I was taught in the Upper City, by the best, on a thousand guests.\" {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} \"And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then.\" {n}She swallows.{/n} \"So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -224980,7 +224980,7 @@
         {
           "Id": "undress",
           "Speaker": "Narrator",
-          "Text": "{n}She undresses you the way she used to undress her victims, perfectly, and halfway through she stops, and her hands start to shake, and she does the rest badly, fumbling your buckles like a girl who has never done this. In a way that is exactly what she is. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}\n{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She takes your hand and puts it where she wants it, and keeps her eyes on yours, and so do you.{/n}",
+          "Text": "{n}She undresses you the way she used to undress her victims, perfectly, and halfway through she stops, and her hands start to shake, and she does the rest badly, fumbling your buckles like a girl who has never done this. In a way that is exactly what she is. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}\n{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, draws one long breath that she does not need, and sinks down onto you.{/n}",
           "Choices": [
             {
               "Text": "[Let her.]",
@@ -230862,8 +230862,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
