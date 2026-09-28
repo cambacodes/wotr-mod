@@ -135,20 +135,20 @@ letter("kiana.trickster.possessed.fake_gem", "Paste", [
         crusade=("Finances", -1000)),
       c('[Not yet] "Not yet. Keep him here."', abort=True), portrait="Arsinoe"),
     nar("appraisal", '''{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}
-{n}You name its faults as you go, the way a pawnbroker does to bring the price down: a bubble under the table, just off centre; a hairline flaw running from the girdle toward the heart; and last, the one fault that matters, said slowly so the room hears it as a verdict: *this stone holds nothing*. None of it is true. You are not describing the stone. You are pricing it, and the price is the Trickster's to set. It is the finest stone in the room.{/n}
-{n}Then the apprentice holds it up to the lamp to prove you wrong, and it is all there. The bubble, exactly where you said. The flaw, fine as a hair. And the last fault, the one you gave it on purpose: it holds nothing. Whatever it was holding has nowhere left to be.{/n}
+{n}You name its faults as you go, the way a pawnbroker does to bring the price down: a bubble under the table, just off centre; a hairline flaw running from the girdle toward the heart; a crack no wider than a hair, you say, running from the girdle clean through to the heart, the kind that lets a stone hold nothing at all. None of it is there. It is the finest stone in the room. You are not describing it. You are identifying it, the way the Trickster identifies things: by finding properties that are not there and could not possibly be. And the price is the Trickster's to set. It is the finest stone in the room.{/n}
+{n}Then the apprentice screws in his loupe and holds the stone up to the lamp to prove you wrong, and you watch his face as he finds it. The bubble, exactly where you said. The crack, fine as a hair, from the girdle to the heart, where no crack was a breath ago. And along it, slow as oil, the pale light that lived in the stone is running out through the flaw you gave it, beading at the girdle, and falling, not to the floor, but toward the cot.{/n}
 {n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}''',
       c('[Keep a straight face] "...Paste."',
         check=dict(Skill="CheckBluff", DC=20, Success="sold", Failure="bolted", CommanderOnly=True)), portrait="Arsinoe"),
     nar("sold", '''{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the ruined stone back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}
-{n}Glass holds nothing. Whatever was in that stone is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}''',
+{n}The cracked stone is empty. Whatever it held is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}''',
       c('[Watch her wake] "Kiana?"', "woke_sold"), portrait="Arsinoe"),
     nar("bolted", '''{n}He looks from the flaw to your face, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}
 {n}By tonight, somewhere in Mendev, a dwarf with a jeweller's hands will know exactly whose trick that was.{/n}
 {n}On the cot, Kiana draws in a breath like someone coming up from deep water.{/n}''',
       c('[Watch her wake] "Kiana?"', "woke_bolted"), portrait="Arsinoe"),
     nar("swapped", '''{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}
-{n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a hairline flaw from the girdle to the heart, and last, deliberately, *this stone holds nothing*. When you open your hand, every fault you named is there, and the stone is no longer holding anything at all.{/n}
+{n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a crack no wider than a hair from the girdle clean through to the heart. When you open your hand the crack is there, and the pale light that lived in the stone has already run out along it, into the warm air above the cot.{/n}
 {n}The apprentice squints at the counterfeit between his own fingers. For the first time since he walked in, he looks unsure of his trade.{/n}''',
       c('[Send him back to his master] "Take your stone back to Sunhammer. Tell him the Commander said it was flawed."', "woke_swapped",
         mythic="Trickster", alignment=("Chaotic", 1), remove_item=COUNTERFEIT, requires=(HELD,)),
@@ -183,7 +183,7 @@ letter("kiana.trickster.awake.dog_collar", "The sample", [
         mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Pay for the guests] "All of them. The thousand, and his favour."', "paid", crusade=("Finances", -1000)),
       c('[Not yet] "Not yet."', abort=True)),
-    k("bark", '''{n}You name its faults, bored, the way a pawnbroker does: a bubble under the table, a hairline flaw to the heart, and last, flatly, *this stone holds nothing*. None of it was true until you said it. When the apprentice turns the collar to the lamp, all of it is, the last fault too. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}
+    k("bark", '''{n}You name its faults, bored, the way a pawnbroker does: a bubble under the table, a crack no wider than a hair, girdle to heart. None of it was true until you found it. When the apprentice turns the collar to the lamp the crack is there, and a thread of pale light is running out along it and down, toward the foot of the cot. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}
 {n}The apprentice looks at the flaw in the collar, and at the dog, and puts the collar away very carefully, the way you put away something that has bitten you. He does not stay to haggle. The pouch goes with him.{/n}
 "You saved the *dog*." {n}Kiana's voice cracks halfway up.{/n} "Of everyone in that cup, you saved the dog."
 {n}She laughs until she has to sit down on the floor, and the dog climbs into her lap to help.{/n}
@@ -574,6 +574,12 @@ def integrate(payload):
     seelah = _scene(by_id, "kiana.seelah")
     seelah["Forbids"] = [f for f in seelah["Forbids"] if f not in ("seelah_dead", "seelah_gone")]
     seelah["Requires"].append("seelah.in_party")
+
+    # The registered kiss offer scripts her consent in the Commander's mouth; on the path the offer is made, and she answers.
+    attraction = _node(_scene(by_id, "kiana.marriage"), "attraction")
+    _gate(attraction["Choices"][1], forbids=("trickster.ever",))
+    attraction["Choices"].append(c('[Step close enough to kiss her, and wait.]', "kiss", requires=("trickster.ever",),
+                                   forbids=("inhuman",)))
 
     # Directive 12, the Trickster variant of the registered night (kiana.date -> kiss).
     date = _scene(by_id, "kiana.date")
