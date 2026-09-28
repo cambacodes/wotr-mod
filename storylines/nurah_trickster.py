@@ -352,7 +352,7 @@ def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids):
 
 
 terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
-    '''{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} "Nine days I've had a mouth again. I'm catching up.
+    '''{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} "I've had a mouth again since the chaplains stopped arguing with me about my own name. I'm catching up.
 "The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. I'm dead on your record, Commander. It's the best disguise I've ever had."
 {n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}''',
     '''{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}
