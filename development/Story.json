@@ -203727,6 +203727,70 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "{n}Before every battle that remained, she took the Commander's hands for a moment and closed her eyes. The swords did not always miss. The Commander always walked out feeling that everyone in the room had been glad to see them.{/n}",
+              "Requires": [
+                "chadali.hours.blessed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She never blessed the Commander. She stood very near before every battle instead, and it leaked, as she had said it would.{/n}",
+              "Requires": [
+                "chadali.hours.refused_blessing"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She told the story of the lost earring to everyone, for years, and it always ended the same way: \"And then my lucky charm got down on the floor.\" She seemed to think it was the most romantic thing that had ever happened in the multiverse.{/n}",
+              "Requires": [
+                "chadali.hours.earring_found_openly"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She never stopped reminding the Council members who had laughed in the first session that she had been right. Eritrice minuted it every time, with the little squiggle.{/n}",
+              "Requires": [
+                "chadali.hours.first_sight"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The cultist in the Drezen dungeon ate the cookie, the night before he was hanged. He never said a word about it. The white flower was found pressed in his prayer book, in the page about the Abyss.{/n}",
+              "Requires": [
+                "chadali.hours.prisoner_fed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Her list of lucky numbers survived the Council. The Commander's name was at the bottom of it, underlined three times, and the number beside it came up far more often than it had any right to.{/n}",
+              "Requires": [
+                "chadali.hours.number_taken"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}When the Council's members pretended that they had never met, two of them did not. Every year, on the anniversary of the first session, the Commander and Chadali ate cookies at a table with seven chairs, and remembered all of it, and made it sound much better than it was.{/n}",
+              "Requires": [
+                "chadali.hours.promised_to_remember"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander carried a thin pale scar for the rest of their life, curved at one end like the edge of a coin. She touched it for luck, every time, without asking.{/n}",
+              "Requires": [
+                "chadali.hours.scar_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
             }
           ]
         }
@@ -209659,6 +209723,1384 @@
         "chadali.sessions.the_last_evening"
       ],
       "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.make_some_stronger",
+      "Title": "Make some stronger",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You said you heal some, make some stronger.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"I do!\" {n}She holds up her hands, palms out, as if showing that there is nothing in them.{/n} \"Not very much. Not like the gods. Iomedae can make a whole army stand up straight. I can make one person feel like it's a good morning.\"\n\"Let me do it for you. Before the next battle. It won't stop a sword.\" {n}She wiggles her fingers.{/n} \"It'll just make you believe, for a moment, that the sword might miss. That's all luck ever is, really. That moment.\"",
+          "Choices": [
+            {
+              "Text": "[Hold out your hands.] \"Do it.\"",
+              "Next": "bless",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I don't want to believe the sword might miss. I want to make sure it does.\"",
+              "Next": "refuse",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why don't you do it for the whole army?\"",
+              "Next": "army",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "army",
+          "Speaker": "Chadali",
+          "Text": "\"Because it's not a spell. It's a... it's a me.\" {n}She frowns, looking for the words.{/n}\n\"When I do it for someone, a little of me goes into them. Not much. It comes back. But if I did it for the whole army, there'd be none of me left for a while, and I'd just be a lady in a yellow dress, sitting in a hall, very tired.\" {n}She smiles.{/n} \"I'm allowed to choose who. That's the one selfish thing about being chance.\"",
+          "Choices": [
+            {
+              "Text": "[Hold out your hands.] \"Then choose me.\"",
+              "Next": "bless",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then keep it. Save it for someone who needs it more.\"",
+              "Next": "refuse",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "bless",
+          "Speaker": "Chadali",
+          "Text": "{n}She takes your hands in both of hers. Her palms are warm and a little floury, and she closes her eyes, and for a moment nothing happens at all.{/n}\n{n}Then something does. It is not light and it is not warmth. It is the feeling of walking into a room and knowing, without any reason, that everyone in it is glad you came.{/n}\n\"There.\" {n}She opens her eyes, a little breathless.{/n} \"That's the whole of it. It's not much. It's not nothing.\"",
+          "Choices": [
+            {
+              "Text": "\"It's not nothing.\"",
+              "Next": "after",
+              "Set": [
+                "chadali.hours.blessed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "refuse",
+          "Speaker": "Chadali",
+          "Text": "{n}Her hands stay out a moment longer, and then she folds them in her lap.{/n}\n\"You're very strange.\" {n}Without offence.{/n} \"Everyone else in the world wants to feel lucky. You want to feel ready.\" {n}She thinks about it.{/n}\n\"All right. I won't push it on you. It doesn't work if you push it, anyway; it just slides off.\" {n}A small, stubborn smile.{/n} \"I'll just stand very near you before battles. It leaks. You can't stop it leaking.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [
+                "chadali.hours.refused_blessing"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "after",
+          "Speaker": "Chadali",
+          "Text": "\"Go on. Go and win something.\" {n}She waves you off with both hands.{/n} \"And when the sword misses, don't tell me it was you. I know it was you. Let me think it was me, just this once.\"",
+          "Choices": [
+            {
+              "Text": "[Go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.wagers.born_lucky"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.make_some_stronger"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.an_unlucky_day",
+      "Title": "An unlucky day",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Are you... crawling under the table?\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}There is a pair of feet in yellow silk slippers sticking out from under the Council table, and a great deal of muttering. A tray of cookies lies upside down on the floor. A cup has been knocked over, and its contents have run across Alichino's side of the table, which you suspect is the only good thing that has happened today.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"I lost an earring.\" {n}Muffled, from under the table.{/n} \"The white-gold one. The one that clinks. I dropped the tray, and then I knocked the cup, and then I bent down and it just... went.\"\n{n}She wriggles out backwards, flushed and dusty, and sits on the floor.{/n} \"I'm having an unlucky day. Me! I'm chance! It's the most humiliating thing that's ever happened to anyone.\"",
+          "Choices": [
+            {
+              "Text": "[Get down on the floor and look for it with her.]",
+              "Next": "search",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] [Palm a coin, \"find\" the earring behind her ear.] \"Here it is.\"",
+              "Next": "trick",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"How can chance have an unlucky day?\"",
+              "Next": "how",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "how",
+          "Speaker": "Chadali",
+          "Text": "\"Easily!\" {n}Indignant.{/n} \"Chance goes both ways. Nobody remembers that. They think I'm only the nice way. I'm both. Heads and tails.\"\n\"Usually I stand on the heads side. Today I slipped.\" {n}She sniffs.{/n} \"It happens every few centuries. It's always on a day when I've baked something nice.\"",
+          "Choices": [
+            {
+              "Text": "[Get down on the floor and look for it with her.]",
+              "Next": "search",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] [Palm a coin, \"find\" the earring behind her ear.] \"Here it is.\"",
+              "Next": "trick",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "search",
+          "Speaker": "Chadali",
+          "Text": "{n}You get down on the flagstones beside her. It takes half an hour, and involves a great deal of dust, three spiders, a cookie from what must be the Council's first session, and one of Eritrice's quills.{/n}\n{n}You find it at last in a crack between two stones under Cobblehoof's chair, and hold it up. It clinks.{/n}\n{n}Chadali stares at it, and then at you, dusty and on your knees, and her face does something complicated.{/n} \"You didn't trick it. You just looked.\"",
+          "Choices": [
+            {
+              "Text": "\"Sometimes that's all it takes.\"",
+              "Next": "found",
+              "Set": [
+                "chadali.hours.earring_found_openly"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "trick",
+          "Speaker": "Chadali",
+          "Text": "{n}You reach behind her ear and bring back your hand with something white-gold in it, glinting.{/n}\n{n}She reaches for it, and stops. She looks at it closely. It is a coin, not an earring; you have had to improvise.{/n}\n\"That's not my earring.\" {n}Flatly. Then, despite herself, her mouth twitches.{/n} \"That's a very good trick and a very bad earring.\"",
+          "Choices": [
+            {
+              "Text": "[Put the coin away. Get down on the floor and look properly.]",
+              "Next": "search",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "found",
+          "Speaker": "Chadali",
+          "Text": "{n}She takes the earring and puts it back in, and shakes her head so it clinks, and the sound seems to put something right.{/n}\n\"There. Heads side again.\" {n}She leans against you on the floor, dusty and relieved.{/n}\n\"I'm going to remember this. The day I was unlucky, and you got down on the floor.\" {n}A small laugh.{/n} \"That's much better than being lucky. Don't tell anyone I said that; I'll lose my job.\"",
+          "Choices": [
+            {
+              "Text": "[Help her up.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.started"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.an_unlucky_day"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.our_new_friend",
+      "Title": "Our new friend",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Do you remember the first session?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"Of course I do! I remember everything that makes me happy, and it made me very happy.\" {n}She settles in, like someone about to tell a favourite story.{/n}\n\"Socothbenoth brought you in, and everyone looked at you as if you were a new kind of beetle. Eritrice asked you questions. Alichino made notes. Cobblehoof said 'Phrr'.\"\n\"And then they started being rude about you. Mortals, short lives, narrow outlook, all that.\" {n}Her eyes gleam.{/n} \"So I said, don't be so tough on our new friend! They're our lucky charm! And everyone stopped.\"",
+          "Choices": [
+            {
+              "Text": "\"Why did you defend me? You'd never met me.\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You decided that fast?\"",
+              "Next": "fast",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "fast",
+          "Speaker": "Chadali",
+          "Text": "\"Faster!\" {n}She claps.{/n} \"I decided before you'd sat down. You came through the door and stood there looking at all of us, a demon lord and a devil and a hippogriff and the Eldest and two empyreal lords, and you weren't frightened at all. You were counting the exits.\"\n{n}She laughs.{/n} \"Everybody who's frightened of us counts the exits. You were counting them the way a general does. To see which one we'd come in by.\"",
+          "Choices": [
+            {
+              "Text": "\"And that made me lucky?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Chadali",
+          "Text": "{n}She is quiet for a moment, turning her bracelet.{/n}\n\"You looked like someone who'd been unlucky for a very long time and had decided to do something about it.\" {n}Softly.{/n}\n\"I know that look. I see it on the faces of the people who pray to me the hardest. The ones who don't expect anything, and pray anyway.\" {n}She looks up.{/n} \"I've never been able to help most of them. I thought, maybe this one I can. So I called you our lucky charm. It's the best thing I know how to call anyone.\"",
+          "Choices": [
+            {
+              "Text": "\"You did help. You still do.\"",
+              "Next": "helped",
+              "Set": [
+                "chadali.hours.first_sight"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You couldn't even give me votes, in the second session.\"",
+              "Next": "votes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "votes",
+          "Speaker": "Chadali",
+          "Text": "\"I know!\" {n}She covers her face.{/n} \"You asked for material aid and I said I'd be happy to help even without the votes, and I was sorry I couldn't. I was so sorry. I sent you good wishes instead.\" {n}Through her fingers:{/n} \"That's a terrible thing to send an army.\"\n{n}She lowers her hands.{/n} \"But I meant them. Every one. That's all I had that day. Now I have cookies, and you.\" {n}She beams.{/n} \"I'm much better equipped.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "helped",
+              "Set": [
+                "chadali.hours.first_sight"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "helped",
+          "Speaker": "Chadali",
+          "Text": "\"Good.\" {n}She says it very firmly, as if settling an old account.{/n} \"Then I was right, and everybody who laughed at me in the first session was wrong, and I'm going to remind them at the next one.\"\n\"Eritrice will minute it. She'll put the little squiggle.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her pleased with herself.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.wagers.a_lucky_charm"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.our_new_friend"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.who_brought_you",
+      "Title": "Who brought you",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"What do you make of Socothbenoth?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"He calls everybody 'darling'.\" {n}She giggles.{/n} \"Even Cobblehoof. Especially Cobblehoof. He does it to make him snort.\"\n\"He brought you to us. He introduced me as the patron of serendipity and Eritrice as the patron of debate and called us two beautiful ladies, and I thought, oh, he's nice.\" {n}Her head tilts.{/n} \"And then I thought, no, he's not nice. He's charming. That's different. Charming is nice with a purpose.\"",
+          "Choices": [
+            {
+              "Text": "\"What's his purpose?\"",
+              "Next": "purpose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Flirt] \"Are you jealous of the way he looks at me?\"",
+              "Next": "jealous",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "jealous",
+          "Speaker": "Chadali",
+          "Text": "\"Jealous?\" {n}She considers it with great seriousness, as if it were a new flavour.{/n}\n\"No. Well. A tiny bit. Not of him. Of how easy he finds it.\" {n}She picks at the tablecloth.{/n} \"He looks at people and they know exactly what he wants. When I look at people they just think I want to give them a cookie.\"\n{n}She peeks up.{/n} \"Which I do. But not only.\"",
+          "Choices": [
+            {
+              "Text": "\"I know it's not only.\"",
+              "Next": "purpose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "purpose",
+          "Speaker": "Chadali",
+          "Text": "\"I don't know his purpose. That's the thing.\" {n}She frowns.{/n} \"Everyone else at this table says what they want. Alichino wants profit. Eritrice wants truth. Cobblehoof wants to be left alone. I want everyone to be happy. Shyka wants to be entertained.\"\n\"Socothbenoth never says. He just smiles and calls you darling.\" {n}She leans in.{/n} \"I'll make you a bet. One day he'll tell you what he wants, and it'll be something about someone else. Brothers are always about someone else.\"",
+          "Choices": [
+            {
+              "Text": "[Shake on it.] \"Something about someone else.\"",
+              "Next": "shake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Brothers?\"",
+              "Next": "brothers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "brothers",
+          "Speaker": "Chadali",
+          "Text": "\"He has a sister. He doesn't talk about her. That's how you know he's thinking about her all the time.\" {n}She says it with the confidence of someone who has watched a great many families across a great many centuries.{/n}\n\"Everybody has somebody they don't talk about. It's the most important person in the room, and they're never in the room.\" {n}She taps the table.{/n} \"Shake on it. Something about someone else.\"",
+          "Choices": [
+            {
+              "Text": "[Shake on it.]",
+              "Next": "shake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "shake",
+          "Speaker": "Chadali",
+          "Text": "{n}She shakes, and holds on a moment after.{/n}\n\"And when you find out, you'll tell me. Not him. Me.\" {n}She lets go.{/n} \"That's the fee for the bet. I don't want to win it. I want to know.\"",
+          "Choices": [
+            {
+              "Text": "[Promise.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.started"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.who_brought_you"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.a_cookie_for_the_enemy",
+      "Title": "A cookie for the enemy",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You've wrapped a parcel for someone else.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"For a prisoner.\" {n}She says it as if it were the most natural thing in the world.{/n} \"There's a cultist in your dungeons in Drezen. One of Deskari's. They caught him last week. He hasn't eaten. He says he'd rather die than take bread from the crusade.\"\n\"But I'm not the crusade.\" {n}She pats the parcel.{/n} \"I'm just a lady with cookies. Will you take it down to him?\"",
+          "Choices": [
+            {
+              "Text": "\"He's a murderer. He burned villages.\"",
+              "Next": "murderer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why? He'd kill you if he could.\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"All right.\"",
+              "Next": "fed",
+              "Set": [
+                "chadali.hours.prisoner_fed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "murderer",
+          "Speaker": "Chadali",
+          "Text": "\"I know.\" {n}Very quietly.{/n} \"I know what he did. I felt some of them go. The villages.\"\n{n}She does not take the parcel back.{/n} \"He's still going to be hanged, probably. I'm not asking you to let him go. I'm asking you to let him eat a cookie first. It doesn't make what he did smaller. It just makes the world a tiny bit less like what he wanted it to be.\"",
+          "Choices": [
+            {
+              "Text": "\"All right. I'll take it down.\"",
+              "Next": "fed",
+              "Set": [
+                "chadali.hours.prisoner_fed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No. He doesn't get kindness. Not from you, not from me.\"",
+              "Next": "refused",
+              "Set": [
+                "chadali.hours.prisoner_refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Chadali",
+          "Text": "\"He would.\" {n}She nods.{/n} \"He'd kill me, and then he'd kill you, and then he'd go to sleep and dream about the Abyss. I know.\"\n\"That's why.\" {n}Simply.{/n} \"The Abyss told him nobody would ever be kind to him again. I'd like the Abyss to be wrong about something. Just once. Just one cookie's worth.\"",
+          "Choices": [
+            {
+              "Text": "\"All right. I'll take it down.\"",
+              "Next": "fed",
+              "Set": [
+                "chadali.hours.prisoner_fed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No. He doesn't get kindness. Not from you, not from me.\"",
+              "Next": "refused",
+              "Set": [
+                "chadali.hours.prisoner_refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "fed",
+          "Speaker": "Chadali",
+          "Text": "\"Thank you.\" {n}She beams, and then her face grows serious.{/n}\n\"Don't tell him it's from me. Tell him it's from someone who thinks he's wrong about everything.\" {n}She tucks a white flower into the knot of the parcel.{/n}\n\"He won't eat it, probably. Or he will, and hate himself. Either way, he'll have to think about it. That's all I want. One thought that isn't the Abyss's.\"",
+          "Choices": [
+            {
+              "Text": "[Take the parcel.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Chadali",
+          "Text": "{n}She takes the parcel back and holds it in her lap for a long time.{/n}\n\"All right. It's your prison. It's your war.\" {n}Her voice is steady and not at all sulky, which is worse.{/n}\n\"I think you're wrong. I think you're wrong and I think you know why you're wrong, and you're doing it anyway because you're tired and angry and people you love died in those villages.\" {n}She looks up.{/n} \"That's allowed. I'll eat it myself. I'll think about him while I do.\"",
+          "Choices": [
+            {
+              "Text": "[Let her.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.wagers.born_lucky"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.a_cookie_for_the_enemy"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.not_today",
+      "Title": "Not today",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You're very quiet.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}She is baking. There is no oven in the hall, and she is baking anyway, in a way that involves a great deal of kneading, some very pointed looks at a bowl, and no heat of any kind. Flour is in her hair. Flour is on the Council table. Some of it is on Alichino's chair, in the shape of a small rude word.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"I'm not quiet. I'm concentrating.\" {n}She kneads harder.{/n} \"I'm going to bake the best batch I've ever baked, and I'm not going to burn a single one.\"\n\"And you're not allowed to ask me today.\" {n}Very fast, without looking up.{/n} \"Not the question. The bet's still on. It's just that I've got flour everywhere and I look like a ghost and I want to be wearing the yellow when you ask. The good yellow.\"",
+          "Choices": [
+            {
+              "Text": "\"You look perfect.\"",
+              "Next": "perfect",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Are you nervous?\"",
+              "Next": "nervous",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tease] \"What question?\"",
+              "Next": "tease",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "tease",
+          "Speaker": "Chadali",
+          "Text": "{n}She throws a handful of flour at you. It is a remarkably accurate throw.{/n}\n\"You know exactly what question. You're the one who has to ask it! You're doing it on purpose. You're making me say it so I'll go red.\" {n}She has gone red.{/n} \"Not today. Go away. Come back when I'm yellow.\"",
+          "Choices": [
+            {
+              "Text": "\"Are you nervous?\"",
+              "Next": "nervous",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "perfect",
+          "Speaker": "Chadali",
+          "Text": "\"I look like a sack of flour.\" {n}She stops kneading, though, and pushes a strand of floury hair out of her face with her wrist.{/n}\n\"...You really think so?\" {n}And then, before you can answer:{/n} \"No, don't answer. If you answer I'll believe you, and then I'll want you to ask, and I've got dough under my nails.\"",
+          "Choices": [
+            {
+              "Text": "\"Are you nervous?\"",
+              "Next": "nervous",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "nervous",
+          "Speaker": "Chadali",
+          "Text": "{n}She is quiet for a long moment, her floury hands still in the bowl.{/n}\n\"I've never been nervous before,\" she says at last. \"I didn't know it felt like this. Like knowing the odds of everything except one thing, and that one thing is the only one that matters.\"\n{n}She looks up at you.{/n} \"I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll ask when you're ready. Not before.\"",
+              "Next": "ready",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You'll be brave enough. You were born in a meteor shower.\"",
+              "Next": "brave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "ready",
+          "Speaker": "Chadali",
+          "Text": "\"When I'm yellow.\" {n}She nods, and goes back to kneading, more gently.{/n} \"And when I've stopped shaking. Probably not at the same time. You'll have to pick one.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to her dough.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "brave",
+          "Speaker": "Chadali",
+          "Text": "{n}She laughs, a little shakily.{/n} \"That wasn't brave. That was just arriving. Anybody can arrive.\" {n}She thinks about it.{/n}\n\"This is the first brave thing I've ever had to do on purpose.\" {n}She shoos you with a floury hand.{/n} \"Go on. Not today. Soon.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to her dough.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.wagers.the_real_wager"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.not_today",
+        "chadali.committed",
+        "chadali.trickster.declined"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.for_luck",
+      "Title": "For luck",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"It's only a scratch.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}It is not only a scratch. You came to the hall straight from the field without stopping at the healers, and somewhere on the way the bandage bled through, and she saw it before you had finished coming through the door.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"Sit down.\" {n}The flat voice, the raised finger with its ring. There is no arguing with it. She kneels in front of you and undoes the bandage with quick, steady hands, far steadier than her voice.{/n}\n\"I said I heal some. You're some.\" {n}She lays both palms over the wound.{/n} \"This will feel strange. Don't make a joke. If you make a joke I'll laugh and it'll go crooked.\"",
+          "Choices": [
+            {
+              "Text": "[Don't make a joke.]",
+              "Next": "heal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Leave a scar.\"",
+              "Next": "scar",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "scar",
+          "Speaker": "Chadali",
+          "Text": "{n}She looks up, startled.{/n} \"A scar? Why would you want a scar? I can make it like it never happened.\"\n\"Because it happened.\" {n}Your words, and she hears them.{/n}\n{n}She considers it, kneeling there with her hands over your wound.{/n} \"...All right. A little one. A lucky one. The shape of something nice.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "heal",
+              "Set": [
+                "chadali.hours.scar_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "heal",
+          "Speaker": "Chadali",
+          "Text": "{n}It does feel strange. It is not warmth and it is not light. It is the feeling of a door closing quietly somewhere far away, and the draught stopping.{/n}\n{n}When she takes her hands away, the wound is closed. There is a thin pale line across your skin where it was, and when you look closely, it curves at one end, very slightly, like the edge of a coin.{/n}\n\"There.\" {n}She is a little breathless, and her hands are shaking now that the work is done.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "after",
+          "Speaker": "Chadali",
+          "Text": "\"Don't come to me bleeding again without warning me first.\" {n}She sits back on her heels.{/n} \"I nearly dropped a whole tray. I nearly screamed. I'm an empyreal lord; I'm not supposed to scream at scratches.\"\n{n}Then, quieter, her hand still resting on the new scar:{/n} \"Come to me first. Before the healers. I'm better, and I'm closer, and I want to know.\"",
+          "Choices": [
+            {
+              "Text": "\"First. Before the healers.\"",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Chadali",
+          "Text": "{n}She bends and kisses the scar, very lightly, and then scrambles up and busies herself with the bloody bandage so that you cannot see her face.{/n}\n\"For luck,\" she says, to the bandage.",
+          "Choices": [
+            {
+              "Text": "[Let her fuss.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.fortunes.honey"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.for_luck"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.a_lucky_number",
+      "Title": "A lucky number",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"What are you writing?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"A list!\" {n}She turns the paper round proudly. It is a column of names, and beside each one, a number, in her round hand with a great many underlinings.{/n}\n\"Everyone's lucky number. Eritrice's is one, because she's always first to arrive. Alichino's is six hundred and sixty-six, which he chose himself, which is cheating. Cobblehoof's is twelve, because he has twelve coins in his purse and he counts them.\" {n}She taps the bottom of the list, where your name is written, and nothing beside it.{/n} \"What's yours?\"",
+          "Choices": [
+            {
+              "Text": "\"I don't have one.\"",
+              "Next": "none",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Whatever number the dice show when I need them to.\"",
+              "Next": "dice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You choose.\"",
+              "Next": "choose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "none",
+          "Speaker": "Chadali",
+          "Text": "\"Everybody has one!\" {n}Appalled.{/n} \"Even people who say they don't. Especially them. They just haven't noticed which number keeps turning up.\"\n{n}She squints at you, as if you were a sum.{/n} \"You've had a lot of fours happen to you. I can see them on you, like freckles. Four walls in Drezen. Four companions at your back, most days.\"",
+          "Choices": [
+            {
+              "Text": "\"Four, then.\"",
+              "Next": "four",
+              "Set": [
+                "chadali.hours.number_taken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You choose.\"",
+              "Next": "choose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "dice",
+          "Speaker": "Chadali",
+          "Text": "\"That's not a number, that's a boast.\" {n}She wags a floury finger.{/n}\n\"And it's a sad one. It means you only let luck in when you're desperate. That's like only eating when you're starving. You'll never taste anything.\" {n}She pulls the list back.{/n} \"I'm giving you one whether you want it or not.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choose",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "choose",
+          "Speaker": "Chadali",
+          "Text": "{n}She thinks about it with enormous seriousness, chewing the end of her pen, looking at you, looking at the ceiling, looking back.{/n}\n\"Two.\" {n}She writes it down, and underlines it three times.{/n} \"Because you're never one. You're always standing next to somebody, even when you're alone. Especially then.\"",
+          "Choices": [
+            {
+              "Text": "\"Two, then.\"",
+              "Next": "two",
+              "Set": [
+                "chadali.hours.number_taken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "four",
+          "Speaker": "Chadali",
+          "Text": "\"Four!\" {n}She writes it down and underlines it.{/n} \"A good, steady number. A table has four legs. A year has four seasons. It's not lucky the exciting way; it's lucky the way a floor is lucky.\" {n}She beams.{/n} \"Nobody thanks the floor. Everybody would miss it.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep her list.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "two",
+          "Speaker": "Chadali",
+          "Text": "{n}She folds the list and tucks it into her sleeve, with the prayers and the hopeful thing and the grey feather, and pats it.{/n}\n\"There. Now it's official. Now when two of something happens to you, you'll think of me, and you won't be able to help it.\" {n}She looks delighted with herself.{/n} \"That's the sneakiest thing I've ever done. I learned it from you.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep her list.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.started"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.a_lucky_number"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.the_seat_beside_her",
+      "Title": "The seat beside her",
+      "Owner": "Chadali",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You saved me a seat.\"",
+      "Nodes": [
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}The session has ended and the others have gone, but the evidence is still there: two chairs pushed so close together at the end of the table that their arms touch, and a single cookie on the seat of one of them, exactly where someone would have to move it to sit down.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"I did!\" {n}Utterly unrepentant.{/n} \"Eritrice said seating is by precedence. I said my precedence is that I got here first and put a cookie on it. She said that's not a rule. I said it is now.\"\n\"And then you held my hand under the table for the entire debate about the essences.\" {n}She goes pink.{/n} \"Did you know Shyka could see? Shyka can always see. They laughed at exactly the wrong moment, and everybody looked at me, and I had to pretend I'd been thinking of something funny.\"",
+          "Choices": [
+            {
+              "Text": "\"What were you thinking of?\"",
+              "Next": "thinking",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Should we be more careful?\"",
+              "Next": "careful",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "thinking",
+          "Speaker": "Chadali",
+          "Text": "\"Your thumb.\" {n}Instantly, and then she claps both hands over her mouth.{/n}\n{n}Through her fingers, muffled:{/n} \"That's not what I should have said. I should have said 'the future of the Worldwound'. That's what an empyreal lord would have said.\" {n}She lowers her hands.{/n} \"But it was your thumb. It kept going round and round. I missed the whole vote. I don't know what we decided. I think I voted yes.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "careful",
+          "Speaker": "Chadali",
+          "Text": "\"Careful?\" {n}She looks honestly baffled.{/n} \"Why? Everyone already knows. Alichino's written it in his book. Socothbenoth calls us 'darlings' now, both at once. Cobblehoof pretends not to see, which is how he says he's happy for you.\"\n\"Eritrice minuted it.\" {n}She giggles.{/n} \"She wrote, 'The patron of serendipity was observed to be holding hands with the Commander. The chair notes that this is not on the agenda.' And then she underlined 'not'. She never underlines anything.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Chadali",
+          "Text": "\"Sit with me at every session. Until the hall closes.\" {n}She picks up the cookie from the chair and holds it out.{/n} \"That's not a bet. That's just asking. I'm learning how.\"",
+          "Choices": [
+            {
+              "Text": "[Take the cookie, and the seat.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.committed"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.the_seat_beside_her"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "chadali",
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e649f211c6b002a49a0c633061877927"
+      ]
+    },
+    {
+      "Id": "chadali.hours.pretend_we_never_met",
+      "Title": "Pretend we never met",
+      "Owner": "Chadali",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You look worried.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chadali",
+          "Text": "\"I'm not worried. I'm thinking about the end.\" {n}She is sitting very still, looking at the long table and its seven chairs.{/n}\n\"The Council's nearly done. One way or another. And when it's done, I know what they'll do. I've seen councils end before.\" {n}Quietly.{/n} \"They'll pretend it never happened. All of them. Alichino because it's convenient, and Cobblehoof because it's embarrassing, and Socothbenoth because he'll be busy, and Shyka because they'll find a better story.\"\n\"Eritrice won't. She'll have the minutes. But she'll stop reading them.\"",
+          "Choices": [
+            {
+              "Text": "\"And you?\"",
+              "Next": "you",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I won't pretend.\"",
+              "Next": "promise",
+              "Set": [
+                "chadali.hours.promised_to_remember"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "you",
+          "Speaker": "Chadali",
+          "Text": "\"Me?\" {n}She smiles, a little wistfully.{/n} \"I'll remember everything. I always do. I'll send them all cookies every year, and they'll send them back, and I'll pretend I don't mind.\"\n\"That's my job. Remembering the nice parts, even when everyone else has decided it wasn't nice.\" {n}She looks at you.{/n} \"I just don't want to be the only one. It's lonely, being the only one who remembers a party.\"",
+          "Choices": [
+            {
+              "Text": "\"You won't be. I won't pretend.\"",
+              "Next": "promise",
+              "Set": [
+                "chadali.hours.promised_to_remember"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I can't promise what the war will leave of me.\"",
+              "Next": "war",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "war",
+          "Speaker": "Chadali",
+          "Text": "\"No.\" {n}She nods.{/n} \"No, you can't. That's fair. That's the most honest thing anyone's said at this table in weeks.\"\n{n}She takes your hand.{/n} \"Then I'll remember for both of us, and if you ever come back, I'll tell you what you missed. I'll make it sound much better than it was. That's allowed. That's what remembering is for.\"",
+          "Choices": [
+            {
+              "Text": "[Let her hold your hand.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "promise",
+          "Speaker": "Chadali",
+          "Text": "{n}Her whole face changes, slowly, like the sky over Elysium when it decides to be a different colour.{/n}\n\"Promise?\" {n}The little finger.{/n}\n{n}You link it. She holds on for a long time.{/n} \"Then there'll be two of us. Two is your number. I knew it was a good one.\" {n}She sniffs, and laughs, and wipes her eyes on her sleeve.{/n} \"When they all pretend, we'll have the only real copy.\"",
+          "Choices": [
+            {
+              "Text": "[Hold on.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "chadali.started",
+        "council.cauldron_given"
+      ],
+      "Forbids": [
+        "chadali.closed",
+        "chadali.lost_at_council",
+        "chadali.hours.pretend_we_never_met"
+      ],
+      "DelayHours": 24,
       "Optional": true,
       "Relationship": "chadali",
       "Chapters": [

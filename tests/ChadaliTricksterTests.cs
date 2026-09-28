@@ -15,6 +15,7 @@ internal static class ChadaliTricksterTests
     private const string W = "chadali.wagers.";
     private const string F = "chadali.fortunes.";
     private const string S = "chadali.sessions.";
+    private const string H = "chadali.hours.";
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
@@ -53,7 +54,7 @@ internal static class ChadaliTricksterTests
         var reactions = story.Scenes.Where(s => s.Relationship == "chadali" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "chadali" && !s.Reaction && s.Owner == "Chadali").ToArray();
         var sittings = own.Where(s => s.Id.StartsWith(W, StringComparison.Ordinal) || s.Id.StartsWith(F, StringComparison.Ordinal)
-                                      || s.Id.StartsWith(S, StringComparison.Ordinal)).ToArray();
+                                      || s.Id.StartsWith(S, StringComparison.Ordinal) || s.Id.StartsWith(H, StringComparison.Ordinal)).ToArray();
         Choice Choice(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];
         // The outcomes of a walk that took the named choice of the named node.
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
@@ -203,7 +204,7 @@ internal static class ChadaliTricksterTests
         // The courtship: every sitting reachable, the question only after the wager, the night only after the commit.
         foreach (var sitting in sittings)
             check(sitting.Optional && sitting.Requires.Contains("trickster.ever"), "A sitting is not an optional Trickster-path beat: " + sitting.Id);
-        check(sittings.Length >= 34, "The wagers are missing sittings.");
+        check(sittings.Length >= 44, "The wagers are missing sittings.");
         check(wager.Requires.Contains(W + "so_gloomy") && wager.Requires.Contains(W + "a_free_space"), "The real wager does not wait for the gloom and the dream.");
         check(night.Requires.Contains("chadali.committed") && !Rules.Available(story, night, Later(story, ready, 24)),
             "The honey night opens before the commit.");
@@ -213,7 +214,9 @@ internal static class ChadaliTricksterTests
         foreach (var id in new[] { W + "the_recipe", W + "born_lucky", W + "her_worshippers", W + "a_lucky_charm", W + "the_old_fellow",
                                    W + "just_joking", W + "odious_questions", W + "knucklebones", W + "a_free_space", W + "so_gloomy",
                                    W + "the_real_wager", S + "what_you_said", S + "a_dull_future", S + "an_interesting_way",
-                                   S + "a_drinking_song", S + "a_parcel_for_the_shrine", S + "two_patrons" })
+                                   S + "a_drinking_song", S + "a_parcel_for_the_shrine", S + "two_patrons", H + "make_some_stronger",
+                                   H + "an_unlucky_day", H + "our_new_friend", H + "who_brought_you", H + "a_cookie_for_the_enemy",
+                                   H + "not_today", H + "a_lucky_number" })
             check(Reaches(courting3, id, 3), "Sitting unreachable in Chapter 3: " + id);
         check(Reaches(courting3, W + "loaded_dice", 3), "The hidden cheat is never caught.");
         var old = Sc(W + "the_old_fellow");
@@ -223,12 +226,12 @@ internal static class ChadaliTricksterTests
         var chapterFive = World(story, 5, "trickster.ever", "chadali.started", "council.cauldron_given", "chadali.fair_proposed",
             "chadali.bows_for_nocticula", "chadali.worthless_essence", "chadali.needle_hurt", "chadali.pressed_on_essence");
         foreach (var id in new[] { F + "will_it_hurt", F + "a_great_big_fair", F + "matching_ribbons", F + "worthless",
-                                   F + "sharp_needles", S + "we_are_friends_right" })
+                                   F + "sharp_needles", S + "we_are_friends_right", H + "pretend_we_never_met" })
             check(Reaches(chapterFive, id), "Sitting unreachable in Chapter 5: " + id);
         var committed5 = World(story, 5, "trickster.ever", "chadali.started", "chadali.committed", W + "the_real_wager", W + "cobblehoof_left_cursed");
         foreach (var id in new[] { F + "honey", F + "burnt_edges", F + "rigged", F + "the_meadows", F + "a_yellow_ribbon", F + "sharing",
                                    F + "paid_back", S + "what_chance_wishes", S + "you_bet_with_people", S + "the_old_fellow_again",
-                                   S + "the_last_evening" })
+                                   S + "the_last_evening", H + "for_luck", H + "the_seat_beside_her" })
             check(Reaches(committed5, id), "Post-commit sitting unreachable: " + id);
 
         // Reactions: exactly Eritrice and Ember, behind their guards; Eritrice's own Chadali reaction honours her return.
