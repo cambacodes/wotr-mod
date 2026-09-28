@@ -1163,7 +1163,20 @@ report("areelu.trickster.report.participation", "The report: participation", [
         c("Continue", "morning_after")),
     nar("morning_after", '''{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}
 {n}"The door," she said, when the Commander pointed out that there was now only one room and no hallway, "was a control. The control has failed. I am told that happens, in the best experiments."{/n}
-{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. "They are not my concern," she said, when the Commander asked. "And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you." She did not raise it again, and she did not pretend not to have read the letters.{/n}'''),
+{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. "They are not my concern," she said, when the Commander asked. "And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you." She did not raise it again, and she did not pretend not to have read the letters.{/n}''',
+        c("Continue"),
+        c("[A letter arrives, sealed in black wax that smells of night-blooming flowers.]", "noct", requires=("noct.complete",))),
+    nar("noct", '''{n}It was from the Lady in Shadow, who had once let Areelu Vorlesh walk through her palace in Alushinyrra and had never forgiven herself for the courtesy. It was addressed to the Commander, and it was one line long: "I hear you keep my former guest in your bed. Explain, or I shall come and see for myself."{/n}
+{n}Areelu read it over the Commander's shoulder, since she read everything. "She will come," she said. "She always does what she threatens; it is the only honest thing about her."{/n}''',
+        c("[Answer the Queen yourself, and tell her nothing.]", "noct_nothing"),
+        c("[Let Areelu answer her.]", "noct_areelu"),
+        c("[Invite the Queen to come and see.]", "noct_invite")),
+    nar("noct_nothing", '''{n}The Commander wrote back three words, which were a joke, and sealed them in plain wax.{/n}
+{n}The Queen of Shadows did not come. She sent, instead, a chair: black, very beautiful, far too large for the room, with a note pinned to it that said only "Mine." Areelu measured it, found it an inch taller than her own, and sat in it for the rest of the winter out of spite. Neither woman ever mentioned the other again in the Commander's hearing, which the Commander was wise enough to count as peace.{/n}'''),
+    nar("noct_areelu", '''{n}Areelu wrote the answer herself, at length, in a hand the Commander had never seen her use: formal, Abyssal, and very old.{/n}
+{n}The Commander was not allowed to read it. The reply, when it came, was addressed to Areelu and not to the Commander, and it made her laugh aloud for the first time that year. "We have come to an arrangement," she said. "It is none of your business. You will find it very expensive." It was. The Commander paid it, in favours, for years, and never once learned what either of them had got.{/n}'''),
+    nar("noct_invite", '''{n}The Lady in Shadow came, as promised, on the first moonless night, and stood in the Commander's doorway looking at the Architect of the Worldwound at the Commander's desk.{/n}
+{n}Nobody drew a weapon. Nobody said a pleasant word. The two of them talked until dawn in a language that made the candles gutter, and when the Queen left she kissed the Commander on the mouth in front of Areelu, deliberately, and Areelu wrote it down, deliberately, and underlined it. "An experiment with two observers," she said afterwards, "is more expensive, and more accurate. I will tolerate it. Tell her to knock."{/n}'''),
     nar("closed", '''{n}The Commander closed the door gently between them.{/n}
 {n}Through the wood, after a long moment, came a dry sound that might have been a laugh. "Subject declined," said Areelu Vorlesh. "Noted." Her footsteps went back across the hall.{/n}
 {n}She did not knock again that winter, and she did not seem, in the mornings, to hold it against anyone. She only wrote more.{/n}

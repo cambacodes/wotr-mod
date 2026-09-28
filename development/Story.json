@@ -178737,6 +178737,96 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[A letter arrives, sealed in black wax that smells of night-blooming flowers.]",
+              "Next": "noct",
+              "Set": [],
+              "Requires": [
+                "noct.complete"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "noct",
+          "Speaker": "Narrator",
+          "Text": "{n}It was from the Lady in Shadow, who had once let Areelu Vorlesh walk through her palace in Alushinyrra and had never forgiven herself for the courtesy. It was addressed to the Commander, and it was one line long: \"I hear you keep my former guest in your bed. Explain, or I shall come and see for myself.\"{/n}\n{n}Areelu read it over the Commander's shoulder, since she read everything. \"She will come,\" she said. \"She always does what she threatens; it is the only honest thing about her.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Answer the Queen yourself, and tell her nothing.]",
+              "Next": "noct_nothing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let Areelu answer her.]",
+              "Next": "noct_areelu",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Invite the Queen to come and see.]",
+              "Next": "noct_invite",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "noct_nothing",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander wrote back three words, which were a joke, and sealed them in plain wax.{/n}\n{n}The Queen of Shadows did not come. She sent, instead, a chair: black, very beautiful, far too large for the room, with a note pinned to it that said only \"Mine.\" Areelu measured it, found it an inch taller than her own, and sat in it for the rest of the winter out of spite. Neither woman ever mentioned the other again in the Commander's hearing, which the Commander was wise enough to count as peace.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "noct_areelu",
+          "Speaker": "Narrator",
+          "Text": "{n}Areelu wrote the answer herself, at length, in a hand the Commander had never seen her use: formal, Abyssal, and very old.{/n}\n{n}The Commander was not allowed to read it. The reply, when it came, was addressed to Areelu and not to the Commander, and it made her laugh aloud for the first time that year. \"We have come to an arrangement,\" she said. \"It is none of your business. You will find it very expensive.\" It was. The Commander paid it, in favours, for years, and never once learned what either of them had got.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "noct_invite",
+          "Speaker": "Narrator",
+          "Text": "{n}The Lady in Shadow came, as promised, on the first moonless night, and stood in the Commander's doorway looking at the Architect of the Worldwound at the Commander's desk.{/n}\n{n}Nobody drew a weapon. Nobody said a pleasant word. The two of them talked until dawn in a language that made the candles gutter, and when the Queen left she kissed the Commander on the mouth in front of Areelu, deliberately, and Areelu wrote it down, deliberately, and underlined it. \"An experiment with two observers,\" she said afterwards, \"is more expensive, and more accurate. I will tolerate it. Tell her to knock.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Areelu"
