@@ -204,10 +204,10 @@ SCENES.append(scene(P + "react.baphomet", "The collateral", "Baphomet", 5, '"Abo
    AnswerLists=[BAPH_LIST], NativeReturnCue=BAPH_RETURN, TricksterDevice=True, TricksterState="minagho_dead"))
 
 # 5.3 Dead return. The servants kept their word to the letter; the knife is hers, the palm is the Commander's.
-WAKE = '''{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and closes, and her chest moves.{/n}
+WAKE = '''{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and dries, and stays; and her chest moves.{/n}
 "...You." {n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} "I died cursing you, and I wake up at your door, owing you. Is that the joke? Is *that* your idea of funny?"
 "He will smell this on you. Every seal he owns will. You have made yourself his, you idiot, and for what? For me?" {n}Her lips peel back from her teeth.{/n} "I will find the flaw in this. And when I do, I will decide whether you were worth the blood."'''
-WAKE_BRANDED = '''{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and closes, and her chest moves.{/n}
+WAKE_BRANDED = '''{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and dries, and stays; and her chest moves.{/n}
 "...You." {n}She finds the fresh seal on your other hand before she finds her own breath.{/n} "He branded you *twice*? For a corpse he had already thrown away? You are the stupidest mortal I have ever owed."
 {n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} "He will smell this on you. Every seal he owns will. I will find the flaw in this. And when I do, I will decide whether you were worth the blood."'''
 WAKE_VARIANTS = [
@@ -275,7 +275,7 @@ SPARED_TERMS = mg("terms", '''"What kind of idiot lets their enemy slip away? An
     c('"Because it\'s my name on the brand now. Kill me, and you\'re bleeding again by supper."', flags=(MIN_IN, STARTED)),
     c('[Intimidate] "Because I\'d come back. Ask around. I do that."', flags=(MIN_IN, STARTED), alignment=("Chaotic", 1)),
     c('"Chivarro is on the quartermaster\'s bench. Give her the reason."', requires=(CH_IN,), flags=(MIN_IN, STARTED, REUNITED)),
-    c('"No reason. Go, and stay unbranded."', flags=(DECL_M,)))
+    c('"No reason. Go, and keep your face dry."', flags=(DECL_M,)))
 physical(P + "spared.brand", "It stopped bleeding", "Minagho", PRES_SPARED, MIN_UNIT, [
     *varied("start", mg, '''{n}She has taken one of the crusade's daggers off the quartermaster's rack and is sitting on a crate with it across her knees. Nobody saw her come through Drezen. That is the point.{/n}
 "It stopped. The moment you opened your mouth, it stopped, and it has not bled since. What did you do?"''',
@@ -288,7 +288,7 @@ letter(P + "spared.brand_letter", "It stopped bleeding", [
     mg("start", '''{n}The note is pinned to your pillow with one of your own daggers. There is no blood on it. That is the point of the note.{/n}
 "It stopped. What did you do? I could buy my life back with yours, Golarian. Give me one reason I shouldn't, and give it to my face."''',
        c('"Because it\'s my name on the brand now. Come and see."', flags=(MIN_IN, STARTED, DEBT)),
-       c('"No reason. Stay away, and stay unbranded."', flags=(DECL_M,)))],
+       c('"No reason. Stay away, and keep your face dry."', flags=(DECL_M,)))],
    requires=("trickster.ever", "minagho.spared.latched", PRIMED, PRES_SPARED + ".failed"),
    forbids=("minagho.dead", DECL_M, P + "spared.brand"), delay=96, TricksterDevice=True, TricksterState="minagho_alive")
 
@@ -448,7 +448,7 @@ letter(P + "after.who_keeps_the_house", "Who keeps the house", varied("start", m
 # 5.4 The commit: their terms, her refusal on every branch, and the heat to the cut.
 PAIR_THRESHOLD = nar("threshold", '''{n}They take you up to your own quarters between them, one on each arm, arguing across you the whole way about which of them the stairs were built for.{/n}
 {n}At the door Chivarro stops arguing. She unbuckles your sword belt without looking at it, the way a woman who has undressed a thousand guests knows every buckle ever forged. Minagho is slower and less kind; she drags her nails down the seam of your shirt and watches your face instead of her hands, learning where you flinch. Two mouths, one warm and one fever-hot, and somewhere between them the bleeding palm is lifted and kissed, and licked clean, and pressed flat against a bare hip that is not yours.{/n}
-{n}"Our terms," Chivarro says against your throat. "Say it again." You say it again. Minagho laughs, low and ugly and delighted, and pulls you both down onto the bed.{/n}''',
+{n}"I have sold ten thousand nights, honey," Chivarro says against your throat, in the voice of a woman closing on a price she means to get. "Every one of them for someone else. This one I am taking for myself, and I intend to get my money's worth, so do not you dare be ordinary." Then, lower: "Our terms. Say it again." You say it again. Minagho laughs, low and ugly and delighted, and pulls you both down onto the bed.{/n}''',
     c("Continue"))
 COMMIT_FORBIDS = (CLOSED, COMPLETE, DECLINED, KEPT, *CHAIN_FORBIDS)
 COMMIT_NODES = [
@@ -518,21 +518,21 @@ ALONE_MIN_NODES = [
        c('"Not that price."', "refuse")),
     mg("refuse", '''"Then ask me when it scars, Golarian. Or do not ask at all."''',
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,)),
-       c('"Then go. Unbranded."', flags=(CLOSED,))),
+       c('"Then go. Dry."', flags=(CLOSED,))),
     nar("threshold", '''{n}She walks you back to your quarters as though she were the one escorting a prisoner, one hand fisted in the back of your collar. Inside she does not bother with the lamp.{/n}
 {n}She finds the bleeding palm in the dark and holds it against her mouth, and you feel her smile against the cut before you feel her teeth. "Mine," she says, "for tonight. His, every morning after." Then she pushes you back against the door, hard enough to rattle the bar, and does not let go.{/n}''',
         c("Continue")),
 ]
 ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead.latched"]]
 ALONE_MIN_FORBIDS = (REUNITED, RET_C, CH_IN, CLOSED, COMPLETE, DECLINED)
-physical(P + "alone.minagho", "One lilitu, unbranded", "Minagho", PRES_MIN, MIN_UNIT, ALONE_MIN_NODES,
+physical(P + "alone.minagho", "One lilitu, dry", "Minagho", PRES_MIN, MIN_UNIT, ALONE_MIN_NODES,
          requires=("trickster.ever", MIN_IN, RET_M), RequiresAnyGroups=ALONE_MIN_GATE, forbids=ALONE_MIN_FORBIDS, delay=96,
          TricksterDevice=True, TricksterState="chivarro_dead")
-physical(P + "alone.minagho_spared", "One lilitu, unbranded", "Minagho", PRES_SPARED, MIN_UNIT, copy.deepcopy(ALONE_MIN_NODES),
+physical(P + "alone.minagho_spared", "One lilitu, dry", "Minagho", PRES_SPARED, MIN_UNIT, copy.deepcopy(ALONE_MIN_NODES),
          requires=("trickster.ever", MIN_IN, "minagho.spared.latched"), RequiresAnyGroups=ALONE_MIN_GATE,
          forbids=(*ALONE_MIN_FORBIDS, "minagho.dead", P + "alone.minagho"), delay=96,
          TricksterDevice=True, TricksterState="chivarro_dead")
-letter(P + "alone.minagho_letter", "One lilitu, unbranded", [
+letter(P + "alone.minagho_letter", "One lilitu, dry", [
     mg("start", '''"Stay, you said. For a mortal who owns my debt and bleeds for it every morning." {n}The hand is hard and very straight.{/n} "My price: you never bargain for me again. Not with him, not with anyone."''',
        c('"Your price."', flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,)))],
@@ -621,7 +621,7 @@ page(P + "epilogue.chivarro", "Rent", [
                       requires=(P + "morning_coin",))))],
     requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_chivarro"))
 page(P + "epilogue.minagho", "His, every morning", [
-    nar("end", '''{n}Minagho stayed in Drezen, unbranded, and kept the Commander's debt the way other women keep a lover's letters: close, and bitterly, and read over and over. Nobody bargained for her again. She saw to that.{/n}''',
+    nar("end", '''{n}Minagho stayed in Drezen with the Goat's mark still on her brow, dry for the first time since Kenabres, and kept the Commander's debt the way other women keep a lover's letters: close, and bitterly, and read over and over. Nobody bargained for her again. She saw to that.{/n}''',
         paragraphs=(PALM_P, KNELT_P,
                     p("{n}She never forgave the house that wanted too much for Chivarro. Some nights she went down to the Lower City and made it pay the difference.{/n}",
                       requires=("chivarro.dead.latched",), forbids=(RET_C,)),

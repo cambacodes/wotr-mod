@@ -150437,7 +150437,7 @@
         {
           "Id": "wake",
           "Speaker": "Minagho",
-          "Text": "{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and closes, and her chest moves.{/n}\n\"...You.\" {n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} \"I died cursing you, and I wake up at your door, owing you. Is that the joke? Is *that* your idea of funny?\"\n\"He will smell this on you. Every seal he owns will. You have made yourself his, you idiot, and for what? For me?\" {n}Her lips peel back from her teeth.{/n} \"I will find the flaw in this. And when I do, I will decide whether you were worth the blood.\"",
+          "Text": "{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and dries, and stays; and her chest moves.{/n}\n\"...You.\" {n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} \"I died cursing you, and I wake up at your door, owing you. Is that the joke? Is *that* your idea of funny?\"\n\"He will smell this on you. Every seal he owns will. You have made yourself his, you idiot, and for what? For me?\" {n}Her lips peel back from her teeth.{/n} \"I will find the flaw in this. And when I do, I will decide whether you were worth the blood.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -150952,7 +150952,7 @@
         {
           "Id": "wake",
           "Speaker": "Minagho",
-          "Text": "{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and closes, and her chest moves.{/n}\n\"...You.\" {n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} \"I died cursing you, and I wake up at your door, owing you. Is that the joke? Is *that* your idea of funny?\"\n\"He will smell this on you. Every seal he owns will. You have made yourself his, you idiot, and for what? For me?\" {n}Her lips peel back from her teeth.{/n} \"I will find the flaw in this. And when I do, I will decide whether you were worth the blood.\"",
+          "Text": "{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and dries, and stays; and her chest moves.{/n}\n\"...You.\" {n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} \"I died cursing you, and I wake up at your door, owing you. Is that the joke? Is *that* your idea of funny?\"\n\"He will smell this on you. Every seal he owns will. You have made yourself his, you idiot, and for what? For me?\" {n}Her lips peel back from her teeth.{/n} \"I will find the flaw in this. And when I do, I will decide whether you were worth the blood.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -151545,7 +151545,7 @@
         {
           "Id": "wake",
           "Speaker": "Minagho",
-          "Text": "{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and closes, and her chest moves.{/n}\n\"...You.\" {n}She finds the fresh seal on your other hand before she finds her own breath.{/n} \"He branded you *twice*? For a corpse he had already thrown away? You are the stupidest mortal I have ever owed.\"\n{n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} \"He will smell this on you. Every seal he owns will. I will find the flaw in this. And when I do, I will decide whether you were worth the blood.\"",
+          "Text": "{n}You close her fingers around the hilt and draw it across your palm. Technically, she did it. The mark on her face drinks, and dries, and stays; and her chest moves.{/n}\n\"...You.\" {n}She finds the fresh seal on your other hand before she finds her own breath.{/n} \"He branded you *twice*? For a corpse he had already thrown away? You are the stupidest mortal I have ever owed.\"\n{n}She licks your blood from her own fingers, slowly, as if tasting a vintage.{/n} \"He will smell this on you. Every seal he owns will. I will find the flaw in this. And when I do, I will decide whether you were worth the blood.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -152174,7 +152174,7 @@
               "Abort": false
             },
             {
-              "Text": "\"No reason. Go, and stay unbranded.\"",
+              "Text": "\"No reason. Go, and keep your face dry.\"",
               "Next": null,
               "Set": [
                 "minagho_chivarro.trickster.declined_minagho"
@@ -152241,7 +152241,7 @@
               "Abort": false
             },
             {
-              "Text": "\"No reason. Stay away, and stay unbranded.\"",
+              "Text": "\"No reason. Stay away, and keep your face dry.\"",
               "Next": null,
               "Set": [
                 "minagho_chivarro.trickster.declined_minagho"
@@ -154118,7 +154118,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}They take you up to your own quarters between them, one on each arm, arguing across you the whole way about which of them the stairs were built for.{/n}\n{n}At the door Chivarro stops arguing. She unbuckles your sword belt without looking at it, the way a woman who has undressed a thousand guests knows every buckle ever forged. Minagho is slower and less kind; she drags her nails down the seam of your shirt and watches your face instead of her hands, learning where you flinch. Two mouths, one warm and one fever-hot, and somewhere between them the bleeding palm is lifted and kissed, and licked clean, and pressed flat against a bare hip that is not yours.{/n}\n{n}\"Our terms,\" Chivarro says against your throat. \"Say it again.\" You say it again. Minagho laughs, low and ugly and delighted, and pulls you both down onto the bed.{/n}",
+          "Text": "{n}They take you up to your own quarters between them, one on each arm, arguing across you the whole way about which of them the stairs were built for.{/n}\n{n}At the door Chivarro stops arguing. She unbuckles your sword belt without looking at it, the way a woman who has undressed a thousand guests knows every buckle ever forged. Minagho is slower and less kind; she drags her nails down the seam of your shirt and watches your face instead of her hands, learning where you flinch. Two mouths, one warm and one fever-hot, and somewhere between them the bleeding palm is lifted and kissed, and licked clean, and pressed flat against a bare hip that is not yours.{/n}\n{n}\"I have sold ten thousand nights, honey,\" Chivarro says against your throat, in the voice of a woman closing on a price she means to get. \"Every one of them for someone else. This one I am taking for myself, and I intend to get my money's worth, so do not you dare be ordinary.\" Then, lower: \"Our terms. Say it again.\" You say it again. Minagho laughs, low and ugly and delighted, and pulls you both down onto the bed.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -154458,7 +154458,7 @@
     },
     {
       "Id": "minagho_chivarro.trickster.alone.minagho",
-      "Title": "One lilitu, unbranded",
+      "Title": "One lilitu, dry",
       "Owner": "Minagho",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -154537,7 +154537,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Then go. Unbranded.\"",
+              "Text": "\"Then go. Dry.\"",
               "Next": null,
               "Set": [
                 "minachiv.closed"
@@ -154602,7 +154602,7 @@
     },
     {
       "Id": "minagho_chivarro.trickster.alone.minagho_spared",
-      "Title": "One lilitu, unbranded",
+      "Title": "One lilitu, dry",
       "Owner": "Minagho",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -154681,7 +154681,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Then go. Unbranded.\"",
+              "Text": "\"Then go. Dry.\"",
               "Next": null,
               "Set": [
                 "minachiv.closed"
@@ -154748,7 +154748,7 @@
     },
     {
       "Id": "minagho_chivarro.trickster.alone.minagho_letter",
-      "Title": "One lilitu, unbranded",
+      "Title": "One lilitu, dry",
       "Owner": "Memory",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -155373,7 +155373,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Minagho stayed in Drezen, unbranded, and kept the Commander's debt the way other women keep a lover's letters: close, and bitterly, and read over and over. Nobody bargained for her again. She saw to that.{/n}",
+          "Text": "{n}Minagho stayed in Drezen with the Goat's mark still on her brow, dry for the first time since Kenabres, and kept the Commander's debt the way other women keep a lover's letters: close, and bitterly, and read over and over. Nobody bargained for her again. She saw to that.{/n}",
           "Choices": [
             {
               "Text": "Continue",
