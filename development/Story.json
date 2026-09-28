@@ -11256,7 +11256,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_unsettled",
@@ -11371,7 +11375,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_grieving",
@@ -11485,7 +11493,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_unfinished_work",
@@ -11598,7 +11610,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_changed",
@@ -11710,7 +11726,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_ascended",
@@ -11821,7 +11841,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_apart",
@@ -11857,7 +11881,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_unfinished",
@@ -11895,7 +11922,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "seelah"
+      "Relationship": "seelah",
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "seelah.ending_aeon",
@@ -11972,7 +12003,9 @@
         "trickster",
         "seelah_dead"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "trickster.ever"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "seelah",
@@ -12082,7 +12115,9 @@
       "Requires": [
         "seelah.revived"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "seelah.trickster.returned"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "seelah",
@@ -13302,7 +13337,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -13534,7 +13571,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -13907,7 +13946,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -14265,7 +14306,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -40244,7 +40287,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -40484,7 +40529,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -40791,7 +40838,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -41107,7 +41156,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -41352,7 +41403,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -41638,7 +41691,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -45352,7 +45407,9 @@
         "seelah.letter_burned"
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -45877,7 +45934,9 @@
         5
       ],
       "ForbidOverrides": {
-        "seelah.farewell": "seelah.catchup_requested"
+        "seelah.farewell": "seelah.catchup_requested",
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
       }
     },
     {
@@ -45954,7 +46013,10 @@
       "Chapters": [
         5
       ],
-      "ForbidOverrides": {}
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "kiana.another_page",
@@ -143724,7 +143786,11 @@
       "Reaction": true,
       "AnswerLists": [
         "417fa384f3250634bb71859fbc913453"
-      ]
+      ],
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "irabeth.trickster.dead.react_galfrey",
@@ -143806,7 +143872,11 @@
       "Reaction": true,
       "AnswerLists": [
         "417fa384f3250634bb71859fbc913453"
-      ]
+      ],
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "anevia.trickster.gone.setup",
@@ -165519,6 +165589,2089 @@
       "AnswerLists": [
         "589d83230bbbfd04bb1220ee4fef1ce1"
       ]
+    },
+    {
+      "Id": "seelah.trickster.in_party.lift_lesson",
+      "Title": "One lift, never on anyone who needs it",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You told me you were a thief once. Prove it. Teach me something.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Seelah",
+          "Text": "{n}Seelah looks at you for a long moment, the way she looks at a stranger's hands in a crowded market.{/n}\n\"A paladin of Iomedae, teaching the Commander to pick pockets. The Inheritor is going to have words with me.\"\n{n}She grins anyway, and it is not a paladin's grin.{/n}\n\"Fine. One lift. And you swear it now, on whatever you swear on: never on anyone who needs what's in the purse. I learned that one too late.\"",
+          "Choices": [
+            {
+              "Text": "[Let her show you] \"Show me. Slowly. I want to see where the hand goes.\"",
+              "Next": "lesson",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "lesson",
+          "Speaker": "Narrator",
+          "Text": "{n}She walks past you, stumbles, catches your arm to steady herself and says she is so sorry, what a clumsy fool, is your shoulder all right? Then she holds up your purse between two fingers.{/n}\n{n}You never felt it go.{/n}\n\"The trick's not the hand,\" she says, and gives it back. \"It's the apology. Everybody watches your face while you're saying sorry. Nobody watches your fingers.\"",
+          "Choices": [
+            {
+              "Text": "[Practise on her] \"Again. On you, this time.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 15,
+                "Success": "caught_it",
+                "Failure": "caught_you",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "caught_it",
+          "Speaker": "Narrator",
+          "Text": "{n}You bump her shoulder and apologise. You mean the apology, a little, which may be the point. You come away with one of her coppers.{/n}\n{n}Seelah turns out the purse, counts, and stares at you.{/n}\n\"...Huh. You're a natural. That isn't a compliment, Commander. Keep it where I can see it.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the coin] \"Finders keepers.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.lift_lesson",
+                "seelah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "caught_you",
+          "Speaker": "Narrator",
+          "Text": "{n}She catches your wrist before your fingers are halfway to the strings, and holds it there, not hard.{/n}\n\"Too slow. And you looked at the purse. Never look at the purse.\" Her thumb taps your knuckle once. \"Do it like you're sorry. You'll get it. Some other day.\"",
+          "Choices": [
+            {
+              "Text": "[Give her back her own coin, with one of yours] \"Two for one. For the lesson.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.lift_lesson",
+                "seelah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah_dead",
+        "seelah_gone",
+        "seelah.trickster.lift_lesson"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "seelah",
+      "AnswerLists": [
+        "417fa384f3250634bb71859fbc913453"
+      ],
+      "Chapters": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead.pickpocket",
+      "Title": "The dead thief's purse",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "bier",
+          "Speaker": "Narrator",
+          "Text": "{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}\n\"Before she stands trial, Commander. After that, nothing comes back. That is the one rule every priest agrees on.\"\n{n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "strings",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "fumble",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "strings",
+          "Speaker": "Narrator",
+          "Text": "{n}You untie them the way she taught you: while apologising to her. The chaplain watches your face. Nobody watches your fingers.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "coin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "fumble",
+          "Speaker": "Narrator",
+          "Text": "{n}You fumble the strings. They were never meant to be opened by anyone else. The chaplain pretends not to see.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "coin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "coin",
+          "Speaker": "Narrator",
+          "Text": "{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough.{/n}\n{n}At the bottom of the purse is one coin that is not a coin. It is cold, and too heavy, and stamped with nothing at all. It is the one thing in the purse she did not earn.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
+              "Next": "pocketed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Leave the purse tied] \"Not like this.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "pocketed",
+          "Speaker": "Narrator",
+          "Text": "{n}You pocket it before the chaplain looks up. It lies against your ribs like a stone from a winter river.{/n}\n{n}The chaplain frowns at the bowl, then at the body, then at you.{/n}\n\"Strange. It is as if she has nothing to present at the gate. As if someone has her death.\" He does not ask who. \"Then she has not stood trial, and I may begin. But the bowl is short, Commander.\"",
+          "Choices": [
+            {
+              "Text": "[Put a diamond from your own coat in the bowl] \"Now it isn't.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.returned",
+                "seelah.revived",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.started"
+              ],
+              "Requires": [
+                "seelah.diamond_held"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Revive": "seelah",
+              "RemoveItem": "6a7cdeb14fc6ef44580cf639c5cdc113"
+            },
+            {
+              "Text": "[Give him your word for the rest] \"The crusade will make it good. Begin.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.returned",
+                "seelah.revived",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.cost.chaplains_word",
+                "seelah.started"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "seelah.diamond_held"
+              ],
+              "Abort": false,
+              "Revive": "seelah",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "seelah_dead",
+        "seelah.dead.latched",
+        "seelah.finally_dead"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.trickster.returned",
+        "seelah_gone"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dead",
+      "Recovery": "seelah",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead.wakes",
+      "Title": "Whatever you took",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Seelah",
+          "Text": "\"You robbed my corpse.\"\n{n}She is sitting on the edge of the chapel cot in her shirt, turning her empty purse inside out. She laughs once, badly.{/n}\n\"The worst part is I'd have done the same. Every copper I had, Commander. The gold piece was for Elan's ring. Did She let me go, or did you buy me?\"",
+          "Choices": [
+            {
+              "Text": "\"The chaplain did the work. Your purse paid for it. Mostly.\"",
+              "Next": "coin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.cost.chaplains_word"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"The chaplain did the work. His chapel paid for most of it, on my word.\"",
+              "Next": "coin_word",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.cost.chaplains_word"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "coin_word",
+          "Speaker": "Seelah",
+          "Text": "\"On your word.\" She closes her eyes. \"So the whole chapel knows the Commander robbed a dead paladin and then asked the priests for credit. Wonderful. I'm going to be hearing about that at every mass until the Wound shuts.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "coin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "coin",
+          "Speaker": "Seelah",
+          "Text": "\"There's something else gone. I can feel where it was, the way you feel a tooth that's been pulled.\" She presses a hand flat under her collarbone. \"It isn't money. You're the one who took it.\"\n{n}She holds out her palm, and it is steady.{/n}\n\"That's my price for getting up. Give it back. Whatever it is. I want to know what it looks like.\"",
+          "Choices": [
+            {
+              "Text": "[Put the coin in her hand] \"Here. It's yours. I only borrowed it.\"",
+              "Next": "given",
+              "Set": [
+                "seelah.trickster.woke",
+                "seelah.trickster.death_returned"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep it] \"Not yet.\"",
+              "Next": "kept",
+              "Set": [
+                "seelah.trickster.woke",
+                "seelah.trickster.cost.keeps_it"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "given",
+          "Speaker": "Seelah",
+          "Text": "{n}She turns it over. It is stamped with nothing, on either side. She weighs it for a long time.{/n}\n\"Cold,\" she says. \"I thought it would be warmer.\"\n{n}She puts it in her purse and ties the strings badly, on purpose.{/n}\n\"Acemi never got her helm back. I'll get this one right. Thank you, Commander. I'm still angry.\"",
+          "Choices": [
+            {
+              "Text": "\"Be angry. You have time for it now.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Seelah",
+          "Text": "{n}Her hand stays out a moment longer. Then she closes it, slowly, around nothing.{/n}\n\"Then I'll steal it back.\" She says it lightly. She does not mean it lightly. \"Fair warning, Commander. I was better at this than you, and I've had a lot of practice being patient.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll keep my coat buttoned.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "seelah.revived",
+        "seelah.trickster.returned"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.trickster.woke",
+        "seelah_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "seelah",
+      "AnswerLists": [
+        "417fa384f3250634bb71859fbc913453"
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead.pickpocket_effects",
+      "Title": "Her effects, without her",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The body could not be brought back to Drezen. It lies in a field hospital on the Sarkorian border, under a sheet, in a row. Her effects came back without it, in a sack with her name chalked on the side.{/n}\n{n}A whetstone. A prayer book with a stolen library's stamp inside the cover, the stamp half scraped away and then, it seems, left alone on purpose. And a purse, tied badly.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "purse",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "purse",
+          "Speaker": "Narrator",
+          "Text": "{n}At the bottom of the purse is one coin that is not a coin: cold, and too heavy, and stamped with nothing.{/n}\n{n}A rider can reach the border hospital before the next dawn. The chaplain there has a bowl and nothing to put in it, and one rule: before she stands trial, or never.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
+              "Next": "rider",
+              "Set": [
+                "seelah.trickster.returned",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.correspondent",
+                "seelah.started"
+              ],
+              "Requires": [
+                "seelah.diamond_held"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "RemoveItem": "6a7cdeb14fc6ef44580cf639c5cdc113"
+            },
+            {
+              "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
+              "Next": "rider_word",
+              "Set": [
+                "seelah.trickster.returned",
+                "seelah.trickster.cost.holds_her_death",
+                "seelah.trickster.correspondent",
+                "seelah.trickster.cost.chaplains_word",
+                "seelah.started"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "seelah.diamond_held"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Leave the purse tied] \"Not like this.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "rider",
+          "Speaker": "Narrator",
+          "Text": "{n}You send the rider south with her savings and a diamond from your own coat. You keep the coin.{/n}\n{n}Four days later a note comes back in the chaplain's hand: \"She sat up and asked who had been in her purse. I told her. She said a word I will not write. She will come to Drezen when she can walk that far.\"{/n}",
+          "Choices": [
+            {
+              "Text": "\"Tell her I'll be at Fye's.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "rider_word",
+          "Speaker": "Narrator",
+          "Text": "{n}You send the rider south with her savings and your word, sealed, that the crusade will make good the rest. You keep the coin. The chaplain there spends his hospital's reserve of diamonds on a Commander's promise, and every priest on the border hears of it by the end of the week.{/n}\n{n}Four days later a note comes back: \"She sat up and asked who had been in her purse. I told her. She will come to Drezen when she can walk that far. So will my bill.\"{/n}",
+          "Choices": [
+            {
+              "Text": "\"Pay him. Then tell her I'll be at Fye's.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "seelah_dead",
+        "seelah.dead.latched"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.finally_dead",
+        "seelah.trickster.returned"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dead_no_unit"
+    },
+    {
+      "Id": "seelah.trickster.dismissed.setup",
+      "Title": "Check your pockets",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Safe travels. Check your pockets at the gate.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Seelah hesitates, then offers you her hand, the way soldiers do when they are not sure they are allowed to embrace.{/n}\n{n}You take it. You apologise for keeping her waiting. Her transfer papers, folded into her belt, are in your coat before she lets go.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.primed",
+                "seelah.trickster.pockets_picked"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "6b81c330ca8b1324186cb02bdc8d9c54"
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.trickster.primed",
+        "seelah_dead",
+        "seelah_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "seelah",
+      "AnswerLists": [
+        "64cfedbb85f36a44cb45f568f18152f7"
+      ],
+      "NativeReturnCue": "3a2c9f56a58b5c1478746c3ebc456986",
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true,
+      "TricksterState": "dismissed"
+    },
+    {
+      "Id": "seelah.trickster.dismissed.late",
+      "Title": "A transfer on the clerk's desk",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Two days on, her transfer is still on the gate clerk's desk, waiting for a courier to the Eagle Watch. The clerk is eating his lunch over it. There is a thumbprint of grease on the seal.{/n}",
+          "Choices": [
+            {
+              "Text": "[Lift the papers the way she taught you] \"Excuse me. So sorry.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 15,
+                "Success": "lifted",
+                "Failure": "caught",
+                "CommanderOnly": true
+              },
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Lift the papers off the clerk's desk] \"Excuse me.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.lift_lesson"
+              ],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillThievery",
+                "DC": 25,
+                "Success": "lifted",
+                "Failure": "caught",
+                "CommanderOnly": true
+              },
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Let her go] \"She said goodbye. I heard her.\"",
+              "Next": "gone",
+              "Set": [
+                "seelah.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "lifted",
+          "Speaker": "Narrator",
+          "Text": "{n}You bump his elbow and apologise, and he apologises back, and you walk away with the papers. He never feels them go.{/n}\n{n}The trick's not the hand. It's the apology.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pocket them] \"Come and get them, Seelah.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.primed",
+                "seelah.trickster.cost.late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "caught",
+          "Speaker": "Narrator",
+          "Text": "{n}He feels it. He shouts. Half the gate turns in time to see the Commander of the crusade walk off with a dismissed paladin's papers under one arm, and nobody quite dares to stop you.{/n}\n{n}By evening, wherever she is, she has heard about it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Walk off with them anyway] \"Crusade business.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.primed",
+                "seelah.trickster.cost.late",
+                "seelah.trickster.cost.caught"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "gone",
+          "Speaker": "Narrator",
+          "Text": "{n}The courier comes at dusk and takes the papers north with the rest of the post. You watch him go from the wall, and you do not move your hands.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Good luck, Seelah.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "seelah_gone",
+        "seelah.gone.latched"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.trickster.primed",
+        "seelah.trickster.returned",
+        "seelah.trickster.declined",
+        "seelah_dead"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dismissed"
+    },
+    {
+      "Id": "seelah.trickster.dismissed.back_for_the_papers",
+      "Title": "You stole my trick",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She is waiting in the tavern, at the table nearest the door, with her back to the wall like a thief and her boots polished like a paladin. She does not get up.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "papers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.cost.caught"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "papers_caught",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.cost.caught"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "papers_caught",
+          "Speaker": "Seelah",
+          "Text": "\"My transfer papers. My papers, Commander. No company in Mendev will sign me without them. The clerk at the gate laughed at me for a quarter of an hour, and then he told me who'd had them.\"\n{n}She is furious, and trying very hard not to be impressed, and not managing either one properly.{/n}\n\"That's my trick. You stole my trick.\"\n\"And you got caught. In front of the whole gate. I taught you better than that. No, I didn't. That's the problem, isn't it? I never finished teaching you anything.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "papers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "papers",
+          "Speaker": "Seelah",
+          "Text": "\"You sent me away. Fine. That was yours to do, and I went. Then you made sure I couldn't go anywhere else.\" She puts one finger on the table between you. \"Why?\"",
+          "Choices": [
+            {
+              "Text": "[Hand them over] \"They're yours. So's the door.\"",
+              "Next": "handed",
+              "Set": [
+                "seelah.trickster.returned",
+                "seelah.trickster.cost.herded",
+                "seelah.trickster.correspondent",
+                "seelah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Make her take them] \"Pick my pocket for them. Old habits.\"",
+              "Next": "dared",
+              "Set": [
+                "seelah.trickster.returned",
+                "seelah.trickster.cost.herded",
+                "seelah.trickster.correspondent",
+                "seelah.trickster.dared",
+                "seelah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "handed",
+          "Speaker": "Seelah",
+          "Text": "{n}She takes them without looking at them and puts them inside her tunic, flat against her ribs, where nobody is going to get them again.{/n}\n\"The door. Right.\" She stays sitting. \"I haven't decided which way I'm going through it. That's mine too.\"",
+          "Choices": [
+            {
+              "Text": "\"I know.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "dared",
+          "Speaker": "Narrator",
+          "Text": "{n}She stands, walks round the table, stumbles, catches your arm and says she is so sorry, what a clumsy fool. The papers are in her hand before she has finished the apology. So is your purse.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dared_2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "dared_2",
+          "Speaker": "Seelah",
+          "Text": "{n}She drops the purse back in your lap.{/n}\n\"There. Now we both know I'm still better at it.\" She is almost smiling. Almost. \"Don't do that to me again, Commander. I mean it. I'll pick your pocket for fun any day you like. I will not be herded.\"",
+          "Choices": [
+            {
+              "Text": "\"Understood.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah_gone",
+        "seelah.trickster.primed"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.trickster.returned",
+        "seelah_dead"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "90481a29cc75f424b9891a55c6dcbb53",
+      "InteractionHub": "seelah.presence",
+      "TricksterDevice": true,
+      "TricksterState": "dismissed"
+    },
+    {
+      "Id": "seelah.trickster.dismissed.back_for_the_papers_letter",
+      "Title": "A note, badly folded",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}A note, folded small enough to slip into a pocket and badly enough that it wants you to know it was folded in a temper.{/n}\n\"My transfer papers are in your coat. I know it. You know it. The Inheritor knows it. Fye's is boarded up, so I can't wait for you there like a civilised thief. Send them, or I come and get them, and you won't like how. - S.\"",
+          "Choices": [
+            {
+              "Text": "[Send them back] \"Yours. Come and say thank you in person.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.returned",
+                "seelah.trickster.cost.herded",
+                "seelah.trickster.correspondent",
+                "seelah.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah_gone",
+        "seelah.trickster.primed",
+        "seelah.presence.failed"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.trickster.returned",
+        "seelah.trickster.dismissed.back_for_the_papers",
+        "seelah_dead"
+      ],
+      "DelayHours": 144,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dismissed"
+    },
+    {
+      "Id": "seelah.trickster.after.stay_or_go",
+      "Title": "Two notices",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah. What now?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She has two recruiting notices on the table in front of her, weighted with her tankard so the draught from the door cannot take them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "choice",
+          "Speaker": "Seelah",
+          "Text": "\"There's a relief company on the Drezen road that'll take a paladin with no references and a bad reputation. There's another one bound for the Sarkorian border that'll take anyone at all, and pays in turnips.\"\n{n}She turns her tankard a quarter-turn.{/n}\n\"I haven't decided. You don't get to decide for me. You get to say what you'd like, and then I'll probably do the other thing, because I'm like that.\"",
+          "Choices": [
+            {
+              "Text": "[Say you'd like her near Drezen] \"Stay close. The crusade still needs a sword it trusts. So do I.\"",
+              "Next": "folded",
+              "Set": [
+                "seelah.trickster.stay_decided",
+                "seelah.trickster.stays_near"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say she should go where she's needed] \"Go where you're needed. Write.\"",
+              "Next": "folded",
+              "Set": [
+                "seelah.trickster.stay_decided",
+                "seelah.trickster.goes_far"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "folded",
+          "Speaker": "Narrator",
+          "Text": "{n}She folds one notice and puts it in her purse. She does not show you which. The other she leaves on the table, face down, for the next fool.{/n}\n\"Thank you for saying it,\" she says. \"Now go away. I want to finish my drink without a Commander watching me decide things.\"",
+          "Choices": [
+            {
+              "Text": "\"Finish your drink.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah.trickster.returned",
+        "seelah.trickster.correspondent"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.trickster.stay_decided"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "90481a29cc75f424b9891a55c6dcbb53",
+      "InteractionHub": "seelah.presence"
+    },
+    {
+      "Id": "seelah.trickster.dismissed.commit",
+      "Title": "Not as a sword",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah. Stay a while.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Seelah",
+          "Text": "{n}The same table by the door. She has bought you a drink with money she swore she didn't have, and she pushes it across without looking at it.{/n}\n\"I was a thief because nobody ever gave me anything. I became a paladin because somebody did. And now you've stolen from me, and I'm sitting here buying you a drink.\" She spreads her hands. \"Explain that. I've been trying to all week.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "near",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.goes_far"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "far",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.goes_far"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "near",
+          "Speaker": "Seelah",
+          "Text": "\"I took the Drezen road company, by the way. Close enough to rob you on feast days.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "far",
+          "Speaker": "Seelah",
+          "Text": "\"I took the border company, by the way. So whatever you're going to say, say it like I'm leaving. Because I am.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Narrator",
+          "Text": "{n}She waits, chin on her fist, the way she waits for a mark to finish talking.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask her] \"Seelah. Stay. Not as a sword.\"",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Seelah",
+          "Text": "{n}She does not look away. She has never been good at looking away.{/n}\n\"Then say what as. Carefully, Commander. I'm listening with both ears and I've had half a drink.\"",
+          "Choices": [
+            {
+              "Text": "[Kiss her] \"Stay. Not as a sword. As you.\"",
+              "Next": "threshold",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.started",
+                "seelah.romance"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her choose] \"You know where the coat is.\"",
+              "Next": "chooses",
+              "Set": [
+                "seelah.committed"
+              ],
+              "Requires": [
+                "seelah.romance"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Be her friend] \"Then as a friend. Same coat. Same door.\"",
+              "Next": "friend",
+              "Set": [
+                "seelah.trickster.friends"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "seelah.romance"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Give her the door] \"Go and help people. Write.\"",
+              "Next": "door",
+              "Set": [
+                "seelah.trickster.friends"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what's wrong] \"You're not saying something.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.cost.holds_her_death"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask what's wrong] \"You're not saying something.\"",
+              "Next": "no_death",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.cost.holds_her_death"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "chooses",
+          "Speaker": "Seelah",
+          "Text": "{n}She looks at your coat, then at you. Then she laughs, low, and reaches across the table and takes your purse out of it without any apology at all.{/n}\n\"There. Chosen. Upstairs, Commander, before I think about it like a paladin.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and pulls you down with her onto the narrow bed.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning_near",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.goes_far"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "morning_far",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.goes_far"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "morning_near",
+          "Speaker": "Seelah",
+          "Text": "{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin.{/n}\n\"All there. I only wanted to know how much you're worth.\" She stretches until her shoulders crack. \"The Drezen road company can wait an hour. Iomedae forgive me, I'd do it again. Twice before breakfast, probably.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll count it again later.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "morning_far",
+          "Speaker": "Seelah",
+          "Text": "{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin that does not quite hold.{/n}\n\"All there.\" She looks at the window, where the road south is. \"The border company leaves at noon. I said I was leaving and I am. But I'm coming back on every leave they give me, and you're going to be here when I do, and that isn't a question.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll be here.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "friend",
+          "Speaker": "Seelah",
+          "Text": "\"As a friend.\" She tries it out. \"Yes. All right. I've had fewer of those than you'd think, and none who'd rob me for my own good.\"\n{n}She clinks her tankard against yours.{/n}\n\"Same coat. Same door. Mind I don't take the coat.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "door",
+          "Speaker": "Seelah",
+          "Text": "\"Go and help people. Write.\" She repeats it like an order she has decided to obey. \"I will. Both. The letters will be badly spelled and full of complaints about turnips.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll read every one.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "no",
+          "Speaker": "Seelah",
+          "Text": "{n}She is quiet a long time.{/n}\n\"You took my papers so I'd have to come back. And I came. That isn't the same as choosing to, Commander.\" She taps the table, once. \"I don't say yes to anyone who's had their hand in my pocket and not let me have mine in theirs. Let me choose it. Ask me again when you can stand to watch me walk out that door.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep it] \"Then I'll ask again, and I'll ask better.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "no_death",
+          "Speaker": "Seelah",
+          "Text": "{n}Her hand goes to the place under her collarbone, the way it does when she thinks nobody is watching.{/n}\n\"You've still got something of mine. In your coat. I can feel it from here.\" She is not angry. That is worse. \"I can't say yes to anyone with my death in their pocket. Give it back, or let me take it, and then ask me.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep it] \"Then I'll ask again, and I'll ask better.\"",
+              "Next": null,
+              "Set": [
+                "seelah.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah.trickster.returned",
+        "seelah.trickster.stay_decided"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.committed",
+        "seelah.trickster.declined"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "90481a29cc75f424b9891a55c6dcbb53",
+      "InteractionHub": "seelah.presence"
+    },
+    {
+      "Id": "seelah.trickster.dismissed.second_ask",
+      "Title": "My price",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah. I'm asking again. Better.\"",
+      "Nodes": [
+        {
+          "Id": "price",
+          "Speaker": "Seelah",
+          "Text": "\"Better. All right.\" She stands and comes round the table. \"Here's my price. You stand still, and I rob you. I take whatever I want out of your coat, and you don't get to know what until I'm gone.\"\n{n}She stops close enough that you can smell the tavern smoke in her hair.{/n}\n\"That's fair. That's the fairest thing that's happened between us.\"",
+          "Choices": [
+            {
+              "Text": "[Let her pick your pocket] \"Go on. Take it back. Whatever you like.\"",
+              "Next": "robbed",
+              "Set": [
+                "seelah.committed",
+                "seelah.trickster.cost.robbed_back"
+              ],
+              "Requires": [
+                "seelah.romance"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep your hand on your purse] \"No.\"",
+              "Next": "closed",
+              "Set": [
+                "seelah.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "robbed",
+          "Speaker": "Narrator",
+          "Text": "{n}You stand still. It is harder than it sounds. She takes her time, and she apologises the whole while, softly, for nothing in particular, and you do not watch her hands.{/n}\n{n}When she steps back, your coat is lighter by something. You do not know what. She is smiling.{/n}\n\"Now ask me,\" she says, and does not wait for you to finish.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}\n\"Ha. Got your belt. Old habits.\" Her breath is hot on your mouth. \"Now hold still. I'm taking the rest, and this time I'm not giving it back.\"\n{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and pulls you down with her onto the narrow bed.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning_near",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "seelah.trickster.goes_far"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "morning_far",
+              "Set": [],
+              "Requires": [
+                "seelah.trickster.goes_far"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "morning_near",
+          "Speaker": "Seelah",
+          "Text": "{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin.{/n}\n\"All there. I only wanted to know how much you're worth.\" She stretches until her shoulders crack. \"The Drezen road company can wait an hour. Iomedae forgive me, I'd do it again. Twice before breakfast, probably.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll count it again later.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "morning_far",
+          "Speaker": "Seelah",
+          "Text": "{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin that does not quite hold.{/n}\n\"All there.\" She looks at the window, where the road south is. \"The border company leaves at noon. I said I was leaving and I am. But I'm coming back on every leave they give me, and you're going to be here when I do, and that isn't a question.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll be here.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        },
+        {
+          "Id": "closed",
+          "Speaker": "Seelah",
+          "Text": "{n}She looks at your hand on your purse for a long moment.{/n}\n\"Then keep it. All of it.\" She picks up her notice and her tankard. \"Goodbye, Commander. I mean that one.\"",
+          "Choices": [
+            {
+              "Text": "\"Goodbye, Seelah.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah.trickster.declined",
+        "seelah.trickster.returned",
+        "seelah.romance"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "inhuman",
+        "seelah.committed"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "seelah",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "90481a29cc75f424b9891a55c6dcbb53",
+      "InteractionHub": "seelah.presence"
+    },
+    {
+      "Id": "seelah.trickster.epilogue.pickpocket",
+      "Title": "Whatever was in the purse",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Seelah never learned exactly what the Commander took from her at the bier, beyond every coin she had. She spent some years trying to steal it back, and a good many more pretending she had stopped.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah",
+          "Paragraphs": [
+            {
+              "Text": "She kept her death in her purse for the rest of her life, stamped with nothing, tied in badly on purpose. She showed it to exactly two people, and one of them was the Commander.",
+              "Requires": [
+                "seelah.trickster.death_returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander never did give it back. Seelah never stopped trying to take it. Every year the attempts grew more elaborate, and every year, at the end, she apologised.",
+              "Requires": [
+                "seelah.trickster.cost.keeps_it"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Drezen chapel never quite forgave the credit the Commander had asked of it. Seelah paid it off herself, a coin at a time, out of a paladin's stipend. It took her eleven years.",
+              "Requires": [
+                "seelah.trickster.cost.chaplains_word"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Of the transfer papers she said only that they had come back to her, and that she now kept them somewhere no Commander would ever look.",
+              "Requires": [
+                "seelah.trickster.cost.herded"
+              ],
+              "Forbids": [
+                "seelah.trickster.dared"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Of the transfer papers she said only that she had taken them back herself, and the Commander's purse with them, and returned the purse, which was more than the Commander had done.",
+              "Requires": [
+                "seelah.trickster.dared"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whatever she took from the Commander's coat on the night of her price, she never said. The Commander never asked. It was, by the terms of the agreement, none of their business.",
+              "Requires": [
+                "seelah.trickster.cost.robbed_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be over a tankard at Fye's: friends, with a door between them that neither ever locked.",
+              "Requires": [
+                "seelah.trickster.friends"
+              ],
+              "Forbids": [
+                "seelah.committed",
+                "seelah.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She did not come back after the night she was refused her price. Her letters stopped at the Sarkorian border.",
+              "Requires": [
+                "seelah.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.trickster.cost.holds_her_death"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah"
+    },
+    {
+      "Id": "seelah.trickster.epilogue.papers",
+      "Title": "Her papers",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Seelah kept her transfer papers inside her tunic for the rest of the war, flat against her ribs. She told anyone who asked that a Commander had once stolen them to make her come back, and that it had worked, and that she was still deciding whether to forgive it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah",
+          "Paragraphs": [
+            {
+              "Text": "Of the transfer papers she said only that they had come back to her, and that she now kept them somewhere no Commander would ever look.",
+              "Requires": [
+                "seelah.trickster.cost.herded"
+              ],
+              "Forbids": [
+                "seelah.trickster.dared"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Of the transfer papers she said only that she had taken them back herself, and the Commander's purse with them, and returned the purse, which was more than the Commander had done.",
+              "Requires": [
+                "seelah.trickster.dared"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whatever she took from the Commander's coat on the night of her price, she never said. The Commander never asked. It was, by the terms of the agreement, none of their business.",
+              "Requires": [
+                "seelah.trickster.cost.robbed_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed what they had agreed to be over a tankard at Fye's: friends, with a door between them that neither ever locked.",
+              "Requires": [
+                "seelah.trickster.friends"
+              ],
+              "Forbids": [
+                "seelah.committed",
+                "seelah.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She did not come back after the night she was refused her price. Her letters stopped at the Sarkorian border.",
+              "Requires": [
+                "seelah.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.trickster.cost.herded"
+      ],
+      "Forbids": [
+        "seelah.trickster.cost.holds_her_death"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah"
+    },
+    {
+      "Id": "seelah.trickster.epilogue.commit",
+      "Title": "Now we're even",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}After the war the Commander found a purse on the pillow one morning, tied badly on purpose, with a note inside in Seelah's hand: \"Now we're even. Ask me properly.\"{/n}\n{n}The Commander did.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah.trickster.late_committed",
+        "seelah.romance"
+      ],
+      "Forbids": [
+        "seelah.committed",
+        "seelah.closed",
+        "seelah.trickster.declined",
+        "seelah.trickster.friends"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah"
+    },
+    {
+      "Id": "seelah.trickster.epilogue.refused",
+      "Title": "An empty purse, every winter",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Seelah ran her relief company for many years. Every winter a parcel came for the Commander with nothing in it but an empty purse, tied badly. Nobody else understood it. The Commander always did.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Seelah"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah.trickster.declined"
+      ],
+      "Forbids": [
+        "seelah.committed",
+        "seelah.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah"
+    },
+    {
+      "Id": "seelah.trickster.dead.react_irabeth",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah is back.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}Irabeth puts down her pen, which is how you know she means it.{/n}\n\"You robbed a paladin's corpse, Commander. She got up. And she swore in my hearing, in the chapel, to rob you back for it.\"\n{n}She picks the pen up again.{/n}\n\"I'm going to pray about this. Then I'm going to buy her a drink and pray about that.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.revived"
+      ],
+      "Forbids": [
+        "irabeth_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead.react_sosiel",
+      "Title": "Sosiel's word",
+      "Owner": "Sosiel",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Have you seen Seelah?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Sosiel",
+          "Text": "{n}Sosiel is sketching, and he does not stop.{/n}\n\"She showed me a coin with nothing on it and asked if I'd ever seen one like it. I haven't. She said it was hers, and that she'd paid for it twice.\" He shades something. \"I believe her. I don't think I want to know what it buys.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.revived"
+      ],
+      "Forbids": [
+        "sosiel.dead",
+        "sosiel.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "AnswerLists": [
+        "129b55b8b5d50974f84f7c607d894fd0"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead_no_unit.react_irabeth",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Any word from Seelah?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "\"A letter from your paladin came across my desk. First line: 'Tell the Commander I'm counting my coins.' Second line's a list.\"\n{n}She holds it up. It is a long list.{/n}\n\"You owe her a great many coins, Commander. And something else, she says, that she won't put in writing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.trickster.correspondent",
+        "seelah.trickster.cost.holds_her_death"
+      ],
+      "Forbids": [
+        "irabeth_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dead_no_unit.react_sosiel",
+      "Title": "Sosiel's word",
+      "Owner": "Sosiel",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Have you heard from Seelah?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Sosiel",
+          "Text": "\"She wrote to me from the border hospital. She asked me to paint her a purse. Just a purse, tied badly.\"\n{n}He shows you the canvas. It is a very good purse.{/n}\n\"I didn't ask why. I'm finishing it tonight. I think it's a portrait.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.trickster.correspondent",
+        "seelah.trickster.cost.holds_her_death"
+      ],
+      "Forbids": [
+        "sosiel.dead",
+        "sosiel.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "AnswerLists": [
+        "129b55b8b5d50974f84f7c607d894fd0"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dismissed.react_irabeth",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah is back in Drezen.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "\"Seelah came through the gate asking after her transfer. I told her the Commander's coat is the worst-kept vault in Drezen.\"\n{n}Irabeth's mouth twitches.{/n}\n\"She said, 'I know. I used to rob better.' I'm choosing to believe that was about you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.returned",
+        "seelah.trickster.cost.herded"
+      ],
+      "Forbids": [
+        "irabeth_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "seelah.trickster.dismissed.react_sosiel",
+      "Title": "Sosiel's word",
+      "Owner": "Sosiel",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Seelah left.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Sosiel",
+          "Text": "{n}Sosiel sets down his brush.{/n}\n\"You took her papers so she'd have to come back.\" He says it without blame, which is its own kind of blame. \"I've done worse for people I loved. I just never did it with my hands.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "seelah.trickster.primed",
+        "seelah.trickster.returned",
+        "seelah_gone"
+      ],
+      "Forbids": [
+        "sosiel.dead",
+        "sosiel.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "seelah",
+      "Reaction": true,
+      "AnswerLists": [
+        "129b55b8b5d50974f84f7c607d894fd0"
+      ]
     }
   ],
   "Etudes": {
@@ -165638,8 +167791,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -165653,6 +167806,8 @@
     "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
     "storyteller.dead_dlc": "96ca61bbf4a54228be37a4a95fa0704d",
     "storyteller.dead_main": "3c1405201bec99f4db67371f41a3c32a",
+    "sosiel.kicked_out": "2c4abd2b51e4307469e034d9919850c2",
+    "sosiel.dead": "08190b43ca1b76447890752f6d8167f3",
     "socot.gone": "007c4990584473046ac29666a235efb3",
     "shamira.killed": "dd6731e2cb230694f9c394fa32391ad5",
     "seelah.in_party": "84b4471249a48d84c822d38396c698d9",
@@ -165717,7 +167872,7 @@
       "Title": "A place beside the fire",
       "Description": "Seelah has a talent for finding an evening worth keeping in the middle of a disastrous week. I have begun making excuses to join her.",
       "Objective": "Make time for Seelah",
-      "Guidance": "Speak to Seelah when she is with the crusade. Give her time between meetings and continue her personal quests. Her friends and convictions remain part of her life.",
+      "Guidance": "Speak to Seelah when she is with the crusade. Give her time between meetings and continue her personal quests. Her friends and convictions remain part of her life. On the Trickster path, a fallen Seelah may yet be robbed of her death, and a dismissed one may find her papers missing. Look for her at Fye's.",
       "StartedFlag": "seelah.started",
       "ClosedFlag": "seelah.closed",
       "CommittedFlag": "seelah.committed",
@@ -165725,7 +167880,39 @@
         "seelah_dead",
         "seelah_gone"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      },
+      "TricksterAccess": {
+        "dead": {
+          "Detect": [
+            "seelah_dead",
+            "seelah.finally_dead",
+            "seelah_gone"
+          ],
+          "Device": "seelah.trickster.dead.pickpocket",
+          "Returned": "seelah.trickster.returned"
+        },
+        "dead_no_unit": {
+          "Detect": [
+            "seelah_dead",
+            "!seelah.finally_dead",
+            "seelah_gone"
+          ],
+          "Device": "seelah.trickster.dead.pickpocket_effects",
+          "Returned": "seelah.trickster.returned"
+        },
+        "dismissed": {
+          "Detect": [
+            "seelah_gone",
+            "seelah_dead"
+          ],
+          "Device": "seelah.trickster.dismissed.setup",
+          "Returned": "seelah.trickster.returned"
+        }
+      }
     },
     "konomi": {
       "Title": "Letters without a seal",
@@ -167326,6 +169513,29 @@
       "AnswerLists": [],
       "Dialog": "hub",
       "Greeting": "{n}Chivarro has taken the quartermaster's bench as though it were a divan. Wilcer Garms counts his stores with his back to her and does not turn around.{/n}"
+    },
+    "seelah.presence": {
+      "Unit": "90481a29cc75f424b9891a55c6dcbb53",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "NearUnit": "0f12118177d102f428a3b30b15b132eb",
+        "Side": "left",
+        "Distance": 2.0
+      },
+      "Requires": [
+        "trickster.ever",
+        "seelah.trickster.in_drezen"
+      ],
+      "Forbids": [
+        "seelah.closed",
+        "seelah.committed"
+      ],
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}Seelah has the table nearest the door, her back to the wall like a thief and her boots polished like a paladin. She watches you cross the room without blinking.{/n}"
     }
   },
   "Derived": {
@@ -167359,6 +169569,28 @@
       ],
       [
         "chivarro.exiled"
+      ]
+    ],
+    "seelah.finally_dead": [
+      [
+        "revive.seelah.available"
+      ]
+    ],
+    "seelah.romance": [
+      [
+        "seelah.kissed"
+      ],
+      [
+        "seelah.roof_kissed"
+      ],
+      [
+        "seelah.lovers"
+      ]
+    ],
+    "seelah.trickster.rejoined": [
+      [
+        "seelah.trickster.returned",
+        "seelah.revived"
       ]
     ],
     "trickster.cheated_death": [
@@ -167406,6 +169638,22 @@
       ],
       [
         "storyteller.dead_dlc"
+      ]
+    ],
+    "seelah.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "seelah.trickster.stay_decided"
+      ]
+    ],
+    "seelah.trickster.in_drezen": [
+      [
+        "seelah_gone",
+        "seelah.trickster.primed"
+      ],
+      [
+        "seelah_dead",
+        "seelah.trickster.correspondent"
       ]
     ],
     "nurah.trickster.late_committed": [
@@ -167554,12 +169802,19 @@
     "trickster.was"
   ],
   "RemovableItems": [
-    "3e4ce583dc71401588f33f8192c252cd"
+    "3e4ce583dc71401588f33f8192c252cd",
+    "6a7cdeb14fc6ef44580cf639c5cdc113"
   ],
   "Latches": {
     "trickster.ever": [
       "trickster",
       "trickster.was"
+    ],
+    "seelah.gone.latched": [
+      "seelah_gone"
+    ],
+    "seelah.dead.latched": [
+      "seelah_dead"
     ],
     "minagho.spared.latched": [
       "minagho.spared_c4",
@@ -167588,10 +169843,11 @@
       "baphomet.parley"
     ]
   },
+  "InventoryItems": {
+    "seelah.diamond_held": "6a7cdeb14fc6ef44580cf639c5cdc113",
+    "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd"
+  },
   "UnlockableFlags": {
     "kyado.dead": "8c8b748a66ebad84f9b4cbcd73c2aab9"
-  },
-  "InventoryItems": {
-    "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd"
   }
 }

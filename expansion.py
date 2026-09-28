@@ -45,6 +45,7 @@ from storylines import vellexia_trickster
 from storylines import nurah_trickster
 from storylines import kiana_trickster
 from storylines import minagho_chivarro_trickster
+from storylines import seelah_trickster
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -330,6 +331,9 @@ def make_expansion(*, independent_tirabade=True):
     if "minagho_chivarro" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(minagho_chivarro_trickster.SCENES))
         minagho_chivarro_trickster.integrate(payload)
+    if "seelah" in payload["Relationships"]:
+        payload["Scenes"].extend(copy.deepcopy(seelah_trickster.SCENES))
+        seelah_trickster.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)
