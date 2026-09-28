@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1415,
-  "unique_targets": 336,
+  "binding_uses": 1449,
+  "unique_targets": 344,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -186,6 +186,14 @@
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0065.jbp",
       "type": "BlueprintCue"
     },
+    "33178c26f304abe41949f3fb0fa8ac6e": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/KyadoDrezen/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "509eac8248670664fab0808c3e00fe04": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0109.jbp",
+      "type": "BlueprintCue"
+    },
     "666c827662e8af14798009a98c5aae52": {
       "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp",
       "type": "BlueprintCue"
@@ -358,6 +366,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0126.jbp",
       "type": "BlueprintAnswersList"
     },
+    "2366a8db6481070439fee222c0c52e45": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Regill/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "417fa384f3250634bb71859fbc913453": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -405,6 +417,10 @@
     "ecaf5cfe8087a4f45a2269974f4885c9": {
       "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "8c8b748a66ebad84f9b4cbcd73c2aab9": {
+      "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/KyadoDead.jbp",
+      "type": "BlueprintUnlockableFlag"
     },
     "ba365d0ae03c414a8f6f906837a4fe91": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaDead.jbp",
@@ -476,6 +492,10 @@
     },
     "cd8666952065ce74d94d960a23482133": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/JerribethDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5169dbc60a1ad854493f7ba44c27a0d8": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/KyadoTraderInDrezen.jbp",
       "type": "BlueprintEtude"
     },
     "995f0ac2951bbb041b062806c163fbf1": {
@@ -596,6 +616,18 @@
     },
     "f55fcc7bf5fd0c14384cb15dce345c8e": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6596f51f8e640384189c6708bd55ed50": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/RegillCompanion/RegillNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    },
+    "4c3565d1f0f9fb24981b510da246ef2f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/RegillCompanion/RegillNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "2b2cfaa1727070c43b10729920112730": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/RegillCompanion/RegillNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
     "26ae0f50130942b4bb8dfe658e77b1c6": {
