@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-chivarro-minagho\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1479,
-  "unique_targets": 366,
+  "binding_uses": 1537,
+  "unique_targets": 398,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -30,6 +30,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/BlacksmithCapitalTrader.jbp",
       "type": "BlueprintUnit"
     },
+    "a380d926e92f70e429681eb9654478f9": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/DrezenCapital_Quartermaster.jbp",
+      "type": "BlueprintUnit"
+    },
     "280d4712dceb37f4a88e98f1f4c6e64f": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/IrabethTirabade_DrezenCapital.jbp",
       "type": "BlueprintUnit"
@@ -40,6 +44,10 @@
     },
     "ca2d58c5c65723945857e04fb85d30ce": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy.jbp",
+      "type": "BlueprintUnit"
+    },
+    "565ccab37e2475742b043ec912a750fa": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAeon_Ch3/Minagho_DrezenInThePast.jbp",
       "type": "BlueprintUnit"
     },
     "430cba7801b149b4e8494ace6baf4f7c": {
@@ -56,6 +64,10 @@
     },
     "64805abb52739e44280a758f850b300c": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Soana_Wintersun.jbp",
+      "type": "BlueprintUnit"
+    },
+    "b7e819e2a9bb0804abcbffe8e7d91ba6": {
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/FleshMarket/Chivarro.jbp",
       "type": "BlueprintUnit"
     },
     "a32a07903e428d34cb0e98a804d40569": {
@@ -166,6 +178,22 @@
       "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0029.jbp",
       "type": "BlueprintCue"
     },
+    "b00190e0e55fd9944b7fc8de5c83cbc0": {
+      "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/AnswersList_0009.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3c6de45d40c17fa40806e4d931eaf7b5": {
+      "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0021.jbp",
+      "type": "BlueprintCue"
+    },
+    "60906a72cb11d8641bcc594bb0cdd2fe": {
+      "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0025.jbp",
+      "type": "BlueprintCue"
+    },
+    "093724348a359594ebe7f7193e7b86dc": {
+      "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0026.jbp",
+      "type": "BlueprintCue"
+    },
     "5ff8a80442182f84e849b4281f98b9ca": {
       "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/AnswersList_0008.jbp",
       "type": "BlueprintAnswersList"
@@ -189,6 +217,10 @@
     "33178c26f304abe41949f3fb0fa8ac6e": {
       "path": "World/Dialogs/c3/TempleOfDelamere/KyadoDrezen/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "062f826dcda44cb4b9ae5649e95a974e": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0094_TrickReinf.jbp",
+      "type": "BlueprintCue"
     },
     "509eac8248670664fab0808c3e00fe04": {
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0109.jbp",
@@ -217,6 +249,22 @@
     "2b1776f3e398685479ff6b16290b4cc2": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "82a0c2ad3e6dc41469ec66a7affdc486": {
+      "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/AnswersList_0017.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "234795ef0b672624c804ad656a39dab6": {
+      "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "99d65001b1b0cfe45b2f47ad7d7dac7c": {
+      "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0021.jbp",
+      "type": "BlueprintCue"
+    },
+    "0aa00bcf3121a694dbf306bea0f62153": {
+      "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0025.jbp",
+      "type": "BlueprintCue"
     },
     "19786fae9c29f9d439e374bb857c2e84": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
@@ -262,8 +310,32 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp",
       "type": "BlueprintCue"
     },
+    "3ffc9b66a39689f43ac3207aa84ee565": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0101.jbp",
+      "type": "BlueprintCue"
+    },
+    "43f93812d6216c94db356622859397f1": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "1a63a2e6946244940afd7293d6598ee2": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Answer_0046.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "49135105da5bc6c4f93e312e80286f91": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0045_KillChivarro.jbp",
+      "type": "BlueprintCue"
+    },
+    "1af69c65d15cc8949a4fe47a45c4f85d": {
+      "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0100.jbp",
+      "type": "BlueprintCue"
+    },
     "1543b97943fa553469f25be07210c868": {
       "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "09780c4296b211f40b3ef6e34fabffc3": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
       "type": "BlueprintCue"
     },
     "06184e4f0a65650488e36600d8274d26": {
@@ -313,6 +385,22 @@
     "164cf168d833c3f4ba458f72df62bda0": {
       "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0037.jbp",
       "type": "BlueprintCue"
+    },
+    "cbd2f289d8173fb41a231772290440ba": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/AnswersList_0071.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "537a72b88a457dc4eb92194611ddccba": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0125.jbp",
+      "type": "BlueprintCue"
+    },
+    "2d1a338243b8ddb429bbad5db08ed7de": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0127.jbp",
+      "type": "BlueprintCue"
+    },
+    "257e13519dd1f5b4c8d992865ba0f609": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Prison_Baph_dialogue.jbp",
+      "type": "BlueprintDialog"
     },
     "b936cf96571c0354fb7a57f4987fea5c": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0041.jbp",
@@ -368,6 +456,14 @@
     },
     "2f4be0bde527a7d4cb7c73131ab551db": {
       "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "db7f69fa013c7ec49b651e7ad26c67de": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/SocothInCloset/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "e52a1d81a098a2843aa5f1f35481ddc1": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/SocothInCloset/Cue_0002.jbp",
       "type": "BlueprintCue"
     },
     "765173e2a9e535e4cb66f0ec767c13af": {
@@ -432,6 +528,10 @@
     },
     "417fa384f3250634bb71859fbc913453": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "ced27e744d2dded40bbb5adf17816dbb": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "e41585da330233143b34ef64d7d62d69": {
@@ -580,6 +680,18 @@
     },
     "fd2ab9b67ce3e284184b1894c82c6c5d": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "065b611752b5c0045b6d1e0164b92bcc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroRemovedFormPower.jbp",
+      "type": "BlueprintEtude"
+    },
+    "806ece7bcf18a374e9ad1f7b9e3bc580": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroWasTeleportedAway.jbp",
+      "type": "BlueprintEtude"
+    },
+    "eff0ca2318f96c049b5c9e6785eac196": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/MinaghoTerrified.jbp",
       "type": "BlueprintEtude"
     },
     "0c1695f4a362f0243a4afcfd1957eb0d": {
@@ -734,6 +846,14 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
       "type": "BlueprintEtude"
     },
+    "85ee36dae8f3317448fa5b950543b3ad": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9b1902a20e98aa94094741ef9c91d962": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
     "2df11d659d8f57846a6a3f16492adbb8": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WoljifCompanion/WoljifNotInParty_Dead.jbp",
       "type": "BlueprintEtude"
@@ -796,6 +916,14 @@
     },
     "3b8c0801d5e9a694b848ee13564d2ad7": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "0216030c2e687594aa9de45f2e32fc7c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoFleeFromFane.jbp",
+      "type": "BlueprintEtude"
+    },
+    "978762feac7873d4e925d85202e2c89c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoSetFreeInC4.jbp",
       "type": "BlueprintEtude"
     },
     "148423f1d35917946a5ebeeb4f19246c": {
