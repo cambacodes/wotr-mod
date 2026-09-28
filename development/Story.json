@@ -148642,7 +148642,7 @@
         {
           "Id": "price",
           "Speaker": "Nocticula",
-          "Text": "\"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price.\"\n\"The Abyss mourns me. Baphomet has stopped counting my armies. My brother has stopped sending me perfume. My own city has hung its streets in black and is already quarrelling over my palace. That silence is worth more than your crusade, and you are carrying it around in your mouth.\"\n{n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}\n\"So. What will you take to keep it there?\"",
+          "Text": "\"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price.\"\n\"Think what my death is worth. I am told the Abyss is in mourning; I intend to believe it. My rivals will have stopped counting my armies by now, and my dear brother, I hope, has stopped sending me perfume. Every one of them believes I am gone, and while they believe it I am free to do as I please. That silence is worth more than your crusade, and you are carrying it around in your mouth.\"\n{n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}\n\"So. What will you take to keep it there?\"",
           "Choices": [
             {
               "Text": "\"Name your price, then.\"",
@@ -148795,13 +148795,28 @@
           "Choices": [
             {
               "Text": "\"Then say yes.\"",
-              "Next": "yes",
+              "Next": "reason_paid",
+              "Set": [
+                "noct.complete",
+                "nocticula.trickster.said_yes"
+              ],
+              "Requires": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then say yes.\"",
+              "Next": "reason_refused",
               "Set": [
                 "noct.complete",
                 "nocticula.trickster.said_yes"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
               "Abort": false
             },
             {
@@ -148822,18 +148837,65 @@
           "Choices": [
             {
               "Text": "\"Then say yes.\"",
-              "Next": "yes",
+              "Next": "reason_paid",
+              "Set": [
+                "noct.complete",
+                "nocticula.trickster.said_yes"
+              ],
+              "Requires": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then say yes.\"",
+              "Next": "reason_refused",
               "Set": [
                 "noct.complete",
                 "nocticula.trickster.said_yes"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
               "Abort": false
             },
             {
               "Text": "\"Or say no. You're allowed.\"",
               "Next": "refusal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "reason_paid",
+          "Speaker": "Nocticula",
+          "Text": "{n}She considers you the way she considered her price: from the end backwards.{/n}\n\"You agreed to a favour you cannot see the bottom of, and you did not haggle. I have had kings refuse me less, and devils read the terms twice. You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "yes",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "reason_refused",
+          "Speaker": "Nocticula",
+          "Text": "{n}She considers you the way she considered her price: from the end backwards.{/n}\n\"You refused my price to my face, and you are still standing in my light. Nobody has done that since my brother, and he had to be my brother to survive it. You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "yes",
               "Set": [],
               "Requires": [],
               "Forbids": [],

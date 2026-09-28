@@ -123,7 +123,7 @@ SCENES.append(scene("nocticula.trickster.defeated.late_shadow", "One shadow too 
 AGREED = '"Agreed."'
 threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You didn\'t say I was wrong."', [
     nt("price", '''"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price."
-"The Abyss mourns me. Baphomet has stopped counting my armies. My brother has stopped sending me perfume. My own city has hung its streets in black and is already quarrelling over my palace. That silence is worth more than your crusade, and you are carrying it around in your mouth."
+"Think what my death is worth. I am told the Abyss is in mourning; I intend to believe it. My rivals will have stopped counting my armies by now, and my dear brother, I hope, has stopped sending me perfume. Every one of them believes I am gone, and while they believe it I am free to do as I please. That silence is worth more than your crusade, and you are carrying it around in your mouth."
 {n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}
 "So. What will you take to keep it there?"''',
         c('"Name your price, then."', "terms", forbids=(LATE,)),
@@ -139,8 +139,9 @@ threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You
 ], ("trickster.ever", PRIMED), (RETURNED,), T_GAME, TricksterDevice=True, TricksterState=DEAD)
 
 # The commit (R2-1), a separate beat after the return: her test, her yes or her no, and the heat to the cut.
-VERDICT = (c('"Then say yes."', "yes", flags=("noct.complete", SAID_YES)),
-           c('"Or say no. You\'re allowed."', "refusal"))
+VERDICT = (c('"Then say yes."', "reason_paid", requires=(PAID,), flags=("noct.complete", SAID_YES)),
+           c('"Then say yes."', "reason_refused", forbids=(PAID,), flags=("noct.complete", SAID_YES)),
+           c("\"Or say no. You're allowed.\"", "refusal"))
 threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question, Lady. Off the record."', [
     nt("test", '''"Nothing in the Abyss is off the record. The Abyss simply has very poor clerks."
 "Very well. You have kept my secret for the length of one conversation, which is longer than my brother ever managed. Tell me why I should let a clown who knows where my shadow ends sit anywhere near me when this is over."
@@ -150,6 +151,12 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
     nt("verdict_true", '''"Liar." {n}She says it the way other women say darling.{/n} "You will ask me for everything, and I will enjoy refusing most of it."''', *VERDICT),
     nt("verdict_joke", '''"I did not laugh."
 {n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold remembers it for a long moment afterwards.{/n}''', *VERDICT),
+    nt("reason_paid", '''{n}She considers you the way she considered her price: from the end backwards.{/n}
+"You agreed to a favour you cannot see the bottom of, and you did not haggle. I have had kings refuse me less, and devils read the terms twice. You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice."''',
+        c("Continue", "yes")),
+    nt("reason_refused", '''{n}She considers you the way she considered her price: from the end backwards.{/n}
+"You refused my price to my face, and you are still standing in my light. Nobody has done that since my brother, and he had to be my brother to survive it. You killed me, clown, and then you looked at the floor instead of at the corpse. Nobody looks at the floor. I have been wondering since what else you notice."''',
+        c("Continue", "yes")),
     nt("yes", '''"Yes." {n}No hesitation at all; she has decided long before you asked, and was only waiting to see whether you would.{/n} "Beside me. Not at my feet. Where I can see your hands."
 "And since we are being honest, clown, there is one thing a projection does better than a body. It cannot be touched." {n}Her eyes glitter.{/n} "It can touch."''',
         c("Continue", "threshold")),
