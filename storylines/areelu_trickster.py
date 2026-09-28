@@ -64,6 +64,7 @@ LENS_ASKED = P + "lens.asked"            # her three questions answered through 
 NAMED = P + "stake_named"               # the loophole: "what is left of her" is her notes (cell joke, late terms, Threshold)
 WOUND_CEDED = P + "cost.wound_ceded"    # the price of the term at Threshold: the Commander's wound is hers, win or lose
 SURVIVES = P + "survives"               # Derived: [died at the finale + stake named] or [the punchline]
+BURNED = P + "commander_burned"         # Derived: the Commander sacrificed at a Wound-closed finale (ledger row 16)
 WITCH_BET = P + "cost.bet_with_the_witch"
 LATE = P + "cost.late"
 ON_SCREEN = P + "rivalry_on_screen"     # Derived: bet_offered | rivalry.lens
@@ -84,7 +85,7 @@ YEARS_ASKED = "areelu.years_asked"      # LetsFinalFight/Answer_0054 -> Cue_0055
 TRICKSTER_ENDINGS = ("ending.trickster", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.trickster_full")
 NENIO_GONE = ("nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out", "nenio.dissolved")
 
-DERIVED = {SURVIVES: [[DIED, NAMED], [CHEATED]]}
+DERIVED = {SURVIVES: [[DIED, NAMED], [CHEATED]], BURNED: [["sacrifice", "ending.wound_closed"]]}
 
 SELECTED_ANSWERS = {
     YEARS_ASKED: "73f857edb12933948b735e0364fcf1ca",
@@ -723,7 +724,7 @@ SCENES.extend([
 # chain keeps its order (E14h anchors are positions, not requirements).
 
 COMMITTED_ANY = [COMMITTED, LATE_COMMITTED]
-ROMANCE_FORBIDS = (DECLINED, STAKE_ONLY, CLOSED)
+ROMANCE_FORBIDS = (DECLINED, STAKE_ONLY, CLOSED, BURNED)
 ROMANCE_OVERRIDES = {DECLINED: COMMITTED}
 MORTAL = (DIED,)                          # the rewrite path: her life's work burned instead of her life
 
@@ -1533,6 +1534,23 @@ page("areelu.trickster.report.afterword", "Afterword, in another hand", [
 {n}Scholars who have handled the report say that the back cover is worn smooth in one place, as if someone had rested a thumb there, often, for many years: over the words "worth it".{/n}'''),
 ], requires=("trickster.ever", STRUCK, ON_SCREEN, SURVIVES), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
     after="scene:areelu.trickster.report.promise", overrides=ROMANCE_OVERRIDES)
+
+
+# Ledger row 16: when the Commander burned closing the Wound, the wager is settled the other way. The Commander burned;
+# she keeps the wound, subordinate to the Lady's prior claim on the soul. (Iomedae's Appointment is one such world; her
+# route can add its own variant when iomedae.appointment_kept has a producer.)
+page("areelu.trickster.finale.prior_lien", "You burned", [
+    nar("end", '''{n}"You burned." Areelu wrote it at the top of a clean page, and underlined it.{/n}
+{n}"The Lady of Graves had the prior lien. She always does; I have spent a century reading her books and I have never once found a page she did not collect. The soul went where souls go. I keep the wound, as agreed."{/n}
+{n}"It is enough to study for the rest of my life, and I intend to."{/n}''',
+        paragraphs=(
+            p("She kept it in a jar of her own design, in a room nobody else was allowed to enter, and on the day each "
+              "year that the Commander had made a joke at Iz she did not open the room at all.", any_groups=(COMMITTED_ANY,)),
+            p("She did not thank anyone. Nobody who knew her expected her to. But the report she wrote afterwards, which "
+              "is long, and precise, and entirely about a wound, ends with a single line that is not about the wound at "
+              "all: \"The subject won the argument and lost the bet. I would have preferred the reverse.\""),
+        ))],
+    requires=("trickster.ever", BURNED, STRUCK), forbids=(CLOSED, DIED), sequence=False)
 
 
 # --- The other outcomes of the wager (ordinary epilogue pages) ---------------------------------------------------------

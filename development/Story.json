@@ -176314,7 +176314,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -176407,7 +176408,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -176458,7 +176460,8 @@
         "areelu.trickster.stake_named",
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -176560,7 +176563,8 @@
         "areelu.died_at_finale",
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -176869,7 +176873,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -177208,7 +177213,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -177363,7 +177369,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -177561,7 +177568,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -177791,7 +177799,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -178104,7 +178113,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -178403,7 +178413,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -178682,7 +178693,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -178887,7 +178899,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -179178,7 +179191,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -179449,7 +179463,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -179678,7 +179693,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -179949,7 +179965,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -180275,7 +180292,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -180406,7 +180424,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -180741,7 +180760,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -180832,7 +180852,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -180848,6 +180869,63 @@
       },
       "EpilogueSequence": "PlayerFinalChoice",
       "EpilogueAfter": "scene:areelu.trickster.report.promise"
+    },
+    {
+      "Id": "areelu.trickster.finale.prior_lien",
+      "Title": "You burned",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}\"You burned.\" Areelu wrote it at the top of a clean page, and underlined it.{/n}\n{n}\"The Lady of Graves had the prior lien. She always does; I have spent a century reading her books and I have never once found a page she did not collect. The soul went where souls go. I keep the wound, as agreed.\"{/n}\n{n}\"It is enough to study for the rest of my life, and I intend to.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu",
+          "Paragraphs": [
+            {
+              "Text": "She kept it in a jar of her own design, in a room nobody else was allowed to enter, and on the day each year that the Commander had made a joke at Iz she did not open the room at all.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "areelu.committed",
+                  "areelu.trickster.late_committed"
+                ]
+              ]
+            },
+            {
+              "Text": "She did not thank anyone. Nobody who knew her expected her to. But the report she wrote afterwards, which is long, and precise, and entirely about a wound, ends with a single line that is not about the wound at all: \"The subject won the argument and lost the bet. I would have preferred the reverse.\"",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.commander_burned",
+        "areelu.trickster.wager_struck"
+      ],
+      "Forbids": [
+        "areelu.closed",
+        "areelu.died_at_finale"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu"
     },
     {
       "Id": "areelu.trickster.finale.stake_only",
@@ -181011,7 +181089,8 @@
       "Forbids": [
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
-        "areelu.closed"
+        "areelu.closed",
+        "areelu.trickster.commander_burned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -181144,8 +181223,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -183114,6 +183193,12 @@
       ],
       [
         "trickster.cheated_death"
+      ]
+    ],
+    "areelu.trickster.commander_burned": [
+      [
+        "sacrifice",
+        "ending.wound_closed"
       ]
     ],
     "trickster.cheated_death": [

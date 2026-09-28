@@ -213,6 +213,13 @@ internal static class AreeluTricksterTests
         var lateCommit = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Named);
         check(lateCommit.Has(P + "late_committed") && Available(rewrite, lateCommit), "The late commit (R2-6) does not reach the rewrite.");
         check(Available(ascended, World(story, 6, "trickster.ever", "areelu.ascended", Struck, Bet, Committed)), "The ascended page failed.");
+        // Trk_Areelu_PriorLien (ledger row 16): the Commander burned closing the Wound; only the prior-lien page plays.
+        // (iomedae.appointment_kept, Iomedae's form of this world, cannot be read until her route produces its primer.)
+        var priorLien = S(P + "finale.prior_lien");
+        var burned = World(story, 6, "trickster.ever", "sacrifice", "ending.wound_closed", Struck, Bet, Committed, Named);
+        check(burned.Has(P + "commander_burned") && !burned.Has("trickster.cheated_death") && Available(priorLien, burned)
+              && !Available(survived, burned) && !report.Any(s => Available(s, burned)), "Trk_Areelu_PriorLien failed.");
+        check(!Available(priorLien, punchline) && !Available(priorLien, rewriteWorld), "The prior-lien page plays when the Commander lived.");
         check(!Available(report.Single(s => s.Id.EndsWith(".wound")), World(story, 6, "trickster.ever", "areelu.sacrifice_wound", Struck, Bet, Committed, Named)),
             "The wound page plays after the Wound was closed.");
 
