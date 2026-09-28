@@ -33,8 +33,10 @@ namespace Tirabade
     public sealed class Settings : UnityModManager.ModSettings
     {
         public bool Narration = true;
-        // E8: letters per rest; 0 uses Story.PostBagSize.
+        // E8: letters per rest; 0 uses Story.PostBagSize. Used only when Mailbag is off.
         public int PostBagSize;
+        // E8b: after a rest, choose which letters to read from a mailbag (default). Off: the E8 post bag delivers them in turn.
+        public bool Mailbag = true;
         public override void Save(UnityModManager.ModEntry entry) => Save(this, entry);
     }
 
@@ -86,6 +88,13 @@ namespace Tirabade
         private static readonly PostBag postBag = new PostBag();
         private static object? postBagPlayer;
         private static int BagSize() => settings.PostBagSize > 0 ? settings.PostBagSize : story.PostBagSize;
+        // E8b: the letters that arrived at the last rests, the mailbag dialog listing them, and whether the list is (re)opened
+        // at the next idle moment (after a rest, and after each letter read from it, until "Read the rest later").
+        private static readonly Mailbag mailbag = new Mailbag();
+        private static object? mailbagPlayer;
+        private static BlueprintDialog? mailbagDialog;
+        private static bool mailbagWanted;
+        private static bool UseMailbag() => settings.Mailbag && mailbagDialog != null;
         private static KonomiMeeting? konomiMeeting;
         private static IrabethMeeting? irabethMeeting;
         private static NurahMeeting? nurahMeeting;
@@ -394,6 +403,7 @@ namespace Tirabade
                 if (story.Scenes.Any(Rules.IsNurahHubScene)) nurahHub = BuildNurahHub();
                 foreach (var pair in story.Presences.Where(p => p.Value.Dialog == "hub"))
                     presenceHubs[pair.Key] = BuildPresenceHub(pair.Key, pair.Value);
+                if (story.Scenes.Any(Rules.IsMailbagLetter)) mailbagDialog = BuildMailbag();
                 // E14d: every replacement cue is registered (save names); only verified edits get their native presentation.
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
@@ -861,6 +871,54 @@ namespace Tirabade
             dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
             return dialog;
         }
+
+        // E8b: the mailbag, built like the E12c hub: one Book page with an entry per deliverable letter (shown only while that
+        // letter is in the bag and still available; choosing it starts the letter through RouteAction and brings the list back
+        // after it), then "Read the rest later".
+        internal static BlueprintDialog BuildMailbag()
+        {
+            var letters = story.Scenes.Where(Rules.IsMailbagLetter).ToArray();
+            var page = New<BlueprintBookPage>("page.mailbag");
+            page.ShowOnce = false;
+            page.Conditions = Conditions();
+            page.OnShow = Actions();
+            page.Title = Text("title.mailbag", "Letters");
+            const string greeting = "{n}A courier has caught up with the column. The satchel holds letters, sealed and dated, each in a different hand.{/n}";
+            CueSetup(out var cue, "cue.mailbag", greeting);
+            page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
+            pages.Add(page.AssetGuid.ToString(), new Node { Id = "mailbag", Speaker = "Narrator", Text = greeting });
+            foreach (var scene in letters)
+            {
+                var answer = New<BlueprintAnswer>("answer.mailbag." + scene.Id);
+                InitializeAnswer(answer);
+                answer.Text = Text(answer.name, MailbagLabel(scene));
+                answer.ShowConditions = Conditions(new MailbagCondition { Scene = scene });
+                answer.SelectConditions = Conditions(new MailbagCondition { Scene = scene });
+                answer.OnSelect = Actions(new RouteAction { Start = scene }, new MailbagAction { Reopen = true });
+                page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
+            }
+            var later = New<BlueprintAnswer>("answer.mailbag.later");
+            InitializeAnswer(later);
+            later.Text = Text(later.name, "[Read the rest later.]");
+            later.OnSelect = Actions(new MailbagAction { Reopen = false });
+            page.Answers.Add(Ref<BlueprintAnswerBaseReference>(later));
+            var dialog = New<BlueprintDialog>("dialog.mailbag");
+            dialog.Type = DialogType.Book;
+            dialog.Conditions = Conditions();
+            dialog.FirstCue = Cues(page);
+            dialog.TurnPlayer = false;
+            dialog.TurnFirstSpeaker = false;
+            dialog.StartActions = Actions();
+            dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
+            return dialog;
+        }
+
+        // "[Letter from Konomi] A seal of blue wax"; memories read as memories.
+        internal static string MailbagLabel(Scene scene) => (scene.Owner == "Memory" ? "[A memory] " : "[Letter from " + scene.Owner + "] ")
+            + (scene.Title.Length > 0 ? scene.Title : scene.Id);
+
+        private static bool CanOpenMailbag() => initialized && enabled && UseMailbag() && Idle() && Game.Instance?.Player != null
+            && ReferenceEquals(mailbagPlayer, Game.Instance.Player) && mailbag.Entries(story, State()).Count > 0;
 
         private static bool CanOpenPresenceHub(GuestPresence presence)
         {
@@ -1391,6 +1449,11 @@ namespace Tirabade
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();
             // Undelivered letters belong to the save that rested; loading another save drops them.
             if (postBag.Queue.Count > 0 && !ReferenceEquals(postBagPlayer, Game.Instance?.Player)) postBag.Clear();
+            if ((mailbag.Arrived.Count > 0 || mailbagWanted) && !ReferenceEquals(mailbagPlayer, Game.Instance?.Player))
+            {
+                mailbag.Clear();
+                mailbagWanted = false;
+            }
             if (recoveryPlayer != null && !ReferenceEquals(recoveryPlayer, Game.Instance?.Player))
             {
                 recoveryMessage = null;
@@ -1407,7 +1470,17 @@ namespace Tirabade
                 if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.Started
                     && Rules.Failed(story.Relationships[pair.Key], state)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
             }
-            if (restPending)
+            if (restPending && UseMailbag())
+            {
+                // E8b: every deliverable letter arrives; the player chooses what to read from the list.
+                restPending = false;
+                int added = mailbag.Fill(story, state);
+                mailbagPlayer = Game.Instance.Player;
+                int waiting = mailbag.Entries(story, state).Count;
+                if (added > 0) entry.Logger.Log("Mailbag: " + added + " letter(s) arrived after rest; " + waiting + " unread.");
+                if (waiting > 0) mailbagWanted = true;
+            }
+            else if (restPending)
             {
                 restPending = false;
                 var served = story.Relationships.Keys.ToDictionary(key => key, key =>
@@ -1415,6 +1488,17 @@ namespace Tirabade
                 int added = postBag.Fill(story, state, served, BagSize());
                 postBagPlayer = Game.Instance.Player;
                 if (added > 0) entry.Logger.Log("Post bag: " + added + " letter(s) after rest; " + postBag.Queue.Count + " waiting.");
+            }
+            // E8b: the list opens whenever nothing else is waiting (after a rest, and again after each letter read from it).
+            if (pending == null && mailbagWanted)
+            {
+                if (UseMailbag() && ReferenceEquals(mailbagPlayer, Game.Instance.Player) && mailbag.Entries(story, state).Count > 0)
+                {
+                    mailbagWanted = false;
+                    Game.Instance.DialogController.StartDialogWithoutTarget(mailbagDialog!, null);
+                    return;
+                }
+                mailbagWanted = false;
             }
             // E8: whenever no dialog is open, the next undelivered letter follows (a finished letter chains into the next).
             if (pending == null && postBag.Queue.Count > 0 && postBag.Next(story, state) is Scene next)
@@ -1484,6 +1568,8 @@ namespace Tirabade
             pendingPlayer = null;
             restPending = false;
             postBag.Clear();
+            mailbag.Clear();
+            mailbagWanted = false;
             StopNarration();
         }
 
@@ -1495,12 +1581,20 @@ namespace Tirabade
             if (settings.Narration && !narration) StopNarration();
             settings.Narration = narration;
             if (GUILayout.Button("Stop narration")) StopNarration();
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Letters delivered per rest: " + BagSize() + (settings.PostBagSize > 0 ? "" : " (story default)"));
-            if (GUILayout.Button("-", GUILayout.Width(30))) settings.PostBagSize = Math.Max(1, BagSize() - 1);
-            if (GUILayout.Button("+", GUILayout.Width(30))) settings.PostBagSize = Math.Min(10, BagSize() + 1);
-            if (settings.PostBagSize > 0 && GUILayout.Button("Default", GUILayout.Width(70))) settings.PostBagSize = 0;
-            GUILayout.EndHorizontal();
+            settings.Mailbag = GUILayout.Toggle(settings.Mailbag, "After a rest, choose which letters to read from a mailbag (off: letters arrive one after another)");
+            if (settings.Mailbag)
+            {
+                if (CanOpenMailbag() && GUILayout.Button("Open the mailbag (" + mailbag.Entries(story, State()).Count + " unread)")) mailbagWanted = true;
+            }
+            else
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Letters delivered per rest: " + BagSize() + (settings.PostBagSize > 0 ? "" : " (story default)"));
+                if (GUILayout.Button("-", GUILayout.Width(30))) settings.PostBagSize = Math.Max(1, BagSize() - 1);
+                if (GUILayout.Button("+", GUILayout.Width(30))) settings.PostBagSize = Math.Min(10, BagSize() + 1);
+                if (settings.PostBagSize > 0 && GUILayout.Button("Default", GUILayout.Width(70))) settings.PostBagSize = 0;
+                GUILayout.EndHorizontal();
+            }
             GUILayout.Label("Windows narration is synthetic, not the original actors. Existing AI Voiceover lines are untouched.");
             if (error != null) { GUILayout.Label("Route initialization failed: " + error); return; }
             if (degraded.Count > 0) GUILayout.Label("Unavailable in this installation (missing game or RanRomance content): " + string.Join(", ", degraded.OrderBy(r => r)) + ". Other relationships are unaffected; details are in the mod log.");
@@ -1587,6 +1681,23 @@ namespace Tirabade
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
                         && Rules.Match(Choice.Requires, Choice.Forbids, State()));
+        }
+
+        // E8b: a mailbag entry is listed while its letter is in the bag and still available.
+        public sealed class MailbagCondition : Condition
+        {
+            public Scene? Scene;
+            protected override string GetConditionCaption() => "Three at the Table mailbag letter";
+            protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null && Scene != null
+                && mailbag.Holds(Scene) && Rules.Available(story, Scene, State());
+        }
+
+        // E8b: after a letter the list comes back (Reopen); "Read the rest later" closes it until the next rest.
+        public sealed class MailbagAction : GameAction
+        {
+            public bool Reopen;
+            public override string GetCaption() => "Three at the Table mailbag";
+            public override void RunAction() => mailbagWanted = Reopen;
         }
 
         // E14c: one conditional paragraph of an epilogue page.

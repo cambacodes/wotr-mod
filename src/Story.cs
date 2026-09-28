@@ -341,6 +341,38 @@ namespace Tirabade
         public void Clear() => Queue.Clear();
     }
 
+    // E8b mailbag (default delivery): at a successful rest every deliverable letter arrives together, one per rotation key
+    // (its first in authored order, so a route's later letter never arrives beside an earlier one). The player reads any of
+    // them, in any order, and may leave the rest for later: unread letters stay in the bag until they are read or stop being
+    // available. Letters a read unlocks wait for the next rest, which keeps the authored pacing. Nothing here is saved:
+    // after a reload an unread letter is simply still available and arrives with the next rest.
+    public sealed class Mailbag
+    {
+        public readonly List<Scene> Arrived = new List<Scene>();
+
+        public int Fill(Story story, Snapshot state)
+        {
+            Arrived.RemoveAll(scene => !Rules.Available(story, scene, state));
+            var arrivals = Rules.MailbagArrivals(story, state, Arrived);
+            Arrived.AddRange(arrivals);
+            return arrivals.Count;
+        }
+
+        // The letters readable now, in authored order; letters that stopped being available (read, or overtaken) are dropped.
+        public List<Scene> Entries(Story story, Snapshot state)
+        {
+            Arrived.RemoveAll(scene => !Rules.Available(story, scene, state));
+            var order = story.Scenes.Select((scene, index) => (scene, index)).ToDictionary(pair => pair.scene, pair => pair.index);
+            return Arrived.OrderBy(scene => order.TryGetValue(scene, out int i) ? i : int.MaxValue).ToList();
+        }
+
+        public bool Holds(Scene scene) => Arrived.Contains(scene);
+
+        public void Read(Scene scene) => Arrived.Remove(scene);
+
+        public void Clear() => Arrived.Clear();
+    }
+
     public sealed class Snapshot
     {
         public int Chapter;
@@ -709,6 +741,25 @@ namespace Tirabade
                 .Take(Math.Max(0, size))
                 .Select(group => group.First())
                 .OrderBy(scene => order[scene]).ToList();
+        }
+
+        // E8b: a scene the mailbag can deliver (a rest letter or memory; manual reads and epilogue pages never arrive by post).
+        public static bool IsMailbagLetter(Scene scene) => IsRemote(scene) && !scene.ManualOnly
+            && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+
+        // E8b: the letters one rest adds to the mailbag: every deliverable remote scene (not manual, not an epilogue page),
+        // one per rotation key and never a key the bag already holds, the key's first scene in authored order. No bag size and
+        // no fairness ordering: the player chooses. Returned in story list order.
+        public static List<Scene> MailbagArrivals(Story story, Snapshot state, IReadOnlyCollection<Scene>? held = null)
+        {
+            held ??= Array.Empty<Scene>();
+            var heldKeys = new HashSet<string>(held.Select(scene => RotationKey(story, scene.Relationship)), StringComparer.Ordinal);
+            return story.Scenes
+                .Where(scene => IsMailbagLetter(scene)
+                    && !held.Contains(scene) && !heldKeys.Contains(RotationKey(story, scene.Relationship)) && Available(story, scene, state))
+                .GroupBy(scene => RotationKey(story, scene.Relationship))
+                .Select(group => group.First())
+                .ToList();
         }
 
 
