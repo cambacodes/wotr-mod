@@ -27965,7 +27965,8 @@
         "jerribeth.refuge_known"
       ],
       "Forbids": [
-        "jerribeth.patron_lost"
+        "jerribeth.patron_lost",
+        "jerribeth.trickster.met_by_toast"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -28105,7 +28106,9 @@
         "jerribeth.price",
         "jerribeth.xanthir_known"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "jerribeth.trickster.met_by_toast"
+      ],
       "DelayHours": 24,
       "Optional": true,
       "Relationship": "jerribeth",
@@ -28271,7 +28274,9 @@
         "jerribeth.evening",
         "jerribeth.refuge_known"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "jerribeth.trickster.met_by_toast"
+      ],
       "DelayHours": 24,
       "Optional": true,
       "Relationship": "jerribeth",
@@ -28363,7 +28368,9 @@
                 "jerribeth.short_future_chosen"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "jerribeth.trickster.cost.forfeit"
+              ],
               "Abort": false
             },
             {
@@ -28371,6 +28378,35 @@
               "Next": "part",
               "Set": [],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want those evenings. Keep expecting me.\"",
+              "Next": "arrival",
+              "Set": [
+                "jerribeth.committed",
+                "jerribeth.short_future_chosen"
+              ],
+              "Requires": [
+                "jerribeth.trickster.cost.forfeit"
+              ],
+              "Forbids": [
+                "jerribeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want those evenings. Keep expecting me.\"",
+              "Next": "tenant_room",
+              "Set": [
+                "jerribeth.committed",
+                "jerribeth.short_future_chosen"
+              ],
+              "Requires": [
+                "jerribeth.trickster.cost.forfeit",
+                "jerribeth.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -28460,7 +28496,9 @@
                 "jerribeth.committed"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "jerribeth.trickster.cost.forfeit"
+              ],
               "Abort": false
             },
             {
@@ -28470,6 +28508,62 @@
                 "jerribeth.committed"
               ],
               "Requires": [],
+              "Forbids": [
+                "jerribeth.trickster.cost.forfeit"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You matter to me too.\"",
+              "Next": "arrival",
+              "Set": [
+                "jerribeth.committed"
+              ],
+              "Requires": [
+                "jerribeth.trickster.cost.forfeit"
+              ],
+              "Forbids": [
+                "jerribeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"You matter to me too.\"",
+              "Next": "tenant_room",
+              "Set": [
+                "jerribeth.committed"
+              ],
+              "Requires": [
+                "jerribeth.trickster.cost.forfeit",
+                "jerribeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want you in my life, with all the difficult conversations that implies.\"",
+              "Next": "arrival",
+              "Set": [
+                "jerribeth.committed"
+              ],
+              "Requires": [
+                "jerribeth.trickster.cost.forfeit"
+              ],
+              "Forbids": [
+                "jerribeth.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I want you in my life, with all the difficult conversations that implies.\"",
+              "Next": "tenant_room",
+              "Set": [
+                "jerribeth.committed"
+              ],
+              "Requires": [
+                "jerribeth.trickster.cost.forfeit",
+                "jerribeth.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -28627,6 +28721,214 @@
                 "jerribeth.trickster.no_forfeit"
               ],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "arrival",
+          "Speaker": "Narrator",
+          "Text": "{n}The frame goes dark and stays dark. You are reaching to turn it over when someone knocks at the door: three knocks, precisely spaced, the way a clerk knocks.{/n}\n{n}She is on the threshold when you open it. Not an image. The lamplight finds the edges of her carapace and does not slide off them. She is taller than the frame ever let her look, and she smells of cold stone and something sweet and spoiled, like fruit left on an altar.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "arrival_terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "arrival_terms",
+          "Speaker": "Jerribeth",
+          "Text": "\"A contract wants a signature in the signatory's own hand. Mine is here.\"\n{n}She lifts it: long, jointed, clawed at the tips, very still.{/n}\n\"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not sign things at a distance. Which face do you want across the table, Commander?\"",
+          "Choices": [
+            {
+              "Text": "\"Your own. All of it.\"",
+              "Next": "own",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"The guise. I know who is wearing it.\"",
+              "Next": "guise",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "own",
+          "Speaker": "Jerribeth",
+          "Text": "{n}She lets the last of the pretence fall away and steps inside, and the room is suddenly too small for her. Her antennae brush the lintel. Her wings, folded, rasp against the doorframe like pages turning.{/n}\n\"Most people close their eyes, the first time.\"\n{n}You do not. She comes closer, one deliberate step at a time, and stops when there is no more room to stop. Her clawed fingers find the fastenings at your collar and undo them one by one, with the care she gave the locusts, and she watches your face the whole time to see what each one costs you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "guise",
+          "Speaker": "Jerribeth",
+          "Text": "{n}The elven woman who steps inside is exactly the one the frame showed you, down to the seam of light along her jaw that she has left there on purpose, so that you will not forget.{/n}\n\"I made her for you. It seemed only fair that you should unwrap her.\"\n{n}She takes your hands and sets them at her waist, where the illusion is warm and the thing beneath it is hard and ridged and moving under your palms. She watches you feel the difference. She enjoys it far more than the face would suggest.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She backs you toward the bed without appearing to push, the way she herded Wintersun: by making every other direction less interesting. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}\n{n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}\n\"Terms accepted,\" {n}she says, very softly, against your ear, and lowers herself onto you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}She is gone before the watch changes. The sheets smell of cold stone. There are four small crescents on each of your wrists where her claws rested, very precise, as if she had counted them.{/n}\n{n}Tucked into the frame, where the image should be, is a note in a fine, impatient hand: \"Countersigned. The forfeit clause stands. I have not decided which memory. You will be the second to know.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "end",
+              "Set": [
+                "jerribeth.chosen_future"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "jerribeth.short_future_chosen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "short_end",
+              "Set": [],
+              "Requires": [
+                "jerribeth.short_future_chosen"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "tenant_room",
+          "Speaker": "Jerribeth",
+          "Text": "\"You cannot open a door to me, Commander. I live on the wrong side of it.\"\n{n}The frame goes dark. The voice does not. It moves, instead: from behind your left eye to the back of your skull, and then, impossibly, down.{/n}\n\"So I shall do what I did in Wintersun. I shall build a room, and make you believe in it, and this time I shall be in it too.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "tenant_host",
+              "Set": [],
+              "Requires": [
+                "jerribeth.trickster.cost.host"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "tenant_body",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "jerribeth.trickster.cost.host"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "tenant_host",
+          "Speaker": "Jerribeth",
+          "Text": "\"I could have come to you in the man from the stockade. He is clean, and he would not have minded, since he is not in there any more. I did not think you would want the leavings.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "tenant_body",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "tenant_body",
+          "Speaker": "Narrator",
+          "Text": "{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}\n{n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}\n\"I know where every nerve in this house runs,\" {n}she says.{/n} \"I have been reading the plans for months.\"\n{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists, and lowers herself onto you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "tenant_morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "tenant_morning",
+          "Speaker": "Narrator",
+          "Text": "{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}\n{n}Behind your left eye, something neat and patient is very pleased with itself.{/n} \"Countersigned. The forfeit clause stands. Pay the rent on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "end",
+              "Set": [
+                "jerribeth.chosen_future"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "jerribeth.short_future_chosen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "short_end",
+              "Set": [],
+              "Requires": [
+                "jerribeth.short_future_chosen"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -28829,7 +29131,9 @@
         "jerribeth.future",
         "jerribeth.committed"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "jerribeth.trickster.met_by_toast"
+      ],
       "DelayHours": 24,
       "Optional": false,
       "Relationship": "jerribeth",
@@ -28913,7 +29217,9 @@
         "jerribeth.ordinary",
         "jerribeth.future_settled"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "jerribeth.trickster.met_by_toast"
+      ],
       "DelayHours": 24,
       "Optional": false,
       "Relationship": "jerribeth",
@@ -29949,7 +30255,8 @@
         "jerribeth.terms"
       ],
       "Forbids": [
-        "jerribeth.farewell"
+        "jerribeth.farewell",
+        "trickster.ever"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -48755,7 +49062,8 @@
         "jerribeth.farewell",
         "jerribeth.developed_future",
         "jerribeth.short_farewell_requested",
-        "jerribeth.catchup_requested"
+        "jerribeth.catchup_requested",
+        "jerribeth.trickster.met_by_toast"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -48813,7 +49121,8 @@
         "jerribeth.committed"
       ],
       "Forbids": [
-        "jerribeth.catchup_requested"
+        "jerribeth.catchup_requested",
+        "jerribeth.trickster.met_by_toast"
       ],
       "DelayHours": 0,
       "Optional": false,

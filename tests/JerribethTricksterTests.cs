@@ -204,7 +204,40 @@ internal static class JerribethTricksterTests
             check(outs.Where(r => r.Has("jerribeth.committed")).All(r => r.Has("jerribeth.trickster.cost.forfeit")), "A Trickster promise without a forfeit.");
             check(outs.Any(r => r.Has("jerribeth.committed")), "No Trickster commit.");
             check(outs.Any(r => r.Has("jerribeth.closed") && r.Has("jerribeth.trickster.no_forfeit")), "Her blank-page no is missing.");
+            // Directive 12: a Trickster contract is countersigned in person, and the cut lands at the start of the act.
+            check(pages.Contains("arrival") && pages.Contains("threshold") && pages.Contains("morning") && !pages.Contains("tenant_room"),
+                "The committed contract has no in-person threshold.");
+            check(outs.Where(r => r.Has("jerribeth.committed")).All(r => r.Has("jerribeth.future")), "The visit does not finish the promise.");
+            var tenantW = Program.Copy(w); tenantW.Flags.UnionWith(new[] { Dead, Returned, "jerribeth.trickster.cost.host" });
+            var tenantPages = new HashSet<string>();
+            var tenantOuts = Program.Walk(future, tenantW, (page, _) => tenantPages.Add(page));
+            check(tenantPages.Contains("tenant_room") && tenantPages.Contains("tenant_host") && tenantPages.Contains("tenant_body")
+                  && !tenantPages.Contains("arrival") && tenantOuts.Any(r => r.Has("jerribeth.committed")),
+                "The tenant's threshold is missing, or she knocks at a door she cannot use.");
         }
+        check(S("jerribeth.trickster.dead.tenant").Nodes.Concat(future.Nodes).All(n => !n.Text.Contains("thrust")),
+            "The cut lands after the start of the act.");
+
+        // JER-08 on a Trickster run: the purchaser/counteroffer campaign does not open; a toasted late entry ends at
+        // the promise. Worst Chapter 5 branch (the toast): the seven rest letters of the core courtship (short_invitation is a
+        // manual read), under the Chapter 5 cap of 8.
+        check(!Rules.Available(story, S("jerribeth.offered_signature"),
+                  World(story, 5, "trickster", "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.terms", "jerribeth.lovers")),
+            "The counteroffer campaign opens on a Trickster run.");
+        check(Rules.Available(story, S("jerribeth.offered_signature"),
+                  World(story, 5, "jerribeth.met", "jerribeth.commission", "jerribeth.terms", "jerribeth.lovers")),
+            "The counteroffer campaign is lost off the path.");
+        var lateLetters = story.Scenes.Where(s => s.Relationship == "jerribeth" && s.Remote && !s.Reaction && !s.ManualOnly
+                                                  && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                                                  && !s.Id.StartsWith("jerribeth.trickster.", StringComparison.Ordinal)
+                                                  && s.Chapters.Contains(5) && !s.Forbids.Contains(Toasted) && !s.Forbids.Contains("trickster.ever")
+                                                  && !s.Requires.Any(r => r.Contains("counter") || r.Contains("purchaser") || r.Contains("settlement")
+                                                                          || r.Contains("sale_") || r.Contains("unsold") || r.Contains("consequences_kept")
+                                                                          || r == "jerribeth.offered_signature" || r == "jerribeth.fate_note_prepared"))
+            .Select(s => s.Id).OrderBy(x => x).ToArray();
+        check(lateLetters.SequenceEqual(new[] { "jerribeth.commission", "jerribeth.evening", "jerribeth.future",
+                                               "jerribeth.guise", "jerribeth.invitation", "jerribeth.price", "jerribeth.question" }),
+            "The toasted late entry has more than the core courtship: " + string.Join(",", lateLetters));
         var fe = future.Nodes.Single(n => n.Id == "future_entry").Choices;
         check(fe[0].Next == "start" && fe[1].Next == "short_future" && fe[2].Next == "her_terms" && fe[3].Next == "her_terms_short",
             "future_entry choices reordered instead of appended.");

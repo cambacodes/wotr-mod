@@ -416,6 +416,61 @@ FUTURE_NODES = [
       c('[Let the silence stand.]', flags=("jerribeth.closed", NO_FORFEIT))),
 ]
 
+# The forfeit is named, so the contract exists, and she collects on it in person the same night (Directive 12: the cut
+# lands at the start of the act). Alive or toasted, she comes through the door by the road demons use; the tenant has no
+# body to bring, so she builds one in the house she rents.
+_KEEP = ('[Keep the next evening for her.]',)
+IN_PERSON = [
+    nar("arrival", '''{n}The frame goes dark and stays dark. You are reaching to turn it over when someone knocks at the door: three knocks, precisely spaced, the way a clerk knocks.{/n}
+{n}She is on the threshold when you open it. Not an image. The lamplight finds the edges of her carapace and does not slide off them. She is taller than the frame ever let her look, and she smells of cold stone and something sweet and spoiled, like fruit left on an altar.{/n}''',
+      c("Continue", "arrival_terms")),
+    j("arrival_terms", '''"A contract wants a signature in the signatory's own hand. Mine is here."
+{n}She lifts it: long, jointed, clawed at the tips, very still.{/n}
+"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not sign things at a distance. Which face do you want across the table, Commander?"''',
+      c('"Your own. All of it."', "own"),
+      c('"The guise. I know who is wearing it."', "guise")),
+    j("own", '''{n}She lets the last of the pretence fall away and steps inside, and the room is suddenly too small for her. Her antennae brush the lintel. Her wings, folded, rasp against the doorframe like pages turning.{/n}
+"Most people close their eyes, the first time."
+{n}You do not. She comes closer, one deliberate step at a time, and stops when there is no more room to stop. Her clawed fingers find the fastenings at your collar and undo them one by one, with the care she gave the locusts, and she watches your face the whole time to see what each one costs you.{/n}''',
+      c("Continue", "threshold")),
+    j("guise", '''{n}The elven woman who steps inside is exactly the one the frame showed you, down to the seam of light along her jaw that she has left there on purpose, so that you will not forget.{/n}
+"I made her for you. It seemed only fair that you should unwrap her."
+{n}She takes your hands and sets them at her waist, where the illusion is warm and the thing beneath it is hard and ridged and moving under your palms. She watches you feel the difference. She enjoys it far more than the face would suggest.{/n}''',
+      c("Continue", "threshold")),
+    nar("threshold", '''{n}She backs you toward the bed without appearing to push, the way she herded Wintersun: by making every other direction less interesting. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
+{n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}
+"Terms accepted," {n}she says, very softly, against your ear, and lowers herself onto you.{/n}''',
+      c("Continue", "morning")),
+    nar("morning", '''{n}She is gone before the watch changes. The sheets smell of cold stone. There are four small crescents on each of your wrists where her claws rested, very precise, as if she had counted them.{/n}
+{n}Tucked into the frame, where the image should be, is a note in a fine, impatient hand: "Countersigned. The forfeit clause stands. I have not decided which memory. You will be the second to know."{/n}''',
+      c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
+      c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
+    j("tenant_room", '''"You cannot open a door to me, Commander. I live on the wrong side of it."
+{n}The frame goes dark. The voice does not. It moves, instead: from behind your left eye to the back of your skull, and then, impossibly, down.{/n}
+"So I shall do what I did in Wintersun. I shall build a room, and make you believe in it, and this time I shall be in it too."''',
+      c("Continue", "tenant_host", requires=(HOST,)),
+      c("Continue", "tenant_body", forbids=(HOST,))),
+    j("tenant_host", '''"I could have come to you in the man from the stockade. He is clean, and he would not have minded, since he is not in there any more. I did not think you would want the leavings."''',
+      c("Continue", "tenant_body")),
+    nar("tenant_body", '''{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}
+{n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
+"I know where every nerve in this house runs," {n}she says.{/n} "I have been reading the plans for months."
+{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists, and lowers herself onto you.{/n}''',
+      c("Continue", "tenant_morning")),
+    nar("tenant_morning", '''{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}
+{n}Behind your left eye, something neat and patient is very pleased with itself.{/n} "Countersigned. The forfeit clause stands. Pay the rent on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it."''',
+      c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
+      c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
+]
+
+# JER-08 (rest budget, Trickster full roster): the purchaser/counteroffer campaign (offered_signature and the ten letters
+# that chain from it) does not open on a Trickster run; a save already inside it continues. A Commander who met her only
+# through the Chapter 5 toast has one chapter left: the courtship ends at the promise, and the endings take it from there.
+TRICKSTER_CAMPAIGN_ENTRY = "jerribeth.offered_signature"
+LATE_ENTRY_CUT = ("jerribeth.ordinary", "jerribeth.farewell_review", "jerribeth.another_evening", "jerribeth.farewell",
+                  # these read things only a Commander who met her in Chapters 3-4 has seen (her Xanthir, her refuge)
+                  "jerribeth.collection", "jerribeth.refuge", "jerribeth.patron")
+
 
 def _scene(by_id, id):
     if id not in by_id:
@@ -482,6 +537,22 @@ def integrate(payload):
     entry["Choices"].append(c(short["Text"], "her_terms_short", requires=(*short["Requires"], "trickster.ever"),
                               forbids=tuple(f for f in short["Forbids"] if f != "trickster.ever")))
     future["Nodes"].extend(FUTURE_NODES)
+    # The committing answers of a Trickster contract (a named forfeit) lead to her visit; the originals serve every
+    # other run.
+    promise = _node(future, "promise")
+    for choice in list(promise["Choices"]):
+        _gate(choice, forbids=(FORFEIT,))
+        promise["Choices"].append(c(choice["Text"], "arrival", requires=(FORFEIT,), forbids=(RETURNED,), flags=tuple(choice["Set"])))
+        promise["Choices"].append(c(choice["Text"], "tenant_room", requires=(FORFEIT, RETURNED), flags=tuple(choice["Set"])))
+    short_future = _node(future, "short_future")
+    keep = short_future["Choices"][0]
+    _gate(keep, forbids=(FORFEIT,))
+    short_future["Choices"].append(c(keep["Text"], "arrival", requires=(FORFEIT,), forbids=(RETURNED,), flags=tuple(keep["Set"])))
+    short_future["Choices"].append(c(keep["Text"], "tenant_room", requires=(FORFEIT, RETURNED), flags=tuple(keep["Set"])))
+    future["Nodes"].extend(IN_PERSON)
+    _scene(by_id, TRICKSTER_CAMPAIGN_ENTRY)["Forbids"].append("trickster.ever")
+    for id in LATE_ENTRY_CUT:
+        _scene(by_id, id)["Forbids"].append(MET_BY_TOAST)
 
     # Edit 4: price and evening know what she is to the Commander now.
     price = _scene(by_id, "jerribeth.price")
