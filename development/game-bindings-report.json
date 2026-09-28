@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-dorgelinda\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1796,
-  "unique_targets": 463,
+  "binding_uses": 1905,
+  "unique_targets": 492,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -64,6 +64,10 @@
     },
     "ca2d58c5c65723945857e04fb85d30ce": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Diplomacy.jbp",
+      "type": "BlueprintUnit"
+    },
+    "8692bff6041c47a0b13158d5977f291b": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Logistics.jbp",
       "type": "BlueprintUnit"
     },
     "565ccab37e2475742b043ec912a750fa": {
@@ -157,6 +161,98 @@
     "60585f7319a294147a54f440865b21a2": {
       "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
       "type": "BlueprintCue"
+    },
+    "1f5aae1aab3b5b34ea3a0cbb1d0ca0b9": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_4/AnswersList_0015.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "10ccdfab931aed74fb90f4f3c0f467f1": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_4/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "3de8c946e5e8fca46bfd39dfd4f9aa61": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_4/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "cba15a10b7929e44ca32745529948d0c": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "7c5855fd836e8ce46b5104bffd3c8ca0": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "647f755c8107d404a9ed894923d1d732": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "76349e9bb678de3468e70c87c8e777ae": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
+    "75690b4f1e8fa734b8699b454c9137d2": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/Cue_0046.jbp",
+      "type": "BlueprintCue"
+    },
+    "572c743536d811440941ae1f5f49d85c": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/Cue_0047.jbp",
+      "type": "BlueprintCue"
+    },
+    "513decde8a1bc7143bb2828521dad79f": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/Cue_0048.jbp",
+      "type": "BlueprintCue"
+    },
+    "c68a84b0a5ea6e04abe5a6a54ce17ad4": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_5/Cue_0049.jbp",
+      "type": "BlueprintCue"
+    },
+    "e247ef321268e0f4da5f20edb24985f5": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_6/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "a9d4895276ebb3449a00c31ad9191b40": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_6/Cue_0050.jbp",
+      "type": "BlueprintCue"
+    },
+    "809f75ce119a3a84eac7c107e02b124c": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_6/Cue_0051.jbp",
+      "type": "BlueprintCue"
+    },
+    "38132221ce5c4504ca6a0567c18b0f8f": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_7/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "87957683a0ae2ed4983aa17ae0965d86": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_7/Cue_0050.jbp",
+      "type": "BlueprintCue"
+    },
+    "e87c9eebfc7d1e74aacaf8a5678398b6": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_7/Cue_0051.jbp",
+      "type": "BlueprintCue"
+    },
+    "bf9ab125ca2d1694e82a0cb0ad95dfdd": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_8-1/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "059df5b17bf8dd74fa293a2ec6fe5fb4": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_8-1/Cue_0075.jbp",
+      "type": "BlueprintCue"
+    },
+    "c25b7d5ecaab416479e23e41d8f11e94": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_8-1/Cue_0095.jbp",
+      "type": "BlueprintCue"
+    },
+    "6d100853ced69704589c1973724c1f5d": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_8-2/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "fa57cf97ea01bf34e9a30f6ad444381e": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_Officer/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "16083b4c429389c45aece47df3d2d590": {
+      "path": "World/Crusade/RankUps/Logistics/Logistics_Officer/Answer_0008.jbp",
+      "type": "BlueprintAnswer"
     },
     "f21279d12e1c70449bd037e75d7fd4a7": {
       "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
@@ -456,6 +552,14 @@
     },
     "1543b97943fa553469f25be07210c868": {
       "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "8a5d9a9b77b581b4f82ac7a06602fc7e": {
+      "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0009.jbp",
+      "type": "BlueprintCue"
+    },
+    "6a98741751820244981e3de2edd5e41b": {
+      "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0018.jbp",
       "type": "BlueprintCue"
     },
     "09780c4296b211f40b3ef6e34fabffc3": {
@@ -842,6 +946,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/DiplomacyOfficer_InDrezen.jbp",
       "type": "BlueprintEtude"
     },
+    "c6be8cc816ed47e6929735f877abb229": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/LogisticsOfficer_InDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
     "49839ba15f34bee469c4f093dace0811": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/BlindCarver_Dead.jbp",
       "type": "BlueprintEtude"
@@ -1014,6 +1122,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannInParty.jbp",
       "type": "BlueprintEtude"
     },
+    "7efcde13580d70648896ee8ae33b26f2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    },
     "ca3799e579c3eaa48a6625aa456d1840": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
       "type": "BlueprintEtude"
@@ -1036,6 +1148,10 @@
     },
     "dbc267b73c168f345bc192b5eeffabb2": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/NenioCompanion/NenioStates/Nenio_GoAway.jbp",
+      "type": "BlueprintEtude"
+    },
+    "fa3406f9d21cac247b4181a41027787d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/RegillCompanion/RegillInParty.jbp",
       "type": "BlueprintEtude"
     },
     "6596f51f8e640384189c6708bd55ed50": {

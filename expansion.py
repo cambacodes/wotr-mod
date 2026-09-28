@@ -49,6 +49,7 @@ from storylines import soana_trickster
 from storylines import aranka_trickster
 from storylines import gesmerha_trickster
 from storylines import seelah_trickster
+from storylines import dorgelinda_trickster, dorgelinda_ledger
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -346,6 +347,12 @@ def make_expansion(*, independent_tirabade=True):
     if "seelah" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(seelah_trickster.SCENES))
         seelah_trickster.integrate(payload)
+    # Dorgelinda Stranglehold: a new relationship, opened only by the Trickster audit (dorgelinda_trickster).
+    payload["Relationships"]["dorgelinda"] = copy.deepcopy(dorgelinda_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(dorgelinda_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(dorgelinda_ledger.SCENES))
+    dorgelinda_trickster.integrate(payload)
+    dorgelinda_ledger.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

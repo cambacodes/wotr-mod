@@ -116,6 +116,11 @@ READ_TERMS = '''"Illusions are my people's prerogative, Commander, and they are 
 {n}She opens the fan and looks at you over the top of it.{/n}
 "You have kept an attaché from her capital in the middle of a revolt. You dismissed her from a council table and adjourned her from a wall, in front of the watch. How very public. Nerosyan will want to know why I am late, and I shall want something to tell them."'''
 
+# Dorgelinda's audit is read, never required (doc 03 §2.11).
+DORGELINDA_PRIMED = "dorgelinda.trickster.primed"
+LEDGER_TERMS = '''{n}She lets the fan fall shut against her palm.{/n}
+"Your quartermaster tells me a warehouse walked into your personal account. You and she keep books the same way, Commander: one line for the Crusade, and one for what the Crusade does not know it has paid."'''
+
 physical("konomi.trickster.dismissed.recess", "The third morning", '"Lady Konomi."', [
     nar("start", '''{n}Lady Konomi's carriage left Drezen by the east gate at dawn. At noon it arrived at Drezen by the east gate. The driver swore on his mother and on Erastil that he never turned the horses. At dusk it happened again.{/n}
 {n}On the third morning she is standing in her old office in front of the swept desk, fan closed, travelling cloak still on. When you come in she steps back over the threshold and forward over it again, very deliberately, watching her own feet.{/n}
@@ -132,7 +137,8 @@ physical("konomi.trickster.dismissed.recess", "The third morning", '"Lady Konomi
 "I heard a Commander being childish from a wall, and I let the curtain stay shut so that you could watch me not hearing it. I heard a jest. I did not hear a clause." {n}Something sharp and pleased moves behind her eyes.{/n} "I shall not make that mistake twice."''',
       c("Continue", "read")),
     k("read", READ_TERMS,
-      c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT))),
+      c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT), forbids=(DORGELINDA_PRIMED,)),
+      c("Continue", "read_ledger", requires=(DORGELINDA_PRIMED,))),
     k("outfoxed", '''"Circular."
 {n}She lets the word hang in the air a moment longer than it deserves.{/n}
 "I saw the seam in your road on the second morning, Commander. A stone under the gate that was not there when I arrived in this city, and is there only for me. I stayed for the third turn to watch you work. You work very prettily. You also lie to a kitsune about an illusion, to her face, in her own office."
@@ -140,6 +146,12 @@ physical("konomi.trickster.dismissed.recess", "The third morning", '"Lady Konomi
 "Now the price is mine to set, and I shall set it high."''',
       c("Continue", "read_outfoxed")),
     k("read_outfoxed", READ_TERMS,
+      c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT, OUTFOXED), forbids=(DORGELINDA_PRIMED,)),
+      c("Continue", "read_outfoxed_ledger", requires=(DORGELINDA_PRIMED,))),
+    # Appended: Dorgelinda's audit (dorgelinda_trickster) as a node variant; it never gates the recess.
+    k("read_ledger", LEDGER_TERMS,
+      c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT))),
+    k("read_outfoxed_ledger", LEDGER_TERMS,
       c('[Hear her terms] "Name them."', flags=(RECESSED, DEBT, OUTFOXED))),
 ], requires=("trickster.ever", "konomi.dismissed", "konomi.office_completed", LATE),
    forbids=(RECESSED,), delay=48)

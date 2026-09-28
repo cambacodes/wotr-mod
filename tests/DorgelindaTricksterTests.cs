@@ -1,0 +1,320 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Tirabade;
+
+// Dorgelinda Stranglehold, Trickster (Writer/handoffs/trickster/dorgelinda-stranglehold.md; F16): "Nothing's missing".
+// One block per spec rules test (Trk_Dorgelinda_*), the shape of each hook, and the weekly counts that make the audit a
+// courtship (dorgelinda_ledger): every beat reachable on its own path, the intimate night only after the commit.
+internal static class DorgelindaTricksterTests
+{
+    private const string Unit = "8692bff6041c47a0b13158d5977f291b";
+    private const string Drezen = "2570015799edf594daf2f076f2f975d8";
+    private const string Hub = "fa57cf97ea01bf34e9a30f6ad444381e";
+    private const string P = "dorgelinda.trickster.";
+    private const string L = "dorgelinda.ledger.";
+
+    private static Snapshot World(Story story, int chapter, params string[] flags)
+    {
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        state.Flags.UnionWith(flags);
+        state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
+        state.AvailableContacts.Add(Unit);
+        Rules.Complete(story, state);
+        foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
+        return state;
+    }
+
+    private static Snapshot Later(Story story, Snapshot state, int hours, int? chapter = null)
+    {
+        var later = Program.Copy(state);
+        later.Hour += hours;
+        if (chapter != null) later.Chapter = chapter.Value;
+        Rules.Complete(story, later);
+        return later;
+    }
+
+    internal static void Run(Story story, Action<bool, string> check)
+    {
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        var countersign = S(P + "caravans.countersign");
+        var recount = S(P + "tribunal.recount");
+        var stocktake = S(P + "office.stocktake");
+        var open = S(P + "audit.open");
+        var weekly = S(P + "after.weekly_count");
+        var methods = S(P + "after.fellows_methods");
+        var commit = S(P + "after.commit");
+        var secondAsk = S(P + "after.second_ask");
+        var pages = story.Scenes.Where(s => s.Relationship == "dorgelinda" && s.Owner == "DorgelindaEpilogue").ToArray();
+        var reactions = story.Scenes.Where(s => s.Relationship == "dorgelinda" && s.Reaction).ToArray();
+        var own = story.Scenes.Where(s => s.Relationship == "dorgelinda" && !s.Reaction && s.Owner == "Dorgelinda").ToArray();
+        var ledger = own.Where(s => s.Id.StartsWith(L, StringComparison.Ordinal)).ToArray();
+        bool Any(Snapshot w, params Scene[] scenes) => scenes.Any(s => Rules.Available(story, s, w));
+        List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w).Where(r => r.Has(scene.Id)).ToList();
+        Snapshot Pick(Scene scene, Snapshot w, params string[] flags)
+        {
+            var hit = Play(scene, w).Where(r => flags.All(r.Has))
+                .OrderBy(r => !flags.Contains("dorgelinda.closed") && r.Has("dorgelinda.closed") ? 1 : 0).FirstOrDefault();
+            check(hit != null, "No outcome of " + scene.Id + " sets " + string.Join(", ", flags));
+            return hit ?? w;
+        }
+        Choice Choice(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];
+        // The outcomes of a walk that took the named choice of the named node.
+        List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
+        {
+            var chosen = Choice(scene, node, index);
+            var hits = new List<Snapshot>();
+            var outcomes = Program.Walk(scene, w, (id, st) => { });
+            foreach (var r in outcomes)
+                if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))) hits.Add(r);
+            check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
+            return hits;
+        }
+        // Plays every available Dorgelinda scene forward and reports whether a flag is ever held.
+        bool Reaches(Snapshot start, string flag, int chapter = 5)
+        {
+            var seen = new HashSet<string>();
+            var frontier = new List<Snapshot> { start };
+            for (int depth = 0; depth < 12 && frontier.Count > 0; depth++)
+            {
+                var next = new List<Snapshot>();
+                foreach (var from in frontier)
+                {
+                    if (from.Has(flag)) return true;
+                    var w = Later(story, from, 100, chapter);
+                    foreach (var scene in own.Where(s => Rules.Available(story, s, w)))
+                        foreach (var r in Program.Walk(scene, w))
+                        {
+                            if (r.Has(flag)) return true;
+                            if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
+                        }
+                }
+                frontier = next;
+            }
+            return false;
+        }
+
+        // Shape and hooks.
+        var rel = story.Relationships["dorgelinda"];
+        check(rel.StartedFlag == "dorgelinda.started" && rel.ClosedFlag == "dorgelinda.closed" && rel.CommittedFlag == "dorgelinda.committed"
+              && rel.UnavailableFlags.SequenceEqual(new[] { "swarm" }) && rel.UnavailableOverrides.Count == 0
+              && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "dorgelinda.caravans_known", "dorgelinda.fellows_tribunal", "dorgelinda.present" }),
+            "Dorgelinda's relationship does not match the spec.");
+        check(countersign.AnswerLists.SequenceEqual(new[] { "1f5aae1aab3b5b34ea3a0cbb1d0ca0b9" })
+              && countersign.NativeReturnCue == "3de8c946e5e8fca46bfd39dfd4f9aa61" && countersign.ContactUnit == null
+              && countersign.Chapters.SequenceEqual(new[] { 3 }) && countersign.EntryMythic == "PlayerIsTrickster"
+              && countersign.EntryAlignment?.Direction == "Chaotic" && countersign.Forbids.Contains("dorgelinda.fellows_tribunal"),
+            "The countersign is not an inline Trickster answer on the Logistics_4 verdict list, before the tribunal.");
+        check(recount.AnswerLists.SequenceEqual(new[] { "cba15a10b7929e44ca32745529948d0c" })
+              && recount.NativeReturnCue == "647f755c8107d404a9ed894923d1d732" && recount.ContactUnit == null
+              && recount.Chapters.SequenceEqual(new[] { 3 }) && recount.EntryMythic == "PlayerIsTrickster",
+            "The recount is not an inline preface on the Logistics_5 verdict list (Chapter 3).");
+        check(recount.Nodes.Single(n => n.Id == "count").Choices.Count == 2
+              && Choice(recount, "count", 0).Requires.Contains(P + "cost.carts_signed")
+              && Choice(recount, "count", 1).Forbids.Contains(P + "cost.carts_signed"),
+            "The recount's dispatch node does not split on the rider.");
+        foreach (var index in new[] { 0, 1 })
+            check(Choice(recount, "audit", index).Crusade?.Resource == "Materials" && Choice(recount, "audit", index).Crusade!.Amount == -200,
+                "The warehouse written off is not paid for in Materials: audit/" + index);
+        check(Choice(stocktake, "sign", 0).Crusade?.Resource == "Materials" && Choice(stocktake, "sign", 0).Crusade!.Amount == -100
+              && stocktake.Chapters.SequenceEqual(new[] { 5 }) && stocktake.EntryMythic == "PlayerIsTrickster",
+            "The stocktake is not the Chapter 5 Trickster signature with its frozen column.");
+        foreach (var s in own.Where(s => s != countersign && s != recount))
+            check(s.AnswerLists.SequenceEqual(new[] { Hub }) && s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen })
+                  && !Rules.IsRemote(s) && s.Forbids.Contains("dorgelinda.closed"),
+                "A Dorgelinda scene is not at her own desk in Drezen: " + s.Id);
+        foreach (var s in story.Scenes.Where(s => s.Relationship == "dorgelinda"))
+        {
+            check(!s.Requires.Contains("swarm") && !s.TricksterDevice, "A Dorgelinda scene serves the swarm: " + s.Id);
+            foreach (var key in s.Requires.Concat(s.RequiresAnyGroups.SelectMany(g => g)))
+                check(!key.EndsWith(".dead", StringComparison.Ordinal) && !key.EndsWith("_dead", StringComparison.Ordinal)
+                      && !key.EndsWith(".closed", StringComparison.Ordinal) || key == "dorgelinda.closed",
+                    "Dorgelinda needs someone dead or closed: " + s.Id + " " + key);
+        }
+        var dirty = Choice(methods, "dirty", 0);
+        check(dirty.Crusade?.Resource == "Materials" && dirty.Crusade.Amount == 150 && dirty.Alignment?.Direction == "Evil",
+            "Keeping the Fellows' book neither pays nor stains.");
+        check(Choice(commit, "yes_boots", 0).Crusade?.Amount == -200 && Choice(secondAsk, "price", 0).Crusade?.Amount == -100,
+            "The boots or the full accounting are free.");
+        check(reactions.Length == 8 && reactions.All(r => r.Nodes.Count == 1)
+              && reactions.Where(r => r.Owner == "Lann").All(r => r.Requires.Contains("lann.in_party") && r.Forbids.Contains("lann.dead"))
+              && reactions.Where(r => r.Owner == "Regill").All(r => r.Requires.Contains("regill.in_party") && r.Forbids.Contains("regill.dead"))
+              && reactions.Where(r => r.Owner == "Konomi").All(r => r.Requires.Contains("konomi.in_office")
+                  && r.ForbidOverrides["konomi.dismissed"] == "konomi.trickster.returned"),
+            "The reactions are not exactly Konomi, Regill and Lann behind their guards.");
+        check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+            "The epilogue pages carry effects or are missing.");
+        check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard" }),
+            "The late commit is not derived from the second book.");
+
+        // Trk_Dorgelinda_Countersign: the rider, signed at the caravan council, before the tribunal.
+        var caravans = World(story, 3, "trickster", "dorgelinda.caravans_known");
+        check(Rules.Available(story, countersign, caravans) && !Rules.Available(story, recount, caravans),
+            "Trk_Dorgelinda_Countersign: the countersign is shut, or the recount opens early.");
+        var signed = After(countersign, caravans, "rider", 0).First();
+        check(signed.Has(P + "cost.carts_signed") && countersign.EntryAlignment?.Value == 1,
+            "Trk_Dorgelinda_Countersign: the rider is not written, or the entry does not shift Chaotic.");
+        var tribunal = Later(story, signed, 24);
+        tribunal.Flags.UnionWith(new[] { "dorgelinda.fellows_tribunal", "dorgelinda.present" });
+        check(Rules.Available(story, recount, tribunal) && !Rules.Available(story, countersign, tribunal),
+            "Trk_Dorgelinda_Countersign: the recount does not follow the rider.");
+        check(Play(countersign, caravans).Any(r => !r.Has(P + "cost.carts_signed")), "The pen cannot be handed back.");
+        check(Reaches(signed, "dorgelinda.committed", 3) || Reaches(Pick(recount, tribunal, P + "primed"), "dorgelinda.committed"),
+            "Trk_Dorgelinda_Countersign: no road from the rider to the commit.");
+
+        // Trk_Dorgelinda_Prepared: the rider read at the tribunal.
+        var prepared = World(story, 3, "trickster", "dorgelinda.fellows_tribunal", "dorgelinda.present", P + "cost.carts_signed");
+        var prep = After(recount, prepared, "audit", 0).First();
+        check(prep.Has(P + "primed") && prep.Has(P + "cost.audit") && !prep.Has(P + "cost.late"),
+            "Trk_Dorgelinda_Prepared: the prepared recount reads as late.");
+        check(Rules.Available(story, open, Later(story, prep, 48)), "Trk_Dorgelinda_Prepared: the audit does not open 48 h later.");
+        check(!Rules.Available(story, open, Later(story, prep, 24)), "The audit opens before two days have passed.");
+        check(Reaches(prep, "dorgelinda.committed"), "Trk_Dorgelinda_Prepared: no road to the commit.");
+
+        // Trk_Dorgelinda_Tribunal: the late line, ink wet, witnessed.
+        var late = World(story, 3, "trickster", "dorgelinda.fellows_tribunal", "dorgelinda.present");
+        var wet = After(recount, late, "audit", 1).First();
+        check(wet.Has(P + "primed") && wet.Has(P + "cost.audit") && wet.Has(P + "cost.late") && !wet.Has(P + "cost.carts_signed"),
+            "Trk_Dorgelinda_Tribunal: the late line does not cost the late terms.");
+        check(Rules.Available(story, open, Later(story, wet, 48)), "Trk_Dorgelinda_Tribunal: no audit after the wet ink.");
+        check(Play(open, Later(story, wet, 48)).Where(r => r.Has(P + "returned")).All(r => r.Has(P + "cost.twice_weekly")),
+            "Wet ink does not cost twice-weekly audits.");
+        check(Reaches(wet, "dorgelinda.committed"), "Trk_Dorgelinda_Tribunal: no road to the commit.");
+
+        // Trk_Dorgelinda_Return: the audit opens; the commit is not in the return scene.
+        var primed = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "primed");
+        var back = After(open, primed, "terms", 0).First();
+        check(back.Has(P + "returned") && back.Has("dorgelinda.started") && !back.Has("dorgelinda.committed"),
+            "Trk_Dorgelinda_Return: the audit does not return her, or commits.");
+        check(open.Nodes.SelectMany(n => n.Choices).All(c => !c.Set.Contains("dorgelinda.committed")), "The return scene commits.");
+        var afterBack = Later(story, back, 48);
+        check(Rules.Available(story, weekly, afterBack) && !Rules.Available(story, commit, afterBack),
+            "Trk_Dorgelinda_Return: the weekly count does not follow, or the commit skips it.");
+        check(Play(open, primed).Any(r => r.Has("dorgelinda.closed")), "Silencing her audit is not her hard no.");
+        check(Reaches(back, "dorgelinda.committed"), "Trk_Dorgelinda_Return: no road to the commit.");
+
+        // Trk_Dorgelinda_Commit.
+        var ready = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "methods_heard", P + "hands_clean");
+        check(Rules.Available(story, commit, ready), "Trk_Dorgelinda_Commit: the commit is shut.");
+        var yes = After(commit, ready, "yes", 0).First();
+        check(yes.Has("dorgelinda.committed") && !yes.Has(P + "declined"), "Trk_Dorgelinda_Commit: yes does not commit.");
+        check(Play(commit, ready).Any(r => r.Has(P + "declined") && !r.Has("dorgelinda.committed")),
+            "Her 'Not today' is not reachable.");
+        var boots = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "methods_heard",
+            P + "hands_dirty", P + "cost.boots_owed");
+        check(After(commit, boots, "yes_boots", 0).All(r => r.Has(P + "cost.boots_paid")), "The last pair of boots is not paid.");
+
+        // Trk_Dorgelinda_Declined: the priced second ask.
+        var declined = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "methods_heard",
+            P + "declined", P + "after.commit");
+        check(Rules.Available(story, secondAsk, Later(story, declined, 72)) && !Rules.Available(story, commit, declined),
+            "Trk_Dorgelinda_Declined: the second ask is shut, or the commit reopens.");
+        var told = After(secondAsk, Later(story, declined, 72), "told", 0).First();
+        check(told.Has("dorgelinda.committed") && told.Has(P + "cost.told_all"), "Trk_Dorgelinda_Declined: telling all does not commit.");
+        check(Play(secondAsk, Later(story, declined, 72)).Any(r => r.Has("dorgelinda.closed")), "Her hard no is not reachable.");
+
+        // Trk_Dorgelinda_Stocktake: no tribunal by Chapter 5.
+        var office = World(story, 5, "trickster", "dorgelinda.present");
+        check(Rules.Available(story, stocktake, office) && !Rules.Available(story, recount, office),
+            "Trk_Dorgelinda_Stocktake: the stocktake is shut, or the recount opens.");
+        var abyss = After(stocktake, office, "sign", 0).First();
+        check(abyss.Has(P + "primed") && abyss.Has(P + "cost.audit") && abyss.Has(P + "cost.abyss_signed"),
+            "Trk_Dorgelinda_Stocktake: the signature does not prime the audit.");
+        check(Rules.Available(story, open, Later(story, abyss, 48)), "Trk_Dorgelinda_Stocktake: no audit follows.");
+        check(Reaches(abyss, "dorgelinda.committed"), "Trk_Dorgelinda_Stocktake: no road to the commit.");
+
+        // Trk_Dorgelinda_Exclusive.
+        var both = World(story, 5, "trickster", "dorgelinda.fellows_tribunal", "dorgelinda.present");
+        check(!Rules.Available(story, stocktake, both), "Trk_Dorgelinda_Exclusive: the stocktake opens after a tribunal.");
+        check(Rules.Available(story, recount, World(story, 3, "trickster", "dorgelinda.fellows_tribunal", "dorgelinda.present")),
+            "Trk_Dorgelinda_Exclusive: the recount is shut at its tribunal.");
+
+        // Trk_Dorgelinda_FailedPath: a Chapter 3 primer survives a lost path; a new trick needs the live one.
+        var failed = World(story, 3, "trickster.ever", "trickster.failed", P + "primed", "dorgelinda.present");
+        check(Rules.Available(story, open, failed) && !Any(failed, recount, countersign),
+            "Trk_Dorgelinda_FailedPath: the audit is shut, or a device opens without the live path.");
+        var failed5 = World(story, 5, "trickster.ever", "trickster.failed", "dorgelinda.present");
+        check(!Any(failed5, stocktake, open), "Trk_Dorgelinda_FailedPath_Ch5: a lost path still signs the stocktake.");
+
+        // Trk_Dorgelinda_Silenced: her hard no closes everything of hers and nothing of anyone else's.
+        var silenced = World(story, 5, "trickster", "dorgelinda.present", P + "primed", "dorgelinda.closed");
+        check(!Any(silenced, open, weekly, commit) && !ledger.Any(s => Rules.Available(story, s, silenced)),
+            "Trk_Dorgelinda_Silenced: a closed audit still opens a scene.");
+        foreach (var s in story.Scenes.Where(s => s.Relationship != "dorgelinda"))
+            check(!s.Requires.Contains("dorgelinda.closed") && !s.Forbids.Contains("dorgelinda.closed") || s.Relationship == "dorgelinda",
+                "Another route reads Dorgelinda's closure: " + s.Id);
+
+        // The weekly counts: a courtship between the audit and the commit, each beat on its own path.
+        var hand = S(L + "the_hand");
+        var grip = S(L + "stranglehold");
+        var debts = S(L + "old_debts");
+        var council = S(L + "after_the_council");
+        var gate = S(L + "the_west_gate");
+        var warehouse = S(L + "the_warehouse");
+        var bartley = S(L + "the_corporals_account");
+        var vrock = S(L + "the_vrocks_driver");
+        var receipts = S(L + "receipts");
+        var rations = S(L + "half_rations");
+        var weight = S(L + "weight_discrepancy");
+        var revels = S(L + "the_kings_bill");
+        var faith = S(L + "buying_forgiveness");
+        var night = S(L + "after_hours");
+        var morning = S(L + "morning_count");
+        var afterWar = S(L + "after_the_war");
+        var inquiry = S(L + "the_inquiry");
+        var forward = S(L + "carried_forward");
+        var counted3 = World(story, 3, "trickster", "trickster.ever", "dorgelinda.present", "dorgelinda.fellows_tribunal", P + "primed",
+            P + "cost.carts_signed", P + "cost.audit", P + "returned", P + "counted");
+        check(Rules.Available(story, hand, counted3) && Rules.Available(story, warehouse, counted3) && Rules.Available(story, vrock, counted3),
+            "The Chapter 3 weekly counts do not open after the first count.");
+        var s3 = counted3;
+        foreach (var beat in new[] { hand, grip, debts, council, gate })
+        {
+            s3 = Later(story, s3, 72);
+            check(Rules.Available(story, beat, s3), "The weekly counts break their chain at " + beat.Id);
+            s3 = Play(beat, s3).First();
+        }
+        check(!Rules.Available(story, warehouse, World(story, 3, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "cost.abyss_signed")),
+            "Bartley's warehouse opens on a run with no tribunal.");
+        check(!Rules.Available(story, vrock, World(story, 3, "trickster.ever", "dorgelinda.present", "dorgelinda.fellows_tribunal", P + "returned", P + "counted", P + "cost.late")),
+            "The vrock's driver opens without the rider.");
+        var wh = Play(warehouse, counted3);
+        check(wh.Any(r => r.Has(L + "potions_ours")) && wh.Any(r => r.Has(L + "potions_bartley")), "The potions cannot go either way.");
+        check(Rules.Available(story, bartley, Later(story, wh.First(), 72)), "Bartley's account does not follow the warehouse.");
+        check(!Rules.Available(story, night, Later(story, counted3, 100, 5)), "The night comes before the commit.");
+        var counted5 = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "primed", P + "cost.carts_signed",
+            P + "returned", P + "counted");
+        check(Rules.Available(story, receipts, counted5) && Rules.Available(story, weight, counted5),
+            "The Chapter 5 counts do not open after the Abyss.");
+        check(!Rules.Available(story, receipts, World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "cost.abyss_signed")),
+            "The Abyss receipts open for a Commander she only met in Chapter 5.");
+        check(!Rules.Available(story, revels, counted5)
+              && Rules.Available(story, revels, World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.merry_city")),
+            "The King's bill does not wait for the Trickster's coronation.");
+        var fed = Play(rations, Later(story, Play(receipts, counted5).First(), 72));
+        check(fed.Count > 0 && Rules.Available(story, faith, Later(story, fed.First(), 72)), "Faith does not follow the rations.");
+        var lovers = World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "methods_heard", P + "hands_clean",
+            "dorgelinda.committed");
+        check(Rules.Available(story, night, Later(story, lovers, 12)), "The night does not follow the commit.");
+        var nights = Play(night, Later(story, lovers, 12));
+        check(nights.All(r => r.Has(L + "night_kept")) && night.Nodes.Any(n => n.Id == "threshold"),
+            "The night does not reach its threshold.");
+        var mornings = Play(morning, Later(story, nights.First(), 6));
+        check(mornings.Count > 0 && Rules.Available(story, afterWar, Later(story, mornings.First(), 24))
+              && Rules.Available(story, inquiry, Later(story, mornings.First(), 48)),
+            "The morning after has no consequences to follow.");
+        var inquiries = Play(inquiry, Later(story, mornings.First(), 48));
+        check(inquiries.Any(r => r.Has(L + "true_books_sent")) && inquiries.Any(r => r.Has(L + "clean_copy_sent"))
+              && inquiries.Any(r => r.Has(L + "her_name_sent")), "The inquiry's three answers are not all reachable.");
+        check(Choice(inquiry, "choice", 0).Crusade?.Resource == "Favors" && Choice(inquiry, "choice", 1).Alignment?.Direction == "Chaotic",
+            "The inquiry's answers cost nothing.");
+        check(Rules.Available(story, forward, Later(story, inquiries.First(), 48)), "The last march does not follow the inquiry.");
+        var committedPage = S(P + "epilogue.committed").Nodes[0];
+        foreach (var flag in new[] { L + "true_books_sent", L + "clean_copy_sent", L + "her_name_sent", L + "receipt_signed" })
+            check(committedPage.Paragraphs.Any(p => p.Requires.Contains(flag)), "Her epilogue forgets " + flag);
+        foreach (var s in ledger)
+            foreach (var node in s.Nodes)
+                check(!node.Text.Contains("you say") && !node.Text.Contains("you tell her"),
+                    "The Commander speaks inside her node: " + s.Id + "/" + node.Id);
+    }
+}
