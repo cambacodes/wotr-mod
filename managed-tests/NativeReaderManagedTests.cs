@@ -19,7 +19,7 @@ internal static class NativeReaderManagedTests
     private const BindingFlags PrivateStatic = BindingFlags.NonPublic | BindingFlags.Static;
 
     public static IEnumerable<string> NativeIds(Story story) => new[] { Flag, Item, Quest, Objective }
-        .Concat(story.UnlockableFlags.Values).Concat(story.InventoryItems.Values).Concat(story.StartedQuests.Values)
+        .Concat(story.UnlockableFlags.Values).Concat(story.InventoryItems.Values).Concat(story.StartedQuests.Values).Concat(story.MainCharacterFacts.Values)
         .Concat(story.QuestObjectives.Values.Select(v => v[0]));
 
     private static T Seed<T>(string guid) where T : SimpleBlueprint, new()
@@ -40,6 +40,7 @@ internal static class NativeReaderManagedTests
         foreach (var guid in story.UnlockableFlags.Values) check(Is(guid, "BlueprintUnlockableFlag"), "UnlockableFlags binding is not a BlueprintUnlockableFlag: " + guid);
         foreach (var guid in story.InventoryItems.Values) check(IsItem(guid), "InventoryItems binding is not a BlueprintItem: " + guid);
         foreach (var guid in story.StartedQuests.Values) check(Is(guid, "BlueprintQuest"), "StartedQuests binding is not a BlueprintQuest: " + guid);
+        foreach (var guid in story.MainCharacterFacts.Values) check(Is(guid, "BlueprintFeature"), "MainCharacterFacts binding is not a BlueprintFeature: " + guid);
         foreach (var value in story.QuestObjectives.Values) check(Is(value[0], "BlueprintQuestObjective"), "QuestObjectives binding is not an objective: " + value[0]);
 
         // Main.ReadNativeProgress over real containers: UnlockableFlagsManager values, a fresh QuestBook, an item predicate.
@@ -92,6 +93,16 @@ internal static class NativeReaderManagedTests
             quests.Clear(); foreach (var p in saved.Item3) quests.Add(p.Key, p.Value);
             objectives.Clear(); foreach (var p in saved.Item4) objectives.Add(p.Key, p.Value);
         }
-        Console.WriteLine("PASS: E10 native readers (UnlockableFlags, QuestObjectives, InventoryItems, StartedQuests) resolve archive types and read real containers.");
+        // MainCharacterFacts: every bound fact is resolved by Build, and the reader reports exactly what the unit holds.
+        var facts = (System.Collections.IDictionary)main.GetField("mainCharacterFacts", PrivateStatic)!.GetValue(null)!;
+        check(story.MainCharacterFacts.Keys.All(facts.Contains), "A MainCharacterFacts binding was not resolved by Build.");
+        var readFacts = main.GetMethod("ReadMainCharacterFacts", BindingFlags.NonPublic | BindingFlags.Static)!;
+        foreach (bool holdsFact in new[] { false, true })
+        {
+            var state = new Snapshot();
+            readFacts.Invoke(null, new object[] { new Func<Kingmaker.Blueprints.Facts.BlueprintUnitFact, bool>(_ => holdsFact), state });
+            check(story.MainCharacterFacts.Keys.All(k => state.Has(k) == holdsFact), "The main-character fact reader misreports: " + holdsFact);
+        }
+        Console.WriteLine("PASS: E10 native readers (UnlockableFlags, QuestObjectives, InventoryItems, StartedQuests, MainCharacterFacts) resolve archive types and read real containers.");
     }
 }

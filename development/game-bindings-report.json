@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1936,
-  "unique_targets": 493,
+  "binding_uses": 1958,
+  "unique_targets": 496,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -22,6 +22,10 @@
       "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
       "type": "BlueprintUnit"
     },
+    "1383f21534d8b6a45bdbdc8ddce7a187": {
+      "path": "Mythic/Trickster/UseMagicDevice/TricksterUseMagicDeviceTier2Feature.jbp",
+      "type": "BlueprintFeature"
+    },
     "2779754eecffd044fbd4842dba55312c": {
       "path": "Units/Companions/Ember/Ember_Companion.jbp",
       "type": "BlueprintUnit"
@@ -32,6 +36,10 @@
     },
     "90481a29cc75f424b9891a55c6dcbb53": {
       "path": "Units/Companions/Seelah/Seelah_NPC_Level1.jbp",
+      "type": "BlueprintUnit"
+    },
+    "81297c673b63b60448ef88a10db6bc78": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/AreeluLab/AngelTargona.jbp",
       "type": "BlueprintUnit"
     },
     "b5e867e13503c6f41bb1316705efb4a2": {
@@ -261,6 +269,10 @@
     "f21279d12e1c70449bd037e75d7fd4a7": {
       "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
       "type": "BlueprintCue"
+    },
+    "2a75fbc8e86fd514e82117c99fc9e528": {
+      "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
     },
     "190fda58a169c9340b626f1a503c696f": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0011.jbp",

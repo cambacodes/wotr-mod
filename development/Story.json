@@ -56813,7 +56813,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}\n\"My current post has put me at the Celestial Order's wayhouse just beyond Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.\n\"I do want to see you. Before you answer, there is one risk you must state plainly if your Trickster idea involves more than the road. A newly made passage might shift, close, or fail to return someone to its other end. I will not cross an untested opening, and I will not be asked to accept a risk I have not heard. If we cannot make a safe route, I will stay here. Our letters continue, and neither of us owes the other an apology for that.\n\"If you would rather let the courier carry a simple invitation, say so. If you would rather decline the visit altogether, say that too. I mean what I wrote about wanting you. I do not mean that I have already agreed to every way of getting there.\"\n{n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}\n{n}Anograt's earlier note remains in the packet, but says nothing about this evening. You do not treat her silence as an invitation or a refusal; any shared invitation would need to reach her separately, with room for her own answer.{/n}",
+          "Text": "{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}\n\"My current post has put me at the Celestial Order's wayhouse just beyond Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.\n\"I do want to see you. I have wanted it since the last packet, and I have been ashamed of how often I reread it.\n\"But I know you, a little. If there is a trick in your answer, tell me what it is before you ask me to walk through it. I spent a long time behind a barrier that someone else built for my own good. I will not step through another door I have not seen tested, not even yours. If the road is all we have, the road will do.\"\n{n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}\n{n}Anograt's earlier note is still in the packet. It says nothing about this evening, and you leave it that way.{/n}",
           "Choices": [
             {
               "Text": "[Trickster] Continue from the impossible extra door you drew on her page.",
@@ -56861,7 +56861,7 @@
         {
           "Id": "paper_setup",
           "Speaker": "Narrator",
-          "Text": "{n}The impossible page is still with you. On its copy the door appears on both faces, and the short corridor refuses to end at the edge of the paper.{/n}\nYou do not treat this as a proven portal or as permission to reach into Targona's room. It is only a pattern your Trickster power has already made strange. You can try to use that contradiction to join two real, named places on the same plane: her wayhouse and the courtyard where you would meet.\nFirst you must test the opening without sending anyone through it. If its ends will not stay where you put them, it does not become an invitation.",
+          "Text": "{n}The impossible page is still with you. On its copy the door appears on both faces, and the short corridor refuses to end at the edge of the paper.{/n}\nIt is not a portal yet. It is only a pattern your Trickster power has already made strange, and she has told you what she thinks of doors she has not seen tested. You can try to use that contradiction to join two real, named places on the same plane: her wayhouse and the courtyard where you would meet.\nFirst you must test the opening without sending anyone through it. If its ends will not stay where you put them, it does not become an invitation.",
           "Choices": [
             {
               "Text": "[Knowledge (Arcana)] Test and stabilize both ends before inviting her.",
@@ -56952,7 +56952,7 @@
         {
           "Id": "steady",
           "Speaker": "Narrator",
-          "Text": "{n}The two real anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places. It cannot wander into another room or plane, and your test shows it will remain open for the evening.{/n}\nThe known courier carries Targona a written account of the test, the way to close the passage, and the key. She reads the risk before she chooses. Her reply gives no promise that she must come; it only says she is willing to inspect the threshold herself.\nWhen she arrives at the Drezen courtyard, she examines both anchors and keeps the key. The passage stays open behind her, an ordinary route home made briefly shorter. She has chosen to cross and may leave by the same tested way whenever she wants.",
+          "Text": "{n}The two anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places every time. It will stay open for the evening.{/n}\n{n}The courier carries Targona a written account of the test, the way to close the passage, and the key. She reads every line of it. Her reply is one sentence: \"I will inspect it myself.\"{/n}\n{n}When she arrives in the Drezen courtyard she examines both anchors, slowly, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}\n\"It is well made,\" she says. \"For a trick.\"",
           "Choices": [
             {
               "Text": "Offer to walk beside her and let her choose where to begin.",
@@ -56976,7 +56976,7 @@
         {
           "Id": "falter",
           "Speaker": "Narrator",
-          "Text": "{n}The first end shifts when you test it with the dispatch pouch. You close the opening before sending the courier, and before Targona is anywhere near it.{/n}\nYou send an ordinary letter explaining exactly what failed. You do not send the key, invite her to cross, or make her risk your mistake. Targona remains at the wayhouse and answers by the same reliable courier.\n\"That was the right choice. I still want you; I do not want to be the test of whether a dangerous passage works. Let us write tonight. We can speak of meeting again when there is a route worth trusting.\"\nYou reply with affection and a small report from your day. The failed attempt changes tonight's plan, not the relationship.",
+          "Text": "{n}The first end shifts when you test it with the dispatch pouch. The pouch comes back with its seams turned inside out. You close the opening before the courier ever sees it.{/n}\n{n}You send an ordinary letter instead, and tell her exactly what failed. Targona answers by the same courier.{/n}\n\"Thank you for not sending me the key. I would have used it, and you know that, which is why I am glad you did not.\n\"Write to me tonight instead. Tell me something from your day too small for a dispatch. When there is a road worth trusting, I will walk it.\"",
           "Choices": [
             {
               "Text": "Answer her and keep the correspondence open.",
@@ -56994,7 +56994,7 @@
         {
           "Id": "road",
           "Speaker": "Narrator",
-          "Text": "{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona reads the terms there and chooses to come by the public eastern road, on foot and at her own pace.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I wanted to see whether you would let the road be enough,\" she says. \"It is. I would still like you to walk beside me.\"",
+          "Text": "{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona reads the terms there and chooses to come by the public eastern road, on foot and at her own pace.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I walked,\" she says. \"It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way.\"",
           "Choices": [
             {
               "Text": "Walk with her and let her choose where to begin.",
@@ -57018,7 +57018,7 @@
         {
           "Id": "walk",
           "Speaker": "Narrator",
-          "Text": "{n}You take the path around the courtyard rather than leading her through it. Targona chooses the slower walk along the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had declined.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Good. I would have disliked becoming responsible for your disappointment.\"\nHer mouth curves. The joke has reached its mark, but not its end.\nShe tells you that she has spent too many years being looked at as a sign: proof of protection, proof of corruption, proof that some power can do what it claims. She likes that you look at her as a woman you desire. She dislikes when desire becomes another argument that she ought to be grateful.\n\"Then let me be precise,\" you say. \"I want to kiss you. I do not think you owe me one.\"\nShe turns to face you. \"That is precise enough. Ask me again when you are closer.\"\n{n}You take one step. The rest belongs to her.{/n}",
+          "Text": "{n}You take the path around the courtyard rather than leading her through it. Targona chooses the slower walk along the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had declined.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Good. I would have disliked becoming responsible for your disappointment.\"\nHer mouth curves. The joke has reached its mark, but not its end.\n\"Everyone looks at me as a sign,\" she says. \"Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something.\" {n}She stops walking.{/n} \"You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it.\"\n{n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}\n\"Well, Commander? You came all this way on a trick. Are you going to stand there?\"",
           "Choices": [
             {
               "Text": "Ask her again, and wait for her answer.",
@@ -57042,7 +57042,7 @@
         {
           "Id": "close_passage",
           "Speaker": "Narrator",
-          "Text": "{n}You ask whether she would rather close the tested passage and take the public road home now. Targona turns the key herself; the opening folds shut at the Drezen end.{/n}\n\"Yes. I would like to walk back while the evening is still quiet. I am glad we met, and I do not want to make staying longer a test of how much I want you.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
+          "Text": "{n}You ask whether she would rather close the tested passage and take the public road home now. Targona turns the key herself; the opening folds shut at the Drezen end.{/n}\n\"Yes. I would like to walk back while the evening is still quiet.\" {n}She smiles, a little ruefully.{/n} \"If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
           "Choices": [
             {
               "Text": "Walk with her to the road and say goodnight.",
@@ -57058,7 +57058,7 @@
         {
           "Id": "close_road",
           "Speaker": "Narrator",
-          "Text": "{n}You ask whether she would rather return to the wayhouse tonight. Targona says yes; she would like to walk back while the evening is still quiet.{/n}\n\"I am glad we met. I do not want to make staying longer a test of how much I want you.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
+          "Text": "{n}You ask whether she would rather return to the wayhouse tonight. Targona says yes; she would like to walk back while the evening is still quiet.{/n}\n\"I am glad we met.\" {n}She smiles, a little ruefully.{/n} \"If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
           "Choices": [
             {
               "Text": "Walk with her to the road and say goodnight.",
@@ -57092,7 +57092,7 @@
         {
           "Id": "kiss",
           "Speaker": "Narrator",
-          "Text": "{n}You ask her again. Targona's reply is to draw you close by the front of your coat and kiss you with a certainty that makes the careful question worth asking.{/n}\nThe kiss is warm, unhurried, and unmistakably hers. Her thumb rests beneath your jaw. When she lets you breathe, she keeps her brow against yours.\n\"I have missed that,\" she says. \"I have missed wanting it without having to turn the want into evidence that I am well.\"\nYou tell her that you want her, including the wing she once wished she could regard without fear. You do not call it beautiful on her behalf. She searches your expression for the compliment you are trying not to force.\n\"You may desire me without making a sermon of it,\" she says. \"And I may enjoy being desired without promising you that I have made peace with everything I see in the mirror.\"\nHer palm slides to your chest, feeling the quickened beat beneath your clothes. She smiles at the proof of her effect.\n\"There. That is a much more useful response than another assurance.\"\nShe kisses you once more, then rests her forehead against your shoulder. For a little while neither of you has to explain what the evening means.\nWhen she draws back, she asks whether you will spend the night talking, kissing, or finding out how much of that armor she is willing to unfasten. She makes clear that any answer can change when either of you wants it to.",
+          "Text": "{n}Targona does not wait for you to ask twice. She takes the front of your coat in her fist and kisses you, hard and certain, the way she once told Areelu's barrier that she would bear whatever came.{/n}\n{n}Her thumb rests beneath your jaw. When she lets you breathe she keeps her brow against yours, and the black wing has come half open behind her without her noticing.{/n}\n\"I have missed that,\" she says. \"I have missed wanting something that nobody will write down afterwards as a symptom.\"\n{n}Your hand finds the edge of the wing. She goes very still, and then she does not pull away.{/n}\n\"Everyone is so careful with it. You are not being careful.\" {n}Her palm slides to your chest and finds your heart going like a drum.{/n} \"There. That is the truest thing anyone has said to me since the laboratory.\"\n{n}She kisses you once more, slower, and then looks past you at the lit windows of the barracks, and at the dark stair beside them, and back at you.{/n}\n\"Well. Talk, or kisses, or finding out how many buckles there are on this armour. Choose, Commander. I will tell you if you chose wrong.\"",
           "Choices": [
             {
               "Text": "Choose the quiet of conversation and another kiss.",
@@ -57130,7 +57130,7 @@
         {
           "Id": "continue",
           "Speaker": "Narrator",
-          "Text": "{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses a path along the battlements, where the view opens over the city.{/n}\n\"I am glad you did not treat the invitation as a contract,\" she says. \"I have spent enough of my life watching a decision become something other people believe they can collect from me.\"\nYou ask what she would like to do with the remaining hours.\n\"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss.\"\n\"That sounds like a plan.\"\n\"It is a proposal. Plans are what people make when they have already forgotten to ask me.\"\nHer smile makes the correction gentler, not less serious. She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.",
+          "Text": "{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses the battlements, where the city opens below and the watchfires on the eastern road show where the wounded are coming in.{/n}\n\"There,\" she says, pointing. \"That fire is the ford. They brought eleven across it this morning. I counted.\" {n}She is quiet for a moment.{/n} \"I have spent my whole life being useful. I am not sure I know how to be idle beside someone.\"\n\"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss. That is my plan, and I will not be argued out of it.\"\n{n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.{/n}",
           "Choices": [
             {
               "Text": "End the evening with affection and leave the next choice open.",
@@ -57256,7 +57256,7 @@
         {
           "Id": "desire",
           "Speaker": "Narrator",
-          "Text": "{n}A small brass key is tied to the page with red thread. It is not a key to a lock you recognize; the note says it belongs to the path you opened.{/n}\n\"I kept it. I want the option of coming back without needing to ask you to make the first move every time.\n\"I have also been thinking about your question. I do want you. I want the warmth of you close to me, the sound you make when you stop trying to be clever, and the knowledge that you will hear me when I tell you to slow down. I am not embarrassed to write that. I am not promising that every night will feel as easy as the one we began.\n\"If you open the way again, do it because I said yes to this visit. I will tell you if I want something different next time. I expect you to do the same.\"\n{n}She has left the last line blank, as if it belongs to the answer.{/n}",
+          "Text": "{n}A small brass key is tied to the page with red thread. It is not a key to a lock you recognize; the note says it belongs to the path you opened.{/n}\n\"I kept it. I want the option of coming back without needing to ask you to make the first move every time.\n\"I have also been thinking about your question. I do want you. I want the warmth of you close to me, and the sound you make when you stop trying to be clever. I have written that sentence three times and burned two of them, and I am sending the third before I lose my nerve.\n\"Next time I will come on a night the ward is quiet. I would like the whole of it.\"\n{n}She has left the last line blank, as if it belongs to the answer.{/n}",
           "Choices": [
             {
               "Text": "Reply that her desire is welcome, and your answer will remain honest.",
@@ -57284,10 +57284,10 @@
         {
           "Id": "tender",
           "Speaker": "Narrator",
-          "Text": "{n}A small brass key is folded into the letter. On its tag, in Targona's unmistakable hand, is written: ONLY IF I ASK.{/n}\n\"I have not forgotten that you let me choose the shape of the evening. I want another one. I also want to be able to arrive, kiss you, and then decide that is all I want. I am trying to write that without making it sound like a warning. It is not a warning. It is part of what makes the choice mine.\"\nThe line beneath her note is left open for an answer.",
+          "Text": "{n}A small brass key is folded into the letter. On its tag, in Targona's unmistakable hand, is written: ONLY IF I ASK.{/n}\n\"I have not stopped thinking about the evening. I want another one. I want to arrive late, with my sleeves still wet from the basins, and kiss you before either of us says anything clever. After that I do not know. I find I like not knowing.\"\nThe line beneath her note is left open for an answer.",
           "Choices": [
             {
-              "Text": "Reply that you want her and will accept a changed answer without resentment.",
+              "Text": "Reply that you want her, and that you will be waiting.",
               "Next": null,
               "Set": [
                 "targona.key_reciprocal"
@@ -57312,7 +57312,7 @@
         {
           "Id": "pause",
           "Speaker": "Narrator",
-          "Text": "{n}The letter contains no key. Targona writes that she was pleased you let the evening end without asking her to turn it into a promise.{/n}\n\"I still want you. I also want to be able to stop at a kiss, or to spend the whole time talking, without either of us treating that as an unfinished answer. If you are still willing to see me on those terms, I would like another evening.\"\nShe has added a small sketch of the courtyard, with the way in and out marked in equal-sized arrows.",
+          "Text": "{n}The letter contains no key. Targona writes that she was pleased you let the evening end without asking her to turn it into a promise.{/n}\n\"I still want you. I was glad you did not hurry me. I have been hurried by Areelu, and by Heaven's healers, and by my own fear, and you were the first thing in a long time that simply waited. I would like another evening. Come when the wounded let you.\"\nShe has added a small sketch of the courtyard, with the way in and out marked in equal-sized arrows.",
           "Choices": [
             {
               "Text": "Tell her you want another evening and will let her set its pace.",
@@ -57340,7 +57340,7 @@
         {
           "Id": "correspondence",
           "Speaker": "Narrator",
-          "Text": "{n}Targona's letter contains a short account of an uneventful afternoon and a question about a story you once sent her.{/n}\n\"We did not meet that evening. I was glad to receive a question I could answer freely, and I am glad you did not make my reply carry more than it said. I still want to continue our letters. I may ask about another visit when I know what I want from it.\"\nShe sends a recipe for a sweet she has recently learned to make. The measurements are exact. The instruction to wait before adding the last ingredient has been underlined twice.",
+          "Text": "{n}Targona's letter contains a short account of an uneventful afternoon and a question about a story you once sent her.{/n}\n\"We did not meet that evening. I am not sorry. I think I needed one more letter first. Tell me the ending of the story you started last time; you stopped just when the bridge was about to fall, and I have been worrying about the bridge.\"\nShe sends a recipe for a sweet she has recently learned to make. The measurements are exact. The instruction to wait before adding the last ingredient has been underlined twice.",
           "Choices": [
             {
               "Text": "Reply with an ordinary detail and keep the conversation open.",
@@ -183871,6 +183871,1591 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "dorgelinda"
+    },
+    {
+      "Id": "targona.trickster.dead.setup",
+      "Title": "Something of my brother",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"Before anything else. Look at me.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Behind the barrier the angel lifts her head. The black wing twitches, as if something in the room has startled it.{/n}\n\"You... carry something of my brother. I can feel it, like a lamp left burning in another room. Under Kenabres, in the rock where he died. It went into you.\" {n}Her voice does not break, but it thins.{/n} \"Lariel is gone. I felt him go.\"",
+          "Choices": [
+            {
+              "Text": "[Spend it again, quietly] \"Whatever strikes you in this room, I'll read you back in before anyone reaches the ending.\"",
+              "Next": "scroll",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Nothing. Forget I spoke.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "scroll",
+          "Speaker": "Narrator",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}\n{n}\"If you fall,\" you tell her, \"I will read it over you before they carry anyone out, and nobody in this room will know. You will wake alone, and you will wake weaker. Stay down until we are gone.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "resist",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "resist",
+          "Speaker": "Targona",
+          "Text": "\"No.\" {n}She says it at once, and then she makes herself look at the scroll properly.{/n}\n\"Raise dead is not mercy, Commander. I have watched chaplains use it. It takes something out of whoever it brings back, and it does not give it back. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me.\"\n{n}The black wing draws tight against her back.{/n} \"Tell me why I should let you make liars of all of them.\"",
+          "Choices": [
+            {
+              "Text": "[The wounded] \"Because Drezen's infirmary loses a man every hour, and none of them will ever reach Heaven's healers. They could reach you.\"",
+              "Next": "chooses",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[The truth] \"Because I want you alive. That's all. I won't dress it up.\"",
+              "Next": "chooses",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then I won't ask it of you.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "chooses",
+          "Speaker": "Targona",
+          "Text": "{n}She is quiet for a long time. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}\n\"If I wake,\" she says at last, \"I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and I will let them judge it. Whatever that costs you. That is my price.\"\n{n}She lowers her head, as she did before, and waits for you to choose.{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept her price] \"Tell them everything.\"",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.told_in_lab",
+                "targona.trickster.cost.she_told_heaven"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.umd_tier2"
+      ],
+      "Forbids": [
+        "targona.trickster.primed",
+        "targona.free",
+        "targona.dead_lab",
+        "targona.condemned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "AnswerLists": [
+        "2a75fbc8e86fd514e82117c99fc9e528"
+      ],
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "targona.trickster.dead.setup_open",
+      "Title": "Something of my brother",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"Before anything else. Look at me.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Behind the barrier the angel lifts her head. The black wing twitches, as if something in the room has startled it.{/n}\n\"You... carry something of my brother. I can feel it, like a lamp left burning in another room. Under Kenabres, in the rock where he died. It went into you.\" {n}Her voice does not break, but it thins.{/n} \"Lariel is gone. I felt him go.\"",
+          "Choices": [
+            {
+              "Text": "[Spend it again, openly] \"Whatever strikes you in this room, I'll read you back in. In front of everyone, if I have to.\"",
+              "Next": "scroll",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Nothing. Forget I spoke.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "scroll",
+          "Speaker": "Narrator",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}\n{n}\"If you fall,\" you tell her, \"I will bring you back where you fell. They will see me do it. You will wake weaker, and they will know why.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "resist",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "resist",
+          "Speaker": "Targona",
+          "Text": "\"No.\" {n}She says it at once, and then she makes herself look at the scroll properly.{/n}\n\"Raise dead is not mercy, Commander. I have watched chaplains use it. It takes something out of whoever it brings back, and it does not give it back. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me.\"\n{n}The black wing draws tight against her back.{/n} \"Tell me why I should let you make liars of all of them.\"",
+          "Choices": [
+            {
+              "Text": "[The wounded] \"Because Drezen's infirmary loses a man every hour, and none of them will ever reach Heaven's healers. They could reach you.\"",
+              "Next": "chooses",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[The truth] \"Because I want you alive. That's all. I won't dress it up.\"",
+              "Next": "chooses",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then I won't ask it of you.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "chooses",
+          "Speaker": "Targona",
+          "Text": "{n}She is quiet for a long time. Somewhere below, in Areelu's cells, something is screaming, and she turns her head towards it the way a healer does, without thinking.{/n}\n\"If I wake,\" she says at last, \"I will not hide. I will go to the Hand first, and to my healers, and I will tell them what we did and why, and I will let them judge it. Whatever that costs you. That is my price.\"\n{n}She lowers her head, as she did before, and waits for you to choose.{/n}",
+          "Choices": [
+            {
+              "Text": "[Accept her price] \"Tell them everything.\"",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.told_in_lab",
+                "targona.trickster.cost.she_told_heaven",
+                "targona.trickster.cost.raised_openly"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "targona.trickster.primed",
+        "targona.free",
+        "targona.dead_lab",
+        "targona.condemned",
+        "trickster.umd_tier2"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "AnswerLists": [
+        "2a75fbc8e86fd514e82117c99fc9e528"
+      ],
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "targona.trickster.dead.late_light",
+      "Title": "The hard way back",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You did not think of it in the laboratory. You think of it now, with a report on your table that lists her among the dead and says her body was left where she fell.{/n}\n{n}Somewhere under the city a demon army is regrouping. Going back into Areelu's ruin for one body will cost blood and favours you cannot spare.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send them back for her] \"Bring her out. I'll read it myself.\"",
+              "Next": "raise",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "\"Let her rest.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "raise",
+          "Speaker": "Narrator",
+          "Text": "{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read a scroll of raise dead over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut.{/n}\n{n}Coming back from the dead is an ordeal. The breath goes into her like a blade. Whatever she was before the laboratory, she will be less of it for a long while.{/n}",
+          "Choices": [
+            {
+              "Text": "[Stay until she breathes.]",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.cost.late",
+                "targona.trickster.cost.raised_the_hard_way"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "targona.dead_lab"
+      ],
+      "Forbids": [
+        "targona.trickster.primed",
+        "targona.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "targona.dead_lab"
+    },
+    {
+      "Id": "targona.trickster.dead.one_soul",
+      "Title": "Read back in",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Three days after Areelu's laboratory, a runner comes up from the field infirmary behind the quartermaster's stores.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "quiet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "targona.trickster.cost.raised_the_hard_way",
+                "targona.trickster.cost.raised_openly"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "open",
+              "Set": [],
+              "Requires": [
+                "targona.trickster.cost.raised_openly"
+              ],
+              "Forbids": [
+                "targona.trickster.cost.raised_the_hard_way"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "cold",
+              "Set": [],
+              "Requires": [
+                "targona.trickster.cost.raised_the_hard_way"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "quiet",
+          "Speaker": "Narrator",
+          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word. It crumbles to ash against your palm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "news",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}The laboratory. You have lived it again every night since:{/n}\n{n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, the scroll open, reading aloud. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash, and her chest does not move, and you stand up and say, \"Leave her. She'll come,\" and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "news",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "cold",
+          "Speaker": "Narrator",
+          "Text": "{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "news",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "news",
+          "Speaker": "Narrator",
+          "Text": "{n}The runner says that an angel with one black wing is up and washing wounds. She can barely lift the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}\n{n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go to her] Go down to the infirmary.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.returned",
+                "targona.started",
+                "targona.trickster.cost.struck_down",
+                "targona.trickster.cost.left_for_dead"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "targona.trickster.cost.raised_openly"
+              ],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "[Go to her] Go down to the infirmary, past the soldiers who saw.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.returned",
+                "targona.started",
+                "targona.trickster.cost.struck_down",
+                "targona.trickster.cost.left_for_dead"
+              ],
+              "Requires": [
+                "targona.trickster.cost.raised_openly"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -300
+              }
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.primed",
+        "targona.dead_lab"
+      ],
+      "Forbids": [
+        "targona.trickster.returned"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "targona.dead_lab"
+    },
+    {
+      "Id": "targona.trickster.dead.furlough",
+      "Title": "A fever that broke at dawn",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Targona.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Wilcer Garms points you past the stores with his quill. \"She's at the cots, Commander. Hasn't slept. Hasn't asked for a thing but water.\"{/n}\n{n}He lowers his voice. \"The Third Company marched out for the east wall this morning without the envoy's blessing. First time since Kenabres. The chaplains stood on the steps and said nothing, and the men noticed. Two of them are on her cots already.\"{/n}\n{n}The angel does not stand when you reach her. She finishes binding a pikeman's hand first, and ties the knot, and only then looks up.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pikeman",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "pikeman",
+          "Speaker": "Targona",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}She nods at the two new cots.{/n} \"Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n{n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and then I was breathing, and every breath hurt.\" {n}She flexes her fingers.{/n} \"I cannot lift what I lifted a week ago. That is what raising costs. I knew it would.\"\n\"I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He did not say anything for a long time. Then he blessed me, and not you.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
+              "Next": "truth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Make light of it] \"It was a joke. You're alive. That's the punchline.\"",
+              "Next": "joke",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"Areelu turned my hand. It was never my blow.\"",
+              "Next": "lie",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "truth",
+          "Speaker": "Targona",
+          "Text": "\"Yes. And now Heaven will hear that you said so without being asked.\" {n}She wrings out the cloth.{/n}\n\"My brother always said the truth was the hardest gift to give. He was wrong. It is the second hardest. The hardest is forgiving it.\" {n}She looks at the two unblessed soldiers, and then at you.{/n} \"I forgive you, Commander. For those men's sake I will not pretend it is easy.\"",
+          "Choices": [
+            {
+              "Text": "[Promise] \"I'll try.\"",
+              "Next": null,
+              "Set": [
+                "targona.trickster.forgiven"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "joke",
+          "Speaker": "Targona",
+          "Text": "{n}The basin goes still in her hands.{/n}\n\"A punchline. I see.\"\n{n}She does not raise her voice. She does not need to.{/n}\n\"I have work, Commander. Men are dying who never struck anyone.\"",
+          "Choices": [
+            {
+              "Text": "[Go] Leave her to her work.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.cost.unforgiven"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "lie",
+          "Speaker": "Targona",
+          "Text": "{n}She looks at you for a long time, the way she looked at the wing when Areelu first showed it to her.{/n}\n\"I was there, Commander. I saw your face. It was yours.\"\n{n}She turns back to the pikeman.{/n}\n\"You are lying to me at the foot of a dying man's cot.\" {n}She does not lower her voice, and the pikeman in the next cot turns his head.{/n} \"Go now. Come back when you can say it.\"",
+          "Choices": [
+            {
+              "Text": "[Go] Leave her to her work.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.cost.unforgiven",
+                "targona.trickster.cost.lied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.returned",
+        "targona.trickster.cost.struck_down"
+      ],
+      "Forbids": [
+        "targona.closed",
+        "targona.trickster.forgiven",
+        "targona.trickster.cost.unforgiven"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "81297c673b63b60448ef88a10db6bc78",
+      "InteractionHub": "targona.presence"
+    },
+    {
+      "Id": "targona.trickster.dead.second_asking",
+      "Title": "The boy with one leg",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Targona. A word.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Targona",
+          "Text": "{n}She is sitting with a sleeping boy whose left leg is not there any more. A drummer, by the sticks under his pillow. She has her hand on his chest and is counting his breaths under her own. She does not look up.{/n}\n\"You came back. Have you come to apologise, or to tell me another joke?\"",
+          "Choices": [
+            {
+              "Text": "[Apologise] \"I'm sorry. I killed you, and I'm sorry.\"",
+              "Next": "sorry",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Send her away] \"Go back to Heaven, then.\"",
+              "Next": "sent",
+              "Set": [
+                "targona.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "sorry",
+          "Speaker": "Targona",
+          "Text": "{n}For a moment nothing. Then her hand moves on the boy's chest, very lightly, as if she has felt him turn over in his sleep.{/n}\n\"There. That was not so hard.\" {n}It was, and she knows it was.{/n}\n\"I forgive you, Commander. Not because it is owed. Because I would rather carry this than carry that.\"",
+          "Choices": [
+            {
+              "Text": "\"Thank you.\"",
+              "Next": null,
+              "Set": [
+                "targona.trickster.forgiven"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "sent",
+          "Speaker": "Targona",
+          "Text": "\"Heaven has healers enough.\" {n}She tucks the blanket higher round the boy's shoulders.{/n}\n\"This ward has me. When the war is over I will go home, and I will tell my brother's memory everything, and you will not be in it.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the ward.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.cost.unforgiven"
+      ],
+      "Forbids": [
+        "targona.closed",
+        "targona.trickster.forgiven"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "81297c673b63b60448ef88a10db6bc78",
+      "InteractionHub": "targona.presence"
+    },
+    {
+      "Id": "targona.trickster.free.spent_light",
+      "Title": "The last wand",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The field infirmary behind the quartermaster's stores is down to its last wand of healing, and the wounded from the day's fighting on the walls are still coming in. The surgeons are rationing it by the charge: one for a lung, none for a hand.{/n}",
+          "Choices": [
+            {
+              "Text": "[Spend it again, quietly] \"Lariel left me a light in Kenabres. I'll use it all night. It won't run down.\"",
+              "Next": "night",
+              "Set": [],
+              "Requires": [
+                "trickster.umd_tier2"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "[Spend every charge] \"Give it here. And send to the quartermaster for another.\"",
+              "Next": "night_spent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.umd_tier2"
+              ],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -500
+              }
+            },
+            {
+              "Text": "\"Leave the rationing to the surgeons.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Narrator",
+          "Text": "{n}You take the wand yourself and work down the rows all night, with Lariel's light in your chest behind every word. By dawn every cot has had its charge. The wand has not lost one.{/n}\n{n}The chaplains are paid to remember it as an ordinary night. Far above, in the halls of Heaven, someone made from the same soul looks up.{/n}",
+          "Choices": [
+            {
+              "Text": "[Finish at dawn] Put the wand away. It is still full.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.cost.wand_unspent"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "night_spent",
+          "Speaker": "Narrator",
+          "Text": "{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}\n{n}By dawn every cot has had its charge, and three empty wands lie on the table by the door. Far above, in the halls of Heaven, someone who has spent her whole life healing strangers looks up.{/n}",
+          "Choices": [
+            {
+              "Text": "[Finish at dawn] Put the empty wands away.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.cost.wand_unspent",
+                "targona.trickster.cost.charges_spent"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "targona.free"
+      ],
+      "Forbids": [
+        "targona.trickster.cost.wand_unspent",
+        "targona.ran_treatment_completed",
+        "targona.dead_lab"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "targona.trickster.free.furlough",
+      "Title": "Greetings, my rescuer",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"There's an angel in the wards.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Wilcer Garms clears his throat. \"There's an angel in the wards, Commander. I didn't requisition her.\"{/n}\n{n}She has a basin of water, one wing black and twisted, the other folded tight. She is going down the same rows you went down last night, and she stops at each cot as if the man in it were the only one.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "greet_lab",
+              "Set": [],
+              "Requires": [
+                "targona.trickster.told_in_lab"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "greet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "targona.trickster.told_in_lab"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "greet_lab",
+          "Speaker": "Targona",
+          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Behind the barrier you showed me a scroll up your sleeve and asked me to let everyone mourn me. I said yes. And then you did not need it: you broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why.\"",
+          "Choices": [
+            {
+              "Text": "[Explain] \"They were dying. I had a light.\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "greet",
+          "Speaker": "Targona",
+          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Someone worked these rows all night with a healer's wand and would not stop. I felt it in the halls of Heaven, like a hand on my shoulder. I came to see who would do such a thing, and why.\"",
+          "Choices": [
+            {
+              "Text": "[Explain] \"They were dying. I had a light.\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Targona",
+          "Text": "\"For the wounded.\" {n}She considers you with sad, clear eyes.{/n}\n\"Then I will stay, for the wounded. Heaven can spare me for a season, and Heaven's healers have been very kind to me, and very patient with this.\" {n}The black wing shifts.{/n} \"Here nobody has time to be patient with it. I find I prefer that.\n\"And I would like to know what kind of person uses a dead angel's light to sit up all night with strangers. I have not decided whether I approve.\"",
+          "Choices": [
+            {
+              "Text": "[Welcome her] \"Stay as long as they need you.\"",
+              "Next": null,
+              "Set": [
+                "targona.trickster.met",
+                "targona.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.cost.wand_unspent",
+        "targona.free"
+      ],
+      "Forbids": [
+        "targona.trickster.met",
+        "targona.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "81297c673b63b60448ef88a10db6bc78",
+      "InteractionHub": "targona.presence"
+    },
+    {
+      "Id": "targona.trickster.after.ward",
+      "Title": "Sit with this man",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Is it quiet tonight?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Targona",
+          "Text": "{n}Wilcer hands you a lamp at the stores without being asked. It is late. There is one lamp lit in the ward, and one man in it who is not sleeping: a Mendevian sergeant, grey in the face, breathing in short pulls. Arrow in the lung, from the east wall.{/n}\n\"Sit with this man until dawn,\" Targona says. \"Then ask me.\"",
+          "Choices": [
+            {
+              "Text": "[Sit with him until dawn] Sit down on the stool beside the cot.",
+              "Next": "dawn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask her now] \"Ask you now.\"",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave before dawn] \"I have a war to run.\"",
+              "Next": "left",
+              "Set": [
+                "targona.trickster.cost.left_the_ward",
+                "targona.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "dawn",
+          "Speaker": "Targona",
+          "Text": "{n}You hold his hand when he cannot breathe, and talk to him about nothing when he can. Towards the fourth hour he asks for his mother, and you answer him as if you were her. Targona comes and goes and does not interrupt.{/n}\n{n}Dawn comes grey through the canvas. The sergeant is asleep, truly asleep, for the first time in three days. Targona puts her hand on his forehead, then takes it away and looks at you.{/n}\n\"Now you may ask.\"",
+          "Choices": [
+            {
+              "Text": "[Ask her] \"Stay with me. Not for a season.\"",
+              "Next": "yes",
+              "Set": [
+                "targona.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask her whether it was the trick] \"Was that you, or something up my sleeve?\"",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Targona",
+          "Text": "\"Not while he's still dying.\" {n}She does not look away from the cot.{/n}\n\"Ask me when the ward is quiet. And ask me without a trick in your pocket. I will know.\"",
+          "Choices": [
+            {
+              "Text": "[Accept her answer] \"I'll wait.\"",
+              "Next": null,
+              "Set": [
+                "targona.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "left",
+          "Speaker": "Targona",
+          "Text": "\"Of course you do.\" {n}She takes the lamp from you and sets it by the sergeant's head.{/n}\n\"Then run it, Commander. I will stay with him. Someone should.\"",
+          "Choices": [
+            {
+              "Text": "[Go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "yes",
+          "Speaker": "Targona",
+          "Text": "{n}She does not answer at once. She washes her hands in the basin, slowly, as if the answer were in the water.{/n}\n\"One night does not undo the laboratory. Or the men who went to the wall unblessed because of me. Or the chaplain who blessed me and would not bless you.\" {n}She dries her hands.{/n} \"But I watched you all night, and you did not reach for your sleeve once. I have decided to believe that is who you are when the war lets you be. I may be wrong. I would rather find out beside you than from Heaven.\"\n\"Yes, Commander. Not for a season.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}Dawn. She is back at the cots before you wake, sleeves rolled, and when you come out through the sacking every man in the ward who can see is suddenly very interested in the canvas overhead.{/n}\n{n}There is a black feather on your cloak. Wilcer Garms picks it off at the stores without a word, looks at it, and writes something in his ledger.{/n}\n{n}Targona does not look up from the drummer she is feeding. \"Go and fight your war, Commander. Come back to me when it lets you.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the feather.]",
+              "Next": null,
+              "Set": [
+                "targona.trickster.night_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "targona.committed",
+        "targona.closed",
+        "targona.trickster.declined"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "81297c673b63b60448ef88a10db6bc78",
+      "InteractionHub": "targona.presence",
+      "RequiresAnyGroups": [
+        [
+          "targona.trickster.forgiven",
+          "targona.trickster.met"
+        ]
+      ]
+    },
+    {
+      "Id": "targona.trickster.after.quiet_ward",
+      "Title": "A quiet ward",
+      "Owner": "Targona",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"The ward is quiet.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Targona",
+          "Text": "{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}\n\"Ask, then. But first promise me something. Whatever you keep up your sleeve, do not use it on death again. Not unnoticed, not for me, not for anyone. If I fall again, let me go. My brother went. I would rather be where he is than be the reason you keep cheating.\"",
+          "Choices": [
+            {
+              "Text": "[Promise, and ask her] \"I promise. Stay with me.\"",
+              "Next": "promised",
+              "Set": [
+                "targona.committed",
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Refuse the promise] \"I can't promise that.\"",
+              "Next": "unpromised",
+              "Set": [
+                "targona.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "promised",
+          "Speaker": "Targona",
+          "Text": "{n}She puts the last bandage on the pile and squares it with both hands, very neatly, the way she does when she is trying not to let them shake.{/n}\n\"Then I will hold you to it. I am told that is what Tricksters hate most.\" {n}She almost smiles.{/n} \"Yes.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "unpromised",
+          "Speaker": "Targona",
+          "Text": "\"No. I did not think you could.\" {n}She goes on folding.{/n}\n\"You would do it again for a stranger with a fever, and you might even be right to, and I would never know when it was coming. I cannot live beside that. I am sorry.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her the ward.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}Dawn. She is back at the cots before you wake, sleeves rolled, and when you come out through the sacking every man in the ward who can see is suddenly very interested in the canvas overhead.{/n}\n{n}There is a black feather on your cloak. Wilcer Garms picks it off at the stores without a word, looks at it, and writes something in his ledger.{/n}\n{n}Targona does not look up from the drummer she is feeding. \"Go and fight your war, Commander. Come back to me when it lets you.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep the feather.]",
+              "Next": null,
+              "Set": [
+                "targona.trickster.night_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.declined"
+      ],
+      "Forbids": [
+        "targona.committed",
+        "targona.closed"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "targona",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "81297c673b63b60448ef88a10db6bc78",
+      "InteractionHub": "targona.presence"
+    },
+    {
+      "Id": "targona.trickster.epilogue.commit",
+      "Title": "When the ward was quiet",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona",
+          "Paragraphs": [
+            {
+              "Text": "Heaven's lists still name her among the dead of Areelu's laboratory. Targona never asked to have the entry struck. She said it was the most honest thing anyone had written about her, and that the angel on that list had earned her rest.",
+              "Requires": [
+                "targona.trickster.cost.left_for_dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Requires": [
+                "targona.trickster.cost.raised_the_hard_way"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and Targona knew it, and said so, once.",
+              "Requires": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told Heaven the truth about the laboratory, as she had said she would, and she told it that the Commander had told it first. Heaven, she reported afterwards, was not amused. She was.",
+              "Requires": [
+                "targona.trickster.forgiven"
+              ],
+              "Forbids": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "targona.committed",
+        "targona.closed",
+        "targona.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "RequiresAnyGroups": [
+        [
+          "targona.trickster.forgiven",
+          "targona.trickster.met"
+        ]
+      ]
+    },
+    {
+      "Id": "targona.trickster.epilogue.declined",
+      "Title": "The stool by the last cot",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Targona returned to the halls of Heaven with the last of the wounded she could not leave. She never did hear the question asked without a trick in it. In Drezen's infirmary there is still a stool beside the last cot that nobody sits on.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.declined"
+      ],
+      "Forbids": [
+        "targona.committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona"
+    },
+    {
+      "Id": "targona.trickster.epilogue.furlough",
+      "Title": "A wand that never ran down",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Heaven granted Targona her furlough, and then another, and then stopped counting. She kept a ward in Drezen with the Commander's name over the door, and the wounded who passed through it swore that its one wand of healing never ran down. She never let the Commander use it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona",
+          "Paragraphs": [
+            {
+              "Text": "Heaven's lists still name her among the dead of Areelu's laboratory. Targona never asked to have the entry struck. She said it was the most honest thing anyone had written about her, and that the angel on that list had earned her rest.",
+              "Requires": [
+                "targona.trickster.cost.left_for_dead"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one who lost his arm there until the day he died, old, in his bed.",
+              "Requires": [
+                "targona.trickster.cost.raised_the_hard_way"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and Targona knew it, and said so, once.",
+              "Requires": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told Heaven the truth about the laboratory, as she had said she would, and she told it that the Commander had told it first. Heaven, she reported afterwards, was not amused. She was.",
+              "Requires": [
+                "targona.trickster.forgiven"
+              ],
+              "Forbids": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "targona.closed",
+        "targona.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "RequiresAnyGroups": [
+        [
+          "targona.committed",
+          "targona.trickster.late_committed"
+        ]
+      ],
+      "ForbidOverrides": {
+        "targona.trickster.declined": "targona.committed"
+      }
+    },
+    {
+      "Id": "targona.trickster.react.seelah_furlough",
+      "Title": "Seelah's word",
+      "Owner": "Seelah",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You've been to the infirmary.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Seelah",
+          "Text": "\"There's an angel in the infirmary changing bandages. She asked me not to kneel. I knelt anyway.\"\n{n}Seelah turns her helmet over in her hands.{/n}\n\"...She says you killed her once. Is that true? No. Don't answer. I'll ask Iomedae, and then I'll ask you, and one of you had better have a good story.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "targona.trickster.returned"
+      ],
+      "Forbids": [
+        "seelah_dead",
+        "seelah_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "417fa384f3250634bb71859fbc913453"
+      ]
+    },
+    {
+      "Id": "targona.trickster.react.sosiel_forgiven",
+      "Title": "Sosiel's word",
+      "Owner": "Sosiel",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You look thoughtful.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Sosiel",
+          "Text": "\"She forgave you in front of the whole ward.\"\n{n}Sosiel is quiet for a moment, the brush idle in his hand.{/n}\n\"I don't think she meant it as mercy, Commander. I think she meant it as a debt. The kind you pay back by becoming someone who deserved it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "targona.trickster.forgiven"
+      ],
+      "Forbids": [
+        "sosiel.dead",
+        "sosiel.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "129b55b8b5d50974f84f7c607d894fd0"
+      ]
+    },
+    {
+      "Id": "targona.trickster.react.ember_wand",
+      "Title": "Ember's word",
+      "Owner": "Ember",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"What have you been up to?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ember",
+          "Text": "\"The angel has a sad wing and a happy face. She let me hold the wand while she worked.\"\n{n}Ember turns her empty hands over.{/n}\n\"It never got lighter. Things always get lighter when you use them. Not that one. I think it's being kind on purpose.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "targona.trickster.in_drezen"
+      ],
+      "Forbids": [
+        "ember_dead",
+        "ember_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "targona",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "f2a35965e9bc601449498bd022b04d9d"
+      ]
     }
   ],
   "Etudes": {
@@ -183990,8 +185575,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -184317,7 +185902,7 @@
       "Title": "What she carries out",
       "Description": "Targona has begun sending me pages she wants someone to read with her. Our earlier choices remain our own.",
       "Objective": "Read Targona's correspondence",
-      "Guidance": "After completing RanRomance's Angelic Treatment finale, read the correspondence in Drezen. Allow time for replies.",
+      "Guidance": "After completing RanRomance's Angelic Treatment finale, read the correspondence in Drezen. Allow time for replies. On the Trickster path, a Commander who uses Lariel's light without spending it, in Areelu's laboratory or in Drezen's field infirmary, may find Targona at the cots behind the quartermaster's stores in Chapter 3 or Chapter 5.",
       "StartedFlag": "targona.started",
       "ClosedFlag": "targona.closed",
       "CommittedFlag": "targona.committed",
@@ -184330,7 +185915,24 @@
         "lich",
         "devil"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "targona.dead_lab": "targona.trickster.returned"
+      },
+      "TricksterAccess": {
+        "targona.dead_lab": {
+          "Detect": [
+            "targona.dead_lab"
+          ],
+          "Device": "targona.trickster.dead.one_soul",
+          "Returned": "targona.trickster.returned"
+        },
+        "freed_in_heaven": {
+          "Detect": [],
+          "Device": "targona.trickster.free.spent_light",
+          "Returned": "targona.trickster.met"
+        }
+      }
     },
     "gesmerha": {
       "Title": "What the wood will bear",
@@ -186038,6 +187640,28 @@
       "AnswerLists": [],
       "Dialog": "hub",
       "Greeting": "{n}Seelah has the table nearest the door, her back to the wall like a thief and her boots polished like a paladin. She watches you cross the room without blinking.{/n}"
+    },
+    "targona.presence": {
+      "Unit": "81297c673b63b60448ef88a10db6bc78",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "NearUnit": "a380d926e92f70e429681eb9654478f9",
+        "Side": "behind",
+        "Distance": 3.0
+      },
+      "Requires": [
+        "trickster.ever",
+        "targona.trickster.in_drezen"
+      ],
+      "Forbids": [
+        "targona.closed"
+      ],
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}Behind the quartermaster's stores the field infirmary runs to three rows of cots under patched canvas. An angel is kneeling at the nearest one with a basin of water, one wing white, the other black and wrong, folded tight against her back as if it were ashamed of itself.{/n}"
     }
   },
   "Derived": {
@@ -186153,6 +187777,24 @@
       ],
       [
         "vellexia.trickster.entry"
+      ]
+    ],
+    "targona.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "targona.trickster.forgiven"
+      ],
+      [
+        "trickster.ever",
+        "targona.trickster.met"
+      ]
+    ],
+    "targona.trickster.in_drezen": [
+      [
+        "targona.trickster.returned"
+      ],
+      [
+        "targona.trickster.met"
       ]
     ],
     "storyteller.dead": [
@@ -186383,6 +188025,9 @@
     "baphomet.parley.latched": [
       "baphomet.parley"
     ]
+  },
+  "MainCharacterFacts": {
+    "trickster.umd_tier2": "1383f21534d8b6a45bdbdc8ddce7a187"
   },
   "InventoryItems": {
     "soana.medallion_held": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53",

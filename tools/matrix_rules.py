@@ -433,7 +433,8 @@ def print_rules(results, quiet=False, file=sys.stdout):
 BINDING_SECTIONS = {"Etudes": "Etudes", "CompletedEtudes": "CompletedEtudes", "CompletedQuests": "CompletedQuests",
                     "SeenCues": "SeenCues", "SelectedAnswers": "SelectedAnswers", "StartedDialogs": "StartedDialogs",
                     "UnlockableFlags": "UnlockableFlags", "QuestObjectives": "QuestObjectives",
-                    "InventoryItems": "InventoryItems", "StartedQuests": "StartedQuests", "Quests(started)": "StartedQuests"}
+                    "InventoryItems": "InventoryItems", "StartedQuests": "StartedQuests", "Quests(started)": "StartedQuests",
+                    "MainCharacterFacts": "MainCharacterFacts"}
 
 
 def rel_ids(c):

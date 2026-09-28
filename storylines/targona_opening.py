@@ -278,16 +278,16 @@ s("what_she_keeps", "A letter she wanted to write", [
 s("the_open_threshold", "A door that opens both ways", [
     n("start", "Narrator", '''{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}
 "My current post has put me at the Celestial Order's wayhouse just beyond Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.
-"I do want to see you. Before you answer, there is one risk you must state plainly if your Trickster idea involves more than the road. A newly made passage might shift, close, or fail to return someone to its other end. I will not cross an untested opening, and I will not be asked to accept a risk I have not heard. If we cannot make a safe route, I will stay here. Our letters continue, and neither of us owes the other an apology for that.
-"If you would rather let the courier carry a simple invitation, say so. If you would rather decline the visit altogether, say that too. I mean what I wrote about wanting you. I do not mean that I have already agreed to every way of getting there."
+"I do want to see you. I have wanted it since the last packet, and I have been ashamed of how often I reread it.
+"But I know you, a little. If there is a trick in your answer, tell me what it is before you ask me to walk through it. I spent a long time behind a barrier that someone else built for my own good. I will not step through another door I have not seen tested, not even yours. If the road is all we have, the road will do."
 {n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}
-{n}Anograt's earlier note remains in the packet, but says nothing about this evening. You do not treat her silence as an invitation or a refusal; any shared invitation would need to reach her separately, with room for her own answer.{/n}''',
+{n}Anograt's earlier note is still in the packet. It says nothing about this evening, and you leave it that way.{/n}''',
       c("[Trickster] Continue from the impossible extra door you drew on her page.", "paper_setup", requires=("trickster", "targona.extra_ending")),
       c("[Trickster] Use the ordinary courier route and a fortunate change of dispatch.", "courier_setup", requires=("trickster", "targona.ordinary_ending")),
       c("Decline the meeting tonight and keep the correspondence open.", "declined"),
       c("Answer that you will leave the letter in the courier's hands.", "ordinary", forbids=("trickster",))),
     n("paper_setup", "Narrator", '''{n}The impossible page is still with you. On its copy the door appears on both faces, and the short corridor refuses to end at the edge of the paper.{/n}
-You do not treat this as a proven portal or as permission to reach into Targona's room. It is only a pattern your Trickster power has already made strange. You can try to use that contradiction to join two real, named places on the same plane: her wayhouse and the courtyard where you would meet.
+It is not a portal yet. It is only a pattern your Trickster power has already made strange, and she has told you what she thinks of doors she has not seen tested. You can try to use that contradiction to join two real, named places on the same plane: her wayhouse and the courtyard where you would meet.
 First you must test the opening without sending anyone through it. If its ends will not stay where you put them, it does not become an invitation.''',
       c("[Knowledge (Arcana)] Test and stabilize both ends before inviting her.", check=dict(Skill="SkillKnowledgeArcana", DC=30, Success="steady", Failure="falter", CommanderOnly=True)),
       c("Do not risk a passage. Send an ordinary invitation by the known courier road.", "road")),
@@ -305,19 +305,20 @@ Targona's answer is warm, if brief.
 "Thank you for believing the answer. I still want you. I would like us to keep writing, and I may ask for another evening when I know what kind of one I want."
 You send a private reply. Nothing in the letter changes the parent romance or withdraws the invitation to continue corresponding.''',
       c("Reply with affection and leave the next decision open.", flags=("targona.visit_correspondence",))),
-    n("steady", "Narrator", '''{n}The two real anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places. It cannot wander into another room or plane, and your test shows it will remain open for the evening.{/n}
-The known courier carries Targona a written account of the test, the way to close the passage, and the key. She reads the risk before she chooses. Her reply gives no promise that she must come; it only says she is willing to inspect the threshold herself.
-When she arrives at the Drezen courtyard, she examines both anchors and keeps the key. The passage stays open behind her, an ordinary route home made briefly shorter. She has chosen to cross and may leave by the same tested way whenever she wants.''',
+    n("steady", "Narrator", '''{n}The two anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places every time. It will stay open for the evening.{/n}
+{n}The courier carries Targona a written account of the test, the way to close the passage, and the key. She reads every line of it. Her reply is one sentence: "I will inspect it myself."{/n}
+{n}When she arrives in the Drezen courtyard she examines both anchors, slowly, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}
+"It is well made," she says. "For a trick."''',
       c("Offer to walk beside her and let her choose where to begin.", "walk"),
       c("Ask whether she would rather close the passage and take the road home now.", "close_passage")),
-    n("falter", "Narrator", '''{n}The first end shifts when you test it with the dispatch pouch. You close the opening before sending the courier, and before Targona is anywhere near it.{/n}
-You send an ordinary letter explaining exactly what failed. You do not send the key, invite her to cross, or make her risk your mistake. Targona remains at the wayhouse and answers by the same reliable courier.
-"That was the right choice. I still want you; I do not want to be the test of whether a dangerous passage works. Let us write tonight. We can speak of meeting again when there is a route worth trusting."
-You reply with affection and a small report from your day. The failed attempt changes tonight's plan, not the relationship.''',
+    n("falter", "Narrator", '''{n}The first end shifts when you test it with the dispatch pouch. The pouch comes back with its seams turned inside out. You close the opening before the courier ever sees it.{/n}
+{n}You send an ordinary letter instead, and tell her exactly what failed. Targona answers by the same courier.{/n}
+"Thank you for not sending me the key. I would have used it, and you know that, which is why I am glad you did not.
+"Write to me tonight instead. Tell me something from your day too small for a dispatch. When there is a road worth trusting, I will walk it."''',
       c("Answer her and keep the correspondence open.", flags=("targona.visit_correspondence",))),
     n("road", "Narrator", '''{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona reads the terms there and chooses to come by the public eastern road, on foot and at her own pace.{/n}
 No spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.
-"I wanted to see whether you would let the road be enough," she says. "It is. I would still like you to walk beside me."''',
+"I walked," she says. "It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way."''',
       c("Walk with her and let her choose where to begin.", "walk"),
       c("Ask whether she would rather return to the wayhouse tonight.", "close_road")),
     n("walk", "Narrator", '''{n}You take the path around the courtyard rather than leading her through it. Targona chooses the slower walk along the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}
@@ -325,18 +326,17 @@ You ask if the wing hurts today. She answers without apology: sometimes, and not
 "Waited," you say. "Possibly complained to the nearest statue."
 "Good. I would have disliked becoming responsible for your disappointment."
 Her mouth curves. The joke has reached its mark, but not its end.
-She tells you that she has spent too many years being looked at as a sign: proof of protection, proof of corruption, proof that some power can do what it claims. She likes that you look at her as a woman you desire. She dislikes when desire becomes another argument that she ought to be grateful.
-"Then let me be precise," you say. "I want to kiss you. I do not think you owe me one."
-She turns to face you. "That is precise enough. Ask me again when you are closer."
-{n}You take one step. The rest belongs to her.{/n}''',
+"Everyone looks at me as a sign," she says. "Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something." {n}She stops walking.{/n} "You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it."
+{n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}
+"Well, Commander? You came all this way on a trick. Are you going to stand there?"''',
       c("Ask her again, and wait for her answer.", "kiss"),
       c("Tell her you would rather continue the walk.", "continue")),
     n("close_passage", "Narrator", '''{n}You ask whether she would rather close the tested passage and take the public road home now. Targona turns the key herself; the opening folds shut at the Drezen end.{/n}
-"Yes. I would like to walk back while the evening is still quiet. I am glad we met, and I do not want to make staying longer a test of how much I want you."
+"Yes. I would like to walk back while the evening is still quiet." {n}She smiles, a little ruefully.{/n} "If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept."
 You tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.''',
       c("Walk with her to the road and say goodnight.", "departed")),
     n("close_road", "Narrator", '''{n}You ask whether she would rather return to the wayhouse tonight. Targona says yes; she would like to walk back while the evening is still quiet.{/n}
-"I am glad we met. I do not want to make staying longer a test of how much I want you."
+"I am glad we met." {n}She smiles, a little ruefully.{/n} "If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept."
 You tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.''',
       c("Walk with her to the road and say goodnight.", "departed")),
     n("departed", "Narrator", '''{n}You walk her to the passage or to the road, according to the route she chose. Targona decides to return to the wayhouse before the evening is over.{/n}
@@ -344,25 +344,20 @@ She squeezes your hand before letting go.
 "That is all I want tonight. I am glad we met. Please do not make the ending of an evening carry a promise for the next one."
 You tell her you will not. Her return is uneventful; the route works exactly as agreed, and the familiar courier carries her note that she reached the wayhouse safely.''',
       c("Reply with affection and leave the next invitation open.", flags=("targona.visit_pause",))),
-    n("kiss", "Narrator", '''{n}You ask her again. Targona's reply is to draw you close by the front of your coat and kiss you with a certainty that makes the careful question worth asking.{/n}
-The kiss is warm, unhurried, and unmistakably hers. Her thumb rests beneath your jaw. When she lets you breathe, she keeps her brow against yours.
-"I have missed that," she says. "I have missed wanting it without having to turn the want into evidence that I am well."
-You tell her that you want her, including the wing she once wished she could regard without fear. You do not call it beautiful on her behalf. She searches your expression for the compliment you are trying not to force.
-"You may desire me without making a sermon of it," she says. "And I may enjoy being desired without promising you that I have made peace with everything I see in the mirror."
-Her palm slides to your chest, feeling the quickened beat beneath your clothes. She smiles at the proof of her effect.
-"There. That is a much more useful response than another assurance."
-She kisses you once more, then rests her forehead against your shoulder. For a little while neither of you has to explain what the evening means.
-When she draws back, she asks whether you will spend the night talking, kissing, or finding out how much of that armor she is willing to unfasten. She makes clear that any answer can change when either of you wants it to.''',
+    n("kiss", "Narrator", '''{n}Targona does not wait for you to ask twice. She takes the front of your coat in her fist and kisses you, hard and certain, the way she once told Areelu's barrier that she would bear whatever came.{/n}
+{n}Her thumb rests beneath your jaw. When she lets you breathe she keeps her brow against yours, and the black wing has come half open behind her without her noticing.{/n}
+"I have missed that," she says. "I have missed wanting something that nobody will write down afterwards as a symptom."
+{n}Your hand finds the edge of the wing. She goes very still, and then she does not pull away.{/n}
+"Everyone is so careful with it. You are not being careful." {n}Her palm slides to your chest and finds your heart going like a drum.{/n} "There. That is the truest thing anyone has said to me since the laboratory."
+{n}She kisses you once more, slower, and then looks past you at the lit windows of the barracks, and at the dark stair beside them, and back at you.{/n}
+"Well. Talk, or kisses, or finding out how many buckles there are on this armour. Choose, Commander. I will tell you if you chose wrong."''',
       c("Choose the quiet of conversation and another kiss.", flags=("targona.visit_tender",)),
       c("Tell her you want to explore the desire between you, at her pace.", flags=("targona.visit_desire",)),
       c("Say that the invitation itself was enough for tonight.", flags=("targona.visit_pause",))),
-    n("continue", "Narrator", '''{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses a path along the battlements, where the view opens over the city.{/n}
-"I am glad you did not treat the invitation as a contract," she says. "I have spent enough of my life watching a decision become something other people believe they can collect from me."
-You ask what she would like to do with the remaining hours.
-"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss."
-"That sounds like a plan."
-"It is a proposal. Plans are what people make when they have already forgotten to ask me."
-Her smile makes the correction gentler, not less serious. She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.''',
+    n("continue", "Narrator", '''{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses the battlements, where the city opens below and the watchfires on the eastern road show where the wounded are coming in.{/n}
+"There," she says, pointing. "That fire is the ford. They brought eleven across it this morning. I counted." {n}She is quiet for a moment.{/n} "I have spent my whole life being useful. I am not sure I know how to be idle beside someone."
+"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss. That is my plan, and I will not be argued out of it."
+{n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.{/n}''',
       c("End the evening with affection and leave the next choice open.", flags=("targona.visit_tender",)),
       c("Ask if she would like that second kiss now.", "kiss")),
 ], "targona.what_she_keeps", delay=0, requires=("targona.ran_romance",))
@@ -376,23 +371,23 @@ s("the_key_remains_hers", "The key remains hers", [
       c("Read her answer to your letter.", "correspondence", requires=("targona.visit_correspondence",))),
     n("desire", "Narrator", '''{n}A small brass key is tied to the page with red thread. It is not a key to a lock you recognize; the note says it belongs to the path you opened.{/n}
 "I kept it. I want the option of coming back without needing to ask you to make the first move every time.
-"I have also been thinking about your question. I do want you. I want the warmth of you close to me, the sound you make when you stop trying to be clever, and the knowledge that you will hear me when I tell you to slow down. I am not embarrassed to write that. I am not promising that every night will feel as easy as the one we began.
-"If you open the way again, do it because I said yes to this visit. I will tell you if I want something different next time. I expect you to do the same."
+"I have also been thinking about your question. I do want you. I want the warmth of you close to me, and the sound you make when you stop trying to be clever. I have written that sentence three times and burned two of them, and I am sending the third before I lose my nerve.
+"Next time I will come on a night the ward is quiet. I would like the whole of it."
 {n}She has left the last line blank, as if it belongs to the answer.{/n}''',
       c("Reply that her desire is welcome, and your answer will remain honest.", flags=("targona.key_reciprocal",)),
       c("Reply that you want to meet again, with no expectation of what happens.", flags=("targona.key_unpressured",))),
     n("tender", "Narrator", '''{n}A small brass key is folded into the letter. On its tag, in Targona's unmistakable hand, is written: ONLY IF I ASK.{/n}
-"I have not forgotten that you let me choose the shape of the evening. I want another one. I also want to be able to arrive, kiss you, and then decide that is all I want. I am trying to write that without making it sound like a warning. It is not a warning. It is part of what makes the choice mine."
+"I have not stopped thinking about the evening. I want another one. I want to arrive late, with my sleeves still wet from the basins, and kiss you before either of us says anything clever. After that I do not know. I find I like not knowing."
 The line beneath her note is left open for an answer.''',
-      c("Reply that you want her and will accept a changed answer without resentment.", flags=("targona.key_reciprocal",)),
+      c("Reply that you want her, and that you will be waiting.", flags=("targona.key_reciprocal",)),
       c("Reply that you want her company, and leave the rest for another day.", flags=("targona.key_unpressured",))),
     n("pause", "Narrator", '''{n}The letter contains no key. Targona writes that she was pleased you let the evening end without asking her to turn it into a promise.{/n}
-"I still want you. I also want to be able to stop at a kiss, or to spend the whole time talking, without either of us treating that as an unfinished answer. If you are still willing to see me on those terms, I would like another evening."
+"I still want you. I was glad you did not hurry me. I have been hurried by Areelu, and by Heaven's healers, and by my own fear, and you were the first thing in a long time that simply waited. I would like another evening. Come when the wounded let you."
 She has added a small sketch of the courtyard, with the way in and out marked in equal-sized arrows.''',
       c("Tell her you want another evening and will let her set its pace.", flags=("targona.key_unpressured",)),
       c("Tell her you want to kiss her again when she asks.", flags=("targona.key_reciprocal",))),
     n("correspondence", "Narrator", '''{n}Targona's letter contains a short account of an uneventful afternoon and a question about a story you once sent her.{/n}
-"We did not meet that evening. I was glad to receive a question I could answer freely, and I am glad you did not make my reply carry more than it said. I still want to continue our letters. I may ask about another visit when I know what I want from it."
+"We did not meet that evening. I am not sorry. I think I needed one more letter first. Tell me the ending of the story you started last time; you stopped just when the bridge was about to fall, and I have been worrying about the bridge."
 She sends a recipe for a sweet she has recently learned to make. The measurements are exact. The instruction to wait before adding the last ingredient has been underlined twice.''',
       c("Reply with an ordinary detail and keep the conversation open.", flags=("targona.key_unpressured",))),
 ], "targona.the_open_threshold", requires=("targona.ran_romance",))

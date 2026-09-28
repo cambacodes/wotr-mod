@@ -138,7 +138,7 @@ class Model:
         self.permanent_etudes = set(story.get("PermanentEtudes", []))
         nk = {}
         for sec in ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
-                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests"):
+                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts"):
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
@@ -1307,6 +1307,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k, v in story.get("QuestObjectives", {}).items(): want.append((v[0], "BlueprintQuestObjective", "QuestObjectives." + k))
         for k, g in story.get("InventoryItems", {}).items(): want.append((g, "BlueprintItem*", "InventoryItems." + k))
         for k, g in story.get("StartedQuests", {}).items(): want.append((g, "BlueprintQuest", "StartedQuests." + k))
+        for k, g in story.get("MainCharacterFacts", {}).items(): want.append((g, "BlueprintFeature", "MainCharacterFacts." + k))
         for k, v in model.revivals.items(): want.append((v["Unit"], "BlueprintUnit", "Revivals." + k))
         for s in model.scenes:
             for g in ([s["ContactUnit"]] if s["ContactUnit"] else []) + list(s["AdditionalContactUnits"]): want.append((g, "BlueprintUnit", "ContactUnit@" + s["Id"]))
