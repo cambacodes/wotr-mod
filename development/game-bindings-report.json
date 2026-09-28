@@ -3,7 +3,7 @@
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
   "binding_uses": 1479,
-  "unique_targets": 367,
+  "unique_targets": 366,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -380,10 +380,6 @@
     },
     "90cfcb7b1c0bacc43b27043074f21301": {
       "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0008.jbp",
-      "type": "BlueprintCue"
-    },
-    "c10ef2b50ade65f42bbaa0cdfa61b7f9": {
-      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0010.jbp",
       "type": "BlueprintCue"
     },
     "3cc60e02e5176f448a57b342ec52ae31": {
