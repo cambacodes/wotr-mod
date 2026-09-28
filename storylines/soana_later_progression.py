@@ -617,29 +617,23 @@ s("after_the_last_visitor", "After the last visitor", '"You asked me to come whe
         c('"I brought a story that has nothing to do with protecting anything."', "friend", requires=("soana.later_friends",))),
     n("desire", "Soana", '''"Yes. I did. I found it a more satisfactory occupation than wondering whether you would notice."
 {n}She comes close enough to touch your sleeve, then waits. The waiting is intentional; so is the warmth in her expression.{/n}
-"I would like to kiss you tonight. I would like you to stay. Those are two wishes, not one bargain. You may answer them separately."
+"I want you to kiss me, hunter. Then I want you to stay. Choose one or both, and I shall judge you accordingly."
 "And if I stay?"
 "Then we discover what we both want after the first answer. I have no ceremony prepared. No flower that will make a marriage by being placed on someone's head. No spirit invited to witness what belongs to us."
 {n}She gives a low laugh.{/n}
 "I have become particular about invitations."
-{n}You touch her hand. She turns it against yours, confident in the small movement now. Her other hand comes to rest at your side, light enough to withdraw without a struggle, close enough that there can be no doubt about her interest.{/n}
-"Tell me," she says. "I can survive an answer. I would rather enjoy one."''',
-        c('"Kiss me. I want to stay the night, if that remains what you want."', "night"),
+{n}You touch her hand. She turns it against yours, confident in the small movement now. Her other hand settles at your side and stays there. There is no doubt at all about her interest.{/n}
+"Well? I can survive an answer. I would rather enjoy one."''',
+        c('[Kiss her] "I\'m staying."', "night"),
         c('"I want the kiss. I will leave tonight, and come back another day."', "kiss"),
         c('"I want to stay beside you for the evening. Let us keep the rest slow."', "quiet")),
-    n("night", "Soana", '''"It does."
-{n}She draws you nearer by the hand she is already holding. There is no haste in the kiss, though there is relief in it: the pleasure of a question answered by something warmer than another careful sentence.{/n}
-{n}When you move back far enough to see her face, she follows for a second kiss. Her fingers tighten at your side, then loosen when she feels you smile.{/n}
-"What?"
-"You seem pleased."
-"An accusation I am willing to endure."
-{n}She rests her forehead briefly against you. Then she looks toward the blanket and laughs at herself, softer this time.{/n}
-"I have imagined this often enough to omit all the ordinary difficulties. The stone is hard. My shoulder will complain if I lie on it. You may discover that I have extremely firm opinions about where a blanket belongs."
+    n("night", "Soana", '''"Good."
+{n}She draws you down by the hand she is already holding. There is no haste in the first kiss and a great deal of it in the second; she bites your lip, not gently, and laughs low in her chest when you pull her closer.{/n}
+"I have imagined this often enough to leave out all the ordinary difficulties. The stone is hard. My shoulder will complain. You will discover that I have extremely firm opinions about where a blanket belongs."
 "Show me."
-{n}She does. The practical rearrangement becomes part of the pleasure: her hand guiding yours, your laughter when the blanket refuses to spread as neatly as she intended, the moment she stops arranging anything and simply draws you close.{/n}
-{n}You speak when something needs asking. You listen when either of you wants it slower. Her hand finds yours again when the last light leaves the cave mouth.{/n}
+{n}She does, and then she stops arranging anything. She unpins her braid with one hand and your collar with the other. Her fingers are rough as bark and very sure; she strips the road off you piece by piece, lets her rags fall in a heap across the tools, and pulls you down onto the blanket with a strength her age does not advertise. The last light leaves the cave mouth as she settles over you, her knees in the blanket on either side, and does not let you look anywhere but at her.{/n}
 {n}In the morning, she is awake before you. Her hand rests over yours beneath the blanket.{/n}
-"I have decided," she says, "that you were worth moving the tools."
+"I have decided that you were worth moving the tools."
 "High praise."
 "You have not seen how long it took me to arrange them before you came."
 {n}She kisses you once more before letting the day begin.{/n}''', c('[Leave when you must, with another visit wanted rather than owed.]', flags=("soana.later_night", "soana.lovers", "soana.progression_kept"))),

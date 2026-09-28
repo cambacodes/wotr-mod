@@ -215,6 +215,13 @@ internal static class Program
                 "Removable item is not a BlueprintItem: " + guid);
             Seed<Kingmaker.Blueprints.Items.BlueprintItem>(guid);
         }
+        // E12 presence areas outside the capital are native areas the game loads; seed them like the capital fixture.
+        foreach (string guid in story.Presences.Values.Select(p => p.Area).Distinct())
+        {
+            Check(((string)native[guid]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last().StartsWith("BlueprintArea", StringComparison.Ordinal),
+                "Presence area is not a BlueprintArea: " + guid);
+            Seed<Kingmaker.Blueprints.Area.BlueprintArea>(guid);
+        }
         foreach (string guid in story.CompletedQuests.Values.Distinct())
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintQuest", StringComparison.Ordinal), "Wrong native completed quest type: " + guid);
