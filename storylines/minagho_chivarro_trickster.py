@@ -510,7 +510,8 @@ ALONE_CHIV_NODES = [
     cv("refuse", '''"Then wait. You are good at making demons wait."''',
        c('"Then wait. I\'ll ask again."', flags=(DECLINED,))),
     nar("threshold", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
-{n}"Rent," she says, and holds out her hand. When you put yours in it she laughs, and draws you down onto a bed that is too narrow for anything she has in mind, and begins, unhurried and expert, to collect.{/n}''',
+{n}"Rent," she says, and holds out her hand. When you put yours in it she does not take it; she inspects it, turns it palm up, runs one nail along the old cut until you draw breath, and smiles at the sound as if she has just been quoted a price she likes. Then she undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it. Her own gown she leaves for last and lets fall without ceremony, because she knows precisely what it costs you to watch.{/n}
+{n}"Ten thousand nights I sold," she murmurs, walking you backwards to a bed too narrow for anything she has in mind. "This one is mine, and I am going to collect every copper of it." She pushes you down with two fingers, climbs astride you in one practiced motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
         c("Continue")),
 ]
 physical(P + "alone.chivarro", "The house she keeps now", "Chivarro", PRES_CHIV, CHIV_UNIT, ALONE_CHIV_NODES,
@@ -536,7 +537,8 @@ ALONE_MIN_NODES = [
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,)),
        c('"Then go. Dry."', flags=(CLOSED,))),
     nar("threshold", '''{n}She walks you back to your quarters as though she were the one escorting a prisoner, one hand fisted in the back of your collar. Inside she does not bother with the lamp.{/n}
-{n}She finds the bleeding palm in the dark and holds it against her mouth, and you feel her smile against the cut before you feel her teeth. "Mine," she says, "for tonight. His, every morning after." Then she pushes you back against the door, hard enough to rattle the bar, and does not let go.{/n}''',
+{n}She finds the bleeding palm in the dark and holds it against her mouth, and you feel her smile against the cut before you feel her teeth. "Mine," she says, "for tonight. His, every morning after." Then she pushes you back against the door, hard enough to rattle the bar, and takes her time: her fingers at your throat, not squeezing, only reminding; her mouth hot and unkind along your jaw; her body pressed to yours from knee to shoulder so that you feel every breath she refuses to hurry. She strips your shirt off one-handed and throws it somewhere you will never find it.{/n}
+{n}"On the bed," she says against your ear. "On your back. Hands where I can bite them." When you are where she wants you she follows you down, straddles your hips, pins both your wrists above your head with one of hers, and leans down until her hair falls across your face. There, at the very edge of it, she makes you wait one breath longer than you can bear, and smiles, as if collecting on a debt that is finally, finally due.{/n}''',
         c("Continue")),
 ]
 ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead.latched"]]
