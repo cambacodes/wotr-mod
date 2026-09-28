@@ -226642,6 +226642,46 @@
       ]
     },
     {
+      "Id": "arueshalae.treatment.react.sosiel_morning",
+      "Title": "Sosiel's word",
+      "Owner": "Sosiel",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Arueshalae...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Sosiel",
+          "Text": "\"You came down off the old bell tower this morning grey as a Kenabres widow, and she came down after you humming.\" {n}Sosiel does not smile, quite.{/n} \"I've been her friend longer than you've been her doctor, Commander. She's never hummed. Not once, in all the camps.\" {n}He sets his cup down.{/n} \"Whatever it cost you, she knows the price to the copper. Don't ever let her think it was too much. That's the only thing I'll ask.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "arueshalae.treatment.morning"
+      ],
+      "Forbids": [
+        "sosiel.dead",
+        "sosiel.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arueshalae",
+      "Reaction": true,
+      "AnswerLists": [
+        "129b55b8b5d50974f84f7c607d894fd0"
+      ]
+    },
+    {
       "Id": "arueshalae.treatment.react.lann_kitchen",
       "Title": "Lann's word",
       "Owner": "Lann",
@@ -230791,8 +230831,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
