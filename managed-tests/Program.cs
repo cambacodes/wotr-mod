@@ -165,6 +165,12 @@ internal static class Program
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintEtude", StringComparison.Ordinal), "Wrong native etude type: " + guid);
             Seed<BlueprintEtude>(guid);
         }
+        // Native unlockable flags a scene reads (e.g. KyadoDead) must exist before Build, like the etudes above.
+        foreach (string guid in story.UnlockableFlags.Values.Distinct())
+        {
+            Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintUnlockableFlag", StringComparison.Ordinal), "Wrong native flag type: " + guid);
+            Seed<BlueprintUnlockableFlag>(guid);
+        }
         foreach (string guid in unitIds)
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintUnit", StringComparison.Ordinal), "Wrong native unit type: " + guid);

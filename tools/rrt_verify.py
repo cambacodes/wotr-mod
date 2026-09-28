@@ -322,6 +322,10 @@ class Reach:
             ov = (rel.get("UnavailableOverrides") or {}).get(f)
             if ov and self.possible(ov, ch): continue   # E2: an authored return can lift this block
             if s["TricksterDevice"] and f in device_detects(rel, s): continue   # ER-2: the device serving this state
+            # A Revivals DeathFlag is an observation of the corpse, not a latch: the confirmed revive clears it at runtime,
+            # so a world forced into the death reaches the relationship again once that state's return is possible.
+            if any(r.get("DeathFlag") == f and r.get("Relationship") == s["Relationship"] for r in m.revivals.values())                     and any(f in (e.get("Detect") or []) and e.get("Returned") and self.possible(e["Returned"], ch)
+                            for e in (rel.get("TricksterAccess") or {}).values()): continue
             if self.forced(f, ch): return "unavailable-forced:" + f
         if s["Relationship"] == "tirabade" and self.chaptered and not is_remote(s) and ch == 4: return "tirabade-ch4"
         return None
@@ -1854,7 +1858,10 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
     def reach(true, false):
         key = (frozenset(true), frozenset(false))
         if key not in cache:
-            cache[key] = Reach(model, mythic_world("trickster", model, "matrix", true=true, false=false))
+            world = mythic_world("trickster", model, "matrix", true=true, false=false)
+            # A state that detects `none: trickster` (the lost path) is not also forced into the live Trickster world.
+            world.true -= set(false)
+            cache[key] = Reach(model, world)
         return cache[key]
 
     chars = matrix.get("characters", [])
