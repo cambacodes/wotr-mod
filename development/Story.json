@@ -156678,7 +156678,8 @@
       "Forbids": [
         "aranka.trickster.primed",
         "aranka.ran_romance",
-        "aranka.ran_failure"
+        "aranka.ran_failure",
+        "fool_king.crowned"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -156696,7 +156697,10 @@
           "fool_king.gone",
           "coronation.seen"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "fool_king.crowned": "aranka.trickster.king_gone"
+      }
     },
     {
       "Id": "aranka.trickster.verse.her_letter",
@@ -158180,6 +158184,110 @@
       "TricksterState": "aranka.ran_failure"
     },
     {
+      "Id": "aranka.trickster.failure.mocking_verse_c5",
+      "Title": "The verse where you lose",
+      "Owner": "Aranka",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"What are they singing back there?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Somebody at the back of the King's tavern starts the camp's favourite song about you: the one Aranka wrote after everything between you went wrong, the one where the Knight-Commander trips over their own banner and the demons laugh too hard to fight. The room goes quiet and looks at you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "king",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "king",
+          "Speaker": "conversant",
+          "Text": "\"Sing it, Majesty! Sing the one where you lose!\" {n}Thaberdine beams at you with perfect, drunken goodwill. He thinks you are both kings.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"The verse about me, the one where I lose. Everybody! Louder on the rhyme.\"",
+              "Next": "loud",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "\"Not tonight, Your Majesty.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "loud",
+          "Speaker": "Narrator",
+          "Text": "{n}You climb onto the bench and lead it. You sing the banner verse louder than anyone, and trip over an imaginary banner on the rhyme, and the tavern howls. By the third round they are singing it with you, not at you, and by the fifth it has become a drinking song about the one commander in the world who can take a joke.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "after",
+          "Speaker": "conversant",
+          "Text": "\"Now THAT'S a king!\" {n}Thaberdine wipes his eyes.{/n} \"Pops always said, a king who can't sing his own defeats won't live to see many victories. Or was it the other way round? One of 'em!\"",
+          "Choices": [
+            {
+              "Text": "\"Again. Louder on the rhyme.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.mocking_verse"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "aranka.ran_failure",
+        "fool_king.crowned"
+      ],
+      "Forbids": [
+        "aranka.trickster.primed",
+        "fool_king.gone"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "aranka",
+      "AnswerLists": [
+        "6dccfd39947ef4242a8afbe36b21a46c"
+      ],
+      "NativeReturnCue": "7b050ba0745bf144e815632e39b34853",
+      "TricksterDevice": true,
+      "TricksterState": "aranka.ran_failure"
+    },
+    {
       "Id": "aranka.trickster.failure.mocking_verse_any",
       "Title": "Louder on the rhyme",
       "Owner": "Aranka",
@@ -158261,7 +158369,8 @@
         "aranka.ran_failure"
       ],
       "Forbids": [
-        "aranka.trickster.primed"
+        "aranka.trickster.primed",
+        "fool_king.crowned"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -158280,6 +158389,9 @@
           "coronation.seen"
         ]
       ],
+      "ForbidOverrides": {
+        "fool_king.crowned": "aranka.trickster.king_gone"
+      },
       "TricksterDevice": true,
       "TricksterState": "aranka.ran_failure"
     },
@@ -160700,6 +160812,11 @@
       ],
       [
         "vellexia.trickster.returned"
+      ]
+    ],
+    "aranka.trickster.king_gone": [
+      [
+        "fool_king.gone"
       ]
     ],
     "trickster.cheated_death": [

@@ -54,6 +54,11 @@ QUEST = "aranka.ran_quest_complete"
 GAVE_SONG = "aranka.gave_song"
 CROWNED = "fool_king.crowned"
 KING_GONE = "fool_king.gone"
+# Derived twin of fool_king.gone: a ForbidOverride value must be authored or Derived, never a native key. The late
+# fallbacks Forbid the crown unless the King is gone, so they open only when no King is left to sing to: the King
+# is gone, or the Coronation has passed and he was never crowned (then no Chapter 5 King scene exists).
+NO_KING = "aranka.trickster.king_gone"
+NO_KING_GATE = dict(RequiresAnyGroups=[[KING_GONE, "coronation.seen"]], ForbidOverrides={CROWNED: NO_KING})
 
 RELATIONSHIP_PATCH = dict(
     UnavailableOverrides={FAILURE: RETURNED},
@@ -220,7 +225,7 @@ letter("aranka.trickster.verse.any_tavern", "Every mug in the house", [
     a("reply_unknown", '''"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word."
 "Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part! The carters say it started in your city, in a tavern, with somebody paying for the beer. I am coming to Drezen to find the thief. Please have them ready."''',
       *her_letter_choices(PRIMED, LATE)),
-], requires=("trickster",), forbids=(PRIMED, ROMANCE, FAILURE), delay=0, RequiresAnyGroups=[[KING_GONE, "coronation.seen"]])
+], requires=("trickster",), forbids=(PRIMED, ROMANCE, FAILURE, CROWNED), delay=0, **NO_KING_GATE)
 # The act is performed on the page now, and dearer than the King's round; her reply is folded in so the route spends
 # one letter, and its answers record the primer and the late cost as well (R2-2).
 
@@ -358,6 +363,12 @@ tavern("aranka.trickster.failure.mocking_verse", "The verse where you lose", '"W
        mocking_nodes(), requires=("trickster", FAILURE), forbids=(PRIMED,), chapter=3, hub=KING_C3, back=KING_C3_RETURN,
        TricksterDevice=True, TricksterState=FAILURE)
 
+# Chapter 5, while the crowned King still holds court: the same verse on his Chapter 5 list (the late fallback Forbids
+# his crown, so without this a failure-state Commander would have no setup until the King left).
+tavern("aranka.trickster.failure.mocking_verse_c5", "The verse where you lose", '"What are they singing back there?"',
+       mocking_nodes(), requires=("trickster", FAILURE, CROWNED), forbids=(PRIMED, KING_GONE), chapter=5, hub=KING_C5,
+       back=KING_C5_RETURN, TricksterDevice=True, TricksterState=FAILURE)
+
 letter("aranka.trickster.failure.mocking_verse_any", "Louder on the rhyme", [
     nar("start", '''{n}The camp's favourite song about you is the one Aranka wrote after everything between you went wrong: the Knight-Commander trips over their own banner, and the demons laugh too hard to fight. The sappers sing it when they think you can't hear.{/n}
 {n}There is no King's tavern left to lead it in. So you walk into the worst camp tavern in Drezen, pay for every mug in the house, and climb onto a table.{/n}''',
@@ -368,7 +379,7 @@ letter("aranka.trickster.failure.mocking_verse_any", "Louder on the rhyme", [
         c("Continue", "her_reply")),
     a("her_reply", '''"You sang the verse where you lose. Out loud, on purpose, and made them sing it louder. Nobody has ever done that with one of my songs. I wrote it to hurt you. You made it yours. I am coming to Drezen, and I haven't decided yet whether to slap you."''',
         c('[Answer her] "Come and decide."', flags=(PRIMED, LATE, MOCKING, RETURNED, ANSWERED, STARTED))),
-], requires=("trickster", FAILURE), forbids=(PRIMED,), delay=0, RequiresAnyGroups=[[KING_GONE, "coronation.seen"]],
+], requires=("trickster", FAILURE), forbids=(PRIMED, CROWNED), delay=0, **NO_KING_GATE,
    TricksterDevice=True, TricksterState=FAILURE)
 
 letter("aranka.trickster.failure.second_verse", "A blot in the middle", [
@@ -480,3 +491,4 @@ def integrate(payload):
                         "the verse where they lose, or bills her as their court poet, may meet Aranka at Fye's counter "
                         "in Drezen, in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    payload.setdefault("Derived", {})[NO_KING] = [[KING_GONE]]

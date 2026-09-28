@@ -54,6 +54,7 @@ internal static class ArankaTricksterTests
         var third = S(P + "verse.third_verse");
         var mocking = S(P + "failure.mocking_verse");
         var mockingAny = S(P + "failure.mocking_verse_any");
+        var mocking5 = S(P + "failure.mocking_verse_c5");
         var secondVerse = S(P + "failure.second_verse");
         var boast = S(P + "touring.boast");
         var arrives = S(P + "touring.arrives");
@@ -61,7 +62,7 @@ internal static class ArankaTricksterTests
         var epDeclined = S(P + "epilogue.declined");
         var epVerse = S(P + "epilogue.verse");
         var epNerosyan = S(P + "epilogue.nerosyan");
-        var setups = new[] { tavern, tavern5, anyTavern, mocking, mockingAny, boast };
+        var setups = new[] { tavern, tavern5, anyTavern, mocking, mocking5, mockingAny, boast };
         List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w);
         Snapshot After(Scene scene, Snapshot w, string node, int choice)
         {
@@ -114,7 +115,7 @@ internal static class ArankaTricksterTests
         check(rel.UnavailableOverrides["aranka.ran_failure"] == P + "returned" && rel.TricksterAccess.Count == 3
               && rel.TricksterAccess["aranka.ran_failure"].Detect.SequenceEqual(new[] { "aranka.ran_failure" })
               && rel.CommittedFlag == Kept && rel.ClosedFlag == Closed, "Aranka's relationship patch is wrong.");
-        foreach (var s in new[] { mocking, mockingAny, secondVerse })
+        foreach (var s in new[] { mocking, mocking5, mockingAny, secondVerse })
             check(s.TricksterDevice && s.TricksterState == "aranka.ran_failure", "A failure-state scene is not an ER-2 device: " + s.Id);
         check(story.Presences.TryGetValue("aranka.presence", out var presence) && presence.Unit == Unit && presence.Mode == "spawn-copy"
               && presence.At?.NearUnit == Fye && presence.Dialog == "hub" && presence.Forbids.Contains(Closed)
@@ -153,6 +154,19 @@ internal static class ArankaTricksterTests
         check(Rules.Available(story, tavern5, c5) && !Rules.Available(story, tavern, c5), "The Chapter 5 King's round is missing.");
         var gone = World(story, 5, "trickster", "trickster.ever", "fool_king.crowned", "fool_king.gone");
         check(!Rules.Available(story, tavern5, gone), "The King's round outlives the King.");
+        // Audit round 5 (INT/COX): after the Coronation, a crowned King who is still here keeps the only entry; the
+        // fallback ("There is no King left to sing to") opens only when he is gone, or was never crowned.
+        var crownedAfter = World(story, 5, "trickster", "trickster.ever", "fool_king.crowned", "coronation.after");
+        check(Rules.Available(story, tavern5, crownedAfter) && !Rules.Available(story, anyTavern, crownedAfter),
+            "The no-King fallback opens beside a living, crowned King.");
+        var neverCrowned = World(story, 5, "trickster", "trickster.ever", "coronation.after");
+        check(Rules.Available(story, anyTavern, neverCrowned) && !Rules.Available(story, tavern5, neverCrowned),
+            "A Commander whose King was never crowned has no Chapter 5 entry.");
+        var failedCrowned = World(story, 5, "trickster", "trickster.ever", "aranka.ran_failure", "fool_king.crowned", "coronation.after");
+        check(Rules.Available(story, mocking5, failedCrowned) && !Rules.Available(story, mockingAny, failedCrowned),
+            "The failure state in Chapter 5 has no entry beside a crowned King, or two.");
+        check(mocking5.AnswerLists.SequenceEqual(new[] { KingC5 }) && mocking5.NativeReturnCue == KingC5Return,
+            "The Chapter 5 failure verse left the King's list.");
 
         // Trk_Aranka_NoKing: the late fallback, dearer, with her reply folded in.
         check(Rules.Available(story, anyTavern, gone) && anyTavern.Nodes[0].Choices[0].Crusade?.Amount == -150
@@ -234,7 +248,7 @@ internal static class ArankaTricksterTests
             "The posters go up on an Azata run.");
 
         // Every setup excludes the others in each world (COX).
-        foreach (var w in new[] { fresh, c5, gone, failed, failedLate, done })
+        foreach (var w in new[] { fresh, c5, gone, failed, failedLate, done, crownedAfter, neverCrowned, failedCrowned })
             check(setups.Count(s => Rules.Available(story, s, w)) <= 1, "Two Aranka setups open at once.");
 
         // Fye has left the capital (Chapter 3 or 5): every in-person beat plays in the quartermaster's yard instead, through
