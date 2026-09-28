@@ -210,7 +210,7 @@ office(P + "audit.open", "A thorough audit", '"You said you\'d be findin\' out."
       c("[Hear her out.]", "terms", flags=(HOSTILE,))),
     d("terms", '''{n}She listens without writing. When you have finished she sits for a while with her good hand flat on the page, looking at the line in your name as if it were a wagon with a cracked axle that might yet get where it is going.{/n}
 "Right. Here's how it'll go. You come by the stores once a week, on your own feet, and you account for yourself. Boots, blankets, bottles, and whatever else you've drawn on my stores that week. I'll count it. You'll not argue."
-{n}She taps the line.{/n} "If I like the accountin', maybe I'll let you buy me a drink out of what you owe." {n}It is not a smile. It is where one would go.{/n}''',
+{n}She taps the line.{/n} "If I like the accountin', maybe I'll let you buy me a drink out of what you owe." {n}One corner of her mouth moves, and she puts it back, and picks up the pen.{/n}''',
       c("[Agree to be audited.]", flags=(RETURNED, STARTED), forbids=(LATE,)),
       c("[Agree to be audited. Twice a week.]", "twice", requires=(LATE,))),
     d("twice", '''"Twice a week, for you. Wet ink costs extra."''',

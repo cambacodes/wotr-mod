@@ -142,7 +142,7 @@ internal static class DorgelindaTricksterTests
               && reactions.Where(r => r.Owner == "Konomi").All(r => r.Requires.Contains("konomi.in_office")
                   && r.ForbidOverrides["konomi.dismissed"] == "konomi.trickster.returned"),
             "The reactions are not exactly Konomi, Regill and Lann behind their guards.");
-        check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 6 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard" }),
             "The late commit is not derived from the second book.");
@@ -320,6 +320,15 @@ internal static class DorgelindaTricksterTests
         check(Choice(inquiry, "choice", 0).Crusade?.Resource == "Favors" && Choice(inquiry, "choice", 1).Alignment?.Direction == "Chaotic",
             "The inquiry's answers cost nothing.");
         check(Rules.Available(story, forward, Later(story, inquiries.First(), 48)), "The last march does not follow the inquiry.");
+        // Her other columns: the Commander's answer decides. Honesty gets her terms, "my business" a colder allowance,
+        // a lie her hard no (the key back, the line ruled off) with its own page.
+        var others = S(L + "other_columns");
+        var columns = Play(others, Later(story, mornings.First(), 24));
+        check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed"))
+              && columns.Any(r => r.Has("dorgelinda.closed")), "Her answer to the other columns is not a real choice.");
+        check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster.ever", "dorgelinda.committed", "dorgelinda.closed"))
+              && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster.ever", "dorgelinda.committed", "dorgelinda.closed")),
+            "Her ruled-off line has no page, or the committed page still plays.");
         var committedPage = S(P + "epilogue.committed").Nodes[0];
         foreach (var flag in new[] { L + "true_books_sent", L + "clean_copy_sent", L + "her_name_sent", L + "receipt_signed" })
             check(committedPage.Paragraphs.Any(p => p.Requires.Contains(flag)), "Her epilogue forgets " + flag);

@@ -175845,7 +175845,7 @@
         {
           "Id": "terms",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She listens without writing. When you have finished she sits for a while with her good hand flat on the page, looking at the line in your name as if it were a wagon with a cracked axle that might yet get where it is going.{/n}\n\"Right. Here's how it'll go. You come by the stores once a week, on your own feet, and you account for yourself. Boots, blankets, bottles, and whatever else you've drawn on my stores that week. I'll count it. You'll not argue.\"\n{n}She taps the line.{/n} \"If I like the accountin', maybe I'll let you buy me a drink out of what you owe.\" {n}It is not a smile. It is where one would go.{/n}",
+          "Text": "{n}She listens without writing. When you have finished she sits for a while with her good hand flat on the page, looking at the line in your name as if it were a wagon with a cracked axle that might yet get where it is going.{/n}\n\"Right. Here's how it'll go. You come by the stores once a week, on your own feet, and you account for yourself. Boots, blankets, bottles, and whatever else you've drawn on my stores that week. I'll count it. You'll not argue.\"\n{n}She taps the line.{/n} \"If I like the accountin', maybe I'll let you buy me a drink out of what you owe.\" {n}One corner of her mouth moves, and she puts it back, and picks up the pen.{/n}",
           "Choices": [
             {
               "Text": "[Agree to be audited.]",
@@ -178968,10 +178968,10 @@
         {
           "Id": "count",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She counts you. She does it the way she does everything: aloud, thoroughly, without hurry, with one hand. Buttons, one by one. The buckle. Your belt, which she lays across the desk like a ledger line. Each scar she finds she names, the old ones and the new, and asks nothing about any of them.{/n}\n{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the soft heavy strength of a body that has hauled crates for a lifetime and has never once been told it was beautiful and would not believe you if you tried.{/n}",
+          "Text": "{n}She counts you. She does it the way she does everything: aloud, thoroughly, without hurry, with one hand. Buttons, one by one. The buckle. Your belt, which she lays across the desk like a ledger line. Each scar she finds she names, the old ones and the new, and asks nothing about any of them.{/n}\n{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates since before you were born. She watches your face while you find them, and does not look away.{/n}",
           "Choices": [
             {
-              "Text": "[Tell her anyway.]",
+              "Text": "[Tell her she's beautiful.]",
               "Next": "tell",
               "Set": [],
               "Requires": [],
@@ -182301,7 +182301,7 @@
           "Text": "\"It says I'm not the only line in your book.\" {n}Flatly, like a shortage.{/n}\n\"I knew that. I'm not a fool, and I've got one good eye, and I use it.\" {n}She closes the grey ledger.{/n} \"A Commander's got a lot of columns. I'd be a poor quartermaster if I thought a campaign ran on one supply line.\"",
           "Choices": [
             {
-              "Text": "\"Does it bother you?\"",
+              "Text": "\"There are others. Ask me about any of them, and I'll answer.\"",
               "Next": "bother",
               "Set": [],
               "Requires": [],
@@ -182312,6 +182312,74 @@
               "Text": "\"You're not the only line. You're the one I sign for.\"",
               "Next": "sign",
               "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"That's my business, Quartermaster.\"",
+              "Next": "unblessed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"There's nobody else. The sentries have bad arithmetic.\"",
+              "Next": "lie",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Dorgelinda"
+        },
+        {
+          "Id": "unblessed",
+          "Speaker": "Dorgelinda",
+          "Text": "\"Your business.\" {n}She says it slowly, as if entering it.{/n}\n\"Right. Then it's yours, and my stores are mine. Nobody else draws on 'em on your seal, and I'll not ask, and you'll not tell.\" {n}She puts the grey ledger in a drawer and locks it.{/n}\n\"That's not a blessin', Commander. Don't mistake it for one. It's a separate column, and I'll keep it separate.\" {n}She does not look up again.{/n} \"Same time next week.\"",
+          "Choices": [
+            {
+              "Text": "[Leave.]",
+              "Next": null,
+              "Set": [
+                "dorgelinda.ledger.unblessed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Dorgelinda"
+        },
+        {
+          "Id": "lie",
+          "Speaker": "Dorgelinda",
+          "Text": "{n}She opens the grey ledger again, without hurry, and reads you three entries from it: two names, two dates, one of them this week. The sentries' arithmetic is excellent.{/n}\n\"That's the first lie you've ever told me about your own column.\" {n}Very quietly.{/n} \"You've lied for thieves. You've lied to tribunals. I carried every one. I'll not carry that.\" {n}She holds out her good hand, palm up.{/n}\n\"The key, Commander.\"",
+          "Choices": [
+            {
+              "Text": "[Put the key in her hand.]",
+              "Next": "ruled",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Dorgelinda"
+        },
+        {
+          "Id": "ruled",
+          "Speaker": "Dorgelinda",
+          "Text": "{n}She closes her fingers on it. Then she takes up the pen and rules a line under your column, straight and hard, the full width of the page.{/n}\n\"You'll draw on my stores like any other officer from now on. By requisition. Through a clerk.\" {n}She does not look up.{/n} \"Dismissed.\"",
+          "Choices": [
+            {
+              "Text": "[Go.]",
+              "Next": null,
+              "Set": [
+                "dorgelinda.closed"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -183712,6 +183780,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}",
+              "Requires": [
+                "dorgelinda.ledger.unblessed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}They quarrelled, now and then, about irregular accounting. She told the Commander first when she was angry, and the Commander told her first when there was a lie to carry. It was, the sergeant said, the best-run household in Mendev.{/n}",
               "Requires": [
                 "dorgelinda.ledger.quarrel_mended"
@@ -183735,6 +183811,41 @@
       "ForbidOverrides": {
         "sacrifice": "trickster.cheated_death"
       },
+      "Relationship": "dorgelinda"
+    },
+    {
+      "Id": "dorgelinda.trickster.epilogue.ruled_off",
+      "Title": "",
+      "Owner": "DorgelindaEpilogue",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "{n}The Logistics Council's last ledger balanced to the copper. One column in it, in the Commander's name, was ruled off in a hard straight line the full width of the page, the only line Dorgelinda Stranglehold ever drew in anger. She kept the small black key on her own wrist until she died, with the others, and never used it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Dorgelinda"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "dorgelinda.committed",
+        "dorgelinda.closed"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
       "Relationship": "dorgelinda"
     }
   ],
@@ -183855,8 +183966,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

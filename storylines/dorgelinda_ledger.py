@@ -411,8 +411,8 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
 "One coat. Officer's pattern. Mended at the left elbow, badly." {n}She lays her good hand flat on your chest, over the shirt, the way she lays it on a page to hold it still.{/n} "One shirt. Mine, as it happens, I issued it. One heart, beatin' faster than regulation."''',
       c("Continue", "count")),
     d("count", '''{n}She counts you. She does it the way she does everything: aloud, thoroughly, without hurry, with one hand. Buttons, one by one. The buckle. Your belt, which she lays across the desk like a ledger line. Each scar she finds she names, the old ones and the new, and asks nothing about any of them.{/n}
-{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the soft heavy strength of a body that has hauled crates for a lifetime and has never once been told it was beautiful and would not believe you if you tried.{/n}''',
-      c('[Tell her anyway.]', "tell"),
+{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates since before you were born. She watches your face while you find them, and does not look away.{/n}''',
+      c("[Tell her she's beautiful.]", "tell"),
       c('[Say nothing. Show her.]', "show")),
     d("tell", '''"Beautiful." {n}She snorts, and it catches halfway, and she puts her forehead against your shoulder so that you cannot see her face.{/n}
 "You lyin' Trickster." {n}Her voice is thick.{/n} "You'd sign for anythin'. Say it again."''',
@@ -1016,8 +1016,21 @@ office(OTHERS, "Other columns", '"You\'re quiet today."', [
       c('"And what does it say?"', "says")),
     d("says", '''"It says I'm not the only line in your book." {n}Flatly, like a shortage.{/n}
 "I knew that. I'm not a fool, and I've got one good eye, and I use it." {n}She closes the grey ledger.{/n} "A Commander's got a lot of columns. I'd be a poor quartermaster if I thought a campaign ran on one supply line."''',
-      c('"Does it bother you?"', "bother"),
-      c('"You\'re not the only line. You\'re the one I sign for."', "sign")),
+      c('"There are others. Ask me about any of them, and I\'ll answer."', "bother"),
+      c('"You\'re not the only line. You\'re the one I sign for."', "sign"),
+      c('"That\'s my business, Quartermaster."', "unblessed"),
+      c('[Lie] "There\'s nobody else. The sentries have bad arithmetic."', "lie")),
+    d("unblessed", '''"Your business." {n}She says it slowly, as if entering it.{/n}
+"Right. Then it's yours, and my stores are mine. Nobody else draws on 'em on your seal, and I'll not ask, and you'll not tell." {n}She puts the grey ledger in a drawer and locks it.{/n}
+"That's not a blessin', Commander. Don't mistake it for one. It's a separate column, and I'll keep it separate." {n}She does not look up again.{/n} "Same time next week."''',
+      c("[Leave.]", flags=(L + "unblessed",))),
+    d("lie", '''{n}She opens the grey ledger again, without hurry, and reads you three entries from it: two names, two dates, one of them this week. The sentries' arithmetic is excellent.{/n}
+"That's the first lie you've ever told me about your own column." {n}Very quietly.{/n} "You've lied for thieves. You've lied to tribunals. I carried every one. I'll not carry that." {n}She holds out her good hand, palm up.{/n}
+"The key, Commander."''',
+      c("[Put the key in her hand.]", "ruled")),
+    d("ruled", '''{n}She closes her fingers on it. Then she takes up the pen and rules a line under your column, straight and hard, the full width of the page.{/n}
+"You'll draw on my stores like any other officer from now on. By requisition. Through a clerk." {n}She does not look up.{/n} "Dismissed."''',
+      c("[Go.]", flags=(CLOSED,))),
     d("bother", '''{n}She thinks about it properly, the way she thinks about everything.{/n}
 "Bother me." {n}She turns the grey book over in her good hand.{/n} "It'd bother me if you lied about it. It'd bother me if I found one of 'em in my stores drawin' on your seal without askin'. It'd bother me if you were one of those that promises every line it's the only one and then can't balance a single account." {n}She puts the book down.{/n}
 "You've never once lied to me about what's in your column, Commander. You lie about everythin' else. Not that."''',
@@ -1285,10 +1298,16 @@ SCENES.append(scene(P + "epilogue.after_the_war", "", "DorgelindaEpilogue", 6, "
             p("{n}The Commander had signed for an after, in a cold storeroom, among other people's cloaks. She held the Commander to it. She had a grip, as everyone knew.{/n}", requires=(L + "signed_after",)),
             p("{n}Every pair of boots the Commander wore from then on came from the same shelf, and fitted, and was entered in her book.{/n}", requires=(L + "fitted",)),
             p("{n}Twelve soldiers from a plague ward in Drezen outlived the war. None of them ever learned whose column their potions were written in.{/n}", requires=(L + "ward_seen",)),
+            p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=(L + "unblessed",)),
             p("{n}They quarrelled, now and then, about irregular accounting. She told the Commander first when she was angry, and the Commander told her first when there was a lie to carry. It was, the sergeant said, the best-run household in Mendev.{/n}", requires=(L + "quarrel_mended",)),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
     ForbidOverrides={"sacrifice": "trickster.cheated_death"}, last=6, Relationship="dorgelinda"))
+
+
+SCENES.append(scene(P + "epilogue.ruled_off", "", "DorgelindaEpilogue", 6, "", [
+    nar("page", """{n}The Logistics Council's last ledger balanced to the copper. One column in it, in the Commander's name, was ruled off in a hard straight line the full width of the page, the only line Dorgelinda Stranglehold ever drew in anger. She kept the small black key on her own wrist until she died, with the others, and never used it.{/n}""")],
+    requires=("trickster.ever", COMMITTED, CLOSED), last=6, Relationship="dorgelinda"))
 
 
 # Her epilogue remembers what the weekly counts made of the line.
