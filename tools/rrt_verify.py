@@ -1921,6 +1921,15 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
                     continue
                 rr = reach(t, f)
                 ent_n += 1
+                # Canon fate stands (doc 03 §2.7): the path is lost and the character is unavailable. Nothing may
+                # defy it: the state passes when no Trickster device of the relationship is reachable and needs no commit.
+                canon = not ids and "trickster.failed" in t and bool(t & {u for r in rels for u in r.get("UnavailableFlags", [])})
+                if canon:
+                    devices = [s["Id"] for s in rel_scenes if s.get("TricksterDevice") and s["Id"] in rr.reached]
+                    ok = committed = not devices
+                    if devices: row["notes"].append("%s: canon fate defied by %s" % (st.get("state"), ",".join(devices[:3])))
+                    ent_ok += ok; com_ok += committed
+                    continue
                 ok = all(i in rr.reached for i in ids) if ids else any(s["Id"] in rr.reached for s in rel_scenes)
                 committed = any(r["CommittedFlag"] in rr.held for r in rels)
                 ent_ok += ok; com_ok += committed
@@ -1938,12 +1947,22 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
                 watched = {r["ClosedFlag"] for k, r in model.rels.items() if k not in rids} | {
                     f for k, r in model.rels.items() if k not in rids for f in r.get("UnavailableFlags", [])
                     if LOSS_LIKE.search(f) and f not in own_unavail and f not in MYTHIC}
+            # The character's own G6 grief rule and cross-route allowlist (matrix) excuse exactly the designed reads:
+            # G6(b) a Forbids <death> lifted by ForbidOverrides {<death>: <return>}; G6(a) a grief page that Requires
+            # <death> and Forbids <return>; an allowlisted scene that Requires the other character's return flag.
+            grief = {g["flag"]: g["return_flag"] for g in (c.get("grief_rule") or [])
+                     if isinstance(g, dict) and g.get("return_flag") not in (None, "", "n/a")}
+            grief_of = {ret: flag for flag, ret in grief.items()}
+            allow = {k.split(" ")[0]: set(v) for k, v in (c.get("cross_route_allowlist") or {}).items() if isinstance(v, list)}
             deps = []
             for s in model.scenes:
                 if s["Relationship"] not in rids or s["Reaction"]: continue
                 pos = set(s["Requires"]) | set(s["RequiresAny"]) | {x for g in s["RequiresAnyGroups"] for x in g}
-                deps += ["%s requires %s" % (s["Id"], f) for f in sorted(pos & watched)]
-                if explicit_never: deps += ["%s forbids %s" % (s["Id"], f) for f in sorted(set(s["Forbids"]) & watched)]
+                deps += ["%s requires %s" % (s["Id"], f) for f in sorted(pos & watched)
+                         if f not in allow.get(s["Id"], ()) and not (f in grief and grief[f] in s["Forbids"])]
+                if explicit_never: deps += ["%s forbids %s" % (s["Id"], f) for f in sorted(set(s["Forbids"]) & watched)
+                                            if not (f in grief and s["ForbidOverrides"].get(f) == grief[f])
+                                            and not (f in grief_of and grief_of[f] in pos)]
             committed_all = any(r["CommittedFlag"] in combined.held for r in rels)
             row["coexist"] = "PASS" if committed_all and not deps else "FAIL" + ("" if committed_all else " commit") + (" %d dep" % len(deps) if deps else "")
             if deps: row["notes"].append("coexistence: " + "; ".join(deps[:3]) + (" (+%d more)" % (len(deps) - 3) if len(deps) > 3 else ""))
