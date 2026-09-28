@@ -141,7 +141,7 @@ threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You
 # The commit (R2-1), a separate beat after the return: her test, her yes or her no, and the heat to the cut.
 VERDICT = (c('"Then say yes."', "reason_paid", requires=(PAID,), flags=("noct.complete", SAID_YES)),
            c('"Then say yes."', "reason_refused", forbids=(PAID,), flags=("noct.complete", SAID_YES)),
-           c("\"Or say no. You're allowed.\"", "refusal"))
+           c('"Or keep your answer. You like owning things."', "refusal"))
 threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question, Lady. Off the record."', [
     nt("test", '''"Nothing in the Abyss is off the record. The Abyss simply has very poor clerks."
 "Very well. You have kept my secret for the length of one conversation, which is longer than my brother ever managed. Tell me why I should let a clown who knows where my shadow ends sit anywhere near me when this is over."

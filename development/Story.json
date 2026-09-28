@@ -148820,7 +148820,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Or say no. You're allowed.\"",
+              "Text": "\"Or keep your answer. You like owning things.\"",
               "Next": "refusal",
               "Set": [],
               "Requires": [],
@@ -148862,7 +148862,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Or say no. You're allowed.\"",
+              "Text": "\"Or keep your answer. You like owning things.\"",
               "Next": "refusal",
               "Set": [],
               "Requires": [],
