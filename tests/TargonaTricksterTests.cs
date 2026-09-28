@@ -104,10 +104,10 @@ internal static class TargonaTricksterTests
         var joke = setup.Nodes.Single(n => n.Id == "start").Choices[0];
         check(joke.Mythic == "PlayerIsTrickster" && joke.Alignment?.Direction == "Chaotic" && joke.Alignment.Value == 1
               && joke.Text.StartsWith("[Spend it again, quietly]", StringComparison.Ordinal), "The primer lost its joke or its cost.");
-        var primed = After(setup, lab, "scroll", 0);
-        check(setup.Nodes.Single(n => n.Id == "scroll").Text.Contains("breath of life", StringComparison.Ordinal)
-              && setup.Nodes.Single(n => n.Id == "scroll").Text.Contains("two rounds", StringComparison.Ordinal),
-            "The primer does not show the wand, or breath of life's two-round limit.");
+        var primed = After(setup, lab, "wand", 0);
+        check(setup.Nodes.Single(n => n.Id == "wand").Text.Contains("wand of heal", StringComparison.Ordinal)
+              && setup.Nodes.Single(n => n.Id == "wand").Text.Contains("three charges", StringComparison.Ordinal),
+            "The primer does not show the three-charge wand of heal.");
         check(primed.Has(P + "primed"), "Trk_Targona_Setup: flags.");
         check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab"), Committed),
             "Trk_Targona_Setup: the commit is unreachable after the blow.");
