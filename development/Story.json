@@ -166927,7 +166927,7 @@
         {
           "Id": "no",
           "Speaker": "Seelah",
-          "Text": "{n}She is quiet a long time.{/n}\n\"You took my papers so I'd have to come back. And I came. That isn't the same as choosing to, Commander.\" She taps the table, once. \"I don't say yes to anyone who's had their hand in my pocket and not let me have mine in theirs. Let me choose it. Ask me again when you can stand to watch me walk out that door.\"",
+          "Text": "{n}She is quiet a long time.{/n}\n\"You took my papers so I'd have to come back. And I came.\" She taps the table, once. \"That clerk laughed at me for a quarter of an hour. Every company I asked this week looked at my empty belt before they looked at my face. I'm not sitting here because I chose to, Commander. I'm sitting here because you made sure I couldn't sit anywhere else.\"\n{n}She finishes her drink.{/n}\n\"Ask me again after I've walked out that door once, on my own feet, and come back through it anyway.\"",
           "Choices": [
             {
               "Text": "[Let her keep it] \"Then I'll ask again, and I'll ask better.\"",
@@ -167791,8 +167791,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

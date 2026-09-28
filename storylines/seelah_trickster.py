@@ -326,7 +326,9 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
     s_("door", '''"Go and help people. Write." She repeats it like an order she has decided to obey. "I will. Both. The letters will be badly spelled and full of complaints about turnips."''',
       c('"I\'ll read every one."')),
     s_("no", '''{n}She is quiet a long time.{/n}
-"You took my papers so I'd have to come back. And I came. That isn't the same as choosing to, Commander." She taps the table, once. "I don't say yes to anyone who's had their hand in my pocket and not let me have mine in theirs. Let me choose it. Ask me again when you can stand to watch me walk out that door."''',
+"You took my papers so I'd have to come back. And I came." She taps the table, once. "That clerk laughed at me for a quarter of an hour. Every company I asked this week looked at my empty belt before they looked at my face. I'm not sitting here because I chose to, Commander. I'm sitting here because you made sure I couldn't sit anywhere else."
+{n}She finishes her drink.{/n}
+"Ask me again after I've walked out that door once, on my own feet, and come back through it anyway."''',
       c('[Let her keep it] "Then I\'ll ask again, and I\'ll ask better."', flags=(DECLINED,))),
     s_("no_death", '''{n}Her hand goes to the place under her collarbone, the way it does when she thinks nobody is watching.{/n}
 "You've still got something of mine. In your coat. I can feel it from here." She is not angry. That is worse. "I can't say yes to anyone with my death in their pocket. Give it back, or let me take it, and then ask me."''',
