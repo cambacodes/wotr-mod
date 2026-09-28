@@ -425,7 +425,7 @@ internal static class Program
                 string nodeId = scene.Id + "." + node.Id;
                 var page = ResourcesLibrary.TryGetBlueprint(Id("page." + nodeId)) as BlueprintBookPage;
                 Check(page != null, "Missing page: " + nodeId);
-                Check(page!.Cues.Count == 1 && page.Cues[0].Get() is BlueprintCue, "Missing page cue: " + nodeId);
+                Check(page!.Cues.Count == (string.IsNullOrWhiteSpace(node.Text) ? 0 : 1) + node.Paragraphs.Count && page.Cues.All(c => c.Get() is BlueprintCue), "Missing page cue: " + nodeId);
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
@@ -455,7 +455,11 @@ internal static class Program
                     var answer = (BlueprintAnswer)page.Answers[i].Get();
                     Check(answer.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition shown && ReferenceEquals(shown.Choice, choice) && ReferenceEquals(shown.Owner, answer), "Choice lost its visibility guard or owner: " + nodeId);
                     Check(answer.SelectConditions.Conditions.Single() is Tirabade.Main.RouteCondition selected && ReferenceEquals(selected.Choice, choice) && ReferenceEquals(selected.Owner, answer), "Choice lost its selection guard or owner: " + nodeId);
-                    var action = answer.OnSelect.Actions.Single() as Tirabade.Main.RouteAction;
+                    var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();
+                    int nativeEffects = (choice.Crusade != null ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0);
+                    Check(answer.OnSelect.Actions.Length - 1 - nativeEffects is 0 or 1 && (choice.Mythic != null || answer.OnSelect.Actions.Length == 1 + nativeEffects)
+                        && answer.OnSelect.Actions[0] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
+                    Check((answer.MythicRequirement.ToString() == (choice.Mythic ?? "None")) && (answer.AlignmentShift?.Value ?? 0) == (choice.Alignment?.Value ?? 0), "Choice native mythic/alignment drifted: " + nodeId);
                     Check(action != null && ReferenceEquals(action.Choice, choice) && ReferenceEquals(action.Owner, answer), "Choice lost its effects or action owner: " + nodeId);
                     Check(ReferenceEquals(((Tirabade.Main.RouteCondition)answer.ShowConditions.Conditions.Single()).Continuation, continuation)
                         && ReferenceEquals(((Tirabade.Main.RouteCondition)answer.SelectConditions.Conditions.Single()).Continuation, continuation)

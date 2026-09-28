@@ -89729,7 +89729,7 @@
         {
           "Id": "night",
           "Speaker": "Arsinoe",
-          "Text": "\"I do. I have wanted to ask, and kept finding reasons to improve the room first. I think the room has had enough consideration.\"\n{n}She comes close and lets you see the pleasure in her face before kissing you. Her hand rests against your shoulder. When she draws back, it is to ask what would make you comfortable, and to tell you what she likes without requiring you to guess.{/n}\n{n}The lamp burns lower while you speak. There are moments of laughter, an awkward fastening she refuses to let spoil the mood, and then an unhurried closeness with no audience beyond the little stone face, which she finally turns toward the wall.{/n}\n{n}Later, with the room quiet around you, Arsinoe reaches for your hand beneath the cover.{/n}\n\"I am glad you asked.\"\n{n}In the morning she is reluctant to rise until the street becomes too noisy to ignore. She finds something to eat, objects to your account of who took more than a fair share of the cushion, and kisses you in the middle of the argument.{/n}\n\"There. Now you may go and be impressive. I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive.\"",
+          "Text": "\"I do. I have wanted to ask for some time, and I kept finding reasons to improve the room first. The room has had enough of my attention.\"\n{n}She reaches past you and turns the little stone face toward the wall. Then she takes your hand and puts it at the clasp of her collar, and holds it there, and watches you with those gold eyes until you understand that she means for you to open it.{/n}\n\"Slowly. I have waited long enough to be allowed to enjoy the waiting.\"\n{n}Her robes are the robes of a priestess who has never once been underdressed in public, and there are a great many fastenings. She knows every one of them. She lets you find them yourself, and laughs, low, when one defeats you, and does not help. When the last of them gives, she steps out of the cloth without looking down at it and draws you to the bed by the belt.{/n}\n{n}The lamp is burning low. She does not put it out. She wants to see you, she says, and she is not in the habit of paying for something she has not inspected. Her mouth is warm, her hands are not shy, and when she pulls you down with her the last thing she says is your name, as if she were signing it.{/n}\n{n}Later, the room is quiet, and the window is open, and Arsinoe's hand finds yours under the cover.{/n}\n\"I am glad you asked. I am gladder that I did.\"\n{n}In the morning she is reluctant to rise until the street becomes too noisy to ignore. She finds something to eat, objects to your account of who took more than a fair share of the cushion, and kisses you in the middle of the argument.{/n}\n\"There. Now you may go and be impressive. I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive.\"",
           "Choices": [
             {
               "Text": "\"Leave with a kiss and the promise of another visit.\"",
@@ -89829,7 +89829,17 @@
               "Abort": false
             }
           ],
-          "Portrait": "Arsinoe"
+          "Portrait": "Arsinoe",
+          "Paragraphs": [
+            {
+              "Text": "When people asked why a priestess who always moved on had stayed, Arsinoe said she had an outstanding account in Drezen. She never said which.",
+              "Requires": [
+                "arsinoe.trickster.stays_to_collect"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -89869,7 +89879,17 @@
               "Abort": false
             }
           ],
-          "Portrait": "Arsinoe"
+          "Portrait": "Arsinoe",
+          "Paragraphs": [
+            {
+              "Text": "When people asked why a priestess who always moved on had stayed, Arsinoe said she had an outstanding account in Drezen. She never said which.",
+              "Requires": [
+                "arsinoe.trickster.stays_to_collect"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -89951,7 +89971,17 @@
               "Abort": false
             }
           ],
-          "Portrait": "Arsinoe"
+          "Portrait": "Arsinoe",
+          "Paragraphs": [
+            {
+              "Text": "When people asked why a priestess who always moved on had stayed, Arsinoe said she had an outstanding account in Drezen. She never said which.",
+              "Requires": [
+                "arsinoe.trickster.stays_to_collect"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -90345,6 +90375,701 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "arsinoe"
+    },
+    {
+      "Id": "arsinoe.trickster.cauldron.lease",
+      "Title": "Property of the Treasury",
+      "Owner": "Arsinoe",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I have something a priestess of Abadar should see.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "{n}You set the Council's cauldron on her counter. It does not look like a cauldron. It never has. It is a diamond the size of a clenched fist, cut by someone who did not care what it cost, in a cradle of old gold.{/n}\n{n}Arsinoe's gold eyes go to it before you have taken your hand away. She does not touch it. Her fingers stop a breath above the stone, the way they would over an offering plate.{/n}\n\"If this is what I think it is...\"\n{n}She takes a jeweler's loupe from her sleeve and bends to the cradle. Under the grime of the Abyss there is a line of worn lettering, stamped, not engraved. Clerks' capitals.{/n}\n\"By the First Vault. *Treasury of Abadar, Absalom.* A soul cauldron, Commander. Consecrated to my god and inventoried by his temple. It belongs in a temple vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "shamira",
+              "Set": [],
+              "Requires": [
+                "shamira.killed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "shamira.killed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "shamira",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She tilts the stone toward the lamp. Deep inside it something that is not light moves, slow and patient, like a fish under ice.{/n}\n\"It is not empty.\"\n{n}She straightens and puts the loupe away very carefully.{/n}\n\"You have been filling my god's property, Commander. No. I do not want to know with what. I do not want to know with whom. I want it entered in the ledger, so that when someone asks, I can say that I recorded it and that I did not look.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Arsinoe",
+          "Text": "\"The law is simple, and it is old, and I did not write it. Property of the Treasury that leaves the Treasury without a contract is stolen. Stolen goods return to their owner. I will have it crated for Absalom with the next caravan south, under temple seal.\"\n{n}She says it pleasantly. She has already reached under the counter for a crate and a handful of straw.{/n}\n\"It is nothing personal. I like you a great deal more than I like most people who walk in here with the Treasury's property. But the Treasury does not care whom I like.\"",
+          "Choices": [
+            {
+              "Text": "\"It's leased, not stolen. Returnable at the end of the world.\"",
+              "Next": "rent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Lawful",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -500
+              }
+            },
+            {
+              "Text": "\"It stays with me. Abadar can send a bill.\"",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Another time.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rent",
+          "Speaker": "Arsinoe",
+          "Text": "{n}The straw stops halfway to the crate.{/n}\n\"Leased.\"\n{n}She looks at you for a long, pleased moment, the way she looks at a customer who has finally made an offer worth her time.{/n}\n\"A lease is a contract. A contract is lawful. And a lawful arrangement for the use of the Treasury's property, drawn up by an ordained priestess in good standing, is... something I could defend before my superiors, if I had to. I would enjoy defending it.\"\n\"Rent, then. Five hundred crowns to the temple, from the crusade's chest, today. The same again every season the property is out of the vault. I do not haggle over the Treasury's property, Commander. I will, however, listen.\"",
+          "Choices": [
+            {
+              "Text": "\"Agreed.\"",
+              "Next": "leased",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Five hundred a season is robbery with a halo.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "CheckDiplomacy",
+                "DC": 25,
+                "Success": "discount",
+                "Failure": "raised",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "discount",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She hears you out with her chin on her hand, and when you are done she is smiling in a way she would deny in front of a clerk.{/n}\n\"...Three seasons' grace. For a lessee who proposes to carry the property into the Abyss and back, and who argues like a moneylender's apprentice. Do not tell the Treasury I said so. Do not tell anyone I enjoyed that.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "leased",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "raised",
+          "Speaker": "Arsinoe",
+          "Text": "\"No.\"\n{n}She writes a figure on a slip of paper and turns it round to face you.{/n}\n\"For wasting a priestess's time, the rate goes up. Another two hundred. Abadar rewards thrift, Commander. He does not reward charm. You will find that I am the same, most days.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "leased",
+              "Set": [
+                "arsinoe.trickster.cost.rent_raised"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -200
+              }
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "leased",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She draws the lease on temple vellum in a clean, fast hand and reads every line of it aloud, including the ones you would rather she had skipped. You sign twice. She signs once, with a flourish she has clearly practiced.{/n}\n{n}Then she warms a stick of gold wax over the lamp, presses her seal into it, and fixes the tag to the diamond's cradle, just below the old Treasury stamp. *On lease.*{/n}\n\"Leased. Returnable at the end of the world, in whatever condition the world leaves it. Rent accrues from today. Abadar is my witness, and he has a very good memory for sums.\"",
+          "Choices": [
+            {
+              "Text": "\"Then I'm a tenant of Abadar.\"",
+              "Next": null,
+              "Set": [
+                "arsinoe.trickster.primed",
+                "arsinoe.trickster.cost.lien"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "council.fought"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "grudge",
+              "Set": [],
+              "Requires": [
+                "council.fought"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "grudge",
+          "Speaker": "Arsinoe",
+          "Text": "\"And the gentlemen you took it from? The ones you then fought?\"\n{n}She does not wait for an answer. She writes a line at the foot of the lease.{/n}\n\"A lessee answers for the property, Commander, not for the manners of the previous holders. I will note them as a risk. If any of them come to my counter asking for it back, I shall tell them it is leased, and show them the seal, and then I shall shout for the guard.\"",
+          "Choices": [
+            {
+              "Text": "\"Then I'm a tenant of Abadar.\"",
+              "Next": null,
+              "Set": [
+                "arsinoe.trickster.primed",
+                "arsinoe.trickster.cost.lien"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She puts the straw back under the counter. She does not argue. That is worse.{/n}\n\"Then the church of Abadar will send a bill. It will be long, it will be accurate, and it will find you wherever you are, including places that do not have a postal service. May Abadar keep you, Commander. And your property. Such as it is.\"",
+          "Choices": [
+            {
+              "Text": "\"Leave the crate where it is.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "arsinoe.capital",
+        "council.cauldron_given"
+      ],
+      "Forbids": [
+        "arsinoe.trickster.primed",
+        "arsinoe.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "arsinoe",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "a609ed9b2205d034bb3bb04d2a255681",
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "arsinoe.trickster.cauldron.collection",
+      "Title": "Collateral",
+      "Owner": "Arsinoe",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You wanted to see me about the lease?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "{n}A ledger lies open on the counter. A stick of gold wax is softening over a candle, and beside it there is a second copy of the lease, annotated in three colors of ink.{/n}\n\"An inspection, Commander. I am told my lessee intends to carry the property to the place where the Worldwound was first opened, and then, I assume, to do something heroic with it. My ledger calls that 'unusual wear'. The temple requires collateral against total loss.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pledge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "pledge",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She dips her pen and waits, the nib a finger's width above the page.{/n}\n\"So. What does the Commander pledge?\"",
+          "Choices": [
+            {
+              "Text": "\"The Fool King's still. A barrel baron and everything he guards.\"",
+              "Next": "still",
+              "Set": [
+                "arsinoe.trickster.cost.collateral_still"
+              ],
+              "Requires": [
+                "fool_king.available"
+              ],
+              "Forbids": [
+                "fool_king.gone"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Collateral: one Worldwound, slightly used. Foreclose whenever you like.\"",
+              "Next": "wound",
+              "Set": [
+                "arsinoe.trickster.cost.collateral_worldwound"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "\"My word.\"",
+              "Next": "word",
+              "Set": [
+                "arsinoe.trickster.cost.collateral_word"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "still",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She listens to the whole story of the barrel the Fool King made a baron, and the still behind it, and the oath it swore never to let the beer run dry, without interrupting once. Her pen does not move until you are finished. Then she presses the wax onto the page.{/n}\n\"A royal still with a titled barrel for a guard. Commander, that is a going concern. Accepted. Please try not to drink the collateral.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wound",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She writes it down. She does not laugh, which is the funniest thing about it.{/n}\n{n}The seal takes. For a breath the candle flame leans east, toward the Wound, and the shadows in the shop lean with it, as if something very large had just been appraised and found adequate.{/n}\n{n}Arsinoe looks at the flame. Then she looks at you.{/n}\n\"Accepted. The church of Abadar now holds a lien on the Worldwound. If the property is not returned, we foreclose, and I will personally see the place run properly. Clean streets. Honest weights. Receipts.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "word",
+          "Speaker": "Arsinoe",
+          "Text": "\"Words are what I lend against last, Commander.\"\n{n}She seals the page anyway, with rather more wax than it needs, and presses the seal down longer than the wax requires.{/n}\n\"But I lend against them.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "stay",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She closes the ledger and does not hurry to let go of it.{/n}\n\"A lien wants a lienholder who stays to collect. I meant to leave Drezen the day it could stand on its own; I have always left, it is what I do, there is always another city with worse accounts. I find I have business here now. My business, of my choosing. Do not flatter yourself that it is yours.\"",
+          "Choices": [
+            {
+              "Text": "\"Then I'll make sure the payments are always a little late.\"",
+              "Next": "threshold",
+              "Set": [
+                "arsinoe.trickster.stays_to_collect",
+                "arsinoe.started"
+              ],
+              "Requires": [
+                "arsinoe.campaign_lover"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then I'll make sure the payments are always a little late.\"",
+              "Next": null,
+              "Set": [
+                "arsinoe.trickster.stays_to_collect",
+                "arsinoe.started"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "arsinoe.campaign_lover"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Business, then. May Abadar keep you.\"",
+              "Next": null,
+              "Set": [
+                "arsinoe.trickster.collection_closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Arsinoe",
+          "Text": "{n}Something in her face changes. It is the look she gives a price she has already decided to pay.{/n}\n\"Late. Yes. I charge interest on late.\"\n{n}She comes round the counter, turns the sign in the window to CLOSED, and locks the till before she locks the door. Her gold eyes do not leave you while she does either.{/n}\n\"The lien stands, Commander. This is outside the lease. Abadar keeps the accounts; he does not keep the curtains. Close them.\"\n{n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and takes you by the lapels and pulls, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}\n{n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was, and follows you down, her hair falling around both your faces like a drawn curtain, and whatever the church of Abadar holds a lien on, it is not this.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Arsinoe",
+          "Text": "{n}Morning. The sign still says CLOSED. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}\n\"Interest on the property: accrued. Everything else: no charge.\"\n{n}She blots it and closes the book before you can read it.{/n}\n\"Tell anyone I did something for free and I will deny it under oath. Before a priest of my own god, if necessary. Go and be impressive, Commander. I have a shop to open, and you owe me rent.\"",
+          "Choices": [
+            {
+              "Text": "\"Leave before the first customer arrives.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "arsinoe.capital",
+        "arsinoe.trickster.primed",
+        "arsinoe.trickster.cauldron.lease"
+      ],
+      "Forbids": [
+        "arsinoe.trickster.cauldron.collection",
+        "arsinoe.closed"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "arsinoe",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "a609ed9b2205d034bb3bb04d2a255681",
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "arsinoe.trickster.epilogue.bill_to_threshold",
+      "Title": "Consumed in the course of its intended use",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The soul cauldron of the Treasury of Abadar did not come back from Threshold. It burst at the rift with everything else that was meant to change the world, and the world changed.{/n}\n{n}Arsinoe entered it in the temple ledger as \"leased property, consumed in the course of its intended use\". Then she drew up the bill, addressed it to Threshold, attention of the Commander, and sent it by the ordinary post. It came back unopened, bearing a seal nobody in Drezen could identify. She filed it with evident satisfaction. To a priest of Abadar, an unpaid account is simply a relationship that has not yet ended.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.siphon_burst"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arsinoe"
+    },
+    {
+      "Id": "arsinoe.trickster.epilogue.pot_returned",
+      "Title": "Returned at the end of the world",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The soul cauldron came back from Threshold whole, which surprised everyone except Arsinoe. She had it crated for Absalom under temple seal, with a note in the lease's margin in her smallest, neatest hand: \"Returned at the end of the world, as agreed. Rent in arrears: considerable.\"{/n}\n{n}The Commander is still paying it. Arsinoe has never once suggested a discount.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "arsinoe.trickster.cost.lien"
+      ],
+      "Forbids": [
+        "arsinoe.siphon_burst"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arsinoe"
+    },
+    {
+      "Id": "arsinoe.trickster.epilogue.foreclosure",
+      "Title": "A lien on one Worldwound, slightly used",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Among the records of the Drezen temple of Abadar lies a lien, sealed in gold wax, on \"one Worldwound, slightly used\". Clerks from Absalom have tried three times to strike it out as a jest. Each time, the clerk who opens the file finds the seal whole and the terms in order, and closes it again rather more quietly than he opened it.{/n}\n{n}The church has not yet foreclosed. Arsinoe says it is a question of choosing the right moment.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "arsinoe.trickster.cost.collateral_worldwound"
+      ],
+      "Forbids": [
+        "ending.wound_closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arsinoe"
+    },
+    {
+      "Id": "arsinoe.trickster.epilogue.foreclosure_closed",
+      "Title": "Collateral withdrawn by closure",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}When the Worldwound closed, Arsinoe took out the lien sealed in gold wax on \"one Worldwound, slightly used\", and wrote across it, in a very small hand: \"Collateral withdrawn by closure. Account satisfied.\"{/n}\n{n}It is the only entry in her ledger she ever underlined twice.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "arsinoe.trickster.cost.collateral_worldwound",
+        "ending.wound_closed"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arsinoe"
+    },
+    {
+      "Id": "arsinoe.trickster.cauldron_seen.react_socothbenoth",
+      "Title": "A perfumed note",
+      "Owner": "Socothbenoth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Socothbenoth",
+          "Text": "{n}A perfumed note, unsigned, is pinned inside your wardrobe door. The pin is a woman's hairpin. It is not anyone's you know.{/n}\n\"Darling. The priestess of Abadar has put a *lien* on our cauldron. On a Council artefact! Alichino is beside himself; he says Hell would have charged interest from the moment of theft, and he is quite right, and I have never loved you more. Do be careful. The next complaint may count as a prayer, and I should hate to share you with a god of banking.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "arsinoe.trickster.cost.lien"
+      ],
+      "Forbids": [
+        "socot.gone",
+        "council.fought",
+        "council.fought_nocta_allied"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arsinoe",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "arsinoe.trickster.cauldron_seen.react_konomi",
+      "Title": "Konomi's word",
+      "Owner": "Konomi",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"The priestess of Abadar has leased me a Council artefact.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "{n}Lady Konomi's smile is smug and faintly predatory.{/n}\n\"An Abadaran lien on a planar artefact. Commander, the Royal Treasury of Mendev would give a great deal for a priestess who can invoice demons. Do tell her the Queen's accounts are open. To negotiation, naturally. Never to audit.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "arsinoe.trickster.cost.lien"
+      ],
+      "Forbids": [
+        "konomi.dismissed",
+        "konomi.retained_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "arsinoe",
+      "Reaction": true,
+      "AnswerLists": [
+        "0dc8b8604bb33c846a63f3eb62443674"
+      ]
     },
     {
       "Id": "gesmerha.a_story_from_elsewhere",
@@ -134759,7 +135484,14 @@
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
-    "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a"
+    "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
+    "socot.gone": "007c4990584473046ac29666a235efb3",
+    "shamira.killed": "dd6731e2cb230694f9c394fa32391ad5",
+    "fool_king.gone": "10f5e03534e6fe74fbc8a94dc2e2c15c",
+    "fool_king.crowned": "cc76b7abcda591f438d0f24972dafddc",
+    "ending.wound_closed": "10cf0442f31a4796af8b28281f35e944",
+    "council.fought_nocta_allied": "f4004d2687004c646bbe3a047d15f78f",
+    "council.fought": "b80a81e97e26167489c439caf34888f8"
   },
   "Relationships": {
     "tirabade": {
@@ -135254,6 +135986,21 @@
     ],
     "nurah.friedhelm_soldier_seen": [
       "5a06af413442436a88c2362c9e9dcbd0"
+    ],
+    "council.cauldron_given": [
+      "b936cf96571c0354fb7a57f4987fea5c"
+    ],
+    "siphon.burst_areelu_b": [
+      "8a50fd9c430a80c498da5c09366ff5fc"
+    ],
+    "siphon.burst_areelu_a": [
+      "b4f0abc3dd93ab04f9517079fca09790"
+    ],
+    "siphon.burst_council": [
+      "3c4dd53fef2e80540bba5272d38c9843"
+    ],
+    "siphon.burst_shamira": [
+      "2303848f628c04b40b45025ebb06d2b4"
     ]
   },
   "StartedDialogs": {
@@ -135884,6 +136631,25 @@
         "sacrifice",
         "trickster.ever",
         "ending.trickster_full"
+      ]
+    ],
+    "fool_king.available": [
+      [
+        "fool_king.crowned"
+      ]
+    ],
+    "arsinoe.siphon_burst": [
+      [
+        "siphon.burst_shamira"
+      ],
+      [
+        "siphon.burst_council"
+      ],
+      [
+        "siphon.burst_areelu_a"
+      ],
+      [
+        "siphon.burst_areelu_b"
       ]
     ]
   }

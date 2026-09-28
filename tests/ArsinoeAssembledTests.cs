@@ -14,7 +14,8 @@ internal static class ArsinoeAssembledTests
                 Area = "2570015799edf594daf2f076f2f975d8" };
             state.Flags.UnionWith(new[] { "arsinoe.capital", "trickster", "lann.committed" });
             state.AvailableContacts.Add("a609ed9b2205d034bb3bb04d2a255681");
-            foreach (var book in story.Scenes.Where(s => s.Relationship == "arsinoe" && s.ContactUnit != null))
+            foreach (var book in story.Scenes.Where(s => s.Relationship == "arsinoe" && s.ContactUnit != null
+                && !s.Id.StartsWith("arsinoe.trickster.", StringComparison.Ordinal)))
             {
                 if (book.Id == "arsinoe_before_the_road" && chapter == 5) continue;
                 state.Chapter = Math.Max(state.Chapter, book.MinChapter);

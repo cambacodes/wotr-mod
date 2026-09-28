@@ -35,6 +35,7 @@ from storylines import nocticula_acquired_harbor
 from storylines import nurah_continuation
 from storylines import anevia_independent, irabeth_independent, tirabade_independent_bridge
 from storylines import arsinoe_campaign
+from storylines import arsinoe_trickster, trickster_world
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -220,6 +221,7 @@ def make_expansion(*, independent_tirabade=True):
     irabeth_independent.integrate(payload)
     tirabade_chronology.integrate_morale(payload)
     payload["Scenes"].extend(copy.deepcopy(arsinoe_campaign.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(arsinoe_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(gesmerha_campaign.SCENES))
     gesmerha_campaign.integrate(payload)
     payload["Scenes"].extend(copy.deepcopy(gesmerha_late_campaign.SCENES))
@@ -291,7 +293,9 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(nurah_scenes)
     payload["ParentEpilogueEdits"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_EDITS)
     payload["ParentEpilogueLossRules"] = copy.deepcopy(minagho_chivarro_continuation.PARENT_EPILOGUE_LOSS_RULES)
+    arsinoe_trickster.integrate(payload)
     trickster_engine(payload)
+    trickster_world.integrate(payload)
     normalize_trickster_access(payload)
     return payload
 

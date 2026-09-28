@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1110,
-  "unique_targets": 245,
+  "binding_uses": 1325,
+  "unique_targets": 298,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -28,6 +28,10 @@
     },
     "280d4712dceb37f4a88e98f1f4c6e64f": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/IrabethTirabade_DrezenCapital.jbp",
+      "type": "BlueprintUnit"
+    },
+    "f999fc37ddb225640b7f98c0a05d6948": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/NurahCapital.jbp",
       "type": "BlueprintUnit"
     },
     "ca2d58c5c65723945857e04fb85d30ce": {
@@ -202,6 +206,46 @@
       "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0037.jbp",
       "type": "BlueprintCue"
     },
+    "b936cf96571c0354fb7a57f4987fea5c": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0041.jbp",
+      "type": "BlueprintCue"
+    },
+    "2729c49e2bf20c64caa4f54b352e03f6": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/AnswersList_0007.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "fd4f6c1d6397fa94db7aaf08de7dfeca": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Answer_0011.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "20451daada07f744b9d7f3e14a37a864": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0006.jbp",
+      "type": "BlueprintCue"
+    },
+    "bb552fe4e21cb874fa3c98c2cc328186": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "77216dc2c3770794f93b010659f4aa64": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0056.jbp",
+      "type": "BlueprintCue"
+    },
+    "3c4dd53fef2e80540bba5272d38c9843": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0063.jbp",
+      "type": "BlueprintCue"
+    },
+    "2303848f628c04b40b45025ebb06d2b4": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0092.jbp",
+      "type": "BlueprintCue"
+    },
+    "b4f0abc3dd93ab04f9517079fca09790": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0102_TricksterAree21.jbp",
+      "type": "BlueprintCue"
+    },
+    "8a50fd9c430a80c498da5c09366ff5fc": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0123_TricksterAree211.jbp",
+      "type": "BlueprintCue"
+    },
     "f2a35965e9bc601449498bd022b04d9d": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -270,6 +314,22 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
       "type": "BlueprintEtude"
     },
+    "a837c3bc9cbb4e846ab5565915165c91": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahKilledAfterDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "739b9fe9b8998c641b4b3dfed40bc217": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahKilledByCamellia.jbp",
+      "type": "BlueprintEtude"
+    },
+    "20927a9471c00814b808fd69e88879c7": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NurahKilledInDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c922e0cbe25a0cf4dad4ce7a3ca81935": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02_Extra/Nurah/NuraInPrisonAfterDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
     "24505150d0cf493c936f2c50b1c94468": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WinterSunAfterFinalDIalog_Leader.jbp",
       "type": "BlueprintEtude"
@@ -330,6 +390,18 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
       "type": "BlueprintEtude"
     },
+    "0c1695f4a362f0243a4afcfd1957eb0d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ProfaneGift.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f5be7095af9d43779ce79a52ec27425d": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ProfaneGiftNew.jbp",
+      "type": "BlueprintEtude"
+    },
+    "0383369136fadc247b7d6ff99110fa55": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/TakeNotProfaneGift.jbp",
+      "type": "BlueprintEtude"
+    },
     "72e423c719ed9d44fa432a6b9629babd": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaKilled.jbp",
       "type": "BlueprintEtude"
@@ -342,8 +414,32 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightOnThirdDate.jbp",
       "type": "BlueprintEtude"
     },
+    "61b07b3511bb71646a717c2b3c0f3bf6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_Outcomes/Nocticula_GiftBroken.jbp",
+      "type": "BlueprintEtude"
+    },
     "381a296094804761af0893d2e70dc2df": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_PlayerSacrifice.jbp",
+      "type": "BlueprintEtude"
+    },
+    "db5375333382d044089475d256f19582": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_Trickster.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6ff418aeda24e6e48be844e6258e3c5a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_TricksterFull.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f7343e290a8d4ed887af8f04d1b3446b": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_Trickster_AllPlanes.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5f63f6d43c9b465f822db70af7d69b92": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_Trickster_AllPlanesAndFW.jbp",
+      "type": "BlueprintEtude"
+    },
+    "10cf0442f31a4796af8b28281f35e944": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_WoundClosed.jbp",
       "type": "BlueprintEtude"
     },
     "3a708ad53771a2d44ac506361fb7aafc": {
@@ -404,6 +500,10 @@
     },
     "260454e5186fbd34694a0393097f77b5": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/IrabethNotInDrezenCh5_WithGalfrey.jbp",
+      "type": "BlueprintEtude"
+    },
+    "e581f609dc0f44a481e7e88824ac39da": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/NocticulaDead.jbp",
       "type": "BlueprintEtude"
     },
     "d4b624463e52e21438da6f4870320fee": {
@@ -516,6 +616,38 @@
     },
     "9f486a9c0c9abfc4a952bb22e88a7e96": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/PlayerIsTrickster.jbp",
+      "type": "BlueprintEtude"
+    },
+    "cc76b7abcda591f438d0f24972dafddc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/PlayerIsTrickster/FoolKing/FoolKingCoronated.jbp",
+      "type": "BlueprintEtude"
+    },
+    "10f5e03534e6fe74fbc8a94dc2e2c15c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/PlayerIsTrickster/FoolKing/FoolKingGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b80a81e97e26167489c439caf34888f8": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/FightAgainstCouncil.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f4004d2687004c646bbe3a047d15f78f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/FightAgainstCouncilNoctaAllied.jbp",
+      "type": "BlueprintEtude"
+    },
+    "ed5d1dfa2402bed4cb7a59a21c14a1a4": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/FightAgaintsNoctaCouncilAllied.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c820b3788f967e14f8bde3c17447157f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/PlayerWasTrickster.jbp",
+      "type": "BlueprintEtude"
+    },
+    "dd6731e2cb230694f9c394fa32391ad5": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/ShamiraKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "007c4990584473046ac29666a235efb3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/SocotGone.jbp",
       "type": "BlueprintEtude"
     },
     "07ad18ffb08145b69522f8eee0230857": {
@@ -1195,6 +1327,126 @@
     "9c5c5825bf3245d0ae763c6e69ecdc38": {
       "type": "BlueprintBookPage",
       "path": "RanRomance.Mina.Slide0007.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "18affced672d4c56a52bf6ffc00601b9": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8a28bbd82568486bb757d00a2087a6cf": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "761ca3572c1145ebb755032d613bff46": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9591c34df22b4d518a059cf608255458": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "19e5d6f04b9b4483b2e2979baf8736e4": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Noct.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "631bf0ede36742559cee476f34dcb5de": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "cb13766be07b448f8cacb477be32e13c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5388a7d7a1da48deb333d34abab1a6d0": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook02Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "b3a4ce99bc30440fa9ebcbfce2776176": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "1110f2b6304549999fb546e7ecc4c8a1": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Noct.NoctBook03Page003.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f74eaab69b3d49d0a222eb1b2834777e": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Nura.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "3d2d02611cd24f579e7b7b411b94263e": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Nura.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "91f7abac0d8e46e19ce8fc45fa3df58e": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Nura.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "9f655e252d334f04884f10188b0d8928": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Nura.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "857c9366224c4b278fcc4ba3273b4b6b": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Nura.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "c27a359a6e4e44b9b9cd9c0e54a1dd41": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Nura.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "f8a7511233524742bc42b25190609f4c": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Nura.NuraBook05End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "a81d2fc67aa9435999b2eba84eabf368": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "64bd5f9b742d4033b17f12b9b519970e": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "5a06af413442436a88c2362c9e9dcbd0": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Nura.NuraBook05Page002.Configure",
       "provenance": "reviewed-parent-source",
       "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
     }

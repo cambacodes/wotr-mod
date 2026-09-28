@@ -513,11 +513,13 @@ s("arsinoe_the_window_opens", "An evening she intends to keep",
 {n}When the evening ends, she walks you to the door. The window remains open behind her.{/n}
 "Come again. I have decided not to require a new excuse every time I want this."''',
       c('"Promise another ordinary evening."', flags=("arsinoe.campaign_developed", "arsinoe.last_evening_kept"))),
-    n("night", "Arsinoe", '''"I do. I have wanted to ask, and kept finding reasons to improve the room first. I think the room has had enough consideration."
-{n}She comes close and lets you see the pleasure in her face before kissing you. Her hand rests against your shoulder. When she draws back, it is to ask what would make you comfortable, and to tell you what she likes without requiring you to guess.{/n}
-{n}The lamp burns lower while you speak. There are moments of laughter, an awkward fastening she refuses to let spoil the mood, and then an unhurried closeness with no audience beyond the little stone face, which she finally turns toward the wall.{/n}
-{n}Later, with the room quiet around you, Arsinoe reaches for your hand beneath the cover.{/n}
-"I am glad you asked."
+    n("night", "Arsinoe", '''"I do. I have wanted to ask for some time, and I kept finding reasons to improve the room first. The room has had enough of my attention."
+{n}She reaches past you and turns the little stone face toward the wall. Then she takes your hand and puts it at the clasp of her collar, and holds it there, and watches you with those gold eyes until you understand that she means for you to open it.{/n}
+"Slowly. I have waited long enough to be allowed to enjoy the waiting."
+{n}Her robes are the robes of a priestess who has never once been underdressed in public, and there are a great many fastenings. She knows every one of them. She lets you find them yourself, and laughs, low, when one defeats you, and does not help. When the last of them gives, she steps out of the cloth without looking down at it and draws you to the bed by the belt.{/n}
+{n}The lamp is burning low. She does not put it out. She wants to see you, she says, and she is not in the habit of paying for something she has not inspected. Her mouth is warm, her hands are not shy, and when she pulls you down with her the last thing she says is your name, as if she were signing it.{/n}
+{n}Later, the room is quiet, and the window is open, and Arsinoe's hand finds yours under the cover.{/n}
+"I am glad you asked. I am gladder that I did."
 {n}In the morning she is reluctant to rise until the street becomes too noisy to ignore. She finds something to eat, objects to your account of who took more than a fair share of the cushion, and kisses you in the middle of the argument.{/n}
 "There. Now you may go and be impressive. I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive."''',
       c('"Leave with a kiss and the promise of another visit."', flags=("arsinoe.campaign_developed", "arsinoe.last_evening_kept", "arsinoe.night_shared"))),
