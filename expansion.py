@@ -41,6 +41,7 @@ from storylines import anevia_trickster
 from storylines import jerribeth_trickster
 from storylines import konomi_trickster
 from storylines import nocticula_trickster
+from storylines import vellexia_trickster
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -314,6 +315,9 @@ def make_expansion(*, independent_tirabade=True):
     if "nocticula" in payload["Relationships"] and "nocticula.acquisition" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(nocticula_trickster.SCENES))
         nocticula_trickster.integrate(payload)
+    if "vellexia" in payload["Relationships"]:
+        payload["Scenes"].extend(copy.deepcopy(vellexia_trickster.SCENES))
+        vellexia_trickster.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

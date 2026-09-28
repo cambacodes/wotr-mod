@@ -60,7 +60,16 @@ internal static class NativeAudienceTests
                     "Inline node writes progress or starts another dialog outside a selected choice: " + key);
                 check(cue.Answers.Count == node.Choices.Count,
                     "Inline cue changed the authored choice count: " + key);
-                if (node.Speaker == scene.Owner)
+                if (node.SpeakerUnit != null)
+                    // E14f: a named unit speaks (its portrait and name, camera untouched).
+                    check(!cue.Speaker.NoSpeaker && !cue.Speaker.MoveCamera
+                          && cue.Speaker.Blueprint?.AssetGuid == BlueprintGuid.Parse(node.SpeakerUnit),
+                        "E14f speaker unit is not the cue's speaker: " + key);
+                else if (node.Speaker == "conversant")
+                    // E14f: the dialog's conversant speaks.
+                    check(!cue.Speaker.NoSpeaker && !cue.Speaker.MoveCamera && cue.Speaker.Blueprint == null,
+                        "E14f conversant cue is not voiced by the conversant: " + key);
+                else if (node.Speaker == scene.Owner)
                     check(ReferenceEquals(cue.Speaker, native!.Speaker), "Owner cue lost the native audience speaker: " + key);
                 else
                     check(cue.Speaker.NoSpeaker && !cue.Speaker.MoveCamera,

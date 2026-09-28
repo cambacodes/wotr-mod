@@ -125,7 +125,9 @@ internal static class Program
         var sequenceIds = new[] { "ed4baeaf69394754902344f0598d7e5a", "ced82f299d246f448b48afa0b630dd70" };
         // E12b anchors are native units the game loads like any other; a presence whose anchor does not resolve is skipped.
         var unitIds = story.Revivals.Values.Select(r => r.Unit).Concat(story.Scenes.Where(s => s.ContactUnit != null).SelectMany(s => new[] { s.ContactUnit! }.Concat(s.AdditionalContactUnits)))
-            .Concat(story.Presences.Values.Where(p => p.At?.NearUnit != null).Select(p => p.At!.NearUnit!)).Distinct().ToArray();
+            .Concat(story.Presences.Values.Where(p => p.At?.NearUnit != null).Select(p => p.At!.NearUnit!))
+            // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
+            .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
         var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Distinct());
         foreach (var binding in nurahNativeBindings)

@@ -1942,7 +1942,11 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
                     continue
                 # A primer that Forbids its own state's event runs before it; a world forced into the event from the
                 # start cannot reach it, so the state is judged by its fallback and payoff instead.
-                need = [i for i in ids if not set(model.by_id[i]["Forbids"]) & t] or ids
+                # Likewise a setup that Requires a flag only such a primer plants (every producer Forbids the event).
+                def primed_before(i):
+                    return any(model.producers.get(f) and all(set(model.by_id[p]["Forbids"]) & t for p, _, _ in model.producers[f])
+                               for f in model.by_id[i]["Requires"])
+                need = [i for i in ids if not set(model.by_id[i]["Forbids"]) & t and not primed_before(i)] or ids
                 ok = all(i in rr.reached for i in need) if ids else any(s["Id"] in rr.reached for s in rel_scenes)
                 committed = any(r["CommittedFlag"] in rr.held for r in rels)
                 ent_ok += ok; com_ok += committed

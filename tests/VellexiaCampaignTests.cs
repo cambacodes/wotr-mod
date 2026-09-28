@@ -131,7 +131,13 @@ internal static class VellexiaCampaignTests
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
                 check(!Rules.Available(story, scene, blocked), "Vellexia remote contact bypasses native/history blocker: " + flag);
             }
-            foreach (var flag in new[] { "vellexia.dismissed_native", "vellexia.native_finished" })
+            // The two evenings after the return call Require only their predecessor beat (a Trickster return reaches them
+            // without the native dismissal); the predecessor itself is gated on the dismissal, so the old path is unchanged.
+            var gates = scene.Requires.Contains("vellexia.dismissed_native")
+                ? new[] { "vellexia.dismissed_native", "vellexia.native_finished" } : scene.Requires;
+            check(scene.Requires.Contains("vellexia.dismissed_native") || scene.Requires.SequenceEqual(new[] { "vellexia.return_kept" })
+                  || scene.Requires.SequenceEqual(new[] { "vellexia.private_kept" }), "Vellexia remote conversation lost its native dismissal: " + scene.Id);
+            foreach (var flag in gates)
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(flag);
                 check(!Rules.Available(story, scene, missing), "Vellexia remote conversation assumes unfinished native dismissal: " + flag);
