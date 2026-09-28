@@ -133,6 +133,18 @@ internal static class ArsinoeTricksterTests
             check(shown.Count(id => id.Contains("foreclosure")) == (wound ? 1 : 0), "Worldwound lien page wrong.");
         }
 
+        // Every pledge is collected: the word and the still as paragraphs on both cauldron fate pages.
+        foreach (string id in new[] { "arsinoe.trickster.epilogue.bill_to_threshold", "arsinoe.trickster.epilogue.pot_returned" })
+        {
+            var node = story.Scenes.Single(s => s.Id == id).Nodes[0];
+            foreach (string pledge in new[] { "arsinoe.trickster.cost.collateral_word", "arsinoe.trickster.cost.collateral_still" })
+            {
+                var with = World(story, pledge); var without = World(story);
+                check(Rules.VisibleParagraphs(node, with).Length == 1 && Rules.VisibleParagraphs(node, without).Length == 0,
+                    "Pledge " + pledge + " is never collected on " + id);
+            }
+        }
+
         // The collector paragraph rides on the registered kept endings (E14c), never as a second page.
         foreach (string id in new[] { "arsinoe_ending_kept", "arsinoe_ending_open", "arsinoe_ending_promised" })
         {

@@ -90866,7 +90866,25 @@
               "Abort": false
             }
           ],
-          "Portrait": "Arsinoe"
+          "Portrait": "Arsinoe",
+          "Paragraphs": [
+            {
+              "Text": "The Commander's word, pledged as collateral, stayed on her books long after the account itself was closed. Arsinoe called it in exactly once, years later, in a single line on temple vellum: a request for an evening, at a time of her choosing, with no excuses accepted. The Commander came. She marked the debt paid, and then, in the margin, reopened it.",
+              "Requires": [
+                "arsinoe.trickster.cost.collateral_word"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's still, pledged as collateral, was audited by the temple of Abadar every season. The barrel baron met each inspection in full regalia. Arsinoe's reports describe the collateral as 'well guarded, fully operational, and regrettably drinkable', and bear the rings of several cups.",
+              "Requires": [
+                "arsinoe.trickster.cost.collateral_still"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -90901,7 +90919,25 @@
               "Abort": false
             }
           ],
-          "Portrait": "Arsinoe"
+          "Portrait": "Arsinoe",
+          "Paragraphs": [
+            {
+              "Text": "The Commander's word, pledged as collateral, stayed on her books long after the account itself was closed. Arsinoe called it in exactly once, years later, in a single line on temple vellum: a request for an evening, at a time of her choosing, with no excuses accepted. The Commander came. She marked the debt paid, and then, in the margin, reopened it.",
+              "Requires": [
+                "arsinoe.trickster.cost.collateral_word"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's still, pledged as collateral, was audited by the temple of Abadar every season. The barrel baron met each inspection in full regalia. Arsinoe's reports describe the collateral as 'well guarded, fully operational, and regrettably drinkable', and bear the rings of several cups.",
+              "Requires": [
+                "arsinoe.trickster.cost.collateral_still"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [

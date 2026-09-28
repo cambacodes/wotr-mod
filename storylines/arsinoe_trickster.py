@@ -18,6 +18,8 @@ COLLECTION = "arsinoe.trickster.cauldron.collection"
 STAYS = "arsinoe.trickster.stays_to_collect"
 LIEN = "arsinoe.trickster.cost.lien"
 WOUND = "arsinoe.trickster.cost.collateral_worldwound"
+WORD = "arsinoe.trickster.cost.collateral_word"
+STILL = "arsinoe.trickster.cost.collateral_still"
 
 
 def physical(id, title, entry, nodes, requires, forbids, delay):
@@ -91,9 +93,9 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
     n("pledge", "Arsinoe", '''{n}She dips her pen and waits, the nib a finger's width above the page.{/n}
 "So. What does the Commander pledge?"''',
       c('"The Fool King\'s still. A barrel baron and everything he guards."', "still",
-        requires=("fool_king.available",), forbids=("fool_king.gone",), flags=("arsinoe.trickster.cost.collateral_still",)),
+        requires=("fool_king.available",), forbids=("fool_king.gone",), flags=(STILL,)),
       c('"Collateral: one Worldwound, slightly used. Foreclose whenever you like."', "wound", mythic="Trickster", flags=(WOUND,)),
-      c('"My word."', "word", flags=("arsinoe.trickster.cost.collateral_word",))),
+      c('"My word."', "word", flags=(WORD,))),
     n("still", "Arsinoe", '''{n}She listens to the whole story of the barrel the Fool King made a baron, and the still behind it, and the oath it swore never to let the beer run dry, without interrupting once. Her pen does not move until you are finished. Then she presses the wax onto the page.{/n}
 "A royal still with a titled barrel for a guard. Commander, that is a going concern. Accepted. Please try not to drink the collateral."''',
       c("Continue", "stay")),
@@ -130,19 +132,31 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
    forbids=(COLLECTION, "arsinoe.closed"), delay=72)
 
 
-def epilogue(id, title, text, requires, forbids=()):
-    SCENES.append(scene(id, title, "Epilogue", 1, "", [n("end", "Narrator", text, portrait="Arsinoe")],
+# The collateral is collected on whichever cauldron page the finale shows (E14c paragraphs).
+COLLATERAL = (
+    p("The Commander's word, pledged as collateral, stayed on her books long after the account itself was closed. "
+      "Arsinoe called it in exactly once, years later, in a single line on temple vellum: a request for an evening, "
+      "at a time of her choosing, with no excuses accepted. The Commander came. She marked the debt paid, and then, "
+      "in the margin, reopened it.", requires=(WORD,)),
+    p("The Fool King's still, pledged as collateral, was audited by the temple of Abadar every season. The barrel baron "
+      "met each inspection in full regalia. Arsinoe's reports describe the collateral as 'well guarded, fully "
+      "operational, and regrettably drinkable', and bear the rings of several cups.", requires=(STILL,)),
+)
+
+
+def epilogue(id, title, text, requires, forbids=(), paragraphs=()):
+    SCENES.append(scene(id, title, "Epilogue", 1, "", [n("end", "Narrator", text, portrait="Arsinoe", paragraphs=paragraphs)],
                         requires=requires, forbids=forbids, last=6, Relationship="arsinoe"))
 
 
 epilogue("arsinoe.trickster.epilogue.bill_to_threshold", "Consumed in the course of its intended use",
     '''{n}The soul cauldron of the Treasury of Abadar did not come back from Threshold. It burst at the rift with everything else that was meant to change the world, and the world changed.{/n}
 {n}Arsinoe entered it in the temple ledger as "leased property, consumed in the course of its intended use". Then she drew up the bill, addressed it to Threshold, attention of the Commander, and sent it by the ordinary post. It came back unopened, bearing a seal nobody in Drezen could identify. She filed it with evident satisfaction. To a priest of Abadar, an unpaid account is simply a relationship that has not yet ended.{/n}''',
-    ("trickster.ever", LIEN, "arsinoe.siphon_burst"))
+    ("trickster.ever", LIEN, "arsinoe.siphon_burst"), paragraphs=COLLATERAL)
 epilogue("arsinoe.trickster.epilogue.pot_returned", "Returned at the end of the world",
     '''{n}The soul cauldron came back from Threshold whole, which surprised everyone except Arsinoe. She had it crated for Absalom under temple seal, with a note in the lease's margin in her smallest, neatest hand: "Returned at the end of the world, as agreed. Rent in arrears: considerable."{/n}
 {n}The Commander is still paying it. Arsinoe has never once suggested a discount.{/n}''',
-    ("trickster.ever", LIEN), ("arsinoe.siphon_burst",))
+    ("trickster.ever", LIEN), ("arsinoe.siphon_burst",), paragraphs=COLLATERAL)
 epilogue("arsinoe.trickster.epilogue.foreclosure", "A lien on one Worldwound, slightly used",
     '''{n}Among the records of the Drezen temple of Abadar lies a lien, sealed in gold wax, on "one Worldwound, slightly used". Clerks from Absalom have tried three times to strike it out as a jest. Each time, the clerk who opens the file finds the seal whole and the terms in order, and closes it again rather more quietly than he opened it.{/n}
 {n}The church has not yet foreclosed. Arsinoe says it is a question of choosing the right moment.{/n}''',
