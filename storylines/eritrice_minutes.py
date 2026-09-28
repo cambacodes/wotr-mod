@@ -253,7 +253,7 @@ minutes(DEVIL, "A noble devil", '"Point of information. About Alichino."', [
     e("expose", '''"He would not." {n}A flat, instant denial. Then, slower:{/n} "He would. He has missed every session at which something was decided, and attended every session at which something could be sold." {n}She lifts one claw and pushes the notebook, very slightly, as if it were hot.{/n}
 "I will tell you what I have never told the Council. I invited him because I thought a Council without Hell would be a lie. A Council with him in it may be a worse one."''',
       c('"Then keep him. And watch him. You\'re good at watching."', "expose_end", flags=(DEVIL_EXPOSED,))),
-    e("expose_end", '''"I am." {n}Her whiskers lift, very slightly.{/n} "I keep the minutes. He keeps a little black book. We will see whose record is the longer."
+    e("expose_end", '''"I am." {n}Something in her face softens, very slightly.{/n} "I keep the minutes. He keeps a little black book. We will see whose record is the longer."
 {n}She writes: "Motion from the floor: that the chair watch Alichino. Carried. The chair notes that she had already been doing so, but badly."{/n}''',
       c("[Leave the notebook where it is.]")),
     e("notebook", '''{n}Her hand is on your wrist before you have lifted it an inch. It is warm, and very strong, and the claws are sheathed, but only just.{/n}
@@ -319,7 +319,7 @@ minutes(NARROWED, "A narrow outlook", '"Point of order. About mortals."', [
 {n}And then, unwillingly, something like a laugh, low in her chest.{/n} "You guessed. You guessed, and you guessed too low, and you are still right. A month. One mortal. A crossroads." {n}She writes it down, and underlines "one mortal" twice.{/n}
 "That is not a refutation. It is worse. It is an example."''',
       c("[Leave her with the example.]", flags=(CONCEDED,))),
-    e("long", '''{n}She does not answer for a long moment. Her eyes go to the dispatches, to the casualty lists at the bottom of the stack, to the names on them she has read and you have not.{/n}
+    e("long", '''{n}She does not answer at once. Her eyes go to the dispatches, to the casualty lists at the bottom of the stack, to the names on them she has read and you have not.{/n}
 "You say that as if it were in your power." {n}Very quietly.{/n} "It is the least honest thing you have said at this table, and the kindest, and I cannot decide which I should minute."
 {n}She minutes both.{/n}''',
       c("[Leave her with both.]")),
@@ -349,7 +349,7 @@ minutes(ORDER, "Point of order", '"You wanted to see me, Madam Chair?"', [
       c('"Then give me a gavel. I\'ll only use it when you nod."', "gavel"),
       c('"Then I\'ll stop."', "sorry")),
     e("growl", '''{n}The growl she was about to make stops halfway, which produces a sound somewhere between a lion and a kettle.{/n}
-"That is not a reason. That is a provocation." {n}Her whiskers are trembling.{/n} "The chair will not be provoked into growling for the Commander's amusement. The chair..."
+"That is not a reason. That is a provocation." {n}Her breath catches.{/n} "The chair will not be provoked into growling for the Commander's amusement. The chair..."
 {n}She growls. She hears it. She puts her face in her hands, briefly, and when she takes them away she is almost smiling.{/n}
 "Minute that, and I will have you removed from the hall."''',
       c("[Do not minute it.]", "gavel")),
@@ -549,7 +549,7 @@ minutes(RECORD, "The record", '"You\'re writing already?"', [
 "There." {n}She sands it, and her whiskers are twitching.{/n} "The chair has never before written the word 'purred' in the minutes of this Council. The chair has now written it three times." {n}She rolls the scroll and ties it.{/n}
 "If Alichino ever reads this, I will take it by force. I say so knowing exactly what I am saying."''',
       c("[Kiss the ink off her fingers.]", flags=(MINUTED,))),
-    e("blank", '''{n}The quill stops. For a long moment she simply looks at the empty space under the date.{/n}
+    e("blank", '''{n}The quill stops. She simply looks at the empty space under the date.{/n}
 {n}Slowly, as if arguing it with herself:{/n} "An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened." {n}She writes, at last, in a small tight hand: "The chair was otherwise occupied."{/n}
 "That is true. That is entirely true. It is the first time in my existence I have written something true in order to hide something." {n}She stares at it.{/n} "I do not know whether I have just learned something from you, or lost something."''',
       c("[Take her ink-stained hand.]", flags=(OMITTED,))),
@@ -568,7 +568,7 @@ minutes(STANDING, "A standing item", '"You\'ve added something to the agenda."',
 "I know. I have read the Lexicon. I know what it says about keys and wounds and mortal bodies." {n}She puts her hand flat over yours on the table.{/n}
 "I proposed you once as a sacrifice and called it a great deed. I will not do it again. If the Worldwound has you, I will write down that it was a theft. I will write it down in every plane that keeps records, and I will keep writing it."''',
       c("Continue", "close")),
-    e("table", '''"Until one of us concedes." {n}She repeats it, and her whiskers lift.{/n} "You realise that I have never conceded a motion. You realise I have forever, and you do not."
+    e("table", '''"Until one of us concedes." {n}She repeats it, and her chin lifts.{/n} "You realise that I have never conceded a motion. You realise I have forever, and you do not."
 {n}She does not wait for an answer.{/n} "Then we will need a very long debate, and a very good record, so that when you are gone, the argument is not." {n}Her voice falters on "gone", and she refuses to let it, and goes on.{/n}
 "I will keep the minutes. That is what I can do for you that no one else can."''',
       c("Continue", "close")),

@@ -186135,7 +186135,7 @@
         {
           "Id": "expose_end",
           "Speaker": "Eritrice",
-          "Text": "\"I am.\" {n}Her whiskers lift, very slightly.{/n} \"I keep the minutes. He keeps a little black book. We will see whose record is the longer.\"\n{n}She writes: \"Motion from the floor: that the chair watch Alichino. Carried. The chair notes that she had already been doing so, but badly.\"{/n}",
+          "Text": "\"I am.\" {n}Something in her face softens, very slightly.{/n} \"I keep the minutes. He keeps a little black book. We will see whose record is the longer.\"\n{n}She writes: \"Motion from the floor: that the chair watch Alichino. Carried. The chair notes that she had already been doing so, but badly.\"{/n}",
           "Choices": [
             {
               "Text": "[Leave the notebook where it is.]",
@@ -186489,7 +186489,7 @@
         {
           "Id": "long",
           "Speaker": "Eritrice",
-          "Text": "{n}She does not answer for a long moment. Her eyes go to the dispatches, to the casualty lists at the bottom of the stack, to the names on them she has read and you have not.{/n}\n\"You say that as if it were in your power.\" {n}Very quietly.{/n} \"It is the least honest thing you have said at this table, and the kindest, and I cannot decide which I should minute.\"\n{n}She minutes both.{/n}",
+          "Text": "{n}She does not answer at once. Her eyes go to the dispatches, to the casualty lists at the bottom of the stack, to the names on them she has read and you have not.{/n}\n\"You say that as if it were in your power.\" {n}Very quietly.{/n} \"It is the least honest thing you have said at this table, and the kindest, and I cannot decide which I should minute.\"\n{n}She minutes both.{/n}",
           "Choices": [
             {
               "Text": "[Leave her with both.]",
@@ -186652,7 +186652,7 @@
         {
           "Id": "growl",
           "Speaker": "Eritrice",
-          "Text": "{n}The growl she was about to make stops halfway, which produces a sound somewhere between a lion and a kettle.{/n}\n\"That is not a reason. That is a provocation.\" {n}Her whiskers are trembling.{/n} \"The chair will not be provoked into growling for the Commander's amusement. The chair...\"\n{n}She growls. She hears it. She puts her face in her hands, briefly, and when she takes them away she is almost smiling.{/n}\n\"Minute that, and I will have you removed from the hall.\"",
+          "Text": "{n}The growl she was about to make stops halfway, which produces a sound somewhere between a lion and a kettle.{/n}\n\"That is not a reason. That is a provocation.\" {n}Her breath catches.{/n} \"The chair will not be provoked into growling for the Commander's amusement. The chair...\"\n{n}She growls. She hears it. She puts her face in her hands, briefly, and when she takes them away she is almost smiling.{/n}\n\"Minute that, and I will have you removed from the hall.\"",
           "Choices": [
             {
               "Text": "[Do not minute it.]",
@@ -187662,7 +187662,7 @@
         {
           "Id": "blank",
           "Speaker": "Eritrice",
-          "Text": "{n}The quill stops. For a long moment she simply looks at the empty space under the date.{/n}\n{n}Slowly, as if arguing it with herself:{/n} \"An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened.\" {n}She writes, at last, in a small tight hand: \"The chair was otherwise occupied.\"{/n}\n\"That is true. That is entirely true. It is the first time in my existence I have written something true in order to hide something.\" {n}She stares at it.{/n} \"I do not know whether I have just learned something from you, or lost something.\"",
+          "Text": "{n}The quill stops. She simply looks at the empty space under the date.{/n}\n{n}Slowly, as if arguing it with herself:{/n} \"An omission is not a lie. The record shows that a session took place. It does not claim that nothing happened.\" {n}She writes, at last, in a small tight hand: \"The chair was otherwise occupied.\"{/n}\n\"That is true. That is entirely true. It is the first time in my existence I have written something true in order to hide something.\" {n}She stares at it.{/n} \"I do not know whether I have just learned something from you, or lost something.\"",
           "Choices": [
             {
               "Text": "[Take her ink-stained hand.]",
@@ -187757,7 +187757,7 @@
         {
           "Id": "table",
           "Speaker": "Eritrice",
-          "Text": "\"Until one of us concedes.\" {n}She repeats it, and her whiskers lift.{/n} \"You realise that I have never conceded a motion. You realise I have forever, and you do not.\"\n{n}She does not wait for an answer.{/n} \"Then we will need a very long debate, and a very good record, so that when you are gone, the argument is not.\" {n}Her voice falters on \"gone\", and she refuses to let it, and goes on.{/n}\n\"I will keep the minutes. That is what I can do for you that no one else can.\"",
+          "Text": "\"Until one of us concedes.\" {n}She repeats it, and her chin lifts.{/n} \"You realise that I have never conceded a motion. You realise I have forever, and you do not.\"\n{n}She does not wait for an answer.{/n} \"Then we will need a very long debate, and a very good record, so that when you are gone, the argument is not.\" {n}Her voice falters on \"gone\", and she refuses to let it, and goes on.{/n}\n\"I will keep the minutes. That is what I can do for you that no one else can.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -188379,7 +188379,7 @@
         {
           "Id": "start",
           "Speaker": "Eritrice",
-          "Text": "\"Chadali and I.\" {n}She sets the quill down, which means she is going to be honest about something she would rather not be.{/n}\n\"She is from Elysium. She believes in luck, and freedom, and good wishes sent across the planes. She calls you our lucky charm. She calls me 'dear chair' and brings me flowers that die in the hall because nothing grows here.\" {n}Her whiskers twitch.{/n}\n\"Luck is not a position, Commander. I have told her so in every session since the first. She claps. It is like debating a sunrise.\"",
+          "Text": "\"Chadali and I.\" {n}She sets the quill down, which means she is going to be honest about something she would rather not be.{/n}\n\"She is from Elysium. She believes in luck, and freedom, and good wishes sent across the planes. She calls you our lucky charm. She calls me 'dear chair' and brings me flowers that die in the hall because nothing grows here.\" {n}The corner of her mouth draws back from one long tooth.{/n}\n\"Luck is not a position, Commander. I have told her so in every session since the first. She claps. It is like debating a sunrise.\"",
           "Choices": [
             {
               "Text": "\"You're fond of her.\"",
@@ -188765,7 +188765,7 @@
         {
           "Id": "finish",
           "Speaker": "Eritrice",
-          "Text": "\"I have been helping you. That is what this Council is now, whether its members know it or not.\" {n}She taps the scroll.{/n}\n\"Every vote since you arrived has been a vote on your door. I have minuted them as votes on the Worldwound. That is not a lie. It is the same thing, seen from a better angle.\" {n}Her whiskers lift.{/n} \"You have taught me angles. I resent it.\"",
+          "Text": "\"I have been helping you. That is what this Council is now, whether its members know it or not.\" {n}She taps the scroll.{/n}\n\"Every vote since you arrived has been a vote on your door. I have minuted them as votes on the Worldwound. That is not a lie. It is the same thing, seen from a better angle.\" {n}Something eases in her shoulders.{/n} \"You have taught me angles. I resent it.\"",
           "Choices": [
             {
               "Text": "[Leave her with her angles.]",
@@ -189875,7 +189875,7 @@
         {
           "Id": "told",
           "Speaker": "Eritrice",
-          "Text": "\"I have just told you. This is how I tell things. In order, with a procedure, on the record, so that I cannot pretend afterwards that I said something else.\" {n}Her whiskers are trembling.{/n}\n\"You would have preferred that I say it in a corridor, perhaps, with my back to you, and then deny it at the next session. That is how mortals do it. I have read your plays. I did not care for them.\"",
+          "Text": "\"I have just told you. This is how I tell things. In order, with a procedure, on the record, so that I cannot pretend afterwards that I said something else.\" {n}Her breath has gone short.{/n}\n\"You would have preferred that I say it in a corridor, perhaps, with my back to you, and then deny it at the next session. That is how mortals do it. I have read your plays. I did not care for them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -190059,7 +190059,7 @@
         {
           "Id": "bored",
           "Speaker": "Eritrice",
-          "Text": "\"Yes. Probably.\" {n}No hesitation.{/n} \"And then you would say something outrageous, and I would growl, and you would carry a motion you had no right to carry, and I would not be bored any longer.\"\n{n}Her whiskers lift.{/n} \"That is the whole of my argument, and I cannot improve on it. You are the only thing I have found in all the planes that I cannot predict. I will not be bored with you, Commander. I will be furious with you, often. It is not the same.\"",
+          "Text": "\"Yes. Probably.\" {n}No hesitation.{/n} \"And then you would say something outrageous, and I would growl, and you would carry a motion you had no right to carry, and I would not be bored any longer.\"\n{n}Her chin comes up.{/n} \"That is the whole of my argument, and I cannot improve on it. You are the only thing I have found in all the planes that I cannot predict. I will not be bored with you, Commander. I will be furious with you, often. It is not the same.\"",
           "Choices": [
             {
               "Text": "[Leave her to her fury.]",
@@ -190204,7 +190204,7 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "\"Chadali must never know that I asked.\" {n}She holds up one claw before you can answer.{/n} \"That is not a lie. It is a sealed record. I am allowed those. I have learned that from you as well.\"\n{n}She looks at the quill in its stand for a long moment.{/n} \"When this war is over, Commander, I intend to spend a very long time working out how much of what I have become at this table is your fault. I suspect the answer will be: most of it.\"",
+          "Text": "\"Chadali must never know that I asked.\" {n}She holds up one claw before you can answer.{/n} \"That is not a lie. It is a sealed record. I am allowed those. I have learned that from you as well.\"\n{n}Her eyes stray to the quill in its stand.{/n} \"When this war is over, Commander, I intend to spend a very long time working out how much of what I have become at this table is your fault. I suspect the answer will be: most of it.\"",
           "Choices": [
             {
               "Text": "[Leave her to her reckoning.]",
@@ -190670,7 +190670,7 @@
         {
           "Id": "deserved",
           "Speaker": "Eritrice",
-          "Text": "\"That is not a reason to crown a man. That is a reason to buy him a drink.\" {n}But her whiskers twitch.{/n}\n\"He fought off demons afterwards, I am told. With a tankard, and his friends, and a great deal of singing. The reports are not clear, because the men who wrote them were also drunk.\" {n}She sighs.{/n} \"I cannot refute it. I have tried. I have minuted it as 'unverified, regrettably plausible'.\"",
+          "Text": "\"That is not a reason to crown a man. That is a reason to buy him a drink.\" {n}But the tip of her quill taps the table, once, which in her is almost a laugh.{/n}\n\"He fought off demons afterwards, I am told. With a tankard, and his friends, and a great deal of singing. The reports are not clear, because the men who wrote them were also drunk.\" {n}She sighs.{/n} \"I cannot refute it. I have tried. I have minuted it as 'unverified, regrettably plausible'.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -190742,7 +190742,7 @@
         {
           "Id": "cant",
           "Speaker": "Eritrice",
-          "Text": "{n}She stares at you for a long moment. Then something in her face gives, like a knot coming loose.{/n}\n\"Yes. That is right. You cannot say 'the chair agrees' and make it so. You have to argue. You have to win the vote.\" {n}She takes up the quill.{/n} \"That is why you come here. It is the only table in your life where your tricks do not work. I have been flattering myself that it was my conversation.\"",
+          "Text": "{n}She stares at you. Then something in her face gives, like a knot coming loose.{/n}\n\"Yes. That is right. You cannot say 'the chair agrees' and make it so. You have to argue. You have to win the vote.\" {n}She takes up the quill.{/n} \"That is why you come here. It is the only table in your life where your tricks do not work. I have been flattering myself that it was my conversation.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -190892,7 +190892,7 @@
         {
           "Id": "more",
           "Speaker": "Eritrice",
-          "Text": "\"Yes.\" {n}Immediately, and then, carefully:{/n} \"It would bother the lion. The chair would note that the Commander keeps company with a demon lord who has never told the truth in her existence, and that the Commander keeps company with the chair, who has never told anything else. The chair would find that very interesting, and would want to understand it.\"\n{n}Her whiskers twitch.{/n} \"Understanding things is how I stop them from bothering me. It has never failed yet. I suspect Nocticula will be the first.\"",
+          "Text": "\"Yes.\" {n}Immediately, and then, carefully:{/n} \"It would bother the lion. The chair would note that the Commander keeps company with a demon lord who has never told the truth in her existence, and that the Commander keeps company with the chair, who has never told anything else. The chair would find that very interesting, and would want to understand it.\"\n{n}The fur along her jaw rises and settles.{/n} \"Understanding things is how I stop them from bothering me. It has never failed yet. I suspect Nocticula will be the first.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -191206,7 +191206,7 @@
         {
           "Id": "trick",
           "Speaker": "Eritrice",
-          "Text": "\"I do not want to know how.\" {n}At once.{/n} \"If you tell me how, I will have to minute it, and if it is what I suspect, I will have to minute it with a very specific word.\"\n{n}She considers you for a long moment.{/n} \"If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she has never before declined to inquire into anything.\" {n}Her whiskers twitch.{/n} \"Go. Before I change my mind.\"",
+          "Text": "\"I do not want to know how.\" {n}At once.{/n} \"If you tell me how, I will have to minute it, and if it is what I suspect, I will have to minute it with a very specific word.\"\n{n}She weighs you, the way she weighs an amendment.{/n} \"If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she has never before declined to inquire into anything.\" {n}She looks, for a moment, almost smug.{/n} \"Go. Before I change my mind.\"",
           "Choices": [
             {
               "Text": "[Go and find a devil's weak spot.]",
@@ -191411,7 +191411,7 @@
         {
           "Id": "you",
           "Speaker": "Eritrice",
-          "Text": "{n}She looks at you for a long time.{/n}\n\"That is not kindness.\" {n}Slowly.{/n} \"That is an argument. It is a good one. The chair should be the one who will accept losing. And I have lost to you so often now that I have practised.\" {n}Her whiskers are trembling.{/n}\n\"I will put it to the Crossroads. They will vote. If they vote for me, I will chair. If they do not, I will sit on the floor, next to wherever you are sitting, and move motions until they regret it.\"",
+          "Text": "{n}She looks at you for a long time.{/n}\n\"That is not kindness.\" {n}Slowly.{/n} \"That is an argument. It is a good one. The chair should be the one who will accept losing. And I have lost to you so often now that I have practised.\" {n}Her voice is not quite level.{/n}\n\"I will put it to the Crossroads. They will vote. If they vote for me, I will chair. If they do not, I will sit on the floor, next to wherever you are sitting, and move motions until they regret it.\"",
           "Choices": [
             {
               "Text": "[Help her write it.]",

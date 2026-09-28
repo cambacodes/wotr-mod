@@ -140,7 +140,7 @@ sitting(PROOF, "Phrr", '"What does Cobblehoof actually say?"', [
 
 sitting(LUCK, "Luck is not a position", '"You and Chadali..."', [
     e("start", '''"Chadali and I." {n}She sets the quill down, which means she is going to be honest about something she would rather not be.{/n}
-"She is from Elysium. She believes in luck, and freedom, and good wishes sent across the planes. She calls you our lucky charm. She calls me 'dear chair' and brings me flowers that die in the hall because nothing grows here." {n}Her whiskers twitch.{/n}
+"She is from Elysium. She believes in luck, and freedom, and good wishes sent across the planes. She calls you our lucky charm. She calls me 'dear chair' and brings me flowers that die in the hall because nothing grows here." {n}The corner of her mouth draws back from one long tooth.{/n}
 "Luck is not a position, Commander. I have told her so in every session since the first. She claps. It is like debating a sunrise."''',
       c('"You\'re fond of her."', "fond"),
       c('"She\'d say the Council exists because you got lucky with Socothbenoth."', "lucky")),
@@ -212,7 +212,7 @@ sitting(BOOK, "A certain book", '"You said you\'d compare the Lexicon with a cer
 {n}She sets the quill down.{/n} "And because it means that the person who will finish the door is a mortal with a Trickster's heart, sitting across the table from me, asking whether I am afraid. I am, Commander. I am also, I find, extremely pleased that it is you."''',
       c("[Leave her with the truth.]")),
     e("finish", '''"I have been helping you. That is what this Council is now, whether its members know it or not." {n}She taps the scroll.{/n}
-"Every vote since you arrived has been a vote on your door. I have minuted them as votes on the Worldwound. That is not a lie. It is the same thing, seen from a better angle." {n}Her whiskers lift.{/n} "You have taught me angles. I resent it."''',
+"Every vote since you arrived has been a vote on your door. I have minuted them as votes on the Worldwound. That is not a lie. It is the same thing, seen from a better angle." {n}Something eases in her shoulders.{/n} "You have taught me angles. I resent it."''',
       c("[Leave her with her angles.]")),
 ], requires=(CONVENING, "council.session_minuted"), forbids=(BOOK,), chapters=(3,))
 
@@ -420,7 +420,7 @@ sitting(FEELINGS, "A point of personal privilege", '"You look like you have a po
     e("both", '''"You hope." {n}Her ears flatten and lift and flatten again.{/n} "You come into my hall, and carry my motions, and correct my ciphers, and adjourn my meetings, and then you sit there and hope that I cannot write the word 'Worldwound' without thinking of you." {n}A breath.{/n}
 "It is working. Minute that. No. I will minute it myself. It is my privilege, and I am exercising it."''',
       c("Continue", "close")),
-    e("told", '''"I have just told you. This is how I tell things. In order, with a procedure, on the record, so that I cannot pretend afterwards that I said something else." {n}Her whiskers are trembling.{/n}
+    e("told", '''"I have just told you. This is how I tell things. In order, with a procedure, on the record, so that I cannot pretend afterwards that I said something else." {n}Her breath has gone short.{/n}
 "You would have preferred that I say it in a corridor, perhaps, with my back to you, and then deny it at the next session. That is how mortals do it. I have read your plays. I did not care for them."''',
       c("Continue", "close")),
     e("still", '''{n}Your hand closes over hers. The tapping stops. Under your fingers the claws are drawn in, but the whole hand is humming with something, like a harp string a moment after it has been plucked.{/n}
@@ -461,7 +461,7 @@ sitting(HOME, "Where the chair goes home", '"Where do you go, when the Council a
 {n}She writes nothing. She only looks at you, in the lamplight, as if memorising a record she does not intend to keep on paper.{/n}''',
       c("[Hold her gaze.]", flags=(K + "second_chair",))),
     e("bored", '''"Yes. Probably." {n}No hesitation.{/n} "And then you would say something outrageous, and I would growl, and you would carry a motion you had no right to carry, and I would not be bored any longer."
-{n}Her whiskers lift.{/n} "That is the whole of my argument, and I cannot improve on it. You are the only thing I have found in all the planes that I cannot predict. I will not be bored with you, Commander. I will be furious with you, often. It is not the same."''',
+{n}Her chin comes up.{/n} "That is the whole of my argument, and I cannot improve on it. You are the only thing I have found in all the planes that I cannot predict. I will not be bored with you, Commander. I will be furious with you, often. It is not the same."''',
       c("[Leave her to her fury.]")),
 ], requires=(POINT_ONE,), forbids=(HOME,))
 
@@ -496,7 +496,7 @@ sitting(LIE, "A lie for the chair", '"You sent for me. Alone."', [
 "You are telling me that the truth is enough without an argument behind it. I have spent my whole existence believing the opposite. I will have to think about it. I will think about it at the session, in front of all of them, while I say it."''',
       c("[Stay with her.]", "close")),
     e("close", '''"Chadali must never know that I asked." {n}She holds up one claw before you can answer.{/n} "That is not a lie. It is a sealed record. I am allowed those. I have learned that from you as well."
-{n}She looks at the quill in its stand for a long moment.{/n} "When this war is over, Commander, I intend to spend a very long time working out how much of what I have become at this table is your fault. I suspect the answer will be: most of it."''',
+{n}Her eyes stray to the quill in its stand.{/n} "When this war is over, Commander, I intend to spend a very long time working out how much of what I have become at this table is your fault. I suspect the answer will be: most of it."''',
       c("[Leave her to her reckoning.]")),
 ], requires=(POINT_ONE, "council.cauldron_given"), forbids=(LIE,), chapters=(5,))
 
@@ -582,7 +582,7 @@ sitting(FOOL, "The Fool King", '"You\'ve heard about Thaberdine."', [
     e("ask", '''"Did you believe him?"''',
       c('"No. But he deserved a crown more than most kings I\'ve met."', "deserved"),
       c('"I trusted my intuition. It said: it\'s all true."', "intuition")),
-    e("deserved", '''"That is not a reason to crown a man. That is a reason to buy him a drink." {n}But her whiskers twitch.{/n}
+    e("deserved", '''"That is not a reason to crown a man. That is a reason to buy him a drink." {n}But the tip of her quill taps the table, once, which in her is almost a laugh.{/n}
 "He fought off demons afterwards, I am told. With a tankard, and his friends, and a great deal of singing. The reports are not clear, because the men who wrote them were also drunk." {n}She sighs.{/n} "I cannot refute it. I have tried. I have minuted it as 'unverified, regrettably plausible'."''',
       c("Continue", "close")),
     e("intuition", '''"Your intuition." {n}The growl is very soft.{/n} "I have spent my existence arguing that truth is found through honest debate. You found it by feeling it in a tavern and saying it out loud until it was so." {n}Her claws curl.{/n}
@@ -596,7 +596,7 @@ sitting(FOOL, "The Fool King", '"You\'ve heard about Thaberdine."', [
 "A liar lies, and the truth is still there, underneath, waiting to be found. A thing that makes its lies true leaves nothing underneath. Nothing to find. Nothing to debate." {n}She draws the claws back, one at a time, with visible effort.{/n} "And yet here you are, debating me. Point by point. Why would a creature like that bother?"''',
       c('"Because you\'re the one thing I can\'t make true by saying it."', "cant"),
       c('"Because it only works on fools and kings. You\'re neither."', "cant")),
-    e("cant", '''{n}She stares at you for a long moment. Then something in her face gives, like a knot coming loose.{/n}
+    e("cant", '''{n}She stares at you. Then something in her face gives, like a knot coming loose.{/n}
 "Yes. That is right. You cannot say 'the chair agrees' and make it so. You have to argue. You have to win the vote." {n}She takes up the quill.{/n} "That is why you come here. It is the only table in your life where your tricks do not work. I have been flattering myself that it was my conversation."''',
       c("Continue", "close")),
     e("close", '''"Thaberdine is king of Sarkoris, then. Or of a tavern. The record will show whichever proves true, when it proves true." {n}She writes, in the upright hand:{/n} "The Commander crowned a king. The chair reserves judgement on the king. The chair has formed her judgement on the Commander, and declines to minute it."
@@ -629,7 +629,7 @@ sitting(NOCTA, "The Lady in Shadow", '"You mentioned Nocticula in session."', [
       c('"Would it bother you? If it were more than dealings?"', "more"),
       c('"You\'d really sit at a table with her?"', "table")),
     e("more", '''"Yes." {n}Immediately, and then, carefully:{/n} "It would bother the lion. The chair would note that the Commander keeps company with a demon lord who has never told the truth in her existence, and that the Commander keeps company with the chair, who has never told anything else. The chair would find that very interesting, and would want to understand it."
-{n}Her whiskers twitch.{/n} "Understanding things is how I stop them from bothering me. It has never failed yet. I suspect Nocticula will be the first."''',
+{n}The fur along her jaw rises and settles.{/n} "Understanding things is how I stop them from bothering me. It has never failed yet. I suspect Nocticula will be the first."''',
       c("Continue", "close")),
     e("table", '''"I sit at a table with her brother. I sat at one with Alichino for a very long time before I noticed what he was." {n}She considers.{/n}
 "I would sit at a table with Nocticula, yes, if she would sit and argue instead of seducing the chairs. I doubt she would. But the offer would be minuted. Every plane is welcome at my table. That was always the point, and I will not make an exception because the Commander looks at doors."''',
@@ -694,7 +694,7 @@ sitting(EXPEL, "A motion to expel", '"You look like you\'ve had a letter from He
       c('"Put it on the agenda. I\'ll argue my own case."', "argue"),
       c('"Recuse yourself. You can\'t chair a vote on me."', "recuse")),
     e("trick", '''"I do not want to know how." {n}At once.{/n} "If you tell me how, I will have to minute it, and if it is what I suspect, I will have to minute it with a very specific word."
-{n}She considers you for a long moment.{/n} "If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she has never before declined to inquire into anything." {n}Her whiskers twitch.{/n} "Go. Before I change my mind."''',
+{n}She weighs you, the way she weighs an amendment.{/n} "If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she has never before declined to inquire into anything." {n}She looks, for a moment, almost smug.{/n} "Go. Before I change my mind."''',
       c("[Go and find a devil's weak spot.]", "close", flags=(K + "alichino_handled",))),
     e("argue", '''{n}She looks at you with an expression very close to pride.{/n}
 "Yes. That is what I hoped you would say, and I did not dare suggest it." {n}She draws the agenda toward her and writes it in, first item, above the Worldwound.{/n}
@@ -739,7 +739,7 @@ sitting(RULES, "The rules of the Crossroads", '"You\'re drafting something."', [
       c('"It should be you. Not because you dreamed it. Because you\'re the only one who\'d let it outvote you."', "you"),
       c('"Rotate it. Every plane chairs in turn. Even the Abyss."', "rotate")),
     e("you", '''{n}She looks at you for a long time.{/n}
-"That is not kindness." {n}Slowly.{/n} "That is an argument. It is a good one. The chair should be the one who will accept losing. And I have lost to you so often now that I have practised." {n}Her whiskers are trembling.{/n}
+"That is not kindness." {n}Slowly.{/n} "That is an argument. It is a good one. The chair should be the one who will accept losing. And I have lost to you so often now that I have practised." {n}Her voice is not quite level.{/n}
 "I will put it to the Crossroads. They will vote. If they vote for me, I will chair. If they do not, I will sit on the floor, next to wherever you are sitting, and move motions until they regret it."''',
       c("[Help her write it.]", "close")),
     e("rotate", '''"Even the Abyss." {n}She winces, visibly.{/n} "A demon lord chairing a session of the Crossroads. Deskari's heralds calling the planes to order."
