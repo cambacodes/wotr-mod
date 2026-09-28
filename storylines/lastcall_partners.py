@@ -20,7 +20,7 @@ OPEN = "trickster.lastcall.open"
 ACTIVE = "lastcall.active"
 ON_RECORD = "lastcall.dead_on_record"
 H2 = "lastcall.h2"
-PILLAR = "trickster.lastcall.pillar.creditors"
+PILLAR = "trickster.lastcall.creditors_called"   # a live power was called in: its collection plays on the Collectors page
 BOTTLED = "trickster.lastcall.cost.bottled"
 MORTAL = "trickster.lastcall.cost.mortal"
 SOCOTH_GONE = ("socot.gone", "council.fought_nocta_allied")   # Cue_0570: "No one ever saw Socothbenoth again"
@@ -40,7 +40,7 @@ def resolved(rel):
 
 MC = "minagho_chivarro.trickster.cost."
 
-# --- Debts owed to powers (doc 04 §3.7). A creditor still there to collect keeps a debtor alive: its call-in sets the ------
+# --- Debts owed to powers (doc 04 §3.7). The flask keeps the Commander alive; creditors only collect. A live power's call-in -
 # creditors pillar. An outlived creditor collects nothing, and says so on the Collectors page.
 DEBTS = [
     dict(key="socoth", groups=[["anevia.trickster.cost.socoth_listening"], ["anevia.trickster.cost.wrong_door"], [MC + "socoth_owed"]],
@@ -132,7 +132,7 @@ partner("anevia", "anevia", "anevia.committed", "anevia.closed", "Anevia, After"
         page_p('''When the flask was opened in Drezen, it was Anevia who made the Commander sit down afterwards and eat something, and who told the priests to go and bless someone who needed it.''', requires=(H2,)),
     ), declined=A + "declined", page_forbids=("committed",),
     deal=[[A + "cost.socoth_listening"], [A + "cost.wrong_door"], [A + "cost.stolen_door"]],
-    call=call('''[Call in the wardrobe] "Silken Sin, you're still listening at her door. Earn it. Keep me breathing."''',
+    call=call('''[Call in the wardrobe] "Silken Sin, you're still listening at her door. Tonight you'll hear the best of it. Consider us square after."''',
         '''{n}You say it to the fire as though the fire were a crowded room. Somewhere a very long way off, in a house in Drezen, a wardrobe door creaks: someone in silk sleeves has stopped listening at one door and started listening to you.{/n}''',
         (PILLAR_CHOICE, (PILLAR,), (A + "cost.socoth_listening",), SOCOTH_GONE),
         (PILLAR_CHOICE, (PILLAR,), (A + "cost.wrong_door",), SOCOTH_GONE + (A + "cost.socoth_listening",)),
@@ -177,7 +177,7 @@ partner("arsinoe", "arsinoe", "arsinoe.committed", "arsinoe.closed", "Paid in Fu
         page_p('''The First Vault does not recognize death as grounds for default. The account stayed open.''', requires=(ON_RECORD,)),
     ), deal=[[AR + "cost.lien"], [AR + "cost.collateral_worldwound"], [AR + "cost.collateral_still"], [AR + "cost.collateral_word"]],
     call=call('''[Return the cauldron] "Returnable at the end of the world. This is the end of the world. Here."''',
-        '''{n}Somewhere under the roar, you swear you hear an abacus. The First Vault has a claim on this night, and a creditor with a claim does not let the debtor burn before the account is closed.{/n}''',
+        '''{n}Somewhere under the roar, you swear you hear an abacus. The First Vault has a claim on this night, and the First Vault is always present at the end of an account.{/n}''',
         (PILLAR_CHOICE, (PILLAR,), (), ())))
 
 J = "jerribeth.trickster."
@@ -221,7 +221,7 @@ partner("nocticula", "nocticula", "noct.complete", "noct.closed", "The Chair at 
     ), declined=NO + "declined",
     deal=[[NO + "cost.shade_paid"], [NO + "cost.shade_refused"]],
     call=call('''[Call in the Queen's favour] "Your Majesty, you're owed a favour. Dead debtors are terrible payers."''',
-        '''{n}The dark at the edge of the firelight thickens and leans in, attentive and amused, and something that is not quite a shadow puts a hand on your shoulder and does not let go.{/n}''',
+        '''{n}The dark at the edge of the firelight thickens and leans in, attentive and amused, and something that is not quite a shadow rests a hand on your shoulder, lightly, the way a creditor reminds a debtor of an appointment.{/n}''',
         (PILLAR_CHOICE, (PILLAR,), (), ("noct.dead",)),
         (PLAIN_CHOICE, (), ("noct.dead",), ())))
 
@@ -235,7 +235,7 @@ partner("vellexia", "vellexia", "vellexia.committed", "vellexia.closed", "Never 
         page_p('''She wore black for the Commander's funeral and was, by general agreement, the best-dressed mourner there.''', requires=(ON_RECORD,)),
     ), declined=V + "declined", page_forbids=("vellexia.farewell_friends", "vellexia.farewell_slow", V + "kept_as_mirror"),
     deal=[[V + "returned"], [V + "cost.predicted"], [V + "cost.trick_kept"]],
-    call=call('''[Call in the furniture bill] "Vellexia, I owe you for the furniture. Keep me alive and I'll pay in instalments."''',
+    call=call('''[Call in the furniture bill] "Vellexia, I owe you for the furniture. I'll pay in instalments. Mind you're there to collect them."''',
         '''{n}Across a great distance, and a great many mirrors, a lady who is never bored sits up and pays attention.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Vellexia: the furniture", "I owe Lady Vellexia for a season she spent on my wall. She keeps a very precise account of things nobody else would think to bill."))
@@ -266,7 +266,7 @@ partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",
     ), deal=[[KI + "cost.sunhammer_favour"], [KI + "cost.guests_robbed"], [KI + "cost.courier_marked"]],
     call=call('''[Call in the courier's account] "Sunhammer, you're owed. Collect now, while I've a pulse to collect from."''',
         '''{n}Far off, in a shop that smells of solder, a dwarf lays down a loupe and makes a note in the one ledger he keeps in his head.{/n}''',
-        (PILLAR_CHOICE, (PILLAR,), (), ())))
+        (PLAIN_CHOICE, (), (), ())))   # Sunhammer is a mortal jeweller: he collects, but is no power
 
 MCR = "minagho_chivarro.trickster."
 partner("minachiv", "minagho_chivarro", "minachiv.complete", "minachiv.closed", "The House of Two",
@@ -282,7 +282,7 @@ partner("minachiv", "minagho_chivarro", "minachiv.complete", "minachiv.closed", 
           [MC + "socoth_owed"]],
     call=call('''[Call in the seal and the house special] "Lord of Beasts, your seal's on my palm. Herrax, your favour. Collect from me alive, or not at all."''',
         '''{n}Your left palm burns, a hot line where a seal was pressed. Somewhere very far away something enormous and horned turns its head. Somewhere much nearer, a demon who keeps a house of pleasures reaches for an abacus.{/n}''',
-        (PLAIN_CHOICE, (), (), ())))   # Sunhammer is a mortal jeweller: he collects, he does not hold back the Wound
+        (PILLAR_CHOICE, (PILLAR,), (), ())))
 
 S = "soana.trickster."
 partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
@@ -295,7 +295,7 @@ partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
     ), declined=S + "declined",
     deal=[[S + "cost.blood_given"], [S + "cost.guardian_paid"], [S + "cost.knot_bearer"], [S + "cost.leash_held"]],
     call=call('''[Call in the spirits' portion] "Wintersun spirits, you took a portion. The rest is mine to give. Later."''',
-        '''{n}You smell pine and cold earth in the middle of the fire. The spirits of a wood a very long way off have a claim on part of you, and they are not in the habit of letting a debt walk into a furnace.{/n}''',
+        '''{n}You smell pine and cold earth in the middle of the fire. The spirits of a wood a very long way off have a claim on part of you, and they turn toward the fire the way the woods turn toward spring: to see what is owed them.{/n}''',
         (PILLAR_CHOICE, (PILLAR,), (), ())))
 
 AK = "aranka.trickster."

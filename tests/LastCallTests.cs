@@ -10,8 +10,8 @@ using Tirabade;
 internal static class LastCallTests
 {
     private const string Taken = "trickster.lastcall.taken", Open = "trickster.lastcall.open", Primed = "trickster.lastcall.primed.bottle";
-    private const string Bottle = "trickster.lastcall.pillar.bottle", Creditors = "trickster.lastcall.pillar.creditors";
-    private const string Heroic = "trickster.lastcall.heroic", Bottled = "trickster.lastcall.cost.bottled", Due = "trickster.lastcall.cost.creditors_due";
+    private const string Bottle = "trickster.lastcall.pillar.bottle", Creditors = "trickster.lastcall.creditors_called";
+    private const string Heroic = "trickster.lastcall.heroic", Bottled = "trickster.lastcall.cost.bottled";
     private const string Late = "trickster.lastcall.cost.late", Active = "lastcall.active";
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
@@ -65,39 +65,22 @@ internal static class LastCallTests
         var afterJoke = Done(story, told.First(r => !r.Has(Heroic)));
         check(!Av(joke, afterJoke) && !Av(jokeAreelu, afterJoke) && afterJoke.Has(Taken), "LastCall_Offer_Vessel: the last joke can be told twice.");
 
-        // 2. LastCall_Offer_Creditors: no vessel; a partner's power debt keeps the Commander alive.
-        var creditorsWorld = World(story, 6, "trickster", "trickster.ever", "anevia.committed", "anevia.trickster.cost.socoth_listening");
-        check(Av(threshold, creditorsWorld), "LastCall_Offer_Creditors: a power debt does not open last orders.");
-        var counted = Done(story, Program.Walk(threshold, creditorsWorld).Single(r => r.Has(Open)));
+        // 2-3. The flask is the only survival device (a prepared countermeasure, never a list of debts). Without a vessel
+        // last orders are never offered, whatever is owed; powers only collect.
+        foreach (var debtWorld in new[] { new[] { "anevia.committed", "anevia.trickster.cost.socoth_listening" },
+                                          new[] { "arsinoe.committed", "arsinoe.trickster.cost.lien" },
+                                          new[] { "kiana.committed", "kiana.trickster.cost.sunhammer_favour" } })
+            check(!Av(threshold, World(story, 6, new[] { "trickster", "trickster.ever" }.Concat(debtWorld).ToArray())),
+                "LastCall_NoShield: a debt without the flask opens last orders: " + debtWorld[1]);
+        var owing = Done(story, World(story, 6, "trickster", "trickster.ever", Open, Primed, Bottle, "lastcall.flask_taken", "lastcall.flask_held",
+                                      "anevia.committed", "anevia.trickster.cost.socoth_listening"));
         var anevia = Sc("anevia.lastcall.call");
-        check(!counted.Has(Bottle) && Av(anevia, counted), "LastCall_Offer_Creditors: Anevia's call-in is not offered once last orders are called.");
-        var calledIn = Done(story, Program.Walk(anevia, counted).Single(r => r.Has("anevia.lastcall.called")));
-        check(calledIn.Has(Creditors) && !Av(anevia, calledIn), "LastCall_Offer_Creditors: the live Socothbenoth does not hold the Commander up.");
-        check(Program.Walk(joke, calledIn).Any(r => r.Has(Taken) && r.Has(Due)), "LastCall_Offer_Creditors: the creditors' punchline is missing.");
-
-        // 3. LastCall_OutlivedOnly: an outlived creditor keeps nobody alive, so its ledger never opens (no soft-lock: every
-        // opened ledger reaches a last joke); a live creditor beside an outlived one still opens it.
-        var outlived = World(story, 6, "trickster", "trickster.ever", "anevia.committed", "anevia.trickster.cost.socoth_listening", "socot.gone");
-        check(!Program.Walk(threshold, outlived).Any(r => r.Has(Open)), "LastCall_OutlivedOnly: an outlived-only ledger opens and cannot close.");
-        var shadowOnly = World(story, 6, "trickster", "trickster.ever", "noct.complete", "nocticula.trickster.cost.shade_paid", "noct.dead");
-        check(!Program.Walk(threshold, shadowOnly).Any(r => r.Has(Open)), "LastCall_OutlivedOnly: a shadow's debt alone opens the ledger.");
-        var mixed = World(story, 6, "trickster", "trickster.ever", "anevia.committed", "anevia.trickster.cost.socoth_listening", "socot.gone",
-                          "noct.complete", "nocticula.trickster.cost.shade_paid");
-        var mixedOpen = Program.Walk(threshold, mixed).Where(r => r.Has(Open)).ToList();
-        check(mixedOpen.Count == 1, "LastCall_OutlivedOnly: a live Nocticula beside an outlived Socothbenoth does not open exactly one way.");
-        var mixedNoct = Done(story, Program.Walk(Sc("nocticula.lastcall.call"), Done(story, mixedOpen[0])).Single(r => r.Has("nocticula.lastcall.called")));
-        var mixedCalled = Done(story, Program.Walk(anevia, mixedNoct).Single(r => r.Has("anevia.lastcall.called")));
-        check(Program.Walk(joke, mixedCalled).Any(r => r.Has(Taken) && r.Has(Due)), "LastCall_OutlivedOnly: the live creditor cannot close the opened ledger.");
-        // Every world that opens the ledger by creditors alone can reach a last joke (the soft-lock check).
-        foreach (var debt in new[] { "arsinoe.trickster.cost.lien", "nurah.trickster.cost.ramisa_fee", "soana.trickster.cost.guardian_paid" })
-        {
-            var rel = debt.Split('.')[0];
-            var commit = story.Relationships[rel].CommittedFlag;
-            var w = World(story, 6, "trickster", "trickster.ever", commit, debt);
-            var o = Program.Walk(threshold, w).Where(r => r.Has(Open)).Select(r => Done(story, r)).ToList();
-            var called = o.SelectMany(r => Program.Walk(Sc(rel + ".lastcall.call"), r)).Where(r => r.Has(rel + ".lastcall.called")).Select(r => Done(story, r)).ToList();
-            check(o.Count == 1 && called.Any(r => Program.Walk(joke, r).Any(x => x.Has(Taken))), "Soft-lock: a creditor-only ledger cannot reach its last joke: " + debt);
-        }
+        var calledIn = Done(story, Program.Walk(anevia, owing).Single(r => r.Has("anevia.lastcall.called")));
+        check(calledIn.Has(Creditors) && !Av(anevia, calledIn), "LastCall_Collectors: a live Socothbenoth's call-in does not mark the collectors.");
+        var gone = Done(story, World(story, 6, "trickster", "trickster.ever", Open, Primed, Bottle, "lastcall.flask_taken", "lastcall.flask_held",
+                                     "anevia.committed", "anevia.trickster.cost.socoth_listening", "socot.gone"));
+        var goneCalled = Done(story, Program.Walk(anevia, gone).Single(r => r.Has("anevia.lastcall.resolved")));
+        check(!goneCalled.Has(Creditors), "LastCall_Collectors: an outlived Socothbenoth still collects.");
 
         // 4-5. No vessel and no debt; a failed path.
         check(!Av(threshold, World(story, 6, "trickster", "trickster.ever")), "LastCall_NoVesselNoDebt: last orders without a vessel or a debt.");
@@ -124,16 +107,16 @@ internal static class LastCallTests
         foreach (bool taken in new[] { false, true })
         foreach (string pillar in new[] { Bottle, Creditors })
         {
-            var flags = new List<string> { "trickster.ever", pillar };
+            var flags = new List<string> { "trickster.ever", Bottle, pillar };
             check(story.Etudes.ContainsKey(ending) || ending == "ending.not_my_business", "LastCall_Epilogue_Matrix: an ending etude is not bound: " + ending);
             if (story.Etudes.ContainsKey(ending)) flags.Add(ending);
             if (sacrifice) flags.Add("sacrifice");
             if (taken) flags.Add(Taken);
             var w = World(story, 6, flags.ToArray());
             bool h1 = taken && ending.StartsWith("ending.trickster", StringComparison.Ordinal) && story.Etudes.ContainsKey(ending);
-            bool h2 = taken && ending == "ending.wound_closed" && sacrifice && pillar == Bottle;
+            bool h2 = taken && ending == "ending.wound_closed" && sacrifice;
             bool active = h1 || h2;
-            check(Av(a1, w) == h1 && Av(a1h2, w) == h2 && Av(a2, w) == (active && pillar == Bottle) && Av(a3, w) == (active && pillar == Creditors)
+            check(Av(a1, w) == h1 && Av(a1h2, w) == h2 && Av(a2, w) == active && Av(a3, w) == (active && pillar == Creditors)
                   && Av(lastWord, w) == active,
                 "LastCall_Epilogue_Matrix: a Block A/C page is shown out of its world (" + ending + ", sacrifice " + sacrifice + ", taken " + taken + ", " + pillar + ").");
         }
@@ -204,8 +187,10 @@ internal static class LastCallTests
         var allDone = Done(story, Program.Walk(Sc("seelah.lastcall.call"), oneDone).Single(r => r.Has("seelah.lastcall.called")));
         check(Av(joke, allDone), "Sequencing: the last joke stays closed after every debt is resolved.");
         // A mortal creditor collects but keeps nobody alive: Sunhammer alone never opens the creditors branch.
-        var mortalOnly = World(story, 6, "trickster", "trickster.ever", "kiana.committed", "kiana.trickster.cost.sunhammer_favour");
-        check(!Program.Walk(threshold, mortalOnly).Any(r => r.Has(Open)), "A mortal jeweller's debt holds back the Wound.");
+        // A mortal creditor collects but is no power: Sunhammer's call-in never marks the collectors' page.
+        var mortal = Done(story, World(story, 6, "trickster", "trickster.ever", Open, Primed, Bottle, "lastcall.flask_taken", "lastcall.flask_held",
+                                       "kiana.committed", "kiana.trickster.cost.sunhammer_favour"));
+        check(Program.Walk(Sc("kiana.lastcall.call"), mortal).All(r => !r.Has(Creditors)), "A mortal jeweller is counted among the powers.");
         // Targona: keeping the promise is a real choice; breaking it is the failure that seats her apart.
         var targona = Sc("targona.lastcall.call");
         var sealedWorld = Done(story, World(story, 6, "trickster", "trickster.ever", Open, "targona.committed", "targona.trickster.cost.light_sealed"));

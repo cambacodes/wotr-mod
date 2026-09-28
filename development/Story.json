@@ -222134,73 +222134,6 @@
               "Abort": false
             },
             {
-              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
-              "Next": null,
-              "Set": [
-                "trickster.lastcall.open"
-              ],
-              "Requires": [
-                "lastcall.creditors_live"
-              ],
-              "Forbids": [
-                "lastcall.vessel"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
-              "Next": null,
-              "Set": [
-                "trickster.lastcall.open"
-              ],
-              "Requires": [
-                "lastcall.debt.socoth"
-              ],
-              "Forbids": [
-                "lastcall.vessel",
-                "lastcall.creditors_live",
-                "lastcall.debt.nocticula",
-                "socot.gone",
-                "council.fought_nocta_allied"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
-              "Next": null,
-              "Set": [
-                "trickster.lastcall.open"
-              ],
-              "Requires": [
-                "lastcall.debt.nocticula"
-              ],
-              "Forbids": [
-                "lastcall.vessel",
-                "lastcall.creditors_live",
-                "noct.dead"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
-              "Next": null,
-              "Set": [
-                "trickster.lastcall.open"
-              ],
-              "Requires": [
-                "lastcall.debt.socoth",
-                "lastcall.debt.nocticula",
-                "noct.dead"
-              ],
-              "Forbids": [
-                "lastcall.vessel",
-                "lastcall.creditors_live",
-                "socot.gone",
-                "council.fought_nocta_allied"
-              ],
-              "Abort": false
-            },
-            {
               "Text": "[Put it away] Not yet.",
               "Next": null,
               "Set": [],
@@ -222215,7 +222148,7 @@
       "Requires": [
         "trickster",
         "trickster.ever",
-        "lastcall.possible"
+        "lastcall.vessel"
       ],
       "Forbids": [
         "trickster.lastcall.taken",
@@ -222250,7 +222183,7 @@
         {
           "Id": "wound",
           "Speaker": "Narrator",
-          "Text": "{n}The rift howls. The violet fire leans toward you as it always has, the way a hound leans toward its master's scent, and finds on you nothing it can take: a death that is already in a bottle, or a life that is already spoken for by too many people who want paying first. The Worldwound hesitates.{/n}",
+          "Text": "{n}The rift howls. The violet fire leans toward you as it always has, the way a hound leans toward its master's scent, and finds the wound it made already drained: everything that ran out of it since Iz ran into Areelu's crystal, and the crystal is corked. The fire gropes along the old scar for something to pull, and finds nothing on the other end of it. The Worldwound hesitates.{/n}",
           "Choices": [
             {
               "Text": "[Tell the Wound it's too late] \"Sorry. My death's already been served. Try the flask.\"",
@@ -222261,19 +222194,6 @@
               ],
               "Requires": [
                 "trickster.lastcall.pillar.bottle"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Tell the Wound to take a number] \"Get in line. Half the Abyss has a claim on me, and they all want paying first.\"",
-              "Next": null,
-              "Set": [
-                "trickster.lastcall.taken",
-                "trickster.lastcall.cost.creditors_due"
-              ],
-              "Requires": [
-                "trickster.lastcall.pillar.creditors"
               ],
               "Forbids": [],
               "Abort": false
@@ -222475,7 +222395,7 @@
         {
           "Id": "wound",
           "Speaker": "Narrator",
-          "Text": "{n}The rift howls. The violet fire leans toward you as it always has, the way a hound leans toward its master's scent, and finds on you nothing it can take: a death that is already in a bottle, or a life that is already spoken for by too many people who want paying first. The Worldwound hesitates.{/n}",
+          "Text": "{n}The rift howls. The violet fire leans toward you as it always has, the way a hound leans toward its master's scent, and finds the wound it made already drained: everything that ran out of it since Iz ran into Areelu's crystal, and the crystal is corked. The fire gropes along the old scar for something to pull, and finds nothing on the other end of it. The Worldwound hesitates.{/n}",
           "Choices": [
             {
               "Text": "[Tell the Wound it's too late] \"Sorry. My death's already been served. Try the flask.\"",
@@ -222486,19 +222406,6 @@
               ],
               "Requires": [
                 "trickster.lastcall.pillar.bottle"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Tell the Wound to take a number] \"Get in line. Half the Abyss has a claim on me, and they all want paying first.\"",
-              "Next": null,
-              "Set": [
-                "trickster.lastcall.taken",
-                "trickster.lastcall.cost.creditors_due"
-              ],
-              "Requires": [
-                "trickster.lastcall.pillar.creditors"
               ],
               "Forbids": [],
               "Abort": false
@@ -222716,9 +222623,9 @@
               "AnyGroups": []
             },
             {
-              "Text": "It was not the vessel that saved {mf|him|her}. It was arithmetic. The Wound came for its claim and found the claim already mortgaged, to powers who would rather be paid than mourn. Nothing, it turns out, is harder to kill than a debtor with enough creditors.",
+              "Text": "The vessel did not settle {mf|his|her} accounts. It only kept {mf|him|her} alive long enough to be dunned. The powers {mf|he|she} had borrowed from came to collect in the first year, and I record their visits in the proper place.",
               "Requires": [
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -222776,7 +222683,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "The sacrifice was real. I have checked. The Commander of the Fifth Crusade stepped into the Wound, and the Wound closed on everything {mf|he|she} had brought into it: the power the Abyss and I had poured into {mf|him|her}, every scrap of it, spent to seal the rift for good. I recorded it, correctly, as the end. What the Wound could not take was {mf|his|her} death. That was already spoken for, corked in a flask on {mf|his|her} belt, and a debtor cannot be made to pay the same account twice. Three days later a sentry found the Commander at the edge of the scorched earth where the rift had been, breathing, with the flask still corked in one fist.",
+          "Text": "The sacrifice was real. I have checked. The Commander of the Fifth Crusade stepped into the Wound, and the Wound closed on everything {mf|he|she} had carried into it: the power the Abyss and I had poured into {mf|him|her}, spent to the last spark to seal the rift. I recorded it, correctly, as the end. I record also what I measured, and do not pretend to understand. The wound in {mf|his|her} chest was mine; I cut it, and I built the Worldwound to finish what it began by pulling through it. By Threshold that wound had been drained, in Drezen, into a crystal vessel of my own making, and corked. When the Wound closed, it pulled on the old cut and found nothing on the other end. Three days later a sentry found the Commander at the edge of the scorched earth where the rift had been, breathing, with the flask still corked in one fist.",
           "Choices": [
             {
               "Text": "Continue",
@@ -223091,7 +222998,7 @@
       "Requires": [
         "trickster.ever",
         "lastcall.active",
-        "trickster.lastcall.pillar.creditors"
+        "trickster.lastcall.creditors_called"
       ],
       "Forbids": [
         "trickster.failed"
@@ -223108,7 +223015,7 @@
       "Owner": "Commander",
       "MinChapter": 6,
       "MaxChapter": 6,
-      "Entry": "[Call in the wardrobe] \"Silken Sin, you're still listening at her door. Earn it. Keep me breathing.\"",
+      "Entry": "[Call in the wardrobe] \"Silken Sin, you're still listening at her door. Tonight you'll hear the best of it. Consider us square after.\"",
       "Nodes": [
         {
           "Id": "call",
@@ -223121,7 +223028,7 @@
               "Set": [
                 "anevia.lastcall.called",
                 "anevia.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [
                 "anevia.trickster.cost.socoth_listening"
@@ -223138,7 +223045,7 @@
               "Set": [
                 "anevia.lastcall.called",
                 "anevia.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [
                 "anevia.trickster.cost.wrong_door"
@@ -223304,7 +223211,7 @@
         {
           "Id": "call",
           "Speaker": "Narrator",
-          "Text": "{n}Somewhere under the roar, you swear you hear an abacus. The First Vault has a claim on this night, and a creditor with a claim does not let the debtor burn before the account is closed.{/n}",
+          "Text": "{n}Somewhere under the roar, you swear you hear an abacus. The First Vault has a claim on this night, and the First Vault is always present at the end of an account.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -223312,7 +223219,7 @@
               "Set": [
                 "arsinoe.lastcall.called",
                 "arsinoe.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223490,7 +223397,7 @@
         {
           "Id": "call",
           "Speaker": "Narrator",
-          "Text": "{n}The dark at the edge of the firelight thickens and leans in, attentive and amused, and something that is not quite a shadow puts a hand on your shoulder and does not let go.{/n}",
+          "Text": "{n}The dark at the edge of the firelight thickens and leans in, attentive and amused, and something that is not quite a shadow rests a hand on your shoulder, lightly, the way a creditor reminds a debtor of an appointment.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -223498,7 +223405,7 @@
               "Set": [
                 "nocticula.lastcall.called",
                 "nocticula.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [],
               "Forbids": [
@@ -223561,7 +223468,7 @@
       "Owner": "Commander",
       "MinChapter": 6,
       "MaxChapter": 6,
-      "Entry": "[Call in the furniture bill] \"Vellexia, I owe you for the furniture. Keep me alive and I'll pay in instalments.\"",
+      "Entry": "[Call in the furniture bill] \"Vellexia, I owe you for the furniture. I'll pay in instalments. Mind you're there to collect them.\"",
       "Nodes": [
         {
           "Id": "call",
@@ -223635,7 +223542,7 @@
               "Set": [
                 "nurah.lastcall.called",
                 "nurah.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223696,8 +223603,7 @@
               "Next": null,
               "Set": [
                 "kiana.lastcall.called",
-                "kiana.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "kiana.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223758,7 +223664,8 @@
               "Next": null,
               "Set": [
                 "minagho_chivarro.lastcall.called",
-                "minagho_chivarro.lastcall.resolved"
+                "minagho_chivarro.lastcall.resolved",
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223815,7 +223722,7 @@
         {
           "Id": "call",
           "Speaker": "Narrator",
-          "Text": "{n}You smell pine and cold earth in the middle of the fire. The spirits of a wood a very long way off have a claim on part of you, and they are not in the habit of letting a debt walk into a furnace.{/n}",
+          "Text": "{n}You smell pine and cold earth in the middle of the fire. The spirits of a wood a very long way off have a claim on part of you, and they turn toward the fire the way the woods turn toward spring: to see what is owed them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -223823,7 +223730,7 @@
               "Set": [
                 "soana.lastcall.called",
                 "soana.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [],
               "Forbids": [],
@@ -224218,7 +224125,7 @@
               "Set": [
                 "hepzamirah.lastcall.called",
                 "hepzamirah.lastcall.resolved",
-                "trickster.lastcall.pillar.creditors"
+                "trickster.lastcall.creditors_called"
               ],
               "Requires": [],
               "Forbids": [],
@@ -224622,8 +224529,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -227710,87 +227617,6 @@
       [
         "lastcall.flask_taken",
         "lastcall.flask_held"
-      ]
-    ],
-    "lastcall.creditors_open": [
-      [
-        "lastcall.debt.socoth"
-      ],
-      [
-        "lastcall.debt.baphomet"
-      ],
-      [
-        "lastcall.debt.nocticula"
-      ],
-      [
-        "lastcall.debt.ramisa"
-      ],
-      [
-        "lastcall.debt.herrax"
-      ],
-      [
-        "lastcall.debt.abadar"
-      ],
-      [
-        "lastcall.debt.sunhammer"
-      ],
-      [
-        "lastcall.debt.mutasafen"
-      ],
-      [
-        "lastcall.debt.wintersun"
-      ]
-    ],
-    "lastcall.creditors_live": [
-      [
-        "lastcall.debt.baphomet"
-      ],
-      [
-        "lastcall.debt.ramisa"
-      ],
-      [
-        "lastcall.debt.herrax"
-      ],
-      [
-        "lastcall.debt.abadar"
-      ],
-      [
-        "lastcall.debt.mutasafen"
-      ],
-      [
-        "lastcall.debt.wintersun"
-      ]
-    ],
-    "lastcall.possible": [
-      [
-        "lastcall.vessel"
-      ],
-      [
-        "lastcall.debt.socoth"
-      ],
-      [
-        "lastcall.debt.baphomet"
-      ],
-      [
-        "lastcall.debt.nocticula"
-      ],
-      [
-        "lastcall.debt.ramisa"
-      ],
-      [
-        "lastcall.debt.herrax"
-      ],
-      [
-        "lastcall.debt.abadar"
-      ],
-      [
-        "lastcall.debt.sunhammer"
-      ],
-      [
-        "lastcall.debt.mutasafen"
-      ],
-      [
-        "lastcall.debt.wintersun"
       ]
     ],
     "lastcall.h1": [
