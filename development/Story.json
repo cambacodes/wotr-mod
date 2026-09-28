@@ -39453,7 +39453,7 @@
           "Text": "{n}She takes the flower by its stem. Her wrinkled lips tighten, then soften.{/n}\n\"There were flowers enough to carpet the paths when Orso walked them. Corven made a wreath for me. I wore it when I became his wife.\"\n{n}She looks at you directly.{/n}\n\"A woman does not arrive empty merely because you have only just met her.\"\n\"I was offering one flower. I would like to know the woman receiving it.\"\n\"Then do not hurry to decide what she has lost.\"\n{n}She lays the stem across the rim of the water dish. The blossom rests clear of the water.{/n}",
           "Choices": [
             {
-              "Text": "\"I will ask what you want to tell me. I will not make an opening for myself out of what you have not said.\"",
+              "Text": "\"Tell me about him when you want to. Not before.\"",
               "Next": "marriage",
               "Set": [
                 "soana.marriage_acknowledged"
@@ -39532,7 +39532,7 @@
           "Text": "{n}The path ends at a shallow run of water between stones. Soana steadies herself against a tree before stepping down. You wait rather than pull her after you.{/n}\n{n}She lowers the pot into the water herself. When she gives it back, the repaired handle takes the full weight. The weave creaks once and holds.{/n}\n\"Slowly uphill,\" she says. \"Unless you want to do the filling twice.\"\n{n}On the return, she stops to catch her breath. There is no coyness in it. Her age is in the effort, in the care with which she places each foot, and in the impatient glance she gives you when you look ready to speak.{/n}",
           "Choices": [
             {
-              "Text": "\"I like being here with you. I am not asking you to become somebody younger to make that easier to say.\"",
+              "Text": "[Flirt] \"I like being here with you. Temper, hands, years and all.\"",
               "Next": "attraction",
               "Set": [
                 "soana.attraction_named"
@@ -39559,7 +39559,7 @@
         {
           "Id": "attraction",
           "Speaker": "Soana",
-          "Text": "\"Then say the first part next time. I know how old I am.\"\n{n}She regards you with a searching, unsentimental attention.{/n}\n\"You like being here with me? With this temper? These hands?\"\n\"Yes. And I have heard what you said about Corven. I am not asking you to answer anything you have not chosen to discuss.\"\n{n}She looks down at the hand resting on the tree. A smile touches one corner of her mouth.{/n}\n\"You have not heard the worst of the temper.\"\n\"I suspected that.\"\n\"Good. Suspicion may keep you from becoming tedious.\"\n{n}She lifts her hand from the tree and resumes the walk. She makes no promise about where your interest may lead.{/n}",
+          "Text": "\"Leave off the years next time. I know how old I am. I do not need a young fool counting them for me.\"\n{n}She regards you with a searching, unsentimental attention.{/n}\n\"You like being here with me? With this temper? These hands?\"\n\"Yes. And I heard what you said about Corven. I won't pry.\"\n{n}She looks down at the hand resting on the tree. A smile touches one corner of her mouth.{/n}\n\"You have not heard the worst of the temper.\"\n\"I suspected that.\"\n\"Good. Suspicion may keep you from becoming tedious.\"\n{n}She lifts her hand from the tree and resumes the walk. She makes no promise about where your interest may lead.{/n}",
           "Choices": [
             {
               "Text": "[Match her pace and carry the water back.]",
@@ -59013,7 +59013,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.along_the_grain",
@@ -59195,7 +59198,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.whose_mark",
@@ -59319,7 +59325,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_first_game",
@@ -59539,7 +59548,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_unclaimed_hour",
@@ -59786,7 +59798,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.against_the_current",
@@ -60026,7 +60041,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.unfinished_likeness",
@@ -72835,10 +72853,10 @@
         {
           "Id": "desire",
           "Speaker": "Soana",
-          "Text": "\"Yes. I did. I found it a more satisfactory occupation than wondering whether you would notice.\"\n{n}She comes close enough to touch your sleeve, then waits. The waiting is intentional; so is the warmth in her expression.{/n}\n\"I would like to kiss you tonight. I would like you to stay. Those are two wishes, not one bargain. You may answer them separately.\"\n\"And if I stay?\"\n\"Then we discover what we both want after the first answer. I have no ceremony prepared. No flower that will make a marriage by being placed on someone's head. No spirit invited to witness what belongs to us.\"\n{n}She gives a low laugh.{/n}\n\"I have become particular about invitations.\"\n{n}You touch her hand. She turns it against yours, confident in the small movement now. Her other hand comes to rest at your side, light enough to withdraw without a struggle, close enough that there can be no doubt about her interest.{/n}\n\"Tell me,\" she says. \"I can survive an answer. I would rather enjoy one.\"",
+          "Text": "\"Yes. I did. I found it a more satisfactory occupation than wondering whether you would notice.\"\n{n}She comes close enough to touch your sleeve, then waits. The waiting is intentional; so is the warmth in her expression.{/n}\n\"I want you to kiss me, hunter. Then I want you to stay. Choose one or both, and I shall judge you accordingly.\"\n\"And if I stay?\"\n\"Then we discover what we both want after the first answer. I have no ceremony prepared. No flower that will make a marriage by being placed on someone's head. No spirit invited to witness what belongs to us.\"\n{n}She gives a low laugh.{/n}\n\"I have become particular about invitations.\"\n{n}You touch her hand. She turns it against yours, confident in the small movement now. Her other hand settles at your side and stays there. There is no doubt at all about her interest.{/n}\n\"Well? I can survive an answer. I would rather enjoy one.\"",
           "Choices": [
             {
-              "Text": "\"Kiss me. I want to stay the night, if that remains what you want.\"",
+              "Text": "[Kiss her] \"I'm staying.\"",
               "Next": "night",
               "Set": [],
               "Requires": [],
@@ -72867,7 +72885,7 @@
         {
           "Id": "night",
           "Speaker": "Soana",
-          "Text": "\"It does.\"\n{n}She draws you nearer by the hand she is already holding. There is no haste in the kiss, though there is relief in it: the pleasure of a question answered by something warmer than another careful sentence.{/n}\n{n}When you move back far enough to see her face, she follows for a second kiss. Her fingers tighten at your side, then loosen when she feels you smile.{/n}\n\"What?\"\n\"You seem pleased.\"\n\"An accusation I am willing to endure.\"\n{n}She rests her forehead briefly against you. Then she looks toward the blanket and laughs at herself, softer this time.{/n}\n\"I have imagined this often enough to omit all the ordinary difficulties. The stone is hard. My shoulder will complain if I lie on it. You may discover that I have extremely firm opinions about where a blanket belongs.\"\n\"Show me.\"\n{n}She does. The practical rearrangement becomes part of the pleasure: her hand guiding yours, your laughter when the blanket refuses to spread as neatly as she intended, the moment she stops arranging anything and simply draws you close.{/n}\n{n}You speak when something needs asking. You listen when either of you wants it slower. Her hand finds yours again when the last light leaves the cave mouth.{/n}\n{n}In the morning, she is awake before you. Her hand rests over yours beneath the blanket.{/n}\n\"I have decided,\" she says, \"that you were worth moving the tools.\"\n\"High praise.\"\n\"You have not seen how long it took me to arrange them before you came.\"\n{n}She kisses you once more before letting the day begin.{/n}",
+          "Text": "\"Good.\"\n{n}She draws you down by the hand she is already holding. There is no haste in the first kiss and a great deal of it in the second; she bites your lip, not gently, and laughs low in her chest when you pull her closer.{/n}\n\"I have imagined this often enough to leave out all the ordinary difficulties. The stone is hard. My shoulder will complain. You will discover that I have extremely firm opinions about where a blanket belongs.\"\n\"Show me.\"\n{n}She does, and then she stops arranging anything. She unpins her braid with one hand and your collar with the other. Her fingers are rough as bark and very sure; she strips the road off you piece by piece, lets her rags fall in a heap across the tools, and pulls you down onto the blanket with a strength her age does not advertise. The last light leaves the cave mouth as she settles over you, her knees in the blanket on either side, and does not let you look anywhere but at her.{/n}\n{n}In the morning, she is awake before you. Her hand rests over yours beneath the blanket.{/n}\n\"I have decided that you were worth moving the tools.\"\n\"High praise.\"\n\"You have not seen how long it took me to arrange them before you came.\"\n{n}She kisses you once more before letting the day begin.{/n}",
           "Choices": [
             {
               "Text": "[Leave when you must, with another visit wanted rather than owed.]",
@@ -78746,7 +78764,7 @@
         {
           "Id": "night",
           "Speaker": "Narrator",
-          "Text": "{n}She pulls you close by the hand you have left in hers. You kiss her, and she answers with an eagerness that makes the careful waiting seem far away. The kiss is interrupted only because she laughs when her shawl catches beneath your knee. You free it together. She spreads it over the unused tools rather than returning it to its peg.{/n}\n{n}\"Let them endure a little inconvenience,\" she says. \"I have been unusually considerate of useful things.\"{/n}\n{n}Later, with the blanket drawn close, the questions are smaller and easier to answer. Where her hand is welcome. Whether you are warm. Whether you can stay just there a little longer. She answers your own questions with the same frankness, and sometimes with a kiss before finding words.{/n}\n{n}A branch brushes the rock outside. Soana lifts her head, listens once, and settles against you again. Her hand returns to the place it had found at your shoulder. She asks whether you remember the first reed she made you pull out of the carrier. You tell her you have had considerable practice remembering her corrections. She laughs against your neck.{/n}\n{n}In the morning she is watching the light at the entrance when you wake. She turns immediately when you move.{/n}\n{n}\"I recovered the clever remark,\" she says. \"It was not as good as I remembered. We may keep what happened instead.\"{/n}\n{n}You kiss her before getting up. She answers without hurrying the moment toward goodbye.{/n}",
+          "Text": "{n}She pulls you close by the hand you have left in hers. You kiss her, and she answers with an eagerness that makes the careful waiting seem far away. The kiss is interrupted only because she laughs when her shawl catches beneath your knee. You free it together. She spreads it over the unused tools rather than returning it to its peg.{/n}\n{n}\"Let them endure a little inconvenience,\" she says. \"I have been unusually considerate of useful things.\"{/n}\n{n}Then she does not let you be careful. Her hands are rough and sure and impatient with buckles; she pushes the shirt off your shoulders, bites the join of your neck, and pulls you down into the blanket and the smell of smoke and pine, her grey braid coming loose across your chest as she climbs over you.{/n}\n{n}Later, a branch brushes the rock outside. Soana lifts her head, listens once, and settles against you again. Her hand returns to the place it had found at your shoulder. She asks whether you remember the first reed she made you pull out of the carrier. You tell her you have had considerable practice remembering her corrections. She laughs against your neck.{/n}\n{n}In the morning she is watching the light at the entrance when you wake. She turns immediately when you move.{/n}\n{n}\"I recovered the clever remark,\" she says. \"It was not as good as I remembered. We may keep what happened instead.\"{/n}\n{n}You kiss her before getting up. She answers without hurrying the moment toward goodbye.{/n}",
           "Choices": [
             {
               "Text": "[Rise together when it is time to leave.]",
@@ -78878,7 +78896,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander returned to Soana with time to stay, not merely another question about what the forest could endure. The place beside her blanket acquired belongings she occasionally moved before complaining that they had been misplaced. Some visits were interrupted. Others survived an entire afternoon without improving anything.{/n}\n{n}They had chosen a shared life that made room for other people and other loves. It required messages, changed plans and the occasional difficult answer. Soana kept her forest and her temper. She also kept time that she had once given away before anyone asked for it.{/n}\n{n}Corven's unanswered place in her history was not replaced by a convenient tale of death or consent. The bark she had written remained among her belongings. When she called the Commander beloved, she meant the choice she had actually made.{/n}\n{n}At the cave, the warning thorn was renewed when needed and allowed to wash quiet when it was not. Visitors learned to look for the pale stones. The Commander learned that a familiar path could still lead to an evening neither had planned, and that Soana's laughter was worth coming home to hear.{/n}",
+          "Text": "{n}The Commander returned to Soana with time to stay, not merely another question about what the forest could endure. The place beside her blanket acquired belongings she occasionally moved before complaining that they had been misplaced. Some visits were interrupted. Others survived an entire afternoon without improving anything.{/n}\n{n}They had chosen a shared life that did not pretend the war was over. It required messages, changed plans and the occasional difficult answer. Soana kept her forest and her temper. She also kept time that she had once given away before anyone asked for it.{/n}\n{n}Corven's unanswered place in her history was never tidied into a convenient tale. The bark she had written remained among her belongings. When she called the Commander beloved, she meant the choice she had actually made.{/n}\n{n}At the cave, the warning thorn was renewed when needed and allowed to wash quiet when it was not. Visitors learned to look for the pale stones. The Commander learned that a familiar path could still lead to an evening neither had planned, and that Soana's laughter was worth coming home to hear.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -78889,7 +78907,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -78932,7 +78970,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -78976,7 +79034,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -79021,7 +79099,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -79063,7 +79161,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Soana"
+          "Portrait": "Soana",
+          "Paragraphs": [
+            {
+              "Text": "Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and cursed the Commander's name while she did it. She never missed a winter.",
+              "Requires": [
+                "soana.trickster.cost.blood_given"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept a die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+              "Requires": [
+                "soana.trickster.primed_dice"
+              ],
+              "Forbids": [
+                "soana.trickster.luck_refused"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -79225,7 +79343,9 @@
       "Requires": [
         "soana.late_campaign_kept"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "soana.trickster.returned"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "soana",
@@ -79499,7 +79619,8 @@
         "soana.progression_kept"
       ],
       "Forbids": [
-        "soana.late_campaign_kept"
+        "soana.late_campaign_kept",
+        "soana.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -96663,7 +96784,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_unfinished_verse",
@@ -96850,7 +96974,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_evening_answer",
@@ -97032,7 +97159,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.what_she_asks",
@@ -97337,7 +97467,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_voice_at_court",
@@ -97688,7 +97821,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_living_reunion",
@@ -97712,7 +97848,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -97731,7 +97879,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_unmet_again",
@@ -97755,7 +97906,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -97774,7 +97937,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_loss",
@@ -97806,7 +97972,8 @@
         "gesmerha.dead"
       ],
       "Forbids": [
-        "gesmerha.late_complete"
+        "gesmerha.late_complete",
+        "gesmerha.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -97848,7 +98015,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_demon",
@@ -97887,7 +98057,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_devil",
@@ -97927,7 +98100,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_ascent",
@@ -97968,7 +98144,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_sacrifice",
@@ -98010,7 +98189,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_aeon",
@@ -98076,7 +98258,8 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "gesmerha.reunion_kept"
+                "gesmerha.reunion_kept",
+                "gesmerha.trickster.cost.catchup"
               ],
               "Abort": false
             },
@@ -98087,6 +98270,18 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            },
+            {
+              "Text": "\"I came back to lose the eleventh game.\"",
+              "Next": "catchup",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.catchup"
+              ],
+              "Forbids": [
+                "gesmerha.reunion_kept"
+              ],
+              "Abort": false
             }
           ],
           "Portrait": "Gesmerha"
@@ -98244,6 +98439,22 @@
             }
           ],
           "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "catchup",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her fingers become still against the wood.{/n}\n\"The eleventh game. You came back to lose it, then.\" {n}She does not move the blanket yet.{/n} \"Before you sit, tell me one true thing about where you were all the afternoons you did not spend here. Not a pretty thing. A true one. I will hear the difference.\"\n{n}You tell her. It takes longer than you meant it to. When you have finished she moves the folded blanket from the chest and tells you where to sit.{/n}\n\"There. That was the first afternoon. We will count from it.\"",
+          "Choices": [
+            {
+              "Text": "[Sit where she has made room.]",
+              "Next": "work",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
         }
       ],
       "Requires": [
@@ -98274,7 +98485,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_box_with_two_names",
@@ -98471,7 +98685,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_long_way_with_company",
@@ -98679,7 +98896,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.a_lesson_without_her",
@@ -98909,7 +99129,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_room_she_chose",
@@ -99160,7 +99383,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_work_left_finished",
@@ -99435,7 +99661,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_lovers",
@@ -99459,7 +99688,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never believed in the ten afternoons. She kept count of the real ones instead, and told the Commander once that they had long since passed ten, and that the borrowed ones were paid back.",
+              "Requires": [
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99477,7 +99726,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_friends",
@@ -99501,7 +99753,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never believed in the ten afternoons. She kept count of the real ones instead, and told the Commander once that they had long since passed ten, and that the borrowed ones were paid back.",
+              "Requires": [
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99519,7 +99791,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_open",
@@ -99543,7 +99818,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never believed in the ten afternoons. She kept count of the real ones instead, and told the Commander once that they had long since passed ten, and that the borrowed ones were paid back.",
+              "Requires": [
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99561,7 +99856,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_closed",
@@ -99585,7 +99883,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99600,7 +99910,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_loss",
@@ -99631,7 +99944,9 @@
         "gesmerha.late_complete",
         "gesmerha.dead"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "gesmerha.trickster.returned"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "gesmerha"
@@ -99670,7 +99985,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_demon",
@@ -99707,7 +100025,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_devil",
@@ -99745,7 +100066,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_ascent",
@@ -99785,7 +100109,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_sacrifice",
@@ -99826,7 +100153,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_aeon",
@@ -99883,7 +100213,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99901,7 +100243,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "ember.something_you_cannot_do",
@@ -165519,6 +165864,4014 @@
       "AnswerLists": [
         "589d83230bbbfd04bb1220ee4fef1ce1"
       ]
+    },
+    {
+      "Id": "soana.trickster.handover.after_quest",
+      "Title": "The spirits' portion",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Play a cruel trick on Camellia] \"My friend wants your blood turned to a good cause. Your forest is a good cause. Bleed for it first, and she can have what's left.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman looks at you for a long moment. Then she laughs, the cracked laugh from your first meeting, and draws her knife across her own palm. Blood runs off her knuckles into the moss. Somewhere in the trees, something answers: not a bird, not a wolf.{/n}\n\"A good cause. There. The spirits have had their portion, bloody hunter, and a portion is all anyone is owed. Tell your hungry friend she can lick the moss.\"\n{n}She wraps the hand in a rag without looking at it, the way other people tie a bootlace.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cost",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cost",
+          "Speaker": "Soana",
+          "Text": "\"Do not look so pleased with yourself. The spirits ate, so now they know my taste. Every winter from this one they will come to the cave mouth and ask for more, and I will give it to them, because a bargain is a bargain even when a fool strikes it for you.\"\n\"Why do it, then?\"\n\"Because your friend would have taken all of it, and the spirits would have had nothing. I serve the forest. I do not serve you, and I certainly do not serve her.\"",
+          "Choices": [
+            {
+              "Text": "[Leave before she changes her mind]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed",
+                "soana.trickster.cost.blood_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "fef727987297e8d4eb34068688fdac27"
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "camellia.asked_for_soana"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "EntryMythic": "PlayerIsTrickster",
+      "EntryAlignment": {
+        "Direction": "Chaotic",
+        "Value": 1
+      },
+      "TricksterDevice": true,
+      "TricksterState": "handover"
+    },
+    {
+      "Id": "soana.trickster.handover.after_bear_a",
+      "Title": "The spirits' portion",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Play a cruel trick on Camellia] \"You heard her: her blood serves the spirits. So let the spirits have it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman barks a laugh at Camellia, not at you, and draws her knife across her own palm. Blood runs into the moss. Somewhere in the trees, something answers.{/n}\n\"There, spirit talker. The spirits of this land have had their portion, from my own hand. That is all you get. That is all *anyone* gets.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "camellia",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "camellia",
+          "Speaker": "Camellia",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Choices": [
+            {
+              "Text": "[Leave before either of them decides otherwise]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed",
+                "soana.trickster.cost.blood_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "c6b676fa989a5494cb6ce0c981979907"
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "397b090721c41044ea3220445300e1b8"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "001686714a5c2384ba09686b45bd033f"
+      ],
+      "NativeReturnCue": "726e936d05fde7a4798854a917b4b73d",
+      "EntryMythic": "PlayerIsTrickster",
+      "EntryAlignment": {
+        "Direction": "Chaotic",
+        "Value": 1
+      },
+      "TricksterDevice": true,
+      "TricksterState": "handover",
+      "RequiresAnyGroups": [
+        [
+          "camellia.claimed_soana_a",
+          "camellia.claimed_soana_b"
+        ]
+      ]
+    },
+    {
+      "Id": "soana.trickster.handover.after_bear_b",
+      "Title": "The spirits' portion",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Play a cruel trick on Camellia] \"You heard her: her blood serves the spirits. So let the spirits have it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman barks a laugh at Camellia, not at you, and draws her knife across her own palm. Blood runs into the moss. Somewhere in the trees, something answers.{/n}\n\"There, spirit talker. The spirits of this land have had their portion, from my own hand. That is all you get. That is all *anyone* gets.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "camellia",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "camellia",
+          "Speaker": "Camellia",
+          "Text": "{n}Camellia watches the blood soak into the ground with the fixed attention of a cat at a closed door. Her smile does not move at all.{/n}\n\"How very generous of her. And of you, my friend. You have cheated me out of a perfectly good death in front of the one audience I cared about.\" {n}She wets her lips.{/n} \"I shall have to think of a way to thank you. I think about such things a great deal.\"",
+          "Choices": [
+            {
+              "Text": "[Leave before either of them decides otherwise]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed",
+                "soana.trickster.cost.blood_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "74664ddd7bb36744ba825c29aad6f4b3"
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "397b090721c41044ea3220445300e1b8"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "f7b5537dc61ccdc41b0732f0a1b700b2"
+      ],
+      "NativeReturnCue": "396b1d46a2cfb1e48b205468d4360ee9",
+      "EntryMythic": "PlayerIsTrickster",
+      "EntryAlignment": {
+        "Direction": "Chaotic",
+        "Value": 1
+      },
+      "TricksterDevice": true,
+      "TricksterState": "handover",
+      "RequiresAnyGroups": [
+        [
+          "camellia.claimed_soana_a",
+          "camellia.claimed_soana_b"
+        ]
+      ]
+    },
+    {
+      "Id": "soana.trickster.killed.knot",
+      "Title": "The knot never checked",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. The forest died with her: the undergrowth is black, the birds are gone, and the spirits she kept in hand have been howling through the trees since the night she fell. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground.{/n}\n{n}Something out in the trees stops moving when you step inside.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "orso",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "spirit",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "orso",
+          "Speaker": "Narrator",
+          "Text": "{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded. Whatever she tied to him is still tied.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "spirit",
+          "Speaker": "Narrator",
+          "Text": "{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, still bound, still alive after its fashion.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "read",
+          "Speaker": "Narrator",
+          "Text": "{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}\n{n}One end of that knot is dead on the floor of this cave. The other end is still breathing.{/n}",
+          "Choices": [
+            {
+              "Text": "[Hold her clay medallion to the guardian's brand] \"You linked your lives together. One end is still breathing. By your own words, so is the other.\"",
+              "Next": "wake_clay",
+              "Set": [
+                "soana.trickster.returned",
+                "soana.started",
+                "soana.trickster.cost.guardian_paid",
+                "soana.trickster.cost.medallion_spent",
+                "soana.trickster.cost.leash_held"
+              ],
+              "Requires": [
+                "soana.medallion_held"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "RemoveItem": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
+            },
+            {
+              "Text": "[Lay your hand on the brand and read it her own words] \"You linked your lives together. One end is still breathing. By your own words, so is the other.\"",
+              "Next": "wake_brand",
+              "Set": [
+                "soana.trickster.returned",
+                "soana.started",
+                "soana.trickster.cost.guardian_paid",
+                "soana.trickster.cost.leash_held"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "soana.medallion_held"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Leave the knot tied] \"No. She said she was finished. Let her be finished.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wake_clay",
+          "Speaker": "Narrator",
+          "Text": "{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and the medallion draws tight in your fist and cracks down the middle with a sound like a knuckle.{/n}\n{n}The pull does not stop when the clay breaks. It comes up your arm instead: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wake_orso",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wake_spirit",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wake_brand",
+          "Speaker": "Narrator",
+          "Text": "{n}You lay your palm on the brand and say her words back to it. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}\n{n}When you take the hand away, the knot is printed on your palm in white, and the pull does not stop: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wake_orso",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wake_spirit",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wake_orso",
+          "Speaker": "Narrator",
+          "Text": "{n}Out in the ferns Orso staggers, and does not fall. He lies down at the cave mouth, panting, alive. The brand on his shoulder has gone pale. The one on your hand has not. Something inside him strains once against the knot, and you feel it strain.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "soana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "wake_spirit",
+          "Speaker": "Narrator",
+          "Text": "{n}The black grass around the bones stirs, though there is no wind. What lies in them strains once against the knot, and you feel it in your wrist, like a dog on a short rope. It does not get loose. You are holding it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "soana",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "soana",
+          "Speaker": "Soana",
+          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course. Who else would hold a dead woman to her own words?\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}\n\"I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"",
+          "Choices": [
+            {
+              "Text": "\"You can hate me standing up.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "soana.trickster.returned",
+        "soana.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "killed",
+      "RequiresAnyGroups": [
+        [
+          "soana.dead",
+          "soana.killed_by_camellia"
+        ]
+      ]
+    },
+    {
+      "Id": "soana.trickster.returned.graveyard",
+      "Title": "What the knot cost",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Soana.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Soana has a spade in one hand. Around the cave mouth are new mounds, a row of them, small and large: a fox, two wolves, a hind with her calf. Beside the last is a hole she has not finished.{/n}\n\"Two days I have been walking this forest. When I died, the spirits I kept in hand went mad, and the forest died with me. It did not come back when I did. Not a squirrel in it. I bury what I find.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "orso",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.bear_dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "spirit",
+              "Set": [],
+              "Requires": [
+                "soana.bear_dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "orso",
+          "Speaker": "Soana",
+          "Text": "\"Orso lies at my door and will not leave it. He is too tired to hunt. The thing in him pulls at your end of the knot every time he dreams; I can see it in your hand from here. You will learn to sleep through it, or you will not sleep.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dig",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "spirit",
+          "Speaker": "Soana",
+          "Text": "\"Orso's bones are in the ground; I put them there myself, the first night, with my hands. What is in them pulls at your end of the knot when it is hungry, and it is always hungry now. You will learn to sleep through it, or you will not sleep.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dig",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dig",
+          "Speaker": "Soana",
+          "Text": "{n}She holds out the spade, handle first.{/n}\n\"You were very quick with my knot, bloody hunter. Let us see how quick you are with a grave.\"",
+          "Choices": [
+            {
+              "Text": "[Take the spade]",
+              "Next": "dug",
+              "Set": [
+                "soana.trickster.graveyard_kept",
+                "soana.trickster.cost.grave_dug"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll send to Drezen for diggers.\"",
+              "Next": "bought",
+              "Set": [
+                "soana.trickster.graveyard_kept",
+                "soana.trickster.cost.grave_bought"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Leave her with her graves]",
+              "Next": null,
+              "Set": [
+                "soana.closed",
+                "soana.trickster.cost.left_the_grave"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dug",
+          "Speaker": "Narrator",
+          "Text": "{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes, one-handed half the time, because the other hand keeps closing on nothing when the leash pulls. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hind and her calf finally go in she says something over them in a language that sounds like branches knocking.{/n}",
+          "Choices": [
+            {
+              "Text": "[Wipe your hands]",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "bought",
+          "Speaker": "Narrator",
+          "Text": "{n}The diggers come from Drezen three days later, crusaders with good boots and bad manners. They dig fast and deep and argue about who has to carry the calf. Soana watches them from the cave mouth the whole time with an expression you would not wish on an enemy.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pay them off]",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "decide",
+          "Speaker": "Soana",
+          "Text": "{n}She leans on the spade and looks at you the way she looks at weather.{/n}\n\"Hear me, hunter, because I will say it once. The dead forest I will bury with you or without you. That is the forest's business, and it does not buy you anything from me. My leash I will take back from your hand whatever you say; I do not leave my work in a stranger's fist. What you want from me is another matter, and I have not decided what I think of it.\"\n\"Come back in three days. By then I will know my own mind. I always do, in the end.\"",
+          "Choices": [
+            {
+              "Text": "\"Three days, then.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I dug your graves. That's all I came for.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.trickster.graveyard_kept"
+      ],
+      "DelayHours": 48,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "InteractionHub": "soana.presence"
+    },
+    {
+      "Id": "soana.trickster.returned.terms",
+      "Title": "The second strand",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You said you had terms.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The grave is a low mound under the ferns. She has laid stones on it in a pattern you almost recognize.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dug",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.cost.grave_dug"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "bought",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.cost.grave_bought"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.trickster.cost.grave_dug",
+                "soana.trickster.cost.grave_bought"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "dug",
+          "Speaker": "Soana",
+          "Text": "\"You dug. Badly, and too shallow at the head end, but you dug, with your own hands, in the cold. That is more than your friends in Drezen would have done. I have been thinking about what it means. I do not like the answer.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "bought",
+          "Speaker": "Soana",
+          "Text": "\"Your diggers came, dug, ate my last smoked fish and left. Paying is easy for you people. It is the one thing you are good at. Remember that I noticed.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance. So you will have my terms, and you will take them as they are or not at all.\"\n\"A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare hand, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
+          "Choices": [
+            {
+              "Text": "[Hold out your hand for the pieces]",
+              "Next": "bind",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Ask me again when the ground thaws.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Find another fool.\"",
+              "Next": "fool",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "bind",
+          "Speaker": "Soana",
+          "Text": "{n}She does not take your hand yet. She looks at it: the calluses, the scars, the crusade's grime.{/n}\n\"Say it, then. 'Mine first.' Knots listen.\"",
+          "Choices": [
+            {
+              "Text": "\"Mine first.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.knot_bearer"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Laugh]",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "no",
+          "Speaker": "Soana",
+          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can hold still for a thing that matters.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "fool",
+          "Speaker": "Soana",
+          "Text": "\"I already found one. He is holding my leash, and he laughs at knots.\"\n{n}She does not look at you again.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned",
+        "soana.trickster.graveyard_kept"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.committed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "InteractionHub": "soana.presence"
+    },
+    {
+      "Id": "soana.trickster.returned.second_ask",
+      "Title": "The price goes up",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About your terms.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "\"Back. Good. The price has gone up while you were away, hunter.\"\n{n}She points with her chin at the trees behind her. Half of them are grey to the heartwood.{/n}\n\"The forest needs burying, all of it, and I cannot do it with one spade. Lye, timber, carts. From your stores, not your purse, so that somebody in Drezen goes without. Then the pieces, and the words.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "\"Well? I will not wait for the ground to thaw twice.\"",
+          "Choices": [
+            {
+              "Text": "[Pay for the lye and the timber] \"Mine first.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.knot_bearer",
+                "soana.trickster.cost.second_ask"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "\"No. Not at that price.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"All those winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. Frost on the cave mouth. The strip is gone from her wrist; it is still round yours, and underneath it the skin is raised in a red weal the shape of a knot.{/n}\n{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}\n\"Your end is sore. Good. It is supposed to be. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Soana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned",
+        "soana.trickster.declined"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.committed"
+      ],
+      "DelayHours": 96,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "64805abb52739e44280a758f850b300c",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "InteractionHub": "soana.presence"
+    },
+    {
+      "Id": "soana.trickster.missed.dice_bowl",
+      "Title": "An offering",
+      "Owner": "Soana",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Drop a die into her offering bowl] \"For your spirits. They look like they could use the luck.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The die rattles in the bone bowl and stops on a one. She looks at it, then at you. When she looks back, it shows a twenty.{/n}\n\"Spirits take what is offered. They do not say thank you, and neither do I.\"\n{n}She does not take it out of the bowl. She does not touch it at all.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave it where it landed]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed_dice"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "soana.after_quest"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.trickster.primed_dice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        3
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ],
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "soana.trickster.missed.crooked_luck",
+      "Title": "Crooked luck",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Look at the die in her bowl] \"Still twenty up, shaman? I hear your beasts don't stay down.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}A she-bear lies across the cave mouth with her belly opened by a demon's claws. As you come near she gets up, shakes herself and pads into the trees toward the road, bleeding as she goes.{/n}\n\"That is the third time she has done that. Your die has been in my bowl since the snow. My beasts go out against the demons on the road and they do not stay down. I did not ask for that, bloody hunter.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "\"The spirits have been feeding my beasts on your luck, and luck is thin fare. If they are to keep standing up, they eat. Salt and meat, a full cart of each from your stores before the next snow: enough to keep them on their feet until this war is done. That is my price for your joke. I will not haggle.\"",
+          "Choices": [
+            {
+              "Text": "[Send the salt and the meat] \"Done. That's your price.\"",
+              "Next": null,
+              "Set": [
+                "soana.trickster.luck_kept",
+                "soana.trickster.cost.catchup",
+                "soana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Take your die back and go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.luck_refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.after_quest",
+        "soana.trickster.primed_dice"
+      ],
+      "Forbids": [
+        "soana.progression_kept",
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "soana.trickster.luck_refused",
+        "soana.trickster.luck_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "missed"
+    },
+    {
+      "Id": "soana.trickster.missed.late_luck",
+      "Title": "Crooked luck, thrown late",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Throw your special die at her feet] \"Rolled a one. Watch it turn into a twenty.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The die stops on a one, then shows a twenty. Outside, a she-bear that has been dying across the cave mouth all morning gets up on three legs and limps toward the road.{/n}\n\"You do not put a thing like that in front of my beasts without paying for it, hunter. They will go out on your luck now whether I send them or not, and they will come back hungry.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "price",
+          "Speaker": "Soana",
+          "Text": "\"Salt and meat, two full carts of each from your stores before the next snow, and the die stays with me. You threw it; you do not get it back.\"",
+          "Choices": [
+            {
+              "Text": "[Pay what she asks] \"Salt, meat, and the die. Done.\"",
+              "Next": null,
+              "Set": [
+                "soana.trickster.primed_dice",
+                "soana.trickster.cost.late",
+                "soana.trickster.luck_kept",
+                "soana.trickster.cost.catchup",
+                "soana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Pick up your die and go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.luck_refused",
+                "soana.trickster.cost.late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "soana.after_quest"
+      ],
+      "Forbids": [
+        "soana.progression_kept",
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "inhuman",
+        "soana.trickster.luck_refused",
+        "soana.trickster.primed_dice",
+        "soana.trickster.luck_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e",
+      "RequiresAny": [
+        "soana.old_defender",
+        "soana.bear_dead"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "missed",
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "soana.trickster.missed.she_bear",
+      "Title": "The she-bear",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"How is your she-bear?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}Soana is sitting on a stump outside the cave with the she-bear's great head in her lap. Someone has sewn the bear's belly shut with sinew, badly; judging by the old woman's fingers, it was the old woman.{/n}\n\"She went out again last night. She came back with a demon's hand in her mouth. The hand was still trying to get away.\"\n{n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "question",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "question",
+          "Speaker": "Soana",
+          "Text": "\"Your luck keeps her standing. My spirits keep her walking. Neither of us asked her. So I will ask you instead, since you are the one with the dice.\"\n\"When this war is done and the luck runs thin, and she lies down, will you let her stay down? Or will you roll again?\"",
+          "Choices": [
+            {
+              "Text": "\"I'll let her rest. She's earned it.\"",
+              "Next": "rest",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_rest"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll roll again. As long as it takes.\"",
+              "Next": "roll",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_roll"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Grin] \"I'll roll for her. And if it comes up one, I'll call it twenty.\"",
+              "Next": "cheat",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_cheat"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why does it matter what I'd do?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "why",
+          "Speaker": "Soana",
+          "Text": "{n}She looks at you with those small black eyes, sunk deep in the driftwood.{/n}\n\"Because I am older than she is, hunter. Answer the question.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll let her rest. She's earned it.\"",
+              "Next": "rest",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_rest"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'll roll again. As long as it takes.\"",
+              "Next": "roll",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_roll"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Grin] \"I'll roll for her. And if it comes up one, I'll call it twenty.\"",
+              "Next": "cheat",
+              "Set": [
+                "soana.trickster.luck_tested",
+                "soana.trickster.answered_cheat"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rest",
+          "Speaker": "Soana",
+          "Text": "\"A true protector is the one who sacrifices themselves. You heard me say it once, and you were listening. Hm.\"\n{n}She goes back to scratching the bear's ear, and for a while she says nothing at all, which from her is a speech.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave them in the sun]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "roll",
+          "Speaker": "Soana",
+          "Text": "\"That is what a child says. A child with a toy it does not want to put away.\"\n{n}She pulls a burr out of the bear's fur and flicks it at your boots.{/n}\n\"But it is honest. The last one who lied to me in this cave was your friend with the knife. Go away. I am thinking.\"",
+          "Choices": [
+            {
+              "Text": "[Leave them in the sun]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cheat",
+          "Speaker": "Soana",
+          "Text": "{n}The old woman laughs so suddenly that the bear lifts her head.{/n}\n\"Of course you would. You would cheat the Abyss out of its teeth and call it a favour to the Abyss. I have met demons with better manners and worse ideas.\"\n{n}She is still laughing, quietly, when you go.{/n}",
+          "Choices": [
+            {
+              "Text": "[Leave them in the sun]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.luck_kept"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.trickster.luck_tested"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
+    },
+    {
+      "Id": "soana.trickster.missed.bowl",
+      "Title": "The thing in her bowl",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You said you had been thinking.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "{n}The bone bowl is on the fire-stone. Your die sits in it, one face up, as it has since the snow. There is a second blanket on her pallet, which there was not before.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rest",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.answered_rest"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "roll",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.answered_roll"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "cheat",
+              "Set": [],
+              "Requires": [
+                "soana.trickster.answered_cheat"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "soana.trickster.answered_rest",
+                "soana.trickster.answered_roll",
+                "soana.trickster.answered_cheat"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "rest",
+          "Speaker": "Soana",
+          "Text": "\"You said you would let her lie down. I have been turning that over like a stone, looking for the worm under it. There is no worm. I find that irritating.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "roll",
+          "Speaker": "Soana",
+          "Text": "\"You said you would roll again as long as it takes. That is a child's answer. I have been alone with a demon in a bear for more winters than I care to count; I find I have a taste for children's answers.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "cheat",
+          "Speaker": "Soana",
+          "Text": "\"You said you would call a one a twenty. I laughed. I have not laughed like that since before your crusade was born. I am still angry about it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Soana",
+          "Text": "\"Here are my terms, hunter. A thing that sits in my bowl is mine. I do not keep things I have not touched. Take your die out now, and everything it has done comes undone with it: the she-bear lies down at the cave mouth and stays there. Or leave it, and it is mine, and you with it, for as long as the luck holds.\"\n\"Which is to say, until I decide it does not.\"",
+          "Choices": [
+            {
+              "Text": "[Leave the die in the bowl] \"Keep it. And me.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.die_in_her_bowl"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Let me think about it.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Take your die out of the bowl]",
+              "Next": "taken",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "no",
+          "Speaker": "Soana",
+          "Text": "{n}She shrugs, and puts the second blanket back on the shelf.{/n}\n\"Think, then. The bowl is patient. I am not. Do not make me ask the question twice; if I have to, it will cost you.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "taken",
+          "Speaker": "Soana",
+          "Text": "{n}You reach into the bowl. The die is warm. Outside, something large lies down across the cave mouth with a long sigh, and does not get up.{/n}\n{n}Soana does not look at the door. She looks at you.{/n}\n\"There. Now you know what you are. Go.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She takes the bowl off the fire-stone with her bare hands and sets it between you. The die is still in it, twenty up.{/n}\n\"Then it stays. And so do you, tonight. I am too old to wait for you to guess.\"\n{n}She washes the road off you herself, with water that smells of pine tar and is hotter than you would choose, scrubbing at your neck as if you were a pot. Then she stops scrubbing. She unlaces your shirt with the impatience she keeps for snares, drags it over your head, and reads what the war has written on you, every scar and bruise, with the frank interest of a woman reading tracks in snow.{/n}\n\"Hm. You heal badly. Good. Things that heal badly remember.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Soana",
+          "Text": "{n}She lets you undo her in turn: the belt of knotted cord, the rags one over another, until the old dwarf woman stands in the firelight in nothing but the clay knot at her throat and her grey braid, broad and heavy and unashamed. She takes your hands by the wrists and puts them where she wants them.{/n}\n{n}When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while. She bites. She laughs when you gasp, low in her chest, and bites again.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.luck_kept",
+        "soana.trickster.luck_tested"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.committed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
+    },
+    {
+      "Id": "soana.trickster.missed.second_ask",
+      "Title": "The bowl's price",
+      "Owner": "Soana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About your bowl.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Soana",
+          "Text": "\"I said it would cost you. It does.\"\n{n}She sets the bowl on the stone between you.{/n}\n\"Your scouts watch my beasts fight on the road, and they report it. Soon your foragers will read the reports too, and come for the meat. Seal an order: no crusader hunts in the Wintersun woods, for any pot, for as long as the war lasts, and whoever does answers to the Commander. Your officers will hate you for it. Then ask me again.\"",
+          "Choices": [
+            {
+              "Text": "[Seal the letter] \"Done. Keep the die. And me.\"",
+              "Next": "night",
+              "Set": [
+                "soana.committed",
+                "soana.trickster.cost.die_in_her_bowl",
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "\"No. Not at that price.\"",
+              "Next": null,
+              "Set": [
+                "soana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "night",
+          "Speaker": "Soana",
+          "Text": "{n}She takes the bowl off the fire-stone with her bare hands and sets it between you. The die is still in it, twenty up.{/n}\n\"Then it stays. And so do you, tonight. I am too old to wait for you to guess.\"\n{n}She washes the road off you herself, with water that smells of pine tar and is hotter than you would choose, scrubbing at your neck as if you were a pot. Then she stops scrubbing. She unlaces your shirt with the impatience she keeps for snares, drags it over your head, and reads what the war has written on you, every scar and bruise, with the frank interest of a woman reading tracks in snow.{/n}\n\"Hm. You heal badly. Good. Things that heal badly remember.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Soana",
+          "Text": "{n}She lets you undo her in turn: the belt of knotted cord, the rags one over another, until the old dwarf woman stands in the firelight in nothing but the clay knot at her throat and her grey braid, broad and heavy and unashamed. She takes your hands by the wrists and puts them where she wants them.{/n}\n{n}When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while. She bites. She laughs when you gasp, low in her chest, and bites again.{/n}\n{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Soana",
+          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.luck_kept",
+        "soana.trickster.declined"
+      ],
+      "Forbids": [
+        "soana.dead",
+        "soana.killed_by_camellia",
+        "soana.forest_dead",
+        "soana.closed",
+        "soana.committed"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "soana",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2b1776f3e398685479ff6b16290b4cc2"
+      ],
+      "NativeReturnCue": "e9feb6b2946c77641875f2bc731ede1e"
+    },
+    {
+      "Id": "soana.trickster.epilogue.knot",
+      "Title": "The second strand",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana took her leash back from the Commander's hand the night of the vow and tied it into the clay again, with the Commander's life at the other end. The Commander felt it pull on hungry nights for the rest of the war, in the wrist the gut strip had marked, and the wrist ached in cold weather ever after. When the war was over she began to plant the dead Wintersun woods, and, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}\n{n}The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, Soana said that was how you knew it was working.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.returned",
+        "soana.committed"
+      ],
+      "Forbids": [
+        "soana.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.luck",
+      "Title": "The die in the bowl",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The die stayed in Soana's bowl after the war, twenty up, and the she-bear who had carried the Commander's luck to the roads grew grey in the muzzle and very fat. The Commander came to Wintersun whenever the world allowed it, and some times when it did not.{/n}\n{n}Soana never admitted to missing anyone. She did keep the second blanket on the pallet, and she never once put it back on the shelf.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.luck_kept",
+        "soana.committed"
+      ],
+      "Forbids": [
+        "soana.closed",
+        "soana.trickster.returned",
+        "soana.late_campaign_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.commit",
+      "Title": "Your end",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She buried the dead forest one grave a day. The year after the Worldwound closed she walked all the way to Drezen with the broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}\n\"Your end. I held it alone once. I will not do that twice.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.",
+              "Requires": [
+                "soana.trickster.cost.second_ask"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept getting up. The scouts stopped reporting it. It had become ordinary.",
+              "Requires": [
+                "soana.trickster.cost.catchup"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's quartermasters never forgave the Commander for the Wintersun woods, and not one crusader ever took a hide from them.",
+              "Requires": [
+                "soana.trickster.cost.woods_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "soana.trickster.late_committed"
+      ],
+      "Forbids": [
+        "soana.committed",
+        "soana.closed",
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.declined",
+      "Title": "One strand",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who could not hold still for a thing that mattered, and that was all she said.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. It held, barely, for as long as she lived.",
+              "Requires": [
+                "soana.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.declined"
+      ],
+      "Forbids": [
+        "soana.committed",
+        "soana.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.epilogue.unbound",
+      "Title": "The leash",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander never went back to Wintersun. Soana came to Drezen once, took her leash back from the Commander's palm with a single strand and most of her own blood, and left without a word. It held.{/n}\n{n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told that the Commander was a hunter who had held a dead woman to her own words, dug a few graves, and walked away. She did not say it kindly.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned",
+        "soana.closed"
+      ],
+      "Forbids": [
+        "soana.committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "soana"
+    },
+    {
+      "Id": "soana.trickster.react.camellia_portion",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About Soana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "\"You cheated me out of a perfectly good death, my friend. The old woman fed her trees and left me the smell of it.\" {n}Camellia smooths her skirt with both hands, very slowly.{/n} \"I shall have to think of a way to thank you. I have already thought of several.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.blood_given"
+      ],
+      "Forbids": [
+        "camellia.dead",
+        "camellia.killed",
+        "camellia.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.camellia_knot",
+      "Title": "Camellia's word",
+      "Owner": "Camellia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About Soana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Camellia",
+          "Text": "\"The old woman is walking again? I bled her myself. I felt her stop.\" {n}Camellia smiles, slowly, and does not blink.{/n} \"How very interesting you make things. I wonder what else of mine you would take back, if I let you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.returned",
+        "soana.killed_by_camellia"
+      ],
+      "Forbids": [
+        "camellia.dead",
+        "camellia.killed",
+        "camellia.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "589d83230bbbfd04bb1220ee4fef1ce1"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ember_portion",
+      "Title": "Ember's word",
+      "Owner": "Ember",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About the old woman in the woods...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ember",
+          "Text": "\"The old lady cut her own hand so nobody would cut her throat. That's the saddest clever thing I ever saw. You made her do it with a joke. I think she knew it was a joke. I think that's why she did it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.blood_given"
+      ],
+      "Forbids": [
+        "ember_dead",
+        "ember_gone"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "f2a35965e9bc601449498bd022b04d9d"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ember_luck",
+      "Title": "Ember's word",
+      "Owner": "Ember",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the Wintersun bears...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ember",
+          "Text": "\"The scouts say the Wintersun bears keep getting up after the demons knock them down. That's your dice, isn't it? I hope somebody asked the bears first. Somebody should always ask the bears.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.catchup"
+      ],
+      "Forbids": [
+        "ember_dead",
+        "ember_gone"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "f2a35965e9bc601449498bd022b04d9d"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ulbrig_knot",
+      "Title": "Ulbrig's word",
+      "Owner": "Ulbrig",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About Soana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ulbrig",
+          "Text": "\"I asked you once what these new powers want in return, warchief. Now we know. That one wanted a hand on a demon's leash: yours, by the look of that palm. Every power must have a name, and a price that's fair. I'd call that fair, just about. Mind it doesn't pull you over in your sleep.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.leash_held",
+        "ulbrig.talked"
+      ],
+      "Forbids": [
+        "ulbrig.dead",
+        "ulbrig.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "0a50c9c878844ed4a69b8d6131304c5e"
+      ]
+    },
+    {
+      "Id": "soana.trickster.react.ulbrig_luck",
+      "Title": "Ulbrig's word",
+      "Owner": "Ulbrig",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the Wintersun beasts...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ulbrig",
+          "Text": "\"The Wintersun crone's beasts are fighting demons on the road again, warchief. A she-bear with her guts hanging out stood up three times, the scouts say. Spirits don't do that for free. What did you give them? And what will they want next?\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "soana.trickster.cost.catchup",
+        "ulbrig.talked"
+      ],
+      "Forbids": [
+        "ulbrig.dead",
+        "ulbrig.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "soana",
+      "Reaction": true,
+      "AnswerLists": [
+        "0a50c9c878844ed4a69b8d6131304c5e"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.dead.commission",
+      "Title": "Paid in advance",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Pay her in advance] \"A carving for the Commander, woodshaper. Paid now, in full.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}You put a purse in her hand. Her fingers stop on it, then turn it over twice, weighing it the way she weighs a block before she decides which way the grain wants to run. She does not give it back.{/n}\n\"You pay a blind woman for work she may never deliver. Either you are a fool, stranger, or you heard more than I meant to say.\"",
+          "Choices": [
+            {
+              "Text": "[Press the purse into her hands] \"The statue's not finished, carver. Nobody leaves work on the bench.\"",
+              "Next": "took",
+              "Set": [
+                "gesmerha.trickster.primed",
+                "gesmerha.trickster.commissioned",
+                "gesmerha.trickster.cost.advance_paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "\"Never mind. Keep your hands to yourself.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "took",
+          "Speaker": "Gesmerha",
+          "Text": "\"The statue? That statue is finished, stranger. Journeymen finished it, with my eyes still wet on Marhevok's knife. It was never mine.\"\n{n}Her thumb finds the knot of the purse strings and stays there.{/n}\n\"But I will take your coin. A commission is a commission. My line has never once gone to its ancestors with paid work on the bench, not in all the generations since the first of us picked up a chisel. Remember that you insisted.\"",
+          "Choices": [
+            {
+              "Text": "Leave her to the wood.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.commissioned",
+        "gesmerha.dead",
+        "gesmerha.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3
+      ],
+      "RequiresAnyGroups": [
+        [
+          "gesmerha.feared_hands",
+          "gesmerha.took_risk"
+        ]
+      ],
+      "AnswerLists": [
+        "dc306897f75a31c4aaf9483ebdff0585"
+      ],
+      "NativeReturnCue": "05d66664080144c4bb8fc08b90cc700b",
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "gesmerha.trickster.dead.pyre",
+      "Title": "The carvers' ground",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "pyre",
+          "Speaker": "Narrator",
+          "Text": "{n}A Wintersun boy finds your camp at noon, out of breath and trying not to look at anyone. The carvers have laid Gesmerha out on their own ground, among the statues she tended, with her chisels crossed on her breast and her own knife taken away. They light her pyre at dusk.{/n}\n{n}It is the carvers' custom, he says, reciting it: whoever owed the dead woman work sends something for the fire, so she does not go to her ancestors with a debt at her back. He has been sent to ask whether you owed her anything.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send a purse for the fire, and a message] \"Tell her the statue's not finished, carver. Nobody leaves work on the bench.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.primed",
+                "gesmerha.trickster.cost.late",
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "\"I owed her nothing. Let them burn her. She chose it.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "gesmerha.dead.latched"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.primed",
+        "gesmerha.trickster.returned",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dead"
+    },
+    {
+      "Id": "gesmerha.trickster.dead.unfinished_work",
+      "Title": "Splinters",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}A runner at the edge of camp: the same Wintersun boy, thinner than before, with ash still in the seams of his boots. He asks for you by name this time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "late",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "late",
+          "Speaker": "Narrator",
+          "Text": "{n}The pyre would not take, he says. The carvers tried three torches and then stopped trying, and nobody would say aloud why. On the third dawn Gesmerha got off it on her own, her palms full of splinters as if she had been gripping green wood all night, and walked straight to the Lady's statue. She has not eaten since. She sent him with this, word for word.{/n}\n\"Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms_raised",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Narrator",
+          "Text": "{n}He will not stop looking at you while he tells it. Three days after the carvers laid her out, before anyone had lit a torch, Gesmerha sat up among the statues with her palms full of splinters, as if she had been gripping unfinished wood all night, and walked straight to the Lady's statue. She sent him with this, word for word.{/n}\n\"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Gesmerha",
+          "Text": "\"The ancestors spoke to me in the old tongue, the way they speak to the god-callers. They do not give. They sell. Tell the stranger their price, they said, so it knows what it bought:\n*Hands that were paid for belong to the work. Finish, daughter. Until the last cut they are not yours to give. Set the chisel down for anything else, and we take them back, and you with them.*\"\n\"What is the world coming to, stranger, when the dead cannot even stay dead in peace?\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "terms_raised",
+          "Speaker": "Gesmerha",
+          "Text": "\"The ancestors spoke to me in the old tongue, the way they speak to the god-callers. They were angry. You bought me at my own pyre, not before it, and they do not like a bargain struck over ashes. So the price went up:\n*Hands that were paid for belong to the work. Finish, daughter. And because you were bought late, the lie comes down first: the journeymen's pretty Lady, cut away by your own hands, before anything new goes into the wood. Set the chisel down for anything else, and we take them back, and you with them.*\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Narrator",
+          "Text": "{n}The boy waits for your answer. He has plainly been told to remember it exactly, and to bring it back whatever it is.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send for her] \"Tell her to bring her chisels to Drezen. The smith there makes better ones than the ones she lost, and I want to see the work.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.returned",
+                "gesmerha.trickster.cost.ancestor_debt",
+                "gesmerha.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell her to rest. Tell her ancestors they can have her back.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.primed",
+        "gesmerha.dead.latched"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.returned",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dead"
+    },
+    {
+      "Id": "gesmerha.trickster.returned.yard",
+      "Title": "The smith's yard",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Gesmerha.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Gesmerha has taken the corner of the smith's yard farthest from the forge: a log on two trestles, a roll of new chisels, a bucket of water for her palms. The splinters are out. The marks they left are not. The smith has given up arguing with her.{/n}\n\"Your step, stranger. I would know it in a crowd now. Paid-for hands work slower than free ones; they keep stopping to ask whose they are.\"\n\"The ancestors want it finished. They did not say *what*. So you tell me: what am I carving?\"",
+          "Choices": [
+            {
+              "Text": "\"Carve the monster. Let them see what Wintersun worshipped.\"",
+              "Next": "hold",
+              "Set": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Carve something new. Not the Lady. You.\"",
+              "Next": "hold",
+              "Set": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Carve something new. Not the Lady. You.\"",
+              "Next": "lie_first",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "lie_first",
+          "Speaker": "Gesmerha",
+          "Text": "\"No. You bought me over ashes, and the price was the lie first. The monster comes out of this wood before anything of mine goes in. Then we will see what is left of the log, and of me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hold",
+              "Set": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "hold",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She sets the chisel against the log, then takes your hands one at a time and lays them flat on the wood, either side of the blade, close enough that you can feel the steel's cold through the bark.{/n}\n\"Hold it. Don't move. I cut by sound, and I cannot hear your fingers.\"",
+          "Choices": [
+            {
+              "Text": "[Hold still]",
+              "Next": "after",
+              "Set": [
+                "gesmerha.trickster.held_still"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Pull your hands away]",
+              "Next": "pulled",
+              "Set": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "pulled",
+          "Speaker": "Narrator",
+          "Text": "{n}Your hands come off the wood before the mallet falls. It falls anyway, on the steel, where your left thumb was. Gesmerha does not stop the stroke and does not say anything about it. She moves the log with her own knee and cuts on.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "after",
+          "Speaker": "Narrator",
+          "Text": "{n}The mallet comes down four times. A curl of wood lands on your boot. She runs her palm over the cut, reading it.{/n}\n\"There. Something is looking out of it already.\"",
+          "Choices": [
+            {
+              "Text": "\"And when it's finished?\"",
+              "Next": "not_yet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave her to the wood]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.yard_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "not_yet",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her hands stop. For a moment she is listening to something that is not in the yard.{/n}\n\"Finish first. Then ask me what comes after. They are listening, stranger, and they have my hands.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to the wood]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.yard_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.yard_seen",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "InteractionHub": "gesmerha.presence"
+    },
+    {
+      "Id": "gesmerha.trickster.returned.bench",
+      "Title": "What comes after",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You said to ask you when it was finished.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Late. The forge is banked and the yard is dark except for a lamp she does not need and has lit for you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "monster",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "new",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "monster",
+          "Speaker": "Gesmerha",
+          "Text": "{n}The thing on the trestles is not a Lady of anything. It has too many joints and a smile that goes on past where a smile should stop. The smith will not stand near it, and has hung a sack over it twice; twice she has taken the sack off.{/n}\n\"Put your hand here. That is what we prayed to. My chisel knew it before any of us did.\"\n{n}She lets out a long breath and puts the mallet down, and nothing takes it from her.{/n} \"It is finished. My hands are mine again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "new",
+          "Speaker": "Gesmerha",
+          "Text": "{n}The figure on the trestles is a woman with her head tipped back, listening. There are no eyes in it. There is no need of them.{/n}\n\"Put your hand here. You wanted *me*. That is what I sound like.\"\n{n}She lets out a long breath and puts the mallet down, and nothing takes it from her.{/n} \"It is finished. My hands are mine again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Gesmerha",
+          "Text": "\"The ancestors said *finish*. They did not say what comes after. I have been deciding, with my hands in cold water, and I will tell you what I decided when you ask.\"",
+          "Choices": [
+            {
+              "Text": "[Stay at the bench] \"Then let me be what comes after.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay at the bench] \"Then let me be what comes after.\"",
+              "Next": "flinch",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Finish your life without me, carver. You've earned it.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then hear my terms, because my hands are mine again and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do.\"",
+          "Choices": [
+            {
+              "Text": "\"No more purses. Not for you. I swear it.\"",
+              "Next": "night",
+              "Set": [
+                "gesmerha.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I can't swear that. Buying things is what I do.\"",
+              "Next": "postpone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "postpone",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then you are honest, which is worse. Go. Come back when you have thought about what you would have to stop being. The bench will still be here. So will I, probably.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "flinch",
+          "Speaker": "Gesmerha",
+          "Text": "\"You pulled your hands away in this yard, stranger. I heard it; I cut by sound. The mallet came down on nothing, where your thumb had been. I cannot carve beside someone who flinches, and I cannot lie down beside one either. Ask me again when you won't.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"I have cut two things in this yard that I never touched with my eyes. I have not touched the original yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: slowly, pressing where it gives, lingering where it resists. At your collar she unlaces you by feel, without hurry, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I would not like to be the only one listening.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. The smith's boys have long gone home. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, running her thumb along an edge.{/n}\n\"The ancestors were quiet all night. I think they were embarrassed.\" {n}The corner of her mouth moves.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned",
+        "gesmerha.trickster.yard_seen"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed",
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "InteractionHub": "gesmerha.presence"
+    },
+    {
+      "Id": "gesmerha.trickster.returned.second_ask",
+      "Title": "A pair that were never for sale",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About what comes after.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}\n\"The second asking costs more. That is fair; I learned it from you. Give me your hands. Three days, here, in the yard, while I carve them. Every hour you sit still, your war waits. Then I will have a pair that were never for sale, and you can have mine.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price_flinched",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "price_flinched",
+          "Speaker": "Gesmerha",
+          "Text": "\"And you will not pull them away. Three days of it. If you can do that, you can lie still for anything.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She holds out her open palms and waits.{/n}",
+          "Choices": [
+            {
+              "Text": "[Sit for her for three days]",
+              "Next": "sat",
+              "Set": [
+                "gesmerha.committed",
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Not like this.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "sat",
+          "Speaker": "Narrator",
+          "Text": "{n}Three days. Couriers come to the yard gate and are sent away by the smith, who has decided which side he is on. Your hands ache, then stop aching, then stop feeling like yours. On the third evening she sets down the knife, runs her fingertips over the wooden pair and then over your real ones, back and forth, comparing, until she is satisfied with both.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "night",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"I have cut two things in this yard that I never touched with my eyes. I have not touched the original yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: slowly, pressing where it gives, lingering where it resists. At your collar she unlaces you by feel, without hurry, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I would not like to be the only one listening.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. The smith's boys have long gone home. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, running her thumb along an edge.{/n}\n\"The ancestors were quiet all night. I think they were embarrassed.\" {n}The corner of her mouth moves.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned",
+        "gesmerha.trickster.declined"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 96,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "InteractionHub": "gesmerha.presence"
+    },
+    {
+      "Id": "gesmerha.trickster.missed.wrong_footsteps_home",
+      "Title": "Wrong footsteps",
+      "Owner": "Gesmerha",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Claim the unfinished game] \"You know my step, carver. Ten afternoons at your board, and a game we never finished.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her hands stop on the wood. She tilts her head toward your feet, the way she listens for a crack in the grain.{/n}\n\"I know this step. I heard it once, in Wintersun, when I did not know it at all. Once, stranger. Not ten times. You are lying, and you are doing it to a blind woman who can hear you do it.\"\n\"But you say it like someone who believes it. So sit. I cut half the squares of a board I never finished. If we played ten afternoons, you know the rule I changed. Play, and I will hear the lie in your hands the way I heard it in your feet.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down and play as if you remember]",
+              "Next": "game",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"All right. It was a lie. I wanted a reason to sit here.\"",
+              "Next": "honest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Never mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "game",
+          "Speaker": "Gesmerha",
+          "Text": "{n}You play. On the fourth move your hand goes to a square before she has named the rule, and her fingers close on your wrist.{/n}\n\"There. You knew that. Nobody knows that; I have not told it to anyone.\" {n}She lets go slowly.{/n} \"I don't believe your ten afternoons. I believe you will come back to lose the eleventh. The loser pays for the pieces, Commander. Count them.\"",
+          "Choices": [
+            {
+              "Text": "[Pay for the pieces]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup",
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -50
+              }
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "honest",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then you have one. Honest liars pay for the pieces too. Sit.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "gesmerha.wintersun_resolved",
+        "gesmerha.met"
+      ],
+      "Forbids": [
+        "gesmerha.campaign_kept",
+        "gesmerha.dead",
+        "gesmerha.closed",
+        "gesmerha.trickster.cost.catchup",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        5
+      ],
+      "RequiresAny": [
+        "gesmerha.truth",
+        "gesmerha.illusions"
+      ],
+      "AnswerLists": [
+        "2063ee21356b772408f5c9cfb3ed5bd0"
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true,
+      "TricksterState": "missed"
+    },
+    {
+      "Id": "gesmerha.trickster.missed.wrong_footsteps_capital",
+      "Title": "Wrong footsteps",
+      "Owner": "Gesmerha",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Claim the unfinished game] \"You know my step, carver. Ten afternoons at your board, and a game we never finished.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her hands stop on the wood. She tilts her head toward your feet, the way she listens for a crack in the grain.{/n}\n\"I know this step. I heard it once, in Wintersun, when I did not know it at all. Once, stranger. Not ten times. You are lying, and you are doing it to a blind woman who can hear you do it.\"\n\"But you say it like someone who believes it. So sit. I cut half the squares of a board I never finished. If we played ten afternoons, you know the rule I changed. Play, and I will hear the lie in your hands the way I heard it in your feet.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down and play as if you remember]",
+              "Next": "game",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"All right. It was a lie. I wanted a reason to sit here.\"",
+              "Next": "honest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Never mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "game",
+          "Speaker": "Gesmerha",
+          "Text": "{n}You play. On the fourth move your hand goes to a square before she has named the rule, and her fingers close on your wrist.{/n}\n\"There. You knew that. Nobody knows that; I have not told it to anyone.\" {n}She lets go slowly.{/n} \"I don't believe your ten afternoons. I believe you will come back to lose the eleventh. The loser pays for the pieces, Commander. Count them.\"",
+          "Choices": [
+            {
+              "Text": "[Pay for the pieces]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup",
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -50
+              }
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "honest",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then you have one. Honest liars pay for the pieces too. Sit.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "gesmerha.wintersun_resolved",
+        "gesmerha.met",
+        "gesmerha.capital_guest"
+      ],
+      "Forbids": [
+        "gesmerha.campaign_kept",
+        "gesmerha.dead",
+        "gesmerha.closed",
+        "gesmerha.trickster.cost.catchup",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        5
+      ],
+      "RequiresAny": [
+        "gesmerha.truth",
+        "gesmerha.illusions"
+      ],
+      "AnswerLists": [
+        "fb3a88e8ed751214c9136f87891ec07b"
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true,
+      "TricksterState": "missed"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.bench",
+      "Title": "What came after",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha never carved on commission again. She kept the corner of the smith's yard for as long as the war lasted and a good while after, and it became the corner of the city where people came to have the truth cut out of wood for them, whether they liked it or not.{/n}\n{n}The Commander kept the oath about purses, which surprised everyone who knew the Commander. She could tell the Commander's step from anyone's, in any crowd, and she let it be known that she always heard it a long time before it reached the door.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.returned",
+        "gesmerha.committed"
+      ],
+      "Forbids": [
+        "gesmerha.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.commit",
+      "Title": "The Commander's door",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to find out what came after. The smith swore she stopped at the Commander's door and listened for a long time before she knocked. She never said what she decided. She never carved on commission again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed",
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "RequiresAnyGroups": [
+        [
+          "gesmerha.trickster.yard_seen",
+          "gesmerha.presence.failed"
+        ]
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.unvisited",
+      "Title": "The corner of the yard",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the carving her ancestors had sold her back for, alone, in a corner of a Drezen smith's yard that the Commander never once walked into. When it was done she put her hands in cold water for a long time, and then she took them out and went home to whatever was left of Wintersun. The smith said she stopped at the gate and listened, as if for a step, and then went on.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.yard_seen",
+        "gesmerha.presence.failed",
+        "gesmerha.committed",
+        "gesmerha.closed",
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.refusal",
+      "Title": "Paid for",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the carving and left it in the smith's yard with a note in a journeyman's hand: *Paid for. Collect it.* The Commander never swore off buying things. She never asked a third time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.declined"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.finished",
+      "Title": "Her own life",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the work she had been paid for, as her ancestors required, and then she finished her life as the Commander had told her to: without the Commander. She went north after the Wintersun survivors with a roll of good Drezen chisels and a bag of her own shavings, and did not send word back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned",
+        "gesmerha.closed"
+      ],
+      "Forbids": [
+        "gesmerha.committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.react.lann_pyre",
+      "Title": "Lann's word",
+      "Owner": "Lann",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"About the carver's pyre...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Lann",
+          "Text": "\"You sent a joke to a funeral. In Sarkoris. The boy who carried it looked like he wanted to be sick.\" {n}Lann scratches the back of his neck.{/n} \"What did it say? No. Don't tell me. I'll hear about it anyway.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.cost.laughed_at_grave",
+        "lann.in_party"
+      ],
+      "Forbids": [
+        "lann.dead",
+        "lann.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "AnswerLists": [
+        "66385ad77fa743e4bb1234078dbd804c"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.ulbrig_return",
+      "Title": "Ulbrig's word",
+      "Owner": "Ulbrig",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About the carver from Wintersun...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ulbrig",
+          "Text": "\"A Wintersun carver got up off the carvers' ground, they're saying, and went straight back to work.\" {n}Ulbrig sets his mug down, which he does not do lightly.{/n} \"Where I come from, the dead don't come back for love. They come back for unfinished business, and they don't leave till it's done. Pray she finishes slow, warchief.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.returned",
+        "ulbrig.in_party"
+      ],
+      "Forbids": [
+        "ulbrig.dead",
+        "ulbrig.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "AnswerLists": [
+        "0a50c9c878844ed4a69b8d6131304c5e"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.anevia_return",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About the smith's yard...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"The smith came to me about a blind woman in his yard. Won't give his corner back, won't let his boys near her log, and says you owe her the good chisels.\" {n}Anevia shrugs.{/n} \"I told him that sounded about right.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "anevia_gone",
+        "anevia_dead"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.lann_footsteps",
+      "Title": "Lann's word",
+      "Owner": "Lann",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the carver...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Lann",
+          "Text": "\"The carver says she caught you lying about ten afternoons, and then you beat her at her own game anyway.\" {n}Lann grins.{/n} \"I've never seen you sit still for ten minutes.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.cost.catchup",
+        "lann.in_party"
+      ],
+      "Forbids": [
+        "lann.dead",
+        "lann.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "AnswerLists": [
+        "66385ad77fa743e4bb1234078dbd804c"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.anevia_footsteps",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the carver...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"The carver says you two go back. Ten afternoons at her bench.\" {n}Anevia gives you a long look.{/n} \"I keep your calendar, Commander. I'd remember ten afternoons.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.cost.catchup"
+      ],
+      "Forbids": [
+        "anevia_gone",
+        "anevia_dead"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
     }
   ],
   "Etudes": {
@@ -165650,6 +170003,9 @@
     "wenduag.killed": "85ee36dae8f3317448fa5b950543b3ad",
     "wenduag.kicked_out": "9b1902a20e98aa94094741ef9c91d962",
     "vellexia.slaves_freed": "89965a2b67b792f438bf935fdb6ab96b",
+    "ulbrig.kicked_out": "3b31ef42338b4f83ab822fbcae79a41c",
+    "ulbrig.in_party": "d70304f3d15343fca38e48da6027f89c",
+    "ulbrig.dead": "4863a2dfe7f847e588df50710ebf2a3f",
     "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
     "storyteller.dead_dlc": "96ca61bbf4a54228be37a4a95fa0704d",
     "storyteller.dead_main": "3c1405201bec99f4db67371f41a3c32a",
@@ -165669,6 +170025,9 @@
     "minagho.terrified": "eff0ca2318f96c049b5c9e6785eac196",
     "minagho.fled_fane": "0216030c2e687594aa9de45f2e32fc7c",
     "minagho.spared_c4": "978762feac7873d4e925d85202e2c89c",
+    "lann.kicked_out": "7afa470738d309649bea253eb167fbc1",
+    "lann.in_party": "dc908c2490d6f4c4393ff26967aa6566",
+    "lann.dead": "ca3799e579c3eaa48a6625aa456d1840",
     "kyado.in_drezen": "5169dbc60a1ad854493f7ba44c27a0d8",
     "kiana.possessed": "0d773e4f71ac38a4d917ed459f6a0d0b",
     "iz.left_early": "a583e4ab47544f5e928fc5b6b7c41e48",
@@ -165857,7 +170216,7 @@
       "Title": "At the edge of her forest",
       "Description": "Soana has allowed me another visit. She expects useful hands and a legible argument. I would like to discover what else she might welcome.",
       "Objective": "Return to Soana",
-      "Guidance": "Speak to Soana at her cave after resolving the bear quest while she remains alive and willing to talk. Allow time between visits.",
+      "Guidance": "Speak to Soana at her cave after resolving the bear quest while she remains alive and willing to talk. Allow time between visits. On the Trickster path, a Soana handed to Camellia may be taken at Camellia's word instead; a Soana who died may be held to her own; and one whose visits were missed may find a die in her bowl.",
       "StartedFlag": "soana.started",
       "ClosedFlag": "soana.closed",
       "CommittedFlag": "soana.committed",
@@ -165866,7 +170225,40 @@
         "soana.killed_by_camellia",
         "soana.forest_dead"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "soana.dead": "soana.trickster.returned",
+        "soana.killed_by_camellia": "soana.trickster.returned",
+        "soana.forest_dead": "soana.trickster.returned"
+      },
+      "TricksterAccess": {
+        "killed": {
+          "Detect": [
+            "soana.dead",
+            "soana.killed_by_camellia",
+            "soana.forest_dead"
+          ],
+          "Device": "soana.trickster.killed.knot",
+          "Returned": "soana.trickster.returned"
+        },
+        "handover": {
+          "Detect": [
+            "camellia.asked_for_soana",
+            "camellia.claimed_soana_a",
+            "camellia.claimed_soana_b"
+          ],
+          "Device": "soana.trickster.handover.after_quest",
+          "Returned": null
+        },
+        "missed": {
+          "Detect": [
+            "chapter_later",
+            "!soana.progression_kept"
+          ],
+          "Device": "soana.trickster.missed.crooked_luck",
+          "Returned": null
+        }
+      }
     },
     "arsinoe": {
       "Title": "A city worth staying in",
@@ -165906,14 +170298,35 @@
       "Title": "What the wood will bear",
       "Description": "Gesmerha has work of her own in mind. She has invited me to return to her bench in Wintersun.",
       "Objective": "Visit Gesmerha in Wintersun",
-      "Guidance": "After resolving Wintersun and reporting to Irabeth, speak to Gesmerha at her native trading dialogue. Keep the Chapter 3 visits while she is available. After returning from the Abyss, look for her in Wintersun to continue the relationship and help settle the things left to carry. Return between the later visits. Her possible audience in Drezen offers a separate reunion; it is not required for the later Wintersun visits.",
+      "Guidance": "After resolving Wintersun and reporting to Irabeth, speak to Gesmerha at her native trading dialogue. Keep the Chapter 3 visits while she is available. After returning from the Abyss, look for her in Wintersun to continue the relationship and help settle the things left to carry. Return between the later visits. Her possible audience in Drezen offers a separate reunion; it is not required for the later Wintersun visits. On the Trickster path, a Gesmerha who died with paid work on her bench may not stay dead; look for her in the Drezen smith's yard. A Trickster who never sat at her bench in Wintersun may still claim to have.",
       "StartedFlag": "gesmerha.started",
       "ClosedFlag": "gesmerha.closed",
       "CommittedFlag": "gesmerha.committed",
       "UnavailableFlags": [
         "gesmerha.dead"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      },
+      "TricksterAccess": {
+        "dead": {
+          "Detect": [
+            "gesmerha.dead"
+          ],
+          "Device": "gesmerha.trickster.dead.unfinished_work",
+          "Returned": "gesmerha.trickster.returned"
+        },
+        "missed": {
+          "Detect": [
+            "gesmerha.wintersun_resolved",
+            "!gesmerha.campaign_kept",
+            "!gesmerha.dead"
+          ],
+          "Device": "gesmerha.trickster.missed.wrong_footsteps_home",
+          "Returned": null
+        }
+      }
     },
     "vellexia": {
       "Title": "The unfinished likeness",
@@ -166469,6 +170882,15 @@
     "herrax.asked_kill_chivarro": [
       "49135105da5bc6c4f93e312e80286f91"
     ],
+    "gesmerha.took_risk": [
+      "0448dab10df819c43a2f2aa86524f01b"
+    ],
+    "gesmerha.met": [
+      "1e9af5965b5da304c825817c89817c22"
+    ],
+    "gesmerha.feared_hands": [
+      "13f2b37e28864ba4b882d13fad90f7c5"
+    ],
     "finnean.objected": [
       "0f556aee8754497449c4a371281c13ef"
     ],
@@ -166480,6 +170902,15 @@
     ],
     "chivarro.fought_commander": [
       "3ffc9b66a39689f43ac3207aa84ee565"
+    ],
+    "camellia.claimed_soana_b": [
+      "2fb85dd5779e8c141b15ec119d889fd3"
+    ],
+    "camellia.claimed_soana_a": [
+      "b2e418443ec73974faa09a5496564d03"
+    ],
+    "camellia.asked_for_soana": [
+      "f505392f3d7c18348b178da457b4272e"
     ],
     "baphomet.minagho_dead_told": [
       "537a72b88a457dc4eb92194611ddccba"
@@ -166500,6 +170931,7 @@
   "StartedDialogs": {
     "konomi.rank_six_started": "30333438aac8d3647bef882fa87e978e",
     "konomi.rank_eight_started": "6178470b05c75484085753b821a6a614",
+    "ulbrig.talked": "20b70c9bb93940b9a21a488f1721f41c",
     "noct.acq.audience_started": "2c57f65d4b98d764d98794ae8ef9ffdd",
     "irabeth.deathbed": "48a3a4ff8955b7045bac0ea06092e085",
     "baphomet.parley": "257e13519dd1f5b4c8d992865ba0f609"
@@ -167326,6 +171758,53 @@
       "AnswerLists": [],
       "Dialog": "hub",
       "Greeting": "{n}Chivarro has taken the quartermaster's bench as though it were a divan. Wilcer Garms counts his stores with his back to her and does not turn around.{/n}"
+    },
+    "soana.presence": {
+      "Unit": "64805abb52739e44280a758f850b300c",
+      "Area": "0a5654e7dc18f074d9356009d55eb51b",
+      "Mode": "spawn-copy",
+      "At": {
+        "Locator": "cf766aaf-a3a9-490b-ae88-27ebcf6976e6",
+        "Offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "Requires": [
+        "trickster.ever",
+        "soana.trickster.returned"
+      ],
+      "Forbids": [
+        "soana.closed"
+      ],
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}Soana is standing where Camellia stood, in her own cave, with loam still under her nails. She does not look up.{/n} \"Well? Say what you came to say, hunter. The dead have more patience than I do.\""
+    },
+    "gesmerha.presence": {
+      "Unit": "3ba3a0ff8575be8419159221177c1411",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+        "Side": "left",
+        "Distance": 2.5
+      },
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.closed",
+        "gesmerha.committed"
+      ],
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}Gesmerha has taken the corner of the smith's yard farthest from the forge. She tilts her head toward the gate before you reach it.{/n} \"Your step, stranger. Come and stand where I can hear you properly.\""
     }
   },
   "Derived": {
@@ -167359,6 +171838,16 @@
       ],
       [
         "chivarro.exiled"
+      ]
+    ],
+    "soana.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "soana.trickster.returned"
+      ],
+      [
+        "trickster.ever",
+        "soana.trickster.luck_kept"
       ]
     ],
     "trickster.cheated_death": [
@@ -167554,7 +172043,8 @@
     "trickster.was"
   ],
   "RemovableItems": [
-    "3e4ce583dc71401588f33f8192c252cd"
+    "3e4ce583dc71401588f33f8192c252cd",
+    "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
   ],
   "Latches": {
     "trickster.ever": [
@@ -167581,6 +172071,9 @@
     "irabeth.dead.latched": [
       "irabeth_dead"
     ],
+    "gesmerha.dead.latched": [
+      "gesmerha.dead"
+    ],
     "chivarro.dead.latched": [
       "chivarro.dead"
     ],
@@ -167588,10 +172081,11 @@
       "baphomet.parley"
     ]
   },
+  "InventoryItems": {
+    "soana.medallion_held": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53",
+    "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd"
+  },
   "UnlockableFlags": {
     "kyado.dead": "8c8b748a66ebad84f9b4cbcd73c2aab9"
-  },
-  "InventoryItems": {
-    "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd"
   }
 }

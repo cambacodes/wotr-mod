@@ -1,0 +1,278 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Tirabade;
+
+// Gesmerha, Trickster (Writer/handoffs/trickster/gesmerha.md): the unfinished work (dead in the ambush, F04) and wrong
+// footsteps (missed Chapter 3 window, F04). One block per spec rules test (Trk_Gesmerha_*), plus the shape of each hook,
+// the epilogue pages and the registered-route edits.
+internal static class GesmerhaTricksterTests
+{
+    private const string Unit = "3ba3a0ff8575be8419159221177c1411";
+    private const string Drezen = "2570015799edf594daf2f076f2f975d8";
+    private const string Wintersun = "0a5654e7dc18f074d9356009d55eb51b";
+    private const string Smith = "15f754455d1d87c42a4e14df456d5415";
+    private const string HerList = "dc306897f75a31c4aaf9483ebdff0585";
+    private const string HerReturn = "05d66664080144c4bb8fc08b90cc700b";
+    private const string P = "gesmerha.trickster.";
+
+    private static Snapshot World(Story story, int chapter, string area, params string[] flags)
+    {
+        var state = new Snapshot { Chapter = chapter, Area = area, Hour = 5000 };
+        state.Flags.UnionWith(flags);
+        state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
+        state.AvailableContacts.Add(Unit);
+        Rules.Complete(story, state);
+        foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
+        return state;
+    }
+
+    private static Snapshot Later(Story story, Snapshot state, int hours)
+    {
+        var later = Program.Copy(state);
+        later.Hour += hours;
+        Rules.Complete(story, later);
+        return later;
+    }
+
+    internal static void Run(Story story, Action<bool, string> check)
+    {
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        var commission = S(P + "dead.commission");
+        var pyre = S(P + "dead.pyre");
+        var payoff = S(P + "dead.unfinished_work");
+        var yard = S(P + "returned.yard");
+        var bench = S(P + "returned.bench");
+        var secondAsk = S(P + "returned.second_ask");
+        var home = S(P + "missed.wrong_footsteps_home");
+        var capital = S(P + "missed.wrong_footsteps_capital");
+        var pages = story.Scenes.Where(s => s.Id.StartsWith(P + "epilogue.", StringComparison.Ordinal)).ToArray();
+        var own = story.Scenes.Where(s => s.Id.StartsWith(P, StringComparison.Ordinal) && !s.Reaction && !pages.Contains(s)).ToArray();
+        bool Any(Snapshot w, params Scene[] scenes) => scenes.Any(s => Rules.Available(story, s, w));
+        List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w).Where(r => r.Has(scene.Id)).ToList();
+        Snapshot Pick(Scene scene, Snapshot w, params string[] flags)
+        {
+            var hit = Play(scene, w).Where(r => flags.All(r.Has))
+                .OrderBy(r => !flags.Contains("gesmerha.closed") && r.Has("gesmerha.closed") ? 1 : 0).FirstOrDefault();
+            check(hit != null, "No outcome of " + scene.Id + " sets " + string.Join(", ", flags));
+            return hit ?? w;
+        }
+        HashSet<string> Pages(Scene scene, Snapshot w)
+        {
+            var seen = new HashSet<string>();
+            foreach (var r in Program.Walk(scene, w, (id, _) => seen.Add(id))) { }
+            return seen;
+        }
+        IEnumerable<Choice> Choices(Scene scene) => scene.Nodes.SelectMany(n => n.Choices);
+
+        // Shape and hooks.
+        check(commission.NativeReturnCue == HerReturn && commission.AnswerLists.SequenceEqual(new[] { HerList })
+              && commission.ContactUnit == null && !Rules.IsRemote(commission) && commission.Chapters.SequenceEqual(new[] { 3 })
+              && commission.EntryMythic == "PlayerIsTrickster" && commission.RequiresAnyGroups.Length == 1
+              && commission.RequiresAnyGroups[0].SequenceEqual(new[] { "gesmerha.feared_hands", "gesmerha.took_risk" }),
+            "The commission is not an inline Trickster answer on her own hub before the ambush.");
+        var purse = commission.Nodes.Single(n => n.Id == "start").Choices[0];
+        check(purse.Crusade?.Resource == "Finances" && purse.Crusade.Amount == -150 && purse.Alignment?.Direction == "Chaotic"
+              && purse.Set.Contains(P + "primed") && purse.Set.Contains(P + "commissioned") && purse.Set.Contains(P + "cost.advance_paid"),
+            "The advance is not paid for on the choice that plants it.");
+        check(Rules.IsRemote(pyre) && pyre.Chapters.SequenceEqual(new[] { 3 }) && pyre.TricksterDevice && pyre.TricksterState == "dead"
+              && pyre.Requires.Contains("trickster") && pyre.Requires.Contains("gesmerha.dead.latched"),
+            "The pyre is not the live Trickster's Chapter 3 letter.");
+        var toast = pyre.Nodes[0].Choices[0];
+        check(toast.Mythic == "PlayerIsTrickster" && toast.Crusade?.Resource == "Finances" && toast.Crusade.Amount == -300
+              && toast.Alignment?.Direction == "Chaotic", "The pyre's purse is not the dearer Trickster act.");
+        check(Rules.IsRemote(payoff) && payoff.Chapters.SequenceEqual(new[] { 3, 5 }) && payoff.TricksterDevice
+              && payoff.Requires.Contains("trickster.ever") && !payoff.Requires.Contains("trickster"),
+            "The payoff is not a letter that outlives a lost path.");
+        foreach (var s in new[] { yard, bench, secondAsk })
+            check(s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen }) && s.InteractionHub == "gesmerha.presence"
+                  && !Rules.IsRemote(s) && s.Chapters.SequenceEqual(new[] { 3, 5 }),
+                "The returned Gesmerha is not met in person in the smith's yard: " + s.Id);
+        var presence = story.Presences["gesmerha.presence"];
+        check(presence.Unit == Unit && presence.Area == Drezen && presence.Mode == "spawn-copy" && presence.Dialog == "hub"
+              && presence.At?.NearUnit == Smith && presence.MinChapter == 3 && presence.MaxChapter == 5,
+            "The presence is not her copy beside the Drezen smith.");
+        check(home.AnswerLists.SequenceEqual(new[] { "2063ee21356b772408f5c9cfb3ed5bd0" }) && home.Areas.SequenceEqual(new[] { Wintersun })
+              && capital.AnswerLists.SequenceEqual(new[] { "fb3a88e8ed751214c9136f87891ec07b" }) && capital.Areas.SequenceEqual(new[] { Drezen })
+              && home.EntryMythic == "PlayerIsTrickster" && capital.EntryMythic == "PlayerIsTrickster"
+              && home.NativeReturnCue == null && capital.Requires.Contains("gesmerha.capital_guest"),
+            "The wrong footsteps are not on her Wintersun and Drezen lists.");
+        check(story.Relationships["gesmerha"].UnavailableOverrides["gesmerha.dead"] == P + "returned",
+            "A return does not lift her death.");
+        foreach (var s in own)
+            foreach (var key in s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(x => x)))
+                check(!key.StartsWith("soana.", StringComparison.Ordinal) && !key.StartsWith("jerribeth.", StringComparison.Ordinal),
+                    "Gesmerha reads another relationship's fate: " + s.Id + " " + key);
+
+        // Trk_Gesmerha_Commission: planted on her own hub, before the ambush, on her own foresight.
+        var risk = World(story, 3, Wintersun, "trickster", "gesmerha.took_risk");
+        check(Rules.Available(story, commission, risk), "Trk_Gesmerha_Commission: the braver branch cannot pay in advance.");
+        check(Rules.Available(story, commission, World(story, 3, Wintersun, "trickster", "gesmerha.feared_hands")),
+            "Trk_Gesmerha_Commission: her fear of losing her hands does not open the commission.");
+        check(!Rules.Available(story, commission, World(story, 3, Wintersun, "trickster")),
+            "The commission opens before she has said what Marhevok will take.");
+        var paid = Pick(commission, risk, P + "primed", P + "commissioned", P + "cost.advance_paid");
+        check(!Rules.Available(story, commission, paid), "The commission is paid twice.");
+        check(!Rules.Available(story, commission, World(story, 3, Wintersun, "trickster", "gesmerha.took_risk", "gesmerha.dead")),
+            "A dead woman is offered a commission.");
+        check(!Rules.Available(story, commission, World(story, 3, Wintersun, "trickster.ever", "gesmerha.took_risk")),
+            "The commission is a new trick and needs the live path.");
+
+        // Trk_Gesmerha_DeadPrimed: the ambush played as canon; the letter from Wintersun.
+        var primed = World(story, 3, Wintersun, "trickster", "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched",
+            P + "primed", P + "commissioned", P + "cost.advance_paid");
+        check(Rules.Available(story, payoff, primed) && !Any(primed, pyre, home, capital),
+            "Trk_Gesmerha_DeadPrimed: the payoff is shut, or the pyre or the footsteps open.");
+        var paidPages = Pages(payoff, primed);
+        check(paidPages.Contains("paid") && paidPages.Contains("terms") && !paidPages.Contains("late") && !paidPages.Contains("terms_raised"),
+            "Trk_Gesmerha_DeadPrimed: the paid letter reads as the pyre's.");
+        var back = Pick(payoff, primed, P + "returned", P + "cost.ancestor_debt", "gesmerha.started");
+        check(Play(payoff, primed).Any(r => r.Has("gesmerha.closed") && !r.Has(P + "returned")), "The letter cannot be answered with no.");
+        check(Choices(payoff).Where(c => c.Set.Contains(P + "returned")).All(c => !c.Set.Contains("gesmerha.committed")),
+            "The return commits.");
+        var inDrezen = Program.Copy(back); inDrezen.Area = Drezen;
+        check(Rules.Available(story, yard, Later(story, inDrezen, 24)) && !Rules.Available(story, yard, Later(story, inDrezen, 23)),
+            "Trk_Gesmerha_DeadPrimed: the yard ignores its day.");
+
+        // Trk_Gesmerha_DeadLate: no primer; the pyre, dearer.
+        var late = World(story, 3, Wintersun, "trickster", "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched");
+        check(Rules.Available(story, pyre, late) && !Rules.Available(story, payoff, late),
+            "Trk_Gesmerha_DeadLate: the pyre is shut, or the payoff opens unprimed.");
+        var burned = Pick(pyre, late, P + "primed", P + "cost.late", P + "cost.laughed_at_grave");
+        check(!Rules.Available(story, pyre, burned), "The pyre is paid twice.");
+        check(Rules.Available(story, payoff, Later(story, burned, 72)) && !Rules.Available(story, payoff, Later(story, burned, 71)),
+            "Trk_Gesmerha_DeadLate: the payoff ignores its three days.");
+        var latePages = Pages(payoff, Later(story, burned, 72));
+        check(latePages.Contains("late") && latePages.Contains("terms_raised") && !latePages.Contains("paid"),
+            "Trk_Gesmerha_DeadLate: the ancestors do not raise their price for a bargain struck over ashes.");
+        var closedAtPyre = Pick(pyre, late, "gesmerha.closed");
+        check(!Rules.Available(story, payoff, Later(story, closedAtPyre, 100)), "Owing her nothing still raises her.");
+        check(!Rules.Available(story, pyre, World(story, 5, Drezen, "trickster", "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched")),
+            "The pyre burns in Chapter 5, after Wintersun is gone.");
+
+        // Trk_Gesmerha_DeadAfterFailure: a lost path loses the new trick; canon stands.
+        check(!Any(World(story, 3, Wintersun, "trickster.ever", "trickster.failed", "gesmerha.dead", "gesmerha.dead.latched"), pyre, payoff),
+            "Trk_Gesmerha_DeadAfterFailure: an unprimed lost path still raises her.");
+        check(Rules.Available(story, payoff, World(story, 5, Drezen, "trickster.ever", "trickster.failed", "gesmerha.dead",
+              "gesmerha.dead.latched", P + "primed")), "A primer paid as a Trickster stops paying out after a lost path (ledger 18).");
+
+        // Trk_Gesmerha_Yard: the middle beat and her test.
+        var returned = World(story, 5, Drezen, "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", P + "returned");
+        check(Rules.Available(story, yard, returned) && !Rules.Available(story, bench, returned),
+            "Trk_Gesmerha_Yard: the yard is shut, or the bench skips it.");
+        var away = Program.Copy(returned); away.Area = Wintersun;
+        check(!Rules.Available(story, yard, away), "The returned carver is met away from the smith's yard.");
+        var yardPages = Pages(yard, returned);
+        check(yardPages.IsSupersetOf(new[] { "start", "hold", "pulled", "after", "not_yet" }) && !yardPages.Contains("lie_first"),
+            "Trk_Gesmerha_Yard: a page of the yard is unreachable, or the late price applies to a paid-in-advance return.");
+        var lateBack = World(story, 5, Drezen, "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", P + "returned", P + "cost.late");
+        check(Pages(yard, lateBack).Contains("lie_first") && Play(yard, lateBack).All(r => !r.Has(P + "statue_new")),
+            "A carver bought at her pyre may still carve something new before the lie comes down.");
+        var seen = Pick(yard, returned, P + "yard_seen", P + "statue_true", P + "held_still");
+        var seenNew = Pick(yard, returned, P + "yard_seen", P + "statue_new", P + "held_still");
+        var flinched = Pick(yard, returned, P + "yard_seen", P + "cost.flinched");
+        check(Rules.Available(story, bench, Later(story, seen, 72)) && !Rules.Available(story, bench, Later(story, seen, 71)),
+            "Trk_Gesmerha_Yard: the bench ignores its three days.");
+        check(!Rules.Available(story, yard, seen), "The yard repeats.");
+
+        // Trk_Gesmerha_Commit: her terms, then the night and the morning.
+        var atBench = Later(story, seen, 72);
+        var committed = Pick(bench, atBench, "gesmerha.committed");
+        var benchPages = Pages(bench, atBench);
+        check(benchPages.IsSupersetOf(new[] { "start", "monster", "ask", "terms", "postpone", "night", "morning" })
+              && !benchPages.Contains("new") && !benchPages.Contains("flinch"),
+            "Trk_Gesmerha_Commit: a page of the bench is unreachable, or the wrong statue stands on the trestles.");
+        check(Pages(bench, Later(story, seenNew, 72)).Contains("new"), "The new figure never stands on the trestles.");
+        check(!Rules.Available(story, bench, committed) && !Rules.Available(story, secondAsk, Later(story, committed, 200)),
+            "The bench or the second ask repeats after the commit.");
+        check(Choices(bench).Where(c => c.Set.Contains("gesmerha.committed")).All(c => c.Crusade == null),
+            "She is paid for the commit.");
+
+        // Trk_Gesmerha_Declined: her soft no, then the one priced second ask.
+        var declined = Pick(bench, atBench, P + "declined");
+        check(!declined.Has("gesmerha.committed") && !declined.Has("gesmerha.closed"), "Trk_Gesmerha_Declined: her no closes or commits.");
+        check(Rules.Available(story, secondAsk, Later(story, declined, 96)) && !Rules.Available(story, secondAsk, Later(story, declined, 95))
+              && !Rules.Available(story, bench, Later(story, declined, 96)),
+            "Trk_Gesmerha_Declined: the second ask ignores its days, or the bench repeats.");
+        var sat = Pick(secondAsk, Later(story, declined, 96), "gesmerha.committed", P + "cost.hands_carved");
+        check(Choices(secondAsk).Any(c => c.Crusade?.Resource == "Favors" && c.Crusade.Amount == -100 && c.Set.Contains("gesmerha.committed")),
+            "The second ask costs the war nothing.");
+        check(Play(secondAsk, Later(story, declined, 96)).Any(r => r.Has("gesmerha.closed") && !r.Has("gesmerha.committed")),
+            "The Commander cannot refuse her raised price.");
+        check(Pages(secondAsk, Later(story, declined, 96)).IsSupersetOf(new[] { "sat", "night", "morning" }),
+            "The second ask skips the three days or the night.");
+        var finished = Pick(bench, atBench, "gesmerha.closed");
+        check(!finished.Has("gesmerha.committed"), "The Commander's own no commits.");
+
+        // Trk_Gesmerha_Flinched: a Commander who pulled away is refused outright.
+        var atFlinch = Later(story, flinched, 72);
+        check(Play(bench, atFlinch).All(r => !r.Has("gesmerha.committed")) && Pages(bench, atFlinch).Contains("flinch")
+              && !Pages(bench, atFlinch).Contains("terms"),
+            "Trk_Gesmerha_Flinched: she commits to someone who flinched.");
+        var flinchNo = Pick(bench, atFlinch, P + "declined");
+        check(Pages(secondAsk, Later(story, flinchNo, 96)).Contains("price_flinched"), "The second ask forgets the flinch.");
+
+        // Trk_Gesmerha_EpilogueCommit and the other pages: one page per history.
+        Snapshot End(Snapshot s) { var e = Program.Copy(s); e.Chapter = 6; Rules.Complete(story, e); return e; }
+        string[] Endings(Snapshot s) => pages.Where(x => Rules.Available(story, x, End(s))).Select(x => x.Id).ToArray();
+        check(Endings(committed).SequenceEqual(new[] { P + "epilogue.bench" }), "The commit ends on the wrong pages: " + string.Join(",", Endings(committed)));
+        check(Endings(sat).SequenceEqual(new[] { P + "epilogue.bench" }), "The second ask ends on the wrong pages.");
+        check(Endings(seen).SequenceEqual(new[] { P + "epilogue.commit" }), "Trk_Gesmerha_EpilogueCommit: a finished yard has no late commit page.");
+        var failed = Program.Copy(returned); failed.Flags.Add("gesmerha.presence.failed"); Rules.Complete(story, failed);
+        check(Endings(failed).SequenceEqual(new[] { P + "epilogue.commit" }), "A failed presence has no late commit page.");
+        check(Endings(declined).SequenceEqual(new[] { P + "epilogue.refusal" }), "Her refusal ends on the wrong pages.");
+        check(Endings(finished).SequenceEqual(new[] { P + "epilogue.finished" }), "The Commander's no ends on the wrong pages.");
+        check(Endings(returned).SequenceEqual(new[] { P + "epilogue.unvisited" }), "A return never visited has no page.");
+        foreach (var page in pages)
+            check(page.Nodes.SelectMany(n => n.Choices).All(c => c.Mythic == null && c.Alignment == null && c.Crusade == null && c.Set.Length == 0),
+                "An epilogue page carries effects: " + page.Id);
+        foreach (var loss in new[] { "gesmerha.ending_loss", "gesmerha.late_ending_loss" })
+            check(S(loss).Forbids.Contains(P + "returned"), "A returned Gesmerha is mourned: " + loss);
+        var lifted = story.Scenes.Where(s => s.Relationship == "gesmerha" && !s.Id.StartsWith(P, StringComparison.Ordinal)
+                                             && s.Forbids.Contains("gesmerha.dead")).ToArray();
+        check(lifted.Length == 34 && lifted.All(s => s.ForbidOverrides.TryGetValue("gesmerha.dead", out var f) && f == P + "returned"),
+            "G6: the registered scenes that Forbid her death are not all lifted by her return (" + lifted.Length + ").");
+        foreach (var name in new[] { "gesmerha.ending_living_reunion", "gesmerha.late_ending_lovers" })
+            check(S(name).Nodes.SelectMany(n => n.Paragraphs).Count(x => x.Requires.Contains(P + "commissioned")) == 1,
+                "The commission leaves no mark on a living ending: " + name);
+
+        // Trk_Gesmerha_Missed: the claimed afternoons, caught and played.
+        var missed = World(story, 5, Wintersun, "trickster", "trickster.ever", "gesmerha.wintersun_resolved", "gesmerha.truth", "gesmerha.met");
+        check(Rules.Available(story, home, missed) && !Rules.Available(story, payoff, missed) && !Rules.Available(story, capital, missed),
+            "Trk_Gesmerha_Missed: the footsteps are shut at home, or the payoff or the capital opens.");
+        check(!Rules.Available(story, home, World(story, 5, Wintersun, "trickster", "trickster.ever", "gesmerha.wintersun_resolved", "gesmerha.truth")),
+            "The footsteps are claimed without the one native meeting.");
+        var played = Pick(home, missed, "gesmerha.campaign_kept", P + "cost.catchup", P + "cost.campaign_slow");
+        check(Play(home, missed).Any(r => r.Has("gesmerha.campaign_kept") && r.Has(P + "cost.catchup") && !r.Has(P + "cost.campaign_slow")),
+            "The honest answer is charged as the trick.");
+        check(Choices(home).Any(c => c.Crusade?.Resource == "Finances" && c.Crusade.Amount == -50 && c.Set.Contains(P + "cost.campaign_slow")),
+            "The loser does not pay for the pieces.");
+        var guest = World(story, 5, Drezen, "trickster", "trickster.ever", "gesmerha.wintersun_resolved", "gesmerha.illusions",
+            "gesmerha.met", "gesmerha.capital_guest");
+        check(Rules.Available(story, capital, guest), "Trk_Gesmerha_Missed: the capital guest cannot be told the lie.");
+        var playedGuest = Program.Copy(played); playedGuest.Area = Drezen; playedGuest.Flags.Add("gesmerha.capital_guest");
+        check(!Rules.Available(story, capital, playedGuest), "The unfinished game is played twice.");
+        check(!Rules.Available(story, home, World(story, 5, Wintersun, "trickster.ever", "trickster.failed", "gesmerha.wintersun_resolved",
+              "gesmerha.truth", "gesmerha.met")), "A lost path still claims the afternoons.");
+        var registered = S("gesmerha.the_things_still_here");
+        var visit = Later(story, played, 24); visit.Flags.Add("gesmerha.post_resolution_contact"); Rules.Complete(story, visit);
+        check(Rules.Available(story, registered, visit), "The claimed afternoons do not open the registered late chain.");
+        var visitPages = Pages(registered, visit);
+        check(visitPages.Contains("catchup") && !visitPages.Contains("without_court"),
+            "The registered first visit forgets that the afternoons were claimed, not kept.");
+
+        // Reactions: exactly Ulbrig, Lann and Anevia, each with its availability guard.
+        var reactions = story.Scenes.Where(s => s.Reaction && s.Id.StartsWith(P, StringComparison.Ordinal)).ToArray();
+        check(reactions.Length == 5 && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Anevia", "Lann", "Ulbrig" }),
+            "The reactors are not exactly Ulbrig, Lann and Anevia.");
+        foreach (var r in reactions.Where(r => r.Owner == "Lann"))
+            check(r.Requires.Contains("lann.in_party") && r.Forbids.Contains("lann.dead") && r.Forbids.Contains("lann.kicked_out"),
+                "Lann speaks when he is not with the Commander: " + r.Id);
+        foreach (var r in reactions.Where(r => r.Owner == "Ulbrig"))
+            check(r.Requires.Contains("ulbrig.in_party") && r.Forbids.Contains("ulbrig.dead") && r.Forbids.Contains("ulbrig.kicked_out"),
+                "Ulbrig speaks when he is not with the Commander: " + r.Id);
+        foreach (var r in reactions.Where(r => r.Owner == "Anevia"))
+            check(r.Forbids.Contains("anevia_gone") && r.Forbids.Contains("anevia_dead"), "Anevia speaks after she is gone: " + r.Id);
+        Console.WriteLine("PASS: Gesmerha Trickster (Trk_Gesmerha_*): commission, pyre, splinters, the yard, the bench and wrong footsteps.");
+    }
+}

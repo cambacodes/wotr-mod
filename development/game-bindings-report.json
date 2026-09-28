@@ -1,11 +1,15 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-gesmerha\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1653,
-  "unique_targets": 424,
+  "binding_uses": 1726,
+  "unique_targets": 450,
   "failures": [],
   "targets": {
+    "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
+      "path": "Items/Areas/Act_3_DemonsHerecy/Wintersun/SoanaMedallion.jbp",
+      "type": "BlueprintItem"
+    },
     "3e4ce583dc71401588f33f8192c252cd": {
       "path": "Items/NewTrashLoot/NewJewelery/DarekSunhammersFake.jbp",
       "type": "BlueprintItemEquipmentNeck"
@@ -238,6 +242,26 @@
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0109.jbp",
       "type": "BlueprintCue"
     },
+    "dc306897f75a31c4aaf9483ebdff0585": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0008.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "1e9af5965b5da304c825817c89817c22": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "0448dab10df819c43a2f2aa86524f01b": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0024.jbp",
+      "type": "BlueprintCue"
+    },
+    "13f2b37e28864ba4b882d13fad90f7c5": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0028.jbp",
+      "type": "BlueprintCue"
+    },
+    "05d66664080144c4bb8fc08b90cc700b": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0031.jbp",
+      "type": "BlueprintCue"
+    },
     "666c827662e8af14798009a98c5aae52": {
       "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp",
       "type": "BlueprintCue"
@@ -258,9 +282,49 @@
       "path": "World/Dialogs/c3/Wintersun/PeacefulWintersun/PeacefulWoodCarver/AnswersList_0005.jbp",
       "type": "BlueprintAnswersList"
     },
+    "001686714a5c2384ba09686b45bd033f": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/AnswersList_0038.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "f7b5537dc61ccdc41b0732f0a1b700b2": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/AnswersList_0039.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "396b1d46a2cfb1e48b205468d4360ee9": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0015.jbp",
+      "type": "BlueprintCue"
+    },
+    "74664ddd7bb36744ba825c29aad6f4b3": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0021.jbp",
+      "type": "BlueprintCue"
+    },
+    "726e936d05fde7a4798854a917b4b73d": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "c6b676fa989a5494cb6ce0c981979907": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0042.jbp",
+      "type": "BlueprintCue"
+    },
+    "b2e418443ec73974faa09a5496564d03": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0065.jbp",
+      "type": "BlueprintCue"
+    },
+    "2fb85dd5779e8c141b15ec119d889fd3": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0069.jbp",
+      "type": "BlueprintCue"
+    },
     "2b1776f3e398685479ff6b16290b4cc2": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "fef727987297e8d4eb34068688fdac27": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0015.jbp",
+      "type": "BlueprintCue"
+    },
+    "e9feb6b2946c77641875f2bc731ede1e": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0017.jbp",
+      "type": "BlueprintCue"
     },
     "52cca621c1d850641abdde32373ca592": {
       "path": "World/Dialogs/c4/FleshMarket/HologramSlaver/AnswersList_0004.jbp",
@@ -538,6 +602,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0030.jbp",
       "type": "BlueprintAnswersList"
     },
+    "f505392f3d7c18348b178da457b4272e": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/Cue_0136.jbp",
+      "type": "BlueprintCue"
+    },
     "4d978cbd2aa780d46874255282039f3f": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Daeran/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -552,6 +620,10 @@
     },
     "615ef80243cfc184ba42286395880b0e": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Finnean/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "66385ad77fa743e4bb1234078dbd804c": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Lann/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "1ab909cc3a6194840b1475b99547c263": {
@@ -589,6 +661,14 @@
     "aebbc1845e827dd4da4e28014e7b4162": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
       "type": "BlueprintCue"
+    },
+    "0a50c9c878844ed4a69b8d6131304c5e": {
+      "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/AnswersList_0001.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "20b70c9bb93940b9a21a488f1721f41c": {
+      "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/Shifter_CompanionDialogue.jbp",
+      "type": "BlueprintDialog"
     },
     "5c95d8e3fa4f3b44896914987cb04b0b": {
       "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
@@ -886,6 +966,18 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
       "type": "BlueprintEtude"
     },
+    "dc908c2490d6f4c4393ff26967aa6566": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "ca3799e579c3eaa48a6625aa456d1840": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "7afa470738d309649bea253eb167fbc1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
     "40fb6c123ced9ed45a305e0feec010ae": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/NenioCompanion/NenioNotInParty_Dead.jbp",
       "type": "BlueprintEtude"
@@ -940,6 +1032,18 @@
     },
     "6d3fb96f9b60c0449a01add4be5c4a49": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d70304f3d15343fca38e48da6027f89c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/UlbrigCompanion/UlbrigInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "4863a2dfe7f847e588df50710ebf2a3f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/UlbrigCompanion/UlbrigNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3b31ef42338b4f83ab822fbcae79a41c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/UlbrigCompanion/UlbrigNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
     "85ee36dae8f3317448fa5b950543b3ad": {
