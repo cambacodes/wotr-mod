@@ -883,7 +883,7 @@ page("areelu.trickster.finale.unnamed", "Uncollected", [
 
 page("areelu.trickster.finale.survived", "Neither", [
     nar("end", '''{n}Neither of them burned, which was the bet the Commander had made at Iz: "My money's on neither."{/n}
-{n}Areelu Vorlesh paid what she owed on the bet from Iz in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. What was left of her she kept, as the raised terms allowed, to spend on the longitudinal experiment: the Abyss still in her veins, and the wound still glowing above her heart. Then she moved into the rooms across the hall with a fresh notebook.{/n}''',
+{n}Areelu Vorlesh paid what she owed on the bet from Iz in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. What was left of her she kept, as the raised terms allowed, to spend on learning how the Commander had done it: the Abyss still in her veins, and the wound still glowing above her heart. Then she moved into the rooms across the hall with a fresh notebook.{/n}''',
         paragraphs=(
             p("She objected, on principle, to the fact that the winner was now partly Shyka the Many, and required every "
               "observation to be initialled twice: once for each of them.", requires=("ending.trickster_allplanes_fw",)),
@@ -921,6 +921,10 @@ report("areelu.trickster.report.rooms", "The report: the rooms across the hall",
             p("She had no magic left to ward her door with, and did not pretend otherwise. Every night she wedged a chair "
               "under the handle. Every morning she moved it back before the Commander could see, and every morning the "
               "Commander saw.", requires=MORTAL),
+            p("She did not rely on the chair. Within the week she had three false names registered in three cities, a "
+              "forger in Nerosyan who owed her a favour from before the crusade, and a standing arrangement with a "
+              "chandler to warn her of anyone asking after a grey-haired Sarkorian woman. None of it was the Commander's "
+              "doing, and she made sure the Commander knew that.", requires=MORTAL),
             p("She warded her door with three sigils that the Commander could not read, and one that the Commander could. "
               "It said, in plain Common: Knock.", forbids=MORTAL),
         )),
@@ -1168,8 +1172,19 @@ report("areelu.trickster.report.participation", "The report: participation", [
 {n}She let it happen for exactly one paragraph. Then she took the notebook back, very calmly, and hit the Commander over the head with it, not gently. "The adjectives," she said, "are accurate. That is not the same as being for publication."{/n}
 {n}She did not stop smiling for the rest of the morning, and she denied it for the rest of her life.{/n}''',
         c("Continue", "morning_after")),
-    nar("morning_after", '''{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}
-{n}"The door," she said, when the Commander pointed out that there was now only one room and no hallway, "was a control. The control has failed. I am told that happens, in the best experiments."{/n}
+    nar("morning_after", '''{n}That afternoon she moved her desk into the Commander's rooms without asking: under the one window that faced the street, where she could see who came to the door before the Commander did, and with its back to the wall.{/n}
+{n}"You are the only protection I have left that the hunters respect," she said, when the Commander found it there. "And the only subject I have left worth watching. It is efficient. Do not mistake it for anything else." She did not move it back. Her travelling case stayed packed beside it, and she did not hide that either.{/n}''',
+        c('"Stay, then. On your terms."', "stay"),
+        c('"My rooms, my rules. The case goes in the cupboard."', "rules"),
+        c('"Take the rooms across the hall back. I want the door."', "door")),
+    nar("stay", '''{n}"My terms." She looked at the Commander for a long moment, as if checking whether the words had a clause she had missed. "Very well. My terms are that I leave the day you bore me, and that I take my notes when I go." The case stayed packed. It was the first thing she looked at every morning.{/n}''',
+        c("Continue", "letters")),
+    nar("rules", '''{n}"Your rules," she repeated, and unpacked the case, slowly, item by item, onto the Commander's bed: a knife, a vial of something that smoked, three forged letters of passage to three different countries, and a change of clothes. "There," she said. "Now you know what I keep ready. It changes nothing. I will still go when I choose." The case went into the cupboard. The letters of passage did not.{/n}''',
+        c("Continue", "letters")),
+    nar("door", '''{n}"Very well." She moved the desk back across the hall that same evening, without help and without complaint, and wedged the door open with it so that she could still see the Commander's.{/n}
+{n}"You wanted a door," she said. "You have one. It is open. The choice of who walks through it is not only yours." Most nights, it was her.{/n}''',
+        c("Continue", "letters")),
+    nar("letters", '''{n}"The door," she said, when the Commander pointed out that the arrangement had no hallway left in it, "was a control. The control has failed. I am told that happens, in the best experiments."{/n}
 {n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. "They are not my concern," she said, when the Commander asked. "And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you." She did not raise it again, and she did not pretend not to have read the letters.{/n}'''),
     nar("closed", '''{n}The Commander closed the door gently between them.{/n}
 {n}Through the wood, after a long moment, came a dry sound that might have been a laugh. "Subject declined," said Areelu Vorlesh. "Noted." Her footsteps went back across the hall.{/n}
@@ -1570,7 +1585,7 @@ report("areelu.trickster.report.promise", "The report: the promise", [
     nar("filed", '''{n}She spent the rest of her years on it. What she built, and what she bargained, and what it cost her, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand. The Commander carried the petition to the door, once, and waited outside, as agreed.{/n}
 {n}The last line of the report is in her hand: "The case is filed. It has not been heard." Beneath it, every year until the report ends, a date, and the same two words: "Not heard." The Commander never wrote in that column. It was not the Commander's.{/n}'''),
     nar("keep", '''{n}The Commander left the notebook on the table between them, open, and did not touch it.{/n}
-{n}"You are a fool," said Areelu Vorlesh. "You will wake one morning and wonder whether today is the day the arithmetic comes out differently." "Every morning." "Good," she said, and drew the notebook back across the table to her own side. "So will I. That is the experiment, and it is mine."{/n}''',
+{n}"You are a fool," said Areelu Vorlesh. "You will wake one morning and wonder whether today is the day the arithmetic comes out differently." "Every morning." "Good," she said, and drew the notebook back across the table to her own side. "So will I. The notebook stays on my side of the table."{/n}''',
         c("Continue", "kept")),
     nar("kept", '''{n}She read the method every morning for the rest of her life, and every morning she put it away. She never explained it, and the report never records a reason. It records only the date of each reading, in a column that runs to the last page, and beside each date the same word.{/n}
 {n}The last entry of the report is dated the morning she died, if she died. It reads: "Not today."{/n}'''),

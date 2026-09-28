@@ -177183,7 +177183,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Neither of them burned, which was the bet the Commander had made at Iz: \"My money's on neither.\"{/n}\n{n}Areelu Vorlesh paid what she owed on the bet from Iz in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. What was left of her she kept, as the raised terms allowed, to spend on the longitudinal experiment: the Abyss still in her veins, and the wound still glowing above her heart. Then she moved into the rooms across the hall with a fresh notebook.{/n}",
+          "Text": "{n}Neither of them burned, which was the bet the Commander had made at Iz: \"My money's on neither.\"{/n}\n{n}Areelu Vorlesh paid what she owed on the bet from Iz in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. What was left of her she kept, as the raised terms allowed, to spend on learning how the Commander had done it: the Abyss still in her veins, and the wound still glowing above her heart. Then she moved into the rooms across the hall with a fresh notebook.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177341,6 +177341,14 @@
           "Paragraphs": [
             {
               "Text": "She had no magic left to ward her door with, and did not pretend otherwise. Every night she wedged a chair under the handle. Every morning she moved it back before the Commander could see, and every morning the Commander saw.",
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She did not rely on the chair. Within the week she had three false names registered in three cities, a forger in Nerosyan who owed her a favour from before the crusade, and a standing arrangement with a chandler to warn her of anyone asking after a grey-haired Sarkorian woman. None of it was the Commander's doing, and she made sure the Commander knew that.",
               "Requires": [
                 "areelu.died_at_finale"
               ],
@@ -178768,7 +178776,87 @@
         {
           "Id": "morning_after",
           "Speaker": "Narrator",
-          "Text": "{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}\n{n}\"The door,\" she said, when the Commander pointed out that there was now only one room and no hallway, \"was a control. The control has failed. I am told that happens, in the best experiments.\"{/n}\n{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. \"They are not my concern,\" she said, when the Commander asked. \"And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you.\" She did not raise it again, and she did not pretend not to have read the letters.{/n}",
+          "Text": "{n}That afternoon she moved her desk into the Commander's rooms without asking: under the one window that faced the street, where she could see who came to the door before the Commander did, and with its back to the wall.{/n}\n{n}\"You are the only protection I have left that the hunters respect,\" she said, when the Commander found it there. \"And the only subject I have left worth watching. It is efficient. Do not mistake it for anything else.\" She did not move it back. Her travelling case stayed packed beside it, and she did not hide that either.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Stay, then. On your terms.\"",
+              "Next": "stay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"My rooms, my rules. The case goes in the cupboard.\"",
+              "Next": "rules",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Take the rooms across the hall back. I want the door.\"",
+              "Next": "door",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "stay",
+          "Speaker": "Narrator",
+          "Text": "{n}\"My terms.\" She looked at the Commander for a long moment, as if checking whether the words had a clause she had missed. \"Very well. My terms are that I leave the day you bore me, and that I take my notes when I go.\" The case stayed packed. It was the first thing she looked at every morning.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "letters",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "rules",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Your rules,\" she repeated, and unpacked the case, slowly, item by item, onto the Commander's bed: a knife, a vial of something that smoked, three forged letters of passage to three different countries, and a change of clothes. \"There,\" she said. \"Now you know what I keep ready. It changes nothing. I will still go when I choose.\" The case went into the cupboard. The letters of passage did not.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "letters",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "door",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Very well.\" She moved the desk back across the hall that same evening, without help and without complaint, and wedged the door open with it so that she could still see the Commander's.{/n}\n{n}\"You wanted a door,\" she said. \"You have one. It is open. The choice of who walks through it is not only yours.\" Most nights, it was her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "letters",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "letters",
+          "Speaker": "Narrator",
+          "Text": "{n}\"The door,\" she said, when the Commander pointed out that the arrangement had no hallway left in it, \"was a control. The control has failed. I am told that happens, in the best experiments.\"{/n}\n{n}There were others in the Commander's life. She found their letters within the month, read every one, and put them back exactly as they had been. \"They are not my concern,\" she said, when the Commander asked. \"And I am not theirs. If one of them ever asks me to leave, I will decide then whether I care, and so will you.\" She did not raise it again, and she did not pretend not to have read the letters.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -181415,7 +181503,7 @@
         {
           "Id": "keep",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander left the notebook on the table between them, open, and did not touch it.{/n}\n{n}\"You are a fool,\" said Areelu Vorlesh. \"You will wake one morning and wonder whether today is the day the arithmetic comes out differently.\" \"Every morning.\" \"Good,\" she said, and drew the notebook back across the table to her own side. \"So will I. That is the experiment, and it is mine.\"{/n}",
+          "Text": "{n}The Commander left the notebook on the table between them, open, and did not touch it.{/n}\n{n}\"You are a fool,\" said Areelu Vorlesh. \"You will wake one morning and wonder whether today is the day the arithmetic comes out differently.\" \"Every morning.\" \"Good,\" she said, and drew the notebook back across the table to her own side. \"So will I. The notebook stays on my side of the table.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
