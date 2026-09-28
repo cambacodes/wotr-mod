@@ -184602,6 +184602,102 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "body_blood",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.blood_sample"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "body_coin",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.lab_funded"
+              ],
+              "Forbids": [
+                "hepzamirah.trickster.cost.blood_sample"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "body_price",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.mutasafen_grudge"
+              ],
+              "Forbids": [
+                "hepzamirah.trickster.cost.blood_sample",
+                "hepzamirah.trickster.cost.lab_funded"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rename",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "hepzamirah.trickster.cost.blood_sample",
+                "hepzamirah.trickster.cost.lab_funded",
+                "hepzamirah.trickster.cost.mutasafen_grudge"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Hepzamirah"
+        },
+        {
+          "Id": "body_blood",
+          "Speaker": "Narrator",
+          "Text": "{n}He holds out an empty vial and a lancet. The label on the vial already says \"Do not open\", in his master's looping hand. He will not take the blood at a gate with the crate still sealed, he says: his master's terms are payment on delivery of a living tenant. He hangs the empty vial on your gatepost by its cord, and goes. He will be back for it full.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "body_coin",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.lab_funded"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "body_price",
+              "Set": [],
+              "Requires": [
+                "hepzamirah.trickster.cost.mutasafen_grudge"
+              ],
+              "Forbids": [
+                "hepzamirah.trickster.cost.lab_funded"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rename",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "hepzamirah.trickster.cost.lab_funded",
+                "hepzamirah.trickster.cost.mutasafen_grudge"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Hepzamirah"
+        },
+        {
+          "Id": "body_coin",
+          "Speaker": "Narrator",
+          "Text": "{n}He counts the crusade's draft twice, slowly, moving his lips. Then he says, not quite to you, that the laboratory has paid for the flesh. The vial is another matter. His master still wants a vial of the Commander, for his silence about where the princess sleeps, and he will be back to collect it. The price, he says, has gone up. He seems to find this very natural.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "body_price",
               "Set": [],
               "Requires": [
@@ -184890,7 +184986,7 @@
         {
           "Id": "paid_blood",
           "Speaker": "Hepzamirah",
-          "Text": "\"He asks only for the vial agreed. It is the only polite thing he has ever done, and he is doing it with my fingers round his windpipe.\"",
+          "Text": "\"He has come for the vial you promised his master, the empty one he hung on your gatepost. Payment on delivery, he says, and I am delivered. It is the only polite thing he has ever done, and he is doing it with my fingers round his windpipe.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -184945,7 +185041,7 @@
         {
           "Id": "paid_coin",
           "Speaker": "Hepzamirah",
-          "Text": "\"He says: 'The laboratory bought her flesh. The vial buys my master's silence about where she sleeps.' So the price went up. Of course it did. I taught that incubus spawn to haggle.\"",
+          "Text": "\"He says your laboratory bought my flesh and nothing else. The vial is for his master's silence about where I sleep, the price he raised at your gate. Of course he raised it. I taught that incubus spawn to haggle. So: a vial of you, for silence. Or his eyes, for mine.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -194309,8 +194405,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

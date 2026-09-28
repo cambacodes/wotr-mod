@@ -256,6 +256,8 @@ M."''',
     *lead([("body", nar, '''{n}It comes on the back of Mutasafen's Apprentice, a cambion with acid-scarred hands who sets it down at your gate and will not cross the threshold. The label says: "Some assembly required.
 M."{/n}
 {n}Inside, in brine, lies Baphomet's daughter, faithful to the last detail: the crushed side of the skull knitted into a ridge of scar, one horn a broken stump, one eye milk-white. He has grown her exactly as her father left her. It is the most spiteful thing you have ever seen done with care.{/n}''', None),
+           ("body_blood", nar, '''{n}He holds out an empty vial and a lancet. The label on the vial already says "Do not open", in his master's looping hand. He will not take the blood at a gate with the crate still sealed, he says: his master's terms are payment on delivery of a living tenant. He hangs the empty vial on your gatepost by its cord, and goes. He will be back for it full.{/n}''', BLOOD),
+           ("body_coin", nar, '''{n}He counts the crusade's draft twice, slowly, moving his lips. Then he says, not quite to you, that the laboratory has paid for the flesh. The vial is another matter. His master still wants a vial of the Commander, for his silence about where the princess sleeps, and he will be back to collect it. The price, he says, has gone up. He seems to find this very natural.{/n}''', LAB),
            ("body_price", nar, '''{n}Pinned to the brine-soaked lining is a second note: "You said no price. The price went up. My Apprentice will collect it."{/n}''', MGRUDGE)],
           "rename"),
     nar("rename", '''{n}The cold is on your shoulder now, looking down at itself. It says nothing at all.{/n}''',
@@ -277,8 +279,8 @@ M."{/n}
 # --- The courier (remote, 48 h after the return): Mutasafen's Apprentice comes to collect. Her test of the Commander. --
 
 COURIER_LEADS = [
-    ("paid_blood", hz, '''"He asks only for the vial agreed. It is the only polite thing he has ever done, and he is doing it with my fingers round his windpipe."''', BLOOD),
-    ("paid_coin", hz, '''"He says: 'The laboratory bought her flesh. The vial buys my master's silence about where she sleeps.' So the price went up. Of course it did. I taught that incubus spawn to haggle."''', LAB),
+    ("paid_blood", hz, '''"He has come for the vial you promised his master, the empty one he hung on your gatepost. Payment on delivery, he says, and I am delivered. It is the only polite thing he has ever done, and he is doing it with my fingers round his windpipe."''', BLOOD),
+    ("paid_coin", hz, '''"He says your laboratory bought my flesh and nothing else. The vial is for his master's silence about where I sleep, the price he raised at your gate. Of course he raised it. I taught that incubus spawn to haggle. So: a vial of you, for silence. Or his eyes, for mine."''', LAB),
     ("paid_threat", hz, '''"He says: 'You said no price. My master heard double.' I think I like your threat better than his arithmetic."''', MGRUDGE),
     ("collectors", hz, '''"And my father's cultists knocked for your tiefling last month, I hear. This one is not Father's. Father's people do not wipe their feet."''',
      "minagho_chivarro.trickster.debt.collectors"),
