@@ -7,7 +7,9 @@ internal static class NocticulaContinuationTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
-        var scenes = story.Scenes.Where(s => s.Relationship == "nocticula" && !s.Id.Contains(".acquired.")).ToArray();
+        // The Trickster layer (nocticula.trickster.*) has its own suite, NocticulaTricksterTests.
+        var scenes = story.Scenes.Where(s => s.Relationship == "nocticula" && !s.Id.Contains(".acquired.")
+                                             && !s.Id.StartsWith("nocticula.trickster.", StringComparison.Ordinal)).ToArray();
         var visits = scenes.Where(s => !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         var endings = scenes.Except(visits).ToArray();
         check(visits.Length == 24 && endings.Length == 8, "Nocticula campaign or ending coverage changed; review the test scope.");

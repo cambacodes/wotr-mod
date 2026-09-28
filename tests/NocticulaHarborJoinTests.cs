@@ -61,11 +61,9 @@ internal static class NocticulaHarborJoinTests
             {
                 var waited = Program.Copy(requested); waited.Hour += prior[0].DelayHours;
                 check(!Rules.Available(story, prior[0], waited), "Remote contact bypasses native Council events.");
-                foreach (var witness in new[] { "noct.acq.council_disclosed", "noct.socoth_plan_exposed" })
-                {
-                    var partial = Program.Copy(waited); partial.Flags.Add(witness);
-                    check(!Rules.Available(story, prior[0], partial), "One native witness unlocks remote contact.");
-                }
+                // NOC-02: overhearing the scheme alone is not an answer at the audience.
+                var overheard = Program.Copy(waited); overheard.Flags.Add("noct.socoth_plan_exposed");
+                check(!Rules.Available(story, prior[0], overheard), "Overhearing the scheme alone unlocks remote contact.");
                 // Only these genuine native events are supplied externally; channel and agreement effects are played below.
                 requested.Flags.UnionWith(new[] { "noct.acq.council_disclosed", "noct.socoth_plan_exposed" });
             }

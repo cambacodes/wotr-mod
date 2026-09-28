@@ -108426,7 +108426,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -108437,7 +108438,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.sixth_passenger",
@@ -108615,7 +108620,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -108626,7 +108632,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.lamp_measure",
@@ -108793,7 +108803,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -108804,7 +108815,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.captains_reply",
@@ -109010,7 +109025,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -109021,7 +109037,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face",
@@ -109194,7 +109214,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -109205,7 +109226,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.white_shoes",
@@ -109411,7 +109436,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -109422,7 +109448,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.demonstration",
@@ -109627,7 +109657,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -109638,7 +109669,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.voices_in_glass",
@@ -109815,7 +109850,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -109826,7 +109862,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.cost_of_return",
@@ -110028,7 +110068,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -110039,7 +110080,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.return_count",
@@ -110250,7 +110295,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -110261,7 +110307,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.after_the_lamps",
@@ -110450,7 +110500,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -110461,7 +110512,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.another_place",
@@ -110720,7 +110775,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -110731,7 +110787,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.hearing",
@@ -110984,7 +111044,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -110995,7 +111056,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.last_buyer",
@@ -111221,7 +111286,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -111232,7 +111298,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.empty_chair",
@@ -111389,7 +111459,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -111400,7 +111471,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.mask_and_bell",
@@ -111583,7 +111658,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -111594,7 +111670,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.uninvited_guest",
@@ -111773,7 +111853,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -111784,7 +111865,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.closed_gallery",
@@ -111996,7 +112081,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -112007,7 +112093,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.unborrowed_evening",
@@ -112191,7 +112281,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -112202,7 +112293,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.bell_without_master",
@@ -112395,7 +112490,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -112406,7 +112502,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.counterseal",
@@ -112567,7 +112667,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -112578,7 +112679,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.no_applause",
@@ -112851,7 +112956,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -112862,7 +112968,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.what_she_keeps",
@@ -113272,7 +113382,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -113283,7 +113394,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.second_door",
@@ -113528,7 +113643,8 @@
         "inhuman",
         "legend",
         "dragon",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.acq.council_fight"
       ],
       "DelayHours": 12,
       "Optional": true,
@@ -113539,7 +113655,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.ending_company",
@@ -113580,7 +113700,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_alliance",
@@ -113621,7 +113744,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_limit",
@@ -113662,7 +113788,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_death",
@@ -113694,7 +113823,8 @@
         "noct.dead"
       ],
       "Forbids": [
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "noct.defeated_not_dead"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -113734,12 +113864,16 @@
         "noct.dead",
         "inhuman",
         "ascended",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "nocticula.trickster.said_yes"
       ],
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_ascent",
@@ -113773,12 +113907,16 @@
       "Forbids": [
         "noct.dead",
         "inhuman",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "nocticula.trickster.said_yes"
       ],
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_changed",
@@ -113811,12 +113949,16 @@
       ],
       "Forbids": [
         "noct.dead",
-        "noct.join.harbor_variant_ready"
+        "noct.join.harbor_variant_ready",
+        "nocticula.trickster.said_yes"
       ],
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_aeon",
@@ -114064,7 +114206,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.unlit_quay.acquired.refused",
@@ -114276,7 +114422,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.unlit_quay.acquired.prior",
@@ -114488,7 +114638,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.sixth_passenger.acquired.new",
@@ -114689,7 +114843,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.sixth_passenger.acquired.refused",
@@ -114890,7 +115048,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.sixth_passenger.acquired.prior",
@@ -115091,7 +115253,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.lamp_measure.acquired.new",
@@ -115281,7 +115447,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.lamp_measure.acquired.refused",
@@ -115471,7 +115641,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.lamp_measure.acquired.prior",
@@ -115661,7 +115835,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.captains_reply.acquired.new",
@@ -115889,7 +116067,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.captains_reply.acquired.refused",
@@ -116117,7 +116299,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.captains_reply.acquired.prior",
@@ -116345,7 +116531,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.new.absent",
@@ -116541,7 +116731,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.new.original",
@@ -116737,7 +116931,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.new.renewed",
@@ -116932,7 +117130,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.refused.absent",
@@ -117128,7 +117330,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.refused.original",
@@ -117324,7 +117530,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.refused.renewed",
@@ -117519,7 +117729,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.prior.absent",
@@ -117715,7 +117929,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.prior.original",
@@ -117911,7 +118129,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.her_own_face.acquired.prior.renewed",
@@ -118106,7 +118328,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.white_shoes.acquired.new",
@@ -118335,7 +118561,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.white_shoes.acquired.refused",
@@ -118564,7 +118794,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.white_shoes.acquired.prior",
@@ -118793,7 +119027,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.demonstration.acquired.new",
@@ -119020,7 +119258,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.demonstration.acquired.refused",
@@ -119247,7 +119489,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.demonstration.acquired.prior",
@@ -119474,7 +119720,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.voices_in_glass.acquired.new",
@@ -119673,7 +119923,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.voices_in_glass.acquired.refused",
@@ -119872,7 +120126,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.voices_in_glass.acquired.prior",
@@ -120071,7 +120329,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.cost_of_return.acquired.new",
@@ -120296,7 +120558,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.cost_of_return.acquired.refused",
@@ -120521,7 +120787,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.cost_of_return.acquired.prior",
@@ -120746,7 +121016,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.return_count.acquired.new",
@@ -120980,7 +121254,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.return_count.acquired.refused",
@@ -121214,7 +121492,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.return_count.acquired.prior",
@@ -121448,7 +121730,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.after_the_lamps.acquired.new",
@@ -121658,7 +121944,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.after_the_lamps.acquired.refused",
@@ -121868,7 +122158,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.after_the_lamps.acquired.prior",
@@ -122078,7 +122372,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.another_place.acquired.new",
@@ -122359,7 +122657,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.another_place.acquired.refused",
@@ -122640,7 +122942,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.another_place.acquired.prior",
@@ -122921,7 +123227,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.hearing.acquired.new",
@@ -123197,7 +123507,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.hearing.acquired.refused",
@@ -123473,7 +123787,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.hearing.acquired.prior",
@@ -123749,7 +124067,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.last_buyer.acquired.new",
@@ -123997,7 +124319,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.last_buyer.acquired.refused",
@@ -124245,7 +124571,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.last_buyer.acquired.prior",
@@ -124493,7 +124823,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.empty_chair.acquired.new",
@@ -124671,7 +125005,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.empty_chair.acquired.refused",
@@ -124849,7 +125187,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.empty_chair.acquired.prior",
@@ -125027,7 +125369,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.mask_and_bell.acquired.new",
@@ -125231,7 +125577,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.mask_and_bell.acquired.refused",
@@ -125435,7 +125785,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.mask_and_bell.acquired.prior",
@@ -125639,7 +125993,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.uninvited_guest.acquired.new",
@@ -125839,7 +126197,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.uninvited_guest.acquired.refused",
@@ -126039,7 +126401,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.uninvited_guest.acquired.prior",
@@ -126239,7 +126605,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.closed_gallery.acquired.new",
@@ -126472,7 +126842,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.closed_gallery.acquired.refused",
@@ -126705,7 +127079,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.closed_gallery.acquired.prior",
@@ -126938,7 +127316,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.unborrowed_evening.acquired.new",
@@ -127144,7 +127526,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.unborrowed_evening.acquired.refused",
@@ -127350,7 +127736,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.unborrowed_evening.acquired.prior",
@@ -127556,7 +127946,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.bell_without_master.acquired.new",
@@ -127770,7 +128164,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.bell_without_master.acquired.refused",
@@ -127984,7 +128382,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.bell_without_master.acquired.prior",
@@ -128198,7 +128600,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.counterseal.acquired.new",
@@ -128380,7 +128786,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.counterseal.acquired.refused",
@@ -128562,7 +128972,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.counterseal.acquired.prior",
@@ -128744,7 +129158,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.no_applause.acquired.new",
@@ -129038,7 +129456,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.no_applause.acquired.refused",
@@ -129332,7 +129754,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.no_applause.acquired.prior",
@@ -129626,7 +130052,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.what_she_keeps.acquired.new",
@@ -130059,7 +130489,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.what_she_keeps.acquired.refused",
@@ -130492,7 +130926,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.what_she_keeps.acquired.prior",
@@ -130925,7 +131363,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.second_door.acquired.new",
@@ -131192,7 +131634,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.second_door.acquired.refused",
@@ -131459,7 +131905,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.second_door.acquired.prior",
@@ -131725,7 +132175,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.ending_company.acquired.new",
@@ -131775,7 +132229,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_company.acquired.refused",
@@ -131825,7 +132282,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_company.acquired.prior",
@@ -131875,7 +132335,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_alliance.acquired.new",
@@ -131925,7 +132388,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_alliance.acquired.refused",
@@ -131975,7 +132441,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_alliance.acquired.prior",
@@ -132025,7 +132494,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_limit.acquired.new",
@@ -132075,7 +132547,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_limit.acquired.refused",
@@ -132125,7 +132600,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_limit.acquired.prior",
@@ -132175,7 +132653,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_death.acquired.new",
@@ -132216,7 +132697,8 @@
       "Forbids": [
         "noct.ending_death",
         "noct.join.history_refused",
-        "noct.join.history_prior"
+        "noct.join.history_prior",
+        "noct.defeated_not_dead"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -132262,7 +132744,8 @@
       "Forbids": [
         "noct.ending_death",
         "noct.join.history_new",
-        "noct.join.history_prior"
+        "noct.join.history_prior",
+        "noct.defeated_not_dead"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -132308,7 +132791,8 @@
       "Forbids": [
         "noct.ending_death",
         "noct.join.history_new",
-        "noct.join.history_refused"
+        "noct.join.history_refused",
+        "noct.defeated_not_dead"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -132362,7 +132846,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_sacrifice.acquired.refused",
@@ -132411,7 +132898,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_sacrifice.acquired.prior",
@@ -132460,7 +132950,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_ascent.acquired.new",
@@ -132508,7 +133001,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_ascent.acquired.refused",
@@ -132556,7 +133052,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_ascent.acquired.prior",
@@ -132604,7 +133103,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_changed.acquired.new",
@@ -132651,7 +133153,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_changed.acquired.refused",
@@ -132698,7 +133203,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_changed.acquired.prior",
@@ -132745,7 +133253,10 @@
       "DelayHours": 0,
       "Optional": true,
       "Relationship": "nocticula",
-      "Remote": true
+      "Remote": true,
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      }
     },
     {
       "Id": "noct.ending_aeon.acquired.new",
@@ -133046,7 +133557,11 @@
       "Chapters": [
         5
       ],
-      "RequiresAnyGroups": []
+      "RequiresAnyGroups": [],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.acq.audience_rejected",
@@ -133211,7 +133726,11 @@
       "Chapters": [
         5
       ],
-      "RequiresAnyGroups": []
+      "RequiresAnyGroups": [],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.acq.audience_patronage",
@@ -133385,7 +133904,11 @@
           "noct.acq.gift_refused",
           "noct.acq.gift_renewed"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.acq.the_missing_line",
@@ -133515,8 +134038,6 @@
       ],
       "Requires": [
         "trickster",
-        "noct.acq.council_disclosed",
-        "noct.socoth_plan_exposed",
         "noct.acq.requested",
         "noct.acq.seal_received"
       ],
@@ -133535,6 +134056,18 @@
       ],
       "Chapters": [
         5
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      },
+      "RequiresAnyGroups": [
+        [
+          "noct.acq.council_disclosed",
+          "noct.acq.shamira_permission",
+          "noct.acq.shamira_reported",
+          "noct.acq.amused"
+        ]
       ]
     },
     {
@@ -133557,7 +134090,9 @@
               "Requires": [
                 "noct.acq.channel_narrow"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "nocticula.trickster.cost.impersonation_kept"
+              ],
               "Abort": false
             },
             {
@@ -133568,7 +134103,8 @@
                 "noct.acq.channel_slow"
               ],
               "Forbids": [
-                "noct.acq.channel_exposed"
+                "noct.acq.channel_exposed",
+                "nocticula.trickster.cost.impersonation_kept"
               ],
               "Abort": false
             },
@@ -133578,6 +134114,43 @@
               "Set": [],
               "Requires": [
                 "noct.acq.channel_exposed"
+              ],
+              "Forbids": [
+                "nocticula.trickster.cost.impersonation_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Describe the narrow reflection and the edge you kept closed.",
+              "Next": "scent_narrow_account",
+              "Set": [],
+              "Requires": [
+                "noct.acq.channel_narrow",
+                "nocticula.trickster.cost.impersonation_kept"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Describe the closed packet and the answer you chose not to demand immediately.",
+              "Next": "scent_slow_account",
+              "Set": [],
+              "Requires": [
+                "noct.acq.channel_slow",
+                "nocticula.trickster.cost.impersonation_kept"
+              ],
+              "Forbids": [
+                "noct.acq.channel_exposed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Tell her about the second light and the marked shavings.",
+              "Next": "scent_exposed_account",
+              "Set": [],
+              "Requires": [
+                "noct.acq.channel_exposed",
+                "nocticula.trickster.cost.impersonation_kept"
               ],
               "Forbids": [],
               "Abort": false
@@ -133832,12 +134405,58 @@
             }
           ],
           "Portrait": "Nocticula"
+        },
+        {
+          "Id": "scent_narrow_account",
+          "Speaker": "Nocticula",
+          "Text": "\"You describe it very prettily. You described my brother prettily too, in my own rooms, with his scent all over you.\"\n{n}The mark on the wax does not move. Her voice does, closer.{/n} \"I have not decided to find that funny. I am told I will.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "narrow_account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "scent_slow_account",
+          "Speaker": "Nocticula",
+          "Text": "\"You describe it very prettily. You described my brother prettily too, in my own rooms, with his scent all over you.\"\n{n}The mark on the wax does not move. Her voice does, closer.{/n} \"I have not decided to find that funny. I am told I will.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "slow_account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "scent_exposed_account",
+          "Speaker": "Nocticula",
+          "Text": "\"You describe it very prettily. You described my brother prettily too, in my own rooms, with his scent all over you.\"\n{n}The mark on the wax does not move. Her voice does, closer.{/n} \"I have not decided to find that funny. I am told I will.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "exposed_account",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
         }
       ],
       "Requires": [
         "trickster",
-        "noct.acq.council_disclosed",
-        "noct.socoth_plan_exposed",
         "noct.acq.requested",
         "noct.acq.seal_received",
         "noct.acq.question_sent"
@@ -133857,7 +134476,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.acq.borrowed_signature",
@@ -134106,7 +134729,11 @@
           "noct.acq.channel_provisional",
           "noct.acq.channel_letters_only"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.acq.the_paid_address",
@@ -134339,7 +134966,11 @@
           "noct.acq.channel_provisional",
           "noct.acq.channel_letters_only"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.acq.the_retained_copy",
@@ -134609,7 +135240,11 @@
           "noct.acq.channel_provisional",
           "noct.acq.channel_letters_only"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.acq.an_answer_of_her_own",
@@ -134801,7 +135436,11 @@
           "noct.acq.channel_provisional",
           "noct.acq.channel_letters_only"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.join.an_unfinished_map",
@@ -135141,7 +135780,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.join.the_room_she_makes",
@@ -135330,7 +135973,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "noct.join.a_chosen_shore",
@@ -135563,7 +136210,11 @@
       ],
       "Chapters": [
         5
-      ]
+      ],
+      "ForbidOverrides": {
+        "noct.dead": "noct.defeated_not_dead",
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "nurah.borrowed_name",
@@ -147630,6 +148281,1236 @@
       "AnswerLists": [
         "33178c26f304abe41949f3fb0fa8ac6e"
       ]
+    },
+    {
+      "Id": "nocticula.trickster.defeated.debrief_clue",
+      "Title": "The floor",
+      "Owner": "Nocticula",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Look at the place where Nocticula fell.]",
+      "Nodes": [
+        {
+          "Id": "floor",
+          "Speaker": "Narrator",
+          "Text": "{n}The place where the Lady in Shadow fell is still dark. Not stained: dark, as if the torchlight declined to touch it.{/n}\n{n}While the Council raise their cups, the darkness gathers itself into the outline of a woman lying down. It rises, a pace away from where she lay, as though it had stepped aside to watch. It considers the room. Then it slides, very politely, under the door.{/n}\n{n}Nobody else is looking at the floor.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "socoth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "socoth",
+          "Speaker": "Socothbenoth",
+          "Text": "\"Commander! Stop staring at the floor. Nobody who stares at floors has ever been any fun.\" {n}The Silken Sin drapes an arm across your shoulders and puts a cup in your hand.{/n} \"Drink! We won. My dear sister is a stain on the carpet, and the carpet is not even mine.\"",
+          "Choices": [
+            {
+              "Text": "[Keep it to yourself.]",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.primed_shadow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Look away and join the toast] \"To the carpet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula",
+          "SpeakerUnit": "dcd200c627536c449bc8258eada65c9f"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "noct.dead",
+        "noct.acq.council_fight"
+      ],
+      "Forbids": [
+        "nocticula.trickster.primed_shadow",
+        "noct.threshold_met"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "aff2802d5af0f77408793b489334befc"
+      ],
+      "NativeReturnCue": "adf1456e429a3d94693417ef7d090d5e",
+      "TricksterDevice": true,
+      "TricksterState": "noct.dead"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.shadow",
+      "Title": "Only your shadow",
+      "Owner": "Nocticula",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"Still hiding behind a projection, Lady?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The projection flickers, the way a candle does when a door opens somewhere it should not. Behind her the torches of Threshold burn steadily, and throw no shadow at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "seen",
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.primed_shadow"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "dress",
+              "Set": [],
+              "Requires": [
+                "noct.fooled"
+              ],
+              "Forbids": [
+                "nocticula.trickster.primed_shadow"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "voice",
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.cost.mocked"
+              ],
+              "Forbids": [
+                "nocticula.trickster.primed_shadow",
+                "noct.fooled"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "base",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nocticula.trickster.primed_shadow",
+                "noct.fooled",
+                "nocticula.trickster.cost.mocked"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "seen",
+          "Speaker": "Nocticula",
+          "Text": "\"Hiding? From you?\" {n}Her smile is slow and entirely without warmth.{/n} \"You looked at the floor while my brother was drinking. I saw you look. You killed me in front of his clowns, and then you watched the floor, as if you were waiting for it to do something.\"\n\"Say what you saw, clown. Say it now, so I can decide what it costs you.\"",
+          "Choices": [
+            {
+              "Text": "[Play a prank on the Queen of Shadows] \"Kill you? I wouldn't dream of it. I killed your shadow. Mind you don't trip over it.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.primed",
+                "nocticula.trickster.cost.shade_secret",
+                "noct.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "dress",
+          "Speaker": "Nocticula",
+          "Text": "\"Hiding?\" {n}The projection is dressed properly this time, in black that drinks the torchlight.{/n} \"The last time you saw me, I walked into a war council wearing whatever your pranks had left me, and the clowns laughed until they had to be carried out. Then you killed me while they were still laughing.\"\n\"Say the joke you have been saving since. Say it now, so I can decide what it costs you.\"",
+          "Choices": [
+            {
+              "Text": "[Play a prank on the Queen of Shadows] \"Kill you? I wouldn't dream of it. I killed your shadow. Mind you don't trip over it.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.primed",
+                "nocticula.trickster.cost.shade_secret",
+                "noct.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "voice",
+          "Speaker": "Nocticula",
+          "Text": "\"Hiding? Coming from you, that is almost a compliment.\" {n}She tilts her head, as if listening for a second voice under yours.{/n} \"You wore my brother's voice into my palace. Now you wear his jokes, and you killed me with his friends watching.\"\n\"Say this one, then. Say it now, so I can decide what it costs you.\"",
+          "Choices": [
+            {
+              "Text": "[Play a prank on the Queen of Shadows] \"Kill you? I wouldn't dream of it. I killed your shadow. Mind you don't trip over it.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.primed",
+                "nocticula.trickster.cost.shade_secret",
+                "noct.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "base",
+          "Speaker": "Nocticula",
+          "Text": "\"Hiding? I am standing in front of you, mortal. You simply cannot reach me.\" {n}She notices you noticing the torches. She lets you.{/n} \"You killed me in front of my brother's clowns. I have not forgotten the sound they made.\"\n\"Whatever joke you have been saving since the Council, say it now, so I can decide what it costs you.\"",
+          "Choices": [
+            {
+              "Text": "[Play a prank on the Queen of Shadows] \"Kill you? I wouldn't dream of it. I killed your shadow. Mind you don't trip over it.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.primed",
+                "nocticula.trickster.cost.shade_secret",
+                "noct.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "noct.dead",
+        "noct.acq.council_fight"
+      ],
+      "Forbids": [
+        "nocticula.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "765173e2a9e535e4cb66f0ec767c13af"
+      ],
+      "NativeReturnCue": "77216dc2c3770794f93b010659f4aa64",
+      "TricksterDevice": true,
+      "TricksterState": "noct.dead"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.late_shadow",
+      "Title": "One shadow too many",
+      "Owner": "Nocticula",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "wall",
+          "Speaker": "Narrator",
+          "Text": "{n}Past midnight the campfire throws one shadow too many against the wall of your tent. It belongs to nobody in the camp. It is slender, and very still, and it is waiting to see whether you have noticed.{/n}\n{n}Somewhere beyond the camp the Wound mutters in its sleep. Tomorrow you go down to meet Areelu.{/n}",
+          "Choices": [
+            {
+              "Text": "[Step on the stray shadow] \"There you are. I told them I only killed your shadow. Nobody believed me either.\"",
+              "Next": "foot",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Let it go.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "foot",
+          "Speaker": "Nocticula",
+          "Text": "{n}The shadow does not move. Your boot does not move either: it cannot. It is standing on something, and the something is laughing, very quietly, from a great way down.{/n}\n\"Late. And on my foot.\"\n\"You had your chance at Threshold, while I was still pretending to be a ghost for my brother's benefit. You spent it on the scenery. Now you pin a queen to your tent wall like a moth, as if that were the same thing.\" {n}The laughter stops.{/n} \"You will pay for both. You will pay more than you would have at the door.\"",
+          "Choices": [
+            {
+              "Text": "[Take your foot off her.]",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.primed",
+                "nocticula.trickster.cost.shade_secret",
+                "noct.started",
+                "nocticula.trickster.cost.late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "noct.dead",
+        "noct.acq.council_fight",
+        "noct.threshold_met"
+      ],
+      "Forbids": [
+        "nocticula.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula",
+      "Remote": true,
+      "Chapters": [
+        6
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "noct.dead"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.call_in",
+      "Title": "The price of a shadow",
+      "Owner": "Nocticula",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"You didn't say I was wrong.\"",
+      "Nodes": [
+        {
+          "Id": "price",
+          "Speaker": "Nocticula",
+          "Text": "\"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price.\"\n\"The Abyss mourns me. Baphomet has stopped counting my armies. Deskari has stopped watching my borders. My own city has hung its streets in black and is already quarrelling over my palace. That silence is worth more than your crusade, and you are carrying it around in your mouth.\"\n{n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}\n\"So. What will you take to keep it there?\"",
+          "Choices": [
+            {
+              "Text": "\"Name your price, then.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nocticula.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Name your price, then.\"",
+              "Next": "terms_late",
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Nothing. You keep my secrets, I keep yours.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.returned",
+                "nocticula.trickster.cost.shade_refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "3cc60e02e5176f448a57b342ec52ae31"
+            },
+            {
+              "Text": "[Leave it for later.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Nocticula",
+          "Text": "\"One favour. Unnamed. When I ask, you will grant it, and you will not ask what it is for.\"\n{n}The torches lean toward her, very slightly, as if listening.{/n} \"Do not look so worried. I have never yet asked anyone for anything they could not afford. I simply ask for it at the worst possible time.\"",
+          "Choices": [
+            {
+              "Text": "\"Agreed.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.returned",
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "90cfcb7b1c0bacc43b27043074f21301",
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "terms_late",
+          "Speaker": "Nocticula",
+          "Text": "\"One favour. Unnamed. And because you came to me late, and on my foot, you will grant it before you have heard it, and you will smile while you do.\"\n{n}She waits, openly enjoying the wait.{/n} \"Smile, Commander. You are already practising.\"",
+          "Choices": [
+            {
+              "Text": "\"Agreed.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.returned",
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "90cfcb7b1c0bacc43b27043074f21301",
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 2
+              }
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.primed"
+      ],
+      "Forbids": [
+        "nocticula.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "765173e2a9e535e4cb66f0ec767c13af"
+      ],
+      "NativeReturnCue": "c10ef2b50ade65f42bbaa0cdfa61b7f9",
+      "TricksterDevice": true,
+      "TricksterState": "noct.dead"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.chair",
+      "Title": "Beside me",
+      "Owner": "Nocticula",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"One more question, Lady. Off the record.\"",
+      "Nodes": [
+        {
+          "Id": "test",
+          "Speaker": "Nocticula",
+          "Text": "\"Nothing in the Abyss is off the record. The Abyss simply has very poor clerks.\"\n\"Very well. You have kept my secret for the length of one conversation, which is longer than my brother ever managed. Tell me why I should let a clown who knows where my shadow ends sit anywhere near me when this is over.\"\n{n}The projection leans closer. Its breath is cold, and smells of night-blooming flowers.{/n} \"Choose your answer well. I will know if it is one of his.\"",
+          "Choices": [
+            {
+              "Text": "\"Because I'm the only one who'll never ask you for anything real.\"",
+              "Next": "verdict_true",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Because you laughed. Under the projection. I heard it.\"",
+              "Next": "verdict_joke",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "verdict_true",
+          "Speaker": "Nocticula",
+          "Text": "\"Liar.\" {n}She says it the way other women say darling.{/n} \"You will ask me for everything, and I will enjoy refusing most of it.\"",
+          "Choices": [
+            {
+              "Text": "\"Then say yes.\"",
+              "Next": "yes",
+              "Set": [
+                "noct.complete",
+                "nocticula.trickster.said_yes"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Or say no. You're allowed.\"",
+              "Next": "refusal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "verdict_joke",
+          "Speaker": "Nocticula",
+          "Text": "\"I did not laugh.\"\n{n}The projection's mouth has not moved. Somewhere far below, something does, and the floor of Threshold remembers it for a long moment afterwards.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Then say yes.\"",
+              "Next": "yes",
+              "Set": [
+                "noct.complete",
+                "nocticula.trickster.said_yes"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Or say no. You're allowed.\"",
+              "Next": "refusal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "yes",
+          "Speaker": "Nocticula",
+          "Text": "\"Yes.\" {n}No hesitation at all; she has decided long before you asked, and was only waiting to see whether you would.{/n} \"Beside me. Not at my feet. Where I can see your hands.\"\n\"And since we are being honest, clown, there is one thing a projection does better than a body. It cannot be touched.\" {n}Her eyes glitter.{/n} \"It can touch.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}\n{n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She undresses you the way she prices things, slowly, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing. She laughs against your throat. \"Hands where I can see them. I said so.\"{/n}\n{n}So you keep them there, and she takes her time. Her mouth tastes of flowers and something older, and when she draws you down onto a throne that was not there a moment ago, the last torch in Threshold gutters and goes out.{/n}",
+          "Choices": [
+            {
+              "Text": "\"...Flawless.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "refusal",
+          "Speaker": "Nocticula",
+          "Text": "\"Then no.\" {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} \"Not tonight. Ask me again when Areelu is dead and you are not. If you are dead, I will have had my answer, and I will not have had to give one.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep her answer.]",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.returned"
+      ],
+      "Forbids": [
+        "noct.complete",
+        "noct.closed",
+        "nocticula.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "765173e2a9e535e4cb66f0ec767c13af"
+      ],
+      "NativeReturnCue": "7d07492b12cf5bd4bb1c88113d5831ab"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.morning",
+      "Title": "Four crescents",
+      "Owner": "Nocticula",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}\n{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have seen once on a letter nobody else was meant to read: \"Where I can see you.\"{/n}\n{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}",
+          "Choices": [
+            {
+              "Text": "[Buckle your armour over the marks.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.said_yes"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula",
+      "Remote": true,
+      "Chapters": [
+        6
+      ]
+    },
+    {
+      "Id": "nocticula.trickster.palace.brothers_voice",
+      "Title": "Is that you, brother?",
+      "Owner": "Nocticula",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Answer in Socothbenoth's voice] \"Sister, darling. You smelled me coming.\"",
+      "Nodes": [
+        {
+          "Id": "sniff",
+          "Speaker": "Nocticula",
+          "Text": "{n}Nocticula goes perfectly still. Then she smiles, the way a cat does when the mouse finally speaks.{/n}\n\"Brother. You came yourself, through my own closets. How very brave, and how very stupid.\"\n\"Step out of the shadows, so I can see which of your faces you are wearing today. I should like to know which one to keep.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the voice] \"The pretty one, sister. The one you never could resist.\"",
+              "Next": "unmasked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Drop the voice.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "unmasked",
+          "Speaker": "Nocticula",
+          "Text": "{n}She sniffs again, longer, and her lip curls.{/n}\n\"No. His scent, but not his sweat. He sweats sugar. You sweat iron.\"\n{n}For a moment the Lady in Shadow looks almost embarrassed, which is more frightening than anything else she could do.{/n}\n\"You came through his closets reeking of him, and you let me call you by his name. I did. Nobody will ever hear that I did.\" {n}Her voice drops to a purr.{/n} \"Will they?\"",
+          "Choices": [
+            {
+              "Text": "\"Nobody will hear it from me.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.impersonated",
+                "nocticula.trickster.cost.impersonation_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "20451daada07f744b9d7f3e14a37a864"
+            },
+            {
+              "Text": "[Laugh in his voice one more time.]",
+              "Next": "bookmark",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "bookmark",
+          "Speaker": "Nocticula",
+          "Text": "{n}The room goes very cold, all at once, and the lamps lean away from her.{/n}\n\"Laugh again in that voice and I will have your tongue bound into a bookmark for his letters. I keep them, you know. All of them. Unopened.\"\n\"Now. You will answer my questions in your own voice, and you will be very grateful that I am curious.\"",
+          "Choices": [
+            {
+              "Text": "[Drop the voice.]",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.impersonated",
+                "nocticula.trickster.cost.impersonation_kept",
+                "nocticula.trickster.cost.mocked"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "20451daada07f744b9d7f3e14a37a864",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "closets.known",
+        "noct.acq.audience_started"
+      ],
+      "Forbids": [
+        "noct.acq.audience_question",
+        "nocticula.trickster.impersonated",
+        "noct.dead"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula.acquisition",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "6a5c262473dfe824886bed3eb3eef59d"
+      ],
+      "NativeReturnCue": "114211469c9ffd149a73f1c853b2776f",
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue",
+      "Title": "A queen does not come back",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}What the Abyss buried after the Trickster Council was a shadow. Nocticula let Alushinyrra wear black, let Baphomet stop counting her armies, and walked out of her own funeral into a quiet she had never been allowed before.{/n}\n{n}When the Commander asked her, years later, whether she had ever meant to come back, she said a queen does not come back. She simply stops pretending to be gone.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula",
+          "Paragraphs": [
+            {
+              "Text": "She kept the promise she had made at Threshold, and kept it the way she kept everything: jealously, expensively, and with the lamps lit. At every table the Commander sat at afterwards, the chair at the right hand was hers, and she was always in it before anyone else arrived.",
+              "Requires": [
+                "nocticula.trickster.said_yes"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.returned"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue.fooled",
+      "Title": "The dress",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}She never wore the dress from the Council again. She kept it, folded, in the one chest in her palace that has no key.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.returned",
+        "noct.fooled"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue.punchline",
+      "Title": "The most fashionable thing",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander, too, was said to be dead. The two of them agreed it was the most fashionable thing either of them had ever done, and that only one of them had done it properly.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.returned",
+        "trickster.cheated_death"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue.favour",
+      "Title": "The favour",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The Queen of Shadows named her favour in the second spring after Threshold, in a sealed note that smelled of night-blooming flowers. Not a temple, not a war, not a soul. A chair.{/n}\n{n}The chair at the Commander's right hand, at every table the Commander would ever sit at, and nobody was to ask whose. Nobody did. The Commander paid it for the rest of a long life, and was never once sure which of them was being watched.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.cost.shade_paid"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue.stalemate",
+      "Title": "Places set",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Twice, agents of the Lady in Shadow were found in the Commander's household: a cook who could not cook, a steward who counted the wrong things. Twice, the Commander sent them home with a joke pinned to their sleeves.{/n}\n{n}They stayed on anyway, a third and a fourth and a fifth, and after a while the household simply set places for them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.cost.shade_refused"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue.unpriced",
+      "Title": "An answer owed",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander left Threshold without hearing her price. Nocticula did not send it after. She let it be known in Alushinyrra that the Crusade's Commander owed her an answer, and let the city decide what that meant; the city decided for her, generously, for years.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.primed"
+      ],
+      "Forbids": [
+        "nocticula.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue.unjoked",
+      "Title": "Among the many",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}After her defeat at the Council, the Lady in Shadow lay low. The Commander was among the many who believed she was dead, and among the few she let go on believing it. It is the only kindness anyone has ever been able to prove against her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "noct.dead",
+        "noct.acq.council_fight"
+      ],
+      "Forbids": [
+        "nocticula.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.epilogue.commit",
+      "Title": "The chair nobody else sat in",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "offer",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander never asked the question at Threshold. Nocticula answered it anyway, the first night the Commander slept in Alushinyrra after the war, from the chair nobody else was allowed to sit in.{/n}\n\"Yes. Beside me, where I can see your hands. Do not make me say it twice. I will deny it.\"",
+          "Choices": [
+            {
+              "Text": "[Cross the room to her chair.]",
+              "Next": "crossed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Make her say it twice.] \"I didn't hear you.\"",
+              "Next": "twice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "crossed",
+          "Speaker": "Narrator",
+          "Text": "{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}\n{n}When the Commander reached the chair she took hold of a collar with two fingers and drew it down to her, and her mouth was warm, which the Commander had not expected, and her hands were not where anyone could see them. The lamps of her palace went out one by one, in no hurry at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "twice",
+          "Speaker": "Narrator",
+          "Text": "{n}\"You heard me,\" said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}\n{n}Then, very softly, so that nobody in her city would ever be able to swear to it: \"Yes.\" She rose from the chair, and took the Commander's wrists in her cool hands, and set them on her hips. \"There. Where I can see them.\" The last lamp went out while she was still smiling.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.returned"
+      ],
+      "Forbids": [
+        "noct.complete",
+        "noct.closed",
+        "nocticula.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.epilogue.declined",
+      "Title": "Eleven years",
+      "Owner": "Epilogue",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}At Threshold she had told the Commander to ask again when Areelu was dead and the Commander was not. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.declined"
+      ],
+      "Forbids": [
+        "noct.complete"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.trickster.reaction.daeran",
+      "Title": "Daeran's word",
+      "Owner": "Daeran",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I visited Nocticula's palace.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Daeran",
+          "Text": "{n}Daeran is laughing before you have finished the story. He has to set his glass down.{/n}\n\"I once told you Lady Nocticula seemed a bearable enough mistress. I withdraw it. She let you into her private rooms wearing her brother's scent, called you by his name, and you are still breathing. She is an extraordinary mistress.\"\n\"Tell me the truth, Commander. Did she blush? No, don't. I prefer to imagine it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "nocticula.trickster.impersonated"
+      ],
+      "Forbids": [
+        "daeran.dead",
+        "daeran.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula",
+      "Reaction": true,
+      "AnswerLists": [
+        "4d978cbd2aa780d46874255282039f3f"
+      ]
+    },
+    {
+      "Id": "nocticula.trickster.reaction.nenio",
+      "Title": "Nenio's word",
+      "Owner": "Nenio",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"About Nocticula's shadow...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Nenio",
+          "Text": "{n}Nenio's ears are fully upright. She has a folio open on her knees and is writing in it very fast.{/n}\n\"A demon lord who is dead and not dead at the same time! A shadow that walks off on its own! I keep a folio of impossible states. She goes on page one, above the cat.\"\n{n}She looks up, pen poised.{/n} \"May I measure your shadow too? For a control. Stand still. Stand still! It moved.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "noct.defeated_not_dead",
+        "nocticula.trickster.cost.shade_secret"
+      ],
+      "Forbids": [
+        "nenio.dead",
+        "nenio.killed_by_commander",
+        "nenio.sent_away",
+        "nenio.kicked_out",
+        "nenio.dissolved"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula",
+      "Reaction": true,
+      "AnswerLists": [
+        "1ab909cc3a6194840b1475b99547c263"
+      ]
     }
   ],
   "Etudes": {
@@ -147762,6 +149643,11 @@
     "regill.left_plot": "6596f51f8e640384189c6708bd55ed50",
     "regill.kicked_out": "2b2cfaa1727070c43b10729920112730",
     "regill.dead": "4c3565d1f0f9fb24981b510da246ef2f",
+    "noct.fooled": "9b2af5f30ebd0c544b973c69a9c4dc39",
+    "nenio.sent_away": "dbc267b73c168f345bc192b5eeffabb2",
+    "nenio.killed_by_commander": "5fe7b9ab3aab4d045b3acabfd0e638a6",
+    "nenio.kicked_out": "e9efc34083d087941bf9242388c258c3",
+    "nenio.dead": "40fb6c123ced9ed45a305e0feec010ae",
     "kyado.in_drezen": "5169dbc60a1ad854493f7ba44c27a0d8",
     "iz.left_early": "a583e4ab47544f5e928fc5b6b7c41e48",
     "coronation.after": "b9cbdf8a2f0545f694366b87ae7d7d44",
@@ -147770,6 +149656,8 @@
     "fool_king.gone": "10f5e03534e6fe74fbc8a94dc2e2c15c",
     "fool_king.crowned": "cc76b7abcda591f438d0f24972dafddc",
     "ending.wound_closed": "10cf0442f31a4796af8b28281f35e944",
+    "daeran.kicked_out": "3944d299c18b7174bb2d6820aa5dc336",
+    "daeran.dead": "4bb966e7df502394cba4b650a54ce92f",
     "council.fought_nocta_allied": "f4004d2687004c646bbe3a047d15f78f",
     "council.fought": "b80a81e97e26167489c439caf34888f8",
     "shyka.gone": "53fa4f1c1655c3c41b0280b3a8e4d8c9",
@@ -148120,7 +150008,7 @@
       "Title": "The uncounted shore",
       "Description": "Nocticula has invited me to investigate a hidden harbor through the meetings we chose together.",
       "Objective": "Hear her proposal",
-      "Guidance": "An existing dream relationship can lead to this undertaking after accepting Nocticula's Chapter 5 offer. Rest in Drezen while she lives and her Profane Gift remains. A Trickster who missed or refused that offer can instead earn a separate invitation through personal correspondence. After completing the Trickster correspondence and accepting the hosted meetings, rest in Drezen to hear Nocticula's harbor proposal. Her invitation does not accept an earlier refused offer, restore a lost Gift or settle the Worldwound. Each undertaking and private invitation can still be declined.",
+      "Guidance": "An existing dream relationship can lead to this undertaking after accepting Nocticula's Chapter 5 offer. Rest in Drezen while she lives and her Profane Gift remains. A Trickster who missed or refused that offer can instead earn a separate invitation through personal correspondence. After completing the Trickster correspondence and accepting the hosted meetings, rest in Drezen to hear Nocticula's harbor proposal. Her invitation does not accept an earlier refused offer, restore a lost Gift or settle the Worldwound. Each undertaking and private invitation can still be declined. On the Trickster path, a Nocticula defeated at the Council may not be as gone as the Abyss believes; look carefully after the fight, and speak to her at Threshold.",
       "StartedFlag": "noct.started",
       "ClosedFlag": "noct.closed",
       "CommittedFlag": "noct.complete",
@@ -148130,7 +150018,20 @@
         "legend",
         "dragon"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "noct.dead": "noct.defeated_not_dead"
+      },
+      "TricksterAccess": {
+        "noct.dead": {
+          "Detect": [
+            "noct.dead",
+            "noct.acq.council_fight"
+          ],
+          "Device": "nocticula.trickster.defeated.shadow",
+          "Returned": "nocticula.trickster.returned"
+        }
+      }
     },
     "nocticula.acquisition": {
       "Title": "An address she has not given you",
@@ -148185,7 +150086,9 @@
     "jerribeth.trickster.attack_final": "e3158fbb613ebec4bade9b91b9c31aed",
     "jerribeth.trickster.attack_bored": "807cc780b4bdcbe49a69aa179576857d",
     "jerribeth.trickster.attack_refused": "0149f56290ac8d540a83ec5e92f10c51",
-    "storyteller.asked_queen": "b9d78ba896d19b14aa6c371dda617979"
+    "storyteller.asked_queen": "b9d78ba896d19b14aa6c371dda617979",
+    "noct.acq.shamira_reported": "4913a0c32fe01474ba7b4c6dde7f45bc",
+    "noct.acq.shamira_permission": "2c4b12325ecf0544cbff956b82f4420b"
   },
   "CompletedEtudes": {
     "konomi.office_completed": "b5f301fbc4c44535a6309d610d5bd28a",
@@ -148377,6 +150280,15 @@
     "konomi.trickster.kyado_said_it": [
       "509eac8248670664fab0808c3e00fe04"
     ],
+    "noct.threshold_met": [
+      "7d07492b12cf5bd4bb1c88113d5831ab"
+    ],
+    "noct.acq.amused": [
+      "9c219d9331c1fa24d95ab1c51c46df84"
+    ],
+    "nenio.dissolved": [
+      "1543b97943fa553469f25be07210c868"
+    ],
     "jerribeth.egg_lore_heard": [
       "93dfa9597191a6848b925d964d309fe4"
     ],
@@ -148402,6 +150314,7 @@
   "StartedDialogs": {
     "konomi.rank_six_started": "30333438aac8d3647bef882fa87e978e",
     "konomi.rank_eight_started": "6178470b05c75484085753b821a6a614",
+    "noct.acq.audience_started": "2c57f65d4b98d764d98794ae8ef9ffdd",
     "irabeth.deathbed": "48a3a4ff8955b7045bac0ea06092e085"
   },
   "ParentEpilogueEdits": {
@@ -149072,6 +150985,11 @@
         "jerribeth.trickster.attack_refused"
       ]
     ],
+    "nocticula.trickster.cost.forgery_kept": [
+      [
+        "nocticula.trickster.cost.impersonation_kept"
+      ]
+    ],
     "trickster.cheated_death": [
       [
         "sacrifice",
@@ -149092,6 +151010,18 @@
         "sacrifice",
         "trickster.ever",
         "ending.trickster_full"
+      ]
+    ],
+    "noct.defeated_not_dead": [
+      [
+        "noct.dead",
+        "trickster.ever",
+        "noct.acq.council_fight"
+      ],
+      [
+        "noct.dead",
+        "trickster.ever",
+        "noct.fooled"
       ]
     ],
     "konomi.trickster.presence_on": [

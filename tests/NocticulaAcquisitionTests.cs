@@ -8,7 +8,8 @@ internal static class NocticulaAcquisitionTests
     // Play selected addon effects through the shared walker; native events are explicit fixture boundaries.
     internal static void Run(Story story, Action<bool, string> check)
     {
-        var scenes = story.Scenes.Where(s => s.Relationship == "nocticula.acquisition").ToArray();
+        var scenes = story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
+                                             && !s.Id.StartsWith("nocticula.trickster.", StringComparison.Ordinal)).ToArray();
         if (scenes.Length == 0) return;
         var entries = scenes.Where(s => s.Id.StartsWith("noct.acq.audience_", StringComparison.Ordinal)).ToArray();
         check(entries.Length == 3, "Nocticula acquisition must have three reviewed living history entries.");
@@ -79,10 +80,13 @@ internal static class NocticulaAcquisitionTests
                     "Accepted request lacks its selected seal attitude or earned seal.");
                 var ready = Program.Copy(requested); ready.Hour += preparation.DelayHours;
                 check(!Rules.Available(story, preparation, ready), "Remote preparation bypassed genuine Council evidence.");
-                foreach (string evidence in new[] { "noct.acq.council_disclosed", "noct.socoth_plan_exposed" })
+                // NOC-02: any one native answer at the audience earns the channel; overhearing the scheme alone does not.
+                var overheard = Program.Copy(ready); overheard.Flags.Add("noct.socoth_plan_exposed");
+                check(!Rules.Available(story, preparation, overheard), "Overhearing the scheme alone unlocks remote preparation.");
+                foreach (string evidence in new[] { "noct.acq.council_disclosed", "noct.acq.shamira_permission", "noct.acq.shamira_reported", "noct.acq.amused" })
                 {
                     var onlyOne = Program.Copy(ready); onlyOne.Flags.Add(evidence);
-                    check(!Rules.Available(story, preparation, onlyOne), "One Council evidence flag incorrectly unlocks remote preparation.");
+                    check(Rules.Available(story, preparation, onlyOne), "A native audience answer does not unlock remote preparation: " + evidence);
                 }
                 // The actual native disclosure and reward must occur outside this source walker.
                 ready.Flags.UnionWith(new[] { "noct.acq.council_disclosed", "noct.socoth_plan_exposed" });
@@ -141,7 +145,9 @@ internal static class NocticulaAcquisitionTests
         check(trials == 36 && initialDeclines == 12 && laterClosures == 12 && postponements == 12,
             "Assembled acquisition outcome counts changed; inspect new paths before updating expectations.");
         foreach (var scene in living)
-            check(reached[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id)), "Assembled acquisition missed authored nodes: " + scene.Id);
+            // The scent_* nodes answer the Trickster voice at the audience; NocticulaTricksterTests walks them.
+            check(reached[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id).Where(id => !id.StartsWith("scent_", StringComparison.Ordinal))),
+                "Assembled acquisition missed authored nodes: " + scene.Id);
         foreach (string blocker in new[] { "noct.dead", "noct.acq.council_fight", "swarm", "legend", "dragon" })
         {
             var blocked = Initial(new[] { blocker });
