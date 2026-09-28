@@ -178670,7 +178670,7 @@
         {
           "Id": "want",
           "Speaker": "Narrator",
-          "Text": "{n}\"Want.\" She said the word as if it were a specimen someone had handed her without gloves.{/n}\n{n}\"I have wanted exactly two things in my life,\" she said. \"One of them is in the Abyss, and the other is standing in front of me asking stupid questions in its nightclothes. I have measured the second one for eight years, Commander. I would like to stop measuring it, for one night, and see what it is like without the instruments.\" She did not look away. \"That is what I want. Now let me in, or tell me no. I will not ask a second time.\"{/n}",
+          "Text": "{n}\"Want.\" She turned the word over as if someone had handed it to her without gloves.{/n}\n{n}\"You are asking me to separate the two. I never have. I wanted my child back, and I opened a hole in the world to reach it. Anyone who calls that wanting and not measuring has understood neither word.\" She looked at you the way she had looked into her mirror in Alushinyrra, as if something on the far side of the glass had moved without permission. \"You are the only one of my works that answers back. It deserves to be studied. I have not decided what I will do with the results, and I will not show you my working.\"{/n}\n{n}She did not step closer, and she did not step back. The door stood open between you, and she left it so, and wrote nothing down; which was, in its way, the only thing she had not yet tried.{/n}",
           "Choices": [
             {
               "Text": "[Let her in.]",
@@ -178693,7 +178693,7 @@
               "Abort": false
             },
             {
-              "Text": "[Tell her no, gently.]",
+              "Text": "[Close the door gently between you.]",
               "Next": "closed",
               "Set": [],
               "Requires": [],
