@@ -148367,7 +148367,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The projection flickers, the way a candle does when a door opens somewhere it should not. Behind her the torches of Threshold burn steadily, and throw no shadow at all.{/n}",
+          "Text": "{n}The projection flickers, the way a candle does when a door opens somewhere it should not. Behind her the fires of Threshold burn steadily, and throw no shadow of her at all.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -148509,7 +148509,7 @@
         {
           "Id": "base",
           "Speaker": "Nocticula",
-          "Text": "\"Hiding? I am standing in front of you, mortal. You simply cannot reach me.\" {n}She notices you noticing the torches. She lets you.{/n} \"You killed me in front of my brother's clowns. I have not forgotten the sound they made.\"\n\"Whatever joke you have been saving since the Council, say it now, so I can decide what it costs you.\"",
+          "Text": "\"Hiding? I am standing in front of you, mortal. You simply cannot reach me.\" {n}She notices you noticing the fires, and the floor behind her. She lets you.{/n} \"You killed me in front of my brother's clowns. I have not forgotten the sound they made.\"\n\"Whatever joke you have been saving since the Council, say it now, so I can decide what it costs you.\"",
           "Choices": [
             {
               "Text": "[Play a prank on the Queen of Shadows] \"Kill you? I wouldn't dream of it. I killed your shadow. Mind you don't trip over it.\"",
@@ -148642,7 +148642,7 @@
         {
           "Id": "price",
           "Speaker": "Nocticula",
-          "Text": "\"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price.\"\n\"The Abyss mourns me. Baphomet has stopped counting my armies. Deskari has stopped watching my borders. My own city has hung its streets in black and is already quarrelling over my palace. That silence is worth more than your crusade, and you are carrying it around in your mouth.\"\n{n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}\n\"So. What will you take to keep it there?\"",
+          "Text": "\"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price.\"\n\"The Abyss mourns me. Baphomet has stopped counting my armies. My brother has stopped sending me perfume. My own city has hung its streets in black and is already quarrelling over my palace. That silence is worth more than your crusade, and you are carrying it around in your mouth.\"\n{n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}\n\"So. What will you take to keep it there?\"",
           "Choices": [
             {
               "Text": "\"Name your price, then.\"",
@@ -148690,7 +148690,7 @@
         {
           "Id": "terms",
           "Speaker": "Nocticula",
-          "Text": "\"One favour. Unnamed. When I ask, you will grant it, and you will not ask what it is for.\"\n{n}The torches lean toward her, very slightly, as if listening.{/n} \"Do not look so worried. I have never yet asked anyone for anything they could not afford. I simply ask for it at the worst possible time.\"",
+          "Text": "\"One favour. Unnamed. When I ask, you will grant it, and you will not ask what it is for.\"\n{n}The fires lean toward her, very slightly, as if listening.{/n} \"Do not look so worried. I have never yet asked anyone for anything they could not afford. I simply ask for it at the worst possible time.\"",
           "Choices": [
             {
               "Text": "\"Agreed.\"",
@@ -148752,7 +148752,7 @@
       "AnswerLists": [
         "765173e2a9e535e4cb66f0ec767c13af"
       ],
-      "NativeReturnCue": "c10ef2b50ade65f42bbaa0cdfa61b7f9",
+      "NativeReturnCue": "77216dc2c3770794f93b010659f4aa64",
       "TricksterDevice": true,
       "TricksterState": "noct.dead"
     },
@@ -148861,7 +148861,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}\n{n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She undresses you the way she prices things, slowly, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing. She laughs against your throat. \"Hands where I can see them. I said so.\"{/n}\n{n}So you keep them there, and she takes her time. Her mouth tastes of flowers and something older, and when she draws you down onto a throne that was not there a moment ago, the last torch in Threshold gutters and goes out.{/n}",
+          "Text": "{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}\n{n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She undresses you the way she prices things, slowly, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing. She laughs against your throat. \"Hands where I can see them. I said so.\"{/n}\n{n}So you keep them there, and she takes her time. Her mouth tastes of flowers and something older. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with her weight very real indeed, catches your wrists and pins them to the arms of the throne, where she can see them. She leans down until her hair falls around you both like a second darkness, and tells you, in a voice meant for nobody else in the Abyss, exactly what she is going to do to you. She does not wait for an answer. The last fire in Threshold gutters and goes out.{/n}",
           "Choices": [
             {
               "Text": "\"...Flawless.\"",
@@ -148924,7 +148924,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}\n{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have seen once on a letter nobody else was meant to read: \"Where I can see you.\"{/n}\n{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}",
+          "Text": "{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}\n{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: \"Where I can see you.\"{/n}\n{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}",
           "Choices": [
             {
               "Text": "[Buckle your armour over the marks.]",
@@ -149070,7 +149070,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}What the Abyss buried after the Trickster Council was a shadow. Nocticula let Alushinyrra wear black, let Baphomet stop counting her armies, and walked out of her own funeral into a quiet she had never been allowed before.{/n}\n{n}When the Commander asked her, years later, whether she had ever meant to come back, she said a queen does not come back. She simply stops pretending to be gone.{/n}",
+          "Text": "{n}What the Abyss buried after the Council was a shadow. Nocticula let Alushinyrra wear black, let Baphomet stop counting her armies, and walked out of her own funeral into a quiet she had never been allowed before.{/n}\n{n}When the Commander asked her, years later, whether she had ever meant to come back, she said a queen does not come back. She simply stops pretending to be gone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -149349,7 +149349,7 @@
         {
           "Id": "crossed",
           "Speaker": "Narrator",
-          "Text": "{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}\n{n}When the Commander reached the chair she took hold of a collar with two fingers and drew it down to her, and her mouth was warm, which the Commander had not expected, and her hands were not where anyone could see them. The lamps of her palace went out one by one, in no hurry at all.{/n}",
+          "Text": "{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}\n{n}When the Commander reached the chair she took hold of a collar with two fingers and drew it down to her. Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -149365,7 +149365,7 @@
         {
           "Id": "twice",
           "Speaker": "Narrator",
-          "Text": "{n}\"You heard me,\" said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}\n{n}Then, very softly, so that nobody in her city would ever be able to swear to it: \"Yes.\" She rose from the chair, and took the Commander's wrists in her cool hands, and set them on her hips. \"There. Where I can see them.\" The last lamp went out while she was still smiling.{/n}",
+          "Text": "{n}\"You heard me,\" said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}\n{n}Then, very softly, so that nobody in her city would ever be able to swear to it: \"Yes.\" She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips, and walked the Commander backwards to the bed step by step, watching. \"There. Where I can see them.\" She pushed; the Commander fell; she followed, and settled astride, and the last lamp went out while she was still smiling.{/n}",
           "Choices": [
             {
               "Text": "Continue",

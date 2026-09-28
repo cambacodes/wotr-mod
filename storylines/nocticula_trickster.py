@@ -89,7 +89,7 @@ SHADOW_CHOICES = (c(JOKE, mythic="Trickster", flags=(PRIMED, SECRET, "noct.start
                   c("[Say nothing.]", abort=True))
 
 threshold("nocticula.trickster.defeated.shadow", "Only your shadow", '"Still hiding behind a projection, Lady?"', [
-    nar("start", '''{n}The projection flickers, the way a candle does when a door opens somewhere it should not. Behind her the torches of Threshold burn steadily, and throw no shadow at all.{/n}''',
+    nar("start", '''{n}The projection flickers, the way a candle does when a door opens somewhere it should not. Behind her the fires of Threshold burn steadily, and throw no shadow of her at all.{/n}''',
         c("Continue", "seen", requires=(PRIMED_SHADOW,)),
         c("Continue", "dress", requires=("noct.fooled",), forbids=(PRIMED_SHADOW,)),
         c("Continue", "voice", requires=(MOCKED,), forbids=(PRIMED_SHADOW, "noct.fooled")),
@@ -100,7 +100,7 @@ threshold("nocticula.trickster.defeated.shadow", "Only your shadow", '"Still hid
 "Say the joke you have been saving since. Say it now, so I can decide what it costs you."''', *SHADOW_CHOICES),
     nt("voice", '''"Hiding? Coming from you, that is almost a compliment." {n}She tilts her head, as if listening for a second voice under yours.{/n} "You wore my brother's voice into my palace. Now you wear his jokes, and you killed me with his friends watching."
 "Say this one, then. Say it now, so I can decide what it costs you."''', *SHADOW_CHOICES),
-    nt("base", '''"Hiding? I am standing in front of you, mortal. You simply cannot reach me." {n}She notices you noticing the torches. She lets you.{/n} "You killed me in front of my brother's clowns. I have not forgotten the sound they made."
+    nt("base", '''"Hiding? I am standing in front of you, mortal. You simply cannot reach me." {n}She notices you noticing the fires, and the floor behind her. She lets you.{/n} "You killed me in front of my brother's clowns. I have not forgotten the sound they made."
 "Whatever joke you have been saving since the Council, say it now, so I can decide what it costs you."''', *SHADOW_CHOICES),
 ], ("trickster", DEAD, FIGHT), (PRIMED,), T_GAME, TricksterDevice=True, TricksterState=DEAD)
 
@@ -121,7 +121,7 @@ SCENES.append(scene("nocticula.trickster.defeated.late_shadow", "One shadow too 
 AGREED = '"Agreed."'
 threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You didn\'t say I was wrong."', [
     nt("price", '''"No. I said you had spent too much time with my brother. A clown who knows where my shadow ends and I begin is a clown I have to price."
-"The Abyss mourns me. Baphomet has stopped counting my armies. Deskari has stopped watching my borders. My own city has hung its streets in black and is already quarrelling over my palace. That silence is worth more than your crusade, and you are carrying it around in your mouth."
+"The Abyss mourns me. Baphomet has stopped counting my armies. My brother has stopped sending me perfume. My own city has hung its streets in black and is already quarrelling over my palace. That silence is worth more than your crusade, and you are carrying it around in your mouth."
 {n}She smiles. It does not reach the projection's eyes, because the projection has none.{/n}
 "So. What will you take to keep it there?"''',
         c('"Name your price, then."', "terms", forbids=(LATE,)),
@@ -129,12 +129,12 @@ threshold("nocticula.trickster.defeated.call_in", "The price of a shadow", '"You
         c('"Nothing. You keep my secrets, I keep yours."', native_next=T_WHATEVER, flags=(RETURNED, REFUSED)),
         c("[Leave it for later.]", abort=True)),
     nt("terms", '''"One favour. Unnamed. When I ask, you will grant it, and you will not ask what it is for."
-{n}The torches lean toward her, very slightly, as if listening.{/n} "Do not look so worried. I have never yet asked anyone for anything they could not afford. I simply ask for it at the worst possible time."''',
+{n}The fires lean toward her, very slightly, as if listening.{/n} "Do not look so worried. I have never yet asked anyone for anything they could not afford. I simply ask for it at the worst possible time."''',
         c(AGREED, native_next=T_BLESSING, alignment=("Evil", 1), flags=(RETURNED, PAID))),
     nt("terms_late", '''"One favour. Unnamed. And because you came to me late, and on my foot, you will grant it before you have heard it, and you will smile while you do."
 {n}She waits, openly enjoying the wait.{/n} "Smile, Commander. You are already practising."''',
         c(AGREED, native_next=T_BLESSING, alignment=("Evil", 2), flags=(RETURNED, PAID))),
-], ("trickster.ever", PRIMED), (RETURNED,), T_DOING_WELL, TricksterDevice=True, TricksterState=DEAD)
+], ("trickster.ever", PRIMED), (RETURNED,), T_GAME, TricksterDevice=True, TricksterState=DEAD)
 
 # The commit (R2-1), a separate beat after the return: her test, her yes or her no, and the heat to the cut.
 VERDICT = (c('"Then say yes."', "yes", flags=("noct.complete", SAID_YES)),
@@ -153,7 +153,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
         c("Continue", "threshold")),
     nar("threshold", '''{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}
 {n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She undresses you the way she prices things, slowly, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing. She laughs against your throat. "Hands where I can see them. I said so."{/n}
-{n}So you keep them there, and she takes her time. Her mouth tastes of flowers and something older, and when she draws you down onto a throne that was not there a moment ago, the last torch in Threshold gutters and goes out.{/n}''',
+{n}So you keep them there, and she takes her time. Her mouth tastes of flowers and something older. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with her weight very real indeed, catches your wrists and pins them to the arms of the throne, where she can see them. She leans down until her hair falls around you both like a second darkness, and tells you, in a voice meant for nobody else in the Abyss, exactly what she is going to do to you. She does not wait for an answer. The last fire in Threshold gutters and goes out.{/n}''',
         c('"...Flawless."')),
     nt("refusal", '''"Then no." {n}She is pleased with herself; she has been waiting all evening for someone to offer her the chance.{/n} "Not tonight. Ask me again when Areelu is dead and you are not. If you are dead, I will have had my answer, and I will not have had to give one."''',
         c("[Let her keep her answer.]", flags=(DECLINED,))),
@@ -162,7 +162,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
 # The morning after the chair, delivered at the next rest before the descent.
 SCENES.append(scene("nocticula.trickster.defeated.morning", "Four crescents", "Nocticula", 6, "", [
     nar("start", '''{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}
-{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have seen once on a letter nobody else was meant to read: "Where I can see you."{/n}
+{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you."{/n}
 {n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
         c("[Buckle your armour over the marks.]")),
 ], requires=("trickster.ever", SAID_YES), last=6, optional=True, Relationship="nocticula", Remote=True, Chapters=[6]))
@@ -202,7 +202,7 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), nodes=None):
 
 
 page("nocticula.trickster.defeated.epilogue", "A queen does not come back",
-    '''{n}What the Abyss buried after the Trickster Council was a shadow. Nocticula let Alushinyrra wear black, let Baphomet stop counting her armies, and walked out of her own funeral into a quiet she had never been allowed before.{/n}
+    '''{n}What the Abyss buried after the Council was a shadow. Nocticula let Alushinyrra wear black, let Baphomet stop counting her armies, and walked out of her own funeral into a quiet she had never been allowed before.{/n}
 {n}When the Commander asked her, years later, whether she had ever meant to come back, she said a queen does not come back. She simply stops pretending to be gone.{/n}''',
     ("trickster.ever", RETURNED), paragraphs=(
         p("She kept the promise she had made at Threshold, and kept it the way she kept everything: jealously, "
@@ -237,9 +237,9 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
         c("[Cross the room to her chair.]", "crossed"),
         c('[Make her say it twice.] "I didn\'t hear you."', "twice")),
     nar("crossed", '''{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}
-{n}When the Commander reached the chair she took hold of a collar with two fingers and drew it down to her, and her mouth was warm, which the Commander had not expected, and her hands were not where anyone could see them. The lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
+{n}When the Commander reached the chair she took hold of a collar with two fingers and drew it down to her. Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
     nar("twice", '''{n}"You heard me," said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}
-{n}Then, very softly, so that nobody in her city would ever be able to swear to it: "Yes." She rose from the chair, and took the Commander's wrists in her cool hands, and set them on her hips. "There. Where I can see them." The last lamp went out while she was still smiling.{/n}''', c()),
+{n}Then, very softly, so that nobody in her city would ever be able to swear to it: "Yes." She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips, and walked the Commander backwards to the bed step by step, watching. "There. Where I can see them." She pushed; the Commander fell; she followed, and settled astride, and the last lamp went out while she was still smiling.{/n}''', c()),
 ])
 page("nocticula.trickster.epilogue.declined", "Eleven years",
     '''{n}At Threshold she had told the Commander to ask again when Areelu was dead and the Commander was not. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}''',

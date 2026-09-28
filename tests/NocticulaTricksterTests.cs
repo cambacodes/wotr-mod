@@ -69,7 +69,7 @@ internal static class NocticulaTricksterTests
               && clue.NativeReturnCue == "adf1456e429a3d94693417ef7d090d5e" && clue.ContactUnit == null
               && clue.Nodes.Single(n => n.Id == "socoth").SpeakerUnit == "dcd200c627536c449bc8258eada65c9f",
             "The clue left Socothbenoth's debrief.");
-        check(shadow.NativeReturnCue == "77216dc2c3770794f93b010659f4aa64" && callIn.NativeReturnCue == "c10ef2b50ade65f42bbaa0cdfa61b7f9"
+        check(shadow.NativeReturnCue == "77216dc2c3770794f93b010659f4aa64" && callIn.NativeReturnCue == "77216dc2c3770794f93b010659f4aa64"
               && chair.NativeReturnCue == "7d07492b12cf5bd4bb1c88113d5831ab"
               && new[] { shadow, callIn, chair }.All(s => s.AnswerLists.SequenceEqual(new[] { Threshold }) && s.Chapters.SequenceEqual(new[] { 6 })),
             "The Threshold beats left her projection's list.");
