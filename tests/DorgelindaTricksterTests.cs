@@ -299,6 +299,17 @@ internal static class DorgelindaTricksterTests
         var nights = Play(night, Later(story, lovers, 12));
         check(nights.All(r => r.Has(L + "night_kept")) && night.Nodes.Any(n => n.Id == "threshold"),
             "The night does not reach its threshold.");
+        // Directive 12 on the generated text: the threshold stages desire and the initiating motion, and the cut lands
+        // there, on the node's only choice; nothing past the start of the act is narrated.
+        var threshold = night.Nodes.Single(n => n.Id == "threshold");
+        check(threshold.Text.Contains("pulls you down") && threshold.Text.Contains("boots come off")
+              && night.Nodes.Single(n => n.Id == "count").Text.Contains("counts you"),
+            "The night fades before the approach (Directive 12: staging and initiating motion required).");
+        check(threshold.Choices.Count == 1 && threshold.Choices[0].Next == null && threshold.Choices[0].Text.Contains("lamp gutters"),
+            "The cut does not land on the threshold.");
+        foreach (var banned in new[] { "thrust", "inside her", "inside you", "climax", "moan", "naked" })
+            check(night.Nodes.All(n => !n.Text.Contains(banned, StringComparison.OrdinalIgnoreCase)),
+                "The night narrates past the cut: " + banned);
         var mornings = Play(morning, Later(story, nights.First(), 6));
         check(mornings.Count > 0 && Rules.Available(story, afterWar, Later(story, mornings.First(), 24))
               && Rules.Available(story, inquiry, Later(story, mornings.First(), 48)),

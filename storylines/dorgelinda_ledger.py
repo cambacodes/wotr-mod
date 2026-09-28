@@ -420,7 +420,7 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
     d("show", '''{n}You show her. She lets you, for a while, standing, the edge of the desk behind her, her good hand fisted in your shirt as if it were the last rope on a sinking wagon.{/n}
 "Hammer and tongs," {n}she breathes, not quite steady, and pulls.{/n}''',
       c("Continue", "threshold")),
-    nar("threshold", '''{n}The ledger goes on the floor. She does not stop to pick it up. The cot in the back room is narrow and regulation and has never been meant for two, and she swears at it in Dwarven, fondly, the way she swears at a cart that will get there in the end. Her boots come off, and yours, and she drops them side by side, heel to heel, because she is who she is.{/n}
+    nar("threshold", '''{n}The ledger goes on the floor. She does not stop to pick it up. The bed in her rooms behind the stores is narrow and regulation and has never been meant for two, and she swears at it in Dwarven, fondly, the way she swears at a cart that will get there in the end. Her boots come off, and yours, and she drops them side by side, heel to heel, because she is who she is.{/n}
 {n}Then she pulls you down onto the rough wool, and her dead hand lies on your back like a weight she has decided to let you carry, and the good one does not let go at all.{/n}''',
         c("[The lamp gutters out.]", flags=(NIGHT_KEPT,))),
 ], requires=("trickster.ever", COMMITTED), forbids=(NIGHT,), delay=12, chapters=(5,))
@@ -872,7 +872,7 @@ office(AFTER, "After the war", '"It\'s cold in here."', [
       c('"You\'d miss the book."', "miss"),
       c('"I\'d come in every week to be measured."', "measured")),
     d("miss", '''"I'd miss the book." {n}She laughs, the short bark, quieter than usual in the cold.{/n} "I'd keep one anyway. For the boots. Who bought what, and what size, and did it fit." {n}She sorts a cloak into rags.{/n}
-"And one line, carried forward. I'd keep that." {n}She does not look at you.{/n} "Wherever you were."''',
+"And your measure. Heel, instep, toe. I'd keep that." {n}She does not look at you.{/n} "Wherever you were."''',
       c("Continue", "where")),
     d("measured", '''"Every week." {n}She snorts.{/n} "Your feet don't grow, Commander. You'd be wastin' my time." {n}She sorts a cloak into rags.{/n}
 "...I'd measure 'em anyway." {n}She does not look at you.{/n} "You'd stand there in your socks and I'd take a very long time about it."''',

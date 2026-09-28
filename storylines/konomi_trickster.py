@@ -104,7 +104,7 @@ letter("konomi.trickster.dismissed.late", "Mind the step", [
     nar("queen", '''{n}The Queen is in Drezen this week, and sits in on the council this morning out of courtesy, to listen rather than to rule. It was her seal on the scroll Lady Konomi carried into this room on her first day.{/n}
 {n}She raises one eyebrow at the empty chair, then at you, and says nothing at all.{/n}''',
       c("Continue", "record")),
-    nar("record", '''{n}You tell him what to write. He writes it without looking up, because clerks who look up at the Commander's jokes are clerks who end up counting arrows in the Abyss.{/n}
+    nar("record", '''{n}You tell him what to write. He hesitates a moment, pen above the page: a minute of the war council is a legal record in Mendev, and he will sign under it. Then he writes it exactly as dictated, because the Commander's word at this table is an order and the minute is his only protection from it.{/n}
 {n}'Audience with the attaché of Nerosyan: adjourned.'{/n}
 {n}He sands it. The word dries, and stays.{/n}''',
       c('[Minute it as a recess] "The record will show the audience was adjourned. Not ended."',
@@ -264,12 +264,14 @@ physical("konomi.trickster.dead.consultation", "Triple, in advance", '"You asked
       c('[Pay the fee first] "The fee, as agreed. In advance."', "paid", crusade=("Finances", -300))),
     k("unpaid", '''"Without paying first. Naturally."
 {n}She writes a figure in the margin of the dispatch and underlines it twice.{/n}
-"It will accrue. Sit down, Commander. We shall begin with why you killed me, and we shall end, if you are fortunate, with whether I intend to hold it against you. I have not decided. I am enjoying not having decided."''',
+"It will accrue. Sit down, Commander. We shall begin with why you killed me, and we shall end, if you are fortunate, with whether I intend to hold it against you. I have not decided. I am enjoying not having decided."
+{n}She taps the dispatch on the wall.{/n} "That stays there while I hold this office. Every envoy who sits in that chair will read it and ask. I shall tell each of them the truth."''',
       c('"Then let\'s begin."', flags=(RETURNED,))),
     k("paid", '''{n}She counts it. All of it, twice, while you watch.{/n}
 "...Paid. How unexpectedly honest of you. I shall have to recalculate you."
 {n}She sweeps the coin into a drawer and locks it.{/n}
-"Sit down. We shall begin with why you killed me. You may take as long as you like; I am billing by the hour."''',
+"Sit down. We shall begin with why you killed me. You may take as long as you like; I am billing by the hour."
+{n}She taps the dispatch on the wall.{/n} "That stays there while I hold this office. Every envoy who sits in that chair will read it and ask. I shall tell each of them the truth."''',
       c('"Then let\'s begin."', flags=(RETURNED, FEE_PAID))),
 ], requires=("trickster.ever", PRIMED, CONFIRMED, RECALLED),
    forbids=(DEAD, RETURNED, "konomi.return_first_words", "konomi.missed_letter_sent"), delay=12, chapters=(3, 5))
@@ -283,7 +285,7 @@ letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
         "nerosyan", mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Move the jug and carry on.] "..."', abort=True)),
     nar("nerosyan", '''{n}The council laughs politely. You bow to the jug anyway, properly, from the waist.{/n}
-{n}The same hour, in Nerosyan. A junior secretary of the Royal Council is copying the day's dispatches by a bad lamp. He writes 'Drezen: credentials presented' in the column for the attaché's journey, where 'Drezen: pending' should go. He blots it, frowns at it, and decides it was always like that.{/n}
+{n}The same hour, in Nerosyan. A junior secretary of the Royal Council is copying the day's dispatches by a bad lamp. He writes 'Drezen: credentials presented' in the column for the attaché's journey, where 'Drezen: pending' should go. He stares at it. The register is sealed at the bell, and the Chancellor's office docks a clerk a week's wage for every scraped line; he has two sisters and no second shirt. He blots it, and tells himself it was always like that, and at the bell it is sealed. In Nerosyan a sealed register is fact.{/n}
 {n}Across the room, at a reception, a kitsune in grey silk is being very charming to a margrave she despises. She has never been to Drezen. She has no idea.{/n}
 {n}In Drezen, when the steward lifts the jug, the seat beneath it is warm.{/n}''',
       c("Continue", flags=(PRIMED, ACCREDITED, "konomi.missed_letter_sent", "konomi.started"))),
@@ -296,7 +298,8 @@ physical("konomi.trickster.never_arrived.audience", "Late for her own audience",
 "Lady Konomi, official attaché of Nerosyan. Here are my credentials." {n}She holds out her credentials. The ink on the date is two days old.{/n} "Though I understand they have already been presented. By you. To a jug."
 "I was halfway through a reception in Nerosyan when a secretary showed me his register. Column four, in his hand: 'credentials presented, Drezen'. He could not say how. Nobody could. I have come to see what I said."
 {n}Her smile is small, sharp and entirely pleased with itself.{/n}
-"The journey is on your account, Commander. So is the reception I left. It was a very good reception."''',
+"The journey is on your account, Commander. So is the reception I left. It was a very good reception."
+"And one thing more. On the strength of that register, the Chancellor's office stopped paying my stipend in the capital three months ago and began charging it to Drezen. Arrears. They would like to know why you never reported my arrival. So, frankly, would I."''',
       c('[Receive her] "Welcome to your audience, Lady Konomi. You\'re late."', "received"),
       c('[Pay for her journey] "The journey is on my account. Name the sum."', "journey", crusade=("Finances", -200))),
     k("received", '''"Late. For an appointment I never made, in a city I had never seen, to a Commander I had not met."
@@ -321,7 +324,9 @@ TRICKSTER_PARAGRAPHS = (
     p("She kept the unnamed favour for years, and mentioned it only when the Commander seemed in danger of forgetting it.",
       requires=(FAVOUR,)),
     p("Nerosyan's archive holds one dispatch with a word crossed out and six words added in a neater hand. Lady Konomi had "
-      "it framed, and billed the crown for the frame.", requires=(RETURNED, RECALLED)),
+      "it framed, and billed the crown for the frame. Every envoy who ever sat across from her read it, and asked, and was "
+      "told plainly that the Commander had killed her. None of them ever again quite trusted a treaty the Commander signed.",
+      requires=(RETURNED, RECALLED)),
     p("In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', in a junior "
       "secretary's hand, two days before anyone left the capital. Auditors query it every spring. Lady Konomi signs the "
       "query every spring, and sends it back.", requires=(RETURNED, ACCREDITED)),

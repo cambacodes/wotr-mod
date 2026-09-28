@@ -306,13 +306,14 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
       c("Continue", "confessed", requires=(CONFESSED,)), c("Continue", "ask", forbids=(CONFESSED,))),
     d("confessed", '''"You told me the truth once, the day I opened the audit. I wrote it down. It's still in here, at the back. Unsent."''',
       c("Continue", "ask")),
-    d("ask", '''"Every quartermaster I ever served under closed their books at the end of a campaign. Ruled it off, signed it, shipped it to Nerosyan. I've never once left a line open." {n}She turns the book so the line faces you.{/n}
-"So. What d'you want me to do with it?"''', *ASK),
-    d("yes", '''{n}She picks up the pen, and for a moment you think she will rule it off anyway. She writes the date instead, and under it, in her small hard hand: carried forward.{/n}
-"Then it stays open. You'll account for yourself every week till one of us is dead, and I'll count every word."''',
+    d("ask", '''{n}The thong of keys that never leaves her wrist is lying on the desk, beside the book. You have never seen it off her. Three new locks on Bartley's warehouse, the powder store, the stores' own door, and one small black key worn smooth that you have never seen her use.{/n}
+"I've been fair with you, Commander, and I'll be plain. I don't want you in my book. You've been in my book since the caravans. I want you in my rooms, and at my table when the carts come in, and in my bed when they don't." {n}Her good hand lies flat by the keys, not on them.{/n}
+"I'm no girl, and I'm no fool, and I don't ask twice. So. Yes or no?"''', *ASK),
+    d("yes", '''{n}She works the small black key off the thong one-handed, bracing the ring against the desk with her bad wrist, and presses it into your palm and closes your fingers over it with hers.{/n}
+"My rooms. Behind the stores. Nobody's held that key since Kenabres, and nobody else will." {n}She puts the rest of the keys back on her wrist.{/n} "Use it tonight. Don't knock. I'll hear you anyway."''',
       c("[Stay while she writes.]", flags=(COMMITTED,))),
-    d("yes_boots", '''{n}She counts the boots: two, left and right, regulation, drawn today from the Crusade's own stores on your seal. She writes them in. The boots are paid.{/n}
-"Paid in full. Took you long enough." {n}She does not rule the line off. She writes: carried forward.{/n} "Now there's nothin' left you owe me but yourself, and I'm not closin' that."''',
+    d("yes_boots", '''{n}She counts the boots: two, left and right, regulation, drawn today from the Crusade's own stores on your seal. She writes them in. Paid. Then she works the small black key off the thong one-handed and sets it inside the left boot.{/n}
+"Paid in full. Took you long enough." {n}She pushes the boots across the desk at you.{/n} "My rooms, behind the stores. Nobody's held that key since Kenabres. Use it tonight, and bring the boots. I'll want to see if they fit."''',
       c("[Stay while she writes.]", flags=(COMMITTED, BOOTS_PAID), crusade=("Materials", -200))),
     d("not_yet", '''"No, I don't." {n}She shuts the book, gently, which is worse than hard.{/n}
 "And I'm not sayin' yes to a line I can't balance, Commander. Not today. Come back when you'll tell me where it went. All of it. Then ask me again."''',
@@ -327,7 +328,7 @@ office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
       c("[Tell her everything, and let her strike it from the stores.]", "told", crusade=("Materials", -100)),
       c('"Not the warehouse. Anything else."', "no")),
     d("told", '''{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances for the first time since the caravans.{/n}
-"There. Was that so hard." {n}She writes: carried forward.{/n} "Now ask."''',
+"There. Was that so hard." {n}She puts the pen down, and takes the thong of keys off her wrist, and lays it on the balanced page.{/n} "Now ask."''',
       c("[Ask.]", flags=(COMMITTED, TOLD_ALL))),
     d("no", '''"Then we're done, Commander." {n}She rules a line under your column, the only line she has ever drawn in anger.{/n}
 "I'll keep the book. Not you."''',
@@ -339,7 +340,7 @@ office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
 
 EP = dict(last=6, Relationship="dorgelinda")
 SCENES.append(scene(P + "epilogue.committed", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", '''{n}The Logistics Council's last ledger balanced to the copper, save one line in the Commander's name, marked "used, quietly" and carried forward. Dorgelinda Stranglehold audited it every week for the rest of the Commander's life. She never ruled it off. When clerks asked why, she said it was the only account in the Crusade she had never finished counting, and that she did not intend to.{/n}''',
+    nar("page", '''{n}The Logistics Council's last ledger balanced to the copper, save one line in the Commander's name, marked "used, quietly". Dorgelinda Stranglehold never ruled it off, and never explained why to the clerks. The Commander kept a small black key to the rooms behind the stores for the rest of Dorgelinda's life, and used it more often than the clerks thought proper, and never once knocked.{/n}''',
         paragraphs=(
             p("{n}Under the first entry, in the Commander's hand, was a rider nobody but she had ever read to the end: \"...and all stores that follow them.\" She followed them.{/n}", requires=(CARTS,)),
             p("{n}The boots were entered as paid. She kept the last pair on a shelf in the stores, regulation, unworn, and would not issue them to anyone.{/n}", requires=(BOOTS_PAID,)),
