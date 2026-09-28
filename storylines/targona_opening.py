@@ -371,23 +371,23 @@ s("the_key_remains_hers", "The key remains hers", [
       c("Read her answer to your letter.", "correspondence", requires=("targona.visit_correspondence",))),
     n("desire", "Narrator", '''{n}A small brass key is tied to the page with red thread. It is not a key to a lock you recognize; the note says it belongs to the path you opened.{/n}
 "I kept it. I want the option of coming back without needing to ask you to make the first move every time.
-"I have also been thinking about your question. I do want you. I want the warmth of you close to me, the sound you make when you stop trying to be clever, and the knowledge that you will hear me when I tell you to slow down. I am not embarrassed to write that. I am not promising that every night will feel as easy as the one we began.
-"If you open the way again, do it because I said yes to this visit. I will tell you if I want something different next time. I expect you to do the same."
+"I have also been thinking about your question. I do want you. I want the warmth of you close to me, and the sound you make when you stop trying to be clever. I have written that sentence three times and burned two of them, and I am sending the third before I lose my nerve.
+"Next time I will come on a night the ward is quiet. I would like the whole of it."
 {n}She has left the last line blank, as if it belongs to the answer.{/n}''',
       c("Reply that her desire is welcome, and your answer will remain honest.", flags=("targona.key_reciprocal",)),
       c("Reply that you want to meet again, with no expectation of what happens.", flags=("targona.key_unpressured",))),
     n("tender", "Narrator", '''{n}A small brass key is folded into the letter. On its tag, in Targona's unmistakable hand, is written: ONLY IF I ASK.{/n}
-"I have not forgotten that you let me choose the shape of the evening. I want another one. I also want to be able to arrive, kiss you, and then decide that is all I want. I am trying to write that without making it sound like a warning. It is not a warning. It is part of what makes the choice mine."
+"I have not stopped thinking about the evening. I want another one. I want to arrive late, with my sleeves still wet from the basins, and kiss you before either of us says anything clever. After that I do not know. I find I like not knowing."
 The line beneath her note is left open for an answer.''',
-      c("Reply that you want her and will accept a changed answer without resentment.", flags=("targona.key_reciprocal",)),
+      c("Reply that you want her, and that you will be waiting.", flags=("targona.key_reciprocal",)),
       c("Reply that you want her company, and leave the rest for another day.", flags=("targona.key_unpressured",))),
     n("pause", "Narrator", '''{n}The letter contains no key. Targona writes that she was pleased you let the evening end without asking her to turn it into a promise.{/n}
-"I still want you. I also want to be able to stop at a kiss, or to spend the whole time talking, without either of us treating that as an unfinished answer. If you are still willing to see me on those terms, I would like another evening."
+"I still want you. I was glad you did not hurry me. I have been hurried by Areelu, and by Heaven's healers, and by my own fear, and you were the first thing in a long time that simply waited. I would like another evening. Come when the wounded let you."
 She has added a small sketch of the courtyard, with the way in and out marked in equal-sized arrows.''',
       c("Tell her you want another evening and will let her set its pace.", flags=("targona.key_unpressured",)),
       c("Tell her you want to kiss her again when she asks.", flags=("targona.key_reciprocal",))),
     n("correspondence", "Narrator", '''{n}Targona's letter contains a short account of an uneventful afternoon and a question about a story you once sent her.{/n}
-"We did not meet that evening. I was glad to receive a question I could answer freely, and I am glad you did not make my reply carry more than it said. I still want to continue our letters. I may ask about another visit when I know what I want from it."
+"We did not meet that evening. I am not sorry. I think I needed one more letter first. Tell me the ending of the story you started last time; you stopped just when the bridge was about to fall, and I have been worrying about the bridge."
 She sends a recipe for a sweet she has recently learned to make. The measurements are exact. The instruction to wait before adding the last ingredient has been underlined twice.''',
       c("Reply with an ordinary detail and keep the conversation open.", flags=("targona.key_unpressured",))),
 ], "targona.the_open_threshold", requires=("targona.ran_romance",))

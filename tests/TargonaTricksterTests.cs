@@ -97,59 +97,83 @@ internal static class TargonaTricksterTests
         check(!story.Presences.Any(p => p.Key != "targona.presence" && p.Value.At?.NearUnit == Quartermaster && p.Value.At.Side == "behind"),
             "Targona's copy would stand where another presence stands behind the quartermaster.");
 
-        // Trk_Targona_Setup: the primer, before the blow.
-        var lab = World(story, 3, "trickster", "trickster.ever", "trickster.umd_tier2");
-        // The device needs the chosen Use Magic Device trick (MainCharacterFacts); without it, only the late fallback.
+        // Trk_Targona_Setup: the primer, before the blow. Two prepared routes, chosen by the native Use Magic Device trick.
+        var setupOpen = S(P + "dead.setup_open");
         check(story.MainCharacterFacts["trickster.umd_tier2"] == "1383f21534d8b6a45bdbdc8ddce7a187", "The UMD trick is not read natively.");
+        check(setupOpen.AnswerLists.SequenceEqual(new[] { LabList }) && setupOpen.NativeReturnCue == null && setupOpen.MaxChapter == 3
+              && setupOpen.Forbids.Contains("targona.dead_lab") && setupOpen.Forbids.Contains("trickster.umd_tier2"),
+            "The open primer left her list, became inline, or overlaps the quiet one.");
+        var lab = World(story, 3, "trickster", "trickster.ever", "trickster.umd_tier2");
         var noTrick = World(story, 3, "trickster", "trickster.ever");
-        check(!Rules.Available(story, setup, noTrick), "The lab primer opens for a Trickster without the Use Magic Device trick.");
-        var noTrickKilled = World(story, 3, "trickster", "trickster.ever", "targona.dead_lab");
-        check(Rules.Available(story, lateLight, noTrickKilled) && Reaches(After(lateLight, noTrickKilled, "raise", 0), Committed),
-            "A Trickster without the trick has no priced way back for her.");
-        check(Rules.Available(story, setup, lab) && !Rules.Available(story, lateLight, lab) && !Rules.Available(story, oneSoul, lab),
-            "Trk_Targona_Setup: availability.");
-        var joke = setup.Nodes.Single(n => n.Id == "start").Choices[0];
-        check(joke.Mythic == "PlayerIsTrickster" && joke.Alignment?.Direction == "Chaotic" && joke.Alignment.Value == 1
-              && joke.Text.StartsWith("[Spend it again, quietly]", StringComparison.Ordinal), "The primer lost its joke or its cost.");
-        var primed = After(setup, lab, "wand", 0);
-        check(setup.Nodes.Single(n => n.Id == "wand").Text.Contains("wand of heal", StringComparison.Ordinal)
-              && setup.Nodes.Single(n => n.Id == "wand").Text.Contains("three charges", StringComparison.Ordinal),
-            "The primer does not show the three-charge wand of heal.");
-        check(primed.Has(P + "primed"), "Trk_Targona_Setup: flags.");
+        check(Rules.Available(story, setup, lab) && !Rules.Available(story, setupOpen, lab), "Feature present: the quiet primer, and only it.");
+        check(!Rules.Available(story, setup, noTrick) && Rules.Available(story, setupOpen, noTrick), "Feature absent: the open primer, and only it.");
+        check(!Rules.Available(story, lateLight, lab) && !Rules.Available(story, oneSoul, lab), "Trk_Targona_Setup: availability.");
+        foreach (var primer in new[] { setup, setupOpen })
+        {
+            var j = primer.Nodes.Single(n => n.Id == "start").Choices[0];
+            check(j.Mythic == "PlayerIsTrickster" && j.Alignment?.Direction == "Chaotic" && j.Alignment.Value == 1
+                  && j.Crusade?.Resource == "Favors" && j.Crusade.Amount == -100 && j.Text.StartsWith("[Spend it again,", StringComparison.Ordinal),
+                "A primer lost its joke or its price: " + primer.Id);
+            var scroll = primer.Nodes.Single(n => n.Id == "scroll").Text;
+            check(scroll.Contains("scroll of raise dead", StringComparison.Ordinal) && scroll.Contains("signed out", StringComparison.Ordinal),
+                "A primer does not put the signed-out scroll on the page: " + primer.Id);
+            var pages = new HashSet<string>();
+            Program.Walk(primer, primer == setup ? lab : noTrick, (page, _) => pages.Add(page));
+            check(pages.Contains("resist") && pages.Contains("chooses"), "She does not resist and then choose: " + primer.Id);
+            check(primer.Nodes.Single(n => n.Id == "resist").Choices.Any(c => c.Abort), "The Commander cannot take back the request: " + primer.Id);
+        }
+        var primed = After(setup, lab, "chooses", 0);
+        check(primed.Has(P + "primed") && primed.Has(P + "cost.she_told_heaven") && !primed.Has(P + "cost.raised_openly"),
+            "Trk_Targona_Setup: flags.");
+        var primedOpen = After(setupOpen, noTrick, "chooses", 0);
+        check(primedOpen.Has(P + "primed") && primedOpen.Has(P + "cost.raised_openly"), "The open primer does not record its witnesses.");
         check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab"), Committed),
             "Trk_Targona_Setup: the commit is unreachable after the blow.");
-        // Both native outcomes after the primer: [Attack] (TargonaIsWasKilledInAreeluLab) leads to the scroll's payoff;
-        // [Destroy the barrier] (TargonaIsFreeInAreeluLab) leaves the primer unused and opens the freed state's wand night.
-        check(!Rules.Available(story, setup, primed), "The primer can be taken twice.");
-        var primedKilled = Program.Copy(primed); primedKilled.Flags.Add("targona.dead_lab");
-        check(Rules.Available(story, oneSoul, Later(story, primedKilled, 72)) && !Rules.Available(story, lateLight, primedKilled),
-            "After the primer, the native kill does not lead to the scroll's payoff.");
-        var primedFreed = Program.Copy(primed); primedFreed.Flags.Add("targona.free");
-        check(Rules.Available(story, spent, Later(story, primedFreed, 1)) && !Rules.Available(story, oneSoul, Later(story, primedFreed, 72)),
-            "After the primer, the native rescue does not open the freed state.");
+        // Both native outcomes after either primer: [Attack] leads to the payoff; [Destroy the barrier] opens the freed state.
+        foreach (var p in new[] { primed, primedOpen })
+        {
+            check(!Rules.Available(story, setup, p) && !Rules.Available(story, setupOpen, p), "A primer can be taken twice.");
+            var k = Program.Copy(p); k.Flags.Add("targona.dead_lab");
+            check(Rules.Available(story, oneSoul, Later(story, k, 72)) && !Rules.Available(story, lateLight, k),
+                "After the primer, the native kill does not lead to the payoff.");
+            var fr = Program.Copy(p); fr.Flags.Add("targona.free");
+            check(Rules.Available(story, spent, Later(story, fr, 1)) && !Rules.Available(story, oneSoul, Later(story, fr, 72)),
+                "After the primer, the native rescue does not open the freed state.");
+        }
         foreach (var gone in new[] { "targona.dead_lab", "targona.free", "targona.condemned" })
-            check(!Rules.Available(story, setup, World(story, 3, "trickster", "trickster.ever", gone)), "The primer opens after the event: " + gone);
+            check(!Rules.Available(story, setup, World(story, 3, "trickster", "trickster.ever", "trickster.umd_tier2", gone))
+                  && !Rules.Available(story, setupOpen, World(story, 3, "trickster", "trickster.ever", gone)), "A primer opens after the event: " + gone);
+        var noTrickKilled = World(story, 3, "trickster", "trickster.ever", "targona.dead_lab");
+        check(Rules.Available(story, lateLight, noTrickKilled) && Reaches(After(lateLight, noTrickKilled, "raise", 0), Committed),
+            "Without any primer there is no priced way back for her.");
 
-        // Trk_Targona_KilledPrimed: nothing left to spend.
+        // Trk_Targona_KilledPrimed: read back in. The use is on the page as it happens, and priced at the return.
         var killed = World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed");
         var killedFresh = World(story, 3, "trickster.ever", "targona.dead_lab");
         killedFresh.Flags.Add(P + "primed"); killedFresh.Times[P + "primed"] = killedFresh.Hour;
         check(!Rules.Available(story, oneSoul, Later(story, killedFresh, 71)) && Rules.Available(story, oneSoul, Later(story, killedFresh, 72)),
             "Trk_Targona_KilledPrimed: the payoff ignores its three days.");
         check(Rules.Available(story, oneSoul, killed) && !Rules.Available(story, spent, killed), "Trk_Targona_KilledPrimed: availability.");
-        var fullPages = new HashSet<string>();
-        Program.Walk(oneSoul, killed, (page, _) => fullPages.Add(page));
-        check(oneSoul.Nodes.Single(n => n.Id == "full").Text.Contains("It was used. It was not spent.", StringComparison.Ordinal)
-              && fullPages.Contains("full") && !fullPages.Contains("cold")
-              && oneSoul.Nodes.Single(n => n.Id == "full").Text.Contains("nobody in the room"),
-            "The wand is not shown used unnoticed.");
+        var quietPages = new HashSet<string>();
+        Program.Walk(oneSoul, killed, (page, _) => quietPages.Add(page));
+        check(quietPages.Contains("quiet") && !quietPages.Contains("open") && !quietPages.Contains("cold")
+              && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("you read the scroll", StringComparison.Ordinal)
+              && oneSoul.Nodes.Single(n => n.Id == "quiet").Text.Contains("Nobody turns round", StringComparison.Ordinal),
+            "The scroll is not shown read unnoticed, as it happens.");
+        var killedOpen = World(story, 3, "trickster.ever", "targona.dead_lab", P + "primed", P + "cost.raised_openly");
+        var openPages = new HashSet<string>();
+        Program.Walk(oneSoul, killedOpen, (page, _) => openPages.Add(page));
+        check(openPages.Contains("open") && !openPages.Contains("quiet"), "The open reading is not shown.");
         var returned = After(oneSoul, killed, "news", 0);
         check(returned.Has(P + "returned") && returned.Has(P + "cost.struck_down") && returned.Has("targona.started")
               && returned.Has(P + "cost.left_for_dead"), "Trk_Targona_KilledPrimed: flags.");
-        var go = oneSoul.Nodes.Single(n => n.Id == "news").Choices[0];
-        check(go.Crusade?.Resource == "Favors" && go.Crusade.Amount == -150, "The return costs the crusade nothing.");
+        var news = oneSoul.Nodes.Single(n => n.Id == "news").Choices;
+        check(news.Single(c => c.Forbids.Contains(P + "cost.raised_openly")).Crusade?.Amount == -150
+              && news.Single(c => c.Requires.Contains(P + "cost.raised_openly")).Crusade?.Amount == -300,
+            "The return is not priced by who saw the reading.");
         check(Rules.Available(story, furlough, returned), "Trk_Targona_KilledPrimed: the furlough does not open.");
         check(Reaches(returned, Committed), "Trk_Targona_KilledPrimed: the commit is unreachable.");
+        check(Reaches(After(oneSoul, killedOpen, "news", 1), Committed), "The open route cannot commit.");
 
         // Trk_Targona_KilledUnprimed: the late light, dearer and spent for good.
         var unprimed = World(story, 3, "trickster", "trickster.ever", "targona.dead_lab");
