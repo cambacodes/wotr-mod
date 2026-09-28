@@ -84,6 +84,18 @@ internal static class ArsinoeTricksterTests
             }
         }
 
+        // Trk_Arsinoe_Coexistence (ledger row 14): every council.expired cause leaves the lease and its collection open.
+        foreach (string expired in new[] { "socot.gone", "shyka.gone", "council.fought", "council.fought_nocta_allied" })
+        {
+            var world = World(story, "trickster", "arsinoe.capital", "council.cauldron_given", expired);
+            check(Rules.Available(story, lease, world), "Lease closes on council.expired cause " + expired);
+            foreach (var signed in Program.Walk(lease, world).Where(r => r.Has(Lease)))
+            {
+                var later = Program.Copy(signed); later.Hour += collection.DelayHours;
+                check(Rules.Available(story, collection, later), "Collection closes on council.expired cause " + expired);
+            }
+        }
+
         foreach (bool lover in new[] { false, true })
         foreach (bool king in new[] { false, true })
         {

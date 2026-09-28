@@ -113,7 +113,8 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 {n}She comes round the counter, turns the sign in the window to CLOSED, and locks the till before she locks the door. Her gold eyes do not leave you while she does either.{/n}
 "The lien stands, Commander. This is outside the lease. Abadar keeps the accounts; he does not keep the curtains. Close them."
 {n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and takes you by the lapels and pulls, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}
-{n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was, and follows you down, her hair falling around both your faces like a drawn curtain, and whatever the church of Abadar holds a lien on, it is not this.{/n}''',
+{n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was and climbs up after you, her shift already gone the way of the robe, her hair falling around both your faces like a drawn curtain. She looks down at you for one long, appraising moment, the look of a woman about to sign.{/n}
+{n}Then she takes you in hand and sinks down onto you, all at once, with a sharp, satisfied breath through her teeth, and whatever the church of Abadar holds a lien on, it is not this.{/n}''',
       c("Continue", "morning")),
     n("morning", "Arsinoe", '''{n}Morning. The sign still says CLOSED. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}
 "Interest on the property: accrued. Everything else: no charge."
