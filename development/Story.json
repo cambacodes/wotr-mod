@@ -195850,25 +195850,21 @@
         {
           "Id": "price",
           "Speaker": "Camellia",
-          "Text": "\"Since I cannot trust you to find me, my price for staying comes by post. Give me a name, or give me yours. Write it on the back of this and leave it on your pillow. I shall know.\"",
+          "Text": "\"Since I cannot trust you to find me, my price for staying comes by post. Your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know.\"",
           "Choices": [
             {
-              "Text": "[Write back a name] \"The quartermaster's clerk. Nobody will miss him.\"",
+              "Text": "[Write back \"My blood\"] \"Whenever you ask. From your knife. I won't flinch.\"",
               "Next": null,
               "Set": [
                 "camellia.trickster.returned",
                 "camellia.trickster.cost.knows_you_tried",
                 "camellia.started",
-                "camellia.trickster.cost.accomplice",
+                "camellia.trickster.cost.bled",
                 "camellia.trickster.terms_named"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Alignment": {
-                "Direction": "Evil",
-                "Value": 2
-              }
+              "Abort": false
             },
             {
               "Text": "[Write back your own] \"If you ever need to kill a friend, start with me.\"",
@@ -195976,10 +195972,10 @@
         {
           "Id": "waking",
           "Speaker": "Camellia",
-          "Text": "{n}Her eyes stay shut. Her lips barely move.{/n}\n\"Rude. I was resting.\" {n}A pause, like a held breath that has nowhere to go.{/n} \"My spirits were promised a death, my friend. Mine. If you take it back from them, you owe them another. Someone in Drezen. I choose whom, and you do not ask.\"\n{n}Her lips curve, very slightly, though her eyes stay closed.{/n} \"Don't look so grave. You've always known what I cost. You've simply never had to pay it yourself. Now you do. Isn't that fair? You're the one who wants me back.\"",
+          "Text": "{n}Her eyes stay shut. Her lips barely move.{/n}\n\"Rude. I was resting.\" {n}A pause, like a held breath that has nowhere to go.{/n} \"My spirits were promised a death, my friend. Mine. If you take it back from them, they will want paying, and they are very particular. Not with some stranger. With you.\"\n\"Your blood, in my bowl, from my knife, every new moon for as long as I choose. And you will hold still for it, and you will not look away.\"",
           "Choices": [
             {
-              "Text": "[Agree to her price] \"Choose, then. Just get up.\"",
+              "Text": "[Agree to her price] \"Every new moon. Just get up.\"",
               "Next": null,
               "Set": [
                 "camellia.trickster.returned",
@@ -195992,7 +195988,7 @@
               "Revive": "camellia"
             },
             {
-              "Text": "[Refuse her price] \"No one else pays for you.\"",
+              "Text": "[Refuse her price] \"No. Not my blood, not for this.\"",
               "Next": "refused",
               "Set": [],
               "Requires": [],
@@ -196346,7 +196342,7 @@
         {
           "Id": "dug",
           "Speaker": "Camellia",
-          "Text": "\"Your little thief is still digging up my spirits' supper. She is very good. Tell her to stop before she reaches the bottom, or I will have to be very good too.\"",
+          "Text": "\"Your little thief is still digging after that porter in the lower city. She is very good. Tell her to stop before she reaches the bottom, or I will have to be very good too.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -196486,22 +196482,18 @@
         {
           "Id": "price",
           "Speaker": "Camellia",
-          "Text": "\"So. My price for staying. Give me a name, or give me yours.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"A name: someone nobody will miss, and I shall not ask you twice. Or yours: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
+          "Text": "\"So. My price for staying. Your blood, or your name.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"Your blood: from my knife, into my bowl, whenever the flies want it, and you hold still and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
           "Choices": [
             {
-              "Text": "[Give her a name] \"The quartermaster's clerk. Nobody will miss him.\"",
+              "Text": "[Give her your blood] \"Whenever you ask. From your knife. I won't flinch.\"",
               "Next": "named",
               "Set": [
-                "camellia.trickster.cost.accomplice",
+                "camellia.trickster.cost.bled",
                 "camellia.trickster.terms_named"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Alignment": {
-                "Direction": "Evil",
-                "Value": 2
-              }
+              "Abort": false
             },
             {
               "Text": "[Give her yours] \"If you ever need to kill a friend, start with me. I'll make it interesting.\"",
@@ -196528,7 +196520,7 @@
         {
           "Id": "named",
           "Speaker": "Camellia",
-          "Text": "\"The clerk.\" {n}She tastes it.{/n} \"A small name. A tidy name. You did not even hesitate, which is either very kind or very cruel, and I shall find out which.\" {n}She stands, and smooths her skirt.{/n} \"Three nights. Wear something you can move in.\"\n{n}At the door she turns.{/n} \"You don't know anything about him, do you? You chose a man you had never looked at. That's the part I like best.\"",
+          "Text": "\"Your blood.\" {n}She takes your wrist and turns it to the lamp, and runs her thumbnail very lightly along the vein, the way a jeweller runs a nail along a seam.{/n} \"You didn't even hesitate. That's either very brave or very foolish, and I shall find out which.\" {n}She lets go, and stands.{/n} \"Three nights. Wear something with a loose sleeve.\"\n{n}At the door she turns.{/n} \"Nobody has ever given me any. I have always had to take it. I don't know yet whether I'll like it better.\"",
           "Choices": [
             {
               "Text": "[Watch her go]",
@@ -196901,7 +196893,7 @@
         {
           "Id": "dug",
           "Speaker": "Camellia",
-          "Text": "\"Your little thief is still digging up my spirits' supper. She is very good. Tell her to stop before she reaches the bottom, or I will have to be very good too.\"",
+          "Text": "\"Your little thief is still digging after that porter in the lower city. She is very good. Tell her to stop before she reaches the bottom, or I will have to be very good too.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -197041,22 +197033,18 @@
         {
           "Id": "price",
           "Speaker": "Camellia",
-          "Text": "\"So. My price for staying. Give me a name, or give me yours.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"A name: someone nobody will miss, and I shall not ask you twice. Or yours: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
+          "Text": "\"So. My price for staying. Your blood, or your name.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"Your blood: from my knife, into my bowl, whenever the flies want it, and you hold still and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
           "Choices": [
             {
-              "Text": "[Give her a name] \"The quartermaster's clerk. Nobody will miss him.\"",
+              "Text": "[Give her your blood] \"Whenever you ask. From your knife. I won't flinch.\"",
               "Next": "named",
               "Set": [
-                "camellia.trickster.cost.accomplice",
+                "camellia.trickster.cost.bled",
                 "camellia.trickster.terms_named"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Alignment": {
-                "Direction": "Evil",
-                "Value": 2
-              }
+              "Abort": false
             },
             {
               "Text": "[Give her yours] \"If you ever need to kill a friend, start with me. I'll make it interesting.\"",
@@ -197083,7 +197071,7 @@
         {
           "Id": "named",
           "Speaker": "Camellia",
-          "Text": "\"The clerk.\" {n}She tastes it.{/n} \"A small name. A tidy name. You did not even hesitate, which is either very kind or very cruel, and I shall find out which.\" {n}She stands, and smooths her skirt.{/n} \"Three nights. Wear something you can move in.\"\n{n}At the door she turns.{/n} \"You don't know anything about him, do you? You chose a man you had never looked at. That's the part I like best.\"",
+          "Text": "\"Your blood.\" {n}She takes your wrist and turns it to the lamp, and runs her thumbnail very lightly along the vein, the way a jeweller runs a nail along a seam.{/n} \"You didn't even hesitate. That's either very brave or very foolish, and I shall find out which.\" {n}She lets go, and stands.{/n} \"Three nights. Wear something with a loose sleeve.\"\n{n}At the door she turns.{/n} \"Nobody has ever given me any. I have always had to take it. I don't know yet whether I'll like it better.\"",
           "Choices": [
             {
               "Text": "[Watch her go]",
@@ -197164,10 +197152,10 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "clerk",
+              "Next": "bowl",
               "Set": [],
               "Requires": [
-                "camellia.trickster.cost.accomplice"
+                "camellia.trickster.cost.bled"
               ],
               "Forbids": [],
               "Abort": false
@@ -197178,7 +197166,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "camellia.trickster.cost.accomplice"
+                "camellia.trickster.cost.bled"
               ],
               "Abort": false
             }
@@ -197186,9 +197174,9 @@
           "Portrait": "Camellia"
         },
         {
-          "Id": "clerk",
+          "Id": "bowl",
           "Speaker": "Camellia",
-          "Text": "{n}The quartermaster's clerk sits in your chair, very still and very alive, his ink-stained hands flat on his knees. Camellia stands behind him, one hand in his hair, her small clean knife resting under his ear. He is weeping without a sound.{/n}\n\"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend.\"\n{n}The clerk's lips move. \"My girl,\" he whispers, to you, not to her. \"The orphanage by the gate. Every seventh day. Please.\" Camellia tilts her head and listens to that too, with great attention, the way she listens to everything.{/n}",
+          "Text": "{n}The silver bowl is on your table, polished, empty. Camellia sits on the edge of your bed with your wrist in her lap and her small clean knife laid along the inside of it, flat, cold, not yet cutting.{/n}\n\"You promised me your blood whenever I asked. I'm asking now.\" {n}She turns the blade, very slowly, until the edge rests on the vein.{/n} \"I want to watch your face while I take it. I want to see how much you'll let me have before you stop me. Don't disappoint me, my friend.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -197220,7 +197208,7 @@
         {
           "Id": "lead_c",
           "Speaker": "Narrator",
-          "Text": "{n}The clerk's eyes find yours and beg. Camellia's find yours and wait.{/n}",
+          "Text": "{n}The first cut is shallow and very neat. The blood runs down into the silver, and she does not watch it. She watches you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -197876,7 +197864,7 @@
         {
           "Id": "steady",
           "Speaker": "Camellia",
-          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. So, shaking, does the clerk, if there was one, out of the door and down the stair, and he will tell nobody anything for the rest of his life.{/n}\n\"I have killed every friend I ever had. I find I would rather keep you on a shelf a while longer.\"",
+          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}\n\"I have killed every friend I ever had. I find I would rather keep you on a shelf a while longer.\"",
           "Choices": [
             {
               "Text": "[Ask her to stay] \"Then stay.\"",
@@ -198048,10 +198036,10 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "clerk",
+              "Next": "bowl",
               "Set": [],
               "Requires": [
-                "camellia.trickster.cost.accomplice"
+                "camellia.trickster.cost.bled"
               ],
               "Forbids": [],
               "Abort": false
@@ -198062,7 +198050,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "camellia.trickster.cost.accomplice"
+                "camellia.trickster.cost.bled"
               ],
               "Abort": false
             }
@@ -198070,9 +198058,9 @@
           "Portrait": "Camellia"
         },
         {
-          "Id": "clerk",
+          "Id": "bowl",
           "Speaker": "Camellia",
-          "Text": "{n}The quartermaster's clerk sits in your chair, very still and very alive, his ink-stained hands flat on his knees. Camellia stands behind him, one hand in his hair, her small clean knife resting under his ear. He is weeping without a sound.{/n}\n\"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend.\"\n{n}The clerk's lips move. \"My girl,\" he whispers, to you, not to her. \"The orphanage by the gate. Every seventh day. Please.\" Camellia tilts her head and listens to that too, with great attention, the way she listens to everything.{/n}",
+          "Text": "{n}The silver bowl is on your table, polished, empty. Camellia sits on the edge of your bed with your wrist in her lap and her small clean knife laid along the inside of it, flat, cold, not yet cutting.{/n}\n\"You promised me your blood whenever I asked. I'm asking now.\" {n}She turns the blade, very slowly, until the edge rests on the vein.{/n} \"I want to watch your face while I take it. I want to see how much you'll let me have before you stop me. Don't disappoint me, my friend.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -198104,7 +198092,7 @@
         {
           "Id": "lead_c",
           "Speaker": "Narrator",
-          "Text": "{n}The clerk's eyes find yours and beg. Camellia's find yours and wait.{/n}",
+          "Text": "{n}The first cut is shallow and very neat. The blood runs down into the silver, and she does not watch it. She watches you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -198760,7 +198748,7 @@
         {
           "Id": "steady",
           "Speaker": "Camellia",
-          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. So, shaking, does the clerk, if there was one, out of the door and down the stair, and he will tell nobody anything for the rest of his life.{/n}\n\"I have killed every friend I ever had. I find I would rather keep you on a shelf a while longer.\"",
+          "Text": "\"There. That face. Not dread. Not fury. Interest.\" {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}\n\"I have killed every friend I ever had. I find I would rather keep you on a shelf a while longer.\"",
           "Choices": [
             {
               "Text": "[Ask her to stay] \"Then stay.\"",
@@ -199328,9 +199316,9 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}A clerk of the quartermaster's office resigned the week after the Threshold and took holy orders in Absalom. He never said why. He never slept with his back to a door again.{/n}",
+              "Text": "{n}The Commander wore long sleeves in every season, and never said why. Under them, along the inside of one wrist, ran a ladder of fine white scars, one for every time she had asked.{/n}",
               "Requires": [
-                "camellia.trickster.cost.accomplice"
+                "camellia.trickster.cost.bled"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -199574,7 +199562,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}A lower-city physician was found dead the winter after, with one wound, very neat. The spirits, it seemed, had been paid by someone.{/n}",
+              "Text": "{n}The Commander carried a row of thin white scars across one wrist all their life, one for every new moon of a single winter, paid to spirits who were never collected.{/n}",
               "Requires": [
                 "camellia.trickster.cost.spirits_owed"
               ],
@@ -199648,7 +199636,8 @@
         }
       ],
       "Requires": [
-        "camellia.trickster.cost.spirits_owed"
+        "camellia.trickster.returned",
+        "camellia.trickster.beat.lesson"
       ],
       "Forbids": [
         "anevia_gone",
@@ -201273,10 +201262,10 @@
         {
           "Id": "chosen",
           "Speaker": "Camellia",
-          "Text": "\"And then you called me back, and you made me a promise, and the spirits heard it.\" {n}She turns her head and looks at you, still smiling.{/n} \"I've chosen. I thought you ought to know that much. I've chosen who pays.\"",
+          "Text": "\"And then you called me back, and you made me a promise, and the spirits heard it.\" {n}She turns her head and looks at you, still smiling, and lifts the silver bowl from the grass beside her.{/n} \"The new moon is tonight. I thought you ought to know. I thought you ought to have the afternoon to decide how brave you mean to be.\"",
           "Choices": [
             {
-              "Text": "\"Who?\"",
+              "Text": "\"How much will they want?\"",
               "Next": "who",
               "Set": [],
               "Requires": [],
@@ -201284,7 +201273,7 @@
               "Abort": false
             },
             {
-              "Text": "[Say nothing]",
+              "Text": "[Say nothing, and hold out your wrist]",
               "Next": "silent",
               "Set": [],
               "Requires": [],
@@ -201292,7 +201281,7 @@
               "Abort": false
             },
             {
-              "Text": "\"Not a crusader. Promise me that.\"",
+              "Text": "\"What if I stop you?\"",
               "Next": "not",
               "Set": [],
               "Requires": [],
@@ -201305,11 +201294,11 @@
         {
           "Id": "who",
           "Speaker": "Camellia",
-          "Text": "\"No.\" {n}Quite gently.{/n} \"That was the bargain. I choose, and you do not ask. You agreed. I remember it distinctly. I was dead at the time, but I have an excellent memory.\" {n}She pats your hand.{/n} \"You'll read about it. You'll know. And then you'll have to decide what kind of person you are, which I think you've been putting off.\"",
+          "Text": "\"As much as I decide.\" {n}Quite gently.{/n} \"That was the bargain. You don't ask, and I don't tell you. I promise I'll stop before you faint. Probably.\" {n}She pats your hand.{/n} \"Most people would have bargained harder for their own blood. You didn't bargain at all. You'll have to decide tonight what kind of person that makes you, which I think you've been putting off.\"",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "after",
+              "Next": "unmissed",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -201321,11 +201310,11 @@
         {
           "Id": "silent",
           "Speaker": "Camellia",
-          "Text": "{n}She waits for the question. It doesn't come. Her smile changes, very slightly, into something warmer and much more alarming.{/n}\n\"Oh, you're good. You're not going to ask. You're going to let it happen and then look me in the eye afterwards.\" {n}She takes a long breath of the morning air.{/n} \"I'm so glad I didn't stay dead.\"",
+          "Text": "{n}She looks at your wrist in the sunlight, and then up at you. Her smile changes, very slightly, into something warmer and much more alarming.{/n}\n\"Oh, you're good. Not tonight, darling. Put it away. Anticipation quickens the imagination.\" {n}She takes a long breath of the morning air.{/n} \"I'm so glad I didn't stay dead.\"",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "after",
+              "Next": "unmissed",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -201337,7 +201326,7 @@
         {
           "Id": "not",
           "Speaker": "Camellia",
-          "Text": "\"A crusader?\" {n}She wrinkles her nose.{/n} \"My friend. A crusader is someone else's friend. I'm not a thief.\" {n}She considers.{/n} \"Someone nobody's crusade will miss. Someone nobody's anything will miss. I've looked for a long time. It's harder than you'd think. Everyone belongs to somebody.\"\n\"I'll find one who doesn't. That's all I'll promise. Take it or leave it.\"",
+          "Text": "\"Then you stop me.\" {n}She shrugs.{/n} \"And the spirits remember that you promised and didn't pay, and so do I, and I lie back down, and this time nobody calls me overacting.\" {n}She considers.{/n} \"But you won't. I've watched you. You keep your promises when they're expensive. It's the only thing about you I don't understand.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -201353,7 +201342,7 @@
         {
           "Id": "unmissed",
           "Speaker": "Camellia",
-          "Text": "\"It's a strange thing to look for, you know. Someone nobody will miss. I walked the lower city all yesterday afternoon, looking. The beggar by the fountain has a dog that would miss him. The drunk behind the tannery has a sister in Nerosyan who writes to him every month, though he never reads the letters.\" {n}She sounds genuinely thoughtful.{/n}\n\"Everyone is somebody's, my friend. It's the most inconvenient discovery I've ever made. I used to think I was the only one who wasn't.\"",
+          "Text": "\"It's a strange thing, you know. I've spent my whole life taking. I had a list of people I would take from, and I took. And now I'm sitting in the sun waiting for someone to come to me and give.\" {n}She sounds genuinely thoughtful.{/n}\n\"I don't know what the flies will make of it. They've never been fed anything freely given. They may not like the taste.\" {n}She smiles.{/n} \"Or they may never want anything else.\"",
           "Choices": [
             {
               "Text": "Continue",

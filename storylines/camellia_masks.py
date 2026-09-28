@@ -269,20 +269,19 @@ SCENES.append(scene(P + "beat.spirits_due", "The spirits' due", "Camellia", 3,
     '"You\'re up. You\'re well. You\'re frightening the quartermaster."', [
     cam("open", '''"I am well, thank you, my friend. I am better than well." {n}She is sitting at the edge of camp with her feet in the grass and her face turned up to the sun, like a woman at a spa.{/n} "Do you know what dying is like? It's like the moment after a very long concert, when the music stops and nobody has begun to clap. I lay in that silence for a day and a half. I've never heard anything so beautiful."''',
         c("Continue", "chosen")),
-    cam("chosen", '''"And then you called me back, and you made me a promise, and the spirits heard it." {n}She turns her head and looks at you, still smiling.{/n} "I've chosen. I thought you ought to know that much. I've chosen who pays."''',
-        c('"Who?"', "who"),
-        c("[Say nothing]", "silent"),
-        c('"Not a crusader. Promise me that."', "not")),
-    cam("who", '''"No." {n}Quite gently.{/n} "That was the bargain. I choose, and you do not ask. You agreed. I remember it distinctly. I was dead at the time, but I have an excellent memory." {n}She pats your hand.{/n} "You'll read about it. You'll know. And then you'll have to decide what kind of person you are, which I think you've been putting off."''',
-        c("Continue", "after")),
-    cam("silent", '''{n}She waits for the question. It doesn't come. Her smile changes, very slightly, into something warmer and much more alarming.{/n}
-"Oh, you're good. You're not going to ask. You're going to let it happen and then look me in the eye afterwards." {n}She takes a long breath of the morning air.{/n} "I'm so glad I didn't stay dead."''',
-        c("Continue", "after")),
-    cam("not", '''"A crusader?" {n}She wrinkles her nose.{/n} "My friend. A crusader is someone else's friend. I'm not a thief." {n}She considers.{/n} "Someone nobody's crusade will miss. Someone nobody's anything will miss. I've looked for a long time. It's harder than you'd think. Everyone belongs to somebody."
-"I'll find one who doesn't. That's all I'll promise. Take it or leave it."''',
+    cam("chosen", '''"And then you called me back, and you made me a promise, and the spirits heard it." {n}She turns her head and looks at you, still smiling, and lifts the silver bowl from the grass beside her.{/n} "The new moon is tonight. I thought you ought to know. I thought you ought to have the afternoon to decide how brave you mean to be."''',
+        c('"How much will they want?"', "who"),
+        c("[Say nothing, and hold out your wrist]", "silent"),
+        c('"What if I stop you?"', "not")),
+    cam("who", '''"As much as I decide." {n}Quite gently.{/n} "That was the bargain. You don't ask, and I don't tell you. I promise I'll stop before you faint. Probably." {n}She pats your hand.{/n} "Most people would have bargained harder for their own blood. You didn't bargain at all. You'll have to decide tonight what kind of person that makes you, which I think you've been putting off."''',
         c("Continue", "unmissed")),
-    cam("unmissed", '''"It's a strange thing to look for, you know. Someone nobody will miss. I walked the lower city all yesterday afternoon, looking. The beggar by the fountain has a dog that would miss him. The drunk behind the tannery has a sister in Nerosyan who writes to him every month, though he never reads the letters." {n}She sounds genuinely thoughtful.{/n}
-"Everyone is somebody's, my friend. It's the most inconvenient discovery I've ever made. I used to think I was the only one who wasn't."''',
+    cam("silent", '''{n}She looks at your wrist in the sunlight, and then up at you. Her smile changes, very slightly, into something warmer and much more alarming.{/n}
+"Oh, you're good. Not tonight, darling. Put it away. Anticipation quickens the imagination." {n}She takes a long breath of the morning air.{/n} "I'm so glad I didn't stay dead."''',
+        c("Continue", "unmissed")),
+    cam("not", '''"Then you stop me." {n}She shrugs.{/n} "And the spirits remember that you promised and didn't pay, and so do I, and I lie back down, and this time nobody calls me overacting." {n}She considers.{/n} "But you won't. I've watched you. You keep your promises when they're expensive. It's the only thing about you I don't understand."''',
+        c("Continue", "unmissed")),
+    cam("unmissed", '''"It's a strange thing, you know. I've spent my whole life taking. I had a list of people I would take from, and I took. And now I'm sitting in the sun waiting for someone to come to me and give." {n}She sounds genuinely thoughtful.{/n}
+"I don't know what the flies will make of it. They've never been fed anything freely given. They may not like the taste." {n}She smiles.{/n} "Or they may never want anything else."''',
         c("Continue", "after")),
     cam("after", '''{n}She stands, and brushes the grass from her skirt, and puts her hand flat on your chest for a moment, just over the heart, as if checking a clock.{/n}
 "Come to me soon. Somewhere with a lock on the door. There's something I want to teach you, now that I know what it feels like from the other side."''',

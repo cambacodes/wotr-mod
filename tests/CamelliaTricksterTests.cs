@@ -157,8 +157,10 @@ internal static class CamelliaTricksterTests
         check(Avail(terms, termsWorld) && !Avail(test, termsWorld), "Trk_Camellia_Terms: her price should come before her test.");
         var named = Take(terms, termsWorld, "price", 1, P + "cost.marked", P + "terms_named");
         check(Avail(test, Later(story, named, 100)), "Trk_Camellia_Terms: the test does not open after her price.");
-        check(Ch(terms, "price", 0).Alignment?.Direction == "Evil" && Ch(terms, "price", 0).Alignment!.Value == 2,
-            "Giving her a name is not an Evil 2 act.");
+        // Directive 2: no death is the price of her romance. Her prices are the Commander's own blood, or the Commander's name.
+        check(Ch(terms, "price", 0).Set.Contains(P + "cost.bled") && Ch(terms, "price", 1).Set.Contains(P + "cost.marked")
+              && Ch(terms, "price", 0).Alignment == null,
+            "Her price is not the Commander's blood or the Commander's name.");
 
         // Trk_Camellia_Commit / Trk_Camellia_CommitRefused
         var commitWorld = World(story, 5, "trickster.ever", Killed, Returned, P + "cost.marked", P + "terms_named");
@@ -204,8 +206,10 @@ internal static class CamelliaTricksterTests
             "The deferred Kaylessa pair is in camellia.kill_returned without a producer.");
 
         // Trk_Camellia_AneviaBody: the spirits' due arrives as Anevia's report.
-        var owed = World(story, 3, "trickster.ever", Dead, Returned, P + "cost.spirits_owed");
+        // Her killing is her nature after her return, not a price anyone paid: Anevia reports it once the lesson is taught.
+        var owed = World(story, 3, "trickster.ever", Dead, Returned, P + "beat.lesson");
         check(Avail(body, owed), "Trk_Camellia_AneviaBody: Anevia should report the body.");
+        check(!Avail(body, World(story, 3, "trickster.ever", Dead, Returned)), "The body turns up before her return has settled.");
         Take(body, owed, "start", 1, P + "cost.covered_murder");
         check(body.AnswerLists.SequenceEqual(new[] { "33960c7f7af40cd43b7f801a76c87a0b" }) && body.Reaction
               && body.ForbidOverrides["anevia_gone"] == "anevia.trickster.returned", "Anevia's report is not on her own hub, lifted by her return.");
