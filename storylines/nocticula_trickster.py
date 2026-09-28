@@ -8,7 +8,9 @@ She is not dead: at Threshold she speaks through a projection (Threshold_Nocticu
 Commander may ask "Are you afraid I'm going to kill you again?" (Answer_0054 f7cc6463), and her epilogue says she
 "disappeared into the shadows and lay low" (Epilogues/Cue_2 bc753cb0). At the Chapter 5 audience she sniffs the air and asks
 "Is that you, brother?" (Nocticula/Cue_0001 a12f4858, Cue_0002 11421146), because the Commander came through Socothbenoth's
-closets (SocothBriefing/Cue_0011 2f4be0bd). Authored, and labelled as authored: the shadow that leaves the place where she
+closet: "This closet will take you and your companions straight to my sister's boudoir... my spells will keep you
+hidden" (SocothBriefing/Cue_0012 e5a9d6bb; the closet doctrine is Cue_0011 2f4be0bd), and she knows his enchantments by
+their "sickly sweet smell" (Nocticula/Cue_0016 bb552fe4). Authored, and labelled as authored: the shadow that leaves the place where she
 fell and slides out under the Council's door; the Commander answering her in her brother's voice; the price she names for
 the secret (one unnamed favour, the chair at the Commander's right hand); the projection that can touch.
 """
@@ -180,7 +182,7 @@ SCENES.append(scene("nocticula.trickster.palace.brothers_voice", "Is that you, b
     nt("unmasked", '''{n}She sniffs again, longer, and her lip curls.{/n}
 "No. His scent, but not his sweat. He sweats sugar. You sweat iron."
 {n}For a moment the Lady in Shadow looks almost embarrassed, which is more frightening than anything else she could do.{/n}
-"You came through his closets reeking of him, and you let me call you by his name. I did. Nobody will ever hear that I did." {n}Her voice drops to a purr.{/n} "Will they?"''',
+"You came through his closet wrapped in his spells, reeking of his sugar, and you let me call you by his name. I did. Nobody will ever hear that I did." {n}Her voice drops to a purr.{/n} "Will they?"''',
         c('"Nobody will hear it from me."', native_next=AUDIENCE_YOU, flags=(IMPERSONATED, KEPT)),
         c("[Laugh in his voice one more time.]", "bookmark")),
     nt("bookmark", '''{n}The room goes very cold, all at once, and the lamps lean away from her.{/n}
@@ -235,11 +237,19 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
     nar("offer", '''{n}The Commander never asked the question at Threshold. Nocticula answered it anyway, the first night the Commander slept in Alushinyrra after the war, from the chair nobody else was allowed to sit in.{/n}
 "Yes. Beside me, where I can see your hands. Do not make me say it twice. I will deny it."''',
         c("[Cross the room to her chair.]", "crossed"),
-        c('[Make her say it twice.] "I didn\'t hear you."', "twice")),
+        c("[Make her say it twice.] \"I didn't hear you.\"", "twice")),
     nar("crossed", '''{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}
-{n}When the Commander reached the chair she took hold of a collar with two fingers and drew it down to her. Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
+{n}At the chair she hooked a finger in the Commander's collar and held it there, not pulling, her mouth a breath away. "Well? Kneel, or kiss me. Choose quickly. I bore easily."{/n}''',
+        c("[Kiss her.]", "kissed"),
+        c("[Kneel.]", "knelt")),
+    nar("kissed", '''{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
+    nar("knelt", '''{n}"Better," said the Queen of Shadows, and let her robe fall open over the Commander's head like a tent. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}''', c()),
     nar("twice", '''{n}"You heard me," said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}
-{n}Then, very softly, so that nobody in her city would ever be able to swear to it: "Yes." She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips, and walked the Commander backwards to the bed step by step, watching. "There. Where I can see them." She pushed; the Commander fell; she followed, and settled astride, and the last lamp went out while she was still smiling.{/n}''', c()),
+{n}Then, very softly, so that nobody in her city would ever be able to swear to it: "Yes." She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips. "There. Where I can see them. Now walk me to the bed, or go back to your inn and dream about it."{/n}''',
+        c("[Walk her to the bed.]", "walked"),
+        c("[Go back to the inn.]", "inn")),
+    nar("walked", '''{n}The Commander walked her backwards, step by step, while she watched. At the bed she turned them both, pushed, and followed the Commander down, and settled astride, and the last lamp went out while she was still smiling.{/n}''', c()),
+    nar("inn", '''{n}The Commander went back to the inn. The dream came that night anyway, and it was hers, and she did not let the Commander wake from it until morning. At breakfast a note waited beside the bread, in a hand the Commander had never seen and knew at once: "Twice. Do not get used to it."{/n}''', c()),
 ])
 page("nocticula.trickster.epilogue.declined", "Eleven years",
     '''{n}At Threshold she had told the Commander to ask again when Areelu was dead and the Commander was not. The Commander asked. She kept the Commander waiting eleven years for the answer, which was yes, and then pretended there had never been a question.{/n}''',

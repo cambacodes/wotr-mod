@@ -148986,7 +148986,7 @@
         {
           "Id": "unmasked",
           "Speaker": "Nocticula",
-          "Text": "{n}She sniffs again, longer, and her lip curls.{/n}\n\"No. His scent, but not his sweat. He sweats sugar. You sweat iron.\"\n{n}For a moment the Lady in Shadow looks almost embarrassed, which is more frightening than anything else she could do.{/n}\n\"You came through his closets reeking of him, and you let me call you by his name. I did. Nobody will ever hear that I did.\" {n}Her voice drops to a purr.{/n} \"Will they?\"",
+          "Text": "{n}She sniffs again, longer, and her lip curls.{/n}\n\"No. His scent, but not his sweat. He sweats sugar. You sweat iron.\"\n{n}For a moment the Lady in Shadow looks almost embarrassed, which is more frightening than anything else she could do.{/n}\n\"You came through his closet wrapped in his spells, reeking of his sugar, and you let me call you by his name. I did. Nobody will ever hear that I did.\" {n}Her voice drops to a purr.{/n} \"Will they?\"",
           "Choices": [
             {
               "Text": "\"Nobody will hear it from me.\"",
@@ -149349,7 +149349,47 @@
         {
           "Id": "crossed",
           "Speaker": "Narrator",
-          "Text": "{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}\n{n}When the Commander reached the chair she took hold of a collar with two fingers and drew it down to her. Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}",
+          "Text": "{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}\n{n}At the chair she hooked a finger in the Commander's collar and held it there, not pulling, her mouth a breath away. \"Well? Kneel, or kiss me. Choose quickly. I bore easily.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Kiss her.]",
+              "Next": "kissed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Kneel.]",
+              "Next": "knelt",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "kissed",
+          "Speaker": "Narrator",
+          "Text": "{n}Her mouth was warm, which the Commander had not expected; the projection at Threshold had been cold. She pulled the Commander down into the chair and rose over them, astride, one hand flat on the Commander's chest to keep them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "knelt",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Better,\" said the Queen of Shadows, and let her robe fall open over the Commander's head like a tent. Her fingers closed in the Commander's hair, holding them exactly where she wanted them, and the lamps of her palace went out one by one, in no hurry at all.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -149365,7 +149405,47 @@
         {
           "Id": "twice",
           "Speaker": "Narrator",
-          "Text": "{n}\"You heard me,\" said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}\n{n}Then, very softly, so that nobody in her city would ever be able to swear to it: \"Yes.\" She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips, and walked the Commander backwards to the bed step by step, watching. \"There. Where I can see them.\" She pushed; the Commander fell; she followed, and settled astride, and the last lamp went out while she was still smiling.{/n}",
+          "Text": "{n}\"You heard me,\" said the Lady in Shadow, and the lamps in the room dimmed, and a great many things in Alushinyrra shivered for no reason anyone could name.{/n}\n{n}Then, very softly, so that nobody in her city would ever be able to swear to it: \"Yes.\" She rose from the chair, took the Commander's wrists in her cool hands and set them on her hips. \"There. Where I can see them. Now walk me to the bed, or go back to your inn and dream about it.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Walk her to the bed.]",
+              "Next": "walked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Go back to the inn.]",
+              "Next": "inn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "walked",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander walked her backwards, step by step, while she watched. At the bed she turned them both, pushed, and followed the Commander down, and settled astride, and the last lamp went out while she was still smiling.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "inn",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander went back to the inn. The dream came that night anyway, and it was hers, and she did not let the Commander wake from it until morning. At breakfast a note waited beside the bread, in a hand the Commander had never seen and knew at once: \"Twice. Do not get used to it.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
