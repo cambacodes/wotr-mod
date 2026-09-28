@@ -1662,7 +1662,10 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
     loss_like = re.compile(r"dead|gone|away|absent|killed|hostile|departed|dismissed|lost|fail|kicked|unavailable|sacrifice|ascend|lich|swarm|locust")
     native_on = {}
     # Branch markers (a native some scene forbids: a fight, a rejection, a death) stay absent; pure progress keys turn on.
-    forbidden = {f for x in model.scenes if not is_epilogue(x) for f in list(x["Forbids"]) + [g for n in x["Nodes"] for c in n["Choices"] for g in c["Forbids"]]}
+    # An inline scene (NativeReturnCue) forbidding a key marks a window inside a native dialog ("before she hears the
+    # answer"), not a branch, so its forbids do not keep a progress key off.
+    forbidden = {f for x in model.scenes if not is_epilogue(x) and not x.get("NativeReturnCue")
+                 for f in list(x["Forbids"]) + [g for n in x["Nodes"] for c in n["Choices"] for g in c["Forbids"]]}
     for s in model.scenes:
         for f in list(s["Requires"]) + [x for g in s["RequiresAnyGroups"] for x in g] + list(s["RequiresAny"]):
             if f in model.native and f not in MYTHIC and not loss_like.search(f) and f != "true_lich" and f not in forbidden:
