@@ -333,20 +333,21 @@ met(MIRROR, "The mirror", '"You\'ve been at that mirror for an hour."', [
         c("Continue", "voss", requires=(NEW_NAME,)),
         c("Continue", "which", forbids=(NEW_NAME,))),
     cam("voss", MIRROR_LEADS_NEW, c("Continue", "which")),
-    cam("which", '''"When I was little I used to practise faces in the mirror. Father's face, when he was pleased. The maids' faces, when they were frightened. The priest's face, when he was praying over me. I learned them all, so I'd know what people meant."
-{n}She lowers the veil.{/n} "But I never practised my own. I never knew what it was supposed to look like. I still don't."''',
+    cam("which", '''"Father brought healers to the house when I was small, and clerics, and in the end exorcists. I remember their faces better than my own. The clerics had a face for praying over me: very gentle, and a little afraid to touch." {n}She lowers the veil.{/n}
+"I used to copy it in the glass, afterwards, so I would know it when I saw it again. Or I tell myself I did. I tell myself a great many things about that house. Some of them are even true. I never once practised my own face. I never knew what it was supposed to look like."''',
         c('"Let me show you."', "show"),
         c('[Trickster] "Try mine."', "mine"),
         c('"Maybe it looks like this. Like now."', "now")),
-    cam("show", '''{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, warily, and then less warily.{/n}
-"That's the face you make when you're looking at me," {n}she says slowly.{/n} "I've seen it a hundred times. I never knew it was also mine." {n}She watches the two faces in the mirror, very still.{/n} "They're the same. How strange. How strange that they're the same."''',
+    cam("show", '''{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, and does not look away, and her face does nothing at all.{/n}
+"That's the face you make when you're looking at me," {n}she says slowly.{/n} "I've seen it a hundred times. I was hoping it would tell me something." {n}A small, cold smile.{/n} "It doesn't. It only tells me what you want. You want me to be someone who can be shown things. That's very sweet. It's also the face the clerics had."''',
         c("Continue", "close")),
     cam("mine", '''{n}You make your Commander's face at her: the council-of-war face, the stern one. She copies it in the mirror, perfectly, instantly, down to the line between the eyebrows. Then you make the face you make when you are lying to a demon. She copies that too, and then she stops, and laughs.{/n}
-"I know that one," {n}she says.{/n} "That's the face you had when you told me to die convincingly. That's my favourite face in the whole world." {n}She holds it for a moment in the glass, your lie on her mouth.{/n} "May I keep it?"''',
+"I know that one," {n}she says.{/n} "That's the face you had when you told me to die convincingly. That's my favourite face in the whole world." {n}She holds it for a moment in the glass, your lie on her mouth, and it fits her far too well.{/n} "May I keep it? I shan't tell you what I'll use it for."''',
         c("Continue", "close")),
-    cam("now", '''"Like now." {n}She looks at the woman in the glass, with her hair down and the veil in her hands and no paint on her mouth.{/n} "I don't know this woman. She looks tired. She looks..." {n}She stops.{/n} "She looks as if she's about to say something true, and she's afraid it will be the last true thing she has."''',
+    cam("now", '''"Like now." {n}She looks at the woman in the glass, with her hair down and the veil in her hands and no paint on her mouth. Something passes over the reflection's face that does not pass over hers.{/n}
+"I don't like her," {n}she says, quite calmly.{/n} "She looks as if she might be about to say something true. Women who say true things in my family end up in the garden, under the roses." {n}She turns the glass to the wall.{/n} "There. Now nobody has to find out what she was going to say."''',
         c("Continue", "close")),
     cam("close", '''{n}She hangs the veil on the corner of the mirror, where it stirs in the draught from the window like something breathing.{/n}
-"I'll leave it there," {n}she says.{/n} "In case I need to be dead again. One never knows." {n}She turns away from the glass, towards you, and she does not look back at it.{/n}''',
-        c("[Take her hand]")),
+"I'll leave it there," {n}she says.{/n} "In case I need to be dead again. One never knows." {n}She does not look at the glass again that night, and when you wake in the small hours she is standing in front of it in the dark, perfectly still, with the veil in her hands.{/n}''',
+        c("[Leave her to it]")),
 ], requires=("trickster.ever", COMMITTED, SHELF), delay=72, optional=True)

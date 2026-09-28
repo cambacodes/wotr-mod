@@ -119,8 +119,10 @@ met(NEW_FRIEND, "A new friend", '"Who was that you were laughing with?"', [
     cam("warned", '''"Consumption." {n}Camellia holds up the ribbon, blue, with a little bow.{/n} "You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth."
 {n}She winds the ribbon round her finger, and unwinds it.{/n} "You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand." {n}She smiles, slowly.{/n} "That's the most jealous thing anyone has ever done for me. I shall keep the ribbon forever."''',
         c("[Take her hand]", flags=(FRIEND_WARNED,))),
-    cam("watch", '''"You'll be watching." {n}She turns round at last, and her face is alight.{/n} "Oh, that's so much better than stopping me. Now every evening when I go walking with Ilse, I'll know you're counting the days. And I'll come back to you, and you'll look at me, and you'll wonder."
-{n}She crosses the room and kisses you, lightly, on the mouth.{/n} "I'll wonder too. We'll wonder together. It'll be the longest, sweetest thing I've ever shared with anyone."
-{n}Down in the yard, you can hear Ilse laughing, like a wren.{/n}''',
-        c("[Listen to her laugh]", flags=(FRIEND_WATCHED,))),
+    cam("watch", '''"You'll be watching." {n}She turns round at last, and looks at you for a long moment, as if you were a card she had not expected to turn up.{/n}
+"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it." {n}Her voice is perfectly pleasant.{/n} "You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me."''',
+        c("Continue", "cost")),
+    nar("cost", '''{n}Down in the yard, Ilse is laughing, like a wren. She sees you at the window and waves, and holds up a blue ribbon for you to admire: for her wedding, she calls up. For the Third Company's sergeant. The lady Camellia helped her choose it.{/n}
+{n}Camellia waves back, very prettily, and does not take her eyes off your face while she does it.{/n}''',
+        c("[Wave back]", flags=(FRIEND_WATCHED,), alignment=("Evil", 1))),
 ], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=96, optional=True)
