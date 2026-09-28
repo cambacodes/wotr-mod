@@ -893,9 +893,11 @@ namespace Tirabade
                     && PresenceRelationship(scene.InteractionHub) == scene.Relationship))
                     throw new InvalidOperationException("Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
                         + "relationship whose presence has Dialog \"hub\"): " + scene.Id);
-                // E13: a Trickster device may meet Nurah physically on explicit native lists (prison, pardon, Camellia).
-                if (scene.Relationship == "nurah" && !IsRemote(scene) && !IsNurahHubScene(scene) && !IsPresenceHubScene(scene)
-                    && !(scene.TricksterDevice && scene.InteractionHub == null && scene.AnswerLists.Length > 0))
+                // E13: a Trickster device may meet Nurah physically on explicit native lists (prison, pardon, Camellia); an E6
+                // reaction to her route is spoken by its reactor on the reactor's own native list, without Nurah present.
+                if (scene.Relationship == "nurah" && !IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                    && !IsNurahHubScene(scene) && !IsPresenceHubScene(scene)
+                    && !((scene.TricksterDevice || scene.Reaction) && scene.InteractionHub == null && scene.AnswerLists.Length > 0))
                     throw new InvalidOperationException("Physical Nurah scenes require the authored arrival hub: " + scene.Id);
                 if (scene.ManualOnly && !IsRemote(scene))
                     throw new InvalidOperationException("Manual-only delivery requires a remote scene: " + scene.Id);
