@@ -104,7 +104,10 @@ internal static class TargonaTricksterTests
         var joke = setup.Nodes.Single(n => n.Id == "start").Choices[0];
         check(joke.Mythic == "PlayerIsTrickster" && joke.Alignment?.Direction == "Chaotic" && joke.Alignment.Value == 1
               && joke.Text.StartsWith("[Spend it again, quietly]", StringComparison.Ordinal), "The primer lost its joke or its cost.");
-        var primed = After(setup, lab, "start", 0);
+        var primed = After(setup, lab, "seal", 0);
+        check(setup.Nodes.Single(n => n.Id == "seal").Text.Contains("wand", StringComparison.Ordinal)
+              && setup.Nodes.Single(n => n.Id == "start").Text.Contains("sealed a shred", StringComparison.Ordinal),
+            "The primer does not show the sealing, or its canon precedent.");
         check(primed.Has(P + "primed"), "Trk_Targona_Setup: flags.");
         check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab"), Committed),
             "Trk_Targona_Setup: the commit is unreachable after the blow.");
@@ -127,8 +130,10 @@ internal static class TargonaTricksterTests
               && oneSoul.Nodes.Single(n => n.Id == "full").Text.Contains("It was used. It was not spent."),
             "The charge is not shown used and unspent.");
         var returned = After(oneSoul, killed, "news", 0);
-        check(returned.Has(P + "returned") && returned.Has(P + "cost.struck_down") && returned.Has("targona.started"),
-            "Trk_Targona_KilledPrimed: flags.");
+        check(returned.Has(P + "returned") && returned.Has(P + "cost.struck_down") && returned.Has("targona.started")
+              && returned.Has(P + "cost.shard_carried"), "Trk_Targona_KilledPrimed: flags.");
+        var go = oneSoul.Nodes.Single(n => n.Id == "news").Choices[0];
+        check(go.Crusade?.Resource == "Favors" && go.Crusade.Amount == -150, "The return costs the crusade nothing.");
         check(Rules.Available(story, furlough, returned), "Trk_Targona_KilledPrimed: the furlough does not open.");
         check(Reaches(returned, Committed), "Trk_Targona_KilledPrimed: the commit is unreachable.");
 
