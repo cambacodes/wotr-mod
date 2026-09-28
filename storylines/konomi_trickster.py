@@ -182,13 +182,13 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
       c('[Ask her to stay, for yourself] "Stay. Not for Nerosyan. For me."', "courted", forbids=("konomi.lovers",)),
       c('[Ask her to stay as envoy] "Stay as Nerosyan\'s envoy. The chair is yours."', "envoy")),
     k("answer", '''{n}She does not answer at once. She opens the fan, and closes it, and sets it on her closed ledger as if it were a paperweight.{/n}
-"I am a politician. I do not fall in love; I negotiate the terms of my own surrender."
-"Very well. The terms are these. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
+"Three days on your road, and you wait until the business is sealed to say it. You did the same at the council table: the price first, the thing you actually wanted afterwards, when there was nobody left to bargain with but me."
+"Very well. My terms. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
       c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
     k("courted", '''{n}She looks at you for a long moment over the closed fan, as if you had put a clause in front of her in a language she reads well and did not expect to see here.{/n}
 "You have never once asked me to supper, Commander. You dismissed me in front of a council. Then you turned a road round to fetch me back, and paid for it with a letter that will cost you your nobles' grain for a season."
-"That is either the most romantic thing anyone has ever done for me or the most insulting. I have had three days on your road to decide which." {n}The corner of her mouth moves.{/n} "I have decided it is both. I am a politician. I do not fall in love; I negotiate the terms of my own surrender. So. The terms."
+"That is either the most romantic thing anyone has ever done for me or the most insulting. I have had three days on your road to decide which." {n}The corner of her mouth moves.{/n} "I have decided it is both, and that I will take it anyway. So. My terms."
 "I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
       c('[Ask what she wants] "What do you want, Konomi? Not the capital. You."', "no")),
