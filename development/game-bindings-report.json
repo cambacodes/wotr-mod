@@ -1,14 +1,18 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-hepzamirah\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1958,
-  "unique_targets": 496,
+  "binding_uses": 2063,
+  "unique_targets": 518,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
       "path": "Items/Areas/Act_3_DemonsHerecy/Wintersun/SoanaMedallion.jbp",
       "type": "BlueprintItem"
+    },
+    "b3f92e1ee50f7e34cb90ffbd1ae6c74c": {
+      "path": "Items/Areas/Act_4_MidnightIsles/ColyphyrDungeon/Mutasafen_Letter.jbp",
+      "type": "BlueprintItemNote"
     },
     "6a7cdeb14fc6ef44580cf639c5cdc113": {
       "path": "Items/Jewelry/Diamond.jbp",
@@ -106,6 +110,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Soana_Wintersun.jbp",
       "type": "BlueprintUnit"
     },
+    "bd2a925967b5f5f489f6da0b03236d03": {
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/Colyphir/Hepzamirah.jbp",
+      "type": "BlueprintUnit"
+    },
     "b7e819e2a9bb0804abcbffe8e7d91ba6": {
       "path": "Units/NPC/Unique/Act_4_MidnightIsles/FleshMarket/Chivarro.jbp",
       "type": "BlueprintUnit"
@@ -113,6 +121,14 @@
     "a32a07903e428d34cb0e98a804d40569": {
       "path": "Units/NPC/Unique/Act_4_MidnightIsles/RaptureOfRupture/Vellexia_Default.jbp",
       "type": "BlueprintUnit"
+    },
+    "78549b805f0a63e41805cfe3e02e2ea8": {
+      "path": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/LabyrinthOfBaphomet/HepzamirahGhost.jbp",
+      "type": "BlueprintUnit"
+    },
+    "3b8021631cd1b7d4eb749601047a7bda": {
+      "path": "Weapons/Items/UniquePF2/Chapter4/DreadfulOnslaughtItem.jbp",
+      "type": "BlueprintItemWeapon"
     },
     "31bab5549f7ea384186159a238360c8d": {
       "path": "World/Areas/Act_3_DemonsHerecy/AzataIsland/AzataIsland.jbp",
@@ -132,6 +148,10 @@
     },
     "7847c3e3537104f4694167af0b9fcd0e": {
       "path": "World/Areas/Act_4_MidnightIsles/Nexus/Nexus.jbp",
+      "type": "BlueprintArea"
+    },
+    "3538511f16d45f44f8249ff710777e2d": {
+      "path": "World/Areas/Act_5_HeraldOfTheIvoryLabyrinth/TheIvoryLabyrinth/TheIvoryLabyrinth.jbp",
       "type": "BlueprintArea"
     },
     "73c5728c4c6658344bedcc1b666e598c": {
@@ -466,6 +486,22 @@
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0017.jbp",
       "type": "BlueprintCue"
     },
+    "995aaa29e772b594a966a2f133be702c": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "d293b540fcc854945926bdba02b412ce": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main/Answer_0005.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "b03aa7395540e8040a55a62309caaa1a": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main/Cue_0013.jbp",
+      "type": "BlueprintCue"
+    },
+    "49356164c129c784b9ffc28888132245": {
+      "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main/Cue_0017.jbp",
+      "type": "BlueprintCue"
+    },
     "52cca621c1d850641abdde32373ca592": {
       "path": "World/Dialogs/c4/FleshMarket/HologramSlaver/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
@@ -630,9 +666,21 @@
       "path": "World/Dialogs/c5/KTC_WintersunHelp/Cue_0037.jbp",
       "type": "BlueprintCue"
     },
+    "1e33632e47c601145aac9795f52e49d1": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Alderpash/Answer_0115.jbp",
+      "type": "BlueprintAnswer"
+    },
     "cbd2f289d8173fb41a231772290440ba": {
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/AnswersList_0071.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "96ae71e9f4f236a4cb983f5d439ea25a": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "039978569cf79814899362d3f1b5b45b": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0122.jbp",
+      "type": "BlueprintCue"
     },
     "537a72b88a457dc4eb92194611ddccba": {
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0125.jbp",
@@ -645,6 +693,18 @@
     "257e13519dd1f5b4c8d992865ba0f609": {
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Prison_Baph_dialogue.jbp",
       "type": "BlueprintDialog"
+    },
+    "f457c8326a05b674c83a1c836636f99d": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "001f33d929abf1440945839ace51891a": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "a4011b00473994b4dadc6aed381cf504": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_HepzamirahGhost/Cue_0016.jbp",
+      "type": "BlueprintCue"
     },
     "b936cf96571c0354fb7a57f4987fea5c": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0041.jbp",
@@ -770,6 +830,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Finnean/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "174d6c94b6725f44aad1d2a76993a926": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Grimbor/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "66385ad77fa743e4bb1234078dbd804c": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Lann/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -809,6 +873,14 @@
     "e41585da330233143b34ef64d7d62d69": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Woljif/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "5de3ea4370854d229e047d95980006c9": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0004.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "717a2f84c7dbfd24dbb474abd26211b3": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0022.jbp",
+      "type": "BlueprintAnswer"
     },
     "77a1253ff7aa8b24e865dc784db866b3": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0008.jbp",
@@ -1054,6 +1126,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightOnThirdDate.jbp",
       "type": "BlueprintEtude"
     },
+    "d4657f5e560ea29408b0ba0f97f2e7bc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/ColyphyrStory/ColyphyrStates/ColyphyrHepzamirahDead.jbp",
+      "type": "BlueprintEtude"
+    },
     "61b07b3511bb71646a717c2b3c0f3bf6": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04_Extra/Chapter04_Outcomes/Nocticula_GiftBroken.jbp",
       "type": "BlueprintEtude"
@@ -1132,6 +1208,18 @@
     },
     "f55fcc7bf5fd0c14384cb15dce345c8e": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d21eb4b5e2164aeaa32e48234701c653": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberKilledInKenabres.jbp",
+      "type": "BlueprintEtude"
+    },
+    "10320ad437121a44eb629d5fa9a79c75": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "dd138e723bf3dd94caddc127a23788ad": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
     "dc908c2490d6f4c4393ff26967aa6566": {

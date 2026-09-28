@@ -224,6 +224,14 @@ internal static class Program
                 "Removable item is not a BlueprintItem: " + guid);
             Seed<Kingmaker.Blueprints.Items.BlueprintItem>(guid);
         }
+        // E10: an InventoryItems binding resolves from the archive like any item (the game loads it), so seed it before Build,
+        // or the relationships that read it degrade. Removable items are seeded above.
+        foreach (string guid in story.InventoryItems.Values.Distinct().Except(story.RemovableItems))
+        {
+            Check(((string)native[guid]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last().StartsWith("BlueprintItem", StringComparison.Ordinal),
+                "Inventory item binding is not a BlueprintItem: " + guid);
+            Seed<Kingmaker.Blueprints.Items.BlueprintItem>(guid);
+        }
         // E12 presence areas outside the capital are native areas the game loads; seed them like the capital fixture.
         foreach (string guid in story.Presences.Values.Select(p => p.Area).Distinct())
         {
