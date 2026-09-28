@@ -181467,7 +181467,7 @@
         {
           "Id": "line",
           "Speaker": "Narrator",
-          "Text": "{n}There is one more line beneath it, added later, in the same laughing hand: \"Neither. Told you so.\"{/n}\n{n}And beneath that, in her small neat hand, the last thing she ever wrote in any of her notebooks, which is not an observation, and not a correction, and not a measurement of anything at all: \"Yes.\"{/n}",
+          "Text": "{n}There is one more line beneath it, added later, in the same laughing hand: \"Neither. Told you so.\"{/n}\n{n}And beneath that, in her small neat hand, the last thing she ever wrote in any of her notebooks: \"Result: neither. Experiment continues. The bet is still open, and I intend to win it.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",

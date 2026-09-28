@@ -1575,7 +1575,7 @@ page("areelu.trickster.report.afterword", "Afterword, in another hand", [
         c("[Add a line of your own.]", "line"),
         c("[Leave the cover as it is.]", "leave")),
     nar("line", '''{n}There is one more line beneath it, added later, in the same laughing hand: "Neither. Told you so."{/n}
-{n}And beneath that, in her small neat hand, the last thing she ever wrote in any of her notebooks, which is not an observation, and not a correction, and not a measurement of anything at all: "Yes."{/n}'''),
+{n}And beneath that, in her small neat hand, the last thing she ever wrote in any of her notebooks: "Result: neither. Experiment continues. The bet is still open, and I intend to win it."{/n}'''),
     nar("leave", '''{n}The Commander left the cover as it was. Nobody has added anything since.{/n}
 {n}Scholars who have handled the report say that the back cover is worn smooth in one place, as if someone had rested a thumb there, often, for many years: over the words "worth it".{/n}'''),
 ], requires=("trickster.ever", STRUCK, ON_SCREEN, SURVIVES), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
