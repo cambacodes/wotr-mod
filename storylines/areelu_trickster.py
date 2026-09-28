@@ -61,6 +61,9 @@ REMINDED = P + "threshold_reminded"     # variant only: the wager named at the g
 REAL_HAND = P + "real_hand_asked"       # variant only: "Bring the real hand to Threshold."
 LENS_HELD = P + "lens_held"             # the Commander holds her lens (Chapter 5 correspondence)
 LENS_ASKED = P + "lens.asked"            # her three questions answered through the lens
+NAMED = P + "stake_named"               # the loophole: "what is left of her" is her notes (cell joke, late terms, Threshold)
+WOUND_CEDED = P + "cost.wound_ceded"    # the price of the term at Threshold: the Commander's wound is hers, win or lose
+SURVIVES = P + "survives"               # Derived: [died at the finale + stake named] or [the punchline]
 WITCH_BET = P + "cost.bet_with_the_witch"
 LATE = P + "cost.late"
 ON_SCREEN = P + "rivalry_on_screen"     # Derived: bet_offered | rivalry.lens
@@ -80,6 +83,8 @@ CRIB_MYSTERY = "areelu.crib.mystery"    # AreeluCell/Answer_0015 "Closeness to m
 YEARS_ASKED = "areelu.years_asked"      # LetsFinalFight/Answer_0054 -> Cue_0055 "Years, or decades, perhaps."
 TRICKSTER_ENDINGS = ("ending.trickster", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.trickster_full")
 NENIO_GONE = ("nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out", "nenio.dissolved")
+
+DERIVED = {SURVIVES: [[DIED, NAMED], [CHEATED]]}
 
 SELECTED_ANSWERS = {
     YEARS_ASKED: "73f857edb12933948b735e0364fcf1ca",
@@ -424,7 +429,12 @@ inline("areelu.trickster.wager.struck", "Whoever burns pays up", 5, '"One of us 
         c("[Shake the hand that isn't there.]", native_next=CELL_FAREWELL, flags=(STRUCK, STARTED, WITCH_BET)),
         c('[Joke] "I\'ll shake when you\'re here in person. Bring the real hand to Threshold."', native_next=CELL_FAREWELL,
           flags=(STRUCK, STARTED, WITCH_BET, REAL_HAND)),
-        c("[Put your hand into the light where hers should be.]", "into")),
+        c("[Put your hand into the light where hers should be.]", "into"),
+        c('[Joke] "Sure I know. Your notes. You\'re mostly paper by now."', "paper")),
+    ar("paper", '''{n}The projection goes very still. Then, slowly, the corner of her mouth moves.{/n}
+"Paper." "A century of it: the calculations on my cell wall, the graft, the soul research, every ledger of every crystal. Everything else I was went into the Wound." {n}She considers it the way she considers everything, from the end backwards, and you can see her decide that it is true.{/n}
+"Very well. What is left of me is my notes. Remember that you said it, Commander. I always hold people to the terms they choose."''',
+        c("[Shake the hand that isn't there.]", native_next=CELL_FAREWELL, flags=(STRUCK, STARTED, WITCH_BET, NAMED))),
     ar("into", '''{n}Your hand passes into the projection up to the wrist. There is nothing there: only a faint cold, like putting your hand into a stream in early spring, and the hum of the device in your bones.{/n}
 {n}She does not move. She looks down at your hand inside hers, and for a long moment her face is perfectly unreadable.{/n}
 "You are the first person who has ever done that," she says at last. "The others struck at it, or wept at it, or smashed the device. You shook hands with a ghost to seal a bet. I will remember it. I remember everything that is done to me."''',
@@ -567,7 +577,7 @@ inline("areelu.trickster.witch.the_clause", "The clause", 6,
 # --- Chapter 6, defeated at Threshold (E14b): the late wager and the wager raised (the commit, in play) ---------------
 
 LATE_TAKE = c('[Take her terms] "You stake what is left of you. I stake my wound. Whoever burns at Threshold pays up."',
-              mythic="Trickster", alignment=("Chaotic", 1), flags=(STRUCK, STARTED, WITCH_BET, LATE))
+              mythic="Trickster", alignment=("Chaotic", 1), flags=(STRUCK, STARTED, WITCH_BET, LATE, NAMED))
 LATE_REFUSE = c('[Refuse] "No bets with you."', flags=(CLOSED,))
 
 at_threshold("areelu.trickster.wager.at_threshold", "Terms, and worse", '"Before this ends, Areelu: I still have a bet for you."', [
@@ -616,11 +626,26 @@ at_threshold("areelu.trickster.wager.raised", "A longitudinal experiment", '"The
         c('[Ask her to raise them] "Raise them? Here? You\'d have to trust me."', "refused")),
     ar("thirty", '''"Thirty years." {n}She repeats it with clinical interest, as if you had named a dosage.{/n}
 "I opened the Wound before your grandparents were born, Commander, and the Abyss runs in my veins. Thirty is not a number I have any use for." {n}Her eyes narrow.{/n} "Unless you know something I do not. You have been knowing things you should not since Kenabres."''',
-        c('"Call it a prediction."', "her_choice", forbids=(YEARS_ASKED,)),
+        c('"Call it a prediction."', "collect", forbids=(YEARS_ASKED,)),
         c('"You told me yourself, at the rift. Years, or decades. I picked a number."', "decades", requires=(YEARS_ASKED,)),
-        c('[Joke] "Call it a punchline. You\'ll get it later."', "her_choice")),
+        c('[Joke] "Call it a punchline. You\'ll get it later."', "collect")),
     ar("decades", '''"I said the Wound would kill me in years, or decades." {n}Her voice is flat.{/n} "I did not say which."
 "You have chosen a number for me, as if you meant to hold me to it. You are either very foolish or very well informed, and I have not yet decided which frightens me more."''',
+        c("Continue", "collect")),
+    ar("collect", '''"And if I burn, Commander?" {n}Her eyes do not leave your face.{/n} "You have never said what you collect. 'What is left of me' is not a quantity. I will not sign a term I cannot measure."''',
+        c('"Your notes. A century of them. That\'s what\'s left of you."', "priced", forbids=(NAMED,)),
+        c('"We named it in your cell. Your notes."', "priced_known", requires=(NAMED,)),
+        c('"Your life. Nothing less."', "life")),
+    ar("priced", '''"My notes." {n}She is silent for a long moment, and you can see her test it, the way she tests everything: from the end backwards.{/n}
+"Yes. A century of paper. That is exactly what is left of me; everything else went into the Wound." "Very well. If you collect my notes in place of my life, you pay for the privilege. Your wound is mine, win or lose. For study."''',
+        c('"Agreed."', "her_choice", flags=(NAMED, WOUND_CEDED)),
+        c('"No. Not the wound."', "life")),
+    ar("priced_known", '''"My notes. Yes. You said so in my cell, and I have thought of little else." {n}Blood runs from her wound; she does not look at it.{/n}
+"Then here is my price for letting paper burn in my place. Your wound is mine, win or lose. For study. You will not get a better term from me, and you will not get this one twice."''',
+        c('"Agreed."', "her_choice", flags=(NAMED, WOUND_CEDED)),
+        c('"No. Not the wound."', "life")),
+    ar("life", '''"My life, then." {n}She nods, once, as if a sum had come out the way she expected.{/n}
+"That is the term the hunters wanted, and the Queen's knights, and the Lady of Graves. You are in good company, Commander. If I burn, I burn, and you collect nothing but ash."''',
         c("Continue", "her_choice")),
     ar("her_choice", '''{n}For a moment she is silent, and you can see her calculate it, as she has calculated everything for a century.{/n}
 "If neither of us burns, I spend what is left of me studying you, at close range, until I understand how you did it. And you spend it being studied."
@@ -712,8 +737,8 @@ def page(id, title, nodes, requires, forbids=(), any_groups=(), after=None, sequ
 
 def report(id, title, nodes, after, any_group=None):
     """A page of her report after Threshold: the romance survived, by the rewrite (mortal) or by the punchline (the witch)."""
-    groups = (COMMITTED_ANY, (DIED, CHEATED)) + ((tuple(any_group),) if any_group else ())
-    page(id, title, nodes, requires=("trickster.ever", STRUCK, ON_SCREEN), forbids=ROMANCE_FORBIDS,
+    groups = (COMMITTED_ANY,) + ((tuple(any_group),) if any_group else ())
+    page(id, title, nodes, requires=("trickster.ever", STRUCK, ON_SCREEN, SURVIVES), forbids=ROMANCE_FORBIDS,
          any_groups=groups, after=after, overrides=ROMANCE_OVERRIDES)
 
 
@@ -728,7 +753,14 @@ page("areelu.trickster.finale.rewrite", "What burned", [
               forbids=(SAC_TRICK, FIGHT), any_groups=((INCINERATED, SAC_WOUND, SAC_BEFORE),)),
             p("Fine. Then how about this: what burned was a century of notes. The graft, the soul research, the "
               "Nahyndrian ledgers, every page she had ever written in that prison. The wager had said that whoever burned "
-              "at Threshold would pay up. Nobody had specified what with."),
+              "at Threshold would pay up with what was left of them, and she had agreed, in front of a witness, what that "
+              "was. She had always held people to the terms they chose. The terms held her."),
+            p("The new rifts opened anyway, as the joke required, and wider than any scholar has since been able to "
+              "explain: a century of the Abyss's own research burns hotter than one woman's life. Everything the "
+              "Crossroads became, it became on her notes.", requires=(SAC_TRICK,)),
+            p("It cost the Commander the wound. That had been her price at Threshold for letting paper burn in her "
+              "place: win or lose, the Commander's wound was hers to keep, for study. She collected it the same night, "
+              "with a silver probe, and it never closed again for anyone but her.", requires=(WOUND_CEDED,)),
             p("What the Commander's blade struck down in the heart of the fortress was her last projection. She had always "
               "kept one lamp burning in another room; the Commander had seen as much in her laboratory cell, where a "
               "projection was all there had ever been to smash.", requires=(FIGHT,), forbids=(SAC_TRICK,)),
@@ -750,7 +782,7 @@ page("areelu.trickster.finale.rewrite", "What burned", [
               "a century of her work was burning, and understood, too late to say so, that this was the fire the "
               "hunters had wanted all along, and that the joke had given it to them, and that she knew."),
         ))],
-    requires=("trickster.ever", STRUCK, DIED, ON_SCREEN), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
+    requires=("trickster.ever", STRUCK, DIED, NAMED, ON_SCREEN), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
     overrides=ROMANCE_OVERRIDES)
 
 page("areelu.trickster.finale.after", "The bet is still open", [
@@ -774,8 +806,17 @@ page("areelu.trickster.finale.after", "The bet is still open", [
               "down and did not need to: \"Further observation required.\" She wrote it on the first page of the new "
               "notebook, and underlined it twice.", requires=(NOTICED,)),
         ))],
-    requires=("trickster.ever", STRUCK, DIED), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
+    requires=("trickster.ever", STRUCK, DIED, NAMED), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
     after="scene:areelu.trickster.finale.rewrite", overrides=ROMANCE_OVERRIDES)
+
+# The failure path: the wager was struck, but what she staked was never named, so there is nothing for the rewrite to
+# collect in place of her life. Her canon fate stands (on every other path it always does).
+page("areelu.trickster.finale.unnamed", "Nobody said what with", [
+    nar("end", '''{n}The wager said that whoever burned at Threshold would pay up. She burned, and nobody had ever said what with.{/n}
+{n}So she paid the way the hunters of Threshold had always meant her to, and the Queen's knights, and the Lady of Graves: with the only thing anybody had ever asked of her. The Commander tried, afterwards, to rewrite it. There was nothing to rewrite it with. The terms had been left open, and an open term is a term the other side fills in.{/n}
+{n}Among what was found in her cell under Threshold was a notebook with a single page written in it, dated the night of the wager: "Subject did not name the stake. Neither did I. One of us will regret it." It did not say which.{/n}''')],
+    requires=("trickster.ever", STRUCK, DIED), forbids=(NAMED, *ROMANCE_FORBIDS), any_groups=(COMMITTED_ANY,),
+    after="scene:areelu.trickster.finale.after", overrides=ROMANCE_OVERRIDES)
 
 page("areelu.trickster.finale.survived", "Neither", [
     nar("end", '''{n}Neither of them burned, which was the bet the Commander had made at Iz: "My money's on neither."{/n}
@@ -798,7 +839,7 @@ page("areelu.trickster.finale.survived", "Neither", [
               "\"does not know how to watch a thing end. That is either why it won, or how.\""),
         ))],
     requires=("trickster.ever", CHEATED, STRUCK, ON_SCREEN), forbids=(DIED, *ROMANCE_FORBIDS), any_groups=(COMMITTED_ANY,),
-    after="scene:areelu.trickster.finale.after", overrides=ROMANCE_OVERRIDES)
+    after="scene:areelu.trickster.finale.unnamed", overrides=ROMANCE_OVERRIDES)
 
 
 # --- The report (after Threshold): her notes on the longitudinal experiment, page by page -------------------------------
@@ -1078,6 +1119,8 @@ report("areelu.trickster.report.wound", "The report: the wound", [
               forbids=MORTAL),
             p('"I keep the wound," said Areelu Vorlesh, rolling up her sleeves. "Those were the terms. For study. I did '
               'not say I would let it keep you."'),
+            p("It had been her price at Threshold, and the Commander had paid it without haggling. She had never once let "
+              "the Commander forget it.", requires=(WOUND_CEDED,)),
         )),
     nar("take", '''{n}She looked at the Commander with pure contempt.{/n}
 {n}"You think I bet on your wound so that I could cut it out of you in your sickbed, like a thief? I bet on it so that nobody else would have it. Not the Lady of Graves, not the Abyss, not you. Lie down."{/n}''',
@@ -1472,7 +1515,7 @@ page("areelu.trickster.report.afterword", "Afterword, in another hand", [
 {n}And beneath that, in her small neat hand, the last thing she ever wrote in any of her notebooks, which is not an observation, and not a correction, and not a measurement of anything at all: "Yes."{/n}'''),
     nar("leave", '''{n}The Commander left the cover as it was. Nobody has added anything since.{/n}
 {n}Scholars who have handled the report say that the back cover is worn smooth in one place, as if someone had rested a thumb there, often, for many years: over the words "worth it".{/n}'''),
-], requires=("trickster.ever", STRUCK, ON_SCREEN), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY, (DIED, CHEATED)),
+], requires=("trickster.ever", STRUCK, ON_SCREEN, SURVIVES), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
     after="scene:areelu.trickster.report.promise", overrides=ROMANCE_OVERRIDES)
 
 
@@ -1518,7 +1561,12 @@ page("areelu.trickster.finale.ascended", "Unsettled", [
 
 
 def integrate(payload):
-    """Native keys this route reads that the world bindings do not carry yet; conflicts are errors."""
+    """Native keys this route reads that the world bindings do not carry yet, and its Derived survival key."""
+    for key, groups in DERIVED.items():
+        have = payload.setdefault("Derived", {}).get(key)
+        if have is not None and have != groups:
+            raise ValueError("Conflicting Areelu derived key: " + key)
+        payload["Derived"][key] = [list(g) for g in groups]
     for key, guid in SELECTED_ANSWERS.items():
         have = payload.setdefault("SelectedAnswers", {}).get(key)
         if have is not None and have != guid:

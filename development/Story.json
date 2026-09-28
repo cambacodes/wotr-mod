@@ -174587,6 +174587,36 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Sure I know. Your notes. You're mostly paper by now.\"",
+              "Next": "paper",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "paper",
+          "Speaker": "Areelu",
+          "Text": "{n}The projection goes very still. Then, slowly, the corner of her mouth moves.{/n}\n\"Paper.\" \"A century of it: the calculations on my cell wall, the graft, the soul research, every ledger of every crystal. Everything else I was went into the Wound.\" {n}She considers it the way she considers everything, from the end backwards, and you can see her decide that it is true.{/n}\n\"Very well. What is left of me is my notes. Remember that you said it, Commander. I always hold people to the terms they choose.\"",
+          "Choices": [
+            {
+              "Text": "[Shake the hand that isn't there.]",
+              "Next": null,
+              "Set": [
+                "areelu.trickster.wager_struck",
+                "areelu.started",
+                "areelu.trickster.cost.bet_with_the_witch",
+                "areelu.trickster.stake_named"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "13e9433101b3586488df88c296d91ed2"
             }
           ],
           "Portrait": "Areelu"
@@ -175310,7 +175340,8 @@
                 "areelu.trickster.wager_struck",
                 "areelu.started",
                 "areelu.trickster.cost.bet_with_the_witch",
-                "areelu.trickster.cost.late"
+                "areelu.trickster.cost.late",
+                "areelu.trickster.stake_named"
               ],
               "Requires": [],
               "Forbids": [],
@@ -175370,7 +175401,8 @@
                 "areelu.trickster.wager_struck",
                 "areelu.started",
                 "areelu.trickster.cost.bet_with_the_witch",
-                "areelu.trickster.cost.late"
+                "areelu.trickster.cost.late",
+                "areelu.trickster.stake_named"
               ],
               "Requires": [],
               "Forbids": [],
@@ -175406,7 +175438,8 @@
                 "areelu.trickster.wager_struck",
                 "areelu.started",
                 "areelu.trickster.cost.bet_with_the_witch",
-                "areelu.trickster.cost.late"
+                "areelu.trickster.cost.late",
+                "areelu.trickster.stake_named"
               ],
               "Requires": [],
               "Forbids": [],
@@ -175450,7 +175483,8 @@
                 "areelu.trickster.wager_struck",
                 "areelu.started",
                 "areelu.trickster.cost.bet_with_the_witch",
-                "areelu.trickster.cost.late"
+                "areelu.trickster.cost.late",
+                "areelu.trickster.stake_named"
               ],
               "Requires": [],
               "Forbids": [],
@@ -175619,7 +175653,7 @@
           "Choices": [
             {
               "Text": "\"Call it a prediction.\"",
-              "Next": "her_choice",
+              "Next": "collect",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -175639,7 +175673,7 @@
             },
             {
               "Text": "[Joke] \"Call it a punchline. You'll get it later.\"",
-              "Next": "her_choice",
+              "Next": "collect",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -175652,6 +175686,112 @@
           "Id": "decades",
           "Speaker": "Areelu",
           "Text": "\"I said the Wound would kill me in years, or decades.\" {n}Her voice is flat.{/n} \"I did not say which.\"\n\"You have chosen a number for me, as if you meant to hold me to it. You are either very foolish or very well informed, and I have not yet decided which frightens me more.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "collect",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "collect",
+          "Speaker": "Areelu",
+          "Text": "\"And if I burn, Commander?\" {n}Her eyes do not leave your face.{/n} \"You have never said what you collect. 'What is left of me' is not a quantity. I will not sign a term I cannot measure.\"",
+          "Choices": [
+            {
+              "Text": "\"Your notes. A century of them. That's what's left of you.\"",
+              "Next": "priced",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.trickster.stake_named"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"We named it in your cell. Your notes.\"",
+              "Next": "priced_known",
+              "Set": [],
+              "Requires": [
+                "areelu.trickster.stake_named"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Your life. Nothing less.\"",
+              "Next": "life",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "priced",
+          "Speaker": "Areelu",
+          "Text": "\"My notes.\" {n}She is silent for a long moment, and you can see her test it, the way she tests everything: from the end backwards.{/n}\n\"Yes. A century of paper. That is exactly what is left of me; everything else went into the Wound.\" \"Very well. If you collect my notes in place of my life, you pay for the privilege. Your wound is mine, win or lose. For study.\"",
+          "Choices": [
+            {
+              "Text": "\"Agreed.\"",
+              "Next": "her_choice",
+              "Set": [
+                "areelu.trickster.stake_named",
+                "areelu.trickster.cost.wound_ceded"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No. Not the wound.\"",
+              "Next": "life",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "priced_known",
+          "Speaker": "Areelu",
+          "Text": "\"My notes. Yes. You said so in my cell, and I have thought of little else.\" {n}Blood runs from her wound; she does not look at it.{/n}\n\"Then here is my price for letting paper burn in my place. Your wound is mine, win or lose. For study. You will not get a better term from me, and you will not get this one twice.\"",
+          "Choices": [
+            {
+              "Text": "\"Agreed.\"",
+              "Next": "her_choice",
+              "Set": [
+                "areelu.trickster.stake_named",
+                "areelu.trickster.cost.wound_ceded"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No. Not the wound.\"",
+              "Next": "life",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "life",
+          "Speaker": "Areelu",
+          "Text": "\"My life, then.\" {n}She nods, once, as if a sum had come out the way she expected.{/n}\n\"That is the term the hunters wanted, and the Queen's knights, and the Lady of Graves. You are in good company, Commander. If I burn, I burn, and you collect nothing but ash.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -176052,8 +176192,24 @@
               ]
             },
             {
-              "Text": "Fine. Then how about this: what burned was a century of notes. The graft, the soul research, the Nahyndrian ledgers, every page she had ever written in that prison. The wager had said that whoever burned at Threshold would pay up. Nobody had specified what with.",
+              "Text": "Fine. Then how about this: what burned was a century of notes. The graft, the soul research, the Nahyndrian ledgers, every page she had ever written in that prison. The wager had said that whoever burned at Threshold would pay up with what was left of them, and she had agreed, in front of a witness, what that was. She had always held people to the terms they chose. The terms held her.",
               "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The new rifts opened anyway, as the joke required, and wider than any scholar has since been able to explain: a century of the Abyss's own research burns hotter than one woman's life. Everything the Crossroads became, it became on her notes.",
+              "Requires": [
+                "areelu.sacrifice_trickster"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "It cost the Commander the wound. That had been her price at Threshold for letting paper burn in her place: win or lose, the Commander's wound was hers to keep, for study. She collected it the same night, with a silver probe, and it never closed again for anyone but her.",
+              "Requires": [
+                "areelu.trickster.cost.wound_ceded"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -176120,6 +176276,7 @@
         "trickster.ever",
         "areelu.trickster.wager_struck",
         "areelu.died_at_finale",
+        "areelu.trickster.stake_named",
         "areelu.trickster.rivalry_on_screen"
       ],
       "Forbids": [
@@ -176212,7 +176369,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.died_at_finale"
+        "areelu.died_at_finale",
+        "areelu.trickster.stake_named"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -176233,6 +176391,57 @@
       },
       "EpilogueSequence": "PlayerFinalChoice",
       "EpilogueAfter": "scene:areelu.trickster.finale.rewrite"
+    },
+    {
+      "Id": "areelu.trickster.finale.unnamed",
+      "Title": "Nobody said what with",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The wager said that whoever burned at Threshold would pay up. She burned, and nobody had ever said what with.{/n}\n{n}So she paid the way the hunters of Threshold had always meant her to, and the Queen's knights, and the Lady of Graves: with the only thing anybody had ever asked of her. The Commander tried, afterwards, to rewrite it. There was nothing to rewrite it with. The terms had been left open, and an open term is a term the other side fills in.{/n}\n{n}Among what was found in her cell under Threshold was a notebook with a single page written in it, dated the night of the wager: \"Subject did not name the stake. Neither did I. One of us will regret it.\" It did not say which.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.wager_struck",
+        "areelu.died_at_finale"
+      ],
+      "Forbids": [
+        "areelu.trickster.stake_named",
+        "areelu.trickster.declined",
+        "areelu.trickster.stake_only",
+        "areelu.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu",
+      "RequiresAnyGroups": [
+        [
+          "areelu.committed",
+          "areelu.trickster.late_committed"
+        ]
+      ],
+      "ForbidOverrides": {
+        "areelu.trickster.declined": "areelu.committed"
+      },
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "scene:areelu.trickster.finale.after"
     },
     {
       "Id": "areelu.trickster.finale.survived",
@@ -176334,7 +176543,7 @@
         "areelu.trickster.declined": "areelu.committed"
       },
       "EpilogueSequence": "PlayerFinalChoice",
-      "EpilogueAfter": "scene:areelu.trickster.finale.after"
+      "EpilogueAfter": "scene:areelu.trickster.finale.unnamed"
     },
     {
       "Id": "areelu.trickster.report.rooms",
@@ -176622,7 +176831,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -176636,10 +176846,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -176964,7 +177170,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -176978,10 +177185,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -177122,7 +177325,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -177136,10 +177340,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ],
         [
           "areelu.died_at_finale"
@@ -177323,7 +177523,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -177337,10 +177538,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ],
         [
           "trickster.cheated_death"
@@ -177556,7 +177753,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -177570,10 +177768,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -177840,7 +178034,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -177854,10 +178049,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -177925,6 +178116,14 @@
             {
               "Text": "\"I keep the wound,\" said Areelu Vorlesh, rolling up her sleeves. \"Those were the terms. For study. I did not say I would let it keep you.\"",
               "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "It had been her price at Threshold, and the Commander had paid it without haggling. She had never once let the Commander forget it.",
+              "Requires": [
+                "areelu.trickster.cost.wound_ceded"
+              ],
               "Forbids": [],
               "AnyGroups": []
             }
@@ -178134,7 +178333,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -178148,10 +178348,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ],
         [
           "ending.trickster",
@@ -178416,7 +178612,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -178430,10 +178627,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ],
         [
           "ending.trickster",
@@ -178624,7 +178817,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -178638,10 +178832,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -178918,7 +179108,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -178932,10 +179123,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -179192,7 +179379,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -179206,10 +179394,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ],
         [
           "ending.trickster",
@@ -179424,7 +179608,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -179438,10 +179623,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -179698,7 +179879,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -179712,10 +179894,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ],
         [
           "trickster.cheated_death"
@@ -180027,7 +180205,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -180041,10 +180220,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -180161,7 +180336,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -180175,10 +180351,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -180499,7 +180671,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -180513,10 +180686,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -180593,7 +180762,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.trickster.rivalry_on_screen"
+        "areelu.trickster.rivalry_on_screen",
+        "areelu.trickster.survives"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -180607,10 +180777,6 @@
         [
           "areelu.committed",
           "areelu.trickster.late_committed"
-        ],
-        [
-          "areelu.died_at_finale",
-          "trickster.cheated_death"
         ]
       ],
       "ForbidOverrides": {
@@ -180914,8 +181080,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -182875,6 +183041,15 @@
     "aranka.trickster.king_gone": [
       [
         "fool_king.gone"
+      ]
+    ],
+    "areelu.trickster.survives": [
+      [
+        "areelu.died_at_finale",
+        "areelu.trickster.stake_named"
+      ],
+      [
+        "trickster.cheated_death"
       ]
     ],
     "trickster.cheated_death": [

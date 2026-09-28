@@ -20,6 +20,8 @@ internal static class AreeluTricksterTests
     private const string LensAsked = P + "lens.asked";
     private const string Late = P + "cost.late";
     private const string WitchBet = P + "cost.bet_with_the_witch";
+    private const string Named = P + "stake_named";
+    private const string WoundCeded = P + "cost.wound_ceded";
     private const string Committed = "areelu.committed";
     private const string Started = "areelu.started";
     private const string Closed = "areelu.closed";
@@ -66,6 +68,7 @@ internal static class AreeluTricksterTests
         var rewrite = S(P + "finale.rewrite");
         var after = S(P + "finale.after");
         var survived = S(P + "finale.survived");
+        var unnamed = S(P + "finale.unnamed");
         var stakeOnlyPage = S(P + "finale.stake_only");
         var stands = S(P + "finale.report_stands");
         var ascended = S(P + "finale.ascended");
@@ -96,7 +99,7 @@ internal static class AreeluTricksterTests
         check(new[] { lens, watched, questions, accounts }.All(s => Rules.IsRemote(s) && s.Chapters.SequenceEqual(new[] { 5 })),
             "The lens correspondence is not Chapter 5 letters.");
         check(rewrite.EpilogueSequence == "PlayerFinalChoice" && rewrite.EpilogueAfter == TricksterPage, "The rewrite is not after BookPage_0147.");
-        var chain = new[] { rewrite, after, survived }.Concat(report).ToArray();
+        var chain = new[] { rewrite, after, unnamed, survived }.Concat(report).ToArray();
         for (int i = 1; i < chain.Length; i++)
             check(chain[i].EpilogueSequence == "PlayerFinalChoice" && chain[i].EpilogueAfter == "scene:" + chain[i - 1].Id,
                 "The report chain is out of order at " + chain[i].Id);
@@ -150,6 +153,8 @@ internal static class AreeluTricksterTests
         var wagers = Program.Walk(struck, cell).Where(r => r.Has(struck.Id)).ToList();
         check(wagers.Any(r => r.Has(Struck) && r.Has(Started) && r.Has(WitchBet)) && wagers.Any(r => r.Has(Closed) && !r.Has(Struck)),
             "Trk_Areelu_Wager: the stake or the refusal is missing.");
+        check(wagers.Any(r => r.Has(Struck) && r.Has(Named)) && wagers.Any(r => r.Has(Struck) && !r.Has(Named)),
+            "The cell does not offer (without forcing) the joke that names the stake.");
         var cellPages = new HashSet<string>();
         Program.Walk(struck, With(story, cell, "areelu.crib.rage"), (page, _) => cellPages.Add(page));
         check(cellPages.Contains("crib_rage") && !cellPages.Contains("crib_sadness"), "The wager does not read her crib question.");
@@ -168,6 +173,8 @@ internal static class AreeluTricksterTests
         var raisedOut = Program.Walk(raised, ch6).Where(r => r.Has(raised.Id)).ToList();
         check(raisedOut.Any(r => r.Has(Committed)) && raisedOut.Any(r => r.Has(Declined) && !r.Has(Committed))
               && raisedOut.Any(r => r.Has(StakeOnly) && !r.Has(Committed)), "Trk_Areelu_Raised: her yes, her no or the stake only is missing.");
+        check(raisedOut.Any(r => r.Has(Committed) && r.Has(Named) && r.Has(WoundCeded)) && raisedOut.Any(r => r.Has(Committed) && !r.Has(Named)),
+            "The priced term (notes for her life, the wound as the price) or its refusal is missing at Threshold.");
         var producer = raised.Nodes.Single(n => n.Id == "her_choice").Choices[0];
         check(producer.Set.SequenceEqual(new[] { Committed }) && producer.Requires.Length == 0, "The CommittedFlag producer moved (her_choice, choice 0).");
         check(!Available(raised, raisedOut.First(r => r.Has(Committed))), "The raised wager can be raised twice.");
@@ -176,13 +183,13 @@ internal static class AreeluTricksterTests
         var lateWorld = World(story, 6, "trickster", "trickster.ever", Primed, Lens, Late);
         check(Available(late, lateWorld), "Trk_Areelu_LateThreshold: unavailable.");
         var lateOut = Program.Walk(late, lateWorld).Where(r => r.Has(late.Id)).ToList();
-        check(lateOut.Any(r => r.Has(Struck) && r.Has(Late)) && lateOut.Any(r => r.Has(Closed)), "Trk_Areelu_LateThreshold: flags.");
+        check(lateOut.Any(r => r.Has(Struck) && r.Has(Late) && r.Has(Named)) && lateOut.Any(r => r.Has(Closed)), "Trk_Areelu_LateThreshold: flags.");
         var latePages = new HashSet<string>();
         Program.Walk(raised, lateOut.First(r => r.Has(Struck)), (page, _) => latePages.Add(page));
         check(Available(raised, lateOut.First(r => r.Has(Struck))) && latePages.Contains("late_raise"), "The raised wager forgets the late terms.");
 
         // Finale pages: Trk_Areelu_Rewrite / _Survived / _NoWager / _Declined, the stake only and the late commit.
-        var rewriteWorld = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed);
+        var rewriteWorld = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed, Named);
         check(Available(rewrite, rewriteWorld) && Available(after, rewriteWorld) && !Available(survived, rewriteWorld), "Trk_Areelu_Rewrite failed.");
         check(Available(report.Single(s => s.Id.EndsWith(".grey")), rewriteWorld) && !Available(report.Single(s => s.Id.EndsWith(".graft")), rewriteWorld)
               && !Available(report.Single(s => s.Id.EndsWith(".lady")), rewriteWorld), "The rewrite path shows the witch's pages.");
@@ -192,17 +199,21 @@ internal static class AreeluTricksterTests
         check(Available(report.Single(s => s.Id.EndsWith(".graft")), punchline) && !Available(report.Single(s => s.Id.EndsWith(".grey")), punchline)
               && Available(report.Single(s => s.Id.EndsWith(".lady")), punchline), "The punchline path shows the mortal's pages.");
         foreach (var fate in new[] { "areelu.dead_fight", "areelu.incinerated", "areelu.sacrifice_wound", "areelu.sacrifice_before" })
-            check(Available(rewrite, World(story, 6, "trickster.ever", fate, Struck, Bet, Committed)), "The rewrite ignores the fate " + fate);
+            check(Available(rewrite, World(story, 6, "trickster.ever", fate, Struck, Bet, Committed, Named)), "The rewrite ignores the fate " + fate);
+        // The failure path: the stake was never named, so there is nothing to collect in place of her life.
+        var unnamedWorld = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed);
+        check(Available(unnamed, unnamedWorld) && !Available(rewrite, unnamedWorld) && !Available(after, unnamedWorld)
+              && !report.Any(s => Available(s, unnamedWorld)) && !Available(unnamed, rewriteWorld), "The unnamed stake does not keep her canon fate.");
         var noWager = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster");
         check(!pages.Any(s => Available(s, noWager)), "Trk_Areelu_NoWager: a page plays without the wager.");
         var declined = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Declined);
         check(Available(stands, declined) && !Available(rewrite, declined) && !report.Any(s => Available(s, declined)), "Trk_Areelu_Declined failed.");
         var stakeOnly = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", Struck, Bet, StakeOnly);
         check(Available(stakeOnlyPage, stakeOnly) && !Available(rewrite, stakeOnly), "The stake-only page failed.");
-        var lateCommit = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet);
+        var lateCommit = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Named);
         check(lateCommit.Has(P + "late_committed") && Available(rewrite, lateCommit), "The late commit (R2-6) does not reach the rewrite.");
         check(Available(ascended, World(story, 6, "trickster.ever", "areelu.ascended", Struck, Bet, Committed)), "The ascended page failed.");
-        check(!Available(report.Single(s => s.Id.EndsWith(".wound")), World(story, 6, "trickster.ever", "areelu.sacrifice_wound", Struck, Bet, Committed)),
+        check(!Available(report.Single(s => s.Id.EndsWith(".wound")), World(story, 6, "trickster.ever", "areelu.sacrifice_wound", Struck, Bet, Committed, Named)),
             "The wound page plays after the Wound was closed.");
 
         // Every page of the report walks to the end on both survivals without a dead end.
