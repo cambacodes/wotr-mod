@@ -106,8 +106,8 @@ internal static class TargonaTricksterTests
               && joke.Text.StartsWith("[Spend it again, quietly]", StringComparison.Ordinal), "The primer lost its joke or its cost.");
         var primed = After(setup, lab, "scroll", 0);
         check(setup.Nodes.Single(n => n.Id == "scroll").Text.Contains("breath of life", StringComparison.Ordinal)
-              && setup.Nodes.Single(n => n.Id == "scroll").Text.Contains("two breaths", StringComparison.Ordinal),
-            "The primer does not show the scroll, or its two-breath limit.");
+              && setup.Nodes.Single(n => n.Id == "scroll").Text.Contains("two rounds", StringComparison.Ordinal),
+            "The primer does not show the wand, or breath of life's two-round limit.");
         check(primed.Has(P + "primed"), "Trk_Targona_Setup: flags.");
         check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab"), Committed),
             "Trk_Targona_Setup: the commit is unreachable after the blow.");
@@ -132,9 +132,10 @@ internal static class TargonaTricksterTests
         check(Rules.Available(story, oneSoul, killed) && !Rules.Available(story, spent, killed), "Trk_Targona_KilledPrimed: availability.");
         var fullPages = new HashSet<string>();
         Program.Walk(oneSoul, killed, (page, _) => fullPages.Add(page));
-        check(fullPages.Contains("full") && !fullPages.Contains("cold")
+        check(oneSoul.Nodes.Single(n => n.Id == "full").Text.Contains("It was used. It was not spent.", StringComparison.Ordinal)
+              && fullPages.Contains("full") && !fullPages.Contains("cold")
               && oneSoul.Nodes.Single(n => n.Id == "full").Text.Contains("nobody in the room"),
-            "The scroll is not shown read unnoticed.");
+            "The wand is not shown used unnoticed.");
         var returned = After(oneSoul, killed, "news", 0);
         check(returned.Has(P + "returned") && returned.Has(P + "cost.struck_down") && returned.Has("targona.started")
               && returned.Has(P + "cost.left_for_dead"), "Trk_Targona_KilledPrimed: flags.");
