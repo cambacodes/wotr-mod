@@ -382,7 +382,7 @@ EPILOGUE_PARAGRAPHS = (
 )
 
 SCENES.append(scene("soana.trickster.epilogue.knot", "The second strand", "Epilogue", 5, "", [
-    nar("start", '''{n}Soana caught the thing her knot had let loose in the first thaw after the war, in a gully full of dead deer, and bound it again with the Commander's life at the other end of the clay. Then she began, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}
+    nar("start", '''{n}Soana caught the thing her knot had let loose in the first thaw after the war, in a gully full of dead deer, and bound it again with the Commander's life at the other end of the clay. It fought the knot for a night and a day, and the Commander felt every hour of it in the wrist the gut strip had marked; the wrist ached in cold weather ever after. Then she began, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}
 {n}The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, Soana said that was how you knew it was working.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
     requires=(RETURNED, COMMITTED), forbids=(CLOSED,), last=99, Relationship="soana"))
@@ -395,15 +395,24 @@ SCENES.append(scene("soana.trickster.epilogue.luck", "The die in the bowl", "Epi
     Relationship="soana"))
 
 SCENES.append(scene("soana.trickster.epilogue.commit", "Your end", "Epilogue", 5, "", [
-    nar("start", '''{n}Soana buried the Wintersun woods alone, one grave a day, and bound what she could into what was left. The year after the Worldwound closed she walked all the way to Drezen with a broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}
-"Your end. Don't lose it."''',
+    nar("start", '''{n}Soana caught the thing her knot had let loose alone, in the first thaw after the war, with one strand and her own blood, and it nearly killed her. She buried what it had ridden to death one grave a day. The year after the Worldwound closed she walked all the way to Drezen with the broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}
+"Your end. I caught it without you once. I will not do that twice."''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
     requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
 
+UNBOUND = p("The thing her knot had let loose she caught alone, in the first thaw, and bound into the last of the old wolves "
+             "with a single strand. It held, barely, for as long as she lived.", requires=(RETURNED,))
+
 SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue", 5, "", [
     nar("start", '''{n}She never asked again. The knot hung in her cave with one strand, and she bound nothing new into the Wintersun woods for as long as she lived. When travellers asked the old woman in the cave about the Commander, she said that she had met a hunter once who could not hold still for a thing that mattered, and that was all she said.{/n}''',
-        c())],
+        c(), paragraphs=(UNBOUND,))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), last=99, Relationship="soana"))
+
+SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue", 5, "", [
+    nar("start", '''{n}The Commander never went back to Wintersun. Soana caught the thing her knot had let loose alone, in a gully full of dead deer, and bound it into the last of the old wolves with a single strand and most of her own blood. It held.{/n}
+{n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told that the Commander was a hunter who had held a dead woman to her own words, dug a few graves, and walked away. She did not say it kindly.{/n}''',
+        c())],
+    requires=("trickster.ever", RETURNED, CLOSED), forbids=(COMMITTED,), last=99, Relationship="soana"))
 
 
 # --- Reactions (exactly Camellia, Ember and Ulbrig) ---------------------------------------------------------------------

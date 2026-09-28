@@ -309,7 +309,10 @@ internal static class SoanaTricksterTests
         check(Endings(lateBack).SequenceEqual(new[] { epCommit.Id }), "A return never committed has no late page.");
         check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { epCommit.Id }),
             "A luck never committed has no late page.");
-        check(Endings(walked).Length == 0, "Walking away from the grave still ends on a Soana page.");
+        check(Endings(walked).SequenceEqual(new[] { P + "epilogue.unbound" }), "Walking away from the grave leaves the loose spirit unresolved.");
+        check(new[] { epKnot, epCommit, S(P + "epilogue.unbound") }.All(p => p.Nodes[0].Text.Contains("caught"))
+              && epDeclined.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "returned") && x.Text.Contains("caught")),
+            "A killed-branch ending leaves the loosed spirit unresolved.");
         foreach (var loss in new[] { "soana.ending_native_loss", "soana.ending_unfinished_loss" })
             check(S(loss).Forbids.Contains(P + "returned"), "A returned Soana is mourned: " + loss);
         foreach (var page in new[] { epKnot, epLuck, epCommit, epDeclined })
