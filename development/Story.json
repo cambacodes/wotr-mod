@@ -149125,7 +149125,7 @@
       "Id": "nocticula.trickster.defeated.epilogue",
       "Title": "A queen does not come back",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149169,7 +149169,7 @@
       "Id": "nocticula.trickster.defeated.epilogue.fooled",
       "Title": "The dress",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149204,7 +149204,7 @@
       "Id": "nocticula.trickster.defeated.epilogue.punchline",
       "Title": "The most fashionable thing",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149239,7 +149239,7 @@
       "Id": "nocticula.trickster.defeated.epilogue.favour",
       "Title": "The favour",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149273,7 +149273,7 @@
       "Id": "nocticula.trickster.defeated.epilogue.stalemate",
       "Title": "Places set",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149307,7 +149307,7 @@
       "Id": "nocticula.trickster.defeated.epilogue.unpriced",
       "Title": "An answer owed",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149343,7 +149343,7 @@
       "Id": "nocticula.trickster.defeated.epilogue.unjoked",
       "Title": "Among the many",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149380,7 +149380,7 @@
       "Id": "nocticula.trickster.epilogue.commit",
       "Title": "The chair nobody else sat in",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [
@@ -149538,7 +149538,7 @@
       "Id": "nocticula.trickster.epilogue.declined",
       "Title": "Eleven years",
       "Owner": "Epilogue",
-      "MinChapter": 6,
+      "MinChapter": 1,
       "MaxChapter": 99,
       "Entry": "",
       "Nodes": [

@@ -204,9 +204,10 @@ SCENES.append(scene("nocticula.trickster.palace.brothers_voice", "Is that you, b
 
 # --- Epilogue pages (S1). Ordered siblings; no page sets a flag or requires another page's id -----------------------
 
+# MinChapter 1, like the other routes' pages: the ending sequence alone decides when a page plays.
 def page(id, title, text, requires, forbids=(), paragraphs=(), nodes=None):
     body = nodes or [nar("end", text, paragraphs=paragraphs)]
-    SCENES.append(scene(id, title, "Epilogue", 6, "", body, requires=requires, forbids=forbids, last=99,
+    SCENES.append(scene(id, title, "Epilogue", 1, "", body, requires=requires, forbids=forbids, last=99,
                         Relationship="nocticula"))
 
 
