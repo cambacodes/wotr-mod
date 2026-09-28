@@ -118,13 +118,14 @@ internal static class LastCallTests
         check(!Av(king, Done(story, kingOut[0])), "LastCall_Bottle_King: the flask is filled twice.");
 
         // 7. LastCall_Epilogue_Matrix: each Block A page appears exactly in its world; H2 never without the bottle.
-        var endings = new[] { "ending.trickster", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.wound_closed", "ending.not_my_business" };
+        var endings = new[] { "ending.trickster", "ending.trickster_full", "ending.trickster_allplanes", "ending.trickster_allplanes_fw", "ending.wound_closed", "ending.not_my_business" };
         foreach (var ending in endings)
         foreach (bool sacrifice in new[] { false, true })
         foreach (bool taken in new[] { false, true })
         foreach (string pillar in new[] { Bottle, Creditors })
         {
             var flags = new List<string> { "trickster.ever", pillar };
+            check(story.Etudes.ContainsKey(ending) || ending == "ending.not_my_business", "LastCall_Epilogue_Matrix: an ending etude is not bound: " + ending);
             if (story.Etudes.ContainsKey(ending)) flags.Add(ending);
             if (sacrifice) flags.Add("sacrifice");
             if (taken) flags.Add(Taken);
