@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1449,
-  "unique_targets": 344,
+  "binding_uses": 1479,
+  "unique_targets": 367,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -262,6 +262,10 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp",
       "type": "BlueprintCue"
     },
+    "1543b97943fa553469f25be07210c868": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
     "06184e4f0a65650488e36600d8274d26": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/AnswersList_0005.jbp",
       "type": "BlueprintAnswersList"
@@ -314,13 +318,37 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/Council_5-1/Cue_0041.jbp",
       "type": "BlueprintCue"
     },
+    "aff2802d5af0f77408793b489334befc": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Debrief_Council/AnswersList_0006.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "adf1456e429a3d94693417ef7d090d5e": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Debrief_Council/Cue_0005.jbp",
+      "type": "BlueprintCue"
+    },
+    "6a5c262473dfe824886bed3eb3eef59d": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "2729c49e2bf20c64caa4f54b352e03f6": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/AnswersList_0007.jbp",
       "type": "BlueprintAnswersList"
     },
+    "2c4b12325ecf0544cbff956b82f4420b": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Answer_0010.jbp",
+      "type": "BlueprintAnswer"
+    },
     "fd4f6c1d6397fa94db7aaf08de7dfeca": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Answer_0011.jbp",
       "type": "BlueprintAnswer"
+    },
+    "4913a0c32fe01474ba7b4c6dde7f45bc": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Answer_0020.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "114211469c9ffd149a73f1c853b2776f": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0002.jbp",
+      "type": "BlueprintCue"
     },
     "20451daada07f744b9d7f3e14a37a864": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0006.jbp",
@@ -330,8 +358,36 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0016.jbp",
       "type": "BlueprintCue"
     },
+    "9c219d9331c1fa24d95ab1c51c46df84": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0023.jbp",
+      "type": "BlueprintCue"
+    },
+    "2c57f65d4b98d764d98794ae8ef9ffdd": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Nocticula_TricksterC5_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
     "2f4be0bde527a7d4cb7c73131ab551db": {
       "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "765173e2a9e535e4cb66f0ec767c13af": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "7d07492b12cf5bd4bb1c88113d5831ab": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "90cfcb7b1c0bacc43b27043074f21301": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
+    "c10ef2b50ade65f42bbaa0cdfa61b7f9": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0010.jbp",
+      "type": "BlueprintCue"
+    },
+    "3cc60e02e5176f448a57b342ec52ae31": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0046.jbp",
       "type": "BlueprintCue"
     },
     "77216dc2c3770794f93b010659f4aa64": {
@@ -358,12 +414,20 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0030.jbp",
       "type": "BlueprintAnswersList"
     },
+    "4d978cbd2aa780d46874255282039f3f": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Daeran/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "f2a35965e9bc601449498bd022b04d9d": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "fd8276a6302f4d44583eba3f0b9663bf": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0126.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "1ab909cc3a6194840b1475b99547c263": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/AnswersList_0015.jbp",
       "type": "BlueprintAnswersList"
     },
     "2366a8db6481070439fee222c0c52e45": {
@@ -590,6 +654,14 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/CamelliaCompanion/CamelliaStates/CamelliaState_Killed.jbp",
       "type": "BlueprintEtude"
     },
+    "4bb966e7df502394cba4b650a54ce92f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/DaeranCompanion/DaeranNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3944d299c18b7174bb2d6820aa5dc336": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/DaeranCompanion/DaeranNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
     "3a708ad53771a2d44ac506361fb7aafc": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberInParty.jbp",
       "type": "BlueprintEtude"
@@ -616,6 +688,22 @@
     },
     "f55fcc7bf5fd0c14384cb15dce345c8e": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
+      "type": "BlueprintEtude"
+    },
+    "40fb6c123ced9ed45a305e0feec010ae": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/NenioCompanion/NenioNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "e9efc34083d087941bf9242388c258c3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/NenioCompanion/NenioNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5fe7b9ab3aab4d045b3acabfd0e638a6": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/NenioCompanion/NenioStates/KilledByPlayer.jbp",
+      "type": "BlueprintEtude"
+    },
+    "dbc267b73c168f345bc192b5eeffabb2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/NenioCompanion/NenioStates/Nenio_GoAway.jbp",
       "type": "BlueprintEtude"
     },
     "6596f51f8e640384189c6708bd55ed50": {
@@ -812,6 +900,10 @@
     },
     "ed5d1dfa2402bed4cb7a59a21c14a1a4": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/FightAgaintsNoctaCouncilAllied.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9b2af5f30ebd0c544b973c69a9c4dc39": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/NoctaFooled.jbp",
       "type": "BlueprintEtude"
     },
     "c820b3788f967e14f8bde3c17447157f": {
