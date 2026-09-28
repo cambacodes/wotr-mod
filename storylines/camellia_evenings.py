@@ -225,12 +225,12 @@ met(OBITUARY, "An obituary, corrected", '"What are you writing?"', [
         c("Continue", "more", requires=(KILLED,)),
         c("Continue", "more_d", forbids=(KILLED,))),
     cam("more_d", '''"'She died once, on a battlefield, of nothing in particular. A friend stood over her body and told it that it was overacting. She got up, out of sheer offence.'"
-"'She is survived by that friend, and by her spirit Mireya, who does not exist.'" {n}She stops. The pen hovers.{/n} "I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page."''',
+"'She is survived by that friend, and by her spirit Mireya, of whom the less said the better.'" {n}She stops. The pen hovers.{/n} "I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page."''',
         c('[Trickster] "End it with \'To be continued.\'"', "continued"),
         c('"End it with my name."', "name"),
         c('"Leave it unfinished."', "unfinished")),
     cam("more",'''"'She died once, at the word of a friend, who told her to do it convincingly. She did. She was not a woman who did things halfway.'"
-"'She is survived by that friend, and by her spirit Mireya, who does not exist.'" {n}She stops. The pen hovers.{/n} "I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page."''',
+"'She is survived by that friend, and by her spirit Mireya, of whom the less said the better.'" {n}She stops. The pen hovers.{/n} "I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page."''',
         c('[Trickster] "End it with \'To be continued.\'"', "continued"),
         c('"End it with my name."', "name"),
         c('"Leave it unfinished."', "unfinished")),

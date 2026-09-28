@@ -196071,7 +196071,7 @@
         {
           "Id": "flies",
           "Speaker": "Camellia",
-          "Text": "\"You've never asked me what the flies are. Everyone who stays long enough asks, eventually. Then they stop staying.\"\n{n}She taps her temple with one manicured nail.{/n} \"They're the voices. The spirits, if you like, though I'm not sure there are spirits, any more than there was a Mireya. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop.\"\n\"It isn't blood. I told everyone it was blood. It's the look. The moment a friend understands what I am. When I see that, everything goes quiet, like snow.\"",
+          "Text": "\"You've never asked me what the flies are. Everyone who stays long enough asks, eventually. Then they stop staying.\"\n{n}She taps her temple with one manicured nail.{/n} \"They're the voices. The spirits, if you like; I have called them that for so long that I no longer know what else to call them. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop.\"\n\"It isn't blood. I told everyone it was blood. It's the look. The moment a friend understands what I am. When I see that, everything goes quiet, like snow.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -196528,7 +196528,7 @@
         {
           "Id": "named",
           "Speaker": "Camellia",
-          "Text": "\"The clerk.\" {n}She tastes it.{/n} \"A small name. A tidy name. You did not even hesitate, which is either very kind or very cruel, and I shall find out which.\" {n}She stands, and smooths her skirt.{/n} \"Three nights. Wear something you can move in.\"\n{n}At the door she turns.{/n} \"I know him, you know. The clerk. He has a daughter in the orphanage by the gate, and he visits her every seventh day with a sugared bun. I wonder if you knew that when you chose him.\" {n}She smiles.{/n} \"I wonder if you'll ask me not to, now.\"",
+          "Text": "\"The clerk.\" {n}She tastes it.{/n} \"A small name. A tidy name. You did not even hesitate, which is either very kind or very cruel, and I shall find out which.\" {n}She stands, and smooths her skirt.{/n} \"Three nights. Wear something you can move in.\"\n{n}At the door she turns.{/n} \"You don't know anything about him, do you? You chose a man you had never looked at. That's the part I like best.\"",
           "Choices": [
             {
               "Text": "[Watch her go]",
@@ -196626,7 +196626,7 @@
         {
           "Id": "flies",
           "Speaker": "Camellia",
-          "Text": "\"You've never asked me what the flies are. Everyone who stays long enough asks, eventually. Then they stop staying.\"\n{n}She taps her temple with one manicured nail.{/n} \"They're the voices. The spirits, if you like, though I'm not sure there are spirits, any more than there was a Mireya. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop.\"\n\"It isn't blood. I told everyone it was blood. It's the look. The moment a friend understands what I am. When I see that, everything goes quiet, like snow.\"",
+          "Text": "\"You've never asked me what the flies are. Everyone who stays long enough asks, eventually. Then they stop staying.\"\n{n}She taps her temple with one manicured nail.{/n} \"They're the voices. The spirits, if you like; I have called them that for so long that I no longer know what else to call them. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop.\"\n\"It isn't blood. I told everyone it was blood. It's the look. The moment a friend understands what I am. When I see that, everything goes quiet, like snow.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -197083,7 +197083,7 @@
         {
           "Id": "named",
           "Speaker": "Camellia",
-          "Text": "\"The clerk.\" {n}She tastes it.{/n} \"A small name. A tidy name. You did not even hesitate, which is either very kind or very cruel, and I shall find out which.\" {n}She stands, and smooths her skirt.{/n} \"Three nights. Wear something you can move in.\"\n{n}At the door she turns.{/n} \"I know him, you know. The clerk. He has a daughter in the orphanage by the gate, and he visits her every seventh day with a sugared bun. I wonder if you knew that when you chose him.\" {n}She smiles.{/n} \"I wonder if you'll ask me not to, now.\"",
+          "Text": "\"The clerk.\" {n}She tastes it.{/n} \"A small name. A tidy name. You did not even hesitate, which is either very kind or very cruel, and I shall find out which.\" {n}She stands, and smooths her skirt.{/n} \"Three nights. Wear something you can move in.\"\n{n}At the door she turns.{/n} \"You don't know anything about him, do you? You chose a man you had never looked at. That's the part I like best.\"",
           "Choices": [
             {
               "Text": "[Watch her go]",
@@ -197188,7 +197188,7 @@
         {
           "Id": "clerk",
           "Speaker": "Camellia",
-          "Text": "{n}The quartermaster's clerk sits in your chair, very still and very alive, his ink-stained hands flat on his knees. Camellia stands behind him, one hand in his hair, her small clean knife resting under his ear. He is weeping without a sound.{/n}\n\"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend.\"",
+          "Text": "{n}The quartermaster's clerk sits in your chair, very still and very alive, his ink-stained hands flat on his knees. Camellia stands behind him, one hand in his hair, her small clean knife resting under his ear. He is weeping without a sound.{/n}\n\"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend.\"\n{n}The clerk's lips move. \"My girl,\" he whispers, to you, not to her. \"The orphanage by the gate. Every seventh day. Please.\" Camellia tilts her head and listens to that too, with great attention, the way she listens to everything.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -198072,7 +198072,7 @@
         {
           "Id": "clerk",
           "Speaker": "Camellia",
-          "Text": "{n}The quartermaster's clerk sits in your chair, very still and very alive, his ink-stained hands flat on his knees. Camellia stands behind him, one hand in his hair, her small clean knife resting under his ear. He is weeping without a sound.{/n}\n\"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend.\"",
+          "Text": "{n}The quartermaster's clerk sits in your chair, very still and very alive, his ink-stained hands flat on his knees. Camellia stands behind him, one hand in his hair, her small clean knife resting under his ear. He is weeping without a sound.{/n}\n\"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend.\"\n{n}The clerk's lips move. \"My girl,\" he whispers, to you, not to her. \"The orphanage by the gate. Every seventh day. Please.\" Camellia tilts her head and listens to that too, with great attention, the way she listens to everything.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -204285,7 +204285,7 @@
         {
           "Id": "more",
           "Speaker": "Camellia",
-          "Text": "\"'She died once, at the word of a friend, who told her to do it convincingly. She did. She was not a woman who did things halfway.'\"\n\"'She is survived by that friend, and by her spirit Mireya, who does not exist.'\" {n}She stops. The pen hovers.{/n} \"I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page.\"",
+          "Text": "\"'She died once, at the word of a friend, who told her to do it convincingly. She did. She was not a woman who did things halfway.'\"\n\"'She is survived by that friend, and by her spirit Mireya, of whom the less said the better.'\" {n}She stops. The pen hovers.{/n} \"I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page.\"",
           "Choices": [
             {
               "Text": "[Trickster] \"End it with 'To be continued.'\"",
@@ -204472,7 +204472,7 @@
         {
           "Id": "more_d",
           "Speaker": "Camellia",
-          "Text": "\"'She died once, on a battlefield, of nothing in particular. A friend stood over her body and told it that it was overacting. She got up, out of sheer offence.'\"\n\"'She is survived by that friend, and by her spirit Mireya, who does not exist.'\" {n}She stops. The pen hovers.{/n} \"I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page.\"",
+          "Text": "\"'She died once, on a battlefield, of nothing in particular. A friend stood over her body and told it that it was overacting. She got up, out of sheer offence.'\"\n\"'She is survived by that friend, and by her spirit Mireya, of whom the less said the better.'\" {n}She stops. The pen hovers.{/n} \"I don't know how to end it. They always end with something about peace. 'She is at peace now.' I have never been at peace in my life, not for a single hour. It would be the one lie on the page.\"",
           "Choices": [
             {
               "Text": "[Trickster] \"End it with 'To be continued.'\"",
@@ -209477,8 +209477,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

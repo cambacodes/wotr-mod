@@ -184,6 +184,24 @@ internal static class CamelliaTricksterTests
         Take(oathCamp, oathWorld, "loophole", 0, P + "oath_loophole");
         check(oath.Nodes.Single(n => n.Id == "start").Choices.Count(c => c.Next == "nurah") == 1, "The oath does not route Nurah first.");
         check(Ch(oathCamp, "ask", 1).Alignment?.Direction == "Evil", "Feeding her someone else is not an Evil act.");
+        // Trk_Camellia_OathSoana, and exclusivity: with both of her kills returned, exactly one route is offered (Nurah).
+        var soanaWorld = World(story, 5, "trickster.ever", "soana.trickster.returned", "soana.killed_by_camellia");
+        check(Avail(oathCamp, soanaWorld), "Trk_Camellia_OathSoana: the Soana kill that didn't take does not open the oath.");
+        foreach (var w in new[] { oathWorld, soanaWorld,
+                                  World(story, 5, "trickster.ever", "nurah.trickster.returned", "nurah.dead_camellia", "soana.trickster.returned", "soana.killed_by_camellia"),
+                                  World(story, 5, "trickster.ever", "nurah.dead_camellia", "soana.trickster.returned", "soana.killed_by_camellia") })
+        {
+            var shown = oathCamp.Nodes.Single(n => n.Id == "start").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, w)).ToList();
+            check(Avail(oathCamp, w) && shown.Count == 1, "The oath does not offer exactly one route for its world.");
+        }
+        check(!Avail(oathCamp, World(story, 5, "trickster.ever", "soana.killed_by_camellia")),
+            "Trk_Camellia_OathSoana: a Soana still dead is not a kill that didn't take.");
+        // Trk_Camellia_OathKaylessa is deferred (Implementation notes 4): kaylessa.trickster.returned has no producer yet, so
+        // her kill alone must not open the oath; restore the pair, the node and the positive test with her route.
+        check(!Avail(oathCamp, World(story, 5, "trickster.ever", "kaylessa.camellia_killed")),
+            "The oath opened on a Kaylessa kill before her route can return her.");
+        check(!story.Derived["camellia.kill_returned"].Any(g => g.Contains("kaylessa.trickster.returned")),
+            "The deferred Kaylessa pair is in camellia.kill_returned without a producer.");
 
         // Trk_Camellia_AneviaBody: the spirits' due arrives as Anevia's report.
         var owed = World(story, 3, "trickster.ever", Dead, Returned, P + "cost.spirits_owed");

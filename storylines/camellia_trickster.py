@@ -356,7 +356,7 @@ met(P + "returned.terms", "What a dead woman wants", '"You said you would find m
     cam("start", '''"Every friend I have ever had, I have killed. It is the only thing that quiets the flies." {n}She says "flies" the way other women say "my headaches", with a small apologetic flutter of the hand.{/n} "You are the first friend I have kept past the point where I usually stop. And I find the flies are very loud."''',
         c("Continue", "flies")),
     cam("flies", '''"You've never asked me what the flies are. Everyone who stays long enough asks, eventually. Then they stop staying."
-{n}She taps her temple with one manicured nail.{/n} "They're the voices. The spirits, if you like, though I'm not sure there are spirits, any more than there was a Mireya. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop."
+{n}She taps her temple with one manicured nail.{/n} "They're the voices. The spirits, if you like; I have called them that for so long that I no longer know what else to call them. They're a buzzing, all day, all night, at the window of my head. And there is only one thing that makes them stop."
 "It isn't blood. I told everyone it was blood. It's the look. The moment a friend understands what I am. When I see that, everything goes quiet, like snow."''',
         c("Continue", "lead")),
     *lead([("lead", cam, '''"So I have been thinking about what to do with you. I think best in cemeteries and knife shops, and I have visited both."''', None),
@@ -369,7 +369,7 @@ met(P + "returned.terms", "What a dead woman wants", '"You said you would find m
           flags=(MARKED, TERMS)),
         c('"No names. No knives. Not in my crusade."', "none")),
     cam("named", '''"The clerk." {n}She tastes it.{/n} "A small name. A tidy name. You did not even hesitate, which is either very kind or very cruel, and I shall find out which." {n}She stands, and smooths her skirt.{/n} "Three nights. Wear something you can move in."
-{n}At the door she turns.{/n} "I know him, you know. The clerk. He has a daughter in the orphanage by the gate, and he visits her every seventh day with a sugared bun. I wonder if you knew that when you chose him." {n}She smiles.{/n} "I wonder if you'll ask me not to, now."''',
+{n}At the door she turns.{/n} "You don't know anything about him, do you? You chose a man you had never looked at. That's the part I like best."''',
         c("[Watch her go]")),
     cam("mine", '''{n}For once she has no answer ready. She looks at you for a long moment, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}
 "Oh, you are dreadful. Nobody has ever offered before. They only ever found out." {n}She stands.{/n} "Three nights. Sleep lightly."
@@ -391,7 +391,8 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("Continue", "clerk", requires=(ACCOMPLICE,)),
         c("Continue", "throat", forbids=(ACCOMPLICE,))),
     cam("clerk", '''{n}The quartermaster's clerk sits in your chair, very still and very alive, his ink-stained hands flat on his knees. Camellia stands behind him, one hand in his hair, her small clean knife resting under his ear. He is weeping without a sound.{/n}
-"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend."''',
+"You gave me his name. I wanted to watch your face while I used it. Don't disappoint me, my friend."
+{n}The clerk's lips move. "My girl," he whispers, to you, not to her. "The orphanage by the gate. Every seventh day. Please." Camellia tilts her head and listens to that too, with great attention, the way she listens to everything.{/n}''',
         c("Continue", "lead_c")),
     cam("throat", '''{n}You wake to a weight on your chest and cold steel under your jaw. She is smiling, and her eyes are wide open, watching for the thing she has always watched for.{/n}
 "You told me to start with you. I am a woman of my word."''',
