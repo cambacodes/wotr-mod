@@ -96736,7 +96736,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Fool King's still had been pledged, and the still was the vessel, and the vessel held the Commander's death. Arsinoe therefore held a lien on it. She would let nobody uncork collateral, including its owner, and she checked the cork herself on the first of every month.",
+              "Text": "The Fool King's still had been pledged, a barrel baron and everything it guarded. The First Vault now holds a lien on the best-loved tap in Drezen. Arsinoe audits it in person on the first of every month, and has never once been seen to leave before the audit was complete, or sober.",
               "Requires": [
                 "arsinoe.trickster.cost.collateral_still"
               ],
@@ -222140,10 +222140,63 @@
                 "trickster.lastcall.open"
               ],
               "Requires": [
-                "lastcall.creditors_open"
+                "lastcall.creditors_live"
               ],
               "Forbids": [
                 "lastcall.vessel"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.open"
+              ],
+              "Requires": [
+                "lastcall.debt.socoth"
+              ],
+              "Forbids": [
+                "lastcall.vessel",
+                "lastcall.creditors_live",
+                "lastcall.debt.nocticula",
+                "socot.gone",
+                "council.fought_nocta_allied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.open"
+              ],
+              "Requires": [
+                "lastcall.debt.nocticula"
+              ],
+              "Forbids": [
+                "lastcall.vessel",
+                "lastcall.creditors_live",
+                "noct.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.open"
+              ],
+              "Requires": [
+                "lastcall.debt.socoth",
+                "lastcall.debt.nocticula",
+                "noct.dead"
+              ],
+              "Forbids": [
+                "lastcall.vessel",
+                "lastcall.creditors_live",
+                "socot.gone",
+                "council.fought_nocta_allied"
               ],
               "Abort": false
             },
@@ -222451,7 +222504,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "The sacrifice was real. I have checked. The Wound closed around the Commander of the Fifth Crusade and took {mf|him|her}, and I recorded it, correctly, as the end. Three days later a sentry found a crystal flask at the edge of the scorched earth where the rift had been, the only thing the Wound did not keep, and brought it back to Drezen because it was warm.",
+          "Text": "The sacrifice was real. I have checked. The Commander of the Fifth Crusade stepped into the Wound, and the Wound closed on everything {mf|he|she} had brought into it: the power the Abyss and I had poured into {mf|him|her}, every scrap of it, spent to seal the rift for good. I recorded it, correctly, as the end. What the Wound could not take was {mf|his|her} death. That was already spoken for, corked in a flask on {mf|his|her} belt, and a debtor cannot be made to pay the same account twice. Three days later a sentry found the Commander at the edge of the scorched earth where the rift had been, breathing, with the flask still corked in one fist.",
           "Choices": [
             {
               "Text": "Continue",
@@ -222465,7 +222518,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "It was opened at the King's table, under a toast. Thaberdine swore afterwards that it was the luckiest round he ever called, and the church of Cayden Cailean has not stopped repeating it.",
+              "Text": "{mf|He|She} was carried back to Drezen and set down at the King's table, under a toast. Thaberdine swore afterwards that it was the luckiest round he ever called, and the church of Cayden Cailean has not stopped repeating it.",
               "Requires": [
                 "trickster.lastcall.king_blessed",
                 "fool_king.available"
@@ -222474,7 +222527,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "It was opened on the cathedral steps, before witnesses, by someone who did not know what it was. I am told they have not recovered.",
+              "Text": "{mf|He|She} was carried back to Drezen and laid on the cathedral steps, where the priests had already begun the rites for {mf|him|her}. I am told several of them have not recovered.",
               "Requires": [],
               "Forbids": [
                 "trickster.lastcall.king_blessed"
@@ -222482,7 +222535,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The first words out of it were \"Sorry I'm late.\" I will not pretend I did not hear them.",
+              "Text": "{mf|His|Her} first words were \"Sorry I'm late.\" I will not pretend I did not hear them.",
               "Requires": [
                 "trickster.lastcall.joke.late"
               ],
@@ -222490,7 +222543,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The first words out of it were \"Did I miss anything?\" Yes. You missed your own funeral. I attended, for professional reasons.",
+              "Text": "{mf|His|Her} first words were \"Did I miss anything?\" Yes. You missed your own funeral. I attended, for professional reasons.",
               "Requires": [
                 "trickster.lastcall.joke.missed"
               ],
@@ -222498,7 +222551,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The first words out of it were \"Whose funeral?\" I have no answer that would satisfy the question.",
+              "Text": "{mf|His|Her} first words were \"Whose funeral?\" I have no answer that would satisfy the question.",
               "Requires": [
                 "trickster.lastcall.joke.funeral"
               ],
@@ -222506,7 +222559,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The flask held a soul, not a power. What the Abyss and I gave the Commander went into the Wound and stayed there. {mf|He|She} came back mortal, and complained about it at length.",
+              "Text": "What the Abyss and I gave the Commander went into the Wound and stayed there. {mf|He|She} came back mortal, and complained about it at length. The soul is the Lady of Graves' in the end, as every soul is; the Commander has simply arranged to keep her waiting, and to die, when {mf|he|she} does, of the death {mf|he|she} carries rather than the one the Wound intended.",
               "Requires": [
                 "trickster.lastcall.cost.mortal"
               ],
@@ -222621,7 +222674,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "A debtor who cheats death has not cheated his creditors, and the Commander's were patient, numerous, and in several cases not strictly alive. They came in the first year after Threshold, one after another, and I recorded their visits with more satisfaction than is proper in a scholar.",
+          "Text": "A debtor who cheats death has not cheated the creditors, and the Commander's were patient, numerous, and in several cases not strictly alive. They came in the first year after Threshold, one after another, and I recorded their visits with more satisfaction than is proper in a scholar.",
           "Choices": [
             {
               "Text": "Continue",
@@ -227431,6 +227484,29 @@
       ],
       [
         "lastcall.debt.nocticula"
+      ],
+      [
+        "lastcall.debt.ramisa"
+      ],
+      [
+        "lastcall.debt.herrax"
+      ],
+      [
+        "lastcall.debt.abadar"
+      ],
+      [
+        "lastcall.debt.sunhammer"
+      ],
+      [
+        "lastcall.debt.mutasafen"
+      ],
+      [
+        "lastcall.debt.wintersun"
+      ]
+    ],
+    "lastcall.creditors_live": [
+      [
+        "lastcall.debt.baphomet"
       ],
       [
         "lastcall.debt.ramisa"

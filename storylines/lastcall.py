@@ -129,6 +129,17 @@ def at_the_rift(id, title, entry, nodes, requires, forbids=(), lists=FINAL_LISTS
                         Chapters=[6], AnswerLists=list(lists), ReturnToList=True, ReturnText=FINAL_RETURN, **extra))
 
 
+COUNT = '[Count your creditors] "I owe too many people to die tonight. Terrible for my credit."'
+SOCOTH_OUT = ("socot.gone", "council.fought_nocta_allied")
+LIVE = "lastcall.creditors_live"   # any debt whose creditor cannot be outlived (Derived, below)
+COUNT_VARIANTS = (
+    ((LIVE,), ()),
+    (("lastcall.debt.socoth",), (LIVE, "lastcall.debt.nocticula") + SOCOTH_OUT),
+    (("lastcall.debt.nocticula",), (LIVE, "noct.dead")),
+    (("lastcall.debt.socoth", "lastcall.debt.nocticula", "noct.dead"), (LIVE,) + SOCOTH_OUT),
+)
+
+
 at_the_rift("trickster.lastcall.threshold", "Last orders",
     '''[Call last orders] "Before anyone does anything final: last orders. I've a tab to settle."''', [
     nar("flask", '''{n}The flask is warm against your ribs. It has been warm since the night in Drezen when the wound drained into it like a tap into a jug. Areelu's crystal; Areelu's veins, gone the colour of cheap pink wine. Something inside it turns over, heavy and patient, the way a death ought to.{/n}
@@ -137,8 +148,9 @@ at_the_rift("trickster.lastcall.threshold", "Last orders",
           flags=(OPEN, PILLAR_BOTTLE), requires=(PRIMED,)),
         c('[Hold the flask to the wound] "Last time you drank from me, you tasted of moonshine. Drink up."',
           flags=(OPEN, PILLAR_BOTTLE, COST_LATE, JOKE["funeral"]), requires=(VESSEL,), forbids=(PRIMED,)),
-        c('[Count your creditors] "I owe too many people to die tonight. Terrible for my credit."',
-          flags=(OPEN,), requires=("lastcall.creditors_open",), forbids=(VESSEL,)),
+        # The creditors opener appears only when some creditor can still collect (an outlived one keeps nobody alive), so an
+        # opened ledger always reaches a last joke. Derived keys cannot negate, so the outlivable debts get their own variants.
+        *(c(COUNT, flags=(OPEN,), requires=req, forbids=(VESSEL,) + forb) for req, forb in COUNT_VARIANTS),
         c("[Put it away] Not yet.", abort=True)),
 ], requires=("trickster", "trickster.ever", "lastcall.possible"), forbids=(OPEN,), EntryMythic="PlayerIsTrickster")
 
@@ -185,14 +197,14 @@ block_a("trickster.lastcall.page.interrupted", "The Report, Interrupted",
     ))
 
 block_a("trickster.lastcall.page.heroic", "The Report, Interrupted",
-    '''The sacrifice was real. I have checked. The Wound closed around the Commander of the Fifth Crusade and took {mf|him|her}, and I recorded it, correctly, as the end. Three days later a sentry found a crystal flask at the edge of the scorched earth where the rift had been, the only thing the Wound did not keep, and brought it back to Drezen because it was warm.''',
+    '''The sacrifice was real. I have checked. The Commander of the Fifth Crusade stepped into the Wound, and the Wound closed on everything {mf|he|she} had brought into it: the power the Abyss and I had poured into {mf|him|her}, every scrap of it, spent to seal the rift for good. I recorded it, correctly, as the end. What the Wound could not take was {mf|his|her} death. That was already spoken for, corked in a flask on {mf|his|her} belt, and a debtor cannot be made to pay the same account twice. Three days later a sentry found the Commander at the edge of the scorched earth where the rift had been, breathing, with the flask still corked in one fist.''',
     (H2,), SACRIFICE_PAGE, (
-        p('''It was opened at the King's table, under a toast. Thaberdine swore afterwards that it was the luckiest round he ever called, and the church of Cayden Cailean has not stopped repeating it.''', requires=(BLESSED, "fool_king.available")),
-        p('''It was opened on the cathedral steps, before witnesses, by someone who did not know what it was. I am told they have not recovered.''', forbids=(BLESSED,)),
-        p('''The first words out of it were "Sorry I'm late." I will not pretend I did not hear them.''', requires=(JOKE["late"],)),
-        p('''The first words out of it were "Did I miss anything?" Yes. You missed your own funeral. I attended, for professional reasons.''', requires=(JOKE["missed"],)),
-        p('''The first words out of it were "Whose funeral?" I have no answer that would satisfy the question.''', requires=(JOKE["funeral"],)),
-        p('''The flask held a soul, not a power. What the Abyss and I gave the Commander went into the Wound and stayed there. {mf|He|She} came back mortal, and complained about it at length.''', requires=(COST_MORTAL,)),
+        p('''{mf|He|She} was carried back to Drezen and set down at the King's table, under a toast. Thaberdine swore afterwards that it was the luckiest round he ever called, and the church of Cayden Cailean has not stopped repeating it.''', requires=(BLESSED, "fool_king.available")),
+        p('''{mf|He|She} was carried back to Drezen and laid on the cathedral steps, where the priests had already begun the rites for {mf|him|her}. I am told several of them have not recovered.''', forbids=(BLESSED,)),
+        p('''{mf|His|Her} first words were "Sorry I'm late." I will not pretend I did not hear them.''', requires=(JOKE["late"],)),
+        p('''{mf|His|Her} first words were "Did I miss anything?" Yes. You missed your own funeral. I attended, for professional reasons.''', requires=(JOKE["missed"],)),
+        p('''{mf|His|Her} first words were "Whose funeral?" I have no answer that would satisfy the question.''', requires=(JOKE["funeral"],)),
+        p('''What the Abyss and I gave the Commander went into the Wound and stayed there. {mf|He|She} came back mortal, and complained about it at length. The soul is the Lady of Graves' in the end, as every soul is; the Commander has simply arranged to keep her waiting, and to die, when {mf|he|she} does, of the death {mf|he|she} carries rather than the one the Wound intended.''', requires=(COST_MORTAL,)),
     ))
 
 block_a("trickster.lastcall.page.bottle", "The Bottle",
@@ -220,7 +232,7 @@ def _collectors():
 
 
 block_a("trickster.lastcall.page.collectors", "The Collectors",
-    '''A debtor who cheats death has not cheated his creditors, and the Commander's were patient, numerous, and in several cases not strictly alive. They came in the first year after Threshold, one after another, and I recorded their visits with more satisfaction than is proper in a scholar.''',
+    '''A debtor who cheats death has not cheated the creditors, and the Commander's were patient, numerous, and in several cases not strictly alive. They came in the first year after Threshold, one after another, and I recorded their visits with more satisfaction than is proper in a scholar.''',
     (ACTIVE, PILLAR_CREDITORS), TRICKSTER_PAGE, _collectors())
 
 
@@ -250,6 +262,8 @@ def derived():
     out = dict(debts)
     out[VESSEL] = [["lastcall.flask_taken", "lastcall.flask_held"]]
     out["lastcall.creditors_open"] = [[k] for k in debts]
+    outlivable = {"socoth", "nocticula"}
+    out["lastcall.creditors_live"] = [["lastcall.debt." + d["key"]] for d in partners.DEBTS if d["key"] not in outlivable]
     out["lastcall.possible"] = [[VESSEL]] + [[k] for k in debts]
     out[H1] = h1
     out[H2] = h2

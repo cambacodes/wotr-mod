@@ -75,12 +75,28 @@ internal static class LastCallTests
         check(calledIn.Has(Creditors) && !Av(anevia, calledIn), "LastCall_Offer_Creditors: the live Socothbenoth does not hold the Commander up.");
         check(Program.Walk(joke, calledIn).Any(r => r.Has(Taken) && r.Has(Due)), "LastCall_Offer_Creditors: the creditors' punchline is missing.");
 
-        // 3. LastCall_OutlivedOnly: an outlived creditor collects nothing, so it keeps nobody alive.
+        // 3. LastCall_OutlivedOnly: an outlived creditor keeps nobody alive, so its ledger never opens (no soft-lock: every
+        // opened ledger reaches a last joke); a live creditor beside an outlived one still opens it.
         var outlived = World(story, 6, "trickster", "trickster.ever", "anevia.committed", "anevia.trickster.cost.socoth_listening", "socot.gone");
-        var outOpened = Done(story, Program.Walk(threshold, outlived).Single(r => r.Has(Open)));
-        var outCalled = Done(story, Program.Walk(anevia, outOpened).Single(r => r.Has("anevia.lastcall.called")));
-        check(!outCalled.Has(Creditors) && !Program.Walk(joke, outCalled).Any(r => r.Has(Taken)),
-            "LastCall_OutlivedOnly: an outlived creditor sets the creditors pillar.");
+        check(!Program.Walk(threshold, outlived).Any(r => r.Has(Open)), "LastCall_OutlivedOnly: an outlived-only ledger opens and cannot close.");
+        var shadowOnly = World(story, 6, "trickster", "trickster.ever", "noct.complete", "nocticula.trickster.cost.shade_paid", "noct.dead");
+        check(!Program.Walk(threshold, shadowOnly).Any(r => r.Has(Open)), "LastCall_OutlivedOnly: a shadow's debt alone opens the ledger.");
+        var mixed = World(story, 6, "trickster", "trickster.ever", "anevia.committed", "anevia.trickster.cost.socoth_listening", "socot.gone",
+                          "noct.complete", "nocticula.trickster.cost.shade_paid");
+        var mixedOpen = Program.Walk(threshold, mixed).Where(r => r.Has(Open)).ToList();
+        check(mixedOpen.Count == 1, "LastCall_OutlivedOnly: a live Nocticula beside an outlived Socothbenoth does not open exactly one way.");
+        var mixedCalled = Done(story, Program.Walk(Sc("nocticula.lastcall.call"), Done(story, mixedOpen[0])).Single(r => r.Has("nocticula.lastcall.called")));
+        check(Program.Walk(joke, mixedCalled).Any(r => r.Has(Taken) && r.Has(Due)), "LastCall_OutlivedOnly: the live creditor cannot close the opened ledger.");
+        // Every world that opens the ledger by creditors alone can reach a last joke (the soft-lock check).
+        foreach (var debt in new[] { "arsinoe.trickster.cost.lien", "kiana.trickster.cost.sunhammer_favour", "soana.trickster.cost.guardian_paid" })
+        {
+            var rel = debt.Split('.')[0];
+            var commit = story.Relationships[rel].CommittedFlag;
+            var w = World(story, 6, "trickster", "trickster.ever", commit, debt);
+            var o = Program.Walk(threshold, w).Where(r => r.Has(Open)).Select(r => Done(story, r)).ToList();
+            var called = o.SelectMany(r => Program.Walk(Sc(rel + ".lastcall.call"), r)).Where(r => r.Has(rel + ".lastcall.called")).Select(r => Done(story, r)).ToList();
+            check(o.Count == 1 && called.Any(r => Program.Walk(joke, r).Any(x => x.Has(Taken))), "Soft-lock: a creditor-only ledger cannot reach its last joke: " + debt);
+        }
 
         // 4-5. No vessel and no debt; a failed path.
         check(!Av(threshold, World(story, 6, "trickster", "trickster.ever")), "LastCall_NoVesselNoDebt: last orders without a vessel or a debt.");
