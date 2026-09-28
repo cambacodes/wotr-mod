@@ -56,6 +56,8 @@ def sitting(id, title, entry, nodes, requires, forbids=(), delay=24, chapters=(3
 # --- Celestials and beasts: the Council, as she sees it. -------------------------------------------------------------
 
 sitting(FIRST, "Celestials and beasts", '"Tell me about the Council. As you see it."', [
+    nar("open", '''{n}She is not at the head of the table tonight. She is walking its length slowly, from chair to empty chair, resting her claws on the back of each one as she passes, the way a general walks a line of sentries who cannot see her.{/n}''',
+        c("Continue", "start")),
     e("start", '''"As I see it." {n}She considers the phrase, as if it were an amendment she might accept.{/n}
 "When Socothbenoth brought you in, you saw a table. A demon lord with tattoos, a devil in spectacles, a hippogriff with a purse, an azata who thinks luck is a policy, and an Eldest who cannot keep one face for the length of a sentence. You saw a farce." {n}Her claws rest on the table's edge.{/n}
 "I see celestials and beasts sitting at one table in peace. Do you know how long it has been since that happened anywhere? I do not. Nobody has kept the minutes."''',
@@ -113,6 +115,8 @@ sitting(AID, "A sound proposition", '"About my motion for material aid..."', [
 # --- A proof: Cobblehoof. ---------------------------------------------------------------------------------------------
 
 sitting(PROOF, "Phrr", '"What does Cobblehoof actually say?"', [
+    nar("open", '''{n}A single grey feather lies on the Council table in front of Cobblehoof's chair, shed in some argument you did not attend. She is turning it between two claws, holding it up to the lamp, as though it might yet be entered into evidence.{/n}''',
+        c("Continue", "start")),
     e("start", '''"'Phrr.'" {n}She says it perfectly, down to the rattle in the back of the beak, and then looks faintly embarrassed at having done it.{/n}
 "He is from Axis. He believes that everything true can be proven, and everything that cannot be proven is noise. When he snorts, it means the argument has not yet been proven. When he snorts twice, it means it cannot be. When he bangs his foreleg on the table, it means he agrees, and would like it written down." {n}She sniffs.{/n} "He is the only member who understands what the minutes are for."''',
       c('"And the purse?"', "purse"),
@@ -139,6 +143,8 @@ sitting(PROOF, "Phrr", '"What does Cobblehoof actually say?"', [
 # --- Luck is not a position: Chadali. --------------------------------------------------------------------------------
 
 sitting(LUCK, "Luck is not a position", '"You and Chadali..."', [
+    nar("open", '''{n}There is a flower in her inkwell. It was bright once, and it has died, the way everything alive dies in this hall; she has not thrown it out. She is looking at it when you come in, and moves her hand as if to hide it, and then, being who she is, does not.{/n}''',
+        c("Continue", "start")),
     e("start", '''"Chadali and I." {n}She sets the quill down, which means she is going to be honest about something she would rather not be.{/n}
 "She is from Elysium. She believes in luck, and freedom, and good wishes sent across the planes. She calls you our lucky charm. She calls me 'dear chair' and brings me flowers that die in the hall because nothing grows here." {n}The corner of her mouth draws back from one long tooth.{/n}
 "Luck is not a position, Commander. I have told her so in every session since the first. She claps. It is like debating a sunrise."''',
@@ -167,6 +173,8 @@ sitting(LUCK, "Luck is not a position", '"You and Chadali..."', [
 # --- The Eldest's version: Shyka. ------------------------------------------------------------------------------------
 
 sitting(ELDEST, "The Eldest's version", '"Does Shyka ever tell you the truth?"', [
+    nar("open", '''{n}She is speaking when you come in, low and formal, and there is no one in the hall. She is addressing Shyka's empty chair. She stops mid-sentence when she sees you, and does not explain, and the chair, which should look empty, somehow does not.{/n}''',
+        c("Continue", "start")),
     e("start", '''"Shyka tells me many truths. That is the difficulty." {n}She rubs the bridge of her nose, where the fur is shortest.{/n}
 "They are an Eldest of the First World, and they walk the ways between what was and what may be. Every sentence they speak is true of some future. The trouble is that they choose which future to live in according to which one amuses them most." {n}She looks at Shyka's empty chair, which, of all the chairs, is somehow the one that looks occupied.{/n}
 "They laughed at your idea of the crossroads for a very long time. Then they said that moment alone was worth all our endless debates. I have not decided whether that was a compliment to you or an insult to me."''',
@@ -245,7 +253,9 @@ sitting(LISTS, "The casualty lists", '"You\'re reading the lists again."', [
 # --- The dagger: her temper, in her own telling. ---------------------------------------------------------------------
 
 sitting(DAGGER, "The dagger", '"You wear a dagger to a debate."', [
-    e("start", '''{n}Her hand goes to the hilt at her belt before she can stop it, and then stays there, deliberately, as though to prove she is not ashamed of it.{/n}
+    nar("open", '''{n}The dagger is out of its sheath for the first time you have seen. It lies on a square of oiled cloth in front of her, and she is cleaning a blade that has no mark on it, slowly, with the absorbed care of someone who has done this a great many times and has never once needed to.{/n}''',
+        c("Continue", "start")),
+    e("start", '''{n}She does not stop. She turns the blade to the lamp, and then, deliberately, lays it down between you with her hand still on the hilt, as though to prove she is not ashamed of it.{/n}
 "I do. I have never drawn it at this table. That is a fact, and you may check the minutes." {n}She looks at you steadily.{/n}
 "You want to know whether I have drawn it elsewhere. Everyone does, eventually. Socothbenoth asked on his first day, and I told him the truth, and he stopped flirting with me for almost a week."''',
       c('"Have you?"', "have"),
@@ -442,6 +452,8 @@ sitting(FEELINGS, "A point of personal privilege", '"You look like you have a po
 HOME = K + "where_the_chair_goes_home"
 
 sitting(HOME, "Where the chair goes home", '"Where do you go, when the Council adjourns?"', [
+    nar("open", '''{n}She is standing at the far end of the hall with her eyes closed and her head a little on one side, as if listening to something a very long way off. When she opens her eyes, it takes her a moment to come back from wherever it was.{/n}''',
+        c("Continue", "start")),
     e("start", '''"Home." {n}She says it as if the word were slightly improper.{/n}
 "Nirvana. You have heard the name. Your priests say it as if it were a reward, and your poets as if it were a silence. It is neither. It is the plane where goodness does not need to be argued for, because everyone already agrees." {n}She taps the quill against the scroll.{/n}
 "I find it very difficult to be there for long. Nobody disagrees with me. Do you know what that is like, for someone like me? It is like being a sword in a world without anything to cut."''',
