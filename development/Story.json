@@ -153569,7 +153569,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground; the forest does not have anyone left who would.{/n}\n{n}Something out in the trees stops moving when you step inside.{/n}",
+          "Text": "{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. The forest died with her: the undergrowth is black, the birds are gone, and the spirits she kept in hand have been howling through the trees since the night she fell. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground.{/n}\n{n}Something out in the trees stops moving when you step inside.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -153597,7 +153597,7 @@
         {
           "Id": "orso",
           "Speaker": "Narrator",
-          "Text": "{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded.{/n}",
+          "Text": "{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded. Whatever she tied to him is still tied.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -153613,7 +153613,7 @@
         {
           "Id": "spirit",
           "Speaker": "Narrator",
-          "Text": "{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, with nowhere left to go and nobody left to hold its leash.{/n}",
+          "Text": "{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, still bound, still alive after its fashion.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -153629,16 +153629,17 @@
         {
           "Id": "read",
           "Speaker": "Narrator",
-          "Text": "{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}\n{n}She never said whose life went first.{/n}",
+          "Text": "{n}You remember what she told you, with her arms folded over her chest: she forced the spirit to serve good by linking their lives together.{/n}\n{n}One end of that knot is dead on the floor of this cave. The other end is still breathing.{/n}",
           "Choices": [
             {
-              "Text": "[Hold her clay medallion to the guardian's brand] \"You linked your lives together. You never said whose goes first. Pay her debt.\"",
+              "Text": "[Hold her clay medallion to the guardian's brand] \"You linked your lives together. One end is still breathing. By your own words, so is the other.\"",
               "Next": "wake_clay",
               "Set": [
                 "soana.trickster.returned",
                 "soana.started",
                 "soana.trickster.cost.guardian_paid",
-                "soana.trickster.cost.medallion_spent"
+                "soana.trickster.cost.medallion_spent",
+                "soana.trickster.cost.leash_held"
               ],
               "Requires": [
                 "soana.medallion_held"
@@ -153653,12 +153654,13 @@
               "RemoveItem": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
             },
             {
-              "Text": "[Lay your hand on the brand and read it her own words] \"You linked your lives together. You never said whose goes first. Pay her debt.\"",
+              "Text": "[Lay your hand on the brand and read it her own words] \"You linked your lives together. One end is still breathing. By your own words, so is the other.\"",
               "Next": "wake_brand",
               "Set": [
                 "soana.trickster.returned",
                 "soana.started",
-                "soana.trickster.cost.guardian_paid"
+                "soana.trickster.cost.guardian_paid",
+                "soana.trickster.cost.leash_held"
               ],
               "Requires": [],
               "Forbids": [
@@ -153687,7 +153689,7 @@
         {
           "Id": "wake_clay",
           "Speaker": "Narrator",
-          "Text": "{n}The brand darkens, as a rope darkens when it is pulled wet. The clay knot in your hand draws tight, tighter than clay can bear, and cracks down the middle with a sound like a knuckle.{/n}",
+          "Text": "{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and the medallion draws tight in your fist and cracks down the middle with a sound like a knuckle.{/n}\n{n}The pull does not stop when the clay breaks. It comes up your arm instead: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -153715,7 +153717,7 @@
         {
           "Id": "wake_brand",
           "Speaker": "Narrator",
-          "Text": "{n}The brand darkens under your palm, as a rope darkens when it is pulled wet, and draws tight until the skin of your hand burns with cold. When you take the hand away, the shape of the knot is printed on it in white.{/n}",
+          "Text": "{n}You lay your palm on the brand and say her words back to it. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}\n{n}When you take the hand away, the knot is printed on your palm in white, and the pull does not stop: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -153743,7 +153745,7 @@
         {
           "Id": "wake_orso",
           "Speaker": "Narrator",
-          "Text": "{n}The knot does not take a life. It takes the leash. Out in the ferns Orso rears up, and something tears loose from him: a shadow the size of a man, black as burnt grass, that goes into the trees faster than anything that size should move.{/n}\n{n}Orso comes down on all fours and shakes himself like a dog out of a river. The brand on his shoulder is grey and cold. He looks at you with a bear's eyes, only a bear's, and does not know you, or the cave, or his own name.{/n}",
+          "Text": "{n}Out in the ferns Orso staggers, and does not fall. He lies down at the cave mouth, panting, alive. The brand on his shoulder has gone pale. The one on your hand has not. Something inside him strains once against the knot, and you feel it strain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -153759,7 +153761,7 @@
         {
           "Id": "wake_spirit",
           "Speaker": "Narrator",
-          "Text": "{n}The knot does not take a life. It takes the leash. The black grass around the bones turns to plain dead grass, and something leaves the carcass in a rush, low to the ground, like smoke looking for a door. It goes into the trees. Behind it, the bones are only bones.{/n}",
+          "Text": "{n}The black grass around the bones stirs, though there is no wind. What lies in them strains once against the knot, and you feel it in your wrist, like a dog on a short rope. It does not get loose. You are holding it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -153775,7 +153777,7 @@
         {
           "Id": "soana",
           "Speaker": "Soana",
-          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course. Who else would hold a dead woman to her own words?\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order.{/n}\n\"I was finished. I had earned it. And you paid for me with my knot. The thing I bound is loose in my forest, looking for a skin to wear, and there is nobody left to hold its leash but me.\"",
+          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course. Who else would hold a dead woman to her own words?\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}\n\"I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"",
           "Choices": [
             {
               "Text": "\"You can hate me standing up.\"",
@@ -153825,7 +153827,7 @@
         {
           "Id": "start",
           "Speaker": "Soana",
-          "Text": "{n}Soana has a spade in one hand. Around the cave mouth are new mounds, a row of them, small and large: a fox, two wolves, a hind with her calf. Beside the last is a hole she has not finished.{/n}\n\"Two days I have been walking this forest behind the thing you let off its leash. It rides whatever it can catch, runs it until its heart bursts, and gets off. I bury what it leaves. The demons on your road would pay well for a rider like that.\"",
+          "Text": "{n}Soana has a spade in one hand. Around the cave mouth are new mounds, a row of them, small and large: a fox, two wolves, a hind with her calf. Beside the last is a hole she has not finished.{/n}\n\"Two days I have been walking this forest. When I died, the spirits I kept in hand went mad, and the forest died with me. It did not come back when I did. Not a squirrel in it. I bury what I find.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -153853,7 +153855,7 @@
         {
           "Id": "orso",
           "Speaker": "Soana",
-          "Text": "\"Orso is in the ravine. He will not come when I call. He is only a bear now, and an old one, and the thing that wore him for so long remembers where he sleeps. You used him to pay a debt that was not his, hunter. He was a demon's cage, and he was mine.\"",
+          "Text": "\"Orso lies at my door and will not leave it. He is too tired to hunt. The thing in him pulls at your end of the knot every time he dreams; I can see it in your hand from here. You will learn to sleep through it, or you will not sleep.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -153869,7 +153871,7 @@
         {
           "Id": "spirit",
           "Speaker": "Soana",
-          "Text": "\"Orso's bones are in the ground; I put them there myself, the first night, with my hands. What was in them is not. It remembers who let it out. It will come looking for you before long, and it will come through my forest to do it.\"",
+          "Text": "\"Orso's bones are in the ground; I put them there myself, the first night, with my hands. What is in them pulls at your end of the knot when it is hungry, and it is always hungry now. You will learn to sleep through it, or you will not sleep.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -153885,7 +153887,7 @@
         {
           "Id": "dig",
           "Speaker": "Soana",
-          "Text": "{n}She holds out the spade, handle first.{/n}\n\"You were very quick with my knot, bloody hunter. Let us see how quick you are with a grave. Then we will talk about catching it.\"",
+          "Text": "{n}She holds out the spade, handle first.{/n}\n\"You were very quick with my knot, bloody hunter. Let us see how quick you are with a grave.\"",
           "Choices": [
             {
               "Text": "[Take the spade]",
@@ -153930,7 +153932,7 @@
         {
           "Id": "dug",
           "Speaker": "Narrator",
-          "Text": "{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hind and her calf finally go in she says something over them in a language that sounds like branches knocking.{/n}",
+          "Text": "{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes, one-handed half the time, because the other hand keeps closing on nothing when the leash pulls. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hind and her calf finally go in she says something over them in a language that sounds like branches knocking.{/n}",
           "Choices": [
             {
               "Text": "[Wipe your hands]",
@@ -153962,7 +153964,7 @@
         {
           "Id": "decide",
           "Speaker": "Soana",
-          "Text": "{n}She leans on the spade and looks at you the way she looks at weather.{/n}\n\"Hear me, hunter, because I will say it once. The thing in my woods I will catch with you or without you. That is the forest's business, and it does not buy you anything from me. What you want from me is another matter, and I have not decided what I think of it.\"\n\"Come back in three days. By then I will know my own mind. I always do, in the end.\"",
+          "Text": "{n}She leans on the spade and looks at you the way she looks at weather.{/n}\n\"Hear me, hunter, because I will say it once. The dead forest I will bury with you or without you. That is the forest's business, and it does not buy you anything from me. My leash I will take back from your hand whatever you say; I do not leave my work in a stranger's fist. What you want from me is another matter, and I have not decided what I think of it.\"\n\"Come back in three days. By then I will know my own mind. I always do, in the end.\"",
           "Choices": [
             {
               "Text": "\"Three days, then.\"",
@@ -154089,7 +154091,7 @@
         {
           "Id": "price",
           "Speaker": "Soana",
-          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance. So you will have my terms, and you will take them as they are or not at all.\"\n\"A knot with one strand is not a knot. It is a piece of string. If I am to catch that thing and bind it again, the knot needs a second life at the other end. Orso's has gone out of it; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
+          "Text": "{n}She opens her hand. The two halves of the clay knot lie in it.{/n}\n\"I have decided. I want you, hunter, which is a great nuisance. So you will have my terms, and you will take them as they are or not at all.\"\n\"A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare hand, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first.\"\n\"Those are my terms. I will not say them twice, and I will not make them sweeter.\"",
           "Choices": [
             {
               "Text": "[Hold out your hand for the pieces]",
@@ -154148,7 +154150,7 @@
         {
           "Id": "no",
           "Speaker": "Soana",
-          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and it cost me my guardian. Come back when you can hold still for a thing that matters.\"",
+          "Text": "{n}She closes her fist over the shards and turns away.{/n}\n\"No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can hold still for a thing that matters.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -154166,7 +154168,7 @@
         {
           "Id": "fool",
           "Speaker": "Soana",
-          "Text": "\"I already found one. He is in the ravine, and he does not know his own name.\"\n{n}She does not look at you again.{/n}",
+          "Text": "\"I already found one. He is holding my leash, and he laughs at knots.\"\n{n}She does not look at you again.{/n}",
           "Choices": [
             {
               "Text": "[Go]",
@@ -155150,7 +155152,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Soana caught the thing her knot had let loose in the first thaw after the war, in a gully full of dead deer, and bound it again with the Commander's life at the other end of the clay. It fought the knot for a night and a day, and the Commander felt every hour of it in the wrist the gut strip had marked; the wrist ached in cold weather ever after. Then she began, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}\n{n}The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, Soana said that was how you knew it was working.{/n}",
+          "Text": "{n}Soana took her leash back from the Commander's hand the night of the vow and tied it into the clay again, with the Commander's life at the other end. The Commander felt it pull on hungry nights for the rest of the war, in the wrist the gut strip had marked, and the wrist ached in cold weather ever after. When the war was over she began to plant the dead Wintersun woods, and, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}\n{n}The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, Soana said that was how you knew it was working.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -155276,7 +155278,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Soana caught the thing her knot had let loose alone, in the first thaw after the war, with one strand and her own blood, and it nearly killed her. She buried what it had ridden to death one grave a day. The year after the Worldwound closed she walked all the way to Drezen with the broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}\n\"Your end. I caught it without you once. I will not do that twice.\"",
+          "Text": "{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She buried the dead forest one grave a day. The year after the Worldwound closed she walked all the way to Drezen with the broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}\n\"Your end. I held it alone once. I will not do that twice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -155353,7 +155355,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "The thing her knot had let loose she caught alone, in the first thaw, and bound into the last of the old wolves with a single strand. It held, barely, for as long as she lived.",
+              "Text": "She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. It held, barely, for as long as she lived.",
               "Requires": [
                 "soana.trickster.returned"
               ],
@@ -155386,7 +155388,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander never went back to Wintersun. Soana caught the thing her knot had let loose alone, in a gully full of dead deer, and bound it into the last of the old wolves with a single strand and most of her own blood. It held.{/n}\n{n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told that the Commander was a hunter who had held a dead woman to her own words, dug a few graves, and walked away. She did not say it kindly.{/n}",
+          "Text": "{n}The Commander never went back to Wintersun. Soana came to Drezen once, took her leash back from the Commander's palm with a single strand and most of her own blood, and left without a word. It held.{/n}\n{n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told that the Commander was a hunter who had held a dead woman to her own words, dug a few graves, and walked away. She did not say it kindly.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -155586,7 +155588,7 @@
         {
           "Id": "start",
           "Speaker": "Ulbrig",
-          "Text": "\"I asked you once what these new powers want in return, warchief. Now we know. That one wanted the crone's leash: there's a demon loose in the Wintersun woods, riding deer until their hearts burst. Every power must have a name, and a price that's fair. I'd not call that fair. Nor would the crone, I'd wager.\"",
+          "Text": "\"I asked you once what these new powers want in return, warchief. Now we know. That one wanted a hand on a demon's leash: yours, by the look of that palm. Every power must have a name, and a price that's fair. I'd call that fair, just about. Mind it doesn't pull you over in your sleep.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -155601,7 +155603,7 @@
         }
       ],
       "Requires": [
-        "soana.trickster.cost.guardian_paid",
+        "soana.trickster.cost.leash_held",
         "ulbrig.talked"
       ],
       "Forbids": [

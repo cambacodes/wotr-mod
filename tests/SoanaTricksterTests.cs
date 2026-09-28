@@ -167,7 +167,9 @@ internal static class SoanaTricksterTests
         check(Rules.Available(story, knot, killed) && !Any(killed, crooked, lateLuck, dice) && !Any(killed, handovers),
             "Trk_Soana_Killed: the knot is unavailable, or a living-Soana scene opens.");
         check(knot.Nodes.Single(n => n.Id == "read").Choices.Count == 3, "The knot's choices changed shape.");
-        var raised = Pick(knot, killed, P + "returned", P + "cost.guardian_paid");
+        var raised = Pick(knot, killed, P + "returned", P + "cost.guardian_paid", P + "cost.leash_held");
+        check(knot.Nodes.All(n => !n.Text.Contains("does not get up") && !n.Text.Contains("tears loose")),
+            "The knot buys her return with a death or a release.");
         check(!raised.Has(P + "cost.medallion_spent"), "Trk_Soana_Killed: a medallion spent that was never held.");
         var raisedLater = Later(story, raised, 48);
         check(Rules.Available(story, graveyard, raisedLater) && !Rules.Available(story, graveyard, Later(story, raised, 47))
@@ -310,9 +312,9 @@ internal static class SoanaTricksterTests
         check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { epCommit.Id }),
             "A luck never committed has no late page.");
         check(Endings(walked).SequenceEqual(new[] { P + "epilogue.unbound" }), "Walking away from the grave leaves the loose spirit unresolved.");
-        check(new[] { epKnot, epCommit, S(P + "epilogue.unbound") }.All(p => p.Nodes[0].Text.Contains("caught"))
-              && epDeclined.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "returned") && x.Text.Contains("caught")),
-            "A killed-branch ending leaves the loosed spirit unresolved.");
+        check(new[] { epKnot, epCommit, S(P + "epilogue.unbound") }.All(p => p.Nodes[0].Text.Contains("leash back"))
+              && epDeclined.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "returned") && x.Text.Contains("leash back")),
+            "A killed-branch ending leaves the leash in the Commander's hand.");
         foreach (var loss in new[] { "soana.ending_native_loss", "soana.ending_unfinished_loss" })
             check(S(loss).Forbids.Contains(P + "returned"), "A returned Soana is mourned: " + loss);
         foreach (var page in new[] { epKnot, epLuck, epCommit, epDeclined })
