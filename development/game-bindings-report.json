@@ -1,11 +1,15 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-kiana\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1449,
-  "unique_targets": 344,
+  "binding_uses": 1487,
+  "unique_targets": 351,
   "failures": [],
   "targets": {
+    "3e4ce583dc71401588f33f8192c252cd": {
+      "path": "Items/NewTrashLoot/NewJewelery/DarekSunhammersFake.jbp",
+      "type": "BlueprintItemEquipmentNeck"
+    },
     "32a037e97c3d5c54b85da8f639616c57": {
       "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
       "type": "BlueprintUnit"
@@ -44,6 +48,10 @@
     },
     "430cba7801b149b4e8494ace6baf4f7c": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_DesnaPriest.jbp",
+      "type": "BlueprintUnit"
+    },
+    "180b0eaa5dce387458d2ebf0ee943985": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Seelah_Q2/Kyana.jbp",
       "type": "BlueprintUnit"
     },
     "3ba3a0ff8575be8419159221177c1411": {
@@ -378,6 +386,14 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Woljif/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "77a1253ff7aa8b24e865dc784db866b3": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
+    "4e7816f547519de44b5ddb8a9ba2bdd8": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
     "81109ea8fb20dbc478cf67116740f4a1": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
       "type": "BlueprintCue"
@@ -630,12 +646,20 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/RegillCompanion/RegillNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
+    "84b4471249a48d84c822d38396c698d9": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty.jbp",
+      "type": "BlueprintEtude"
+    },
     "26ae0f50130942b4bb8dfe658e77b1c6": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_Dead.jbp",
       "type": "BlueprintEtude"
     },
     "c33407f132b192643a438bd33797efa1": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "0d773e4f71ac38a4d917ed459f6a0d0b": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/KianaIsPosessed.jbp",
       "type": "BlueprintEtude"
     },
     "e438007efc4f1474eb447031d4b5a60e": {
@@ -868,6 +892,10 @@
     },
     "49b7496143daed149ab4557a9684dd53": {
       "path": "World/Quests/Companions/Ember/Q3_Worshipped/Ember_Q3_Worshipped_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "a1024628f074e4d4f9d2b15956975459": {
+      "path": "World/Quests/Companions/Seelah/Q2_TillDeathDoUsPart/SeelahQ2_TillDeathDoUsPart_quest.jbp",
       "type": "BlueprintQuest"
     },
     "5a5a533c9ce630a48b877f9a194840cb": {

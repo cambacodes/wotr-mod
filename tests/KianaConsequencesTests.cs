@@ -14,7 +14,7 @@ internal static class KianaConsequencesTests
         foreach (bool otherLoss in new[] { false, true })
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = scenes[0].Areas.Single() };
-            initial.Flags.UnionWith(scenes[0].Requires);
+            initial.Flags.UnionWith(Program.Prerequisites(scenes[0]));
             initial.Flags.Add("seelah.committed");
             if (committed) initial.Flags.Add("kiana.committed");
             if (otherLoss) initial.Flags.Add("loss");
@@ -54,7 +54,7 @@ internal static class KianaConsequencesTests
         foreach (var scene in scenes)
         {
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = scene.Areas.Single() };
-            ready.Flags.UnionWith(scene.Requires);
+            ready.Flags.UnionWith(Program.Prerequisites(scene));
             foreach (string blocker in new[] { "kiana.closed", "kiana.farewell", "inhuman" })
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Add(blocker);
@@ -64,6 +64,11 @@ internal static class KianaConsequencesTests
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(flag);
                 check(!Rules.Available(story, scene, missing), "Kiana consequence skips " + flag);
+            }
+            foreach (var group in scene.RequiresAnyGroups)
+            {
+                var missing = Program.Copy(ready); missing.Flags.ExceptWith(group);
+                check(!Rules.Available(story, scene, missing), "Kiana consequence skips " + string.Join("|", group));
             }
             ready.Chapter = 4;
             check(!Rules.Available(story, scene, ready), "Kiana consequence appears before soul aftermath.");

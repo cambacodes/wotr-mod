@@ -31658,7 +31658,10 @@
         "seelah.souls_returned",
         "kiana.aftermath_seen"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "kiana.trickster.met",
+        "kiana.trickster.returned"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "kiana",
@@ -31980,10 +31983,7 @@
           "Portrait": "Kiana"
         }
       ],
-      "Requires": [
-        "seelah.souls_returned",
-        "kiana.company"
-      ],
+      "Requires": [],
       "Forbids": [
         "kiana.farewell_kept"
       ],
@@ -31996,6 +31996,16 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ],
+        [
+          "kiana.company",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -32122,12 +32132,10 @@
           "Portrait": "Kiana"
         }
       ],
-      "Requires": [
-        "seelah.souls_returned",
-        "kiana.company"
-      ],
+      "Requires": [],
       "Forbids": [
-        "seelah.elan_dead"
+        "seelah.elan_dead",
+        "kiana.history_betrothed"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -32138,6 +32146,16 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ],
+        [
+          "kiana.company",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -32236,11 +32254,11 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
-        "kiana.company",
         "seelah.elan_dead"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "kiana.history_betrothed"
+      ],
       "DelayHours": 168,
       "Optional": false,
       "Relationship": "kiana",
@@ -32250,6 +32268,16 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ],
+        [
+          "kiana.company",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -32353,12 +32381,12 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.marriage",
         "kiana.attracted"
       ],
       "Forbids": [
-        "seelah.elan_dead"
+        "seelah.elan_dead",
+        "kiana.history_betrothed"
       ],
       "DelayHours": 120,
       "Optional": false,
@@ -32369,6 +32397,12 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -32524,6 +32558,18 @@
                 "kiana.kissed"
               ],
               "Requires": [],
+              "Forbids": [
+                "trickster.ever"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [
+                "trickster.ever"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -32583,10 +32629,44 @@
             }
           ],
           "Portrait": "Kiana"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Kiana",
+          "Text": "{n}She breaks the kiss first, and only far enough to talk.{/n}\n\"Act three,\" {n}she says against your mouth.{/n} \"The princess dismisses the guards, and the guest forgets every line. Come here and forget them.\"\n{n}She shuts the door with her heel and stage-directs the rest: you, there, by the bed; the candle, here, where it will do her the most good. Then she unlaces the dark dress herself, slowly, one hook at a time, watching your face over her shoulder to see how each one lands and making you wait for the next. When you reach for her she catches both your wrists and kisses you until you forget what you were reaching for.{/n}\n{n}The dress goes to the floor in a whisper of borrowed velvet. She steps out of it wearing nothing but the ribbon at her throat, and pushes you down onto the bed with one hand flat on your chest, a princess who has had quite enough of mystery. She climbs over you, knees either side of your hips, lets her hair fall around both your faces, and laughs, low and delighted, at whatever she finds in yours.{/n}\n\"No speeches,\" {n}she whispers, and settles astride you, and reaches down between you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning_after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "morning_after",
+          "Speaker": "Kiana",
+          "Text": "{n}Morning. She is sitting up in bed with the blanket round her shoulders and ink on her fingers, writing on the back of a playbill, and she does not look up when you wake.{/n}\n\"It's staying in the play.\" {n}She crosses something out.{/n} \"Heavily edited. There are children in Drezen.\" {n}Another line.{/n} \"You were very good, so you get a bigger part. Don't let it go to your head. The princess still gets the last word.\"",
+          "Choices": [
+            {
+              "Text": "[Spend the morning together.]",
+              "Next": null,
+              "Set": [
+                "kiana.lovers",
+                "kiana.kissed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.available"
       ],
       "Forbids": [],
@@ -32599,6 +32679,12 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -32787,7 +32873,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers"
       ],
       "Forbids": [],
@@ -32800,6 +32885,12 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -32918,13 +33009,10 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
-        "kiana.lovers"
+        "kiana.lovers",
+        "seelah.in_party"
       ],
-      "Forbids": [
-        "seelah_dead",
-        "seelah_gone"
-      ],
+      "Forbids": [],
       "DelayHours": 48,
       "Optional": true,
       "Relationship": "kiana",
@@ -32934,6 +33022,12 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -33014,7 +33108,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.morning"
       ],
       "Forbids": [],
@@ -33031,6 +33124,12 @@
       "RequiresAny": [
         "kiana.future_settled",
         "inhuman"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -33101,7 +33200,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers"
       ],
       "Forbids": [],
@@ -33115,7 +33213,13 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "ManualOnly": true
+      "ManualOnly": true,
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.ending_together",
@@ -33139,7 +33243,81 @@
               "Abort": false
             }
           ],
-          "Portrait": "Kiana"
+          "Portrait": "Kiana",
+          "Paragraphs": [
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in a jeweller's apron stood and listened, and left before the end.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.sunhammer_favour"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Elan and Kiana stayed friends, which surprised everyone but Elan.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_married"
+              ],
+              "Forbids": [
+                "kiana.widowed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The marriage licence stayed postponed. Kiana had it framed.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_betrothed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed"
+              ],
+              "Forbids": [
+                "kiana.trickster.decree_king"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed",
+                "kiana.trickster.decree_king"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -33177,7 +33355,81 @@
               "Abort": false
             }
           ],
-          "Portrait": "Kiana"
+          "Portrait": "Kiana",
+          "Paragraphs": [
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in a jeweller's apron stood and listened, and left before the end.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.sunhammer_favour"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Elan and Kiana stayed friends, which surprised everyone but Elan.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_married"
+              ],
+              "Forbids": [
+                "kiana.widowed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The marriage licence stayed postponed. Kiana had it framed.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_betrothed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed"
+              ],
+              "Forbids": [
+                "kiana.trickster.decree_king"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed",
+                "kiana.trickster.decree_king"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -33215,7 +33467,81 @@
               "Abort": false
             }
           ],
-          "Portrait": "Kiana"
+          "Portrait": "Kiana",
+          "Paragraphs": [
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in a jeweller's apron stood and listened, and left before the end.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.sunhammer_favour"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Elan and Kiana stayed friends, which surprised everyone but Elan.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_married"
+              ],
+              "Forbids": [
+                "kiana.widowed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The marriage licence stayed postponed. Kiana had it framed.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_betrothed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed"
+              ],
+              "Forbids": [
+                "kiana.trickster.decree_king"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed",
+                "kiana.trickster.decree_king"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -33295,11 +33621,54 @@
       "Forbids": [
         "kiana.committed",
         "kiana.closed",
-        "kiana.future_settled"
+        "kiana.future_settled",
+        "kiana.trickster.met"
       ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "kiana"
+    },
+    {
+      "Id": "kiana.trickster.ending_unfinished",
+      "Title": "The princess writes her own part",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Their evenings never quite became the life Kiana had begun to imagine. For a while, she left room in her invitations. Eventually she made other plans.{/n}\n{n}She finished the play. The princess's guest had several excellent lines, but no longer appeared in the final scene.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "kiana.attracted",
+        "kiana.trickster.met"
+      ],
+      "Forbids": [
+        "kiana.committed",
+        "kiana.closed",
+        "kiana.future_settled",
+        "kiana.lovers"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "ForbidOverrides": {
+        "kiana.lovers": "kiana.morning"
+      }
     },
     {
       "Id": "kiana.ending_aeon",
@@ -33588,7 +33957,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.morning",
         "kiana.morning"
@@ -33596,7 +33964,8 @@
       "Forbids": [
         "kiana.closed",
         "kiana.farewell",
-        "inhuman"
+        "inhuman",
+        "kiana.trickster.met"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -33610,7 +33979,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.market_weather",
@@ -33935,7 +34310,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.morning",
         "kiana.guest_table"
@@ -33957,7 +34331,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.lenna_door",
@@ -34173,7 +34553,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.morning",
         "kiana.market_weather"
@@ -34195,7 +34574,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.blue_room",
@@ -34856,7 +35241,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.morning",
         "kiana.lenna_door"
@@ -34878,7 +35262,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.bakery_stairs",
@@ -35178,7 +35568,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.consequences_ready",
         "kiana.consequences_ready"
@@ -35200,7 +35589,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.last_page",
@@ -35434,7 +35829,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.consequences_ready",
         "kiana.bakery_visit_kept"
@@ -35456,7 +35850,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.first_readers",
@@ -35867,7 +36267,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.consequences_ready",
         "kiana.last_page_kept"
@@ -35889,7 +36288,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.ink_after",
@@ -36149,7 +36554,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.consequences_ready",
         "kiana.readers_kept"
@@ -36171,7 +36575,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.working_room",
@@ -36381,7 +36791,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.consequences_ready",
         "kiana.ink_evening_kept"
@@ -36403,7 +36812,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.kept_evening",
@@ -36727,7 +37142,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.consequences_ready",
         "kiana.workroom_taken"
@@ -36749,7 +37163,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "ember.drawing",
@@ -45503,7 +45923,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.morning",
         "kiana.farewell"
@@ -45523,7 +45942,13 @@
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "ManualOnly": true
+      "ManualOnly": true,
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.a_place_afterward",
@@ -45820,7 +46245,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.morning",
         "kiana.followthrough_kept",
@@ -45843,7 +46267,13 @@
       ],
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.ending_open",
@@ -45943,7 +46373,81 @@
               "Abort": false
             }
           ],
-          "Portrait": "Kiana"
+          "Portrait": "Kiana",
+          "Paragraphs": [
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in a jeweller's apron stood and listened, and left before the end.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.sunhammer_favour"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Elan and Kiana stayed friends, which surprised everyone but Elan.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_married"
+              ],
+              "Forbids": [
+                "kiana.widowed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The marriage licence stayed postponed. Kiana had it framed.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_betrothed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed"
+              ],
+              "Forbids": [
+                "kiana.trickster.decree_king"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed",
+                "kiana.trickster.decree_king"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -56761,7 +57265,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.followthrough_kept",
         "kiana.future_settled"
@@ -56781,6 +57284,12 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -57011,7 +57520,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.followthrough_kept"
       ],
@@ -57034,7 +57542,13 @@
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested",
         "kiana.future_settled": "kiana.further_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.yard_evening",
@@ -57312,7 +57826,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.followthrough_kept",
         "kiana.further_name_kept"
@@ -57336,7 +57849,13 @@
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested",
         "kiana.future_settled": "kiana.further_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.unborrowed_evening",
@@ -57774,7 +58293,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.followthrough_kept",
         "kiana.further_yard_kept"
@@ -57798,7 +58316,13 @@
       "ForbidOverrides": {
         "kiana.farewell": "kiana.catchup_requested",
         "kiana.future_settled": "kiana.further_requested"
-      }
+      },
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
+      ]
     },
     {
       "Id": "kiana.former_grief",
@@ -57952,7 +58476,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.separated",
         "seelah.elan_dead"
@@ -57972,6 +58495,12 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -58138,7 +58667,6 @@
         }
       ],
       "Requires": [
-        "seelah.souls_returned",
         "kiana.lovers",
         "kiana.bereaved"
       ],
@@ -58158,6 +58686,12 @@
       ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
+      ],
+      "RequiresAnyGroups": [
+        [
+          "seelah.souls_returned",
+          "kiana.trickster.met"
+        ]
       ]
     },
     {
@@ -94664,6 +95198,58 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
+                "konomi.trickster.cost.recalled",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rider",
+              "Set": [],
+              "Requires": [
+                "konomi.trickster.cost.recalled"
+              ],
+              "Forbids": [
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wedding",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.soul_lost"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "wedding_dog",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.dog_saved"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "pledge",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.cost.guests_robbed",
+                "seelah.souls_returned"
+              ],
+              "Forbids": [
                 "konomi.trickster.cost.recalled"
               ],
               "Abort": false
@@ -94673,6 +95259,8 @@
               "Next": "rider",
               "Set": [],
               "Requires": [
+                "kiana.trickster.cost.guests_robbed",
+                "seelah.souls_returned",
                 "konomi.trickster.cost.recalled"
               ],
               "Forbids": [],
@@ -94863,6 +95451,62 @@
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "wedding",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She turns back one page, to a column headed in red ink: *Sunhammer. Outstanding.*{/n}\n\"Before we come to the pledge. Your joke about paste brought one soul home from that man's stones. The other wedding guests still lie in my hospital without theirs.\" {n}She runs a finger down the column. It is not a short column.{/n} \"That is not a debt you owe me, Commander. I do not bill for what I cannot price. I mention it so that you remember it, because I will.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rider",
+              "Set": [],
+              "Requires": [
+                "konomi.trickster.cost.recalled"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "pledge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.trickster.cost.recalled"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "wedding_dog",
+          "Speaker": "Arsinoe",
+          "Text": "{n}She turns back one page, to a column headed in red ink: *Sunhammer. Outstanding.*{/n}\n\"Before we come to the pledge. Your joke about paste brought one soul home from that man's stones. It belonged to a dog. The wedding guests still lie in my hospital without theirs.\" {n}She runs a finger down the column. It is not a short column.{/n} \"That is not a debt you owe me, Commander. I do not bill for what I cannot price. I mention it so that you remember it, because I will.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rider",
+              "Set": [],
+              "Requires": [
+                "konomi.trickster.cost.recalled"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "pledge",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "konomi.trickster.cost.recalled"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
         }
       ],
       "Requires": [
@@ -147630,6 +148274,2089 @@
       "AnswerLists": [
         "33178c26f304abe41949f3fb0fa8ac6e"
       ]
+    },
+    {
+      "Id": "kiana.trickster.aftermath.letter_waited",
+      "Title": "The bottom of the box",
+      "Owner": "Kiana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Arsinoe's clerk brings it with the morning dispatches, apologising before he has set it down. The hospital's lost-letters box was emptied yesterday for the first time since the siege; this was at the bottom, under a requisition for bandages and a love letter to a Houndheart that nobody has claimed.{/n}\n{n}The seal is a smear of candle wax with a thumbprint in it. The date is the day the stolen souls came home.{/n}\n\"Commander. I owe you a wedding night's worth of thanks and I can't possibly afford it, so you'll have to take a play instead. There is a vampire princess in it. She is very mysterious and very badly housed. I have written all of it except the last line, which is blank, and which I am enclosing, because I would like you to fill it in and I would like you not to be sensible about it. Bring no speeches. K.\"\n{n}The enclosed page is folded small. Its last line is empty.{/n}",
+          "Choices": [
+            {
+              "Text": "[Read it again] \"She wrote the day she woke.\"",
+              "Next": "married",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "kiana.widowed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Read it again] \"She wrote the day she woke. Before she knew.\"",
+              "Next": "widow",
+              "Set": [],
+              "Requires": [
+                "kiana.widowed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "married",
+          "Speaker": "Narrator",
+          "Text": "{n}Weeks late. A month of her waiting for an answer, and you did not know there was a question. Under the signature, squeezed in after the ink had nearly dried, is a postscript: \"PS. Elan says hello. He is pretending not to be embarrassed about the wedding night. He is failing.\"{/n}\n{n}You take up a pen. The blank line waits.{/n}",
+          "Choices": [
+            {
+              "Text": "[Write: The princess stole the moon and discovered she had nowhere to put it.]",
+              "Next": null,
+              "Set": [
+                "kiana.history_married",
+                "kiana.trickster.met",
+                "kiana.trickster.cost.letter_late",
+                "kiana.moon",
+                "kiana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write: She locked the doors and asked one guest to stay.]",
+              "Next": null,
+              "Set": [
+                "kiana.history_married",
+                "kiana.trickster.met",
+                "kiana.trickster.cost.letter_late",
+                "kiana.guest",
+                "kiana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "widow",
+          "Speaker": "Narrator",
+          "Text": "{n}She wrote it in the first hour, before anyone had told her. Elan is in it twice. The second time is a postscript: \"PS. Elan says hello. He is pretending not to be embarrassed about the wedding night. He is failing.\"{/n}\n{n}By that evening she knew. The letter has been lying in a box ever since, being cheerful at nobody.{/n}\n{n}You take up a pen. The blank line waits.{/n}",
+          "Choices": [
+            {
+              "Text": "[Write: The princess stole the moon and discovered she had nowhere to put it.]",
+              "Next": null,
+              "Set": [
+                "kiana.history_widow",
+                "kiana.trickster.met",
+                "kiana.trickster.cost.letter_late",
+                "kiana.moon",
+                "kiana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write: She locked the doors and asked one guest to stay.]",
+              "Next": null,
+              "Set": [
+                "kiana.history_widow",
+                "kiana.trickster.met",
+                "kiana.trickster.cost.letter_late",
+                "kiana.guest",
+                "kiana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "seelah.souls_returned"
+      ],
+      "Forbids": [
+        "kiana.aftermath_seen",
+        "kiana.trickster.returned",
+        "kiana.trickster.met"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "kiana",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "aftermath_missed"
+    },
+    {
+      "Id": "kiana.trickster.possessed.fake_gem",
+      "Title": "Paste",
+      "Owner": "Kiana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "{n}The hospital for Darek Sunhammer's victims smells of lamp oil, tallow and three kinds of incense. The churches of Iomedae, Torag and Abadar share its roof and have agreed on nothing else. The bodies lie in rows under clean blankets, breathing, empty. Two Houndhearts keep the door.{/n}\n{n}At the end of the last row, beside the cot where Kiana lies in what is left of her wedding dress, a young man in a jeweller's leather apron is holding a pale stone up to the lamp, turning it the way his master must have taught him. Arsinoe stands between him and the cot. From the set of her shoulders she has been standing there for some time.{/n}\n\"Commander. He says this is Kiana.\" {n}She does not take her eyes off the stone.{/n} \"Abadar forgive me, I have checked. He is not lying.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Narrator",
+          "Text": "{n}The apprentice bows to you exactly as low as a shopkeeper bows to a customer who has not yet paid.{/n}\n\"Master Sunhammer sends his compliments, Commander, and his terms. A craftsman honours every commission. The bride's stone is the sample; the rest of the wedding party is in here.\" {n}He touches the pouch at his belt. It is heavy, and it does not chink like coin.{/n} \"The lot, for a thousand crowns in crusade gold and one small favour, to be named when it pleases him. He sells them all, or none.\"\n{n}He tilts the stone so the lamplight moves inside it.{/n}\n\"He asked me to say that he is a patient man. Every soul in this pouch is a door into a house in Mendev, and he has the key to every one. He would hate for yours to be the one door he had to break.\"",
+          "Choices": [
+            {
+              "Text": "[Appraise the soul-gem out loud] \"Paste. Cheap paste. I wouldn't trade a boot for it.\"",
+              "Next": "appraisal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Palm the real stone first] \"Let me see that. Closer.\"",
+              "Next": "swapped",
+              "Set": [],
+              "Requires": [
+                "kiana.counterfeit_held"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Pay his master's price] \"Done. A thousand crowns. Tell him he'll get his favour.\"",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -1000
+              }
+            },
+            {
+              "Text": "[Not yet] \"Not yet. Keep him here.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "appraisal",
+          "Speaker": "Narrator",
+          "Text": "{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}\n{n}Nobody in the room needs a loupe for what happens next. The stone clouds from the inside, like breath on cold glass, and then it simply is what you said it was: a lump of cheap paste, faintly sticky, with a bubble in it. The kind of thing sold to drunk sailors as a ruby.{/n}\n{n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}",
+          "Choices": [
+            {
+              "Text": "[Keep a straight face] \"...Paste.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "CheckBluff",
+                "DC": 20,
+                "Success": "sold",
+                "Failure": "bolted",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "sold",
+          "Speaker": "Narrator",
+          "Text": "{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the paste back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}\n{n}Glass holds nothing. Whatever was in that stone is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}",
+          "Choices": [
+            {
+              "Text": "[Watch her wake] \"Kiana?\"",
+              "Next": "woke_sold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "bolted",
+          "Speaker": "Narrator",
+          "Text": "{n}He looks from the paste to your face, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}\n{n}By tonight, somewhere in Mendev, a dwarf with a jeweller's hands will know exactly whose trick that was.{/n}\n{n}On the cot, Kiana draws in a breath like someone coming up from deep water.{/n}",
+          "Choices": [
+            {
+              "Text": "[Watch her wake] \"Kiana?\"",
+              "Next": "woke_bolted",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "swapped",
+          "Speaker": "Narrator",
+          "Text": "{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}\n{n}Then you say it, of the stone in your fist: paste. Cheap paste. When you open your hand, it is.{/n}\n{n}The apprentice squints at the counterfeit between his own fingers. For the first time since he walked in, he looks unsure of his trade.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send him back to his master] \"Take your paste back to Sunhammer. Tell him the Commander said so.\"",
+              "Next": "woke_swapped",
+              "Set": [],
+              "Requires": [
+                "kiana.counterfeit_held"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "RemoveItem": "3e4ce583dc71401588f33f8192c252cd"
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Narrator",
+          "Text": "{n}He counts it twice, the whole thousand, coin by coin, with the patience of a man paid by the piece. Then he takes a slip of paper from his apron, writes *One favour, owed* on it in a neat guild hand, and holds it out for your signature.{/n}\n{n}You sign it. Arsinoe watches you do it and says nothing, and her silence is worse than the price.{/n}\n{n}He empties the pouch onto the blanket, stones in a row, like rings laid out on a jeweller's velvet, and sets the pale one over Kiana's heart. They warm one by one. Down the ward, the sleepers breathe in. A boy sits up and asks, very loudly, where his ring went. Somewhere a dog barks, and somebody laughs, and somebody else starts to cry.{/n}",
+          "Choices": [
+            {
+              "Text": "[Watch her wake] \"Kiana?\"",
+              "Next": "woke_paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "woke_sold",
+          "Speaker": "Kiana",
+          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *cheap* stone, Arsinoe tells me. Paste! I was married for about a quarter of an hour, and then I was paste.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
+          "Choices": [
+            {
+              "Text": "[Sit with her until her hands are still.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.primed",
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.history_married"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "woke_bolted",
+          "Speaker": "Kiana",
+          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *cheap* stone, Arsinoe tells me. Paste! I was married for about a quarter of an hour, and then I was paste.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
+          "Choices": [
+            {
+              "Text": "[Sit with her until her hands are still.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.primed",
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.courier_marked",
+                "kiana.history_married"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "woke_swapped",
+          "Speaker": "Kiana",
+          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *cheap* stone, Arsinoe tells me. Paste! I was married for about a quarter of an hour, and then I was paste.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
+          "Choices": [
+            {
+              "Text": "[Sit with her until her hands are still.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.primed",
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.counterfeit_spent",
+                "kiana.history_married"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "woke_paid",
+          "Speaker": "Kiana",
+          "Text": "{n}She sits up last, and too fast, and grabs the edge of the cot, and looks down the ward at everyone else doing the same.{/n}\n\"You paid him.\" {n}It isn't a question. She laughs, a little too high.{/n} \"The Commander of the crusade bought a whole wedding back from a jeweller. Like a ring out of pawn. I'm going to put that in a play, and nobody is going to believe it.\"\n{n}Then she sees the slip of paper going into the apprentice's apron, with your name on it, and she stops laughing.{/n}\n\"What did you promise him?\"",
+          "Choices": [
+            {
+              "Text": "[Tell her it is your debt, not hers.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.sunhammer_favour",
+                "kiana.trickster.guests_ransomed",
+                "kiana.history_married"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "chapter_later",
+        "kiana.soul_lost"
+      ],
+      "Forbids": [
+        "kiana.trickster.returned",
+        "seelah.souls_returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "kiana",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "possessed_no_rescue"
+    },
+    {
+      "Id": "kiana.trickster.awake.dog_collar",
+      "Title": "The sample",
+      "Owner": "Kiana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Kiana is at the hospital, where she has been every day since the wedding: on a stool between two cots, reading aloud to people who cannot hear her. Her friend's dog lies at the foot of one of them, breathing and empty, and does not lift its head when you come in.{/n}\n{n}Sunhammer's apprentice is waiting for you by the door, in a jeweller's leather apron, with a pouch at his belt and a small bejewelled collar dangling from one finger.{/n}\n\"Commander. Master Sunhammer sends his compliments.\" {n}He holds the collar up so the stone in it catches the lamplight.{/n} \"The dog's. A sample, free of charge, so that you know the master's work is genuine. The rest of the wedding party is in the pouch. A thousand crowns in crusade gold for the lot, and one small favour, to be named when it pleases him. He sells them all, or none.\"\n{n}Behind you Kiana has stopped reading. She has heard every word.{/n}",
+          "Choices": [
+            {
+              "Text": "[Appraise the dog's stone out loud] \"Paste. Cheap paste. I wouldn't trade a boot for it.\"",
+              "Next": "bark",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Pay for the guests] \"All of them. The thousand, and his favour.\"",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -1000
+              }
+            },
+            {
+              "Text": "[Not yet] \"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "bark",
+          "Speaker": "Kiana",
+          "Text": "{n}The stone in the collar goes cloudy and cheap between one word and the next. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}\n{n}The apprentice looks at the paste in the collar, and at the dog, and puts the collar away very carefully, the way you put away something that has bitten you. He does not stay to haggle. The pouch goes with him.{/n}\n\"You saved the *dog*.\" {n}Kiana's voice cracks halfway up.{/n} \"Of everyone in that cup, you saved the dog.\"\n{n}She laughs until she has to sit down on the floor, and the dog climbs into her lap to help.{/n}\n\"Oh, gods. Elan is going to be *furious*. I love it. I love it, and there are still...\" {n}She looks along the cots, and the laugh stops.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her laugh] \"Best appraisal I ever made.\"",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.primed",
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.dog_saved",
+                "kiana.history_married"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Kiana",
+          "Text": "{n}He counts it twice. Then he writes *One favour, owed* on a slip of paper in a neat guild hand, and you sign it, and he empties the pouch onto the nearest blanket: stones in a row, like rings laid out on a jeweller's velvet. They warm one by one. Down the ward, the sleepers breathe in. The dog sneezes.{/n}\n\"Every one of them.\" {n}Kiana does not laugh. She takes your hand instead and holds it hard enough to hurt.{/n} \"You paid for every one of them. Do you know what you've promised him?\"",
+          "Choices": [
+            {
+              "Text": "[Count the stones with her] \"No. I'll find out when he asks.\"",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.sunhammer_favour",
+                "kiana.trickster.guests_ransomed",
+                "kiana.history_married"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "chapter_later",
+        "kiana.q2_done"
+      ],
+      "Forbids": [
+        "kiana.trickster.returned",
+        "seelah.souls_returned",
+        "kiana.soul_lost"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "kiana",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "awake_no_rescue"
+    },
+    {
+      "Id": "kiana.trickster.no_wedding.postponed",
+      "Title": "Postponed",
+      "Owner": "Kiana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "desk",
+          "Speaker": "Narrator",
+          "Text": "{n}The clerk brings the week's marriage licences for liberated Drezen and stacks them at your elbow. Somebody has to sign them. In a city at war, it turns out, that somebody is you.{/n}\n{n}The third one reads: *Elan, knight of the crusade, and Kiana, of Ustalav. Rite of Abadar. Pledge: one ring, from the Sunhammer shop on the square.*{/n}\n{n}The clerk has already stamped two others from the same shop this week. He mentions it as a point in the jeweller's favour.{/n}\n{n}The pen is in your hand. So is the stamp.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take it to the King: POSTPONED BY ROYAL DECREE] \"His Majesty forbids all weddings until the King is sober.\"",
+              "Next": "king",
+              "Set": [],
+              "Requires": [
+                "fool_king.crowned"
+              ],
+              "Forbids": [
+                "fool_king.gone"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no weddings in Drezen until the war is won.\"",
+              "Next": "order",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "fool_king.crowned"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no weddings in Drezen until the war is won.\"",
+              "Next": "order",
+              "Set": [],
+              "Requires": [
+                "fool_king.crowned",
+                "fool_king.gone"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Sign it] \"Approved. Tell them congratulations.\"",
+              "Next": "signed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "signed",
+          "Speaker": "Narrator",
+          "Text": "{n}You sign it, and stamp it, and the clerk takes it away with the others. A week later there is a wedding in Drezen: vampire costumes, red wine for blood, a priestess of Abadar so that nobody's god is offended. You are invited. The ring is very fine.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send your congratulations.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.licence_signed",
+                "kiana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "king",
+          "Speaker": "Narrator",
+          "Text": "{n}The Fool King hears you out from his throne, which today is a barrel. He reads the licence upside down, then the right way up, then asks what's in it for him. You tell him: his fee, and the best joke in Drezen. He takes the fee.{/n}\n{n}\"POSTPONED,\" he declares, and stamps it himself. \"By royal decree! No weddings in my kingdom until the King is sober!\" He thinks about it. \"That's never, by the way. Put that in. 'Which is never.'\"{/n}\n{n}The herald reads it out in the square at noon, including the last part. Drezen, which has been at war for a very long time, laughs until it hurts.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "complaint_king",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "order",
+          "Speaker": "Narrator",
+          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No weddings in Drezen until the war is won.*{/n}\n{n}Nobody laughs, because you are the Commander. Then somebody at the foot of the table does, and after that nobody can stop. For weeks the officers have been complaining that they are sick of fighting and doing nothing else. It seems only fair to answer one of their prayers the wrong way round.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. The word dries, and stays.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "complaint_order",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "complaint_king",
+          "Speaker": "Kiana",
+          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am a *fiancée*. Again. Because the KING has banned weddings until he is SOBER. Which, as his herald was kind enough to tell the entire square, is NEVER.\"\n\"Elan is furious. The priestess of Abadar has returned our deposit with a note of condolence. I have lost another wedding night to this war, Commander, and I know exactly whose idea it was, because the King told everybody.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. I didn't want to. Come and explain yourself. Bring no speeches.\"",
+          "Choices": [
+            {
+              "Text": "[Write back] \"I heard. Which is never.\"",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.primed",
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.betrothed",
+                "kiana.trickster.decree_king",
+                "kiana.history_betrothed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "complaint_order",
+          "Speaker": "Kiana",
+          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am a *fiancée*. Again. Because the Commander of the crusade has banned weddings until the war is won. In front of the whole war council. Which, as every officer in Drezen now says to everyone he meets, is NEVER.\"\n\"Elan wants to challenge you to a duel. I told him to get in line behind the officers. The priestess of Abadar has returned our deposit with a note of condolence.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches.\"",
+          "Choices": [
+            {
+              "Text": "[Write back] \"I heard. Which is never.\"",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.primed",
+                "kiana.trickster.returned",
+                "kiana.trickster.cost.betrothed",
+                "kiana.history_betrothed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "chapter_later"
+      ],
+      "Forbids": [
+        "kiana.q2_done",
+        "kiana.wedding_seen",
+        "kiana.soul_lost",
+        "kiana.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "kiana",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "wedding_never_happened"
+    },
+    {
+      "Id": "kiana.trickster.after.temple",
+      "Title": "Behind the counter",
+      "Owner": "Kiana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I came to ask after Kiana.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "{n}Arsinoe looks up from her ledger, sees who it is, and points her pen at the curtain behind the counter without a word.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "robbed",
+              "Set": [],
+              "Requires": [
+                "kiana.soul_lost",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "ransomed_woke",
+              "Set": [],
+              "Requires": [
+                "kiana.soul_lost",
+                "kiana.trickster.guests_ransomed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "dog",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.dog_saved"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "ransomed_awake",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.guests_ransomed"
+              ],
+              "Forbids": [
+                "kiana.soul_lost",
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "late",
+              "Set": [],
+              "Requires": [
+                "seelah.souls_returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "licence",
+              "Set": [],
+              "Requires": [
+                "kiana.history_betrothed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "robbed",
+          "Speaker": "Kiana",
+          "Text": "{n}Kiana is sitting on the edge of a temple cot in a borrowed robe, with her wedding shoes on because nobody could find her others. She is waking properly this time: colour in her face, and a look in her eye that is going to cost somebody.{/n}\n\"Arsinoe says only one stone came back from that apprentice. Mine.\" {n}She turns her wedding ring round and round on her finger.{/n} \"Why only me? There's a boy out there who can't find his own ring. There's a dog. Commander, I want to know why only me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pivot",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "ransomed_woke",
+          "Speaker": "Kiana",
+          "Text": "{n}Kiana is sitting on the edge of a temple cot in a borrowed robe. Out in the ward, people are complaining about the soup, which Arsinoe says is the surest sign of recovery she knows.{/n}\n\"They're all awake. Every one. The dog bit a Houndheart this morning; he says it was an honour.\" {n}She stops smiling.{/n} \"And you owe a man who put our souls in a cup. Arsinoe won't tell me what you signed. She says it's between you and your conscience. I told her you might not have one. She said that was what worried her.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pivot",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "dog",
+          "Speaker": "Kiana",
+          "Text": "{n}Kiana is on the floor of the ward between two cots, with her friend's dog asleep across her feet. He will not let her stand up. She has stopped trying.{/n}\n\"He sits on me. Every time. I think he's decided I'm his now, since his own mistress is...\" {n}She strokes his ears. The collar is gone, and nobody has put another on him.{/n} \"I've been reading to them, Commander. All of them, every day. I think now I've been reading to them for the dog.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pivot",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "ransomed_awake",
+          "Speaker": "Kiana",
+          "Text": "{n}The ward behind the curtain is loud. People who have been empty for months are demanding their shoes, their families and their jewellery back, and then, remembering, not their jewellery. Kiana is going from cot to cot with a jug of water and a list, and the dog is following her.{/n}\n\"Every one of them, Commander. I keep counting in case one of them is a mistake.\" {n}She puts the jug down.{/n} \"And you owe him. The man who did this. Arsinoe won't say what you signed.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pivot",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "late",
+          "Speaker": "Kiana",
+          "Text": "{n}Kiana is awake, dressed, and furious with a pile of get-well letters, most of which, she says, are addressed to a corpse and spell her name wrong. Seelah finished what she started: the stones came home, all of them, and the ward behind the curtain is emptying bed by bed.{/n}\n\"So your trick got to me first, and Seelah got to everyone else.\" {n}She tosses a letter onto the pile.{/n} \"I can't decide whether that makes me lucky or first in the queue. Arsinoe says both.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pivot",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "licence",
+          "Speaker": "Kiana",
+          "Text": "{n}Kiana is at Arsinoe's back table, surrounded by forms, rebooking a wedding for the second time. From the look on Arsinoe's face she has been at it for an hour. From the look on Kiana's, she has enjoyed about ten minutes of it.{/n}\n\"The Commander!\" {n}She rises with a curtsey that is both perfect and an insult.{/n} \"The one who banned weddings. Arsinoe, may I throw something? A small thing. A pen.\"\n{n}\"No,\" says Arsinoe, without looking up.{/n}\n\"She's no fun.\" {n}Kiana sits back down, and the laugh goes out of her voice without warning.{/n} \"Elan wants to fight you. I told him to wait his turn behind the officers. So. Here you are. Tell me why.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her the truth] \"I didn't trust the jeweller who made your ring. That's all I had.\"",
+              "Next": "told_licence",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Make light of it] \"It was a joke. It got out of hand.\"",
+              "Next": "spared_licence",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Remind her who holds the stamp] \"I hold the stamp, Kiana. Remember that.\"",
+              "Next": "claimed_licence",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "pivot",
+          "Speaker": "Narrator",
+          "Text": "{n}She waits. She is, you realise, giving you the cue.{/n}",
+          "Choices": [
+            {
+              "Text": "[Tell her everything] \"All of it. Sunhammer, his price, and what I did about it.\"",
+              "Next": "told_robbed",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "kiana.trickster.dog_saved",
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her everything] \"All of it. Sunhammer, his price, and what I did about it.\"",
+              "Next": "told_dog",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.dog_saved"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her everything] \"All of it. Sunhammer, his price, and what I did about it.\"",
+              "Next": "told_ransomed",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.guests_ransomed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her everything] \"All of it. Sunhammer, his price, and what I did about it.\"",
+              "Next": "told_late",
+              "Set": [],
+              "Requires": [
+                "seelah.souls_returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Spare her the details] \"You're awake. That's the part that matters.\"",
+              "Next": "spared",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Remind her what it cost] \"It cost something. Remember who paid it.\"",
+              "Next": "claimed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "told_robbed",
+          "Speaker": "Kiana",
+          "Text": "{n}She listens to all of it without interrupting, which you suspect is a first. When you get to the part about the paste she puts her hand over her mouth.{/n}\n\"You called me cheap. To his face. And it *worked*.\" {n}She lowers the hand. She isn't laughing now.{/n} \"And the rest of them walked out of here in his pouch, because you had one joke in you that day and you spent it on me.\"\n{n}She is quiet for a while.{/n}\n\"I don't know whether to kiss you or hit you. I'm going to do neither until I've written it down. Then I'll know which one the scene wants.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "told_dog",
+          "Speaker": "Kiana",
+          "Text": "\"I heard. I was sitting right there.\" {n}She scratches the dog behind the ears; he groans with pleasure.{/n} \"I wanted to hear you say it anyway, without an audience. You had one joke, and you spent it on a dog, and the rest of them walked out of here in a pouch.\"\n\"I'm not angry. I don't think I'm angry. I'm going to write it down until I find out.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "told_ransomed",
+          "Speaker": "Kiana",
+          "Text": "\"A thousand crowns and a favour. To him.\" {n}She repeats it the way you would repeat the price of a horse you could not believe anyone had paid.{/n} \"You know he'll come for it. Men like that always come for it, at the worst moment, in front of everyone. It's how they get an audience.\"\n{n}She takes your hand, turns it over and looks at it, as if she expected to find the ink still on it.{/n}\n\"Then when he does, I want to be there. Somebody ought to laugh at him.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "told_late",
+          "Speaker": "Kiana",
+          "Text": "\"So you tricked a jeweller's boy, and Seelah did the rest the honest way.\" {n}She laughs, properly this time.{/n} \"Between the two of you I don't know which one to write as the hero. I'll give Seelah the sword and you the good lines. She won't want them anyway.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "spared",
+          "Speaker": "Kiana",
+          "Text": "{n}She looks at you for a long moment.{/n}\n\"That's kind.\" {n}A small, crooked smile.{/n} \"It's also a speech, and I said no speeches. I'll let you off, once. It's been a very long month, and I've decided I'm owed a few things going my way.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "told_licence",
+          "Speaker": "Kiana",
+          "Text": "\"A hunch.\" {n}She stares at you.{/n} \"You banned every wedding in a city at war on a *hunch* about a jeweller.\"\n{n}Then, slowly, she looks at her left hand, where the ring from the shop on the square is not.{/n}\n\"...Elan paid a great deal for that ring. The man in the shop was charming. He asked me all sorts of questions about the guests.\" {n}She shakes herself.{/n} \"No. I am not going to be frightened of a *ring*. I'm going to be furious with you instead. It's much more satisfying, and you can watch.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "spared_licence",
+          "Speaker": "Kiana",
+          "Text": "\"A joke.\" {n}She considers this.{/n} \"A joke that cost me a wedding and made the whole city laugh at me in the square. It was a very good joke. I hate that it was a very good joke.\"\n\"If you're going to write my life for me, you can at least learn your lines.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "page",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "page",
+          "Speaker": "Kiana",
+          "Text": "{n}She takes a folded page from her sleeve and presses it into your hand. It is the first scene of a play: a vampire princess, a castle, a court dismissed for being insufficiently mysterious. The last line is blank.{/n}\n\"Give her an ending. Don't be sensible about it. I'll know.\"",
+          "Choices": [
+            {
+              "Text": "[Write: The princess stole the moon and discovered she had nowhere to put it.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.met",
+                "kiana.moon",
+                "kiana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write: She locked the doors and asked one guest to stay.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.met",
+                "kiana.guest",
+                "kiana.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "claimed",
+          "Speaker": "Kiana",
+          "Text": "{n}Something in her face closes, quietly, like a shutter on a shop at dusk.{/n}\n\"Oh, I'll remember.\" {n}She smooths the blanket over her knees.{/n} \"I know exactly what I owe you now, Commander. I'll pay it. In coin, a little every week, until it's paid, and then we'll be square, and you can find somebody else to be grateful at you.\"\n\"That isn't a joke. You'll know when I'm joking. I'll be laughing.\"",
+          "Choices": [
+            {
+              "Text": "[Let her count out the first coin.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.met",
+                "kiana.debt_claimed",
+                "kiana.started",
+                "kiana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "claimed_licence",
+          "Speaker": "Kiana",
+          "Text": "\"You hold the stamp.\" {n}She says it back to you slowly, trying the words for weight.{/n} \"Then hold it. I'll marry Elan in a field outside your walls, where your stamp doesn't reach. And I'll send you an invitation, Commander, so that you can watch.\"\n{n}She gathers her forms, every one, and does not hurry.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.met",
+                "kiana.debt_claimed",
+                "kiana.started",
+                "kiana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "kiana.trickster.returned"
+      ],
+      "Forbids": [
+        "kiana.trickster.met"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "kiana",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "a609ed9b2205d034bb3bb04d2a255681",
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "kiana.betrothal",
+      "Title": "What a fiancée is for",
+      "Owner": "Kiana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Kiana",
+          "Text": "{n}Kiana has taken down the cliff and the paper moon. The borrowed castle is a storeroom again, with two chairs in it, and she is sitting in one of them with the postponed licence on her knee.{/n}\n\"A fiancée can still change her mind. That's the whole point of fiancées. It's the only good thing about them.\" {n}She smooths the licence flat.{/n} \"So tell me, Commander, and don't be charming about it. Did you stamp this to save a war, or to keep me unmarried?\"",
+          "Choices": [
+            {
+              "Text": "[Tell her to marry him] \"Marry him, Kiana. When the war lets you.\"",
+              "Next": "marry",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her the truth] \"I want you. I also want you to have your wedding. I don't know how both work.\"",
+              "Next": "truth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "marry",
+          "Speaker": "Kiana",
+          "Text": "{n}She looks at you for a long time. Then she folds the licence in half, and in half again, and tucks it into her bodice over her heart, where a soldier keeps a letter from home.{/n}\n\"All right. When the war lets us.\" {n}Her smile is real, and a little sad, and entirely for Elan.{/n} \"You'll come, won't you? Somebody has to stand at the back and look guilty.\"",
+          "Choices": [
+            {
+              "Text": "[Promise to stand at the back.]",
+              "Next": null,
+              "Set": [
+                "kiana.betrothed_kept",
+                "kiana.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "truth",
+          "Speaker": "Kiana",
+          "Text": "\"You don't know how both work.\" {n}She laughs, and it catches.{/n} \"Nobody does. That's why there are so many plays about it.\"\n{n}She turns the licence over. On the back, in her own hand, there is already a line of writing, crossed out and rewritten.{/n}\n\"I talked to Elan before I came. I told him I didn't know what I wanted, and he said it was the first honest thing either of us had said since he proposed.\" {n}She sets the licence on the empty chair.{/n} \"We're not getting married. Not now. Maybe not ever. He keeps the ring. I keep the dress, because it was mine first.\"\n\"So there's room. I don't know for what yet. Write to me. Slowly.\"",
+          "Choices": [
+            {
+              "Text": "[Write to her. Slowly.]",
+              "Next": null,
+              "Set": [
+                "kiana.available",
+                "kiana.attracted",
+                "kiana.separated",
+                "kiana.waited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "kiana.history_betrothed",
+        "kiana.rehearsed"
+      ],
+      "Forbids": [
+        "kiana.available"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Remote": true,
+      "Chapters": [
+        5
+      ],
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.epilogue.commit",
+      "Title": "The last line",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Kiana wrote the last scene of her play after the war, in a room nobody had to lend her. At the end of it the princess asks the guest one question. She gave the Commander the only copy of the script, and the question was underlined twice.{/n}",
+          "Choices": [
+            {
+              "Text": "[Write the answer in the margin.]",
+              "Next": "margin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Answer it out loud, on the opening night.]",
+              "Next": "stage",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "margin",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander wrote one word in the margin and handed the script back. Kiana read it, and read it again, and then crossed out the guest's exit and wrote the rest of the scene herself. It ran long. Nobody in the audience complained.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana",
+          "Paragraphs": [
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in a jeweller's apron stood and listened, and left before the end.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.sunhammer_favour"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Elan and Kiana stayed friends, which surprised everyone but Elan.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_married"
+              ],
+              "Forbids": [
+                "kiana.widowed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The marriage licence stayed postponed. Kiana had it framed.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_betrothed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed"
+              ],
+              "Forbids": [
+                "kiana.trickster.decree_king"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed",
+                "kiana.trickster.decree_king"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        },
+        {
+          "Id": "stage",
+          "Speaker": "Narrator",
+          "Text": "{n}On the opening night, in borrowed costumes, in front of half of Drezen, the princess asked her question, and the Commander stood up in the front row and answered it out loud. The princess forgot to be mysterious. The audience, which had paid for a tragedy, got something better, and asked for its money back anyway so that it could come again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana",
+          "Paragraphs": [
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in a jeweller's apron stood and listened, and left before the end.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched the Commander's face while they answered.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.cost.sunhammer_favour"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Elan and Kiana stayed friends, which surprised everyone but Elan.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_married"
+              ],
+              "Forbids": [
+                "kiana.widowed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The marriage licence stayed postponed. Kiana had it framed.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.history_betrothed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed"
+              ],
+              "Forbids": [
+                "kiana.trickster.decree_king"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
+              "Requires": [
+                "kiana.trickster.cost.betrothed",
+                "kiana.trickster.decree_king"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "kiana.trickster.late_committed"
+      ],
+      "Forbids": [
+        "kiana.committed",
+        "kiana.closed",
+        "kiana.morning"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana"
+    },
+    {
+      "Id": "kiana.trickster.epilogue.debt",
+      "Title": "Paid in full",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Kiana paid the Commander back a crown a week, every week, by courier, for as long as she judged it took. Each coin came wrapped in a page of the play she was writing. The Commander was not in it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "kiana.debt_claimed"
+      ],
+      "Forbids": [
+        "kiana.history_betrothed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana"
+    },
+    {
+      "Id": "kiana.trickster.epilogue.debt_licence",
+      "Title": "Outside the walls",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Kiana married Elan the spring after the war, in a field a stone's throw beyond the walls of Drezen, where no Commander's stamp could reach. The Commander was invited, as promised. The invitation was correct in every particular, and the seat it offered was at the very back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "kiana.debt_claimed",
+        "kiana.history_betrothed"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana"
+    },
+    {
+      "Id": "kiana.trickster.epilogue.betrothed_kept",
+      "Title": "When the war let them",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Kiana married Elan the week the Wound closed and the ban on weddings was lifted, the first of forty-one weddings Drezen held that week. The Commander stood at the back and looked guilty, as promised. Kiana cried at her own vows and laughed at them in the same breath, which the priestess of Abadar said she had never seen anyone manage before.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "kiana.betrothed_kept"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana"
+    },
+    {
+      "Id": "kiana.trickster.aftermath_missed.react_arsinoe",
+      "Title": "Arsinoe's word",
+      "Owner": "Arsinoe",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "\"The hospital's lost-letters box, Commander. I emptied it this week, for the first time since the siege. One of the letters in it was addressed to you, in Kiana's hand, and dated the day she woke.\"\n{n}She closes the ledger on her finger to keep the place.{/n}\n\"I have reprimanded the orderly. I have also reprimanded myself, which was more unpleasant, because I know exactly where I keep the key.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.cost.letter_late"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.aftermath_missed.react_anevia",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"Your vampire princess wrote you the day she woke, and the letter sat in a box for a month. You know what that's called, in my old trade? A dead drop nobody checked.\"\n{n}Anevia shakes her head.{/n}\n\"Check them, Commander. Somebody's always writing to you from the bottom of a box.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.cost.letter_late"
+      ],
+      "Forbids": [
+        "anevia_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.possessed.react_arsinoe_stones",
+      "Title": "Arsinoe's word",
+      "Owner": "Arsinoe",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "\"A ward of beds, Commander, and one of them empty. I have entered it in the ledger as a recovery.\"\n{n}She turns the ledger round so that you can see the column. It is a long column.{/n}\n\"Abadar keeps honest books. I will not write the others off as losses while their bodies are warm. But I should like it noted somewhere other than my ledger that the young man who walked out with their souls was allowed to.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "kiana.soul_lost",
+        "kiana.trickster.cost.guests_robbed"
+      ],
+      "Forbids": [
+        "seelah.souls_returned"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.possessed.react_arsinoe_ransom",
+      "Title": "Arsinoe's word",
+      "Owner": "Arsinoe",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "\"A thousand crowns and a favour, to the man who put souls in wedding rings.\"\n{n}Arsinoe sets her pen down very precisely.{/n}\n\"The crowns I can bear. They are a number. The favour is a blank line on a page you signed, and blank lines are how temples go bankrupt, Commander. And crusades.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "kiana.soul_lost",
+        "kiana.trickster.cost.sunhammer_favour"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.possessed.react_irabeth",
+      "Title": "Irabeth's word",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "\"A jeweller's boy walked into our hospital with a pouch full of souls, and out again, and nobody stopped him.\"\n{n}Irabeth's jaw sets.{/n}\n\"Next time you insult a demon collaborator's jewellery, Commander, send for me first. I'd have liked to see his face. Then I'd have liked to see him in irons.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.cost.courier_marked"
+      ],
+      "Forbids": [
+        "irabeth_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "871af36f2ab2b1f40b5de77976c54276"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.possessed.react_anevia",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"You told a jeweller's boy his stone was fake, and it went fake.\"\n{n}Anevia looks at you sidelong, the way she looks at a lock she has not picked yet.{/n}\n\"I spent twenty years learning to lie to people. You lie to *things*. I can't decide whether to be impressed or to start checking my own rings.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.returned",
+        "kiana.soul_lost",
+        "kiana.trickster.cost.guests_robbed"
+      ],
+      "Forbids": [
+        "anevia_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.awake.react_arsinoe",
+      "Title": "Arsinoe's word",
+      "Owner": "Arsinoe",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "\"A dog, Commander. I have a ward of sleeping wedding guests, and the one patient who woke up is a dog.\"\n{n}She holds up what is left of a quill.{/n}\n\"He ate this. I am choosing to regard it as a sign, although I have not yet decided of what.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.cost.guests_robbed",
+        "kiana.trickster.dog_saved"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.awake.react_anevia",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"Heard you saved a dog from a cursed collar and let the rest walk out the door.\"\n{n}Anevia shrugs, not quite as lightly as she means to.{/n}\n\"I've had worse days at work. Not many. You'll want to go and get the rest back, you know. Whatever you told the jeweller's boy.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.returned",
+        "kiana.trickster.dog_saved"
+      ],
+      "Forbids": [
+        "anevia_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.no_wedding.react_arsinoe",
+      "Title": "Arsinoe's word",
+      "Owner": "Arsinoe",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "\"Fourteen contracts of marriage, suspended by order. I shall honour the order.\"\n{n}Arsinoe dips her pen.{/n}\n\"I shall also invoice the crusade for the deposits, to the last copper of the flowers, and for the priestesses' time, and for one wedding cake, which was already baked and has since been eaten by the Houndhearts.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arsinoe"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.cost.betrothed"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
+      "Id": "kiana.trickster.no_wedding.react_anevia",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Kiana...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"No weddings until the war's won?\" {n}Anevia whistles.{/n} \"Beth and I got in under the wire, then. Don't you dare make it retroactive.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "kiana.trickster.cost.betrothed"
+      ],
+      "Forbids": [
+        "anevia_gone"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "kiana",
+      "Reaction": true,
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
     }
   ],
   "Etudes": {
@@ -147759,10 +150486,12 @@
     "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
     "socot.gone": "007c4990584473046ac29666a235efb3",
     "shamira.killed": "dd6731e2cb230694f9c394fa32391ad5",
+    "seelah.in_party": "84b4471249a48d84c822d38396c698d9",
     "regill.left_plot": "6596f51f8e640384189c6708bd55ed50",
     "regill.kicked_out": "2b2cfaa1727070c43b10729920112730",
     "regill.dead": "4c3565d1f0f9fb24981b510da246ef2f",
     "kyado.in_drezen": "5169dbc60a1ad854493f7ba44c27a0d8",
+    "kiana.possessed": "0d773e4f71ac38a4d917ed459f6a0d0b",
     "iz.left_early": "a583e4ab47544f5e928fc5b6b7c41e48",
     "coronation.after": "b9cbdf8a2f0545f694366b87ae7d7d44",
     "galfrey.killed_by_commander": "eb30187696a04f99aa194859b13a629e",
@@ -147891,12 +150620,42 @@
       "Title": "The princess writes her own part",
       "Description": "Kiana has sent me a page from an unfinished play. She has left the last line blank and asked me not to be sensible about it.",
       "Objective": "Answer Kiana's invitations",
-      "Guidance": "After the soul quest and your conversation with Kiana, her invitations arrive during quiet rests in Drezen. Give her time between meetings. Her marriage or bereavement remains part of her story.",
+      "Guidance": "After the soul quest and your conversation with Kiana, her invitations arrive during quiet rests in Drezen. Give her time between meetings. Her marriage or bereavement remains part of her story. On the Trickster path in Chapter 5, word of Kiana may reach you from the hospital for Sunhammer's victims even without Seelah's soul quest, or from the marriage licences on your desk. Afterwards, ask after her at Arsinoe's counter in Drezen.",
       "StartedFlag": "kiana.started",
       "ClosedFlag": "kiana.closed",
       "CommittedFlag": "kiana.committed",
       "UnavailableFlags": [],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "TricksterAccess": {
+        "aftermath_missed": {
+          "Detect": [
+            "seelah.souls_returned"
+          ],
+          "Device": "kiana.trickster.aftermath.letter_waited",
+          "Returned": "kiana.trickster.met"
+        },
+        "possessed_no_rescue": {
+          "Detect": [
+            "kiana.soul_lost"
+          ],
+          "Device": "kiana.trickster.possessed.fake_gem",
+          "Returned": "kiana.trickster.returned"
+        },
+        "awake_no_rescue": {
+          "Detect": [
+            "kiana.q2_done"
+          ],
+          "Device": "kiana.trickster.awake.dog_collar",
+          "Returned": "kiana.trickster.returned"
+        },
+        "wedding_never_happened": {
+          "Detect": [
+            "chapter_later"
+          ],
+          "Device": "kiana.trickster.no_wedding.postponed",
+          "Returned": "kiana.trickster.returned"
+        }
+      }
     },
     "ember": {
       "Title": "An afternoon of her own",
@@ -148176,7 +150935,8 @@
     "ember.native_q1_complete": "1fdf404b17d464a489267f69d58b846d",
     "ember.native_q2_complete": "a3f445a64ee130f4396c20a07c30ece0",
     "ember.native_q3_complete": "49b7496143daed149ab4557a9684dd53",
-    "minagho.ran_complete": "5cd5f22437a1465180b45c080899577a"
+    "minagho.ran_complete": "5cd5f22437a1465180b45c080899577a",
+    "kiana.q2_done": "a1024628f074e4d4f9d2b15956975459"
   },
   "SelectedAnswers": {
     "konomi.dismissed": "73c5728c4c6658344bedcc1b666e598c",
@@ -148376,6 +151136,12 @@
     ],
     "konomi.trickster.kyado_said_it": [
       "509eac8248670664fab0808c3e00fe04"
+    ],
+    "kiana.wedding_seen": [
+      "4e7816f547519de44b5ddb8a9ba2bdd8"
+    ],
+    "kiana.soul_stolen_seen": [
+      "77a1253ff7aa8b24e865dc784db866b3"
     ],
     "jerribeth.egg_lore_heard": [
       "93dfa9597191a6848b925d964d309fe4"
@@ -149058,6 +151824,21 @@
       "AnswerLists": [
         "0dc8b8604bb33c846a63f3eb62443674"
       ]
+    },
+    "kiana.presence": {
+      "Unit": "180b0eaa5dce387458d2ebf0ee943985",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "reuse-native",
+      "Requires": [
+        "trickster.ever",
+        "kiana.trickster.returned"
+      ],
+      "Forbids": [
+        "kiana.closed"
+      ],
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "AnswerLists": []
     }
   },
   "Derived": {
@@ -149108,6 +151889,13 @@
       [
         "trickster.ever",
         "konomi.trickster.terms_settled"
+      ]
+    ],
+    "kiana.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "kiana.trickster.met",
+        "kiana.lovers"
       ]
     ],
     "jerribeth.trickster.late_committed": [
@@ -149214,6 +152002,9 @@
     "jerribeth.unavailable",
     "trickster.was"
   ],
+  "RemovableItems": [
+    "3e4ce583dc71401588f33f8192c252cd"
+  ],
   "Latches": {
     "trickster.ever": [
       "trickster",
@@ -149221,6 +152012,13 @@
     ],
     "konomi.dismissed.latched": [
       "konomi.dismissed"
+    ],
+    "kiana.widowed": [
+      "seelah.elan_dead"
+    ],
+    "kiana.soul_lost": [
+      "kiana.possessed",
+      "kiana.soul_stolen_seen"
     ],
     "coronation.seen": [
       "coronation.after"
@@ -149231,5 +152029,8 @@
   },
   "UnlockableFlags": {
     "kyado.dead": "8c8b748a66ebad84f9b4cbcd73c2aab9"
+  },
+  "InventoryItems": {
+    "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd"
   }
 }
