@@ -181,7 +181,7 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
       c('[Ask her to stay, for yourself] "Stay. Not for Nerosyan. For me."', "answer", requires=("konomi.lovers",)),
       c('[Ask her to stay, for yourself] "Stay. Not for Nerosyan. For me."', "courted", forbids=("konomi.lovers",)),
       c('[Ask her to stay as envoy] "Stay as Nerosyan\'s envoy. The chair is yours."', "envoy")),
-    k("answer", '''{n}She does not answer at once. She opens the fan, and closes it, and sets it on the ledger as if it were a paperweight.{/n}
+    k("answer", '''{n}She does not answer at once. She opens the fan, and closes it, and sets it on her closed ledger as if it were a paperweight.{/n}
 "I am a politician. I do not fall in love; I negotiate the terms of my own surrender."
 "Very well. The terms are these. I stay. I keep my own rooms, my own correspondents and my own opinions, and I shall give you all three at breakfast. And you never again dismiss me in front of a council. You may dismiss me in private. I shall enjoy watching you try."''',
       c('[Take her hand] "Then name the next evening."', "threshold", flags=("konomi.committed",)),
@@ -209,7 +209,7 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
     nar("morning", '''{n}Morning. She is at your desk in your shirt, composing a dispatch, tail curled round the leg of the chair. The dispatches are stacked again, in order. One of them has a heel print on it.{/n}
 "Nerosyan will hear that I was detained by the Commander on urgent business." {n}She blots the line.{/n} "Entirely accurate."
 {n}She does not look up when you come to stand behind her. She does lean back, just enough.{/n}''',
-      c('"Leave the ledger. I\'ll straighten it."')),
+      c('"Leave the one with the heel print. I\'ll answer it myself."')),
 ], requires=("trickster.ever", SETTLED), forbids=("konomi.committed", DECLINED, ENVOY), delay=72)
 
 
