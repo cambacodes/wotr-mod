@@ -153349,8 +153349,7 @@
               "Set": [
                 "minagho_chivarro.trickster.returned_chivarro",
                 "minagho_chivarro.trickster.chivarro_in",
-                "minagho_chivarro.trickster.chivarro_owned",
-                "minachiv.started"
+                "minagho_chivarro.trickster.chivarro_owned"
               ],
               "Requires": [],
               "Forbids": [],
@@ -153385,6 +153384,180 @@
           "minagho_chivarro.trickster.chivarro_deposit",
           "trickster"
         ]
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "chivarro_dead"
+    },
+    {
+      "Id": "minagho_chivarro.trickster.chivarro_dead.the_bill",
+      "Title": "Goods",
+      "Owner": "Chivarro",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chivarro",
+          "Text": "{n}Chivarro is on the quartermaster's bench in borrowed wool, sitting very straight, with a folded paper on her knee. You know the paper. You signed it.{/n}\n\"Let us be clear, you and I, before you say anything sweet.\" {n}She unfolds it. \"One Chivarro, forever.\" Your signature. Her own house's seal.{/n} \"I am goods. Goods do not take lovers, and they do not keep houses, and they do not say yes. They are used, or they are sold on.\" {n}She holds it out to you between two fingers.{/n} \"So. Which of those am I?\"",
+          "Choices": [
+            {
+              "Text": "[Burn the bill] \"Neither. Watch.\"",
+              "Next": "burned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Keep the bill] \"Mine. That's what you are.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Chivarro"
+        },
+        {
+          "Id": "burned",
+          "Speaker": "Chivarro",
+          "Text": "{n}She watches the paper curl in the quartermaster's brazier. She does not thank you. She waits until the last corner of \"goods\" has gone black, and then she breathes out, very slowly, through her teeth.{/n}\n\"Late. But burned.\" {n}She stands, and she is taller than she was a moment ago.{/n} \"Now I owe you nothing, honey, and you owe me a great deal. Let us see what you do with that.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.bill_burned",
+                "minachiv.started",
+                "minagho_chivarro.trickster.cost.bill_answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chivarro"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Chivarro",
+          "Text": "{n}She folds the bill again, carefully, and gives it back to you, and her fingers do not touch yours.{/n} \"Then I stay. Owned. On paper, in your city, at your door. Do not ever mistake it for anything else, and do not ever come to my bed with it in your pocket. I would take the hand that holds it.\"",
+          "Choices": [
+            {
+              "Text": "[Pocket the bill.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.kept_in_service",
+                "minagho_chivarro.trickster.cost.bill_answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chivarro"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned"
+      ],
+      "Forbids": [
+        "minagho_chivarro.trickster.bill_burned",
+        "minagho_chivarro.trickster.kept_in_service",
+        "minachiv.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "minagho_chivarro",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "b7e819e2a9bb0804abcbffe8e7d91ba6",
+      "InteractionHub": "minagho_chivarro.presence.chivarro",
+      "TricksterDevice": true,
+      "TricksterState": "chivarro_dead"
+    },
+    {
+      "Id": "minagho_chivarro.trickster.chivarro_dead.the_bill_letter",
+      "Title": "Goods",
+      "Owner": "Memory",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chivarro",
+          "Text": "{n}The bill comes back to you folded around a note in a sharp, slanted hand.{/n} \"I am goods. Goods do not take lovers, and they do not say yes. They are used, or they are sold on. Which of those am I? Answer with the bill.\"",
+          "Choices": [
+            {
+              "Text": "[Burn it and send her the ashes.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.bill_burned",
+                "minachiv.started",
+                "minagho_chivarro.trickster.cost.bill_answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Keep it.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.kept_in_service",
+                "minagho_chivarro.trickster.cost.bill_answered"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Chivarro"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned",
+        "minagho_chivarro.presence.chivarro.failed"
+      ],
+      "Forbids": [
+        "minagho_chivarro.trickster.bill_burned",
+        "minagho_chivarro.trickster.kept_in_service",
+        "minachiv.closed",
+        "minagho_chivarro.trickster.chivarro_dead.the_bill"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "minagho_chivarro",
+      "Remote": true,
+      "Chapters": [
+        5
       ],
       "TricksterDevice": true,
       "TricksterState": "chivarro_dead"
@@ -153489,7 +153662,8 @@
         "minagho.dead",
         "chivarro.dead",
         "minagho_chivarro.trickster.tprev.offer",
-        "minagho_chivarro.trickster.cost.half_the_pair"
+        "minagho_chivarro.trickster.cost.half_the_pair",
+        "minagho_chivarro.trickster.chivarro_owned"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -153500,7 +153674,8 @@
       ],
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
-        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       }
     },
     {
@@ -153697,7 +153872,8 @@
         "minagho.dead",
         "chivarro.dead",
         "minagho_chivarro.trickster.tprev.name",
-        "minagho_chivarro.trickster.chivarro_walked"
+        "minagho_chivarro.trickster.chivarro_walked",
+        "minagho_chivarro.trickster.chivarro_owned"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -153712,7 +153888,8 @@
       "InteractionHub": "minagho_chivarro.presence.chivarro",
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
-        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       }
     },
     {
@@ -153765,6 +153942,7 @@
         "chivarro.dead",
         "minagho_chivarro.trickster.tprev.name",
         "minagho_chivarro.trickster.chivarro_walked",
+        "minagho_chivarro.trickster.chivarro_owned",
         "minagho_chivarro.trickster.after.the_price_of_her_name"
       ],
       "DelayHours": 96,
@@ -153776,7 +153954,8 @@
       ],
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
-        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       }
     },
     {
@@ -153790,7 +153969,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Chivarro has taken a room at the far end of Drezen, as far below the citadel as the walls allow and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}",
+          "Text": "{n}Chivarro has taken a room at the far end of Drezen, as far below the citadel as the walls allow, and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}",
           "Choices": [
             {
               "Text": "[Send the silk] \"A bolt of Nerosyan silk, dyed Delights red, and a card: 'Your price. Name it again.'\"",
@@ -153846,7 +154025,8 @@
         "minachiv.closed",
         "minagho.dead",
         "chivarro.dead",
-        "minagho_chivarro.trickster.tprev.name"
+        "minagho_chivarro.trickster.tprev.name",
+        "minagho_chivarro.trickster.chivarro_owned"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -153857,7 +154037,8 @@
       ],
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
-        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       }
     },
     {
@@ -153951,7 +154132,8 @@
         "minachiv.closed",
         "minagho.dead",
         "chivarro.dead",
-        "minagho_chivarro.trickster.tprev.house"
+        "minagho_chivarro.trickster.tprev.house",
+        "minagho_chivarro.trickster.chivarro_owned"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -153962,7 +154144,8 @@
       ],
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
-        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       }
     },
     {
@@ -153983,18 +154166,6 @@
               "Next": "terms",
               "Set": [],
               "Requires": [],
-              "Forbids": [
-                "minagho_chivarro.trickster.chivarro_owned"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "[Burn the bill in front of them] \"Stay. Both of you. On your terms. This first.\"",
-              "Next": "terms_burned",
-              "Set": [],
-              "Requires": [
-                "minagho_chivarro.trickster.chivarro_owned"
-              ],
               "Forbids": [],
               "Abort": false
             },
@@ -154005,37 +154176,9 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
-            },
-            {
-              "Text": "[Keep the bill in your pocket] \"Stay. The bill says you will.\"",
-              "Next": "service",
-              "Set": [],
-              "Requires": [
-                "minagho_chivarro.trickster.chivarro_owned"
-              ],
-              "Forbids": [],
-              "Abort": false
             }
           ],
           "Portrait": "Minagho"
-        },
-        {
-          "Id": "terms_burned",
-          "Speaker": "Chivarro",
-          "Text": "{n}She watches the paper curl in the quartermaster's brazier. She does not thank you. She waits until the last corner of \"goods\" has gone black, and then she breathes out, very slowly, through her teeth.{/n}\n\"Late. But burned.\" {n}She turns her face back to you.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "terms",
-              "Set": [
-                "minagho_chivarro.trickster.bill_burned"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Chivarro"
         },
         {
           "Id": "terms",
@@ -154061,28 +154204,6 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
-            }
-          ],
-          "Portrait": "Chivarro"
-        },
-        {
-          "Id": "service",
-          "Speaker": "Chivarro",
-          "Text": "{n}She looks at the pocket, and at you, and at Minagho, who looks away.{/n} \"Then I stay. Owned. On paper, in your city, at your door. Do not ever mistake it for anything else, and do not ever come to my bed with it in your pocket. I would take the hand that holds it.\"",
-          "Choices": [
-            {
-              "Text": "[Say nothing.]",
-              "Next": null,
-              "Set": [
-                "minagho_chivarro.trickster.kept_in_service"
-              ],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false,
-              "Alignment": {
-                "Direction": "Evil",
-                "Value": 1
-              }
             }
           ],
           "Portrait": "Chivarro"
@@ -154143,6 +154264,7 @@
         "minachiv.complete",
         "minagho_chivarro.trickster.declined",
         "minagho_chivarro.trickster.kept_in_service",
+        "minagho_chivarro.trickster.chivarro_owned",
         "minachiv.closed",
         "minagho.dead",
         "chivarro.dead"
@@ -154160,7 +154282,8 @@
       "InteractionHub": "minagho_chivarro.presence.chivarro",
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
-        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       }
     },
     {
@@ -154185,23 +154308,6 @@
                 "minagho_chivarro.trickster.committed"
               ],
               "Requires": [],
-              "Forbids": [
-                "minagho_chivarro.trickster.chivarro_owned"
-              ],
-              "Abort": false
-            },
-            {
-              "Text": "[Send the bill back, burned at the corners] \"Your terms. Agreed.\"",
-              "Next": null,
-              "Set": [
-                "minachiv.complete",
-                "minachiv.future_two",
-                "minagho_chivarro.trickster.committed",
-                "minagho_chivarro.trickster.bill_burned"
-              ],
-              "Requires": [
-                "minagho_chivarro.trickster.chivarro_owned"
-              ],
               "Forbids": [],
               "Abort": false
             },
@@ -154241,6 +154347,7 @@
         "minachiv.complete",
         "minagho_chivarro.trickster.declined",
         "minagho_chivarro.trickster.kept_in_service",
+        "minagho_chivarro.trickster.chivarro_owned",
         "minachiv.closed",
         "minagho.dead",
         "chivarro.dead",
@@ -154255,7 +154362,8 @@
       ],
       "ForbidOverrides": {
         "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
-        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro",
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
       }
     },
     {
@@ -154384,6 +154492,9 @@
           "minagho_chivarro.trickster.chivarro_waiting"
         ]
       ],
+      "ForbidOverrides": {
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
+      },
       "TricksterDevice": true,
       "TricksterState": "minagho_dead"
     },
@@ -154453,6 +154564,9 @@
           "minagho_chivarro.trickster.chivarro_waiting"
         ]
       ],
+      "ForbidOverrides": {
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
+      },
       "TricksterDevice": true,
       "TricksterState": "minagho_dead"
     },
@@ -154832,10 +154946,26 @@
         {
           "Id": "start",
           "Speaker": "Chivarro",
-          "Text": "{n}Morning. Chivarro is back on the quartermaster's bench before the stores open, in yesterday's borrowed wool, with the air of a woman who has already been paid.{/n}\n\"You snore, honey. She says you do not. We are going to argue about it for a year.\" {n}Minagho, on the crate, does not look up from the dagger she is sharpening.{/n} \"Your hand opened at dawn. You did not make a sound.\" {n}Her voice is flat.{/n} \"I heard it anyway. I will hear it every dawn now, because of me. Do not ask me to be grateful for that. I am not.\"",
+          "Text": "{n}Morning. Chivarro is back on the quartermaster's bench before the stores open, in yesterday's borrowed wool and nothing under it, with the air of a woman who has already been paid.{/n}\n\"Well.\" {n}She looks you over the way she once looked over the Delights' new stock.{/n} \"You were not ordinary. I am almost disappointed; I had a speech ready.\" {n}She tilts her eyeless face toward the crate where Minagho sits sharpening a dagger.{/n} \"And she laughed. Twice. I have not heard her laugh like that since before Kenabres, and I have been trying for a very long time. I am not sure I forgive you for managing it in one night.\"",
           "Choices": [
             {
-              "Text": "\"I didn't ask.\"",
+              "Text": "Continue",
+              "Next": "minagho",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chivarro"
+        },
+        {
+          "Id": "minagho",
+          "Speaker": "Minagho",
+          "Text": "{n}Minagho does not look up from the dagger.{/n} \"Your hand opened at dawn. You did not make a sound. I heard it anyway.\" {n}Her voice is flat.{/n} \"I will hear it every dawn now, lying next to you, because of me. Do not ask me to be grateful for that. I am not.\" {n}The whetstone stops.{/n} \"...I did not leave, either. Note that. It will not happen often.\"",
+          "Choices": [
+            {
+              "Text": "\"Noted.\"",
               "Next": "terms",
               "Set": [],
               "Requires": [],
@@ -154855,7 +154985,7 @@
               }
             }
           ],
-          "Portrait": "Chivarro"
+          "Portrait": "Minagho"
         },
         {
           "Id": "terms",
@@ -155600,7 +155730,8 @@
         "minachiv.complete",
         "minachiv.closed",
         "minagho_chivarro.trickster.declined",
-        "minagho_chivarro.trickster.kept_in_service"
+        "minagho_chivarro.trickster.kept_in_service",
+        "minagho_chivarro.trickster.chivarro_owned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -155610,7 +155741,10 @@
           "minagho_chivarro.trickster.tprev.house",
           "minagho_chivarro.trickster.chivarro_waiting"
         ]
-      ]
+      ],
+      "ForbidOverrides": {
+        "minagho_chivarro.trickster.chivarro_owned": "minagho_chivarro.trickster.bill_burned"
+      }
     },
     {
       "Id": "minagho_chivarro.trickster.epilogue.declined",
@@ -155928,8 +156062,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

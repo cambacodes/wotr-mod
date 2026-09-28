@@ -387,9 +387,32 @@ The house also keeps a priestess of Nocticula in the back rooms, and she raises 
        c('[Burn the bill] "Nothing. Get dressed."', flags=(RET_C, CH_IN, BURNED, STARTED), alignment=("Chaotic", 1)),
        c('[Burn the bill] "Nothing. Get dressed. Minagho hates waiting."', requires=(MIN_IN,),
          flags=(RET_C, CH_IN, BURNED, STARTED, REUNITED), alignment=("Chaotic", 1)),
-       c('[Keep the bill] "Everything. And now I own it."', flags=(RET_C, CH_IN, OWNED, STARTED), alignment=("Evil", 2))),
+       c('[Keep the bill] "Everything. And now I own it."', flags=(RET_C, CH_IN, OWNED), alignment=("Evil", 2))),
 ], requires=("trickster.ever", "chivarro.dead", "chivarro.dead.latched"), RequiresAnyGroups=[[DEPOSIT, "trickster"]],
    forbids=(RET_C, DECL_C), delay=48, owner="Herrax", TricksterDevice=True, TricksterState="chivarro_dead")
+
+
+# The bill: an owned Chivarro refuses to be courted by the hand that holds her receipt. Nothing of the pair moves until
+# it is burned; keeping it is service, never romance (coercion is never consent).
+UNOWNED = {OWNED: BURNED}   # ForbidOverrides: an owned Chivarro counts only once the bill is burned
+physical(P + "chivarro_dead.the_bill", "Goods", "Chivarro", PRES_CHIV, CHIV_UNIT, [
+    cv("start", '''{n}Chivarro is on the quartermaster's bench in borrowed wool, sitting very straight, with a folded paper on her knee. You know the paper. You signed it.{/n}
+"Let us be clear, you and I, before you say anything sweet." {n}She unfolds it. "One Chivarro, forever." Your signature. Her own house's seal.{/n} "I am goods. Goods do not take lovers, and they do not keep houses, and they do not say yes. They are used, or they are sold on." {n}She holds it out to you between two fingers.{/n} "So. Which of those am I?"''',
+       c('[Burn the bill] "Neither. Watch."', "burned", alignment=("Chaotic", 1)),
+       c('[Keep the bill] "Mine. That\'s what you are."', "kept", alignment=("Evil", 1))),
+    cv("burned", '''{n}She watches the paper curl in the quartermaster's brazier. She does not thank you. She waits until the last corner of "goods" has gone black, and then she breathes out, very slowly, through her teeth.{/n}
+"Late. But burned." {n}She stands, and she is taller than she was a moment ago.{/n} "Now I owe you nothing, honey, and you owe me a great deal. Let us see what you do with that."''',
+       c("[Let her go.]", flags=(BURNED, STARTED, P + "cost.bill_answered"))),
+    cv("kept", '''{n}She folds the bill again, carefully, and gives it back to you, and her fingers do not touch yours.{/n} "Then I stay. Owned. On paper, in your city, at your door. Do not ever mistake it for anything else, and do not ever come to my bed with it in your pocket. I would take the hand that holds it."''',
+       c("[Pocket the bill.]", flags=(KEPT, P + "cost.bill_answered"))),
+], requires=("trickster.ever", RET_C, OWNED), forbids=(BURNED, KEPT, CLOSED), delay=24,
+   TricksterDevice=True, TricksterState="chivarro_dead")
+letter(P + "chivarro_dead.the_bill_letter", "Goods", [
+    cv("start", '''{n}The bill comes back to you folded around a note in a sharp, slanted hand.{/n} "I am goods. Goods do not take lovers, and they do not say yes. They are used, or they are sold on. Which of those am I? Answer with the bill."''',
+       c("[Burn it and send her the ashes.]", flags=(BURNED, STARTED, P + "cost.bill_answered"), alignment=("Chaotic", 1)),
+       c("[Keep it.]", flags=(KEPT, P + "cost.bill_answered"), alignment=("Evil", 1)))],
+   requires=("trickster.ever", RET_C, OWNED, PRES_CHIV + ".failed"), forbids=(BURNED, KEPT, CLOSED, P + "chivarro_dead.the_bill"),
+   delay=96, TricksterDevice=True, TricksterState="chivarro_dead")
 
 
 # === The pair's Trickster chain (a Trickster variant of the registered visits, which stay untouched) =================
@@ -401,7 +424,7 @@ letter(P + "after.what_the_offer_bought", "What the offer bought", varied("start
       BURNED)],
     (c('"Take the buyer\'s list. Sell it back to her."', flags=(T_OFFER, P + "offer_sold_back"), alignment=("Evil", 1)),
      c('"Burn the list. Let them come."', flags=(T_OFFER, P + "offer_burned")))),
-    requires=("trickster.ever", REUNITED), forbids=(*CHAIN_FORBIDS, T_OFFER, HALF), ForbidOverrides=dict(PAIR_FO))
+    requires=("trickster.ever", REUNITED), forbids=(*CHAIN_FORBIDS, T_OFFER, HALF, OWNED), ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 PRICE_NODES = [
     *varied("start", cv, '''{n}Chivarro is waiting for you by the quartermaster's stores, in borrowed Drezen wool that she wears like a costume.{/n}
@@ -419,23 +442,24 @@ PRICE_NODES = [
        c("[Let her go.]", flags=(WALKED,))),
 ]
 physical(P + "after.the_price_of_her_name", "The price of her name", "Chivarro", PRES_CHIV, CHIV_UNIT, PRICE_NODES,
-         requires=("trickster.ever", T_OFFER, CH_IN), forbids=(*CHAIN_FORBIDS, T_NAME, WALKED), ForbidOverrides=dict(PAIR_FO))
+         requires=("trickster.ever", T_OFFER, CH_IN), forbids=(*CHAIN_FORBIDS, T_NAME, WALKED, OWNED), ForbidOverrides={**PAIR_FO, **UNOWNED})
 letter(P + "after.the_price_of_her_name_letter", "The price of her name", [
     cv("start", '''{n}The note is written on the back of the quartermaster's inventory, in a sharp, slanted hand.{/n}
 "Minagho says you own her debt. Then you and I will discuss the price of her. What is her name worth to you, Golarian? Answer with your hand. The bleeding one. Pressed to the page."''',
        c("[Press your bleeding palm to the page.]", flags=(T_NAME, PALM_TABLE)),
        c('"It\'s worth a joke."', flags=(WALKED,)))],
    requires=("trickster.ever", T_OFFER, CH_IN, PRES_CHIV + ".failed"),
-   forbids=(*CHAIN_FORBIDS, T_NAME, WALKED, P + "after.the_price_of_her_name"), delay=96, ForbidOverrides=dict(PAIR_FO))
+   forbids=(*CHAIN_FORBIDS, T_NAME, WALKED, OWNED, P + "after.the_price_of_her_name"), delay=96,
+   ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 letter(P + "after.won_back", "Won back", [
-    nar("start", '''{n}Chivarro has taken a room at the far end of Drezen, as far below the citadel as the walls allow and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}''',
+    nar("start", '''{n}Chivarro has taken a room at the far end of Drezen, as far below the citadel as the walls allow, and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}''',
         c('[Send the silk] "A bolt of Nerosyan silk, dyed Delights red, and a card: \'Your price. Name it again.\'"', "answer",
           crusade=("Finances", -200)),
         c('"Let her stay gone."', flags=(SENT_BACK,))),
     cv("answer", '''{n}The card comes back the next morning, pinned to your door with a hatpin. On the back, in her hand:{/n} "Red. You remembered. It is still not enough." {n}Under it, smaller:{/n} "Tomorrow. Bring the hand."''',
        c("[Keep the card.]", flags=(T_NAME, WON_BACK))),
-], requires=("trickster.ever", WALKED, CH_IN), forbids=(*CHAIN_FORBIDS, T_NAME), ForbidOverrides=dict(PAIR_FO))
+], requires=("trickster.ever", WALKED, CH_IN), forbids=(*CHAIN_FORBIDS, T_NAME, OWNED), ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 letter(P + "after.who_keeps_the_house", "Who keeps the house", varied("start", mg,
     '''"We are going to need a house, when your war is done. Somewhere with thick doors and a cellar nobody else knows about." {n}Chivarro, in the margin:{/n} "And a linen press. For guests."''',
@@ -443,46 +467,37 @@ letter(P + "after.who_keeps_the_house", "Who keeps the house", varied("start", m
       DOOR)],
     (c('"Chivarro keeps the house. Minagho keeps the door."', flags=(T_HOUSE, "minachiv.host_ending")),
      c('"Neither. You keep each other, and I keep out of it."', flags=(T_HOUSE, "minachiv.winter_ending")))),
-    requires=("trickster.ever", T_NAME), forbids=(*CHAIN_FORBIDS, T_HOUSE), ForbidOverrides=dict(PAIR_FO))
+    requires=("trickster.ever", T_NAME), forbids=(*CHAIN_FORBIDS, T_HOUSE, OWNED), ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 # 5.4 The commit: their terms, her refusal on every branch, and the heat to the cut.
 PAIR_THRESHOLD = nar("threshold", '''{n}They take you up to your own quarters between them, one on each arm, arguing across you the whole way about which of them the stairs were built for.{/n}
 {n}At the door Chivarro stops arguing. She unbuckles your sword belt without looking at it, the way a woman who has undressed a thousand guests knows every buckle ever forged. Minagho is slower and less kind; she drags her nails down the seam of your shirt and watches your face instead of her hands, learning where you flinch. Two mouths, one warm and one fever-hot, and somewhere between them the bleeding palm is lifted and kissed, and licked clean, and pressed flat against a bare hip that is not yours.{/n}
 {n}"I have sold ten thousand nights, honey," Chivarro says against your throat, in the voice of a woman closing on a price she means to get. "Every one of them for someone else. This one I am taking for myself, and I intend to get my money's worth, so do not you dare be ordinary." Then, lower: "Our terms. Say it again." You say it again. Minagho laughs, low and ugly and delighted, and pulls you both down onto the bed.{/n}''',
     c("Continue"))
-COMMIT_FORBIDS = (CLOSED, COMPLETE, DECLINED, KEPT, *CHAIN_FORBIDS)
+COMMIT_FORBIDS = (CLOSED, COMPLETE, DECLINED, KEPT, OWNED, *CHAIN_FORBIDS)
 COMMIT_NODES = [
     mg("start", '''{n}They have taken the bench outside the quartermaster's stores as if they had owned it for years and you were the one passing through: Chivarro stretched along it, Minagho sitting on its back with her boots on the seat.{/n}
 "We have been talking about you, Golarian. We do that now. It is very tiresome." {n}Chivarro, without looking up:{/n} "Ask the question, honey. We have a wager on how badly you phrase it."''',
-       c('"Stay. Both of you. On your terms."', "terms", forbids=(OWNED,)),
-       c('[Burn the bill in front of them] "Stay. Both of you. On your terms. This first."', "terms_burned", requires=(OWNED,)),
-       c('[Tell them it was a joke that worked] "You\'re both on my ledger now. That\'s all this ever was."', "refuse"),
-       c('[Keep the bill in your pocket] "Stay. The bill says you will."', "service", requires=(OWNED,))),
-    cv("terms_burned", '''{n}She watches the paper curl in the quartermaster's brazier. She does not thank you. She waits until the last corner of "goods" has gone black, and then she breathes out, very slowly, through her teeth.{/n}
-"Late. But burned." {n}She turns her face back to you.{/n}''',
-       c("Continue", "terms", flags=(BURNED,))),
+       c('"Stay. Both of you. On your terms."', "terms"),
+       c('[Tell them it was a joke that worked] "You\'re both on my ledger now. That\'s all this ever was."', "refuse")),
     cv("terms", '''"Our terms. We keep our own house. We keep our own names. You visit when you are asked, and you are asked rarely." {n}Minagho:{/n} "And when the Goat calls in his seal, you do not bargain for me again. I will stand where I choose."''',
        c('"Your terms. Agreed."', "threshold", flags=(COMPLETE, "minachiv.future_two", CHAIN)),
        c('"I won\'t bleed for the Goat forever."', "refuse")),
-    cv("service", '''{n}She looks at the pocket, and at you, and at Minagho, who looks away.{/n} "Then I stay. Owned. On paper, in your city, at your door. Do not ever mistake it for anything else, and do not ever come to my bed with it in your pocket. I would take the hand that holds it."''',
-       c("[Say nothing.]", flags=(KEPT,), alignment=("Evil", 1))),
     mg("refuse", '''"No." {n}Minagho stands.{/n} "Not while his seal still bleeds on your hand and you still call it a joke. We are demons, Golarian. We do not stay for jokes. Ask me when it scars."''',
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,)),
        c('"Then get out of my city. Both of you."', flags=(CLOSED,))),
     PAIR_THRESHOLD,
 ]
 physical(P + "after.before_the_last_road", "Before the last road", "Minagho", PRES_CHIV, CHIV_UNIT, COMMIT_NODES,
-         requires=("trickster.ever", T_HOUSE, MIN_IN, CH_IN), forbids=COMMIT_FORBIDS, ForbidOverrides=dict(PAIR_FO))
+         requires=("trickster.ever", T_HOUSE, MIN_IN, CH_IN), forbids=COMMIT_FORBIDS, ForbidOverrides={**PAIR_FO, **UNOWNED})
 letter(P + "after.before_the_last_road_letter", "Before the last road", [
     mg("start", '''{n}The letter is in two hands, taking turns, and the ink changes colour wherever one of them snatched the pen.{/n}
 "We have been talking about you. Our terms: we keep our own house, we keep our own names, you visit when you are asked. And when the Goat calls in his seal, you do not bargain for me again." {n}Chivarro, below:{/n} "Answer in ink, honey. We will know if you blot it."''',
-       c('"Your terms. Agreed."', flags=(COMPLETE, "minachiv.future_two", CHAIN), forbids=(OWNED,)),
-       c('[Send the bill back, burned at the corners] "Your terms. Agreed."', requires=(OWNED,),
-         flags=(COMPLETE, "minachiv.future_two", CHAIN, BURNED)),
+       c('"Your terms. Agreed."', flags=(COMPLETE, "minachiv.future_two", CHAIN)),
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,)),
        c('"Get out of my city."', flags=(CLOSED,)))],
    requires=("trickster.ever", T_HOUSE, MIN_IN, CH_IN, PRES_CHIV + ".failed"),
-   forbids=(*COMMIT_FORBIDS, P + "after.before_the_last_road"), delay=96, ForbidOverrides=dict(PAIR_FO))
+   forbids=(*COMMIT_FORBIDS, P + "after.before_the_last_road"), delay=96, ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 # 5.5 Alone commits: each woman can be won without the other. Devices: the partner's unreturned death may hold.
 ALONE_CHIV_NODES = [
@@ -500,13 +515,14 @@ ALONE_CHIV_NODES = [
 ]
 physical(P + "alone.chivarro", "The house she keeps now", "Chivarro", PRES_CHIV, CHIV_UNIT, ALONE_CHIV_NODES,
          requires=("trickster.ever", CH_IN), RequiresAnyGroups=[[DECL_M, WAITING]],
-         forbids=(REUNITED, OWNED, CLOSED, COMPLETE, DECLINED), delay=96, TricksterDevice=True, TricksterState="minagho_dead")
+         forbids=(REUNITED, OWNED, CLOSED, COMPLETE, DECLINED), delay=96, ForbidOverrides=dict(UNOWNED),
+         TricksterDevice=True, TricksterState="minagho_dead")
 letter(P + "alone.chivarro_letter", "The house she keeps now", [
     cv("start", '''"She is not coming, or she is not coming yet. I have stopped waiting to find out which. So: I keep my own house, in your city, on my terms, and you pay the rent. If she walks back in, the terms change, and you do not get a say."''',
        c('"Your terms."', flags=(COMPLETE, "minachiv.future_chivarro", HALF, CHAIN)),
        c('"Then wait. I\'ll ask again."', flags=(DECLINED,)))],
    requires=("trickster.ever", CH_IN, PRES_CHIV + ".failed"), RequiresAnyGroups=[[DECL_M, WAITING]],
-   forbids=(REUNITED, OWNED, CLOSED, COMPLETE, DECLINED, P + "alone.chivarro"), delay=96,
+   forbids=(REUNITED, OWNED, CLOSED, COMPLETE, DECLINED, P + "alone.chivarro"), delay=96, ForbidOverrides=dict(UNOWNED),
    TricksterDevice=True, TricksterState="minagho_dead")
 
 ALONE_MIN_NODES = [
@@ -544,9 +560,11 @@ letter(P + "alone.minagho_letter", "One lilitu, dry", [
 # The morning after each physical commit: the night's consequence in their own voices, and what it costs.
 MORNING = P + "cost.morning_after"   # the night's price, named the next morning
 PAIR_MORNING = [
-    cv("start", '''{n}Morning. Chivarro is back on the quartermaster's bench before the stores open, in yesterday's borrowed wool, with the air of a woman who has already been paid.{/n}
-"You snore, honey. She says you do not. We are going to argue about it for a year." {n}Minagho, on the crate, does not look up from the dagger she is sharpening.{/n} "Your hand opened at dawn. You did not make a sound." {n}Her voice is flat.{/n} "I heard it anyway. I will hear it every dawn now, because of me. Do not ask me to be grateful for that. I am not."''',
-       c('"I didn\'t ask."', "terms"),
+    cv("start", '''{n}Morning. Chivarro is back on the quartermaster's bench before the stores open, in yesterday's borrowed wool and nothing under it, with the air of a woman who has already been paid.{/n}
+"Well." {n}She looks you over the way she once looked over the Delights' new stock.{/n} "You were not ordinary. I am almost disappointed; I had a speech ready." {n}She tilts her eyeless face toward the crate where Minagho sits sharpening a dagger.{/n} "And she laughed. Twice. I have not heard her laugh like that since before Kenabres, and I have been trying for a very long time. I am not sure I forgive you for managing it in one night."''',
+       c("Continue", "minagho")),
+    mg("minagho", '''{n}Minagho does not look up from the dagger.{/n} "Your hand opened at dawn. You did not make a sound. I heard it anyway." {n}Her voice is flat.{/n} "I will hear it every dawn now, lying next to you, because of me. Do not ask me to be grateful for that. I am not." {n}The whetstone stops.{/n} "...I did not leave, either. Note that. It will not happen often."''',
+       c('"Noted."', "terms"),
        c('[Show her the palm] "It\'s just blood. I have more."', "terms", alignment=("Chaotic", 1))),
     cv("terms", '''"Good." {n}Chivarro swings her feet down.{/n} "Then the terms stand, and here is the first bill under them: when you come to our house, you knock. On the door. Not the wardrobe." {n}Wilcer Garms, behind his ledger, turns a page with great concentration.{/n}''',
        c('"I\'ll knock."', flags=(MORNING,)),
@@ -591,8 +609,10 @@ physical(P + "alone.minagho_spared_morning", "His, every morning", "Minagho", PR
 
 # === Epilogue pages (R2-6 and the chain's own endings; the registered endings narrate visits this Commander never had) =
 
-def page(id, title, nodes, requires, forbids=(), any_groups=None):
+def page(id, title, nodes, requires, forbids=(), any_groups=None, overrides=None):
     extra = dict(RequiresAnyGroups=any_groups) if any_groups else {}
+    if overrides:
+        extra["ForbidOverrides"] = dict(overrides)
     SCENES.append(scene(id, title, "Epilogue", 1, "", nodes, requires=requires, forbids=forbids, last=99,
                         Relationship=REL, **extra))
 
@@ -646,7 +666,8 @@ page(P + "epilogue.commit", "One invitation a year", [
         c("[Send your regrets.]", "regrets")),
     nar("went", '''{n}The Commander went. The door was barred from the inside with a chair, and opened anyway. The Commander went every year after that.{/n}'''),
     nar("regrets", '''{n}The Commander sent regrets. The next year's invitation came anyway, and the year after that. They were patient in the way demons are patient: badly, and with knives.{/n}'''),
-], requires=("trickster.ever",), forbids=(COMPLETE, CLOSED, DECLINED, KEPT), any_groups=[[T_HOUSE, WAITING]])
+], requires=("trickster.ever",), forbids=(COMPLETE, CLOSED, DECLINED, KEPT, OWNED), any_groups=[[T_HOUSE, WAITING]],
+   overrides=UNOWNED)
 page(P + "epilogue.declined", "When it scars", [
     nar("end", '''{n}They waited to be asked again, as demons wait: badly, and with knives. The Commander's palm never scarred.{/n}''')],
     requires=("trickster.ever", DECLINED), forbids=(COMPLETE,))

@@ -275,16 +275,24 @@ internal static class MinaghoChivarroTricksterTests
         check(Av(bought, depositFailed) && Done(bought, depositFailed).Where(r => r.Has(RetC)).All(r => !r.Has(Late)), "Trk_Chivarro_DepositSurvivesFailure failed.");
         check(!Av(bought, World(story, 5, "trickster.ever", "trickster.failed", "chivarro.dead")), "Trk_Chivarro_KilledNoDepositFailed failed.");
         var ownedOut = boughtOut.Single(r => r.Has(Owned));
-        check(ownedOut.Has(RetC) && !Av(aloneChiv, Later(story, ownedOut, "minagho.dead", DeclM)), "Trk_Chivarro_KeptBill failed.");
-        // The kept bill never buys a romance: at the commit it is burned first, or kept as service without the CommittedFlag.
+        check(ownedOut.Has(RetC) && !ownedOut.Has("minachiv.started") && !Av(aloneChiv, Later(story, ownedOut, "minagho.dead", DeclM)),
+            "Trk_Chivarro_KeptBill failed: keeping the bill starts the relationship.");
+        // The kept bill never buys a romance: nothing of the pair moves until Chivarro's bill scene, where it is burned or kept.
+        var bill = S(P + "chivarro_dead.the_bill");
+        var billLetter = S(P + "chivarro_dead.the_bill_letter");
         var ownedReady = World(story, 5, "trickster.ever", Reunited, ChIn, MinIn, RetC, "chivarro.dead", "minagho.spared_c4", Owned, P + "tprev.house");
-        var ownedRoad = Done(road, ownedReady);
-        check(ownedRoad.Where(r => r.Has(Complete)).All(r => r.Has(P + "bill_burned")) && ownedRoad.Any(r => r.Has(Complete)),
-            "An owned Chivarro commits without the bill burned.");
-        var service = ownedRoad.Single(r => r.Has(Kept));
-        check(!service.Has(Complete) && Av(epOwned, service) && !Av(epCommit, service) && !Av(epPair, service), "The kept bill is treated as a romance.");
-        check(Pages(price, Later(story, With(ownedReady, P + "tprev.offer"))).Contains("owned") || !Av(price, Later(story, With(ownedReady, P + "tprev.offer"))),
-            "The owned variant of the price is missing.");
+        check(!Av(road, ownedReady) && !Av(roadLetter, With(ownedReady, "minagho_chivarro.presence.chivarro.failed")) && !Av(epCommit, ownedReady)
+              && !Av(offer, With(ownedReady)) && Av(bill, ownedReady) && !Av(billLetter, ownedReady),
+            "An owned Chivarro can be courted before the bill is settled.");
+        var billOut = Done(bill, ownedReady);
+        var burned = billOut.Single(r => r.Has(P + "bill_burned"));
+        var service = billOut.Single(r => r.Has(Kept));
+        check(burned.Has("minachiv.started") && !service.Has("minachiv.started") && !Av(bill, burned) && !Av(bill, service), "The bill's outcomes.");
+        check(Av(road, Later(story, burned)) && Av(epCommit, burned), "A burned bill does not reopen the courtship.");
+        check(!Av(road, Later(story, service)) && !Av(epCommit, service) && !Av(epPair, service) && Av(epOwned, service),
+            "The kept bill is treated as a romance.");
+        check(Av(billLetter, With(ownedReady, "minagho_chivarro.presence.chivarro.failed")), "The bill's letter twin misfires.");
+        check(Pages(price, Later(story, With(burned, P + "tprev.offer"))).Contains("owned"), "The owned variant of the price is missing.");
 
         // Trk_Chivarro_MinaghoAlone (spared presence copy of the beat) and the dead-returned beat.
         var minAlone = World(story, 5, "trickster.ever", "chivarro.dead", MinIn, "minagho.spared_c4", DeclC);
