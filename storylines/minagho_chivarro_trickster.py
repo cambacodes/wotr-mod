@@ -48,6 +48,7 @@ DREZEN = "2570015799edf594daf2f076f2f975d8"
 HERRAX_LIST = "43f93812d6216c94db356622859397f1"   # Herraxa_dialogue/AnswersList_0004 (her hub after the contract)
 HERRAX_RETURN = "1af69c65d15cc8949a4fe47a45c4f85d"  # Cue_0100 "We have some true gems here."
 BAPH_LIST = "cbd2f289d8173fb41a231772290440ba"      # Prison_Baph/AnswersList_0071 (the parley hub)
+HEPZ_OUT = "hepzamirah.trickster.primed"               # node variant only (hepzamirah_trickster)
 BAPH_RETURN = "2d1a338243b8ddb429bbad5db08ed7de"    # Cue_0127 "Areelu Vorlesh will lead my armies..."
 SOCOTH_LIST = "db7f69fa013c7ec49b651e7ad26c67de"    # SocothInCloset/AnswersList_0003
 SOCOTH_RETURN = "e52a1d81a098a2843aa5f1f35481ddc1"  # Cue_0002 "Well? Do you have it now?"
@@ -167,6 +168,12 @@ OPEN_CHOICES = (
     c('"Never mind."', abort=True))
 SCENES.append(scene(P + "react.baphomet", "The collateral", "Baphomet", 5, '"About Minagho."', [
     baph("open", '''{n}Baphomet's vision turns its horned head toward you, as though a new smell had come into the cell.{/n}''',
+         c("Continue", "primed_alive", requires=(PRIMED,), forbids=("minagho.dead", HEPZ_OUT)),
+         c("Continue", "told", requires=("baphomet.minagho_dead_told", "minagho.dead"), forbids=(HEPZ_OUT,)),
+         c("Continue", "base", requires=("minagho.dead",), forbids=("baphomet.minagho_dead_told", HEPZ_OUT)),
+         c("Continue", "daughter", requires=(HEPZ_OUT,))),
+    # Hepzamirah's node variant (ledger 10: Baphomet never collects from her; he only notices, and does not care).
+    baph("daughter", '''"And my daughter walked out of my prison behind you, through a wall you had the insolence to name." {n}The vision's lip curls back from its teeth.{/n} "Do you think that wounds me? I possess none of a father's sentimentality. Keep her, thief. Everything that is mine comes home to me in the end."''',
          c("Continue", "primed_alive", requires=(PRIMED,), forbids=("minagho.dead",)),
          c("Continue", "told", requires=("baphomet.minagho_dead_told", "minagho.dead")),
          c("Continue", "base", requires=("minagho.dead",), forbids=("baphomet.minagho_dead_told",))),

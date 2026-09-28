@@ -50,6 +50,7 @@ from storylines import aranka_trickster
 from storylines import gesmerha_trickster
 from storylines import seelah_trickster
 from storylines import dorgelinda_trickster, dorgelinda_ledger
+from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import targona_trickster
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
@@ -354,6 +355,11 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(dorgelinda_ledger.SCENES))
     dorgelinda_trickster.integrate(payload)
     dorgelinda_ledger.integrate(payload)
+    # Hepzamirah: a new relationship, opened only by the Trickster steal in her father's prison (hepzamirah_trickster).
+    payload["Relationships"]["hepzamirah"] = copy.deepcopy(hepzamirah_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(hepzamirah_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(hepzamirah_flesh.SCENES))
+    hepzamirah_trickster.integrate(payload)
     if "targona" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(targona_trickster.SCENES))
         targona_trickster.integrate(payload)
