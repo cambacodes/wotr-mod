@@ -57,6 +57,7 @@ from storylines import areelu_trickster
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import devarra_trickster, devarra_tower
 from storylines import rrt_ui
+from storylines import rrt_portraits
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -403,6 +404,7 @@ def make_expansion(*, independent_tirabade=True):
     trickster_world.integrate(payload)
     # E15: the RRT book UI (glossary tooltips, the guide book).
     rrt_ui.integrate(payload)
+    rrt_portraits.integrate(payload)
     normalize_trickster_access(payload)
     return payload
 

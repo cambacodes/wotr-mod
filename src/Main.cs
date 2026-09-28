@@ -1631,16 +1631,35 @@ namespace Tirabade
             GUILayout.Label("If no meeting is listed, continue the campaign or allow a day or two between conversations.");
         }
 
-        private static Sprite? Portrait(string key)
+        private static Sprite? Portrait(string key) => Portrait(key, 0);
+
+        private static Sprite? Portrait(string key, int depth)
         {
             if (portraits.TryGetValue(key, out var sprite)) return sprite;
             string folder = Path.GetFullPath(Path.Combine(entry.Path, "..", "CustomNpcPortraits", "RanRomance-Tirabade"));
             string path = Path.Combine(folder, "Scenes", key + ".png");
-            if (!File.Exists(path)) return null;
+            if (!File.Exists(path)) return FallbackPortrait(key, depth);
             var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
             if (!ImageConversion.LoadImage(texture, File.ReadAllBytes(path))) { UnityEngine.Object.Destroy(texture); return null; }
             sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             portraits.Add(key, sprite);
+            return sprite;
+        }
+
+        // A missing book picture falls back to the character's native portrait (half-length, else full-length, else the
+        // initiative image) or to another key's file. One alias hop at most; a fallback that does not resolve yields null
+        // and the native book picture stays, as before.
+        private static Sprite? FallbackPortrait(string key, int depth)
+        {
+            if (depth > 1 || story?.PortraitFallbacks == null || !story.PortraitFallbacks.TryGetValue(key, out var target)) return null;
+            Sprite? sprite;
+            if (target.Length == 32 && target.All(Uri.IsHexDigit))
+            {
+                var data = (ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(target)) as BlueprintPortrait)?.Data;
+                sprite = data == null ? null : data.HalfLengthPortrait ?? data.FullLengthPortrait ?? data.SmallPortrait;
+            }
+            else sprite = Portrait(target, depth + 1);
+            if (sprite != null) portraits[key] = sprite;
             return sprite;
         }
 

@@ -92,8 +92,16 @@ try {
     $portraitKeys = @($story.Scenes | ForEach-Object { $_.Nodes } | ForEach-Object {
         if ($_.Portrait) { $_.Portrait } elseif ($_.Speaker -eq 'Narrator') { 'Together' } else { $_.Speaker }
     } | Sort-Object -Unique)
-    $missingPortraits = @($portraitKeys | Where-Object {
-        !(Test-Path -LiteralPath (Join-Path $artOutput ('RanRomance-Tirabade/Scenes/' + $_ + '.png')))
+    # A key is covered by its own PNG, by a native BlueprintPortrait fallback, or by an alias to a shipped PNG.
+    # 'conversant' is an E14f speaker role (the dialog's own speaker), not a portrait key.
+    $fallbacks = $story.PortraitFallbacks
+    $missingPortraits = @($portraitKeys | Where-Object { $_ -ne 'conversant' } | Where-Object {
+        $key = $_
+        $own = Test-Path -LiteralPath (Join-Path $artOutput ('RanRomance-Tirabade/Scenes/' + $key + '.png'))
+        $target = if ($fallbacks) { $fallbacks.$key } else { $null }
+        $viaFallback = $target -and (($target -match '^[0-9a-f]{32}$') -or
+            (Test-Path -LiteralPath (Join-Path $artOutput ('RanRomance-Tirabade/Scenes/' + $target + '.png'))))
+        !($own -or $viaFallback)
     })
     $files = @(Get-ChildItem -LiteralPath $output -File -Recurse | Sort-Object FullName | ForEach-Object {
         [ordered]@{ Path = $_.FullName.Substring($output.Length + 1); SHA256 = (Get-FileHash -LiteralPath $_.FullName).Hash }

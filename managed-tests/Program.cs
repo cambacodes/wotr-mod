@@ -130,10 +130,16 @@ internal static class Program
             // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
             .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(story.RemovableItems).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
         // SEE-01: the retained finally-dead Seelah reaches the Trickster pickpocket through revive.seelah.available.
         if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket"))
             SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check);
+        // Book-picture fallbacks: every native target is a BlueprintPortrait in the archive, and every alias names another key.
+        foreach (var fallback in story.PortraitFallbacks)
+            Check(fallback.Value.Length == 32
+                ? ((string)native[fallback.Value]["$type"]!).EndsWith(", BlueprintPortrait", StringComparison.Ordinal)
+                : fallback.Value.Length > 0 && fallback.Value != fallback.Key,
+                "Portrait fallback is not a native BlueprintPortrait or a key alias: " + fallback.Key);
         foreach (var binding in nurahNativeBindings)
             Check(((string)native[binding.Key]["$type"]!).EndsWith(", " + binding.Value, StringComparison.Ordinal),
                 "Nurah native binding has the wrong archive type: " + binding.Key);
