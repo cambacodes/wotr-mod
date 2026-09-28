@@ -107,10 +107,11 @@ SCENES.append(scene(P + "dead.setup", "Something of my brother", "Targona", 3, '
         c("Continue", "estrod", requires=(TWINS,)),
         c('"Nothing. Forget I spoke."', abort=True)),
     nar("estrod", '''{n}You remember an old man in the tower at Estrod, delighted to be asked: the Silver Twins, two angels who emerged from one soul. What else should they call themselves, he said, if not twins?{/n}
-{n}One soul. One death, already paid for under Kenabres.{/n}''',
+{n}One soul. If the soul keeps the account, and not the body, then its one death is already paid for under Kenabres. If. Nobody has ever tried it. That is exactly the kind of door you like.{/n}''',
         c(JOKE, "after", mythic="Trickster", alignment=("Chaotic", 1), flags=(PRIMED, LAB_LINE)),
         c('"Nothing. Forget I spoke."', abort=True)),
     t("after", '''{n}She stares at you through the barrier for a long moment. The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n}
+"That is not how a soul works." {n}She says it at once, the way a healer says a wound is not as bad as it looks, and then she is quiet too long.{/n} "Or I do not think it is. Nobody knows how ours works. There were only ever two of us to ask, and he is gone."
 "I do not understand you. I told you this was a test. I did not think the test would be you."
 {n}She lowers her head again, as she did before, and waits for you to choose.{/n}''',
       c('[Step back from the barrier.]')),
@@ -135,7 +136,8 @@ letter(P + "dead.one_soul", "Nothing left to spend", [
     nar("start", '''{n}You wake before dawn with the feeling of a lamp being lit in another room.{/n}''',
         c("Continue", "full", forbids=(ECHO_SPENT,)),
         c("Continue", "cold", requires=(ECHO_SPENT,))),
-    nar("full", '''{n}The part of Lariel's sword that entered you in Kenabres is warm, and it is full. It was used. It was not spent.{/n}''',
+    nar("full", '''{n}You did not know it would work. You had wagered that a soul keeps one account, and that Lariel had already settled it.{/n}
+{n}The part of Lariel's sword that entered you in Kenabres is warm, and it is full. It was used. It was not spent. But something else was: your hands are cold to the wrist, and they stay cold for a week, and the chaplain who takes your pulse at breakfast does not like what he finds.{/n}''',
         c("Continue", "news")),
     nar("cold", '''{n}The place in your chest where Lariel's light used to burn is cold and empty. It is not coming back. Whatever it bought is somewhere in the dark, walking.{/n}''',
         c("Continue", "news")),
@@ -151,7 +153,8 @@ ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
         c("Continue", "pikeman")),
     t("pikeman", '''"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first."
 {n}The black wing folds against her back as if it too is listening.{/n}
-"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. And I remember that I should not be here."''',
+"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. And I remember that I should not be here."
+{n}She looks at you for a long moment, the way she looks at a wound that has closed too quickly.{/n} "The chaplains say the blow found nothing left to spend. I have thought about that every hour since I woke. I do not believe it was so simple. I think you paid for it somewhere you have not noticed yet, and I think Lariel would have been angry with you."''',
       c('[Tell her the truth] "I struck you. I\'d rather you hear it from me than from Heaven."', "truth"),
       c('[Make light of it] "It was a joke. You\'re alive. That\'s the punchline."', "joke"),
       c('[Lie] "Areelu turned my hand. It was never my blow."', "lie")),

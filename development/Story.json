@@ -56751,7 +56751,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}\n\"My current post has put me at the Celestial Order's wayhouse just beyond Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.\n\"I do want to see you. Before you answer, there is one risk you must state plainly if your Trickster idea involves more than the road. A newly made passage might shift, close, or fail to return someone to its other end. I will not cross an untested opening, and I will not be asked to accept a risk I have not heard. If we cannot make a safe route, I will stay here. Our letters continue, and neither of us owes the other an apology for that.\n\"If you would rather let the courier carry a simple invitation, say so. If you would rather decline the visit altogether, say that too. I mean what I wrote about wanting you. I do not mean that I have already agreed to every way of getting there.\"\n{n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}\n{n}Anograt's earlier note remains in the packet, but says nothing about this evening. You do not treat her silence as an invitation or a refusal; any shared invitation would need to reach her separately, with room for her own answer.{/n}",
+          "Text": "{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}\n\"My current post has put me at the Celestial Order's wayhouse just beyond Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.\n\"I do want to see you. I have wanted it since the last packet, and I have been ashamed of how often I reread it.\n\"But I know you, a little. If there is a trick in your answer, tell me what it is before you ask me to walk through it. I spent a long time behind a barrier that someone else built for my own good. I will not step through another door I have not seen tested, not even yours. If the road is all we have, the road will do.\"\n{n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}\n{n}Anograt's earlier note is still in the packet. It says nothing about this evening, and you leave it that way.{/n}",
           "Choices": [
             {
               "Text": "[Trickster] Continue from the impossible extra door you drew on her page.",
@@ -56799,7 +56799,7 @@
         {
           "Id": "paper_setup",
           "Speaker": "Narrator",
-          "Text": "{n}The impossible page is still with you. On its copy the door appears on both faces, and the short corridor refuses to end at the edge of the paper.{/n}\nYou do not treat this as a proven portal or as permission to reach into Targona's room. It is only a pattern your Trickster power has already made strange. You can try to use that contradiction to join two real, named places on the same plane: her wayhouse and the courtyard where you would meet.\nFirst you must test the opening without sending anyone through it. If its ends will not stay where you put them, it does not become an invitation.",
+          "Text": "{n}The impossible page is still with you. On its copy the door appears on both faces, and the short corridor refuses to end at the edge of the paper.{/n}\nIt is not a portal yet. It is only a pattern your Trickster power has already made strange, and she has told you what she thinks of doors she has not seen tested. You can try to use that contradiction to join two real, named places on the same plane: her wayhouse and the courtyard where you would meet.\nFirst you must test the opening without sending anyone through it. If its ends will not stay where you put them, it does not become an invitation.",
           "Choices": [
             {
               "Text": "[Knowledge (Arcana)] Test and stabilize both ends before inviting her.",
@@ -56890,7 +56890,7 @@
         {
           "Id": "steady",
           "Speaker": "Narrator",
-          "Text": "{n}The two real anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places. It cannot wander into another room or plane, and your test shows it will remain open for the evening.{/n}\nThe known courier carries Targona a written account of the test, the way to close the passage, and the key. She reads the risk before she chooses. Her reply gives no promise that she must come; it only says she is willing to inspect the threshold herself.\nWhen she arrives at the Drezen courtyard, she examines both anchors and keeps the key. The passage stays open behind her, an ordinary route home made briefly shorter. She has chosen to cross and may leave by the same tested way whenever she wants.",
+          "Text": "{n}The two anchors hold when you test the opening with an empty dispatch pouch, first from the wayhouse side and then from Drezen. The path returns to the same two places every time. It will stay open for the evening.{/n}\n{n}The courier carries Targona a written account of the test, the way to close the passage, and the key. She reads every line of it. Her reply is one sentence: \"I will inspect it myself.\"{/n}\n{n}When she arrives in the Drezen courtyard she examines both anchors, slowly, the way a healer examines a wound someone else has dressed, and then puts the key in her own pocket.{/n}\n\"It is well made,\" she says. \"For a trick.\"",
           "Choices": [
             {
               "Text": "Offer to walk beside her and let her choose where to begin.",
@@ -56914,7 +56914,7 @@
         {
           "Id": "falter",
           "Speaker": "Narrator",
-          "Text": "{n}The first end shifts when you test it with the dispatch pouch. You close the opening before sending the courier, and before Targona is anywhere near it.{/n}\nYou send an ordinary letter explaining exactly what failed. You do not send the key, invite her to cross, or make her risk your mistake. Targona remains at the wayhouse and answers by the same reliable courier.\n\"That was the right choice. I still want you; I do not want to be the test of whether a dangerous passage works. Let us write tonight. We can speak of meeting again when there is a route worth trusting.\"\nYou reply with affection and a small report from your day. The failed attempt changes tonight's plan, not the relationship.",
+          "Text": "{n}The first end shifts when you test it with the dispatch pouch. The pouch comes back with its seams turned inside out. You close the opening before the courier ever sees it.{/n}\n{n}You send an ordinary letter instead, and tell her exactly what failed. Targona answers by the same courier.{/n}\n\"Thank you for not sending me the key. I would have used it, and you know that, which is why I am glad you did not.\n\"Write to me tonight instead. Tell me something from your day too small for a dispatch. When there is a road worth trusting, I will walk it.\"",
           "Choices": [
             {
               "Text": "Answer her and keep the correspondence open.",
@@ -56932,7 +56932,7 @@
         {
           "Id": "road",
           "Speaker": "Narrator",
-          "Text": "{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona reads the terms there and chooses to come by the public eastern road, on foot and at her own pace.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I wanted to see whether you would let the road be enough,\" she says. \"It is. I would still like you to walk beside me.\"",
+          "Text": "{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona reads the terms there and chooses to come by the public eastern road, on foot and at her own pace.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I walked,\" she says. \"It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way.\"",
           "Choices": [
             {
               "Text": "Walk with her and let her choose where to begin.",
@@ -56956,7 +56956,7 @@
         {
           "Id": "walk",
           "Speaker": "Narrator",
-          "Text": "{n}You take the path around the courtyard rather than leading her through it. Targona chooses the slower walk along the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had declined.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Good. I would have disliked becoming responsible for your disappointment.\"\nHer mouth curves. The joke has reached its mark, but not its end.\nShe tells you that she has spent too many years being looked at as a sign: proof of protection, proof of corruption, proof that some power can do what it claims. She likes that you look at her as a woman you desire. She dislikes when desire becomes another argument that she ought to be grateful.\n\"Then let me be precise,\" you say. \"I want to kiss you. I do not think you owe me one.\"\nShe turns to face you. \"That is precise enough. Ask me again when you are closer.\"\n{n}You take one step. The rest belongs to her.{/n}",
+          "Text": "{n}You take the path around the courtyard rather than leading her through it. Targona chooses the slower walk along the wall, where the city noise thins and the evening air reaches the open edge of her wing.{/n}\nYou ask if the wing hurts today. She answers without apology: sometimes, and not now. Then she asks what you would have done if she had declined.\n\"Waited,\" you say. \"Possibly complained to the nearest statue.\"\n\"Good. I would have disliked becoming responsible for your disappointment.\"\nHer mouth curves. The joke has reached its mark, but not its end.\n\"Everyone looks at me as a sign,\" she says. \"Heaven's healers look at the wing and see Areelu's work. The soldiers look at the other one and see a promise. In that laboratory I was proof of something.\" {n}She stops walking.{/n} \"You are looking at me as if I were a woman. I do not know yet what to do with that. I think I like it.\"\n{n}She turns to face you. The black wing lifts a little, the way it does when she is startled, and she does not fold it down.{/n}\n\"Well, Commander? You came all this way on a trick. Are you going to stand there?\"",
           "Choices": [
             {
               "Text": "Ask her again, and wait for her answer.",
@@ -56980,7 +56980,7 @@
         {
           "Id": "close_passage",
           "Speaker": "Narrator",
-          "Text": "{n}You ask whether she would rather close the tested passage and take the public road home now. Targona turns the key herself; the opening folds shut at the Drezen end.{/n}\n\"Yes. I would like to walk back while the evening is still quiet. I am glad we met, and I do not want to make staying longer a test of how much I want you.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
+          "Text": "{n}You ask whether she would rather close the tested passage and take the public road home now. Targona turns the key herself; the opening folds shut at the Drezen end.{/n}\n\"Yes. I would like to walk back while the evening is still quiet.\" {n}She smiles, a little ruefully.{/n} \"If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
           "Choices": [
             {
               "Text": "Walk with her to the road and say goodnight.",
@@ -56996,7 +56996,7 @@
         {
           "Id": "close_road",
           "Speaker": "Narrator",
-          "Text": "{n}You ask whether she would rather return to the wayhouse tonight. Targona says yes; she would like to walk back while the evening is still quiet.{/n}\n\"I am glad we met. I do not want to make staying longer a test of how much I want you.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
+          "Text": "{n}You ask whether she would rather return to the wayhouse tonight. Targona says yes; she would like to walk back while the evening is still quiet.{/n}\n\"I am glad we met.\" {n}She smiles, a little ruefully.{/n} \"If I stay, I will stay too long, and tomorrow there are wounded on the eastern road who deserve an angel who slept.\"\nYou tell her you are glad she came, and do not ask her to reconsider. She offers you her arm for the walk to the eastern road.",
           "Choices": [
             {
               "Text": "Walk with her to the road and say goodnight.",
@@ -57030,7 +57030,7 @@
         {
           "Id": "kiss",
           "Speaker": "Narrator",
-          "Text": "{n}You ask her again. Targona's reply is to draw you close by the front of your coat and kiss you with a certainty that makes the careful question worth asking.{/n}\nThe kiss is warm, unhurried, and unmistakably hers. Her thumb rests beneath your jaw. When she lets you breathe, she keeps her brow against yours.\n\"I have missed that,\" she says. \"I have missed wanting it without having to turn the want into evidence that I am well.\"\nYou tell her that you want her, including the wing she once wished she could regard without fear. You do not call it beautiful on her behalf. She searches your expression for the compliment you are trying not to force.\n\"You may desire me without making a sermon of it,\" she says. \"And I may enjoy being desired without promising you that I have made peace with everything I see in the mirror.\"\nHer palm slides to your chest, feeling the quickened beat beneath your clothes. She smiles at the proof of her effect.\n\"There. That is a much more useful response than another assurance.\"\nShe kisses you once more, then rests her forehead against your shoulder. For a little while neither of you has to explain what the evening means.\nWhen she draws back, she asks whether you will spend the night talking, kissing, or finding out how much of that armor she is willing to unfasten. She makes clear that any answer can change when either of you wants it to.",
+          "Text": "{n}Targona does not wait for you to ask twice. She takes the front of your coat in her fist and kisses you, hard and certain, the way she once told Areelu's barrier that she would bear whatever came.{/n}\n{n}Her thumb rests beneath your jaw. When she lets you breathe she keeps her brow against yours, and the black wing has come half open behind her without her noticing.{/n}\n\"I have missed that,\" she says. \"I have missed wanting something that nobody will write down afterwards as a symptom.\"\n{n}Your hand finds the edge of the wing. She goes very still, and then she does not pull away.{/n}\n\"Everyone is so careful with it. You are not being careful.\" {n}Her palm slides to your chest and finds your heart going like a drum.{/n} \"There. That is the truest thing anyone has said to me since the laboratory.\"\n{n}She kisses you once more, slower, and then looks past you at the lit windows of the barracks, and at the dark stair beside them, and back at you.{/n}\n\"Well. Talk, or kisses, or finding out how many buckles there are on this armour. Choose, Commander. I will tell you if you chose wrong.\"",
           "Choices": [
             {
               "Text": "Choose the quiet of conversation and another kiss.",
@@ -57068,7 +57068,7 @@
         {
           "Id": "continue",
           "Speaker": "Narrator",
-          "Text": "{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses a path along the battlements, where the view opens over the city.{/n}\n\"I am glad you did not treat the invitation as a contract,\" she says. \"I have spent enough of my life watching a decision become something other people believe they can collect from me.\"\nYou ask what she would like to do with the remaining hours.\n\"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss.\"\n\"That sounds like a plan.\"\n\"It is a proposal. Plans are what people make when they have already forgotten to ask me.\"\nHer smile makes the correction gentler, not less serious. She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.",
+          "Text": "{n}You tell her that a walk is enough. Targona leaves her fingers in your sleeve and chooses the battlements, where the city opens below and the watchfires on the eastern road show where the wounded are coming in.{/n}\n\"There,\" she says, pointing. \"That fire is the ford. They brought eleven across it this morning. I counted.\" {n}She is quiet for a moment.{/n} \"I have spent my whole life being useful. I am not sure I know how to be idle beside someone.\"\n\"Walk until I am tired. Then eat something sweet enough to be imprudent. Then decide whether I want another kiss. That is my plan, and I will not be argued out of it.\"\n{n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars. You listen as the night deepens around the places she chooses to name.{/n}",
           "Choices": [
             {
               "Text": "End the evening with affection and leave the next choice open.",
@@ -171025,7 +171025,7 @@
         {
           "Id": "estrod",
           "Speaker": "Narrator",
-          "Text": "{n}You remember an old man in the tower at Estrod, delighted to be asked: the Silver Twins, two angels who emerged from one soul. What else should they call themselves, he said, if not twins?{/n}\n{n}One soul. One death, already paid for under Kenabres.{/n}",
+          "Text": "{n}You remember an old man in the tower at Estrod, delighted to be asked: the Silver Twins, two angels who emerged from one soul. What else should they call themselves, he said, if not twins?{/n}\n{n}One soul. If the soul keeps the account, and not the body, then its one death is already paid for under Kenabres. If. Nobody has ever tried it. That is exactly the kind of door you like.{/n}",
           "Choices": [
             {
               "Text": "[Spend it again, quietly] \"One soul for two angels, and Lariel already paid. Whatever strikes you next will find nothing left to spend.\"",
@@ -171057,7 +171057,7 @@
         {
           "Id": "after",
           "Speaker": "Targona",
-          "Text": "{n}She stares at you through the barrier for a long moment. The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n}\n\"I do not understand you. I told you this was a test. I did not think the test would be you.\"\n{n}She lowers her head again, as she did before, and waits for you to choose.{/n}",
+          "Text": "{n}She stares at you through the barrier for a long moment. The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n}\n\"That is not how a soul works.\" {n}She says it at once, the way a healer says a wound is not as bad as it looks, and then she is quiet too long.{/n} \"Or I do not think it is. Nobody knows how ours works. There were only ever two of us to ask, and he is gone.\"\n\"I do not understand you. I told you this was a test. I did not think the test would be you.\"\n{n}She lowers her head again, as she did before, and waits for you to choose.{/n}",
           "Choices": [
             {
               "Text": "[Step back from the barrier.]",
@@ -171206,7 +171206,7 @@
         {
           "Id": "full",
           "Speaker": "Narrator",
-          "Text": "{n}The part of Lariel's sword that entered you in Kenabres is warm, and it is full. It was used. It was not spent.{/n}",
+          "Text": "{n}You did not know it would work. You had wagered that a soul keeps one account, and that Lariel had already settled it.{/n}\n{n}The part of Lariel's sword that entered you in Kenabres is warm, and it is full. It was used. It was not spent. But something else was: your hands are cold to the wrist, and they stay cold for a week, and the chaplain who takes your pulse at breakfast does not like what he finds.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171305,7 +171305,7 @@
         {
           "Id": "pikeman",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. And I remember that I should not be here.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. And I remember that I should not be here.\"\n{n}She looks at you for a long moment, the way she looks at a wound that has closed too quickly.{/n} \"The chaplains say the blow found nothing left to spend. I have thought about that every hour since I woke. I do not believe it was so simple. I think you paid for it somewhere you have not noticed yet, and I think Lariel would have been angry with you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -172435,8 +172435,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
