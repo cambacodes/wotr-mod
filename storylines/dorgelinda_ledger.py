@@ -135,17 +135,17 @@ office(HAND, "The bad hand", '"You\'re writin\' with one hand again."', [
     d("scar", '''{n}She looks at it for a long time, the way she looks at a dented helmet, working out what hit it and how hard and whether whoever wore it walked away.{/n}
 "That's a bad one. Somebody meant it." {n}She writes a line in your column, small. You can read it upside down: One scar, declared.{/n}
 "There. Now you're on the books properly. Everythin' else you drew was stores. That's the first thing you've given me that isn't."''',
-      c('"Is that how you court, Quartermaster? By inventory?"', "close", flags=(HAND_TOLD,))),
+      c('"You write everything down."', "close", flags=(HAND_TOLD,))),
     d("counting", '''"Still countin'." {n}She repeats it as if checking the weight.{/n}
 "That's an honest answer, and I hate it, 'cause I can't write it down. Tell you what. You count, I'll hold the column open, and when you've got a figure you bring it here." {n}She writes a line in your column: One loss, amount not yet known.{/n}
 "There. Now you're on the books properly. That's the first thing you've given me that isn't stores."''',
-      c('"Is that how you court, Quartermaster? By inventory?"', "close", flags=(HAND_TOLD,))),
+      c('"You write everything down."', "close", flags=(HAND_TOLD,))),
     d("flirt", '''{n}She looks at you with the one eye, from the top of your head to the edge of the desk, as thoroughly as she would a new consignment of cavalry saddles.{/n}
 "Harder than that?" {n}A pause.{/n} "Hammer and tongs, Commander. You've got the nerve of a Fellow with a full cart." {n}She writes a line in your column, very small, and turns the book so you cannot read it.{/n}
 "There. Now you're on the books properly. Don't ask what I wrote."''',
       c('"Is that how you court, Quartermaster? By inventory?"', "close", flags=(HAND_TOLD,))),
-    d("close", '''"Court?" {n}She snorts, and caps the ink, and for a moment the corner of her mouth goes somewhere it does not usually go.{/n}
-"I'm auditin' you. If you've mistook the two, that's your affair. Same time next week. Bring the boots back if you've still got 'em. There's a lad on the south wall with his toes out."''',
+    d("close", '''{n}She snorts, and caps the ink.{/n}
+"I'm auditin' you. If you've mistook it for somethin' else, that's your affair. Same time next week. Bring the boots back if you've still got 'em. There's a lad on the south wall with his toes out."''',
       c("[Leave her to the requisition.]")),
 ], requires=("trickster.ever", COUNTED), forbids=(HAND,), delay=24)
 
@@ -399,7 +399,8 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
 "Bolt the door." {n}Not an order. She does not give you orders. It is a line in a manifest, read aloud.{/n}''',
         c("[Bolt it.]", "bolted")),
     d("bolted", '''"Right." {n}She gets up and comes round the desk, and stops close enough that you can smell the lamp oil and wool and the good stuff that is on no manifest.{/n}
-"I've inventoried every inch of this fortress, Commander. Every crate, every nail, every horseshoe. I know what's in every barrel in Drezen." {n}Her eye moves over you, top to boot, slow.{/n} "Not you. Not yet. I've been doin' it by eye for weeks, and my eye's gettin' tired, and I've only got the one."''',
+{n}She does not say anything for a moment. Her good hand goes to the stack of requisitions on the corner of the desk and squares it, though it is already square, and then squares it again.{/n}
+"Hammer and tongs. I've not done this in..." {n}She stops, and does not finish the sum.{/n} "Long enough I've forgotten where the buckles go. You'll have to show me. Slowly. I've only the one hand, and it's shakin'."''',
       c("[Take off your coat. Let her count.]", "coat"),
       c("[Reach for the strap of her eye patch.]", "patch"),
       c('"Well? Are you going to count, or just look?"', "count")),
@@ -408,9 +409,10 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
 "That, you can have."''',
       c("Continue", "count")),
     d("coat", '''{n}You take off your coat and let it fall across her desk, on top of the ledger. She does not look at the ledger once.{/n}
-"One coat. Officer's pattern. Mended at the left elbow, badly." {n}She lays her good hand flat on your chest, over the shirt, the way she lays it on a page to hold it still.{/n} "One shirt. Mine, as it happens, I issued it. One heart, beatin' faster than regulation."''',
+{n}She lays her good hand flat on your chest, over the shirt, and leaves it there, feeling your heart go.{/n}
+"Oh," {n}she says, quite quietly, as if somebody had told her a figure she did not expect.{/n} "That's fast. Is that me?"''',
       c("Continue", "count")),
-    d("count", '''{n}She counts you. She does it the way she does everything: aloud, thoroughly, without hurry, with one hand. Buttons, one by one. The buckle. Your belt, which she lays across the desk like a ledger line. Each scar she finds she names, the old ones and the new, and asks nothing about any of them.{/n}
+    d("count", '''{n}She undoes you with one hand, slowly at first and then not slowly at all, and swears at a stuck button, and wins. Every scar she finds she touches, the old ones and the new, and asks nothing about any of them. Her breathing has gone ragged. So has yours.{/n}
 {n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates since before you were born. She watches your face while you find them, and does not look away.{/n}''',
       c("[Tell her she's beautiful.]", "tell"),
       c('[Say nothing. Show her.]', "show")),
@@ -420,8 +422,8 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
     d("show", '''{n}You show her. She lets you, for a while, standing, the edge of the desk behind her, her good hand fisted in your shirt as if it were the last rope on a sinking wagon.{/n}
 "Hammer and tongs," {n}she breathes, not quite steady, and pulls.{/n}''',
       c("Continue", "threshold")),
-    nar("threshold", '''{n}The ledger goes on the floor. She does not stop to pick it up. The bed in her rooms behind the stores is narrow and regulation and has never been meant for two, and she swears at it in Dwarven, fondly, the way she swears at a cart that will get there in the end. Her boots come off, and yours, and she drops them side by side, heel to heel, because she is who she is.{/n}
-{n}Then she pulls you down onto the rough wool, and her dead hand lies on your back like a weight she has decided to let you carry, and the good one does not let go at all.{/n}''',
+    nar("threshold", '''{n}Her elbow knocks the ledger off the desk. She lets it lie. The bed in her rooms behind the stores is narrow and regulation and has never been meant for two, and she swears at it in Dwarven, fondly, the way she swears at a cart that will get there in the end. Her boots come off, and yours, and she drops them side by side, heel to heel, because she is who she is.{/n}
+{n}Then she pulls you down onto the rough wool, and her withered hand lies on your back like a weight she has decided to let you carry, and the good one does not let go at all.{/n}''',
         c("[The lamp gutters out.]", flags=(NIGHT_KEPT,))),
 ], requires=("trickster.ever", COMMITTED), forbids=(NIGHT,), delay=12, chapters=(5,))
 
@@ -430,14 +432,15 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
 
 office(MORNING, "The morning count", '"Mornin\'."', [
     nar("start", '''{n}You wake to the scratch of a pen. She is sitting on the edge of the cot, fully dressed, boots laced, the ledger on her knee. It is barely light. Beyond the shutters a supply wagon is being shouted into the yard.{/n}
-{n}She is writing a line in your column. You can read it from the pillow: One night. Used, quietly.{/n}''',
-        c('"You\'re putting that in the book?"', "book"),
+{n}She is not writing. She is staring at the page with the pen in her hand, and she looks, for the first time since you have known her, entirely thrown.{/n}''',
+        c('"What\'s wrong?"', "book"),
         c("[Pull her back down.]", "back")),
     d("back", '''{n}She lets you, for exactly as long as it takes to kiss her, and then she is back on the edge of the cot with the ledger, and a hand flat on your chest to keep you where you are.{/n}
 "Wagons, Commander. They don't unload themselves. They'd like to. I've seen 'em try." {n}She finishes the line.{/n}''',
-      c('"You\'re putting last night in the book?"', "book")),
-    d("book", '''"Everythin' goes in the book." {n}She blots it.{/n} "It's in code, if that eases your mind. My clerks can't read my code. Nobody can but me. The day I die, somebody in Nerosyan'll open this and find a line that says 'one night' next to your name and think it's the siege of somewhere."
-{n}She closes the book.{/n} "Which it was, in a manner of speakin'."''',
+      c('"What\'s wrong?"', "book")),
+    d("book", '''"I missed the dawn count." {n}She says it the way another woman might say she had lost a tooth.{/n}
+"Eleven years. I've not missed a dawn count in eleven years. Not for wounds, not for fever, not the week after Kenabres." {n}She shuts the ledger.{/n} "The sergeant ran it. He'll have run it wrong. There'll be a wagon of flour in the powder store and powder in the kitchen by noon."
+{n}She looks at you, and something in her face gives, and she laughs, short and helpless, into her hand.{/n} "Worth it. Don't you dare tell him I said so."''',
       c("Continue", "sergeant")),
     d("sergeant", '''{n}Somebody knocks. She does not move.{/n}
 "Ma'am?" {n}The sergeant with the bandaged ear, through the door.{/n} "Ma'am, the Commander's boots are in the office. One of 'em. Under the desk. Should I send 'em up to the citadel?"
@@ -543,7 +546,7 @@ office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
 "Well, that's in the book now," she says, rather hoarsely. "And theirs." {n}She climbs up onto the wagon seat.{/n} "Come back and sign the receipt, Commander. I'll not ask twice."''',
       c("Continue", "end")),
     d("salute", '''{n}You salute her, properly, heel to heel, the way the ranks salute her and nobody above the rank of sergeant ever has.{/n}
-{n}She stares. Then she returns it, with the bad hand, as she always does, slowly, so that you can see the dead fingers held to her brow by nothing but the arm beneath them.{/n}
+{n}She stares. Then she returns it, with the bad hand, as she always does, slowly, so that you can see the withered fingers held to her brow by nothing but the arm beneath them.{/n}
 "Commander." {n}Her voice does not waver.{/n} "Come back and sign the receipt." {n}She climbs up onto the wagon seat.{/n}''',
       c("Continue", "end")),
     nar("end", '''{n}The wagon lurches. She takes the reins in her good hand. As it rolls toward the gate she opens the ledger on her knee, one-handed, against the jolt, and writes a line without looking at the page.{/n}
@@ -1038,18 +1041,20 @@ office(OTHERS, "Other columns", '"You\'re quiet today."', [
     d("sign", '''"The one you sign for." {n}She snorts, but her ears have gone faintly red.{/n}
 "You sign for everythin'. You signed for a vrock." {n}She turns the grey book over in her good hand.{/n} "But you've never once lied to me about what's in your column. You lie about everythin' else. Not that."''',
       c("Continue", "terms")),
-    d("terms", '''"So here's my terms, since you're a Commander who likes terms." {n}She holds up the good hand, and counts on the fingers.{/n}
-"One. Nobody draws on my stores on your seal but you. Not a lover, not a friend, not a Fellow of the Crusade. Two. When you come to my office, you come for me or you come for the stores, and you tell me which at the door. Three." {n}She stops, the third finger half raised.{/n}
-"Three, I'll think of later. I'm savin' it."''',
-      c('"Agreed. All three, including the one you haven\'t thought of."', "agreed"),
-      c('[Flirt] "What if I come for both?"', "both")),
-    d("agreed", '''"Including the one I haven't thought of." {n}She stares at you.{/n} "You'd sign a blank line. Of course you would." {n}She takes the grey ledger and, very deliberately, tears the page with the east wall's wagers out of it, and feeds it into the lamp.{/n}
-"There. Accounts closed. The sentries can find somethin' else to bet on. The weather, or the war." {n}She sits back.{/n} "Now come here. I've thought of three."''',
-      c("[Come here.]", flags=(L + "terms_kept",))),
-    d("both", '''"Both." {n}She considers it gravely, as a point of procedure.{/n}
-"Then you'll tell me at the door which you've come for first, and I'll decide which gets done first, and it won't be the stores." {n}She tears the page with the east wall's wagers out of the grey ledger, very deliberately, and feeds it into the lamp.{/n}
-"There. Accounts closed. The sentries can bet on the weather." {n}Her eye glints.{/n} "Now shut the door. I've thought of three."''',
-      c("[Shut the door.]", flags=(L + "terms_kept",))),
+    d("terms", '''"Before I say yes or no to anythin', I want the names." {n}She opens the grey ledger at a clean page and holds the pen over it.{/n}
+"Not for the book. For me. I'll not share with somebody I can't picture, Commander. I'll not be one line among lines I've never read."''',
+      c("[Name them, one by one, and what each of them is to you.]", "named"),
+      c('"Does it matter who?"', "narrow")),
+    d("named", '''{n}You name them. She writes nothing. She listens to each name with the whole of her attention, the way she listens to a carter explain a shortfall, and once or twice she nods, and once her jaw sets and stays set.{/n}
+"Right." {n}She closes the grey ledger.{/n} "Here's what I'll have, then. Nobody draws on my stores on your seal but you. None of 'em sets foot in my rooms, ever. And you hear it from me first if one of 'em crosses me, and I hear it from you first if you ever mean to choose." {n}She holds out her good hand.{/n} "Those are my terms. Shake on 'em or don't."''',
+      c("[Shake on them.]", "shaken")),
+    d("shaken", '''{n}Her grip is exactly as its name promised. She holds on a moment past the shake.{/n}
+"Done." {n}She takes the grey ledger and, very deliberately, tears the page with the east wall's wagers out of it and feeds it into the lamp.{/n} "The sentries can bet on the weather."''',
+      c("[Stay.]", flags=(L + "terms_kept",))),
+    d("narrow", '''"It matters to me." {n}She puts the pen down.{/n}
+"You'll not tell me, then here's what you get. I'm your quartermaster, and I'm yours on the nights I say, in my rooms, and that's all. No mornings. No tellin' me what worries you. I'll not hand more of myself to a column I'm not allowed to read." {n}She closes the grey ledger.{/n}
+"That's not a no, Commander. It's a smaller yes. You made it smaller."''',
+      c("[Accept it.]", flags=(L + "narrowed",))),
 ], requires=("trickster.ever", NIGHT), forbids=(OTHERS,), delay=24, chapters=(5,))
 
 
@@ -1298,6 +1303,7 @@ SCENES.append(scene(P + "epilogue.after_the_war", "", "DorgelindaEpilogue", 6, "
             p("{n}The Commander had signed for an after, in a cold storeroom, among other people's cloaks. She held the Commander to it. She had a grip, as everyone knew.{/n}", requires=(L + "signed_after",)),
             p("{n}Every pair of boots the Commander wore from then on came from the same shelf, and fitted, and was entered in her book.{/n}", requires=(L + "fitted",)),
             p("{n}Twelve soldiers from a plague ward in Drezen outlived the war. None of them ever learned whose column their potions were written in.{/n}", requires=(L + "ward_seen",)),
+            p("{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}", requires=(L + "narrowed",)),
             p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=(L + "unblessed",)),
             p("{n}They quarrelled, now and then, about irregular accounting. She told the Commander first when she was angry, and the Commander told her first when there was a lie to carry. It was, the sergeant said, the best-run household in Mendev.{/n}", requires=(L + "quarrel_mended",)),
         ))],

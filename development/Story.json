@@ -177473,7 +177473,7 @@
           "Text": "{n}She looks at it for a long time, the way she looks at a dented helmet, working out what hit it and how hard and whether whoever wore it walked away.{/n}\n\"That's a bad one. Somebody meant it.\" {n}She writes a line in your column, small. You can read it upside down: One scar, declared.{/n}\n\"There. Now you're on the books properly. Everythin' else you drew was stores. That's the first thing you've given me that isn't.\"",
           "Choices": [
             {
-              "Text": "\"Is that how you court, Quartermaster? By inventory?\"",
+              "Text": "\"You write everything down.\"",
               "Next": "close",
               "Set": [
                 "dorgelinda.ledger.hand_told"
@@ -177491,7 +177491,7 @@
           "Text": "\"Still countin'.\" {n}She repeats it as if checking the weight.{/n}\n\"That's an honest answer, and I hate it, 'cause I can't write it down. Tell you what. You count, I'll hold the column open, and when you've got a figure you bring it here.\" {n}She writes a line in your column: One loss, amount not yet known.{/n}\n\"There. Now you're on the books properly. That's the first thing you've given me that isn't stores.\"",
           "Choices": [
             {
-              "Text": "\"Is that how you court, Quartermaster? By inventory?\"",
+              "Text": "\"You write everything down.\"",
               "Next": "close",
               "Set": [
                 "dorgelinda.ledger.hand_told"
@@ -177524,7 +177524,7 @@
         {
           "Id": "close",
           "Speaker": "Dorgelinda",
-          "Text": "\"Court?\" {n}She snorts, and caps the ink, and for a moment the corner of her mouth goes somewhere it does not usually go.{/n}\n\"I'm auditin' you. If you've mistook the two, that's your affair. Same time next week. Bring the boots back if you've still got 'em. There's a lad on the south wall with his toes out.\"",
+          "Text": "{n}She snorts, and caps the ink.{/n}\n\"I'm auditin' you. If you've mistook it for somethin' else, that's your affair. Same time next week. Bring the boots back if you've still got 'em. There's a lad on the south wall with his toes out.\"",
           "Choices": [
             {
               "Text": "[Leave her to the requisition.]",
@@ -178904,7 +178904,7 @@
         {
           "Id": "bolted",
           "Speaker": "Dorgelinda",
-          "Text": "\"Right.\" {n}She gets up and comes round the desk, and stops close enough that you can smell the lamp oil and wool and the good stuff that is on no manifest.{/n}\n\"I've inventoried every inch of this fortress, Commander. Every crate, every nail, every horseshoe. I know what's in every barrel in Drezen.\" {n}Her eye moves over you, top to boot, slow.{/n} \"Not you. Not yet. I've been doin' it by eye for weeks, and my eye's gettin' tired, and I've only got the one.\"",
+          "Text": "\"Right.\" {n}She gets up and comes round the desk, and stops close enough that you can smell the lamp oil and wool and the good stuff that is on no manifest.{/n}\n{n}She does not say anything for a moment. Her good hand goes to the stack of requisitions on the corner of the desk and squares it, though it is already square, and then squares it again.{/n}\n\"Hammer and tongs. I've not done this in...\" {n}She stops, and does not finish the sum.{/n} \"Long enough I've forgotten where the buckles go. You'll have to show me. Slowly. I've only the one hand, and it's shakin'.\"",
           "Choices": [
             {
               "Text": "[Take off your coat. Let her count.]",
@@ -178952,7 +178952,7 @@
         {
           "Id": "coat",
           "Speaker": "Dorgelinda",
-          "Text": "{n}You take off your coat and let it fall across her desk, on top of the ledger. She does not look at the ledger once.{/n}\n\"One coat. Officer's pattern. Mended at the left elbow, badly.\" {n}She lays her good hand flat on your chest, over the shirt, the way she lays it on a page to hold it still.{/n} \"One shirt. Mine, as it happens, I issued it. One heart, beatin' faster than regulation.\"",
+          "Text": "{n}You take off your coat and let it fall across her desk, on top of the ledger. She does not look at the ledger once.{/n}\n{n}She lays her good hand flat on your chest, over the shirt, and leaves it there, feeling your heart go.{/n}\n\"Oh,\" {n}she says, quite quietly, as if somebody had told her a figure she did not expect.{/n} \"That's fast. Is that me?\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -178968,7 +178968,7 @@
         {
           "Id": "count",
           "Speaker": "Dorgelinda",
-          "Text": "{n}She counts you. She does it the way she does everything: aloud, thoroughly, without hurry, with one hand. Buttons, one by one. The buckle. Your belt, which she lays across the desk like a ledger line. Each scar she finds she names, the old ones and the new, and asks nothing about any of them.{/n}\n{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates since before you were born. She watches your face while you find them, and does not look away.{/n}",
+          "Text": "{n}She undoes you with one hand, slowly at first and then not slowly at all, and swears at a stuck button, and wins. Every scar she finds she touches, the old ones and the new, and asks nothing about any of them. Her breathing has gone ragged. So has yours.{/n}\n{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates since before you were born. She watches your face while you find them, and does not look away.{/n}",
           "Choices": [
             {
               "Text": "[Tell her she's beautiful.]",
@@ -179024,7 +179024,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}The ledger goes on the floor. She does not stop to pick it up. The bed in her rooms behind the stores is narrow and regulation and has never been meant for two, and she swears at it in Dwarven, fondly, the way she swears at a cart that will get there in the end. Her boots come off, and yours, and she drops them side by side, heel to heel, because she is who she is.{/n}\n{n}Then she pulls you down onto the rough wool, and her dead hand lies on your back like a weight she has decided to let you carry, and the good one does not let go at all.{/n}",
+          "Text": "{n}Her elbow knocks the ledger off the desk. She lets it lie. The bed in her rooms behind the stores is narrow and regulation and has never been meant for two, and she swears at it in Dwarven, fondly, the way she swears at a cart that will get there in the end. Her boots come off, and yours, and she drops them side by side, heel to heel, because she is who she is.{/n}\n{n}Then she pulls you down onto the rough wool, and her withered hand lies on your back like a weight she has decided to let you carry, and the good one does not let go at all.{/n}",
           "Choices": [
             {
               "Text": "[The lamp gutters out.]",
@@ -179073,10 +179073,10 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You wake to the scratch of a pen. She is sitting on the edge of the cot, fully dressed, boots laced, the ledger on her knee. It is barely light. Beyond the shutters a supply wagon is being shouted into the yard.{/n}\n{n}She is writing a line in your column. You can read it from the pillow: One night. Used, quietly.{/n}",
+          "Text": "{n}You wake to the scratch of a pen. She is sitting on the edge of the cot, fully dressed, boots laced, the ledger on her knee. It is barely light. Beyond the shutters a supply wagon is being shouted into the yard.{/n}\n{n}She is not writing. She is staring at the page with the pen in her hand, and she looks, for the first time since you have known her, entirely thrown.{/n}",
           "Choices": [
             {
-              "Text": "\"You're putting that in the book?\"",
+              "Text": "\"What's wrong?\"",
               "Next": "book",
               "Set": [],
               "Requires": [],
@@ -179100,7 +179100,7 @@
           "Text": "{n}She lets you, for exactly as long as it takes to kiss her, and then she is back on the edge of the cot with the ledger, and a hand flat on your chest to keep you where you are.{/n}\n\"Wagons, Commander. They don't unload themselves. They'd like to. I've seen 'em try.\" {n}She finishes the line.{/n}",
           "Choices": [
             {
-              "Text": "\"You're putting last night in the book?\"",
+              "Text": "\"What's wrong?\"",
               "Next": "book",
               "Set": [],
               "Requires": [],
@@ -179113,7 +179113,7 @@
         {
           "Id": "book",
           "Speaker": "Dorgelinda",
-          "Text": "\"Everythin' goes in the book.\" {n}She blots it.{/n} \"It's in code, if that eases your mind. My clerks can't read my code. Nobody can but me. The day I die, somebody in Nerosyan'll open this and find a line that says 'one night' next to your name and think it's the siege of somewhere.\"\n{n}She closes the book.{/n} \"Which it was, in a manner of speakin'.\"",
+          "Text": "\"I missed the dawn count.\" {n}She says it the way another woman might say she had lost a tooth.{/n}\n\"Eleven years. I've not missed a dawn count in eleven years. Not for wounds, not for fever, not the week after Kenabres.\" {n}She shuts the ledger.{/n} \"The sergeant ran it. He'll have run it wrong. There'll be a wagon of flour in the powder store and powder in the kitchen by noon.\"\n{n}She looks at you, and something in her face gives, and she laughs, short and helpless, into her hand.{/n} \"Worth it. Don't you dare tell him I said so.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -179697,7 +179697,7 @@
         {
           "Id": "salute",
           "Speaker": "Dorgelinda",
-          "Text": "{n}You salute her, properly, heel to heel, the way the ranks salute her and nobody above the rank of sergeant ever has.{/n}\n{n}She stares. Then she returns it, with the bad hand, as she always does, slowly, so that you can see the dead fingers held to her brow by nothing but the arm beneath them.{/n}\n\"Commander.\" {n}Her voice does not waver.{/n} \"Come back and sign the receipt.\" {n}She climbs up onto the wagon seat.{/n}",
+          "Text": "{n}You salute her, properly, heel to heel, the way the ranks salute her and nobody above the rank of sergeant ever has.{/n}\n{n}She stares. Then she returns it, with the bad hand, as she always does, slowly, so that you can see the withered fingers held to her brow by nothing but the arm beneath them.{/n}\n\"Commander.\" {n}Her voice does not waver.{/n} \"Come back and sign the receipt.\" {n}She climbs up onto the wagon seat.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -182422,19 +182422,19 @@
         {
           "Id": "terms",
           "Speaker": "Dorgelinda",
-          "Text": "\"So here's my terms, since you're a Commander who likes terms.\" {n}She holds up the good hand, and counts on the fingers.{/n}\n\"One. Nobody draws on my stores on your seal but you. Not a lover, not a friend, not a Fellow of the Crusade. Two. When you come to my office, you come for me or you come for the stores, and you tell me which at the door. Three.\" {n}She stops, the third finger half raised.{/n}\n\"Three, I'll think of later. I'm savin' it.\"",
+          "Text": "\"Before I say yes or no to anythin', I want the names.\" {n}She opens the grey ledger at a clean page and holds the pen over it.{/n}\n\"Not for the book. For me. I'll not share with somebody I can't picture, Commander. I'll not be one line among lines I've never read.\"",
           "Choices": [
             {
-              "Text": "\"Agreed. All three, including the one you haven't thought of.\"",
-              "Next": "agreed",
+              "Text": "[Name them, one by one, and what each of them is to you.]",
+              "Next": "named",
               "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
             },
             {
-              "Text": "[Flirt] \"What if I come for both?\"",
-              "Next": "both",
+              "Text": "\"Does it matter who?\"",
+              "Next": "narrow",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -182444,12 +182444,28 @@
           "Portrait": "Dorgelinda"
         },
         {
-          "Id": "agreed",
+          "Id": "named",
           "Speaker": "Dorgelinda",
-          "Text": "\"Including the one I haven't thought of.\" {n}She stares at you.{/n} \"You'd sign a blank line. Of course you would.\" {n}She takes the grey ledger and, very deliberately, tears the page with the east wall's wagers out of it, and feeds it into the lamp.{/n}\n\"There. Accounts closed. The sentries can find somethin' else to bet on. The weather, or the war.\" {n}She sits back.{/n} \"Now come here. I've thought of three.\"",
+          "Text": "{n}You name them. She writes nothing. She listens to each name with the whole of her attention, the way she listens to a carter explain a shortfall, and once or twice she nods, and once her jaw sets and stays set.{/n}\n\"Right.\" {n}She closes the grey ledger.{/n} \"Here's what I'll have, then. Nobody draws on my stores on your seal but you. None of 'em sets foot in my rooms, ever. And you hear it from me first if one of 'em crosses me, and I hear it from you first if you ever mean to choose.\" {n}She holds out her good hand.{/n} \"Those are my terms. Shake on 'em or don't.\"",
           "Choices": [
             {
-              "Text": "[Come here.]",
+              "Text": "[Shake on them.]",
+              "Next": "shaken",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Dorgelinda"
+        },
+        {
+          "Id": "shaken",
+          "Speaker": "Dorgelinda",
+          "Text": "{n}Her grip is exactly as its name promised. She holds on a moment past the shake.{/n}\n\"Done.\" {n}She takes the grey ledger and, very deliberately, tears the page with the east wall's wagers out of it and feeds it into the lamp.{/n} \"The sentries can bet on the weather.\"",
+          "Choices": [
+            {
+              "Text": "[Stay.]",
               "Next": null,
               "Set": [
                 "dorgelinda.ledger.terms_kept"
@@ -182462,15 +182478,15 @@
           "Portrait": "Dorgelinda"
         },
         {
-          "Id": "both",
+          "Id": "narrow",
           "Speaker": "Dorgelinda",
-          "Text": "\"Both.\" {n}She considers it gravely, as a point of procedure.{/n}\n\"Then you'll tell me at the door which you've come for first, and I'll decide which gets done first, and it won't be the stores.\" {n}She tears the page with the east wall's wagers out of the grey ledger, very deliberately, and feeds it into the lamp.{/n}\n\"There. Accounts closed. The sentries can bet on the weather.\" {n}Her eye glints.{/n} \"Now shut the door. I've thought of three.\"",
+          "Text": "\"It matters to me.\" {n}She puts the pen down.{/n}\n\"You'll not tell me, then here's what you get. I'm your quartermaster, and I'm yours on the nights I say, in my rooms, and that's all. No mornings. No tellin' me what worries you. I'll not hand more of myself to a column I'm not allowed to read.\" {n}She closes the grey ledger.{/n}\n\"That's not a no, Commander. It's a smaller yes. You made it smaller.\"",
           "Choices": [
             {
-              "Text": "[Shut the door.]",
+              "Text": "[Accept it.]",
               "Next": null,
               "Set": [
-                "dorgelinda.ledger.terms_kept"
+                "dorgelinda.ledger.narrowed"
               ],
               "Requires": [],
               "Forbids": [],
@@ -183775,6 +183791,14 @@
               "Text": "{n}Twelve soldiers from a plague ward in Drezen outlived the war. None of them ever learned whose column their potions were written in.{/n}",
               "Requires": [
                 "dorgelinda.ledger.ward_seen"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}",
+              "Requires": [
+                "dorgelinda.ledger.narrowed"
               ],
               "Forbids": [],
               "AnyGroups": []

@@ -303,7 +303,7 @@ internal static class DorgelindaTricksterTests
         // there, on the node's only choice; nothing past the start of the act is narrated.
         var threshold = night.Nodes.Single(n => n.Id == "threshold");
         check(threshold.Text.Contains("pulls you down") && threshold.Text.Contains("boots come off")
-              && night.Nodes.Single(n => n.Id == "count").Text.Contains("counts you"),
+              && night.Nodes.Single(n => n.Id == "count").Text.Contains("undoes you"),
             "The night fades before the approach (Directive 12: staging and initiating motion required).");
         check(threshold.Choices.Count == 1 && threshold.Choices[0].Next == null && threshold.Choices[0].Text.Contains("lamp gutters"),
             "The cut does not land on the threshold.");
@@ -324,7 +324,7 @@ internal static class DorgelindaTricksterTests
         // a lie her hard no (the key back, the line ruled off) with its own page.
         var others = S(L + "other_columns");
         var columns = Play(others, Later(story, mornings.First(), 24));
-        check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed"))
+        check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed")) && columns.Any(r => r.Has(L + "narrowed") && !r.Has("dorgelinda.closed"))
               && columns.Any(r => r.Has("dorgelinda.closed")), "Her answer to the other columns is not a real choice.");
         check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster.ever", "dorgelinda.committed", "dorgelinda.closed"))
               && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster.ever", "dorgelinda.committed", "dorgelinda.closed")),
