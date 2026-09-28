@@ -195753,8 +195753,7 @@
         "council.fought_nocta_allied": "eritrice.trickster.returned",
         "sacrifice": "trickster.cheated_death"
       },
-      "Relationship": "eritrice",
-      "EpilogueAfter": "b2fd1f720322d6749b921cdd34328c3a"
+      "Relationship": "eritrice"
     },
     {
       "Id": "eritrice.trickster.epilogue.declined",
@@ -195797,8 +195796,7 @@
         "council.fought": "eritrice.trickster.returned",
         "council.fought_nocta_allied": "eritrice.trickster.returned"
       },
-      "Relationship": "eritrice",
-      "EpilogueAfter": "b2fd1f720322d6749b921cdd34328c3a"
+      "Relationship": "eritrice"
     },
     {
       "Id": "eritrice.trickster.epilogue.we_did_meet",
@@ -196039,8 +196037,7 @@
         "council.fought_nocta_allied": "eritrice.trickster.returned",
         "sacrifice": "trickster.cheated_death"
       },
-      "Relationship": "eritrice",
-      "EpilogueAfter": "b2fd1f720322d6749b921cdd34328c3a"
+      "Relationship": "eritrice"
     },
     {
       "Id": "eritrice.trickster.react.chadali_motion",
