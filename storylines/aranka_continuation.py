@@ -604,7 +604,9 @@ s("the_next_verse", "The next verse", '\"I wanted to ask how the story traveled.
 {n}She looks at you with the same bright directness she brings to a new melody.{/n}
 "And you? Are you willing to let me leave a story unfinished when it would be more convenient for you to have an ending?"''',
         c('[Ask what practical promise would answer her question.]', "boundary")),
-    n("boundary", "Aranka", '''"You can be attentive. You can also make the world rearrange itself around your plans. I like your nerve. I don't want to discover that being loved by you means my choices have become part of your legend."
+    n("boundary", "Aranka", '''"You listen beautifully. You also make the world rearrange itself around you, and I adore the nerve of it. But I have watched what happens to a song that stands too near a legend. People stop singing it and start singing about it."
+{n}She taps the folded sheet at her belt.{/n}
+"So. My name goes above this one. I decide where it travels and who sings it next. If I ever hear it in a hall I never chose, with your name ahead of mine, I will stop singing it, and I will not tell you why. Can you live beside that?"
 {n}She waits for you to answer instead of softening the question with a kiss.{/n}''',
         c('"If you object, I will stop and listen before defending myself."', "listen"),
         c('"I want a life with you. I will make room for your work and your road."', "life"),
