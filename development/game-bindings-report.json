@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-vellexia\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1449,
-  "unique_targets": 344,
+  "binding_uses": 1487,
+  "unique_targets": 358,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -28,6 +28,10 @@
     },
     "15f754455d1d87c42a4e14df456d5415": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/BlacksmithCapitalTrader.jbp",
+      "type": "BlueprintUnit"
+    },
+    "0f12118177d102f428a3b30b15b132eb": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Fye_Bartender.jbp",
       "type": "BlueprintUnit"
     },
     "280d4712dceb37f4a88e98f1f4c6e64f": {
@@ -262,6 +266,18 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0079.jbp",
       "type": "BlueprintCue"
     },
+    "58d69774dbe696e46a9232167e8d3479": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0098.jbp",
+      "type": "BlueprintCue"
+    },
+    "0f556aee8754497449c4a371281c13ef": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0132.jbp",
+      "type": "BlueprintCue"
+    },
+    "e3f0b327f22b2734e9fbce52b150cded": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0136.jbp",
+      "type": "BlueprintCue"
+    },
     "06184e4f0a65650488e36600d8274d26": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/AnswersList_0005.jbp",
       "type": "BlueprintAnswersList"
@@ -358,12 +374,20 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0030.jbp",
       "type": "BlueprintAnswersList"
     },
+    "4d978cbd2aa780d46874255282039f3f": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Daeran/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "f2a35965e9bc601449498bd022b04d9d": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "fd8276a6302f4d44583eba3f0b9663bf": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0126.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "615ef80243cfc184ba42286395880b0e": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Finnean/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "2366a8db6481070439fee222c0c52e45": {
@@ -414,13 +438,29 @@
       "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0197.jbp",
       "type": "BlueprintCue"
     },
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": {
+      "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "34a0d078b4ac51547a8f5e0e1c8e1e2c": {
+      "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0880.jbp",
+      "type": "BlueprintCue"
+    },
     "ecaf5cfe8087a4f45a2269974f4885c9": {
       "path": "World/Dialogs/NPC_Common/VendorArsinoe/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3c58e83a970a0f643a88e15f2323c805": {
+      "path": "World/Dialogs/NPC_Common/Vendor_Quartermaster/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "8c8b748a66ebad84f9b4cbcd73c2aab9": {
       "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/KyadoDead.jbp",
       "type": "BlueprintUnlockableFlag"
+    },
+    "96ca61bbf4a54228be37a4a95fa0704d": {
+      "path": "World/Etudes/Common/DLC1_Megaepic/DLC1_Threshold_Outdoor/DLC1_StorytellerDead.jbp",
+      "type": "BlueprintEtude"
     },
     "ba365d0ae03c414a8f6f906837a4fe91": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaDead.jbp",
@@ -538,6 +578,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiaKilled.jbp",
       "type": "BlueprintEtude"
     },
+    "89965a2b67b792f438bf935fdb6ab96b": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/VellexiasSlavesFreed.jbp",
+      "type": "BlueprintEtude"
+    },
     "eef93f5400704a0fa3e4820cc62282b3": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/Vellexia_FightBeforeThirdDate.jbp",
       "type": "BlueprintEtude"
@@ -588,6 +632,14 @@
     },
     "cf3639c5cf057034fa766dd5f421d2ed": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/CamelliaCompanion/CamelliaStates/CamelliaState_Killed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "4bb966e7df502394cba4b650a54ce92f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/DaeranCompanion/DaeranNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3944d299c18b7174bb2d6820aa5dc336": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/DaeranCompanion/DaeranNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
     "3a708ad53771a2d44ac506361fb7aafc": {
@@ -716,6 +768,10 @@
     },
     "148423f1d35917946a5ebeeb4f19246c": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3c1405201bec99f4db67371f41a3c32a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Storyteller/StorytellerDead.jbp",
       "type": "BlueprintEtude"
     },
     "1aaee57d670b0494e9d8662bffbf4f6a": {
