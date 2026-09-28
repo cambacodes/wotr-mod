@@ -170981,52 +170981,11 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Behind the barrier the angel lifts her head. The black wing twitches, as if something in the room has startled it.{/n}\n\"You... carry something of my brother. I can feel it, like a lamp left burning in another room. How? Lariel is gone. I felt him go.\"\n{n}Along the walls of this laboratory stand Areelu's vessels, the kind she told you about, made to hold a soul wrested out of its body. Under Kenabres, Lariel did the same thing with less: before he died he sealed a shred of his memories and his sword into a rock, and it waited for you. What is in your chest now is that shred.{/n}",
+          "Text": "{n}Behind the barrier the angel lifts her head. The black wing twitches, as if something in the room has startled it.{/n}\n\"You... carry something of my brother. I can feel it, like a lamp left burning in another room. Under Kenabres, in the rock where he died. It went into you.\" {n}Her voice does not break, but it thins.{/n} \"Lariel is gone. I felt him go.\"",
           "Choices": [
             {
-              "Text": "[Spend it again, quietly] \"One soul for two angels, and Lariel already paid. Whatever strikes you next will find nothing left to spend.\"",
-              "Next": "seal",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [
-                "targona.heard_twins"
-              ],
-              "Abort": false,
-              "Mythic": "PlayerIsTrickster",
-              "Alignment": {
-                "Direction": "Chaotic",
-                "Value": 1
-              }
-            },
-            {
-              "Text": "Continue",
-              "Next": "estrod",
-              "Set": [],
-              "Requires": [
-                "targona.heard_twins"
-              ],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "\"Nothing. Forget I spoke.\"",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": true
-            }
-          ],
-          "Portrait": "Targona"
-        },
-        {
-          "Id": "estrod",
-          "Speaker": "Narrator",
-          "Text": "{n}You remember an old man in the tower at Estrod, delighted to be asked: the Silver Twins, two angels who emerged from one soul. What else should they call themselves, he said, if not twins?{/n}\n{n}One soul made two angels. Lariel's shred of it is in your chest, and there is room beside it.{/n}",
-          "Choices": [
-            {
-              "Text": "[Spend it again, quietly] \"One soul for two angels, and Lariel already paid. Whatever strikes you next will find nothing left to spend.\"",
-              "Next": "seal",
+              "Text": "[Spend it again, quietly] \"Whatever strikes you in this room, I'll take it back before anyone sees it was spent.\"",
+              "Next": "scroll",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -171049,9 +171008,9 @@
           "Portrait": "Targona"
         },
         {
-          "Id": "seal",
+          "Id": "scroll",
           "Speaker": "Narrator",
-          "Text": "{n}You put your palm flat against the barrier over her heart, and your other hand over your own, where the light is. You use it the way you have learned to use a wand: so lightly that the use goes unnoticed, and nothing is drawn down.{/n}\n{n}Areelu's wards do not stir. The vessels along the wall do not stir. Something small and bright crosses the barrier the way warmth crosses glass, and settles in your chest beside what Lariel left there. Her eyes go wide.{/n}\n{n}And then, faintly, from inside your own ribs, you hear her. Not her voice through the barrier: the same words a heartbeat later, from the shred, as if it were still listening for her. You remember the caves under Kenabres. Lariel's sealed shred had waited in the rock long after his body was gone, and when you let it go it woke whole, memory and sword and all. A shred of an angel, sealed away and then released, finds its way back to the whole.{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a scroll of breath of life from the crusade's own stores, rolled tight enough to hide in a palm. It will call back anyone who has been dead less than two breaths. It is a cleric's scroll, and you are no cleric. That has never stopped a Trickster, and neither has being watched.{/n}\n{n}\"Whatever happens in this room,\" you tell her, \"stay down afterwards. Stay down until we are gone.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171070,7 +171029,7 @@
         {
           "Id": "after",
           "Speaker": "Targona",
-          "Text": "{n}She stares at you through the barrier for a long moment. The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n}\n\"You took some of me.\" {n}She presses her own hand to her breastbone, where it went out of her.{/n} \"My brother and I were meant to be locked in the Wardstones. We escaped that. And now you carry a piece of each of us, like a thief with two purses.\" {n}She is quiet too long.{/n} \"I do not know if it will hold. Nobody knows how ours works. There were only ever two of us to ask, and he is gone.\"\n\"I do not understand you. I have called all of this a test.\" {n}Her voice is not steady.{/n} \"I did not think anyone would try to carry part of it for me.\"\n{n}She lowers her head again, as she did before, and waits for you to choose.{/n}",
+          "Text": "{n}She looks at the scroll for a long moment, and then at you.{/n}\n\"You are asking me to lie on a stone floor and let everyone believe I am dead.\" {n}The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n} \"My brother would have hated it. He could never lie down for anyone.\"\n\"I have called all of this a test. I did not think anyone would come into it with a trick in their sleeve, for me.\"\n{n}She lowers her head again, as she did before, and waits for you to choose.{/n}",
           "Choices": [
             {
               "Text": "[Step back from the barrier.]",
@@ -171103,7 +171062,7 @@
     },
     {
       "Id": "targona.trickster.dead.late_light",
-      "Title": "The thin hour",
+      "Title": "The hard way back",
       "Owner": "Targona",
       "MinChapter": 3,
       "MaxChapter": 3,
@@ -171112,11 +171071,11 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You did not think of it in the laboratory. You think of it now, at the chapel altar in Drezen, at the hour the priests call the thin one, with Lariel's light in your chest and a purse of silver on the altar so that nobody asks what the Knight-Commander is doing there alone.{/n}\n{n}Somewhere under the city a demon army is regrouping. Somewhere above it, one soul made two angels, and both of them are dead.{/n}",
+          "Text": "{n}You did not think of it in the laboratory. You think of it now, three days too late for any breath of life, with a report on your table that lists her among the dead and says her body was left where she fell.{/n}\n{n}Somewhere under the city a demon army is regrouping. Going back into Areelu's ruin for one body will cost men and favours you cannot spare.{/n}",
           "Choices": [
             {
-              "Text": "[Spend it all, now] \"One soul for two angels. Lariel paid once. I'll pay the rest.\"",
-              "Next": "burn",
+              "Text": "[Send them back for her] \"Bring her out. I'll read it myself.\"",
+              "Next": "raise",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -171139,17 +171098,17 @@
           "Portrait": "Targona"
         },
         {
-          "Id": "burn",
+          "Id": "raise",
           "Speaker": "Narrator",
-          "Text": "{n}You do not use the light gently this time. You spend it the way a wand is spent: all of it, at once, into the one soul the two of them shared.{/n}\n{n}Something in you goes dark that will not light again. The candles on the altar lean towards you and gutter. Far away, something else stirs.{/n}\n{n}In the morning the chaplain counts the silver twice and says nothing, which is what it was for.{/n}",
+          "Text": "{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. Two of them do not come out. At the chapel you read a scroll of raise dead over her yourself, at the hour the priests call the thin one, so lightly that the chaplain kneeling at the altar never sees you do it.{/n}\n{n}Coming back from the dead is an ordeal. The breath goes into her like a blade. Whatever she was before the laboratory, she will be less of it for a long while.{/n}",
           "Choices": [
             {
-              "Text": "[Let it burn out] \"Then take all of it.\"",
+              "Text": "[Stay until she breathes.]",
               "Next": null,
               "Set": [
                 "targona.trickster.primed",
                 "targona.trickster.cost.late",
-                "targona.trickster.cost.lariel_echo_spent"
+                "targona.trickster.cost.raised_the_hard_way"
               ],
               "Requires": [],
               "Forbids": [],
@@ -171182,7 +171141,7 @@
     },
     {
       "Id": "targona.trickster.dead.one_soul",
-      "Title": "Nothing left to spend",
+      "Title": "Two breaths",
       "Owner": "Targona",
       "MinChapter": 3,
       "MaxChapter": 5,
@@ -171191,7 +171150,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You wake before dawn with the feeling of a lamp being lit in another room.{/n}",
+          "Text": "{n}Three days after Areelu's laboratory, a runner comes up from the field infirmary behind the quartermaster's stores.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171199,7 +171158,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "targona.trickster.cost.lariel_echo_spent"
+                "targona.trickster.cost.raised_the_hard_way"
               ],
               "Abort": false
             },
@@ -171208,7 +171167,7 @@
               "Next": "cold",
               "Set": [],
               "Requires": [
-                "targona.trickster.cost.lariel_echo_spent"
+                "targona.trickster.cost.raised_the_hard_way"
               ],
               "Forbids": [],
               "Abort": false
@@ -171219,7 +171178,7 @@
         {
           "Id": "full",
           "Speaker": "Narrator",
-          "Text": "{n}You did not know it would hold. For three days the shred she gave you behind the barrier has beaten against your ribs like a moth against a lamp, and last night it stopped.{/n}\n{n}Now it pulls, the way Lariel's did in the caves when your hand closed on the hilt: not upward towards Heaven, but out, towards the whole it came from. Somewhere her soul has been waiting in the dark for its missing piece. You let it go the way you would use a wand, lightly, unnoticed. It goes. Lariel's part stays where it was, warm and full. It was used. It was not spent.{/n}\n{n}An angel is made from a soul and the pure essence of the Upper Planes, the old man at Estrod said. You have no Upper Planes to give. The shard takes what warmth it can find on the way out, and all it can find is yours. Your hands go cold to the wrist and stay cold for a week. You fight the next sortie on the walls with a sword you cannot feel, and the chaplain who takes your pulse at breakfast does not like what he finds.{/n}",
+          "Text": "{n}You remember the laboratory exactly. The blow, her fall, the floor. Everyone looking at her, then at the door. Your hand in your sleeve. The scroll read in the time it takes to kneel and close a dead angel's eyes, so lightly that nobody in the room, and nothing of Areelu's watching from the walls, saw it spent. Under your palm her chest moved once, shallow as a sleeper's, and you took your hand away and stood up before anyone could see it move again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171235,7 +171194,7 @@
         {
           "Id": "cold",
           "Speaker": "Narrator",
-          "Text": "{n}The place in your chest where Lariel's light used to burn is cold and empty. It is not coming back. You spent it at the altar, all of it, into the one soul the twins shared, and it went looking for her. Whatever it bought is somewhere in the dark, walking.{/n}",
+          "Text": "{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171251,7 +171210,7 @@
         {
           "Id": "news",
           "Speaker": "Narrator",
-          "Text": "{n}At first light a runner comes up from the field infirmary behind the quartermaster's stores. An angel walked in out of the dark an hour ago, one wing black and twisted, and asked for water and a basin. She is washing wounds. She has not said her name. She asked whether the Knight-Commander was awake.{/n}\n{n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose leave. The envoy withholds his blessing from the next muster until someone explains it. Nobody does.{/n}",
+          "Text": "{n}The runner says that an angel with one black wing is up and washing wounds. She has not said her name. She asked whether the Knight-Commander was awake.{/n}\n{n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it. Nobody does.{/n}",
           "Choices": [
             {
               "Text": "[Go to her] Go down to the infirmary.",
@@ -171260,7 +171219,7 @@
                 "targona.trickster.returned",
                 "targona.started",
                 "targona.trickster.cost.struck_down",
-                "targona.trickster.cost.shard_carried"
+                "targona.trickster.cost.left_for_dead"
               ],
               "Requires": [],
               "Forbids": [],
@@ -171323,7 +171282,7 @@
         {
           "Id": "pikeman",
           "Speaker": "Targona",
-          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. And I remember that I should not be here.\"\n{n}She looks at you for a long moment, the way she looks at a wound that has closed too quickly.{/n} \"Something of me stayed with you. I can still feel it, over there, under your coat, like a hand I left on a door.\" {n}She does not smile.{/n} \"I have thought about it every hour since I woke. I do not believe it was so simple. I think you paid for it somewhere you have not noticed yet, and I think Lariel would have been angry with you.\"",
+          "Text": "\"Commander. There was a pikeman in your infirmary last night with a fever that would not break. It broke at dawn. I thought you should know that first.\"\n{n}The black wing folds against her back as if it too is listening.{/n}\n\"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. And I remember that I should not be here.\"\n{n}She looks at you for a long moment, the way she looks at a wound that has closed too quickly.{/n} \"I woke on that floor alone, in the dark, with the taste of a scroll's words in my mouth. I lay still, as you told me to. I counted to a thousand, and then I counted again.\" {n}She does not smile.{/n} \"I have thought about it every hour since. I do not believe it was so simple. I think you paid for it somewhere you have not noticed yet, and I think Lariel would have been angry with you.\"",
           "Choices": [
             {
               "Text": "[Tell her the truth] \"I struck you. I'd rather you hear it from me than from Heaven.\"",
@@ -171638,7 +171597,7 @@
         {
           "Id": "greet_lab",
           "Speaker": "Targona",
-          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Behind the barrier you told me that whatever struck me next would find nothing left to spend. Nothing struck me. You broke the barrier instead. And then someone used my brother's light here all night, and did not let it run down. I came to see who would do such a thing, and why.\"",
+          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Behind the barrier you showed me a scroll up your sleeve and told me to lie still. I did not have to. You broke the barrier instead. And then someone used my brother's light here all night, and did not let it run down. I came to see who would do such a thing, and why.\"",
           "Choices": [
             {
               "Text": "[Explain] \"They were dying. I had a light.\"",
@@ -171831,7 +171790,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory. She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall. Both wings open over the two of you, one white and one black, and she draws you down under them onto the cot.{/n}",
+          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171901,7 +171860,7 @@
         {
           "Id": "start",
           "Speaker": "Targona",
-          "Text": "{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}\n\"Ask, then. But first promise me something. My brother's light is not a purse. Do not spend him again, not even unnoticed. Not for me, not for anyone.\"",
+          "Text": "{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}\n\"Ask, then. But first promise me something. Whatever you keep up your sleeve, do not use it on death again. Not unnoticed, not for me, not for anyone. If I fall again, let me go. My brother went. I would rather be where he is than be the reason you keep cheating.\"",
           "Choices": [
             {
               "Text": "[Promise, and ask her] \"I promise. Stay with me.\"",
@@ -171946,7 +171905,7 @@
         {
           "Id": "unpromised",
           "Speaker": "Targona",
-          "Text": "\"No. I did not think you could.\" {n}She goes on folding.{/n}\n\"You would spend him again for a stranger with a fever, and you would be right to, and I would never know when it was coming. I cannot live beside that. I am sorry.\"",
+          "Text": "\"No. I did not think you could.\" {n}She goes on folding.{/n}\n\"You would do it again for a stranger with a fever, and you might even be right to, and I would never know when it was coming. I cannot live beside that. I am sorry.\"",
           "Choices": [
             {
               "Text": "[Leave her the ward.]",
@@ -171962,7 +171921,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory. She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall. Both wings open over the two of you, one white and one black, and she draws you down under them onto the cot.{/n}",
+          "Text": "{n}Her cot is behind a hanging of sacking at the end of the ward, narrow as a soldier's. She draws the sacking shut and stands with her back to it, and for the first time since the laboratory she has nothing in her hands.{/n}\n{n}\"The wing,\" she says. She turns, so that you can see it: bone and scab and something like torn silk. \"Everyone looks away from it. Don't.\"{/n}\n{n}You don't. You put your hand on it, and she shudders from her shoulders to her heels, and kisses you as if she has been holding her breath since the laboratory.{/n}\n\"I have tended every body in this ward,\" she says against your mouth. \"I want one that is mine to want. Tonight I want yours.\" {n}She is warm, warmer than anything mortal, and she pulls the plain infirmary smock over her head and lets it fall, and then she is undoing your buckles with a healer's quick, certain hands, and laughing under her breath when one sticks.{/n}\n{n}Both wings open over the two of you, one white and one black. She draws you down under them onto the cot, and settles over you, and takes your hands and puts them on her hips, and holds them there, and bends to kiss you again with her hair falling round both your faces.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -172040,17 +171999,17 @@
           "Portrait": "Targona",
           "Paragraphs": [
             {
-              "Text": "The shred of her that the Commander carried out of Areelu's laboratory never quite went home. On cold nights Targona could tell where the Commander was in Drezen without asking, and said it was like having left a lamp burning in another room.",
+              "Text": "Heaven's lists still name her among the dead of Areelu's laboratory. Targona never asked to have the entry struck. She said it was the most honest thing anyone had written about her, and that the angel on that list had earned her rest.",
               "Requires": [
-                "targona.trickster.cost.shard_carried"
+                "targona.trickster.cost.left_for_dead"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "The part of Lariel's light the Commander had carried out of Kenabres was spent, in the end, at a chapel altar in Drezen. Targona never asked what it bought. Once, on the anniversary of the laboratory, she put her hand flat on the Commander's chest over the place where it had been, and kept it there a long time.",
+              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body and two came out. She learned their names, and wrote to their families every year until she could no longer find anyone to write to.",
               "Requires": [
-                "targona.trickster.cost.lariel_echo_spent"
+                "targona.trickster.cost.raised_the_hard_way"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -172155,17 +172114,17 @@
           "Portrait": "Targona",
           "Paragraphs": [
             {
-              "Text": "The shred of her that the Commander carried out of Areelu's laboratory never quite went home. On cold nights Targona could tell where the Commander was in Drezen without asking, and said it was like having left a lamp burning in another room.",
+              "Text": "Heaven's lists still name her among the dead of Areelu's laboratory. Targona never asked to have the entry struck. She said it was the most honest thing anyone had written about her, and that the angel on that list had earned her rest.",
               "Requires": [
-                "targona.trickster.cost.shard_carried"
+                "targona.trickster.cost.left_for_dead"
               ],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "The part of Lariel's light the Commander had carried out of Kenabres was spent, in the end, at a chapel altar in Drezen. Targona never asked what it bought. Once, on the anniversary of the laboratory, she put her hand flat on the Commander's chest over the place where it had been, and kept it there a long time.",
+              "Text": "She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full basin again. Four volunteers went into Areelu's ruin for her body and two came out. She learned their names, and wrote to their families every year until she could no longer find anyone to write to.",
               "Requires": [
-                "targona.trickster.cost.lariel_echo_spent"
+                "targona.trickster.cost.raised_the_hard_way"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -172461,8 +172420,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -173336,9 +173295,6 @@
     ],
     "vellexia.bungler_explained": [
       "e3f0b327f22b2734e9fbce52b150cded"
-    ],
-    "targona.heard_twins": [
-      "67eb3b5ed760435487fb011f454988e8"
     ],
     "noct.threshold_met": [
       "7d07492b12cf5bd4bb1c88113d5831ab"

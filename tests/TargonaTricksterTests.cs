@@ -104,16 +104,13 @@ internal static class TargonaTricksterTests
         var joke = setup.Nodes.Single(n => n.Id == "start").Choices[0];
         check(joke.Mythic == "PlayerIsTrickster" && joke.Alignment?.Direction == "Chaotic" && joke.Alignment.Value == 1
               && joke.Text.StartsWith("[Spend it again, quietly]", StringComparison.Ordinal), "The primer lost its joke or its cost.");
-        var primed = After(setup, lab, "seal", 0);
-        check(setup.Nodes.Single(n => n.Id == "seal").Text.Contains("wand", StringComparison.Ordinal)
-              && setup.Nodes.Single(n => n.Id == "start").Text.Contains("sealed a shred", StringComparison.Ordinal),
-            "The primer does not show the sealing, or its canon precedent.");
+        var primed = After(setup, lab, "scroll", 0);
+        check(setup.Nodes.Single(n => n.Id == "scroll").Text.Contains("breath of life", StringComparison.Ordinal)
+              && setup.Nodes.Single(n => n.Id == "scroll").Text.Contains("two breaths", StringComparison.Ordinal),
+            "The primer does not show the scroll, or its two-breath limit.");
         check(primed.Has(P + "primed"), "Trk_Targona_Setup: flags.");
         check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab"), Committed),
             "Trk_Targona_Setup: the commit is unreachable after the blow.");
-        var twinsPages = new HashSet<string>();
-        Program.Walk(setup, World(story, 3, "trickster", "trickster.ever", "targona.heard_twins"), (page, _) => twinsPages.Add(page));
-        check(twinsPages.Contains("estrod"), "Teldon's Silver Twins are not remembered at the barrier.");
         foreach (var gone in new[] { "targona.dead_lab", "targona.free", "targona.condemned" })
             check(!Rules.Available(story, setup, World(story, 3, "trickster", "trickster.ever", gone)), "The primer opens after the event: " + gone);
 
@@ -127,11 +124,11 @@ internal static class TargonaTricksterTests
         var fullPages = new HashSet<string>();
         Program.Walk(oneSoul, killed, (page, _) => fullPages.Add(page));
         check(fullPages.Contains("full") && !fullPages.Contains("cold")
-              && oneSoul.Nodes.Single(n => n.Id == "full").Text.Contains("It was used. It was not spent."),
-            "The charge is not shown used and unspent.");
+              && oneSoul.Nodes.Single(n => n.Id == "full").Text.Contains("nobody in the room"),
+            "The scroll is not shown read unnoticed.");
         var returned = After(oneSoul, killed, "news", 0);
         check(returned.Has(P + "returned") && returned.Has(P + "cost.struck_down") && returned.Has("targona.started")
-              && returned.Has(P + "cost.shard_carried"), "Trk_Targona_KilledPrimed: flags.");
+              && returned.Has(P + "cost.left_for_dead"), "Trk_Targona_KilledPrimed: flags.");
         var go = oneSoul.Nodes.Single(n => n.Id == "news").Choices[0];
         check(go.Crusade?.Resource == "Favors" && go.Crusade.Amount == -150, "The return costs the crusade nothing.");
         check(Rules.Available(story, furlough, returned), "Trk_Targona_KilledPrimed: the furlough does not open.");
@@ -144,8 +141,8 @@ internal static class TargonaTricksterTests
         var spend = lateLight.Nodes.Single(n => n.Id == "start").Choices[0];
         check(spend.Crusade?.Resource == "Favors" && spend.Crusade.Amount == -300 && spend.Mythic == "PlayerIsTrickster",
             "Trk_Targona_KilledUnprimed: the rite is free.");
-        var late = After(lateLight, unprimed, "burn", 0);
-        check(late.Has(P + "primed") && late.Has(P + "cost.late") && late.Has(P + "cost.lariel_echo_spent"),
+        var late = After(lateLight, unprimed, "raise", 0);
+        check(late.Has(P + "primed") && late.Has(P + "cost.late") && late.Has(P + "cost.raised_the_hard_way"),
             "Trk_Targona_KilledUnprimed: flags.");
         var lateLater = Later(story, late, 72);
         check(Rules.Available(story, oneSoul, lateLater), "Trk_Targona_KilledUnprimed: the payoff does not follow.");
