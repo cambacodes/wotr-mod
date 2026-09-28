@@ -54,6 +54,7 @@ from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
+from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -377,6 +378,18 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["areelu"] = copy.deepcopy(areelu_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(areelu_trickster.SCENES))
     areelu_trickster.integrate(payload)
+    # Chadali: a new relationship, opened only by the Trickster coin in her private audience (chadali_trickster).
+    payload["Relationships"]["chadali"] = copy.deepcopy(chadali_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(chadali_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_wagers.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_fortunes.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_sessions.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(chadali_hours.SCENES))
+    chadali_trickster.integrate(payload)
+    chadali_wagers.integrate(payload)
+    chadali_fortunes.integrate(payload)
+    chadali_sessions.integrate(payload)
+    chadali_hours.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)
