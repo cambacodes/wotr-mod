@@ -84345,7 +84345,10 @@
       "AnswerLists": [
         "871af36f2ab2b1f40b5de77976c54276"
       ],
-      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f"
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      }
     },
     {
       "Id": "irabeth.anevias_answer",
@@ -84625,6 +84628,7 @@
       ],
       "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
       "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned",
         "irabeth_dead": "irabeth.trickster.returned"
       }
     },
@@ -84879,7 +84883,10 @@
       "AnswerLists": [
         "871af36f2ab2b1f40b5de77976c54276"
       ],
-      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f"
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      }
     },
     {
       "Id": "irabeth.a_day_of_our_own",
@@ -85104,7 +85111,10 @@
       "AnswerLists": [
         "871af36f2ab2b1f40b5de77976c54276"
       ],
-      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f"
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      }
     },
     {
       "Id": "irabeth.the_sealed_account",
@@ -86226,7 +86236,10 @@
       "AnswerLists": [
         "871af36f2ab2b1f40b5de77976c54276"
       ],
-      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f"
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      }
     },
     {
       "Id": "irabeth.before_the_unmapped_road",
@@ -138377,7 +138390,9 @@
               "Requires": [
                 "anevia_gone"
               ],
-              "Forbids": [],
+              "Forbids": [
+                "anevia.trickster.returned"
+              ],
               "Abort": false
             },
             {
@@ -138389,6 +138404,17 @@
                 "anevia_gone"
               ],
               "Abort": false
+            },
+            {
+              "Text": "\"At the gate. Outside the walls. She won't come in.\"",
+              "Next": "gate",
+              "Set": [],
+              "Requires": [
+                "anevia_gone",
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Irabeth"
@@ -138396,7 +138422,7 @@
         {
           "Id": "south",
           "Speaker": "Narrator",
-          "Text": "{n}She hears it standing at attention, and she stays that way a long moment after you have finished.{/n}\n\"South. Of course south. She never could sit in a house with a draught in it.\"\n{n}She is gone before noon on a borrowed horse and back two days later, alone, sword still in her hand, and she reports that too.{/n}",
+          "Text": "{n}She hears it standing at attention, and she stays that way a long moment after you have finished.{/n}\n\"South. Of course south. She never could sit in a house with a draught in it.\"\n{n}She is gone before noon on a borrowed horse, riding south after her wife with the sword still in her hand. She does not say when she will be back, and nobody is fool enough to ask.{/n}",
           "Choices": [
             {
               "Text": "\"Welcome back, Knight-Captain.\"",
@@ -138413,6 +138439,22 @@
           "Id": "home",
           "Speaker": "Narrator",
           "Text": "{n}She is out of the throne room before you finish the sentence, burial whites and all, with the sword in her hand because she cannot put it down.{/n}\n{n}Nobody in the citadel sees that meeting. The guard at the stair reports only that the Knight-Captain's wife said one word, loudly, and that it was not a word for a chapel.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Welcome back, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "gate",
+          "Speaker": "Narrator",
+          "Text": "{n}She doesn't ride anywhere. Anevia is at the gate, on the road side of the line the cartwheels have worn into the mud. Irabeth walks out to her in her burial whites, without her helmet, holding the sword she cannot put down well out to one side.{/n}\n{n}The watch on the gate finds something very interesting to look at in the other direction, and goes on looking at it for some time.{/n}",
           "Choices": [
             {
               "Text": "\"Welcome back, Knight-Captain.\"",
@@ -138944,6 +138986,19 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
+                "irabeth.trickster.cost.accounting_lied",
+                "anevia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "talked",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [
                 "irabeth.trickster.cost.accounting_lied"
               ],
               "Abort": false
@@ -138972,6 +139027,19 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
+                "irabeth.trickster.cost.accounting_lied",
+                "anevia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "talked",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [
                 "irabeth.trickster.cost.accounting_lied"
               ],
               "Abort": false
@@ -138983,6 +139051,34 @@
           "Id": "lied",
           "Speaker": "Irabeth",
           "Text": "\"And you lied to me about Iz. I know you did. One more and I'm gone, orders or no orders.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "talked",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "talked",
+          "Speaker": "Irabeth",
+          "Text": "\"Nevi and I talked. At the gate, her side of the line. About you, mostly. She said, and I'm quoting, 'I'd rather share than bury.'\"\n{n}The tips of her ears have gone dark.{/n}\n\"Then she told me to stop looking at my boots.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -139015,6 +139111,44 @@
               "Next": "no",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "anevia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Something's stopping you. Say it.\"",
+              "Next": "no_home",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Kiss her] \"Then consider this an order, Knight-Captain.\"",
+              "Next": "threshold",
+              "Set": [
+                "irabeth.committed"
+              ],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Wait for her to decide] \"Whatever you want. Not an order.\"",
+              "Next": "decides",
+              "Set": [
+                "irabeth.committed"
+              ],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -139032,6 +139166,72 @@
               "Set": [
                 "irabeth.trickster.declined"
               ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "no_home",
+          "Speaker": "Irabeth",
+          "Text": "\"It isn't Nevi. Nevi's made her peace with it; she told me so at the gate, twice, the second time louder.\"\n{n}She turns the sword a quarter-turn in her fist, the only fidget she allows herself.{/n}\n\"It's me. I was dead, Commander. Two days. Give me time to be alive before you ask me to be anything else.\"",
+          "Choices": [
+            {
+              "Text": "[Step back] \"Then I'll ask again. Not as your Commander.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "decides",
+          "Speaker": "Irabeth",
+          "Text": "{n}She looks at you for a long moment, the way she reads an order: twice, to be sure of it.{/n}\n\"Not an order.\"\n{n}Then she decides.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets the sword down on the throne-room step. It stays down. Her hand shakes, and it is not fear.{/n}\n\"I've wanted this since Iz, and I've been ashamed of it since Iz. I'm done being ashamed. Take the rest off me, Commander. Slowly. I want to remember it.\"\n{n}Gauntlets, then vambraces, plate by plate. Her fingers stop working on the breastplate buckles and she lets you do it. Under the arming coat she is scar and muscle and heat. She kisses you hard enough that her tusks graze your lip, then drags you through the side door to the cot in the guardroom, breathing as if she had run the walls. She pulls you down onto her, hooks a leg behind yours, and draws you in.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Irabeth",
+          "Text": "{n}Dawn. She is back in armour, all but one gauntlet, and she keeps flexing the bare hand as if it belonged to someone else.{/n}\n\"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn.\"\n{n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
+          "Choices": [
+            {
+              "Text": "\"Dismissed, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -139074,7 +139274,7 @@
         {
           "Id": "price",
           "Speaker": "Irabeth",
-          "Text": "\"You want to ask again. Then here's my price, Commander. Write it down. Not an order. A request, signed, the way a person asks.\"\n{n}She pushes a sheet of roster paper across the step, and a pen. Your own pen, the one you misplaced.{/n}\n\"I'll send it south to Nevi before I read it myself. If she laughs, the answer's no.\"",
+          "Text": "\"You want to ask again. Then here's my price, Commander. Write it down. Not an order. A request, signed, the way a person asks.\"\n{n}She pushes a sheet of roster paper across the step, and a pen. Your own pen, the one you misplaced.{/n}\n\"I'll give it to Nevi before I read it myself. If she laughs, the answer's no.\"",
           "Choices": [
             {
               "Text": "[Write it as a request and sign it] \"Not an order. A request. Signed. Nevi reads it first.\"",
@@ -139084,7 +139284,9 @@
                 "irabeth.trickster.cost.signed_request"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "anevia.trickster.returned"
+              ],
               "Abort": false
             },
             {
@@ -139094,6 +139296,19 @@
                 "irabeth.closed"
               ],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write it as a request and sign it] \"Not an order. A request. Signed. Nevi reads it first.\"",
+              "Next": "sent_gate",
+              "Set": [
+                "irabeth.committed",
+                "irabeth.trickster.cost.signed_request"
+              ],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -139142,6 +139357,18 @@
               "Next": "morning",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "anevia.trickster.returned"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "morning_home",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -139152,6 +139379,38 @@
           "Id": "morning",
           "Speaker": "Irabeth",
           "Text": "{n}Dawn. She is back in armour, all but one gauntlet, and she keeps flexing the bare hand as if it belonged to someone else.{/n}\n\"Nevi will know. Nevi always knows. I'll write to her myself before breakfast, before anyone else can.\"\n{n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
+          "Choices": [
+            {
+              "Text": "\"Dismissed, Knight-Captain.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "sent_gate",
+          "Speaker": "Irabeth",
+          "Text": "{n}She is back within the hour, the paper crumpled in her free hand and mud from the gate road on her boots.{/n}\n\"She didn't laugh. She read it twice, the way I read orders, and wrote one word on the back. I'm not telling you which.\"\n{n}She is smiling, for the first time since Iz.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "morning_home",
+          "Speaker": "Irabeth",
+          "Text": "{n}Dawn. She is back in armour, all but one gauntlet, and she keeps flexing the bare hand as if it belonged to someone else.{/n}\n\"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn.\"\n{n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}\n\"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard.\"",
           "Choices": [
             {
               "Text": "\"Dismissed, Knight-Captain.\"",
@@ -139296,11 +139555,17 @@
         "irabeth.trickster.returned"
       ],
       "Forbids": [
-        "irabeth.lover"
+        "irabeth.lover",
+        "trying",
+        "committed"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "irabeth"
+      "Relationship": "irabeth",
+      "ForbidOverrides": {
+        "trying": "tirabade.group_closed",
+        "committed": "tirabade.group_closed"
+      }
     },
     {
       "Id": "irabeth.trickster.dead.react_seelah",

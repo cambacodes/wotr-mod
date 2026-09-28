@@ -32,6 +32,7 @@ LIED = "irabeth.trickster.cost.accounting_lied"
 SIGNED = "irabeth.trickster.cost.signed_request"
 BLOW_STANDS = "irabeth.trickster.blow_stands"
 KILLED = "anevia.irabeth_killed_by_commander"
+A_RET = "anevia.trickster.returned"
 SOUL_TORN = "irabeth.trickster.soul_wound_told"
 OWN = ("irabeth.closed",)
 
@@ -181,15 +182,18 @@ physical("irabeth.trickster.dead.relieved_not_dismissed", "Reporting in person",
 "...Crazy orders. Every time. And every time we win."
 {n}She does not smile.{/n}
 "Don't you ever do that to me again, Commander. Not to me, and not to her. Now tell me where Nevi is."''',
-      # The anevia.trickster.returned variant (she walks out to Nevi at the gate) lands with Anevia's route.
-      c('"She left at the Coronation. South, I think."', "south", requires=("anevia_gone",)),
-      c('"Here. In Drezen. She never left."', "home", forbids=("anevia_gone",))),
+      c('"She left at the Coronation. South, I think."', "south", requires=("anevia_gone",), forbids=(A_RET,)),
+      c('"Here. In Drezen. She never left."', "home", forbids=("anevia_gone",)),
+      c('"At the gate. Outside the walls. She won\'t come in."', "gate", requires=("anevia_gone", A_RET))),
     nar("south", '''{n}She hears it standing at attention, and she stays that way a long moment after you have finished.{/n}
 "South. Of course south. She never could sit in a house with a draught in it."
-{n}She is gone before noon on a borrowed horse and back two days later, alone, sword still in her hand, and she reports that too.{/n}''',
+{n}She is gone before noon on a borrowed horse, riding south after her wife with the sword still in her hand. She does not say when she will be back, and nobody is fool enough to ask.{/n}''',
       c('"Welcome back, Knight-Captain."')),
     nar("home", '''{n}She is out of the throne room before you finish the sentence, burial whites and all, with the sword in her hand because she cannot put it down.{/n}
 {n}Nobody in the citadel sees that meeting. The guard at the stair reports only that the Knight-Captain's wife said one word, loudly, and that it was not a word for a chapel.{/n}''',
+      c('"Welcome back, Knight-Captain."')),
+    nar("gate", '''{n}She doesn't ride anywhere. Anevia is at the gate, on the road side of the line the cartwheels have worn into the mud. Irabeth walks out to her in her burial whites, without her helmet, holding the sword she cannot put down well out to one side.{/n}
+{n}The watch on the gate finds something very interesting to look at in the other direction, and goes on looking at it for some time.{/n}''',
       c('"Welcome back, Knight-Captain."')),
 ], requires=("trickster.ever", "irabeth_dead", PRIMED, "coronation.seen"), forbids=(RETURNED, KILLED), delay=24,
    TricksterDevice=True, TricksterState="dead")
@@ -278,33 +282,61 @@ MORNING_NOTE = '''{n}Dawn. She is back in armour, all but one gauntlet, and she 
 {n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
+MORNING_HOME = '''{n}Dawn. She is back in armour, all but one gauntlet, and she keeps flexing the bare hand as if it belonged to someone else.{/n}
+"Nevi will know. Nevi always knows. She'll laugh at me. Then she'll want to know every detail. Then she'll want her turn."
+{n}She buckles the gauntlet on at last and picks up the sword. It goes into her hand like a bad habit.{/n}
+"Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
+
 physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the record."', [
     i("start", '''{n}Late. The throne room is empty but for the two of you and the sword she still cannot put down.{/n}
 "You're going to say something I'll have to answer. I can see it on you. Go on, then."''',
       c("Continue", "her", requires=("irabeth.trickster.answered_her",)),
       c("Continue", "crusade", requires=("irabeth.trickster.answered_crusade",))),
     i("her", '''"You said 'for me'. Nobody's said that to me since Nevi. It was the right answer. I hate that it was the right answer."''',
-      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED,))),
+      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED, A_RET)),
+      c("Continue", "talked", requires=(A_RET,), forbids=(LIED,))),
     i("crusade", '''"You said 'for the crusade'. Honest. A month ago I'd have thrown you out for the other one."''',
-      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED,))),
+      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED, A_RET)),
+      c("Continue", "talked", requires=(A_RET,), forbids=(LIED,))),
     i("lied", '''"And you lied to me about Iz. I know you did. One more and I'm gone, orders or no orders."''',
+      c("Continue", "answer", forbids=(A_RET,)), c("Continue", "talked", requires=(A_RET,))),
+    i("talked", '''"Nevi and I talked. At the gate, her side of the line. About you, mostly. She said, and I'm quoting, 'I'd rather share than bury.'"
+{n}The tips of her ears have gone dark.{/n}
+"Then she told me to stop looking at my boots."''',
       c("Continue", "answer")),
     i("answer", '''{n}She waits for you to say it. Her sword hand is very still.{/n}''',
       c('[Salute] "Dismissed, Knight-Captain. For tonight."', flags=("irabeth.trickster.friends",)),
-      c('"Something\'s stopping you. Say it."', "no")),
+      c('"Something\'s stopping you. Say it."', "no", forbids=(A_RET,)),
+      c('"Something\'s stopping you. Say it."', "no_home", requires=(A_RET,)),
+      c('[Kiss her] "Then consider this an order, Knight-Captain."', "threshold", requires=(A_RET,), forbids=(LIED,),
+        flags=("irabeth.committed",)),
+      c('[Wait for her to decide] "Whatever you want. Not an order."', "decides", requires=(A_RET,),
+        flags=("irabeth.committed",))),
     i("no", '''"Nevi's out on that road. I'm not doing this behind her back. Not while she's out there. Maybe not after."
 {n}She looks at the empty throne, not at you.{/n}
 "Ask me when she's home, and ask me like a person, not like a Commander. Until then I'm your knight, and that's all I am."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
+    i("no_home", '''"It isn't Nevi. Nevi's made her peace with it; she told me so at the gate, twice, the second time louder."
+{n}She turns the sword a quarter-turn in her fist, the only fidget she allows herself.{/n}
+"It's me. I was dead, Commander. Two days. Give me time to be alive before you ask me to be anything else."''',
+      c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
+    i("decides", '''{n}She looks at you for a long moment, the way she reads an order: twice, to be sure of it.{/n}
+"Not an order."
+{n}Then she decides.{/n}''',
+      c("Continue", "threshold")),
+    nar("threshold", THRESHOLD, c("Continue", "morning")),
+    i("morning", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
 ], requires=("trickster.ever", "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed", DECLINED), delay=72)
 
 physical("irabeth.trickster.second_ask", "A request, signed", '"Knight-Captain. I\'m asking again."', [
     i("price", '''"You want to ask again. Then here's my price, Commander. Write it down. Not an order. A request, signed, the way a person asks."
 {n}She pushes a sheet of roster paper across the step, and a pen. Your own pen, the one you misplaced.{/n}
-"I'll send it south to Nevi before I read it myself. If she laughs, the answer's no."''',
+"I'll give it to Nevi before I read it myself. If she laughs, the answer's no."''',
       c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "sent",
-        flags=("irabeth.committed", SIGNED)),
-      c('"Some things I don\'t sign."', "refused", flags=("irabeth.closed",))),
+        forbids=(A_RET,), flags=("irabeth.committed", SIGNED)),
+      c('"Some things I don\'t sign."', "refused", flags=("irabeth.closed",)),
+      c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "sent_gate",
+        requires=(A_RET,), flags=("irabeth.committed", SIGNED))),
     i("refused", '''"Then you're my Commander, and that's the end of it."
 {n}She takes the paper back and folds it into her roster, blank.{/n}''',
       c('"Understood."')),
@@ -312,8 +344,13 @@ physical("irabeth.trickster.second_ask", "A request, signed", '"Knight-Captain. 
 "I sent it to her. It came back with one word on it. I'm not telling you which."
 {n}She is smiling, for the first time since Iz.{/n}''',
       c("Continue", "threshold")),
-    nar("threshold", THRESHOLD, c("Continue", "morning")),
+    nar("threshold", THRESHOLD, c("Continue", "morning", forbids=(A_RET,)), c("Continue", "morning_home", requires=(A_RET,))),
     i("morning", MORNING_NOTE, c('"Dismissed, Knight-Captain."')),
+    i("sent_gate", '''{n}She is back within the hour, the paper crumpled in her free hand and mud from the gate road on her boots.{/n}
+"She didn't laugh. She read it twice, the way I read orders, and wrote one word on the back. I'm not telling you which."
+{n}She is smiling, for the first time since Iz.{/n}''',
+      c("Continue", "threshold")),
+    i("morning_home", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
 ], requires=("trickster.ever", DECLINED, "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed",), delay=96)
 
 
@@ -347,7 +384,8 @@ UNDER_ORDERS_PARAGRAPHS = (
 SCENES.append(scene("irabeth.trickster.epilogue.under_orders", "Until the Wound is shut", "Epilogue", 0, "", [
     n("end", "Narrator", '''{n}Irabeth Tirabade served the crusade until the Worldwound was closed. She could not have stopped sooner if she had wanted to, and she complained about it at length, in writing, to anyone who would file it.{/n}''',
       portrait="Irabeth", paragraphs=UNDER_ORDERS_PARAGRAPHS)],
-    requires=(RETURNED,), forbids=("irabeth.lover",), last=99, Relationship="irabeth"))
+    requires=(RETURNED,), forbids=("irabeth.lover", "trying", "committed"), last=99, Relationship="irabeth",
+    ForbidOverrides={"trying": "tirabade.group_closed", "committed": "tirabade.group_closed"}))
 
 
 REACTIONS = [
@@ -375,6 +413,9 @@ Galfrey."''',
 SCENES.extend(REACTIONS)
 
 # G6(b): her registered endings that Forbid irabeth_dead lift it once she has returned; G6(a): the loss page does not.
+# G6(b): her scenes that Forbid anevia_gone lift it once Anevia has returned.
+ANEVIA_GONE_LIFTED = ("irabeth.one_truth_to_tell", "irabeth.anevias_answer", "irabeth.the_evening_she_chose",
+                      "irabeth.a_day_of_our_own", "irabeth.after_the_shared_answer")
 RETURNING_ENDINGS = ("irabeth.anevias_answer", "irabeth.ending_lasting", "irabeth.ending_open", "irabeth.ending_friends",
                      "irabeth.ending_unfinished", "irabeth.ending_changed", "irabeth.ending_ascent", "irabeth.ending_sacrifice")
 
@@ -395,6 +436,8 @@ def integrate(payload):
     for s in payload["Scenes"]:
         if s.get("Relationship") != "irabeth" or s["Id"] in ours:
             continue
+        if s["Id"] in ANEVIA_GONE_LIFTED:
+            s.setdefault("ForbidOverrides", {})["anevia_gone"] = A_RET
         if s["Id"] in RETURNING_ENDINGS:
             s.setdefault("ForbidOverrides", {})["irabeth_dead"] = RETURNED
             if s["Owner"].endswith("Epilogue"):

@@ -219,5 +219,54 @@ internal static class IrabethTricksterTests
         // Reactions: the two allocated reactors, three scenes (Seelah per state, Galfrey's letter for the sacrifice).
         var reactions = story.Scenes.Where(s => s.Relationship == "irabeth" && s.Reaction).ToArray();
         check(reactions.Length == 3 && reactions.All(r => r.Owner == "Seelah" || r.Owner == "Galfrey"), "Irabeth reactions changed.");
+        if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) RunWithAnevia(story, check);
+    }
+
+    // The items that waited on Anevia's return: the gate closing of her report, the settling line, Kiss / Wait
+    // (appended), her no at home, the signed request read at the gate, G6(b) anevia_gone, the shared ending.
+    private static void RunWithAnevia(Story story, Action<bool, string> check)
+    {
+        const string AneviaReturned = "anevia.trickster.returned";
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+                var relieved = S("irabeth.trickster.dead.relieved_not_dismissed");
+        var report = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "irabeth.trickster.primed", "coronation.after", "anevia_gone", AneviaReturned);
+        var reportPages = new HashSet<string>();
+        check(Program.Walk(relieved, report, (page, _) => reportPages.Add(page)).Count == 1 && reportPages.Contains("gate") && !reportPages.Contains("south"),
+            "Irabeth's report sends her south to a wife who is at the gate.");
+        var irabethCommit = S("irabeth.trickster.commit");
+        foreach (bool lie in new[] { false, true })
+        {
+            var ask = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty",
+                            "irabeth.trickster.answered_her", "anevia_gone", AneviaReturned);
+            if (lie) ask.Flags.Add("irabeth.trickster.cost.accounting_lied");
+            ask.Times["irabeth.trickster.back_on_duty"] = ask.Hour - 72;
+            var pages = new HashSet<string>();
+            var outcomes = Program.Walk(irabethCommit, ask, (page, _) => pages.Add(page));
+            check(pages.Contains("talked") && pages.Contains("no_home") && !pages.Contains("no") && pages.Contains("threshold") && pages.Contains("morning"),
+                "Irabeth's commit ignores Nevi's return.");
+            check(outcomes.Count(r => r.Has("irabeth.committed")) == (lie ? 1 : 2), "Kiss offered after an exposed lie, or Kiss / Wait missing.");
+            check(outcomes.Any(r => r.Has("irabeth.trickster.declined") && !r.Has("irabeth.committed")), "Her no is gone once Nevi is home.");
+        }
+        var answer = irabethCommit.Nodes.Single(n => n.Id == "answer").Choices;
+        check(answer[0].Text.StartsWith("[Salute]") && answer[1].Next == "no" && answer.Skip(2).Any(ch => ch.Text.StartsWith("[Kiss her]")),
+            "Irabeth's commit choices were reordered instead of appended.");
+        foreach (var id in new[] { "irabeth.one_truth_to_tell", "irabeth.anevias_answer", "irabeth.the_evening_she_chose", "irabeth.a_day_of_our_own",
+                                   "irabeth.after_the_shared_answer" })
+            check(S(id).ForbidOverrides.TryGetValue("anevia_gone", out var lifted) && lifted == AneviaReturned, "G6(b) anevia_gone override missing: " + id);
+
+        var together = World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, AneviaReturned, "committed");
+        var shared = story.Scenes.Where(s => s.Owner == "Epilogue" && (s.Relationship == "anevia" || s.Relationship == "irabeth" || s.Relationship == "tirabade")
+                                             && Rules.Available(story, s, together)).ToList();
+        check(shared.Count == 1 && shared[0].Id == "ending_promised" && Rules.VisibleParagraphs(shared[0].Nodes.Last(), together).Length >= 1,
+            "The shared Tirabade ending does not own the committed trio's epilogue.");
+
+        var second = S("irabeth.trickster.second_ask");
+        var declined = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.declined",
+                             "anevia_gone", AneviaReturned);
+        declined.Times["irabeth.trickster.declined"] = declined.Hour - 96;
+        var asked = new HashSet<string>();
+        check(Program.Walk(second, declined, (page, _) => asked.Add(page)).Any(r => r.Has("irabeth.committed"))
+              && asked.Contains("sent_gate") && !asked.Contains("sent") && asked.Contains("morning_home"),
+            "The signed request still travels south to a wife at the gate.");
     }
 }
