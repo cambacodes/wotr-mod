@@ -47,7 +47,7 @@ DEBTS = [
          called_by=[called("anevia"), called("minagho_chivarro")], outlived=list(SOCOTH_GONE),
          ledger_title="Socothbenoth: a door to listen at",
          ledger_text="Paid for a closet with a standing right to listen, or a story owed instead. The Silken Sin collects. He prefers to collect during something private.",
-         page_called="Socothbenoth came first, dressed for an occasion to which nobody else had been invited. He wanted what he was owed: the one conversation he had not been allowed to overhear. The Commander told him the rift in the dark of a wardrobe, between the coats, from the first joke to the last, and the Silken Sin listened without interrupting once, which those who know him say has never happened before. He left humming.",
+         page_called="Socothbenoth came first, dressed for an occasion to which nobody else had been invited, and named his terms before he had taken off his gloves. He was owed the one conversation he had not been allowed to overhear, and he wanted it told to a closed door, in the Commander's own voice, with himself on the other side of it. Then he raised the price: the telling was to happen in the house where he had listened before, so that the right person would know he had come to collect. The Commander haggled him down to the door and the voice, and lost the house. The rift was told to the wardrobe from the first joke to the last, and the Silken Sin, on the other side, did not interrupt once, which those who know him say has never happened before. He left humming. Anevia heard him go.",
          page_outlived="Socothbenoth never came to collect. Whatever had become of the Silken Sin had happened before he could, and the wardrobes of Drezen were only wardrobes again. More than one person checked them every night for a year anyway."),
     dict(key="baphomet", groups=[[MC + "baphomet_debtor"], [MC + "baphomet_terms"], [MC + "baphomet_knelt"], [MC + "baphomet_branded"],
                                  ["hepzamirah.trickster.cost.baphomet_grudge"]],
@@ -157,6 +157,8 @@ partner("irabeth", "irabeth", "irabeth.committed", "irabeth.closed", "Irabeth, D
     call_commit=[["irabeth.committed"], ["committed"]],
     ledger=("Irabeth: an order not rescinded", "The Knight-Captain is still under my orders. Her discharge is unsigned. I will need to be alive to sign it."))
 
+# The canon pair (doc 04 §4.3). Its commit flag `committed` is set only by the registered `future` scene's "Yes. I choose a
+# life with you both." (or the Trickster `third_chair`): both women's acceptance of the triad is a recorded route choice.
 partner("tirabade", "tirabade", "committed", "closed", "The Third Chair",
     '''Irabeth and Anevia Tirabade went home after the war to the house on the corner. The three of them had settled the question before Threshold, at their own table, when the Commander answered that {mf|he|she} chose a life with them both; the wives had asked it together, and they held {mf|him|her} to the answer. There was a third chair. It was Anevia who decided where it went, and Irabeth who decided it would be dusted. Some nights, according to the neighbours, the house on the corner laughed until dawn.''',
     (

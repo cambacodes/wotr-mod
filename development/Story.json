@@ -222779,7 +222779,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "Socothbenoth came first, dressed for an occasion to which nobody else had been invited. He wanted what he was owed: the one conversation he had not been allowed to overhear. The Commander told him the rift in the dark of a wardrobe, between the coats, from the first joke to the last, and the Silken Sin listened without interrupting once, which those who know him say has never happened before. He left humming.",
+              "Text": "Socothbenoth came first, dressed for an occasion to which nobody else had been invited, and named his terms before he had taken off his gloves. He was owed the one conversation he had not been allowed to overhear, and he wanted it told to a closed door, in the Commander's own voice, with himself on the other side of it. Then he raised the price: the telling was to happen in the house where he had listened before, so that the right person would know he had come to collect. The Commander haggled him down to the door and the voice, and lost the house. The rift was told to the wardrobe from the first joke to the last, and the Silken Sin, on the other side, did not interrupt once, which those who know him say has never happened before. He left humming. Anevia heard him go.",
               "Requires": [
                 "lastcall.debt.socoth"
               ],
@@ -224441,8 +224441,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
