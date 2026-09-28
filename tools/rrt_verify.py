@@ -1930,7 +1930,10 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
                     if devices: row["notes"].append("%s: canon fate defied by %s" % (st.get("state"), ",".join(devices[:3])))
                     ent_ok += ok; com_ok += committed
                     continue
-                ok = all(i in rr.reached for i in ids) if ids else any(s["Id"] in rr.reached for s in rel_scenes)
+                # A primer that Forbids its own state's event runs before it; a world forced into the event from the
+                # start cannot reach it, so the state is judged by its fallback and payoff instead.
+                need = [i for i in ids if not set(model.by_id[i]["Forbids"]) & t] or ids
+                ok = all(i in rr.reached for i in need) if ids else any(s["Id"] in rr.reached for s in rel_scenes)
                 committed = any(r["CommittedFlag"] in rr.held for r in rels)
                 ent_ok += ok; com_ok += committed
                 if not ok or not committed:
