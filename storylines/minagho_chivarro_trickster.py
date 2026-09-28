@@ -538,7 +538,7 @@ ALONE_MIN_NODES = [
        c('"Then go. Dry."', flags=(CLOSED,))),
     nar("threshold", '''{n}She walks you back to your quarters as though she were the one escorting a prisoner, one hand fisted in the back of your collar. Inside she does not bother with the lamp.{/n}
 {n}She finds the bleeding palm in the dark and holds it against her mouth, and you feel her smile against the cut before you feel her teeth. "Mine," she says, "for tonight. His, every morning after." Then she pushes you back against the door, hard enough to rattle the bar, and takes her time: her fingers at your throat, not squeezing, only reminding; her mouth hot and unkind along your jaw; her body pressed to yours from knee to shoulder so that you feel every breath she refuses to hurry. She strips your shirt off one-handed and throws it somewhere you will never find it.{/n}
-{n}"On the bed," she says against your ear. "On your back. Hands where I can bite them." When you are where she wants you she follows you down, straddles your hips, pins both your wrists above your head with one of hers, and leans down until her hair falls across your face. There, at the very edge of it, she makes you wait one breath longer than you can bear, and smiles, as if collecting on a debt that is finally, finally due.{/n}''',
+{n}"On the bed," she says against your ear. "On your back. Hands where I can bite them." When you are where she wants you she follows you down, straddles your hips, pins both your wrists above your head with one of hers, and leans down until her hair falls across your face. There, at the very edge of it, she makes you wait one breath longer than you can bear, and smiles.{/n}''',
         c("Continue")),
 ]
 ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead.latched"]]
