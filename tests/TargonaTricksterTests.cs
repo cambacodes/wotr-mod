@@ -111,6 +111,15 @@ internal static class TargonaTricksterTests
         check(primed.Has(P + "primed"), "Trk_Targona_Setup: flags.");
         check(Reaches(World(story, 3, "trickster", "trickster.ever", "targona.dead_lab", P + "primed", P + "told_in_lab"), Committed),
             "Trk_Targona_Setup: the commit is unreachable after the blow.");
+        // Both native outcomes after the primer: [Attack] (TargonaIsWasKilledInAreeluLab) leads to the scroll's payoff;
+        // [Destroy the barrier] (TargonaIsFreeInAreeluLab) leaves the primer unused and opens the freed state's wand night.
+        check(!Rules.Available(story, setup, primed), "The primer can be taken twice.");
+        var primedKilled = Program.Copy(primed); primedKilled.Flags.Add("targona.dead_lab");
+        check(Rules.Available(story, oneSoul, Later(story, primedKilled, 72)) && !Rules.Available(story, lateLight, primedKilled),
+            "After the primer, the native kill does not lead to the scroll's payoff.");
+        var primedFreed = Program.Copy(primed); primedFreed.Flags.Add("targona.free");
+        check(Rules.Available(story, spent, Later(story, primedFreed, 1)) && !Rules.Available(story, oneSoul, Later(story, primedFreed, 72)),
+            "After the primer, the native rescue does not open the freed state.");
         foreach (var gone in new[] { "targona.dead_lab", "targona.free", "targona.condemned" })
             check(!Rules.Available(story, setup, World(story, 3, "trickster", "trickster.ever", gone)), "The primer opens after the event: " + gone);
 
