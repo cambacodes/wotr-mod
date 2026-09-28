@@ -55,6 +55,7 @@ from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
+from storylines import devarra_trickster, devarra_tower
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -390,6 +391,13 @@ def make_expansion(*, independent_tirabade=True):
     chadali_fortunes.integrate(payload)
     chadali_sessions.integrate(payload)
     chadali_hours.integrate(payload)
+    # Devarra: the draft (retired to reference/retired-drafts) is replaced by the Trickster "Clutch-mother" route
+    # (devarra.md round 2) and its watchtower courtship on the Storyteller's hub (devarra_tower).
+    payload["Relationships"]["devarra"] = copy.deepcopy(devarra_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(devarra_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
+    devarra_trickster.integrate(payload)
+    devarra_tower.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

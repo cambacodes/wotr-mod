@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-devarra\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2262,
-  "unique_targets": 593,
+  "binding_uses": 2357,
+  "unique_targets": 607,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -293,6 +293,22 @@
     "2a75fbc8e86fd514e82117c99fc9e528": {
       "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "dd8ac86f25e0f6b4cac75386eb528851": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "b8dfb42d03fc931409f2b80614cfa9de": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "9c653a907d8549248bd9d202c1fb8964": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
+    "d39b1e850904daa43b7e6dab3a6e7f83": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0046.jbp",
+      "type": "BlueprintCue"
     },
     "190fda58a169c9340b626f1a503c696f": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0011.jbp",
@@ -1134,6 +1150,18 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Woljif/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "c8298f1630fd82046986d313ba35f601": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/AnswersList_0030.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3d5e59ddc658eb947874a1cac31dd6a4": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "26650f05010b9ce4cb0202da7e35ce8e": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
     "5de3ea4370854d229e047d95980006c9": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0004.jbp",
       "type": "BlueprintAnswer"
@@ -1254,6 +1282,14 @@
       "path": "World/Etudes/Common/DLC1_Megaepic/DLC1_Threshold_Outdoor/DLC1_StorytellerDead.jbp",
       "type": "BlueprintEtude"
     },
+    "e4374a1783c74f68ae46bb5db22e0c58": {
+      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/DragonsInEducationFinished.jbp",
+      "type": "BlueprintEtude"
+    },
+    "a9a453f695924f99b4326f60b7c3753e": {
+      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/UnprecedentedOmeletFinished.jbp",
+      "type": "BlueprintEtude"
+    },
     "ba365d0ae03c414a8f6f906837a4fe91": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaDead.jbp",
       "type": "BlueprintEtude"
@@ -1356,6 +1392,18 @@
     },
     "c97882cbc65c4c546aed1810627a5b81": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/Wintersun_OldDefender.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b0c1344ae8267c94998ca27ad4288c01": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/IvorySanctum/DragonEggsDestroyed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "02ea801d75381dd48ae15c6c93c5f1dc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/IvorySanctum/DragonEggsProjectGained.jbp",
+      "type": "BlueprintEtude"
+    },
+    "581521b398fb9dd4eb52bbfffb3b5c43": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/WormWoundLair/RedDragonDead.jbp",
       "type": "BlueprintEtude"
     },
     "71f85264d9064074f9cf74999ecbffa9": {
@@ -1516,6 +1564,14 @@
     },
     "dd138e723bf3dd94caddc127a23788ad": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "23bea0045d007fc4db834476012eed58": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborInParty/DragonHunt_Q1/RedDragonEscaped.jbp",
+      "type": "BlueprintEtude"
+    },
+    "056ba61e04cca104a9c95ac2d4658c67": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborInParty/DragonHunt_Q1/RedDragonKilledInIvorySanctum.jbp",
       "type": "BlueprintEtude"
     },
     "dc908c2490d6f4c4393ff26967aa6566": {
