@@ -55,6 +55,7 @@ from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
+from storylines import rrt_ui
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -392,6 +393,8 @@ def make_expansion(*, independent_tirabade=True):
     chadali_hours.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    # E15: the RRT book UI (glossary tooltips, the guide book).
+    rrt_ui.integrate(payload)
     normalize_trickster_access(payload)
     return payload
 

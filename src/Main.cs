@@ -40,7 +40,7 @@ namespace Tirabade
         public override void Save(UnityModManager.ModEntry entry) => Save(this, entry);
     }
 
-    public static class Main
+    public static partial class Main
     {
         private static UnityModManager.ModEntry entry = null!;
         private static Story story = null!;
@@ -404,6 +404,8 @@ namespace Tirabade
                 foreach (var pair in story.Presences.Where(p => p.Value.Dialog == "hub"))
                     presenceHubs[pair.Key] = BuildPresenceHub(pair.Key, pair.Value);
                 if (story.Scenes.Any(Rules.IsMailbagLetter)) mailbagDialog = BuildMailbag();
+                // E15: the RRT book surfaces (mailbag v2, the letter archive, data books) and the glossary tooltips.
+                BuildBooks();
                 // E14d: every replacement cue is registered (save names); only verified edits get their native presentation.
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
@@ -1495,7 +1497,8 @@ namespace Tirabade
                 if (UseMailbag() && ReferenceEquals(mailbagPlayer, Game.Instance.Player) && mailbag.Entries(story, state).Count > 0)
                 {
                     mailbagWanted = false;
-                    Game.Instance.DialogController.StartDialogWithoutTarget(mailbagDialog!, null);
+                    // E15: the paged mailbag book (portraits, "N of M", the satchel list, the archive); v1 list as fallback.
+                    if (!OpenView("mailbag")) Game.Instance.DialogController.StartDialogWithoutTarget(mailbagDialog!, null);
                     return;
                 }
                 mailbagWanted = false;
@@ -1585,6 +1588,14 @@ namespace Tirabade
             if (settings.Mailbag)
             {
                 if (CanOpenMailbag() && GUILayout.Button("Open the mailbag (" + mailbag.Entries(story, State()).Count + " unread)")) mailbagWanted = true;
+            }
+            // E15: the letters already read (read-only), and every data book with something in it.
+            if (initialized && enabled && Idle())
+            {
+                int kept = ViewItems("archive").Count;
+                if (kept > 0 && GUILayout.Button("Letters already read (" + kept + ")")) OpenView("archive");
+                foreach (var pair in books)
+                    if (ViewItems(pair.Key).Count > 0 && GUILayout.Button("Open: " + pair.Value.Title)) OpenView(pair.Key);
             }
             else
             {
@@ -1786,6 +1797,13 @@ namespace Tirabade
         [HarmonyPatch(typeof(BookEventVM), "SetPage")]
         private static class BookPatch
         {
+            // E15: titles, "N of M" and list labels are written before the page binds its title, cues and answers.
+            [HarmonyPrefix]
+            private static void Prefix(BlueprintBookPage page)
+            {
+                if (page != null) UpdatePage(page.AssetGuid.ToString());
+            }
+
             [HarmonyPostfix]
             private static void Postfix(BookEventVM __instance, BlueprintBookPage page)
             {
