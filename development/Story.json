@@ -147322,7 +147322,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Living beside a Commander the world had buried suited her. She had spent half her life officially somewhere else.",
+              "Text": "The crusade buried an empty coffin in Drezen. Anevia stood a watch over the grave for three nights with the crossbow she had not fired, in case anyone came to check what was in it. Someone did, twice. She never told the Commander who, and she never needed the crossbow either time.",
               "Requires": [
                 "lastcall.dead_on_record"
               ],
@@ -148894,14 +148894,6 @@
               "Text": "The statue of the Lady of the Sun stood in the square at Drezen for years afterwards, and pilgrims who prayed to it went home oddly satisfied and slightly out of pocket.",
               "Requires": [
                 "jerribeth.trickster.cost.tenant"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "A succubus does not attend funerals. She attended this one, in black, and wept beautifully, and charged the mourners for it.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -150597,14 +150589,6 @@
               "Text": "She billed the Commander for every consultation, at her rate, and the Commander paid every bill and kept the receipts in a drawer she was not supposed to know about.",
               "Requires": [
                 "konomi.trickster.cost.consult_fee"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "Nerosyan sent condolences for the Commander's death. Konomi delivered them in person and stayed for supper.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -152340,14 +152324,6 @@
               "Text": "She has never once been seen to look at the flask. Those who know her say that is how one can tell she is always looking at it.",
               "Requires": [
                 "trickster.lastcall.cost.bottled"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "The world believed the Commander dead. Nocticula let it, and made sure the rumour paid her rent.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -155330,14 +155306,6 @@
               "Text": "The Commander had bored her once. She never let {mf|him|her} forget that, and she let {mf|him|her} make up for it for years, at the far end of her table, until it amused her to move {mf|him|her} closer.",
               "Requires": [
                 "vellexia.trickster.cost.bored_once"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "She wore black for the Commander's funeral and was, by general agreement, the best-dressed mourner there.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -160488,14 +160456,6 @@
               "Text": "The counterfeit that had stood in for her stone was never found. Kiana suspected the Commander of keeping it, and was right.",
               "Requires": [
                 "kiana.trickster.cost.counterfeit_spent"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "She went to the Commander's funeral, wept, and then went home and baked, because somebody had to feed the mourners who came to the house afterwards.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -167019,14 +166979,6 @@
               ],
               "Forbids": [],
               "AnyGroups": []
-            },
-            {
-              "Text": "Both of them attended the Commander's funeral. Neither of them was invited. Both of them stole something from the reception.",
-              "Requires": [
-                "lastcall.dead_on_record"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
             }
           ]
         }
@@ -169336,14 +169288,6 @@
               "Text": "She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. She never told the Commander what the numbers meant.",
               "Requires": [
                 "soana.trickster.cost.die_in_her_bowl"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "The world thought the Commander dead. Soana thought that was very sensible of the world, and told nobody otherwise.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -172445,14 +172389,6 @@
               "Text": "The posters the Commander had put up at every ford were still there. She had them framed.",
               "Requires": [
                 "aranka.trickster.cost.announced"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "She wrote the Commander's elegy. It was so good that the Commander was sorry not to be dead for it.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -187548,14 +187484,6 @@
               ],
               "Forbids": [],
               "AnyGroups": []
-            },
-            {
-              "Text": "She attended the Commander's funeral to make sure. She left disappointed, and then delighted.",
-              "Requires": [
-                "lastcall.dead_on_record"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
             }
           ]
         }
@@ -195975,14 +195903,6 @@
               ],
               "Forbids": [],
               "AnyGroups": []
-            },
-            {
-              "Text": "She did not attend the Commander's funeral. She was busy with the living, she said, and so, it turned out, was the deceased.",
-              "Requires": [
-                "lastcall.dead_on_record"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
             }
           ]
         }
@@ -197488,14 +197408,6 @@
               "Text": "She had caught the Commander lying once, in the private debate, and the matter was never struck from the record. She raised it whenever the Commander became too pleased with {mf|himself|herself}, which was often, and it was always in order.",
               "Requires": [
                 "eritrice.trickster.cost.caught_lying"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "The Council recorded the Commander's death with regret and a note: \"Pending further evidence.\" The evidence arrived for supper.",
-              "Requires": [
-                "lastcall.dead_on_record"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -222909,7 +222821,7 @@
               ]
             },
             {
-              "Text": "The Lady in Shadow did not come in person; she seldom does. A note came instead, unsigned, smelling of night-blooming flowers, and it said only that she had kept the Commander alive at the rift as a matter of household economy, and that she expected a better return on the investment than gratitude.",
+              "Text": "The Lady in Shadow did not come in person; she seldom does. A note came instead, unsigned, smelling of night-blooming flowers, and it said only that the Lady in Shadow was pleased to find her debtor still in circulation, that a living debtor is worth a great deal more than a legend, and that she expected her return on the matter in person, and soon.",
               "Requires": [
                 "lastcall.debt.nocticula"
               ],
