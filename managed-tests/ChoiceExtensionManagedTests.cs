@@ -121,6 +121,21 @@ internal static class ChoiceExtensionManagedTests
         var gained = (Kingmaker.Kingdom.KingdomResourcesAmount)typeof(Kingmaker.Kingdom.Blueprints.AddCrusadeResources)
             .GetField("_resourcesAmount", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)!.GetValue(gain);
         check(gain != null && gained.Equals(Kingmaker.Kingdom.KingdomResourcesAmount.FromFavors(3)), "Crusade gain differs from AddCrusadeResources.");
+        // The native crusade actions call KingdomState.Instance (Game.Instance.Player.Kingdom) with no null check, so a
+        // crusade choice taken where no crusade exists (Chapter 1-2, a forced or out-of-order conversation) threw in game
+        // logic. Build must use the guarded subclasses, and running them with no kingdom must skip, not throw.
+        check(spend is Main.GuardedRemoveCrusadeResources && gain is Main.GuardedAddCrusadeResources,
+            "Crusade effects are not the guarded actions (a missing kingdom would throw in game logic).");
+        bool hadGame = Kingmaker.Game.HasInstance;
+        bool noKingdom = !hadGame || Kingmaker.Game.Instance.State?.PlayerState?.Kingdom == null;
+        check(noKingdom, "The managed fixture unexpectedly has a crusade state; the no-kingdom guard cannot be exercised.");
+        foreach (var action in new Kingmaker.ElementsSystem.GameAction[] { spend!, gain! })
+        {
+            Exception? thrown = null;
+            try { action.RunAction(); } catch (Exception ex) { thrown = ex; }
+            check(thrown == null, "A crusade effect threw with no crusade state: " + thrown?.GetType().Name + " " + thrown?.Message);
+        }
+        check(Kingmaker.Game.HasInstance == hadGame, "The no-kingdom guard created a Game instance as a side effect.");
         check(Enum.GetNames(typeof(Kingmaker.Kingdom.KingdomResource)).Except(new[] { "None" }).SequenceEqual(Rules.CrusadeResources),
             "Rules.CrusadeResources differs from Kingmaker.Kingdom.KingdomResource.");
         // E13: Build applies Scene.EntryMythic / EntryAlignment to the entry answer through the same ConfigureNativeEffects.

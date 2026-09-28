@@ -692,12 +692,12 @@ namespace Tirabade
                 GameAction change;
                 if (choice.Crusade.Amount > 0)
                 {
-                    change = new Kingmaker.Kingdom.Blueprints.AddCrusadeResources();
+                    change = new GuardedAddCrusadeResources();
                     Field(change, "_resourcesAmount", resources);
                 }
                 else
                 {
-                    change = new Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources();
+                    change = new GuardedRemoveCrusadeResources();
                     Field(change, "m_ResourcesAmount", resources);
                 }
                 answer.OnSelect = Actions((answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).Concat(new[] { change }).ToArray());
@@ -1604,6 +1604,28 @@ namespace Tirabade
             pendingPlayer = Game.Instance.Player;
             // StopDialog schedules UI disposal; wait until that old dialogue has finished closing.
             pendingFrame = Time.frameCount + 2;
+        }
+
+        // E5 crusade effects: the native actions call KingdomState.Instance with no null check, and there is no crusade
+        // before Chapter 3 (or in a forced / out-of-order conversation). Rules.Validate keeps crusade choices on Chapter 3+
+        // scenes; these subclasses make the runtime safe too: with no kingdom the change is skipped and logged, never thrown.
+        internal static bool KingdomMissing(string what)
+        {
+            // KingdomState.Instance is Game.Instance.Player.Kingdom, and Game.Instance creates a game when there is none:
+            // check each link without side effects.
+            if (Game.HasInstance && Game.Instance.State?.PlayerState?.Kingdom != null) return false;
+            entry?.Logger.Log("Crusade effect skipped (no crusade state yet): " + what);
+            return true;
+        }
+
+        public sealed class GuardedAddCrusadeResources : Kingmaker.Kingdom.Blueprints.AddCrusadeResources
+        {
+            public override void RunAction() { if (!KingdomMissing(name)) base.RunAction(); }
+        }
+
+        public sealed class GuardedRemoveCrusadeResources : Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources
+        {
+            public override void RunAction() { if (!KingdomMissing(name)) base.RunAction(); }
         }
 
         public sealed class RouteAction : GameAction
