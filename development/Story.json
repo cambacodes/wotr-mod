@@ -203769,9 +203769,33 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Her list of lucky numbers survived the Council. The Commander's name was at the bottom of it, underlined three times, and the number beside it came up far more often than it had any right to.{/n}",
+              "Text": "{n}Her list of lucky numbers survived the Council. Beside her own name, crossed out and rewritten, was a small crooked one. She never let it go back to nought, and the Commander checked.{/n}",
               "Requires": [
-                "chadali.hours.number_taken"
+                "chadali.hours.luck_given_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She never did keep any luck for herself. The Commander won nearly everything, and never let themself ask why, and she lost earrings, and trays, and once a whole summer's honey, and never said a word.{/n}",
+              "Requires": [
+                "chadali.hours.luck_kept_giving"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Socothbenoth never asked her for a favour again. He sent flowers every year anyway, from somewhere warm, with a note that said only \"No hard feelings, darling.\" She put them in the bin, stem first, every year, and smiled.{/n}",
+              "Requires": [
+                "chadali.hours.refused_socothbenoth"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Socothbenoth owed the Commander a favour for the rest of his long existence, and never quite knew how he had come to owe it. Chadali knew. She never said.{/n}",
+              "Requires": [
+                "chadali.hours.obliged_socothbenoth"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -210155,24 +210179,24 @@
       "Owner": "Chadali",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "\"What do you make of Socothbenoth?\"",
+      "Entry": "\"Socothbenoth was here. I passed him on the stair.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "\"He calls everybody 'darling'.\" {n}She giggles.{/n} \"Even Cobblehoof. Especially Cobblehoof. He does it to make him snort.\"\n\"He brought you to us. He introduced me as the patron of serendipity and Eritrice as the patron of debate and called us two beautiful ladies, and I thought, oh, he's nice.\" {n}Her head tilts.{/n} \"And then I thought, no, he's not nice. He's charming. That's different. Charming is nice with a purpose.\"",
+          "Text": "\"He was.\" {n}She is sitting very straight, turning her ring, and she has not offered a cookie.{/n} \"He brought me flowers. Real ones, from somewhere warm. He called me darling eleven times. I counted.\"\n\"And then he asked me for a favour.\" {n}She looks at the flowers, not at you.{/n} \"One night, he wouldn't say which, he wants all of my luck. Every morning's worth, all at once, sent to him and nobody else. He said it was for family. He said it would make someone very, very surprised.\"",
           "Choices": [
             {
-              "Text": "\"What's his purpose?\"",
-              "Next": "purpose",
+              "Text": "\"And the crusade? That night, it gets nothing.\"",
+              "Next": "crusade",
               "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
             },
             {
-              "Text": "[Flirt] \"Are you jealous of the way he looks at me?\"",
-              "Next": "jealous",
+              "Text": "\"Do you want to do it?\"",
+              "Next": "want",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -210182,37 +210206,69 @@
           "Portrait": "Chadali"
         },
         {
-          "Id": "jealous",
+          "Id": "crusade",
           "Speaker": "Chadali",
-          "Text": "\"Jealous?\" {n}She considers it with great seriousness, as if it were a new flavour.{/n}\n\"No. Well. A tiny bit. Not of him. Of how easy he finds it.\" {n}She picks at the tablecloth.{/n} \"He looks at people and they know exactly what he wants. When I look at people they just think I want to give them a cookie.\"\n{n}She peeks up.{/n} \"Which I do. But not only.\"",
+          "Text": "\"Nothing.\" {n}She nods, too quickly.{/n} \"I thought of that. Then he smiled, and I stopped thinking of it. He's very good at that.\" {n}Her mouth tightens.{/n}\n\"You know what it's for. I can see it on you. You always know what everyone at this table wants.\" {n}She holds your eyes.{/n} \"Tell me. Or don't. But if you don't, I'll know you chose not to.\"",
           "Choices": [
             {
-              "Text": "\"I know it's not only.\"",
-              "Next": "purpose",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Chadali"
-        },
-        {
-          "Id": "purpose",
-          "Speaker": "Chadali",
-          "Text": "\"I don't know his purpose. That's the thing.\" {n}She frowns.{/n} \"Everyone else at this table says what they want. Alichino wants profit. Eritrice wants truth. Cobblehoof wants to be left alone. I want everyone to be happy. Shyka wants to be entertained.\"\n\"Socothbenoth never says. He just smiles and calls you darling.\" {n}She leans in.{/n} \"I'll make you a bet. One day he'll tell you what he wants, and it'll be something about someone else. Brothers are always about someone else.\"",
-          "Choices": [
-            {
-              "Text": "[Shake on it.] \"Something about someone else.\"",
-              "Next": "shake",
-              "Set": [],
+              "Text": "\"It's about his sister. He means to bring her down, and he wants you to be the coin he tosses.\"",
+              "Next": "truth",
+              "Set": [
+                "chadali.hours.refused_socothbenoth"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
             },
             {
-              "Text": "\"Brothers?\"",
-              "Next": "brothers",
+              "Text": "[Trickster] \"Do it. Let him owe you. Let him owe us.\"",
+              "Next": "use",
+              "Set": [
+                "chadali.hours.obliged_socothbenoth"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "want",
+          "Speaker": "Chadali",
+          "Text": "\"I want to be asked for things.\" {n}Honestly, and a little ashamed of it.{/n} \"Nobody asks me for anything real. They ask for cookies. He asked me for something that matters, and I liked it, and I don't know whether he meant it or whether he just knew I'd like it.\"\n\"You know what it's for.\" {n}She holds your eyes.{/n} \"Tell me. Or don't. But if you don't, I'll know you chose not to.\"",
+          "Choices": [
+            {
+              "Text": "\"It's about his sister. He means to bring her down, and he wants you to be the coin he tosses.\"",
+              "Next": "truth",
+              "Set": [
+                "chadali.hours.refused_socothbenoth"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Trickster] \"Do it. Let him owe you. Let him owe us.\"",
+              "Next": "use",
+              "Set": [
+                "chadali.hours.obliged_socothbenoth"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "truth",
+          "Speaker": "Chadali",
+          "Text": "{n}She goes quite still. Then she picks up the warm-country flowers and puts them, very carefully, in the bin by the door, stem first.{/n}\n\"His sister. Of course. Everybody's somebody is never in the room.\" {n}Her voice is small and hard.{/n} \"He wanted me to be a weapon and call it a present. And I nearly said yes, because he said 'darling' eleven times.\"\n\"I'll tell him no. Nicely. With a cookie. He'll know exactly what the cookie means.\" {n}She looks at you.{/n} \"Thank you for telling me. You didn't have to. Most people at this table would have let me find out afterwards.\"",
+          "Choices": [
+            {
+              "Text": "[Stay while she writes her no.]",
+              "Next": null,
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -210222,28 +210278,12 @@
           "Portrait": "Chadali"
         },
         {
-          "Id": "brothers",
+          "Id": "use",
           "Speaker": "Chadali",
-          "Text": "\"He has a sister. He doesn't talk about her. That's how you know he's thinking about her all the time.\" {n}She says it with the confidence of someone who has watched a great many families across a great many centuries.{/n}\n\"Everybody has somebody they don't talk about. It's the most important person in the room, and they're never in the room.\" {n}She taps the table.{/n} \"Shake on it. Something about someone else.\"",
+          "Text": "{n}She looks at you for a long moment, and something careful comes into her face that was not there before.{/n}\n\"Let him owe us.\" {n}She repeats it slowly.{/n} \"You're spending me. Like a coin. On a bet you won't tell me the stakes of.\" {n}She nods.{/n} \"All right. I'll do it. I'm very good at luck, and you're very good at knowing what it's for.\"\n\"But I noticed.\" {n}She picks up one of his flowers and turns it.{/n} \"I'll always notice, now, when you're spending me. I just wanted you to know that I noticed.\"",
           "Choices": [
             {
-              "Text": "[Shake on it.]",
-              "Next": "shake",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Chadali"
-        },
-        {
-          "Id": "shake",
-          "Speaker": "Chadali",
-          "Text": "{n}She shakes, and holds on a moment after.{/n}\n\"And when you find out, you'll tell me. Not him. Me.\" {n}She lets go.{/n} \"That's the fee for the bet. I don't want to win it. I want to know.\"",
-          "Choices": [
-            {
-              "Text": "[Promise.]",
+              "Text": "[Leave her with the flowers.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -210729,7 +210769,7 @@
     },
     {
       "Id": "chadali.hours.a_lucky_number",
-      "Title": "A lucky number",
+      "Title": "Zero",
       "Owner": "Chadali",
       "MinChapter": 3,
       "MaxChapter": 5,
@@ -210738,27 +210778,11 @@
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "\"A list!\" {n}She turns the paper round proudly. It is a column of names, and beside each one, a number, in her round hand with a great many underlinings.{/n}\n\"Everyone's lucky number. Eritrice's is one, because she's always first to arrive. Alichino's is six hundred and sixty-six, which he chose himself, which is cheating. Cobblehoof's is twelve, because he has twelve coins in his purse and he counts them.\" {n}She taps the bottom of the list, where your name is written, and nothing beside it.{/n} \"What's yours?\"",
+          "Text": "\"A list.\" {n}She turns the paper round. A column of names, a number beside each: Eritrice one, Cobblehoof twelve, Alichino six hundred and sixty-six, \"which he chose himself, which is cheating\". Your name, and beside it, underlined three times, a two.{/n}\n{n}At the very bottom, in the same round hand, is her own name. Beside it is a nought.{/n}",
           "Choices": [
             {
-              "Text": "\"I don't have one.\"",
-              "Next": "none",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "\"Whatever number the dice show when I need them to.\"",
-              "Next": "dice",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "\"You choose.\"",
-              "Next": "choose",
+              "Text": "\"Why is yours zero?\"",
+              "Next": "zero",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -210768,57 +210792,33 @@
           "Portrait": "Chadali"
         },
         {
-          "Id": "none",
+          "Id": "zero",
           "Speaker": "Chadali",
-          "Text": "\"Everybody has one!\" {n}Appalled.{/n} \"Even people who say they don't. Especially them. They just haven't noticed which number keeps turning up.\"\n{n}She squints at you, as if you were a sum.{/n} \"You've had a lot of fours happen to you. I can see them on you, like freckles. Four walls in Drezen. Four companions at your back, most days.\"",
+          "Text": "{n}She tries to fold the list away. You put your hand on it.{/n}\n\"Because I haven't got any left.\" {n}She says it to the table.{/n} \"Every morning since the coin, I've been sending you mine. Not the Council's share. Mine. The bit I keep for myself. I thought nobody would notice. I'm chance; who checks whether chance is lucky?\"\n\"That's why I lost my earring. That's why the tray. I've been having unlucky days for weeks, and they're getting worse, and I don't mind.\" {n}Her chin lifts.{/n} \"You're at the front. I'm in a hall with cookies. It's arithmetic.\"",
           "Choices": [
             {
-              "Text": "\"Four, then.\"",
-              "Next": "four",
+              "Text": "\"Stop. Take it back. All of it.\"",
+              "Next": "back",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Half. You keep half, or I'll find a way to send it back myself.\"",
+              "Next": "half",
               "Set": [
-                "chadali.hours.number_taken"
+                "chadali.hours.luck_given_back"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
             },
             {
-              "Text": "\"You choose.\"",
-              "Next": "choose",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Chadali"
-        },
-        {
-          "Id": "dice",
-          "Speaker": "Chadali",
-          "Text": "\"That's not a number, that's a boast.\" {n}She wags a floury finger.{/n}\n\"And it's a sad one. It means you only let luck in when you're desperate. That's like only eating when you're starving. You'll never taste anything.\" {n}She pulls the list back.{/n} \"I'm giving you one whether you want it or not.\"",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "choose",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Chadali"
-        },
-        {
-          "Id": "choose",
-          "Speaker": "Chadali",
-          "Text": "{n}She thinks about it with enormous seriousness, chewing the end of her pen, looking at you, looking at the ceiling, looking back.{/n}\n\"Two.\" {n}She writes it down, and underlines it three times.{/n} \"Because you're never one. You're always standing next to somebody, even when you're alone. Especially then.\"",
-          "Choices": [
-            {
-              "Text": "\"Two, then.\"",
-              "Next": "two",
+              "Text": "[Say nothing. Let her keep giving it.]",
+              "Next": "keep",
               "Set": [
-                "chadali.hours.number_taken"
+                "chadali.hours.luck_kept_giving"
               ],
               "Requires": [],
               "Forbids": [],
@@ -210828,12 +210828,30 @@
           "Portrait": "Chadali"
         },
         {
-          "Id": "four",
+          "Id": "back",
           "Speaker": "Chadali",
-          "Text": "\"Four!\" {n}She writes it down and underlines it.{/n} \"A good, steady number. A table has four legs. A year has four seasons. It's not lucky the exciting way; it's lucky the way a floor is lucky.\" {n}She beams.{/n} \"Nobody thanks the floor. Everybody would miss it.\"",
+          "Text": "\"No.\" {n}The flat voice, the finger with the ring.{/n} \"You don't get to decide that. It's mine. That's the whole point of it being mine.\"\n{n}Then she hears herself, and her finger wavers.{/n} \"...You're doing the thing. Telling me when I'm spending myself.\" {n}She lets out a long breath.{/n} \"Half. I'll keep half. That's the most I'll give you. Don't argue with an empyreal lord about arithmetic.\"",
           "Choices": [
             {
-              "Text": "[Let her keep her list.]",
+              "Text": "[Don't argue.]",
+              "Next": "half",
+              "Set": [
+                "chadali.hours.luck_given_back"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "half",
+          "Speaker": "Chadali",
+          "Text": "{n}She crosses out the nought beside her name, and writes a one, small and crooked, as if she were not sure it was allowed.{/n}\n\"There. One. That's Eritrice's number. She'll be furious.\" {n}A wet little laugh.{/n}\n\"Nobody ever made me keep anything before. It feels very strange. It feels like being looked after.\" {n}She folds the list into her sleeve.{/n} \"I don't know if I like it. I think I might.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her with her one.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -210844,12 +210862,12 @@
           "Portrait": "Chadali"
         },
         {
-          "Id": "two",
+          "Id": "keep",
           "Speaker": "Chadali",
-          "Text": "{n}She folds the list and tucks it into her sleeve, with the prayers and the hopeful thing and the grey feather, and pats it.{/n}\n\"There. Now it's official. Now when two of something happens to you, you'll think of me, and you won't be able to help it.\" {n}She looks delighted with herself.{/n} \"That's the sneakiest thing I've ever done. I learned it from you.\"",
+          "Text": "{n}You say nothing. She watches you say nothing, and understands it, and nods once.{/n}\n\"All right.\" {n}Brightly, and it costs her.{/n} \"You need it more. You're at the front. That's true.\"\n{n}She leaves the nought where it is. When you go, she is on her knees again, looking for something she has dropped, and she does not ask for help.{/n}",
           "Choices": [
             {
-              "Text": "[Let her keep her list.]",
+              "Text": "[Go.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -210862,7 +210880,7 @@
       ],
       "Requires": [
         "trickster.ever",
-        "chadali.started"
+        "chadali.hours.an_unlucky_day"
       ],
       "Forbids": [
         "chadali.closed",
@@ -211228,8 +211246,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

@@ -123,27 +123,36 @@ hour(FIRST, "Our new friend", '"Do you remember the first session?"', [
 ], requires=(CHARM,), forbids=(FIRST,))
 
 
-# --- 4. Who brought you: Socothbenoth. -----------------------------------------------------------------------------
+TELL = (
+    c('"It\'s about his sister. He means to bring her down, and he wants you to be the coin he tosses."', "truth", flags=("chadali.hours.refused_socothbenoth",)),
+    c('[Trickster] "Do it. Let him owe you. Let him owe us."', "use", flags=("chadali.hours.obliged_socothbenoth",)),
+)
 
-hour(SOCOTH, "Who brought you", '"What do you make of Socothbenoth?"', [
-    ch("start", '''"He calls everybody 'darling'." {n}She giggles.{/n} "Even Cobblehoof. Especially Cobblehoof. He does it to make him snort."
-"He brought you to us. He introduced me as the patron of serendipity and Eritrice as the patron of debate and called us two beautiful ladies, and I thought, oh, he's nice." {n}Her head tilts.{/n} "And then I thought, no, he's not nice. He's charming. That's different. Charming is nice with a purpose."''',
-      c('"What\'s his purpose?"', "purpose"),
-      c('[Flirt] "Are you jealous of the way he looks at me?"', "jealous")),
-    ch("jealous", '''"Jealous?" {n}She considers it with great seriousness, as if it were a new flavour.{/n}
-"No. Well. A tiny bit. Not of him. Of how easy he finds it." {n}She picks at the tablecloth.{/n} "He looks at people and they know exactly what he wants. When I look at people they just think I want to give them a cookie."
-{n}She peeks up.{/n} "Which I do. But not only."''',
-      c('"I know it\'s not only."', "purpose")),
-    ch("purpose", '''"I don't know his purpose. That's the thing." {n}She frowns.{/n} "Everyone else at this table says what they want. Alichino wants profit. Eritrice wants truth. Cobblehoof wants to be left alone. I want everyone to be happy. Shyka wants to be entertained."
-"Socothbenoth never says. He just smiles and calls you darling." {n}She leans in.{/n} "I'll make you a bet. One day he'll tell you what he wants, and it'll be something about someone else. Brothers are always about someone else."''',
-      c('[Shake on it.] "Something about someone else."', "shake"),
-      c('"Brothers?"', "brothers")),
-    ch("brothers", '''"He has a sister. He doesn't talk about her. That's how you know he's thinking about her all the time." {n}She says it with the confidence of someone who has watched a great many families across a great many centuries.{/n}
-"Everybody has somebody they don't talk about. It's the most important person in the room, and they're never in the room." {n}She taps the table.{/n} "Shake on it. Something about someone else."''',
-      c('[Shake on it.]', "shake")),
-    ch("shake", '''{n}She shakes, and holds on a moment after.{/n}
-"And when you find out, you'll tell me. Not him. Me." {n}She lets go.{/n} "That's the fee for the bet. I don't want to win it. I want to know."''',
-      c("[Promise.]")),
+
+# --- 4. Who brought you: Socothbenoth asks her for a favour. ---------------------------------------------------
+
+SOCOTH_REFUSED = H + "refused_socothbenoth"
+SOCOTH_OBLIGED = H + "obliged_socothbenoth"
+
+hour(SOCOTH, "Who brought you", '"Socothbenoth was here. I passed him on the stair."', [
+    ch("start", """"He was." {n}She is sitting very straight, turning her ring, and she has not offered a cookie.{/n} "He brought me flowers. Real ones, from somewhere warm. He called me darling eleven times. I counted."
+"And then he asked me for a favour." {n}She looks at the flowers, not at you.{/n} "One night, he wouldn't say which, he wants all of my luck. Every morning's worth, all at once, sent to him and nobody else. He said it was for family. He said it would make someone very, very surprised." """,
+      c('"And the crusade? That night, it gets nothing."', "crusade"),
+      c('"Do you want to do it?"', "want")),
+    ch("crusade", """"Nothing." {n}She nods, too quickly.{/n} "I thought of that. Then he smiled, and I stopped thinking of it. He's very good at that." {n}Her mouth tightens.{/n}
+"You know what it's for. I can see it on you. You always know what everyone at this table wants." {n}She holds your eyes.{/n} "Tell me. Or don't. But if you don't, I'll know you chose not to." """,
+      *TELL),
+    ch("want", """"I want to be asked for things." {n}Honestly, and a little ashamed of it.{/n} "Nobody asks me for anything real. They ask for cookies. He asked me for something that matters, and I liked it, and I don't know whether he meant it or whether he just knew I'd like it."
+"You know what it's for." {n}She holds your eyes.{/n} "Tell me. Or don't. But if you don't, I'll know you chose not to." """,
+      *TELL),
+    ch("truth", """{n}She goes quite still. Then she picks up the warm-country flowers and puts them, very carefully, in the bin by the door, stem first.{/n}
+"His sister. Of course. Everybody's somebody is never in the room." {n}Her voice is small and hard.{/n} "He wanted me to be a weapon and call it a present. And I nearly said yes, because he said 'darling' eleven times."
+"I'll tell him no. Nicely. With a cookie. He'll know exactly what the cookie means." {n}She looks at you.{/n} "Thank you for telling me. You didn't have to. Most people at this table would have let me find out afterwards." """,
+      c("[Stay while she writes her no.]")),
+    ch("use", """{n}She looks at you for a long moment, and something careful comes into her face that was not there before.{/n}
+"Let him owe us." {n}She repeats it slowly.{/n} "You're spending me. Like a coin. On a bet you won't tell me the stakes of." {n}She nods.{/n} "All right. I'll do it. I'm very good at luck, and you're very good at knowing what it's for."
+"But I noticed." {n}She picks up one of his flowers and turns it.{/n} "I'll always notice, now, when you're spending me. I just wanted you to know that I noticed." """,
+      c("[Leave her with the flowers.]")),
 ], requires=(STARTED,), forbids=(SOCOTH,))
 
 
@@ -229,33 +238,34 @@ hour(SCAR, "For luck", '"It\'s only a scratch."', [
 ], requires=(NIGHT,), forbids=(SCAR,))
 
 
-# --- 8. A lucky number. -------------------------------------------------------------------------------------------
+# --- 8. Zero: the number beside her own name, and why she had an unlucky day. ----------------------------------
 
 NUMBER = H + "a_lucky_number"
-NUMBER_TAKEN = H + "number_taken"
+LUCK_GIVEN_BACK = H + "luck_given_back"
+LUCK_KEPT_GIVING = H + "luck_kept_giving"
 
-hour(NUMBER, "A lucky number", '"What are you writing?"', [
-    ch("start", '''"A list!" {n}She turns the paper round proudly. It is a column of names, and beside each one, a number, in her round hand with a great many underlinings.{/n}
-"Everyone's lucky number. Eritrice's is one, because she's always first to arrive. Alichino's is six hundred and sixty-six, which he chose himself, which is cheating. Cobblehoof's is twelve, because he has twelve coins in his purse and he counts them." {n}She taps the bottom of the list, where your name is written, and nothing beside it.{/n} "What's yours?"''',
-      c('"I don\'t have one."', "none"),
-      c('"Whatever number the dice show when I need them to."', "dice"),
-      c('"You choose."', "choose")),
-    ch("none", '''"Everybody has one!" {n}Appalled.{/n} "Even people who say they don't. Especially them. They just haven't noticed which number keeps turning up."
-{n}She squints at you, as if you were a sum.{/n} "You've had a lot of fours happen to you. I can see them on you, like freckles. Four walls in Drezen. Four companions at your back, most days."''',
-      c('"Four, then."', "four", flags=(NUMBER_TAKEN,)),
-      c('"You choose."', "choose")),
-    ch("dice", '''"That's not a number, that's a boast." {n}She wags a floury finger.{/n}
-"And it's a sad one. It means you only let luck in when you're desperate. That's like only eating when you're starving. You'll never taste anything." {n}She pulls the list back.{/n} "I'm giving you one whether you want it or not."''',
-      c("Continue", "choose")),
-    ch("choose", '''{n}She thinks about it with enormous seriousness, chewing the end of her pen, looking at you, looking at the ceiling, looking back.{/n}
-"Two." {n}She writes it down, and underlines it three times.{/n} "Because you're never one. You're always standing next to somebody, even when you're alone. Especially then."''',
-      c('"Two, then."', "two", flags=(NUMBER_TAKEN,))),
-    ch("four", '''"Four!" {n}She writes it down and underlines it.{/n} "A good, steady number. A table has four legs. A year has four seasons. It's not lucky the exciting way; it's lucky the way a floor is lucky." {n}She beams.{/n} "Nobody thanks the floor. Everybody would miss it."''',
-      c("[Let her keep her list.]")),
-    ch("two", '''{n}She folds the list and tucks it into her sleeve, with the prayers and the hopeful thing and the grey feather, and pats it.{/n}
-"There. Now it's official. Now when two of something happens to you, you'll think of me, and you won't be able to help it." {n}She looks delighted with herself.{/n} "That's the sneakiest thing I've ever done. I learned it from you."''',
-      c("[Let her keep her list.]")),
-], requires=(STARTED,), forbids=(NUMBER,))
+hour(NUMBER, "Zero", '"What are you writing?"', [
+    ch("start", """"A list." {n}She turns the paper round. A column of names, a number beside each: Eritrice one, Cobblehoof twelve, Alichino six hundred and sixty-six, "which he chose himself, which is cheating". Your name, and beside it, underlined three times, a two.{/n}
+{n}At the very bottom, in the same round hand, is her own name. Beside it is a nought.{/n}""",
+      c('"Why is yours zero?"', "zero")),
+    ch("zero", """{n}She tries to fold the list away. You put your hand on it.{/n}
+"Because I haven't got any left." {n}She says it to the table.{/n} "Every morning since the coin, I've been sending you mine. Not the Council's share. Mine. The bit I keep for myself. I thought nobody would notice. I'm chance; who checks whether chance is lucky?"
+"That's why I lost my earring. That's why the tray. I've been having unlucky days for weeks, and they're getting worse, and I don't mind." {n}Her chin lifts.{/n} "You're at the front. I'm in a hall with cookies. It's arithmetic." """,
+      c('"Stop. Take it back. All of it."', "back"),
+      c('"Half. You keep half, or I\'ll find a way to send it back myself."', "half", flags=(LUCK_GIVEN_BACK,)),
+      c("[Say nothing. Let her keep giving it.]", "keep", flags=(LUCK_KEPT_GIVING,))),
+    ch("back", """"No." {n}The flat voice, the finger with the ring.{/n} "You don't get to decide that. It's mine. That's the whole point of it being mine."
+{n}Then she hears herself, and her finger wavers.{/n} "...You're doing the thing. Telling me when I'm spending myself." {n}She lets out a long breath.{/n} "Half. I'll keep half. That's the most I'll give you. Don't argue with an empyreal lord about arithmetic." """,
+      c("[Don't argue.]", "half", flags=(LUCK_GIVEN_BACK,))),
+    ch("half", """{n}She crosses out the nought beside her name, and writes a one, small and crooked, as if she were not sure it was allowed.{/n}
+"There. One. That's Eritrice's number. She'll be furious." {n}A wet little laugh.{/n}
+"Nobody ever made me keep anything before. It feels very strange. It feels like being looked after." {n}She folds the list into her sleeve.{/n} "I don't know if I like it. I think I might." """,
+      c("[Leave her with her one.]")),
+    ch("keep", """{n}You say nothing. She watches you say nothing, and understands it, and nods once.{/n}
+"All right." {n}Brightly, and it costs her.{/n} "You need it more. You're at the front. That's true."
+{n}She leaves the nought where it is. When you go, she is on her knees again, looking for something she has dropped, and she does not ask for help.{/n}""",
+      c("[Go.]")),
+], requires=(EARRING,), forbids=(NUMBER,))
 
 
 # --- 9. The seat beside her (after the commit): a session, under the table. ----------------------------------------
@@ -313,7 +323,10 @@ EPILOGUE_PARAGRAPHS = [
     (EARRING_FOUND, "{n}She told the story of the lost earring to everyone, for years, and it always ended the same way: \"And then my lucky charm got down on the floor.\" She seemed to think it was the most romantic thing that had ever happened in the multiverse.{/n}"),
     (FIRST_SIGHT, "{n}She never stopped reminding the Council members who had laughed in the first session that she had been right. Eritrice minuted it every time, with the little squiggle.{/n}"),
     (PRISONER_FED, "{n}The cultist in the Drezen dungeon ate the cookie, the night before he was hanged. He never said a word about it. The white flower was found pressed in his prayer book, in the page about the Abyss.{/n}"),
-    (NUMBER_TAKEN, "{n}Her list of lucky numbers survived the Council. The Commander's name was at the bottom of it, underlined three times, and the number beside it came up far more often than it had any right to.{/n}"),
+    (LUCK_GIVEN_BACK, "{n}Her list of lucky numbers survived the Council. Beside her own name, crossed out and rewritten, was a small crooked one. She never let it go back to nought, and the Commander checked.{/n}"),
+    (LUCK_KEPT_GIVING, "{n}She never did keep any luck for herself. The Commander won nearly everything, and never let themself ask why, and she lost earrings, and trays, and once a whole summer's honey, and never said a word.{/n}"),
+    (SOCOTH_REFUSED, "{n}Socothbenoth never asked her for a favour again. He sent flowers every year anyway, from somewhere warm, with a note that said only \"No hard feelings, darling.\" She put them in the bin, stem first, every year, and smiled.{/n}"),
+    (SOCOTH_OBLIGED, "{n}Socothbenoth owed the Commander a favour for the rest of his long existence, and never quite knew how he had come to owe it. Chadali knew. She never said.{/n}"),
     (REMEMBERED, "{n}When the Council's members pretended that they had never met, two of them did not. Every year, on the anniversary of the first session, the Commander and Chadali ate cookies at a table with seven chairs, and remembered all of it, and made it sound much better than it was.{/n}"),
     (SCAR_KEPT, "{n}The Commander carried a thin pale scar for the rest of their life, curved at one end like the edge of a coin. She touched it for luck, every time, without asking.{/n}"),
 ]
