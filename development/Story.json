@@ -156306,7 +156306,7 @@
         {
           "Id": "round",
           "Speaker": "Narrator",
-          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}By the third round the whole tavern is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth, everyone swears it was always sung that way. The pig oinks on the rhyme. Nobody taught it to.{/n}",
+          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}A sapper learns your verse first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them. By the third round the whole room is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth they are correcting each other's words, and every one of them swears their grandmother sang it exactly that way.{/n}\n{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl, and she watches you all the way through the fifth round, and then she leaves without finishing her cup.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -156483,7 +156483,7 @@
         {
           "Id": "round",
           "Speaker": "Narrator",
-          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}By the third round the whole tavern is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth, everyone swears it was always sung that way. The pig oinks on the rhyme. Nobody taught it to.{/n}",
+          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}A sapper learns your verse first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them. By the third round the whole room is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth they are correcting each other's words, and every one of them swears their grandmother sang it exactly that way.{/n}\n{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl, and she watches you all the way through the fifth round, and then she leaves without finishing her cup.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -156741,7 +156741,7 @@
         {
           "Id": "known",
           "Speaker": "Aranka",
-          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him.\"\n\"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
+          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me, and she was crying, and I could not tell whether it was the good kind.\"\n\"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -156773,7 +156773,7 @@
         {
           "Id": "unknown",
           "Speaker": "Aranka",
-          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. I am told the new verse arrived with a Knight-Commander standing on a bench and paying for the beer.\"\n\"I am coming to Drezen to find the thief. Please have them ready.\"",
+          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says the new verse arrived with a Knight-Commander standing on a bench and paying for the beer.\"\n\"I am coming to Drezen to find the thief. Please have them ready.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -157361,7 +157361,7 @@
         {
           "Id": "lovers",
           "Speaker": "Aranka",
-          "Text": "\"We have done this before, you and I. The part where I leave and you let me, and we both call it freedom.\" {n}Her thumb worries the edge of the seal.{/n} \"I was very good at it. I'd like to know if I still have to be.\"",
+          "Text": "\"The last time I went, you stood in the door and let me, and I sang the whole road north pretending that was what I wanted.\" {n}Her thumb worries the edge of the seal.{/n} \"I'm a very good singer, Commander. I'm a terrible liar. Ask the road.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -157632,7 +157632,7 @@
         {
           "Id": "lovers",
           "Speaker": "Aranka",
-          "Text": "\"We have done this before, you and I. The part where I leave and you let me, and we both call it freedom.\" {n}Her thumb worries the edge of the seal.{/n} \"I was very good at it. I'd like to know if I still have to be.\"",
+          "Text": "\"The last time I went, you stood in the door and let me, and I sang the whole road north pretending that was what I wanted.\" {n}Her thumb worries the edge of the seal.{/n} \"I'm a very good singer, Commander. I'm a terrible liar. Ask the road.\"",
           "Choices": [
             {
               "Text": "Continue",

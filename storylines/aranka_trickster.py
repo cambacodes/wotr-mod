@@ -177,7 +177,8 @@ def king_nodes(open_text, crowned_text, uncrowned_text=None):
             c(JOKE, "round", mythic="Trickster", crusade=("Finances", -100)),
             c('"Never mind. Carry on, Your Majesty."', abort=True)),
         nar("round", '''{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}
-{n}By the third round the whole tavern is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth, everyone swears it was always sung that way. The pig oinks on the rhyme. Nobody taught it to.{/n}''',
+{n}A sapper learns your verse first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them. By the third round the whole room is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth they are correcting each other's words, and every one of them swears their grandmother sang it exactly that way.{/n}
+{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl, and she watches you all the way through the fifth round, and then she leaves without finishing her cup.{/n}''',
             *([c("Continue", "crowned", requires=(CROWNED,)), c("Continue", "uncrowned", forbids=(CROWNED,))]
               if uncrowned_text else [c("Continue", "crowned")])),
         king("crowned", crowned_text, c('"Once more, from the top. Everybody!"', flags=(PRIMED, ROUND))),
@@ -233,11 +234,11 @@ letter("aranka.trickster.verse.her_letter", "Somebody changed my song", [
     nar("start", '''{n}The letter is in a round, flourishing hand that has pressed hard enough to tear the paper in two places. It smells faintly of road dust and lamp oil, and someone has used it as a coaster.{/n}''',
         c("Continue", "known", requires=(GAVE_SONG,)),
         c("Continue", "unknown", forbids=(GAVE_SONG,))),
-    a("known", '''"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him."
+    a("known", '''"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me, and she was crying, and I could not tell whether it was the good kind."
 "It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief."''',
       *her_letter_choices()),
     a("unknown", '''"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word."
-"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. I am told the new verse arrived with a Knight-Commander standing on a bench and paying for the beer."
+"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says the new verse arrived with a Knight-Commander standing on a bench and paying for the beer."
 "I am coming to Drezen to find the thief. Please have them ready."''',
       *her_letter_choices()),
 ], requires=("trickster.ever", PRIMED), forbids=(ANSWERED, ROMANCE, FAILURE), delay=72)
@@ -309,7 +310,7 @@ counter("aranka.trickster.verse.encore", "An offer from Nerosyan", '"You came ba
       c("Continue", "choice")),
     a("denied", '''"You lied to me about the verse, the first time. I haven't forgotten. I have decided to find it interesting, which is not the same as forgiving it."''',
       c("Continue", "choice")),
-    a("lovers", '''"We have done this before, you and I. The part where I leave and you let me, and we both call it freedom." {n}Her thumb worries the edge of the seal.{/n} "I was very good at it. I'd like to know if I still have to be."''',
+    a("lovers", '''"The last time I went, you stood in the door and let me, and I sang the whole road north pretending that was what I wanted." {n}Her thumb worries the edge of the seal.{/n} "I'm a very good singer, Commander. I'm a terrible liar. Ask the road."''',
       c("Continue", "choice")),
     a("choice", '''"So tell me, Commander. Is there a reason to stay that isn't a song?"''',
       c('[Ask her to stay] "Stay. Sing it with me. Every night we get."', "stay", flags=(KEPT,)),
