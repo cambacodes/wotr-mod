@@ -109,6 +109,18 @@ namespace Tirabade
         public Dictionary<string, TricksterAccess> TricksterAccess = new Dictionary<string, TricksterAccess>();
         // ER-4: relationships sharing a rotation key (e.g. nocticula and nocticula.acquisition) share one post-bag slot.
         public string? RotationKey;
+        // E15: extra journal objectives under the relationship's quest (the Trickster's Ledger). Each entry is given when any
+        // of its OpenWhen AND-groups holds and completed when any of its SettledWhen AND-groups holds.
+        public List<JournalEntry> JournalEntries = new List<JournalEntry>();
+    }
+
+    public sealed class JournalEntry
+    {
+        public string Id = "";
+        public string Title = "";
+        public string Description = "";
+        public string[][] OpenWhen = Array.Empty<string[]>();
+        public string[][] SettledWhen = Array.Empty<string[]>();
     }
 
     // E12: a character made present in an area while Requires hold and no Forbid holds. "reuse-native" unhides and
@@ -484,6 +496,16 @@ namespace Tirabade
         // Journal failure follows the same return: an overridden unavailable flag no longer fails the objective.
         public static bool Failed(Relationship relationship, Snapshot state) =>
             relationship.FailureFlags.Any(flag => Blocks(relationship, flag, state));
+
+        // E15: an OR of AND-groups (the Derived shape). An empty SettledWhen never settles.
+        public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => entry.OpenWhen.Any(group => group.All(state.Has));
+        public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => entry.SettledWhen.Any(group => group.All(state.Has));
+
+        // E15: the one journal action due for an entry: "give" (not yet in the journal and open), "complete" (in the journal,
+        // still open, and settled), or null. A debt settled before it was ever noted is given first, completed on a later tick.
+        public static string? JournalStep(JournalEntry entry, bool inJournal, bool started, Snapshot state) =>
+            !inJournal ? (JournalEntryOpen(entry, state) ? "give" : null)
+            : started && JournalEntrySettled(entry, state) ? "complete" : null;
 
         // Remote conversations need live-state guards too, without reapplying authored closure or delays.
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
@@ -879,6 +901,21 @@ namespace Tirabade
                 if (pair.Value.TricksterAccess == null || pair.Value.TricksterAccess.Any(access => string.IsNullOrWhiteSpace(access.Key)
                     || access.Value == null || access.Value.Detect == null || access.Value.Detect.Any(string.IsNullOrWhiteSpace)))
                     throw new InvalidOperationException("Malformed TricksterAccess metadata: " + pair.Key);
+            // E15: journal entries have distinct ids and text, at least one OpenWhen group, and read only known keys.
+            foreach (var pair in story.Relationships)
+            {
+                var entries = pair.Value.JournalEntries ?? throw new InvalidOperationException("JournalEntries cannot be null: " + pair.Key);
+                if (entries.Any(e => e == null || string.IsNullOrWhiteSpace(e.Id) || string.IsNullOrWhiteSpace(e.Title)
+                        || string.IsNullOrWhiteSpace(e.Description) || e.OpenWhen == null || e.OpenWhen.Length == 0 || e.SettledWhen == null)
+                    || entries.Select(e => e.Id).Distinct().Count() != entries.Count)
+                    throw new InvalidOperationException("Invalid journal entries (distinct ids, text, >= 1 OpenWhen group): " + pair.Key);
+                foreach (var entry in entries)
+                    foreach (var group in entry.OpenWhen.Concat(entry.SettledWhen))
+                        if (group == null || group.Length == 0 || group.Any(key => string.IsNullOrWhiteSpace(key)
+                            || !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key)
+                                && !(story.Latches?.ContainsKey(key) ?? false)))
+                            throw new InvalidOperationException("Journal entry reads an unknown or empty key group: " + pair.Key + "/" + entry.Id);
+            }
             if (story.PostBagSize < 1 || story.PostBagSize > 10 || story.QueueCapPerRelationship < 1
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
