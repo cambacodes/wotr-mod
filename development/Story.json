@@ -170994,6 +170994,10 @@
               "Alignment": {
                 "Direction": "Chaotic",
                 "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
               }
             },
             {
@@ -171010,7 +171014,7 @@
         {
           "Id": "wand",
           "Speaker": "Narrator",
-          "Text": "{n}You show her what is inside your sleeve: a wand of heal from the crusade's chaplains, three charges left, signed out against your name. Heal cannot bring back the dead. It does not have to. A body struck past the point of living stands at death's door for a moment before it goes through, and a heal in that moment keeps it on this side.{/n}\n{n}The chaplains will count three charges when you give it back. Your wands do not lose charges any more, and nobody ever sees you use one.{/n}\n{n}\"Whatever happens in this room,\" you tell her, \"stay down afterwards. Stay down until we are gone.\"{/n}",
+          "Text": "{n}You show her what is inside your sleeve: a wand of heal from the crusade's chaplains, three charges left. They signed it out against your name only after you promised them the next month's relic tithe. Heal cannot bring back the dead, and you are not planning to try. You are planning to be close enough, when she falls, that she never finishes falling.{/n}\n{n}The chaplains will count three charges when you give it back. Your wands do not lose charges any more, and nobody ever sees you use one.{/n}\n{n}\"Whatever happens in this room,\" you tell her, \"stay down afterwards. Stay down until we are gone.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171029,7 +171033,7 @@
         {
           "Id": "after",
           "Speaker": "Targona",
-          "Text": "{n}She looks at the wand for a long moment, and then at you.{/n}\n\"You are asking me to lie on a stone floor and let everyone believe I am dead.\" {n}The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n} \"My brother would have hated it. He could never lie down for anyone.\"\n\"I have called all of this a test. I did not think anyone would come into it with something up their sleeve, for me.\"\n{n}She lowers her head again, as she did before, and waits for you to choose.{/n}",
+          "Text": "{n}She looks at the wand for a long moment, and then at you.{/n}\n\"You are asking me to lie on a stone floor and let everyone believe I am dead.\" {n}The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n} \"My brother would have hated it. He could never lie down for anyone.\"\n\"I have called all of this a test, and I meant it. If I lie down on that floor and let them think I am dead, I will be lying to everyone who mourns me. Lariel's friends. The Hand. My healers.\" {n}She closes her eyes.{/n} \"I will do it. Not for you. For the wounded I would never reach from here.\"\n{n}She lowers her head again, as she did before, and waits for you to choose.{/n}",
           "Choices": [
             {
               "Text": "[Step back from the barrier.]",
@@ -172457,8 +172461,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

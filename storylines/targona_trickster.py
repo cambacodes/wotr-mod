@@ -112,15 +112,15 @@ FREED_JOKE = '[Spend it again, quietly] "Lariel left me a light in Kenabres. I\'
 SCENES.append(scene(P + "dead.setup", "Something of my brother", "Targona", 3, '"Before anything else. Look at me."', [
     nar("start", '''{n}Behind the barrier the angel lifts her head. The black wing twitches, as if something in the room has startled it.{/n}
 "You... carry something of my brother. I can feel it, like a lamp left burning in another room. Under Kenabres, in the rock where he died. It went into you." {n}Her voice does not break, but it thins.{/n} "Lariel is gone. I felt him go."''',
-        c(JOKE, "wand", mythic="Trickster", alignment=("Chaotic", 1)),
+        c(JOKE, "wand", mythic="Trickster", alignment=("Chaotic", 1), crusade=("Favors", -100)),
         c('"Nothing. Forget I spoke."', abort=True)),
-    nar("wand", '''{n}You show her what is inside your sleeve: a wand of heal from the crusade's chaplains, three charges left, signed out against your name. Heal cannot bring back the dead. It does not have to. A body struck past the point of living stands at death's door for a moment before it goes through, and a heal in that moment keeps it on this side.{/n}
+    nar("wand", '''{n}You show her what is inside your sleeve: a wand of heal from the crusade's chaplains, three charges left. They signed it out against your name only after you promised them the next month's relic tithe. Heal cannot bring back the dead, and you are not planning to try. You are planning to be close enough, when she falls, that she never finishes falling.{/n}
 {n}The chaplains will count three charges when you give it back. Your wands do not lose charges any more, and nobody ever sees you use one.{/n}
 {n}"Whatever happens in this room," you tell her, "stay down afterwards. Stay down until we are gone."{/n}''',
         c("Continue", "after", flags=(PRIMED, LAB_LINE))),
     t("after", '''{n}She looks at the wand for a long moment, and then at you.{/n}
 "You are asking me to lie on a stone floor and let everyone believe I am dead." {n}The white wing lifts a little, the way a bird's does when it cannot decide whether to fly.{/n} "My brother would have hated it. He could never lie down for anyone."
-"I have called all of this a test. I did not think anyone would come into it with something up their sleeve, for me."
+"I have called all of this a test, and I meant it. If I lie down on that floor and let them think I am dead, I will be lying to everyone who mourns me. Lariel's friends. The Hand. My healers." {n}She closes her eyes.{/n} "I will do it. Not for you. For the wounded I would never reach from here."
 {n}She lowers her head again, as she did before, and waits for you to choose.{/n}''',
       c('[Step back from the barrier.]')),
 ], requires=("trickster", UMD2), forbids=(PRIMED, FREE, DEAD, CONDEMNED), last=3, optional=True, Relationship="targona",
