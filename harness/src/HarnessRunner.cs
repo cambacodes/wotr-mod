@@ -404,6 +404,10 @@ namespace RRT.TestHarness
                     if (dc.Dialog == null) { run.Result = "completed"; break; }
                     if (step >= plan.MaxStepsPerWalk) { run.Result = "step-limit"; run.Detail = "exceeded " + plan.MaxStepsPerWalk + " selections"; break; }
 
+                    // Let the dialog UI bind the current cue before answering: selecting within the bind frame races
+                    // CueVM.GetCueText (NullReferenceException in DialogCueView.BindViewImplementation), a harness artefact.
+                    yield return new WaitForSecondsRealtime(0.25f);
+                    if (dc.Dialog == null) { run.Result = "completed"; break; }
                     var answers = dc.Answers.ToList();
                     counts.Add(answers.Count);
                     int index = prefixPath != null ? (step < prefixPath.Count ? prefixPath[step] : 0) : rng!.Next(answers.Count);
