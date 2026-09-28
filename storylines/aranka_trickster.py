@@ -282,7 +282,7 @@ def night_nodes():
     return [
         nar("threshold", '''{n}@ROOM@ She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}
 {n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}
-{n}"Count me in," she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces, and moves.{/n}''',
+{n}"Count me in," she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces.{/n}''',
             c("Continue", "morning")),
         nar("morning", '''{n}Dawn. @HOUSE@ hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down @CROWD@ is very busy looking at his breakfast.{/n}
 {n}@BILL@: the room, the broken slat in the bed, "lost custom", and a line at the bottom that only says "Noise." Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} "Don't you dare take it off the war chest. I earned every copper of that."''',
