@@ -172942,7 +172942,7 @@
         {
           "Id": "contaminated",
           "Speaker": "Areelu",
-          "Text": "\"Everything.\" {n}Her gaze does not leave you.{/n} \"The first fever. The first lie you told that was believed. The night you should have died in Kenabres, and did not, because I was there.\"\n\"And a gap. Some while ago the notes stopped agreeing with you. You began to do things I had not written down. That is not your triumph, Commander. It is my error, and I have been correcting errors since before your grandparents were born.\"",
+          "Text": "\"Everything.\" {n}Her gaze does not leave you.{/n} \"The first fever. The first lie you told that was believed. The crevice in Kenabres, where I saved you and your unfortunate companions, and you never knew who to thank.\"\n\"And a gap. Some while ago the notes stopped agreeing with you. You began to do things I had not written down. That is not your triumph, Commander. It is my error, and I have been correcting errors since before your grandparents were born.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -181917,8 +181917,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

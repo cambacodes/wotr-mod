@@ -140,7 +140,7 @@ inline("areelu.trickster.audience.notes", "The subject's file", 4,
         c('[Joke] "If I\'m your creation, every joke I make is technically yours. Congratulations. You\'re funnier than you look."', "yours"),
         c('[Joke] "I\'ll trade you. I\'ve been keeping notes on you too. Mine are shorter."', "trade"),
         c('"Never mind. Tell me what I came to hear."', abort=True)),
-    ar("contaminated", '''"Everything." {n}Her gaze does not leave you.{/n} "The first fever. The first lie you told that was believed. The night you should have died in Kenabres, and did not, because I was there."
+    ar("contaminated", '''"Everything." {n}Her gaze does not leave you.{/n} "The first fever. The first lie you told that was believed. The crevice in Kenabres, where I saved you and your unfortunate companions, and you never knew who to thank."
 "And a gap. Some while ago the notes stopped agreeing with you. You began to do things I had not written down. That is not your triumph, Commander. It is my error, and I have been correcting errors since before your grandparents were born."''',
         c("Continue", "offer")),
     ar("yours", '''"Then I have made something that wastes my time with great precision."
