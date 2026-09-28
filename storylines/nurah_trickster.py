@@ -327,7 +327,7 @@ letter("nurah.trickster.after.proofs", "Chapter one, by post", 5, [
         c("Continue", "raised", requires=(RETURNED,)), c("Continue", "courier", forbids=(RETURNED,))),
     nar("raised", '''{n}They come wrapped in a chaplain's receipt: one resurrection, one halfling, name and hour and place as supplied. Someone has corrected the chaplain's spelling in the margin.{/n}''',
         c("Continue", "proofs")),
-    nar("courier", '''{n}They come by Mutasafen's own courier, who does not know what he carries and would rather not be told.{/n}''',
+    nar("courier", '''{n}They come by a courier in no livery at all, who does not know what he carries and would rather not be told.{/n}''',
         c("Continue", "proofs")),
     nu("proofs", '''"Chapter one. The war from the wrong side, which is the only side worth reading. I've been on both, and one of them had a larva's-eye view.
 "There is a gap on the first page exactly one name wide, where you go. Fill it in and send it back, if you still think paper does what you tell it. Or leave it blank, and let me decide what you were."''',
@@ -364,7 +364,7 @@ terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
 
 terms_in_person("nurah.trickster.ran_off.terms", "nurah.presence",
     '''{n}She pushes the hood back just far enough for you to see her grin.{/n} "Came in on a pedlar's cart, under a crate of my own pamphlets. Nobody searches a crate of pamphlets. Nobody reads them either, which is a separate grievance.
-"Mutasafen thinks I've gone to buy paper. I have. I've also come to set terms, and I don't do that by post."
+"I've come to set terms, and I don't do that by post. Not with you. You forge."
 {n}She holds up the parcel: the whole manuscript, with the insulting dedication still on its first page, in her own hand, where it will always be.{/n}''',
     '''{n}She leads you up the back stair to your own rooms as if she had drawn the plans of the citadel herself, which, as its historian, she more or less did. Once the door is shut she drops the hood, then the pedlar's coat, then, with a look that dares you to comment, a great deal more.{/n}
 "Author's terms. I spent a year writing about other people's nights. Tonight I'm doing the research."

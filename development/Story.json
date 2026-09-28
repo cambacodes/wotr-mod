@@ -149456,7 +149456,7 @@
         {
           "Id": "courier",
           "Speaker": "Narrator",
-          "Text": "{n}They come by Mutasafen's own courier, who does not know what he carries and would rather not be told.{/n}",
+          "Text": "{n}They come by a courier in no livery at all, who does not know what he carries and would rather not be told.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -149784,7 +149784,7 @@
         {
           "Id": "start",
           "Speaker": "Nurah",
-          "Text": "{n}She pushes the hood back just far enough for you to see her grin.{/n} \"Came in on a pedlar's cart, under a crate of my own pamphlets. Nobody searches a crate of pamphlets. Nobody reads them either, which is a separate grievance.\n\"Mutasafen thinks I've gone to buy paper. I have. I've also come to set terms, and I don't do that by post.\"\n{n}She holds up the parcel: the whole manuscript, with the insulting dedication still on its first page, in her own hand, where it will always be.{/n}\n\"Terms. Author's terms, which nobody in my life has ever let me set. My name on the cover. Yours nowhere unless I put it there, and I decide how. You don't touch a word, and you don't read it until it's bound.\"",
+          "Text": "{n}She pushes the hood back just far enough for you to see her grin.{/n} \"Came in on a pedlar's cart, under a crate of my own pamphlets. Nobody searches a crate of pamphlets. Nobody reads them either, which is a separate grievance.\n\"I've come to set terms, and I don't do that by post. Not with you. You forge.\"\n{n}She holds up the parcel: the whole manuscript, with the insulting dedication still on its first page, in her own hand, where it will always be.{/n}\n\"Terms. Author's terms, which nobody in my life has ever let me set. My name on the cover. Yours nowhere unless I put it there, and I decide how. You don't touch a word, and you don't read it until it's bound.\"",
           "Choices": [
             {
               "Text": "Continue",
