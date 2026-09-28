@@ -171044,7 +171044,8 @@
         }
       ],
       "Requires": [
-        "trickster"
+        "trickster",
+        "trickster.umd_tier2"
       ],
       "Forbids": [
         "targona.trickster.primed",
@@ -171497,13 +171498,29 @@
               "Text": "[Spend it again, quietly] \"Lariel left me a light in Kenabres. I'll use it all night. It won't run down.\"",
               "Next": "night",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "trickster.umd_tier2"
+              ],
               "Forbids": [],
               "Abort": false,
               "Mythic": "PlayerIsTrickster",
               "Crusade": {
                 "Resource": "Favors",
                 "Amount": -300
+              }
+            },
+            {
+              "Text": "[Spend every charge] \"Give it here. And send to the quartermaster for another.\"",
+              "Next": "night_spent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.umd_tier2"
+              ],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -500
               }
             },
             {
@@ -171528,6 +171545,26 @@
               "Set": [
                 "targona.trickster.primed",
                 "targona.trickster.cost.wand_unspent"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Targona"
+        },
+        {
+          "Id": "night_spent",
+          "Speaker": "Narrator",
+          "Text": "{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}\n{n}By dawn every cot has had its charge, and three empty wands lie on the table by the door. Far above, in the halls of Heaven, someone who has spent her whole life healing strangers looks up.{/n}",
+          "Choices": [
+            {
+              "Text": "[Finish at dawn] Put the empty wands away.",
+              "Next": null,
+              "Set": [
+                "targona.trickster.primed",
+                "targona.trickster.cost.wand_unspent",
+                "targona.trickster.cost.charges_spent"
               ],
               "Requires": [],
               "Forbids": [],
@@ -171597,7 +171634,7 @@
         {
           "Id": "greet_lab",
           "Speaker": "Targona",
-          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Behind the barrier you showed me a wand up your sleeve and told me to lie still. I did not have to. You broke the barrier instead. And then someone used my brother's light here all night, and did not let it run down. I came to see who would do such a thing, and why.\"",
+          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Behind the barrier you showed me a wand up your sleeve and told me to lie still. I did not have to. You broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why.\"",
           "Choices": [
             {
               "Text": "[Explain] \"They were dying. I had a light.\"",
@@ -171613,7 +171650,7 @@
         {
           "Id": "greet",
           "Speaker": "Targona",
-          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Someone used my brother's light here all night, and did not let it run down. I felt it in the halls of Heaven, like a hand on my shoulder. I came to see who would do such a thing, and why.\"",
+          "Text": "\"Commander. Greetings, my rescuer.\" {n}She does not smile.{/n}\n\"Someone worked these rows all night with a healer's wand and would not stop. I felt it in the halls of Heaven, like a hand on my shoulder. I came to see who would do such a thing, and why.\"",
           "Choices": [
             {
               "Text": "[Explain] \"They were dying. I had a light.\"",
@@ -174602,6 +174639,9 @@
     "baphomet.parley.latched": [
       "baphomet.parley"
     ]
+  },
+  "MainCharacterFacts": {
+    "trickster.umd_tier2": "1383f21534d8b6a45bdbdc8ddce7a187"
   },
   "InventoryItems": {
     "soana.medallion_held": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53",

@@ -309,6 +309,7 @@ BINDINGS = {
     'storyteller.pharasma_resolved': ('Etudes', 'b26f8535cc3d4a5fa5c2d84c0faf895b', 'StorytellerRejectedPharasma OR StorytellerDeadDelayed OR StorytellerDead'),
     'storyteller.rejected': ('Etudes', 'b26f8535cc3d4a5fa5c2d84c0faf895b', 'StorytellerRejectedPharasma (ledger row 9)'),
     'targona.dead_lab': ('Etudes', '3b8bd37108050a94b9be14e22501e090', 'TargonaIsWasKilledInAreeluLab'),
+    'trickster.umd_tier2': ('MainCharacterFacts', '1383f21534d8b6a45bdbdc8ddce7a187', "TricksterUseMagicDeviceTier2Feature: 'Wands you use no longer lose charges' (a chosen Trickster trick)"),
     'targona.free': ('Etudes', '720af1f72f413354db3f4d41f76d5af6', 'TargonaIsFreeInAreeluLab (started by TargonaWings/Answer_0031 [Destroy the barrier])'),
     'targona.heard_twins': ('SeenCues', '67eb3b5ed760435487fb011f454988e8', "c1/EstrodTower/Teldon/Cue_3 ('two angels who emerged from one soul'); node-variant read on"),
     'targona.ran_treatment_completed': ('CompletedQuests', '6ec03ce2f763460c8ac89f4c2064c5ad', 'parent RanRomance quest (existing key, not in blueprints.zip)'),
@@ -593,7 +594,7 @@ def _keys(scene):
 
 def _bound(payload, key):
     kinds = ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
-             "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "Latches", "Derived")
+             "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts", "Latches", "Derived")
     return any(key in (payload.get(k) or {}) for k in kinds)
 
 

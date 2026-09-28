@@ -98,7 +98,14 @@ internal static class TargonaTricksterTests
             "Targona's copy would stand where another presence stands behind the quartermaster.");
 
         // Trk_Targona_Setup: the primer, before the blow.
-        var lab = World(story, 3, "trickster", "trickster.ever");
+        var lab = World(story, 3, "trickster", "trickster.ever", "trickster.umd_tier2");
+        // The device needs the chosen Use Magic Device trick (MainCharacterFacts); without it, only the late fallback.
+        check(story.MainCharacterFacts["trickster.umd_tier2"] == "1383f21534d8b6a45bdbdc8ddce7a187", "The UMD trick is not read natively.");
+        var noTrick = World(story, 3, "trickster", "trickster.ever");
+        check(!Rules.Available(story, setup, noTrick), "The lab primer opens for a Trickster without the Use Magic Device trick.");
+        var noTrickKilled = World(story, 3, "trickster", "trickster.ever", "targona.dead_lab");
+        check(Rules.Available(story, lateLight, noTrickKilled) && Reaches(After(lateLight, noTrickKilled, "raise", 0), Committed),
+            "A Trickster without the trick has no priced way back for her.");
         check(Rules.Available(story, setup, lab) && !Rules.Available(story, lateLight, lab) && !Rules.Available(story, oneSoul, lab),
             "Trk_Targona_Setup: availability.");
         var joke = setup.Nodes.Single(n => n.Id == "start").Choices[0];
@@ -211,7 +218,7 @@ internal static class TargonaTricksterTests
         check(refused.Has(Closed) && !refused.Has(Committed), "Refusing her price does not close her route.");
 
         // Trk_Targona_Free: the wand that does not run down.
-        var free = World(story, 5, "trickster", "trickster.ever", "targona.free");
+        var free = World(story, 5, "trickster", "trickster.ever", "targona.free", "trickster.umd_tier2");
         check(Rules.Available(story, spent, free) && !Rules.Available(story, oneSoul, free) && !Rules.Available(story, lateLight, free),
             "Trk_Targona_Free: availability.");
         var wand = spent.Nodes.Single(n => n.Id == "start").Choices[0];
@@ -220,6 +227,12 @@ internal static class TargonaTricksterTests
         var night = After(spent, free, "night", 0);
         check(night.Has(P + "primed") && night.Has(P + "cost.wand_unspent"), "Trk_Targona_Free: flags.");
         check(Rules.Available(story, freeFurlough, night), "Trk_Targona_Free: she does not come.");
+        var freeNoTrick = World(story, 5, "trickster", "trickster.ever", "targona.free");
+        var spentAll = After(spent, freeNoTrick, "night_spent", 0);
+        check(spent.Nodes.Single(n => n.Id == "start").Choices.Single(c => c.Next == "night_spent").Crusade?.Resource == "Finances"
+              && spentAll.Has(P + "cost.charges_spent") && Rules.Available(story, freeFurlough, spentAll) && !Program.Walk(spent, freeNoTrick)
+                  .Any(o => o.Has(P + "cost.wand_unspent") && !o.Has(P + "cost.charges_spent")),
+            "Without the trick, the wand night is free or claims an unspent wand.");
         var met = After(freeFurlough, night, "why", 0);
         check(met.Has(P + "met") && met.Has("targona.started") && Reaches(met, Committed), "Trk_Targona_Free: the commit is unreachable.");
         var labPages = new HashSet<string>();

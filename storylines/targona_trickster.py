@@ -52,6 +52,8 @@ DEAD = "targona.dead_lab"
 FREE = "targona.free"
 CONDEMNED = "targona.condemned"
 TREATED = "targona.ran_treatment_completed"
+UMD2 = "trickster.umd_tier2"   # MainCharacterFacts: TricksterUseMagicDeviceTier2Feature 1383f215, a chosen trick
+CHARGES = P + "cost.charges_spent"
 
 RELATIONSHIP_PATCH = dict(
     UnavailableOverrides={DEAD: RETURNED},
@@ -121,7 +123,7 @@ SCENES.append(scene(P + "dead.setup", "Something of my brother", "Targona", 3, '
 "I have called all of this a test. I did not think anyone would come into it with something up their sleeve, for me."
 {n}She lowers her head again, as she did before, and waits for you to choose.{/n}''',
       c('[Step back from the barrier.]')),
-], requires=("trickster",), forbids=(PRIMED, FREE, DEAD, CONDEMNED), last=3, optional=True, Relationship="targona",
+], requires=("trickster", UMD2), forbids=(PRIMED, FREE, DEAD, CONDEMNED), last=3, optional=True, Relationship="targona",
    AnswerLists=[LAB_LIST], EntryMythic="PlayerIsTrickster"))
 
 # R2-2 late fallback: no wand was in the sleeve and the two rounds are long past. The act is performed now and paid
@@ -201,11 +203,16 @@ ward(P + "dead.second_asking", "The boy with one leg", '"Targona. A word."', [
 
 letter(P + "free.spent_light", "The last wand", [
     nar("start", '''{n}The field infirmary behind the quartermaster's stores is down to its last wand of healing, and the wounded from the day's fighting on the walls are still coming in. The surgeons are rationing it by the charge: one for a lung, none for a hand.{/n}''',
-        c(FREED_JOKE, "night", mythic="Trickster", crusade=("Favors", -300)),
+        c(FREED_JOKE, "night", requires=(UMD2,), mythic="Trickster", crusade=("Favors", -300)),
+        c('[Spend every charge] "Give it here. And send to the quartermaster for another."', "night_spent", forbids=(UMD2,),
+          crusade=("Finances", -500)),
         c('"Leave the rationing to the surgeons."', abort=True)),
     nar("night", '''{n}You take the wand yourself and work down the rows all night, with Lariel's light in your chest behind every word. By dawn every cot has had its charge. The wand has not lost one.{/n}
 {n}The chaplains are paid to remember it as an ordinary night. Far above, in the halls of Heaven, someone made from the same soul looks up.{/n}''',
         c('[Finish at dawn] Put the wand away. It is still full.', flags=(PRIMED, WAND))),
+    nar("night_spent", '''{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}
+{n}By dawn every cot has had its charge, and three empty wands lie on the table by the door. Far above, in the halls of Heaven, someone who has spent her whole life healing strangers looks up.{/n}''',
+        c('[Finish at dawn] Put the empty wands away.', flags=(PRIMED, WAND, CHARGES))),
 ], requires=("trickster", FREE), forbids=(WAND, TREATED, DEAD), delay=0)
 
 ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wards."', [
@@ -214,10 +221,10 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
         c("Continue", "greet_lab", requires=(LAB_LINE,)),
         c("Continue", "greet", forbids=(LAB_LINE,))),
     t("greet_lab", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
-"Behind the barrier you showed me a wand up your sleeve and told me to lie still. I did not have to. You broke the barrier instead. And then someone used my brother's light here all night, and did not let it run down. I came to see who would do such a thing, and why."''',
+"Behind the barrier you showed me a wand up your sleeve and told me to lie still. I did not have to. You broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("greet", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
-"Someone used my brother's light here all night, and did not let it run down. I felt it in the halls of Heaven, like a hand on my shoulder. I came to see who would do such a thing, and why."''',
+"Someone worked these rows all night with a healer's wand and would not stop. I felt it in the halls of Heaven, like a hand on my shoulder. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("why", '''"For the wounded." {n}She considers you with sad, clear eyes.{/n}
 "Then I will stay, for the wounded. Heaven can spare me for a season, and Heaven's healers have been very kind to me, and very patient with this." {n}The black wing shifts.{/n} "Here nobody has time to be patient with it. I find I prefer that.

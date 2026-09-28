@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-targona\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1763,
-  "unique_targets": 453,
+  "binding_uses": 1764,
+  "unique_targets": 454,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -17,6 +17,10 @@
     "32a037e97c3d5c54b85da8f639616c57": {
       "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
       "type": "BlueprintUnit"
+    },
+    "1383f21534d8b6a45bdbdc8ddce7a187": {
+      "path": "Mythic/Trickster/UseMagicDevice/TricksterUseMagicDeviceTier2Feature.jbp",
+      "type": "BlueprintFeature"
     },
     "2779754eecffd044fbd4842dba55312c": {
       "path": "Units/Companions/Ember/Ember_Companion.jbp",
