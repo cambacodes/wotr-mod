@@ -212468,8 +212468,7 @@
         "council.fought_nocta_allied": "chadali.trickster.returned",
         "sacrifice": "trickster.cheated_death"
       },
-      "Relationship": "chadali",
-      "EpilogueAfter": "b2fd1f720322d6749b921cdd34328c3a"
+      "Relationship": "chadali"
     },
     {
       "Id": "chadali.trickster.epilogue.declined",
@@ -212512,8 +212511,7 @@
         "council.fought": "chadali.trickster.returned",
         "council.fought_nocta_allied": "chadali.trickster.returned"
       },
-      "Relationship": "chadali",
-      "EpilogueAfter": "b2fd1f720322d6749b921cdd34328c3a"
+      "Relationship": "chadali"
     },
     {
       "Id": "chadali.trickster.epilogue.lucky_night",
@@ -212900,8 +212898,7 @@
         "chadali.trickster.declined": "chadali.committed",
         "sacrifice": "trickster.cheated_death"
       },
-      "Relationship": "chadali",
-      "EpilogueAfter": "b2fd1f720322d6749b921cdd34328c3a"
+      "Relationship": "chadali"
     },
     {
       "Id": "chadali.trickster.react.eritrice_coin",
