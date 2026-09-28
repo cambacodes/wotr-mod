@@ -158,7 +158,7 @@ partner("irabeth", "irabeth", "irabeth.committed", "irabeth.closed", "Irabeth, D
     ledger=("Irabeth: an order not rescinded", "The Knight-Captain is still under my orders. Her discharge is unsigned. I will need to be alive to sign it."))
 
 partner("tirabade", "tirabade", "committed", "closed", "The Third Chair",
-    '''Irabeth and Anevia Tirabade went home after the war to the house on the corner, where the table had been set for three since before anyone admitted it. They never discussed the third chair. It was Anevia who decided it would stay, and Irabeth who decided it would be dusted. Some nights it was empty. Some nights, according to the neighbours, it was not, and the house on the corner laughed until dawn.''',
+    '''Irabeth and Anevia Tirabade went home after the war to the house on the corner. The three of them had settled the question before Threshold, at their own table, when the Commander answered that {mf|he|she} chose a life with them both; the wives had asked it together, and they held {mf|him|her} to the answer. There was a third chair. It was Anevia who decided where it went, and Irabeth who decided it would be dusted. Some nights, according to the neighbours, the house on the corner laughed until dawn.''',
     (
         page_p('''Irabeth's discharge came by post, two months after Threshold, in a hand she knew. Anevia read it once over her shoulder, then took it, folded it in three, and put it in the drawer where she kept the things she meant to use against people later.''', requires=(I + "cost.under_orders",)),
         page_p('''The wardrobe in the back room was only a wardrobe now. Anevia kept a hammer on top of it anyway.''', requires=(A + "cost.socoth_listening",)),
