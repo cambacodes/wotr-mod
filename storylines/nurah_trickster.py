@@ -128,7 +128,8 @@ pardon("nurah.trickster.prison.pardon", CELL_A, SHRUG,
        '''{n}Nurah takes the paper without getting up from the bunk.{/n} "Come to watch the traitor rot? It's slow work, Commander. You should have brought a chair."''',
        ("trickster", "nurah.prison"), (RECRUITED,))
 pardon("nurah.trickster.prison.pardon_recruited", CELL_B, ASK,
-       '''{n}Nurah rolls onto one elbow on the bunk.{/n} "The Commander, with a candle and that face. Either you've come to execute me or to cheat at cards. I'd prefer cards. I'd win."''',
+       '''{n}Nurah rolls onto one elbow on the bunk and does not smile.{/n} "The pawn remembers the hand that put it back in the box. You came with a candle and that face, so either you've come to execute me or to cheat at cards."
+{n}Her eyes go to your sword hand, then to the paper in the other.{/n} "If it's cards, I'm dealing."''',
        ("trickster", "nurah.prison", RECRUITED), ())
 
 
@@ -226,6 +227,9 @@ SCENES.append(scene("nurah.trickster.dead.rumour", "A custom order", "Ramisa", 4
     Chapters=[4], RequiresAnyGroups=[list(DEATHS)], AnswerLists=[RAMISA], NativeReturnCue=RAMISA_AGAIN,
     TricksterDevice=True, TricksterState="dead"))
 
+CHAPLAINS = '''{n}The rite has terms of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must pay for the diamond the rite consumes, and the Commander must sign a writ that the woman raised stays dead on the crusade's rolls. She may live. She may not be Nurah Dendiwhar again, anywhere the crusade's writ runs.{/n}'''
+PAY_CHAPLAINS = c("[Pay for the diamond and sign the writ.]", crusade=("Finances", -300),
+                  flags=("nurah.trickster.cost.chaplains_writ",))
 BILL_FREE = (RETURNED, RELEASED, ACCEPTED, "nurah.trickster.cost.larva_memory", "nurah.trickster.pseudonym")
 FORGE = '[Forge the bill of sale] "Owner of record: the author herself. Dead or not, she still owns herself."'
 
@@ -258,8 +262,9 @@ letter("nurah.trickster.dead.bill_of_sale", "Owner of record", 4, [
 {n}The larva looks at you through the bars for the last time as a larva.{/n} "I'm dead on your record," {n}it says.{/n} "Fine. I'll write as somebody else."''',
            c("Continue", "duplicate", requires=(IN_YOUR_NAME,)), c("Continue", "sent", forbids=(IN_YOUR_NAME,))),
     ramisa("duplicate", '''"Every sale has two copies, outsider. I keep the other one. For my collection."''', c("Continue", "sent")),
-    nar("sent", '''{n}The projection winks out, and the cage with it. By the next courier from Drezen, the chaplains of the citadel write that a soul has been delivered to their altar with a bill of sale pinned to it, in a hand none of them can read without feeling watched.{/n}''',
-        c("[Put the ledger away.]")),
+    nar("sent", '''{n}The projection winks out, and the cage with it. By the next courier from Drezen, the chaplains of the citadel write that a soul has been delivered to their altar with a bill of sale pinned to it, in a hand none of them can read without feeling watched.{/n}
+''' + CHAPLAINS,
+        PAY_CHAPLAINS),
     ramisa("stock", '''"Then she's stock." {n}The projection winks out. The larva does not.{/n}''', c("[Put the ledger away.]")),
 ], requires=("trickster.ever", PRIMED, RUMOUR), forbids=(RETURNED,), delay=24, RequiresAnyGroups=[list(DEATHS)],
    TricksterDevice=True, TricksterState="dead")
@@ -278,8 +283,9 @@ letter("nurah.trickster.dead.rumour_courier", "Late collection", 5, [
     nu("owned", '''"Out of the Abyss and straight back into service. Lord Trezbot would have loved you." {n}The voice comes through the slats.{/n} "Burn it, or leave me in the crate."''',
        c("[Burn the bill.]", "freed", flags=BILL_FREE + COURIER_LATE + (IN_YOUR_NAME,)),
        c('"I\'m keeping it."', "stock", flags=(CLOSED, IN_YOUR_NAME) + COURIER_LATE)),
-    nar("freed", '''{n}Ramisa's quill writes "the author herself" and refuses to be put down until the chaplain's form is filled in too. The crate goes to the chapel that afternoon. By evening the chaplains are arguing with a halfling about the spelling of her own name.{/n}''',
-        c("[Let them argue.]")),
+    nar("freed", '''{n}Ramisa's quill writes "the author herself" and refuses to be put down until the chaplain's form is filled in too. The crate goes to the chapel that afternoon.{/n}
+''' + CHAPLAINS,
+        PAY_CHAPLAINS),
     nu("stock", '"Then I\'m stock." {n}The courier nails the lid back down and takes the crate away.{/n}', c("[Watch it go.]")),
 ], requires=("trickster",), forbids=(RETURNED,), delay=0, RequiresAnyGroups=[list(DEATHS)],
    TricksterDevice=True, TricksterState="dead")
@@ -353,13 +359,13 @@ def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids):
 
 terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
     '''{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} "I've had a mouth again since the chaplains stopped arguing with me about my own name. I'm catching up.
-"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. I'm dead on your record, Commander. It's the best disguise I've ever had."
+"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. You signed a writ that I stay dead on the crusade's rolls, Commander. It's the best disguise I've ever had, and I didn't even have to forge it."
 {n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}''',
     '''{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}
 "I spent a season as a thing in a cage that could not touch anything. Author's terms: tonight I touch everything."
 {n}She means it. Her hands are everywhere at once, quick and ink-stained and greedy, learning you the way she learns a city, by getting lost in it on purpose. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
     '''{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} "Chapter nine," she says without looking up. "I'm taking out the hunchback. I'm putting in something much worse. You'll love it."
-{n}Two days later the chaplains send you their bill for the resurrection. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours.{/n}''',
+{n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and signed with a name that is not hers.{/n}''',
     (RETURNED,), ())
 
 terms_in_person("nurah.trickster.ran_off.terms", "nurah.presence",
@@ -380,6 +386,9 @@ EPILOGUE_PARAGRAPHS = (
     p("The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the "
       "Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.",
       requires=(RETURNED,)),
+    p("The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author "
+      "of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once "
+      "thought to look for a dead woman.", requires=("nurah.trickster.cost.chaplains_writ",)),
     p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
       "because I had stopped being funny. N. D.' She never managed to remove it. After a while she stopped trying, and began "
       "adding a footnote to it instead, a different one in every edition.", requires=(GHOST,)),

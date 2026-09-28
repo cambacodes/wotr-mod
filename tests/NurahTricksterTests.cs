@@ -162,7 +162,8 @@ internal static class NurahTricksterTests
             if (camellia) { w.Flags.Add("nurah.dead_camellia"); w.Times["nurah.dead_camellia"] = w.Hour - 200; }
             check(Rules.Available(story, bill, w), "Trk_Nurah_BillOfSale: unavailable.");
             var freed = Program.Walk(bill, w).Where(r => r.Has("nurah.trickster.returned")).ToList();
-            check(freed.Count > 0 && freed.All(r => r.Has("nurah.trickster.released") && r.Has("nurah.trickster.accepted") && r.Has("nurah.trickster.pseudonym")),
+            check(freed.Count > 0 && freed.All(r => r.Has("nurah.trickster.released") && r.Has("nurah.trickster.accepted") && r.Has("nurah.trickster.pseudonym")
+                && r.Has("nurah.trickster.cost.chaplains_writ")),
                 "Trk_Nurah_BillOfSale: flags.");
             check(Program.Walk(bill, w).Any(r => r.Has("nurah.closed") && r.Has("nurah.trickster.cost.left_in_stock")), "The bill has no way to leave her in stock.");
             var raised = Later(story, freed[0], 100, 5);
@@ -174,6 +175,9 @@ internal static class NurahTricksterTests
         check(Rules.Available(story, courier, late) && !Rules.Available(story, rumour, late), "Trk_Nurah_LateCourier: availability.");
         var collected = Program.Walk(courier, late).Where(r => r.Has("nurah.trickster.returned")).ToList();
         check(collected.Count > 0 && collected.All(r => r.Has("nurah.trickster.cost.late")), "Trk_Nurah_LateCourier: flags.");
+        check(bill.Nodes.Single(n => n.Id == "sent").Choices.Single().Crusade?.Amount == -300
+              && courier.Nodes.Single(n => n.Id == "freed").Choices.Single().Crusade?.Amount == -300
+              && collected.All(r => r.Has("nurah.trickster.cost.chaplains_writ")), "The chaplains' price for the rite is missing.");
         var lateProofs = Later(story, collected[0], 72);
         check(Rules.Available(story, proofs, lateProofs), "Trk_Nurah_LateCourier: no proofs.");
         var lateSeen = After(proofs, lateProofs, "proofs", 0);

@@ -147800,7 +147800,7 @@
         {
           "Id": "start",
           "Speaker": "Nurah",
-          "Text": "{n}Nurah rolls onto one elbow on the bunk.{/n} \"The Commander, with a candle and that face. Either you've come to execute me or to cheat at cards. I'd prefer cards. I'd win.\"",
+          "Text": "{n}Nurah rolls onto one elbow on the bunk and does not smile.{/n} \"The pawn remembers the hand that put it back in the box. You came with a candle and that face, so either you've come to execute me or to cheat at cards.\"\n{n}Her eyes go to your sword hand, then to the paper in the other.{/n} \"If it's cards, I'm dealing.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -148795,15 +148795,21 @@
         {
           "Id": "sent",
           "Speaker": "Narrator",
-          "Text": "{n}The projection winks out, and the cage with it. By the next courier from Drezen, the chaplains of the citadel write that a soul has been delivered to their altar with a bill of sale pinned to it, in a hand none of them can read without feeling watched.{/n}",
+          "Text": "{n}The projection winks out, and the cage with it. By the next courier from Drezen, the chaplains of the citadel write that a soul has been delivered to their altar with a bill of sale pinned to it, in a hand none of them can read without feeling watched.{/n}\n{n}The rite has terms of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must pay for the diamond the rite consumes, and the Commander must sign a writ that the woman raised stays dead on the crusade's rolls. She may live. She may not be Nurah Dendiwhar again, anywhere the crusade's writ runs.{/n}",
           "Choices": [
             {
-              "Text": "[Put the ledger away.]",
+              "Text": "[Pay for the diamond and sign the writ.]",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "nurah.trickster.cost.chaplains_writ"
+              ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -300
+              }
             }
           ],
           "Portrait": "Nurah"
@@ -149034,15 +149040,21 @@
         {
           "Id": "freed",
           "Speaker": "Narrator",
-          "Text": "{n}Ramisa's quill writes \"the author herself\" and refuses to be put down until the chaplain's form is filled in too. The crate goes to the chapel that afternoon. By evening the chaplains are arguing with a halfling about the spelling of her own name.{/n}",
+          "Text": "{n}Ramisa's quill writes \"the author herself\" and refuses to be put down until the chaplain's form is filled in too. The crate goes to the chapel that afternoon.{/n}\n{n}The rite has terms of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must pay for the diamond the rite consumes, and the Commander must sign a writ that the woman raised stays dead on the crusade's rolls. She may live. She may not be Nurah Dendiwhar again, anywhere the crusade's writ runs.{/n}",
           "Choices": [
             {
-              "Text": "[Let them argue.]",
+              "Text": "[Pay for the diamond and sign the writ.]",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "nurah.trickster.cost.chaplains_writ"
+              ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -300
+              }
             }
           ],
           "Portrait": "Nurah"
@@ -149564,7 +149576,7 @@
         {
           "Id": "start",
           "Speaker": "Nurah",
-          "Text": "{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} \"I've had a mouth again since the chaplains stopped arguing with me about my own name. I'm catching up.\n\"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. I'm dead on your record, Commander. It's the best disguise I've ever had.\"\n{n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}\n\"Terms. Author's terms, which nobody in my life has ever let me set. My name on the cover. Yours nowhere unless I put it there, and I decide how. You don't touch a word, and you don't read it until it's bound.\"",
+          "Text": "{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} \"I've had a mouth again since the chaplains stopped arguing with me about my own name. I'm catching up.\n\"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. You signed a writ that I stay dead on the crusade's rolls, Commander. It's the best disguise I've ever had, and I didn't even have to forge it.\"\n{n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}\n\"Terms. Author's terms, which nobody in my life has ever let me set. My name on the cover. Yours nowhere unless I put it there, and I decide how. You don't touch a word, and you don't read it until it's bound.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -149724,7 +149736,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} \"Chapter nine,\" she says without looking up. \"I'm taking out the hunchback. I'm putting in something much worse. You'll love it.\"\n{n}Two days later the chaplains send you their bill for the resurrection. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours.{/n}",
+          "Text": "{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} \"Chapter nine,\" she says without looking up. \"I'm taking out the hunchback. I'm putting in something much worse. You'll love it.\"\n{n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and signed with a name that is not hers.{/n}",
           "Choices": [
             {
               "Text": "[Let her write.]",
@@ -150051,6 +150063,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Requires": [
+                "nurah.trickster.cost.chaplains_writ"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me because I had stopped being funny. N. D.' She never managed to remove it. After a while she stopped trying, and began adding a footnote to it instead, a different one in every edition.",
               "Requires": [
                 "nurah.trickster.cost.ghostwritten"
@@ -150115,6 +150135,14 @@
               "Text": "The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.",
               "Requires": [
                 "nurah.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Requires": [
+                "nurah.trickster.cost.chaplains_writ"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -150205,6 +150233,14 @@
               "Text": "The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.",
               "Requires": [
                 "nurah.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once thought to look for a dead woman.",
+              "Requires": [
+                "nurah.trickster.cost.chaplains_writ"
               ],
               "Forbids": [],
               "AnyGroups": []
