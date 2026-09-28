@@ -235,15 +235,22 @@ letter(P + "fought.tabled", "Point of order", [
 EP = dict(last=6, Relationship="eritrice", EpilogueAfter=COUNCIL_PAGE)
 
 SCENES.append(scene(P + "epilogue.commit", "", "EritriceEpilogue", 6, "", [
-    nar("page", '''{n}The debate the war had interrupted was concluded a year after Threshold, by correspondence, over forty-one letters. The last one was a single line in an upright hand: "The chair has heard the case for, and the case against, and votes aye. Minuted." Eritrice arrived in person the following week, with the scroll, to make sure the minutes were accurate.{/n}''',
+    nar("page", '''{n}The debate the war had interrupted resumed after Threshold, by correspondence, and ran to forty letters in an upright hand, point by point, conceding nothing. The forty-first was a single line: "The chair has heard the case for, and the case against. The chair will vote when the floor answers one question, in its own hand: aye, or nay."{/n}''',
+        c('[Write back one word: "Aye."]', "aye"),
+        c('[Write back: "Nay. But keep writing."]', "nay"),
+        c("[Leave the forty-first letter unanswered.]", "silence"),
         paragraphs=(
-            p("{n}The first of the forty-one letters began, as the chair's letters always did, by noting the delay.{/n}", requires=(LATE,)),
-            p("{n}Every letter, the fortieth included, opened with the grudge, read into the record in full. The forty-first did not mention it at all.{/n}", requires=(ON_AGENDA,)),
-            p("{n}The apology the Commander had made before the reconvened Council was bound into the front of the scroll, where the chair could find it quickly.{/n}", requires=(APOLOGISED,)),
-        ))],
-    requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
-    RequiresAnyGroups=[[STARTED, RETURNED]], ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
-
+            p("{n}The first of the forty letters began, as the chair's letters always did, by noting the delay.{/n}", requires=(LATE,)),
+            p("{n}Every letter opened with the grudge, read into the record in full.{/n}", requires=(ON_AGENDA,)),
+            p("{n}The apology the Commander had made before the reconvened Council was bound into the front of her scroll, where she could find it quickly.{/n}", requires=(APOLOGISED,)),
+        )),
+    nar("aye", '''{n}The reply came back within the week: "The chair votes aye. Minuted." Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate, and did not leave for a long time.{/n}'''),
+    nar("nay", '''{n}The chair minuted the motion as lost, by one vote, and did not move it again. She did keep writing. The correspondence ran on for the rest of the Commander's life, point by point, the only debate either of them ever looked forward to; and it never once touched the question that had been answered.{/n}'''),
+    nar("silence", '''{n}The forty-first letter was never answered. In the minutes Eritrice kept for the rest of her long life it stands as the only unanswered item, carried from agenda to agenda, marked neither aye nor nay: "Awaiting the floor."{/n}'''),
+],
+    requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
+    RequiresAnyGroups=[[STARTED, RETURNED]], ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
+
 SCENES.append(scene(P + "epilogue.declined", "", "EritriceEpilogue", 6, "", [
     nar("page", '''{n}The motion was never moved a third time. In the minutes Eritrice kept for the rest of her long life there is a standing item, carried over from session to session and never called: "Motion: that the chair and the Commander be..." The rest of the line is blank.{/n}''')],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied"), ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED}, **EP))

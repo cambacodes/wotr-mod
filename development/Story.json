@@ -184688,7 +184688,65 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The debate the war had interrupted was concluded a year after Threshold, by correspondence, over forty-one letters. The last one was a single line in an upright hand: \"The chair has heard the case for, and the case against, and votes aye. Minuted.\" Eritrice arrived in person the following week, with the scroll, to make sure the minutes were accurate.{/n}",
+          "Text": "{n}The debate the war had interrupted resumed after Threshold, by correspondence, and ran to forty letters in an upright hand, point by point, conceding nothing. The forty-first was a single line: \"The chair has heard the case for, and the case against. The chair will vote when the floor answers one question, in its own hand: aye, or nay.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Write back one word: \"Aye.\"]",
+              "Next": "aye",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write back: \"Nay. But keep writing.\"]",
+              "Next": "nay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the forty-first letter unanswered.]",
+              "Next": "silence",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice",
+          "Paragraphs": [
+            {
+              "Text": "{n}The first of the forty letters began, as the chair's letters always did, by noting the delay.{/n}",
+              "Requires": [
+                "eritrice.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Every letter opened with the grudge, read into the record in full.{/n}",
+              "Requires": [
+                "eritrice.trickster.cost.grudge_on_agenda"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The apology the Commander had made before the reconvened Council was bound into the front of her scroll, where she could find it quickly.{/n}",
+              "Requires": [
+                "eritrice.trickster.cost.apologised"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        },
+        {
+          "Id": "aye",
+          "Speaker": "Narrator",
+          "Text": "{n}The reply came back within the week: \"The chair votes aye. Minuted.\" Eritrice arrived in person three days later, with the scroll, to make sure the minutes were accurate, and did not leave for a long time.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -184699,33 +184757,39 @@
               "Abort": false
             }
           ],
-          "Portrait": "Eritrice",
-          "Paragraphs": [
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "nay",
+          "Speaker": "Narrator",
+          "Text": "{n}The chair minuted the motion as lost, by one vote, and did not move it again. She did keep writing. The correspondence ran on for the rest of the Commander's life, point by point, the only debate either of them ever looked forward to; and it never once touched the question that had been answered.{/n}",
+          "Choices": [
             {
-              "Text": "{n}The first of the forty-one letters began, as the chair's letters always did, by noting the delay.{/n}",
-              "Requires": [
-                "eritrice.trickster.cost.late"
-              ],
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}Every letter, the fortieth included, opened with the grudge, read into the record in full. The forty-first did not mention it at all.{/n}",
-              "Requires": [
-                "eritrice.trickster.cost.grudge_on_agenda"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "{n}The apology the Commander had made before the reconvened Council was bound into the front of the scroll, where the chair could find it quickly.{/n}",
-              "Requires": [
-                "eritrice.trickster.cost.apologised"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
+              "Abort": false
             }
-          ]
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "silence",
+          "Speaker": "Narrator",
+          "Text": "{n}The forty-first letter was never answered. In the minutes Eritrice kept for the rest of her long life it stands as the only unanswered item, carried from agenda to agenda, marked neither aye nor nay: \"Awaiting the floor.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
         }
       ],
       "Requires": [
@@ -191533,8 +191597,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

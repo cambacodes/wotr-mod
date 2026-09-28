@@ -118,6 +118,9 @@ internal static class EritriceTricksterTests
                                                    && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
             "The epilogue pages are not three effect-free Chapter 6 pages after the Council's page.");
         check(story.Derived[P + "late_committed"].Length == 2, "The late-commit derived key is missing.");
+        check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { "aye", "nay", "silence" })
+              && pageCommit.Nodes.Select(n => n.Id).OrderBy(x => x).SequenceEqual(new[] { "aye", "nay", "page", "silence" }),
+            "The late-commit page does not let the Commander answer the forty-first letter (aye, nay or silence).");
 
         // Trk_Eritrice_Motion.
         var council = World(story, 3, "trickster", "trickster.ever", "council.session_minuted");
