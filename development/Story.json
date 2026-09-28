@@ -174602,7 +174602,7 @@
         {
           "Id": "paper",
           "Speaker": "Areelu",
-          "Text": "{n}The projection goes very still. Then, slowly, the corner of her mouth moves.{/n}\n\"Paper.\" \"A century of it: the calculations on my cell wall, the graft, the soul research, every ledger of every crystal. Everything else I was went into the Wound.\" {n}She considers it the way she considers everything, from the end backwards, and you can see her decide that it is true.{/n}\n\"Very well. What is left of me is my notes. Remember that you said it, Commander. I always hold people to the terms they choose.\"",
+          "Text": "{n}The projection goes very still. Then, slowly, the corner of her mouth moves.{/n}\n\"Paper.\" \"A century of it: the calculations on my cell wall, the soul research, every ledger of every crystal. And the graft. I knitted my own soul to the Abyss, Commander; that was a working, the longest I ever ran, and a working is work. Everything else I was went into the Wound.\" {n}She considers it the way she considers everything, from the end backwards, and you can see her decide that it is true.{/n}\n\"Very well. What is left of me is my notes. Remember that you said it, Commander. I always hold people to the terms they choose.\"",
           "Choices": [
             {
               "Text": "[Shake the hand that isn't there.]",
@@ -175737,7 +175737,7 @@
         {
           "Id": "priced",
           "Speaker": "Areelu",
-          "Text": "\"My notes.\" {n}She is silent for a long moment, and you can see her test it, the way she tests everything: from the end backwards.{/n}\n\"Yes. A century of paper. That is exactly what is left of me; everything else went into the Wound.\" \"Very well. If you collect my notes in place of my life, you pay for the privilege. Your wound is mine, win or lose. For study.\"",
+          "Text": "\"My notes.\" {n}She is silent for a long moment, and you can see her test it, the way she tests everything: from the end backwards.{/n}\n\"Yes. A century of paper. That is exactly what is left of me; everything else went into the Wound.\" {n}She touches the wound above her heart.{/n} \"And the graft that holds the Abyss in me. I made myself, Commander. That was a working too, and a working is work. If you collect my work, you collect the stitch.\" \"Very well. If you collect my work in place of my life, you pay for the privilege. Your wound is mine, win or lose. For study.\"",
           "Choices": [
             {
               "Text": "\"Agreed.\"",
@@ -175764,7 +175764,7 @@
         {
           "Id": "priced_known",
           "Speaker": "Areelu",
-          "Text": "\"My notes. Yes. You said so in my cell, and I have thought of little else.\" {n}Blood runs from her wound; she does not look at it.{/n}\n\"Then here is my price for letting paper burn in my place. Your wound is mine, win or lose. For study. You will not get a better term from me, and you will not get this one twice.\"",
+          "Text": "\"My notes. Yes. You said so in my cell, and I have thought of little else. The notes, and the graft with them: I made myself, and what I made is work.\" {n}Blood runs from her wound; she does not look at it.{/n}\n\"Then here is my price for letting paper burn in my place. Your wound is mine, win or lose. For study. You will not get a better term from me, and you will not get this one twice.\"",
           "Choices": [
             {
               "Text": "\"Agreed.\"",
@@ -175826,6 +175826,32 @@
               "Requires": [
                 "areelu.trickster.real_hand_asked"
               ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Kiss her.]",
+              "Next": "kiss",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "kiss",
+          "Speaker": "Areelu",
+          "Text": "{n}You take her face in your hands, bloody and trembling and defiant, and kiss her.{/n}\n{n}She does not melt. She kisses back the way she argues: hard, precise, one hand fisting in your collar to hold you exactly where she wants you, her teeth catching your lip until you taste her blood and then your own. The violet light of the Wound runs over you both. When she breaks it she is breathing like someone who has run a very long way, and she does not let go of your collar.{/n}\n\"That,\" says the Architect of the Worldwound, \"is not a term of the wager.\" {n}Her eyes are on your mouth.{/n} \"Put it in the terms.\"",
+          "Choices": [
+            {
+              "Text": "\"Then it's settled.\"",
+              "Next": null,
+              "Set": [
+                "areelu.committed"
+              ],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -176192,7 +176218,13 @@
               ]
             },
             {
-              "Text": "Fine. Then how about this: what burned was a century of notes. The graft, the soul research, the Nahyndrian ledgers, every page she had ever written in that prison. The wager had said that whoever burned at Threshold would pay up with what was left of them, and she had agreed, in front of a witness, what that was. She had always held people to the terms they chose. The terms held her.",
+              "Text": "Fine. Then how about this: what burned was a century of notes. The graft, the soul research, the Nahyndrian ledgers, every page she had ever written in that prison. The wager had said that whoever burned at Threshold would pay up with what was left of them, and she had agreed, in front of a witness, what that was: her work. She had always held people to the terms they chose. The terms held her.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The graft went with the rest. She had made herself, a century ago at the edge of the rift, by knitting her own soul to the Abyss: the longest working she ever ran, and by her own definition work. The stake collected it. The stitch came undone, the Abyss went back where it came from, and what was left was a Sarkorian woman who had been born mortal and was mortal again.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -176454,7 +176486,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Neither of them burned, which was the bet the Commander had made at Iz: \"My money's on neither.\"{/n}\n{n}Areelu Vorlesh paid her stake in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. Then she moved into the rooms across the hall with a fresh notebook, to begin the longitudinal experiment.{/n}",
+          "Text": "{n}Neither of them burned, which was the bet the Commander had made at Iz: \"My money's on neither.\"{/n}\n{n}Areelu Vorlesh paid what she owed on the bet from Iz in person. She burned her own notes in front of the Commander, page by page, without comment, for a whole night. What was left of her she kept, as the raised terms allowed, to spend on the longitudinal experiment: the Abyss still in her veins, and the wound still glowing above her heart. Then she moved into the rooms across the hall with a fresh notebook.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177863,7 +177895,23 @@
         {
           "Id": "in_mortal",
           "Speaker": "Narrator",
-          "Text": "{n}She studied the Commander the way she had studied everything: thoroughly, without hurry, and without once pretending it was anything but hunger. Her cold hands found every scar and asked its history with a fingertip. The old wound from Kenabres she kissed once, very precisely, as if taking a sample.{/n}\n{n}Her own body she offered the same way, as evidence: the grey at her temples, the new lines at her mouth, the plain mortal warmth that had come back to her skin after a century of the Abyss. \"Look,\" she said. \"Everything you did to me. I want you to see it.\" When the Commander pulled her down, she came, and for the first time in a hundred years Areelu Vorlesh stopped taking notes.{/n}",
+          "Text": "{n}She studied the Commander the way she had studied everything: thoroughly, without hurry, and without once pretending it was anything but hunger. She undid the Commander's shirt one button at a time, as if each were a separate observation, and pushed it off the Commander's shoulders with both hands.{/n}\n{n}Her cold fingers found every scar and asked its history. The old wound from Kenabres she kissed once, very precisely, as if taking a sample; and then again, not precisely at all, with her mouth open against the Commander's skin.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "in_mortal_2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "in_mortal_2",
+          "Speaker": "Narrator",
+          "Text": "{n}Her own body she offered the same way, as evidence. She let the grey dress fall and stood in the lamplight without covering anything: the grey at her temples, the new lines at her mouth, the plain mortal warmth that had come back into her skin after a century of the Abyss. \"Look,\" she said. \"Everything you did to me. I want you to see all of it.\"{/n}\n{n}The Commander looked. Then she pushed the Commander down onto the narrow bed, climbed astride the Commander's hips with her hands flat on the Commander's chest, and bent to the Commander's mouth; and for the first time in a hundred years Areelu Vorlesh stopped taking notes.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177879,7 +177927,23 @@
         {
           "Id": "in_witch",
           "Speaker": "Narrator",
-          "Text": "{n}She studied the Commander the way she had studied everything: thoroughly, without hurry, and without once pretending it was anything but hunger. Her hands were fever-hot, not cold; the half of her that belonged to the Abyss ran close under the skin, and the Commander could feel it wherever she touched, like the heat off a forge.{/n}\n{n}The old wound from Kenabres she kissed once, very precisely, and the wound above her own heart flared in answer, violet, until the room was full of its light. \"Yes,\" she said, against the Commander's mouth, as if confirming a result. When the Commander pulled her down, she came, and for the first time in a hundred years Areelu Vorlesh stopped taking notes.{/n}",
+          "Text": "{n}She studied the Commander the way she had studied everything: thoroughly, without hurry, and without once pretending it was anything but hunger. Her hands were fever-hot, not cold; the half of her that belonged to the Abyss ran close under the skin, and the Commander could feel it wherever she touched, like the heat off a forge.{/n}\n{n}She did not bother with buttons. The Commander's shirt simply was not there any longer, and neither was her robe, and the violet light of the wound above her heart ran over bare skin like water.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "in_witch_2",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "in_witch_2",
+          "Speaker": "Narrator",
+          "Text": "{n}The old wound from Kenabres she kissed once, very precisely, and the wound above her own heart flared in answer until the room was full of its light. Her eyes had gone crimson to the edges. \"Yes,\" she said, against the Commander's mouth, as if confirming a result, and then she was not confirming anything.{/n}\n{n}She pulled the Commander down on top of her, rolled them both, and came up astride, her hair falling around them like a curtain, her hands pinning the Commander's wrists to the pillow; and for the first time in a hundred years Areelu Vorlesh stopped taking notes.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177931,7 +177995,7 @@
         {
           "Id": "notebook",
           "Speaker": "Narrator",
-          "Text": "{n}She let the notebook go. She watched it land on the floor, open, face down, and something in her went very still and then very bright.{/n}\n{n}\"That,\" she said, \"was a mistake. Now you will have to be my notes.\" She pushed the Commander back onto the bed with both hands and followed, and her mouth was hot and exact and not at all the mouth of someone who had forgotten what she wanted. The lamp went over. Neither of them reached for it.{/n}",
+          "Text": "{n}She let the notebook go. She watched it land on the floor, open, face down, and something in her went very still and then very bright.{/n}\n{n}\"That,\" she said, \"was a mistake. Now you will have to be my notes.\" She pushed the Commander back onto the bed with both hands and followed, and her mouth was hot and exact and not at all the mouth of someone who had forgotten what she wanted.{/n}\n{n}She came down astride the Commander, pinned both the Commander's wrists over the Commander's head with one hand, and with the other began, unhurriedly, to unfasten everything she could reach. \"Hold still,\" she said. \"I am observing.\" The lamp went over. Neither of them reached for it, and she was not observing anything at all.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -180654,7 +180718,7 @@
         {
           "Id": "kept",
           "Speaker": "Narrator",
-          "Text": "{n}She read the method every morning for the rest of her life, and every morning she put it away. It was, the Commander said afterwards, the only love letter she ever wrote: a way to take the thing she wanted most, finished and perfect, and never used.{/n}\n{n}The last entry of the report is dated the morning she died, if she died. It reads: \"Not today.\"{/n}",
+          "Text": "{n}She read the method every morning for the rest of her life, and every morning she put it away. She never explained it, and the report never records a reason. It records only the date of each reading, in a column that runs to the last page, and beside each date the same word.{/n}\n{n}The last entry of the report is dated the morning she died, if she died. It reads: \"Not today.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
