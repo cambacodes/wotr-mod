@@ -221245,7 +221245,9 @@
                 "arueshalae.trickster.reunited",
                 "arueshalae.trickster.cost.fed_on_demon"
               ],
-              "Requires": [],
+              "Requires": [
+                "arueshalae.trickster.cost.late"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -221258,6 +221260,19 @@
               ],
               "Requires": [],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Have the babau you took alive from her gang dragged in] \"One of your boys survived. Eat him.\"",
+              "Next": "babau",
+              "Set": [
+                "arueshalae.trickster.reunited",
+                "arueshalae.trickster.cost.fed_on_demon"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "arueshalae.trickster.cost.late"
+              ],
               "Abort": false
             }
           ],
@@ -221299,6 +221314,22 @@
           "Id": "demon",
           "Speaker": "Arueshalae",
           "Text": "{n}She looks at the vrock, hunched at the end of its chain with its broken beak, and then at you, and bursts out laughing.{/n}\n\"Oh, that's low. That's beautifully low. You brought your own postman.\" {n}She takes the chain. The vrock makes a noise like a hinge.{/n} \"It's like eating gravel with a sauce on it, you know. It'll hold me for a week. It won't feed me. And you've lost the only thing in the Abyss that would carry a letter for you.\" {n}Her smile widens.{/n} \"Clever. Expensive. I like it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Arueshalae"
+        },
+        {
+          "Id": "babau",
+          "Speaker": "Arueshalae",
+          "Text": "{n}Your soldiers drag it in on a chain: the babau from her own gang, the one that ran when the balor fell and was dug out of the rubble alive. It sees her sitting up on the stones and makes a sound like a kettle.{/n}\n\"Oh, Skritch.\" {n}She sounds almost fond.{/n} \"You ran. I saw you.\" {n}She takes the chain.{/n} \"It's like eating gravel with a sauce on it. It'll hold me for a week. It won't feed me.\" {n}She looks at you over the babau's head, and her smile widens.{/n} \"You kept one of my boys alive just for this. That's the nastiest thing you've ever done, darling. I adore it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -221390,7 +221421,7 @@
               }
             },
             {
-              "Text": "[Chain the vrock courier to the gate instead.]",
+              "Text": "[Chain the babau from her gang to the gate instead.]",
               "Next": "vrock",
               "Set": [
                 "arueshalae.trickster.reunited",
@@ -221449,7 +221480,7 @@
         {
           "Id": "vrock",
           "Speaker": "Narrator",
-          "Text": "{n}In the morning there is an empty chain at the gate and a scatter of grey feathers, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}",
+          "Text": "{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}",
           "Choices": [
             {
               "Text": "Continue",

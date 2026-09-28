@@ -185,8 +185,11 @@ internal static class ArueshalaeTricksterTests
             "The reunion is not on the lair presence.");
         var back = Later(story, World(story, 5, Lair, "trickster.ever", "arueshalae.evil_dead", P + "returned", P + "cost.nocticula_debt"), 30);
         check(Avail(reunion, back), "Trk_Arueshalae_EvilReunion: not available.");
-        check(Ch(reunion, "price", 2).Set.Contains(P + "cost.fed_on_demon") && Ch(reunion, "price", 2).Alignment == null,
-            "The reunion has no third way (the vrock) beside obliging and refusing.");
+        check(Ch(reunion, "price", 2).Set.Contains(P + "cost.fed_on_demon") && Ch(reunion, "price", 2).Requires.Contains(P + "cost.late")
+              && Ch(reunion, "price", 4).Set.Contains(P + "cost.fed_on_demon") && Ch(reunion, "price", 4).Forbids.Contains(P + "cost.late")
+              && Ch(reunion, "price", 2).Alignment == null && Ch(reunion, "price", 4).Alignment == null,
+            "The reunion's third way does not match the path (the vrock only after the late referral; the babau otherwise).");
+        check(First(reunion, back, "price", 4).Has(P + "cost.fed_on_demon"), "The primed path's third way (the babau) is not playable.");
         var hungry = First(reunion, back, "price", 3);
         check(hungry.Has(P + "reunited") && hungry.Has(P + "cost.sent_away_hungry"), "Trk_Arueshalae_EvilReunion: refusing does not reunite, hungry.");
         var letterTwin = S(P + "evil.reunion_letter");

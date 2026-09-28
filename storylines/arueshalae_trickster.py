@@ -281,8 +281,10 @@ REUNION_CHOICES = (
     c('[Let her feed] "Just a taste."', "taste", flags=(REUNITED, FED_ON_YOU)),
     c('[Drag a bound cultist forward] "Not me. Him."', "cultist", alignment=("Evil", 2), flags=(REUNITED, FED_ON_PRISONER)),
     c('[Hand her the vrock courier\'s chain] "You said demons eat demons. Eat the messenger."', "demon",
-      flags=(REUNITED, FED_ON_DEMON)),
-    c('[Refuse her] "Not a drop."', "refuse", flags=(REUNITED, HUNGRY)))
+      requires=(LATE,), flags=(REUNITED, FED_ON_DEMON)),
+    c('[Refuse her] "Not a drop."', "refuse", flags=(REUNITED, HUNGRY)),
+    c('[Have the babau you took alive from her gang dragged in] "One of your boys survived. Eat him."', "babau",
+      forbids=(LATE,), flags=(REUNITED, FED_ON_DEMON)))
 REUNION_ENDS = [
     nar("taste", '''{n}She takes her time. She holds your wrist the way she held it in a chapel, once, in another life, and then she does not hold it that way at all. When she lets go, she licks her lip and looks at you as if you'd passed an exam you didn't know you were sitting.{/n}
 "Still sweet. You'll need to sit down in a moment. Don't be embarrassed. Everybody does."''', c()),
@@ -290,6 +292,8 @@ REUNION_ENDS = [
 {n}She does. You watch. She wants you to watch.{/n}''', c()),
     a("demon", '''{n}She looks at the vrock, hunched at the end of its chain with its broken beak, and then at you, and bursts out laughing.{/n}
 "Oh, that's low. That's beautifully low. You brought your own postman." {n}She takes the chain. The vrock makes a noise like a hinge.{/n} "It's like eating gravel with a sauce on it, you know. It'll hold me for a week. It won't feed me. And you've lost the only thing in the Abyss that would carry a letter for you." {n}Her smile widens.{/n} "Clever. Expensive. I like it."''', c()),
+    a("babau", '''{n}Your soldiers drag it in on a chain: the babau from her own gang, the one that ran when the balor fell and was dug out of the rubble alive. It sees her sitting up on the stones and makes a sound like a kettle.{/n}
+"Oh, Skritch." {n}She sounds almost fond.{/n} "You ran. I saw you." {n}She takes the chain.{/n} "It's like eating gravel with a sauce on it. It'll hold me for a week. It won't feed me." {n}She looks at you over the babau's head, and her smile widens.{/n} "You kept one of my boys alive just for this. That's the nastiest thing you've ever done, darling. I adore it."''', c()),
     a("refuse", '''"No?" {n}She tilts her head, interested rather than hurt.{/n} "Then I'll find someone who says yes. There are always people who say yes. That was the whole trouble with you. You never did."
 "Don't wait up."''', c()),
 ]
@@ -308,11 +312,11 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
 "You didn't come to the lair. Rude. I'm hungry. Leave your window open tonight, or leave a cultist tied to the gate, or leave nothing, and find out what I do about nothing. A."''',
         c("[Leave the window open.]", "window", flags=(REUNITED, FED_ON_YOU)),
         c("[Leave a cultist tied to the gate.]", "gate", alignment=("Evil", 2), flags=(REUNITED, FED_ON_PRISONER)),
-        c("[Chain the vrock courier to the gate instead.]", "vrock", flags=(REUNITED, FED_ON_DEMON)),
+        c("[Chain the babau from her gang to the gate instead.]", "vrock", flags=(REUNITED, FED_ON_DEMON)),
         c("[Leave nothing.]", "nothing", flags=(REUNITED, HUNGRY))),
     nar("window", '''{n}You wake at the hour before the first bell, colder than you went to sleep, with a black feather on the pillow and the taste of someone else's lipstick on your mouth.{/n}''', c()),
     nar("gate", '''{n}In the morning the gate guard reports that the prisoner tied there overnight has gone mad and will not stop weeping. Nobody saw anything. Nobody ever does.{/n}''', c()),
-    nar("vrock", '''{n}In the morning there is an empty chain at the gate and a scatter of grey feathers, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
+    nar("vrock", '''{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
     nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you.{/n}''', c()),
 ], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_FAILED), forbids=(P + "evil.reunion", REUNITED, CLOSED, LATE),
     delay=120, chapters=(5,))
