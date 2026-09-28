@@ -1,0 +1,280 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Tirabade;
+
+// Camellia, Trickster (Writer/handoffs/trickster/camellia.md; F12, the spoken death): "Go on, then. Die convincingly."
+// One block per spec rules test (Trk_Camellia_*), the shape of each hook, and the arc around the device (camellia_masks,
+// camellia_evenings, camellia_cards, camellia_days, camellia_last): every beat reachable on its own branch, the intimate
+// scenes only after the commit, and the other routes' Camellia reactions lifted by her return.
+internal static class CamelliaTricksterTests
+{
+    private const string Unit = "397b090721c41044ea3220445300e1b8";
+    private const string Hub = "589d83230bbbfd04bb1220ee4fef1ce1";
+    private const string Drezen = "2570015799edf594daf2f076f2f975d8";
+    private const string Fye = "0f12118177d102f428a3b30b15b132eb";
+    private const string P = "camellia.trickster.";
+    private const string Killed = "camellia.killed";
+    private const string Dead = "camellia.dead";
+    private const string Returned = P + "returned";
+    private const string Committed = "camellia.committed";
+    private const string Closed = "camellia.closed";
+
+    private static Snapshot World(Story story, int chapter, params string[] flags)
+    {
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        state.Flags.UnionWith(flags);
+        state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
+        state.AvailableContacts.Add(Unit);
+        Rules.Complete(story, state);
+        foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
+        return state;
+    }
+
+    private static Snapshot Later(Story story, Snapshot state, int hours)
+    {
+        var later = Program.Copy(state);
+        later.Hour += hours;
+        Rules.Complete(story, later);
+        foreach (var flag in later.Flags.Where(f => !later.Times.ContainsKey(f)).ToList()) later.Times[flag] = state.Hour;
+        return later;
+    }
+
+    internal static void Run(Story story, Action<bool, string> check)
+    {
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
+        Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
+        // The outcomes of a full walk that pass through the named choice (its Set flags held and, if a Next, its node visited).
+        List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
+        {
+            var chosen = Ch(scene, node, index);
+            var hits = new List<Snapshot>();
+            foreach (var r in Program.Walk(scene, w))
+                if (chosen.Set.All(r.Has) && r.Has(scene.Id)) hits.Add(r);
+            check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
+            return hits;
+        }
+        Snapshot Take(Scene scene, Snapshot w, string node, int index, params string[] also)
+        {
+            var hit = Through(scene, w, node, index).FirstOrDefault(r => also.All(r.Has));
+            check(hit != null, "No outcome of " + scene.Id + " through " + node + "[" + index + "] with " + string.Join(", ", also));
+            return hit ?? w;
+        }
+
+        var rel = story.Relationships["camellia"];
+        var setupHub = S(P + "killed.setup_hub");
+        var setupQ3 = S(P + "killed.setup_q3");
+        var setupQ1 = S(P + "killed.setup_q1");
+        var late = S(P + "killed.late_curtain");
+        var performance = S(P + "killed.performance");
+        var letter = S(P + "killed.performance_letter");
+        var overacting = S(P + "dead.overacting");
+        var grave = S(P + "beat.her_own_grave");
+        var due = S(P + "beat.spirits_due");
+        var lesson = S(P + "beat.lesson");
+        var lessonCamp = S(P + "beat.lesson_camp");
+        var terms = S(P + "returned.terms");
+        var termsCamp = S(P + "returned.terms_camp");
+        var test = S(P + "returned.test");
+        var testCamp = S(P + "returned.test_camp");
+        var oath = S(P + "kills_answered.oath");
+        var oathCamp = S(P + "kills_answered.oath_camp");
+        var body = S(P + "react.anevia_body");
+
+        // --- Shape: the relationship, the revival, the presence. ------------------------------------------------------
+        check(rel.StartedFlag == "camellia.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
+              && rel.UnavailableFlags.SequenceEqual(new[] { Killed, Dead, "camellia.kicked_out" })
+              && rel.UnavailableOverrides.Count == 2 && rel.UnavailableOverrides[Killed] == Returned && rel.UnavailableOverrides[Dead] == Returned
+              && !rel.UnavailableOverrides.ContainsKey("camellia.kicked_out")
+              && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "dead_otherwise", "killed_by_commander" })
+              && rel.TricksterAccess["killed_by_commander"].Detect.SequenceEqual(new[] { Killed, Dead })
+              && rel.TricksterAccess["dead_otherwise"].Detect.SequenceEqual(new[] { Dead, "!" + Killed }),
+            "Camellia's relationship does not match the spec (a kick-out is closure, never lifted).");
+        check(story.Revivals.TryGetValue("camellia", out var revival) && revival.Unit == Unit && revival.DeathFlag == Dead
+              && revival.Relationship == "camellia", "Her revival entry is missing or wrong.");
+        check(story.Presences.TryGetValue("camellia.presence", out var presence) && presence.Unit == Unit && presence.Mode == "spawn-copy"
+              && presence.At?.NearUnit == Fye && presence.At.Side == "left" && presence.Dialog == "hub" && presence.AnswerLists.Length == 0
+              && presence.Requires.Contains(Killed) && presence.Requires.Contains(P + "primed") && presence.Forbids.Contains(Closed)
+              && presence.MinChapter == 3 && presence.MaxChapter == 5,
+            "The veiled Camellia at the far end of Fye's bar is missing or malformed.");
+
+        // --- The joke, inline at each kill (E13 entry mythic, native continuation into the kill). ------------------------
+        check(setupHub.AnswerLists.SequenceEqual(new[] { "74f66c9edaa71a644ba091fb1ff4a435" }) && setupHub.NativeReturnCue == "6f6ceeffe5e77dc42896e3e8b937b752"
+              && setupHub.EntryMythic == "PlayerIsTrickster" && setupHub.ContactUnit == null
+              && setupHub.Nodes.SelectMany(n => n.Choices).Where(c => c.NativeNext != null).All(c => c.NativeNext == "e433ac35761daa84b86b6b5e5c4fae11" && c.Set.Contains(P + "primed")),
+            "The hub setup is not an inline Trickster answer on the kill list that continues into the native kill.");
+        check(setupQ3.AnswerLists.SequenceEqual(new[] { "2199689753593844a8caceef5150ff4e" }) && setupQ3.NativeReturnCue == "1d0757c2ccde7034baa737419150bacd"
+              && setupQ3.Chapters.SequenceEqual(new[] { 5 }) && Ch(setupQ3, "start", 0).NativeNext == "be5af575d343fdb49badcd32d8336996",
+            "The Q3 setup is not on the verdict list in Chapter 5.");
+        check(setupQ1.AnswerLists.SequenceEqual(new[] { "d977fae7974bb88419e51e2c33876aac" }) && setupQ1.EntryAlignment?.Direction == "Chaotic"
+              && setupQ1.EntryAlignment.Value == 1 && Ch(setupQ1, "start", 0).NativeNext == "6d583904c4659fe478c2e26e9305ad4d",
+            "The Q1 order is not on Anevia's results list with the native order's alignment.");
+        foreach (var setup in new[] { setupHub, setupQ3, setupQ1 })
+            check(setup.Forbids.Contains(Killed) && setup.Forbids.Contains(Dead) && setup.Forbids.Contains(P + "primed") && setup.Requires.Contains("trickster"),
+                "A setup runs after the death or without live Trickster power: " + setup.Id);
+
+        // Trk_Camellia_KilledQ1Order
+        var q1 = World(story, 3, "trickster");
+        check(Avail(setupQ1, q1), "Trk_Camellia_KilledQ1Order: the order is not offered.");
+        Take(setupQ1, q1, "start", 0, P + "primed", P + "primed_by_order");
+
+        // Trk_Camellia_KilledPrimed
+        var primed = World(story, 5, "trickster", "trickster.ever", Killed, P + "primed");
+        check(Avail(performance, primed) && !Avail(overacting, primed) && !Avail(late, primed) && !Avail(letter, primed),
+            "Trk_Camellia_KilledPrimed: only the veiled mourner should be available.");
+        check(performance.InteractionHub == "camellia.presence" && performance.ContactUnit == Unit && performance.Areas.SequenceEqual(new[] { Drezen }),
+            "The return is not met in person at her presence.");
+        var back = Take(performance, primed, "primed", 0, Returned, P + "cost.knows_you_tried", "camellia.started");
+
+        // Trk_Camellia_KilledWithDeadEtude
+        check(Avail(performance, World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed")),
+            "Trk_Camellia_KilledWithDeadEtude: the killed state co-holds her retained-death etude and must still return.");
+
+        // Trk_Camellia_KilledLate
+        var unprimed = World(story, 3, "trickster", "trickster.ever", Killed);
+        check(Avail(late, unprimed) && !Avail(performance, unprimed), "Trk_Camellia_KilledLate: the late curtain should be the only way in.");
+        check(late.Remote && late.Chapters.SequenceEqual(new[] { 3 }), "The late curtain is not a Chapter 3 rest page.");
+        check(Ch(late, "choose", 0).Crusade?.Resource == "Finances" && Ch(late, "choose", 0).Crusade!.Amount == -100,
+            "The sexton is not paid for in Finances (-100).");
+        check(Ch(late, "coffin", 0).Mythic == "PlayerIsTrickster", "The line said to the corpse is not a native [Trickster] answer.");
+        Take(late, unprimed, "coffin", 0, P + "primed", P + "cost.late");
+        Take(late, unprimed, "choose", 1, P + "declined", Closed);
+
+        // Trk_Camellia_KilledAfterFailure
+        var failed = World(story, 3, "trickster.ever", "trickster.failed", Killed);
+        check(!Avail(late, failed) && !Avail(performance, failed), "Trk_Camellia_KilledAfterFailure: a lost path must not open a new trick.");
+
+        // Trk_Camellia_DeadOtherwise
+        var body_ = World(story, 5, "trickster", "trickster.ever", Dead, "revive.camellia.available");
+        check(Avail(overacting, body_) && !Avail(performance, body_), "Trk_Camellia_DeadOtherwise: the body should hear it's overacting.");
+        check(overacting.Recovery == "camellia" && Ch(overacting, "waking", 0).Revive == "camellia", "Her price does not raise her.");
+        var raised = Take(overacting, body_, "waking", 0, Returned, P + "cost.spirits_owed", "camellia.started");
+        Take(overacting, body_, "refused", 0, P + "declined", Closed);
+
+        // Trk_Camellia_Terms (killed branch; the lesson is its prerequisite)
+        var termsWorld = World(story, 3, "trickster.ever", Killed, Returned, P + "beat.lesson");
+        check(Avail(terms, termsWorld) && !Avail(test, termsWorld), "Trk_Camellia_Terms: her price should come before her test.");
+        var named = Take(terms, termsWorld, "price", 1, P + "cost.marked", P + "terms_named");
+        check(Avail(test, Later(story, named, 100)), "Trk_Camellia_Terms: the test does not open after her price.");
+        check(Ch(terms, "price", 0).Alignment?.Direction == "Evil" && Ch(terms, "price", 0).Alignment!.Value == 2,
+            "Giving her a name is not an Evil 2 act.");
+
+        // Trk_Camellia_Commit / Trk_Camellia_CommitRefused
+        var commitWorld = World(story, 5, "trickster.ever", Killed, Returned, P + "cost.marked", P + "terms_named");
+        check(Avail(test, commitWorld), "Trk_Camellia_Commit: the test is not available.");
+        var yes = Ch(test, "yes", 0);
+        check(yes.Set.SequenceEqual(new[] { Committed }) && yes.Next == "threshold", "The named commit producer is not test/yes[0].");
+        Take(test, commitWorld, "yes", 0, Committed);
+        var refused = Through(test, commitWorld, "no", 0);
+        check(refused.All(r => r.Has(Closed) && r.Has(P + "cost.asked_her_tame") && !r.Has(Committed)),
+            "Trk_Camellia_CommitRefused: asking her to be tame must be her hard no.");
+        check(Through(test, commitWorld, "guard", 0).All(r => r.Has(Closed) && !r.Has(Committed)), "Calling the guard must end it.");
+
+        // Trk_Camellia_KickedOut: explicit closure; nothing of hers returns.
+        var kicked = World(story, 5, "trickster", "trickster.ever", "camellia.kicked_out");
+        check(!story.Scenes.Where(s => s.Relationship == "camellia" && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
+                  .Any(s => s.TricksterDevice && Avail(s, kicked)), "Trk_Camellia_KickedOut: a dismissal must stay closed.");
+
+        // Trk_Camellia_Oath (Nurah pair only; the Kaylessa pair waits for her route)
+        var oathWorld = World(story, 5, "trickster.ever", "nurah.trickster.returned", "nurah.dead_camellia");
+        check(Avail(oathCamp, oathWorld), "Trk_Camellia_Oath: the living Camellia should hear about her kill that didn't take.");
+        check(!Avail(oathCamp, World(story, 5, "trickster.ever", "nurah.trickster.returned")),
+            "Trk_Camellia_Oath: a Nurah the Commander executed is not Camellia's kill.");
+        Take(oathCamp, oathWorld, "loophole", 0, P + "oath_loophole");
+        check(oath.Nodes.Single(n => n.Id == "start").Choices.Count(c => c.Next == "nurah") == 1, "The oath does not route Nurah first.");
+        check(Ch(oathCamp, "ask", 1).Alignment?.Direction == "Evil", "Feeding her someone else is not an Evil act.");
+
+        // Trk_Camellia_AneviaBody: the spirits' due arrives as Anevia's report.
+        var owed = World(story, 3, "trickster.ever", Dead, Returned, P + "cost.spirits_owed");
+        check(Avail(body, owed), "Trk_Camellia_AneviaBody: Anevia should report the body.");
+        Take(body, owed, "start", 1, P + "cost.covered_murder");
+        check(body.AnswerLists.SequenceEqual(new[] { "33960c7f7af40cd43b7f801a76c87a0b" }) && body.Reaction
+              && body.ForbidOverrides["anevia_gone"] == "anevia.trickster.returned", "Anevia's report is not on her own hub, lifted by her return.");
+
+        // --- The arc: before the kill (on her own companion hub, while the Trickster's ear is live). ------------------
+        var living = new[] { "masks.two_lies", "masks.mireya", "masks.flies_at_a_window", "masks.the_funeral_i_would_like",
+            "masks.a_dance_with_a_knife_in_it", "evening.the_puppy", "evening.the_salle", "evening.a_table_for_strangers",
+            "cards.the_old_womans_deck", "cards.a_bowl_for_mireya", "day.the_language_of_flowers", "evening.the_gloves" }.Select(id => S(P + id)).ToArray();
+        foreach (var s in living)
+            check(s.AnswerLists.SequenceEqual(new[] { Hub }) && s.ContactUnit == Unit && s.Requires.Contains("trickster")
+                  && s.Forbids.Contains(Killed) && s.Forbids.Contains(Dead) && s.Forbids.Contains("camellia.kicked_out"),
+                "A living scene is not on her own hub, or runs after her death: " + s.Id);
+        var alive = World(story, 3, "trickster");
+        check(Avail(living[0], alive), "Two lies and a truth does not open the courtship.");
+        var played = Take(living[0], alive, "yours", 0, P + "masks.game", P + "masks.out_lied");
+        var later = Later(story, played, 100);
+        check(Avail(S(P + "masks.mireya"), later) && Avail(S(P + "evening.the_puppy"), later), "The courtship does not continue after the game.");
+        check(!Avail(S(P + "masks.flies_at_a_window"), later), "The Abyss scene opened outside Chapter 4.");
+        var abyss = Later(story, played, 100); abyss.Chapter = 4; Rules.Complete(story, abyss);
+        check(Avail(S(P + "masks.flies_at_a_window"), abyss), "The Abyss scene is not available in Chapter 4.");
+        var ch5 = Later(story, played, 100); ch5.Chapter = 5; Rules.Complete(story, ch5);
+        check(Avail(S(P + "masks.the_funeral_i_would_like"), ch5), "The funeral scene is not available in Chapter 5.");
+
+        // --- After the return: the killed branch at her presence, the raised branch on her companion hub. -------------
+        var killedBack = Later(story, back, 100);
+        check(Avail(grave, killedBack) && !Avail(due, killedBack), "The killed Camellia does not take the Commander to her grave.");
+        var visited = Take(grave, killedBack, "last", 0, P + "beat.grave");
+        var toLesson = Later(story, visited, 100);
+        check(Avail(lesson, toLesson) && !Avail(lessonCamp, toLesson), "The lesson is not met at her presence after the grave.");
+        var taught = Take(lesson, toLesson, "steady", 0, P + "beat.lesson", P + "lesson.steady");
+        check(Avail(terms, Later(story, taught, 100)), "Her price does not follow the lesson.");
+        foreach (var twin in story.Scenes.Where(s => s.Id.StartsWith(P, StringComparison.Ordinal) && s.Id.EndsWith("_camp", StringComparison.Ordinal)))
+        {
+            var killedTwin = S(twin.Id.Substring(0, twin.Id.Length - "_camp".Length));
+            check(killedTwin.InteractionHub == "camellia.presence" && killedTwin.Requires.Contains(Killed) && killedTwin.Requires.Contains(Returned)
+                  && twin.AnswerLists.SequenceEqual(new[] { Hub }) && twin.InteractionHub == null && twin.Forbids.Contains(Killed),
+                "Scene twins do not split the two hosts: " + twin.Id);
+            check(!killedTwin.Nodes.SelectMany(n => n.Choices).Any(c => c.Forbids.Contains(Killed))
+                  && !twin.Nodes.SelectMany(n => n.Choices).Any(c => c.Requires.Contains(Killed)),
+                "A twin keeps the other branch's choices: " + twin.Id);
+        }
+        var raisedBack = Later(story, raised, 100);
+        check(Avail(due, raisedBack) && !Avail(grave, raisedBack), "The raised Camellia does not name the spirits' due.");
+        var dueNamed = Take(due, raisedBack, "after", 0, P + "beat.spirits_due");
+        check(Avail(lessonCamp, Later(story, dueNamed, 100)), "The lesson is not on her companion hub after the spirits' due.");
+        check(Avail(termsCamp, Later(story, Take(lessonCamp, Later(story, dueNamed, 100), "flinched", 0, P + "beat.lesson"), 100)),
+            "Her price does not follow the lesson on her companion hub.");
+        check(!testCamp.Requires.Contains(Killed), "The raised branch's test requires the killed state.");
+
+        // --- After her answer: the intimate scenes sit only behind the commit; the life goes on. ----------------------
+        var afterCommit = new[] { "bond.shelf", "bond.witness", "bond.not_today", "evening.breakfast", "evening.a_gift_for_a_dead_woman",
+            "evening.the_prisoner", "evening.the_mirror", "cards.the_deck_again", "cards.two_lies_again", "cards.the_amulet",
+            "day.the_anniversary", "day.the_second_dance", "day.a_new_friend", "day.the_eve" };
+        foreach (var id in afterCommit)
+            foreach (var s in new[] { S(P + id), S(P + id + "_camp") })
+                check(s.Requires.Contains(Committed) || s.RequiresAnyGroups.Any(g => g.Contains(Committed)),
+                    "A scene of the life after her answer does not require the commit: " + s.Id);
+        check(test.Nodes.Any(n => n.Id == "threshold") && Ch(test, "threshold", 0).Next == "morning",
+            "The night after her answer does not cut at the start of the act and wake to the morning.");
+        var together = World(story, 5, "trickster.ever", Killed, Returned, Committed);
+        check(Avail(S(P + "bond.shelf"), together), "The shelf does not follow the commit.");
+        var shelved = Take(S(P + "bond.shelf"), together, "kept", 0, P + "bond.shelf", P + "bond.list_kept");
+        var witnessed = Take(S(P + "bond.witness"), Later(story, shelved, 100), "lied_after", 0, P + "bond.witness_lied");
+        check(Avail(S(P + "bond.not_today"), Later(story, witnessed, 100)), "Not today does not follow the witness.");
+
+        // --- The other routes' Camellia reactions: her retained death is lifted by her return (G6(b)). ----------------
+        foreach (var id in new[] { "jerribeth.trickster.reaction.camellia", "jerribeth.trickster.reaction.camellia_host",
+            "nurah.trickster.react.camellia_pardon", "nurah.trickster.react.camellia_market", "nurah.trickster.react.camellia_supper",
+            "nurah.trickster.react.camellia_draft", "soana.trickster.react.camellia_portion", "soana.trickster.react.camellia_knot",
+            "minagho_chivarro.trickster.react.camellia_bill" })
+        {
+            var s = story.Scenes.SingleOrDefault(x => x.Id == id);
+            if (s == null) continue;
+            check(!s.Forbids.Contains(Dead) || s.ForbidOverrides.TryGetValue(Dead, out var lift) && lift == Returned,
+                "A Camellia reaction does not lift her retained death on her return: " + id);
+            check(!s.ForbidOverrides.ContainsKey(Killed), "A foreign reaction claims the veiled Camellia's presence hub: " + id);
+        }
+
+        // --- Pages: the late commit, her refusal, and the kept page's sibling for a Commander on the roll of the dead. --
+        var pages = story.Scenes.Where(s => s.Relationship == "camellia" && s.Owner == "CamelliaEpilogue").Select(s => s.Id).ToArray();
+        check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused" }),
+            "Camellia's epilogue pages do not match: " + string.Join(", ", pages));
+        check(S(P + "epilogue.commit").Requires.Contains(P + "terms_named") && S(P + "epilogue.commit").Forbids.Contains(Committed),
+            "The late commit page does not rest on her named price.");
+        check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named" }),
+            "The Derived late commit does not rest on her named price.");
+
+        Console.WriteLine("PASS: Camellia Trickster (Trk_Camellia_*): the joke at every kill, the late curtain, the veiled mourner, the body told it's overacting, her price, her test, the oath, and the life around them.");
+    }
+}

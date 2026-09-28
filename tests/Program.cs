@@ -278,9 +278,13 @@ internal static class Program
             {
                 // G6: a scene that Requires the relationship's declared override of this death (a Trickster return that
                 // lifts it, e.g. a Seelah raised far from her body), or an ER-2 device answering the death itself, is not an
-                // ordinary conversation.
+                // ordinary conversation. A device answers the death when it Requires it, or when its declared Trickster state
+                // detects it (Camellia's killed state co-holds her retained-death etude; the spec lists both in its detect).
                 if (relationship.UnavailableOverrides.TryGetValue(revival.DeathFlag, out var lift) && ordinary.Requires.Contains(lift)
-                    || ordinary.TricksterDevice && ordinary.Requires.Contains(revival.DeathFlag)) continue;
+                    || ordinary.TricksterDevice && ordinary.Requires.Contains(revival.DeathFlag)
+                    || ordinary.TricksterDevice && ordinary.TricksterState != null
+                       && relationship.TricksterAccess.TryGetValue(ordinary.TricksterState, out var access)
+                       && access.Detect.Contains(revival.DeathFlag)) continue;
                 var dead = new Snapshot { Chapter = ordinary.MinChapter, Hour = 10000, Area = ordinary.Areas.FirstOrDefault() ?? "" };
                 dead.Flags.UnionWith(ordinary.Requires);
                 dead.Flags.Add(revival.DeathFlag);
@@ -458,6 +462,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "dorgelinda.trickster.audit.open")) DorgelindaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) TargonaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) HepzamirahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) CamelliaTricksterTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
