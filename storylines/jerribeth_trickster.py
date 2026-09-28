@@ -223,14 +223,16 @@ VOICE = '''"Whoever you are *not*. How generous, to make yourself the single exc
 {n}Laughter, high and abrasive, from a man who has stopped smiling.{/n}
 "I have never met you. I intend to. Then we shall see which of us the joke was on."'''
 
-SCENES.append(scene("jerribeth.trickster.never_met.toast_king", "A toast to the Lady of the Sun", "Jerribeth", 5,
+# Inline on the King's hub: Owner-voiced cues take the native speaker (the King), every other node is unvoiced prose, so
+# the deserter's borrowed voice is narrated rather than put in the King's mouth.
+SCENES.append(scene("jerribeth.trickster.never_met.toast_king", "A toast to the Lady of the Sun", "Thaberdine", 5,
     '[Raise your cup to the Lady of the Sun] "To the Lady of the Sun, who\'ll betray whoever I\'m not."', [
-    n("king", "conversant", '''"The Lady of the what? Never heard of her. To her! Bottoms up, no stopping!"''',
-      c("Continue", "host")),
+    n("king", "Thaberdine", '''"The Lady of the what? Never heard of her. To her! Bottoms up, no stopping!"''',
+      c("Continue", "host"), portrait="Jerribeth"),   # inline: the King's own native portrait is shown
     nar("host", '''{n}The tavern roars and drinks. At the end of the bench a Wintersun deserter in a sun-stitched collar puts his cup down without drinking.{/n}
 {n}His eyes go flat and bright at the same time, like a beetle's back.{/n}''',
       c("Continue", "voice")),
-    j("voice", VOICE.replace("{what}", "drinks"),
+    nar("voice", VOICE.replace("{what}", "drinks"),
       c('"Then come and find out."', flags=(MET_BY_TOAST, TOAST, "jerribeth.started")),
       c('[Pour the cup out on the floor] "Wrong tavern, madam."', "spilled")),
     nar("spilled", '''{n}The deserter blinks, looks at the puddle, and asks who spilled his beer. Nobody answers him. The King is already calling for another round.{/n}''',

@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1388,
-  "unique_targets": 318,
+  "binding_uses": 1415,
+  "unique_targets": 336,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -118,12 +118,52 @@
       "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
       "type": "BlueprintCue"
     },
+    "190fda58a169c9340b626f1a503c696f": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0011.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "807cc780b4bdcbe49a69aa179576857d": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0008.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "0149f56290ac8d540a83ec5e92f10c51": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Answer_0016.jbp",
+      "type": "BlueprintAnswer"
+    },
     "8a632a5249b3c2541a1381111cae9e37": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0001.jbp",
       "type": "BlueprintCue"
     },
+    "10939d0d12eb7fb4da65a58553e19f04": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "4f8372200576ead4e86c7c2606c580d0": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0018.jbp",
+      "type": "BlueprintCue"
+    },
+    "93dfa9597191a6848b925d964d309fe4": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
+    "5cca8ccea46e72343a4544c44be9790c": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/AnswersList_0004.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "e3158fbb613ebec4bade9b91b9c31aed": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Answer_0017.jbp",
+      "type": "BlueprintAnswer"
+    },
     "bf1542830cfa01d4c9db04546681084d": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "09280d586e0118b4882abcdb5a4787c6": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "8ccd036dc7f03704590ac5787c3997d2": {
+      "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0029.jbp",
       "type": "BlueprintCue"
     },
     "5ff8a80442182f84e849b4281f98b9ca": {
@@ -138,12 +178,28 @@
       "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0056.jbp",
       "type": "BlueprintCue"
     },
+    "6dccfd39947ef4242a8afbe36b21a46c": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0054.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "7b050ba0745bf144e815632e39b34853": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0065.jbp",
+      "type": "BlueprintCue"
+    },
     "666c827662e8af14798009a98c5aae52": {
       "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0003.jbp",
       "type": "BlueprintCue"
     },
+    "063d159af56b4c54292e6e2eaca8ca08": {
+      "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
     "b2997124f3662e147a029a6f73e13468": {
       "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "09391300eaf00664886c2e05458a8b24": {
+      "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0031.jbp",
       "type": "BlueprintCue"
     },
     "2063ee21356b772408f5c9cfb3ed5bd0": {
@@ -289,6 +345,10 @@
     "8a50fd9c430a80c498da5c09366ff5fc": {
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0123_TricksterAree211.jbp",
       "type": "BlueprintCue"
+    },
+    "589d83230bbbfd04bb1220ee4fef1ce1": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0030.jbp",
+      "type": "BlueprintAnswersList"
     },
     "f2a35965e9bc601449498bd022b04d9d": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Ember/AnswersList_0003.jbp",
@@ -496,6 +556,18 @@
     },
     "10cf0442f31a4796af8b28281f35e944": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_WoundClosed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b02cb06ba219ef9419a1b37cad576afa": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/CamelliaCompanion/CamelliaNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "6f8232943eadc914da5d60121e6ce612": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/CamelliaCompanion/CamelliaNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "cf3639c5cf057034fa766dd5f421d2ed": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/CamelliaCompanion/CamelliaStates/CamelliaState_Killed.jbp",
       "type": "BlueprintEtude"
     },
     "3a708ad53771a2d44ac506361fb7aafc": {

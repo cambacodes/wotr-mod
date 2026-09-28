@@ -49,7 +49,7 @@ internal static class JerribethTricksterTests
         check(final.AnswerLists.SequenceEqual(new[] { "5cca8ccea46e72343a4544c44be9790c" }) && final.NativeReturnCue == null,
             "The Sanctum-final lease must stay a non-inline scene beside [Attack].");
         check(king.AnswerLists.SequenceEqual(new[] { "6dccfd39947ef4242a8afbe36b21a46c" })
-              && king.NativeReturnCue == "7b050ba0745bf144e815632e39b34853" && king.Nodes[0].Speaker == "conversant",
+              && king.NativeReturnCue == "7b050ba0745bf144e815632e39b34853" && king.Nodes[0].Speaker == king.Owner && king.Nodes.Skip(1).All(n => n.Speaker == "Narrator"),
             "The King's toast left his tavern hub.");
         check(backdated.Remote && tenant.Remote && toast.Remote && backdated.TricksterDevice && tenant.TricksterDevice
               && backdated.TricksterState == "dead" && tenant.TricksterState == "dead", "Device scenes mislabelled.");

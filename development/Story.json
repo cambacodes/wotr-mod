@@ -144605,14 +144605,14 @@
     {
       "Id": "jerribeth.trickster.never_met.toast_king",
       "Title": "A toast to the Lady of the Sun",
-      "Owner": "Jerribeth",
+      "Owner": "Thaberdine",
       "MinChapter": 5,
       "MaxChapter": 5,
       "Entry": "[Raise your cup to the Lady of the Sun] \"To the Lady of the Sun, who'll betray whoever I'm not.\"",
       "Nodes": [
         {
           "Id": "king",
-          "Speaker": "conversant",
+          "Speaker": "Thaberdine",
           "Text": "\"The Lady of the what? Never heard of her. To her! Bottoms up, no stopping!\"",
           "Choices": [
             {
@@ -144624,7 +144624,7 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "Jerribeth"
         },
         {
           "Id": "host",
@@ -144644,7 +144644,7 @@
         },
         {
           "Id": "voice",
-          "Speaker": "Jerribeth",
+          "Speaker": "Narrator",
           "Text": "\"Whoever you are *not*. How generous, to make yourself the single exception in a demon's life.\"\n{n}The voice is too high for the throat it comes out of, and it takes the long way round the words, tasting them.{/n}\n\"I left a few ideas in Wintersun, Commander. They keep. This one drinks.\"\n{n}Laughter, high and abrasive, from a man who has stopped smiling.{/n}\n\"I have never met you. I intend to. Then we shall see which of us the joke was on.\"",
           "Choices": [
             {
