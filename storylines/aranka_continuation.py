@@ -554,13 +554,13 @@ s("the_story_that_follows", "The story that follows", '\"I heard a new version o
 "There," she says. "That is mine. The joke was ours; the song is mine."''',
         c('[Let Aranka keep the last word, then walk back together.]', "desire", flags=("aranka.story_game", "aranka.story_conversation_done"))),
     n("quietly", "Aranka", '''{n}The travelers continue down the path. Aranka watches until the bend hides them, then turns toward you.{/n}
-"I could have gone after them," she says. "I wanted to. Thank you for not making me choose between being understood and being left alone."
-{n}She kisses you slowly, without turning the gesture into a reward for a correct answer.{/n}
-"You can still be a menace. Notice when the joke uses up someone else's voice."''',
+"I could have gone after them," she says. "I wanted to. I had the next verse ready in my mouth, and you let me swallow it."
+{n}She kisses you slowly, as if she has the whole evening to decide what it means.{/n}
+"You can still be a menace. Just don't sing over the quiet ones."''',
         c('[Tell her what you want from the woman who keeps challenging you.]', "desire", flags=("aranka.story_conversation_done",))),
-    n("desire", "Aranka", '''"I want you to keep surprising me," she says. "And I want to know that when I object, you hear me before you start composing your defense."
+    n("desire", "Aranka", '''"Keep surprising me," she says. "But the night the moon verse went round, you had the whole path laughing before the older one could finish her question, and she never did finish it. When I say stop, stop there. Put the joke down and let the other voice come in."
 "I can do both."
-"You can try both. I am not a puzzle that gives you a prize when you guess correctly."
+"You can try both. Start with the second one. It's the harder tune."
 {n}She catches your collar between two fingers and draws you closer. This time the smile is unmistakably inviting.{/n}
 "Now, what did you mean about making another mess together?"''',
         c('"I meant I want you. Here, with no audience and no story to perform."', "private"),
@@ -574,7 +574,7 @@ s("the_story_that_follows", "The story that follows", '\"I heard a new version o
         c('[Kiss her here, then leave the rest for another night.]', flags=("aranka.story_conversation_done",))),
     n("road", "Aranka", '''"That sounds lovely," she says. "It also sounds like a plan that might swallow every afternoon we have left."
 "I can make room for the quiet ones."
-"Make room for me to change my mind, too. I want to see where your road goes. I don't want to become the proof that you never have to travel alone."
+"Make room for me to change my mind, too. I want to see where your road goes. I don't want to be the song you hum so you never notice you're walking alone."
 {n}She kisses you, warm and unhurried, then rests her forehead against yours.{/n}
 "Come find me when the impossible thing is over. I will decide whether I want to follow it with you."''',
         c('[Keep the invitation open and let her set the next journey.]', flags=("aranka.story_conversation_done",))),
@@ -604,7 +604,9 @@ s("the_next_verse", "The next verse", '\"I wanted to ask how the story traveled.
 {n}She looks at you with the same bright directness she brings to a new melody.{/n}
 "And you? Are you willing to let me leave a story unfinished when it would be more convenient for you to have an ending?"''',
         c('[Ask what practical promise would answer her question.]', "boundary")),
-    n("boundary", "Aranka", '''"You can be attentive. You can also make the world rearrange itself around your plans. I like your nerve. I don't want to discover that being loved by you means my choices have become part of your legend."
+    n("boundary", "Aranka", '''"You listen beautifully. You also make the world rearrange itself around you, and I adore the nerve of it. But I have watched what happens to a song that stands too near a legend. People stop singing it and start singing about it."
+{n}She taps the folded sheet at her belt.{/n}
+"So. My name goes above this one. I decide where it travels and who sings it next. If I ever hear it in a hall I never chose, with your name ahead of mine, I will stop singing it, and I will not tell you why. Can you live beside that?"
 {n}She waits for you to answer instead of softening the question with a kiss.{/n}''',
         c('"If you object, I will stop and listen before defending myself."', "listen"),
         c('"I want a life with you. I will make room for your work and your road."', "life"),

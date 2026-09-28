@@ -446,6 +446,7 @@ internal static class Program
             }
             if (story.Scenes.Any(s => s.Id == "minagho_chivarro.trickster.reunion.wardrobe")) MinaghoChivarroTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "soana.trickster.killed.knot")) SoanaTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) ArankaTricksterTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
