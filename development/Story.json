@@ -27116,7 +27116,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I am asking whether you can enjoy closeness without turning it into possession.\"",
+              "Text": "\"You keep what interests you. On a needle, usually. Tell me what stops you doing that to me.\"",
               "Next": "refuse",
               "Set": [
                 "jerribeth.asked_possession"
@@ -28490,7 +28490,7 @@
           "Text": "\"I will keep answering. I will also tell you when I want more than you have offered, rather than arranging for you to discover it by accident.\"\n{n}A faint vibration of amusement returns.{/n}\n\"This appears to be the part where I admit that you matter to me. I have considered several evasions. None improved the sentence.\"",
           "Choices": [
             {
-              "Text": "\"You matter to me too.\"",
+              "Text": "\"You matter to me. Write that into whatever you are drafting, and read it as closely as you like.\"",
               "Next": "end",
               "Set": [
                 "jerribeth.committed"
@@ -28502,7 +28502,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I want you in my life, with all the difficult conversations that implies.\"",
+              "Text": "\"I want you in my life. Needles, small print and all.\"",
               "Next": "end",
               "Set": [
                 "jerribeth.committed"
@@ -28514,7 +28514,7 @@
               "Abort": false
             },
             {
-              "Text": "\"You matter to me too.\"",
+              "Text": "\"You matter to me. Write that into whatever you are drafting, and read it as closely as you like.\"",
               "Next": "arrival",
               "Set": [
                 "jerribeth.committed"
@@ -28528,7 +28528,7 @@
               "Abort": false
             },
             {
-              "Text": "\"You matter to me too.\"",
+              "Text": "\"You matter to me. Write that into whatever you are drafting, and read it as closely as you like.\"",
               "Next": "tenant_room",
               "Set": [
                 "jerribeth.committed"
@@ -28541,7 +28541,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I want you in my life, with all the difficult conversations that implies.\"",
+              "Text": "\"I want you in my life. Needles, small print and all.\"",
               "Next": "arrival",
               "Set": [
                 "jerribeth.committed"
@@ -28555,7 +28555,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I want you in my life, with all the difficult conversations that implies.\"",
+              "Text": "\"I want you in my life. Needles, small print and all.\"",
               "Next": "tenant_room",
               "Set": [
                 "jerribeth.committed"
@@ -28573,7 +28573,7 @@
         {
           "Id": "end",
           "Speaker": "Jerribeth",
-          "Text": "{n}She lets the answer stand without testing it.{/n}\n\"Tomorrow, then. If the world is still ending, it can spare us another conversation.\"\n{n}Before the image fades, the seam of the invented horizon appears behind her. She has kept it.{/n}",
+          "Text": "{n}She lets the answer stand without testing it, which for her is a considerable concession, and then tests it anyway.{/n}\n\"I shall hold you to every word. You should know that I have kept a copy. Tomorrow, then. If the world is still ending, it can spare us another conversation.\"\n{n}Before the image fades, the seam of the invented horizon appears behind her. She has kept it.{/n}",
           "Choices": [
             {
               "Text": "[Keep the next evening for her.]",

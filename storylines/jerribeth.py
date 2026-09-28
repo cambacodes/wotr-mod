@@ -114,7 +114,7 @@ s("price", "The question she hoped to postpone", [
 {n}Her antennae incline toward the image of you.{/n}
 "But I have also returned to a conversation I cannot force you to continue. You might ask why I keep doing that."''',
       c('"Because an answer you chose for me would tell you nothing about what I want."', "limit", flags=("jerribeth.claimed_limit",)),
-      c('"I am asking whether you can enjoy closeness without turning it into possession."', "refuse", flags=("jerribeth.asked_possession",))),
+      c('"You keep what interests you. On a needle, usually. Tell me what stops you doing that to me."', "refuse", flags=("jerribeth.asked_possession",))),
     n("refuse", "Jerribeth", '''{n}The silence lasts long enough for the projected room to fade at its edges.{/n}
 "You want a confession. I will not give you one I do not mean."
 {n}Her next words are colder.{/n}
@@ -296,10 +296,10 @@ s("future", "A future she has not rehearsed", [
     n("promise", "Jerribeth", '''"I will keep answering. I will also tell you when I want more than you have offered, rather than arranging for you to discover it by accident."
 {n}A faint vibration of amusement returns.{/n}
 "This appears to be the part where I admit that you matter to me. I have considered several evasions. None improved the sentence."''',
-      c('"You matter to me too."', "end", flags=("jerribeth.committed",)),
-      c('"I want you in my life, with all the difficult conversations that implies."', "end", flags=("jerribeth.committed",))),
-    n("end", "Jerribeth", '''{n}She lets the answer stand without testing it.{/n}
-"Tomorrow, then. If the world is still ending, it can spare us another conversation."
+      c('"You matter to me. Write that into whatever you are drafting, and read it as closely as you like."', "end", flags=("jerribeth.committed",)),
+      c('"I want you in my life. Needles, small print and all."', "end", flags=("jerribeth.committed",))),
+    n("end", "Jerribeth", '''{n}She lets the answer stand without testing it, which for her is a considerable concession, and then tests it anyway.{/n}
+"I shall hold you to every word. You should know that I have kept a copy. Tomorrow, then. If the world is still ending, it can spare us another conversation."
 {n}Before the image fades, the seam of the invented horizon appears behind her. She has kept it.{/n}''', c('[Keep the next evening for her.]', "future_conclusion", flags=("jerribeth.chosen_future",))),
     n("future_conclusion", "Jerribeth", '''"I shall expect you."
 {n}She leaves the frame open until you are ready to put it down.{/n}''',
