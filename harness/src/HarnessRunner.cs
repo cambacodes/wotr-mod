@@ -439,6 +439,10 @@ namespace RRT.TestHarness
                         }
                     }
                     if (dc.Dialog == null) { run.Result = "completed"; break; }
+                    // Screenshots (plan.Screenshots): the cue is bound and on screen, so capture it before answering.
+                    if (plan.Screenshots && run.Screenshots.Count < plan.ScreenshotsPerScene)
+                        yield return Screenshot(run, step);
+                    if (dc.Dialog == null) { run.Result = "completed"; break; }
                     var answers = dc.Answers.ToList();
                     counts.Add(answers.Count);
                     int index = prefixPath != null ? (step < prefixPath.Count ? prefixPath[step] : 0) : rng!.Next(answers.Count);
@@ -500,6 +504,32 @@ namespace RRT.TestHarness
             try { if (Game.HasInstance && Game.Instance.DialogController.Dialog != null) Game.Instance.DialogController.StopDialog(); }
             catch (Exception ex) { LogCapture.Instance?.Add("harness", "Exception", "StopDialog failed: " + ex.Message, ex.ToString()); }
         }
+
+        // Captures the rendered frame to <ScreenshotDir>/<scene>__<step>.png. ScreenCapture writes at the end of the frame, so
+        // the file appears a frame or two later; wait up to 2 s real time for it. A failure is logged, never fails the run.
+        IEnumerator Screenshot(SceneRun run, int step)
+        {
+            string? path = null;
+            try
+            {
+                string dir = plan.ScreenshotDir ?? Path.Combine(Application.persistentDataPath, "RRTHarnessShots");
+                Directory.CreateDirectory(dir);
+                string stem = Safe(run.Scene) + "__" + step;
+                path = Path.Combine(dir, stem + ".png");
+                for (int n = 2; File.Exists(path); n++) path = Path.Combine(dir, stem + "_" + n + ".png");
+                ScreenCapture.CaptureScreenshot(path);
+            }
+            catch (Exception ex) { ShotFailed(run, "screenshot failed: " + ex.Message); yield break; }
+            float t0 = Time.realtimeSinceStartup;
+            while (!File.Exists(path) && Time.realtimeSinceStartup - t0 < 2f) yield return null;
+            if (File.Exists(path)) run.Screenshots.Add(path);
+            else ShotFailed(run, "screenshot not written within 2 s: " + path);
+        }
+
+        static void ShotFailed(SceneRun run, string message) =>
+            run.Exceptions.Add(new CapturedLog { Source = "harness", Severity = "Warning", Message = message, Relevant = false, Context = run.Scene });
+
+        static string Safe(string id) => string.Concat(id.Select(ch => Path.GetInvalidFileNameChars().Contains(ch) ? '_' : ch));
 
         IEnumerator RoundTrip(RoundTripResult rt, string afterScene)
         {
