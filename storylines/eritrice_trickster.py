@@ -26,7 +26,8 @@ WELCOME = "2abad22288daf834f950acb6b2b7a812"       # Council_Eritrice/Cue_0001 "
 CHADALI_LIST = "e649f211c6b002a49a0c633061877927"  # Council_Chadali/AnswersList_0003
 CHAIR_USURPED = "eritrice.chair_usurped"             # Council_3/Cue_0045 "I don't recall appointing you chairperson" (bound in eritrice_minutes)
 NENIO_HUB = "1ab909cc3a6194840b1475b99547c263"     # CompanionDialogues/Nenio/AnswersList_0015
-COUNCIL_PAGE = "b2fd1f720322d6749b921cdd34328c3a"  # Epilogues BookPage_0187 (the Council's page, Cue_0568)
+# Epilogue pages carry no EpilogueAfter, like Nocticula's and Dorgelinda's: RRT's epilogue sequence appends them in authored
+# order. (An anchor on the Council's own page, BookPage_0187, was not in that sequence and was appended with a warning.)
 
 STARTED = "eritrice.started"
 CLOSED = "eritrice.closed"
@@ -247,7 +248,7 @@ letter(P + "fought.tabled", "Point of order", [
 
 # --- 5.5 Epilogue pages (Owner EritriceEpilogue; after the Council's own page; no effects). -----------------------
 
-EP = dict(last=6, Relationship="eritrice", EpilogueAfter=COUNCIL_PAGE)
+EP = dict(last=6, Relationship="eritrice")
 
 SCENES.append(scene(P + "epilogue.commit", "", "EritriceEpilogue", 6, "", [
     nar("page", '''{n}The debate the war had interrupted resumed after Threshold, by correspondence, and ran to forty letters in an upright hand, point by point, conceding nothing. The forty-first was a single line: "The chair has heard the case for, and the case against. The chair will vote when the floor answers one question, in its own hand: aye, or nay."{/n}''',
