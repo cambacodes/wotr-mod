@@ -202,9 +202,9 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
     nar("threshold", '''{n}She looks at your hand in hers as if it were a clause she had drafted herself and was only now reading in fair copy.{/n}
 "The next evening," she says, "is this one."
 {n}The fan closes with a snap. She rises, and for the first time since the day she walked into your council with a scroll under the Queen's seal she lets go of her manners all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}
-"Terms accepted. Now take this robe off me, Commander. Slowly. I bill by the minute, and tonight I intend to be very expensive."
+"Agreed. Now take this robe off me, Commander. Slowly. I bill by the minute, and tonight I intend to be very expensive."
 {n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings and her smile, and lets you look for exactly as long as she has decided you may. Then she kisses you, with a politician's patience and none of a politician's restraint, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}
-{n}She walks you backwards to the desk. The ledger goes to the floor. She pushes you down across the place where it lay, climbs over you with her knees either side of your hips, catches both your wrists in one hand and pins them above your head, and sinks down onto you, slow as a signature.{/n}''',
+{n}She walks you backwards to the desk. The ledger goes to the floor. She pushes you down across the place where it lay, climbs over you with her knees either side of your hips, catches both your wrists in one hand and pins them above your head, and settles astride your hips, and reaches down between you with her free hand, watching your face the whole time to see what it costs you.{/n}''',
       c("Continue", "morning")),
     nar("morning", '''{n}Morning. She is at your desk in your shirt, composing a dispatch, tail curled round the leg of the chair. The ledger is back where it belongs. One corner of it is badly bent.{/n}
 "Nerosyan will hear that I was detained by the Commander on urgent business." {n}She blots the line.{/n} "Entirely accurate."
@@ -281,7 +281,7 @@ letter("konomi.trickster.never_arrived.accredited", "Deemed presented", [
 
 physical("konomi.trickster.never_arrived.audience", "Late for her own audience", '[Greet the woman in the attaché\'s office.]', [
     k("start", '''{n}A kitsune in travelling silks is standing in the attaché's office, empty since Drezen fell, with a ledger under her arm, as if she had been there for an hour. She has.{/n}
-"Lady Konomi, official attaché of Nerosyan. Here are my credentials." {n}She holds out a scroll under the Royal Council's seal. The ink on the date is two days old.{/n} "Though I understand they have already been presented. By you. To a jug."
+"Lady Konomi, official attaché of Nerosyan. Here are my credentials." {n}She holds out her credentials. The ink on the date is two days old.{/n} "Though I understand they have already been presented. By you. To a jug."
 "I was halfway through a reception in Nerosyan when a secretary showed me his register. Column four, in his hand: 'credentials presented, Drezen'. He could not say how. Nobody could. I have come to see what I said."
 {n}Her smile is small, sharp and entirely pleased with itself.{/n}
 "The journey is on your account, Commander. So is the reception I left. It was a very good reception."''',

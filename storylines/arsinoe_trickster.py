@@ -125,7 +125,7 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 "The lien stands, Commander. This is outside the lease. Abadar keeps the accounts; he does not keep the curtains. Close them."
 {n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and takes you by the lapels and pulls, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}
 {n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was and follows you down, her hair falling around both your faces like a drawn curtain, and for one long, appraising moment she only looks at you, the look of a woman about to sign.{/n}
-{n}Whatever the church of Abadar holds a lien on, it is not this.{/n}''',
+"Interest accrues from now," {n}she says, and settles astride you, knees braced on the counter's edge, and reaches down between you with the same unhurried care she gives a seal.{/n}''',
       c("Continue", "morning")),
     n("morning", "Arsinoe", '''{n}Morning. The sign still says CLOSED. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}
 "Interest on the property: accrued. Everything else: no charge."
