@@ -16,8 +16,7 @@ Her villainy stays: she bargains, threatens, collects heads and enjoys it. Her a
 from story_format import c, n, scene
 from storylines import hepzamirah_trickster as core
 from storylines.hepzamirah_trickster import (ARMED, BESTED, BLOOD, BLOODLINE_KEPT, CALL_FORBIDDEN, CALL_SWORN, CLOSED,
-                                              COMMITTED, CONFINED, COURIER_KILLED, COWED, CS, EMBASSY, EMBER_FORBIDS,
-                                              EVE_PROMISE, EYE_BURNED, EYE_KEPT, FAVOUR_OWED, FIRST, FLOWERS_KEPT,
+                                              COMMITTED, CONFINED, COURIER_KILLED, COWED, CS, EMBASSY,                                               EVE_PROMISE, EYE_BURNED, EYE_KEPT, FAVOUR_OWED, FIRST, FLOWERS_KEPT,
                                               FOLLOWED, GRUDGE, HORN_CUT, HORN_KEPT, KNOWN, LAB, LANDLORD, LATE, LET_GO,
                                               LOOKED, LOOKED_AWAY, MGRUDGE, MORNING, OFFER, P, PICK, PICK_HELD, PICK_ITEM,
                                               RENT_REFUSED, RENT_TAKEN, RET, VIAL_FORGED, VIAL_PAID, WRONG_BODY, YIELDED,
@@ -332,7 +331,7 @@ yard(FLOWERS, "Wildflowers", '"Ember\'s been visiting you."', [
         c("[Leave them to it.]")),
     nar("thrown", '''{n}She throws it over the yard wall. It breaks on the far side. Ember sighs, stands up, dusts off her skirt, and goes to see if there are any blue ones left on the hill.{/n}''',
         c("[Leave them to it.]")),
-], requires=("trickster.ever", RET, FIRST, "ember.present"), forbids=EMBER_FORBIDS, delay=24)
+], requires=("trickster.ever", RET, FIRST, "ember.present"), delay=24)
 
 
 # --- 8. The horn: the broken stump, and what she lets the Commander do to it. ------------------------------------------
@@ -511,7 +510,7 @@ yard(EVE, "Before the Threshold", '"Tomorrow, then."', [
 "Who said a trick is less impressive the second time." {n}She puts the pick down on the flagstones.{/n} "You would. I know you would. That is the worst thing anyone has ever done to me, clown. It makes me not afraid."''',
        c("Continue", "last", flags=(EVE_PROMISE,))),
     hz("dont", '''"*Don't die.*" {n}She repeats it with enormous scorn.{/n} "That is what your chaplains say to the recruits, and then they bury them."
-{n}And then, after a moment, lower:{/n} "But you say it the way you say everything, as if it were a trick you already know how to do. Very well. I will not die. I will make the demons do it instead. I am good at that."''',
+{n}And then, after a moment, lower:{/n} "But from you it sounds like everything else you promise, as if it were a trick you already know how to do. Very well. I will not die. I will make the demons do it instead. I am good at that."''',
        c("Continue", "last")),
     nar("face", '''{n}She lets you. The scarred side is hot under your palm, and the milk-white eye does not close, and the good one does. The stump of her horn rests against your wrist. For a long moment she breathes against your mouth without kissing you, the way the forge breathes when the bellows stop.{/n}''',
         c("Continue", "face_say")),
@@ -714,7 +713,7 @@ yard(VORLESH, "Areelu's experiment", '"You were talking about Areelu."', [
 "I want her to look at us and understand that she has lost twice. That her experiment and her father's discarded daughter walked into her house together." {n}She sits up.{/n} "That would be very sweet. Sweeter than killing her. Almost."''',
        c("Continue", "promise")),
     hz("mine", '''"*The one using it.*" {n}She repeats it, and the scarred side of her mouth pulls.{/n} "My father would say that about a sword he took off a corpse. He would say it about me."
-"But you say it about yourself, and I think you mean it." {n}She sits up.{/n} "Good. Then you are a thief of your own heart, clown, as well as of walls. That is the most Trickster thing I have ever heard, and I have been listening to you for weeks."''',
+"But you mean it about yourself, I think. I can hear it." {n}She sits up.{/n} "Good. Then you are a thief of your own heart, clown, as well as of walls. That is the most Trickster thing I have ever heard, and I have been listening to you for weeks."''',
        c("Continue", "promise")),
     hz("joke", '''{n}She stares at you. Then the tight scarred smile comes, slowly.{/n}
 "A joke she hears about." {n}She savours it.{/n} "Yes. Let us walk into her laboratory together, her experiment and her replacement's victim, and let her hear about it from the only two people in the world who find it funny."''',
@@ -770,7 +769,7 @@ M."''',
               c("Continue", "hep")),
     hz("hep", '''{n}She has not moved while you read. Now she laughs, and it is the ugliest sound you have ever heard her make.{/n}
 "*Beautiful again.* Both eyes. Both horns." {n}She touches the milk-white eye, and the level-sawn stump, and the ridge of scar.{/n} "He would take this apart on his bench to learn your trick, and grow me pretty, and keep the trick. And the next body he made would have his hand in it again."
-"Well, landlord? You are the one he is bargaining with. He has made you an offer. What do you say?"''',
+"Well, landlord? You are the one he is bargaining with. He has made you an offer. What is your answer?"''',
        c('"No. She\'s not a vessel. She lives here."', "no", flags=(P + "unmade_refused",)),
        c('[Trickster] "Tell him the flat\'s been sublet. To her. Permanently. He\'ll need her signature."', "sublet",
          flags=(P + "unmade_refused",), mythic="Trickster"),
@@ -906,9 +905,9 @@ yard(EMBER_ASKS, "Happy", '"Ember wanted me to ask you something."', [
     em("ember_end", '''"It's a start," {n}Ember says, very pleased, and picks the jar of blue flowers up, and gives it to her, and runs off before it can be thrown.{/n}''',
        c("Continue", "after")),
     hz("after", '''{n}Hepzamirah sits holding the jar. She does not throw it.{/n}
-"Do not say anything, clown," {n}she says.{/n} "If you say anything I will throw it at you, and then she will cry, and then I will have to kill something to feel better, and I have run out of cultists."''',
+"Do not say anything, clown," {n}she says.{/n} "If you open your mouth I will throw it at you, and then she will cry, and then I will have to kill something to feel better, and I have run out of cultists."''',
        c("[Say nothing.]")),
-], requires=("trickster.ever", COMMITTED, FLOWERS, "ember.present"), forbids=EMBER_FORBIDS, delay=24)
+], requires=("trickster.ever", COMMITTED, FLOWERS, "ember.present"), delay=24)
 
 
 # --- 27. The name: what she calls the Commander, and what she will be called. -----------------------------------------

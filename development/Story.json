@@ -187373,10 +187373,7 @@
         "ember.present"
       ],
       "Forbids": [
-        "hepzamirah.closed",
-        "ember_dead",
-        "ember_gone",
-        "ember.killed_in_kenabres"
+        "hepzamirah.closed"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -188596,7 +188593,7 @@
         {
           "Id": "dont",
           "Speaker": "Hepzamirah",
-          "Text": "\"*Don't die.*\" {n}She repeats it with enormous scorn.{/n} \"That is what your chaplains say to the recruits, and then they bury them.\"\n{n}And then, after a moment, lower:{/n} \"But you say it the way you say everything, as if it were a trick you already know how to do. Very well. I will not die. I will make the demons do it instead. I am good at that.\"",
+          "Text": "\"*Don't die.*\" {n}She repeats it with enormous scorn.{/n} \"That is what your chaplains say to the recruits, and then they bury them.\"\n{n}And then, after a moment, lower:{/n} \"But from you it sounds like everything else you promise, as if it were a trick you already know how to do. Very well. I will not die. I will make the demons do it instead. I am good at that.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -189824,7 +189821,7 @@
         {
           "Id": "mine",
           "Speaker": "Hepzamirah",
-          "Text": "\"*The one using it.*\" {n}She repeats it, and the scarred side of her mouth pulls.{/n} \"My father would say that about a sword he took off a corpse. He would say it about me.\"\n\"But you say it about yourself, and I think you mean it.\" {n}She sits up.{/n} \"Good. Then you are a thief of your own heart, clown, as well as of walls. That is the most Trickster thing I have ever heard, and I have been listening to you for weeks.\"",
+          "Text": "\"*The one using it.*\" {n}She repeats it, and the scarred side of her mouth pulls.{/n} \"My father would say that about a sword he took off a corpse. He would say it about me.\"\n\"But you mean it about yourself, I think. I can hear it.\" {n}She sits up.{/n} \"Good. Then you are a thief of your own heart, clown, as well as of walls. That is the most Trickster thing I have ever heard, and I have been listening to you for weeks.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -190120,7 +190117,7 @@
         {
           "Id": "hep",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She has not moved while you read. Now she laughs, and it is the ugliest sound you have ever heard her make.{/n}\n\"*Beautiful again.* Both eyes. Both horns.\" {n}She touches the milk-white eye, and the level-sawn stump, and the ridge of scar.{/n} \"He would take this apart on his bench to learn your trick, and grow me pretty, and keep the trick. And the next body he made would have his hand in it again.\"\n\"Well, landlord? You are the one he is bargaining with. He has made you an offer. What do you say?\"",
+          "Text": "{n}She has not moved while you read. Now she laughs, and it is the ugliest sound you have ever heard her make.{/n}\n\"*Beautiful again.* Both eyes. Both horns.\" {n}She touches the milk-white eye, and the level-sawn stump, and the ridge of scar.{/n} \"He would take this apart on his bench to learn your trick, and grow me pretty, and keep the trick. And the next body he made would have his hand in it again.\"\n\"Well, landlord? You are the one he is bargaining with. He has made you an offer. What is your answer?\"",
           "Choices": [
             {
               "Text": "\"No. She's not a vessel. She lives here.\"",
@@ -190947,7 +190944,7 @@
         {
           "Id": "after",
           "Speaker": "Hepzamirah",
-          "Text": "{n}Hepzamirah sits holding the jar. She does not throw it.{/n}\n\"Do not say anything, clown,\" {n}she says.{/n} \"If you say anything I will throw it at you, and then she will cry, and then I will have to kill something to feel better, and I have run out of cultists.\"",
+          "Text": "{n}Hepzamirah sits holding the jar. She does not throw it.{/n}\n\"Do not say anything, clown,\" {n}she says.{/n} \"If you open your mouth I will throw it at you, and then she will cry, and then I will have to kill something to feel better, and I have run out of cultists.\"",
           "Choices": [
             {
               "Text": "[Say nothing.]",
@@ -190968,10 +190965,7 @@
         "ember.present"
       ],
       "Forbids": [
-        "hepzamirah.closed",
-        "ember_dead",
-        "ember_gone",
-        "ember.killed_in_kenabres"
+        "hepzamirah.closed"
       ],
       "DelayHours": 24,
       "Optional": true,
