@@ -197,7 +197,7 @@ at_cave("soana.trickster.returned.graveyard", "What the knot cost", '"Soana."', 
     ], requires=("trickster.ever", RETURNED), forbids=(CLOSED, GRAVE_KEPT), delay=48)
 
 TERMS_NIGHT = '''{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}
-"Knots listen," she says. "So do I. So listen."
+"Knots listen." {n}Her eyes do not leave yours.{/n} "So do I. So listen."
 {n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}
 "Thirty winters I slept with a demon at the door. I am done sleeping."
 {n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}'''
@@ -317,7 +317,7 @@ BOWL_NIGHT = '''{n}She takes the bowl off the fire-stone with her bare hands and
 {n}She washes the road off you herself, with water that smells of pine tar and is hotter than you would choose, scrubbing at your neck as if you were a pot. Her hands slow on your shoulders and do not hurry again. When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while.{/n}
 {n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pulls the furs over the both of you and her hand closes on your hip like a root closing on a stone.{/n}'''
 BOWL_MORNING = '''{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}
-"The she-bear went out before dawn," she says. "She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves."'''
+"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves."'''
 
 inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you had been thinking."', [
     n("start", "Soana", '''{n}The bone bowl is on the fire-stone. Your die sits in it, one face up, as it has since the snow. There is a second blanket on her pallet, which there was not before.{/n}''',
@@ -382,7 +382,7 @@ SCENES.append(scene("soana.trickster.epilogue.luck", "The die in the bowl", "Epi
 
 SCENES.append(scene("soana.trickster.epilogue.commit", "Your end", "Epilogue", 5, "", [
     nar("start", '''{n}Soana buried the Wintersun woods alone, one grave a day, and bound what she could into what was left. The year after the Worldwound closed she walked all the way to Drezen with a broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}
-"Your end," she said. "Don't lose it."''',
+"Your end. Don't lose it."''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
     requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, DECLINED), last=99, Relationship="soana"))
 

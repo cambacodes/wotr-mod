@@ -154130,7 +154130,7 @@
         {
           "Id": "night",
           "Speaker": "Soana",
-          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen,\" she says. \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"Thirty winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"Thirty winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -154244,7 +154244,7 @@
         {
           "Id": "night",
           "Speaker": "Soana",
-          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen,\" she says. \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"Thirty winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
+          "Text": "{n}She presses the shards into your palm and ties them there with a strip of gut, round your wrist and then round her own, tight enough to hurt. The fire is low. She does not let go of the strip.{/n}\n\"Knots listen.\" {n}Her eyes do not leave yours.{/n} \"So do I. So listen.\"\n{n}She pulls. You come. Her hands are as hard as roots and warmer than anything in this forest has a right to be; she finds the buckle at your collar without looking, the way she finds the knife at her belt. Her mouth tastes of smoke and of the bitter bark she chews against the cold, and she bites your lower lip where the knot drew blood, not gently, to see what you will do about it.{/n}\n\"Thirty winters I slept with a demon at the door. I am done sleeping.\"\n{n}She draws the gut strip taut between your wrists and hers and leans back into the old furs, and you go down with her, because you are tied to her and because you want to.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -154917,7 +154917,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn,\" she says. \"She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -155016,7 +155016,7 @@
         {
           "Id": "morning",
           "Speaker": "Soana",
-          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn,\" she says. \"She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
+          "Text": "{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}\n\"The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -155190,7 +155190,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Soana buried the Wintersun woods alone, one grave a day, and bound what she could into what was left. The year after the Worldwound closed she walked all the way to Drezen with a broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}\n\"Your end,\" she said. \"Don't lose it.\"",
+          "Text": "{n}Soana buried the Wintersun woods alone, one grave a day, and bound what she could into what was left. The year after the Worldwound closed she walked all the way to Drezen with a broken clay knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}\n\"Your end. Don't lose it.\"",
           "Choices": [
             {
               "Text": "Continue",
