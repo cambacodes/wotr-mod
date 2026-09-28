@@ -316,8 +316,11 @@ inline("soana.trickster.missed.she_bear", "The she-bear", 5, '"How is your she-b
 
 BOWL_NIGHT = '''{n}She takes the bowl off the fire-stone with her bare hands and sets it between you. The die is still in it, twenty up.{/n}
 "Then it stays. And so do you, tonight. I am too old to wait for you to guess."
-{n}She washes the road off you herself, with water that smells of pine tar and is hotter than you would choose, scrubbing at your neck as if you were a pot. Her hands slow on your shoulders and do not hurry again. When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while.{/n}
-{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pulls the furs over the both of you and her hand closes on your hip like a root closing on a stone.{/n}'''
+{n}She washes the road off you herself, with water that smells of pine tar and is hotter than you would choose, scrubbing at your neck as if you were a pot. Then she stops scrubbing. She unlaces your shirt with the impatience she keeps for snares, drags it over your head, and reads what the war has written on you, every scar and bruise, with the frank interest of a woman reading tracks in snow.{/n}
+"Hm. You heal badly. Good. Things that heal badly remember."'''
+BOWL_THRESHOLD = '''{n}She lets you undo her in turn: the belt of knotted cord, the rags one over another, until the old dwarf woman stands in the firelight in nothing but the clay knot at her throat and her grey braid, broad and heavy and unashamed. She takes your hands by the wrists and puts them where she wants them.{/n}
+{n}When she kisses you it is with her whole small, heavy body, the way she does everything, as if the world were a thing to be carried and she had decided to carry you for a while. She bites. She laughs when you gasp, low in her chest, and bites again.{/n}
+{n}Outside, the she-bear lies down across the cave mouth to keep the night off. Soana pushes you back into the furs, climbs over you with her knees sunk in the pelts on either side, and her hand closes on your hip like a root closing on a stone.{/n}'''
 BOWL_MORNING = '''{n}Morning. She is sitting up in the furs with her knees drawn up, rolling your die between her fingers. It keeps coming up twenty. She keeps frowning at it.{/n}
 "The she-bear went out before dawn. She will come back. Your luck is in my bowl, and you are in my bed, and the forest will have to put up with both of you until the war is done. Go on. The demons will not kill themselves."'''
 
@@ -343,7 +346,8 @@ inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you
 {n}Soana does not look at the door. She looks at you.{/n}
 "There. Now you know what you are. Go."''',
         c('[Go]', flags=(CLOSED,))),
-    n("night", "Soana", BOWL_NIGHT, c("Continue", "morning")),
+    n("night", "Soana", BOWL_NIGHT, c("Continue", "threshold")),
+    n("threshold", "Soana", BOWL_THRESHOLD, c("Continue", "morning")),
     n("morning", "Soana", BOWL_MORNING, c('[Go]'))],
     requires=("trickster.ever", LUCK_KEPT, TESTED), forbids=(*LOSS, CLOSED, COMMITTED, DECLINED), delay=72, optional=True)
 
@@ -354,7 +358,8 @@ inline("soana.trickster.missed.second_ask", "The bowl's price", 5, '"About your 
         c('[Seal the letter] "Done. Keep the die. And me."', "night", crusade=("Favors", -150),
           flags=(COMMITTED, DIE_KEPT, SEALED)),
         c('"No. Not at that price."', flags=(CLOSED,))),
-    n("night", "Soana", BOWL_NIGHT, c("Continue", "morning")),
+    n("night", "Soana", BOWL_NIGHT, c("Continue", "threshold")),
+    n("threshold", "Soana", BOWL_THRESHOLD, c("Continue", "morning")),
     n("morning", "Soana", BOWL_MORNING, c('[Go]'))],
     requires=("trickster.ever", LUCK_KEPT, DECLINED), forbids=(*LOSS, CLOSED, COMMITTED), delay=96, optional=True)
 
