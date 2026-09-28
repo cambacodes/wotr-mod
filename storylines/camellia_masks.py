@@ -220,7 +220,7 @@ living(DANCE, "A dance with a knife in it", '"Camellia? You wanted to see me?"',
         c("Continue", "anticipation", flags=(KNIFE_NOTICED,))),
     cam("lifted", '''{n}On the next turn the knife is in your hand and her strap is empty, and she does not notice for a full three steps. Then she does. She stops dead.{/n}
 "Give that back," {n}she says, in a completely different voice.{/n}
-{n}You hold it out, hilt first. She looks at it, and then at you, for a long, long moment, and then she takes it and slides it home without looking down, and the other voice is gone as though it had never been.{/n} "Well. Now I know where your hands go when I'm not watching. How very instructive."''',
+{n}You hold it out, hilt first. She looks at it, and then at you, and then she takes it and slides it home without looking down, and the other voice is gone as though it had never been.{/n} "Well. Now I know where your hands go when I'm not watching. How very instructive."''',
         c("Continue", "anticipation", flags=(KNIFE_NOTICED,))),
     cam("anticipation", '''{n}The candles have burned down by a finger's width. She is close enough that her breath stirs your collar, and her hand is flat on your chest, over the place a fencing master would call the heart.{/n}
 "That's enough for tonight." {n}She does not move away.{/n} "Have patience. Imagine the rest. Anticipation quickens the imagination, my friend. I know this from experience." {n}She steps back and blows out the nearest candle.{/n} "Three steps and a turn. Practise."''',
@@ -377,7 +377,7 @@ met(P + "bond.witness", "The witness", '"You\'re worried. You never look worried
 {n}Then she stops laughing, and looks at you with that terrible, bright tenderness.{/n} "You saved someone from me. And you did it by being worse. I think I might love you. It's very inconvenient."''',
         c("[Let her say it]", flags=(WITNESS_LIED,))),
     cam("hers", '''"Thank you." {n}She says it as sincerely as she has ever said anything. She kisses your cheek, and straightens your collar, and leaves.{/n}
-{n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not look away.{/n}''',
+{n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not stop.{/n}''',
         c("[Hold her gaze]", flags=(WITNESS_HERS,))),
 ], requires=("trickster.ever", COMMITTED, SHELF), forbids=(WITNESS_LIED, WITNESS_HERS), delay=72)
 

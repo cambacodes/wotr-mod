@@ -54,7 +54,7 @@ met(EVE, "The eve", '"Tomorrow we march on the Threshold."', [
         c('"I don\'t intend to die."', "intend"),
         c('[Trickster] "No. I\'ll do it so badly you\'ll have to come and tell me I\'m overacting."', "badly"),
         c('"If I do, I want your face to be the last thing I see."', "face")),
-    cam("intend", '''"Nobody intends to." {n}She puts down the silk.{/n} "That's the whole trouble with dying. It's the only thing everyone does without meaning to." {n}She considers you.{/n} "Except me. I did it on purpose, at your request. I'm the only person in this whole citadel who knows how. If you like, I'll teach you tonight. It's much less frightening once you've practised."''',
+    cam("intend", '''"Good." {n}She puts down the silk.{/n} "Then don't." {n}Somewhere below, a sergeant is shouting the names of a watch roster, and a horse is refusing a cart. She listens to both for a moment.{/n} "I did it once. I didn't care for the lying still. You'd hate it. You fidget."''',
         c("Continue", "close")),
     cam("badly", '''{n}For a moment she simply stares. Then she drops the knife on the blanket and laughs until she has to wipe her eyes on the corner of the silk.{/n}
 "You would. You'd lie there on the Threshold with your mouth open and your eyes rolled up like a bad actor in a provincial farce, just to make me come and fetch you." {n}She shakes her head.{/n} "And I would. I'd walk into whatever's left of the Abyss and tell your corpse it was an embarrassment. You've ruined dying for me forever. I hope you're pleased."''',

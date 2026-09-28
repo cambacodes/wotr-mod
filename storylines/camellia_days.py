@@ -33,7 +33,7 @@ SCENES.append(scene(MARKET, "The flower market", "Camellia", 3, '"You look like 
     cam("take", '''{n}You ask the rose-seller a very long question about the provenance of his soil. You ask him about his brother-in-law. You ask him whether the rumours about the Nerosyan tulip blight are true. By the time you have finished, Camellia is at the far end of the square with a whole barrow's worth of roses in her arms and the look of a girl who has stolen the moon.{/n}
 "That was vulgar," {n}she whispers, when you catch up.{/n} "That was completely vulgar, and I've never been so happy in my life."''',
         c("Continue", "home")),
-    cam("not", '''{n}She turns her veiled face to you, and for a long moment says nothing, while the market goes on around you both.{/n}
+    cam("not", '''{n}She turns her veiled face to you and says nothing, while a flower-seller shouts about tulips and a cart goes by with a broken wheel.{/n}
 "No," {n}she says at last, very quietly.{/n} "Not to you. That's the trouble, isn't it. I've found a way to be nothing to everyone in the world, and there's one person who won't let me." {n}She squeezes your arm.{/n} "Buy me a rose. A red one. Before I say something I mean."''',
         c("Continue", "home")),
     cam("home", '''{n}On the way back she stops at the cemetery gate, and goes in alone, and comes back without the flowers. When you ask, she says she left them on a grave she liked the look of.{/n}
@@ -63,7 +63,7 @@ met(ANNIVERSARY, "The anniversary", '"You\'re dressed in black."', [
 {n}You tell her. You tell her it looked surprised, and then, just before the end, pleased. As if someone had finally told a joke she hadn't heard before.{/n}
 {n}She listens to the end, and when you are done she puts down the glass very carefully.{/n} "Thank you," {n}she says.{/n} "That's the only thing I ever wanted anyone to tell me."''',
         c("Continue", "close")),
-    cam("missed", '''"Nobody has missed me at all." {n}She repeats it slowly, savouring each word.{/n} "Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed." {n}She drinks, at last, one small sip, for the first time you have ever seen.{/n} "Except for one person. Whom I shall not name. At my own wake."''',
+    cam("missed", '''"Nobody has missed me at all." {n}She repeats it slowly, savouring each word.{/n} "Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed." {n}She drinks, one small sip. You have never once seen her drink.{/n} "Except for one person. Whom I shall not name. At my own wake."''',
         c("Continue", "close")),
     cam("close", '''"Next month," {n}she says,{/n} "we'll do it again. And the month after. Until one of us is dead properly, and then the other one can do it alone." {n}She sets down the glass.{/n} "I'd prefer it to be me who does it alone. I'd do it so much better. But I won't insist."''',
         c("[Stay with her until the candle burns out]")),
@@ -119,7 +119,7 @@ met(NEW_FRIEND, "A new friend", '"Who was that you were laughing with?"', [
     cam("warned", '''"Consumption." {n}Camellia holds up the ribbon, blue, with a little bow.{/n} "You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth."
 {n}She winds the ribbon round her finger, and unwinds it.{/n} "You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand." {n}She smiles, slowly.{/n} "That's the most jealous thing anyone has ever done for me. I shall keep the ribbon forever."''',
         c("[Take her hand]", flags=(FRIEND_WARNED,))),
-    cam("watch", '''"You'll be watching." {n}She turns round at last, and looks at you for a long moment, as if you were a card she had not expected to turn up.{/n}
+    cam("watch", '''"You'll be watching." {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}
 "You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it." {n}Her voice is perfectly pleasant.{/n} "You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me."''',
         c("Continue", "cost")),
     nar("cost", '''{n}Down in the yard, Ilse is laughing, like a wren. She sees you at the window and waves, and holds up a blue ribbon for you to admire: for her wedding, she calls up. For the Third Company's sergeant. The lady Camellia helped her choose it.{/n}

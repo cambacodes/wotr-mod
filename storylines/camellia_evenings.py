@@ -236,7 +236,7 @@ met(OBITUARY, "An obituary, corrected", '"What are you writing?"', [
         c('"Leave it unfinished."', "unfinished")),
     cam("continued", '''"'To be continued.'" {n}She writes it. She sits back and looks at it, and slowly, delightedly, she begins to laugh.{/n} "Oh, that's perfect. That's so perfectly vulgar. Like the end of a chapbook." {n}She blows on the ink.{/n} "Every obituary in the world should end like that. Just to frighten people."''',
         c("Continue", "done")),
-    cam("name", '''{n}She looks at you for a long moment. Then she writes it, slowly, at the bottom of the page: your name, in her careful hand. She looks at it as if it were a signature on a contract.{/n}
+    cam("name", '''{n}She holds the pen above the page until a drop of ink falls. Then she writes it, slowly, at the bottom of the page: your name, in her careful hand. She looks at it the way she looks at a knife she means to keep.{/n}
 "There," {n}she says softly.{/n} "Now it ends with the only thing I'm sure of." {n}She folds the paper in three.{/n} "That's more romantic than anything I've ever said out loud. You're a very bad influence."''',
         c("Continue", "done")),
     cam("unfinished", '''"Unfinished." {n}She considers it, pen still raised.{/n} "Yes. Like a sentence someone else has to end." {n}She puts the pen down.{/n} "I'll keep it like that. And when I really do die one day, you can finish it. You'll know what to write. You're the only one who will."''',
@@ -278,7 +278,7 @@ met(GIFT, "A gift for a dead woman", '"I have something for you."', [
     cam("open", '''"For me?" {n}She sets down whatever she was reading, and folds her hands in her lap, and looks at you exactly like a little girl on her birthday.{/n} "Nobody gives me presents. They give me things, which is different. Father gave me things. Dresses. Books. Sir Pomfrey. A present is something someone chooses because it's you."''',
         c("Continue", "choose")),
     cam("choose", '''{n}She waits, her eyes going to your hands, your pockets, your face.{/n} "Well? I'm dying of suspense. Only a little. Only figuratively. I've done the other kind."''',
-        c('[Trickster] Hand her a set of papers in a new name, sealed and witnessed, with a Nerosyan address.', "papers"),
+        c('[Trickster] Hand her a set of papers in a new name, with a Nerosyan address and a forger\'s thumbprint still smudged on the wax.', "papers"),
         c("Give her a charcoal rubbing of her own gravestone, framed.", "stone", requires=(KILLED,)),
         c("Give her a pair of fencing foils with real points.", "foils")),
     cam("papers", '''{n}She breaks the seal, and reads, and her eyebrows go up, and up.{/n}
@@ -338,7 +338,7 @@ met(MIRROR, "The mirror", '"You\'ve been at that mirror for an hour."', [
         c('"Let me show you."', "show"),
         c('[Trickster] "Try mine."', "mine"),
         c('"Maybe it looks like this. Like now."', "now")),
-    cam("show", '''{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, and does not look away, and her face does nothing at all.{/n}
+    cam("show", '''{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, and her face does nothing at all.{/n}
 "That's the face you make when you're looking at me," {n}she says slowly.{/n} "I've seen it a hundred times. I was hoping it would tell me something." {n}A small, cold smile.{/n} "It doesn't. It only tells me what you want. You want me to be someone who can be shown things. That's very sweet. It's also the face the clerics had."''',
         c("Continue", "close")),
     cam("mine", '''{n}You make your Commander's face at her: the council-of-war face, the stern one. She copies it in the mirror, perfectly, instantly, down to the line between the eyebrows. Then you make the face you make when you are lying to a demon. She copies that too, and then she stops, and laughs.{/n}

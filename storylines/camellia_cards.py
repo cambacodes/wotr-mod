@@ -126,7 +126,7 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
     cam("wont", '''"No." {n}She gathers up the two cards and holds them together, face to face, as though they were kissing.{/n} "No, I don't think we shall. I think we're far too stubborn." {n}She tucks them into her bodice together, apart from the rest of the deck.{/n} "I shall keep these two. The others can be jealous."''',
         c("Continue", "close")),
     cam("stacked", '''{n}She stares at you. Then at the cards. Then at you.{/n}
-"You did not." {n}She searches your face, and for the first time since you have known her, you watch her fail to find the seam.{/n} "You couldn't have. I was watching your hands the whole time. I always watch hands." {n}Her voice drops.{/n} "Did you?"
+"You did not." {n}She searches your face, and you watch her fail to find the seam. It is not a thing you have seen before.{/n} "You couldn't have. I was watching your hands the whole time. I always watch hands." {n}Her voice drops.{/n} "Did you?"
 {n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}''',
         c("Continue", "close")),
     cam("close", '''"Whatever the truth is," {n}she says, some time later, from somewhere near your collar,{/n} "I'm not going to find out. I'm going to leave it exactly where it is. It's the first thing in my life I've ever wanted to leave alone."''',
@@ -155,7 +155,7 @@ Three." {n}She holds your eyes.{/n} "I love you."''',
     cam("one", '''"One?" {n}She laughs, but her eyes are strange.{/n} "No. One is true. I'm very happy. It's the strangest feeling. It's like being full after a meal I didn't eat." {n}She leans towards you.{/n} "Guess again."''',
         c('"Two, then."', "two"),
         c('"Three, then."', "three")),
-    cam("three", '''{n}She looks at you for a long moment. Her face does not change at all, and that is how you know you have said something terrible.{/n}
+    cam("three", '''{n}Her face does not change at all, and that is how you know you have said something terrible.{/n}
 "No," {n}she says quietly.{/n} "Three is true. Three is the one I was most afraid you'd pick." {n}She looks down at her hands.{/n} "I said it last, the way people save the lie for last. You told me that once. I wanted to see if you'd remember."''',
         c("Continue", "two")),
     cam("two", '''"Two." {n}She lets out a breath she seems to have been holding for a very long time.{/n} "Yes. Two is the lie. Of course it is. I will want the knife back one day, darling. I can't help it. It's the one true thing about me that nobody can ever make untrue."

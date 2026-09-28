@@ -194771,7 +194771,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}For a moment Camellia simply looks at you, head tilted, as if you had praised her gown in a language she does not speak. Then one corner of her mouth lifts.{/n}\n\"Convincingly? My friend, I have never done anything any other way.\"",
+          "Text": "{n}For a moment Camellia simply looks at you, head tilted, as if you had praised her gown in a language she does not speak. Then one corner of her mouth lifts.{/n}\n\"Convincingly? My friend, I have never done anything any other way.\"\n{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -194794,7 +194794,11 @@
                 "camellia.trickster.masks.game"
               ],
               "Abort": false,
-              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
+              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             }
           ],
           "Portrait": "Camellia"
@@ -194813,7 +194817,11 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false,
-              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11"
+              "NativeNext": "e433ac35761daa84b86b6b5e5c4fae11",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             }
           ],
           "Portrait": "Camellia"
@@ -194849,7 +194857,7 @@
         {
           "Id": "start",
           "Speaker": "Camellia",
-          "Text": "{n}Camellia's laugh is short and genuinely delighted, the first true sound she has made all evening.{/n}\n\"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about.\"",
+          "Text": "{n}Camellia's laugh is short and genuinely delighted, the first true sound she has made all evening.{/n}\n\"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about.\"\n{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}",
           "Choices": [
             {
               "Text": "[Draw your weapon]",
@@ -194860,7 +194868,11 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false,
-              "NativeNext": "be5af575d343fdb49badcd32d8336996"
+              "NativeNext": "be5af575d343fdb49badcd32d8336996",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             }
           ],
           "Portrait": "Camellia"
@@ -194899,7 +194911,7 @@
         {
           "Id": "start",
           "Speaker": "Anevia",
-          "Text": "{n}Anevia turns the word over like a coin she suspects of being shaved.{/n}\n\"Convincingly. Commander, dead's dead. Where I come from we don't grade it.\" {n}She shrugs, and her hand is already on the knife at her belt.{/n} \"Fine. I'll tell her. Might even be the last thing she hears.\"",
+          "Text": "{n}Anevia turns the word over like a coin she suspects of being shaved.{/n}\n\"Convincingly. Commander, dead's dead. Where I come from we don't grade it.\" {n}She shrugs, and her hand is already on the knife at her belt.{/n} \"Fine. I'll tell her. Might even be the last thing she hears.\"\n{n}She glances at the scroll case on your belt, the one with the chaplains' seal still on it, and grins. \"Stealing from priests, Commander? I'll pretend I didn't see.\"{/n}",
           "Choices": [
             {
               "Text": "[Give the order]",
@@ -194911,7 +194923,11 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false,
-              "NativeNext": "6d583904c4659fe478c2e26e9305ad4d"
+              "NativeNext": "6d583904c4659fe478c2e26e9305ad4d",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             }
           ],
           "Portrait": "Anevia"
@@ -195030,10 +195046,11 @@
           "Choices": [
             {
               "Text": "[Play a cruel trick on Camellia] \"Go on, then. Die convincingly. This time I'm watching.\"",
-              "Next": "shut",
+              "Next": "scroll",
               "Set": [
                 "camellia.trickster.primed",
-                "camellia.trickster.cost.late"
+                "camellia.trickster.cost.late",
+                "camellia.trickster.raised"
               ],
               "Requires": [],
               "Forbids": [],
@@ -195055,9 +195072,29 @@
           "Portrait": "Camellia"
         },
         {
+          "Id": "scroll",
+          "Speaker": "Narrator",
+          "Text": "{n}Then you break the chaplains' seal on the scroll case you lifted from their strongbox, and read the scroll of raise dead over her by the sexton's lantern. The words go out of the parchment as you say them. The sexton has stopped breathing. She has started.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "shut",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
           "Id": "shut",
           "Speaker": "Narrator",
-          "Text": "{n}Nothing happens. You did not expect it to. You nod to the sexton, and he lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to have heard the small, delighted exhalation from inside the box as it closed.{/n}",
+          "Text": "{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} \"Rude. Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it?\"\n{n}You nod to the sexton. He lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to hear the small, delighted exhalation from inside the box as it closes.{/n}",
           "Choices": [
             {
               "Text": "[Walk back to the citadel]",
@@ -195102,6 +195139,126 @@
       "Remote": true,
       "Chapters": [
         3
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "killed_by_commander"
+    },
+    {
+      "Id": "camellia.trickster.killed.third_night",
+      "Title": "The third night",
+      "Owner": "Memory",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The crusade buried Camellia under a plain stone at the edge of the Drezen cemetery, with a wrong bunch of flowers: lilies, the white wedding kind. On the third night you stand over the stone with the sexton, a stooped man with a lantern, who has been paid not to nail the lid and is now very sorry he agreed.{/n}",
+          "Choices": [
+            {
+              "Text": "[Have him lift the lid]",
+              "Next": "coffin",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let the grave keep her] \"Leave it. She stays where she is.\"",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.declined",
+                "camellia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "coffin",
+          "Speaker": "Narrator",
+          "Text": "{n}The lid comes up with a groan of wet wood. She lies exactly as she was laid out, hands folded over the bone snake at her throat, chin lifted a fraction, like an actress who knows where the light falls. She is dead. She has been very convincingly dead for three days.{/n}",
+          "Choices": [
+            {
+              "Text": "[Break the chaplains' seal and read the scroll of raise dead over her]",
+              "Next": "breath",
+              "Set": [
+                "camellia.trickster.raised",
+                "camellia.trickster.cost.sexton_paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Close the lid] \"No. Let her stay dead.\"",
+              "Next": null,
+              "Set": [
+                "camellia.trickster.declined",
+                "camellia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "breath",
+          "Speaker": "Narrator",
+          "Text": "{n}The words go out of the parchment as you say them. Nothing happens, and then her chest moves, once, the way a sleeper's does before waking. The sexton sits down very suddenly in the wet grass.{/n}\n{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} \"Rude. I was resting.\" {n}A pause.{/n} \"Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it? Go home. I'll find you.\"",
+          "Choices": [
+            {
+              "Text": "[Put the lid back]",
+              "Next": "home",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "home",
+          "Speaker": "Narrator",
+          "Text": "{n}You walk the sexton back to the cemetery gate. He does not say anything. When you look back from the gate the lid is already a little askew, and the lilies on the grave have been rearranged, very neatly, by somebody with a strong opinion about flowers.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go home]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "camellia.trickster.primed",
+        "camellia.killed"
+      ],
+      "Forbids": [
+        "camellia.trickster.cost.late",
+        "camellia.trickster.raised",
+        "camellia.trickster.returned",
+        "camellia.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "camellia",
+      "Remote": true,
+      "Chapters": [
+        3,
+        5
       ],
       "TricksterDevice": true,
       "TricksterState": "killed_by_commander"
@@ -195653,7 +195810,7 @@
         {
           "Id": "how",
           "Speaker": "Camellia",
-          "Text": "{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. The fingertips are wrapped in strips of linen, brown at the ends. Under the linen there are no nails.{/n}\n\"You made my death a performance. You said the word, and it was true, the way your words are true: I died the way an actress dies, completely, every night, and gets up when the curtain comes down. Only nobody lowered a curtain. You forgot to write me an exit.\" {n}She flexes the wrapped fingers.{/n} \"So I wrote my own. Three nights, and pine is softer than you'd think.\"",
+          "Text": "{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. It is a living hand, warm and a little unsteady.{/n}\n\"You had the scroll on your belt when you told me to die. I saw it. I understood the joke at once: I was to die, really and truly, and stay dead through my own funeral, convincingly, so that nobody would ever think to look for me. And then you would come on the third night with the chaplains' paper and read me back.\" {n}She flexes the fingers.{/n} \"Dying was easy. Lying still in that box afterwards, listening to your chaplains weep, was the hardest performance of my life.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -195681,7 +195838,7 @@
         {
           "Id": "how_late",
           "Speaker": "Camellia",
-          "Text": "\"You lifted the lid and said your line to me, and then your sexton put it back and was too frightened to come back with the hammer. That saved me a nail or two.\" {n}She considers her hand.{/n} \"Not all of them.\"",
+          "Text": "\"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then read me back. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -195697,7 +195854,7 @@
         {
           "Id": "why",
           "Speaker": "Camellia",
-          "Text": "\"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us.\"\n{n}She turns her glass a quarter turn.{/n} \"I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and the whole time I was lying in that box I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?\"\n\"I couldn't possibly stay dead after that. It would have been so rude.\"",
+          "Text": "\"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us.\"\n{n}She turns her glass a quarter turn.{/n} \"I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?\"\n\"I couldn't possibly stay dead after that. It would have been so rude.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -195741,7 +195898,7 @@
         {
           "Id": "register",
           "Speaker": "Camellia",
-          "Text": "\"One more thing, and then I'll let you go.\" {n}She slides a folded paper across the bar: a page of the crusade's burial register, torn out very neatly. Her name is on it. There is a space beneath for a witness.{/n}\n\"Camellia Gwerm is dead. That's the price of the trick, and it's mine to pay. Whatever claim I had on my father's name, his house, his money, it all went into the ground with the lilies. I shall never be her again.\" {n}She taps the empty line.{/n} \"But a death needs a witness, or someone clever starts asking questions. Sign it. Swear you saw me die. You did, after all.\"",
+          "Text": "\"One more thing, and then I'll let you go.\" {n}She turns her glass a quarter turn.{/n} \"Camellia Gwerm is dead. That's the price of the trick, and it's mine to pay: whatever claim I had on my father's name and his house went into the ground with the lilies. I shall never be her again.\"\n\"But there's an empty box under that stone, and an empty box is a question. Sooner or later a sexton's boy or a grave-robber lifts the lid, and then somebody clever starts asking. It has to have something in it. Put it there yourself. Tonight.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -195755,7 +195912,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "sign",
+              "Next": "fill",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -195769,11 +195926,11 @@
         {
           "Id": "will",
           "Speaker": "Camellia",
-          "Text": "\"You gave me papa's will once, acknowledging his bastard at last. I carried it to my own grave. It's worth nothing now: a dead woman can't inherit. The Gwerm estate goes to the crown. I laughed about that for most of the second night.\"",
+          "Text": "\"You gave me papa's will once, acknowledging his bastard at last. I carried it into my own grave. It's worth nothing now: a dead woman can't inherit. The Gwerm estate goes to the crown. I laughed about that for most of the second night.\"",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "sign",
+              "Next": "fill",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -195783,27 +195940,70 @@
           "Portrait": "Camellia"
         },
         {
-          "Id": "sign",
+          "Id": "fill",
           "Speaker": "Camellia",
-          "Text": "{n}The pen is already in her hand, held out to you, the way she held out the knife.{/n}",
+          "Text": "\"There's a deserter hanging at the west gate, three days up, about my height once the crows have finished. Nobody will claim him. Or there are stones in the chapel wall, if you're squeamish, and you can hope nobody ever weighs the box.\" {n}She smiles.{/n} \"I know which one I would do.\"",
           "Choices": [
             {
-              "Text": "[Sign as witness to her death]",
-              "Next": null,
+              "Text": "[Cut the deserter down and carry him to her grave yourself]",
+              "Next": "gallows",
               "Set": [
-                "camellia.trickster.cost.false_witness"
+                "camellia.trickster.cost.grave_filled",
+                "camellia.trickster.cost.gallows"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false,
               "Alignment": {
-                "Direction": "Chaotic",
+                "Direction": "Evil",
                 "Value": 1
               }
             },
             {
-              "Text": "[Refuse] \"I won't swear to a lie in a register of the dead.\"",
+              "Text": "[Weigh the coffin down with stones from the chapel wall]",
+              "Next": "stones",
+              "Set": [
+                "camellia.trickster.cost.grave_filled"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Refuse] \"No. I've done enough digging for you.\"",
               "Next": "unsigned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "gallows",
+          "Speaker": "Narrator",
+          "Text": "{n}You do it after midnight, alone, with a borrowed cart and a knife for the rope. He is lighter than you expected. At the cemetery you open her grave with a spade, lift the lid on the empty box that still smells of lilies, and put him in it, and fold his ruined hands over his chest the way hers were folded. Then you fill it in. It takes until the bells. Nobody sees. You are nearly sure nobody sees.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go and wash]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Camellia"
+        },
+        {
+          "Id": "stones",
+          "Speaker": "Narrator",
+          "Text": "{n}You do it after midnight, alone, prising loose stones from the back of the chapel wall where the mortar has gone soft, and carrying them to her grave in a sack, four trips. You open the box that still smells of lilies and lay them in it in the shape of a woman, and fill the grave in. It takes until the bells. The box is the right weight. Probably.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go and wash]",
+              "Next": null,
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -195815,7 +196015,7 @@
         {
           "Id": "unsigned",
           "Speaker": "Camellia",
-          "Text": "{n}She looks at the pen, and then at you, and folds the page away into her glove.{/n}\n\"How very correct.\" {n}The smile does not reach anywhere near her eyes.{/n} \"Then somebody clever will start asking questions, and the dead woman at the end of Fye's bar will have to go somewhere nobody asks anything. Goodbye, my friend. It was a wonderful trick. You simply wouldn't finish it.\"",
+          "Text": "{n}She looks at you, and then folds her hands in her lap.{/n}\n\"How very correct.\" {n}The smile does not reach anywhere near her eyes.{/n} \"Then somebody clever will open that box one day, and the dead woman at the end of Fye's bar will have to go somewhere nobody opens anything. Goodbye, my friend. It was a wonderful trick. You simply wouldn't finish it.\"",
           "Choices": [
             {
               "Text": "[Let her go]",
@@ -195854,7 +196054,8 @@
       "Requires": [
         "trickster.ever",
         "camellia.trickster.primed",
-        "camellia.killed"
+        "camellia.killed",
+        "camellia.trickster.raised"
       ],
       "Forbids": [
         "camellia.trickster.returned",
@@ -195880,7 +196081,7 @@
       "Title": "A letter from Mireya",
       "Owner": "Memory",
       "MinChapter": 3,
-      "MaxChapter": 5,
+      "MaxChapter": 3,
       "Entry": "",
       "Nodes": [
         {
@@ -195987,7 +196188,7 @@
         {
           "Id": "price",
           "Speaker": "Camellia",
-          "Text": "\"Since I cannot trust you to find me, my price for staying comes by post. First, the torn page of the burial register folded in here: sign it as witness to my death, or someone clever will start asking questions. Camellia Gwerm is dead, her name and her father's house with her; that part of the trick is mine to pay. Then: your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know.\"",
+          "Text": "\"Since I cannot trust you to find me, my price for staying comes by post. Camellia Gwerm is dead, her name and her father's house with her; that part of the trick is mine to pay. I have seen to the empty box myself, with stones, and ruined a perfectly good pair of gloves doing it. So: your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know.\"",
           "Choices": [
             {
               "Text": "[Write back \"My blood\"] \"Whenever you ask. From your knife. I won't flinch.\"",
@@ -195997,16 +196198,11 @@
                 "camellia.trickster.cost.knows_you_tried",
                 "camellia.started",
                 "camellia.trickster.cost.bled",
-                "camellia.trickster.terms_named",
-                "camellia.trickster.cost.false_witness"
+                "camellia.trickster.terms_named"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Alignment": {
-                "Direction": "Chaotic",
-                "Value": 1
-              }
+              "Abort": false
             },
             {
               "Text": "[Write back your own] \"If you ever need to kill a friend, start with me.\"",
@@ -196016,16 +196212,11 @@
                 "camellia.trickster.cost.knows_you_tried",
                 "camellia.started",
                 "camellia.trickster.cost.marked",
-                "camellia.trickster.terms_named",
-                "camellia.trickster.cost.false_witness"
+                "camellia.trickster.terms_named"
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Alignment": {
-                "Direction": "Chaotic",
-                "Value": 1
-              }
+              "Abort": false
             },
             {
               "Text": "[Burn the letter]",
@@ -196046,6 +196237,7 @@
         "trickster.ever",
         "camellia.trickster.primed",
         "camellia.killed",
+        "camellia.trickster.raised",
         "camellia.presence.failed"
       ],
       "Forbids": [
@@ -196058,8 +196250,7 @@
       "Relationship": "camellia",
       "Remote": true,
       "Chapters": [
-        3,
-        5
+        3
       ],
       "TricksterDevice": true,
       "TricksterState": "killed_by_commander"
@@ -196119,7 +196310,7 @@
         {
           "Id": "waking",
           "Speaker": "Camellia",
-          "Text": "{n}Her eyes stay shut. Her lips barely move.{/n}\n\"Rude. I was resting.\" {n}A pause, like a held breath that has nowhere to go.{/n} \"My spirits were promised a death, my friend. Mine. If you take it back from them, they will want paying, and they are very particular. Not with some stranger. With you.\"\n\"Your blood, in my bowl, from my knife, every new moon for as long as I choose. And you will hold still for it, and you will not look away.\"",
+          "Text": "{n}Her eyes stay shut. Her lips barely move.{/n}\n\"Rude. I was resting.\" {n}A pause, like a held breath that has nowhere to go.{/n} \"My spirits were promised a death, my friend. Mine. If you take it back from them, they will want paying, and they are very particular. Not with some stranger. With you.\"\n\"Your blood, in my bowl, from my knife, every new moon for as long as I choose. And you will keep your hand flat on the table, and your eyes on mine.\"",
           "Choices": [
             {
               "Text": "[Agree to her price] \"Every new moon. Just get up.\"",
@@ -196629,7 +196820,7 @@
         {
           "Id": "price",
           "Speaker": "Camellia",
-          "Text": "\"So. My price for staying. Your blood, or your name.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"Your blood: from my knife, into my bowl, whenever the flies want it, and you hold still and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
+          "Text": "\"So. My price for staying. Your blood, or your name.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"Your blood: from my knife, into my bowl, whenever the flies want it, and you keep your hand on the table and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
           "Choices": [
             {
               "Text": "[Give her your blood] \"Whenever you ask. From your knife. I won't flinch.\"",
@@ -196683,7 +196874,7 @@
         {
           "Id": "mine",
           "Speaker": "Camellia",
-          "Text": "{n}For once she has no answer ready. She looks at you for a long moment, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}\n\"Oh, you are dreadful. Nobody has ever offered before. They only ever found out.\" {n}She stands.{/n} \"Three nights. Sleep lightly.\"\n{n}At the door she turns, and her voice is almost shy.{/n} \"You understand what you've done? You've made yourself the first name on my list and the last. There's nobody else on it now who matters. Everyone else is only practice.\"",
+          "Text": "{n}For once she has no answer ready. She studies your mouth, then your hands, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}\n\"Oh, you are dreadful. Nobody has ever offered before. They only ever found out.\" {n}She stands.{/n} \"Three nights. Sleep lightly.\"\n{n}At the door she turns, and her voice is almost shy.{/n} \"You understand what you've done? You've made yourself the first name on my list and the last. There's nobody else on it now who matters. Everyone else is only practice.\"",
           "Choices": [
             {
               "Text": "[Watch her go]",
@@ -197180,7 +197371,7 @@
         {
           "Id": "price",
           "Speaker": "Camellia",
-          "Text": "\"So. My price for staying. Your blood, or your name.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"Your blood: from my knife, into my bowl, whenever the flies want it, and you hold still and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
+          "Text": "\"So. My price for staying. Your blood, or your name.\"\n{n}She leans in until the lace of her sleeve brushes your wrist.{/n} \"Your blood: from my knife, into my bowl, whenever the flies want it, and you keep your hand on the table and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant.\"",
           "Choices": [
             {
               "Text": "[Give her your blood] \"Whenever you ask. From your knife. I won't flinch.\"",
@@ -197234,7 +197425,7 @@
         {
           "Id": "mine",
           "Speaker": "Camellia",
-          "Text": "{n}For once she has no answer ready. She looks at you for a long moment, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}\n\"Oh, you are dreadful. Nobody has ever offered before. They only ever found out.\" {n}She stands.{/n} \"Three nights. Sleep lightly.\"\n{n}At the door she turns, and her voice is almost shy.{/n} \"You understand what you've done? You've made yourself the first name on my list and the last. There's nobody else on it now who matters. Everyone else is only practice.\"",
+          "Text": "{n}For once she has no answer ready. She studies your mouth, then your hands, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}\n\"Oh, you are dreadful. Nobody has ever offered before. They only ever found out.\" {n}She stands.{/n} \"Three nights. Sleep lightly.\"\n{n}At the door she turns, and her voice is almost shy.{/n} \"You understand what you've done? You've made yourself the first name on my list and the last. There's nobody else on it now who matters. Everyone else is only practice.\"",
           "Choices": [
             {
               "Text": "[Watch her go]",
@@ -199441,7 +199632,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}Camellia Gwerm was entered in the crusade's register as dead, and never troubled to correct it. She stayed at the Commander's side through the Threshold and after it, a veiled woman whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}\n{n}She took no new friends, or said she took none. Once a year, on the date of her funeral, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}\n{n}People who met them together in later years said they were the most courteous couple they had ever dined with, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}",
+          "Text": "{n}Camellia Gwerm was entered in the crusade's register as dead, and never troubled to correct it. She stayed at the Commander's side through the Threshold and after it, a veiled woman whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}\n{n}She took no new friends, or said she took none. Once a year, on the date of her funeral, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}\n{n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -199503,9 +199694,17 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The burial register of the Fifth Crusade still lists Camellia Gwerm among its dead, over the Commander's signature as witness. The Gwerm estate went to the crown. She never once asked for it back.{/n}",
+              "Text": "{n}The grave at the edge of the Drezen cemetery still bears her name. The Gwerm estate went to the crown. What lies in her coffin, only two people ever knew, and she never once asked for her name back.{/n}",
               "Requires": [
-                "camellia.trickster.cost.false_witness"
+                "camellia.trickster.cost.grave_filled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Some nights the Commander still dreamed of the weight of a hanged man on a borrowed cart.{/n}",
+              "Requires": [
+                "camellia.trickster.cost.gallows"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -201109,7 +201308,7 @@
         {
           "Id": "lifted",
           "Speaker": "Camellia",
-          "Text": "{n}On the next turn the knife is in your hand and her strap is empty, and she does not notice for a full three steps. Then she does. She stops dead.{/n}\n\"Give that back,\" {n}she says, in a completely different voice.{/n}\n{n}You hold it out, hilt first. She looks at it, and then at you, for a long, long moment, and then she takes it and slides it home without looking down, and the other voice is gone as though it had never been.{/n} \"Well. Now I know where your hands go when I'm not watching. How very instructive.\"",
+          "Text": "{n}On the next turn the knife is in your hand and her strap is empty, and she does not notice for a full three steps. Then she does. She stops dead.{/n}\n\"Give that back,\" {n}she says, in a completely different voice.{/n}\n{n}You hold it out, hilt first. She looks at it, and then at you, and then she takes it and slides it home without looking down, and the other voice is gone as though it had never been.{/n} \"Well. Now I know where your hands go when I'm not watching. How very instructive.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -202372,7 +202571,7 @@
         {
           "Id": "hers",
           "Speaker": "Camellia",
-          "Text": "\"Thank you.\" {n}She says it as sincerely as she has ever said anything. She kisses your cheek, and straightens your collar, and leaves.{/n}\n{n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not look away.{/n}",
+          "Text": "\"Thank you.\" {n}She says it as sincerely as she has ever said anything. She kisses your cheek, and straightens your collar, and leaves.{/n}\n{n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not stop.{/n}",
           "Choices": [
             {
               "Text": "[Hold her gaze]",
@@ -202516,7 +202715,7 @@
         {
           "Id": "hers",
           "Speaker": "Camellia",
-          "Text": "\"Thank you.\" {n}She says it as sincerely as she has ever said anything. She kisses your cheek, and straightens your collar, and leaves.{/n}\n{n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not look away.{/n}",
+          "Text": "\"Thank you.\" {n}She says it as sincerely as she has ever said anything. She kisses your cheek, and straightens your collar, and leaves.{/n}\n{n}Two days later, the report says the witness slipped on the wet steps by the river in the dark. Everyone agrees it was a terrible accident. The steps are very steep there. Camellia comes to dinner that night in a new dress and is charming to everyone, and she does not look at you once until the dessert, and then she does not stop.{/n}",
           "Choices": [
             {
               "Text": "[Hold her gaze]",
@@ -204477,7 +204676,7 @@
         {
           "Id": "name",
           "Speaker": "Camellia",
-          "Text": "{n}She looks at you for a long moment. Then she writes it, slowly, at the bottom of the page: your name, in her careful hand. She looks at it as if it were a signature on a contract.{/n}\n\"There,\" {n}she says softly.{/n} \"Now it ends with the only thing I'm sure of.\" {n}She folds the paper in three.{/n} \"That's more romantic than anything I've ever said out loud. You're a very bad influence.\"",
+          "Text": "{n}She holds the pen above the page until a drop of ink falls. Then she writes it, slowly, at the bottom of the page: your name, in her careful hand. She looks at it the way she looks at a knife she means to keep.{/n}\n\"There,\" {n}she says softly.{/n} \"Now it ends with the only thing I'm sure of.\" {n}She folds the paper in three.{/n} \"That's more romantic than anything I've ever said out loud. You're a very bad influence.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -204664,7 +204863,7 @@
         {
           "Id": "name",
           "Speaker": "Camellia",
-          "Text": "{n}She looks at you for a long moment. Then she writes it, slowly, at the bottom of the page: your name, in her careful hand. She looks at it as if it were a signature on a contract.{/n}\n\"There,\" {n}she says softly.{/n} \"Now it ends with the only thing I'm sure of.\" {n}She folds the paper in three.{/n} \"That's more romantic than anything I've ever said out loud. You're a very bad influence.\"",
+          "Text": "{n}She holds the pen above the page until a drop of ink falls. Then she writes it, slowly, at the bottom of the page: your name, in her careful hand. She looks at it the way she looks at a knife she means to keep.{/n}\n\"There,\" {n}she says softly.{/n} \"Now it ends with the only thing I'm sure of.\" {n}She folds the paper in three.{/n} \"That's more romantic than anything I've ever said out loud. You're a very bad influence.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -205040,7 +205239,7 @@
           "Text": "{n}She waits, her eyes going to your hands, your pockets, your face.{/n} \"Well? I'm dying of suspense. Only a little. Only figuratively. I've done the other kind.\"",
           "Choices": [
             {
-              "Text": "[Trickster] Hand her a set of papers in a new name, sealed and witnessed, with a Nerosyan address.",
+              "Text": "[Trickster] Hand her a set of papers in a new name, with a Nerosyan address and a forger's thumbprint still smudged on the wax.",
               "Next": "papers",
               "Set": [],
               "Requires": [],
@@ -205190,7 +205389,7 @@
           "Text": "{n}She waits, her eyes going to your hands, your pockets, your face.{/n} \"Well? I'm dying of suspense. Only a little. Only figuratively. I've done the other kind.\"",
           "Choices": [
             {
-              "Text": "[Trickster] Hand her a set of papers in a new name, sealed and witnessed, with a Nerosyan address.",
+              "Text": "[Trickster] Hand her a set of papers in a new name, with a Nerosyan address and a forger's thumbprint still smudged on the wax.",
               "Next": "papers",
               "Set": [],
               "Requires": [],
@@ -205669,7 +205868,7 @@
         {
           "Id": "show",
           "Speaker": "Camellia",
-          "Text": "{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, and does not look away, and her face does nothing at all.{/n}\n\"That's the face you make when you're looking at me,\" {n}she says slowly.{/n} \"I've seen it a hundred times. I was hoping it would tell me something.\" {n}A small, cold smile.{/n} \"It doesn't. It only tells me what you want. You want me to be someone who can be shown things. That's very sweet. It's also the face the clerics had.\"",
+          "Text": "{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, and her face does nothing at all.{/n}\n\"That's the face you make when you're looking at me,\" {n}she says slowly.{/n} \"I've seen it a hundred times. I was hoping it would tell me something.\" {n}A small, cold smile.{/n} \"It doesn't. It only tells me what you want. You want me to be someone who can be shown things. That's very sweet. It's also the face the clerics had.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -205841,7 +206040,7 @@
         {
           "Id": "show",
           "Speaker": "Camellia",
-          "Text": "{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, and does not look away, and her face does nothing at all.{/n}\n\"That's the face you make when you're looking at me,\" {n}she says slowly.{/n} \"I've seen it a hundred times. I was hoping it would tell me something.\" {n}A small, cold smile.{/n} \"It doesn't. It only tells me what you want. You want me to be someone who can be shown things. That's very sweet. It's also the face the clerics had.\"",
+          "Text": "{n}You stand behind her, and put your chin on her shoulder, and look at her in the glass. She looks back at you there, and her face does nothing at all.{/n}\n\"That's the face you make when you're looking at me,\" {n}she says slowly.{/n} \"I've seen it a hundred times. I was hoping it would tell me something.\" {n}A small, cold smile.{/n} \"It doesn't. It only tells me what you want. You want me to be someone who can be shown things. That's very sweet. It's also the face the clerics had.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -206743,7 +206942,7 @@
         {
           "Id": "stacked",
           "Speaker": "Camellia",
-          "Text": "{n}She stares at you. Then at the cards. Then at you.{/n}\n\"You did not.\" {n}She searches your face, and for the first time since you have known her, you watch her fail to find the seam.{/n} \"You couldn't have. I was watching your hands the whole time. I always watch hands.\" {n}Her voice drops.{/n} \"Did you?\"\n{n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}",
+          "Text": "{n}She stares at you. Then at the cards. Then at you.{/n}\n\"You did not.\" {n}She searches your face, and you watch her fail to find the seam. It is not a thing you have seen before.{/n} \"You couldn't have. I was watching your hands the whole time. I always watch hands.\" {n}Her voice drops.{/n} \"Did you?\"\n{n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -206922,7 +207121,7 @@
         {
           "Id": "stacked",
           "Speaker": "Camellia",
-          "Text": "{n}She stares at you. Then at the cards. Then at you.{/n}\n\"You did not.\" {n}She searches your face, and for the first time since you have known her, you watch her fail to find the seam.{/n} \"You couldn't have. I was watching your hands the whole time. I always watch hands.\" {n}Her voice drops.{/n} \"Did you?\"\n{n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}",
+          "Text": "{n}She stares at you. Then at the cards. Then at you.{/n}\n\"You did not.\" {n}She searches your face, and you watch her fail to find the seam. It is not a thing you have seen before.{/n} \"You couldn't have. I was watching your hands the whole time. I always watch hands.\" {n}Her voice drops.{/n} \"Did you?\"\n{n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -207109,7 +207308,7 @@
         {
           "Id": "three",
           "Speaker": "Camellia",
-          "Text": "{n}She looks at you for a long moment. Her face does not change at all, and that is how you know you have said something terrible.{/n}\n\"No,\" {n}she says quietly.{/n} \"Three is true. Three is the one I was most afraid you'd pick.\" {n}She looks down at her hands.{/n} \"I said it last, the way people save the lie for last. You told me that once. I wanted to see if you'd remember.\"",
+          "Text": "{n}Her face does not change at all, and that is how you know you have said something terrible.{/n}\n\"No,\" {n}she says quietly.{/n} \"Three is true. Three is the one I was most afraid you'd pick.\" {n}She looks down at her hands.{/n} \"I said it last, the way people save the lie for last. You told me that once. I wanted to see if you'd remember.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -207358,7 +207557,7 @@
         {
           "Id": "three",
           "Speaker": "Camellia",
-          "Text": "{n}She looks at you for a long moment. Her face does not change at all, and that is how you know you have said something terrible.{/n}\n\"No,\" {n}she says quietly.{/n} \"Three is true. Three is the one I was most afraid you'd pick.\" {n}She looks down at her hands.{/n} \"I said it last, the way people save the lie for last. You told me that once. I wanted to see if you'd remember.\"",
+          "Text": "{n}Her face does not change at all, and that is how you know you have said something terrible.{/n}\n\"No,\" {n}she says quietly.{/n} \"Three is true. Three is the one I was most afraid you'd pick.\" {n}She looks down at her hands.{/n} \"I said it last, the way people save the lie for last. You told me that once. I wanted to see if you'd remember.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -207910,7 +208109,7 @@
         {
           "Id": "not",
           "Speaker": "Camellia",
-          "Text": "{n}She turns her veiled face to you, and for a long moment says nothing, while the market goes on around you both.{/n}\n\"No,\" {n}she says at last, very quietly.{/n} \"Not to you. That's the trouble, isn't it. I've found a way to be nothing to everyone in the world, and there's one person who won't let me.\" {n}She squeezes your arm.{/n} \"Buy me a rose. A red one. Before I say something I mean.\"",
+          "Text": "{n}She turns her veiled face to you and says nothing, while a flower-seller shouts about tulips and a cart goes by with a broken wheel.{/n}\n\"No,\" {n}she says at last, very quietly.{/n} \"Not to you. That's the trouble, isn't it. I've found a way to be nothing to everyone in the world, and there's one person who won't let me.\" {n}She squeezes your arm.{/n} \"Buy me a rose. A red one. Before I say something I mean.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -208071,7 +208270,7 @@
         {
           "Id": "missed",
           "Speaker": "Camellia",
-          "Text": "\"Nobody has missed me at all.\" {n}She repeats it slowly, savouring each word.{/n} \"Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed.\" {n}She drinks, at last, one small sip, for the first time you have ever seen.{/n} \"Except for one person. Whom I shall not name. At my own wake.\"",
+          "Text": "\"Nobody has missed me at all.\" {n}She repeats it slowly, savouring each word.{/n} \"Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed.\" {n}She drinks, one small sip. You have never once seen her drink.{/n} \"Except for one person. Whom I shall not name. At my own wake.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -208233,7 +208432,7 @@
         {
           "Id": "missed",
           "Speaker": "Camellia",
-          "Text": "\"Nobody has missed me at all.\" {n}She repeats it slowly, savouring each word.{/n} \"Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed.\" {n}She drinks, at last, one small sip, for the first time you have ever seen.{/n} \"Except for one person. Whom I shall not name. At my own wake.\"",
+          "Text": "\"Nobody has missed me at all.\" {n}She repeats it slowly, savouring each word.{/n} \"Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed.\" {n}She drinks, one small sip. You have never once seen her drink.{/n} \"Except for one person. Whom I shall not name. At my own wake.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -208795,7 +208994,7 @@
         {
           "Id": "watch",
           "Speaker": "Camellia",
-          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you for a long moment, as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me.\"",
+          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -208987,7 +209186,7 @@
         {
           "Id": "watch",
           "Speaker": "Camellia",
-          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you for a long moment, as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me.\"",
+          "Text": "\"You'll be watching.\" {n}She turns round at last, and looks at you as if you were a card she had not expected to turn up.{/n}\n\"You could have lied to her. You could have told her I was ill, or mad, or married. You're so good at it.\" {n}Her voice is perfectly pleasant.{/n} \"You didn't. You decided that a girl who mends banners is worth less to you than finding out what I'll do. I shall remember that about you. It's the most useful thing anyone has ever told me.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -209319,7 +209518,7 @@
         {
           "Id": "intend",
           "Speaker": "Camellia",
-          "Text": "\"Nobody intends to.\" {n}She puts down the silk.{/n} \"That's the whole trouble with dying. It's the only thing everyone does without meaning to.\" {n}She considers you.{/n} \"Except me. I did it on purpose, at your request. I'm the only person in this whole citadel who knows how. If you like, I'll teach you tonight. It's much less frightening once you've practised.\"",
+          "Text": "\"Good.\" {n}She puts down the silk.{/n} \"Then don't.\" {n}Somewhere below, a sergeant is shouting the names of a watch roster, and a horse is refusing a cart. She listens to both for a moment.{/n} \"I did it once. I didn't care for the lying still. You'd hate it. You fidget.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -209463,7 +209662,7 @@
         {
           "Id": "intend",
           "Speaker": "Camellia",
-          "Text": "\"Nobody intends to.\" {n}She puts down the silk.{/n} \"That's the whole trouble with dying. It's the only thing everyone does without meaning to.\" {n}She considers you.{/n} \"Except me. I did it on purpose, at your request. I'm the only person in this whole citadel who knows how. If you like, I'll teach you tonight. It's much less frightening once you've practised.\"",
+          "Text": "\"Good.\" {n}She puts down the silk.{/n} \"Then don't.\" {n}Somewhere below, a sergeant is shouting the names of a watch roster, and a horse is refusing a cart. She listens to both for a moment.{/n} \"I did it once. I didn't care for the lying still. You'd hate it. You fidget.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -209661,8 +209860,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

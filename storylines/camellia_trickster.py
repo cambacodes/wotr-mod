@@ -43,6 +43,7 @@ DEAD = "camellia.dead"
 KICKED = "camellia.kicked_out"
 ROMANCE = "camellia.romance"                      # CamelliaRomance (read only)
 PRIMED = P + "primed"
+RAISED = P + "raised"                    # the scroll read over her coffin: she breathes again
 BY_ORDER = P + "primed_by_order"
 RET = P + "returned"
 DECLINED = P + "declined"
@@ -98,7 +99,8 @@ BOWL_HELD = P + "masks.bowl_held"        # the Commander held Mireya's bowl, or 
 AMULET_KEPT = P + "amulet_kept"          # she gave the Commander the amulet of a spirit she never had
 UNMASKED = "camellia.mireya_unmasked"    # FinalTruth/Cue_0012 seen: "There is no Mireya. I made her up."
 WILL_GIVEN = "camellia.will_given"       # Camelia/Cue_0174 seen: Horgus's will, acknowledging her, handed to her
-WITNESS = P + "cost.false_witness"       # the Commander signed the burial register as witness to her death
+FILLED = P + "cost.grave_filled"        # the Commander put something in her empty coffin with their own hands
+GALLOWS = P + "cost.gallows"            # ...a hanged deserter, cut down from the gallows and carried to her grave
 FRIEND_WARNED = P + "friend.warned"      # the Commander frightened her new friend away with a lie
 FRIEND_WATCHED = P + "cost.friend_kept"  # the Commander let the friendship run, and watches
 
@@ -220,19 +222,21 @@ JOKE = '[Play a cruel trick on Camellia] "Go on, then. Die convincingly. I\'ll k
 
 SCENES.append(scene(P + "killed.setup_hub", "Die convincingly", "Camellia", 3, JOKE, [
     cam("start", '''{n}For a moment Camellia simply looks at you, head tilted, as if you had praised her gown in a language she does not speak. Then one corner of her mouth lifts.{/n}
-"Convincingly? My friend, I have never done anything any other way."''',
+"Convincingly? My friend, I have never done anything any other way."
+{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}''',
         c("Continue", "game", requires=(GAME,)),
-        c("[Draw your weapon]", native_next=KILL_NEXT, forbids=(GAME,), flags=(PRIMED,))),
+        c("[Draw your weapon]", native_next=KILL_NEXT, forbids=(GAME,), flags=(PRIMED,), crusade=("Favors", -100))),
     cam("game", '''"Two lies and a truth, then, one last time." {n}She draws her knife and holds it up to the light, as if to judge its colour.{/n} "You are going to kill me. I am going to let you. I have never been so pleased with anyone in my life. Guess which one I made up."''',
-        c("[Draw your weapon]", native_next=KILL_NEXT, flags=(PRIMED,))),
+        c("[Draw your weapon]", native_next=KILL_NEXT, flags=(PRIMED,), crusade=("Favors", -100))),
     ], requires=("trickster",), forbids=(PRIMED, KILLED, DEAD), last=5, Relationship=REL, AnswerLists=[KILL_LIST],
     NativeReturnCue=KILL_RETURN, EntryMythic="PlayerIsTrickster", TricksterDevice=True,
     TricksterState="killed_by_commander"))
 
 SCENES.append(scene(P + "killed.setup_q3", "Die convincingly", "Camellia", 5, JOKE, [
     cam("start", '''{n}Camellia's laugh is short and genuinely delighted, the first true sound she has made all evening.{/n}
-"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about."''',
-        c("[Draw your weapon]", native_next=Q3_NEXT, flags=(PRIMED,))),
+"A performance review, at a time like this? Very well. I shall give you a death worth remembering. Do try to keep your eyes open. It is the only part I ever cared about."
+{n}Your other hand rests on the scroll case at your belt: a scroll of raise dead, lifted this morning from the chaplains' strongbox while their backs were turned. She sees where your hand is. Her eyes go to it, and back to your face, and her smile deepens.{/n}''',
+        c("[Draw your weapon]", native_next=Q3_NEXT, flags=(PRIMED,), crusade=("Favors", -100))),
     ], requires=("trickster",), forbids=(PRIMED, KILLED, DEAD), last=5, Relationship=REL, Chapters=[5], AnswerLists=[Q3_LIST],
     NativeReturnCue=Q3_RETURN, EntryMythic="PlayerIsTrickster", TricksterDevice=True,
     TricksterState="killed_by_commander"))
@@ -242,8 +246,9 @@ SCENES.append(scene(P + "killed.setup_q3", "Die convincingly", "Camellia", 5, JO
 SCENES.append(scene(P + "killed.setup_q1", "A message for the killer", "Anevia", 3,
     '[Play a cruel trick on Camellia] "The killer is in the building. Tell her from me: die convincingly. I\'ll know if she doesn\'t."', [
     n("start", "Anevia", '''{n}Anevia turns the word over like a coin she suspects of being shaved.{/n}
-"Convincingly. Commander, dead's dead. Where I come from we don't grade it." {n}She shrugs, and her hand is already on the knife at her belt.{/n} "Fine. I'll tell her. Might even be the last thing she hears."''',
-      c("[Give the order]", native_next=Q1_NEXT, flags=(PRIMED, BY_ORDER)), portrait="Anevia"),
+"Convincingly. Commander, dead's dead. Where I come from we don't grade it." {n}She shrugs, and her hand is already on the knife at her belt.{/n} "Fine. I'll tell her. Might even be the last thing she hears."
+{n}She glances at the scroll case on your belt, the one with the chaplains' seal still on it, and grins. "Stealing from priests, Commander? I'll pretend I didn't see."{/n}''',
+      c("[Give the order]", native_next=Q1_NEXT, flags=(PRIMED, BY_ORDER), crusade=("Favors", -100)), portrait="Anevia"),
     ], requires=("trickster",), forbids=(PRIMED, KILLED, DEAD), last=5, Relationship=REL, AnswerLists=[Q1_LIST],
     NativeReturnCue=Q1_RETURN, EntryMythic="PlayerIsTrickster", EntryAlignment=dict(Direction="Chaotic", Value=1),
     TricksterDevice=True, TricksterState="killed_by_commander"))
@@ -259,15 +264,36 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
         c("[Pay the sexton and lift the lid]", "coffin", crusade=("Finances", -100)),
         c('[Let the grave keep her] "Put the spade down. Leave her."', flags=(DECLINED, CLOSED))),
     nar("coffin", '''{n}The lid comes up with a groan of wet wood. She lies exactly as she was laid out, hands folded over the bone snake at her throat, chin lifted a fraction, like an actress who knows where the light falls. There is no smell. The sexton notices that, and crosses himself, and does not say anything.{/n}''',
-        c('[Play a cruel trick on Camellia] "Go on, then. Die convincingly. This time I\'m watching."', "shut",
-          mythic="Trickster", flags=(PRIMED, LATE)),
+        c('[Play a cruel trick on Camellia] "Go on, then. Die convincingly. This time I\'m watching."', "scroll",
+          mythic="Trickster", flags=(PRIMED, LATE, RAISED)),
         c('[Close the lid] "No. Let her stay dead."', flags=(DECLINED, CLOSED))),
-    nar("shut", '''{n}Nothing happens. You did not expect it to. You nod to the sexton, and he lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to have heard the small, delighted exhalation from inside the box as it closed.{/n}''',
+    nar("scroll", '''{n}Then you break the chaplains' seal on the scroll case you lifted from their strongbox, and read the scroll of raise dead over her by the sexton's lantern. The words go out of the parchment as you say them. The sexton has stopped breathing. She has started.{/n}''',
+        c("Continue", "shut", crusade=("Favors", -100))),
+    nar("shut", '''{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it?"
+{n}You nod to the sexton. He lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to hear the small, delighted exhalation from inside the box as it closes.{/n}''',
         c("[Walk back to the citadel]", "walk")),
     nar("walk", '''{n}The sexton walks back with you as far as the cemetery gate, very fast, holding the lantern high. At the gate he stops, and says, not looking at you, that he has buried a great many people in this ground and that none of them ever laughed at him before, and he would like it very much if the Commander did not bring him any more work of that kind. Then he goes home, and, you learn later, does not come out again for three days.{/n}''',
         c("[Go home]")),
     ], requires=("trickster", KILLED), forbids=(PRIMED, RET, DECLINED), last=3, Relationship=REL, Remote=True,
     Chapters=[3], TricksterDevice=True, TricksterState="killed_by_commander"))
+
+
+# --- The third night (primed): the scroll read over her coffin. The device's operation, on the page. -----------------
+
+SCENES.append(scene(P + "killed.third_night", "The third night", "Memory", 3, "", [
+    nar("start", '''{n}The crusade buried Camellia under a plain stone at the edge of the Drezen cemetery, with a wrong bunch of flowers: lilies, the white wedding kind. On the third night you stand over the stone with the sexton, a stooped man with a lantern, who has been paid not to nail the lid and is now very sorry he agreed.{/n}''',
+        c("[Have him lift the lid]", "coffin"),
+        c('[Let the grave keep her] "Leave it. She stays where she is."', flags=(DECLINED, CLOSED))),
+    nar("coffin", '''{n}The lid comes up with a groan of wet wood. She lies exactly as she was laid out, hands folded over the bone snake at her throat, chin lifted a fraction, like an actress who knows where the light falls. She is dead. She has been very convincingly dead for three days.{/n}''',
+        c("[Break the chaplains' seal and read the scroll of raise dead over her]", "breath", flags=(RAISED, P + "cost.sexton_paid")),
+        c('[Close the lid] "No. Let her stay dead."', flags=(DECLINED, CLOSED))),
+    nar("breath", '''{n}The words go out of the parchment as you say them. Nothing happens, and then her chest moves, once, the way a sleeper's does before waking. The sexton sits down very suddenly in the wet grass.{/n}
+{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. I was resting." {n}A pause.{/n} "Put the lid back. I'm dead until I say I'm not. That was the joke, wasn't it? Go home. I'll find you."''',
+        c("[Put the lid back]", "home")),
+    nar("home", '''{n}You walk the sexton back to the cemetery gate. He does not say anything. When you look back from the gate the lid is already a little askew, and the lilies on the grave have been rearranged, very neatly, by somebody with a strong opinion about flowers.{/n}''',
+        c("[Go home]")),
+    ], requires=("trickster.ever", PRIMED, KILLED), forbids=(LATE, RAISED, RET, DECLINED), delay=72, last=5, Relationship=REL,
+    Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
 
 
 # --- The return, in person (R2-3): the veiled mourner at the end of Fye's bar. ---------------------------------------
@@ -288,14 +314,14 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
         c("Continue", "who")),
     *lead([("who", cam, '''"Do sit. Fye is pretending I am a widow from Nerosyan who drinks nothing and tips in silver. He is quite good at it. Everyone in this city is quite good at not seeing the dead."''', None),
            *PERFORMANCE_LEADS], "how"),
-    cam("how", '''{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. The fingertips are wrapped in strips of linen, brown at the ends. Under the linen there are no nails.{/n}
-"You made my death a performance. You said the word, and it was true, the way your words are true: I died the way an actress dies, completely, every night, and gets up when the curtain comes down. Only nobody lowered a curtain. You forgot to write me an exit." {n}She flexes the wrapped fingers.{/n} "So I wrote my own. Three nights, and pine is softer than you'd think."''',
+    cam("how", '''{n}She peels off one black lace glove, slowly, finger by finger, and lays her hand on the bar between you. It is a living hand, warm and a little unsteady.{/n}
+"You had the scroll on your belt when you told me to die. I saw it. I understood the joke at once: I was to die, really and truly, and stay dead through my own funeral, convincingly, so that nobody would ever think to look for me. And then you would come on the third night with the chaplains' paper and read me back." {n}She flexes the fingers.{/n} "Dying was easy. Lying still in that box afterwards, listening to your chaplains weep, was the hardest performance of my life."''',
         c("Continue", "how_late", requires=(LATE,)),
         c("Continue", "why", forbids=(LATE,))),
-    cam("how_late", '''"You lifted the lid and said your line to me, and then your sexton put it back and was too frightened to come back with the hammer. That saved me a nail or two." {n}She considers her hand.{/n} "Not all of them."''',
+    cam("how_late", '''"You did it the wrong way round, of course. You lifted my lid, told my corpse it wasn't convincing, and then read me back. Your sexton heard me breathe. He hasn't been the same since. I sent him a jar of lilies."''',
         c("Continue", "why")),
     cam("why", '''"You're wondering why I came back. Everyone wonders that about the dead. Nobody ever asks us."
-{n}She turns her glass a quarter turn.{/n} "I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and the whole time I was lying in that box I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
+{n}She turns her glass a quarter turn.{/n} "I came back because it was the first time in my life that somebody lied to me better than I could lie to them. You told me to die convincingly, and I died, and afterwards, the whole time I was lying in that box, I could hear you not believing it. Do you know how rare that is? To be disbelieved by someone who's right?"
 "I couldn't possibly stay dead after that. It would have been so rude."''',
         c("Continue", "primed")),
     cam("primed", '''"You told me to die convincingly, and I did. The gravediggers complained about the weight. The chaplain wept, which I thought was a nice touch. Everyone was convinced, except you, of course."
@@ -303,22 +329,27 @@ SCENES.append(scene(PERFORMANCE, "The veiled mourner", "Camellia", 3,
 {n}Under the lace her mouth curves.{/n} "Oh, and do look a little sad when you leave. Fye is watching, and the widow from Nerosyan has been stood up by her gentleman. It would be a pity to spoil the story."''',
         c('[Keep the knife] "I\'ll keep it close. Closer than you\'d like."', "register", flags=(RET, KNOWS, STARTED)),
         c('[Hand the knife back, point first] "Stay dead. It suits you."', "back")),
-    cam("register", '''"One more thing, and then I'll let you go." {n}She slides a folded paper across the bar: a page of the crusade's burial register, torn out very neatly. Her name is on it. There is a space beneath for a witness.{/n}
-"Camellia Gwerm is dead. That's the price of the trick, and it's mine to pay. Whatever claim I had on my father's name, his house, his money, it all went into the ground with the lilies. I shall never be her again." {n}She taps the empty line.{/n} "But a death needs a witness, or someone clever starts asking questions. Sign it. Swear you saw me die. You did, after all."''',
+    cam("register", '''"One more thing, and then I'll let you go." {n}She turns her glass a quarter turn.{/n} "Camellia Gwerm is dead. That's the price of the trick, and it's mine to pay: whatever claim I had on my father's name and his house went into the ground with the lilies. I shall never be her again."
+"But there's an empty box under that stone, and an empty box is a question. Sooner or later a sexton's boy or a grave-robber lifts the lid, and then somebody clever starts asking. It has to have something in it. Put it there yourself. Tonight."''',
         c("Continue", "will", requires=(WILL_GIVEN,)),
-        c("Continue", "sign", forbids=(WILL_GIVEN,))),
-    cam("will", '''"You gave me papa's will once, acknowledging his bastard at last. I carried it to my own grave. It's worth nothing now: a dead woman can't inherit. The Gwerm estate goes to the crown. I laughed about that for most of the second night."''',
-        c("Continue", "sign")),
-    cam("sign", '''{n}The pen is already in her hand, held out to you, the way she held out the knife.{/n}''',
-        c("[Sign as witness to her death]", flags=(WITNESS,), alignment=("Chaotic", 1)),
-        c('[Refuse] "I won\'t swear to a lie in a register of the dead."', "unsigned")),
-    cam("unsigned", '''{n}She looks at the pen, and then at you, and folds the page away into her glove.{/n}
-"How very correct." {n}The smile does not reach anywhere near her eyes.{/n} "Then somebody clever will start asking questions, and the dead woman at the end of Fye's bar will have to go somewhere nobody asks anything. Goodbye, my friend. It was a wonderful trick. You simply wouldn't finish it."''',
+        c("Continue", "fill", forbids=(WILL_GIVEN,))),
+    cam("will", '''"You gave me papa's will once, acknowledging his bastard at last. I carried it into my own grave. It's worth nothing now: a dead woman can't inherit. The Gwerm estate goes to the crown. I laughed about that for most of the second night."''',
+        c("Continue", "fill")),
+    cam("fill", '''"There's a deserter hanging at the west gate, three days up, about my height once the crows have finished. Nobody will claim him. Or there are stones in the chapel wall, if you're squeamish, and you can hope nobody ever weighs the box." {n}She smiles.{/n} "I know which one I would do."''',
+        c("[Cut the deserter down and carry him to her grave yourself]", "gallows", flags=(FILLED, GALLOWS), alignment=("Evil", 1)),
+        c("[Weigh the coffin down with stones from the chapel wall]", "stones", flags=(FILLED,)),
+        c('[Refuse] "No. I\'ve done enough digging for you."', "unsigned")),
+    nar("gallows", '''{n}You do it after midnight, alone, with a borrowed cart and a knife for the rope. He is lighter than you expected. At the cemetery you open her grave with a spade, lift the lid on the empty box that still smells of lilies, and put him in it, and fold his ruined hands over his chest the way hers were folded. Then you fill it in. It takes until the bells. Nobody sees. You are nearly sure nobody sees.{/n}''',
+        c("[Go and wash]")),
+    nar("stones", '''{n}You do it after midnight, alone, prising loose stones from the back of the chapel wall where the mortar has gone soft, and carrying them to her grave in a sack, four trips. You open the box that still smells of lilies and lay them in it in the shape of a woman, and fill the grave in. It takes until the bells. The box is the right weight. Probably.{/n}''',
+        c("[Go and wash]")),
+    cam("unsigned", '''{n}She looks at you, and then folds her hands in her lap.{/n}
+"How very correct." {n}The smile does not reach anywhere near her eyes.{/n} "Then somebody clever will open that box one day, and the dead woman at the end of Fye's bar will have to go somewhere nobody opens anything. Goodbye, my friend. It was a wonderful trick. You simply wouldn't finish it."''',
         c("[Let her go]", flags=(DECLINED, CLOSED))),
     cam("back", '''{n}She takes the knife by the blade, carefully, the way one takes a letter one has decided not to read.{/n}
 "How disappointing. I was dead for you, my friend, and you did not even come to see the second act." {n}The veil comes down. When you look up from your hands, the stool is empty and the lilies are on the floor.{/n}''',
         c("[Let her go]", flags=(DECLINED, CLOSED))),
-    ], requires=("trickster.ever", PRIMED, KILLED), forbids=(RET, DECLINED), delay=72, last=5, Relationship=REL,
+    ], requires=("trickster.ever", PRIMED, KILLED, RAISED), forbids=(RET, DECLINED), delay=72, last=5, Relationship=REL,
     Chapters=[3, 5], ContactUnit=UNIT, Areas=[DREZEN], InteractionHub=PRESENCE, TricksterDevice=True,
     TricksterState="killed_by_commander"))
 
@@ -332,14 +363,14 @@ SCENES.append(scene(P + "killed.performance_letter", "A letter from Mireya", "Me
     cam("letter_why", '''"I have been sleeping in the loft above a chandler's, among the tallow, very comfortably. Nobody looks up in Drezen. I have watched you twice from the window cross the square below, and you did not look up either, and I was quite hurt."
 "But I forgive you. You told me to die convincingly. A person who asks for that deserves to be taken at their word, and then some."''',
         c("Continue", "price")),
-    cam("price", '''"Since I cannot trust you to find me, my price for staying comes by post. First, the torn page of the burial register folded in here: sign it as witness to my death, or someone clever will start asking questions. Camellia Gwerm is dead, her name and her father's house with her; that part of the trick is mine to pay. Then: your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know."''',
+    cam("price", '''"Since I cannot trust you to find me, my price for staying comes by post. Camellia Gwerm is dead, her name and her father's house with her; that part of the trick is mine to pay. I have seen to the empty box myself, with stones, and ruined a perfectly good pair of gloves doing it. So: your blood, or your name. Your blood from my knife whenever the flies want it, or your name at the top of my list, the first friend I kill if I ever need one. Write which on the back of this and leave it on your pillow. I shall know."''',
         c('[Write back "My blood"] "Whenever you ask. From your knife. I won\'t flinch."',
-          flags=(RET, KNOWS, STARTED, BLED, TERMS, WITNESS), alignment=("Chaotic", 1)),
+          flags=(RET, KNOWS, STARTED, BLED, TERMS)),
         c('[Write back your own] "If you ever need to kill a friend, start with me."',
-          flags=(RET, KNOWS, STARTED, MARKED, TERMS, WITNESS), alignment=("Chaotic", 1)),
+          flags=(RET, KNOWS, STARTED, MARKED, TERMS)),
         c("[Burn the letter]", flags=(DECLINED, CLOSED))),
-    ], requires=("trickster.ever", PRIMED, KILLED, PRESENCE_FAILED), forbids=(PERFORMANCE, RET, DECLINED), delay=96,
-    last=5, Relationship=REL, Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
+    ], requires=("trickster.ever", PRIMED, KILLED, RAISED, PRESENCE_FAILED), forbids=(PERFORMANCE, RET, DECLINED), delay=96,
+    last=3, Relationship=REL, Remote=True, Chapters=[3], TricksterDevice=True, TricksterState="killed_by_commander"))
 
 
 # --- Dead otherwise: the same spoken-death lie, told at the body. She names her price before she rises. ---------------
@@ -353,7 +384,7 @@ SCENES.append(scene(P + "dead.overacting", "Curtain call", "Memory", 3, "", [
         c('[Let her lie] "Take your bow. The curtain\'s down."', flags=(DECLINED, CLOSED))),
     cam("waking", '''{n}Her eyes stay shut. Her lips barely move.{/n}
 "Rude. I was resting." {n}A pause, like a held breath that has nowhere to go.{/n} "My spirits were promised a death, my friend. Mine. If you take it back from them, they will want paying, and they are very particular. Not with some stranger. With you."
-"Your blood, in my bowl, from my knife, every new moon for as long as I choose. And you will hold still for it, and you will not look away."''',
+"Your blood, in my bowl, from my knife, every new moon for as long as I choose. And you will keep your hand flat on the table, and your eyes on mine."''',
         c('[Agree to her price] "Every new moon. Just get up."', revive="camellia", flags=(RET, OWED, STARTED)),
         c('[Refuse her price] "No. Not my blood, not for this."', "refused")),
     cam("refused", '''"Then I shall stay exactly where I am. It is quieter here than it has been in years." {n}The corner of her mouth moves, very slightly.{/n} "You were always the only one who could make it quiet. Now go away, and let me enjoy it."''',
@@ -383,7 +414,7 @@ met(P + "returned.terms", "What a dead woman wants", '"You said you would find m
     *lead([("lead", cam, '''"So I have been thinking about what to do with you. I think best in cemeteries and knife shops, and I have visited both."''', None),
            *TERMS_LEADS], "price"),
     cam("price", '''"So. My price for staying. Your blood, or your name."
-{n}She leans in until the lace of her sleeve brushes your wrist.{/n} "Your blood: from my knife, into my bowl, whenever the flies want it, and you hold still and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant."''',
+{n}She leans in until the lace of her sleeve brushes your wrist.{/n} "Your blood: from my knife, into my bowl, whenever the flies want it, and you keep your hand on the table and watch me take it. Or your name: the promise that if I ever need to kill a friend, I start with you. Either is a gift. I will know which one you meant."''',
         c('[Give her your blood] "Whenever you ask. From your knife. I won\'t flinch."', "named", flags=(BLED, TERMS)),
         c('[Give her yours] "If you ever need to kill a friend, start with me. I\'ll make it interesting."', "mine",
           flags=(MARKED, TERMS)),
@@ -391,7 +422,7 @@ met(P + "returned.terms", "What a dead woman wants", '"You said you would find m
     cam("named", '''"Your blood." {n}She takes your wrist and turns it to the lamp, and runs her thumbnail very lightly along the vein, the way a jeweller runs a nail along a seam.{/n} "You didn't even hesitate. That's either very brave or very foolish, and I shall find out which." {n}She lets go, and stands.{/n} "Three nights. Wear something with a loose sleeve."
 {n}At the door she turns.{/n} "Nobody has ever given me any. I have always had to take it. I don't know yet whether I'll like it better."''',
         c("[Watch her go]")),
-    cam("mine", '''{n}For once she has no answer ready. She looks at you for a long moment, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}
+    cam("mine", '''{n}For once she has no answer ready. She studies your mouth, then your hands, and whatever she is looking for, she seems to find it, because she laughs, softly, and only once.{/n}
 "Oh, you are dreadful. Nobody has ever offered before. They only ever found out." {n}She stands.{/n} "Three nights. Sleep lightly."
 {n}At the door she turns, and her voice is almost shy.{/n} "You understand what you've done? You've made yourself the first name on my list and the last. There's nobody else on it now who matters. Everyone else is only practice."''',
         c("[Watch her go]")),
@@ -490,7 +521,8 @@ KEPT_PARAS = (
     p("{n}Anevia never stopped looking for the lower-city killer. She never found anyone, and she never quite believed that.{/n}", requires=(INVESTIGATED,)),
     p("{n}Once, when the Commander had been gone a season, she was found in the dark of the citadel with a knife in one hand and the other flat on the Commander's empty pillow, counting. Nobody asked her what.{/n}", requires=(NOT_TODAY,)),
     p("{n}Every year on the date of her funeral she laid wrong lilies on her own grave, and read the stone aloud, and corrected the spelling.{/n}", requires=(KILLED,)),
-    p("{n}The burial register of the Fifth Crusade still lists Camellia Gwerm among its dead, over the Commander's signature as witness. The Gwerm estate went to the crown. She never once asked for it back.{/n}", requires=(WITNESS,)),
+    p("{n}The grave at the edge of the Drezen cemetery still bears her name. The Gwerm estate went to the crown. What lies in her coffin, only two people ever knew, and she never once asked for her name back.{/n}", requires=(FILLED,)),
+    p("{n}Some nights the Commander still dreamed of the weight of a hanged man on a borrowed cart.{/n}", requires=(GALLOWS,)),
     p("{n}In Nerosyan, a widow named Mireya Voss kept a house in the Lantern Quarter for many years, and paid her taxes, and was said to have been married to a wine merchant who died of eels. Nobody ever saw her husband's grave.{/n}", requires=(NEW_NAME,)),
     p("{n}Over the Commander's bed hung a charcoal rubbing of a gravestone, framed. Guests who asked about it were told it was a family memorial, and that the family member in question was in the next room.{/n}", requires=(OLD_NAME,)),
     p("{n}The cells under the citadel were never quite used again. The guards said a prisoner had died down there of a failure of the heart, and that the last one to hear him had heard him laughing, and then not laughing.{/n}", requires=(PRISONER_HERS,)),
@@ -505,7 +537,7 @@ KEPT_PARAS = (
 SCENES.append(scene(P + "epilogue.kept", "", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}Camellia Gwerm was entered in the crusade's register as dead, and never troubled to correct it. She stayed at the Commander's side through the Threshold and after it, a veiled woman whom no one could quite remember being introduced to, and she kept the small clean knife where the Commander could always see it. She never killed the Commander. She never said she wouldn't.{/n}
 {n}She took no new friends, or said she took none. Once a year, on the date of her funeral, she brought the Commander breakfast on the point of a knife, and the Commander ate it without looking, and she watched, and neither of them ever grew tired of it.{/n}
-{n}People who met them together in later years said they were the most courteous couple they had ever dined with, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}''',
+{n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
     ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))

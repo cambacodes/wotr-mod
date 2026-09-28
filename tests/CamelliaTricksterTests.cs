@@ -120,25 +120,39 @@ internal static class CamelliaTricksterTests
         Take(setupQ1, q1, "start", 0, P + "primed", P + "primed_by_order");
 
         // Trk_Camellia_KilledPrimed
-        var primed = World(story, 5, "trickster", "trickster.ever", Killed, P + "primed");
+        // The device: a scroll of raise dead signed out before the kill (the setups cost Favors -100), read over her coffin on
+        // the third night (killed.third_night). Without the raise, the veiled mourner does not appear.
+        var third = S(P + "killed.third_night");
+        foreach (var setup in new[] { setupHub, setupQ3, setupQ1 })
+            check(setup.Nodes.SelectMany(n => n.Choices).Where(c => c.NativeNext != null).All(c => c.Crusade?.Resource == "Favors" && c.Crusade.Amount == -100),
+                "The scroll of raise dead is not signed out at the kill: " + setup.Id);
+        var buried = World(story, 3, "trickster", "trickster.ever", Killed, P + "primed");
+        check(!Avail(performance, buried) && Avail(third, Later(story, buried, 100)), "The raise does not stand between the kill and her return.");
+        check(third.Remote && third.Chapters.SequenceEqual(new[] { 3, 5 }), "The third night is not a Drezen rest page.");
+        var raisedNight = Take(third, Later(story, buried, 100), "coffin", 0, P + "raised");
+        check(Avail(performance, Later(story, raisedNight, 100)), "The veiled mourner does not follow the raise.");
+        var primed = World(story, 5, "trickster", "trickster.ever", Killed, P + "primed", P + "raised");
         check(Avail(performance, primed) && !Avail(overacting, primed) && !Avail(late, primed) && !Avail(letter, primed),
             "Trk_Camellia_KilledPrimed: only the veiled mourner should be available.");
         check(performance.InteractionHub == "camellia.presence" && performance.ContactUnit == Unit && performance.Areas.SequenceEqual(new[] { Drezen }),
             "The return is not met in person at her presence.");
         var back = Take(performance, primed, "primed", 0, Returned, P + "cost.knows_you_tried", "camellia.started");
-        // The trick's mechanism and price are on the page: her own exit through the lid (her hands), and her death kept on
-        // the register over the Commander's signature (Chaotic 1); refusing to sign ends it.
+        // The trick's mechanism and price are on the page: the stolen scroll read over her coffin (how), and her death kept
+        // by the Commander's own hands: her empty coffin filled, with a hanged deserter (Evil 1) or stones; refusing ends it.
         check(performance.Nodes.Any(n => n.Id == "how") && Ch(performance, "primed", 0).Next == "register",
-            "The return does not show how she got out, or skips the register.");
-        var signed = Take(performance, primed, "sign", 0, P + "cost.false_witness", Returned);
-        check(Ch(performance, "sign", 0).Alignment?.Direction == "Chaotic", "Swearing to her death is not a Chaotic act.");
+            "The return does not show how she got out, or skips the empty coffin.");
+        Take(performance, primed, "fill", 0, P + "cost.grave_filled", P + "cost.gallows", Returned);
+        Take(performance, primed, "fill", 1, P + "cost.grave_filled", Returned);
+        check(Ch(performance, "fill", 0).Alignment?.Direction == "Evil" && Ch(performance, "fill", 1).Alignment == null,
+            "Carrying a hanged man to her grave is not an Evil act, or the stones are.");
         check(Through(performance, primed, "unsigned", 0).All(r => r.Has(Closed) && r.Has(P + "declined")),
-            "Refusing to sign her death does not end the return.");
-        check(Ch(letter, "price", 0).Set.Contains(P + "cost.false_witness") && Ch(letter, "price", 1).Set.Contains(P + "cost.false_witness"),
-            "The letter twin does not carry the register price.");
+            "Refusing to fill her grave does not end the return.");
+        check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
+                  .Any(c => c.Text.Contains("[Sign") || c.Text.Contains("witness to her death")),
+            "A sign/witness beat came back (registry 06 §3: the Trickster is not a notary).");
 
         // Trk_Camellia_KilledWithDeadEtude
-        check(Avail(performance, World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed")),
+        check(Avail(performance, World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "primed", P + "raised")),
             "Trk_Camellia_KilledWithDeadEtude: the killed state co-holds her retained-death etude and must still return.");
 
         // Trk_Camellia_KilledLate
@@ -148,7 +162,8 @@ internal static class CamelliaTricksterTests
         check(Ch(late, "choose", 0).Crusade?.Resource == "Finances" && Ch(late, "choose", 0).Crusade!.Amount == -100,
             "The sexton is not paid for in Finances (-100).");
         check(Ch(late, "coffin", 0).Mythic == "PlayerIsTrickster", "The line said to the corpse is not a native [Trickster] answer.");
-        Take(late, unprimed, "coffin", 0, P + "primed", P + "cost.late");
+        Take(late, unprimed, "coffin", 0, P + "primed", P + "cost.late", P + "raised");
+        check(Ch(late, "scroll", 0).Crusade?.Resource == "Favors", "The late raise is not paid for in Favors.");
         Take(late, unprimed, "choose", 1, P + "declined", Closed);
 
         // Trk_Camellia_KilledAfterFailure
