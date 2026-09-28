@@ -288,11 +288,20 @@ REFUSED_PARAGRAPH = p(
     "hand: \"No forfeit, no signature.\"", requires=(NO_FORFEIT,))
 
 SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocked", "Epilogue", 5, "", [
-    nar("end", '''{n}The war ended before the contract did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}
-"The forfeit is one memory, of my choosing, when I choose. Sign, or do not. I have already read your answer."
-{n}The Commander signed. She read the signature twice, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
-{n}She collected a year later to the day. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}''',
-      c(), paragraphs=TRICKSTER_PARAGRAPHS)],
+    nar("offer", '''{n}The war ended before the contract did. Jerribeth came to the Commander's door the first spring after the Worldwound closed, in a guise the guards did not question, with the clause she had been saving.{/n}
+"The forfeit is one memory, of my choosing, when I choose. Sign, or do not. I have already read your answer."''',
+      c('[Sign.]', "signed"),
+      c('[Tear the contract in half.]', "torn")),
+    nar("signed", '''{n}The Commander signed. She read the signature twice, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
+{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}
+"There," she said. "Now I am the only one at this table who remembers how we met, and I intend to improve it."
+{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}''',
+      c(), paragraphs=TRICKSTER_PARAGRAPHS),
+    nar("torn", '''{n}The Commander tore the contract in half, and then in quarters, and handed her the pieces.{/n}
+{n}She looked at them for a long time. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}
+"No forfeit, no contract. And still you open the door to me." {n}She put the pieces in her sleeve.{/n} "You are very bad at this, Commander. I shall come back tomorrow, and the day after, until one of us learns to write a better one."
+{n}She did. Neither of them ever did. The Commander kept every memory of the war, including the ones worth losing.{/n}''',
+      c())],
     requires=("trickster.ever", "jerribeth.commission", LATE_COMMITTED),
     forbids=("jerribeth.committed", "jerribeth.closed", DECLINED, DEAD), last=99, Relationship="jerribeth",
     ForbidOverrides={DEAD: RETURNED}))
