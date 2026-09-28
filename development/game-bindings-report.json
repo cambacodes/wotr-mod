@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-arueshalae\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2262,
-  "unique_targets": 593,
+  "binding_uses": 2426,
+  "unique_targets": 614,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -26,9 +26,25 @@
       "path": "Mythic/Azata/AzataDragon/AzataDragonUnit.jbp",
       "type": "BlueprintUnit"
     },
+    "04177c4ddec20ae4ca04388f9cf23518": {
+      "path": "Mythic/Trickster/LoreReligion/TricksterLoreReligionTier1Feature.jbp",
+      "type": "BlueprintFeature"
+    },
     "1383f21534d8b6a45bdbdc8ddce7a187": {
       "path": "Mythic/Trickster/UseMagicDevice/TricksterUseMagicDeviceTier2Feature.jbp",
       "type": "BlueprintFeature"
+    },
+    "a352873d37ec6c54c9fa8f6da3a6b3e1": {
+      "path": "Units/Companions/Arueshalae/Arueshalae_Companion.jbp",
+      "type": "BlueprintUnit"
+    },
+    "2c8caedd0a558524ca0ed1ab3132fae1": {
+      "path": "Units/Companions/Arueshalae/CR20_EvilArueshalae_NPC.jbp",
+      "type": "BlueprintUnit"
+    },
+    "e3bc95db7e2181d41847b3a1d858258d": {
+      "path": "Units/Companions/Arueshalae/EvilArueshalae_Companion.jbp",
+      "type": "BlueprintUnit"
     },
     "2779754eecffd044fbd4842dba55312c": {
       "path": "Units/Companions/Ember/Ember_Companion.jbp",
@@ -70,6 +86,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/IrabethTirabade_DrezenCapital.jbp",
       "type": "BlueprintUnit"
     },
+    "bc1093231b1577a4485a730c29595195": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/JewelerCapitalTrader.jbp",
+      "type": "BlueprintUnit"
+    },
     "f999fc37ddb225640b7f98c0a05d6948": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/NurahCapital.jbp",
       "type": "BlueprintUnit"
@@ -80,6 +100,10 @@
     },
     "8692bff6041c47a0b13158d5977f291b": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/RankUpOfficer_Logistics.jbp",
+      "type": "BlueprintUnit"
+    },
+    "253cdb8f434e5a6469b75e18428316e3": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/TailorCapitalTrader.jbp",
       "type": "BlueprintUnit"
     },
     "565ccab37e2475742b043ec912a750fa": {
@@ -148,6 +172,10 @@
     },
     "7847c3e3537104f4694167af0b9fcd0e": {
       "path": "World/Areas/Act_4_MidnightIsles/Nexus/Nexus.jbp",
+      "type": "BlueprintArea"
+    },
+    "fe9eaf819cf03424a9108aa8b777694d": {
+      "path": "World/Areas/Act_5_HeraldOfTheIvoryLabyrinth/DemonicCommando_Lair/DemonicCommando_Lair.jbp",
       "type": "BlueprintArea"
     },
     "3538511f16d45f44f8249ff710777e2d": {
@@ -634,6 +662,10 @@
       "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0050.jbp",
       "type": "BlueprintCue"
     },
+    "b84ef61b070e9cb4e84f142dc8c04cdb": {
+      "path": "World/Dialogs/c4/Nocticula_main/Cue_0523.jbp",
+      "type": "BlueprintCue"
+    },
     "199a940b97b11664aace4101733cd963": {
       "path": "World/Dialogs/c4/Palace/Audience_Areelu/AnswersList_0030.jbp",
       "type": "BlueprintAnswersList"
@@ -1066,6 +1098,10 @@
       "path": "World/Dialogs/c6/ThresholdExterior/AreeluThresholdWelcome/Cue_0027.jbp",
       "type": "BlueprintCue"
     },
+    "03ebad9587cbea0438d901a0f8df44f1": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Arueshalae/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "589d83230bbbfd04bb1220ee4fef1ce1": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0030.jbp",
       "type": "BlueprintAnswersList"
@@ -1134,6 +1170,18 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Woljif/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "3ef227bb0ba84104387fd9b4865a4ce0": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Evil/MeetEvilArusha/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "f95980a82d410e143a748c412da887fa": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Evil/MeetEvilArusha/Cue_0006.jbp",
+      "type": "BlueprintCue"
+    },
+    "480082b0c04099540be2ed84be7c9536": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Evil/MeetEvilArusha/Cue_0015.jbp",
+      "type": "BlueprintCue"
+    },
     "5de3ea4370854d229e047d95980006c9": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0004.jbp",
       "type": "BlueprintAnswer"
@@ -1157,6 +1205,18 @@
     "aebbc1845e827dd4da4e28014e7b4162": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
       "type": "BlueprintCue"
+    },
+    "4d812cb00e7ad794d907273f8db54b1e": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Lab/Arueshalae_Romance_C3_After_Lab_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "86597ac9662ad35409f311a6b52c86b8": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C4/Wakeup/Arueshalae_Romance_C4_Wakeup_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "3edf6ac1aefa1e3429ca04c60cb8565c": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C5/BestEnding/Arueshalae_Romance_BestEnding_Dialogue.jbp",
+      "type": "BlueprintDialog"
     },
     "0a50c9c878844ed4a69b8d6131304c5e": {
       "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/AnswersList_0001.jbp",
@@ -1456,6 +1516,30 @@
     },
     "10cf0442f31a4796af8b28281f35e944": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_WoundClosed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "580a89c5fe6e6a64a908bbccfc18f4c8": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "3d4cf05d72e552d4fa8490987a7fc7be": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "543a6e475aeb9bf4eafb43903e3e186b": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeRomance/ArueshalaeRomance_Fail.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9104498b842e1584da9b3640cb9e4157": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeIsEvil/EvilArushaKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "005c2284d7e5ac54c887bb3781e45d0c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeIsEvil/EvilArushaRecruited.jbp",
+      "type": "BlueprintEtude"
+    },
+    "5eb05139c8b621a44b47c540aa4957d1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeEvilCompanion/ArueshalaeEvilNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
     "b02cb06ba219ef9419a1b37cad576afa": {
