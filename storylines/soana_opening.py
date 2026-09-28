@@ -155,7 +155,7 @@ s("water_carrier", "The weight of water", '"You said the water pot needed a carr
 "I was offering one flower. I would like to know the woman receiving it."
 "Then do not hurry to decide what she has lost."
 {n}She lays the stem across the rim of the water dish. The blossom rests clear of the water.{/n}''',
-      c('"I will ask what you want to tell me. I will not make an opening for myself out of what you have not said."', "marriage", flags=("soana.marriage_acknowledged",)),
+      c('"Tell me about him when you want to. Not before."', "marriage", flags=("soana.marriage_acknowledged",)),
       c('"Keep it as thanks for the lesson. I meant nothing more."', "thanks", flags=("soana.flower_thanks", "soana.marriage_acknowledged"))),
     n("learned", "Soana", '''"A handle breaks. A vessel must still be carried. That is an excellent teacher."
 {n}She looks at the little flower beside the dish.{/n}
