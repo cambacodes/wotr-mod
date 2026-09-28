@@ -72,8 +72,16 @@ internal static class Program
         Check(ps.Saves.Count == 1 && ps.RoundTrip && ps.QuitWhenDone && ps.Timeouts.GlobalSeconds == 2640 && ps.Timeouts.LoadSeconds == 300,
             "run-harness.ps1 plan shape parses");
 
+        // -Screenshots shape: the switch, the per-scene cap and the run's shots folder (added after RunDir exists).
+        var sh = HarnessPlan.Parse(@"{ ""saves"": [], ""headless"": false, ""screenshots"": true, ""screenshotsPerScene"": 4,
+            ""screenshotDir"": ""C:\\runs\\x\\shots"" }");
+        Check(sh.Screenshots && sh.ScreenshotsPerScene == 4 && sh.ScreenshotDir == @"C:\runs\x\shots", "screenshot plan fields parse");
+        var shc = HarnessPlan.Parse(@"{ ""screenshots"": true, ""screenshotsPerScene"": -2, ""screenshotDir"": "" "" }");
+        Check(shc.ScreenshotsPerScene == 0 && shc.ScreenshotDir == null, "screenshot cap clamped to 0 and a blank folder means the default");
+
         var d = HarnessPlan.Parse("");
         Check(d.Saves.Count == 0 && !d.Force && !d.Dfs && d.ShouldReloadBetweenScenes && d.RoundTrip, "empty plan gives defaults");
+        Check(!d.Screenshots && d.ScreenshotsPerScene == 3 && d.ScreenshotDir == null, "screenshots are off by default");
 
         bool threw = false;
         try { HarnessPlan.Parse(@"{ ""savez"": [] }"); } catch (Exception) { threw = true; }

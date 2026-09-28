@@ -7,6 +7,11 @@
   ./harness/run-harness.ps1 -DryRun -Saves 'Manual_12_Drezen'
   ./harness/run-harness.ps1 -Saves 'Manual_12_Drezen','D:\saves\ch3.zks'
   ./harness/run-harness.ps1 -Saves 'Manual_12_Drezen' -Force -Mode dfs
+  ./harness/run-harness.ps1 -Saves 'Manual_12_Drezen' -Force -Screenshots -ScreenshotsPerScene 4 -SceneFilter @('seelah.letter')
+
+  -Screenshots captures a PNG of each shown cue (after the dialog UI has bound it), up to -ScreenshotsPerScene per walk,
+  into harness/.runs/<stamp>/shots/<scene-id>__<step>.png; the report lists them per run. A minimized Unity window can
+  render black, so -Screenshots launches Wrath in a normal (not minimized) 1280x720 window, as -Windowed does.
 
 .NOTES
   Exit codes: 0 all checks passed, 1 tests failed, 2 harness/infrastructure failure (no report, timeout, crash),
@@ -28,6 +33,8 @@ param(
     [switch]$NoRoundTrip,
     [switch]$Headless,
     [switch]$Windowed,
+    [switch]$Screenshots,
+    [int]$ScreenshotsPerScene = 3,
     [switch]$Build,
     [int]$TimeoutMinutes = 45,
     [string]$UserData = (Join-Path $env:USERPROFILE 'AppData\LocalLow\Owlcat Games\Pathfinder Wrath Of The Righteous'),
@@ -158,13 +165,17 @@ $plan = [ordered]@{
     sceneFilter       = @($SceneFilter)
     roundTrip         = -not $NoRoundTrip
     headless          = [bool]$Headless
+    screenshots       = [bool]$Screenshots
+    screenshotsPerScene = $ScreenshotsPerScene
     quitWhenDone      = $true
     timeouts          = [ordered]@{ globalSeconds = [Math]::Max(60, $TimeoutMinutes * 60 - 60) }
 }
 $planJson = $plan | ConvertTo-Json -Depth 5
 
 $launchArgs = @()
-if ($Windowed) { $launchArgs = @('-screen-fullscreen', '0', '-screen-width', '1280', '-screen-height', '720') }
+if ($Windowed -or $Screenshots) { $launchArgs = @('-screen-fullscreen', '0', '-screen-width', '1280', '-screen-height', '720') }
+# Screenshots need a rendered (not minimized) window.
+$windowStyle = if ($Screenshots) { 'Normal' } else { 'Minimized' }
 $exe = Join-Path $GameDir 'Wrath.exe'
 
 # ---------------------------------------------------------------------------------------------
@@ -220,6 +231,11 @@ if ($pre.Count) { Say 'Preflight failed:' Red; $pre | ForEach-Object { Say "  - 
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 $RunDir = Join-Path $HarnessDir ".runs\$stamp"
 New-Item -ItemType Directory -Force -Path (Join-Path $RunDir 'backup') | Out-Null
+if ($Screenshots) {
+    $plan.screenshotDir = Join-Path $RunDir 'shots'
+    New-Item -ItemType Directory -Force -Path $plan.screenshotDir | Out-Null
+    $planJson = $plan | ConvertTo-Json -Depth 5
+}
 $manifest = [ordered]@{ GameDir = $GameDir; Dirs = @(); Files = @(); CreatedDirs = @() }
 function Save-Manifest { $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $RunDir 'manifest.json') -Encoding utf8 }
 
@@ -257,9 +273,9 @@ try {
     Say "Installed $($copies.Count) files; backup and manifest in $RunDir" Green
 
     # 3. Launch and wait.
-    Say "Launching Wrath (minimized). Timeout: $TimeoutMinutes min." Cyan
-    if ($launchArgs.Count) { Start-Process -FilePath $exe -ArgumentList $launchArgs -WorkingDirectory $GameDir -WindowStyle Minimized | Out-Null }
-    else { Start-Process -FilePath $exe -WorkingDirectory $GameDir -WindowStyle Minimized | Out-Null }
+    Say "Launching Wrath ($($windowStyle.ToLower())). Timeout: $TimeoutMinutes min." Cyan
+    if ($launchArgs.Count) { Start-Process -FilePath $exe -ArgumentList $launchArgs -WorkingDirectory $GameDir -WindowStyle $windowStyle | Out-Null }
+    else { Start-Process -FilePath $exe -WorkingDirectory $GameDir -WindowStyle $windowStyle | Out-Null }
     $deadline = $startTime.AddMinutes($TimeoutMinutes)
     $status = $null; $sawGame = $false; $lastNote = ''
     while ((Get-Date) -lt $deadline) {
