@@ -156602,7 +156602,7 @@
         {
           "Id": "reply_known",
           "Speaker": "Aranka",
-          "Text": "\"Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part!\"\n\"It came down from Elysium in one piece. I carried it out of Kenabres in one piece. I gave it to you in one piece, Commander, and Ilkes asked you to remember it, not to improve it. The carters say it started in Drezen. I am coming to Drezen to find the thief.\"",
+          "Text": "\"Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part!\"\n\"It came to us from the true servants of Desna, from her domain in Elysium, and I carried it out of Kenabres in one piece. I gave it to you in one piece, Commander, and Ilkes asked you to remember it, not to improve it. The carters say it started in Drezen. I am coming to Drezen to find the thief.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -156737,7 +156737,7 @@
         {
           "Id": "known",
           "Speaker": "Aranka",
-          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him.\"\n\"It came down from Elysium in one piece, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
+          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him.\"\n\"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -156934,7 +156934,7 @@
         {
           "Id": "posters",
           "Speaker": "Aranka",
-          "Text": "\"You put me on a poster before you put me in a letter.\" {n}She lays a torn corner of one on the counter: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}\n\"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze has one verse that came down from Elysium, and nobody has ever dared add a second. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it.\"",
+          "Text": "\"You put me on a poster before you put me in a letter.\" {n}She lays a torn corner of one on the counter: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}\n\"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna, and nobody I know has ever dared add a verse to it. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it.\"",
           "Choices": [
             {
               "Text": "[Sing it] \"A second verse. Mine.\"",

@@ -1,7 +1,7 @@
 """Aranka on the Trickster path: the boast made true (Writer/handoffs/trickster/aranka.md; F05).
 
 Canon: in Kenabres Aranka gives the Commander a song, "We call it 'Starward Gaze,' and it came to us from the true
-servants of Desna" (c1/KenabresBurning/DesnaTempleFinal/Cue_0020 f21279d1), and Ilkes asks the Commander to remember it
+servants of Desna from her domain in Elysium" (c1/KenabresBurning/DesnaTempleFinal/Cue_0020 f21279d1), and Ilkes asks the Commander to remember it
 (Cue_0029 3af7086c). On the Azata island she is still rearranging it ("a new arrangement for our song"). In the Trickster's
 Chapter 3 tavern the Fool King sings a ballad "off-key, but with great emotion" (FoolKing_Tavern/Cue_0001 d81c823d, Cue_0002
 0b01da77) that he calls "an ancient Sarkorian ballad ... My pops used to sing when he was in his cups" (Cue_0046 a55c2fab).
@@ -164,7 +164,7 @@ letter("aranka.trickster.verse.any_tavern", "Every mug in the house", [
         c("Continue", "reply_known", requires=(GAVE_SONG,)),
         c("Continue", "reply_unknown", forbids=(GAVE_SONG,))),
     a("reply_known", '''"Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part!"
-"It came down from Elysium in one piece. I carried it out of Kenabres in one piece. I gave it to you in one piece, Commander, and Ilkes asked you to remember it, not to improve it. The carters say it started in Drezen. I am coming to Drezen to find the thief."''',
+"It came to us from the true servants of Desna, from her domain in Elysium, and I carried it out of Kenabres in one piece. I gave it to you in one piece, Commander, and Ilkes asked you to remember it, not to improve it. The carters say it started in Drezen. I am coming to Drezen to find the thief."''',
       *her_letter_choices(PRIMED, LATE)),
     a("reply_unknown", '''"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word."
 "Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part! The carters say it started in your city, in a tavern, with somebody paying for the beer. I am coming to Drezen to find the thief. Please have them ready."''',
@@ -178,7 +178,7 @@ letter("aranka.trickster.verse.her_letter", "Somebody changed my song", [
         c("Continue", "known", requires=(GAVE_SONG,)),
         c("Continue", "unknown", forbids=(GAVE_SONG,))),
     a("known", '''"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him."
-"It came down from Elysium in one piece, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief."''',
+"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief."''',
       *her_letter_choices()),
     a("unknown", '''"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word."
 "Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. I am told the new verse arrived with a Knight-Commander standing on a bench and paying for the beer."
@@ -208,7 +208,7 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
 "Now sing it with me. The verse where you lose. I'll take the harmony."''',
       c('[Sing it] "The one where I lose. From the top."', "duet")),
     a("posters", '''"You put me on a poster before you put me in a letter." {n}She lays a torn corner of one on the counter: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}
-"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze has one verse that came down from Elysium, and nobody has ever dared add a second. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it."''',
+"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna, and nobody I know has ever dared add a verse to it. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it."''',
       c('[Sing it] "A second verse. Mine."', "duet")),
     a("duet", '''"You owe me a duet for this. And an apology. Mostly the duet."
 {n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Fye stops polishing the same cup. A sapper by the door takes his helmet off without knowing he has done it.{/n}
