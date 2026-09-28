@@ -142,7 +142,7 @@ internal static class DorgelindaTricksterTests
               && reactions.Where(r => r.Owner == "Konomi").All(r => r.Requires.Contains("konomi.in_office")
                   && r.ForbidOverrides["konomi.dismissed"] == "konomi.trickster.returned"),
             "The reactions are not exactly Konomi, Regill and Lann behind their guards.");
-        check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard" }),
             "The late commit is not derived from the second book.");

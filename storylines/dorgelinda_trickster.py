@@ -208,8 +208,9 @@ office(P + "audit.open", "A thorough audit", '"You said you\'d be findin\' out."
     d("refused", '''"No." {n}The book stays open. Her hand stays on it.{/n}
 "You can shout at the page if you like. It'll still be here when you've done. Paper's patient. So am I, when I'm owed."''',
       c("[Hear her out.]", "terms", flags=(HOSTILE,))),
-    d("terms", '''"Right. Here's how it'll go. You come by the stores once a week, on your own feet, and you account for yourself. If I like the accountin', maybe I'll let you buy me a drink out of what you owe."
-{n}It is not a smile. It is where one would go.{/n}''',
+    d("terms", '''{n}She listens without writing. When you have finished she sits for a while with her good hand flat on the page, looking at the line in your name as if it were a wagon with a cracked axle that might yet get where it is going.{/n}
+"Right. Here's how it'll go. You come by the stores once a week, on your own feet, and you account for yourself. Boots, blankets, bottles, and whatever else you've drawn on my stores that week. I'll count it. You'll not argue."
+{n}She taps the line.{/n} "If I like the accountin', maybe I'll let you buy me a drink out of what you owe." {n}It is not a smile. It is where one would go.{/n}''',
       c("[Agree to be audited.]", flags=(RETURNED, STARTED), forbids=(LATE,)),
       c("[Agree to be audited. Twice a week.]", "twice", requires=(LATE,))),
     d("twice", '''"Twice a week, for you. Wet ink costs extra."''',
@@ -238,7 +239,15 @@ office(P + "after.weekly_count", "Weekly count", '"Right on time. Boots off the 
 "Line thirty-one. Two pairs of boots drawn in a week. Either you're walkin' to the Worldwound twice or you're givin' them away. Which?"''', *COUNT_CHOICES),
     d("drink", '''{n}You account for the boots, and the flask, and a blanket you cannot account for. She writes it all down. Then she reaches under the table for a bottle that has never appeared on any manifest in Drezen.{/n}
 "On account." {n}She pours two, and pushes one across with the back of her bad hand.{/n} "Don't make a face. It's the good stuff. I found it, which is different from stealin' it, which I'd know."''',
-      c("[Drink with her.]", flags=(COUNTED, P + "drank"))),
+      c("[Drink with her.]", "toast")),
+    d("toast", '''{n}It is the good stuff. It goes down like a lit fuse. She watches you take it and nods, as if a delivery has been signed for.{/n}
+"There's a toast, in the supply service. You'll not have heard it; they don't teach it to officers." {n}She lifts her cup an inch off the table.{/n} "Armed, armoured and fed. Two out of three." {n}She drinks.{/n}
+"We drink to the third one, whichever it was that didn't come. Tonight it's boots. Last week it was bread. You'd not believe how many men die in this war 'cause somebody somewhere wrote a number down wrong."''',
+      c('"Armed, armoured and fed."', "toasted")),
+    d("toasted", '''{n}She looks at you over the cup for a moment longer than she needs to.{/n}
+"Two out of three." {n}She corrects you, without heat, and refills both cups, and writes nothing in the book, which is the first time.{/n}
+"Same time next week. Bring the boots back if you've still got 'em."''',
+      c("[Finish your cup.]", flags=(COUNTED, P + "drank"))),
     d("no", '''"No." {n}She says it the way she says "two out of three": as a fact of supply.{/n}
 "You don't get to buy your way out of my book, Commander. Coin's the easy part. The line stays open till I know where it went, and I close it, not you."
 {n}She pours a drink anyway, one, for herself, and after a moment a second, for you.{/n} "That's not forgiveness. That's hospitality. Different column."''',
@@ -260,7 +269,7 @@ office(P + "after.fellows_methods", "The second book", '"Shut the door. No, all 
     d("crumbs", '''"Her Majesty squeezed Mendev dry to march on Iz. There's nothin' left to buy honest. I checked. Twice. Then I stopped checkin', 'cause it was makin' me sick."''',
       c("Continue", "start")),
     d("start", '''{n}She lays a second ledger on top of the first. It is thinner, and older, and the hand in it is not hers.{/n}
-"Bartley's lot kept this. Took it off his clerk. Two books, one for the Crusade and one for what the Crusade doesn't know it's got. A weight discrepancy here, some cargo that dried out there. I've read it three times. It's good work." {n}She taps the cover.{/n}
+"Bartley's lot kept this. Took it off his clerk the day we caught 'em, and I've had it in my drawer since, readin' it at night like some folk read scripture. Two books, one for the Crusade and one for what the Crusade doesn't know it's got. A weight discrepancy here, some cargo that dried out there. I've read it three times. It's good work." {n}She taps the cover.{/n}
 "You're the one person in Drezen I can say that to. You ate a warehouse and signed for it. So I'm askin' you. Do we keep a second book?"''',
       c('"Keep your hands clean. I\'ll keep mine dirty for both of us."', "clean"),
       c('"Do it. Their methods. Your books."', "dirty")),
@@ -284,7 +293,8 @@ ASK = (
 )
 
 office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."', [
-    nar("open", '''{n}The ledger is open at your line. It has grown: carts, a warehouse, boots, a bottle that was never on any manifest. She has not closed it. She has not ruled it off.{/n}''',
+    nar("open", '''{n}The ledger is open at your line. It has grown: carts, a warehouse, boots, a bottle that was never on any manifest. Weeks of small entries in her hand, every one of them dated, some of them in the code she uses for things she will not have her clerks read. She has not closed it. She has not ruled it off.{/n}
+{n}She has shut the door without being asked, and bolted it, and sent the sergeant to count something at the far end of the yard.{/n}''',
         c("Continue", "recall_clean", requires=(CLEAN,)),
         c("Continue", "recall_dirty", requires=(DIRTY,), forbids=(CLEAN,)),
         c("Continue", "recall", forbids=(CLEAN, DIRTY))),
