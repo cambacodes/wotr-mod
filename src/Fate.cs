@@ -17,10 +17,21 @@ namespace Tirabade
             var matches = Game.Instance.Player.AllCrossSceneUnits.Where(unit => unit.Blueprint == blueprint).Take(2).ToArray();
             if (matches.Length != 1) return null;
             var unit = matches[0];
-            var state = unit.Get<UnitPartCompanion>()?.State;
-            return unit.Descriptor.IsPlayerFaction && ReferenceEquals(unit.HoldingState, Game.Instance.Player.CrossSceneState)
-                && (state == CompanionState.InParty || state == CompanionState.Remote) ? unit : null;
+            return IsRetained(unit.Descriptor.IsPlayerFaction, ReferenceEquals(unit.HoldingState, Game.Instance.Player.CrossSceneState),
+                unit.Get<UnitPartCompanion>()?.State) ? unit : null;
         }
+
+        // The retained-companion rule, apart from the live Game so a managed fixture can check it: a player-faction unit
+        // held in the cross-scene state whose companion roster is InParty or Remote. A companion who dies in the party
+        // stays InParty (SeelahNotInParty_Dead is CompanionInParty with MatchWhenDead), so her dead body is retained.
+        internal static bool IsRetained(bool playerFaction, bool crossScene, CompanionState? state)
+            => playerFaction && crossScene && (state == CompanionState.InParty || state == CompanionState.Remote);
+
+        internal static RecoveryStatus Status(UnitEntityData unit, CompanionState state) => new RecoveryStatus
+        {
+            UnitId = unit.UniqueId, Roster = (int)state, Eligible = true,
+            Dead = unit.State.IsDead || unit.State.IsFinallyDead, Conscious = unit.State.IsConscious
+        };
 
         internal static bool CanRevive(BlueprintUnit blueprint) => Inspect(blueprint).Dead;
 
@@ -42,12 +53,7 @@ namespace Tirabade
         internal static RecoveryStatus Inspect(BlueprintUnit blueprint)
         {
             var unit = FindRetainedCompanion(blueprint);
-            return unit == null ? new RecoveryStatus() : new RecoveryStatus
-            {
-                UnitId = unit.UniqueId, Roster = (int)unit.Get<UnitPartCompanion>()!.State,
-                Eligible = true, Dead = unit.State.IsDead || unit.State.IsFinallyDead,
-                Conscious = unit.State.IsConscious
-            };
+            return unit == null ? new RecoveryStatus() : Status(unit, unit.Get<UnitPartCompanion>()!.State);
         }
 
         internal static bool TryRevive(string id, BlueprintUnit blueprint, Scene scene, Choice choice, out string message)

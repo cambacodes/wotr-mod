@@ -132,7 +132,7 @@ hub("seelah.trickster.in_party.lift_lesson", "One lift, never on anyone who need
 
 letter("seelah.trickster.dead.pickpocket", "The dead thief's purse", [
     nar("bier", '''{n}The chaplain of the Drezen chapel stands over the bier with a bowl of diamond dust that is not full, and a rite he cannot finish with it.{/n}
-"Before she stands trial, Commander. After that, nothing comes back. That is the one rule every priest agrees on."
+"Before she stands trial, Commander. A soul that has stood its trial cannot be raised. After that, nothing comes back."
 {n}Seelah's purse lies beside her, its strings tied neatly by somebody who did not know her. She always tied them badly, so she could get them open fast.{/n}''',
       c("Continue", "strings", requires=(LESSON,)), c("Continue", "fumble", forbids=(LESSON,))),
     nar("strings", '''{n}You untie them the way she taught you: while apologising to her. The chaplain watches your face. Nobody watches your fingers.{/n}''',
@@ -157,7 +157,7 @@ letter("seelah.trickster.dead.pickpocket", "The dead thief's purse", [
 hub("seelah.trickster.dead.wakes", "Whatever you took", '"Seelah."', [
     s_("start", '''"You robbed my corpse."
 {n}She is sitting on the edge of the chapel cot in her shirt, turning her empty purse inside out. She laughs once, badly.{/n}
-"The worst part is I'd have done the same. Every copper I had, Commander. The gold piece was for Elan's ring. Did She let me go, or did you buy me?"''',
+"The worst part is I'd have done the same. Every copper I had, Commander. Even the gold piece, and I've carried that one since Solku without ever spending it. Did She let me go, or did you buy me?"''',
       c('"The chaplain did the work. Your purse paid for it. Mostly."', "coin", forbids=(CHAPLAIN,)),
       c('"The chaplain did the work. His chapel paid for most of it, on my word."', "coin_word", requires=(CHAPLAIN,))),
     s_("coin_word", '''"On your word." She closes her eyes. "So the whole chapel knows the Commander robbed a dead paladin and then asked the priests for credit. Wonderful. I'm going to be hearing about that at every mass until the Wound shuts."''',
@@ -287,7 +287,7 @@ tavern("seelah.trickster.after.stay_or_go", "Two notices", '"Seelah. What now?"'
 
 THRESHOLD = '''{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}
 "Ha. Got your belt. Old habits." Her breath is hot on your mouth. "Now hold still. I'm taking the rest, and this time I'm not giving it back."
-{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and pulls you down with her onto the narrow bed.{/n}'''
+{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the narrow bed. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and lowers herself onto you with a thief's grin, as if she has just got away with something.{/n}'''
 
 MORNING_NEAR = '''{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin.{/n}
 "All there. I only wanted to know how much you're worth." She stretches until her shoulders crack. "The Drezen road company can wait an hour. Iomedae forgive me, I'd do it again. Twice before breakfast, probably."'''
