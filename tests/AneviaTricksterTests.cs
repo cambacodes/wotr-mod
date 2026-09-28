@@ -135,7 +135,9 @@ internal static class AneviaTricksterTests
             ask.Times["anevia.trickster.gate_seen"] = ask.Hour - 96;
             var commitPages = new HashSet<string>();
             Program.Walk(commit, ask, (page, _) => commitPages.Add(page));
-            check(commitPages.Contains("widow_killed") && !commitPages.Contains("widow"), "The commit forgets whose sword it was.");
+            var killerOutcomes = Program.Walk(commit, ask, (page, _) => commitPages.Add(page));
+            check(commitPages.Contains("widow_killed") && commitPages.Contains("said") && !commitPages.Contains("widow"), "The commit forgets whose sword it was.");
+            check(killerOutcomes.Count(r => r.Has("anevia.committed")) == 1, "The killer reaches the commitment without saying it.");
         }
 
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.
@@ -206,6 +208,10 @@ internal static class AneviaTricksterTests
         }
         check(!Rules.Available(story, letterTwin, World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned)),
             "The letter twin opens while the gate presence can be placed.");
+        var failedAnchor = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned, "anevia.presence.failed");
+        var byPost = Program.Walk(letterTwin, Later(story, failedAnchor, 96));
+        check(byPost.Count > 0 && byPost.All(r => !r.Has("anevia.committed") && r.Has("anevia.trickster.gate_seen")),
+            "The letter twin commits by post instead of leaving it for a real door.");
 
         // Trk_Anevia_PathFailed: canon fate stands.
         var failed = World(story, 5, "trickster.was", "trickster.ever", "trickster.failed", "anevia_gone", "irabeth_dead", "closets.known");

@@ -328,9 +328,17 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
       c('[Say nothing and wait] "..."', "terms")),
     a("widow_killed", '''"I buried her in my head a hundred times on the road. Every time, it was your sword in her."
 {n}She breathes out, and it smokes in the cold.{/n}
-"I don't know what it says about me that I came back to this gate anyway. I'm not gonna pretend it doesn't say somethin'."''',
-      c('[Ask her to stay] "Stay. Not in there. Here, with me."', "terms"),
-      c('[Say nothing and wait] "..."', "terms")),
+"I don't know what it says about me that I came back to this gate anyway. I'm not gonna pretend it doesn't say somethin'."
+{n}She picks up the lantern and holds it between you, at the height of your face.{/n}
+"So before anythin' else: say it. Not 'Iz'. Not 'the dragon'. Not 'what happened'. Say what you did."''',
+      c('[Say it] "I killed her. At Iz. With my own hand."', "said"),
+      c('[Ask her to stay] "Stay. Not in there. Here, with me."', "no"),
+      c('[Say nothing and wait] "..."', "no")),
+    a("said", '''{n}The lantern does not move for a long time.{/n}
+"Nobody's said it to me like that. Everybody else says it sideways, like it's somethin' that fell on her."
+{n}She sets the lantern down on her side of the line.{/n}
+"I'm not forgivin' you. Not tonight. Maybe not ever. But you said it to my face, and I'm still standin' here, so I'd better hear the rest."''',
+      c("Continue", "terms")),
     a("share", '''"Beth asked me. Like I said she had to: to my face, in the gatehouse, with her helmet under her arm like she was reportin' a fire. I said yes. Then she went red and walked into a door."
 {n}She lets that sit.{/n}
 "So."''',
@@ -373,10 +381,15 @@ letter("anevia.trickster.gone.commit_letter", "Beth first", [
     a("share", '''"If Beth ever wants you, she asks me first. To my face. And I'll say yes: I'd rather share than bury. I'm tellin' you so you know where it stands."''',
       c("Continue", "reply")),
     nar("reply", '''{n}There is room at the bottom of the page for an answer, and nothing else.{/n}''',
-      c('[Write back: take her hand] "Your call, Nevi. I\'ll wait at whatever door you name."',
-        flags=("anevia.committed", GATE, TERMS)),
-      c('[Write back: kiss the page] "I\'m knocking. See?"', requires=(I_RET,), flags=("anevia.committed", GATE, TERMS)),
+      c('[Write back: take her hand] "Your call, Nevi. I\'ll wait at whatever door you name."', "later",
+        flags=(GATE, TERMS)),
+      c('[Write back: kiss the page] "I\'m knocking. See?"', "later", requires=(I_RET,), flags=(GATE, TERMS)),
       c('[Write back: let her go] "Then I\'ll learn to knock."', flags=(DECLINED, GATE))),
+    a("later", '''{n}Her answer comes back folded small, three lines in the plain hand.{/n}
+"Good. Not by post, though. I'm not sayin' yes to a piece of paper.
+When this is over, find a real door and knock on it. I'll be on the other side.
+Don't make me wait too long. I'm a spy, not a saint."''',
+      c('"A real door."')),
 ], requires=("trickster.ever", RETURNED, "anevia.presence.failed"),
    forbids=("anevia.committed", DECLINED, "anevia.trickster.gone.gate", "anevia.trickster.gone.commit"), delay=96)
 
