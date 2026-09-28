@@ -174252,7 +174252,7 @@
         {
           "Id": "terms",
           "Speaker": "Areelu",
-          "Text": "{n}She looks at you the way she looks at the Wound: from a great height, and very closely.{/n}\n\"If you burn, I keep the wound. For study.\" {n}Her hand of smoke gestures at your chest, where the old wound from Kenabres has never quite closed.{/n} \"I told you in Alushinyrra that it was my mistake. I do not leave my mistakes to strangers.\"\n\"Those are my terms. And you are the first variable I could not predict, Commander. I intend to correct that at close range.\"",
+          "Text": "{n}She looks at you the way she looks at the Wound: from a great height, and very closely.{/n}\n\"If you burn, I keep the wound. For study.\" {n}Her hand of smoke gestures at your chest, where the old wound from Kenabres has never quite closed.{/n} \"I told you in Alushinyrra that it was my mistake. I do not leave my mistakes to strangers.\"\n\"Those are my terms. And you are the first variable I could not predict, Commander. I intend to correct that, by measurement, before Threshold.\"",
           "Choices": [
             {
               "Text": "[Name your stake] \"You stake what is left of you. I stake my wound. Whoever burns at Threshold pays up.\"",
@@ -175530,6 +175530,98 @@
       "ReturnText": "{n}Areelu waits, bleeding, for your answer.{/n}"
     },
     {
+      "Id": "areelu.trickster.wager.collect",
+      "Title": "Into the cauldron",
+      "Owner": "Areelu",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Take out the soul cauldron] \"Time to collect the stake.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Areelu",
+          "Text": "{n}Areelu looks at the crystal in your hands: the Council's soul cauldron, a diamond in a gold cradle, made to draw the essence of another plane.{/n}\n\"The Council's toy.\" {n}She understands before you say it; she always does.{/n} \"What is left of me is my work, we said. The graft is work. It is the essence of another plane, sewn into a Sarkorian woman's soul, and that thing was made to drink exactly that.\"\n\"You mean to take the Abyss out of me with a trinket, here, before you choose.\"",
+          "Choices": [
+            {
+              "Text": "[Collect the stake] \"Whoever burns pays up. Pay into this.\"",
+              "Next": "drawn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "[Put the cauldron away.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "drawn",
+          "Speaker": "Areelu",
+          "Text": "{n}You set the cradle against the wound above her heart. For a moment nothing happens. Then the violet light comes out of her like blood from a cut: slowly, then all at once, pouring into the diamond until it glows like a small, furious star.{/n}\n{n}She does not scream until the end. When it comes, it is the sound of something a century old being unstitched. The crimson goes out of her eyes. She stays on her feet, because she refuses to do anything else.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "after",
+          "Speaker": "Areelu",
+          "Text": "\"There.\" {n}Her voice is a woman's voice now, hoarse and very tired, and nothing moves in the shadows when she speaks.{/n}\n\"The cauldron holds a life's worth of the Abyss. If you mean to use it to open your rifts, use it. It will not need mine.\" {n}She looks at her own hands, and they are shaking, and she lets them.{/n} \"It hurts, Commander. I had forgotten that anything could.\"",
+          "Choices": [
+            {
+              "Text": "[Turn to the final choice.]",
+              "Next": null,
+              "Set": [
+                "areelu.trickster.graft_drawn"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.wager_struck",
+        "areelu.trickster.stake_named",
+        "council.cauldron_given"
+      ],
+      "Forbids": [
+        "areelu.trickster.graft_drawn",
+        "areelu.closed",
+        "areelu.trickster.stake_only",
+        "areelu.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "areelu",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "f56a69dc64a48b14096a557697f43f2a"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}Areelu waits, bleeding, for your answer.{/n}"
+    },
+    {
       "Id": "areelu.trickster.wager.raised",
       "Title": "A longitudinal experiment",
       "Owner": "Areelu",
@@ -175555,7 +175647,7 @@
               "Abort": false
             },
             {
-              "Text": "[Raise the stakes] \"If neither of us burns, you keep studying me. At close range. For the rest of your thirty years.\"",
+              "Text": "[Raise the stakes on your late terms] \"Keep your terms. If neither of us burns, you keep studying me, at close range, for the rest of your thirty years.\"",
               "Next": "late_raise",
               "Set": [],
               "Requires": [
@@ -175807,7 +175899,7 @@
         {
           "Id": "her_choice",
           "Speaker": "Areelu",
-          "Text": "{n}For a moment she is silent, and you can see her calculate it, as she has calculated everything for a century.{/n}\n\"If neither of us burns, I spend what is left of me studying you, at close range, until I understand how you did it. And you spend it being studied.\"\n\"That is not a romance, Commander. It is a longitudinal experiment.\" {n}A pause.{/n} \"Very well. I accept.\"",
+          "Text": "{n}For a moment she is silent, and you can see her calculate it, as she has calculated everything for a century.{/n}\n\"You have me beaten, and you are bargaining instead of cutting. At Iz you bet when you could have struck. In my cell you shook hands with a ghost. At the gate you asked about terms.\" {n}She wipes the blood from her mouth.{/n} \"I have stopped calling it weakness. I have no word for it yet. I would like the time to find one.\"\n\"If neither of us burns, I spend what is left of me studying you, at close range, until I understand how you did it. And you spend it being studied.\"\n\"That is not a romance, Commander. It is a longitudinal experiment.\" {n}A pause.{/n} \"Very well. I accept.\"",
           "Choices": [
             {
               "Text": "[Shake on it] \"Then it's settled.\"",
@@ -176171,7 +176263,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The report on the experiment called Areelu Vorlesh should have ended at Threshold, where it began.{/n}",
+          "Text": "{n}The report on the experiment called Areelu Vorlesh should have ended at Threshold, where it began: with the siphon bursting, and its sparks dragging her to the edge of the rift, and her life spent to open the new rifts, exactly as the Commander's joke required.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176185,84 +176277,23 @@
           "Portrait": "Areelu",
           "Paragraphs": [
             {
-              "Text": "Her life was spent to open the new rifts, exactly as the Commander's joke required, and with it burned...",
-              "Requires": [
-                "areelu.sacrifice_trickster"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "She fell under the Commander's blade in the heart of the fortress, and with her fell...",
-              "Requires": [
-                "areelu.dead_fight"
-              ],
-              "Forbids": [
-                "areelu.sacrifice_trickster"
-              ],
-              "AnyGroups": []
-            },
-            {
-              "Text": "She burned at last, as the witch-hunters of Threshold had always meant her to, and with her burned...",
-              "Requires": [],
-              "Forbids": [
-                "areelu.sacrifice_trickster",
-                "areelu.dead_fight"
-              ],
-              "AnyGroups": [
-                [
-                  "areelu.incinerated",
-                  "areelu.sacrifice_wound",
-                  "areelu.sacrifice_before"
-                ]
-              ]
-            },
-            {
-              "Text": "Fine. Then how about this: what burned was a century of notes. The graft, the soul research, the Nahyndrian ledgers, every page she had ever written in that prison. The wager had said that whoever burned at Threshold would pay up with what was left of them, and she had agreed, in front of a witness, what that was: her work. She had always held people to the terms they chose. The terms held her.",
+              "Text": "Fine. Then how about this: what the sparks dragged into the rift was the Abyss, and not the woman. An hour before, the Commander had collected her stake into the Council's soul cauldron, a vessel made to drink the essence of another plane, and the essence of another plane was what she had sewn into herself a century ago. When the siphon burst, the rift took what was in it. It took a life's worth of the Abyss, and it was satisfied.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "The graft went with the rest. She had made herself, a century ago at the edge of the rift, by knitting her own soul to the Abyss: the longest working she ever ran, and by her own definition work. The stake collected it. The stitch came undone, the Abyss went back where it came from, and what was left was a Sarkorian woman who had been born mortal and was mortal again.",
+              "Text": "The laboratories of Threshold burned in the same fire: a century of notes, the soul research, the Nahyndrian ledgers, every page she had written in that prison. She watched them go from the edge of the rift and did not try to save one. They had been part of the stake too.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
             },
             {
-              "Text": "The new rifts opened anyway, as the joke required. Whether a century of notes can pay what a life was meant to pay, or whether the rifts simply opened because the Commander had decided they would, the report does not pretend to know. It records the rifts, and the ash, and a woman who was not in the ash; and in the margin, in her hand: \"Mechanism unknown. Result confirmed. I dislike this intensely.\"",
-              "Requires": [
-                "areelu.sacrifice_trickster"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "It cost the Commander the wound. That had been her price at Threshold for letting paper burn in her place: win or lose, the Commander's wound was hers to keep, for study. She collected it the same night, with a silver probe, and it never closed again for anyone but her.",
+              "Text": "It cost the Commander the wound. That had been her price at Threshold for letting the cauldron take the Abyss in her place: win or lose, the Commander's wound was hers to keep, for study. She collected it the same night, with a silver probe, and it never closed again for anyone but her.",
               "Requires": [
                 "areelu.trickster.cost.wound_ceded"
               ],
               "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "What the Commander's blade struck down in the heart of the fortress was her last projection. She had always kept one lamp burning in another room; the Commander had seen as much in her laboratory cell, where a projection was all there had ever been to smash.",
-              "Requires": [
-                "areelu.dead_fight"
-              ],
-              "Forbids": [
-                "areelu.sacrifice_trickster"
-              ],
-              "AnyGroups": []
-            },
-            {
-              "Text": "The other room was a cell two floors below, with a lamp in it, a cot, and a woman who had not left her desk in three days. When the projection died she felt it go, as one feels a tooth drawn. By the time the Commander found the stair, the rewrite had already reached her, and the lamp had gone out, and she was sitting in the dark with ink on her hands, laughing at nothing.",
-              "Requires": [
-                "areelu.dead_fight"
-              ],
-              "Forbids": [
-                "areelu.sacrifice_trickster"
-              ],
               "AnyGroups": []
             },
             {
@@ -176307,8 +176338,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.died_at_finale",
-        "areelu.trickster.stake_named",
+        "areelu.sacrifice_trickster",
+        "areelu.trickster.graft_drawn",
         "areelu.trickster.rivalry_on_screen"
       ],
       "Forbids": [
@@ -176402,8 +176433,8 @@
       "Requires": [
         "trickster.ever",
         "areelu.trickster.wager_struck",
-        "areelu.died_at_finale",
-        "areelu.trickster.stake_named"
+        "areelu.sacrifice_trickster",
+        "areelu.trickster.graft_drawn"
       ],
       "Forbids": [
         "areelu.trickster.declined",
@@ -176428,7 +176459,7 @@
     },
     {
       "Id": "areelu.trickster.finale.unnamed",
-      "Title": "Nobody said what with",
+      "Title": "Uncollected",
       "Owner": "Epilogue",
       "MinChapter": 1,
       "MaxChapter": 99,
@@ -176437,7 +176468,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The wager said that whoever burned at Threshold would pay up. She burned, and nobody had ever said what with.{/n}\n{n}So she paid the way the hunters of Threshold had always meant her to, and the Queen's knights, and the Lady of Graves: with the only thing anybody had ever asked of her. The Commander tried, afterwards, to rewrite it. There was nothing to rewrite it with. The terms had been left open, and an open term is a term the other side fills in.{/n}\n{n}Among what was found in her cell under Threshold was a notebook with a single page written in it, dated the night of the wager: \"Subject did not name the stake. Neither did I. One of us will regret it.\" It did not say which.{/n}",
+          "Text": "{n}The wager said that whoever burned at Threshold would pay up. She burned, and the stake was never collected in time.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176448,7 +176479,49 @@
               "Abort": false
             }
           ],
-          "Portrait": "Areelu"
+          "Portrait": "Areelu",
+          "Paragraphs": [
+            {
+              "Text": "Nobody had ever said what with. An open term is a term the other side fills in, and the other side had always been the same: the hunters of Threshold, the Queen's knights, the Lady of Graves.",
+              "Requires": [],
+              "Forbids": [
+                "areelu.trickster.stake_named"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her work had been named as the stake, and nobody called it in. There is no rewriting a debt that was left on the table.",
+              "Requires": [
+                "areelu.trickster.stake_named"
+              ],
+              "Forbids": [
+                "areelu.trickster.graft_drawn"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander had taken the Abyss out of her into the cauldron, and then chose another ending for what was left. The choice was the Commander's. The report does not argue with it.",
+              "Requires": [
+                "areelu.trickster.graft_drawn"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She fell in the fight, before anyone could bargain, as she had always said one of them would.",
+              "Requires": [
+                "areelu.dead_fight"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Among what was found in her cell under Threshold was a notebook with a single page written in it, dated the night of the wager: \"Stake not yet collected. One of us will regret it.\" It did not say which.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -176457,7 +176530,7 @@
         "areelu.died_at_finale"
       ],
       "Forbids": [
-        "areelu.trickster.stake_named",
+        "areelu.trickster.survives",
         "areelu.trickster.declined",
         "areelu.trickster.stake_only",
         "areelu.closed",
@@ -178074,7 +178147,7 @@
         {
           "Id": "morning_after",
           "Speaker": "Narrator",
-          "Text": "{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}\n{n}\"The door,\" she said, when the Commander pointed out that there was now only one room and no hallway, \"was a control. The control has failed. I am told that happens, in the best experiments.\"{/n}",
+          "Text": "{n}She moved her desk into the Commander's rooms that afternoon without asking, and her notebook onto the Commander's pillow, and she did not move either of them back.{/n}\n{n}\"The door,\" she said, when the Commander pointed out that there was now only one room and no hallway, \"was a control. The control has failed. I am told that happens, in the best experiments.\"{/n}\n{n}She knew exactly who else the Commander loved; they had been in the file for years. \"Share your bed with whomever you like,\" she said, once, and only once. \"Do not bore me with the ledger. The desk stays where it is.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -180485,7 +180558,7 @@
         {
           "Id": "confront",
           "Speaker": "Narrator",
-          "Text": "{n}She saw it on the table and did not pretend.{/n}\n{n}\"Yes,\" she said. \"Every morning. I read it every morning, and every morning I put it away.\" Then: \"You are not my child, Commander. I know the difference. I knew it at Threshold and I know it better now; I have measured it. That is the difficulty. What is left of {mf|him|her} in you is not {mf|him|her}, and what would be left of you afterwards would not be you. So every morning I do the arithmetic again, and every morning the answer is: not today.\"{/n}",
+          "Text": "{n}She saw it on the table and did not pretend.{/n}\n{n}\"Yes,\" she said. \"Every morning. I read it every morning, and every morning I put it away.\" Then: \"Do not look at me as if I had confused you with my child. That is a category error, and I stopped making it at Threshold. What is left of {mf|him|her} in you is a fragment, and I intend to have it. When the method no longer costs me my only witness, and my only proof that the bet was won, I will take it. Every morning I do the arithmetic again. Every morning it says: not today.\"{/n}",
           "Choices": [
             {
               "Text": "[Burn it.]",
@@ -180721,7 +180794,7 @@
         {
           "Id": "keep",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander took her hand across the table and left the notebook between them, open.{/n}\n{n}\"You are a fool,\" said Areelu Vorlesh. She did not take her hand back. \"You will wake one morning and wonder whether today is the day the arithmetic comes out differently.\" \"Every morning.\" \"Good,\" she said. \"So will I. That is the experiment.\"{/n}",
+          "Text": "{n}The Commander left the notebook on the table between them, open, and did not touch it.{/n}\n{n}\"You are a fool,\" said Areelu Vorlesh. \"You will wake one morning and wonder whether today is the day the arithmetic comes out differently.\" \"Every morning.\" \"Good,\" she said, and drew the notebook back across the table to her own side. \"So will I. That is the experiment, and it is mine.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -181223,8 +181296,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
@@ -181277,9 +181350,9 @@
     "camellia.killed": "cf3639c5cf057034fa766dd5f421d2ed",
     "camellia.kicked_out": "6f8232943eadc914da5d60121e6ce612",
     "camellia.dead": "b02cb06ba219ef9419a1b37cad576afa",
-    "areelu.sacrifice_wound": "f455dbe5ddfbc454380ce27bc93795d5",
     "areelu.sacrifice_trickster": "29c5c64462384fa3b8aae34e4c9ebce9",
     "areelu.sacrifice_before": "2667b0fda8704432bc35ace995e8022e",
+    "areelu.sacrifice_wound": "f455dbe5ddfbc454380ce27bc93795d5",
     "areelu.incinerated": "23983059575fff749ae1446eba539260",
     "areelu.dead_fight": "936af39436c74953b43a4165bfbcc9f9",
     "areelu.ascended": "63279a971792474ba0439b9f75795a7a"
@@ -183188,8 +183261,8 @@
     ],
     "areelu.trickster.survives": [
       [
-        "areelu.died_at_finale",
-        "areelu.trickster.stake_named"
+        "areelu.sacrifice_trickster",
+        "areelu.trickster.graft_drawn"
       ],
       [
         "trickster.cheated_death"

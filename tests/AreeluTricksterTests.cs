@@ -22,6 +22,7 @@ internal static class AreeluTricksterTests
     private const string WitchBet = P + "cost.bet_with_the_witch";
     private const string Named = P + "stake_named";
     private const string WoundCeded = P + "cost.wound_ceded";
+    private const string Drawn = P + "graft_drawn";
     private const string Committed = "areelu.committed";
     private const string Started = "areelu.started";
     private const string Closed = "areelu.closed";
@@ -65,6 +66,7 @@ internal static class AreeluTricksterTests
         var late = S(P + "wager.at_threshold");
         var raised = S(P + "wager.raised");
         var lastWords = S(P + "wager.last_words");
+        var collect = S(P + "wager.collect");
         var rewrite = S(P + "finale.rewrite");
         var after = S(P + "finale.after");
         var survived = S(P + "finale.survived");
@@ -189,7 +191,15 @@ internal static class AreeluTricksterTests
         check(Available(raised, lateOut.First(r => r.Has(Struck))) && latePages.Contains("late_raise"), "The raised wager forgets the late terms.");
 
         // Finale pages: Trk_Areelu_Rewrite / _Survived / _NoWager / _Declined, the stake only and the late commit.
-        var rewriteWorld = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed, Named);
+        // The stake collected on screen: the soul cauldron takes the graft before the final choice.
+        var cauldronWorld = World(story, 6, "trickster", "trickster.ever", "council.cauldron_given", Primed, Bet, Struck, Committed, Named);
+        check(collect.ReturnToList && Available(collect, cauldronWorld) && !Available(collect, World(story, 6, "trickster.ever", Primed, Bet, Struck, Committed, Named))
+              && !Available(collect, World(story, 6, "trickster.ever", "council.cauldron_given", Primed, Bet, Struck, Committed)),
+            "The collection does not need both the soul cauldron and the named stake.");
+        var collected = Program.Walk(collect, cauldronWorld).Where(r => r.Has(collect.Id)).ToList();
+        check(collected.Count == 1 && collected[0].Has(Drawn) && collect.Nodes[0].Choices.Any(ch => ch.Mythic == "PlayerIsTrickster"),
+            "The collection does not draw the graft with a [Trickster] act.");
+        var rewriteWorld = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed, Named, Drawn);
         check(Available(rewrite, rewriteWorld) && Available(after, rewriteWorld) && !Available(survived, rewriteWorld), "Trk_Areelu_Rewrite failed.");
         check(Available(report.Single(s => s.Id.EndsWith(".grey")), rewriteWorld) && !Available(report.Single(s => s.Id.EndsWith(".graft")), rewriteWorld)
               && !Available(report.Single(s => s.Id.EndsWith(".lady")), rewriteWorld), "The rewrite path shows the witch's pages.");
@@ -198,8 +208,15 @@ internal static class AreeluTricksterTests
             "Trk_Areelu_Survived failed.");
         check(Available(report.Single(s => s.Id.EndsWith(".graft")), punchline) && !Available(report.Single(s => s.Id.EndsWith(".grey")), punchline)
               && Available(report.Single(s => s.Id.EndsWith(".lady")), punchline), "The punchline path shows the mortal's pages.");
+        // Only the Trickster finale is rewritten, and only on the collected stake; every other death keeps canon fate.
         foreach (var fate in new[] { "areelu.dead_fight", "areelu.incinerated", "areelu.sacrifice_wound", "areelu.sacrifice_before" })
-            check(Available(rewrite, World(story, 6, "trickster.ever", fate, Struck, Bet, Committed, Named)), "The rewrite ignores the fate " + fate);
+        {
+            var other = World(story, 6, "trickster.ever", fate, Struck, Bet, Committed, Named, Drawn);
+            check(!Available(rewrite, other) && Available(unnamed, other) && !report.Any(s => Available(s, other)), "Another fate is rewritten: " + fate);
+        }
+        check(!Available(rewrite, World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed, Named))
+              && Available(unnamed, World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed, Named)),
+            "A named but uncollected stake is rewritten.");
         // The failure path: the stake was never named, so there is nothing to collect in place of her life.
         var unnamedWorld = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Committed);
         check(Available(unnamed, unnamedWorld) && !Available(rewrite, unnamedWorld) && !Available(after, unnamedWorld)
@@ -210,19 +227,29 @@ internal static class AreeluTricksterTests
         check(Available(stands, declined) && !Available(rewrite, declined) && !report.Any(s => Available(s, declined)), "Trk_Areelu_Declined failed.");
         var stakeOnly = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", Struck, Bet, StakeOnly);
         check(Available(stakeOnlyPage, stakeOnly) && !Available(rewrite, stakeOnly), "The stake-only page failed.");
-        var lateCommit = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Named);
+        var lateCommit = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Named, Drawn);
         check(lateCommit.Has(P + "late_committed") && Available(rewrite, lateCommit), "The late commit (R2-6) does not reach the rewrite.");
         check(Available(ascended, World(story, 6, "trickster.ever", "areelu.ascended", Struck, Bet, Committed)), "The ascended page failed.");
         // Trk_Areelu_PriorLien (ledger row 16): the Commander burned closing the Wound; only the prior-lien page plays.
         // (iomedae.appointment_kept, Iomedae's form of this world, cannot be read until her route produces its primer.)
         var priorLien = S(P + "finale.prior_lien");
-        var burned = World(story, 6, "trickster.ever", "sacrifice", "ending.wound_closed", Struck, Bet, Committed, Named);
+        var burned = World(story, 6, "trickster.ever", "sacrifice", "ending.wound_closed", Struck, Bet, Committed, Named, Drawn);
         check(burned.Has(P + "commander_burned") && !burned.Has("trickster.cheated_death") && Available(priorLien, burned)
               && !Available(survived, burned) && !report.Any(s => Available(s, burned)), "Trk_Areelu_PriorLien failed.");
         check(!Available(priorLien, punchline) && !Available(priorLien, rewriteWorld), "The prior-lien page plays when the Commander lived.");
         check(!Available(report.Single(s => s.Id.EndsWith(".wound")), World(story, 6, "trickster.ever", "areelu.sacrifice_wound", Struck, Bet, Committed, Named)),
             "The wound page plays after the Wound was closed.");
 
+        // The intimate beat and its refusal are reachable on both survivals; the morning after follows the yes.
+        var participation = report.Single(s => s.Id.EndsWith(".participation"));
+        foreach (var world in new[] { rewriteWorld, punchline, lateCommit })
+        {
+            var visited = new HashSet<string>();
+            var ends = Program.Walk(participation, world, (node, _) => visited.Add(node));
+            check(ends.Count > 0 && visited.Contains("morning") && visited.Contains("morning_after") && visited.Contains("closed")
+                  && (world == punchline ? visited.Contains("in_witch_2") : visited.Contains("in_mortal_2")),
+                "The night, its morning after or its refusal is unreachable.");
+        }
         // Every page of the report walks to the end on both survivals without a dead end.
         foreach (var world in new[] { rewriteWorld, punchline })
             foreach (var page in pages.Where(s => Available(s, world)))
