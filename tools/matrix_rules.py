@@ -19,6 +19,12 @@ sys.path.insert(0, str(HERE))
 import rrt_verify as rv  # noqa: E402  (blueprint index, parent bindings, enum tables)
 
 GUID = re.compile(r"^[0-9a-f]{32}$")
+# Native NPC answer lists used as hosts. Fye leaves the capital (Fye_Bartender_NotInCapital 60d1237d) once the tavern is
+# lost; the quartermaster Wilcer Garms is always present but anchor hosting is the fallback only (05 ERRATA).
+DEFAULT_ANCHORS = {
+    "9b15b09c244076047b02f317e55ef5e3": {"name": "Fye", "hidden_by": "60d1237d", "fallback_only": True},
+    "3c58e83a970a0f643a88e15f2323c805": {"name": "Wilcer Garms", "fallback_only": True},
+}
 SCENE_KEYS = ("setup", "fallback_setup", "payoff", "setup_alt", "payoff_alt", "setup_c5", "foresight_setup", "primer")
 MYTHIC_PATHS = {"Aeon", "Angel", "Azata", "Demon", "Devil", "Dragon", "Legend", "Lich", "Locust", "Trickster"}
 
@@ -143,6 +149,9 @@ def validate_rules(matrix, ar, story=None):
     rels = story.get("Relationships") or {}
     bindings = matrix.get("bindings") or {}
     removable = set(matrix.get("removable_items") or [])
+    # anchor_lists: {list_guid: {name, hidden_by?: native flag that removes the NPC, fallback_only?: true}}
+    anchors = dict(DEFAULT_ANCHORS)
+    anchors.update(matrix.get("anchor_lists") or {})
     results = {}
     for c in matrix.get("characters", []):
         out = []
@@ -151,6 +160,11 @@ def validate_rules(matrix, ar, story=None):
         own_rel = rids[0] if rids else None
         overrides = dict(c.get("unavailable_overrides") or {})
         access = c.get("trickster_access") or {}
+        hub_presences = {}
+        for key in ("presences", "presences_add"):
+            v = c.get(key)
+            if isinstance(v, dict): hub_presences.update({k: x for k, x in v.items() if isinstance(x, dict)})
+        if isinstance(c.get("presence"), dict) and c["presence"].get("key"): hub_presences[c["presence"]["key"]] = c["presence"]
 
         def unavailable(rel):
             flags = set((rels.get(rel) or {}).get("UnavailableFlags") or [])
@@ -274,6 +288,30 @@ def validate_rules(matrix, ar, story=None):
                 hub = o.get("interaction_hub") or o.get("InteractionHub")
                 if rel == "nurah" and not remote and not epilogue and not (device and lists) and not (hub and rv.presence_relationship(str(hub))):
                     out.append(("FATAL", where, "physical Nurah scene outside the arrival hub must be a trickster_device on explicit answer_lists"))
+                # Attachment point (mirrors Rules.EntryTargets): a physical, non-continuation scene needs explicit answer
+                # lists or a recognised hub, else Rules.Validate throws "No dialogue attachment points" (whole mod FATAL).
+                cont = o.get("continue_before") or o.get("ContinueBefore")
+                if not remote and not epilogue and not cont:
+                    if hub:
+                        if hub == "nurah.arrival":
+                            pass
+                        elif rv.presence_relationship(str(hub)) is None:
+                            out.append(("FATAL", where, "interaction_hub %r is neither nurah.arrival nor a presence key" % hub))
+                        elif lists or inline or truthy(o, "return_to_list", "ReturnToList"):
+                            out.append(("FATAL", where, "presence-hub scene %s must have no answer_lists, native_return_cue or return_to_list" % hub))
+                        elif (hub_presences.get(hub) or {}).get("Dialog") != "hub":
+                            out.append(("FATAL", where, "interaction_hub %s names no presence of this character with Dialog: \"hub\"" % hub))
+                    elif not lists and not (rel == "tirabade" and o.get("owner") in ("Anevia", "Irabeth", "Together")):
+                        out.append(("FATAL", where, "physical scene with no attachment point: add answer_lists or an E12c interaction_hub"))
+                    # Anchor hosting: a scene whose only lists belong to a native NPC who can vanish is a dead route.
+                    if lists:
+                        hosts = [anchors.get(g) for g in lists]
+                        if all(h and h.get("hidden_by") for h in hosts):
+                            out.append(("ROUTE", where, "every answer list is a conditional anchor (%s); add a list or hub that survives it"
+                                        % ", ".join(sorted({h["name"] for h in hosts}))))
+                        elif any(h and h.get("fallback_only") for h in hosts) and not device:
+                            out.append(("WARN", where, "hosted on anchor list %s (fallback only): prefer an E12c hub" % ", ".join(
+                                sorted({h["name"] for h in hosts if h and h.get("fallback_only")}))))
                 # E14b return-to-list scenes
                 if truthy(o, "return_to_list", "ReturnToList"):
                     if inline or o.get("contact_unit") or remote or epilogue or not lists or len(set(lists)) != len(lists) or hub:
