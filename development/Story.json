@@ -168292,7 +168292,7 @@
         {
           "Id": "pyre",
           "Speaker": "Narrator",
-          "Text": "{n}A Wintersun boy finds your camp at noon, out of breath and trying not to look at anyone. The carvers have laid Gesmerha out on their own ground, among the statues she tended, with her chisels crossed on her breast and her own knife taken away. They light her pyre at dusk.{/n}\n{n}It is the carvers' custom, he says, reciting it: whoever owed the dead woman work sends something for the fire, so she does not go to her ancestors with a debt at her back. He has been sent to ask whether you owed her anything.{/n}",
+          "Text": "{n}A Wintersun boy finds your camp at noon, out of breath and trying not to look at anyone. The carvers have laid Gesmerha out on their own ground, among the statues she tended, with her chisels crossed on her breast and her own knife taken away. They light her pyre at dusk.{/n}\n{n}Her apprentices sent him, he says, reciting it. She spoke of you before the chief took her: the stranger who asked the questions nobody else would. They are putting on her fire whatever each of them owed her, so that she does not go to her ancestors short, and they want to know whether you owed her anything.{/n}",
           "Choices": [
             {
               "Text": "[Send a purse for the fire, and a message] \"Tell her the statue's not finished, carver. Nobody leaves work on the bench.\"",
@@ -168846,7 +168846,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"I have cut two things in this yard that I never touched with my eyes. I have not touched the original yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: slowly, pressing where it gives, lingering where it resists. At your collar she unlaces you by feel, without hurry, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I would not like to be the only one listening.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. The smith's boys have long gone home. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168862,7 +168862,7 @@
         {
           "Id": "morning",
           "Speaker": "Gesmerha",
-          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, running her thumb along an edge.{/n}\n\"The ancestors were quiet all night. I think they were embarrassed.\" {n}The corner of her mouth moves.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
           "Choices": [
             {
               "Text": "[Go]",
@@ -169003,7 +169003,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"I have cut two things in this yard that I never touched with my eyes. I have not touched the original yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: slowly, pressing where it gives, lingering where it resists. At your collar she unlaces you by feel, without hurry, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I would not like to be the only one listening.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. The smith's boys have long gone home. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -169019,7 +169019,7 @@
         {
           "Id": "morning",
           "Speaker": "Gesmerha",
-          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, running her thumb along an edge.{/n}\n\"The ancestors were quiet all night. I think they were embarrassed.\" {n}The corner of her mouth moves.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
           "Choices": [
             {
               "Text": "[Go]",

@@ -111,7 +111,7 @@ SCENES.append(scene(P + "dead.commission", "Paid in advance", "Gesmerha", 3,
 # 4b. The late fallback: her pyre, in Chapter 3 only (by Chapter 5 Wintersun is gone, KTC_WintersunHelp/Cue_0040).
 SCENES.append(scene(P + "dead.pyre", "The carvers' ground", "Gesmerha", 3, "", [
     nar("pyre", '''{n}A Wintersun boy finds your camp at noon, out of breath and trying not to look at anyone. The carvers have laid Gesmerha out on their own ground, among the statues she tended, with her chisels crossed on her breast and her own knife taken away. They light her pyre at dusk.{/n}
-{n}It is the carvers' custom, he says, reciting it: whoever owed the dead woman work sends something for the fire, so she does not go to her ancestors with a debt at her back. He has been sent to ask whether you owed her anything.{/n}''',
+{n}Her apprentices sent him, he says, reciting it. She spoke of you before the chief took her: the stranger who asked the questions nobody else would. They are putting on her fire whatever each of them owed her, so that she does not go to her ancestors short, and they want to know whether you owed her anything.{/n}''',
         c('[Send a purse for the fire, and a message] "Tell her the statue\'s not finished, carver. Nobody leaves work on the bench."',
           mythic="Trickster", crusade=("Finances", -300), alignment=("Chaotic", 1), flags=(PRIMED, LATE, LAUGHED)),
         c('"I owed her nothing. Let them burn her. She chose it."', flags=(CLOSED,))),
@@ -170,12 +170,12 @@ in_yard(P + "returned.yard", "The smith's yard", '"Gesmerha."', [
 
 # The commit night (heat up to the cut; the cut lands at the start of the act) and the morning after.
 NIGHT = '''{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}
-"I have cut two things in this yard that I never touched with my eyes. I have not touched the original yet. Stand still. You are good at that now."
-{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: slowly, pressing where it gives, lingering where it resists. At your collar she unlaces you by feel, without hurry, and lays her palm flat over your heart to count it.{/n}
-"Fast. Good. I would not like to be the only one listening."
-{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. The smith's boys have long gone home. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}'''
-MORNING = '''{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, running her thumb along an edge.{/n}
-"The ancestors were quiet all night. I think they were embarrassed." {n}The corner of her mouth moves.{/n} "Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate."'''
+"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now."
+{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}
+"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it."
+{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}'''
+MORNING = '''{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}
+"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it." {n}The corner of her mouth moves; she does not stop cutting.{/n} "Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate."'''
 
 in_yard(P + "returned.bench", "What comes after", '"You said to ask you when it was finished."', [
     nar("start", '''{n}Late. The forge is banked and the yard is dark except for a lamp she does not need and has lit for you.{/n}''',
