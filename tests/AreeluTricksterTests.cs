@@ -69,8 +69,9 @@ internal static class AreeluTricksterTests
         var stakeOnlyPage = S(P + "finale.stake_only");
         var stands = S(P + "finale.report_stands");
         var ascended = S(P + "finale.ascended");
-        var report = new[] { "rooms", "hunters", "grey", "graft", "sarkoris", "participation", "wound", "crossroads", "cult",
-                             "lady", "visitors", "promise" }.Select(id => S(P + "report." + id)).ToArray();
+        var report = new[] { "rooms", "hunters", "grey", "graft", "sarkoris", "participation", "wound", "crossroads", "prison",
+                             "cult", "incursion", "dagger", "lady", "visitors", "name", "promise", "afterword" }
+            .Select(id => S(P + "report." + id)).ToArray();
         var nenio = S(P + "react.nenio_two_drafts");
         var ember = S(P + "react.ember_regret");
         var ours = story.Scenes.Where(s => s.Relationship == "areelu").ToList();

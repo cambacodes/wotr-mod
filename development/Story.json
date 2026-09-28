@@ -173258,7 +173258,7 @@
         {
           "Id": "debts",
           "Speaker": "Areelu",
-          "Text": "\"Everyone who has ever owed me something said the same. Most of them are in the Wound now.\" {n}She does not raise her voice. She has never needed to.{/n}\n\"But I will allow that you have been difficult to collect.\"",
+          "Text": "\"Everyone who has ever owed me something said the same. Most of them are in the Wound now.\" {n}She does not raise her voice. She has never needed to.{/n}\n\"But I will allow that you have been difficult to collect.\" {n}She gestures, very slightly, at the dead city around you.{/n} \"Iz owed me once, too. Look how thoroughly it paid.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -173450,6 +173450,35 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"Why would you give your enemy a window into your study?\"",
+              "Next": "window",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "window",
+          "Speaker": "Areelu",
+          "Text": "\"I did not give it to you. You picked it up out of the ruins of Iz, where I dropped it while I was warning you about Deskari's trap, which you did not thank me for either.\"\n{n}A pause.{/n} \"And a window works both ways, Commander. Every time you look through it, you tell me something: when you are awake, when you are alone, how long you can bear to look at me before you put me away. I have learned more about you from how you hold this glass than from a year of notes.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the lens.]",
+              "Next": null,
+              "Set": [
+                "areelu.trickster.primed",
+                "areelu.trickster.rivalry.lens",
+                "areelu.trickster.cost.late",
+                "areelu.trickster.lens_held"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Areelu"
@@ -173535,6 +173564,30 @@
             {
               "Text": "[Joke] \"Your handwriting is terrible. Is that the Abyss, or just you?\"",
               "Next": "script",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Breathe on the glass and write] \"Show me your face.\"",
+              "Next": "face",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "face",
+          "Speaker": "Areelu",
+          "Text": "{n}The frost clears completely. For one long moment the glass shows you nothing but a desk, a lamp, and the edge of a sleeve. Then the sleeve moves, and the lamp is turned, deliberately, so that the light falls away from whoever is sitting there.{/n}\n\"No.\" {n}The letters form slowly this time.{/n} \"You have seen my face at Iz, and in Alushinyrra, and you will see it again at Threshold. Here you may have my hand. It is the part of me that has done the most damage. It seems fair that it is the part you should watch.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "knocked",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -173643,6 +173696,30 @@
             {
               "Text": "\"Because you'll be there.\"",
               "Next": "there",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because I've already died once. It didn't take.\"",
+              "Next": "died",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "died",
+          "Speaker": "Areelu",
+          "Text": "\"Many times. I have watched them all.\" {n}The letters come faster, as if she had been waiting to say this.{/n}\n\"In Kenabres, in the crevice, twice. In Drezen, once, very nearly. You do not stay dead, Commander. That is not courage. It is a property, like the boiling point of water, and I would very much like to know who set it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "second",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -173942,6 +174019,30 @@
               "Requires": [
                 "fool_king.ever_crowned"
               ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"What's the last thing you watched me do, before I asked?\"",
+              "Next": "last",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "last",
+          "Speaker": "Areelu",
+          "Text": "\"Sleep.\" {n}The letters come at once.{/n}\n\"You sleep on your left side, with one hand under the pillow, as if something might be taken from under it in the night. You talk, sometimes. Last night you said 'neither' twice, and something I could not read, and then you laughed.\"\n\"I have watched a great many people sleep, Commander, for a great many reasons. You are the first who laughed. I wrote it down. I did not know under which heading.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bait",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -174478,6 +174579,35 @@
               "Forbids": [],
               "Abort": false,
               "NativeNext": "13e9433101b3586488df88c296d91ed2"
+            },
+            {
+              "Text": "[Put your hand into the light where hers should be.]",
+              "Next": "into",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "into",
+          "Speaker": "Areelu",
+          "Text": "{n}Your hand passes into the projection up to the wrist. There is nothing there: only a faint cold, like putting your hand into a stream in early spring, and the hum of the device in your bones.{/n}\n{n}She does not move. She looks down at your hand inside hers, and for a long moment her face is perfectly unreadable.{/n}\n\"You are the first person who has ever done that,\" she says at last. \"The others struck at it, or wept at it, or smashed the device. You shook hands with a ghost to seal a bet. I will remember it. I remember everything that is done to me.\"",
+          "Choices": [
+            {
+              "Text": "\"Until Threshold.\"",
+              "Next": null,
+              "Set": [
+                "areelu.trickster.wager_struck",
+                "areelu.started",
+                "areelu.trickster.cost.bet_with_the_witch"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "13e9433101b3586488df88c296d91ed2"
             }
           ],
           "Portrait": "Areelu"
@@ -174614,7 +174744,7 @@
         {
           "Id": "lose",
           "Speaker": "Areelu",
-          "Text": "\"Nobody comes to Threshold to lose. Everyone who ever came here meant to win: the hunters, the jailers, the knights of every crusade, and I.\"\n{n}She glances up at the black walls, and something in her face is almost fond.{/n} \"The prison kept all of us. It will keep whichever of us burns.\"",
+          "Text": "\"Nobody comes to Threshold to lose. Everyone who ever came here meant to win: the hunters, the jailers, the knights of every crusade, and I.\"\n{n}She glances up at the black walls, and something in her face is almost fond.{/n} \"The prison kept all of us. It will keep whichever of us burns.\"\n\"I built my door out of its stones, Commander. Every wall you pass inside was once a wall that held me. Look at them as you go. I would like somebody, once, to look.\"",
           "Choices": [
             {
               "Text": "\"See you inside.\"",
@@ -174694,6 +174824,31 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Whatever you burn today, I hope it's the paperwork.\"",
+              "Next": "paperwork",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "paperwork",
+          "Speaker": "Areelu",
+          "Text": "{n}For a moment you think you have misjudged it badly. Her face goes perfectly still.{/n}\n\"The paperwork.\" {n}Then something in her mouth gives, very slightly.{/n} \"A hundred years of it. Calculations on walls, on skin, on the backs of death warrants. If you could burn only that, Commander, and leave the rest of me standing, you would be the first person in history to settle an argument with the Abyss by losing its files.\"\n\"Do not look so pleased. It was not a compliment. It was a hypothesis.\"",
+          "Choices": [
+            {
+              "Text": "[Let her go on.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "NativeNext": "6c39117f5ee77c34681c4cee77de75b8"
             }
           ],
           "Portrait": "Areelu"
@@ -174821,6 +174976,30 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Joke] \"If I win, can I keep your notes? As a souvenir.\"",
+              "Next": "souvenir",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "souvenir",
+          "Speaker": "Areelu",
+          "Text": "\"A souvenir.\" {n}She says it as though tasting something she has never been offered before and does not trust.{/n}\n\"A century of the most dangerous research ever done on Golarion, bound in the skins of things you do not want to know about, and you would put it on a shelf beside a seashell.\" \"No. If you win, my notes burn with me. Nobody will ever read them. That is not spite. It is the only kindness I know how to do the world.\"",
+          "Choices": [
+            {
+              "Text": "\"And if neither of us burns?\"",
+              "Next": "neither",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Areelu"
@@ -174916,7 +175095,7 @@
         {
           "Id": "after",
           "Speaker": "Areelu",
-          "Text": "\"After.\" {n}She repeats the word as if it belonged to a language she used to speak, a long time ago.{/n}\n\"Very well. I will ask you after. One of us will be there to answer.\"",
+          "Text": "\"After.\" {n}She repeats the word as if it belonged to a language she used to speak, a long time ago.{/n}\n\"Very well. I will ask you after. One of us will be there to answer.\"\n{n}She turns back to the violet flames, and adds, without looking at you, so quietly that you almost miss it:{/n} \"I find that I would like it to be both.\"",
           "Choices": [
             {
               "Text": "[Let her turn back to the rift.]",
@@ -175219,6 +175398,50 @@
           "Id": "worse",
           "Speaker": "Areelu",
           "Text": "\"Because you came late, and I have never rewarded lateness. Because I am bleeding and you are not.\"\n{n}She presses her palm to the wound, looks at the blood on it with professional detachment, and wipes it on her robe.{/n}\n\"And because the only thing I have left to wager is my name. I will not stake that on a clown who could not find my cell.\"",
+          "Choices": [
+            {
+              "Text": "[Take her terms] \"You stake what is left of you. I stake my wound. Whoever burns at Threshold pays up.\"",
+              "Next": null,
+              "Set": [
+                "areelu.trickster.wager_struck",
+                "areelu.started",
+                "areelu.trickster.cost.bet_with_the_witch",
+                "areelu.trickster.cost.late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Refuse] \"No bets with you.\"",
+              "Next": null,
+              "Set": [
+                "areelu.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Your name? What would I do with your name?\"",
+              "Next": "name",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "name",
+          "Speaker": "Areelu",
+          "Text": "\"Nothing. That is the point.\" {n}She laughs, and it turns into a cough.{/n}\n\"Everyone who has ever wanted my name wanted it for a gallows or a chronicle. Mendev would burn it. Sarkoris's ghosts would curse it. Your crusade would carve it over a door so that people could spit as they passed.\"\n\"If I burn, you keep none of it. It goes into the fire with me, and nobody has it, and that is the only mercy I am prepared to show you. Take the terms, or leave them.\"",
           "Choices": [
             {
               "Text": "[Take her terms] \"You stake what is left of you. I stake my wound. Whoever burns at Threshold pays up.\"",
@@ -175700,7 +175923,7 @@
         {
           "Id": "start",
           "Speaker": "Nenio",
-          "Text": "\"I have written two drafts of the Architect's entry for my encyclopaedia.\" {n}Nenio holds up two sheets, one in each hand, like a scale.{/n}\n\"One says 'deceased'. The other says 'bankrupt'. I will publish whichever one your joke makes true.\"\n{n}She lowers them, and her ears flatten a little.{/n} \"I have also left a third sheet blank. I do not like the third sheet.\"",
+          "Text": "\"I have written two drafts of the Architect's entry for my encyclopaedia.\" {n}Nenio holds up two sheets, one in each hand, like a scale.{/n}\n\"One says 'deceased'. The other says 'bankrupt'. I will publish whichever one your joke makes true.\"\n{n}She lowers them, and her ears flatten a little.{/n} \"I have also left a third sheet blank. I do not like the third sheet. It is the only entry in the whole encyclopaedia that I cannot finish by research.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -175742,7 +175965,7 @@
         {
           "Id": "start",
           "Speaker": "Ember",
-          "Text": "\"You made a bet with the sad lady.\" {n}Ember twists a strand of her hair around one finger, thinking hard.{/n}\n\"If she loses, will she be sad? She said she doesn't remember what regret feels like.\"\n\"I don't think she forgot it. I think she just forgot where she put it. That happens to me with shoes.\"",
+          "Text": "\"You made a bet with the sad lady.\" {n}Ember twists a strand of her hair around one finger, thinking hard.{/n}\n\"If she loses, will she be sad? She said she doesn't remember what regret feels like.\"\n\"I don't think she forgot it. I think she just forgot where she put it. That happens to me with shoes.\"\n\"If you win, will you help her look? I think it would be nice if somebody helped her look.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -175845,6 +176068,16 @@
               "AnyGroups": []
             },
             {
+              "Text": "The other room was a cell two floors below, with a lamp in it, a cot, and a woman who had not left her desk in three days. When the projection died she felt it go, as one feels a tooth drawn. By the time the Commander found the stair, the rewrite had already reached her, and the lamp had gone out, and she was sitting in the dark with ink on her hands, laughing at nothing.",
+              "Requires": [
+                "areelu.dead_fight"
+              ],
+              "Forbids": [
+                "areelu.sacrifice_trickster"
+              ],
+              "AnyGroups": []
+            },
+            {
               "Text": "It cost her the stake she had put on the table herself. The Commander had come late to the wager, and had agreed to worse terms: whatever burned, the Commander was to keep nothing of hers. The Commander kept nothing. She kept the rest.",
               "Requires": [
                 "areelu.trickster.cost.late"
@@ -175871,6 +176104,12 @@
               "Requires": [
                 "areelu.trickster.real_hand_asked"
               ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She did not look back at Threshold. The Commander did, once, and saw the smoke go up from the place where a century of her work was burning, and understood, too late to say so, that this was the fire the hunters had wanted all along, and that the joke had given it to them, and that she knew.",
+              "Requires": [],
               "Forbids": [],
               "AnyGroups": []
             }
@@ -175948,6 +176187,14 @@
             {
               "Text": "She did not sleep the first night. She sat by the window of the Commander's lodging with a borrowed pen and wrote, from memory, the first page of the report she had been writing all her life, the one the Commander's joke had burned. Then she tore it up. \"Wrong,\" she said. \"All of it. I shall have to start again. You have given me a great deal of work.\"",
               "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The late terms had promised the Commander nothing of hers if she burned. She held the Commander to them with great precision for the rest of her life: the Commander was never once allowed to keep a page she had written, and every note she left on the Commander's pillow was taken back by breakfast.",
+              "Requires": [
+                "areelu.trickster.cost.late"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -176050,6 +176297,12 @@
               "Requires": [
                 "areelu.trickster.lens_held"
               ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander, as the report records with some irritation, fell asleep in a chair before she was halfway through, and she burned the rest by the light of the Commander's snoring. \"The subject,\" she wrote, \"does not know how to watch a thing end. That is either why it won, or how.\"",
+              "Requires": [],
               "Forbids": [],
               "AnyGroups": []
             }
@@ -176273,6 +176526,30 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Make her laugh.]",
+              "Next": "laugh",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "laugh",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander tried. A joke about the Worldwound, which she corrected. A joke about Deskari, which she improved. A face, which she recorded. Then, at last, out of nowhere, a very old and very stupid joke about a paladin, a demon and a goat, which had no business working on anyone.{/n}\n{n}She did not laugh. She put her pen down, very carefully, and pressed the back of her wrist against her mouth, and her shoulders shook for almost a minute. \"That,\" she said, when she could, \"is inadmissible. It proves nothing. Do it again tomorrow, under controlled conditions.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Areelu"
@@ -176487,6 +176764,30 @@
           "Id": "scarecrow_after",
           "Speaker": "Narrator",
           "Text": "{n}Areelu read of the burning in a Mendevian broadsheet and laughed until she had to sit down. It was the first time the Commander had heard her laugh as though she meant it. It did not last.{/n}\n{n}\"They burned a doll and went home satisfied. That is all they ever wanted, Commander. Not the witch. The fire.\" She folded the broadsheet very small and put it inside her notebook. \"I will keep this. It is the most accurate thing anyone in Mendev has ever written about me.\"{/n}",
+          "Choices": [
+            {
+              "Text": "\"Do you want to know what the note said?\"",
+              "Next": "note_said",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "note_said",
+          "Speaker": "Narrator",
+          "Text": "{n}\"No.\" She did not look up from the broadsheet. \"I know what it said. It said the same thing you said to me at Iz.\"{/n}\n{n}\"Neither,\" said Areelu Vorlesh, and for a moment she sounded almost fond. \"You pinned it to a straw woman and let Mendev burn it. That is the most romantic thing anyone has ever done in my presence, and it happened three days' ride away, to a doll. I suppose that is the only way it could have happened.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176772,7 +177073,7 @@
         {
           "Id": "healer",
           "Speaker": "Narrator",
-          "Text": "{n}The healer the Commander found was a priest of the Lady of Graves, because that was who was awake at that hour.{/n}\n{n}Areelu opened her eyes, saw the grey robe and the spiral at his throat, and laughed so hard she started coughing and could not stop. \"Take him away,\" she managed, at last. \"Pay him. Pay him double. But if he touches me I will live another thirty years out of spite, and he can explain that to his goddess.\"{/n}",
+          "Text": "{n}The healer the Commander found was a priest of the Lady of Graves, because that was who was awake at that hour.{/n}\n{n}Areelu opened her eyes, saw the grey robe and the spiral at his throat, and laughed so hard she started coughing and could not stop. \"Take him away,\" she managed, at last. \"Pay him. Pay him double. But if he touches me I will live another thirty years out of spite, and he can explain that to his goddess.\"{/n}\n{n}The priest, to his credit, did not leave at once. He looked at her for a long moment, and then at the Commander, and said only: \"She will live. The Lady has told me nothing about this house, and I have learned not to ask.\" He took his double fee and went, and she laughed about him for a week.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176804,7 +177105,7 @@
         {
           "Id": "after",
           "Speaker": "Narrator",
-          "Text": "{n}The fever broke on the third day. She got up, looked at herself in the mirror for a long time, and found her first white hair.{/n}\n{n}She did not pull it out. She measured it, and labelled it, and pinned it into the notebook under a heading in her small neat hand: \"Observer: onset of senescence. Cause: subject.\" Then she went back to work.{/n}",
+          "Text": "{n}The fever broke on the third day. She got up, looked at herself in the mirror for a long time, and found her first white hair.{/n}\n{n}For the rest of that winter she let the Commander write the notebook for her in the evenings, while her hand recovered, and corrected every line aloud.{/n}\n{n}\"There,\" she said, to the mirror. \"The laws of a world governed by death, weakness and separation. I spent a century at war with them. Now I shall have to live under them, like everyone I despised.\" She turned to the Commander. \"Do not apologise. I would despise you for that too.\"{/n}\n{n}She did not pull it out. She measured it, and labelled it, and pinned it into the notebook under a heading in her small neat hand: \"Observer: onset of senescence. Cause: subject.\" Then she went back to work.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -176906,6 +177207,30 @@
             {
               "Text": "\"I have one too. You put it there.\"",
               "Next": "mine",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"What does it say, when it calls?\"",
+              "Next": "says",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "says",
+          "Speaker": "Narrator",
+          "Text": "{n}\"That I was right.\" She did not look away from the north. \"That everything I did was correct, and there is more to do, and I am wasting the Abyss in me on a kitchen and a notebook and a Commander who makes jokes.\"{/n}\n{n}\"It is not wrong,\" she said. \"That is what makes it difficult. It has never once lied to me. It simply does not understand why I have stopped listening, and neither, some nights, do I.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Stand beside her, and do not answer either.]",
+              "Next": "stand",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -177214,7 +177539,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}She never spoke of the clan roll again. But from that year on she wrote her notes in Sarkorian, which she had not done since Threshold.{/n}",
+          "Text": "{n}She never spoke of the clan roll again. But from that year on she wrote her notes in Sarkorian, which she had not done since Threshold.{/n}\n{n}Once, much later, the Commander asked her why. She thought about it for a long time. \"Because somebody should still be writing in it,\" she said at last, \"and the ones who had the right are in the Wound. It is not an apology. It is a language. I will not let the last person who writes it be a clerk in Mendev.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177299,6 +177624,14 @@
               "Abort": false
             },
             {
+              "Text": "\"Is that what you want? Not what you're measuring. What you want.\"",
+              "Next": "want",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
               "Text": "[Close the door gently between you.]",
               "Next": "closed",
               "Set": [],
@@ -177357,6 +177690,42 @@
             {
               "Text": "Continue",
               "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "want",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Want.\" She said the word as if it were a specimen someone had handed her without gloves.{/n}\n{n}\"I have wanted exactly two things in my life,\" she said. \"One of them is in the Abyss, and the other is standing in front of me asking stupid questions in its nightclothes. I have measured the second one for eight years, Commander. I would like to stop measuring it, for one night, and see what it is like without the instruments.\" She did not look away. \"That is what I want. Now let me in, or tell me no. I will not ask a second time.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her in.]",
+              "Next": "in_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her in.]",
+              "Next": "in_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her no, gently.]",
+              "Next": "closed",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -177454,7 +177823,7 @@
         {
           "Id": "closed",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander closed the door gently between them.{/n}\n{n}Through the wood, after a long moment, came a dry sound that might have been a laugh. \"Subject declined,\" said Areelu Vorlesh. \"Noted.\" Her footsteps went back across the hall.{/n}\n{n}She did not knock again that winter, and she did not seem, in the mornings, to hold it against anyone. She only wrote more.{/n}",
+          "Text": "{n}The Commander closed the door gently between them.{/n}\n{n}Through the wood, after a long moment, came a dry sound that might have been a laugh. \"Subject declined,\" said Areelu Vorlesh. \"Noted.\" Her footsteps went back across the hall.{/n}\n{n}She did not knock again that winter, and she did not seem, in the mornings, to hold it against anyone. She only wrote more.{/n}\n{n}In the spring she knocked once more, very late, and when the Commander opened the door she only said: \"The hypothesis has been revised. I wished to inform you in person.\" Then she went back across the hall. The Commander never found out to what.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -177670,6 +178039,30 @@
               "Forbids": [],
               "Abort": false
             },
+            {
+              "Text": "\"How long can you keep doing this?\"",
+              "Next": "how_long",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Sleep.]",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "how_long",
+          "Speaker": "Narrator",
+          "Text": "{n}\"As long as I have hands.\" She held them up: ink-stained, mortal, beginning very slightly to spot with age. \"Thirty years, you said at Threshold. You were generous. The Wound will not wait politely for me to die of old age.\"{/n}\n{n}\"So I will write it down. Every stitch, every paste, every hour. When my hands stop, someone else's will have to start, and they will have my notes. It is the first thing I have ever written to be read by somebody I will not live to see.\"{/n}",
+          "Choices": [
             {
               "Text": "[Sleep.]",
               "Next": "end",
@@ -177900,6 +178293,50 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "buy_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "buy_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "buy_mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}On the ride home she was silent for an hour, and then said, to the road: \"I could not have written the real one now. I corrected it by memory. The rewrite took the rest.\" She looked at her ink-stained fingers. \"That forger has more of my work in his stall than I have in my head. I find that I do not mind as much as I expected. Write that down; I want to know, in ten years, whether it was true.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "buy_witch",
+          "Speaker": "Narrator",
+          "Text": "{n}The stallholder took the leaf back, and looked at the corrections, and looked up at the woman who had made them, and saw something in her crimson eyes that made him sit down very suddenly on his own stock.{/n}\n{n}\"He knows,\" the Commander said, on the ride home. \"Yes,\" said Areelu. \"He will sell twice as many, and never say why, and tell his grandchildren on his deathbed. That is the kind of fame I prefer, Commander: the kind that is too frightened to speak.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "end",
               "Set": [],
               "Requires": [],
@@ -177955,7 +178392,25 @@
               "Abort": false
             }
           ],
-          "Portrait": "Areelu"
+          "Portrait": "Areelu",
+          "Paragraphs": [
+            {
+              "Text": "She rode home in silence with her hands in her lap, and did not once look back at the rift. It was the first time in a hundred years she had turned her back on it without being forced to.",
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She rode home with the wound above her heart burning violet under her collar the whole way, and did not once touch it. The Commander asked, at the gate, whether it hurt. \"It recognised me,\" she said. \"Even if the rift did not. That is worse.\"",
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -177994,6 +178449,208 @@
       "EpilogueAfter": "scene:areelu.trickster.report.wound"
     },
     {
+      "Id": "areelu.trickster.report.prison",
+      "Title": "The report: the prison",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}In the autumn of the sixth year she went back to Threshold.{/n}\n{n}Not to the fortress the crusade had broken, but to the prison under it: the cells where Sarkoris had kept its mages, where she had been kept, and from which she had slipped away at night to the demiplane where she first decided to open the Wound. The Commander went with her, because she did not ask.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow her down to her old cell.]",
+              "Next": "cell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Ask to see where she used to slip away.]",
+              "Next": "away",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Do you want me to lock the door behind you? For old times' sake.\"",
+              "Next": "lock",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Wait at the top of the stairs.]",
+              "Next": "wait",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "lock",
+          "Speaker": "Narrator",
+          "Text": "{n}She stopped on the stair and looked back, and for a moment the Commander thought the joke had gone too far.{/n}\n{n}\"Yes,\" she said. \"Do. I want to see whether I can still get out.\" Then, before the Commander could decide whether she meant it: \"No. I have been locked in by better jailers than you, Commander. Come down. I want a witness.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "wait",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander waited at the top of the stairs for an hour, and then another, while the torchlight below moved from cell to cell and stopped.{/n}\n{n}When she came up at last, there was dust on her knees and her face was perfectly composed. \"You should have come down,\" she said. \"It was very instructive. I have decided that I do not need to see it again. I needed to see it once, with somebody waiting at the top.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "away",
+          "Speaker": "Narrator",
+          "Text": "{n}She took the Commander to a place in the wall of the third corridor that looked like every other place in the wall, and pressed two stones, and nothing happened.{/n}\n{n}\"It is closed,\" she said. \"The door to my demiplane. It was never more than a crack, and I was the only one who could see it. When you broke the fortress, the crack went with it.\" She stood with her palm flat on the stone for a long time. \"Good. There is nothing left in there that I want. There never was. That was the whole problem.\" Then she took the Commander down to her cell.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "cell",
+          "Speaker": "Narrator",
+          "Text": "{n}Her cell was smaller than the Commander had imagined: a stone shelf for a bed, a slit for a window, and on the wall, scratched into the stone so faintly that the Commander would never have seen it without her lamp, rows and rows of tiny marks.{/n}\n{n}\"Calculations,\" she said. \"I had no paper. I had no ink. I had a nail, and the wall, and a great deal of time. Most of what the world calls the Worldwound was worked out on this wall.\" She laid her palm flat against the marks. \"They whitewashed it once. I did it all again, from memory, in a week.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cell_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "cell_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "cell_mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}\"I cannot read half of it now,\" she said, and it was the only time the Commander ever heard her say she could not do something. \"The rewrite took the parts of me that could. I know what it says, the way you know a song you have forgotten the words to. I know it was right.\"{/n}\n{n}She took the Commander's hand and put it on the wall beside hers. \"There. Now you have touched the only honest thing I ever wrote. Everything since was only an application.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "cell_witch",
+          "Speaker": "Narrator",
+          "Text": "{n}She read the wall aloud, quickly, the way a scholar reads a proof she has checked a hundred times: numbers, and the names of planes, and the words of a ritual that made the lamp gutter and the Commander's old wound throb in answer.{/n}\n{n}Halfway through she stopped. \"No,\" she said. \"Not here. Not with you listening.\" She took her hand off the wall. \"I kept every promise I made in this cell. I did not promise to repeat myself. Come. We are finished here.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}On the way out she stopped at the gate of the prison, where the hunters of Threshold had once brought her in chains, and looked at it for a long time. Then she took out her notebook, and wrote something, and tore the page out, and left it wedged in the gate for whoever came next. The Commander never learned what it said.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.wager_struck",
+        "areelu.trickster.rivalry_on_screen"
+      ],
+      "Forbids": [
+        "areelu.trickster.declined",
+        "areelu.trickster.stake_only",
+        "areelu.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu",
+      "RequiresAnyGroups": [
+        [
+          "areelu.committed",
+          "areelu.trickster.late_committed"
+        ],
+        [
+          "areelu.died_at_finale",
+          "trickster.cheated_death"
+        ]
+      ],
+      "ForbidOverrides": {
+        "areelu.trickster.declined": "areelu.committed"
+      },
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "scene:areelu.trickster.report.crossroads"
+    },
+    {
       "Id": "areelu.trickster.report.cult",
       "Title": "The report: old masters",
       "Owner": "Epilogue",
@@ -178017,6 +178674,14 @@
             {
               "Text": "[Ask what they want from her, before anyone draws a knife.]",
               "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Look for who else is watching.]",
+              "Next": "watchers",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -178206,6 +178871,34 @@
           "Portrait": "Areelu"
         },
         {
+          "Id": "watchers",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander looked past the cultists at the door, to the far end of the street, and found what Areelu had already found: a figure in a horned hood, very still, who had not come with the Locust Lord's people and was not leaving with them.{/n}\n{n}\"Baphomet's,\" she said quietly. \"He sends a watcher whenever Deskari sends a knife. They have been doing it to each other for a thousand years. I used to find it amusing.\" She did not take her eyes off the cultists. \"Tonight I find it useful. Whatever I do to these, the watcher will carry home. Let us give him a good story.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "deal_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "deal_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
           "Id": "end",
           "Speaker": "Narrator",
           "Text": "{n}The swarm did not come back. Neither did Baphomet's people, who had been watching from further off, and who drew their own conclusions from what they had seen. Her name went back into the dark it had come from, with a warning written under it.{/n}",
@@ -178249,7 +178942,513 @@
         "areelu.trickster.declined": "areelu.committed"
       },
       "EpilogueSequence": "PlayerFinalChoice",
-      "EpilogueAfter": "scene:areelu.trickster.report.crossroads"
+      "EpilogueAfter": "scene:areelu.trickster.report.prison"
+    },
+    {
+      "Id": "areelu.trickster.report.incursion",
+      "Title": "The report: the incursion",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}In the seventh summer something came up out of the open Wound that the angels and the demons at its edges had both missed, and it came south.{/n}\n{n}It came as a swarm: locusts the size of dogs, and under them something larger that moved like weather. By the time the bells rang in the town where the Commander and the Architect lived, it was a day away, and the garrison was forty spears and a captain who had never seen a demon.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "plan_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "plan_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "plan_mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}She had no magic. She had something the captain had never had: a century of watching Deskari's children eat the world.{/n}\n{n}She took over the captain's table without asking and drew the swarm for him on the back of a map, faster than he could follow: how it would come, where it would split, what it would eat first and why, and which bell tower it would go round rather than over. \"It is not clever,\" she told him. \"It is hungry. Hunger is predictable. I should know.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Joke] \"And what's my part in this? Bait?\"",
+              "Next": "bait",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Do exactly as she says.]",
+              "Next": "obey",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Change one thing in her plan.]",
+              "Next": "change",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "plan_witch",
+          "Speaker": "Narrator",
+          "Text": "{n}She stood at the top of the bell tower in the hot wind and watched it come, and the Commander watched her watch it, and neither of them said what they were both thinking: that she could call it off, or turn it, or make it hers.{/n}\n{n}\"I could,\" she said, without looking round. \"It would take a word. Deskari would hear the word, and he would know where I am, and he would never stop sending things like this until the town was a crater. Or I could fight it the slow way, with you, and nobody in the Abyss would ever know I was here.\"{/n}",
+          "Choices": [
+            {
+              "Text": "\"The slow way.\"",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Say the word. We'll deal with Deskari when he comes.\"",
+              "Next": "word",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Or we could just move. I hear Absalom is nice this time of year.\"",
+              "Next": "absalom",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "bait",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Yes,\" she said, without looking up from the map. \"Obviously. It has been hunting you since Kenabres; it can smell what I put in your soul. You will stand in the square and be the most interesting thing it has ever seen, and while it looks at you, the captain will do his job.\"{/n}\n{n}She glanced up. \"You asked. You always ask, and then you do it anyway. I have eight years of notes on it.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "held",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "obey",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander did exactly as she said: every bell, every barricade, every bucket of pitch where she marked it. The captain looked at the Commander of the Fifth Crusade taking orders from a grey-haired woman with ink on her hands, and decided, wisely, not to ask.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "held",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "change",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander moved one barricade. Only one: the one she had put across the road to the orphans' hall, which left the hall outside the line.{/n}\n{n}She saw it at once. For a moment the old Areelu looked out of her face, the one who had calculated Sarkoris and found it an acceptable loss. \"That costs you the east wall,\" she said. \"It is the wrong trade.\" The Commander did not move it back. She looked at the Commander for a long time, and then she redrew the whole east side of the plan in ten minutes, and made it work.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "held",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "held",
+          "Speaker": "Narrator",
+          "Text": "{n}It held. Not easily: the swarm came at dusk exactly where she had said, split exactly where she had said, and went round the bell tower exactly as she had said, and forty spears and a frightened captain killed it in the dark while the Commander stood in the square and was interesting.{/n}\n{n}In the morning she walked the line with a notebook, counting the dead locusts, the dead men, the burnt houses, and wrote the numbers down. They were smaller than they should have been. She checked them twice.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "slow",
+          "Speaker": "Narrator",
+          "Text": "{n}They did it the slow way: with bells, and pitch, and the garrison's forty spears, and the Architect of the Worldwound on the bell tower picking out the largest of the things with small, precise workings that looked, from the ground, like nothing at all, and left nothing where they touched.{/n}\n{n}Nobody in the town ever knew what she had done. That was the point. Deskari never learned where she was.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "word",
+          "Speaker": "Narrator",
+          "Text": "{n}She said the word.{/n}\n{n}The swarm stopped in the air a mile from the walls, all at once, like a held breath, and then turned, all at once, and went back north the way it had come. The garrison cheered. She did not. \"He heard,\" she said. \"He knows where I am now, and that I spoke to his children, and that they listened. You have bought one summer, Commander, and paid for it with every summer after. I hope it was worth it.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "word_after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "word_after",
+          "Speaker": "Narrator",
+          "Text": "{n}They moved house that autumn, and twice more in the years after, each time a little ahead of something coming south. She never complained about it. She kept a map of the moves in the back of the notebook, with a date beside each, and a note at the bottom: \"Price of one summer, paid in instalments. Acceptable.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "absalom",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Absalom.\" She turned, and for a moment she was genuinely, openly appalled. \"A city of forty thousand priests, all of whom would recognise me. No.\" And then, because the joke had done what the Commander meant it to, and broken whatever had been tightening in her: \"The slow way, then. Fetch the captain. And stop looking at me as if I might say the word. I might. Keep talking.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "slow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Entry, the seventh summer: \"Incursion from the Wound. Repelled. Losses within tolerance. Observer's contribution not recorded, by the observer's request.\" Beneath it, in the laughing hand: \"She was magnificent. She will cross this out.\" She did not.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.wager_struck",
+        "areelu.trickster.rivalry_on_screen"
+      ],
+      "Forbids": [
+        "areelu.trickster.declined",
+        "areelu.trickster.stake_only",
+        "areelu.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu",
+      "RequiresAnyGroups": [
+        [
+          "areelu.committed",
+          "areelu.trickster.late_committed"
+        ],
+        [
+          "areelu.died_at_finale",
+          "trickster.cheated_death"
+        ],
+        [
+          "ending.trickster",
+          "ending.trickster_allplanes",
+          "ending.trickster_allplanes_fw",
+          "ending.trickster_full"
+        ]
+      ],
+      "ForbidOverrides": {
+        "areelu.trickster.declined": "areelu.committed"
+      },
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "scene:areelu.trickster.report.cult"
+    },
+    {
+      "Id": "areelu.trickster.report.dagger",
+      "Title": "The report: the dagger",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}In the eighth spring she asked for the dagger.{/n}\n{n}In Kenabres she had left the Commander a weapon made from the freshly shed blood of Deskari himself: the first crystal ever drawn from a living demon lord, and the proof that it could be done. The Commander still had it. She knew exactly where.{/n}",
+          "Choices": [
+            {
+              "Text": "[Give it to her.]",
+              "Next": "give",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Why now?\"",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"Finders keepers.\"",
+              "Next": "keepers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"I've been using it to open letters.\"",
+              "Next": "letters",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "letters",
+          "Speaker": "Narrator",
+          "Text": "{n}She closed her eyes for a moment, the way she did when a calculation came out wrong in a way she found personally insulting.{/n}\n{n}\"The first Nahyndrian crystal ever drawn from the blood of a living demon lord,\" she said. \"A century of work. The proof that the laws of the Abyss could be broken. And you have been opening your correspondence with it.\" She opened her eyes. \"Give it to me before you use it to butter bread. I know you. You were going to.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "give",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "keepers",
+          "Speaker": "Narrator",
+          "Text": "{n}\"I left it for you to find,\" she said. \"That is not the same thing as giving it to you. Read the terms, Commander. You taught me that.\"{/n}\n{n}She held out her hand, and waited, and did not blink, and after a while the Commander found that it was easier to give her the dagger than to go on being looked at like that.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "give",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "why",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Because it is the last of my work that is still in the world,\" she said. \"The notes are ash. The ledgers are ash. The crystals are spent, or buried, or in the hands of fools. That is all that is left, and it is in your boot.\"{/n}\n{n}\"I want to see whether I still know how it was made. That is all. I have not decided what I want after that.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Give it to her.]",
+              "Next": "give",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep it.]",
+              "Next": "keep",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "give",
+          "Speaker": "Narrator",
+          "Text": "{n}She turned it over in her hands for a long time, the way the Commander had seen her handle the Commander's own drawings of hands: as a thing she had made and did not entirely trust.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "give_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "give_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "give_mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}\"It is only a knife now,\" she said at last. \"To me. I can see the work in it and I cannot feel it. You did that, with your pun.\" She laid it on the table between them. \"Keep it. It is yours. It always was; I only made it.\"{/n}\n{n}She never asked for it again. But the Commander noticed, over the years, that she always knew which room it was in.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "give_witch",
+          "Speaker": "Narrator",
+          "Text": "{n}The blade woke in her hand. The Commander felt it across the room: a low, eager hum, like a swarm heard through a wall, and her crimson eyes went bright with something that was not quite hunger and not quite memory.{/n}\n{n}Then she put it down. \"Yes,\" she said. \"I still know how. That is all I wanted to know.\" She pushed it back across the table with one finger. \"Take it away. Put it somewhere I do not know. I would like, for once, not to know something.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "keep",
+          "Speaker": "Narrator",
+          "Text": "{n}\"Very well,\" she said, and did not argue, which was worse than arguing.{/n}\n{n}Three nights later the Commander woke to find her sitting on the end of the bed in the dark, with the dagger across her knees, looking at it. She had not taken it out of its sheath. \"I only wanted to hold it,\" she said. \"I have held it. Go back to sleep.\" In the morning it was back in the Commander's boot, and she did not mention it again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Entry, the eighth spring: \"Examined the first Nahyndrian blade. Method recalled. Method not used. Subject retains custody.\" And, beneath it, smaller: \"Subject would have given it back. That is the problem with the subject.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.wager_struck",
+        "areelu.trickster.rivalry_on_screen"
+      ],
+      "Forbids": [
+        "areelu.trickster.declined",
+        "areelu.trickster.stake_only",
+        "areelu.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu",
+      "RequiresAnyGroups": [
+        [
+          "areelu.committed",
+          "areelu.trickster.late_committed"
+        ],
+        [
+          "areelu.died_at_finale",
+          "trickster.cheated_death"
+        ]
+      ],
+      "ForbidOverrides": {
+        "areelu.trickster.declined": "areelu.committed"
+      },
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "scene:areelu.trickster.report.incursion"
     },
     {
       "Id": "areelu.trickster.report.lady",
@@ -178262,7 +179461,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}In the eighth year a grey bird came to the window and did not leave.{/n}\n{n}It was not a bird. It sat on the sill for three days without eating, and looked at the Commander with one eye and then the other, and on the third evening it spoke. \"The Lady of Graves keeps an appointment book,\" it said, in a voice like pages turning. \"The Commander's appointment is overdue. The Lady does not hurry. She does, eventually, collect.\"{/n}",
+          "Text": "{n}In the autumn of the eighth year a grey bird came to the window and did not leave.{/n}\n{n}It was not a bird. It sat on the sill for three days without eating, and looked at the Commander with one eye and then the other, and on the third evening it spoke. \"The Lady of Graves keeps an appointment book,\" it said, in a voice like pages turning. \"The Commander's appointment is overdue. The Lady does not hurry. She does, eventually, collect.\"{/n}",
           "Choices": [
             {
               "Text": "[Joke] \"Tell her I've been meaning to reschedule.\"",
@@ -178327,6 +179526,50 @@
           "Id": "answer",
           "Speaker": "Narrator",
           "Text": "{n}\"The Commander's wound is mine,\" said Areelu Vorlesh, to the bird. \"I won it in a wager at Threshold, in front of witnesses, and I hold it for study. Your Lady has the first claim on every soul, and I have never disputed it. I dispute nothing now. But the wound is not the soul, and the wound is what is killing the Commander, and the wound is mine.\"{/n}\n{n}\"If your Lady wishes to collect, she may take up the matter with me.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ledger_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "ledger_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "ledger_mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}She said it with no power behind it at all: a grey-haired mortal woman at a kitchen table, arguing with a psychopomp as if it were a notary who had misfiled a deed. She cited precedents. She cited the wager, clause by clause, from memory. She cited, the Commander was fairly sure, three rulings of the Boneyard's own courts that no living mortal should have known.{/n}\n{n}The bird listened to all of it without blinking. When she stopped, it said, \"You have no magic.\" \"No,\" said Areelu. \"I have arithmetic. Your Lady has always respected arithmetic.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ledger",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "ledger_witch",
+          "Speaker": "Narrator",
+          "Text": "{n}She said it quietly, but the lamp on the table burned violet while she spoke, and the shadows in the corners of the kitchen leaned toward the window as if to hear better. The wound above her heart was glowing. She did not threaten the bird. She did not need to; the Abyss in her voice did it for her.{/n}\n{n}The bird listened without blinking. When she stopped, it said, \"You are still half of what you made.\" \"Yes,\" said Areelu. \"And the other half has read your Lady's books. Both halves are waiting for an answer.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -178422,6 +179665,22 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
+          "Text": "{n}That night the Commander asked her what she had done. She did not pretend not to understand. \"I have tied my page to yours,\" she said. \"When the Lady comes for you, she will have to come for both of us, and she will have to argue with me first, and I have been preparing that argument for a hundred years.\"{/n}\n{n}\"You think it is a gift. It is not a gift. It is the only lawsuit I have ever been able to file against her, and you are the evidence.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "entry",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "entry",
+          "Speaker": "Narrator",
           "Text": "{n}Entry, the eighth year, underlined: \"Price agreed. Collection deferred. Both names on the page.\" And beneath it, in a hand the Commander did not recognise and would not have wished to: \"Noted.\"{/n}",
           "Choices": [
             {
@@ -178466,7 +179725,7 @@
         "areelu.trickster.declined": "areelu.committed"
       },
       "EpilogueSequence": "PlayerFinalChoice",
-      "EpilogueAfter": "scene:areelu.trickster.report.cult"
+      "EpilogueAfter": "scene:areelu.trickster.report.dagger"
     },
     {
       "Id": "areelu.trickster.report.visitors",
@@ -178526,6 +179785,14 @@
               "Abort": false
             },
             {
+              "Text": "[Let the girl with the drum in.]",
+              "Next": "drum",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
               "Text": "[Close the door on the curious.]",
               "Next": "shut",
               "Set": [],
@@ -178556,6 +179823,50 @@
           "Id": "nenio_after",
           "Speaker": "Narrator",
           "Text": "{n}They argued until three in the morning about the classification of planar wounds, and neither of them conceded a single point, and the Commander fell asleep in a chair listening to them.{/n}\n{n}When Nenio finally left, Areelu stood in the doorway watching the kitsune go down the street with her folio clutched to her chest. \"She is wrong about nearly everything,\" she said. \"Invite her back.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "nenio_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "nenio_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "nenio_mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}Nenio came back every year after that, with a new list of questions and a new pair of calipers, and measured the Architect's ageing as carefully as Areelu measured it herself. They compared notes. Areelu's were better. Nenio's were funnier. Neither of them ever admitted either.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "nenio_witch",
+          "Speaker": "Narrator",
+          "Text": "{n}Nenio came back every year after that, and every year asked to measure the wound above Areelu's heart, and every year was refused. On the ninth visit Areelu let her, for exactly one minute, by the sand-glass. Nenio wrote for six hours afterwards and would not show anyone what, and Areelu, for once, did not ask.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -178635,7 +179946,39 @@
         {
           "Id": "knight",
           "Speaker": "Narrator",
-          "Text": "{n}He had fought at the edge of the Worldwound for forty years, he said, and he had never once seen the face of the woman who made it. He did not want to hurt her. He was too old. He only wanted to look.{/n}\n{n}Areelu let him. She sat very straight at the kitchen table and let him look for as long as he liked, and did not look away. When he had finished, he said, \"You're smaller than I thought.\" \"Everyone is,\" said Areelu Vorlesh, \"close to.\" He laughed, which surprised them all, and went.{/n}",
+          "Text": "{n}He had fought at the edge of the Worldwound for forty years, he said, and he had never once seen the face of the woman who made it. He did not want to hurt her. He was too old. He only wanted to look.{/n}\n{n}Areelu let him. She sat very straight at the kitchen table and let him look for as long as he liked, and did not look away. When he had finished, he said, \"You're smaller than I thought.\" \"Everyone is,\" said Areelu Vorlesh, \"close to.\" He laughed, which surprised them all, and went.{/n}\n{n}\"Forty years,\" she said, when the door had closed. \"He was eighteen when he came to the Wound, and he is sixty now, and every year in between belongs to me. He did not even want to hit me.\" She sat very still. \"I would have preferred it if he had.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "drum",
+          "Speaker": "Narrator",
+          "Text": "{n}She was perhaps fifteen, Sarkorian by her braids, and she carried a spirit drum that was far too old for her. She had come, she said, from the camps. The god-caller who had taught her was dead. Nobody else would teach her the old calls, because nobody else remembered them.{/n}\n{n}\"Except you,\" she said to Areelu. \"They say you were one of us, before.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "drum_after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "drum_after",
+          "Speaker": "Narrator",
+          "Text": "{n}Areelu looked at the drum for a long time. Then she said, \"No. I will not teach you. What I would teach you would not be the old calls. It would be mine.\" She wrote a list on a sheet of paper, fast, in Sarkorian: names of spirits, of places, of words the girl might still find in the camps if she asked the oldest people there. \"Go and ask them. Not me.\"{/n}\n{n}The girl went. Areelu did not watch her go. The Commander did, and saw her stop at the corner, and unfold the list, and start, very softly, to beat the drum.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -178711,6 +180054,140 @@
       "EpilogueAfter": "scene:areelu.trickster.report.lady"
     },
     {
+      "Id": "areelu.trickster.report.name",
+      "Title": "The report: a name",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}In the ninth winter she said a name in her sleep.{/n}\n{n}It was not the Commander's name. It was short, and old, and Sarkorian, and she said it the way people say a name they have said ten thousand times into the dark, without expecting an answer. Then she woke, and saw the Commander's face, and knew at once that it had been heard.{/n}",
+          "Choices": [
+            {
+              "Text": "[Ask whose name it was.]",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing, and let her go back to sleep.]",
+              "Next": "nothing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say the name back to her, softly.]",
+              "Next": "back",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Narrator",
+          "Text": "{n}\"You know whose.\" She sat up, and pulled the blanket around her shoulders, and did not look at the Commander.{/n}\n{n}\"You have heard me call {mf|him|her} my child at Threshold, and my {mf|son|daughter}, and the one I promised. You have never heard the name, and you never will, from me. It is the only thing I have that the Wound did not take and the Abyss did not touch and the Lady of Graves does not keep in her book.\" Her voice did not waver. \"It is not yours. I am sorry. It is the only thing I will ever be sorry about, and it is not yours.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "nothing",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander said nothing. After a long time she lay down again, with her back to the Commander, very straight.{/n}\n{n}Near dawn her hand found the Commander's in the dark, and held it, hard, the way she had held it at Threshold. Neither of them mentioned it in the morning. The entry for that night, when the Commander looked later, was a single blank line, ruled very carefully, as if something were meant to be written on it and never had been.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "back",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander said the name back to her, softly, once.{/n}\n{n}She went white to the lips. For a moment the Commander saw in her face exactly what the hunters must have seen, a hundred years ago, when they turned from the door and found her there. Then it passed. \"Never,\" she said, very quietly, \"do that again.\" And then, after a long time, even more quietly: \"You said it wrong. The second sound is softer. Nobody has said it aloud in a hundred years but me.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The name does not appear anywhere in the report. Scholars who have searched for it have found only a single place, in the ninth winter, where a word has been written and scraped away so thoroughly that the knife went through the page.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.wager_struck",
+        "areelu.trickster.rivalry_on_screen"
+      ],
+      "Forbids": [
+        "areelu.trickster.declined",
+        "areelu.trickster.stake_only",
+        "areelu.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu",
+      "RequiresAnyGroups": [
+        [
+          "areelu.committed",
+          "areelu.trickster.late_committed"
+        ],
+        [
+          "areelu.died_at_finale",
+          "trickster.cheated_death"
+        ]
+      ],
+      "ForbidOverrides": {
+        "areelu.trickster.declined": "areelu.committed"
+      },
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "scene:areelu.trickster.report.visitors"
+    },
+    {
       "Id": "areelu.trickster.report.promise",
       "Title": "The report: the promise",
       "Owner": "Epilogue",
@@ -178721,7 +180198,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}In the ninth year the Commander found the other notebook.{/n}\n{n}It was hidden where she hid nothing else: inside the one she wrote in every day, cut into the binding. Its pages were dated from the first week after Threshold. They were about the Commander's soul, and about what was left in it of a child who had died in a house in Sarkoris a century before the Commander was born.{/n}",
+          "Text": "{n}In the spring after that winter, the Commander found the other notebook.{/n}\n{n}It was hidden where she hid nothing else: inside the one she wrote in every day, cut into the binding. Its pages were dated from the first week after Threshold. They were about the Commander's soul, and about what was left in it of a child who had died in a house in Sarkoris a century before the Commander was born.{/n}",
           "Choices": [
             {
               "Text": "[Put it on the table between you, and wait.]",
@@ -178849,7 +180326,7 @@
         {
           "Id": "back",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander put the notebook back inside the binding, exactly as it had been, and said nothing.{/n}\n{n}She knew, of course. She had been measuring the Commander for longer than the Commander had been alive; she knew the weight of a book that had been opened. That evening she set out two cups instead of one, and did not explain.{/n}\n{n}\"You read it.\" \"I read it.\" \"And you put it back.\" She wrote something down, very small. \"That is the second thing about you that I did not predict. I am running out of room in the margins.\"{/n}",
+          "Text": "{n}The Commander put the notebook back inside the binding, exactly as it had been, and said nothing.{/n}\n{n}She knew, of course. She had been measuring the Commander for longer than the Commander had been alive; she knew the weight of a book that had been opened. That evening she set out two cups instead of one, and did not explain.{/n}\n{n}\"You read it.\" \"I read it.\" \"And you put it back.\" She wrote something down, very small. \"That is the second thing about you that I did not predict. I am running out of room in the margins.\"{/n}\n{n}\"What was the first?\" asked the Commander. She did not look up. \"Iz,\" she said. \"You bet on neither. Nobody has ever bet on neither. They all bet on me, or against me.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -178901,6 +180378,50 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "burned_mortal",
+              "Set": [],
+              "Requires": [
+                "areelu.died_at_finale"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "burned_witch",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "burned_mortal",
+          "Speaker": "Narrator",
+          "Text": "{n}The last of the letters came in a hand so unsteady that the Commander did not recognise it at first: an old woman's hand, spotted with ink, pressing too hard. It said only, \"Still correct. Still not today.\" There was no address. The Commander never learned whether \"not today\" had been about the notebook, or about something else, and supposed, in the end, that it had been about both.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "burned_witch",
+          "Speaker": "Narrator",
+          "Text": "{n}The last of the letters came up out of the ground, one winter night, through the floor of the Commander's study, written in frost on the inside of a window that faced nowhere. \"Still correct,\" it said. \"Still watching. Do not look for me. I have gone somewhere the Lady keeps no pages, to see whether it is true.\" The frost melted before morning. The Commander copied it out before it did.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -178913,7 +180434,7 @@
         {
           "Id": "join",
           "Speaker": "Narrator",
-          "Text": "{n}\"Together.\" She said the word as if testing whether it would bear weight.{/n}\n{n}\"Not a prank. A claim. A Trickster and the Architect, pleading a child's soul before the court that sent {mf|him|her} into the Abyss.\" For the first time in nine years she smiled with her whole face, and it was a terrible thing to see. \"Yes. Oh, yes. They will never have heard anything like it.\"{/n}",
+          "Text": "{n}\"Together.\" She said the word as if testing whether it would bear weight.{/n}\n{n}\"Not a prank. A claim, priced and argued, the way the Lady's own clerks argue. A Trickster and the Architect, pleading a child's soul before the court that sent {mf|him|her} into the Abyss.\" For the first time in nine years she smiled with her whole face, and it was a terrible thing to see. \"Yes. Oh, yes. They will never have heard anything like it.\"{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -178929,7 +180450,7 @@
         {
           "Id": "filed",
           "Speaker": "Narrator",
-          "Text": "{n}They spent the rest of her years on it. What they built, and what they bargained, and what it cost the two of them, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand.{/n}\n{n}The last line of the report is in two hands. The first, small and neat: \"The case is filed.\" The second, which seems to be laughing even on paper: \"The bet is still open.\"{/n}",
+          "Text": "{n}They spent the rest of her years on it. What they built, and what they bargained, and what it cost the two of them, the report does not say; those pages are missing, and whoever took them out did it with a very steady hand.{/n}\n{n}The last line of the report is in two hands. The first, small and neat: \"The case is filed.\" The second, which seems to be laughing even on paper: \"The bet is still open.\"{/n}\n{n}It is said in certain temples of the Lady of Graves that there is one petition on her docket that has been waiting longer than any other, and that it is signed twice, and that the clerks draw straws each year to decide who must read it again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -179002,7 +180523,101 @@
         "areelu.trickster.declined": "areelu.committed"
       },
       "EpilogueSequence": "PlayerFinalChoice",
-      "EpilogueAfter": "scene:areelu.trickster.report.visitors"
+      "EpilogueAfter": "scene:areelu.trickster.report.name"
+    },
+    {
+      "Id": "areelu.trickster.report.afterword",
+      "Title": "Afterword, in another hand",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The report ends where it ends. But on the inside of its back cover, in a hand that is not hers, someone has written a note of their own, and she did not cross it out.{/n}\n{n}\"For the record, since the observer never allowed it into the text: the subject knew, at Iz, when the bet was made. Not how it would end. Only that it would be worth it.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Add a line of your own.]",
+              "Next": "line",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the cover as it is.]",
+              "Next": "leave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "line",
+          "Speaker": "Narrator",
+          "Text": "{n}There is one more line beneath it, added later, in the same laughing hand: \"Neither. Told you so.\"{/n}\n{n}And beneath that, in her small neat hand, the last thing she ever wrote in any of her notebooks, which is not an observation, and not a correction, and not a measurement of anything at all: \"Yes.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        },
+        {
+          "Id": "leave",
+          "Speaker": "Narrator",
+          "Text": "{n}The Commander left the cover as it was. Nobody has added anything since.{/n}\n{n}Scholars who have handled the report say that the back cover is worn smooth in one place, as if someone had rested a thumb there, often, for many years: over the words \"worth it\".{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Areelu"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "areelu.trickster.wager_struck",
+        "areelu.trickster.rivalry_on_screen"
+      ],
+      "Forbids": [
+        "areelu.trickster.declined",
+        "areelu.trickster.stake_only",
+        "areelu.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "areelu",
+      "RequiresAnyGroups": [
+        [
+          "areelu.committed",
+          "areelu.trickster.late_committed"
+        ],
+        [
+          "areelu.died_at_finale",
+          "trickster.cheated_death"
+        ]
+      ],
+      "ForbidOverrides": {
+        "areelu.trickster.declined": "areelu.committed"
+      },
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "scene:areelu.trickster.report.promise"
     },
     {
       "Id": "areelu.trickster.finale.stake_only",
@@ -179048,6 +180663,14 @@
               "Text": "The Commander had asked for the stake and nothing more, and had got exactly that. Years later a scholar asked the Commander what the Architect had been like, close to. The Commander thought about it for a long time and said: punctual.",
               "Requires": [],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The cart of notes the Commander never opened. It sat in a locked cellar for the rest of the Commander's life and was burned, unread, at the Commander's own instruction, afterwards: the one stake in the whole wager that nobody collected.",
+              "Requires": [],
+              "Forbids": [
+                "areelu.died_at_finale"
+              ],
               "AnyGroups": []
             }
           ]
@@ -179291,8 +180914,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
