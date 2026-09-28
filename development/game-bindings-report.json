@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-areelu\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1768,
-  "unique_targets": 455,
+  "binding_uses": 1819,
+  "unique_targets": 488,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -370,6 +370,18 @@
       "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0025.jbp",
       "type": "BlueprintCue"
     },
+    "199a940b97b11664aace4101733cd963": {
+      "path": "World/Dialogs/c4/Palace/Audience_Areelu/AnswersList_0030.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "f6c5054ceccd00046b23f1ead6af0a83": {
+      "path": "World/Dialogs/c4/Palace/Audience_Areelu/Answer_0031.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "46603da28aa69bf49840cd15040e82f5": {
+      "path": "World/Dialogs/c4/Palace/Audience_Areelu/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
     "19786fae9c29f9d439e374bb857c2e84": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Jerribeth_Velexia/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -446,6 +458,34 @@
       "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0100.jbp",
       "type": "BlueprintCue"
     },
+    "74989c07fc5fd8a42b18b333dc40acc1": {
+      "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "0853df779fb798c4dbf2d6e106674170": {
+      "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Answer_0013.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "f0d826fb7b99a1e4c9e23e46534a2993": {
+      "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Answer_0014.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "9c9655606788f8b4cb039e48b2739c25": {
+      "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Answer_0015.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "3d63aae9686620845acc8be95e490c26": {
+      "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Cue_0035.jbp",
+      "type": "BlueprintCue"
+    },
+    "a4b8a109874919c4cba9cef817ec148c": {
+      "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Cue_0037.jbp",
+      "type": "BlueprintCue"
+    },
+    "13e9433101b3586488df88c296d91ed2": {
+      "path": "World/Dialogs/c5/AreeluLabAgain/AreeluCell/Cue_0038.jbp",
+      "type": "BlueprintCue"
+    },
     "1543b97943fa553469f25be07210c868": {
       "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0003.jbp",
       "type": "BlueprintCue"
@@ -461,6 +501,22 @@
     "b9d78ba896d19b14aa6c371dda617979": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/Answer_0008.jbp",
       "type": "BlueprintAnswer"
+    },
+    "09b8d5eb5dae3634d9dc3d8c7bdd6e9d": {
+      "path": "World/Dialogs/c5/Iz/AreeluIntro/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "0a43d63cf3c964c42869c0394d93dc18": {
+      "path": "World/Dialogs/c5/Iz/AreeluIntro/AreeluIntro_c5_Iz_dialog.jbp",
+      "type": "BlueprintDialog"
+    },
+    "c000ae3d47250b943953b1bd25333f30": {
+      "path": "World/Dialogs/c5/Iz/AreeluIntro/Cue_0009.jbp",
+      "type": "BlueprintCue"
+    },
+    "f4eee511a0c0f9e4cace9e0ced47bfba": {
+      "path": "World/Dialogs/c5/Iz/AreeluIntro/Cue_0014.jbp",
+      "type": "BlueprintCue"
     },
     "09b65ca563cc63141aebf70b7abe7270": {
       "path": "World/Dialogs/c5/Iz/IrabethDies/AnswersList_0005.jbp",
@@ -582,6 +638,18 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/SocothInCloset/Cue_0002.jbp",
       "type": "BlueprintCue"
     },
+    "64af2f5bd9de92a469b6a8b63219206e": {
+      "path": "World/Dialogs/c6/AreeluDemiplane/AreeluAllTruth/AnswersList_0020.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "1635402f363fa764a96f442ccb039a81": {
+      "path": "World/Dialogs/c6/AreeluDemiplane/AreeluAllTruth/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "6c39117f5ee77c34681c4cee77de75b8": {
+      "path": "World/Dialogs/c6/AreeluDemiplane/AreeluAllTruth/Cue_0028.jbp",
+      "type": "BlueprintCue"
+    },
     "765173e2a9e535e4cb66f0ec767c13af": {
       "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -602,6 +670,34 @@
       "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0056.jbp",
       "type": "BlueprintCue"
     },
+    "34fc03a7642d21642a4fb2bb7a0e056e": {
+      "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3e52b05af622f5945905b2be5ed9ac5a": {
+      "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/Cue_0041.jbp",
+      "type": "BlueprintCue"
+    },
+    "90861396a1375684eb5bf894bedecff3": {
+      "path": "World/Dialogs/c6/SecondFloor/AreeluLetsFinalFight/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "73f857edb12933948b735e0364fcf1ca": {
+      "path": "World/Dialogs/c6/SecondFloor/AreeluLetsFinalFight/Answer_0054.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "c4f9dac3d26416d43b3c1662d07a99c0": {
+      "path": "World/Dialogs/c6/SecondFloor/AreeluLetsFinalFight/Cue_0047.jbp",
+      "type": "BlueprintCue"
+    },
+    "f56a69dc64a48b14096a557697f43f2a": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0052.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "3c4dd53fef2e80540bba5272d38c9843": {
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0063.jbp",
       "type": "BlueprintCue"
@@ -616,6 +712,18 @@
     },
     "8a50fd9c430a80c498da5c09366ff5fc": {
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0123_TricksterAree211.jbp",
+      "type": "BlueprintCue"
+    },
+    "bb3528754c7e741438acef95ec3b6430": {
+      "path": "World/Dialogs/c6/ThresholdExterior/AreeluThresholdWelcome/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "7afb59b5619513d40b73f9299393f95c": {
+      "path": "World/Dialogs/c6/ThresholdExterior/AreeluThresholdWelcome/Cue_0009.jbp",
+      "type": "BlueprintCue"
+    },
+    "6b4c8a08d22268f41badc455825b3082": {
+      "path": "World/Dialogs/c6/ThresholdExterior/AreeluThresholdWelcome/Cue_0027.jbp",
       "type": "BlueprintCue"
     },
     "589d83230bbbfd04bb1220ee4fef1ce1": {
@@ -689,6 +797,10 @@
     "20b70c9bb93940b9a21a488f1721f41c": {
       "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/Shifter_CompanionDialogue.jbp",
       "type": "BlueprintDialog"
+    },
+    "fb42f8bd123bf1f40a448f6dbc66cbbe": {
+      "path": "World/Dialogs/Epilogues/BookPage_0147.jbp",
+      "type": "BlueprintBookPage"
     },
     "5c95d8e3fa4f3b44896914987cb04b0b": {
       "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
@@ -914,6 +1026,22 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/DidntVisitedEvents.jbp",
       "type": "BlueprintEtude"
     },
+    "936af39436c74953b43a4165bfbcc9f9": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_AreeluDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "f455dbe5ddfbc454380ce27bc93795d5": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_AreeluSacrifice.jbp",
+      "type": "BlueprintEtude"
+    },
+    "2667b0fda8704432bc35ace995e8022e": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_AreeluSacrificeBefore.jbp",
+      "type": "BlueprintEtude"
+    },
+    "29c5c64462384fa3b8aae34e4c9ebce9": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_AreeluSacrificeTrickster.jbp",
+      "type": "BlueprintEtude"
+    },
     "381a296094804761af0893d2e70dc2df": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_PlayerSacrifice.jbp",
       "type": "BlueprintEtude"
@@ -1084,6 +1212,10 @@
     },
     "6125c10886d6465091f4e092618ca55a": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/AneviaNotInDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
+    "23983059575fff749ae1446eba539260": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/AreeluIncinerated.jbp",
       "type": "BlueprintEtude"
     },
     "3f3fbb973a4ffee47956b4c7714c939a": {
