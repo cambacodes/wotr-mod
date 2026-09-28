@@ -235,5 +235,54 @@ internal static class NocticulaTricksterTests
                   .All(s => s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Alignment == null)),
             "An epilogue page sets a flag.");
         check(epCommit.Nodes[0].Choices.Count == 2, "The late commit gives the Commander no choice.");
+
+        // Trk_Nocticula_CourtVellexiaKept / court variants (ledger row 11): Nocticula learns of Vellexia's season at Threshold.
+        var court = S("nocticula.trickster.court.vellexia");
+        var mirror = S("nocticula.trickster.defeated.epilogue.mirror");
+        var mirrorKept = S("nocticula.trickster.defeated.epilogue.mirror_kept");
+        const string SecretV = "nocticula.trickster.secret_known.vellexia";
+        check(court.AnswerLists.SequenceEqual(new[] { Threshold }) && court.NativeReturnCue == "c10ef2b50ade65f42bbaa0cdfa61b7f9"
+              && court.Chapters.SequenceEqual(new[] { 6 }) && court.ForbidOverrides.TryGetValue(Fight, out var courtOver) && courtOver == Returned,
+            "The Vellexia court scene left her projection's list.");
+        var courtSeen = new Dictionary<string, string> {
+            ["vellexia.trickster.kept_as_mirror"] = "kept", ["vellexia.trickster.cost.diminished"] = "diminished",
+            ["vellexia.trickster.unmirrored"] = "furniture" };
+        foreach (var (outcome, node) in courtSeen)
+        {
+            var w = World(story, 6, "trickster", "trickster.ever", "vellexia.trickster.presumed_dead", outcome);
+            check(Rules.Available(story, court, w), "Trk_Nocticula_CourtVellexia: unavailable with " + outcome);
+            pages.Clear();
+            var told = Program.Walk(court, w, (page, _) => pages.Add(page)).Where(r => r.Has(court.Id)).ToList();
+            check(pages.Contains(node) && pages.Count(p => p != "start") == 1 && told.Count == 1 && told[0].Has(SecretV)
+                  && !Rules.Available(story, court, told[0]), "Trk_Nocticula_CourtVellexia: variant " + node);
+            check(Rules.Available(story, outcome.EndsWith("kept_as_mirror") ? mirrorKept : mirror, told[0])
+                  && !Rules.Available(story, outcome.EndsWith("kept_as_mirror") ? mirror : mirrorKept, told[0]),
+                "Trk_Nocticula_CourtVellexia: the wrong mirror page for " + outcome);
+        }
+        check(!Rules.Available(story, court, World(story, 6, "trickster", "trickster.ever")), "The court scene without Vellexia's season.");
+        var hidden = World(story, 6, "trickster", "trickster.ever", Dead, Fight, "vellexia.trickster.presumed_dead", "vellexia.trickster.unmirrored");
+        check(!Rules.Available(story, court, hidden) && Rules.Available(story, court, With(story, hidden, Primed, Returned)),
+            "The court scene speaks before the Threshold call-in.");
+        check(new[] { mirror, mirrorKept }.All(s => s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Alignment == null)),
+            "A mirror page sets a flag.");
+        // The favour is visible the morning after: Daeran reads the unnamed debt when she was paid and he is present.
+        var morningPaid = World(story, 6, "trickster.ever", "nocticula.trickster.said_yes", Paid);
+        pages.Clear();
+        Program.Walk(morning, morningPaid, (page, _) => pages.Add(page));
+        check(pages.Contains("daeran"), "The morning after hides the unnamed favour from Daeran.");
+        foreach (var gone in new[] { "daeran.dead", "daeran.kicked_out" })
+        {
+            pages.Clear();
+            var outs = Program.Walk(morning, With(story, morningPaid, gone), (page, _) => pages.Add(page));
+            check(!pages.Contains("daeran") && outs.Any(r => r.Has(morning.Id)), "The morning after strands or shows an absent Daeran: " + gone);
+        }
+        pages.Clear();
+        Program.Walk(morning, World(story, 6, "trickster.ever", "nocticula.trickster.said_yes", Refused), (page, _) => pages.Add(page));
+        check(!pages.Contains("daeran"), "Daeran reads a favour that was refused.");
+        check(morning.Nodes[0].Choices[0].Text == "[Buckle your armour over the marks.]" && morning.Nodes[0].Choices[0].Next == null,
+            "The morning's choice 0 moved (save slot).");
+        var order = story.Scenes.Select(s => s.Id).ToList();
+        check(order.IndexOf(mirror.Id) < order.IndexOf(mirrorKept.Id) && order.IndexOf(mirrorKept.Id) < order.IndexOf(favour.Id),
+            "The mirror pages are out of sibling order (b6, b7 before b8).");
     }
 }

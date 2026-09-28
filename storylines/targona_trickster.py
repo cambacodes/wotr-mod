@@ -363,6 +363,8 @@ REACTIONS = [
 {n}Seelah turns her helmet over in her hands.{/n}
 "...She says you killed her once. Is that true? No. Don't answer. I'll ask Iomedae, and then I'll ask you, and one of you had better have a good story."''',
              answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone"), chapter=3, last=5, Chapters=[3, 5],
+             # G6(b): a Seelah who died or left and came back on her own Trickster route is on her hub again.
+             ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"},
              entry='"You\'ve been to the infirmary."'),
     reaction("Sosiel", P + "react.sosiel_forgiven", (FORGIVEN,),
              '''"She forgave you in front of the whole ward."

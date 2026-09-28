@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1958,
-  "unique_targets": 496,
+  "binding_uses": 1960,
+  "unique_targets": 497,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -720,6 +720,10 @@
     },
     "90cfcb7b1c0bacc43b27043074f21301": {
       "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
+    "c10ef2b50ade65f42bbaa0cdfa61b7f9": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0010.jbp",
       "type": "BlueprintCue"
     },
     "3cc60e02e5176f448a57b342ec52ae31": {
