@@ -429,6 +429,7 @@ internal static class Program
             ArsinoeAssembledTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))

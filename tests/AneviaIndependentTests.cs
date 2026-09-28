@@ -227,7 +227,9 @@ internal static class AneviaIndependentTests
         }
         check(Rules.Available(story, Get("ending_aeon"), developed!), "Aeon-only dispatcher has no independent memory-ending page.");
 
-        foreach (var scene in story.Scenes.Where(s => s.Relationship == "anevia" && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)))
+        // The Trickster layer (AneviaTricksterTests) is judged by its own suite.
+        foreach (var scene in story.Scenes.Where(s => s.Relationship == "anevia" && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                                                     && !s.Id.StartsWith("anevia.trickster.", StringComparison.Ordinal)))
         {
             check(scene.Remote || scene.ContactUnit == (scene.Owner == "Irabeth" ? irabeth : anevia), "Wrong native contact on " + scene.Id);
             check(scene.Remote || Rules.EntryTargets(scene).SequenceEqual(new[] { scene.Owner == "Irabeth" ? "871af36f2ab2b1f40b5de77976c54276" : "33960c7f7af40cd43b7f801a76c87a0b" }), "Wrong native dialogue attachment.");

@@ -46698,7 +46698,18 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "They had both been lost once, one to Iz and one to the road south, and both had come back by routes that did not bear close inspection. At the Tirabade table there were three chairs, and Anevia's rule for the third was the same as for every door: knock first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -46726,7 +46737,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "tirabade"
+      "Relationship": "tirabade",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
+      }
     },
     {
       "Id": "ending_ascend_promised",
@@ -46750,7 +46765,18 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "They had both been lost once, one to Iz and one to the road south, and both had come back by routes that did not bear close inspection. At the Tirabade table there were three chairs, and Anevia's rule for the third was the same as for every door: knock first.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -46771,7 +46797,11 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "tirabade"
+      "Relationship": "tirabade",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
+      }
     },
     {
       "Id": "jerribeth.settlement_visit",
@@ -76950,7 +76980,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.a_question_at_home",
@@ -77283,7 +77316,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.one_truth",
@@ -77445,7 +77481,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.beths_question",
@@ -77772,7 +77811,10 @@
       "AnswerLists": [
         "871af36f2ab2b1f40b5de77976c54276"
       ],
-      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f"
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.beths_answer",
@@ -77963,7 +78005,10 @@
       "AnswerLists": [
         "871af36f2ab2b1f40b5de77976c54276"
       ],
-      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f"
+      "ContactUnit": "280d4712dceb37f4a88e98f1f4c6e64f",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.her_own_answer",
@@ -78198,7 +78243,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.a_place_of_our_own",
@@ -78375,7 +78423,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.an_invitation_afterward",
@@ -78545,7 +78596,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.borrowed_signature",
@@ -78755,7 +78809,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.the_paper_seller",
@@ -78996,7 +79053,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.the_woman_with_the_basket",
@@ -79211,7 +79271,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.the_counting_room",
@@ -79403,7 +79466,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.what_the_warning_cost",
@@ -79639,7 +79705,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.the_evening_without_a_case",
@@ -79913,7 +79982,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.departure_note",
@@ -80032,7 +80104,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.the_blank_half",
@@ -80383,7 +80458,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.a_key_that_is_hers",
@@ -80655,7 +80733,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.the_last_ordinary_thing",
@@ -80776,7 +80857,10 @@
       "AnswerLists": [
         "33960c7f7af40cd43b7f801a76c87a0b"
       ],
-      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2"
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "ForbidOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
     },
     {
       "Id": "anevia.a_grief_with_a_name",
@@ -80963,7 +81047,8 @@
         "anevia.closed",
         "inhuman",
         "anevia.irabeth_killed_by_commander",
-        "anevia_away"
+        "anevia_away",
+        "irabeth.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -81003,7 +81088,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81028,7 +81252,9 @@
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81053,7 +81279,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81079,7 +81444,9 @@
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81104,7 +81471,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81130,7 +81636,9 @@
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81155,7 +81663,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81182,7 +81829,9 @@
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81207,7 +81856,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81229,7 +82017,8 @@
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81254,7 +82043,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81272,14 +82200,16 @@
         "inhuman",
         "sacrifice",
         "ascended",
-        "anevia.irabeth_killed_by_commander"
+        "anevia.irabeth_killed_by_commander",
+        "irabeth.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81304,7 +82234,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81322,14 +82391,16 @@
         "anevia.irabeth_killed_by_commander",
         "inhuman",
         "sacrifice",
-        "ascended"
+        "ascended",
+        "irabeth.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81379,7 +82450,9 @@
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81404,7 +82477,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81419,7 +82631,8 @@
         "anevia.closed",
         "anevia_dead",
         "inhuman",
-        "ascended"
+        "ascended",
+        "irabeth.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -81512,7 +82725,8 @@
         "inhuman",
         "ascended",
         "sacrifice",
-        "anevia.irabeth_killed_by_commander"
+        "anevia.irabeth_killed_by_commander",
+        "anevia.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -81544,7 +82758,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81567,7 +82920,8 @@
       "Relationship": "anevia",
       "ForbidOverrides": {
         "trying": "tirabade.group_closed",
-        "committed": "tirabade.group_closed"
+        "committed": "tirabade.group_closed",
+        "anevia_gone": "anevia.trickster.returned"
       }
     },
     {
@@ -81592,7 +82946,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -81635,7 +83128,146 @@
               "Abort": false
             }
           ],
-          "Portrait": "Anevia"
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -137793,6 +139425,2912 @@
       "AnswerLists": [
         "417fa384f3250634bb71859fbc913453"
       ]
+    },
+    {
+      "Id": "anevia.trickster.gone.setup",
+      "Title": "Don't",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Her rooms in the citadel are empty by nightfall. She took her knives and her good boots and left the rest: the bed made to regulation, Beth's spare surcoat folded over the chair, and the wardrobe standing open, the way you leave a door for someone you have decided will not come.{/n}\n{n}At the Coronation she looked as if she meant to say something more, then pressed her lips together and turned away. Pinned inside the wardrobe door, in her plain, upright hand, is the something more. It is one word.{/n}\n\"Don't.\"",
+          "Choices": [
+            {
+              "Text": "[Knock on the back of the wardrobe and ask his price] \"A door to wherever she's sleeping tonight. Name it.\"",
+              "Next": "socoth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "socot.gone",
+                "council.fought",
+                "council.fought_nocta_allied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Knock on the back of the wardrobe]",
+              "Next": "door",
+              "Set": [],
+              "Requires": [
+                "closets.door_kept"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Knock on the back of the wardrobe]",
+              "Next": "crate",
+              "Set": [],
+              "Requires": [
+                "anevia.socoth_absent"
+              ],
+              "Forbids": [
+                "closets.door_kept"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Fold the note away] \"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "socoth",
+          "Speaker": "Socothbenoth",
+          "Text": "{n}You knock. Among the hangers, something laughs, and the laugh smells of attar of roses.{/n}\n\"A widow's bedroom, three days' ride south, and she has told you in writing not to come? Oh, darling, you've brought me a present. Do you know how rarely anyone knocks? People simply barge through my closets as if they were corridors.\"\n{n}The voice comes from the dark at the back of the wardrobe, where there ought to be nothing but cedar.{/n}\n\"My price is small. My side of the door stays open. Whatever is said in that room, I hear it: every sigh, every quarrel, every creak of the bed, if you're lucky. I'm not ashamed of wanting it, and you shouldn't be ashamed of paying it.\"",
+          "Choices": [
+            {
+              "Text": "[Pay it] \"Done. Open the door.\"",
+              "Next": "paid",
+              "Set": [
+                "anevia.trickster.primed",
+                "anevia.started",
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "socot.gone",
+                "council.fought",
+                "council.fought_nocta_allied"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Haggle] \"One door. No audience. I'll owe you a story instead.\"",
+              "Next": "haggled",
+              "Set": [
+                "anevia.trickster.primed",
+                "anevia.started",
+                "anevia.trickster.cost.wrong_door"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "socot.gone",
+                "council.fought",
+                "council.fought_nocta_allied"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Socothbenoth",
+          "Text": "\"Splendid. Give me a day to find the right wardrobe; a widow on the road doesn't sleep in the same room twice. When the door opens, walk in as if you owned the place.\"\n{n}The laugh again, further off.{/n}\n\"You don't, of course. I do.\"",
+          "Choices": [
+            {
+              "Text": "\"A day, then.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "haggled",
+          "Speaker": "Socothbenoth",
+          "Text": "\"A story? From *you*? Accepted, darling. You'll tell it to me in a closet one day, and I'll decide whether it was worth the door.\"\n{n}A pause, and the rustle of silk being arranged to its best advantage.{/n}\n\"And since you've haggled with me in my own closet, I choose which wardrobe opens first. Consider it a small tour of the sillier bedrooms of Mendev.\"",
+          "Choices": [
+            {
+              "Text": "\"...Fine.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "door",
+          "Speaker": "Narrator",
+          "Text": "{n}You knock. Nobody answers. The Silken Sin's closets have been quiet since he quit the Council.{/n}\n{n}But the closet he gave you is still yours. \"You have earned the right to use this closet,\" he said, and patted its door like a favourite horse. It opens only onto rooms you have stood in. You stood in every room of the Defender's Heart the night Kenabres burned, and her letter to the quartermaster, the one she thinks nobody read, is addressed from there.{/n}\n{n}Stepping through will cost you the war council tomorrow. Lady Konomi will have to explain your absence to people who do not believe in closets.{/n}",
+          "Choices": [
+            {
+              "Text": "[Open the closet Socothbenoth gave you] \"He said I'd earned it. Let's find out what for.\"",
+              "Next": "door_open",
+              "Set": [
+                "anevia.trickster.primed",
+                "anevia.started",
+                "anevia.trickster.cost.stolen_door"
+              ],
+              "Requires": [
+                "closets.door_kept",
+                "trickster"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "door_open",
+          "Speaker": "Narrator",
+          "Text": "{n}The door swings inward onto the smell of old ale and lamp oil. Somewhere below, a tavern is closing for the night. You step back before anyone on the other side can see the light, and the closet sighs shut. Tomorrow, then.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Tomorrow.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "crate",
+          "Speaker": "Narrator",
+          "Text": "{n}You knock. Nobody answers, and no closet of yours opens onto anything but coats.{/n}\n{n}The quartermaster's wagon for the south leaves at dawn, and Anevia still gets her post the way she always has: through a dead drop at the Defender's Heart in Kenabres, the third crate from the back. It is, technically, a very large dead drop.{/n}",
+          "Choices": [
+            {
+              "Text": "[Nail yourself into a supply crate addressed to her dead drop] \"She taught me dead drops. Let's see if they take live mail.\"",
+              "Next": "crated",
+              "Set": [
+                "anevia.trickster.primed",
+                "anevia.started",
+                "anevia.trickster.cost.crated"
+              ],
+              "Requires": [
+                "anevia.socoth_absent"
+              ],
+              "Forbids": [
+                "closets.door_kept"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Materials",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "crated",
+          "Speaker": "Narrator",
+          "Text": "{n}The quartermaster signs for one crate of \"salt pork, Commander's personal\", looks at the air holes, looks at you, and decides he has not seen the air holes. Three wagons of rations go south short that week. Somebody will have to make up the difference.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Mind the bumps.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "anevia_gone"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.trickster.primed",
+        "anevia.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "RequiresAnyGroups": [
+        [
+          "closets.known",
+          "socot.gone",
+          "council.expired"
+        ]
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "gone"
+    },
+    {
+      "Id": "anevia.trickster.gone.wardrobe",
+      "Title": "A live drop",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Kenabres. What the demons left of the Defender's Heart still has its upstairs rooms, and one of them is rented by the week to a woman who paid in advance and gave no name.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wrong",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.wrong_door"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "hinges",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.wrong_door",
+                "anevia.trickster.cost.crated"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "lid",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "wrong",
+          "Speaker": "Narrator",
+          "Text": "{n}It is the fourth wardrobe. The first three belonged to a chandler, a convent, and a magistrate who was not alone and was very surprised. You have a wimple on your head and do not know how it got there.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hinges",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "hinges",
+          "Speaker": "Anevia",
+          "Text": "{n}This one smells of cedar and somebody else's winter coats. Its door opens from the inside, onto a narrow room over the taproom. Anevia is sitting on the bed with a knife in her hand. She has had it there since the hinges creaked.{/n}\n\"I rode outta Drezen to be somewhere you weren't. Clearly didn't ride far enough.\"",
+          "Choices": [
+            {
+              "Text": "[Step out of the wardrobe with your hands up] \"You taught me dead drops. This is a live one.\"",
+              "Next": "candle",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "lid",
+          "Speaker": "Anevia",
+          "Text": "{n}The crate lid comes up an inch at a time. Anevia is on the other side of it, in a cellar that smells of spilled ale, with a pry bar in one hand and a knife in the other.{/n}\n\"I rode outta Drezen to be somewhere you weren't. Clearly didn't ride far enough.\"",
+          "Choices": [
+            {
+              "Text": "[Climb out with your hands up] \"You taught me dead drops. This is a live one.\"",
+              "Next": "candle_crate",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "candle",
+          "Speaker": "Anevia",
+          "Text": "\"Get out.\"\n{n}She doesn't move. Neither does the knife.{/n}\n\"...No. Sit. You've got till the candle's done. Then you go back in there, and I'm nailin' it shut.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wimple",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.wrong_door"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "stolen",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.stolen_door"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.wrong_door",
+                "anevia.trickster.cost.stolen_door"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_dead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.wrong_door",
+                "anevia.trickster.cost.stolen_door",
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "candle_crate",
+          "Speaker": "Anevia",
+          "Text": "\"Get out.\"\n{n}She doesn't move. Neither does the knife.{/n}\n\"...No. Sit. On the crate, where I can see you. You've got till the candle's done. Then you go back in, and I'm nailin' the lid on and postin' you north as salt pork.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_dead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "wimple",
+          "Speaker": "Anevia",
+          "Text": "\"You're late, you smell of incense, and there's a wimple on your head. I'm not gonna ask.\"\n{n}She asks with her eyebrows anyway.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_dead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "stolen",
+          "Speaker": "Narrator",
+          "Text": "{n}The closet door sighs shut behind you. It will not open onto this room a second time; you know it the way you know the cold.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_dead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "beth_back",
+          "Speaker": "Anevia",
+          "Text": "\"And don't tell me about Beth. I've had a letter. In her hand, sayin' she's back on watch in Drezen with a sword she can't put down. I read it eleven times, and I still think it's a forgery.\"\n{n}She looks at the knife as if she has only just noticed it.{/n}\n\"It's not a forgery. Is it.\"",
+          "Choices": [
+            {
+              "Text": "[Sit until the candle's done] \"Till the candle's done, then.\"",
+              "Next": "named",
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Sit, and hope the coats keep quiet] \"...Nobody else is here.\"",
+              "Next": "thrown_out",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "beth_dead",
+          "Speaker": "Anevia",
+          "Text": "\"You came through furniture for me.\"\n{n}Her voice does not rise. It gets quieter, which is worse.{/n}\n\"You didn't come through anythin' for Beth.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rest",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.declined"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Sit until the candle's done] \"Till the candle's done, then.\"",
+              "Next": "named",
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.socoth_listening",
+                "irabeth.trickster.declined"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Sit, and hope the coats keep quiet] \"...Nobody else is here.\"",
+              "Next": "thrown_out",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [
+                "irabeth.trickster.declined"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "rest",
+          "Speaker": "Anevia",
+          "Text": "\"...No. That's not fair. They told me. You stood at her bunk with a cup in your hand and let her rest.\"\n{n}She wipes her eyes with the back of the knife hand, carefully, blade out.{/n}\n\"Good. Somebody in this family should get to.\"",
+          "Choices": [
+            {
+              "Text": "[Sit until the candle's done] \"Till the candle's done, then.\"",
+              "Next": "named",
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Sit, and hope the coats keep quiet] \"...Nobody else is here.\"",
+              "Next": "thrown_out",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "named",
+          "Speaker": "Anevia",
+          "Text": "{n}The candle burns down. She talks for most of it, about nothing: the price of a room in Kenabres, a dog in the street that barks at priests, how bad the ale has got. She never once puts the knife down.{/n}\n{n}When the wick starts to gutter, she stands.{/n}\n\"Not here. Not anywhere with furniture. The Drezen gate, outside the walls, change of the watch, two nights from now. I'm not comin' in. You come out.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "nail",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.crated"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "nail_crate",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "thrown_out",
+          "Speaker": "Anevia",
+          "Text": "{n}Anevia stops in the middle of a sentence and looks at the coats.{/n}\n\"Someone's breathin' in there. Not you.\"\n{n}The coats go very still. It does not help.{/n}\n\"...You brought a *demon* to listen?\"\n{n}She doesn't wait for an answer. She is already reaching for the hammer.{/n}\n\"Out. Both of you. I'll leave word at the Drezen gate where I'll be. Don't come through anythin' to get there.\"",
+          "Choices": [
+            {
+              "Text": "[Go back into the wardrobe before the knife moves] \"Going.\"",
+              "Next": "nail",
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.wardrobe_nailed",
+                "anevia.trickster.cost.thrown_out"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "nail",
+          "Speaker": "Narrator",
+          "Text": "{n}When you step back into the wardrobe, you hear the first nail go in before the door has quite closed.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Two nights.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "nail_crate",
+          "Speaker": "Narrator",
+          "Text": "{n}You climb back into the crate. The first nail goes into the lid before you have finished folding your knees. Somewhere above, a voice you know tells a carter, very sweetly, that this one is going back north and that he is to hit every pothole on the road.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Two nights.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "anevia_gone",
+        "anevia.trickster.primed"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.trickster.returned"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "gone"
+    },
+    {
+      "Id": "anevia.trickster.gone.fetched",
+      "Title": "Two letters and a bootlace",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Two letters come up the south road in one packet, tied together with a bootlace.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "beth",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "beth",
+          "Speaker": "Irabeth",
+          "Text": "{n}The first is in Irabeth's hand, square and slow, pressed so hard the nib has gone through the paper twice.{/n}\n\"Found her. Kenabres, over what's left of the Heart. She threw a boot at me. Then the other boot. Coming home by the long road. Don't send anyone. I.T.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "nevi",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "nevi",
+          "Speaker": "Anevia",
+          "Text": "{n}The second is in Anevia's hand, and it isn't addressed to anyone.{/n}\n\"She walked into the Heart with her sword still in her hand. Couldn't put it down to hold me. Held me anyway, one-armed, like an idiot, in front of the whole taproom. Said it was your fault.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bargain",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "bargain",
+          "Speaker": "Anevia",
+          "Text": "\"She says you put her under orders, so her soul couldn't leave. I'm grateful. Gods, I'm grateful. I'm also never lettin' you give me an order. Not one. Not even 'pass the salt'.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "close",
+          "Speaker": "Anevia",
+          "Text": "\"I'll be at the Drezen gate when we get in. Outside it. I'm not sure yet I'll go any further.\"",
+          "Choices": [
+            {
+              "Text": "[Write back: stay at the edge of it] \"I'll wait outside.\"",
+              "Next": null,
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write back: tell her it was a joke] \"It was a joke, Anevia. The world laughed.\"",
+              "Next": null,
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.knows_the_bargain",
+                "anevia.trickster.told_the_joke"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "anevia_gone",
+        "irabeth.trickster.returned"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.trickster.primed",
+        "anevia.trickster.returned",
+        "irabeth.trickster.blow_rewritten"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "gone"
+    },
+    {
+      "Id": "anevia.trickster.gone.confession",
+      "Title": "The version that hurts",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}Irabeth brings the letter herself. She does not sit. She stands in the doorway with the sword in her hand and her eyes on the floor, as if she were reporting a loss.{/n}\n\"Nevi's at an inn a day south. She won't come any closer. She gave me this, and she said I'm to watch your face while you read it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "letter",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "letter",
+          "Speaker": "Anevia",
+          "Text": "\"She says she stepped. She also says she remembers your blade goin' in. I'm a spy, Commander. When a story's got two endings, I believe the one that hurts.\nSo you're gonna tell me. Your own words, in writing. Beth carries it back. And if it's the tidy version, I'll know.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her everything] \"I killed her. Then I made it not have happened. Both are true.\"",
+              "Next": "truth",
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.accounting",
+                "anevia.trickster.heard_the_truth"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"The report is right. She fell.\"",
+              "Next": "exposed",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "truth",
+          "Speaker": "Irabeth",
+          "Text": "{n}Irabeth reads it over your shoulder. She does not pretend otherwise. When she has finished she folds it once, very precisely, and puts it inside her breastplate.{/n}\n\"She'll come as far as the gate. That's what the truth buys, with Nevi. Not forgiveness. The gate.\"",
+          "Choices": [
+            {
+              "Text": "\"Then I'll be at the gate.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "exposed",
+          "Speaker": "Anevia",
+          "Text": "{n}The answer comes back two days later, by the same hand. Irabeth will not look at you while you read it.{/n}\n\"Beth told me that one already. Same words. Same order. You two rehearsed it, and she's a worse liar than you, which is sayin' somethin'.\nDon't write back. It's the most honest thing you'll do all week. I'll be at the gate anyway, 'cause she asked me to. Don't mistake it for anythin'.\"",
+          "Choices": [
+            {
+              "Text": "[Say nothing] \"...\"",
+              "Next": null,
+              "Set": [
+                "anevia.trickster.returned",
+                "anevia.started",
+                "anevia.trickster.cost.accounting",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "anevia_gone",
+        "irabeth.trickster.blow_rewritten"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.trickster.primed",
+        "anevia.trickster.returned"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "gone"
+    },
+    {
+      "Id": "anevia.trickster.gone.gate",
+      "Title": "The line in the mud",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You said the gate. I came out.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "{n}She is standing by the smithy at the gate, on the road side of the line the cartwheels have worn into the mud. The smith has been watching her over his anvil for an hour and has decided not to ask.{/n}\n\"Knew you'd come out. You always come out. That's the problem with you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "coats",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.thrown_out"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "joke",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.told_the_joke"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "one_truth",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.thrown_out",
+                "anevia.trickster.told_the_joke",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_widow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.thrown_out",
+                "anevia.trickster.told_the_joke",
+                "anevia.trickster.cost.lie_exposed",
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "coats",
+          "Speaker": "Anevia",
+          "Text": "\"And the coats. Tell me the coats aren't listenin'.\"\n{n}She glances at the guardhouse door, which has no coats behind it, and does not relax.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_widow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "joke",
+          "Speaker": "Anevia",
+          "Text": "\"You wrote me it was a joke. Beth read it over my shoulder and laughed till she cried. I didn't.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_widow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "one_truth",
+          "Speaker": "Anevia",
+          "Text": "\"One true thing tonight. Just one. Then we'll see.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "beth_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "beth_widow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "beth_widow",
+          "Speaker": "Anevia",
+          "Text": "\"Beth used to stand watch right there. Left foot forward, 'cause of the old knee. I can't look at that gate without her in it.\"\n{n}She doesn't look at it. She looks at you.{/n}\n\"So before you say anythin' soft: she comes first. She's always gonna come first. If that's a problem, go back in.\"",
+          "Choices": [
+            {
+              "Text": "[Take her hand and wait] \"Tell me about her. I'm listening.\"",
+              "Next": "told",
+              "Set": [
+                "anevia.trickster.gate_seen",
+                "anevia.trickster.hand_taken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay on your side of the line] \"Your road. Your call.\"",
+              "Next": "line",
+              "Set": [
+                "anevia.trickster.gate_seen",
+                "anevia.trickster.friends"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "beth_back",
+          "Speaker": "Anevia",
+          "Text": "\"Beth's inside those walls, givin' orders. I can hear her from here. And I'm out here, with you.\"\n{n}She kicks at the mud line with the toe of her boot.{/n}\n\"Explain that to me, 'cause I can't. And before you try: she comes first. She's always gonna come first.\"",
+          "Choices": [
+            {
+              "Text": "[Take her hand and wait] \"Tell me about her. I'm listening.\"",
+              "Next": "told",
+              "Set": [
+                "anevia.trickster.gate_seen",
+                "anevia.trickster.hand_taken"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay on your side of the line] \"Your road. Your call.\"",
+              "Next": "line",
+              "Set": [
+                "anevia.trickster.gate_seen",
+                "anevia.trickster.friends"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "told",
+          "Speaker": "Anevia",
+          "Text": "{n}So she tells you. Not the war: the small things. That Beth snores like a siege engine and denies it under oath. That she folds her socks in pairs and then, for no reason anyone has discovered, in threes. That she sang at their wedding, badly and on purpose, so Anevia would stop crying and laugh.{/n}\n{n}She never once says \"did\". Her hand stays in yours the whole time. She doesn't seem to notice.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Same time next week?\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "line",
+          "Speaker": "Anevia",
+          "Text": "{n}She nods once, the way she nods at a report that says what she expected.{/n}\n\"Good. Keep it that way till I say otherwise.\"",
+          "Choices": [
+            {
+              "Text": "\"Understood.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "anevia.trickster.returned"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.trickster.gate_seen"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.commit",
+      "Title": "A real door",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Same gate. Same line.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "{n}Same gate, same mud line, a colder night. She has brought a lantern and set it down on her side.{/n}\n\"Guard asked me if I was a deserter. Told him I'm retired. He didn't believe me either.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "share",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "widow",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "widow",
+          "Speaker": "Anevia",
+          "Text": "\"I buried her in my head a hundred times on the road. Every time, you were standin' at the graveside with your hands in your pockets like you knew somethin'.\"\n{n}She breathes out, and it smokes in the cold.{/n}\n\"You didn't. Nobody did. That's what makes it bearable.\"",
+          "Choices": [
+            {
+              "Text": "[Ask her to stay] \"Stay. Not in there. Here, with me.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing and wait] \"...\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "share",
+          "Speaker": "Anevia",
+          "Text": "\"Beth said, and I'm quotin', 'I'd rather share than bury.' Then she went red and walked into a door.\"\n{n}She lets that sit.{/n}\n\"So.\"",
+          "Choices": [
+            {
+              "Text": "[Ask her to stay] \"Stay. Not in there. Here, with me.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing and wait] \"...\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Anevia",
+          "Text": "\"Here's how it goes. I don't come inside. You come out. No closets, no wardrobes, no demons breathin' in the coats. You knock on a real door, like a person.\"\n{n}She holds up one finger.{/n}\n\"And the first time you lie to me, I'm gone. And this time I'll be better at it.\"",
+          "Choices": [
+            {
+              "Text": "[Agree to her terms] \"A real door. No coats. No lies.\"",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her you need her inside the walls] \"Drezen needs its spymaster. I need her.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Anevia",
+          "Text": "\"...Fine.\"\n{n}She picks the lantern up, then sets it down again on your side of the line.{/n}\n\"Then come here, before I think better of it.\"",
+          "Choices": [
+            {
+              "Text": "[Kiss her] \"I'm knocking. See?\"",
+              "Next": "yes",
+              "Set": [
+                "anevia.committed",
+                "anevia.trickster.terms_kept"
+              ],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Take her hand and wait] \"Your call, Nevi.\"",
+              "Next": "yes",
+              "Set": [
+                "anevia.committed",
+                "anevia.trickster.terms_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Let go of her hand] \"I can't promise that.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "yes",
+          "Speaker": "Anevia",
+          "Text": "{n}For a moment she only looks at you, the way she looks at a lock she has already decided to pick.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "coats",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "coats",
+          "Speaker": "Anevia",
+          "Text": "\"If your friend in the coats is listenin', let him. I've been listened to by worse.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Anevia",
+          "Text": "{n}She doesn't wait for you to decide. Her fist is in your collar before the lantern stops swinging, and she kisses you like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}\n\"Real door. I knocked. Now shut up and get that shirt off before I lose my nerve. And I never lose my nerve.\"\n{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. The guardroom cot creaks under the two of you. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she pulls you down into her with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning_back",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Anevia",
+          "Text": "{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}\n\"If Beth ever walks back through that gate, she'll know the second she looks at me. I'd give a lot to have to make that speech.\"\n{n}She stands, and taps the door twice with her knuckles on the way out.{/n}\n\"Same door. Knock.\"",
+          "Choices": [
+            {
+              "Text": "\"Same door.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "morning_back",
+          "Speaker": "Anevia",
+          "Text": "{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}\n\"Beth's gonna know the second she looks at me. Good. Saves me the speech.\"\n{n}She stands, grinning for the first time since Kenabres.{/n}\n\"She'll want a turn yellin' at you. Let her. Then she'll want a turn at the rest, and you'll let her that too.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll knock.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "no",
+          "Speaker": "Anevia",
+          "Text": "\"Then we're done for tonight. I'm not sayin' never. I'm sayin' not like this. Come back when you can knock.\"\n{n}She picks up the lantern and walks back down the road without looking round. Spies never do.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her walk back to the road] \"Then I'll learn to knock.\"",
+              "Next": null,
+              "Set": [
+                "anevia.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "anevia.trickster.returned",
+        "anevia.trickster.gate_seen"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.committed",
+        "anevia.trickster.declined"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.commit_letter",
+      "Title": "Beth first",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "{n}A letter in her plain hand. There is no furniture in it anywhere.{/n}\n\"Gate's watched. I'm not standin' in front of a whole garrison to say this. So: Beth first. Always Beth first. If you can live with that, and with a door you knock on like a person, say so. If you can't, don't write back.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "share",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.returned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "share",
+          "Speaker": "Anevia",
+          "Text": "\"Beth says she'd rather share than bury. She went red sayin' it. I'm tellin' you so you know it's allowed.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "reply",
+          "Speaker": "Narrator",
+          "Text": "{n}There is room at the bottom of the page for an answer, and nothing else.{/n}",
+          "Choices": [
+            {
+              "Text": "[Write back: take her hand] \"Your call, Nevi. I'll wait at whatever door you name.\"",
+              "Next": null,
+              "Set": [
+                "anevia.committed",
+                "anevia.trickster.gate_seen",
+                "anevia.trickster.terms_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write back: kiss the page] \"I'm knocking. See?\"",
+              "Next": null,
+              "Set": [
+                "anevia.committed",
+                "anevia.trickster.gate_seen",
+                "anevia.trickster.terms_kept"
+              ],
+              "Requires": [
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write back: let her go] \"Then I'll learn to knock.\"",
+              "Next": null,
+              "Set": [
+                "anevia.trickster.declined",
+                "anevia.trickster.gate_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "anevia.trickster.returned",
+        "anevia.presence.failed"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.committed",
+        "anevia.trickster.declined",
+        "anevia.trickster.gone.gate",
+        "anevia.trickster.gone.commit"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "anevia.trickster.gone.second_ask",
+      "Title": "The key",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"I knocked.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "{n}She is at the gate again, four nights later, as if she never left it.{/n}\n\"You knocked. On the guardhouse door, like an idiot, in front of half the watch. All right. I heard you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Anevia",
+          "Text": "\"Here's my price, and it's not cheap. The key to your rooms. Not a copy. Yours.\"\n{n}She holds out her hand, palm up, and waits.{/n}\n\"I'll never use it. Probably. But you'll never again know for sure who's on the other side of your door. That's how I've felt every night since that wardrobe opened.\"",
+          "Choices": [
+            {
+              "Text": "[Give her the key to your quarters] \"You won't come in. Fine. You can come in whenever you like.\"",
+              "Next": "key",
+              "Set": [
+                "anevia.committed",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep your key] \"Some doors stay mine.\"",
+              "Next": "kept",
+              "Set": [
+                "anevia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Anevia",
+          "Text": "\"Then that's that.\"\n{n}She closes the hand, slowly, and puts it in her pocket.{/n}\n\"Good luck, Commander. I mean it.\"",
+          "Choices": [
+            {
+              "Text": "\"Goodbye, Anevia.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "key",
+          "Speaker": "Anevia",
+          "Text": "{n}She turns the key over in her fingers the way she turns over a forged seal, looking for the flaw. She doesn't find one. She pockets it.{/n}\n\"Probably never use it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "night",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Anevia",
+          "Text": "{n}That night there is a knock at your door: three knocks, like a person. Then the lock turns anyway.{/n}\n{n}She is across the room before you are out of the chair, and she does not bother with the lantern. Her hands are cold from the road and then they are not. She has your shirt half over your head when she laughs, low, into your mouth, and says \"Probably\" as if it were the filthiest word she knows, and pushes you back onto the bed and follows you down.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "dawn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "dawn",
+          "Speaker": "Anevia",
+          "Text": "{n}Dawn. The key is on the table where she left it, in plain sight, and she is gone.{/n}\n{n}By noon it is back in her pocket. You never see her take it.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Probably.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "anevia.trickster.returned",
+        "anevia.trickster.declined"
+      ],
+      "Forbids": [
+        "anevia.closed",
+        "anevia.committed"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "anevia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "b5e867e13503c6f41bb1316705efb4a2",
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "tirabade.trickster.table_again",
+      "Title": "Two chairs or three",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}A camp table has appeared on the road side of the Drezen gate, where the cartwheels have worn a line into the mud. Somebody has carried three chairs out of the guardhouse and set two of them.{/n}\n\"Nevi says you walked out of her wardrobe. I told her that's not possible.\"\n{n}Irabeth sets her sword across her knees, because she cannot set it anywhere else.{/n}\n\"She says neither am I.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "accounting",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.blow_rewritten"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.accounting"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "chairs",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.blow_rewritten"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "chairs",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "accounting",
+          "Speaker": "Anevia",
+          "Text": "\"Before anyone sits. Beth says she stepped inside your blade at Iz. Beth also remembers it goin' in. I've heard her side. I haven't heard yours.\"\n{n}Irabeth looks at the table. Anevia looks at you.{/n}\n\"Tell me what happened. All of it. Then we'll talk about chairs.\"",
+          "Choices": [
+            {
+              "Text": "[Tell her everything] \"I struck her down. Then I made it not have happened. Both are true.\"",
+              "Next": "chairs",
+              "Set": [
+                "anevia.trickster.cost.accounting",
+                "anevia.trickster.heard_the_truth"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Refuse] \"Not tonight.\"",
+              "Next": "refused",
+              "Set": [
+                "tirabade.trickster.two_chairs"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Anevia",
+          "Text": "\"Then it's two chairs.\"\n{n}She pulls the third one away from the table and sits on it herself, with her back to you.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Two chairs.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "chairs",
+          "Speaker": "Anevia",
+          "Text": "\"Two chairs or three, Commander. And think before you answer, 'cause she's got a sword she's not allowed to put down.\"",
+          "Choices": [
+            {
+              "Text": "[Pull out the third chair] \"Three. I've already stolen the third one.\"",
+              "Next": null,
+              "Set": [
+                "started",
+                "tirabade.trickster.third_chair"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay standing] \"Two. I only came to see you both sitting down.\"",
+              "Next": null,
+              "Set": [
+                "tirabade.trickster.two_chairs"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "irabeth.trickster.returned",
+        "anevia.trickster.returned"
+      ],
+      "Forbids": [],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "tirabade",
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "tirabade.trickster.third_chair",
+      "Title": "Deal the cards",
+      "Owner": "Irabeth",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Irabeth",
+          "Text": "{n}A night at the camp table on the road side of the gate, three chairs this time, both women armed. Anevia has a pack of cards that is missing the Queen of Coins. Irabeth has a sword across her knees and her boots on the third chair, which she takes down, slowly, when you arrive.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "run",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "run",
+          "Speaker": "Anevia",
+          "Text": "\"Last chance to run, Commander.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kindly",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "kindly",
+          "Speaker": "Irabeth",
+          "Text": "\"She means it kindly. Mostly.\"",
+          "Choices": [
+            {
+              "Text": "[Sit] \"Deal the cards.\"",
+              "Next": "dealt",
+              "Set": [
+                "committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave the chair empty tonight] \"Not yet. Keep it for me.\"",
+              "Next": "kept",
+              "Set": [
+                "tirabade.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "dealt",
+          "Speaker": "Anevia",
+          "Text": "{n}Anevia deals. Irabeth cheats, badly and one-handed, and denies it under oath. Nobody finds the Queen of Coins. At some point the watch changes behind you, and nobody at the table notices, and then the lantern is the only light on the road and all three of you are still there.{/n}\n\"Same time tomorrow,\" Anevia says. \"Same chairs. Knock first.\"",
+          "Choices": [
+            {
+              "Text": "\"Same chairs.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Irabeth",
+          "Text": "\"Then it stays here. We'll put a cup on it.\"\n{n}Anevia is already pouring.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Keep it warm.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "tirabade.trickster.third_chair"
+      ],
+      "Forbids": [],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "tirabade",
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "anevia.trickster.epilogue.nailed_wardrobe",
+      "Title": "The line in the mud",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.returned"
+      ],
+      "Forbids": [
+        "trying",
+        "committed",
+        "anevia.lover"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "ForbidOverrides": {
+        "trying": "tirabade.group_closed",
+        "committed": "tirabade.group_closed"
+      }
+    },
+    {
+      "Id": "anevia.trickster.epilogue.nailed_wardrobe_lover",
+      "Title": "The line in the mud",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.returned",
+        "anevia.lover",
+        "anevia.committed"
+      ],
+      "Forbids": [
+        "trying",
+        "committed",
+        "anevia.future_chosen",
+        "anevia.developed",
+        "anevia.survivor_continues",
+        "irabeth_dead",
+        "sacrifice",
+        "ascended",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "ForbidOverrides": {
+        "trying": "tirabade.group_closed",
+        "committed": "tirabade.group_closed",
+        "irabeth_dead": "irabeth.trickster.returned"
+      }
+    },
+    {
+      "Id": "anevia.trickster.epilogue.nailed_wardrobe_closed",
+      "Title": "The line in the mud",
+      "Owner": "Epilogue",
+      "MinChapter": 0,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Anevia Tirabade never again owned a wardrobe she had not nailed shut, and she never again went through a door without knocking on it first.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia",
+          "Paragraphs": [
+            {
+              "Text": "The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the carpenters found it and could not work out why anyone had used so many nails.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.wardrobe_nailed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's personal\", and nobody believes him.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.crated"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in the room, she said it was the other way round.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.knows_the_bargain"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it out.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.accounting"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never again took anything the Commander said on trust. She said it was restful.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.late_committed",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.declined",
+                "anevia.trickster.friends"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three knocks, and no furniture.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.terms_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the key to the Commander's rooms, and never once used it. Probably.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.cost.her_key"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept her word and never came inside. Letters reached the Commander now and then from towns on the road south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.declined"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She came to the gate once more, to say goodbye properly, and did not come again.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.closed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they liked it there.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "anevia.trickster.friends"
+              ],
+              "Forbids": [
+                "anevia.committed",
+                "anevia.closed",
+                "anevia.trickster.late_committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the road side of it and talked to her through the whole of every watch.",
+              "Requires": [
+                "anevia.trickster.returned",
+                "irabeth.trickster.returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.returned",
+        "anevia.lover",
+        "anevia.closed"
+      ],
+      "Forbids": [
+        "trying",
+        "committed",
+        "anevia.parted",
+        "anevia.committed",
+        "sacrifice",
+        "ascended",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "ForbidOverrides": {
+        "trying": "tirabade.group_closed",
+        "committed": "tirabade.group_closed"
+      }
+    },
+    {
+      "Id": "anevia.trickster.gone.react_konomi",
+      "Title": "Konomi's word",
+      "Owner": "Konomi",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the war council I missed.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "{n}Lady Konomi does not look up from her ledger. She turns it round so that you can read the line she has just written.{/n}\n\"'The Commander was absent from the war council on account of travel arrangements of an irregular nature.' I wrote that myself, Commander, in front of the Queen's envoy, without laughing. I would like you to know what it cost me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.returned",
+        "anevia.trickster.primed"
+      ],
+      "Forbids": [
+        "konomi.dismissed",
+        "konomi.retained_dead",
+        "anevia.trickster.cost.stolen_door"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "0dc8b8604bb33c846a63f3eb62443674"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.react_konomi_closet",
+      "Title": "Konomi's word",
+      "Owner": "Konomi",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the war council I missed.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "{n}Lady Konomi does not look up from her ledger.{/n}\n\"Your Commander missed a war council. Officially, a wardrobe was blamed. I have minuted it. I have also spent a week of other people's goodwill explaining the wardrobe to them, and I am afraid the account is overdrawn.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.returned",
+        "anevia.trickster.cost.stolen_door"
+      ],
+      "Forbids": [
+        "konomi.dismissed",
+        "konomi.retained_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "0dc8b8604bb33c846a63f3eb62443674"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.react_woljif",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You heard about Anevia.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"Chief. Chief. You went into a wardrobe in Drezen and came out in a lady's bedroom in Kenabres.\"\n{n}Woljif sits down on the nearest barrel as if his knees have given out.{/n}\n\"I've been climbin' drainpipes like a sucker my whole life.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.returned",
+        "anevia.trickster.primed"
+      ],
+      "Forbids": [
+        "woljif.dead",
+        "woljif.kicked_out",
+        "anevia.trickster.cost.crated"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.react_woljif_crate",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You heard about Anevia.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"A crate. You posted yourself. In a crate. Addressed to a dead drop.\"\n{n}Woljif wipes his eyes.{/n}\n\"Chief, I'm gonna cry. That's the most beautiful thing I ever heard, and I was raised by thieves.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.returned",
+        "anevia.trickster.cost.crated"
+      ],
+      "Forbids": [
+        "woljif.dead",
+        "woljif.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.react_woljif_fetched",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You heard about Anevia.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"Chief, the Knight-Captain rode out with one horse and came back with two horses and a wife. I asked her how. She said 'orders'.\"\n{n}He shudders.{/n}\n\"I'm never askin' her anything again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.gone.fetched"
+      ],
+      "Forbids": [
+        "woljif.dead",
+        "woljif.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.react_konomi_fetched",
+      "Title": "Konomi's word",
+      "Owner": "Konomi",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"The Tirabades are back.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "\"The Tirabades are both off the books and both on them, Commander. I have stopped asking how. I have not stopped writing it down.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.gone.fetched"
+      ],
+      "Forbids": [
+        "konomi.dismissed",
+        "konomi.retained_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "0dc8b8604bb33c846a63f3eb62443674"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.react_woljif_confession",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You heard about Anevia.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"Chief. The spy lady asked me if I'd ever seen you lie. I said no. She said 'good answer, wrong question' and walked off.\"\n{n}He is still sweating.{/n}\n\"That was an hour ago.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.gone.confession"
+      ],
+      "Forbids": [
+        "woljif.dead",
+        "woljif.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "anevia.trickster.gone.react_konomi_confession",
+      "Title": "Konomi's word",
+      "Owner": "Konomi",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"The Tirabades are back.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Konomi",
+          "Text": "\"Mistress Tirabade requested a certified copy of the incident report from Iz. I gave her both versions, Commander. She kept the one that hurt, and returned the other with a note.\"\n{n}Konomi produces it. Two words, in a plain hand: \"Tidy. Wrong.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "anevia.trickster.gone.confession"
+      ],
+      "Forbids": [
+        "konomi.dismissed",
+        "konomi.retained_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "anevia",
+      "Reaction": true,
+      "AnswerLists": [
+        "0dc8b8604bb33c846a63f3eb62443674"
+      ]
     }
   ],
   "Etudes": {
@@ -137917,6 +142455,8 @@
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
     "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
+    "woljif.kicked_out": "2046d985bbc28a04188efa5fb06b6004",
+    "woljif.dead": "2df11d659d8f57846a6a3f16492adbb8",
     "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
     "socot.gone": "007c4990584473046ac29666a235efb3",
     "shamira.killed": "dd6731e2cb230694f9c394fa32391ad5",
@@ -137928,7 +142468,8 @@
     "fool_king.crowned": "cc76b7abcda591f438d0f24972dafddc",
     "ending.wound_closed": "10cf0442f31a4796af8b28281f35e944",
     "council.fought_nocta_allied": "f4004d2687004c646bbe3a047d15f78f",
-    "council.fought": "b80a81e97e26167489c439caf34888f8"
+    "council.fought": "b80a81e97e26167489c439caf34888f8",
+    "shyka.gone": "53fa4f1c1655c3c41b0280b3a8e4d8c9"
   },
   "Relationships": {
     "tirabade": {
@@ -137950,7 +142491,11 @@
       "FailureFlags": [
         "loss",
         "inhuman"
-      ]
+      ],
+      "UnavailableOverrides": {
+        "irabeth_dead": "irabeth.trickster.returned",
+        "anevia_gone": "anevia.trickster.returned"
+      }
     },
     "seelah": {
       "Title": "A place beside the fire",
@@ -138137,7 +142682,7 @@
       "Title": "Anevia: A life of her choosing",
       "Description": "Anevia has time for a conversation that is neither a report nor an invitation for somebody else. What she chooses to share is hers to decide.",
       "Objective": "Make time for Anevia",
-      "Guidance": "Speak with Anevia in Drezen. Private invitations and decisions about her marriage develop through actual conversations. Other relationships remain your own.",
+      "Guidance": "Speak with Anevia in Drezen. Private invitations and decisions about her marriage develop through actual conversations. Other relationships remain your own. On the Trickster path, an Anevia who has left the crusade can still be reached, though not by any ordinary door. After her return, look for her outside the Drezen gate, by the smithy.",
       "StartedFlag": "anevia.started",
       "ClosedFlag": "anevia.closed",
       "CommittedFlag": "anevia.committed",
@@ -138151,7 +142696,19 @@
         "anevia_dead",
         "anevia_gone",
         "inhuman"
-      ]
+      ],
+      "UnavailableOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "TricksterAccess": {
+        "gone": {
+          "Detect": [
+            "anevia_gone"
+          ],
+          "Device": "anevia.trickster.gone.setup",
+          "Returned": "anevia.trickster.returned"
+        }
+      }
     },
     "irabeth": {
       "Title": "Irabeth: The name she would make",
@@ -138455,6 +143012,9 @@
     ],
     "council.cauldron_given": [
       "b936cf96571c0354fb7a57f4987fea5c"
+    ],
+    "closets.known": [
+      "2f4be0bde527a7d4cb7c73131ab551db"
     ],
     "siphon.burst_areelu_b": [
       "8a50fd9c430a80c498da5c09366ff5fc"
@@ -139082,6 +143642,28 @@
       "AnswerLists": [
         "871af36f2ab2b1f40b5de77976c54276"
       ]
+    },
+    "anevia.presence": {
+      "Unit": "b5e867e13503c6f41bb1316705efb4a2",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "reuse-native",
+      "At": {
+        "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+        "Side": "front",
+        "Distance": 2.0
+      },
+      "Requires": [
+        "trickster.ever",
+        "anevia.trickster.returned"
+      ],
+      "Forbids": [
+        "anevia.closed"
+      ],
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
     }
   },
   "PermanentEtudes": [
@@ -139153,6 +143735,37 @@
         "fool_king.crowned"
       ]
     ],
+    "council.expired": [
+      [
+        "socot.gone"
+      ],
+      [
+        "shyka.gone"
+      ],
+      [
+        "council.fought"
+      ],
+      [
+        "council.fought_nocta_allied"
+      ],
+      [
+        "trickster.failed"
+      ]
+    ],
+    "closets.door_kept": [
+      [
+        "closets.known",
+        "socot.gone"
+      ],
+      [
+        "closets.known",
+        "council.fought"
+      ],
+      [
+        "closets.known",
+        "council.fought_nocta_allied"
+      ]
+    ],
     "arsinoe.siphon_burst": [
       [
         "siphon.burst_shamira"
@@ -139165,6 +143778,23 @@
       ],
       [
         "siphon.burst_areelu_b"
+      ]
+    ],
+    "anevia.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "anevia.trickster.gate_seen"
+      ]
+    ],
+    "anevia.socoth_absent": [
+      [
+        "socot.gone"
+      ],
+      [
+        "council.fought"
+      ],
+      [
+        "council.fought_nocta_allied"
       ]
     ]
   }

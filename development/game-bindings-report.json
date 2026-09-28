@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1363,
-  "unique_targets": 312,
+  "binding_uses": 1388,
+  "unique_targets": 318,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -24,6 +24,10 @@
     },
     "a609ed9b2205d034bb3bb04d2a255681": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+      "type": "BlueprintUnit"
+    },
+    "15f754455d1d87c42a4e14df456d5415": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/BlacksmithCapitalTrader.jbp",
       "type": "BlueprintUnit"
     },
     "280d4712dceb37f4a88e98f1f4c6e64f": {
@@ -262,6 +266,10 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0016.jbp",
       "type": "BlueprintCue"
     },
+    "2f4be0bde527a7d4cb7c73131ab551db": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
     "77216dc2c3770794f93b010659f4aa64": {
       "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0056.jbp",
       "type": "BlueprintCue"
@@ -292,6 +300,10 @@
     },
     "417fa384f3250634bb71859fbc913453": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "e41585da330233143b34ef64d7d62d69": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Woljif/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "81109ea8fb20dbc478cf67116740f4a1": {
@@ -534,6 +546,14 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
       "type": "BlueprintEtude"
     },
+    "2df11d659d8f57846a6a3f16492adbb8": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WoljifCompanion/WoljifNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "2046d985bbc28a04188efa5fb06b6004": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WoljifCompanion/WoljifNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
     "6125c10886d6465091f4e092618ca55a": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/AneviaNotInDrezen.jbp",
       "type": "BlueprintEtude"
@@ -696,6 +716,10 @@
     },
     "dd6731e2cb230694f9c394fa32391ad5": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/ShamiraKilled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "53fa4f1c1655c3c41b0280b3a8e4d8c9": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/ShykaIsGone.jbp",
       "type": "BlueprintEtude"
     },
     "007c4990584473046ac29666a235efb3": {
