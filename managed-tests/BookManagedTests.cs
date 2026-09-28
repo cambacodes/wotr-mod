@@ -109,10 +109,14 @@ internal static class BookManagedTests
 
         // Portraits: keys with art resolve to a file; keys without art resolve to nothing, and the page keeps the native picture.
         var withArt = letters.Select(l => pages[mail[Array.IndexOf(letters, l)].AssetGuid.ToString()].Portrait).Distinct().ToList();
-        int resolved = withArt.Count(key => File.Exists(Path.Combine(artFolder, key + ".png")));
+        // A key is covered by its own file, a native portrait fallback (resolved in game), or an alias to a shipped file.
+        bool Covered(string key) => File.Exists(Path.Combine(artFolder, key + ".png"))
+            || story.PortraitFallbacks.TryGetValue(key, out var target)
+               && (target.Length == 32 || File.Exists(Path.Combine(artFolder, target + ".png")));
+        int resolved = withArt.Count(Covered);
         check(resolved > 0, "No letter sender resolves to portrait art.");
-        Console.WriteLine("Book portraits: " + resolved + " of " + withArt.Count + " letter senders have art; the rest keep the native book picture ("
-            + string.Join(", ", withArt.Where(key => !File.Exists(Path.Combine(artFolder, key + ".png"))).Take(12)) + (withArt.Count - resolved > 12 ? ", ..." : "") + ").");
+        Console.WriteLine("Book portraits: " + resolved + " of " + withArt.Count + " letter senders have art (own file, native portrait or alias); the rest keep the native book picture ("
+            + string.Join(", ", withArt.Where(key => !Covered(key)).Take(12)) + (withArt.Count - resolved > 12 ? ", ..." : "") + ").");
 
         // Glossary: every RRT entry joins the native glossary and resolves through GlossaryHolder.GetEntry.
         var entries = (IReadOnlyList<GlossaryEntry>)main.GetProperty("GlossaryEntries", BindingFlags.NonPublic | BindingFlags.Static)!.GetValue(null);

@@ -22,6 +22,9 @@ namespace Tirabade
         public Dictionary<string, string> StartedQuests = new Dictionary<string, string>();
         // E10: a BlueprintFeature (any fact) the main character holds, e.g. a mythic path trick the player chose.
         public Dictionary<string, string> MainCharacterFacts = new Dictionary<string, string>();
+        // Book pictures: a portrait key with no Scenes/<key>.png falls back to a native BlueprintPortrait (32-hex GUID)
+        // or to another key's file (an alias, e.g. Arsinoe -> ArsinoeShop). A custom PNG always wins.
+        public Dictionary<string, string> PortraitFallbacks = new Dictionary<string, string>();
         public Dictionary<string, Revival> Revivals = new Dictionary<string, Revival>();
         public Dictionary<string, ParentEndingEdit> ParentEpilogueEdits = new Dictionary<string, ParentEndingEdit>();
         public List<ParentEndingLossRule> ParentEpilogueLossRules = new List<ParentEndingLossRule>();
