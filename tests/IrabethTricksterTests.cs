@@ -189,7 +189,7 @@ internal static class IrabethTricksterTests
                   && Rules.Available(story, second, Later(story, no, 96)), "Trk_Irabeth_Refusal: the priced second ask is mistimed.");
             var asked = new HashSet<string>();
             var finals = Program.Walk(second, Later(story, no, 96), (page, _) => asked.Add(page));
-            check(finals.Any(r => r.Has("irabeth.committed") && r.Has("irabeth.trickster.cost.signed_request"))
+            check(finals.Any(r => r.Has("irabeth.committed") && r.Has("irabeth.trickster.cost.signed_request") && r.Has("irabeth.trickster.nevi_answered"))
                   && finals.Any(r => r.Has("irabeth.closed") && !r.Has("irabeth.committed")), "Second ask: no commit or no hard no.");
             check(asked.Contains("threshold") && asked.Contains("morning"), "Signed request skips the intimate beat.");
         }
@@ -276,11 +276,18 @@ internal static class IrabethTricksterTests
 
         var second = S("irabeth.trickster.second_ask");
         var declined = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.declined",
-                             "anevia_gone", AneviaReturned);
+                             "anevia_gone", AneviaReturned, "anevia.trickster.shares_beth");
         declined.Times["irabeth.trickster.declined"] = declined.Hour - 96;
         var asked = new HashSet<string>();
         check(Program.Walk(second, declined, (page, _) => asked.Add(page)).Any(r => r.Has("irabeth.committed"))
               && asked.Contains("sent_gate") && !asked.Contains("sent") && asked.Contains("morning_home"),
             "The signed request still travels south to a wife at the gate.");
+        // Anevia back but silent: the signed request waits in the roster; nothing commits and the scene stays open.
+        var quiet = Program.Copy(declined); quiet.Flags.Remove("anevia.trickster.shares_beth");
+        var quietPages = new HashSet<string>();
+        var quietOutcomes = Program.Walk(second, quiet, (page, _) => quietPages.Add(page));
+        check(quietOutcomes.All(r => !r.Has("irabeth.committed")) && quietPages.Contains("held") && !quietPages.Contains("threshold")
+              && !quietPages.Contains("morning_home") && quietOutcomes.Any(r => !r.Has(second.Id)),
+            "The signed request commits past Anevia's silence.");
     }
 }

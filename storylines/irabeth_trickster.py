@@ -352,23 +352,32 @@ physical("irabeth.trickster.second_ask", "A request, signed", '"Knight-Captain. 
 {n}She pushes a sheet of roster paper across the step, and a pen. Your own pen, the one you misplaced.{/n}
 "I'll give it to Nevi before I read it myself. If she laughs, the answer's no."''',
       c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "sent",
-        forbids=(A_RET,), flags=("irabeth.committed", SIGNED)),
+        forbids=(A_RET,), flags=(SIGNED,)),
       c('"Some things I don\'t sign."', "refused", flags=("irabeth.closed",)),
       c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "sent_gate",
-        requires=(A_RET,), flags=("irabeth.committed", SIGNED))),
+        requires=(SHARES,), flags=(SIGNED,)),
+      c('[Write it as a request and sign it] "Not an order. A request. Signed. Nevi reads it first."', "held",
+        requires=(A_RET,), forbids=(SHARES,))),
     i("refused", '''"Then you're my Commander, and that's the end of it."
 {n}She takes the paper back and folds it into her roster, blank.{/n}''',
       c('"Understood."')),
     i("sent", '''{n}It is five days before she finds you again. She has the paper in her free hand, travel-stained, sealed with a dead drop's wax.{/n}
-"I sent it to her. It came back with one word on it. I'm not telling you which."
+"I sent it to her dead drop. It came back with one word on it, in her hand."
+{n}She turns the paper round so you can read it. "Yes." And under it, smaller, pressed hard enough to tear: "Ask me to my face next time, Beth."{/n}
 {n}She is smiling, for the first time since Iz.{/n}''',
-      c("Continue", "threshold")),
+      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered"))),
     nar("threshold", THRESHOLD, c("Continue", "morning", forbids=(A_RET,)), c("Continue", "morning_home", requires=(A_RET,))),
     i("morning", MORNING_NOTE, c('"Dismissed, Knight-Captain."')),
     i("sent_gate", '''{n}She is back within the hour, the paper crumpled in her free hand and mud from the gate road on her boots.{/n}
-"She didn't laugh. She read it twice, the way I read orders, and wrote one word on the back. I'm not telling you which."
+"She didn't laugh. She read it twice, the way I read orders, and wrote one word on the back."
+{n}She turns the paper round so you can read it. "Yes." Nothing else. Anevia has never wasted ink.{/n}
 {n}She is smiling, for the first time since Iz.{/n}''',
-      c("Continue", "threshold")),
+      c("Continue", "threshold", flags=("irabeth.committed", "irabeth.trickster.nevi_answered"))),
+    i("held", '''{n}She takes the paper, reads your signature, and folds it into her roster instead of sending it.{/n}
+"Nevi's at the gate and hasn't said her piece. I'm not putting a signed request in front of her before she has. That's not how it goes, not with her."
+{n}She taps the roster once.{/n}
+"It stays in here until she speaks. Then I'll carry it out to her myself."''',
+      c('"Then we wait for her."', abort=True)),
     i("morning_home", MORNING_HOME, c('"Dismissed, Knight-Captain."')),
 ], requires=("trickster.ever", DECLINED, "irabeth.trickster.back_on_duty"), forbids=("irabeth.committed",), delay=96)
 
