@@ -185116,7 +185116,8 @@
         }
       ],
       "Requires": [
-        "trickster.ever"
+        "trickster.ever",
+        "eritrice.committed"
       ],
       "Forbids": [
         "eritrice.closed",
@@ -185127,12 +185128,6 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "RequiresAnyGroups": [
-        [
-          "eritrice.committed",
-          "eritrice.trickster.late_committed"
-        ]
-      ],
       "ForbidOverrides": {
         "eritrice.trickster.declined": "eritrice.committed",
         "council.fought": "eritrice.trickster.returned",
@@ -187559,7 +187554,7 @@
         {
           "Id": "cut",
           "Speaker": "Eritrice",
-          "Text": "{n}She pulls you down onto the table with her, scattering the Council's inkwells, and the lamp gutters and does not go out. The last thing you see clearly is her hand sweeping the second reading's scroll to safety at the far end of the table, even now, even then; and the last thing you hear, before the chair stops chairing entirely, is her low, rough laugh, and your name in it.{/n}",
+          "Text": "{n}You answer it. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}",
           "Choices": [
             {
               "Text": "[...]",
@@ -189756,7 +189751,7 @@
         {
           "Id": "carried",
           "Speaker": "Eritrice",
-          "Text": "\"Carried.\" {n}She blows out the candle.{/n}\n{n}In the dark the minutes slide off the table and neither of you picks them up, which is the second time in her existence she has let a record fall; and the last thing she says, with her mouth against your ear and her claws drawn in so that only the warmth of her hands is left, is that she will write it all down in the morning, every word, and that you had better give her a great deal to write.{/n}",
+          "Text": "\"Carried.\" {n}She blows out the candle.{/n}\n{n}In the dark you hear the minutes slide off the table, and she does not reach for them, which is the second time in her existence she has let a record fall. Her last words before the chair stops chairing are a promise to write it all down in the morning, every word, and a warning that you had better give her a great deal to write.{/n}",
           "Choices": [
             {
               "Text": "[Give her a great deal to write.]",
@@ -191629,8 +191624,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

@@ -273,8 +273,7 @@ SCENES.append(scene(P + "epilogue.we_did_meet", "", "EritriceEpilogue", 6, "", [
             p("{n}The grudge stayed on the agenda. She read it aloud at every session the Commander attended, and then, in the minutes, noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA,)),
             p("{n}The gazette with the Commander's answer on the record hung framed in the chair's study, in Nirvana, beside a scroll she refused to lend to anyone.{/n}", requires=(ON_RECORD,)),
         ))],
-    requires=("trickster.ever",), forbids=(CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
-    RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
+    requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
     ForbidOverrides={DECLINED: COMMITTED, "council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.cheated_death"}, **EP))
 
 

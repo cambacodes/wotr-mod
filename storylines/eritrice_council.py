@@ -392,7 +392,7 @@ sitting(TWICE, "Twice nightly", '"Is the chair in session?"', [
 "Seconded?" {n}She turns her head, and her whiskers brush your jaw, and her breath is warm on your throat.{/n} "The chair notes that the floor is taking a very long time to second a simple motion. The chair will count to three. The chair has never counted to three for anyone. One."''',
       c("[Second it before she reaches two.]", "carried")),
     e("carried", '''"Carried." {n}She blows out the candle.{/n}
-{n}In the dark the minutes slide off the table and neither of you picks them up, which is the second time in her existence she has let a record fall; and the last thing she says, with her mouth against your ear and her claws drawn in so that only the warmth of her hands is left, is that she will write it all down in the morning, every word, and that you had better give her a great deal to write.{/n}''',
+{n}In the dark you hear the minutes slide off the table, and she does not reach for them, which is the second time in her existence she has let a record fall. Her last words before the chair stops chairing are a promise to write it all down in the morning, every word, and a warning that you had better give her a great deal to write.{/n}''',
       c("[Give her a great deal to write.]", flags=(K + "twice_nightly_carried",))),
 ], requires=(RECORD,), forbids=(TWICE,), delay=24)
 

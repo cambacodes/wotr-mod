@@ -526,7 +526,7 @@ minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
 "I do not know what I will write tomorrow. I find I do not care." {n}She pulls the belt of her gown loose with one claw, and it falls open, and she does not look away from your face while it does.{/n}
 "Well, Commander? The chair has called the question."''',
       c('[Answer the question.]', "cut", flags=(M + "night",))),
-    e("cut", '''{n}She pulls you down onto the table with her, scattering the Council's inkwells, and the lamp gutters and does not go out. The last thing you see clearly is her hand sweeping the second reading's scroll to safety at the far end of the table, even now, even then; and the last thing you hear, before the chair stops chairing entirely, is her low, rough laugh, and your name in it.{/n}''',
+    e("cut", '''{n}You answer it. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}''',
       c("[...]")),
 ], requires=(COMMITTED,), forbids=(ADJOURNED,), delay=12)
 
