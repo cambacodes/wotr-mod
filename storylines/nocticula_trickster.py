@@ -353,3 +353,56 @@ def integrate(payload):
         start["Choices"].append(c(choice["Text"], "scent_" + target, requires=(*choice["Requires"], KEPT),
                                   forbids=tuple(f for f in choice["Forbids"] if f != KEPT)))
         hand["Nodes"].append(n("scent_" + target, "Nocticula", SCENT_LINE, c("Continue", target), portrait="Nocticula"))
+
+
+# --- Court scenes (ledger row 11: Nocticula owns all four; optional; never Forbid, close or set another route's flags) ---
+# Canon: Vellexia "has reigned as the leader of Alushinyrra's aristocrats" (enGB 82d99a5c); with her gone "the highest seat
+# in Alushinyrra has been vacant" (8b5f3d4a); her house tells callers "Lady Vellexia has temporarily left Alushinyrra"
+# (c957420f). Authored: the flowers, the little bird, the black silk.
+
+V_PRESUMED = "vellexia.trickster.presumed_dead"
+V_KEPT = "vellexia.trickster.kept_as_mirror"
+V_DIMINISHED = "vellexia.trickster.cost.diminished"
+SECRET_VELLEXIA = "nocticula.trickster.secret_known.vellexia"
+COURT_BLACK = ('"Heard? Alushinyrra wore black for her this season. The highest seat in my city stood empty, and every little '
+               'aristocrat beneath it began measuring it for their own backside. I sent flowers. Her doormen still tell callers '
+               'that Lady Vellexia has temporarily left Alushinyrra, which is almost witty, for doormen."')
+COURT_UNDECIDED = ('{n}Her smile does not move.{/n} "Nobody told me. I am told everything. I have not decided yet whether that '
+                   'is an insult to her or to me, and until I decide, it belongs to you."')
+COURT_CHOICES = (c('"Ask her yourself. Carefully."', flags=(SECRET_VELLEXIA,)),
+                 c("[Say nothing.]", abort=True))
+
+threshold("nocticula.trickster.court.vellexia", "Black for Vellexia", "\"Lady Vellexia of the Upper City. You've heard.\"", [
+    nar("start", "{n}At the name the projection's attention sharpens, the way a cat's does at a sound behind a wall. "
+                 "The fires of Threshold lean in to listen with her.{/n}",
+        c("Continue", "kept", requires=(V_KEPT,)),
+        c("Continue", "diminished", requires=(V_DIMINISHED,), forbids=(V_KEPT,)),
+        c("Continue", "furniture", forbids=(V_KEPT, V_DIMINISHED))),
+    nt("kept", COURT_BLACK + "\n"
+       "{n}Her voice drops.{/n} \"Then a little bird told me where she went. She is a looking-glass in your quarters, clown, "
+       "and she is awake behind it. You kept her.\"\n"
+       "{n}She considers you for a long moment.{/n} \"I could make you give her back. I will not. A succubus who lets herself "
+       "be made into furniture has learned something I could never have taught her. Dust her. And cover her, on the nights "
+       "you would rather she did not watch; she will be taking notes for me.\"", *COURT_CHOICES),
+    nt("diminished", COURT_BLACK + "\n"
+       "\"Then a little bird told me she spent those months hanging on a wall as a very flattering portrait of herself, and "
+       "came off it unfinished at the hands.\" " + COURT_UNDECIDED, *COURT_CHOICES),
+    nt("furniture", COURT_BLACK + "\n"
+       "\"Then a little bird told me my first lady spent those months as a piece of furniture in a mortal's house, and came "
+       "out of it in a very bad temper.\" " + COURT_UNDECIDED, *COURT_CHOICES),
+], ("trickster.ever", V_PRESUMED), (SECRET_VELLEXIA, FIGHT), T_DOING_WELL, ForbidOverrides={FIGHT: RETURNED})
+
+# b6/b7 belong before the favour page (b8) in the spec's sibling order: appended here, then moved into place.
+page("nocticula.trickster.defeated.epilogue.mirror", "A season as furniture",
+     "{n}She never forgave Vellexia for the season she spent as furniture, mostly because nobody had told her.{/n}",
+     ("trickster.ever", SECRET_VELLEXIA))
+# Vellexia's three outcomes are exclusive (each device sets one and forbids itself), so b6 reads the two that end her
+# season off the wall, never Forbids the kept one: forbidding another route's unavailable state breaks coexistence.
+SCENES[-1]["RequiresAnyGroups"] = [["vellexia.trickster.unmirrored", V_DIMINISHED]]
+page("nocticula.trickster.defeated.epilogue.mirror_kept", "Black silk",
+     "{n}Every winter a parcel reached the Commander from Alushinyrra: a square of black silk, the right size to cover a tall "
+     "mirror, and a card in a hand the Commander knew. \"For the nights she should not watch.\"{/n}",
+     ("trickster.ever", SECRET_VELLEXIA, V_KEPT))
+_MIRROR_PAGES = [SCENES.pop(), SCENES.pop()][::-1]
+_FAVOUR = next(i for i, s in enumerate(SCENES) if s["Id"] == "nocticula.trickster.defeated.epilogue.favour")
+SCENES[_FAVOUR:_FAVOUR] = _MIRROR_PAGES
