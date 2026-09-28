@@ -156208,6 +156208,2139 @@
       "AnswerLists": [
         "589d83230bbbfd04bb1220ee4fef1ce1"
       ]
+    },
+    {
+      "Id": "aranka.trickster.verse.kings_tavern",
+      "Title": "A rhyme for Thaberdine",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"Your Majesty. That ballad of yours.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Thaberdine is on his third chorus of the ancient Sarkorian ballad his pops used to sing, and on his fourth mug. The tune is a good one. The words are not: somewhere in the second verse he loses them every time, hums through the gap with enormous feeling, and bangs his mug on the table where the rhyme ought to be.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "aranka.gave_song"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "unknown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "aranka.gave_song"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "known",
+          "Speaker": "Narrator",
+          "Text": "{n}You know that tune, or something very like it. You last heard it in Kenabres, in Desna's burning temple, sung by a priestess called Aranka who had just put it into your keeping, while her friend Ilkes made you promise to remember it. Hers had words that went all the way through. His has a hole in the middle where a verse should be.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"Aranka's song, second verse, the good one. I finally found a rhyme for 'Thaberdine'. Everybody!\"",
+              "Next": "round",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Never mind. Carry on, Your Majesty.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "unknown",
+          "Speaker": "Narrator",
+          "Text": "{n}You know that tune, or something very like it. Half the Desnan refugees on the road out of Kenabres were humming it, and the ones who knew the words called it Starward Gaze and said a priestess named Aranka had carried it out of the burning city. Theirs went all the way through. His has a hole in the middle where a verse should be.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"Aranka's song, second verse, the good one. I finally found a rhyme for 'Thaberdine'. Everybody!\"",
+              "Next": "round",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Never mind. Carry on, Your Majesty.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "round",
+          "Speaker": "Narrator",
+          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}By the third round the whole tavern is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth, everyone swears it was always sung that way. The pig oinks on the rhyme. Nobody taught it to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "crowned",
+              "Set": [],
+              "Requires": [
+                "fool_king.crowned"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "uncrowned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "fool_king.crowned"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "crowned",
+          "Speaker": "conversant",
+          "Text": "{n}Thaberdine weeps openly into his crown, which is too big to be a handkerchief and is being used as one anyway.{/n}\n\"That's it! That's the one! That's how pops sang it!\" \"My pops learned this one from a Desnan girl with a voice like a lark! Or she learned it from him! One of 'em did!\"\n{n}He blinks at you through the tears as if you had only just walked in.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Once more, from the top. Everybody!\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.round_bought"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "uncrowned",
+          "Speaker": "conversant",
+          "Text": "{n}Thaberdine weeps openly into his mug, and then drinks from it anyway.{/n}\n\"That's it! That's the one! That's how pops sang it!\" \"My pops learned this one from a Desnan girl with a voice like a lark! Or she learned it from him! One of 'em did!\"\n{n}He blinks at you through the tears as if you had only just walked in.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Once more, from the top. Everybody!\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.round_bought"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "aranka.trickster.primed",
+        "aranka.ran_romance",
+        "aranka.ran_failure"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "aranka",
+      "AnswerLists": [
+        "1a17d8053a3be7f47a7908eb6706f2fe"
+      ],
+      "NativeReturnCue": "814dd1a078a1c2849aefc85e2e15b2d2"
+    },
+    {
+      "Id": "aranka.trickster.verse.kings_tavern_c5",
+      "Title": "A rhyme for Thaberdine",
+      "Owner": "Aranka",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Your Majesty. That ballad of yours.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The King's court has come back from the war louder, fewer and a great deal drunker. Thaberdine is still singing the ballad his pops used to sing, and he still loses the words in the second verse, and the court still bangs its mugs through the gap as if that were how it went.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "aranka.gave_song"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "unknown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "aranka.gave_song"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "known",
+          "Speaker": "Narrator",
+          "Text": "{n}You know that tune, or something very like it. You last heard it in Kenabres, in Desna's burning temple, sung by a priestess called Aranka who had just put it into your keeping, while her friend Ilkes made you promise to remember it. Hers had words that went all the way through. His has a hole in the middle where a verse should be.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"Aranka's song, second verse, the good one. I finally found a rhyme for 'Thaberdine'. Everybody!\"",
+              "Next": "round",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Never mind. Carry on, Your Majesty.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "unknown",
+          "Speaker": "Narrator",
+          "Text": "{n}You know that tune, or something very like it. Half the Desnan refugees on the road out of Kenabres were humming it, and the ones who knew the words called it Starward Gaze and said a priestess named Aranka had carried it out of the burning city. Theirs went all the way through. His has a hole in the middle where a verse should be.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"Aranka's song, second verse, the good one. I finally found a rhyme for 'Thaberdine'. Everybody!\"",
+              "Next": "round",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Never mind. Carry on, Your Majesty.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "round",
+          "Speaker": "Narrator",
+          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}By the third round the whole tavern is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth, everyone swears it was always sung that way. The pig oinks on the rhyme. Nobody taught it to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "crowned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "crowned",
+          "Speaker": "conversant",
+          "Text": "{n}Thaberdine takes off his crown, weeps into it, and puts it back on wet.{/n}\n\"That's it! That's the one! That's how pops sang it!\" \"My pops learned this one from a Desnan girl with a voice like a lark! Or she learned it from him! One of 'em did!\"\n{n}He raises his mug to you, and then to the pig, and then to you again, as if you had only just walked in.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Once more, from the top. Everybody!\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.round_bought"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "fool_king.crowned"
+      ],
+      "Forbids": [
+        "aranka.trickster.primed",
+        "aranka.ran_romance",
+        "aranka.ran_failure",
+        "fool_king.gone"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "aranka",
+      "AnswerLists": [
+        "6dccfd39947ef4242a8afbe36b21a46c"
+      ],
+      "NativeReturnCue": "7b050ba0745bf144e815632e39b34853"
+    },
+    {
+      "Id": "aranka.trickster.verse.any_tavern",
+      "Title": "Every mug in the house",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}\n{n}It takes all night and most of the camp's beer. By dawn the sappers are singing it on the walls, and by the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"Aranka's song, second verse, the good one. I finally found a rhyme for 'Thaberdine'. Everybody!\"",
+              "Next": "reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "\"...On second thought, buy them one round and let them sing what they like.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "reply",
+          "Speaker": "Narrator",
+          "Text": "{n}Nine days later a letter arrives, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "reply_known",
+              "Set": [],
+              "Requires": [
+                "aranka.gave_song"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "reply_unknown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "aranka.gave_song"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "reply_known",
+          "Speaker": "Aranka",
+          "Text": "\"Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part!\"\n\"It came down from Elysium in one piece. I carried it out of Kenabres in one piece. I gave it to you in one piece, Commander, and Ilkes asked you to remember it, not to improve it. The carters say it started in Drezen. I am coming to Drezen to find the thief.\"",
+          "Choices": [
+            {
+              "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.late",
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.credited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"Never heard it. Must be the Desnans.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.late",
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.denied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "reply_unknown",
+          "Speaker": "Aranka",
+          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Every camp from here to the Worldwound is singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part! The carters say it started in your city, in a tavern, with somebody paying for the beer. I am coming to Drezen to find the thief. Please have them ready.\"",
+          "Choices": [
+            {
+              "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.late",
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.credited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"Never heard it. Must be the Desnans.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.late",
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.denied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "aranka.trickster.primed",
+        "aranka.ran_romance",
+        "aranka.ran_failure"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "RequiresAnyGroups": [
+        [
+          "fool_king.gone",
+          "coronation.seen"
+        ]
+      ]
+    },
+    {
+      "Id": "aranka.trickster.verse.her_letter",
+      "Title": "Somebody changed my song",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The letter is in a round, flourishing hand that has pressed hard enough to tear the paper in two places. It smells faintly of road dust and lamp oil, and someone has used it as a coaster.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "aranka.gave_song"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "unknown",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "aranka.gave_song"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "known",
+          "Speaker": "Aranka",
+          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him.\"\n\"It came down from Elysium in one piece, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
+          "Choices": [
+            {
+              "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.credited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"Never heard it. Must be the Desnans.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.denied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "unknown",
+          "Speaker": "Aranka",
+          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. I am told the new verse arrived with a Knight-Commander standing on a bench and paying for the beer.\"\n\"I am coming to Drezen to find the thief. Please have them ready.\"",
+          "Choices": [
+            {
+              "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.credited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"Never heard it. Must be the Desnans.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.answered",
+                "aranka.extension_started",
+                "aranka.trickster.cost.denied"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.primed"
+      ],
+      "Forbids": [
+        "aranka.trickster.answered",
+        "aranka.ran_romance",
+        "aranka.ran_failure"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "aranka.trickster.verse.duet",
+      "Title": "Second verse, the good one",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You wanted the thief. Here I am.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Fye leans across the counter as you come in.{/n} \"She's been tuning that thing for an hour and nobody's ordered a drink since. Do something.\"\n{n}The woman at the end of the counter is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of Fye's worst wine she has not touched. Every head in the room is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "mocking",
+              "Set": [],
+              "Requires": [
+                "aranka.trickster.cost.mocking_verse"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "posters",
+              "Set": [],
+              "Requires": [
+                "aranka.trickster.cost.announced"
+              ],
+              "Forbids": [
+                "aranka.trickster.cost.mocking_verse"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "denied",
+              "Set": [],
+              "Requires": [
+                "aranka.trickster.cost.denied"
+              ],
+              "Forbids": [
+                "aranka.trickster.cost.mocking_verse",
+                "aranka.trickster.cost.announced"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "vandal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "aranka.trickster.cost.mocking_verse",
+                "aranka.trickster.cost.announced",
+                "aranka.trickster.cost.denied"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "vandal",
+          "Speaker": "Aranka",
+          "Text": "\"You! Oh, you wonderful vandal.\"\n{n}She presses both hands to her cheeks, and then remembers she is angry and puts them back on the lute.{/n}\n\"There is no rhyme for Thaberdine. I tried, you know. Afterwards. I sat up two nights. There wasn't one, until you, and now there is, and it's 'tambourine', and I will never get it out of my head as long as I live.\"",
+          "Choices": [
+            {
+              "Text": "[Sing it] \"Second verse. The good one.\"",
+              "Next": "duet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "denied",
+          "Speaker": "Aranka",
+          "Text": "\"The Desnans, you said.\" {n}She does not smile.{/n} \"I am the Desnans. Three camps and a ferryman pointed me at you, Commander, and the ferryman did an impression.\"\n\"So. You never heard it. Sing it for me, then. The second verse. If you can't, I'll know you lied once. If you can, I'll know you lied twice.\"",
+          "Choices": [
+            {
+              "Text": "[Sing it] \"Second verse. The good one.\"",
+              "Next": "duet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "mocking",
+          "Speaker": "Aranka",
+          "Text": "{n}She puts the lute down, walks the length of the counter, and slaps you. Not hard. Precisely.{/n}\n\"There. I decided. I have been deciding since the letter.\" {n}She shakes out her hand.{/n} \"I wrote that song to hurt you. You stood on a bench and made a whole tavern sing it louder, and now it's the most requested song between here and the river, and every time they sing it they're laughing with you, not at you. You stole my revenge and made it scan.\"\n\"Now sing it with me. The verse where you lose. I'll take the harmony.\"",
+          "Choices": [
+            {
+              "Text": "[Sing it] \"The one where I lose. From the top.\"",
+              "Next": "duet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "posters",
+          "Speaker": "Aranka",
+          "Text": "\"You put me on a poster before you put me in a letter.\" {n}She lays a torn corner of one on the counter: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}\n\"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze has one verse that came down from Elysium, and nobody has ever dared add a second. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it.\"",
+          "Choices": [
+            {
+              "Text": "[Sing it] \"A second verse. Mine.\"",
+              "Next": "duet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "duet",
+          "Speaker": "Aranka",
+          "Text": "\"You owe me a duet for this. And an apology. Mostly the duet.\"\n{n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Fye stops polishing the same cup. A sapper by the door takes his helmet off without knowing he has done it.{/n}\n{n}When it ends there is the kind of silence that is worth more than applause, and then the applause, and she soaks up every bit of it with her eyes closed.{/n}\n\"My name goes first on every copy. Yours goes underneath. In small letters. Very small.\"",
+          "Choices": [
+            {
+              "Text": "[Sign under her name] \"Small letters. Agreed.\"",
+              "Next": "signed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Argue the billing] \"Put mine first. It's my verse.\"",
+              "Next": "billing",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "signed",
+          "Speaker": "Aranka",
+          "Text": "\"Good.\" {n}She writes both names on the back of Fye's bill of fare, hers in a round hand like a lark on a wire and yours underneath, so small it could be a flaw in the paper.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll be here.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.duet_sung",
+                "aranka.trickster.cost.credited"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "billing",
+          "Speaker": "Aranka",
+          "Text": "\"Your verse.\" {n}She laughs, delighted and not at all moved.{/n} \"Your verse is eleven words and a tambourine, Commander. My name goes first. Argue with me again and it goes first in capitals.\"\n{n}She writes both names on the back of Fye's bill of fare anyway, yours underneath, and underlines hers twice.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll be here.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.duet_sung",
+                "aranka.trickster.cost.vain"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.answered"
+      ],
+      "Forbids": [
+        "aranka.extension_closed",
+        "aranka.trickster.duet_sung"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "430cba7801b149b4e8494ace6baf4f7c",
+      "InteractionHub": "aranka.presence"
+    },
+    {
+      "Id": "aranka.trickster.verse.her_letter_twin",
+      "Title": "By post, then",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Aranka",
+          "Text": "{n}A letter in a round, flourishing hand, with a second sheet folded inside it: Starward Gaze, both verses, in her writing, with a space left underneath.{/n}\n\"I came to Drezen, and Fye's was boarded up, and nobody could tell me where you were, and I sang in the square instead and was moved on by a sergeant who didn't know who I was. So we'll do it by post.\"\n\"Sign. Under mine. Small.\"",
+          "Choices": [
+            {
+              "Text": "[Sign the copy under her name, small.]",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.answered",
+                "aranka.trickster.duet_sung",
+                "aranka.trickster.cost.credited",
+                "aranka.extension_started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.in_drezen",
+        "aranka.presence.failed"
+      ],
+      "Forbids": [
+        "aranka.extension_closed",
+        "aranka.trickster.duet_sung",
+        "aranka.trickster.verse.duet",
+        "aranka.trickster.touring.arrives"
+      ],
+      "DelayHours": 96,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "aranka.trickster.verse.encore",
+      "Title": "An offer from Nerosyan",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You came back again.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She is at the end of Fye's counter again, lute across her knees, with a letter in her hand that has a Mendevian seal on it. She has read it enough times to soften the folds.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "offer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "offer",
+          "Speaker": "Aranka",
+          "Text": "\"A troupe in Nerosyan wants me. A real stage, a real hall, a hundred people a night who have paid to sit still. They want Starward Gaze, the new one. With your verse.\"\n{n}She looks at the letter, and then at you, and then at the letter.{/n}\n\"I went round every camp this week. I sang it in all of them. The pikemen at the ford made me sing it three times and then sang it back to me wrong. And every night I came back here. I haven't decided why.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "vain",
+              "Set": [],
+              "Requires": [
+                "aranka.trickster.cost.vain"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "denied",
+              "Set": [],
+              "Requires": [
+                "aranka.trickster.cost.denied"
+              ],
+              "Forbids": [
+                "aranka.trickster.cost.vain"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "lovers",
+              "Set": [],
+              "Requires": [
+                "aranka.ran_romance"
+              ],
+              "Forbids": [
+                "aranka.trickster.cost.vain",
+                "aranka.trickster.cost.denied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "aranka.trickster.cost.vain",
+                "aranka.trickster.cost.denied",
+                "aranka.ran_romance"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "vain",
+          "Speaker": "Aranka",
+          "Text": "\"And before you say it: no, the Nerosyan bill does not put your name first either. I asked. They laughed. I liked them for it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "denied",
+          "Speaker": "Aranka",
+          "Text": "\"You lied to me about the verse, the first time. I haven't forgotten. I have decided to find it interesting, which is not the same as forgiving it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "lovers",
+          "Speaker": "Aranka",
+          "Text": "\"We have done this before, you and I. The part where I leave and you let me, and we both call it freedom.\" {n}Her thumb worries the edge of the seal.{/n} \"I was very good at it. I'd like to know if I still have to be.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "choice",
+          "Speaker": "Aranka",
+          "Text": "\"So tell me, Commander. Is there a reason to stay that isn't a song?\"",
+          "Choices": [
+            {
+              "Text": "[Ask her to stay] \"Stay. Sing it with me. Every night we get.\"",
+              "Next": "stay",
+              "Set": [
+                "aranka.extension_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Charm her] \"Stay, and I'll rhyme you anything.\"",
+              "Next": "not_yet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her to take the stage] \"Go. A song that stays in one tavern dies.\"",
+              "Next": "stage",
+              "Set": [
+                "aranka.extension_closed",
+                "aranka.trickster.gone_to_nerosyan"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "not_yet",
+          "Speaker": "Aranka",
+          "Text": "\"That's a pretty line.\" {n}She folds the Mendevian letter very small, and then smaller.{/n}\n\"Too pretty. You wrote a verse for a king and a verse for a crowd. Write one for me, and mean it, and ask me again. Not tonight.\"",
+          "Choices": [
+            {
+              "Text": "[Accept her terms] \"Then I'll write it.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "stage",
+          "Speaker": "Aranka",
+          "Text": "{n}She is quiet for a long time. When she speaks, her voice is steady, and it costs her.{/n}\n\"That's the kindest thing anyone has ever said to me, and I hate it.\" {n}She tucks the Mendevian letter into her bodice and stands, and settles the lute on her back.{/n}\n\"I'll sing your verse every night. And every night I'll tell them who wrote it. In small letters.\"",
+          "Choices": [
+            {
+              "Text": "\"Go on. They're waiting.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "stay",
+          "Speaker": "Aranka",
+          "Text": "{n}She looks at you for a long moment, the way she looked at the room before the duet, as if she were deciding how it will sound.{/n}\n\"Every night we get.\" {n}She drops the Mendevian letter into Fye's stove without looking at it.{/n} \"That's a better line than the verse. I'm stealing it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She has a room above Fye's, rented by the week, with a bed too narrow for two and a window onto the latrine pits. She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces, and moves.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}Dawn. The whole of Fye's hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down every man at the counter is very busy looking at his breakfast.{/n}\n{n}There is a bill under the door in Fye's hand: the room, the broken slat in the bed, \"lost custom\", and a line at the bottom that only says \"Noise.\" Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the bill.]",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.night_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.duet_sung"
+      ],
+      "Forbids": [
+        "aranka.extension_closed",
+        "aranka.extension_kept",
+        "aranka.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "430cba7801b149b4e8494ace6baf4f7c",
+      "InteractionHub": "aranka.presence"
+    },
+    {
+      "Id": "aranka.trickster.verse.third_verse",
+      "Title": "The third verse",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"I wrote it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Aranka",
+          "Text": "\"Well?\" {n}She has cleared a space on the bar, and the whole tavern is watching, and she has made sure of that.{/n}\n\"The third verse. For me. You sing it alone, in front of all of them, badly, and you sign it under your own name. Big letters. Then ask.\"",
+          "Choices": [
+            {
+              "Text": "[Sing it alone] \"...Everybody. Quiet. This one's mine.\"",
+              "Next": "sung",
+              "Set": [
+                "aranka.extension_kept",
+                "aranka.trickster.cost.sang_alone"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Refuse] \"I don't sing alone.\"",
+              "Next": "refused",
+              "Set": [
+                "aranka.extension_closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "sung",
+          "Speaker": "Narrator",
+          "Text": "{n}You sing it alone. Your voice cracks on the second line, and a sergeant at the back laughs out loud, and then stops laughing. By the end the room is silent in a way it has not been since the duet, and the story of the Knight-Commander singing a love song, badly, on Fye's bar, will outlive both of you in every barracks in Drezen.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Aranka",
+          "Text": "{n}She is crying, and furious about it, and laughing.{/n} \"That was terrible. That was the worst verse anyone has ever written for me. Sign it. Big letters. And yes. Obviously yes.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Aranka",
+          "Text": "\"Then you're a very good thief, Commander, and nothing else.\" {n}She takes her lute off the bar and does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Aranka...\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She has a room above Fye's, rented by the week, with a bed too narrow for two and a window onto the latrine pits. She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces, and moves.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}Dawn. The whole of Fye's hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down every man at the counter is very busy looking at his breakfast.{/n}\n{n}There is a bill under the door in Fye's hand: the room, the broken slat in the bed, \"lost custom\", and a line at the bottom that only says \"Noise.\" Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the bill.]",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.night_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.declined"
+      ],
+      "Forbids": [
+        "aranka.extension_closed",
+        "aranka.extension_kept"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "430cba7801b149b4e8494ace6baf4f7c",
+      "InteractionHub": "aranka.presence"
+    },
+    {
+      "Id": "aranka.trickster.failure.mocking_verse",
+      "Title": "The verse where you lose",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"What are they singing back there?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Somebody at the back of the King's tavern starts the camp's favourite song about you: the one Aranka wrote after everything between you went wrong, the one where the Knight-Commander trips over their own banner and the demons laugh too hard to fight. The room goes quiet and looks at you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "king",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "king",
+          "Speaker": "conversant",
+          "Text": "\"Sing it, Majesty! Sing the one where you lose!\" {n}Thaberdine beams at you with perfect, drunken goodwill. He thinks you are both kings.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"The verse about me, the one where I lose. Everybody! Louder on the rhyme.\"",
+              "Next": "loud",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "\"Not tonight, Your Majesty.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "loud",
+          "Speaker": "Narrator",
+          "Text": "{n}You climb onto the bench and lead it. You sing the banner verse louder than anyone, and trip over an imaginary banner on the rhyme, and the tavern howls. By the third round they are singing it with you, not at you, and by the fifth it has become a drinking song about the one commander in the world who can take a joke.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "after",
+          "Speaker": "conversant",
+          "Text": "\"Now THAT'S a king!\" {n}Thaberdine wipes his eyes.{/n} \"Pops always said, a king who can't sing his own defeats won't live to see many victories. Or was it the other way round? One of 'em!\"",
+          "Choices": [
+            {
+              "Text": "\"Again. Louder on the rhyme.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.mocking_verse"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "aranka.ran_failure"
+      ],
+      "Forbids": [
+        "aranka.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "aranka",
+      "AnswerLists": [
+        "1a17d8053a3be7f47a7908eb6706f2fe"
+      ],
+      "NativeReturnCue": "814dd1a078a1c2849aefc85e2e15b2d2",
+      "TricksterDevice": true,
+      "TricksterState": "aranka.ran_failure"
+    },
+    {
+      "Id": "aranka.trickster.failure.mocking_verse_any",
+      "Title": "Louder on the rhyme",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The camp's favourite song about you is the one Aranka wrote after everything between you went wrong: the Knight-Commander trips over their own banner, and the demons laugh too hard to fight. The sappers sing it when they think you can't hear.{/n}\n{n}There is no King's tavern left to lead it in. So you walk into the worst camp tavern in Drezen, pay for every mug in the house, and climb onto a table.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"The verse about me, the one where I lose. Everybody! Louder on the rhyme.\"",
+              "Next": "reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "[Walk out again.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "reply",
+          "Speaker": "Narrator",
+          "Text": "{n}You lead it until dawn, and trip over an imaginary banner on every rhyme. By the next week the song has changed its meaning on every road out of Drezen.{/n}\n{n}Nine days later a letter comes, in a round hand you know, with a blot in the middle as if the writer stopped for a long while.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her_reply",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "her_reply",
+          "Speaker": "Aranka",
+          "Text": "\"You sang the verse where you lose. Out loud, on purpose, and made them sing it louder. Nobody has ever done that with one of my songs. I wrote it to hurt you. You made it yours. I am coming to Drezen, and I haven't decided yet whether to slap you.\"",
+          "Choices": [
+            {
+              "Text": "[Answer her] \"Come and decide.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.late",
+                "aranka.trickster.cost.mocking_verse",
+                "aranka.trickster.returned",
+                "aranka.trickster.answered",
+                "aranka.extension_started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "aranka.ran_failure"
+      ],
+      "Forbids": [
+        "aranka.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "RequiresAnyGroups": [
+        [
+          "fool_king.gone",
+          "coronation.seen"
+        ]
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "aranka.ran_failure"
+    },
+    {
+      "Id": "aranka.trickster.failure.second_verse",
+      "Title": "A blot in the middle",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Aranka",
+          "Text": "\"I heard what you did in the King's tavern. You sang the verse where you lose. Out loud, on purpose, and you made them sing it louder.\"\n{n}A blot, as if she stopped writing for a while.{/n}\n\"Nobody has ever done that with one of my songs. I wrote it to hurt you. You made it yours, and now it's the most requested song between here and the river, and I can't sing it anywhere without somebody raising a cup to you.\"\n\"I am coming to Drezen, and I haven't decided yet whether to slap you.\"",
+          "Choices": [
+            {
+              "Text": "[Answer her] \"Come and decide.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.returned",
+                "aranka.trickster.answered",
+                "aranka.extension_started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.ran_failure",
+        "aranka.trickster.primed"
+      ],
+      "Forbids": [
+        "aranka.trickster.returned"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "aranka.ran_failure"
+    },
+    {
+      "Id": "aranka.trickster.touring.boast",
+      "Title": "Court poet",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Aranka is three camps away, singing for pikemen. You have not seen her since your story together reached its end, and she has not written. The crusade's printers, on the other hand, owe you a favour.{/n}",
+          "Choices": [
+            {
+              "Text": "[Follow your instincts] \"Tonight my court poet sings in Drezen. She doesn't know it yet.\"",
+              "Next": "posters",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Let her keep her road.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "posters",
+          "Speaker": "Narrator",
+          "Text": "{n}By morning every wall in Drezen carries a poster: STARWARD GAZE, SUNG BY THE KNIGHT-COMMANDER'S COURT POET, TONIGHT. The paste is still wet. The printers spelled her name right on the first try, because you stood over them.{/n}\n{n}Aranka is three camps away and has agreed to nothing. The posters travel faster than she does.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Put one up at the ford, too.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.primed",
+                "aranka.trickster.cost.announced"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "aranka.ran_romance",
+        "aranka.ran_quest_complete"
+      ],
+      "Forbids": [
+        "aranka.trickster.primed",
+        "azata",
+        "aranka.ran_failure"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "aranka.trickster.touring.arrives",
+      "Title": "Court poet",
+      "Owner": "Aranka",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You came.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Aranka",
+          "Text": "{n}She is standing under one of the posters with it half torn off the wall in her fist.{/n}\n\"Court poet. I have never been anybody's court anything. I came here to shout at you in person, because a letter wouldn't be loud enough, and because I wanted to see your face when I did it.\"",
+          "Choices": [
+            {
+              "Text": "\"Then shout.\"",
+              "Next": "shout",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You spelled it right. I checked.\"",
+              "Next": "shout",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "shout",
+          "Speaker": "Aranka",
+          "Text": "\"I am. This is shouting. I'm a singer, I don't have to be loud to be shouting.\" {n}She smooths the poster out against her knee, and reads it again, and something in her face gives way.{/n}\n\"...It's a very good poster. You spelled my name right. Nobody spells my name right.\"\n\"Fine. One night. I sing. You listen. And after that we talk about who owns what, because I don't remember agreeing to be owned by anyone, least of all by you, and least of all in capital letters.\"",
+          "Choices": [
+            {
+              "Text": "[Agree to her terms] \"One night. You sing. I listen.\"",
+              "Next": null,
+              "Set": [
+                "aranka.trickster.answered",
+                "aranka.extension_started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.primed",
+        "aranka.ran_romance"
+      ],
+      "Forbids": [
+        "aranka.trickster.answered",
+        "azata"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "aranka",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "430cba7801b149b4e8494ace6baf4f7c",
+      "InteractionHub": "aranka.presence"
+    },
+    {
+      "Id": "aranka.trickster.epilogue.commit",
+      "Title": "The last night in Nerosyan",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}After Threshold Aranka took the Nerosyan stage for a single season. On its last night she sang Starward Gaze with a third verse nobody had heard before, and then she told the hall she was going home to Drezen, where the second verse had been written, and to the person who had written it. She did not say anything else. She did not need to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka",
+          "Paragraphs": [
+            {
+              "Text": "She sang the thief's verse herself, to the end of her days, and before it she always told the hall that the thief had said it must be the Desnans. The halls always laughed. The Commander never did.",
+              "Requires": [
+                "aranka.trickster.cost.denied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The third verse, the one the Knight-Commander sang alone and badly on Fye's bar, is printed under the other two in every copy. It has never once been sung well. Aranka would not allow it.",
+              "Requires": [
+                "aranka.trickster.cost.sang_alone"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The verse where the Knight-Commander trips over their own banner is still the most requested of the three.",
+              "Requires": [
+                "aranka.trickster.cost.mocking_verse"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.late_committed"
+      ],
+      "Forbids": [
+        "aranka.extension_kept",
+        "aranka.extension_closed",
+        "aranka.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka"
+    },
+    {
+      "Id": "aranka.trickster.epilogue.declined",
+      "Title": "Two verses",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}The third verse was never written. Aranka sang Starward Gaze for the rest of her life with two verses, and at the end of the second she always stopped, and waited a heartbeat, as though somebody in the back of the hall might still stand up and sing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.declined"
+      ],
+      "Forbids": [
+        "aranka.extension_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka"
+    },
+    {
+      "Id": "aranka.trickster.epilogue.verse",
+      "Title": "Two names",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Starward Gaze outlived the crusade. Every printed copy carries two names: hers first, in a hand like a lark on a wire, and underneath, in letters so small you need a candle, the Commander's.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka",
+          "Paragraphs": [
+            {
+              "Text": "She sang the thief's verse herself, to the end of her days, and before it she always told the hall that the thief had said it must be the Desnans. The halls always laughed. The Commander never did.",
+              "Requires": [
+                "aranka.trickster.cost.denied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The third verse, the one the Knight-Commander sang alone and badly on Fye's bar, is printed under the other two in every copy. It has never once been sung well. Aranka would not allow it.",
+              "Requires": [
+                "aranka.trickster.cost.sang_alone"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The verse where the Knight-Commander trips over their own banner is still the most requested of the three.",
+              "Requires": [
+                "aranka.trickster.cost.mocking_verse"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "aranka.extension_closed",
+        "aranka.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka",
+      "RequiresAnyGroups": [
+        [
+          "aranka.extension_kept",
+          "aranka.trickster.late_committed"
+        ]
+      ],
+      "ForbidOverrides": {
+        "aranka.trickster.declined": "aranka.extension_kept"
+      }
+    },
+    {
+      "Id": "aranka.trickster.epilogue.nerosyan",
+      "Title": "Twenty years on a stage",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Aranka took the Nerosyan stage and kept it for twenty years. She sang the Commander's verse every night, and every night she said who wrote it. In small letters, she always added. Very small.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.gone_to_nerosyan"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka"
+    },
+    {
+      "Id": "aranka.trickster.react.anevia_verse",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Something wrong with the garrison?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"Half the garrison's singing that star song wrong. Beth's humming it on watch. Tambourine. Honestly.\" {n}Anevia shakes her head, and hums two bars of it before she can stop herself.{/n} \"I'm blaming you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "aranka.trickster.primed"
+      ],
+      "Forbids": [
+        "anevia_gone",
+        "irabeth_dead"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned",
+        "irabeth_dead": "irabeth.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "aranka.trickster.react.anevia_verse_alone",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Something wrong with the garrison?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"Half the garrison's singing that star song wrong.\" {n}Anevia looks at the wall, at the place where the night watch used to stand.{/n} \"I caught myself humming it up there last night. Don't. I'm blaming you, that's all.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "aranka.trickster.primed",
+        "irabeth_dead"
+      ],
+      "Forbids": [
+        "anevia_gone",
+        "irabeth.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "aranka.trickster.react.woljif_billing",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You look pleased with yourself.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"Chief, there's copies going round. Her name up top, big as a barn, and yours underneath in letters so small I had to lick my thumb to read 'em.\" {n}Woljif grins.{/n} \"I'm charging people a copper to see the fine print.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "aranka.trickster.duet_sung"
+      ],
+      "Forbids": [
+        "woljif.dead",
+        "woljif.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "aranka.trickster.react.woljif_mocking",
+      "Title": "Woljif's word",
+      "Owner": "Woljif",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Something on your mind?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Woljif",
+          "Text": "\"Chief, they're singing the one where you trip over your own banner.\" {n}Woljif looks genuinely shaken.{/n} \"You LED it. That's the part I don't get. Nobody leads the one about themselves. That's, like, the first rule.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "aranka.trickster.cost.mocking_verse"
+      ],
+      "Forbids": [
+        "woljif.dead",
+        "woljif.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "e41585da330233143b34ef64d7d62d69"
+      ]
+    },
+    {
+      "Id": "aranka.trickster.react.lann_verse",
+      "Title": "Lann's word",
+      "Owner": "Lann",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Heard any good songs lately?\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Lann",
+          "Text": "\"The whole camp knows your verse now.\" {n}Lann shrugs.{/n} \"Tambourine. Really. I'll only sing it when you're winning.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "aranka.trickster.answered"
+      ],
+      "Forbids": [
+        "lann.dead",
+        "lann.kicked_out"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "aranka",
+      "Reaction": true,
+      "Chapters": [
+        3,
+        5
+      ],
+      "AnswerLists": [
+        "66385ad77fa743e4bb1234078dbd804c"
+      ]
     }
   ],
   "Etudes": {
@@ -156350,6 +158483,8 @@
     "nenio.killed_by_commander": "5fe7b9ab3aab4d045b3acabfd0e638a6",
     "nenio.kicked_out": "e9efc34083d087941bf9242388c258c3",
     "nenio.dead": "40fb6c123ced9ed45a305e0feec010ae",
+    "lann.kicked_out": "7afa470738d309649bea253eb167fbc1",
+    "lann.dead": "ca3799e579c3eaa48a6625aa456d1840",
     "kyado.in_drezen": "5169dbc60a1ad854493f7ba44c27a0d8",
     "iz.left_early": "a583e4ab47544f5e928fc5b6b7c41e48",
     "coronation.after": "b9cbdf8a2f0545f694366b87ae7d7d44",
@@ -156628,7 +158763,7 @@
       "Title": "A song with room to breathe",
       "Description": "Aranka has asked me to hear what she is making on the island. Our life together began before these visits.",
       "Objective": "Visit Aranka between rehearsals",
-      "Guidance": "After completing her RanRomance story while remaining her lover, speak with the living Aranka on the island in Chapter 5. Allow time between visits.",
+      "Guidance": "After completing her RanRomance story while remaining her lover, speak with the living Aranka on the island in Chapter 5. Allow time between visits. On the Trickster path, a Commander who gives Starward Gaze a second verse in a tavern, or leads the verse where they lose, or bills her as their court poet, may meet Aranka at Fye's counter in Drezen, in Chapter 3 or Chapter 5.",
       "StartedFlag": "aranka.extension_started",
       "ClosedFlag": "aranka.extension_closed",
       "CommittedFlag": "aranka.extension_kept",
@@ -156641,7 +158776,29 @@
         "lich",
         "swarm"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "aranka.ran_failure": "aranka.trickster.returned"
+      },
+      "TricksterAccess": {
+        "never_entered": {
+          "Detect": [],
+          "Device": "aranka.trickster.verse.kings_tavern",
+          "Returned": "aranka.trickster.answered"
+        },
+        "aranka.ran_failure": {
+          "Detect": [
+            "aranka.ran_failure"
+          ],
+          "Device": "aranka.trickster.failure.mocking_verse",
+          "Returned": "aranka.trickster.returned"
+        },
+        "parent_done_non_azata": {
+          "Detect": [],
+          "Device": "aranka.trickster.touring.boast",
+          "Returned": "aranka.trickster.answered"
+        }
+      }
     },
     "anevia": {
       "Title": "Anevia: A life of her choosing",
@@ -157077,6 +159234,9 @@
     ],
     "siphon.burst_shamira": [
       "2303848f628c04b40b45025ebb06d2b4"
+    ],
+    "aranka.gave_song": [
+      "f21279d12e1c70449bd037e75d7fd4a7"
     ]
   },
   "StartedDialogs": {
@@ -157817,6 +159977,28 @@
       "MaxChapter": 5,
       "Dialog": "hub",
       "Greeting": "{n}The halfling in the chaplains' grey shift is sitting on the steps with a parcel of paper on her knees. She is eating an apple with enormous concentration, the way people do who have recently had no mouth.{/n}"
+    },
+    "aranka.presence": {
+      "Unit": "430cba7801b149b4e8494ace6baf4f7c",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "NearUnit": "0f12118177d102f428a3b30b15b132eb",
+        "Side": "right",
+        "Distance": 2.0
+      },
+      "Requires": [
+        "trickster.ever",
+        "aranka.trickster.in_drezen"
+      ],
+      "Forbids": [
+        "aranka.extension_closed"
+      ],
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}A woman in Desnan blue is sitting on the end of Fye's counter with a lute across her knees, and the tavern has gone quiet to hear her tune it.{/n}"
     }
   },
   "Derived": {
@@ -158001,6 +160183,20 @@
       ],
       [
         "siphon.burst_areelu_b"
+      ]
+    ],
+    "aranka.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "aranka.trickster.duet_sung"
+      ]
+    ],
+    "aranka.trickster.in_drezen": [
+      [
+        "aranka.trickster.answered"
+      ],
+      [
+        "aranka.trickster.cost.announced"
       ]
     ],
     "anevia.trickster.late_committed": [

@@ -43,6 +43,7 @@ from storylines import konomi_trickster
 from storylines import nocticula_trickster
 from storylines import vellexia_trickster
 from storylines import nurah_trickster
+from storylines import aranka_trickster
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -322,6 +323,9 @@ def make_expansion(*, independent_tirabade=True):
     if "nurah" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(nurah_trickster.SCENES))
         nurah_trickster.integrate(payload)
+    if "aranka" in payload["Relationships"]:
+        payload["Scenes"].extend(copy.deepcopy(aranka_trickster.SCENES))
+        aranka_trickster.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

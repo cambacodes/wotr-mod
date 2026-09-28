@@ -435,6 +435,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "nocticula.trickster.defeated.shadow")) NocticulaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "vellexia.trickster.mirrored.speaks")) VellexiaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "nurah.trickster.prison.pardon")) NurahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) ArankaTricksterTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))

@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-aranka\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1544,
-  "unique_targets": 385,
+  "binding_uses": 1575,
+  "unique_targets": 391,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -122,6 +122,10 @@
       "path": "World/Crusade/RankUps/Diplomacy/Diplomacy_Officer/Cue_0042.jbp",
       "type": "BlueprintCue"
     },
+    "f21279d12e1c70449bd037e75d7fd4a7": {
+      "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
     "190fda58a169c9340b626f1a503c696f": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0011.jbp",
       "type": "BlueprintAnswersList"
@@ -182,9 +186,17 @@
       "path": "World/Dialogs/c3/Mythic_Azata/Island/Dracosha/Cue_0056.jbp",
       "type": "BlueprintCue"
     },
+    "1a17d8053a3be7f47a7908eb6706f2fe": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0009.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "6dccfd39947ef4242a8afbe36b21a46c": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0054.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "814dd1a078a1c2849aefc85e2e15b2d2": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0008.jbp",
+      "type": "BlueprintCue"
     },
     "7b050ba0745bf144e815632e39b34853": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0065.jbp",
@@ -448,6 +460,10 @@
     },
     "615ef80243cfc184ba42286395880b0e": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Finnean/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "66385ad77fa743e4bb1234078dbd804c": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Lann/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
     "1ab909cc3a6194840b1475b99547c263": {
@@ -756,6 +772,14 @@
     },
     "f55fcc7bf5fd0c14384cb15dce345c8e": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
+      "type": "BlueprintEtude"
+    },
+    "ca3799e579c3eaa48a6625aa456d1840": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "7afa470738d309649bea253eb167fbc1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
     "40fb6c123ced9ed45a305e0feec010ae": {
