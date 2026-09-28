@@ -283,6 +283,10 @@ namespace RRT.TestHarness
             if (plan.MaxScenesPerSave > 0) targets = targets.Take(plan.MaxScenesPerSave).ToList();
 
             bool dirty = false;
+            // A forced run sets the scene's Requires, and any completed run records the scene and its choices. Without a
+            // reload those flags leak into the next walk: a one-shot page reads as already shown, and a page that Forbids a
+            // flag another forced page set (e.g. unpriced vs returned) never opens. So reload after any run that left state.
+            bool leaked = false;
             var reloadErr = new Box<string?>(); var reloadMs = new Box<double>(); var reloadIdle = new Box<string?>();
             foreach (var target in targets)
             {
@@ -292,7 +296,7 @@ namespace RRT.TestHarness
                 for (int k = 0; k < paths && (!plan.Dfs || frontier.Count > 0); k++)
                 {
                     // DFS branches always need the pristine state; walks reload unless the plan says otherwise.
-                    if (dirty && (plan.ShouldReloadBetweenScenes || plan.Dfs))
+                    if (dirty && (plan.ShouldReloadBetweenScenes || plan.Dfs || leaked))
                     {
                         capture.Context = prefix + "reload";
                         yield return LoadSave(sr.ResolvedPath, reloadErr, reloadMs, reloadIdle);
@@ -302,6 +306,7 @@ namespace RRT.TestHarness
                             yield break;
                         }
                         dirty = false;
+                        leaked = false;
                     }
                     var run = new SceneRun { Scene = target.Id, Relationship = RrtBridge.SceneRelationship(target.Scene) };
                     List<int>? prefixPath = plan.Dfs ? frontier.Pop() : null;
@@ -318,6 +323,7 @@ namespace RRT.TestHarness
                         TryStopDialog();
                     });
                     dirty = true;
+                    leaked |= run.Forced || run.FlagsAdded.Count > 0;
                     sr.ScenesDriven += k == 0 ? 1 : 0;
                     sr.ChoicesTaken += run.Choices.Count;
                     if (plan.Dfs)
