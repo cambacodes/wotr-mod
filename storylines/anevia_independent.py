@@ -163,7 +163,7 @@ s("a_question_at_home", "The question before the answer", [
 "And if she cannot agree?"
 "Then we find out what I meant when I said I wouldn't bring her a finished decision."
 {n}Anevia looks up.{/n}
-"I can choose what to do with my life. So can she. Those two facts don't promise me a version where nobody hurts. I'd like to give us a chance at something better than discovering that afterward."''', c('"Before I speak with her, tell me what you want."', "desire")),
+"I get to choose what I do. So does she. Doesn't mean nobody gets hurt. I'd rather we find out where it hurts now, over tea, than later, in a doorway."''', c('"Before I speak with her, tell me what you want."', "desire")),
     n("desire", "Anevia", '''"You. Separately. That's the bit I'm tryin' not to lose while we discuss arrangements."
 {n}The directness leaves her briefly amused at herself.{/n}
 "I'd like to find out whether you argue when you're comfortable. Whether you know how to leave an evening alone when it doesn't need improving. I'd like another walk, and to kiss you at the end without spending the walk inventing a reason I happened to be there."
@@ -213,7 +213,7 @@ s("a_question_at_home", "The question before the answer", [
 {n}She reaches for the teapot, finds it empty and laughs under her breath.{/n}
 "And apparently I want to learn how much tea two people drink while they talk about this."
 {n}You fetch more water together. She lets you carry the pot and takes the mugs, declining your attempt to balance all three. The small division of work makes the conversation easier to continue.{/n}
-"I'd like to see you doing something you chose," she says. "Not always the things I thought you'd find charming. It's a temptation, when you spend your life noticing what people want. You get good at supplying it before anybody asks what you were going to do."
+"I'd like to see you doing something you chose," she says. "Not just the things I figured you'd like. Kenabres, the year before the Heart: I spent a month bein' exactly the barmaid a cultist wanted to talk to. Laughed at his jokes. Liked his wine. Got so good at it I forgot I hated his wine. Took me weeks after to remember what I did like."
 {n}She sets the mugs down in their old places.{/n}
 "If you see me doing that, you can ask. Don't congratulate yourself on catching me. Just ask."''',
       c('"I will ask what you wanted before I assume you are offering what I want."', "finish"),

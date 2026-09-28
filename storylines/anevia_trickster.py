@@ -90,7 +90,8 @@ def to_beth(back, widow, forbids=(), killer=None):
 
 # --- State gone_after_coronation: the wardrobe in Kenabres -----------------------------------------------------------
 
-# Delivered by the post bag from the Coronation on. The paid knock needs a Socothbenoth who is still at the Council;
+# Remote by design: Coronation Cue_0421 has no answer list and its OnShow starts AneviaGone, which hides her unit at
+# once, so there is no native moment to hook. The letter is delivered by the post bag from the Coronation on. The paid knock needs a Socothbenoth who is still at the Council;
 # the kept closet needs his doctrine heard (Cue_0011) and his absence; with neither, the Commander is posted south.
 letter("anevia.trickster.gone.setup", "Don't", [
     nar("start", '''{n}Her rooms in the citadel are empty by nightfall. She took her knives and her good boots and left the rest: the bed made to regulation, Beth's spare surcoat folded over the chair, and the wardrobe standing open, the way you leave a door for someone you have decided will not come.{/n}
@@ -233,7 +234,9 @@ letter("anevia.trickster.gone.fetched", "Two letters and a bootlace", [
     a("nevi", '''{n}The second is in Anevia's hand, and it isn't addressed to anyone.{/n}
 "She walked into the Heart with her sword still in her hand. Couldn't put it down to hold me. Held me anyway, one-armed, like an idiot, in front of the whole taproom. Said it was your fault."''',
       c("Continue", "bargain", requires=(I_UNDER,)), c("Continue", "close", forbids=(I_UNDER,))),
-    a("bargain", '''"She says you put her under orders, so her soul couldn't leave. I'm grateful. Gods, I'm grateful. I'm also never lettin' you give me an order. Not one. Not even 'pass the salt'."''',
+    a("bargain", '''"She says you put her under orders, so her soul couldn't leave. It's got a price, and she's the one payin' it: she can't put that sword down, not to eat, not to sleep, not to hold her wife with both arms. Not till the Wound's shut. She says it's cheap. She's lyin', and she knows I know."
+{n}The ink is heavier on the next line.{/n}
+"I'm grateful. Gods, I'm grateful. I'm also never lettin' you give me an order. Not one. Not even 'pass the salt'."''',
       c("Continue", "close")),
     a("close", '''"I'll be at the Drezen gate when we get in. Outside it. I'm not sure yet I'll go any further."''',
       c('[Write back: stay at the edge of it] "I\'ll wait outside."', flags=(RETURNED, "anevia.started", BARGAIN)),
@@ -312,7 +315,7 @@ TERMS_TEXT = '''"Here's how it goes. I don't come inside. You come out. No close
 "And the first time you lie to me, I'm gone. And this time I'll be better at it."'''
 THRESHOLD = '''{n}She doesn't wait for you to decide. Her fist is in your collar before the lantern stops swinging, and she kisses you like someone who has been rationing it all the way up the road. Round the side of the gatehouse there is a real door. She raps on it twice with her knuckles, for form's sake, then kicks it shut behind you.{/n}
 "Real door. I knocked. Now shut up and get that shirt off before I lose my nerve. And I never lose my nerve."
-{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. The guardroom cot creaks under the two of you. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she pulls you down into her with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}'''
+{n}Her fingers find every buckle on the first try, a spy's hands, and your coat hits the floor. The guardroom cot creaks under the two of you. Her breath is warm and ragged against your neck, her bad leg hooks hard round yours, and she drags you down onto the cot with a sound that is half a laugh and half something she has not let herself say since the Coronation.{/n}'''
 
 physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."', [
     a("start", '''{n}Same gate, same mud line, a colder night. She has brought a lantern and set it down on her side.{/n}
