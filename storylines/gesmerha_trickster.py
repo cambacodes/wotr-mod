@@ -92,17 +92,22 @@ def in_yard(id, title, entry, nodes, requires, forbids, delay):
 
 # --- State 1, dead in the ambush: the unfinished work (F04) --------------------------------------------------------------
 
-# 4a. The primer, on her own hub before the ambush, right after she says what Marhevok will take next.
+# 4a. The primer, on her own hub before the ambush. The entry is gated on SeenCues gesmerha.feared_hands (Cue_0028) or
+# gesmerha.took_risk (Cue_0024): it appears on AnswersList_0008 only once she has said what Marhevok will take next.
+# The trick is physical: the Commander drives a coin into the uncut block on her bench, so that "work on the bench" is a
+# fact her oath (Cue_0017) cannot step around. Kyado Cue_0109: "your tricks somehow become the truth".
 SCENES.append(scene(P + "dead.commission", "Paid in advance", "Gesmerha", 3,
     '[Pay her in advance] "A carving for the Commander, woodshaper. Paid now, in full."', [
     g("start", '''{n}You put a purse in her hand. Her fingers stop on it, then turn it over twice, weighing it the way she weighs a block before she decides which way the grain wants to run. She does not give it back.{/n}
-"You pay a blind woman for work she may never deliver. Either you are a fool, stranger, or you heard more than I meant to say."''',
-        c('[Press the purse into her hands] "The statue\'s not finished, carver. Nobody leaves work on the bench."', "took",
+"You pay a blind woman for work she may never deliver. Either you are a fool, stranger, or you heard more than I meant to say."
+{n}On the bench beside her lies an uncut block of pale birch, the one her fingers keep returning to.{/n}''',
+        c('[Press the purse into her hands, and drive a coin into the block on her bench] "The statue\'s not finished, carver. Nobody leaves work on the bench."', "took",
           crusade=("Finances", -150), alignment=("Chaotic", 1), flags=(PRIMED, COMMISSIONED, ADVANCE)),
         c('"Never mind. Keep your hands to yourself."', abort=True)),
-    g("took", '''"The statue? That statue is finished, stranger. Journeymen finished it, with my eyes still wet on Marhevok's knife. It was never mine."
+    g("took", '''{n}The coin goes into the birch with a sound she hears before you have finished pushing. She puts out a hand, finds the rim of it standing proud of the grain, and does not pull it out.{/n}
+"The statue? That statue is finished, stranger. Journeymen finished it, with my eyes still wet on Marhevok's knife. It was never mine."
 {n}Her thumb finds the knot of the purse strings and stays there.{/n}
-"But I will take your coin. A commission is a commission. My line has never once gone to its ancestors with paid work on the bench, not in all the generations since the first of us picked up a chisel. Remember that you insisted."''',
+"But I will take your coin, and I will leave the other one where you put it. A commission is a commission. My line has never once gone to its ancestors with paid work on the bench, not in all the generations since the first of us picked up a chisel. Remember that you insisted."''',
         c("Leave her to the wood.")),
     ], requires=("trickster",), forbids=(COMMISSIONED, DEAD, PRIMED), last=3, Relationship="gesmerha", Chapters=[3],
     RequiresAnyGroups=[["gesmerha.feared_hands", "gesmerha.took_risk"]], AnswerLists=[HER_LIST],
@@ -111,8 +116,9 @@ SCENES.append(scene(P + "dead.commission", "Paid in advance", "Gesmerha", 3,
 # 4b. The late fallback: her pyre, in Chapter 3 only (by Chapter 5 Wintersun is gone, KTC_WintersunHelp/Cue_0040).
 SCENES.append(scene(P + "dead.pyre", "The carvers' ground", "Gesmerha", 3, "", [
     nar("pyre", '''{n}A Wintersun boy finds your camp at noon, out of breath and trying not to look at anyone. The carvers have laid Gesmerha out on their own ground, among the statues she tended, with her chisels crossed on her breast and her own knife taken away. They light her pyre at dusk.{/n}
-{n}Her apprentices sent him, he says, reciting it. She spoke of you before the chief took her: the stranger who asked the questions nobody else would. They are putting on her fire whatever each of them owed her, so that she does not go to her ancestors short, and they want to know whether you owed her anything.{/n}''',
-        c('[Send a purse for the fire, and a message] "Tell her the statue\'s not finished, carver. Nobody leaves work on the bench."',
+{n}Her apprentices sent him, he says, reciting it. She spoke of you before the chief took her: the stranger who asked the questions nobody else would. They are putting on her fire whatever each of them owed her, so that she does not go to her ancestors short, and they want to know whether you owed her anything.{/n}
+{n}Her uncut block is still on her bench, he says. Nobody has dared move it.{/n}''',
+        c('[Send a purse for the fire, and a coin to drive into her uncut block, and have both laid beside her] "Tell her the statue\'s not finished, carver. Nobody leaves work on the bench."',
           mythic="Trickster", crusade=("Finances", -300), alignment=("Chaotic", 1), flags=(PRIMED, LATE, LAUGHED)),
         c('"I owed her nothing. Let them burn her. She chose it."', flags=(CLOSED,))),
     ], requires=("trickster", LATCH), forbids=(PRIMED, RETURNED, CLOSED), delay=24, last=3, Relationship="gesmerha",
@@ -123,18 +129,18 @@ SCENES.append(scene(P + "dead.unfinished_work", "Splinters", "Gesmerha", 3, "", 
     nar("start", "{n}A runner at the edge of camp: the same Wintersun boy, thinner than before, with ash still in the seams of his boots. He asks for you by name this time.{/n}",
         c("Continue", "late", requires=(LATE,)),
         c("Continue", "paid", forbids=(LATE,))),
-    nar("late", '''{n}The pyre would not take, he says. The carvers tried three torches and then stopped trying, and nobody would say aloud why. On the third dawn Gesmerha got off it on her own, her palms full of splinters as if she had been gripping green wood all night, and walked straight to the Lady's statue. She has not eaten since. She sent him with this, word for word.{/n}
+    nar("late", '''{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm. The carvers pushed her away from the ground with poles, not hands. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}
 "Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one."''',
         c("Continue", "terms_raised")),
-    nar("paid", '''{n}He will not stop looking at you while he tells it. Three days after the carvers laid her out, before anyone had lit a torch, Gesmerha sat up among the statues with her palms full of splinters, as if she had been gripping unfinished wood all night, and walked straight to the Lady's statue. She sent him with this, word for word.{/n}
+    nar("paid", '''{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip. Half the carvers ran. The ones who stayed will not have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}
 "Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you."''',
         c("Continue", "terms")),
-    g("terms", '''"The ancestors spoke to me in the old tongue, the way they speak to the god-callers. They do not give. They sell. Tell the stranger their price, they said, so it knows what it bought:
-*Hands that were paid for belong to the work. Finish, daughter. Until the last cut they are not yours to give. Set the chisel down for anything else, and we take them back, and you with them.*"
+    g("terms", '''"The ancestors came for me in the old tongue. I will not pretend I understood all of it; the dead are not tidy talkers. I understood this much. There was paid work on my bench, with your coin in its heart, and my line does not come home with work on the bench. So they sent me back to it.
+*Finish, daughter.* That is what they said. My hands are theirs until the last cut. If I put the chisel down for anything else, they take the hands back, and me with them. What they want with the finished thing, they did not say. I did not ask. You do not ask the dead for reasons."
 "What is the world coming to, stranger, when the dead cannot even stay dead in peace?"''',
         c("Continue", "answer")),
-    g("terms_raised", '''"The ancestors spoke to me in the old tongue, the way they speak to the god-callers. They were angry. You bought me at my own pyre, not before it, and they do not like a bargain struck over ashes. So the price went up:
-*Hands that were paid for belong to the work. Finish, daughter. And because you were bought late, the lie comes down first: the journeymen's pretty Lady, cut away by your own hands, before anything new goes into the wood. Set the chisel down for anything else, and we take them back, and you with them.*"''',
+    g("terms_raised", '''"The ancestors came for me in the old tongue, and they were angry. I did not need every word for that. You paid for my work over my ashes, not before them, and the dead do not like a bargain struck at their own fire.
+*Finish, daughter.* My hands are theirs until the last cut, and because I was bought late there is more to cut: the journeymen's pretty Lady comes down first, by my hands, before anything new goes into the wood. If I put the chisel down for anything else, they take the hands back, and me with them. They did not say why. I did not ask."''',
         c("Continue", "answer")),
     nar("answer", "{n}The boy waits for your answer. He has plainly been told to remember it exactly, and to bring it back whatever it is.{/n}",
         c('[Send for her] "Tell her to bring her chisels to Drezen. The smith there makes better ones than the ones she lost, and I want to see the work."',

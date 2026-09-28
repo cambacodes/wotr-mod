@@ -71,10 +71,18 @@ internal static class GesmerhaTricksterTests
               && commission.EntryMythic == "PlayerIsTrickster" && commission.RequiresAnyGroups.Length == 1
               && commission.RequiresAnyGroups[0].SequenceEqual(new[] { "gesmerha.feared_hands", "gesmerha.took_risk" }),
             "The commission is not an inline Trickster answer on her own hub before the ambush.");
+        // The entry is keyed to her own foresight: SeenCues set when she speaks Cue_0028 or Cue_0024, so the offer appears
+        // on AnswersList_0008 only after she has said what Marhevok will take next.
+        check(story.SeenCues["gesmerha.feared_hands"].SequenceEqual(new[] { "13f2b37e28864ba4b882d13fad90f7c5" })
+              && story.SeenCues["gesmerha.took_risk"].SequenceEqual(new[] { "0448dab10df819c43a2f2aa86524f01b" })
+              && story.SeenCues["gesmerha.met"].SequenceEqual(new[] { "1e9af5965b5da304c825817c89817c22" }),
+            "The commission and the footsteps are not keyed to her own spoken cues.");
         var purse = commission.Nodes.Single(n => n.Id == "start").Choices[0];
         check(purse.Crusade?.Resource == "Finances" && purse.Crusade.Amount == -150 && purse.Alignment?.Direction == "Chaotic"
               && purse.Set.Contains(P + "primed") && purse.Set.Contains(P + "commissioned") && purse.Set.Contains(P + "cost.advance_paid"),
             "The advance is not paid for on the choice that plants it.");
+        check(purse.Text.Contains("coin into the block") && commission.Nodes.Single(n => n.Id == "took").Text.Contains("coin goes into the birch"),
+            "The commission plants nothing on her bench.");
         check(Rules.IsRemote(pyre) && pyre.Chapters.SequenceEqual(new[] { 3 }) && pyre.TricksterDevice && pyre.TricksterState == "dead"
               && pyre.Requires.Contains("trickster") && pyre.Requires.Contains("gesmerha.dead.latched"),
             "The pyre is not the live Trickster's Chapter 3 letter.");
