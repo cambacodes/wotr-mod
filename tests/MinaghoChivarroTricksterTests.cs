@@ -294,7 +294,26 @@ internal static class MinaghoChivarroTricksterTests
         var minReturnedAlone = World(story, 5, "trickster.ever", "minagho.dead", "chivarro.dead", RetM, MinIn, DeclC, Primed, Debt, Terms, Delivered);
         check(Av(aloneMin, minReturnedAlone) && !Av(aloneMinSpared, minReturnedAlone), "The returned Minagho has no alone commit.");
 
-        // Epilogue page selection.
+        // The morning after each physical commit: once, after the night, before the ending pages.
+        var pairMorning = S(P + "after.the_morning_after");
+        var chivMorning = S(P + "alone.chivarro_morning");
+        var minMorning = S(P + "alone.minagho_morning");
+        var minSparedMorning = S(P + "alone.minagho_spared_morning");
+        check(!Av(pairMorning, yes[0]) && Av(pairMorning, Later(story, yes[0])), "The pair's morning is not the morning after.");
+        var pairMorningOut = Done(pairMorning, Later(story, yes[0]));
+        check(pairMorningOut.Count == 4 && pairMorningOut.All(r => r.Has(P + "cost.morning_after")) && !Av(pairMorning, Later(story, pairMorningOut[0])),
+            "The pair's morning lost a branch or repeats.");
+        check(Av(chivMorning, Later(story, chivYes[0])) && Done(chivMorning, Later(story, chivYes[0])).Any(r => r.Has(P + "morning_coin")),
+            "Chivarro's morning after is missing.");
+        check(Av(minSparedMorning, Later(story, minYes[0])) && !Av(minMorning, Later(story, minYes[0]))
+              && Done(minSparedMorning, Later(story, minYes[0])).Any(r => r.Has(P + "morning_bound")), "Minagho's morning after is missing.");
+        var minRetYes = Done(aloneMin, minReturnedAlone).Single(r => r.Has(Complete));
+        check(Av(minMorning, Later(story, minRetYes)) && !Av(minSparedMorning, Later(story, minRetYes)), "The returned Minagho has no morning after.");
+        foreach (var m in new[] { pairMorning, chivMorning, minMorning, minSparedMorning })
+            check(!m.Remote && m.InteractionHub != null && m.DelayHours > 0, "A morning after is not a physical beat after the night: " + m.Id);
+
+        // Epilogue page selection. The committed pair's page and the late-commit page never play together.
+        check(epPair.Requires.Contains(Complete) && epCommit.Forbids.Contains(Complete), "The pair ending and the late commit can both play.");
         var lateHouse = World(story, 5, "trickster.ever", Reunited, ChIn, MinIn, "minagho.spared_c4", P + "tprev.house");
         var lateOutcomes = Program.Walk(epCommit, lateHouse);
         check(lateOutcomes.Count == 2 && Pages(epCommit, lateHouse).Contains("pair") && !Pages(epCommit, lateHouse).Contains("waiting"),

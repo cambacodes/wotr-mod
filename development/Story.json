@@ -153790,7 +153790,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Chivarro has taken a room at the far end of the lower town and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}",
+          "Text": "{n}Chivarro has taken a room at the far end of Drezen, as far below the citadel as the walls allow and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}",
           "Choices": [
             {
               "Text": "[Send the silk] \"A bolt of Nerosyan silk, dyed Delights red, and a card: 'Your price. Name it again.'\"",
@@ -154342,7 +154342,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's in the lower town, and bars the door with a chair, and turns.{/n}\n{n}\"Rent,\" she says, and holds out her hand. When you put yours in it she laughs, and draws you down onto a bed that is too narrow for anything she has in mind, and begins, unhurried and expert, to collect.{/n}",
+          "Text": "{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}\n{n}\"Rent,\" she says, and holds out her hand. When you put yours in it she laughs, and draws you down onto a bed that is too narrow for anything she has in mind, and begins, unhurried and expert, to collect.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -154822,6 +154822,399 @@
       "TricksterState": "chivarro_dead"
     },
     {
+      "Id": "minagho_chivarro.trickster.after.the_morning_after",
+      "Title": "The morning after",
+      "Owner": "Chivarro",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chivarro",
+          "Text": "{n}Morning. Chivarro is back on the quartermaster's bench before the stores open, in yesterday's borrowed wool, with the air of a woman who has already been paid.{/n}\n\"You snore, honey. She says you do not. We are going to argue about it for a year.\" {n}Minagho, on the crate, does not look up from the dagger she is sharpening.{/n} \"Your hand opened at dawn. You did not make a sound.\" {n}Her voice is flat.{/n} \"I heard it anyway. I will hear it every dawn now, because of me. Do not ask me to be grateful for that. I am not.\"",
+          "Choices": [
+            {
+              "Text": "\"I didn't ask.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Show her the palm] \"It's just blood. I have more.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            }
+          ],
+          "Portrait": "Chivarro"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Chivarro",
+          "Text": "\"Good.\" {n}Chivarro swings her feet down.{/n} \"Then the terms stand, and here is the first bill under them: when you come to our house, you knock. On the door. Not the wardrobe.\" {n}Wilcer Garms, behind his ledger, turns a page with great concentration.{/n}",
+          "Choices": [
+            {
+              "Text": "\"I'll knock.\"",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"No promises about the wardrobe.\"",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after",
+                "minagho_chivarro.trickster.morning_wardrobe"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chivarro"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "minachiv.complete",
+        "minagho_chivarro.trickster.committed",
+        "minachiv.future_two",
+        "minagho_chivarro.trickster.chivarro_in",
+        "minagho_chivarro.trickster.minagho_in"
+      ],
+      "Forbids": [
+        "minagho_chivarro.trickster.cost.morning_after",
+        "minachiv.closed",
+        "minagho.dead",
+        "chivarro.dead"
+      ],
+      "DelayHours": 8,
+      "Optional": true,
+      "Relationship": "minagho_chivarro",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "b7e819e2a9bb0804abcbffe8e7d91ba6",
+      "InteractionHub": "minagho_chivarro.presence.chivarro",
+      "ForbidOverrides": {
+        "minagho.dead": "minagho_chivarro.trickster.returned_minagho",
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+      }
+    },
+    {
+      "Id": "minagho_chivarro.trickster.alone.chivarro_morning",
+      "Title": "Interest",
+      "Owner": "Chivarro",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Chivarro",
+          "Text": "{n}Chivarro is at the quartermaster's counter at dawn, counting coins she did not have yesterday into a purse she did not have either. They are yours.{/n}\n\"Rent,\" she says, before you can speak. \"And interest. I charge interest, honey; I was a madam, not a saint.\" {n}She snaps the purse shut and looks at you properly for the first time.{/n} \"You were better than I expected and worse than you think. Both go on the bill.\"",
+          "Choices": [
+            {
+              "Text": "\"Put it on my bill, then.\"",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Take back one coin] \"The interest is too high.\"",
+              "Next": "haggle",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": "Chivarro"
+        },
+        {
+          "Id": "haggle",
+          "Speaker": "Chivarro",
+          "Text": "{n}She lets you take it. Then she takes your wrist, turns your hand over, puts the coin back in your palm, right on the cut, and closes your fingers on it until it hurts.{/n} \"Now it is a keepsake. Keepsakes are free. Everything else goes on the bill.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the coin.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after",
+                "minagho_chivarro.trickster.morning_coin"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Chivarro"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "minachiv.complete",
+        "minagho_chivarro.trickster.committed",
+        "minachiv.future_chivarro",
+        "minagho_chivarro.trickster.chivarro_in"
+      ],
+      "Forbids": [
+        "minagho_chivarro.trickster.cost.morning_after",
+        "minachiv.closed"
+      ],
+      "DelayHours": 8,
+      "Optional": true,
+      "Relationship": "minagho_chivarro",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "b7e819e2a9bb0804abcbffe8e7d91ba6",
+      "InteractionHub": "minagho_chivarro.presence.chivarro",
+      "TricksterDevice": true,
+      "TricksterState": "minagho_dead"
+    },
+    {
+      "Id": "minagho_chivarro.trickster.alone.minagho_morning",
+      "Title": "His, every morning",
+      "Owner": "Minagho",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Minagho",
+          "Text": "{n}Minagho is back on her crate outside the quartermaster's stores by the time the watch changes, as if she had never left it. Your palm opened at dawn, as it does every dawn now. The bandage you put on it is already red.{/n}\n\"His. Every morning.\" {n}She takes your wrist, not gently, and holds the hand up to the grey light as if checking a coin for clipping.{/n} \"I lay awake beside you waiting for it. I wanted to see if you would flinch, so I would know what you are worth.\"",
+          "Choices": [
+            {
+              "Text": "\"Did I?\"",
+              "Next": "verdict",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing and let it bleed.]",
+              "Next": "verdict",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        },
+        {
+          "Id": "verdict",
+          "Speaker": "Minagho",
+          "Text": "\"No.\" {n}She lets go of the wrist.{/n} \"Which means you are a liar or a fool, and I have not decided which. I will spend a long time deciding. You will not enjoy it.\"\n{n}She turns back to her dagger, and then, without looking up:{/n} \"Bind it properly, idiot. If you bleed to death on my account I will never forgive you, and I have a very long memory.\"",
+          "Choices": [
+            {
+              "Text": "[Bind it.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You bind it.\"",
+              "Next": "bind",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        },
+        {
+          "Id": "bind",
+          "Speaker": "Minagho",
+          "Text": "{n}She keeps sharpening long enough that you think she will refuse. Then she sets the dagger down, cuts a strip from your own sleeve with it, and binds the palm so tightly your fingers go white. Wilcer Garms discovers something urgent at the far end of his stores.{/n} \"There. Now it is mine as well as his. Do not mistake that for kindness.\"",
+          "Choices": [
+            {
+              "Text": "[Don't.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after",
+                "minagho_chivarro.trickster.morning_bound"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "minachiv.complete",
+        "minagho_chivarro.trickster.committed",
+        "minachiv.future_minagho",
+        "minagho_chivarro.trickster.minagho_in",
+        "minagho_chivarro.trickster.returned_minagho"
+      ],
+      "Forbids": [
+        "minagho_chivarro.trickster.cost.morning_after",
+        "minachiv.closed"
+      ],
+      "DelayHours": 8,
+      "Optional": true,
+      "Relationship": "minagho_chivarro",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "565ccab37e2475742b043ec912a750fa",
+      "InteractionHub": "minagho_chivarro.presence.minagho",
+      "TricksterDevice": true,
+      "TricksterState": "chivarro_dead"
+    },
+    {
+      "Id": "minagho_chivarro.trickster.alone.minagho_spared_morning",
+      "Title": "His, every morning",
+      "Owner": "Minagho",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Minagho",
+          "Text": "{n}Minagho is back on her crate outside the quartermaster's stores by the time the watch changes, as if she had never left it. Your palm opened at dawn, as it does every dawn now. The bandage you put on it is already red.{/n}\n\"His. Every morning.\" {n}She takes your wrist, not gently, and holds the hand up to the grey light as if checking a coin for clipping.{/n} \"I lay awake beside you waiting for it. I wanted to see if you would flinch, so I would know what you are worth.\"",
+          "Choices": [
+            {
+              "Text": "\"Did I?\"",
+              "Next": "verdict",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing and let it bleed.]",
+              "Next": "verdict",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        },
+        {
+          "Id": "verdict",
+          "Speaker": "Minagho",
+          "Text": "\"No.\" {n}She lets go of the wrist.{/n} \"Which means you are a liar or a fool, and I have not decided which. I will spend a long time deciding. You will not enjoy it.\"\n{n}She turns back to her dagger, and then, without looking up:{/n} \"Bind it properly, idiot. If you bleed to death on my account I will never forgive you, and I have a very long memory.\"",
+          "Choices": [
+            {
+              "Text": "[Bind it.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You bind it.\"",
+              "Next": "bind",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        },
+        {
+          "Id": "bind",
+          "Speaker": "Minagho",
+          "Text": "{n}She keeps sharpening long enough that you think she will refuse. Then she sets the dagger down, cuts a strip from your own sleeve with it, and binds the palm so tightly your fingers go white. Wilcer Garms discovers something urgent at the far end of his stores.{/n} \"There. Now it is mine as well as his. Do not mistake that for kindness.\"",
+          "Choices": [
+            {
+              "Text": "[Don't.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.cost.morning_after",
+                "minagho_chivarro.trickster.morning_bound"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Minagho"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "minachiv.complete",
+        "minagho_chivarro.trickster.committed",
+        "minachiv.future_minagho",
+        "minagho_chivarro.trickster.minagho_in",
+        "minagho.spared.latched"
+      ],
+      "Forbids": [
+        "minagho_chivarro.trickster.cost.morning_after",
+        "minachiv.closed",
+        "minagho.dead",
+        "minagho_chivarro.trickster.alone.minagho_morning"
+      ],
+      "DelayHours": 8,
+      "Optional": true,
+      "Relationship": "minagho_chivarro",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "565ccab37e2475742b043ec912a750fa",
+      "InteractionHub": "minagho_chivarro.presence.minagho_spared",
+      "TricksterDevice": true,
+      "TricksterState": "chivarro_dead"
+    },
+    {
       "Id": "minagho_chivarro.trickster.epilogue.pair",
       "Title": "Two runaway lilitu",
       "Owner": "Epilogue",
@@ -154832,7 +155225,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Two runaway lilitu kept a house in Drezen's lower town after the war, with thick doors, a cellar nobody else knew about, and a linen press that was exactly as deep as it looked, most nights. They kept their own names. They sent the Commander one invitation a year, on their own terms, written in two hands that took turns with the pen. The Commander always went.{/n}",
+          "Text": "{n}Two runaway lilitu kept a house in Drezen after the war, below the citadel, with thick doors, a cellar nobody else knew about, and a linen press that was exactly as deep as it looked, most nights. They kept their own names. The Commander had agreed to their terms before the war was won, and had meant it; they sent one invitation a year, on those terms, written in two hands that took turns with the pen, and the Commander always went.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -154873,6 +155266,14 @@
               "Text": "{n}Some nights the kept door in the Commander's quarters opened on the Delights by itself, and music came through it. The Commander never bricked it up.{/n}",
               "Requires": [
                 "minagho_chivarro.trickster.cost.door_marked"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander never once knocked. Chivarro billed for every visit through the wardrobe, and Minagho kept the accounts.{/n}",
+              "Requires": [
+                "minagho_chivarro.trickster.morning_wardrobe"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -154935,6 +155336,14 @@
               "Text": "{n}The Commander's left palm never closed. It opened at dawn for the rest of a long life, a thin red line owed to a lord of the Abyss who never forgot a debt, and every morning one of them was there to bind it.{/n}",
               "Requires": [
                 "minagho_chivarro.trickster.cost.palm_scar"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The Commander kept the coin. Chivarro never charged for it, and never let anyone else touch it.{/n}",
+              "Requires": [
+                "minagho_chivarro.trickster.morning_coin"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -155007,6 +155416,14 @@
               "Text": "{n}Chivarro came back through the house's back rooms after all, found the terms already signed without her, and renegotiated them, loudly, for a week.{/n}",
               "Requires": [
                 "minagho_chivarro.trickster.returned_chivarro"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Every dawn, for the rest of the Commander's life, Minagho bound the palm herself, too tightly, and never once called it kindness.{/n}",
+              "Requires": [
+                "minagho_chivarro.trickster.morning_bound"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -155098,7 +155515,7 @@
         {
           "Id": "pair",
           "Speaker": "Narrator",
-          "Text": "{n}Two runaway lilitu kept a house in Drezen's lower town after the war, with thick doors and a cellar nobody else knew about. The first year, they sent the Commander one invitation, on their own terms, written in two hands.{/n}",
+          "Text": "{n}Two runaway lilitu kept a house in Drezen after the war, below the citadel, with thick doors and a cellar nobody else knew about. The first year, they sent the Commander one invitation, on their own terms, written in two hands.{/n}",
           "Choices": [
             {
               "Text": "[Go.]",
@@ -155122,7 +155539,7 @@
         {
           "Id": "waiting",
           "Speaker": "Narrator",
-          "Text": "{n}Chivarro kept a room in Drezen's lower town after the war, waiting for someone who had not come back, and let it be known that the Commander still owed her an answer. The first year, she sent one invitation, on her own terms.{/n}",
+          "Text": "{n}Chivarro kept a room in Drezen after the war, below the citadel, waiting for someone who had not come back, and let it be known that the Commander still owed her an answer. The first year, she sent one invitation, on her own terms.{/n}",
           "Choices": [
             {
               "Text": "[Go.]",

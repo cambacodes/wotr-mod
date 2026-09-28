@@ -429,7 +429,7 @@ letter(P + "after.the_price_of_her_name_letter", "The price of her name", [
    forbids=(*CHAIN_FORBIDS, T_NAME, WALKED, P + "after.the_price_of_her_name"), delay=96, ForbidOverrides=dict(PAIR_FO))
 
 letter(P + "after.won_back", "Won back", [
-    nar("start", '''{n}Chivarro has taken a room at the far end of the lower town and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}''',
+    nar("start", '''{n}Chivarro has taken a room at the far end of Drezen, as far below the citadel as the walls allow and paid for it with a ring nobody saw her wear. She has not come back. She has also not left Drezen.{/n}''',
         c('[Send the silk] "A bolt of Nerosyan silk, dyed Delights red, and a card: \'Your price. Name it again.\'"', "answer",
           crusade=("Finances", -200)),
         c('"Let her stay gone."', flags=(SENT_BACK,))),
@@ -494,7 +494,7 @@ ALONE_CHIV_NODES = [
        c('"Not those terms."', "refuse")),
     cv("refuse", '''"Then wait. You are good at making demons wait."''',
        c('"Then wait. I\'ll ask again."', flags=(DECLINED,))),
-    nar("threshold", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's in the lower town, and bars the door with a chair, and turns.{/n}
+    nar("threshold", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
 {n}"Rent," she says, and holds out her hand. When you put yours in it she laughs, and draws you down onto a bed that is too narrow for anything she has in mind, and begins, unhurried and expert, to collect.{/n}''',
         c("Continue")),
 ]
@@ -541,6 +541,54 @@ letter(P + "alone.minagho_letter", "One lilitu, unbranded", [
    TricksterDevice=True, TricksterState="chivarro_dead")
 
 
+# The morning after each physical commit: the night's consequence in their own voices, and what it costs.
+MORNING = P + "cost.morning_after"   # the night's price, named the next morning
+PAIR_MORNING = [
+    cv("start", '''{n}Morning. Chivarro is back on the quartermaster's bench before the stores open, in yesterday's borrowed wool, with the air of a woman who has already been paid.{/n}
+"You snore, honey. She says you do not. We are going to argue about it for a year." {n}Minagho, on the crate, does not look up from the dagger she is sharpening.{/n} "Your hand opened at dawn. You did not make a sound." {n}Her voice is flat.{/n} "I heard it anyway. I will hear it every dawn now, because of me. Do not ask me to be grateful for that. I am not."''',
+       c('"I didn\'t ask."', "terms"),
+       c('[Show her the palm] "It\'s just blood. I have more."', "terms", alignment=("Chaotic", 1))),
+    cv("terms", '''"Good." {n}Chivarro swings her feet down.{/n} "Then the terms stand, and here is the first bill under them: when you come to our house, you knock. On the door. Not the wardrobe." {n}Wilcer Garms, behind his ledger, turns a page with great concentration.{/n}''',
+       c('"I\'ll knock."', flags=(MORNING,)),
+       c('"No promises about the wardrobe."', flags=(MORNING, P + "morning_wardrobe"))),
+]
+physical(P + "after.the_morning_after", "The morning after", "Chivarro", PRES_CHIV, CHIV_UNIT, PAIR_MORNING,
+         requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_two", CH_IN, MIN_IN), forbids=(MORNING, *CHAIN_FORBIDS),
+         delay=8, ForbidOverrides=dict(PAIR_FO))
+
+CHIV_MORNING = [
+    cv("start", '''{n}Chivarro is at the quartermaster's counter at dawn, counting coins she did not have yesterday into a purse she did not have either. They are yours.{/n}
+"Rent," she says, before you can speak. "And interest. I charge interest, honey; I was a madam, not a saint." {n}She snaps the purse shut and looks at you properly for the first time.{/n} "You were better than I expected and worse than you think. Both go on the bill."''',
+       c('"Put it on my bill, then."', flags=(MORNING,), crusade=("Finances", -100)),
+       c('[Take back one coin] "The interest is too high."', "haggle", crusade=("Finances", -100))),
+    cv("haggle", '''{n}She lets you take it. Then she takes your wrist, turns your hand over, puts the coin back in your palm, right on the cut, and closes your fingers on it until it hurts.{/n} "Now it is a keepsake. Keepsakes are free. Everything else goes on the bill."''',
+       c("[Keep the coin.]", flags=(MORNING, P + "morning_coin"))),
+]
+physical(P + "alone.chivarro_morning", "Interest", "Chivarro", PRES_CHIV, CHIV_UNIT, CHIV_MORNING,
+         requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_chivarro", CH_IN), forbids=(MORNING, CLOSED), delay=8,
+         TricksterDevice=True, TricksterState="minagho_dead")
+
+MIN_MORNING = [
+    mg("start", '''{n}Minagho is back on her crate outside the quartermaster's stores by the time the watch changes, as if she had never left it. Your palm opened at dawn, as it does every dawn now. The bandage you put on it is already red.{/n}
+"His. Every morning." {n}She takes your wrist, not gently, and holds the hand up to the grey light as if checking a coin for clipping.{/n} "I lay awake beside you waiting for it. I wanted to see if you would flinch, so I would know what you are worth."''',
+       c('"Did I?"', "verdict"),
+       c("[Say nothing and let it bleed.]", "verdict")),
+    mg("verdict", '''"No." {n}She lets go of the wrist.{/n} "Which means you are a liar or a fool, and I have not decided which. I will spend a long time deciding. You will not enjoy it."
+{n}She turns back to her dagger, and then, without looking up:{/n} "Bind it properly, idiot. If you bleed to death on my account I will never forgive you, and I have a very long memory."''',
+       c("[Bind it.]", flags=(MORNING,)),
+       c('"You bind it."', "bind")),
+    mg("bind", '''{n}She keeps sharpening long enough that you think she will refuse. Then she sets the dagger down, cuts a strip from your own sleeve with it, and binds the palm so tightly your fingers go white. Wilcer Garms discovers something urgent at the far end of his stores.{/n} "There. Now it is mine as well as his. Do not mistake that for kindness."''',
+       c("[Don't.]", flags=(MORNING, P + "morning_bound"))),
+]
+MIN_MORNING_REQ = ("trickster.ever", COMPLETE, CHAIN, "minachiv.future_minagho", MIN_IN)
+physical(P + "alone.minagho_morning", "His, every morning", "Minagho", PRES_MIN, MIN_UNIT, MIN_MORNING,
+         requires=(*MIN_MORNING_REQ, RET_M), forbids=(MORNING, CLOSED), delay=8,
+         TricksterDevice=True, TricksterState="chivarro_dead")
+physical(P + "alone.minagho_spared_morning", "His, every morning", "Minagho", PRES_SPARED, MIN_UNIT, copy.deepcopy(MIN_MORNING),
+         requires=(*MIN_MORNING_REQ, "minagho.spared.latched"), forbids=(MORNING, CLOSED, "minagho.dead", P + "alone.minagho_morning"),
+         delay=8, TricksterDevice=True, TricksterState="chivarro_dead")
+
+
 # === Epilogue pages (R2-6 and the chain's own endings; the registered endings narrate visits this Commander never had) =
 
 def page(id, title, nodes, requires, forbids=(), any_groups=None):
@@ -553,12 +601,14 @@ PALM_P = p("{n}The Commander's left palm never closed. It opened at dawn for the
            requires=(PALM,))
 KNELT_P = p("{n}Minagho never let the Commander forget the kneeling. Neither did Baphomet.{/n}", requires=(KNELT,))
 page(P + "epilogue.pair", "Two runaway lilitu", [
-    nar("end", '''{n}Two runaway lilitu kept a house in Drezen's lower town after the war, with thick doors, a cellar nobody else knew about, and a linen press that was exactly as deep as it looked, most nights. They kept their own names. They sent the Commander one invitation a year, on their own terms, written in two hands that took turns with the pen. The Commander always went.{/n}''',
+    nar("end", '''{n}Two runaway lilitu kept a house in Drezen after the war, below the citadel, with thick doors, a cellar nobody else knew about, and a linen press that was exactly as deep as it looked, most nights. They kept their own names. The Commander had agreed to their terms before the war was won, and had meant it; they sent one invitation a year, on those terms, written in two hands that took turns with the pen, and the Commander always went.{/n}''',
         paragraphs=(PALM_P, KNELT_P,
                     p("{n}Chivarro kept the ashes of the bill in a snuffbox, and took it out whenever the Commander forgot who had been bought and who had paid.{/n}",
                       requires=(BURNED,)),
                     p("{n}Some nights the kept door in the Commander's quarters opened on the Delights by itself, and music came through it. The Commander never bricked it up.{/n}",
-                      requires=(DOOR,))))],
+                      requires=(DOOR,)),
+                    p("{n}The Commander never once knocked. Chivarro billed for every visit through the wardrobe, and Minagho kept the accounts.{/n}",
+                      requires=(P + "morning_wardrobe",))))],
     requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_two"))
 page(P + "epilogue.chivarro", "Rent", [
     nar("end", '''{n}Chivarro kept her own house in Drezen after the war and never once let the Commander forget whose name was on the lease. The rent was collected in person, at her convenience, and it went up every year.{/n}''',
@@ -566,7 +616,9 @@ page(P + "epilogue.chivarro", "Rent", [
                       forbids=(MIN_IN,)),
                     p("{n}When Minagho did walk back in, the terms changed, exactly as Chivarro had promised, and the Commander did not get a say.{/n}",
                       requires=(MIN_IN,)),
-                    PALM_P))],
+                    PALM_P,
+                    p("{n}The Commander kept the coin. Chivarro never charged for it, and never let anyone else touch it.{/n}",
+                      requires=(P + "morning_coin",))))],
     requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_chivarro"))
 page(P + "epilogue.minagho", "His, every morning", [
     nar("end", '''{n}Minagho stayed in Drezen, unbranded, and kept the Commander's debt the way other women keep a lover's letters: close, and bitterly, and read over and over. Nobody bargained for her again. She saw to that.{/n}''',
@@ -574,7 +626,9 @@ page(P + "epilogue.minagho", "His, every morning", [
                     p("{n}She never forgave the house that wanted too much for Chivarro. Some nights she went down to the Lower City and made it pay the difference.{/n}",
                       requires=("chivarro.dead.latched",), forbids=(RET_C,)),
                     p("{n}Chivarro came back through the house's back rooms after all, found the terms already signed without her, and renegotiated them, loudly, for a week.{/n}",
-                      requires=(RET_C,))))],
+                      requires=(RET_C,)),
+                    p("{n}Every dawn, for the rest of the Commander's life, Minagho bound the palm herself, too tightly, and never once called it kindness.{/n}",
+                      requires=(P + "morning_bound",))))],
     requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_minagho"))
 page(P + "epilogue.owned", "Goods", [
     nar("end", '''{n}Chivarro stayed in Drezen, owned, on paper, at the Commander's door, and never once let it be mistaken for anything else. She was never seen to smile at the Commander again. She was never seen to leave. Minagho visited her there, and did not speak to the Commander at all.{/n}''')],
@@ -584,10 +638,10 @@ page(P + "epilogue.commit", "One invitation a year", [
     nar("start", '''{n}The war ended before the question was asked.{/n}''',
         c("Continue", "pair", requires=(T_HOUSE,)),
         c("Continue", "waiting", forbids=(T_HOUSE,))),
-    nar("pair", '''{n}Two runaway lilitu kept a house in Drezen's lower town after the war, with thick doors and a cellar nobody else knew about. The first year, they sent the Commander one invitation, on their own terms, written in two hands.{/n}''',
+    nar("pair", '''{n}Two runaway lilitu kept a house in Drezen after the war, below the citadel, with thick doors and a cellar nobody else knew about. The first year, they sent the Commander one invitation, on their own terms, written in two hands.{/n}''',
         c("[Go.]", "went"),
         c("[Send your regrets.]", "regrets")),
-    nar("waiting", '''{n}Chivarro kept a room in Drezen's lower town after the war, waiting for someone who had not come back, and let it be known that the Commander still owed her an answer. The first year, she sent one invitation, on her own terms.{/n}''',
+    nar("waiting", '''{n}Chivarro kept a room in Drezen after the war, below the citadel, waiting for someone who had not come back, and let it be known that the Commander still owed her an answer. The first year, she sent one invitation, on her own terms.{/n}''',
         c("[Go.]", "went"),
         c("[Send your regrets.]", "regrets")),
     nar("went", '''{n}The Commander went. The door was barred from the inside with a chair, and opened anyway. The Commander went every year after that.{/n}'''),
