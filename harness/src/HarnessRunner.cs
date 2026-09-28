@@ -307,6 +307,8 @@ namespace RRT.TestHarness
                         }
                         dirty = false;
                         leaked = false;
+                        // A freshly loaded area keeps building its UI for a moment after the game reports idle.
+                        yield return new WaitForSecondsRealtime(2f);
                     }
                     var run = new SceneRun { Scene = target.Id, Relationship = RrtBridge.SceneRelationship(target.Scene) };
                     List<int>? prefixPath = plan.Dfs ? frontier.Pop() : null;
@@ -381,6 +383,10 @@ namespace RRT.TestHarness
                         foreach (var req in RrtBridge.SceneRequires(scene).Where(persistentFlagKeys.Contains)) bridge.Set(req);
                     // Native / derived world keys cannot be forced from a save; note them so a page that stays hidden is a skip.
                     unforceable = RrtBridge.SceneRequires(scene).Where(req => !persistentFlagKeys.Contains(req) && !flagsBefore.Contains(req)).ToList();
+                    // Nor can the chapter: a page gated on a later chapter cannot open from an earlier save.
+                    int chapter = RrtBridge.ToData(before).Chapter;
+                    if (chapter < RrtBridge.SceneMinChapter(scene) || chapter > RrtBridge.SceneMaxChapter(scene))
+                        unforceable.Add("chapter " + chapter + " outside " + RrtBridge.SceneMinChapter(scene) + ".." + RrtBridge.SceneMaxChapter(scene));
                 }
                 if (plan.MarkStarted && bridge.StartedFlag(run.Relationship) is string started && persistentFlagKeys.Contains(started)) bridge.Set(started);
 
@@ -412,7 +418,18 @@ namespace RRT.TestHarness
 
                     // Let the dialog UI bind the current cue before answering: selecting within the bind frame races
                     // CueVM.GetCueText (NullReferenceException in DialogCueView.BindViewImplementation), a harness artefact.
-                    yield return new WaitForSecondsRealtime(0.25f);
+                    // Poll: the same cue must have been current for 0.25 s real time AND 10 rendered frames (the first
+                    // dialog after a save load builds its UI over several slow frames, so a fixed delay is not enough).
+                    {
+                        var shown = dc.CurrentCue;
+                        int frame0 = Time.frameCount;
+                        float time0 = Time.realtimeSinceStartup;
+                        while (dc.Dialog != null && (Time.frameCount - frame0 < 10 || Time.realtimeSinceStartup - time0 < 0.25f))
+                        {
+                            yield return null;
+                            if (dc.CurrentCue != shown) { shown = dc.CurrentCue; frame0 = Time.frameCount; time0 = Time.realtimeSinceStartup; }
+                        }
+                    }
                     if (dc.Dialog == null) { run.Result = "completed"; break; }
                     var answers = dc.Answers.ToList();
                     counts.Add(answers.Count);
