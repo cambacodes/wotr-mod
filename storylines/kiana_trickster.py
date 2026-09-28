@@ -43,6 +43,9 @@ H_BETROTHED = "kiana.history_betrothed"
 SOUL_LOST = "kiana.soul_lost"                          # latch: KianaIsPosessed or ElanIsDesperate/Cue_0008
 Q3 = "seelah.souls_returned"
 HELD = "kiana.counterfeit_held"
+BOUGHT = "kiana.trickster.guests_bought_back"         # the revised terms, paid: the rest of the pouch comes home
+APOLOGY = "kiana.trickster.cost.apology"
+VOW = "kiana.trickster.pouch_vow"                     # the revised terms, refused: the Commander's word to fetch them
 
 RELATIONSHIP_PATCH = dict(
     TricksterAccess={
@@ -325,6 +328,30 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
    Areas=[DREZEN], Chapters=[5], ContactUnit=ARSINOE, AnswerLists=[ARSINOE_HUB]))
 
 
+# --- The pouch: Sunhammer's revised terms for the guests the joke left behind -------------------------------------------
+
+SCENES.append(scene("kiana.trickster.pouch.second_offer", "Revised terms", "Kiana", 5,
+                    '"Sunhammer\'s apprentice is back, I hear."', [
+    ars("start", '''{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}
+"Commander." {n}He bows exactly as low as before.{/n} "Master Sunhammer received my report of the paste. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before." {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} "And an apology, in your hand, for the insult to his craft. He intends to frame it."
+{n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}
+"Don't you dare," {n}she says.{/n} "Don't you *dare* apologise to him." {n}Then, much more quietly, looking at the pouch:{/n} "...Unless that's what it costs."''',
+        c('[Pay, and sign the apology] "A thousand crowns. The favour. And my name under his words."', "paid",
+          crusade=("Finances", -1000)),
+        c('[Refuse] "Tell your master the Commander doesn\'t buy back paste. I\'ll come for them myself."', "refused"),
+        c('[Not today] "Wait outside. I haven\'t decided."', abort=True)),
+    k("paid", '''{n}You sign it. The apprentice sands the ink, folds the apology into his apron as carefully as a gem, counts the coin twice, and empties the pouch onto the counter: stones in a row, like rings on a jeweller's velvet. Down the ward, one after another, the sleepers breathe in. A boy asks, very loudly, where his ring went.{/n}
+{n}Kiana does not look at the stones. She looks at you.{/n}
+"He's going to hang that on a wall." {n}Her voice shakes, and she lets it.{/n} "Somewhere in Mendev there's going to be a wall with your apology on it, and people are going to walk past it and laugh. For us." {n}She takes your hand in both of hers.{/n} "I'm putting it in the play. Word for word. The audience is going to cry, and he'll never know why."''',
+      c('[Let her keep your hand.]', flags=(BOUGHT, FAVOUR, APOLOGY))),
+    k("refused", '''{n}The apprentice takes the paper back, folds it along its old creases, and goes without another word. The pouch goes with him, and the stones in it.{/n}
+{n}Arsinoe opens her ledger and writes in red ink, under the column headed *Sunhammer. Outstanding*, your promise, word for word, and the date.{/n}
+"You'll come for them yourself." {n}Kiana says it back to you slowly, trying the words for weight, the way she tries a line.{/n} "Good. Then I'm holding you to it. Every one of them. I'll keep the list." {n}She does not smile.{/n} "And if you don't, Commander, that goes in the play too."''',
+      c('[Give her your word.]', flags=(VOW,))),
+], requires=("trickster.ever", ROBBED, MET), forbids=(Q3, "kiana.closed"), delay=72, last=5, optional=True,
+   Relationship="kiana", Areas=[DREZEN], Chapters=[5], ContactUnit=ARSINOE, AnswerLists=[ARSINOE_HUB]))
+
+
 # --- The betrothed history: a registered-route beat of its own (absorbs kiana.answer in that world) ---------------------
 
 SCENES.append(scene("kiana.betrothal", "What a fiancée is for", "Kiana", 5, "", [
@@ -364,10 +391,16 @@ DATE_NODES = [
 PARAGRAPHS = (
     p("Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it "
       "aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
-      requires=(MET, ROBBED), forbids=(Q3, MARKED)),
+      requires=(MET, ROBBED), forbids=(Q3, MARKED, BOUGHT, VOW)),
     p("Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it "
       "aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in "
-      "a jeweller's apron stood and listened, and left before the end.", requires=(MET, ROBBED, MARKED), forbids=(Q3,)),
+      "a jeweller's apron stood and listened, and left before the end.", requires=(MET, ROBBED, MARKED), forbids=(Q3, BOUGHT, VOW)),
+    p("The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology "
+      "in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and "
+      "audiences wept at it without knowing why.", requires=(MET, BOUGHT)),
+    p("The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. "
+      "Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the "
+      "last name, she looked up.", requires=(MET, VOW), forbids=(Q3,)),
     p("Somewhere in Mendev a dwarf kept a slip of paper with the Commander's signature on it and three words above it: "
       "One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched "
       "the Commander's face while they answered.", requires=(MET, FAVOUR)),
@@ -435,7 +468,7 @@ REACTIONS = [
             '''"A ward of beds, Commander, and one of them empty. I have entered it in the ledger as a recovery."
 {n}She turns the ledger round so that you can see the column. It is a long column.{/n}
 "Abadar keeps honest books. I will not write the others off as losses while their bodies are warm. But I should like it noted somewhere other than my ledger that the young man who walked out with their souls was allowed to."''',
-            forbids=(Q3,)),
+            forbids=(Q3, BOUGHT)),
     arsinoe("kiana.trickster.possessed.react_arsinoe_ransom", (SOUL_LOST, FAVOUR),
             '''"A thousand crowns and a favour, to the man who put souls in wedding rings."
 {n}Arsinoe sets her pen down very precisely.{/n}
@@ -572,9 +605,11 @@ def integrate(payload):
     for choice in start["Choices"][:2]:
         _gate(choice, forbids=(ROBBED,))
     start["Choices"].extend([
-        c("Continue", "wedding", requires=(ROBBED, SOUL_LOST), forbids=(Q3,)),
-        c("Continue", "wedding_dog", requires=(ROBBED, DOG), forbids=(Q3,)),
+        c("Continue", "wedding", requires=(ROBBED, SOUL_LOST), forbids=(Q3, BOUGHT)),
+        c("Continue", "wedding_dog", requires=(ROBBED, DOG), forbids=(Q3, BOUGHT)),
         c("Continue", "pledge", requires=(ROBBED, Q3), forbids=("konomi.trickster.cost.recalled",)),
         c("Continue", "rider", requires=(ROBBED, Q3, "konomi.trickster.cost.recalled")),
+        c("Continue", "pledge", requires=(ROBBED, BOUGHT), forbids=(Q3, "konomi.trickster.cost.recalled")),
+        c("Continue", "rider", requires=(ROBBED, BOUGHT, "konomi.trickster.cost.recalled"), forbids=(Q3,)),
     ])
     collection["Nodes"].extend(dict(x) for x in ARSINOE_WEDDING)

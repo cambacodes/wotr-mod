@@ -33253,7 +33253,9 @@
               ],
               "Forbids": [
                 "seelah.souls_returned",
-                "kiana.trickster.cost.courier_marked"
+                "kiana.trickster.cost.courier_marked",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
               ],
               "AnyGroups": []
             },
@@ -33263,6 +33265,28 @@
                 "kiana.trickster.met",
                 "kiana.trickster.cost.guests_robbed",
                 "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.guests_bought_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the last name, she looked up.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.pouch_vow"
               ],
               "Forbids": [
                 "seelah.souls_returned"
@@ -33365,7 +33389,9 @@
               ],
               "Forbids": [
                 "seelah.souls_returned",
-                "kiana.trickster.cost.courier_marked"
+                "kiana.trickster.cost.courier_marked",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
               ],
               "AnyGroups": []
             },
@@ -33375,6 +33401,28 @@
                 "kiana.trickster.met",
                 "kiana.trickster.cost.guests_robbed",
                 "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.guests_bought_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the last name, she looked up.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.pouch_vow"
               ],
               "Forbids": [
                 "seelah.souls_returned"
@@ -33477,7 +33525,9 @@
               ],
               "Forbids": [
                 "seelah.souls_returned",
-                "kiana.trickster.cost.courier_marked"
+                "kiana.trickster.cost.courier_marked",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
               ],
               "AnyGroups": []
             },
@@ -33487,6 +33537,28 @@
                 "kiana.trickster.met",
                 "kiana.trickster.cost.guests_robbed",
                 "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.guests_bought_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the last name, she looked up.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.pouch_vow"
               ],
               "Forbids": [
                 "seelah.souls_returned"
@@ -46383,7 +46455,9 @@
               ],
               "Forbids": [
                 "seelah.souls_returned",
-                "kiana.trickster.cost.courier_marked"
+                "kiana.trickster.cost.courier_marked",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
               ],
               "AnyGroups": []
             },
@@ -46393,6 +46467,28 @@
                 "kiana.trickster.met",
                 "kiana.trickster.cost.guests_robbed",
                 "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.guests_bought_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the last name, she looked up.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.pouch_vow"
               ],
               "Forbids": [
                 "seelah.souls_returned"
@@ -95224,7 +95320,8 @@
                 "kiana.soul_lost"
               ],
               "Forbids": [
-                "seelah.souls_returned"
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back"
               ],
               "Abort": false
             },
@@ -95237,7 +95334,8 @@
                 "kiana.trickster.dog_saved"
               ],
               "Forbids": [
-                "seelah.souls_returned"
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back"
               ],
               "Abort": false
             },
@@ -95264,6 +95362,34 @@
                 "konomi.trickster.cost.recalled"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "pledge",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.guests_bought_back"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "konomi.trickster.cost.recalled"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "rider",
+              "Set": [],
+              "Requires": [
+                "kiana.trickster.cost.guests_robbed",
+                "kiana.trickster.guests_bought_back",
+                "konomi.trickster.cost.recalled"
+              ],
+              "Forbids": [
+                "seelah.souls_returned"
+              ],
               "Abort": false
             }
           ],
@@ -149477,6 +149603,112 @@
       ]
     },
     {
+      "Id": "kiana.trickster.pouch.second_offer",
+      "Title": "Revised terms",
+      "Owner": "Kiana",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Sunhammer's apprentice is back, I hear.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Arsinoe",
+          "Text": "{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}\n\"Commander.\" {n}He bows exactly as low as before.{/n} \"Master Sunhammer received my report of the paste. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before.\" {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} \"And an apology, in your hand, for the insult to his craft. He intends to frame it.\"\n{n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}\n\"Don't you dare,\" {n}she says.{/n} \"Don't you *dare* apologise to him.\" {n}Then, much more quietly, looking at the pouch:{/n} \"...Unless that's what it costs.\"",
+          "Choices": [
+            {
+              "Text": "[Pay, and sign the apology] \"A thousand crowns. The favour. And my name under his words.\"",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -1000
+              }
+            },
+            {
+              "Text": "[Refuse] \"Tell your master the Commander doesn't buy back paste. I'll come for them myself.\"",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Not today] \"Wait outside. I haven't decided.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Arsinoe"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Kiana",
+          "Text": "{n}You sign it. The apprentice sands the ink, folds the apology into his apron as carefully as a gem, counts the coin twice, and empties the pouch onto the counter: stones in a row, like rings on a jeweller's velvet. Down the ward, one after another, the sleepers breathe in. A boy asks, very loudly, where his ring went.{/n}\n{n}Kiana does not look at the stones. She looks at you.{/n}\n\"He's going to hang that on a wall.\" {n}Her voice shakes, and she lets it.{/n} \"Somewhere in Mendev there's going to be a wall with your apology on it, and people are going to walk past it and laugh. For us.\" {n}She takes your hand in both of hers.{/n} \"I'm putting it in the play. Word for word. The audience is going to cry, and he'll never know why.\"",
+          "Choices": [
+            {
+              "Text": "[Let her keep your hand.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.cost.sunhammer_favour",
+                "kiana.trickster.cost.apology"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Kiana",
+          "Text": "{n}The apprentice takes the paper back, folds it along its old creases, and goes without another word. The pouch goes with him, and the stones in it.{/n}\n{n}Arsinoe opens her ledger and writes in red ink, under the column headed *Sunhammer. Outstanding*, your promise, word for word, and the date.{/n}\n\"You'll come for them yourself.\" {n}Kiana says it back to you slowly, trying the words for weight, the way she tries a line.{/n} \"Good. Then I'm holding you to it. Every one of them. I'll keep the list.\" {n}She does not smile.{/n} \"And if you don't, Commander, that goes in the play too.\"",
+          "Choices": [
+            {
+              "Text": "[Give her your word.]",
+              "Next": null,
+              "Set": [
+                "kiana.trickster.pouch_vow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Kiana"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "kiana.trickster.cost.guests_robbed",
+        "kiana.trickster.met"
+      ],
+      "Forbids": [
+        "seelah.souls_returned",
+        "kiana.closed"
+      ],
+      "DelayHours": 72,
+      "Optional": true,
+      "Relationship": "kiana",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "a609ed9b2205d034bb3bb04d2a255681",
+      "AnswerLists": [
+        "ecaf5cfe8087a4f45a2269974f4885c9"
+      ]
+    },
+    {
       "Id": "kiana.betrothal",
       "Title": "What a fiancée is for",
       "Owner": "Kiana",
@@ -149623,7 +149855,9 @@
               ],
               "Forbids": [
                 "seelah.souls_returned",
-                "kiana.trickster.cost.courier_marked"
+                "kiana.trickster.cost.courier_marked",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
               ],
               "AnyGroups": []
             },
@@ -149633,6 +149867,28 @@
                 "kiana.trickster.met",
                 "kiana.trickster.cost.guests_robbed",
                 "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.guests_bought_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the last name, she looked up.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.pouch_vow"
               ],
               "Forbids": [
                 "seelah.souls_returned"
@@ -149713,7 +149969,9 @@
               ],
               "Forbids": [
                 "seelah.souls_returned",
-                "kiana.trickster.cost.courier_marked"
+                "kiana.trickster.cost.courier_marked",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
               ],
               "AnyGroups": []
             },
@@ -149723,6 +149981,28 @@
                 "kiana.trickster.met",
                 "kiana.trickster.cost.guests_robbed",
                 "kiana.trickster.cost.courier_marked"
+              ],
+              "Forbids": [
+                "seelah.souls_returned",
+                "kiana.trickster.guests_bought_back",
+                "kiana.trickster.pouch_vow"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and a letter of apology in the Commander's hand. Somewhere in Mendev it hangs on a wall. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.guests_bought_back"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the last name, she looked up.",
+              "Requires": [
+                "kiana.trickster.met",
+                "kiana.trickster.pouch_vow"
               ],
               "Forbids": [
                 "seelah.souls_returned"
@@ -150016,7 +150296,8 @@
         "kiana.trickster.cost.guests_robbed"
       ],
       "Forbids": [
-        "seelah.souls_returned"
+        "seelah.souls_returned",
+        "kiana.trickster.guests_bought_back"
       ],
       "DelayHours": 0,
       "Optional": false,

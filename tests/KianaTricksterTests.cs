@@ -123,6 +123,29 @@ internal static class KianaTricksterTests
             "The evil answer at the pivot is missing, or closes more than itself.");
         var met = pivoted.First(r => !r.Has("kiana.closed"));
 
+        // The guests the joke left behind: Sunhammer's revised terms, in person, three days after the pivot.
+        var offer = S("kiana.trickster.pouch.second_offer");
+        check(offer.AnswerLists.SequenceEqual(new[] { ArsinoeHub }) && offer.ContactUnit == Arsinoe && !Rules.IsRemote(offer),
+            "The revised terms left Arsinoe's counter.");
+        check(!Rules.Available(story, offer, Later(story, met, 71)) && Rules.Available(story, offer, Later(story, met, 72)),
+            "The revised terms ignore their delay.");
+        check(!Rules.Available(story, offer, Later(story, ransom[0], 200)), "The revised terms reach a Commander who bought everyone.");
+        check(offer.Nodes[0].Choices[0].Crusade?.Amount == -1000, "Buying the guests back is free.");
+        var offered = Program.Walk(offer, Later(story, met, 72)).Where(r => r.Has(offer.Id)).ToList();
+        var bought = offered.SingleOrDefault(r => r.Has("kiana.trickster.guests_bought_back"));
+        var vowed = offered.SingleOrDefault(r => r.Has("kiana.trickster.pouch_vow"));
+        check(bought != null && bought.Has("kiana.trickster.cost.apology") && bought.Has("kiana.trickster.cost.sunhammer_favour")
+              && vowed != null && !vowed.Has("kiana.trickster.cost.sunhammer_favour") && offered.All(r => !r.Has("kiana.closed")),
+            "The revised terms do not offer the price or the vow.");
+        var boughtEnd = Program.Copy(bought!); boughtEnd.Flags.Add("kiana.committed"); boughtEnd.Chapter = 6;
+        var boughtParas = Rules.VisibleParagraphs(S("kiana.ending_promised").Nodes[0], boughtEnd).Select(x => x.Text).ToArray();
+        check(boughtParas.Any(t => t.Contains("apology")) && !boughtParas.Any(t => t.Contains("never came back")),
+            "The ending forgets the guests who came home.");
+        var vowEnd = Program.Copy(vowed!); vowEnd.Flags.Add("kiana.committed"); vowEnd.Chapter = 6;
+        check(Rules.VisibleParagraphs(S("kiana.ending_promised").Nodes[0], vowEnd).Any(x => x.Text.Contains("promise")),
+            "The ending forgets the Commander's word.");
+        check(!Rules.Available(story, S("kiana.trickster.possessed.react_arsinoe_stones"), bought!), "Arsinoe mourns guests who came home.");
+
         // Trk_Kiana_Stagecraft_S2 and the spine to the commit (marriage -> answer -> date -> morning).
         var s2 = Later(story, met, 48);
         check(Rules.Available(story, S("kiana.stagecraft"), s2) && Rules.Available(story, S("kiana.marriage"), s2)
@@ -245,6 +268,9 @@ internal static class KianaTricksterTests
         ledger.Flags.Add("seelah.souls_returned");
         ledgerPages = Pages(collection, ledger);
         check(!ledgerPages.Contains("wedding") && ledgerPages.Contains("rider"), "Arsinoe bills a wedding Seelah already settled.");
+        ledger.Flags.Remove("seelah.souls_returned"); ledger.Flags.Add("kiana.trickster.guests_bought_back");
+        ledgerPages = Pages(collection, ledger);
+        check(!ledgerPages.Contains("wedding") && ledgerPages.Contains("rider"), "Arsinoe bills guests the Commander bought back.");
 
         // Reactions: Arsinoe, Anevia, Irabeth only; Anevia's lift with her return, Irabeth's with hers.
         var reactions = story.Scenes.Where(s => s.Relationship == "kiana" && s.Reaction).ToArray();
