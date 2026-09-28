@@ -864,10 +864,11 @@ s("shared_night", "No one at the door", "Together", 5,
 {n}Anevia's laughter is soft. She leans over and kisses her wife. When they part, she reaches for your hand rather than assuming you will move closer.{/n}''',
       c('[Take her hand and kiss each woman in turn.]', "close"),
       c('"Tonight I would rather just be close to you."', "quiet")),
-    n("close", "Narrator", '''{n}At first the unfamiliarity makes all three of you careful. Then Anevia says something irreverent against Irabeth's cheek, and Irabeth laughs, and the care becomes easier to bear. You have room to ask, room to answer, room to pause without making a failure of the pause.{/n}
-{n}Anevia touches your face and waits for you to meet her eyes. Irabeth's hand rests warmly at your back. There is desire here, and nerves, and the small surprising joy of no longer needing to pretend that either is absent.{/n}
-"Still all right?" Irabeth asks.
-{n}You answer her. Anevia answers too. The lamp is turned low, and the rest of the evening passes beyond the reach of reports and explanations.{/n}''', c('[Let the night remain private.]', "morning")),
+    n("close", "Narrator", '''{n}At first the unfamiliarity makes all three of you careful. Then Anevia says something irreverent against Irabeth's cheek, Irabeth laughs, and the carefulness goes out of the room like a draught when a door shuts.{/n}
+{n}Anevia gets to your buttons first. She has spy's fingers and no patience, and she kisses you while she works, hard, tasting of the wine she said was only quite good. Behind you Irabeth's hands settle on your hips, big and warm, and her mouth finds the back of your neck.{/n}
+"Still all right?" Irabeth asks, low, against your skin.
+"Beth," Anevia says, "if you ask that one more time I'm puttin' you on report."
+{n}You answer her with your mouth on Anevia's. Irabeth's laugh shakes through both of you. Then the three of you are down on the cushions in a tangle of half-shed clothes, Anevia pulling you over her by the collar, Irabeth's weight settling warm along your back, and Anevia's heel hooks round your leg and draws you in.{/n}''', c('[Let the night remain private.]', "morning")),
     n("quiet", "Narrator", '''{n}Irabeth draws you close. Anevia settles against her other side, then complains that someone has arranged the cushions with military efficiency and no concern for comfort.{/n}
 {n}The three of you spend several minutes correcting this injustice. By the time you are satisfied, Anevia is laughing and Irabeth has abandoned any claim to dignity. You talk until conversation gives way to drowsiness.{/n}
 {n}No one asks whether you are certain about what you declined. The warmth offered afterward is no less generous for it.{/n}''', c('[Stay until morning.]', "morning")),
