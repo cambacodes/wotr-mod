@@ -211056,7 +211056,7 @@
         {
           "Id": "why",
           "Speaker": "Camellia",
-          "Text": "\"Because I don't need a reason any more.\" {n}She opens her hand and looks at the snake.{/n} \"I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you didn't need me to have a reason. You just... watched. You watched, and you stayed.\" {n}She shrugs, a small, bewildered movement.{/n} \"She's out of work. Poor thing. I made her up and now I've made her redundant.\"",
+          "Text": "\"Because I don't need a reason any more.\" {n}She opens her hand and looks at the snake.{/n} \"I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you never once asked me for one. You simply kept count.\" {n}She turns the snake so its empty eyes face you.{/n} \"A witness who never testifies. Very useful to a woman like me, or very dangerous. I haven't decided which.\" {n}A small shrug.{/n} \"She's out of work. Poor thing. I made her up and now I've made her redundant.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -211229,7 +211229,7 @@
         {
           "Id": "why",
           "Speaker": "Camellia",
-          "Text": "\"Because I don't need a reason any more.\" {n}She opens her hand and looks at the snake.{/n} \"I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you didn't need me to have a reason. You just... watched. You watched, and you stayed.\" {n}She shrugs, a small, bewildered movement.{/n} \"She's out of work. Poor thing. I made her up and now I've made her redundant.\"",
+          "Text": "\"Because I don't need a reason any more.\" {n}She opens her hand and looks at the snake.{/n} \"I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you never once asked me for one. You simply kept count.\" {n}She turns the snake so its empty eyes face you.{/n} \"A witness who never testifies. Very useful to a woman like me, or very dangerous. I haven't decided which.\" {n}A small shrug.{/n} \"She's out of work. Poor thing. I made her up and now I've made her redundant.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -211397,7 +211397,7 @@
         {
           "Id": "why",
           "Speaker": "Camellia",
-          "Text": "\"Because I don't need a reason any more.\" {n}She opens her hand and looks at the snake.{/n} \"I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you didn't need me to have a reason. You just... watched. You watched, and you stayed.\" {n}She shrugs, a small, bewildered movement.{/n} \"She's out of work. Poor thing. I made her up and now I've made her redundant.\"",
+          "Text": "\"Because I don't need a reason any more.\" {n}She opens her hand and looks at the snake.{/n} \"I needed Mireya so that people would forgive me. So that there would be someone to blame, or pity. And then you came along, and you never once asked me for one. You simply kept count.\" {n}She turns the snake so its empty eyes face you.{/n} \"A witness who never testifies. Very useful to a woman like me, or very dangerous. I haven't decided which.\" {n}A small shrug.{/n} \"She's out of work. Poor thing. I made her up and now I've made her redundant.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -212610,7 +212610,7 @@
         {
           "Id": "warn",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}\n{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}",
+          "Text": "{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}\n{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}\n{n}Neither do half the banner-menders. By evening the whole loft has heard that the Commander's own companion has a catching cough, and the quartermaster is at your door with a list: three standards unfinished for the muster, two women sick with fright, one refusing to sew without a physician's note. The chaplains want to know why they were not told. The standards go into the field half-made.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -212618,7 +212618,11 @@
               "Set": [],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             }
           ],
           "Portrait": "Camellia"
@@ -212802,7 +212806,7 @@
         {
           "Id": "warn",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}\n{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}",
+          "Text": "{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}\n{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}\n{n}Neither do half the banner-menders. By evening the whole loft has heard that the Commander's own companion has a catching cough, and the quartermaster is at your door with a list: three standards unfinished for the muster, two women sick with fright, one refusing to sew without a physician's note. The chaplains want to know why they were not told. The standards go into the field half-made.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -212810,7 +212814,11 @@
               "Set": [],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             }
           ],
           "Portrait": "Camellia"
@@ -212989,7 +212997,7 @@
         {
           "Id": "warn",
           "Speaker": "Camellia",
-          "Text": "{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}\n{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}",
+          "Text": "{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}\n{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}\n{n}Neither do half the banner-menders. By evening the whole loft has heard that the Commander's own companion has a catching cough, and the quartermaster is at your door with a list: three standards unfinished for the muster, two women sick with fright, one refusing to sew without a physician's note. The chaplains want to know why they were not told. The standards go into the field half-made.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -212997,7 +213005,11 @@
               "Set": [],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             }
           ],
           "Portrait": "Camellia"
@@ -213838,8 +213850,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

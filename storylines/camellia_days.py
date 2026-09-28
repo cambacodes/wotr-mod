@@ -114,8 +114,9 @@ met(NEW_FRIEND, "A new friend", '"Who was that you were laughing with?"', [
         c('[Trickster] Tell Ilse, tomorrow, that Camellia has consumption and must be allowed to rest. Alone. For months.', "warn"),
         c('"Then I\'ll be watching."', "watch")),
     cam("warn", '''{n}It takes you a morning. You find Ilse in the banner loft with a mouthful of pins, and you tell her, gravely, as a Commander tells a soldier bad news, that the lady Camellia is ill, very ill, with a coughing sickness that is most catching, and that the kindest thing a friend can do is to stay away until the physicians say otherwise.{/n}
-{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}''',
-        c("Continue", "warned")),
+{n}Ilse cries a little. She sends a ribbon. She does not come back.{/n}
+{n}Neither do half the banner-menders. By evening the whole loft has heard that the Commander's own companion has a catching cough, and the quartermaster is at your door with a list: three standards unfinished for the muster, two women sick with fright, one refusing to sew without a physician's note. The chaplains want to know why they were not told. The standards go into the field half-made.{/n}''',
+        c("Continue", "warned", crusade=("Favors", -100))),
     cam("warned", '''"Consumption." {n}Camellia holds up the ribbon, blue, with a little bow.{/n} "You gave me consumption. Ilse sent me this and a very sweet note, and now she crosses the yard when she sees me coming, with her hand over her mouth."
 {n}She winds the ribbon round her finger, and unwinds it.{/n} "You took my friend away. You lied to her to do it. You made her afraid of me, for no reason she'll ever understand." {n}She smiles, slowly.{/n} "You lied to a girl to take my plaything away. How very possessive of you." {n}She ties the ribbon round her wrist, tight enough to mark.{/n} "I shall keep this. It's evidence of what you'll do when something of mine is in the way."''',
         c("[Take her hand]", flags=(FRIEND_WARNED,))),
