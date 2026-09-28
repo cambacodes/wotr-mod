@@ -113,7 +113,7 @@ letter("kiana.trickster.aftermath.letter_waited", "The bottom of the box", [
 # --- State possessed_no_rescue: the fake gem (F14) --------------------------------------------------------------------
 
 TRICK_WAKE = '''{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}
-"So. I was a stone." {n}She looks at Arsinoe, then at you.{/n} "A *cheap* stone, Arsinoe tells me. Paste! I was married for about a quarter of an hour, and then I was paste."
+"So. I was a stone." {n}She looks at Arsinoe, then at you.{/n} "A *flawed* stone, Arsinoe tells me. Bubbles! I was married for about a quarter of an hour, and then I was a stone with a bubble in it."
 {n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}
 "The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop."
 {n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}
@@ -135,21 +135,22 @@ letter("kiana.trickster.possessed.fake_gem", "Paste", [
         crusade=("Finances", -1000)),
       c('[Not yet] "Not yet. Keep him here."', abort=True), portrait="Arsinoe"),
     nar("appraisal", '''{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}
-{n}Nobody in the room needs a loupe for what happens next. The stone clouds from the inside, like breath on cold glass, and then it simply is what you said it was: a lump of cheap paste, faintly sticky, with a bubble in it. The kind of thing sold to drunk sailors as a ruby.{/n}
+{n}You name its faults as you go, the way a pawnbroker does to bring the price down: a bubble under the table, just off centre; a hairline flaw running from the girdle toward the heart; a setting that was never going to hold anything. None of it is there. It is the finest stone in the room.{/n}
+{n}Then the apprentice holds it up to the lamp to prove you wrong, and it is all there. The bubble, exactly where you said. The flaw, fine as a hair. Every jeweller knows what a flawed stone does with whatever it was set to hold: it lets it go.{/n}
 {n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}''',
       c('[Keep a straight face] "...Paste."',
         check=dict(Skill="CheckBluff", DC=20, Success="sold", Failure="bolted", CommanderOnly=True)), portrait="Arsinoe"),
-    nar("sold", '''{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the paste back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}
+    nar("sold", '''{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the ruined stone back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}
 {n}Glass holds nothing. Whatever was in that stone is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}''',
       c('[Watch her wake] "Kiana?"', "woke_sold"), portrait="Arsinoe"),
-    nar("bolted", '''{n}He looks from the paste to your face, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}
+    nar("bolted", '''{n}He looks from the flaw to your face, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}
 {n}By tonight, somewhere in Mendev, a dwarf with a jeweller's hands will know exactly whose trick that was.{/n}
 {n}On the cot, Kiana draws in a breath like someone coming up from deep water.{/n}''',
       c('[Watch her wake] "Kiana?"', "woke_bolted"), portrait="Arsinoe"),
     nar("swapped", '''{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}
-{n}Then you say it, of the stone in your fist: paste. Cheap paste. When you open your hand, it is.{/n}
+{n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a hairline flaw from the girdle to the heart, a setting that was never going to hold anything. When you open your hand, every fault you named is there, and the stone is no longer holding anything at all.{/n}
 {n}The apprentice squints at the counterfeit between his own fingers. For the first time since he walked in, he looks unsure of his trade.{/n}''',
-      c('[Send him back to his master] "Take your paste back to Sunhammer. Tell him the Commander said so."', "woke_swapped",
+      c('[Send him back to his master] "Take your stone back to Sunhammer. Tell him the Commander said it was flawed."', "woke_swapped",
         mythic="Trickster", alignment=("Chaotic", 1), remove_item=COUNTERFEIT, requires=(HELD,)),
       portrait="Arsinoe"),
     nar("paid", '''{n}He counts it twice, the whole thousand, coin by coin, with the patience of a man paid by the piece. Then he takes a slip of paper from his apron, writes *One favour, owed* on it in a neat guild hand, and holds it out for your signature.{/n}
@@ -182,8 +183,8 @@ letter("kiana.trickster.awake.dog_collar", "The sample", [
         mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Pay for the guests] "All of them. The thousand, and his favour."', "paid", crusade=("Finances", -1000)),
       c('[Not yet] "Not yet."', abort=True)),
-    k("bark", '''{n}The stone in the collar goes cloudy and cheap between one word and the next. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}
-{n}The apprentice looks at the paste in the collar, and at the dog, and puts the collar away very carefully, the way you put away something that has bitten you. He does not stay to haggle. The pouch goes with him.{/n}
+    k("bark", '''{n}You name its faults, bored, the way a pawnbroker does: a bubble under the table, a hairline flaw to the heart, a setting that would not hold a flea. None of it was there. When the apprentice turns the collar to the lamp, all of it is, and a flawed stone keeps nothing it was set to hold. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}
+{n}The apprentice looks at the flaw in the collar, and at the dog, and puts the collar away very carefully, the way you put away something that has bitten you. He does not stay to haggle. The pouch goes with him.{/n}
 "You saved the *dog*." {n}Kiana's voice cracks halfway up.{/n} "Of everyone in that cup, you saved the dog."
 {n}She laughs until she has to sit down on the floor, and the dog climbs into her lap to help.{/n}
 "Oh, gods. Elan is going to be *furious*. I love it. I love it, and there are still..." {n}She looks along the cots, and the laugh stops.{/n}''',
@@ -205,19 +206,19 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
       c('[Take it to the King: POSTPONED BY ROYAL DECREE] "His Majesty forbids all weddings until the King is sober."',
         "king", mythic="Trickster", alignment=("Chaotic", 1), crusade=("Finances", -300),
         requires=("fool_king.crowned",), forbids=("fool_king.gone",)),
-      c('[Order it at the war council: POSTPONED] "Standing order: no weddings in Drezen until the war is won."',
+      c('[Order it at the war council: POSTPONED] "Standing order: no marriage leave for anyone under arms until the siege lines hold."',
         "order", mythic="Trickster", alignment=("Chaotic", 1), forbids=("fool_king.crowned",)),
-      c('[Order it at the war council: POSTPONED] "Standing order: no weddings in Drezen until the war is won."',
+      c('[Order it at the war council: POSTPONED] "Standing order: no marriage leave for anyone under arms until the siege lines hold."',
         "order", mythic="Trickster", alignment=("Chaotic", 1), requires=("fool_king.crowned", "fool_king.gone")),
       c('[Sign it] "Approved. Tell them congratulations."', "signed")),
     nar("signed", '''{n}You sign it, and stamp it, and the clerk takes it away with the others. A week later there is a wedding in Drezen: vampire costumes, red wine for blood, a priestess of Abadar so that nobody's god is offended. You are invited. The ring is very fine.{/n}''',
       c('[Send your congratulations.]', flags=(SIGNED, "kiana.closed"))),
     nar("king", '''{n}The Fool King hears you out from his throne, which today is a barrel. He reads the licence upside down, then the right way up, then asks what's in it for him. You tell him: his fee, and the best joke in Drezen. He takes the fee.{/n}
 {n}"POSTPONED," he declares, and stamps it himself. "By royal decree! No weddings in my kingdom until the King is sober!" He thinks about it. "That's never, by the way. Put that in. 'Which is never.'"{/n}
-{n}The herald reads it out in the square at noon, including the last part. Drezen, which has been at war for a very long time, laughs until it hurts.{/n}''',
+{n}The herald reads it out in the square at noon, including the last part. Drezen, which has been at war for a very long time, laughs until it hurts. By evening there are fourteen couples outside the chancery, some still in their good clothes, and nobody laughing among them. A baker and a crossbowman ask you to your face whether the King will ever be sober. You have no answer that isn't the King.{/n}''',
       c("Continue", "complaint_king")),
-    nar("order", '''{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No weddings in Drezen until the war is won.*{/n}
-{n}Nobody laughs, because you are the Commander. Then somebody at the foot of the table does, and after that nobody can stop. For weeks the officers have been complaining that they are sick of fighting and doing nothing else. It seems only fair to answer one of their prayers the wrong way round.{/n}
+    nar("order", '''{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No marriage leave for anyone under arms until the siege lines hold.* The quartermaster, who has been losing a sentry a week to wedding nights, nods before you have finished. For weeks the officers have been complaining that they are sick of fighting and doing nothing else; you have answered their prayer the wrong way round, and a few of them laugh, and then stop, because it is an order.{/n}
+{n}By evening there are fourteen couples outside the chancery, some still in their good clothes. A baker and a crossbowman ask you to your face how long the lines will take to hold. You have no answer for them that isn't the order.{/n}
 {n}The clerk stamps the licence POSTPONED and sands it. The word dries, and stays.{/n}''',
       c("Continue", "complaint_order")),
     k("complaint_king", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}
@@ -227,8 +228,8 @@ letter("kiana.trickster.no_wedding.postponed", "Postponed", [
 "...I laughed. I didn't want to. Come and explain yourself. Bring no speeches."''',
       c('[Write back] "I heard. Which is never."', flags=(PRIMED, RETURNED, POSTPONED, KING, H_BETROTHED))),
     k("complaint_order", '''{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}
-"So I'm not a wife. I am a *fiancée*. Again. Because the Commander of the crusade has banned weddings until the war is won. In front of the whole war council. Which, as every officer in Drezen now says to everyone he meets, is NEVER."
-"Elan wants to challenge you to a duel. I told him to get in line behind the officers. The priestess of Abadar has returned our deposit with a note of condolence."
+"So I'm not a wife. I am a *fiancée*. Again. Because the Commander of the crusade has cancelled marriage leave for everyone under arms until the siege lines hold, in front of the whole war council, and Elan is under arms. Nobody will tell me when the lines will hold. I asked a sergeant. He laughed until he cried, and then he just cried; he was supposed to be married on Sunday."
+"Elan wants to challenge you to a duel. I told him to get in line behind the other thirteen grooms. The priestess of Abadar has returned our deposit with a note of condolence."
 {n}The next line has been crossed out and rewritten three times.{/n}
 "...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches."''',
       c('[Write back] "I heard. Which is never."', flags=(PRIMED, RETURNED, POSTPONED, H_BETROTHED))),
@@ -292,7 +293,7 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
       c('[Make light of it] "It was a joke. It got out of hand."', "spared_licence"),
       c('[Remind her who holds the stamp] "I hold the stamp, Kiana. Remember that."', "claimed_licence")),
     stone_pivot(),
-    k("told_robbed", '''{n}She listens to all of it without interrupting, which you suspect is a first. When you get to the part about the paste she puts her hand over her mouth.{/n}
+    k("told_robbed", '''{n}She listens to all of it without interrupting, which you suspect is a first. When you get to the part about the bubble and the flaw she puts her hand over her mouth.{/n}
 "You called me cheap. To his face. And it *worked*." {n}She lowers the hand. She isn't laughing now.{/n} "And the rest of them walked out of here in his pouch, because you had one joke in you that day and you spent it on me."
 {n}She is quiet for a while.{/n}
 "I don't know whether to kiss you or hit you. I'm going to do neither until I've written it down. Then I'll know which one the scene wants."''',
@@ -333,12 +334,12 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
 SCENES.append(scene("kiana.trickster.pouch.second_offer", "Revised terms", "Kiana", 5,
                     '"Sunhammer\'s apprentice is back, I hear."', [
     ars("start", '''{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}
-"Commander." {n}He bows exactly as low as before.{/n} "Master Sunhammer received my report of the paste. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before." {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} "And an apology, in your hand, for the insult to his craft. He intends to frame it."
+"Commander." {n}He bows exactly as low as before.{/n} "Master Sunhammer received my report of the flaw, and of what his stone was called at the lamp. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before." {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} "And an apology, in your hand, for the insult to his craft. He intends to frame it."
 {n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}
 "Don't you dare," {n}she says.{/n} "Don't you *dare* apologise to him." {n}Then, much more quietly, looking at the pouch:{/n} "...Unless that's what it costs."''',
         c('[Pay, and sign the apology] "A thousand crowns. The favour. And my name under his words."', "paid",
           crusade=("Finances", -1000)),
-        c('[Refuse] "Tell your master the Commander doesn\'t buy back paste. I\'ll come for them myself."', "refused"),
+        c('[Refuse] "Tell your master the Commander doesn\'t buy back flawed stones. I\'ll come for them myself."', "refused"),
         c('[Not today] "Wait outside. I haven\'t decided."', abort=True)),
     k("paid", '''{n}You sign it. The apprentice sands the ink, folds the apology into his apron as carefully as a gem, counts the coin twice, and empties the pouch onto the counter: stones in a row, like rings on a jeweller's velvet. Down the ward, one after another, the sleepers breathe in. A boy asks, very loudly, where his ring went.{/n}
 {n}Kiana does not look at the stones. She looks at you.{/n}
@@ -407,8 +408,8 @@ PARAGRAPHS = (
     p("Elan and Kiana stayed friends, which surprised everyone but Elan.", requires=(MET, H_MARRIED),
       forbids=("kiana.widowed",)),
     p("The marriage licence stayed postponed. Kiana had it framed.", requires=(MET, H_BETROTHED)),
-    p("The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one "
-      "weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+    p("The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one "
+      "weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
       requires=(POSTPONED,), forbids=(KING,)),
     p("The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King "
       "was sober. He was not. Drezen held forty-one weddings that week anyway, and Kiana went to every one.",
@@ -497,7 +498,7 @@ REACTIONS = [
 {n}Arsinoe dips her pen.{/n}
 "I shall also invoice the crusade for the deposits, to the last copper of the flowers, and for the priestesses' time, and for one wedding cake, which was already baked and has since been eaten by the Houndhearts."'''),
     anevia("kiana.trickster.no_wedding.react_anevia", (POSTPONED,),
-           '''"No weddings until the war's won?" {n}Anevia whistles.{/n} "Beth and I got in under the wire, then. Don't you dare make it retroactive."'''),
+           '''"No weddings while the siege lasts?" {n}Anevia whistles.{/n} "Beth and I got in under the wire, then. Don't you dare make it retroactive. And go and look at the queue outside the chancery some evening. Those people had cakes ordered."'''),
 ]
 SCENES.extend(REACTIONS)
 

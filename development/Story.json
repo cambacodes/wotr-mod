@@ -33323,7 +33323,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -33459,7 +33459,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -33595,7 +33595,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -46525,7 +46525,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -148610,7 +148610,7 @@
         {
           "Id": "appraisal",
           "Speaker": "Narrator",
-          "Text": "{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}\n{n}Nobody in the room needs a loupe for what happens next. The stone clouds from the inside, like breath on cold glass, and then it simply is what you said it was: a lump of cheap paste, faintly sticky, with a bubble in it. The kind of thing sold to drunk sailors as a ruby.{/n}\n{n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}",
+          "Text": "{n}You say it the way you would say it to a fence on the Kenabres docks: bored, and a little sorry for him.{/n}\n{n}You name its faults as you go, the way a pawnbroker does to bring the price down: a bubble under the table, just off centre; a hairline flaw running from the girdle toward the heart; a setting that was never going to hold anything. None of it is there. It is the finest stone in the room.{/n}\n{n}Then the apprentice holds it up to the lamp to prove you wrong, and it is all there. The bubble, exactly where you said. The flaw, fine as a hair. Every jeweller knows what a flawed stone does with whatever it was set to hold: it lets it go.{/n}\n{n}The apprentice holds it up to the lamp again, and his face changes. Behind you Arsinoe makes a small sound that, in a lesser priestess, would have been a laugh.{/n}",
           "Choices": [
             {
               "Text": "[Keep a straight face] \"...Paste.\"",
@@ -148633,7 +148633,7 @@
         {
           "Id": "sold",
           "Speaker": "Narrator",
-          "Text": "{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the paste back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}\n{n}Glass holds nothing. Whatever was in that stone is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}",
+          "Text": "{n}He believes you. More to the point, he believes his own eyes. He swears at his master's craftsmanship in a guild cant you do not know, drops the ruined stone back into the pouch with the rest, and goes, to take it up with the jeweller in person. The other stones go with him. You let them.{/n}\n{n}Glass holds nothing. Whatever was in that stone is not in the pouch any more. The lamp by the cot flickers once and steadies, and Kiana draws in a breath like someone coming up from deep water.{/n}",
           "Choices": [
             {
               "Text": "[Watch her wake] \"Kiana?\"",
@@ -148649,7 +148649,7 @@
         {
           "Id": "bolted",
           "Speaker": "Narrator",
-          "Text": "{n}He looks from the paste to your face, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}\n{n}By tonight, somewhere in Mendev, a dwarf with a jeweller's hands will know exactly whose trick that was.{/n}\n{n}On the cot, Kiana draws in a breath like someone coming up from deep water.{/n}",
+          "Text": "{n}He looks from the flaw to your face, and sees the grin you did not quite manage to keep off it. He goes white. Then he runs, through the Houndhearts before they can close the door and out into the street, pouch and all, and the other stones with it.{/n}\n{n}By tonight, somewhere in Mendev, a dwarf with a jeweller's hands will know exactly whose trick that was.{/n}\n{n}On the cot, Kiana draws in a breath like someone coming up from deep water.{/n}",
           "Choices": [
             {
               "Text": "[Watch her wake] \"Kiana?\"",
@@ -148665,10 +148665,10 @@
         {
           "Id": "swapped",
           "Speaker": "Narrator",
-          "Text": "{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}\n{n}Then you say it, of the stone in your fist: paste. Cheap paste. When you open your hand, it is.{/n}\n{n}The apprentice squints at the counterfeit between his own fingers. For the first time since he walked in, he looks unsure of his trade.{/n}",
+          "Text": "{n}He hands it over. Of course he does: a craftsman likes his work admired. You turn it to the lamp, and turn it back, and hand him the other one, the counterfeit of Sunhammer's work you have been carrying, cut by some honest forger to pass for his master's. He never feels the difference.{/n}\n{n}Then you appraise the stone in your fist out loud, the way you would at any pawnbroker's counter: a bubble just off centre, a hairline flaw from the girdle to the heart, a setting that was never going to hold anything. When you open your hand, every fault you named is there, and the stone is no longer holding anything at all.{/n}\n{n}The apprentice squints at the counterfeit between his own fingers. For the first time since he walked in, he looks unsure of his trade.{/n}",
           "Choices": [
             {
-              "Text": "[Send him back to his master] \"Take your paste back to Sunhammer. Tell him the Commander said so.\"",
+              "Text": "[Send him back to his master] \"Take your stone back to Sunhammer. Tell him the Commander said it was flawed.\"",
               "Next": "woke_swapped",
               "Set": [],
               "Requires": [
@@ -148705,7 +148705,7 @@
         {
           "Id": "woke_sold",
           "Speaker": "Kiana",
-          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *cheap* stone, Arsinoe tells me. Paste! I was married for about a quarter of an hour, and then I was paste.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
+          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *flawed* stone, Arsinoe tells me. Bubbles! I was married for about a quarter of an hour, and then I was a stone with a bubble in it.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
           "Choices": [
             {
               "Text": "[Sit with her until her hands are still.]",
@@ -148726,7 +148726,7 @@
         {
           "Id": "woke_bolted",
           "Speaker": "Kiana",
-          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *cheap* stone, Arsinoe tells me. Paste! I was married for about a quarter of an hour, and then I was paste.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
+          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *flawed* stone, Arsinoe tells me. Bubbles! I was married for about a quarter of an hour, and then I was a stone with a bubble in it.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
           "Choices": [
             {
               "Text": "[Sit with her until her hands are still.]",
@@ -148748,7 +148748,7 @@
         {
           "Id": "woke_swapped",
           "Speaker": "Kiana",
-          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *cheap* stone, Arsinoe tells me. Paste! I was married for about a quarter of an hour, and then I was paste.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
+          "Text": "{n}She sits up too fast, grabs the edge of the cot, and laughs at herself before anyone else can.{/n}\n\"So. I was a stone.\" {n}She looks at Arsinoe, then at you.{/n} \"A *flawed* stone, Arsinoe tells me. Bubbles! I was married for about a quarter of an hour, and then I was a stone with a bubble in it.\"\n{n}Her hands are shaking. She looks at them as if they belong to a guest who has had too much wine.{/n}\n\"The best way to stop being afraid of something is to laugh at it. So I'm going to laugh at this until they stop.\"\n{n}They do not stop. She laughs anyway. Then she looks down the row of cots at the others, still breathing, still empty, and the laugh runs out.{/n}\n\"...We never even got our wedding night. Damned demons.\"",
           "Choices": [
             {
               "Text": "[Sit with her until her hands are still.]",
@@ -148864,7 +148864,7 @@
         {
           "Id": "bark",
           "Speaker": "Kiana",
-          "Text": "{n}The stone in the collar goes cloudy and cheap between one word and the next. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}\n{n}The apprentice looks at the paste in the collar, and at the dog, and puts the collar away very carefully, the way you put away something that has bitten you. He does not stay to haggle. The pouch goes with him.{/n}\n\"You saved the *dog*.\" {n}Kiana's voice cracks halfway up.{/n} \"Of everyone in that cup, you saved the dog.\"\n{n}She laughs until she has to sit down on the floor, and the dog climbs into her lap to help.{/n}\n\"Oh, gods. Elan is going to be *furious*. I love it. I love it, and there are still...\" {n}She looks along the cots, and the laugh stops.{/n}",
+          "Text": "{n}You name its faults, bored, the way a pawnbroker does: a bubble under the table, a hairline flaw to the heart, a setting that would not hold a flea. None of it was there. When the apprentice turns the collar to the lamp, all of it is, and a flawed stone keeps nothing it was set to hold. At the foot of the cot the dog sneezes, sits up, and barks at nothing, furiously, as if it has a great deal to catch up on.{/n}\n{n}The apprentice looks at the flaw in the collar, and at the dog, and puts the collar away very carefully, the way you put away something that has bitten you. He does not stay to haggle. The pouch goes with him.{/n}\n\"You saved the *dog*.\" {n}Kiana's voice cracks halfway up.{/n} \"Of everyone in that cup, you saved the dog.\"\n{n}She laughs until she has to sit down on the floor, and the dog climbs into her lap to help.{/n}\n\"Oh, gods. Elan is going to be *furious*. I love it. I love it, and there are still...\" {n}She looks along the cots, and the laugh stops.{/n}",
           "Choices": [
             {
               "Text": "[Let her laugh] \"Best appraisal I ever made.\"",
@@ -148964,7 +148964,7 @@
               }
             },
             {
-              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no weddings in Drezen until the war is won.\"",
+              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no marriage leave for anyone under arms until the siege lines hold.\"",
               "Next": "order",
               "Set": [],
               "Requires": [],
@@ -148979,7 +148979,7 @@
               }
             },
             {
-              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no weddings in Drezen until the war is won.\"",
+              "Text": "[Order it at the war council: POSTPONED] \"Standing order: no marriage leave for anyone under arms until the siege lines hold.\"",
               "Next": "order",
               "Set": [],
               "Requires": [
@@ -149027,7 +149027,7 @@
         {
           "Id": "king",
           "Speaker": "Narrator",
-          "Text": "{n}The Fool King hears you out from his throne, which today is a barrel. He reads the licence upside down, then the right way up, then asks what's in it for him. You tell him: his fee, and the best joke in Drezen. He takes the fee.{/n}\n{n}\"POSTPONED,\" he declares, and stamps it himself. \"By royal decree! No weddings in my kingdom until the King is sober!\" He thinks about it. \"That's never, by the way. Put that in. 'Which is never.'\"{/n}\n{n}The herald reads it out in the square at noon, including the last part. Drezen, which has been at war for a very long time, laughs until it hurts.{/n}",
+          "Text": "{n}The Fool King hears you out from his throne, which today is a barrel. He reads the licence upside down, then the right way up, then asks what's in it for him. You tell him: his fee, and the best joke in Drezen. He takes the fee.{/n}\n{n}\"POSTPONED,\" he declares, and stamps it himself. \"By royal decree! No weddings in my kingdom until the King is sober!\" He thinks about it. \"That's never, by the way. Put that in. 'Which is never.'\"{/n}\n{n}The herald reads it out in the square at noon, including the last part. Drezen, which has been at war for a very long time, laughs until it hurts. By evening there are fourteen couples outside the chancery, some still in their good clothes, and nobody laughing among them. A baker and a crossbowman ask you to your face whether the King will ever be sober. You have no answer that isn't the King.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -149043,7 +149043,7 @@
         {
           "Id": "order",
           "Speaker": "Narrator",
-          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No weddings in Drezen until the war is won.*{/n}\n{n}Nobody laughs, because you are the Commander. Then somebody at the foot of the table does, and after that nobody can stop. For weeks the officers have been complaining that they are sick of fighting and doing nothing else. It seems only fair to answer one of their prayers the wrong way round.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. The word dries, and stays.{/n}",
+          "Text": "{n}You read it into the minutes of the war council, in front of every officer at the table: *Standing order. No marriage leave for anyone under arms until the siege lines hold.* The quartermaster, who has been losing a sentry a week to wedding nights, nods before you have finished. For weeks the officers have been complaining that they are sick of fighting and doing nothing else; you have answered their prayer the wrong way round, and a few of them laugh, and then stop, because it is an order.{/n}\n{n}By evening there are fourteen couples outside the chancery, some still in their good clothes. A baker and a crossbowman ask you to your face how long the lines will take to hold. You have no answer for them that isn't the order.{/n}\n{n}The clerk stamps the licence POSTPONED and sands it. The word dries, and stays.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -149081,7 +149081,7 @@
         {
           "Id": "complaint_order",
           "Speaker": "Kiana",
-          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am a *fiancée*. Again. Because the Commander of the crusade has banned weddings until the war is won. In front of the whole war council. Which, as every officer in Drezen now says to everyone he meets, is NEVER.\"\n\"Elan wants to challenge you to a duel. I told him to get in line behind the officers. The priestess of Abadar has returned our deposit with a note of condolence.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches.\"",
+          "Text": "{n}Two days later a letter comes, written so hard that the nib has gone through the paper twice.{/n}\n\"So I'm not a wife. I am a *fiancée*. Again. Because the Commander of the crusade has cancelled marriage leave for everyone under arms until the siege lines hold, in front of the whole war council, and Elan is under arms. Nobody will tell me when the lines will hold. I asked a sergeant. He laughed until he cried, and then he just cried; he was supposed to be married on Sunday.\"\n\"Elan wants to challenge you to a duel. I told him to get in line behind the other thirteen grooms. The priestess of Abadar has returned our deposit with a note of condolence.\"\n{n}The next line has been crossed out and rewritten three times.{/n}\n\"...I laughed. It was only half a joke. Come and explain yourself. Bring no speeches.\"",
           "Choices": [
             {
               "Text": "[Write back] \"I heard. Which is never.\"",
@@ -149397,7 +149397,7 @@
         {
           "Id": "told_robbed",
           "Speaker": "Kiana",
-          "Text": "{n}She listens to all of it without interrupting, which you suspect is a first. When you get to the part about the paste she puts her hand over her mouth.{/n}\n\"You called me cheap. To his face. And it *worked*.\" {n}She lowers the hand. She isn't laughing now.{/n} \"And the rest of them walked out of here in his pouch, because you had one joke in you that day and you spent it on me.\"\n{n}She is quiet for a while.{/n}\n\"I don't know whether to kiss you or hit you. I'm going to do neither until I've written it down. Then I'll know which one the scene wants.\"",
+          "Text": "{n}She listens to all of it without interrupting, which you suspect is a first. When you get to the part about the bubble and the flaw she puts her hand over her mouth.{/n}\n\"You called me cheap. To his face. And it *worked*.\" {n}She lowers the hand. She isn't laughing now.{/n} \"And the rest of them walked out of here in his pouch, because you had one joke in you that day and you spent it on me.\"\n{n}She is quiet for a while.{/n}\n\"I don't know whether to kiss you or hit you. I'm going to do neither until I've written it down. Then I'll know which one the scene wants.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -149613,7 +149613,7 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}\n\"Commander.\" {n}He bows exactly as low as before.{/n} \"Master Sunhammer received my report of the paste. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before.\" {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} \"And an apology, in your hand, for the insult to his craft. He intends to frame it.\"\n{n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}\n\"Don't you dare,\" {n}she says.{/n} \"Don't you *dare* apologise to him.\" {n}Then, much more quietly, looking at the pouch:{/n} \"...Unless that's what it costs.\"",
+          "Text": "{n}He is at Arsinoe's counter, the same young man in the same leather apron, with the same pouch at his belt, lighter by one stone. Arsinoe has not offered him a chair.{/n}\n\"Commander.\" {n}He bows exactly as low as before.{/n} \"Master Sunhammer received my report of the flaw, and of what his stone was called at the lamp. He was displeased, and when my master is displeased he revises his terms. The rest of the wedding party: a thousand crowns and the favour, as before.\" {n}He lays a sheet of paper on the counter, already written, with a space at the foot.{/n} \"And an apology, in your hand, for the insult to his craft. He intends to frame it.\"\n{n}Behind the curtain somebody has stopped moving. Kiana is standing in the gap in her borrowed robe, listening.{/n}\n\"Don't you dare,\" {n}she says.{/n} \"Don't you *dare* apologise to him.\" {n}Then, much more quietly, looking at the pouch:{/n} \"...Unless that's what it costs.\"",
           "Choices": [
             {
               "Text": "[Pay, and sign the apology] \"A thousand crowns. The favour. And my name under his words.\"",
@@ -149628,7 +149628,7 @@
               }
             },
             {
-              "Text": "[Refuse] \"Tell your master the Commander doesn't buy back paste. I'll come for them myself.\"",
+              "Text": "[Refuse] \"Tell your master the Commander doesn't buy back flawed stones. I'll come for them myself.\"",
               "Next": "refused",
               "Set": [],
               "Requires": [],
@@ -149925,7 +149925,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -150039,7 +150039,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander's standing order against weddings was lifted the day the Wound closed. Drezen held forty-one weddings that week. Kiana went to every one, cried at all of them, and laughed at most.",
+              "Text": "The Commander's standing order against marriage leave was lifted the day the Wound closed. Drezen held forty-one weddings that week, fourteen of them long overdue. Kiana went to every one, cried at all of them, and laughed at most.",
               "Requires": [
                 "kiana.trickster.cost.betrothed"
               ],
@@ -150602,7 +150602,7 @@
         {
           "Id": "start",
           "Speaker": "Anevia",
-          "Text": "\"No weddings until the war's won?\" {n}Anevia whistles.{/n} \"Beth and I got in under the wire, then. Don't you dare make it retroactive.\"",
+          "Text": "\"No weddings while the siege lasts?\" {n}Anevia whistles.{/n} \"Beth and I got in under the wire, then. Don't you dare make it retroactive. And go and look at the queue outside the chancery some evening. Those people had cakes ordered.\"",
           "Choices": [
             {
               "Text": "Continue",
