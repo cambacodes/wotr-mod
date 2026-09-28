@@ -53,6 +53,7 @@ ROMANCE = "aranka.ran_romance"
 QUEST = "aranka.ran_quest_complete"
 GAVE_SONG = "aranka.gave_song"
 CROWNED = "fool_king.crowned"
+TABLET_TRUE = "fool_king.tablet_true"  # SeenCue FoolKing_Tavern/Cue_0038: the tablet's letters repeat his words
 KING_GONE = "fool_king.gone"
 # Derived twin of fool_king.gone: a ForbidOverride value must be authored or Derived, never a native key. The late
 # fallbacks Forbid the crown unless the King is gone, so they open only when no King is left to sing to: the King
@@ -176,9 +177,17 @@ def king_nodes(open_text, crowned_text, uncrowned_text=None):
         nar("unknown", '''{n}You know that tune, or something very like it. Half the Desnan refugees on the road out of Kenabres were humming it, and the ones who knew the words called it Starward Gaze and said a priestess named Aranka had carried it out of the burning city. Theirs went all the way through. His has a hole in the middle where a verse should be.{/n}''',
             c(JOKE, "round", mythic="Trickster", crusade=("Finances", -100)),
             c('"Never mind. Carry on, Your Majesty."', abort=True)),
-        nar("round", '''{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}
-{n}A sapper learns your verse first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them. By the third round the whole room is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth they are correcting each other's words, and every one of them swears their grandmother sang it exactly that way.{/n}
-{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl, and she watches you all the way through the fifth round, and then she leaves without finishing her cup.{/n}''',
+        nar("round", '''{n}You climb onto the bench and pay for every mug on every table. The beer buys you the room. It does not buy what happens next.{/n}
+{n}You sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. A sapper learns it first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them.{/n}''',
+            c("Continue", "sheet")),
+        nar("sheet", '''{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}
+{n}The second verse is printed on it. It is in type that has been fading for forty years, on paper that has been folded along the same creases since before you were born, and it is your verse, 'tambourine' and all.{/n}''',
+            c("Continue", "stone", requires=(TABLET_TRUE,)),
+            c("Continue", "pilgrim", forbids=(TABLET_TRUE,))),
+        nar("stone", '''{n}You have seen this before, at this same table: moss-covered letters on a stone from Pulura's Fall, repeating his words exactly, because you told him they would.{/n}''',
+            c("Continue", "pilgrim")),
+        nar("pilgrim", '''{n}By the fifth round they are correcting each other's words from the sheet, and every one of them swears their grandmother sang it exactly that way.{/n}
+{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl. She leans over the King's shoulder, reads the sheet, and goes white.{/n} {n}"That song never had a second verse," she says, to nobody. "I sang it in Kenabres." She leaves without finishing her cup.{/n}''',
             *([c("Continue", "crowned", requires=(CROWNED,)), c("Continue", "uncrowned", forbids=(CROWNED,))]
               if uncrowned_text else [c("Continue", "crowned")])),
         king("crowned", crowned_text, c('"Once more, from the top. Everybody!"', flags=(PRIMED, ROUND))),
@@ -214,7 +223,7 @@ def her_letter_choices(*extra):
 
 letter("aranka.trickster.verse.any_tavern", "Every mug in the house", [
     nar("start", '''{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}
-{n}It takes all night and most of the camp's beer. By dawn the sappers are singing it on the walls, and by the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road.{/n}''',
+{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning the Desnan broadsheet the refugees nailed by the door last spring has a second verse printed on it, in faded type, that was not there when you climbed onto the table: yours, 'tambourine' and all. By the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road, and every copy anyone finds has the verse on it.{/n}''',
         c(JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
         c('"...On second thought, buy them one round and let them sing what they like."', abort=True)),
     nar("reply", '''{n}Nine days later a letter arrives, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}''',
@@ -234,11 +243,11 @@ letter("aranka.trickster.verse.her_letter", "Somebody changed my song", [
     nar("start", '''{n}The letter is in a round, flourishing hand that has pressed hard enough to tear the paper in two places. It smells faintly of road dust and lamp oil, and someone has used it as a coaster.{/n}''',
         c("Continue", "known", requires=(GAVE_SONG,)),
         c("Continue", "unknown", forbids=(GAVE_SONG,))),
-    a("known", '''"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me, and she was crying, and I could not tell whether it was the good kind."
+    a("known", '''"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with your verse printed on it, in ink older than I am. She was crying, and I could not tell whether it was the good kind."
 "It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief."''',
       *her_letter_choices()),
     a("unknown", '''"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word."
-"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says the new verse arrived with a Knight-Commander standing on a bench and paying for the beer."
+"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with the new verse printed on it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer."
 "I am coming to Drezen to find the thief. Please have them ready."''',
       *her_letter_choices()),
 ], requires=("trickster.ever", PRIMED), forbids=(ANSWERED, ROMANCE, FAILURE), delay=72)

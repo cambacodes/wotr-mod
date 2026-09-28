@@ -148,6 +148,12 @@ internal static class ArankaTricksterTests
         var metPages = new HashSet<string>();
         Program.Walk(tavern, met, (page, _) => metPages.Add(page));
         check(metPages.Contains("known") && !metPages.Contains("unknown"), "The Kenabres gift is not remembered.");
+        check(metPages.Contains("sheet") && metPages.Contains("pilgrim") && !metPages.Contains("stone"),
+            "The rewrite is not shown on the King's song-sheet, or nobody in the room refuses it.");
+        var tablet = World(story, 3, "trickster", "trickster.ever", "fool_king.tablet_true");
+        var tabletPages = new HashSet<string>();
+        Program.Walk(tavern, tablet, (page, _) => tabletPages.Add(page));
+        check(tabletPages.Contains("stone"), "The song-sheet does not recall the stone from Pulura's Fall.");
 
         // Chapter 5: the crowned King's hub, and not once he is gone.
         var c5 = World(story, 5, "trickster", "trickster.ever", "fool_king.crowned");

@@ -156306,7 +156306,67 @@
         {
           "Id": "round",
           "Speaker": "Narrator",
-          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}A sapper learns your verse first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them. By the third round the whole room is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth they are correcting each other's words, and every one of them swears their grandmother sang it exactly that way.{/n}\n{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl, and she watches you all the way through the fifth round, and then she leaves without finishing her cup.{/n}",
+          "Text": "{n}You climb onto the bench and pay for every mug on every table. The beer buys you the room. It does not buy what happens next.{/n}\n{n}You sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. A sapper learns it first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sheet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "sheet",
+          "Speaker": "Narrator",
+          "Text": "{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}\n{n}The second verse is printed on it. It is in type that has been fading for forty years, on paper that has been folded along the same creases since before you were born, and it is your verse, 'tambourine' and all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stone",
+              "Set": [],
+              "Requires": [
+                "fool_king.tablet_true"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "pilgrim",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "fool_king.tablet_true"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "stone",
+          "Speaker": "Narrator",
+          "Text": "{n}You have seen this before, at this same table: moss-covered letters on a stone from Pulura's Fall, repeating his words exactly, because you told him they would.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pilgrim",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "pilgrim",
+          "Speaker": "Narrator",
+          "Text": "{n}By the fifth round they are correcting each other's words from the sheet, and every one of them swears their grandmother sang it exactly that way.{/n}\n{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl. She leans over the King's shoulder, reads the sheet, and goes white.{/n} {n}\"That song never had a second verse,\" she says, to nobody. \"I sang it in Kenabres.\" She leaves without finishing her cup.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -156483,7 +156543,67 @@
         {
           "Id": "round",
           "Speaker": "Narrator",
-          "Text": "{n}You climb onto the bench, pay for every mug on every table, and sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. The room adores it.{/n}\n{n}A sapper learns your verse first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them. By the third round the whole room is singing Starward Gaze with your second verse, and the rhyme lands like a dropped tray every time. By the fifth they are correcting each other's words, and every one of them swears their grandmother sang it exactly that way.{/n}\n{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl, and she watches you all the way through the fifth round, and then she leaves without finishing her cup.{/n}",
+          "Text": "{n}You climb onto the bench and pay for every mug on every table. The beer buys you the room. It does not buy what happens next.{/n}\n{n}You sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. A sapper learns it first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "sheet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "sheet",
+          "Speaker": "Narrator",
+          "Text": "{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}\n{n}The second verse is printed on it. It is in type that has been fading for forty years, on paper that has been folded along the same creases since before you were born, and it is your verse, 'tambourine' and all.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stone",
+              "Set": [],
+              "Requires": [
+                "fool_king.tablet_true"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "pilgrim",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "fool_king.tablet_true"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "stone",
+          "Speaker": "Narrator",
+          "Text": "{n}You have seen this before, at this same table: moss-covered letters on a stone from Pulura's Fall, repeating his words exactly, because you told him they would.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "pilgrim",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Aranka"
+        },
+        {
+          "Id": "pilgrim",
+          "Speaker": "Narrator",
+          "Text": "{n}By the fifth round they are correcting each other's words from the sheet, and every one of them swears their grandmother sang it exactly that way.{/n}\n{n}One old woman by the fire does not sing. There is a faded Desnan star stitched on her shawl. She leans over the King's shoulder, reads the sheet, and goes white.{/n} {n}\"That song never had a second verse,\" she says, to nobody. \"I sang it in Kenabres.\" She leaves without finishing her cup.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -156545,7 +156665,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}\n{n}It takes all night and most of the camp's beer. By dawn the sappers are singing it on the walls, and by the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road.{/n}",
+          "Text": "{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}\n{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning the Desnan broadsheet the refugees nailed by the door last spring has a second verse printed on it, in faded type, that was not there when you climbed onto the table: yours, 'tambourine' and all. By the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road, and every copy anyone finds has the verse on it.{/n}",
           "Choices": [
             {
               "Text": "[Follow your instincts] \"Aranka's song, second verse, the good one. I finally found a rhyme for 'Thaberdine'. Everybody!\"",
@@ -156741,7 +156861,7 @@
         {
           "Id": "known",
           "Speaker": "Aranka",
-          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me, and she was crying, and I could not tell whether it was the good kind.\"\n\"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
+          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with your verse printed on it, in ink older than I am. She was crying, and I could not tell whether it was the good kind.\"\n\"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -156773,7 +156893,7 @@
         {
           "Id": "unknown",
           "Speaker": "Aranka",
-          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says the new verse arrived with a Knight-Commander standing on a bench and paying for the beer.\"\n\"I am coming to Drezen to find the thief. Please have them ready.\"",
+          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with the new verse printed on it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer.\"\n\"I am coming to Drezen to find the thief. Please have them ready.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -159978,6 +160098,9 @@
     ],
     "jerribeth.egg_lore_heard": [
       "93dfa9597191a6848b925d964d309fe4"
+    ],
+    "fool_king.tablet_true": [
+      "f67f8b4f08b37fa4caaf39d0d214afe3"
     ],
     "finnean.objected": [
       "0f556aee8754497449c4a371281c13ef"

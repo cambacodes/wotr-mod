@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-aranka\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1587,
-  "unique_targets": 393,
+  "binding_uses": 1588,
+  "unique_targets": 394,
   "failures": [],
   "targets": {
     "32a037e97c3d5c54b85da8f639616c57": {
@@ -204,6 +204,10 @@
     },
     "814dd1a078a1c2849aefc85e2e15b2d2": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
+    "f67f8b4f08b37fa4caaf39d0d214afe3": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/Cue_0038.jbp",
       "type": "BlueprintCue"
     },
     "7b050ba0745bf144e815632e39b34853": {
