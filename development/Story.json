@@ -59013,7 +59013,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.along_the_grain",
@@ -59195,7 +59198,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.whose_mark",
@@ -59319,7 +59325,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_first_game",
@@ -59539,7 +59548,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_unclaimed_hour",
@@ -59786,7 +59798,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.against_the_current",
@@ -60026,7 +60041,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.unfinished_likeness",
@@ -96766,7 +96784,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_unfinished_verse",
@@ -96953,7 +96974,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_evening_answer",
@@ -97135,7 +97159,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.what_she_asks",
@@ -97440,7 +97467,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_voice_at_court",
@@ -97791,7 +97821,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_living_reunion",
@@ -97815,7 +97848,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -97834,7 +97879,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_unmet_again",
@@ -97858,7 +97906,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -97877,7 +97937,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_loss",
@@ -97909,7 +97972,8 @@
         "gesmerha.dead"
       ],
       "Forbids": [
-        "gesmerha.late_complete"
+        "gesmerha.late_complete",
+        "gesmerha.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -97951,7 +98015,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_demon",
@@ -97990,7 +98057,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_devil",
@@ -98030,7 +98100,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_ascent",
@@ -98071,7 +98144,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_sacrifice",
@@ -98113,7 +98189,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.ending_aeon",
@@ -98179,7 +98258,8 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "gesmerha.reunion_kept"
+                "gesmerha.reunion_kept",
+                "gesmerha.trickster.cost.catchup"
               ],
               "Abort": false
             },
@@ -98190,6 +98270,18 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            },
+            {
+              "Text": "\"I came back to lose the eleventh game.\"",
+              "Next": "catchup",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.catchup"
+              ],
+              "Forbids": [
+                "gesmerha.reunion_kept"
+              ],
+              "Abort": false
             }
           ],
           "Portrait": "Gesmerha"
@@ -98347,6 +98439,22 @@
             }
           ],
           "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "catchup",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her fingers become still against the wood.{/n}\n\"The eleventh game. You came back to lose it, then.\" {n}She does not move the blanket yet.{/n} \"Before you sit, tell me one true thing about where you were all the afternoons you did not spend here. Not a pretty thing. A true one. I will hear the difference.\"\n{n}You tell her. It takes longer than you meant it to. When you have finished she moves the folded blanket from the chest and tells you where to sit.{/n}\n\"There. That was the first afternoon. We will count from it.\"",
+          "Choices": [
+            {
+              "Text": "[Sit where she has made room.]",
+              "Next": "work",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
         }
       ],
       "Requires": [
@@ -98377,7 +98485,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_box_with_two_names",
@@ -98574,7 +98685,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_long_way_with_company",
@@ -98782,7 +98896,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.a_lesson_without_her",
@@ -99012,7 +99129,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_room_she_chose",
@@ -99263,7 +99383,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.the_work_left_finished",
@@ -99538,7 +99661,10 @@
       "RequiresAny": [
         "gesmerha.truth",
         "gesmerha.illusions"
-      ]
+      ],
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_lovers",
@@ -99562,7 +99688,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never believed in the ten afternoons. She kept count of the real ones instead, and told the Commander once that they had long since passed ten, and that the borrowed ones were paid back.",
+              "Requires": [
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99580,7 +99726,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_friends",
@@ -99604,7 +99753,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never believed in the ten afternoons. She kept count of the real ones instead, and told the Commander once that they had long since passed ten, and that the borrowed ones were paid back.",
+              "Requires": [
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99622,7 +99791,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_open",
@@ -99646,7 +99818,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never believed in the ten afternoons. She kept count of the real ones instead, and told the Commander once that they had long since passed ten, and that the borrowed ones were paid back.",
+              "Requires": [
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99664,7 +99856,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_closed",
@@ -99688,7 +99883,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -99703,7 +99910,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_loss",
@@ -99734,7 +99944,9 @@
         "gesmerha.late_complete",
         "gesmerha.dead"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "gesmerha.trickster.returned"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "gesmerha"
@@ -99773,7 +99985,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_demon",
@@ -99810,7 +100025,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_devil",
@@ -99848,7 +100066,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_ascent",
@@ -99888,7 +100109,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_sacrifice",
@@ -99929,7 +100153,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "gesmerha.late_ending_aeon",
@@ -99986,7 +100213,19 @@
               "Abort": false
             }
           ],
-          "Portrait": "Gesmerha"
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "She carved the Commander's commission in the end, years after it was paid for: a small thing in black oak, which she would not describe to anyone. She said a commission is a commission, and that her line had never left paid work on the bench.",
+              "Requires": [
+                "gesmerha.trickster.commissioned"
+              ],
+              "Forbids": [
+                "gesmerha.trickster.returned"
+              ],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -100004,7 +100243,10 @@
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "gesmerha"
+      "Relationship": "gesmerha",
+      "ForbidOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      }
     },
     {
       "Id": "ember.something_you_cannot_do",
@@ -170969,6 +171211,1685 @@
       "AnswerLists": [
         "66385ad77fa743e4bb1234078dbd804c"
       ]
+    },
+    {
+      "Id": "gesmerha.trickster.dead.commission",
+      "Title": "Paid in advance",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "[Pay her in advance] \"A carving for the Commander, woodshaper. Paid now, in full.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}You put a purse in her hand. Her fingers stop on it, then turn it over twice, weighing it the way she weighs a block before she decides which way the grain wants to run. She does not give it back.{/n}\n\"You pay a blind woman for work she may never deliver. Either you are a fool, stranger, or you heard more than I meant to say.\"\n{n}On the bench beside her lies an uncut block of pale birch, the one her fingers keep returning to.{/n}",
+          "Choices": [
+            {
+              "Text": "[Press the purse into her hands, and drive a coin into the block on her bench] \"The statue's not finished, carver. Nobody leaves work on the bench.\"",
+              "Next": "took",
+              "Set": [
+                "gesmerha.trickster.primed",
+                "gesmerha.trickster.commissioned",
+                "gesmerha.trickster.cost.advance_paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
+            },
+            {
+              "Text": "\"Never mind. Keep your hands to yourself.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "took",
+          "Speaker": "Gesmerha",
+          "Text": "{n}The coin goes into the birch with a sound she hears before you have finished pushing. She puts out a hand, finds the rim of it standing proud of the grain, and does not pull it out.{/n}\n\"The statue? That statue is finished, stranger. Journeymen finished it, with my eyes still wet on Marhevok's knife. It was never mine.\"\n{n}Her thumb finds the knot of the purse strings and stays there.{/n}\n\"But I will take your coin, and I will leave the other one where you put it. A commission is a commission. My line has never once gone to its ancestors with paid work on the bench, not in all the generations since the first of us picked up a chisel. Remember that you insisted.\"",
+          "Choices": [
+            {
+              "Text": "Leave her to the wood.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.commissioned",
+        "gesmerha.dead",
+        "gesmerha.trickster.primed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3
+      ],
+      "RequiresAnyGroups": [
+        [
+          "gesmerha.feared_hands",
+          "gesmerha.took_risk"
+        ]
+      ],
+      "AnswerLists": [
+        "dc306897f75a31c4aaf9483ebdff0585"
+      ],
+      "NativeReturnCue": "05d66664080144c4bb8fc08b90cc700b",
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "gesmerha.trickster.dead.pyre",
+      "Title": "The carvers' ground",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "pyre",
+          "Speaker": "Narrator",
+          "Text": "{n}A Wintersun boy finds your camp at noon, out of breath and trying not to look at anyone. The carvers have laid Gesmerha out on their own ground, among the statues she tended, with her chisels crossed on her breast and her own knife taken away. They light her pyre at dusk.{/n}\n{n}Her apprentices sent him, he says, reciting it. She spoke of you before the chief took her: the stranger who asked the questions nobody else would. They are putting on her fire whatever each of them owed her, so that she does not go to her ancestors short, and they want to know whether you owed her anything.{/n}\n{n}Her uncut block is still on her bench, he says. Nobody has dared move it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send a purse for the fire, and a coin to drive into her uncut block, and have both laid beside her] \"Tell her the statue's not finished, carver. Nobody leaves work on the bench.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.primed",
+                "gesmerha.trickster.cost.late",
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -300
+              }
+            },
+            {
+              "Text": "\"I owed her nothing. Let them burn her. She chose it.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "gesmerha.dead.latched"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.primed",
+        "gesmerha.trickster.returned",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dead"
+    },
+    {
+      "Id": "gesmerha.trickster.dead.unfinished_work",
+      "Title": "Splinters",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}A runner at the edge of camp: the same Wintersun boy, thinner than before, with ash still in the seams of his boots. He asks for you by name this time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "late",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "late",
+          "Speaker": "Narrator",
+          "Text": "{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm. The carvers pushed her away from the ground with poles, not hands. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}\n\"Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms_raised",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Narrator",
+          "Text": "{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip. Half the carvers ran. The ones who stayed will not have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}\n\"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Gesmerha",
+          "Text": "\"The ancestors came for me in the old tongue. I will not pretend I understood all of it; the dead are not tidy talkers. I understood this much. There was paid work on my bench, with your coin in its heart, and my line does not come home with work on the bench. So they sent me back to it.\n*Finish, daughter.* That is what they said. My hands are theirs until the last cut. If I put the chisel down for anything else, they take the hands back, and me with them. What they want with the finished thing, they did not say. I did not ask. You do not ask the dead for reasons.\"\n\"What is the world coming to, stranger, when the dead cannot even stay dead in peace?\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "terms_raised",
+          "Speaker": "Gesmerha",
+          "Text": "\"The ancestors came for me in the old tongue, and they were angry. I did not need every word for that. You paid for my work over my ashes, not before them, and the dead do not like a bargain struck at their own fire.\n*Finish, daughter.* My hands are theirs until the last cut, and because I was bought late there is more to cut: the journeymen's pretty Lady comes down first, by my hands, before anything new goes into the wood. If I put the chisel down for anything else, they take the hands back, and me with them. They did not say why. I did not ask.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "answer",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "answer",
+          "Speaker": "Narrator",
+          "Text": "{n}The boy waits for your answer. He has plainly been told to remember it exactly, and to bring it back whatever it is.{/n}",
+          "Choices": [
+            {
+              "Text": "[Send for her] \"Tell her to bring her chisels to Drezen. The smith there makes better ones than the ones she lost, and I want to see the work.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.returned",
+                "gesmerha.trickster.cost.ancestor_debt",
+                "gesmerha.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell her to rest. Tell her ancestors they can have her back.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.primed",
+        "gesmerha.dead.latched"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.returned",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "dead"
+    },
+    {
+      "Id": "gesmerha.trickster.returned.yard",
+      "Title": "The smith's yard",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"Gesmerha.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Gesmerha has taken the corner of the smith's yard farthest from the forge: a log on two trestles, a roll of new chisels, a bucket of water for her palms. The splinters are out. The marks they left are not. The smith has given up arguing with her.{/n}\n\"Your step, stranger. I would know it in a crowd now. Paid-for hands work slower than free ones; they keep stopping to ask whose they are.\"\n\"The ancestors want it finished. They did not say *what*. So you tell me: what am I carving?\"",
+          "Choices": [
+            {
+              "Text": "\"Carve the monster. Let them see what Wintersun worshipped.\"",
+              "Next": "hold",
+              "Set": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Carve something new. Not the Lady. You.\"",
+              "Next": "hold",
+              "Set": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Carve something new. Not the Lady. You.\"",
+              "Next": "lie_first",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "lie_first",
+          "Speaker": "Gesmerha",
+          "Text": "\"No. You bought me over ashes, and the price was the lie first. The monster comes out of this wood before anything of mine goes in. Then we will see what is left of the log, and of me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hold",
+              "Set": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "hold",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She sets the chisel against the log, then takes your hands one at a time and lays them flat on the wood, either side of the blade, close enough that you can feel the steel's cold through the bark.{/n}\n\"Hold it. Don't move. I cut by sound, and I cannot hear your fingers.\"",
+          "Choices": [
+            {
+              "Text": "[Hold still]",
+              "Next": "after",
+              "Set": [
+                "gesmerha.trickster.held_still"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Pull your hands away]",
+              "Next": "pulled",
+              "Set": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "pulled",
+          "Speaker": "Narrator",
+          "Text": "{n}Your hands come off the wood before the mallet falls. It falls anyway, on the steel, where your left thumb was. Gesmerha does not stop the stroke and does not say anything about it. She moves the log with her own knee and cuts on.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "after",
+          "Speaker": "Narrator",
+          "Text": "{n}The mallet comes down four times. A curl of wood lands on your boot. She runs her palm over the cut, reading it.{/n}\n\"There. Something is looking out of it already.\"",
+          "Choices": [
+            {
+              "Text": "\"And when it's finished?\"",
+              "Next": "not_yet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave her to the wood]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.yard_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "not_yet",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her hands stop. For a moment she is listening to something that is not in the yard.{/n}\n\"Finish first. Then ask me what comes after. They are listening, stranger, and they have my hands.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to the wood]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.yard_seen"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.yard_seen",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "InteractionHub": "gesmerha.presence"
+    },
+    {
+      "Id": "gesmerha.trickster.returned.bench",
+      "Title": "What comes after",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"You said to ask you when it was finished.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Late. The forge is banked and the yard is dark except for a lamp she does not need and has lit for you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "monster",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "new",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "monster",
+          "Speaker": "Gesmerha",
+          "Text": "{n}The thing on the trestles is not a Lady of anything. It has too many joints and a smile that goes on past where a smile should stop. The smith will not stand near it, and has hung a sack over it twice; twice she has taken the sack off.{/n}\n\"Put your hand here. That is what we prayed to. My chisel knew it before any of us did.\"\n{n}She lets out a long breath and puts the mallet down, and nothing takes it from her.{/n} \"It is finished. My hands are mine again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "new",
+          "Speaker": "Gesmerha",
+          "Text": "{n}The figure on the trestles is a woman with her head tipped back, listening. There are no eyes in it. There is no need of them.{/n}\n\"Put your hand here. You wanted *me*. That is what I sound like.\"\n{n}She lets out a long breath and puts the mallet down, and nothing takes it from her.{/n} \"It is finished. My hands are mine again.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Gesmerha",
+          "Text": "\"The ancestors said *finish*. They did not say what comes after. I have been deciding, with my hands in cold water, and I will tell you what I decided when you ask.\"",
+          "Choices": [
+            {
+              "Text": "[Stay at the bench] \"Then let me be what comes after.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Stay at the bench] \"Then let me be what comes after.\"",
+              "Next": "flinch",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Finish your life without me, carver. You've earned it.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then hear my terms, because my hands are mine again and that means they can refuse. I will not be paid for this. Not in coin, and not in jokes. If you ever buy me again, stranger, I will know it by your step before you open your mouth, and I will not be here when you do.\"",
+          "Choices": [
+            {
+              "Text": "\"No more purses. Not for you. I swear it.\"",
+              "Next": "night",
+              "Set": [
+                "gesmerha.committed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I can't swear that. Buying things is what I do.\"",
+              "Next": "postpone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "postpone",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then you are honest, which is worse. Go. Come back when you have thought about what you would have to stop being. The bench will still be here. So will I, probably.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "flinch",
+          "Speaker": "Gesmerha",
+          "Text": "\"You pulled your hands away in this yard, stranger. I heard it; I cut by sound. The mallet came down on nothing, where your thumb had been. I cannot carve beside someone who flinches, and I cannot lie down beside one either. Ask me again when you won't.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [
+                "gesmerha.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned",
+        "gesmerha.trickster.yard_seen"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed",
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 72,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "InteractionHub": "gesmerha.presence"
+    },
+    {
+      "Id": "gesmerha.trickster.returned.second_ask",
+      "Title": "A pair that were never for sale",
+      "Owner": "Gesmerha",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About what comes after.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She is waiting for you this time, a fresh log on the trestles and nothing yet cut.{/n}\n\"The second asking costs more. That is fair; I learned it from you. Give me your hands. Three days, here, in the yard, while I carve them. Every hour you sit still, your war waits. Then I will have a pair that were never for sale, and you can have mine.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price_flinched",
+              "Set": [],
+              "Requires": [
+                "gesmerha.trickster.cost.flinched"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "price_flinched",
+          "Speaker": "Gesmerha",
+          "Text": "\"And you will not pull them away. Three days of it. If you can do that, you can lie still for anything.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She holds out her open palms and waits.{/n}",
+          "Choices": [
+            {
+              "Text": "[Sit for her for three days]",
+              "Next": "sat",
+              "Set": [
+                "gesmerha.committed",
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "\"Not like this.\"",
+              "Next": null,
+              "Set": [
+                "gesmerha.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "sat",
+          "Speaker": "Narrator",
+          "Text": "{n}Three days. Couriers come to the yard gate and are sent away by the smith, who has decided which side he is on. Your hands ache, then stop aching, then stop feeling like yours. On the third evening she sets down the knife, runs her fingertips over the wooden pair and then over your real ones, back and forth, comparing, until she is satisfied with both.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "night",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "night",
+          "Speaker": "Gesmerha",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Stand still. You are good at that now.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. At your collar she unlaces you by feel and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your step first came through that gate, and I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Morning. There is sawdust in your hair and a curl of pine in your collar. Gesmerha is already at the trestles, bare-armed in the cold, and on a new block in front of her a face is coming out of the wood: one you have seen in mirrors.{/n}\n\"My hands remembered. Nobody paid them for last night, so what they make of it is mine. I will not sell it.\" {n}The corner of her mouth moves; she does not stop cutting.{/n} \"Go and fight your war, stranger. Walk loudly when you come back. I like to hear it from the gate.\"",
+          "Choices": [
+            {
+              "Text": "[Go]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned",
+        "gesmerha.trickster.declined"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 96,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        3,
+        5
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "InteractionHub": "gesmerha.presence"
+    },
+    {
+      "Id": "gesmerha.trickster.missed.wrong_footsteps_home",
+      "Title": "Wrong footsteps",
+      "Owner": "Gesmerha",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Claim the unfinished game] \"You know my step, carver. Ten afternoons at your board, and a game we never finished.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her hands stop on the wood. She tilts her head toward your feet, the way she listens for a crack in the grain.{/n}\n\"I know this step. I heard it once, in Wintersun, when I did not know it at all. Once, stranger. Not ten times. You are lying, and you are doing it to a blind woman who can hear you do it.\"\n\"But you say it like someone who believes it. So sit. I cut half the squares of a board I never finished. If we played ten afternoons, you know the rule I changed. Play, and I will hear the lie in your hands the way I heard it in your feet.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down and play as if you remember]",
+              "Next": "game",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"All right. It was a lie. I wanted a reason to sit here.\"",
+              "Next": "honest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Never mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "game",
+          "Speaker": "Gesmerha",
+          "Text": "{n}You play. On the fourth move your hand goes to a square before she has named the rule, and her fingers close on your wrist.{/n}\n\"There. You knew that. Nobody knows that; I have not told it to anyone.\" {n}She lets go slowly.{/n} \"I don't believe your ten afternoons. I believe you will come back to lose the eleventh. The loser pays for the pieces, Commander. Count them.\"",
+          "Choices": [
+            {
+              "Text": "[Pay for the pieces]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup",
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -50
+              }
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "honest",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then you have one. Honest liars pay for the pieces too. Sit.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "gesmerha.wintersun_resolved",
+        "gesmerha.met"
+      ],
+      "Forbids": [
+        "gesmerha.campaign_kept",
+        "gesmerha.dead",
+        "gesmerha.closed",
+        "gesmerha.trickster.cost.catchup",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        5
+      ],
+      "RequiresAny": [
+        "gesmerha.truth",
+        "gesmerha.illusions"
+      ],
+      "AnswerLists": [
+        "2063ee21356b772408f5c9cfb3ed5bd0"
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "0a5654e7dc18f074d9356009d55eb51b"
+      ],
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true,
+      "TricksterState": "missed"
+    },
+    {
+      "Id": "gesmerha.trickster.missed.wrong_footsteps_capital",
+      "Title": "Wrong footsteps",
+      "Owner": "Gesmerha",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Claim the unfinished game] \"You know my step, carver. Ten afternoons at your board, and a game we never finished.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Gesmerha",
+          "Text": "{n}Her hands stop on the wood. She tilts her head toward your feet, the way she listens for a crack in the grain.{/n}\n\"I know this step. I heard it once, in Wintersun, when I did not know it at all. Once, stranger. Not ten times. You are lying, and you are doing it to a blind woman who can hear you do it.\"\n\"But you say it like someone who believes it. So sit. I cut half the squares of a board I never finished. If we played ten afternoons, you know the rule I changed. Play, and I will hear the lie in your hands the way I heard it in your feet.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down and play as if you remember]",
+              "Next": "game",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"All right. It was a lie. I wanted a reason to sit here.\"",
+              "Next": "honest",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Never mind.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "game",
+          "Speaker": "Gesmerha",
+          "Text": "{n}You play. On the fourth move your hand goes to a square before she has named the rule, and her fingers close on your wrist.{/n}\n\"There. You knew that. Nobody knows that; I have not told it to anyone.\" {n}She lets go slowly.{/n} \"I don't believe your ten afternoons. I believe you will come back to lose the eleventh. The loser pays for the pieces, Commander. Count them.\"",
+          "Choices": [
+            {
+              "Text": "[Pay for the pieces]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup",
+                "gesmerha.trickster.cost.campaign_slow"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -50
+              }
+            }
+          ],
+          "Portrait": "Gesmerha"
+        },
+        {
+          "Id": "honest",
+          "Speaker": "Gesmerha",
+          "Text": "\"Then you have one. Honest liars pay for the pieces too. Sit.\"",
+          "Choices": [
+            {
+              "Text": "[Sit down]",
+              "Next": null,
+              "Set": [
+                "gesmerha.campaign_kept",
+                "gesmerha.trickster.cost.catchup"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "gesmerha.wintersun_resolved",
+        "gesmerha.met",
+        "gesmerha.capital_guest"
+      ],
+      "Forbids": [
+        "gesmerha.campaign_kept",
+        "gesmerha.dead",
+        "gesmerha.closed",
+        "gesmerha.trickster.cost.catchup",
+        "inhuman"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Chapters": [
+        5
+      ],
+      "RequiresAny": [
+        "gesmerha.truth",
+        "gesmerha.illusions"
+      ],
+      "AnswerLists": [
+        "fb3a88e8ed751214c9136f87891ec07b"
+      ],
+      "ContactUnit": "3ba3a0ff8575be8419159221177c1411",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "EntryMythic": "PlayerIsTrickster",
+      "TricksterDevice": true,
+      "TricksterState": "missed"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.bench",
+      "Title": "What came after",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha never carved on commission again. She kept the corner of the smith's yard for as long as the war lasted and a good while after, and it became the corner of the city where people came to have the truth cut out of wood for them, whether they liked it or not.{/n}\n{n}The Commander kept the oath about purses, which surprised everyone who knew the Commander. She could tell the Commander's step from anyone's, in any crowd, and she let it be known that she always heard it a long time before it reached the door.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.returned",
+        "gesmerha.committed"
+      ],
+      "Forbids": [
+        "gesmerha.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.commit",
+      "Title": "The Commander's door",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the Commander's carving in the spring after Threshold, in a borrowed corner of a Drezen smithy, and then she walked the width of the city by ear to find out what came after. The smith swore she stopped at the Commander's door and listened for a long time before she knocked. She never said what she decided. She never carved on commission again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed",
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "RequiresAnyGroups": [
+        [
+          "gesmerha.trickster.yard_seen",
+          "gesmerha.presence.failed"
+        ]
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.unvisited",
+      "Title": "The corner of the yard",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the carving her ancestors had sold her back for, alone, in a corner of a Drezen smith's yard that the Commander never once walked into. When it was done she put her hands in cold water for a long time, and then she took them out and went home to whatever was left of Wintersun. The smith said she stopped at the gate and listened, as if for a step, and then went on.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.yard_seen",
+        "gesmerha.presence.failed",
+        "gesmerha.committed",
+        "gesmerha.closed",
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.refusal",
+      "Title": "Paid for",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the carving and left it in the smith's yard with a note in a journeyman's hand: *Paid for. Collect it.* The Commander never swore off buying things. She never asked a third time.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.declined"
+      ],
+      "Forbids": [
+        "gesmerha.committed",
+        "gesmerha.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.epilogue.finished",
+      "Title": "Her own life",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Gesmerha finished the work she had been paid for, as her ancestors required, and then she finished her life as the Commander had told her to: without the Commander. She went north after the Wintersun survivors with a roll of good Drezen chisels and a bag of her own shavings, and did not send word back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Gesmerha",
+          "Paragraphs": [
+            {
+              "Text": "The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+              "Requires": [
+                "gesmerha.trickster.statue_true"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward anyone who came in walking loudly.",
+              "Requires": [
+                "gesmerha.trickster.statue_new"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never been bought.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being mentioned.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned",
+        "gesmerha.closed"
+      ],
+      "Forbids": [
+        "gesmerha.committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.trickster.react.lann_pyre",
+      "Title": "Lann's word",
+      "Owner": "Lann",
+      "MinChapter": 3,
+      "MaxChapter": 3,
+      "Entry": "\"About the carver's pyre...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Lann",
+          "Text": "\"You sent a joke to a funeral. In Sarkoris. The boy who carried it looked like he wanted to be sick.\" {n}Lann scratches the back of his neck.{/n} \"What did it say? No. Don't tell me. I'll hear about it anyway.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.cost.laughed_at_grave",
+        "lann.in_party"
+      ],
+      "Forbids": [
+        "lann.dead",
+        "lann.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "AnswerLists": [
+        "66385ad77fa743e4bb1234078dbd804c"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.ulbrig_return",
+      "Title": "Ulbrig's word",
+      "Owner": "Ulbrig",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About the carver from Wintersun...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Ulbrig",
+          "Text": "\"A Wintersun carver got up off the carvers' ground, they're saying, and went straight back to work.\" {n}Ulbrig sets his mug down, which he does not do lightly.{/n} \"Where I come from, the dead don't come back for love. They come back for unfinished business, and they don't leave till it's done. Pray she finishes slow, warchief.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.returned",
+        "ulbrig.in_party"
+      ],
+      "Forbids": [
+        "ulbrig.dead",
+        "ulbrig.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "AnswerLists": [
+        "0a50c9c878844ed4a69b8d6131304c5e"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.anevia_return",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "Entry": "\"About the smith's yard...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"The smith came to me about a blind woman in his yard. Won't give his corner back, won't let his boys near her log, and says you owe her the good chisels.\" {n}Anevia shrugs.{/n} \"I told him that sounded about right.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "anevia_gone",
+        "anevia_dead"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.lann_footsteps",
+      "Title": "Lann's word",
+      "Owner": "Lann",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the carver...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Lann",
+          "Text": "\"The carver says she caught you lying about ten afternoons, and then you beat her at her own game anyway.\" {n}Lann grins.{/n} \"I've never seen you sit still for ten minutes.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.cost.catchup",
+        "lann.in_party"
+      ],
+      "Forbids": [
+        "lann.dead",
+        "lann.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "AnswerLists": [
+        "66385ad77fa743e4bb1234078dbd804c"
+      ]
+    },
+    {
+      "Id": "gesmerha.trickster.react.anevia_footsteps",
+      "Title": "Anevia's word",
+      "Owner": "Anevia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the carver...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Anevia",
+          "Text": "\"The carver says you two go back. Ten afternoons at her bench.\" {n}Anevia gives you a long look.{/n} \"I keep your calendar, Commander. I'd remember ten afternoons.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "gesmerha.trickster.cost.catchup"
+      ],
+      "Forbids": [
+        "anevia_gone",
+        "anevia_dead"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "gesmerha",
+      "Reaction": true,
+      "ForbidOverrides": {
+        "anevia_gone": "anevia.trickster.returned"
+      },
+      "AnswerLists": [
+        "33960c7f7af40cd43b7f801a76c87a0b"
+      ]
     }
   ],
   "Etudes": {
@@ -171101,6 +173022,7 @@
     "wenduag.kicked_out": "9b1902a20e98aa94094741ef9c91d962",
     "vellexia.slaves_freed": "89965a2b67b792f438bf935fdb6ab96b",
     "ulbrig.kicked_out": "3b31ef42338b4f83ab822fbcae79a41c",
+    "ulbrig.in_party": "d70304f3d15343fca38e48da6027f89c",
     "ulbrig.dead": "4863a2dfe7f847e588df50710ebf2a3f",
     "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
     "storyteller.dead_dlc": "96ca61bbf4a54228be37a4a95fa0704d",
@@ -171122,6 +173044,7 @@
     "minagho.fled_fane": "0216030c2e687594aa9de45f2e32fc7c",
     "minagho.spared_c4": "978762feac7873d4e925d85202e2c89c",
     "lann.kicked_out": "7afa470738d309649bea253eb167fbc1",
+    "lann.in_party": "dc908c2490d6f4c4393ff26967aa6566",
     "lann.dead": "ca3799e579c3eaa48a6625aa456d1840",
     "kyado.in_drezen": "5169dbc60a1ad854493f7ba44c27a0d8",
     "kiana.possessed": "0d773e4f71ac38a4d917ed459f6a0d0b",
@@ -171393,14 +173316,35 @@
       "Title": "What the wood will bear",
       "Description": "Gesmerha has work of her own in mind. She has invited me to return to her bench in Wintersun.",
       "Objective": "Visit Gesmerha in Wintersun",
-      "Guidance": "After resolving Wintersun and reporting to Irabeth, speak to Gesmerha at her native trading dialogue. Keep the Chapter 3 visits while she is available. After returning from the Abyss, look for her in Wintersun to continue the relationship and help settle the things left to carry. Return between the later visits. Her possible audience in Drezen offers a separate reunion; it is not required for the later Wintersun visits.",
+      "Guidance": "After resolving Wintersun and reporting to Irabeth, speak to Gesmerha at her native trading dialogue. Keep the Chapter 3 visits while she is available. After returning from the Abyss, look for her in Wintersun to continue the relationship and help settle the things left to carry. Return between the later visits. Her possible audience in Drezen offers a separate reunion; it is not required for the later Wintersun visits. On the Trickster path, a Gesmerha who died with paid work on her bench may not stay dead; look for her in the Drezen smith's yard. A Trickster who never sat at her bench in Wintersun may still claim to have.",
       "StartedFlag": "gesmerha.started",
       "ClosedFlag": "gesmerha.closed",
       "CommittedFlag": "gesmerha.committed",
       "UnavailableFlags": [
         "gesmerha.dead"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "gesmerha.dead": "gesmerha.trickster.returned"
+      },
+      "TricksterAccess": {
+        "dead": {
+          "Detect": [
+            "gesmerha.dead"
+          ],
+          "Device": "gesmerha.trickster.dead.unfinished_work",
+          "Returned": "gesmerha.trickster.returned"
+        },
+        "missed": {
+          "Detect": [
+            "gesmerha.wintersun_resolved",
+            "!gesmerha.campaign_kept",
+            "!gesmerha.dead"
+          ],
+          "Device": "gesmerha.trickster.missed.wrong_footsteps_home",
+          "Returned": null
+        }
+      }
     },
     "vellexia": {
       "Title": "The unfinished likeness",
@@ -171977,6 +173921,15 @@
     ],
     "herrax.asked_kill_chivarro": [
       "49135105da5bc6c4f93e312e80286f91"
+    ],
+    "gesmerha.took_risk": [
+      "0448dab10df819c43a2f2aa86524f01b"
+    ],
+    "gesmerha.met": [
+      "1e9af5965b5da304c825817c89817c22"
+    ],
+    "gesmerha.feared_hands": [
+      "13f2b37e28864ba4b882d13fad90f7c5"
     ],
     "fool_king.tablet_true": [
       "f67f8b4f08b37fa4caaf39d0d214afe3"
@@ -172920,6 +174873,29 @@
       "AnswerLists": [],
       "Dialog": "hub",
       "Greeting": "{n}Fye's is boarded up. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the quartermaster's yard, with a lute across her knees, and the carters have stopped unloading to hear her tune it.{/n}"
+    },
+    "gesmerha.presence": {
+      "Unit": "3ba3a0ff8575be8419159221177c1411",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+        "Side": "left",
+        "Distance": 2.5
+      },
+      "Requires": [
+        "trickster.ever",
+        "gesmerha.trickster.returned"
+      ],
+      "Forbids": [
+        "gesmerha.closed",
+        "gesmerha.committed"
+      ],
+      "MinChapter": 3,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}Gesmerha has taken the corner of the smith's yard farthest from the forge. She tilts her head toward the gate before you reach it.{/n} \"Your step, stranger. Come and stand where I can hear you properly.\""
     }
   },
   "Derived": {
@@ -173204,6 +175180,9 @@
     ],
     "irabeth.dead.latched": [
       "irabeth_dead"
+    ],
+    "gesmerha.dead.latched": [
+      "gesmerha.dead"
     ],
     "chivarro.dead.latched": [
       "chivarro.dead"

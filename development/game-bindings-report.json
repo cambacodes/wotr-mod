@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 1741,
-  "unique_targets": 448,
+  "binding_uses": 1768,
+  "unique_targets": 455,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -260,6 +260,26 @@
     },
     "509eac8248670664fab0808c3e00fe04": {
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0109.jbp",
+      "type": "BlueprintCue"
+    },
+    "dc306897f75a31c4aaf9483ebdff0585": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0008.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "1e9af5965b5da304c825817c89817c22": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "0448dab10df819c43a2f2aa86524f01b": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0024.jbp",
+      "type": "BlueprintCue"
+    },
+    "13f2b37e28864ba4b882d13fad90f7c5": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0028.jbp",
+      "type": "BlueprintCue"
+    },
+    "05d66664080144c4bb8fc08b90cc700b": {
+      "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0031.jbp",
       "type": "BlueprintCue"
     },
     "666c827662e8af14798009a98c5aae52": {
@@ -966,6 +986,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/EmberCompanion/EmberStates/EmberEnd_Law.jbp",
       "type": "BlueprintEtude"
     },
+    "dc908c2490d6f4c4393ff26967aa6566": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannInParty.jbp",
+      "type": "BlueprintEtude"
+    },
     "ca3799e579c3eaa48a6625aa456d1840": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
       "type": "BlueprintEtude"
@@ -1028,6 +1052,10 @@
     },
     "6d3fb96f9b60c0449a01add4be5c4a49": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/SeelahCompanion/SeelahInParty/SeelahQ3/VictimsRevived.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d70304f3d15343fca38e48da6027f89c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/UlbrigCompanion/UlbrigInParty.jbp",
       "type": "BlueprintEtude"
     },
     "4863a2dfe7f847e588df50710ebf2a3f": {
