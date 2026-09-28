@@ -33,6 +33,11 @@ def called(rel):
     return rel + ".lastcall.called"
 
 
+def resolved(rel):
+    """Set by every answer of her call-in, including leaving it unspoken: the last joke waits for every open debt."""
+    return rel + ".lastcall.resolved"
+
+
 MC = "minagho_chivarro.trickster.cost."
 
 # --- Debts owed to powers (doc 04 §3.7). A creditor still there to collect keeps a debtor alive: its call-in sets the ------
@@ -277,7 +282,7 @@ partner("minachiv", "minagho_chivarro", "minachiv.complete", "minachiv.closed", 
           [MC + "socoth_owed"]],
     call=call('''[Call in the seal and the house special] "Lord of Beasts, your seal's on my palm. Herrax, your favour. Collect from me alive, or not at all."''',
         '''{n}Your left palm burns, a hot line where a seal was pressed. Somewhere very far away something enormous and horned turns its head. Somewhere much nearer, a demon who keeps a house of pleasures reaches for an abacus.{/n}''',
-        (PILLAR_CHOICE, (PILLAR,), (), ())))
+        (PLAIN_CHOICE, (), (), ())))   # Sunhammer is a mortal jeweller: he collects, he does not hold back the Wound
 
 S = "soana.trickster."
 partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
@@ -353,7 +358,7 @@ partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet 
         '''{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, lent to you in an infirmary and never quite given back.{/n}''',
         (PLAIN_CHOICE, (), (), (T + "cost.light_sealed",)),
         ('''[Break your promise to Targona] "Forgive me. I need it."''', (), (T + "cost.light_sealed",), ()),
-        ("[Keep your promise] Leave the light where it is.", None, (T + "cost.light_sealed",), ())))
+        ("[Keep your promise] Leave the light where it is.", None, (T + "cost.light_sealed",), ())))   # resolves, not called
 
 D = "dorgelinda.trickster."
 partner("dorgelinda", "dorgelinda", "dorgelinda.committed", "dorgelinda.closed", "The Open Line",
@@ -443,17 +448,23 @@ def call_in_scenes(factory):
         if not part["call"]:
             continue
         spec = part["call"]
-        # extra=None is an abort: the line is not spoken, nothing is set, and the entry stays on the list.
-        choices = [c(text, abort=True, requires=req, forbids=forb) if extra is None
-                   else c(text, flags=(called(part["rel"]),) + tuple(extra), requires=req, forbids=forb)
+        # extra=None leaves the line unspoken (Targona's promise kept): the debt is resolved without being called.
+        choices = [c(text, flags=(resolved(part["rel"]),), requires=req, forbids=forb) if extra is None
+                   else c(text, flags=(called(part["rel"]), resolved(part["rel"])) + tuple(extra), requires=req, forbids=forb)
                    for text, extra, req, forb in spec["choices"]]
         node = n("call", "Narrator", spec["text"], *choices)
-        # Any of her commit flags, and any of the deal flags her route produced.
-        any_groups = [sorted({k for g in part["call_commit"] for k in g}), sorted({k for g in part["deal"] for k in g})]
+        # Offered on any deal her route produced, whether or not the romance committed (ledger 05 row 11: every debt is
+        # called in once). The coda still needs the commit.
+        any_groups = [sorted({k for g in part["deal"] for k in g})]
         out.append(factory(part["rel"] + ".lastcall.call", "Last orders", spec["entry"], [node],
-                           requires=(), forbids=(called(part["rel"]),), any_groups=any_groups))
+                           requires=(), forbids=(resolved(part["rel"]),), any_groups=any_groups))
         # G5 (doc 04 §5.2): the framework reads other routes' committed and cost flags only, never a closed, death or return flag.
     return out
+
+
+def open_debts():
+    """(deal flag, resolved flag) for every call-in: the last joke Forbids each deal flag until its call-in is resolved."""
+    return [(k, resolved(part["rel"])) for part in PARTNERS if part["call"] for g in part["deal"] for k in g]
 
 
 def pages():

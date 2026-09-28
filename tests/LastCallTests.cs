@@ -85,10 +85,11 @@ internal static class LastCallTests
                           "noct.complete", "nocticula.trickster.cost.shade_paid");
         var mixedOpen = Program.Walk(threshold, mixed).Where(r => r.Has(Open)).ToList();
         check(mixedOpen.Count == 1, "LastCall_OutlivedOnly: a live Nocticula beside an outlived Socothbenoth does not open exactly one way.");
-        var mixedCalled = Done(story, Program.Walk(Sc("nocticula.lastcall.call"), Done(story, mixedOpen[0])).Single(r => r.Has("nocticula.lastcall.called")));
+        var mixedNoct = Done(story, Program.Walk(Sc("nocticula.lastcall.call"), Done(story, mixedOpen[0])).Single(r => r.Has("nocticula.lastcall.called")));
+        var mixedCalled = Done(story, Program.Walk(anevia, mixedNoct).Single(r => r.Has("anevia.lastcall.called")));
         check(Program.Walk(joke, mixedCalled).Any(r => r.Has(Taken) && r.Has(Due)), "LastCall_OutlivedOnly: the live creditor cannot close the opened ledger.");
         // Every world that opens the ledger by creditors alone can reach a last joke (the soft-lock check).
-        foreach (var debt in new[] { "arsinoe.trickster.cost.lien", "kiana.trickster.cost.sunhammer_favour", "soana.trickster.cost.guardian_paid" })
+        foreach (var debt in new[] { "arsinoe.trickster.cost.lien", "nurah.trickster.cost.ramisa_fee", "soana.trickster.cost.guardian_paid" })
         {
             var rel = debt.Split('.')[0];
             var commit = story.Relationships[rel].CommittedFlag;
@@ -176,7 +177,8 @@ internal static class LastCallTests
                 .Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids)))
                 .Concat(s.Nodes.SelectMany(n => n.Paragraphs).SelectMany(p => p.Requires.Concat(p.Forbids).Concat(p.AnyGroups.SelectMany(g => g))));
             check(!reads.Any(k => closers.Contains(k) && k != "trickster.lastcall.closed"), "G5: Last Call reads another route's closed flag: " + s.Id);
-            check(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith("trickster.lastcall.", StringComparison.Ordinal) || f.EndsWith(".lastcall.called", StringComparison.Ordinal)),
+            check(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith("trickster.lastcall.", StringComparison.Ordinal) || f.EndsWith(".lastcall.called", StringComparison.Ordinal)
+                                                                                     || f.EndsWith(".lastcall.resolved", StringComparison.Ordinal)),
                 "Last Call writes a flag outside its own namespace: " + s.Id);
             if (s.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
                 check(s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null && c.Alignment == null),
@@ -188,8 +190,21 @@ internal static class LastCallTests
             check(para.Requires.Concat(para.AnyGroups.SelectMany(g => g)).Any(k => k.Contains(".cost.")), "An 'apart' paragraph is not keyed to a failure: " + coda.Id);
         // Every call-in needs her commit and a deal she made; no call-in is offered before last orders or after the joke.
         foreach (var call in calls)
-            check(call.Requires.Contains(Open) && call.Forbids.Contains(Taken) && call.RequiresAnyGroups.Length == 2 && call.AnswerLists.Length == 5,
-                "A call-in is not a ledger line of the open ledger: " + call.Id);
+            check(call.Requires.Contains(Open) && call.Forbids.Contains(Taken) && call.RequiresAnyGroups.Length == 1 && call.AnswerLists.Length == 5
+                  && call.Forbids.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))
+                  && call.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))),
+                "A call-in is not a ledger line of the open ledger, or one of its answers leaves the debt unresolved: " + call.Id);
+        // Sequencing: the last joke waits until every open debt's call-in is resolved.
+        var many = Done(story, World(story, 6, "trickster", "trickster.ever", Open, Primed, Bottle, "lastcall.flask_taken", "lastcall.flask_held",
+                                    "arsinoe.trickster.cost.lien", "seelah.trickster.cost.keeps_it"));
+        check(!Av(joke, many), "Sequencing: the last joke is offered with two debts still open.");
+        var oneDone = Done(story, Program.Walk(Sc("arsinoe.lastcall.call"), many).Single(r => r.Has("arsinoe.lastcall.called")));
+        check(!Av(joke, oneDone), "Sequencing: the last joke is offered with one debt still open.");
+        var allDone = Done(story, Program.Walk(Sc("seelah.lastcall.call"), oneDone).Single(r => r.Has("seelah.lastcall.called")));
+        check(Av(joke, allDone), "Sequencing: the last joke stays closed after every debt is resolved.");
+        // A mortal creditor collects but keeps nobody alive: Sunhammer alone never opens the creditors branch.
+        var mortalOnly = World(story, 6, "trickster", "trickster.ever", "kiana.committed", "kiana.trickster.cost.sunhammer_favour");
+        check(!Program.Walk(threshold, mortalOnly).Any(r => r.Has(Open)), "A mortal jeweller's debt holds back the Wound.");
         // Targona: keeping the promise is a real choice; breaking it is the failure that seats her apart.
         var targona = Sc("targona.lastcall.call");
         var sealedWorld = Done(story, World(story, 6, "trickster", "trickster.ever", Open, "targona.committed", "targona.trickster.cost.light_sealed"));

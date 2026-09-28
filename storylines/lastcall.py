@@ -168,9 +168,12 @@ def last_joke(id, lists, heroic):
         choices.append(c('[Keep the cork in] "If the world needs me in the Wound, fine. It\'ll have to give me back after."',
                          flags=(TAKEN, HEROIC, COST_BOTTLED, COST_MORTAL), requires=(PILLAR_BOTTLE,)))
     choices.append(c("[Not yet] Not yet.", abort=True))
+    # The joke waits until every open debt's call-in is resolved (spoken, or explicitly left).
+    debts = partners.open_debts()
     at_the_rift(id, "The last joke", '"That\'s everyone. Last call."', [nar("wound", LAST_JOKE_TEXT, *choices)],
                 requires=("trickster", "trickster.ever", OPEN), lists=lists,
-                forbids=("trickster.lastcall.last_joke.areelu" if heroic else "trickster.lastcall.last_joke",))
+                forbids=("trickster.lastcall.last_joke.areelu" if heroic else "trickster.lastcall.last_joke",) + tuple(k for k, _ in debts),
+                ForbidOverrides={k: r for k, r in debts})
 
 
 last_joke("trickster.lastcall.last_joke", SACRIFICE_LISTS, heroic=True)
@@ -263,7 +266,8 @@ def derived():
     out[VESSEL] = [["lastcall.flask_taken", "lastcall.flask_held"]]
     out["lastcall.creditors_open"] = [[k] for k in debts]
     outlivable = {"socoth", "nocticula"}
-    out["lastcall.creditors_live"] = [["lastcall.debt." + d["key"]] for d in partners.DEBTS if d["key"] not in outlivable]
+    mortal = {"sunhammer"}   # collects, but a mortal jeweller's claim does not hold back the Wound
+    out["lastcall.creditors_live"] = [["lastcall.debt." + d["key"]] for d in partners.DEBTS if d["key"] not in outlivable | mortal]
     out["lastcall.possible"] = [[VESSEL]] + [[k] for k in debts]
     out[H1] = h1
     out[H2] = h2

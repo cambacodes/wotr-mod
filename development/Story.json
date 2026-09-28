@@ -222313,7 +222313,74 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "trickster.lastcall.last_joke.areelu"
+        "trickster.lastcall.last_joke.areelu",
+        "anevia.trickster.cost.socoth_listening",
+        "anevia.trickster.cost.wrong_door",
+        "anevia.trickster.cost.stolen_door",
+        "irabeth.trickster.cost.under_orders",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.trickster.cost.collateral_worldwound",
+        "arsinoe.trickster.cost.collateral_still",
+        "arsinoe.trickster.cost.collateral_word",
+        "jerribeth.trickster.cost.tenant",
+        "jerribeth.trickster.cost.lodger",
+        "jerribeth.trickster.cost.host",
+        "jerribeth.trickster.cost.toast",
+        "jerribeth.trickster.cost.forfeit",
+        "konomi.trickster.cost.debt_owed",
+        "konomi.trickster.cost.consult_fee",
+        "nocticula.trickster.cost.shade_paid",
+        "nocticula.trickster.cost.shade_refused",
+        "vellexia.trickster.returned",
+        "vellexia.trickster.cost.predicted",
+        "vellexia.trickster.cost.trick_kept",
+        "nurah.trickster.cost.ramisa_fee",
+        "nurah.trickster.cost.ramisa_audience",
+        "nurah.trickster.cost.bill_in_your_name",
+        "kiana.trickster.cost.sunhammer_favour",
+        "kiana.trickster.cost.guests_robbed",
+        "kiana.trickster.cost.courier_marked",
+        "minagho_chivarro.trickster.cost.baphomet_debtor",
+        "minagho_chivarro.trickster.cost.baphomet_terms",
+        "minagho_chivarro.trickster.cost.baphomet_knelt",
+        "minagho_chivarro.trickster.cost.baphomet_branded",
+        "minagho_chivarro.trickster.cost.herrax_favor",
+        "minagho_chivarro.trickster.cost.socoth_owed",
+        "soana.trickster.cost.blood_given",
+        "soana.trickster.cost.guardian_paid",
+        "soana.trickster.cost.knot_bearer",
+        "soana.trickster.cost.leash_held",
+        "aranka.trickster.cost.credited",
+        "aranka.trickster.cost.announced",
+        "aranka.trickster.cost.denied",
+        "gesmerha.trickster.cost.advance_paid",
+        "gesmerha.trickster.cost.ancestor_debt",
+        "seelah.trickster.cost.holds_her_death",
+        "seelah.trickster.cost.keeps_it",
+        "seelah.trickster.cost.robbed_back",
+        "targona.trickster.cost.raised_openly",
+        "targona.trickster.cost.she_told_heaven",
+        "targona.trickster.cost.raised_the_hard_way",
+        "targona.trickster.cost.light_sealed",
+        "dorgelinda.trickster.cost.line_open",
+        "dorgelinda.trickster.cost.boots_owed",
+        "dorgelinda.trickster.cost.carts_signed",
+        "hepzamirah.trickster.cost.favour_owed",
+        "hepzamirah.trickster.cost.mutasafen_grudge",
+        "hepzamirah.trickster.cost.lab_funded",
+        "hepzamirah.trickster.cost.blood_sample",
+        "hepzamirah.trickster.cost.vial_paid",
+        "hepzamirah.trickster.cost.vial_forged",
+        "hepzamirah.trickster.cost.baphomet_grudge",
+        "eritrice.trickster.cost.grudge_on_agenda",
+        "eritrice.trickster.cost.on_the_record",
+        "eritrice.trickster.cost.censured",
+        "eritrice.trickster.cost.apologised",
+        "areelu.trickster.cost.bet_with_the_witch",
+        "areelu.trickster.wager_struck",
+        "chadali.trickster.cost.luck_lent",
+        "chadali.trickster.cost.luck_owed",
+        "chadali.trickster.cost.needle_owed"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -222326,7 +222393,76 @@
         "16994192cfa484744bd10852b8dc806f"
       ],
       "ReturnToList": true,
-      "ReturnText": "{n}The Wound waits. So does everyone you owe.{/n}"
+      "ReturnText": "{n}The Wound waits. So does everyone you owe.{/n}",
+      "ForbidOverrides": {
+        "anevia.trickster.cost.socoth_listening": "anevia.lastcall.resolved",
+        "anevia.trickster.cost.wrong_door": "anevia.lastcall.resolved",
+        "anevia.trickster.cost.stolen_door": "anevia.lastcall.resolved",
+        "irabeth.trickster.cost.under_orders": "irabeth.lastcall.resolved",
+        "arsinoe.trickster.cost.lien": "arsinoe.lastcall.resolved",
+        "arsinoe.trickster.cost.collateral_worldwound": "arsinoe.lastcall.resolved",
+        "arsinoe.trickster.cost.collateral_still": "arsinoe.lastcall.resolved",
+        "arsinoe.trickster.cost.collateral_word": "arsinoe.lastcall.resolved",
+        "jerribeth.trickster.cost.tenant": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.lodger": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.host": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.toast": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.forfeit": "jerribeth.lastcall.resolved",
+        "konomi.trickster.cost.debt_owed": "konomi.lastcall.resolved",
+        "konomi.trickster.cost.consult_fee": "konomi.lastcall.resolved",
+        "nocticula.trickster.cost.shade_paid": "nocticula.lastcall.resolved",
+        "nocticula.trickster.cost.shade_refused": "nocticula.lastcall.resolved",
+        "vellexia.trickster.returned": "vellexia.lastcall.resolved",
+        "vellexia.trickster.cost.predicted": "vellexia.lastcall.resolved",
+        "vellexia.trickster.cost.trick_kept": "vellexia.lastcall.resolved",
+        "nurah.trickster.cost.ramisa_fee": "nurah.lastcall.resolved",
+        "nurah.trickster.cost.ramisa_audience": "nurah.lastcall.resolved",
+        "nurah.trickster.cost.bill_in_your_name": "nurah.lastcall.resolved",
+        "kiana.trickster.cost.sunhammer_favour": "kiana.lastcall.resolved",
+        "kiana.trickster.cost.guests_robbed": "kiana.lastcall.resolved",
+        "kiana.trickster.cost.courier_marked": "kiana.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_debtor": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_terms": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_knelt": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_branded": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.herrax_favor": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.socoth_owed": "minagho_chivarro.lastcall.resolved",
+        "soana.trickster.cost.blood_given": "soana.lastcall.resolved",
+        "soana.trickster.cost.guardian_paid": "soana.lastcall.resolved",
+        "soana.trickster.cost.knot_bearer": "soana.lastcall.resolved",
+        "soana.trickster.cost.leash_held": "soana.lastcall.resolved",
+        "aranka.trickster.cost.credited": "aranka.lastcall.resolved",
+        "aranka.trickster.cost.announced": "aranka.lastcall.resolved",
+        "aranka.trickster.cost.denied": "aranka.lastcall.resolved",
+        "gesmerha.trickster.cost.advance_paid": "gesmerha.lastcall.resolved",
+        "gesmerha.trickster.cost.ancestor_debt": "gesmerha.lastcall.resolved",
+        "seelah.trickster.cost.holds_her_death": "seelah.lastcall.resolved",
+        "seelah.trickster.cost.keeps_it": "seelah.lastcall.resolved",
+        "seelah.trickster.cost.robbed_back": "seelah.lastcall.resolved",
+        "targona.trickster.cost.raised_openly": "targona.lastcall.resolved",
+        "targona.trickster.cost.she_told_heaven": "targona.lastcall.resolved",
+        "targona.trickster.cost.raised_the_hard_way": "targona.lastcall.resolved",
+        "targona.trickster.cost.light_sealed": "targona.lastcall.resolved",
+        "dorgelinda.trickster.cost.line_open": "dorgelinda.lastcall.resolved",
+        "dorgelinda.trickster.cost.boots_owed": "dorgelinda.lastcall.resolved",
+        "dorgelinda.trickster.cost.carts_signed": "dorgelinda.lastcall.resolved",
+        "hepzamirah.trickster.cost.favour_owed": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.mutasafen_grudge": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.lab_funded": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.blood_sample": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.vial_paid": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.vial_forged": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.baphomet_grudge": "hepzamirah.lastcall.resolved",
+        "eritrice.trickster.cost.grudge_on_agenda": "eritrice.lastcall.resolved",
+        "eritrice.trickster.cost.on_the_record": "eritrice.lastcall.resolved",
+        "eritrice.trickster.cost.censured": "eritrice.lastcall.resolved",
+        "eritrice.trickster.cost.apologised": "eritrice.lastcall.resolved",
+        "areelu.trickster.cost.bet_with_the_witch": "areelu.lastcall.resolved",
+        "areelu.trickster.wager_struck": "areelu.lastcall.resolved",
+        "chadali.trickster.cost.luck_lent": "chadali.lastcall.resolved",
+        "chadali.trickster.cost.luck_owed": "chadali.lastcall.resolved",
+        "chadali.trickster.cost.needle_owed": "chadali.lastcall.resolved"
+      }
     },
     {
       "Id": "trickster.lastcall.last_joke.areelu",
@@ -222387,7 +222523,74 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "trickster.lastcall.last_joke"
+        "trickster.lastcall.last_joke",
+        "anevia.trickster.cost.socoth_listening",
+        "anevia.trickster.cost.wrong_door",
+        "anevia.trickster.cost.stolen_door",
+        "irabeth.trickster.cost.under_orders",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.trickster.cost.collateral_worldwound",
+        "arsinoe.trickster.cost.collateral_still",
+        "arsinoe.trickster.cost.collateral_word",
+        "jerribeth.trickster.cost.tenant",
+        "jerribeth.trickster.cost.lodger",
+        "jerribeth.trickster.cost.host",
+        "jerribeth.trickster.cost.toast",
+        "jerribeth.trickster.cost.forfeit",
+        "konomi.trickster.cost.debt_owed",
+        "konomi.trickster.cost.consult_fee",
+        "nocticula.trickster.cost.shade_paid",
+        "nocticula.trickster.cost.shade_refused",
+        "vellexia.trickster.returned",
+        "vellexia.trickster.cost.predicted",
+        "vellexia.trickster.cost.trick_kept",
+        "nurah.trickster.cost.ramisa_fee",
+        "nurah.trickster.cost.ramisa_audience",
+        "nurah.trickster.cost.bill_in_your_name",
+        "kiana.trickster.cost.sunhammer_favour",
+        "kiana.trickster.cost.guests_robbed",
+        "kiana.trickster.cost.courier_marked",
+        "minagho_chivarro.trickster.cost.baphomet_debtor",
+        "minagho_chivarro.trickster.cost.baphomet_terms",
+        "minagho_chivarro.trickster.cost.baphomet_knelt",
+        "minagho_chivarro.trickster.cost.baphomet_branded",
+        "minagho_chivarro.trickster.cost.herrax_favor",
+        "minagho_chivarro.trickster.cost.socoth_owed",
+        "soana.trickster.cost.blood_given",
+        "soana.trickster.cost.guardian_paid",
+        "soana.trickster.cost.knot_bearer",
+        "soana.trickster.cost.leash_held",
+        "aranka.trickster.cost.credited",
+        "aranka.trickster.cost.announced",
+        "aranka.trickster.cost.denied",
+        "gesmerha.trickster.cost.advance_paid",
+        "gesmerha.trickster.cost.ancestor_debt",
+        "seelah.trickster.cost.holds_her_death",
+        "seelah.trickster.cost.keeps_it",
+        "seelah.trickster.cost.robbed_back",
+        "targona.trickster.cost.raised_openly",
+        "targona.trickster.cost.she_told_heaven",
+        "targona.trickster.cost.raised_the_hard_way",
+        "targona.trickster.cost.light_sealed",
+        "dorgelinda.trickster.cost.line_open",
+        "dorgelinda.trickster.cost.boots_owed",
+        "dorgelinda.trickster.cost.carts_signed",
+        "hepzamirah.trickster.cost.favour_owed",
+        "hepzamirah.trickster.cost.mutasafen_grudge",
+        "hepzamirah.trickster.cost.lab_funded",
+        "hepzamirah.trickster.cost.blood_sample",
+        "hepzamirah.trickster.cost.vial_paid",
+        "hepzamirah.trickster.cost.vial_forged",
+        "hepzamirah.trickster.cost.baphomet_grudge",
+        "eritrice.trickster.cost.grudge_on_agenda",
+        "eritrice.trickster.cost.on_the_record",
+        "eritrice.trickster.cost.censured",
+        "eritrice.trickster.cost.apologised",
+        "areelu.trickster.cost.bet_with_the_witch",
+        "areelu.trickster.wager_struck",
+        "chadali.trickster.cost.luck_lent",
+        "chadali.trickster.cost.luck_owed",
+        "chadali.trickster.cost.needle_owed"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -222401,7 +222604,76 @@
         "e77c405d6dde5804bb1f873f971958b8"
       ],
       "ReturnToList": true,
-      "ReturnText": "{n}The Wound waits. So does everyone you owe.{/n}"
+      "ReturnText": "{n}The Wound waits. So does everyone you owe.{/n}",
+      "ForbidOverrides": {
+        "anevia.trickster.cost.socoth_listening": "anevia.lastcall.resolved",
+        "anevia.trickster.cost.wrong_door": "anevia.lastcall.resolved",
+        "anevia.trickster.cost.stolen_door": "anevia.lastcall.resolved",
+        "irabeth.trickster.cost.under_orders": "irabeth.lastcall.resolved",
+        "arsinoe.trickster.cost.lien": "arsinoe.lastcall.resolved",
+        "arsinoe.trickster.cost.collateral_worldwound": "arsinoe.lastcall.resolved",
+        "arsinoe.trickster.cost.collateral_still": "arsinoe.lastcall.resolved",
+        "arsinoe.trickster.cost.collateral_word": "arsinoe.lastcall.resolved",
+        "jerribeth.trickster.cost.tenant": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.lodger": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.host": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.toast": "jerribeth.lastcall.resolved",
+        "jerribeth.trickster.cost.forfeit": "jerribeth.lastcall.resolved",
+        "konomi.trickster.cost.debt_owed": "konomi.lastcall.resolved",
+        "konomi.trickster.cost.consult_fee": "konomi.lastcall.resolved",
+        "nocticula.trickster.cost.shade_paid": "nocticula.lastcall.resolved",
+        "nocticula.trickster.cost.shade_refused": "nocticula.lastcall.resolved",
+        "vellexia.trickster.returned": "vellexia.lastcall.resolved",
+        "vellexia.trickster.cost.predicted": "vellexia.lastcall.resolved",
+        "vellexia.trickster.cost.trick_kept": "vellexia.lastcall.resolved",
+        "nurah.trickster.cost.ramisa_fee": "nurah.lastcall.resolved",
+        "nurah.trickster.cost.ramisa_audience": "nurah.lastcall.resolved",
+        "nurah.trickster.cost.bill_in_your_name": "nurah.lastcall.resolved",
+        "kiana.trickster.cost.sunhammer_favour": "kiana.lastcall.resolved",
+        "kiana.trickster.cost.guests_robbed": "kiana.lastcall.resolved",
+        "kiana.trickster.cost.courier_marked": "kiana.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_debtor": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_terms": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_knelt": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.baphomet_branded": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.herrax_favor": "minagho_chivarro.lastcall.resolved",
+        "minagho_chivarro.trickster.cost.socoth_owed": "minagho_chivarro.lastcall.resolved",
+        "soana.trickster.cost.blood_given": "soana.lastcall.resolved",
+        "soana.trickster.cost.guardian_paid": "soana.lastcall.resolved",
+        "soana.trickster.cost.knot_bearer": "soana.lastcall.resolved",
+        "soana.trickster.cost.leash_held": "soana.lastcall.resolved",
+        "aranka.trickster.cost.credited": "aranka.lastcall.resolved",
+        "aranka.trickster.cost.announced": "aranka.lastcall.resolved",
+        "aranka.trickster.cost.denied": "aranka.lastcall.resolved",
+        "gesmerha.trickster.cost.advance_paid": "gesmerha.lastcall.resolved",
+        "gesmerha.trickster.cost.ancestor_debt": "gesmerha.lastcall.resolved",
+        "seelah.trickster.cost.holds_her_death": "seelah.lastcall.resolved",
+        "seelah.trickster.cost.keeps_it": "seelah.lastcall.resolved",
+        "seelah.trickster.cost.robbed_back": "seelah.lastcall.resolved",
+        "targona.trickster.cost.raised_openly": "targona.lastcall.resolved",
+        "targona.trickster.cost.she_told_heaven": "targona.lastcall.resolved",
+        "targona.trickster.cost.raised_the_hard_way": "targona.lastcall.resolved",
+        "targona.trickster.cost.light_sealed": "targona.lastcall.resolved",
+        "dorgelinda.trickster.cost.line_open": "dorgelinda.lastcall.resolved",
+        "dorgelinda.trickster.cost.boots_owed": "dorgelinda.lastcall.resolved",
+        "dorgelinda.trickster.cost.carts_signed": "dorgelinda.lastcall.resolved",
+        "hepzamirah.trickster.cost.favour_owed": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.mutasafen_grudge": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.lab_funded": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.blood_sample": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.vial_paid": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.vial_forged": "hepzamirah.lastcall.resolved",
+        "hepzamirah.trickster.cost.baphomet_grudge": "hepzamirah.lastcall.resolved",
+        "eritrice.trickster.cost.grudge_on_agenda": "eritrice.lastcall.resolved",
+        "eritrice.trickster.cost.on_the_record": "eritrice.lastcall.resolved",
+        "eritrice.trickster.cost.censured": "eritrice.lastcall.resolved",
+        "eritrice.trickster.cost.apologised": "eritrice.lastcall.resolved",
+        "areelu.trickster.cost.bet_with_the_witch": "areelu.lastcall.resolved",
+        "areelu.trickster.wager_struck": "areelu.lastcall.resolved",
+        "chadali.trickster.cost.luck_lent": "chadali.lastcall.resolved",
+        "chadali.trickster.cost.luck_owed": "chadali.lastcall.resolved",
+        "chadali.trickster.cost.needle_owed": "chadali.lastcall.resolved"
+      }
     },
     {
       "Id": "trickster.lastcall.page.interrupted",
@@ -222848,6 +223120,7 @@
               "Next": null,
               "Set": [
                 "anevia.lastcall.called",
+                "anevia.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [
@@ -222864,6 +223137,7 @@
               "Next": null,
               "Set": [
                 "anevia.lastcall.called",
+                "anevia.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [
@@ -222880,7 +223154,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "anevia.lastcall.called"
+                "anevia.lastcall.called",
+                "anevia.lastcall.resolved"
               ],
               "Requires": [
                 "anevia.trickster.cost.stolen_door"
@@ -222895,7 +223170,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "anevia.lastcall.called"
+                "anevia.lastcall.called",
+                "anevia.lastcall.resolved"
               ],
               "Requires": [
                 "socot.gone"
@@ -222909,7 +223185,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "anevia.lastcall.called"
+                "anevia.lastcall.called",
+                "anevia.lastcall.resolved"
               ],
               "Requires": [
                 "council.fought_nocta_allied"
@@ -222932,7 +223209,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "anevia.lastcall.called"
+        "anevia.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -222950,10 +223227,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "anevia.committed",
-          "committed"
-        ],
         [
           "anevia.trickster.cost.socoth_listening",
           "anevia.trickster.cost.stolen_door",
@@ -222978,7 +223251,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "irabeth.lastcall.called"
+                "irabeth.lastcall.called",
+                "irabeth.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -222996,7 +223270,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "irabeth.lastcall.called"
+        "irabeth.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223014,10 +223288,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "committed",
-          "irabeth.committed"
-        ],
         [
           "irabeth.trickster.cost.under_orders"
         ]
@@ -223041,6 +223311,7 @@
               "Next": null,
               "Set": [
                 "arsinoe.lastcall.called",
+                "arsinoe.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [],
@@ -223059,7 +223330,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "arsinoe.lastcall.called"
+        "arsinoe.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223077,9 +223348,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "arsinoe.committed"
-        ],
         [
           "arsinoe.trickster.cost.collateral_still",
           "arsinoe.trickster.cost.collateral_word",
@@ -223105,7 +223373,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "jerribeth.lastcall.called"
+                "jerribeth.lastcall.called",
+                "jerribeth.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223123,7 +223392,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "jerribeth.lastcall.called"
+        "jerribeth.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223141,9 +223410,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "jerribeth.committed"
-        ],
         [
           "jerribeth.trickster.cost.forfeit",
           "jerribeth.trickster.cost.host",
@@ -223170,7 +223436,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "konomi.lastcall.called"
+                "konomi.lastcall.called",
+                "konomi.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223188,7 +223455,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "konomi.lastcall.called"
+        "konomi.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223206,9 +223473,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "konomi.committed"
-        ],
         [
           "konomi.trickster.cost.consult_fee",
           "konomi.trickster.cost.debt_owed"
@@ -223233,6 +223497,7 @@
               "Next": null,
               "Set": [
                 "nocticula.lastcall.called",
+                "nocticula.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [],
@@ -223245,7 +223510,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "nocticula.lastcall.called"
+                "nocticula.lastcall.called",
+                "nocticula.lastcall.resolved"
               ],
               "Requires": [
                 "noct.dead"
@@ -223265,7 +223531,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "nocticula.lastcall.called"
+        "nocticula.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223283,9 +223549,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "noct.complete"
-        ],
         [
           "nocticula.trickster.cost.shade_paid",
           "nocticula.trickster.cost.shade_refused"
@@ -223309,7 +223572,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "vellexia.lastcall.called"
+                "vellexia.lastcall.called",
+                "vellexia.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223327,7 +223591,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "vellexia.lastcall.called"
+        "vellexia.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223345,9 +223609,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "vellexia.committed"
-        ],
         [
           "vellexia.trickster.cost.predicted",
           "vellexia.trickster.cost.trick_kept",
@@ -223373,6 +223634,7 @@
               "Next": null,
               "Set": [
                 "nurah.lastcall.called",
+                "nurah.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [],
@@ -223391,7 +223653,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "nurah.lastcall.called"
+        "nurah.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223409,9 +223671,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "nurah.complete"
-        ],
         [
           "nurah.trickster.cost.bill_in_your_name",
           "nurah.trickster.cost.ramisa_audience",
@@ -223437,6 +223696,7 @@
               "Next": null,
               "Set": [
                 "kiana.lastcall.called",
+                "kiana.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [],
@@ -223455,7 +223715,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "kiana.lastcall.called"
+        "kiana.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223473,9 +223733,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "kiana.committed"
-        ],
         [
           "kiana.trickster.cost.courier_marked",
           "kiana.trickster.cost.guests_robbed",
@@ -223501,7 +223758,7 @@
               "Next": null,
               "Set": [
                 "minagho_chivarro.lastcall.called",
-                "trickster.lastcall.pillar.creditors"
+                "minagho_chivarro.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223519,7 +223776,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "minagho_chivarro.lastcall.called"
+        "minagho_chivarro.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223537,9 +223794,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "minachiv.complete"
-        ],
         [
           "minagho_chivarro.trickster.cost.baphomet_branded",
           "minagho_chivarro.trickster.cost.baphomet_debtor",
@@ -223568,6 +223822,7 @@
               "Next": null,
               "Set": [
                 "soana.lastcall.called",
+                "soana.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [],
@@ -223586,7 +223841,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "soana.lastcall.called"
+        "soana.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223604,9 +223859,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "soana.committed"
-        ],
         [
           "soana.trickster.cost.blood_given",
           "soana.trickster.cost.guardian_paid",
@@ -223632,7 +223884,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "aranka.lastcall.called"
+                "aranka.lastcall.called",
+                "aranka.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223650,7 +223903,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "aranka.lastcall.called"
+        "aranka.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223668,9 +223921,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "aranka.extension_kept"
-        ],
         [
           "aranka.trickster.cost.announced",
           "aranka.trickster.cost.credited",
@@ -223695,7 +223945,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "gesmerha.lastcall.called"
+                "gesmerha.lastcall.called",
+                "gesmerha.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223713,7 +223964,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "gesmerha.lastcall.called"
+        "gesmerha.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223731,9 +223982,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "gesmerha.committed"
-        ],
         [
           "gesmerha.trickster.cost.advance_paid",
           "gesmerha.trickster.cost.ancestor_debt"
@@ -223757,7 +224005,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "seelah.lastcall.called"
+                "seelah.lastcall.called",
+                "seelah.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223775,7 +224024,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "seelah.lastcall.called"
+        "seelah.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223793,9 +224042,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "seelah.committed"
-        ],
         [
           "seelah.trickster.cost.holds_her_death",
           "seelah.trickster.cost.keeps_it",
@@ -223820,7 +224066,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "targona.lastcall.called"
+                "targona.lastcall.called",
+                "targona.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [
@@ -223832,7 +224079,8 @@
               "Text": "[Break your promise to Targona] \"Forgive me. I need it.\"",
               "Next": null,
               "Set": [
-                "targona.lastcall.called"
+                "targona.lastcall.called",
+                "targona.lastcall.resolved"
               ],
               "Requires": [
                 "targona.trickster.cost.light_sealed"
@@ -223843,12 +224091,14 @@
             {
               "Text": "[Keep your promise] Leave the light where it is.",
               "Next": null,
-              "Set": [],
+              "Set": [
+                "targona.lastcall.resolved"
+              ],
               "Requires": [
                 "targona.trickster.cost.light_sealed"
               ],
               "Forbids": [],
-              "Abort": true
+              "Abort": false
             }
           ],
           "Portrait": ""
@@ -223862,7 +224112,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "targona.lastcall.called"
+        "targona.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223880,9 +224130,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "targona.committed"
-        ],
         [
           "targona.trickster.cost.light_sealed",
           "targona.trickster.cost.raised_openly",
@@ -223908,7 +224155,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "dorgelinda.lastcall.called"
+                "dorgelinda.lastcall.called",
+                "dorgelinda.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -223926,7 +224174,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "dorgelinda.lastcall.called"
+        "dorgelinda.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -223944,9 +224192,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "dorgelinda.committed"
-        ],
         [
           "dorgelinda.trickster.cost.boots_owed",
           "dorgelinda.trickster.cost.carts_signed",
@@ -223972,6 +224217,7 @@
               "Next": null,
               "Set": [
                 "hepzamirah.lastcall.called",
+                "hepzamirah.lastcall.resolved",
                 "trickster.lastcall.pillar.creditors"
               ],
               "Requires": [],
@@ -223990,7 +224236,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "hepzamirah.lastcall.called"
+        "hepzamirah.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -224008,9 +224254,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "hepzamirah.committed"
-        ],
         [
           "hepzamirah.trickster.cost.baphomet_grudge",
           "hepzamirah.trickster.cost.blood_sample",
@@ -224039,7 +224282,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "eritrice.lastcall.called"
+                "eritrice.lastcall.called",
+                "eritrice.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -224057,7 +224301,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "eritrice.lastcall.called"
+        "eritrice.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -224075,9 +224319,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "eritrice.committed"
-        ],
         [
           "eritrice.trickster.cost.apologised",
           "eritrice.trickster.cost.censured",
@@ -224103,7 +224344,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "areelu.lastcall.called"
+                "areelu.lastcall.called",
+                "areelu.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -224121,7 +224363,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "areelu.lastcall.called"
+        "areelu.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -224139,9 +224381,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "areelu.committed"
-        ],
         [
           "areelu.trickster.cost.bet_with_the_witch",
           "areelu.trickster.wager_struck"
@@ -224165,7 +224404,8 @@
               "Text": "Continue",
               "Next": null,
               "Set": [
-                "chadali.lastcall.called"
+                "chadali.lastcall.called",
+                "chadali.lastcall.resolved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -224183,7 +224423,7 @@
       "Forbids": [
         "trickster.lastcall.taken",
         "trickster.failed",
-        "chadali.lastcall.called"
+        "chadali.lastcall.resolved"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -224201,9 +224441,6 @@
       "ReturnToList": true,
       "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
       "RequiresAnyGroups": [
-        [
-          "chadali.committed"
-        ],
         [
           "chadali.trickster.cost.luck_lent",
           "chadali.trickster.cost.luck_owed",
@@ -224385,8 +224622,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -227516,9 +227753,6 @@
       ],
       [
         "lastcall.debt.abadar"
-      ],
-      [
-        "lastcall.debt.sunhammer"
       ],
       [
         "lastcall.debt.mutasafen"
