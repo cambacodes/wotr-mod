@@ -65019,7 +65019,8 @@
         "inhuman",
         "ascended",
         "vellexia.closed",
-        "vellexia.trickster.kept_as_mirror"
+        "vellexia.trickster.kept_as_mirror",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -69862,7 +69863,8 @@
         "devil",
         "legend",
         "dragon",
-        "ascended"
+        "ascended",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -79194,7 +79196,8 @@
         "soana.forest_dead",
         "soana.closed",
         "inhuman",
-        "ascended"
+        "ascended",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -79487,7 +79490,8 @@
         "soana.closed",
         "soana.late_campaign_kept",
         "inhuman",
-        "ascended"
+        "ascended",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -85949,7 +85953,8 @@
         "anevia_gone",
         "inhuman",
         "ascended",
-        "anevia.irabeth_killed_by_commander"
+        "anevia.irabeth_killed_by_commander",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -92004,7 +92009,8 @@
         "inhuman",
         "swarm",
         "true_lich",
-        "ascended"
+        "ascended",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -93003,6 +93009,91 @@
       ],
       "DelayHours": 0,
       "Optional": false
+    },
+    {
+      "Id": "tirabade.lastcall.page",
+      "Title": "The Third Chair",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Irabeth and Anevia Tirabade went home after the war to the house on the corner, where the table had been set for three since before anyone admitted it. They never discussed the third chair. It was Anevia who decided it would stay, and Irabeth who decided it would be dusted. Some nights it was empty. Some nights, according to the neighbours, it was not, and the house on the corner laughed until dawn.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Irabeth's discharge came by post, two months after Threshold, in a hand she knew. Anevia read it once over her shoulder, then took it, folded it in three, and put it in the drawer where she kept the things she meant to use against people later.",
+              "Requires": [
+                "irabeth.trickster.cost.under_orders"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The wardrobe in the back room was only a wardrobe now. Anevia kept a hammer on top of it anyway.",
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "They had both come back, one from a grave and one from a road, and neither would let the other forget whose turn it was to be grateful.",
+              "Requires": [
+                "lastcall.tirabade.both_returned"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The lie was paid for at that table, in full, over a year. The third chair was moved to the far end, where the draught came in, and it stayed there until Anevia moved it back, one evening, without a word. Irabeth pretended not to notice for a week.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "anevia.trickster.cost.lie_exposed",
+                  "irabeth.trickster.cost.accounting_lied"
+                ]
+              ]
+            },
+            {
+              "Text": "The world had buried the Commander. The house on the corner had not been consulted and did not agree.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "committed"
+      ],
+      "Forbids": [
+        "tirabade.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "tirabade.trickster.declined": "committed"
+      }
     },
     {
       "Id": "tirabade.negotiated_ending_aeon",
@@ -95650,7 +95741,8 @@
         "arsinoe.closed",
         "swarm",
         "true_lich",
-        "ascended"
+        "ascended",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -96610,6 +96702,75 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "arsinoe"
+    },
+    {
+      "Id": "arsinoe.lastcall.page",
+      "Title": "Paid in Full",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Arsinoe of the First Vault closed the Commander's account on the morning after Threshold, in a counting-room that smelled of ink and scorched air. She checked every figure twice. Then she closed the book, put her hand flat on the cover, and said that it was the first ledger she had ever balanced that made her want to laugh.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "The cauldron went back as leased. She was there when it did, with a receipt, and when the clerks of Abadar asked what the Worldwound was now worth as collateral, she told them \"Slightly used,\" and would not be moved.",
+              "Requires": [
+                "arsinoe.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King's still had been pledged, and the still was the vessel, and the vessel held the Commander's death. Arsinoe therefore held a lien on it. She would let nobody uncork collateral, including its owner, and she checked the cork herself on the first of every month.",
+              "Requires": [
+                "arsinoe.trickster.cost.collateral_still"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's word had been the collateral. Abadar's clerks entered it at face value, which amused them, and then found that it held, which did not.",
+              "Requires": [
+                "arsinoe.trickster.cost.collateral_word"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The First Vault does not recognize death as grounds for default. The account stayed open.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "arsinoe.committed"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall"
     },
     {
       "Id": "arsinoe.trickster.cauldron_seen.react_socothbenoth",
@@ -98247,7 +98408,8 @@
         "demon",
         "devil",
         "ascended",
-        "gesmerha.late_complete"
+        "gesmerha.late_complete",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -100211,7 +100373,8 @@
         "inhuman",
         "demon",
         "devil",
-        "ascended"
+        "ascended",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -103218,7 +103381,8 @@
         "ember_dead",
         "ember_gone",
         "ember.absent",
-        "ascended"
+        "ascended",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -109828,7 +109992,8 @@
         "ascended",
         "minachiv.closed",
         "minachiv.complete",
-        "minagho_chivarro.trickster.committed"
+        "minagho_chivarro.trickster.committed",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -110215,7 +110380,8 @@
         "inhuman",
         "ascended",
         "minachiv.closed",
-        "minagho_chivarro.trickster.committed"
+        "minagho_chivarro.trickster.committed",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -115833,7 +115999,8 @@
         "inhuman",
         "ascended",
         "noct.join.harbor_variant_ready",
-        "nocticula.trickster.said_yes"
+        "nocticula.trickster.said_yes",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -134809,7 +134976,8 @@
         "ascended",
         "noct.ending_sacrifice",
         "noct.join.history_refused",
-        "noct.join.history_prior"
+        "noct.join.history_prior",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -134861,7 +135029,8 @@
         "ascended",
         "noct.ending_sacrifice",
         "noct.join.history_new",
-        "noct.join.history_prior"
+        "noct.join.history_prior",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -134913,7 +135082,8 @@
         "ascended",
         "noct.ending_sacrifice",
         "noct.join.history_new",
-        "noct.join.history_refused"
+        "noct.join.history_refused",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -144092,6 +144262,81 @@
       }
     },
     {
+      "Id": "irabeth.lastcall.page",
+      "Title": "Irabeth, Dismissed",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Irabeth Tirabade was still under the Commander's orders at Threshold, as she had been since Iz. She had tried to put the sword down and could not, not until the Wound was shut. When word came that it was, she laid the sword on the table in her quarters, flexed the hand for some time, and sat down to wait for someone to dismiss her.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Nobody did. The Commander came instead, with the discharge {mf|he|she} had kept unsigned since Iz, filled it in, dated it the day after the rift, and added a line under the signature: \"Report in person.\" She did. She reported most evenings, for the rest of their lives, and was never once late.",
+              "Requires": [
+                "irabeth.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She knew about the lie at Iz; Nevi had seen to that. Irabeth kept serving, because a knight does, and kept the Commander at arm's length at every table afterwards, because a wife does. The Commander learned to take the far chair without being told.",
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She went to the Commander's funeral in full plate and stood at attention through every speech. Afterwards she told the chaplain that the deceased had been absent without leave for most of the war, and that she saw no reason to take it seriously now.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the flask was opened she saluted it, then saluted the Commander, then saluted the flask again, and declined to explain the order of precedence.",
+              "Requires": [
+                "lastcall.h2"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "irabeth.committed"
+      ],
+      "Forbids": [
+        "irabeth.trickster.declined",
+        "committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "irabeth.trickster.declined": "irabeth.committed"
+      }
+    },
+    {
       "Id": "irabeth.trickster.dead.react_seelah",
       "Title": "Seelah's word",
       "Owner": "Seelah",
@@ -147028,6 +147273,90 @@
       }
     },
     {
+      "Id": "anevia.lastcall.page",
+      "Title": "Anevia, After",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Anevia Tirabade had the watch on the walls of Drezen the night the rift took the Commander, or failed to. She had refused to give it up to anyone. She came down at dawn with a crossbow she had not fired and a face nobody asked about, and went looking for the one person in the city who owed her an explanation. She found {mf|him|her} in the kitchen, eating her bread.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Socothbenoth collected his standing right in her own wardrobe. Anevia sat outside the door with a bottle and listened to him listen, and when he was done she told him that if he ever came back she would nail it shut from the inside. He said it was the kindest threat anyone had made him in a century.",
+              "Requires": [
+                "anevia.lastcall.called",
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The closet the Silken Sin had given the Commander stayed in her house. It opened only onto rooms the Commander had stood in, and never onto the same room twice. She used it to leave notes: short, rude, and always on the pillow.",
+              "Requires": [
+                "anevia.trickster.cost.stolen_door"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never quite forgave the silence at the gate, when she asked what happened at Iz and got nothing. She kept the Commander's chair. She kept it at the far end of the table, and on the bad nights she raised her cup to Irabeth instead, and the Commander learned to drink to that as well.",
+              "Requires": [
+                "anevia.trickster.cost.lie_exposed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Living beside a Commander the world had buried suited her. She had spent half her life officially somewhere else.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the flask was opened in Drezen, it was Anevia who made the Commander sit down afterwards and eat something, and who told the priests to go and bless someone who needed it.",
+              "Requires": [
+                "lastcall.h2"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "anevia.committed"
+      ],
+      "Forbids": [
+        "anevia.trickster.declined",
+        "committed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "anevia.trickster.declined": "anevia.committed"
+      }
+    },
+    {
       "Id": "anevia.trickster.gone.react_konomi",
       "Title": "Konomi's word",
       "Owner": "Konomi",
@@ -148519,6 +148848,80 @@
       "Relationship": "jerribeth",
       "ForbidOverrides": {
         "jerribeth.unavailable": "jerribeth.trickster.returned"
+      }
+    },
+    {
+      "Id": "jerribeth.lastcall.page",
+      "Title": "Rent Day",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Jerribeth collected her rent on the first of the month after Threshold, as the terms said, and every first of the month after that. She never once let the Commander forget whose house {mf|he|she} was living in, or whose {mf|he|she} was living on. She was, in the opinion of everyone who met her, entirely too pleased with herself.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She took her forfeit in the second year: one memory, hers to choose. She chose the rift. The Commander remembers everything about Threshold except the joke itself, and she tells it back, badly, on purpose, whenever {mf|he|she} asks.",
+              "Requires": [
+                "jerribeth.trickster.cost.forfeit"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had worn a deserter from the stockade since the night the Commander gave him to her, and she wore him to the victory feast. Nobody missed him. She made a point of telling the Commander how right {mf|he|she} had been about that.",
+              "Requires": [
+                "jerribeth.trickster.cost.host"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The statue of the Lady of the Sun stood in the square at Drezen for years afterwards, and pilgrims who prayed to it went home oddly satisfied and slightly out of pocket.",
+              "Requires": [
+                "jerribeth.trickster.cost.tenant"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "A succubus does not attend funerals. She attended this one, in black, and wept beautifully, and charged the mourners for it.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "jerribeth.committed"
+      ],
+      "Forbids": [
+        "jerribeth.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "jerribeth.trickster.declined": "jerribeth.committed"
       }
     },
     {
@@ -150151,6 +150554,80 @@
       "Relationship": "konomi"
     },
     {
+      "Id": "konomi.lastcall.page",
+      "Title": "Terms, Accepted",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Konomi returned to the court of Nerosyan after the war as its attaché to whatever the Commander had become, a post the court invented for her because nobody else would take it. Her reports were exact, witty and quite useless to anyone who wanted to know what the Commander was actually doing, which was the point.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She named her price the night after Threshold, as she had said she would: a seat for Nerosyan at every table the Commander ever sat at, and her own name on the invitation. The Commander agreed before she had finished, which she found suspicious, and she spent a year looking for the catch.",
+              "Requires": [
+                "konomi.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had outfoxed the Commander once, fairly, at the recess, and she never let it be forgotten. It was, she said, the only victory over the Fifth Crusade that the court of Nerosyan ever won.",
+              "Requires": [
+                "konomi.trickster.cost.outfoxed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She billed the Commander for every consultation, at her rate, and the Commander paid every bill and kept the receipts in a drawer she was not supposed to know about.",
+              "Requires": [
+                "konomi.trickster.cost.consult_fee"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nerosyan sent condolences for the Commander's death. Konomi delivered them in person and stayed for supper.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "konomi.committed"
+      ],
+      "Forbids": [
+        "konomi.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "konomi.trickster.declined": "konomi.committed"
+      }
+    },
+    {
       "Id": "konomi.trickster.dismissed.react_regill",
       "Title": "Regill's word",
       "Owner": "Regill",
@@ -151511,7 +151988,9 @@
         "trickster.ever",
         "nocticula.trickster.cost.shade_paid"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "lastcall.active"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "nocticula"
@@ -151816,6 +152295,80 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "nocticula"
+    },
+    {
+      "Id": "nocticula.lastcall.page",
+      "Title": "The Chair at Her Right Hand",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "The Queen of Shadows came to Drezen once after the war, openly, in a carriage that the city pretended not to see. She stayed a night. She left a shadow behind her in the Commander's rooms that did not belong to anything in them, and it stayed there, in the corner by the window, for as long as the Commander kept the rooms.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She named her favour at last in the second spring after Threshold: not a temple, not a war, not a soul. A chair. The chair at the Commander's right hand at every table {mf|he|she} would ever sit at, and nobody was to ask whose it was. Scholars of the Abyss still argue over which of them got the better bargain. Those who knew the Commander say {mf|he|she} laughed for a full minute before agreeing.",
+              "Requires": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The stalemate held. Twice her agents were found in the Commander's household, a cook who could not cook and a steward who counted the wrong things; twice the Commander sent them home with a joke pinned to their sleeves. The Midnight Isles learned to seat the two of them at opposite ends of every table, and neither ever raised the matter again.",
+              "Requires": [
+                "nocticula.trickster.cost.shade_refused"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She has never once been seen to look at the flask. Those who know her say that is how one can tell she is always looking at it.",
+              "Requires": [
+                "trickster.lastcall.cost.bottled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The world believed the Commander dead. Nocticula let it, and made sure the rumour paid her rent.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "noct.complete"
+      ],
+      "Forbids": [
+        "nocticula.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "nocticula.trickster.declined": "noct.complete"
+      }
     },
     {
       "Id": "nocticula.trickster.reaction.daeran",
@@ -154734,6 +155287,83 @@
       "Relationship": "vellexia"
     },
     {
+      "Id": "vellexia.lastcall.page",
+      "Title": "Never Bored",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Lady Vellexia gave a party the month after Threshold, in Alushinyrra, to celebrate the Commander's survival, or funeral; the invitations were deliberately unclear. It was the event of the decade. The Commander arrived late, in a borrowed face, and she recognized {mf|him|her} across the room and did not give the game away for three hours, which she said afterwards was the most fun she had had in a century.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She billed the Commander for the furniture. She had been hung on a wall as a looking-glass, and the bill came to exactly the value of a very good mirror, with interest, payable in visits. The Commander paid in instalments and never once missed one.",
+              "Requires": [
+                "vellexia.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had come back from the glass a little less than she went in, and she never pretended otherwise. She simply chose, every evening, which part of herself to spend on the Commander, and she was never mean with it.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander had bored her once. She never let {mf|him|her} forget that, and she let {mf|him|her} make up for it for years, at the far end of her table, until it amused her to move {mf|him|her} closer.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She wore black for the Commander's funeral and was, by general agreement, the best-dressed mourner there.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "vellexia.committed"
+      ],
+      "Forbids": [
+        "vellexia.trickster.declined",
+        "vellexia.farewell_friends",
+        "vellexia.farewell_slow",
+        "vellexia.trickster.kept_as_mirror"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "vellexia.trickster.declined": "vellexia.committed"
+      }
+    },
+    {
       "Id": "vellexia.trickster.reaction.storyteller",
       "Title": "Storyteller's word",
       "Owner": "Storyteller",
@@ -157641,6 +158271,94 @@
       "Relationship": "nurah"
     },
     {
+      "Id": "nurah.lastcall.page",
+      "Title": "The Last Chapter",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Nurah Dendiwhar published her account of the Fifth Crusade two years after Threshold, under her own name, which surprised everyone who knew her. It sold out in Nerosyan in a week and was banned in Mendev in two. The chapter on the Commander was the longest in the book, and the only one in which she admitted to liking anyone.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Ramisa came for the story she had bought. Nurah wrote it for her in a single night, every word true, and dedicated it to the marilith \"with the author's compliments and none of her gratitude\". The duplicate bill with the Commander's name on it went into the fire the same night. Nurah insists she has no idea how.",
+              "Requires": [
+                "nurah.lastcall.called",
+                "nurah.trickster.cost.bill_in_your_name"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Ramisa came for the story she had bought, and Nurah wrote it for her in a single night, every word true, and dedicated it to the marilith with the author's compliments and none of her gratitude.",
+              "Requires": [
+                "nurah.lastcall.called"
+              ],
+              "Forbids": [
+                "nurah.trickster.cost.bill_in_your_name"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot being currency, and she never pretended to. She kept the memory the way she kept her pen: close, sharp, and pointed at anyone who looked as if they might try it again.",
+              "Requires": [
+                "nurah.trickster.cost.larva_memory"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her name went on the cover next to the Commander's. She had insisted. She was right to.",
+              "Requires": [
+                "nurah.trickster.cost.coauthor"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her name went on the cover above the Commander's, in larger letters. She had insisted. The Commander had let her.",
+              "Requires": [
+                "nurah.trickster.cost.name_above"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She wrote the Commander's obituary herself, for a Nerosyan broadsheet. It was vicious, accurate and extremely popular.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "nurah.complete"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall"
+    },
+    {
       "Id": "nurah.trickster.react.irabeth_night",
       "Title": "Literate rats",
       "Owner": "Irabeth",
@@ -159723,6 +160441,77 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "kiana"
+    },
+    {
+      "Id": "kiana.lastcall.page",
+      "Title": "Home by Spring",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Kiana did not go back to Mendev after the war. She stayed in Drezen, where nobody had arranged her marriage and nobody had put her soul in a jewel, and she took a room above a baker's with a window that looked at nothing in particular. She said it was the first view she had ever chosen.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "The wedding guests still in Sunhammer's keeping came home that spring. Kiana met every coach. She knew all their names, and she made the Commander learn them too.",
+              "Requires": [
+                "kiana.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never quite forgave the Commander the guests left behind in the pouch the first time, when {mf|he|she} was quicker to free her than to count the others. She said so once, plainly, and never needed to again.",
+              "Requires": [
+                "kiana.trickster.cost.guests_robbed"
+              ],
+              "Forbids": [
+                "kiana.lastcall.called"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The counterfeit that had stood in for her stone was never found. Kiana suspected the Commander of keeping it, and was right.",
+              "Requires": [
+                "kiana.trickster.cost.counterfeit_spent"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She went to the Commander's funeral, wept, and then went home and baked, because somebody had to feed the mourners who came to the house afterwards.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "kiana.committed"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall"
     },
     {
       "Id": "kiana.trickster.aftermath_missed.react_arsinoe",
@@ -166174,6 +166963,90 @@
       "Relationship": "minagho_chivarro"
     },
     {
+      "Id": "minachiv.lastcall.page",
+      "Title": "The House of Two",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Minagho and Chivarro kept house in Drezen after the war, in a building nobody else would rent, on terms neither of them would ever write down. It was not a romance. It was a contract, renegotiated nightly, and the Commander was a party to it, and they never let {mf|him|her} forget which clauses were {mf|his|hers}.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Baphomet's seal was cheated on his own wording, and Minagho's palm still bled on the anniversary. She chose, that first spring, which side of the Lord of Beasts' ledger she would stand on for the rest of her life. She chose the side with the Commander on it, and said it was only because the other side had worse food.",
+              "Requires": [
+                "minagho_chivarro.lastcall.called",
+                "minagho_chivarro.trickster.cost.baphomet_debtor"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Herrax collected her favour. Chivarro paid part of it herself, without being asked, and left the rest of the bill on the Commander's pillow with a kiss printed on the total.",
+              "Requires": [
+                "minagho_chivarro.lastcall.called",
+                "minagho_chivarro.trickster.cost.herrax_favor"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander had knelt to Baphomet once, in front of her. Minagho never forgot it. She stood at the other side of every room after that, and watched the Commander across it with an expression that those who knew her described as a very private kind of respect.",
+              "Requires": [
+                "minagho_chivarro.trickster.cost.baphomet_knelt"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander's left palm never quite closed over the scar. Minagho said it was the best-looking thing about {mf|him|her}.",
+              "Requires": [
+                "minagho_chivarro.trickster.cost.palm_scar"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Both of them attended the Commander's funeral. Neither of them was invited. Both of them stole something from the reception.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "minachiv.complete"
+      ],
+      "Forbids": [
+        "minagho_chivarro.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "minagho_chivarro.trickster.declined": "minachiv.complete"
+      }
+    },
+    {
       "Id": "minagho_chivarro.trickster.react.daeran",
       "Title": "Daeran's word",
       "Owner": "Daeran",
@@ -168418,6 +169291,80 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "soana"
+    },
+    {
+      "Id": "soana.lastcall.page",
+      "Title": "The Knot",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Soana went back to the Wintersun wood when the war ended and did not ask the Commander to follow. {mf|He|She} followed anyway, and she let {mf|him|her} stay on the understanding that {mf|he|she} would make {mf|himself|herself} useful and keep out of her graves. {mf|He|She} was useful, and kept out of most of them.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "The knot that bound her life to her guardian's still held, one end breathing in her and the other in Orso. The Commander learned to sleep through the bear's snoring, which Soana said was the most romantic thing anyone had ever done for her.",
+              "Requires": [
+                "soana.trickster.cost.guardian_paid"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The spirits came for their portion, and Soana stood between them and the Commander, and paid them in her own blood. She did not say it was for love. She said it was her wood and her debt, which is how Soana says it.",
+              "Requires": [
+                "soana.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. She never told the Commander what the numbers meant.",
+              "Requires": [
+                "soana.trickster.cost.die_in_her_bowl"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The world thought the Commander dead. Soana thought that was very sensible of the world, and told nobody otherwise.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "soana.committed"
+      ],
+      "Forbids": [
+        "soana.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "soana.trickster.declined": "soana.committed"
+      }
     },
     {
       "Id": "soana.trickster.react.camellia_portion",
@@ -171455,6 +172402,80 @@
       "Relationship": "aranka"
     },
     {
+      "Id": "aranka.lastcall.page",
+      "Title": "The Second Verse",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Aranka's song about the Commander was sung in every tavern between Drezen and Nerosyan within a year of Threshold, and she was paid for almost none of those performances. She did not mind. She said a song that pays its own way is a song that has stopped travelling.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She sang the second verse at the rift, or swore afterwards that she had, from two hundred miles away, loud enough for the Wound to learn the words. Nobody could prove otherwise. The crusade sang it back to her all that winter.",
+              "Requires": [
+                "aranka.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander had denied the thief's verse was {mf|his|hers}. Aranka sang it herself, then, in every tavern on the road, and named the thief in the last line, and the Commander had to sit at the back of each of those taverns and applaud. It took a year. She said it was a very short sentence for the crime.",
+              "Requires": [
+                "aranka.trickster.cost.denied"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The posters the Commander had put up at every ford were still there. She had them framed.",
+              "Requires": [
+                "aranka.trickster.cost.announced"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She wrote the Commander's elegy. It was so good that the Commander was sorry not to be dead for it.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "aranka.extension_kept"
+      ],
+      "Forbids": [
+        "aranka.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "aranka.trickster.declined": "aranka.extension_kept"
+      }
+    },
+    {
       "Id": "aranka.trickster.react.anevia_verse",
       "Title": "Anevia's word",
       "Owner": "Anevia",
@@ -173151,6 +174172,80 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "gesmerha"
+    },
+    {
+      "Id": "gesmerha.lastcall.page",
+      "Title": "The Commission",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Gesmerha finished the statue the spring after Threshold. She would not let anyone see it until it was done, and when it was done she would not let anyone see it at all, except the Commander, blindfolded, by touch, the way she had carved it. {mf|He|She} said afterwards that it was the only honest likeness anyone had ever made of {mf|him|her}.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "The commission had been paid in advance, and the coin the Commander drove into the uncut block stayed in the finished stone, over the statue's heart. She had carved around it rather than take it out. She said the ancestors would want to see it had been paid.",
+              "Requires": [
+                "gesmerha.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the carved hands, the ones she had made while the Commander sat for her those three days. They stood on her bench for the rest of her life, and she worked with them facing her, and she would not say why.",
+              "Requires": [
+                "gesmerha.trickster.cost.hands_carved"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander had laughed at her grave. She delivered the work, and then she sat apart from the Commander at supper for a whole season, where she could hear {mf|his|her} footsteps and not {mf|his|her} voice. At the end of the season she moved her chair back, and told {mf|him|her} the footsteps had improved.",
+              "Requires": [
+                "gesmerha.trickster.cost.laughed_at_grave"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She carved the Commander's gravestone, for the empty grave. It said nothing untrue.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "gesmerha.committed"
+      ],
+      "Forbids": [
+        "gesmerha.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "gesmerha.trickster.declined": "gesmerha.committed"
+      }
     },
     {
       "Id": "gesmerha.trickster.react.lann_pyre",
@@ -175178,6 +176273,83 @@
       "Relationship": "seelah"
     },
     {
+      "Id": "seelah.lastcall.page",
+      "Title": "The Thief's Promise",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Seelah did not go back to the order after the war. She said she had a debt to settle first, and she settled it the way she had settled things as a girl in the streets of Kenabres: quietly, with a hand in someone else's pocket, and an apology afterwards.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "At the rift the Commander had called in her promise, and she kept it. The flask came out of the Commander's coat one evening in Drezen in her hand, as easily as a purse, and went back into it a moment later, heavier by one small coin. She never said which coin. She said the trick was not the hand, it was the apology.",
+              "Requires": [
+                "seelah.lastcall.called",
+                "trickster.lastcall.cost.bottled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "At the rift the Commander had called in her promise, and she kept it: she picked {mf|his|her} pocket the next evening in Drezen and took back what was hers, and would not say what else she took.",
+              "Requires": [
+                "seelah.lastcall.called"
+              ],
+              "Forbids": [
+                "trickster.lastcall.cost.bottled"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She would not live under a false name, and the Commander was officially dead. So she kept her own name, and her own door, and walked through it into the Commander's rooms every evening, openly, and told anyone who asked exactly where she was going.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "It was Seelah who found the flask at the edge of the Wound. She said it was the easiest theft of her life.",
+              "Requires": [
+                "lastcall.h2"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "seelah.committed"
+      ],
+      "Forbids": [
+        "seelah.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "seelah.trickster.declined": "seelah.committed"
+      }
+    },
+    {
       "Id": "seelah.trickster.dead.react_irabeth",
       "Title": "Irabeth's word",
       "Owner": "Irabeth",
@@ -177121,7 +178293,7 @@
       "DelayHours": 0,
       "Optional": false,
       "ForbidOverrides": {
-        "sacrifice": "trickster.cheated_death"
+        "sacrifice": "trickster.commander_back"
       },
       "Relationship": "dorgelinda"
     },
@@ -177156,8 +178328,9 @@
         "sacrifice"
       ],
       "Forbids": [
-        "trickster.cheated_death",
-        "dorgelinda.closed"
+        "trickster.commander_back",
+        "dorgelinda.closed",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -184210,6 +185383,80 @@
       "Relationship": "dorgelinda"
     },
     {
+      "Id": "dorgelinda.lastcall.page",
+      "Title": "The Open Line",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Dorgelinda Stranglehold kept the Logistics Council's books for five years after the war, and never once balanced them, because of one line in the Commander's name marked \"used, quietly\". She said a quartermaster who closes every line has stopped paying attention. She paid attention to that line every day.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "At the rift the Commander called the line in, and she heard about it, somehow, before the report reached Drezen. She came to find {mf|him|her} that evening with the ledger under her arm. \"Explain,\" she said, and the Commander did, all of it, from the carts to the quiet. She wrote down every word, then put down the pen and did not pick it up again that night.",
+              "Requires": [
+                "dorgelinda.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The boots were entered as paid. She kept the last pair on a shelf in the stores and would not issue them to anyone.",
+              "Requires": [
+                "dorgelinda.trickster.cost.boots_paid"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her audit of the Commander never formally concluded. She kept it open, hostile, on principle, and conducted it twice a week over supper.",
+              "Requires": [
+                "dorgelinda.trickster.cost.audit_hostile"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "When the Commander was entered as dead, she refused to close the account. \"Dead's a status, not a balance,\" she told the clerk from Nerosyan.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "dorgelinda.committed"
+      ],
+      "Forbids": [
+        "dorgelinda.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "dorgelinda.trickster.declined": "dorgelinda.committed"
+      }
+    },
+    {
       "Id": "hepzamirah.trickster.colyphyr.offer",
       "Title": "A standing offer",
       "Owner": "Hepzamirah",
@@ -186171,7 +187418,8 @@
       ],
       "Forbids": [
         "trickster.cheated_death",
-        "hepzamirah.closed"
+        "hepzamirah.closed",
+        "lastcall.active"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -186252,6 +187500,75 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "hepzamirah"
+    },
+    {
+      "Id": "hepzamirah.lastcall.page",
+      "Title": "The Lodger",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Hepzamirah lived in the body Mutasafen grew her for as long as it lasted, which was, to his lasting irritation, a great deal longer than he had designed it for. She paid her rent to the Commander in the form she preferred, which was a standing threat to kill her father and an invitation to watch.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Mutasafen came for his price, and she received him herself, and she paid him in full. She said she would not owe that creature a single drop. She said it smiling, and nobody who saw the smile asked what the payment had been.",
+              "Requires": [
+                "hepzamirah.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had killed Mutasafen's courier once, because the Commander let her, and she remembered it fondly. She said it was the nicest thing anyone had ever done for her.",
+              "Requires": [
+                "hepzamirah.trickster.cost.courier_killed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander had broken her terms once, sending a chaplain to heal her against her will. She never let that go. She lived at the Commander's side and kept the healed scar uncovered, where {mf|he|she} would see it every time {mf|he|she} looked at her, and she made sure {mf|he|she} looked.",
+              "Requires": [
+                "hepzamirah.trickster.cost.healed_against_terms"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She attended the Commander's funeral to make sure. She left disappointed, and then delighted.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "hepzamirah.committed"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall"
     },
     {
       "Id": "hepzamirah.trickster.react.greybor",
@@ -194598,6 +195915,94 @@
       }
     },
     {
+      "Id": "targona.lastcall.page",
+      "Title": "The Quiet Ward",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Targona did not go back to Heaven when the war ended. She stayed in Drezen's infirmary until the last cot was folded, and then she opened another, in a street near the Commander's house, with the Commander's name over the door and no way for {mf|him|her} to be useful in it.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "The Commander kept the promise at the rift. {mf|He|She} did not call on her brother's light, though it would have been the easiest thing in the world, and she heard afterwards that {mf|he|she} had not. She did not say anything. She put a second chair by her desk in the ward, and it was never empty for long.",
+              "Requires": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Forbids": [
+                "targona.lastcall.called"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "At the rift the Commander called on Lariel's light, and broke the one promise she had asked of {mf|him|her}. She learned of it within the week. She stayed; an angel keeps her word even when others do not. But she sat at the other end of the ward's table for a year, and it was a year before she let the Commander carry a lamp for her again.",
+              "Requires": [
+                "targona.lastcall.called",
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had told Heaven everything, as her price for coming back. Heaven, it seemed, had listened, and had not recalled her. She took that as an answer and did not ask for another.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "targona.trickster.cost.she_told_heaven",
+                  "targona.trickster.cost.raised_openly"
+                ]
+              ]
+            },
+            {
+              "Text": "She never forgave the joke at her bier, and she never pretended to. She served beside the Commander for the rest of her long life, courteous, exact, and always at the far end of any room they shared.",
+              "Requires": [
+                "targona.trickster.cost.unforgiven"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She did not attend the Commander's funeral. She was busy with the living, she said, and so, it turned out, was the deceased.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "targona.committed"
+      ],
+      "Forbids": [
+        "targona.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "targona.trickster.declined": "targona.committed"
+      }
+    },
+    {
       "Id": "targona.trickster.react.seelah_furlough",
       "Title": "Seelah's word",
       "Owner": "Seelah",
@@ -196038,6 +197443,80 @@
         "sacrifice": "trickster.cheated_death"
       },
       "Relationship": "eritrice"
+    },
+    {
+      "Id": "eritrice.lastcall.page",
+      "Title": "Motion Carried",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Eritrice kept the Trickster Council's minutes for as long as there was a Council, and a little longer, because she said somebody had to be ready when it reconvened. Every entry after Threshold began the same way: \"Present: the chair, the Commander (irregularly).\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "At the rift the Commander moved a last motion from the floor: that {mf|he|she} was not dead. Eritrice minuted it. The motion carried, by a majority of one, and the record shows the chair abstained.",
+              "Requires": [
+                "eritrice.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The grudge stood on every agenda, read aloud before any other business. The Commander was always there to hear it, and always sat at the foot of the table while it was read.",
+              "Requires": [
+                "eritrice.trickster.cost.grudge_on_agenda"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had caught the Commander lying once, in the private debate, and the matter was never struck from the record. She raised it whenever the Commander became too pleased with {mf|himself|herself}, which was often, and it was always in order.",
+              "Requires": [
+                "eritrice.trickster.cost.caught_lying"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Council recorded the Commander's death with regret and a note: \"Pending further evidence.\" The evidence arrived for supper.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "eritrice.committed"
+      ],
+      "Forbids": [
+        "eritrice.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "eritrice.trickster.declined": "eritrice.committed"
+      }
     },
     {
       "Id": "eritrice.trickster.react.chadali_motion",
@@ -211569,6 +213048,72 @@
       }
     },
     {
+      "Id": "areelu.lastcall.page",
+      "Title": "The Wager, Settled",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "I will record, since I am obliged to record everything, that the wager was settled. Whoever burned at Threshold was to pay. I have gone over the terms many times since, looking for the flaw, and I have not found one, which is the most irritating thing I can say about any experiment.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "At the rift the Commander called in our wager, and told me to take notes. I did. They are appended. They are very thorough.",
+              "Requires": [
+                "areelu.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "I ceded the Wound. I have not regretted it, which I record here because I promised to regret nothing, and I keep my promises when they are also my conclusions.",
+              "Requires": [
+                "areelu.trickster.cost.wound_ceded"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The flask is mine. I made it. The Commander carries it. I have not tried to take it back, and I would like whoever reads this to understand how much that restraint costs me.",
+              "Requires": [
+                "trickster.lastcall.cost.bottled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "areelu.committed"
+      ],
+      "Forbids": [
+        "areelu.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "areelu.trickster.declined": "areelu.committed"
+      }
+    },
+    {
       "Id": "chadali.trickster.council.coin",
       "Title": "Heads or tails",
       "Owner": "Chadali",
@@ -212899,6 +214444,80 @@
         "sacrifice": "trickster.cheated_death"
       },
       "Relationship": "chadali"
+    },
+    {
+      "Id": "chadali.lastcall.page",
+      "Title": "Heads",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Chadali kept the coin. It had stood on its edge through the Council, through Threshold and through the long night after, and she would not let anyone knock it over. She kept it on the windowsill of the Commander's rooms, still balanced, and dusted around it.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "At the rift the Commander called in the luck she had borrowed, and she paid it back all at once, the way she did everything. The coin fell. She would never say which face it showed. The Commander has asked her every week since, and every week she says \"No.\" and looks delighted.",
+              "Requires": [
+                "chadali.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The needle was the Commander's, as promised, the next time. Chadali held {mf|him|her} to it the first time {mf|he|she} was ill after the war, and would not let anyone else near {mf|him|her} with a bandage.",
+              "Requires": [
+                "chadali.trickster.cost.needle_owed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never quite forgave the Council fight. She sulked for a season at the far end of every table, bossy and odious, and then one morning she moved her chair back without comment and demanded breakfast.",
+              "Requires": [
+                "chadali.trickster.cost.grudge"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The orange tree grew in the best corner of the citadel garden, and bore fruit the second year. She said that proved nothing, and ate all of it.",
+              "Requires": [
+                "chadali.trickster.cost.orange_tree"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "chadali.committed"
+      ],
+      "Forbids": [
+        "chadali.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "chadali.trickster.declined": "chadali.committed"
+      }
     },
     {
       "Id": "chadali.trickster.react.eritrice_coin",
@@ -220185,6 +221804,2415 @@
       "AnswerLists": [
         "e649f211c6b002a49a0c633061877927"
       ]
+    },
+    {
+      "Id": "trickster.lastcall.bottle.king",
+      "Title": "Last orders",
+      "Owner": "Fool King",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Show the King the flask] \"Your Majesty, you once offered me your kingly help. I'm taking you up on it.\"",
+      "Nodes": [
+        {
+          "Id": "offer",
+          "Speaker": "conversant",
+          "Text": "\"My kingly help! I said that, didn't I?\" {n}Thaberdine wipes his mouth and squints at the vessel in your hand, at the veins in the crystal, gone from violet to pink.{/n} \"I say a lot of things. But a king's word is better than a king's beer, and my beer's excellent. That's the pot you found at the moonshiner's hut. What are you going to brew in it? Not my recipe, I hope. My recipe is a state secret.\"",
+          "Choices": [
+            {
+              "Text": "[Open your shirt] \"My own recipe.\"",
+              "Next": "drink",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put it away] \"Another night, Majesty.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "drink",
+          "Speaker": "Narrator",
+          "Text": "{n}The wound under your ribs has not closed since Iz, and tonight it does not pretend to. You press the crystal to it and the vessel drinks, as it drank in Areelu's laboratory: a clear, stinging trickle, moonshine where blood ought to be. The tavern goes quiet, then louder, because the King has decided this is a performance.{/n}\n\"A toast!\" {n}Thaberdine is up on the bench.{/n} \"To the Commander, who is bottling {mf|himself|herself} for later! What's the first thing you'll say when they open you, eh? Make it a good one. It'll be quoted.\"",
+          "Choices": [
+            {
+              "Text": "[Decide your first words] \"Sorry I'm late.\"",
+              "Next": "round.late",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Decide your first words] \"Did I miss anything?\"",
+              "Next": "round.missed",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Decide your first words] \"Whose funeral?\"",
+              "Next": "round.funeral",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "round.late",
+          "Speaker": "conversant",
+          "Text": "\"Ha! Somebody write that down. No, don't. It's funnier if nobody can prove it.\"\n{n}Thaberdine holds his mug out over the vessel the way a priest holds out a hand, and some of the foam slops onto the crystal. He seems to think that is part of the rite.{/n} \"Now. A royal blessing costs a round for the whole court. That's the law. I made it this morning.\"",
+          "Choices": [
+            {
+              "Text": "[Stand the whole court a round] \"Everybody drinks. On the crusade.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.king_blessed",
+                "trickster.lastcall.started",
+                "trickster.lastcall.joke.late",
+                "trickster.lastcall.cost.royal_round"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Just the blessing, Majesty] \"Put it on my tab.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.king_blessed",
+                "trickster.lastcall.started",
+                "trickster.lastcall.joke.late",
+                "trickster.lastcall.cost.royal_tab"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "round.missed",
+          "Speaker": "conversant",
+          "Text": "\"Ha! Somebody write that down. No, don't. It's funnier if nobody can prove it.\"\n{n}Thaberdine holds his mug out over the vessel the way a priest holds out a hand, and some of the foam slops onto the crystal. He seems to think that is part of the rite.{/n} \"Now. A royal blessing costs a round for the whole court. That's the law. I made it this morning.\"",
+          "Choices": [
+            {
+              "Text": "[Stand the whole court a round] \"Everybody drinks. On the crusade.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.king_blessed",
+                "trickster.lastcall.started",
+                "trickster.lastcall.joke.missed",
+                "trickster.lastcall.cost.royal_round"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Just the blessing, Majesty] \"Put it on my tab.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.king_blessed",
+                "trickster.lastcall.started",
+                "trickster.lastcall.joke.missed",
+                "trickster.lastcall.cost.royal_tab"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "round.funeral",
+          "Speaker": "conversant",
+          "Text": "\"Ha! Somebody write that down. No, don't. It's funnier if nobody can prove it.\"\n{n}Thaberdine holds his mug out over the vessel the way a priest holds out a hand, and some of the foam slops onto the crystal. He seems to think that is part of the rite.{/n} \"Now. A royal blessing costs a round for the whole court. That's the law. I made it this morning.\"",
+          "Choices": [
+            {
+              "Text": "[Stand the whole court a round] \"Everybody drinks. On the crusade.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.king_blessed",
+                "trickster.lastcall.started",
+                "trickster.lastcall.joke.funeral",
+                "trickster.lastcall.cost.royal_round"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Just the blessing, Majesty] \"Put it on my tab.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.king_blessed",
+                "trickster.lastcall.started",
+                "trickster.lastcall.joke.funeral",
+                "trickster.lastcall.cost.royal_tab"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "lastcall.vessel",
+        "fool_king.available"
+      ],
+      "Forbids": [
+        "trickster.lastcall.primed.bottle",
+        "trickster.failed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "AnswerLists": [
+        "6dccfd39947ef4242a8afbe36b21a46c"
+      ],
+      "NativeReturnCue": "7b050ba0745bf144e815632e39b34853",
+      "Chapters": [
+        5
+      ]
+    },
+    {
+      "Id": "trickster.lastcall.bottle.alone",
+      "Title": "Last orders, alone",
+      "Owner": "Commander",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "alone",
+          "Speaker": "Narrator",
+          "Text": "{n}There is no King to bless it and no court to drink to it. There is a cot, a candle and the vessel from Areelu's laboratory, heavier than crystal ought to be. The wound under your ribs opens without being asked. You press the vessel to it and listen to it fill: a thin, clean trickle that smells of a still in a burned village.{/n}\n{n}Nobody asks what you'll say when they open it. You decide anyway, out loud, to an empty tent, so that somebody will have heard it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Decide your first words] \"Sorry I'm late.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.started",
+                "trickster.lastcall.cost.bled_alone",
+                "trickster.lastcall.joke.late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Decide your first words] \"Did I miss anything?\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.started",
+                "trickster.lastcall.cost.bled_alone",
+                "trickster.lastcall.joke.missed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Decide your first words] \"Whose funeral?\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.primed.bottle",
+                "trickster.lastcall.started",
+                "trickster.lastcall.cost.bled_alone",
+                "trickster.lastcall.joke.funeral"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Cork it and sleep] Not tonight.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "lastcall.vessel"
+      ],
+      "Forbids": [
+        "fool_king.available",
+        "trickster.lastcall.primed.bottle",
+        "trickster.failed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "Remote": true
+    },
+    {
+      "Id": "trickster.lastcall.threshold",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call last orders] \"Before anyone does anything final: last orders. I've a tab to settle.\"",
+      "Nodes": [
+        {
+          "Id": "flask",
+          "Speaker": "Narrator",
+          "Text": "{n}The flask is warm against your ribs. It has been warm since the night in Drezen when the wound drained into it like a tap into a jug. Areelu's crystal; Areelu's veins, gone the colour of cheap pink wine. Something inside it turns over, heavy and patient, the way a death ought to.{/n}\n{n}Across the rift, Areelu sees it. She knows her own work.{/n}",
+          "Choices": [
+            {
+              "Text": "[Uncork the flask] \"See this? My death. Bottled in Drezen. You'll have to go through the bottle.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.open",
+                "trickster.lastcall.pillar.bottle"
+              ],
+              "Requires": [
+                "trickster.lastcall.primed.bottle"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Hold the flask to the wound] \"Last time you drank from me, you tasted of moonshine. Drink up.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.open",
+                "trickster.lastcall.pillar.bottle",
+                "trickster.lastcall.cost.late",
+                "trickster.lastcall.joke.funeral"
+              ],
+              "Requires": [
+                "lastcall.vessel"
+              ],
+              "Forbids": [
+                "trickster.lastcall.primed.bottle"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Count your creditors] \"I owe too many people to die tonight. Terrible for my credit.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.open"
+              ],
+              "Requires": [
+                "lastcall.creditors_open"
+              ],
+              "Forbids": [
+                "lastcall.vessel"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Put it away] Not yet.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "lastcall.possible"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "trickster.lastcall.open"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The Wound waits. So does everyone you owe.{/n}",
+      "EntryMythic": "PlayerIsTrickster"
+    },
+    {
+      "Id": "trickster.lastcall.last_joke",
+      "Title": "The last joke",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"That's everyone. Last call.\"",
+      "Nodes": [
+        {
+          "Id": "wound",
+          "Speaker": "Narrator",
+          "Text": "{n}The rift howls. The violet fire leans toward you as it always has, the way a hound leans toward its master's scent, and finds on you nothing it can take: a death that is already in a bottle, or a life that is already spoken for by too many people who want paying first. The Worldwound hesitates.{/n}",
+          "Choices": [
+            {
+              "Text": "[Tell the Wound it's too late] \"Sorry. My death's already been served. Try the flask.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.taken",
+                "trickster.lastcall.cost.bottled"
+              ],
+              "Requires": [
+                "trickster.lastcall.pillar.bottle"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell the Wound to take a number] \"Get in line. Half the Abyss has a claim on me, and they all want paying first.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.taken",
+                "trickster.lastcall.cost.creditors_due"
+              ],
+              "Requires": [
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the cork in] \"If the world needs me in the Wound, fine. It'll have to give me back after.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.taken",
+                "trickster.lastcall.heroic",
+                "trickster.lastcall.cost.bottled",
+                "trickster.lastcall.cost.mortal"
+              ],
+              "Requires": [
+                "trickster.lastcall.pillar.bottle"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Not yet] Not yet.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "trickster.lastcall.last_joke.areelu"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The Wound waits. So does everyone you owe.{/n}"
+    },
+    {
+      "Id": "trickster.lastcall.last_joke.areelu",
+      "Title": "The last joke",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"That's everyone. Last call.\"",
+      "Nodes": [
+        {
+          "Id": "wound",
+          "Speaker": "Narrator",
+          "Text": "{n}The rift howls. The violet fire leans toward you as it always has, the way a hound leans toward its master's scent, and finds on you nothing it can take: a death that is already in a bottle, or a life that is already spoken for by too many people who want paying first. The Worldwound hesitates.{/n}",
+          "Choices": [
+            {
+              "Text": "[Tell the Wound it's too late] \"Sorry. My death's already been served. Try the flask.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.taken",
+                "trickster.lastcall.cost.bottled"
+              ],
+              "Requires": [
+                "trickster.lastcall.pillar.bottle"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell the Wound to take a number] \"Get in line. Half the Abyss has a claim on me, and they all want paying first.\"",
+              "Next": null,
+              "Set": [
+                "trickster.lastcall.taken",
+                "trickster.lastcall.cost.creditors_due"
+              ],
+              "Requires": [
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Not yet] Not yet.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "trickster.lastcall.last_joke"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The Wound waits. So does everyone you owe.{/n}"
+    },
+    {
+      "Id": "trickster.lastcall.page.interrupted",
+      "Title": "The Report, Interrupted",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "The report should have ended there. I had written the ending, I had underlined it, and I had begun on the lessons. Then the Commander walked out of the rift with a hip flask in one hand, patting at a wound that should have been the end of {mf|him|her}, and I was obliged to take up my pen again. Understand that I do this under protest. An experiment that refuses to conclude is not a success; it is an embarrassment with good timing.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "I had already been interrupted once. The Commander asked for a better ending, and I obliged. I did not expect to be asked twice, and certainly not by the ending itself.",
+              "Requires": [
+                "trickster.rewrote"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The vessel was mine. I made it for a purpose I will not set down here. {mf|He|She} stole it from my laboratory to brew moonshine, and then used it to hold the one thing I had spent the whole war arranging to collect. I would admire it, if it had been done to anyone else.",
+              "Requires": [
+                "trickster.lastcall.pillar.bottle"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "It was not the vessel that saved {mf|him|her}. It was arithmetic. The Wound came for its claim and found the claim already mortgaged, to powers who would rather be paid than mourn. Nothing, it turns out, is harder to kill than a debtor with enough creditors.",
+              "Requires": [
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Shyka still waits, as Shyka always does. The Commander who walked out of the rift was the Commander who walked in: not a chorus, not a vessel for other versions of {mf|himself|herself}, one person, badly behaved. The death Shyka meant to share was in a bottle, and Shyka does not drink.",
+              "Requires": [
+                "ending.trickster_allplanes_fw"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "I was the punchline, as {mf|he|she} promised. And the slow death I had arranged for {mf|him|her}, the wound that would have killed {mf|him|her} the moment the rift stayed open, went instead into a flask. I have been told this is poetic. I have been told this by the Commander.",
+              "Requires": [
+                "areelu.sacrifice_trickster"
+              ],
+              "Forbids": [
+                "sacrifice"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The world buried an empty coffin. There were speeches. The Commander attended several of them, disguised, and was once asked to leave for laughing.",
+              "Requires": [
+                "lastcall.dead_on_record"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.h1"
+      ],
+      "Forbids": [
+        "trickster.failed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "fb42f8bd123bf1f40a448f6dbc66cbbe"
+    },
+    {
+      "Id": "trickster.lastcall.page.heroic",
+      "Title": "The Report, Interrupted",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "The sacrifice was real. I have checked. The Wound closed around the Commander of the Fifth Crusade and took {mf|him|her}, and I recorded it, correctly, as the end. Three days later a sentry found a crystal flask at the edge of the scorched earth where the rift had been, the only thing the Wound did not keep, and brought it back to Drezen because it was warm.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "It was opened at the King's table, under a toast. Thaberdine swore afterwards that it was the luckiest round he ever called, and the church of Cayden Cailean has not stopped repeating it.",
+              "Requires": [
+                "trickster.lastcall.king_blessed",
+                "fool_king.available"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "It was opened on the cathedral steps, before witnesses, by someone who did not know what it was. I am told they have not recovered.",
+              "Requires": [],
+              "Forbids": [
+                "trickster.lastcall.king_blessed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The first words out of it were \"Sorry I'm late.\" I will not pretend I did not hear them.",
+              "Requires": [
+                "trickster.lastcall.joke.late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The first words out of it were \"Did I miss anything?\" Yes. You missed your own funeral. I attended, for professional reasons.",
+              "Requires": [
+                "trickster.lastcall.joke.missed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The first words out of it were \"Whose funeral?\" I have no answer that would satisfy the question.",
+              "Requires": [
+                "trickster.lastcall.joke.funeral"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The flask held a soul, not a power. What the Abyss and I gave the Commander went into the Wound and stayed there. {mf|He|She} came back mortal, and complained about it at length.",
+              "Requires": [
+                "trickster.lastcall.cost.mortal"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.h2"
+      ],
+      "Forbids": [
+        "trickster.failed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "8f234537d0e0e504ba7fa281f02a3601"
+    },
+    {
+      "Id": "trickster.lastcall.page.bottle",
+      "Title": "The Bottle",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "The Commander carried {mf|his|her} own death in a hip flask for the rest of {mf|his|her} life. It did not slosh. It did not grow lighter. On cold nights it was warm.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "The King's round was paid in full, and the court drank to the flask for a week on the crusade's coin. The treasurers of Mendev entered it as \"morale\".",
+              "Requires": [
+                "trickster.lastcall.cost.royal_round"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The King's blessing went on the Commander's tab. Thaberdine's tab has no end and no ledger, and he mentions it every time they meet.",
+              "Requires": [
+                "trickster.lastcall.cost.royal_tab"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "It had been filled alone, in a tent, with nobody to laugh. The Commander was short of breath for a week afterwards and would not say why.",
+              "Requires": [
+                "trickster.lastcall.cost.bled_alone"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "It had been filled late, at the rift itself, and the crystal still carries a hairline crack from it. The Commander keeps a thumb over the crack when {mf|he|she} is nervous.",
+              "Requires": [
+                "trickster.lastcall.cost.late"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Whoever uncorks it, collects. The Commander has made sure a great many people know that, and made just as sure nobody knows where it is kept.",
+              "Requires": [],
+              "Forbids": [
+                "lastcall.h2"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "trickster.lastcall.pillar.bottle"
+      ],
+      "Forbids": [
+        "trickster.failed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "fb42f8bd123bf1f40a448f6dbc66cbbe"
+    },
+    {
+      "Id": "trickster.lastcall.page.collectors",
+      "Title": "The Collectors",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "A debtor who cheats death has not cheated his creditors, and the Commander's were patient, numerous, and in several cases not strictly alive. They came in the first year after Threshold, one after another, and I recorded their visits with more satisfaction than is proper in a scholar.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Socothbenoth came first, dressed for an occasion to which nobody else had been invited. He wanted what he was owed: the one conversation he had not been allowed to overhear. The Commander told him the rift in the dark of a wardrobe, between the coats, from the first joke to the last, and the Silken Sin listened without interrupting once, which those who know him say has never happened before. He left humming.",
+              "Requires": [
+                "lastcall.debt.socoth"
+              ],
+              "Forbids": [
+                "socot.gone",
+                "council.fought_nocta_allied"
+              ],
+              "AnyGroups": [
+                [
+                  "anevia.lastcall.called",
+                  "minagho_chivarro.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "Socothbenoth never came to collect. Whatever had become of the Silken Sin had happened before he could, and the wardrobes of Drezen were only wardrobes again. More than one person checked them every night for a year anyway.",
+              "Requires": [
+                "lastcall.debt.socoth"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "socot.gone",
+                  "council.fought_nocta_allied"
+                ]
+              ]
+            },
+            {
+              "Text": "Baphomet sent no one. The Lord of the Minotaurs does not send; he waits for his seal to bring him what it marks. It brought him nothing. A seal needs a body to own, and the one he had been promised was either in an empty grave or on its feet with its death corked in a flask, where no seal reaches. It is said that the Prince of Beasts does not forgive a debtor who cheats him on a point of his own wording. It is also said that he has begun to reread his contracts.",
+              "Requires": [
+                "lastcall.debt.baphomet"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "minagho_chivarro.lastcall.called",
+                  "hepzamirah.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "The Lady in Shadow did not come in person; she seldom does. A note came instead, unsigned, smelling of night-blooming flowers, and it said only that she had kept the Commander alive at the rift as a matter of household economy, and that she expected a better return on the investment than gratitude.",
+              "Requires": [
+                "lastcall.debt.nocticula"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "nocticula.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "Ramisa Shed-Skin came to collect art. She had bought the only seat at the last night of the war and had watched all of it through a mirror in her market, and now she wanted the story set down in ink, with herself in the dedication. She got the story. She asked for the flask as well, prettily, and then again with more of her arms, and did not get it.",
+              "Requires": [
+                "lastcall.debt.ramisa"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "nurah.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "Herrax called in her favour with interest, and worked the interest out at the table where the Commander could watch the figure grow. Nobody who was present will say what the favour was. Chivarro, who was present, said afterwards that it was cheap, and would not say for whom.",
+              "Requires": [
+                "lastcall.debt.herrax"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "minagho_chivarro.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "The church of Abadar collected to the letter. The cauldron had been leased returnable at the end of the world, and at Threshold the world ended in every sense the lease required; it went back as it had come, and the lien attached itself to whatever the Wound became. Before the year was out, a counting-house of the First Vault stood where the rift had been, and its clerks asked every traveller what they were bringing in and what they meant to take out.",
+              "Requires": [
+                "lastcall.debt.abadar"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "arsinoe.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "Darek Sunhammer sent his apprentice, as he always did, with the bill carried in his head rather than on paper, where a jeweller keeps the things he does not want read. One favour, owed. The Commander settled it across a table in Drezen in terms neither side ever repeated, and the wedding guests still in Sunhammer's keeping went home the same week.",
+              "Requires": [
+                "lastcall.debt.sunhammer"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "kiana.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "Mutasafen collected first, as Hepzamirah had promised he would. The maker of her body wanted his price for it, whatever the Commander had bargained with, and he came for it himself, since his revival system spares him the usual caution. Hepzamirah received him. What was said between the body-maker and his tenant is not recorded; the Commander was sent out of the room, and was told afterwards that {mf|he|she} had been invaluable.",
+              "Requires": [
+                "lastcall.debt.mutasafen"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "hepzamirah.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "The spirits of the Wintersun wood took their portion in the spring, when the snow went off the barrows. Soana had given them blood once already and would not give them the Commander's. She bound them again with her own hands, told the Commander so without a word of gratitude, and went back to her graves.",
+              "Requires": [
+                "lastcall.debt.wintersun"
+              ],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "soana.lastcall.called"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "trickster.lastcall.pillar.creditors"
+      ],
+      "Forbids": [
+        "trickster.failed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "EpilogueSequence": "PlayerFinalChoice",
+      "EpilogueAfter": "fb42f8bd123bf1f40a448f6dbc66cbbe"
+    },
+    {
+      "Id": "anevia.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the wardrobe] \"Silken Sin, you're still listening at her door. Earn it. Keep me breathing.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}You say it to the fire as though the fire were a crowded room. Somewhere a very long way off, in a house in Drezen, a wardrobe door creaks: someone in silk sleeves has stopped listening at one door and started listening to you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "anevia.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Forbids": [
+                "socot.gone",
+                "council.fought_nocta_allied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "anevia.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [
+                "anevia.trickster.cost.wrong_door"
+              ],
+              "Forbids": [
+                "socot.gone",
+                "council.fought_nocta_allied",
+                "anevia.trickster.cost.socoth_listening"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "anevia.lastcall.called"
+              ],
+              "Requires": [
+                "anevia.trickster.cost.stolen_door"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.socoth_listening",
+                "anevia.trickster.cost.wrong_door"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "anevia.lastcall.called"
+              ],
+              "Requires": [
+                "socot.gone"
+              ],
+              "Forbids": [
+                "anevia.trickster.cost.stolen_door"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "anevia.lastcall.called"
+              ],
+              "Requires": [
+                "council.fought_nocta_allied"
+              ],
+              "Forbids": [
+                "socot.gone",
+                "anevia.trickster.cost.stolen_door"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "anevia.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "anevia.committed",
+          "committed"
+        ],
+        [
+          "anevia.trickster.cost.socoth_listening",
+          "anevia.trickster.cost.stolen_door",
+          "anevia.trickster.cost.wrong_door"
+        ]
+      ]
+    },
+    {
+      "Id": "irabeth.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the standing order] \"Knight-Captain, you're still under my orders. Nobody's dismissed tonight. Including me.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}You say it the way you have said a hundred orders on a hundred walls. Somewhere behind you, in Drezen, a knight who cannot put down her sword stands up without knowing why.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "irabeth.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "irabeth.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "committed",
+          "irabeth.committed"
+        ],
+        [
+          "irabeth.trickster.cost.under_orders"
+        ]
+      ]
+    },
+    {
+      "Id": "arsinoe.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Return the cauldron] \"Returnable at the end of the world. This is the end of the world. Here.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Somewhere under the roar, you swear you hear an abacus. The First Vault has a claim on this night, and a creditor with a claim does not let the debtor burn before the account is closed.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "arsinoe.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "arsinoe.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "arsinoe.committed"
+        ],
+        [
+          "arsinoe.trickster.cost.collateral_still",
+          "arsinoe.trickster.cost.collateral_word",
+          "arsinoe.trickster.cost.collateral_worldwound",
+          "arsinoe.trickster.cost.lien"
+        ]
+      ]
+    },
+    {
+      "Id": "jerribeth.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the lease] \"Rent's due, tenant. A house doesn't fall down while you're living in it.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Something in the back of your skull laughs, low and delighted, and settles more comfortably into its lodgings.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "jerribeth.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "jerribeth.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "jerribeth.committed"
+        ],
+        [
+          "jerribeth.trickster.cost.forfeit",
+          "jerribeth.trickster.cost.host",
+          "jerribeth.trickster.cost.lodger",
+          "jerribeth.trickster.cost.tenant",
+          "jerribeth.trickster.cost.toast"
+        ]
+      ]
+    },
+    {
+      "Id": "konomi.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in Konomi's terms] \"Name your price now, Lady Konomi. Tomorrow you might be collecting from a corpse.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Somewhere in Drezen a diplomat sets down her pen mid-sentence, and smiles the way she smiles before she wins.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "konomi.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "konomi.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "konomi.committed"
+        ],
+        [
+          "konomi.trickster.cost.consult_fee",
+          "konomi.trickster.cost.debt_owed"
+        ]
+      ]
+    },
+    {
+      "Id": "nocticula.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the Queen's favour] \"Your Majesty, you're owed a favour. Dead debtors are terrible payers.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}The dark at the edge of the firelight thickens and leans in, attentive and amused, and something that is not quite a shadow puts a hand on your shoulder and does not let go.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "nocticula.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "noct.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "nocticula.lastcall.called"
+              ],
+              "Requires": [
+                "noct.dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "nocticula.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "noct.complete"
+        ],
+        [
+          "nocticula.trickster.cost.shade_paid",
+          "nocticula.trickster.cost.shade_refused"
+        ]
+      ]
+    },
+    {
+      "Id": "vellexia.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the furniture bill] \"Vellexia, I owe you for the furniture. Keep me alive and I'll pay in instalments.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Across a great distance, and a great many mirrors, a lady who is never bored sits up and pays attention.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "vellexia.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "vellexia.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "vellexia.committed"
+        ],
+        [
+          "vellexia.trickster.cost.predicted",
+          "vellexia.trickster.cost.trick_kept",
+          "vellexia.trickster.returned"
+        ]
+      ]
+    },
+    {
+      "Id": "nurah.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the custom order] \"Madam Shed-Skin, you wanted art. I'm about to make some. Front row.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}A mirror in a slave market somewhere in the Abyss clears, like breath wiped from glass, and something with a great many arms settles in to watch.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "nurah.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "nurah.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "nurah.complete"
+        ],
+        [
+          "nurah.trickster.cost.bill_in_your_name",
+          "nurah.trickster.cost.ramisa_audience",
+          "nurah.trickster.cost.ramisa_fee"
+        ]
+      ]
+    },
+    {
+      "Id": "kiana.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the courier's account] \"Sunhammer, you're owed. Collect now, while I've a pulse to collect from.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Far off, in a shop that smells of solder, a dwarf lays down a loupe and makes a note in the one ledger he keeps in his head.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "kiana.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "kiana.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "kiana.committed"
+        ],
+        [
+          "kiana.trickster.cost.courier_marked",
+          "kiana.trickster.cost.guests_robbed",
+          "kiana.trickster.cost.sunhammer_favour"
+        ]
+      ]
+    },
+    {
+      "Id": "minagho_chivarro.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the seal and the house special] \"Lord of Beasts, your seal's on my palm. Herrax, your favour. Collect from me alive, or not at all.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Your left palm burns, a hot line where a seal was pressed. Somewhere very far away something enormous and horned turns its head. Somewhere much nearer, a demon who keeps a house of pleasures reaches for an abacus.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "minagho_chivarro.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "minachiv.complete"
+        ],
+        [
+          "minagho_chivarro.trickster.cost.baphomet_branded",
+          "minagho_chivarro.trickster.cost.baphomet_debtor",
+          "minagho_chivarro.trickster.cost.baphomet_knelt",
+          "minagho_chivarro.trickster.cost.baphomet_terms",
+          "minagho_chivarro.trickster.cost.herrax_favor",
+          "minagho_chivarro.trickster.cost.socoth_owed"
+        ]
+      ]
+    },
+    {
+      "Id": "soana.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the spirits' portion] \"Wintersun spirits, you took a portion. The rest is mine to give. Later.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}You smell pine and cold earth in the middle of the fire. The spirits of a wood a very long way off have a claim on part of you, and they are not in the habit of letting a debt walk into a furnace.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "soana.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "soana.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "soana.committed"
+        ],
+        [
+          "soana.trickster.cost.blood_given",
+          "soana.trickster.cost.guardian_paid",
+          "soana.trickster.cost.knot_bearer",
+          "soana.trickster.cost.leash_held"
+        ]
+      ]
+    },
+    {
+      "Id": "aranka.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the second verse] \"Aranka! Second verse! Loud enough for the Wound to learn the words!\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Nothing answers but the fire. But you would swear, for the rest of your life, that under the roar someone was singing, off-key and with great emotion, and that the rift paused to listen.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "aranka.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "aranka.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "aranka.extension_kept"
+        ],
+        [
+          "aranka.trickster.cost.announced",
+          "aranka.trickster.cost.credited",
+          "aranka.trickster.cost.denied"
+        ]
+      ]
+    },
+    {
+      "Id": "gesmerha.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the commission] \"Carver, it's paid for. Finish it. I'd like to see it before they bury me.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Somewhere a chisel stops mid-stroke over a block of stone with a coin driven into it. The ancestors of a Sarkorian woodshaper do not let a paid commission go unfinished.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "gesmerha.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "gesmerha.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "gesmerha.committed"
+        ],
+        [
+          "gesmerha.trickster.cost.advance_paid",
+          "gesmerha.trickster.cost.ancestor_debt"
+        ]
+      ]
+    },
+    {
+      "Id": "seelah.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the thief's promise] \"Seelah, you swore you'd steal it back. Now's the time. Pick my pocket.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}You feel it before you understand it: a light touch at your coat, a thief's apology, from a woman who is not here.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "seelah.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "seelah.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "seelah.committed"
+        ],
+        [
+          "seelah.trickster.cost.holds_her_death",
+          "seelah.trickster.cost.keeps_it",
+          "seelah.trickster.cost.robbed_back"
+        ]
+      ]
+    },
+    {
+      "Id": "targona.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call on Lariel's light] \"Lariel, whatever of you is left in me: one more quiet miracle.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Something warm and patient moves under your ribs: a light that belongs to someone's brother, lent to you in an infirmary and never quite given back.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "targona.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Break your promise to Targona] \"Forgive me. I need it.\"",
+              "Next": null,
+              "Set": [
+                "targona.lastcall.called"
+              ],
+              "Requires": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep your promise] Leave the light where it is.",
+              "Next": null,
+              "Set": [],
+              "Requires": [
+                "targona.trickster.cost.light_sealed"
+              ],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "targona.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "targona.committed"
+        ],
+        [
+          "targona.trickster.cost.light_sealed",
+          "targona.trickster.cost.raised_openly",
+          "targona.trickster.cost.raised_the_hard_way",
+          "targona.trickster.cost.she_told_heaven"
+        ]
+      ]
+    },
+    {
+      "Id": "dorgelinda.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Settle the open line] \"Quartermaster: the account marked 'used, quietly'. I'm ready to explain.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Somewhere in the stores at Drezen a quartermaster looks up from her ledger at one particular line, and does not rule it off.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "dorgelinda.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "dorgelinda.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "dorgelinda.committed"
+        ],
+        [
+          "dorgelinda.trickster.cost.boots_owed",
+          "dorgelinda.trickster.cost.carts_signed",
+          "dorgelinda.trickster.cost.line_open"
+        ]
+      ]
+    },
+    {
+      "Id": "hepzamirah.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the rent] \"Rent's due: a front-row seat when you kill your father. I'll need to be alive for it.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}A long way off, in a body grown for her in a laboratory she will not name, Baphomet's favourite daughter laughs, and the sound carries.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "hepzamirah.lastcall.called",
+                "trickster.lastcall.pillar.creditors"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "hepzamirah.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "hepzamirah.committed"
+        ],
+        [
+          "hepzamirah.trickster.cost.baphomet_grudge",
+          "hepzamirah.trickster.cost.blood_sample",
+          "hepzamirah.trickster.cost.favour_owed",
+          "hepzamirah.trickster.cost.lab_funded",
+          "hepzamirah.trickster.cost.mutasafen_grudge",
+          "hepzamirah.trickster.cost.vial_forged",
+          "hepzamirah.trickster.cost.vial_paid"
+        ]
+      ]
+    },
+    {
+      "Id": "eritrice.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Move a last motion] \"I move that the Commander is not dead. All in favour?\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Somewhere a long way from the fire, a quill scratches across a page of minutes, and a voice that is used to being obeyed says: \"Seconded.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "eritrice.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "eritrice.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "eritrice.committed"
+        ],
+        [
+          "eritrice.trickster.cost.apologised",
+          "eritrice.trickster.cost.censured",
+          "eritrice.trickster.cost.grudge_on_agenda",
+          "eritrice.trickster.cost.on_the_record"
+        ]
+      ]
+    },
+    {
+      "Id": "areelu.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call in the wager] \"Whoever burns at Threshold pays up. Watch closely, Areelu. You'll want notes.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Across the rift, Areelu Vorlesh folds her one hand over the wrist that has none, and watches you the way she has watched you since Iz: as a result she has not finished recording.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "areelu.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "areelu.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "areelu.committed"
+        ],
+        [
+          "areelu.trickster.cost.bet_with_the_witch",
+          "areelu.trickster.wager_struck"
+        ]
+      ]
+    },
+    {
+      "Id": "chadali.lastcall.call",
+      "Title": "Last orders",
+      "Owner": "Commander",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "[Call it in the air] \"Chadali, you borrowed my luck. I need it back. Now, please.\"",
+      "Nodes": [
+        {
+          "Id": "call",
+          "Speaker": "Narrator",
+          "Text": "{n}Somewhere a coin that has been standing on its edge for a very long time begins, very slowly, to tip.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "chadali.lastcall.called"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "trickster.ever",
+        "trickster.lastcall.open"
+      ],
+      "Forbids": [
+        "trickster.lastcall.taken",
+        "trickster.failed",
+        "chadali.lastcall.called"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "lastcall",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "294126e3264796e488ce19bfb1851355",
+        "16994192cfa484744bd10852b8dc806f",
+        "b6bc1d5fb28e115499b8bcbbc0d541f9",
+        "3d3357c0474ce5a4bb13d68730faecb8",
+        "e77c405d6dde5804bb1f873f971958b8"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}The thread pulls taut, and holds.{/n}",
+      "RequiresAnyGroups": [
+        [
+          "chadali.committed"
+        ],
+        [
+          "chadali.trickster.cost.luck_lent",
+          "chadali.trickster.cost.luck_owed",
+          "chadali.trickster.cost.needle_owed"
+        ]
+      ]
+    },
+    {
+      "Id": "trickster.lastcall.page.last_word",
+      "Title": "The Last Word",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "That concludes my report on the experiment called the Commander. It did not end as designed. It did not end at all, which I am told is the point. I have spent a very long time building a death for {mf|him|her}, and I would like it noted, for the benefit of whoever reads this after me, that the death is still in excellent condition. It is simply in the wrong place. Somebody will open it one day. I intend to be there.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "I have been asked to rewrite this ending twice now. I am not doing it a third time.",
+              "Requires": [
+                "trickster.rewrote"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Fool King reigned over the merry city of Drezen for many years, and hosted one festival after another. People said that anyone who raised a glass to His Majesty's health had luck. The Commander raised a great many glasses, and would tell you that proves it.",
+              "Requires": [
+                "fool_king.available"
+              ],
+              "Forbids": [
+                "fool_king.page_seen"
+              ],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active"
+      ],
+      "Forbids": [
+        "trickster.failed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall"
     }
   ],
   "Etudes": {
@@ -220304,13 +224332,14 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
-    "trickster.was": "c820b3788f967e14f8bde3c17447157f",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
     "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
+    "ending.wound_closed": "10cf0442f31a4796af8b28281f35e944",
+    "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "woljif.kicked_out": "2046d985bbc28a04188efa5fb06b6004",
     "woljif.dead": "2df11d659d8f57846a6a3f16492adbb8",
     "wenduag.killed": "85ee36dae8f3317448fa5b950543b3ad",
@@ -220360,7 +224389,6 @@
     "fool_king.crowned": "cc76b7abcda591f438d0f24972dafddc",
     "council.fought_nocta_allied": "f4004d2687004c646bbe3a047d15f78f",
     "council.fought": "b80a81e97e26167489c439caf34888f8",
-    "ending.wound_closed": "10cf0442f31a4796af8b28281f35e944",
     "ember.killed_in_kenabres": "d21eb4b5e2164aeaa32e48234701c653",
     "dorgelinda.present": "c6be8cc816ed47e6929735f877abb229",
     "daeran.kicked_out": "3944d299c18b7174bb2d6820aa5dc336",
@@ -221147,6 +225175,516 @@
           "Returned": "chadali.trickster.returned"
         }
       }
+    },
+    "lastcall": {
+      "Title": "The Trickster's Ledger",
+      "Description": "Every tab I've run, every favour I owe, every creditor who'd rather I stayed alive long enough to pay. Somebody ought to keep the accounts. I suppose it had better be me, since nobody else would believe them.",
+      "Objective": "Settle the tab before the last joke",
+      "Guidance": "Keep the vessel from Areelu's laboratory. In Chapter 5, let it drink from your wound at the Fool King's table, or alone if there is no King. At Threshold, before the final choice, call last orders.",
+      "StartedFlag": "trickster.lastcall.started",
+      "ClosedFlag": "trickster.lastcall.closed",
+      "CommittedFlag": "trickster.lastcall.taken",
+      "UnavailableFlags": [
+        "trickster.failed"
+      ],
+      "FailureFlags": [],
+      "JournalEntries": [
+        {
+          "Id": "debt.socoth",
+          "Title": "Socothbenoth: a door to listen at",
+          "Description": "Paid for a closet with a standing right to listen, or a story owed instead. The Silken Sin collects. He prefers to collect during something private.",
+          "OpenWhen": [
+            [
+              "anevia.trickster.cost.socoth_listening"
+            ],
+            [
+              "anevia.trickster.cost.wrong_door"
+            ],
+            [
+              "minagho_chivarro.trickster.cost.socoth_owed"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "anevia.lastcall.called"
+            ],
+            [
+              "minagho_chivarro.lastcall.called"
+            ],
+            [
+              "socot.gone"
+            ],
+            [
+              "council.fought_nocta_allied"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.baphomet",
+          "Title": "Baphomet: a seal on my palm",
+          "Description": "His seals, he says, simply mark their bodies as his. Mine is marked. He will want the body.",
+          "OpenWhen": [
+            [
+              "minagho_chivarro.trickster.cost.baphomet_debtor"
+            ],
+            [
+              "minagho_chivarro.trickster.cost.baphomet_terms"
+            ],
+            [
+              "minagho_chivarro.trickster.cost.baphomet_knelt"
+            ],
+            [
+              "minagho_chivarro.trickster.cost.baphomet_branded"
+            ],
+            [
+              "hepzamirah.trickster.cost.baphomet_grudge"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "minagho_chivarro.lastcall.called"
+            ],
+            [
+              "hepzamirah.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.nocticula",
+          "Title": "The Lady in Shadow: an answer owed",
+          "Description": "A favour of her choosing, or a stalemate of kept secrets. Either way she has an interest in my continued breathing, and Nocticula is a patient creditor.",
+          "OpenWhen": [
+            [
+              "nocticula.trickster.cost.shade_paid"
+            ],
+            [
+              "nocticula.trickster.cost.shade_refused"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "nocticula.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.ramisa",
+          "Title": "Ramisa Shed-Skin: the only seat",
+          "Description": "The marilith keeps a duplicate of every bill with my name on it, and I sold her the only seat at the last night of the war. She will want her performance.",
+          "OpenWhen": [
+            [
+              "nurah.trickster.cost.ramisa_fee"
+            ],
+            [
+              "nurah.trickster.cost.ramisa_audience"
+            ],
+            [
+              "nurah.trickster.cost.bill_in_your_name"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "nurah.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.herrax",
+          "Title": "Herrax: the house special",
+          "Description": "A favour on account at the house of Herrax, for a demon returned to me. Interest compounds. So does Herrax.",
+          "OpenWhen": [
+            [
+              "minagho_chivarro.trickster.cost.herrax_favor"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "minagho_chivarro.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.abadar",
+          "Title": "The First Vault: a cauldron on lease",
+          "Description": "Leased from the church of Abadar, returnable at the end of the world. A lien stands. The Master of the First Vault reads the small print so I don't have to.",
+          "OpenWhen": [
+            [
+              "arsinoe.trickster.cost.lien"
+            ],
+            [
+              "arsinoe.trickster.cost.collateral_worldwound"
+            ],
+            [
+              "arsinoe.trickster.cost.collateral_still"
+            ],
+            [
+              "arsinoe.trickster.cost.collateral_word"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "arsinoe.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.sunhammer",
+          "Title": "Darek Sunhammer: a favour and some stones",
+          "Description": "The jeweller who made the wedding stones is owed a favour, or a grudge, and still keeps what he keeps. A dwarf remembers a bill.",
+          "OpenWhen": [
+            [
+              "kiana.trickster.cost.sunhammer_favour"
+            ],
+            [
+              "kiana.trickster.cost.guests_robbed"
+            ],
+            [
+              "kiana.trickster.cost.courier_marked"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "kiana.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.mutasafen",
+          "Title": "Mutasafen: rent on a body",
+          "Description": "He grew her a body. Somebody is paying for it, in blood, in coin or in secrets, and Mutasafen always collects first.",
+          "OpenWhen": [
+            [
+              "hepzamirah.trickster.cost.mutasafen_grudge"
+            ],
+            [
+              "hepzamirah.trickster.cost.lab_funded"
+            ],
+            [
+              "hepzamirah.trickster.cost.blood_sample"
+            ],
+            [
+              "hepzamirah.trickster.cost.vial_paid"
+            ],
+            [
+              "hepzamirah.trickster.cost.vial_forged"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "hepzamirah.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "debt.wintersun",
+          "Title": "The Wintersun spirits: a portion",
+          "Description": "The spirits of Soana's wood took a portion of me when the knot was tied. The rest is mine to give. They know where to find me.",
+          "OpenWhen": [
+            [
+              "soana.trickster.cost.blood_given"
+            ],
+            [
+              "soana.trickster.cost.guardian_paid"
+            ],
+            [
+              "soana.trickster.cost.knot_bearer"
+            ],
+            [
+              "soana.trickster.cost.leash_held"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "soana.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.irabeth",
+          "Title": "Irabeth: an order not rescinded",
+          "Description": "The Knight-Captain is still under my orders. Her discharge is unsigned. I will need to be alive to sign it.",
+          "OpenWhen": [
+            [
+              "irabeth.trickster.cost.under_orders"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "irabeth.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.jerribeth",
+          "Title": "Jerribeth: rent due on the first",
+          "Description": "I let a succubus a room. The rent is due on the first of the month. She will collect it from me, or from my estate, and she prefers me.",
+          "OpenWhen": [
+            [
+              "jerribeth.trickster.cost.tenant"
+            ],
+            [
+              "jerribeth.trickster.cost.lodger"
+            ],
+            [
+              "jerribeth.trickster.cost.host"
+            ],
+            [
+              "jerribeth.trickster.cost.toast"
+            ],
+            [
+              "jerribeth.trickster.cost.forfeit"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "jerribeth.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.konomi",
+          "Title": "Konomi: terms not yet named",
+          "Description": "The attaché of Nerosyan has terms, and has not said what they are. That is how diplomats keep you alive: by making you curious.",
+          "OpenWhen": [
+            [
+              "konomi.trickster.cost.debt_owed"
+            ],
+            [
+              "konomi.trickster.cost.consult_fee"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "konomi.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.vellexia",
+          "Title": "Vellexia: the furniture",
+          "Description": "I owe Lady Vellexia for a season she spent on my wall. She keeps a very precise account of things nobody else would think to bill.",
+          "OpenWhen": [
+            [
+              "vellexia.trickster.returned"
+            ],
+            [
+              "vellexia.trickster.cost.predicted"
+            ],
+            [
+              "vellexia.trickster.cost.trick_kept"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "vellexia.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.aranka",
+          "Title": "Aranka: a verse unsung",
+          "Description": "Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you.",
+          "OpenWhen": [
+            [
+              "aranka.trickster.cost.credited"
+            ],
+            [
+              "aranka.trickster.cost.announced"
+            ],
+            [
+              "aranka.trickster.cost.denied"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "aranka.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.gesmerha",
+          "Title": "Gesmerha: a commission unfinished",
+          "Description": "Gesmerha's ancestors let her come back because there was paid work on her bench. The statue isn't finished. Neither, apparently, am I.",
+          "OpenWhen": [
+            [
+              "gesmerha.trickster.cost.advance_paid"
+            ],
+            [
+              "gesmerha.trickster.cost.ancestor_debt"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "gesmerha.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.seelah",
+          "Title": "Seelah: a coin to steal back",
+          "Description": "I took something from Seelah's purse at her bier that she didn't earn. She swore she'd steal it back. A thief who hasn't collected won't let you die.",
+          "OpenWhen": [
+            [
+              "seelah.trickster.cost.holds_her_death"
+            ],
+            [
+              "seelah.trickster.cost.keeps_it"
+            ],
+            [
+              "seelah.trickster.cost.robbed_back"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "seelah.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.dorgelinda",
+          "Title": "Dorgelinda: a line marked \"used, quietly\"",
+          "Description": "One line in the stores ledger is open in my name. Dorgelinda won't close an account while the debtor might still explain it.",
+          "OpenWhen": [
+            [
+              "dorgelinda.trickster.cost.line_open"
+            ],
+            [
+              "dorgelinda.trickster.cost.boots_owed"
+            ],
+            [
+              "dorgelinda.trickster.cost.carts_signed"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "dorgelinda.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.eritrice",
+          "Title": "Eritrice: business still on the agenda",
+          "Description": "The Trickster Council's minutes have my name in them, under a matter still open. Eritrice does not let a member die with business pending.",
+          "OpenWhen": [
+            [
+              "eritrice.trickster.cost.grudge_on_agenda"
+            ],
+            [
+              "eritrice.trickster.cost.on_the_record"
+            ],
+            [
+              "eritrice.trickster.cost.censured"
+            ],
+            [
+              "eritrice.trickster.cost.apologised"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "eritrice.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.areelu",
+          "Title": "Areelu: a wager on who burns",
+          "Description": "Whoever burns at Threshold pays. Areelu keeps better records than I do. I intend to be the one reading them afterwards.",
+          "OpenWhen": [
+            [
+              "areelu.trickster.cost.bet_with_the_witch"
+            ],
+            [
+              "areelu.trickster.wager_struck"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "areelu.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        },
+        {
+          "Id": "owed.chadali",
+          "Title": "Chadali: my luck, on loan",
+          "Description": "Chadali borrowed my luck, or I borrowed hers. The coin's still standing. Nobody collects from a dead man's luck.",
+          "OpenWhen": [
+            [
+              "chadali.trickster.cost.luck_lent"
+            ],
+            [
+              "chadali.trickster.cost.luck_owed"
+            ],
+            [
+              "chadali.trickster.cost.needle_owed"
+            ]
+          ],
+          "SettledWhen": [
+            [
+              "chadali.lastcall.called"
+            ],
+            [
+              "lastcall.active"
+            ]
+          ]
+        }
+      ]
     }
   },
   "CompletedQuests": {
@@ -221178,6 +225716,7 @@
     "chadali.called_babbling": "1e2f5008f7b4dc44abbf18f6d01baad7",
     "chadali.called_crazy": "debb9862514b9f344aa0c12b83503775",
     "chadali.pressed_on_essence": "c9e89c3d2d39ada4a85211f9be9733fd",
+    "lastcall.flask_taken": "dbf6695999d744747aeb2d4f20b21b50",
     "storyteller.asked_queen": "b9d78ba896d19b14aa6c371dda617979",
     "noct.acq.shamira_reported": "4913a0c32fe01474ba7b4c6dde7f45bc",
     "noct.acq.shamira_permission": "2c4b12325ecf0544cbff956b82f4420b",
@@ -221494,6 +226033,9 @@
     "vellexia.bungler_explained": [
       "e3f0b327f22b2734e9fbce52b150cded"
     ],
+    "trickster.rewrote": [
+      "7fbdff975b455454cbaa97542862cf71"
+    ],
     "noct.threshold_met": [
       "7d07492b12cf5bd4bb1c88113d5831ab"
     ],
@@ -221544,6 +226086,9 @@
     ],
     "fool_king.tablet_true": [
       "f67f8b4f08b37fa4caaf39d0d214afe3"
+    ],
+    "fool_king.page_seen": [
+      "a730d207401f1124993243ee41bcbe28"
     ],
     "finnean.objected": [
       "0f556aee8754497449c4a371281c13ef"
@@ -222763,6 +227308,265 @@
         "chadali.trickster.returned"
       ]
     ],
+    "lastcall.debt.socoth": [
+      [
+        "anevia.trickster.cost.socoth_listening"
+      ],
+      [
+        "anevia.trickster.cost.wrong_door"
+      ],
+      [
+        "minagho_chivarro.trickster.cost.socoth_owed"
+      ]
+    ],
+    "lastcall.debt.baphomet": [
+      [
+        "minagho_chivarro.trickster.cost.baphomet_debtor"
+      ],
+      [
+        "minagho_chivarro.trickster.cost.baphomet_terms"
+      ],
+      [
+        "minagho_chivarro.trickster.cost.baphomet_knelt"
+      ],
+      [
+        "minagho_chivarro.trickster.cost.baphomet_branded"
+      ],
+      [
+        "hepzamirah.trickster.cost.baphomet_grudge"
+      ]
+    ],
+    "lastcall.debt.nocticula": [
+      [
+        "nocticula.trickster.cost.shade_paid"
+      ],
+      [
+        "nocticula.trickster.cost.shade_refused"
+      ]
+    ],
+    "lastcall.debt.ramisa": [
+      [
+        "nurah.trickster.cost.ramisa_fee"
+      ],
+      [
+        "nurah.trickster.cost.ramisa_audience"
+      ],
+      [
+        "nurah.trickster.cost.bill_in_your_name"
+      ]
+    ],
+    "lastcall.debt.herrax": [
+      [
+        "minagho_chivarro.trickster.cost.herrax_favor"
+      ]
+    ],
+    "lastcall.debt.abadar": [
+      [
+        "arsinoe.trickster.cost.lien"
+      ],
+      [
+        "arsinoe.trickster.cost.collateral_worldwound"
+      ],
+      [
+        "arsinoe.trickster.cost.collateral_still"
+      ],
+      [
+        "arsinoe.trickster.cost.collateral_word"
+      ]
+    ],
+    "lastcall.debt.sunhammer": [
+      [
+        "kiana.trickster.cost.sunhammer_favour"
+      ],
+      [
+        "kiana.trickster.cost.guests_robbed"
+      ],
+      [
+        "kiana.trickster.cost.courier_marked"
+      ]
+    ],
+    "lastcall.debt.mutasafen": [
+      [
+        "hepzamirah.trickster.cost.mutasafen_grudge"
+      ],
+      [
+        "hepzamirah.trickster.cost.lab_funded"
+      ],
+      [
+        "hepzamirah.trickster.cost.blood_sample"
+      ],
+      [
+        "hepzamirah.trickster.cost.vial_paid"
+      ],
+      [
+        "hepzamirah.trickster.cost.vial_forged"
+      ]
+    ],
+    "lastcall.debt.wintersun": [
+      [
+        "soana.trickster.cost.blood_given"
+      ],
+      [
+        "soana.trickster.cost.guardian_paid"
+      ],
+      [
+        "soana.trickster.cost.knot_bearer"
+      ],
+      [
+        "soana.trickster.cost.leash_held"
+      ]
+    ],
+    "lastcall.vessel": [
+      [
+        "lastcall.flask_taken",
+        "lastcall.flask_held"
+      ]
+    ],
+    "lastcall.creditors_open": [
+      [
+        "lastcall.debt.socoth"
+      ],
+      [
+        "lastcall.debt.baphomet"
+      ],
+      [
+        "lastcall.debt.nocticula"
+      ],
+      [
+        "lastcall.debt.ramisa"
+      ],
+      [
+        "lastcall.debt.herrax"
+      ],
+      [
+        "lastcall.debt.abadar"
+      ],
+      [
+        "lastcall.debt.sunhammer"
+      ],
+      [
+        "lastcall.debt.mutasafen"
+      ],
+      [
+        "lastcall.debt.wintersun"
+      ]
+    ],
+    "lastcall.possible": [
+      [
+        "lastcall.vessel"
+      ],
+      [
+        "lastcall.debt.socoth"
+      ],
+      [
+        "lastcall.debt.baphomet"
+      ],
+      [
+        "lastcall.debt.nocticula"
+      ],
+      [
+        "lastcall.debt.ramisa"
+      ],
+      [
+        "lastcall.debt.herrax"
+      ],
+      [
+        "lastcall.debt.abadar"
+      ],
+      [
+        "lastcall.debt.sunhammer"
+      ],
+      [
+        "lastcall.debt.mutasafen"
+      ],
+      [
+        "lastcall.debt.wintersun"
+      ]
+    ],
+    "lastcall.h1": [
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_full"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_allplanes"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_allplanes_fw"
+      ]
+    ],
+    "lastcall.h2": [
+      [
+        "trickster.lastcall.taken",
+        "ending.wound_closed",
+        "sacrifice",
+        "trickster.lastcall.pillar.bottle"
+      ]
+    ],
+    "lastcall.active": [
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_full"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_allplanes"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_allplanes_fw"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.wound_closed",
+        "sacrifice",
+        "trickster.lastcall.pillar.bottle"
+      ]
+    ],
+    "lastcall.dead_on_record": [
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster",
+        "sacrifice"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_full",
+        "sacrifice"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_allplanes",
+        "sacrifice"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.trickster_allplanes_fw",
+        "sacrifice"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.wound_closed",
+        "sacrifice",
+        "trickster.lastcall.pillar.bottle"
+      ]
+    ],
+    "lastcall.tirabade.both_returned": [
+      [
+        "irabeth.trickster.returned",
+        "anevia.trickster.returned"
+      ]
+    ],
     "trickster.cheated_death": [
       [
         "sacrifice",
@@ -222800,6 +227604,34 @@
       ],
       [
         "vellexia.trickster.entry"
+      ]
+    ],
+    "trickster.commander_back": [
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster"
+      ],
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster_full"
+      ],
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster_allplanes"
+      ],
+      [
+        "sacrifice",
+        "trickster.ever",
+        "ending.trickster_allplanes_fw"
+      ],
+      [
+        "trickster.lastcall.taken",
+        "ending.wound_closed",
+        "sacrifice",
+        "trickster.lastcall.pillar.bottle"
       ]
     ],
     "targona.trickster.late_committed": [
@@ -223066,6 +227898,7 @@
   ],
   "InventoryItems": {
     "hepzamirah.pick_held": "3b8021631cd1b7d4eb749601047a7bda",
+    "lastcall.flask_held": "f0641f67501a4084897d9bcbc00ddc99",
     "soana.medallion_held": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53",
     "seelah.diamond_held": "6a7cdeb14fc6ef44580cf639c5cdc113",
     "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd",

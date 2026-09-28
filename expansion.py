@@ -55,6 +55,7 @@ from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
+from storylines import lastcall
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -390,6 +391,8 @@ def make_expansion(*, independent_tirabade=True):
     chadali_fortunes.integrate(payload)
     chadali_sessions.integrate(payload)
     chadali_hours.integrate(payload)
+    # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
+    lastcall.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     normalize_trickster_access(payload)

@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-eng-lastcall\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2259,
-  "unique_targets": 592,
+  "binding_uses": 2379,
+  "unique_targets": 601,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -289,6 +289,10 @@
     "f21279d12e1c70449bd037e75d7fd4a7": {
       "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
       "type": "BlueprintCue"
+    },
+    "dbf6695999d744747aeb2d4f20b21b50": {
+      "path": "World/Dialogs/c3/AreeluLaboratory/SoulJar/Answer_0006.jbp",
+      "type": "BlueprintAnswer"
     },
     "2a75fbc8e86fd514e82117c99fc9e528": {
       "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/AnswersList_0003.jbp",
@@ -1014,6 +1018,10 @@
       "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "3d3357c0474ce5a4bb13d68730faecb8": {
+      "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/AnswersList_0071.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "3e52b05af622f5945905b2be5ed9ac5a": {
       "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/Cue_0041.jbp",
       "type": "BlueprintCue"
@@ -1034,8 +1042,16 @@
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "294126e3264796e488ce19bfb1851355": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "b6bc1d5fb28e115499b8bcbbc0d541f9": {
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0052.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "16994192cfa484744bd10852b8dc806f": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0127.jbp",
       "type": "BlueprintAnswersList"
     },
     "3c4dd53fef2e80540bba5272d38c9843": {
@@ -1065,6 +1081,10 @@
     "6b4c8a08d22268f41badc455825b3082": {
       "path": "World/Dialogs/c6/ThresholdExterior/AreeluThresholdWelcome/Cue_0027.jbp",
       "type": "BlueprintCue"
+    },
+    "e77c405d6dde5804bb1f873f971958b8": {
+      "path": "World/Dialogs/c6/TrueEnding/Suggest/AnswersList_0037.jbp",
+      "type": "BlueprintAnswersList"
     },
     "589d83230bbbfd04bb1220ee4fef1ce1": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/AnswersList_0030.jbp",
@@ -1166,6 +1186,10 @@
       "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/Shifter_CompanionDialogue.jbp",
       "type": "BlueprintDialog"
     },
+    "8f234537d0e0e504ba7fa281f02a3601": {
+      "path": "World/Dialogs/Epilogues/BookPage_0115.jbp",
+      "type": "BlueprintBookPage"
+    },
     "fb42f8bd123bf1f40a448f6dbc66cbbe": {
       "path": "World/Dialogs/Epilogues/BookPage_0147.jbp",
       "type": "BlueprintBookPage"
@@ -1173,6 +1197,14 @@
     "5c95d8e3fa4f3b44896914987cb04b0b": {
       "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
       "type": "BlueprintBookPage"
+    },
+    "7fbdff975b455454cbaa97542862cf71": {
+      "path": "World/Dialogs/Epilogues/Cue_0179.jbp",
+      "type": "BlueprintCue"
+    },
+    "a730d207401f1124993243ee41bcbe28": {
+      "path": "World/Dialogs/Epilogues/Cue_0203.jbp",
+      "type": "BlueprintCue"
     },
     "5787f92575364c1459df8f075676c2db": {
       "path": "World/Dialogs/Epilogues/Cue_0317.jbp",
@@ -1241,6 +1273,10 @@
     "3c58e83a970a0f643a88e15f2323c805": {
       "path": "World/Dialogs/NPC_Common/Vendor_Quartermaster/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "f0641f67501a4084897d9bcbc00ddc99": {
+      "path": "World/Encounters/AreeluLab/Items/SoulJar_Trickster.jbp",
+      "type": "BlueprintItem"
     },
     "8c8b748a66ebad84f9b4cbcd73c2aab9": {
       "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/KyadoDead.jbp",

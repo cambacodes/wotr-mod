@@ -347,11 +347,11 @@ SCENES.append(scene(P + "epilogue.committed", "", "DorgelindaEpilogue", 6, "", [
             p("{n}A confession sat in the back of the book, in her hand, never sent to Nerosyan.{/n}", any_groups=[[CONFESSED, TOLD_ALL]]),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.committed_on_record", "", "DorgelindaEpilogue", 6, "", [
     nar("page", '''{n}When the Commander was entered as dead, Dorgelinda Stranglehold refused to close the account. "Dead's a status, not a balance," she told the clerk from Nerosyan. The line stayed open in her book for as long as she kept books, which was a very long time.{/n}''')],
-    requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.cheated_death", CLOSED), **EP))
+    requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.commander_back", CLOSED), **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "", "DorgelindaEpilogue", 6, "", [
     nar("page", '''{n}The war ended before the audit did. The spring after Threshold, Dorgelinda Stranglehold came to the Commander with the Logistics Council's final ledger under her arm and one line still open in it. "I don't ship a book to Nerosyan with a hole in it," she said. "So. Either you close it, or you stay in it." She had already written "carried forward". She was not asking, much.{/n}''')],
