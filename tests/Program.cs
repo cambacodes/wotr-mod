@@ -258,6 +258,7 @@ internal static class Program
         FairRestTests.Run(Check);
         PostBagTests.Run(Check);
         MailbagTests.Run(Check);
+        BookTests.Run(story, Check);
         PrerequisiteGroupsTests.Run(Check);
         TargonaContinuation();
         ArankaContinuation();

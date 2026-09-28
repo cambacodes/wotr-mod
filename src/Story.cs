@@ -38,6 +38,9 @@ namespace Tirabade
         public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
         // E14g: count composites, true when at least Min of Of hold; computed after Derived (groundwork).
         public Dictionary<string, CountSpec> Counts = new Dictionary<string, CountSpec>();
+        // E15 (RRT book UI): data-driven paged books (the Ledger, guides) and in-game glossary tooltips ({g|RRT_...}).
+        public Dictionary<string, BookSpec> Books = new Dictionary<string, BookSpec>();
+        public Dictionary<string, GlossaryText> Glossary = new Dictionary<string, GlossaryText>();
         // E8 (TT-09, ER-4): a successful rest delivers up to PostBagSize letters, at most one per rotation key, and a
         // relationship never holds more than QueueCapPerRelationship undelivered letters.
         public int PostBagSize = 3;
@@ -268,6 +271,40 @@ namespace Tirabade
         public string[] Requires = Array.Empty<string>();
         public string[] Forbids = Array.Empty<string>();
         public string[][] AnyGroups = Array.Empty<string[]>();
+    }
+
+    // E15: a paged book: a contents page (title, opening text, one entry per section), then one page per visible entry,
+    // each with its own portrait, read with next/previous and "N of M". Content only supplies entries.
+    public sealed class BookSpec
+    {
+        public string Title = "";
+        public string Opening = "";
+        public string Portrait = "";
+        public string[] Sections = Array.Empty<string>();
+        public List<BookEntry> Entries = new List<BookEntry>();
+    }
+
+    public sealed class BookEntry
+    {
+        public string Id = "";
+        public string Section = "";
+        public string Portrait = "";
+        public string Title = "";
+        public string Text = "";
+        // Conditional lines after the text, in order (the E14c paragraph idiom; read-only conditions).
+        public List<Paragraph> Lines = new List<Paragraph>();
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public string[][] AnyGroups = Array.Empty<string[]>();
+        // A Glossary key: the page ends with a hover link that explains the mechanic.
+        public string Tooltip = "";
+    }
+
+    // E15: an in-game tooltip, registered with the native glossary and linked from text as {g|KEY}words{/g}.
+    public sealed class GlossaryText
+    {
+        public string Name = "";
+        public string Description = "";
     }
 
     public sealed class Choice
@@ -677,6 +714,81 @@ namespace Tirabade
         }
 
         // E14c: a paragraph shows when its requires hold, no forbid holds and every any-group has a member.
+        // E15: book entries visible now, in section order then authored order.
+        public static bool BookEntryVisible(BookEntry entry, Snapshot state) => entry.Requires.All(state.Has)
+            && !entry.Forbids.Any(state.Has) && entry.AnyGroups.All(group => group.Any(state.Has));
+
+        public static List<BookEntry> BookVisible(BookSpec book, Snapshot state)
+        {
+            var sections = book.Sections.Select((name, index) => (name, index)).ToDictionary(pair => pair.name, pair => pair.index);
+            return book.Entries.Select((entry, index) => (entry, index)).Where(pair => BookEntryVisible(pair.entry, state))
+                .OrderBy(pair => sections.TryGetValue(pair.entry.Section, out int s) ? s : int.MaxValue).ThenBy(pair => pair.index)
+                .Select(pair => pair.entry).ToList();
+        }
+
+        // E15 archive: letters already read (their completion flag holds), the most recently read first.
+        public static List<Scene> ArchiveLetters(Story story, Snapshot state) => story.Scenes
+            .Select((scene, index) => (scene, index))
+            .Where(pair => IsMailbagLetter(pair.scene) && state.Has(pair.scene.Id))
+            .OrderByDescending(pair => state.Times.TryGetValue(pair.scene.Id, out int hour) ? hour : -1).ThenBy(pair => pair.index)
+            .Select(pair => pair.scene).ToList();
+
+        // E15: pagination. Pages are 0-based; an empty list still has one (empty) page.
+        public static int PageCount(int items, int perPage) => Math.Max(1, (items + perPage - 1) / perPage);
+
+        public static List<T> PageSlice<T>(IReadOnlyList<T> items, int page, int perPage) =>
+            items.Skip(Math.Max(0, page) * perPage).Take(perPage).ToList();
+
+        // E15: step a cursor through a list (wrapping); a key no longer in the list restarts at the first item.
+        public static string? Step(IReadOnlyList<string> keys, string? current, int delta)
+        {
+            if (keys.Count == 0) return null;
+            int index = current == null ? -1 : keys.ToList().IndexOf(current);
+            if (index < 0) return keys[0];
+            return keys[((index + delta) % keys.Count + keys.Count) % keys.Count];
+        }
+
+        // E15 read-only replay: where each authored choice of a read letter leads when it is re-read: the next node, or the
+        // success node of a check; null ends the replay. Only text is replayed: no flag, cost, check or native effect.
+        public static List<(string Text, string? Next)> ReplayEdges(Scene scene, Node node)
+        {
+            var edges = new List<(string Text, string? Next)>();
+            foreach (var choice in node.Choices)
+            {
+                string? next = choice.Next ?? (choice.Check != null && choice.Check.Success.Length > 0 ? choice.Check.Success : null);
+                if (next != null && !scene.Nodes.Any(n => n.Id == next)) next = null;
+                if (!edges.Any(edge => edge.Text == choice.Text && edge.Next == next)) edges.Add((choice.Text, next));
+            }
+            return edges;
+        }
+
+        public static void ValidateBooks(Story story)
+        {
+            if (story.Books == null || story.Glossary == null) throw new InvalidOperationException("Book and glossary collections cannot be null.");
+            foreach (var pair in story.Glossary)
+                if (!System.Text.RegularExpressions.Regex.IsMatch(pair.Key, "^RRT_[A-Za-z0-9_]+$") || pair.Value == null
+                    || string.IsNullOrWhiteSpace(pair.Value.Name) || string.IsNullOrWhiteSpace(pair.Value.Description))
+                    throw new InvalidOperationException("Invalid glossary entry (keys are RRT_<word>, with a name and a description): " + pair.Key);
+            var links = new System.Text.RegularExpressions.Regex(@"\{g\|(RRT_[A-Za-z0-9_]+)\}");
+            foreach (var pair in story.Books)
+            {
+                var book = pair.Value;
+                if (!System.Text.RegularExpressions.Regex.IsMatch(pair.Key, "^[a-z0-9_.]+$") || book == null || string.IsNullOrWhiteSpace(book.Title)
+                    || book.Sections.Length == 0 || book.Sections.Distinct().Count() != book.Sections.Length || book.Entries.Count == 0)
+                    throw new InvalidOperationException("Invalid book (a title, distinct sections, at least one entry): " + pair.Key);
+                var ids = new HashSet<string>(StringComparer.Ordinal);
+                foreach (var entry in book.Entries)
+                    if (!System.Text.RegularExpressions.Regex.IsMatch(entry.Id, "^[a-z0-9_.]+$") || !ids.Add(entry.Id)
+                        || !book.Sections.Contains(entry.Section) || string.IsNullOrWhiteSpace(entry.Title) || string.IsNullOrWhiteSpace(entry.Text)
+                        || entry.Tooltip.Length > 0 && !story.Glossary.ContainsKey(entry.Tooltip))
+                        throw new InvalidOperationException("Invalid book entry (unique id, declared section, title, text, known tooltip): " + pair.Key + "/" + entry.Id);
+                var text = string.Join(" ", book.Entries.SelectMany(e => new[] { e.Text }.Concat(e.Lines.Select(l => l.Text))).Concat(new[] { book.Opening }));
+                foreach (System.Text.RegularExpressions.Match link in links.Matches(text))
+                    if (!story.Glossary.ContainsKey(link.Groups[1].Value))
+                        throw new InvalidOperationException("Book text links an unknown glossary key: " + pair.Key + "/" + link.Groups[1].Value);
+            }
+        }
+
         public static bool ParagraphVisible(Paragraph paragraph, Snapshot state) => paragraph.Requires.All(state.Has)
             && !paragraph.Forbids.Any(state.Has) && paragraph.AnyGroups.All(group => group.Any(state.Has));
 
@@ -814,6 +926,7 @@ namespace Tirabade
         public static void Validate(Story story)
         {
             if (story.Scenes.Count == 0) throw new InvalidOperationException("The route has no scenes.");
+            ValidateBooks(story);
             if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null
                 || story.MainCharacterFacts == null)
                 throw new InvalidOperationException("Native reader collections cannot be null.");
