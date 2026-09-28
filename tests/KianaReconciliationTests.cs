@@ -38,7 +38,7 @@ internal static class KianaReconciliationTests
         foreach (bool changed in new[] { false, true })
         {
             var state = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-            state.Flags.UnionWith(new[] { "seelah.souls_returned", "kiana.aftermath_seen", "seelah.committed", "arueshalae.committed" });
+            state.Flags.UnionWith(new[] { "seelah.souls_returned", "kiana.aftermath_seen", "seelah.in_party", "seelah.committed", "arueshalae.committed" });
             if (history == "bereaved") state.Flags.Add("seelah.elan_dead");
             state = Play("invitation", state);
             state = Play("rehearsal", state);

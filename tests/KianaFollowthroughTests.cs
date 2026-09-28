@@ -107,7 +107,7 @@ internal static class KianaFollowthroughTests
             check(scene.Nodes[0].Choices.Any(choice => choice.Abort && choice.Set.Length == 0),
                 "Kiana follow-through lacks an initial deferral without progress.");
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = scene.Areas.Single() };
-            ready.Flags.UnionWith(scene.Requires);
+            ready.Flags.UnionWith(Program.Prerequisites(scene));
             check(Rules.Available(story, scene, ready), "Kiana follow-through eligibility fixture is not ready.");
             foreach (string blocker in new[] { "kiana.closed", "kiana.farewell", "inhuman" })
             {
@@ -118,6 +118,11 @@ internal static class KianaFollowthroughTests
             {
                 var missing = Program.Copy(ready); missing.Flags.Remove(required);
                 check(!Rules.Available(story, scene, missing), "Kiana follow-through skips " + required);
+            }
+            foreach (var group in scene.RequiresAnyGroups)
+            {
+                var missing = Program.Copy(ready); missing.Flags.ExceptWith(group);
+                check(!Rules.Available(story, scene, missing), "Kiana follow-through skips " + string.Join("|", group));
             }
             foreach (int chapter in new[] { 1, 3, 4, 6 })
             {

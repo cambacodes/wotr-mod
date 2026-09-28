@@ -47,7 +47,7 @@ internal static class KianaFurtherTests
         foreach (bool committed in new[] { false, true })
         {
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-            initial.Flags.UnionWith(new[] { "seelah.souls_returned", "kiana.aftermath_seen", "seelah.committed", "arueshalae.committed" });
+            initial.Flags.UnionWith(new[] { "seelah.souls_returned", "kiana.aftermath_seen", "seelah.in_party", "seelah.committed", "arueshalae.committed" });
             if (history == "widow") initial.Flags.Add("seelah.elan_dead");
             var state = Play("invitation", initial);
             state = Play("rehearsal", state); state = Play("stagecraft", state);
@@ -145,7 +145,7 @@ internal static class KianaFurtherTests
             // The reconciliation suite separately walks changed native histories.
             if (scene != offer) foreach (var node in scene.Nodes.Where(n => !n.Id.EndsWith("_former_grief") && !n.Id.EndsWith("_uncertain"))) check(seen.Contains(scene.Id + "/" + node.Id), "Kiana further page not visited: " + scene.Id + "/" + node.Id);
             var ready = new Snapshot { Chapter = 5, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-            ready.Flags.UnionWith(scene.Requires); ready.Flags.Add("kiana.separated");
+            ready.Flags.UnionWith(Program.Prerequisites(scene)); ready.Flags.Add("kiana.separated");
             check(Rules.Available(story, scene, ready), "Kiana further gate baseline invalid.");
             foreach (string flag in new[] { "kiana.closed", "inhuman" })
             {
@@ -156,6 +156,11 @@ internal static class KianaFurtherTests
             {
                 var blocked = Program.Copy(ready); blocked.Flags.Remove(flag);
                 check(!Rules.Available(story, scene, blocked), "Kiana further skips prerequisite " + flag);
+            }
+            foreach (var group in scene.RequiresAnyGroups)
+            {
+                var blocked = Program.Copy(ready); blocked.Flags.ExceptWith(group);
+                check(!Rules.Available(story, scene, blocked), "Kiana further skips prerequisite " + string.Join("|", group));
             }
             var wrong = Program.Copy(ready); wrong.Chapter = 4;
             check(!Rules.Available(story, scene, wrong), "Kiana further appears in the Abyss.");

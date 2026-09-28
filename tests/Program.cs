@@ -23,6 +23,9 @@ internal static class Program
         AvailableContacts = new HashSet<string>(original.AvailableContacts)
     };
 
+    // A scene's minimal prerequisites: its Requires plus the first flag of each RequiresAnyGroups group (the original path).
+    internal static IEnumerable<string> Prerequisites(Scene scene) => scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0]));
+
     internal static List<Snapshot> Walk(Scene scene, Snapshot initial, Action<string, Snapshot>? visit = null)
     {
         var outcomes = new List<Snapshot>();
@@ -435,6 +438,12 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "nocticula.trickster.defeated.shadow")) NocticulaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "vellexia.trickster.mirrored.speaks")) VellexiaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "nurah.trickster.prison.pardon")) NurahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "kiana.trickster.possessed.fake_gem"))
+            {
+                KianaTricksterTests.Run(story, Check);
+                playedContinuations.UnionWith(story.Scenes.Where(s => s.Id.StartsWith("kiana.trickster.", StringComparison.Ordinal)
+                    || s.Id == "kiana.betrothal").Select(s => s.Id));
+            }
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
@@ -1231,7 +1240,7 @@ internal static class Program
             bool transformed = path == "true_lich" || path == "swarm";
             if (transformed && route == "affair") continue;
             var state = new Snapshot { Chapter = 5, Hour = 1000, Area = missing.Area };
-            state.Flags.UnionWith(new[] { path, "seelah.souls_returned", "kiana.aftermath_seen", "committed", "seelah.committed", "konomi.committed", "jerribeth.committed" });
+            state.Flags.UnionWith(new[] { path, "seelah.souls_returned", "kiana.aftermath_seen", "seelah.in_party", "committed", "seelah.committed", "konomi.committed", "jerribeth.committed" });
             if (route == "widow") state.Flags.Add("seelah.elan_dead");
             if (transformed) state.Flags.Add("inhuman");
             void Play(string id, string wanted)
