@@ -226079,7 +226079,7 @@
         {
           "Id": "you",
           "Speaker": "Arueshalae",
-          "Text": "\"And you. I want you there, when you're there. I'm not a fool, I know what you are. You'll be off doing impossible things for the rest of your life, and there'll be other doors you walk through.\" {n}She says it lightly, and means it lightly, and her eyes are very steady.{/n}\n\"I've been in a house with a thousand guests at the table, Commander. I'm not afraid of a table with more than two chairs. I'm afraid of an empty one. So come back to the kitchen. That's all. That's the whole prognosis.\"",
+          "Text": "\"And you. I want you there, when you're there. I'm not a fool, I know what you are. You'll be off doing impossible things for the rest of your life, and I'll be the one at the window, waiting to find out which ones.\" {n}She says it lightly, and means it lightly, and her eyes are very steady.{/n}\n\"I've been in a house with a thousand guests at the table, Commander. The table was never the problem. The empty chair was. So come back to the kitchen. That's all. That's the whole prognosis.",
           "Choices": [
             {
               "Text": "\"I'll come back to the kitchen. Burn something for me.\"",
@@ -226562,7 +226562,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}She kept a kitchen with a window and a table too small for it, and burned things in it for the Commander, and for whoever else came to that table, and nobody who sat at it was ever the one being eaten.{/n}",
+              "Text": "{n}She kept a kitchen with a window and a table too small for it, and burned things in it for the Commander, and nobody who sat at it was ever the one being eaten.{/n}",
               "Requires": [
                 "arueshalae.treatment.after_the_war"
               ],
@@ -229547,10 +229547,10 @@
         {
           "Id": "why",
           "Speaker": "Arueshalae",
-          "Text": "\"And I bought a third.\" {n}She points. There is another, folded against the wall, still with the joiner's chalk mark on the seat.{/n} \"That one's for whoever you bring. I'm not a fool. You'll bring people. You always do; the whole crusade trails after you like a comet's tail, and some of them will want feeding.\" {n}She says it without any edge at all.{/n}\n\"In the Upper City a chair at the table meant you might be dinner. Here I want it to mean you're expected. Sit down. Let's see if it works.\"",
+          "Text": "\"In the Upper City a chair at the table meant you might be dinner.\" {n}She runs her thumb along the rush seat, where the joiner's chalk mark still shows.{/n} \"Here I want it to mean you're expected. Whenever you come. However long you've been gone. I'm not asking you to sit in it every night. I'm asking you to know it's there.\" {n}She lets go of it.{/n} \"Sit down. Let's see if it works.\"",
           "Choices": [
             {
-              "Text": "[Sit in the chair]",
+              "Text": "[Sit in the chair.]",
               "Next": "sit",
               "Set": [
                 "arueshalae.treatment.the_second_chair"
@@ -229560,8 +229560,8 @@
               "Abort": false
             },
             {
-              "Text": "[Unfold the third chair and sit in that instead, to see what she does]",
-              "Next": "third",
+              "Text": "[Turn the chair round and sit astride it, arms on the back, like a soldier in a mess tent.]",
+              "Next": "astride",
               "Set": [
                 "arueshalae.treatment.the_second_chair"
               ],
@@ -229589,9 +229589,9 @@
           "Portrait": "Arueshalae"
         },
         {
-          "Id": "third",
+          "Id": "astride",
           "Speaker": "Arueshalae",
-          "Text": "{n}She stares at you. Then she laughs so hard she has to hold on to the table.{/n} \"You're impossible. You're completely impossible.\" {n}She drags your chair round the table herself and sets it down beside you, and sits in it, so that there are two of you on one side and an empty chair on the other, waiting.{/n} \"There. Now it's a proper table. Someone's always late.\"",
+          "Text": "{n}She stares at you, then laughs so hard she has to hold on to the table.{/n} \"You're impossible. I buy you a chair, the first chair I have ever bought anyone, and you sit on it backwards.\" {n}She turns her own chair round and sits on it the same way, facing you over its back, chin on her folded arms.{/n} \"There. Now it's a proper table. A barracks table. I've always wanted one of those.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -230831,8 +230831,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

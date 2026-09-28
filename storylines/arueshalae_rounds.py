@@ -195,8 +195,8 @@ session(AFTER_WAR, "Prognosis", 5, '"What will you do, after?"', [
     a("start", '''{n}She has clearly been waiting for someone to ask, because she has an answer ready, and she gives it in a rush, as if afraid of losing her nerve.{/n}
 "A kitchen. I want a kitchen. Not a big one. With a window, and a table that's too small, and a place on the shelf for the cat's fish. I want to learn to cook, badly, like you, and burn things for somebody, and have them eat it anyway." {n}She stops for breath.{/n} "And the song. I want to know every verse by then. And the stone, the sea. I told you all of it, didn't I? I tell you everything now. It's very inconvenient."''',
         c("Continue", "you")),
-    a("you", '''"And you. I want you there, when you're there. I'm not a fool, I know what you are. You'll be off doing impossible things for the rest of your life, and there'll be other doors you walk through." {n}She says it lightly, and means it lightly, and her eyes are very steady.{/n}
-"I've been in a house with a thousand guests at the table, Commander. I'm not afraid of a table with more than two chairs. I'm afraid of an empty one. So come back to the kitchen. That's all. That's the whole prognosis."''',
+    a("you", '''"And you. I want you there, when you're there. I'm not a fool, I know what you are. You'll be off doing impossible things for the rest of your life, and I'll be the one at the window, waiting to find out which ones." {n}She says it lightly, and means it lightly, and her eyes are very steady.{/n}
+"I've been in a house with a thousand guests at the table, Commander. The table was never the problem. The empty chair was. So come back to the kitchen. That's all. That's the whole prognosis.''',
         c('"I\'ll come back to the kitchen. Burn something for me."', "burn", flags=(AFTER_WAR,)),
         c('"The prognosis is excellent. Doctor\'s verdict."', "verdict", flags=(AFTER_WAR,))),
     a("burn", '''"Oh, I will." {n}She grins, all teeth, and for a moment she looks exactly like what she is, and it is wonderful.{/n} "I'm going to burn things for you that nobody has ever burned before. I've got centuries of practice at making mortals suffer. It's time it was good for something."''', c()),
@@ -255,7 +255,7 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
               requires=(TEMPLE_LETTER,)),
             p('''{n}She learned every verse of the net-menders' song, and the Kenabres women taught it to their granddaughters with a line in it that had not been there before, about a stranger at the corner of the square.{/n}''',
               requires=(SONG,)),
-            p('''{n}She kept a kitchen with a window and a table too small for it, and burned things in it for the Commander, and for whoever else came to that table, and nobody who sat at it was ever the one being eaten.{/n}''',
+            p('''{n}She kept a kitchen with a window and a table too small for it, and burned things in it for the Commander, and nobody who sat at it was ever the one being eaten.{/n}''',
               requires=(AFTER_WAR,)),
             p('''{n}She kept the hungry one out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw both of her, and the cat did not care.{/n}''',
               requires=(SAINT_ONLY,)),

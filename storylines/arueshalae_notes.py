@@ -134,13 +134,12 @@ hub(CHAIR, "The second chair", 5, '"You bought furniture?"', [
     a("start", '''{n}She has. There is a chair in her room by the chapel that was not there yesterday: a plain Drezen kitchen chair, ash wood, with a rush seat, standing across the little table from her own. She is standing behind it with both hands on its back, as if introducing it.{/n}
 "I told you, in the Abyss, about Lady Vellexia's table. A thousand chairs and nobody eating." {n}She pats the chair.{/n} "I've never owned a chair before. I've never owned anything someone else was meant to sit in. So I bought one, from the joiner on Coppersmith Lane. It's for you. It's yours. Nobody else sits in it unless you bring them."''',
         c("Continue", "why")),
-    a("why", '''"And I bought a third." {n}She points. There is another, folded against the wall, still with the joiner's chalk mark on the seat.{/n} "That one's for whoever you bring. I'm not a fool. You'll bring people. You always do; the whole crusade trails after you like a comet's tail, and some of them will want feeding." {n}She says it without any edge at all.{/n}
-"In the Upper City a chair at the table meant you might be dinner. Here I want it to mean you're expected. Sit down. Let's see if it works."''',
-        c('[Sit in the chair]', "sit", flags=(CHAIR,)),
-        c('[Unfold the third chair and sit in that instead, to see what she does]', "third", flags=(CHAIR,))),
+    a("why", '''"In the Upper City a chair at the table meant you might be dinner." {n}She runs her thumb along the rush seat, where the joiner's chalk mark still shows.{/n} "Here I want it to mean you're expected. Whenever you come. However long you've been gone. I'm not asking you to sit in it every night. I'm asking you to know it's there." {n}She lets go of it.{/n} "Sit down. Let's see if it works."''',
+        c("[Sit in the chair.]", "sit", flags=(CHAIR,)),
+        c("[Turn the chair round and sit astride it, arms on the back, like a soldier in a mess tent.]", "astride", flags=(CHAIR,))),
     nar("sit", '''{n}You sit. The rush seat creaks. She sits down opposite you in her own chair, very carefully, and puts her hands flat on the table, and looks at you across it the way you have seen her look at the net-menders' bench, and the bakery, and the cat.{/n}
 "It works," she says, very quietly. "Nobody at this table is the one being eaten. It works."''', c()),
-    a("third", '''{n}She stares at you. Then she laughs so hard she has to hold on to the table.{/n} "You're impossible. You're completely impossible." {n}She drags your chair round the table herself and sets it down beside you, and sits in it, so that there are two of you on one side and an empty chair on the other, waiting.{/n} "There. Now it's a proper table. Someone's always late."''', c()),
+    a("astride", '''{n}She stares at you, then laughs so hard she has to hold on to the table.{/n} "You're impossible. I buy you a chair, the first chair I have ever bought anyone, and you sit on it backwards." {n}She turns her own chair round and sits on it the same way, facing you over its back, chin on her folded arms.{/n} "There. Now it's a proper table. A barracks table. I've always wanted one of those."''', c()),
 ], (COMMITTED, MORNING), delay=48, chapters=(5,))
 
 
