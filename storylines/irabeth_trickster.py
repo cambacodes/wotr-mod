@@ -33,6 +33,7 @@ SIGNED = "irabeth.trickster.cost.signed_request"
 BLOW_STANDS = "irabeth.trickster.blow_stands"
 KILLED = "anevia.irabeth_killed_by_commander"
 A_RET = "anevia.trickster.returned"
+SHARES = "anevia.trickster.shares_beth"   # Anevia's own terms, said at the gate
 SOUL_TORN = "irabeth.trickster.soul_wound_told"
 OWN = ("irabeth.closed",)
 
@@ -293,36 +294,48 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
       c("Continue", "her", requires=("irabeth.trickster.answered_her",)),
       c("Continue", "crusade", requires=("irabeth.trickster.answered_crusade",))),
     i("her", '''"You said 'for me'. Nobody's said that to me since Nevi. It was the right answer. I hate that it was the right answer."''',
-      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED, A_RET)),
-      c("Continue", "talked", requires=(A_RET,), forbids=(LIED,))),
+      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED, SHARES)),
+      c("Continue", "talked", requires=(SHARES,), forbids=(LIED,))),
     i("crusade", '''"You said 'for the crusade'. Honest. A month ago I'd have thrown you out for the other one."''',
-      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED, A_RET)),
-      c("Continue", "talked", requires=(A_RET,), forbids=(LIED,))),
+      c("Continue", "lied", requires=(LIED,)), c("Continue", "answer", forbids=(LIED, SHARES)),
+      c("Continue", "talked", requires=(SHARES,), forbids=(LIED,))),
     i("lied", '''"And you lied to me about Iz. I know you did. One more and I'm gone, orders or no orders."''',
-      c("Continue", "answer", forbids=(A_RET,)), c("Continue", "talked", requires=(A_RET,))),
-    i("talked", '''"Nevi and I talked. At the gate, her side of the line. About you, mostly. She said, and I'm quoting, 'I'd rather share than bury.'"
+      c("Continue", "answer", forbids=(SHARES,)), c("Continue", "talked", requires=(SHARES,))),
+    i("talked", '''"I asked Nevi. At the gate, her side of the line, to her face, the way she told you I'd have to. I felt like a recruit asking for leave. She said yes before I'd finished. She said, and I'm quoting, 'I'd rather share than bury.'"
 {n}The tips of her ears have gone dark.{/n}
 "Then she told me to stop looking at my boots."''',
       c("Continue", "answer")),
     i("answer", '''{n}She waits for you to say it. Her sword hand is very still.{/n}''',
       c('[Salute] "Dismissed, Knight-Captain. For tonight."', flags=("irabeth.trickster.friends",)),
       c('"Something\'s stopping you. Say it."', "no", forbids=(A_RET,)),
-      c('"Something\'s stopping you. Say it."', "no_home", requires=(A_RET,)),
-      c('[Kiss her] "Then consider this an order, Knight-Captain."', "threshold", requires=(A_RET,), forbids=(LIED,),
+      c('"Something\'s stopping you. Say it."', "no_home", requires=(SHARES,)),
+      c('[Kiss her] "No orders. Nobody\'s Commander. Just this."', "reckon", requires=(SHARES,), forbids=(LIED,),
         flags=("irabeth.committed",)),
-      c('[Wait for her to decide] "Whatever you want. Not an order."', "decides", requires=(A_RET,),
-        flags=("irabeth.committed",))),
+      c('[Wait for her to decide] "Whatever you want. Not an order."', "decides", requires=(SHARES,),
+        flags=("irabeth.committed",)),
+      c('"Something\'s stopping you. Say it."', "no_gate", requires=(A_RET,), forbids=(SHARES,))),
     i("no", '''"Nevi's out on that road. I'm not doing this behind her back. Not while she's out there. Maybe not after."
 {n}She looks at the empty throne, not at you.{/n}
 "Ask me when she's home, and ask me like a person, not like a Commander. Until then I'm your knight, and that's all I am."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
-    i("no_home", '''"It isn't Nevi. Nevi's made her peace with it; she told me so at the gate, twice, the second time louder."
+    i("no_home", '''"It isn't Nevi. Nevi said her piece; I asked her to her face and she said yes before I'd finished."
 {n}She turns the sword a quarter-turn in her fist, the only fidget she allows herself.{/n}
 "It's me. I was dead, Commander. Two days. Give me time to be alive before you ask me to be anything else."''',
+      c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
+    i("no_gate", '''"Nevi's at the gate, and she hasn't said a word to me about you. Not one. She's a spy; that silence is a message, and I haven't read it yet."
+{n}She shifts her grip on the sword.{/n}
+"I'm not doing this behind her back. When she's said her piece to me, to my face, ask me again."''',
       c('[Step back] "Then I\'ll ask again. Not as your Commander."', flags=(DECLINED,))),
     i("decides", '''{n}She looks at you for a long moment, the way she reads an order: twice, to be sure of it.{/n}
 "Not an order."
 {n}Then she decides.{/n}''',
+      c("Continue", "reckon")),
+    i("reckon", '''{n}She doesn't move yet. The sword is still in her hand; it is always in her hand.{/n}
+"Before anything. I was dead for two days, Commander. I came back holding a sword I can't put down, under an order I never asked for, to a wife who'd already buried me. None of that was a gift. Some of it's your fault."
+{n}She looks at her sword hand, then at you.{/n}
+"So understand what this is. Not gratitude. Not duty. I'm choosing it, with my eyes open."''',
+      c("Continue", "reckon_blow", requires=(BLOW,)), c("Continue", "threshold", forbids=(BLOW,))),
+    i("reckon_blow", '''"And I remember your blade going in. I'll remember it tomorrow, and the day after. I'm choosing you anyway, and I want you to know that's a choice, not a forgetting."''',
       c("Continue", "threshold")),
     nar("threshold", THRESHOLD, c("Continue", "morning")),
     i("morning", MORNING_HOME, c('"Dismissed, Knight-Captain."')),

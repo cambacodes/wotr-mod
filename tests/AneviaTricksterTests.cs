@@ -163,7 +163,10 @@ internal static class AneviaTricksterTests
         var joked = brought.Single(r => r.Has("anevia.trickster.told_the_joke"));
         var jokePages = new HashSet<string>();
         Program.Walk(gate, Later(story, joked, 48), (page, _) => jokePages.Add(page));
-        check(jokePages.Contains("joke") && jokePages.Contains("beth_back"), "Gate forgets the joke or Beth.");
+        check(jokePages.Contains("joke") && jokePages.Contains("beth_back") && jokePages.Contains("beth_terms"), "Gate forgets the joke or Beth.");
+        check(Program.Walk(gate, Later(story, joked, 48)).All(r => r.Has("anevia.trickster.shares_beth")), "Anevia's terms for Beth are not recorded.");
+        check(Program.Walk(gate, Later(story, brought.Single(r => !r.Has("anevia.trickster.told_the_joke")), 48)).All(r => r.Has("anevia.trickster.shares_beth")),
+            "Anevia's terms for Beth depend on the joke.");
 
         // Trk_Anevia_Confession / _Lie: after the rewritten blow she wants the version that hurts.
         var rewritten = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, IrabethReturned, "irabeth.trickster.blow_rewritten");

@@ -36,6 +36,7 @@ EXPOSED = "anevia.trickster.cost.lie_exposed"
 JOKE_TOLD = "anevia.trickster.told_the_joke"
 TERMS = "anevia.trickster.terms_kept"
 FRIENDS = "anevia.trickster.friends"
+SHARES = "anevia.trickster.shares_beth"
 I_RET = "irabeth.trickster.returned"
 I_DECLINED = "irabeth.trickster.declined"
 I_REWRITTEN = "irabeth.trickster.blow_rewritten"
@@ -291,7 +292,13 @@ physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gat
     a("one_truth", '''"One true thing tonight. Just one. Then we'll see."''',
       *to_beth("beth_back", "beth_widow")),
     a("beth_widow", BETH_WIDOW, *GATE_CHOICES),
-    a("beth_back", BETH_BACK, *GATE_CHOICES),
+    a("beth_back", BETH_BACK, c("Continue", "beth_terms")),
+    a("beth_terms", '''{n}She watches the gate a while longer. When she speaks again it is in her report voice, flat and exact, the one she uses for things she has already decided.{/n}
+"And she looks at you. Don't pretend she doesn't; I've been lookin' at her look at people for eleven years. So here's my terms for that, too, same as mine. If Beth wants you, she asks me first. To my face. Not you askin' for her, not an order, not some trick. Her."
+{n}She kicks the mud line once.{/n}
+"And when she asks, I'll say yes. I'd rather share than bury. I've tried burying. I'm no good at it."''',
+      c('[Take her hand and wait] "Tell me about her. I\'m listening."', "told", flags=(GATE, "anevia.trickster.hand_taken", SHARES)),
+      c('[Stay on your side of the line] "Your road. Your call."', "line", flags=(GATE, FRIENDS, SHARES))),
     a("told", '''{n}So she tells you. Not the war: the small things. That Beth snores like a siege engine and denies it under oath. That she folds her socks in pairs and then, for no reason anyone has discovered, in threes. That she sang at their wedding, badly and on purpose, so Anevia would stop crying and laugh.{/n}
 {n}She never once says "did". Her hand stays in yours the whole time. She doesn't seem to notice.{/n}''',
       c('"Same time next week?"')),
@@ -321,7 +328,7 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
 "I don't know what it says about me that I came back to this gate anyway. I'm not gonna pretend it doesn't say somethin'."''',
       c('[Ask her to stay] "Stay. Not in there. Here, with me."', "terms"),
       c('[Say nothing and wait] "..."', "terms")),
-    a("share", '''"Beth said, and I'm quotin', 'I'd rather share than bury.' Then she went red and walked into a door."
+    a("share", '''"Beth asked me. Like I said she had to: to my face, in the gatehouse, with her helmet under her arm like she was reportin' a fire. I said yes. Then she went red and walked into a door."
 {n}She lets that sit.{/n}
 "So."''',
       c('[Ask her to stay] "Stay. Not in there. Here, with me."', "terms"),
@@ -360,7 +367,7 @@ letter("anevia.trickster.gone.commit_letter", "Beth first", [
     a("start", '''{n}A letter in her plain hand. There is no furniture in it anywhere.{/n}
 "Gate's watched. I'm not standin' in front of a whole garrison to say this. So: Beth first. Always Beth first. If you can live with that, and with a door you knock on like a person, say so. If you can't, don't write back."''',
       c("Continue", "share", requires=(I_RET,)), c("Continue", "reply", forbids=(I_RET,))),
-    a("share", '''"Beth says she'd rather share than bury. She went red sayin' it. I'm tellin' you so you know it's allowed."''',
+    a("share", '''"If Beth ever wants you, she asks me first. To my face. And I'll say yes: I'd rather share than bury. I'm tellin' you so you know where it stands."''',
       c("Continue", "reply")),
     nar("reply", '''{n}There is room at the bottom of the page for an answer, and nothing else.{/n}''',
       c('[Write back: take her hand] "Your call, Nevi. I\'ll wait at whatever door you name."',

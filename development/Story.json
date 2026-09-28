@@ -138987,7 +138987,7 @@
               "Requires": [],
               "Forbids": [
                 "irabeth.trickster.cost.accounting_lied",
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Abort": false
             },
@@ -138996,7 +138996,7 @@
               "Next": "talked",
               "Set": [],
               "Requires": [
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Forbids": [
                 "irabeth.trickster.cost.accounting_lied"
@@ -139028,7 +139028,7 @@
               "Requires": [],
               "Forbids": [
                 "irabeth.trickster.cost.accounting_lied",
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Abort": false
             },
@@ -139037,7 +139037,7 @@
               "Next": "talked",
               "Set": [],
               "Requires": [
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Forbids": [
                 "irabeth.trickster.cost.accounting_lied"
@@ -139058,7 +139058,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Abort": false
             },
@@ -139067,7 +139067,7 @@
               "Next": "talked",
               "Set": [],
               "Requires": [
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Forbids": [],
               "Abort": false
@@ -139078,7 +139078,7 @@
         {
           "Id": "talked",
           "Speaker": "Irabeth",
-          "Text": "\"Nevi and I talked. At the gate, her side of the line. About you, mostly. She said, and I'm quoting, 'I'd rather share than bury.'\"\n{n}The tips of her ears have gone dark.{/n}\n\"Then she told me to stop looking at my boots.\"",
+          "Text": "\"I asked Nevi. At the gate, her side of the line, to her face, the way she told you I'd have to. I felt like a recruit asking for leave. She said yes before I'd finished. She said, and I'm quoting, 'I'd rather share than bury.'\"\n{n}The tips of her ears have gone dark.{/n}\n\"Then she told me to stop looking at my boots.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -139121,19 +139121,19 @@
               "Next": "no_home",
               "Set": [],
               "Requires": [
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Forbids": [],
               "Abort": false
             },
             {
-              "Text": "[Kiss her] \"Then consider this an order, Knight-Captain.\"",
-              "Next": "threshold",
+              "Text": "[Kiss her] \"No orders. Nobody's Commander. Just this.\"",
+              "Next": "reckon",
               "Set": [
                 "irabeth.committed"
               ],
               "Requires": [
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Forbids": [
                 "irabeth.trickster.cost.accounting_lied"
@@ -139147,9 +139147,21 @@
                 "irabeth.committed"
               ],
               "Requires": [
-                "anevia.trickster.returned"
+                "anevia.trickster.shares_beth"
               ],
               "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Something's stopping you. Say it.\"",
+              "Next": "no_gate",
+              "Set": [],
+              "Requires": [
+                "anevia.trickster.returned"
+              ],
+              "Forbids": [
+                "anevia.trickster.shares_beth"
+              ],
               "Abort": false
             }
           ],
@@ -139176,7 +139188,25 @@
         {
           "Id": "no_home",
           "Speaker": "Irabeth",
-          "Text": "\"It isn't Nevi. Nevi's made her peace with it; she told me so at the gate, twice, the second time louder.\"\n{n}She turns the sword a quarter-turn in her fist, the only fidget she allows herself.{/n}\n\"It's me. I was dead, Commander. Two days. Give me time to be alive before you ask me to be anything else.\"",
+          "Text": "\"It isn't Nevi. Nevi said her piece; I asked her to her face and she said yes before I'd finished.\"\n{n}She turns the sword a quarter-turn in her fist, the only fidget she allows herself.{/n}\n\"It's me. I was dead, Commander. Two days. Give me time to be alive before you ask me to be anything else.\"",
+          "Choices": [
+            {
+              "Text": "[Step back] \"Then I'll ask again. Not as your Commander.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "no_gate",
+          "Speaker": "Irabeth",
+          "Text": "\"Nevi's at the gate, and she hasn't said a word to me about you. Not one. She's a spy; that silence is a message, and I haven't read it yet.\"\n{n}She shifts her grip on the sword.{/n}\n\"I'm not doing this behind her back. When she's said her piece to me, to my face, ask me again.\"",
           "Choices": [
             {
               "Text": "[Step back] \"Then I'll ask again. Not as your Commander.\"",
@@ -139195,6 +139225,50 @@
           "Id": "decides",
           "Speaker": "Irabeth",
           "Text": "{n}She looks at you for a long moment, the way she reads an order: twice, to be sure of it.{/n}\n\"Not an order.\"\n{n}Then she decides.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "reckon",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "reckon",
+          "Speaker": "Irabeth",
+          "Text": "{n}She doesn't move yet. The sword is still in her hand; it is always in her hand.{/n}\n\"Before anything. I was dead for two days, Commander. I came back holding a sword I can't put down, under an order I never asked for, to a wife who'd already buried me. None of that was a gift. Some of it's your fault.\"\n{n}She looks at her sword hand, then at you.{/n}\n\"So understand what this is. Not gratitude. Not duty. I'm choosing it, with my eyes open.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "reckon_blow",
+              "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.remembers_the_blow"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "reckon_blow",
+          "Speaker": "Irabeth",
+          "Text": "\"And I remember your blade going in. I'll remember it tomorrow, and the day after. I'm choosing you anyway, and I want you to know that's a choice, not a forgetting.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -140963,11 +141037,28 @@
           "Text": "\"Beth's inside those walls, givin' orders. I can hear her from here. And I'm out here, with you.\"\n{n}She kicks at the mud line with the toe of her boot.{/n}\n\"Explain that to me, 'cause I can't. And before you try: she comes first. She's always gonna come first.\"",
           "Choices": [
             {
+              "Text": "Continue",
+              "Next": "beth_terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Anevia"
+        },
+        {
+          "Id": "beth_terms",
+          "Speaker": "Anevia",
+          "Text": "{n}She watches the gate a while longer. When she speaks again it is in her report voice, flat and exact, the one she uses for things she has already decided.{/n}\n\"And she looks at you. Don't pretend she doesn't; I've been lookin' at her look at people for eleven years. So here's my terms for that, too, same as mine. If Beth wants you, she asks me first. To my face. Not you askin' for her, not an order, not some trick. Her.\"\n{n}She kicks the mud line once.{/n}\n\"And when she asks, I'll say yes. I'd rather share than bury. I've tried burying. I'm no good at it.\"",
+          "Choices": [
+            {
               "Text": "[Take her hand and wait] \"Tell me about her. I'm listening.\"",
               "Next": "told",
               "Set": [
                 "anevia.trickster.gate_seen",
-                "anevia.trickster.hand_taken"
+                "anevia.trickster.hand_taken",
+                "anevia.trickster.shares_beth"
               ],
               "Requires": [],
               "Forbids": [],
@@ -140978,7 +141069,8 @@
               "Next": "line",
               "Set": [
                 "anevia.trickster.gate_seen",
-                "anevia.trickster.friends"
+                "anevia.trickster.friends",
+                "anevia.trickster.shares_beth"
               ],
               "Requires": [],
               "Forbids": [],
@@ -141142,7 +141234,7 @@
         {
           "Id": "share",
           "Speaker": "Anevia",
-          "Text": "\"Beth said, and I'm quotin', 'I'd rather share than bury.' Then she went red and walked into a door.\"\n{n}She lets that sit.{/n}\n\"So.\"",
+          "Text": "\"Beth asked me. Like I said she had to: to my face, in the gatehouse, with her helmet under her arm like she was reportin' a fire. I said yes. Then she went red and walked into a door.\"\n{n}She lets that sit.{/n}\n\"So.\"",
           "Choices": [
             {
               "Text": "[Ask her to stay] \"Stay. Not in there. Here, with me.\"",
@@ -141413,7 +141505,7 @@
         {
           "Id": "share",
           "Speaker": "Anevia",
-          "Text": "\"Beth says she'd rather share than bury. She went red sayin' it. I'm tellin' you so you know it's allowed.\"",
+          "Text": "\"If Beth ever wants you, she asks me first. To my face. And I'll say yes: I'd rather share than bury. I'm tellin' you so you know where it stands.\"",
           "Choices": [
             {
               "Text": "Continue",

@@ -237,16 +237,25 @@ internal static class IrabethTricksterTests
         foreach (bool lie in new[] { false, true })
         {
             var ask = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty",
-                            "irabeth.trickster.answered_her", "anevia_gone", AneviaReturned);
+                            "irabeth.trickster.answered_her", "anevia_gone", AneviaReturned, "anevia.trickster.shares_beth");
             if (lie) ask.Flags.Add("irabeth.trickster.cost.accounting_lied");
             ask.Times["irabeth.trickster.back_on_duty"] = ask.Hour - 72;
             var pages = new HashSet<string>();
             var outcomes = Program.Walk(irabethCommit, ask, (page, _) => pages.Add(page));
-            check(pages.Contains("talked") && pages.Contains("no_home") && !pages.Contains("no") && pages.Contains("threshold") && pages.Contains("morning"),
+            check(pages.Contains("talked") && pages.Contains("no_home") && !pages.Contains("no") && pages.Contains("reckon") && pages.Contains("threshold") && pages.Contains("morning"),
                 "Irabeth's commit ignores Nevi's return.");
             check(outcomes.Count(r => r.Has("irabeth.committed")) == (lie ? 1 : 2), "Kiss offered after an exposed lie, or Kiss / Wait missing.");
             check(outcomes.Any(r => r.Has("irabeth.trickster.declined") && !r.Has("irabeth.committed")), "Her no is gone once Nevi is home.");
         }
+        // Anevia back but silent: no intimate choice, and Irabeth's no names the silence.
+        var silent = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty",
+                           "irabeth.trickster.answered_her", "anevia_gone", AneviaReturned);
+        silent.Times["irabeth.trickster.back_on_duty"] = silent.Hour - 72;
+        var silentPages = new HashSet<string>();
+        var silentOutcomes = Program.Walk(irabethCommit, silent, (page, _) => silentPages.Add(page));
+        check(silentOutcomes.All(r => !r.Has("irabeth.committed")) && silentPages.Contains("no_gate") && !silentPages.Contains("talked"),
+            "Irabeth commits before Anevia has said her piece.");
+        check(irabethCommit.Nodes.SelectMany(n => n.Choices).All(ch => !ch.Text.Contains("order, Knight-Captain")), "The kiss is an order again.");
         var answer = irabethCommit.Nodes.Single(n => n.Id == "answer").Choices;
         check(answer[0].Text.StartsWith("[Salute]") && answer[1].Next == "no" && answer.Skip(2).Any(ch => ch.Text.StartsWith("[Kiss her]")),
             "Irabeth's commit choices were reordered instead of appended.");
