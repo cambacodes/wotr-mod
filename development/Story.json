@@ -186005,7 +186005,7 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "\"The chair has a confession, which is not a point, and which she will not count against the rules.\" {n}She rolls the scroll up, slowly.{/n}\n\"I have been debating you because you are the only one at this table who argues with me as if the argument mattered more than winning. The others want my vote. You wanted it too, and said so, and then argued with me anyway.\" {n}A breath.{/n}\n\"I think the next reading should be the second one. I think you know which motion I mean. Do not answer. The chair has not yet called the question.\"",
+          "Text": "{n}She rolls the scroll up, slowly, and does not look at you while she does it.{/n}\n\"I have been debating you because you are the only one at this table who argues with me as if the argument mattered more than winning. The others want my vote. You wanted it too, and said so, and then argued with me anyway.\" {n}A breath.{/n}\n{n}She ties the scroll, and her claws fumble the knot, which you have never seen them do.{/n} \"I think you know what I am going to ask you next. Do not answer. I have not asked it yet, and when I do, I want to have the courage to ask it properly.\"",
           "Choices": [
             {
               "Text": "[Leave the hall without answering.]",
@@ -187440,7 +187440,7 @@
         {
           "Id": "start",
           "Speaker": "Eritrice",
-          "Text": "\"The chair adjourned the Council an hour ago. The chair did not adjourn the chair.\" {n}She is standing by the lamp, and she has taken off the long robe of office; underneath is something much simpler, belted at the waist, and the dagger is not on it.{/n}\n\"I have been thinking about how to put the question. I have drafted it four times. Every draft was a lie, because every draft pretended I was calm.\" {n}Her voice drops.{/n} \"Here is the true one. I want you. Tonight, in this hall, at my own table. Refute it.\"",
+          "Text": "{n}She is standing by the lamp, and she has taken off the long robe of office; underneath is something much simpler, belted at the waist, and the dagger is not on it.{/n}\n\"I sent them all away an hour ago.\" {n}She does not come toward you. Her hands are at her sides, and they are not quite still.{/n} \"I have been standing here since, trying to find a way to say this that I could defend afterwards. There is none. I want you. Tonight, in this hall, at my own table. Refute it.\"",
           "Choices": [
             {
               "Text": "[Kiss her.]",
@@ -187536,10 +187536,10 @@
         {
           "Id": "look",
           "Speaker": "Eritrice",
-          "Text": "\"I have minuted every session of this Council since it was convened. I have never once been at a loss for what to write.\" {n}Her amethyst eyes are very dark.{/n}\n\"I do not know what I will write tomorrow. I find I do not care.\" {n}She pulls the belt of her gown loose with one claw, and it falls open, and she does not look away from your face while it does.{/n}\n\"Well, Commander? The chair has called the question.\"",
+          "Text": "{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she does not look away from your face while it does.{/n}\n\"Well, Commander?\"",
           "Choices": [
             {
-              "Text": "[Answer the question.]",
+              "Text": "[Answer her.]",
               "Next": "cut",
               "Set": [
                 "eritrice.minutes.night"
@@ -187554,7 +187554,7 @@
         {
           "Id": "cut",
           "Speaker": "Eritrice",
-          "Text": "{n}You answer it. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}",
+          "Text": "{n}You answer her. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}",
           "Choices": [
             {
               "Text": "[...]",
@@ -190574,10 +190574,10 @@
         {
           "Id": "next",
           "Speaker": "Eritrice",
-          "Text": "\"Yes.\" {n}She reaches for a fresh scroll.{/n} \"The Council will reconvene. Without him. The first item on the agenda will be the Worldwound, as it always has been. The second item will be the Commander's crossroads, as it has been since you arrived.\"\n\"And the third item...\" {n}She writes it, and turns the scroll so that you can read it: \"That the chair was not wasted.\"{/n} \"I am going to carry that motion. I do not care how many sessions it takes.\"",
+          "Text": "\"Yes.\" {n}She reaches for a fresh scroll.{/n} \"The Council will reconvene. Without him. The first item on the agenda will be the Worldwound, as it always has been. The second item will be the Commander's crossroads, as it has been since you arrived.\"\n{n}She stops writing. She looks at the turned chair for a long while, and then at you, and when she speaks again there is no agenda in it at all.{/n}\n\"I was not wasted. Was I? Tell me I was not. I will believe you. You are the only one here I would believe.\"",
           "Choices": [
             {
-              "Text": "[Second it.]",
+              "Text": "\"You weren't wasted. You were the only one of them who meant it.\"",
               "Next": null,
               "Set": [
                 "eritrice.council.table_stands"
@@ -191470,7 +191470,7 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "{n}You work on the standing orders until the lamp needs trimming, and then past it. She writes; you argue; she strikes out; you laugh; she growls and writes it anyway. At the end there are nine rules on a clean scroll, and at the foot of it she has left a space for two signatures.{/n}\n\"The war is not won. The Worldwound is not a crossroads. Nothing on this scroll is true yet.\" {n}She signs.{/n} \"But it is minuted. And everything I have ever minuted has come true eventually, one way or another. Sign, Commander.\"",
+          "Text": "{n}You work on the standing orders until the lamp needs trimming, and then past it. She writes; you argue; she strikes out; you laugh; she growls and writes it anyway. At the end there are nine rules on a clean scroll, and at the foot of it she has left a space for two signatures.{/n}\n\"The war is not won. The Worldwound is not a crossroads. Nothing on this scroll is true yet.\" {n}She signs.{/n} \"But it is written down, in two hands, and I have never yet abandoned a thing I wrote down in my own. Sign, Commander.\"",
           "Choices": [
             {
               "Text": "[Sign.]",
@@ -191624,8 +191624,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

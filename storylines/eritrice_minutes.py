@@ -225,9 +225,9 @@ minutes(QUILL, "The quill", '"Can I ask about the quill?"', [
 {n}At last:{/n} "You could have written anything. Anything at all, and I would have had to keep it, because I promised to keep the minutes true, and a line in your hand would be a true record of what you wrote." {n}She turns the quill over.{/n}
 "You gave it back. That is the most honest thing anyone has done at this table since I convened it."''',
       c("Continue", "close")),
-    e("close", '''"The chair has a confession, which is not a point, and which she will not count against the rules." {n}She rolls the scroll up, slowly.{/n}
+    e("close", '''{n}She rolls the scroll up, slowly, and does not look at you while she does it.{/n}
 "I have been debating you because you are the only one at this table who argues with me as if the argument mattered more than winning. The others want my vote. You wanted it too, and said so, and then argued with me anyway." {n}A breath.{/n}
-"I think the next reading should be the second one. I think you know which motion I mean. Do not answer. The chair has not yet called the question."''',
+{n}She ties the scroll, and her claws fumble the knot, which you have never seen them do.{/n} "I think you know what I am going to ask you next. Do not answer. I have not asked it yet, and when I do, I want to have the courage to ask it properly."''',
       c("[Leave the hall without answering.]")),
 ], requires=(CONVENING,), forbids=(QUILL,))
 
@@ -504,8 +504,8 @@ minutes(ESSENCE, "A very serious matter", '"The cauldron. The essences."', [
 minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
     nar("open", '''{n}The hall is dark but for one lamp at the head of the table. She has sent the Council's servants away. The scroll of the second reading lies rolled and tied with an amethyst ribbon, set to one side, as far from the edge as the table allows.{/n}''',
         c("Continue", "start")),
-    e("start", '''"The chair adjourned the Council an hour ago. The chair did not adjourn the chair." {n}She is standing by the lamp, and she has taken off the long robe of office; underneath is something much simpler, belted at the waist, and the dagger is not on it.{/n}
-"I have been thinking about how to put the question. I have drafted it four times. Every draft was a lie, because every draft pretended I was calm." {n}Her voice drops.{/n} "Here is the true one. I want you. Tonight, in this hall, at my own table. Refute it."''',
+    e("start", '''{n}She is standing by the lamp, and she has taken off the long robe of office; underneath is something much simpler, belted at the waist, and the dagger is not on it.{/n}
+"I sent them all away an hour ago." {n}She does not come toward you. Her hands are at her sides, and they are not quite still.{/n} "I have been standing here since, trying to find a way to say this that I could defend afterwards. There is none. I want you. Tonight, in this hall, at my own table. Refute it."''',
       c('[Kiss her.]', "kiss"),
       c('"I\'ve got no refutation. I\'ve got a counter-motion."', "counter"),
       c('[Take the quill out of her hand.]', "quill")),
@@ -522,11 +522,10 @@ minutes(ADJOURNED, "Adjourned", '"The chair called for an adjournment?"', [
     e("armour", '''{n}She undoes the buckles herself, one by one, with the same patient attention she gives to a long agenda, and every time a strap comes free she says its name, as if entering it in the record. You have never heard anyone make the word "vambrace" sound like that.{/n}
 {n}When the last of it is on the floor she pushes you back until you are sitting on the edge of the Council's long table, among the inkwells, and stands between your knees, and looks at you in the lamplight for a long time.{/n}''',
       c("Continue", "look")),
-    e("look", '''"I have minuted every session of this Council since it was convened. I have never once been at a loss for what to write." {n}Her amethyst eyes are very dark.{/n}
-"I do not know what I will write tomorrow. I find I do not care." {n}She pulls the belt of her gown loose with one claw, and it falls open, and she does not look away from your face while it does.{/n}
-"Well, Commander? The chair has called the question."''',
-      c('[Answer the question.]', "cut", flags=(M + "night",))),
-    e("cut", '''{n}You answer it. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}''',
+    e("look", '''{n}For once she says nothing at all. Her amethyst eyes are very dark, and her breathing is the only sound in the hall. She pulls the belt of her gown loose with one claw, and it falls open, and she does not look away from your face while it does.{/n}
+"Well, Commander?"''',
+      c('[Answer her.]', "cut", flags=(M + "night",))),
+    e("cut", '''{n}You answer her. She reaches past you, without taking her eyes from yours, and turns the lamp down to nothing; and in the last of its light you see her other hand move the second reading's scroll to safety at the far end of the table, even now, even then.{/n}''',
       c("[...]")),
 ], requires=(COMMITTED,), forbids=(ADJOURNED,), delay=12)
 

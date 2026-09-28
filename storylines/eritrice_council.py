@@ -560,8 +560,9 @@ sitting(GONE, "So many years of preparation", '"Socothbenoth\'s gone."', [
 "You comforted me. It worked. I do not know how, and I am not going to minute it. Stay until I do."''',
       c("[Stay while she writes.]", flags=(K + "table_stands",))),
     e("next", '''"Yes." {n}She reaches for a fresh scroll.{/n} "The Council will reconvene. Without him. The first item on the agenda will be the Worldwound, as it always has been. The second item will be the Commander's crossroads, as it has been since you arrived."
-"And the third item..." {n}She writes it, and turns the scroll so that you can read it: "That the chair was not wasted."{/n} "I am going to carry that motion. I do not care how many sessions it takes."''',
-      c("[Second it.]", flags=(K + "table_stands",))),
+{n}She stops writing. She looks at the turned chair for a long while, and then at you, and when she speaks again there is no agenda in it at all.{/n}
+"I was not wasted. Was I? Tell me I was not. I will believe you. You are the only one here I would believe."''',
+      c('"You weren\'t wasted. You were the only one of them who meant it."', flags=(K + "table_stands",))),
 ], requires=(POINT_ONE, "council.walked_out"), forbids=(GONE,), delay=0, chapters=(5,))
 
 
@@ -747,7 +748,7 @@ sitting(RULES, "The rules of the Crossroads", '"You\'re drafting something."', [
 "...It is correct. If the forum means what it says, every plane must be able to hold the chair, and every plane must be able to lose it. Otherwise it is only my Council with a larger table." {n}She writes it.{/n} "I will be the first chair. You will allow me that. Then I will hand it on. And I will keep the minutes of whoever follows, because somebody must."''',
       c("[Help her write it.]", "close")),
     e("close", '''{n}You work on the standing orders until the lamp needs trimming, and then past it. She writes; you argue; she strikes out; you laugh; she growls and writes it anyway. At the end there are nine rules on a clean scroll, and at the foot of it she has left a space for two signatures.{/n}
-"The war is not won. The Worldwound is not a crossroads. Nothing on this scroll is true yet." {n}She signs.{/n} "But it is minuted. And everything I have ever minuted has come true eventually, one way or another. Sign, Commander."''',
+"The war is not won. The Worldwound is not a crossroads. Nothing on this scroll is true yet." {n}She signs.{/n} "But it is written down, in two hands, and I have never yet abandoned a thing I wrote down in my own. Sign, Commander."''',
       c("[Sign.]", flags=(K + "crossroads_drafted",))),
 ], requires=(COMMITTED, CONVENING), forbids=(RULES,), delay=48, chapters=(5,))
 
