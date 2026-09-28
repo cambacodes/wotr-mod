@@ -166020,7 +166020,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The body could not be brought back to Drezen. It lies in a field hospital on the Sarkorian border, under a sheet, in a row. Her effects came back without it, in a sack with her name chalked on the side.{/n}\n{n}A whetstone. A prayer book with a stolen library's stamp inside the cover, the stamp half scraped away and then, it seems, left alone on purpose. And a purse, tied badly.{/n}",
+          "Text": "{n}She fell on the Sarkorian border, and she lies there still, under a sheet, in a row at a field hospital. The road north to Drezen runs through demon country; the hospital does not send its dead along it, because too many carts have arrived with something else inside the sheet. Her effects came back without her, in a sack with her name chalked on the side.{/n}\n{n}A whetstone. A prayer book with a stolen library's stamp inside the cover, the stamp half scraped away and then, it seems, left alone on purpose. And a purse, tied badly.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -166036,7 +166036,7 @@
         {
           "Id": "purse",
           "Speaker": "Narrator",
-          "Text": "{n}At the bottom of the purse is one coin that is not a coin: cold, and too heavy, and stamped with nothing.{/n}\n{n}A rider can reach the border hospital before the next dawn. The chaplain there has a bowl and nothing to put in it, and one rule: before she stands trial, or never.{/n}",
+          "Text": "{n}At the bottom of the purse is one coin that is not a coin: cold, and too heavy, and stamped with nothing.{/n}\n{n}The chaplain at the border hospital has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Hers has not stood it. You are holding the one thing she would have to present there.{/n}",
           "Choices": [
             {
               "Text": "[Pick the dead thief's pocket] \"Old habits, Seelah. Whatever's in the purse is mine. Including that.\"",
@@ -167791,8 +167791,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

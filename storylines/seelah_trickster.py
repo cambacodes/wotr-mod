@@ -181,11 +181,11 @@ hub("seelah.trickster.dead.wakes", "Whatever you took", '"Seelah."', [
 # --- State dead_no_unit: the pickpocketed death, by post -----------------------------------------------------------
 
 letter("seelah.trickster.dead.pickpocket_effects", "Her effects, without her", [
-    nar("start", '''{n}The body could not be brought back to Drezen. It lies in a field hospital on the Sarkorian border, under a sheet, in a row. Her effects came back without it, in a sack with her name chalked on the side.{/n}
+    nar("start", '''{n}She fell on the Sarkorian border, and she lies there still, under a sheet, in a row at a field hospital. The road north to Drezen runs through demon country; the hospital does not send its dead along it, because too many carts have arrived with something else inside the sheet. Her effects came back without her, in a sack with her name chalked on the side.{/n}
 {n}A whetstone. A prayer book with a stolen library's stamp inside the cover, the stamp half scraped away and then, it seems, left alone on purpose. And a purse, tied badly.{/n}''',
       c("Continue", "purse")),
     nar("purse", '''{n}At the bottom of the purse is one coin that is not a coin: cold, and too heavy, and stamped with nothing.{/n}
-{n}A rider can reach the border hospital before the next dawn. The chaplain there has a bowl and nothing to put in it, and one rule: before she stands trial, or never.{/n}''',
+{n}The chaplain at the border hospital has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Hers has not stood it. You are holding the one thing she would have to present there.{/n}''',
       c('[Pick the dead thief\'s pocket] "Old habits, Seelah. Whatever\'s in the purse is mine. Including that."', "rider",
         requires=(DIAMOND_HELD,), mythic="Trickster", alignment=("Chaotic", 1), remove_item=DIAMOND,
         flags=(RETURNED, HOLDS, CORRESPONDENT, "seelah.started")),
