@@ -59513,6 +59513,17 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "[Look at the painted hands] \"It changes everything but the hands. Leave them bare. I'll finish them one day.\"",
+              "Next": "hands",
+              "Set": [],
+              "Requires": [
+                "trickster"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
             }
           ],
           "Portrait": "VellexiaPaintingChanged"
@@ -59547,6 +59558,70 @@
               "Set": [
                 "vellexia.gallery_invited",
                 "vellexia.question_wager"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "VellexiaManorSpeaker"
+        },
+        {
+          "Id": "hands",
+          "Speaker": "Narrator",
+          "Text": "{n}You look a third time. The room has changed again, and the dress, and the expression. The hands have not. In every version they are the same: two pale shapes in underpaint, the one part of her the artist never reached.{/n}\n{n}Vellexia follows your eyes and laughs, delighted to have been insulted so precisely.{/n}\n\"You would leave a woman unfinished? How presumptuous. How very Golarian.\" {n}She hands you a stub of chalk from the table.{/n} \"Mark it, then, so you will know it again. I shall hold you to 'one day'. I have a long memory and nothing but time.\"",
+          "Choices": [
+            {
+              "Text": "\"It may be showing what the person looking expects to see.\"",
+              "Next": "hands_expectation",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then make a wager with me. Let us find something it cannot flatter.\"",
+              "Next": "hands_wager",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "hands_expectation",
+          "Speaker": "Vellexia",
+          "Text": "\"Then it has made the same mistake as half the people who visit me. It has confused attention with service.\"\n\"You asked it for a surprise.\"\n\"I did. It has offered me my own impatience in a new dress. I already have mirrors, darling. Excellent ones.\"\n{n}She looks at the picture again. The painted woman folds her arms a moment before Vellexia does.{/n}\n\"There. That is new. It has begun taking liberties with the order of events.\"\n\"Or you followed it.\"\n{n}She lowers her arms. The painted woman does not.{/n}\n\"You may be worth an afternoon. He is waiting nearby. Give me a moment to ask what he thinks he has sold me, then join me by the picture.\"\n\"Will he have a chance to answer?\"\n\"A generous one. I want to hear him invent the explanation.\"\n{n}She turns the picture away before it can imitate her smile.{/n}",
+          "Choices": [
+            {
+              "Text": "\"I will return to hear it too.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.gallery_invited",
+                "vellexia.noticed_expectation",
+                "vellexia.trickster.portrait_marked"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "VellexiaManorSpeaker"
+        },
+        {
+          "Id": "hands_wager",
+          "Speaker": "Vellexia",
+          "Text": "\"You offer to defeat a picture. How refreshing. Most warriors require a larger audience.\"\n\"You would be the audience.\"\n\"Flattery already? We have barely begun.\"\n{n}She takes the bracelet from the table, then thinks better of putting it on.{/n}\n\"Very well. If you discover how it disappoints me, you may choose one question I must answer plainly. If you fail, I choose the question. No souls, no forfeited companions, no tedious promises of obedience. An answer.\"\n\"Either of us may refuse the question and admit defeat.\"\n\"Oh, keep a little courage.\"\n\"That is my wager.\"\n{n}Her gaze holds yours long enough for the smile to become a decision.{/n}\n\"Accepted. I shall ask the artist to explain his triumph. He is waiting nearby. Join me again when he has finished, if I have not ceased believing he has one.\"\n{n}She turns the picture toward the wall.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Leave the back closed until we can examine it together.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.gallery_invited",
+                "vellexia.question_wager",
+                "vellexia.trickster.portrait_marked"
               ],
               "Requires": [],
               "Forbids": [],
@@ -62697,7 +62772,13 @@
       "Remote": true,
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.two_unremarkable_pleasures",
@@ -62905,8 +62986,6 @@
         }
       ],
       "Requires": [
-        "vellexia.dismissed_native",
-        "vellexia.native_finished",
         "vellexia.return_kept"
       ],
       "Forbids": [
@@ -62927,7 +63006,13 @@
       "Remote": true,
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.the_cover_before_the_battle",
@@ -63216,8 +63301,6 @@
         }
       ],
       "Requires": [
-        "vellexia.dismissed_native",
-        "vellexia.native_finished",
         "vellexia.private_kept"
       ],
       "Forbids": [
@@ -63238,7 +63321,13 @@
       "Remote": true,
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
-      ]
+      ],
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_lovers",
@@ -63262,7 +63351,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63278,11 +63419,18 @@
         "vellexia.closed",
         "inhuman",
         "ascended",
-        "sacrifice"
+        "sacrifice",
+        "vellexia.trickster.kept_as_mirror"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_friends",
@@ -63306,7 +63454,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63322,11 +63522,18 @@
         "vellexia.closed",
         "inhuman",
         "ascended",
-        "sacrifice"
+        "sacrifice",
+        "vellexia.trickster.kept_as_mirror"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_slow",
@@ -63350,7 +63557,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63366,11 +63625,18 @@
         "vellexia.closed",
         "inhuman",
         "ascended",
-        "sacrifice"
+        "sacrifice",
+        "vellexia.trickster.kept_as_mirror"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_interrupted",
@@ -63394,7 +63660,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63410,11 +63728,19 @@
         "inhuman",
         "ascended",
         "sacrifice",
-        "vellexia.farewell_kept"
+        "vellexia.farewell_kept",
+        "vellexia.trickster.kept_as_mirror",
+        "vellexia.trickster.late_committed"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_closed",
@@ -63438,7 +63764,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63451,11 +63829,18 @@
         "vellexia.native_coercion",
         "vellexia.early_fight",
         "vellexia.final_fight",
-        "inhuman"
+        "inhuman",
+        "vellexia.trickster.kept_as_mirror"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_dead",
@@ -63487,7 +63872,8 @@
         "vellexia.dead"
       ],
       "Forbids": [
-        "vellexia.mirrored"
+        "vellexia.mirrored",
+        "vellexia.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -63515,14 +63901,27 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Commander kept the glass covered after the war, in a locked room, and never slept in the next one. The haze behind the cloth never went still. \"I will be watching you do it,\" she had said, and she was.",
+              "Requires": [
+                "vellexia.trickster.kept_as_mirror",
+                "vellexia.trickster.cost.watched"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
         "vellexia.prediction_known",
         "vellexia.mirrored"
       ],
-      "Forbids": [],
+      "Forbids": [
+        "vellexia.trickster.unmirrored"
+      ],
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "vellexia"
@@ -63595,7 +63994,9 @@
       "Forbids": [
         "vellexia.dead",
         "vellexia.mirrored",
-        "vellexia.native_coercion"
+        "vellexia.native_coercion",
+        "vellexia.spared",
+        "vellexia.trickster.returned"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -63627,7 +64028,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63639,11 +64092,18 @@
         "vellexia.mirrored",
         "vellexia.native_coercion",
         "vellexia.early_fight",
-        "vellexia.final_fight"
+        "vellexia.final_fight",
+        "vellexia.trickster.kept_as_mirror"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_ascent",
@@ -63667,7 +64127,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63681,11 +64193,18 @@
         "vellexia.early_fight",
         "vellexia.final_fight",
         "inhuman",
-        "vellexia.closed"
+        "vellexia.closed",
+        "vellexia.trickster.kept_as_mirror"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_sacrifice",
@@ -63709,7 +64228,59 @@
               "Abort": false
             }
           ],
-          "Portrait": "Vellexia"
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -63724,11 +64295,18 @@
         "vellexia.final_fight",
         "inhuman",
         "ascended",
-        "vellexia.closed"
+        "vellexia.closed",
+        "vellexia.trickster.kept_as_mirror"
       ],
       "DelayHours": 0,
       "Optional": false,
-      "Relationship": "vellexia"
+      "Relationship": "vellexia",
+      "ForbidOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived",
+        "vellexia.mirrored": "vellexia.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.ending_aeon",
@@ -147630,6 +148208,3001 @@
       "AnswerLists": [
         "33178c26f304abe41949f3fb0fa8ac6e"
       ]
+    },
+    {
+      "Id": "vellexia.trickster.mirrored.speaks",
+      "Title": "Compensation",
+      "Owner": "Vellexia",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Nexus, the night after the prank. Two of your people have come back from the Upper City with her dust sheet folded over one arm, as if it were evidence.{/n}\n{n}The mirror is still standing in her salon. The looters who went in after her guests fled came out again quickly, and would not say why.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "finnean",
+              "Set": [],
+              "Requires": [
+                "finnean.objected"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "crate",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "finnean.objected"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "finnean",
+          "Speaker": "Narrator",
+          "Text": "{n}Finnean has not said a word since the salon. Now, from the scabbard, very quietly:{/n}\n\"She's awake in there, Commander. You can tell by the way it doesn't reflect anything. I know what that's like. I'm just saying.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "crate",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "crate",
+          "Speaker": "Narrator",
+          "Text": "\"It's heavy, Commander,\" says the quartermaster who went back for it. \"Heavy as a wardrobe, and warm, like somebody's been leaning on it. The haze moves when you talk near it. Do we crate it for Drezen, or leave it for the looters?\"",
+          "Choices": [
+            {
+              "Text": "[Have the mirror crated for Drezen] \"I wasn't entertained either. She's my compensation.\"",
+              "Next": "crated",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Throw a sheet over the glass and leave it] \"Goodnight, Lady Vellexia.\"",
+              "Next": "sheet",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "crated",
+          "Speaker": "Narrator",
+          "Text": "{n}They crate it face to the planks, on your orders, with straw packed against the glass. By morning the straw is warm right through.{/n}\n{n}Just before they nail the lid down, the haulers hear it: a single tap from inside, like a fingernail on glass, testing whether anyone is listening.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Mind the corners.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.primed",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "sheet",
+          "Speaker": "Narrator",
+          "Text": "{n}Your people go back and throw the sheet over the glass. Under it, the haze goes still.{/n}\n{n}A mirror stands in an empty salon in Alushinyrra, and the looters leave it alone. Whoever buys the house will get a mirror nobody likes to look into.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Leave her there.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.mirrored",
+        "vellexia.dead"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.primed",
+        "vellexia.trickster.declined",
+        "vellexia.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ],
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.mirrored"
+    },
+    {
+      "Id": "vellexia.trickster.mirrored.fetch",
+      "Title": "A mirror nobody will loot",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Drezen. A cambion haulier named Orrel Vask, who moves furniture between the Upper City and anyone who pays, sends word up from the rift camp with a sample of Alushinyrran red.{/n}\n{n}A certain mirror, his note says, is still standing in a certain empty salon. The looters will not touch it, because it watches them. He can have it out through the Nexus portals within the week. He names a price, and then, in a second hand, a surcharge \"for the eyes\".{/n}",
+          "Choices": [
+            {
+              "Text": "[Pay the haulers double to bring it out] \"Double, if it arrives uncracked. It's a lady.\"",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Let the Upper City keep its mirror] \"Somebody else can look at her.\"",
+              "Next": "left",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Narrator",
+          "Text": "{n}Vask's crate comes up the rift road on the ninth day, packed in straw that is warm to the touch. He will not unload it himself. His porters set it down in the corner of your stores and back away from it as if it had spoken.{/n}\n{n}Perhaps it had. None of them will say.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Sign for it. I'll deal with her.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.primed",
+                "vellexia.trickster.cost.late",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "left",
+          "Speaker": "Narrator",
+          "Text": "{n}You send Vask a single line: no. He sends back a single line of his own, which is his invoice for the letter.{/n}\n{n}In Alushinyrra, a mirror stands under a sheet in an empty salon, and goes on standing there.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Pay the man for his ink.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.mirrored",
+        "vellexia.dead"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.primed",
+        "vellexia.trickster.declined",
+        "vellexia.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.mirrored"
+    },
+    {
+      "Id": "vellexia.trickster.mirrored.unmirror",
+      "Title": "The joke told backwards",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Have the crated mirror brought in] \"This was a succubus, once. Tell me its story.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "conversant",
+          "Text": "{n}The old elf has the porters stand the crate against his shelves. He lifts the sheet himself and looks into the haze for a long time.{/n}\n\"Mahogany that remembers being skin. She was bored, Commander. Then she was surprised. Then she was this.\" {n}He lets the sheet fall back halfway.{/n} \"I read the story forwards. I cannot read it any other way. You, I think, can.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "glass",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "glass",
+          "Speaker": "Vellexia",
+          "Text": "{n}A face forms in the haze, pale and furious and very interested.{/n}\n\"Oh, do go on. Tell {mf|him|her} the part where I was magnificent.\"",
+          "Choices": [
+            {
+              "Text": "[Play a nice trick on Vellexia] \"Hold still. I'm going to tell it backwards.\"",
+              "Next": "nice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.failed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Play a cruel trick on Vellexia] \"Stay a mirror. You'll never be bored. Everyone looks at you.\"",
+              "Next": "cruel",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.failed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Tell it backwards, without the sparks] \"Hold still. I'm going to tell it backwards.\"",
+              "Next": "no_sparks",
+              "Set": [],
+              "Requires": [
+                "trickster.failed"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Leave her in the glass] \"Stay a mirror. You'll never be bored. Everyone looks at you.\"",
+              "Next": "no_sparks_cruel",
+              "Set": [],
+              "Requires": [
+                "trickster.failed"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Cover the mirror again] \"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        },
+        {
+          "Id": "no_sparks",
+          "Speaker": "Narrator",
+          "Text": "{n}Your fingers find no sparks. The joke, it seems, remembers how it went.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "nice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "no_sparks_cruel",
+          "Speaker": "Narrator",
+          "Text": "{n}Your fingers find no sparks. You do not need any. You only have to walk away.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cruel",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "nice",
+          "Speaker": "Narrator",
+          "Text": "{n}You say her spell backwards: the last word first, the way you heard her say it to a juggler who bored her. The haze curdles into a shoulder, a knee, a fistful of blonde hair, and then an extremely angry succubus is sitting on the floor in a heap of mahogany splinters.{/n}\n{n}Far away in the Upper City, in a salon with nobody in it, a great many chairs stand up.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "undone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "undone",
+          "Speaker": "Vellexia",
+          "Text": "\"How thrilling. You undid me. Nobody undoes me.\"\n{n}She gets up without taking the hand nobody offered her, and shakes a splinter out of her sleeve.{/n}\n\"You will show me how, and then you will do it again, slowly, so I can learn it. And then, sweetheart, we will discuss what you owe me for my furniture. I heard every chair in my house walk out of the door. Every one.\"",
+          "Choices": [
+            {
+              "Text": "\"Welcome back, Lady Vellexia.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.returned",
+                "vellexia.trickster.unmirrored",
+                "vellexia.trickster.cost.bare_walls",
+                "vellexia.trickster.presumed_dead",
+                "vellexia.prediction_known",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        },
+        {
+          "Id": "cruel",
+          "Speaker": "Narrator",
+          "Text": "{n}The haze thins. For a moment you see only your own reflection, looking very pleased with itself.{/n}\n{n}Behind it, two enormous eyes are wide awake.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "watched",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "watched",
+          "Speaker": "Vellexia",
+          "Text": "\"You will regret this for a very long time, Golarian. And I will be watching you do it.\"",
+          "Choices": [
+            {
+              "Text": "\"Hang her somewhere with a good view.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.returned",
+                "vellexia.trickster.kept_as_mirror",
+                "vellexia.trickster.cost.watched",
+                "vellexia.trickster.presumed_dead",
+                "vellexia.prediction_known",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.primed",
+        "vellexia.mirrored",
+        "vellexia.dead"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.returned",
+        "vellexia.trickster.declined",
+        "storyteller.dead"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2f5b7e0b76d3c5a42a431e1e33a8db09"
+      ],
+      "NativeReturnCue": "34a0d078b4ac51547a8f5e0e1c8e1e2c",
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.mirrored"
+    },
+    {
+      "Id": "vellexia.trickster.mirrored.unmirror_stores",
+      "Title": "Signed for",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Ask about the crate in the corner] \"That mirror. Take the straw off it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "\"Your glass, Commander.\" {n}Wilcer Garms has had the crate stood in the far corner of the stores, behind the lamp oil, as far from the door as it will go.{/n} \"It hums when the stores go quiet. The boys won't count stock near it after dark. I'd like it gone, or I'd like it paid for.\"\n{n}There is nobody left in Drezen who reads the stories in things. You will have to tell this one yourself, from the end.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "glass",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "glass",
+          "Speaker": "Vellexia",
+          "Text": "{n}A face forms in the haze, pale and furious and very interested.{/n}\n\"Oh, do go on. Tell {mf|him|her} the part where I was magnificent.\"",
+          "Choices": [
+            {
+              "Text": "[Play a nice trick on Vellexia] \"Hold still. I'm going to tell it backwards.\"",
+              "Next": "nice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.failed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Play a cruel trick on Vellexia] \"Stay a mirror. You'll never be bored. Everyone looks at you.\"",
+              "Next": "cruel",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.failed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Tell it backwards, without the sparks] \"Hold still. I'm going to tell it backwards.\"",
+              "Next": "no_sparks",
+              "Set": [],
+              "Requires": [
+                "trickster.failed"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Leave her in the glass] \"Stay a mirror. You'll never be bored. Everyone looks at you.\"",
+              "Next": "no_sparks_cruel",
+              "Set": [],
+              "Requires": [
+                "trickster.failed"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Cover the mirror again] \"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        },
+        {
+          "Id": "no_sparks",
+          "Speaker": "Narrator",
+          "Text": "{n}Your fingers find no sparks. The joke, it seems, remembers how it went.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "nice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "no_sparks_cruel",
+          "Speaker": "Narrator",
+          "Text": "{n}Your fingers find no sparks. You do not need any. You only have to walk away.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cruel",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "nice",
+          "Speaker": "Narrator",
+          "Text": "{n}You say her spell backwards: the last word first, the way you heard her say it to a juggler who bored her. The haze curdles into a shoulder, a knee, a fistful of blonde hair, and then an extremely angry succubus is sitting on the floor in a heap of mahogany splinters.{/n}\n{n}Far away in the Upper City, in a salon with nobody in it, a great many chairs stand up.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "undone",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "undone",
+          "Speaker": "Vellexia",
+          "Text": "\"How thrilling. You undid me. Nobody undoes me.\"\n{n}She gets up without taking the hand nobody offered her, and shakes a splinter out of her sleeve.{/n}\n\"You will show me how, and then you will do it again, slowly, so I can learn it. And then, sweetheart, we will discuss what you owe me for my furniture. I heard every chair in my house walk out of the door. Every one.\"",
+          "Choices": [
+            {
+              "Text": "\"Welcome back, Lady Vellexia.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.returned",
+                "vellexia.trickster.unmirrored",
+                "vellexia.trickster.cost.bare_walls",
+                "vellexia.trickster.presumed_dead",
+                "vellexia.prediction_known",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        },
+        {
+          "Id": "cruel",
+          "Speaker": "Narrator",
+          "Text": "{n}The haze thins. For a moment you see only your own reflection, looking very pleased with itself.{/n}\n{n}Behind it, two enormous eyes are wide awake.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "watched",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "watched",
+          "Speaker": "Vellexia",
+          "Text": "\"You will regret this for a very long time, Golarian. And I will be watching you do it.\"",
+          "Choices": [
+            {
+              "Text": "\"Hang her somewhere with a good view.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.returned",
+                "vellexia.trickster.kept_as_mirror",
+                "vellexia.trickster.cost.watched",
+                "vellexia.trickster.presumed_dead",
+                "vellexia.prediction_known",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.primed",
+        "vellexia.mirrored",
+        "vellexia.dead",
+        "storyteller.dead"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.returned",
+        "vellexia.trickster.declined"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "3c58e83a970a0f643a88e15f2323c805"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.mirrored"
+    },
+    {
+      "Id": "vellexia.trickster.sword.portrait",
+      "Title": "The one with no hands",
+      "Owner": "Vellexia",
+      "MinChapter": 4,
+      "MaxChapter": 4,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The Nexus, the night she died. Her manor is being stripped before it is cold. Your people bring back an inventory, because you asked for one.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "freed",
+              "Set": [],
+              "Requires": [
+                "vellexia.slaves_freed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "gallery",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.slaves_freed",
+                "vellexia.returned_picture"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "bought_back",
+              "Set": [],
+              "Requires": [
+                "vellexia.returned_picture"
+              ],
+              "Forbids": [
+                "vellexia.slaves_freed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "freed",
+          "Speaker": "Narrator",
+          "Text": "{n}When she fell, every chair, lamp and footstool in her house stood up and walked out of the door on two legs. The inventory is very short.{/n}\n{n}One item did not walk. It was never anyone. The unfinished portrait still hangs in the gallery where you last saw it, the hands still bare underpaint, and on the back, your chalk mark.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "gallery",
+          "Speaker": "Narrator",
+          "Text": "{n}The inventory runs to eleven pages of furniture that watches the looters work. Near the bottom, in a clerk's cramped hand: one portrait, unfinished, hands unpainted, chalk mark on reverse. Gallery.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "bought_back",
+          "Speaker": "Narrator",
+          "Text": "{n}Near the bottom of the inventory, in a clerk's cramped hand: one portrait, unfinished, hands unpainted, chalk mark on reverse. Gallery.{/n}\n{n}She sent it back to its artist, the afternoon you told her to. Then, it seems, she bought it back from him at twice his price. She never mentioned it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "choice",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "choice",
+          "Speaker": "Narrator",
+          "Text": "\"Everything else in that house used to be somebody,\" says the soldier who brought the list. \"That thing never was. The looters want it for the frame. Take it, or let them burn the canvas?\"",
+          "Choices": [
+            {
+              "Text": "[Take the portrait you marked] \"The only thing in that house that was never anyone. I'll have it.\"",
+              "Next": "taken",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Put the portrait to the torch] \"Burn it. She's had enough admirers.\"",
+              "Next": "burned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "taken",
+          "Speaker": "Narrator",
+          "Text": "{n}They roll the canvas off its stretcher and bring it back in an oilcloth. It is heavier than a canvas should be, and it does not like being rolled. By morning it has straightened itself inside the cloth.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Keep it dry.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.primed",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "burned",
+          "Speaker": "Narrator",
+          "Text": "{n}The canvas goes up quickly. The frame burns slowly. The soldiers who watched it say, afterwards, that the painted face did not change at all, and that they wish it had.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Enough.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.dead",
+        "vellexia.trickster.portrait_marked"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.mirrored",
+        "vellexia.trickster.primed",
+        "vellexia.trickster.declined",
+        "vellexia.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "7847c3e3537104f4694167af0b9fcd0e"
+      ],
+      "Chapters": [
+        4
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.dead"
+    },
+    {
+      "Id": "vellexia.trickster.sword.late_portrait",
+      "Title": "A likeness by the yard",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Drezen. Orrel Vask, the cambion haulier who strips dead lords' houses in the Upper City, is selling Lady Vellexia's gallery by the yard through the rift camp. His list reaches you with the morning dispatches and a note about Alushinyrran red.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "marked",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.portrait_marked"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "unmarked",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.trickster.portrait_marked"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "marked",
+          "Speaker": "Narrator",
+          "Text": "{n}You tell him which canvas you want. He already knows which one. It is the one with a chalk mark on the back, in your hand, and he has been holding it back from the other buyers to see what you would pay.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "unmarked",
+          "Speaker": "Narrator",
+          "Text": "{n}Most of the list is paintings of her. One entry is not like the others: \"Likeness, unfinished. Nobody sat for it. The hands were never painted. The lady kept it facing the wall.\" Vask has underlined it, and written \"cheap\" beside it, and then crossed out \"cheap\".{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Narrator",
+          "Text": "{n}His price for that one canvas is the price of a good warhorse. His postscript says he is charging for the frame he will not be sending.{/n}",
+          "Choices": [
+            {
+              "Text": "[Pay Orrel Vask to cut one portrait out of her gallery] \"The one with no hands. Leave the frame.\"",
+              "Next": "paid",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -200
+              }
+            },
+            {
+              "Text": "[Let the gallery burn with the rest] \"She's had enough admirers.\"",
+              "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Narrator",
+          "Text": "{n}The canvas comes up the rift road rolled in oilcloth, and Vask's porter will not hand it over until you have signed twice. It is heavier than a canvas should be.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Keep it dry.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.primed",
+                "vellexia.trickster.cost.late",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "refused",
+          "Speaker": "Narrator",
+          "Text": "{n}You write back one word. Vask sells the rest of the gallery to a factor from the Fleshmarkets, and the unfinished one goes into a brazier on a wharf.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Enough.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "vellexia.dead"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.mirrored",
+        "vellexia.trickster.primed",
+        "vellexia.trickster.declined",
+        "vellexia.trickster.returned"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.dead"
+    },
+    {
+      "Id": "vellexia.trickster.sword.likeness",
+      "Title": "The unfinished likeness",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Unwrap the unfinished portrait] \"She's dead. This isn't. Tell me what you see.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "conversant",
+          "Text": "{n}The Storyteller holds the canvas at arm's length, then close, then at arm's length again.{/n}\n\"A likeness nobody sat for. The painter reached the eyes and the smile and never the hands. And something in it did not go where the rest of her went.\"\n{n}He sets it down very carefully.{/n} \"I read that as a guess, Commander. I would not bet my life on it. You might bet hers.\"",
+          "Choices": [
+            {
+              "Text": "[Play a nice trick on Vellexia's portrait] \"Everyone in her house used to be someone. Her turn.\"",
+              "Next": "spell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.failed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Hold still.\"",
+              "Next": "no_sparks",
+              "Set": [],
+              "Requires": [
+                "trickster.failed"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "\"She told me herself: a crude copy leaves something behind. This is a very crude copy.\"",
+              "Next": "foresight",
+              "Set": [],
+              "Requires": [
+                "vellexia.bungler_explained"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Wrap it up again] \"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "foresight",
+          "Speaker": "conversant",
+          "Text": "\"Did she.\" {n}The old elf looks at the canvas again, as if it had interrupted him.{/n} \"Then you are not guessing. You are collecting on something she said to you. That is a different kind of story, and I do not think it ends kindly for anyone in it.\"",
+          "Choices": [
+            {
+              "Text": "[Play a nice trick on Vellexia's portrait] \"Everyone in her house used to be someone. Her turn.\"",
+              "Next": "spell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.failed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Hold still.\"",
+              "Next": "no_sparks",
+              "Set": [],
+              "Requires": [
+                "trickster.failed"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Wrap it up again] \"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "spell",
+          "Speaker": "Narrator",
+          "Text": "{n}Sparks come off your fingers, the same ones you watched come off hers in the Upper City. The canvas takes on the weight of flesh. Paint becomes a throat, a breath, a woman sitting up in the lamplight with her skirts still wet at the hem.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "wake",
+          "Speaker": "Vellexia",
+          "Text": "\"...Oh.\"\n{n}She lifts her hands. They are flawless, and nothing comes of them: no spark, no warmth, only paint-deep perfection.{/n}\n\"He never finished them. You brought me back unfinished. How dare you. How wonderful.\" {n}She flexes the fingers, watching them do nothing.{/n} \"Finish me, sweetheart, or I will find out who can.\"",
+          "Choices": [
+            {
+              "Text": "\"Welcome back, Lady Vellexia.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.returned",
+                "vellexia.trickster.cost.diminished",
+                "vellexia.trickster.presumed_dead",
+                "vellexia.prediction_known",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        },
+        {
+          "Id": "no_sparks",
+          "Speaker": "Narrator",
+          "Text": "{n}No sparks come. You do it the long way instead: her spell, word for word, the way you heard her say it to a juggler who bored her, and your hand flat on the painted throat until the paint is warm.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "spell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.primed",
+        "vellexia.dead"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.mirrored",
+        "vellexia.trickster.returned",
+        "vellexia.trickster.declined",
+        "storyteller.dead"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2f5b7e0b76d3c5a42a431e1e33a8db09"
+      ],
+      "NativeReturnCue": "34a0d078b4ac51547a8f5e0e1c8e1e2c",
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.dead"
+    },
+    {
+      "Id": "vellexia.trickster.sword.likeness_stores",
+      "Title": "Paint that watches",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "[Ask about the canvas in the oilcloth] \"That portrait. Unroll it.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "\"She's been staring at the boys for a week, Commander.\" {n}Wilcer Garms has pinned the canvas to the wall of the stores with four nails and hung a sack over it, and the sack keeps sliding off.{/n} \"The eyes follow you. The hands don't. I'd take it kindly if you did whatever you're going to do with it somewhere else.\"\n{n}There is nobody left in Drezen who reads the stories in things. You will have to trust your own guess.{/n}",
+          "Choices": [
+            {
+              "Text": "[Play a nice trick on Vellexia's portrait] \"Everyone in her house used to be someone. Her turn.\"",
+              "Next": "spell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "trickster.failed"
+              ],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Cast her spell from memory] \"I watched you do this to a juggler. Hold still.\"",
+              "Next": "no_sparks",
+              "Set": [],
+              "Requires": [
+                "trickster.failed"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Leave it on the wall] \"Not yet.\"",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "spell",
+          "Speaker": "Narrator",
+          "Text": "{n}Sparks come off your fingers, the same ones you watched come off hers in the Upper City. The canvas takes on the weight of flesh. Paint becomes a throat, a breath, a woman sitting up in the lamplight with her skirts still wet at the hem.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "wake",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "wake",
+          "Speaker": "Vellexia",
+          "Text": "\"...Oh.\"\n{n}She lifts her hands. They are flawless, and nothing comes of them: no spark, no warmth, only paint-deep perfection.{/n}\n\"He never finished them. You brought me back unfinished. How dare you. How wonderful.\" {n}She flexes the fingers, watching them do nothing.{/n} \"Finish me, sweetheart, or I will find out who can.\"",
+          "Choices": [
+            {
+              "Text": "\"Welcome back, Lady Vellexia.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.returned",
+                "vellexia.trickster.cost.diminished",
+                "vellexia.trickster.presumed_dead",
+                "vellexia.prediction_known",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia",
+          "SpeakerUnit": "a32a07903e428d34cb0e98a804d40569"
+        },
+        {
+          "Id": "no_sparks",
+          "Speaker": "Narrator",
+          "Text": "{n}No sparks come. You do it the long way instead: her spell, word for word, the way you heard her say it to a juggler who bored her, and your hand flat on the painted throat until the paint is warm.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "spell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.primed",
+        "vellexia.dead",
+        "storyteller.dead"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.mirrored",
+        "vellexia.trickster.returned",
+        "vellexia.trickster.declined"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "3c58e83a970a0f643a88e15f2323c805"
+      ],
+      "TricksterDevice": true,
+      "TricksterState": "vellexia.dead"
+    },
+    {
+      "Id": "vellexia.trickster.never_visited.invitation",
+      "Title": "A party in your honour",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Officers over Alushinyrran red in Drezen, the night the walls hold. The wine came up through the rifts with a cambion factor named Orrel Vask, who sells the Upper City its gossip on the way back down.{/n}\n{n}Somebody asks whether you met the famous Lady Vellexia while you were in the Abyss. The one who collects guests, and keeps the ones who bore her as furniture.{/n}",
+          "Choices": [
+            {
+              "Text": "[Boast about the Upper City, and tip the wine-factor to carry it word for word] \"Lady Vellexia? Charming. She's throwing a party in my honour. She just doesn't know it yet.\"",
+              "Next": "card",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
+              }
+            },
+            {
+              "Text": "[Change the subject] \"The Abyss? I don't talk about the Abyss.\"",
+              "Next": "silent",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "card",
+          "Speaker": "Narrator",
+          "Text": "{n}Vask laughs, pockets the coin, and repeats it back to you word for word, twice, so there can be no mistake.{/n}\n{n}Nine days later he is back, with lilac on his cuffs and a card he will not let anyone else touch. It invites you to a party that its hostess, by her own admission in the postscript, has not yet decided to throw.{/n}\n{n}\"Tell me who told you I would,\" the postscript ends. \"I should like to have them upholstered.\"{/n}",
+          "Choices": [
+            {
+              "Text": "\"Tell her I'll come.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.entry",
+                "vellexia.trickster.primed",
+                "vellexia.trickster.cost.predicted",
+                "vellexia.prediction_known",
+                "vellexia.started"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "silent",
+          "Speaker": "Narrator",
+          "Text": "{n}The table moves on to the siege. Vask sells the rest of his red to the quartermaster, and takes no message back down the rift with him.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Pour.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.declined"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "chapter_later"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.greeted",
+        "vellexia.dead",
+        "vellexia.trickster.entry",
+        "vellexia.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "vellexia.trickster.after.visit",
+      "Title": "Beside the bar",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"Lady Vellexia. You look well, for a dead woman.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}She is sitting at Fye's bar in the middle of a siege as if it were a salon, in a borrowed cloak with the lining turned out to show the silk. Every soldier in the room is pretending not to look at her. Fye has put a clean cup in front of her and is standing as far away from it as the bar allows.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "unmirrored",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.unmirrored"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "diminished",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [
+                "vellexia.trickster.unmirrored"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "entry",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.entry"
+              ],
+              "Forbids": [
+                "vellexia.trickster.unmirrored",
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "unmirrored",
+          "Speaker": "Vellexia",
+          "Text": "\"Show me. Now, here, with the whole room watching.\" {n}She turns on the stool so the room can see her do it.{/n} \"If you can make a woman into a thing and back again, you can make a tavern into a stage for an hour. Everyone in the Upper City thinks I am dead. I would like one person to see me being alive.\"",
+          "Choices": [
+            {
+              "Text": "[Show her how the trick works] \"Watch my hands. Not my face. Everyone watches the face.\"",
+              "Next": "gave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the trick] \"A trick explained is a trick spent. Guess.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "diminished",
+          "Speaker": "Vellexia",
+          "Text": "\"Look at them.\" {n}She lays her perfect, useless hands on the bar, palms up, where the lamplight can find every flaw in them. There are none. That is the flaw.{/n}\n\"I have tried every spell I know. They move like hands and they do nothing like mine. You will finish me. Or you will tell me who can. Choose which one you would like me to believe.\"",
+          "Choices": [
+            {
+              "Text": "[Show her how the trick works] \"It was your spell. I said it from memory. Watch my mouth, not my hands.\"",
+              "Next": "gave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the trick] \"A trick explained is a trick spent. Guess.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "entry",
+          "Speaker": "Vellexia",
+          "Text": "\"So this is the prophet.\" {n}She looks you over the way she looks over furniture.{/n} \"I came to see who predicted me. Nobody predicts me. It has put me in a very bad mood, and I have come a long way to enjoy it.\"\n\"Predict me, sweetheart. What do I do next?\"",
+          "Choices": [
+            {
+              "Text": "[Tell her how it was done] \"A wine-factor, a boast and nine days. That's all a prophecy is.\"",
+              "Next": "gave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the trick] \"A trick explained is a trick spent. Guess.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "gave",
+          "Speaker": "Narrator",
+          "Text": "{n}She watches as you explain it, and not your face. When you finish she is quiet for a long moment, which is the most frightening thing you have seen her do.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "gave_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "gave_end",
+          "Speaker": "Vellexia",
+          "Text": "\"Again. Slower.\"\n{n}You do it again. She mouths it with you, the way a duellist mirrors a lesson, and her eyes do not leave you once.{/n}\n\"There. Now I own it too. How generous of you. Generosity is so rarely interesting; I shall have to decide what it means.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "shell_held",
+              "Set": [],
+              "Requires": [
+                "vellexia.seal_agreed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "shell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.seal_agreed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Vellexia",
+          "Text": "\"Oh, good.\" {n}She is delighted, and it is not a pleasant sight.{/n}\n\"Keep it, then. I shall take it from you eventually. It will be so much more fun than being given it. Do you know how long it has been since anyone kept anything from me? Neither do I.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kept_shell_held",
+              "Set": [],
+              "Requires": [
+                "vellexia.seal_agreed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "kept_shell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.seal_agreed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "shell",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets a silver-rimmed shell on the bar, the size of her palm, with a cover of cloudy glass. It is warm from her hand.{/n}\n\"An echo shell. Open it and it asks for me. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take the shell.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.lesson_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "shell_held",
+          "Speaker": "Narrator",
+          "Text": "{n}She taps the silver rim of the shell at your belt, the one she gave you in her manor, the day she decided you might be worth an afternoon.{/n}\n\"You kept it. Good. Keep it open. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.lesson_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kept_shell",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets a silver-rimmed shell on the bar, the size of her palm, with a cover of cloudy glass. It is warm from her hand.{/n}\n\"An echo shell. Open it and it asks for me. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take the shell.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kept_shell_held",
+          "Speaker": "Narrator",
+          "Text": "{n}She taps the silver rim of the shell at your belt, the one she gave you in her manor, the day she decided you might be worth an afternoon.{/n}\n\"You kept it. Good. Keep it open. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.kept_as_mirror",
+        "vellexia.trickster.visited"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "ContactUnit": "a32a07903e428d34cb0e98a804d40569",
+      "InteractionHub": "vellexia.presence",
+      "RequiresAnyGroups": [
+        [
+          "vellexia.trickster.unmirrored",
+          "vellexia.trickster.cost.diminished",
+          "vellexia.trickster.entry"
+        ]
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.after.visit_quarters",
+      "Title": "A guest who was not invited",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Fye's is shut and boarded, so she has come to your quarters instead. The sentry at your door let her in. He will not be able to explain why, afterwards, and he will not try very hard.{/n}\n{n}She is sitting in your chair with her feet on your maps of the Worldwound, and she has already read them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "unmirrored",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.unmirrored"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "diminished",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [
+                "vellexia.trickster.unmirrored"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "entry",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.entry"
+              ],
+              "Forbids": [
+                "vellexia.trickster.unmirrored",
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "unmirrored",
+          "Speaker": "Vellexia",
+          "Text": "\"Show me. Now, here, with the whole room watching.\" {n}She turns on the stool so the room can see her do it.{/n} \"If you can make a woman into a thing and back again, you can make a tavern into a stage for an hour. Everyone in the Upper City thinks I am dead. I would like one person to see me being alive.\"",
+          "Choices": [
+            {
+              "Text": "[Show her how the trick works] \"Watch my hands. Not my face. Everyone watches the face.\"",
+              "Next": "gave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the trick] \"A trick explained is a trick spent. Guess.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "diminished",
+          "Speaker": "Vellexia",
+          "Text": "\"Look at them.\" {n}She lays her perfect, useless hands on the bar, palms up, where the lamplight can find every flaw in them. There are none. That is the flaw.{/n}\n\"I have tried every spell I know. They move like hands and they do nothing like mine. You will finish me. Or you will tell me who can. Choose which one you would like me to believe.\"",
+          "Choices": [
+            {
+              "Text": "[Show her how the trick works] \"It was your spell. I said it from memory. Watch my mouth, not my hands.\"",
+              "Next": "gave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the trick] \"A trick explained is a trick spent. Guess.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "entry",
+          "Speaker": "Vellexia",
+          "Text": "\"So this is the prophet.\" {n}She looks you over the way she looks over furniture.{/n} \"I came to see who predicted me. Nobody predicts me. It has put me in a very bad mood, and I have come a long way to enjoy it.\"\n\"Predict me, sweetheart. What do I do next?\"",
+          "Choices": [
+            {
+              "Text": "[Tell her how it was done] \"A wine-factor, a boast and nine days. That's all a prophecy is.\"",
+              "Next": "gave",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the trick] \"A trick explained is a trick spent. Guess.\"",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "gave",
+          "Speaker": "Narrator",
+          "Text": "{n}She watches as you explain it, and not your face. When you finish she is quiet for a long moment, which is the most frightening thing you have seen her do.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "gave_end",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "gave_end",
+          "Speaker": "Vellexia",
+          "Text": "\"Again. Slower.\"\n{n}You do it again. She mouths it with you, the way a duellist mirrors a lesson, and her eyes do not leave you once.{/n}\n\"There. Now I own it too. How generous of you. Generosity is so rarely interesting; I shall have to decide what it means.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "shell_held",
+              "Set": [],
+              "Requires": [
+                "vellexia.seal_agreed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "shell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.seal_agreed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Vellexia",
+          "Text": "\"Oh, good.\" {n}She is delighted, and it is not a pleasant sight.{/n}\n\"Keep it, then. I shall take it from you eventually. It will be so much more fun than being given it. Do you know how long it has been since anyone kept anything from me? Neither do I.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kept_shell_held",
+              "Set": [],
+              "Requires": [
+                "vellexia.seal_agreed"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "kept_shell",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.seal_agreed"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "shell",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets a silver-rimmed shell on the bar, the size of her palm, with a cover of cloudy glass. It is warm from her hand.{/n}\n\"An echo shell. Open it and it asks for me. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take the shell.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.lesson_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "shell_held",
+          "Speaker": "Narrator",
+          "Text": "{n}She taps the silver rim of the shell at your belt, the one she gave you in her manor, the day she decided you might be worth an afternoon.{/n}\n\"You kept it. Good. Keep it open. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.lesson_given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kept_shell",
+          "Speaker": "Narrator",
+          "Text": "{n}She sets a silver-rimmed shell on the bar, the size of her palm, with a cover of cloudy glass. It is warm from her hand.{/n}\n\"An echo shell. Open it and it asks for me. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Take the shell.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "kept_shell_held",
+          "Speaker": "Narrator",
+          "Text": "{n}She taps the silver rim of the shell at your belt, the one she gave you in her manor, the day she decided you might be worth an afternoon.{/n}\n\"You kept it. Good. Keep it open. I may answer. I may be busy. I am going home, sweetheart. My house is a ruin and I am told I am dead, and I have decided to find both restful, for a season.\" {n}She does not look back from the door.{/n}",
+          "Choices": [
+            {
+              "Text": "[Let her go.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.visited",
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.presence.failed"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.kept_as_mirror",
+        "vellexia.trickster.visited",
+        "vellexia.trickster.after.visit"
+      ],
+      "DelayHours": 48,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "RequiresAnyGroups": [
+        [
+          "vellexia.trickster.unmirrored",
+          "vellexia.trickster.cost.diminished",
+          "vellexia.trickster.entry"
+        ]
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.after.voice",
+      "Title": "Bare walls",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The shell lights on your table in the small hours, while the watch is changing on the walls. When you open it, Vellexia is sitting in a room with nothing in it but her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bare",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.unmirrored"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "hands",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [
+                "vellexia.trickster.unmirrored"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "predicted",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [
+                "vellexia.trickster.unmirrored",
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "bare",
+          "Speaker": "Vellexia",
+          "Text": "\"My house has bare walls, darling. Every chair I ever made has walked off to find its mother. The looters took the curtains. The Upper City has held two memorial feasts for me and I was not invited to either.\"\n{n}She turns the shell so you can see the room: a floor, a window, a woman standing in the middle of both.{/n}\n\"I am told I am dead. I have decided to find that restful. It is costing me a fortune.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "trick",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "hands",
+          "Speaker": "Vellexia",
+          "Text": "{n}She holds up her hands to the glass. They are flawless, and nothing comes of them.{/n}\n\"I went to a painter. A very good one. He looked at them for an hour and then he wept, and I had him thrown down the stairs, and then I had him carried back up to finish weeping. Nobody in the Upper City can finish me. Finish me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "trick",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "predicted",
+          "Speaker": "Vellexia",
+          "Text": "\"You predicted me. Nobody predicts me.\" {n}She lets that sit, on the far side of the glass.{/n}\n\"Say something dull now and I will know it was luck.\"",
+          "Choices": [
+            {
+              "Text": "\"Then I won't say anything. Guess what I'm thinking.\"",
+              "Next": "trick",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I'm glad you came to Drezen.\"",
+              "Next": "dull",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "dull",
+          "Speaker": "Vellexia",
+          "Text": "\"There. Luck.\" {n}Her face goes smooth and polite, which is worse than anger.{/n} \"One. People who bore me get three, and nobody has ever had three. Do not become the first.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "trick",
+              "Set": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "trick",
+          "Speaker": "Vellexia",
+          "Text": "\"And you still owe me the trick.\" {n}Her mouth curls.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "trick_given",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.lesson_given"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "trick_kept",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "trick_given",
+          "Speaker": "Vellexia",
+          "Text": "\"I tried your lesson on a footstool. It stood up and ran down the stairs, which I am told is progress. I had it caught and brought back. It is a footstool again. I am learning.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "trick_kept",
+          "Speaker": "Vellexia",
+          "Text": "\"You kept your little secret. I have been practising on the furniture I have left. None of it has stood up yet. When it does, sweetheart, I will come and show you, and you will not enjoy it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Vellexia",
+          "Text": "\"So. Now we come to it.\" {n}She sits down on the bare floor as if it were a throne.{/n}\n\"What do you want from me, Commander? Choose carefully. I remember everything anyone has ever wanted from me, and I have been bored by almost all of it.\"",
+          "Choices": [
+            {
+              "Text": "\"You. Not a debt, not a trick. You.\"",
+              "Next": "want",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Your company. Your worst opinions. Nothing I'd have to explain to a priest.\"",
+              "Next": "company",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Collect] \"You owe me your life. I'm collecting.\"",
+              "Next": "collect",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "want",
+          "Speaker": "Vellexia",
+          "Text": "\"Me.\" {n}She laughs, low and genuinely surprised, and for a moment she looks her age, which is very old.{/n}\n\"Do you remember what I told you about that game? Somebody always bares their throat. Somebody always decides to bite.\"\n\"Very well. Call me. I shall decide each time whether to answer, and I shall answer more often than is good for either of us.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll call.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.return_kept",
+                "vellexia.renewed_slow",
+                "vellexia.trickster.courting"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "company",
+          "Speaker": "Vellexia",
+          "Text": "\"My worst opinions. How greedy.\" {n}She stretches out on the floor with the shell propped on her knees.{/n}\n\"I have a great many. Most of them are about people who are still alive, which I intend to correct. Call me when you want to hear them. I may even let you disagree.\"",
+          "Choices": [
+            {
+              "Text": "\"I'll call.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.return_kept",
+                "vellexia.renewed_company"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "collect",
+          "Speaker": "Vellexia",
+          "Text": "{n}Her face does not change at all.{/n}\n\"You undid me once, sweetheart. Do not mistake that for owning me. Everything that ever owned me is furniture.\"\n\"We are finished, and I am the one who says so.\"\n{n}The glass clouds over. It does not light again.{/n}",
+          "Choices": [
+            {
+              "Text": "[Close the shell.]",
+              "Next": null,
+              "Set": [
+                "vellexia.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.visited"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.kept_as_mirror",
+        "vellexia.return_kept"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "vellexia.trickster.glass.uncovered",
+      "Title": "Everyone looks at her",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The mirror hangs in your quarters, because nowhere else in Drezen will have it. The servants dust it with their eyes shut. On the eve of the march it is the last thing you see before you blow out the lamp.{/n}\n{n}You lift the cloth anyway.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "speaks",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "speaks",
+          "Speaker": "Vellexia",
+          "Text": "\"There you are.\" {n}The eyes in the haze are exactly where they were the day you left her there, and they have not blinked since.{/n}\n\"You look tired. You look frightened. You look at me every night before you sleep, did you know that? Everyone looks at me. You saw to it.\"\n\"I have counted every one of your breaths since the Storyteller's shop, sweetheart. I will count the last one.\"",
+          "Choices": [
+            {
+              "Text": "[Cover the glass.]",
+              "Next": "covered",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "covered",
+          "Speaker": "Narrator",
+          "Text": "{n}The cloth goes back over the glass. Under it, the haze does not go still.{/n}",
+          "Choices": [
+            {
+              "Text": "\"Goodnight, Lady Vellexia.\"",
+              "Next": null,
+              "Set": [
+                "vellexia.farewell_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.kept_as_mirror"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.farewell_kept"
+      ],
+      "DelayHours": 24,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "vellexia.trickster.after.night",
+      "Title": "Less glass",
+      "Owner": "Vellexia",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}The night before the march. The wind off the Worldwound rattles the shutters of your quarters, and when you turn from the lamp she is already inside, standing by your bed in a dress the colour of a fresh bruise.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hands",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "arrived",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "arrived",
+          "Speaker": "Vellexia",
+          "Text": "\"You said the next part might be difficult to come back from. I dislike waiting to find out whether I shall be bored by your corpse.\" {n}She takes the lamp out of your hand and sets it down.{/n}\n\"So I came through three portals and a rift camp that smells of mules. Less glass between us, I believe I said.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "hands",
+          "Speaker": "Vellexia",
+          "Text": "\"You said the next part might be difficult to come back from. I dislike waiting to find out whether I shall be bored by your corpse.\" {n}She holds up her unfinished hands.{/n}\n\"These still do nothing. So you will have to do the undressing, sweetheart. All of it. I shall watch, and I shall tell you when you are doing it wrong.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "threshold",
+          "Speaker": "Narrator",
+          "Text": "{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth close on your lower lip just hard enough to make you understand they are not a human woman's.{/n}\n{n}The dress goes to the floor in one whisper of silk. She stands in the lamplight in nothing but her skin and lets you look, and watches you look, with the open, greedy pleasure of a collector who has finally been given the piece she wanted. Then she pushes you back onto your own bed, climbs over you with her knees either side of your hips, and settles astride you, and bends down until her hair falls around both your faces like a curtain.{/n}\n\"Bare your throat, sweetheart,\" she breathes against it. \"Let us see which of us bites.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        },
+        {
+          "Id": "morning",
+          "Speaker": "Narrator",
+          "Text": "{n}Morning. The bed is empty and the shutters are open. There is a bruise on your throat the exact shape of her mouth, and a note on your maps of the Worldwound in handwriting that slopes like a laugh.{/n}\n{n}\"Come back alive. I have not finished with you, and I refuse to be bored by a monument.\"{/n}",
+          "Choices": [
+            {
+              "Text": "[Button the collar over the bruise.]",
+              "Next": null,
+              "Set": [
+                "vellexia.trickster.night_kept"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.visited",
+        "vellexia.committed"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "inhuman",
+        "vellexia.trickster.kept_as_mirror",
+        "vellexia.trickster.night_kept"
+      ],
+      "DelayHours": 12,
+      "Optional": true,
+      "Relationship": "vellexia",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "Chapters": [
+        5
+      ],
+      "Remote": true
+    },
+    {
+      "Id": "vellexia.trickster.epilogue.commit",
+      "Title": "Kept waiting",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was, for the first time anyone could remember, kept waiting. She found this so novel that she did not have the Commander upholstered.{/n}\n{n}The terms she named that night were hers. The Commander agreed to them, which she found almost as surprising.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Vellexia",
+          "Paragraphs": [
+            {
+              "Text": "The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited to, and she sent anonymous corrections to the speeches.",
+              "Requires": [
+                "vellexia.trickster.presumed_dead"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this the most unsettling thing about the house.",
+              "Requires": [
+                "vellexia.trickster.cost.bare_walls"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way other women describe a scar.",
+              "Requires": [
+                "vellexia.trickster.cost.predicted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the Upper City now walk.",
+              "Requires": [
+                "vellexia.trickster.cost.trick_kept"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, always in company.",
+              "Requires": [
+                "vellexia.trickster.cost.bored_once"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.late_committed"
+      ],
+      "Forbids": [
+        "vellexia.committed",
+        "vellexia.closed",
+        "vellexia.trickster.declined",
+        "vellexia.trickster.kept_as_mirror",
+        "vellexia.farewell_kept"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "vellexia"
+    },
+    {
+      "Id": "vellexia.trickster.reaction.storyteller",
+      "Title": "Storyteller's word",
+      "Owner": "Storyteller",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the mirror...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Storyteller",
+          "Text": "\"I have read a great many mirrors, Commander. That is the first one that read me back.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.mirrored.unmirror"
+      ],
+      "Forbids": [
+        "storyteller.dead"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "2f5b7e0b76d3c5a42a431e1e33a8db09"
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.reaction.storyteller_likeness",
+      "Title": "Storyteller's word",
+      "Owner": "Storyteller",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About the portrait...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Storyteller",
+          "Text": "\"A portrait that was never anyone, until you. I will not ask what it cost her. I suspect she will tell you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.sword.likeness"
+      ],
+      "Forbids": [
+        "storyteller.dead"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "2f5b7e0b76d3c5a42a431e1e33a8db09"
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.reaction.storyteller_invitation",
+      "Title": "Storyteller's word",
+      "Owner": "Storyteller",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Lady Vellexia...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Storyteller",
+          "Text": "\"You told a story about a woman before she had lived it, and she came to see how it ends. Be careful, Commander. That is how I got into this trade.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.entry"
+      ],
+      "Forbids": [
+        "storyteller.dead"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "2f5b7e0b76d3c5a42a431e1e33a8db09"
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.reaction.finnean_freed",
+      "Title": "Finnean's word",
+      "Owner": "Finnean",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Vellexia...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Finnean",
+          "Text": "\"You turned her back? Huh. Good. She's awful, she'd make a hat out of me, but nobody should be stuck as a thing. Trust me.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.unmirrored",
+        "finnean.objected"
+      ],
+      "Forbids": [],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "615ef80243cfc184ba42286395880b0e"
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.reaction.finnean_kept",
+      "Title": "Finnean's word",
+      "Owner": "Finnean",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Vellexia...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Finnean",
+          "Text": "\"She's still in there, isn't she? I can hear her. Every night. I know what that's like, Commander. Please.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.kept_as_mirror",
+        "finnean.objected"
+      ],
+      "Forbids": [],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "615ef80243cfc184ba42286395880b0e"
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.reaction.daeran",
+      "Title": "Daeran's word",
+      "Owner": "Daeran",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Lady Vellexia...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Daeran",
+          "Text": "\"You made the most tasteful woman in the Abyss into a dressing mirror, and then you made her back? Without me? I'd have paid for a seat. I'd have paid for the mirror.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.unmirrored"
+      ],
+      "Forbids": [
+        "daeran.dead",
+        "daeran.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "4d978cbd2aa780d46874255282039f3f"
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.reaction.daeran_likeness",
+      "Title": "Daeran's word",
+      "Owner": "Daeran",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Lady Vellexia...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Daeran",
+          "Text": "\"She came out of a painting with unfinished hands, and the first thing she did was ask for a better painter. My dear, that is not a demon. That is an aristocrat.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.cost.diminished"
+      ],
+      "Forbids": [
+        "daeran.dead",
+        "daeran.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "4d978cbd2aa780d46874255282039f3f"
+      ]
+    },
+    {
+      "Id": "vellexia.trickster.reaction.daeran_invitation",
+      "Title": "Daeran's word",
+      "Owner": "Daeran",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"About Lady Vellexia...\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Daeran",
+          "Text": "\"An invitation from Lady Vellexia? People have died for less. Then they were upholstered.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "vellexia.trickster.entry"
+      ],
+      "Forbids": [
+        "daeran.dead",
+        "daeran.kicked_out"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "vellexia",
+      "Reaction": true,
+      "AnswerLists": [
+        "4d978cbd2aa780d46874255282039f3f"
+      ]
     }
   ],
   "Etudes": {
@@ -147756,7 +151329,10 @@
     "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
     "woljif.kicked_out": "2046d985bbc28a04188efa5fb06b6004",
     "woljif.dead": "2df11d659d8f57846a6a3f16492adbb8",
+    "vellexia.slaves_freed": "89965a2b67b792f438bf935fdb6ab96b",
     "trickster.failed": "256f3c081f21ed84fb3612465a76944b",
+    "storyteller.dead_dlc": "96ca61bbf4a54228be37a4a95fa0704d",
+    "storyteller.dead_main": "3c1405201bec99f4db67371f41a3c32a",
     "socot.gone": "007c4990584473046ac29666a235efb3",
     "shamira.killed": "dd6731e2cb230694f9c394fa32391ad5",
     "regill.left_plot": "6596f51f8e640384189c6708bd55ed50",
@@ -147770,6 +151346,8 @@
     "fool_king.gone": "10f5e03534e6fe74fbc8a94dc2e2c15c",
     "fool_king.crowned": "cc76b7abcda591f438d0f24972dafddc",
     "ending.wound_closed": "10cf0442f31a4796af8b28281f35e944",
+    "daeran.kicked_out": "3944d299c18b7174bb2d6820aa5dc336",
+    "daeran.dead": "4bb966e7df502394cba4b650a54ce92f",
     "council.fought_nocta_allied": "f4004d2687004c646bbe3a047d15f78f",
     "council.fought": "b80a81e97e26167489c439caf34888f8",
     "shyka.gone": "53fa4f1c1655c3c41b0280b3a8e4d8c9",
@@ -147979,7 +151557,7 @@
       "Title": "The unfinished likeness",
       "Description": "Vellexia has offered me a private wager about a portrait. Her interest is flattering, expensive, and unlikely to stay still.",
       "Objective": "Return to Vellexia's gallery",
-      "Guidance": "Complete the gallery interlude and its two follow-up visits before accepting Vellexia's Battlebliss invitation. All eight visits take place in her manor without a required wait. After she offers the echo shell, complete her native dates and leave peacefully when she dismisses you. The correspondence can then continue at the Nexus, and later in Drezen after your return from the Abyss. Her native dates remain separate. The shell carries her voice and image; it does not bring her to you.",
+      "Guidance": "Complete the gallery interlude and its two follow-up visits before accepting Vellexia's Battlebliss invitation. All eight visits take place in her manor without a required wait. After she offers the echo shell, complete her native dates and leave peacefully when she dismisses you. The correspondence can then continue at the Nexus, and later in Drezen after your return from the Abyss. Her native dates remain separate. The shell carries her voice and image; it does not bring her to you. On the Trickster path, a Vellexia turned into a mirror or struck down may be told back into herself, at a price she names; and one never met may hear that the Commander predicted her.",
       "StartedFlag": "vellexia.started",
       "ClosedFlag": "vellexia.closed",
       "CommittedFlag": "vellexia.committed",
@@ -147988,7 +151566,32 @@
         "vellexia.early_fight",
         "vellexia.final_fight"
       ],
-      "FailureFlags": []
+      "FailureFlags": [],
+      "UnavailableOverrides": {
+        "vellexia.dead": "vellexia.trickster.returned",
+        "vellexia.early_fight": "vellexia.trickster.returned",
+        "vellexia.final_fight": "vellexia.fight_survived"
+      },
+      "TricksterAccess": {
+        "vellexia.mirrored": {
+          "Detect": [
+            "vellexia.mirrored",
+            "vellexia.dead",
+            "vellexia.final_fight"
+          ],
+          "Device": "vellexia.trickster.mirrored.speaks",
+          "Returned": "vellexia.trickster.returned"
+        },
+        "vellexia.dead": {
+          "Detect": [
+            "vellexia.dead",
+            "vellexia.early_fight",
+            "vellexia.final_fight"
+          ],
+          "Device": "vellexia.trickster.sword.portrait",
+          "Returned": "vellexia.trickster.returned"
+        }
+      }
     },
     "aivu": {
       "Title": "The city underneath",
@@ -148377,8 +151980,17 @@
     "konomi.trickster.kyado_said_it": [
       "509eac8248670664fab0808c3e00fe04"
     ],
+    "vellexia.spared": [
+      "58d69774dbe696e46a9232167e8d3479"
+    ],
+    "vellexia.bungler_explained": [
+      "e3f0b327f22b2734e9fbce52b150cded"
+    ],
     "jerribeth.egg_lore_heard": [
       "93dfa9597191a6848b925d964d309fe4"
+    ],
+    "finnean.objected": [
+      "0f556aee8754497449c4a371281c13ef"
     ],
     "council.cauldron_given": [
       "b936cf96571c0354fb7a57f4987fea5c"
@@ -149058,6 +152670,30 @@
       "AnswerLists": [
         "0dc8b8604bb33c846a63f3eb62443674"
       ]
+    },
+    "vellexia.presence": {
+      "Unit": "a32a07903e428d34cb0e98a804d40569",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "NearUnit": "0f12118177d102f428a3b30b15b132eb",
+        "Side": "left",
+        "Distance": 1.5
+      },
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.in_person"
+      ],
+      "Forbids": [
+        "vellexia.closed",
+        "vellexia.trickster.kept_as_mirror",
+        "vellexia.trickster.visited"
+      ],
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}Vellexia is leaning on Fye's bar as if she had bought it. Judging by Fye's face, she is considering it.{/n}"
     }
   },
   "Derived": {
@@ -149070,6 +152706,14 @@
       ],
       [
         "jerribeth.trickster.attack_refused"
+      ]
+    ],
+    "vellexia.fight_survived": [
+      [
+        "vellexia.spared"
+      ],
+      [
+        "vellexia.trickster.returned"
       ]
     ],
     "trickster.cheated_death": [
@@ -149092,6 +152736,31 @@
         "sacrifice",
         "trickster.ever",
         "ending.trickster_full"
+      ]
+    ],
+    "vellexia.trickster.late_committed": [
+      [
+        "trickster.ever",
+        "vellexia.trickster.courting"
+      ]
+    ],
+    "vellexia.trickster.in_person": [
+      [
+        "vellexia.trickster.unmirrored"
+      ],
+      [
+        "vellexia.trickster.cost.diminished"
+      ],
+      [
+        "vellexia.trickster.entry"
+      ]
+    ],
+    "storyteller.dead": [
+      [
+        "storyteller.dead_main"
+      ],
+      [
+        "storyteller.dead_dlc"
       ]
     ],
     "konomi.trickster.presence_on": [
