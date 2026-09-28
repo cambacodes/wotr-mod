@@ -131,6 +131,7 @@ def at_threshold(id, title, entry, nodes, requires, forbids):
 
 
 # --- Chapter 4, Alushinyrra: the subject asks for a copy (optional primer; a variant read only) -----------------------
+# Physical in Chapter 4 is allowed: Rules.Available blocks Chapter 4 physical scenes only for relationship "tirabade".
 
 inline("areelu.trickster.audience.notes", "The subject's file", 4,
     '[Ask for your file] "Detailed notes, from before I was born. I\'m the subject. I\'d like a copy."', [

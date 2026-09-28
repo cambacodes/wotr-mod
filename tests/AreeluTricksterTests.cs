@@ -118,7 +118,11 @@ internal static class AreeluTricksterTests
             "An Areelu scene opens off the Trickster path.");
 
         // Chapter 4: the file (optional primer, a variant read only).
+        // Chapter 4 physical scenes are blocked only for the Tirabade route (Rules.Available: `if (scene.Relationship ==
+        // "tirabade") { if (!IsRemote(scene) && state.Chapter == 4) return false; }`); Areelu's file is physical in Chapter 4.
         var palace = World(story, 4, "trickster", "trickster.ever", "areelu.notes_told");
+        check(audience.Relationship == "areelu" && !Rules.IsRemote(audience) && palace.Chapter == 4 && Available(audience, palace),
+            "The Chapter 4 file is not reachable as a physical scene in the Alushinyrra audience.");
         check(Available(audience, palace) && !Available(audience, World(story, 4, "trickster", "trickster.ever")), "The file is not gated on her notes.");
         var filed = Program.Walk(audience, palace).Where(r => r.Has(audience.Id)).ToList();
         check(filed.Count > 0 && filed.All(r => r.Has(Noticed) && !r.Has(Started)), "The file starts the relationship or loses its note.");
