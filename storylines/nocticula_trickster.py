@@ -171,9 +171,16 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
 # The morning after the chair, delivered at the next rest before the descent.
 SCENES.append(scene("nocticula.trickster.defeated.morning", "Four crescents", "Nocticula", 6, "", [
     nar("start", '''{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}
-{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you."{/n}
+{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: "Where I can see you." And under that, smaller, as an afterthought that is not one: "The favour stands. I have not decided on it. I am enjoying not deciding."{/n}
 {n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}''',
-        c("[Buckle your armour over the marks.]")),
+        # Save-safe: choice 0 keeps its slot; the favour-paid reader with Daeran present is an appended choice.
+        c("[Buckle your armour over the marks.]", forbids=(PAID,)),
+        c("[Buckle your armour over the marks.]", "daeran", requires=(PAID,), forbids=("daeran.dead", "daeran.kicked_out")),
+        c("[Buckle your armour over the marks.]", requires=(PAID, "daeran.dead")),
+        c("[Buckle your armour over the marks.]", requires=(PAID, "daeran.kicked_out"), forbids=("daeran.dead",))),
+    nar("daeran", '''{n}Daeran reads the dust over your shoulder before you can wipe it. "An unnamed favour. To her." He sets his cup down very carefully.{/n}
+"Commander, I have signed some truly ruinous contracts in my life, and every one of them had a number in it."''',
+        c("[Wipe the table.]")),
 ], requires=("trickster.ever", SAID_YES), last=6, optional=True, Relationship="nocticula", Remote=True, Chapters=[6]))
 
 

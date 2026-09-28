@@ -151103,10 +151103,65 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}\n{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: \"Where I can see you.\"{/n}\n{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}",
+          "Text": "{n}You wake before the camp does, with the taste of night-blooming flowers in your mouth and four small crescents on your shoulder, where a projection's nails had no business reaching.{/n}\n{n}On the camp table, in the dust on your maps of the rift, someone has drawn a chair at the right hand of your own. Beneath it, in a hand you have never seen and know at once: \"Where I can see you.\" And under that, smaller, as an afterthought that is not one: \"The favour stands. I have not decided on it. I am enjoying not deciding.\"{/n}\n{n}Your companions are carefully not looking at your shoulder. Outside, the Wound is waiting.{/n}",
           "Choices": [
             {
               "Text": "[Buckle your armour over the marks.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Buckle your armour over the marks.]",
+              "Next": "daeran",
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.cost.shade_paid"
+              ],
+              "Forbids": [
+                "daeran.dead",
+                "daeran.kicked_out"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Buckle your armour over the marks.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.cost.shade_paid",
+                "daeran.dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Buckle your armour over the marks.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [
+                "nocticula.trickster.cost.shade_paid",
+                "daeran.kicked_out"
+              ],
+              "Forbids": [
+                "daeran.dead"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "daeran",
+          "Speaker": "Narrator",
+          "Text": "{n}Daeran reads the dust over your shoulder before you can wipe it. \"An unnamed favour. To her.\" He sets his cup down very carefully.{/n}\n\"Commander, I have signed some truly ruinous contracts in my life, and every one of them had a number in it.\"",
+          "Choices": [
+            {
+              "Text": "[Wipe the table.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -185804,8 +185859,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "trickster.was": "c820b3788f967e14f8bde3c17447157f",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",

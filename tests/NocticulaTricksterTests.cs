@@ -265,6 +265,22 @@ internal static class NocticulaTricksterTests
             "The court scene speaks before the Threshold call-in.");
         check(new[] { mirror, mirrorKept }.All(s => s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Alignment == null)),
             "A mirror page sets a flag.");
+        // The favour is visible the morning after: Daeran reads the unnamed debt when she was paid and he is present.
+        var morningPaid = World(story, 6, "trickster.ever", "nocticula.trickster.said_yes", Paid);
+        pages.Clear();
+        Program.Walk(morning, morningPaid, (page, _) => pages.Add(page));
+        check(pages.Contains("daeran"), "The morning after hides the unnamed favour from Daeran.");
+        foreach (var gone in new[] { "daeran.dead", "daeran.kicked_out" })
+        {
+            pages.Clear();
+            var outs = Program.Walk(morning, With(story, morningPaid, gone), (page, _) => pages.Add(page));
+            check(!pages.Contains("daeran") && outs.Any(r => r.Has(morning.Id)), "The morning after strands or shows an absent Daeran: " + gone);
+        }
+        pages.Clear();
+        Program.Walk(morning, World(story, 6, "trickster.ever", "nocticula.trickster.said_yes", Refused), (page, _) => pages.Add(page));
+        check(!pages.Contains("daeran"), "Daeran reads a favour that was refused.");
+        check(morning.Nodes[0].Choices[0].Text == "[Buckle your armour over the marks.]" && morning.Nodes[0].Choices[0].Next == null,
+            "The morning's choice 0 moved (save slot).");
         var order = story.Scenes.Select(s => s.Id).ToList();
         check(order.IndexOf(mirror.Id) < order.IndexOf(mirrorKept.Id) && order.IndexOf(mirrorKept.Id) < order.IndexOf(favour.Id),
             "The mirror pages are out of sibling order (b6, b7 before b8).");
