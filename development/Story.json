@@ -151353,6 +151353,81 @@
       "Relationship": "nocticula"
     },
     {
+      "Id": "nocticula.trickster.defeated.epilogue.mirror",
+      "Title": "A season as furniture",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}She never forgave Vellexia for the season she spent as furniture, mostly because nobody had told her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.secret_known.vellexia"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula",
+      "RequiresAnyGroups": [
+        [
+          "vellexia.trickster.unmirrored",
+          "vellexia.trickster.cost.diminished"
+        ]
+      ]
+    },
+    {
+      "Id": "nocticula.trickster.defeated.epilogue.mirror_kept",
+      "Title": "Black silk",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "end",
+          "Speaker": "Narrator",
+          "Text": "{n}Every winter a parcel reached the Commander from Alushinyrra: a square of black silk, the right size to cover a tall mirror, and a card in a hand the Commander knew. \"For the nights she should not watch.\"{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "nocticula.trickster.secret_known.vellexia",
+        "vellexia.trickster.kept_as_mirror"
+      ],
+      "Forbids": [],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "nocticula"
+    },
+    {
       "Id": "nocticula.trickster.defeated.epilogue.favour",
       "Title": "The favour",
       "Owner": "Epilogue",
@@ -151770,6 +151845,156 @@
       "AnswerLists": [
         "1ab909cc3a6194840b1475b99547c263"
       ]
+    },
+    {
+      "Id": "nocticula.trickster.court.vellexia",
+      "Title": "Black for Vellexia",
+      "Owner": "Nocticula",
+      "MinChapter": 6,
+      "MaxChapter": 6,
+      "Entry": "\"Lady Vellexia of the Upper City. You've heard.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}At the name the projection's attention sharpens, the way a cat's does at a sound behind a wall. The fires of Threshold lean in to listen with her.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "kept",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "diminished",
+              "Set": [],
+              "Requires": [
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "furniture",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "vellexia.trickster.kept_as_mirror",
+                "vellexia.trickster.cost.diminished"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "kept",
+          "Speaker": "Nocticula",
+          "Text": "\"Heard? Alushinyrra wore black for her this season. The highest seat in my city stood empty, and every little aristocrat beneath it began measuring it for their own backside. I sent flowers. Her doormen still tell callers that Lady Vellexia has temporarily left Alushinyrra, which is almost witty, for doormen.\"\n{n}Her voice drops.{/n} \"Then a little bird told me where she went. She is a looking-glass in your quarters, clown, and she is awake behind it. You kept her.\"\n{n}She considers you for a long moment.{/n} \"I could make you give her back. I will not. A succubus who lets herself be made into furniture has learned something I could never have taught her. Dust her. And cover her, on the nights you would rather she did not watch; she will be taking notes for me.\"",
+          "Choices": [
+            {
+              "Text": "\"Ask her yourself. Carefully.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.secret_known.vellexia"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "diminished",
+          "Speaker": "Nocticula",
+          "Text": "\"Heard? Alushinyrra wore black for her this season. The highest seat in my city stood empty, and every little aristocrat beneath it began measuring it for their own backside. I sent flowers. Her doormen still tell callers that Lady Vellexia has temporarily left Alushinyrra, which is almost witty, for doormen.\"\n\"Then a little bird told me she spent those months hanging on a wall as a very flattering portrait of herself, and came off it unfinished at the hands.\" {n}Her smile does not move.{/n} \"Nobody told me. I am told everything. I have not decided yet whether that is an insult to her or to me, and until I decide, it belongs to you.\"",
+          "Choices": [
+            {
+              "Text": "\"Ask her yourself. Carefully.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.secret_known.vellexia"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        },
+        {
+          "Id": "furniture",
+          "Speaker": "Nocticula",
+          "Text": "\"Heard? Alushinyrra wore black for her this season. The highest seat in my city stood empty, and every little aristocrat beneath it began measuring it for their own backside. I sent flowers. Her doormen still tell callers that Lady Vellexia has temporarily left Alushinyrra, which is almost witty, for doormen.\"\n\"Then a little bird told me my first lady spent those months as a piece of furniture in a mortal's house, and came out of it in a very bad temper.\" {n}Her smile does not move.{/n} \"Nobody told me. I am told everything. I have not decided yet whether that is an insult to her or to me, and until I decide, it belongs to you.\"",
+          "Choices": [
+            {
+              "Text": "\"Ask her yourself. Carefully.\"",
+              "Next": null,
+              "Set": [
+                "nocticula.trickster.secret_known.vellexia"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Nocticula"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "vellexia.trickster.presumed_dead"
+      ],
+      "Forbids": [
+        "nocticula.trickster.secret_known.vellexia",
+        "noct.acq.council_fight"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "nocticula",
+      "Chapters": [
+        6
+      ],
+      "AnswerLists": [
+        "765173e2a9e535e4cb66f0ec767c13af"
+      ],
+      "NativeReturnCue": "c10ef2b50ade65f42bbaa0cdfa61b7f9",
+      "ForbidOverrides": {
+        "noct.acq.council_fight": "nocticula.trickster.returned"
+      }
     },
     {
       "Id": "vellexia.trickster.mirrored.speaks",
@@ -185365,6 +185590,10 @@
         3,
         5
       ],
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      },
       "AnswerLists": [
         "417fa384f3250634bb71859fbc913453"
       ]
