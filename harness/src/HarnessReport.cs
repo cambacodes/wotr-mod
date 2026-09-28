@@ -68,7 +68,7 @@ namespace RRT.TestHarness
         public string Strategy = "";     // random:<seed> | dfs:<prefix>
         public List<int> Path = new List<int>();
         public List<ChoiceTaken> Choices = new List<ChoiceTaken>();
-        /// <summary>completed | not-started | stuck | step-limit | exception | skipped</summary>
+        /// <summary>completed | not-started | stuck | step-limit | exception | skipped | skipped-native (forced, gated on unforceable native keys)</summary>
         public string Result = "";
         public string? Detail;
         public bool CompletedFlagSet;

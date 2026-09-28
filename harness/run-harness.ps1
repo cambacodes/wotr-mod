@@ -97,7 +97,7 @@ $dotnet = Join-Path $env:LOCALAPPDATA 'RanRomanceTools\dotnet\dotnet.exe'
 if ($Build -or (!(Test-Path -LiteralPath $harnessDll))) {
     if ($DryRun) { Say "[dry-run] would build: $dotnet build $HarnessDir\RRT.TestHarness.csproj -c Release" Cyan }
     else {
-        & $dotnet build (Join-Path $HarnessDir 'RRT.TestHarness.csproj') -c Release --nologo -v quiet "-p:GameDir=$GameDir\"
+        & $dotnet build (Join-Path $HarnessDir 'RRT.TestHarness.csproj') -c Release --nologo -v quiet "-p:GameDir=$GameDir/"
         if ($LASTEXITCODE) { Say 'Harness build failed.' Red; exit 3 }
     }
 }

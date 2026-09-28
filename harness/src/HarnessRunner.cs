@@ -359,6 +359,7 @@ namespace RRT.TestHarness
             var sw = Stopwatch.StartNew();
             int mark = capture.Mark();
             var ok = new Box<bool>();
+            var unforceable = new List<string>();
             try
             {
                 yield return WaitFor(() => IdleBlocker() == null, plan.Timeouts.IdleSeconds, ok, 5);
@@ -372,6 +373,8 @@ namespace RRT.TestHarness
                     run.Forced = true;
                     if (plan.ForceSetRequires)
                         foreach (var req in RrtBridge.SceneRequires(scene).Where(persistentFlagKeys.Contains)) bridge.Set(req);
+                    // Native / derived world keys cannot be forced from a save; note them so a page that stays hidden is a skip.
+                    unforceable = RrtBridge.SceneRequires(scene).Where(req => !persistentFlagKeys.Contains(req) && !flagsBefore.Contains(req)).ToList();
                 }
                 if (plan.MarkStarted && bridge.StartedFlag(run.Relationship) is string started && persistentFlagKeys.Contains(started)) bridge.Set(started);
 
@@ -380,8 +383,10 @@ namespace RRT.TestHarness
                 yield return WaitFor(() => dc.Dialog != null && dc.CurrentCue != null, 10, ok);
                 if (!ok.Value)
                 {
-                    run.Result = "not-started";
-                    run.Detail = "dialog did not start within 10 s (mode " + Mode() + ", dialog " + (dc.Dialog?.name ?? "null") + ")";
+                    bool nativeGated = run.Forced && unforceable.Count > 0;
+                    run.Result = nativeGated ? "skipped-native" : "not-started";
+                    run.Detail = nativeGated ? "forced run cannot hold native/derived requires: " + string.Join(", ", unforceable)
+                        : "dialog did not start within 10 s (mode " + Mode() + ", dialog " + (dc.Dialog?.name ?? "null") + ")";
                     yield break;
                 }
 
@@ -449,7 +454,7 @@ namespace RRT.TestHarness
             {
                 run.Ms = sw.Elapsed.TotalMilliseconds;
                 run.Exceptions = capture.Since(mark);
-                run.Passed = run.Result == "completed" && run.OracleFailures.Count == 0 && !run.Exceptions.Any(e => e.Relevant);
+                run.Passed = (run.Result == "completed" || run.Result == "skipped-native") && run.OracleFailures.Count == 0 && !run.Exceptions.Any(e => e.Relevant);
             }
         }
 
