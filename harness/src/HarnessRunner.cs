@@ -383,6 +383,14 @@ namespace RRT.TestHarness
                         foreach (var req in RrtBridge.SceneRequires(scene).Where(persistentFlagKeys.Contains)) bridge.Set(req);
                     // Native / derived world keys cannot be forced from a save; note them so a page that stays hidden is a skip.
                     unforceable = RrtBridge.SceneRequires(scene).Where(req => !persistentFlagKeys.Contains(req) && !flagsBefore.Contains(req)).ToList();
+                    // RequiresAnyGroups: an unmet group is forced with its first persistent flag; a group with none is unforceable.
+                    foreach (var group in RrtBridge.SceneRequiresAnyGroups(scene) ?? new string[0][])
+                    {
+                        if (group.Any(flagsBefore.Contains)) continue;
+                        var pick = group.FirstOrDefault(persistentFlagKeys.Contains);
+                        if (pick != null && plan.ForceSetRequires) bridge.Set(pick);
+                        else if (pick == null) unforceable.Add("any-of [" + string.Join(", ", group) + "]");
+                    }
                     // Nor can the chapter: a page gated on a later chapter cannot open from an earlier save.
                     int chapter = RrtBridge.ToData(before).Chapter;
                     if (chapter < RrtBridge.SceneMinChapter(scene) || chapter > RrtBridge.SceneMaxChapter(scene))
