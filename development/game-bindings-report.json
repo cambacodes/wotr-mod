@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2827,
-  "unique_targets": 652,
+  "binding_uses": 2855,
+  "unique_targets": 661,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -165,6 +165,14 @@
     "78549b805f0a63e41805cfe3e02e2ea8": {
       "path": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/LabyrinthOfBaphomet/HepzamirahGhost.jbp",
       "type": "BlueprintUnit"
+    },
+    "15acf7ada5903ec429f7cd62a6162613": {
+      "path": "Weapons/Items/UniquePF2/Chapter3/CursedDelameresBowItem.jbp",
+      "type": "BlueprintItemWeapon"
+    },
+    "5fd95b425dd0b73488554abcb68382d3": {
+      "path": "Weapons/Items/UniquePF2/Chapter3/DelameresBowItem.jbp",
+      "type": "BlueprintItemWeapon"
     },
     "3b8021631cd1b7d4eb749601047a7bda": {
       "path": "Weapons/Items/UniquePF2/Chapter4/DreadfulOnslaughtItem.jbp",
@@ -550,6 +558,18 @@
       "path": "World/Dialogs/c3/TempleOfDelamere/KyadoDrezen/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "d7aadaa261a8023489bdba49216cc334": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "696f402f644bbb047b752f73c31fa344": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "5230d5fd7201db04287903ac6a95d30c": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0036.jbp",
+      "type": "BlueprintCue"
+    },
     "062f826dcda44cb4b9ae5649e95a974e": {
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0094_TrickReinf.jbp",
       "type": "BlueprintCue"
@@ -557,6 +577,14 @@
     "509eac8248670664fab0808c3e00fe04": {
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0109.jbp",
       "type": "BlueprintCue"
+    },
+    "3357022e6d1c5e047a0075a223606210": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0048.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "96993dc62aebc38469f890b857173117": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/TombOfDelamere_BookEvent.jbp",
+      "type": "BlueprintDialog"
     },
     "dc306897f75a31c4aaf9483ebdff0585": {
       "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0008.jbp",
@@ -1426,12 +1454,20 @@
       "path": "World/Encounters/AreeluLab/Items/SoulJar_Trickster.jbp",
       "type": "BlueprintItem"
     },
+    "3de8e7db06d4b9043bddfa77888ecfa5": {
+      "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/GotDelamereLoot.jbp",
+      "type": "BlueprintUnlockableFlag"
+    },
     "8c8b748a66ebad84f9b4cbcd73c2aab9": {
       "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/KyadoDead.jbp",
       "type": "BlueprintUnlockableFlag"
     },
     "96ca61bbf4a54228be37a4a95fa0704d": {
       "path": "World/Etudes/Common/DLC1_Megaepic/DLC1_Threshold_Outdoor/DLC1_StorytellerDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "418c4031658541909066be68b6e1fc22": {
+      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/DelameresRemainsFinished.jbp",
       "type": "BlueprintEtude"
     },
     "e4374a1783c74f68ae46bb5db22e0c58": {
