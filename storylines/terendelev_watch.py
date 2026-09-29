@@ -328,10 +328,16 @@ watch(P + "night.watch", "The north turret", "[Climb to the north turret after t
 {n}Your hands find the hem of her shirt and the long line of her back under it. Where they go, the human shape slips at its edges: silver surfaces along her collarbone like frost on a blade, and runs down her spine under your palms in a ridge of small, cool, perfect scales.{/n}''',
         c("Continue", "throat")),
     nar("throat", '''{n}She breathes in sharply at that, and her teeth, at your throat, are for an instant much too sharp. She stops. You feel her decide not to stop.{/n}
-{n}The cloak goes down on the stones by the brazier. She pulls you down onto it and over her, her knees on either side of you, her hair loose and silver in the red light, her hands spread flat on your back as if she means to hold the whole of you in place against the wind.{/n}''',
+{n}Her shirt goes over her head and away into the dark. In the red of the brazier she is all long pale lines and heat, the silver running down her spine and gathering at the small of her back where your hands have gone, and when you pull her against you her skin is so warm that the snow melts on her shoulders before it can settle.{/n}''',
+        c("Continue", "cloak")),
+    nar("cloak", '''{n}The cloak goes down on the stones by the brazier. She lies back on it and draws you down over her by the waist of your breeches, unhurried, the way she might draw a blade she has decided to use; her knees rise on either side of your hips and her heels lock behind you, and her breath comes quick and white against your mouth.{/n}''',
         c("Continue", "cut")),
-    nar("cut", '''{n}"Careless," she says against your mouth, like an order, and pulls you down the last inch to her, and the last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}''',
-        c("Continue", "morning")),
+    nar("cut", '''{n}"Careless," she says, like an order, with her hands spread flat on your back to hold you to her against the wind, and pulls you down the last inch.{/n}
+{n}The last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}''',
+        c("Continue", "grey")),
+    te("grey", '''{n}In the grey hour before the sixth bell she lies with her head on your chest and the cloak over you both, listening to the wound under her ear as if it were a heartbeat.{/n} "I have kept a great many watches," she says, very low. "I have never once been glad of the dark before. I was glad of this one." {n}Her fingers trace the edge of the dressing.{/n} "Do not tell the sentries. They would never respect me again."''',
+       c('"Your secret\'s safe."', "morning"),
+       c("[Pull the cloak up over her shoulders.]", "morning")),
     nar("morning", '''{n}The relief sentry comes up the stair at the sixth bell, coughing loudly and at length from the third step down.{/n}
 {n}By the time his helmet clears the top of the stair she is sitting against the parapet in her breeches and the borrowed cloak, and nothing else. Her shirt is gone. It is wound round your middle in long, very neat strips, knotted over the wound with a knot a sailor would envy.{/n}''',
         c("Continue", "sentry")),

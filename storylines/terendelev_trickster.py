@@ -85,6 +85,7 @@ RESTED = P + "rested"                     # the Commander let her go to Pharasma
 RETURNED = P + "returned"
 WOUND_OPEN = P + "cost.wound_open"        # the Commander's wound, cut open over her bones, never closes again
 GROUNDED = P + "grounded"                 # no dragon shape (lifted on the epilogue page unless cost.late)
+BLED_WHITE = P + "cost.bled_white"          # unprepared, the Commander bled past sense into the fire: cold hands for life
 LATE = P + "cost.late"                    # the late return: grounded for good
 QUEEN_FELL = P + "saw_the_queen_fall"     # she came back in the Irabeth twin, knowing her body killed Galfrey
 HUB = "terendelev.presence"
@@ -229,7 +230,8 @@ page(P + "wound.weeps", "What the wound weeps", [
         c("[Bind the wound and go back to sleep.]", "sleep")),
     nar("vrock", '''{n}The drop hisses. It eats a hole the size of a coin through the hide and goes on eating, down into the meat, until there is a smoking pit you could put your thumb in. The smell is appalling.{/n}
 {n}You try it on the flat of your own blade: nothing. On a strip of clean linen: only blood. On the dust of the Abyss itself, it smokes, faintly, like a candle just blown out.{/n}
-{n}It burns what belongs to the enemy, then, and leaves alone what does not. Or so it seems, from one dead vrock, one knife and a scrap of linen. A careful person would want more than that.{/n}''',
+{n}It burns what belongs to the enemy, then, and leaves alone what does not. You try it on a camp rat the dogs killed: the rat stays a dead rat. It does not mend, or make, or raise. Whatever the wound's blood is for, it is for taking things away.{/n}
+{n}One dead vrock, one rat, one knife and a scrap of linen. A careful person would want more than that. A careful person also writes it down.{/n}''',
         c("Continue", "scale_choice", requires=(SCALE_HELD,)),
         c("Continue", "sleep", forbids=(SCALE_HELD,))),
     nar("scale_choice", '''{n}Her scale is in the bottom of your pack, where it always is. You could not say why you think of it now. Perhaps only because it is the one thing you carry that came from someone who tried to heal you.{/n}''',
@@ -339,20 +341,26 @@ def bones(host):
               c('"You remade yourself once, out of nothing but your own spirit. The spirit\'s still here. What\'s missing is the rest of you."', "pitch"),
               c('"The Storyteller saw that cave. He says a dragon is as strong in spirit as in body. I\'m counting on it."', "pitch",
                 requires=(STORY_KNOWN,))),
-        fire("pitch", '''{n}You crouch at the edge of the fire, close enough that your brows singe, and you tell her what you have. It is not much. A wound that has never closed. Blood that burns what belongs to the Abyss and leaves other things alone.{/n}''',
+        fire("pitch", '''{n}You crouch at the edge of the fire, close enough that your brows singe, and you tell her what you have. A wound that has never closed. Blood that burns what belongs to the Abyss.{/n}''',
              c("Continue", "pitch_vrock", requires=(BLOOD_TESTED,)),
              c("Continue", "pitch_guess", forbids=(BLOOD_TESTED,))),
-        fire("pitch_vrock", '''{n}You have watched it do so: a coin-sized pit eaten through a dead vrock's hide, and a clean strip of linen left only red.{/n}''',
+        fire("pitch_vrock", '''{n}You know what it does, because you tested it in the Abyss before you trusted it with anything: a coin-sized pit eaten through a dead vrock's hide; your own blade and a strip of clean linen left untouched. It burns what is the enemy's. It makes nothing. Whatever it leaves, something else has to shape.{/n}''',
              c("Continue", "pitch_scale", requires=(SCALE_WARMED,)),
-             c("Continue", "pitch_guess", forbids=(SCALE_WARMED,))),
-        fire("pitch_scale", '''{n}And once, in the Abyss, a drop of it made her scale go warm for the length of a breath, and you told yourself you had been awake too long.{/n}''',
-             c("Continue", "pitch_guess")),
-        fire("pitch_guess", '''{n}It is not a rite. No priest has blessed it and no book you have read says it can be done. It is a guess, put together by someone who has had a long time to think about a wound and one evening to think about her.{/n}''',
-             c('"My blood for a body. If it burns what\'s his, whatever it leaves is yours. Make something of it."', "risk")),
-        voice("risk", '''"And if it does not stop at what is his?" {n}The fire is very still.{/n} "If it burns me too, then I was his all through, and I would rather know it. But there is worse. You would be giving me flesh made out of a wound the Abyss put in you. I might come out of that fire living. I might come out of it as another thing like the one you killed, with your blood in it instead of his. You cannot know that, wounded one. Neither can I."''',
-              c('"No. I can\'t know. I\'m asking anyway."', "choose"),
-              c('"I would rather gamble with you than leave you in the dark."', "choose")),
-        voice("choose", '''"Asking." {n}She says it as if she were turning a stone to see its underside.{/n} "He never asked. He took. And you come to the fire and ask." {n}The breathing at the heart of the skull quickens, a little.{/n} "Kenabres taught me that mortals are braver than we are, because they have less time to be afraid in. Very well. Open your wound, crusader. I will do the rest, or I will not, and we will both find out which."''',
+             c("Continue", "pitch_plan", forbids=(SCALE_WARMED,))),
+        fire("pitch_scale", '''{n}And a drop of it on her scale, once, made the scale warm for the length of a breath. You told yourself you had been awake too long. You have carried that scale against your spine every day since, and it is warm now.{/n}''',
+             c("Continue", "pitch_plan")),
+        fire("pitch_plan", '''{n}No priest would bless it. But it is a plan and not a hope: a burn that knows its enemy, a spirit that has remade itself once, and the one thing she lacks, which you have in you.{/n}''',
+             c("Continue", "hook")),
+        fire("pitch_guess", '''{n}So say the scorch marks on your sheets, and the healers in Drezen, who stopped touching your dressings bare-handed. You never tested it. You do not know how fast it burns, or how much of it a fire would take. It is a guess, and you know it is a guess.{/n}''',
+             c("Continue", "hook")),
+        voice("hook", '''"And what would you do with it?" {n}The voice is flat with exhaustion.{/n} "Bleed on a pyre, and hope?"''',
+              c('[Trust your intuition] "He holds you by a promise. The promise is his, and my blood burns what\'s his. Burn the hook out of you, and what\'s left can take the rest."', "risk",
+                mythic="Trickster"),
+              c('"My blood for a body. If it burns what\'s his, whatever it leaves is yours. Make something of it."', "risk")),
+        voice("risk", '''"And if it does not stop at what is his?" {n}The fire is very still.{/n} "If it burns me too, then I was his all through, and I would rather know it. And if it does not, you would be giving me flesh out of a wound the Abyss put in you. I might come out of that fire living. I might come out of it as another thing like the one you killed, with your blood in it instead of his."''',
+              c('"I can\'t know. I\'m asking anyway."', "choose"),
+              c('"I would rather gamble with you than leave you here."', "choose")),
+        voice("choose", '''"Asking." {n}She turns the word over.{/n} "He never asked. He took." {n}The breathing at the heart of the skull quickens, a little.{/n} "Very well. Open your wound, crusader. I will do the rest, or I will not."''',
               c("[Open the wound over the bones.]", "cut", mythic="Trickster"),
               c('[Lower the knife] "...Not like this. Not today."', "flinch", flags=(FLINCHED,))),
         voice("flinch", '''"No." {n}There is no anger in it; only something very tired, and very gentle.{/n} "No, I did not think so. It is a great deal to ask of anyone, and you have asked it of yourself." {n}The breathing slows.{/n} "Go on, then. I have waited in the dark before."''',
@@ -360,7 +368,18 @@ def bones(host):
         conv("flinch_host", h["fail_line"], c(h["fail_exit"])),
         fire("cut", '''{n}You take out your knife. The wound has never closed; it has only ever been persuaded to stop. You unpersuade it. The blade goes in along the old seam, and the pain that Terendelev once pried loose comes back all at once, as though it had been waiting at the door.{/n}
 {n}You hold your arm out over the fire and let the blood run down your wrist.{/n}''',
+             c("Continue", "measured", requires=(BLOOD_TESTED,)),
+             c("Continue", "unmeasured", forbids=(BLOOD_TESTED,))),
+        fire("measured", '''{n}You watched the vrock's hide in the Abyss and you know how fast it burns. So you count. You give the bones what they need to burn clean and not a drop more, and you keep your other hand pressed hard below the cut, the way a field surgeon taught you, so the blood goes where you send it.{/n}''',
              c("Continue", "burn")),
+        fire("unmeasured", '''{n}You have no idea how much it will take. The fire drinks and drinks. Your sight begins to grey at the edges, and the knights behind you have started to shout.{/n}''',
+             c("[Knowledge (Arcana) DC 24] Watch the flames and stop at the moment the fire has what it needs.",
+               check=dict(Skill="SkillKnowledgeArcana", DC=24, Success="burn", Failure="too_long", CommanderOnly=True)),
+             c("[Athletics DC 24] Stay on your feet and keep bleeding until it is done, whatever it takes.",
+               check=dict(Skill="SkillAthletics", DC=24, Success="burn", Failure="too_long", CommanderOnly=True))),
+        fire("too_long", '''{n}You bleed past sense. The fire takes more than it needs, a great deal more, and you do not know it until your knees hit the rubble and the stones come up to meet your cheek. Somebody is holding your arm up out of the flames. Somebody is swearing. The last thing you see before the grey closes is the fire at the heart of the skull, drinking.{/n}
+{n}You never quite get that blood back. For the rest of your life your hands are cold in winter, whatever the fire.{/n}''',
+             c("Continue", "burn", flags=(BLED_WHITE,))),
         fire("burn", '''{n}Where it strikes the bones, it burns: white and furious, the way it burns everything that belongs to the Abyss. The ravener's blackened ribs crack and blister. Something shrieks in the marrow that is not her, and burns, and is gone.{/n}
 {n}Where it strikes the slow breathing at the heart of the skull, it does not burn. It is taken.{/n}''',
              c("Continue", "shape")),
@@ -542,6 +561,8 @@ EPILOGUE_PARAGRAPHS = (
       requires=(P + "watch.irabeth_message",), forbids=("irabeth_dead",)),
     p('''{n}The Storyteller told her story for the rest of his long life, in every tavern and camp between Drezen and Absalom: the dragon who died twice and came back in a borrowed cloak. He always ended it in the same place: a crate in the lower town, a crock of honey, and a woman laughing. He said it was the only ending of his he had ever been allowed to hear.{/n}''',
       requires=(P + "watch.storyteller_thanked",), forbids=("storyteller.dead",)),
+    p('''{n}The fire at Iz had taken more of the Commander's blood than it needed, and some of it never came back. The Commander's hands were cold every winter after, whatever the fire. Every winter Terendelev took them between her own, which were always too warm, and held them until they were not, and said it was a debt the fire owed and she was collecting it.{/n}''',
+      requires=(BLED_WHITE,)),
     p('''{n}She never forgave the Lord of Locusts, and never pretended to. If the day came when he was cut down again, she said, she meant to be there, in whatever shape she had, and she meant it to be the last day.{/n}''',
       requires=(WATCH + "deskari_vow",)),
 )

@@ -171,6 +171,10 @@ internal static class TerendelevTricksterTests
             "Trk_Terendelev_Bones: the bones open without the live Trickster.");
         var back = One(bones, battle, new[] { Returned, P + "cost.wound_open", P + "grounded", "terendelev.started" }, P + "saw_the_queen_fall");
         check(!back.Has(Committed) && !back.Has(P + "cost.late"), "Trk_Terendelev_Bones: the return commits, or costs the late price.");
+        One(bones, battle, new[] { Returned, P + "cost.bled_white" });
+        var prepared = World(story, 5, "trickster", "trickster.ever", "iz.terendelev_battle", P + "blood_tested");
+        check(!Program.Walk(bones, prepared).Any(r => r.Has(P + "cost.bled_white")) && Program.Walk(bones, prepared).Any(r => r.Has(Returned)),
+            "Trk_Terendelev_Bones: the Abyss test does not spare the Commander the unmeasured bleeding.");
         check(Rules.PresenceWanted(stall, back) && !Rules.PresenceWanted(awning, back), "Trk_Terendelev_Bones: her presence does not stand in Drezen.");
         check(!Rules.Available(story, late, Later(story, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead", Returned), 48)),
             "Trk_Terendelev_Bones: the late page follows a return.");
@@ -225,9 +229,11 @@ internal static class TerendelevTricksterTests
         var sworn = One(commit, Later(story, square1, 50), new[] { Committed, P + "dressing" }, Closed);
         var turret = One(night, Later(story, sworn, 10), new[] { P + "night.seen" });
         check(turret.Has(Committed) && !turret.Has(Closed), "Trk_Terendelev_Commit: the turret closes her.");
-        check(night.Nodes.Any(n => n.Id == "cut") && night.Nodes.Any(n => n.Id == "morning")
-              && night.Nodes.SkipWhile(n => n.Id != "cut").Skip(1).First().Id == "morning",
-            "Trk_Terendelev_Commit: the night does not cut to the morning.");
+        var beats = new[] { "want", "wound", "hoard", "throat", "cloak", "cut", "grey", "morning" };
+        check(beats.All(b => night.Nodes.Any(n => n.Id == b))
+              && night.Nodes.Single(n => n.Id == "cut").Choices.All(c => c.Next == "grey")
+              && night.Nodes.Single(n => n.Id == "grey").Choices.All(c => c.Next == "morning"),
+            "Trk_Terendelev_Commit: the night is not staged up to the cut and carried into the morning.");
         var seelah = reactions.Single(s => s.Id == P + "react.seelah.watch");
         check(seelah.Requires.Contains(P + "night.seen") && seelah.AnswerLists.SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" }),
             "Trk_Terendelev_Commit: Seelah's word does not follow the turret.");

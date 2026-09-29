@@ -323990,7 +323990,7 @@
         {
           "Id": "vrock",
           "Speaker": "Narrator",
-          "Text": "{n}The drop hisses. It eats a hole the size of a coin through the hide and goes on eating, down into the meat, until there is a smoking pit you could put your thumb in. The smell is appalling.{/n}\n{n}You try it on the flat of your own blade: nothing. On a strip of clean linen: only blood. On the dust of the Abyss itself, it smokes, faintly, like a candle just blown out.{/n}\n{n}It burns what belongs to the enemy, then, and leaves alone what does not. Or so it seems, from one dead vrock, one knife and a scrap of linen. A careful person would want more than that.{/n}",
+          "Text": "{n}The drop hisses. It eats a hole the size of a coin through the hide and goes on eating, down into the meat, until there is a smoking pit you could put your thumb in. The smell is appalling.{/n}\n{n}You try it on the flat of your own blade: nothing. On a strip of clean linen: only blood. On the dust of the Abyss itself, it smokes, faintly, like a candle just blown out.{/n}\n{n}It burns what belongs to the enemy, then, and leaves alone what does not. You try it on a camp rat the dogs killed: the rat stays a dead rat. It does not mend, or make, or raise. Whatever the wound's blood is for, it is for taking things away.{/n}\n{n}One dead vrock, one rat, one knife and a scrap of linen. A careful person would want more than that. A careful person also writes it down.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -324522,7 +324522,7 @@
         {
           "Id": "pitch",
           "Speaker": "Narrator",
-          "Text": "{n}You crouch at the edge of the fire, close enough that your brows singe, and you tell her what you have. It is not much. A wound that has never closed. Blood that burns what belongs to the Abyss and leaves other things alone.{/n}",
+          "Text": "{n}You crouch at the edge of the fire, close enough that your brows singe, and you tell her what you have. A wound that has never closed. Blood that burns what belongs to the Abyss.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -324550,7 +324550,7 @@
         {
           "Id": "pitch_vrock",
           "Speaker": "Narrator",
-          "Text": "{n}You have watched it do so: a coin-sized pit eaten through a dead vrock's hide, and a clean strip of linen left only red.{/n}",
+          "Text": "{n}You know what it does, because you tested it in the Abyss before you trusted it with anything: a coin-sized pit eaten through a dead vrock's hide; your own blade and a strip of clean linen left untouched. It burns what is the enemy's. It makes nothing. Whatever it leaves, something else has to shape.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -324564,7 +324564,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "pitch_guess",
+              "Next": "pitch_plan",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -324578,11 +324578,27 @@
         {
           "Id": "pitch_scale",
           "Speaker": "Narrator",
-          "Text": "{n}And once, in the Abyss, a drop of it made her scale go warm for the length of a breath, and you told yourself you had been awake too long.{/n}",
+          "Text": "{n}And a drop of it on her scale, once, made the scale warm for the length of a breath. You told yourself you had been awake too long. You have carried that scale against your spine every day since, and it is warm now.{/n}",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "pitch_guess",
+              "Next": "pitch_plan",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "pitch_plan",
+          "Speaker": "Narrator",
+          "Text": "{n}No priest would bless it. But it is a plan and not a hope: a burn that knows its enemy, a spirit that has remade itself once, and the one thing she lacks, which you have in you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hook",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -324594,11 +324610,11 @@
         {
           "Id": "pitch_guess",
           "Speaker": "Narrator",
-          "Text": "{n}It is not a rite. No priest has blessed it and no book you have read says it can be done. It is a guess, put together by someone who has had a long time to think about a wound and one evening to think about her.{/n}",
+          "Text": "{n}So say the scorch marks on your sheets, and the healers in Drezen, who stopped touching your dressings bare-handed. You never tested it. You do not know how fast it burns, or how much of it a fire would take. It is a guess, and you know it is a guess.{/n}",
           "Choices": [
             {
-              "Text": "\"My blood for a body. If it burns what's his, whatever it leaves is yours. Make something of it.\"",
-              "Next": "risk",
+              "Text": "Continue",
+              "Next": "hook",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -324608,12 +324624,38 @@
           "Portrait": ""
         },
         {
-          "Id": "risk",
+          "Id": "hook",
           "Speaker": "Terendelev",
-          "Text": "\"And if it does not stop at what is his?\" {n}The fire is very still.{/n} \"If it burns me too, then I was his all through, and I would rather know it. But there is worse. You would be giving me flesh made out of a wound the Abyss put in you. I might come out of that fire living. I might come out of it as another thing like the one you killed, with your blood in it instead of his. You cannot know that, wounded one. Neither can I.\"",
+          "Text": "\"And what would you do with it?\" {n}The voice is flat with exhaustion.{/n} \"Bleed on a pyre, and hope?\"",
           "Choices": [
             {
-              "Text": "\"No. I can't know. I'm asking anyway.\"",
+              "Text": "[Trust your intuition] \"He holds you by a promise. The promise is his, and my blood burns what's his. Burn the hook out of you, and what's left can take the rest.\"",
+              "Next": "risk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "\"My blood for a body. If it burns what's his, whatever it leaves is yours. Make something of it.\"",
+              "Next": "risk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "9e8401e7703907e4d94189d5992dd13e"
+        },
+        {
+          "Id": "risk",
+          "Speaker": "Terendelev",
+          "Text": "\"And if it does not stop at what is his?\" {n}The fire is very still.{/n} \"If it burns me too, then I was his all through, and I would rather know it. And if it does not, you would be giving me flesh out of a wound the Abyss put in you. I might come out of that fire living. I might come out of it as another thing like the one you killed, with your blood in it instead of his.\"",
+          "Choices": [
+            {
+              "Text": "\"I can't know. I'm asking anyway.\"",
               "Next": "choose",
               "Set": [],
               "Requires": [],
@@ -324621,7 +324663,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I would rather gamble with you than leave you in the dark.\"",
+              "Text": "\"I would rather gamble with you than leave you here.\"",
               "Next": "choose",
               "Set": [],
               "Requires": [],
@@ -324635,7 +324677,7 @@
         {
           "Id": "choose",
           "Speaker": "Terendelev",
-          "Text": "\"Asking.\" {n}She says it as if she were turning a stone to see its underside.{/n} \"He never asked. He took. And you come to the fire and ask.\" {n}The breathing at the heart of the skull quickens, a little.{/n} \"Kenabres taught me that mortals are braver than we are, because they have less time to be afraid in. Very well. Open your wound, crusader. I will do the rest, or I will not, and we will both find out which.\"",
+          "Text": "\"Asking.\" {n}She turns the word over.{/n} \"He never asked. He took.\" {n}The breathing at the heart of the skull quickens, a little.{/n} \"Very well. Open your wound, crusader. I will do the rest, or I will not.\"",
           "Choices": [
             {
               "Text": "[Open the wound over the bones.]",
@@ -324700,8 +324742,92 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "measured",
+              "Set": [],
+              "Requires": [
+                "terendelev.trickster.blood_tested"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "unmeasured",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "terendelev.trickster.blood_tested"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "measured",
+          "Speaker": "Narrator",
+          "Text": "{n}You watched the vrock's hide in the Abyss and you know how fast it burns. So you count. You give the bones what they need to burn clean and not a drop more, and you keep your other hand pressed hard below the cut, the way a field surgeon taught you, so the blood goes where you send it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "burn",
               "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "unmeasured",
+          "Speaker": "Narrator",
+          "Text": "{n}You have no idea how much it will take. The fire drinks and drinks. Your sight begins to grey at the edges, and the knights behind you have started to shout.{/n}",
+          "Choices": [
+            {
+              "Text": "[Knowledge (Arcana) DC 24] Watch the flames and stop at the moment the fire has what it needs.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillKnowledgeArcana",
+                "DC": 24,
+                "Success": "burn",
+                "Failure": "too_long",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Athletics DC 24] Stay on your feet and keep bleeding until it is done, whatever it takes.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillAthletics",
+                "DC": 24,
+                "Success": "burn",
+                "Failure": "too_long",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "too_long",
+          "Speaker": "Narrator",
+          "Text": "{n}You bleed past sense. The fire takes more than it needs, a great deal more, and you do not know it until your knees hit the rubble and the stones come up to meet your cheek. Somebody is holding your arm up out of the flames. Somebody is swearing. The last thing you see before the grey closes is the fire at the heart of the skull, drinking.{/n}\n{n}You never quite get that blood back. For the rest of your life your hands are cold in winter, whatever the fire.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "burn",
+              "Set": [
+                "terendelev.trickster.cost.bled_white"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -325328,7 +325454,7 @@
         {
           "Id": "pitch",
           "Speaker": "Narrator",
-          "Text": "{n}You crouch at the edge of the fire, close enough that your brows singe, and you tell her what you have. It is not much. A wound that has never closed. Blood that burns what belongs to the Abyss and leaves other things alone.{/n}",
+          "Text": "{n}You crouch at the edge of the fire, close enough that your brows singe, and you tell her what you have. A wound that has never closed. Blood that burns what belongs to the Abyss.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -325356,7 +325482,7 @@
         {
           "Id": "pitch_vrock",
           "Speaker": "Narrator",
-          "Text": "{n}You have watched it do so: a coin-sized pit eaten through a dead vrock's hide, and a clean strip of linen left only red.{/n}",
+          "Text": "{n}You know what it does, because you tested it in the Abyss before you trusted it with anything: a coin-sized pit eaten through a dead vrock's hide; your own blade and a strip of clean linen left untouched. It burns what is the enemy's. It makes nothing. Whatever it leaves, something else has to shape.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -325370,7 +325496,7 @@
             },
             {
               "Text": "Continue",
-              "Next": "pitch_guess",
+              "Next": "pitch_plan",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -325384,11 +325510,27 @@
         {
           "Id": "pitch_scale",
           "Speaker": "Narrator",
-          "Text": "{n}And once, in the Abyss, a drop of it made her scale go warm for the length of a breath, and you told yourself you had been awake too long.{/n}",
+          "Text": "{n}And a drop of it on her scale, once, made the scale warm for the length of a breath. You told yourself you had been awake too long. You have carried that scale against your spine every day since, and it is warm now.{/n}",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "pitch_guess",
+              "Next": "pitch_plan",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "pitch_plan",
+          "Speaker": "Narrator",
+          "Text": "{n}No priest would bless it. But it is a plan and not a hope: a burn that knows its enemy, a spirit that has remade itself once, and the one thing she lacks, which you have in you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "hook",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -325400,11 +325542,11 @@
         {
           "Id": "pitch_guess",
           "Speaker": "Narrator",
-          "Text": "{n}It is not a rite. No priest has blessed it and no book you have read says it can be done. It is a guess, put together by someone who has had a long time to think about a wound and one evening to think about her.{/n}",
+          "Text": "{n}So say the scorch marks on your sheets, and the healers in Drezen, who stopped touching your dressings bare-handed. You never tested it. You do not know how fast it burns, or how much of it a fire would take. It is a guess, and you know it is a guess.{/n}",
           "Choices": [
             {
-              "Text": "\"My blood for a body. If it burns what's his, whatever it leaves is yours. Make something of it.\"",
-              "Next": "risk",
+              "Text": "Continue",
+              "Next": "hook",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -325414,12 +325556,38 @@
           "Portrait": ""
         },
         {
-          "Id": "risk",
+          "Id": "hook",
           "Speaker": "Terendelev",
-          "Text": "\"And if it does not stop at what is his?\" {n}The fire is very still.{/n} \"If it burns me too, then I was his all through, and I would rather know it. But there is worse. You would be giving me flesh made out of a wound the Abyss put in you. I might come out of that fire living. I might come out of it as another thing like the one you killed, with your blood in it instead of his. You cannot know that, wounded one. Neither can I.\"",
+          "Text": "\"And what would you do with it?\" {n}The voice is flat with exhaustion.{/n} \"Bleed on a pyre, and hope?\"",
           "Choices": [
             {
-              "Text": "\"No. I can't know. I'm asking anyway.\"",
+              "Text": "[Trust your intuition] \"He holds you by a promise. The promise is his, and my blood burns what's his. Burn the hook out of you, and what's left can take the rest.\"",
+              "Next": "risk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Mythic": "PlayerIsTrickster"
+            },
+            {
+              "Text": "\"My blood for a body. If it burns what's his, whatever it leaves is yours. Make something of it.\"",
+              "Next": "risk",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "9e8401e7703907e4d94189d5992dd13e"
+        },
+        {
+          "Id": "risk",
+          "Speaker": "Terendelev",
+          "Text": "\"And if it does not stop at what is his?\" {n}The fire is very still.{/n} \"If it burns me too, then I was his all through, and I would rather know it. And if it does not, you would be giving me flesh out of a wound the Abyss put in you. I might come out of that fire living. I might come out of it as another thing like the one you killed, with your blood in it instead of his.\"",
+          "Choices": [
+            {
+              "Text": "\"I can't know. I'm asking anyway.\"",
               "Next": "choose",
               "Set": [],
               "Requires": [],
@@ -325427,7 +325595,7 @@
               "Abort": false
             },
             {
-              "Text": "\"I would rather gamble with you than leave you in the dark.\"",
+              "Text": "\"I would rather gamble with you than leave you here.\"",
               "Next": "choose",
               "Set": [],
               "Requires": [],
@@ -325441,7 +325609,7 @@
         {
           "Id": "choose",
           "Speaker": "Terendelev",
-          "Text": "\"Asking.\" {n}She says it as if she were turning a stone to see its underside.{/n} \"He never asked. He took. And you come to the fire and ask.\" {n}The breathing at the heart of the skull quickens, a little.{/n} \"Kenabres taught me that mortals are braver than we are, because they have less time to be afraid in. Very well. Open your wound, crusader. I will do the rest, or I will not, and we will both find out which.\"",
+          "Text": "\"Asking.\" {n}She turns the word over.{/n} \"He never asked. He took.\" {n}The breathing at the heart of the skull quickens, a little.{/n} \"Very well. Open your wound, crusader. I will do the rest, or I will not.\"",
           "Choices": [
             {
               "Text": "[Open the wound over the bones.]",
@@ -325506,8 +325674,92 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "measured",
+              "Set": [],
+              "Requires": [
+                "terendelev.trickster.blood_tested"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "unmeasured",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "terendelev.trickster.blood_tested"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "measured",
+          "Speaker": "Narrator",
+          "Text": "{n}You watched the vrock's hide in the Abyss and you know how fast it burns. So you count. You give the bones what they need to burn clean and not a drop more, and you keep your other hand pressed hard below the cut, the way a field surgeon taught you, so the blood goes where you send it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "burn",
               "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "unmeasured",
+          "Speaker": "Narrator",
+          "Text": "{n}You have no idea how much it will take. The fire drinks and drinks. Your sight begins to grey at the edges, and the knights behind you have started to shout.{/n}",
+          "Choices": [
+            {
+              "Text": "[Knowledge (Arcana) DC 24] Watch the flames and stop at the moment the fire has what it needs.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillKnowledgeArcana",
+                "DC": 24,
+                "Success": "burn",
+                "Failure": "too_long",
+                "CommanderOnly": true
+              }
+            },
+            {
+              "Text": "[Athletics DC 24] Stay on your feet and keep bleeding until it is done, whatever it takes.",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillAthletics",
+                "DC": 24,
+                "Success": "burn",
+                "Failure": "too_long",
+                "CommanderOnly": true
+              }
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "too_long",
+          "Speaker": "Narrator",
+          "Text": "{n}You bleed past sense. The fire takes more than it needs, a great deal more, and you do not know it until your knees hit the rubble and the stones come up to meet your cheek. Somebody is holding your arm up out of the flames. Somebody is swearing. The last thing you see before the grey closes is the fire at the heart of the skull, drinking.{/n}\n{n}You never quite get that blood back. For the rest of your life your hands are cold in winter, whatever the fire.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "burn",
+              "Set": [
+                "terendelev.trickster.cost.bled_white"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -326561,6 +326813,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}The fire at Iz had taken more of the Commander's blood than it needed, and some of it never came back. The Commander's hands were cold every winter after, whatever the fire. Every winter Terendelev took them between her own, which were always too warm, and held them until they were not, and said it was a debt the fire owed and she was collecting it.{/n}",
+              "Requires": [
+                "terendelev.trickster.cost.bled_white"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}She never forgave the Lord of Locusts, and never pretended to. If the day came when he was cut down again, she said, she meant to be there, in whatever shape she had, and she meant it to be the last day.{/n}",
               "Requires": [
                 "terendelev.trickster.watch.deskari_vow"
@@ -326801,6 +327061,14 @@
               "Forbids": [
                 "storyteller.dead"
               ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The fire at Iz had taken more of the Commander's blood than it needed, and some of it never came back. The Commander's hands were cold every winter after, whatever the fire. Every winter Terendelev took them between her own, which were always too warm, and held them until they were not, and said it was a debt the fire owed and she was collecting it.{/n}",
+              "Requires": [
+                "terendelev.trickster.cost.bled_white"
+              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -327049,6 +327317,14 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}The fire at Iz had taken more of the Commander's blood than it needed, and some of it never came back. The Commander's hands were cold every winter after, whatever the fire. Every winter Terendelev took them between her own, which were always too warm, and held them until they were not, and said it was a debt the fire owed and she was collecting it.{/n}",
+              "Requires": [
+                "terendelev.trickster.cost.bled_white"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}She never forgave the Lord of Locusts, and never pretended to. If the day came when he was cut down again, she said, she meant to be there, in whatever shape she had, and she meant it to be the last day.{/n}",
               "Requires": [
                 "terendelev.trickster.watch.deskari_vow"
@@ -327290,6 +327566,14 @@
               "Forbids": [
                 "storyteller.dead"
               ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The fire at Iz had taken more of the Commander's blood than it needed, and some of it never came back. The Commander's hands were cold every winter after, whatever the fire. Every winter Terendelev took them between her own, which were always too warm, and held them until they were not, and said it was a debt the fire owed and she was collecting it.{/n}",
+              "Requires": [
+                "terendelev.trickster.cost.bled_white"
+              ],
+              "Forbids": [],
               "AnyGroups": []
             },
             {
@@ -331047,7 +331331,23 @@
         {
           "Id": "throat",
           "Speaker": "Narrator",
-          "Text": "{n}She breathes in sharply at that, and her teeth, at your throat, are for an instant much too sharp. She stops. You feel her decide not to stop.{/n}\n{n}The cloak goes down on the stones by the brazier. She pulls you down onto it and over her, her knees on either side of you, her hair loose and silver in the red light, her hands spread flat on your back as if she means to hold the whole of you in place against the wind.{/n}",
+          "Text": "{n}She breathes in sharply at that, and her teeth, at your throat, are for an instant much too sharp. She stops. You feel her decide not to stop.{/n}\n{n}Her shirt goes over her head and away into the dark. In the red of the brazier she is all long pale lines and heat, the silver running down her spine and gathering at the small of her back where your hands have gone, and when you pull her against you her skin is so warm that the snow melts on her shoulders before it can settle.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cloak",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "cloak",
+          "Speaker": "Narrator",
+          "Text": "{n}The cloak goes down on the stones by the brazier. She lies back on it and draws you down over her by the waist of your breeches, unhurried, the way she might draw a blade she has decided to use; her knees rise on either side of your hips and her heels lock behind you, and her breath comes quick and white against your mouth.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -331063,10 +331363,34 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}\"Careless,\" she says against your mouth, like an order, and pulls you down the last inch to her, and the last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}",
+          "Text": "{n}\"Careless,\" she says, like an order, with her hands spread flat on your back to hold you to her against the wind, and pulls you down the last inch.{/n}\n{n}The last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}",
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "grey",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "grey",
+          "Speaker": "Terendelev",
+          "Text": "{n}In the grey hour before the sixth bell she lies with her head on your chest and the cloak over you both, listening to the wound under her ear as if it were a heartbeat.{/n} \"I have kept a great many watches,\" she says, very low. \"I have never once been glad of the dark before. I was glad of this one.\" {n}Her fingers trace the edge of the dressing.{/n} \"Do not tell the sentries. They would never respect me again.\"",
+          "Choices": [
+            {
+              "Text": "\"Your secret's safe.\"",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Pull the cloak up over her shoulders.]",
               "Next": "morning",
               "Set": [],
               "Requires": [],
@@ -331264,7 +331588,23 @@
         {
           "Id": "throat",
           "Speaker": "Narrator",
-          "Text": "{n}She breathes in sharply at that, and her teeth, at your throat, are for an instant much too sharp. She stops. You feel her decide not to stop.{/n}\n{n}The cloak goes down on the stones by the brazier. She pulls you down onto it and over her, her knees on either side of you, her hair loose and silver in the red light, her hands spread flat on your back as if she means to hold the whole of you in place against the wind.{/n}",
+          "Text": "{n}She breathes in sharply at that, and her teeth, at your throat, are for an instant much too sharp. She stops. You feel her decide not to stop.{/n}\n{n}Her shirt goes over her head and away into the dark. In the red of the brazier she is all long pale lines and heat, the silver running down her spine and gathering at the small of her back where your hands have gone, and when you pull her against you her skin is so warm that the snow melts on her shoulders before it can settle.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "cloak",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "cloak",
+          "Speaker": "Narrator",
+          "Text": "{n}The cloak goes down on the stones by the brazier. She lies back on it and draws you down over her by the waist of your breeches, unhurried, the way she might draw a blade she has decided to use; her knees rise on either side of your hips and her heels lock behind you, and her breath comes quick and white against your mouth.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -331280,10 +331620,34 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}\"Careless,\" she says against your mouth, like an order, and pulls you down the last inch to her, and the last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}",
+          "Text": "{n}\"Careless,\" she says, like an order, with her hands spread flat on your back to hold you to her against the wind, and pulls you down the last inch.{/n}\n{n}The last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}",
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "grey",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Terendelev"
+        },
+        {
+          "Id": "grey",
+          "Speaker": "Terendelev",
+          "Text": "{n}In the grey hour before the sixth bell she lies with her head on your chest and the cloak over you both, listening to the wound under her ear as if it were a heartbeat.{/n} \"I have kept a great many watches,\" she says, very low. \"I have never once been glad of the dark before. I was glad of this one.\" {n}Her fingers trace the edge of the dressing.{/n} \"Do not tell the sentries. They would never respect me again.\"",
+          "Choices": [
+            {
+              "Text": "\"Your secret's safe.\"",
+              "Next": "morning",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Pull the cloak up over her shoulders.]",
               "Next": "morning",
               "Set": [],
               "Requires": [],
@@ -340039,8 +340403,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
