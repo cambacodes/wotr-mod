@@ -206,7 +206,7 @@ audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in t
 "The war, the war, the war." {n}Her lip curls.{/n} "Every Golarian I have ever opened is furnished entirely with the war. It is like visiting a man who owns one chair."''',
         c("Continue", "door")),
     conv("door", '''{n}She stops in the middle of you, as if she had found a window left open in a house she had thought was shut.{/n}
-"And you let me in. That is the part I cannot get over." {n}She sits up.{/n} "Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own." {n}She considers you.{/n} "In my court they whisper that a mind already opened to one of us is a door out of that mouth. Nobody I know has lived to say whether it is true. I have always meant to find out, on someone else." {n}Her laughter is low and delighted.{/n} "And you just opened yours to me, in front of my court, for fun."''',
+"And you let me in. That is the part I cannot get over." {n}She sits up.{/n} "Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own." {n}She considers you.{/n} "And I leave a thread in every mind I open. Just a thread, at the back, where you'd never look. It's how I find a head again when I want it; it's how I'll walk into your dreams tonight, from here, if I feel like it." {n}Her fingers drum the arm of the throne.{/n} "In my court they whisper that a thread like that is a door out of the Abyss's mouth, if the one on the other end holds it open. Nobody I know has lived to say whether it is true. I have always meant to find out, on someone else." {n}Her laughter is low and delighted.{/n} "And you just opened yours to me, in front of my court, for fun."''',
         c('"Is that a threat?"', "dreams"),
         c('"Then I\'ll know where to find you."', "dreams")),
     conv("dreams", '''{n}She goes deeper, idly, the way a bored woman turns the pages of a book she has already decided not to buy, and then she finds something she does like. Her breath catches, very slightly.{/n}
@@ -286,11 +286,11 @@ page(P + "ch4.first_taste", "Someone in the dream", [
 SCENES.append(scene(P + "killed.setup", "What's left of her", "Shamira", 5,
     '[Touch your temple] "Her essence goes in your cauldron. What happens to the rest of her?"', [
     conv("rest", '''{n}Socothbenoth blinks his black eyes at you, twice, as if you had asked him where the sun goes at night.{/n}
-"The rest? The rest of Shamira? Oh, darling. Nothing happens to the rest of her. That is rather the point." {n}He waves a hand, and his rings clatter.{/n} "Demons who die at home stay dead. The Abyss is a mouth; it chews and it swallows and it does not give back. The Nirvana goes in my cauldron, the rest goes down the Abyss's throat, and my sister sleeps alone for once in a thousand years. Delicious."''',
+"The rest? The rest of Shamira? Oh, darling. Nothing happens to the rest of her. That is rather the point." {n}He waves a hand, and his rings clatter.{/n} "Demons who die at home stay dead. The Abyss is a mouth; it chews and it swallows and it does not give back. The Nirvana goes in my cauldron, the rest goes down the Abyss's throat, and my sister sleeps alone for once in an age. Delicious."''',
         c("Continue", "her_words", requires=(LET_IN,)),
         c("Continue", "never_in", forbids=(LET_IN,))),
     n("her_words", "Narrator", '''{n}"The Abyss is a mouth, and it swallows its own." You have heard it before, or something very like it, in her Harem, with the heat of her behind your forehead and the whole court watching.{/n}
-{n}She has been in your head. She knows the way in. A dying thing goes for the nearest door it knows.{/n}''',
+{n}And you have felt it since: something left at the back of your head where she was, fine as a hair. On bad nights it tugs, the way a line tugs when something on the far end turns over in its sleep. She has been in your head. There is a thread in you tied to her. A dying thing goes for the nearest door it knows, and holds on to whatever line it has.{/n}''',
         c('"She\'s been inside my head, Socothbenoth. She knows the way. What if I leave that door open while I kill her?"', "open", flags=(PRIMED, STARTED)),
         c('[Keep it to yourself] "Just curious."', abort=True)),
     n("never_in", "Narrator", '''{n}She has never been in your head. Not freely. You kept her out, or she never asked, or she took what she wanted by force and went away again. There is no door in you that she knows.{/n}
@@ -337,7 +337,10 @@ def voice_nodes(place):
     heavy = nar("heavy", '''{n}There is a second heartbeat behind your eyes. It has been there since the boudoir, you realise, keeping perfectly in time with yours so that you would not notice it. Now it falls out of step.{/n}
 {n}Something at the back of your head, where you left the door open, turns over like a sleeper, and there is a smell in your nose that is not in the room: cinders, and cinnamon.{/n}''' if closet else
                 '''{n}There is a second heartbeat behind your eyes, and it falls out of step with yours. There is a smell in the room that nothing in the room could make: cinders, and cinnamon.{/n}''',
-                c("[Listen.]", "voice"))
+                c("[Listen.]", "moment"))
+    moment = nar("moment", '''{n}And now you remember the instant she fell, the one you would not let yourself think about in the boudoir.{/n}
+{n}Under the carpets, at the back of your head, something went taut, like a line when a fish takes the hook. You did not pull. You did not let go. You held the door open the way you had told Socothbenoth you would, and something came up the line into you, hot and fast and furious, and settled, and kept perfectly still, so that you would not notice it until you were home.{/n}''',
+                c("Continue", "voice"))
     voice = sh("voice", WHISPER + '''"Carpets."
 {n}The voice is hers, and it is coming from inside your own skull, and it is shaking with a rage so complete that it has gone quiet.{/n}
 "The whole fight. I was tearing at your friends with everything I had, and I reached into your head for your plan, and all I could find was carpets. My lady's carpets. You thought about the pattern." {n}The heat behind your eyes rises.{/n} "And then I was dying, and there was a door open at the back of you, the door I already knew, and I went through it before I could think. I have never in my existence done anything before I could think."''',
@@ -377,7 +380,7 @@ def voice_nodes(place):
         c("[Say nothing.]", flags=(VEIL,)))
     after_letter = nar("after", '''{n}The second heartbeat goes on beside yours in the dark. After a while its warmth is the only warm thing in the room, and you fall asleep with it, the way you would fall asleep beside someone.{/n}''',
         c("[Sleep.]"))
-    nodes = [opening, heavy, voice, hid_before, blind_before, cold]
+    nodes = [opening, heavy, moment, voice, hid_before, blind_before, cold]
     if closet:
         nodes.append(socoth)
     nodes += [noct_node(), choose, honest, bargain, kept]
@@ -539,7 +542,7 @@ epilogue("drowned", '''{n}For a night after the boudoir, the Commander carried t
     requires=(DECLINED,), forbids=(RETURNED,))
 
 epilogue("never", '''{n}The Ardent Dream once opened the Commander's head in her Harem and found it full of moonshine recipes, and went looking under them, and found nothing she could name. The mortal's mad patron sent the mortal back to Alushinyrra with a cauldron and a murder to do, and the mortal did not do it.{/n}
-{n}She never learned why. It was, she said, the most interesting thing that had happened in her city in a thousand years.{/n}''',
+{n}She never learned why. It was, she said, the most interesting thing that had happened in her city in an age.{/n}''',
     requires=(READ,), forbids=(KILLED,))
 
 epilogue("walked", '''{n}Shamira the Ardent Dream walked out of a wardrobe in Drezen one spring night in a body the Commander had stolen for her, and went home to Alushinyrra, and was not seen in Drezen again before the war ended.{/n}

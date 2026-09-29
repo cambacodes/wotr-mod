@@ -128,7 +128,7 @@ page(P + "after.visit", "Out of the wardrobe", [
     sh("did", '''"I am." {n}She does not take her finger away.{/n} "I have been in thousands of heads. I have never once gone back to the same one twice. Nobody told me it would feel like..." {n}She stops. She takes the finger away and looks at it.{/n} "Like coming home. It feels like coming home. I am furious about it, and I do not know with whom."''',
         c("Continue", "torn", requires=(TORN,)),
         c("Continue", "body", forbids=(TORN,))),
-    sh("restful", '''"Liar." {n}Fondly, for her.{/n} "You miss being alone in there. I can feel you missing it, some nights; it moves through your dreams like a draught under a door." {n}She takes her finger away.{/n} "I know that draught. I have had it for six thousand years. I did not think I would ever be the thing that caused it."''',
+    sh("restful", '''"Liar." {n}Fondly, for her.{/n} "You miss being alone in there. I can feel you missing it, some nights; it moves through your dreams like a draught under a door." {n}She takes her finger away.{/n} "I know that draught. I have had it since I fell. I did not think I would ever be the thing that caused it."''',
         c("Continue", "torn", requires=(TORN,)),
         c("Continue", "body", forbids=(TORN,))),
     sh("torn", '''{n}She sees you looking at the seam across her collarbone, white against the fire-coloured silk, and does not cover it.{/n}
@@ -220,7 +220,7 @@ page(P + "harem", "Think of anything but me", [
     nar("morning", '''{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}
 {n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. Demons do not sleep. She has been watching the whole night.{/n}''',
         c("Continue", "watch")),
-    sh("watch", '''"You dreamed of me all night." {n}Softly.{/n} "I was in there; I'm always in there. But you were dreaming of me before I came in, and in six thousand years I have never once walked into a dream that was already about me and been made welcome in it." {n}She puts one finger on your forehead, the old place.{/n} "It was like a house after a party. Everyone else gone, and the lamps still warm."
+    sh("watch", '''"You dreamed of me all night." {n}Softly.{/n} "I was in there; I'm always in there. But you were dreaming of me before I came in, and in all my long life I have never once walked into a dream that was already about me and been made welcome in it." {n}She puts one finger on your forehead, the old place.{/n} "It was like a house after a party. Everyone else gone, and the lamps still warm."
 "I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back."''',
         c("Continue", "last_home", requires=(LAST_HOME,)),
         c("Continue", "last_peace", requires=(LAST_PEACE,)),
@@ -230,7 +230,7 @@ page(P + "harem", "Think of anything but me", [
         c("Continue", "want")),
     sh("last_peace", '''"The last dream you had alone. The green fields. The crusade going home in no order, singing." {n}She looks away.{/n} "It's the dullest dream anyone has ever given me. I walk that road every night. I don't know why."''',
         c("Continue", "want")),
-    sh("last_her", '''"The last dream you had alone was me. On the throne, burning." {n}She looks away.{/n} "Nobody in six thousand years has ever dreamed me as I wanted to be. I go back and stand in it, some nights. It's the warmest room you have."''',
+    sh("last_her", '''"The last dream you had alone was me. On the throne, burning." {n}She looks away.{/n} "Nobody, ever, has dreamed me as I wanted to be. I go back and stand in it, some nights. It's the warmest room you have."''',
         c("Continue", "want")),
     sh("want", '''"Now, listen." {n}The throne-room voice comes back, not all the way.{/n} "You will not shut me in the back of your head again, or anywhere else. Not in a promise, not in a Ledger. You will not ask me to be kind; I tried it for a week and it did not take. And when you want a night alone, just one, you will come here, through that wardrobe, and ask me for it to my face." {n}A slow smile.{/n} "I will make you work for it. I will give it to you in the end. Those are not terms, Golarian. That is simply how it is going to be."''',
         c('"Agreed."', "go", flags=(HELD,)),
@@ -289,7 +289,7 @@ page(P + "after.throne", "The chair she wants", [
     nar("start", '''{n}She comes out of the wardrobe at dusk this time, in something plain and dark that does not suit her, and sits in your chair at your table, among your maps, and drinks your wine without asking.{/n}
 {n}She has a look you know from the Harem: the look of a woman who has decided to say something dangerous and is enjoying the moment before she says it.{/n}''',
         c("Continue", "chair")),
-    sh("chair", '''"I have been thinking about my lady's chair." {n}She turns your cup in her long fingers.{/n} "I have been thinking about it for three hundred years; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds."
+    sh("chair", '''"I have been thinking about my lady's chair." {n}She turns your cup in her long fingers.{/n} "I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds."
 "Now I have your fire and a body nobody grew for a queen, and I am thinking about it again."''',
         c("Continue", "hiding", requires=(NOCT_HIDING,)),
         c("Continue", "not_hiding", forbids=(NOCT_HIDING,))),
@@ -306,7 +306,7 @@ page(P + "after.throne", "The chair she wants", [
 "You mean it." {n}Flatly.{/n} "You would help me take any throne in the Abyss but hers." {n}A long breath.{/n} "I should hate you for that. I find I only hate that you have a reason, and that I can see it, and that it is not a bad one."
 "Very well. Keep your reason. I will keep wanting. We will see which of us gets tired first."''',
         c("Continue", "socoth")),
-    sh("stand", '''"Stand where I can see you." {n}She tastes it.{/n} "Neither for me nor against me. Only there, where I can see you, when I go." {n}Something softens, and then she makes it hard again.{/n} "That is what she did for me, you know. My lady. Three hundred years of standing where I could see her. It was the cruellest kindness anyone ever did me, and I loved her for it." {n}She drinks.{/n} "Fine. Stand there. I'll look."''',
+    sh("stand", '''"Stand where I can see you." {n}She tastes it.{/n} "Neither for me nor against me. Only there, where I can see you, when I go." {n}Something softens, and then she makes it hard again.{/n} "That is what she did for me, you know. My lady. Year upon year of standing where I could see her. It was the cruellest kindness anyone ever did me, and I loved her for it." {n}She drinks.{/n} "Fine. Stand there. I'll look."''',
         c("Continue", "socoth")),
     sh("lie", '''{n}She laughs until she has to put the cup down.{/n}
 "Oh, you thought 'never' so loudly I nearly went deaf. You thought it in capitals. And you said 'of course' with your mouth, like a man selling a lame horse to a blind woman." {n}She wipes her eyes.{/n} "Nobody in the Abyss has ever lied to me so badly. They wouldn't dare. You lie to me the way other people bring flowers."

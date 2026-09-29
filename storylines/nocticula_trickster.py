@@ -466,7 +466,7 @@ GREETED = "nocticula.trickster.court.shamira_greeted"
 SCENES.append(scene("nocticula.trickster.court.shamira", "Something behind your eyes", "Nocticula", 5,
     "[Keep your thoughts on the carpet.] \"I've done what I came to do, Lady.\"", [
     nt("sniff", '''{n}Nocticula does not answer at once. She closes her eyes, as she did when she thought you were her brother, and breathes in, slowly, through her nose.{/n}
-"You have done something." {n}Her eyes open, and they go straight to your face, and then a little behind it, as if your skull were glass.{/n} "There is blood on you, and my brother's sickly perfume, and under both of them something I have smelled in my bed every night for three hundred years. Not on you. In you."''',
+"You have done something." {n}Her eyes open, and they go straight to your face, and then a little behind it, as if your skull were glass.{/n} "There is blood on you, and my brother's sickly perfume, and under both of them something I have smelled in my bed every night since I pulled her off the black water. Not on you. In you."''',
         c("Continue", "found")),
     nt("found", '''{n}She crosses the room without seeming to walk. She does not touch you. She bends, close enough that you can feel the cold coming off her skin, and looks into your eyes the way one looks into a window at night, for whoever is standing behind the glass.{/n}
 "Oh," {n}says the Lady in Shadow, very softly.{/n} "Oh, you clever, clever little thief. You killed her in my bedroom, and you let her in."''',

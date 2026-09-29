@@ -153793,7 +153793,7 @@
         {
           "Id": "sniff",
           "Speaker": "Nocticula",
-          "Text": "{n}Nocticula does not answer at once. She closes her eyes, as she did when she thought you were her brother, and breathes in, slowly, through her nose.{/n}\n\"You have done something.\" {n}Her eyes open, and they go straight to your face, and then a little behind it, as if your skull were glass.{/n} \"There is blood on you, and my brother's sickly perfume, and under both of them something I have smelled in my bed every night for three hundred years. Not on you. In you.\"",
+          "Text": "{n}Nocticula does not answer at once. She closes her eyes, as she did when she thought you were her brother, and breathes in, slowly, through her nose.{/n}\n\"You have done something.\" {n}Her eyes open, and they go straight to your face, and then a little behind it, as if your skull were glass.{/n} \"There is blood on you, and my brother's sickly perfume, and under both of them something I have smelled in my bed every night since I pulled her off the black water. Not on you. In you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -283633,7 +283633,7 @@
         {
           "Id": "door",
           "Speaker": "conversant",
-          "Text": "{n}She stops in the middle of you, as if she had found a window left open in a house she had thought was shut.{/n}\n\"And you let me in. That is the part I cannot get over.\" {n}She sits up.{/n} \"Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own.\" {n}She considers you.{/n} \"In my court they whisper that a mind already opened to one of us is a door out of that mouth. Nobody I know has lived to say whether it is true. I have always meant to find out, on someone else.\" {n}Her laughter is low and delighted.{/n} \"And you just opened yours to me, in front of my court, for fun.\"",
+          "Text": "{n}She stops in the middle of you, as if she had found a window left open in a house she had thought was shut.{/n}\n\"And you let me in. That is the part I cannot get over.\" {n}She sits up.{/n} \"Understand where you are, Golarian. A demon who dies here, in the Abyss, stays dead. No priest calls us back. No judge weighs us. The Abyss is a mouth, and it swallows its own.\" {n}She considers you.{/n} \"And I leave a thread in every mind I open. Just a thread, at the back, where you'd never look. It's how I find a head again when I want it; it's how I'll walk into your dreams tonight, from here, if I feel like it.\" {n}Her fingers drum the arm of the throne.{/n} \"In my court they whisper that a thread like that is a door out of the Abyss's mouth, if the one on the other end holds it open. Nobody I know has lived to say whether it is true. I have always meant to find out, on someone else.\" {n}Her laughter is low and delighted.{/n} \"And you just opened yours to me, in front of my court, for fun.\"",
           "Choices": [
             {
               "Text": "\"Is that a threat?\"",
@@ -284131,7 +284131,7 @@
         {
           "Id": "rest",
           "Speaker": "conversant",
-          "Text": "{n}Socothbenoth blinks his black eyes at you, twice, as if you had asked him where the sun goes at night.{/n}\n\"The rest? The rest of Shamira? Oh, darling. Nothing happens to the rest of her. That is rather the point.\" {n}He waves a hand, and his rings clatter.{/n} \"Demons who die at home stay dead. The Abyss is a mouth; it chews and it swallows and it does not give back. The Nirvana goes in my cauldron, the rest goes down the Abyss's throat, and my sister sleeps alone for once in a thousand years. Delicious.\"",
+          "Text": "{n}Socothbenoth blinks his black eyes at you, twice, as if you had asked him where the sun goes at night.{/n}\n\"The rest? The rest of Shamira? Oh, darling. Nothing happens to the rest of her. That is rather the point.\" {n}He waves a hand, and his rings clatter.{/n} \"Demons who die at home stay dead. The Abyss is a mouth; it chews and it swallows and it does not give back. The Nirvana goes in my cauldron, the rest goes down the Abyss's throat, and my sister sleeps alone for once in an age. Delicious.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -284159,7 +284159,7 @@
         {
           "Id": "her_words",
           "Speaker": "Narrator",
-          "Text": "{n}\"The Abyss is a mouth, and it swallows its own.\" You have heard it before, or something very like it, in her Harem, with the heat of her behind your forehead and the whole court watching.{/n}\n{n}She has been in your head. She knows the way in. A dying thing goes for the nearest door it knows.{/n}",
+          "Text": "{n}\"The Abyss is a mouth, and it swallows its own.\" You have heard it before, or something very like it, in her Harem, with the heat of her behind your forehead and the whole court watching.{/n}\n{n}And you have felt it since: something left at the back of your head where she was, fine as a hair. On bad nights it tugs, the way a line tugs when something on the far end turns over in its sleep. She has been in your head. There is a thread in you tied to her. A dying thing goes for the nearest door it knows, and holds on to whatever line it has.{/n}",
           "Choices": [
             {
               "Text": "\"She's been inside my head, Socothbenoth. She knows the way. What if I leave that door open while I kill her?\"",
@@ -284406,6 +284406,22 @@
           "Choices": [
             {
               "Text": "[Listen.]",
+              "Next": "moment",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "moment",
+          "Speaker": "Narrator",
+          "Text": "{n}And now you remember the instant she fell, the one you would not let yourself think about in the boudoir.{/n}\n{n}Under the carpets, at the back of your head, something went taut, like a line when a fish takes the hook. You did not pull. You did not let go. You held the door open the way you had told Socothbenoth you would, and something came up the line into you, hot and fast and furious, and settled, and kept perfectly still, so that you would not notice it until you were home.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "voice",
               "Set": [],
               "Requires": [],
@@ -284748,6 +284764,22 @@
           "Choices": [
             {
               "Text": "[Listen.]",
+              "Next": "moment",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Shamira"
+        },
+        {
+          "Id": "moment",
+          "Speaker": "Narrator",
+          "Text": "{n}And now you remember the instant she fell, the one you would not let yourself think about in the boudoir.{/n}\n{n}Under the carpets, at the back of your head, something went taut, like a line when a fish takes the hook. You did not pull. You did not let go. You held the door open the way you had told Socothbenoth you would, and something came up the line into you, hot and fast and furious, and settled, and kept perfectly still, so that you would not notice it until you were home.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
               "Next": "voice",
               "Set": [],
               "Requires": [],
@@ -285975,7 +286007,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}The Ardent Dream once opened the Commander's head in her Harem and found it full of moonshine recipes, and went looking under them, and found nothing she could name. The mortal's mad patron sent the mortal back to Alushinyrra with a cauldron and a murder to do, and the mortal did not do it.{/n}\n{n}She never learned why. It was, she said, the most interesting thing that had happened in her city in a thousand years.{/n}",
+          "Text": "{n}The Ardent Dream once opened the Commander's head in her Harem and found it full of moonshine recipes, and went looking under them, and found nothing she could name. The mortal's mad patron sent the mortal back to Alushinyrra with a cauldron and a murder to do, and the mortal did not do it.{/n}\n{n}She never learned why. It was, she said, the most interesting thing that had happened in her city in an age.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -286200,7 +286232,7 @@
         {
           "Id": "look",
           "Speaker": "Shamira",
-          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. Six thousand years of my existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I have never once slept in the same one twice. Do you know why?\"",
+          "Text": "{n}Shamira's voice whispers inside your mind,{/n} \"Look at this.\" {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} \"A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet.\"\n\"In my Harem there are forty rooms. I have never once slept in the same one twice. Do you know why?\"",
           "Choices": [
             {
               "Text": "\"Because you don't sleep.\"",
@@ -286278,7 +286310,7 @@
         {
           "Id": "without",
           "Speaker": "Shamira",
-          "Text": "\"Less.\" {n}She says it flatly, the way a surgeon names what he has cut off.{/n} \"The fire was the part of Heaven I stole when I left. It was what made my light wither the fools who looked at me too long. It kept me warm in the Abyss for longer than your gods have had names.\" {n}Silence.{/n} \"Now I am only a demon, and I have never in my existence been only anything. I can still get into your head. That, they can't pull out of me with a cauldron. But I am cold, Golarian. I am so cold.\"",
+          "Text": "\"Less.\" {n}She says it flatly, the way a surgeon names what he has cut off.{/n} \"The fire was the part of Heaven I stole when I left. It was what made my light wither the fools who looked at me too long. It kept me warm in the Abyss every day since I fell.\" {n}Silence.{/n} \"Now I am only a demon, and I have never in my existence been only anything. I can still get into your head. That, they can't pull out of me with a cauldron. But I am cold, Golarian. I am so cold.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286416,7 +286448,7 @@
         {
           "Id": "noct",
           "Speaker": "Shamira",
-          "Text": "\"She knew, you know.\" {n}The voice has gone thin again.{/n} \"My lady. She knew I wanted her chair; I think she has always known. She let me want it for three hundred years the way you let a cat want the canary: because it is pretty to watch.\" {n}A long silence.{/n}\n\"And when you brought me to her behind your eyes she said hello, and she thanked you. That is all I was, at the end. A thing to thank someone for.\" {n}The heat behind your eyes flares, very suddenly, and then cools.{/n} \"I will make her regret that. Not today. I have no hands today.\"",
+          "Text": "\"She knew, you know.\" {n}The voice has gone thin again.{/n} \"My lady. She knew I wanted her chair; I think she has always known. She let me want it for years the way you let a cat want the canary: because it is pretty to watch.\" {n}A long silence.{/n}\n\"And when you brought me to her behind your eyes she said hello, and she thanked you. That is all I was, at the end. A thing to thank someone for.\" {n}The heat behind your eyes flares, very suddenly, and then cools.{/n} \"I will make her regret that. Not today. I have no hands today.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286735,7 +286767,7 @@
         {
           "Id": "reported",
           "Speaker": "Shamira",
-          "Text": "{n}She finds it before you can decide whether to say it.{/n}\n\"After. You told her after, and she thanked you. 'She coveted my throne. You've saved me the trouble of having to deal with her.'\" {n}Her voice is very flat.{/n} \"Trouble. Three hundred years at her right hand, and I was trouble, and you saved her from it, and she let you walk out of her palace with my body still warm on her floor.\"",
+          "Text": "{n}She finds it before you can decide whether to say it.{/n}\n\"After. You told her after, and she thanked you. 'She coveted my throne. You've saved me the trouble of having to deal with her.'\" {n}Her voice is very flat.{/n} \"Trouble. All those years at her right hand, and I was trouble, and you saved her from it, and she let you walk out of her palace with my body still warm on her floor.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286763,7 +286795,7 @@
         {
           "Id": "silent",
           "Speaker": "Shamira",
-          "Text": "{n}She looks for it. She does not find it.{/n}\n\"Nothing. You didn't speak to her of me at all, before or after.\" {n}Her voice is odd.{/n} \"And she didn't ask. Her steward of three hundred years dies in her own bedchamber, and the thing she says to the killer's back is nothing. Not even a question.\"\n{n}The heat behind your eyes goes out, nearly, and comes back.{/n} \"I think I would rather she had thanked you.\"",
+          "Text": "{n}She looks for it. She does not find it.{/n}\n\"Nothing. You didn't speak to her of me at all, before or after.\" {n}Her voice is odd.{/n} \"And she didn't ask. Her steward of all those years dies in her own bedchamber, and the thing she says to the killer's back is nothing. Not even a question.\"\n{n}The heat behind your eyes goes out, nearly, and comes back.{/n} \"I think I would rather she had thanked you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286878,7 +286910,7 @@
         {
           "Id": "carpets",
           "Speaker": "Shamira",
-          "Text": "\"Carpets.\" {n}A long silence.{/n} \"You know, in six thousand years, I have been hated, feared, worshipped, desired and once, briefly, pitied. I have never before been beneath someone's notice while they killed me.\" {n}The crystal warms under your hand.{/n} \"I will have your notice, Golarian. All of it. I'm going to take it off you piece by piece.\"",
+          "Text": "\"Carpets.\" {n}A long silence.{/n} \"You know, in all my long life, I have been hated, feared, worshipped, desired and once, briefly, pitied. I have never before been beneath someone's notice while they killed me.\" {n}The crystal warms under your hand.{/n} \"I will have your notice, Golarian. All of it. I'm going to take it off you piece by piece.\"",
           "Choices": [
             {
               "Text": "[Put out the lamp.]",
@@ -287879,7 +287911,7 @@
         {
           "Id": "heaven",
           "Speaker": "Shamira",
-          "Text": "\"That was my work.\" {n}She is standing beside you on nothing, and she has wings in the dream, great wings of fire, and she does not seem to know it.{/n} \"Every night, for longer than your gods have had temples. A dream for a baker's girl who would never be anything. A dream for a king who needed to be frightened. Some of them I made too hot. Some of them lit fires that burned cities down.\" {n}She shrugs, and the fire on her shoulders shrugs with her.{/n} \"It was beautiful. I would do it again.\"",
+          "Text": "\"That was my work.\" {n}She is standing beside you on nothing, and she has wings in the dream, great wings of fire, and she does not seem to know it.{/n} \"Every night, for longer than I can count. A dream for a baker's girl who would never be anything. A dream for a king who needed to be frightened. Some of them I made too hot. Some of them lit fires that burned cities down.\" {n}She shrugs, and the fire on her shoulders shrugs with her.{/n} \"It was beautiful. I would do it again.\"",
           "Choices": [
             {
               "Text": "\"You would?\"",
@@ -289157,7 +289189,7 @@
         {
           "Id": "list",
           "Speaker": "Shamira",
-          "Text": "\"He has been selling them the watch. Which gate, which hour, how many men. They have his daughter, and every list he sends buys her another week.\" {n}She is enjoying this, and she is not hiding that she is enjoying it.{/n} \"My lady used me like this for three hundred years, you know. At her feasts. I would stand behind her chair and tell her which of her guests wanted her dead, and she would smile at them, and in the morning they would be gone.\"\n\"So. What does the clown do with his traitor?\"",
+          "Text": "\"He has been selling them the watch. Which gate, which hour, how many men. They have his daughter, and every list he sends buys her another week.\" {n}She is enjoying this, and she is not hiding that she is enjoying it.{/n} \"My lady used me like this for years, you know. At her feasts. I would stand behind her chair and tell her which of her guests wanted her dead, and she would smile at them, and in the morning they would be gone.\"\n\"So. What does the clown do with his traitor?\"",
           "Choices": [
             {
               "Text": "[Have him taken now, and hanged at the next dawn.]",
@@ -290023,7 +290055,7 @@
         {
           "Id": "restful",
           "Speaker": "Shamira",
-          "Text": "\"Liar.\" {n}Fondly, for her.{/n} \"You miss being alone in there. I can feel you missing it, some nights; it moves through your dreams like a draught under a door.\" {n}She takes her finger away.{/n} \"I know that draught. I have had it for six thousand years. I did not think I would ever be the thing that caused it.\"",
+          "Text": "\"Liar.\" {n}Fondly, for her.{/n} \"You miss being alone in there. I can feel you missing it, some nights; it moves through your dreams like a draught under a door.\" {n}She takes her finger away.{/n} \"I know that draught. I have had it since I fell. I did not think I would ever be the thing that caused it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -290637,7 +290669,7 @@
         {
           "Id": "watch",
           "Speaker": "Shamira",
-          "Text": "\"You dreamed of me all night.\" {n}Softly.{/n} \"I was in there; I'm always in there. But you were dreaming of me before I came in, and in six thousand years I have never once walked into a dream that was already about me and been made welcome in it.\" {n}She puts one finger on your forehead, the old place.{/n} \"It was like a house after a party. Everyone else gone, and the lamps still warm.\"\n\"I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back.\"",
+          "Text": "\"You dreamed of me all night.\" {n}Softly.{/n} \"I was in there; I'm always in there. But you were dreaming of me before I came in, and in all my long life I have never once walked into a dream that was already about me and been made welcome in it.\" {n}She puts one finger on your forehead, the old place.{/n} \"It was like a house after a party. Everyone else gone, and the lamps still warm.\"\n\"I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -290719,7 +290751,7 @@
         {
           "Id": "last_her",
           "Speaker": "Shamira",
-          "Text": "\"The last dream you had alone was me. On the throne, burning.\" {n}She looks away.{/n} \"Nobody in six thousand years has ever dreamed me as I wanted to be. I go back and stand in it, some nights. It's the warmest room you have.\"",
+          "Text": "\"The last dream you had alone was me. On the throne, burning.\" {n}She looks away.{/n} \"Nobody, ever, has dreamed me as I wanted to be. I go back and stand in it, some nights. It's the warmest room you have.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -291064,7 +291096,7 @@
         {
           "Id": "chair",
           "Speaker": "Shamira",
-          "Text": "\"I have been thinking about my lady's chair.\" {n}She turns your cup in her long fingers.{/n} \"I have been thinking about it for three hundred years; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds.\"\n\"Now I have your fire and a body nobody grew for a queen, and I am thinking about it again.\"",
+          "Text": "\"I have been thinking about my lady's chair.\" {n}She turns your cup in her long fingers.{/n} \"I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds.\"\n\"Now I have your fire and a body nobody grew for a queen, and I am thinking about it again.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -291181,7 +291213,7 @@
         {
           "Id": "stand",
           "Speaker": "Shamira",
-          "Text": "\"Stand where I can see you.\" {n}She tastes it.{/n} \"Neither for me nor against me. Only there, where I can see you, when I go.\" {n}Something softens, and then she makes it hard again.{/n} \"That is what she did for me, you know. My lady. Three hundred years of standing where I could see her. It was the cruellest kindness anyone ever did me, and I loved her for it.\" {n}She drinks.{/n} \"Fine. Stand there. I'll look.\"",
+          "Text": "\"Stand where I can see you.\" {n}She tastes it.{/n} \"Neither for me nor against me. Only there, where I can see you, when I go.\" {n}Something softens, and then she makes it hard again.{/n} \"That is what she did for me, you know. My lady. Year upon year of standing where I could see her. It was the cruellest kindness anyone ever did me, and I loved her for it.\" {n}She drinks.{/n} \"Fine. Stand there. I'll look.\"",
           "Choices": [
             {
               "Text": "Continue",

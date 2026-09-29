@@ -59,7 +59,7 @@ page(P + "mind.first_night", "The first night", [
     nar("start", '''{n}You sit at the camp table, among the maps and the dirty cups, and for a while the second heartbeat behind your eyes only keeps time with yours. Outside, the sentries change. Somebody laughs too loudly by the cookfires and is told to shut up.{/n}
 {n}Then the air in the tent goes warm and close, the way it does before a storm.{/n}''',
         c("Continue", "look")),
-    sh("look", WHISPER + '''"Look at this." {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} "A tent. A cot. Maps with wine on them. Six thousand years of my existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet."
+    sh("look", WHISPER + '''"Look at this." {n}You feel her looking: through your eyes, around the tent, with a disgust so intimate it itches.{/n} "A tent. A cot. Maps with wine on them. All my long existence, and I am spending my first night of death behind the eyes of a clown, in a tent that smells of feet."
 "In my Harem there are forty rooms. I have never once slept in the same one twice. Do you know why?"''',
         c('"Because you don\'t sleep."', "sleep", forbids=(READ_ALL,)),
         c('"Because someone might be waiting."', "sleep", forbids=(READ_ALL,)),
@@ -70,7 +70,7 @@ page(P + "mind.first_night", "The first night", [
 "You haven't asked me how it feels. They all ask, the ones who kill people. How does it feel. They want to know if it hurt." {n}The heat behind your eyes gathers itself.{/n} "Ask me something better."''',
         c('"What are you, now, without the fire?"', "without"),
         c('"What do you want?"', "want")),
-    sh("without", '''"Less." {n}She says it flatly, the way a surgeon names what he has cut off.{/n} "The fire was the part of Heaven I stole when I left. It was what made my light wither the fools who looked at me too long. It kept me warm in the Abyss for longer than your gods have had names." {n}Silence.{/n} "Now I am only a demon, and I have never in my existence been only anything. I can still get into your head. That, they can't pull out of me with a cauldron. But I am cold, Golarian. I am so cold."''',
+    sh("without", '''"Less." {n}She says it flatly, the way a surgeon names what he has cut off.{/n} "The fire was the part of Heaven I stole when I left. It was what made my light wither the fools who looked at me too long. It kept me warm in the Abyss every day since I fell." {n}Silence.{/n} "Now I am only a demon, and I have never in my existence been only anything. I can still get into your head. That, they can't pull out of me with a cauldron. But I am cold, Golarian. I am so cold."''',
         c("Continue", "want")),
     sh("want", '''"A body, since you asked. And after that, everything I had, and after that, everything I didn't." {n}A glimmer of the old, vast arrogance.{/n} "But you have not told me what you want. And you do want something. Nobody murders a woman on an errand and then keeps her behind their eyes for company. Tell me what you kept me for, and choose your words."''',
         c('"A steward for Alushinyrra who owes me her life."', "steward", flags=(WANT_STEWARD,)),
@@ -86,7 +86,7 @@ page(P + "mind.first_night", "The first night", [
     sh("nothing", '''"Liar." {n}But she is laughing, a thin cold laugh with nothing to breathe it.{/n} "No. Not a liar. That's worse. You truly believe it. You killed me and kept me the way a miser keeps string: in case." {n}The laugh stops.{/n} "Very well. I am your string. Mind I don't end up round your throat."''',
         c("Continue", "noct", requires=(NOCT_KNOWS,)),
         c("Continue", "sleep_now", forbids=(NOCT_KNOWS,))),
-    sh("noct", '''"She knew, you know." {n}The voice has gone thin again.{/n} "My lady. She knew I wanted her chair; I think she has always known. She let me want it for three hundred years the way you let a cat want the canary: because it is pretty to watch." {n}A long silence.{/n}
+    sh("noct", '''"She knew, you know." {n}The voice has gone thin again.{/n} "My lady. She knew I wanted her chair; I think she has always known. She let me want it for years the way you let a cat want the canary: because it is pretty to watch." {n}A long silence.{/n}
 "And when you brought me to her behind your eyes she said hello, and she thanked you. That is all I was, at the end. A thing to thank someone for." {n}The heat behind your eyes flares, very suddenly, and then cools.{/n} "I will make her regret that. Not today. I have no hands today."''',
         c("Continue", "sleep_now")),
     sh("sleep_now", '''"Sleep now. You look terrible." {n}The warmth softens into something almost lazy.{/n} "And when you sleep, I'm coming in. Don't bother to argue. Your head is the only warm room for a thousand miles, and I have been cold for an entire day."''',
@@ -142,11 +142,11 @@ page(P + "mind.her_lady", "What her lady said", [
         c("Continue", "crystals", requires=(CRYSTALS,)),
         c("Continue", "throne", forbids=(CRYSTALS,))),
     sh("reported", '''{n}She finds it before you can decide whether to say it.{/n}
-"After. You told her after, and she thanked you. 'She coveted my throne. You've saved me the trouble of having to deal with her.'" {n}Her voice is very flat.{/n} "Trouble. Three hundred years at her right hand, and I was trouble, and you saved her from it, and she let you walk out of her palace with my body still warm on her floor."''',
+"After. You told her after, and she thanked you. 'She coveted my throne. You've saved me the trouble of having to deal with her.'" {n}Her voice is very flat.{/n} "Trouble. All those years at her right hand, and I was trouble, and you saved her from it, and she let you walk out of her palace with my body still warm on her floor."''',
         c("Continue", "crystals", requires=(CRYSTALS,)),
         c("Continue", "throne", forbids=(CRYSTALS,))),
     sh("silent", '''{n}She looks for it. She does not find it.{/n}
-"Nothing. You didn't speak to her of me at all, before or after." {n}Her voice is odd.{/n} "And she didn't ask. Her steward of three hundred years dies in her own bedchamber, and the thing she says to the killer's back is nothing. Not even a question."
+"Nothing. You didn't speak to her of me at all, before or after." {n}Her voice is odd.{/n} "And she didn't ask. Her steward of all those years dies in her own bedchamber, and the thing she says to the killer's back is nothing. Not even a question."
 {n}The heat behind your eyes goes out, nearly, and comes back.{/n} "I think I would rather she had thanked you."''',
         c("Continue", "crystals", requires=(CRYSTALS,)),
         c("Continue", "throne", forbids=(CRYSTALS,))),
@@ -161,7 +161,7 @@ page(P + "mind.her_lady", "What her lady said", [
         c("[Put out the lamp.]")),
     sh("yes", '''{n}She laughs, a real laugh, short and startled.{/n} "Yes. You did. I felt it, at the end, under the carpets: a little bright thing, like a boy stealing a pie." {n}Something warmer than it should be.{/n} "Good. I would have hated to be killed by somebody who did not enjoy it. It would have been such a waste of me."''',
         c("[Put out the lamp.]")),
-    sh("carpets", '''"Carpets." {n}A long silence.{/n} "You know, in six thousand years, I have been hated, feared, worshipped, desired and once, briefly, pitied. I have never before been beneath someone's notice while they killed me." {n}The crystal warms under your hand.{/n} "I will have your notice, Golarian. All of it. I'm going to take it off you piece by piece."''',
+    sh("carpets", '''"Carpets." {n}A long silence.{/n} "You know, in all my long life, I have been hated, feared, worshipped, desired and once, briefly, pitied. I have never before been beneath someone's notice while they killed me." {n}The crystal warms under your hand.{/n} "I will have your notice, Golarian. All of it. I'm going to take it off you piece by piece."''',
         c("[Put out the lamp.]")),
 ], requires=("trickster.ever", RETURNED, NIGHT1), forbids=(ASKED_LADY, EMBODIED) + LIVE, delay=36)
 
@@ -279,7 +279,7 @@ page(P + "mind.dream", "Where you sleep", [
     nar("show", '''{n}She lifts her hands, and Kenabres comes apart.{/n}
 {n}Not burning: opening. The square unfolds like the petals of an enormous flower, and underneath it there is sky, a sky so blue and so high that it hurts, and falling down it, slow as snow, are sparks. Thousands of them. Every one of them a dream: a song, a city, a face, a kiss. You watch them drop away beneath you towards a world you cannot see.{/n}''',
         c("Continue", "heaven")),
-    sh("heaven", '''"That was my work." {n}She is standing beside you on nothing, and she has wings in the dream, great wings of fire, and she does not seem to know it.{/n} "Every night, for longer than your gods have had temples. A dream for a baker's girl who would never be anything. A dream for a king who needed to be frightened. Some of them I made too hot. Some of them lit fires that burned cities down." {n}She shrugs, and the fire on her shoulders shrugs with her.{/n} "It was beautiful. I would do it again."''',
+    sh("heaven", '''"That was my work." {n}She is standing beside you on nothing, and she has wings in the dream, great wings of fire, and she does not seem to know it.{/n} "Every night, for longer than I can count. A dream for a baker's girl who would never be anything. A dream for a king who needed to be frightened. Some of them I made too hot. Some of them lit fires that burned cities down." {n}She shrugs, and the fire on her shoulders shrugs with her.{/n} "It was beautiful. I would do it again."''',
         c('"You would?"', "again"),
         c('"You\'ve got your wings back."', "wings")),
     sh("again", '''"Every one." {n}She looks at you, and in the blue light her face is younger and very much worse.{/n} "My masters wanted me to dream small. Safe dreams, with reins on. I wanted to see how high they would fly. When one of them flew high enough to burn a world, I watched it all the way to the top, and I have never been sorry." {n}Then, softer:{/n} "And afterwards there was nowhere to go home to, and she came out across the black water for me."''',
@@ -472,7 +472,7 @@ page(P + "mind.war_table", "Other people's heads", [
         c('"Afraid of what?"', "afraid")),
     sh("afraid", '''"Not of the templars. Of you." {n}Her voice sharpens, the way it did in her Harem when she smelled a conspiracy.{/n} "Captain of the wall watch. Every time you touch the map near the north postern he thinks of a girl of nine in a cell under a goat-headed temple, and then of a list of hours, and then of your face, and then he tries very hard to think of nothing." {n}Something almost like admiration.{/n} "He's rather good at it. Not as good as you."''',
         c("Continue", "list")),
-    sh("list", '''"He has been selling them the watch. Which gate, which hour, how many men. They have his daughter, and every list he sends buys her another week." {n}She is enjoying this, and she is not hiding that she is enjoying it.{/n} "My lady used me like this for three hundred years, you know. At her feasts. I would stand behind her chair and tell her which of her guests wanted her dead, and she would smile at them, and in the morning they would be gone."
+    sh("list", '''"He has been selling them the watch. Which gate, which hour, how many men. They have his daughter, and every list he sends buys her another week." {n}She is enjoying this, and she is not hiding that she is enjoying it.{/n} "My lady used me like this for years, you know. At her feasts. I would stand behind her chair and tell her which of her guests wanted her dead, and she would smile at them, and in the morning they would be gone."
 "So. What does the clown do with his traitor?"''',
         c("[Have him taken now, and hanged at the next dawn.]", "hang", flags=(SPY_HANGED,), alignment=("Lawful", 1)),
         c('[Keep him. Let him keep selling, and make sure every hour he sells is a lie.]', "turn", flags=(SPY_TURNED,), mythic="Trickster"),
