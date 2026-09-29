@@ -44,6 +44,8 @@ param(
     [switch]$NoRoundTrip,
     [switch]$Headless,
     [switch]$Windowed,
+    [switch]$FullRes,
+    [switch]$BatchMode,
     [switch]$Screenshots,
     [int]$ScreenshotsPerScene = 3,
     [switch]$Inline,
@@ -194,6 +196,13 @@ $planJson = $plan | ConvertTo-Json -Depth 5
 
 $launchArgs = @()
 if ($Windowed -or $Screenshots) { $launchArgs = @('-screen-fullscreen', '0', '-screen-width', '1280', '-screen-height', '720') }
+# Lean by default: without screenshots nothing needs a real frame, so a small windowed game saves GPU/RAM.
+elseif (-not $FullRes) { $launchArgs = @('-screen-fullscreen', '0', '-screen-width', '800', '-screen-height', '600') }
+# Experimental: Unity batch mode without a graphics device. WotR's dialog UI and save loading may not survive it.
+if ($BatchMode) {
+    if ($Screenshots) { throw '-BatchMode cannot take screenshots (no graphics device).' }
+    $launchArgs = @('-batchmode', '-nographics')
+}
 # Screenshots need a rendered (not minimized) window.
 $windowStyle = if ($Screenshots) { 'Normal' } else { 'Minimized' }
 $exe = Join-Path $GameDir 'Wrath.exe'
