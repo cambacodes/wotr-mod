@@ -284027,7 +284027,7 @@
         {
           "Id": "taken",
           "Speaker": "Narrator",
-          "Text": "{n}You go in low, under the fists, with your eyes on the metal faces and not on your hands. The shell is hotter than it looked; it scorches your fingers through your gloves. Three steps back, and it goes into the ash-bin, and you shovel the cinders over it with your forearm until there is nothing in the bin but ash and something that might be a stone.{/n}\n{n}The fists do not move. The faces do not turn. Behind them the clutch lies in its straw, eleven eggs where there were twelve, and not one thing in the chamber has noticed the difference.{/n}",
+          "Text": "{n}You go in low, under the fists, with your eyes on the metal faces and not on your hands. The shell is hotter than it looked; it scorches your fingers through your gloves. Three steps back, and it goes into the ash-bin, and you shovel the cinders over it with your forearm until there is nothing in the bin but ash and something that might be a stone.{/n}\n{n}The fists stay over the clutch. The ash you stirred up hangs in the air and settles, slowly, on the straw and on the golems' shoulders and on the floor, where your boots have left a grey track from the clutch to the bin and back. Nobody here is going to read it but you. Nobody here, you think.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -284865,7 +284865,7 @@
         {
           "Id": "start",
           "Speaker": "Ulbrig",
-          "Text": "\"That widow on the jeweller's steps, eh.\" {n}Ulbrig turns his cup round and round.{/n} \"She hums the Windstep mare-songs. Nobody's sung those since before I went to sleep, warchief. The Windstep were horse-folk, north of the Moutray. Old Reudger's lot. Their mares could outrun a griffon for a mile; I know, I tried.\" {n}He stops turning the cup.{/n} \"When I was a lad there was a white-haired girl at Reudger's fire. Nobody knew whose she was. She had eyes like that widow's. The same laugh.\" {n}He drinks.{/n} \"Can't be, eh. That's a hundred years. My gran would've said: then she's older than she looks, and you mind your manners.\"",
+          "Text": "\"That widow on the jeweller's steps, eh.\" {n}Ulbrig turns his cup round and round.{/n} \"She hums the Windstep mare-songs. Nobody's sung those since before I went to sleep, warchief. The Windstep were horse-folk, north of the Moutray. Old Reudger's lot. Their mares could outrun a griffon for a mile; I know, I tried.\" {n}He stops turning the cup.{/n} \"There was a white-haired girl at Reudger's fire when I was a lad. That widow's got the look of her, about the eyes. Her granddaughter, maybe, eh. Or I'm getting old.\" {n}He drinks.{/n} \"My gran would've said: then mind your manners with her, whoever she is.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -286882,7 +286882,7 @@
         {
           "Id": "reudger",
           "Speaker": "Nidalynn",
-          "Text": "\"He never asked me where I came from. He gave me bread and salt at his fire the first night, and that was the end of the question. Among the Windstep, if you've eaten a man's salt, you're of his fire until the salt's gone out of your blood; and it never goes out, so.\" {n}She shrugs.{/n} \"I was of his fire for forty years. He knew what I was by the end. He never said so. He'd sit on the step of his summer house and smoke his pipe and watch the mares, and when I came to sit with him he'd pass me a piece of cheese and ask me a riddle.\"",
+          "Text": "\"You knew Reudger, then.\" {n}It is not quite a question, and she does not quite answer it.{/n} \"They say he asked after the Olesk, when your clan stopped coming to the summer camp. They say he thought the Olesk boys had gone off to be warriors, and called it a waste of good horsemanship.\"\n\"Nobody ever found his grave, Olesk. I've heard it said people looked.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -289086,7 +289086,7 @@
         {
           "Id": "look",
           "Speaker": "Ulbrig",
-          "Text": "{n}Ulbrig stops a good ten feet off and stares at her. Then he pulls off his cap, which you have never seen him do for anyone.{/n} \"Windstep summer camp. The year of the three-legged foal. You were sitting on Reudger's step with a piece of cheese in each hand, and I was eleven, and I called you a white-headed goose.\" {n}His voice has gone thick.{/n} \"You threw a dung-cake at me. You hit me in the ear from twenty paces, eh.\"",
+          "Text": "{n}Ulbrig stops a good ten feet off and stares at her. Then he pulls off his cap, which you have never seen him do for anyone.{/n} \"Mother, you'll forgive me. You were humming, on the stair. That's a Windstep mare-song. Nobody's sung those since before I went to sleep, eh.\" {n}His voice has gone thick.{/n} \"There was a white-haired girl at old Reudger's fire, when I was a lad. She sang it just so. You've the look of her. The eyes.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -289102,7 +289102,7 @@
         {
           "Id": "dung",
           "Speaker": "Nidalynn",
-          "Text": "{n}She puts the mending down very carefully.{/n} \"Twenty-five paces. Ulbrig Olesk. The Olesk boy with the ears.\" {n}She is laughing, and her eyes are wet.{/n} \"You were a horrible child. You stole Reudger's best mare and rode her into a bog.\"",
+          "Text": "{n}She puts the mending down very carefully, and looks at him for a while, at the big hands and the cap.{/n} \"I've heard of the Olesk. Horse-thieves and bog-riders, the Windstep said, and the best griffon-men on the grass.\" {n}Her mouth twitches.{/n} \"Reudger's fire had a great many strays at it. White-haired girls among them, I shouldn't wonder.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -289118,7 +289118,7 @@
         {
           "Id": "ulbrig2",
           "Speaker": "Ulbrig",
-          "Text": "\"She wanted to go in the bog! She told me so!\" {n}Then he stops, and looks at her, at the white hair under the widow's cap and the pale grey eyes, and his face goes slowly still.{/n} \"You haven't aged a day, eh. Not one. I slept a hundred years and I look like my father. You look like you did on that step.\"\n{n}He does not ask. You can see him decide not to ask. He is a Sarkorian of the old clans, and there are things you do not ask of a woman who sat at Reudger's fire.{/n}",
+          "Text": "\"Aye. Strays.\" {n}He looks at her a long while, at the pale grey eyes, and his face goes slowly still.{/n} \"She'd be old as the hills now, that girl. Older than me, and I slept a hundred years.\"\n{n}He does not ask. You can see him decide not to ask. He is a Sarkorian of the old clans, and there are things you do not ask of a woman who sings the Windstep's songs.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -289150,7 +289150,7 @@
         {
           "Id": "ulbrig3",
           "Speaker": "Ulbrig",
-          "Text": "\"No.\" {n}He turns his cap round in his hands.{/n} \"Nobody will. The grass is gone.\" {n}He is quiet a while.{/n} \"But I remember the brand. The mare under the stars. I could cut it in a saddle yet.\" {n}He looks at the kiln, and the hiss coming out of it, and back at her.{/n} \"And you're raising a dragon in a lime-kiln for the warchief, eh. Of course you are. Reudger would've said so. He'd have said you always did take in strays.\"",
+          "Text": "\"No.\" {n}He turns his cap round in his hands.{/n} \"Nobody will. The grass is gone.\" {n}He is quiet a while.{/n} \"But I remember the brand. The mare under the stars. I could cut it in a saddle yet.\" {n}He looks at the kiln, and the hiss coming out of it, and back at her.{/n} \"And you're raising a dragon in a lime-kiln for the warchief, eh. Of course you are. Reudger would've said so. He'd have said the Windstep always did take in strays.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -289166,7 +289166,7 @@
         {
           "Id": "end",
           "Speaker": "Nidalynn",
-          "Text": "\"He'd have said it about both of us.\" {n}She holds out her hand, and Ulbrig takes it, and bends over it like a man in an old song.{/n}\n\"Come to the kiln when you like, Olesk. Bring your own bread. I'll not feed you; you ate like a wolf.\" {n}When he lets go she turns her head and looks at you, and does not say anything, and does not need to.{/n}",
+          "Text": "\"He'd have said it about all of us.\" {n}She holds out her hand, and Ulbrig takes it, and bends over it like a man in an old song.{/n}\n\"Come to the kiln when you like, Olesk. Bring your own bread; I hear the Olesk ate like wolves.\" {n}When he lets go she turns her head and looks at you, and does not say anything, and does not need to.{/n}",
           "Choices": [
             {
               "Text": "[Leave the two of them to the step.]",
@@ -290201,7 +290201,7 @@
         {
           "Id": "now",
           "Speaker": "Nidalynn",
-          "Text": "\"Because you gave her away.\" {n}She says it simply.{/n} \"You could have kept her, and you didn't, and you didn't make me ask twice. And because the widow was for keeping hands off, Commander, and I've found I don't want to keep yours off any more.\"\n{n}She lets that sit in the air between you. She does not step closer. She does not step back.{/n}",
+          "Text": "\"Now?\" {n}She considers it, chewing.{/n} \"Now I go back to my kiln, and the little one goes back to eating the undercroft, and you go back to your war. I'm not going to sit in your citadel and be looked at by your generals. I'll keep my kiln and my step. Come when you like, and come hungry; I'll know if you've eaten in the citadel first, and I'll be offended.\"\n{n}She looks at you sidelong, over the bread.{/n} \"And don't ever lie to me about anything you love. The salt won't stand for it. Neither will I.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -291564,7 +291564,7 @@
         {
           "Id": "house",
           "Speaker": "Nidalynn",
-          "Text": "\"The head of the house.\" {n}She says it again, as if testing it for weight.{/n} \"I've been thinking about that. About what a house is, with you in it.\" {n}She makes room for you on the step.{/n} \"You've a great many people at your fire, Commander. I've sat on a step opposite your door for a season; I've seen who comes and goes, and who stays late. I'm not a fool.\"\n\"I'll tell you how it is with me, since you'll want to know. I'm of your fire. That's salt; it doesn't go out. But a fire's for warming people. I never turned anyone from a fire who came to it cold, and I won't be the one who says who sits by yours. Only feed them. And don't lie to me about any of them.\"",
+          "Text": "\"The head of the house.\" {n}She says it again, as if testing it for weight.{/n} \"I've been thinking about that. About what a house is, with you in it.\" {n}She makes room for you on the step.{/n}\n\"I'll tell you how it is with me, since you'll want to know. I'm of your fire. That's salt; it doesn't go out, and I'll not pretend it does when it's inconvenient. What I ask of you is the same as I asked on the snow: don't lie to me about anything you love. That's all. It's more than most people manage.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -292097,7 +292097,7 @@
         {
           "Id": "tell",
           "Speaker": "Nidalynn",
-          "Text": "\"When the Windstep died, I was a long way north. I was sulking. Reudger and I had quarrelled, over a mare, of all things; I'd said something unkind about his eyes, which were going, and flown off in a temper to show him.\" {n}She is very still.{/n} \"I was gone two years. Two years is nothing to me. When I came back, there was no grass.\"\n\"I never said sorry. He never knew I'd have come back. That's the whole of it. That's the thing.\"",
+          "Text": "\"When the Wound opened I was two years north, sulking. Reudger and I had quarrelled over a mare. I'd said his eyes were going, which they were, and flown off to show him.\" {n}She pokes the embers with a stick, harder than they need.{/n}\n\"I came back to ash. I never said sorry. That's the whole of it.\" {n}A pause.{/n} \"And the mare was lame. I was right about the mare. That's the worst part: I was right about the mare.\"",
           "Choices": [
             {
               "Text": "\"He knew.\"",
@@ -295443,8 +295443,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

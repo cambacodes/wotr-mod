@@ -61,8 +61,8 @@ visit(OWN_FORM, "Her own face", [
         c("Continue", "now")),
     nd("look", '''{n}You look. She lets you. After a while the corner of her mouth goes up.{/n} "Thorough. That's a trickster for you. Checking the seams." {n}She holds out one arm, turning it over, as she did in your quarters that first night. It stays an arm.{/n} "No scales. No belly. Only me."''',
         c("Continue", "now")),
-    nd("now", '''"Because you gave her away." {n}She says it simply.{/n} "You could have kept her, and you didn't, and you didn't make me ask twice. And because the widow was for keeping hands off, Commander, and I've found I don't want to keep yours off any more."
-{n}She lets that sit in the air between you. She does not step closer. She does not step back.{/n}''',
+    nd("now", '''"Now?" {n}She considers it, chewing.{/n} "Now I go back to my kiln, and the little one goes back to eating the undercroft, and you go back to your war. I'm not going to sit in your citadel and be looked at by your generals. I'll keep my kiln and my step. Come when you like, and come hungry; I'll know if you've eaten in the citadel first, and I'll be offended."
+{n}She looks at you sidelong, over the bread.{/n} "And don't ever lie to me about anything you love. The salt won't stand for it. Neither will I."''',
         c("Continue", "mother", requires=(DV_RETURNED,)),
         c("Continue", "eat", forbids=(DV_RETURNED,))),
     nd("mother", '''"And there's a grey dragon on the ridge above your city who comes down at night and lies on the east wall and looks at my kiln." {n}Her voice does not change.{/n} "She hasn't come closer. She won't, while I'm in it. I'm not afraid of her; I'm older than she is, and I'm not the one who stole from her. But I thought you should hear it from me, in this face, and not from your sentries."''',
@@ -279,8 +279,8 @@ visit(FIRST_DEMON, "What she hunts", [
         c("Continue", "house")),
     nd("rats", '''"She's been clearing your undercroft since she hatched. She thinks this is just a big rat." {n}She looks at the pieces in the lane.{/n} "She's not wrong. She's a housekeeper, Commander. You made a housekeeper out of a woundwyrm. I've been alive a long time and I've never seen anything like it."''',
         c("Continue", "house")),
-    nd("house", '''"The head of the house." {n}She says it again, as if testing it for weight.{/n} "I've been thinking about that. About what a house is, with you in it." {n}She makes room for you on the step.{/n} "You've a great many people at your fire, Commander. I've sat on a step opposite your door for a season; I've seen who comes and goes, and who stays late. I'm not a fool."
-"I'll tell you how it is with me, since you'll want to know. I'm of your fire. That's salt; it doesn't go out. But a fire's for warming people. I never turned anyone from a fire who came to it cold, and I won't be the one who says who sits by yours. Only feed them. And don't lie to me about any of them."''',
+    nd("house", '''"The head of the house." {n}She says it again, as if testing it for weight.{/n} "I've been thinking about that. About what a house is, with you in it." {n}She makes room for you on the step.{/n}
+"I'll tell you how it is with me, since you'll want to know. I'm of your fire. That's salt; it doesn't go out, and I'll not pretend it does when it's inconvenient. What I ask of you is the same as I asked on the snow: don't lie to me about anything you love. That's all. It's more than most people manage."''',
         c("Continue", "bill", requires=(DV_BILL,)),
         c("Continue", "druids", requires=(DV_HUNTING,), forbids=(DV_BILL,)),
         c("Continue", "end", forbids=(DV_BILL, DV_HUNTING))),
@@ -358,8 +358,8 @@ visit(LONG_NIGHT, "What a silver is afraid of", [
         c("[Put your arm round her, and wait.]", "arm")),
     nar("arm", '''{n}She leans into it, the whole long warm weight of her, as if she had been waiting for somebody to do exactly that for a very long time and had given up expecting it.{/n}''',
         c("Continue", "tell")),
-    nd("tell", '''"When the Windstep died, I was a long way north. I was sulking. Reudger and I had quarrelled, over a mare, of all things; I'd said something unkind about his eyes, which were going, and flown off in a temper to show him." {n}She is very still.{/n} "I was gone two years. Two years is nothing to me. When I came back, there was no grass."
-"I never said sorry. He never knew I'd have come back. That's the whole of it. That's the thing."''',
+    nd("tell", '''"When the Wound opened I was two years north, sulking. Reudger and I had quarrelled over a mare. I'd said his eyes were going, which they were, and flown off to show him." {n}She pokes the embers with a stick, harder than they need.{/n}
+"I came back to ash. I never said sorry. That's the whole of it." {n}A pause.{/n} "And the mare was lame. I was right about the mare. That's the worst part: I was right about the mare."''',
         c('"He knew."', "knew"),
         c("[Say nothing. Hold on.]", "hold")),
     nd("knew", '''"You can't know that." {n}But she is listening.{/n}''',
