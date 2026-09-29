@@ -75,12 +75,13 @@ def session(id, title, chapter, entry, nodes, requires, forbids=(), delay=0, las
 
 # --- Intake (Chapter 3): the pulse ----------------------------------------------------------------------------------
 
-session(INTAKE, "Intake", 3, '[Take her pulse] "You look pale. When did you last eat?"', [
-    nar("start", '''{n}You take her wrist before she can step back. She goes very still, the way a cat goes still when it has decided whether or not to bite. Her pulse, if a succubus has a pulse, is slow and faint and far too even, like a clock somebody forgot to wind.{/n}
-{n}She looks down at your fingers on her skin, and then up at you, and her ruby eyes are enormous.{/n}''',
+session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let me take your pulse. When did you last eat?"', [
+    nar("start", '''{n}She looks at your open hand the way a cat looks at a hand held out to it: as a question, and possibly a trap.{/n}
+"You know what touching me costs." {n}It is not a warning so much as a fact she has been asked to confirm.{/n} "Every mortal who ever offered me their hand wanted something for it, or was paid to. What do you want?" {n}You tell her: her pulse. Only that. She considers it for a long breath, tilting her head, interested in spite of herself. Then she lays her wrist in your palm, lightly, ready to take it back.{/n}
+{n}Her pulse, if a succubus has a pulse, is slow and faint and far too even, like a clock somebody forgot to wind. She watches your fingers on her skin, and then your face, and her ruby eyes are enormous.{/n}''',
         c("Continue", "laugh")),
     a("laugh", '''"When did I last..." {n}A laugh startles out of her, and she clamps her free hand over her mouth, appalled at herself.{/n} "Commander, I don't eat. Not the way you mean. I can taste your bread and your wine, and they are lovely, and they are like... like looking at a painting of a fire when you're cold."
-{n}She tries to take her wrist back. You don't let her, yet.{/n} "You shouldn't hold on so long. It isn't safe. Even this is costing you something, a little. You just can't feel it yet."''',
+{n}She tries to take her wrist back. You don't let her, yet.{/n} "I'm taking it back now. You shouldn't hold on so long. It isn't safe. Even this is costing you something, a little. You just can't feel it yet."''',
         c('"Answer the question. When did you last eat?"', "answer"),
         c('[Let go] "Sorry. Occupational habit."', "answer")),
     a("answer", '''{n}She rubs the place where your fingers were, as if it were her skin that had been hurt.{/n}
@@ -301,7 +302,7 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
         c('"Yes. But keep the hungry one away from me."', "saint", flags=(COMMITTED, SAINT_ONLY)),
         c('"Not yet. Ask me again when we\'ve both slept."', "not_yet", flags=(DECLINED,)),
         c('"No."', "neither", flags=(CLOSED,))),
-    a("both", '''{n}She closes the inch.{/n} "Both." {n}She laughs, very softly, and it shakes.{/n} "The hungry one is going to be so smug about this. She's going to be unbearable." {n}She holds on. With her free hand she takes the daybook out of her belt, opens it to the last page, the one she had folded over, and shows you: under "Day forty" she has already written, in her careful hand, one word, and then crossed it out, and written it again.{/n} "I wrote the answer down before I came up here. I didn't dare hope. I wrote it anyway." {n}She shuts the book on the word.{/n} "Put it in your notes too, doctor. I want it in both books."''', c()),
+    a("both", '''{n}She closes the inch, and then does not seem to know what to do with your hand now she has it.{/n} "Both." {n}She says it again, as if checking it for a trick.{/n} "Both. I... I had something to say after that. I had a whole... it's gone. The hungry one is going to be unbearable about this." {n}She laughs, very softly, and it shakes, and she does not let go.{/n} "Don't say anything. I'll get it wrong again. Just stay where you are."''', c()),
     a("saint", '''"The saint, then." {n}She nods, and something shutters in her face, smoothly, the way it must have in Lady Vellexia's house when a guest said the wrong thing.{/n}
 "I'll keep the other one out of your sight. I'm very good at that. You won't thank me for it one day. But I asked, and you answered, and that's more than I ever expected to be given."''', c()),
     a("not_yet", '''{n}She lets her hands fall. She does not look hurt; she looks like someone recalculating a route.{/n} "Not yet." {n}She nods.{/n} "All right. I've waited longer for smaller things." {n}A small, crooked smile.{/n} "But I asked first. That's done. That can't be taken back. The next one's yours."''', c()),
