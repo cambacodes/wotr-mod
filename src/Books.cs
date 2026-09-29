@@ -31,6 +31,7 @@ namespace Tirabade
             public Func<string, string> Label = key => key;
             public string? Cursor;
             public int ListPage;
+            public int PerPage = ListPerPage;   // list slots per page (the Table menu shows six)
             public BlueprintDialog? Dialog;
             public readonly List<BlueprintCueBase> ItemPages = new List<BlueprintCueBase>();
             public readonly List<BlueprintCueBase> ListPages = new List<BlueprintCueBase>();
@@ -52,6 +53,7 @@ namespace Tirabade
             switch (Rules.KindOf(scene))
             {
                 case "letter": return "{n}" + (scene.Parcel ? "A parcel from " : "A letter from ") + sender + ", read and kept.{/n}";
+                case "invitation": return "{n}An invitation from " + sender + ", to the Table.{/n}";
                 case "sending": return "{n}A sending from " + sender + ", remembered word for word.{/n}";
                 case "memory": return "{n}A memory you have already lived through once.{/n}";
                 case "event": return "{n}An evening you have already lived through once.{/n}";
@@ -73,7 +75,8 @@ namespace Tirabade
 
         internal static bool OpenView(string view, string? start = null)
         {
-            if (!views.TryGetValue(view, out var v) || v.Dialog == null || !Idle() || ViewItems(view).Count == 0 && !view.StartsWith("book.", StringComparison.Ordinal))
+            if (!views.TryGetValue(view, out var v) || v.Dialog == null || !Idle()
+                || ViewItems(view).Count == 0 && !view.StartsWith("book.", StringComparison.Ordinal) && view != TableView)
                 return false;
             ViewReset(view, start);
             Game.Instance.DialogController.StartDialogWithoutTarget(v.Dialog, null);
@@ -98,8 +101,8 @@ namespace Tirabade
                     case "several": return items.Count > 1;
                     case "any": return items.Count > 0;
                     case "list": return v.ListPage % 2 == Parity;
-                    case "slot": return Slot < Rules.PageSlice(items, v.ListPage, ListPerPage).Count;
-                    case "listmore": return v.ListPage + 1 < Rules.PageCount(items.Count, ListPerPage);
+                    case "slot": return Slot < Rules.PageSlice(items, v.ListPage, v.PerPage).Count;
+                    case "listmore": return v.ListPage + 1 < Rules.PageCount(items.Count, v.PerPage);
                     case "listless": return v.ListPage > 0;
                     case "section": return books.TryGetValue(View, out var book) && Rules.BookVisible(book, State()).Any(entry => entry.Section == Item);
                     default: return false;
@@ -124,11 +127,11 @@ namespace Tirabade
                     case "next": v.Cursor = Rules.Step(items, v.Cursor, 1); break;
                     case "prev": v.Cursor = Rules.Step(items, v.Cursor, -1); break;
                     case "set": v.Cursor = items.Contains(Item) ? Item : items.FirstOrDefault(); break;
-                    case "list": v.ListPage = Math.Max(0, items.IndexOf(v.Cursor ?? "")) / ListPerPage; break;
-                    case "listnext": v.ListPage = Math.Min(v.ListPage + 1, Rules.PageCount(items.Count, ListPerPage) - 1); break;
+                    case "list": v.ListPage = Math.Max(0, items.IndexOf(v.Cursor ?? "")) / v.PerPage; break;
+                    case "listnext": v.ListPage = Math.Min(v.ListPage + 1, Rules.PageCount(items.Count, v.PerPage) - 1); break;
                     case "listprev": v.ListPage = Math.Max(0, v.ListPage - 1); break;
                     case "slot":
-                        var slice = Rules.PageSlice(items, v.ListPage, ListPerPage);
+                        var slice = Rules.PageSlice(items, v.ListPage, v.PerPage);
                         if (Slot < slice.Count) v.Cursor = slice[Slot];
                         break;
                     case "section":
@@ -400,6 +403,105 @@ namespace Tirabade
 
         private static Scene SceneById(string id) => story.Scenes.First(s => s.Id == id);
 
+        // E16, the household's Table (08 §2.2, 10 §P1): opened from "[The corner table]" on Thaberdine's tavern list. One
+        // paged menu of the Table scenes available now (six to a page, "[More…]" / back), then "[Open the Ledger]" when the
+        // Ledger has anything to read, and "[Leave the table.]" last. Choosing a scene ends the menu and queues the scene.
+        internal const string TableView = "table";
+        internal const string LedgerView = "book.trickster.ledger";
+
+        private static void BuildTableMenu()
+        {
+            var view = new BookView { Key = TableView, PerPage = Rules.TablePerPage,
+                Items = state => Rules.TableEntries(story, state).Select(s => s.Id).ToList(), Label = id => SceneById(id).Entry };
+            views[view.Key] = view;
+            const string title = "The Table";
+            const string intro = "{n}The corner table at the back of the Fool King's tavern, under the cloth nobody else sits at.{/n}";
+            var slots = Enumerable.Range(0, view.PerPage).Select(slot =>
+            {
+                var answer = New<BlueprintAnswer>("answer.view.table.slot." + slot);
+                InitializeAnswer(answer);
+                answer.Text = Text("answer.view.table.slot." + slot, "");
+                answer.ShowConditions = Conditions(new ViewCondition { View = view.Key, Mode = "slot", Slot = slot });
+                answer.OnSelect = Actions(new ViewAction { View = view.Key, Op = "slot", Slot = slot }, new TableAction { Start = true });
+                return answer;
+            }).ToList();
+            var more = ViewAnswer("answer.view.table.more", "[More…]", view, "listnext", view.ListPages, new ViewCondition { View = view.Key, Mode = "listmore" });
+            var less = ViewAnswer("answer.view.table.less", "[Back a page.]", view, "listprev", view.ListPages, new ViewCondition { View = view.Key, Mode = "listless" });
+            var tail = new List<BlueprintAnswer>();
+            if (story.Books.ContainsKey(LedgerView.Substring("book.".Length)))
+            {
+                var ledger = New<BlueprintAnswer>("answer.view.table.ledger");
+                InitializeAnswer(ledger);
+                ledger.Text = Text("answer.view.table.ledger", "[Open the Ledger]");
+                ledger.ShowConditions = Conditions(new ViewCondition { View = LedgerView, Mode = "any" });
+                ledger.OnSelect = Actions(new TableAction { Open = LedgerView });
+                tail.Add(ledger);
+            }
+            var leave = New<BlueprintAnswer>("answer.view.table.leave");
+            InitializeAnswer(leave);
+            leave.Text = Text("answer.view.table.leave", "[Leave the table.]");
+            tail.Add(leave);
+            for (int parity = 0; parity < 2; parity++)
+            {
+                CueSetup(out var cue, "cue.view.table.list." + parity, intro);
+                var page = ViewPage("page.view.table.list." + parity, title, new Node { Id = "list", Speaker = "Book", Text = intro },
+                    new[] { cue }, new ViewCondition { View = view.Key, Mode = "list", Parity = parity });
+                foreach (var answer in slots.Concat(new[] { more, less }).Concat(tail)) page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
+                view.ListPages.Add(page);
+                string titleId = "title.page.view.table.list." + parity;
+                pageUpdaters[page.AssetGuid.ToString()] = () =>
+                {
+                    var items = ViewItems(view.Key);
+                    Put(titleId, title + " (" + (view.ListPage + 1) + " of " + Rules.PageCount(items.Count, view.PerPage) + ")");
+                    var slice = Rules.PageSlice(items, view.ListPage, view.PerPage);
+                    for (int slot = 0; slot < view.PerPage; slot++)
+                        Put("answer.view.table.slot." + slot, slot < slice.Count ? view.Label(slice[slot]) : "");
+                };
+            }
+            var dialog = New<BlueprintDialog>("dialog.view.table");
+            dialog.Type = DialogType.Book;
+            dialog.Conditions = Conditions();
+            dialog.FirstCue = Cues(view.ListPages.ToArray());
+            dialog.TurnPlayer = false;
+            dialog.TurnFirstSpeaker = false;
+            dialog.StartActions = Actions();
+            dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
+            view.Dialog = dialog;
+        }
+
+        // A Table answer: start the scene under the menu's cursor (after the menu closes), or open another view after it.
+        public sealed class TableAction : GameAction
+        {
+            public bool Start;
+            public string Open = "";
+            public override string GetCaption() => "Three at the Table: the Table";
+            public override void RunAction()
+            {
+                if (!enabled || !initialized) return;
+                if (Open.Length > 0) { viewWanted = Open; return; }
+                if (Start && views.TryGetValue(TableView, out var v) && v.Cursor != null
+                    && story.Scenes.FirstOrDefault(s => s.Id == v.Cursor) is Scene scene && Rules.IsTableScene(scene) && Rules.Available(story, scene, State()))
+                    Queue(scene);
+            }
+        }
+
+        // A native opener's answer shows while its rules hold; choosing it lets the native dialog end, then the tick opens
+        // the view (OpenerAction sets viewWanted; the tick waits until nothing is open).
+        public sealed class OpenerCondition : Condition
+        {
+            public NativeOpener? Opener;
+            protected override string GetConditionCaption() => "Three at the Table native opener";
+            protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null && Opener != null
+                && views.ContainsKey(Opener.View) && Rules.OpenerShown(Opener, State());
+        }
+
+        public sealed class OpenerAction : GameAction
+        {
+            public string View = "";
+            public override string GetCaption() => "Three at the Table native opener";
+            public override void RunAction() { if (enabled && initialized) viewWanted = View; }
+        }
+
         // E15: build every book surface. The mailbag v1 dialog stays registered (save names) but the v2 book is shown.
         private static void BuildBooks()
         {
@@ -412,6 +514,7 @@ namespace Tirabade
                 BuildMailbagBook(archive);
             }
             foreach (var pair in story.Books) BuildDataBook(pair.Key, pair.Value);
+            if (story.Scenes.Any(Rules.IsTableScene) || story.Openers.Any(o => o.View == TableView)) BuildTableMenu();
             RegisterGlossary();
         }
 

@@ -31,6 +31,9 @@ namespace Tirabade
         public string[] PermanentEtudes = Array.Empty<string>();
         // E12 (GLOBAL-07-lite): returned presences, keyed "<relationship>.presence".
         public Dictionary<string, Presence> Presences = new Dictionary<string, Presence>();
+        // E16 (the household, 08 §2.2 / 10 §P1): native openers. An answer injected into a native answer list that, when
+        // chosen, lets the native dialog end and then opens an RRT view (e.g. "table", "book.trickster.ledger").
+        public List<NativeOpener> Openers = new List<NativeOpener>();
         // E14d: reviewed native epilogue cues replaced by an RRT epilogue scene's text when an earned condition holds.
         public Dictionary<string, NativeEpilogueEditSpec> NativeEpilogueEdits = new Dictionary<string, NativeEpilogueEditSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
@@ -151,6 +154,20 @@ namespace Tirabade
         // InteractionHub is this presence key (the generalized Nurah arrival hub). Greeting is the hub page's text.
         public string? Dialog;
         public string? Greeting;
+    }
+
+    // E16: one native opener (see Story.Openers).
+    public sealed class NativeOpener
+    {
+        public string Id = "";
+        public string Relationship = "";   // a degraded relationship withholds its openers
+        public string AnswerList = "";
+        public string Text = "";
+        public string View = "";
+        public string[] Requires = Array.Empty<string>();
+        public string[] Forbids = Array.Empty<string>();
+        public int MinChapter = 1;
+        public int MaxChapter = 6;
     }
 
     public sealed class PresenceAnchor
@@ -653,6 +670,26 @@ namespace Tirabade
             }
             foreach (var pair in story.Counts)
                 if (!state.Has(pair.Key) && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
+            CompleteWordMadeTrue(state);
+        }
+
+        // The household (08 §2.3, §10): Word Made True may be spoken at most WordMadeTrueMax times in a campaign. Each use is
+        // an authored choice flag "trickster.wmt.use.<id>"; the engine counts them into one runtime key "trickster.wmt.left.<n>"
+        // and, while any use remains, "trickster.wmt.available" (which a use choice Requires).
+        public const int WordMadeTrueMax = 3;
+        public const string WordMadeTrueUsePrefix = "trickster.wmt.use.";
+        public static readonly string[] WordMadeTrueKeys = Enumerable.Range(0, WordMadeTrueMax + 1)
+            .Select(n => "trickster.wmt.left." + n).Concat(new[] { "trickster.wmt.available" }).ToArray();
+
+        public static int WordMadeTrueLeft(Snapshot state) =>
+            Math.Max(0, WordMadeTrueMax - state.Flags.Count(flag => flag.StartsWith(WordMadeTrueUsePrefix, StringComparison.Ordinal)));
+
+        private static void CompleteWordMadeTrue(Snapshot state)
+        {
+            foreach (var key in WordMadeTrueKeys) state.Flags.Remove(key);
+            int left = WordMadeTrueLeft(state);
+            state.Flags.Add("trickster.wmt.left." + left);
+            if (left > 0) state.Flags.Add("trickster.wmt.available");
         }
 
         // Build: a missing native input makes dependent composites unavailable too (like "loss").
@@ -679,7 +716,8 @@ namespace Tirabade
 
         // E15c: the presentation kind of a scene. In-person and epilogue scenes are "visit"; a remote scene without an
         // authored Kind keeps the E15b behaviour (a "Memory" owner is a memory, anything else a letter).
-        public static readonly string[] SceneKinds = { "letter", "visit", "sending", "memory", "event" };
+        // "invitation" (the household, 08 §8): a rest-delivered note that points the Commander to the Table; styled as mail.
+        public static readonly string[] SceneKinds = { "letter", "visit", "sending", "memory", "event", "invitation" };
         public static string KindOf(Scene scene)
         {
             if (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return "visit";
@@ -923,7 +961,7 @@ namespace Tirabade
             if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.ContinueBefore != null) return Array.Empty<string>();
             if (scene.InteractionHub != null)
             {
-                if (IsNurahHubScene(scene) || IsPresenceHubScene(scene)) return Array.Empty<string>();
+                if (IsNurahHubScene(scene) || IsPresenceHubScene(scene) || IsTableScene(scene)) return Array.Empty<string>();
                 throw new InvalidOperationException("Unrecognized authored interaction hub: " + scene.Id + "/" + scene.InteractionHub);
             }
             if (scene.AnswerLists.Length > 0) return scene.AnswerLists;
@@ -953,6 +991,20 @@ namespace Tirabade
             || a.Requires.Any(b.Forbids.Contains) || b.Requires.Any(a.Forbids.Contains)
             || a.RequiresAnyGroups.Any(group => group.All(b.Forbids.Contains)) || b.RequiresAnyGroups.Any(group => group.All(a.Forbids.Contains));
 
+        // E16: the household's Table (08 §2.2, 10 §P1). A scene whose InteractionHub is TableHub is offered on the Table menu,
+        // opened by a native opener on Thaberdine's tavern list; the chosen scene is queued and plays after the menu closes.
+        public const string TableHub = "household.table";
+        public const int TablePerPage = 6;
+        public static bool IsTableScene(Scene scene) => scene.InteractionHub == TableHub && !IsRemote(scene)
+            && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && scene.AnswerLists.Length == 0 && scene.ContactUnit == null;
+
+        // The Table menu: the table scenes available now, in authored order (the menu pages them TablePerPage at a time).
+        public static List<Scene> TableEntries(Story story, Snapshot state) =>
+            story.Scenes.Where(scene => IsTableScene(scene) && Available(story, scene, state)).ToList();
+
+        public static bool OpenerShown(NativeOpener opener, Snapshot state) =>
+            state.Chapter >= opener.MinChapter && state.Chapter <= opener.MaxChapter && Match(opener.Requires, opener.Forbids, state);
+
         // E12c: a physical scene offered in a presence's click-to-talk hub (InteractionHub = the exact presence key).
         public static bool IsPresenceHubScene(Scene scene) => scene.InteractionHub != null
             && PresenceRelationship(scene.InteractionHub) != null && scene.InteractionHub != "nurah.arrival"
@@ -972,7 +1024,7 @@ namespace Tirabade
             ValidateBooks(story);
             foreach (var scene in story.Scenes)
                 if (scene.Kind != null && (Array.IndexOf(SceneKinds, scene.Kind) < 0 || !IsRemote(scene)))
-                    throw new InvalidOperationException("Invalid scene kind (E15c: letter, visit, sending, memory, event; remote scenes only): " + scene.Id);
+                    throw new InvalidOperationException("Invalid scene kind (E15c: letter, visit, sending, memory, event, invitation; remote scenes only): " + scene.Id);
             if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null
                 || story.MainCharacterFacts == null)
                 throw new InvalidOperationException("Native reader collections cannot be null.");
@@ -1005,7 +1057,7 @@ namespace Tirabade
                 "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
-                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available"))));
+                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys)));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
@@ -1108,6 +1160,19 @@ namespace Tirabade
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
             ValidatePresences(story, authoredFlags, nativeKeys, derivedFlags);
+            // E16: openers have distinct ids, a native list GUID, text, a view, a chapter window and read only known keys.
+            if (story.Openers == null) throw new InvalidOperationException("Openers cannot be null.");
+            foreach (var opener in story.Openers)
+                if (opener == null || string.IsNullOrWhiteSpace(opener.Id) || !story.Relationships.ContainsKey(opener.Relationship ?? "") || !Guid.TryParseExact(opener.AnswerList ?? "", "N", out _)
+                    || string.IsNullOrWhiteSpace(opener.Text) || opener.View != "table" && !(opener.View.StartsWith("book.", StringComparison.Ordinal) && story.Books.ContainsKey(opener.View.Substring(5)))
+                    || opener.MinChapter < 1 || opener.MaxChapter > 6 || opener.MinChapter > opener.MaxChapter
+                    || story.Openers.Count(o => o?.Id == opener.Id) != 1
+                    || opener.Requires.Concat(opener.Forbids).Any(key => string.IsNullOrWhiteSpace(key) || !authoredFlags.Contains(key)
+                        && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key)))
+                    throw new InvalidOperationException("Invalid native opener (distinct id, relationship, list GUID, text, view, chapters, known keys): " + opener?.Id);
+            foreach (var scene in story.Scenes.Where(s => s.InteractionHub == TableHub))
+                if (!IsTableScene(scene))
+                    throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
@@ -1117,7 +1182,7 @@ namespace Tirabade
             var ids = new HashSet<string>();
             foreach (var scene in story.Scenes)
             {
-                if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !(IsPresenceHubScene(scene)
+                if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !IsTableScene(scene) && !(IsPresenceHubScene(scene)
                     && story.Presences.TryGetValue(scene.InteractionHub, out var hubPresence) && hubPresence?.Dialog == "hub"
                     && PresenceRelationship(scene.InteractionHub) == scene.Relationship))
                     throw new InvalidOperationException("Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
