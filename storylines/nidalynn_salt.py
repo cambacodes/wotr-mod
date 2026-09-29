@@ -228,9 +228,13 @@ visit(SNOWFIELD, "Where the snow stays", [
         c("Continue", "down")),
     nar("down", '''{n}The cold comes in where your clothes go, and she follows it with her hands, and wherever her hands go the cold stops. She laughs into your mouth when you gasp at the snow on your back; she does not let you up. She is heavier than she looks, and very much stronger, and she presses you down into the snowfield with the sheepskin under you and her hair falling round both your faces like a tent of white silk.{/n}
 {n}Her mouth is slow. Her hands are slow. The snow under you is soft, and the stars over her shoulder go on and on, and her breath, which never steams, is the only warm thing on the whole mountain, and it is on your throat.{/n}''',
-        c('"Nidalynn."', "cut"),
-        c("[Draw her down.]", "cut")),
-    nar("cut", '''{n}She makes a low sound, deep in her chest, that is not quite a word in any language you know, and draws you down into the snow with her, and the snowfield takes you both.{/n}''',
+        c('"Nidalynn."', "want"),
+        c("[Pull her closer.]", "want")),
+    nd("want", '''{n}She lifts her head. Her hair falls round your face, and her eyes in the starlight are not grey at all now; they have silver in them, all the way through.{/n} "Four hundred winters I've watched you warm-blooded things want each other, and wondered what the fuss was." {n}Her voice is low and rough and perfectly unashamed.{/n} "I know now. I want you. All of you, here, in my snow, and I'm not going to be quick about it, and I'm not going to be polite."''',
+        c('"Then don\'t be."', "cut"),
+        c("[Answer her with your hands.]", "cut")),
+    nar("cut", '''{n}She laughs, low in her chest, and comes over you in one long movement, a knee in the snow on either side of you and the sheepskin sliding off her shoulders, her weight settling onto you, warm as a banked kiln. Her hands take your wrists and press them down into the snow above your head, not hard, only so that you know who is holding whom. She looks down at you, all of her, white hair and starlight and want.{/n}
+{n}Then she lowers herself to you, slowly, the way she does everything, and the snowfield takes you both.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}Grey light on the snowfield. Your eyelashes have frozen together, and when you get them open the first thing you see is a red-black face, upside down, with a great many teeth in it, a hand's breadth from your own.{/n}
 {n}The young dragon has found you. She is standing on your chest, which hurts, looking down at you with an expression of enormous disapproval, and every time you breathe she rises and falls.{/n}''',
