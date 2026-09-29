@@ -440,8 +440,13 @@ namespace RRT.TestHarness
                     }
                     if (dc.Dialog == null) { run.Result = "completed"; break; }
                     // Screenshots (plan.Screenshots): the cue is bound and on screen, so capture it before answering.
+                    // Only a cue of the walked scene is captured: a walk that has continued into a native dialog (an epilogue
+                    // handing back to the game, a native return) would otherwise photograph the wrong conversation.
                     if (plan.Screenshots && run.Screenshots.Count < plan.ScreenshotsPerScene)
-                        yield return Screenshot(run, step);
+                    {
+                        if (dc.Dialog == (BlueprintDialog)dialogObj && ShotBelongs(dc.CurrentCue?.name, run.Scene)) yield return Screenshot(run, step);
+                        else ShotFailed(run, "screenshot skipped at step " + step + ": current cue " + (dc.CurrentCue?.name ?? "null") + " is not a cue of " + run.Scene);
+                    }
                     if (dc.Dialog == null) { run.Result = "completed"; break; }
                     var answers = dc.Answers.ToList();
                     counts.Add(answers.Count);
@@ -507,8 +512,17 @@ namespace RRT.TestHarness
 
         // Captures the rendered frame to <ScreenshotDir>/<scene>__<step>.png. ScreenCapture writes at the end of the frame, so
         // the file appears a frame or two later; wait up to 2 s real time for it. A failure is logged, never fails the run.
+        // An RRT scene's cues are named RRT_cue.<scene>.<node> (paragraphs add .p<n>).
+        internal static bool ShotBelongs(string? cueName, string sceneId) =>
+            cueName != null && cueName.StartsWith("RRT_cue." + sceneId + ".", StringComparison.Ordinal);
+
         IEnumerator Screenshot(SceneRun run, int step)
         {
+            // UnityModManager opens its window over the game in a normal-window run; close it so it is not captured.
+            bool closed = false;
+            try { var ui = UnityModManager.UI.Instance; if (ui != null && ui.Opened) { ui.ToggleWindow(false); closed = true; } }
+            catch (Exception ex) { ShotFailed(run, "could not close the UnityModManager window: " + ex.Message); }
+            if (closed) { yield return null; yield return null; }
             string? path = null;
             try
             {

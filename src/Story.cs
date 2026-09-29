@@ -225,6 +225,8 @@ namespace Tirabade
         public string[] Areas = Array.Empty<string>();
         public int[] Chapters = Array.Empty<int>();
         public bool Remote;
+        // E15b: a remote scene that arrives as a parcel rather than a letter (page header "A parcel from <Owner>").
+        public bool Parcel;
         public bool ManualOnly;
         public string? InteractionHub;
         public string? Recovery;
