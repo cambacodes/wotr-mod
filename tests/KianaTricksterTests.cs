@@ -91,7 +91,7 @@ internal static class KianaTricksterTests
             "The letter makes a widow of a wife.");
 
         // Trk_Kiana_Ransom: the pay path buys the whole pouch and owes the favour.
-        var possessed = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed");
+        var possessed = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed", "trickster.arcana_tier3");
         check(possessed.Has("kiana.soul_lost"), "The soul_lost latch does not hold.");
         check(Rules.Available(story, gem, possessed) && !Any(possessed, collar, postponed, waited), "Trk_Kiana_Ransom: device unavailable.");
         var gemOut = Program.Walk(gem, possessed).Where(r => r.Has(gem.Id)).ToList();
@@ -102,8 +102,14 @@ internal static class KianaTricksterTests
         check(gemOut.Count(r => r.Has("kiana.trickster.cost.courier_marked")) == 1, "A failed Bluff does not mark the Commander.");
         check(!Pages(gem, possessed).Contains("swapped"), "The swap opens without the counterfeit.");
 
+        // Trk_Kiana_NoArcana (polish batch 3): the appraisal is the chosen Trickster arcana (TricksterKnowledgeArcanaTier3,
+        // "reveal item properties that aren't even there"); without it the Commander can only pay, and the swap stays shut too.
+        var noArcana = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed", "kiana.counterfeit_held");
+        var plain = Program.Walk(gem, noArcana).Where(r => r.Has(gem.Id)).ToList();
+        check(plain.Count == 1 && plain[0].Has("kiana.trickster.cost.sunhammer_favour") && !plain.Any(r => r.Has("kiana.trickster.cost.guests_robbed")),
+            "Trk_Kiana_NoArcana: the appraisal or the swap opened without the arcana trick.");
         // Trk_Kiana_Counterfeit: the preparation replaces the Bluff.
-        var carrying = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed", "kiana.counterfeit_held");
+        var carrying = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.possessed", "kiana.counterfeit_held", "trickster.arcana_tier3");
         var swapped = Program.Walk(gem, carrying).Where(r => r.Has("kiana.trickster.cost.counterfeit_spent")).ToList();
         check(swapped.Count == 1 && !swapped[0].Has("kiana.trickster.cost.courier_marked") && swapped[0].Has("kiana.trickster.returned"),
             "Trk_Kiana_Counterfeit failed.");
@@ -182,7 +188,7 @@ internal static class KianaTricksterTests
         check(latePages.Contains("late") && latePages.Contains("told_late") && !latePages.Contains("robbed"), "The late-Q3 pivot is missing.");
 
         // Trk_Kiana_AwakeNoQ3 / AwakePaid: the dog, or every guest for the favour.
-        var awake = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.q2_done", "seelah_dead");
+        var awake = World(story, 5, "trickster", "trickster.ever", "chapter_later", "kiana.q2_done", "seelah_dead", "trickster.arcana_tier3");
         check(Rules.Available(story, collar, awake) && !Any(awake, gem, postponed, waited), "Trk_Kiana_AwakeNoQ3: device unavailable.");
         var collarOut = Program.Walk(collar, awake).Where(r => r.Has(collar.Id)).ToList();
         var dog = collarOut.Single(r => r.Has("kiana.trickster.dog_saved"));
@@ -198,7 +204,8 @@ internal static class KianaTricksterTests
         var king = World(story, 5, "trickster", "trickster.ever", "chapter_later", "fool_king.crowned");
         check(Rules.Available(story, postponed, king) && !Any(king, gem, collar, waited), "Trk_Kiana_NoWedding_King: device unavailable.");
         var desk = postponed.Nodes[0].Choices;
-        check(desk[0].Crusade?.Amount == -300 && desk[0].Mythic == "PlayerIsTrickster" && desk[1].Crusade == null, "The King's fee is wrong.");
+        check(desk[0].Crusade?.Amount == -300 && desk[0].Mythic == "PlayerIsTrickster" && desk[1].Crusade?.Amount == -100 && desk[2].Crusade?.Amount == -100,
+            "The King's fee or the order's forfeited deposits are wrong.");
         var kingOut = Program.Walk(postponed, king).Where(r => r.Has(postponed.Id)).ToList();
         check(kingOut.Any(r => r.Has("kiana.trickster.decree_king") && r.Has("kiana.trickster.cost.betrothed") && r.Has("kiana.history_betrothed")),
             "Trk_Kiana_NoWedding_King failed.");

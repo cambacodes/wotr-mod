@@ -34,7 +34,7 @@ BRIDGES = {
         '''"I kept things when we separated. Now he is dead, I keep being tempted to treat every object as though I must either bury it or worship it."
 {n}She turns the cracked comb in her hand.{/n}
 "Some of it is simply mine. He knew that too. He would have been very impatient with this comb."
-{n}She laughs once, then puts it back.{/n}
+{n}A laugh escapes her, and she puts it back.{/n}
 "The picture can stay where it is. You needn't admire it on entering. I would like you to look at me, preferably before I lose my nerve about this shawl."
 {n}She closes the box and draws the blue cloth toward her.{/n}''',
         '''"I started sorting things when I believed there would be no more of his things to sort. Now I don't know whether I should have left everything untouched."

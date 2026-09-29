@@ -10,9 +10,10 @@ NurahKilledByCamellia 739b9fe9, Ch3 only). She was bought as a secretary by Lord
 Ramisa, "a true artist of the slave trade", shows "projections" of her slaves first and delivers "only after they're sold"
 (FleshMarket/HologramSlaver Cue_0003 dad3c081, Cue_0013 11789a3f).
 
-Authored, and labelled as authored: a forged pardon whose ink corrects itself overnight (the house style of Obj_025,
-"This stone tablet is not a forgery"); a larva sold under the Abyss's own law of property and raised by the crusade's
-chaplains on the name, hour and place the Commander gives; a dedication that reprints itself in every copy she makes.
+Authored, and labelled as authored: a pardon forged so badly that a forger cannot sleep beside it, so she corrects it
+herself in the night (the Trickster bets on her pride, not on magic); a larva sold under the Abyss's own law of property
+and raised by the crusade's chaplains on the name, hour and place the Commander gives, at the price of her name; a
+dedication forged into a whole edition by hand, and kept in the printer's forme by a quartermaster's purse.
 She sets her own terms, she can refuse, and ownership is the one thing she never forgives.
 """
 from story_format import c, n, p, reaction, scene
@@ -141,8 +142,9 @@ def tempers(extra):
           flags=(*extra, ACCEPTED, EVIL)))
 
 
-cell("nurah.trickster.prison.night_out", "The ink that moved in the night", '"Sleep well, madam?"', [
-    nu("start", '''{n}Nurah is sitting on the bunk exactly where you left her. There is rampart grit on her shoes, and the pardon lies across her knee, face up.{/n} "I didn't sleep. I watched the paper. Around the second bell the 'Q' lost its tail. Then the seal turned the right way up. Then the date changed to today. The ink moved in the night. I watched it. It was very polite about it."
+cell("nurah.trickster.prison.night_out", "Professional disgust", '"Sleep well, madam?"', [
+    nu("start", '''{n}Nurah is sitting on the bunk exactly where you left her. There is rampart grit on her shoes, and the pardon lies across her knee, face up.{/n} "I didn't sleep. I couldn't, with that thing in the room. Around the second bell I scraped the tail off your 'Q' with a bent nail. Then I lifted your seal with lamp-heat and set it back the right way up. Then I changed the date to today, because a pardon dated tomorrow is an insult to the profession."
+{n}She holds up her hands. The ink is under every nail.{/n} "I forged my own pardon, Commander. Out of professional disgust. I suspect that was your whole plan."
 {n}She taps the gaol ledger's copy of her sentence, which still says: imprisoned.{/n} "So I went for a walk. The door opens for a pardoned woman, it turns out, and nobody in Drezen looks at a halfling after dark. I read your casualty lists in the archive and came back before the guard changed, because I wanted to ask you one thing to your face.
 "You could have just opened the door. I'd have run to the nearest demon with a library. You'd rather keep me. Why?"''',
        *tempers((RELEASED,)),
@@ -159,7 +161,7 @@ PROOFS_CHOICES = (
     c('[Leave the gap] "Your book. You decide what I was."', "trusted", flags=(PROOFS,)),
     c("[Write your own name in the gap.]", "signed", flags=(PROOFS, SIGNED)))
 PROOFS_TAIL = [
-    nu("trusted", '''{n}She reads the blank for a long time.{/n} "Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one."
+    nu("trusted", '''{n}She reads the blank twice, then turns the page over as if the name might be hiding on the back.{/n} "Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I don't know what to do with one."
 "That is a compliment. Don't get used to it."''', c("[Leave her the proofs.]")),
     nu("signed", '''{n}The name sits in the gap as if the page had been cut to fit it.{/n} "Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am."''',
        c("[Leave her the proofs.]")),
@@ -188,12 +190,12 @@ cell("nurah.trickster.prison.terms", "Author's terms", '"Is it finished?"', [
 ''' + TERMS_TEXT,
        c("Continue", "terms_signed", requires=(SIGNED,)), c("Continue", "terms", forbids=(SIGNED,))),
     nu("terms_signed", '''"You signed chapter one, so you're in it. You don't get to be in the title."''', *TERMS_CHOICES),
-    nu("terms", '"Well?"', *TERMS_CHOICES),
+    nu("terms", '"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it."', *TERMS_CHOICES),
     nu("done", DONE, c("Continue", "threshold")),
     nu("partners", PARTNERS, c("Continue", "threshold")),
     nar("threshold", '''{n}She sets the manuscript on the plank desk and squares its edges with both hands. Then she climbs onto the bunk, so that for once she is the taller of you.{/n}
 "Author's terms cover the rest of the evening too. I lead. If you're very good, I'll let you think it was your idea."
-{n}Her fingers are black to the second knuckle with ink. She uses them to undo your collar one hook at a time, as carefully as breaking the seal on someone else's letter, and she watches your face the whole while, the way she watches anything she means to describe later. She does not kiss carefully. She bites your lip, laughs into your mouth, and pulls you down onto a straw mattress built for one small prisoner. When the candle gutters, she pinches it out herself.{/n}''',
+{n}Her fingers are black to the second knuckle with ink. She uses them to undo the hooks of your coat one at a time, as carefully as breaking the seal on someone else's letter, and she watches your face the whole while, the way she watches anything she means to describe later. She does not kiss carefully. She bites your lip, laughs into your mouth, and pulls you down onto a straw mattress built for one small prisoner. When the candle gutters, she pinches it out herself.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}The turnkey on the dawn watch finds the cell door ajar, the prisoner asleep, and the Commander's cloak spread over her like a banner over a taken wall. He closes the door very quietly and writes nothing at all in the gaol ledger.{/n}
 {n}Nurah does not open her eyes.{/n} "Chapter two. I've changed your name. Nobody will recognise you. Everybody will."''',
@@ -227,8 +229,8 @@ SCENES.append(scene("nurah.trickster.dead.rumour", "A custom order", "Ramisa", 4
     Chapters=[4], RequiresAnyGroups=[list(DEATHS)], AnswerLists=[RAMISA], NativeReturnCue=RAMISA_AGAIN,
     TricksterDevice=True, TricksterState="dead"))
 
-CHAPLAINS = '''{n}The rite has terms of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must pay for the diamond the rite consumes, and the Commander must sign a writ that the woman raised stays dead on the crusade's rolls. She may live. She may not be Nurah Dendiwhar again, anywhere the crusade's writ runs.{/n}'''
-PAY_CHAPLAINS = c("[Pay for the diamond and sign the writ.]", crusade=("Finances", -300),
+CHAPLAINS = '''{n}The rite has a price of its own. The Chaplain-General will not raise a traitor on a marilith's paper alone: the crusade must buy the diamond the rite consumes, and the woman raised will not be Nurah Dendiwhar. The chaplains strike that name from the living before the rite begins, on the Commander's word, and she wakes under no name at all. She may live. She may not be herself again, anywhere the crusade's priests are heard.{/n}'''
+PAY_CHAPLAINS = c("[Buy the diamond, and give the word that strikes her name.]", crusade=("Finances", -300),
                   flags=("nurah.trickster.cost.chaplains_writ",))
 BILL_FREE = (RETURNED, RELEASED, ACCEPTED, "nurah.trickster.cost.larva_memory", "nurah.trickster.pseudonym")
 FORGE = '[Forge the bill of sale] "Owner of record: the author herself. Dead or not, she still owns herself."'
@@ -304,10 +306,10 @@ cell("nurah.trickster.ran_off.dedication", "A dedication in her own hand",
 
 letter("nurah.trickster.ran_off.second_draft", "Two hundred copies", 3, [
     nar("start", '''{n}A pedlar bound south stops at the Drezen gate with a crate of fresh pamphlets: "The Pawn Who Left the Board", by N. D. The dedication page is blank.{/n}''',
-        c("[Buy the whole run, and write the dedication into every copy.]", "forged", mythic="Trickster",
+        c("[Buy the whole run, pay the printer, and write the dedication into every copy.]", "forged", mythic="Trickster",
           crusade=("Finances", -200), flags=(PRIMED, GHOST, LATE, "nurah.started")),
         c('"Let the pedlar go."', abort=True)),
-    nar("forged", '''{n}Two hundred copies, one night, one candle. By the fortieth you are forging her hand better than she does: "To the Commander, who kept me because I had stopped being funny. N. D." The pedlar leaves at dawn with the crate and no idea.{/n}''',
+    nar("forged", '''{n}Two hundred copies, one night, one candle. By the fortieth you are forging her hand better than she does: "To the Commander, who kept me because I had stopped being funny. N. D." The pedlar leaves at dawn with the crate and no idea. The printer in the lower city keeps the line locked in his forme for the next edition, and a quartermaster's purse keeps him from remembering who asked.{/n}''',
         c("[Go to bed.]")),
 ], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off")
 
@@ -315,7 +317,7 @@ letter("nurah.trickster.ran_off.terms_by_post", "I am extremely funny", 3, [
     nar("start", '''{n}The envelope is addressed in a hand so furious the nib went through twice.{/n}''',
         c("Continue", "pardoned", requires=(RELEASED,)), c("Continue", "letter", forbids=(RELEASED,))),
     nu("pardoned", '''"You pardoned me, then opened the door, then followed me with THIS. Make up your mind."''', c("Continue", "letter")),
-    nu("letter", '''"I did not write that. I checked every copy. I wrote it in every copy. HOW. I burned an edition, and the next one came off the press with the same line in my hand, set in a type the printer swears he never cast. It is an insult in my own handwriting, Commander, and it will outlive us both.
+    nu("letter", '''"I did not write that. I checked every copy. I wrote it in every copy, apparently, in my own hand, better than I write it. I burned an edition, and the next one came off the press with the same line, because somebody had paid my printer to keep it locked in the forme. He is a very bad liar. The purse had a crusade quartermaster's knot on it. It is an insult in my own handwriting, Commander, and you paid good money to make it outlive us both.
 "And I am funny. I am extremely funny. So why would you even want to keep a woman you think isn't?"''',
        *tempers(()),
        c('"Because I wanted the last word in your book."', "refused", flags=(CLOSED, "nurah.trickster.cost.last_word"))),
@@ -347,7 +349,7 @@ def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids):
         nu("start", arrival + "\n" + TERMS_TEXT,
            c("Continue", "terms_signed", requires=(SIGNED,)), c("Continue", "terms", forbids=(SIGNED,))),
         nu("terms_signed", '''"You signed chapter one, so you're in it. You don't get to be in the title."''', *TERMS_CHOICES),
-        nu("terms", '"Well?"', *TERMS_CHOICES),
+        nu("terms", '"Take them or leave them. Nobody has ever let me say that to anyone before, so do me the courtesy of pretending to think about it."', *TERMS_CHOICES),
         nu("done", DONE, c("Continue", "threshold")),
         nu("partners", PARTNERS, c("Continue", "threshold")),
         nar("threshold", threshold, c("Continue", "morning")),
@@ -359,13 +361,13 @@ def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids):
 
 terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
     '''{n}She does not get up. She finishes the apple, core and all, and wipes her fingers on the chaplains' shift.{/n} "I've had a mouth again since the chaplains stopped arguing with me about my own name. I'm catching up.
-"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. You signed a writ that I stay dead on the crusade's rolls, Commander. It's the best disguise I've ever had, and I didn't even have to forge it."
+"The chaplains wanted me to stay in the chapel and be grateful. I told them I'd been property of the crusade, property of a marilith, and property of nobody, in that order, and that I preferred the last one. Then I walked out. You had them strike my name from the living, Commander. I woke up as nobody. It's the best disguise I've ever had, and I didn't even have to forge it."
 {n}She holds up the parcel: the whole manuscript, tied with chapel string.{/n}''',
     '''{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}
 "I spent a season as a thing in a cage that could not touch anything. Author's terms: tonight I touch everything."
 {n}She means it. Her hands are everywhere at once, quick and ink-stained and greedy, learning you the way she learns a city, by getting lost in it on purpose. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
     '''{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} "Chapter nine," she says without looking up. "I'm taking out the hunchback. I'm putting in something much worse. You'll love it."
-{n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and signed with a name that is not hers.{/n}''',
+{n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and made out in a name that is not hers.{/n}''',
     (RETURNED,), ())
 
 terms_in_person("nurah.trickster.ran_off.terms", "nurah.presence",
@@ -386,14 +388,15 @@ EPILOGUE_PARAGRAPHS = (
     p("The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the "
       "Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.",
       requires=(RETURNED,)),
-    p("The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, under the Commander's own writ. The author "
-      "of 'To the Abyss and Back' signed every copy with another name, and the inquisitors who hunted her never once "
+    p("The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author "
+      "of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once "
       "thought to look for a dead woman.", requires=("nurah.trickster.cost.chaplains_writ",)),
     p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
-      "because I had stopped being funny. N. D.' She never managed to remove it. After a while she stopped trying, and began "
+      "because I had stopped being funny. N. D.' She never managed to remove it: every printer she went to had already "
+      "been paid to keep it. After a while she stopped trying, and began "
       "adding a footnote to it instead, a different one in every edition.", requires=(GHOST,)),
     p("The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that "
-      "the prisoner in it was pardoned by a forgery, and that nobody has ever been able to prove which.",
+      "the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
       requires=(LEDGER, RELEASED), forbids=(RETURNED,)),
     p("The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
       forbids=(SIGNED,)),
@@ -410,7 +413,7 @@ SCENES.append(scene("nurah.trickster.epilogue.commit", "The author herself", "Ep
         c("[Go to her before you have read a word.]", "went")),
     nar("read", '''{n}She arrived at the last page, which is to say at dawn, and found the Commander still reading it. She took the book away, closed it with a snap, and climbed into the Commander's lap to deliver her review of the reader in person. It was a long review, and a thorough one, and she did not trouble to close the door first.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS),
-    nar("went", '''{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands for a long moment.{/n} "You haven't read it." {n}She pulled the Commander inside by the collar.{/n} "Good. I'll read you the best parts myself. Slowly. With demonstrations."''',
+    nar("went", '''{n}She opened her door with the book's twin in her other hand and looked at the Commander's empty hands.{/n} "You haven't read it." {n}She pulled the Commander inside by the sleeve.{/n} "Good. I'll read you the best parts myself. Slowly. With demonstrations."''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
     requires=("trickster.ever", LATE_COMMITTED), forbids=(COMPLETE, CLOSED), last=99, Relationship="nurah"))
 

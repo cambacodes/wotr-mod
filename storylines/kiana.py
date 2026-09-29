@@ -184,13 +184,13 @@ s("date", "The guest stays", [
 {n}Kiana leaves space between you. Her hands are steady, though she has stopped playing with the ribbon at her throat.{/n}
 "I used to laugh at things that frightened me. Sometimes that helped. Sometimes I was simply frightened and laughing."
 {n}She draws a chair to the other side of the table.{/n}
-"Tonight I want to hear you. We can stay here and talk. If I need more distance, I will say so. I would rather tell you the truth than perform courage for someone I want to know."''',
+"Tonight I want to hear you. We stay here and talk. If the scene needs a wider stage, the leading lady will move her chair, and the audience will pretend not to notice. I have performed brave for half of Drezen. You get the rehearsal, lines fluffed and all."''',
       c('"Then we begin with your voice, and mine."', "want")),
     n("dress", "Kiana", '''"Thank you. I tried on three dresses before choosing the first. You are getting a very carefully arranged appearance of spontaneity."
 {n}She turns once so you can admire the result, then comes back to you.{/n}''', c('"What happens when the guest is thoroughly impressed?"', "want")),
     n("want", "Kiana", '''"Here is what I want."
 {n}Kiana waits until she has your attention before continuing.{/n}
-"I want this evening with you. I know you may love other people. I am not asking you to dismiss them. I am asking you to answer my letters and keep the time you give me."''',
+"I want this evening with you. And the next one, if you have it. I am asking you to answer my letters, and to turn up when you say you will. An actress can forgive anything but an empty seat she was promised."''',
       c('"I can promise that."', "close"),
       c('"I cannot promise a relationship. I should have said so sooner."', "stop")),
     n("close", "Kiana", '''"Good. Then you may be charming again. I was beginning to miss it."

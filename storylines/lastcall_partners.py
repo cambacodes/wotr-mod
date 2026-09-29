@@ -246,7 +246,7 @@ partner("vellexia", "vellexia", "vellexia.committed", "vellexia.closed", "Never 
 
 NU = "nurah.trickster."
 partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
-    '''Nurah Dendiwhar published her account of the Fifth Crusade two years after Threshold, under her own name, which surprised everyone who knew her. It sold out in Nerosyan in a week and was banned in Mendev in two. The chapter on the Commander was the longest in the book, and the only one in which she admitted to liking anyone.''',
+    '''Nurah Dendiwhar published her account of the Fifth Crusade two years after Threshold. It sold out in Nerosyan in a week and was banned in Mendev in two. The chapter on the Commander was the longest in the book, and the only one in which she admitted to liking anyone.''',
     (
         page_p('''Ramisa came for the story she had bought. Nurah wrote it for her in a single night, every word true, and dedicated it to the marilith "with the author's compliments and none of her gratitude". The duplicate bill with the Commander's name on it went into the fire the same night. Nurah insists she has no idea how.''', requires=(called("nurah"), NU + "cost.bill_in_your_name")),
         page_p('''Ramisa came for the story she had bought, and Nurah wrote it for her in a single night, every word true, and dedicated it to the marilith with the author's compliments and none of her gratitude.''', requires=(called("nurah"),), forbids=(NU + "cost.bill_in_your_name",)),

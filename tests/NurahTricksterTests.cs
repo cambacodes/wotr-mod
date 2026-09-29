@@ -123,6 +123,11 @@ internal static class NurahTricksterTests
         check(seen.Has("nurah.trickster.proofs_seen") && seen.Has("nurah.trickster.cost.signed_proofs"), "Trk_Nurah_PrisonProofs: flags.");
         var readyTerms = Later(story, seen, 72);
         check(Rules.Available(story, pTerms, readyTerms) && Commits(pTerms, readyTerms), "Trk_Nurah_PrisonTerms: no commit at the cell.");
+        // NUR-01 item 5 is deferred (nurah.md, polish batch 3): the parent "borrowed author" continuation needs the NurahMeeting
+        // actor and correspondence the engine derives from the parent romance, which a Trickster-rescued Nurah lacks. Her
+        // Trickster route is a complete arc on its own; the continuation must stay shut rather than open a chain that dead-ends.
+        var borrowed = S("nurah.borrowed_name");
+        check(!Rules.Available(story, borrowed, readyTerms), "The parent continuation opened for a Trickster-only Nurah (a dead end).");
         var pages = new HashSet<string>();
         Program.Walk(pTerms, readyTerms, (page, _) => pages.Add(page));
         check(pages.Contains("threshold") && pages.Contains("morning") && pages.Contains("terms_signed") && !pages.Contains("partners"),

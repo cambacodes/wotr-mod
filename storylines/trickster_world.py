@@ -319,6 +319,7 @@ BINDINGS = {
     'storyteller.rejected': ('Etudes', 'b26f8535cc3d4a5fa5c2d84c0faf895b', 'StorytellerRejectedPharasma (ledger row 9)'),
     'targona.dead_lab': ('Etudes', '3b8bd37108050a94b9be14e22501e090', 'TargonaIsWasKilledInAreeluLab'),
     'trickster.religion_tier1': ('MainCharacterFacts', '04177c4ddec20ae4ca04388f9cf23518', "TricksterLoreReligionTier1Feature: 'Your treat affliction ability removes... any negative conditions' (a chosen Trickster trick)"),
+    'trickster.arcana_tier3': ('MainCharacterFacts', '5e26c673173e423881e318d2f0ae84f0', "TricksterKnowledgeArcanaTier3Feature: 'You can reveal item properties that aren't even there and couldn't possibly be there. Every item you identify gets an additional random major effect.' (a chosen Trickster trick)"),
     'trickster.umd_tier2': ('MainCharacterFacts', '1383f21534d8b6a45bdbdc8ddce7a187', "TricksterUseMagicDeviceTier2Feature: 'Wands you use no longer lose charges' (a chosen Trickster trick)"),
     'targona.free': ('Etudes', '720af1f72f413354db3f4d41f76d5af6', 'TargonaIsFreeInAreeluLab (started by TargonaWings/Answer_0031 [Destroy the barrier])'),
     'targona.heard_twins': ('SeenCues', '67eb3b5ed760435487fb011f454988e8', "c1/EstrodTower/Teldon/Cue_3 ('two angels who emerged from one soul'); node-variant read on"),

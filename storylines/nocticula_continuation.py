@@ -197,7 +197,7 @@ She has acquired a copy of the ship's loading book. Here it appears as floating 
     n("read", "Nocticula", '''{n}You stop following the weights and compare the owners. Each repeated case changes hands after the ship returns, never before it leaves. The devotional goods are being sold retrospectively. Whatever enters the harbor can acquire a new owner while it is already inside.
 You draw a line through the six names. Then you put the missing passengers beneath them.{/n}
 "He does not transport the same cargo three times. He sells a claim to what has already arrived. The weights are an excuse for the payments."
-{n}Nocticula looks at your arrangement, then at the lamps. For the first time she moves away from your shoulder.{/n}
+{n}Nocticula looks at your arrangement, then at the lamps. Only now does she move away from your shoulder.{/n}
 "That would explain why the fifth lamp changed without another passenger boarding. Someone purchased an old arrival."
 "And why a stolen navigational instrument matters. It might identify what he is actually selling."
 "Or allow the buyer to collect it."
@@ -1157,7 +1157,7 @@ Nocticula has already moved Rhez's next meeting away from its advertised locatio
 "We should decide what happens to the performers before choosing where to put the audience."''', c('"Tell me what Edris can actually show us."', "edris", flags=f("lodge_people_first"))),
     n("temper", "Nocticula", '''"You think I am angry."
 "You have furnished a room in which to overturn one chair."
-{n}She looks down at it, then laughs once. There is no warmth in the sound, but some of the deliberation leaves her face.{/n}
+{n}She looks down at it, and a short sound escapes her that might be a laugh. There is no warmth in it, but some of the deliberation leaves her face.{/n}
 "You may be useful this evening."
 "An encouraging beginning."
 "Do not become encouraged too quickly. Istrava wants the city to see me punish a joke because its subject embarrassed me. Several patrons would happily purchase that story with her life."
@@ -1196,7 +1196,7 @@ You turn it over. On the reverse, a little hook has been sewn into the ribbon. I
 "And an unimaginative one. She has mistaken difficulty in leaving for a reason to stay."
 "You sound personally offended."
 "I have spent a great deal of effort learning the difference."
-{n}She holds out her hand. You return the mask; she places it on the table, facedown. For the first time tonight she sits beside you rather than behind the arrangement.
+{n}She holds out her hand. You return the mask; she places it on the table, facedown. Tonight, at last, she sits beside you rather than behind the arrangement.
 Together you examine Edris's sketch until you can describe both stairways without looking. Nocticula corrects the width of a landing, then admits the correction is her guess and removes it. The missing measurement remains missing.
 Before she lets you wake, she asks you to name the one thing she should not promise on your behalf. You answer that she must not put a living person at risk under the claim that you have already agreed to it.
 She considers that longer than you expected.{/n}
@@ -1239,7 +1239,7 @@ The failed reading leaves you without a reliable way to silence the bell. The su
 The bell may ring before she reaches him. Every attendant must be warned to run when it does, whether the guests believe the performance has begun or not.{/n}
 "No pretending the plan is quieter than it is," Nocticula says. "Tell me what you want the people downstairs to do when subtlety fails."''', c('[Use the guest entrance and warn the attendants about the first ringing.]', "limits", flags=f("lodge_bell_read_failed", "lodge_guest_entry"))),
     n("guest", "Nocticula", '''"She would enjoy that. She would also spend the evening wondering whether enjoyment was the mistake."
-{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you for a long moment.{/n}
+{n}Nocticula asks what you propose she wear. When you answer that it should give Istrava a reason to leave her chair, she looks at you as if you had moved a piece she had not seen.{/n}
 "That is a remarkably indirect compliment."
 "I was trying to keep it useful."
 "Try less hard."
@@ -2050,7 +2050,7 @@ The Commander had become familiar with the Lady in Shadow's expression when a go
 That evening she had put aside a courtier's misdeeds to take the Commander's glass and kiss the hand holding it. Later she had remembered the courtier. The suggested punishment had pleased her enough to interrupt the quiet with laughter.
 The older Worldwound bargain still awaited its reckoning. Before it, there had been this alliance on a smaller matter, and the considerable pleasure each had taken in making the other attend to an inconvenient detail.{/n}''', requires=f("chosen_alliance"), forbids=ORDINARY_BAD)
 ending("limit", "An undertaking completed", '''{n}At the end of the harbor undertaking, Nocticula asked for more. The Commander kept the earlier arrangement and declined to enlarge it.
-For a long moment she aligned the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.
+She spent a while aligning the scratch in a glass lens with the grain of the table. Then she set it down and began speaking of a merchant whose foolish venture had amused her. The conversation became easier. Her disappointment remained in the care with which she chose its subject.
 They had found missing passengers, broken a stolen claim, and decided what to do with the woman who had sold it. Their disagreement about the next invitation did not appear in those records. It belonged to the room beside the quay, along with two empty glasses and the doorway through which the Commander left.
 Nocticula had disliked several answers during the investigation. This was the one she had needed the longest silence to receive.{/n}''', requires=f("chosen_limit"), forbids=ORDINARY_BAD)
 ending("death", "The unused question", '''{n}After Nocticula's death, the room beside the quay could only be remembered. The dream which once supplied its light no longer brought an invitation from her.
