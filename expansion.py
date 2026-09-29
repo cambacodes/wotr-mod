@@ -57,6 +57,10 @@ from storylines import areelu_trickster
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
+from storylines import devarra_trickster, devarra_tower
+from storylines import rrt_ui
+from storylines import rrt_portraits
+from storylines import lastcall
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -406,8 +410,20 @@ def make_expansion(*, independent_tirabade=True):
     arueshalae_chapel.integrate(payload)
     arueshalae_hours.integrate(payload)
     arueshalae_notes.integrate(payload)
+    # Devarra: the draft (retired to reference/retired-drafts) is replaced by the Trickster "Clutch-mother" route
+    # (devarra.md round 2) and its watchtower courtship on the Storyteller's hub (devarra_tower).
+    payload["Relationships"]["devarra"] = copy.deepcopy(devarra_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(devarra_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
+    devarra_trickster.integrate(payload)
+    devarra_tower.integrate(payload)
+    # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
+    lastcall.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    # E15: the RRT book UI (glossary tooltips, the guide book).
+    rrt_ui.integrate(payload)
+    rrt_portraits.integrate(payload)
     normalize_trickster_access(payload)
     return payload
 

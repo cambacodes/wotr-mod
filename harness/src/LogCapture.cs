@@ -95,12 +95,24 @@ namespace RRT.TestHarness
             ("[Audio] Failed to play sound ev_stop_aivo", "WOTR_AIVO stop event when an unvoiced RRT cue interrupts playback (audio only)"),
         };
 
-        internal static string? BenignReason(string message) =>
-            KnownBenign.Where(b => message.IndexOf(b.Pattern, StringComparison.Ordinal) >= 0).Select(b => b.Reason).FirstOrDefault();
+        internal static string? BenignReason(string message) => BenignReason(message, null);
+
+        // Any "[Audio] Failed to play sound" raised from the WOTR_AIVO voiceover shim (AiVoiceoverMod in the stack) is audio-only
+        // noise, on RRT or native cues alike: the shim requests a clip for every cue it sees. Narrow on purpose: audio-shim
+        // failures only, never other audio or dialog errors.
+        internal static string? BenignReason(string message, string? stack)
+        {
+            var known = KnownBenign.Where(b => message.IndexOf(b.Pattern, StringComparison.Ordinal) >= 0).Select(b => b.Reason).FirstOrDefault();
+            if (known != null) return known;
+            if (message.IndexOf("[Audio] Failed to play sound", StringComparison.Ordinal) >= 0
+                && stack != null && stack.IndexOf("AiVoiceoverMod", StringComparison.Ordinal) >= 0)
+                return "WOTR_AIVO voiceover shim failed to play a clip (audio only, no effect on dialogue)";
+            return null;
+        }
 
         internal static bool IsRelevant(string message, string? stack)
         {
-            if (BenignReason(message) != null) return false;
+            if (BenignReason(message, stack) != null) return false;
             string text = message + "\n" + stack;
             return text.IndexOf("Tirabade", StringComparison.Ordinal) >= 0
                 || text.IndexOf("RRT_", StringComparison.Ordinal) >= 0
@@ -126,7 +138,7 @@ namespace RRT.TestHarness
                 entries.Add(new CapturedLog
                 {
                     Source = source, Severity = severity,
-                    Message = BenignReason(message ?? "") is string reason ? "[known benign: " + reason + "] " + message : message ?? "", StackTrace = stack,
+                    Message = BenignReason(message ?? "", stack) is string reason ? "[known benign: " + reason + "] " + message : message ?? "", StackTrace = stack,
                     AtSeconds = Math.Round(clock.Elapsed.TotalSeconds, 3), Context = Context,
                     Relevant = source == "finalizer" || IsRelevant(message ?? "", stack),
                 });

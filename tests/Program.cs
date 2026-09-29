@@ -257,6 +257,8 @@ internal static class Program
         }
         FairRestTests.Run(Check);
         PostBagTests.Run(Check);
+        MailbagTests.Run(Check);
+        BookTests.Run(story, Check);
         PrerequisiteGroupsTests.Run(Check);
         TargonaContinuation();
         ArankaContinuation();
@@ -464,6 +466,8 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) ChadaliTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "arueshalae.trickster.dead.starving")) ArueshalaeTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "devarra.trickster.dead.woken")) DevarraTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))

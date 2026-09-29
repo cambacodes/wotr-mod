@@ -119,9 +119,9 @@ internal static class ChadaliTricksterTests
             "'Lucky you' is not the ER-2 device of the lost-at-council state.");
         check(second.Requires.Contains("chadali.started") && second.Requires.Contains(W + "the_real_wager") && second.NativeReturnCue == null,
             "The second cookie is not a physical entry that waits for the real wager.");
-        check(pages.Length == 3 && pages.All(p => p.MinChapter == 6 && p.EpilogueAfter == "b2fd1f720322d6749b921cdd34328c3a"
+        check(pages.Length == 3 && pages.All(p => p.MinChapter == 6 && p.EpilogueAfter == null
                                                    && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
-            "The epilogue pages are not three effect-free Chapter 6 pages after the Council's page.");
+            "The epilogue pages are not three effect-free, unanchored Chapter 6 pages (appended in authored order, as Eritrice, Nocticula and Dorgelinda).");
         check(story.Derived[P + "late_committed"].Length == 2, "The late-commit derived key is missing.");
         check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { "stay", "half", "coin" }),
             "The late-commit page does not let the Commander answer her (stay, half the orange, or the coin).");

@@ -49,6 +49,11 @@ namespace RRT.TestHarness
         public bool MarkStarted = true;
         public bool QuitWhenDone = true;
         public string? ReportPath;
+        /// <summary>Capture a screenshot of each shown cue (after the dialog UI has bound it), up to ScreenshotsPerScene per walk.</summary>
+        public bool Screenshots;
+        public int ScreenshotsPerScene = 3;
+        /// <summary>Folder for the PNGs (run-harness.ps1 passes the run's shots folder); null: persistentDataPath/RRTHarnessShots.</summary>
+        public string? ScreenshotDir;
         public HarnessTimeouts Timeouts = new HarnessTimeouts();
 
         [JsonIgnore] public bool Dfs => string.Equals(Mode, "dfs", StringComparison.OrdinalIgnoreCase);
@@ -77,6 +82,8 @@ namespace RRT.TestHarness
             if (MaxPathsPerScene < 1) MaxPathsPerScene = 1;
             if (MaxStepsPerWalk < 1) MaxStepsPerWalk = 1;
             if (MaxScenesPerSave < 0) MaxScenesPerSave = 0;
+            if (ScreenshotsPerScene < 0) ScreenshotsPerScene = 0;
+            if (string.IsNullOrWhiteSpace(ScreenshotDir)) ScreenshotDir = null;
         }
 
         public bool IncludesScene(string id) =>

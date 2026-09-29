@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-arueshalae\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2427,
-  "unique_targets": 614,
+  "binding_uses": 2644,
+  "unique_targets": 636,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -318,9 +318,29 @@
       "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
       "type": "BlueprintCue"
     },
+    "dbf6695999d744747aeb2d4f20b21b50": {
+      "path": "World/Dialogs/c3/AreeluLaboratory/SoulJar/Answer_0006.jbp",
+      "type": "BlueprintAnswer"
+    },
     "2a75fbc8e86fd514e82117c99fc9e528": {
       "path": "World/Dialogs/c3/AreeluLaboratory/TargonaWings/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "dd8ac86f25e0f6b4cac75386eb528851": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "b8dfb42d03fc931409f2b80614cfa9de": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "9c653a907d8549248bd9d202c1fb8964": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
+    "d39b1e850904daa43b7e6dab3a6e7f83": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0046.jbp",
+      "type": "BlueprintCue"
     },
     "190fda58a169c9340b626f1a503c696f": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/AnswersList_0011.jbp",
@@ -1046,6 +1066,10 @@
       "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "3d3357c0474ce5a4bb13d68730faecb8": {
+      "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/AnswersList_0071.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "3e52b05af622f5945905b2be5ed9ac5a": {
       "path": "World/Dialogs/c6/SecondFloor/AreeluBurnTheWitch/Cue_0041.jbp",
       "type": "BlueprintCue"
@@ -1066,8 +1090,16 @@
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "294126e3264796e488ce19bfb1851355": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "b6bc1d5fb28e115499b8bcbbc0d541f9": {
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0052.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "16994192cfa484744bd10852b8dc806f": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0127.jbp",
       "type": "BlueprintAnswersList"
     },
     "3c4dd53fef2e80540bba5272d38c9843": {
@@ -1097,6 +1129,10 @@
     "6b4c8a08d22268f41badc455825b3082": {
       "path": "World/Dialogs/c6/ThresholdExterior/AreeluThresholdWelcome/Cue_0027.jbp",
       "type": "BlueprintCue"
+    },
+    "e77c405d6dde5804bb1f873f971958b8": {
+      "path": "World/Dialogs/c6/TrueEnding/Suggest/AnswersList_0037.jbp",
+      "type": "BlueprintAnswersList"
     },
     "03ebad9587cbea0438d901a0f8df44f1": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Arueshalae/AnswersList_0003.jbp",
@@ -1182,6 +1218,18 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Evil/MeetEvilArusha/Cue_0015.jbp",
       "type": "BlueprintCue"
     },
+    "c8298f1630fd82046986d313ba35f601": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/AnswersList_0030.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "3d5e59ddc658eb947874a1cac31dd6a4": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "26650f05010b9ce4cb0202da7e35ce8e": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/WoundWyrmLair/StoryTellerAndDragonGoodEnter/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
     "5de3ea4370854d229e047d95980006c9": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Mercy/Answer_0004.jbp",
       "type": "BlueprintAnswer"
@@ -1226,17 +1274,25 @@
       "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/Shifter_CompanionDialogue.jbp",
       "type": "BlueprintDialog"
     },
-    "fb42f8bd123bf1f40a448f6dbc66cbbe": {
-      "path": "World/Dialogs/Epilogues/BookPage_0147.jbp",
+    "8f234537d0e0e504ba7fa281f02a3601": {
+      "path": "World/Dialogs/Epilogues/BookPage_0115.jbp",
       "type": "BlueprintBookPage"
     },
-    "b2fd1f720322d6749b921cdd34328c3a": {
-      "path": "World/Dialogs/Epilogues/BookPage_0187.jbp",
+    "fb42f8bd123bf1f40a448f6dbc66cbbe": {
+      "path": "World/Dialogs/Epilogues/BookPage_0147.jbp",
       "type": "BlueprintBookPage"
     },
     "5c95d8e3fa4f3b44896914987cb04b0b": {
       "path": "World/Dialogs/Epilogues/BookPage_0315.jbp",
       "type": "BlueprintBookPage"
+    },
+    "7fbdff975b455454cbaa97542862cf71": {
+      "path": "World/Dialogs/Epilogues/Cue_0179.jbp",
+      "type": "BlueprintCue"
+    },
+    "a730d207401f1124993243ee41bcbe28": {
+      "path": "World/Dialogs/Epilogues/Cue_0203.jbp",
+      "type": "BlueprintCue"
     },
     "5787f92575364c1459df8f075676c2db": {
       "path": "World/Dialogs/Epilogues/Cue_0317.jbp",
@@ -1306,12 +1362,24 @@
       "path": "World/Dialogs/NPC_Common/Vendor_Quartermaster/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "f0641f67501a4084897d9bcbc00ddc99": {
+      "path": "World/Encounters/AreeluLab/Items/SoulJar_Trickster.jbp",
+      "type": "BlueprintItem"
+    },
     "8c8b748a66ebad84f9b4cbcd73c2aab9": {
       "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/KyadoDead.jbp",
       "type": "BlueprintUnlockableFlag"
     },
     "96ca61bbf4a54228be37a4a95fa0704d": {
       "path": "World/Etudes/Common/DLC1_Megaepic/DLC1_Threshold_Outdoor/DLC1_StorytellerDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "e4374a1783c74f68ae46bb5db22e0c58": {
+      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/DragonsInEducationFinished.jbp",
+      "type": "BlueprintEtude"
+    },
+    "a9a453f695924f99b4326f60b7c3753e": {
+      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/UnprecedentedOmeletFinished.jbp",
       "type": "BlueprintEtude"
     },
     "ba365d0ae03c414a8f6f906837a4fe91": {
@@ -1416,6 +1484,18 @@
     },
     "c97882cbc65c4c546aed1810627a5b81": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/Chapter03_AreasDefault/Wintersun_Default/Wintersun_ForestQuest_Start/Wintersun_OldDefender.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b0c1344ae8267c94998ca27ad4288c01": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/IvorySanctum/DragonEggsDestroyed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "02ea801d75381dd48ae15c6c93c5f1dc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/IvorySanctum/DragonEggsProjectGained.jbp",
+      "type": "BlueprintEtude"
+    },
+    "581521b398fb9dd4eb52bbfffb3b5c43": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/WormWoundLair/RedDragonDead.jbp",
       "type": "BlueprintEtude"
     },
     "71f85264d9064074f9cf74999ecbffa9": {
@@ -1600,6 +1680,14 @@
     },
     "dd138e723bf3dd94caddc127a23788ad": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "23bea0045d007fc4db834476012eed58": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborInParty/DragonHunt_Q1/RedDragonEscaped.jbp",
+      "type": "BlueprintEtude"
+    },
+    "056ba61e04cca104a9c95ac2d4658c67": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborInParty/DragonHunt_Q1/RedDragonKilledInIvorySanctum.jbp",
       "type": "BlueprintEtude"
     },
     "dc908c2490d6f4c4393ff26967aa6566": {

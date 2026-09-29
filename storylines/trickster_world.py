@@ -118,6 +118,11 @@ BINDINGS = {
     'ending.wound_closed': ('Etudes', '10cf0442f31a4796af8b28281f35e944', 'Ending_WoundClosed (started by GrandFinal/Cue_0084 27dcd13e03aa83047b89baba5889ccfa with E'),
     'finnean.objected': ('SeenCues', '0f556aee8754497449c4a371281c13ef', 'Velexia_Third_Date/Cue_0132'),
     'fool_king.crowned': ('Etudes', 'cc76b7abcda591f438d0f24972dafddc', 'FoolKingCoronated (existing key)'),
+    'fool_king.page_seen': ('SeenCues', 'a730d207401f1124993243ee41bcbe28', 'Epilogues/Cue_0203 (the Fool King epilogue: luck to any who raised a glass)'),
+    'lastcall.flask_held': ('InventoryItems', 'f0641f67501a4084897d9bcbc00ddc99', 'World/Encounters/AreeluLab/Items/SoulJar_Trickster'),
+    'lastcall.flask_shown_king': ('SelectedAnswers', 'a19383049fdcfab4eacdda5d56d83258', "FoolKing_Tavern/Answer_0048 'I visited the famous moonshiner's hut. Look what I found there.'"),
+    'lastcall.flask_taken': ('SelectedAnswers', 'dbf6695999d744747aeb2d4f20b21b50', "c3/AreeluLaboratory/SoulJar/Answer_0006 '[Take the vessel] Here it is, the cauldron for brewing witch's moonshine!'"),
+    'trickster.rewrote': ('SeenCues', '7fbdff975b455454cbaa97542862cf71', 'Epilogues/Cue_0179 (BookPage_0174, the Trickster rewrite: I hope this narrative is more to your liking?)'),
     'fool_king.gone': ('Etudes', '10f5e03534e6fe74fbc8a94dc2e2c15c', 'FoolKingGone (existing key)'),
     'fool_king.quest_done': ('CompletedQuests', '3da881eb13fcdce49b5c9dd21f4d3d65', 'C3_FoolKing_Quest'),
     'fool_king.tablet_brought': ('SelectedAnswers', 'da3665f275b923d4ea5a77a8c39fb506', "c3/Mythic_Trickster/FoolKing_Tavern/Answer_0025 'I brought a stone tablet from Pulura's Fa"),
@@ -510,7 +515,8 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                               ['sacrifice', 'trickster.ever', 'ending.trickster_full'],
                               ['sacrifice', 'trickster.ever', 'ending.trickster_allplanes'],
                               ['sacrifice', 'trickster.ever', 'ending.trickster_allplanes_fw'],
-                              ['sacrifice', 'ending.wound_closed', 'trickster.ever', 'iomedae.trickster.primed'],
+                              # Iomedae's Appointment group ([sacrifice, ending.wound_closed, trickster.ever, iomedae.trickster.primed])
+                              # returns with her route: until something produces iomedae.trickster.primed it is an invalid read.
                               ['trickster.lastcall.taken',
                                'ending.wound_closed',
                                'sacrifice',

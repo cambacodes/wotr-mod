@@ -24,7 +24,8 @@ LIST = "e649f211c6b002a49a0c633061877927"          # Council_Chadali/AnswersList
 COOKIE = "ed7a31d6f063e0c4aa4ec4e08fab57c0"        # Council_Chadali/Cue_0002 "Eat a cookie for luck!" (clean return)
 ERITRICE_LIST = "d07bffc320b9127459c40869ab3e8ee4"  # Council_Eritrice/AnswersList_0002
 EMBER_LIST = "f2a35965e9bc601449498bd022b04d9d"     # CompanionDialogues/Ember/AnswersList_0003
-COUNCIL_PAGE = "b2fd1f720322d6749b921cdd34328c3a"   # Epilogues BookPage_0187 (the Council's page, Cue_0568)
+# Epilogue pages carry no EpilogueAfter, like Eritrice's, Nocticula's and Dorgelinda's: RRT's epilogue sequence appends them
+# in authored order. (An anchor on the Council's own page, BookPage_0187, is not in that sequence and was appended with a warning.)
 
 STARTED = "chadali.started"
 CLOSED = "chadali.closed"
@@ -218,7 +219,7 @@ letter(P + "fought.lucky", "Lucky you", [
 
 # --- 4.4 Epilogue pages (Owner ChadaliEpilogue; after the Council's own page; no effects). -----------------------
 
-EP = dict(last=6, Relationship="chadali", EpilogueAfter=COUNCIL_PAGE)
+EP = dict(last=6, Relationship="chadali")
 
 SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
     nar("page", '''{n}The spring after Threshold, a Vudrani woman in yellow silk came up the road to Drezen with a basket on her arm, and the gate guards afterwards swore that every die in the barracks came up sixes that day. She found the Commander, sat down uninvited, and put the basket between them: cookies, and a single orange.{/n}
