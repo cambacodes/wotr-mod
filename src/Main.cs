@@ -55,6 +55,10 @@ namespace Tirabade
         private static readonly Dictionary<string, BlueprintUnlockableFlag> flags = new Dictionary<string, BlueprintUnlockableFlag>();
         private static readonly Dictionary<string, BlueprintDialog> dialogs = new Dictionary<string, BlueprintDialog>();
         private static readonly Dictionary<string, Node> pages = new Dictionary<string, Node>();
+        // E15b: the owning scene's Owner per RRT page, so a book page can caption a speaker who is not its owner.
+        private static readonly Dictionary<string, string> pageOwners = new Dictionary<string, string>();
+        // E15b: RRT pages of remote scenes (letters and parcels), styled as correspondence on the book page.
+        private static readonly HashSet<string> letterPages = new HashSet<string>();
         private static readonly Dictionary<string, Sprite> portraits = new Dictionary<string, Sprite>();
         private static readonly Dictionary<string, BlueprintEtude> etudes = new Dictionary<string, BlueprintEtude>();
         private static readonly Dictionary<string, BlueprintQuest> completedQuests = new Dictionary<string, BlueprintQuest>();
@@ -579,7 +583,7 @@ namespace Tirabade
                 page.ShowOnce = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
                 page.OnShow = Actions();
-                page.Title = Text("title." + id, scene.Title);
+                page.Title = Text("title." + id, BookPolish.PageTitle(scene));
                 // E14c: a textless paragraph node keeps its (registered) base cue off the page.
                 if (!string.IsNullOrWhiteSpace(node.Text)) page.Cues.Add(Ref<BlueprintCueBaseReference>(cue));
                 for (int p = 0; p < node.Paragraphs.Count; p++)
@@ -596,6 +600,8 @@ namespace Tirabade
                 }
                 local.Add(node.Id, page);
                 pages.Add(page.AssetGuid.ToString(), node);
+                pageOwners[page.AssetGuid.ToString()] = scene.Owner;
+                if (BookPolish.LetterHeader(scene) != null) letterPages.Add(page.AssetGuid.ToString());
             }
             foreach (var node in scene.Nodes)
             {
