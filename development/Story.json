@@ -29234,9 +29234,39 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "morning",
+              "Next": "morning_free",
               "Set": [],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "morning_free",
+          "Speaker": "Narrator",
+          "Text": "{n}She is gone before the watch changes. Your wrists are unmarked. On the pillow lies one sliver of chitin, dark and glossy, prised from the edge of a wing by a hand that was not careful.{/n}\n{n}Behind your left eye, something neat and patient is thinking very hard.{/n} \"You kept your hands. Nobody keeps their hands. I shall have to find out why, and I shall enjoy the finding out. Keep the scale. It is the only one I have ever given away.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "end",
+              "Set": [
+                "jerribeth.chosen_future"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "jerribeth.short_future_chosen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "short_end",
+              "Set": [],
+              "Requires": [
+                "jerribeth.short_future_chosen"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -29336,13 +29366,83 @@
         {
           "Id": "tenant_body",
           "Speaker": "Narrator",
-          "Text": "{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}\n{n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}\n\"I know where every nerve in this house runs,\" {n}she says.{/n} \"I have been reading the plans for months.\"\n{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists, and lowers herself onto you.{/n}",
+          "Text": "{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}\n{n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}\n\"I know where every nerve in this house runs,\" {n}she says.{/n} \"I have been reading the plans for months.\"\n\"I shall not take your hands in here unless you give them. In this house, that is the only rule I keep.\"",
+          "Choices": [
+            {
+              "Text": "[Give her your wrists.]",
+              "Next": "tenant_pinned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Reach for her instead.]",
+              "Next": "tenant_free",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "tenant_pinned",
+          "Speaker": "Narrator",
+          "Text": "{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists where you offered them, and lowers herself onto you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
               "Next": "tenant_morning",
               "Set": [],
               "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "tenant_free",
+          "Speaker": "Narrator",
+          "Text": "{n}You reach for her, and she lets you find her, ridge and hinge and the cold edge of a wing, in a room that is only real because you both agree it is. She lowers herself onto you with a sound in your skull like pages turning very fast.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "tenant_morning_free",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "tenant_morning_free",
+          "Speaker": "Narrator",
+          "Text": "{n}You wake alone, as you went to sleep. Your hands still remember the shape of something that was never in the room.{/n}\n{n}Behind your left eye, something neat and patient is unusually quiet. Then: \"You reached. Tenants are not supposed to be reached for. I shall have to renegotiate.\"",
+          "Choices": [
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "end",
+              "Set": [
+                "jerribeth.chosen_future"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "jerribeth.short_future_chosen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep the next evening for her.]",
+              "Next": "short_end",
+              "Set": [],
+              "Requires": [
+                "jerribeth.short_future_chosen"
+              ],
               "Forbids": [],
               "Abort": false
             }

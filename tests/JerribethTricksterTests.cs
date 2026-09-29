@@ -207,6 +207,8 @@ internal static class JerribethTricksterTests
             // Directive 12: a Trickster contract is countersigned in person, and the cut lands at the start of the act.
             check(pages.Contains("arrival") && pages.Contains("threshold") && pages.Contains("morning") && !pages.Contains("tenant_room"),
                 "The committed contract has no in-person threshold.");
+            check(pages.Contains("ask") && pages.Contains("threshold_free") && pages.Contains("morning_free"),
+                "Her restraint is not the Commander's choice, or keeping your hands has no distinct outcome.");
             check(outs.Where(r => r.Has("jerribeth.committed")).All(r => r.Has("jerribeth.future")), "The visit does not finish the promise.");
             var tenantW = Program.Copy(w); tenantW.Flags.UnionWith(new[] { Dead, Returned, "jerribeth.trickster.cost.host" });
             var tenantPages = new HashSet<string>();
@@ -214,6 +216,8 @@ internal static class JerribethTricksterTests
             check(tenantPages.Contains("tenant_room") && tenantPages.Contains("tenant_host") && tenantPages.Contains("tenant_body")
                   && !tenantPages.Contains("arrival") && tenantOuts.Any(r => r.Has("jerribeth.committed")),
                 "The tenant's threshold is missing, or she knocks at a door she cannot use.");
+            check(tenantPages.Contains("tenant_pinned") && tenantPages.Contains("tenant_free") && tenantPages.Contains("tenant_morning_free"),
+                "The tenant pins without asking, or reaching for her has no distinct outcome.");
         }
         check(S("jerribeth.trickster.dead.tenant").Nodes.Concat(future.Nodes).All(n => !n.Text.Contains("thrust")),
             "The cut lands after the start of the act.");

@@ -458,7 +458,11 @@ IN_PERSON = [
     nar("threshold_free", '''{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}
 "Oh," {n}she says.{/n} "You are going to be difficult. Good."
 {n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}''',
-      c("Continue", "morning")),
+      c("Continue", "morning_free")),
+    nar("morning_free", '''{n}She is gone before the watch changes. Your wrists are unmarked. On the pillow lies one sliver of chitin, dark and glossy, prised from the edge of a wing by a hand that was not careful.{/n}
+{n}Behind your left eye, something neat and patient is thinking very hard.{/n} "You kept your hands. Nobody keeps their hands. I shall have to find out why, and I shall enjoy the finding out. Keep the scale. It is the only one I have ever given away."''',
+      c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
+      c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
     nar("threshold", '''{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
 {n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}
 "Terms accepted," {n}she says, very softly, against your ear, and lowers herself onto you.{/n}''',
@@ -477,8 +481,17 @@ IN_PERSON = [
     nar("tenant_body", '''{n}The room she builds is your own, exactly, down to the crack in the ceiling. The only thing in it that is not yours is her, sitting on the edge of the bed in her own form, her carapace catching the light of a lamp that is not lit.{/n}
 {n}You know she is not there. Your body does not. When her claws trace your jaw you feel every point of them, and when she leans down the buzzing is in your skin as well as your skull, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}
 "I know where every nerve in this house runs," {n}she says.{/n} "I have been reading the plans for months."
-{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists, and lowers herself onto you.{/n}''',
+"I shall not take your hands in here unless you give them. In this house, that is the only rule I keep."''',
+      c('[Give her your wrists.]', "tenant_pinned"),
+      c('[Reach for her instead.]', "tenant_free")),
+    nar("tenant_pinned", '''{n}She pushes you back into a pillow that does not exist, settles her weight over you, pins your wrists where you offered them, and lowers herself onto you.{/n}''',
       c("Continue", "tenant_morning")),
+    nar("tenant_free", '''{n}You reach for her, and she lets you find her, ridge and hinge and the cold edge of a wing, in a room that is only real because you both agree it is. She lowers herself onto you with a sound in your skull like pages turning very fast.{/n}''',
+      c("Continue", "tenant_morning_free")),
+    nar("tenant_morning_free", '''{n}You wake alone, as you went to sleep. Your hands still remember the shape of something that was never in the room.{/n}
+{n}Behind your left eye, something neat and patient is unusually quiet. Then: "You reached. Tenants are not supposed to be reached for. I shall have to renegotiate."''',
+      c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
+      c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
     nar("tenant_morning", '''{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}
 {n}Behind your left eye, something neat and patient is very pleased with itself.{/n} "Rent received. The forfeit stands. Pay on time, Commander. I have been told I am a very demanding landlady, and I intend to prove it."''',
       c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
