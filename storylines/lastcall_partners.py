@@ -473,6 +473,22 @@ partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed",
         (PLAIN_CHOICE, ("trickster.lastcall.summons_outlived",), ("noct.dead",), ("noct.defeated_not_dead",))),
     ledger=("Arueshalae: a patient under treatment", "Arueshalae is still my patient. A doctor who dies before the treatment is finished is no kind of doctor at all."))
 
+DL = "delamere.trickster."
+partner("delamere", "delamere", "delamere.committed", "delamere.closed", "First Frost",
+    '''Delamere the Blessed did not wait in Drezen for news of Threshold. She did not like waiting in cities, and she did not believe news. She went up onto the ridge above her temple with her bow and a hare on a green stick, and watched the northern sky change colour, and counted, the way she counts everything, until something in it came out right.''',
+    (
+        page_p('''At the rift the Commander blew the old Kellid horn one last time, the three barks and the long broken roar, over the edge of the world. Far off, over woods that had heard it only twice, a woman got up from a dead fire and answered. She came for her day at the rift's edge, and hunted the Commander back across a broken country for three days and three nights, as she had once hunted a white stag, and caught {mf|him|her} at the gate of Drezen in front of the whole cheering garrison, and did not finish it.''', requires=(called("delamere"),)),
+        page_p('''The Commander walked crooked for the rest of {mf|his|her} life, in the stag-hide brace she had cut for it, and relaced every autumn when the old one wore through. She kept the knotted cord she had measured the leg with. She said it was in case the Commander grew. {mf|He|She} never did, and she never gave it back.''', requires=(DL + "hide_brace",)),
+        page_p('''The Commander walked crooked for the rest of {mf|his|her} life. She never apologised for it. Every autumn she looked at the leg the way a smith looks at a blade she forged years ago, and said it had set well.''', requires=(DL + "cost.limp",), forbids=(DL + "hide_brace",)),
+        page_p('''The world buried the Commander. Delamere did not go to the funeral. She said that she had lain in a stone box for longer than anyone living, and that she knew the difference between a beast that was dead and a beast that was only lying very still, and that a good hunter waits.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was standing at the back of the room with an arrow on the string, not because she meant to loose it, but because she had once stood like that for a very long time, and she wanted whatever came out of the flask to see it.''', requires=(H2,)),
+    ), declined=DL + "declined",
+    deal=[[DL + "cost.hunt_owed"]],
+    call=call('''[Sound the horn] "Delamere! You're owed a day. Come and collect it."''',
+        '''{n}The horn is at your belt; it has been there since the crypt. The roar goes out over the rift, three barks and the long broken one, and is swallowed. Then, very far off, over woods that have heard it only twice before, something answers.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Delamere: one day, owed", "I asked a huntress for another day, and she gave it to me on account. She keeps the right to take it back whenever she likes. I walk crooked so that neither of us forgets."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 

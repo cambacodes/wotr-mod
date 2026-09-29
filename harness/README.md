@@ -47,6 +47,7 @@ The `run-harness.ps1` options are:
 - `-Screenshots` captures each shown scene cue into `harness/.runs/<stamp>/shots` (up to `-ScreenshotsPerScene`, default 3).
   It opens a normal, visible 1280x720 window: warn the user first and do not click in it.
 - `-Headless` opens dialogs without the UI.
+- Launch size: runs without `-Screenshots`/`-Windowed` start Wrath in a lean 800x600 window (pass `-FullRes` for the default resolution). `-BatchMode` (experimental) launches with `-batchmode -nographics`; it cannot take screenshots.
 - `-Windowed` passes the standard Unity `-screen-*` arguments.
 - `-TimeoutMinutes` sets the run timeout (default 45).
 - `-Spike Residence` runs the P2 residence feasibility spike instead of driving scenes. See [Residence spike](#residence-spike--spike-residence).

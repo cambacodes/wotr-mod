@@ -1,11 +1,15 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-mielarah\\development\\Story.json",
-  "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2951,
-  "unique_targets": 671,
+  "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
+  "binding_uses": 3068,
+  "unique_targets": 704,
   "failures": [],
   "targets": {
+    "c669b34a7b9c2cb42bf6deb5d8d1606f": {
+      "path": "Items/Areas/Act_1_WorldwoundIncursion/KenabresBurning/Kaylessa_Diary.jbp",
+      "type": "BlueprintItem"
+    },
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
       "path": "Items/Areas/Act_3_DemonsHerecy/Wintersun/SoanaMedallion.jbp",
       "type": "BlueprintItem"
@@ -36,6 +40,10 @@
     },
     "8bc2f9b88a0cf704ea72d86c2a3e2aef": {
       "path": "Mythic/Trickster/Perception/TricksterPerceptionTier1Feature.jbp",
+      "type": "BlueprintFeature"
+    },
+    "90bc71f1d8482184a9ede0bda4773d94": {
+      "path": "Mythic/Trickster/Trickery/TricksterTrickeryTier1Feature.jbp",
       "type": "BlueprintFeature"
     },
     "1383f21534d8b6a45bdbdc8ddce7a187": {
@@ -72,6 +80,10 @@
     },
     "da4c28dd01413694f82b08b728a8c6e5": {
       "path": "Units/NPC/Unique/Act_1_WorldwoundIncursion/BlackWingRuins/Storyteller.jbp",
+      "type": "BlueprintUnit"
+    },
+    "a1569a0739314d04cb8af1d47dcffbe0": {
+      "path": "Units/NPC/Unique/Act_2_SwordOfValor/Warcamp/KaylessaDisguised.jbp",
       "type": "BlueprintUnit"
     },
     "81297c673b63b60448ef88a10db6bc78": {
@@ -126,6 +138,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/TailorCapitalTrader.jbp",
       "type": "BlueprintUnit"
     },
+    "23eabf5b6364d4a4e86202dc5d27600b": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Vendor_Tiefling.jbp",
+      "type": "BlueprintUnit"
+    },
     "565ccab37e2475742b043ec912a750fa": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAeon_Ch3/Minagho_DrezenInThePast.jbp",
       "type": "BlueprintUnit"
@@ -173,6 +189,14 @@
     "78549b805f0a63e41805cfe3e02e2ea8": {
       "path": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/LabyrinthOfBaphomet/HepzamirahGhost.jbp",
       "type": "BlueprintUnit"
+    },
+    "15acf7ada5903ec429f7cd62a6162613": {
+      "path": "Weapons/Items/UniquePF2/Chapter3/CursedDelameresBowItem.jbp",
+      "type": "BlueprintItemWeapon"
+    },
+    "5fd95b425dd0b73488554abcb68382d3": {
+      "path": "Weapons/Items/UniquePF2/Chapter3/DelameresBowItem.jbp",
+      "type": "BlueprintItemWeapon"
     },
     "3b8021631cd1b7d4eb749601047a7bda": {
       "path": "Weapons/Items/UniquePF2/Chapter4/DreadfulOnslaughtItem.jbp",
@@ -534,6 +558,14 @@
       "path": "World/Dialogs/c3/Mythic_Trickster/Council_Eritrice/Cue_0026.jbp",
       "type": "BlueprintCue"
     },
+    "e7236a1fe9273ba498b96b9616b3f379": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Shyka/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "cd2b35a474db55544a63f59a67ac67bf": {
+      "path": "World/Dialogs/c3/Mythic_Trickster/Council_Shyka/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
     "1a17d8053a3be7f47a7908eb6706f2fe": {
       "path": "World/Dialogs/c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0009.jbp",
       "type": "BlueprintAnswersList"
@@ -558,6 +590,18 @@
       "path": "World/Dialogs/c3/TempleOfDelamere/KyadoDrezen/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "d7aadaa261a8023489bdba49216cc334": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "696f402f644bbb047b752f73c31fa344": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "5230d5fd7201db04287903ac6a95d30c": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0036.jbp",
+      "type": "BlueprintCue"
+    },
     "062f826dcda44cb4b9ae5649e95a974e": {
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0094_TrickReinf.jbp",
       "type": "BlueprintCue"
@@ -565,6 +609,14 @@
     "509eac8248670664fab0808c3e00fe04": {
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0109.jbp",
       "type": "BlueprintCue"
+    },
+    "3357022e6d1c5e047a0075a223606210": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0048.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "96993dc62aebc38469f890b857173117": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/TombOfDelamere_BookEvent.jbp",
+      "type": "BlueprintDialog"
     },
     "dc306897f75a31c4aaf9483ebdff0585": {
       "path": "World/Dialogs/c3/Wintersun/BlindCarver/AnswersList_0008.jbp",
@@ -905,6 +957,10 @@
     "b9d78ba896d19b14aa6c371dda617979": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/Answer_0008.jbp",
       "type": "BlueprintAnswer"
+    },
+    "c0fb6762c057bcc4894d1892a9eb22fc": {
+      "path": "World/Dialogs/c5/Iz/Anemora/Cue_0146.jbp",
+      "type": "BlueprintCue"
     },
     "09b8d5eb5dae3634d9dc3d8c7bdd6e9d": {
       "path": "World/Dialogs/c5/Iz/AreeluIntro/AnswersList_0002.jbp",
@@ -1454,6 +1510,54 @@
       "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0197.jbp",
       "type": "BlueprintCue"
     },
+    "30b5b35e84d649245b0fcba5e8d5cc02": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Forn_main/Answer_0039.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "c3e2b86fef76ee441bc66c86ef5f071a": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0028.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "8d741378ae169454f89a544029823135": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0058.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "9f98ffa7f2c71cb4c9e5da0c7a053876": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0068.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "462478faddd1eab45a4e55739d81e6f7": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0056.jbp",
+      "type": "BlueprintCue"
+    },
+    "b3427ecfc15258f4ba50cbc71e32aac2": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0080.jbp",
+      "type": "BlueprintCue"
+    },
+    "5f306afcd4d305b41a611a59cc35e274": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0084.jbp",
+      "type": "BlueprintCue"
+    },
+    "0eb0889b087e0ad41b6987282530ce84": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Kaylessa_main_dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "07bc8bac6a8c8074183e6abb6ce56847": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/AnswersList_0029.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "6502c2a294795ca48923e3b1c6d71c20": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Answer_0067.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "0585a80d0b70442409f30afad8207e9d": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0033.jbp",
+      "type": "BlueprintCue"
+    },
+    "58f994154e180a147a4ab18381f9bc8c": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_Reveal/Cue_0037.jbp",
+      "type": "BlueprintCue"
+    },
     "01d00f006e0e16543b7507ff38e9fb8a": {
       "path": "World/Dialogs/NPC_Common/Nurah-Prison/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -1490,12 +1594,20 @@
       "path": "World/Encounters/AreeluLab/Items/SoulJar_Trickster.jbp",
       "type": "BlueprintItem"
     },
+    "3de8e7db06d4b9043bddfa77888ecfa5": {
+      "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/GotDelamereLoot.jbp",
+      "type": "BlueprintUnlockableFlag"
+    },
     "8c8b748a66ebad84f9b4cbcd73c2aab9": {
       "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/KyadoDead.jbp",
       "type": "BlueprintUnlockableFlag"
     },
     "96ca61bbf4a54228be37a4a95fa0704d": {
       "path": "World/Etudes/Common/DLC1_Megaepic/DLC1_Threshold_Outdoor/DLC1_StorytellerDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "418c4031658541909066be68b6e1fc22": {
+      "path": "World/Etudes/Common/ImportantStates/StoryProjectsOutcome/DelameresRemainsFinished.jbp",
       "type": "BlueprintEtude"
     },
     "e4374a1783c74f68ae46bb5db22e0c58": {
@@ -1692,6 +1804,10 @@
     },
     "a583e4ab47544f5e928fc5b6b7c41e48": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/DidntVisitedEvents.jbp",
+      "type": "BlueprintEtude"
+    },
+    "8c2fdd760cc54b4bb874d2832ff14695": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/ManuscriptsAnemoraDead.jbp",
       "type": "BlueprintEtude"
     },
     "936af39436c74953b43a4165bfbcc9f9": {
@@ -1954,6 +2070,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital.jbp",
       "type": "BlueprintEtude"
     },
+    "7a6f0ef4dd004418aa613693dd9d280a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/FornIsDead.jbp",
+      "type": "BlueprintEtude"
+    },
     "260454e5186fbd34694a0393097f77b5": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/IrabethNotInDrezenCh5_WithGalfrey.jbp",
       "type": "BlueprintEtude"
@@ -1996,6 +2116,14 @@
     },
     "c0f261c4a259da741ab0052f0100c2a0": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethKilledByPlayer.jbp",
+      "type": "BlueprintEtude"
+    },
+    "78fb64bf32f3f194ab077315650adf10": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Kaylessa/KaylessaTomb.jbp",
+      "type": "BlueprintEtude"
+    },
+    "4dd373d7c9954b6419adf920cca9231f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Kaylessa/Kaylessa_dead.jbp",
       "type": "BlueprintEtude"
     },
     "3b8c0801d5e9a694b848ee13564d2ad7": {
@@ -2160,6 +2288,10 @@
     },
     "820f28d6776755d47a2169e2851e15ca": {
       "path": "World/Quests/c4/RaptureOfRupture/RaptureOfRupture.jbp",
+      "type": "BlueprintQuest"
+    },
+    "95ff7d975689fcf44b085d10907e711d": {
+      "path": "World/Quests/c5/Iz/Iz_quest.jbp",
       "type": "BlueprintQuest"
     },
     "1fdf404b17d464a489267f69d58b846d": {

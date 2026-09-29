@@ -59,6 +59,8 @@ from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chad
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
 from storylines import devarra_trickster, devarra_tower
+from storylines import delamere_trickster, delamere_woods, delamere_fire
+from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
 from storylines import mielarah_trickster, mielarah_deck
 from storylines import rrt_ui
 from storylines import rrt_portraits
@@ -426,6 +428,20 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
     devarra_trickster.integrate(payload)
     devarra_tower.integrate(payload)
+    # Delamere: a new relationship, opened only by the Trickster's stag call at her sarcophagus (delamere_trickster, 11 §2);
+    # the courtship is delamere_woods and delamere_fire. Nothing is spawned for her (her native units share the undead prefab).
+    payload["Relationships"]["delamere"] = copy.deepcopy(delamere_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(delamere_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(delamere_woods.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(delamere_fire.SCENES))
+    delamere_trickster.integrate(payload)
+    # Kaylessa: a new relationship (kaylessa.md; 11-ROSTER-PLAN-2 §2): Shyka's timeline trade in the dead worlds, the amulet
+    # swap in the living one, and the courtship under the tailor's awning (kaylessa_wasps, kaylessa_clearing).
+    payload["Relationships"]["kaylessa"] = copy.deepcopy(kaylessa_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(kaylessa_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(kaylessa_wasps.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(kaylessa_clearing.SCENES))
+    kaylessa_trickster.integrate(payload)
     # Mielarah: the unregistered draft (retired to reference/retired-drafts) is replaced by the Trickster route "Zyphus
     # picks the nearest" (11 §2) and its Chapter 5 courtship on her presence in Drezen (mielarah_deck).
     payload["Relationships"]["mielarah"] = copy.deepcopy(mielarah_trickster.RELATIONSHIP)

@@ -1,8 +1,8 @@
 """Mielarah, Chapter 5: Starcatcher over Drezen (the courtship on her presence; 11 §2).
 
 She comes north through the Worldwound's sky with cargo, as she said she would, and moors her ship high over the city
-where nobody has to stand near her. Every beat opens from her presence under the tailor's awning in the market (or
-the jewellers' arcade when the tailor is not in the capital), and most of them go up through her portal onto her
+where nobody has to stand near her. Every beat opens from her presence beside the tiefling trader's stall in the lower
+town (or the jewellers' arcade when he is not in the capital), and most of them go up through her portal onto her
 deck (Tumberd/Cue_0075: "just use this portal. It will drop you right onto the deck").
 
 The beats: the cargo (her arrival, per voyage), the nearest (what the Commander did or meant to do with her curse, and
@@ -52,7 +52,7 @@ PLACES = ((HUB, "", ()), (HUB_FB, ".arcade", (HUB_FAILED,)))
 
 
 def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
-    """A beat opened from her presence (the tailor's awning, or the arcade when the tailor is gone): the same scene
+    """A beat opened from her presence (the tiefling's stall, or the arcade when he is gone): the same scene
     on each hub, each forbidding the other's completion."""
     for hub, suffix, extra in PLACES:
         twin = id + ("" if suffix else ".arcade")
@@ -65,7 +65,7 @@ def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
 # --- 1. The cargo: Starcatcher over Drezen. ------------------------------------------------------------------------
 
 deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', [
-    nar("start", '''{n}Mielarah looks up from the bill of lading. The circle of empty cobbles around her is a good three strides across; the tailor has dragged his cutting table back under the far edge of his awning to keep out of it, and looks as though he would drag the awning back too, if he could.{/n}
+    nar("start", '''{n}Mielarah looks up from the bill of lading. The circle of empty cobbles around her is a good three strides across; the tiefling trader has dragged his trestle back against the wall of the lower town to keep out of it, and looks as though he would drag the wall back too, if he could.{/n}
 {n}She sees you, and her face does something complicated, and then settles on courtesy, which is where it always settles.{/n}''',
         c("Continue", "third", requires=(LANDFALL,), forbids=(RETURNED,)),
         c("Continue", "scarf", requires=(RETURNED,), forbids=(SHIP_LOST,)),
@@ -97,7 +97,7 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
 "It also has a use for a cursed one, apparently, since you asked me here. Three days, and a porter has dropped a crate of my cold iron on his own foot, and a cart horse has bolted in this square and put a man through a shop window. Nobody dead." {n}Her mouth tightens.{/n} "Yet. That is the most accurate word in my vocabulary. Yet."''',
        c('[Step inside her circle of empty cobbles.]', "circle"),
        c('"You keep everyone at arm\'s length out here."', "arms")),
-    mi("circle", '''{n}The tailor makes a small noise, as if you had stepped off a roof.{/n}
+    mi("circle", '''{n}The tiefling trader makes a small noise, as if you had stepped off a roof.{/n}
 "Nobody comes inside the circle." {n}She does not step back. She has to lift her chin a little to look at you, and she does it the way she lifted it in the Bad Luck to tell you her ship was at your disposal: solemnly, as if pronouncing something.{/n} "You know the rule. You know it better than I do. And you walk in anyway."
 "Brave, or careless. I keep saying that about you. I am beginning to think it is a single word in some language I don't speak."''',
        c("Continue", "moored")),
@@ -105,7 +105,7 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
 {n}She does not seem hurt by it. She seems to find it correct.{/n}''',
        c("Continue", "moored")),
     mi("moored", '''"So I have moored Starcatcher a hundred fathoms up, where the only people near me are my crew, and they are paid for it. I come down to trade, and I go back up, and your city keeps its porters." {n}She folds the bill of lading, and folds it again.{/n}
-"There is a portal on the deck that comes out behind this awning, and another behind it that goes back. If you wanted to come up and see her, I would not stop you." {n}The smile arrives, quick and a little sharp.{/n} "Don't read anything into it. It is a professional courtesy. I show all my best customers the ship."''',
+"There is a portal on the deck that comes out behind this stall, and another behind it that goes back. If you wanted to come up and see her, I would not stop you." {n}The smile arrives, quick and a little sharp.{/n} "Don't read anything into it. It is a professional courtesy. I show all my best customers the ship."''',
        c('"I\'ll come up."', "close", flags=(DOCKED,)),
        c('[Flirt] "All your best customers? I\'d like to meet the competition."', "competition", flags=(DOCKED,))),
     mi("close", '''"Tomorrow, then. I will be busy today being rude to your quartermasters." {n}She tucks the bill of lading into her coat.{/n} "Mind the step when you come through. There is always a step, with portals. Nobody believes me until they've fallen over it."''',
@@ -119,7 +119,7 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
 # --- 2. The nearest: what was done with her curse, and her one demand. ----------------------------------------------
 
 deck(D + "nearest", "The nearest", '"I came to see the ship."', [
-    nar("start", '''{n}You step through a door of salt light behind the tailor's awning and fall over the step, exactly as promised, onto a deck a hundred fathoms above Drezen. The wind up here is clean and very cold. The city below is a map of itself.{/n}
+    nar("start", '''{n}You step through a door of salt light behind the tiefling's stall and fall over the step, exactly as promised, onto a deck a hundred fathoms above Drezen. The wind up here is clean and very cold. The city below is a map of itself.{/n}
 {n}Mielarah does not show you the ship. She takes you into her cabin, which is small and brass-bound and scrupulously neat, and shuts the door, and pours two cups of something, and sits down on the far side of her chart table.{/n}''',
         c("Continue", "dead", requires=(OSKEL_DEAD,)),
         c("Continue", "alive", requires=(TOLD,), forbids=(OSKEL_DEAD,)),
@@ -610,7 +610,7 @@ deck(D + "stern", "A name on the stern", '"You asked for a steady pair of hands?
 
 
 deck(D + "last_night", "Before the march", '"The quartermasters say the crusade marches soon."', [
-    nar("start", '''{n}They do, and the quartermasters are right, and Starcatcher is loading. For three days the portal behind the tailor's awning has not closed: crates of bandages, barrels of pitch, cold-iron arrowheads in straw, all going up through a door of salt light into a hold a hundred fathoms over the city. Mielarah stands beside it with her bill of lading and ticks everything off in her small upright hand, and the porters bring the crates to a chalk line on the cobbles and go no further.{/n}
+    nar("start", '''{n}They do, and the quartermasters are right, and Starcatcher is loading. For three days the portal behind the tiefling's stall has not closed: crates of bandages, barrels of pitch, cold-iron arrowheads in straw, all going up through a door of salt light into a hold a hundred fathoms over the city. Mielarah stands beside it with her bill of lading and ticks everything off in her small upright hand, and the porters bring the crates to a chalk line on the cobbles and go no further.{/n}
 {n}She sees you, and finishes the line she is writing, and puts the pencil behind her ear, which you have learned means she is going to say something she has rehearsed.{/n}''',
         c("Continue", "carry")),
     mi("carry", '''"Supplies up, wounded back, for as long as your war needs carrying. I have told your quartermasters so, and they have written it down, and one of them tried to negotiate my rates and has gone to lie down." {n}She looks at the portal, and not at you.{/n}
@@ -640,7 +640,7 @@ OTHER_VOYAGE = D + "other_voyage"
 AFTER_NO = D + "after_no"
 
 deck(D + "fourth", "Starcatcher the Fourth", '"Your ship is leaking on my market."', [
-    nar("start", '''{n}She is. A thin, steady drizzle comes down out of a clear sky onto the cobbles behind the tailor's awning, and the tailor has put a bucket under it with an expression of deep personal injury.{/n}
+    nar("start", '''{n}She is. A thin, steady drizzle comes down out of a clear sky onto the cobbles behind the tiefling's stall, and the trader has put a bucket under it with an expression of deep personal injury.{/n}
 {n}When you come up through the portal, Mielarah is on her knees on the Fourth's deck with her coat off and her sleeves rolled, driving oakum into a seam with a mallet and a caulking iron. Her hands are black with pitch to the wrist. She does not get up.{/n}
 "Hold this," {n}she says, and hands you the pitch pot, and goes on hammering.{/n}''',
         c("Continue", "seam")),
@@ -709,7 +709,7 @@ WOUNDED_LEFT = D + "wounded_left"
 
 deck(D + "wounded", "Those in distress", '"A column was cut up in the Wound. They need a ship."', [
     nar("start", '''{n}They do. A supply column was caught in the open two days north of the walls, in the red-lit badlands where nothing good grows, and the riders who got back say there are forty men lying in a dry streambed with a demon warband between them and the wagons.{/n}
-{n}Mielarah hears it from you under the tailor's awning, standing in her circle of empty cobbles, and her face does the complicated thing and then does not settle on courtesy at all.{/n}
+{n}Mielarah hears it from you beside the tiefling's stall, standing in her circle of empty cobbles, and her face does the complicated thing and then does not settle on courtesy at all.{/n}
 "Forty wounded," {n}she says,{/n} "in a hold the length of my ship, for a day and a night, with me at the wheel."''',
         c("Continue", "sum")),
     mi("sum", '''"You know the sum. I know you know it; you worked it out before I did." {n}She is speaking fast, and very evenly.{/n} "Forty men who can't walk, packed in a hold, and every one of them near me for a day and a night. A stretcher slips. A lantern falls. A splinter in the wrong place, a fever that should have broken. I'd land at Drezen with thirty-five. With thirty."

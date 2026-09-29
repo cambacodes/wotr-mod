@@ -35,7 +35,7 @@ REL = "mielarah"
 UNIT = "9d9c523bc2b17434bb66df212b127187"          # Mielara (Act_4 BadLuck; no dialog component: the presence copy)
 PORTRAIT_GUID = "55aaada6899b415c99227ec23aff520f"  # her BlueprintPortrait (BCT_Mielara), the book-picture fallback
 DREZEN = "2570015799edf594daf2f076f2f975d8"        # DrezenCapital
-TAILOR = "253cdb8f434e5a6469b75e18428316e3"        # TailorCapitalTrader, the awning (Arueshalae's fallback copy stands front 2.0)
+TIEFLING = "23eabf5b6364d4a4e86202dc5d27600b"      # Vendor_Tiefling, the lower town (no other route's anchor; the tailor is Kaylessa's)
 JEWELER = "bc1093231b1577a4485a730c29595195"       # JewelerCapitalTrader, the fallback (Arueshalae's arcade copy is front 2.0)
 TAVERN_LIST = "5cb721033c29ca04dab453de7c13b607"   # Tumberd/AnswersList_0003 (the Bad Luck)
 TAVERN_RETURN = "2437e93b015b82d47900667402e01a9c" # Tumberd/Cue_0002 "I'm glad to see you again!"
@@ -147,11 +147,11 @@ DERIVED = {
     D + "oskel_settled": [[D + "stern"], [D + "oskel_spoke"]],
 }
 
-GREETING = ("{n}Crates stamped with the anchor of Starcatcher stand stacked under the tailor's awning, and the woman "
+GREETING = ("{n}Crates stamped with the anchor of Starcatcher stand stacked beside the tiefling trader's stall in the lower town, and the woman "
             "counting them off against a bill of lading keeps an arm's length of empty cobbles around her without "
             "seeming to try. The market has noticed. Nobody walks close.{/n}")
 PRESENCES = {
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="behind", Distance=3.0),
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="behind", Distance=2.5),
               Requires=["trickster.ever", CONTACT], Forbids=[CLOSED, KILLED, HUB_FAILED], MinChapter=5, MaxChapter=5,
               AnswerLists=[], Dialog="hub", Greeting=GREETING),
     HUB_FB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELER, Side="behind", Distance=2.5),
