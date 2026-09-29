@@ -24,6 +24,8 @@ from storylines.mielarah_trickster import (
 
 SCENES = []
 
+WOULD = D + "would_have"                # an honest hypothetical, with no minder ever posted
+SETTLED = D + "oskel_settled"           # Derived: his name painted (dead) or his question answered (alive)
 COURTSHIP = "mielarah.route.courtship"   # the shared ledger's name for the commit (05 item 30), set with COMMITTED
 PROMISED = D + "promised"
 NO_PROMISE = D + "no_promise"
@@ -49,7 +51,7 @@ def nar(id, text, *choices, **kw):
 PLACES = ((HUB, "", ()), (HUB_FB, ".arcade", (HUB_FAILED,)))
 
 
-def deck(id, title, entry, nodes, requires, forbids=(), delay=0):
+def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
     """A beat opened from her presence (the tailor's awning, or the arcade when the tailor is gone): the same scene
     on each hub, each forbidding the other's completion."""
     for hub, suffix, extra in PLACES:
@@ -57,7 +59,7 @@ def deck(id, title, entry, nodes, requires, forbids=(), delay=0):
         SCENES.append(scene(id + suffix, title, "Mielarah", 5, entry, copy.deepcopy(nodes),
                             requires=("trickster.ever", CONTACT, *requires, *extra),
                             forbids=(CLOSED, KILLED, twin, *forbids), delay=delay, last=5, Relationship=REL, Chapters=[5],
-                            Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub))
+                            Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub, **copy.deepcopy(fields)))
 
 
 # --- 1. The cargo: Starcatcher over Drezen. ------------------------------------------------------------------------
@@ -148,7 +150,7 @@ deck(D + "nearest", "The nearest", '"I came to see the ship."', [
     mi("none", '''"You read the rule." {n}She turns her cup by the handle.{/n} "In the Bad Luck, or on my deck, or wherever it was: you looked at six years of my dead and you saw the shape inside it. Nearest. It takes the nearest."
 "I have been thinking about little else. And the thing I keep coming back to is not the rule. It's you. You're a Trickster, the broadsheets say; the kind that makes a joke and the world goes along with it." {n}She lifts her eyes.{/n} "So tell me, honestly. What would you have done with it, if I had flown you anywhere with a hanging at the end?"''',
        c('"I\'d have put the most dangerous man on your ship at your elbow. And let it take him."', "honest",
-         flags=(MEANT,)),
+         flags=(WOULD,)),
        c('"I\'d have stood there myself."', "myself"),
        c('[Lie] "Nothing. It\'s your curse."', "nothing")),
     mi("honest", '''{n}She does not flinch. She had the figure already, you think; she only wanted to hear you read it out.{/n}
@@ -404,7 +406,8 @@ deck(D + "wheel", "Hold her", '"You said next time, the storm."', [
 "I'll be over Drezen a while yet. There's cargo." {n}A pause, the length of a breath.{/n} "Perhaps when there's no war and no curse and no storm, I'll ask you something else. Don't hold your breath, Commander. I'm very slow about everything but flying."''',
         c("[Say nothing.]")),
     *INTIMACY,
-], requires=(MARKET,), forbids=(COMMITTED, DECLINED), delay=48)
+], requires=(MARKET,), forbids=(COMMITTED, DECLINED, OSKEL_DEAD, MEANT), delay=48,
+    ForbidOverrides={OSKEL_DEAD: SETTLED, MEANT: SETTLED})
 
 
 # --- 6b. The quarterdeck, another night (after a commit that ended on the ground). -------------------------------
@@ -579,7 +582,8 @@ deck(D + "oskel", "What he was for", '"Oskel wants a word?"', [
 {n}He looks at you with his calm yellow eyes. "You, maybe. Seein' as you know the rule so good."{/n}''',
         c('"I intend to."', "end", flags=(OSKEL_SPOKE,)),
         c('"That\'s her choice, not mine."', "end", flags=(OSKEL_SPOKE,))),
-    nar("end", '''{n}"Right," says Oskel, and picks up his coil, and goes forward, twenty strides from his captain, exactly.{/n}''',
+    nar("end", '''{n}"Right," says Oskel, and picks up his coil, and goes forward, twenty strides from his captain, exactly.{/n}
+{n}On the quarterdeck Mielarah has watched the whole of it with her glass under her arm, too far off to hear. When Oskel passes below her she says one word to him, and he answers with one word, and she nods, and turns back to the northern sky as if she had been waiting for somebody's permission to look at it.{/n}''',
         c("[Leave him to his work.]")),
 ], requires=(RECKONED, MEANT), forbids=(OSKEL_SPOKE, *OSKEL_ALIVE), delay=12)
 
@@ -600,7 +604,7 @@ deck(D + "stern", "A name on the stern", '"You asked for a steady pair of hands?
 "Accurate records." {n}Her voice is not quite steady.{/n} "Every one of the others, I kept in a book. Him I wanted somewhere the whole sky could read."''',
        c("Continue", "done")),
     mi("done", '''"Pull me up, Commander. Slowly." {n}And as you haul her up hand over hand, and she comes over the rail with paint on her cuffs:{/n} "Thank you for not dropping me. And for not letting go of the rope, when I told you that you could."
-{n}She stands close for a moment, closer than she needs to, with the brush still in her hand. Then she goes to wash it.{/n}''',
+{n}She stands close for a moment, closer than she needs to, with the brush still in her hand.{/n} "I would not have taken you into weather with his name still in a book in my cabin, where nobody else could read it. I want you to know that. The next time I put your hands on my wheel, it will be because this is done." {n}Then she goes to wash the brush.{/n}''',
        c("[Coil the line.]", flags=(STERN,))),
 ], requires=(RECKONED, OSKEL_DEAD), forbids=(STERN,), delay=12)
 

@@ -142,6 +142,7 @@ RELATIONSHIP = dict(
 DERIVED = {
     CONTACT: [[LANDFALL], [RETURNED], [CHARTER, KERZ], [CHARTER, NOCTA]],
     LATE_COMMITTED: [["trickster.ever", FLOWN]],
+    D + "oskel_settled": [[D + "stern"], [D + "oskel_spoke"]],
 }
 
 GREETING = ("{n}Crates stamped with the anchor of Starcatcher stand stacked under the tailor's awning, and the woman "
@@ -195,11 +196,12 @@ tavern(P + "tavern.arithmetic", "The Gravedragger's arithmetic",
        '"The people your curse took. Tell me how they died, and where they were standing."', [
     mi("start", '''{n}She does not look surprised. She has been asked before, you think, by people who wanted a story to take home and tell badly. She sets her cup down, turns it by the handle until the handle points at the door, and folds her hands on the table.{/n}
 "Most people ask how many. You ask how. That is either very kind or very morbid. I should like to know which, before I answer."
-"Very well. The first was a steward of the Arcanamirium, the week I came home from Abaddon. He was bringing me tea on the east stair. The tray tipped, he trod on the spoon, and he broke his neck on the newel post." {n}A small, precise shrug.{/n} "Pointless. That is the Gravedragger's whole signature. Pointless."''',
+{n}She takes a small book out of her coat, bound in sailcloth and gone soft at the corners, and opens it without needing to find the page.{/n} "None of them made the broadsheets. They're in here. The first was a steward of the Arcanamirium, the week I came home from Abaddon. He was bringing me tea on the east stair. The tray tipped, he trod on the spoon, and he broke his neck on the newel post." {n}A small, precise shrug.{/n} "Pointless. That is the Gravedragger's whole signature. Pointless."''',
        c("Go on.", "list")),
     mi("list", '''"My first mate on Starcatcher the First. Lightning out of a clear sky, while we had the charts spread on the binnacle between us. A Pathfinder I had pulled out of Abaddon came to my door in Absalom to thank me and was kicked by a carriage horse on my own step. A harbour clerk, stamping my papers. A girl who sold me apples, while I was counting out the copper."
 {n}Her voice is quite even. The list has been said so often that it has worn smooth, like a prayer, or a road.{/n}
-"Some of them I loved. Most of them I had never heard of until the inquest; the news of them followed me from port to port, as if it had been told where to find me. I kept their names. I have every one. It is the least a magister can do, to keep accurate records." {n}She picks the cup up again and does not drink from it.{/n} "There. Now you have a story to tell badly."''',
+"Some of them I loved. Most of them I had never heard of until the inquest; the news of them followed me from port to port, as if it had been told where to find me. I kept their names. I have every one. It is the least a magister can do, to keep accurate records." {n}She picks the cup up again and does not drink from it.{/n} "There. Now you have a story to tell badly."
+"Alushinyrra has its own version, of course. There are people in this city who have suggested, quite seriously, that the Lady send the servants who displease her to crew for me, and let fate deal with them. The Lady's own stewards will not let me past her gate." {n}A thin smile.{/n} "Demons are better natural philosophers than magisters. They don't ask why. They only watch who dies."''',
        c('[You see more than other people] Look past her shoulder, at what stands there.', "sight", requires=(SIGHT,),
          mythic="Trickster"),
        c('[Lore (Religion) DC 26] Think about what a herald of Zyphus would want with a tally.',
@@ -397,7 +399,7 @@ tavern(P + "tavern.minder", "The bosun", '"Before we sail. Who is the most dange
 "It's your expedition, and on the far side of that portal I'll take your orders. So hear mine first, while I'm still the captain." {n}She sets the pencil down, square to the edge of the list.{/n}
 "I tell him myself. Tonight, all of it: the curse, your theory, and what you want him for. Then I pay him off. The gold I promised him for a quiet life, every coin of it, in his hand, before we sail. If he takes it and walks off my ship, there goes your lightning rod, and I'll fly you to Colyphyr without him, and you'll have deserved it."
 "If he stays, he stays because he chose to, knowing why. Not because you arranged him like a chair at a dinner." {n}Her voice does not rise.{/n} "That is the only way Oskel stands at my elbow."''',
-       c('"Pay him. Tell him everything."', "paid", flags=(MINDER, PAID)),
+       c('"Pay him. Tell him everything."', "paid", flags=(MINDER, PAID, MEANT)),
        c('"Then leave it. I won\'t spend your gold on my theory."', "withdrawn", flags=(REFUSED,))),
     nar("paid", '''{n}She does it that night, at the table with nobody at the next one. You are not invited; you watch from the bar. She talks, and he listens with his big scarred hands flat on the table, and at the end she counts coins into a purse, all of them, and pushes it across to him.{/n}
 {n}Oskel looks at the purse, and at her, and across the room at you. Then he puts the purse inside his shirt, stands, picks up his stool, carries it round the table, and sets it down at her elbow. He sits on it.{/n}

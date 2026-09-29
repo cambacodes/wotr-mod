@@ -262248,7 +262248,7 @@
         {
           "Id": "start",
           "Speaker": "Mielarah",
-          "Text": "{n}She does not look surprised. She has been asked before, you think, by people who wanted a story to take home and tell badly. She sets her cup down, turns it by the handle until the handle points at the door, and folds her hands on the table.{/n}\n\"Most people ask how many. You ask how. That is either very kind or very morbid. I should like to know which, before I answer.\"\n\"Very well. The first was a steward of the Arcanamirium, the week I came home from Abaddon. He was bringing me tea on the east stair. The tray tipped, he trod on the spoon, and he broke his neck on the newel post.\" {n}A small, precise shrug.{/n} \"Pointless. That is the Gravedragger's whole signature. Pointless.\"",
+          "Text": "{n}She does not look surprised. She has been asked before, you think, by people who wanted a story to take home and tell badly. She sets her cup down, turns it by the handle until the handle points at the door, and folds her hands on the table.{/n}\n\"Most people ask how many. You ask how. That is either very kind or very morbid. I should like to know which, before I answer.\"\n{n}She takes a small book out of her coat, bound in sailcloth and gone soft at the corners, and opens it without needing to find the page.{/n} \"None of them made the broadsheets. They're in here. The first was a steward of the Arcanamirium, the week I came home from Abaddon. He was bringing me tea on the east stair. The tray tipped, he trod on the spoon, and he broke his neck on the newel post.\" {n}A small, precise shrug.{/n} \"Pointless. That is the Gravedragger's whole signature. Pointless.\"",
           "Choices": [
             {
               "Text": "Go on.",
@@ -262264,7 +262264,7 @@
         {
           "Id": "list",
           "Speaker": "Mielarah",
-          "Text": "\"My first mate on Starcatcher the First. Lightning out of a clear sky, while we had the charts spread on the binnacle between us. A Pathfinder I had pulled out of Abaddon came to my door in Absalom to thank me and was kicked by a carriage horse on my own step. A harbour clerk, stamping my papers. A girl who sold me apples, while I was counting out the copper.\"\n{n}Her voice is quite even. The list has been said so often that it has worn smooth, like a prayer, or a road.{/n}\n\"Some of them I loved. Most of them I had never heard of until the inquest; the news of them followed me from port to port, as if it had been told where to find me. I kept their names. I have every one. It is the least a magister can do, to keep accurate records.\" {n}She picks the cup up again and does not drink from it.{/n} \"There. Now you have a story to tell badly.\"",
+          "Text": "\"My first mate on Starcatcher the First. Lightning out of a clear sky, while we had the charts spread on the binnacle between us. A Pathfinder I had pulled out of Abaddon came to my door in Absalom to thank me and was kicked by a carriage horse on my own step. A harbour clerk, stamping my papers. A girl who sold me apples, while I was counting out the copper.\"\n{n}Her voice is quite even. The list has been said so often that it has worn smooth, like a prayer, or a road.{/n}\n\"Some of them I loved. Most of them I had never heard of until the inquest; the news of them followed me from port to port, as if it had been told where to find me. I kept their names. I have every one. It is the least a magister can do, to keep accurate records.\" {n}She picks the cup up again and does not drink from it.{/n} \"There. Now you have a story to tell badly.\"\n\"Alushinyrra has its own version, of course. There are people in this city who have suggested, quite seriously, that the Lady send the servants who displease her to crew for me, and let fate deal with them. The Lady's own stewards will not let me past her gate.\" {n}A thin smile.{/n} \"Demons are better natural philosophers than magisters. They don't ask why. They only watch who dies.\"",
           "Choices": [
             {
               "Text": "[You see more than other people] Look past her shoulder, at what stands there.",
@@ -263287,7 +263287,8 @@
               "Next": "paid",
               "Set": [
                 "mielarah.trickster.primed.minder",
-                "mielarah.trickster.minder.paid"
+                "mielarah.trickster.minder.paid",
+                "mielarah.trickster.cost.meant"
               ],
               "Requires": [],
               "Forbids": [],
@@ -266360,7 +266361,7 @@
               "Text": "\"I'd have put the most dangerous man on your ship at your elbow. And let it take him.\"",
               "Next": "honest",
               "Set": [
-                "mielarah.trickster.cost.meant"
+                "mielarah.deck.would_have"
               ],
               "Requires": [],
               "Forbids": [],
@@ -266726,7 +266727,7 @@
               "Text": "\"I'd have put the most dangerous man on your ship at your elbow. And let it take him.\"",
               "Next": "honest",
               "Set": [
-                "mielarah.trickster.cost.meant"
+                "mielarah.deck.would_have"
               ],
               "Requires": [],
               "Forbids": [],
@@ -268845,7 +268846,9 @@
         "mielarah.killed_at_colyphyr",
         "mielarah.deck.wheel.arcade",
         "mielarah.committed",
-        "mielarah.trickster.declined"
+        "mielarah.trickster.declined",
+        "mielarah.trickster.cost.oskel",
+        "mielarah.trickster.cost.meant"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -268857,7 +268860,11 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "9d9c523bc2b17434bb66df212b127187",
-      "InteractionHub": "mielarah.presence"
+      "InteractionHub": "mielarah.presence",
+      "ForbidOverrides": {
+        "mielarah.trickster.cost.oskel": "mielarah.deck.oskel_settled",
+        "mielarah.trickster.cost.meant": "mielarah.deck.oskel_settled"
+      }
     },
     {
       "Id": "mielarah.deck.wheel.arcade",
@@ -269174,7 +269181,9 @@
         "mielarah.killed_at_colyphyr",
         "mielarah.deck.wheel",
         "mielarah.committed",
-        "mielarah.trickster.declined"
+        "mielarah.trickster.declined",
+        "mielarah.trickster.cost.oskel",
+        "mielarah.trickster.cost.meant"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -269186,7 +269195,11 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "ContactUnit": "9d9c523bc2b17434bb66df212b127187",
-      "InteractionHub": "mielarah.presence.arcade"
+      "InteractionHub": "mielarah.presence.arcade",
+      "ForbidOverrides": {
+        "mielarah.trickster.cost.oskel": "mielarah.deck.oskel_settled",
+        "mielarah.trickster.cost.meant": "mielarah.deck.oskel_settled"
+      }
     },
     {
       "Id": "mielarah.deck.quarterdeck",
@@ -271016,7 +271029,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}\"Right,\" says Oskel, and picks up his coil, and goes forward, twenty strides from his captain, exactly.{/n}",
+          "Text": "{n}\"Right,\" says Oskel, and picks up his coil, and goes forward, twenty strides from his captain, exactly.{/n}\n{n}On the quarterdeck Mielarah has watched the whole of it with her glass under her arm, too far off to hear. When Oskel passes below her she says one word to him, and he answers with one word, and she nods, and turns back to the northern sky as if she had been waiting for somebody's permission to look at it.{/n}",
           "Choices": [
             {
               "Text": "[Leave him to his work.]",
@@ -271191,7 +271204,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}\"Right,\" says Oskel, and picks up his coil, and goes forward, twenty strides from his captain, exactly.{/n}",
+          "Text": "{n}\"Right,\" says Oskel, and picks up his coil, and goes forward, twenty strides from his captain, exactly.{/n}\n{n}On the quarterdeck Mielarah has watched the whole of it with her glass under her arm, too far off to hear. When Oskel passes below her she says one word to him, and he answers with one word, and she nods, and turns back to the northern sky as if she had been waiting for somebody's permission to look at it.{/n}",
           "Choices": [
             {
               "Text": "[Leave him to his work.]",
@@ -271315,7 +271328,7 @@
         {
           "Id": "done",
           "Speaker": "Mielarah",
-          "Text": "\"Pull me up, Commander. Slowly.\" {n}And as you haul her up hand over hand, and she comes over the rail with paint on her cuffs:{/n} \"Thank you for not dropping me. And for not letting go of the rope, when I told you that you could.\"\n{n}She stands close for a moment, closer than she needs to, with the brush still in her hand. Then she goes to wash it.{/n}",
+          "Text": "\"Pull me up, Commander. Slowly.\" {n}And as you haul her up hand over hand, and she comes over the rail with paint on her cuffs:{/n} \"Thank you for not dropping me. And for not letting go of the rope, when I told you that you could.\"\n{n}She stands close for a moment, closer than she needs to, with the brush still in her hand.{/n} \"I would not have taken you into weather with his name still in a book in my cabin, where nobody else could read it. I want you to know that. The next time I put your hands on my wheel, it will be because this is done.\" {n}Then she goes to wash the brush.{/n}",
           "Choices": [
             {
               "Text": "[Coil the line.]",
@@ -271438,7 +271451,7 @@
         {
           "Id": "done",
           "Speaker": "Mielarah",
-          "Text": "\"Pull me up, Commander. Slowly.\" {n}And as you haul her up hand over hand, and she comes over the rail with paint on her cuffs:{/n} \"Thank you for not dropping me. And for not letting go of the rope, when I told you that you could.\"\n{n}She stands close for a moment, closer than she needs to, with the brush still in her hand. Then she goes to wash it.{/n}",
+          "Text": "\"Pull me up, Commander. Slowly.\" {n}And as you haul her up hand over hand, and she comes over the rail with paint on her cuffs:{/n} \"Thank you for not dropping me. And for not letting go of the rope, when I told you that you could.\"\n{n}She stands close for a moment, closer than she needs to, with the brush still in her hand.{/n} \"I would not have taken you into weather with his name still in a book in my cabin, where nobody else could read it. I want you to know that. The next time I put your hands on my wheel, it will be because this is done.\" {n}Then she goes to wash the brush.{/n}",
           "Choices": [
             {
               "Text": "[Coil the line.]",
@@ -280246,6 +280259,14 @@
       [
         "trickster.ever",
         "mielarah.deck.flown"
+      ]
+    ],
+    "mielarah.deck.oskel_settled": [
+      [
+        "mielarah.deck.stern"
+      ],
+      [
+        "mielarah.deck.oskel_spoke"
       ]
     ],
     "lastcall.debt.socoth": [

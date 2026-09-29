@@ -251,6 +251,14 @@ internal static class MielarahTricksterTests
         var ready = World(story, 5, "trickster.ever", P + "landfall", "mielarah.started", D + "docked", D + "reckoned", D + "flown", D + "corrected", D + "market");
         check(Rules.Available(story, wheel, ready), "Trk_Mielarah_Commit: the wheel is shut.");
         var held = After(wheel, ready, "letgo", 0).First();
+        // Trk_Mielarah_OskelOwed: what was done with Oskel gates the wheel: his name painted (dead), his question answered (alive).
+        foreach (var owed in new[] { P + "cost.oskel", P + "cost.meant" })
+        {
+            var w = Later(story, ready, 100); w.Flags.Add(owed); Rules.Complete(story, w);
+            var settledBy = owed == P + "cost.oskel" ? D + "stern" : D + "oskel_spoke";
+            var s = Later(story, w, 0); s.Flags.Add(settledBy); Rules.Complete(story, s);
+            check(!Rules.Available(story, wheel, w) && Rules.Available(story, wheel, s), "Trk_Mielarah_OskelOwed: the wheel ignores " + owed);
+        }
         check(held.Has("mielarah.committed") && held.Has("mielarah.route.courtship"), "Trk_Mielarah_Commit: holding the course does not commit (or misses the ledger's alias).");
         var home = After(wheel, ready, "letgo", 1).First();
         check(home.Has(P + "declined") && !home.Has("mielarah.committed") && !home.Has("mielarah.closed"),
