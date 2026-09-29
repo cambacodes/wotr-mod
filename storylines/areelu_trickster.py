@@ -1177,7 +1177,7 @@ report("areelu.trickster.report.participation", "The report: participation", [
 {n}She did not stop smiling for the rest of the morning, and she denied it for the rest of her life.{/n}''',
         c("Continue", "morning_after")),
     nar("morning_after", '''{n}That afternoon she went back across the hall and moved her own desk under the one window of her room that faced the street, where she could see who came to the Commander's door before the Commander did, with its back to the wall.{/n}
-{n}"You are the only protection I have left that the hunters respect," she said, when the Commander found it there. "And the only subject I have left worth watching. It is efficient. Do not mistake it for anything else." Her travelling case stayed packed beside it, and she did not hide that either.{/n}''',
+{n}"You are the only protection I have left that the hunters respect," she said, when the Commander found it there. Then, because it was not the whole of it, and she had never in her life been able to leave a sum unfinished: "And nobody comes to your door that I have not seen first. The last time hunters came to a door of mine, I was at my desk with my back to the window." She looked at the desk as if it had spoken out of turn. "Strike that. It is a sound position." Her travelling case stayed packed beside it, and she did not hide that either.{/n}''',
         c('"Stay, then. On your terms."', "stay"),
         c('"Under my roof, the case goes in the cupboard."', "rules"),
         c('"Keep your door open, then. I will keep mine."', "door"),
@@ -1187,7 +1187,8 @@ report("areelu.trickster.report.participation", "The report: participation", [
         c('"All four."', "shared"),
         c('"Not the nights. Those are both of ours."', "refused")),
     nar("shared", '''{n}She moved the desk that evening, and put the case beside it, and did not unpack.{/n}
-{n}"The hallway," she said, "was a control. The control has failed. I am told that happens, in the best experiments." She wrote the four terms on the first page of a new notebook and pinned it over the desk, where she could see it every morning.{/n}''',
+{n}"The hallway," she said, "was a control. The control has failed." She wrote the four conditions on the first page of a new notebook and pinned it over the desk, where she could see it every morning.{/n}
+{n}Some weeks later the Commander came in near dawn and found her asleep at that desk, the pen still in her hand, turned in her chair toward the bed rather than the door. The entry in front of her stopped in the middle of a word. She never finished it, and she never tore the page out; and when the Commander asked, she said she had been observing, and did not say what.{/n}''',
         c("Continue", "letters")),
     nar("refused", '''{n}"Then no." She closed the notebook without heat.{/n}
 {n}"I did not survive a century by sharing the choice of when I am vulnerable, Commander. I will not start because you asked nicely. Ask me again when you have a better counter-offer; I will still be across the hall." She was, most nights. It did not end anything. It only meant that every night began with a knock, and that she was the one who decided to answer it.{/n}''',
