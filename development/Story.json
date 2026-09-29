@@ -26953,7 +26953,7 @@
         {
           "Id": "voice",
           "Speaker": "Jerribeth",
-          "Text": "{n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is familiar, high and lightly buzzing.{/n}\n\"At last. I began to suspect you were waiting for somebody to explain whether accepting a letter was a heroic act.\"\n{n}One delicate hand lifts inside the image.{/n}\n\"You may test the instructions. I have no desire to spend our first private conversation arguing about whether you can end it.\"",
+          "Text": "{n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is familiar, high and lightly buzzing.{/n}\n\"At last. I began to suspect you were waiting for somebody to explain whether accepting a letter was a heroic act.\"\n{n}One delicate hand lifts inside the image.{/n}\n\"Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting.\"",
           "Choices": [
             {
               "Text": "[Turn the frame over, wait, then invite her again.]",
@@ -27083,7 +27083,7 @@
         {
           "Id": "voice_toast",
           "Speaker": "Jerribeth",
-          "Text": "{n}The deserter from the tavern brought it himself, at dawn, and would not say who had sent him. He looked as if he did not know.{/n}\n{n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is high and lightly buzzing, and you have heard it once before, out of the wrong mouth.{/n}\n\"You drank to me. Now I am writing to you. That is how debts begin, Commander.\"\n\"You may test the instructions. I have no desire to spend our first private conversation arguing about whether you can end it.\"",
+          "Text": "{n}The deserter from the tavern brought it himself, at dawn, and would not say who had sent him. He looked as if he did not know.{/n}\n{n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is high and lightly buzzing, and you have heard it once before, out of the wrong mouth.{/n}\n\"You drank to me. Now I am writing to you. That is how debts begin, Commander.\"\n\"Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting.\"",
           "Choices": [
             {
               "Text": "[Turn the frame over, wait, then invite her again.]",
@@ -149471,7 +149471,7 @@
         {
           "Id": "signed",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}\n{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}\n\"There,\" she said. \"Now I am the only one at this table who remembers how we met, and I intend to improve it.\"\n{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}",
+          "Text": "{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}\n{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}\n\"There,\" she said. \"Now I am the only one at this table who remembers how we met, and I intend to improve it.\"\n{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}\n{n}At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up to clasp arms, and the Commander asked his name. He stood there with his hand out until Jerribeth, at the Commander's elbow, told him the story of that day, better than he could have told it himself, with a detail in it that had not happened. He never came to a muster again. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -253463,8 +253463,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",

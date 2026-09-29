@@ -295,7 +295,8 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
     nar("signed", '''{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
 {n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}
 "There," she said. "Now I am the only one at this table who remembers how we met, and I intend to improve it."
-{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}''',
+{n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}
+{n}At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up to clasp arms, and the Commander asked his name. He stood there with his hand out until Jerribeth, at the Commander's elbow, told him the story of that day, better than he could have told it himself, with a detail in it that had not happened. He never came to a muster again. The Commander never once caught her in a lie, which was, she said, the whole point.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS),
     nar("torn", '''{n}The Commander kept both hands folded in their lap, where she could see them.{/n}
 {n}She studied the hands, then the face above them. Then she laughed, high and abrasive, loud enough to bring the guard running.{/n}
@@ -363,7 +364,7 @@ INVITATION_NODES = [
     j("voice_toast", '''{n}The deserter from the tavern brought it himself, at dawn, and would not say who had sent him. He looked as if he did not know.{/n}
 {n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is high and lightly buzzing, and you have heard it once before, out of the wrong mouth.{/n}
 "You drank to me. Now I am writing to you. That is how debts begin, Commander."
-"You may test the instructions. I have no desire to spend our first private conversation arguing about whether you can end it."''',
+"Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting."''',
       c('[Turn the frame over, wait, then invite her again.]', "test"),
       c('"Why seek my company?"', "why")),
 ]

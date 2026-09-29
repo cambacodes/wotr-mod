@@ -32,7 +32,7 @@ s("invitation", "A message that waits", [
     n("voice", "Jerribeth", '''{n}A narrow, insectile silhouette appears inside the frame. The voice that reaches your thoughts is familiar, high and lightly buzzing.{/n}
 "At last. I began to suspect you were waiting for somebody to explain whether accepting a letter was a heroic act."
 {n}One delicate hand lifts inside the image.{/n}
-"You may test the instructions. I have no desire to spend our first private conversation arguing about whether you can end it."''',
+"Try the cloth if you like. I would rather you knew the door works. A captive audience fidgets, and I do not waste my evenings on fidgeting."''',
       c('[Turn the frame over, wait, then invite her again.]', "test"),
       c('"Why seek my company?"', "why")),
     n("test", "Jerribeth", '''{n}The image and voice cease. When you turn the charm back and invite her again, Jerribeth is waiting with her hands linked together.{/n}
