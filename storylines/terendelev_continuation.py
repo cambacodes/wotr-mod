@@ -61,13 +61,15 @@ def add(id, title, owner, nodes, requires, forbids=(), delay=12, remote=False, *
     if not remote:
         contact_requirements += (RETURNED_ACTOR_CONFIRMED,)
     SCENES.append(scene("terendelev.continuation." + id, title, owner, 5, title, nodes,
-        requires=contact_requirements, forbids=tuple(forbids) + ("terendelev.continuation.closed",),
+        requires=contact_requirements, forbids=tuple(forbids) + ("terendelev.continuation.closed", TRICKSTER_RETURNED),
         delay=delay, optional=True, Relationship="terendelev", Remote=remote,
         ContactUnit=None if remote else TERENDELEV_CONTACT,
         Areas=[DREZEN], Chapters=[5], **extra))
 
 
 RETURNED = f("returned")
+# The Trickster route (terendelev_trickster) brings her back by its own device; the two never both run.
+TRICKSTER_RETURNED = "terendelev.trickster.returned"
 BOUND = f("bound")
 
 # Contracts for future runtime producers, not flags set by this manuscript.
