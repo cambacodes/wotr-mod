@@ -559,7 +559,7 @@ remote(P + "raid.rope", "The man on the rope", [
 "Don't do that. You're better than that, and I have no patience left for people who are worse than they need to be."''',
        c("Continue", "shovel")),
     mi("shovel", '''"There's something else." {n}She hesitates, which you have not seen her do.{/n} "The night after, I dreamt of a spade. Not digging for me. It has never dug for me. It was digging somewhere else, slowly, like a man who has all the time in the world."
-"I have met the Gravedragger once, in Abaddon, and I stole six people out of his hands. He never forgave it. I think he has noticed that somebody else has started stealing from him." {n}She looks at you.{/n} "I think it was digging for you."''',
+"I have met the Gravedragger once, in Abaddon, and I took a party of Pathfinders out of his hands. He never forgave it. I think he has noticed that somebody else has started stealing from him." {n}She looks at you.{/n} "I think it was digging for you."''',
        c('"Let it dig."', "north"),
        c('"Then I\'ll have to keep standing where it can\'t reach me."', "north")),
     mi("north", '''"Brave, or careless. I keep saying that about you." {n}She stands, and the portal brightens behind her.{/n}

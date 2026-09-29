@@ -203,7 +203,7 @@ deck(D + "best_job", "The best job in the whole world", '"You said you\'d show m
         c("Continue", "sky", requires=("lann.dead",)),
         c("Continue", "sky", requires=("lann.kicked_out",))),
     mi("lann", '''"Your mongrel archer came up yesterday, with a message from your quartermaster that could have gone by runner. He asked if he could hold her. I let him, for a count of ten." {n}She shakes her head.{/n}
-"He told me it was the best job in the whole world. I said that was my line, and he'd stolen it, and he went red to the ears and said he'd heard me say it in the Bad Luck, to him, when he was a lad who had never seen a real captain." {n}Her smile goes crooked.{/n} "I'd forgotten. He hadn't. I let him keep it. It's true, whoever says it."''',
+"He told me it was the best job in the whole world. I said that was my line, and he'd stolen it, and he went red to the ears and said he'd heard me say it to him in the Bad Luck, the first real captain he ever asked." {n}Her smile goes crooked.{/n} "I'd forgotten. He hadn't. I let him keep it. It's true, whoever says it."''',
        c("Continue", "sky")),
     mi("sky", '''"Now watch." {n}She points north, to where the red lid of the Worldwound's sky comes down to the horizon in a grey curtain of rain, shot through with lightning.{/n} "A squall line, off the Wound. It'll be over Drezen by midnight. Sensible captains turn for home."
 {n}She reaches past you and brings the wheel round, gently, a quarter-turn, and the ship heels away from the weather and begins the long curve back toward the city.{/n} "I am a sensible captain now. I didn't use to be."''',
@@ -234,11 +234,11 @@ deck(D + "special_cargo", "Special cargo", '"You said you\'d tell me about the t
 {n}She turns her cup.{/n} "I carried out a great many things that were meant to stay where they were. Some of them are in the Academy's vaults. Some of them are not anywhere any more, because the Academy was very sorry to discover what they did."''',
        c('"And Abaddon?"', "abaddon")),
     mi("abaddon", '''"And Abaddon." {n}She sets the cup down.{/n} "A party of Pathfinders went in after something they should not have wanted, and got themselves caught. The Society asked the Academy for a ship that could fly where ships do not fly, and a captain who could walk where they had been. The Academy sent me."
-"He was standing over them when I came down the ramp. The Gravedragger. He is very tall, and he drags a thing behind him on a chain; I have never let myself decide what. He was taking them one at a time, slowly, not because he had to but because he enjoyed the waiting."
-{n}Her voice has gone to that cold, far place, as if it came up out of a grave.{/n} "I walked in the way you walk in a tomb. I did not hurry. I did not look at him. And I took six of them out from under his hands and walked them up my own ramp and flew away."''',
+"He was standing over them when I came down the ramp. The Gravedragger. I can tell you he was tall, taller than the room should have allowed, and that something dragged behind him. I never let myself look at it properly, and I will not describe what I did not see. He was taking them one at a time, slowly, not because he had to but because he enjoyed the waiting."
+{n}Her voice has gone to that cold, far place, as if it came up out of a grave.{/n} "I walked in the way you walk in a tomb. I did not hurry. I did not look at him. And I took them out from under his hands, every one still breathing, and walked them up my own ramp and flew away."''',
        c("Continue", "spite")),
     mi("spite", '''"He could have killed me on the ramp. He didn't. He watched me go, the whole way up, and I knew exactly what he was doing. He was deciding how to make it last."
-"So he made it last." {n}She spreads her hands.{/n} "Six years, and not a scratch. The steward, the mate, the Pathfinder on my step. I have come to think that the curse is not a punishment at all. It's a joke. His joke. The woman who walked out of his house untouched will walk through the whole of the rest of her life untouched, and watch."
+"So he made it last." {n}She spreads her hands.{/n} "Six years, and not a scratch. The steward, the mate, the Pathfinder on my step. I have come to think that the curse is not a punishment at all. It's a joke. His joke. The woman who walked out of Abaddon untouched will walk through the whole of the rest of her life untouched, and watch."
 {n}She looks at you across the table, and her eyes are dry and very tired.{/n} "And then you walked into the Bad Luck and read the punchline off my face. I think he has noticed that too."''',
        c('"A joke is a thing that can be told differently."', "differently"),
        c('[Take her hand across the table.]', "hand")),
@@ -439,12 +439,12 @@ deck(D + "morning", "The block on the planks", '[Wake on the quarterdeck.]', [
 "I stood there all night listening for it to try again," {n}she says into your collar.{/n} "It didn't. It tried once and missed and it didn't try again."''',
        c("Continue", "spade")),
     mi("spade", '''"But I heard something else. Before the sun." {n}Her voice changes; it goes to the cold far place.{/n} "The spade. Not behind me, where it always is. Somewhere else, and slow, and not digging for me at all."
-"He has noticed you, Commander. I know his manners; I have been in his house. You read his rule in a tavern and you stood where his joke says nobody stands and you held my wheel through his weather, and the block missed." {n}She looks out at the white floor of the clouds.{/n} "He is not a god who forgets being made a fool of. He cursed me for walking out of his house. I don't know what he'll do about you. I know he'll take his time."''',
+"He has noticed you, Commander. I have met him once, in Abaddon, and I have lived six years inside his joke. That is all the acquaintance I can claim, and it is enough. You read his rule in a tavern and you stood where his joke says nobody stands and you held my wheel through his weather, and the block missed." {n}She looks out at the white floor of the clouds.{/n} "He is not a god who forgets being made a fool of. He cursed me for walking out of his house. I don't know what he'll do about you. I know he'll take his time."''',
        c('"Let him dig."', "shield"),
        c('[Trickster] "Then I\'ll have to keep standing where he can\'t reach me."', "shield")),
     mi("shield", '''{n}She turns her head and looks at you, very close, and then she smiles, and it is not the courteous smile or the bitter one. It is the smile from the chart table in the Bad Luck, when she was sixteen again.{/n}
-"There is exactly one place in all the planes he cannot reach." {n}She taps her own breastbone.{/n} "Here. I'm the one thing in the world he's never allowed to touch. It's the whole point of his joke."
-"So here's mine. If he wants you, he'll have to reach past me. I'm going to be the nearest thing to you, Commander, for as long as I can manage it." {n}She pulls the coat up over both of you.{/n} "Let him dig round that."''',
+"In six years there has been exactly one thing his accidents never touch." {n}She taps her own breastbone.{/n} "This. I don't know whether that is a law or only a joke he hasn't finished telling. I'm a magister; I'll call it an observation, and keep observing."
+"So here's mine. If the observation holds, then whatever he sends for you will have to come past me first. I'm going to be the nearest thing to you, Commander, for as long as I can manage it." {n}She pulls the coat up over both of you.{/n} "Let him dig round that."''',
        c("Continue", "crew", forbids=OSKEL_ALIVE),
        c("Continue", "crew_new", requires=(OSKEL_DEAD,)),
        c("Continue", "crew_new", requires=(SHIP_LOST,), forbids=(OSKEL_DEAD,))),
