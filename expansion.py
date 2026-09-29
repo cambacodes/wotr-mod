@@ -61,6 +61,7 @@ from storylines import arueshalae_hours, arueshalae_notes
 from storylines import devarra_trickster, devarra_tower
 from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
+from storylines import mielarah_trickster, mielarah_deck
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -441,6 +442,12 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(kaylessa_wasps.SCENES))
     payload["Scenes"].extend(copy.deepcopy(kaylessa_clearing.SCENES))
     kaylessa_trickster.integrate(payload)
+    # Mielarah: the unregistered draft (retired to reference/retired-drafts) is replaced by the Trickster route "Zyphus
+    # picks the nearest" (11 §2) and its Chapter 5 courtship on her presence in Drezen (mielarah_deck).
+    payload["Relationships"]["mielarah"] = copy.deepcopy(mielarah_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(mielarah_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(mielarah_deck.SCENES))
+    mielarah_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

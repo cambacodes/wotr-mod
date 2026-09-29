@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 2944,
-  "unique_targets": 684,
+  "binding_uses": 3068,
+  "unique_targets": 704,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -36,6 +36,10 @@
     },
     "04177c4ddec20ae4ca04388f9cf23518": {
       "path": "Mythic/Trickster/LoreReligion/TricksterLoreReligionTier1Feature.jbp",
+      "type": "BlueprintFeature"
+    },
+    "8bc2f9b88a0cf704ea72d86c2a3e2aef": {
+      "path": "Mythic/Trickster/Perception/TricksterPerceptionTier1Feature.jbp",
       "type": "BlueprintFeature"
     },
     "90bc71f1d8482184a9ede0bda4773d94": {
@@ -134,6 +138,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/TailorCapitalTrader.jbp",
       "type": "BlueprintUnit"
     },
+    "23eabf5b6364d4a4e86202dc5d27600b": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Vendor_Tiefling.jbp",
+      "type": "BlueprintUnit"
+    },
     "565ccab37e2475742b043ec912a750fa": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAeon_Ch3/Minagho_DrezenInThePast.jbp",
       "type": "BlueprintUnit"
@@ -160,6 +168,10 @@
     },
     "64805abb52739e44280a758f850b300c": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Soana_Wintersun.jbp",
+      "type": "BlueprintUnit"
+    },
+    "9d9c523bc2b17434bb66df212b127187": {
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/BadLuck/Mielara.jbp",
       "type": "BlueprintUnit"
     },
     "bd2a925967b5f5f489f6da0b03236d03": {
@@ -690,6 +702,26 @@
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0017.jbp",
       "type": "BlueprintCue"
     },
+    "a07f6d1f93531e048928c5c9de328a92": {
+      "path": "World/Dialogs/c4/AirAdventures/AirAdventures_BookEvent.jbp",
+      "type": "BlueprintDialog"
+    },
+    "9e0edaeccb20fbb4eb23477c1aab6706": {
+      "path": "World/Dialogs/c4/AirAdventures/Answer_0316.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "1eececde9d7a70c44be526ea668f3ed4": {
+      "path": "World/Dialogs/c4/AirAdventures/Answer_0404.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "4dea3c896793d784591ae398e902c739": {
+      "path": "World/Dialogs/c4/AirAdventures/Answer_0472.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "1b4e78245cb3a244588f9ec0fda54ea8": {
+      "path": "World/Dialogs/c4/AirAdventures/Cue_0426.jbp",
+      "type": "BlueprintCue"
+    },
     "995aaa29e772b594a966a2f133be702c": {
       "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
@@ -816,6 +848,42 @@
     },
     "e3f0b327f22b2734e9fbce52b150cded": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0136.jbp",
+      "type": "BlueprintCue"
+    },
+    "5cb721033c29ca04dab453de7c13b607": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "ef7be5c16b82f734096f5a5f9fd497ce": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/AnswersList_0034.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "a98bbc6b53dbe114f82c8edf2284baf9": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Answer_0068.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "10a7f19529f4bed4d90de8e9029cb951": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "2437e93b015b82d47900667402e01a9c": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "fd7b46bf735b00246a02675345687c82": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0033.jbp",
+      "type": "BlueprintCue"
+    },
+    "2f275eb40f32b5c4996bc077b597e5e3": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0038.jbp",
+      "type": "BlueprintCue"
+    },
+    "64c5dd0bbee03694b928634560600343": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0048.jbp",
+      "type": "BlueprintCue"
+    },
+    "a67acc05e448a134aa2e4de0a30c5a15": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0075.jbp",
       "type": "BlueprintCue"
     },
     "3ffc9b66a39689f43ac3207aa84ee565": {
@@ -1666,6 +1734,14 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/WormWoundLair/RedDragonDead.jbp",
       "type": "BlueprintEtude"
     },
+    "1705b9de18d59eb4bb5bffb1f3a07cee": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/CaptainKerz.jbp",
+      "type": "BlueprintEtude"
+    },
+    "4069e7378d38fc4488f5347e4d2e84e9": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/CaptainNocticula.jbp",
+      "type": "BlueprintEtude"
+    },
     "71f85264d9064074f9cf74999ecbffa9": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
       "type": "BlueprintEtude"
@@ -1696,6 +1772,10 @@
     },
     "0383369136fadc247b7d6ff99110fa55": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/TakeNotProfaneGift.jbp",
+      "type": "BlueprintEtude"
+    },
+    "90f2e0f1cdc263b41b2e625bf228b226": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/TumberdDead.jbp",
       "type": "BlueprintEtude"
     },
     "72e423c719ed9d44fa432a6b9629babd": {

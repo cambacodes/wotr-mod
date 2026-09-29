@@ -1,17 +1,17 @@
 {
  "generatedFrom": {
   "story": "Story.json",
-  "blueprints": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
+  "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 767,
-  "resolved": 767,
-  "inlineOnlyScenes": 140,
-  "inlineOnlyResolved": 140,
-  "answerListScenesWithoutContact": 386,
-  "answerListScenesWithoutContactResolved": 386,
-  "lists": 81,
-  "listsWithReachableHost": 80
+  "entryTargetScenes": 778,
+  "resolved": 778,
+  "inlineOnlyScenes": 148,
+  "inlineOnlyResolved": 148,
+  "answerListScenesWithoutContact": 397,
+  "answerListScenesWithoutContactResolved": 397,
+  "lists": 83,
+  "listsWithReachableHost": 82
  },
  "scenes": {
   "a_crossing": {
@@ -11377,6 +11377,215 @@
     "clicks": 0
    }
   },
+  "mielarah.trickster.colyphyr.landfall": {
+   "kind": "return-cue",
+   "lists": [
+    "ef7be5c16b82f734096f5a5f9fd497ce"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ef7be5c16b82f734096f5a5f9fd497ce": "RRT_entry.mielarah.trickster.colyphyr.landfall"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ef7be5c16b82f734096f5a5f9fd497ce",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0033",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.react.lann_captain": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.mielarah.trickster.react.lann_captain"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.react.lann_spade": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.mielarah.trickster.react.lann_spade"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.react.woljif_oskel": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.mielarah.trickster.react.woljif_oskel"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.tavern.arithmetic": {
+   "kind": "return-cue",
+   "lists": [
+    "5cb721033c29ca04dab453de7c13b607"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5cb721033c29ca04dab453de7c13b607": "RRT_entry.mielarah.trickster.tavern.arithmetic"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5cb721033c29ca04dab453de7c13b607",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.tavern.captains": {
+   "kind": "return-cue",
+   "lists": [
+    "5cb721033c29ca04dab453de7c13b607"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5cb721033c29ca04dab453de7c13b607": "RRT_entry.mielarah.trickster.tavern.captains"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5cb721033c29ca04dab453de7c13b607",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.tavern.charter": {
+   "kind": "return-cue",
+   "lists": [
+    "5cb721033c29ca04dab453de7c13b607"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5cb721033c29ca04dab453de7c13b607": "RRT_entry.mielarah.trickster.tavern.charter"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5cb721033c29ca04dab453de7c13b607",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.tavern.charts": {
+   "kind": "return-cue",
+   "lists": [
+    "5cb721033c29ca04dab453de7c13b607"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5cb721033c29ca04dab453de7c13b607": "RRT_entry.mielarah.trickster.tavern.charts"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5cb721033c29ca04dab453de7c13b607",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.tavern.minder": {
+   "kind": "return-cue",
+   "lists": [
+    "5cb721033c29ca04dab453de7c13b607"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5cb721033c29ca04dab453de7c13b607": "RRT_entry.mielarah.trickster.tavern.minder"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5cb721033c29ca04dab453de7c13b607",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.tavern.repeat": {
+   "kind": "return-cue",
+   "lists": [
+    "5cb721033c29ca04dab453de7c13b607"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5cb721033c29ca04dab453de7c13b607": "RRT_entry.mielarah.trickster.tavern.repeat"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5cb721033c29ca04dab453de7c13b607",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "mielarah.trickster.tavern.second_look": {
+   "kind": "return-cue",
+   "lists": [
+    "5cb721033c29ca04dab453de7c13b607"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5cb721033c29ca04dab453de7c13b607": "RRT_entry.mielarah.trickster.tavern.second_look"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5cb721033c29ca04dab453de7c13b607",
+    "dialog": "d62a691c2ff89884792268c85b3458af",
+    "dialogName": "Tumberd_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "minagho_chivarro.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -18089,6 +18298,65 @@
     }
    ]
   },
+  "5cb721033c29ca04dab453de7c13b607": {
+   "list": "5cb721033c29ca04dab453de7c13b607",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "d62a691c2ff89884792268c85b3458af",
+     "dialogName": "Tumberd_dialogue",
+     "cues": [
+      "10a7f19529f4bed4d90de8e9029cb951",
+      "2437e93b015b82d47900667402e01a9c",
+      "ee65555602b1b95429e31e88f80cddbe",
+      "85e07b9613ad73e48b27ac0585b02e0a",
+      "7b61e1ba8f9f60e4c917adde994e6d18",
+      "5ea13221bd64cbc49bde8e4cad79279a",
+      "1732e4ec1c2bc4a40b6cc47c5b8a8739",
+      "d046ed2015e7a1440b5cf5405a973516",
+      "a156b02b8110ce443b80321a17713d0c",
+      "68e7a50b519a987468d994c9ca97e456",
+      "68e392e2ab3e66e41a91baf45c9e749e"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0009",
+      "Cue_0010",
+      "Cue_0019",
+      "Cue_0032",
+      "Cue_0057",
+      "Cue_0059",
+      "Cue_0061",
+      "Cue_0063",
+      "Cue_0074"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "0e7b9d4acf8d2b345ac7f97f7abb426c": 3,
+      "1f62c67a2db91ac4ea88f3bd396239de": 4,
+      "22ebcc5d559bced42b8965a4ad582c90": 2,
+      "420e5dff6e842ec4abc3e4693ee0c611": 2,
+      "45f855a5d7dbddb408d82666883e25c1": 2,
+      "55188505196642d499eab7a37d0695bc": 3,
+      "566aeafc7418ef646b406630f9ff0176": 3,
+      "5efe31b49758d70429b666891afeb2b7": 1,
+      "676019fdf3e31d64abb336dbbd08a92e": 1,
+      "6a197e62e56e1e742ae37466b7fbb00d": 2,
+      "77b01b961bf5a324894a990a63fd40fd": 1,
+      "7ed63ae2df6835e47b730f2432a197d1": 1,
+      "8d442c4038346b64c85224703c8eb14a": 1,
+      "a3737a3099202b94fa81e3868fa622b4": 3,
+      "c6e16be67c12e4e429c711c833be4bf4": 1,
+      "e554300f9fce7704486897590ee6a2c4": 2,
+      "eb2292a0b45b069478511776dc12cec1": 1
+     }
+    }
+   ]
+  },
   "5cca8ccea46e72343a4544c44be9790c": {
    "list": "5cca8ccea46e72343a4544c44be9790c",
    "listName": "AnswersList_0004",
@@ -20480,6 +20748,37 @@
       "d264f9cb758e4324a9e0a5ff862590f7": 2,
       "ddf7214c5fc66a44ea8bfc68741bd633": 2,
       "ec6890c861bd04f48b00384395af6d61": 1
+     }
+    }
+   ]
+  },
+  "ef7be5c16b82f734096f5a5f9fd497ce": {
+   "list": "ef7be5c16b82f734096f5a5f9fd497ce",
+   "listName": "AnswersList_0034",
+   "hosts": [
+    {
+     "dialog": "d62a691c2ff89884792268c85b3458af",
+     "dialogName": "Tumberd_dialogue",
+     "cues": [
+      "fd7b46bf735b00246a02675345687c82",
+      "2f275eb40f32b5c4996bc077b597e5e3",
+      "faf1191ec50a127449681f3f709c4838",
+      "9a6a46eea0d4af347981aae65c6183e7"
+     ],
+     "cueNames": [
+      "Cue_0033",
+      "Cue_0038",
+      "Cue_0039",
+      "Cue_0067"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "1f3f618b4ac54704a8c30d566f6db621": 1,
+      "32d622c37d677174b9e6d3224acab34f": 1,
+      "569a8312081318743bfddb95965d1658": 1
      }
     }
    ]
