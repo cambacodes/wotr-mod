@@ -4,16 +4,18 @@ Canon: the Silver Twins are "two angels who emerged from one soul" (c1/EstrodTow
 "They called each other brother and sister because one soul was used to create them" (string 49d154d6). Lariel met his
 end under Kenabres, and when his sword vanished at the Commander's touch "a part of its power entered your soul"
 (glossary). The Trickster's own unlock, TricksterUseMagicDeviceTier2Feature 1383f215, lets the Commander "use items so
-delicately that their use is completely unnoticed. Wands you use no longer lose charges from use". The device is hers
-and nobody else's (polish pass; memory rrt-unique-devices): half of the soul she was made from is still in this world,
-in the Commander, as Lariel's light. A soul cannot finish leaving while half of it stays behind, so when the scripted
-blow falls the Commander holds her half on this side with her brother's, and the light does not run down (F16, spend
-it again). A sword's power used as if it were the Commander's own is the chosen Use Magic Device Tier 2 trick ("use
-items so delicately that their use is completely unnoticed... regardless of requirements", read natively). A Trickster
-without it cannot hide the light, and everyone in the room sees an angel's glow pour out of the Commander. Her price is
-that she will tell Heaven what was done, and she wakes carrying her brother's death as well as her own. The late
-fallback is the same hold, days late, after her body is carried out of the ruin: dearer, and she wakes colder. Pharasma
-is never cheated (her soul never reached the Boneyard) and Heaven is never bargained with. Voice: compassionate, earnest, humble ("I believe this is a test for me. A hard test, but a necessary one.",
+delicately that their use is completely unnoticed. Wands you use no longer lose charges from use". The device is the
+Trickster answering a scripted fate with the one remedy the game allows after a death, prepared before the blow: the
+crusade's Scroll of Raise Dead (a43d2960; "Coming back from the dead is an ordeal", 3355d508), read over her body in
+Areelu's laboratory by a Commander who is no cleric, unnoticed (the chosen Use Magic Device Tier 2 trick, read
+natively). A Trickster without the trick reads it aloud in front of everyone and pays for the witnesses. Her price is
+that she will tell Heaven what was done. The late fallback is the same rite, days later, after her body is carried out
+of the ruin. Heaven is never bargained with.
+What makes it hers (polish pass 2026-09-28, memory rrt-unique-devices; a raise stays the mechanism because canon offers no
+other way back, and the invented alternative was rejected at audit): the twins forged holy weapons for each other
+(string 435f6b3c), Lariel's sword was one, and its light is in the Commander, who "inherited the light of his sword" and
+shared his suffering with her at the Nexus (string 11b7dfc1). As the scroll is read, that light is the one thing in the
+room her soul knows, and she turns towards it. Shown, never stated as a rule. Voice: compassionate, earnest, humble ("I believe this is a test for me. A hard test, but a necessary one.",
 TargonaWings/Cue_0023 40db6d5f). The Commander is the question she has to answer, never the reason she came.
 Her Drezen actor and dialog are Angel-only, so on this path she works in a field infirmary behind the quartermaster's
 stores (authored) and is met through a spawned copy of her laboratory unit, anchored at Wilcer Garms.
@@ -58,7 +60,7 @@ CONDEMNED = "targona.condemned"
 TREATED = "targona.ran_treatment_completed"
 UMD2 = "trickster.umd_tier2"   # MainCharacterFacts: TricksterUseMagicDeviceTier2Feature 1383f215, a chosen trick
 CHARGES = P + "cost.charges_spent"
-OPEN = P + "cost.raised_openly"     # the no-trick prepared route: the light poured out in front of everyone
+OPEN = P + "cost.raised_openly"     # the no-trick prepared route: the scroll read aloud, in front of everyone
 TOLD = P + "cost.she_told_heaven"   # her price at the barrier: she tells the Hand and her healers what was done
 
 RELATIONSHIP_PATCH = dict(
@@ -109,12 +111,12 @@ FREED_JOKE = '[Spend it again, quietly] "Lariel left me a light in Kenabres. I\'
 
 # The native death is a scripted fate: TargonaIsWasKilledInAreeluLab starts from the [Attack] branch and nothing native
 # interrupts it. The Trickster does not claim to stop it. The Commander prepares, before the blow, the one thing the
-# canon leaves room for, and only for her: the Silver Twins are one soul made into two angels, and Lariel's half went into
-# the Commander under Kenabres. A soul cannot finish leaving while half of it remains, so the Commander holds her half
-# with his (polish pass; the generic raise-dead scroll was retired, memory rrt-unique-devices). The Trickster's Use Magic
-# Device trick hides it: a sword's power used "so delicately that their use is completely unnoticed ... regardless of
-# requirements" (TricksterUseMagicDeviceTier2Feature 1383f215, read natively as trickster.umd_tier2). A Commander without
-# the trick has a prepared route too: the same hold, with the light blazing in front of everyone, and paid for.
+# game itself allows after a death: raise dead ("You restore life to a deceased party member... Coming back from the dead
+# is an ordeal", SpellsRaiseDead 3355d508), from the crusade's own Scroll of Raise Dead (a43d2960). The Trickster's Use
+# Magic Device trick is what makes it a trick: "use items so delicately that their use is completely unnoticed ... and
+# ... equip any magical items possible, regardless of requirements" (TricksterUseMagicDeviceTier2Feature 1383f215, read
+# natively as trickster.umd_tier2). A Commander who took the trick reads a cleric's scroll over her body and nobody sees;
+# one who did not has a prepared route too: the same scroll, read aloud, in front of everyone, and paid for.
 # R2-2 primers, before the blow, on her own laboratory list. Non-inline: the list is conditioned and its only return cue
 # (Cue_0010 d9898ae6) has a Continue, so the entry closes the dialog; the player talks to her again and chooses the
 # native outcome ([Attack] Answer_0034 -> Cue_0035, or [Destroy the barrier] Answer_0031).
@@ -126,8 +128,8 @@ def lab_primer(id, joke, scroll_text, flags, requires, forbids):
             c(joke, "scroll", mythic="Trickster", alignment=("Chaotic", 1), crusade=("Favors", -100)),
             c('"Nothing. Forget I spoke."', abort=True)),
         nar("scroll", scroll_text, c("Continue", "resist")),
-        t("resist", '''"No." {n}She says it at once, and then she makes herself look at your hand on the barrier properly.{/n}
-"That light is not a tool, Commander. It is all that is left of my brother. If you hold me with it, I will wake with him inside me, and I will feel him die under Kenabres every time I close my eyes. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me."
+        t("resist", '''"No." {n}She says it at once, and then she makes herself look at the scroll properly.{/n}
+"Raise dead is not mercy, Commander. I have watched chaplains use it. It takes something out of whoever it brings back, and it does not give it back. And you are asking me to let them mourn me. My healers in Heaven. The Hand, who has already buried my brother. Everyone who ever prayed beside me."
 {n}The black wing draws tight against her back.{/n} "Tell me why I should let you make liars of all of them."''',
           c('[The wounded] "Because Drezen\'s infirmary loses a man every hour, and none of them will ever reach Heaven\'s healers. They could reach you."', "chooses"),
           c('[The truth] "Because I want you alive. That\'s all. I won\'t dress it up."', "chooses"),
@@ -142,25 +144,25 @@ def lab_primer(id, joke, scroll_text, flags, requires, forbids):
 
 lab_primer(P + "dead.setup",
            '[Spend it again, quietly] "Whatever strikes you in this room, I\'ll read you back in before anyone reaches the ending."',
-           '''{n}You put your hand flat on the barrier, over the place where she can feel her brother. You spent a night before this with the Hand's chaplain, pulled off the walls at the crusade's expense, learning how an angel's soul is held and how it lets go. Lariel's light was a sword's before it was yours, and your hands have learned to use any made thing as if it had been made for them, so lightly that nobody ever sees them do it.{/n}
-{n}"If you fall," you tell her, "your soul can't leave while half of it is still here, in me. I'll hold your half with his until it stays. Nobody in this room will see, and the light won't run down. You'll wake alone, and you'll wake carrying him. Stay down until we're gone."{/n}''',
+           '''{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. It is a cleric's scroll, and you are no cleric. Your hands have learned to use any made thing as if it had been made for them, and so lightly that nobody ever sees them do it.{/n}
+{n}"If you fall," you tell her, "I will read it over you before they carry anyone out, and nobody in this room will know. And I'll have my hand on you while I read, with his light in it. You made the sword it came from. Whatever you are when the scroll finds you, you'll know that. You will wake alone, and you will wake weaker. Stay down until we are gone."{/n}''',
            (PRIMED, LAB_LINE, TOLD), ("trickster", UMD2), (PRIMED, FREE, DEAD, CONDEMNED))
 
 lab_primer(P + "dead.setup_open",
            '[Spend it again, openly] "Whatever strikes you in this room, I\'ll read you back in. In front of everyone, if I have to."',
-           '''{n}You put your hand flat on the barrier, over the place where she can feel her brother. You spent a night before this with the Hand's chaplain, pulled off the walls at the crusade's expense, learning how an angel's soul is held and how it lets go. You have no gift for hiding the use of a thing. If you do this, you will do it on your knees over her body, and her brother's light will pour out of you like a lamp opened in a cellar, with every soul in this room watching.{/n}
-{n}"If you fall," you tell her, "I'll hold you where you fell. They'll see me do it. You'll wake carrying him, and they'll know why."{/n}''',
+           '''{n}You show her what is inside your sleeve: a scroll of raise dead from the crusade's chaplains, signed out against your name for next month's relic tithe. You have no gift for hiding the use of a thing. If you read it, you will read it on your knees over her body, aloud, with every soul in this room watching.{/n}
+{n}"If you fall," you tell her, "I will bring you back where you fell, with my hand on you and his light in it. You made the sword it came from; you'll know it. They will see me do it. You will wake weaker, and they will know why."{/n}''',
            (PRIMED, LAB_LINE, TOLD, OPEN), ("trickster",), (PRIMED, FREE, DEAD, CONDEMNED, UMD2))
 
-# R2-2 late fallback: nothing was prepared. The act is performed now and paid for: her body is carried out of the ruin
-# and held the hard way, three days late, with her soul still unable to leave while half of it is in the Commander.
+# R2-2 late fallback: no scroll was prepared. The act is performed now and paid for: her body is carried out of the ruin
+# and raised the hard way, days late (Scroll of Raise Dead a43d2960; SpellsRaiseDead 3355d508, "an ordeal").
 letter(P + "dead.late_light", "The hard way back", [
     nar("start", '''{n}You did not think of it in the laboratory. You think of it now, with a report on your table that lists her among the dead and says her body was left where she fell.{/n}
-{n}There is something the report does not know. Her soul has not gone. It cannot, while half of it is still in this world, in you: you feel it the way she felt her brother, a lamp burning in a room you cannot find. But a soul held by nothing does not wait for ever, and going back into Areelu's ruin for one body will cost blood and favours you cannot spare.{/n}''',
-        c('[Send them back for her] "Bring her out. I\'ll hold her myself."', "raise", mythic="Trickster", crusade=("Favors", -300)),
+{n}Somewhere under the city a demon army is regrouping. Going back into Areelu's ruin for one body will cost blood and favours you cannot spare.{/n}''',
+        c('[Send them back for her] "Bring her out. I\'ll read it myself."', "raise", mythic="Trickster", crusade=("Favors", -300)),
         c('"Let her rest."', abort=True)),
-    nar("raise", '''{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you kneel over her with your palm on her heart and give her half of her soul its other half, for most of the night, while the chaplain at the altar prays aloud so as not to hear it.{/n}
-{n}Three days is too long to be held by nothing. The breath goes into her like a blade. She will wake with her brother in her and the ruin's cold still in her bones, and whatever she was before the laboratory, she will be less of it for a long while.{/n}''',
+    nar("raise", '''{n}Four volunteers go back into the ruin and come out with her wrapped in a Mendevian cloak. All four come out. One of them leaves an arm down there, and the other three do not speak of what is still down there. At the chapel you read a scroll of raise dead over her yourself, at the hour the priests call the thin one, while the chaplain kneeling at the altar keeps his eyes shut.{/n}
+{n}Coming back from the dead is an ordeal. The breath goes into her like a blade. Whatever she was before the laboratory, she will be less of it for a long while.{/n}''',
         c('[Stay until she breathes.]', flags=(PRIMED, LATE, ECHO_SPENT))),
 ], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED), delay=0, chapters=(3,),
    TricksterDevice=True, TricksterState=DEAD)
@@ -171,12 +173,12 @@ letter(P + "dead.one_soul", "Read back in", [
         c("Continue", "open", requires=(OPEN,), forbids=(ECHO_SPENT,)),
         c("Continue", "cold", requires=(ECHO_SPENT,))),
     nar("quiet", '''{n}The laboratory. You have lived it again every night since:{/n}
-{n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, put your palm over her heart, and let her brother's light go into her until you feel her half of the soul stop pulling away. It does not run down in you; it never has. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}''',
+{n}Your blade goes in. She falls, the way the story always meant her to. The room turns towards the door and whatever Areelu has left waiting there. You kneel beside her as if to close her eyes, and under your breath, no louder than a prayer for the dead, you read the scroll from your sleeve to its last word, with your other palm flat over her heart and her brother's light in it, turned down to the warmth of a hand. It crumbles to ash against your palm. For one breath the light under your hand stings the way it stung at the Nexus, when the two of you burned for him together, and then it is only warm. Nobody turns round. Her chest does not move. You leave her there, as she asked.{/n}''',
         c("Continue", "news")),
     nar("open", '''{n}The laboratory. You have lived it again every night since:{/n}
-{n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, your palm over her heart, and the light comes out of you white and plain as day. Every face in the room turns to you. Someone by the door says your name like a question. The light goes into her and stays, and her chest does not move, and you stand up and say, "Leave her. She'll come," and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}''',
+{n}Your blade goes in. She falls, the way the story always meant her to. You are on your knees beside her before anyone can move, the scroll open, reading aloud, your other hand on her heart, and her brother's light coming out through your fingers white and plain as day. Every face in the room turns to you. Someone by the door says your name like a question. The last word, and the scroll goes to ash, and her chest does not move, and you stand up and say, "Leave her. She'll come," and walk out past all of them. Nobody asks you what they saw. They will ask each other for months.{/n}''',
         c("Continue", "news")),
-    nar("cold", '''{n}You remember the chapel exactly: your hand over her heart until the candles guttered, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}''',
+    nar("cold", '''{n}You remember the chapel exactly: the scroll, the breath going into her like a blade, the chaplain praying with his eyes shut. She did not wake while you were there. The priests carried her down to the infirmary on a litter, as one more wounded thing.{/n}''',
         c("Continue", "news")),
     nar("news", '''{n}The runner says that an angel with one black wing is up and washing wounds. She can barely lift the basin. She has not said her name. She asked whether the Knight-Commander was awake.{/n}
 {n}By noon Heaven's envoy to the crusade has heard, and by evening the Queen's chaplains have: an angel the lists call dead is changing bandages in Drezen, and nobody can say by whose hand. The envoy withholds his blessing from the next muster until someone explains it.{/n}''',
@@ -195,7 +197,7 @@ ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
 {n}She nods at the two new cots.{/n} "Those men went to the wall unblessed because of me. Heaven's envoy will not bless what he cannot explain, and he cannot explain me. I have told them I am sorry. They did not know what for."
 {n}The black wing folds against her back as if it too is listening.{/n}
 {n}She sets the basin down with both hands. It is only half full, and still it shakes.{/n}
-"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "I cannot lift what I lifted a week ago. And every time I close my eyes I am under Kenabres, and the rock is coming down, and I am my brother. You held me with him, and now I carry him. I knew I would."
+"I remember your blade. I remember the laboratory, and Areelu's glass, and the floor. Then nothing, and in the nothing, a light I made with my own hands, a long time ago, for my brother. I went towards it. Then I was breathing, and every breath hurt." {n}She flexes her fingers.{/n} "I cannot lift what I lifted a week ago. That is what raising costs. I knew it would."
 "I went to the Hand's chaplain before I came here, as I said I would. I told him what was done, and by whom. He let the candle burn down a finger's width before he spoke. Then he blessed me, and not you."''',
       c('[Tell her the truth] "I struck you. I\'d rather you hear it from me than from Heaven."', "truth"),
       c('[Make light of it] "It was a joke. You\'re alive. That\'s the punchline."', "joke"),
@@ -252,7 +254,7 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
         c("Continue", "greet_lab", requires=(LAB_LINE,)),
         c("Continue", "greet", forbids=(LAB_LINE,))),
     t("greet_lab", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
-"Behind the barrier you put your hand on the glass over my brother's light and asked me to let everyone mourn me. I said yes. And then you did not need it: you broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',
+"Behind the barrier you showed me a scroll up your sleeve and asked me to let everyone mourn me. I said yes. And then you did not need it: you broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("greet", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "Someone worked these rows all night with a healer's wand and would not stop. I felt it in the halls of Heaven, like a hand on my shoulder. I came to see who would do such a thing, and why."''',
@@ -328,8 +330,8 @@ LIGHT_PARAGRAPHS = (
     p("Heaven's lists still name her among the dead of Areelu's laboratory. Targona never asked to have the entry "
       "struck. She said it was the most honest thing anyone had written about her, and that the angel on that list had "
       "earned her rest.", requires=(SHARD,)),
-    p("She came back the hard way, three days late, held by her brother's light in a cold chapel, and it took her a "
-      "year to lift a full basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one "
+    p("She came back the hard way, through the chapel and the raise dead scroll, and it took her a year to lift a full "
+      "basin again. Four volunteers went into Areelu's ruin for her body. She learned their names, and tended the one "
       "who lost his arm there until the day he died, old, in his bed.", requires=(ECHO_SPENT,)),
     p("The Commander kept the promise made in the quiet ward. It was harder than any vow they had broken, and "
       "Targona knew it, and said so, once.", requires=(SEALED,)),
