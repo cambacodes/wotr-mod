@@ -41,6 +41,7 @@ internal static class Program
         Run("capture and log filters", Filters);
         Run("inline navigation policy", InlinePolicy);
         Run("inline-hosts.json matches the built RRT's entry lists", () => InlineHostsFresh(rrtDll));
+        Run("derived keys force through their leaves", DerivedForcingChecks);
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
         return failures == 0 ? 0 : 1;
     }
@@ -193,6 +194,41 @@ internal static class Program
         Check(mismatched == 0, mismatched + " scene(s) with stale entry lists: rerun python harness/resolve-inline-hosts.py");
         Check(withEntry == hosts.Scenes.Count, "every scene in the hosts file has a live entry list (" + withEntry + " vs " + hosts.Scenes.Count + ")");
         Console.WriteLine("    " + withEntry + " scenes with a native entry; " + hosts.Scenes.Values.Count(s => s.Resolved) + " resolve to a host dialog");
+    }
+
+    static void DerivedForcingChecks()
+    {
+        // Synthetic map: nested keys, persistent-only groups preferred, cycles and unforceable keys rejected.
+        var d = new Dictionary<string, string[][]>
+        {
+            ["any"] = new[] { new[] { "native.x" }, new[] { "a.eligible" }, new[] { "b.eligible" } },
+            ["a.eligible"] = new[] { new[] { "native.y", "a.committed" } },
+            ["b.eligible"] = new[] { new[] { "b.committed" }, new[] { "b.late" } },
+            ["loop"] = new[] { new[] { "loop2" } },
+            ["loop2"] = new[] { new[] { "loop" } },
+        };
+        Func<string, bool> persistent = k => k.EndsWith(".committed") || k.EndsWith(".late");
+        var none = new HashSet<string>();
+        var leaves = DerivedForcing.Leaves("any", d, persistent, none.Contains);
+        Check(leaves != null && leaves.SequenceEqual(new[] { "b.committed" }), "any resolves through b.eligible's first persistent group: " + (leaves == null ? "null" : string.Join(",", leaves)));
+        Check(DerivedForcing.Leaves("a.eligible", d, persistent, none.Contains) == null, "a group with a native leaf is not forceable");
+        Check(DerivedForcing.Leaves("loop", d, persistent, none.Contains) == null, "a cycle resolves to null, not a stack overflow");
+        Check(DerivedForcing.Leaves("any", d, persistent, new HashSet<string> { "any" }.Contains)!.Count == 0, "a held key needs nothing");
+
+        // The built Story.json: household.any_eligible must resolve to authored commit flags.
+        string root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\.."));
+        string storyPath = Path.Combine(root, "development", "Story.json");
+        if (!File.Exists(storyPath)) { Fail("Story.json missing at " + storyPath); return; }
+        var story = Newtonsoft.Json.Linq.JObject.Parse(File.ReadAllText(storyPath));
+        var derived = new Dictionary<string, string[][]>();
+        foreach (var p in (Newtonsoft.Json.Linq.JObject?)story["Derived"] ?? new Newtonsoft.Json.Linq.JObject())
+            derived[p.Key] = p.Value!.Select(g => g.Select(x => (string)x!).ToArray()).ToArray();
+        var authored = new HashSet<string>(story["Scenes"]!.SelectMany(s => s["Nodes"]!).SelectMany(n => n["Choices"] ?? new Newtonsoft.Json.Linq.JArray())
+            .SelectMany(c => c["Set"] ?? new Newtonsoft.Json.Linq.JArray()).Select(x => (string)x!));
+        Check(derived.ContainsKey("household.any_eligible"), "household.any_eligible is a Derived key");
+        var real = DerivedForcing.Leaves("household.any_eligible", derived, authored.Contains, none.Contains);
+        Check(real != null && real.Count > 0 && real.All(authored.Contains), "household.any_eligible resolves to authored flags: " + (real == null ? "null" : string.Join(",", real)));
+        if (real != null) Console.WriteLine("    household.any_eligible forces via [" + string.Join(", ", real) + "]");
     }
 
     static void Activation()

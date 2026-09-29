@@ -432,6 +432,17 @@ namespace RRT.TestHarness
             (run.Result == "completed" || run.Result == "skipped-native" || run.Result == "skipped-inline")
             && run.OracleFailures.Count == 0 && !run.Exceptions.Any(e => e.Relevant);
 
+        /// <summary>Forces a Story.Derived key by setting the persistent leaves of one satisfiable group (DerivedForcing),
+        /// and logs the leaves. False when no group can be forced from a save.</summary>
+        bool ForceDerived(string key, IDictionary<string, string[][]> derived, HashSet<string> held, SceneRun run)
+        {
+            var leaves = DerivedForcing.Leaves(key, derived, persistentFlagKeys.Contains, held.Contains);
+            if (leaves == null) return false;
+            if (plan.ForceSetRequires) foreach (var leaf in leaves) rrt!.Set(leaf);
+            Entry.Mod.Logger.Log("Forced derived " + key + " via [" + string.Join(", ", leaves) + "] for " + run.Scene);
+            return true;
+        }
+
         /// <summary>
         /// A forced run (the scene is not available) sets the scene's Requires and one flag of each unmet RequiresAnyGroups
         /// group; with MarkStarted, the relationship's started flag too. Returns what a save cannot force.
@@ -446,15 +457,23 @@ namespace RRT.TestHarness
                 run.Forced = true;
                 if (plan.ForceSetRequires)
                     foreach (var req in RrtBridge.SceneRequires(scene).Where(persistentFlagKeys.Contains)) bridge.Set(req);
-                // Native / derived world keys cannot be forced from a save; note them so a page that stays hidden is a skip.
-                unforceable = RrtBridge.SceneRequires(scene).Where(req => !persistentFlagKeys.Contains(req) && !flagsBefore.Contains(req)).ToList();
-                // RequiresAnyGroups: an unmet group is forced with its first persistent flag; a group with none is unforceable.
+                var derived = bridge.Derived;
+                // Story.Derived keys are forced through their leaves (DerivedForcing). Native world keys cannot be forced from a
+                // save, so note them, and a page that stays hidden is a skip.
+                foreach (var req in RrtBridge.SceneRequires(scene).Where(req => !persistentFlagKeys.Contains(req) && !flagsBefore.Contains(req)))
+                {
+                    if (derived != null && derived.ContainsKey(req) && ForceDerived(req, derived, flagsBefore, run)) continue;
+                    unforceable.Add(derived != null && derived.ContainsKey(req) ? "derived " + req : req);
+                }
+                // RequiresAnyGroups: an unmet group is forced with its first persistent flag, or else its first forceable Derived
+                // key; a group with neither is unforceable.
                 foreach (var group in RrtBridge.SceneRequiresAnyGroups(scene) ?? new string[0][])
                 {
                     if (group.Any(flagsBefore.Contains)) continue;
                     var pick = group.FirstOrDefault(persistentFlagKeys.Contains);
-                    if (pick != null && plan.ForceSetRequires) bridge.Set(pick);
-                    else if (pick == null) unforceable.Add("any-of [" + string.Join(", ", group) + "]");
+                    if (pick != null) { if (plan.ForceSetRequires) bridge.Set(pick); continue; }
+                    if (derived != null && group.Any(k => derived.ContainsKey(k) && ForceDerived(k, derived, flagsBefore, run))) continue;
+                    unforceable.Add("any-of [" + string.Join(", ", group) + "]");
                 }
                 // Nor can the chapter: a page gated on a later chapter cannot open from an earlier save.
                 int chapter = RrtBridge.ToData(before).Chapter;
