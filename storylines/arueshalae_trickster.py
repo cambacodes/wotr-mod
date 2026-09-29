@@ -6,7 +6,8 @@ every path. The Trickster layer answers her three losses with the quack's diagno
 - evil, killed at the lair (Ch5): a referral for a second opinion to the only physician a succubus has, her queen, who
   bills for the consultation (Nocticula_main/Cue_0520, Cue_0523). The queen's terms are evil terms: pay them, shift them
   onto yourself, or refuse, and each has a cost that stays;
-- romance failed: the crusade's new chaplain, appointed out loud at the shrine, a piece of staging the crowd makes real.
+- romance failed: the crusade's new chaplain, appointed out loud at the shrine at the hour the second company kneels:
+  a piece of staging that she then has to live up to with her own hands.
 The living courtship on her own hub is arueshalae_treatment and arueshalae_rounds; the other paths' middle beats are
 arueshalae_chapel, arueshalae_hours and arueshalae_notes.
 
@@ -215,7 +216,7 @@ hub(P + "returned.aftertaste", "Aftertaste", 3, '"How do you feel?"', [
       c("Continue", "you", requires=(FED_ON_YOU,)),
       c("Continue", "him", forbids=(FED_ON_YOU,))),
     a("you", '''"Do you remember any of it? You were on the chapel floor by the end, and I was holding your hand to my cheek. The chaplain says I made no sound. I thought I was screaming." {n}She rubs her mouth with the back of her hand.{/n}
-"You made me eat. You made me want it, and then you smiled like a surgeon who'd done a clever stitch." {n}A small, shocked laugh escapes her.{/n} "Only you would call my death a bad diet. The novices think you performed a miracle. I didn't have the heart to tell them it was a joke."''',
+"You made me eat. You made me want it, and then you smiled like a surgeon who'd done a clever stitch." {n}A small, shocked laugh escapes her.{/n} "Only you would call my death a bad diet. The novices think you performed a miracle. I didn't have the heart to tell them it was your wrist and a very bad bedside manner."''',
       c("Continue", "test")),
     a("him", '''"They brought him up gagged. A Deskari lay preacher, condemned at the assize. I told you not to watch and you watched." {n}Her hands shake. She puts them flat against her thighs to stop them.{/n}
 "He screamed, you know. I didn't hear it at the time. I hear it now, whenever it's quiet. He's still breathing, in the east cells. He'll never be anybody again. You gave me back my life with a stranger's in my mouth, and I don't know whether to thank you."''',
@@ -245,7 +246,7 @@ letter(P + "evil.late_referral", "A referral, posthumously", 5, [
         c('[Give the vrock the referral, word for word] "Say this to your queen: patient, one succubus, deceased, misdiagnosed. Requesting a second opinion. Now say it back to me."',
           "sent", mythic="Trickster", flags=(PRIMED, LATE)),
         c("[Let it go without a message.]", "gone", flags=(DECLINED,))),
-    nar("sent", '''{n}It says it back to you three times, in a voice like a hinge, until it has every word. Then it goes, flapping badly into the purple sky, and looks back once as if to ask whether you are serious. You are. You have never been more serious about a joke.{/n}''', c()),
+    nar("sent", '''{n}It says it back to you three times, in a voice like a hinge, until it has every word. Then it goes, flapping badly into the purple sky, and looks back once as if to ask whether you are serious. You are. It is the most serious referral you have ever written.{/n}''', c()),
     nar("gone", '''{n}You let it go. It scuttles off into the rubble with its rings. You leave her where she fell. It is the only thing about her that you never tried to fix.{/n}''', c()),
 ], requires=("trickster", EVIL_DEAD, EVIL_LATCH), forbids=(PRIMED, RETURNED, DECLINED), delay=24, chapters=(5,),
     TricksterDevice=True, TricksterState="evil_dead")
@@ -363,11 +364,11 @@ drezen_pair(P + "evil.terms", "House calls", '"You\'re sitting on the jeweller\'
             ("trickster.ever", RETURNED, EVIL_DEAD, REUNITED), (CLOSED, COMMITTED, ALLY), 48)
 
 
-# --- 6. Romance failed: "The crusade's new chaplain" (staging: the crowd makes the joke real) ---------------------
+# --- 6. Romance failed: "The crusade's new chaplain" (staging: a public appointment, then her own work) ---------------------
 
 hub(P + "failed.chaplain", "Chaplain", 3,
     '[Announce it to the whole shrine] "Meet the crusade\'s new chaplain. She starts tomorrow."', [
-    a("start", '''{n}The words carry further than they should. The shrine has good bones for sound; it was built by people who expected to be heard by a goddess. By vespers the acolytes are calling her "Chaplain" to her face, and the second company is queuing at the altar rail with their swords laid across their palms. Nobody wrote it down. Nobody needed to.{/n}
+    a("start", '''{n}You chose the hour on purpose: vespers, with the second company kneeling at the rail and every acolyte in the shrine lighting lamps. The words carry further than they should. The shrine has good bones for sound; it was built by people who expected to be heard by a goddess. By vespers the acolytes are calling her "Chaplain" to her face, and the second company is queuing at the altar rail with their swords laid across their palms. Nobody wrote it down. Nobody needed to.{/n}
 "Take it back." {n}She has you by the sleeve in the vestry, whispering, furious.{/n} "They'll look at me every day. A succubus, blessing their swords. Do you know what they'll say? Do you know what I'll want, with every one of them kneeling in front of me?"''',
       c("Continue", "sword")),
     a("sword", '''{n}She doesn't leave, though. When the first soldier at the rail clears his throat, she goes out to him. She takes his sword in both hands as if it might burn her, and says the words she has heard the Desnan priests say over travellers, and hands it back. He thanks her. She stands there looking at her own hands.{/n}
