@@ -237019,6 +237019,796 @@
     "kiana.counterfeit_held": "3e4ce583dc71401588f33f8192c252cd",
     "hepzamirah.mutasafen_letter": "b3f92e1ee50f7e34cb90ffbd1ae6c74c"
   },
+  "Books": {
+    "trickster.ledger": {
+      "Title": "The Trickster's Ledger",
+      "Opening": "{n}The accounts of the Commander of the Fifth Crusade, kept by the Commander, since nobody else would believe them. Every {g|RRT_Debt}debt{/g} below is a thread from the world into my chest, and a creditor does not let a debtor die unpaid. Settle them before the last joke, or let them settle me.{/n}",
+      "Portrait": "",
+      "Sections": [
+        "Debts",
+        "Guest List",
+        "Seating Notes",
+        "Secrets"
+      ],
+      "Entries": [
+        {
+          "Id": "debt.socoth",
+          "Section": "Debts",
+          "Portrait": "Anevia",
+          "Title": "Socothbenoth: a door to listen at",
+          "Text": "{n}Paid for a closet with a standing right to listen, or a story owed instead. The Silken Sin collects. He prefers to collect during something private.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "anevia.lastcall.called",
+                  "minagho_chivarro.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Outlived. There is nobody left to collect it.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "socot.gone",
+                  "council.fought_nocta_allied"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "anevia.trickster.cost.socoth_listening",
+              "anevia.trickster.cost.wrong_door",
+              "minagho_chivarro.trickster.cost.socoth_owed"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.baphomet",
+          "Section": "Debts",
+          "Portrait": "Minagho",
+          "Title": "Baphomet: a seal on my palm",
+          "Text": "{n}His seals, he says, simply mark their bodies as his. Mine is marked. He will want the body.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "minagho_chivarro.lastcall.called",
+                  "hepzamirah.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "hepzamirah.trickster.cost.baphomet_grudge",
+              "minagho_chivarro.trickster.cost.baphomet_branded",
+              "minagho_chivarro.trickster.cost.baphomet_debtor",
+              "minagho_chivarro.trickster.cost.baphomet_knelt",
+              "minagho_chivarro.trickster.cost.baphomet_terms"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.nocticula",
+          "Section": "Debts",
+          "Portrait": "Nocticula",
+          "Title": "The Lady in Shadow: an answer owed",
+          "Text": "{n}A favour of her choosing, or a stalemate of kept secrets. Either way she has an interest in my continued breathing, and Nocticula is a patient creditor.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "nocticula.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "nocticula.trickster.cost.shade_paid",
+              "nocticula.trickster.cost.shade_refused"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.ramisa",
+          "Section": "Debts",
+          "Portrait": "Nurah",
+          "Title": "Ramisa Shed-Skin: the only seat",
+          "Text": "{n}The marilith keeps a duplicate of every bill with my name on it, and I sold her the only seat at the last night of the war. She will want her performance.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "nurah.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "nurah.trickster.cost.bill_in_your_name",
+              "nurah.trickster.cost.ramisa_audience",
+              "nurah.trickster.cost.ramisa_fee"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.herrax",
+          "Section": "Debts",
+          "Portrait": "Chivarro",
+          "Title": "Herrax: the house special",
+          "Text": "{n}A favour on account at the house of Herrax, for a demon returned to me. Interest compounds. So does Herrax.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "minagho_chivarro.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "minagho_chivarro.trickster.cost.herrax_favor"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.abadar",
+          "Section": "Debts",
+          "Portrait": "Arsinoe",
+          "Title": "The First Vault: a cauldron on lease",
+          "Text": "{n}Leased from the church of Abadar, returnable at the end of the world. A lien stands. The Master of the First Vault reads the small print so I don't have to.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "arsinoe.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "arsinoe.trickster.cost.collateral_still",
+              "arsinoe.trickster.cost.collateral_word",
+              "arsinoe.trickster.cost.collateral_worldwound",
+              "arsinoe.trickster.cost.lien"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.sunhammer",
+          "Section": "Debts",
+          "Portrait": "Kiana",
+          "Title": "Darek Sunhammer: a favour and some stones",
+          "Text": "{n}The jeweller who made the wedding stones is owed a favour, or a grudge, and still keeps what he keeps. A dwarf remembers a bill.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "kiana.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "kiana.trickster.cost.courier_marked",
+              "kiana.trickster.cost.guests_robbed",
+              "kiana.trickster.cost.sunhammer_favour"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.mutasafen",
+          "Section": "Debts",
+          "Portrait": "Hepzamirah",
+          "Title": "Mutasafen: rent on a body",
+          "Text": "{n}He grew her a body. Somebody is paying for it, in blood, in coin or in secrets, and Mutasafen always collects first.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "hepzamirah.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "hepzamirah.trickster.cost.blood_sample",
+              "hepzamirah.trickster.cost.lab_funded",
+              "hepzamirah.trickster.cost.mutasafen_grudge",
+              "hepzamirah.trickster.cost.vial_forged",
+              "hepzamirah.trickster.cost.vial_paid"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "debt.wintersun",
+          "Section": "Debts",
+          "Portrait": "Soana",
+          "Title": "The Wintersun spirits: a portion",
+          "Text": "{n}The spirits of Soana's wood took a portion of me when the knot was tied. The rest is mine to give. They know where to find me.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": [
+                [
+                  "soana.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "{n}Settled, one way or another. The book stays open anyway.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "soana.trickster.cost.blood_given",
+              "soana.trickster.cost.guardian_paid",
+              "soana.trickster.cost.knot_bearer",
+              "soana.trickster.cost.leash_held"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.irabeth",
+          "Section": "Debts",
+          "Portrait": "Irabeth",
+          "Title": "Irabeth: an order not rescinded",
+          "Text": "{n}The Knight-Captain is still under my orders. Her discharge is unsigned. I will need to be alive to sign it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "irabeth.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "irabeth.trickster.cost.under_orders"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.jerribeth",
+          "Section": "Debts",
+          "Portrait": "Jerribeth",
+          "Title": "Jerribeth: rent due on the first",
+          "Text": "{n}I let a succubus a room. The rent is due on the first of the month. She will collect it from me, or from my estate, and she prefers me.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "jerribeth.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "jerribeth.trickster.cost.forfeit",
+              "jerribeth.trickster.cost.host",
+              "jerribeth.trickster.cost.lodger",
+              "jerribeth.trickster.cost.tenant",
+              "jerribeth.trickster.cost.toast"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.konomi",
+          "Section": "Debts",
+          "Portrait": "Konomi",
+          "Title": "Konomi: terms not yet named",
+          "Text": "{n}The attaché of Nerosyan has terms, and has not said what they are. That is how diplomats keep you alive: by making you curious.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "konomi.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "konomi.trickster.cost.consult_fee",
+              "konomi.trickster.cost.debt_owed"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.vellexia",
+          "Section": "Debts",
+          "Portrait": "Vellexia",
+          "Title": "Vellexia: the furniture",
+          "Text": "{n}I owe Lady Vellexia for a season she spent on my wall. She keeps a very precise account of things nobody else would think to bill.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "vellexia.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "vellexia.trickster.cost.predicted",
+              "vellexia.trickster.cost.trick_kept",
+              "vellexia.trickster.returned"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.aranka",
+          "Section": "Debts",
+          "Portrait": "Aranka",
+          "Title": "Aranka: a verse unsung",
+          "Text": "{n}Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "aranka.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "aranka.trickster.cost.announced",
+              "aranka.trickster.cost.credited",
+              "aranka.trickster.cost.denied"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.gesmerha",
+          "Section": "Debts",
+          "Portrait": "Gesmerha",
+          "Title": "Gesmerha: a commission unfinished",
+          "Text": "{n}Gesmerha's ancestors let her come back because there was paid work on her bench. The statue isn't finished. Neither, apparently, am I.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "gesmerha.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "gesmerha.trickster.cost.advance_paid",
+              "gesmerha.trickster.cost.ancestor_debt"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.seelah",
+          "Section": "Debts",
+          "Portrait": "Seelah",
+          "Title": "Seelah: a coin to steal back",
+          "Text": "{n}I took something from Seelah's purse at her bier that she didn't earn. She swore she'd steal it back. A thief who hasn't collected won't let you die.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "seelah.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "seelah.trickster.cost.holds_her_death",
+              "seelah.trickster.cost.keeps_it",
+              "seelah.trickster.cost.robbed_back"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.dorgelinda",
+          "Section": "Debts",
+          "Portrait": "Dorgelinda",
+          "Title": "Dorgelinda: a line marked \"used, quietly\"",
+          "Text": "{n}One line in the stores ledger is open in my name. Dorgelinda won't close an account while the debtor might still explain it.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "dorgelinda.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "dorgelinda.trickster.cost.boots_owed",
+              "dorgelinda.trickster.cost.carts_signed",
+              "dorgelinda.trickster.cost.line_open"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.eritrice",
+          "Section": "Debts",
+          "Portrait": "Eritrice",
+          "Title": "Eritrice: business still on the agenda",
+          "Text": "{n}The Trickster Council's minutes have my name in them, under a matter still open. Eritrice does not let a member die with business pending.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "eritrice.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "eritrice.trickster.cost.apologised",
+              "eritrice.trickster.cost.censured",
+              "eritrice.trickster.cost.grudge_on_agenda",
+              "eritrice.trickster.cost.on_the_record"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.areelu",
+          "Section": "Debts",
+          "Portrait": "Areelu",
+          "Title": "Areelu: a wager on who burns",
+          "Text": "{n}Whoever burns at Threshold pays. Areelu keeps better records than I do. I intend to be the one reading them afterwards.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "areelu.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "areelu.trickster.cost.bet_with_the_witch",
+              "areelu.trickster.wager_struck"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        },
+        {
+          "Id": "owed.chadali",
+          "Section": "Debts",
+          "Portrait": "Chadali",
+          "Title": "Chadali: my luck, on loan",
+          "Text": "{n}Chadali borrowed my luck, or I borrowed hers. The coin's still standing. Nobody collects from a dead man's luck.{/n}",
+          "Lines": [
+            {
+              "Text": "{n}Called in at the rift.{/n}",
+              "Requires": [
+                "chadali.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Settled, one way or another.{/n}",
+              "Requires": [
+                "lastcall.active"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ],
+          "Requires": [],
+          "Forbids": [],
+          "AnyGroups": [
+            [
+              "chadali.trickster.cost.luck_lent",
+              "chadali.trickster.cost.luck_owed",
+              "chadali.trickster.cost.needle_owed"
+            ]
+          ],
+          "Tooltip": "RRT_Debt"
+        }
+      ]
+    },
+    "rrt.guide": {
+      "Title": "The Courier's Notes",
+      "Opening": "{n}Folded into the lid of the satchel: the courier's own notes, in a careful and very tired hand.{/n}",
+      "Portrait": "",
+      "Sections": [
+        "Letters",
+        "The Ledger"
+      ],
+      "Entries": [
+        {
+          "Id": "letters.satchel",
+          "Section": "Letters",
+          "Title": "The satchel",
+          "Text": "{n}Letters wait in the {g|RRT_Mailbag}satchel{/g} until you read them. Take them in whatever order you like. A correspondent's next letter follows only once the last one has been read, so nobody's story arrives out of order.{/n}",
+          "Tooltip": "RRT_Mailbag"
+        },
+        {
+          "Id": "letters.kept",
+          "Section": "Letters",
+          "Title": "Letters kept",
+          "Text": "{n}Nothing read is thrown away. The {g|RRT_LettersKept}letters you kept{/g} lie in the bottom of the satchel, the newest on top. Read them again whenever you like; rereading changes nothing.{/n}",
+          "Tooltip": "RRT_LettersKept"
+        },
+        {
+          "Id": "ledger.account",
+          "Section": "The Ledger",
+          "Title": "Keeping accounts",
+          "Requires": [
+            "trickster"
+          ],
+          "Text": "{n}\"Other commanders keep diaries,\" the courier has written, and underlined it twice. \"Yours keeps a {g|RRT_Ledger}ledger{/g}. I have learned not to ask whose names are in it.\"{/n}",
+          "Lines": [
+            {
+              "Text": "{n}A later line, in different ink: \"Every {g|RRT_Debt}debt{/g} comes due. I only carry the letters.\"{/n}",
+              "Requires": [
+                "trickster.ever"
+              ]
+            }
+          ],
+          "Tooltip": "RRT_Ledger"
+        }
+      ]
+    }
+  },
   "Latches": {
     "trickster.ever": [
       "trickster",
@@ -237117,51 +237907,6 @@
     "RRT_AtTheTableApart": {
       "Name": "At the Table, Apart",
       "Description": "How the ending remembers a companion who only tolerates the household: present, seated apart, looking past one chair."
-    }
-  },
-  "Books": {
-    "rrt.guide": {
-      "Title": "The Courier's Notes",
-      "Opening": "{n}Folded into the lid of the satchel: the courier's own notes, in a careful and very tired hand.{/n}",
-      "Portrait": "",
-      "Sections": [
-        "Letters",
-        "The Ledger"
-      ],
-      "Entries": [
-        {
-          "Id": "letters.satchel",
-          "Section": "Letters",
-          "Title": "The satchel",
-          "Text": "{n}Letters wait in the {g|RRT_Mailbag}satchel{/g} until you read them. Take them in whatever order you like. A correspondent's next letter follows only once the last one has been read, so nobody's story arrives out of order.{/n}",
-          "Tooltip": "RRT_Mailbag"
-        },
-        {
-          "Id": "letters.kept",
-          "Section": "Letters",
-          "Title": "Letters kept",
-          "Text": "{n}Nothing read is thrown away. The {g|RRT_LettersKept}letters you kept{/g} lie in the bottom of the satchel, the newest on top. Read them again whenever you like; rereading changes nothing.{/n}",
-          "Tooltip": "RRT_LettersKept"
-        },
-        {
-          "Id": "ledger.account",
-          "Section": "The Ledger",
-          "Title": "Keeping accounts",
-          "Requires": [
-            "trickster"
-          ],
-          "Text": "{n}\"Other commanders keep diaries,\" the courier has written, and underlined it twice. \"Yours keeps a {g|RRT_Ledger}ledger{/g}. I have learned not to ask whose names are in it.\"{/n}",
-          "Lines": [
-            {
-              "Text": "{n}A later line, in different ink: \"Every {g|RRT_Debt}debt{/g} comes due. I only carry the letters.\"{/n}",
-              "Requires": [
-                "trickster.ever"
-              ]
-            }
-          ],
-          "Tooltip": "RRT_Ledger"
-        }
-      ]
     }
   },
   "PortraitFallbacks": {

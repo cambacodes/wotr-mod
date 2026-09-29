@@ -258,6 +258,8 @@ def derived():
 def integrate(payload):
     """Register the framework, the partner pages and the Ledger lines, and quiet every mourning page on a Last Call run."""
     payload["Relationships"][REL] = copy.deepcopy(RELATIONSHIP)
+    # The Ledger as a readable book (E15 book UI, 09-RRT-BOOK-UI.md); the journal quest stays the native entry point.
+    payload.setdefault("Books", {})["trickster.ledger"] = ledger.book()
     for key, groups in derived().items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != groups:
