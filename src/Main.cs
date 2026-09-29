@@ -82,6 +82,9 @@ namespace Tirabade
         private static object? recoveryPlayer;
         private static readonly List<SimpleBlueprint> registered = new List<SimpleBlueprint>();
         private static readonly Dictionary<string, BlueprintQuestObjective> objectives = new Dictionary<string, BlueprintQuestObjective>();
+        // E15: journal entries (the Trickster's Ledger), keyed "<relationship>/<entry id>".
+        private static readonly Dictionary<string, KeyValuePair<JournalEntry, BlueprintQuestObjective>> journalEntries =
+            new Dictionary<string, KeyValuePair<JournalEntry, BlueprintQuestObjective>>();
         private static Process? narrator;
         private static float pollAt;
         private static bool restPending;
@@ -1006,9 +1009,40 @@ namespace Tirabade
             objective.Description = Text("objective" + suffix + ".description", relationship.Guidance);
             Field(objective, "m_Quest", Ref<BlueprintQuestReference>(quest));
             Field(objective, "m_FinishParent", true);
-            Field(quest, "m_Objectives", new List<BlueprintQuestObjectiveReference> { Ref<BlueprintQuestObjectiveReference>(objective) });
+            var questObjectives = new List<BlueprintQuestObjectiveReference> { Ref<BlueprintQuestObjectiveReference>(objective) };
+            // E15: each journal entry is its own objective under the same quest, after the main one; it never finishes the quest.
+            foreach (var entry in relationship.JournalEntries ?? new List<JournalEntry>())
+            {
+                string key = "objective" + suffix + ".entry." + entry.Id;
+                var line = New<BlueprintQuestObjective>(key);
+                line.Title = Text(key + ".title", entry.Title);
+                line.Description = Text(key + ".description", entry.Description);
+                Field(line, "m_Quest", Ref<BlueprintQuestReference>(quest));
+                Field(line, "m_FinishParent", false);
+                questObjectives.Add(Ref<BlueprintQuestObjectiveReference>(line));
+                journalEntries.Add(id + "/" + entry.Id, new KeyValuePair<JournalEntry, BlueprintQuestObjective>(entry, line));
+            }
+            Field(quest, "m_Objectives", questObjectives);
             objectives.Add(id, objective);
         }
+
+        // E15: give each Ledger line when its debt appears, complete it when the debt is settled. Idle only (called from Tick).
+        private static void TickJournalEntries(Snapshot state)
+        {
+            var book = Game.Instance?.Player?.QuestBook;
+            if (book == null) return;
+            foreach (var pair in journalEntries.Values)
+            {
+                var current = book.GetObjectiveState(pair.Value);
+                switch (Rules.JournalStep(pair.Key, current != QuestObjectiveState.None, current == QuestObjectiveState.Started, state))
+                {
+                    case "give": book.GiveObjective(pair.Value); break;
+                    case "complete": book.CompleteObjective(pair.Value); break;
+                }
+            }
+        }
+
+        internal static int JournalEntryCount => journalEntries.Count;
 
         // One snapshot per frame (GLOBAL-11): opening a native list with ~60 RRT entries used to rebuild it ~120 times.
         // Invalidated by every RRT flag write; a native change in the same frame is picked up on the next frame.
@@ -1472,6 +1506,7 @@ namespace Tirabade
                 if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.Started
                     && Rules.Failed(story.Relationships[pair.Key], state)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
             }
+            TickJournalEntries(state);
             if (restPending && UseMailbag())
             {
                 // E8b: every deliverable letter arrives; the player chooses what to read from the list.

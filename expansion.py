@@ -58,6 +58,7 @@ from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chad
 from storylines import devarra_trickster, devarra_tower
 from storylines import rrt_ui
 from storylines import rrt_portraits
+from storylines import lastcall
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
 from storylines import ember_campaign
@@ -400,6 +401,8 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
     devarra_trickster.integrate(payload)
     devarra_tower.integrate(payload)
+    # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
+    lastcall.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     # E15: the RRT book UI (glossary tooltips, the guide book).
