@@ -75337,7 +75337,7 @@
         {
           "Id": "account",
           "Speaker": "Aranka",
-          "Text": "\"From a man who came north with them. He saw the scarf at the gate. He thought Deren must have turned back. I thought...\"\n{n}Aranka exhales through her nose.{/n}\n\"I thought it sounded like a story people needed.\"\n\"I needed him to come back,\" Neris says. \"That is different.\"\n\"Yes.\"\n{n}Neris looks at you for the first time.{/n}\n\"I'm not asking you to find him. I have asked enough people who needed me to believe they could. I'm asking her to stop singing that I was rescued by a man who wasn't there.\"\n\"Were you alone at the gate?\"\n\"For a while. A woman with a broken cart took me with her. I didn't learn her name. There wasn't time to ask everyone to become part of a song.\"\n{n}Aranka's face changes. She had begun to reach for a thought; she lets it go.{/n}\n\"I won't ask you to give me a better ending,\" she says. \"The verse comes out.\"\n{n}Neris loosens her grip on the cloak. It takes her a moment to believe that the argument has ended.{/n}",
+          "Text": "\"From a man who came north with them. He saw the scarf at the gate. He thought Deren must have turned back. I thought...\"\n{n}Aranka exhales through her nose.{/n}\n\"I thought it sounded like a story people needed.\"\n\"I needed him to come back,\" Neris says. \"That is different.\"\n\"Yes.\"\n{n}Neris turns and looks straight at you.{/n}\n\"I'm not asking you to find him. I have asked enough people who needed me to believe they could. I'm asking her to stop singing that I was rescued by a man who wasn't there.\"\n\"Were you alone at the gate?\"\n\"For a while. A woman with a broken cart took me with her. I didn't learn her name. There wasn't time to ask everyone to become part of a song.\"\n{n}Aranka's face changes. She had begun to reach for a thought; she lets it go.{/n}\n\"I won't ask you to give me a better ending,\" she says. \"The verse comes out.\"\n{n}Neris loosens her grip on the cloak. It takes her a moment to believe that the argument has ended.{/n}",
           "Choices": [
             {
               "Text": "[Stay while Aranka tells her what she will change.]",
@@ -95493,7 +95493,7 @@
         {
           "Id": "night",
           "Speaker": "Arsinoe",
-          "Text": "\"I do. I have wanted to ask for some time, and I kept finding reasons to improve the room first. The room has had enough of my attention.\"\n{n}She reaches past you and turns the little stone face toward the wall. Then she takes your hand and puts it at the clasp of her collar, and holds it there, and watches you with those gold eyes until you understand that she means for you to open it.{/n}\n\"Slowly. I have waited long enough to be allowed to enjoy the waiting.\"\n{n}Her robes are the robes of a priestess who has never once been underdressed in public, and there are a great many fastenings. She knows every one of them. She lets you find them yourself, and laughs, low, when one defeats you, and does not help. When the last of them gives, she steps out of the cloth without looking down at it and draws you to the bed by the belt.{/n}\n{n}The lamp is burning low. She does not put it out. She wants to see you, she says, and she is not in the habit of paying for something she has not inspected. Her mouth is warm, her hands are not shy, and she pulls you down onto the bed with her and wraps her legs around you and draws you close, her eyes open the whole time. The last thing she says is your name, as if she were signing it.{/n}\n{n}Later, the room is quiet, and the window is open, and Arsinoe's hand finds yours under the cover.{/n}\n\"I am glad you asked. I am gladder that I did.\"\n{n}In the morning she is reluctant to rise until the street becomes too noisy to ignore. She finds something to eat, objects to your account of who took more than a fair share of the cushion, and kisses you in the middle of the argument.{/n}\n\"There. Now you may go and be impressive. I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive.\"",
+          "Text": "\"I do. I have wanted to ask for some time, and I kept finding reasons to improve the room first. The room has had enough of my attention.\"\n{n}She reaches past you and turns the little stone face toward the wall. Then she takes your hand and puts it at the clasp of her collar, and holds it there, and watches you with those gold eyes until you understand that she means for you to open it.{/n}\n\"Slowly. I have waited long enough to be allowed to enjoy the waiting.\"\n{n}Her robes are the robes of a priestess who has never once been underdressed in public, and there are a great many fastenings. She knows every one of them. She lets you find them yourself, and laughs, low, when one defeats you, and does not help. When the last of them gives, she steps out of the cloth without looking down at it and draws you to the bed by the belt.{/n}\n{n}The lamp is burning low. She does not put it out. She wants to see you, she says, and she is not in the habit of paying for something she has not inspected. Her mouth is warm, her hands are not shy, and she pulls you down onto the bed with her and wraps her legs around you and draws you close, her eyes open the whole time.{/n}\n{n}She is not quiet about what she wants, and she is very precise about it: here, and slower, and *there*, the same voice she uses to correct a clerk's arithmetic, gone low and unsteady at the edges. Her heels press into the backs of your thighs. She catches your face in both hands to keep your eyes on hers, says your name once, as if she has finally decided what it is worth, and brings her hips up to meet you.{/n}\n{n}Later, the room is quiet, and the window is open, and Arsinoe's hand finds yours under the cover.{/n}\n\"I am glad you asked. I am gladder that I did.\"\n{n}In the morning she is reluctant to rise until the street becomes too noisy to ignore. She finds something to eat, objects to your account of who took more than a fair share of the cushion, and kisses you in the middle of the argument.{/n}\n{n}When you come down, the shop is still shuttered, an hour past its opening, and there is a queue at the door. Arsinoe looks at it, and at the second cup she has set out on the counter without comment, and does not hurry.{/n}\n\"The first late opening of my career. They will talk. Let them; I have given them nothing else to talk about in years. There. Now you may go and be impressive. I have a customer who will insist that the price of a scroll has offended him personally. I expect to be equally impressive.\"",
           "Choices": [
             {
               "Text": "\"Leave with a kiss and the promise of another visit.\"",
@@ -96152,7 +96152,7 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "{n}You set the Council's cauldron on her counter. It does not look like a cauldron. It never has. It is a diamond the size of a clenched fist, cut by someone who did not care what it cost, in a cradle of old gold.{/n}\n{n}Arsinoe's gold eyes go to it before you have taken your hand away. She does not touch it. Her fingers stop a breath above the stone, the way they would over an offering plate.{/n}\n\"If this is what I think it is...\"\n{n}She takes a jeweler's loupe from her sleeve and bends to the cradle. Under the grime of the Abyss there is a line of worn lettering, stamped, not engraved. Clerks' capitals.{/n}\n\"By the First Vault. *Treasury of Abadar, Absalom.*\"\n{n}She straightens, frowning, and taps the loupe against her lip.{/n}\n\"A soul cauldron, Commander, if I am any judge, and I am. Marks can be forged; I have forged a few, for training purposes. But if this one is genuine, then this stone was consecrated to my god and entered in his inventory, and it belongs in a vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it.\"",
+          "Text": "{n}You set the Council's cauldron on her counter. It does not look like a cauldron. It never has. It is a diamond the size of a clenched fist, cut by someone who did not care what it cost, in a cradle of old gold.{/n}\n{n}Arsinoe's gold eyes go to it before you have taken your hand away. She does not touch it. Her fingers stop a breath above the stone, the way they would over an offering plate.{/n}\n\"If this is what I think it is...\"\n{n}She takes a jeweler's loupe from her sleeve and bends to the cradle. Under the grime of the Abyss there is a line of worn lettering, stamped, not engraved. Clerks' capitals.{/n}\n\"By the First Vault. *Treasury of Abadar, Absalom.*\"\n{n}She straightens, frowning, and taps the loupe against her lip.{/n}\n\"A soul cauldron, Commander, if I am any judge, and I am. Marks can be forged; I have forged a few, for training purposes. But if this one is genuine, then this stone was consecrated to my god and entered in his inventory, and it belongs in a vault in Absalom, not on a counter in a war camp. I will not ask how it came to you. I suspect the answer involves demons, and I suspect you enjoyed it.\"\n{n}You tell her what the lich on the Council said of it: likely from Abadar's coffers. She does not look up from the loupe.{/n}\n\"Likely. A lich's guess and a worn stamp. That is not proof, Commander. It is, however, a very good start on a lawsuit.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -96237,7 +96237,7 @@
         {
           "Id": "rent",
           "Speaker": "Arsinoe",
-          "Text": "{n}The straw stops halfway to the crate.{/n}\n\"Leased.\"\n{n}She looks at you for a long, pleased moment, the way she looks at a customer who has finally made an offer worth her time.{/n}\n\"A lease is a contract. A contract is lawful. And a lawful arrangement for the use of the Treasury's property, drawn up by an ordained priestess in good standing, is... something I could defend before my superiors, if I had to. I would enjoy defending it.\"\n\"But I am not a fool, and neither is the Treasury. I will write to Absalom tonight, with a drawing of the mark. If they deny the stone is theirs, the lease lapses and the temple keeps the rent for its trouble. If they confirm it, the lease stands, and I am the priestess who found the Treasury's lost property *and* made it pay. Either way, I do not end up explaining to a tribunal why I let a demigod walk off with a god's diamond on a handshake.\"\n\"Rent, then. Five hundred crowns to the temple, from the crusade's chest, today. The same again every season the property is out of the vault. I do not haggle over the Treasury's property, Commander. I will, however, listen.\"",
+          "Text": "{n}The straw stops halfway to the crate.{/n}\n\"Leased.\"\n{n}Her mouth curves, the way it does for a customer who has finally made an offer worth her time.{/n}\n\"A lease is a contract. A contract is lawful. And a lawful arrangement for the use of the Treasury's property, drawn up by an ordained priestess in good standing, is... something I could defend before my superiors, if I had to. I would enjoy defending it.\"\n\"But I am not a fool, and neither is the Treasury. I will write to Absalom tonight, with a drawing of the mark. If they deny the stone is theirs, the lease lapses and the temple keeps the rent for its trouble. If they confirm it, the lease stands, and I am the priestess who found the Treasury's lost property *and* made it pay. Either way, I do not end up explaining to a tribunal why I let a demigod walk off with a god's diamond on a handshake.\"\n\"Rent, then. Five hundred crowns to the temple, from the crusade's chest, today. The same again every season the property is out of the vault. I do not haggle over the Treasury's property, Commander. I will, however, listen.\"",
           "Choices": [
             {
               "Text": "\"Agreed.\"",
@@ -96284,7 +96284,7 @@
         {
           "Id": "raised",
           "Speaker": "Arsinoe",
-          "Text": "\"No.\"\n{n}She writes a figure on a slip of paper and turns it round to face you.{/n}\n\"For wasting a priestess's time, the rate goes up. Another two hundred. Abadar rewards thrift, Commander. He does not reward charm. You will find that I am the same, most days.\"",
+          "Text": "\"No.\"\n{n}She does not even reach for the pen.{/n}\n\"For wasting a priestess's time, the rate goes up. Another two hundred. Abadar rewards thrift, Commander. He does not reward charm. You will find that I am the same, most days.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -96306,7 +96306,7 @@
         {
           "Id": "leased",
           "Speaker": "Arsinoe",
-          "Text": "{n}She draws the lease on temple vellum in a clean, fast hand and reads every line of it aloud, including the ones you would rather she had skipped. You sign twice. She signs once, with a flourish she has clearly practiced.{/n}\n{n}Then she warms a stick of gold wax over the lamp, presses her seal into it, and fixes the tag to the diamond's cradle, just below the old Treasury stamp. *On lease.*{/n}\n\"Leased. Returnable at the end of the world, in whatever condition the world leaves it. Rent accrues from today. Abadar is my witness, and he has a very good memory for sums.\"",
+          "Text": "{n}She draws the lease in a clean, fast hand and reads the line that matters aloud: the lessee is you, by name. Not the crusade, not the Queen, not the chest. If the stone is lost, the debt follows you, and Abadar's church has collected from widows and grandchildren before now without losing sleep.{/n}\n{n}Then she warms a stick of gold wax over the lamp, presses her seal into it, and fixes the tag to the diamond's cradle, just below the old Treasury stamp. *On lease.*{/n}\n\"Leased. Returnable at the end of the world, in whatever condition the world leaves it. Rent accrues from today. Abadar is my witness, and he has a very good memory for sums.\"",
           "Choices": [
             {
               "Text": "\"Then I'm a tenant of Abadar.\"",
@@ -96337,7 +96337,7 @@
         {
           "Id": "grudge",
           "Speaker": "Arsinoe",
-          "Text": "\"And the gentlemen you took it from? The ones you then fought?\"\n{n}She does not wait for an answer. She writes a line at the foot of the lease.{/n}\n\"A lessee answers for the property, Commander, not for the manners of the previous holders. I will note them as a risk. If any of them come to my counter asking for it back, I shall tell them it is leased, and show them the seal, and then I shall shout for the guard.\"",
+          "Text": "\"And the gentlemen you took it from? The ones you then fought?\"\n{n}She does not wait for an answer.{/n}\n\"A lessee answers for the property, Commander, not for the manners of the previous holders. I will note them as a risk. If any of them come to my counter asking for it back, I shall tell them it is leased, and show them the seal, and then I shall shout for the guard.\"",
           "Choices": [
             {
               "Text": "\"Then I'm a tenant of Abadar.\"",
@@ -96404,7 +96404,7 @@
         {
           "Id": "start",
           "Speaker": "Arsinoe",
-          "Text": "{n}A ledger lies open on the counter. A stick of gold wax is softening over a candle, and beside it there is a second copy of the lease, annotated in three colors of ink.{/n}\n\"Absalom has answered.\" {n}She lays a letter on the ledger, heavy paper, a seal in gold wax far older and larger than hers.{/n} \"The mark is genuine. The Treasury confirms the loss of one soul cauldron, 'circumstances of removal unrecorded', and ratifies the lease. I have been commended. I have also been instructed to ensure the property's safe return. So.\n{n}She turns the letter face down.{/n}\n\"An inspection, Commander. I am told my lessee intends to carry the property to the place where the Worldwound was first opened, and then, I assume, to do something heroic with it. My ledger calls that 'unusual wear'. The temple requires collateral against total loss.\"",
+          "Text": "{n}A ledger lies open on the counter, and a stick of gold wax is softening over a candle.{/n}\n\"Absalom has not answered.\" {n}She lays a letter on the ledger: her own, come back unopened, the seal broken by a Mendevian road warden who has written ROAD CLOSED across it in charcoal.{/n} \"The roads south are shut, the Treasury's clerks are three countries away, and I hold a lease on a stone that may or may not be my god's, on the word of a worn stamp and a lich's guess. So the lease stands on its own clause. Until Absalom rules, the lessee answers for the stone as if it were the Treasury's, and the temple answers for the lease. The temple, in Drezen, is me. I have put my name beside yours on a guess, Commander. I do not do that. So.\n{n}She turns the letter face down.{/n}\n\"An inspection, Commander. I am told my lessee intends to carry the property to the place where the Worldwound was first opened, and then, I assume, to do something heroic with it. My ledger calls that 'unusual wear'. The temple requires collateral against total loss.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -96667,7 +96667,7 @@
         {
           "Id": "threshold",
           "Speaker": "Arsinoe",
-          "Text": "{n}Something in her face changes. It is the look she gives a price she has already decided to pay.{/n}\n\"Late. Yes. I charge interest on late.\"\n{n}She comes round the counter, turns the sign in the window to CLOSED, and locks the till before she locks the door. Her gold eyes do not leave you while she does either.{/n}\n\"The lien stands, Commander. This is outside the lease. Abadar keeps the accounts; he does not keep the curtains. Close them.\"\n{n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and takes you by the lapels and pulls, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}\n{n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was and follows you down, her hair falling around both your faces like a drawn curtain, and for one long, appraising moment she only looks at you, the look of a woman about to sign.{/n}\n\"Interest accrues from now,\" {n}she says, and settles astride you, knees braced on the counter's edge, and reaches down between you with the same unhurried care she gives a seal.{/n}",
+          "Text": "{n}Something in her face changes. It is the look she gives a price she has already decided to pay.{/n}\n\"Late. Yes. I charge interest on late.\"\n{n}She comes round the counter, turns the sign in the window to CLOSED, and locks the till. Only the till. Her gold eyes stay on you the whole time, as if the rest of the shop were collateral she has already priced.{/n}\n\"The lien stands, Commander. This is outside the lease. Abadar keeps the accounts; he does not keep the curtains. Close them.\"\n{n}You do. When you turn back she has undone her collar with one hand, and the clasps of her robe with the other, without any hurry at all, and the robe slides from her shoulders and pools at her feet like spilled coin. She steps out of it and draws you in by one hand, as if leading a buyer to the good stock, and her mouth on yours is slow and very deliberate, the kiss of a woman who has read the whole contract and means to enforce every clause.{/n}\n{n}The ledger goes off the counter. Neither of you stops to pick it up. She lays you back across the place where it was and follows you down, her hair falling around both your faces like a drawn curtain, and she pauses there to appraise you, thoroughly, the way she appraises a stone she has already decided to buy.{/n}\n\"Interest accrues from now,\" {n}she says, and settles astride you, knees braced on the counter's edge, and reaches down between you with the same unhurried care she gives a seal.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -96683,7 +96683,7 @@
         {
           "Id": "morning",
           "Speaker": "Arsinoe",
-          "Text": "{n}Morning. The sign still says CLOSED. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}\n\"Interest on the property: accrued. Everything else: no charge.\"\n{n}She blots it and closes the book before you can read it.{/n}\n\"Tell anyone I did something for free and I will deny it under oath. Before a priest of my own god, if necessary. Go and be impressive, Commander. I have a shop to open, and you owe me rent.\"",
+          "Text": "{n}The sign still says CLOSED when you wake, and the street outside is already loud. She is at the counter in her shift with her hair unbound, a cup of tea going cold at her elbow, entering a line in the ledger in very small handwriting.{/n}\n\"Interest on the property: accrued. Everything else: no charge.\"\n{n}She blots it and closes the book before you can read it.{/n}\n\"Tell anyone I did something for free and I will deny it under oath. Before a priest of my own god, if necessary. Go and be impressive, Commander. I have a shop to open, and you owe me rent.\"",
           "Choices": [
             {
               "Text": "\"Leave before the first customer arrives.\"",
@@ -170484,7 +170484,7 @@
         {
           "Id": "sheet",
           "Speaker": "Narrator",
-          "Text": "{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}\n{n}The second verse is printed on it. It is in type that has been fading for forty years, on paper that has been folded along the same creases since before you were born, and it is your verse, 'tambourine' and all.{/n}",
+          "Text": "{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}\n{n}There is a gap in the second verse, a blank where the ink gave out forty years ago. The King licks a stub of charcoal and writes your verse into it himself, 'tambourine' and all, in letters that lean like drunks, and then holds the sheet up to the room and swears on his crown it was always there. Nobody at his table is sober enough to argue.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170512,7 +170512,7 @@
         {
           "Id": "stone",
           "Speaker": "Narrator",
-          "Text": "{n}You have seen this before, at this same table: moss-covered letters on a stone from Pulura's Fall, repeating his words exactly, because you told him they would.{/n}",
+          "Text": "{n}You have seen him do this before, at this same table, with the moss-covered stone from Pulura's Fall that repeated his words because you told him it would. He has decided this sheet is the same kind of miracle, and in the King's tavern that is as good as proof.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170721,7 +170721,7 @@
         {
           "Id": "sheet",
           "Speaker": "Narrator",
-          "Text": "{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}\n{n}The second verse is printed on it. It is in type that has been fading for forty years, on paper that has been folded along the same creases since before you were born, and it is your verse, 'tambourine' and all.{/n}",
+          "Text": "{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}\n{n}There is a gap in the second verse, a blank where the ink gave out forty years ago. The King licks a stub of charcoal and writes your verse into it himself, 'tambourine' and all, in letters that lean like drunks, and then holds the sheet up to the room and swears on his crown it was always there. Nobody at his table is sober enough to argue.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170749,7 +170749,7 @@
         {
           "Id": "stone",
           "Speaker": "Narrator",
-          "Text": "{n}You have seen this before, at this same table: moss-covered letters on a stone from Pulura's Fall, repeating his words exactly, because you told him they would.{/n}",
+          "Text": "{n}You have seen him do this before, at this same table, with the moss-covered stone from Pulura's Fall that repeated his words because you told him it would. He has decided this sheet is the same kind of miracle, and in the King's tavern that is as good as proof.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -170827,7 +170827,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}\n{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning the Desnan broadsheet the refugees nailed by the door last spring has a second verse printed on it, in faded type, that was not there when you climbed onto the table: yours, 'tambourine' and all. By the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road, and every copy anyone finds has the verse on it.{/n}",
+          "Text": "{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}\n{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By the following week the song has walked out of Drezen on its own, in the packs of every courier and carter on the north road, and nobody who learned it that way believes it ever went without the verse.{/n}",
           "Choices": [
             {
               "Text": "[Follow your instincts] \"Aranka's song, second verse, the good one. I finally found a rhyme for 'Thaberdine'. Everybody!\"",
@@ -171025,7 +171025,7 @@
         {
           "Id": "known",
           "Speaker": "Aranka",
-          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with your verse printed on it, in ink older than I am. She was crying, and I could not tell whether it was the good kind.\"\n\"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
+          "Text": "\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in Drezen is telling the whole city his pops learned it from me. I have never met his pops. I have never met him. Old Marit heard it in his tavern and walked four days to tell me. She says he has his pops' song-sheet with your verse scrawled into it in charcoal, and swears on his crown it was always there. She was crying, and I could not tell whether it was the good kind.\"\n\"It came to us from the true servants of Desna, Commander. I carried it out of Kenabres in one piece and I put it into your hands in one piece, and Ilkes asked you to remember it. I did not ask you to rhyme it with a tambourine. I am coming to Drezen to find the thief.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -171057,7 +171057,7 @@
         {
           "Id": "unknown",
           "Speaker": "Aranka",
-          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says he has a song-sheet forty years old with the new verse printed on it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer.\"\n\"I am coming to Drezen to find the thief. Please have them ready.\"",
+          "Text": "\"To the Knight-Commander of Drezen, from Aranka, who sings for Desna and would like a word.\"\n\"Somebody has changed my song! Everyone swears it was always sung that way, and it wasn't, and it's better, which is the worst part! A tavern king in your city is telling everyone his pops learned it from me. I have never met his pops. I have never met him. Old Marit, one of our pilgrims, heard it in his tavern and walked four days to tell me. She says he has an old song-sheet with the new verse scrawled into it, and that the verse arrived the night a Knight-Commander stood on a bench and paid for the beer.\"\n\"I am coming to Drezen to find the thief. Please have them ready.\"",
           "Choices": [
             {
               "Text": "[Confess] \"Guilty. I needed a rhyme for 'Thaberdine'.\"",
@@ -171121,7 +171121,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Fye leans across the counter as you come in.{/n} \"She's been tuning that thing for an hour and nobody's ordered a drink since. Do something.\"\n{n}The woman on the end of Fye's counter is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head in the room is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}",
+          "Text": "{n}The spice trader catches your sleeve before you reach his stall.{/n} \"She's been tuning that thing on my crates for an hour and nobody's bought so much as a pinch of pepper since. Do something.\"\n{n}The woman on a stack of the spice trader's crates is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head within earshot is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171208,7 +171208,7 @@
         {
           "Id": "mocking",
           "Speaker": "Aranka",
-          "Text": "{n}She puts the lute down, walks the length of the counter, and slaps you. Not hard. Precisely.{/n}\n\"There. I decided. I have been deciding since the letter.\" {n}She shakes out her hand.{/n} \"I wrote that song to hurt you. You stood on a bench and made a whole tavern sing it louder, and now it's the most requested song between here and the river, and every time they sing it they're laughing with you, not at you. You stole my revenge and made it scan.\"\n\"Now sing it with me. The verse where you lose. I'll take the harmony.\"",
+          "Text": "{n}She puts the lute down, walks straight up to you through the crowd, and slaps you. Not hard. Precisely.{/n}\n\"There. I decided. I have been deciding since the letter.\" {n}She shakes out her hand.{/n} \"I wrote that song to hurt you. You stood on a bench and made a whole tavern sing it louder, and now it's the most requested song between here and the river, and every time they sing it they're laughing with you, not at you. You stole my revenge and made it scan.\"\n\"Now sing it with me. The verse where you lose. I'll take the harmony.\"",
           "Choices": [
             {
               "Text": "[Sing it] \"The one where I lose. From the top.\"",
@@ -171224,7 +171224,7 @@
         {
           "Id": "posters",
           "Speaker": "Aranka",
-          "Text": "\"You put me on a poster before you put me in a letter.\" {n}She lays a torn corner of one on the counter: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}\n\"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna, and nobody I know has ever dared add a verse to it. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it.\"",
+          "Text": "\"You put me on a poster before you put me in a letter.\" {n}She presses a torn corner of one into your palm: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}\n\"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna, and nobody I know has ever dared add a verse to it. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it.\"",
           "Choices": [
             {
               "Text": "[Sing it] \"A second verse. Mine.\"",
@@ -171240,10 +171240,10 @@
         {
           "Id": "duet",
           "Speaker": "Aranka",
-          "Text": "\"You owe me a duet for this. And an apology. Mostly the duet.\"\n{n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Nobody moves. A sapper by the gate takes his helmet off without knowing he has done it.{/n}\n{n}When it ends there is the kind of silence that is worth more than applause, and then the applause, and she soaks up every bit of it with her eyes closed.{/n}\n\"My name goes first on every copy. Yours goes underneath. In small letters. Very small.\"",
+          "Text": "\"You owe me a duet for this. And an apology. Mostly the duet.\"\n{n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Nobody moves. A sapper by the gate takes his helmet off without knowing he has done it.{/n}\n{n}When it ends there is the kind of silence that is worth more than applause, and then the applause, and she soaks up every bit of it with her eyes closed.{/n}\n\"My name goes first every time it's sung. Yours comes after. Quietly. Very quietly.\"",
           "Choices": [
             {
-              "Text": "[Sign under her name] \"Small letters. Agreed.\"",
+              "Text": "[Take the harmony, not the credit] \"Yours first. Mine after, quietly.\"",
               "Next": "signed",
               "Set": [],
               "Requires": [],
@@ -171264,7 +171264,7 @@
         {
           "Id": "signed",
           "Speaker": "Aranka",
-          "Text": "\"Good.\" {n}She writes both names on the back of Fye's bill of fare, hers in a round hand like a lark on a wire and yours underneath, so small it could be a flaw in the paper.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
+          "Text": "\"Good.\" {n}She turns to the crowd and gives them the song's name and her own, clear as a bell, and then yours, into her cup, so quietly the front row has to lean in to catch it.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
           "Choices": [
             {
               "Text": "\"I'll be here.\"",
@@ -171283,7 +171283,7 @@
         {
           "Id": "billing",
           "Speaker": "Aranka",
-          "Text": "\"Your verse.\" {n}She laughs, delighted and not at all moved.{/n} \"Your verse is eleven words and a tambourine, Commander. My name goes first. Argue with me again and it goes first in capitals.\"\n{n}She writes both names on the back of Fye's bill of fare anyway, yours underneath, and underlines hers twice.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
+          "Text": "\"Your verse.\" {n}She laughs, delighted and not at all moved.{/n} \"Your verse is eleven words and a tambourine, Commander. My name goes first. Argue with me again and it goes first in capitals.\"\n{n}She tells the crowd both names anyway, hers twice and loud, yours once and into her sleeve.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
           "Choices": [
             {
               "Text": "\"I'll be here.\"",
@@ -171332,7 +171332,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Fye's is boarded up, so the quartermaster's yard has become a tavern without a roof. Wilcer Garms meets you at the gate.{/n} \"She's been tuning that thing for an hour and my carters haven't lifted a crate since. Do something.\"\n{n}The woman on the tailgate of a supply wagon is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head in the room is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}",
+          "Text": "{n}The market is shuttered, so the quartermaster's yard has become a tavern without a roof. Wilcer Garms meets you at the gate.{/n} \"She's been tuning that thing for an hour and my carters haven't lifted a crate since. Do something.\"\n{n}The woman on the tailgate of a supply wagon is in Desnan blue, road-dusty to the knee, with a lute across her lap and a cup of the worst wine in Drezen she has not touched. Every head within earshot is turned towards her, and she knows it, and she is enjoying it more than she would ever admit.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171419,7 +171419,7 @@
         {
           "Id": "mocking",
           "Speaker": "Aranka",
-          "Text": "{n}She puts the lute down, walks the length of the counter, and slaps you. Not hard. Precisely.{/n}\n\"There. I decided. I have been deciding since the letter.\" {n}She shakes out her hand.{/n} \"I wrote that song to hurt you. You stood on a bench and made a whole tavern sing it louder, and now it's the most requested song between here and the river, and every time they sing it they're laughing with you, not at you. You stole my revenge and made it scan.\"\n\"Now sing it with me. The verse where you lose. I'll take the harmony.\"",
+          "Text": "{n}She puts the lute down, walks straight up to you through the crowd, and slaps you. Not hard. Precisely.{/n}\n\"There. I decided. I have been deciding since the letter.\" {n}She shakes out her hand.{/n} \"I wrote that song to hurt you. You stood on a bench and made a whole tavern sing it louder, and now it's the most requested song between here and the river, and every time they sing it they're laughing with you, not at you. You stole my revenge and made it scan.\"\n\"Now sing it with me. The verse where you lose. I'll take the harmony.\"",
           "Choices": [
             {
               "Text": "[Sing it] \"The one where I lose. From the top.\"",
@@ -171435,7 +171435,7 @@
         {
           "Id": "posters",
           "Speaker": "Aranka",
-          "Text": "\"You put me on a poster before you put me in a letter.\" {n}She lays a torn corner of one on the counter: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}\n\"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna, and nobody I know has ever dared add a verse to it. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it.\"",
+          "Text": "\"You put me on a poster before you put me in a letter.\" {n}She presses a torn corner of one into your palm: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}\n\"You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna, and nobody I know has ever dared add a verse to it. You're going to. Here. In front of all of them. And then I'm going to decide how badly you did it.\"",
           "Choices": [
             {
               "Text": "[Sing it] \"A second verse. Mine.\"",
@@ -171451,10 +171451,10 @@
         {
           "Id": "duet",
           "Speaker": "Aranka",
-          "Text": "\"You owe me a duet for this. And an apology. Mostly the duet.\"\n{n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Nobody moves. A sapper by the gate takes his helmet off without knowing he has done it.{/n}\n{n}When it ends there is the kind of silence that is worth more than applause, and then the applause, and she soaks up every bit of it with her eyes closed.{/n}\n\"My name goes first on every copy. Yours goes underneath. In small letters. Very small.\"",
+          "Text": "\"You owe me a duet for this. And an apology. Mostly the duet.\"\n{n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Nobody moves. A sapper by the gate takes his helmet off without knowing he has done it.{/n}\n{n}When it ends there is the kind of silence that is worth more than applause, and then the applause, and she soaks up every bit of it with her eyes closed.{/n}\n\"My name goes first every time it's sung. Yours comes after. Quietly. Very quietly.\"",
           "Choices": [
             {
-              "Text": "[Sign under her name] \"Small letters. Agreed.\"",
+              "Text": "[Take the harmony, not the credit] \"Yours first. Mine after, quietly.\"",
               "Next": "signed",
               "Set": [],
               "Requires": [],
@@ -171475,7 +171475,7 @@
         {
           "Id": "signed",
           "Speaker": "Aranka",
-          "Text": "\"Good.\" {n}She writes both names on the back of a quartermaster's requisition, hers in a round hand like a lark on a wire and yours underneath, so small it could be a flaw in the paper.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
+          "Text": "\"Good.\" {n}She turns to the crowd and gives them the song's name and her own, clear as a bell, and then yours, into her cup, so quietly the front row has to lean in to catch it.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
           "Choices": [
             {
               "Text": "\"I'll be here.\"",
@@ -171494,7 +171494,7 @@
         {
           "Id": "billing",
           "Speaker": "Aranka",
-          "Text": "\"Your verse.\" {n}She laughs, delighted and not at all moved.{/n} \"Your verse is eleven words and a tambourine, Commander. My name goes first. Argue with me again and it goes first in capitals.\"\n{n}She writes both names on the back of a quartermaster's requisition anyway, yours underneath, and underlines hers twice.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
+          "Text": "\"Your verse.\" {n}She laughs, delighted and not at all moved.{/n} \"Your verse is eleven words and a tambourine, Commander. My name goes first. Argue with me again and it goes first in capitals.\"\n{n}She tells the crowd both names anyway, hers twice and loud, yours once and into her sleeve.{/n}\n\"I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went.\"",
           "Choices": [
             {
               "Text": "\"I'll be here.\"",
@@ -171544,7 +171544,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}She is on the end of Fye's counter again, lute across her knees, with a letter in her hand that has a Mendevian seal on it. She has read it enough times to soften the folds.{/n}",
+          "Text": "{n}She is on a stack of the spice trader's crates again, lute across her knees, with a letter in her hand that has a Mendevian seal on it. She has read it enough times to soften the folds.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171700,10 +171700,10 @@
         {
           "Id": "not_yet",
           "Speaker": "Aranka",
-          "Text": "\"That's a pretty line.\" {n}She folds the Mendevian letter very small, and then smaller.{/n}\n\"Too pretty. You wrote a verse for a king and a verse for a crowd. Write one for me, and mean it, and ask me again. Not tonight.\"",
+          "Text": "\"That's a pretty line.\" {n}She folds the Mendevian letter very small, and then smaller.{/n}\n\"Too pretty. You wrote a verse for a king and a verse for a crowd. So I'm going to write one. For you. When I sing it, you'll know what I'm asking, and I'll know what you answer. Not tonight.\"",
           "Choices": [
             {
-              "Text": "[Accept her terms] \"Then I'll write it.\"",
+              "Text": "[Let her write it] \"Then I'll listen for it.\"",
               "Next": null,
               "Set": [
                 "aranka.trickster.declined"
@@ -171718,7 +171718,7 @@
         {
           "Id": "stage",
           "Speaker": "Aranka",
-          "Text": "{n}She is quiet for a long time. When she speaks, her voice is steady, and it costs her.{/n}\n\"That's the kindest thing anyone has ever said to me, and I hate it.\" {n}She tucks the Mendevian letter into her bodice and stands, and settles the lute on her back.{/n}\n\"I'll sing your verse every night. And every night I'll tell them who wrote it. In small letters.\"",
+          "Text": "{n}She says nothing while the crowd around you orders another round and forgets to drink it. When she speaks, her voice is steady, and it costs her.{/n}\n\"That's the kindest thing anyone has ever said to me, and I hate it.\" {n}She tucks the Mendevian letter into her bodice and stands, and settles the lute on her back.{/n}\n\"I'll sing your verse every night. And every night I'll tell them who wrote it. In small letters.\"",
           "Choices": [
             {
               "Text": "\"Go on. They're waiting.\"",
@@ -171734,7 +171734,7 @@
         {
           "Id": "stay",
           "Speaker": "Aranka",
-          "Text": "{n}She looks at you for a long moment, the way she looked at the room before the duet, as if she were deciding how it will sound.{/n}\n\"Every night we get.\" {n}She drops the Mendevian letter into Fye's stove without looking at it.{/n} \"That's a better line than the verse. I'm stealing it.\"",
+          "Text": "{n}She studies you the way she studied the crowd before the duet, as if she were deciding how it will sound.{/n}\n\"Every night we get.\" {n}She drops the Mendevian letter into the spice trader's brazier without looking at it.{/n} \"That's a better line than the verse. I'm stealing it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -171750,7 +171750,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She has a room above Fye's, rented by the week, with a bed too narrow for two and a window onto the latrine pits. She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces.{/n}",
+          "Text": "{n}She has a room above the market, rented by the week, and she walks straight past its door. The outside stair goes on up to a flat roof, and the sky over Drezen is thick with stars for once. She does not seem to notice either. She sets the lute against the wall and turns round, and her breathing has gone the way it goes before a high note she is not sure of: short, high in the chest, held.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto her cloak spread over the sun-warm tiles, under more of Desna's stars than Drezen has shown anyone all year, and climbs onto you humming the first bar of the third verse, and loses the tune halfway, and does not go back for it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -171766,7 +171766,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Dawn. The whole of Fye's hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down every man at the counter is very busy looking at his breakfast.{/n}\n{n}There is a bill under the door in Fye's hand: the room, the broken slat in the bed, \"lost custom\", and a line at the bottom that only says \"Noise.\" Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
+          "Text": "{n}The whole market row wakes to her singing from the roof, something new and unfinished that stops and starts again, and by the time you come down the stair every stallholder putting up his awning is very busy looking at the sky.{/n}\n{n}There is a note nailed to the stair door in the watch-sergeant's hand: a fine for \"singing on a roof after the bell\", and a line at the bottom that only says \"Also the other noise.\" Aranka reads it over your shoulder, laughs until she has to sit down on the step, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
           "Choices": [
             {
               "Text": "[Keep the bill.]",
@@ -171971,10 +171971,10 @@
         {
           "Id": "not_yet",
           "Speaker": "Aranka",
-          "Text": "\"That's a pretty line.\" {n}She folds the Mendevian letter very small, and then smaller.{/n}\n\"Too pretty. You wrote a verse for a king and a verse for a crowd. Write one for me, and mean it, and ask me again. Not tonight.\"",
+          "Text": "\"That's a pretty line.\" {n}She folds the Mendevian letter very small, and then smaller.{/n}\n\"Too pretty. You wrote a verse for a king and a verse for a crowd. So I'm going to write one. For you. When I sing it, you'll know what I'm asking, and I'll know what you answer. Not tonight.\"",
           "Choices": [
             {
-              "Text": "[Accept her terms] \"Then I'll write it.\"",
+              "Text": "[Let her write it] \"Then I'll listen for it.\"",
               "Next": null,
               "Set": [
                 "aranka.trickster.declined"
@@ -171989,7 +171989,7 @@
         {
           "Id": "stage",
           "Speaker": "Aranka",
-          "Text": "{n}She is quiet for a long time. When she speaks, her voice is steady, and it costs her.{/n}\n\"That's the kindest thing anyone has ever said to me, and I hate it.\" {n}She tucks the Mendevian letter into her bodice and stands, and settles the lute on her back.{/n}\n\"I'll sing your verse every night. And every night I'll tell them who wrote it. In small letters.\"",
+          "Text": "{n}She says nothing while the crowd around you orders another round and forgets to drink it. When she speaks, her voice is steady, and it costs her.{/n}\n\"That's the kindest thing anyone has ever said to me, and I hate it.\" {n}She tucks the Mendevian letter into her bodice and stands, and settles the lute on her back.{/n}\n\"I'll sing your verse every night. And every night I'll tell them who wrote it. In small letters.\"",
           "Choices": [
             {
               "Text": "\"Go on. They're waiting.\"",
@@ -172005,7 +172005,7 @@
         {
           "Id": "stay",
           "Speaker": "Aranka",
-          "Text": "{n}She looks at you for a long moment, the way she looked at the room before the duet, as if she were deciding how it will sound.{/n}\n\"Every night we get.\" {n}She drops the Mendevian letter into the carters' brazier without looking at it.{/n} \"That's a better line than the verse. I'm stealing it.\"",
+          "Text": "{n}She studies you the way she studied the crowd before the duet, as if she were deciding how it will sound.{/n}\n\"Every night we get.\" {n}She drops the Mendevian letter into the carters' brazier without looking at it.{/n} \"That's a better line than the verse. I'm stealing it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -172021,7 +172021,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She has a room in a carters' lodging house by the south gate, rented by the week, with a bed too narrow for two and a window onto the mule lines. She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces.{/n}",
+          "Text": "{n}She has a room in a carters' lodging house by the south gate, and she walks straight past its door. A ladder goes on up to the flat roof over the mule lines, and the sky over Drezen is thick with stars for once. She does not seem to notice either. She sets the lute against the wall and turns round, and her breathing has gone the way it goes before a high note she is not sure of: short, high in the chest, held.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto her cloak spread over the sun-warm tiles, under more of Desna's stars than Drezen has shown anyone all year, and climbs onto you humming the first bar of the third verse, and loses the tune halfway, and does not go back for it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -172037,7 +172037,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Dawn. The whole lodging house hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down every carter at the long table is very busy looking at his breakfast.{/n}\n{n}There is a bill under the door in the landlady's hand: the room, the broken slat in the bed, \"lost custom\", and a line at the bottom that only says \"Noise.\" Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
+          "Text": "{n}The whole lodging house wakes to her singing from the roof, something new and unfinished that stops and starts again, and by the time you come down the stair every carter at the long table is very busy looking at the sky.{/n}\n{n}There is a note nailed to the ladder in the landlady's hand: a fine for \"singing on a roof after the bell\", and a line at the bottom that only says \"Also the other noise.\" Aranka reads it over your shoulder, laughs until she has to sit down on the step, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
           "Choices": [
             {
               "Text": "[Keep the bill.]",
@@ -172082,15 +172082,15 @@
       "Owner": "Aranka",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "\"I wrote it.\"",
+      "Entry": "\"You said you were writing something.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Aranka",
-          "Text": "\"Well?\" {n}She has cleared a space on Fye's bar, and the whole crowd is watching, and she has made sure of that.{/n}\n\"The third verse. For me. You sing it alone, in front of all of them, badly, and you sign it under your own name. Big letters. Then ask.\"",
+          "Text": "{n}She has cleared a space on the crates, and the whole crowd is watching, and she has made sure of that. She sings the third verse without once looking at you: new, hers, and every line of it a question with your name folded into it. On the last line she stops short and leaves the rhyme hanging in the air, and waits.{/n}\n\"That one's yours to finish. Out loud. Alone.\"",
           "Choices": [
             {
-              "Text": "[Sing it alone] \"...Everybody. Quiet. This one's mine.\"",
+              "Text": "[Finish the verse alone] \"...Everybody. Quiet. This line's mine.\"",
               "Next": "sung",
               "Set": [
                 "aranka.extension_kept",
@@ -172098,14 +172098,10 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "Abort": false
             },
             {
-              "Text": "[Refuse] \"I don't sing alone.\"",
+              "Text": "[Let the rhyme hang] \"...I can't.\"",
               "Next": "refused",
               "Set": [
                 "aranka.extension_closed"
@@ -172120,7 +172116,7 @@
         {
           "Id": "sung",
           "Speaker": "Narrator",
-          "Text": "{n}You sing it alone. Your voice cracks on the second line, and a sergeant at the back laughs out loud, and then stops laughing. By the end the room is silent in a way it has not been since the duet, and the story of the Knight-Commander singing a love song, badly, on Fye's bar, will outlive both of you in every barracks in Drezen.{/n}",
+          "Text": "{n}You finish it alone. Your voice cracks on the rhyme, and a sergeant at the back laughs out loud, and then stops laughing. By the end the crowd is silent in a way it has not been since the duet, and the story of the Knight-Commander answering a love song, badly, on the crates, will outlive both of you in every barracks in Drezen.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -172136,7 +172132,7 @@
         {
           "Id": "answer",
           "Speaker": "Aranka",
-          "Text": "{n}She is crying, and furious about it, and laughing.{/n} \"That was terrible. That was the worst verse anyone has ever written for me. Sign it. Big letters. And yes. Obviously yes.\"",
+          "Text": "{n}She is crying, and furious about it, and laughing.{/n} \"That was terrible. That was the worst line anyone has ever sung to me. Say your name before it next time, loud, so they all know whose it is. And yes. Obviously yes.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -172152,7 +172148,7 @@
         {
           "Id": "refused",
           "Speaker": "Aranka",
-          "Text": "\"Then you're a very good thief, Commander, and nothing else.\" {n}She takes her lute off Fye's bar and does not look back.{/n}",
+          "Text": "\"Then you're a very good thief, Commander, and nothing else.\" {n}She takes her lute off the crates and does not look back.{/n}",
           "Choices": [
             {
               "Text": "\"Aranka...\"",
@@ -172168,7 +172164,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She has a room above Fye's, rented by the week, with a bed too narrow for two and a window onto the latrine pits. She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces.{/n}",
+          "Text": "{n}She has a room above the market, rented by the week, and she walks straight past its door. The outside stair goes on up to a flat roof, and the sky over Drezen is thick with stars for once. She does not seem to notice either. She sets the lute against the wall and turns round, and her breathing has gone the way it goes before a high note she is not sure of: short, high in the chest, held.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto her cloak spread over the sun-warm tiles, under more of Desna's stars than Drezen has shown anyone all year, and climbs onto you humming the first bar of the third verse, and loses the tune halfway, and does not go back for it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -172184,7 +172180,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Dawn. The whole of Fye's hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down every man at the counter is very busy looking at his breakfast.{/n}\n{n}There is a bill under the door in Fye's hand: the room, the broken slat in the bed, \"lost custom\", and a line at the bottom that only says \"Noise.\" Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
+          "Text": "{n}The whole market row wakes to her singing from the roof, something new and unfinished that stops and starts again, and by the time you come down the stair every stallholder putting up his awning is very busy looking at the sky.{/n}\n{n}There is a note nailed to the stair door in the watch-sergeant's hand: a fine for \"singing on a roof after the bell\", and a line at the bottom that only says \"Also the other noise.\" Aranka reads it over your shoulder, laughs until she has to sit down on the step, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
           "Choices": [
             {
               "Text": "[Keep the bill.]",
@@ -172227,15 +172223,15 @@
       "Owner": "Aranka",
       "MinChapter": 3,
       "MaxChapter": 5,
-      "Entry": "\"I wrote it.\"",
+      "Entry": "\"You said you were writing something.\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Aranka",
-          "Text": "\"Well?\" {n}She has cleared a space on the wagon bed, and the whole crowd is watching, and she has made sure of that.{/n}\n\"The third verse. For me. You sing it alone, in front of all of them, badly, and you sign it under your own name. Big letters. Then ask.\"",
+          "Text": "{n}She has cleared a space on the wagon bed, and the whole crowd is watching, and she has made sure of that. She sings the third verse without once looking at you: new, hers, and every line of it a question with your name folded into it. On the last line she stops short and leaves the rhyme hanging in the air, and waits.{/n}\n\"That one's yours to finish. Out loud. Alone.\"",
           "Choices": [
             {
-              "Text": "[Sing it alone] \"...Everybody. Quiet. This one's mine.\"",
+              "Text": "[Finish the verse alone] \"...Everybody. Quiet. This line's mine.\"",
               "Next": "sung",
               "Set": [
                 "aranka.extension_kept",
@@ -172243,14 +172239,10 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false,
-              "Crusade": {
-                "Resource": "Favors",
-                "Amount": -100
-              }
+              "Abort": false
             },
             {
-              "Text": "[Refuse] \"I don't sing alone.\"",
+              "Text": "[Let the rhyme hang] \"...I can't.\"",
               "Next": "refused",
               "Set": [
                 "aranka.extension_closed"
@@ -172265,7 +172257,7 @@
         {
           "Id": "sung",
           "Speaker": "Narrator",
-          "Text": "{n}You sing it alone. Your voice cracks on the second line, and a sergeant at the back laughs out loud, and then stops laughing. By the end the room is silent in a way it has not been since the duet, and the story of the Knight-Commander singing a love song, badly, on the wagon bed, will outlive both of you in every barracks in Drezen.{/n}",
+          "Text": "{n}You finish it alone. Your voice cracks on the rhyme, and a sergeant at the back laughs out loud, and then stops laughing. By the end the crowd is silent in a way it has not been since the duet, and the story of the Knight-Commander answering a love song, badly, on the wagon bed, will outlive both of you in every barracks in Drezen.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -172281,7 +172273,7 @@
         {
           "Id": "answer",
           "Speaker": "Aranka",
-          "Text": "{n}She is crying, and furious about it, and laughing.{/n} \"That was terrible. That was the worst verse anyone has ever written for me. Sign it. Big letters. And yes. Obviously yes.\"",
+          "Text": "{n}She is crying, and furious about it, and laughing.{/n} \"That was terrible. That was the worst line anyone has ever sung to me. Say your name before it next time, loud, so they all know whose it is. And yes. Obviously yes.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -172313,7 +172305,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She has a room in a carters' lodging house by the south gate, rented by the week, with a bed too narrow for two and a window onto the mule lines. She does not seem to notice either. She sets the lute against the wall with more care than she takes over anything else, and turns round, and there is nothing careful left in her at all.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto the narrow bed, and climbs astride you with her hair falling round both your faces.{/n}",
+          "Text": "{n}She has a room in a carters' lodging house by the south gate, and she walks straight past its door. A ladder goes on up to the flat roof over the mule lines, and the sky over Drezen is thick with stars for once. She does not seem to notice either. She sets the lute against the wall and turns round, and her breathing has gone the way it goes before a high note she is not sure of: short, high in the chest, held.{/n}\n{n}She kisses you the way she sings, all breath and no hurry, and hums against your mouth when you pull her closer, a low, rising phrase you feel in your own chest before you hear it. The Desnan blue comes off over her head. She is warm as a hearth underneath it, and she takes your hands and sets them on her where she wants them, and makes a small sound, and holds them there.{/n}\n{n}\"Count me in,\" she whispers, and pulls you down onto her cloak spread over the sun-warm tiles, under more of Desna's stars than Drezen has shown anyone all year, and climbs onto you humming the first bar of the third verse, and loses the tune halfway, and does not go back for it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -172329,7 +172321,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}Dawn. The whole lodging house hears her singing through the floorboards at first light, something new and unfinished that stops and starts again, and by the time you come down every carter at the long table is very busy looking at his breakfast.{/n}\n{n}There is a bill under the door in the landlady's hand: the room, the broken slat in the bed, \"lost custom\", and a line at the bottom that only says \"Noise.\" Aranka reads it over your shoulder, laughs until she has to sit down, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
+          "Text": "{n}The whole lodging house wakes to her singing from the roof, something new and unfinished that stops and starts again, and by the time you come down the stair every carter at the long table is very busy looking at the sky.{/n}\n{n}There is a note nailed to the ladder in the landlady's hand: a fine for \"singing on a roof after the bell\", and a line at the bottom that only says \"Also the other noise.\" Aranka reads it over your shoulder, laughs until she has to sit down on the step, and pays it herself.{/n} \"Don't you dare take it off the war chest. I earned every copper of that.\"",
           "Choices": [
             {
               "Text": "[Keep the bill.]",
@@ -172854,7 +172846,7 @@
           "Text": "\"I am. This is shouting. I'm a singer, I don't have to be loud to be shouting.\" {n}She smooths the poster out against her knee, and reads it again, and something in her face gives way.{/n}\n\"...It's a very good poster. You spelled my name right. Nobody spells my name right.\"\n\"Fine. One night. I sing. You listen. And after that we talk about who owns what, because I don't remember agreeing to be owned by anyone, least of all by you, and least of all in capital letters.\"",
           "Choices": [
             {
-              "Text": "[Agree to her terms] \"One night. You sing. I listen.\"",
+              "Text": "[Take her at her word] \"One night. You sing. I listen.\"",
               "Next": null,
               "Set": [
                 "aranka.trickster.answered",
@@ -172928,7 +172920,7 @@
           "Text": "\"I am. This is shouting. I'm a singer, I don't have to be loud to be shouting.\" {n}She smooths the poster out against her knee, and reads it again, and something in her face gives way.{/n}\n\"...It's a very good poster. You spelled my name right. Nobody spells my name right.\"\n\"Fine. One night. I sing. You listen. And after that we talk about who owns what, because I don't remember agreeing to be owned by anyone, least of all by you, and least of all in capital letters.\"",
           "Choices": [
             {
-              "Text": "[Agree to her terms] \"One night. You sing. I listen.\"",
+              "Text": "[Take her at her word] \"One night. You sing. I listen.\"",
               "Next": null,
               "Set": [
                 "aranka.trickster.answered",
@@ -172998,7 +172990,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The third verse, the one the Knight-Commander sang alone and badly on Fye's bar, is printed under the other two in every copy. It has never once been sung well. Aranka would not allow it.",
+              "Text": "The third verse, the one Aranka wrote as a question and the Knight-Commander answered alone and badly, is printed under the other two in every copy. It has never once been sung well. Aranka would not allow it.",
               "Requires": [
                 "aranka.trickster.cost.sang_alone"
               ],
@@ -173098,7 +173090,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The third verse, the one the Knight-Commander sang alone and badly on Fye's bar, is printed under the other two in every copy. It has never once been sung well. Aranka would not allow it.",
+              "Text": "The third verse, the one Aranka wrote as a question and the Knight-Commander answered alone and badly, is printed under the other two in every copy. It has never once been sung well. Aranka would not allow it.",
               "Requires": [
                 "aranka.trickster.cost.sang_alone"
               ],
@@ -186270,7 +186262,7 @@
         {
           "Id": "weighed",
           "Speaker": "Hepzamirah",
-          "Text": "{n}The laughter stops as if a door had closed on it.{/n}\n\"Weighing.\" {n}She says it very softly.{/n} \"You know nothing about my father, crusader. You have never met a god who counts his children like coins and keeps only the heavy ones.\"\n{n}Her crimson eyes are fixed on you, and for one breath there is something behind them that is not contempt; something that has been listening at a door for a long time.{/n} \"I am the heavy one. I have always been the heavy one.\"",
+          "Text": "{n}The laughter stops as if a door had closed on it.{/n}\n\"Weighing.\" {n}She says it very softly.{/n} \"You know nothing about my father, crusader. You have never met a god who counts his children like coins and keeps only the heavy ones.\"\n{n}Her crimson eyes are fixed on you, and for one breath there is something behind them that is not contempt; something that has been listening at a door for years.{/n} \"I am the heavy one. I have always been the heavy one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -186732,7 +186724,7 @@
         {
           "Id": "cellar",
           "Speaker": "Narrator",
-          "Text": "{n}Three nights after the Labyrinth, the watch finds a cellar under the old grain exchange where a handful of your own soldiers have been cutting a horned head into their forearms. They have an altar down there: a slab of black stone, a brazier, and the old words of the Lord of Beasts' cult scratched round the rim. Everything they burned on it, the chaplains say, went to him.{/n}\n{n}Somewhere in his prison, two corridors from the lich's stolen cell, his daughter is still hiding in her corner from men with hooks. You did not steal it. You walked past.{/n}",
+          "Text": "{n}Three nights after the Labyrinth, the watch finds a cellar under the old grain exchange where a handful of your own soldiers have been cutting a horned head into their forearms. They have an altar down there: a slab of black stone, a brazier, and the old words of the Lord of Beasts' cult scratched round the rim. The chaplains say it answered: the man they caught at it had a cut on his arm that was still bleeding and a scar beside it that had not been there an hour before, and he had been talking to someone.{/n}\n{n}Somewhere in his prison, two corridors from the lich's stolen cell, his daughter is still hiding in her corner from men with hooks. You did not steal it. You walked past.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -186748,17 +186740,18 @@
         {
           "Id": "deed",
           "Speaker": "Narrator",
-          "Text": "{n}A deed of theft is only paper. But paper burned on his altar goes where he is.{/n}",
+          "Text": "{n}The cultists did not burn paper. The chaplains found what they burned: nothing. The altar is black with old blood, and every arm down there carries the same cut, a horned head in a circle, because that is how the Lord of Beasts reads his mail.{/n}",
           "Choices": [
             {
-              "Text": "[Burn a deed of theft on his altar, in front of the chaplains] \"I steal the corner where Hepzamirah hides, and name it Leavable. Signed, the Commander. Deliver it.\"",
+              "Text": "[Cut his horned mark into your own forearm on his altar, in front of the chaplains] \"I steal the corner where Hepzamirah hides. It's called Leavable now. Read it in my blood.\"",
               "Next": "burned",
               "Set": [
                 "hepzamirah.trickster.primed",
                 "hepzamirah.trickster.cost.baphomet_grudge",
                 "hepzamirah.trickster.cost.late",
                 "hepzamirah.trickster.cost.altar",
-                "hepzamirah.started"
+                "hepzamirah.started",
+                "hepzamirah.trickster.cost.horned_scar"
               ],
               "Requires": [],
               "Forbids": [],
@@ -186793,7 +186786,7 @@
         {
           "Id": "burned",
           "Speaker": "Narrator",
-          "Text": "{n}The chaplains watch the Commander of the crusade kneel at an altar of the Lord of Beasts and set fire to a sheet of paper on it. They do not stop you. One of them begins, very quietly, to write a letter to Nerosyan.{/n}\n{n}The paper burns green. Somewhere very far down, something gives, like wet parchment. When you climb out of the cellar the candles on the stair are burning sideways.{/n}",
+          "Text": "{n}The chaplains watch the Commander of the crusade kneel at an altar of the Lord of Beasts and open their own arm on it with a cultist's knife, a horned head in a circle, the lines as neat as you can make them with your teeth set. They do not stop you. One of them begins, very quietly, to write a letter to Nerosyan.{/n}\n{n}Your blood smokes green where it touches the stone, and then the stone drinks it. The brazier goes out. In the dark something breathes on the back of your neck, rank as a byre, and a voice that is mostly teeth says one word into your ear, *thief*, and you know that it has read what you wrote, and that it will remember the hand. Somewhere very far down, something gives, like wet parchment. When you climb out of the cellar the candles on the stair are burning sideways, and the cut on your arm has already closed into a scar that looks years old.{/n}",
           "Choices": [
             {
               "Text": "[Go up into the air.]",
@@ -187003,7 +186996,7 @@
         {
           "Id": "body",
           "Speaker": "Narrator",
-          "Text": "{n}It comes on the back of Mutasafen's Apprentice, a cambion with acid-scarred hands who sets it down at your gate and will not cross the threshold. The label says: \"Some assembly required.\nM.\"{/n}\n{n}Inside, in brine, lies Baphomet's daughter, faithful to the last detail: the crushed side of the skull knitted into a ridge of scar, one horn a broken stump, one eye milk-white. He has grown her exactly as her father left her. It is the most spiteful thing you have ever seen done with care.{/n}",
+          "Text": "{n}It comes on the back of Mutasafen's Apprentice, a cambion with acid-scarred hands who sets it down at your gate and will not cross the threshold. The label says: \"Some assembly required.\nM.\"{/n}\n{n}Inside, in brine, lies Baphomet's daughter, faithful to the last detail: the crushed side of the skull knitted into a ridge of scar, one horn a broken stump, one eye milk-white. He has grown her exactly as her father left her, down to the grit still in the scar.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -187259,7 +187252,7 @@
         {
           "Id": "flesh_altar",
           "Speaker": "Hepzamirah",
-          "Text": "\"You walked past me in his prison. Then you knelt at his altar in your own city and burned a deed of theft on it, to reach me. I felt the corner come loose like a rotten tooth.\" {n}Her lip curls.{/n} \"My father's altar. You used his own post. I have never been so insulted in my life.\"",
+          "Text": "\"You walked past me in his prison. Then you knelt at his altar in your own city and cut his mark into your own arm, to reach me. I felt the corner come loose like a rotten tooth.\" {n}Her lip curls, and her eye goes to your sleeve and stays there.{/n} \"My father's mark. On you. You used his own post, clown, and you will wear the stamp until you die. I have never been so insulted in my life.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -187303,7 +187296,7 @@
         {
           "Id": "first_rent",
           "Speaker": "Hepzamirah",
-          "Text": "\"You *mended* me.\" {n}It is said the way another woman would say \"you spat on me\".{/n} \"Baphomet's daughter, grown in a jar by my own servant and unwrapped by a clown with a quill.\"\n\"Very well. I am alive, and I owe you rent. Here is the first payment. My father's archpriestess could call him, and he had to come. One day I will find out if that is still true. When I do, you may stand where he can see you. When I kill Mutasafen, you may not. That one is mine.\"",
+          "Text": "\"You *mended* me.\" {n}It is said the way another woman would say \"you spat on me\".{/n} \"Baphomet's daughter, grown in a jar by my own servant and unwrapped by a clown with a crowbar.\"\n\"Very well. I am alive, and I owe you rent. Here is the first payment. My father's archpriestess could call him, and he had to come. One day I will find out if that is still true. When I do, you may stand where he can see you. When I kill Mutasafen, you may not. That one is mine.\"",
           "Choices": [
             {
               "Text": "\"I'll bring snacks.\"",
@@ -187592,7 +187585,7 @@
           "Choices": [
             {
               "Text": "[Hand over the vial] \"Let him go. A deal is a deal, even with him.\"",
-              "Next": null,
+              "Next": "vial",
               "Set": [
                 "hepzamirah.trickster.courier_seen",
                 "hepzamirah.trickster.cost.vial_paid"
@@ -187627,6 +187620,22 @@
               "Forbids": [],
               "Abort": false,
               "Mythic": "PlayerIsTrickster"
+            }
+          ],
+          "Portrait": "Hepzamirah"
+        },
+        {
+          "Id": "vial",
+          "Speaker": "Hepzamirah",
+          "Text": "{n}By the time you reach the gate she has the Apprentice kneeling in the mud with her boot on his calf. She holds out her hand for the lancet without looking at you, and when you give her your arm instead she takes that too.{/n}\n{n}She draws it herself. She is not gentle, and she is not clumsy either: one cut inside the elbow, exactly deep enough, her thumb pressing the vein to make it run faster, and she watches the vial fill the way a moneylender watches a scale settle. It takes longer than you expect. By the end the gate is swaying slightly and your mouth is dry.{/n}\n\"Understand what you have paid, clown. He does not want this to drink. He wants to grow things from it.\" {n}She corks the vial with her teeth, spits the wax, and drops it into the Apprentice's scarred hands.{/n} \"Somewhere in his cave there will be a jar with a little of you in it, and you will never know what it is becoming. Now you have my reason to want him dead. Good. I like company.\"",
+          "Choices": [
+            {
+              "Text": "[Press a rag to your arm.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Hepzamirah"
@@ -187871,10 +187880,10 @@
         {
           "Id": "price",
           "Speaker": "Hepzamirah",
-          "Text": "\"Your chaplains pray outside my door as if I were a sickness. Your soldiers make the sign of the Inheritor when I pass, and one of them spat, once. Enough. Terms.\"\n\"I stay. My own door, my own guards, and no priest mends anything else of mine. When I go for Mutasafen, nobody follows. And my father is mine. The day I call him, you will not bargain with him over my head.\"\n\"In return I stand beside you in every fight until then. I will not pretend to be grateful. Do not ask me to.\"",
+          "Text": "\"Your chaplains pray outside my door as if I were a sickness. Your soldiers make the sign of the Inheritor when I pass, and one of them spat, once. Enough. Listen, clown, because I will say this once.\"\n\"I stay. My own door, my own guards, and no priest mends anything else of mine. When I go for Mutasafen, nobody follows. And my father is mine. The day I call him, you will not bargain with him over my head.\"\n\"In return I stand beside you in every fight until then. I will not pretend to be grateful. Do not ask me to.\"",
           "Choices": [
             {
-              "Text": "[Agree to every term] \"Done. Your door, your guards, your father.\"",
+              "Text": "[Agree to all of it] \"Done. Your door, your guards, your father.\"",
               "Next": "rent",
               "Set": [],
               "Requires": [],
@@ -187882,7 +187891,7 @@
               "Abort": false
             },
             {
-              "Text": "[Counter] \"You'll serve as my blade. Guests don't get terms.\"",
+              "Text": "[Counter] \"You'll serve as my blade. Guests don't get conditions.\"",
               "Next": "refused",
               "Set": [
                 "hepzamirah.trickster.landlord"
@@ -187909,10 +187918,10 @@
         {
           "Id": "why",
           "Speaker": "Hepzamirah",
-          "Text": "\"Walk out to where?\" {n}She laughs, short.{/n} \"My father's cult calls me apostate in your cellars. Mutasafen has his hand in half the Worldwound and wants the rest of me back on his bench. Horzalah would put a spear in me for the pleasure of it, and Vorlesh has my place and would like my soul in a jar to go with it.\"\n\"Everything outside your door wants to own me, clown. You are the only thing in the world that has ever given me a door and meant it.\" {n}She looks at the forge.{/n} \"That is why. It is not a sentimental reason. It is arithmetic. Now answer my terms.\"",
+          "Text": "\"Walk out to where?\" {n}She laughs, short.{/n} \"My father's cult calls me apostate in your cellars. Mutasafen has his hand in half the Worldwound and wants the rest of me back on his bench. Horzalah would put a spear in me for the pleasure of it, and Vorlesh has my place and would like my soul in a jar to go with it.\"\n\"Everything outside your door wants to own me, clown. Inside it there are walls, a crusade's worth of steel between me and all four of them, and a landlord who is easier to kill than any of them if the lease sours. I can do the sums.\" {n}She looks at the forge.{/n} \"That is why. It is not a sentimental reason. It is arithmetic. Now answer me.\"",
           "Choices": [
             {
-              "Text": "[Agree to every term] \"Done. Your door, your guards, your father.\"",
+              "Text": "[Agree to all of it] \"Done. Your door, your guards, your father.\"",
               "Next": "rent",
               "Set": [],
               "Requires": [],
@@ -187920,7 +187929,7 @@
               "Abort": false
             },
             {
-              "Text": "[Counter] \"You'll serve as my blade. Guests don't get terms.\"",
+              "Text": "[Counter] \"You'll serve as my blade. Guests don't get conditions.\"",
               "Next": "refused",
               "Set": [
                 "hepzamirah.trickster.landlord"
@@ -188005,10 +188014,10 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She does not let go. She walks backwards through the yard, out of the forge-light, towing you by the wrist like a prize led home from a raid, and the smith finds something urgent to hammer on the far side of his anvil.{/n}\n{n}At her door she stops, and shoves you back against it with her forearm across your chest, and looks at your mouth the way she looked at the Apprentice's throat. Her breath is hot and smells of iron. The stump of her horn grazes your temple as she bends her head.{/n}\n\"You smell of my father's prison still.\" {n}Her teeth find your lip, not gently.{/n} \"I will get it off you.\"",
+          "Text": "{n}She does not let go. She walks backwards through the yard, out of the forge-light, towing you by the wrist like a prize led home from a raid, and the smith finds something urgent to hammer on the far side of his anvil.{/n}\n{n}At her door she stops, and shoves you back against it with her forearm across your chest, and looks at your mouth the way she looked at the Apprentice's throat. Her breath is hot and smells of iron. The stump of her horn grazes your temple as she bends her head.{/n}\n\"You smell of my father's prison still.\" {n}She says it into your mouth, and the kiss is a bite that forgot to finish.{/n} \"I will get it off you.\"\n{n}She reaches past you for the latch herself, and the door gives, and you go through it together, not gracefully. She kicks it shut behind her with her heel. Her hands are a surgeon's and a butcher's at once: the buckles of your coat come open under her fingers one after another, quick and exact, as if she has taken apart harder things than you and enjoyed every one. Her own clothes she simply tears open at the shoulder and lets fall.{/n}\n{n}Her skin runs hotter than a mortal's. There is old scar tissue along her ribs, rough under your palms, and when your hand finds it she catches your wrist and presses it there, harder, as if to say *that is mine too, learn it*. She walks you back across the room until your legs meet the furs heaped by the brazier, pushes you down onto them, and follows you down, and pins both your wrists above your head with her pick-hand, easily, the way she would hold a haft.{/n}\n\"Mine,\" {n}she says, low, and her good eye is very bright.{/n} \"Tonight that is the only rule.\" {n}Her free hand goes lower, unhurried, taking inventory.{/n}",
           "Choices": [
             {
-              "Text": "[Reach behind you for the latch.]",
+              "Text": "[Let her have her rule.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -189290,7 +189299,7 @@
         {
           "Id": "face",
           "Speaker": "Hepzamirah",
-          "Text": "\"Do you know what he did?\" {n}She does not look away from the shield.{/n} \"Mutasafen. He did not grow me as I was. He grew me as I was when my father finished with me in the mines. How he knew every splinter of it, I do not ask. His spies in Colyphyr were mine first. He took the time to grow the *wound*.\"\n\"This eye was the last thing I lost. My father's hand came down on this side of my head, and I saw the hand coming with this eye, and then I did not see anything with it ever again.\" {n}Her fingers find the ridge of the scar and follow it up into her hair.{/n} \"Mutasafen remembered. He wanted me to see it every morning in the shield. He is a very thorough man.\"",
+          "Text": "\"Do you know what he did?\" {n}Her eye stays on the shield.{/n} \"Mutasafen. He did not grow me as I was. He grew me as I was when my father finished with me in the mines. How he knew every splinter of it, I do not ask. His spies in Colyphyr were mine first. He took the time to grow the *wound*.\"\n\"This eye was the last thing I lost. My father's hand came down on this side of my head, and I saw the hand coming with this eye, and then I did not see anything with it ever again.\" {n}Her fingers find the ridge of the scar and follow it up into her hair.{/n} \"Mutasafen remembered. He wanted me to see it every morning in the shield. He is a very thorough man.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -189344,7 +189353,7 @@
         {
           "Id": "looked",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She holds your eyes for a long moment with her one good one, and her face does not change at all.{/n}\n\"Still here.\" {n}She tests it.{/n} \"That is a crusader's answer. A crusader looks at a burned village and says, *still here*, and it is meant to be a comfort to the people standing in the ashes.\"\n\"It is not a comfort. But it is not a lie either. You looked.\" {n}She turns back to the shield.{/n} \"No one else has looked. Not even him. My father never once looked at my face after I gave him my mother. There was no need. He had what he wanted from it.\"",
+          "Text": "{n}She holds your eyes with her one good one until the silence between you has weight, and her face does not change at all.{/n}\n\"Still here.\" {n}She tests it.{/n} \"That is a crusader's answer. A crusader looks at a burned village and says, *still here*, and it is meant to be a comfort to the people standing in the ashes.\"\n\"It is not a comfort. But it is not a lie either. You looked.\" {n}She turns back to the shield.{/n} \"No one else has looked. Not even him. My father never once looked at my face after I gave him my mother. There was no need. He had what he wanted from it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -189509,7 +189518,7 @@
         {
           "Id": "sack_say",
           "Speaker": "Hepzamirah",
-          "Text": "\"Rent.\" {n}She nudges the sack with the haft of the pick.{/n} \"The first real payment. Open it.\"\n\"There is a cellar under the old grain exchange, by the east wall, where three men of your crusade have been cutting a certain sign into their forearms at night and whispering my father's name. They thought the Commander had enough demons to fight outside the walls without looking under the floor.\" {n}She smiles the tight, scarred smile.{/n} \"They knew my face from the altar-cloths. They were so pleased to see me. They thought I had come to lead them.\"\n\"I had not. I have brought you the priest. The other two will not be praying to anyone.\"",
+          "Text": "\"Rent.\" {n}She nudges the sack with the haft of the pick.{/n} \"The first real payment. Open it.\"\n\"There is a cellar under the old grain exchange, by the east wall, where three men of your crusade have been cutting a certain sign into their forearms at night and whispering my father's name. They thought the Commander had enough demons to fight outside the walls without looking under the floor.\" {n}She smiles the tight, scarred smile.{/n} \"They knew my face from the altar-cloths. They were so pleased to see me. They thought I had come to lead them.\"\n\"I had not. I have brought you the priest. What is left of him.\" {n}She nudges the sack again.{/n} \"The other two are still in that cellar, tied to their own altar, and they have had a whole night to think about what I am. They are yours to decide.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -189582,7 +189591,7 @@
         {
           "Id": "choose",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She is watching you with the good eye, and she is not smiling any more.{/n}\n\"My father's cultists, in your crusade's barracks, three weeks before you march on the Worldwound. You would have found them the day they opened a gate for Deskari's children, and not a day before.\"\n\"So. That is my rent. You may take it, and hang the head over the east gate for the others to see, as my father would. Or you may be a crusader about it, and tell me I should have brought them to your chaplains alive.\" {n}She shrugs.{/n} \"It is too late for that. I am only asking which kind of landlord you are.\"",
+          "Text": "{n}She is watching you with the good eye, and she is not smiling any more.{/n}\n\"My father's cultists, in your crusade's barracks, three weeks before you march on the Worldwound. You would have found them the day they opened a gate for Deskari's children, and not a day before.\"\n\"So. That is my rent. You may take it, and hang the head over the east gate for the others to see, as my father would, and I will go back down to the cellar and finish. Or you may be a crusader about it, and tell me I should have brought them all to your chaplains alive.\" {n}She shrugs.{/n} \"It is too late for the priest. It is not too late for the other two. I am asking which kind of landlord you are.\"",
           "Choices": [
             {
               "Text": "[Take the sack] \"Hang it over the east gate. Let the others see.\"",
@@ -189628,7 +189637,7 @@
         {
           "Id": "taken",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She looks at you for a long moment. Then she laughs, low and delighted, and picks up the sack by the bell-rope and weighs it in her hand.{/n}\n\"The east gate. Where the new recruits come in.\" {n}She swings it once.{/n} \"My father's archpriest could not have chosen better. They will make the sign at me for a month, and never again at you, because they will have seen what you let me do.\"\n\"You are not a crusader, clown. You wear one. I have always liked a disguise that fits.\"",
+          "Text": "{n}She weighs you first, head tilted, the way she weighs everything. Then she laughs, low and delighted, and picks up the sack by the bell-rope and weighs it in her hand.{/n}\n\"The east gate. Where the new recruits come in.\" {n}She swings it once.{/n} \"My father's archpriest could not have chosen better. They will make the sign at me for a month, and never again at you, because they will have seen what you let me do.\"\n\"You are not a crusader, clown. You wear one. I have always liked a disguise that fits.\"\n{n}She goes back to the cellar before dawn. Nobody asks what she did there. By noon the chaplains have a list of eleven more names in her square, violent hand, and the provost's men spend a week arresting sappers who will not meet anyone's eye.{/n}",
           "Choices": [
             {
               "Text": "[Let her take it to the gate.]",
@@ -189644,7 +189653,7 @@
         {
           "Id": "refused",
           "Speaker": "Hepzamirah",
-          "Text": "{n}Her face does not move. The good eye is quite flat.{/n}\n\"Alive. So that your chaplains could weep over them, and your lawyers could argue, and the one that bit could go free in a month because he was drunk.\" {n}She sets the sack down on the trough, gently, as if it were something fragile.{/n}\n\"You are a crusader, then. At least with me. Very well. I will not bring you rent like this again.\" {n}She looks at the forge.{/n} \"I will not stop collecting it. I will stop bringing it to you.\"",
+          "Text": "{n}Her face does not move. The good eye is quite flat.{/n}\n\"Alive. So that your chaplains could weep over them, and your lawyers could argue, and the one that bit could go free in a month because he was drunk.\" {n}She sets the sack down on the trough, gently, as if it were something fragile.{/n}\n\"You are a crusader, then. At least with me. Very well. I will not bring you rent like this again.\" {n}She looks at the forge.{/n} \"I will not stop collecting it. I will stop bringing it to you.\"\n{n}The two in the cellar reach the chaplains alive, filthy and babbling. Under questioning they give up a second cell in the lower city, and a knight-chaplain you have never met sends you a stiff note of thanks, and a stiffer one asking how your tenant knew where to look.{/n}",
           "Choices": [
             {
               "Text": "[Leave her with the sack.]",
@@ -189660,7 +189669,7 @@
         {
           "Id": "buried",
           "Speaker": "Hepzamirah",
-          "Text": "\"Nobody will know.\" {n}She repeats it slowly, as if checking whether it is a joke.{/n} \"You would take the gift and hide the giving. That is not how my father's cult does things. We *want* the city to know.\"\n\"But I see why you do it. They would ask where your tenant goes at night, and you would have to lie, and you lie well, but you would rather not.\" {n}She pushes the sack toward you with the haft of the pick.{/n} \"Bury it, then. I will know. That will be enough.\"",
+          "Text": "\"Nobody will know.\" {n}She repeats it slowly, as if checking whether it is a joke.{/n} \"You would take the gift and hide the giving. That is not how my father's cult does things. We *want* the city to know.\"\n\"But I see why you do it. They would ask where your tenant goes at night, and you would have to lie, and you lie well, but you would rather not.\" {n}She pushes the sack toward you with the haft of the pick.{/n} \"Bury it, then. I will know. That will be enough.\"\n{n}The two in the cellar are found by a patrol the next morning, tied, alive, and so frightened that they confess to everything before anyone asks. The report says an anonymous tip. The chaplains are very pleased with themselves for a month.{/n}",
           "Choices": [
             {
               "Text": "[Take the sack.]",
@@ -189916,7 +189925,7 @@
         {
           "Id": "warned",
           "Speaker": "Hepzamirah",
-          "Text": "{n}The good eye comes round to you, and for a moment it is exactly the eye of the woman in Colyphyr who promised to drag you naked behind her army.{/n}\n\"You think I would hurt *her*?\" {n}Then, surprisingly, the look turns to contempt.{/n} \"There is nothing to take from her. She has nothing she will not give away. Hurting her would be like robbing a beggar who keeps handing you his bowl.\"\n\"No. I will not hurt her. I will throw her jars over the wall until she stops. She will not stop.\" {n}She sounds, for the first time since the Labyrinth, almost tired.{/n}",
+          "Text": "{n}The good eye comes round to you, and for a moment it is exactly the eye of the woman in Colyphyr who promised to drag you naked behind her army.{/n}\n\"You think I would hurt *her*?\" {n}Then, surprisingly, the look turns to contempt.{/n} \"There is nothing to take from her. She has nothing she will not give away. Hurting her would be like robbing a beggar who keeps handing you his bowl.\"\n\"No. I will not hurt her. I will throw her jars over the wall until she stops. She will not stop.\" {n}She sounds almost tired, which she has not allowed herself since the Labyrinth.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -189932,7 +189941,7 @@
         {
           "Id": "keep",
           "Speaker": "Narrator",
-          "Text": "{n}She picks up the jar of blue flowers and looks at it for a long moment, as if trying to work out what it costs and who is paying.{/n}",
+          "Text": "{n}She picks up the jar of blue flowers and turns it in the light, as if trying to work out what it costs and who is paying.{/n}",
           "Choices": [
             {
               "Text": "\"Keep them.\"",
@@ -190226,7 +190235,7 @@
         {
           "Id": "city",
           "Speaker": "Hepzamirah",
-          "Text": "\"Your whole city knows.\" {n}She says it with deep satisfaction.{/n} \"The smith's boy heard the cot go. The watch on the east wall heard the door. By noon your chaplains will be telling each other that Baphomet's daughter has the Commander of the crusade, and by the evening bell half of them will be praying for you and the other half will be writing to Nerosyan.\"\n\"My father's cult had a word for it, when an archpriest took a consort from among the enemy. It was not a kind word. It meant the consort had been *collected*.\" {n}She licks honey off her thumb.{/n} \"Let them think it. They will look at you differently. Some of them will look at you properly for the first time.\"",
+          "Text": "\"Your whole city knows.\" {n}She says it with deep satisfaction.{/n} \"The smith's boy heard the cot go. The watch on the east wall heard the door. By noon your chaplains will be telling each other that Baphomet's daughter has the Commander of the crusade, and by the evening bell half of them will be praying for you and the other half will be writing to Nerosyan.\"\n\"My father's cult had a word for it, when an archpriest took a consort from among the enemy. It was not a kind word. It meant the consort had been *collected*.\" {n}She licks honey off her thumb.{/n} \"Let them think it. They will look at you differently. Some of them will finally look at you properly.\"",
           "Choices": [
             {
               "Text": "[Let them talk] \"Good. Let them look.\"",
@@ -190342,7 +190351,7 @@
         {
           "Id": "back",
           "Speaker": "Hepzamirah",
-          "Text": "\"Come back.\" {n}She looks at you for a long moment.{/n} \"That is not a rule. That is a prayer. You are praying at me, clown, like your chaplains.\"\n{n}She takes the torn cloak off, folds it very badly, and gives it back.{/n} \"Very well. I will consider breaking it.\"",
+          "Text": "\"Come back.\" {n}She tastes the words and does not like them.{/n} \"That is not a rule. That is a prayer. You are praying at me, clown, like your chaplains.\"\n{n}She takes the torn cloak off, folds it very badly, and gives it back.{/n} \"Very well. I will consider breaking it.\"",
           "Choices": [
             {
               "Text": "[Take the cloak.]",
@@ -191035,7 +191044,7 @@
         {
           "Id": "hers",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She looks at you for a long moment.{/n}\n\"Earned it.\" {n}She takes the jar back and turns it in her hands, and the grey eye turns in the brine and looks at the forge.{/n} \"My father gave me everything I have. You give things back. It is very strange, clown. It is like being fed by someone who is not fattening you.\"",
+          "Text": "{n}Her good eye narrows, measuring.{/n}\n\"Earned it.\" {n}She takes the jar back and turns it in her hands, and the grey eye turns in the brine and looks at the forge.{/n} \"My father gave me everything I have. You give things back. It is very strange, clown. It is like being fed by someone who is not fattening you.\"",
           "Choices": [
             {
               "Text": "[Leave it with her.]",
@@ -191231,7 +191240,7 @@
         {
           "Id": "face",
           "Speaker": "Narrator",
-          "Text": "{n}She lets you. The scarred side is hot under your palm, and the milk-white eye does not close, and the good one does. The stump of her horn rests against your wrist. For a long moment she breathes against your mouth without kissing you, the way the forge breathes when the bellows stop.{/n}",
+          "Text": "{n}She lets you. The scarred side is hot under your palm, and the milk-white eye does not close, and the good one does. The stump of her horn rests against your wrist. She breathes against your mouth without kissing you, three breaths, four, the way the forge breathes when the bellows stop.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -191452,7 +191461,7 @@
         {
           "Id": "paid",
           "Speaker": "Narrator",
-          "Text": "{n}The woman looks at the purse for a long moment. Then she takes it, and weighs it, and puts it in her apron, and looks past you at Hepzamirah.{/n}",
+          "Text": "{n}The woman eyes the purse as if it might be a trick. Then she takes it, and weighs it, and puts it in her apron, and looks past you at Hepzamirah.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -191725,7 +191734,7 @@
         {
           "Id": "you",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She looks at you for a long moment.{/n}\n\"Yes. I went under. Horzalah never did. She charged at everything like a siege ram, and when a wall did not fall, she charged it again.\" {n}Something like pride moves in her voice, and then something like grief.{/n} \"And he chose me for it, and then he killed me for losing one fight. So the choosing was worth nothing. You see? You flatter me with the same coin he did.\"\n{n}She drops the canary back on the trough.{/n} \"Do not do that again. Or do. I have not decided.\"",
+          "Text": "{n}She is quiet, and the forge ticks as it cools.{/n}\n\"Yes. I went under. Horzalah never did. She charged at everything like a siege ram, and when a wall did not fall, she charged it again.\" {n}Something like pride moves in her voice, and then something like grief.{/n} \"And he chose me for it, and then he killed me for losing one fight. So the choosing was worth nothing. You see? You flatter me with the same coin he did.\"\n{n}She drops the canary back on the trough.{/n} \"Do not do that again. Or do. I have not decided.\"",
           "Choices": [
             {
               "Text": "[Leave it there.]",
@@ -192150,7 +192159,7 @@
         {
           "Id": "read_paid",
           "Speaker": "Mutasafen",
-          "Text": "\"Thank your Commander for the vial. It is everything I hoped. I have learned more about Areelu's work from one vial of that blood than from ten years of rumour.\"",
+          "Text": "\"Thank your Commander for the vial. It is everything I hoped. I have learned more about Areelu's work from one vial of that blood than from ten years of rumour. I have grown a hand from it, so far. Only a hand. It keeps trying to pick my pocket.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -192662,7 +192671,7 @@
         {
           "Id": "hers",
           "Speaker": "Hepzamirah",
-          "Text": "\"Mine.\" {n}She looks at you for a long moment.{/n} \"You would let me bleed out on a smith's trough, rather than break a term.\"\n{n}She ties the borrowed coat tight over the wound with her own hands.{/n} \"My father would have. For different reasons. His reasons were that he did not care. Yours are that you do.\" {n}She sets her jaw.{/n} \"It will close. Watch.\"",
+          "Text": "\"Mine.\" {n}Her lip curls, not quite at you.{/n} \"You would let me bleed out on a smith's trough, rather than break a term.\"\n{n}She ties the borrowed coat tight over the wound with her own hands.{/n} \"My father would have. For different reasons. His reasons were that he did not care. Yours are that you do.\" {n}She sets her jaw.{/n} \"It will close. Watch.\"",
           "Choices": [
             {
               "Text": "[Watch.]",
@@ -192792,7 +192801,7 @@
         {
           "Id": "sublet",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She stares at you for a long moment, and then she takes the scalpel out of the gate, and cuts her own palm with it, neatly, and signs the bottom of his letter in her own blood with her fingertip: a horned head in a circle, the sign of the Lord of Beasts, crossed through.{/n}\n\"There. Sublet. Signed.\" {n}She blows on it.{/n} \"He will know that sign. He taught my scribes to draw it. Let him read it upside down and understand that the tenant owns the lease.\"",
+          "Text": "{n}She stares at you until you think she will refuse, and then she takes the scalpel out of the gate, and cuts her own palm with it, neatly, and signs the bottom of his letter in her own blood with her fingertip: a horned head in a circle, the sign of the Lord of Beasts, crossed through.{/n}\n\"There. Sublet. Signed.\" {n}She blows on it.{/n} \"He will know that sign. He taught my scribes to draw it. Let him read it upside down and understand that the tenant owns the lease.\"",
           "Choices": [
             {
               "Text": "[Send it back to him.]",
@@ -193439,7 +193448,7 @@
         {
           "Id": "pull",
           "Speaker": "Narrator",
-          "Text": "{n}She pulls you in by the front of your coat, over the threshold, into the warm dark that smells of iron and forge-smoke and her, and kicks the broken door shut behind you with her heel, and it bangs in its frame and swings open again, because it cannot be locked, and she laughs against your throat.{/n}\n{n}Her hands are rough and very sure. She finds every buckle you are wearing and does not bother with most of them. The stump of her horn catches in your hair and she does not stop for it. When her mouth finds yours it is hungry, and not gentle, and she bears you down onto the mended cot, which creaks like a ship, and holds you there with one broad hand flat on your chest, and looks down at you in the dark with the eye that can see.{/n}",
+          "Text": "{n}She takes you by the wrist, the way she always does, and pulls you over the threshold, into the warm dark that smells of iron and forge-smoke and her, and kicks the broken door shut behind you with her heel, and it bangs in its frame and swings open again, because it cannot be locked, and she laughs against your throat.{/n}\n{n}Her hands are rough and very sure. She finds every buckle you are wearing and does not bother with most of them. The stump of her horn catches in your hair and she does not stop for it. When her mouth finds yours it is hungry, and not gentle, and she bears you down onto the mended cot, which creaks like a ship, and holds you there with one broad hand flat on your chest, and looks down at you in the dark with the eye that can see.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -193862,7 +193871,7 @@
         {
           "Id": "cut",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She looks at the last line for a long moment.{/n}\n\"*Who you do not miss.*\" {n}She draws the pen through it, once, hard enough to tear.{/n} \"You are right. He does not get to know anything I do not choose to tell him. That was always the only power I had over him, and I gave it away in Colyphyr, screaming.\"\n\"There. Now it ends at my name. Just my name. Let him wonder what I meant by it.\"",
+          "Text": "{n}She reads the last line twice, and her thumb stops on it.{/n}\n\"*Who you do not miss.*\" {n}She draws the pen through it, once, hard enough to tear.{/n} \"You are right. He does not get to know anything I do not choose to tell him. That was always the only power I had over him, and I gave it away in Colyphyr, screaming.\"\n\"There. Now it ends at my name. Just my name. Let him wonder what I meant by it.\"",
           "Choices": [
             {
               "Text": "[Leave her to it.]",
@@ -194380,7 +194389,7 @@
         {
           "Id": "sit",
           "Speaker": "Narrator",
-          "Text": "{n}The cot complains again. She does not move over. Her shoulder is against yours, heavy and hot, and after a while she takes your hand, not your wrist this time, and turns it over, and looks at it for a long moment in the lamplight the way she looked at the things on her shelf.{/n}",
+          "Text": "{n}The cot complains again. She does not move over. Her shoulder is against yours, heavy and hot, and after a while she takes your hand, not your wrist this time, and turns it over, and studies it in the lamplight the way she studied the things on her shelf.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -194748,7 +194757,7 @@
         {
           "Id": "refused",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She looks at you for a long moment, and then rolls the map up very slowly, and hands it to the nearest general, who takes it as if it might bite.{/n}\n\"Fight it, then. I will. I will stand in the first rank, where my pikes are pointed the right way, and when your generals find the ravine the hard way, I will be there to pull them out of it.\" {n}She shoulders the pick.{/n} \"I will not say I told you. I will only think it very loudly.\"",
+          "Text": "{n}She says nothing at all. She rolls the map up very slowly, and hands it to the nearest general, who takes it as if it might bite.{/n}\n\"Fight it, then. I will. I will stand in the first rank, where my pikes are pointed the right way, and when your generals find the ravine the hard way, I will be there to pull them out of it.\" {n}She shoulders the pick.{/n} \"I will not say I told you. I will only think it very loudly.\"",
           "Choices": [
             {
               "Text": "[Let her go.]",
@@ -194809,7 +194818,7 @@
         {
           "Id": "hep",
           "Speaker": "Hepzamirah",
-          "Text": "\"Come up,\" {n}she says to the wall, not loudly.{/n} \"All of you. Bring the song.\"\n{n}They come down, because nobody in Drezen has yet found out what happens if you do not. They stand in a row in the yard, twelve of them, with their helmets under their arms, and the youngest is shaking.{/n}\n\"Sing it,\" {n}she says.{/n} \"From the beginning. To my face. I want to hear the words properly. On the wall you slur them.\"",
+          "Text": "\"Come up,\" {n}she says to the wall, not loudly.{/n} \"All of you. Bring the song.\"\n{n}For a moment nobody moves. Then the sergeant looks at you, standing in the yard behind her, sees you do not forbid it, and comes down the stair first, because he wrote the second verse and will not have the boys go down without him. They stand in a row in the yard, twelve of them, with their helmets under their arms, and the youngest is shaking.{/n}\n\"Sing it,\" {n}she says.{/n} \"From the beginning. To my face. I want to hear the words properly. On the wall you slur them.\"",
           "Choices": [
             {
               "Text": "[Let it happen.]",
@@ -194859,7 +194868,7 @@
         {
           "Id": "sung_say",
           "Speaker": "Hepzamirah",
-          "Text": "\"The third verse does not scan,\" {n}she says when they have finished.{/n} \"And you have the eye on the wrong side. Fix it. If you are going to sing about me, you will sing about me *correctly*.\"\n{n}She looks along the row of them.{/n} \"In my father's temples, the faithful sang for a thousand years about how beautiful I was. It was not true either, and it was much worse music. Go. Sing it on the wall. Loudly.\"",
+          "Text": "\"The third verse does not scan,\" {n}she says when they have finished.{/n} \"And you have the eye on the wrong side. Fix it. If you are going to sing about me, you will sing about me *correctly*.\"\n{n}She looks along the row of them.{/n} \"In my father's temples, the faithful sang for a thousand years about how beautiful I was. It was not true either, and it was much worse music. Go. Sing it on the wall. Loudly.\"\n{n}In the morning there is a complaint on your desk from their captain: twelve men late to the watch, one asking for a transfer to the Nerosyan road, and a sergeant who has been heard singing the corrected third verse at mess. The captain would like to know under whose authority the Commander's guest musters his soldiers. It is a fair question.{/n}",
           "Choices": [
             {
               "Text": "[Watch them go.]",
@@ -194891,7 +194900,7 @@
         {
           "Id": "both_say",
           "Speaker": "Hepzamirah",
-          "Text": "\"You stood and listened to your own soldiers sing about your bed,\" {n}she says, when they have fled.{/n} \"With me. In front of them. Without flinching.\"\n\"My father's priests would have cut their tongues out. You made it a joke they are in, instead of a joke about us.\" {n}She shakes her head slowly.{/n} \"They will die for you now, clown, those twelve. You have no idea how cheaply you bought them.\"",
+          "Text": "\"You stood and listened to your own soldiers sing about your bed,\" {n}she says, when they have fled.{/n} \"With me. In front of them. Without flinching.\"\n\"My father's priests would have cut their tongues out. You made it a joke they are in, instead of a joke about us.\" {n}She shakes her head slowly.{/n} \"They will die for you now, clown, those twelve. You have no idea how cheaply you bought them.\"\n{n}Their captain sees it differently: by morning there is a complaint on your desk about the Commander keeping twelve men from the watch to sing about their own bed. But the song changes on the wall that week. The cot verse goes, and a new last verse comes in, about a clown and a bull's daughter who stood and heard it out together, and the garrison stops making the sign when she passes.{/n}",
           "Choices": [
             {
               "Text": "[Watch them go.]",
@@ -195164,7 +195173,7 @@
         {
           "Id": "back",
           "Speaker": "Hepzamirah",
-          "Text": "\"*Comes back.*\" {n}She writes it in, slowly.{/n} \"That is your prayer again. You keep trying to put your prayer into my treaties.\"\n\"Very well. It is written. Now it is law, in a sovereign cell recognised by one lich. If I die at the Threshold I will be in breach, and you may sue my ghost.\" {n}She signs it with the point of the pick's spike, dipped in the forge-ash.{/n}",
+          "Text": "\"*Comes back.*\" {n}She writes it in, slowly.{/n} \"That is your prayer again. You keep trying to put your prayer into my treaties.\"\n\"Very well. It is written. It binds nobody in Nerosyan, and I know it; the only court that recognises my embassy is one lich in a stolen cell. It binds you and me. Break it, clown, and I will not sue. I will walk out through the door you made Leavable, and take the pick, and every name I know in your crusade's cellars, to whoever pays best. If I die at the Threshold I will be in breach, and you may sue my ghost.\" {n}She signs it with the point of the pick's spike, dipped in the forge-ash.{/n}",
           "Choices": [
             {
               "Text": "[Sign it.]",
@@ -195196,7 +195205,7 @@
         {
           "Id": "leave",
           "Speaker": "Hepzamirah",
-          "Text": "{n}She stops with the pen above the vellum, and for a long moment she does not write anything.{/n}\n{n}She writes it at last, very carefully, as if the letters might break, and does not read it back. She signs it with the point of the pick's spike, dipped in the forge-ash, and hands you the pick.{/n}\n\"Sign,\" {n}she says.{/n} \"Before I tear it up.\"",
+          "Text": "{n}She stops with the pen above the vellum, and a drop of ink gathers on the nib and falls before she writes anything.{/n}\n{n}She writes it at last, very carefully, as if the letters might break, and does not read it back. She signs it with the point of the pick's spike, dipped in the forge-ash, and hands you the pick.{/n}\n\"Sign,\" {n}she says.{/n} \"Before I tear it up.\"",
           "Choices": [
             {
               "Text": "[Sign it.]",
@@ -264990,7 +264999,7 @@
       "Title": "A song with room to breathe",
       "Description": "Aranka has asked me to hear what she is making on the island. Our life together began before these visits.",
       "Objective": "Visit Aranka between rehearsals",
-      "Guidance": "After completing her RanRomance story while remaining her lover, speak with the living Aranka on the island in Chapter 5. Allow time between visits. On the Trickster path, a Commander who gives Starward Gaze a second verse in a tavern, or leads the verse where they lose, or bills her as their court poet, may meet Aranka at Fye's counter in Drezen, in Chapter 3 or Chapter 5.",
+      "Guidance": "After completing her RanRomance story while remaining her lover, speak with the living Aranka on the island in Chapter 5. Allow time between visits. On the Trickster path, a Commander who gives Starward Gaze a second verse in a tavern, or leads the verse where they lose, or bills her as their court poet, may meet Aranka busking by the spice trader's stall in the Drezen market, in Chapter 3 or Chapter 5.",
       "StartedFlag": "aranka.extension_started",
       "ClosedFlag": "aranka.extension_closed",
       "CommittedFlag": "aranka.extension_kept",
@@ -267440,9 +267449,9 @@
       "Area": "2570015799edf594daf2f076f2f975d8",
       "Mode": "spawn-copy",
       "At": {
-        "NearUnit": "0f12118177d102f428a3b30b15b132eb",
-        "Side": "right",
-        "Distance": 2.0
+        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "Side": "front",
+        "Distance": 2.5
       },
       "Requires": [
         "trickster.ever",
@@ -267455,7 +267464,7 @@
       "MaxChapter": 5,
       "AnswerLists": [],
       "Dialog": "hub",
-      "Greeting": "{n}A woman in Desnan blue is sitting on the end of Fye's counter with a lute across her knees, and the tavern has gone quiet to hear her tune it.{/n}"
+      "Greeting": "{n}A woman in Desnan blue is sitting on a stack of spice crates by the curio stall with a lute across her knees, and half the market has stopped haggling to hear her tune it.{/n}"
     },
     "aranka.presence.yard": {
       "Unit": "bd0c4fe722aeef94b8495ac284b96bc8",
@@ -267478,7 +267487,7 @@
       "MaxChapter": 5,
       "AnswerLists": [],
       "Dialog": "hub",
-      "Greeting": "{n}Fye's is boarded up. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the quartermaster's yard, with a lute across her knees, and the carters have stopped unloading to hear her tune it.{/n}"
+      "Greeting": "{n}The market is shuttered. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the quartermaster's yard, with a lute across her knees, and the carters have stopped unloading to hear her tune it.{/n}"
     },
     "gesmerha.presence": {
       "Unit": "3ba3a0ff8575be8419159221177c1411",

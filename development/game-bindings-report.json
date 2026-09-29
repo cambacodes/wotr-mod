@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pol-b5\\development\\Story.json",
   "game": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure",
   "binding_uses": 2820,
-  "unique_targets": 649,
+  "unique_targets": 650,
   "failures": [],
   "targets": {
     "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53": {
@@ -80,6 +80,10 @@
     },
     "a380d926e92f70e429681eb9654478f9": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/DrezenCapital_Quartermaster.jbp",
+      "type": "BlueprintUnit"
+    },
+    "bad9f602b81a80047ac470b01ebe65a9": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/ExoticCapitalTrader.jbp",
       "type": "BlueprintUnit"
     },
     "0f12118177d102f428a3b30b15b132eb": {
