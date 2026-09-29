@@ -63,6 +63,8 @@ PARTNERS = {
     "hepzamirah": ("Hepzamirah", "Hepzamirah"), "camellia": ("Camellia", "Camellia"), "eritrice": ("Eritrice", "Eritrice"),
     "areelu": ("Areelu", "Areelu"), "chadali": ("Chadali", "Chadali"), "arueshalae": ("Arueshalae", "Arueshalae"),
     "devarra": ("Devarra", "Devarra"), "delamere": ("Delamere", "Delamere"), "kaylessa": ("Kaylessa", "Kaylessa"),
+    "mielarah": ("Mielarah", "Mielarah"),
+    "nidalynn": ("Nidalynn", "Nidalynn"),
     "jannah": ("Jannah", "Jannah"),
 }
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).

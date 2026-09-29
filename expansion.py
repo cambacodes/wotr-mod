@@ -61,6 +61,8 @@ from storylines import arueshalae_hours, arueshalae_notes
 from storylines import devarra_trickster, devarra_tower
 from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
+from storylines import mielarah_trickster, mielarah_deck
+from storylines import nidalynn_trickster, nidalynn_kiln, nidalynn_salt
 from storylines import jannah_trickster, jannah_circle
 from storylines import rrt_ui
 from storylines import rrt_portraits
@@ -442,6 +444,20 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(kaylessa_wasps.SCENES))
     payload["Scenes"].extend(copy.deepcopy(kaylessa_clearing.SCENES))
     kaylessa_trickster.integrate(payload)
+    # Mielarah: the unregistered draft (retired to reference/retired-drafts) is replaced by the Trickster route "Zyphus
+    # picks the nearest" (11 §2) and its Chapter 5 courtship on her presence in Drezen (mielarah_deck).
+    payload["Relationships"]["mielarah"] = copy.deepcopy(mielarah_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(mielarah_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(mielarah_deck.SCENES))
+    mielarah_trickster.integrate(payload)
+    # Nidalynn: a new relationship (trickster/nidalynn.md; 11-ROSTER-PLAN-2 §2): the smallest of Devarra's eggs hidden from
+    # the golems' count under soot (or from the vault clerk's), a silver dragon in a widow's dress, the kiln and the salt
+    # (nidalynn_kiln, nidalynn_salt). Her door never depends on the Gold Dragon path.
+    payload["Relationships"]["nidalynn"] = copy.deepcopy(nidalynn_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(nidalynn_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(nidalynn_kiln.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(nidalynn_salt.SCENES))
+    nidalynn_trickster.integrate(payload)
     # Jannah: a new relationship (jannah.md; 11-ROSTER-PLAN-2 §2): the Aldori forms at the Molten Scar cage in the killed
     # worlds, blood and tale in her cell in the living ones; the courtship at her cell (jannah_circle) and her challenge.
     payload["Relationships"]["jannah"] = copy.deepcopy(jannah_trickster.RELATIONSHIP)

@@ -1,0 +1,426 @@
+"""Nidalynn on the Trickster path: "The egg the golems counted as floor", built as "Out in the ash" (Writer/handoffs/11-ROSTER-PLAN-2.md §2, binding;
+spec Writer/handoffs/trickster/nidalynn.md for canon and hooks only: its cheese appraisal, chalk label, Fye presence,
+riddle test and priced second ask are dropped).
+
+Canon (blueprints.zip / enGB):
+- A Lawful Good silver dragon: "I, Nidalynn, a silver dragon, swear loyalty to you, gold dragon {name}!" (6a4beb10);
+  NidalynnDragon c966ef14 (Female, Huge); Nidalynn_PolymorphBuff 885ee6e3. Natively she appears only on the Gold Dragon
+  path (NidalynnQuest1 4adaa0e0, Chapter 5, Kenabres): "a woman in a clean, but worn dress... the bulging belly of an
+  expectant mother" (Cue_0001 64b38b81), sharp in the part ("Pft! Fine!", Cue_0009 e630e823; "Is this a joke? Are you
+  trying to play a trick on me?", Cue_0013 c7e26a7e).
+- Her own voice once the part is dropped (DragonsKenabres): "As a silver dragon, I believe kindness and sincerity are of
+  the utmost importance. However, it is not just the soul that needs to be nourished. You must also sustain your body!...
+  eat it slowly, savor its flavor.... and be grateful!" (Cue_0015 115f3b59); "It's not what you say that matters... it's
+  what you do!" (Cue_0009 6b89e1d4); "I knew that an absurd request from a pregnant woman would seem foolish. But she
+  could have taught you a valuable lesson." (Cue_0016 37d0134d); "Typical Orgomandias" (Cue_0003 b3399115).
+- The Windstep clan's brand, "a mare galloping beneath the stars", and "Reudger the White"; "I remember him sitting
+  there, smoking his pipe, as he watched the mares graze" (NidalynnQuest1 Cue_0012 ebae4003, Cue_0017 913f48fe); her
+  grandfather's riddle, "What is Golarion's 'salt'?... the common folk" (Cue_0018 1d1fd011, Cue_0023 90cc684e); "Warriors
+  are not the only ones worth remembering." (Cue_0024 0f34a4ab).
+- Metallic dragons wanted Devarra's clutch: "they may disguise themselves as druids, and ask the crusaders to give them
+  the woundwyrm eggs the Commander took from the Ivory Sanctum. Thank you for those, by the way. Rest assured, we'll take
+  good care of them." (DragonsKenabres Cue_0058 7e1a31d4, Nidalynn's line; Gold Dragon path).
+- The clutch (Ivory Sanctum): the golems over the eggs, "Or else your eggs will be destroyed!" (Golems_DragonEggs
+  Cue_0001 b8dfb42d / Cue_0047 ea54d573), "In unison, the golems swing their fists above the eggs on the ground"
+  (Cue_0006 24de2c3e); built sloppily ("The details are crude... enchanted very clumsily", Cue_0067 2a3bcece), their
+  "behavioral schematic for controlling the dragon" done by Zhan Sebao, whom his fellow student calls lazy (Cue_0033
+  234c128b, Cue_0040 69431140); "These are woundwyrm eggs and they look like they will soon hatch." (Cue_0045 9c653a90);
+  "You can feel the heat radiating out from the thick shell" (DragonEggs Cue_0001 b2bf1f68); Greybor: "we need to destroy
+  them." (DragonEggs Cue_0016 99a468ad).
+
+The device (11 §2 as corrected by the coordinator after the Astra review: no invented rule about how the golems perceive
+the eggs, since no native blueprint, dialog or cue describes one): under the golems' raised fists (Cue_0006) the Commander
+takes the smallest egg, the coldest, and buries it in the chamber's ash-bin, and carries it out grey with ash as "a rock".
+Earned by a Stealth or Trickery check; a failed check puts the Commander's hand under a golem fist (the golems natively
+answer intruders, Cue_0047 / Cue_0034), and the egg is saved all the same. Then the Commander chooses not to smash it. Fallback, while the
+crated clutch waits in the Drezen vault: the same soot among the crates, and the egg carried out hot (burnt palms).
+
+Authored, and labelled as authored: that metallic dragons were watching the clutch on Trickster too; that Nidalynn lives
+in Drezen as the same pregnant widow she plays in canon Kenabres, on the steps opposite the jeweller where the refugees
+sell what they carried out of Sarkoris; that she was a girl at Reudger's fire and called him grandfather; his rite of
+bread and salt; the lime-kiln below the east wall; everything she says here.
+
+Delivery: a presence of her own (the widow, then her chosen form) opposite JewelerCapitalTrader, and rest-delivered
+visits for the kiln, the hatching and the ridge. The courtship is nidalynn_kiln and nidalynn_salt.
+"""
+from story_format import c, n, p, reaction, scene
+
+SCENES = []
+REL = "nidalynn"
+P = "nidalynn.trickster."
+DREZEN = "2570015799edf594daf2f076f2f975d8"        # DrezenCapital
+JEWELLER = "bc1093231b1577a4485a730c29595195"      # JewelerCapitalTrader (Arueshalae's evil fallback, Ch5 only, stands front 2.0)
+WIDOW_UNIT = "e24a8cb4f83960748b5bead99d58a36e"    # Commoner_Noble_Female_Refugee2 (a Kenabres refugee woman; no Drezen spawner uses it)
+CHOSEN_UNIT = "3191b154bbed71b4595a5154ad067e90"   # Commoner_Noble_Female_Refugee1 (her own chosen form; a different body)
+GOLEM_LIST = "dd8ac86f25e0f6b4cac75386eb528851"    # IvorySanctum/Golems_DragonEggs/AnswersList_0002
+GOLEM_RETURN = "d39b1e850904daa43b7e6dab3a6e7f83"  # Golems_DragonEggs/Cue_0046 "Only a very large creature could lay eggs like these."
+GREYBOR_LIST = "174d6c94b6725f44aad1d2a76993a926"  # Companions/Grimbor/AnswersList_0002
+ULBRIG_HUB = "0a50c9c878844ed4a69b8d6131304c5e"    # DLC4_Shifter/Shifter_CompanionDialogue/AnswersList_0001
+WOLJIF_HUB = "e41585da330233143b34ef64d7d62d69"    # CompanionDialogues/Woljif/AnswersList_0003
+WIDOW = "nidalynn.presence"
+CHOSEN = "nidalynn.presence.chosen"
+
+STARTED = "nidalynn.started"
+CLOSED = "nidalynn.closed"
+COMMITTED = "nidalynn.committed"
+CRATED = "nidalynn.trickster.eggs_crated"         # latch on eggs.project (trickster_world LATCHES)
+WOLJIF_SIGHED = "nidalynn.woljif_sighed"            # SeenCues DragonEggs/Cue_0018 d2f3ae3a (his sigh over the smashed clutch)
+DV_RETURNED = "devarra.trickster.returned"         # read in nodes only (ledger 05 row 5: neither route gates the other)
+DV_HUNTING = "devarra.trickster.hunting_druids"
+DV_BILL = "devarra.trickster.cost.egg_withheld"   # set by devarra_tower's "The smallest egg" (the bill lands on the Commander)
+
+PRIMED = P + "primed"                              # one egg saved, by either device
+GOLEM = P + "egg.golems"
+VAULT = P + "egg.vault"
+CLEAN = P + "egg.clean"
+HAND = P + "cost.hand"                             # a golem fist, on the failed check
+PALMS = P + "cost.palms"                           # the vault egg carried out hot
+CLERK = P + "clerk_saw"
+CRUSHED = P + "egg_crushed"
+ROCK_JOKE = P + "rock_joke"
+HEARTH = P + "hearth.grey_stone"                   # scene ids double as flags once completed
+MET = P + "met"
+TOLD_ROCK = P + "told_rock"
+TOLD_EGG = P + "told_egg"
+TOLD_NOTHING = P + "told_nothing"
+KILN_AGREED = P + "kiln_agreed"
+REVEALED = P + "revealed"
+WHY_SMALL = P + "why.smallest"
+WHY_COULD = P + "why.could"
+WHY_USE = P + "why.useful"
+WHY_DUNNO = P + "why.dont_know"
+HAND_SET = P + "hand_set"
+KILN = P + "kiln"
+HATCHED = P + "hatched"
+CONFESSED = P + "confessed"
+LIED = P + "lied_at_kiln"
+LIE_KEPT = P + "lie_kept"
+GIVEN_UP = P + "given_to_the_crowd"
+RENOUNCED = P + "cost.claim_given_up"
+CLAIMED = P + "claimed"
+LEFT_WITH_IT = P + "left_with_it"
+FORM = P + "form_chosen"
+KISSED = P + "kissed"
+PROPOSED = P + "proposed"
+BREAD_KEPT = P + "bread_kept"
+SALT = P + "cost.salt_eaten"
+SNOW = P + "snowfield"
+REFUSED = P + "refused"
+LATE_COMMITTED = P + "late_committed"
+EGG_WORLDS = ("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed")
+
+DERIVED = {
+    # R2-6: she has put off the widow for the Commander; if the war ends before the hatchling flies, the epilogue carries
+    # her proposal (Last Call and the household read it).
+    LATE_COMMITTED: [["trickster.ever", FORM]],
+    # 05 §2.5 voice note: she joins a household the way she joined the Windstep, by being fed at its fire and feeding it.
+    "nidalynn.harem.voice.fed_at_the_fire": [[COMMITTED], [LATE_COMMITTED]],
+}
+
+RELATIONSHIP = dict(
+    Title="Salt on Bread",
+    Description=("I carried one of Devarra's eggs out of the Ivory Sanctum under a coat of ash and told Drezen it was a "
+                 "rock. A pregnant Sarkorian widow heard it through the wall. She is not a widow, and not pregnant, and "
+                 "not, if we are being honest, a woman."),
+    Objective="Keep the smallest egg alive",
+    Guidance=("On the Trickster path, in the Ivory Sanctum, look at the smallest of the eggs under Xanthir Vang's "
+              "golems before they act, and get it out from under their fists. If the clutch was crated to Drezen instead, the eggs wait in "
+              "the citadel vault until the druids or the cooks take them. After that, a widow on the steps opposite the "
+              "jeweller will want a word."),
+    StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
+    UnavailableFlags=[], FailureFlags=[],
+    TricksterAccess={
+        "golems": dict(detect=["trickster"], device=P + "eggs.lamp_black", returned=MET),
+        "vault": dict(detect=["eggs.project"], device=P + "eggs.vault", returned=MET),
+    },
+)
+
+PRESENCES = {
+    # The widow, as she sits in canon Kenabres: across the square from the jeweller, where the refugees sell their clan
+    # torcs. Arueshalae's evil fallback (Chapter 5, evil path only) stands front 2.0 of the same trader: 3.2 m apart.
+    WIDOW: dict(Unit=WIDOW_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELLER, Side="left", Distance=2.5),
+                Requires=["trickster.ever", HEARTH], Forbids=[CLOSED, FORM, LEFT_WITH_IT], MinChapter=3, MaxChapter=5,
+                AnswerLists=[], Dialog="hub",
+                Greeting="{n}On the steps across from the jeweller's stall, where the refugees come to sell what they "
+                         "carried out of Sarkoris, a woman in a clean, worn dress sits with her hands folded on the swell of "
+                         "her belly. A basket of mending is beside her. She is not mending it. She is watching who sells "
+                         "what, and for how much.{/n}"),
+    # Her own chosen form, once the widow is put off: the same step, a different body, never the belly.
+    CHOSEN: dict(Unit=CHOSEN_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELLER, Side="left", Distance=2.5),
+                 Requires=["trickster.ever", FORM], Forbids=[CLOSED, LEFT_WITH_IT], MinChapter=3, MaxChapter=5,
+                 AnswerLists=[], Dialog="hub",
+                 Greeting="{n}On the jeweller's steps, where the widow used to sit, a tall woman sits with her knees "
+                          "drawn up and a white braid over one shoulder. The refugees who pass nod to her as if they "
+                          "have always known her. She is eating an apple, slowly, and looks at you as though you are "
+                          "late.{/n}"),
+}
+
+
+def nd(id, text, *choices, **kw):
+    return n(id, "Nidalynn", text, *choices, portrait="Nidalynn", **kw)
+
+
+def nar(id, text, *choices, **kw):
+    return n(id, "Narrator", text, *choices, portrait="Nidalynn", **kw)
+
+
+def steps(id, title, entry, nodes, requires, forbids=(), delay=24, chosen=False, chapters=(3, 5), optional=False,
+          into=None, **extra):
+    """A physical scene at her presence on the jeweller's steps (the widow's hub, or her chosen form's)."""
+    (SCENES if into is None else into).append(scene(
+        id, title, "Nidalynn", min(chapters), entry, nodes,
+        requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
+        forbids=tuple(dict.fromkeys((CLOSED, LEFT_WITH_IT, *forbids))), delay=delay, last=max(chapters),
+        optional=optional, Relationship=REL, Chapters=list(chapters), ContactUnit=CHOSEN_UNIT if chosen else WIDOW_UNIT,
+        Areas=[DREZEN], InteractionHub=CHOSEN if chosen else WIDOW, **extra))
+
+
+def visit(id, title, nodes, requires, forbids=(), delay=24, chapters=(3, 5), kind="visit", optional=False, owner="Nidalynn",
+          into=None, **extra):
+    """A rest-delivered page: she comes to the Commander, or takes the Commander somewhere (the kiln, the ridge)."""
+    (SCENES if into is None else into).append(scene(
+        id, title, owner, min(chapters), "", nodes,
+        requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
+        forbids=tuple(dict.fromkeys((CLOSED, LEFT_WITH_IT, *forbids))), delay=delay, last=max(chapters),
+        optional=optional, Relationship=REL, Chapters=sorted(set(chapters)), Remote=True, Kind=kind, **extra))
+
+
+# --- The device (physical, Chapter 3): the smallest egg, out from under the fists in the ash-bin -------------------------
+# Inline on the golems' list, while "the golems swing their fists above the eggs" (Cue_0006). No rule about how the golems
+# see is claimed: the Commander is simply not seen taking it (Stealth or Trickery), or is seen and pays with a hand, as any
+# intruder among them would ("Intruder detected!", Cue_0047; "We are under attack! Alert!", Cue_0034). The native answers
+# still decide the other eleven.
+
+SCENES.append(scene(P + "eggs.lamp_black", "Out in the ash", "Nidalynn", 3, "[Look at the smallest egg, the one at the edge of the straw]", [
+    nar("look", '''{n}The golems have not moved. Their fists hang over the clutch, and their blank metal faces are turned toward the eggs, and nothing in the chamber is quite still except them.{/n}
+{n}The smallest egg lies at the edge of the straw, half out of it, as if it had been nudged aside. It is duller than the rest and a hand's breadth shorter, and when you hold your palm near it the heat coming off it is only warm, where the others burn. The runt of the clutch, and the coldest.{/n}
+{n}By the wall behind the golems stands an iron bin of old ash and cinders, the leavings of some fire the cultists kept here. It is deep. It is exactly the colour of a dirty stone.{/n}''',
+        c("[Stealth: go in under the raised fists, take the smallest egg, and bury it in the ash-bin]",
+          mythic="Trickster", check=dict(Skill="SkillStealth", DC=22, Success="taken", Failure="fist", CommanderOnly=True)),
+        c("[Trickery: roll a stone of the same size into the straw where it lay, and palm the egg into the ash-bin]",
+          mythic="Trickster", check=dict(Skill="SkillThievery", DC=22, Success="taken", Failure="fist", CommanderOnly=True)),
+        c("[Leave the eggs to the golems.]", abort=True)),
+    nar("taken", '''{n}You go in low, under the fists, with your eyes on the metal faces and not on your hands. The shell is hotter than it looked; it scorches your fingers through your gloves. Three steps back, and it goes into the ash-bin, and you shovel the cinders over it with your forearm until there is nothing in the bin but ash and something that might be a stone.{/n}
+{n}The fists stay over the clutch. The ash you stirred up hangs in the air and settles, slowly, on the straw and on the golems' shoulders and on the floor, where your boots have left a grey track from the clutch to the bin and back. Nobody here is going to read it but you. Nobody here, you think.{/n}''',
+        c("Continue", "held", flags=(CLEAN,))),
+    nar("fist", '''{n}You have the egg in your hands and one step taken toward the wall when the nearest golem's head turns. It is not quick. It does not need to be.{/n}
+{n}The fist comes down. You get the egg out from under it and your hand does not quite follow; stone and stone meet across your knuckles with a sound like a dropped plate. The egg goes out of your grip and into the ash-bin, and the ash goes up in a grey cloud over both of you.{/n}
+{n}The magical mouth says something about intruders, and the fist goes back up over the clutch, as if that were all the orders it had. Your hand is not a shape a hand should be.{/n}''',
+        c("Continue", "held", flags=(HAND,))),
+    nar("held", '''{n}When you dig it out of the bin it looks like a stone: grey with ash, black with cinders, dull. Only when you hold it does it give itself away, heavier than a stone and warm through the grime, and something inside it turns over against your palm, slowly, the way a sleeper turns.{/n}
+{n}The golems stand over eleven eggs with their fists up. Whatever happens to those eleven now will happen whatever you do with the one in your hand.{/n}
+{n}It is a woundwyrm, or it will be: Devarra's get, the spawn of the thing that tried to burn your army out of the sky. Greybor would say it needs smashing. The heel of your boot would finish it.{/n}''',
+        c("[Wrap it in your cloak and put it at the bottom of your pack.]", "rock"),
+        c("[Put your heel through it. Some things are better never hatched.]", "crushed", flags=(CRUSHED,))),
+    nar("crushed", '''{n}The shell holds longer than you expect, and then it doesn't. What comes out into the ash is hot and wet and very small, and it does not live long.{/n}
+{n}The golems do not turn their heads. It was out of the straw. It was not theirs any more.{/n}''',
+        c("[Step back from the clutch.]")),
+    nar("rock", '''{n}Somebody in your company asks what you have just put in your pack, and why it made you swear.{/n}''',
+        c('"It\'s a rock. I painted it."', "packed", flags=(ROCK_JOKE,)),
+        c('"A souvenir."', "packed")),
+    nar("packed", '''{n}Nobody believes you, and nobody asks again, because the golems are still standing over eleven eggs with their fists up, and that is a more pressing question.{/n}
+{n}At the bottom of your pack, wrapped in your cloak and grey with ash, something the golems never missed is still warm.{/n}''',
+        c("[Turn back to the golems.]", flags=(PRIMED, GOLEM))),
+], requires=("trickster",), forbids=(PRIMED, CRUSHED, "eggs.destroyed", "eggs.project"), last=3, Relationship=REL,
+    Chapters=[3], AnswerLists=[GOLEM_LIST], NativeReturnCue=GOLEM_RETURN, TricksterDevice=True, TricksterState="golems"))
+
+
+# --- The fallback (a page, Chapters 3 and 5): the same soot, in the citadel vault -------------------------------------
+# The clutch was crated to Drezen (DragonEggsProjectGained) and waits for the druids or the cooks. Worse terms: the vault
+# clerk, and an egg that has to be carried out hot.
+
+visit(P + "eggs.vault", "Coal", [
+    nar("vault", '''{n}The eggs came up from the Ivory Sanctum packed in straw, twelve to a wagon, and the quartermaster put them in the dry vault under the citadel, next to the lamp oil, because it was the warmest room he had. They are still warm. The whole corridor smells of hot stone.{/n}
+{n}Every evening at the eighth bell a clerk with a lamp comes down and counts them, because the quartermaster has heard that the druids want them and the kitchens want them and he does not trust either. He counts by the glow. You have watched him do it twice. The smallest egg, in the crate nearest the door, is the coldest of the twelve; he always has to hold his lamp away to see it.{/n}''',
+        c("[Stealth: go down before the eighth bell with a bucket of coal and your lantern's soot]",
+          mythic="Trickster", check=dict(Skill="SkillStealth", DC=20, Success="coal", Failure="clerk", CommanderOnly=True)),
+        c("[Leave the crates to the quartermaster.]", abort=True)),
+    nar("coal", '''{n}You black the smallest egg with soot until it will not glow for any lamp, and bury it in the coal bucket, and put a lump of coal the same size in its place in the straw. Nobody sees you go down. Nobody sees you come up.{/n}
+{n}At the eighth bell the clerk counts eleven, frowns, counts again, and writes down twelve, because the slate says twelve and he would rather be wrong about eggs than about the slate.{/n}''',
+        c("Continue", "carry")),
+    nar("clerk", '''{n}You have the egg in the coal bucket and the lump of coal in the straw when the lamp comes round the corner an hour early.{/n}
+{n}The clerk is young, and very tired, and he looks at the Commander of the crusade standing in the vault at night with soot to the elbow and a bucket of coal, and you watch him decide that he has not seen anything, because he would like to keep his post.{/n}
+{n}He will remember it all the same. People always do.{/n}''',
+        c("Continue", "carry", flags=(CLERK,))),
+    nar("carry", '''{n}The coal bucket is no good for the stairs; it tips. You take the egg out and carry it up in your hands, under your coat, against your chest, the way you would carry a lamp through wind.{/n}
+{n}It is much hotter than it looked. By the second landing the skin of both palms has gone white and tight, and by your own door it has started to blister. You do not put it down until it is in the ashes of your hearth, and then you sit on the floor and hold your hands in the washbasin, and the water goes warm.{/n}''',
+        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS))),
+], requires=("trickster", CRATED), forbids=(PRIMED, CRUSHED, "eggs.druids", "eggs.omelet", "eggs.destroyed"), delay=24,
+    kind="event", owner="Commander", TricksterDevice=True, TricksterState="vault")
+
+
+# --- The grey stone (a page): the rock in the Commander's hearth -------------------------------------------------------
+
+visit(P + "hearth.grey_stone", "The Commander's rock", [
+    nar("hearth", '''{n}It lives in the ashes of your hearth, at the back, where the fire is hottest, and it looks like a stone that somebody has been careless with. Your steward has tried to take it out twice to sweep, and burned his fingers both times, and now he calls it "the Commander's rock" with a particular expression, and sweeps around it.{/n}
+{n}By the third day the whole citadel calls it that. A sergeant you have never spoken to asks if it is lucky.{/n}''',
+        c("Continue", "night")),
+    nar("night", '''{n}At night, when the house is quiet, it makes a sound.{/n}
+{n}Not a sound, exactly. The ashes around it shiver. A cup on the mantel hums against the stone. Once, near midnight, you wake and are certain that someone is singing in the next room, very low, a long way off, and there is no one in the next room and never was.{/n}
+{n}In the morning the rock is a little colder than it was the night before. The hearth is as hot as your steward can make it. It is not enough.{/n}''',
+        c('[Tell the steward it\'s a stone from the Sanctum, and to mind his own business.]', "end"),
+        c("[Tell the steward nothing at all.]", "end")),
+    nar("end", '''{n}He minds it, with the expression. The hearth is banked higher every night after that without your asking, which is how you know he has heard it singing too.{/n}''',
+        c("[Bank the fire.]")),
+], requires=(PRIMED,), forbids=(HEARTH,), delay=12, kind="event", owner="Commander")
+
+
+# --- The meeting (physical, the widow's step) ---------------------------------------------------------------------------
+
+steps(P + "steps.widow", "The widow on the steps", "[Sit down on the step beside the widow.]", [
+    nd("start", '''"Sit if you're sitting, Commander. Mind the belly; it takes the whole step." {n}She moves her mending basket without looking at you. She is watching a Kellid girl across the square try to sell a copper torc to the jeweller, who is shaking his head the way jewellers shake their heads.{/n}
+"You'll want to know why I've been watching your door. Everybody who sits on this step wants to know something, and they all start by saying it's a nice day." {n}She sniffs.{/n} "It isn't. It's going to snow."''',
+        c('"Why have you been watching my door?"', "rock"),
+        c('"It\'s a nice day."', "nice")),
+    nd("nice", '''"Pft." {n}The corner of her mouth moves. For a heartbeat the widow is gone and somebody much older is enjoying herself.{/n} "Well. At least you listen."''',
+        c("Continue", "rock")),
+    nd("rock", '''"The Commander's rock." {n}She says it the way the sergeants say it, with the same expression your steward uses.{/n} "The whole citadel talks about it. It sits in your hearth and burns anyone who touches it, and at night it sings. The laundress on the second floor hears it through the flue. The laundress thinks it's a ghost."
+{n}She turns her head and looks at you, and she has very pale eyes for a Sarkorian, grey with no brown in them at all.{/n} "It isn't a ghost. What is it?"''',
+        c('"A rock."', "lie", flags=(TOLD_ROCK,)),
+        c('"A woundwyrm egg. I took it out from under the golems in the Ivory Sanctum."', "truth", flags=(TOLD_EGG,)),
+        c('"Who\'s asking?"', "who", flags=(TOLD_NOTHING,))),
+    nd("lie", '''"Is this a joke? Are you trying to play a trick on me?" {n}It is exactly the voice of a tired woman who has been lied to by men all her life, and it is a very good voice, and she drops it at once.{/n} "No. You are. I can hear you doing it."
+"It isn't a rock. Rocks don't turn over when you speak near them."''',
+        c("Continue", "worlds")),
+    nd("truth", '''{n}She lets out a breath she has been holding, and it smokes in the cold air a little longer than a breath should.{/n} "Yes. The smallest one." {n}She pats the belly, absently, the way the widow would.{/n} "Thank you for not lying about it. Most people would have. I had a speech ready for when you did."''',
+        c("Continue", "worlds")),
+    nd("who", '''"A widow on a step." {n}She pats the belly.{/n} "With a basket of mending and nobody to talk to. Who else would I be?" {n}She holds your eye, and it is not a widow's look at all.{/n} "Don't answer that. We'd both be lying, and it's too cold for it."''',
+        c("Continue", "worlds")),
+    nd("worlds", '''"I was in the Sanctum after you, Commander. I went down when the dust had settled, because somebody should."''',
+        c("Continue", "destroyed", requires=("eggs.destroyed",)),
+        c("Continue", "omelet", requires=("eggs.omelet",)),
+        c("Continue", "druids", requires=("eggs.druids",), forbids=("eggs.omelet",)),
+        c("Continue", "vault", requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet")),
+        c("Continue", "chamber", forbids=EGG_WORLDS)),
+    nd("destroyed", '''"Eleven shells on the chamber floor. Slop and shell and the golems standing over it with their fists down, satisfied." {n}Her voice does not change, and her hands in her lap do not move.{/n} "Eleven. There were twelve. I counted twice. And by the wall the ash-bin was dug out, and there was a place in the cinders where somebody had knelt."''',
+        c("Continue", "mother")),
+    nd("omelet", '''"Your kitchens made them into a supper for the whole city. I stood at the back of the soup line and watched the soldiers eat it." {n}She says it very evenly.{/n} "They were hungry. I won't hold that against them. But the quartermaster's slate said the cooks had eleven. There were twelve in the Sanctum. I counted."''',
+        c("Continue", "mother")),
+    nd("druids", '''"I was one of the druids." {n}She says it plainly, as she might say she was one of the washerwomen.{/n} "Four of us came for them, with a handcart and a story about nature. None of us was a druid. We carried eleven eggs out of your citadel. Eleven. There were twelve in the Sanctum; I had counted them before you ever came."''',
+        c("Continue", "hunted", requires=(DV_HUNTING,)),
+        c("Continue", "mother", forbids=(DV_HUNTING,))),
+    nd("hunted", '''{n}Her mouth thins.{/n} "And something grey and hungry has been following our trail ever since, and it didn't find us by chance. You told her where to look." {n}She holds up a hand before you can speak.{/n} "Not now. We'll talk about that, you and I. Not on a step."''',
+        c("Continue", "mother")),
+    nd("vault", '''"There are eleven eggs cooling in straw under your citadel, and a clerk who counts them every night by lamplight and writes down twelve." {n}She sniffs again.{/n} "There were twelve in the Sanctum. I counted them before you ever came."''',
+        c("Continue", "mother")),
+    nd("chamber", '''"I found the ash-bin by the wall dug out, and a place in the cinders where somebody had knelt." {n}She almost smiles.{/n} "There were twelve eggs in that chamber when I first went down to look at them. I had counted them. I'm good at counting eggs."''',
+        c("Continue", "mother")),
+    nd("mother", '''"So. One of them is in your hearth, and it's the smallest, and it's cold, and it's dying." {n}She says the last word gently, as a fact, the way a midwife would.{/n}''',
+        c("Continue", "mother_alive", requires=(DV_RETURNED,)),
+        c("Continue", "ask", forbids=(DV_RETURNED,))),
+    nd("mother_alive", '''"And its mother is alive. I can smell her on your coat, Commander: hot iron and old meat. Don't tell me how. I can guess, and I would rather not know which of you I'd be angrier with."''',
+        c("Continue", "ask")),
+    nd("ask", '''"I'll come and look at it. Tonight, or tomorrow; when your guards have changed and the sergeant with the squint is on the door, because he lets pregnant women through and calls them 'mother'." {n}She picks up her mending, at last.{/n} "Keep the fire high until then. Higher than you think. And eat something, for pity's sake. You look like porridge."''',
+        c('"Who are you?"', "who_end"),
+        c('"Tonight, then."', "end")),
+    nd("who_end", '''"Tonight." {n}She threads her needle.{/n} "I don't tell people who I am on steps. I tell them in their own houses, where they can sit down."''',
+        c("[Leave her to her mending.]", flags=(MET, STARTED))),
+    nd("end", '''{n}She nods, and threads her needle, and goes back to watching the jeweller cheat the Kellid girl out of her grandmother's torc, with an expression that would frighten the jeweller very much if he ever looked up.{/n}''',
+        c("[Leave her to her mending.]", flags=(MET, STARTED))),
+], requires=(PRIMED, HEARTH), forbids=(MET,), delay=24)
+
+
+# --- Reactions (exactly Greybor, Ulbrig and Woljif; each behind his own guard) -----------------------------------------
+
+SCENES.append(reaction("Greybor", P + "react.greybor.rock", (HATCHED,),
+    '''{n}Greybor does not stop sharpening.{/n} "Your rock hatched." {n}The stone goes along the edge, once.{/n} "I told you in the Sanctum what those eggs were. I'd have done that one for free." {n}Another stroke.{/n} "You painted it. I've carried forged papers past three city watches and I never thought of painting the thing itself." {n}He tests the edge on his thumb.{/n} "When it's big enough to be a job, somebody will pay me to do it. I'll tell them the price has gone up. Sentiment's expensive."''',
+    answer_list=GREYBOR_LIST, relationship=REL, forbids=("greybor.dead", "greybor.kicked_out", CLOSED),
+    entry='"You\'ve heard about the kiln."', chapter=3, last=5, delay=24, portrait="Greybor"))
+SCENES.append(reaction("Ulbrig", P + "react.ulbrig.white_girl", (MET, "ulbrig.in_party"),
+    '''"That widow on the jeweller's steps, eh." {n}Ulbrig turns his cup round and round.{/n} "She hums the Windstep mare-songs. Nobody's sung those since before I went to sleep, warchief. The Windstep were horse-folk, north of the Moutray. Old Reudger's lot. Their mares could outrun a griffon for a mile; I know, I tried." {n}He stops turning the cup.{/n} "There was a white-haired girl at Reudger's fire when I was a lad. That widow's got the look of her, about the eyes. Her granddaughter, maybe, eh. Or I'm getting old." {n}He drinks.{/n} "My gran would've said: then mind your manners with her, whoever she is."''',
+    answer_list=ULBRIG_HUB, relationship=REL, forbids=("ulbrig.dead", "ulbrig.kicked_out", CLOSED),
+    entry='"You look like you\'ve seen a ghost, Ulbrig."', chapter=3, last=5, delay=48))
+SCENES.append(reaction("Woljif", P + "react.woljif.small_one", (HATCHED, WOLJIF_SIGHED),
+    '''"Boss. That thing at the kiln. That's one of the eggs from the Sanctum, ain't it." {n}Woljif is not grinning, which is unusual.{/n} "I said somethin' down there, when you smashed the rest. About how maybe they were the lucky ones, 'cause kids without moms don't do so well." {n}He scratches at a horn.{/n} "Then you went and pinched the runt, and got some old Sarkorian lady to be its mom. So now I gotta figure out if I was wrong." {n}He brightens a little.{/n} "Tell her it likes rats. I seen it eat four. That's good. That's a kid that knows how to get by."''',
+    answer_list=WOLJIF_HUB, relationship=REL, forbids=("woljif.dead", "woljif.kicked_out", CLOSED),
+    entry='"Something on your mind, Woljif?"', chapter=3, last=5, delay=24))
+
+
+# --- Epilogue pages (ordered siblings; read-only) ------------------------------------------------------------------------
+
+EPI = "NidalynnEpilogue"
+NAME_SOOT = P + "name.soot"
+NAME_PEBBLE = P + "name.pebble"
+NAME_NONE = P + "name.none"
+FED_DEMONS = P + "fed.demons"
+FED_GOATS = P + "fed.goats"
+FED_RATS = P + "fed.rats"
+TORC_BOUGHT = P + "torc.bought"
+TORC_LIFTED = P + "torc.lifted"
+TORC_LEFT = P + "torc.left"
+FIRST_DEMON = P + "after.first_demon"
+
+
+def epilogue(id, text, requires, forbids=(), paragraphs=()):
+    SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
+                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL))
+
+
+EPILOGUE_PARAGRAPHS = (
+    p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. It hunted demons along the Worldwound's edge from its second year, because they were the only thing it had ever been fed that it truly hated, and it hated them with a thoroughness its mother would have recognised.{/n}''', requires=(FED_DEMONS,)),
+    p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. It never lost its taste for goat. Three villages below Drezen kept a flock for it by arrangement, and were paid, and complained about the price every year on principle.{/n}''', requires=(FED_GOATS,)),
+    p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. There were no rats in Drezen's undercroft for a generation. The cooks said it was the best thing the crusade ever did.{/n}''', requires=(FED_RATS,)),
+    p('''{n}The soldiers called it Soot, after the ash it was carried out in. It never answered to the name, and it never let anyone else use one.{/n}''', requires=(NAME_SOOT,)),
+    p('''{n}The soldiers called it Pebble, after the joke, and the joke outlived the war. It never answered to the name. When it was the size of a barn it still came when she called it that, and bit whoever laughed.{/n}''', requires=(NAME_PEBBLE,)),
+    p('''{n}It chose its own name in its tenth year, in Draconic, and told it to her and to no one else. She said it was a good name, and a long one, and that it had the word for "ash" in it.{/n}''', requires=(NAME_NONE,)),
+    p('''{n}A Kellid woman in the refugee quarter wore a copper torc with a hare on it until she was very old, and told her grandchildren a Commander had bought it back from a jeweller at the full price, which nobody believed.{/n}''', requires=(TORC_BOUGHT,)),
+    p('''{n}A jeweller in Drezen swore for years that a copper torc had walked off his counter on its own. The Kellid woman who wore it swore just as hard that she had never sold it.{/n}''', requires=(TORC_LIFTED,)),
+    p('''{n}The Commander carried a white scar across two knuckles of one hand from the day in the Sanctum. The fingers never quite closed around a sword hilt again, but they closed well enough on everything else. A Sarkorian bonesetter had set them, and said afterwards that a hand that did not close all the way was a hand that knew when to let go.{/n}''', requires=(HAND, HAND_SET)),
+    p('''{n}The Commander carried a white scar across two knuckles of one hand from the day in the Sanctum, and the fingers never quite closed around a sword hilt again.{/n}''', requires=(HAND,), forbids=(HAND_SET,)),
+    p('''{n}The Commander's palms stayed shiny and tight for the rest of the war, like a smith's, and never took a callus again. The only person who ever asked about them was told that a dragon's egg is a hot thing to carry and a hotter thing to put down.{/n}''', requires=(PALMS,)),
+    p('''{n}The soldier from the ford took his twenty lashes and his month in the cells, and deserted in the spring, and was not seen in Drezen again. The kiln's sergeant said he had gone north to look for the grey one's tower. Nobody ever heard whether he found it.{/n}''', requires=(P + "spear.provost",)),
+    p('''{n}The soldier from the ford lived out the war and a good deal longer, and never spoke of the night on the tanners' stair. He was the first man in Drezen to take his hat off when the young dragon flew over.{/n}''', requires=(P + "spear.freed",)),
+    p('''{n}The soldier from the ford came down to the kiln every week after that, with a pig's ear in his pocket, and sat on the step without saying much. The young dragon bit him only once, and he said it was fair, and that her mother had done worse.{/n}''', requires=(P + "spear.seen",)),
+    p('''{n}The Kellid widow whose goat the young dragon ate lived near the wall for the rest of the war, where the wind did not come in. Her son grew up to be a drover, and would not have a goat in his herd, and said he could not remember why.{/n}''', requires=(P + "goat.asked",)),
+    p('''{n}Three wolves were blamed for the goat in the refugee quarter, and two sentries of the east wall were docked a week's pay for letting them over. The widow whose goat it was never said otherwise, to anyone, and moved to the far side of the quarter in the spring.{/n}''', requires=(P + "goat.wolves",)),
+    p('''{n}The saddler whose name the Commander said at the fire below the east wall was never written down anywhere. Nine thousand, four hundred and some other names were never written down either. She kept them all, and taught the Commander one a night, when neither of them could sleep.{/n}''', requires=(P + "wake.name_said", COMMITTED)),
+    p('''{n}Ulbrig Olesk came down to the kiln every week of the war that he was in Drezen, and brought his own bread, and argued with her about horses until the embers went grey. Neither of them ever said what they talked about besides horses. The sergeant with the squint said it was mostly the dead.{/n}''', requires=(P + "ulbrig_met",)),
+    p('''{n}The chaplain's report went to the see in Mendev and was read there, and argued over for a year, and filed. A copy of it is said to be in the archives still, with a note in a later hand in the margin: "And the woundwyrm? Enquire." Nobody ever did.{/n}''', requires=(P + "chaplain_prayed",)),
+    p('''{n}Eleven young dragons grew up fat and furious in a valley three rivers east, under a gold one who pretended to be a stork. Every one of them flew over Drezen once, as if by accident, to look at the twelfth.{/n}''', requires=("eggs.druids",)),
+    p('''{n}The grey dragon's bill for the smallest egg was never paid, and never cancelled. Once a year a scale the colour of eggshell was left on the Commander's windowsill, the way a creditor leaves a card. Nidalynn said that was only manners, and that dragons have excellent manners when they are owed something.{/n}''', requires=(DV_BILL,)),
+)
+
+epilogue("salt", '''{n}Nidalynn stayed in Drezen after the war, in the old lime-kiln below the east wall, which she roofed with slate and never once let cool. The refugees who stayed called her the widow long after she stopped looking like one, and brought her their disputes, their broken bones and their bread, and she fed every one of them before she let them talk.{/n}
+{n}She was never in a hurry. The Commander learned that it was not patience, exactly. It was that she had already decided, and she saw no reason to rush the part she was enjoying.{/n}''',
+         requires=(COMMITTED,), forbids=(CLOSED,), paragraphs=EPILOGUE_PARAGRAPHS)
+
+epilogue("late", '''{n}The war ended before the young dragon was ready to fly. It flew in the spring after Threshold, off the kiln roof, badly, and then well, and circled Drezen three times shrieking while the whole city came out to point.{/n}
+{n}That evening a tall woman with a white braid came up the citadel stair with a loaf of bread, a knife and a little salt folded in a paper, and put them on the Commander's table without a word, and sat down to wait. She was not in any hurry. She had waited for worse things, and much longer.{/n}''',
+         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, BREAD_KEPT), paragraphs=EPILOGUE_PARAGRAPHS)
+
+epilogue("heel", '''{n}The heel of the loaf stayed on the shelf in the kiln, wrapped in a cloth, long after it was stone-hard and good for nothing. She never moved it and never mentioned it.{/n}
+{n}People who knew them both said that the Commander came down to the kiln more evenings than not, and that the two of them sat by the fire and talked until late, and that it was the most patient courtship anyone in Drezen had ever seen, and that it was not clear to anyone, including the two of them, which of them was doing the courting.{/n}''',
+         requires=(BREAD_KEPT,), forbids=(COMMITTED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
+
+epilogue("apart", '''{n}The widow was gone from the jeweller's steps by the end of the war. The refugees said she had gone north with a young dragon that would not stay in a city, and that whatever she had said to the Commander she had said in the kiln, where nobody could hear it.{/n}
+{n}Sometimes, when it snowed, a silver shape went over Drezen very high, and did not come down.{/n}''',
+         requires=(MET, CLOSED), forbids=(COMMITTED, LEFT_WITH_IT, LIE_KEPT, GIVEN_UP), paragraphs=EPILOGUE_PARAGRAPHS)
+
+epilogue("claimed", '''{n}The Commander kept a young woundwyrm in the kiln below the east wall for a season, and fed it, and called it the crusade's, and the crusade was proud of it for exactly as long as it took the creature to learn to fly.{/n}
+{n}On the day it flew it went to her, not to the Commander, and she went with it. The kiln was cold by evening. The Commander's claim was good in every court in Mendev, and there was not one court in Mendev that could have enforced it.{/n}''',
+         requires=(LEFT_WITH_IT,), paragraphs=EPILOGUE_PARAGRAPHS)
+
+epilogue("lie", '''{n}The Commander never said, in front of anyone who mattered, where the dragon in the kiln had come from. The widow did not say it either. She left Drezen at the first thaw with a young dragon under her shawl, and on the jeweller's step where she had sat all winter she left a heel of bread and a pinch of salt, untouched, where anyone could see them.{/n}''',
+         requires=(LIE_KEPT,), paragraphs=EPILOGUE_PARAGRAPHS)
+
+epilogue("given", '''{n}The Commander gave the thing that came out of the rock to the chaplain's fire. The fire never got it. The old lime-kiln below the east wall lost its roof that night, all of a piece, and the lower town swears to this day that something silver went up out of the smoke, bigger than the sky over the tanners' stair, with something small and red held against its breast, and put out every torch in the lane as it passed.{/n}
+{n}The widow was not seen on the jeweller's steps again. The Kellid women who had shared her step said she had never been a widow, and never been with child; but refugees will say anything.{/n}''',
+         requires=(GIVEN_UP,))
+
+def integrate(payload):
+    """Her presences and her own Derived keys. World keys (the egg outcomes, the eggs_crated latch, Devarra's flags, the
+    companions' guards) bind on demand in trickster_world."""
+    for key, value in PRESENCES.items():
+        have = payload.setdefault("Presences", {}).get(key)
+        if have is not None and have != value:
+            raise ValueError("Conflicting presence: " + key)
+        payload["Presences"][key] = dict(value)
+    have = payload.setdefault("SeenCues", {}).get(WOLJIF_SIGHED)
+    if have is not None and have != ["d2f3ae3a8d7d0eb4aab722e777b7c260"]:
+        raise ValueError("Conflicting binding: " + WOLJIF_SIGHED)
+    payload["SeenCues"][WOLJIF_SIGHED] = ["d2f3ae3a8d7d0eb4aab722e777b7c260"]
+    for key, groups in DERIVED.items():
+        have = payload.setdefault("Derived", {}).get(key)
+        if have is not None and have != [list(g) for g in groups]:
+            raise ValueError("Conflicting derived key: " + key)
+        payload["Derived"][key] = [list(g) for g in groups]

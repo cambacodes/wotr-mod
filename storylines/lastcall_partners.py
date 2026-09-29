@@ -489,6 +489,36 @@ partner("delamere", "delamere", "delamere.committed", "delamere.closed", "First 
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Delamere: one day, owed", "I asked a huntress for another day, and she gave it to me on account. She keeps the right to take it back whenever she likes. I walk crooked so that neither of us forgets."))
 
+NI = "nidalynn.trickster."
+partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her Fire",
+    '''Nidalynn did not wait in Drezen for news of Threshold, and she did not go north. She banked the kiln under the east wall as high as it would go, and sat on its step through the whole of that night with bread and salt in her lap, feeding the fire, the way old Reudger, she said, used to sit up for a rider late home in a snowstorm. The young dragon sat beside her and would not go to sleep.''',
+    (
+        page_p('''At the rift the Commander called across the broken ground with a long rising herding-shout, the kind that brings mares home over a great distance, with her name at the end of it, and far off to the south something silver came up out of the clouds over Drezen and answered it, and came. She landed on the lip of the world with a young red-black dragon screaming at her heels, and took one look at what was left of the Commander, and said that the soup was getting cold.''', requires=(called("nidalynn"),)),
+        page_p('''The Commander never found out what she would have done if the flask had not held. She would not say. She said a silver does not tell a trickster what she would have done if the trick had failed, because the trickster would only use it next time.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was standing at the back with a loaf under her arm, because somebody would be hungry after, and she was right.''', requires=(H2,)),
+        page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one's bill still stood. Nidalynn said it was only manners to leave it standing, and that she would be there when it was called.''', requires=("devarra.trickster.cost.egg_withheld",)),
+    ), declined=NI + "refused",
+    deal=[[NI + "cost.salt_eaten"]],
+    call=call('''[Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."''',
+        '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Nidalynn: salt, eaten", "I ate a silver dragon's salt at a lime-kiln. Among the Windstep that makes me of her fire until the salt is out of my blood, and she says it never comes out. The debt runs both ways. So she says."))
+
+JA = "jannah.trickster."
+partner("jannah", "jannah", "jannah.committed", "jannah.closed", "The Front Rank",
+    '''Jannah Aldori stood the last night of the war in the front rank, where she could see what was coming, because she had asked to. She did not run. When the rift closed, or failed to, she walked back into Drezen with her sword on her shoulder, found the practice yard empty, chalked a circle on the sand in one stroke, and sat down in the middle of it to wait, eyes open, the way the forms teach you to wait for a victor who has not yet quit the field.''',
+    (
+        page_p('''At the rift the Commander called the salute, the way {mf|he|she} had once called it on the north wall with the vrocks coming: her whole name, and "To the first blood!" Far off, in a practice yard in Drezen, a half-elf got up out of a chalk circle before anyone had quit it, which is against every form there is, and came.''', requires=(called("jannah"),)),
+        page_p('''The world buried the Commander. Jannah went to the graveside, lay down in the chalk she had drawn round it, and kept her eyes on the sky until the last priest had gone. Under the forms nobody leaves a circle until the victor has quit it, she said afterwards, and she was not at all sure who had won.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was the first through the door with her blade up in the salute, because whatever came out of it was going to be greeted properly.''', requires=(H2,)),
+        page_p('''She kept the scar on her temple where it could be seen. On the day of the Scar she let the Commander trace it once, and not on any other day.''', requires=(JA + "cost.temple_scar",)),
+    ), declined=JA + "declined",
+    deal=[[JA + "cost.first_loss"], [JA + "cost.story_lost"]],
+    call=call('''[Call the salute] "Jannah Aldori! To the first blood!"''',
+        '''{n}You have called it once before, on a wall, with wings coming out of the dark: her whole name and the old Mivon words. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, someone who never runs any more answers.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Jannah: a rematch, owed", "An Aldori may always ask the one who beat her for a rematch, and I have beaten her, or she me, too often for the account ever to be square. She keeps the chalk in her pocket. I am to expect a circle wherever I go."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 

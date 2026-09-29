@@ -256,7 +256,7 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
     jan("unknown", '''"Seelah doesn't know anything. As far as she knows I ran at Houndheart, and nobody ever saw me again. Nobody told her about the cage. Nobody told her about you." {n}Her mouth twists.{/n}
 "It's the kindest thing that's happened to her all year, and I'm about to ruin it."''',
         c("Continue", "decide")),
-    jan("q3", '''"Seelah smiled at me. In front of the citadel, in front of Elan, after everything. As if I hadn't failed her." {n}She turns the tankard a quarter-turn.{/n}
+    jan("q3", '''"Seelah smiled at me. In front of the citadel, in front of Elan, after everything. As if I hadn't failed her."
 "I asked her how she could do that. She said she'd give me a piece of her mind once we were in private. She did, too. Then she bought me a drink."''',
         c("Continue", "elan", requires=(ELAN_DEAD,)),
         c("Continue", "elan_lives", forbids=(ELAN_DEAD,))),
@@ -272,7 +272,7 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
     jan("cage_seen", '''"The last time I saw her was the Scar. She said she was sorry. She had nothing in the world to be sorry for, and I stood there and let her say it." {n}She turns the tankard a quarter-turn.{/n}
 "She'd forgive me. That's the trouble with Seelah. She'd forgive me before I'd finished asking, and then I'd have to live with it."''',
         c("Continue", "decide")),
-    jan("not_seen", '''"I haven't seen Seelah since Houndheart. I've seen her every night in my head, though, standing by the fire in the rain, shouting that motto of hers, looking round for me." {n}She turns the tankard a quarter-turn.{/n}
+    jan("not_seen", '''"I haven't seen Seelah since Houndheart. I've seen her every night in my head, though, standing by the fire in the rain, shouting that motto of hers, looking round for me."
 "I wasn't there. I'm never there, in that dream. I've been gone for a year."''',
         c("Continue", "decide")),
     jan("decide", '''"She's in Drezen. I could walk up those steps and cross the square and be in front of her before the bell." {n}She doesn't move.{/n}
@@ -361,9 +361,9 @@ meet(BLADE, "Forty-one", '"That isn\'t a practice sword."', [
     nar("open", '''{n}She has the long Aldori blade across her knees, and she's working the old leather off the grip with the point of a knife. Underneath, the wood is dark and smooth with years of her hand.{/n}''',
         c("Continue", "ash", requires=(SCAR,)),
         c("Continue", "stores", forbids=(SCAR,))),
-    jan("ash", '''"The one you passed me through the bars." {n}She doesn't look up.{/n} "I lay on it in the ash for an hour, and carried it through the Wound, and guarded salt with it all winter, and it never once asked me what I thought I was doing."''',
+    jan("ash", '''"The one you passed me through the bars." {n}She keeps working the leather.{/n} "I lay on it in the ash for an hour, and carried it through the Wound, and guarded salt with it all winter, and it never once asked me what I thought I was doing."''',
         c("Continue", "master")),
-    jan("stores", '''"Mine. The turnkey found it in the gaol stores under a sack of turnips, which is where they put the weapons of people they don't expect to see again." {n}She doesn't look up.{/n}
+    jan("stores", '''"Mine. The turnkey found it in the gaol stores under a sack of turnips, which is where they put the weapons of people they don't expect to see again."
 "The vrocks threw it outside my cage in the Scar. Somebody carried it all the way back to Drezen and then put it under a sack of turnips. I don't know whether to thank them or challenge them."''',
         c("Continue", "master")),
     jan("master", '''"My master gave it to me the day I left Mivon. He'd never said a kind word to me in seven years. He put this in my hands at the river stairs and said, 'Don't come back with it dirty.'" {n}Her mouth quirks.{/n}
@@ -560,7 +560,7 @@ meet(YOUR_TALE, "Your part", '"You look like you\'re about to ask me something."
         c('"I spend people. Soldiers, on purpose, to buy something bigger. I learn their names first."', "spend", flags=(TALE_SPENDS,)),
         c('"Kenabres. The ones I couldn\'t get to."', "kenabres"),
         c('"I don\'t go over things at night."', "nothing")),
-    jan("cage", '''"Not knowing." {n}She turns the cup in her hands.{/n}''',
+    jan("cage", '''"Not knowing." {n}She weighs the cup as if it were a blade.{/n}''',
         c("Continue", "cage_planned", requires=(TOLD_PLANNED,)),
         c("Continue", "cage_plain", forbids=(TOLD_PLANNED,))),
     jan("cage_planned", '''"You told me you'd made it your business to know the forms before you ever came to the cage. So you knew the words. You didn't know me. You didn't know whether I'd take them, or whether my pride had died in there with everything else."
@@ -674,7 +674,7 @@ meet(IRABETH, "One question", '"Someone\'s been down here. There\'s a second sto
 meet(YIELD_CIRCLE, "Yielding the circle", '"The muster\'s in an hour."', [
     nar("open", '''{n}She has two new notches on the inside of her scabbard, both cut the wrong way, and she is looking at them as if they belonged to someone she didn't much like.{/n}''',
         c("Continue", "start")),
-    jan("start", '''"Two." {n}She doesn't look up.{/n} "Forty-one bouts in Mivon, and then two, both to you, both the wrong way. I'll get used to it. I'm getting used to a lot of things."''',
+    jan("start", '''"Two." {n}She runs a thumbnail along them.{/n} "Forty-one bouts in Mivon, and then two, both to you, both the wrong way. I'll get used to it. I'm getting used to a lot of things."''',
         c('[Yield the circle] "At the muster today I\'m going to walk into your chalk and lay my blade down before the salute."', "warn"),
         c('"They were fair bouts. You lost them fairly."', "fair")),
     jan("fair", '''"I know. That's the worst part. If you'd cheated I could hate you for it." {n}She puts the scabbard down.{/n} "Go on. The muster won't wait for either of us."''',
@@ -914,7 +914,7 @@ visit(SONG, "Aldori, sorry", [
         c("[Listen from the door.]", "door")),
     nar("inside", '''{n}Nobody stops singing when you come in, which tells you exactly how long they've been at it. Jannah sees you over the heads and, without missing a beat, points her mug at you, and the whole room turns and sings the next verse straight at the Commander of the crusade.{/n}''',
         c("Continue", "verse")),
-    nar("door", '''{n}You stay in the doorway with your hood up and let the song wash out into the street. It's a dreadful song. It rhymes 'Aldori' with 'sorry' and 'first blood' with 'worst mud', and someone has put a verse in about the Houndheart camp that makes the whole room go quiet for two lines before it picks up again.{/n}''',
+    nar("door", '''{n}You stay out on the step with your hood up and let the song wash out into the street. It's a dreadful song. It rhymes 'Aldori' with 'sorry' and 'first blood' with 'worst mud', and someone has put a verse in about the Houndheart camp that makes the whole room go quiet for two lines before it picks up again.{/n}''',
         c("Continue", "verse")),
     jan("verse", '''{n}When it's over she climbs down off the bench and comes to you, flushed, with foam on her lip and her eyes very bright.{/n}
 "They had the Houndheart verse wrong. They had me running before the fire. I made them change it." {n}She wipes her mouth with the back of her hand.{/n} "Now I run after the first one's over the barricade, which is true, and I come back in the last verse, which is also true, and it doesn't rhyme at all, and I don't care."''',
@@ -1029,7 +1029,7 @@ meet(PAPER, "The answer", '"You\'ve written something."', [
 meet(NOTCH, "The right way", '"You\'re cutting a notch."', [
     nar("open", '''{n}She has her scabbard across her knees and the point of a small knife resting on the leather inside its throat, and she hasn't made the cut yet. She has been sitting like that for some time.{/n}''',
         c("Continue", "start")),
-    jan("start", '''"Trying to." {n}She doesn't look up.{/n}
+    jan("start", '''"Trying to." {n}The knife stays where it is.{/n}
 "I drew first blood on the Commander of the crusade in front of four hundred soldiers. By the forms that's a win, a clean one, and it goes in the scabbard the right way, next to the others." {n}The knife doesn't move.{/n} "I can't make myself cut it."''',
         c('"Why not?"', "why"),
         c('"You earned it."', "earned")),
