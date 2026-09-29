@@ -108,7 +108,7 @@ def office(id, title, entry, nodes, requires, forbids=(), delay=0, chapters=(3, 
 
 SCENES.append(scene(P + "caravans.countersign", "The lost carts", "Dorgelinda", 3,
     '[Sign for the lost carts yourself] "Enter every cart a vrock \'carried off\' to my account, Quartermaster. Issued to the Commander, for operations."',
-    [d("sign", '''{n}Her eye stays on you a long moment, red-rimmed from nights on the job. Then she turns the ledger round and pushes the pen across the table, as if the council could not see her do it.{/n}
+    [d("sign", '''{n}Her eye stays on you, red-rimmed from nights on the job, while she works out what this will cost her. Then she turns the ledger round and pushes the pen across the table, as if the council could not see her do it.{/n}
 "Your account, your hand. I don't write other folks' debts. Bless their grubby hands, I've got enough of those already."
 {n}Across the table someone laughs and turns it into a cough.{/n}''',
        c('[Write the line, and a rider under it: "...and all stores that follow them."]', "rider"),
@@ -245,7 +245,7 @@ office(P + "after.weekly_count", "Weekly count", '"Right on time. Boots off the 
 "We drink to the third one, whichever it was that didn't come. Tonight it's boots. Last week it was bread. You'd not believe how many men die in this war 'cause somebody somewhere wrote a number down wrong."''',
       c('"Armed, armoured and fed."', "toasted")),
     d("toasted", '''{n}She looks at you over the cup for a moment longer than she needs to.{/n}
-"Two out of three." {n}She corrects you, without heat, and refills both cups, and writes nothing in the book, which is the first time.{/n}
+"Two out of three." {n}She corrects you, without heat, and refills both cups, and writes nothing in the book, which she has never once done.{/n}
 "Same time next week. Bring the boots back if you've still got 'em."''',
       c("[Finish your cup.]", flags=(COUNTED, P + "drank"))),
     d("no", '''"No." {n}She says it the way she says "two out of three": as a fact of supply.{/n}
@@ -273,7 +273,7 @@ office(P + "after.fellows_methods", "The second book", '"Shut the door. No, all 
 "You're the one person in Drezen I can say that to. You ate a warehouse and signed for it. So I'm askin' you. Do we keep a second book?"''',
       c('"Keep your hands clean. I\'ll keep mine dirty for both of us."', "clean"),
       c('"Do it. Their methods. Your books."', "dirty")),
-    d("clean", '''{n}She looks at you for a long time with the one eye.{/n}
+    d("clean", '''{n}She turns her head so the one eye has you square, the way she sights down a row of barrels for the one that's leaking.{/n}
 "That's a fool's bargain, Commander. You carry the dirt and I get to keep my hands." {n}She puts the thin book in the stove and watches it catch, the pages curling one after another like something that wants to live.{/n}
 "I'll take it. Don't think I don't know what it cost."''',
       c("[Leave it there.]", flags=(METHODS, CLEAN))),
@@ -306,14 +306,15 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
       c("Continue", "confessed", requires=(CONFESSED,)), c("Continue", "ask", forbids=(CONFESSED,))),
     d("confessed", '''"You told me the truth once, the day I opened the audit. I wrote it down. It's still in here, at the back. Unsent."''',
       c("Continue", "ask")),
-    d("ask", '''{n}The thong of keys that never leaves her wrist is lying on the desk, beside the book. You have never seen it off her. Three new locks on Bartley's warehouse, the powder store, the stores' own door, and one small black key worn smooth that you have never seen her use.{/n}
+    d("ask", '''{n}Her dented tin cup is on the desk beside the book: the one she drinks the third toast from, the one that never goes to anybody else. It is empty. The bottle that was never on any manifest stands next to it, unopened.{/n}
 "I've been fair with you, Commander, and I'll be plain. I don't want you in my book. You've been in my book since the caravans. I want you in my rooms, and at my table when the carts come in, and in my bed when they don't." {n}Her good hand lies flat by the keys, not on them.{/n}
 "I'm no girl, and I'm no fool, and I don't ask twice. So. Yes or no?"''', *ASK),
-    d("yes", '''{n}She works the small black key off the thong one-handed, bracing the ring against the desk with her bad wrist, and presses it into your palm and closes your fingers over it with hers.{/n}
-"My rooms. Behind the stores. Nobody's held that key since Kenabres, and nobody else will." {n}She puts the rest of the keys back on her wrist.{/n} "Use it tonight. Don't knock. I'll hear you anyway."''',
+    d("yes", '''{n}She opens the bottle one-handed, bracing it against the desk with her bad wrist, fills her own dented cup to the brim and pushes it across to you with the back of her hand. She does not pour one for herself.{/n}
+"Armed, armoured and fed. Supply service toast. Most nights it's two out of three." {n}She watches you lift it.{/n} "Tonight it's three. Drink it all; that cup's yours now, and nobody's drunk from it since Kenabres but me."
+"My rooms are behind the stores. The latch is off after the last cart. Don't knock. I'll hear you anyway."''',
       c("[Stay while she writes.]", flags=(COMMITTED,))),
-    d("yes_boots", '''{n}She counts the boots: two, left and right, regulation, drawn today from the Crusade's own stores on your seal. She writes them in. Paid. Then she works the small black key off the thong one-handed and sets it inside the left boot.{/n}
-"Paid in full. Took you long enough." {n}She pushes the boots across the desk at you.{/n} "My rooms, behind the stores. Nobody's held that key since Kenabres. Use it tonight, and bring the boots. I'll want to see if they fit."''',
+    d("yes_boots", '''{n}She counts the boots: two, left and right, regulation, drawn today from the Crusade's own stores on your seal. She writes them in. Paid. Then she fills her own dented cup to the brim and stands it inside the left boot.{/n}
+"Paid in full. Took you long enough. Armed, armoured and fed: three out of three, for once." {n}She pushes the boots across the desk at you.{/n} "That cup's yours now. Nobody's drunk from it since Kenabres but me. My rooms, behind the stores; the latch is off after the last cart. Bring the boots. I'll want to see if they fit."''',
       c("[Stay while she writes.]", flags=(COMMITTED, BOOTS_PAID), crusade=("Materials", -200))),
     d("not_yet", '''"No, I don't." {n}She shuts the book, gently, which is worse than hard.{/n}
 "And I'm not sayin' yes to a line I can't balance, Commander. Not today. Come back when you'll tell me where it went. All of it. Then ask me again."''',
@@ -327,8 +328,8 @@ office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
     d("price", '''"Where did it go. All of it. The carts, the warehouse, the Abyss. Every line." {n}The pen is already in her hand. She has turned to a clean page, which in her office is the closest thing to a courtesy.{/n}''',
       c("[Tell her everything, and let her strike it from the stores.]", "told", crusade=("Materials", -100)),
       c('"Not the warehouse. Anything else."', "no")),
-    d("told", '''{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances for the first time since the caravans.{/n}
-"There. Was that so hard." {n}She puts the pen down, and takes the thong of keys off her wrist, and lays it on the balanced page.{/n} "Now ask."''',
+    d("told", '''{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances, which it has not done since the caravans.{/n}
+"There. Was that so hard." {n}She puts the pen down, takes her own dented cup off the shelf, and stands it on the balanced page, empty.{/n} "Now ask."''',
       c("[Ask.]", flags=(COMMITTED, TOLD_ALL))),
     d("no", '''"Then we're done, Commander." {n}She rules a line under your column, the only line she has ever drawn in anger.{/n}
 "I'll keep the book. Not you."''',
@@ -340,7 +341,7 @@ office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
 
 EP = dict(last=6, Relationship="dorgelinda")
 SCENES.append(scene(P + "epilogue.committed", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", '''{n}The Logistics Council's last ledger balanced to the copper, save one line in the Commander's name, marked "used, quietly". Dorgelinda Stranglehold never ruled it off, and never explained why to the clerks. The Commander kept a small black key to the rooms behind the stores for the rest of Dorgelinda's life, and used it more often than the clerks thought proper, and never once knocked.{/n}''',
+    nar("page", '''{n}The Logistics Council's last ledger balanced to the copper, save one line in the Commander's name, marked "used, quietly". Dorgelinda Stranglehold never ruled it off, and never explained why to the clerks. The Commander drank from Dorgelinda's dented cup at her table for the rest of her life, three out of three on the good nights, and let themselves into the rooms behind the stores more often than the clerks thought proper, and never once knocked.{/n}''',
         paragraphs=(
             p("{n}Under the first entry, in the Commander's hand, was a rider nobody but she had ever read to the end: \"...and all stores that follow them.\" She followed them.{/n}", requires=(CARTS,)),
             p("{n}The boots were entered as paid. She kept the last pair on a shelf in the stores, regulation, unworn, and would not issue them to anyone.{/n}", requires=(BOOTS_PAID,)),
