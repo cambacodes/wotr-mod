@@ -262248,7 +262248,7 @@
         {
           "Id": "start",
           "Speaker": "Mielarah",
-          "Text": "{n}She does not look surprised. She has been asked before, you think, by people who wanted a story to take home and tell badly. She sets her cup down, turns it by the handle until the handle points at the door, and folds her hands on the table.{/n}\n\"Most people ask how many. You ask how. That is either very kind or very morbid, and I suspect you haven't decided which.\"\n\"Very well. The first was a steward of the Arcanamirium, the week I came home from Abaddon. He was bringing me tea on the east stair. The tray tipped, he trod on the spoon, and he broke his neck on the newel post.\" {n}A small, precise shrug.{/n} \"Pointless. That is the Gravedragger's whole signature. Pointless.\"",
+          "Text": "{n}She does not look surprised. She has been asked before, you think, by people who wanted a story to take home and tell badly. She sets her cup down, turns it by the handle until the handle points at the door, and folds her hands on the table.{/n}\n\"Most people ask how many. You ask how. That is either very kind or very morbid. I should like to know which, before I answer.\"\n\"Very well. The first was a steward of the Arcanamirium, the week I came home from Abaddon. He was bringing me tea on the east stair. The tray tipped, he trod on the spoon, and he broke his neck on the newel post.\" {n}A small, precise shrug.{/n} \"Pointless. That is the Gravedragger's whole signature. Pointless.\"",
           "Choices": [
             {
               "Text": "Go on.",
@@ -262264,7 +262264,7 @@
         {
           "Id": "list",
           "Speaker": "Mielarah",
-          "Text": "\"My first mate on Starcatcher the First. Lightning out of a clear sky, while we had the charts spread on the binnacle between us. A Pathfinder I had pulled out of Abaddon came to my door in Absalom to thank me and was kicked by a carriage horse on my own step. A harbour clerk, stamping my papers. A girl who sold me apples, while I was counting out the copper.\"\n{n}Her voice is quite even. The list has been said so often that it has worn smooth, like a prayer, or a road.{/n}\n\"I kept their names. I have every one. It is the least a magister can do, to keep accurate records.\" {n}She picks the cup up again and does not drink from it.{/n} \"There. Now you have a story to tell badly.\"",
+          "Text": "\"My first mate on Starcatcher the First. Lightning out of a clear sky, while we had the charts spread on the binnacle between us. A Pathfinder I had pulled out of Abaddon came to my door in Absalom to thank me and was kicked by a carriage horse on my own step. A harbour clerk, stamping my papers. A girl who sold me apples, while I was counting out the copper.\"\n{n}Her voice is quite even. The list has been said so often that it has worn smooth, like a prayer, or a road.{/n}\n\"Some of them I loved. Most of them I had never heard of until the inquest; the news of them followed me from port to port, as if it had been told where to find me. I kept their names. I have every one. It is the least a magister can do, to keep accurate records.\" {n}She picks the cup up again and does not drink from it.{/n} \"There. Now you have a story to tell badly.\"",
           "Choices": [
             {
               "Text": "[You see more than other people] Look past her shoulder, at what stands there.",
@@ -262324,7 +262324,7 @@
           "Text": "{n}You have seen more than other people since the path took you. You let your eyes slide past her shoulder, and something is there.{/n}\n{n}Not a shape: the idea of one, leaning on a spade that is not there either, patient as a gravedigger at the end of a long day. It is not looking at her. It has never been looking at her. Its blank regard rests on the serving girl who is filling Mielarah's cup, and when the girl steps back it turns, the way a compass needle turns, and settles on whoever is nearest.{/n}\n{n}At the moment, that is you. It is a cold thing to be looked at by. You look back.{/n}",
           "Choices": [
             {
-              "Text": "\"It isn't watching you. It never was. It watches whoever stands closest to you.\"",
+              "Text": "\"It isn't watching you. I don't think it ever was. It watches whoever stands closest to you.\"",
               "Next": "rule",
               "Set": [],
               "Requires": [],
@@ -262340,7 +262340,7 @@
           "Text": "{n}You know a little of Zyphus. Everyone who has buried friends in the Worldwound learns a little. His priests hold that no death is written in advance; a death is an accident, and an accident is an offering. A curse from his herald would not aim. Aiming is for assassins and for fate. It would simply collect.{/n}\n{n}And every name on her list died within arm's reach of her. Bringing tea. Leaning over the same chart. On her step. Stamping her papers. Taking her copper. Not the people she cared for most, not the people who hated her: the people who happened to be standing nearest when the dice fell.{/n}",
           "Choices": [
             {
-              "Text": "\"It doesn't choose. It takes whoever is standing nearest you.\"",
+              "Text": "\"I don't think it chooses. I think it takes whoever is standing nearest you.\"",
               "Next": "rule",
               "Set": [],
               "Requires": [],
@@ -262356,7 +262356,7 @@
           "Text": "{n}You stop listening to the names and watch the room instead.{/n}\n{n}A sailor at the next table has tipped his chair back on two legs to listen, so far that his head is almost at her shoulder. The rear leg finds the one soft board in the floor of the Bad Luck. He goes over backwards, and the back of his skull meets the edge of her table with a sound like a dropped melon, and he lies there blinking at the rafters with blood in his ear.{/n}\n{n}Mielarah does not turn her head. You understand that she stopped turning her head years ago. And you understand something else: of everyone in the room, he was simply the closest.{/n}",
           "Choices": [
             {
-              "Text": "\"It isn't aiming at anyone. It takes whoever is nearest you. That man was nearest.\"",
+              "Text": "\"I don't think it aims at anyone. I think it takes whoever is nearest you. That man was nearest.\"",
               "Next": "rule",
               "Set": [],
               "Requires": [],
@@ -262449,7 +262449,7 @@
         {
           "Id": "rule",
           "Speaker": "Mielarah",
-          "Text": "{n}For a moment she is entirely still. Then she laughs, a small, dry sound with nothing behind it.{/n}\n\"Nearest.\" {n}She says it the way a scholar repeats a wrong answer, to be sure she heard it.{/n} \"I have read every treatise on curses in the Arcanamirium's library. I paid the priest, the witch and the demon. Not one of them told me it had a rule.\"\n{n}Her hands have come apart on the table. She looks at them.{/n}\n\"But if it has a rule, then everyone who ever stood beside me, I put there. The steward. My mate. The girl with the apples. I wanted a cup of tea, and a second opinion on a chart, and an apple.\" {n}The smile comes back, badly.{/n} \"Accurate records. Somebody should have told me what I was recording.\"",
+          "Text": "{n}For a moment she is entirely still. Then she laughs, a small, dry sound with nothing behind it.{/n}\n\"Nearest.\" {n}She says it the way a scholar repeats a wrong answer, to be sure she heard it.{/n} \"That is a hypothesis, Commander, not a finding. I have read every treatise on curses in the Arcanamirium's library. I paid the priest, the witch and the demon. Not one of them suggested it had a pattern.\"\n{n}Her hands have come apart on the table. She looks at them.{/n}\n\"But I have my records. The steward was on the stair below me. My mate was across the binnacle. The girl was across her counter, taking my copper.\" {n}Slowly, as if adding a column.{/n} \"If it has a rule, then everyone who ever stood beside me, I put there. The steward. My mate. The girl with the apples. I wanted a cup of tea, and a second opinion on a chart, and an apple.\" {n}The smile comes back, badly.{/n} \"Accurate records. Somebody should have told me what I was recording.\"",
           "Choices": [
             {
               "Text": "\"Then choose better who stands beside you.\"",
@@ -262666,7 +262666,7 @@
         {
           "Id": "flirt",
           "Speaker": "Mielarah",
-          "Text": "\"You are bleeding on my coat.\" {n}But she does not let go at once. Her thumb stays on the knot of the handkerchief a moment longer than a knot needs.{/n}\n\"That was a very poor joke, and a very brave one, and I haven't decided which I'm angrier about.\" {n}She lets go.{/n} \"Don't do it again. And don't sit anywhere else.\"",
+          "Text": "\"You are bleeding on my coat.\" {n}But she does not let go at once. Her thumb stays on the knot of the handkerchief a moment longer than a knot needs.{/n}\n\"That was a very poor joke, and a very brave one, and I shall be angry about both until it stops bleeding.\" {n}She lets go.{/n} \"Don't do it again. And don't sit anywhere else.\"",
           "Choices": [
             {
               "Text": "[Keep your seat.]",
@@ -263214,7 +263214,6 @@
               "Text": "[Tell her the truth] \"Your curse takes whoever is nearest. If it has to take someone, let it take the man most likely to kill you.\"",
               "Next": "truth",
               "Set": [
-                "mielarah.trickster.primed.minder",
                 "mielarah.trickster.minder.told"
               ],
               "Requires": [],
@@ -263264,6 +263263,16 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"You're right. It's your crew. Forget I asked.\"",
+              "Next": "withdrawn",
+              "Set": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Mielarah"
@@ -263271,7 +263280,52 @@
         {
           "Id": "yield",
           "Speaker": "Mielarah",
-          "Text": "{n}She looks at the portal for a long breath, and then at her list, and then, finally, at you.{/n}\n\"It's your expedition.\" {n}The words come out as if each one had to be signed for.{/n} \"It's my crew. I'll post him. I'll tell him it's your whim, which it is. And if Oskel dies at my elbow on this voyage, I will know whose order put him there, and so will you, and we will neither of us ever be able to pretend otherwise.\"\n{n}She picks the pencil up again and writes something on the supply list, very small. You cannot read it upside down. You suspect it is his name.{/n}",
+          "Text": "{n}She looks at the portal, and then at her list, and then, finally, at you.{/n}\n\"It's your expedition, and on the far side of that portal I'll take your orders. So hear mine first, while I'm still the captain.\" {n}She sets the pencil down, square to the edge of the list.{/n}\n\"I tell him myself. Tonight, all of it: the curse, your theory, and what you want him for. Then I pay him off. The gold I promised him for a quiet life, every coin of it, in his hand, before we sail. If he takes it and walks off my ship, there goes your lightning rod, and I'll fly you to Colyphyr without him, and you'll have deserved it.\"\n\"If he stays, he stays because he chose to, knowing why. Not because you arranged him like a chair at a dinner.\" {n}Her voice does not rise.{/n} \"That is the only way Oskel stands at my elbow.\"",
+          "Choices": [
+            {
+              "Text": "\"Pay him. Tell him everything.\"",
+              "Next": "paid",
+              "Set": [
+                "mielarah.trickster.primed.minder",
+                "mielarah.trickster.minder.paid"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Then leave it. I won't spend your gold on my theory.\"",
+              "Next": "withdrawn",
+              "Set": [
+                "mielarah.trickster.minder.refused"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "paid",
+          "Speaker": "Narrator",
+          "Text": "{n}She does it that night, at the table with nobody at the next one. You are not invited; you watch from the bar. She talks, and he listens with his big scarred hands flat on the table, and at the end she counts coins into a purse, all of them, and pushes it across to him.{/n}\n{n}Oskel looks at the purse, and at her, and across the room at you. Then he puts the purse inside his shirt, stands, picks up his stool, carries it round the table, and sets it down at her elbow. He sits on it.{/n}\n{n}When she comes to the bar afterwards her face has no expression at all.{/n} \"He said, 'Figured.' Then he said a man doesn't retire on a debt, and he'll buy his quiet life after Colyphyr, out of his own wages, thank you.\" {n}She takes the cup out of your hand and finishes it.{/n} \"I have just paid a man his freedom so that he can sit where my curse will reach him. If he dies at my elbow, Commander, I'll know whose theory put him there, and so will you, and neither of us will ever be able to pretend otherwise.\"",
+          "Choices": [
+            {
+              "Text": "[Leave her to her list.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "withdrawn",
+          "Speaker": "Mielarah",
+          "Text": "\"Thank you.\" {n}She says it as though she means it, and as though it cost her something to find out that she does.{/n}\n\"You may be right, you know. About the curse. I'll think about it on every watch between here and Colyphyr.\" {n}She picks the pencil up again.{/n} \"But I'll think about it with Oskel twenty strides away, where he belongs. Now let me finish my list. Your quartermaster has sent me a request for eleven barrels of something he calls wine, and I intend to be rude to him about it.\"",
           "Choices": [
             {
               "Text": "[Leave her to her list.]",
@@ -263308,7 +263362,8 @@
       ],
       "Forbids": [
         "mielarah.voyage_begun",
-        "mielarah.trickster.primed.minder"
+        "mielarah.trickster.primed.minder",
+        "mielarah.trickster.minder.refused"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -263462,7 +263517,7 @@
         {
           "Id": "told",
           "Speaker": "Mielarah",
-          "Text": "\"He's alive.\" {n}She nods along the deck, to where Oskel is coiling a line, never more than two strides from her. He has been at her elbow for the whole voyage, as ordered.{/n}\n\"He is alive, and I am alive, and you are alive, which on any ship of mine is a small miracle and on this voyage is three. Nothing went wrong enough. The curse never needed him.\"\n{n}She does not smile.{/n} \"But you would have spent him. I watched him every day and I knew exactly what he was for. I'm going to be angry about that for some time, Commander. I thought you should hear it from me before it turns into something else.\"",
+          "Text": "\"He's alive.\" {n}She nods along the deck, to where Oskel is coiling a line, never more than two strides from her. He has been at her elbow for the whole voyage, on his own stool, bought with her gold.{/n}\n\"He is alive, and I am alive, and you are alive, which on any ship of mine is a small miracle and on this voyage is three. Nothing went wrong enough. The curse never needed him.\"\n{n}She does not smile.{/n} \"But you would have spent him. I watched him every day and I knew exactly what he was for. I'm going to be angry about that for some time, Commander. I thought you should hear it from me before it turns into something else.\"",
           "Choices": [
             {
               "Text": "\"Be angry. You're both breathing.\"",
@@ -263990,7 +264045,7 @@
         {
           "Id": "told",
           "Speaker": "Mielarah",
-          "Text": "\"You told me why. At my own table, with my own pencil in my hand. I posted him anyway.\" {n}She looks at you, and her eyes are perfectly dry.{/n} \"So we did it together, you and I. You chose him and I put him there, and he's dead, and I'm alive, and his wings are somewhere at the bottom of the Ishiar.\"",
+          "Text": "\"You told me why, at my own table. I told him, and I paid him his freedom, and he spent it sitting next to me.\" {n}She looks at you, and her eyes are perfectly dry.{/n} \"So we did it together, the three of us. You chose him, I paid him, and he stayed. And he's dead, and I'm alive, and his wings are somewhere at the bottom of the Ishiar, with my gold in his shirt.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -264426,7 +264481,7 @@
         {
           "Id": "known",
           "Speaker": "Narrator",
-          "Text": "{n}But you know the rule. Her curse does not aim, and it has never once aimed at her. Starcatcher the First went down in a storm and she walked away from it. Starcatcher the Second broke on the rocks and she walked away from that with a chipped tooth. Everything near her dies of accidents, and nothing happens to her. It never does.{/n}\n{n}She is alive somewhere on the Ishiar. You would stake the crusade on it.{/n}",
+          "Text": "{n}But you think you know the rule, and nothing since has argued with it. Her curse does not aim, and it has never once aimed at her. Starcatcher the First went down in a storm and she walked away from it. Starcatcher the Second broke on the rocks and she walked away from that with a chipped tooth. Everything near her dies of accidents, and nothing happens to her. It never does.{/n}\n{n}She is alive somewhere on the Ishiar. You would stake the crusade on it.{/n}",
           "Choices": [
             {
               "Text": "[Send word to every aeronauts' tavern in the Midnight Isles: the passenger lived, and is waiting for the captain.]",
@@ -265532,6 +265587,20 @@
               ],
               "Forbids": [
                 "mielarah.trickster.cost.oskel",
+                "mielarah.trickster.cost.ship_lost",
+                "mielarah.trickster.minder.paid"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "oskel_paid",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.minder.paid"
+              ],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel",
                 "mielarah.trickster.cost.ship_lost"
               ],
               "Abort": false
@@ -265563,6 +265632,22 @@
           "Id": "oskel_told",
           "Speaker": "Mielarah",
           "Text": "\"Oskel is aboard, before you ask. He brought her through the Wound with me. He does not stand at my elbow any more.\" {n}She turns a page.{/n}\n\"I told him why he did. It seemed only honest, and I have been honest with Oskel for six years, which is more than I can say for his head.\" {n}A pause.{/n} \"He thought about it for a whole watch. Then he said, 'Figured.' That was all. He has been exactly as good a bosun since. I have no idea what to make of that, and neither, I think, does he.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "body",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "oskel_paid",
+          "Speaker": "Mielarah",
+          "Text": "\"Oskel is aboard, before you ask. He brought her through the Wound with me. He does not sit at my elbow any more; I gave the order the day we landed at Colyphyr, and he picked up his stool and carried it forward without a word.\" {n}She turns a page.{/n}\n\"He still has the purse. He has not spent a copper of it. I asked him once what he was waiting for, and he said he'd know it when he saw it.\" {n}A pause.{/n} \"I have no idea what to make of that, and neither, I think, does he.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -265838,6 +265923,20 @@
               ],
               "Forbids": [
                 "mielarah.trickster.cost.oskel",
+                "mielarah.trickster.cost.ship_lost",
+                "mielarah.trickster.minder.paid"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "oskel_paid",
+              "Set": [],
+              "Requires": [
+                "mielarah.trickster.minder.paid"
+              ],
+              "Forbids": [
+                "mielarah.trickster.cost.oskel",
                 "mielarah.trickster.cost.ship_lost"
               ],
               "Abort": false
@@ -265869,6 +265968,22 @@
           "Id": "oskel_told",
           "Speaker": "Mielarah",
           "Text": "\"Oskel is aboard, before you ask. He brought her through the Wound with me. He does not stand at my elbow any more.\" {n}She turns a page.{/n}\n\"I told him why he did. It seemed only honest, and I have been honest with Oskel for six years, which is more than I can say for his head.\" {n}A pause.{/n} \"He thought about it for a whole watch. Then he said, 'Figured.' That was all. He has been exactly as good a bosun since. I have no idea what to make of that, and neither, I think, does he.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "body",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Mielarah"
+        },
+        {
+          "Id": "oskel_paid",
+          "Speaker": "Mielarah",
+          "Text": "\"Oskel is aboard, before you ask. He brought her through the Wound with me. He does not sit at my elbow any more; I gave the order the day we landed at Colyphyr, and he picked up his stool and carried it forward without a word.\" {n}She turns a page.{/n}\n\"He still has the purse. He has not spent a copper of it. I asked him once what he was waiting for, and he said he'd know it when he saw it.\" {n}A pause.{/n} \"I have no idea what to make of that, and neither, I think, does he.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -268497,7 +268612,8 @@
               "Text": "[Hold the course] Take the wheel, and hold her head into the storm.",
               "Next": "held",
               "Set": [
-                "mielarah.committed"
+                "mielarah.committed",
+                "mielarah.route.courtship"
               ],
               "Requires": [],
               "Forbids": [],
@@ -268535,7 +268651,7 @@
         {
           "Id": "above",
           "Speaker": "Mielarah",
-          "Text": "{n}She has not moved. She is standing exactly where she stood, at your elbow, soaked, with her hands open, looking at you and not at the stars.{/n}\n\"You held her.\" {n}Her voice has gone somewhere very young.{/n} \"I let go and you held her and nothing fell on you. The block missed. It never misses.\"\n{n}She puts her hand over yours on the spokes, carefully, the way she would lay a hand on a sleeping animal.{/n} \"I have spent six years deciding which people I could spare. I stood in rooms working it out. The steward. The mate. The girl with the apples. Oskel.\" {n}Her hand tightens.{/n} \"I am not going to decide about you. You are standing there. You stay there. That's all. That's the whole of what I have to say, and I'm a magister, and I have never said anything so short in my life.\"",
+          "Text": "{n}She has not moved. She is standing exactly where she stood, at your elbow, soaked, with her hands open, looking at you and not at the stars.{/n}\n\"You held her.\" {n}She looks at the split block on the deck, and at your boot beside it, and back.{/n} \"It missed. It never misses.\"\n{n}She puts her hand over yours on the spokes, the way she corrects a helmsman: two fingers, a little pressure, a quarter-spoke to port. The ship answers. She does not take the hand away.{/n} \"Stay there,\" {n}she says.{/n} \"That's an order. I'm captain again; I've decided.\"",
           "Choices": [
             {
               "Text": "[Kiss her.]",
@@ -268824,7 +268940,8 @@
               "Text": "[Hold the course] Take the wheel, and hold her head into the storm.",
               "Next": "held",
               "Set": [
-                "mielarah.committed"
+                "mielarah.committed",
+                "mielarah.route.courtship"
               ],
               "Requires": [],
               "Forbids": [],
@@ -268862,7 +268979,7 @@
         {
           "Id": "above",
           "Speaker": "Mielarah",
-          "Text": "{n}She has not moved. She is standing exactly where she stood, at your elbow, soaked, with her hands open, looking at you and not at the stars.{/n}\n\"You held her.\" {n}Her voice has gone somewhere very young.{/n} \"I let go and you held her and nothing fell on you. The block missed. It never misses.\"\n{n}She puts her hand over yours on the spokes, carefully, the way she would lay a hand on a sleeping animal.{/n} \"I have spent six years deciding which people I could spare. I stood in rooms working it out. The steward. The mate. The girl with the apples. Oskel.\" {n}Her hand tightens.{/n} \"I am not going to decide about you. You are standing there. You stay there. That's all. That's the whole of what I have to say, and I'm a magister, and I have never said anything so short in my life.\"",
+          "Text": "{n}She has not moved. She is standing exactly where she stood, at your elbow, soaked, with her hands open, looking at you and not at the stars.{/n}\n\"You held her.\" {n}She looks at the split block on the deck, and at your boot beside it, and back.{/n} \"It missed. It never misses.\"\n{n}She puts her hand over yours on the spokes, the way she corrects a helmsman: two fingers, a little pressure, a quarter-spoke to port. The ship answers. She does not take the hand away.{/n} \"Stay there,\" {n}she says.{/n} \"That's an order. I'm captain again; I've decided.\"",
           "Choices": [
             {
               "Text": "[Kiss her.]",
@@ -276646,8 +276763,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -277624,7 +277741,7 @@
     },
     "mielarah": {
       "Title": "The nearest",
-      "Description": "Magister Mielarah, captain of Starcatcher the Third, carries the Gravedragger's curse: the people around her die, pointlessly, and she never does. I asked her how they died, and where they were standing. The curse has a rule. I mean to learn what it costs to stand beside her.",
+      "Description": "Magister Mielarah, captain of Starcatcher the Third, carries the Gravedragger's curse: the people around her die, pointlessly, and she never does. I asked her how they died, and where they were standing. I think the curse has a rule. I mean to learn what it costs to stand beside her.",
       "Objective": "Stand beside Mielarah",
       "Guidance": "On the Trickster path, ask Mielarah at the Bad Luck tavern how her curse's victims died, after she has told you of the Gravedragger. Hire her ship and the voyage to Colyphyr decides the rest: she may reach Colyphyr, hang at Vazglar, or lose her ship to the storm. In Chapter 5 Starcatcher comes to Drezen.",
       "StartedFlag": "mielarah.started",

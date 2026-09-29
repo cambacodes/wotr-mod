@@ -183,7 +183,9 @@ internal static class MielarahTricksterTests
         var hired = World(story, 4, "trickster", "mielarah.told_curse", P + "primed.pattern", "mielarah.hired");
         check(Rules.Available(story, minder, hired) && !Rules.Available(story, minder, World(story, 4, "trickster", P + "primed.pattern")),
             "Trk_Mielarah_Minder: the bosun is posted without her being hired, or not at all.");
-        var told = After(minder, hired, "order", 0).First();
+        var told = After(minder, hired, "yield", 0).First();
+        check(told.Has(P + "minder.paid") && After(minder, hired, "yield", 1).All(r => !r.Has(P + "primed.minder") && r.Has(P + "minder.refused")),
+            "Trk_Mielarah_Minder: she sets no conditions, or the Commander cannot withdraw the order.");
         var lied = After(minder, hired, "order", 1).First();
         check(told.Has(P + "primed.minder") && told.Has(P + "minder.told") && !told.Has("trickster.secret.mielarah_oskel"),
             "Trk_Mielarah_Minder: the truth does not post him.");
@@ -249,7 +251,7 @@ internal static class MielarahTricksterTests
         var ready = World(story, 5, "trickster.ever", P + "landfall", "mielarah.started", D + "docked", D + "reckoned", D + "flown", D + "corrected", D + "market");
         check(Rules.Available(story, wheel, ready), "Trk_Mielarah_Commit: the wheel is shut.");
         var held = After(wheel, ready, "letgo", 0).First();
-        check(held.Has("mielarah.committed"), "Trk_Mielarah_Commit: holding the course does not commit.");
+        check(held.Has("mielarah.committed") && held.Has("mielarah.route.courtship"), "Trk_Mielarah_Commit: holding the course does not commit (or misses the ledger's alias).");
         var home = After(wheel, ready, "letgo", 1).First();
         check(home.Has(P + "declined") && !home.Has("mielarah.committed") && !home.Has("mielarah.closed"),
             "Trk_Mielarah_Declined: turning for home is not her soft no.");

@@ -20,10 +20,11 @@ from storylines.mielarah_trickster import (
     CLOSED, COMMITTED, CONTACT, CHARTER, CORRECTED, DECLINED, DOCKED, DREZEN, FLOWN, FREED, HUB, HUB_FAILED, HUB_FB,
     KILLED, LANDFALL, LAUGHING, LIED, MEANT, MINDER, MORNING, NIGHT, NOTICED, OSKEL_DEAD, P, RECKONED, REL, RETURNED,
     SECRET_KNOWN, SHIP_LOST, TIGHTENED, TOLD, UNIT, KERZ, NOCTA, D, SAID_USE, CUT, DEAD_LATCH, LANN_GUARD, WOLJIF_GUARD,
-    STORM_OWNED, STORM_BLAMED)
+    STORM_OWNED, STORM_BLAMED, PAID)
 
 SCENES = []
 
+COURTSHIP = "mielarah.route.courtship"   # the shared ledger's name for the commit (05 item 30), set with COMMITTED
 PROMISED = D + "promised"
 NO_PROMISE = D + "no_promise"
 STAND = D + "stand_there"
@@ -70,11 +71,15 @@ deck(D + "cargo", "Cargo for the market", '"You came through the Worldwound."', 
         c("Continue", "charter", forbids=(LANDFALL, RETURNED, SHIP_LOST))),
     mi("third", '''"Through the Worldwound, yes. As promised." {n}She points up with her pencil, without looking. High over the citadel, small as a toy against the clouds, a ship hangs at anchor in the sky: Starcatcher the Third, her sails furled, her lanterns lit in the afternoon.{/n}
 "The sky over the Wound is the colour of a week-old bruise and full of things with wings. My crew prayed to four gods on the way through. One of them answered, but I couldn't tell you which." {n}She ticks a line.{/n} "Cold iron from the Isles, Abyssal salts for your alchemists, and forty-one people from Alushinyrra who wanted any sky but that one. I set them down outside the walls. Your gate sergeant was very rude about it."''',
-       c("Continue", "oskel_told", requires=(MEANT,), forbids=OSKEL_ALIVE),
+       c("Continue", "oskel_told", requires=(MEANT,), forbids=(*OSKEL_ALIVE, PAID)),
+       c("Continue", "oskel_paid", requires=(PAID,), forbids=OSKEL_ALIVE),
        c("Continue", "body", forbids=(MEANT,)),
        c("Continue", "body", requires=(OSKEL_DEAD,))),
     mi("oskel_told", '''"Oskel is aboard, before you ask. He brought her through the Wound with me. He does not stand at my elbow any more." {n}She turns a page.{/n}
 "I told him why he did. It seemed only honest, and I have been honest with Oskel for six years, which is more than I can say for his head." {n}A pause.{/n} "He thought about it for a whole watch. Then he said, 'Figured.' That was all. He has been exactly as good a bosun since. I have no idea what to make of that, and neither, I think, does he."''',
+       c("Continue", "body")),
+    mi("oskel_paid", '''"Oskel is aboard, before you ask. He brought her through the Wound with me. He does not sit at my elbow any more; I gave the order the day we landed at Colyphyr, and he picked up his stool and carried it forward without a word." {n}She turns a page.{/n}
+"He still has the purse. He has not spent a copper of it. I asked him once what he was waiting for, and he said he'd know it when he saw it." {n}A pause.{/n} "I have no idea what to make of that, and neither, I think, does he."''',
        c("Continue", "body")),
     mi("scarf", '''{n}She is wearing the scarf high around her throat, even here, even in the Drezen afternoon. Above the citadel a ship rides at anchor in the sky, her lanterns lit: Starcatcher the Third.{/n}
 "Through the Worldwound, yes. With a new crew, hired in Alushinyrra at double wages. I have not put a hand in any of their heads yet." {n}She ticks a line.{/n} "I'm told the captains of the Midnight Isles have been laughing about Vazglar. Kerz sent me a length of good hemp rope, tied in a bow, with his compliments. I sold it. It fetched a decent price."
@@ -374,15 +379,15 @@ deck(D + "wheel", "Hold her", '"You said next time, the storm."', [
        c("Continue", "letgo")),
     nar("letgo", '''{n}Her hands open. She lets go of the wheel.{/n}
 {n}It spins. The ship heels over hard, and the whole storm leans on the rudder, and every loose thing on the deck begins to slide toward the rail, and she stands there with her empty hands at her sides, nearest, in the rain, and does not reach for it again.{/n}''',
-        c('[Hold the course] Take the wheel, and hold her head into the storm.', "held", flags=(COMMITTED,)),
+        c('[Hold the course] Take the wheel, and hold her head into the storm.', "held", flags=(COMMITTED, COURTSHIP)),
         c('[Turn her for home] Take the wheel, and bring her round out of the weather.', "home", flags=(DECLINED,))),
     nar("held", '''{n}You take the wheel. It fights you like a living thing, and you do not grip it, and you agree with it, and you hold her.{/n}
 {n}The ship comes up. Something cracks aloft and a block comes down out of the dark and splits on the deck a hand's breadth from your boot, and nothing else happens. The spade goes into the earth once more, far off, and then the wind takes the sound and does not give it back.{/n}
 {n}And then the storm is under you. Starcatcher breaks out of the top of it into silence and starlight, into a sky so clear and cold and full that it looks like a spilled jewel box, with the whole grey roof of the storm spread out below the keel, lightning moving in it like fish.{/n}''',
         c("Continue", "above")),
     mi("above", '''{n}She has not moved. She is standing exactly where she stood, at your elbow, soaked, with her hands open, looking at you and not at the stars.{/n}
-"You held her." {n}Her voice has gone somewhere very young.{/n} "I let go and you held her and nothing fell on you. The block missed. It never misses."
-{n}She puts her hand over yours on the spokes, carefully, the way she would lay a hand on a sleeping animal.{/n} "I have spent six years deciding which people I could spare. I stood in rooms working it out. The steward. The mate. The girl with the apples. Oskel." {n}Her hand tightens.{/n} "I am not going to decide about you. You are standing there. You stay there. That's all. That's the whole of what I have to say, and I'm a magister, and I have never said anything so short in my life."''',
+"You held her." {n}She looks at the split block on the deck, and at your boot beside it, and back.{/n} "It missed. It never misses."
+{n}She puts her hand over yours on the spokes, the way she corrects a helmsman: two fingers, a little pressure, a quarter-spoke to port. The ship answers. She does not take the hand away.{/n} "Stay there," {n}she says.{/n} "That's an order. I'm captain again; I've decided."''',
         c("[Kiss her.]", "kiss_first"),
         c('"I\'m staying."', "kiss_first")),
     nar("kiss_first", '''{n}She comes the last half-step on her own, soaked and shaking and laughing a little, and kisses you over the wheel with her cold hands on either side of your face. The ship holds her course without either of you. She has always been a good ship.{/n}''',
