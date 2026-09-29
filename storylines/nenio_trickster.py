@@ -554,13 +554,13 @@ meet(P + "commit.result", "What survived the night", '"So. What\'s left of the w
     nen("clean", '''"Report." {n}She reads without looking at the list.{/n} "Forgotten overnight, on purpose: the name of the Queen of Mendev, again; the eight arcane schools, which I shall have to look up, to my shame; the number of bones in a vrock's wing; the price of pepper in Drezen; a song my mother may have sung, if I had a mother, which is not established; four hundred and twelve minor facts about the Worldwound, which I regret; and tea."
 "Retained: the Worldwound itself, because I cannot forget a thing I am writing about; the Encyclopedia; my own name, which I have paid for; and you."''',
         c("Continue", "you")),
-    nen("you", '''"Not just your face. Your face I could have explained; faces are sticky, the eyes are made to hold them. Everything. The way you hold a pencil wrong. The way you stand to one side of doors. The time in the camp when I was drunk for science and you did not laugh until afterwards." {n}She puts the list down.{/n} "I spent an hour on you alone, between three and four in the morning. I stopped thinking about you with great discipline. You did not go. You simply waited, like a word on the tip of the tongue, until I stopped trying."''',
+    nen("you", '''"Not just your face. Your face I could have explained; faces are sticky, the eyes are made to hold them. Everything. The way you hold a pencil wrong. The way you stand to one side of doors. The way you never laugh at me until afterwards, when I am ridiculous, which is often, and I can see you saving it up." {n}She puts the list down.{/n} "I spent an hour on you alone, between three and four in the morning. I stopped thinking about you with great discipline. You did not go. You simply waited, like a word on the tip of the tongue, until I stopped trying."''',
         c("Continue", "decides")),
     nen("decides", '''"The data admit two interpretations. One: you are a persistent contaminant, like damp. Two: you are relevant." {n}She folds her hands on the page.{/n}
 "When two truths contradict each other, one may accept one of them and consider the other conditional. I learned that recently, from a very wise source." {n}Something happens at the corner of her mouth.{/n} "I have decided. I will accept the second as the truth. After all, I like it more than the other one."''',
         c("Continue", "variable")),
     nen("variable", '''{n}She gets up. She comes around @DESK@, which she never does, because the desk is where she keeps the world at the right distance for measuring it, and she stands in front of you with nothing in her hands.{/n}
-"I have observed this four thousand times. In taverns, in temples, in the backs of carts. The pupils, the pulse, the breathing, the stupid things people say. I have notes." {n}Her voice goes lower.{/n} "I have never once been a variable. I would like to be. Tonight. Point five, and this time I will not be drawing anything."''',
+"I have observed this four thousand times. In taverns, in temples, in the backs of carts. The pupils, the pulse, the breathing, the stupid things people say. I have notes." {n}Her voice goes lower.{/n} "I have never once been a variable. I would like to be. Tonight. The follow-up, with instruments, and with me inside the experiment instead of beside it."''',
         c('[Accept her conclusion] "Then it\'s decided."', "tonight", flags=(COMMITTED, FIRST_NIGHT)),
         c("[Kiss her, and let that be the answer.]", "kissed", flags=(COMMITTED, FIRST_NIGHT)),
         c('[Refuse to be her conclusion] "No. I don\'t want to be your result, Nenio."', "refused", flags=(REFUSED, CLOSED))),
@@ -619,16 +619,20 @@ meet(P + "commit.replication", "Replication", '"Nenio. About the margins."', [
 
 
 # The night: the room she requisitioned for the Encyclopedia. Stopwatch, the pulse counted aloud, the cut at the first motion.
-visit(P + "night", "Point five", [
+visit(P + "night", "Night one", [
     nar("open", '''{n}She has taken a storeroom in the citadel for the Encyclopedia and told the quartermaster it was for the war effort, which he believed because she said it very loudly. There are planks across trestles along every wall, and on the planks, in their trunks, the notes for ninety-nine volumes: bundles of paper tied with string, labelled in a hand nobody can read, and at the end of the row volume one, bound, the only one finished.{/n}''',
         c("Continue", "shelves", forbids=(MANUSCRIPT,)),
         c("Continue", "bare", requires=(MANUSCRIPT,))),
-    nar("shelves", '''{n}One candle. A cleared space on the floor with a blanket spread over it, and a cushion taken from somebody's chapel. On the nearest plank, in a row, as if for an examination: a stopwatch, a ruler, a pencil, a clean sheet headed POINT FIVE.{/n}''',
-        c("Continue", "begin")),
-    nar("bare", '''{n}The planks are empty all along the walls, where the notes used to be, except one, where volume one lies on its own like the last tooth in a jaw, and beside it, in a row, as if for an examination: a stopwatch, a ruler, a pencil, a clean sheet headed POINT FIVE. One candle. A blanket on the floor, and a cushion taken from somebody's chapel.{/n}''',
+    nar("shelves", '''{n}One candle. A cleared space on the floor with a blanket spread over it, and a cushion taken from somebody's chapel. On the nearest plank, in a row, as if for an examination: a stopwatch, a ruler, a pencil, a clean sheet headed NIGHT ONE.{/n}''',
+        c("Continue", "friend_note", requires=(FRIEND_DONE,)),
+        c("Continue", "begin", forbids=(FRIEND_DONE,))),
+    nar("bare", '''{n}The planks are empty all along the walls, where the notes used to be, except one, where volume one lies on its own like the last tooth in a jaw, and beside it, in a row, as if for an examination: a stopwatch, a ruler, a pencil, a clean sheet headed NIGHT ONE. One candle. A blanket on the floor, and a cushion taken from somebody's chapel.{/n}''',
+        c("Continue", "friend_note", requires=(FRIEND_DONE,)),
+        c("Continue", "begin", forbids=(FRIEND_DONE,))),
+    nar("friend_note", '''{n}Under the heading, in smaller capitals, she has written: "SEE ALSO: FRIENDSHIP, POINT FIVE. RESULT PREVIOUSLY NOT OBSERVED. EXPERIMENTER DREW INSTEAD. NOT THIS TIME."{/n}''',
         c("Continue", "begin")),
     nen("begin", '''{n}Nenio is sitting cross-legged on the blanket with the stopwatch in her hand. She has taken the pencil out of her hair, and her hair has come down, a great deal of it, dark and heavy, and she has plainly forgotten that it would.{/n}
-"Sit. Here. No, closer. The instrument has a short range." {n}She holds the stopwatch up.{/n} "Baseline first. I will take your pulse at rest, and then not at rest. This is point five of the friendship list conducted properly, with measurements, and without anybody drawing anything, because the last time I drew instead of doing and I have regretted it for, by my estimate, a great deal longer than was reasonable."''',
+"Sit. Here. No, closer. The instrument has a short range." {n}She holds the stopwatch up.{/n} "Baseline first. I will take your pulse at rest, and then not at rest. This is the follow-up to your hypothesis, conducted properly, with instruments. I have been designing it since the morning. I have spent four thousand years recording what other people do in rooms like this, from the outside, and I have decided that the method was wrong."''',
         c("[Sit close.]", "count"),
         c('[Flirt] "And your pulse? Who\'s measuring that?"', "hers")),
     nen("hers", '''"Nobody. That is the flaw in the design." {n}She takes your hand and puts two of your fingers on the inside of her own wrist, where the skin is thin and warm and very fast.{/n} "There. You are measuring it. Do not tell me the number. I will only argue with it."''',
@@ -650,7 +654,7 @@ visit(P + "night", "Point five", [
 "I have lost the count," she says against your throat, astonished. "I have never lost a count. Four thousand years." {n}Her breath is ragged, and she laughs at it, and does not try to steady it.{/n} "I do not care. Write that down. No. Do not write anything down."''',
         c("Continue", "watch")),
     nar("watch", '''{n}She opens her hand. The stopwatch falls onto the blanket, still ticking, and neither of you reaches for it. She is over you, her hair falling around both your faces like a curtain around a lamp, her knees either side of your hips, pulling the last of your clothes away with more determination than skill, and she looks down at you the way she looks at a ruin nobody has catalogued: as if everything in it were about to be hers.{/n}
-{n}"Point five," she says. "Beginning now."{/n}''',
+{n}"Night one," she says. "Beginning now."{/n}''',
         c("[Let the watch run down.]")),
 ], requires=(FIRST_NIGHT,), forbids=(P + "night",), delay=4, chapters=(3, 5), optional=False)
 
@@ -664,13 +668,13 @@ meet(P + "morning", "Subject: [blank]", '"You left before I woke."', [
     nar("entry_kept", '''{n}It is an entry in the Encyclopedia, in the capitals she uses when she wants to be read. "SUBJECT: [          ]. STATUS: MINE." Under it, in her own illegible hand, a great deal more, and at the bottom, legible again: "Name known. Withheld. The Encyclopedia does not print what it does not need."{/n}''',
         c("Continue", "her")),
     nen("her", '''"I left the blank on purpose." {n}She taps it.{/n} "A name is a label. Any fool can have one. What goes in the status line is the result, and the result is what matters."
-"The study is longitudinal. That means it continues. It has one principal investigator." {n}She lifts her chin.{/n} "Other investigators may publish on the same subject. I shall review them. Harshly. With footnotes."''',
+"The study is longitudinal. That means it continues. It has one principal investigator." {n}She lifts her chin.{/n} "It will be the most thorough study in the Encyclopedia. I intend to spend the rest of my life on it, and I have a great deal of life. Plan accordingly."''',
         c('[Flirt] "What\'s in the illegible part?"', "illegible"),
         c('"Mine?"', "mine"),
         c("[Kiss the top of her head, over the pencil.]", "kiss")),
     nen("illegible", '''"Observations." {n}Her ears go pink at the tips; you have never seen them do that.{/n} "Detailed ones. Some of them are in a notation I invented at about two in the morning and no longer fully understand. There is a diagram." {n}She puts her hand flat over it.{/n} "It is not for publication. It is the first thing I have ever written that is not for publication. I find that I do not know what to do with it except keep it."''',
         c("Continue", "war")),
-    nen("mine", '''"Status is not a property of the subject. It is a relation between the subject and the observer." {n}She says it very fast, like a thing she has rehearsed.{/n} "It means I intend to keep observing. It does not mean you cannot be observed by others. I am a scientist, not a jailer. It only means I was first, and I shall be last, and I shall be most thorough."''',
+    nen("mine", '''"Status is not a property of the subject. It is a relation between the subject and the observer." {n}She says it very fast, like a thing she has rehearsed.{/n} "It means I intend to keep observing. Closely. For a very long time. It means that when anybody asks who studied the Commander of the Fifth Crusade, the answer will be in my handwriting, and they will not be able to read it, and they will have to come and ask me."''',
         c("Continue", "war")),
     nen("kiss", '''"You are disturbing the instrument." {n}She does not move her head away. After a while she leans back into it, very slightly, the way a cat leans into a hand it has decided to permit.{/n} "Continue disturbing it. That is also data."''',
         c("Continue", "war")),
@@ -715,7 +719,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "NenioEpilogue", 6, "", [
     ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
 
 SCENES.append(scene(P + "epilogue.void", "", "NenioEpilogue", 6, "", [
-    nar("page", '''{n}Nenio never concluded. The Encyclopedia Golarionnica contains an entry on the Commander of the Fifth Crusade, cross-referenced to "friendship, point five", which ends: "Result void. Replication pending. See margin."{/n}
+    nar("page", '''{n}Nenio never concluded. The Encyclopedia Golarionnica contains an entry on the Commander of the Fifth Crusade, cross-referenced to "forgetting, deliberate, method of", which ends: "Result void. Replication pending. See margin."{/n}
 {n}There is nothing written in the margin. In every copy she ever supervised, the margin is left clean, and the printers were given strict instructions to leave it so, and never told why.{/n}''')],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), **EP))
 
