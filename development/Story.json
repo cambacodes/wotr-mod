@@ -168307,10 +168307,10 @@
         {
           "Id": "read",
           "Speaker": "Narrator",
-          "Text": "{n}You remember exactly what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking *our* lives together. Hers and the spirit's. The bear was only the house she put it in.{/n}\n{n}A shaman's knot is not a figure of speech. It carries lives: the brand on the guardian and the clay at her throat are one binding, and she tied her own life into it with her own hands.{/n}\n{n}One end of that knot is dead on the floor of this cave. The other end is still alive in the brand, and pulling.{/n}",
+          "Text": "{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}\n{n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own. Shamans are careless with pronouns and careful with knots, and the brand has not faded, though the woman who tied it is dead. Something is still holding the other end.{/n}\n{n}It is a guess. It is the kind of guess a Trickster makes for a living: that the knot is bigger than she said, and that whatever is on the far end of it can be bargained with.{/n}",
           "Choices": [
             {
-              "Text": "[Hold her clay medallion to the guardian's brand] \"You tied your life to the spirit's. The spirit is still alive. Your own knot says so are you.\"",
+              "Text": "[Hold her clay medallion to the guardian's brand and bargain with what holds the other end] \"Whatever you are: give her back, and pull on me instead.\"",
               "Next": "wake_clay",
               "Set": [
                 "soana.trickster.returned",
@@ -168332,7 +168332,7 @@
               "RemoveItem": "4d78ec5dd1d1d5d41b9f2d8f2c8b5d53"
             },
             {
-              "Text": "[Lay your hand on the brand and pull on her end of the knot] \"You tied your life to the spirit's. The spirit is still alive. Your own knot says so are you.\"",
+              "Text": "[Lay your hand on the brand and bargain with what holds the other end] \"Whatever you are: give her back, and pull on me instead.\"",
               "Next": "wake_brand",
               "Set": [
                 "soana.trickster.returned",
@@ -168367,7 +168367,7 @@
         {
           "Id": "wake_clay",
           "Speaker": "Narrator",
-          "Text": "{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and the medallion draws tight in your fist and cracks down the middle with a sound like a knuckle.{/n}\n{n}The pull does not stop when the clay breaks. It comes up your arm instead: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
+          "Text": "{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and something on the far end of the knot pulls back.{/n}\n{n}It does not speak. It does not need to. You feel it weigh you, the way it once weighed her: a new hand on the knot, a stranger's, soft with command. It wants what it always wanted, a hand to strain against. It will give her back if it gets yours.{/n}\n{n}You close your fist. The medallion cracks down the middle with a sound like a knuckle, and the pull comes up your arm: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168395,7 +168395,7 @@
         {
           "Id": "wake_brand",
           "Speaker": "Narrator",
-          "Text": "{n}You lay your palm on the brand and take hold of her end of the knot, as if it were a rope in the dark. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}\n{n}When you take the hand away, the knot is printed on your palm in white, and the pull does not stop: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
+          "Text": "{n}You lay your palm on the brand and take hold of her end of the knot, as if it were a rope in the dark. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens under your hand, as a rope darkens when it is pulled wet, and draws tight until your skin burns with cold.{/n}\n{n}Something on the far end of the knot pulls back, and weighs you: a stranger's hand, soft with command. It wants what it always wanted, a hand to strain against. It will give her back if it gets yours. You do not let go.{/n}\n{n}When you take the hand away, the knot is printed on your palm in white, and the pull does not stop: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -168455,7 +168455,7 @@
         {
           "Id": "soana",
           "Speaker": "Soana",
-          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course. Who else would hold a dead woman to her own words?\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}\n\"I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"",
+          "Text": "{n}Behind you, someone coughs up forest loam.{/n}\n\"...Bloody hunter. Of course.\" {n}She spits loam.{/n} \"Our lives. I meant the bear and the demon, you fool. I never tied myself into that knot on purpose.\" {n}She looks at the white print on your hand.{/n} \"Then I suppose I tied myself into it by accident, forty winters of holding it. And you guessed. And it listened to you. That is worse.\"\n{n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}\n\"I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"",
           "Choices": [
             {
               "Text": "\"You can hate me standing up.\"",
@@ -173833,7 +173833,7 @@
         {
           "Id": "late",
           "Speaker": "Narrator",
-          "Text": "{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm. The carvers pushed her away from the ground with poles, not hands. Old Yarvo, who taught half of them to hold a chisel, said aloud what they were all thinking: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and they were done kneeling to things that came back. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}\n\"Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one.\"",
+          "Text": "{n}They laid the block beside her as you asked, he says, with your coin driven into the grain. The fire went round it the way water goes round a stone, and round her with it. Three torches, and then the carvers stopped trying. On the second night every carver on the ground heard it in the crackle of the fire: three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was holding a mallet. On the third dawn Gesmerha got off the pyre by herself, her palms full of splinters, the block under her arm, and her fingers would not open from around it until she had said aloud, to the empty air, that she would finish. The carvers pushed her away from the ground with poles, not hands. Old Yarvo, who taught half of them to hold a chisel, said aloud what they were all thinking: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and they were done kneeling to things that came back. She is at the Lady's statue now, and they will not have her back among the houses. She sent him with this, word for word.{/n}\n\"Tell the stranger: you threw coin on my fire and a joke after it. The wood would not take either one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -173849,7 +173849,7 @@
         {
           "Id": "paid",
           "Speaker": "Narrator",
-          "Text": "{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip. Half the carvers ran. The ones who stayed went to old Yarvo, the eldest of them, and Yarvo shut his door: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and he would not have another under his roof. None of them will have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}\n\"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you.\"",
+          "Text": "{n}He will not stop looking at you while he tells it. Her apprentices laid her out with the birch block from her bench under her hands, the one with your coin in it, because nobody could get the coin out. On the second night the apprentices sitting up with her heard, from the empty workshop, three slow knocks, wood on wood, the old count a master raps on the bench to call an apprentice back to unfinished work. Nobody was in there. On the third morning, before anyone had lit a torch, Gesmerha sat up with her palms full of splinters and the block still in her grip, and her fingers would not open from around it until she had promised aloud, to nobody they could see, that she would finish it. Half the carvers ran. The ones who stayed went to old Yarvo, the eldest of them, and Yarvo shut his door: the last thing in Wintersun that would not stay dead was the Lady they had knelt to for a generation, and he would not have another under his roof. None of them will have her back among the houses. She is at the Lady's statue. She sent him with this, word for word.{/n}\n\"Tell the stranger: you heard me say *hands*, in my own yard, among my own statues, and the next thing you did was pay for them. I swore I would never shame my ancestors. You knew that too, didn't you.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -174294,7 +174294,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your hands stayed where I put them with my mallet coming down. I was angry about it for a week. I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Like green wood when the wedge goes in.\" {n}Her palm does not move.{/n} \"My hands found this grain in the yard, under the mallet, and they have gone back to it every night since. I let them. I will not be the only one who does.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -174451,7 +174451,7 @@
         {
           "Id": "night",
           "Speaker": "Gesmerha",
-          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Good. I have wanted this since your hands stayed where I put them with my mallet coming down. I was angry about it for a week. I will not be the only one who wanted it.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
+          "Text": "{n}She dries her hands on her apron, slowly, and holds them out to you palm up, as she does to a new block.{/n}\n\"Two things in this yard I have cut without eyes. The original I have not touched yet. Your hands stayed on the wood with the mallet coming down; let them stay at your sides a little longer. I am reading.\"\n{n}Her fingers find your jaw first, then the corners of your mouth, then a scar you had forgotten you owned, reading you the way she reads grain: pressing where it gives, lingering where it resists. She finds the laces at your throat by feel, undoes them the way she strips bark, and lays her palm flat over your heart to count it.{/n}\n\"Fast. Like green wood when the wedge goes in.\" {n}Her palm does not move.{/n} \"My hands found this grain in the yard, under the mallet, and they have gone back to it every night since. I let them. I will not be the only one who does.\"\n{n}She kisses you the way she tests an edge, once, lightly; then again, harder, as if it had passed. Her hands go on reading, lower and surer. She draws you down onto the bench by your belt, into the shavings, and her hair falls around you both like a curtain.{/n}",
           "Choices": [
             {
               "Text": "Continue",
