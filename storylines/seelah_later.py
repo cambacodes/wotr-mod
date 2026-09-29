@@ -191,7 +191,8 @@ s("souls", "After they opened their eyes", 5, '"You have been very quiet since t
     n("grief", "Seelah", '''{n}She sets the cloth aside.{/n}
 "There is one part I keep coming back to."''',
       c('"Elan."', "elan", requires=("seelah.elan_dead",)),
-      c('"Tell me."', "survived", forbids=("seelah.elan_dead",))),
+      c('"Tell me."', "survived", forbids=("seelah.elan_dead",)),
+      c('"And Jannah?"', "jannah", requires=("jannah.joined",))),
     n("elan", "Seelah", '''{n}Seelah nods, looking at the floor.{/n}
 "I keep starting to think of something to tell him. Something foolish. Then I remember."
 {n}She presses her palm against her knee.{/n}
@@ -210,6 +211,14 @@ s("souls", "After they opened their eyes", 5, '"You have been very quiet since t
 "You did agree to that last part. I remember."''', c('"I meant it."', "end")),
     n("end", "Seelah", '''{n}You stay until she is ready to put the shield away. Before you leave, she chooses a time to speak to Arsinoe about the people who still need help.{/n}
 "Tomorrow," she says. "Tonight I think I'd like to be here with you."''', c('[Keep the evening with her.]', flags=("seelah.aftercare",))),
+    # Her Q3 returned Jannah (ktc_DeserterJoins/Cue_0019 651ecf0c); Seelah's own word on her (Q3 epilogue line bedca9f9).
+    n("jannah", "Seelah", '''{n}The cloth stops moving again, but this time her mouth softens.{/n}
+"Jannah. She came back to us with a fresh scar and nothing but her word, and then she kept it. Elan told her to stay and watch the door, and she stayed and watched the door, and she hated every moment of it. I could see her hating it."
+"She didn't break. She changed. I don't think I've ever seen her prouder than on the night we brought Sunhammer down."''',
+      c('"And the piece of your mind you promised her?"', "jannah_mind")),
+    n("jannah_mind", "Seelah", '''"I haven't given it to her yet." {n}She smiles at the shield, a little crookedly.{/n}
+"Every time I try, I find I'd rather buy her a drink. That isn't very paladin-like of me. I've decided Iomedae will cope."''',
+      c('"And you? How are you?"', "quiet")),
 ], requires=("seelah.morning", "seelah.souls_returned"), delay=24, optional=True)
 
 s("road", "The road and the room", 5, '"I want to talk about a life after the fighting."', [
