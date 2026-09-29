@@ -186,6 +186,24 @@ internal static class TerendelevTricksterTests
         foreach (var w in new[] { failed, claimed, flinched })
             check(!Rules.Available(story, bones, w) && !Rules.Available(story, bonesIrabeth, w), "Trk_Terendelev_Bones: the bones reopen after " + w.Flags.First(f => f.StartsWith(P)));
 
+        // Trk_Terendelev_ParentReturn: the parent romance has already brought her back (its returned finale, or the Lich
+        // binding): no Trickster return anywhere. Met or courted on the parent route only: the Trickster return stands.
+        foreach (var parent in new[] { "terendelev.continuation.returned_finale_seen", "terendelev.parent_lich_bind" })
+        {
+            var already = World(story, 5, "trickster", "trickster.ever", "iz.terendelev_battle", parent);
+            check(!Rules.Available(story, bones, already) && !Rules.Available(story, bonesIrabeth, already)
+                  && !Rules.Available(story, late, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead", "iz.left_early", parent))
+                  && !Rules.Available(story, commit, World(story, 5, "trickster", "trickster.ever", Returned, P + "first_night_seen", parent))
+                  && !Rules.PresenceWanted(stall, World(story, 5, "trickster", "trickster.ever", Returned, parent)),
+                "Trk_Terendelev_ParentReturn: a Trickster return opens after the parent romance has returned her (" + parent + ").");
+        }
+        foreach (var met in new[] { "terendelev.parent_romance", "terendelev.parent_oath" })
+        {
+            var courted = World(story, 5, "trickster", "trickster.ever", "iz.terendelev_battle", met);
+            check(Rules.Available(story, bones, courted) && Program.Walk(bones, courted).Any(r => r.Has(Returned)),
+                "Trk_Terendelev_ParentReturn: meeting her on the parent route (" + met + ") shuts the Trickster return.");
+        }
+
         // Trk_Terendelev_IrabethHost: the same on the knight's list when the Queen has fallen.
         var queenDead = World(story, 5, "trickster", "trickster.ever", "iz.terendelev_battle", "galfrey.dead");
         var backIrabeth = One(bonesIrabeth, queenDead, new[] { Returned, P + "cost.wound_open", P + "grounded", P + "saw_the_queen_fall" });

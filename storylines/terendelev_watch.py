@@ -15,7 +15,7 @@ import copy
 
 from story_format import c, n, reaction, scene
 from storylines.terendelev_trickster import (
-    AEON, AREELU_TOLD, CLAW, CLAW_HELD, CLOSED, COMMITTED, DREZEN, GROUNDED, HUB, HUB_FAILED, HUB_FB, HUMAN, LATE, P,
+    AEON, AREELU_TOLD, PARENT_EMBODIED, CLAW, CLAW_HELD, CLOSED, COMMITTED, DREZEN, GROUNDED, HUB, HUB_FAILED, HUB_FB, HUMAN, LATE, P,
     QUEEN_FELL, REL, RETURNED, SCALE_HELD, TAILOR, TIEFLING, WOUND_OPEN)
 
 SCENES = []
@@ -44,11 +44,11 @@ GREETING = ("{n}Beside the tiefling trader's stall in the lower town, a tall wom
 PRESENCES = {
     # Front of the tiefling trader; Mielarah stands behind him at 2.5 m, so the two copies are 5 m apart.
     HUB: dict(Unit=HUMAN, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="front", Distance=2.5),
-              Requires=["trickster.ever", RETURNED], Forbids=[CLOSED, HUB_FAILED], MinChapter=5, MaxChapter=5,
+              Requires=["trickster.ever", RETURNED], Forbids=[CLOSED, HUB_FAILED, *PARENT_EMBODIED], MinChapter=5, MaxChapter=5,
               AnswerLists=[], Dialog="hub", Greeting=GREETING),
     # Fallback: right of the tailor (Kaylessa stands left 2.5, Arueshalae's evil copy front 2.0: 5 m and 3.2 m apart).
     HUB_FB: dict(Unit=HUMAN, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="right", Distance=2.5),
-                 Requires=["trickster.ever", RETURNED, HUB_FAILED], Forbids=[CLOSED], MinChapter=5,
+                 Requires=["trickster.ever", RETURNED, HUB_FAILED], Forbids=[CLOSED, *PARENT_EMBODIED], MinChapter=5,
                  MaxChapter=5, AnswerLists=[], Dialog="hub",
                  Greeting=("{n}Under the tailor's awning, out of the wind, a tall silver-haired woman in a borrowed crusader's "
                            "cloak sits on a bale of cloth and watches the street go by. The tailor has stopped asking her to "
@@ -288,7 +288,7 @@ watch(P + "commit", "The watch", '"You said you had something to ask me."', [
     te("invite", '''"Every morning. At the same hour." {n}She pins it.{/n} "Tonight I stand the first watch. Come up after the second bell, if you would like company." {n}The corner of her mouth moves.{/n} "I will not leave my post, you understand. So you will have to be the one who comes to me."''',
        c('"I\'ll be here."', flags=(COMMITTED, DRESSING)),
        c('[Flirt] "Is that an order, protector?"', flags=(COMMITTED, DRESSING))),
-], requires=(FIRST_NIGHT,), forbids=(COMMITTED, DECLINED), delay=48)
+], requires=(FIRST_NIGHT,), forbids=(COMMITTED, DECLINED, *PARENT_EMBODIED), delay=48)
 
 
 # --- 9. The release: a debt forgiven -------------------------------------------------------------------------------------
@@ -306,7 +306,7 @@ watch(P + "commit.release", "A debt forgiven", '"We need to talk about the debt.
        c('[Ask her to stay] "Stand your watch over me. Because you want to."', "yes")),
     te("yes", '''{n}She kneels on the cold stones, as a knight kneels to take a post.{/n} "By the Wardstone I failed to keep, and the city I could not hold, and the blood I am made of: I will stand watch over this wound until one of us is dust." {n}She rises, and this time she does laugh, low, the old bell of it.{/n} "That is the second time I have had to say it, and it was better. Come up after the second bell. I will not leave my post. You will have to come to me."''',
        c('"I\'ll be there."', flags=(COMMITTED, DRESSING))),
-], requires=(DECLINED,), forbids=(COMMITTED,), delay=48)
+], requires=(DECLINED,), forbids=(COMMITTED, *PARENT_EMBODIED), delay=48)
 
 
 # --- 10. The north turret: the night watch ------------------------------------------------------------------------------

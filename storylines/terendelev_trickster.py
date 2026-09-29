@@ -71,6 +71,12 @@ SCALE_HELD = "terendelev.scale_held"
 CLAW_HELD = "terendelev.claw_held"
 SIGHT = "trickster.perception_tier1"      # TricksterPerceptionTier1Feature: "You see more than other people."
 ST_DEAD = "storyteller.dead"
+# The parent romance (RanRomance) has already brought her back: its returned-person finale (TereBook05End terminal cues,
+# reference/canon-review/terendelev-parent-bindings.json) or the Lich binding that embodies her in service. Only these gate
+# the Trickster return; meeting or courting her on the parent route (RanRomTereRom, the oath, the scale) does not.
+PARENT_RETURNED = "terendelev.continuation.returned_finale_seen"
+PARENT_LICH = "terendelev.parent_lich_bind"
+PARENT_EMBODIED = (PARENT_RETURNED, PARENT_LICH)
 # Authored.
 EYES = P + "eyes"                         # Derived: the claw story heard, or the Trickster's sight
 STORY_KNOWN = P + "story_known"           # Derived: the Storyteller's vision of her corruption heard (scale or claw)
@@ -97,6 +103,9 @@ BINDINGS = {
     "SeenCues": {IZ_BATTLE: ["c37c6235f1748b144903529f78462c50"],
                  CLAW_STORY: ["71fbdd5c766802f4eac6dfe0612a2d46", "fabb0f4a300ac7b4389c7bee48b07c77"],
                  AREELU_TOLD: ["af5d0b6be337672478f086357442cd15"]},
+    "SeenCues_parent": {PARENT_RETURNED: ["8bf0fdc74bae4ef79dcfe04036e813ab", "4791f49d19624dafa2ea1ae6dd18c588",
+                                          "30b3341acced4fa793dcc92dfe3587a9", "10fe0c7bd80d441c8688c37babc19f66"]},
+    "Etudes": {PARENT_LICH: "bbe7d7dbb92a4923a1ca4433e626a5ec"},
     "InventoryItems": {CLAW_HELD: CLAW},
     "MainCharacterFacts": {SIGHT: "8bc2f9b88a0cf704ea72d86c2a3e2aef"},
     "Latches": {MONSTER_LATCH: [MONSTER_DEAD]},
@@ -404,7 +413,7 @@ def bones(host):
     ]
     SCENES.append(scene(sid, "Restitution", "Terendelev", 5, "[Walk over to the burning bones.]", nodes,
                         requires=("trickster", IZ_BATTLE),
-                        forbids=(RETURNED, SEARCH_FAILED, REFUSED_CLAIM, FLINCHED, CLOSED, AEON, twin),
+                        forbids=(RETURNED, SEARCH_FAILED, REFUSED_CLAIM, FLINCHED, CLOSED, AEON, twin, *PARENT_EMBODIED),
                         last=5, Relationship=REL, Chapters=[5], AnswerLists=[h["list"]], NativeReturnCue=h["back"],
                         TricksterDevice=True, TricksterState="bones"))
 
@@ -466,7 +475,7 @@ page(P + "late.the_wound_calls", "The fire at Iz", [
         c('[Wrap her in your cloak.] "Let\'s go home."', flags=(RETURNED, STARTED, WOUND_OPEN, GROUNDED, LATE))),
     te("rest", '''"Thank you." {n}The flame gutters.{/n} "You came back. That will do. Tell no one in Kenabres; let them remember the square."''',
         c("[Stay until it goes out.]")),
-], requires=("trickster", MONSTER_DEAD, MONSTER_LATCH), forbids=(RETURNED, CLOSED), delay=24,
+], requires=("trickster", MONSTER_DEAD, MONSTER_LATCH), forbids=(RETURNED, CLOSED, *PARENT_EMBODIED), delay=24,
     TricksterDevice=True, TricksterState="late")
 
 
@@ -590,8 +599,9 @@ epilogue("rest", '''{n}The fire at Iz burned for nine days and then went out on 
 def integrate(payload):
     """Her native reads (the Iz battle cue, the claw story, Areelu's audience, the claw item, the Trickster's sight), her
     Derived keys, the monster latch, and the book-picture fallback. Other world keys bind on demand in trickster_world."""
-    for kind in ("SeenCues", "InventoryItems", "MainCharacterFacts", "Latches"):
-        for key, value in BINDINGS[kind].items():
+    for kind, source in (("SeenCues", "SeenCues"), ("SeenCues", "SeenCues_parent"), ("Etudes", "Etudes"),
+                         ("InventoryItems", "InventoryItems"), ("MainCharacterFacts", "MainCharacterFacts"), ("Latches", "Latches")):
+        for key, value in BINDINGS[source].items():
             have = payload.setdefault(kind, {}).get(key)
             if have is not None and have != value:
                 raise ValueError("Conflicting binding: " + key)

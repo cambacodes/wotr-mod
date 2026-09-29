@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-terendelev\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3347,
-  "unique_targets": 753,
+  "binding_uses": 3352,
+  "unique_targets": 758,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -3267,6 +3267,36 @@
     "5a06af413442436a88c2362c9e9dcbd0": {
       "type": "BlueprintCue",
       "path": "RanRomance.Nura.NuraBook05Page002.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "bbe7d7dbb92a4923a1ca4433e626a5ec": {
+      "type": "BlueprintEtude",
+      "path": "RanRomance.Tere.Main.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "8bf0fdc74bae4ef79dcfe04036e813ab": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "4791f49d19624dafa2ea1ae6dd18c588": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "30b3341acced4fa793dcc92dfe3587a9": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
+      "provenance": "reviewed-parent-source",
+      "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
+    },
+    "10fe0c7bd80d441c8688c37babc19f66": {
+      "type": "BlueprintCue",
+      "path": "RanRomance.Tere.TereBook05End.Configure",
       "provenance": "reviewed-parent-source",
       "assembly_sha256": "281239b19ff12675d2e8e48cd86b3759c38f6598a93e13f254a044c5e990db68"
     }

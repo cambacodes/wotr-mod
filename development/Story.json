@@ -325025,7 +325025,9 @@
         "terendelev.trickster.flinched",
         "terendelev.closed",
         "terendelev.aeon_spared",
-        "terendelev.trickster.bones.restitution_irabeth"
+        "terendelev.trickster.bones.restitution_irabeth",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -325958,7 +325960,9 @@
         "terendelev.trickster.flinched",
         "terendelev.closed",
         "terendelev.aeon_spared",
-        "terendelev.trickster.bones.restitution"
+        "terendelev.trickster.bones.restitution",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -326369,7 +326373,9 @@
       "Forbids": [
         "terendelev.aeon_spared",
         "terendelev.trickster.returned",
-        "terendelev.closed"
+        "terendelev.closed",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "DelayHours": 24,
       "Optional": false,
@@ -330640,7 +330646,9 @@
         "terendelev.aeon_spared",
         "terendelev.trickster.commit_awning",
         "terendelev.committed",
-        "terendelev.trickster.declined"
+        "terendelev.trickster.declined",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -330947,7 +330955,9 @@
         "terendelev.aeon_spared",
         "terendelev.trickster.commit",
         "terendelev.committed",
-        "terendelev.trickster.declined"
+        "terendelev.trickster.declined",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -331078,7 +331088,9 @@
         "terendelev.closed",
         "terendelev.aeon_spared",
         "terendelev.trickster.commit.release_awning",
-        "terendelev.committed"
+        "terendelev.committed",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -331210,7 +331222,9 @@
         "terendelev.closed",
         "terendelev.aeon_spared",
         "terendelev.trickster.commit.release",
-        "terendelev.committed"
+        "terendelev.committed",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "DelayHours": 48,
       "Optional": false,
@@ -340408,6 +340422,7 @@
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
+    "terendelev.parent_lich_bind": "bbe7d7dbb92a4923a1ca4433e626a5ec",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
@@ -342712,6 +342727,12 @@
     "terendelev.areelu_told": [
       "af5d0b6be337672478f086357442cd15"
     ],
+    "terendelev.continuation.returned_finale_seen": [
+      "8bf0fdc74bae4ef79dcfe04036e813ab",
+      "4791f49d19624dafa2ea1ae6dd18c588",
+      "30b3341acced4fa793dcc92dfe3587a9",
+      "10fe0c7bd80d441c8688c37babc19f66"
+    ],
     "vellexia.spared": [
       "58d69774dbe696e46a9232167e8d3479"
     ],
@@ -344183,7 +344204,9 @@
       ],
       "Forbids": [
         "terendelev.closed",
-        "terendelev.presence.failed"
+        "terendelev.presence.failed",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -344206,7 +344229,9 @@
         "terendelev.presence.failed"
       ],
       "Forbids": [
-        "terendelev.closed"
+        "terendelev.closed",
+        "terendelev.continuation.returned_finale_seen",
+        "terendelev.parent_lich_bind"
       ],
       "MinChapter": 5,
       "MaxChapter": 5,
