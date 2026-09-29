@@ -45,6 +45,8 @@ internal static class Program
         Run("forced runs satisfy DelayHours by backdating hour.* times", DelayForcingChecks);
         Run("residence spike: plan, verdicts, report shape", ResidenceSpikeChecks);
         Run("residence spike: presence engine reflection vs built RRT DLL", () => ResidenceSpikeReflection(rrtDll));
+        Run("presence spike: plan, verdicts, report shape", PresenceSpikeChecks);
+        Run("presence spike: quiet-copy reflection vs built RRT DLL", () => PresenceSpikeReflection(rrtDll));
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
         return failures == 0 ? 0 : 1;
     }
@@ -450,6 +452,66 @@ internal static class Program
         Check((string?)j["Plan"]?["Spike"] == "Residence" && j["Saves"]?[0]?["Residence"]?["Findings"] != null, "the spike result is in the report");
         r.Saves[0].Residence = g; r.ComputeSummary();
         Check(r.Summary.Passed, "a green spike leaves the summary green");
+    }
+
+    static void PresenceSpikeChecks()
+    {
+        var normal = HarnessPlan.Parse("{\"saves\":[\"a\"]}");
+        Check(normal.Presence == null && !normal.PresenceSpike, "no presence spike by default");
+        var plain = new HarnessReport { Plan = normal, Status = "complete" };
+        plain.Saves.Add(new SaveReport { Save = "a", LoadOk = true });
+        var pj = JObject.Parse(plain.ToJson());
+        Check(pj["Plan"]?["Presence"] == null && pj["Saves"]?[0]?["PresenceSpike"] == null, "a normal report has no presence spike keys");
+
+        var sp = HarnessPlan.Parse("{\"spike\":\"Presence\"}");
+        Check(sp.PresenceSpike && !sp.ResidenceSpike && sp.Residence == null && sp.Presence != null && sp.Presence.Units.Count == 4
+            && sp.Presence.Units[0] == "397b090721c41044ea3220445300e1b8" && sp.Presence.EnterPoint == PresenceSpikePlan.EnterFromThroneRoom,
+            "spike presence fills the default settings (Camellia's companion blueprint first)");
+        var stay = HarnessPlan.Parse("{\"spike\":\"presence\",\"presence\":{\"enterPoint\":\"\",\"units\":[\"397B0907-21C4-1044-EA32-20445300E1B8\",\"397b090721c41044ea3220445300e1b8\"],\"observeSeconds\":0}}");
+        Check(stay.Presence!.EnterPoint == null && stay.Presence.Units.Count == 1 && stay.Presence.ObserveSeconds >= 1, "custom presence settings normalize");
+        bool threw = false;
+        try { HarnessPlan.Parse("{\"presence\":{}}"); } catch (FormatException) { threw = true; }
+        Check(threw, "presence settings without spike presence are rejected");
+        threw = false;
+        try { HarnessPlan.Parse("{\"spike\":\"presence\",\"presence\":{\"units\":[]}}"); } catch (FormatException) { threw = true; }
+        Check(threw, "a presence spike without units is rejected");
+
+        QuietCopyProbe Quiet() => new QuietCopyProbe { UnitName = "Camelia_Companion", Spawned = true, Exists = true, Faction = "Neutrals",
+            Passive = true, AsksSilent = true, Asks = "PC_None_Barks", Removed = true };
+        PresenceSpikeResult Green() => new PresenceSpikeResult { Area = "DrezenCapital", Copies = { Quiet() } };
+        var g = Green(); g.Evaluate();
+        Check(g.Passed && g.Findings.Count == 0, "an all-quiet presence spike passes");
+        var loud = Green(); loud.Copies[0].PlayerFaction = true; loud.Copies[0].PartyGroup = true; loud.Copies[0].Passive = false;
+        loud.Copies[0].AsksSilent = false; loud.Copies[0].Barks.Add("Camelia_BattleStart_01"); loud.Copies[0].InCombat = true; loud.Evaluate();
+        Check(!loud.Passed && new[] { "Player faction", "party's unit group", "not passive", "voiced", "entered combat", "barked: Camelia_BattleStart_01" }
+            .All(w => loud.Findings.Any(f => f.Contains(w))), "a companion copy as spawned natively fails every quiet check");
+        var talk = Green(); talk.Dialogs.Add("Camelia_Companion_Dialog (speaker Camellia)"); talk.Evaluate();
+        Check(!talk.Passed && talk.Findings.Single().StartsWith("dialogs started"), "a dialog started while watching fails");
+        var none = new PresenceSpikeResult { Area = "DrezenCapital", Skipped = { "Seelah_NPC_Level1: a live unit of it is already in the area" } }; none.Evaluate();
+        Check(!none.Passed && none.Findings.Single().StartsWith("no copy was spawned"), "a spike that spawned nothing fails");
+
+        var r = new HarnessReport { Status = "complete", Plan = sp };
+        r.Init.RrtModFound = true; r.Init.Initialized = true;
+        r.Saves.Add(new SaveReport { Save = "c3", LoadOk = true, PresenceSpike = loud });
+        r.ComputeSummary();
+        Check(!r.Summary.Passed && r.Summary.Failures.Any(f => f.StartsWith("c3: presence spike: ")), "a failed presence spike is a summary failure");
+        var j = JObject.Parse(r.ToJson());
+        Check((string?)j["Plan"]?["Spike"] == "Presence" && j["Saves"]?[0]?["PresenceSpike"]?["Copies"] != null, "the presence spike result is in the report");
+        r.Saves[0].PresenceSpike = g; r.ComputeSummary();
+        Check(r.Summary.Passed, "a green presence spike leaves the summary green");
+    }
+
+    static void PresenceSpikeReflection(string rrtDll)
+    {
+        if (!File.Exists(rrtDll)) { Fail("built RRT DLL missing: " + rrtDll); return; }
+        var asm = Assembly.LoadFrom(rrtDll);
+        var problems = RrtBridge.Validate(asm, RrtBridge.PresenceSpikeExpectations);
+        foreach (var p in problems) Fail(p);
+        Console.WriteLine("    " + RrtBridge.PresenceSpikeExpectations.Length + " presence spike member expectations checked, " + problems.Count + " problem(s)");
+        if (problems.Count > 0) return;
+        var guest = new RrtBridge(asm).NewSpawnCopyPresence("harness.spike.presence.1", "397b090721c41044ea3220445300e1b8",
+            PresenceSpikePlan.DrezenCapital, 0f, 0f, 0f, 0f, null!);
+        Check(RrtBridge.PresenceQuiet(guest) == "None", "a fresh presence has applied no quiet repair");
     }
 
     static void ResidenceSpikeReflection(string rrtDll)

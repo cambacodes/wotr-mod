@@ -51,6 +51,7 @@ The `run-harness.ps1` options are:
 - `-Windowed` passes the standard Unity `-screen-*` arguments.
 - `-TimeoutMinutes` sets the run timeout (default 45).
 - `-Spike Residence` runs the P2 residence feasibility spike instead of driving scenes. See [Residence spike](#residence-spike--spike-residence).
+- `-Spike Presence` runs the E12d quiet-copy check instead of driving scenes. See [Presence spike](#presence-spike--spike-presence).
 - `-Build` rebuilds the harness first.
 - `-RestoreFrom harness/.runs/<stamp>` restores the Mods folder after the script itself was killed.
 
@@ -329,6 +330,34 @@ Add `-DryRun` to see each matching scene's host, owning cue and click count with
 ## Presence hooks (E12/E12c)
 
 `RrtBridge.PresenceReport()` returns one line per presence ("key [mode] wanted; status; click-to-talk attached|not attached"). `RrtBridge.PresenceClick(key)` clicks a presence the way the player would and returns true when its RRT hub dialog started; a live run can assert that the presence appeared and that its hub opens.
+
+## Presence spike (`-Spike Presence`)
+
+The live check of E12d (the quiet copy). Spawn-copy presences are instances of native unit blueprints, and some are
+companions: `Camelia_Companion` and `EvilArueshalae_Companion` carry the Player faction, a party AI brain and the
+companion's voice set. As spawned natively such a copy joins the party's unit group (`<directly-controllable-unit>`),
+shares the party inventory, joins the party's fights and barks the companion's lines. `GuestPresence` now switches every
+copy to the Neutrals faction and its own group, sets the native silent `PC_None_Barks` as its `OverrideAsks`, and marks it
+`Passive` (re-applied every tick, since `Passive` is not saved). It is opt-in: without `-Spike` nothing changes. With it,
+after each save loads (`PresenceSpike.cs`, `PresenceSpikeModel.cs`):
+
+1. If the save is not in Drezen (capital) it loads `DrezenCapital_FromThroneRoom` and waits for idle.
+2. For each candidate unit with no live unit in the area it builds a spawn-copy `GuestPresence` 3 m from the Commander and
+   ticks it, recording the repairs applied at spawn (`Quiet`), the copy's faction, group, `Passive` flag and asks.
+3. It forces each copy's Aggro, Pain, LowHealth, Selected, Discovery and CheckFail barks, then watches for `observeSeconds`
+   (20), ticking the presences as `Main.TickPresences` does. A Harmony prefix on `UnitAsksComponent.Bark.Play` (patched in
+   presence-spike runs only) records every audible bark (voice event or text) a copy plays; dialogs that start and combat
+   are recorded too.
+4. It removes the copies and checks their records are gone.
+
+The result is `Saves[i].PresenceSpike`: per copy `NativeFaction`, `NativeAsks` (what it had before E12d), `Faction`,
+`PlayerFaction`, `PartyGroup`, `Passive`, `Asks`, `AsksSilent`, `InCombat`, `Barks`, `Removed`; `Dialogs`, `Passed` and
+`Findings`. A spike that does not pass is a summary failure. Settings are under `presence` in the plan (`enterPoint`, ""
+to stay in the loaded area; `units`, `distance`, `observeSeconds`, `entrySeconds`, `settleSeconds`).
+
+```powershell
+./harness/run-harness.ps1 -Build -Saves '<copy of a Ch3 Drezen save>' -Spike Presence -NoRoundTrip -TimeoutMinutes 15
+```
 
 ## Residence spike (`-Spike Residence`)
 

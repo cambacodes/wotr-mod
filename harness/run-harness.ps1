@@ -24,6 +24,13 @@
   with RRT's GuestPresence, checks view, rendering (with -Screenshots), a walk and a dialog, then removes it. Nothing is saved.
   ./harness/run-harness.ps1 -Saves 'D:\saves\ch6.zks' -Spike Residence -Screenshots -NoRoundTrip
 
+  -Spike Presence runs the E12d quiet-copy check instead of driving scenes: after each save loads it enters Drezen (unless
+  the save is already there), spawns spawn-copy presences of companion and story units (Camelia_Companion,
+  EvilArueshalae_Companion, Seelah, Targona) next to the Commander with RRT's GuestPresence, forces their bark triggers
+  (Aggro, Pain, LowHealth, Selected, Discovery, CheckFail), watches them for 20 s, and fails on any audible bark, dialog
+  start, combat, Player faction, party group or missing Passive flag. It then removes them. Nothing is saved.
+  ./harness/run-harness.ps1 -Build -Saves '<copy of a Ch3 Drezen save>' -Spike Presence -NoRoundTrip -TimeoutMinutes 15
+
 .NOTES
   Exit codes: 0 all checks passed, 1 tests failed, 2 harness/infrastructure failure (no report, timeout, crash),
   3 bad arguments or failed preflight.
@@ -50,7 +57,7 @@ param(
     [int]$ScreenshotsPerScene = 3,
     [switch]$Inline,
     [int]$MaxInlineNavSteps = 40,
-    [ValidateSet('Residence')][string]$Spike,
+    [ValidateSet('Residence', 'Presence')][string]$Spike,
     [switch]$Build,
     [int]$TimeoutMinutes = 45,
     [string]$UserData = (Join-Path $env:USERPROFILE 'AppData\LocalLow\Owlcat Games\Pathfinder Wrath Of The Righteous'),

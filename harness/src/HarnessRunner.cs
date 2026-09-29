@@ -303,6 +303,22 @@ namespace RRT.TestHarness
                 yield break;
             }
 
+            // -Spike Presence (opt-in): the E12d quiet-copy check replaces scene driving for this save.
+            if (plan.PresenceSpike)
+            {
+                capture.Context = prefix + "spike";
+                var check = sr.PresenceSpike = new PresenceSpikeResult();
+                yield return new Guarded(PresenceSpike(check), ex =>
+                {
+                    check.Error ??= "harness: " + ex.Message;
+                    sr.Exceptions.Add(new CapturedLog { Source = "harness", Severity = "Exception", Message = ex.Message, StackTrace = ex.ToString(), Relevant = true, Context = capture.Context });
+                    TryStopDialog();
+                });
+                check.Evaluate();
+                TryWrite();
+                yield break;
+            }
+
             var dialogs = rrt.Dialogs;
             var targets = new List<(object Scene, string Id, bool Available, string[] Lists)>();
             foreach (var scene in rrt.Scenes)
