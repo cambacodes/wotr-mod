@@ -125,12 +125,12 @@ internal static class LastCallTests
         var commits = new[] { "anevia.committed", "irabeth.committed", "committed", "arsinoe.committed", "jerribeth.committed", "konomi.committed",
             "noct.complete", "vellexia.committed", "nurah.complete", "kiana.committed", "minachiv.complete", "soana.committed", "aranka.extension_kept",
             "gesmerha.committed", "seelah.committed", "targona.committed", "dorgelinda.committed", "hepzamirah.committed", "eritrice.committed",
-            "areelu.committed", "chadali.committed", "camellia.committed", "arueshalae.committed", "delamere.committed" };
+            "areelu.committed", "chadali.committed", "camellia.committed", "arueshalae.committed", "delamere.committed", "nidalynn.committed" };
         var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).ToArray());
         var shown = codas.Where(s => Av(s, all)).Select(s => s.Id).ToList();
-        check(codas.Length == 24 && shown.Count == 22 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
+        check(codas.Length == 25 && shown.Count == 23 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
               && shown.Contains("tirabade.lastcall.page"),
-            "LastCall_AllCommitted: expected 22 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
+            "LastCall_AllCommitted: expected 23 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
         foreach (var coda in codas)
         {
             var own = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle, coda.Requires.Last());

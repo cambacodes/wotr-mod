@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 778,
-  "resolved": 778,
-  "inlineOnlyScenes": 148,
-  "inlineOnlyResolved": 148,
-  "answerListScenesWithoutContact": 397,
-  "answerListScenesWithoutContactResolved": 397,
+  "entryTargetScenes": 785,
+  "resolved": 785,
+  "inlineOnlyScenes": 152,
+  "inlineOnlyResolved": 152,
+  "answerListScenesWithoutContact": 404,
+  "answerListScenesWithoutContactResolved": 404,
   "lists": 83,
   "listsWithReachableHost": 82
  },
@@ -6103,6 +6103,44 @@
     "clicks": 0
    }
   },
+  "devarra.tower.one_short": {
+   "kind": "return-cue",
+   "lists": [
+    "2f5b7e0b76d3c5a42a431e1e33a8db09"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.one_short"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
+    "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
+    "dialogName": "StoryTeller_MainDialogue",
+    "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
+  "devarra.tower.smallest_egg": {
+   "kind": "return-cue",
+   "lists": [
+    "2f5b7e0b76d3c5a42a431e1e33a8db09"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.smallest_egg"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
+    "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
+    "dialogName": "StoryTeller_MainDialogue",
+    "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
   "devarra.tower.the_bones": {
    "kind": "return-cue",
    "lists": [
@@ -11761,6 +11799,109 @@
     "list": "ced27e744d2dded40bbb5adf17816dbb",
     "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
     "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nidalynn.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.nidalynn.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.nidalynn.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.nidalynn.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.nidalynn.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.nidalynn.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "nidalynn.trickster.eggs.lamp_black": {
+   "kind": "return-cue",
+   "lists": [
+    "dd8ac86f25e0f6b4cac75386eb528851"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "dd8ac86f25e0f6b4cac75386eb528851": "RRT_entry.nidalynn.trickster.eggs.lamp_black"
+   },
+   "resolved": true,
+   "host": {
+    "list": "dd8ac86f25e0f6b4cac75386eb528851",
+    "dialog": "0217459b6db720a4fad0734659ca778f",
+    "dialogName": "Golems_DragonEggs_Dialogue",
+    "cue": "Cue_0006",
+    "clicks": 1
+   }
+  },
+  "nidalynn.trickster.react.greybor.rock": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.nidalynn.trickster.react.greybor.rock"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nidalynn.trickster.react.ulbrig.white_girl": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.nidalynn.trickster.react.ulbrig.white_girl"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
+    "clicks": 0
+   }
+  },
+  "nidalynn.trickster.react.woljif.small_one": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.nidalynn.trickster.react.woljif.small_one"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
     "cue": "Cue_0001",
     "clicks": 0
    }

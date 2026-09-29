@@ -489,6 +489,21 @@ partner("delamere", "delamere", "delamere.committed", "delamere.closed", "First 
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Delamere: one day, owed", "I asked a huntress for another day, and she gave it to me on account. She keeps the right to take it back whenever she likes. I walk crooked so that neither of us forgets."))
 
+NI = "nidalynn.trickster."
+partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her Fire",
+    '''Nidalynn did not wait in Drezen for news of Threshold, and she did not go north. She banked the kiln under the east wall as high as it would go, and sat on its step through the whole of that night with bread and salt in her lap, feeding the fire, the way old Reudger, she said, used to sit up for a rider late home in a snowstorm. The young dragon sat beside her and would not go to sleep.''',
+    (
+        page_p('''At the rift the Commander called across the broken ground with a long rising herding-shout, the kind that brings mares home over a great distance, with her name at the end of it, and far off to the south something silver came up out of the clouds over Drezen and answered it, and came. She landed on the lip of the world with a young red-black dragon screaming at her heels, and took one look at what was left of the Commander, and said that the soup was getting cold.''', requires=(called("nidalynn"),)),
+        page_p('''The Commander never found out what she would have done if the flask had not held. She would not say. She said a silver does not tell a trickster what she would have done if the trick had failed, because the trickster would only use it next time.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was standing at the back with a loaf under her arm, because somebody would be hungry after, and she was right.''', requires=(H2,)),
+        page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one's bill still stood. Nidalynn said it was only manners to leave it standing, and that she would be there when it was called.''', requires=("devarra.trickster.cost.egg_withheld",)),
+    ), declined=NI + "refused",
+    deal=[[NI + "cost.salt_eaten"]],
+    call=call('''[Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."''',
+        '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Nidalynn: salt, eaten", "I ate a silver dragon's salt at a lime-kiln. Among the Windstep that makes me of her fire until the salt is out of my blood, and she says it never comes out. The debt runs both ways. So she says."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 

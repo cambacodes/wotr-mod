@@ -64,6 +64,7 @@ PARTNERS = {
     "areelu": ("Areelu", "Areelu"), "chadali": ("Chadali", "Chadali"), "arueshalae": ("Arueshalae", "Arueshalae"),
     "devarra": ("Devarra", "Devarra"), "delamere": ("Delamere", "Delamere"), "kaylessa": ("Kaylessa", "Kaylessa"),
     "mielarah": ("Mielarah", "Mielarah"),
+    "nidalynn": ("Nidalynn", "Nidalynn"),
 }
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).
 EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]]}
