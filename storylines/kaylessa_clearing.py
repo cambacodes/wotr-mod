@@ -110,7 +110,7 @@ away(NIGHT, "Where I was meant to die", [
     kay("down", '''"There. Now nobody's holding anything." {n}She is breathing hard, and her skin under your hands is cool as river stone and getting warmer, and every muscle Anemora's work put in her is moving at once.{/n}
 "Don't you dare be gentle with me, soldier. I've had enough careful hands for one life. I want yours."''',
         c("[Pull her down onto the cloak.]", "cut", flags=(NIGHT_FLAG,))),
-    nar("cut", '''{n}She goes down onto the courier's cloak and takes you with her, knees tight at your sides, fingers knotted in your hair, and she pulls you into her with a sound through her teeth that is the word she calls everyone, and it has never once sounded like that. Above you the stars she can see and you can't go on burning over the place where she was meant to die.{/n}''',
+    nar("cut", '''{n}She goes down onto the courier's cloak and pulls you down after her with both hands knotted in your hair, and says the word she calls everyone against your mouth. It has never once sounded like that. Above you the stars she can see and you can't burn on over the place where she was meant to die.{/n}''',
         c("[...]")),
 ], requires=(), delay=12)
 
