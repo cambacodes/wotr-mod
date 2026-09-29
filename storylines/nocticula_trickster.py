@@ -451,3 +451,36 @@ SCENES.append(scene("nocticula.trickster.court.arueshalae", "A favour, called", 
 ], requires=("trickster.ever", "arueshalae.started", "arueshalae.trickster.returned", A_FAVOUR, "nocticula.trickster.contact"),
    forbids=(FAVOUR_CALLED, FIGHT), delay=24, last=5, optional=True, Relationship="nocticula", Remote=True, Chapters=[5],
    ForbidOverrides={FIGHT: RETURNED}))
+# Shamira behind the Commander's eyes (ledger row 11: Nocticula owns court.shamira; additive, R2). Inline on her own
+# Chapter 5 audience list, after the kill, while what is left of her steward is in the Commander's head: she smells her
+# on the clown and chooses what to do about it, then continues into her canon line, "You've saved me the trouble of having
+# to deal with her." (Nocticula/Cue_0021 84df3b22 -> Cue_0019, the end of the audience). Canon: Shamira "is no longer
+# content to rule Alushinyrra on my behalf... She covets my throne instead" (Cue_0015 7cad8bc1); Nocticula knows her
+# brother's enchantments by their "sickly sweet smell" (Cue_0016 bb552fe4). Sets only Nocticula's own flags; Shamira's
+# route reads them in node text.
+AUDIENCE_LIST = "2729c49e2bf20c64caa4f54b352e03f6"   # Nocticula/AnswersList_0007
+REPORTED = "84df3b227f54e3e44888b5bb8585089d"        # Nocticula/Cue_0021 "...You've saved me the trouble..."
+SECRET_SHAMIRA = "nocticula.trickster.secret_known.shamira"
+GREETED = "nocticula.trickster.court.shamira_greeted"
+
+SCENES.append(scene("nocticula.trickster.court.shamira", "Something behind your eyes", "Nocticula", 5,
+    "[Keep your thoughts on the carpet.] \"I've done what I came to do, Lady.\"", [
+    nt("sniff", '''{n}Nocticula does not answer at once. She closes her eyes, as she did when she thought you were her brother, and breathes in, slowly, through her nose.{/n}
+"You have done something." {n}Her eyes open, and they go straight to your face, and then a little behind it, as if your skull were glass.{/n} "There is blood on you, and my brother's sickly perfume, and under both of them something I have smelled in my bed every night since I pulled her off the black water. Not on you. In you."''',
+        c("Continue", "found")),
+    nt("found", '''{n}She crosses the room without seeming to walk. She does not touch you. She bends, close enough that you can feel the cold coming off her skin, and looks into your eyes the way one looks into a window at night, for whoever is standing behind the glass.{/n}
+"Oh," {n}says the Lady in Shadow, very softly.{/n} "Oh, you clever, clever little thief. You killed her in my bedroom, and you let her in."''',
+        c("[Lie] \"There's nobody in here but me, Lady.\"", "lie"),
+        c("[Let her look] \"She's here. If you want to say goodbye, say it now.\"", "greet", flags=(GREETED,)),
+        c("[Say nothing.]", "silence")),
+    nt("lie", '''"Nobody." {n}She smiles, and it is not unkind, which is worse.{/n} "Of course. Keep your nobody, clown. I will not rummage in a guest's head." {n}She straightens a little.{/n} "But I will say one thing to it, since it can hear me."''',
+        c("Continue", "hello")),
+    nt("greet", '''"Goodbye? To Shamira?" {n}Her laugh is low and entirely delighted.{/n} "Nobody says goodbye to Shamira. She would never forgive it. One says good evening, and one waits to see what she will do next."''',
+        c("Continue", "hello")),
+    nt("silence", '''"Wise. Very wise. You have learned not to talk in front of me." {n}She tilts her head at your eyes as if at a small, disagreeable animal behind a grille.{/n} "She never did."''',
+        c("Continue", "hello")),
+    nt("hello", '''{n}She bends close again, right to your face, and speaks past you, to whoever is behind your eyes, the way one speaks to a dog in a kennel.{/n} "Hello, my dear."
+{n}That is all. She straightens, and her face is perfectly calm.{/n} "Keep her quiet in my city, clown. If I find her walking around my palace in a borrowed body wanting my chair, I will know whose idea it was." {n}A pause, while she decides something.{/n} "And if I do not find her, I will know that too."''',
+        c("[Say nothing more.]", native_next=REPORTED, flags=(SECRET_SHAMIRA,))),
+], requires=("trickster", "shamira.killed"), forbids=(SECRET_SHAMIRA,), last=5, optional=True,
+   Relationship="nocticula", Chapters=[5], AnswerLists=[AUDIENCE_LIST], NativeReturnCue=AUDIENCE_YOU))

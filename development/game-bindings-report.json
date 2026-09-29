@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 3097,
-  "unique_targets": 707,
+  "binding_uses": 3135,
+  "unique_targets": 728,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -40,6 +40,10 @@
     },
     "8bc2f9b88a0cf704ea72d86c2a3e2aef": {
       "path": "Mythic/Trickster/Perception/TricksterPerceptionTier1Feature.jbp",
+      "type": "BlueprintFeature"
+    },
+    "4e1948fed4201cf46b88836457c3bad8": {
+      "path": "Mythic/Trickster/Stealth/TricksterStealthTier1Feature.jbp",
       "type": "BlueprintFeature"
     },
     "90bc71f1d8482184a9ede0bda4773d94": {
@@ -758,6 +762,46 @@
       "path": "World/Dialogs/c4/FleshMarket/HologramSlaver/Cue_0014.jbp",
       "type": "BlueprintCue"
     },
+    "d138954fd7cdb2d4e90bb28cbd76235e": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "c64d3f7e4a58fad43bd2bf135ab2b29e": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Answer_0008.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "33f75e114857c6945b931801f0943051": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Answer_0031.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "3a9a8c16a93db5844901ed3e1e5f5bed": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Answer_0044.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "d5c0eb028f41da648bfbdd5a1ac2dc97": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Answer_0178.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "b15365b6241c82f4e9d6345c7a0ca77e": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0055.jbp",
+      "type": "BlueprintCue"
+    },
+    "0e929c72172ec654d9f70fd7d37947ce": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0058.jbp",
+      "type": "BlueprintCue"
+    },
+    "64fdd0fed0509db42b073f8ef7503d45": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0069.jbp",
+      "type": "BlueprintCue"
+    },
+    "43bb7ca856321be409cf22bfe89c28b5": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0106.jbp",
+      "type": "BlueprintCue"
+    },
+    "fbf3cccaa03787d49a882efa0cfe5c5b": {
+      "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0188.jbp",
+      "type": "BlueprintCue"
+    },
     "82a0c2ad3e6dc41469ec66a7affdc486": {
       "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/AnswersList_0017.jbp",
       "type": "BlueprintAnswersList"
@@ -1154,6 +1198,10 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0016.jbp",
       "type": "BlueprintCue"
     },
+    "84df3b227f54e3e44888b5bb8585089d": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0021.jbp",
+      "type": "BlueprintCue"
+    },
     "9c219d9331c1fa24d95ab1c51c46df84": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0023.jbp",
       "type": "BlueprintCue"
@@ -1162,13 +1210,33 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Nocticula_TricksterC5_Dialogue.jbp",
       "type": "BlueprintDialog"
     },
+    "d3d0efb4dfcc1964c923d7b2d6e0dc77": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Shyka_Offer/AnswersList_0011.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "5d6810f1e0eb8204fa4c3211fc603769": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Shyka_Offer/Cue_0010.jbp",
+      "type": "BlueprintCue"
+    },
+    "5266a3d8bc5b0714eaaf77dfa5c20695": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "2f4be0bde527a7d4cb7c73131ab551db": {
       "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "e5a9d6bb7dbe3384eaef95fc05a3ec5c": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/SocothBriefing/Cue_0012.jbp",
       "type": "BlueprintCue"
     },
     "db7f69fa013c7ec49b651e7ad26c67de": {
       "path": "World/Dialogs/c5/Mythic_Trickster/SocothInCloset/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "7b0b6c9d1425a7a41a154ee1b566842b": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/SocothInCloset/Answer_0007.jbp",
+      "type": "BlueprintAnswer"
     },
     "e52a1d81a098a2843aa5f1f35481ddc1": {
       "path": "World/Dialogs/c5/Mythic_Trickster/SocothInCloset/Cue_0002.jbp",
@@ -1770,6 +1838,10 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroWasTeleportedAway.jbp",
       "type": "BlueprintEtude"
     },
+    "bee15cff021828c4c92f09e8f771dbb2": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/FleshMarketMassacre.jbp",
+      "type": "BlueprintEtude"
+    },
     "eff0ca2318f96c049b5c9e6785eac196": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/MinaghoTerrified.jbp",
       "type": "BlueprintEtude"
@@ -1780,6 +1852,14 @@
     },
     "f5be7095af9d43779ce79a52ec27425d": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ProfaneGiftNew.jbp",
+      "type": "BlueprintEtude"
+    },
+    "14a0d1887eeab174dbe3a77382123899": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ShamiraKnowsAboutCrystalls.jbp",
+      "type": "BlueprintEtude"
+    },
+    "9772be00ff3505440bb4937198c19c06": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ShamiraNoMoreDialogues.jbp",
       "type": "BlueprintEtude"
     },
     "0383369136fadc247b7d6ff99110fa55": {
@@ -2256,6 +2336,10 @@
     },
     "9b2af5f30ebd0c544b973c69a9c4dc39": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/NoctaFooled.jbp",
+      "type": "BlueprintEtude"
+    },
+    "8ee3df5466722b94091a3b867b33063a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/NoctaWillAttendTheCouncil.jbp",
       "type": "BlueprintEtude"
     },
     "c820b3788f967e14f8bde3c17447157f": {
