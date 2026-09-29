@@ -29150,7 +29150,7 @@
         {
           "Id": "arrival_terms",
           "Speaker": "Jerribeth",
-          "Text": "\"A contract wants a signature in the signatory's own hand. Mine is here.\"\n{n}She lifts it: long, jointed, clawed at the tips, very still.{/n}\n\"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not sign things at a distance. Which face do you want across the table, Commander?\"",
+          "Text": "\"A forfeit is collected in person. I have come to see what I bought.\"\n{n}She lifts her hand into the light: long, jointed, clawed at the tips, very still.{/n}\n\"The road demons use is short, if you do not mind what it smells of. I shall not stay the night; the Abyss notices when I am absent, and so will your guards. But I do not collect at a distance. Which face do you want across the table, Commander?\"",
           "Choices": [
             {
               "Text": "\"Your own. All of it.\"",
@@ -29178,7 +29178,7 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "threshold",
+              "Next": "ask",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -29194,7 +29194,47 @@
           "Choices": [
             {
               "Text": "Continue",
+              "Next": "ask",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "ask",
+          "Speaker": "Jerribeth",
+          "Text": "{n}She takes both your wrists, loosely, the way she once held a locust she had not yet decided to pin, and does not close her hand.{/n}\n\"I like things still, Commander. I like them to have chosen to be still. Give me your hands, or keep them. I shall read either answer, and I shall enjoy either answer, and only one of them will leave marks.\"",
+          "Choices": [
+            {
+              "Text": "[Give her your wrists.]",
               "Next": "threshold",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Keep your hands, and pull her down to you.]",
+              "Next": "threshold_free",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Jerribeth"
+        },
+        {
+          "Id": "threshold_free",
+          "Speaker": "Narrator",
+          "Text": "{n}You take your hands back and put them on her instead: the ridge of her carapace, the cold hinge of a wing. She goes very still, and then the buzzing starts again, lower, and you realise it is a laugh.{/n}\n\"Oh,\" {n}she says.{/n} \"You are going to be difficult. Good.\"\n{n}She lets you pull her down. Her wings open over you both and shut out the lamp, and the sound you have only ever heard in your skull is in your skin now, everywhere she touches, and she lowers herself onto you.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "morning",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -29206,7 +29246,7 @@
         {
           "Id": "threshold",
           "Speaker": "Narrator",
-          "Text": "{n}She backs you toward the bed without appearing to push, the way she herded Wintersun: by making every other direction less interesting. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}\n{n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}\n\"Terms accepted,\" {n}she says, very softly, against your ear, and lowers herself onto you.{/n}",
+          "Text": "{n}You hold out your wrists. She takes them as if you had handed her something breakable and rare, and walks you backwards to the bed without once tightening her grip. Her mouth, or what serves her for one, is at your throat, and the buzzing you have only ever heard in your head is in your skin now, low and continuous, so that you cannot tell where the sound stops and the shiver starts.{/n}\n{n}When your knees meet the edge of the mattress she lets you fall, and follows, and settles over you with her weight on her elbows and her wings half open, shutting out the lamp. Her claws close lightly round your wrists and press them into the blanket.{/n}\n\"Terms accepted,\" {n}she says, very softly, against your ear, and lowers herself onto you.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -29222,7 +29262,7 @@
         {
           "Id": "morning",
           "Speaker": "Narrator",
-          "Text": "{n}She is gone before the watch changes. The sheets smell of cold stone. There are four small crescents on each of your wrists where her claws rested, very precise, as if she had counted them.{/n}\n{n}Tucked into the frame, where the image should be, is one dry locust wing, veined like a leaf and folded exactly in half. When you touch it, a voice that is not quite a memory arrives behind your left eye: \"The forfeit stands. I have not decided which memory. You will be the second to know.\"{/n}",
+          "Text": "{n}She is gone before the watch changes. The sheets smell of cold stone. There are small crescents on your skin where her claws rested, very precise, as if she had counted them. You press a thumb to one. It stings, exactly as much as she meant it to, and you find you are in no hurry for it to heal.{/n}\n{n}Tucked into the frame, where the image should be, is one dry locust wing, veined like a leaf and folded exactly in half. When you touch it, a voice that is not quite a memory arrives behind your left eye: \"The forfeit stands. I have not decided which memory. You will be the second to know.\"{/n}",
           "Choices": [
             {
               "Text": "[Keep the next evening for her.]",
@@ -144266,9 +144306,7 @@
             {
               "Text": "[Wait for her to decide] \"Whatever you want. Not an order.\"",
               "Next": "decides",
-              "Set": [
-                "irabeth.committed"
-              ],
+              "Set": [],
               "Requires": [
                 "anevia.trickster.shares_beth"
               ],
@@ -144352,7 +144390,39 @@
             {
               "Text": "Continue",
               "Next": "reckon",
+              "Set": [
+                "irabeth.committed"
+              ],
+              "Requires": [],
+              "Forbids": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "not_tonight",
               "Set": [],
+              "Requires": [
+                "irabeth.trickster.cost.accounting_lied"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Irabeth"
+        },
+        {
+          "Id": "not_tonight",
+          "Speaker": "Irabeth",
+          "Text": "\"No. Not tonight.\"\n{n}She says it evenly, the way she reports a loss.{/n}\n\"You told me a story about Iz, and I let you, because I wanted to be alive more than I wanted to be right. I'm not deciding anything else on a story. Ask me again when you've told me the other one.\"",
+          "Choices": [
+            {
+              "Text": "[Step back] \"Then I'll ask again. Not as your Commander.\"",
+              "Next": null,
+              "Set": [
+                "irabeth.trickster.declined"
+              ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -253293,8 +253363,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
