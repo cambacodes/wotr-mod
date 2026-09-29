@@ -312256,7 +312256,7 @@
         {
           "Id": "named_her",
           "Speaker": "Jannah",
-          "Text": "\"Nobody in Mendev knows that. Nobody north of the River Kingdoms knows the last part.\" {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}\n\"Why would the Commander of the crusade learn the Aldori forms? For a deserter in a cage?\"",
+          "Text": "\"That's the old yield. The salles above the river still teach it; the new ones laugh at it. My master made us lie in the chalk for an hour at a time so we'd know how.\" {n}She says it the way a novice recites a verse she hated learning.{/n}\n\"Nobody in Mendev knows that. Nobody north of the River Kingdoms knows the last part.\" {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}\n\"Why would the Commander of the crusade learn the Aldori forms? For a deserter in a cage?\"",
           "Choices": [
             {
               "Text": "\"So that when I decide what to do with you, I can offer them to you.\"",
@@ -312459,7 +312459,7 @@
         {
           "Id": "fall",
           "Speaker": "Narrator",
-          "Text": "{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. An Aldori who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has quit the circle. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}\n{n}Your companions saw an execution. Nobody went into the cage to be sure. Nobody wanted to touch a deserter.{/n}",
+          "Text": "{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. An Aldori who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has quit the circle. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}\n{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, the vrocks' wings were on the wind, and nobody wanted to be the one to kneel in a deserter's blood.{/n}\n{n}It could have gone wrong a dozen ways. She could have bled out; scalp wounds seldom kill, but she was starved and half-frozen. A vrock could have wanted the body. She could have blinked. You left all of that in the cage with her, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}",
           "Choices": [
             {
               "Text": "[Remember that you said nothing over her, and walked out of the circle.]",
@@ -314420,7 +314420,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
             },
             {
               "Text": "[Wipe the blood off your jaw and walk out of the circle.]",
@@ -314439,7 +314443,7 @@
         {
           "Id": "her_yield",
           "Speaker": "Jannah",
-          "Text": "{n}Four hundred soldiers watch their Commander lie down on {mf|his|her} back in the sand inside a deserter's chalk circle, eyes open, not moving. It is so quiet you can hear the smith's forge breathing.{/n}\n\"Answered,\" Jannah says, to you. Then, louder, to the whole yard: \"By the forms! Does anybody here want to argue with an Aldori?\"\n{n}Nobody on the smithy roof wants to. She quits the circle, as the forms require, so that you're allowed to move. Then she steps straight back in and pulls you up by both hands.{/n}",
+          "Text": "{n}Four hundred soldiers watch their Commander lie down on {mf|his|her} back in the sand inside a deserter's chalk circle, eyes open, not moving. It is so quiet you can hear the smith's forge breathing.{/n}\n\"Answered,\" Jannah says, to you. Then, louder, to the whole yard: \"By the forms! Does anybody here want to argue with an Aldori?\"\n{n}Some of them do. You can see it in the Mendevian knights by the barracks door: a Commander who lies down in the sand for a deserter is a Commander who can be made to lie down. By evening the Queen's liaison will have written it up for Nerosyan, and the knights' donations will be slower to come.{/n}\n{n}Nobody on the smithy roof wants to. She quits the circle, as the forms require, so that you're allowed to move. Then she steps straight back in and pulls you up by both hands.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -314762,7 +314766,7 @@
         {
           "Id": "kiss",
           "Speaker": "Narrator",
-          "Text": "{n}She kisses the way she fences: no wasted motion, then everything at once. Her hands are hard from seven years of hilts and they know exactly where your buckles are. Your belt goes. Your coat goes, onto the sand outside the chalk, because she won't have anything in the circle that doesn't belong there.{/n}\n{n}You pull her shirt over her head. The Worldwound's light lies red along her ribs. There is almost nothing on her, for a fencer: seven years of circles and she never bled first. The only marks on her are new ones, and she guides your mouth to each of them in turn.{/n}",
+          "Text": "{n}She kisses you hard and without finesse, then again, slower, as if she has only just found out she's allowed. Her palms are rough and they find your buckles without looking. Your belt goes. Your coat goes, onto the sand outside the chalk, because she won't have anything in the circle that doesn't belong there.{/n}\n{n}You pull her shirt over her head. The Worldwound's light lies red along her ribs. There is almost nothing on her, for a fencer: seven years of circles and she never bled first. The only marks on her are new ones, and she guides your mouth to each of them in turn.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -318627,7 +318631,7 @@
         {
           "Id": "start",
           "Speaker": "Jannah",
-          "Text": "\"Cold.\" {n}She bites off the thread.{/n}\n\"The salt caravans run from the lake pans down to Nerosyan all winter, because salt keeps and people don't. I walked up to the caravan master in a village whose name I never learned, with a shirt tied round my head and blood down one side of my face, and asked if she needed a sword.\"",
+          "Text": "\"Cold.\" {n}She bites off the thread.{/n}\n\"I don't remember the first days well. Walking south along the lava channels at night, mostly. Then a village I never learned the name of, and a carter hauling salt to Nerosyan who needed another sword and didn't ask questions. That's the part I remember clearly: nobody asking questions.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -318643,7 +318647,7 @@
         {
           "Id": "master",
           "Speaker": "Jannah",
-          "Text": "\"She was a Kellid woman with one eye and a voice like a cart axle. She looked at the blood and the blade and said, 'Who did that?' I said, 'I lost a bout.' She said, 'Good. The ones who've never lost are useless.'\"\n\"Then she stitched my head with gut by her fire, without asking, and that's why the scar is so ugly.\"",
+          "Text": "\"The carter's wife stitched my head by the fire. She asked who did it, and I said I'd lost a bout, and she said good, the ones who've never lost are no use to anyone.\" {n}She touches the seam.{/n}\n\"That's why it's so ugly. She had gut, and a needle for harness, and no patience.\"",
           "Choices": [
             {
               "Text": "\"What name did you give her?\"",
@@ -318667,7 +318671,7 @@
         {
           "Id": "vesh",
           "Speaker": "Jannah",
-          "Text": "\"Vesh. It was my father's horse: a grey gelding with no sense of direction and a very good heart.\" {n}Something close to a smile.{/n}\n\"Nobody on that caravan could have said Jannah properly anyway. The Kellids said it like a sneeze.\"",
+          "Text": "\"The name of my father's horse. I'm not telling you what it was; you'd laugh.\" {n}Something close to a smile.{/n}\n\"I was bad at answering to it. Half the winter, people had to say it twice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -318699,7 +318703,7 @@
         {
           "Id": "night",
           "Speaker": "Jannah",
-          "Text": "\"Once, near the Wardstones, something came out of the snow at the wagons at night. Cultists, and something with them that wasn't a man any more. The caravan had four swords. I was one of them.\"\n{n}She puts the gambeson down.{/n} \"I didn't run. Nobody on that caravan had ever heard of Houndheart, so nobody was expecting me to, so I didn't. I've thought about that a lot since. Whether I only run when somebody is waiting to see me do it.\"",
+          "Text": "\"Once, one night on the road, something came out of the snow at the wagons. Cultists, I think, and something with them that wasn't a man any more. There were four of us with swords. I was one of them.\"\n{n}She puts the gambeson down.{/n} \"I didn't run. Nobody on that caravan had ever heard of Houndheart, so nobody was expecting me to, so I didn't. I've thought about that a lot since. Whether I only run when somebody is waiting to see me do it.\"",
           "Choices": [
             {
               "Text": "\"Or you only stand when you've lost so much there's nothing left to run for.\"",
@@ -321062,7 +321066,7 @@
         {
           "Id": "start",
           "Speaker": "Jannah",
-          "Text": "\"It's knitting. The Kellid woman's stitches are finally coming out on their own.\" {n}She tilts the mirror.{/n}\n\"It'll be white by the spring. Everyone who sees it will know somebody cut me there. Nobody will know it was first blood and not a killing blow, unless I tell them. I haven't decided whether to.\"",
+          "Text": "\"It's knitting. The carter's wife's stitches are finally coming out on their own.\" {n}She tilts the mirror.{/n}\n\"It'll be white by the spring. Everyone who sees it will know somebody cut me there. Nobody will know it was first blood and not a killing blow, unless I tell them. I haven't decided whether to.\"",
           "Choices": [
             {
               "Text": "\"Tell them. It was a fair bout.\"",
@@ -325457,8 +325461,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

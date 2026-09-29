@@ -497,18 +497,18 @@ meet(SALT, "Salt", '"What was it like, being nobody?"', [
     nar("open", '''{n}She is sitting cross-legged on the bunk, darning the elbow of her gambeson with coarse thread and the concentration of someone who was never taught to sew and refuses to be beaten by it.{/n}''',
         c("Continue", "start")),
     jan("start", '''"Cold." {n}She bites off the thread.{/n}
-"The salt caravans run from the lake pans down to Nerosyan all winter, because salt keeps and people don't. I walked up to the caravan master in a village whose name I never learned, with a shirt tied round my head and blood down one side of my face, and asked if she needed a sword."''',
+"I don't remember the first days well. Walking south along the lava channels at night, mostly. Then a village I never learned the name of, and a carter hauling salt to Nerosyan who needed another sword and didn't ask questions. That's the part I remember clearly: nobody asking questions."''',
         c("Continue", "master")),
-    jan("master", '''"She was a Kellid woman with one eye and a voice like a cart axle. She looked at the blood and the blade and said, 'Who did that?' I said, 'I lost a bout.' She said, 'Good. The ones who've never lost are useless.'"
-"Then she stitched my head with gut by her fire, without asking, and that's why the scar is so ugly."''',
+    jan("master", '''"The carter's wife stitched my head by the fire. She asked who did it, and I said I'd lost a bout, and she said good, the ones who've never lost are no use to anyone." {n}She touches the seam.{/n}
+"That's why it's so ugly. She had gut, and a needle for harness, and no patience."''',
         c('"What name did you give her?"', "vesh"),
         c('"Did nobody recognise you?"', "nobody")),
-    jan("vesh", '''"Vesh. It was my father's horse: a grey gelding with no sense of direction and a very good heart." {n}Something close to a smile.{/n}
-"Nobody on that caravan could have said Jannah properly anyway. The Kellids said it like a sneeze."''',
+    jan("vesh", '''"The name of my father's horse. I'm not telling you what it was; you'd laugh." {n}Something close to a smile.{/n}
+"I was bad at answering to it. Half the winter, people had to say it twice."''',
         c("Continue", "night")),
     jan("nobody", '''"A deserter, walking south with a dead woman's face? Nobody looks. That's the thing I learned on the salt road, Commander. Nobody is looking at you half as hard as you're looking at yourself."''',
         c("Continue", "night")),
-    jan("night", '''"Once, near the Wardstones, something came out of the snow at the wagons at night. Cultists, and something with them that wasn't a man any more. The caravan had four swords. I was one of them."
+    jan("night", '''"Once, one night on the road, something came out of the snow at the wagons. Cultists, I think, and something with them that wasn't a man any more. There were four of us with swords. I was one of them."
 {n}She puts the gambeson down.{/n} "I didn't run. Nobody on that caravan had ever heard of Houndheart, so nobody was expecting me to, so I didn't. I've thought about that a lot since. Whether I only run when somebody is waiting to see me do it."''',
         c('"Or you only stand when you\'ve lost so much there\'s nothing left to run for."', "lost"),
         c('"Maybe you\'d changed."', "changed"),
@@ -888,7 +888,7 @@ meet(RECRUITS, "Again", '"I hear you\'ve been drilling the Watch recruits."', [
 meet(TRACE, "Once", '"You keep touching it."', [
     nar("open", '''{n}She is sitting on the bunk with a small steel mirror propped against her knee, looking at the scar on her temple the way she looks at a bout she has lost: carefully, without mercy, and a little curious.{/n}''',
         c("Continue", "start")),
-    jan("start", '''"It's knitting. The Kellid woman's stitches are finally coming out on their own." {n}She tilts the mirror.{/n}
+    jan("start", '''"It's knitting. The carter's wife's stitches are finally coming out on their own." {n}She tilts the mirror.{/n}
 "It'll be white by the spring. Everyone who sees it will know somebody cut me there. Nobody will know it was first blood and not a killing blow, unless I tell them. I haven't decided whether to."''',
         c('"Tell them. It was a fair bout."', "tell"),
         c('"It\'s yours to tell or keep."', "keep")),

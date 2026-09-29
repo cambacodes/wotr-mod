@@ -207,7 +207,8 @@ SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
          c("[Let it go.]", abort=True)),
      nar("named", '''{n}You give them to her whole, as a Mivon challenge is given. The salute, flat of the blade to the brow. The circle, and nobody steps out of it unbloodied. To the first blood and no further: the one who bleeds lays down her blade and lies where she falls, eyes open, until the victor has quit the circle. Whatever the victor says over her is the end of the matter. Whatever the victor leaves unsaid, she owes until it is said.{/n}''',
          c("Continue", "named_her")),
-     jan("named_her", '''"Nobody in Mendev knows that. Nobody north of the River Kingdoms knows the last part." {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}
+     jan("named_her", '''"That's the old yield. The salles above the river still teach it; the new ones laugh at it. My master made us lie in the chalk for an hour at a time so we'd know how." {n}She says it the way a novice recites a verse she hated learning.{/n}
+"Nobody in Mendev knows that. Nobody north of the River Kingdoms knows the last part." {n}Something in her face, which the vrocks spent weeks emptying out, fills back up. It isn't hope. It's older than hope, and it stands up straighter.{/n}
 "Why would the Commander of the crusade learn the Aldori forms? For a deserter in a cage?"''',
          c('"So that when I decide what to do with you, I can offer them to you."', flags=(NAMED,)),
          c('"Keep them close. You may need them before this cage is open."', flags=(NAMED,))),
@@ -248,7 +249,8 @@ visit(P + "cage.ash", "Where the blade went", [
     nar("cut", '''{n}Her guard came up where the forms put it and the bars allowed it, high and forward. Your cut rode down the flat of her sword to the hilt, turned off the crossguard, and opened her right temple from the brow to above the ear. Not deep. Scalp wounds never need to be deep. They bleed as if the whole head were emptying.{/n}''',
         c("Continue", "fall")),
     nar("fall", '''{n}She went down on her back with her face a red mask and her eyes wide open, fixed on the roof of the cage. An Aldori who has yielded does not close her eyes, does not wipe away the blood, does not move a finger until the victor has quit the circle. She breathed through her teeth, shallow as a sleeper, and the smoke of the Scar did the rest.{/n}
-{n}Your companions saw an execution. Nobody went into the cage to be sure. Nobody wanted to touch a deserter.{/n}''',
+{n}Your companions saw an execution, because you had shouted one. Nobody went into the cage to be sure: you were already out of it and giving the order to move, the vrocks' wings were on the wind, and nobody wanted to be the one to kneel in a deserter's blood.{/n}
+{n}It could have gone wrong a dozen ways. She could have bled out; scalp wounds seldom kill, but she was starved and half-frozen. A vrock could have wanted the body. She could have blinked. You left all of that in the cage with her, because the only other way to leave her alive was to leave her in front of witnesses who would ask why.{/n}''',
         c("[Remember that you said nothing over her, and walked out of the circle.]", "silent", flags=(ASH_SILENT, COST_ASH)),
         c('[Remember what you said over her] "Sentence carried out."', "sentence", flags=(ASH_SAID, COST_ASH))),
     nar("silent", '''{n}Under the forms, a yield the victor leaves unspoken is owed until it is spoken. You left hers lying in the ash with her. Whether she ever comes to collect it is hers to decide.{/n}
@@ -565,10 +567,11 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
     nar("her_first", '''{n}You never see it coming. A turn of her wrist, a flicker of steel inside your guard, and a sting along your jaw; when you touch it your fingers come away red. First blood.{/n}
 {n}Jannah stands inside the chalk with her blade lowered, breathing hard, and waits to see what the Commander of the crusade does with the forms in front of the whole muster.{/n}''',
         c("[Lay down your weapon, lie back inside the circle, and keep your eyes on the sky.]", "her_yield",
-          flags=(SHE_FIRST, PUBLIC_YIELD)),
+          flags=(SHE_FIRST, PUBLIC_YIELD), crusade=("Favors", -100)),
         c("[Wipe the blood off your jaw and walk out of the circle.]", "walked_off", flags=(REFUSED_YIELD, DECLINED))),
     jan("her_yield", '''{n}Four hundred soldiers watch their Commander lie down on {mf|his|her} back in the sand inside a deserter's chalk circle, eyes open, not moving. It is so quiet you can hear the smith's forge breathing.{/n}
 "Answered," Jannah says, to you. Then, louder, to the whole yard: "By the forms! Does anybody here want to argue with an Aldori?"
+{n}Some of them do. You can see it in the Mendevian knights by the barracks door: a Commander who lies down in the sand for a deserter is a Commander who can be made to lie down. By evening the Queen's liaison will have written it up for Nerosyan, and the knights' donations will be slower to come.{/n}
 {n}Nobody on the smithy roof wants to. She quits the circle, as the forms require, so that you're allowed to move. Then she steps straight back in and pulls you up by both hands.{/n}''',
         c("Continue", "after")),
     jan("walked_off", '''{n}The yard watches you walk out of the chalk with blood on your jaw, as if the forms were a game she had made up to pass the time in a cell.{/n}
@@ -621,7 +624,7 @@ visit(P + "circle_night", "Inside the chalk", [
     nar("mark_late", '''{n}She takes your hand and lays it flat over her heart, where it is beating hard enough to feel through the shirt, and holds it there.{/n}
 "The last time you stood in a circle of mine, it went wrong. This time you walked in knowing what you were doing. So did I." {n}Her voice has gone low.{/n}''',
         c("Continue", "kiss")),
-    nar("kiss", '''{n}She kisses the way she fences: no wasted motion, then everything at once. Her hands are hard from seven years of hilts and they know exactly where your buckles are. Your belt goes. Your coat goes, onto the sand outside the chalk, because she won't have anything in the circle that doesn't belong there.{/n}
+    nar("kiss", '''{n}She kisses you hard and without finesse, then again, slower, as if she has only just found out she's allowed. Her palms are rough and they find your buckles without looking. Your belt goes. Your coat goes, onto the sand outside the chalk, because she won't have anything in the circle that doesn't belong there.{/n}
 {n}You pull her shirt over her head. The Worldwound's light lies red along her ribs. There is almost nothing on her, for a fencer: seven years of circles and she never bled first. The only marks on her are new ones, and she guides your mouth to each of them in turn.{/n}''',
         c("Continue", "learn")),
     jan("learn", '''{n}She is not patient and she is not shy. She wants to look at you, all of you, and she says so, plainly, the way she'd call a touch; and when she has looked, her breath goes ragged and she doesn't try to steady it.{/n}
