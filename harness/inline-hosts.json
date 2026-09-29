@@ -1,17 +1,17 @@
 {
  "generatedFrom": {
   "story": "Story.json",
-  "blueprints": "D:\\SteamLibrary\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
+  "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 767,
-  "resolved": 767,
-  "inlineOnlyScenes": 140,
-  "inlineOnlyResolved": 140,
-  "answerListScenesWithoutContact": 386,
-  "answerListScenesWithoutContactResolved": 386,
-  "lists": 81,
-  "listsWithReachableHost": 80
+  "entryTargetScenes": 779,
+  "resolved": 779,
+  "inlineOnlyScenes": 147,
+  "inlineOnlyResolved": 147,
+  "answerListScenesWithoutContact": 398,
+  "answerListScenesWithoutContactResolved": 398,
+  "lists": 84,
+  "listsWithReachableHost": 83
  },
  "scenes": {
   "a_crossing": {
@@ -11640,6 +11640,25 @@
     "clicks": 0
    }
   },
+  "nocticula.trickster.court.shamira": {
+   "kind": "return-cue",
+   "lists": [
+    "2729c49e2bf20c64caa4f54b352e03f6"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2729c49e2bf20c64caa4f54b352e03f6": "RRT_entry.nocticula.trickster.court.shamira"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2729c49e2bf20c64caa4f54b352e03f6",
+    "dialog": "2c57f65d4b98d764d98794ae8ef9ffdd",
+    "dialogName": "Nocticula_TricksterC5_Dialogue",
+    "cue": "Cue_0006",
+    "clicks": 1
+   }
+  },
   "nocticula.trickster.court.vellexia": {
    "kind": "return-cue",
    "lists": [
@@ -12906,6 +12925,223 @@
     "dialog": "ed7b39d0716d25c439f2b93c409da883",
     "dialogName": "Seelah_Main_dialog",
     "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "shamira.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.shamira.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.shamira.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.shamira.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.shamira.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.shamira.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.ch4.bird": {
+   "kind": "return-cue",
+   "lists": [
+    "d138954fd7cdb2d4e90bb28cbd76235e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d138954fd7cdb2d4e90bb28cbd76235e": "RRT_entry.shamira.trickster.ch4.bird"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d138954fd7cdb2d4e90bb28cbd76235e",
+    "dialog": "e433e0772ad47ab4789fd6b6101683a5",
+    "dialogName": "Shamira_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.ch4.read": {
+   "kind": "return-cue",
+   "lists": [
+    "d138954fd7cdb2d4e90bb28cbd76235e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d138954fd7cdb2d4e90bb28cbd76235e": "RRT_entry.shamira.trickster.ch4.read"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d138954fd7cdb2d4e90bb28cbd76235e",
+    "dialog": "e433e0772ad47ab4789fd6b6101683a5",
+    "dialogName": "Shamira_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.killed.setup": {
+   "kind": "return-cue",
+   "lists": [
+    "5266a3d8bc5b0714eaaf77dfa5c20695"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "5266a3d8bc5b0714eaaf77dfa5c20695": "RRT_entry.shamira.trickster.killed.setup"
+   },
+   "resolved": true,
+   "host": {
+    "list": "5266a3d8bc5b0714eaaf77dfa5c20695",
+    "dialog": "3e5dc2b91127fda47b8e787c62a54a95",
+    "dialogName": "SocothBriefing_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.killed.voice": {
+   "kind": "return-cue",
+   "lists": [
+    "db7f69fa013c7ec49b651e7ad26c67de"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "db7f69fa013c7ec49b651e7ad26c67de": "RRT_entry.shamira.trickster.killed.voice"
+   },
+   "resolved": true,
+   "host": {
+    "list": "db7f69fa013c7ec49b651e7ad26c67de",
+    "dialog": "10531379f7a9cd442a27740775be84dd",
+    "dialogName": "SocothInCloset_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.react.arueshalae_inside": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.shamira.trickster.react.arueshalae_inside"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.react.arueshalae_walking": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.shamira.trickster.react.arueshalae_walking"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.react.daeran_sleep": {
+   "kind": "dialog",
+   "lists": [
+    "4d978cbd2aa780d46874255282039f3f"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "4d978cbd2aa780d46874255282039f3f": "RRT_entry.shamira.trickster.react.daeran_sleep"
+   },
+   "resolved": true,
+   "host": {
+    "list": "4d978cbd2aa780d46874255282039f3f",
+    "dialog": "14aa0461f8564b042aee1f68c88de61b",
+    "dialogName": "Daeran_Main_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.react.regill_barracks": {
+   "kind": "dialog",
+   "lists": [
+    "2366a8db6481070439fee222c0c52e45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2366a8db6481070439fee222c0c52e45": "RRT_entry.shamira.trickster.react.regill_barracks"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2366a8db6481070439fee222c0c52e45",
+    "dialog": "03519ce01d6363449a9dfd01e162ef0b",
+    "dialogName": "Regill_Main_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.react.shyka": {
+   "kind": "return-cue",
+   "lists": [
+    "d3d0efb4dfcc1964c923d7b2d6e0dc77"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "d3d0efb4dfcc1964c923d7b2d6e0dc77": "RRT_entry.shamira.trickster.react.shyka"
+   },
+   "resolved": true,
+   "host": {
+    "list": "d3d0efb4dfcc1964c923d7b2d6e0dc77",
+    "dialog": "e35f4932430278242b58682b14327087",
+    "dialogName": "Shyka_Offer_Dialogue",
+    "cue": "Cue_0010",
+    "clicks": 2
+   }
+  },
+  "shamira.trickster.react.woljif_voice": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.shamira.trickster.react.woljif_voice"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },
@@ -17888,6 +18124,47 @@
     }
    ]
   },
+  "5266a3d8bc5b0714eaaf77dfa5c20695": {
+   "list": "5266a3d8bc5b0714eaaf77dfa5c20695",
+   "listName": "AnswersList_0002",
+   "hosts": [
+    {
+     "dialog": "3e5dc2b91127fda47b8e787c62a54a95",
+     "dialogName": "SocothBriefing_Dialogue",
+     "cues": [
+      "dde6e995771099d41b67014f420d2a4d",
+      "57a723e1dcf924e4c9a637c280838c5d",
+      "2f4be0bde527a7d4cb7c73131ab551db",
+      "b16fca27eb62bee4fa61dd004c07d27a",
+      "1fa224a8595b17343ab428a2d9c68f74",
+      "251ed678d0ac59047a11bd68e6d57356",
+      "ce88477b87fad1f4a9a2f491e10b9d97"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0009",
+      "Cue_0011",
+      "Cue_0014",
+      "Cue_0015",
+      "Cue_0016",
+      "Cue_0020"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "40bb86ebb21526c4eac6d81d77a51594": 2,
+      "598130adc0ce99d45af09427f9a1835d": 4,
+      "b5e019a3c5c23b64ab331ee113490c36": 1,
+      "b80a8d36b6f58b5438151f48dfd77092": 1,
+      "d25a983528a78784ea61c1f728a09f05": 1,
+      "d9178f73ccf1d604b8fb9aa6daf5edd0": 3,
+      "dac173be4103caa43b33d9ccd0d442dd": 1
+     }
+    }
+   ]
+  },
   "52cca621c1d850641abdde32373ca592": {
    "list": "52cca621c1d850641abdde32373ca592",
    "listName": "AnswersList_0004",
@@ -19870,6 +20147,178 @@
       "7838168a231b2e342925825fb95e4862": 1,
       "cd0365522bc3ac24caf13964c979bfd3": 1,
       "d58f689b08d80a14095b83edc53402e7": 1
+     }
+    }
+   ]
+  },
+  "d138954fd7cdb2d4e90bb28cbd76235e": {
+   "list": "d138954fd7cdb2d4e90bb28cbd76235e",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "e433e0772ad47ab4789fd6b6101683a5",
+     "dialogName": "Shamira_dialogue",
+     "cues": [
+      "ab7955d6c7e01d9489f382d77572a9e1",
+      "b5b9703483181c24cb3e20ae7c39c0bf",
+      "db8220805105a414a882f41aa2e4720d",
+      "b113ebc821b66f74e8405f29a1492381",
+      "13683c5e6798f634181f9b324be1ff2b",
+      "5f455930eb969d34e96cfb966fe9d3e8",
+      "64fdd0fed0509db42b073f8ef7503d45",
+      "c2516f43411102341b001beb881d62b7",
+      "b1ee8a9707fdc4e47b2db4d91dde5c53",
+      "6885244b42561654399e590f84be30fa",
+      "4b238b5d1d6ef9f419b0dc1d7dab2f9a",
+      "0eff5ed318cbff344b3773595df65257",
+      "e5f97e4e015a3e24c82a6813955d31bb",
+      "7cb0e23e19a671244b8491a3db62d130",
+      "109c4e35faf19d142ada4fd67b0a4d4b",
+      "458df3f516d15bd43855aeb78d30b3a6",
+      "d3403bb330b9592459a31c7f4040d2eb",
+      "f6e0184b580a07a4aa01f7b5745a21a0",
+      "817101b551d0d5e4283ca80e6f112674",
+      "3b43972c7c595b54099c1dc76b64e927",
+      "33ff2843768678d41ac9918c5cd0bae7",
+      "f925a47683c31de4186830e40d0eb320",
+      "cd7e4705d4353794c8f3a47012e7fc35",
+      "9f1c9e4e4aa2d7d449b779f629d30157",
+      "289a48dd7b83b5b458d43e0fe5599191",
+      "f80a00991f6e20a49a15ff264550c9d8",
+      "3640e76fec6422748912f8430614b86b",
+      "e7c32d43d2ec18e41a2c0c3fdaa24b03",
+      "9d9881646bf7dca4bb9e694ec4f8122b"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0013",
+      "Cue_0015",
+      "Cue_0028",
+      "Cue_0029",
+      "Cue_0069",
+      "Cue_0093",
+      "Cue_0101",
+      "Cue_0103",
+      "Cue_0112",
+      "Cue_0119",
+      "Cue_0139",
+      "Cue_0144",
+      "Cue_0146",
+      "Cue_0150",
+      "Cue_0151",
+      "Cue_0155",
+      "Cue_0157",
+      "Cue_0159",
+      "Cue_0161",
+      "Cue_0162",
+      "Cue_0167",
+      "Cue_0170",
+      "Cue_0172",
+      "Cue_0174",
+      "Cue_0205",
+      "Cue_0212",
+      "SequenceExit_0187"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "00d50a76899f3344f9179b9fa94b4520": 2,
+      "013ccbfcfd78190408c56801d5fdb7da": 2,
+      "064baf3a021e29a4a9586770dc6e0033": 2,
+      "20aaa0036b8b5334b958da89449098fa": 4,
+      "283bfaafc3dfc1349b9eac782e0733ab": 2,
+      "2d19cdc7869a8dd498fdcd13ed1a1346": 1,
+      "3612885e76a402c4cb7d7ad0ef18607c": 1,
+      "3a9a8c16a93db5844901ed3e1e5f5bed": 4,
+      "4288cb983a862b440a2ae97049059fd3": 8,
+      "465de14bac6d1304d877f87adb166705": 7,
+      "478038da79a32d94dbbe12b105586817": 1,
+      "4cc9065be94e5e94aafc494c254e2739": 6,
+      "4d0ddfe00da1eec47902f9f531f578a0": 2,
+      "5148ffd29aab4f940b5621eb8231edbb": 1,
+      "5a8e6bea9eed93c47bba6ddfafee9915": 2,
+      "62cecccc369bf59418f75a9d8ea8faa1": 1,
+      "6fe4dcf569b4efa4daf188f89314138a": 1,
+      "71ab9db05a0bb374499c4138eaaec2d4": 6,
+      "71deab5ddd0c7ef489ca2b13368db404": 2,
+      "772891c6d8c9c8748b674f9c42ddee68": 1,
+      "791f4427900b2f3418f1c3631a26925d": 1,
+      "7b8588778fd69a845989ad30388114e7": 2,
+      "8ffdf88a528a6d44082e210eb48c3006": 3,
+      "976bf30267f420d45b905c4e85113c8a": 2,
+      "a8fbe4601866a234b9f45831fd713087": 1,
+      "a9d85e1c0eef666408f2b14c22650ee1": 4,
+      "b9a0289b712e7aa4f9756eb59ed42f27": 2,
+      "b9db7de69dc93a445b76bf98d8c8a8f4": 6,
+      "c1585009e53c7a248bb12a1cb639f88d": 1,
+      "c64d3f7e4a58fad43bd2bf135ab2b29e": 2,
+      "d0ed84087df230d448a665dca2655d6f": 1,
+      "d54caaab55fc62647b7d345914e034f2": 5,
+      "d5c0eb028f41da648bfbdd5a1ac2dc97": 4,
+      "d601cdf2521efc141bc790cf10290f0e": 7,
+      "d793d8df90bbfeb41baf211a42fa4ac7": 1,
+      "d7e9bd35060784c4b96ac63022073d18": 1,
+      "dac3a3a789db7684689b4996da0822ab": 1,
+      "dd35f432fd2fa404ea90f72a8e486b3a": 1,
+      "de4a4431d81920e43bcdc09852de0f36": 2,
+      "e50a21934e7f368448bd76f1399720a0": 2,
+      "eb74b462299920d4a98bd7daa85f605e": 2,
+      "ec29a1c483b4aca499b8f10618493c98": 4
+     }
+    }
+   ]
+  },
+  "d3d0efb4dfcc1964c923d7b2d6e0dc77": {
+   "list": "d3d0efb4dfcc1964c923d7b2d6e0dc77",
+   "listName": "AnswersList_0011",
+   "hosts": [
+    {
+     "dialog": "e35f4932430278242b58682b14327087",
+     "dialogName": "Shyka_Offer_Dialogue",
+     "cues": [
+      "5d6810f1e0eb8204fa4c3211fc603769",
+      "8999609509acd0342a08bf2714e5a71b",
+      "9e354e0b158b4b741b01c5de2b49615d",
+      "99298a3dad311014d8cdc54400ad399a",
+      "ed0907ef2fd0b454887faa3c3cb77bde",
+      "a55d58482abe89e4f96d18089314488b",
+      "a48bb45a255bd324dbbc73032bc2ab09"
+     ],
+     "cueNames": [
+      "Cue_0010",
+      "Cue_0019",
+      "Cue_0020",
+      "Cue_0021",
+      "Cue_0022",
+      "Cue_0024",
+      "Cue_0035"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 2,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "Answer_0005"
+      },
+      {
+       "at": "Cue_0003",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "1acfac70b85b2eb47bfa68456a43f6fb": 1,
+      "585499cd0fd717047a6ec33af0731966": 2,
+      "6e2b57aebaba8914fa1f9343bce7f2b8": 2,
+      "7d6726cad9b46044e97a772f632528db": 2,
+      "943709346cda24f43a3c4c4b7fd8f286": 1,
+      "b63e8b4c6fb93c74cbbc685992a755e3": 2,
+      "b71e7e2600bf99740b4874f1725e8faf": 1,
+      "e9b7ea81c37f53e4da3f75add7d35cc6": 1,
+      "f8d8e4651bba07e47b31ea7ac45d6faf": 1
      }
     }
    ]
