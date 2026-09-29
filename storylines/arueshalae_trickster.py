@@ -174,14 +174,14 @@ def drezen_pair(id, title, entry, nodes, requires, forbids, delay):
 letter(P + "dead.starving", "Diagnosis", 3, [
     nar("start", '''{n}They have laid Arueshalae out in the chapel with her wings folded. The chaplains washed her face and did not know what to do with the rest of her, so they left her in her travelling clothes, with a sprig of something green between her hands.{/n}
 {n}Without the careful stillness she wore in life, she looks younger. And hungrier. The hollows under her cheekbones are deeper than they were at the last camp. You have seen that look on the faces of the Kenabres refugees queuing at the soup kettles.{/n}
-{n}She did not only die of her wounds. She has been dying of something else for a long time, and the wounds only finished it.{/n}''',
+{n}She died of her wounds. But you know the other thing, the one that will be waiting for her if she ever opens her eyes again: a hunger held on a short chain for so long that it has worn her to the bone, and that will have her by the throat before she has finished her first breath.{/n}''',
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "treat", mythic="Trickster",
           requires=("trickster.religion_tier1",)),
         c("[Let her rest.]", abort=True),
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster",
           forbids=("trickster.religion_tier1",))),
     nar("treat", '''{n}The chaplains could raise her. Any crusader who falls in the Commander's company can be raised, with a diamond and the rite; they have done it for knights and for Woljif. They will not spend a diamond on a demon, and they have said so, politely. So you do the rite's work yourself, in two halves.{/n}
-{n}First the Trickster's lore, which cannot raise anyone and does not try: you lay your palm on her breastbone and lift from her body the one condition that would kill her again the moment she woke, the starvation, the way you have lifted plague out of the Kenabres refugees. Then the price the rite would have taken in diamond, you pay in blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}
+{n}First the Trickster's lore, which cannot raise anyone and does not try: you lay your palm on her breastbone and lift from her body the one condition that would destroy her again the moment she woke, the starvation, the way you have lifted plague out of the Kenabres refugees. Then the price the rite would have taken in diamond, you pay in blood. You cut your wrist on the edge of the bier and hold it to her lips.{/n}
 {n}Something under your palm goes from stone to skin. The sprig slides out of her hands. Her eyes open. They find your throat before they find your face.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,)),
         c("Continue", "plea", forbids=(CLAIMED,))),
@@ -331,7 +331,7 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
     nar("window", '''{n}You wake at the hour before the first bell, colder than you went to sleep, with a black feather on the pillow and the taste of someone else's lipstick on your mouth.{/n}''', c()),
     nar("gate", '''{n}In the morning the gate guard reports that the prisoner tied there overnight has gone mad and will not stop weeping. Nobody saw anything. Nobody ever does.{/n}''', c()),
     nar("vrock", '''{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
-    nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you.{/n}''', c()),
+    nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you, and on it, in lipstick: "You chose nothing. Nothing has a name now. It's on your account, darling, not mine."{/n}''', c()),
 ], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_FAILED), forbids=(P + "evil.reunion", REUNITED, CLOSED, LATE),
     delay=120, chapters=(5,))
 
@@ -339,11 +339,11 @@ TERMS_OPEN = [
     a("terms", '''"I won't wear your colours, and I won't bless anything. I'll come when I'm hungry, and you'll open the door. That's the arrangement. Don't look at me like that. It's the only arrangement I've ever kept."''',
       c("Continue", "debt", requires=(DEBT,)),
       c("Continue", "favour", forbids=(DEBT,))),
-    a("debt", '''"And when she calls, I'll go. Don't sulk. You said yes to it."''',
+    a("debt", '''"And when she calls, I'll go. Don't sulk. You said yes to it. And don't ever try to stop me: lock a door, hire a priest, stand in my way. I'll go through you to get to her, and I won't be gentle, because she won't let me be."''',
       c("Continue", "hungry", requires=(HUNGRY,)),
       c("Continue", "hiding", requires=(IN_HIDING,), forbids=(HUNGRY,)),
       c("Continue", "ask", forbids=(HUNGRY, IN_HIDING))),
-    a("favour", '''"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected."''',
+    a("favour", '''"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected. And if you try to wriggle out of it, she won't come to you. She'll come to me, and ask me to fetch it."''',
       c("Continue", "hungry", requires=(HUNGRY,)),
       c("Continue", "hiding", requires=(IN_HIDING,), forbids=(HUNGRY,)),
       c("Continue", "ask", forbids=(HUNGRY, IN_HIDING))),
