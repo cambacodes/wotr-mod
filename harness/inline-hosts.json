@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 785,
-  "resolved": 785,
-  "inlineOnlyScenes": 152,
-  "inlineOnlyResolved": 152,
-  "answerListScenesWithoutContact": 404,
-  "answerListScenesWithoutContactResolved": 404,
-  "lists": 83,
-  "listsWithReachableHost": 82
+  "entryTargetScenes": 798,
+  "resolved": 798,
+  "inlineOnlyScenes": 157,
+  "inlineOnlyResolved": 157,
+  "answerListScenesWithoutContact": 417,
+  "answerListScenesWithoutContactResolved": 417,
+  "lists": 85,
+  "listsWithReachableHost": 84
  },
  "scenes": {
   "a_crossing": {
@@ -10116,6 +10116,261 @@
     "clicks": 0
    }
   },
+  "jannah.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.jannah.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.jannah.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.jannah.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.jannah.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.jannah.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.cage.forms": {
+   "kind": "return-cue",
+   "lists": [
+    "b2b77a591c8808f409aa2083bd1b318a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "b2b77a591c8808f409aa2083bd1b318a": "RRT_entry.jannah.trickster.cage.forms"
+   },
+   "resolved": true,
+   "host": {
+    "list": "b2b77a591c8808f409aa2083bd1b318a",
+    "dialog": "b81b22fc7a03d6248b4bebdb392ec6e2",
+    "dialogName": "Deseter_MoltenScar_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.cage.terms": {
+   "kind": "return-to-list",
+   "lists": [
+    "170fd7a11f66c88428bc27bfba3a569f"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "170fd7a11f66c88428bc27bfba3a569f": "RRT_entry.jannah.trickster.cage.terms.170fd7a11f66c88428bc27bfba3a569f"
+   },
+   "resolved": true,
+   "host": {
+    "list": "170fd7a11f66c88428bc27bfba3a569f",
+    "dialog": "b81b22fc7a03d6248b4bebdb392ec6e2",
+    "dialogName": "Deseter_MoltenScar_dialog",
+    "cue": "SequenceExit_0037",
+    "clicks": 1
+   }
+  },
+  "jannah.trickster.react.irabeth_rolls": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.jannah.trickster.react.irabeth_rolls"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.irabeth_sand": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.jannah.trickster.react.irabeth_sand"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.irabeth_wagon": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.jannah.trickster.react.irabeth_wagon"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.king_gaol": {
+   "kind": "return-cue",
+   "lists": [
+    "6dccfd39947ef4242a8afbe36b21a46c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6dccfd39947ef4242a8afbe36b21a46c": "RRT_entry.jannah.trickster.react.king_gaol"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6dccfd39947ef4242a8afbe36b21a46c",
+    "dialog": "ed8dabf271ef7ea4797bf7073c2e437a",
+    "dialogName": "FoolKing_Tavern_Dialogue",
+    "cue": "Cue_0052",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.king_muster": {
+   "kind": "return-cue",
+   "lists": [
+    "6dccfd39947ef4242a8afbe36b21a46c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "6dccfd39947ef4242a8afbe36b21a46c": "RRT_entry.jannah.trickster.react.king_muster"
+   },
+   "resolved": true,
+   "host": {
+    "list": "6dccfd39947ef4242a8afbe36b21a46c",
+    "dialog": "ed8dabf271ef7ea4797bf7073c2e437a",
+    "dialogName": "FoolKing_Tavern_Dialogue",
+    "cue": "Cue_0052",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.seelah_cells": {
+   "kind": "dialog",
+   "lists": [
+    "417fa384f3250634bb71859fbc913453"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "417fa384f3250634bb71859fbc913453": "RRT_entry.jannah.trickster.react.seelah_cells"
+   },
+   "resolved": true,
+   "host": {
+    "list": "417fa384f3250634bb71859fbc913453",
+    "dialog": "ed7b39d0716d25c439f2b93c409da883",
+    "dialogName": "Seelah_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.seelah_known": {
+   "kind": "dialog",
+   "lists": [
+    "417fa384f3250634bb71859fbc913453"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "417fa384f3250634bb71859fbc913453": "RRT_entry.jannah.trickster.react.seelah_known"
+   },
+   "resolved": true,
+   "host": {
+    "list": "417fa384f3250634bb71859fbc913453",
+    "dialog": "ed7b39d0716d25c439f2b93c409da883",
+    "dialogName": "Seelah_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.seelah_muster": {
+   "kind": "dialog",
+   "lists": [
+    "417fa384f3250634bb71859fbc913453"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "417fa384f3250634bb71859fbc913453": "RRT_entry.jannah.trickster.react.seelah_muster"
+   },
+   "resolved": true,
+   "host": {
+    "list": "417fa384f3250634bb71859fbc913453",
+    "dialog": "ed7b39d0716d25c439f2b93c409da883",
+    "dialogName": "Seelah_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.seelah_told": {
+   "kind": "dialog",
+   "lists": [
+    "417fa384f3250634bb71859fbc913453"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "417fa384f3250634bb71859fbc913453": "RRT_entry.jannah.trickster.react.seelah_told"
+   },
+   "resolved": true,
+   "host": {
+    "list": "417fa384f3250634bb71859fbc913453",
+    "dialog": "ed7b39d0716d25c439f2b93c409da883",
+    "dialogName": "Seelah_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "jannah.trickster.react.seelah_unknown": {
+   "kind": "dialog",
+   "lists": [
+    "417fa384f3250634bb71859fbc913453"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "417fa384f3250634bb71859fbc913453": "RRT_entry.jannah.trickster.react.seelah_unknown"
+   },
+   "resolved": true,
+   "host": {
+    "list": "417fa384f3250634bb71859fbc913453",
+    "dialog": "ed7b39d0716d25c439f2b93c409da883",
+    "dialogName": "Seelah_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
   "jerribeth.fate_envelope": {
    "kind": "dialog",
    "lists": [
@@ -16052,6 +16307,39 @@
     }
    ]
   },
+  "170fd7a11f66c88428bc27bfba3a569f": {
+   "list": "170fd7a11f66c88428bc27bfba3a569f",
+   "listName": "AnswersList_0021",
+   "hosts": [
+    {
+     "dialog": "b81b22fc7a03d6248b4bebdb392ec6e2",
+     "dialogName": "Deseter_MoltenScar_dialog",
+     "cues": [
+      "59d114781de8555499f21af26e68eead",
+      "423ff8833653bf94cb4bd8fb047578a8"
+     ],
+     "cueNames": [
+      "SequenceExit_0037",
+      "Cue_0015"
+     ],
+     "speaker": "4880d0b16ca74fa46a167914e2b44bcc",
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "Answer_0008"
+      }
+     ],
+     "answerDist": {
+      "54dae4a2033e5564e9b7daeec59abd26": 2,
+      "65ccd605a058872498a4168abf8daa68": 2,
+      "94a56af63dcd94440bbb919be7abffc9": 1,
+      "c89702efaab56454cbd07d3d87e7d7a7": 2
+     }
+    }
+   ]
+  },
   "174d6c94b6725f44aad1d2a76993a926": {
    "list": "174d6c94b6725f44aad1d2a76993a926",
    "listName": "AnswersList_0002",
@@ -19764,6 +20052,39 @@
       "9fb122d392ebbb249bbc227e3b012788": 1,
       "f725329c0103c7a4682e87ab115d3a55": 1,
       "f8c022f9197b15646b72b01cdbad5c49": 1
+     }
+    }
+   ]
+  },
+  "b2b77a591c8808f409aa2083bd1b318a": {
+   "list": "b2b77a591c8808f409aa2083bd1b318a",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "b81b22fc7a03d6248b4bebdb392ec6e2",
+     "dialogName": "Deseter_MoltenScar_dialog",
+     "cues": [
+      "ec15c6fd7ffa7514fbf98283ae93a400",
+      "ef6fcb8d9315069458187e9b546844e9",
+      "42f8d969ddd7b4545a7b89a991d6dfab",
+      "fe9fa40a86e52364bb3a5ad5d58b6166",
+      "8c909dc650b9dff408a0d144da24b920"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0004",
+      "Cue_0005",
+      "Cue_0059"
+     ],
+     "speaker": "4880d0b16ca74fa46a167914e2b44bcc",
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "54dae4a2033e5564e9b7daeec59abd26": 1,
+      "65ccd605a058872498a4168abf8daa68": 1,
+      "c89702efaab56454cbd07d3d87e7d7a7": 1
      }
     }
    ]

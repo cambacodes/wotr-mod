@@ -308809,7 +308809,7 @@
         {
           "Id": "q3",
           "Speaker": "Jannah",
-          "Text": "\"Seelah smiled at me. In front of the citadel, in front of Elan, after everything. As if I hadn't failed her.\" {n}She turns the tankard a quarter-turn.{/n}\n\"I asked her how she could do that. She said she'd give me a piece of her mind once we were in private. She did, too. Then she bought me a drink.\"",
+          "Text": "\"Seelah smiled at me. In front of the citadel, in front of Elan, after everything. As if I hadn't failed her.\"\n\"I asked her how she could do that. She said she'd give me a piece of her mind once we were in private. She did, too. Then she bought me a drink.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -308901,7 +308901,7 @@
         {
           "Id": "not_seen",
           "Speaker": "Jannah",
-          "Text": "\"I haven't seen Seelah since Houndheart. I've seen her every night in my head, though, standing by the fire in the rain, shouting that motto of hers, looking round for me.\" {n}She turns the tankard a quarter-turn.{/n}\n\"I wasn't there. I'm never there, in that dream. I've been gone for a year.\"",
+          "Text": "\"I haven't seen Seelah since Houndheart. I've seen her every night in my head, though, standing by the fire in the rain, shouting that motto of hers, looking round for me.\"\n\"I wasn't there. I'm never there, in that dream. I've been gone for a year.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -309433,7 +309433,7 @@
         {
           "Id": "ash",
           "Speaker": "Jannah",
-          "Text": "\"The one you passed me through the bars.\" {n}She doesn't look up.{/n} \"I lay on it in the ash for an hour, and carried it through the Wound, and guarded salt with it all winter, and it never once asked me what I thought I was doing.\"",
+          "Text": "\"The one you passed me through the bars.\" {n}She keeps working the leather.{/n} \"I lay on it in the ash for an hour, and carried it through the Wound, and guarded salt with it all winter, and it never once asked me what I thought I was doing.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -309449,7 +309449,7 @@
         {
           "Id": "stores",
           "Speaker": "Jannah",
-          "Text": "\"Mine. The turnkey found it in the gaol stores under a sack of turnips, which is where they put the weapons of people they don't expect to see again.\" {n}She doesn't look up.{/n}\n\"The vrocks threw it outside my cage in the Scar. Somebody carried it all the way back to Drezen and then put it under a sack of turnips. I don't know whether to thank them or challenge them.\"",
+          "Text": "\"Mine. The turnkey found it in the gaol stores under a sack of turnips, which is where they put the weapons of people they don't expect to see again.\"\n\"The vrocks threw it outside my cage in the Scar. Somebody carried it all the way back to Drezen and then put it under a sack of turnips. I don't know whether to thank them or challenge them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -310643,7 +310643,7 @@
         {
           "Id": "cage",
           "Speaker": "Jannah",
-          "Text": "\"Not knowing.\" {n}She turns the cup in her hands.{/n}",
+          "Text": "\"Not knowing.\" {n}She weighs the cup as if it were a blade.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -311369,7 +311369,7 @@
         {
           "Id": "start",
           "Speaker": "Jannah",
-          "Text": "\"Two.\" {n}She doesn't look up.{/n} \"Forty-one bouts in Mivon, and then two, both to you, both the wrong way. I'll get used to it. I'm getting used to a lot of things.\"",
+          "Text": "\"Two.\" {n}She runs a thumbnail along them.{/n} \"Forty-one bouts in Mivon, and then two, both to you, both the wrong way. I'll get used to it. I'm getting used to a lot of things.\"",
           "Choices": [
             {
               "Text": "[Yield the circle] \"At the muster today I'm going to walk into your chalk and lay my blade down before the salute.\"",
@@ -312836,7 +312836,7 @@
         {
           "Id": "door",
           "Speaker": "Narrator",
-          "Text": "{n}You stay in the doorway with your hood up and let the song wash out into the street. It's a dreadful song. It rhymes 'Aldori' with 'sorry' and 'first blood' with 'worst mud', and someone has put a verse in about the Houndheart camp that makes the whole room go quiet for two lines before it picks up again.{/n}",
+          "Text": "{n}You stay out on the step with your hood up and let the song wash out into the street. It's a dreadful song. It rhymes 'Aldori' with 'sorry' and 'first blood' with 'worst mud', and someone has put a verse in about the Houndheart camp that makes the whole room go quiet for two lines before it picks up again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -313515,7 +313515,7 @@
         {
           "Id": "start",
           "Speaker": "Jannah",
-          "Text": "\"Trying to.\" {n}She doesn't look up.{/n}\n\"I drew first blood on the Commander of the crusade in front of four hundred soldiers. By the forms that's a win, a clean one, and it goes in the scabbard the right way, next to the others.\" {n}The knife doesn't move.{/n} \"I can't make myself cut it.\"",
+          "Text": "\"Trying to.\" {n}The knife stays where it is.{/n}\n\"I drew first blood on the Commander of the crusade in front of four hundred soldiers. By the forms that's a win, a clean one, and it goes in the scabbard the right way, next to the others.\" {n}The knife doesn't move.{/n} \"I can't make myself cut it.\"",
           "Choices": [
             {
               "Text": "\"Why not?\"",
@@ -316999,8 +316999,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "ending.trickster": "db5375333382d044089475d256f19582",
     "ending.trickster_allplanes": "f7343e290a8d4ed887af8f04d1b3446b",
     "ending.trickster_allplanes_fw": "5f63f6d43c9b465f822db70af7d69b92",
