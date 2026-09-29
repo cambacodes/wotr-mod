@@ -117,7 +117,7 @@ Exit codes: `0` means every check passed. `1` means a test failed. `2` means an 
    - status, timings and init state;
    - per save: load result, load time, not-idle reason, the full `State()` snapshot, available scenes and scenes without a dialog;
    - per run: strategy, answer-index path, choices (answer blueprint name, text, story choice `scene/node/i`),
-     result (`completed`, `not-started`, `stuck`, `step-limit`, `path-diverged`, `exception`, `skipped-native`;
+     result (`completed`, `not-started`, `stuck`, `step-limit`, `path-diverged`, `exception`, `skipped-native`, `skipped-delay`;
      with `-Inline` also `skipped-inline`, `entry-hidden` and `entry-not-started`, plus the `Inline` host record),
      oracle failures, flags added and removed, exceptions with stack traces, and time in ms;
    - the round-trip result and a summary with a failure list.
@@ -287,9 +287,21 @@ Results that are not failures are `skipped-inline`, with the reason. The cases a
 - the list's own answers are hidden;
 - a forced run cannot hold the scene's native or derived keys.
 
+`skipped-delay` is not a failure either: a forced run could not satisfy the scene's `DelayHours` (see below).
+
+**Delayed scenes (`DelayHours`).** `Rules.Available` opens a delayed page only when `DelayHours` have passed since the
+latest `hour.<key>` time of its held `Requires` (and held `RequiresAnyGroups` members). A forced run sets those flags
+"now", and `Main.RecordLatches` stamps a latch such as `trickster.ever` "now" on the first idle tick after loading a save
+that predates it, so the page could never open. A forced run therefore backdates those times (`DelayForcing`): each such
+key gets `hour.<key>` = the current hour minus `DelayHours` minus a 2-hour margin, and a held latch is persisted so it is
+not re-stamped. Game time is not advanced and the mod's delay rule is unchanged. The run records `DelayBackdated`
+(`key@hour`). When the delay cannot be met (the save is younger than the delay, or a blocking key has no `hour.*` flag)
+the run records `DelayUnmet`, and a page that then stays hidden is `skipped-delay`. This applies to direct and `-Inline` runs.
+
 Failures are:
 
-- `entry-hidden`: the list is shown but the entry is not, although the scene is available, or all of its `Requires` were forced;
+- `entry-hidden`: the list is shown but the entry is not, although the scene is available, or all of its `Requires` were forced
+  (and its delay backdated);
 - `entry-not-started`: the entry was selected but no scene cue followed;
 - any exception or oracle failure.
 
